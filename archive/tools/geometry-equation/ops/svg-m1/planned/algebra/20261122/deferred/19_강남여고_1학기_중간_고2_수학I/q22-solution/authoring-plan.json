@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "ENGINE_GAP_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_ENGINE_CONTRACT",
+  "sourcePath": "archive/exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",
+  "ordinal": 22,
+  "slot": "solution",
+  "sourceQuote": "두 실수 $a$, $b$가 $a^2 < a < b < b^2$을 만족시킬 때",
+  "sourceAsset": "archive/assets/images/19_강남여고_1학기_중간_고2_수학I/q22-solution.svg",
+  "sourceBlobSha": "03f98fa1b9531ae2a0880524fc7cc66c7854c0fe",
+  "originalAuditStatus": "VISUAL_UPGRADE",
+  "originalAuditReport": "1MID_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "기존 1120×760 SVG의 46px 강제 폰트·고정 좌표가 제목, 설명, 수직선 라벨, 예시 텍스트를 침범하고 하단 여백이 부족함.",
+  "evidence": [
+    "문항은 a²<a<b<b²; 풀이에서 0<a<1<b를 확인함.",
+    "원본 해설 그림은 0<r=a/b<a<1<b 수직선과 지수의 순서 비교를 별도 카드로 설명함.",
+    "원본 그림의 예시 a=1/2, b=5/3, r=3/10은 도식 설명용이며 출제 조건으로 지정된 값은 아님."
+  ],
+  "layout": {
+    "type": "two-number-line-explanation-panels",
+    "panels": [
+      {
+        "id": "conditions",
+        "heading": "조건의 순서",
+        "visual": "단조 수직선",
+        "orderedSymbols": [
+          "0",
+          "r=a/b",
+          "a",
+          "1",
+          "b"
+        ],
+        "meaning": "0<r<a<1<b"
+      },
+      {
+        "id": "exponents",
+        "heading": "밑 0<r<1의 지수 비교",
+        "visual": "단조 수직선",
+        "orderedSymbols": [
+          "0",
+          "r",
+          "r^a",
+          "r^r",
+          "1"
+        ],
+        "meaning": "r<r^a<r^r<1"
+      }
+    ],
+    "optionalLegend": "a=1/2, b=5/3, r=3/10 (기존 그림의 예시이며 사실값 아님)",
+    "typography": "큰 제목-소제목-라벨-설명 순 위계, 카드별 자체 여백과 줄바꿈; 수식과 범례의 위치 분리",
+    "accessibility": "두 수직선의 기호 순서를 SVG text 또는 별도 aria 설명으로 제공"
+  },
+  "engineNeeds": [
+    "수직선+기호 다중패널 조합",
+    "텍스트 높이 측정과 자동 줄바꿈/패널 최소 높이",
+    "수식/첨자의 폰트 크기·baseline 및 외곽 여백 처리"
+  ],
+  "verification": [
+    "숫자 예시는 직선 눈금의 유일한 정의로 쓰지 않는다.",
+    "수직선 상 기호 순서가 실제 부등식과 맞는지 검사한다.",
+    "제목·범례·가이드와 라벨 충돌 0건, 하단 clipping 0건."
+  ],
+  "publicationDraft": {
+    "alt": "0<r=a/b<a<1<b와 0<r<1에서 거듭제곱의 크기 관계를 나란한 수직선으로 나타낸 해설 그림",
+    "caption": "조건의 순서와 밑이 0과 1 사이일 때의 거듭제곱 비교"
+  }
+}

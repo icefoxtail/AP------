@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "SOURCE_HOLD_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_SOURCE_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+  "ordinal": 23,
+  "slot": "problem",
+  "sourceQuote": "선분 $AB$를 지나고 $x$축과 평행한 직선이 곡선 $y=3^x$와 만나는 점을 $C$라 하자",
+  "sourceAsset": "archive/assets/images/26_효천고_1학기_중간_고2_대수/q23.png",
+  "sourceBlobSha": "8837e92f8b452d72666242c9e2ca11ea22c890fe",
+  "originalAuditStatus": "SOURCE_LINK_HOLD",
+  "originalAuditReport": "1MID_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "원본 그림은 A–B를 연결한 기울기 -1 직선 및 B–C 수평을 보여 주지만 JS 문장은 선분 AB를 지나며 x축에 평행한 직선을 지시하여 기하학적으로 모순.",
+  "evidence": [
+    "지문: 직선 기울기 -1, y=3^x와 y=log_3(x)의 교점 A,B, AB=24√2, 삼각형 ABC 넓이 312.",
+    "기존 도판과 풀이에서는 A가 좌상, B가 우하, BC가 수평, C가 y=3^x 위에 놓임.",
+    "B와 C의 높이가 같은 해설을 원문 교정의 근거로 승인 없이 사용해서는 안 됨."
+  ],
+  "layout": {
+    "type": "two-curve-coordinate-geometry",
+    "entities": [
+      "x축·y축",
+      "증가 지수곡선 y=3^x",
+      "증가 로그곡선 y=log_3 x",
+      "기울기 -1인 AB 직선",
+      "A·B·C",
+      "ABC 삼각형"
+    ],
+    "relationsToVerify": [
+      "A∈y=3^x",
+      "B∈y=log_3 x",
+      "A,B are on a line of slope -1",
+      "C∈y=3^x",
+      "B와 C를 잇는 수평선이 의도인지 원 출제지로 확정"
+    ],
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "O",
+      "24√2(지문 수치)",
+      "312(지문 수치)"
+    ],
+    "numericCoordinates": "NOT_ASSIGNED_FROM_SOLUTION"
+  },
+  "engineNeeds": [
+    "지수·로그 두 곡선+보조선·점·삼각형 오버레이",
+    "교점·선분 방향 및 좌표계 라벨 충돌 검사"
+  ],
+  "sourceConfirmation": [
+    "고해상도 원본 출제지에서 문제의 'AB를 지나고' 문구를 정확히 전사한다.",
+    "출제 문구 수정이 필요하면 문제 내용 변경 승인과 해설/정답 정합성 별도 검수를 받는다.",
+    "BC 수평 관계 확정 전에는 새로운 그림·publish.json을 생성하지 않는다."
+  ],
+  "doNotInfer": [
+    "원문 교정 내용",
+    "A,B,C의 좌표를 기존 해설 수치로 확정"
+  ],
+  "publicationDraft": {
+    "alt": "지수함수와 로그함수의 교점 A, B 및 추가 점 C가 있는 좌표평면 그림(수평선 조건 원문 대조 전 보류)"
+  }
+}

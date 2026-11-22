@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "SOURCE_HOLD_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_SOURCE_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1final/24_강남여고_1학기_기말_고2_수학I.js",
+  "ordinal": 17,
+  "slot": "problem",
+  "sourceQuote": "$\\overline{AB}=2$, $\\overline{BC}=3$, $\\overline{AC}=4$",
+  "sourceAsset": "archive/assets/images/24_강남여고_1학기_기말_고2_수학I/q17.png",
+  "sourceBlobSha": "35487b12af4254750ef7e86d416805ffc11f0055",
+  "originalAuditStatus": "VISUAL_HOLD_READABILITY",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "450×275 PNG에서 AC 옆 길이 기호 4의 획이 떨어져 1로 읽힐 수 있음. 본문 수치와 도판 간 독립 검증 불가.",
+  "evidence": [
+    "문항 본문은 AB=2, BC=3, AC=4, BD:DC=1:2라고 명시.",
+    "도판은 삼각형 ABC 내부의 D와 연결선 AD를 보여 줌.",
+    "풀이의 AD=√6으로 잘못 읽힌 원본 획을 채우거나 정답을 변경하면 안 됨."
+  ],
+  "layout": {
+    "type": "triangle-with-cevian",
+    "entities": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "edges": [
+      "AB",
+      "BC",
+      "CA",
+      "AD"
+    ],
+    "relations": [
+      "D∈BC",
+      "BD:DC=1:2"
+    ],
+    "labelsFromStatement": [
+      {
+        "AB": "2"
+      },
+      {
+        "BC": "3"
+      },
+      {
+        "AC": "4"
+      },
+      {
+        "BD:DC": "1:2"
+      }
+    ],
+    "optionalGeometricDraft": "출처 확정 후 B=(0,0), C=(3,0), D=(1,0), A=(-1/2,√15/2)의 비례 좌표계 사용 가능; 그림 방향은 원 출제 도판 우선",
+    "unknowns": [
+      "AC 인쇄 숫자 최종 확인",
+      "각 라벨과 점 위치의 원본 방향"
+    ]
+  },
+  "engineNeeds": [
+    "삼각형-내분점-세변 길이 및 보조선",
+    "분할변에 대한 라벨 충돌 방지"
+  ],
+  "sourceConfirmation": [
+    "출제 원본의 AC=4 인쇄를 확인하고 스캔 숫자 혼독을 해소한다.",
+    "본문과 도판 사이 A/B/C/D 방향·AD 선을 대조한다.",
+    "확정 후에만 renderer용 숫자 라벨을 넣는다."
+  ],
+  "doNotInfer": [
+    "원본 AC glyph를 해설의 AD 결과로 교정"
+  ],
+  "publicationDraft": {
+    "alt": "AB=2, BC=3, AC=4이며 D가 BC를 1:2로 내분한 삼각형 ABC(길이 원본 재확인 후 사용)"
+  }
+}

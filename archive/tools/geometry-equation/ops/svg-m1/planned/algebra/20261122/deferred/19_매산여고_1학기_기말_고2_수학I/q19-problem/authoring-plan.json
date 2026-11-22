@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "ENGINE_GAP_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_ENGINE_CONTRACT",
+  "sourcePath": "archive/exams/original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+  "ordinal": 19,
+  "slot": "problem",
+  "sourceQuote": "두 곡선 $y=x^2$, $y=x^2+ax+b (a>0)$",
+  "sourceAsset": "archive/assets/images/19_매산여고_1학기_기말_고2_수학I/q19.png",
+  "sourceBlobSha": "4591fc51063a75f756d0aad9822fc455859a232c",
+  "originalAuditStatus": "VISUAL_UPGRADE",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "895×652 그래프 위에 지문 말미와 배점의 잘린 잔획이 붙어 있음. 두 포물선과 교점 우측 구간의 여러 수직선은 읽히나 엔진 다중 곡선-세그먼트 오버레이·생략점 표현 계약 확인 필요.",
+  "evidence": [
+    "출제 조건: y=x²와 y=x²+ax+b, a>0, 교점 오른쪽에 같은 x 간격의 총 15개 y축 평행 선분.",
+    "가장 짧은 길이 2, 가장 긴 길이 20은 발문 수치이며 이미지의 개별 선분에 숫자로 적히지 않음.",
+    "현 스캔은 15개 선분 모두를 낱개로 그리지 않고 앞쪽의 소수 대표선과 점 3개의 말줄임 기호, 우측 긴 선분을 보여 줌."
+  ],
+  "layout": {
+    "type": "parabola-comparison-with-sampled-vertical-gaps",
+    "coordinateSystem": "원점을 O로 표시한 x/y축, x축 아래 약간의 여백",
+    "curves": [
+      {
+        "formula": "y=x²",
+        "vertex": "O",
+        "role": "right/lower curve"
+      },
+      {
+        "formula": "y=x²+ax+b",
+        "role": "left/upper curve at chosen x>intersection"
+      }
+    ],
+    "intersection": "x=−b/a 한 개; 정확한 a,b 수치는 원본에 없어 미지수로 유지",
+    "segments": {
+      "conceptualCount": 15,
+      "actualVisible": "원본 대표 수직 간격 소수 개와 점 3개 생략기호를 유지",
+      "direction": "vertical",
+      "spacing": "equal Δx between conceptual 15 x-values, no numeric Δx given",
+      "endpoints": "각 선분은 두 곡선 위에 있음",
+      "ordering": "intersection 오른쪽에서 x가 증가할수록 간격 ax+b 증가",
+      "shortest": 2,
+      "longest": 20
+    },
+    "labels": [
+      "y=x²",
+      "y=x²+ax+b",
+      "O",
+      "x",
+      "y"
+    ],
+    "cleanup": "상단 문장/배점 잔상만 분리, 그래프·식의 위상과 원점 위치 보존",
+    "placeholderParameters": "a>0, b와 각 x_i는 숫자로 확정하지 않음"
+  },
+  "engineNeeds": [
+    "두 개 parabola function overlays와 임의 x_i에서 두 그래프 사이 vertical segments",
+    "대표 선분과 생략점(ellipsis) primitive로 15개 존재 표현",
+    "함수 라벨의 curve anchor 및 자동 margin"
+  ],
+  "verification": [
+    "원본 이미지에서는 실제 몇 개 선분이 보이는지 확인하고 그 개수·말줄임을 재현한다.",
+    "개념적 15개 전부를 억지로 시각 표시해 선 두께가 붕괴하지 않도록 한다.",
+    "두 포물선 y값 차의 방향과 x간격 등차 조건을 유지한다.",
+    "그림에 발문 수치 2/20을 임의 라벨로 덧붙이지 않는다."
+  ],
+  "publicationDraft": {
+    "alt": "y=x²와 y=x²+ax+b가 만나는 지점 오른쪽에서 두 곡선을 잇는 등간격 수직 선분을 일부와 생략점으로 나타낸 그래프"
+  }
+}

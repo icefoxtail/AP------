@@ -1,6 +1,14 @@
 # 대수 1학기 시험지 SVG 대량 작도 플랜 — 2026-11-22
 
-## 누적 현황 (2차 반영)
+## 최종 현황 (3차 플랜 작성 완료)
+
+- 전체 감사 표시 자산 **36/36건에 작도 설계 기록**을 마련했다: 기존 실행형 25건 + 이번 조건부 인계 설계 11건.
+- 개별 시험지 감사 추가 예약 2건까지 합산한 **실행형 초안은 총 27건** (`item.json`·`plan.json`·`publish.json`). 기존 구조검사 `--shallow` 27/27 통과.
+- 이번 추가 **조건부 작도 설계 11건**은 `deferred/**/authoring-plan.json`에 개별 작성했다. 4건은 엔진/레이아웃 인계, 7건은 원본 확인 HOLD다. 11/11 문항 원문 및 이미지 blob SHA 대조 통과. **엔진 실행 JSON이 아니며** HOLD도 해제되지 않는다.
+- 최신 통합 인계: **[FINAL_HANDOFF.md](FINAL_HANDOFF.md)**, **[FINAL_HANDOFF_MANIFEST.json](FINAL_HANDOFF_MANIFEST.json)**. 아래 2차·1차 항목은 작업 당시의 스냅샷이다.
+- 새 SVG 생성·전체 린트·학생 화면·Golden/Negative·출고 승인 **미진행**. 원본 JS/자산/해설·답안 **무변경**.
+
+## 누적 현황 (2차 반영 당시 기록)
 
 - **누적 27개 도형 플랜**: 1차 17개 + 2차 10개, 각각 item.json·plan.json·publish.json 세 파일.
 - 공식 SVG 엔진 구조 검사 **27/27 통과**, 원본 문항 번호·인용구 **27/27 일치**. 2차 자산 원본 Git blob SHA **10/10 일치**.
@@ -37,7 +45,7 @@
 4. VISUAL_HOLD_READABILITY 또는 SOURCE_LINK_HOLD는 플랜이 존재하더라도 **출처 검수 승인 전 교체 금지**. 특히 강남여고 2019 기말 Q12, 강남여고 2024 기말 Q07 HOLD를 유지한다.
 5. 새 SVG/원본 JS 연결은 별도 승인·테스트 게이트에서 처리한다. 이번 묶음은 작도 계획만 작성했으며 정답·해설·원본 이미지·배포 파일을 바꾸지 않았다.
 
-## 다음 묶음 후보와 보류 원칙
+## 2차 기록 당시 다음 묶음 후보와 보류 원칙
 
 - BATCH2_MANIFEST.json auditBacklog의 AWAIT_PLAN_AUTHORING: 원본 조건이 확정되면 다음 묶음 작성.
 - HOLD_SOURCE_CONFIRMATION: 원본 스캔 재확인 또는 출제 문장 교정 승인 이후 착수. 수치·색칠 영역을 추측하지 않는다.

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "SOURCE_HOLD_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_SOURCE_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1final/24_팔마고_1학기_기말_고2_수학I.js",
+  "ordinal": 9,
+  "slot": "problem",
+  "sourceQuote": "함수 $y=a\\sin(bx-c)$의 그래프가 다음과 같다",
+  "sourceAsset": "archive/assets/images/24_팔마고_1학기_기말_고2_수학I/q9.png",
+  "sourceBlobSha": "14fbd419b85ace1cb4308068aa6a0091e496d1bb",
+  "originalAuditStatus": "VISUAL_HOLD_READABILITY",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "417×264 PNG의 x축 핵심 눈금, 최댓값/최솟값, 함수 라벨이 원본 이미지에서 독립 판독 불가.",
+  "evidence": [
+    "문제 명시: y=a sin(bx−c), a>0, b>0, 0<c<π.",
+    "곡선의 파형은 읽히지만 주기·위상·진폭을 판정할 숫자 눈금의 획이 사라짐.",
+    "기존 해설은 a=3,b=2,c=π/3이나 이는 결손된 문제 그림의 출처 확인을 대체하지 못함."
+  ],
+  "layout": {
+    "type": "trig-graph",
+    "graph": "y=a sin(bx−c)",
+    "signConstraints": [
+      "a>0",
+      "b>0",
+      "0<c<π"
+    ],
+    "mustPreserve": [
+      "x,y축",
+      "원본 숫자 눈금",
+      "최대·최소 높이",
+      "영점과 봉우리/골짜기의 x 위치",
+      "원본 위상 이동 방향",
+      "그래프 라벨"
+    ],
+    "unknowns": [
+      "y축 수치 원본",
+      "x축 절편·주기 기준 눈금",
+      "위상 이동의 인쇄 숫자",
+      "원본 그래프의 범위"
+    ],
+    "proposedViewport": "AFTER_SOURCE_CONFIRMATION"
+  },
+  "engineNeeds": [
+    "사인함수 파라미터와 축 눈금 식(π분수) 표시",
+    "라벨 겹침 방지 및 해상도 상향"
+  ],
+  "sourceConfirmation": [
+    "출제지/고해상도 원본 스캔에서 모든 축 숫자를 대조해 증거를 기록한다.",
+    "원본 그래프 수치를 기반으로 a,b,c를 다시 계산하고 해설과 독립 비교한다.",
+    "q9-solution-v2.svg는 별도의 u,v 예시이므로 원본 복원 근거로 사용하지 않는다."
+  ],
+  "doNotInfer": [
+    "a=3",
+    "b=2",
+    "c=π/3",
+    "답 2π를 기준으로 임의 재작도"
+  ],
+  "publicationDraft": {
+    "alt": "y=a sin(bx−c)의 축 눈금과 최대·최소를 표시한 그래프(원본 숫자 확인 후 확정)"
+  }
+}

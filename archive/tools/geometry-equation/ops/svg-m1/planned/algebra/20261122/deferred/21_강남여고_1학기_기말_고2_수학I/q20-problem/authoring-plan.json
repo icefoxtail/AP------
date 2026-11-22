@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "SOURCE_HOLD_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_SOURCE_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js",
+  "ordinal": 20,
+  "slot": "problem",
+  "sourceQuote": "이것을 코흐의 눈송이라 한다",
+  "sourceAsset": "archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q20_2.png",
+  "sourceBlobSha": "fd1c05533ebeddb5ba742b3aed9e9aa8e9e57752",
+  "originalAuditStatus": "VISUAL_HOLD_READABILITY",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "코흐 눈송이 단계 패널에서 두 번째 이후 윤곽이 거의 백색으로 소실되고 우측 경계에 인접 지면의 잔상/글자가 잘려 들어옴.",
+  "evidence": [
+    "같은 문항의 q20_1.png는 선분 3등분과 가운데 세그먼트의 바깥 정삼각형 치환 원리를 별도로 보여 줌.",
+    "q20_2.png는 정삼각형에서 반복적으로 얻는 눈송이의 단계별 모양을 나타내는 자료.",
+    "문항은 최초 정삼각형의 한 변이 1일 때 4번째 만들어진 도형의 둘레를 질문."
+  ],
+  "layout": {
+    "type": "koch-snowflake-progression-panels",
+    "figure0": "정삼각형, 한 변 1",
+    "transformation": "각 직선변을 3등분, 중앙 1/3 직선 삭제, 정삼각형의 밖으로 두 변 돌출하여 길이 L/3의 4세그먼트로 치환",
+    "stages": "원본에 표현된 단계 개수·순서·경계는 확인 전 고정하지 않음",
+    "toConfirm": [
+      "어느 그림이 제1번째인가",
+      "단계별 외곽선 반복 횟수",
+      "돌출 방향·시작 꼭짓점 방향",
+      "단계 라벨 유무와 위치",
+      "오른쪽에서 잘린 도형/문구가 단계도에 속하는지"
+    ],
+    "style": [
+      "얇은 모노톤 선분을 고해상도에서도 식별 가능하게",
+      "세부 돌출 각도·간격/패널 분리",
+      "이웃 지면 잔획 제외"
+    ]
+  },
+  "engineNeeds": [
+    "L-system/재귀 선분 치환 또는 일반 polyline vertex 반복 처리",
+    "여러 스테이지 동일 크기 합성패널",
+    "고차 재귀의 벡터 경계/캔버스 여백 자동 계산"
+  ],
+  "sourceConfirmation": [
+    "고해상도 원본 출제 지면에서 각 프레임 수를 확정한다.",
+    "원본의 제1~제4단계 대응 관계를 확인하고 지문 순서와 검증한다.",
+    "q20_1 원리도는 보조 증거로 사용하되 q20_2 프레임 수/선 수의 단독 증거로 치환하지 않는다."
+  ],
+  "doNotInfer": [
+    "기존 해설의 64/9로 단계 라벨을 역설정",
+    "백색으로 사라진 원본 획을 임의 단계로 채우기"
+  ],
+  "publicationDraft": {
+    "alt": "정삼각형에서 코흐 눈송이의 외곽이 단계별로 만들어지는 과정(원본 단계 순서 확인 후 확정)"
+  }
+}

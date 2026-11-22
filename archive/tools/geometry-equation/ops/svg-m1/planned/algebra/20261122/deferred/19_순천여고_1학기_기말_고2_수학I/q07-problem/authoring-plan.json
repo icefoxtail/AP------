@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "ENGINE_GAP_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_ENGINE_CONTRACT",
+  "sourcePath": "archive/exams/original/high/h2/1final/19_순천여고_1학기_기말_고2_수학I.js",
+  "ordinal": 7,
+  "slot": "problem",
+  "sourceQuote": "삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 대변 $\\mathrm{BC}$ 또는 그 연장선에 내린 수선의 발을 $\\mathrm{H}$",
+  "sourceAsset": "archive/assets/images/19_순천여고_1학기_기말_고2_수학I/q07.png",
+  "sourceBlobSha": "9f7e647fd42aeb1b0f02dc1f36dde5cfd424cbfc",
+  "originalAuditStatus": "VISUAL_UPGRADE",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "990×830 도판 좌측의 세 행 'C<90°/C=90°/C>90°' 분류 열이 세로 스캔 노이즈로 가려지며 수식/도형 표의 글자와 격선은 일부 흐림. 정확한 공란은 원본 기준 보존 가능.",
+  "evidence": [
+    "첫 행 C<90°: 수선의 발 H는 BC 내부이고 a=BH+HC=c cos B + b cos C.",
+    "둘째 행 C=90°: 수선의 발은 C=H; cos C=[(가)] 이므로 a=c cos B + b cos C.",
+    "셋째 행 C>90°: H가 C 바깥 연장선, cos(180°−C)=[(나)] 이므로 a=[(다)]=c cos B + b cos C.",
+    "출제 의도상 (가),(나),(다)는 학생이 채우는 빈칸이며, 기존 해설의 값을 그림에 미리 채우면 오답 유발."
+  ],
+  "layout": {
+    "type": "three-row-trigonometric-proof-table",
+    "columns": [
+      "case label",
+      "triangle/altitude diagram",
+      "equation with answer blanks"
+    ],
+    "rows": [
+      {
+        "case": "C<90°",
+        "diagram": {
+          "points": [
+            "A",
+            "B",
+            "H",
+            "C"
+          ],
+          "collinear": [
+            "B",
+            "H",
+            "C"
+          ],
+          "altitude": "AH⊥BC",
+          "rightAngleAt": "H",
+          "sideLabels": {
+            "BC": "a",
+            "AB": "c",
+            "AC": "b"
+          }
+        },
+        "formula": [
+          "a = overline(BH) + overline(HC)",
+          "= c cos B + b cos C"
+        ]
+      },
+      {
+        "case": "C=90°",
+        "diagram": {
+          "points": [
+            "A",
+            "B",
+            "C=H"
+          ],
+          "collinear": [
+            "B",
+            "C=H"
+          ],
+          "altitude": "AC⊥BC",
+          "rightAngleAt": "C=H",
+          "sideLabels": {
+            "BC": "a",
+            "AB": "c",
+            "AC": "b"
+          }
+        },
+        "formula": [
+          "cos C = [(가)] 이므로",
+          "a = c cos B + b cos C"
+        ]
+      },
+      {
+        "case": "C>90°",
+        "diagram": {
+          "points": [
+            "A",
+            "B",
+            "C",
+            "H"
+          ],
+          "collinear": [
+            "B",
+            "C",
+            "H"
+          ],
+          "altitude": "AH⊥(BC extended)",
+          "rightAngleAt": "H",
+          "sideLabels": {
+            "BC": "a",
+            "AB": "c",
+            "AC": "b"
+          }
+        },
+        "formula": [
+          "cos(180°−C) = [(나)] 이므로",
+          "a = [(다)]",
+          "= c cos B + b cos C"
+        ]
+      }
+    ],
+    "blanks": [
+      "(가)",
+      "(나)",
+      "(다)"
+    ],
+    "blankMode": "preserve blank boxes; no answers",
+    "tableBorder": "three horizontal sections, left case labels aligned by baseline, thin column separators",
+    "diagramNotation": "변 길이 a,b,c는 원본의 점선 점사슬 호/설명표시를 유지하거나 비교 가능한 엔진 라벨 방식으로 구현",
+    "noiseCleanup": "왼쪽 세로 회색 스캔 얼룩만 제거; 문제 수식/빈칸 위치를 삭제하거나 이동하지 않음"
+  },
+  "engineNeeds": [
+    "행별 삼각형 수선도형 + 수식 텍스트를 단일 표로 합성",
+    "수식 상단 overline(BH/HC), cos 및 빈칸 박스의 수식 조판",
+    "행 높이/도형 비율/반응형 폰트 재조정"
+  ],
+  "verification": [
+    "세 행에서 B,C,H의 실제 순서가 다른지 확인한다.",
+    "(가),(나),(다) 빈칸이 문제용 출력에 그대로 남는다.",
+    "C=H와 직각표시가 충돌하지 않는다.",
+    "표 좌측의 고대비 문자·수식·격선에는 누락/클리핑이 없다."
+  ],
+  "publicationDraft": {
+    "alt": "C가 예각·직각·둔각일 때 A에서 내린 수선의 발 H 위치와 코사인 식의 세 경우를 비교하는 빈칸 표"
+  }
+}

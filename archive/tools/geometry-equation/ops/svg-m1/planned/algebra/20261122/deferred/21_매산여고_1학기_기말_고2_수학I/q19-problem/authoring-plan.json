@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "SOURCE_HOLD_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_SOURCE_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1final/21_매산여고_1학기_기말_고2_수학I.js",
+  "ordinal": 19,
+  "slot": "problem",
+  "sourceQuote": "한 변의 길이가 $2\\sqrt{7}$인 정육각형 $\\mathrm{ABCDEF}$",
+  "sourceAsset": "archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q19.png",
+  "sourceBlobSha": "3cc14b923098d3456ca19e574657b4673d9892cc",
+  "originalAuditStatus": "VISUAL_HOLD_READABILITY",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "정육각형 아래 C–D와 오른쪽 D–E 선분 및 M–D 일부 획이 거의 지워져 ∠DME의 실제 시각 관계를 읽기 어려움.",
+  "evidence": [
+    "문항은 정육각형 ABCDEF, 한 변 2√7, M은 BC 중점, θ=∠DME를 명시.",
+    "B–M–C 중점 기호와 θ는 보이지만 문제 핵심 MD, ME 및 변 부분이 불완전.",
+    "현재 해설의 임시 좌표계/코사인 수치가 원본 선분 배치의 독립 증거는 아님."
+  ],
+  "layout": {
+    "type": "regular-hexagon-with-inner-angle",
+    "vertices": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "edges": [
+      "AB",
+      "BC",
+      "CD",
+      "DE",
+      "EF",
+      "FA",
+      "MD",
+      "ME"
+    ],
+    "pointM": {
+      "on": "BC",
+      "ratio": "BM:MC=1:1"
+    },
+    "angle": {
+      "vertex": "M",
+      "rays": [
+        "MD",
+        "ME"
+      ],
+      "label": "θ"
+    },
+    "sideLength": "2√7 (JS text)",
+    "geometricDraft": "수학적인 정육각형과 변 중점 M을 정확히 잡되 원본 육각형 방향·정점 배열은 고해상도 출제본에서 확정",
+    "graphicalGaps": [
+      "CD",
+      "DE",
+      "MD"
+    ],
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "M",
+      "θ",
+      "2√7"
+    ],
+    "style": [
+      "끊김 없는 여섯 변",
+      "M에서 D/E로 향하는 두 선을 서로 구분",
+      "중점 M과 θ를 외접 라벨과 비중첩"
+    ]
+  },
+  "engineNeeds": [
+    "정육각형 primitive+내분점",
+    "선분/각도 표시 overlay",
+    "도형 배치/라벨 충돌 검사"
+  ],
+  "sourceConfirmation": [
+    "원본 스캔에서 ABCDEF의 시계/반시계 방향·각 꼭짓점 위치를 확인한다.",
+    "지워진 CD, DE, MD, ME의 위치/연결 상태와 θ 표기 영역을 확인한다.",
+    "한 변 길이 텍스트의 표시 위치를 검증해 숫자가 다른 선에 붙지 않도록 한다."
+  ],
+  "doNotInfer": [
+    "해설의 MD/ME 길이에서 원본 그림에 없는 보조선 추가",
+    "소실된 획을 승인 없이 임의로 긋기"
+  ],
+  "publicationDraft": {
+    "alt": "한 변 2√7인 정육각형 ABCDEF에서 BC 중점 M과 ∠DME=θ를 표시한 도형(소실 선분 원본 확인 후 확정)"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "algebra-svg-authoring-handoff-v1",
+  "date": "2026-11-22",
+  "scope": "PLANS_ONLY",
+  "engineExecutable": false,
+  "renderStatus": "NOT_RUN",
+  "publicationStatus": "NOT_APPROVED",
+  "assetReplacement": "PROHIBITED_UNTIL_GATES_PASS",
+  "requiredReleaseGates": [
+    "source_evidence_confirmed",
+    "engine_contract_selected_and_implemented",
+    "full_lint_with_pinned_font",
+    "render_pixel_review_against_original",
+    "student_ui",
+    "golden_negative",
+    "publication_approval"
+  ],
+  "planKind": "ENGINE_GAP_PLAN",
+  "authoringStatus": "COMPLETE_AWAITING_ENGINE_CONTRACT_AND_SOURCE_LAYOUT_CONFIRMATION",
+  "sourcePath": "archive/exams/original/high/h2/1final/24_강남여고_1학기_기말_고2_수학I.js",
+  "ordinal": 19,
+  "slot": "problem",
+  "sourceQuote": "그림 $R_1$에서 색칠되지 않은 3개의 정사각형을 각각 4등분한 후",
+  "sourceAsset": "archive/assets/images/24_강남여고_1학기_기말_고2_수학I/q19.png",
+  "sourceBlobSha": "c58812da4b5ee52a5a7907fc76ad8e50e3996313",
+  "originalAuditStatus": "VISUAL_UPGRADE",
+  "originalAuditReport": "1FINAL_IMAGE_VISUAL_AUDIT_20261122.md",
+  "diagnosis": "651×236 원본에서 R₃ 오른쪽 격자 끝이 잘리고 R₁/R₂/R₃ 하첨자가 희미해, 세 패널 정확한 색칠 위치가 미확정.",
+  "evidence": [
+    "한 변 길이 1 정사각형을 2×2로 쪼개 1칸 색칠하여 R₁ 구성.",
+    "색칠하지 않은 각 칸을 다시 2×2로 쪼개 1칸씩 새로 색칠해 R₂, R₃ 구성.",
+    "규칙상 R₁/R₂/R₃의 새 색칠 칸 수는 각각 1/3/9, 누적 색칠 영역 수는 1/4/13(서로 다른 축척의 칸)이나 어느 사분면인지 원본 확정 필요."
+  ],
+  "layout": {
+    "type": "three-panel-recursive-square-fractal",
+    "panelOrder": [
+      "R₁",
+      "R₂",
+      "R₃"
+    ],
+    "sharedSquareBoundary": "동일 한 변/동일 시각 너비",
+    "stage1": {
+      "grid": "2×2",
+      "markedCells": 1,
+      "unmarkedCells": 3,
+      "visibleShadeLocation": "오른쪽 위(현 PNG 육안 확인, 고해상도 원본 대조 예정)"
+    },
+    "stage2": {
+      "onEachPriorUnmarkedCell": "2×2 subdivision, select exactly one marked subcell",
+      "newlyMarkedCells": 3,
+      "stillUnmarkedCells": 9
+    },
+    "stage3": {
+      "onEachPriorUnmarkedCell": "2×2 subdivision, select exactly one marked subcell",
+      "newlyMarkedCells": 9,
+      "stillUnmarkedCells": 27
+    },
+    "maskSelection": "R₁ 오른쪽 위는 육안 판독 가능; R₂/R₃ 각 부모 칸의 마스크 위치는 SOURCE_UNCONFIRMED_DO_NOT_ASSIGN",
+    "visualStyle": [
+      "색칠 단계별 판독 가능한 농도",
+      "비색칠 3/9/27칸 구분 가능한 가는 격자",
+      "R 하첨자/패널 사이 일정 간격",
+      "R₃ 전체 정사각형 여백 유지"
+    ],
+    "mathInvariant": "S_n = 1-(3/4)^n; diagram shows first three recursive stages only"
+  },
+  "engineNeeds": [
+    "중첩 사분면 subdivision engine primitive/recursive grid-mask",
+    "세 도형 동일 크기 합성패널",
+    "셀별 계층 색칠·레이블 및 패널 bbox 여백"
+  ],
+  "sourceConfirmation": [
+    "고해상도 출제 원본에서 R₁의 색칠된 사분면을 확인한다.",
+    "R₂와 R₃에서 부모 비색칠 칸별 신규 색칠 선택 위치를 확인한다.",
+    "잘린 R₃ 오른쪽 전체 도형을 확보하고 세 마스크를 원본 위치별로 기록한다."
+  ],
+  "doNotInfer": [
+    "특정 사분면 색칠 패턴을 해설의 넓이 수열로 임의 결정",
+    "R₃ 오른쪽 잘린 윤곽을 대칭이라고 추정"
+  ],
+  "verification": [
+    "각 패널 실제 검은 칸 위치는 원본 대조 후 확정",
+    "R₃ 오른쪽 끝과 R₃ 라벨 clipping 0건",
+    "상태별 색칠 합계와 미색칠 넓이 비율은 규칙과 일치"
+  ],
+  "publicationDraft": {
+    "alt": "반복 분할하여 차례로 색칠하는 정사각형 R1, R2, R3 세 단계(색칠 위치와 오른쪽 원본 확인 전 보류)"
+  }
+}
