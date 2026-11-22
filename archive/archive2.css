@@ -138,9 +138,9 @@ main {
 h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 34px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   margin: 0 0 8px;
 }
 h2 {
@@ -614,17 +614,24 @@ main {
   padding: 20px 24px 48px;
 }
 .intro {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
   align-items: center;
 }
 .intro h1 {
-  font-size: 34px;
-  letter-spacing: 0;
+  font-size: 32px;
+  letter-spacing: -0.01em;
   font-weight: 400;
   margin-bottom: 4px;
 }
 .intro p {
   font-size: 14px;
+  margin-top: 6px;
+}
+.intro .muted {
+  margin-top: 6px;
+  color: var(--ink-2);
 }
 .intro .actions button {
   font-size: 14px;
@@ -916,7 +923,7 @@ button.small {
     gap: 12px;
   }
   .intro h1 {
-    font-size: 20px;
+    font-size: 24px;
   }
   .exam {
     grid-template-columns: 155px minmax(0, 1fr) 72px;
@@ -2559,7 +2566,7 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 
 /* Page frame */
 main {
-  padding: 36px 48px 64px;
+  padding: 32px 48px 64px;
 }
 .status {
   min-height: 0;
@@ -2975,7 +2982,11 @@ body[data-archive-view="compose"] .compose-step-number {
 @media (max-width: 700px) {
   body .intro h1,
   h1 {
-    font-size: 26px;
+    font-size: 24px;
+  }
+  .intro {
+    padding-bottom: 12px;
+    margin-bottom: 16px;
   }
   .archive-home {
     gap: 28px;

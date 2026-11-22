@@ -28,12 +28,17 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 14px;
-  border: 1.5px solid #fff;
-  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-field);
   color: #fff;
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.01em;
   white-space: nowrap;
+}
+.archive-login:not(.is-in):hover {
+  background: rgba(0, 0, 0, 0.16);
+  border-color: #fff;
 }
 .archive-login.is-in {
   border-color: transparent;
@@ -61,27 +66,30 @@
     overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    padding: 28px 16px 20px;
+    gap: 22px;
+    padding: 30px 16px 22px;
     background: var(--brand);
     color: #fff;
   }
   .archive-navigation-brand {
-    /* fixed box: the two pages must put the menu at the same pixel (page line-heights differ) */
+    /* fixed box: the two pages must put the menu at the same pixel (page line-heights differ).
+       The thin rule under the name is part of the box (border-box), so the menu start does not move. */
+    box-sizing: border-box;
     display: block;
-    height: 32px;
-    padding: 0 12px;
+    height: 56px;
+    padding: 0 12px 24px;
     color: #fff;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 32px;
-    letter-spacing: 0;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.32);
   }
   .archive-navigation-tasks {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
   .archive-navigation-tasks > :is(a, button) {
     width: 100%;
@@ -94,23 +102,27 @@
     justify-content: flex-start;
     line-height: 1.2;
     border: 0;
-    border-radius: var(--radius-pill);
+    border-radius: 8px;
     background: transparent;
     color: #fff;
     white-space: nowrap;
     font-size: 15px;
     font-weight: 500;
+    letter-spacing: 0.01em;
     cursor: pointer;
+    transition: background-color 0.12s ease;
   }
+  /* Same-color calm menu: hover and current are darker tones of the brand red, never a white pill,
+     so the white text keeps (and gains) contrast. */
   .archive-navigation-tasks > :is(a, button):hover {
-    background: var(--brand-hover);
+    background: rgba(0, 0, 0, 0.14);
     color: #fff;
   }
   .archive-navigation-tasks > [aria-current="page"],
   .archive-navigation-tasks > .active,
   .archive-navigation-tasks > [aria-current="page"]:hover {
-    background: #fff;
-    color: var(--brand-ink);
+    background: rgba(0, 0, 0, 0.24);
+    color: #fff;
     font-weight: 700;
   }
   .archive-sidebar-foot {
@@ -118,7 +130,8 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 0 12px;
+    padding: 20px 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
   }
   .archive-sidebar-foot .archive-login {
     width: 100%;
@@ -160,6 +173,7 @@
     justify-content: space-between;
     gap: 8px;
     background: var(--brand);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
     color: #fff;
   }
   .archive-mobile-brand,
@@ -168,8 +182,9 @@
     color: #fff;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.2;
+    letter-spacing: 0.03em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -195,7 +210,7 @@
     padding-bottom: var(--archive2-mobile-nav-safe);
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    border-top: 2px solid var(--ink);
+    border-top: 1px solid var(--line);
     background: #fff;
   }
   .archive-mobile-tabs > :is(a, button) {
@@ -209,17 +224,20 @@
     border: 0;
     border-radius: 0;
     background: #fff;
-    color: var(--ink);
+    color: var(--ink-2);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
     text-align: center;
     cursor: pointer;
   }
+  /* Current tab: soft brand tint, brand-ink text and a 3px brand line on top (not a black block). */
   .archive-mobile-tabs > [aria-current="page"],
   .archive-mobile-tabs > .active {
-    background: var(--ink);
-    color: #fff;
+    background: var(--brand-soft);
+    color: var(--brand-ink);
+    font-weight: 700;
+    box-shadow: inset 0 3px 0 var(--brand);
   }
   .archive-mobile-tabs :focus-visible {
     outline: 3px solid var(--ink);
@@ -227,8 +245,8 @@
     box-shadow: inset 0 0 0 6px #fff;
   }
   .archive-mobile-tabs > [aria-current="page"]:focus-visible {
-    outline-color: #fff;
-    box-shadow: none;
+    outline-color: var(--ink);
+    box-shadow: inset 0 3px 0 var(--brand);
   }
   .archive-nav-label {
     min-width: 0;
@@ -291,7 +309,7 @@
 }
 .archive2-unit-surface .unit-appbar {
   grid-template-columns: 1fr auto;
-  padding: 36px 48px 20px;
+  padding: 32px 48px 20px;
   border-bottom: 0;
 }
 .archive2-unit-surface .unit-brand {
@@ -303,9 +321,9 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 34px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 .archive2-unit-surface .unit-kicker {
   order: 3;
