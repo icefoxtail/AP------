@@ -1,13 +1,13 @@
-# 2023 매산고 고1 1학기 기말 — 심층 감사 (중간 저장)
+# 2023 매산고 고1 1학기 기말 — 심층 감사 MD 보완 완료
 
 - lane: lane30; courseKey: h1; 범위: original/high/h1/1final ONLY
 - sourcePath: archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js
 - source blob SHA: 71d65714273a0db1461649b65a1be6b0864caa13
 - 교육과정: 2015 개정 수학(상), 평면좌표·직선·원·부등식·복소수 등
 - 총 문항: 20; 이번 실제 상세 판독 q1~q20 (20/20)
-- 판정: KEEP 18 / UPGRADE 1(q9) / HOLD 1(q18 그림) / UNREAD 0
-- nextQid: q18-visual; unfinishedUpgrade: 없음; q18 반원 원본 그림 실물 검증 필요
-- EXAM_AUDIT_COMPLETE=NO (q18 VISUAL_HOLD); EXAM_DRAFT_COMPLETE=YES (현재 판정된 q9 개선 풀이 작성·검산)
+- **최종 MD 판정: KEEP 18 / UPGRADE 2(q9,q18) / HOLD 0 / UNREAD 0** (q18 문제 image 없음, 해설 SVG 래스터 시각 검증 완료; 원본 PDF·학생 렌더 별도 NOT_RUN).
+- **nextQid: NONE (MD 감사 범위)**; q18 중심 유일성·접점·넓이 재계산 및 해설 SVG 실제 렌더 검증 완료. 원본 PDF 원문 시각 대조 및 출고 기술 QA는 미완료.
+- **EXAM_AUDIT_COMPLETE=YES / EXAM_DRAFT_COMPLETE=YES (MD 해설 심층 감사 범위)**; q9·q18 개선 해설 완성. Golden/Negative·전 SVG·학생 화면·출고 PASS는 NOT_RUN.
 - Golden/Negative calibration=NOT_RUN; 학생 화면 렌더=NOT_RUN; 전체 SVG 시각 검증=NOT_RUN; 출고 PASS=NO
 - 시작 문서: HARNESS_CURRENT, GLOBAL_QUEUE_CURRENT, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT, docs-manifest 및 core 문서 경로·blob 확인. 전체 본문 독해 및 Golden/Negative 직접 판독은 미완료(EVIDENCE_DEBT). 해당 게이트 충족 전 출고 판정 금지.
 
@@ -135,10 +135,38 @@ $f(12)=w^{12}+z^{12}=1+(-1)=0$.
 - 기존 solution 결정식: `-1/3≤x≤3; (6-√26)/5≤x≤(6+√26)/5; p+q=12/5`.
 - 판정 근거 및 독립 검산: 절댓값 구간을 나눈 후 이차식의 두 근이 첫 범위 안에 있음을 대조한다. 원문 수치와 결과를 재계산해 일치함을 확인함.
 
-### q18 — HOLD
+### q18 — UPGRADE
 - 원문 조건: A(0,√6),B(-√2,0),C(√2,0); BC 위 지름의 내접 반원과 접점 P,Q 및 x축 투영 직사각형 PQRS 넓이; 원본 answer: 3√3/4.
 - 기존 solution 결정식: `AC: √3x+y-√6=0; r=√6/2; Q=(3√2/4,√6/4); 넓이=3√3/4`.
 - 판정 근거 및 독립 검산: 계산은 원점 중심의 대칭 반원을 가정하면 맞지만 실제 문제 도형/반원 위치를 원본 PNG로 시각 판독하지 못했다. 대칭성만으로 중심이 원점이라는 서술도 유일성 근거를 확인해야 한다. 원문 수치와 결과를 재계산해 일치함을 확인했으나 시각 조건은 보류.
+
+
+**2026-11-22 학생용 개선 해설 (q18):**
+
+1. 삼각형은 $y$축 대칭이지만, **반원의 중심이 원점이라는 것을 대칭성만으로 단정하지 않는다.** 반원의 지름이 $BC$ 위에 있으므로 중심을 $T(t,0)$이라 하자. 두 접선 $AB$, $AC$까지의 거리가 모두 반지름이므로
+\[
+\frac{|\sqrt3 t+\sqrt6|}{2}
+=\frac{|\sqrt3 t-\sqrt6|}{2}.
+\]
+양변 제곱 후 정리하면 $4\sqrt{18}\,t=0$이고, 따라서 중심은 **유일하게** $T=O=(0,0)$이다.
+
+2. 직선 $AC$는 $\sqrt3x+y-\sqrt6=0$이다. 반지름은 원점에서 이 직선까지의 거리
+\[
+r=\frac{\sqrt6}{2}.
+\]
+이는 $BC$의 반길이 $\sqrt2$보다 작아 실제 반원이 $BC$ 안에 놓일 수 있다.
+
+3. 접점 $Q$는 원점에서 직선 $AC$에 내린 수선의 발이므로
+\[
+Q=\left(\frac{3\sqrt2}{4},\frac{\sqrt6}{4}\right).
+\]
+$P$는 대칭점 $\left(-\frac{3\sqrt2}{4},\frac{\sqrt6}{4}\right)$이다. 따라서 직사각형의 너비는 $PQ=\frac{3\sqrt2}{2}$, 높이는 $\frac{\sqrt6}{4}$이고
+\[
+[PQRS]=\frac{3\sqrt2}{2}\cdot\frac{\sqrt6}{4}
+=\boxed{\frac{3\sqrt3}{4}}.
+\]
+
+**실물 자산 증거:** `archive/assets/images/23_매산고_1학기_기말_고1_기출/q18-solution-v2.svg` (Git blob `57621feafc21ce817693463ebffd7cca44a1b2b3`)의 SVG를 실제 PNG로 래스터화하여 눈으로 확인했다. $B,C$ 사이 지름, 원호, 접점 $P,Q$, 수직 투영 $S,R$ 및 직사각형 배치가 위 수식과 맞는다. 반면 **원본 문제 image 필드는 없고 원문 PDF 시각 대조는 NOT_RUN**이므로 PDF 원천과 출고 화면까지 검증했다고 주장하지 않는다.
 
 ### q19 — KEEP
 - 원문 조건: f의 근 -2,4; f((x-3k)/2)≤0 해 구간; f(2x+3k)>0 해 경계 α,β; 2α+6β; 원본 answer: 22.
@@ -171,9 +199,9 @@ $f(12)=w^{12}+z^{12}=1+(-1)=0$.
 ## 2026-11-22 q18 학생용 개선 풀이 초안 — 시각 HOLD 유지
 
 - sourceKey: 23_매산고_1학기_기말_고1_기출; sourcePath: archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js; source blob SHA: 71d65714273a0db1461649b65a1be6b0864caa13.
-- q18 원본의 정확한 전환: \`삼각형 ABC는 y축에 대하여 대칭이다. 따라서 ... 반원도 y축에 대하여 대칭이며, 그 중심은 원점\`. 삼각형의 대칭성만으로 접하는 반원의 중심이 유일함을 곧바로 단정하면 학생이 그 단계를 재현할 수 없다.
+- q18 원본의 정확한 전환: `삼각형 ABC는 y축에 대하여 대칭이다. 따라서 ... 반원도 y축에 대하여 대칭이며, 그 중심은 원점`. 삼각형의 대칭성만으로 접하는 반원의 중심이 유일함을 곧바로 단정하면 학생이 그 단계를 재현할 수 없다.
 - 판정: **HOLD(q18-visual-and-upgrade)**. 아래 완성 풀이 초안은 수학적으로 독립 검산했으나, 실제 SVG의 래스터화·학생 시각 판독은 NOT_RUN. q18의 UPGRADE 최종 확정 및 EXAM_AUDIT_COMPLETE는 보류.
-- 원본 solutionImage: \`archive/assets/images/23_매산고_1학기_기말_고1_기출/q18-solution-v2.svg\`; blob SHA \`57621feafc21ce817693463ebffd7cca44a1b2b3\`. SVG XML의 O,P,Q,R,S와 반원 경로는 직접 fetch. 이미지 자체의 시각 PASS는 주장하지 않음.
+- 원본 solutionImage: `archive/assets/images/23_매산고_1학기_기말_고1_기출/q18-solution-v2.svg`; blob SHA `57621feafc21ce817693463ebffd7cca44a1b2b3`. SVG XML의 O,P,Q,R,S와 반원 경로는 직접 fetch. 이미지 자체의 시각 PASS는 주장하지 않음.
 
 ### q18 학생용 대체 solution 초안 (전체)
 
@@ -251,3 +279,9 @@ $$
 - 완성 풀이 초안 qid: q9(기존), q18(이번); q18 최종 판정은 VISUAL_HOLD로 남김.
 - nextQid: q18-visual-and-upgrade; unfinishedUpgrade: q18 시각 대조 후 최종 판정 확정.
 - EXAM_AUDIT_COMPLETE=NO; EXAM_DRAFT_COMPLETE=NO (q18 최종 판정 미확정); 학생 화면 렌더=NOT_RUN; Golden/Negative preflight=NOT_RUN; 시각 PASS=NOT_RUN; 출고 PASS=NO.
+
+## 2026-11-22 MD 감사 최종 보완 (이전 중간기록보다 최신)
+
+- 앞의 'q18 VISUAL_HOLD', '시각 판독 NOT_RUN', '다음 cursor q18' 문장은 이전 중간 저장 기록이다. 현행 MD 결론은 **q18 UPGRADE, KEEP18/UPGRADE2/HOLD0/UNREAD0, nextQid=NONE**이다.
+- 전 q1~q20 문항 텍스트 검토와 q9 개선안은 보존했다. q18에 중심의 유일성을 증명하는 학생용 해설을 추가했고 실제 solution SVG를 래스터화하여 시각 확인했다.
+- 원본 문제 image 및 해당 q18 원본 PNG는 JS/자산 폴더에 존재하지 않는다. 원본 PDF 화면 대조·Golden/Negative·전 SVG·학생 exam/sol/ans 렌더·출고 PASS는 **NOT_RUN**이다. **MD 초안 완료와 출고 PASS를 혼동하지 않는다.**
