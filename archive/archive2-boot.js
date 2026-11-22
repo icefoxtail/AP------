@@ -128,7 +128,10 @@
   const PACK_RE = /data\/meta-foundation\/runtime\/[a-z0-9-]+-v[0-9]+\.json$/;
   // canonical.reviewedRegistrationProofPaths와 같은 모양만 받는다(다른 모양은 미리 받지 않고 canonical이 거부하게 둔다).
   const REVIEWED_REF_RE = /"reviewedExam_[^"]*"\s*:\s*"archive\/(data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[A-Za-z0-9_-]+\.json)"/g;
-  const EARLY_POOL = 6;
+  // 미리 받는 reviewed-exam-meta는 한 파일이 몇 KB뿐인 요청 수백 개다. HTTP/2에서는 한 연결로 여러 요청이 동시에 오가므로
+  // 동시 요청 수를 6에 묶어 두면 요청 왕복(RTT)이 줄줄이 쌓여 진입이 느려진다(2026-11-23 실측: RTT 40ms, 100Mbps에서 13.3초 -> 7.0초).
+  // HTTP/1.1이면 브라우저가 알아서 호스트당 6개로 줄 세우므로 더 큰 값이 해롭지 않다.
+  const EARLY_POOL = 64;
 
   function createFetcher(rawFetch) {
     const early = new Map(); // 절대 주소 -> 미리 받는 중인 결과
