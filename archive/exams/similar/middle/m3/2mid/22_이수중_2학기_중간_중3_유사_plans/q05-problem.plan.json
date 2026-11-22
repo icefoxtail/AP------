@@ -1,0 +1,127 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4,
+        "y": 0
+      }
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 4,
+        "deg": 40
+      }
+    },
+    {
+      "id": "OD_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "B",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "A",
+        "OD_line"
+      ]
+    },
+    {
+      "id": "OA",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "O",
+        "radius": 4,
+        "startDeg": 0,
+        "endDeg": 90
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "O"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "O",
+        "ray1": "D",
+        "ray2": "A",
+        "label": "40°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "0.6428"
+      },
+      {
+        "from": "O",
+        "to": "B",
+        "label": "0.7660"
+      }
+    ]
+  },
+  "caption": "반지름이 1인 사분원에서 중심각 40도의 좌표 (0.7660, 0.6428)"
+}

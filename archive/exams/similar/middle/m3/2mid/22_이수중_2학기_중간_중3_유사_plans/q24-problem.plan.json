@@ -1,0 +1,126 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 4
+      }
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3,
+        "y": 0
+      }
+    },
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 2,
+        "y": 2
+      }
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 2
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "D",
+        "ray2": "E"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "C",
+        "to": "D",
+        "label": "16 cm"
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "label": "20 cm"
+      }
+    ]
+  },
+  "caption": "직사각형 ABCD의 세 변과 접하는 원 O 및 접선 DE"
+}

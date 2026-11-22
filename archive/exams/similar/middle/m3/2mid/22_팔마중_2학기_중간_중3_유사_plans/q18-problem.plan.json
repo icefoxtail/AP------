@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "incircle",
+      "center": "O",
+      "touchPoints": {
+        "AB": "E",
+        "BC": "F",
+        "CA": "G"
+      }
+    },
+    {
+      "type": "tangent",
+      "from": "P",
+      "to": "Q",
+      "touch": "T",
+      "onSides": [
+        "AB",
+        "BC"
+      ]
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "8 cm"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "9 cm"
+    },
+    {
+      "type": "label",
+      "target": "CA",
+      "text": "11 cm"
+    }
+  ]
+}

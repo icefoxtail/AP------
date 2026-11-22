@@ -1,0 +1,45 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "A"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "D",
+        "B",
+        "C"
+      ],
+      "rightAngle": "D"
+    },
+    {
+      "type": "intersection",
+      "segments": [
+        "AC",
+        "BD"
+      ],
+      "id": "E"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "12 cm"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "D",
+        "C"
+      ],
+      "text": "30°"
+    }
+  ]
+}

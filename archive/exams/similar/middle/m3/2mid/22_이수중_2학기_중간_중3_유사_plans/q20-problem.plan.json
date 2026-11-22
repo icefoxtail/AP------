@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 90
+      }
+    },
+    {
+      "id": "B",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 200
+      }
+    },
+    {
+      "id": "C",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 340
+      }
+    },
+    {
+      "id": "M",
+      "op": "MIDPOINT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "N",
+      "op": "MIDPOINT",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OM",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "M",
+        "ray1": "O",
+        "ray2": "A"
+      },
+      {
+        "vertex": "N",
+        "ray1": "O",
+        "ray2": "A"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "B",
+        "ray2": "C",
+        "label": "70°"
+      }
+    ]
+  },
+  "caption": "원 O에서 중심거리가 같은 두 현 AB, AC가 이루는 이등변삼각형 ABC (각 A=70도)"
+}

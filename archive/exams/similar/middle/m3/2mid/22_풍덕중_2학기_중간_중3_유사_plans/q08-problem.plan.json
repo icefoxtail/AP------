@@ -1,0 +1,42 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "BC",
+      "foot": "H"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "8"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "H"
+      ],
+      "text": "60°"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "H",
+        "C"
+      ],
+      "text": "45°"
+    }
+  ]
+}

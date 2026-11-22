@@ -1,0 +1,13 @@
+{
+  "target": "한 변이 a인 정사각형에서 폭 b를 빼 (a-b)^2 공식을 설명하는 도형",
+  "type": "svg",
+  "width": 260,
+  "height": 250,
+  "elements": [
+    "한 변 a인 전체 정사각형 (40,30) ~ (210,200)",
+    "색칠된 (a-b)x(a-b) 정사각형 (40,30) ~ (160,150)",
+    "오른쪽 및 아래쪽 폭 b 분할선, b x b 겹침 영역",
+    "변 길이 a-b, b 및 전체 변 a 치수 라벨"
+  ],
+  "svgCode": "<svg viewBox=\"0 0 260 250\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"40\" y=\"30\" width=\"170\" height=\"170\" fill=\"#fff\" stroke=\"#222\" stroke-width=\"1.6\"/>\n  <rect x=\"40\" y=\"30\" width=\"120\" height=\"120\" fill=\"#dbeafe\" stroke=\"#1a5fb4\" stroke-width=\"1.4\"/>\n  <rect x=\"160\" y=\"150\" width=\"50\" height=\"50\" fill=\"#fde68a\" stroke=\"#222\" stroke-width=\"1.2\"/>\n  <line x1=\"160\" y1=\"30\" x2=\"160\" y2=\"200\" stroke=\"#222\" stroke-width=\"1.3\" stroke-dasharray=\"4,3\"/>\n  <line x1=\"40\" y1=\"150\" x2=\"210\" y2=\"150\" stroke=\"#222\" stroke-width=\"1.3\" stroke-dasharray=\"4,3\"/>\n  <text x=\"100\" y=\"22\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">a - b</text>\n  <text x=\"185\" y=\"22\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">b</text>\n  <text x=\"22\" y=\"95\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">a - b</text>\n  <text x=\"26\" y=\"178\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">b</text>\n  <text x=\"125\" y=\"225\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">a</text>\n  <text x=\"228\" y=\"118\" text-anchor=\"middle\" font-size=\"13\" font-style=\"italic\">a</text>\n  <text x=\"100\" y=\"95\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#1a5fb4\">(a-b)²</text>\n</svg>"
+}

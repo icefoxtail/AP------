@@ -1,0 +1,94 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -3.464,
+        "y": -2
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3.464,
+        "y": -2
+      }
+    },
+    {
+      "id": "C",
+      "op": "MIDPOINT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 4
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "O",
+        "ray2": "A"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "O",
+        "to": "A",
+        "label": "10"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "label": "5"
+      }
+    ]
+  },
+  "caption": "반지름 10, 중심에서 현 AB까지의 거리 OC=5인 원 O"
+}

@@ -1,0 +1,89 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 5.196
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "B",
+        "ray2": "C",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "C",
+        "label": "6"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "x"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "label": "y"
+      }
+    ]
+  },
+  "caption": "각 C=90도, AC=6, 각 A=60도, BC=x, AB=y인 직각삼각형 ABC"
+}

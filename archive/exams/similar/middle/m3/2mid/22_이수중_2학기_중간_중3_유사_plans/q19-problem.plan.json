@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3.5,
+        "deg": 140
+      }
+    },
+    {
+      "id": "B",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3.5,
+        "deg": 240
+      }
+    },
+    {
+      "id": "C",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3.5,
+        "deg": 300
+      }
+    },
+    {
+      "id": "D",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3.5,
+        "deg": 40
+      }
+    },
+    {
+      "id": "M",
+      "op": "MIDPOINT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "N",
+      "op": "MIDPOINT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3.5
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OA",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "M",
+        "ray1": "O",
+        "ray2": "A"
+      },
+      {
+        "vertex": "N",
+        "ray1": "O",
+        "ray2": "C"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "O",
+        "to": "A",
+        "label": "7 cm"
+      }
+    ]
+  },
+  "caption": "중심에서 같은 거리 3√2 cm에 있는 두 현 AB, CD와 반지름 7cm인 원 O"
+}

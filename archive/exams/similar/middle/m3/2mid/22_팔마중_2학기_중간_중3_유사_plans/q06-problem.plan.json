@@ -1,0 +1,36 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "O",
+      "radius": 1,
+      "arcPoints": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "point",
+      "id": "B",
+      "on": "arc"
+    },
+    {
+      "type": "segment",
+      "from": "B",
+      "to": "A",
+      "perpendicularTo": "OC"
+    },
+    {
+      "type": "segment",
+      "from": "D",
+      "to": "C",
+      "perpendicularTo": "OC"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "0.14"
+    }
+  ]
+}

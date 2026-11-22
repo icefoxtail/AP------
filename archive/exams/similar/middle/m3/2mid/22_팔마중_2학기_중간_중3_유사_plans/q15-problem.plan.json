@@ -1,0 +1,39 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "inscribedIn": "O"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AB",
+      "foot": "M"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "BC",
+      "foot": "N"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "M",
+        "N"
+      ],
+      "text": "124°"
+    }
+  ]
+}

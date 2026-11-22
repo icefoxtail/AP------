@@ -1,0 +1,41 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "square",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "point",
+      "id": "E",
+      "on": "AD"
+    },
+    {
+      "type": "point",
+      "id": "F",
+      "on": "CD"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "E",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "E",
+        "F"
+      ],
+      "text": "30°"
+    }
+  ]
+}

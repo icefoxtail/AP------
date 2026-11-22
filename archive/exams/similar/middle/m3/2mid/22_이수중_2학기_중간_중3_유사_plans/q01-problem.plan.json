@@ -1,0 +1,84 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 12
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "C"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B",
+        "label": "x"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "12"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "5"
+      }
+    ]
+  },
+  "caption": "각 B=90도, AB=12, BC=5, 각 C=x인 직각삼각형 ABC"
+}
