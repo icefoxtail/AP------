@@ -52,3 +52,11 @@ test('continuous join emits only one closed breakpoint marker',async()=>{
   assert.equal(graphPlan.piecewiseFeatures.markers.filter(marker=>marker.kind==='BREAKPOINT').length,1);
   assert.equal(spec.displayFacts.piecewiseFeatures.markers.find(marker=>marker.kind==='BREAKPOINT').state,'CLOSED');
 });
+
+test('a whole-number slope is written without brackets and a fraction keeps them (y=6x-1, y=-2x+3, y=(1/2)x+3)',async()=>{
+  const labels=async(left,right)=>{const {spec}=await makeSpec('RIGHT',left,right);const text=id=>spec.objects.find(object=>object.id===id).text;return [text('left-branch-equation'),text('right-branch-equation')];};
+  assert.deepEqual(await labels(['-2','3'],['6','-1']),['y=-2x + 3','y=6x-1']);
+  assert.deepEqual(await labels(['1','1'],['-1','0']),['y=x + 1','y=-x']);
+  assert.deepEqual(await labels(['0','3'],['10','-4']),['y=3','y=10x-4']);
+  assert.deepEqual(await labels(['1/2','3'],['-3/2','2']),['y=(1/2)x + 3','y=(-3/2)x + 2']);
+});

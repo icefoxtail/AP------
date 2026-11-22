@@ -34,7 +34,7 @@ def objects_of(**extra_a):
     return [seg(s['id'],POINTS,*s['refs']) for s in SEGMENTS]+[angle('aA',['R','V','T'],70,**extra_a),angle('aB',['T','V','S'],70)]
 
 def label_group(label_id,box):
-    glyphs=''.join('<path data-c="'+format(ord(ch),'X')+'" d="M0 0 L5 0"/>' for ch in '70')
+    glyphs=''.join('<path data-c="'+format(ord(ch),'X')+'" d="M0 0 L5 0"/>' for ch in '70')+'<path data-c="2218" d="M0 0 L5 0"/>'   # a degree label ends in the degree circle, as every drawn one does
     return ('<g id="'+label_id+'" data-owner="x" data-fragment-sha="sha256:'+'0'*64+'" transform="translate(%.6f %.6f)">'%(box['x'],box['y'])+
             '<svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f" viewBox="0 0 %.3f %.3f">%s</svg></g>'%(box['width'],box['height'],box['width'],box['height'],glyphs))
 

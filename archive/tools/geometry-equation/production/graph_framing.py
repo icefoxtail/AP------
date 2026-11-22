@@ -4240,6 +4240,53 @@ def _overlay_angle_marks(plan,raw,claim,exact_by_point,by_line):
         colored.setdefault(row[3],row)
     return out
 
+def _overlay_asymptote_values(plan):
+    """[('h',y)|('v',x)] exact asymptotes (not an axis) of the exponential, logarithmic and rational curves of a plan: an overlay line on one is an asymptote line."""
+    rows=[]
+    family=plan.get('family')
+    if family in ('exponential-affine','logarithmic-affine','rational'):rows.append({'family':family,**plan})
+    elif family in ('exp-log-pair','multi-curve'):
+        kinds={'EXPONENTIAL':'exponential-affine','LOGARITHMIC':'logarithmic-affine','RATIONAL':'rational'}
+        for curve in plan.get('curves') or []:
+            if not isinstance(curve,dict):continue
+            name=curve.get('family') if family=='exp-log-pair' else kinds.get(curve.get('kind'))
+            if name in ('exponential-affine','logarithmic-affine','rational'):rows.append({**curve,'family':name})
+    found=[]
+    for row in rows:
+        try:
+            values=[S.Rational(Fraction(str(value))) for value in (row.get('coefficients') or [])]
+            # a curve drawn as y=|f(x)| (abs:true) approaches |C|, not C
+            fold=(lambda value:abs(value)) if row.get('abs') is True else (lambda value:value)
+            if row['family']=='exponential-affine' and len(values)==3:found.append(('h',fold(values[2])))
+            elif row['family']=='logarithmic-affine' and len(values)==4 and values[1]!=0:found.append(('v',-values[2]/values[1]))
+            elif row['family']=='rational':
+                numerator=[S.Rational(Fraction(str(value))) for value in row.get('numerator') or []];denominator=[S.Rational(Fraction(str(value))) for value in row.get('denominator') or []]
+                if len(denominator)==2 and denominator[1]!=0:
+                    found.append(('v',-denominator[0]/denominator[1]))
+                    if len(numerator)==2:found.append(('h',fold(numerator[1]/denominator[1])))
+        except (ValueError,TypeError,ZeroDivisionError):continue
+    return [item for item in found if item[1]!=0]
+
+def _overlay_line_is_asymptote(plan,line):
+    wanted=_overlay_asymptote_values(plan)
+    if line['kind']=='VERTICAL':return any(axis=='v' and value==_overlay_exact(line['x'],line['id']) for axis,value in wanted)
+    return _overlay_exact(line['slope'],line['id'])==0 and any(axis=='h' and value==_overlay_exact(line['intercept'],line['id']) for axis,value in wanted)
+
+def _overlay_open_endpoints(plan):
+    """[(x,y)] exact: the ends of the source interval that the plan declares OPEN (the curve's limit there). A dot an author puts on one must be hollow too."""
+    domain=plan.get('sourceDomain')
+    if not isinstance(domain,dict) or domain.get('kind')!='INTERVAL':return []
+    bounds=domain.get('range');states=domain.get('states')
+    if not (isinstance(bounds,list) and len(bounds)==2 and isinstance(states,list) and len(states)==2):return []
+    closed={**plan,'sourceDomain':{**domain,'states':['CLOSED','CLOSED']}}
+    found=[]
+    for value,state in zip(bounds,states):
+        if state!='OPEN':continue
+        try:
+            x=_overlay_exact(value,'endpoint');found.append((x,_overlay_curve_exact(closed,x)))
+        except (ValueError,TypeError,KeyError):continue
+    return found
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -4278,6 +4325,9 @@ def _overlay_features(plan):
         if 'ownership' in entry:
             if entry['ownership'] not in ('STRICT','NEAREST'):_overlay_fail('OVERLAY_LINE_OWNERSHIP_INVALID',ident)
             if entry['ownership']=='NEAREST':line['ownership']='NEAREST'
+        # An unstyled, uncoloured line on an asymptote of a drawn curve is the asymptote: a thin dashed line (the way the engine draws its own), never a solid line
+        # heavier than the axes that reads as an axis.
+        if 'style' not in entry and 'color' not in entry and _overlay_line_is_asymptote(plan,line):line['style']='DASHED';line['asymptote']=True
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
@@ -4367,6 +4417,8 @@ def _overlay_features(plan):
         if 'marker' in entry:
             if entry['marker'] not in OVERLAY_POINT_MARKERS:_overlay_fail('OVERLAY_POINT_MARKER_INVALID',ident)
             if entry['marker']=='OPEN':row['marker']='OPEN'
+        # A dot with no marker of its own that stands on an OPEN end of the source interval is that hollow end (a filled dot over it would close the end).
+        elif any(x==end[0] and y==end[1] for end in _overlay_open_endpoints(plan)):row['marker']='OPEN'
         if 'color' in entry:
             if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',str(ident)+'.color')
             row['color']=entry['color']

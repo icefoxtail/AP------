@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {compositePanels,compositePanelLayout,compositeStackSize,composeCompositeCandidate,isGridPanel,COMPOSITE_MAX_SOLID_GRID_PANELS} from '../production/composite-candidate-svg-v1.mjs';
-import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,project,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL} from '../production/solid-figure-v1.mjs';
+import {solveSolidFigure,expandSolidFigure,solidFigureSpec,figurePanelSize,figureFrame,project,composeSolidFigurePanel,edgeRuns,lengthTex,labelNumber,countedEdges,circled,GRID_PANEL_WIDTH,FACE_SYMBOL,isFormulaLabel,formulaTex} from '../production/solid-figure-v1.mjs';
 import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/solid_figure_observer_worker.py',import.meta.url));
@@ -1399,9 +1399,9 @@ test('E28c: words on a figure: a vertex, the axis, a face that faces the viewer,
   const bad=(over,expected,solids=[unnamedCuboid()])=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
   bad({labels:[]},'SOLID_LABELS_INVALID');
   bad({labels:'앞면'},'SOLID_LABELS_INVALID');
-  bad({labels:Array.from({length:7},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
+  bad({labels:Array.from({length:9},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
   bad({labels:[{text:'앞면',at:'#b0',size:2}]},'SOLID_LABELS_INVALID');
-  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
+  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파하거너더러머버서','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
   bad({labels:[{text:'앞',at:'Z'}]},'SOLID_LABEL_AT_UNKNOWN:Z');
   bad({labels:[{text:'앞',at:'#b9'}]},'SOLID_VREF_UNKNOWN');
   bad({labels:[{text:'앞',at:7}]},'SOLID_LABEL_AT_INVALID');
@@ -1556,7 +1556,7 @@ test('E28c: net edge labels write a length, a symbol or a word at an edge of a f
   bad({edgeLabels:[{face:'top',edge:'0'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:7,edge:0}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'top',edge:0,text:5}]},'SOLID_EDGE_LABEL_INVALID');
-  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파하거너더러머버서'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'top',edge:0,text:'밑 변 $'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'nope',edge:0}]},'SOLID_NET_FACE_UNKNOWN');
   bad({edgeLabels:[{face:'top',edge:0,text:'7'}]},'SOLID_DIM_VALUE_MISMATCH:e1');
@@ -2429,7 +2429,7 @@ test('E33: a length of a solid may be labelled with a Korean word (모선, 높�
   assert.equal(cubeComposed.staticAudit.status,'PASS',JSON.stringify(cubeComposed.staticAudit.errors));
   const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label}]})),code(expected),expected);
   bad('밑변!','SOLID_DIM_LABEL_INVALID:d1');
-  bad('아주 긴 낱말을 열두 자 넘게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
+  bad('아주 긴 낱말을 스무 자가 훨씬 넘도록 길게 길게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
   bad('모선^2','SOLID_DIM_LABEL_INVALID:d1');
   assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'4'}]})).dims);// a number still has to be right
   assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'7'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
@@ -3370,4 +3370,30 @@ test('an orthogonal prism union composes with the source square prism and its x,
   assert.ok(hidden>=0&&hidden<visible);
   assert.match(panelSvg[1],/data-vis="hidden"[^>]*stroke="#a0a0a0"[^>]*stroke-dasharray="5 4"/);
   assert.doesNotMatch(composed.svg,/⑤|겹침|부피/);
+});
+
+test('A11: a text label is up to 20 characters and 8 labels; a formula label (no Hangul, with = + × √) is set in the math face and read back; Hangul with a root or a sign is refused',async()=>{
+  const labelled=labels=>solveSolidFigure(figure({solids:[unnamedCuboid()],labels}));
+  // words: 20 characters, a point and a comma
+  assert.equal(labelled([{text:'높이 4.5 cm, 밑면',at:{face:'top'}}]).labels.length,1);
+  assert.equal(labelled([{text:'가'.repeat(20),at:'#b0'}]).labels.length,1);
+  const refused=text=>assert.throws(()=>labelled([{text,at:'#b0'}]),code('SOLID_LABEL_TEXT_INVALID'),text);
+  // too long, a sign the text face cannot set, a root that is not followed by the digits or the letter under it, Hangul next to the signs of an expression
+  for(const text of ['가'.repeat(21),'a^2','a_1','a<b','a$b','a"b','높이 2√3 cm','밑면 = 4.5','가+나','2√','√ 3','√√3','2√3√2','P+Q'.repeat(7)])refused(text);
+  assert.throws(()=>solveSolidFigure(figure({solids:[unnamedCuboid()],labels:Array.from({length:9},(_,k)=>({text:'가'+k,at:'#b0'}))})),code('SOLID_LABELS_INVALID'));
+  assert.deepEqual(['P+Q','x=2√3','a×b','2√3'].map(isFormulaLabel),[true,true,true,true]);
+  assert.deepEqual(['4.5','O','S1','높이','a','√','x='.repeat(11)].map(isFormulaLabel),[false,false,false,false,false,false,false],'no sign, or not a formula: stays a word or is refused');
+  assert.deepEqual(['x=2√3','a×b','P+Q'].map(formulaTex),['x=2\\sqrt{3}','a\\times b','P+Q']);
+  // composed: the formulas are set in the math face (data-tex), the word in the text face (data-text); the independent observer reads each back
+  const plan=figure({solids:[unnamedCuboid()],labels:[{text:'P+Q',at:{face:'top'}},{text:'x=2√3',at:{face:'side0'}},{text:'높이 4.5',at:{edge:['#b1','#b2']}}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.ok(svg.includes('data-tex="P+Q"')&&svg.includes('data-tex="x=2\\sqrt{3}"')&&svg.includes('data-text="높이 4.5"'));
+  const pass=await audit(plan,svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
+  const failing=async(tampered,prefix)=>{const r=await audit(plan,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  await failing(svg.replace('data-tex="P+Q"','data-tex="P+R"'),'SOLID_TEXT_LABEL_TEXT_MISMATCH');
+  await failing(svg.replace('data-tex="x=2\\sqrt{3}"','data-tex="x=2\\sqrt{5}"'),'SOLID_TEXT_LABEL_TEXT_MISMATCH');
+  await failing(svg.replace('data-tex="P+Q"','data-text="P+Q"'),'SOLID_TEXT_LABEL_TEXT_MISMATCH');
 });
