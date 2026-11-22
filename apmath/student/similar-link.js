@@ -59,16 +59,12 @@
     if (!sets.length) return '';
     const rows = sets.map((set, index) => {
       const name = sets.length > 1 ? `유사 ${index + 1}` : '유사문제';
-      const count = set.count ? `${set.count}문항` : '';
-      const link = (mode) => escapeHtml(buildUrl(set.file, mode, baseUrl, returnTarget));
-      return `<div class="similar-set">
-        <a class="btn similar-open" href="${link('exam')}" target="_blank" rel="noopener">${escapeHtml(name)} 풀어보기${count ? ` <span class="button-meta">${escapeHtml(count)}</span>` : ''}</a>
-        <a class="btn review-btn" href="${link('ans')}" target="_blank" rel="noopener">정답 보기</a>
-        <a class="btn review-btn solution" href="${link('sol')}" target="_blank" rel="noopener">해설 보기</a>
-      </div>`;
+      const chip = (mode, label, spoken, extraClass = '') =>
+        `<a class="similar-chip${extraClass}" href="${escapeHtml(buildUrl(set.file, mode, baseUrl, returnTarget))}" target="_blank" rel="noopener" aria-label="${escapeHtml(`${name} ${spoken}`)}">${label}</a>`;
+      return `<div class="similar-set">${sets.length > 1 ? `<span class="similar-set-name">${escapeHtml(name)}</span>` : ''}${chip('exam', '풀어보기', '풀어보기', ' similar-open')}${chip('ans', '정답', '정답 보기')}${chip('sol', '해설', '해설 보기')}</div>`;
     }).join('');
-    return `<section class="similar-entry" aria-label="유사문제">
-      <div class="similar-entry-head"><strong>유사문제</strong><span class="similar-entry-note">자습용 · 기록되지 않습니다</span></div>
+    return `<section class="similar-entry${sets.length === 1 ? ' is-single' : ''}" aria-label="유사문제">
+      <div class="similar-entry-head"><strong>유사문제</strong><span class="similar-entry-note">자습용 · 기록 안 됨</span></div>
       ${rows}
     </section>`;
   }

@@ -31,7 +31,7 @@ const withoutSimilar = { assignment_id: 'a2', archive_file: 'exams/original/high
 test('exam with a linked similar set shows the entry; the URLs follow engine.html?data=exams/<file>&mode=exam|ans|sol', () => {
   const markup = link.renderEntry(withSimilar, map, options);
   assert.match(markup, /유사문제 풀어보기/);
-  assert.match(markup, /자습용 · 기록되지 않습니다/);
+  assert.match(markup, /자습용 · 기록 안 됨/);
   const urls = hrefs(markup);
   assert.deepEqual(urls.map((u) => u.searchParams.get('mode')), ['exam', 'ans', 'sol']);
   for (const url of urls) {
@@ -41,16 +41,20 @@ test('exam with a linked similar set shows the entry; the URLs follow engine.htm
     assert.equal(url.searchParams.get('submitQr'), '0');
     assert.equal(url.searchParams.get('studentReturnTo'), '/AP------/apmath/student/?omr=1');
   }
-  assert.match(markup, /20문항/);
   // Plain links only: nothing is submitted or recorded by this entry.
   assert.doesNotMatch(markup, /onclick|<form|apiPost|fetch\(/);
   assert.equal(markup.match(/target="_blank" rel="noopener"/g).length, 3);
+  // One set: label and chips share one compact row, and every chip names what it opens.
+  assert.match(markup, /similar-entry is-single/);
+  assert.deepEqual([...markup.matchAll(/aria-label="([^"]+)"/g)].map((m) => m[1]).slice(1), ['유사문제 풀어보기', '유사문제 정답 보기', '유사문제 해설 보기']);
+  assert.doesNotMatch(markup, /class="btn/);
 });
 
 test('several similar sets are all listed as 유사 1, 유사 2 ...', () => {
   const markup = link.renderEntry({ archive_file: 'exams/original/high/h1/2mid/25_나고_2학기_중간_고1_기출.js' }, map, options);
-  assert.match(markup, /유사 1 풀어보기/);
-  assert.match(markup, /유사 2 풀어보기/);
+  assert.match(markup, /aria-label="유사 1 풀어보기"/);
+  assert.match(markup, /aria-label="유사 2 정답 보기"/);
+  assert.match(markup, /<span class="similar-set-name">유사 2<\/span>/);
   assert.deepEqual(
     hrefs(markup).filter((u) => u.searchParams.get('mode') === 'exam').map((u) => u.searchParams.get('data')),
     [
@@ -58,7 +62,7 @@ test('several similar sets are all listed as 유사 1, 유사 2 ...', () => {
       'exams/similar/high/h1/2mid/25_나고_2학기_중간_고1_기출_유사2.js',
     ],
   );
-  assert.equal((markup.match(/자습용 · 기록되지 않습니다/g) || []).length, 1);
+  assert.equal((markup.match(/자습용 · 기록 안 됨/g) || []).length, 1);
 });
 
 test('no similar set, MIXED papers, empty or missing map: nothing is drawn (card unchanged)', () => {

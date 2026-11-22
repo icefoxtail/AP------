@@ -156,7 +156,7 @@ assert.strictEqual(
 
 assert(
   studentPortal.includes('const showActionArea = showReview || showPdf || isTeacherPreview || submitted || canInput') &&
-    /<div class="omr-actions [^\n]*\$\{showReview \?/.test(studentPortal) &&
+    /<div class="omr-card-actions [^\n]*\$\{showReview \?/.test(studentPortal) &&
     studentPortal.includes("${showPdf ? renderOmrPdfAction(exam) : ''}") &&
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
     studentPortal.includes("(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''") &&
@@ -176,6 +176,20 @@ assert(
     /\.omr-actions\.review-hidden \.omr-start\s*\{\s*grid-column:\s*1\s*\/\s*-1/.test(studentStyles) &&
     /\.omr-list\s*\{\s*grid-template-columns:\s*1fr/.test(studentStyles),
   'shared exam cards should prioritize opening the exam and checking wrong numbers, retain 44px controls, and collapse the list on phones'
+);
+
+// Exam-list cards are compact: one filled main action (44px+), review actions as a row of 40px+ chips.
+// The shared .omr-actions rules above stay for the result and reference screens.
+assert(
+  /<article class="omr-card compact"/.test(studentPortal) &&
+    studentPortal.indexOf('score-open') < studentPortal.indexOf('<div class="omr-sub-actions">') &&
+    studentPortal.indexOf('omr-start') < studentPortal.indexOf('<div class="omr-sub-actions">') &&
+    /min-height:\s*44px/.test(styleRule('.omr-card-actions > .btn')) &&
+    /min-height:\s*40px/.test(styleRule('.omr-sub-actions .btn')) &&
+    /min-height:\s*40px/.test(styleRule('.similar-chip')) &&
+    /overflow-x:\s*auto/.test(styleRule('.omr-list-view-filter-tabs')) &&
+    !/\.omr-list-view-filter-tabs\s*\{\s*display:\s*grid/.test(studentStyles),
+  'compact exam cards keep touch targets, put the main action first, and the filter is one scrollable row'
 );
 
 const cardRenderer = studentPortal.match(/function renderOmrExamCard\(exam\) \{[\s\S]*?\n    \}/);
