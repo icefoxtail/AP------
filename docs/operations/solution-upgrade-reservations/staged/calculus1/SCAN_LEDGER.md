@@ -234,3 +234,25 @@
 - **2학기 중간 원본 범위:** JS 총 42장 중 **19장 MD 대응**, **23장 미감사**. 기존 2학기 기말 26/26 기록과 별개.
 - **다음 커서:** `archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js`. 다음에도 중복 없는 시험지 5장 완료 후 보고.
 - **검수 경계:** 감사 MD 초안 완료(EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE)와 운영 RELEASE PASS는 다르다. Golden/Negative, preflight SHA-256 receipt, solutionImage SVG·학생 화면 렌더, 운영 출고 QA, JS/SVG 수정·main 병합·배포 **NOT_RUN / NOT_PERFORMED**.
+
+
+## 2026-11-22 2학기 중간 추가 5개 완료 — 2023 팔마고 재개 + 2022 4개
+
+- 기존 `23_팔마고_2학기_중간_고2_수학II_DEEP_AUDIT.md`는 이전 자동 실행에서 **IN_PROGRESS(Q01–Q06, Q02 VISUAL_HOLD)** 상태였으나, 이번에 Q07–Q22를 모두 검산하고 PNG Q02·Q07을 실제 판독하여 **EXAM_DRAFT_COMPLETE**로 갱신. 과거 진행 기록은 Git 커밋 이력으로 보존.
+- 2022 금당고·매산고·복성고·순천고 4장 MD 신규 작성. 다섯 장 합계 **107문항**의 발문·보기·정답·기존 해설 전문과 독립 수학 검산·KEEP 판정 근거 기록.
+- 실제 원본 PNG **12개/12개 직접 판독**(2023 팔마고2, 2022 금당고2·매산고3·복성고2·순천고3). 그림 원본 blob SHA 각 문항에 기록. 사용자 지시로 공유 점유/claim은 **SKIPPED_BY_USER**.
+- 1건 기존 MD 갱신, 4건 신규 MD 생성: GitHub 커밋 후 전문 문자열 원격 **readback 5/5 일치**.
+
+| 누적 순서 | 시험지 | 문항 | KEEP | UPGRADE | HOLD | UNREAD | 원본 PNG | 최종 커밋 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 46 | [23_팔마고_2학기_중간_고2_수학II](23_팔마고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 2 | `fbd917047ac5` |
+| 47 | [22_금당고_2학기_중간_고2_수학II](22_금당고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 20 | 20 | 0 | 0 | 0 | 2 | `f51c2cc8c7d6` |
+| 48 | [22_매산고_2학기_중간_고2_수학II](22_매산고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 21 | 21 | 0 | 0 | 0 | 3 | `3be7376e7dd1` |
+| 49 | [22_복성고_2학기_중간_고2_수학II](22_복성고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 2 | `326715178ec1` |
+| 50 | [22_순천고_2학기_중간_고2_수학II](22_순천고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 3 | `d1f8c046fe90` |
+| **이번 회차** | **5장** | **107** | **107** | **0** | **0** | **0** | **12개** | **5/5 readback PASS** |
+
+- **전체 누적 감사 MD 초안 50장 / 1,115문항:** KEEP **1,058** + UPGRADE **29** + HOLD **28** + UNREAD **0**. 과거 미해결 UPGRADE 29, HOLD 28은 이월.
+- **2학기 중간 기출 범위:** 총 42장 중 **24장 MD 대응 완료**, **18장 미감사**. 2학기 기말 26/26 기록은 별개.
+- **다음 커서:** `archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js`부터 중복 없는 5장 처리 후 보고.
+- **출고 경계:** EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE는 감사 MD 초안 완료만 뜻함. Golden/Negative, preflight SHA-256 receipt, 기존 solutionImage SVG·학생 화면 렌더, 운영 출고 QA, JS/SVG 원본 수정, `main` 병합·배포 **NOT_RUN / NOT_PERFORMED**.
