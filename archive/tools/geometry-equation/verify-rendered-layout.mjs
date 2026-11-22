@@ -81,7 +81,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      const axisSource=e.getAttribute('data-axis-value')==='x'&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      const axisSource=['x','y'].includes(e.getAttribute('data-axis-value'))&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
       return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
@@ -99,7 +99,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      const axisSource=e.getAttribute('data-axis-value')==='x'&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      const axisSource=['x','y'].includes(e.getAttribute('data-axis-value'))&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
       labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')&&e.getAttribute('data-role')!=='region').map(e=>{   // a region fill is paint, not a stroke: labels and leaders may lie on it (plane_regions_observer.py checks it)
@@ -436,13 +436,19 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     if(labels.some(v=>!Number.isFinite(v.baseFontPx)||Math.abs(v.baseFontPx-labels[0].baseFontPx)>1e-7))errors.push('PUBLICATION_BASE_FONT_INCONSISTENT');
   }
   const missingGlyphCount=capture.labels.reduce((s,v)=>s+v.missingGlyphCount,0);
-  for(const leader of capture.geometry.filter(v=>v.kind==='leader'))for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
+  // (CL) A last-resort leader (data-leader-crossing) may cross thin strokes, but at most LEADER_MAX_CROSSED_STROKES of them: counted here on the rendered strokes (one per element), independent of the generator's own limit.
+  const LEADER_MAX_CROSSED_STROKES=2,CROSSABLE_KINDS=['line','curve','auxiliary','circle','axis','tick'];
+  const crossesStroke=(leader,other)=>leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)));
+  for(const leader of capture.geometry.filter(v=>v.kind==='leader')){
+    const crossedStrokes=leader.leaderCrossing?capture.geometry.filter(v=>v.id!==leader.id&&v.points&&CROSSABLE_KINDS.includes(v.kind)&&crossesStroke(leader,v)).length:0,crossesTooMany=crossedStrokes>LEADER_MAX_CROSSED_STROKES;
+  for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
     // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line. (G18c) So may a point callout's leader (overlay-callout-*): the layout looks for a place that crosses nothing first and falls back to the axes only when the figure leaves none.
     if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id)||/-coordinates?-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-|^asymptote-|^rational-asymptote-|-asymptote(-|$)/.test(String(other.id))))continue;
     // (CL) a point name's last-resort leader (data-leader-crossing) may cross thin strokes (a segment, a dashed line, a circle, an axis, a tick), never a point or another leader
-    if(leader.leaderCrossing&&['line','curve','auxiliary','circle','axis','tick'].includes(other.kind))continue;
-    if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
+    if(leader.leaderCrossing&&!crossesTooMany&&CROSSABLE_KINDS.includes(other.kind))continue;
+    if(crossesStroke(leader,other)){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
+  }
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');

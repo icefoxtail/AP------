@@ -304,3 +304,36 @@ test('the y axis follows the same rule: beside its own y it passes, far to the s
   const line={id:'line-1',kind:'line',role:'line',points:[[94,0],[94,300]],client:{x:94,y:0,width:0,height:300},strokeWidthPx:.8,paintOrder:1};
   assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:154,width:12,height:12},strokes:[line]})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);
 });
+
+// (AXV) through the real capture path (collectRenderedLayout reads data-axis-value / data-axis-source-x/y from the final SVG), x and y axes.
+const axisValueSvg=({axis='y',lx,ly,extra=''})=>{
+  const sx=axis==='y'?150:300,sy=axis==='y'?250:200;   // the value's point on its axis
+  const axisLine=axis==='y'?'<line id="y-axis" data-role="axis" data-axis="y" stroke="#111" stroke-width="1" x1="150" y1="40" x2="150" y2="460"/>':'<line id="x-axis" data-role="axis" data-axis="x" stroke="#111" stroke-width="1" x1="40" y1="200" x2="580" y2="200"/>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" width="620" height="500">'+axisLine+extra+
+    '<text id="interval-end-label" data-label-kind="GRAPH_ANNOTATION" data-priority="0" data-axis-value="'+axis+'" data-axis-source-x="'+sx+'" data-axis-source-y="'+sy+'" x="'+lx+'" y="'+ly+'" font-family="serif" font-size="14" text-anchor="middle" dominant-baseline="central">3</text></svg>';
+};
+test('a y axis value label is collected with its binding and judged by the same rule: beside its own y passes, four variations are refused',async()=>{
+  const browser=await launchBrowser();try{const page=await browser.newPage({viewport:{width:620,height:500}});
+    const judge=async svg=>analyzeRenderedLayout(await captureAtDisplaySize(page,svg,{width:620,height:500})).errors.filter(v=>v.startsWith('AXIS_VALUE_LABEL')||v.startsWith('LEADER_CROSSING'));
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:250})),[]);                                   // beside its own y, left of the y axis
+    assert.deepEqual(await judge(axisValueSvg({lx:166,ly:250})),[]);                                   // the other side
+    assert.deepEqual(await judge(axisValueSvg({lx:60,ly:250})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);    // far from the y axis
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:330})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);   // beside the axis but at another y
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:250,extra:'<line id="line-9" stroke="#111" stroke-width="1" x1="143" y1="200" x2="143" y2="300"/>'})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);   // another line between it and the axis
+    assert.deepEqual(await judge(axisValueSvg({axis:'x',lx:300,ly:216})),[]);                          // x, collected the same way
+    assert.deepEqual(await judge(axisValueSvg({axis:'x',lx:300,ly:290})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  }finally{await browser.close();}
+});
+test('a last-resort leader (data-leader-crossing) may cross at most two thin strokes: three are LEADER_CROSSING',async()=>{
+  const browser=await launchBrowser();try{const page=await browser.newPage({viewport:{width:620,height:500}});
+    const leaderSvg=count=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" width="620" height="500"><line id="lead" data-role="leader" data-leader-crossing="1" stroke="#555" stroke-width="1" x1="100" y1="100" x2="100" y2="360"/>'+
+      Array.from({length:count},(_,i)=>'<line id="seg-'+i+'" data-role="line" stroke="#111" stroke-width="1" x1="60" y1="'+(140+i*40)+'" x2="140" y2="'+(140+i*40)+'"/>').join('')+'</svg>';
+    const judge=async count=>analyzeRenderedLayout(await captureAtDisplaySize(page,leaderSvg(count),{width:620,height:500})).errors.filter(v=>v.startsWith('LEADER_CROSSING'));
+    assert.deepEqual(await judge(1),[]);
+    assert.deepEqual(await judge(2),[]);
+    assert.deepEqual((await judge(3)).sort(),['LEADER_CROSSING:lead:seg-0','LEADER_CROSSING:lead:seg-1','LEADER_CROSSING:lead:seg-2']);
+    assert.equal((await judge(5)).length,5);
+    const plain=leaderSvg(1).replace(' data-leader-crossing="1"','');
+    assert.deepEqual(analyzeRenderedLayout(await captureAtDisplaySize(page,plain,{width:620,height:500})).errors.filter(v=>v.startsWith('LEADER_CROSSING')),['LEADER_CROSSING:lead:seg-0'],'an unflagged leader still crosses nothing');
+  }finally{await browser.close();}
+});
