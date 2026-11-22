@@ -32,6 +32,7 @@ function idleSuiteCommands() {
     'archive/tools/archive-publication-checkpoint.test.mjs',
     'archive/tools/archive-source-reference-policy.test.mjs',
     'archive/tools/generated-meta/auto-register-source-rebind.test.mjs',
+    'archive/tools/geometry-equation/ops/golden-gate/golden-gate.test.mjs',
     'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide.test.mjs',
     'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
