@@ -398,7 +398,7 @@ window.questionBank = [
       "$3\\sqrt5+3\\sqrt2$"
     ],
     "answer": "③",
-    "solution": "삼각형 $ABC$의 둘레에서 $\\overline{AB}$의 길이는 고정되어 있으므로\n$\\overline{AC}+\\overline{BC}$를 가장 작게 하면 된다.\n\n점 $A(1,3)$을 $x$축에 대하여 대칭이동한 점을 $A'(1,-3)$이라 하자.\n점 $C$가 $x$축 위에 있으므로\n$\\overline{AC}=\\overline{A'C}$이다.\n\n따라서\n$\\overline{AC}+\\overline{BC}\n=\\overline{A'C}+\\overline{CB}\n\\ge \\overline{A'B}$\n이고, $A'$, $C$, $B$가 한 직선 위에 있을 때 등호가 성립한다.\n\n$\\overline{A'B}\n=\\sqrt{(5-1)^2+(1-(-3))^2}\n=\\sqrt{16+16}\n=4\\sqrt2$이다.\n\n또\n$\\overline{AB}\n=\\sqrt{(5-1)^2+(1-3)^2}\n=\\sqrt{16+4}\n=2\\sqrt5$이다.\n\n따라서 삼각형 $ABC$의 둘레의 최솟값은\n$2\\sqrt5+4\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "\\(A(1,3)\\), \\(B(5,1)\\), \\(C=(t,0)\\)이라 하자. \\(A\\)를 \\(x\\)축에 대하여 대칭시킨 점은 \\(A'=(1,-3)\\)이다. \\(C\\)가 \\(x\\)축 위에 있으므로 \\(AC=A'C\\). 삼각부등식에서\n\\[\nAC+CB=A'C+CB\\ge A'B\n=\\sqrt{(5-1)^2+(1-(-3))^2}\n=\\sqrt{16+16}=4\\sqrt2.\n\\]\n등호가 성립하려면 \\(A',C,B\\)가 한 직선 위에 있고 \\(C\\)가 선분 \\(A'B\\)에 있어야 한다. 선분 \\(A'B\\)를\n\\[\n(x,y)=(1,-3)+s(4,4),\\quad0\\le s\\le1\n\\]\n로 나타내면 \\(y=0\\)에서 \\(-3+4s=0\\), 즉 \\(s=\\frac34\\)이다. 따라서 \\(C=(4,0)\\)이고, 실제로 선분 위에 있으므로 등호가 성립한다.\n\n또\n\\[\nAB=\\sqrt{(5-1)^2+(1-3)^2}\n=\\sqrt{16+4}=2\\sqrt5.\n\\]\n그러므로 둘레의 최솟값은\n\\[\n\\boxed{2\\sqrt5+4\\sqrt2}.\n\\]\n",
     "sourceQuestionNo": "8",
     "displayNo": "8",
     "sourceOrdinal": 8,

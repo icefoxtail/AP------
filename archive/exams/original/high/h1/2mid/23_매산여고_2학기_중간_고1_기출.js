@@ -135,7 +135,7 @@ window.questionBank = [
     "imageSize": "tall",
     "choices": [],
     "answer": "⑤",
-    "solution": "차집합을 교집합과 여집합으로 바꾸어 색칠 영역을 정리한다.\n\n$A-C=A\\cap C^c$이므로\n$(A\\cup B)-(A-C)=(A\\cup B)\\cap(A\\cap C^c)^c$이다.\n\n드모르간의 법칙을 적용하면\n$(A\\cap C^c)^c=A^c\\cup C$이므로\n$(A\\cup B)\\cap(A^c\\cup C)$이다.\n\n이는 $A\\cup B$에서 $A$에만 속하고 $C$에는 속하지 않는 부분을 제외한 영역이다.\n그림에서 이 영역을 나타낸 것은 ⑤이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "집합의 차는 왼쪽 집합에 속하되 오른쪽 집합에는 속하지 않는 원소를 뜻한다. 먼저 빼는 집합 $A-C$를 명확하게 쓰자.\n\\[\n\\begin{aligned}\nA-C&=A\\cap C^c,\\\\\n(A\\cup B)-(A-C)\n&=(A\\cup B)\\cap(A\\cap C^c)^c\\\\\n&=(A\\cup B)\\cap(A^c\\cup C)\\\\\n&=\\big((A\\cup B)\\cap A^c\\big)\\cup\\big((A\\cup B)\\cap C\\big)\\\\\n&=\\big((A\\cap A^c)\\cup(B\\cap A^c)\\big)\\cup\\big((A\\cap C)\\cup(B\\cap C)\\big)\\\\\n&=(B\\cap A^c)\\cup(A\\cap C)\\cup(B\\cap C).\n\\end{aligned}\n\\]\n따라서 B에만 속한 부분, A와 C가 함께 겹치는 부분, B와 C가 함께 겹치는 부분을 모두 색칠한다. 반면 $A\\cap C^c$에 속하는 모든 칸은 B와 겹치더라도 제외한다. 특히 $A\\cap B\\cap C^c$도 색칠하지 않는다.\n\n그림에서 이 영역을 나타낸 것은 ⑤이다.\n\n검산: 벤다이어그램의 7개 영역을 확인하면 B에만 속한 영역, A와 C의 공통 부분, B와 C의 공통 부분은 포함되고, A와 B에만 속한 영역과 A에만 속한 영역, C에만 속한 영역은 제외된다. 따라서 집합식과 그림의 영역이 일치한다."
   },
   {
     "id": 5,
