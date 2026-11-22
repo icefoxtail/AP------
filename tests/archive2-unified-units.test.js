@@ -355,9 +355,14 @@ test('questions without unit evidence stay selectable in a per-subject 단원 �
       total += scope.count;
     }
   }
-  assert.ok(total > 1000, `unclassified-but-offered ${total}`);
+  // 단원 힌트(metaHintUnit)가 미분류를 거의 다 단원에 넣으므로 미분류 문항 수는 운영 데이터에 따라 0까지 줄 수 있다. 개수를 고정하지 않고,
+  // 통합 단원 층이 미분류로 본 문항은 빠짐없이 미분류 범위로 제공되는지만 본다.
+  const unclassifiedRows = data.records.filter(record => GRADES.includes(record.effectiveBrowseGrade || record.sourceGrade) &&
+    Unified.classify(record, { projectionPolicy: data.projectionPolicy }).entry.unclassified).length;
+  assert.equal(total, unclassifiedRows, `unclassified-but-offered ${total} of ${unclassifiedRows}`);
   w.state.filters = { grade: '중3' };
-  const scope = w.scopeOptions().find(row => row.unclassified);
+  const scope = w.scopeOptions().find(row => row.unclassified && row.count >= 5);
+  if (!scope) return;
   w.state.scopes = [scope.key];
   w.state.distribution = 'pool';
   w.state.count = 5;
@@ -564,7 +569,11 @@ test('range start/end default to the first and last real unit and never list 단
   const { w } = harness(data);
   w.state.filters = { grade: '고1' };
   const html = w.renderScopes();
-  assert.ok(html.includes(Unified.NO_SUBJECT_LABEL) && !/과목 미정/.test(html));
+  // 과목을 못 정한 미분류 문항이 있을 때만 "기타 문항" 묶음이 보인다(고1 `수학(상)` 같은 옛 과목명은 대응 과목표로 과목이 정해져 없어질 수 있다).
+  const noSubject = data.records.some(record => (record.effectiveBrowseGrade || record.sourceGrade) === '고1' &&
+    !Unified.classify(record, { projectionPolicy: data.projectionPolicy }).entry.subject);
+  assert.equal(html.includes(Unified.NO_SUBJECT_LABEL), noSubject);
+  assert.ok(!/과목 미정/.test(html));
   assert.ok(/data-action="scope-range"/.test(html));
 });
 
