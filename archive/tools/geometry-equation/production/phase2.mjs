@@ -328,6 +328,8 @@ function addGraphOverlays(plan,spec){
   for(const line of features.lines){
     const lineId='overlay-line-'+line.id,anchors=ownedLabels&&line.labelAlternates?.length?[...line.labelAlternates,line.labelAt]:null;
     objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)],...(line.style==='DASHED'?{dash:true}:{}),...(line.asymptote?{asymptote:true}:{}),...(line.color?{color:line.color}:{})});
+    // An overlay line that is the curve's own asymptote, written with the value the family already writes beside its dashed line (rational: x=p, y=q), has no second label: the value would stand twice.
+    if(line.asymptote&&spec.objects.some(object=>(object.kind==='GRAPH_ANNOTATION'||object.kind==='EQUATION_LABEL')&&object.text===line.text))continue;
     objects.push({id:lineId+'-equation',kind:'EQUATION_LABEL',target:lineId,text:line.text,at:anchors?anchors[0]:line.labelAt,priority:0,
       ...(line.ownership==='NEAREST'?{ownership:'NEAREST'}:{}),
       ...(line.lineAt!==undefined?{lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:line.lineAt}

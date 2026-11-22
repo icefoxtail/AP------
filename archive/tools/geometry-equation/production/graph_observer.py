@@ -2017,6 +2017,8 @@ def _region_label_box(elements,label_id):
 
 GRAPH_REGION_LEADER_TOLERANCE_PX=2.5
 GRAPH_REGION_LEADER_PROBE_PX=3.0
+GRAPH_REGION_DOT_CLEAR_PX=8.0       # the observer's own limits for the dot a leader starts on (not read from the engine)
+GRAPH_REGION_DOT_STROKE_PX=6.0
 
 def _grl_dist(point,a,b):
     dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
@@ -2032,8 +2034,9 @@ def _grl_cross(a,b,c,d):
 
 def _graph_region_leader_labels(entries,polygons,transform,root):
     """A graph-region label that stands outside its band (the band is too thin or crowded to hold it) must be tied to that band by a drawn leader (data-role=leader,
-    data-owner-label): the leader starts on the band's own boundary and runs away from it, the label box lies outside every band, the leader ends on the label box,
-    never enters a band after its start and never properly crosses a drawn stroke. A label outside its band with no such leader stays an error (GRAPH_REGION_LABEL_OUTSIDE)."""
+    data-owner-label) that starts on a dot INSIDE the band (data-role=leader-dot): clear of the band's boundary and of every stroke, in no other band. The label box lies outside every
+    band, the leader ends on the label box, leaves the band once and never enters a band again, and crosses a drawn stroke only where that stroke is the band's own boundary.
+    A label outside its band with no such leader stays an error (GRAPH_REGION_LABEL_OUTSIDE)."""
     errors=[]
     if not entries:return errors
     px=lambda point:(transform['originX']+transform['sx']*point[0],transform['originY']-transform['sy']*point[1])
@@ -2058,20 +2061,39 @@ def _graph_region_leader_labels(entries,polygons,transform,root):
         if any(_region_inside(poly,p) for poly in areas.values() for p in probes):errors.append('GRAPH_REGION_LABEL_NOT_OUTSIDE:'+region_id)
         edges=[((x,y),(x+w,y)),((x+w,y),(x+w,y+h)),((x+w,y+h),(x,y+h)),((x,y+h),(x,y))]
         if min(_grl_dist(b,c,d) for c,d in edges)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_LABEL:'+region_id)
-        if min(_grl_dist(a,c,d) for c,d in zip(own,own[1:]+own[:1]))>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_REGION:'+region_id)
         length=math.dist(a,b)
         if length<=1e-9:errors.append('GRAPH_REGION_LEADER_EMPTY:'+region_id);continue
+        # The leader starts on a dot INSIDE its own band (never on the boundary, where it reads as a tick value or as the name of the curve it touches): the dot is drawn at the start,
+        # lies in no other band, clear of the band's boundary and of every stroke; the leader leaves the band once and never enters a band again.
+        dot=next((n for n in root.iter() if n.tag.split('}')[-1]=='circle' and n.get('data-role')=='leader-dot' and n.get('data-owner-label')=='region-'+region_id+'-label'),None)
+        try:dot_at=(float(dot.get('cx')),float(dot.get('cy'))) if dot is not None else None
+        except (TypeError,ValueError):dot_at=None
+        if dot_at is None or math.dist(dot_at,a)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_DOT_MISSING:'+region_id);continue
+        if not _region_inside(own,a):errors.append('GRAPH_REGION_LEADER_NOT_FROM_INSIDE:'+region_id)
+        if min(_grl_dist(a,c,d) for c,d in zip(own,own[1:]+own[:1]))<GRAPH_REGION_DOT_CLEAR_PX:errors.append('GRAPH_REGION_LEADER_START_NEAR_BOUNDARY:'+region_id)
+        if any(_region_inside(poly,a) for other_id,poly in areas.items() if other_id!=region_id):errors.append('GRAPH_REGION_LEADER_START_IN_OTHER_REGION:'+region_id)
+        if any(_grl_dist(a,c,d)<GRAPH_REGION_DOT_STROKE_PX for stroke_id,points in strokes for c,d in zip(points,points[1:])):errors.append('GRAPH_REGION_LEADER_START_NEAR_STROKE:'+region_id)
         unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
-        if _region_inside(own,(a[0]+unit[0]*GRAPH_REGION_LEADER_PROBE_PX,a[1]+unit[1]*GRAPH_REGION_LEADER_PROBE_PX)):errors.append('GRAPH_REGION_LEADER_ENTERS_REGION:'+region_id)
-        steps=max(2,int(length//4))
+        steps=max(2,int(length//4));left=False;came_back=False
         for k in range(steps+1):
             d=length*k/steps
-            if d<GRAPH_REGION_LEADER_PROBE_PX:continue
             point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
-            if any(_region_inside(poly,point) for poly in areas.values()):errors.append('GRAPH_REGION_LEADER_IN_REGION:'+region_id);break
+            if any(_region_inside(poly,point) for other_id,poly in areas.items() if other_id!=region_id):errors.append('GRAPH_REGION_LEADER_IN_REGION:'+region_id);break
+            if _region_inside(own,point):
+                if left:came_back=True
+            elif d>=GRAPH_REGION_LEADER_PROBE_PX:left=True
+        if not left:errors.append('GRAPH_REGION_LEADER_NOT_LEAVING:'+region_id)
+        if came_back:errors.append('GRAPH_REGION_LEADER_ENTERS_REGION:'+region_id)
+        own_edges=list(zip(own,own[1:]+own[:1]))
         for stroke_id,points in strokes:
-            # the stroke the leader starts on (the band's own boundary curve) is touched only at the start
-            if any(_grl_cross(a,b,c,d) and _grl_dist(a,c,d)>GRAPH_REGION_LEADER_TOLERANCE_PX for c,d in zip(points,points[1:])):errors.append('GRAPH_REGION_LEADER_CROSSES:'+region_id+':'+str(stroke_id));break
+            # a stroke is crossed only where it is the band's own boundary (the leader leaves through it once)
+            for c,d in zip(points,points[1:]):
+                if not _grl_cross(a,b,c,d):continue
+                det=(b[0]-a[0])*(d[1]-c[1])-(b[1]-a[1])*(d[0]-c[0]);t_at=((c[0]-a[0])*(d[1]-c[1])-(c[1]-a[1])*(d[0]-c[0]))/det
+                hit=(a[0]+(b[0]-a[0])*t_at,a[1]+(b[1]-a[1])*t_at)
+                if min(_grl_dist(hit,p,q) for p,q in own_edges)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_CROSSES:'+region_id+':'+str(stroke_id));break
+            else:continue
+            break
     return errors
 
 def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
@@ -3426,6 +3448,18 @@ def _ov_asymptote_values(plan):
         except (ValueError,TypeError,ZeroDivisionError):continue
     return [item for item in out if item[1]!=0]
 
+def _ov_asymptote_twin(line,groups,own_label_id):
+    """True when a label other than the overlay line's own reads exactly the asymptote's value (x=p, y=q: the text the line itself would carry), i.e. the curve's family writes it already."""
+    if line['kind']=='VERTICAL':text='x='+str(line['x'])
+    else:text='y='+str(line['intercept'])
+    if isinstance(line.get('label'),str):text=line['label']
+    want=_ov_label_codes(text)
+    for ident,node in groups.items():
+        if ident==own_label_id:continue
+        got=_ov_glyph_codes(node)
+        if got and len(got)==len(want) and all(code in allowed for code,allowed in zip(got,want)):return True
+    return False
+
 def _ov_mark_asymptote_lines(plan,lines):
     """An overlay line with no style and no colour that lies on an asymptote of a drawn curve is read as an asymptote line: dashed, and thinner than an axis."""
     wanted=_ov_asymptote_values(plan)
@@ -4068,6 +4102,10 @@ def overlays_audit(plan,svg,transform):
             for line in expected['lines']:
                 label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
                 node=groups.get(label_id)
+                if line.get('asymptote') and _ov_asymptote_twin(line,groups,label_id):
+                    # the curve's own label already writes this asymptote's value beside the dashed line: the overlay line must not write it a second time
+                    if node is not None:errors.append('OVERLAY_ASYMPTOTE_LABEL_DUPLICATE:'+str(line['id']))
+                    continue
                 if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
                 elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
                 elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))

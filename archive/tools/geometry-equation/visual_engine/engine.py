@@ -1483,7 +1483,13 @@ def prepare(spec):
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
     for label in region_labels:
         site=label['regionLeader']
-        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots);site.pop('inner',None)
+        if site.pop('graphRegion',False):
+            # A graph region's name (S_1) stands outside it on a leader that starts on a dot INSIDE the band, as every region value does (a leader from the band's boundary reads as a tick
+            # value or as the name of the curve it touches). The name of a region (it has a letter) may stand beside a boundary; a bare number may not.
+            site.pop('corners',None)
+            spots=_region_inner_points(site['polygons'],obstacles,mark_spots)
+            site['inner']=spots[:REGION_INNER_FIRST];site['innerMore']=spots[REGION_INNER_FIRST:]
+            site['sideExempt']=re.search('[A-Za-z]',str(label.get('sourceMath',''))) is not None
         else:
             # no dot and no inside value in a drawn circle that lies wholly inside the region (the incircle of a triangle): it would read as that circle's area, not the region's
             circles=_circles_inside_region(site['polygons'],obstacles)

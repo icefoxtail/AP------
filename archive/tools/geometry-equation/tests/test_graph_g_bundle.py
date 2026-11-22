@@ -18,7 +18,7 @@ import graph_observer
 from graph_framing import fit_overview
 from graph_spike import produce
 from graph_observer import audit
-from sympy import Rational, sqrt
+from sympy import Integer as S, Rational, sqrt
 
 N05_PLAN={'family':'piecewise-polynomial','pieces':[{'coefficients':['7','-10','2']}],'domain':[0,5],'sourceDomain':{'kind':'ALL_REALS'},
           'requiredPoints':[{'id':'L','x':'0','y':'7'},{'id':'V','x':'5/2','y':'-11/2'},{'id':'R','x':'5','y':'7'}],
@@ -123,6 +123,34 @@ class EqualUnitSqueezedFrame(unittest.TestCase):
         inside=[-3.0,3.0,-3.0,3.0]
         for plan in ({},{'axisRatio':1},{'axisRatio':0.5}):
             self.assertEqual(graph_observer._ov_final_window(inside,plan),inside)
+
+
+
+class AsymptoteValueWrittenOnce(unittest.TestCase):
+    """2b, observer side: an overlay line that is the curve's own asymptote carries no label of its own when the family already writes its value (graph_observer._ov_asymptote_twin)."""
+
+    @staticmethod
+    def group(codes):
+        import xml.etree.ElementTree as ET
+        node=ET.Element('g')
+        for code in codes:ET.SubElement(node,'path',{'data-c':code})
+        return node
+
+    def test_a_family_label_with_the_same_value_is_a_twin(self):
+        line={'id':'v','kind':'VERTICAL','x':S(2)}
+        groups={'overlay-line-v-equation':self.group(['78','3D','32']),'rational-x':self.group(['78','3D','32'])}
+        self.assertTrue(graph_observer._ov_asymptote_twin(line,groups,'overlay-line-v-equation'))
+
+    def test_no_other_label_means_no_twin(self):
+        line={'id':'v','kind':'VERTICAL','x':S(2)}
+        self.assertFalse(graph_observer._ov_asymptote_twin(line,{'overlay-line-v-equation':self.group(['78','3D','32'])},'overlay-line-v-equation'))
+
+    def test_a_label_with_another_value_is_not_a_twin(self):
+        line={'id':'h','kind':'HORIZONTAL','slope':S(0),'intercept':S(1)}
+        groups={'rational-y':self.group(['79','3D','33'])}     # y=3
+        self.assertFalse(graph_observer._ov_asymptote_twin(line,groups,'overlay-line-h-equation'))
+        groups={'rational-y':self.group(['79','3D','31'])}     # y=1
+        self.assertTrue(graph_observer._ov_asymptote_twin(line,groups,'overlay-line-h-equation'))
 
 
 if __name__=='__main__':
