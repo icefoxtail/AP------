@@ -48,6 +48,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
     'archive/layout-materializer.js', 'archive/layout-authority.js', 'archive/render-authority.js',
     'archive/render-authority.css', 'archive/render-state-normalizer.js', 'archive/render-text.js', 'archive/render-feedback.js',
     'archive/print_guard.js', 'archive/print-runtime.js', 'archive/print-contract.js',
+    'archive/print-header-table.js', 'archive/print-header-table.css',
     'archive/print_image_optimizer.js', 'archive/native_print.js', 'archive/archive2-output.js',
     'archive/archive2-output-contract.js', 'archive/archive2-pdf-readiness.js',
     'archive/output-metadata-loader.js', 'archive/common-fast-runtime.js',
