@@ -1,0 +1,1537 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-25-wangui-m1-2final-candidate-v1",
+  "examUid": "25_왕의중_2학기_기말_중1_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+  "expectedSourceBlobSha1": "31ee398f5f349040a9cc6a28057f50b5afa254c6",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "reviewPassCount": 0,
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_810c1a4ac0e2a0e377be4ee138d578743af8b9e8aad30144dc1005cc2a683069",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "내각의 합을 두 번 연쇄 적용하고 각의 이등분 성질을 결합하는 기본 단계",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "삼각형 ABC에서 내각합으로 각 A=80도를 구하고, 각의 이등분선 성질로 각 DAC=40도를 구한 뒤 삼각형 ADC에서 내각합으로 각 ADC=80도를 계산한다.",
+        "decisiveStep": "각의 이등분선에 의해 나누어진 각 DAC의 크기 40도 산출",
+        "rpmPrimaryRecordId": "M1-RPM-197",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "다각형",
+        "rpmL3Label": "삼각형·다각형의 각",
+        "rpmL4Label": "각의 크기 계산",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR",
+        "why": "삼각형의 내각합과 각의 이등분선 조건을 이용하여 미지각을 계산하는 전형적 유형"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "각",
+          "이등분선"
+        ],
+        "goal": [
+          "각"
+        ],
+        "method": [
+          "내각의 합"
+        ],
+        "condition": []
+      },
+      "hold": "Official resolver: EXACT_ACTIVE_BINDING_PENDING; semantic path is final but canonical binding is pending; do not promote candidate PT/TPL to production until the shared add-only impact is reviewed."
+    },
+    {
+      "questionUid": "qid_v1_e8fde5f595a2b4fe8a0786a66684ca888c034ae2a318c65f7ea361a96aaedc05",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외각에서 내각으로의 변환과 6각형 내각의 합 공식을 순차적으로 적용하는 문제",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "외각의 크기 40도, 50도로부터 대응 내각 140도, 130도를 구하고 육각형 내각합 공식 720도에서 나머지 각들을 감산하여 x=105도를 도출한다.",
+        "decisiveStep": "육각형 내각합 720도에서 다섯 내각의 합 615도를 빼는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-194",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "다각형",
+        "rpmL3Label": "다각형의 내각과 외각",
+        "rpmL4Label": "내각의 합",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "why": "다각형의 내각과 외각의 합 공식을 복합 적용하여 미지각을 구하는 전형적 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "다각형",
+          "내각",
+          "외각"
+        ],
+        "goal": [
+          "각"
+        ],
+        "method": [
+          "내각의 합"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_0856fb2beba8e7a6faa39e7d4268d25f8f1446f3900b23fb439e704a72757ae6",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정다각형의 정의에서 변의 길이 조건과 각의 크기 조건의 동시 만족 필요성을 판별",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "정다각형의 정의가 변의 길이와 내각의 크기가 모두 같아야 함을 상기하여 마름모 반례로 선지 2번의 거짓을 판정한다.",
+        "decisiveStep": "변의 길이만 같고 내각이 다른 반례(마름모)를 식별하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-199",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "다각형",
+        "rpmL3Label": "정다각형",
+        "rpmL4Label": "정다각형의 성질",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "정다각형의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "why": "다각형 및 정다각형의 기본 정의와 대각선 성질 진술을 감사하는 표준 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "다각형",
+          "정다각형"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "정다각형의 성질"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_a4626f3b0075306b93980e14234cb82fea0d0fe0cea33e03cc28572acf485f18",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부채꼴의 비례 관계와 현의 비비례 관계를 정확히 구별해야 하는 개념 문제",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "같은 원에서 부채꼴의 호와 넓이는 중심각에 비례하지만 현의 길이는 비례하지 않고 삼각부등식 AC < 2AB를 만족함을 점검한다.",
+        "decisiveStep": "현의 길이가 중심각에 정비례하지 않는 성질을 판별하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-201",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "원과 부채꼴",
+        "rpmL3Label": "원과 부채꼴의 기본",
+        "rpmL4Label": "중심각·호·현",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+        "why": "호, 중심각, 현, 부채꼴 넓이의 비례/비비례 성질 진술을 대조 감사하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "원",
+          "호",
+          "중심각"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "성질"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_fc3a3be6c82961eaa3d4ca66a95b9f6c54364dfe4bd91ad3133979e3ea306654",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외각 공식과 대각선 공식을 순차적으로 정확히 연결하는 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "외각의 크기 36도로부터 n=360/36=10인 정십각형임을 찾고, 대각선 개수 공식 10*7/2=35를 적용한다.",
+        "decisiveStep": "외각의 합 360도를 이용해 n=10을 구하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-198",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "다각형",
+        "rpmL3Label": "삼각형·다각형의 각",
+        "rpmL4Label": "변·대각선 개수",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "변·대각선 개수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+        "why": "외각 조건으로 n을 구한 후 대각선 공식 n(n-3)/2를 연쇄 적용하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "정다각형",
+          "외각"
+        ],
+        "goal": [
+          "대각선"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_a84788785bfd3297fff902f43960d56acd367cd9391e4c708a1134bf3aa51519",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "conceptClusterKey": "SOLID_FIGURE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정다면체 5종의 정확한 면 모양과 꼭짓점/모서리 개수를 암기 및 판별해야 함",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "5종류 정다면체의 면의 모양과 꼭짓점·모서리 수를 체계적으로 비교하여 1번 정십이면체의 면 모양이 정오각형임을 판별한다.",
+        "decisiveStep": "정다면체 5가지의 면의 모양과 구성요소 수를 대조하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-209",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "다면체와 회전체",
+        "rpmL3Label": "정다면체",
+        "rpmL4Label": "정다면체의 종류",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "why": "정다면체의 면 모양, 꼭짓점, 모서리 관계 진술을 감사하는 표준 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "정다면체"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "성질"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_1c50a5ec95ea44d70c7a283aea973c43d9e7f19d0eecb90777bc5b77ff337b73",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "다각형 내각의 합 역산과 외각 계산의 2단계 기본 연계",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "내각의 합 1800도=(n-2)*180도로부터 n=12를 구하고, 한 외각 공식 360/12=30도를 계산한다.",
+        "decisiveStep": "내각합 방정식으로 n=12를 도출하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-196",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "다각형",
+        "rpmL3Label": "다각형의 내각과 외각",
+        "rpmL4Label": "정다각형의 각",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "why": "내각의 합으로 정다각형의 변 수를 구하고 외각의 크기를 도출하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "정다각형",
+          "내각"
+        ],
+        "goal": [
+          "외각"
+        ],
+        "method": [
+          "내각의 합"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_9a77d1bba4e0dc2bbbea0a2ac05177502949d7bbcf6fb0a1e8bebdff1523039f",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정삼각형의 성질을 기하적으로 착안하여 호의 중심각을 분할·합산해야 하는 3단계 문제",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "호의 교점과 한 변이 이루는 정삼각형 내각 60도를 이용해 경계 호 8개의 중심각이 각각 30도임을 파악하고 중심각 총합 240도로 둘레 8pi를 구한다.",
+        "decisiveStep": "경계 호 8개의 각 중심각 30도 및 총 중심각 240도 합성",
+        "rpmPrimaryRecordId": "M1-RPM-205",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "원과 부채꼴",
+        "rpmL3Label": "복합도형",
+        "rpmL4Label": "부채꼴을 포함한 둘레",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "why": "복합 원호의 중심각을 정삼각형 각 관계로 분해·합산하여 둘레를 구하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "정사각형",
+          "호",
+          "반지름"
+        ],
+        "goal": [
+          "둘레"
+        ],
+        "method": [
+          "부채꼴의 호의 길이"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_e89fb2e18d17d7306f3138fbfe09ebe68f85ad417508e78cafa31f9f5c0ffc7d",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "conceptClusterKey": "SOLID_FIGURE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "다면체별 면의 수 공식을 단순 적용하여 최댓값을 판별하는 기본 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "기둥(n+2), 뿔(n+1), 뿔대(n+2) 및 정다면체의 면의 개수 공식을 대입하여 칠각기둥의 면 9개가 최다임을 확인한다.",
+        "decisiveStep": "칠각기둥의 면의 개수 7+2=9개 계산",
+        "rpmPrimaryRecordId": "M1-RPM-207",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "다면체와 회전체",
+        "rpmL3Label": "다면체",
+        "rpmL4Label": "면·모서리·꼭짓점",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "다면체",
+          "l4": "면·모서리·꼭짓점"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+        "why": "기본 다면체들의 면, 모서리, 꼭짓점 수를 세어 극값을 비교하는 표준 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "다면체"
+        ],
+        "goal": [
+          "최댓값"
+        ],
+        "method": [
+          "개수"
+        ],
+        "condition": []
+      },
+      "hold": "Official resolver: EXACT_ACTIVE_BINDING_PENDING; semantic path is final but canonical binding is pending; do not promote candidate PT/TPL to production until the shared add-only impact is reviewed."
+    },
+    {
+      "questionUid": "qid_v1_1dbae554554a0de651f19147aba58cb4376b65ecea4e82ff4232a860161f5ead",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "conceptClusterKey": "SOLID_FIGURE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "회전체의 기본 축단면 형태를 즉시 매칭하는 1단계 개념 판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "5가지 대표 회전체의 축을 포함하는 단면 모양을 각각 대조하여 원기둥의 단면이 직사각형임을 판별한다.",
+        "decisiveStep": "원기둥을 축 포함 평면으로 자른 단면이 직사각형임을 확인하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-212",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "다면체와 회전체",
+        "rpmL3Label": "회전체",
+        "rpmL4Label": "회전체의 단면",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "회전체",
+          "l4": "회전체의 단면"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "why": "회전체를 축을 포함하는 평면으로 자른 단면의 기하적 모양을 판정하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "회전체",
+          "단면"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "성질"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_fcb8ff132020a116db8bba3ff23c8e5765d0f93fb7756aeb5edfee27fd9fa0df",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "구의 곡면 외에 단면 2개의 넓이를 누락 없이 챙겨야 하는 2단계 측정 계산",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "구의 겉넓이의 1/4인 곡면 36pi와 자른 자리에 생긴 두 반원의 합 36pi를 각각 구해 겉넓이 72pi를 합산한다.",
+        "decisiveStep": "잘린 면이 반원 2개(원 1개=36pi)로 추가 노출됨을 고려하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-217",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "입체도형의 겉넓이와 부피",
+        "rpmL3Label": "구",
+        "rpmL4Label": "구의 겉넓이",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 겉넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "why": "절단된 입체도형의 노출 곡면과 단면을 구분하여 합산하는 겉넓이 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "구",
+          "반지름"
+        ],
+        "goal": [
+          "겉넓이"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_b5b7c53719f57d573e21073ad20dbedc227f03221006fd36bdfb413ab9a99e1b",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "옆넓이로부터 미지수 반지름을 역추적한 뒤 겉넓이를 완성하는 2단계 계산",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "옆넓이 pi*r*l=40pi에 l=10을 대입하여 밑면 반지름 r=4를 구하고, 밑넓이 16pi를 더해 겉넓이 56pi를 완성한다.",
+        "decisiveStep": "옆넓이 공식으로부터 밑면 반지름 r=4cm를 역산하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-216",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "입체도형의 겉넓이와 부피",
+        "rpmL3Label": "뿔의 겉넓이와 부피",
+        "rpmL4Label": "원뿔",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "뿔의 겉넓이와 부피",
+          "l4": "원뿔"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "why": "원뿔의 전개도 구성요소(옆넓이, 밑넓이) 공식을 이용한 겉넓이 측정 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "원뿔",
+          "모선",
+          "옆넓이"
+        ],
+        "goal": [
+          "겉넓이"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_143117f139ebc89ec92d8b90cee1e082c5e4e603d041a613a43b11b60f47c0f2",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "내접 기하 관계(높이=6r) 설정 및 삼차 거듭제곱근 역산이 필요한 심화 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "원기둥의 높이가 6r임을 기하적으로 도출하고 부피식 6pi*r^3=162pi에서 r=3을 구한 뒤 구 겉넓이 4pi*r^2=36pi를 계산한다.",
+        "decisiveStep": "원기둥 높이 6r 설정 및 r^3=27을 통한 반지름 r=3cm 결정",
+        "rpmPrimaryRecordId": "M1-RPM-217",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "입체도형의 겉넓이와 부피",
+        "rpmL3Label": "구",
+        "rpmL4Label": "구의 겉넓이",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 겉넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT",
+        "why": "원기둥에 내접하는 복수 구의 기하적 구속조건으로 반지름을 복원하고 겉넓이를 구하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "원기둥",
+          "구",
+          "부피"
+        ],
+        "goal": [
+          "겉넓이"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": [
+          "접함"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_496f7885cc18718e08b54f018e10e3f70eda44c04d4de3d7ec41e997f29647e6",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "공간도형에서 삼각뿔의 밑면과 높이를 설정하고 부피의 비를 대수적으로 모델링하는 고난도 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "정육면체 부피 a^3과 모서리를 공유하는 삼각뿔 부피 (1/6)a^3의 비를 부피보존 법칙으로 계산하여 6개를 산출한다.",
+        "decisiveStep": "삼각뿔의 부피가 정육면체 부피의 1/6임을 구하는 단계",
+        "rpmPrimaryRecordId": "M1-RPM-215",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "입체도형의 겉넓이와 부피",
+        "rpmL3Label": "뿔의 겉넓이와 부피",
+        "rpmL4Label": "각뿔",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "뿔의 겉넓이와 부피",
+          "l4": "각뿔"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "why": "녹여 만드는 부피 보존 법칙을 적용하여 입체의 개수를 구하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "정육면체",
+          "삼각뿔",
+          "부피"
+        ],
+        "goal": [
+          "개수"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": [
+          "불변량"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_51760d8b403202cff83b873fd270722445cd9440175974d1617bc0e75bf86336",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평균, 중앙값, 최빈값의 정의를 정확히 적용하여 짝수개 중앙값을 계산하고 비교",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 모둠의 자료에서 각각 평균(5, 5), 중앙값(5, 4.5), 최빈값(5, 4)을 산출하고 A의 중앙값이 B보다 큼을 확인한다.",
+        "decisiveStep": "B모둠의 짝수개 변량 중앙값 (4+5)/2=4.5 산출 및 비교",
+        "rpmPrimaryRecordId": "M1-RPM-226",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "대푯값",
+        "rpmL3Label": "대푯값의 선택",
+        "rpmL4Label": "대푯값 비교",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "대푯값의 선택",
+          "l4": "대푯값 비교"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+        "why": "두 자료 집합의 세 가지 대푯값을 모두 계산하여 상호 대조하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "자료"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "평균",
+          "중앙값",
+          "최빈값"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_354b25a9a29404813e8d86da22917e429b648e77fee71e14b7551ad517451f99",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자료 정렬 후 평균, 중앙값, 최빈값을 누락 없이 각각 정확히 구하는 계산",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "10개 자료를 정렬하여 총합 70으로부터 평균 a=7, 5·6번째 평균으로 중앙값 b=7, 빈도 최대값으로 최빈값 c=5를 구한 뒤 a+b+c=19를 계산한다.",
+        "decisiveStep": "자료 정렬 후 5번째와 6번째 값(6과 8)의 평균으로 중앙값 7 산출",
+        "rpmPrimaryRecordId": "M1-RPM-226",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "대푯값",
+        "rpmL3Label": "대푯값의 선택",
+        "rpmL4Label": "대푯값 비교",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "대푯값의 선택",
+          "l4": "대푯값 비교"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+        "why": "한 자료 집합에서 세 가지 대푯값을 모두 구해 결합식을 계산하는 표준 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "자료"
+        ],
+        "goal": [
+          "합"
+        ],
+        "method": [
+          "평균",
+          "중앙값",
+          "최빈값"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_27a2b85bcd304b4a8a798e41cc37eeb38659e345908a9c0d86567f6bd9a6f90c",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "conceptClusterKey": "DATA_ORGANIZATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "줄기와 잎 그림에서 잎의 누적 개수로 중앙값 위치를 찾아 평균을 계산",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "20명의 줄기와 잎 그림에서 10번째 값 74점과 11번째 값 76점의 평균으로 중앙값 75점을 판정한다.",
+        "decisiveStep": "20명의 정렬 자료에서 중앙값 위치인 10번째(74)와 11번째(76) 식별",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "도수분포표와 상대도수",
+        "rpmL3Label": "분포 해석",
+        "rpmL4Label": "히스토그램·그래프 해석",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "crossConceptKeys": [
+          "CC_STEM_AND_LEAF_PLOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "why": "줄기와 잎 그림에서 중앙값, 순위, 도수를 종합 점검하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "줄기와잎"
+        ],
+        "goal": [
+          "중앙값"
+        ],
+        "method": [
+          "해석"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_e7ffbc45ff72c88c2537b73287a64a771a7f6616bd070c483352956f09b7d8f6",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "conceptClusterKey": "DATA_ORGANIZATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자료를 계급 구간별로 정확히 세고 계급의 일정한 크기를 확인하는 2단계 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "계급의 크기가 10분임을 이용해 마지막 계급의 끝값이 d=50이어야 함을 파악하여 d=60인 4번을 정답으로 판별한다.",
+        "decisiveStep": "계급의 크기(10분) 일치 원리로 d=50임을 판정",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "도수분포표와 상대도수",
+        "rpmL3Label": "분포 해석",
+        "rpmL4Label": "히스토그램·그래프 해석",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "crossConceptKeys": [
+          "CC_STEM_AND_LEAF_PLOT",
+          "CC_FREQUENCY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+        "why": "줄기와 잎 그림을 도수분포표로 변환하며 누락 계급과 도수를 대조하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "줄기와잎",
+          "도수분포표"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "해석"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_f297762864032ceae49fea877cbaa0735ac1acddb387be5ba5674cc0ccb09d35",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "conceptClusterKey": "DATA_ORGANIZATION",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "누락 도수를 전체 합으로 역산한 후 복합 조건(누적 구간 인원)을 비교 판별",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "전체 도수 50명에서 보이는 도수합 38명을 빼 찢어진 계급 도수 12명을 복원하고, 15분 미만(23명)이 20분 이상(15명)보다 많음을 확인한다.",
+        "decisiveStep": "찢어진 계급 도수 12명 산출 및 구간별 인원 비교(23명 > 15명)",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "도수분포표와 상대도수",
+        "rpmL3Label": "분포 해석",
+        "rpmL4Label": "히스토그램·그래프 해석",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "why": "히스토그램의 찢어진 계급 도수를 전체 합 조건으로 복원하고 사실을 검증하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "히스토그램",
+          "도수"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "해석"
+        ],
+        "condition": [
+          "부분"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_01bd5f8c4a125fd6f87e9b9710dbfbe47c73598eb466a0b3f2e7a453c1c9496e",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 집단의 여러 계급 도수를 동시에 비교하고 백분율과 누적 순위를 복합 해석",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 반의 도수 합이 각각 25명임을 확인하고, 17초 이상 구간의 도수 합 1+2=3명을 계산하여 3번 진술의 참을 판별한다.",
+        "decisiveStep": "17초 이상 계급의 두 반 도수 합 1+2=3명 산출",
+        "rpmPrimaryRecordId": "M1-RPM-232",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "도수분포표와 상대도수",
+        "rpmL3Label": "분포 해석",
+        "rpmL4Label": "두 집단 비교",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "두 집단 비교"
+        },
+        "crossConceptKeys": [
+          "CC_PERCENTAGE_CALCULATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "why": "두 반의 계급별 도수표에서 전체 인원과 특정 구간의 인원수를 비교해 진술을 판별하므로 집단별 인원 비교 템플릿을 선택한다."
+      },
+      "item4slot": {
+        "given": [
+          "도수분포다각형"
+        ],
+        "goal": [
+          "판정"
+        ],
+        "method": [
+          "해석"
+        ],
+        "condition": [
+          "집단"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_0b96a5aa1893f7f5ed1d42d2d2d732c53908bf581d3a9ff4b7a49b4a06e73bfd",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "곡선(큰 호, 작은 호)과 직선(두 반지름의 차)을 모두 합산해야 하는 서답형 문항",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "중심각 60도에서 큰 호 4pi와 작은 호 2pi를 구하고 곧은 두 변 12를 더해 총 둘레 (6pi+12)cm를 서술한다.",
+        "decisiveStep": "두 호의 길이 합 6pi와 곧은 선분 2개의 합 12를 합산",
+        "rpmPrimaryRecordId": "M1-RPM-205",
+        "rpmL1Label": "평면도형",
+        "rpmL2Label": "원과 부채꼴",
+        "rpmL3Label": "복합도형",
+        "rpmL4Label": "부채꼴을 포함한 둘레",
+        "rpmPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "why": "복합 부채꼴 띠의 호와 선분을 구분하여 둘레를 구하는 서술형 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "부채꼴",
+          "반지름",
+          "중심각"
+        ],
+        "goal": [
+          "둘레"
+        ],
+        "method": [
+          "부채꼴의 호의 길이"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_74fdfe6c789753805e162d65e2c9c1e0c11230e71b9b1fd64f0e2ac55efa5d07",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평면도형의 회전체를 입체도형(반구, 원뿔)의 차로 공간 분할 추론해야 하는 고난도 서술형",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "사분원 회전체인 반구(18pi)에서 직각삼각형 회전체인 원뿔(9pi)을 빼어 활꼴 회전체의 부피 9pi를 도출한다.",
+        "decisiveStep": "활꼴의 회전체를 반구와 원뿔의 부피 차이로 모델링",
+        "rpmPrimaryRecordId": "M1-RPM-219",
+        "rpmL1Label": "입체도형",
+        "rpmL2Label": "입체도형의 겉넓이와 부피",
+        "rpmL3Label": "복합입체도형",
+        "rpmL4Label": "잘라낸 입체",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "why": "회전체의 차이를 이용하여 절단된 복합 입체의 부피를 구하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "부채꼴",
+          "회전체",
+          "반지름"
+        ],
+        "goal": [
+          "부피"
+        ],
+        "method": [
+          "공식"
+        ],
+        "condition": [
+          "차"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_f317807ca0ff5ea5f088301f55bf99d9dfdf8603c3616dcd115d332fdf87ec54",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "최빈값의 논리적 조건과 평균 방정식을 연립하여 미지수를 복원하는 서술형",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "네 변량이 모두 다름에서 최빈값이 x임을 파악하고, 평균식 (200+x)/5=x를 세워 일차방정식으로 x=50을 구한다.",
+        "decisiveStep": "최빈값이 x가 되어야 함을 추론하고 일차방정식 4x=200을 해결",
+        "rpmPrimaryRecordId": "M1-RPM-222",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "대푯값",
+        "rpmL3Label": "평균",
+        "rpmL4Label": "평균을 이용한 미지수",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "평균",
+          "l4": "평균을 이용한 미지수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "why": "평균과 최빈값 일치 구속조건으로부터 자료의 누락값을 복원하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "자료"
+        ],
+        "goal": [
+          "값"
+        ],
+        "method": [
+          "평균",
+          "최빈값"
+        ],
+        "condition": [
+          "상등"
+        ]
+      },
+      "hold": ""
+    },
+    {
+      "questionUid": "qid_v1_603d92121ddb577424e5235857ba091ec2ecc33de6f9acbc6653e6ecd1bcdff6",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "상대도수 합=1을 통한 결측값 복원, 전체 인원 역산, 누적 구간 인원 산출의 3단계 서술",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "상대도수 합이 1임을 이용해 6~8km 상대도수 0.18을 구하고 전체 인원 N=36/0.18=200명을 도출한 뒤 6km 이상 인원 200*0.42=84명을 계산한다.",
+        "decisiveStep": "도수 36명과 상대도수 0.18로부터 전체 인원 200명 복원",
+        "rpmPrimaryRecordId": "M1-RPM-229",
+        "rpmL1Label": "통계",
+        "rpmL2Label": "도수분포표와 상대도수",
+        "rpmL3Label": "상대도수",
+        "rpmL4Label": "상대도수 계산",
+        "rpmPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "상대도수",
+          "l4": "상대도수 계산"
+        },
+        "crossConceptKeys": [
+          "CC_FREQUENCY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "resolverValidation": "PASS"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "why": "계급 도수와 상대도수를 매칭하여 전체 인원을 복원하고 구간 도수를 계산하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "도수분포표",
+          "상대도수"
+        ],
+        "goal": [
+          "개수"
+        ],
+        "method": [
+          "해석"
+        ],
+        "condition": []
+      },
+      "hold": ""
+    }
+  ]
+}

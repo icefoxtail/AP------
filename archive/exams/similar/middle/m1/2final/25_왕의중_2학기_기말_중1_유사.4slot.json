@@ -1,0 +1,3458 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+  "sourceGitBlobSha": "31ee398f5f349040a9cc6a28057f50b5afa254c6",
+  "sourceSha256": "d851ce51fe35f3e50ab9eb526dc1718c86551344500eb744ea1289f4673f4abd",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "build_wangui_4slot",
+    "at": "2026-11-11T17:29:21.309Z",
+    "role": "stage-local 4-slot author; self-check only",
+    "modelProvenance": {
+      "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+      "expectedModel": "gpt-6-luna",
+      "expectedReasoningEffort": "xhigh",
+      "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+    }
+  },
+  "stage": "CREATE_4SLOT_STAGE_LOCAL",
+  "review": {
+    "status": "PASS",
+    "independentReview": "PASS",
+    "scope": "24/24 semantic 4-slot review; Q16/Q17 corrections checked against exact baseline",
+    "reviewedBy": "independent subagent review",
+    "reviewedAt": "2026-11-11T20:53:27Z",
+    "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+    "evidenceBaselineSha256": "c8382b74bc8e800425df66c63d98a05c0d30aa9480a36c6ae4fe6d88e1234c0c",
+    "note": "Review report is bound to the exact prior candidate; final artifact differs only by source-local review/handoff/validation status and artifact reference."
+  },
+  "selfCheck": {
+    "status": "AUTHOR_SELF_CHECK_COMPLETED",
+    "itemsChecked": 24,
+    "checksPerItem": 6,
+    "sourceRead": "All 24 final stems, choices and solutions read directly; no source JS edits and no screen/browser inspection.",
+    "method": "Literal evidence written from final student-visible source text. Dictionary semantic entries and aliases checked directly. PT/TPL/RPM metadata not used to choose slots.",
+    "visualReview": "NOT_RUN",
+    "identityBinding": "24/24 questionUid values recomputed with official questionUidForSource and match official candidate metadata; question_identity_map registration remains pending.",
+    "registration": "NOT_RUN"
+  },
+  "scope": {
+    "items": 24,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "operation": "CREATE",
+    "before": null,
+    "after": "stage-local 4-slot draft with author self-check and literal source evidence",
+    "reason": "Required companion annotation for final 24-item similar exam candidate."
+  },
+  "handoff": {
+    "status": "REGISTER_PENDING",
+    "nextOwner": "authorized identity-map / registration owner",
+    "firstMissingStep": "question_identity_map registration and production metadata registration",
+    "productionIntegration": "NOT_RUN",
+    "notes": [
+      "All 24 records passed independent 4-slot semantic review after the Q16 and Q17 pinpoint corrections; see /tmp/grade1-review/wangui25-4slot-final-independent-review.json.",
+      "The 4-slot file remains archive-meta-4slot-v0 stage-local evidence and is not an operational compact; no production integration or registration is claimed.",
+      "Official questionUid values are derived for all 24 items; question_identity_map registration remains pending.",
+      "Screen/browser/render/capture review was not run under the user waiver."
+    ],
+    "artifactRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.4slot.json",
+    "revision": "stage-local-4slot-v4-independent-review-pass"
+  },
+  "candidates": [
+    {
+      "term": "삼각형의내각의합",
+      "en": "TRIANGLE_INTERIOR_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "내각",
+      "note": "삼각형의 세 내각의 합이 180°라는 성질.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        1
+      ]
+    },
+    {
+      "term": "다각형의내각의합",
+      "en": "POLYGON_INTERIOR_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "내각",
+      "note": "n각형의 내각의 합이 (n−2)×180°라는 성질.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        2,
+        7
+      ]
+    },
+    {
+      "term": "다각형의외각의합",
+      "en": "POLYGON_EXTERIOR_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "외각",
+      "note": "볼록다각형의 각 꼭짓점에서 택한 바깥쪽 외각의 합이 360°라는 성질.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "term": "보각",
+      "en": "SUPPLEMENTARY_ANGLES",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "각",
+      "note": "두 각의 크기의 합이 180°가 되는 관계.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        2
+      ]
+    },
+    {
+      "term": "삼각형의세변의길이관계",
+      "en": "TRIANGLE_SIDE_LENGTH_INEQUALITY",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "삼각형",
+      "note": "삼각형의 어느 한 변의 길이는 나머지 두 변의 길이의 합보다 작다. 현행 삼각부등식(id 76)은 TRIGONOMETRIC_INEQUALITY이므로 다른 개념이다.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        4
+      ]
+    },
+    {
+      "term": "정십이면체",
+      "en": "REGULAR_DODECAHEDRON",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "정다면체",
+      "note": "서로 합동인 정오각형 12개를 면으로 갖는 정다면체.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        6
+      ]
+    },
+    {
+      "term": "정이십면체",
+      "en": "REGULAR_ICOSAHEDRON",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "정다면체",
+      "note": "서로 합동인 정삼각형 20개를 면으로 갖는 정다면체.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        6
+      ]
+    },
+    {
+      "term": "반구",
+      "en": "HEMISPHERE",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "구",
+      "note": "구를 중심을 지나는 평면으로 이등분한 한쪽 입체.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        10,
+        22
+      ]
+    },
+    {
+      "term": "부채꼴띠",
+      "en": "ANNULAR_SECTOR",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "부채꼴",
+      "note": "중심과 중심각이 같고 반지름이 다른 두 부채꼴 사이의 띠 모양 영역.",
+      "status": "CANDIDATE",
+      "usedIn": [
+        21
+      ]
+    }
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$",
+            "termId": 158
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\overline{AD}$는 $\\angle A$의 이등분선이다.",
+            "termId": 717
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ADC$의 크기는?",
+            "termId": 174
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형의내각의합",
+            "src": "solution",
+            "quote": "세 내각의 크기의 합은 $180^\\circ$",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "세 내각의 크기의 합은 $180^\\circ$",
+            "evidenceType": "NAMED",
+            "termId": 714
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "$\\overline{AD}$가 $\\angle A$의 이등분선이므로",
+            "evidenceType": "NAMED",
+            "termId": 717
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\overline{AD}$는 $\\angle A$의 이등분선이다.",
+            "termId": 717
+          },
+          {
+            "term": "위치관계",
+            "src": "stem",
+            "quote": "점 $D$는 변 $BC$ 위에 있다.",
+            "termId": 307
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형 ABC의 내각합으로 A를 정하고 각이등분으로 DAC를 구한 뒤 삼각형 ADC의 내각합을 다시 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_810c1a4ac0e2a0e377be4ee138d578743af8b9e8aad30144dc1005cc2a683069",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 1
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "010c9fb3b4347550fc9aeb031e0ec4edd18ce33b856e8e022bc1d495164948ef"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e62f33ec03befd760b88fdcdd81de868bcb1c9d91112c4df58be38e1936525e4"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "어느 육각형에서",
+            "termId": 168
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "두 꼭짓점의 바깥쪽 외각",
+            "termId": 715
+          },
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "나머지 네 내각의 크기",
+            "termId": 714
+          }
+        ],
+        "goal": [
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기는?",
+            "termId": 714
+          }
+        ],
+        "method": [
+          {
+            "term": "보각",
+            "src": "solution",
+            "quote": "180^\\circ - 40^\\circ &= 140^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "한 꼭짓점의 내각과 바깥쪽 외각이 180°를 이루므로 외각을 180°에서 뺀다.",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "180^\\circ - 40^\\circ &= 140^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "보각 관계를 사용하여 내각을 정한다.",
+            "termId": 174
+          },
+          {
+            "term": "다각형의내각의합",
+            "src": "solution",
+            "quote": "(6-2) \\times 180^\\circ",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "육각형의 여섯 내각의 합이",
+            "evidenceType": "NAMED",
+            "termId": 714
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 외각을 보각인 내각으로 바꾸고 육각형 내각합 720°에서 알려진 다섯 내각을 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e8fde5f595a2b4fe8a0786a66684ca888c034ae2a318c65f7ea361a96aaedc05",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 2
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a0d248a1fd4c0e5ea899214078b9360d9b9e389ac76b5a711a6e7f672bde54ed"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b0934f70bede7e56509a995ddf406dfdbbb77c71fb2e331f07465d404415138f"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "다각형에 대한 설명",
+            "termId": 168
+          },
+          {
+            "term": "정다각형",
+            "src": "choices",
+            "quote": "항상 정다각형이다.",
+            "termId": 169
+          },
+          {
+            "term": "대각선",
+            "src": "choices",
+            "quote": "대각선의 개수는 $(n-3)$개이다.",
+            "termId": 310
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "정다각형",
+            "src": "solution",
+            "quote": "정다각형은 '모든 변의 길이가 같고 모든 내각의 크기가 같은 다각형'이다.",
+            "evidenceType": "NAMED",
+            "termId": 169
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "정사각형이 아닌 마름모는 네 변의 길이가 모두 같지만",
+            "evidenceType": "IMPLIED",
+            "justification": "변의 길이가 모두 같아도 정다각형이 아닌 마름모를 반례로 든다.",
+            "termId": 243
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선의 개수는 } n-3",
+            "evidenceType": "NAMED",
+            "termId": 310
+          },
+          {
+            "term": "다각형의외각의합",
+            "src": "solution",
+            "quote": "모든 다각형의 외각의 크기의 합은",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "모든 다각형의 외각의 크기의 합은",
+            "evidenceType": "NAMED",
+            "termId": 715
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "삼각형의 개수는 } n-2",
+            "evidenceType": "IMPLIED",
+            "justification": "한 꼭짓점에서 그은 대각선으로 n각형이 n−2개의 삼각형으로 분할됨을 쓴다.",
+            "termId": 335
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정다각형의 정의와 반례, 한 꼭짓점의 대각선 수, 외각합, 삼각형 분할 수로 다섯 선지를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_0856fb2beba8e7a6faa39e7d4268d25f8f1446f3900b23fb439e704a72757ae6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 3
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70ca0fad50dc5b3b512f696d5dcfc963d8a530b70c5a8c59882b7afbf93cdd91"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c4c175da107a8eac661d947b515ccd0be77c7962e66ecec6eb4b3d9ea9990500"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "한 원 $O$에서",
+            "termId": 152
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "세 호의 길이가",
+            "termId": 155
+          },
+          {
+            "term": "현",
+            "src": "choices",
+            "quote": "$\\overline{AC} = 2\\overline{AB}$",
+            "termId": 154
+          },
+          {
+            "term": "부채꼴",
+            "src": "choices",
+            "quote": "부채꼴 $AOC$의 넓이",
+            "termId": 156
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "같은 크기의 호는 같은 중심각과 같은 현에 대응한다.",
+            "evidenceType": "NAMED",
+            "termId": 724
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "같은 크기의 호는 같은 중심각과 같은 현에 대응한다.",
+            "evidenceType": "NAMED",
+            "termId": 154
+          },
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "부채꼴의 넓이는 중심각에 비례하므로",
+            "evidenceType": "NAMED",
+            "termId": 741
+          },
+          {
+            "term": "삼각형의세변의길이관계",
+            "src": "solution",
+            "quote": "삼각형 ABC에서 AC<AB+BC=2AB이므로",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 ABC에서 AC<AB+BC=2AB이므로",
+            "evidenceType": "NAMED",
+            "termId": 158
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호 AC는 호 AB와 BC를 합친 것이므로",
+            "evidenceType": "NAMED",
+            "termId": 155
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "연속한 같은 크기의 호이다.",
+            "termId": 346
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "원 O 위에 이 순서대로 놓여 있고",
+            "termId": 29
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "이 세 호를 합친 호 AD는 반원보다 짧다.",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 호에 대응하는 중심각·현, 중심각에 비례하는 부채꼴 넓이, 호의 합을 확인하고 현 AC=2AB는 삼각형의 세 변 관계로 배제한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a4626f3b0075306b93980e14234cb82fea0d0fe0cea33e03cc28572acf485f18",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 4
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1f8215b9e232eb67f0e2d29d7bead504a33266a373f9b54309b1a880f3aab3b5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d74a0d3e6bb4bad34520f9c1ef16107737b4f43d0e70973c654657c501e5823"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "모든 변의 길이와 모든 내각의 크기가 같다.",
+            "termId": 169
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "한 외각의 크기는 $36^\\circ$이다.",
+            "termId": 715
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "다각형의 대각선의 개수는?",
+            "termId": 310
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "대각선의 개수는?",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "다각형의외각의합",
+            "src": "solution",
+            "quote": "정다각형의 외각의 크기의 합은 항상 $360^\\circ$",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "정다각형의 외각의 크기의 합은 항상 $360^\\circ$",
+            "evidenceType": "NAMED",
+            "termId": 715
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선의 개수 구하는 공식 $\\dfrac{n(n-3)}{2}$",
+            "evidenceType": "NAMED",
+            "termId": 310
+          }
+        ],
+        "condition": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "모든 변의 길이와 모든 내각의 크기가 같다.",
+            "termId": 169
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외각합을 한 외각으로 나누어 변의 수 10을 정하고 n(n−3)/2로 대각선 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fc3a3be6c82961eaa3d4ca66a95b9f6c54364dfe4bd91ad3133979e3ea306654",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 5
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "45e68601230f356c28cba9f14ddce16d872704344f20fd15609ae8845fa6d5ef"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "30d7757f2a80d261e2d84f64a2092573c1b095c8f2cac5f0ae0eaafb02f4888f"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정다면체",
+            "src": "stem",
+            "quote": "정다면체에 대한 설명",
+            "termId": 413
+          },
+          {
+            "term": "정십이면체",
+            "src": "choices",
+            "quote": "정십이면체의 각 면의 모양은 정오각형이다.",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "정팔면체",
+            "src": "choices",
+            "quote": "정팔면체의 모서리의 개수",
+            "termId": 602
+          },
+          {
+            "term": "정사면체",
+            "src": "choices",
+            "quote": "정사면체뿐이다.",
+            "termId": 600
+          },
+          {
+            "term": "정이십면체",
+            "src": "choices",
+            "quote": "정이십면체의 꼭짓점의 개수",
+            "status": "CANDIDATE"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "정다면체",
+            "src": "solution",
+            "quote": "정다면체 5가지의 면의 모양, 꼭짓점의 개수, 모서리의 개수를 점검한다.",
+            "evidenceType": "NAMED",
+            "termId": 413
+          },
+          {
+            "term": "면",
+            "src": "solution",
+            "quote": "정십이면체의 면의 모양은 정오각형이다.",
+            "evidenceType": "NAMED",
+            "termId": 330
+          },
+          {
+            "term": "모서리",
+            "src": "solution",
+            "quote": "정팔면체의 모서리의 개수는",
+            "evidenceType": "NAMED",
+            "termId": 329
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "정이십면체의 꼭짓점의 개수는",
+            "evidenceType": "NAMED",
+            "termId": 311
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정다면체 다섯 종류의 면 모양과 꼭짓점·모서리 수, 한 꼭짓점에 모이는 면의 수를 직접 대조한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a84788785bfd3297fff902f43960d56acd367cd9391e4c708a1134bf3aa51519",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 6
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db8e03619fb1a17405a43dce0b12c47a79971fb7a728b92ebd11eb605bdb2c8a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a17014df373625c2a1c4fc0be63b7992dfa221d384150fe6557df37f5bfeaf8e"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "정다각형의 한 외각",
+            "termId": 169
+          },
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "내각의 크기의 합이 $1800^\\circ$",
+            "termId": 714
+          }
+        ],
+        "goal": [
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "한 외각의 크기는?",
+            "termId": 715
+          }
+        ],
+        "method": [
+          {
+            "term": "다각형의내각의합",
+            "src": "solution",
+            "quote": "내각의 크기의 합은 $(n-2) \\times 180^\\circ$",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "내각의 크기의 합은 $(n-2) \\times 180^\\circ$",
+            "evidenceType": "NAMED",
+            "termId": 714
+          },
+          {
+            "term": "다각형의외각의합",
+            "src": "solution",
+            "quote": "모든 외각의 크기의 합은 $360^\\circ$",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "모든 외각의 크기의 합은 $360^\\circ$",
+            "evidenceType": "NAMED",
+            "termId": 715
+          }
+        ],
+        "condition": [
+          {
+            "term": "정다각형",
+            "src": "stem",
+            "quote": "정다각형의 한 외각",
+            "termId": 169
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내각합 공식으로 변의 수 12를 정하고 외각합 360°를 12로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1c50a5ec95ea44d70c7a283aea973c43d9e7f19d0eecb90777bc5b77ff337b73",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 7
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "47fd9cb37239edb6c06a10b7a204db2fa533f585b20b5d84d1ae522ac72815b6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fdbff32fe63d4bc766da60477f33fc7e000e5544cc27e3e0cba7de71b5b150a2"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형의 각 꼭짓점을 중심으로",
+            "termId": 166
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "원호 8개로 이루어져 있다.",
+            "termId": 155
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름이 $6\\,\\mathrm{cm}$",
+            "termId": 153
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "중심각이 각각 $30^\\circ$",
+            "termId": 724
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "색칠한 도형의 둘레의 길이는?",
+            "termId": 214
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "한 원호의 길이는 2π×6×(30/360)=π cm이다.",
+            "evidenceType": "NAMED",
+            "termId": 155
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "색칠한 도형의 둘레를 이루는 원호는 모두 8개이다.",
+            "evidenceType": "NAMED",
+            "termId": 214
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "원호 8개로 이루어져 있다.",
+            "termId": 129
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "중심각이 각각 $30^\\circ$",
+            "termId": 346
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름 6, 중심각 30°인 원호 한 개의 길이를 구하고 둘레를 구성하는 동일한 원호 8개를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9a77d1bba4e0dc2bbbea0a2ac05177502949d7bbcf6fb0a1e8bebdff1523039f",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 8
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a252e08ad915b41b5f16c77a505b3ba845a0e3a10a5dbdb006709d3f723fd47b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d41a730e304ff199f96992d14f62850e8cf6fb8f34e4ae437bd0d7db40875f7"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "choices",
+            "quote": "정사면체",
+            "termId": 600
+          },
+          {
+            "term": "각뿔",
+            "src": "choices",
+            "quote": "오각뿔",
+            "termId": 713
+          },
+          {
+            "term": "각뿔대",
+            "src": "choices",
+            "quote": "육각뿔대",
+            "termId": 411
+          },
+          {
+            "term": "각기둥",
+            "src": "choices",
+            "quote": "칠각기둥",
+            "termId": 410
+          },
+          {
+            "term": "정팔면체",
+            "src": "choices",
+            "quote": "정팔면체",
+            "termId": 602
+          }
+        ],
+        "goal": [
+          {
+            "term": "다면체",
+            "src": "stem",
+            "quote": "면의 개수가 가장 많은 다면체는?",
+            "termId": 170
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "면의 개수가 가장 많은",
+            "termId": 127
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "면의 개수",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "면",
+            "src": "solution",
+            "quote": "각 다면체의 면의 개수를 구하면",
+            "evidenceType": "NAMED",
+            "termId": 330
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "면의 개수를 비교하면 $4 < 6 < 8 = 8 < 9$",
+            "evidenceType": "NAMED",
+            "termId": 28
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각뿔·각뿔대·각기둥·정다면체의 면 수를 각각 세고 최댓값을 주는 다면체를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e89fb2e18d17d7306f3138fbfe09ebe68f85ad417508e78cafa31f9f5c0ffc7d",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 9
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ce37123ed697f3c3c9f87d7baec8aa36b313af7bf57384ad3d0fc384f30f4e96"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1d0f0c82212629b96ec8a0de94b63405cbe628454f38891447ceec23fa457c98"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "단면의 모양이 직사각형인 회전체는?",
+            "termId": 172
+          },
+          {
+            "term": "구",
+            "src": "choices",
+            "quote": "구",
+            "termId": 415
+          },
+          {
+            "term": "원뿔",
+            "src": "choices",
+            "quote": "원뿔",
+            "termId": 712
+          },
+          {
+            "term": "원뿔대",
+            "src": "choices",
+            "quote": "원뿔대",
+            "termId": 412
+          },
+          {
+            "term": "반구",
+            "src": "choices",
+            "quote": "반구",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "원기둥",
+            "src": "choices",
+            "quote": "원기둥",
+            "termId": 711
+          }
+        ],
+        "goal": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "단면의 모양이 직사각형인 회전체는?",
+            "termId": 172
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 회전축을 포함하는 평면으로 자른",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "단면",
+            "src": "solution",
+            "quote": "회전축을 포함하는 평면으로 잘랐을 때 생기는 단면의 모양을 조사한다.",
+            "evidenceType": "NAMED",
+            "termId": 334
+          },
+          {
+            "term": "원기둥",
+            "src": "solution",
+            "quote": "회전축을 포함하는 단면이 직사각형인 회전체는 원기둥이다.",
+            "evidenceType": "NAMED",
+            "termId": 711
+          }
+        ],
+        "condition": [
+          {
+            "term": "평면",
+            "src": "stem",
+            "quote": "회전축을 포함하는 평면으로 자른",
+            "termId": 146
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "단면의 모양이 직사각형",
+            "termId": 165
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 회전체의 축을 포함하는 단면을 비교하여 직사각형을 만드는 원기둥을 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1dbae554554a0de651f19147aba58cb4376b65ecea4e82ff4232a860161f5ead",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 10
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b18aa090da87e98cb7f48f7662f174d736261b0f92d441e1cfa1fbac7fd1535f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99340618f528ab375b827b32f1779e8024db9ef6b08aeac31e41588c01c37386"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "구를 4등분한 입체도형",
+            "termId": 415
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 $6\\,\\mathrm{cm}$",
+            "termId": 153
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "입체도형의 겉넓이는?",
+            "termId": 220
+          }
+        ],
+        "method": [
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "겉넓이는 둥근 곡면의 넓이와 잘린 두 평면(반원 2개)의 넓이의 합이다.",
+            "evidenceType": "NAMED",
+            "termId": 220
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "\\dfrac{1}{4} \\times 4\\pi r^2",
+            "evidenceType": "IMPLIED",
+            "justification": "구를 합동인 네 부분으로 나누므로 곡면 넓이를 구 겉넓이의 1/4로 정한다.",
+            "termId": 335
+          },
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "두 반원의 넓이의 합은",
+            "evidenceType": "NAMED",
+            "termId": 620
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원 $1$개의 넓이와 같다.",
+            "evidenceType": "NAMED",
+            "termId": 213
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "중심을 지나는 서로 수직인 두 평면",
+            "termId": 179
+          },
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "중심을 지나는 서로 수직인 두 평면",
+            "termId": 356
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "서로 합동인 네 조각",
+            "termId": 193
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구 곡면의 1/4에 잘려 드러난 반원 두 개의 넓이를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fcb8ff132020a116db8bba3ff23c8e5765d0f93fb7756aeb5edfee27fd9fa0df",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 11
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99f07afad210de33e688dcd97060454bc3f38ec9703dd3ec7d114ac5ee42b117"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "014aead6728006a5ecb5410559c7d27194dafe1418378e412d0b1f758c52dfb6"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔의 겉넓이는?",
+            "termId": 712
+          },
+          {
+            "term": "모선",
+            "src": "stem",
+            "quote": "모선의 길이가 $10\\,\\mathrm{cm}$",
+            "termId": 414
+          },
+          {
+            "term": "옆넓이",
+            "src": "stem",
+            "quote": "옆넓이가 $40\\pi\\,\\mathrm{cm}^2$",
+            "termId": 652
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "원뿔의 겉넓이는?",
+            "termId": 220
+          }
+        ],
+        "method": [
+          {
+            "term": "옆넓이",
+            "src": "solution",
+            "quote": "옆넓이는 $\\pi r l$이므로",
+            "evidenceType": "NAMED",
+            "termId": 652
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "10\\pi r &= 40\\pi",
+            "evidenceType": "IMPLIED",
+            "justification": "옆넓이 식 πrl=40π에서 l=10을 넣고 반지름 r의 일차방정식을 푼다.",
+            "termId": 64
+          },
+          {
+            "term": "밑넓이",
+            "src": "solution",
+            "quote": "원뿔의 밑넓이는",
+            "evidenceType": "NAMED",
+            "termId": 653
+          },
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "겉넓이는 옆넓이와 밑넓이의 합이므로",
+            "evidenceType": "NAMED",
+            "termId": 220
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "옆넓이와 모선으로 반지름을 역산하고 원의 밑넓이를 구해 옆넓이와 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b5b7c53719f57d573e21073ad20dbedc227f03221006fd36bdfb413ab9a99e1b",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 12
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "57a3c88337b7e68bed87f5e7b4a191eea4af13b4b8774baeea7509809497b3b0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b19c17b14fd2b0f78ff6d3de13aa17180103ddda75a57856f5c554b80809e6b5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "원기둥 안에 같은 크기의 공 3개",
+            "termId": 711
+          },
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "같은 크기의 공 3개",
+            "termId": 415
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "부피가 $162\\pi\\,\\mathrm{cm}^3$",
+            "termId": 219
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "공 1개의 겉넓이는?",
+            "termId": 220
+          }
+        ],
+        "method": [
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "원기둥의 높이는 공 $3$개의 지름의 합과 같다.",
+            "evidenceType": "NAMED",
+            "termId": 708
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "\\pi r^2 \\times 6r &= 162\\pi",
+            "evidenceType": "NAMED",
+            "termId": 219
+          },
+          {
+            "term": "세제곱근",
+            "src": "solution",
+            "quote": "r^3 &= 27",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 반지름의 세제곱이 27이므로 세제곱근 3을 선택한다.",
+            "termId": 562
+          },
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "\\text{겉넓이} &= 4\\pi r^2",
+            "evidenceType": "NAMED",
+            "termId": 220
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "같은 크기의 공 3개",
+            "termId": 346
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "각 공은 원기둥의 옆면에 접하고, 가장 위의 공과 가장 아래의 공은 각각 원기둥의 위·아래 밑면에 접한다.",
+            "termId": 182
+          },
+          {
+            "term": "배치",
+            "src": "stem",
+            "quote": "세로로 서로 맞닿게 쌓았다.",
+            "termId": 315
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접한 세 공의 지름 합으로 원기둥 높이 6r을 만들고 부피식으로 r을 정한 뒤 구 겉넓이 공식을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_143117f139ebc89ec92d8b90cee1e082c5e4e603d041a613a43b11b60f47c0f2",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 13
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2c55e3deb6e74d07ffeba4dbf4391f7a7b20b476b9a0c7641746f226f7b0d3f3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27b5eb098976cf14ebc7b0fe9e45a0cf98365b2a1c6d06c7fac42535083c0944"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "한 변의 길이가 $a$인 정육면체",
+            "termId": 601
+          },
+          {
+            "term": "각뿔",
+            "src": "stem",
+            "quote": "삼각뿔 모양의 부품",
+            "termId": 713
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형",
+            "termId": 606
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "밑면에 대한 높이는 $a$이다.",
+            "termId": 218
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "부품을 최대 몇 개",
+            "termId": 129
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최대 몇 개 만들 수 있는가?",
+            "termId": 127
+          }
+        ],
+        "method": [
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "V_{\\text{삼각뿔}} &= \\dfrac{1}{3} \\times \\text{밑넓이} \\times \\text{높이}",
+            "evidenceType": "NAMED",
+            "termId": 219
+          },
+          {
+            "term": "밑넓이",
+            "src": "solution",
+            "quote": "\\dfrac{1}{2} \\times a \\times a",
+            "evidenceType": "NAMED",
+            "termId": 653
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "\\dfrac{V_{\\text{정육면체}}}{V_{\\text{삼각뿔}}}",
+            "evidenceType": "IMPLIED",
+            "justification": "재료 부피를 부품 하나의 부피로 나눈 비가 만들 수 있는 부품 수이다.",
+            "termId": 289
+          }
+        ],
+        "condition": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "정육면체 한 면의 절반",
+            "termId": 650
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "밑면에 대한 높이는 $a$이다.",
+            "termId": 346
+          },
+          {
+            "term": "불변량",
+            "src": "stem",
+            "quote": "제작 손실이 없을 때",
+            "termId": 317
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정육면체 부피와 삼각뿔 부피를 각각 구한 뒤 손실 없는 부피 보존 아래 두 부피의 비를 취한다."
+      },
+      "steps": [],
+      "scenarioNote": "정육면체 재료를 녹여 삼각뿔 부품을 제작한다.",
+      "questionUid": "qid_v1_496f7885cc18718e08b54f018e10e3f70eda44c04d4de3d7ec41e997f29647e6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 14
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f822950a687adeb8035daf8db6e17b24074bf7a1d0d1341d5f4b1295390614d6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1e7394258d30319d0dec48407111031aa6b4ff69ebc5c0ba7295504bfb69362"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "두 모둠 A, B의 자료이다.",
+            "termId": 261
+          },
+          {
+            "term": "집단",
+            "src": "stem",
+            "quote": "두 모둠 A, B의 자료이다.",
+            "termId": 350
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "알 수 있는 것으로 옳은 것은?",
+            "termId": 132
+          },
+          {
+            "term": "대푯값",
+            "src": "choices",
+            "quote": "A모둠의 독서 권수의 중앙값은 B모둠의 중앙값보다 크다.",
+            "termId": 265
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "각각의 평균, 중앙값, 최빈값을 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 262
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "각각의 평균, 중앙값, 최빈값을 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 263
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "각각의 평균, 중앙값, 최빈값을 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 264
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "A모둠의 중앙값}(5) > \\text{B모둠의 중앙값}(4.5)",
+            "evidenceType": "NAMED",
+            "termId": 28
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 집단의 평균·중앙값·최빈값을 구해 선지와 대조하고 두 집단 중앙값의 대소를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 모둠의 독서 권수 자료를 비교한다.",
+      "questionUid": "qid_v1_51760d8b403202cff83b873fd270722445cd9440175974d1617bc0e75bf86336",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 15
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3607fb88f1b15f7ffa6df9419d2b165d924a97cdf5bc01e7e9ebcdb32839a2fa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef22e5e454ca6917144e7946547f1f6510b55605efe601a20700a3a774d8c68b"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "학생 10명의 턱걸이 횟수를 조사한 것이다.",
+            "termId": 261
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균을 $a$회",
+            "termId": 262
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "중앙값을 $b$회",
+            "termId": 263
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "최빈값을 $c$회",
+            "termId": 264
+          }
+        ],
+        "goal": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "평균을 $a$회, 중앙값을 $b$회, 최빈값을 $c$회",
+            "termId": 265
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "변량을 작은 것부터 차례대로 나열하면",
+            "evidenceType": "IMPLIED",
+            "justification": "자료를 작은 순서로 정렬하여 중앙의 두 값을 찾는다.",
+            "termId": 29
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "a &= \\dfrac{70}{10} = 7",
+            "evidenceType": "NAMED",
+            "termId": 262
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "평균이 중앙값 $b$이다.",
+            "evidenceType": "NAMED",
+            "termId": 263
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "가장 많이 나타난 값은 $5$(3회)이므로 최빈값 $c$",
+            "evidenceType": "NAMED",
+            "termId": 264
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "학생 10명의 턱걸이 횟수",
+            "termId": 129
+          }
+        ]
+      },
+      "reasons": {
+        "method": "10개 자료를 정렬하고 평균, 가운데 두 값의 평균인 중앙값, 최빈값을 구해 세 대푯값을 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "동아리 학생들의 턱걸이 횟수이다.",
+      "questionUid": "qid_v1_354b25a9a29404813e8d86da22917e429b648e77fee71e14b7551ad517451f99",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 16
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bfe60895fafcc026c7730c268deaf5059da8a7f2b8cf6a0d1f10e10efe15439f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19d2a809efc9c1bbc1bed11848e9dc8111d9a7897cf7d058f48dc7db000393e9"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "줄기와잎",
+            "src": "stem",
+            "quote": "다음 줄기와 잎 그림은",
+            "termId": 268
+          },
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "학생들의 수학 성적을 조사하여 나타낸 것이다.",
+            "termId": 261
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "알 수 있는 것으로 옳은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "줄기와잎",
+            "src": "solution",
+            "quote": "줄기와 잎 그림에서 전체 학생 수는",
+            "evidenceType": "NAMED",
+            "termId": 268
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값은 (74+76)/2=75점이다.",
+            "evidenceType": "NAMED",
+            "termId": 263
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "74점과 87점이 각각 두 번씩 나타나므로 최빈값은",
+            "evidenceType": "NAMED",
+            "termId": 264
+          },
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "80점 이상인 학생은 8명",
+            "evidenceType": "IMPLIED",
+            "termId": 732,
+            "justification": "줄기와 잎 그림에서 80점 이상인 잎 8개를 세어 학생 수를 구한다."
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "높은 점수부터 98, 95, 92, 87, ... 순이므로",
+            "evidenceType": "NAMED",
+            "termId": 29
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "줄기와 잎의 자릿값으로 자료를 복원하고 학생 수, 중앙값, 최빈값, 80점 이상 도수, 내림차순 네 번째 값을 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생들의 수학 성적 자료이다.",
+      "questionUid": "qid_v1_27a2b85bcd304b4a8a798e41cc37eeb38659e345908a9c0d86567f6bd9a6f90c",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 17
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e069ebd182644ad8b400b60192a261634dc0cda35650c6383754771a28fc090"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b095d2d6ea89266e9c4ecfbe8ab02008f70ed914f4adf4e439ea5e1cba4e6f9d"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "줄기와잎",
+            "src": "stem",
+            "quote": "줄기와 잎 그림이다.",
+            "termId": 268
+          },
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "이 자료를 도수분포표로 옮길 때",
+            "termId": 266
+          }
+        ],
+        "goal": [
+          {
+            "term": "도수",
+            "src": "stem",
+            "quote": "표에 들어갈 수로 옳지 않은 것은?",
+            "termId": 732
+          },
+          {
+            "term": "계급",
+            "src": "stem",
+            "quote": "표에 들어갈 수로 옳지 않은 것은?",
+            "termId": 418
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "각 줄기별 잎의 개수를 세어 계급별 도수를 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 732
+          },
+          {
+            "term": "계급",
+            "src": "solution",
+            "quote": "마지막 계급은 $40$ 이상 $50$ 미만이어야 한다.",
+            "evidenceType": "NAMED",
+            "termId": 418
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "전체 학생 수 $e$는 각 계급의 도수의 합이므로",
+            "evidenceType": "NAMED",
+            "termId": 286
+          }
+        ],
+        "condition": [
+          {
+            "term": "계급",
+            "src": "stem",
+            "quote": "계급의 크기는 모두 10분으로 같다.",
+            "termId": 418
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "0 이상 ~ 10 미만",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "줄기별 잎 수를 계급의 도수로 옮기고 10분인 계급 크기로 끝 경계를 정한 뒤 전체 도수를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "하루 스마트폰 사용 시간 자료이다.",
+      "questionUid": "qid_v1_e7ffbc45ff72c88c2537b73287a64a771a7f6616bd070c483352956f09b7d8f6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 18
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac90e3130a026b09f15af812df8d16d82350e20819e788f9fd2ad9381f1f5c7a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a01e2b4d13c0d2977e6dd77fc8daa4d8ab8e91fdf85c4185433c922a6469955"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "히스토그램",
+            "src": "stem",
+            "quote": "히스토그램에서",
+            "termId": 416
+          },
+          {
+            "term": "도수",
+            "src": "stem",
+            "quote": "보이는 계급의 도수가 각각",
+            "termId": 732
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명으로 옳지 않은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "보이는 다섯 계급의 학생 수의 합을 빼서 찢어진 계급의 도수를 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 732
+          },
+          {
+            "term": "계급",
+            "src": "solution",
+            "quote": "계급의 크기는 } 5-0 = 5",
+            "evidenceType": "NAMED",
+            "termId": 418
+          },
+          {
+            "term": "누적도수",
+            "src": "solution",
+            "quote": "4 + 7 + 12 = 23",
+            "evidenceType": "IMPLIED",
+            "justification": "15분 미만의 연속한 계급 도수를 누적하여 해당 학생 수를 구한다.",
+            "termId": 733
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "23 > 15",
+            "evidenceType": "NAMED",
+            "termId": 28
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "학생 $50$명",
+            "termId": 129
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$15$분 이상 $20$분 미만인 계급",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 50명에서 알려진 도수합을 빼 결측 도수를 복원하고 계급 폭·개수·최빈 계급을 확인하며 두 시간 범위의 도수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "등교 시간 히스토그램의 막대 하나가 가려진 상황이다.",
+      "questionUid": "qid_v1_f297762864032ceae49fea877cbaa0735ac1acddb387be5ba5674cc0ccb09d35",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 19
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "48ed3d00b59f0e41c0d461010099a192a256dbdcc6d80528c9ed5065ec96c42a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e87dd7fe9ec069c39780c1e83c9a5bf855f581ca11aa689c7757ce59ffb7e335"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포다각형",
+            "src": "stem",
+            "quote": "도수분포다각형으로 나타낼 때",
+            "termId": 417
+          },
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "계급별 학생 수를 표로 정리하였다.",
+            "termId": 266
+          },
+          {
+            "term": "집단",
+            "src": "stem",
+            "quote": "두 반의 100 m 달리기 기록",
+            "termId": 350
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "두 반의 계급별 도수를 비교한다.",
+            "evidenceType": "NAMED",
+            "termId": 732
+          },
+          {
+            "term": "상대도수",
+            "src": "solution",
+            "quote": "비율은 4/25×100=16%이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해당 계급들의 도수합을 전체 도수로 나눈 상대도수를 백분율로 바꾼다.",
+            "termId": 267
+          },
+          {
+            "term": "누적도수",
+            "src": "solution",
+            "quote": "네 번째까지이다. 다섯 번째 학생은 14초 이상 15초 미만 계급",
+            "evidenceType": "IMPLIED",
+            "justification": "빠른 기록부터 계급 도수를 누적해 다섯 번째 학생이 속한 계급을 찾는다.",
+            "termId": 733
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "B반에서 가장 큰 도수는",
+            "evidenceType": "NAMED",
+            "termId": 28
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "12 이상 ~ 13 미만",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 집단의 전체 도수, 특정 구간 도수와 백분율, 최대 도수를 비교하고 누적도수로 다섯 번째 순위의 계급을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 반의 100m 달리기 기록을 비교한다.",
+      "questionUid": "qid_v1_01bd5f8c4a125fd6f87e9b9710dbfbe47c73598eb466a0b3f2e7a453c1c9496e",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 20
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d131537ca4c74a83a8d343e68ce6cd4a19d15f791e48952719dc728e9d6d4059"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ec48c25cd277dab1f094378cb466c90a5faedc2c508abf4c8a9ffcc333365bc"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴띠",
+            "src": "stem",
+            "quote": "부채꼴 띠의 둘레",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 띠의 둘레",
+            "termId": 156
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "중심각이 $60^\\circ$",
+            "termId": 724
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "안쪽 반지름이 $6\\,\\mathrm{cm}$, 바깥쪽 반지름이 $12\\,\\mathrm{cm}$",
+            "termId": 153
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레 길이를 구하는 과정",
+            "termId": 214
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "바깥쪽 호의 길이는 $2\\pi\\times12\\times(60/360)=4\\pi$",
+            "evidenceType": "NAMED",
+            "termId": 155
+          },
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "곧은 선분은 각각 $12-6=6$ cm",
+            "evidenceType": "NAMED",
+            "termId": 144
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "부채꼴 띠의 둘레는 바깥쪽 호, 안쪽 호, 그리고 두 반지름 사이의 선분 두 개의 길이를 더해 구한다.",
+            "evidenceType": "NAMED",
+            "termId": 214
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "안팎의 호 길이를 각각 구하고 두 반지름 차인 곧은 경계 선분 두 개를 함께 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_0b96a5aa1893f7f5ed1d42d2d2d732c53908bf581d3a9ff4b7a49b4a06e73bfd",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 21
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "39551ea9a460d9c11dc2f310e3752bcff5eea3c6a3e2fe5f28d521fb6f36b76e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad5a005bb3ba00116021c4e62a111f92ea2ce67edb90105f06211adc6459e67f"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "사분원(중심각 $90^\\circ$)",
+            "termId": 621
+          },
+          {
+            "term": "활꼴",
+            "src": "stem",
+            "quote": "호 $AB$와 현 $AB$로 둘러싸인 활꼴 부분",
+            "termId": 710
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "현 $AB$를 그었을 때",
+            "termId": 154
+          }
+        ],
+        "goal": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "생기는 회전체의 부피",
+            "termId": 172
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "회전체의 부피를 구하는 과정",
+            "termId": 219
+          }
+        ],
+        "method": [
+          {
+            "term": "회전체",
+            "src": "solution",
+            "quote": "사분원 전체를 회전축 $l$을 중심으로 $1$회전 시키면",
+            "evidenceType": "NAMED",
+            "termId": 172
+          },
+          {
+            "term": "반구",
+            "src": "solution",
+            "quote": "반구의 부피에서 원뿔의 부피를 뺀 것과 같다.",
+            "evidenceType": "NAMED",
+            "status": "CANDIDATE"
+          },
+          {
+            "term": "구",
+            "src": "solution",
+            "quote": "\\dfrac{1}{2} \\times \\left(\\dfrac{4}{3}\\pi r^3\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "반구 부피를 구 부피의 절반으로 구한다.",
+            "termId": 415
+          },
+          {
+            "term": "원뿔",
+            "src": "solution",
+            "quote": "원뿔의 부피를 구하면",
+            "evidenceType": "NAMED",
+            "termId": 712
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "회전체의 부피는 반구의 부피에서 원뿔의 부피를 뺀 것과 같다.",
+            "evidenceType": "NAMED",
+            "termId": 219
+          }
+        ],
+        "condition": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "한 반지름을 포함하는 직선 $l$을 회전축으로 하여 $1$회전 시켰을 때",
+            "termId": 172
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사분원과 직각이등변삼각형을 같은 반지름 직선 주위로 회전시킨 반구·원뿔을 식별하고 두 부피의 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_74fdfe6c789753805e162d65e2c9c1e0c11230e71b9b1fd64f0e2ac55efa5d07",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 22
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4713098fa79eca7476dc44cc19444032f8240ff074bbdea0c8070029b2e09006"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "57143f39c545e040ad70b6ae78ca281f914a418fe93db2667d3f4fe9bd275311"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "5회에 걸친 쪽지시험 성적을 조사한 자료",
+            "termId": 261
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x$의 값을",
+            "termId": 745
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x$의 값을",
+            "termId": 745
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값을",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "최빈값이 존재하려면 $x$는 이 네 값 중 하나와 같아야 한다.",
+            "evidenceType": "NAMED",
+            "termId": 264
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "\\dfrac{200 + x}{5} &= x",
+            "evidenceType": "NAMED",
+            "termId": 262
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "4x &= 200",
+            "evidenceType": "IMPLIED",
+            "justification": "평균=(200+x)/5와 최빈값 x를 같게 놓은 일차방정식을 푼다.",
+            "termId": 64
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=50$일 때 자료는 $30, 45, 50, 50, 75$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 x를 자료에 되돌려 평균과 최빈값이 모두 50임을 확인한다.",
+            "termId": 53
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "평균과 최빈값이 같을 때",
+            "termId": 346
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "5회에 걸친 쪽지시험 성적",
+            "termId": 129
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기존 네 값이 서로 다르므로 유일한 반복값이 될 x가 최빈값임을 먼저 정하고 평균과의 등식으로 x를 구한 뒤 검산한다."
+      },
+      "steps": [],
+      "scenarioNote": "민우의 다섯 번 쪽지시험 점수이다.",
+      "questionUid": "qid_v1_f317807ca0ff5ea5f088301f55bf99d9dfdf8603c3616dcd115d332fdf87ec54",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 23
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd02aff53d96cbe9da456fe1663adf41fb9576bfb492ee0a0f1317ae76b30218"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef29d0c20dac16c361d4e0f4c05339e9953703da6713e1adba36aa04fa86d650"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "다음 상대도수 분포표",
+            "termId": 266
+          },
+          {
+            "term": "상대도수",
+            "src": "stem",
+            "quote": "다음 상대도수 분포표",
+            "termId": 267
+          },
+          {
+            "term": "도수",
+            "src": "stem",
+            "quote": "| 6 이상 ~ 8 미만 | 36 |",
+            "termId": 732
+          }
+        ],
+        "goal": [
+          {
+            "term": "도수",
+            "src": "stem",
+            "quote": "통학 거리가 6 km 이상인 학생 수",
+            "termId": 732
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "학생 수를 구하는 과정",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "상대도수",
+            "src": "solution",
+            "quote": "상대도수의 총합은 항상 $1$",
+            "evidenceType": "NAMED",
+            "termId": 267
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "N &= \\dfrac{36}{0.18}",
+            "evidenceType": "IMPLIED",
+            "justification": "도수=전체 도수×상대도수 관계를 역으로 써 전체 도수를 구한다.",
+            "termId": 650
+          },
+          {
+            "term": "도수",
+            "src": "solution",
+            "quote": "\\text{학생 수} &= 200 \\times 0.42",
+            "evidenceType": "NAMED",
+            "termId": 732
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "통학 거리가 6 km 이상인 학생 수",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "상대도수 합 1로 빈 계급의 상대도수를 복원하고 36÷0.18로 전체 도수를 정한 뒤 6km 이상 세 계급의 상대도수 합 0.42를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생들의 통학 거리 자료이다.",
+      "questionUid": "qid_v1_603d92121ddb577424e5235857ba091ec2ecc33de6f9acbc6653e6ecd1bcdff6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.js",
+          "sourceOrdinal": 24
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "questionUid was computed by official questionUidForSource; the source row is not yet materialized in question_identity_map.json."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9586ff8777d706ca2dfa77fe315e61d7ca4451bc4054756afc562dc934dd7b2c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c57ef3831016a08824ed8a2e2e8fdb380d989950356b153c2875c7af9348a345"
+        }
+      ],
+      "judgedBy": {
+        "agent": "build_wangui_4slot",
+        "at": "2026-11-11T17:29:21.309Z",
+        "role": "stage-local 4-slot author; self-check only",
+        "modelProvenance": {
+          "status": "PENDING_PARENT_CONFIGURATION_CONFIRMATION",
+          "expectedModel": "gpt-6-luna",
+          "expectedReasoningEffort": "xhigh",
+          "note": "Exact runtime model was not exposed in this worker context; parent must confirm the spawn configuration before recording it as verified."
+        }
+      },
+      "review": {
+        "status": "PASS",
+        "independentReview": "PASS",
+        "scope": "4-slot semantics",
+        "evidenceRef": "/tmp/grade1-review/wangui25-4slot-final-independent-review.json",
+        "note": "Included in full independent 24-item review; Q16/Q17 correction follow-up passed."
+      },
+      "selfCheck": {
+        "goalHasNoMethodWords": true,
+        "decisiveSolutionStepsCovered": true,
+        "distinguishingStructureIncluded": true,
+        "givenUsesMostSpecificAvailableConcepts": true,
+        "explicitConstraintsCovered": true,
+        "judgedFromDirectStemChoicesSolution": true,
+        "note": "Directly read final stem, all choices, and solution; annotations not derived from PT/TPL/RPM. Text-only scope, no visual inspection."
+      }
+    }
+  ],
+  "validation": {
+    "at": "2026-11-11T22:12:21Z",
+    "command": "node tools/4slot/validate-4slot.cjs archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사.4slot.json",
+    "result": {
+      "status": "PASS",
+      "fail": [],
+      "warn": [],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 231
+      }
+    },
+    "evidenceRef": "/tmp/grade1-review/wangui25-4slot-current-validation-v2.txt",
+    "scope": "Current source bound, all literal quotes and coverage checked. This mechanical PASS is separate from the independent semantic review and production registration."
+  },
+  "contracts": [
+    {
+      "path": "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md",
+      "sha256": "ac4e8d4453fd5bd2d1b62308964ef3f483bdaca494b8702491614e4782e9bd0b"
+    },
+    {
+      "path": "docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md",
+      "sha256": "18ce60b06176f5de912fe58a4a58c7cd8a29fb5e7e6433b5e97492379cc1dea8"
+    },
+    {
+      "path": "docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md",
+      "sha256": "ff92c1aa5f8ee8f9c4e5bc6b16d188fddf7df19f26ffeaa406909491bbf1109e"
+    },
+    {
+      "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+      "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be"
+    }
+  ],
+  "sourceBindingHistory": [
+    {
+      "sourceSha256": "be3569a90e23be52c417fb011392a6fb30dc093ea84cc17598ffc624eeb61666",
+      "sourceGitBlobSha": "885454e84f29c726c3c553109d234fa387096a13",
+      "event": "Initial direct reading of all 24 final stems, choices, and solutions."
+    },
+    {
+      "sourceSha256": "9da964cd22c5416253211805dd9d30a23649a28cd950f0efaacbe018e44437f8",
+      "sourceGitBlobSha": "fec515a34c8d1784d542da3cb90f1ec84e6c2ed4",
+      "event": "Source file changed while authoring. All 24 stems, choices and solutions compared to saved direct-text extraction; zero changes. Recomputed final-source QBODY/QFULL; all source image fields absent."
+    },
+    {
+      "sourceSha256": "f08895151fa6be7f8964b5c3158bbaee0e4cadb450a69911348c7db8fa4a18ee",
+      "sourceGitBlobSha": "daa0afaaf4a3db5a2f8c68f314d2b40051566e3e",
+      "event": "Official resolver metadata fields were inserted after each item’s points field. No stem, choices, answer or solution fields were changed in that edit; the current source was mechanically revalidated for all literal quotes and fingerprints."
+    },
+    {
+      "at": "2026-11-11T18:03:24.060Z",
+      "sourceSha256": "4caa8f255dca95d4d04e436db01725122318d04591aa4c97e63066ccf50645a3",
+      "sourceGitBlobSha": "4e478e2ed0f96727d7db66b00c75f3896cc60d2b",
+      "previousSourceSha256": "f08895151fa6be7f8964b5c3158bbaee0e4cadb450a69911348c7db8fa4a18ee",
+      "previousSourceGitBlobSha": "daa0afaaf4a3db5a2f8c68f314d2b40051566e3e",
+      "event": "Formatting-only Q15/Q20 choice refresh. All prior literal quote substrings remain present unchanged. Old-choice QBODY/QFULL reconstruction matches all 24 prior fingerprints, proving no stem, answer, solution or image changes. No new answer/solution analysis; existing author self-check and UNREVIEWED statuses preserved.",
+      "scope": [
+        15,
+        20
+      ],
+      "priorArtifact": {
+        "path": "/tmp/grade1-review/wangui25-4slot-before-choice-format-refresh.json",
+        "sha256": "6966f7fce2d23d0f247765fc7100aaf020a4473bf77f08b0a4696f39f2934982"
+      },
+      "fingerprintChanges": [
+        {
+          "sourceOrdinal": 15,
+          "field": "fingerprints",
+          "before": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "f81df8a622d3875ea077792f8609bed75ea8ab3d779806c4eb75cadb7715350b"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "78654c19b5b57829c057b857017e62d1aec47ba5d4cf2e25ca4ab12a0c22a9ff"
+            }
+          ],
+          "after": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "3607fb88f1b15f7ffa6df9419d2b165d924a97cdf5bc01e7e9ebcdb32839a2fa"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "ef22e5e454ca6917144e7946547f1f6510b55605efe601a20700a3a774d8c68b"
+            }
+          ],
+          "reason": "Choices wrapped in LaTeX text mode, with percentage escaped in Q20; mathematical content unchanged."
+        },
+        {
+          "sourceOrdinal": 20,
+          "field": "fingerprints",
+          "before": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "c67805d664bd4240330c3a91cd8602e8297471cd34f92ea294696f7ac1248e27"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "9f9b70d9af40bd8c138b3a7e5b5e17d4df82507dea22f3c2b5e8c8a8ec52e41a"
+            }
+          ],
+          "after": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "d131537ca4c74a83a8d343e68ce6cd4a19d15f791e48952719dc728e9d6d4059"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "3ec48c25cd277dab1f094378cb466c90a5faedc2c508abf4c8a9ffcc333365bc"
+            }
+          ],
+          "reason": "Choices wrapped in LaTeX text mode, with percentage escaped in Q20; mathematical content unchanged."
+        }
+      ]
+    },
+    {
+      "at": "2026-11-11T20:15:26.070Z",
+      "sourceSha256": "d851ce51fe35f3e50ab9eb526dc1718c86551344500eb744ea1289f4673f4abd",
+      "sourceGitBlobSha": "31ee398f5f349040a9cc6a28057f50b5afa254c6",
+      "previousSourceSha256": "4caa8f255dca95d4d04e436db01725122318d04591aa4c97e63066ccf50645a3",
+      "previousSourceGitBlobSha": "4e478e2ed0f96727d7db66b00c75f3896cc60d2b",
+      "event": "Rebound stage-local 4-slot evidence to current candidate JS after metadata-only Q10 template correction and Q18 route correction. Independent byte comparison confirmed all 24 student-visible stems, choices, answers, solutions and image references unchanged. Every questionUid recomputed via official questionUidForSource and matches candidate metadata; identity-map registration remains pending.",
+      "scope": [
+        10,
+        18
+      ]
+    }
+  ]
+}
