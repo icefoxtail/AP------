@@ -159,6 +159,7 @@ def compose(prepared,layout,viewport,fragments=None):
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
             if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
+            if label.get('axisValue') in ('x','y'):binding+=f' data-axis-value="{label["axisValue"]}" data-axis-source-x="{num(label["axisAnchor"][0])}" data-axis-source-y="{num(label["axisAnchor"][1])}"'   # (AXV) bound to its own value on that axis
             # A plain-text or unit label of a plane mark keeps what it says on its group, so the observer can read it back from the final SVG.
             if label.get('nearRoom')=='NONE':binding+=' data-near-room="NONE"'
             if label.get('bindText'):binding+=(f' data-tex="{esc(label["tex"])}"' if label.get('math') else f' data-text="{esc(label["text"])}"')
@@ -168,6 +169,7 @@ def compose(prepared,layout,viewport,fragments=None):
         attrs=f'id="{oid}" data-label-kind="{esc(label["kind"])}" data-priority="{label.get("priority",2)}" x="{num(x)}" y="{num(y)}" font-size="{num(font)}"'
         attrs+=owner_attrs(label)
         if label.get('nearRoom')=='NONE':attrs+=' data-near-room="NONE"'
+        if label.get('axisValue') in ('x','y'):attrs+=f' data-axis-value="{label["axisValue"]}" data-axis-source-x="{num(label["axisAnchor"][0])}" data-axis-source-y="{num(label["axisAnchor"][1])}"'
         if label['kind']=='TICK_LABEL':
             attrs+=f' data-visual-role="tick-label" data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'
             if label.get('tickPiValue') is not None:attrs+=f' data-tick-pi-value="{esc(label["tickPiValue"])}"'

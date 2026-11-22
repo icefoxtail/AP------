@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const review = require('../apmath/student/archive-review-output.js');
 const contract = require('../archive/archive2-output-contract.js');
 const output = require('../archive/archive2-output.js');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 const base = 'https://archive.test/apmath/student/index.html';
 const payload = {
   questions: [{ id: 1, questionUid: 'q-old', content: 'issued question', answer: '2', solution: 'issued solution', image: 'data:image/png;base64,AAAA' }],
@@ -175,5 +176,5 @@ test('student app, manifest, service worker, and version endpoint advance togeth
   const staticVersions = [...html.matchAll(/\?v=(\d{4}\.\d{2}\.\d{2}\.\d+)/g)].map(m => m[1]);
   assert.ok(staticVersions.length > 0, 'index.html static resources carry a ?v= release version');
   assert.deepEqual([...new Set(staticVersions)], [appVersion], 'every ?v= release version in index.html equals STUDENT_APP_VERSION');
-  assert.match(html, /archive2-output\.js\?v=20261003-student-output-s4-1/);
+  assertLoads(html, 'archive2-output.js', 'html');
 });

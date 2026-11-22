@@ -114,6 +114,48 @@ const registryFixture = [
   { label: 'Unrelated playground', args: ['--test', 'apmath/playground/next/tools/catalog.test.mjs'], timeout: 60000 },
 ];
 
+test('screen and docs files select a PR-only screen group; Worker bundles and non-PR events stay full', () => {
+  for (const file of ['archive/archive2-navigation.css', 'archive/archive2-library.js', 'archive/css/ap-table.css', 'archive/index.html', 'docs/agents/token-efficiency.md', 'README.md']) {
+    const scope = classifyPaths([file]);
+    assert.equal(scope.mode, 'archive-screen', file);
+    assert.deepEqual(scope.groups, ['screen']);
+    assert.equal(classifyPaths([file], { exists: () => false }).mode, 'full', 'deleted input is conservative');
+  }
+  // Worker bundle, shared JS, producers, data and any unclassified file keep the full suite, alone or mixed with screen files.
+  for (const file of ['archive/archive2-canonical.js', 'archive/archive2-core.js', 'archive/archive2-history.js', 'archive/archive2-output.js',
+    'archive/mixer-selector.js', 'archive/data/archive2-catalog.json', 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json',
+    'archive/tools/anything.html', 'shared/js/api.js']) {
+    assert.notEqual(classifyPaths([file]).mode, 'archive-screen', file);
+    assert.notEqual(classifyPaths(['archive/archive2-navigation.css', file]).mode, 'archive-screen', 'mixed with ' + file);
+  }
+  // Chrome checks follow only archive UI code; a docs-only change skips them.
+  const css = 'archive/archive2-navigation.css', doc = 'docs/agents/token-efficiency.md';
+  assert.equal(scopeChecks({ ...classifyPaths([css]), changedFiles: [css] }).runtimeChrome, true);
+  assert.equal(scopeChecks({ ...classifyPaths([css]), changedFiles: [css] }).runtimeContract, true);
+  assert.equal(scopeChecks({ ...classifyPaths([doc]), changedFiles: [doc] }).runtimeChrome, false);
+  assert.equal(scopeChecks({ ...classifyPaths([doc]), changedFiles: [doc] }).workerDependencies, true, 'technical scopes keep Worker dependencies installed');
+});
+
+test('screen scope selects only tests that name the changed file, directly or through a helper, and push stays full', t => {
+  const f = fixture(t, { 'archive/archive2-navigation.css': 'a{}' });
+  assert.equal(f.plan().mode, 'archive-screen');
+  assert.equal(planCiScope({ root: f.root, eventName: 'push', event: { before: f.baseSha }, expectedSha: f.headSha }).mode, 'full', 'main push keeps the full suite');
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'screen-select-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const put = (file, text) => { fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true }); fs.writeFileSync(path.join(root, file), text); };
+  put('tests/direct.test.js', "read('archive/archive2-navigation.css')");
+  put('tests/helpers/loader.cjs', "module.exports = ['archive2-navigation.css']");
+  put('tests/via-helper.test.js', "require('./helpers/loader.cjs')");
+  put('tests/unrelated.test.js', "read('archive/archive2-history.css')");
+  const registry = ['direct', 'via-helper', 'unrelated'].map(name => ({ label: name, args: ['--test', 'tests/' + name + '.test.js'] }));
+  const scope = { ...classifyPaths(['archive/archive2-navigation.css']), changedFiles: ['archive/archive2-navigation.css'] };
+  assert.deepEqual(selectTechnicalCommands(scope, registry, root).map(row => row.label), ['direct', 'via-helper']);
+  const commands = commandsForScope({ ...scope, mode: 'archive-screen' }, registry, root);
+  assert.ok(commands.some(args => args.join(' ') === 'archive/tools/build-archive2-catalog.mjs --package-only'));
+  const none = commandsForScope({ ...scope, changedFiles: ['archive/other.css'] }, registry, root);
+  assert.ok(!none.some(args => args.join(' ') === 'archive/tools/build-archive2-catalog.mjs --package-only'), 'no selected test, no package build');
+});
+
 test('technical group union uses registered Consumer, retry and gate commands without broadening to unrelated projects', () => {
   const scope = classifyPaths([metadataFile, 'tools/ci/archive-registration-writer.mjs']);
   assert.equal(scope.mode, 'archive-technical');
@@ -146,11 +188,11 @@ test('long native suites retain bounded identical full and scoped budgets withou
   const text=read('tools/run-tests.js'),boundary=text.indexOf('\nif (args.length) {\n  const { runScopedTests }');
   assert.ok(boundary>0);
   const registry=await vm.runInNewContext(text.slice(0,boundary)+
-    '\nreturn [...tests.map(file=>({label:`tests/${file}`,args:[`tests/${file}`],timeout:jsTestTimeout(file)})),...requiredCommands.map(command=>({...command,timeout:command.timeout??60000}))];\n}\nmain();',{
+    '\nreturn [...tests.map(file=>({label:`tests/${file}`,args:[`tests/${file}`],timeout:jsTestTimeout(file)})),...requiredCommands.map(command=>({...command,timeout:command.timeout??REQUIRED_COMMAND_TIMEOUT_MS}))];\n}\nmain();',{
       __dirname:path.join(repo,'tools'),process:{argv:['node','run-tests.js'],env:{}},
       require:name=>name==='child_process'?{spawnSync(){throw Error('registry inspection must not execute commands');}}:createRequire(import.meta.url)(name),
     });
-  for(const [file,timeout] of [['tests/archive-main-merge-meta.test.mjs',300000],['tests/meta-foundation-middle-geometry-runtime.test.js',300000],['tests/archive2-compose-scope.test.js',180000],['tests/item-4slot-m3-renderer-hold.test.cjs',60000]]) {
+  for(const [file,timeout] of [['tests/archive-main-merge-meta.test.mjs',300000],['tests/meta-foundation-middle-geometry-runtime.test.js',300000],['tests/archive2-compose-scope.test.js',180000],['tests/item-4slot-m3-renderer-hold.test.cjs',180000]]) {
     const matches=registry.filter(command=>command.args.includes(file));assert.equal(matches.length,1,file);assert.equal(matches[0].timeout,timeout,file);
     const selected=selectTechnicalCommands(classifyPaths(['tools/ci/archive-registration-writer.mjs']),registry).filter(command=>command.args.includes(file));
     assert.equal(selected.length,1,`scoped command: ${file}`);assert.equal(selected[0].timeout,timeout,file);
@@ -158,7 +200,7 @@ test('long native suites retain bounded identical full and scoped budgets withou
   assert.equal(registry.find(command=>command.args.includes('tests/archive-pr-native-preview.test.mjs')).timeout,300000);
   assert.ok(registry.every(command=>Number.isSafeInteger(command.timeout)&&command.timeout>0&&command.timeout<=300000));
   assert.equal((text.match(/timeout: jsTestTimeout\(file\)/g)||[]).length,2,'full and scoped JS use the same bounded mapping');
-  assert.equal((text.match(/timeout: command\.timeout \?\? 60000/g)||[]).length,2,'full and scoped explicit commands preserve per-command defaults');
+  assert.equal((text.match(/timeout: command\.timeout \?\? REQUIRED_COMMAND_TIMEOUT_MS/g)||[]).length,2,'full and scoped explicit commands preserve per-command defaults');
 });
 
 test('the production test registry retains its P2/P3 additions and supplies the scoped runner once', async () => {

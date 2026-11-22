@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6aca55c20e6c-e9c50929",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_삼각함수_중단원학습점검_고2/비상_대수_삼각함수_중단원학습점검_고2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b8839d79ec9e659e439302f6ad54e2e54e2f4455242f98729b619438d5ee24f2",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": null,
+      "step": "삼각함수의 치역과 단조성으로 sin x, cos x, tan x의 대소와 지수·로그함수의 대소 관계를 판정한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

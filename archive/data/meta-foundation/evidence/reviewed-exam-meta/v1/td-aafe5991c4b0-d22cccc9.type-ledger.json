@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aafe5991c4b0-d22cccc9",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8c08e65f0ba9643284991805f121e867739b8d731b5b9b7f04d083182d352b7a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+      "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_132",
+      "step": "귀납가정에3을 곱한 하한6k²+6k+6과 n=k+1의 목표식을 비교하여 잘못된 (마)를 판별.",
+      "note": "해설에 4^k로 보이는 항은 전개상4k²이어야 하며 원문 괄호 표기 일부가 불완전하다. 핵심 귀납부등식은 복원 가능하다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

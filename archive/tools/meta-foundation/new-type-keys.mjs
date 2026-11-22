@@ -128,10 +128,16 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
     if (byPath) return { id: byPath, own: false };
     return expected.length ? { id: expected[0], own: false } : { id: "", own: false };
   };
-  const unitPair = m => {
-    const unit = master.get(m.standardUnitKey);
-    if (!unit || unit.keyType !== "standardUnitKey") return null;
-    const sub = master.get(m.subUnitKey);
+  // The row's own unit; when the row has none the tag master knows, the unit named on the bundle assignment line
+  // (`binding: { standardUnitKey, subUnitKey }`, written by whoever assigned the bundle) is used.
+  const unitPair = (m, uid) => {
+    let unit = master.get(m.standardUnitKey), subKey = m.subUnitKey;
+    if (!unit || unit.keyType !== "standardUnitKey") {
+      const hint = ptAssign.get(uid)?.binding;
+      unit = master.get(text(hint?.standardUnitKey)); subKey = hint?.subUnitKey;
+      if (!unit || unit.keyType !== "standardUnitKey") return null;
+    }
+    const sub = master.get(subKey);
     return { unit: unit.key, sub: sub && sub.keyType === "subUnitKey" && sub.standardUnitKey === unit.key ? sub.key : null };
   };
   const pairKey = p => `${p.unit}\u0000${p.sub ?? ""}`;
@@ -212,7 +218,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
     const pairs = new Map(); // group id -> Map(pairKey -> {pair, n})
     const unitCount = new Map();
     for (const c of list) {
-      const p = unitPair(c.m);
+      const p = unitPair(c.m, c.row.uid);
       if (!p) continue;
       if (!pairs.has(c.group)) pairs.set(c.group, new Map());
       const e = pairs.get(c.group).get(pairKey(p)) || { pair: p, n: 0 }; e.n++; pairs.get(c.group).set(pairKey(p), e);
@@ -292,7 +298,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       if (it.tplKey && created.tpl.has(it.tplKey)) { if (!usedTpl.has(it.tplKey)) usedTpl.set(it.tplKey, []); usedTpl.get(it.tplKey).push(it); }
     }
     const uids = list => list.map(i => i.row.uid).sort();
-    const unitsOf = list => [...new Set(list.map(i => unitPair(i.m)?.unit).filter(Boolean))].sort();
+    const unitsOf = list => [...new Set(list.map(i => unitPair(i.m, i.row.uid)?.unit).filter(Boolean))].sort();
     const provenance = bundleId => [{ source: BUNDLE_SOURCE, bundle: bundleId, bundleTable: { branch: tables.origin.branch, commit: tables.origin.commit, dir: tables.origin.dir } }];
     const packDir = packId => { const f = ctx.registry.packFiles?.get(packId); return f ? f.replace(/\/pack\.json$/, "") : `archive/data/meta-foundation/canonical/packs/${packId.toLowerCase().replaceAll("_", "-")}`; };
     const changes = [], counts = { problemTypes: 0, templates: 0, bindings: 0 };
@@ -318,7 +324,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       const bucket = new Map(own.map(b => [`${b.standardUnitKey}\u0000${b.subUnitKey ?? ""}`, []]));
       const first = bucket.keys().next().value;
       for (const it of g.items) {
-        const p = unitPair(it.m), k = p ? pairKey(p) : null;
+        const p = unitPair(it.m, it.row.uid), k = p ? pairKey(p) : null;
         // own pair, else a binding of the same unit, else the first one
         const target = k && bucket.has(k) ? k : (p && [...bucket.keys()].find(x => x.startsWith(`${p.unit}\u0000`))) || first;
         bucket.get(target).push(it);

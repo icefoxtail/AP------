@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-34172a0896f4-53a99789",
+  "sourceArchiveFile": "original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+      "templateKey": null,
+      "step": "그림에 표시된 교점(2,3)을 두 발문식에 대입해 a=-1,b=2,합1을 구한다.",
+      "note": "새 PT 제안: 연립방정식의 해를 대입한 미정계수 결정. 정의: 그림에 표시된 교점(2,3)을 두 발문식에 대입해 a=-1,b=2,합1을 구한다. 원문 그림의 한 직선은 우하향하나 발문 x-y=a는 우상향이어서 개형 불일치; 표시 교점과 발문식의 대입 전략은 판독 가능. 검사 도구가 새 PT 제안을 지원하지 않아 PT_NOT_ACTIVE; 의미 판정은 유지.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

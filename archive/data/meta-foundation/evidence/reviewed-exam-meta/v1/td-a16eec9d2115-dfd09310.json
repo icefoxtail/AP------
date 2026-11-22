@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-a16eec9d2115-dfd09310",
+  "requestSha256": "af5604898be4c4e7f757dc8939b1d0597c68e3ef42a585ecd70cde51d6a2503b",
+  "examUid": "비상_대수_사인코사인법칙_고2_유형확인",
+  "sourceArchiveFile": "types/high/h2/비상_대수_사인코사인법칙_고2_유형확인.js",
+  "sourceBlobSha1": "fc978167f5190cab1ed1833693661e13668c0599",
+  "sourceRawSha256": "7eb7d26ad6a181a788812ee30f64d7976993efe091da330dcf7fc7de4f9d7fb9",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a16eec9d2115-dfd09310.type-ledger.json",
+        "sha256": "1fc9d31d30e0cf44407cce41598a6528c111e719434f7b6680fb07dbec661c95"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_78b2a41a797675d44bf539c9f23ea461d0b6f69bc304148c4fea64177dc453ad",
+      "sourceArchiveFile": "types/high/h2/비상_대수_사인코사인법칙_고2_유형확인.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+      "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a16eec9d2115-dfd09310",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "내접사각형 대각 합 180°로 ∠ABC=60°, 두 삼각형에 코사인법칙을 적용해 CD·DA를 구하고 넓이 합산",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9f8b65da8ba6d850628cac6c58f3dd961e3139d11422c22753fe30d3c4d93168",
+        "judgedContentFingerprint": "d0b4f7a8868e61f6421470bd71a235b107f09eb2d1a371a053f72afca8ca5991",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "2b86aaf5e328de8706f3c0cbfd84048a02419456944772a7af0a00593d2aa748",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a16eec9d2115-dfd09310.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 18
+}

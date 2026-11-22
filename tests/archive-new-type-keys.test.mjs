@@ -226,3 +226,16 @@ test("--owner-pack: a bundle of a course that no pack has bindings on is skipped
   assert.ok(changes.some(c => /packs\/p2\/pack\.json$/.test(c.path) && c.after.standardCourses.includes("중2 수학") && c.after.standardCourses.includes("중1 수학")), "the pack file only gains the new course value");
   assert.equal(run({ ownerPackByBundle: new Map([["NPT_M2_NEW_THING", "NO_SUCH_PACK"]]) }).skipped.find(s => s.uid === "uid1").reason, "NEW_KEY_OWNER_PACK_UNRESOLVED", "an unknown pack name is not used");
 });
+
+test("a question with no valid unit and no other question in its bundle uses the unit named on the bundle assignment line (binding hint); without it the line is skipped", () => {
+  const recs = records().map(r => r.sourceOrdinal === 1 ? { ...r, standardUnitKey: "", subUnitKey: "" } : r);
+  assert.equal(plan({ records: recs }).skipped.find(s => s.uid === "uid1").reason, "NEW_KEY_NO_VALID_UNIT_FOR_BINDING");
+  const t = tables();
+  t.ptAssign[0] = { uid: "uid1", bundle: "NPT_M1_NEW_THING", binding: { standardUnitKey: "M1-01", subUnitKey: "M1-01-B" } };
+  const { requests, skipped } = plan({ records: recs, tables: t });
+  assert.ok(!skipped.some(s => s.reason === "NEW_KEY_NO_VALID_UNIT_FOR_BINDING"));
+  const binding = requests[0].registryChanges.find(c => c.collection === "bindings").after;
+  assert.equal(binding.standardUnitKey, "M1-01");
+  assert.equal(binding.subUnitKey, "M1-01-B");
+  assert.deepEqual(requests[0].items.find(i => i.questionUid === "uid1").after, { problemTypeKey: "PT_M1_NEW_THING" });
+});

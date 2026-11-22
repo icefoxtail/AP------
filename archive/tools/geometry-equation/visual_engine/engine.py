@@ -1430,6 +1430,14 @@ def prepare(spec):
                 label['at']=on_line(ordered[0]);label['alternateAt']=[on_line(t) for t in ordered[1:]]
                 label['wideRange']=[max(0.0,t0-LINE_AT_BAND),min(1.0,t0+LINE_AT_BAND)];label['wideLeftFirst']=True
             if kind=='EQUATION_LABEL' and obj.get('lineBand') is not None:label['wideRange']=[float(v) for v in obj['lineBand']]
+            if obj.get('axisValue') is not None:
+                # (AXV) a label that names a value on an axis (any kind of graph): its point on that axis is where it must read as the tick of its value
+                if obj['axisValue'] not in ('x','y') or not isinstance(obj.get('axisAt'),(list,tuple)) or len(obj['axisAt'])!=2:raise ValueError('AXIS_VALUE_LABEL_BINDING_INVALID:'+oid)
+                label['axisAnchor']=list(vp.screen(obj['axisAt']))
+            if kind=='GRAPH_ANNOTATION' and obj.get('math') and obj.get('tex') is None and obj['id'] in {'interval-start-label','interval-end-label'}:
+                # a pi fraction at an interval end is a stacked fraction with the sign in front (minus, then frac of 4 pi over 3), as on the tick numbers; never a sign inside the numerator or a slash
+                pi_end=re.fullmatch(r'([-−]?)(\d*)π/(\d+)',obj['text'])
+                if pi_end:label['tex']=('-' if pi_end.group(1) else '')+'{\\displaystyle\\frac{'+pi_end.group(2)+'\\pi}{'+pi_end.group(3)+'}}'
             if kind=='COORDINATE_LABEL':
                 exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']
@@ -1565,7 +1573,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
         prepared['fragmentProfile']='fragment-publication-spike-v1'
         for label in labels:
             label['allowSuppress']=False
-            if label['kind']=='TICK_LABEL':
+            if label['kind']=='TICK_LABEL' or label.get('axisValue'):
                 # The browser's own report of where the glyphs sit inside the frozen fragment (observedBBox: getBBox of the fragment root): the tick gap is judged on it.
                 ink=measured_tick_ink(fragments.get(label['id']))
                 if ink is not None:label['tickInk']=ink
@@ -1581,6 +1589,14 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
+    for row in result.get('labels',[]):
+        # (AXV) A label that names a value on an axis gets a short mark on the axis at that value, so the number has a position to point at (a number over bare axis names no place);
+        # none where a dot, a tick or an earlier mark already stands on that point.
+        if row.get('axisAnchor') is not None and row.get('axisValue') in ('x','y'):
+            ax_x,ax_y=row['axisAnchor'];on_x=row['axisValue']=='x'
+            if any(p.get('kind')=='circle' and math.dist(p['at'],(ax_x,ax_y))<=p.get('radius',0)+1.0 for p in prepared['primitives']):continue
+            if any(p.get('role') in {'tick','axis-value-mark'} and p.get('kind')=='line' and abs((p['from'][0] if on_x else p['from'][1])-(ax_x if on_x else ax_y))<=1.0 and abs((p['to'][0] if on_x else p['to'][1])-(ax_x if on_x else ax_y))<=1.0 for p in prepared['primitives']):continue
+            prepared['primitives'].append({'id':row['id']+'-axis-mark','kind':'line','from':(ax_x,ax_y-4) if on_x else (ax_x-4,ax_y),'to':(ax_x,ax_y+4) if on_x else (ax_x+4,ax_y),'token':'indicator','layer':30,'role':'axis-value-mark','axis':row['axisValue']})
     if 'publication' in semantic:
         from .publication import finalize
         finalize(prepared, result, obstacles)

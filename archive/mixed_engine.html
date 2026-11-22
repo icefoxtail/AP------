@@ -442,6 +442,8 @@
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
+    <link rel="stylesheet" href="print-header-table.css?v=20261122-ph-1">
+    <script src="print-header-table.js?v=20261123-ph-2"></script>
     <script defer src="archive2-derive-entry.js?v=20261120-derive-ui-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
@@ -475,10 +477,10 @@
                     <label class="print-header-editor-field">제목
                         <input id="print-header-title-input" class="print-header-editor-input" type="text" maxlength="80" oninput="setPrintHeaderOptions({ title: this.value })">
                     </label>
-                    <label class="print-header-editor-field">우측 메타
-                        <input id="print-header-meta-input" class="print-header-editor-input" type="text" maxlength="60" oninput="setPrintHeaderOptions({ metaRight: this.value })">
+                    <label class="print-header-editor-field">학원명 (비우면 칸 없음, 이 브라우저에 기억)
+                        <input id="print-header-meta-input" class="print-header-editor-input" type="text" maxlength="60" placeholder="예: AP수학" oninput="setPrintHeaderOptions({ metaRight: this.value })">
                     </label>
-                    <label class="print-header-editor-field">보조 문구
+                    <label class="print-header-editor-field">부제
                         <input id="print-header-subtitle-input" class="print-header-editor-input" type="text" maxlength="120" oninput="setPrintHeaderOptions({ subtitle: this.value })">
                     </label>
                     <div class="print-header-editor-checks">
@@ -558,7 +560,7 @@ function getIdentityTitle() {
 function getDefaultPrintHeaderOptions() {
     return {
         title: getIdentityTitle(),
-        metaRight: '',
+        metaRight: window.APPrintHeaderTable?.getAcademy?.() || '',
         subtitle: '',
         showNameLine: true,
         showScoreLine: true,
@@ -594,6 +596,7 @@ function shouldApplyPrintHeader(type) {
 }
 
 function setPrintHeaderOptions(next) {
+    if (next && Object.prototype.hasOwnProperty.call(next, 'metaRight')) window.APPrintHeaderTable?.rememberAcademy?.(next.metaRight);
     if (window.mixedFastHost) return window.mixedFastHost.runtime.request({ type: 'HEADER_CHANGE', payload: { header: next } });
     AppState.printHeaderOptions = normalizePrintHeaderOptions({
         ...getPrintHeaderOptions(),
@@ -681,12 +684,30 @@ function appendTextElement(parent, tagName, className, text) {
 
 function appendHeaderFill(metaWrap, label, scoreSuffix = '') {
     const span = document.createElement('span');
+    span.className = 'header-fill-cell ' + (scoreSuffix ? 'header-fill-cell--score' : 'header-fill-cell--name');
     span.appendChild(document.createTextNode(label));
     const line = document.createElement('span');
     line.className = 'header-fill-line' + (scoreSuffix ? ' header-fill-line--score' : '');
     span.appendChild(line);
-    if (scoreSuffix) span.appendChild(document.createTextNode(scoreSuffix));
+    if (scoreSuffix) {
+        const max = document.createElement('span');
+        max.className = 'header-max-score';
+        max.dataset.phEdit = 'max';
+        max.textContent = window.APPrintHeaderTable?.maxScoreText?.() ?? scoreSuffix;
+        span.appendChild(max);
+    }
     metaWrap.appendChild(span);
+}
+
+// 머리글 학원명 칸: 글자가 있을 때만 만든다. 안쪽 글자 요소는 눌러서 고치기·글자 맞춤 대상이다.
+function appendHeaderAcademy(parent, text, editable, fitKey = 'academy') {
+    const cell = document.createElement('span');
+    cell.className = 'page-header-academy';
+    const inner = appendTextElement(cell, 'span', 'page-header-academy-text', text);
+    inner.dataset.phFit = fitKey;
+    if (editable) inner.dataset.phEdit = 'academy';
+    parent.appendChild(cell);
+    return cell;
 }
 
 function buildQrTargetUrl() {
@@ -2154,7 +2175,9 @@ function makePage(area, type, pNum) {
 
         if (type === 'exam') {
             const textWrap = document.createElement('div');
-            appendTextElement(textWrap, 'div', 'page-header-title', getRenderHeaderTitle(type, title));
+            textWrap.className = 'page-header-titlecell';
+            const titleEl = appendTextElement(textWrap, 'div', 'page-header-title', getRenderHeaderTitle(type, title));
+            titleEl.dataset.phFit = 'title'; titleEl.dataset.phEdit = 'title';
             const subtitle = getRenderHeaderSubtitle(type);
             if (subtitle) appendTextElement(textWrap, 'div', 'page-header-subtitle', subtitle);
             header.appendChild(textWrap);
@@ -2165,7 +2188,7 @@ function makePage(area, type, pNum) {
             const metaRight = document.createElement('div');
             metaRight.className = 'page-header-meta-right';
             const customMetaRight = getRenderHeaderMetaRight(type, '');
-            if (customMetaRight) appendTextElement(metaRight, 'span', '', customMetaRight);
+            if (customMetaRight) appendHeaderAcademy(metaRight, customMetaRight, true);
             const opts = getPrintHeaderOptions();
             if (opts.showNameLine) appendHeaderFill(metaRight, '이름');
             if (opts.showScoreLine) appendHeaderFill(metaRight, '점수', '/ 100');
@@ -2174,14 +2197,20 @@ function makePage(area, type, pNum) {
         } else {
             const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
             const row = document.createElement('div');
+            row.className = 'page-header-row';
             row.style.cssText = 'display:flex; justify-content:space-between; align-items:flex-end; gap:10px;';
+            const applies = shouldApplyPrintHeader(type);
+            const academy = applies ? getPrintHeaderOptions().metaRight : '';
+            if (academy) appendHeaderAcademy(row, academy, false, 'academy-sol');
             const left = document.createElement('div');
+            left.className = 'page-header-sol-cell';
             left.style.flex = '1';
-            appendTextElement(left, 'div', '', getRenderHeaderTitle(type, title));
+            const solTitle = appendTextElement(left, 'div', 'page-header-sol-title', getRenderHeaderTitle(type, title));
+            solTitle.dataset.phFit = 'sol'; if (applies) solTitle.dataset.phEdit = 'title';
             const subtitle = getRenderHeaderSubtitle(type);
             if (subtitle) appendTextElement(left, 'div', 'page-header-subtitle', subtitle);
             row.appendChild(left);
-            appendTextElement(row, 'div', '', getRenderHeaderMetaRight(type, rightText));
+            appendTextElement(row, 'div', 'page-header-sol-tag', rightText);
             header.appendChild(row);
         }
 

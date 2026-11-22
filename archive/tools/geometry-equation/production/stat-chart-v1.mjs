@@ -761,6 +761,9 @@ function solveNormal(c){
     if(raw.sdScale!==undefined){scaleQ=tryQ(raw.sdScale);if(scaleQ===null||qcmp(scaleQ,ZERO)<=0)bad('STAT_NORMAL_CURVE_INVALID');}
     return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1,scaleQ,scaled:raw.sdScale!==undefined};
   });
+  // The name Z is the standard normal variable: a curve called Z with another mean or sd (a letter one included) makes the student read the figure as N(0,1) while its axis shows the real numbers.
+  const isStandard=k=>k.meanQ!==null&&k.sdQ!==null&&qcmp(k.meanQ,ZERO)===0&&qcmp(k.sdQ,ONE)===0;
+  if(curves.some(k=>k.label!==null&&STD_NORMAL_NAME.test(k.label.replace(/\s+/g,''))&&!isStandard(k)))bad('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD');
   const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
   // several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
   if(framed&&curves.length>1&&!curves.every((k,i)=>k.sdQ===null&&k.meanText===curves[0].meanText&&k.sdText===curves[0].sdText&&k.scaled===(i>0)))bad('STAT_NORMAL_SYMBOLIC_MULTI');
@@ -856,6 +859,8 @@ function solveNormal(c){
   if(c.zAxis!==undefined&&typeof c.zAxis!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   if(c.zAxis===true){if(curves.length>1)bad('STAT_NORMAL_Z_AXIS_AMBIGUOUS');if(!ticks.some(t=>!t.hideZ))bad('STAT_NORMAL_Z_AXIS_EMPTY');}
   if(c.xLabel!==undefined&&(typeof c.xLabel!=='string'||!/^[A-Za-z]$/.test(c.xLabel)))bad('STAT_NORMAL_LABEL_INVALID');
+  // an axis named z (Z) is the axis of the standard normal variable: with a curve that is not N(0, 1) drawn in real units (a letter curve drawn in sigma units, with z ticks, may call its axis z)
+  if(!framed&&(c.xLabel==='z'||c.xLabel==='Z')&&!curves.every(isStandard))bad('STAT_NORMAL_XLABEL_Z_NOT_STANDARD');
   return {schemaVersion:MODEL_VERSION,kind:'NORMAL_CURVE',framed,span:qstr(span),window:{lo:qstr(lo),hi:qstr(hi)},xLabel:c.xLabel??'x',zAxis:c.zAxis===true,
     curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine,...(k.scaled?{sdScale:qstr(k.scaleQ)}:{})})),
     ticks:ticks.map((t,i)=>({index:i,pos:qstr(t.u),z:framed||c.zAxis===true?qstr(t.z):null,text:t.text,tex:t.tex,curve:t.curve,hideZ:t.hideZ})),
@@ -1523,7 +1528,7 @@ function dotSpec(m,ctx){
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
 // runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
 // with a leader line that ends in a dot inside the area.
-const DOT_ROOM=4.3,MIN_ROOM=1.5;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
+const DOT_ROOM=4.3,MIN_ROOM=1.5,FINE_ROOM=1.05;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
 const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a polygon, negative outside it
   let best=Infinity,inside=false;
   for(let i=0;i<ring.length;i++){
@@ -1534,21 +1539,38 @@ const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a 
   return inside?best:-best;
 };
 const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
-const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_XR_NARROW=482,NORM_TIP_NARROW=500,NORM_PEAK=140,NORM_PEAK_TALL=260,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+// A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
+// draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
+const STD_NORMAL_NAME=/^(?:[Zz](?:\(0,1\))?|N\(0,1\))$/;   // the ways a curve is named as the standard normal variable (spaces removed)
+const NORM_THIN_TAIL=1.7,NORM_TICK_APART=5;   // tick numbers nearer than this (px) to each other stand in two rows: nearer than that they read as one number (65 and 67.6 as 6567.6); further apart they stay in one row as they always were
+function normalPeakOf(m){
+  const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
+  for(const s of m.shades){
+    if(s.label===null||(s.from!==null&&s.to!==null))continue;
+    const c=byId.get(s.curve),u=N(s.from===null?s.to:s.from),z=(u-meanOf(c))/sdOf(c);
+    if(NORM_PEAK*sdMin/sdOf(c)*Math.exp(-z*z/2)<NORM_THIN_TAIL)return NORM_PEAK_TALL;
+  }
+  return NORM_PEAK;
+}
 function normalSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
-  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,PEAK=normalPeakOf(m),BASE=NORM_TOP+PEAK;
+  // The axis runs to NORM_XR (arrow tip NORM_TIP) as it always did. Only when the axis name (and the z of a z row) would not fit between the tip and the safe margin at this font does it stop
+  // 8 and 12 units sooner (NORM_XR_NARROW, NORM_TIP_NARROW): a figure whose name fits is drawn exactly as before.
+  const titleW=Math.max(labelSize({kind:'MATH',tex:m.xLabel},fontPx).width,m.zAxis?labelSize({kind:'MATH',tex:'z'},fontPx).width:0);
+  const narrow=NORM_TIP+8+titleW>W-SAFE,NORM_XR_=narrow?NORM_XR_NARROW:NORM_XR,NORM_TIP_=narrow?NORM_TIP_NARROW:NORM_TIP;
+  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR_-NORM_XL)/(hi-lo);
   const px=u=>r6(NORM_XL+(u-lo)*scale);
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
-  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
+  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>PEAK*sdMin/sdOf(c);
   const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
   const prims=[],labels=[];
-  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP});
+  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP_});
   // the curves
   const pts=new Map();
   for(const c of m.curves){
-    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR-NORM_XL)/dx),list=[];
-    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
+    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR_-NORM_XL)/dx),list=[];
+    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR_-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
     pts.set(c.id,list);
   }
   const topOf=(id,x)=>{ // the curve's height at pixel x by its own vertices
@@ -1560,7 +1582,7 @@ function normalSpec(m,ctx){
   const regions=[];
   for(const [j,s] of m.shades.entries()){
     const c=byId.get(s.curve),ua=s.from===null?null:N(s.from),ub=s.to===null?null:N(s.to);
-    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR:px(ub);
+    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR_:px(ub);
     const ya=ua===null?null:yOf(c,ua),yb=ub===null?null:yOf(c,ub);
     const inner=pts.get(c.id).filter(([x])=>x>xa&&x<xb),top=[];
     if(ua===null)top.push(...pts.get(c.id).filter(([x])=>x<=xa));else top.push([xa,ya]);
@@ -1582,22 +1604,30 @@ function normalSpec(m,ctx){
   }
   for(const [i,c] of m.curves.entries())prims.push({t:'polyline',id:`curve-${c.id}`,role:'curve',cls:`ncurve${i}`,points:pts.get(c.id),data:{curve:c.id,mean:c.mean,sd:c.sd},layer:45});
   // ticks and their labels (and the z row)
-  const rowH=Math.ceil(fontPx*NORM_Z_ROW),zy=BASE+TICK+4+rowH;
+  // Ticks so close that their numbers would touch (marks one unit apart on a window of 16 units, two-digit numbers at the Archive font) take two rows: every second label, in the order along the axis,
+  // stands one row lower under its own tick. Only a figure whose labels are nearer than NORM_TICK_APART in one row does this, and the decision follows the font, like the size.
+  const rowH=Math.ceil(fontPx*NORM_Z_ROW);
+  const byPos=m.ticks.map(t=>{const size=labelSize({kind:'MATH',tex:t.tex},fontPx);return {t,x:px(N(t.pos)),w:size.width,h:size.height};}).sort((a,b)=>a.x-b.x);
+  // a number stands in the first row when it is NORM_TICK_APART or more clear of the last number of that row, otherwise one row lower (so a narrow number between two wide ones, 0 between -0.3 and 0.3, does not leave its neighbours touching)
+  const lowerRow=new Set();let right0=-Infinity;
+  for(const e of byPos){const left=e.x-e.w/2,right=e.x+e.w/2;if(left-right0>=NORM_TICK_APART){right0=right;}else{lowerRow.add(e.t.index);}}
+  const stagger=lowerRow.size>0;
+  const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,zy=BASE+TICK+4+(stagger?lowerStep:0)+rowH;
   for(const t of m.ticks){
     const x=px(N(t.pos));
     prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
-    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4,{value:t.text}));
+    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4+(lowerRow.has(t.index)?lowerStep:0),{value:t.text}));
     if(m.zAxis&&!t.hideZ)labels.push(math(`z-tick-${t.index}-label`,'z-tick',`x-tick-${t.index}`,DISPLAY+qtex(P(t.z)),t.z,'center','top',x,zy,{value:t.z}));
   }
-  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP+8,BASE,{value:m.xLabel}));
-  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP+8,zy,{value:'z'}));
+  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP_+8,BASE,{value:m.xLabel}));
+  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP_+8,zy,{value:'z'}));
   // labels placed after typesetting
   for(const c of m.curves)if(c.label!==null){
     const hangul=/[가-힣]/.test(c.label);
     labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
   }
   for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'?{leader:true}:{})});
-  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+rowH+SAFE);
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
@@ -1725,9 +1755,18 @@ function resolveNormal(spec,placed){
     const roomy=scan.filter(([,r])=>r>=DOT_ROOM).sort((a,b)=>Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref)),thin=scan.filter(([,r])=>r>=MIN_ROOM).sort((a,b)=>b[1]-a[1]||Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref));
     const firstThin=spots.length;
     spots.push(...spread(roomy.length?roomy:thin));
+    // A tail so thin that the middle of its height holds no dot (G19 tails beyond 3 sd) is searched again with the dot nearer the axis, where a wedge is roomiest: the observer asks the dot for 1 px of room.
+    // Only a figure that had no place at all gets here, so a figure that was placed before is drawn exactly as it was.
+    const dotY=new Map();
+    if(!spots.length){
+      const fine=[];
+      for(let x=Math.ceil(region.xa)+1;x<region.xb-1;x++){let top=null;for(const lift of [0.8,1,1.2,1.5,1.8,2.2,2.6]){const y=BASE-lift,r=polygonRoom([x,y],ring);if(r>=FINE_ROOM&&(top===null||r>top.r))top={x,y,r};}if(top)fine.push(top);}
+      fine.sort((a,b)=>b.r-a.r||Math.abs(a.x-region.pref)-Math.abs(b.x-region.pref));
+      for(const p of fine)if(spots.every(o=>Math.abs(o-p.x)>=5)&&spots.length<8){spots.push(p.x);dotY.set(p.x,p.y);}
+    }
     let found=null,ax=0,ay=0;
     for(const spot of spots){
-      ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
+      ax=r6(spot);ay=dotY.has(spot)?r6(dotY.get(spot)):r6((topAt(region.top,ax)+BASE)/2);
       const accept=(box,sx,sy)=>{
         if(clearance(box,obs,LABEL_APART)<CLEAR)return false;
         if(done.some(o=>segHitsRect([sx,sy],[ax,ay],{x:o.x-2,y:o.y-2,width:o.width+4,height:o.height+4})))return false;

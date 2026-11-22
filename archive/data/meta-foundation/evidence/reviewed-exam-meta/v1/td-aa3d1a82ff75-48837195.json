@@ -1,0 +1,350 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-aa3d1a82ff75-48837195",
+  "requestSha256": "62755b8c4057f523c31e29bda58b80254f0f25f520e95972783d13762d32f990",
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2_유사",
+  "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+  "sourceBlobSha1": "8f70f9b54f7e6b4aaafc76f2af603b3b4ddf8c9f",
+  "sourceRawSha256": "82864fc37468a1e7366fbacfe3be10e8734468a4bcee6cc227861294a34769a0",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.type-ledger.json",
+        "sha256": "8a3261272912a52b9f57143d337adacf4ec92c7bdc7fa655829176dabd113c7f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 6,
+  "registryChanges": [],
+  "typeApprovals": 6,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 6,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_db75a12d5f0febf91a9c603aef20095df960f58b6814efa5a6ddfc771e111252",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "첫째항 1/5와 공비 −2/5를 구해 수렴하는 등비급수의 합 a/(1−r)=1/7을 적용한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7da3b3fb71d6a15d4fc873e0bd5f88f7abfc566f3da16b60290cd910389a457d",
+        "judgedContentFingerprint": "1c93d6dc074dfb513069bf7256e76f37b287597419c4b59bfd87c6a81bb68b4f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "68314fcb998ba3ea77abd492f47fb83443ac4e1c8524cc9956d8758940515124",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-SUM",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-SUM",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1fa767f8dedcd9737f0024de535b5a0f3d0def45e98ab5dc74bd443a55f0bc3b",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "수렴급수의 일반항 극한 0으로 p=1을 정하고 2/n−2/(n+2)의 부분합 소거로 q=3을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "24fffc5c45865e86d96a60aef7179a7c62c48ff19960aa8d6e47ef26a9c15486",
+        "judgedContentFingerprint": "ed765ca6b45e294f89b65bd3d446222c151e37e8b77db9e02d35f0920b6135f5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d3a3ba253f34d2eb36e395802cbf6320102d1e5de26ad619412b0fdd6cc141fa",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-CONVERGENCE-TERM-LIMIT-ZERO",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-CONVERGENCE-TERM-LIMIT-ZERO",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_28809dddbffe4022d224dcdb35859db1c1c52b490ede2f673588227db5dbcc27",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "급수 수렴으로 a_n/(2n²)−3→0을 얻어 a_n/n²→6을 추출하고 목표 분수식의 최고차항 비를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "59bea427e39046d2c7820c75770f1c9b92d8405a6158cae798e6419eac5b5766",
+        "judgedContentFingerprint": "51fa3388c713a4fc0ce74aea427168f066784bc64f12d1859e6179fa253716a1",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5c4ab00309bf893b42ac6853bd57c2bb8210c7318a444713ef8e8683152f7a6f",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-CONVERGENCE-TERM-LIMIT-ZERO",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-CONVERGENCE-TERM-LIMIT-ZERO",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c179150de2bdb33e1448e65875e0333977f2050e414ed785966cc2e920901111",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "가로·세로의 부호 있는 이동을 공비 −1/4인 두 등비급수로 나누어 극한좌표 16/5와 8/5를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5ceabedbbba83fbfdc974639f905a4d305eb816bb7dce9baa5ae66c64d1153ea",
+        "judgedContentFingerprint": "260393c513430f98011168428b261913716e935e8cbdd9024c401e5a956e27f8",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "317fc8570b74a0590d4025c7a8a169a32b250943c9ff34a06d9067ea08807f77",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-FROM-GEOMETRIC-PATTERN",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-FROM-GEOMETRIC-PATTERN",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_96920ebd21a55e14d6b470da27ef98b91dce9bbb4ccd032c40450bafa788f0ba",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "짝수항의 부분합식을 빼서 a_(2n+2)−3a_(2n)=2a_(2n+1)로 환원하고 홀수항 급수에서 첫 항 6을 제외한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request",
+          "rowCourse": "미적분",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "41b4f0fbe809de92a03e6a9b52800d5ac34c2034fd3670042c1804874f4f3ba3",
+        "judgedContentFingerprint": "23835e2b5e046c0516a108550c2a50df512d000618d5a1a85142bd52a36e314c",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5eb1361e14f1d8d9a1b6c4fd11b26f7951e1fe7a62daad1205c2611e118509a1",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-RECURRENCE-SUM-REDUCTION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-SERIES-RECURRENCE-SUM-REDUCTION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_acd72d686a77b2d2a6ab9010ec4c0ec3216210fd07ae2f8bf32ef2df1c71e65a",
+      "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa3d1a82ff75-48837195",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "점의 반복 좌표에서 삼각형 넓이 S_n=24/4^(n−1)를 얻어 공비 1/4인 등비급수 합을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "70cb0c27735323860fde2071f59cb3e091828438d2a67c39529a1be650af410e",
+        "judgedContentFingerprint": "d51a23a470bddebe30098e0f0b1ae501bf424e4302cc10b53014fd7061141381",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2e657cdf9c4e92f8bcb6e05f8e9eff11c333e390cb6a81982409f335413a0c66",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa3d1a82ff75-48837195.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-FROM-GEOMETRIC-PATTERN",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+          "templateKey": "EXT-TPL-GEOMETRIC-SERIES-FROM-GEOMETRIC-PATTERN",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 6,
+  "expectedQuestionCount": 22
+}

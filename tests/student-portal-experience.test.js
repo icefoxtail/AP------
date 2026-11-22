@@ -64,7 +64,7 @@
   assert.strictEqual(groups.unknown.length,1,'missing status is not treated as pending');
   assert(!home.includes('오래된 완료'),'older exams stay in full list, not deleted');
   const list=vm.runInContext('renderOmrExamBrowser(getVisibleOmrExams())',context);
-  assert.strictEqual((list.match(/<article class="omr-card"/g)||[]).length,5,'full list preserves all assignments');
+  assert.strictEqual((list.match(/<article class="omr-card(?: compact)?"/g)||[]).length,5,'full list preserves all assignments');
   const completed=vm.runInContext('renderOmrExamCard(cases[2])',context);
   const unknown=vm.runInContext('renderOmrExamCard(cases[4])',context);
   assert(completed.includes('83점')&&completed.includes('점수·오답 확인')&&completed.includes('해설 보기'),'recorded score and solution review stay available');

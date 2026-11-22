@@ -1,0 +1,720 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+  "ordinal": 1,
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation"
+ },
+ "identity": {
+  "questionUid": "23_향림중_2학기_중간_중1_기출|1",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:fcb844f3ebd379a141e1dc3e7e75e9134d1856d56bc9d7a50cbe80487b40321c",
+  "assetId": "va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "오각기둥의 꼭짓점과 모서리를 나타낸 겨냥도이다.",
+  "status": "ACTIVE",
+  "assetPath": "assets/images/23_향림중_2학기_중간_중1_유사/q01.svg",
+  "sourceQuote": "오각기둥에서 꼭짓점의 개수를 $",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "6"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "2"
+       },
+       {
+        "kind": "integer",
+        "value": "-2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-2"
+       },
+       {
+        "kind": "integer",
+        "value": "-2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "E",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-4"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "F",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "G",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "H",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "2"
+       },
+       {
+        "kind": "integer",
+        "value": "-8"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "I",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-2"
+       },
+       {
+        "kind": "integer",
+        "value": "-8"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "J",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-4"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G",
+   "H",
+   "I",
+   "J"
+  ],
+  "hiddenPointNames": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G",
+   "H",
+   "I",
+   "J"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+   {
+    "id": "sAB",
+    "refs": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "sBC",
+    "refs": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "id": "sCD",
+    "refs": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "id": "sDE",
+    "refs": [
+     "D",
+     "E"
+    ]
+   },
+   {
+    "id": "sEA",
+    "refs": [
+     "E",
+     "A"
+    ]
+   },
+   {
+    "id": "sBG",
+    "refs": [
+     "B",
+     "G"
+    ]
+   },
+   {
+    "id": "sCH",
+    "refs": [
+     "C",
+     "H"
+    ]
+   },
+   {
+    "id": "sDI",
+    "refs": [
+     "D",
+     "I"
+    ]
+   },
+   {
+    "id": "sEJ",
+    "refs": [
+     "E",
+     "J"
+    ]
+   },
+   {
+    "id": "sGH",
+    "refs": [
+     "G",
+     "H"
+    ]
+   },
+   {
+    "id": "sHI",
+    "refs": [
+     "H",
+     "I"
+    ]
+   },
+   {
+    "id": "sIJ",
+    "refs": [
+     "I",
+     "J"
+    ]
+   },
+   {
+    "id": "sAF",
+    "refs": [
+     "A",
+     "F"
+    ],
+    "style": "DASHED"
+   },
+   {
+    "id": "sFG",
+    "refs": [
+     "F",
+     "G"
+    ],
+    "style": "DASHED"
+   },
+   {
+    "id": "sJF",
+    "refs": [
+     "J",
+     "F"
+    ],
+    "style": "DASHED"
+   }
+  ]
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "6"
+     }
+    ],
+    "approximation": [
+     0,
+     6
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     4,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "2"
+     },
+     {
+      "kind": "integer",
+      "value": "-2"
+     }
+    ],
+    "approximation": [
+     2,
+     -2
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-2"
+     },
+     {
+      "kind": "integer",
+      "value": "-2"
+     }
+    ],
+    "approximation": [
+     -2,
+     -2
+    ],
+    "precisionDigits": 17
+   },
+   "E": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-4"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     -4,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "F": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "G": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     4,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "H": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "2"
+     },
+     {
+      "kind": "integer",
+      "value": "-8"
+     }
+    ],
+    "approximation": [
+     2,
+     -8
+    ],
+    "precisionDigits": 17
+   },
+   "I": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-2"
+     },
+     {
+      "kind": "integer",
+      "value": "-8"
+     }
+    ],
+    "approximation": [
+     -2,
+     -8
+    ],
+    "precisionDigits": 17
+   },
+   "J": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-4"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -4,
+     -3
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "E",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "F",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "G",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "H",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "I",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "J",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G",
+   "H",
+   "I",
+   "J"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg data-text-free=\"true\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">오각기둥의 꼭짓점과 모서리를 나타낸 겨냥도이다.</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sAB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"45.714285714\" x2=\"257.306122449\" y2=\"94.693877551\"/></g><g data-layer=\"30\"><line id=\"sBC\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"257.306122449\" y1=\"94.693877551\" x2=\"224.653061224\" y2=\"176.326530612\"/></g><g data-layer=\"30\"><line id=\"sCD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"224.653061224\" y1=\"176.326530612\" x2=\"159.346938776\" y2=\"176.326530612\"/></g><g data-layer=\"30\"><line id=\"sDE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"159.346938776\" y1=\"176.326530612\" x2=\"126.693877551\" y2=\"94.693877551\"/></g><g data-layer=\"30\"><line id=\"sEA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"126.693877551\" y1=\"94.693877551\" x2=\"192\" y2=\"45.714285714\"/></g><g data-layer=\"30\"><line id=\"sBG\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"257.306122449\" y1=\"94.693877551\" x2=\"257.306122449\" y2=\"192.653061224\"/></g><g data-layer=\"30\"><line id=\"sCH\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"224.653061224\" y1=\"176.326530612\" x2=\"224.653061224\" y2=\"274.285714286\"/></g><g data-layer=\"30\"><line id=\"sDI\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"159.346938776\" y1=\"176.326530612\" x2=\"159.346938776\" y2=\"274.285714286\"/></g><g data-layer=\"30\"><line id=\"sEJ\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"126.693877551\" y1=\"94.693877551\" x2=\"126.693877551\" y2=\"192.653061224\"/></g><g data-layer=\"30\"><line id=\"sGH\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"257.306122449\" y1=\"192.653061224\" x2=\"224.653061224\" y2=\"274.285714286\"/></g><g data-layer=\"30\"><line id=\"sHI\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"224.653061224\" y1=\"274.285714286\" x2=\"159.346938776\" y2=\"274.285714286\"/></g><g data-layer=\"30\"><line id=\"sIJ\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"159.346938776\" y1=\"274.285714286\" x2=\"126.693877551\" y2=\"192.653061224\"/></g><g data-layer=\"30\"><line id=\"sAF\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"45.714285714\" x2=\"192\" y2=\"143.673469388\"/></g><g data-layer=\"30\"><line id=\"sFG\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"143.673469388\" x2=\"257.306122449\" y2=\"192.653061224\"/></g><g data-layer=\"30\"><line id=\"sJF\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"126.693877551\" y1=\"192.653061224\" x2=\"192\" y2=\"143.673469388\"/></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:3448997e47ce98bb0ce65630870a38c71513f993a1452edcd6926f95706d9953",
+   "modelSha256": "sha256:c4eaf7ec21a290b5730d82150be450347bfb66823d96e7afd9fbae44742f9571",
+   "typographyPolicySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "specSha256": "sha256:5df47930ec0dc60874c2b1132b665a78cbb7d9c9efe84f5a12681518ef38307c",
+   "fragmentSha256s": {},
+   "measurementsSha256": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "svgSha256": "sha256:56c4de36efc89b7a9a79352607a15236309dc9467a72ae385c74d109c50fefbe",
+   "witnessSha256": "sha256:6be2e7b93df2269ab88ffb5fae4d05c63592f343b78c6acc5fb65f90817b0068",
+   "staticAuditSha256": "sha256:c4164d0c98f3142f06ec41e27b8fafa501bdbd663574ddfe6e0abc31358b203a",
+   "renderedLayoutSha256": "sha256:da0ec102e8b0329f58c11d51d0e2ba60ea6306752685852aa75b5fcfbf741643"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 210.75520833333331
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:56c4de36efc89b7a9a79352607a15236309dc9467a72ae385c74d109c50fefbe",
+   "policySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "candidateBankSha256": "sha256:b070c73f6e97e7219b86e9d96301e0827e2ee79dcf19d9c997a6e53dfbbba269",
+   "assetPath": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/assets/images/23_향림중_2학기_중간_중1_기출/q01-solution.svg",
+   "assetResponseSha256": "sha256:56c4de36efc89b7a9a79352607a15236309dc9467a72ae385c74d109c50fefbe",
+   "archiveRowSha256": "sha256:3788677f04e28ab4e4cc2241a71bb0779a141c7bfdb3158def56c5573604e4de",
+   "screenshotSha256s": {
+    "image": "sha256:8ba816cb3aca8ddefa31cd47dd92b3dda3950e7a9175c0a9dd164d962a48194b",
+    "context": "sha256:57ac019cf3c3522083690562e3b7412ea90b0298103fbcb67935aa977d19e6db",
+    "page": "sha256:b236bf8a69fb5e0267e6dbf8df295adabc8582a351aa3b8844fa8a68119b2ce1"
+   },
+   "matrixSha256": "sha256:ae032dba270588f2c380ffa8b0cc0b071af7003dc6f5d03a6815518b3c9f4714",
+   "engineSha256": "sha256:b2787e1b76f3d32e3d0d8c39c013a8e928068667652f309bae01c7d1c3c8fd74"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-5cc1563e",
+   "asset": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/assets/images/23_향림중_2학기_중간_중1_기출/q01-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/candidates/23_향림중_2학기_중간_중1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b-sol-desktop-va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b.png",
+    "context": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b-sol-desktop-va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b-context.png",
+    "page": ".tmp/archive/pilot-capture-5cc1563e/23_향림중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-2db9ba40dd7a5307290d2fd4309d04ac8ea39ae4132805b933865d71cb05432b-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+    "bytes": 69724,
+    "sha256": "sha256:b3c9531e8e32135316fed2bc4dd6b30a614a6b01644560364471b00d0de0d100"
+   },
+   "originalQuestionSha256": "sha256:4d1cd7bd35252fb20a1e9a1147eaa8d6e47ff28b1b8f4d32878c602fd5e322e6",
+   "questionCount": 26,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 1
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.6586100260416666,
+  "expectedDisplayScale": 0.6586100260416666,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

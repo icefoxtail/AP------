@@ -258,6 +258,31 @@ export function resolveAngleOver(rows,at){
   return out;
 }
 
+/** (NEST) The angle rows with `over` filled in where a whole angle encloses other angles at its vertex and the author wrote neither `over` nor `ring` (the arcs of a nested pair would otherwise
+ *  share one radius from their common ray, and the inner angle's label has no place to name it). Only the plane render's retry after a layout failure uses it, so a figure that composed as
+ *  written is never changed. A row is enclosed when both its rays lie inside the other's wedge and its sweep is smaller. Returns the same array when nothing changes. */
+export function inferNestedAngleOver(rows,at){
+  const usable=row=>row&&typeof row==='object'&&typeof row.id==='string'&&Array.isArray(row.refs)&&row.refs.length===3&&row.straight!==true&&(row.side??'INNER')==='INNER'&&row.ring===undefined&&row.over===undefined&&row.refs.every(id=>{try{return Array.isArray(at(id));}catch{return false;}});
+  const wedgeOf=row=>{
+    const [a,v,c]=row.refs.map(at),s=Math.atan2(a[1]-v[1],a[0]-v[0]),t=Math.atan2(c[1]-v[1],c[0]-v[0]),sweep=((t-s)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+    return sweep>Math.PI?{start:t,sweep:2*Math.PI-sweep}:{start:s,sweep};
+  };
+  const within=(ray,wedge)=>{const off=((ray-wedge.start)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);return off<=wedge.sweep+1e-6||off>=2*Math.PI-1e-6;};
+  const candidates=rows.filter(usable);let changed=false;
+  const out=rows.map(row=>{
+    if(!usable(row))return row;
+    const mine=wedgeOf(row),over=[];
+    for(const other of candidates){
+      if(other===row||other.refs[1]!==row.refs[1])continue;
+      const [a,v,c]=other.refs.map(at),inner=wedgeOf(other);
+      if(within(Math.atan2(a[1]-v[1],a[0]-v[0]),mine)&&within(Math.atan2(c[1]-v[1],c[0]-v[0]),mine)&&inner.sweep<mine.sweep-1e-6)over.push(other.id);
+    }
+    if(!over.length)return row;
+    changed=true;return {...row,over};
+  });
+  return changed?out:rows;
+}
+
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
 /** Segment colours of a plane figure (C1): Map segmentId -> palette colour, from planeMarks.segmentColors ([{segments:[ids],color}], corresponding sides or any
  *  sides that belong together) and from the `color` of an equalLengths / parallels row (its segments and marks share it). One colour = one relation: a colour

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-a377dfcb379c-b3ea8ad9",
+  "requestSha256": "a28acd72b454867100893b12a8b26e9cfa7081eaa83303b42bedb04120f84eda",
+  "examUid": "17_매산중_1학기_중간_중1_수학",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+  "sourceBlobSha1": "a3df292dbed5441c0b68001c421d833131cc3e6b",
+  "sourceRawSha256": "4d5cc383b3146936b148705e99e9e4756e65b3c2ef2e78b7a2a0a22362742608",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-b3ea8ad9.type-ledger.json",
+        "sha256": "bdb30036a8f0a8017599fcf748172eaa82cce765d8fb20cf0f326a8f028b5109"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_84a055950e7a61c7ab2cbda27ac3f0beffa6e136f90adbe452fd30c00968c5ff",
+      "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+      "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a377dfcb379c-b3ea8ad9",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "아래 변의 네 수의 합을 기준으로 두 옆 변의 합이 같다는 식에서 A와 B를 각각 구해 A-B를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8930325c4bb7d920fb7059d5b0fc4058c3d764f03bb33dbb2b5d93fd0ba91045",
+        "judgedContentFingerprint": "60f3ebffc993de02d499d6e79110134a8a8ec05899766452df4cc8899937a832",
+        "rowBinding": "content",
+        "textBindingFingerprint": "5e88c0fe352547351352b9d79a4de5365a4049846ef61a31e0fec73c27a5dfa9",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-b3ea8ad9.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

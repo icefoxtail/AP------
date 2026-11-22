@@ -12,7 +12,8 @@ const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relati
 const sourceKey = (file, ordinal) => `${core.normalizeFile(file)}#${Number(ordinal)}`;
 const runtime = readJson("archive/data/meta-foundation/runtime/derivative-v1.json");
 const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-receipt.json");
-const packedCatalog = core.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
+// complete rows: approvedSourceFingerprint and the evidence columns are in the evidence file, not the downloaded catalog
+const packedCatalog = require("../archive/tools/archive2-catalog-evidence.cjs").readCatalog({ root });
 const bySource = new Map(packedCatalog.records.map((row) => [sourceKey(row.sourceFile, row.sourceOrdinal), row]));
 const readinessCheck = spawnSync(process.execPath, [
   "archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs",
