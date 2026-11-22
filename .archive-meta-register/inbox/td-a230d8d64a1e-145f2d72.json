@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a230d8d64a1e-145f2d72",
+  "examUid": "24_매산고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "6be5659a2ee9d14432473eab553f762ca0ab24da",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-s-20261120",
+      "commit": "aaa16404c181a9f0997ff006064b65edccd5b3bd",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-s/stale-keys-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-145f2d72.type-ledger.json",
+        "sha256": "0728b85ec473980f39ab510afbd787ed51ede9b3fabd39eda839b3cd4ededafe"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7d54c0e0e9769d5cbfbc8647d60c04f1b107d363acec487b44c4c114220cc13c",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "LINEAR_FUNCTION_FIND_EQUATION",
+        "templateKey": "LINEAR_FUNCTION_TWO_POINTS"
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS"
+      },
+      "rationale": "두 점 (-1,3), (2,1)로 기울기 -2/3와 직선의 방정식을 세워 y절편 7/3을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "86fc3d576e296ed98d32be40d07695bf8461fb35fda8367c92e01d441a0a7ce6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-145f2d72.type-ledger.json",
+          "sha256": "0728b85ec473980f39ab510afbd787ed51ede9b3fabd39eda839b3cd4ededafe"
+        }
+      ]
+    }
+  ]
+}

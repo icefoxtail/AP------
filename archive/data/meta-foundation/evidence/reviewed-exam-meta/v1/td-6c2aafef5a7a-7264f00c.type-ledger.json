@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6c2aafef5a7a-7264f00c",
+  "sourceArchiveFile": "original/high/h1/1mid/19_복성고_1학기_중간_고1_기출.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1ae60827eab08be00db21c51f101657a8dc98c793e6f7dfae109cec00eb14440",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INTEGER_REMAINDER",
+      "templateKey": null,
+      "step": "29=28+1로 쓰고 (28+1)^999를 전개해 28의 배수를 제외한 나머지 1을 얻는다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-b81d93c59534-649672d5",
+  "examUid": "22_순천고_1학기_중간_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/22_순천고_1학기_중간_고2_수학I.js",
+  "expectedSourceBlobSha1": "71c31c4bbb909c2a9440d24ed318879669ed7532",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b81d93c59534-649672d5.type-ledger.json",
+        "sha256": "76db040e8d5c98f5115e1a448eee853d8e4cd02c110558bc7a21b7f650912b5a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_de7dd57f3e7ebe296a9cf774c4d2521b633950c64ba94c2e5d3fe596e5d21e84",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_068"
+      },
+      "rationale": "거듭제곱근의 실수 존재와 짝홀에 따른 개수 및 주값을 구분해 각 진술을 판정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "93a6175e5db4ed4db850efd650ff5277f3c378f42c83f3d7cdb4f42cadb96974",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b81d93c59534-649672d5.type-ledger.json",
+          "sha256": "76db040e8d5c98f5115e1a448eee853d8e4cd02c110558bc7a21b7f650912b5a"
+        }
+      ]
+    }
+  ]
+}

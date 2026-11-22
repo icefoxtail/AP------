@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ae9414323416-cf981ede",
+  "examUid": "25_매산고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "160cccef8f8f2151968003eeb653877c577d53a2",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-s-20261120",
+      "commit": "aaa16404c181a9f0997ff006064b65edccd5b3bd",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-s/stale-keys-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ae9414323416-cf981ede.type-ledger.json",
+        "sha256": "a4b38f0a1318e2738402f5d283e158166d3a11b9b0c80d7983d866c091bdce10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ab28098c653a5b5f51e26e4b2e376dfaadfc8bd1b61b62037ca65753fd317ead",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "거리 공식",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "rationale": "두 점 (4,-2), (-1,3)의 좌표 차로 거리 5√2를 구해 a=5, b=2에서 a+b=7을 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "2713fcef0b829530a7373cfb83515fc795d9bc7f14a923f3d991ba4babee2c2b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ae9414323416-cf981ede.type-ledger.json",
+          "sha256": "a4b38f0a1318e2738402f5d283e158166d3a11b9b0c80d7983d866c091bdce10"
+        }
+      ]
+    }
+  ]
+}

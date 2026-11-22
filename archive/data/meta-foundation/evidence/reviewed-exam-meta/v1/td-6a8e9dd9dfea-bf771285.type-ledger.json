@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6a8e9dd9dfea-bf771285",
+  "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f257b595c84e48da4ad053bb05c19af8c9a0e7535ded37f0bca3aea6f84c788b",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "step": "평균변화율 1에 맞는 두 미분계수 위치 합 3을 구하고 조각별 직선 교점 개수 변화가 발생하는 2/3와 2를 찾아 곱 8을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 원문은 존재하지 않는 양쪽 극한에도 부등식을 쓴 표기 결함이 있으나 해설의 의도인 교점개수 함수 불연속점 판정은 가능하다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}
