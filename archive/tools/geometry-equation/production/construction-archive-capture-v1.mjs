@@ -165,6 +165,22 @@ export function phoneMinimumBaseFontPx(canvasWidth,{minimumBaseFontPx=20,maximum
 }
 /** Scales (% of the column, multiples of 5, at most 100) to try when the default display cannot reach the font floor: the smallest that aims at the target base font, then one or two bigger, never more than the column can show. */
 export function solutionImageScaleCandidates({intrinsicSvg,observation,fontFloorCssPx=11,comfortCssPx=.25,targetBaseFontPx=SOLUTION_SCALE_TARGET_BASE_FONT_PX}){
+  const first=widthScaleCandidates({intrinsicSvg,observation,fontFloorCssPx,comfortCssPx,targetBaseFontPx});
+  // (P-A) What the width-only list above cannot reach is appended AFTER it, so a figure that a listed scale already carried keeps choosing the same scale (same bytes): (1) a figure the
+  // HEIGHT limits (a tall stack: the page's override box is a square of scale% of the column, so 410x788 is limited by its 788) and (2) the largest whole percent the column allows, which
+  // is not always a multiple of 5 (a 828-wide grid needs 92% of a 298 px column; 90 is the last multiple of 5). Each extra scale must still be able to show the labels at the font floor:
+  // the page shows the figure at most min(column, scale% of the column) wide and scale% of the column high, so the base font that floor needs may not pass the policy cap (32).
+  // The Archive measurement that follows each candidate stays the judge; this only decides which scales are worth measuring.
+  const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
+  const {width,height}=intrinsicSvg;
+  const needed=value=>{const box=A4_FIGURE_COLUMN_CSS_PX*value/100;return (fontFloorCssPx+comfortCssPx)/Math.min(Math.min(column,box)/width,box/height);};
+  const largestWhole=Math.min(100,Math.floor(column/A4_FIGURE_COLUMN_CSS_PX*100+1e-9));
+  const extra=[];
+  for(let value=Math.max(30,Math.max(0,...first)+SOLUTION_SCALE_STEP);value<=largestWhole&&extra.length<2;value+=SOLUTION_SCALE_STEP)if(needed(value)<=32&&!first.includes(value))extra.push(value);
+  if(largestWhole>=30&&needed(largestWhole)<=32&&!first.includes(largestWhole)&&!extra.includes(largestWhole))extra.push(largestWhole);
+  return [...first,...extra];
+}
+function widthScaleCandidates({intrinsicSvg,observation,fontFloorCssPx,comfortCssPx,targetBaseFontPx}){
   const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
   const baseWanted=Math.min(32,Math.max(targetBaseFontPx,phoneMinimumBaseFontPx(intrinsicSvg.width)));
   const wantedWidth=(fontFloorCssPx+comfortCssPx)/baseWanted*intrinsicSvg.width;
