@@ -304,7 +304,26 @@ REGION_INNER_SPACING_PX=12.0
 REGION_INNER_FIRST=30            # the roomiest spots tried first
 REGION_INNER_MORE=300            # further spots (same order, still 12 px apart) tried only when none of the first ones lets the leader out: a piece of a region cut by strokes has no spot among the roomiest
 
-def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE):
+REGION_CIRCLE_TOUCH_PX=1.5      # a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round IS that circle
+
+def _circles_inside_region(polygons,obstacles):
+    """[(cx,cy,r)] drawn circles that lie wholly inside this region (even-odd, screen px) and are not the region itself: a value standing inside such a circle reads as the circle's area
+    (the incircle of a triangle whose area is the value), so no value or dot of the region goes there."""
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    if not edges:return []
+    found=[]
+    for o in obstacles:
+        g=o.get('geometry')
+        if o.get('kind')!='circle' or not isinstance(g,(list,tuple)) or len(g)<3:continue
+        cx,cy,r=g[:3]
+        if r<=0 or not _inside_even_odd((cx,cy),polygons):continue
+        if min(point_segment_distance((cx,cy),a,b) for a,b in edges)<r-REGION_CIRCLE_TOUCH_PX:continue
+        ring=[(cx+r*math.cos(k*math.pi/18),cy+r*math.sin(k*math.pi/18)) for k in range(36)]
+        if sum(1 for q in ring if min(point_segment_distance(q,a,b) for a,b in edges)<=REGION_CIRCLE_TOUCH_PX)>=0.9*len(ring):continue   # the region's own circle
+        found.append((cx,cy,r))
+    return found
+
+def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE,exclude=()):
     """[{at, clear}] spots inside an even-odd region (screen px), the roomiest first, each at least REGION_INNER_CLEAR_PX from the boundary, REGION_INNER_STROKE_PX from every other stroke."""
     edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
     if not edges:return []
@@ -324,7 +343,8 @@ def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+RE
                         and all(point_segment_distance(at,a,b)>=REGION_INNER_STROKE_PX for a,b in strokes)
                         and all(abs(math.dist(at,(cx,cy))-r)>=REGION_INNER_STROKE_PX for cx,cy,r in circles)
                         and all(math.dist(at,(px,py))>=pr+REGION_INNER_POINT_PX for px,py,pr in discs)
-                        and all(math.dist(at,spot)>=REGION_LEADER_MARK_PX for spot in avoid)):
+                        and all(math.dist(at,spot)>=REGION_LEADER_MARK_PX for spot in avoid)
+                        and all(math.dist(at,(cx,cy))>=r for cx,cy,r in exclude)):
                     rows.append({'at':[at[0],at[1]],'clear':clear})
             x+=REGION_INNER_GRID_PX
         y+=REGION_INNER_GRID_PX
@@ -1447,8 +1467,14 @@ def prepare(spec):
         site=label['regionLeader']
         if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots);site.pop('inner',None)
         else:
-            spots=_region_inner_points(site['polygons'],obstacles,mark_spots)
+            # no dot and no inside value in a drawn circle that lies wholly inside the region (the incircle of a triangle): it would read as that circle's area, not the region's
+            circles=_circles_inside_region(site['polygons'],obstacles)
+            spots=_region_inner_points(site['polygons'],obstacles,mark_spots,exclude=circles)
             site['inner']=spots[:REGION_INNER_FIRST];site['innerMore']=spots[REGION_INNER_FIRST:]
+            if circles:
+                outside=lambda c:all(math.dist(c,(cx,cy))>=r for cx,cy,r in circles)
+                if site.get('insideCentres'):site['insideCentres']=[c for c in site['insideCentres'] if outside(c)]
+                if not site['only'] and label.get('candidateCenters'):label['candidateCenters']=[c for c in label['candidateCenters'] if outside(c)]
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
     # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,

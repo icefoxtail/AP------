@@ -104,6 +104,36 @@ BOX = [(130.0, 120.0), (240.0, 120.0), (240.0, 200.0), (130.0, 200.0)]
 CUT_BOX = [{'id': 'b%d' % i, 'kind': 'line', 'geometry': [BOX[i], BOX[(i + 1) % 4]]} for i in range(4)]
 
 
+TRIANGLE_6_8 = [[(60.0, 40.0), (60.0, 280.0), (240.0, 280.0)]]
+TRIANGLE_SIDES = [{'id': 's%d' % i, 'kind': 'line', 'geometry': [TRIANGLE_6_8[0][i], TRIANGLE_6_8[0][(i + 1) % 3]]} for i in range(3)]
+
+
+class DrawnCircleInsideTheRegion(unittest.TestCase):
+    """The incircle of a triangle whose area is the value (L21): nothing of the region's value stands inside it; the region's own circle and a circle across the boundary are no such circle."""
+    TRIANGLE = TRIANGLE_6_8
+    INCIRCLE = {'id': 'k', 'kind': 'circle', 'geometry': [120.0, 220.0, 60.0]}
+    SIDES = TRIANGLE_SIDES
+
+    def test_the_incircle_is_found_and_no_dot_stands_in_it(self):
+        occupied = self.SIDES + [self.INCIRCLE]
+        circles = engine._circles_inside_region(self.TRIANGLE, occupied)
+        self.assertEqual(circles, [(120.0, 220.0, 60.0)])
+        spots = engine._region_inner_points(self.TRIANGLE, occupied, exclude=circles)
+        self.assertTrue(spots)
+        for spot in spots:
+            self.assertGreaterEqual(math.dist(spot['at'], (120.0, 220.0)), 60.0)
+
+    def test_the_regions_own_circle_is_not_an_inner_circle(self):
+        ring = [[(120.0 + 60.0 * math.cos(k * math.pi / 36), 220.0 + 60.0 * math.sin(k * math.pi / 36)) for k in range(72)]]
+        self.assertEqual(engine._circles_inside_region(ring, [self.INCIRCLE]), [])
+
+    def test_a_circle_across_the_boundary_is_not_an_inner_circle(self):
+        across = {'id': 'k', 'kind': 'circle', 'geometry': [110.0, 160.0, 50.0]}
+        self.assertEqual(engine._circles_inside_region(SQUARE, EDGES + [across]), [])
+        inside = {'id': 'k', 'kind': 'circle', 'geometry': [180.0, 160.0, 50.0]}
+        self.assertEqual(engine._circles_inside_region(SQUARE, EDGES + [inside]), [(180.0, 160.0, 50.0)])
+
+
 class PieceCutOffByStrokes(unittest.TestCase):
     """A region cut by strokes (the trapezoid of a drawing with a height and a diagonal): the roomiest spots all lie in the big closed piece, whose leader would have to cross strokes,
     so the spot that lets the leader out is among the later ones. Those are tried only when the first ones fail."""

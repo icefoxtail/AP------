@@ -172,6 +172,25 @@ class ObserverTests(unittest.TestCase):
         moved=re.sub(r'<text\s[^>]*id="rABC-label"[^>]*>.*?</text>','',moved,flags=re.S).replace('</svg>',label_group('rABC-label',moved_box,TEXT)+'</svg>')
         self.assertIn('REGION_LEADER_READS_AS_SIDE',fx.codes(svg=moved))
         self.assertNotIn('REGION_LEADER_READS_AS_SIDE',fx.codes())
+    def with_circle_and_dot(self,circle,dot):
+        fx=self.fixture;svg=fx.svg();tag=fx.leader().group(0);old=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
+        line=re.sub(r'\sy1="[^"]+"',' y1="%.3f"'%dot[1],re.sub(r'\sx1="[^"]+"',' x1="%.3f"'%dot[0],tag))
+        moved=re.sub(r'\scy="[^"]+"',' cy="%.3f"'%dot[1],re.sub(r'\scx="[^"]+"',' cx="%.3f"'%dot[0],old))
+        ring='<circle data-role="circle" cx="%.3f" cy="%.3f" r="%.3f" fill="none" stroke="#111"/>'%circle
+        return svg.replace(tag,line).replace(old,moved).replace('</svg>',ring+'</svg>')
+    def test_tamper_dot_inside_a_circle_that_lies_wholly_inside_the_region(self):
+        # the incircle of a triangle whose area is the value: a dot inside the circle reads as the circle's area (21 in L21)
+        fx=self.fixture;forward=lambda q:(fx.transform['originX']+q[0]*fx.transform['sx'],fx.transform['originY']-q[1]*fx.transform['sy'])
+        centre=forward((-1.0,0.2))
+        self.assertIn('REGION_LEADER_START_IN_INNER_CIRCLE',fx.codes(svg=self.with_circle_and_dot((centre[0],centre[1],15.0),centre)))
+        # a dot in the region but outside that circle is fine
+        self.assertNotIn('REGION_LEADER_START_IN_INNER_CIRCLE',fx.codes(svg=self.with_circle_and_dot((centre[0],centre[1],15.0),(centre[0]+40.0,centre[1]))))
+    def test_a_circle_across_the_boundary_is_not_an_inner_circle(self):
+        fx=self.fixture;forward=lambda q:(fx.transform['originX']+q[0]*fx.transform['sx'],fx.transform['originY']-q[1]*fx.transform['sy'])
+        poly=[forward(POINTS[name]) for name in POLYGON];a,b=poly[0],poly[1];mid=((a[0]+b[0])/2,(a[1]+b[1])/2);d=math.dist(a,b);normal=((b[1]-a[1])/d,-(b[0]-a[0])/d)
+        if regions.area_state((mid[0]+normal[0]*10,mid[1]+normal[1]*10),[poly])!=1:normal=(-normal[0],-normal[1])
+        dot=(mid[0]+normal[0]*12,mid[1]+normal[1]*12)
+        self.assertNotIn('REGION_LEADER_START_IN_INNER_CIRCLE',fx.codes(svg=self.with_circle_and_dot((mid[0],mid[1],25.0),dot)))
     def test_a_leader_value_written_inside_its_region_is_not_missing_a_leader(self):
         # the engine writes a LEADER value inside its region when no place outside reads as the value; a label outside the region without a leader is still refused
         fx=self.fixture;svg=fx.svg0;tag=fx.leader().group(0);circle=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)

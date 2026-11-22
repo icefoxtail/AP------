@@ -246,6 +246,23 @@ def audit_equal_areas(root,marks,peer_point,by_mark,errors,observations):
         for other,index in member_of.items():
             if other!=oid and drawn.get(other)==fill and member_of.get(oid)!=index:errors.append('REGION_COLOR_GROUP_AMBIGUOUS:'+oid+'&'+other)
 
+LEADER_CIRCLE_TOUCH=1.5          # svg px: a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round is that circle
+
+def circles_inside(root,polygons):
+    """[(cx,cy,r)] the drawn circles (final SVG) that lie wholly inside this region and are not the region itself: a value or dot standing inside one reads as that circle's area."""
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    found=[]
+    for n in root.iter():
+        if tag(n)!='circle' or n.get('data-role')!='circle':continue
+        try:cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r'))
+        except (TypeError,ValueError):continue
+        if r<=0 or not edges or area_state((cx,cy),polygons)!=1:continue
+        if min(point_segment_distance((cx,cy),a,b) for a,b in edges)<r-LEADER_CIRCLE_TOUCH:continue
+        ring=[(cx+r*math.cos(k*math.pi/18),cy+r*math.sin(k*math.pi/18)) for k in range(36)]
+        if sum(1 for q in ring if min(point_segment_distance(q,a,b) for a,b in edges)<=LEADER_CIRCLE_TOUCH)>=0.9*len(ring):continue
+        found.append((cx,cy,r))
+    return found
+
 def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None,leaders=None,leader_ok=None,strokes=None):
     label_boxes=label_boxes or {}
     rows=marks.get('regions',[])
@@ -381,6 +398,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                 if clearance<LEADER_DOT_CLEAR:errors.append('REGION_LEADER_START_NEAR_BOUNDARY:'+oid)
             if any(area_state(a,other['polygons'])!=-1 for other in records if other is not record and other['ok']):errors.append('REGION_LEADER_START_IN_OTHER_REGION:'+oid)
             if any(point_segment_distance(a,q0,q1)<LEADER_DOT_STROKE for sid,pts in (strokes or []) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_START_ON_STROKE:'+oid)
+            if any(math.dist(a,(cx,cy))<r for cx,cy,r in circles_inside(root,record['polygons'])):errors.append('REGION_LEADER_START_IN_INNER_CIRCLE:'+oid)   # the dot would read as the area of the circle inside the region
             if length>1e-9:
                 unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
                 steps=max(2,int(length//2));left=False;came_back=False
@@ -414,6 +432,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
             observations.append({'id':oid,'type':'REGION_LABEL_LEADER','lengthPx':length})
         else:
             if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)
+            if record['ok'] and placement in {'LEADER','AUTO_LEADER'} and any(math.dist(centre,(cx,cy))<r for cx,cy,r in circles_inside(root,record['polygons'])):errors.append('REGION_VALUE_IN_INNER_CIRCLE:'+oid)
             if record['ok']:
                 for other in records:
                     if other is record or not other['ok']:continue
