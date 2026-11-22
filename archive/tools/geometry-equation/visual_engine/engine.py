@@ -301,8 +301,10 @@ REGION_INNER_STROKE_PX=7.0      # least distance from the dot to a drawn line, c
 REGION_INNER_POINT_PX=8.0       # least distance from the dot's edge to a drawn point
 REGION_INNER_GRID_PX=4.0
 REGION_INNER_SPACING_PX=12.0
+REGION_INNER_FIRST=30            # the roomiest spots tried first
+REGION_INNER_MORE=300            # further spots (same order, still 12 px apart) tried only when none of the first ones lets the leader out: a piece of a region cut by strokes has no spot among the roomiest
 
-def _region_inner_points(polygons,obstacles,avoid=(),limit=30):
+def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE):
     """[{at, clear}] spots inside an even-odd region (screen px), the roomiest first, each at least REGION_INNER_CLEAR_PX from the boundary, REGION_INNER_STROKE_PX from every other stroke."""
     edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
     if not edges:return []
@@ -1441,7 +1443,9 @@ def prepare(spec):
     for label in region_labels:
         site=label['regionLeader']
         if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots);site.pop('inner',None)
-        else:site['inner']=_region_inner_points(site['polygons'],obstacles,mark_spots)
+        else:
+            spots=_region_inner_points(site['polygons'],obstacles,mark_spots)
+            site['inner']=spots[:REGION_INNER_FIRST];site['innerMore']=spots[REGION_INNER_FIRST:]
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
     # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,

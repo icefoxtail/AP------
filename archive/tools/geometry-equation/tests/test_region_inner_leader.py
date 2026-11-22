@@ -100,5 +100,39 @@ class Placement(unittest.TestCase):
         self.assertGreaterEqual(boundary_distance(found[1], SQUARE), 1.0)
 
 
+BOX = [(130.0, 120.0), (240.0, 120.0), (240.0, 200.0), (130.0, 200.0)]
+CUT_BOX = [{'id': 'b%d' % i, 'kind': 'line', 'geometry': [BOX[i], BOX[(i + 1) % 4]]} for i in range(4)]
+
+
+class PieceCutOffByStrokes(unittest.TestCase):
+    """A region cut by strokes (the trapezoid of a drawing with a height and a diagonal): the roomiest spots all lie in the big closed piece, whose leader would have to cross strokes,
+    so the spot that lets the leader out is among the later ones. Those are tried only when the first ones fail."""
+    OCCUPIED = EDGES + CUT_BOX
+
+    def sites(self, more):
+        spots = engine._region_inner_points(SQUARE, self.OCCUPIED)
+        first = spots[:engine.REGION_INNER_FIRST]
+        label = {'id': 'r-label', 'target': 'r', 'regionLeader': {
+            'anchors': [], 'inner': first, 'innerMore': spots[engine.REGION_INNER_FIRST:] if more else [], 'gaps': list(engine.REGION_LEADER_GAPS),
+            'polygons': SQUARE, 'near': None, 'only': True, 'regions': [{'id': 'r', 'polygons': SQUARE}]}}
+        return spots, label_layout.region_inner_leader_placement(label, 36.0, 18.0, self.OCCUPIED, lambda box, owner_check=False: True)
+
+    def test_the_first_spots_alone_find_no_leader_and_the_later_ones_do(self):
+        spots, none = self.sites(False)
+        self.assertGreater(len(spots), engine.REGION_INNER_FIRST)
+        self.assertIsNone(none, 'the roomiest spots all lie inside the closed box')
+        _, found = self.sites(True)
+        self.assertIsNotNone(found)
+        start = found[1]
+        self.assertTrue(inside(start, SQUARE))
+        self.assertFalse(130.0 - 7 < start[0] < 240.0 + 7 and 120.0 - 7 < start[1] < 200.0 + 7, 'the dot stands in the free strip outside the box')
+        self.assertGreaterEqual(boundary_distance(start, SQUARE), engine.REGION_INNER_CLEAR_PX - 1e-6)
+
+    def test_the_first_thirty_spots_and_their_order_do_not_change(self):
+        spots = engine._region_inner_points(SQUARE, self.OCCUPIED)
+        self.assertEqual(spots[:engine.REGION_INNER_FIRST], engine._region_inner_points(SQUARE, self.OCCUPIED, (), engine.REGION_INNER_FIRST))
+        self.assertLessEqual(len(spots), engine.REGION_INNER_FIRST + engine.REGION_INNER_MORE)
+
+
 if __name__ == '__main__':
     unittest.main()

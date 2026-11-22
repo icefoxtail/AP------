@@ -843,7 +843,17 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
             pad=box.expand(REGION_INNER_DOT_LABEL_PX)
             if pad.x<=at[0]<=pad.right and pad.y<=at[1]<=pad.bottom:return True
         return False
-    dots=[row for row in site.get('inner',[]) if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
+    usable=lambda rows:[row for row in rows if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
+    best=None
+    for dots in (usable(site.get('inner',[])),usable(site.get('innerMore',[]))):
+        if best is not None:break
+        best=region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable)
+    if best is None:return None
+    _,box,start,end=best
+    theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+    return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+
+def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable):
     best=None
     for row in dots:
         start=tuple(row['at'])
@@ -868,10 +878,7 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
                     score=(round(length,1),-row['clear'])
                     if best is None or score<best[0]:best=(score,box,start,end)
                     break
-    if best is None:return None
-    _,box,start,end=best
-    theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
-    return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+    return best
 
 REGION_INNER_DOT_LABEL_PX=6.0
 REGION_INNER_EXIT_TOLERANCE_PX=3.0      # a stroke the leader crosses within this of the point where it leaves its region is that region's own boundary
