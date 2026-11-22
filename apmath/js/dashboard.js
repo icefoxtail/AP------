@@ -366,6 +366,14 @@ function openDashboardArchiveWindow(event) {
     window.open(url, '_blank', 'noopener');
 }
 
+// 원장 대시보드 "진단평가" 바로가기: 아카이브 빠른 평가의 진단평가 화면. 만든 시험지 옆 "결과표 열기"에서 결과표가 열린다.
+function openDashboardDiagnosticWindow(event) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    const url = appendArchiveSessionToUrl('../archive/workspace.html?view=diagnostic');
+    window.open(url, '_blank', 'noopener');
+}
+
 function openAdminAssessmentArchiveWindow(event) {
     if (event && typeof event.preventDefault === 'function') event.preventDefault();
     if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
