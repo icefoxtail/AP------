@@ -2,6 +2,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const teacherSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-teacher.js'), 'utf8');
@@ -18,12 +19,7 @@ assert(
   'teacher attendance shortcut should open the teacher-scoped attendance ledger'
 );
 
-assert(
-  indexSource.includes('./js/views/eie-timetable.js?v=20260622') &&
-    indexSource.includes('./js/views/eie-attendance.js?v=20260609') &&
-    indexSource.includes('./js/views/eie-teacher.js?v=20260622'),
-  'EIE changed timetable/attendance/teacher scripts should have cache-busting versions'
-);
+for (const file of ['js/views/eie-timetable.js', 'js/views/eie-attendance.js', 'js/views/eie-teacher.js']) assertLoads(indexSource, file, 'index');
 
 function makeContext() {
   const calls = [];
