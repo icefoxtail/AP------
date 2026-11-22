@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
+import unifiedUnits from "../archive2-unified-units.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
@@ -119,17 +120,18 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  unit: 0, unitAmbiguous: 0 };
+  unit: 0, unitByRule: {}, unitNotHinted: {} };
 // 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
-// 표시 전용으로 싣는다(여러 단원으로 갈리면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 표시 전용으로 싣는다(여러 단원에 걸치면 옛 대단원으로 좁히고, 이미 단원이 정해진 같은 PT 문항이 가장 많은 단원, 없으면 프로필 순서상 마지막 단원. 과목이 여럿인 학년은 문항 과목 안에서만. 사용자 결정 2026-11-22, 규칙은 unit-hint-lib.mjs). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
 // 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
-// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 90% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 70% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
 const unitHinter = createUnitHinter({
   bindings: foundationBindings.bindings,
   unitLabelByKey: standardUnitLabelByKey,
-  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.subUnit])),
+  // activeTagOptions는 이름을 label에 담는다(subUnit 필드는 없다). 여기서 row.subUnit을 읽으면 소단원 이름이 비어 중등 연결이 통합 단원으로 옮겨지지 않는다.
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.label])),
 });
-function buildMetaHint(meta, binding, grade = "", subject = "") {
+function buildMetaHint(meta, binding) {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
   // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
@@ -164,11 +166,6 @@ function buildMetaHint(meta, binding, grade = "", subject = "") {
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
-  if (pt) {
-    const unit = unitHinter.hint(pt, grade, subject);
-    if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
-    else if (unitHinter.decide(pt, grade).reason === "ambiguous") hintStats.unitAmbiguous++;
-  }
   return out;
 }
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
@@ -485,7 +482,7 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade, exam.subject);
+    const metaHint = buildMetaHint(meta, bindingKind);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -661,6 +658,24 @@ for (const exam of exams) {
   exam.gradeConflict = examRecords.some((r) => r.gradeConflict);
 }
 assertSourceQualityHoldCoverage(sourceQualityHolds);
+// 단원 힌트(metaHintUnit)는 문항이 다 만들어진 뒤 싣는다: 여러 단원에 걸친 PT는 "같은 학년에서 같은 PT를 가진, 이미 단원이 정해진 문항"이 가장 많은 단원을
+// 따르므로(unit-hint-lib.mjs) 먼저 그 문항 수를 세고, 그다음 힌트를 정한다. 센 값은 이 자리에서만 쓰고 저장하지 않는다(힌트 없이 통합 단원 층이 정한 단원만 센다).
+for (const record of records) {
+  const grade = record.effectiveBrowseGrade || record.sourceGrade;
+  if (!record.metaHintPT || !unitHinter.hasRule(grade)) continue;
+  const entry = unifiedUnits.classify({ ...record, metaHintUnit: "" }).entry;
+  if (entry && !entry.unclassified) unitHinter.addPlaced(record.metaHintPT, grade, entry.unitKey);
+}
+for (const record of records) {
+  const grade = record.effectiveBrowseGrade || record.sourceGrade;
+  if (!record.metaHintPT || !unitHinter.hasRule(grade)) continue;
+  // 교재 단원(chapter) 번호 키는 통합 단원 키와 다른 번호 체계라 옛 대단원으로 쓰지 않는다(unitFor와 같은 이유).
+  const chapterKeyed = core.Canonical?.textbookSource?.(record.sourceFile)?.unitKeys === "chapter";
+  const decision = unitHinter.decide(record.metaHintPT, grade, record.subject, { key: chapterKeyed ? "" : record.legacyStandardUnitKey });
+  const bucket = decision.value ? hintStats.unitByRule : hintStats.unitNotHinted;
+  bucket[decision.reason] = (bucket[decision.reason] || 0) + 1;
+  if (decision.value) { record.metaHintUnit = decision.value; hintStats.unit++; }
+}
 const gradeCourseRows = projectionPolicy.gradeCourseAllowlist || [];
 const canonicalBasicParents = [];
 const canonicalAdvancedPaths = [];
