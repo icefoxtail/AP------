@@ -138,4 +138,10 @@ test('a fraction times a letter or function is read by its stacked order, and th
     assert.deepEqual((await observe(one.drawn.svg,one.plan)).errors,[],text);
     assert.ok(codes(await observe(spliceLabel(one.drawn.svg,'nOB',body=>body.replace('data-c="31"','data-c="2E"')),one.plan)).includes('LABEL_TEXT_MISMATCH'),text);
   }
+  // g and h that are called are functions, not units: their 1 is left out and the observer accepts it
+  for(const text of ['(1)*g(x)','1*g(x)','y=(1)*h(x)']){
+    const call=await draw(text);
+    assert.equal(digitsOf(call.drawn.svg),'',text);
+    assert.deepEqual((await observe(call.drawn.svg,call.plan)).errors,[],text);
+  }
 });

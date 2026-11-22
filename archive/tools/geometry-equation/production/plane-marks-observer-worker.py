@@ -595,8 +595,9 @@ def audit(p):
         if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>]+",flat_text):
             unit_words={'mm','cm','m','km','mg','g','kg','mL','L','dL','s','min','h','ha'}
             def one_left_out(hit):
-                word=re.match(r'[A-Za-z]+',flat_text[hit.end():])
-                return hit.group(0) if word and word.group(0) in unit_words else '\x00'
+                after=flat_text[hit.end():];word=re.match(r'[A-Za-z]+',after)
+                called=word is not None and word.group(0) in {'g','h'} and after[word.end():word.end()+1]=='('     # g(x), h(x) are functions, not grams or hours
+                return hit.group(0) if word and word.group(0) in unit_words and not called else '\x00'
             digits_of=lambda value:''.join(re.findall(r'[0-9]',value))
             def stacked_run(source):
                 calls={'sqrt','sin','cos','tan','log','ln','exp','abs','f','g','h','p','q','logb'};out='';last=0
