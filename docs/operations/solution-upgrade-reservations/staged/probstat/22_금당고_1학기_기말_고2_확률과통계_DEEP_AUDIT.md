@@ -5,22 +5,22 @@
 - sourceRef: `main`; sourceBlobSha: `ed1d04c260180dc78b0cd7a70c9681d0f6d6e377`
 - 문항 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22; **22문항**. standardCourse 원본 설정: 0/22.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (개선 예약, 원본 미수정, 최종 QA 미실행).
-- 분류: **KEEP 0 / UPGRADE 19 / HOLD 3 / UNREAD 0**.
-- 연결 그림 경로: 3개; **원본 존재·육안 검증 0 / 연결 파일 없음 3**. 아래 경로 목록 참조.
+- 분류: **KEEP 0 / UPGRADE 22 / HOLD 0 / UNREAD 0**. (이미지 보관 경로 재확인 후 정정)
+- 연결 그림 경로: 3개; **보관 원본 존재·육안 검증 3 / 원본 파일 미발견 0**. 원본 `archive/assets/images/` 확인(문항 참조는 `assets/images/`); 앱 경로 해석 및 학생 화면 렌더는 별도 게이트.
 - 검토 범위: 8개 중 본 시험지의 문항 원문·선택지·기존 정답·solution·연결 그림 존재 여부와 수학적 계산을 교차 검토; 원본 JS·이미지는 변경하지 않음.
 - 릴리스 게이트: 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. MD 작성 완료가 출시 승인이나 결함 수정 완료를 뜻하지 않음.
 
 ## 핵심 결함·개선 예약
 
 - standardCourse 분류 필드 누락/불일치: Q01, Q02, Q03, Q04, Q05, Q06, Q07, Q08, Q09, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21, Q22. lane20 probstat 메타데이터 보완 필요.
-- 링크된 이미지 3개 원본 리포지토리 main·목표 브랜치 모두에서 파일 없음. 링크별로 아래 기록; 이미지가 있는 화면의 정합성 확인 전 HOLD.
+- **2026-11-22 재검증 정정:** 원래 문항 참조 `assets/images/…`의 실물은 `archive/assets/images/…`에 3/3개 존재. PNG는 파일을 열어, SVG는 Inkscape로 실제 렌더한 뒤 문제·해설과 육안 대조함. 이전 `MISSING` 및 이로 인한 `HOLD` 판정은 잘못된 경로 검색에서 비롯된 오판으로 취소. 다만 `assets/images/` 참조가 학생 앱에서 보관 경로로 해석되는지는 아직 실행 검증하지 않음.
 - Q19 교과 정규근사 선택지 ③(45명)과 정확한 이항분포 임곗값(44명)이 충돌. 수학/채점 정책 재검토 필요.
 
 ## 연결 이미지 전수 인벤토리
 
-- **MISSING / HOLD** — `assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg`
-- **MISSING / HOLD** — `assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png`
-- **MISSING / HOLD** — `assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg` → 실제 원본 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png` → 실제 원본 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg` → 실제 원본 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg`
 
 ## 전 문항 판정
 
@@ -226,7 +226,7 @@
 - **독립 검산·판정**: A가 7경기째 5승: 앞 6경기 4승 C(6,4)(1/3)^4(2/3)² 뒤 A승 1/3; 20/729, a+k=26.
 - **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q10 — HOLD
+### Q10 — UPGRADE
 
 - identity: id=`10`; sourceQid=`10`; sourceBlobSha=`ed1d04c260180dc78b0cd7a70c9681d0f6d6e377`; 단원: 미설정; questionType: `객관식`; 원본 답: `③`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -248,8 +248,8 @@
 > 따라서 $a+b=2+\dfrac34=\dfrac{11}{4}$이고 정답은 ③이다.
 
 - **독립 검산·판정**: ∫₀ᵃ x/2 dx=a²/4=1에서 a=2; P(X≥1)=3/4; 합 11/4.
-- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증 / standardCourse 원본 필드 미설정
+- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg`)
+- **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q11 — UPGRADE
 
@@ -280,7 +280,7 @@
 - **독립 검산·판정**: 하위 228/10000=0.0228는 z=−2; 450−2×10=430.
 - **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q12 — HOLD
+### Q12 — UPGRADE
 
 - identity: id=`12`; sourceQid=`12`; sourceBlobSha=`ed1d04c260180dc78b0cd7a70c9681d0f6d6e377`; 단원: 미설정; questionType: `객관식`; 원본 답: `⑤`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -300,8 +300,8 @@
 > 옳은 것은 ㄱ, ㄴ, ㄷ이고 정답은 ⑤이다.
 
 - **독립 검산·판정**: 정규밀도는 중심 m이고 좁은 f는 분산이 작으며 각 곡선 넓이 1; 곡선 그림 누락.
-- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증 / standardCourse 원본 필드 미설정
+- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png`)
+- **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q13 — UPGRADE
 
@@ -323,7 +323,7 @@
 - **독립 검산·판정**: 한 시행 기대금액 200×0.4−100×0.6=20원, 400회 8000원.
 - **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q14 — HOLD
+### Q14 — UPGRADE
 
 - identity: id=`14`; sourceQid=`14`; sourceBlobSha=`ed1d04c260180dc78b0cd7a70c9681d0f6d6e377`; 단원: 미설정; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -345,8 +345,8 @@
 > 따라서 $p=395$, $q=3$이고 $p+q=398$이므로 정답은 ②이다.
 
 - **독립 검산·판정**: 음성·확진 0.2×0.03=3/500, 전체 음성 395/500, 조건부 3/395, p+q=398.
-- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증 / standardCourse 원본 필드 미설정
+- 문항 연결 이미지: `assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg`)
+- **결함·개선 예약**: standardCourse 원본 필드 미설정
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q15 — UPGRADE
 
@@ -641,6 +641,6 @@
 ## 완료 기준 및 후속
 
 - 원본 문항 22/22개 읽음; 원본 풀이·정답·선택지/서술형 답·계산 판정 기록 완료.
-- 누락 자산 3개와 메타데이터 22문항, 독립성·균등확률·정규근사 등 개선 사항은 문항별 UPGRADE/HOLD 및 상단 목록에 예약.
+- 연결 그림 원본 3/3개 확인(실물 미발견 0). 메타데이터 22문항 및 수학적 전제·근사 정책 등 남은 개선 사항은 해당 문항의 UPGRADE 및 상단 목록에 예약. 이미지 참조 `assets/images/`의 학생 앱 로딩 경로는 아직 미검증.
 - 원본 이미지를 신규 제작·대체하거나 문제/해설을 승인 없이 고치지 않았음.
-- 후속: 원본 시험 PDF·그림 복구 및 메타 보강 → 미해결 문항 검수 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
+- 후속: 원본 시험 PDF와 이미지 경로 해석 대조 → 필요한 메타·수학 조건 보강 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
