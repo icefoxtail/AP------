@@ -874,8 +874,8 @@ test('the 4slot pass keeps every command line and body unchanged and only adds s
   const start=script.indexOf('# Stage timing'),end=script.indexOf('\n',script.indexOf("trap 'rc=$?; stage_end"))+1;
   assert.ok(start>0&&end>start);
   const without=(script.slice(0,start)+script.slice(end)).split('\n').filter(l=>!/^stage [a-z0-9-]+$/.test(l)).join('\n');
-  // sha256 of tools/ci/archive-four-slot-pass.sh before this change (LF endings).
-  assert.equal(hash(without),'0f6b9b4649da0d6306e9f600c6f2ee34a2e9c0b4c95c0758615d6e46ac71e84f','removing the timing block and markers gives back the previous script byte for byte');
+  // sha256 of tools/ci/archive-four-slot-pass.sh without the timing block and markers (LF endings). Re-pinned when #2533 pointed the git-diff-guards path at archive/data/question-metadata/v1.
+  assert.equal(hash(without),'aeb1d6745dbb89be8a43dc0a1857922029cda9c0842a7bb0200da0ee4d853261','removing the timing block and markers gives back the previous script byte for byte');
   const helper=text=>text.slice(text.indexOf('stage_log='),text.indexOf('\n',text.indexOf("trap 'rc=$?; stage_end"))).split('\n').filter(l=>!l.startsWith('#')).join('\n');
   assert.equal(helper(script),helper(lf(fs.readFileSync(scriptPath('archive-main-auto-meta-pass.sh'),'utf8'))),'same helper as the semantic pass');
   void t;

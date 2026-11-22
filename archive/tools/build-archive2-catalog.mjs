@@ -676,6 +676,13 @@ for (const record of records) {
   // 교재 단원(chapter) 번호 키는 통합 단원 키와 다른 번호 체계라 옛 대단원으로 쓰지 않는다(unitFor와 같은 이유).
   const chapterKeyed = core.Canonical?.textbookSource?.(record.sourceFile)?.unitKeys === "chapter";
   const decision = unitHinter.decide(record.metaHintPT, grade, record.subject, { key: chapterKeyed ? "" : record.legacyStandardUnitKey });
+  // 교재 문항의 과목은 교재 폴더로 정해져 있다. 유형 연결 단원이 하나뿐이라도 그 단원이 다른 과목이면(예: 미적분I 교재 속 이차함수 최대·최소 유형 → 대수 단원)
+  // 문항을 다른 과목으로 옮기지 않고 힌트를 싣지 않는다(교재 과목은 단원을 몰라도 유지).
+  if (decision.value && record.sourceFile.startsWith("textbooks/")) {
+    const before = unifiedUnits.classify({ ...record, metaHintUnit: "" }).entry;
+    const after = unifiedUnits.classify({ ...record, metaHintUnit: decision.value }).entry;
+    if (before?.subject && after?.subject !== before.subject) decision.value = "", decision.reason = "textbookSubjectMismatch";
+  }
   const bucket = decision.value ? hintStats.unitByRule : hintStats.unitNotHinted;
   const bucketKey = decision.reason + (decision.moved ? "+movedUnit" : "");
   bucket[bucketKey] = (bucket[bucketKey] || 0) + 1;
