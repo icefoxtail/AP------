@@ -1,5 +1,8 @@
 # 2026 금당고 고1 1학기 중간 기출 — lane20 심층 감사
 
+> **2026-11-22 상태 보정: 아래 기록은 과거 이미지 미확인 시점의 이력입니다.** q14 원본 PNG(blob `8bee5dee20bec08cf46ab24bc827221b965884f6`), q19 원본 PNG(blob `0f749bc33fd057c3114e55517d400f18450f6d58`)를 실제 판독하고 두 문항의 그림 조건·원문 계산을 확인했습니다. 현행 최종 판정은 **KEEP 20 / UPGRADE 0 / HOLD 0 / UNREAD 0**이며, 단독 소유 claim이 가리키는 [최신 전수 감사 MD](26_금당고_1학기_중간_고1_기출_c_DEEP_AUDIT.md)를 참조하십시오. 아래의 이전 KEEP 18/HOLD 2 및 PNG 미확인 표시는 변경 전 이력입니다. 해설 SVG 렌더·Golden·Negative·출고는 여전히 NOT_RUN, 시각 PASS가 아닙니다.
+
+
 - 원본: `archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js`
 - main 원본 blob SHA: `df9ebf4d66419de34a62af9103005d1e787d7c3e`
 - 원본 standardCourse: 공통수학1, 기출 1mid, 2026
