@@ -213,3 +213,24 @@
 - **2학기 중간 범위:** 원본 총 42장 중 **14장 MD 대응**, **28장 미감사**. 2학기 기말의 26/26 기록은 별개.
 - **다음 커서:** `archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js`부터 같은 미적분Ⅰ 라인으로 5장씩 이어가기.
 - **출고 경계:** EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE. 기존 solutionImage SVG·학생 화면 렌더, Golden/Negative 독립 테스트, 자동 preflight SHA-256 receipt, 운영 출고 QA, JS·SVG 운영 수정, `main` 병합 및 배포는 **NOT_RUN / NOT_PERFORMED**. 감사 MD 초안 완료는 운영 RELEASE PASS가 아님.
+
+
+## 2026-11-22 2학기 중간 추가 5개 — 2023 매산여고·복성고·순천고·순천여고·제일고
+
+- 미적분Ⅰ(구 수학Ⅱ) lane10의 `archive/exams/original/high/h2/2mid` 원본 5장 **113문항**을 추가로 심층 감사. 문항별 원문 발문·보기·정답·기존 solution 전문·독립 계산 근거·KEEP 판정을 각각 신규 MD에 보존.
+- 실제 원본 문제 PNG **13개/13개 직접 시각 판독**(매산여고 3, 복성고 3, 순천고 1, 순천여고 2, 제일고 4), 각 MD 해당 문항에 GitHub 원본 경로와 blob SHA 기록.
+- 공유 점유/claim 조회는 사용자 지시로 **SKIPPED_BY_USER**. 신규 MD 5건 원격 GitHub 커밋 후 전문 문자열 **readback 5/5 PASS**.
+
+| 누적 순서 | 시험지 | 문항 | KEEP | UPGRADE | HOLD | UNREAD | 원본 PNG | 커밋 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 41 | [23_매산여고_2학기_중간_고2_수학II](23_매산여고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | 3 | `a896abd209af` |
+| 42 | [23_복성고_2학기_중간_고2_수학II](23_복성고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 3 | `d5786659e260` |
+| 43 | [23_순천고_2학기_중간_고2_수학II](23_순천고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 1 | `732d2fb125e4` |
+| 44 | [23_순천여고_2학기_중간_고2_수학II](23_순천여고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | 2 | `5674b7888942` |
+| 45 | [23_제일고_2학기_중간_고2_수학II](23_제일고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | 4 | `3dcdf9513047` |
+| **회차 합계** | **5장** | **113** | **113** | **0** | **0** | **0** | **13** | **5/5 readback PASS** |
+
+- **전체 누적 감사 MD 초안 45장 / 1,008문항:** KEEP **951**, UPGRADE **29**, HOLD **28**, UNREAD **0**. 기존 UPGRADE/HOLD의 과거 미해결 항목은 변동 없음.
+- **2학기 중간 원본 범위:** JS 총 42장 중 **19장 MD 대응**, **23장 미감사**. 기존 2학기 기말 26/26 기록과 별개.
+- **다음 커서:** `archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js`. 다음에도 중복 없는 시험지 5장 완료 후 보고.
+- **검수 경계:** 감사 MD 초안 완료(EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE)와 운영 RELEASE PASS는 다르다. Golden/Negative, preflight SHA-256 receipt, solutionImage SVG·학생 화면 렌더, 운영 출고 QA, JS/SVG 수정·main 병합·배포 **NOT_RUN / NOT_PERFORMED**.
