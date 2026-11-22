@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a0bef215f6f1-f6626991",
+  "examUid": "비상_대수_지수로그_대단원_고2_유형심화",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+  "expectedSourceBlobSha1": "d5580bd05c16b1c3bf0fe968b4df1453b912e56b",
+  "expectedQuestionCount": 16,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a0bef215f6f1-f6626991.type-ledger.json",
+        "sha256": "f3aa4234600ce3337cfd26a0e0a69f0f174029eaefa4500a7f919b35c3fd9fd9"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d053678e59981bc668c7e4ff77f0b9cf61174a4e09e3941847853e18d46c8950",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+        "templateKey": "TPL_H22A_01_COMMON_LOG_077"
+      },
+      "rationale": "대사량비200^(3/4)의 상용로그1.725를 구해 수치를 반올림한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "ede363570bdcd651a499d3168dc5c07149c8321cfe389d585cc912c3a5516082",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a0bef215f6f1-f6626991.type-ledger.json",
+          "sha256": "f3aa4234600ce3337cfd26a0e0a69f0f174029eaefa4500a7f919b35c3fd9fd9"
+        }
+      ]
+    }
+  ]
+}

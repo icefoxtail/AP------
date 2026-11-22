@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-86ae2def02f8-4f69a71c",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e7fc4f5276cb807f489fca5fb72010c91984aa7fe7527a737c8e231ac965883e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+      "step": "같은 반지름 원호 이동 후 원래 현 길이를 재고 옮긴 뒤 반직선을 그리는 순서를 정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_02bdb9b9c1d6e3e3c616f3ae5a57f51a04c3bc92699c9ccfdde3f308ad0a67c3",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+      "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+      "step": "교차점 보조각을 삼각형과 사각형 내각 합에서 소거하여 x+y=360-45-40-55-25=195를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl",
+      "gradeBindingAdded": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f590ce18037b-dce96299",
+  "sourceArchiveFile": "similar/high/h1/1mid/25_순천여고_1학기_중간_고1_유사.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_266e92b635350c7114ef6fd717922ce4bd123dad8680d8a4869bba8289fd4378",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "나누어떨어지므로 P(1)=0, P(-2)=0 두 조건으로 a,b를 연립",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 인수정리로 미정계수 결정",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b1319477058b78dfa4e8ffde567104d1a2e9502f93e208623386e6f3c2e8f082",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "차가2인 두 이차식의 곱에1을 더해 완전제곱을 만든다.",
+      "note": "원문 a,b 정의 누락. 해설은 제곱 이차식 x²+ax+b의 계수로 사용함. 결정단계 완전제곱 구조는 판독 가능.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_5987989087a90fd1bce3a313d4c72b817e45660c63ee6cd16d2f2bd70ff8b95a",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "매개변수와 무관한 중근조건으로 판별식을0인 항등식으로 만든다.",
+      "note": "원문 a를 결정하는 조건이 없으나 해설은 a=4를 임의 사용한다. b=9 결정과 후속 인수분해 구조는 판독 가능.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_f044fe721a2ffa2b7687a1f6de4a29ba8603b5bd744d53853e3b399e8dd4c8e8",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "직선과 포물선을 연립한 판별식 양수조건으로 자연수 k를 센다.",
+      "note": "원문조건에서는 합1이며 choices에 없음. 해설도1을 계산한 뒤 의도상 가정으로4를 선택하여 정답불일치. 교점판정 유형은 명확.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

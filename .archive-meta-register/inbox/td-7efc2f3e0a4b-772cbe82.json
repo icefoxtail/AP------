@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7efc2f3e0a4b-772cbe82",
+  "examUid": "중1_2_기말대비1_입체도형_통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+  "expectedSourceBlobSha1": "464350e78fd7a15b236911f3122483a27f7e9d7b",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+        "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4dc98ebf09e00e6a2d062b5cede989776b5db3edc5178327fcfc85fea253a6ad",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_COUNTS"
+      },
+      "rationale": "정다면체별 면·모서리·꼭짓점 개수 관계로 표의 빈칸 값이 옳은지 대조한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "a1ba109ec3d2b65dcec33210c4150f3be7efc87e5981976f357c923f8dc30035",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9c9bc0e98fa0d68bf164730c87d189ae83ab1ccb6d1e7c9841385a5b4efe14de",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      },
+      "rationale": "전개도에서 정팔면체를 식별해 면의 모양과 한 꼭짓점에 모이는 면의 수를 보기별로 판단한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "1b90e220e3cdacef698dc443f4d652ef3e50f22174fc8d33425eb407b897dd4b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0708194c6af0daa501b86575ca3438936ab856d7da58a8d4d7f795738f23c053",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES"
+      },
+      "rationale": "그림의 회전체를 보고 입체의 종류를 판별하고 모선을 가리키는 기호를 찾는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "d0c5538c7513714df7e4c8a97d334e9e71abea4ab6001022349ce9735fc8d3de",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9438740245cd10b1963e068984b09dd68a5b0a8f5f3d10ef2d826eb25f3aae09",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE"
+      },
+      "rationale": "원뿔 전개도에서 밑면의 원주가 부채꼴 호 BC의 길이와 같음을 연결한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "f281f4d3eb28513ca8578e65a222215195b6a83ed721cddce9762ecb6d0abfc1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c0880a1ee21aab9de11c2c3ca6f0aa4e9383763765fe93c136398760cbb469bd",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE"
+      },
+      "rationale": "정육면체를 잘라 만든 입체의 각 면(밑면·옆면·사다리꼴 단면)의 넓이를 모두 합해 겉넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "de3b99f249ed40ffe1f10cdefa7a055b8d8b96ce63fd32d29736bea3ef6ae802",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bf0285a6b498d6287566f9fd5e896790d7803b9f3e74ba6a4b28cc8f74137816",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE"
+      },
+      "rationale": "큰 원기둥의 부피에서 안쪽 작은 원기둥의 부피를 빼서 회전체의 부피를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "ab678dd2ee3e56f1a170db0848218515982813fc4c65d7ad6e70ff1b0633192d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8f165050dad54ebafcc3a9cd00bdcdd4cfa72d01b196e48012feec37bbac2091",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE"
+      },
+      "rationale": "큰 원뿔의 부피에서 작은 원뿔의 부피를 빼서 회전체의 부피를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "6a352a86ea6defe0c78de05539d6e7d853ce47d75a43072751583d8a240721f2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3b43b89aaf3395524fea5598a11d8d891cf5cfe26bb1bc2aab7b473450adde2d",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      },
+      "rationale": "계급의 도수를 총도수로 나눈 상대도수를 두 집단에서 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "3569a4a0e14b9da3426b987fbf27fbebb84eeb064b5fb3c62c394e6248f4dd4b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b2c990059f5de79dec1327e716be6113b7eefd919d2b2240cf4d635c84a03311",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      },
+      "rationale": "상대도수의 합이 1임을 이용해 빠진 계급의 상대도수와 학생 수를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "2e57c14bcde8d9b0a5388cce80034f42f9f44d10858b5e2b33c8a4788771f24e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_73a94e59b064c99ef93a03179312d53bbf3cf1d7cb112c714c344736bbfa48d3",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      },
+      "rationale": "상대도수=도수/전체로 전체 학생 수를 구해 빠진 계급의 상대도수와 학생 수를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "4691ddc0447459602d61635cc838c44f28760c4b814e8822504354fe0bc4a1c5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_671bdb68cbe7a18515c3844c49d6e49881c0d744f9364909f5402a39820a1b2b",
+      "sourceOrdinal": 25,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_FREQUENCY"
+      },
+      "rationale": "상대도수 분포 그래프에서 계급별 상대도수·총합·넓이 관계를 읽어 보기의 참거짓을 판단한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "34461f3252c75e0738d39c35e06a79826838527044dabf6f8e9a8104fe143452",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+          "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7cc1e1216a20-741d58f6",
+  "examUid": "비상_대수_삼각함수_대단원_고2_유형확인",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_대단원_고2_유형확인.js",
+  "expectedSourceBlobSha1": "427039b1b9363b1289f05d8bc1ace35b786c451d",
+  "expectedQuestionCount": 16,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cc1e1216a20-741d58f6.type-ledger.json",
+        "sha256": "ad8fb22dfa80d98a9720a3398720200b75e5fc00e19a377c6fb09623c5a64439"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fb7ec71424e2a59eff083828fcf4cd873b7bbefb887c7c6dc4791ea660e14cfa",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+        "templateKey": "TPL_TRIGONOMETRIC_RELATION_ANGLE_FORMULA"
+      },
+      "rationale": "지름에 대한 원주각 90도로 직각삼각형을 만들어 cosθ=4/5를 구하고 배각공식 cos2θ=2cos²θ-1을 적용한다",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "65fde20cae2dd7b8b2aa4eb01ddfbd7e2df9cbd37f5a2dbac87c66f79041a94c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cc1e1216a20-741d58f6.type-ledger.json",
+          "sha256": "ad8fb22dfa80d98a9720a3398720200b75e5fc00e19a377c6fb09623c5a64439"
+        }
+      ]
+    }
+  ]
+}

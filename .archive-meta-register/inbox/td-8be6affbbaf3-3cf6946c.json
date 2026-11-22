@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-8be6affbbaf3-3cf6946c",
+  "examUid": "백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50.js",
+  "expectedSourceBlobSha1": "c360b3c929910bec7250c0ff13f0ba40e80cedce",
+  "expectedQuestionCount": 50,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.type-ledger.json",
+        "sha256": "255f1016d0808a7724c3a4d03cf72fb1394734ab814145cff2f5e043fd481e73"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6a3c6e3a5e946404a83dd0ab63a578f66fb94ee2b7cbda0129ba08e96cbdb350",
+      "sourceOrdinal": 27,
+      "before": {
+        "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+        "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q09-S2-R1"
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_AGGREGATE"
+      },
+      "rationale": "조건으로 집합의 원소를 모두 구한 뒤 서로 다른 원소를 한 번씩 연산해 값을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "2a6ee0545eecf2b85d35ef1e8142ddc563c489c3995f36fcace72a0fc86e6bfb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.type-ledger.json",
+          "sha256": "255f1016d0808a7724c3a4d03cf72fb1394734ab814145cff2f5e043fd481e73"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e87048688c5afbabdf58e4d1b8c79d5870c3a7df54e8df3ba1aa06695bf1e792",
+      "sourceOrdinal": 29,
+      "before": {
+        "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+        "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q10-S1-R1"
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_AGGREGATE"
+      },
+      "rationale": "방정식의 근으로 집합의 원소를 구한 뒤 서로 다른 원소를 한 번씩 연산해 값을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "288d8308b311439a69c5330ceb5cd2bc8138eccce3897edf7588b75d52eba2a1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.type-ledger.json",
+          "sha256": "255f1016d0808a7724c3a4d03cf72fb1394734ab814145cff2f5e043fd481e73"
+        }
+      ]
+    }
+  ]
+}
