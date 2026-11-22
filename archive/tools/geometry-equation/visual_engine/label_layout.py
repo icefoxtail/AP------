@@ -789,6 +789,7 @@ def angle_labels_first_order(label):
 # boundary and runs away from it. The label box stays out of this region and every other filled region (and off their boundaries), and the leader crosses no stroke and enters
 # no filled region.
 REGION_LEADER_CLEARANCE_PX=3.0
+REGION_LEADER_DOT_RADIUS_PX=2.4     # the dot a region value's leader starts on
 REGION_LEADER_MIN_ALIGNMENT=0.3     # a compass box direction must point at least this much (cosine) along the anchor's outward normal
 REGION_LEADER_SAMPLE_STEP_PX=4.0
 
@@ -820,8 +821,98 @@ def leader_avoids_regions(start,end,region_polygons,skip=3.0):
         if any(point_in_even_odd(point,polygons) for polygons in region_polygons):return False
     return True
 
+def region_inner_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for a region value standing OUTSIDE its region on a leader that starts on a dot INSIDE it (never on the boundary, where it would
+    read as the length of the side or radius it touches). The dot lies in no other filled region and well clear of every stroke and point (the engine chose the spots); the leader
+    leaves the region once, through its boundary at a clear angle, crosses no other stroke, enters no filled region again and hits no label or point; the shortest leader wins."""
+    site=label['regionLeader'];own=site['polygons']
+    others=[row['polygons'] for row in site.get('regions',[]) if row.get('id')!=label.get('target')]
+    all_regions=[own]+others
+    strokes=[]
+    for o in occupied:
+        g=o.get('geometry')
+        if o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(g,(list,tuple)) and len(g)>=2:
+            strokes+=list(zip(g,g[1:]))
+        elif o.get('kind')=='circle' and isinstance(g,(list,tuple)) and len(g)>=3:
+            cx,cy,r=g[:3];ring=[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)];strokes+=list(zip(ring,ring[1:]))
+    discs=[tuple(o['geometry']) for o in occupied if o.get('kind')=='point' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
+    boxes_taken=[o['geometry'] if isinstance(o.get('geometry'),Box) else Box(**o['geometry']) for o in occupied if o.get('kind') in {'label','conditionBox','rectangle'} and (isinstance(o.get('geometry'),Box) or (isinstance(o.get('geometry'),dict) and {'x','y','width','height'}<=set(o['geometry'])))]
+    near=site.get('near')
+    def under_label(at):
+        for box in boxes_taken:
+            pad=box.expand(REGION_INNER_DOT_LABEL_PX)
+            if pad.x<=at[0]<=pad.right and pad.y<=at[1]<=pad.bottom:return True
+        return False
+    dots=[row for row in site.get('inner',[]) if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
+    best=None
+    for row in dots:
+        start=tuple(row['at'])
+        for step in range(16):
+            angle=math.radians(step*22.5);u=(math.cos(angle),math.sin(angle))
+            exit_d=None
+            for d in range(1,700):
+                if not point_in_even_odd((start[0]+u[0]*d,start[1]+u[1]*d),own):exit_d=d;break
+            if exit_d is None:continue
+            exit_point=(start[0]+u[0]*exit_d,start[1]+u[1]*exit_d)
+            support=abs(u[0])*w/2+abs(u[1])*h/2
+            for gap in site['gaps']:
+                reach=gap+support
+                center=(exit_point[0]+u[0]*reach,exit_point[1]+u[1]*reach)
+                found=None
+                for box in [Box(center[0]-w/2,center[1]-h/2,w,h)]:
+                    if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
+                    end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
+                    if region_inner_leader_ok(start,end,exit_point,u,own,all_regions,strokes,discs,boxes_taken):found=(box,end)
+                if found is not None:
+                    box,end=found;length=math.dist(start,end)
+                    score=(round(length,1),-row['clear'])
+                    if best is None or score<best[0]:best=(score,box,start,end)
+                    break
+    if best is None:return None
+    _,box,start,end=best
+    theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
+    return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
+
+REGION_INNER_DOT_LABEL_PX=6.0
+REGION_INNER_EXIT_TOLERANCE_PX=3.0      # a stroke the leader crosses within this of the point where it leaves its region is that region's own boundary
+REGION_INNER_MIN_EXIT_ANGLE_DEGREES=30.0
+
+def region_inner_leader_ok(start,end,exit_point,unit,own,all_regions,strokes,discs,boxes):
+    length=math.dist(start,end)
+    d_exit=math.dist(start,exit_point)
+    if length<=d_exit+4.0:return False
+    d=(end[0]-start[0],end[1]-start[1])
+    steps=max(2,int(length//REGION_LEADER_SAMPLE_STEP_PX))
+    for k in range(steps+1):
+        t=length*k/steps
+        point=(start[0]+d[0]*t/length,start[1]+d[1]*t/length)
+        if t<d_exit-1.5:
+            if any(point_in_even_odd(point,polygons) for polygons in all_regions[1:]):return False
+        elif t>d_exit+1.5:
+            if any(point_in_even_odd(point,polygons) for polygons in all_regions):return False
+    for c,e in strokes:
+        r=(e[0]-c[0],e[1]-c[1]);den=d[0]*r[1]-d[1]*r[0]
+        q=(c[0]-start[0],c[1]-start[1])
+        if abs(den)>1e-12:
+            t=(q[0]*r[1]-q[1]*r[0])/den;u=(q[0]*d[1]-q[1]*d[0])/den
+            if -1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9:
+                hit=(start[0]+d[0]*t,start[1]+d[1]*t)
+                if math.dist(hit,exit_point)>REGION_INNER_EXIT_TOLERANCE_PX:return False
+                chord=math.hypot(*r)
+                if chord>1e-9:
+                    cosine=abs(d[0]*r[0]+d[1]*r[1])/(length*chord)
+                    if math.degrees(math.asin(min(1.0,math.sqrt(max(0.0,1-cosine*cosine)))))<REGION_INNER_MIN_EXIT_ANGLE_DEGREES:return False
+                continue
+        if segment_segment_distance(start,end,c,e)<=2.0 and point_segment_distance(exit_point,c,e)>REGION_INNER_EXIT_TOLERANCE_PX:return False
+    for x,y,radius in discs:
+        if point_segment_distance((x,y),start,end)<=radius+4.0:return False
+    for box in boxes:
+        if segment_hits_box(start,end,box.expand(3.0)):return False
+    return True
+
 def region_leader_placement(label,w,h,occupied,acceptable):
     """(box, leader start, leader end, direction) for a region label standing outside its region on a leader from the region's boundary, or None."""
+    if label['regionLeader'].get('inner') is not None:return region_inner_leader_placement(label,w,h,occupied,acceptable)
     site=label['regionLeader'];own=site['polygons']
     all_regions=[own]+[row['polygons'] for row in site.get('regions',[]) if row.get('id')!=label.get('target')]
     anchors=list(site['anchors']);near=site.get('near')
@@ -1068,8 +1159,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk'))))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
-            leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {})})
+            dot='inner' in label.get('regionLeader',{}) and label['regionLeader']['inner'] is not None
+            leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {}),**({'dot':True} if dot else {})})
             occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
+            if dot:occupied.append({'id':leader_id+'-dot','kind':'point','geometry':[label['at'][0],label['at'][1],REGION_LEADER_DOT_RADIUS_PX]})
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
             allowed=('N','S') if label['tickAxis']=='x' else ('W','E')

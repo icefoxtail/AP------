@@ -3404,9 +3404,10 @@ def _ov_asymptote_values(plan):
     for name,row in rows:
         try:
             exact=lambda items:[S.Rational(Fraction(str(value))) for value in (items or [])]
+            fold=(lambda value:abs(value)) if row.get('abs') is True else (lambda value:value)   # y=|f(x)| approaches |C|
             if name=='exponential-affine':
                 c=exact(row.get('coefficients'))
-                if len(c)==3:out.append(('h',c[2]))
+                if len(c)==3:out.append(('h',fold(c[2])))
             elif name=='logarithmic-affine':
                 c=exact(row.get('coefficients'))
                 if len(c)==4 and c[1]!=0:out.append(('v',-c[2]/c[1]))
@@ -3414,7 +3415,7 @@ def _ov_asymptote_values(plan):
                 n=exact(row.get('numerator'));d=exact(row.get('denominator'))
                 if len(d)==2 and d[1]!=0:
                     out.append(('v',-d[0]/d[1]))
-                    if len(n)==2:out.append(('h',n[1]/d[1]))
+                    if len(n)==2:out.append(('h',fold(n[1]/d[1])))
         except (ValueError,TypeError,ZeroDivisionError):continue
     return [item for item in out if item[1]!=0]
 

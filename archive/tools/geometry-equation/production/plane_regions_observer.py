@@ -20,6 +20,9 @@ HATCH_COVERAGE=0.5      # the hatch must cover at least this share of the region
 
 LEADER_BOUNDARY_TOLERANCE=1.5   # svg px: a region label's leader starts on the region's boundary (the dense outline of an arc lies a hair inside the true circle)
 LEADER_PROBE=3.0                # svg px: just beyond the start the leader is already outside its own region
+LEADER_DOT_CLEAR=8.0            # svg px: the dot a region value's leader starts on stands at least this far inside its region's boundary (the engine keeps 9; a hair of slack for the dense arc outline)
+LEADER_DOT_STROKE=5.0           # svg px: and at least this far from every drawn stroke (the engine keeps 7)
+LEADER_DOT_RADIUS=(1.5,3.5)     # svg px: the dot's radius
 REGION_LABEL_AT_SLACK=26.0      # svg px: a label placed at labelAt stands within this distance of it (the engine looks within 24 px)
 REGION_WEIGHT_STROKE_EM=0.06    # a plain-text name/value label is drawn with this outline stroke (em), the weight of a math label (this observer's own copy)
 REGION_UNIT_POWERS={'2':'\u00b2','3':'\u00b3'}
@@ -362,18 +365,39 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
             if any(area_state(point,other['polygons'])==1 for other in records if other['ok'] for point in probes):errors.append('REGION_LABEL_NOT_OUTSIDE:'+oid)
             a=(float(leader.get('x1')),float(leader.get('y1')));b=(float(leader.get('x2')),float(leader.get('y2')));length=norm(sub(b,a))
             boundary=lambda q:min(point_segment_distance(q,poly[i],poly[(i+1)%len(poly)]) for poly in record['polygons'] for i in range(len(poly)))<=LEADER_BOUNDARY_TOLERANCE
-            if leader_ok is not None:leader_ok(oid+'-label',box,boundary)
+            # the value's leader starts on a dot INSIDE this region (a leader from the boundary reads as the length of the side or radius it touches): the dot is drawn, lies well inside
+            # this region and in no other one, clear of every stroke; the leader leaves the region once through its boundary and never comes back, enters no other region and
+            # crosses no stroke except that boundary where it leaves
+            if leader_ok is not None:leader_ok(oid+'-label',box,lambda q:True)
+            dot=next((n for n in elements if tag(n)=='circle' and n.get('data-role')=='leader-dot' and n.get('data-owner-label')==oid+'-label'),None)
+            try:dot_ok=dot is not None and norm(sub((float(dot.get('cx')),float(dot.get('cy'))),a))<=0.3 and LEADER_DOT_RADIUS[0]<=float(dot.get('r'))<=LEADER_DOT_RADIUS[1]
+            except (TypeError,ValueError):dot_ok=False
+            if not dot_ok:errors.append('REGION_LEADER_DOT_MISSING:'+oid)
+            if area_state(a,record['polygons'],1e-6)!=1:errors.append('REGION_LEADER_NOT_FROM_INSIDE:'+oid)
+            else:
+                clearance=min(point_segment_distance(a,poly[i],poly[(i+1)%len(poly)]) for poly in record['polygons'] for i in range(len(poly)))
+                if clearance<LEADER_DOT_CLEAR:errors.append('REGION_LEADER_START_NEAR_BOUNDARY:'+oid)
+            if any(area_state(a,other['polygons'])!=-1 for other in records if other is not record and other['ok']):errors.append('REGION_LEADER_START_IN_OTHER_REGION:'+oid)
+            if any(point_segment_distance(a,q0,q1)<LEADER_DOT_STROKE for sid,pts in (strokes or []) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_START_ON_STROKE:'+oid)
             if length>1e-9:
                 unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
-                if area_state((a[0]+unit[0]*LEADER_PROBE,a[1]+unit[1]*LEADER_PROBE),record['polygons'])!=-1:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
-                steps=max(2,int(length//4))
+                steps=max(2,int(length//2));left=False;came_back=False
                 for k in range(steps+1):
                     d=length*k/steps
-                    if d<LEADER_PROBE:continue
                     point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
-                    if any(area_state(point,other['polygons'])==1 for other in records if other['ok']):errors.append('REGION_LEADER_IN_REGION:'+oid);break
+                    inside_own=area_state(point,record['polygons'])==1
+                    if not inside_own and area_state(point,record['polygons'])==-1:left=True
+                    elif inside_own and left:came_back=True
+                    if d>=LEADER_PROBE and any(area_state(point,other['polygons'])==1 for other in records if other is not record and other['ok']):errors.append('REGION_LEADER_IN_REGION:'+oid);break
+                if not left:errors.append('REGION_LEADER_NOT_LEAVING:'+oid)
+                if came_back:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
                 for sid,pts in (strokes or []):
-                    if any(properly_cross(a,b,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_CROSSES:'+oid+':'+str(sid))
+                    for q0,q1 in zip(pts,pts[1:]):
+                        if not properly_cross(a,b,q0,q1):continue
+                        u=sub(b,a);v=sub(q1,q0);den=u[0]*v[1]-u[1]*v[0];w=sub(q0,a);t=(w[0]*v[1]-w[1]*v[0])/den
+                        hit=(a[0]+u[0]*t,a[1]+u[1]*t)
+                        # the one crossing allowed is the leader leaving this region through its own boundary
+                        if not boundary(hit):errors.append('REGION_LEADER_CROSSES:'+oid+':'+str(sid))
             observations.append({'id':oid,'type':'REGION_LABEL_LEADER','lengthPx':length})
         else:
             if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)

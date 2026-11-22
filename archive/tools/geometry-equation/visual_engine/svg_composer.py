@@ -22,7 +22,7 @@ OWNER_LEADER_PLACEMENTS={'MEASURED_OWNER_SAFE_RELOCATION',*(prefix+d for prefix 
 def owner_label_leader_svg(leader,layout,element_id):
     """A point label relocated away from its point, tied back to it: from the point to the label box edge on the way to its center."""
     owner=next((value for value in layout['labels'] if value.get('id')==leader.get('ownerLabelId')),None)
-    if (set(leader)-{'pathLabelFallback','crossFallback'}!={'schemaVersion','id','from','to','ownerLabelId','ownerId'} or leader.get('pathLabelFallback',True) is not True or leader.get('crossFallback',True) is not True or not owner
+    if (set(leader)-{'pathLabelFallback','crossFallback','dot'}!={'schemaVersion','id','from','to','ownerLabelId','ownerId'} or leader.get('pathLabelFallback',True) is not True or leader.get('crossFallback',True) is not True or leader.get('dot',True) is not True or not owner
         or owner.get('placement') not in OWNER_LEADER_PLACEMENTS or owner.get('target')!=leader.get('ownerId')
         or list(owner.get('at',[]))!=leader.get('from') or not isinstance(owner.get('box'),dict)
         or not isinstance(leader.get('to'),list) or len(leader['to'])!=2):
@@ -34,8 +34,10 @@ def owner_label_leader_svg(leader,layout,element_id):
     expected_end=callout_leader_end(box,leader['from'],center)
     if math.hypot(expected_end[0]-x2,expected_end[1]-y2)>1e-6 or math.hypot(x2-x1,y2-y1)<=1e-6:raise ValueError('OWNER_LABEL_LEADER_ENDPOINT_INVALID')
     return (f'<line id="{element_id(leader["id"])}" data-role="leader" data-owner-label="{esc(leader["ownerLabelId"])}" '
-            f'data-owner="{esc(leader["ownerId"])}"'+(' data-path-label-fallback="1"' if leader.get("pathLabelFallback") else '')+(' data-leader-crossing="1"' if leader.get("crossFallback") else '')+f' x1="{num(x1)}" y1="{num(y1)}" x2="{num(x2)}" y2="{num(y2)}" '
-            f'stroke="#666" stroke-width="0.8" fill="none"/>')
+            f'data-owner="{esc(leader["ownerId"])}"'+(' data-path-label-fallback="1"' if leader.get("pathLabelFallback") else '')+(' data-leader-crossing="1"' if leader.get("crossFallback") else '')+(' data-region-dot="1"' if leader.get("dot") else '')+f' x1="{num(x1)}" y1="{num(y1)}" x2="{num(x2)}" y2="{num(y2)}" '
+            f'stroke="#666" stroke-width="0.8" fill="none"/>'
+            # a region value's leader starts on a small dot inside its region (REGION_LEADER_DOT_RADIUS_PX), so it reads as that region's value and never as the length of a side
+            +(f'<circle id="{element_id(leader["id"]+"-dot")}" data-role="leader-dot" data-owner-label="{esc(leader["ownerLabelId"])}" data-owner="{esc(leader["ownerId"])}" cx="{num(x1)}" cy="{num(y1)}" r="2.4" fill="#555" stroke="none"/>' if leader.get('dot') else ''))
 
 def safe_math_markup(value):
     root=ET.fromstring('<text>'+value+'</text>')

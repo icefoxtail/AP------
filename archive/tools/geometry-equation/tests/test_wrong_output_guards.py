@@ -83,6 +83,19 @@ class AsymptoteLines(unittest.TestCase):
         self.assertEqual(observer._ov_asymptote_values(pair), [('h', S.Integer(2))])
         self.assertEqual(observer._ov_asymptote_values({'family': 'polynomial', 'coefficients': ['0', '1']}), [])
 
+    def test_a_folded_curve_approaches_the_absolute_value(self):
+        # y=|3^x-2| tends to |-2| = 2 (not -2); a log curve keeps its vertical boundary; a rational y=|(1+2x)/(-1+x)| tends to |2|
+        plan = {'family': 'multi-curve', 'curves': [
+            {'id': 'f', 'kind': 'EXPONENTIAL', 'base': '3', 'coefficients': ['1', '1', '-2'], 'abs': True},
+            {'id': 'g', 'kind': 'LOGARITHMIC', 'base': '3', 'coefficients': ['1', '1', '-1', '0'], 'abs': True},
+            {'id': 'h', 'kind': 'RATIONAL', 'numerator': ['1', '-2'], 'denominator': ['-1', '1'], 'abs': True}]}
+        want = [('h', S.Integer(2)), ('v', S.Integer(1)), ('v', S.Integer(1)), ('h', S.Integer(2))]
+        self.assertEqual(framing._overlay_asymptote_values(plan), want)
+        self.assertEqual(observer._ov_asymptote_values(plan), want)
+        plain = {'family': 'multi-curve', 'curves': [{'id': 'f', 'kind': 'EXPONENTIAL', 'base': '3', 'coefficients': ['1', '1', '-2']}]}
+        self.assertEqual(framing._overlay_asymptote_values(plain), [('h', S.Integer(-2))])
+        self.assertEqual(observer._ov_asymptote_values(plain), [('h', S.Integer(-2))])
+
     def test_rational_asymptotes(self):
         plan = {'family': 'rational', 'numerator': ['1', '2'], 'denominator': ['-1', '1']}   # y=(1+2x)/(-1+x): x=1, y=2
         want = [('v', S.Integer(1)), ('h', S.Integer(2))]

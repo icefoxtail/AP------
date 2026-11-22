@@ -114,11 +114,14 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',regionDot:e.getAttribute('data-region-dot')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
-    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),...(svg.getAttribute('data-text-free')==='true'?{textFree:true}:{}),labels,geometry,fontStatus:document.fonts.status};
+    // the outline of every filled region (its fill is paint, not a stroke, so it is not in `geometry`): a region value's leader leaves its own region through this outline
+    const regionOutlines={};
+    for(const e of svg.querySelectorAll('path[data-role="region"]')){if(!e.id)continue;const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));const outline=[];for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);outline.push(project(e,p.x,p.y));}regionOutlines[e.id]=outline;}
+    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),regionOutlines,...(svg.getAttribute('data-text-free')==='true'?{textFree:true}:{}),labels,geometry,fontStatus:document.fonts.status};
   },publicationViewport);
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
@@ -258,6 +261,31 @@ function properCross(a,b,c,d) {
   // end of either stroke is that rounding, not a crossing (E32: partial-length labels' leaders were refused for "crossing" their own segment at the start point).
   const lengthU=Math.hypot(u[0],u[1]),lengthV=Math.hypot(v[0],v[1]);
   return t>1e-6&&t<1-1e-6&&s>1e-6&&s<1-1e-6&&t*lengthU>1e-3&&(1-t)*lengthU>1e-3&&s*lengthV>1e-3&&(1-s)*lengthV>1e-3;
+}
+function crossPoint(a,b,c,d){
+  const u=[b[0]-a[0],b[1]-a[1]],v=[d[0]-c[0],d[1]-c[1]],w=[c[0]-a[0],c[1]-a[1]];
+  const determinant=u[0]*v[1]-u[1]*v[0];const t=(w[0]*v[1]-w[1]*v[0])/determinant;
+  return [a[0]+u[0]*t,a[1]+u[1]*t];
+}
+function distanceToPolyline(point,points){
+  let best=Infinity;
+  for(let i=1;i<points.length;i++){
+    const a=points[i-1],b=points[i],dx=b[0]-a[0],dy=b[1]-a[1],length2=dx*dx+dy*dy;
+    const t=length2<=1e-18?0:Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2));
+    best=Math.min(best,Math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy)));
+  }
+  return best;
+}
+// A region value's leader (data-region-dot) starts on a dot inside its region and must leave it: the strokes it crosses are allowed only where they lie on the region's own outline
+// (checked here against the outline of the final SVG); a crossing anywhere else is a real LEADER_CROSSING. plane_regions_observer.py checks the same independently.
+const REGION_EXIT_TOLERANCE_PX=1.5;
+function leaderCrossesOnlyOwnOutline(leader,other,outlines){
+  const outline=outlines?.[leader.owner];if(!leader.regionDot||!outline?.length)return false;
+  for(let i=1;i<leader.points.length;i++)for(let j=1;j<other.points.length;j++){
+    if(!properCross(leader.points[i-1],leader.points[i],other.points[j-1],other.points[j]))continue;
+    if(distanceToPolyline(crossPoint(leader.points[i-1],leader.points[i],other.points[j-1],other.points[j]),outline)>REGION_EXIT_TOLERANCE_PX)return false;
+  }
+  return true;
 }
 function isOwnRegionExit(leader,other,geometry) {
   if(leader.ownerKind!=='REGION'||leader.points?.length!==2)return false;
@@ -423,6 +451,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id)||/-coordinates?-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-|^asymptote-|^rational-asymptote-|-asymptote(-|$)/.test(String(other.id))))continue;
     // (CL) a point name's last-resort leader (data-leader-crossing) may cross thin strokes (a segment, a dashed line, a circle, an axis, a tick), never a point or another leader
     if(leader.leaderCrossing&&['line','curve','auxiliary','circle','axis','tick'].includes(other.kind))continue;
+    if(leaderCrossesOnlyOwnOutline(leader,other,capture.regionOutlines))continue;
     if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}

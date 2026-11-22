@@ -205,6 +205,11 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const pathRowIds=new Set((Array.isArray(plan?.planeMarks?.pathLabels)?plan.planeMarks.pathLabels:[]).map(row=>row?.id));
     const stuckIds=[...unresolved,...suppressed].map(id=>String(id?.id??id)),stuckPath=stuckIds.length&&stuckIds.every(id=>id.endsWith('-label')&&pathRowIds.has(id.slice(0,-'-label'.length)))?stuckIds[0]:null;
     if(stuckPath)throw new Stop('PATH_LABEL_NO_ROOM',{id:stuckPath.slice(0,-'-label'.length),unresolved,suppressed});
+    // a region's value on a leader (LEADER / AUTO_LEADER) starts on a dot inside its own region only: when no spot of that region is free of every other region, stroke and point, there is no
+    // boundary start to fall back on, so the label is refused under its own code with the region's id
+    const leaderRegionIds=new Set((Array.isArray(plan?.planeMarks?.regions)?plan.planeMarks.regions:[]).filter(row=>row?.label!==undefined&&['LEADER','AUTO_LEADER'].includes(row.labelPlacement)).map(row=>row.id));
+    const stuckRegion=stuckIds.find(id=>id.endsWith('-label')&&leaderRegionIds.has(id.slice(0,-'-label'.length)));
+    if(stuckRegion)throw new Stop('REGION_LEADER_NO_INNER_SPOT',{id:stuckRegion.slice(0,-'-label'.length),unresolved,suppressed});
     // (G11) the label of a callout's angle dimension (kX__angDim-label) found no room, not even on a leader: its own code, so the author moves it (radiusFactor, radius, at) instead of retrying elsewhere
     if([...unresolved,...suppressed].some(id=>/__angDim-label$/.test(String(id?.id??id))))throw new Stop('CALLOUT_ANGLE_DIMENSION_NO_ROOM',{unresolved,suppressed});
     if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
