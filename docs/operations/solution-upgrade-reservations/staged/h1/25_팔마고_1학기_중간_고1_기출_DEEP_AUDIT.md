@@ -1,6 +1,6 @@
 # 25_팔마고 고1 1학기 중간 기출 — 문항별 심층 감사
 
-원본: `archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js` SHA `ecdd2d326583a7add130ec805a063068ce706ba9`. 원문 23문항을 원본 JS에서 확인함. KEEP 14, HOLD 9, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 미해소). 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
+원본: `archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js` SHA `ecdd2d326583a7add130ec805a063068ce706ba9`. 원문 23문항을 원본 JS에서 확인함. KEEP 14, HOLD 9, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=true(UPGRADE 0건의 전체 풀이 완성; 9개 HOLD는 SOURCE/VISUAL 검증 대기이며 출고 불가). 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -475,3 +475,10 @@ k>1에서는 보통 2+2=4개이고, k=3일 때 두 경우의 공통점 (−3,−
 ## q15 추가 확인
 
 실수계수 원식 \(-x^2+ax+b=0\)의 한 근이 \(1+2i\)이면 다른 근은 \(1-2i\)이고, 두 근의 합 2·곱5로 \(a=2,b=-5\)이다. 접하는 함수 \(y=x^2-2bx-a+k=x^2+10x+k-2\)의 판별식은 \(100-4(k-2)=108-4k\)이므로 \(k=27\), 접점 \(\alpha=-5\), \(k+4\alpha=7\). 따라서 원문 정답은 일치한다. (앞의 검산 메모의 'k=20'은 미확정 계산으로 정정한다.)
+
+## 2026-11-22 감사 상태 재판정 — HOLD는 초안 완료를 차단하지 않음
+
+- q1~q23 원본 content·choices·answer·solution 직접 대조 및 각 KEEP/HOLD 이유 문서화가 선행 완료되어 `EXAM_AUDIT_COMPLETE=true`.
+- `UPGRADE=0`이므로 추가로 작성할 학생용 해설이 없고, `EXAM_DRAFT_COMPLETE=true`이다. 기존 q11·q13·q15·q16·q17·q18·q19·q21·q23의 HOLD 판정은 하나도 해소됐다고 주장하지 않는다.
+- 9개 HOLD는 원본 그림·정답·조건의 별도 검증 목록에 그대로 남으며, VISUAL_HOLD/SOURCE_HOLD 및 Golden/Negative/Render/Release `NOT_RUN`. 출고 PASS 아님. SVG/JS/main 무변경.
+- 이 상태 갱신은 완료 초안의 공유 claim 기록을 재개 가능한 정확한 상태로 만드는 것이며, 원본 출제 결함의 해결이나 QA 통과가 아니다.
