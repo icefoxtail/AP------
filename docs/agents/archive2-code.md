@@ -49,6 +49,8 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 출력 창(`engine.html`·`mixed_engine.html`) 위 조작줄은 `archive/archive2-output-bar.css`가 맡는다(화면 전용 `@media screen`, 토큰은 layer로 불러 종이 글꼴·바탕을 바꾸지 않는다, 웹 글꼴은 부르지 않는다). 자세한 규칙은 `archive/DESIGN.md` "출력 창 조작줄". 이유: 웹 글꼴이 늦게 도착하면 런타임이 종이를 다시 그리고, 토큰의 `:root` 글꼴·바탕이 종이에 번지면 인쇄가 바뀐다.
 - 원본 기출 머리글 제목(시험지·해설·정답)은 읽기 쉬운 이름이다(`archive/exam-display-title.js`, 예: `2022 강남여고 고1 1학기 중간`). CI 출력 확인(`archive2-output-performance-browser.cjs`, `archive2-solution-loading-browser.cjs`)은 2026-11-18부터 현재 코드만 렌더해 오류·미렌더·시간을 본다. 기준 커밋과 쪽수·본문 해시·블록 좌표를 비교하는 장치(OUTPUT_PARITY, `archive2-output-comparison-references.json`, 릴리스 자격 게이트)는 뺐다. 이유: 렌더러·그림 크기 규칙을 일부러 바꿀 때마다 기준 커밋을 옮겨야 해서 모든 엔진 PR이 막혔다. 수동 비교가 필요하면 `ARCHIVE_PERFORMANCE_BASE_SHA`를 직접 줄 수 있고, 기준 쪽 서버만 시험지 JS 끝에 같은 해석 함수를 붙여 같은 제목을 받게 하는 `serve(..., { referenceDisplayTitle: true })`가 그대로 남아 있다.
 
+- **인쇄 머리글 맞춤(`archive/print-header-table.js`)은 준비 스냅숏 안에서 끝내고, 그 뒤에는 DOM을 다시 쓰지 않는다 (2026-11-23)**: 스냅숏 재사용(`common-fast-runtime.js` `canReuse`)은 고정 때 찍은 `innerHTML`과 지금 `innerHTML`이 같을 것을 요구하고, 인쇄 사전 점검도 같은 검사를 쓴다. 머리글 맞춤을 다음 프레임(rAF)이나 `beforeprint`에서 하면(style·`data-ph-*` 속성 쓰기) 준비 뒤에 DOM이 바뀌어 재사용이 깨지고, 큰 해설지는 인쇄 사전 점검이 실패한다(#2662 뒤 Archive Output Performance 빨강). 그래서 머리글은 DOM에 들어오는 즉시(MutationObserver 마이크로태스크) 동기로 맞추고, 맞춤·편집 표시 기록은 DOM 속성이 아니라 WeakMap/WeakSet에 두며, 재측정 결과가 같으면 속성을 되돌려 쓰지 않는다. 이유: 같은 원인이 다시 생기지 않게 하려면 머리글 JS에 준비 뒤 DOM 쓰기를 새로 넣지 않는다.
+
 ## 시험지 끝 제출 QR (2026-11-01 사용자 결정)
 
 - 제출 QR은 **기본 숨김**이고 선생님이 엔진의 `QR 출력 > 정답지 제출 QR`을 켰을 때(`showSubmitQr=1`)만 마지막 장에 그린다. 연결은 고장 난 `/check/`가 아니라 **학생 포털**(`apmath/student/?omr=1&exam&date&q&archiveFile`)이다. 이유: 시험지를 반에 출제하면 흐름이 자동으로 `submitQr=1`을 붙여 모든 시험지에 QR이 떴고, `/check/`는 배포에서 빈 화면이었다.
