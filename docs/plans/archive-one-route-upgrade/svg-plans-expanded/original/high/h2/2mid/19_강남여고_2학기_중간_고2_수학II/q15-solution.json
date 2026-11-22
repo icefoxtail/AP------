@@ -1,0 +1,139 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=0 계속 증가"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3",
+                "6",
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-3",
+              "3"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "axisScale": {
+            "x": 16,
+            "y": 1
+          },
+          "requiredPoints": [
+            {
+              "id": "C",
+              "x": "0",
+              "y": "3"
+            }
+          ],
+          "exactCoordinates": {
+            "C": [
+              "0",
+              "3"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=9 감소 구간"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3",
+                "15",
+                "9",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-7",
+              "1"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "M",
+              "x": "-5",
+              "y": "28"
+            },
+            {
+              "id": "N",
+              "x": "-1",
+              "y": "-4"
+            }
+          ],
+          "exactCoordinates": {
+            "M": [
+              "-5",
+              "28"
+            ],
+            "N": [
+              "-1",
+              "-4"
+            ]
+          },
+          "axisScale": {
+            "x": 16,
+            "y": 1
+          }
+        }
+      }
+    }
+  ],
+  "caption": "f(x1)=f(x2)이면 x1=x2이려면 f가 일대일, 곧 계속 증가해야 하므로 f′(x)=3x²+2ax+a+6≥0이다. 왼쪽은 a=0일 때 f′>0이라 C(0,3)을 지나며 계속 오르는 곡선이다. 오른쪽은 a=9일 때 f′=3(x+1)(x+5)라 극대점 M(-5,28)에서 극소점 N(-1,-4)까지 내려가는 구간이 있어 같은 높이를 두 번 지나므로 일대일이 아니다. 판별식 4(a-6)(a+3)≤0에서 -3≤a≤6이고 정수 a는 10개이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 계속 오르기만 하는 삼차곡선이, 둘째 패널에는 점 M에서 꼭대기에 이르렀다가 점 N까지 내려가고 다시 오르는 삼차곡선이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수 $f(x)=x^3+ax^2+(a+6)x+3$에 대하여 다음 조건을 만족시키는 정수 $a$의 개수는? [3점]<br><br><조건><br>임의의 실수 $x_1, x_2$에 대하여<br>$$f(x_1)=f(x_2)\\text{이면 } x_1=x_2\\text{이다.}$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 계속 증가하는 삼차곡선과 감소 구간이 있어 일대일이 깨지는 삼차곡선을 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "계속 증가하는 개형(a=0)과 감소 구간 M에서 N이 생겨 일대일이 깨지는 개형(a=9)의 차이를 보인다."
+  ]
+}

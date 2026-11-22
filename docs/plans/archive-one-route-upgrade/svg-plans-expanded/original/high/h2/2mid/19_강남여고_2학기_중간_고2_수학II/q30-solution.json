@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "-1/2",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "9/2",
+          "y": "29/12",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1/6",
+          "intercept": "19/6",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "1/3",
+          "intercept": "11/12",
+          "label": "m"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "예: a=-1/2일 때를 그린다. A(1,3)에서의 접선 기울기는 6이므로 수직인 직선 l의 기울기는 -1/6이고, B(-1/2,3/4)에서의 접선 기울기 -3에 수직인 직선 m의 기울기는 1/3이다. 두 직선은 점 M(9/2,29/12)에서 만난다. 일반적으로 두 직선의 교점의 x좌표는 f(a)=-18a(a+1)이고 a→1이면 -36에 가까워진다. 따라서 답은 -36이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 5] 곡선 $y=3x^2$ 위의 서로 다른 두 점 $\\mathrm{A}(1, 3)$, $\\mathrm{B}(a, 3a^2)$에서의 접선에 수직인 직선을 각각 $l, m$이라 하자. 두 직선 $l, m$의 교점의 $x$좌표를 $f(a)$라 할 때, $\\lim_{a \\to 1} f(a)$의 값을 구하시오. (단, $a \\neq 0$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1/2일 때 두 점 A, B에서 접선에 수직인 직선 l, m이 멀리 왼쪽의 점 M에서 만남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 위 두 점 A, B에서 접선에 수직인 두 직선 l, m이 왼쪽의 점 M에서 만나는 모습을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선의 오른쪽 가까이에 점 A와 점 B가 있고, 두 점에서 왼쪽으로 완만하게 올라가는 두 직선이 멀리 왼쪽의 한 점 M에서 만나는 그래프이다."
+}

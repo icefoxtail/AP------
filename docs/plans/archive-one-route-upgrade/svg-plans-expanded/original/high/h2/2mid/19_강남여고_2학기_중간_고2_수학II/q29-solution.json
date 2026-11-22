@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-12",
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.5,
+      2.5
+    ],
+    "viewport": [
+      -3.5,
+      2.5,
+      -8,
+      30
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-2",
+        "y": "25"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-2",
+        "25"
+      ],
+      "N": [
+        "1",
+        "-2"
+      ]
+    }
+  },
+  "caption": "f(1)=-2와 f′(1)=0에서 a=3, b=-12이고 f′(x)=6(x+2)(x-1)이다. 그림에서 f′의 부호가 x=-2에서 +에서 -로 바뀌어 극대점 M(-2,25), x=1에서 -에서 +로 바뀌어 극소점 N(1,-2)가 생긴다. 따라서 극댓값은 25이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 함수 $f(x)=2x^3+ax^2+bx+5$가 $x=1$에서 극솟값 $-2$를 가질 때, 함수 $f(x)$의 극댓값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(-2,25)와 극소점 N(1,-2)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 M(-2,25)와 극소점 N(1,-2)를 지나는 삼차곡선을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라 점 M에서 꼭대기에 이른 뒤 점 N까지 내려가 가장 낮고 다시 오른쪽 위로 올라가는 삼차곡선 그래프이다."
+}

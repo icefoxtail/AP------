@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ],
+        "domain": [
+          null,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          1,
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      { "x": "1", "y": "1" }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "원본 문제 그림 대조: x<0에서 y=1-2x, 0≤x<1에서 y=2x, x>1에서 y=4-2x이며 고립점 f(1)=1이다. x→0-의 극한은 1(열린 점), x→1+의 극한은 2(열린 점)이므로 차는 -1이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다.<br><br><img src=\"assets/images/19_강남여고_2학기_중간_고2_수학II/q02.png\" class=\"exam-img\"><br><br>$\\lim_{x \\to 0-} f(x) - \\lim_{x \\to 1+} f(x)$의 값은? [2.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x→0-의 극한 1(왼쪽 열린 점)과 x→1+의 극한 2(오른쪽 열린 점)를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0 왼쪽 직선의 열린 점 높이 1과 x=1 오른쪽 직선의 열린 점 높이 2를 보인다."
+  ],
+  "accessibilityDescription": "x=0의 열린 점 (0,1)까지 왼쪽 직선은 내려가고, 닫힌 원점 (0,0)에서 열린 점 (1,2)까지 가운데 직선은 올라가며, x=1에서 내려가는 오른쪽 직선도 열린 점 (1,2)에서 시작한다. 별도 닫힌 점 (1,1)이 있다."
+}
