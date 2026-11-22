@@ -1,0 +1,57 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "2",
+      "4/5",
+      "1"
+    ],
+    "phasePi": "-1/2",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "displayWindowPi": [
+      "-1/4",
+      "7/2"
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "5/8",
+        "15/8",
+        "25/8"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "displayGuides": {
+      "x": [
+        "5/8",
+        "15/8",
+        "25/8"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    },
+    "showOriginLabel": true
+  },
+  "caption": "함수 y=2cos((4/5)(x−5π/8))+1의 최고점은 x=5π/8과 25π/8이다.",
+  "sourceQuote": "함수 $y = a \\cos b(x-c\\pi) + d$ 의 그래프를 보",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2cos((4/5)(x−5π/8))+1, 주기 5π/2, 최고 3, 최저 −1",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x=25π/8의 두 번째 마루와 라벨을 viewBox 안에 배치, 그래프 수치 관계 고정"
+  ]
+}

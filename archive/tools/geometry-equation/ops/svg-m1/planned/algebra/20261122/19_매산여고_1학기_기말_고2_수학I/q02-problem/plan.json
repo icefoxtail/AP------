@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "S",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sSA",
+      "refs": [
+        "S",
+        "A"
+      ]
+    },
+    {
+      "id": "sSB",
+      "refs": [
+        "S",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "S",
+    "A",
+    "B"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aS",
+        "refs": [
+          "A",
+          "S",
+          "B"
+        ],
+        "value": 130,
+        "label": "130",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l3",
+        "ownerSegment": "sSA",
+        "text": "3km"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sSB",
+        "text": "2km"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "S"
+  ],
+  "caption": "두 거리 3km, 2km와 사이각 130°가 주어진 선박 간 거리 측량 문제 도형.",
+  "sourceQuote": "다음 그림과 같이 관광유람선이 선착장에서 $3\\text{km}$ 떨어",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "선착장에서 섬 A까지 3km, 섬 B까지 2km, 끼인각 130°",
+      "mappedTo": [
+        "S",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "스캔 문자·관광선 삽화 대신 두 거리와 끼인각을 정돈한 순수 삼각형"
+  ]
+}

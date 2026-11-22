@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1/2",
+      "3",
+      "-1"
+    ],
+    "phasePi": "1/4",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "displayWindowPi": [
+      "-1/6",
+      "5/6"
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/12",
+        "5/12",
+        "3/4"
+      ],
+      "y": [
+        "-3/2",
+        "-1",
+        "-1/2"
+      ]
+    },
+    "displayGuides": {
+      "x": [
+        "1/12",
+        "5/12"
+      ],
+      "y": [
+        "-1/2"
+      ]
+    },
+    "showOriginLabel": true
+  },
+  "caption": "함수의 최고값은 −1/2, 최저값은 −3/2, 주기는 2π/3이다.",
+  "sourceQuote": "함수 $y = \\frac{1}{2}\\sin\\left(3x + \\fra",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=(1/2)sin(3x+π/4)−1, 최대 −1/2, 최소 −3/2, 주기 2π/3",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "전 그래프가 실제 y=0 축 아래, 마루 −1/2와 골 −3/2의 높이 보정"
+  ]
+}

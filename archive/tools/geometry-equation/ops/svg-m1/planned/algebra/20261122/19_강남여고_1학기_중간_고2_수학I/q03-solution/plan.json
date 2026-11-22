@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sHP",
+      "refs": [
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "H"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dx",
+        "ownerSegment": "sOH",
+        "text": "4/5"
+      },
+      {
+        "id": "dy",
+        "ownerSegment": "sHP",
+        "text": "3/5"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "caption": "코사인은 −4/5, 사인은 양수 3/5인 제2사분면의 직각삼각형이다.",
+  "sourceQuote": "$\\theta$가 제 2사분면각이고 $\\cos\\theta = -\\fr",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "cos θ=−4/5이고 θ는 제2사분면",
+      "mappedTo": [
+        "O",
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직교좌표 제2사분면, 반지름1과 수선·양의 sin 표시"
+  ]
+}

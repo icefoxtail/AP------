@@ -1,0 +1,114 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cO",
+    "cO2"
+  ],
+  "displaySegments": [],
+  "displayPoints": [
+    "O",
+    "O2"
+  ],
+  "planeMarks": {},
+  "pointNames": {
+    "O2": "O′"
+  },
+  "caption": "반지름이 1이고 중심 사이 거리도 1인 두 원의 배치.",
+  "sourceQuote": "<p>아래 풀이는 반지름의 길이가 $1$인 두 원 $\\mathrm{O",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 1인 두 원의 중심이 서로 상대편 원 위에 있다",
+      "mappedTo": [
+        "O",
+        "O2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 동일 반지름과 교집합, 잘린 외곽 문장 제거"
+  ]
+}
