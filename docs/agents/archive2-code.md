@@ -30,9 +30,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - **이름 주고받기**: 각 파일은 끝에서 자기 최상위 이름을 `Object.assign(WS.api, {…})`로 내놓고, 다른 파일의 이름은 맨 위 `let …;`(헤더)와 `WS.links.push(…)`로 받는다. **다른 파일의 함수를 새로 부르면 그 파일 헤더 두 곳(let 목록·구조분해)에 이름을 더한다.** `tests/archive2-workspace-parts.test.js`가 빠뜨린 이름·주인 없는 이름·로드 순서·Pages 목록 누락을 잡는다.
 - **여러 파일이 바꾸는 변수는 `V.이름`**(`WS.v`)이다(예: `V.previewTimer`, `V.classRows`). 새로 파일 사이에서 공유할 변경 가능한 변수가 생기면 `V`에 둔다.
-- **캐시 버전**: 파일마다 자기 `?v=`를 두고 그 파일을 바꾼 PR만 올린다. 코드에서 이름을 새로 내놓거나 받으면 두 파일 모두 바뀌므로 둘 다 올린다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다. 배포 사이트(Pages 빌드 산출물)에서는 HTML의 로컬 `<script src>`·`<link href>`의 `?v=`가 가리키는 파일 내용의 해시로 자동 대체된다(`tools/lib/stamp-html-versions.mjs`; 공개 검증이 Git 바이트와 대조하는 학생 포털·플래너·숙제·놀이터 허브·오답 인쇄·두 엔진 HTML은 제외). 소스의 손으로 쓴 `?v=`는 로컬·테스트용으로 계속 올리고, JS 안의 동적 주소와 CSS `@import`는 아직 자동이 아니다.
+- **캐시 버전 (2026-11-22 변경)**: 배포 사이트(Pages 빌드 산출물)에서는 HTML의 로컬 `<script src>`·`<link href>`의 `?v=`가 가리키는 파일 내용의 해시로 자동 대체된다(`tools/lib/stamp-html-versions.mjs`, #2543). 그래서 **스탬프되는 페이지(`archive/workspace.html`, `unit-past-exams.html`, `index.html`, `mixer.html` 등)의 `?v=`는 PR에서 올리지 않는다.** 이유: 화면 PR마다 그 한 줄을 손으로 올리다 하루에 PR 6개가 서로 충돌했다. 소스에 이미 있는 `?v=` 값은 지우지 말고 그대로 둔다(배포가 덮어쓴다). 테스트는 `?v=` 값을 고정하지 않고 `tests/helpers/html-asset-refs.cjs`(`assertLoads`: 그 페이지가 그 파일을 로드하고 한 페이지 안에서 서로 다른 `?v=`로 부르지 않는다, `assertLoadedBefore`: 로드 순서)를 쓴다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+  - **스탬프에서 제외되는 9개 HTML은 아직 손으로 `?v=`를 올린다**(공개 검증이 Git 바이트와 같은지 대조하므로 빌드가 바꿀 수 없다; `tools/ci/student-portal-public-release.mjs` PUBLIC_ASSETS): `archive/engine.html`, `archive/mixed_engine.html`, `apmath/student/index.html`, `apmath/planner/index.html`, `apmath/homework/index.html`, `apmath/playground/index.html`, `apmath/playground/next/index.html`, `apmath/playground/next/labs/g8-triangles.html`, `apmath/wrong_print_engine.html`. 이 페이지가 부르는 파일을 고치면 그 페이지의 `?v=`를 올린다(코드에서 이름을 새로 내놓거나 받으면 두 파일 모두).
+  - JS 안의 동적 주소·`document.write` 문자열과 CSS `@import`는 자동이 아니다.
 - **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
-- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
+- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다(위 `html-asset-refs.cjs`).
 
 ## 시험지 보관함 "26년 2학기 기말 모의고사" (2026-11-19 사용자 요청)
 

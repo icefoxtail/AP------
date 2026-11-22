@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const base = require('../archive/archive-asset-base.js');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.join(__dirname, '..');
 const R2 = { base: 'https://img.wangjiedu.com', source: 'override' };
@@ -208,7 +209,7 @@ test('every exam-image consumer is wired to the shared module and the module shi
   const read = file => fs.readFileSync(path.join(root, file), 'utf8');
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html',
     'archive/workspace.html', 'archive/unit-past-exams.html', 'archive/index.html', 'apmath/index.html', 'apmath/wrong_print_engine.html']) {
-    assert.match(read(file), /archive-asset-base\.js\?v=20261110-teacher-copy-1/, file);
+    assertLoads(read(file), 'archive-asset-base.js', file);
   }
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'apmath/js/archive-render.js', 'apmath/wrong_print_engine.html', 'apmath/js/report-center.js', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html']) {
     assert.match(read(file), /resolveExamImageUrl/, file);

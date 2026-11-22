@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { test } = require("node:test");
 const { readWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const read = (path) => readFileSync(path, "utf8");
 const controls = read("archive/archive2-reader-controls.js");
@@ -22,20 +23,20 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
+  assertLoads(engine, 'archive2-reader-controls.js', 'engine');
+  assertLoads(mixed, 'archive2-reader-controls.js', 'mixed');
   assert.match(controls, /studentReview/);
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /new URL\("\.\.\/apmath\/student\/", location\.href\)\.pathname/);
   assert.match(controls, /\[portalPath, portalPath \+ "index\.html"\]\.includes\(target\.pathname\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261122-sol-fit-1/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261122-sol-fit-1/);
+  assertLoads(engine, 'solution-render-executor.js', 'engine');
+  assertLoads(mixed, 'solution-render-executor.js', 'mixed');
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
-  assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
-  assert.match(workspaceHtml, /archive2-library\.js\?v=20261111-assign-2/);
+  assertLoads(mixed, 'common-fast-runtime.js', 'mixed');
+  assertLoads(workspaceHtml, 'archive2-library.js', 'workspaceHtml');
   assertWorkspaceScriptVersions(assert);
 });
 

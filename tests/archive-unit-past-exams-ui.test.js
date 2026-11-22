@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { assertLoads, versionOf } = require('./helpers/html-asset-refs.cjs');
 
 const archiveRoot = path.resolve(__dirname, '..', 'archive');
 const html = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.html'), 'utf8');
@@ -14,21 +15,23 @@ const fallbackFixture = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'uni
 
 test('단원별 기출 페이지는 승인 메타데이터와 출력·출제 모듈을 연결하고 새 틀로 바로 시작한다', () => {
   assert.match(html, /question-meta\.js/);
-  assert.match(html, /unit-past-exams\.css\?v=20261122-ui-quick-4/);
+  assertLoads(html, 'unit-past-exams.css', 'html');
   // question-index.js is parsed only after the table skeleton is painted: the page preloads it and loads it from the runtime.
-  assert.match(html, /<link rel="preload" as="script" href="question-index\.js\?v=20261110a">/);
+  assertLoads(html, 'question-index.js', 'html');
   assert.doesNotMatch(html, /<script[^>]*src="question-index\.js/);
-  assert.match(js, /QUESTION_INDEX_SRC = 'question-index\.js\?v=20261110a'/);
+  // The runtime asks for the same address the page preloaded (same ?v=), or the preload would be wasted.
+  const preloadQuery = versionOf(html, 'question-index.js', 'unit-past-exams.html', { tag: 'link' });
+  assert.ok(js.includes(`QUESTION_INDEX_SRC = 'question-index.js${preloadQuery ? '?' + preloadQuery : ''}'`), 'runtime and preload use the same question-index.js address');
   // question-meta.js is shared with engine.html and mixer.html, so its version must match theirs.
-  assert.match(html, /question-meta\.js\?v=archive-metadata-v1-phase1b-20260826b/);
+  assertLoads(html, 'question-meta.js', 'html');
   assert.ok(html.indexOf('archive2-canonical.js') < html.indexOf('archive2-core.js'), 'canonical core must load before its browser consumer');
   assert.ok(html.indexOf('archive2-output-contract.js') < html.indexOf('archive2-output.js'), 'output contract must load before its producer');
   assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
   assert.ok(html.indexOf('archive2-boot.js') < html.indexOf('meta-foundation-runtime.js'), 'the boot gate must exist before the metadata runtime starts fetching');
   assert.ok(html.indexOf('question-meta.js') < html.indexOf('meta-foundation-runtime.js'));
-  assert.match(html, /archive2-core\.js\?v=20261119-pair-type-spread-1/);
-  assert.match(html, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
-  assert.match(html, /unit-past-exams\.js\?v=20261122-ui-quick-4/);
+  assertLoads(html, 'archive2-core.js', 'html');
+  assertLoads(html, 'unit-past-exams-core.js', 'html');
+  assertLoads(html, 'unit-past-exams.js', 'html');
   // Every heavy script is deferred; only the asset base, the login rule and the menu run while the page is parsed.
   for (const script of html.match(/<script[^>]*src="[^"]+"[^>]*>/g)) {
     if (/archive-asset-base|archive2-session|archive2-navigation/.test(script)) assert.doesNotMatch(script, /defer/, script);
@@ -106,7 +109,7 @@ test('표 화면은 작은 화면과 키보드 포커스를 위한 스타일을 
   assert.match(css, /--archive2-mobile-bottom-nav-offset/);
   assert.match(css, /unit-preview-frame/);
   assert.match(css, /prefers-reduced-motion/);
-  assert.match(fallbackFixture, /unit-past-exams\.js\?v=20260827c/);
+  assertLoads(fallbackFixture, 'unit-past-exams.js', 'fallbackFixture');
 });
 
 test('단원별 기출 권의 해설·정답 머리글은 출력 봉투 경로에서도 출처 요약을 쓴다', () => {

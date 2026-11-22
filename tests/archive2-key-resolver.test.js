@@ -10,6 +10,7 @@ const crypto = require('node:crypto');
 const Resolver = require('../archive/archive2-key-resolver.js');
 const ProblemBankMeta = require('../archive/problem-bank-meta.js');
 const extract = require('../archive/tools/archive2-extension-key-extract.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const data = file => path.join(root, 'archive', 'data', file);
@@ -315,7 +316,7 @@ test('a missing optional source degrades to fewer badges, a missing extension in
 
 test('the search page loads the resolver after first paint and shows the badge', () => {
   const html = fs.readFileSync(path.join(root, 'archive/problem-bank-search.html'), 'utf8');
-  assert.match(html, /archive2-key-resolver\.js\?v=20261030-s14b-1/);
+  assertLoads(html, 'archive2-key-resolver.js', 'html');
   const initial = html.indexOf('metaAxisOptions(\'crossConceptKey\'');
   const firstRender = html.indexOf('render();scheduleKeyResolver();');
   assert.ok(initial > 0 && firstRender > initial, 'resolver scheduling follows the first render');
