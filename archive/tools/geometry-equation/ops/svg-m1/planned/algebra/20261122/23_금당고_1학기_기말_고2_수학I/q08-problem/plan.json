@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dAB",
+        "ownerSegment": "sAB",
+        "text": "200m"
+      },
+      {
+        "id": "dBC",
+        "ownerSegment": "sBC",
+        "text": "300m"
+      }
+    ]
+  },
+  "caption": "한 직선 위 A, B, C와 강 건너편 P를 연결하고 AB=200m, BC=300m를 표시한다.",
+  "sourceQuote": "다음 그림과 같이 세 지점",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,B,C가 이 순서로 한 직선 위, AB=200m, BC=300m",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PB/PC=70/50=7/5 (보트 속도 동일)",
+      "mappedTo": [
+        "P",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "오래된 스캔 상하단 인쇄 잔획을 배제하고 다섯 선분과 거리 라벨을 분리"
+  ]
+}

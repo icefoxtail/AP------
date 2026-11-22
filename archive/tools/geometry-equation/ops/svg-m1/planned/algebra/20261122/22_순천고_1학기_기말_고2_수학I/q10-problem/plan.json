@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-5",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-1",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "91"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "41",
+              "denominator": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "10",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dBD",
+        "ownerSegment": "sBD",
+        "text": "5"
+      },
+      {
+        "id": "dCD",
+        "ownerSegment": "sCD",
+        "text": "2"
+      }
+    ]
+  },
+  "caption": "원에 놓인 네 점 A, B, C, D와 현 BD=5, CD=2를 보인다.",
+  "sourceQuote": "오른쪽 그림과 같이 원 위의 네 점",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,B,C,D가 하나의 원 위에 있다",
+      "mappedTo": [
+        "k",
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BD=5, CD=2",
+      "mappedTo": [
+        "sBD",
+        "sCD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "sin∠DAB=3/4",
+      "mappedTo": [
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "상단 C/D와 현 길이 2/5를 선명하게 재조판하고 점 레이블과 수치를 분리"
+  ]
+}

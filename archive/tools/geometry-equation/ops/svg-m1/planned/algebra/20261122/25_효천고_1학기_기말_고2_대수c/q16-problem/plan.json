@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 500
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayPoints": [
+    "O",
+    "E",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "좌표축 위 E–A–O–C와 B·D를 잇는 직교 꺾은선 AB, BC, CD, DE의 관계를 나타낸다.",
+  "sourceQuote": "다음 그림과 같이 좌표축 위의 다섯 개의 점",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "E,A,O,C는 이 순서로 x축 위, B는 y축 양의 방향, D는 음의 방향",
+      "mappedTo": [
+        "E",
+        "A",
+        "O",
+        "C",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB⊥BC, BC⊥CD, CD⊥DE",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDE"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AO, 3OC, EA가 등차수열이며 OA<OB",
+      "mappedTo": [
+        "A",
+        "O",
+        "B",
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "E,A,O,C의 순서와 B,D의 위아래 축 관계를 키워 판독",
+    "직각 표식을 세 교점에 정확히 재배치"
+  ]
+}

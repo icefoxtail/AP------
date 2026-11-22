@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBefore",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "T",
+        "U"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "V",
+        "W"
+      ]
+    }
+  ],
+  "caption": "일직선 선분이 삼등분되고 가운데 구간이 정삼각형의 두 변으로 바뀌는 과정을 나란히 보인다.",
+  "sourceQuote": "스웨덴의 수학자 코흐는 정삼각형을 이용하여",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 선분을 3등분한다",
+      "mappedTo": [
+        "sBefore",
+        "s1",
+        "s4"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 1/3을 지우고 같은 길이인 정삼각형의 나머지 두 변으로 교체한다",
+      "mappedTo": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "상단 잘린 인쇄문을 제외하고 변환 전후 선분 두 개만 재작성"
+  ]
+}

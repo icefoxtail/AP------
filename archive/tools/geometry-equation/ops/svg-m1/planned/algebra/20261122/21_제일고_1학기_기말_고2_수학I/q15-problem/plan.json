@@ -1,0 +1,63 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "edge": [
+              "E",
+              "F"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "I",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "G",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "caption": "한 변이 2인 정육면체 ABCD–EFGH에서 EF의 중점 I와 AI, IG, AG를 보인다.",
+  "sourceQuote": "그림과 같이 한 변의 길이가 2인 정육면체",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD–EFGH의 한 변 길이 2",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "I는 EF의 중점, 삼각형 AIG의 공간 선분",
+      "mappedTo": "solids[0].points"
+    }
+  ],
+  "newVisualInformation": [
+    "회색 스캔을 제거한 입체 투영과 내부 선분 AI·IG·AG의 명암 분리",
+    "EF 중점 I를 3D 모서리 매개점으로 정확히 계산"
+  ]
+}

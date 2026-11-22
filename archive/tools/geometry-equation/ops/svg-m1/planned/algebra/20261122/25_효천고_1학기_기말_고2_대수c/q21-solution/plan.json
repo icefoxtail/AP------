@@ -1,0 +1,448 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "주삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "15",
+                    "denominator": "4"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "5",
+                        "denominator": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "P",
+          "Q",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "sAQ",
+            "refs": [
+              "A",
+              "Q"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "dAB",
+              "ownerSegment": "sAB",
+              "text": "5"
+            },
+            {
+              "id": "dAC",
+              "ownerSegment": "sAC",
+              "text": "4"
+            },
+            {
+              "id": "dAQ",
+              "ownerSegment": "sAQ",
+              "text": "√11"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "BC의 3:1:2 분할"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "P",
+          "Q",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sBP",
+            "refs": [
+              "B",
+              "P"
+            ]
+          },
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQC",
+            "refs": [
+              "Q",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "dBP",
+              "ownerSegment": "sBP",
+              "text": "3"
+            },
+            {
+              "id": "dPQ",
+              "ownerSegment": "sPQ",
+              "text": "1"
+            },
+            {
+              "id": "dQC",
+              "ownerSegment": "sQC",
+              "text": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "AQ 길이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "Q"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAQ",
+            "refs": [
+              "A",
+              "Q"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "dAQ",
+              "ownerSegment": "sAQ",
+              "text": "√11"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "주삼각형과 밑변의 3:1:2 분할 및 AQ의 길이를 서로 다른 패널에 나타낸다.",
+  "sourceQuote": "그림과 같이 삼각형 ABC가 다음 조건을 만족한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC 위 B–P–Q–C 순서와 비 BP:PQ:QC=3:1:2",
+      "mappedTo": "panels[1]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=5, AQ=√11; 해설에서 구한 BC=6, AC=4",
+      "mappedTo": "panels[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 PQ=1을 도출하여 BC=3+1+2로 구분",
+      "mappedTo": "panels[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 도형의 세 용도(주삼각형, BC 분할, AQ 길이)를 별도 패널로 분리",
+    "원본 해설의 알려진 길이만 사용하고 해답 반지름을 새 그림에 노출하지 않음"
+  ]
+}

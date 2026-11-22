@@ -1,0 +1,365 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원래 삼각형과 D"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "3"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "3"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "23"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aC",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 60,
+              "label": "60",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "dAB",
+              "ownerSegment": "sAB",
+              "text": "5√6"
+            },
+            {
+              "id": "dAC",
+              "ownerSegment": "sAC",
+              "text": "10"
+            },
+            {
+              "id": "dAD",
+              "ownerSegment": "sAD",
+              "text": "7√2"
+            },
+            {
+              "id": "dBC",
+              "ownerSegment": "sBC",
+              "text": "5+5√3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "짧은 CD′ 구간 확대"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Dp",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "Dp"
+        ],
+        "pointNames": {
+          "Dp": "D′"
+        },
+        "displaySegments": [
+          {
+            "id": "sCDp",
+            "refs": [
+              "C",
+              "Dp"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "dCDp",
+              "ownerSegment": "sCDp",
+              "text": "5−√23"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "코사인법칙에서 나타나는 두 점 D와 D′의 배치를 주삼각형과 짧은 구간의 확대도로 나눠 설명한다.",
+  "sourceQuote": "아래 그림과 같이 $\\Delta\\mathrm{ABC}$에서",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=5√6, AC=10, AD=7√2, ∠C=60°, BC=5+5√3",
+      "mappedTo": "panels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "다른 가능한 점 D′는 C와 가깝고 CD′=5−√23",
+      "mappedTo": "panels[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 해설의 큰 세로 빈 공간을 두 패널로 축약",
+    "CD′가 짧아 보이지 않는 문제를 별도 확대도로 보완"
+  ]
+}
