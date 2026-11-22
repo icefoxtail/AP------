@@ -619,7 +619,7 @@ function specForFamily(plan,model,id){
     const number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);};
     const linear=coefficients=>`(${coefficients[0]})*x+(${coefficients[1]})`;
     const linearLabel=([slope,intercept])=>{
-      const xTerm=slope==='0'?'':slope==='1'?'x':slope==='-1'?'-x':`(${slope})x`;
+      const xTerm=slope==='0'?'':slope==='1'?'x':slope==='-1'?'-x':/^-?[0-9]+$/.test(slope)?`${slope}x`:`(${slope})x`;
       if(!xTerm)return 'y='+intercept;
       if(intercept==='0')return 'y='+xTerm;
       return 'y='+xTerm+(intercept.startsWith('-')?'':' + ')+intercept;
