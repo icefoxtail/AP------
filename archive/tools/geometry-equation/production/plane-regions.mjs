@@ -309,6 +309,9 @@ export function regionSpec(plan,model,points,usedIds){
       factRolesByLabel[row.id+'-label']=role;
       if(row.labelPlacement!==undefined){
         if(!REGION_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('REGION_LABEL_PLACEMENT_INVALID:'+row.id);
+        // A bare value on a forced leader of a sector starts on a straight edge (a radius), where it reads as that radius's length (40pi on OB). Name the region
+        // (labelName "부채꼴 AOB" writes 부채꼴 AOB=40pi) or let it stand inside (AUTO, or AUTO_LEADER which stays inside while the value fits).
+        if(row.labelPlacement==='LEADER'&&row.labelName===undefined&&Array.isArray(row.shapes)&&row.shapes.some(shape=>isObject(shape)&&isObject(shape.sector)))bad('REGION_SECTOR_LEADER_NEEDS_NAME:'+row.id);
         if(row.labelPlacement!=='AUTO')object.labelPlacement=row.labelPlacement;
       }
       if(row.labelAt!==undefined){

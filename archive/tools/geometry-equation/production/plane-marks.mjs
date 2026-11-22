@@ -134,6 +134,7 @@ export function vectorLabelIssue(text,hasPoint){
   return null;
 }
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
+const PI_IN_LABEL=/(?<![A-Za-z])pi(?![A-Za-z])|\u03c0/u;   // pi or the letter π in a label
 export const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan|pi)(?![A-Za-z])/;
 /** An angle value as the sum label writes it: 15, 37.5 (at most six decimals, no trailing zeros). */
 export const angleNumberText=value=>String(Number(Number(value).toFixed(6)));
@@ -424,6 +425,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):(straight?'180':null),true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
+    // A degree label is a number of degrees: pi in it is a radian measure, and the degree sign after it (pi/5 degrees) is a different, wrong value. Write it with labelKind MATH.
+    if(kind==='DEGREE'&&text!==null&&PI_IN_LABEL.test(text))bad('ANGLE_DEGREE_LABEL_HAS_PI:'+row.id);
     angleInfo.set(row.id,{vertex:row.refs[1],value:declared});
     // color (C1): a palette colour for the sector and the arcs; angles of one colour must be the same size (0.5 degrees), and it replaces emphasisGroup
     if(row.color!==undefined&&!isPaletteName(row.color))bad('ANGLE_COLOR_INVALID:'+row.id);
@@ -734,6 +737,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // TEXT writes the label as plain Korean text (a name such as "호 AB"); DEGREE, NAME and MATH are the angle-style math labels.
     if(!['DEGREE','NAME','MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
     if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
+    // The same for an arc: a length such as 4pi is a MATH label (labelKind "MATH", or a unit); the default DEGREE kind would write 4pi with a degree sign.
+    if(kind==='DEGREE'&&row.label!==undefined&&PI_IN_LABEL.test(String(row.label)))bad('ARC_DEGREE_LABEL_HAS_PI:'+row.id);
     const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     if(row.dashed!==undefined&&(typeof row.dashed!=='boolean'||row.dashed&&row.highlight===false))bad('ARC_DASH_INVALID:'+row.id);
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false,...(row.dashed?{dash:true}:{})};
