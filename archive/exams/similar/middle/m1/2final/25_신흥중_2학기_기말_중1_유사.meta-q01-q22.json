@@ -1,0 +1,1536 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-25-shinheung-m1-2final-candidate-v1",
+  "examUid": "25_신흥중_2학기_기말_중1_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사.js",
+  "expectedSourceBlobSha1": "38b151c8a65822c9d5dd43916d154de15ae66e12",
+  "expectedSourceSha256": "4f36fc62934c738bffa770478fa6bf50b1e58c7ac0535bace8af95e915291b8c",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "draftStatus": "DRAFT_INCOMPLETE",
+  "sourceRelationship": {
+    "status": "SOURCE_DECLARED_NOT_VERIFIED",
+    "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+    "relation": "DERIVED_FROM_DECLARED",
+    "note": "SourceQid and variationType are supplied in the source MD; mathematical similarity relation has not been separately verified."
+  },
+  "reviewState": {
+    "q20": {
+      "status": "INDEPENDENT_MATH_CHECK_PASS",
+      "scope": "answer/solution only",
+      "inputSha256": "8ff982717d83765adeb4e5ba20042ec125fb8c5f22ecfe878e043f374cb79bd5",
+      "reportRef": "local independent Q20 artifact; not embedded in public metadata"
+    },
+    "q08": {
+      "status": "INDEPENDENT_MATH_CHECK_PASS_SHA_BOUND",
+      "scope": "answer and explanation after wording repair"
+    },
+    "remainingQuestions": {
+      "status": "NOT_INDEPENDENTLY_REVIEWED",
+      "count": 20
+    }
+  },
+  "validation": {
+    "jsSyntax": "PASS",
+    "questionCount": 22,
+    "totalPoints": 100,
+    "mcqCount": 18,
+    "writtenCount": 4,
+    "answerSolutionCoverage": "22/22",
+    "fourSlotValidation": "PASS_STRUCTURE_ONLY_22_ITEMS_180_QUOTES_0_FAIL_1_WARN",
+    "officialResolver": "PARTIAL_CREATE_2_OF_22: Q20 PROJECTION_REUSE, Q08 META_ONLY_COMPATIBILITY_PENDING; 20 NOT_RUN",
+    "identityMapRegistration": "NOT_RUN",
+    "consumerParity": "NOT_RUN",
+    "visualReview": "NOT_RUN_USER_WAIVER"
+  },
+  "notes": [
+    "This is a draft-only sidecar. It does not claim approved semantic metadata, Resolver PASS, UID issuance, registration, or production readiness.",
+    "Unresolved PT/TPL candidate values remain nested under sourceCandidateEvidence and are not promoted to after.problemTypeKey/templateKey.",
+    "No private source-document ID, revision, source URL, or local raw-input path is included.",
+    "The Q20 prompt was corrected to a uniquely defined two-regular-tetrahedra solid; Q08 explanation/scope was corrected and is awaiting targeted independent verification.",
+    "Official CREATE Resolver was run only for independently verified Q08 and Q20. Q20 reuses an ACTIVE exact PT/TPL binding; Q08 has semantic FINAL but compatibility mapping pending. No projection is claimed for remaining items."
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "sourceQid": "1",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현"
+        },
+        "primaryMethod": "현의 길이는 중심각에 정비례하지 않는다는 반비례/비례 불성립 성질로 1번의 오류를 판별한다.",
+        "decisiveStep": "현의 길이와 중심각의 정비례 불성립 식별",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "원 관련 기본 용어의 정의와 정비례 성질을 대조하는 1단계 개념 판정",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "1",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "why": "원의 기본 요소(현, 지름, 호, 중심각) 진술의 참 거짓을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourceQid": "2",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현"
+        },
+        "primaryMethod": "중심각 비 80:20=4:1로부터 호의 길이 비가 4배임을 판정한다.",
+        "decisiveStep": "중심각 비 4:1과 호의 길이 4배 관계 일치 확인",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정비례하는 대상(호, 부채꼴 넓이)과 그렇지 않은 대상(현, 삼각형)을 구별하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "2",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "why": "같은 원에서 중심각의 크기와 호의 길이의 정비례 관계를 적용하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourceQid": "3",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현"
+        },
+        "primaryMethod": "이등변삼각형에서 각 AOD=120도를 구하고 동위각 BOC=30도로부터 중심각 비 4:1을 적용해 호 BC=5cm를 도출한다.",
+        "decisiveStep": "동위각 및 이등변삼각형으로 중심각 120도, 30도 도출 후 비례배분",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행선 동위각과 반지름 이등변삼각형 성질로 두 중심각을 추론한 후 비례식을 푸는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "3",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "why": "평행선의 각 성질과 이등변삼각형 성질을 결합하여 중심각 비로 호의 길이를 구하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourceQid": "4",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "primaryMethod": "큰 호 3pi, 작은 호 pi, 직선 선분 2개(12)를 각각 분할하여 합산 둘레 4pi+12를 계산한다.",
+        "decisiveStep": "두 호의 길이와 두 선분 길이(12cm)의 누락 없는 합산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부채꼴 호의 길이 공식과 직선 경계의 길이를 모두 구하여 더하는 2단계 계산",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "4",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "why": "동심 부채꼴 복합 도형의 곡선과 직선 경계를 합산하여 둘레를 구하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourceQid": "5",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "primaryMethod": "공통 영역을 더해 직사각형 넓이 8x와 부채꼴 넓이 16pi를 같다고 놓아 x=2pi를 산출한다.",
+        "decisiveStep": "직사각형 넓이와 부채꼴 넓이의 상등 관계 8x = 16pi 수립",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "비중첩 영역의 넓이가 같다는 조건을 전체 넓이의 상등으로 기하학적으로 전환해야 하는 심화 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "5",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "why": "공통 넓이를 매개로 직사각형과 부채꼴의 넓이를 같게 두어 미지 변을 구하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourceQid": "6",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "다면체",
+          "l4": "면·모서리·꼭짓점"
+        },
+        "primaryMethod": "n각뿔의 면과 꼭짓점의 개수가 모두 n+1로 일치한다는 불변성을 식별한다.",
+        "decisiveStep": "각뿔의 면과 꼭짓점의 수 n+1 일치성 판정",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "입체도형의 면, 모서리, 꼭짓점 공식을 직접 점검하는 1단계 개념 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "6",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+          "why": "다면체 기본 분류별 면, 모서리, 꼭짓점 공식과 성질 진술을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourceQid": "7",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "면·모서리·꼭짓점 관계"
+        },
+        "primaryMethod": "정팔면체 꼭짓점 6개와 정십이면체 모서리 30개를 각각 구하여 합산한다.",
+        "decisiveStep": "정팔면체 꼭짓점(6)과 정십이면체 모서리(30) 도출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 정다면체를 조건으로 특정하고 꼭짓점과 모서리를 각각 찾아 합산하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "7",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+          "why": "정다면체의 면 모양 및 꼭짓점 조건으로 입체를 특정하고 구성요소의 합을 구하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourceQid": "8",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "rpmPath": {
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "회전체",
+          "l4": "회전체의 단면"
+        },
+        "primaryMethod": "구의 평면 단면은 중심 통과 여부와 무관하게 항상 원이라는 기하학적 성질을 적용한다.",
+        "decisiveStep": "구의 모든 평면 단면이 원이라는 불변성 식별",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "회전축을 포함하는 단면과 수직인 단면, 구의 단면 성질을 종합 비교하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "8",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "CREATE_STAGE_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "resolverEvidenceSha": "sha256:8eb622bbe544f31a1e3f92d66e4c01f2a5874ccd94f150b96f7133b65fb581cc"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+          "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+          "why": "회전체의 절단 방향에 따른 단면 형상 진술을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "OFFICIAL_CREATE_RESOLVER_RUN",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_BINDING",
+          "reason": "Official Resolver returned META_ONLY_COMPATIBILITY_PENDING for this exact 2022 M1-07 subunit; source MD candidate PT/TPL remain unpromoted.",
+          "nextAction": "Resolve the compatibility mapping through the canonical add-only process; do not invent or select a different PT/TPL."
+        }
+      ],
+      "resolverEvidence": {
+        "stage": "CREATE",
+        "status": "PROJECTION_PENDING",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "evidenceSha": "sha256:8eb622bbe544f31a1e3f92d66e4c01f2a5874ccd94f150b96f7133b65fb581cc"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourceQid": "9",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "각기둥"
+        },
+        "primaryMethod": "두 밑넓이 합 60과 옆넓이 30*8=240을 합산하여 겉넓이 300을 도출한다.",
+        "decisiveStep": "직각삼각형 밑넓이 30cm²의 2배와 옆넓이 240cm² 합산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "직각삼각형의 넓이와 밑면 둘레에 기반한 옆넓이를 구하여 합산하는 기본 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "9",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+          "why": "각기둥의 겉넓이 전개도 공식을 적용하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourceQid": "10",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "붙인 입체"
+        },
+        "primaryMethod": "구의 겉넓이 36pi와 원기둥 옆넓이 48pi를 결합하여 총 겉넓이 84pi를 계산한다.",
+        "decisiveStep": "내부 접합면 제외 및 구 곡면(36pi)과 기둥 옆면(48pi) 합산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외표면으로 노출된 면만을 판별하여 구의 겉넓이와 원기둥 옆넓이를 합산하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "10",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+          "why": "반구와 원기둥의 복합 외표면을 선별하여 합산하는 겉넓이 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourceQid": "11",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "붙인 입체"
+        },
+        "primaryMethod": "사각기둥 부피 180과 사각뿔 부피 72를 합산하여 총 252를 구한다.",
+        "decisiveStep": "각기둥(180)과 각뿔(72) 부피의 각각 산출 및 합산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기둥과 뿔의 기본 부피 공식을 각각 대입하여 합산하는 2단계 계산",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "11",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
+          "why": "공유 밑면을 갖는 기둥과 뿔의 부피 합산 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourceQid": "12",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "primaryMethod": "원기둥 부피 256pi에서 구 2개의 부피 512pi/3을 빼 빈 공간 부피 256pi/3을 산출한다.",
+        "decisiveStep": "원기둥 높이 16cm 추론 및 부피 차 256pi - 512pi/3 계산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "구의 지름으로부터 기둥의 높이를 입체적으로 추론하고 분수 부피의 차를 구하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "12",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+          "why": "원기둥 내접 구들의 잔여 공간 부피를 차로 계산하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourceQid": "13",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 부피"
+        },
+        "primaryMethod": "남은 물의 부피 (2/3)pi*r^3과 6*pi*r^2을 같다고 놓아 r=9cm를 역산한다.",
+        "decisiveStep": "배수량 보존 공식 2/3 r = 6 수립 및 r=9 산출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "원기둥 부피와 구 부피의 비율 관계(3:2)를 이해하고 수위 방정식으로 연결하는 심화 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "13",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+          "why": "구의 투입에 따른 배수량 원리와 잔여 수위 방정식으로 반지름을 역산하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourceQid": "14",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "자료의 정리와 해석",
+          "l3": "도수분포",
+          "l4": "도수분포표"
+        },
+        "primaryMethod": "큰 쪽에서부터 잎을 역순으로 세어 5번째 학생의 기록이 40분임을 확인하여 4번의 오류를 판별한다.",
+        "decisiveStep": "내림차순 정렬 5번째 자료값 40분 판독",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "줄기와 잎 그림에서 역순위 자료값을 정확히 찾아내는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "14",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+          "why": "줄기와 잎 그림에서 도수, 범위, 순위 통계량을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourceQid": "15",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "도수분포표 완성"
+        },
+        "primaryMethod": "8권 미만 인원 14명에서 4권 미만 4명을 빼 목표 계급 도수 10명을 계산한다.",
+        "decisiveStep": "전체 백분율 여사건(35% = 14명) 적용 및 잔여 도수 10명 산출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "비율로부터 특정 구간 인원을 역산하고 도수의 차를 구하는 2단계 계산",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "15",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+          "why": "백분율 조건과 전체 도수로부터 특정 계급의 결측 도수를 역산하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourceQid": "16",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "primaryMethod": "4시간 미만 두 계급의 도수합 3+6=9명을 계산하여 1번 진술(6명)의 오류를 판별한다.",
+        "decisiveStep": "구간 누적 도수 3+6=9 산출 및 대조",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "히스토그램의 여러 특성치를 종합 점검하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "16",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+          "why": "히스토그램의 계급 크기, 총 도수, 구간 도수 합 진술을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourceQid": "17",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "primaryMethod": "역순 누적 도수로 계급 12~16을 찾고 백분율 c=(8/25)*100=32를 구해 12+16+32=60을 도출한다.",
+        "decisiveStep": "5번째 학생의 계급(12~16) 특정 및 백분율 c=32 산출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "상위 누적 도수로 계급 구간을 역추적하고 백분율을 구하여 세 값을 합산하는 복합 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "17",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+          "why": "도수분포다각형에서 순위에 따른 계급 경계값과 상대적 백분율을 결합 계산하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourceQid": "18",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "두 집단 비교"
+        },
+        "primaryMethod": "A학교 실제 인원 150*0.30=45명을 계산하여 3번의 정합성을 확인한다.",
+        "decisiveStep": "전체 도수와 상대도수의 곱셈(150 * 0.30 = 45) 산출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "상대도수(비율)와 실제 도수(인원)의 개념적 차이를 구별하여 참인 진술을 판별하는 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "18",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+          "why": "두 집단의 상대도수 비교 및 실제 인원 환산 정합성을 감사하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourceQid": "19",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "primaryMethod": "두 사분원 넓이의 합 72pi에서 정사각형 넓이 144를 빼 72pi-144를 서술한다.",
+        "decisiveStep": "포함배제의 원리를 적용한 (사분원 2개 넓이 합) - (정사각형 넓이) 산출",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부채꼴 넓이 공식과 정사각형 넓이의 차를 연계하여 서술하는 기하 문항",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "19",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "why": "두 사분원의 교집합 넓이를 포함배제 원리로 계산하는 서술형 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourceQid": "20",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "rpmPath": {
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "primaryMethod": "정다면체의 면 조건을 확인한 뒤 각 꼭짓점에 모이는 면의 수를 비교한다.",
+        "decisiveStep": "맞댄 면의 꼭짓점에 면 4개, 바깥 꼭짓점에 면 3개가 모임을 비교한다.",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정다면체 정의의 면 조건과 꼭짓점 주변 면 개수 조건을 구별해 적용한다.",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "20",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "CREATE_STAGE_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "resolverEvidenceSha": "sha256:f7bf7c84f44f9690d2228774b4fe603c4e0af50770e958db8c1037d5f598ee45"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+          "why": "다면체의 정다면체 정의 부합 여부를 논리적으로 서술하는 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "OFFICIAL_CREATE_RESOLVER_RUN",
+        "projectionStatus": "PROJECTION_REUSE"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "metaFinalization",
+          "status": "PENDING_REVIEW",
+          "reason": "CREATE Resolver projection is reusable, but independent review of the remaining semantic/difficulty fields and official registration have not been completed.",
+          "nextAction": "Complete focused metadata review and registration after resolving UID."
+        }
+      ],
+      "resolverEvidence": {
+        "stage": "CREATE",
+        "status": "RESOLVER_ONLY",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "evidenceSha": "sha256:f7bf7c84f44f9690d2228774b4fe603c4e0af50770e958db8c1037d5f598ee45"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourceQid": "21",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "primaryMethod": "회전체 원뿔대를 식별하고 두 밑넓이 합 45pi와 전개도 닮음 옆넓이 45pi를 합산해 90pi를 서술한다.",
+        "decisiveStep": "원뿔대 옆넓이(60pi-15pi=45pi) 산출 및 총 겉넓이 계산",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "회전체 입체 형태 판별과 닮음을 이용한 원뿔대 옆넓이 계산을 결합한 서술형",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "21",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+          "why": "사다리꼴 회전체의 식별 및 원뿔대 겉넓이 단계별 서술 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourceQid": "22",
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "rpmPath": {
+          "scope": "M1",
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "대푯값의 선택",
+          "l4": "자료에 적절한 대푯값"
+        },
+        "primaryMethod": "평균 30, 중앙값 16, 최빈값 6을 구하고 극단값 160으로 인해 중앙값이 최적임을 논술한다.",
+        "decisiveStep": "대푯값 3종 계산 및 극단값에 의한 평균 왜곡 지적",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "세 대푯값의 통계적 계산과 극단값 영향에 대한 정성적 비판 분석을 요구하는 서술형",
+        "legacyLevelCompatibility": "PENDING",
+        "provenance": {
+          "sourceArchiveFile": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceQid": "22",
+          "variationType": "STRICT_VARIANT"
+        },
+        "resolverStatus": "NOT_RUN",
+        "identityStatus": "PENDING_IDENTITY_MAP",
+        "reviewStatus": "UNREVIEWED"
+      },
+      "sourceCandidateEvidence": {
+        "ptTplCandidate": {
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+          "why": "자료의 평균, 중앙값, 최빈값을 모두 구하고 극단값에 따른 대푯값 적합성을 논증하는 서술형 템플릿"
+        },
+        "semanticSource": "Drive MD source declaration; not independently verified",
+        "resolverStatus": "NOT_RUN"
+      },
+      "evidenceDebt": [
+        {
+          "field": "questionUid",
+          "status": "PENDING_IDENTITY_MAP",
+          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
+          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+        },
+        {
+          "field": "problemTypeKey/templateKey",
+          "status": "PENDING_OFFICIAL_RESOLVER",
+          "reason": "Source PT/TPL values remain evidence candidates only; official Resolver not run.",
+          "nextAction": "Complete required solution verification then execute official stage-meta-bridge."
+        }
+      ]
+    }
+  ]
+}
