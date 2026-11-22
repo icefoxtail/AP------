@@ -399,6 +399,8 @@ const VENN_LAYOUTS={
 // COMPACT_WIDTH so two of them and the gap fit the 848-unit width the Archive solution column allows (the panel width cap is 420).
 const COUNT_ROOM={top:52,side:34},COMPACT_WIDTH=410,GROUP_GAP=5;
 const hasCounts=model=>model.sets.some(set=>set.count!==undefined)||model.universe!==undefined;
+export const VENN_FILL_VARIANTS=[['fit',1],['fit',0.6],['fit',0.8],[1.1,0.6],[1.1,0.8],[1,1],[0.9,0.6],[0.8,0.6],[0.8,0.8]];
+export const setDiagramVariantCount=(model,opts={})=>model.kind==='VENN'&&!opts.compact&&!hasCounts(model)&&!model.universeLabelOutside?1+VENN_FILL_VARIANTS.length:1;
 function vennLayout(model,opts={}){
   const base=VENN_LAYOUTS[model.sets.length];
   let rect={...base.rect},circles=base.circles.map(c=>({...c})),size={...base.size};
@@ -430,6 +432,15 @@ function vennLayout(model,opts={}){
   if(opts.compact&&size.width>COMPACT_WIDTH){
     const dx=(COMPACT_WIDTH-size.width)/2;
     rect={...rect,x:rect.x+dx};circles=circles.map(c=>({...c,cx:c.cx+dx}));size={...size,width:COMPACT_WIDTH};
+  }
+  if(opts.variant>0&&VENN_FILL_VARIANTS[opts.variant-1]!==undefined&&!opts.compact&&!hasCounts(model)&&!model.universeLabelOutside){
+    // Fill variants: only tried after the figure as first drawn left an element no room. The universal rectangle takes the whole frame (FILL_MARGIN from each edge) and the circles grow with it
+    // (the factor named by the variant, 1 = their own size, 'fit' = as much as the frame allows), so the same label has more free space around and between the circles.
+    const FILL_MARGIN=14,nx=FILL_MARGIN,ny=FILL_MARGIN,nw=size.width-2*FILL_MARGIN,nh=size.height-2*FILL_MARGIN;
+    const [factor,spread]=VENN_FILL_VARIANTS[opts.variant-1],fit=Math.min(nw/rect.w,nh/rect.h),k=factor==='fit'?fit:Math.min(fit,factor);
+    const ocx=rect.x+rect.w/2,ocy=rect.y+rect.h/2,ncx=nx+nw/2,ncy=ny+nh/2;
+    circles=circles.map(c=>({cx:r6(ncx+(c.cx-ocx)*k*spread),cy:r6(ncy+(c.cy-ocy)*k*spread),r:r6(c.r*k)}));
+    rect={x:nx,y:ny,w:nw,h:nh};
   }
   return {size,rect,circles};
 }
@@ -817,7 +828,7 @@ export function setDiagramSpec(plan,model,opts={}){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   if(objectSha(solveDiagram(plan.diagram))!==objectSha(model))bad('SET_MODEL_MISMATCH');
   const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model,opts)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model,opts)):tableSpec(model,tableLayout(model));
-  return {schemaVersion:SPEC_VERSION,...spec};
+  return {schemaVersion:SPEC_VERSION,...spec,...(opts.elementLeaders?{elementLeaders:true}:{})};
 }
 /** The spec of a Venn panel of a composite exactly as its lineage hashes it (what the composite's observation re-derives), and the texts its labels write. */
 export const setDiagramPanelSpec=(plan,model)=>JSON.parse(JSON.stringify(setDiagramSpec(plan,model,{compact:true})));
@@ -917,7 +928,63 @@ function resolveVenn(spec,placed){
     if(placedFirst&&elementItems.every(item=>observerMargin(item.box,item.label.cellMask,circles)>=ELEMENT_LINE_MARGIN+0.05))return;
     occupied.length=mark;
     elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
-    if(!placeElementRows())bad('SET_ELEMENT_NO_ROOM');
+    if(placeElementRows())return;
+    occupied.length=mark;
+    elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
+    if(!spec.elementLeaders||!placeLeaderElements())bad('SET_ELEMENT_NO_ROOM');
+  };
+  // Last resort (only when composing asked for it, after every in-region layout failed): an element whose label has no room in its region stands in the free space outside every circle, and a
+  // leader line ends in a dot inside the region it belongs to (the way a normal-curve area value is led out). The labels that do fit stay inside their regions.
+  const placeLeaderElements=()=>{
+    const inCellMargin=ELEMENT_LINE_MARGIN+0.05,DOT_CLEAR=4.3,LABEL_CLEAR=3.5,pad=b=>({x:b.x-4,y:b.y-4,width:b.width+8,height:b.height+8});
+    const leaders=[];
+    const order=[...elementItems].sort((a,b)=>b.box.width*b.box.height-a.box.width*a.box.height);
+    for(const item of order){
+      const {width,height}=item.box,cell=item.label.cellMask;
+      // 1. a place inside its own region, as before
+      let best=null;
+      for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
+        const box={x,y,width,height};
+        if(!boxInCell(box,cell,circles,U,4)||box.y<labelBand||observerMargin(box,cell,circles)<inCellMargin||occupied.some(other=>overlaps(pad(box),other)))continue;
+        const score=Math.min(cellClearance(box,cell,circles,U),30);
+        if(!best||score>best.score+1e-9)best={x,y,score};
+      }
+      if(best){item.box={x:best.x,y:best.y,width,height};item.label.anchor={x:r6(best.x),y:r6(best.y),ax:'start',ay:'top'};occupied.push(pad(item.box));continue;}
+      if(cell===0)return false;   // an outside element has no region to lead into: it must fit where it is
+      // 2. the dot: a place well inside the region (clear of every line and of every label placed so far)
+      const dots=[];
+      for(let y=U.y+6;y<=U.y+U.h-6;y+=3)for(let x=U.x+6;x<=U.x+U.w-6;x+=3){
+        let ok=true,clear=Infinity;
+        for(let i=0;i<circles.length&&ok;i++){const c=circles[i],inside=norm2(x,y,c)<1;if(inside!==(((cell>>i)&1)===1))ok=false;else clear=Math.min(clear,circleMargin(x,y,c));}
+        if(!ok||clear<DOT_CLEAR||occupied.some(other=>x>other.x-1&&x<other.x+other.width+1&&y>other.y-1&&y<other.y+other.height+1))continue;
+        dots.push({x,y,clear});
+      }
+      if(!dots.length)return false;
+      // 3. the label: wholly outside every circle, then the shortest leader to a dot that crosses no placed label and no other leader
+      let pick=null;
+      for(let y=U.y+4;y+height<=U.y+U.h-4;y+=4)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=4){
+        const box={x,y,width,height};
+        if(box.y<labelBand||observerMargin(box,0,circles)<LABEL_CLEAR||occupied.some(other=>overlaps(pad(box),other)))continue;
+        for(const dot of dots){
+          const nx=Math.max(box.x,Math.min(dot.x,box.x+width)),ny=Math.max(box.y,Math.min(dot.y,box.y+height)),dx=dot.x-nx,dy=dot.y-ny,len=Math.hypot(dx,dy);
+          if(len<10||len>150)continue;
+          const score=len-2.5*Math.min(dot.clear,16);
+          if(pick&&score>=pick.score)continue;
+          const start=[r6(nx+dx/len*2),r6(ny+dy/len*2)],end=[dot.x,dot.y];
+          if(occupied.some(other=>segmentHitsBox(start,end,{x:other.x+3,y:other.y+3,width:other.width-6,height:other.height-6})))continue;
+          if(leaders.some(l=>segmentsCross(start,end,l.start,l.end)))continue;
+          pick={box,start,end,score};
+        }
+      }
+      if(!pick)return false;
+      item.box={x:r6(pick.box.x),y:r6(pick.box.y),width,height};
+      item.label.anchor={x:item.box.x,y:item.box.y,ax:'start',ay:'top'};
+      occupied.push(pad(item.box));leaders.push({start:pick.start,end:pick.end});
+      const index=item.label.extra.element;
+      spec.prims.push({t:'line',id:`element-${index}-leader`,role:'element-leader',cls:'leader',x1:pick.start[0],y1:pick.start[1],x2:pick.end[0],y2:pick.end[1],data:{element:index},layer:42},
+        {t:'circle',id:`element-${index}-dot`,role:'element-dot',cls:'mark',cx:pick.end[0],cy:pick.end[1],r:2.4,data:{element:index},layer:43});
+    }
+    return true;
   };
   const setItems=placed.filter(item=>item.label.placement==='set');
   const placeSetLabels=()=>{for(const item of setItems){
@@ -1060,6 +1127,10 @@ function resolveMapping(spec,placed){
     void allLabelBoxes;
   }
 }
+function segmentsCross(a,b,c,d){
+  const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+  return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0;
+}
 function segmentHitsBox(a,b,box){
   const dx=b[0]-a[0],dy=b[1]-a[1];
   if(Math.abs(dx)<1e-9){
@@ -1098,29 +1169,44 @@ function printPrim(p){
   }
   return `<g data-layer="${p.layer}">${tag}</g>`;
 }
-export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
-  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
-  const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
-  let ownBrowser=null;
-  try{
-    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
-    lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
-    let spec;
-    try{spec=setDiagramSpec(plan,model,{compact});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
+// Element text with spaces, set on `lines` lines (the break chosen so that the longest line is shortest), as one fragment: the lines centred on one another, the label's box the whole block.
+// null when the text has too few words to break.
+function wrapElementFragment(typeset,label,identity,fontPx,lines){
+  const words=label.text.split(/\s+/).filter(Boolean);
+  if(words.length<2)return null;
+  const count=Math.min(lines,words.length),cache=new Map();
+  const part=(i,j)=>{const key=i+':'+j;if(!cache.has(key))cache.set(key,typeset({id:label.id,owner:label.owner,factRole:'GIVEN',fontPx,panelId:'set-diagram',occurrence:1+cache.size,kind:'TEXT',text:words.slice(i,j).join(' ')},identity));return cache.get(key);};
+  let best=null;
+  const walk=(start,left,cuts)=>{
+    if(left===1){const all=[...cuts,words.length];let from=0,widest=0;for(const to of all){widest=Math.max(widest,part(from,to).intrinsic.width);from=to;}if(!best||widest<best.widest-1e-9)best={widest,cuts:all};return;}
+    for(let cut=start+1;cut<=words.length-left+1;cut++)walk(cut,left-1,[...cuts,cut]);
+  };
+  walk(0,count,[]);
+  const rows=[];let from=0;for(const to of best.cuts){rows.push(part(from,to));from=to;}
+  const width=Math.max(...rows.map(r=>r.intrinsic.width)),height=rows.reduce((sum,r)=>sum+r.intrinsic.height,0);
+  let y=0;
+  const inner=rows.map(r=>{const g='<g transform="translate('+r6((width-r.intrinsic.width)/2)+' '+r6(y)+')">'+r.svg.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')+'</g>';y+=r.intrinsic.height;return g;}).join('');
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" data-outline-width="'+width+'" data-outline-height="'+height+'" id="'+rows[0].namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="GIVEN">'+inner+'</svg>';
+  return {labelId:label.id,owner:label.owner,factRole:'GIVEN',namespace:rows[0].namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:rows[0].fontSha256,intrinsic:{width,height,baseline:rows[0].intrinsic.baseline},fontPx,typesetter:rows[0].typesetter};
+}
+// Everything composing does before it writes the SVG: the spec, every label typeset, the labels placed, the bounds and overlap checks (also what the unit tests run, without a browser).
+export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false}){
+    let spec,placed;
+    try{spec=setDiagramSpec(plan,model,{compact,variant,elementLeaders});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
     if(model.kind==='VENN'&&model.shade){
       const anyShade=spec.prims.some(p=>p.role==='shade');
       if(!anyShade)throw new Stop('SET_SPEC_ERROR',{code:'SET_SHADE_EMPTY'});
     }
-    lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
-    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
+    const specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
+    placed=[];
     for(const label of spec.labels){
       let fragment;
       try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:setDiagramTypesetTex(label.tex)}:{kind:'TEXT',text:label.text})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:error.message});}
       // a math label MathJax could not outline (a symbol outside its math fonts) leaves a <text> glyph: say which label it is instead of letting the rendered check report a nameless overlap
       if(label.kind==='MATH'&&/<text[\s>]/.test(fragment.svg))throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:'MATH_GLYPH_NOT_OUTLINED',tex:label.tex});
+      if(wrap&&label.role==='element'&&label.kind==='TEXT'){const wrapped=wrapElementFragment(typeset,label,identity,font,wrap);if(wrapped)fragment=wrapped;}
       const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
@@ -1139,6 +1225,37 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
       if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6)throw new Stop(/^(set-count|universal-count)$/.test(item.label.role)||item.label.counted?'SET_COUNT_LABEL_NO_ROOM':item.label.placement==='set'?'SET_LABEL_NO_ROOM':'SET_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
     }
     for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop(placed[i].label.role==='element'||other.label.role==='element'?'SET_ELEMENT_NO_ROOM':'SET_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
+    return {spec,placed,specSha256};
+}
+/** The ways a Venn figure is laid out, in the order they are tried: as first drawn; then the labels wrapped onto 2 to 4 lines, each with the circles and rectangle redrawn larger or farther apart
+ * (VENN_FILL_VARIANTS); last, the same again with an element that has no room in its region led out (a label in the free space and a leader to a dot in the region). The first that fits is drawn. */
+export function setDiagramAttempts(model,compact=false){
+  if(model.kind!=='VENN')return [{wrap:0,variant:0,elementLeaders:false}];
+  const variants=setDiagramVariantCount(model,{compact}),out=[];
+  for(const elementLeaders of [false,true])for(let variant=0;variant<variants;variant++)for(const wrap of [0,2,3,4])out.push({wrap,variant,elementLeaders});
+  return out;
+}
+export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
+  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
+  const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
+  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
+  let ownBrowser=null;
+  try{
+    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
+    lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
+    let spec,placed;const typeset=typesetter(),font=typographyPolicy.baseFontPx;
+    const attempt=({wrap,variant,elementLeaders})=>{
+      const out=layoutSetDiagram({plan,model,identity,typeset,font,compact,wrap,variant,elementLeaders});
+      ({spec,placed}=out);lineage.specSha256=out.specSha256;
+    };
+    // A Venn figure whose element labels have no room is laid out again in the next way of setDiagramAttempts; a figure that already fits is not touched.
+    const retryable=error=>(error instanceof Stop?error.status:error?.message)==='SET_ELEMENT_NO_ROOM';
+    const attempts=setDiagramAttempts(model,compact);
+    for(const [k,way] of attempts.entries()){
+      try{attempt(way);break;}
+      catch(error){if(k===attempts.length-1||!retryable(error))throw error;}
+    }
+    const {width,height}=spec.size;
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);

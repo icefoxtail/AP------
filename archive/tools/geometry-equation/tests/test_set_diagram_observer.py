@@ -314,5 +314,59 @@ class TableTamper(unittest.TestCase):
         self.assertIn('SD_TABLE_GRID',self.audit(table_svg(drop_grid=True))['errors'])
 
 
+class ElementLeader(unittest.TestCase):
+    """An element with no room in its region may be led out: its label stands outside every circle, a dot sits in its region, a leader joins them. Each tamper is caught."""
+    BOX=(34,250,16,20)   # outside both circles (A at (120,170), B at (210,170), r=70)
+
+    def figure(self,dot=(100,170),box=None,start=None,end=None,drop=None,extra=''):
+        box=box or self.BOX
+        svg=venn_svg(elements=((box[0]+8,box[1]+10,'9'),(165,170,'9')))
+        # label 0 is drawn at `box` by venn_svg; the leader starts 2 px from the box towards the dot
+        import math
+        nx=max(box[0],min(dot[0],box[0]+box[2])); ny=max(box[1],min(dot[1],box[1]+box[3]))
+        length=math.hypot(dot[0]-nx,dot[1]-ny)
+        s=start or (round(nx+(dot[0]-nx)/length*2,3),round(ny+(dot[1]-ny)/length*2,3))
+        e=end or dot
+        parts=[]
+        if drop!='leader':
+            parts.append('<line id="element-0-leader" data-role="element-leader" data-element="0" x1="%s" y1="%s" x2="%s" y2="%s" stroke="#444"/>'%(s[0],s[1],e[0],e[1]))
+        if drop!='dot':
+            parts.append('<circle id="element-0-dot" data-role="element-dot" data-element="0" cx="%s" cy="%s" r="2.4" fill="#111"/>'%dot)
+        return svg.replace('</svg>',''.join(parts)+extra+'</svg>')
+
+    def audit(self,svg,plan=None):
+        return S.audit(plan or VENN_PLAN,svg)
+
+    def test_a_led_out_element_passes(self):
+        result=self.audit(self.figure())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+
+    def test_a_dot_in_the_wrong_region_or_on_a_line_is_caught(self):
+        self.assertIn('SD_ELEMENT_DOT_REGION:0',self.audit(self.figure(dot=(205,170)))['errors'])     # in B, the element belongs to A only
+        self.assertIn('SD_ELEMENT_DOT_REGION:0',self.audit(self.figure(dot=(188,170)))['errors'])     # 2 px from B's line
+        self.assertIn('SD_ELEMENT_DOT_REGION:0',self.audit(self.figure(dot=(100,170)) .replace('cx="100"','cx="170"'))['errors'])   # in the lens A and B
+
+    def test_a_leader_that_misses_the_dot_or_floats_is_caught(self):
+        self.assertIn('SD_ELEMENT_LEADER_SHAPE:0',self.audit(self.figure(end=(104,170)))['errors'])
+        self.assertIn('SD_ELEMENT_LEADER_SHAPE:0',self.audit(self.figure(start=(70,100)))['errors'])
+
+    def test_a_leader_or_dot_alone_is_caught(self):
+        self.assertIn('SD_ELEMENT_LEADER:0',self.audit(self.figure(drop='leader'))['errors'])
+        self.assertIn('SD_ELEMENT_LEADER:0',self.audit(self.figure(drop='dot'))['errors'])
+
+    def test_the_label_must_stand_outside_every_circle(self):
+        inside=self.audit(self.figure(box=(100,150,16,20),dot=(150,100)))   # the box is inside A: it needs no leader
+        self.assertIn('SD_ELEMENT_LEADER_LABEL:0',inside['errors'])
+
+    def test_an_outside_element_is_never_led_out(self):
+        plan={**VENN_PLAN,'elements':[{'text':'9','in':[]},{'text':'9','in':['A','B']}]}
+        self.assertIn('SD_ELEMENT_LEADER_UNNEEDED:0',self.audit(self.figure(),plan)['errors'])
+
+    def test_a_leader_through_another_label_is_caught(self):
+        # element 1 is moved onto the leader's path
+        blocked=self.figure().replace('data-box="157,160,16,20"','data-box="66,200,16,20"')
+        self.assertIn('SD_ELEMENT_LEADER_CROSSES_LABEL:0:1',self.audit(blocked)['errors'])
+
+
 if __name__=='__main__':
     unittest.main()

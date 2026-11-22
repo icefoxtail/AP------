@@ -1790,6 +1790,7 @@ def audit_dot(chart, doc):
 # This observer's own copies of the drawing rules: the tallest curve (the one with the smallest sd) is NORM_PEAK high, the others in the ratio of their sds; a tick is NORM_TICK long; a shade of
 # tone 1 / 2 is #111 at 0.16 / 0.34 opacity. The scale of the x axis is the window of the plan against the two ends of each polyline (never anything the producer states about its own scale).
 NORM_PEAK, NORM_TICK, NORM_STEP_MAX = 140.0, 5.0, 2.05
+NORM_PEAKS = (140.0, 260.0)   # the heights the tallest curve may have: the usual one, and the taller one a figure with a labelled thin tail (beyond about 3 sd) takes so that the tail can hold its dot
 NORM_OPACITY = {1: 0.16, 2: 0.34}
 NORM_SHADE_COLORS = {'BLUE': ('#7fa6e8', 0.32), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}   # this observer's own copy of the C1 palette tints (a shade may take one instead of a grey tone, G20)
 NORM_SYMBOL = re.compile('^[A-Za-zμσ]$')
@@ -2066,7 +2067,10 @@ def audit_normal(chart, doc):
     if slope <= 0: fail('SC_AXIS_DIRECTION:x')
     px = lambda u: xl + (float(u) - float(lo)) * slope
     ux = lambda x: float(lo) + (x - xl) / slope
-    height = lambda c: NORM_PEAK * sd_min / sd_of(c)
+    # the tallest curve's height is one of the allowed heights, whichever the first curve's drawn peak matches (never any other number)
+    first_top = min(p[1] for p in first_pts)
+    peak = next((p for p in NORM_PEAKS if abs(p * sd_min / sd_of(curves[0]) - (base - first_top)) <= 0.3), NORM_PEAK)
+    height = lambda c: peak * sd_min / sd_of(c)
     ycurve = lambda c, x: base - height(c) * math.exp(-(((ux(x) - mean_of(c)) / sd_of(c)) ** 2) / 2)
     # the curves
     polylines = list(doc.root.iter(NS + 'polyline'))

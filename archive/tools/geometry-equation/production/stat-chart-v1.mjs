@@ -1523,7 +1523,7 @@ function dotSpec(m,ctx){
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
 // runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
 // with a leader line that ends in a dot inside the area.
-const DOT_ROOM=4.3,MIN_ROOM=1.5;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
+const DOT_ROOM=4.3,MIN_ROOM=1.5,FINE_ROOM=1.05;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
 const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a polygon, negative outside it
   let best=Infinity,inside=false;
   for(let i=0;i<ring.length;i++){
@@ -1534,13 +1534,25 @@ const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a 
   return inside?best:-best;
 };
 const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
-const NORM_XL=44,NORM_XR=482,NORM_TIP=500,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+const NORM_XL=44,NORM_XR=482,NORM_TIP=500,NORM_PEAK=140,NORM_PEAK_TALL=260,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+// A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
+// draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
+const NORM_THIN_TAIL=1.7;
+function normalPeakOf(m){
+  const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
+  for(const s of m.shades){
+    if(s.label===null||(s.from!==null&&s.to!==null))continue;
+    const c=byId.get(s.curve),u=N(s.from===null?s.to:s.from),z=(u-meanOf(c))/sdOf(c);
+    if(NORM_PEAK*sdMin/sdOf(c)*Math.exp(-z*z/2)<NORM_THIN_TAIL)return NORM_PEAK_TALL;
+  }
+  return NORM_PEAK;
+}
 function normalSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,PEAK=normalPeakOf(m),BASE=NORM_TOP+PEAK;
   const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
   const px=u=>r6(NORM_XL+(u-lo)*scale);
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
-  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
+  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>PEAK*sdMin/sdOf(c);
   const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
   const prims=[],labels=[];
   arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP});
@@ -1725,9 +1737,18 @@ function resolveNormal(spec,placed){
     const roomy=scan.filter(([,r])=>r>=DOT_ROOM).sort((a,b)=>Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref)),thin=scan.filter(([,r])=>r>=MIN_ROOM).sort((a,b)=>b[1]-a[1]||Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref));
     const firstThin=spots.length;
     spots.push(...spread(roomy.length?roomy:thin));
+    // A tail so thin that the middle of its height holds no dot (G19 tails beyond 3 sd) is searched again with the dot nearer the axis, where a wedge is roomiest: the observer asks the dot for 1 px of room.
+    // Only a figure that had no place at all gets here, so a figure that was placed before is drawn exactly as it was.
+    const dotY=new Map();
+    if(!spots.length){
+      const fine=[];
+      for(let x=Math.ceil(region.xa)+1;x<region.xb-1;x++){let top=null;for(const lift of [0.8,1,1.2,1.5,1.8,2.2,2.6]){const y=BASE-lift,r=polygonRoom([x,y],ring);if(r>=FINE_ROOM&&(top===null||r>top.r))top={x,y,r};}if(top)fine.push(top);}
+      fine.sort((a,b)=>b.r-a.r||Math.abs(a.x-region.pref)-Math.abs(b.x-region.pref));
+      for(const p of fine)if(spots.every(o=>Math.abs(o-p.x)>=5)&&spots.length<8){spots.push(p.x);dotY.set(p.x,p.y);}
+    }
     let found=null,ax=0,ay=0;
     for(const spot of spots){
-      ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
+      ax=r6(spot);ay=dotY.has(spot)?r6(dotY.get(spot)):r6((topAt(region.top,ax)+BASE)/2);
       const accept=(box,sx,sy)=>{
         if(clearance(box,obs,LABEL_APART)<CLEAR)return false;
         if(done.some(o=>segHitsRect([sx,sy],[ax,ay],{x:o.x-2,y:o.y-2,width:o.width+4,height:o.height+4})))return false;
