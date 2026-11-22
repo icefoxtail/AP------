@@ -1,0 +1,122 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5,
+        "y": 0
+      }
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 5,
+        "deg": 53
+      }
+    },
+    {
+      "id": "OD_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "B",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "A",
+        "OD_line"
+      ]
+    },
+    {
+      "id": "OA",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "O",
+        "radius": 5,
+        "startDeg": 0,
+        "endDeg": 90
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "O"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "O",
+        "ray1": "D",
+        "ray2": "A",
+        "label": "53°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "O",
+        "to": "B",
+        "label": "0.60"
+      }
+    ]
+  },
+  "caption": "반지름이 1인 사분원에서 중심각 53도와 밑변 길이 0.60"
+}

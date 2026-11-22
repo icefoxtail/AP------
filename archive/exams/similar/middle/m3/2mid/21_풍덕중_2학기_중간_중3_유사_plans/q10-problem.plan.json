@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "D"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "point",
+      "id": "C",
+      "on": "BD"
+    },
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "20 m"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "60°"
+    },
+    {
+      "type": "angle",
+      "at": "D",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "30°"
+    }
+  ]
+}

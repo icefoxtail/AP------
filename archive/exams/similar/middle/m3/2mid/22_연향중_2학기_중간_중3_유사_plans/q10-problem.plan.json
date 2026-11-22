@@ -1,0 +1,101 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 2.93,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 8,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 2.93,
+        "y": 5.07
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "D",
+        "ray1": "A",
+        "ray2": "C"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "60°"
+      },
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B",
+        "label": "45°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "B",
+        "to": "C",
+        "label": "8 m"
+      }
+    ]
+  },
+  "caption": "8m 떨어진 두 지점 B, C에서 탑 꼭대기 A를 올려다본 각 60도와 45도"
+}

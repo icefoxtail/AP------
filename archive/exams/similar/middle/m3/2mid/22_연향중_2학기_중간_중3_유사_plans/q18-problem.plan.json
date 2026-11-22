@@ -1,0 +1,102 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "P",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0.96,
+        "y": 2.31
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0.96,
+        "y": -2.31
+      }
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 2.5
+      }
+    },
+    {
+      "id": "PA",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "A",
+        "ray1": "O",
+        "ray2": "P"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "O",
+        "to": "A",
+        "label": "5 cm"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "label": "12 cm"
+      }
+    ]
+  },
+  "caption": "원 O의 외부 점 P에서 그은 두 접선 PA, PB와 접점 현 AB"
+}

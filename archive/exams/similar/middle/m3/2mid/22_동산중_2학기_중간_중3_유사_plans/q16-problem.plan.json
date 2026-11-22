@@ -1,0 +1,107 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 3
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5.196,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 1.732,
+        "y": 0
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "C",
+        "label": "30°"
+      },
+      {
+        "vertex": "A",
+        "ray1": "C",
+        "ray2": "D",
+        "label": ""
+      },
+      {
+        "vertex": "A",
+        "ray1": "D",
+        "ray2": "B",
+        "label": ""
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "6"
+      }
+    ]
+  },
+  "caption": "각 C=90도, 각 B=30도, AB=6인 직각삼각형 ABC와 각 A의 이등분선 AD"
+}

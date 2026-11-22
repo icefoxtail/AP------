@@ -1,0 +1,123 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 8,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "B"
+      ],
+      "args": {
+        "r": 6,
+        "deg": 60
+      }
+    },
+    {
+      "id": "D",
+      "op": "TRANSLATE_POINT",
+      "inputs": [
+        "A"
+      ],
+      "args": {
+        "dx": 8,
+        "dy": 0
+      }
+    },
+    {
+      "id": "M",
+      "op": "MIDPOINT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AM",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "AC",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "D",
+        "ray1": "A",
+        "ray2": "C",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "6 cm"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "label": "8 cm"
+      }
+    ]
+  },
+  "caption": "변 BC의 중점 M과 각 D=60도, AB=6cm, AD=8cm인 평행사변형 ABCD"
+}

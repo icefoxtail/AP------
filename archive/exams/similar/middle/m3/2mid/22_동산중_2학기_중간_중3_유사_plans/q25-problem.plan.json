@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 2.4
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": -2.4
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -4.2,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 1.8,
+        "y": 0
+      }
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 1.35
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "O",
+        "ray1": "A",
+        "ray2": "D"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "x"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "label": "y"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "12"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "label": "8"
+      }
+    ]
+  },
+  "caption": "원 O에 외접하고 두 대각선이 직교하는 사각형 ABCD"
+}

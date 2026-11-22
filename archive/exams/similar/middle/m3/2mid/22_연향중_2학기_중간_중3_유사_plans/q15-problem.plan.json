@@ -1,0 +1,92 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 90
+      }
+    },
+    {
+      "id": "B",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 230
+      }
+    },
+    {
+      "id": "C",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3,
+        "deg": 310
+      }
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 3
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "65°"
+      }
+    ]
+  },
+  "caption": "원 O에 내접하고 중심에서 두 현 AB, AC까지의 거리가 같은 삼각형 ABC"
+}

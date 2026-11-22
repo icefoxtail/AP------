@@ -1,0 +1,121 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5,
+        "y": 0
+      }
+    },
+    {
+      "id": "AB_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "E",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "D",
+        "AB_line"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B"
+      },
+      {
+        "vertex": "E",
+        "ray1": "D",
+        "ray2": "B"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "D",
+        "ray1": "B",
+        "ray2": "E",
+        "label": "x"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "C",
+        "to": "A",
+        "label": "5"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "12"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 변 BC 위의 점 D로부터 AB에 내린 수선의 발 E와 각 BDE=x"
+}

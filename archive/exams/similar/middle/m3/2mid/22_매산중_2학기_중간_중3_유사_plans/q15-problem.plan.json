@@ -1,0 +1,143 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4,
+        "y": 0
+      }
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 4,
+        "deg": 60
+      }
+    },
+    {
+      "id": "OB_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "C",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "A",
+        "OB_line"
+      ]
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4,
+        "y": 6.928
+      }
+    },
+    {
+      "id": "OD",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OB",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OE",
+      "op": "SEGMENT",
+      "inputs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "AC",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "O",
+        "radius": 4,
+        "startDeg": 0,
+        "endDeg": 90
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "O"
+      },
+      {
+        "vertex": "B",
+        "ray1": "D",
+        "ray2": "O"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "O",
+        "ray1": "B",
+        "ray2": "A",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "O",
+        "to": "B",
+        "label": "4"
+      }
+    ]
+  },
+  "caption": "반지름이 4이고 중심각 60도인 사분원 O 위의 사다리꼴 ACBD"
+}

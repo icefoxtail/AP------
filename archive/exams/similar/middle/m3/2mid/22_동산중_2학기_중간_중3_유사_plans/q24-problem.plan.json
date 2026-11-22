@@ -1,0 +1,114 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 3.464
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3.835,
+        "y": 1.25
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "B",
+        "ray2": "D"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "D",
+        "ray1": "B",
+        "ray2": "A",
+        "label": "30°"
+      },
+      {
+        "vertex": "B",
+        "ray1": "D",
+        "ray2": "C",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "D",
+        "label": "5"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "label": "12"
+      }
+    ]
+  },
+  "caption": "대각선 BD로 나뉜 직각삼각형 BCD와 삼각형 ABD로 이루어진 사각형 ABCD"
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "chord",
+      "endpoints": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "type": "chord",
+      "endpoints": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AB",
+      "foot": "M"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "CD",
+      "foot": "N"
+    },
+    {
+      "type": "label",
+      "target": "OM",
+      "text": "4 cm"
+    },
+    {
+      "type": "label",
+      "target": "ON",
+      "text": "4 cm"
+    },
+    {
+      "type": "label",
+      "target": "AM",
+      "text": "6 cm"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "x cm"
+    }
+  ]
+}

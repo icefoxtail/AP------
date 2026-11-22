@@ -1,0 +1,81 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 3
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "B",
+        "to": "C",
+        "label": "a"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "label": "b"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "label": "c"
+      }
+    ]
+  },
+  "caption": "각 C가 직각이고 세 변의 길이가 a, b, c인 직각삼각형 ABC"
+}

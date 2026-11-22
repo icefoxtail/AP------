@@ -1,0 +1,92 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "M",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 2.25
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 3.75
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -3,
+        "y": 2.25
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3,
+        "y": 2.25
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CM",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "O",
+        "radius": 3.75,
+        "startDeg": 37,
+        "endDeg": 143
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "M",
+        "ray1": "C",
+        "ray2": "B"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "M",
+        "label": "12"
+      },
+      {
+        "from": "C",
+        "to": "M",
+        "label": "6"
+      }
+    ]
+  },
+  "caption": "현 AB의 중점 M과 수선 CM으로 이루어진 원의 일부분(활꼴)"
+}

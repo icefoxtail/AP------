@@ -1,0 +1,118 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": "BC_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "H",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "A",
+        "BC_line"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "A",
+        "ray1": "C",
+        "ray2": "B"
+      },
+      {
+        "vertex": "H",
+        "ray1": "A",
+        "ray2": "C"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "H",
+        "ray2": "C",
+        "label": "x"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "12"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "label": "5"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "13"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 빗변 BC에 내린 수선 AH와 각 CAH=x"
+}

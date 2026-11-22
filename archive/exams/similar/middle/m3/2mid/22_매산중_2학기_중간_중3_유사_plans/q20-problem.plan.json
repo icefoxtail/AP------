@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "-7",
+          "-8",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      3
+    ],
+    "viewport": [
+      -7.5,
+      3.5,
+      -3,
+      12
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "9"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "9"
+        }
+      ],
+      "segments": [
+        {
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "서로의 꼭짓점을 지나는 두 포물선 y=(x+1)^2과 y=-(x+4)^2+9 및 수평선분 AB"
+}

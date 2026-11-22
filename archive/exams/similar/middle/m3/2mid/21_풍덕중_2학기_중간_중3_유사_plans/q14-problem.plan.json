@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "C",
+      "to": "AB",
+      "foot": "H"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "60 m"
+    },
+    {
+      "type": "label",
+      "target": "CH",
+      "text": "h"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "30°"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "C"
+      ],
+      "text": "45°"
+    }
+  ]
+}

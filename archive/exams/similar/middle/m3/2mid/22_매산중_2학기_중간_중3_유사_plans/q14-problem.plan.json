@@ -1,0 +1,84 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 10,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 10,
+        "y": 3.2
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "B",
+        "ray2": "C",
+        "label": "x°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "25"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "8"
+      }
+    ]
+  },
+  "caption": "밑변 25, 높이 8, 경사각 x도인 지붕 직각삼각형 ABC"
+}

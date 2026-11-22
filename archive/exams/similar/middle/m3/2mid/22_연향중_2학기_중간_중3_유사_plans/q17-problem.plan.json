@@ -1,0 +1,116 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 7,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5.214,
+        "y": 4.98
+      }
+    },
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5,
+        "y": 1.732
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 2.6,
+        "y": 2.48
+      }
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "CIR",
+      "op": "CIRCLE_CENTER_RADIUS",
+      "inputs": [
+        "O"
+      ],
+      "args": {
+        "r": 1.732
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "8 cm"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "label": "5 cm"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "7 cm"
+      }
+    ]
+  },
+  "caption": "세 변이 8, 5, 7인 삼각형 ABC의 내접원 O와 접선 DE"
+}

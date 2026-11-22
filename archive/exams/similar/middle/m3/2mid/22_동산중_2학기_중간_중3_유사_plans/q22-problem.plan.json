@@ -1,0 +1,113 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -6,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -6,
+        "y": 1.5
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 6
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "O",
+        "radius": 6,
+        "startDeg": 0,
+        "endDeg": 180
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "A",
+        "ray1": "C",
+        "ray2": "B"
+      },
+      {
+        "vertex": "B",
+        "ray1": "D",
+        "ray2": "A"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "C",
+        "label": "3"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "label": "12"
+      }
+    ]
+  },
+  "caption": "지름 AB인 반원 O에 접하는 세 선분 AC, BD, CD로 이루어진 사다리꼴"
+}

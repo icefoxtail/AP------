@@ -1,0 +1,52 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "point",
+      "id": "D",
+      "on": "BC"
+    },
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "D"
+    },
+    {
+      "type": "label",
+      "target": "BD",
+      "text": "3 cm"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "3 cm"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "D",
+        "C"
+      ],
+      "text": "x°"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "D"
+      ],
+      "text": "y°"
+    }
+  ]
+}

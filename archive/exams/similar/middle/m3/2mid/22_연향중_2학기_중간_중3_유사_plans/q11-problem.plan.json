@@ -1,0 +1,87 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 5,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "A"
+      ],
+      "args": {
+        "r": 5,
+        "deg": 30
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "C",
+        "label": "75°"
+      }
+    ],
+    "equalSegments": [
+      [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ]
+      ]
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "10 cm"
+      }
+    ]
+  },
+  "caption": "AB=AC=10cm, 밑각 B=75도인 이등변삼각형 ABC"
+}
