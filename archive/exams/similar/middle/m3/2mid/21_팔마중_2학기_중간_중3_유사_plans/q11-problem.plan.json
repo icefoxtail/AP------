@@ -1,0 +1,42 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "square",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "side": "8"
+    },
+    {
+      "type": "midpoint",
+      "of": "AD",
+      "id": "M"
+    },
+    {
+      "type": "midpoint",
+      "of": "CD",
+      "id": "N"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "M",
+        "B",
+        "N"
+      ]
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "M",
+        "N"
+      ],
+      "text": "x°"
+    }
+  ]
+}

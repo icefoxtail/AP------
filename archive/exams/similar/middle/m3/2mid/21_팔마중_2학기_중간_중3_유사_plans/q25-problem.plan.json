@@ -1,0 +1,49 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "inscribedIn": "O"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AB",
+      "foot": "D",
+      "label": "3 cm"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AC",
+      "foot": "E"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "C"
+      ],
+      "text": "60°"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "x"
+    }
+  ]
+}

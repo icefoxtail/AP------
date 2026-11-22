@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "xTitle": "전기사용량(kWh)",
+    "yTitle": "가구수",
+    "boundaries": [
+      "150",
+      "200",
+      "250",
+      "300",
+      "350",
+      "400"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          8,
+          24,
+          12,
+          8,
+          8
+        ]
+      }
+    ]
+  },
+  "caption": "월 전기 사용량 히스토그램",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "보이는 도수 합 28, 찢어진 두 계급 비 3:1, 전체 60",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}
