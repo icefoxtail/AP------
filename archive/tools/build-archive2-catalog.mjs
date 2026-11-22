@@ -104,10 +104,12 @@ const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.
 // (TPL) must be usable by teachers in 문제지 만들기 / 단원별 기출 without fabricating values and
 // without upgrading any approval. The lane is ADDITIVE and DISPLAY/SELECTION-ONLY: it never
 // touches the canonical assignment, curriculumKey/courseKey/L1/L2 or the strict approval metric.
-// A value is exposed only when (a) the metadata row joins the exact source question, (b) the row
-// is bound to the question's CONTENT fingerprint (stem + choices + image, i.e. what the
-// classification describes) and (c) PT/TPL are ACTIVE labelled keys of the compiled taxonomy
-// registry with a consistent PT->TPL parent. Each facet keeps its own status code: A = approved
+// A value is exposed only when (a) the metadata row joins the exact source question and (b) PT/TPL
+// are ACTIVE labelled keys of the compiled taxonomy registry with a consistent PT->TPL parent.
+// Concept (L3) and curriculum are exposed only when (c) the row is bound to the question's stem+choices
+// fingerprint. A PT/TPL is shown even when the stem or choices changed after the judgment (user decision
+// 2026-11-22: corrections are minimal edits, so the type barely changes); such rows stay metaBinding "" and are
+// counted in hintStats.unbound / staleTypeShown. Each facet keeps its own status code: A = approved
 // field status, P = recorded but not approved (검토 대기), H = the field carries a hold tag (shown all the same: a value that exists is visible).
 const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
   .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
@@ -118,7 +120,7 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 // 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
 // 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
 const textRebinds = loadRebinds(root);
-const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
+const hintStats = { joined: 0, row: 0, type: 0, unbound: 0, staleTypeShown: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
   unit: 0, unitByRule: {}, unitNotHinted: {} };
 // 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
@@ -135,7 +137,7 @@ function buildMetaHint(meta, binding) {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
   // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
-  // hold 사유(L4_HOLD·난이도 보류·자료 문제)는 그 칸들의 일이고, 판정된 유형은 발문·보기가 같으면 그대로 보인다. 숨김은 발문·보기 결속 실패뿐(binding)이다.
+  // hold 사유(L4_HOLD·난이도 보류·자료 문제)는 그 칸들의 일이고, 판정된 유형은 발문·보기가 바뀌었어도 그대로 보인다(2026-11-22). 유형을 숨기는 이유는 키가 등록부에 없는 것뿐이다.
   const l3Value = String(meta.L3 || meta.nativeL3 || "").trim();
   const l3State = hintFieldStatus(status.concept);
   const l3Held = l3State === "H" || ["HOLD", "ROUTE_OUT"].includes(meta.l3Disposition);
@@ -153,16 +155,17 @@ function buildMetaHint(meta, binding) {
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
-  const l3 = l3Value && !l3Held && binding !== "type" ? l3Value : "";
+  // 발문·보기 지문이 판정 당시와 달라진 행(binding "stale")도 유형(PT/TPL)은 싣는다(2026-11-22 사용자 결정). L3·교육과정은 "row"일 때만 싣는다.
+  const l3 = l3Value && !l3Held && binding === "row" ? l3Value : "";
   const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
-  const curriculum = approvedStandard && binding !== "type" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const curriculum = approvedStandard && binding === "row" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
   const out = {};
   if (l3 || pt || tpl) {
     out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
     if (l3) { out.metaHintL3 = l3; hintStats.l3++; }
-    if (pt) { out.metaHintPT = pt; hintStats.pt++; }
+    if (pt) { out.metaHintPT = pt; hintStats.pt++; if (binding === "stale") hintStats.staleTypeShown++; }
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
@@ -482,7 +485,8 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind);
+    // 결속(지문)이 어긋난 행("stale")도 등록된 유형은 화면에 쓴다. metaBinding은 그대로 비워 두고 unbound로 센다(나중에 볼 수 있게).
+    const metaHint = buildMetaHint(meta, bindingKind || (validJoin ? "stale" : ""));
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -673,7 +677,8 @@ for (const record of records) {
   const chapterKeyed = core.Canonical?.textbookSource?.(record.sourceFile)?.unitKeys === "chapter";
   const decision = unitHinter.decide(record.metaHintPT, grade, record.subject, { key: chapterKeyed ? "" : record.legacyStandardUnitKey });
   const bucket = decision.value ? hintStats.unitByRule : hintStats.unitNotHinted;
-  bucket[decision.reason] = (bucket[decision.reason] || 0) + 1;
+  const bucketKey = decision.reason + (decision.moved ? "+movedUnit" : "");
+  bucket[bucketKey] = (bucket[bucketKey] || 0) + 1;
   if (decision.value) { record.metaHintUnit = decision.value; hintStats.unit++; }
 }
 const gradeCourseRows = projectionPolicy.gradeCourseAllowlist || [];

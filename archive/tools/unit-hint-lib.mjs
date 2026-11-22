@@ -9,22 +9,33 @@
 // 연결 단원이 없으면 싣지 않는다(다른 과목 단원으로 보내지 않음). 통합 단원으로 옮기지 못하는 연결은 빼고 옮겨지는 연결만으로 정한다.
 // 같은 입력이면 결과는 같다(후보는 프로필 순서, 동률은 마지막 단원, 센 값은 집계 순서와 무관).
 // 표시·선택 전용이며 승인·정본 값이 아니다. 값의 모양: 중등은 통합 단원 이름(원본 단원 이름과 같은 길로 읽힘), 고등은 통합 단원 키(고등 단원 판정은 키로만 읽는다).
+// 추가(사용자 결정 2026-11-22, 학원 원장: "걸림 있었던 것들은 최대한 운영되게. 룰은 우리가 정하기 나름"):
+//   - 고1 2015 과목명(수학(상)·수학(하))은 대응 과목표로 2022 과목(공통수학1·2)으로 본다. 과목이 공백·`기출` 등으로 안 정해져도 PT가 연결된 단원이 한 과목에만 있으면 그 과목으로 본다.
+//   - 일치율이 낮아 꺼 뒀던 고2 미적분과 고3 전체도 켠다(미분류로 숨는 것보다 단원에 들어가는 쪽). 고3은 고2와 같은 단원 프로필·키를 쓴다.
+//   - 그 학년에 연결이 없는 PT(교육과정 개정으로 단원이 학년을 옮긴 경우)는 다른 학년 연결 단원과 같은 이름의 통합 단원이 이 학년 프로필에 있으면 그 단원을 쓴다(결과의 moved: true). 없으면 noBinding으로 둔다.
 // 소비: archive2-unified-units.js unitFor가 원본의 단원 값으로 단원을 못 정한 문항에만 쓴다.
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import unitCore from "../unit-past-exams-core.js";
 import core from "../archive2-core.js";
+import { loadCourseAliases } from "./meta-foundation/course-aliases.mjs";
 
 const MIDDLE_KEYS = (n) => new RegExp(`^M${n}-\\d\\d$`);
 const HIGH2_KEYS = /^H(?:15-(?:M1|M2|PS|CALC|GV)|22-(?:A|M1|M2|PS|GE))-\d\d$/;
 export const normalizeSubject = (value) => String(value || "").replace(/\s+/g, "").replace(/c$/, "");
-// 고3은 켜지 않는다(미적분 5/28 = 17.9%, 측정은 docs/agents/metadata.md).
-// offSubjects: 이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 비교한 일치율이 70% 미만인 과목(2026-11-22 측정)은 켜지 않는다.
+// 2015·2022 대응 과목표(course-aliases.v1.json, 새 표를 만들지 않고 읽는다): 수학(상)→공통수학1, 수학(하)→공통수학2 등.
+const aliases = loadCourseAliases(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.."));
+// 켜는 기준을 바꿨다(사용자 결정 2026-11-22, 학원 원장): 처음에는 이미 단원이 정해진 문항과의 일치율이 70% 미만인 과목(고2 미적분 57.1%, 고3 17.9%)을 꺼 뒀으나,
+// "걸림 있었던 것들은 최대한 운영되게. 룰은 우리가 정하기 나름이니 문항 만들어 놓고 안 쓸 필요 없다" — 미분류로 숨는 것보다 단원에 들어가는 쪽이 낫다.
+// 그래서 모든 학년·과목을 켠다. offSubjects 구조는 남겨 두므로, 학생이 엉뚱한 문항을 만난다는 근거가 생기면 과목 하나를 다시 끌 수 있다.
 const off = (...subjects) => new Set(subjects.map(normalizeSubject));
 export const UNIT_HINT_GRADE_RULES = Object.freeze({
   "중1": { profile: "m1", keys: MIDDLE_KEYS(1), asKey: false, offSubjects: off() },
   "중2": { profile: "m2", keys: MIDDLE_KEYS(2), asKey: false, offSubjects: off() },
   "중3": { profile: "m3", keys: MIDDLE_KEYS(3), asKey: false, offSubjects: off() },
   "고1": { profile: "h1", keys: /^H(?:15-S[AB]|22-C2?)-\d\d$/, asKey: true, offSubjects: off() },
-  "고2": { profile: "h2", keys: HIGH2_KEYS, asKey: true, offSubjects: off("미적분") },
+  "고2": { profile: "h2", keys: HIGH2_KEYS, asKey: true, offSubjects: off() },
+  "고3": { profile: "h3", keys: HIGH2_KEYS, asKey: true, offSubjects: off() },
 });
 const PROBE_FILE = "original/unit-hint-probe.js";
 
@@ -35,7 +46,11 @@ export function courseOf(grade, subject) {
   const identity = core.normalizeCourseIdentity(subject).replace(/c$/, "");
   if (!identity) return null;
   if (grade === "고1") {
-    return ["공통수학1", "공통수학2"].find((course) => core.normalizeCourseIdentity(course) === identity) || null;
+    const courses = ["공통수학1", "공통수학2"];
+    const same = courses.find((course) => core.normalizeCourseIdentity(course) === identity);
+    if (same) return same;
+    // 2015 과목명(수학(상)·수학_상 등)은 대응 과목표로 2022 과목으로 본다(2026-11-22 사용자 결정, 대응 과목은 한 묶음).
+    return aliases.counterparts(subject).find((name) => courses.includes(name)) || null;
   }
   const value = core.highSemanticSubjectForCourseKey(identity);
   const option = value && core.highSemanticSubjectOptions().find((row) => row.value === value);
@@ -79,6 +94,19 @@ export function createUnitHinter({ bindings, unitLabelByKey, subUnitLabelByKey, 
     unitCache.set(cacheKey, result);
     return result;
   }
+  // 그 학년에 연결이 없는 PT: 다른 학년의 연결 단원과 같은 이름(공백 무시)의 통합 단원 중 이 학년 프로필에 있는 것들(프로필 순서).
+  const compactName = (name) => String(name || "").replace(/\s+/g, "");
+  const movedCache = new Map();
+  function movedUnits(pt, grade) {
+    const cacheKey = `${grade}\u0000${pt}`;
+    if (movedCache.has(cacheKey)) return movedCache.get(cacheKey);
+    const names = new Set();
+    for (const other of Object.keys(rules))
+      if (other !== grade) for (const unit of boundUnits(pt, other).units) names.add(compactName(unit.name));
+    const result = profileUnitsOf(grade).filter((unit) => names.has(compactName(unit.name)));
+    movedCache.set(cacheKey, result);
+    return result;
+  }
   // 옛 대단원 키 → 그 대단원에 속하는 통합 단원들(연결표의 모든 ACTIVE 연결에서). 알 수 없으면 빈 배열.
   // 키로만 찾는다(이름으로 찾으면 연결 키 하나가 단원 하나로만 옮겨져, 여러 단원에 걸친 이름이 하나로 줄어든다). 교재 단원(chapter) 번호 키는 호출하는 쪽이 넘기지 않는다.
   const broadCache = new Map();
@@ -118,10 +146,17 @@ export function createUnitHinter({ bindings, unitLabelByKey, subUnitLabelByKey, 
     const rule = rules[grade];
     if (!rule || !pt) return { value: "", reason: "off", unitKey: "", unitKeys: [] };
     if (rule.offSubjects.has(normalizeSubject(subject))) return { value: "", reason: "offSubject", unitKey: "", unitKeys: [] };
-    const { bindingCount, units } = boundUnits(pt, grade);
+    let { bindingCount, units } = boundUnits(pt, grade);
+    // 그 학년에 연결이 없는 PT(교육과정이 바뀌며 단원이 학년을 옮긴 경우): 다른 학년 연결 단원과 같은 이름의 통합 단원이 이 학년 프로필에 있으면 그 단원을 쓴다
+    // (사용자 결정 2026-11-22: "유형이 다른 학년으로 가는 게 있으면 그 학년에서 그냥 검색되도록"). 이름이 같은 단원이 없으면 그대로 둔다(noBinding).
+    let moved = false;
+    if (!bindingCount) {
+      const sameName = movedUnits(pt, grade);
+      if (sameName.length) { units = sameName; bindingCount = sameName.length; moved = true; }
+    }
     const unitKeys = units.map((unit) => unit.key);
     const finish = (reason, pick) => ({
-      value: pick ? (rule.asKey ? pick.key : pick.name) : "", reason, unitKey: pick ? pick.key : "", unitKeys,
+      value: pick ? (rule.asKey ? pick.key : pick.name) : "", reason, unitKey: pick ? pick.key : "", unitKeys, ...(moved ? { moved: true } : {}),
     });
     if (!bindingCount) return finish("noBinding");
     if (!units.length) return finish("unresolved");
@@ -129,9 +164,14 @@ export function createUnitHinter({ bindings, unitLabelByKey, subUnitLabelByKey, 
     let candidates = units;
     if (!/^중/.test(grade)) {
       const course = courseOf(grade, subject);
-      if (course === null) return finish("subjectUnknown");
-      candidates = units.filter((unit) => unit.course === course);
-      if (!candidates.length) return finish("noUnitInSubject");
+      if (course === null) {
+        // 과목을 못 정한 문항(공백·`기출` 등): 유형이 연결된 단원이 한 과목에만 있으면 그 과목으로 본다(2026-11-22 사용자 결정). 여러 과목에 걸치면 싣지 않는다.
+        const courses = new Set(units.map((unit) => unit.course));
+        if (courses.size !== 1) return finish("subjectUnknown");
+      } else {
+        candidates = units.filter((unit) => unit.course === course);
+        if (!candidates.length) return finish("noUnitInSubject");
+      }
     }
     if (candidates.length === 1) return finish("single", candidates[0]);
     if (!opts.noLegacy) {
