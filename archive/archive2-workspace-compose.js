@@ -788,7 +788,7 @@
       // ---- result
       const info = (heading, count, lines, actions) => `<h2 class="qk-r-title">${esc(heading)}</h2>${lines}<p class="qk-r-count"><span class="qk-big">${count}</span>문항</p>
         <p class="muted qk-r-mix">${esc(Quick.PRESET_LABELS[preset])} · ${mix}</p><div class="qk-actions">${actions}</div>
-        <p class="muted qk-r-after">열리는 창에서 출력 · 보관함 저장 · 반에 출제를 할 수 있습니다.</p>`;
+        <p class="muted qk-r-after">열리는 창에서 시험지·해설·정답을 출력할 수 있습니다. 보관함에 저장하거나 반에 출제하려면 문제지 만들기를 이용하세요.</p>`;
       if (product.combine) {
         const selectedUnits = Quick.selectNodes(scopes, [...quickState.bundle]);
         const verdictAll = Quick.evaluate(scopes.roots, product, preset);

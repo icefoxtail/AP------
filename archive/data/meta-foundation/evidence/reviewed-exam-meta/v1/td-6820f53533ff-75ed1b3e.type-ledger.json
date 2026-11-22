@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6820f53533ff-75ed1b3e",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b079f012abed58889db380322bc7079b81e54d958aa8cbcd72f2da1269c63f28",
+      "sourceOrdinal": 6,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+      "templateKey": null,
+      "step": "각 축에서 만나는 점은(-2,0)과(0,-3)이므로 기울기-3/2와 y절편-3을 결합해 y=-3x/2-3을 얻는다.",
+      "note": "새 PT 제안: 두 점을 지나는 일차함수 식 결정. 정의: 두 점의 좌표 차로 기울기를 구하고 한 점을 대입해 절편을 정한다. 원문 의심: 계산된 음의 기울기 식이 보기 다섯 개에 없고 모든 보기는 양의 기울기이다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

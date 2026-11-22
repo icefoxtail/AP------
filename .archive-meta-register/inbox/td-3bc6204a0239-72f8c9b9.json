@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3bc6204a0239-72f8c9b9",
+  "examUid": "20_팔마중_1학기_기말_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+  "expectedSourceBlobSha1": "a050224abd7d3aa88543d859294c9a1ac0bbdf7e",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3bc6204a0239-72f8c9b9.type-ledger.json",
+        "sha256": "9d66bfdac19e73a495d0948730195829dfd64596e945b715a3e8c995cb7b9616"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0ecb687ad27d052403be06cf26cde2b4e528aa77129a0b419f9af91542ad30a9",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY"
+      },
+      "rationale": "소수 계수 일차부등식을 풀어 정수 최댓값·자연수 최솟값을 구해 각 자리 수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "470adbddc7f83e73106aeab521470e583fbd2a2b19f2c40d52402a0d800a1757",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3bc6204a0239-72f8c9b9.type-ledger.json",
+          "sha256": "9d66bfdac19e73a495d0948730195829dfd64596e945b715a3e8c995cb7b9616"
+        }
+      ]
+    }
+  ]
+}

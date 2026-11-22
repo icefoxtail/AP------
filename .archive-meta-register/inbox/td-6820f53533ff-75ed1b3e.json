@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6820f53533ff-75ed1b3e",
+  "examUid": "21_향림중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "57276260a060362e435bc25b9254b674ba740fec",
+  "expectedQuestionCount": 26,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6820f53533ff-75ed1b3e.type-ledger.json",
+        "sha256": "8e0ec76daef7fb82ecc92ef823671e3aab06e06c061a2718eb227d3cd2e5f9a6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b079f012abed58889db380322bc7079b81e54d958aa8cbcd72f2da1269c63f28",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION"
+      },
+      "rationale": "각 축에서 만나는 점은(-2,0)과(0,-3)이므로 기울기-3/2와 y절편-3을 결합해 y=-3x/2-3을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a91e17960a457c2777a968ed9a1a056eacfbd524a613e3b1b60df0c3b2360c93",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6820f53533ff-75ed1b3e.type-ledger.json",
+          "sha256": "8e0ec76daef7fb82ecc92ef823671e3aab06e06c061a2718eb227d3cd2e5f9a6"
+        }
+      ]
+    }
+  ]
+}

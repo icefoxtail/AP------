@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-0c7b4b5b95cc-9dcf11fe",
+  "examUid": "22_금당고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/22_금당고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "3895691f4080d0270ca4fa914bd01c2c46fbf74f",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0c7b4b5b95cc-9dcf11fe.type-ledger.json",
+        "sha256": "c391a536823c46728eddb46994b0102b5954594c1c7e68f4863739b8ee3ecf2e"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c7e5edc27dd6b0767f642abd940cb7e236c1c94595a3b35fe0afa7c6b72da9d6",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT"
+      },
+      "rationale": "원래 두 근의 부호가 다름을 이용해 절댓값 합을 근의 차로 바꾸고 새 방정식의 두 근과 대응시킨다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "85929a4295c8d6148d1be0eec304edd505f288e652e7f097474d82aed2f06511",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0c7b4b5b95cc-9dcf11fe.type-ledger.json",
+          "sha256": "c391a536823c46728eddb46994b0102b5954594c1c7e68f4863739b8ee3ecf2e"
+        }
+      ]
+    }
+  ]
+}
