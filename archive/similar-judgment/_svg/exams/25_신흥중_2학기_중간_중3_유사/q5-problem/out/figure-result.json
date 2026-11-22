@@ -1,0 +1,25 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"COMPOSITE_INPUT_NOT_CANONICAL\",\"detail\":{\"reason\":\"plan\"}}",
+ "capability": "solid-figure-v1",
+ "identity": {
+  "questionUid": "25_신흥중_2학기_중간_중3_유사|5",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:a0eec6d253947bf8530cb677ae75fb45ee194951c8310730d79c39f05df7a5ff",
+  "assetId": "va-06f8a30ed2fed50a0d3fb74d5af3960a71709dc13df9230d2c04ccddd2848195"
+ },
+ "code": "COMPOSITE_INPUT_NOT_CANONICAL",
+ "detailFull": "{\"status\":\"COMPOSITE_INPUT_NOT_CANONICAL\",\"detail\":{\"reason\":\"plan\"}}",
+ "hint": [
+  "A value in the plan is not canonical JSON: a number that is not finite or beyond 9007199254740991, a value that is not a plain JSON value, or two keys that become equal after normalization. result.fix gives the path of the first such value; use ordinary JSON numbers and strings there."
+ ],
+ "fix": [
+  {
+   "path": "newVisualInformation",
+   "op": "set",
+   "expects": "PLAIN_JSON_VALUE"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"LAYOUT_INVENTORY_INCOMPLETE\",\"detail\":{\"unresolved\":[\"A-name\"],\"suppressed\":[]}}",
+ "capability": "construction-spike-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_팔마중_2학기_중간_중3_유사|5",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:fbb413ec51a72ebed9d0137d00cb47c57bd29f1c75588986fcbbc2e29031fc1c",
+  "assetId": "va-ad2f84fe156199448097b3756b35fe64763abe5819c02fdd4065f3444065e197"
+ },
+ "code": "LAYOUT_INVENTORY_INCOMPLETE",
+ "detailFull": "{\"status\":\"LAYOUT_INVENTORY_INCOMPLETE\",\"detail\":{\"unresolved\":[\"A-name\"],\"suppressed\":[]}}",
+ "hint": [
+  "Some labels found no free room on the figure (listed in engineResult). Do not delete them: pull each crowded label out. result.fix lists the failed labels and the options this plan really has: a leader line (coordinateLeader for graph key points, planeMarks.callouts for the marks of a plane figure), the coordinate band (coordinatePanel or coordinatePlacement \"PANEL\"), or a larger canvas (coordinateCanvas, at most 720x600)."
+ ],
+ "fix": [
+  {
+   "path": "coordinateCanvas",
+   "op": "choose",
+   "labels": [
+    "A-name"
+   ],
+   "options": [
+    {
+     "suggestion": "VIEWPORT_EXPANSION",
+     "steps": [
+      {
+       "path": "coordinateCanvas",
+       "op": "set",
+       "value": {
+        "width": 720,
+        "height": 600
+       },
+       "range": {
+        "width": [
+         384,
+         720
+        ],
+        "height": [
+         320,
+         600
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

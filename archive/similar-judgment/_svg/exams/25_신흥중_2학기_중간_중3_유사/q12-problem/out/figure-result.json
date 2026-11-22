@@ -1,0 +1,25 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"PLANE_MARKS_AUDIT_FAIL\",\"detail\":{\"errors\":[\"POINT_NOT_ON_CIRCLE:A\",\"POINT_NOT_ON_CIRCLE:B\",\"POINT_NOT_ON_CIRCLE:C\"]}}",
+ "capability": "construction-spike-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "25_신흥중_2학기_중간_중3_유사|12",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:e61140c9d603c04b30eddd52c150676e99e1e9fb87086efccd742346e56fabdf",
+  "assetId": "va-9d0e6e24fd2708ffc2c329cff26401539833bc77855c754866f3aeab8b49c863"
+ },
+ "code": "POINT_NOT_ON_CIRCLE",
+ "detailFull": "{\"status\":\"PLANE_MARKS_AUDIT_FAIL\",\"detail\":{\"errors\":[\"POINT_NOT_ON_CIRCLE:A\",\"POINT_NOT_ON_CIRCLE:B\",\"POINT_NOT_ON_CIRCLE:C\"]}}",
+ "errors": [
+  "POINT_NOT_ON_CIRCLE:A",
+  "POINT_NOT_ON_CIRCLE:B",
+  "POINT_NOT_ON_CIRCLE:C"
+ ],
+ "hint": [
+  "planeMarks.arcs: {id,circle:CIRCLE node,center,from,to,side:MINOR|MAJOR|CCW|CW,label?}; from and to must lie on the circle; a half circle needs side CCW or CW. planeMarks.facts: ON_CIRCLE {circle (displayed),points} and TANGENT_PERPENDICULAR {center,contact,tangent: displayed line or segment id}. Every mark id is new (not a node, segment or other mark id); only the documented keys are allowed; every point a mark names must be displayed.",
+  "The independent plane-marks observer found a mark that does not match the points or the drawing. Fix the plan (the fact or the construction); a label it cannot place without overlap needs a larger figure, a callout (planeMarks.callouts) that pulls it out on a leader, or noLabel on the second angle of an equal pair."
+ ]
+}

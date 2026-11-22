@@ -1,0 +1,578 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/test-render/26_팔마중_2학기_중간_중3_유사.js",
+  "ordinal": 6
+ },
+ "identity": {
+  "questionUid": "26_팔마중_2학기_중간_중3_유사|6",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:f1d1b2c26a04752dc668c58586dddedfe1f5e40e362a4e613e6305e6c830d858",
+  "assetId": "va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "O",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "X",
+     "op": "TRANSLATE_POINT",
+     "inputs": [
+      "O"
+     ],
+     "args": {
+      "dx": {
+       "kind": "integer",
+       "value": "1"
+      },
+      "dy": {
+       "kind": "integer",
+       "value": "0"
+      }
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "c1",
+     "op": "CIRCLE_CENTER_RADIUS",
+     "inputs": [
+      "O"
+     ],
+     "args": {
+      "radius": {
+       "kind": "integer",
+       "value": "10"
+      }
+     },
+     "outputType": "CIRCLE",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "A",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "O",
+      "X"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "10"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "38"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "O",
+      "X"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "10"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "1"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "O",
+      "X"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "10"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "90"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "O",
+      "X"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "13"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "38"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+   "c1"
+  ],
+  "displaySegments": [
+   {
+    "id": "s0",
+    "refs": [
+     "O",
+     "B"
+    ]
+   },
+   {
+    "id": "s1",
+    "refs": [
+     "O",
+     "C"
+    ]
+   },
+   {
+    "id": "s2",
+    "refs": [
+     "O",
+     "T"
+    ]
+   }
+  ],
+  "displayPoints": [
+   "O",
+   "A",
+   "B",
+   "C",
+   "T"
+  ],
+  "planeMarks": {
+   "angles": [
+    {
+     "id": "a0",
+     "refs": [
+      "B",
+      "O",
+      "A"
+     ],
+     "label": "38"
+    }
+   ],
+   "facts": [
+    {
+     "kind": "ON_CIRCLE",
+     "circle": "c1",
+     "points": [
+      "A",
+      "B",
+      "C"
+     ]
+    }
+   ]
+  },
+  "caption": "반지름 1 사분원에서 38도와 52도의 sin, cos, tan"
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "O": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "X": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "1"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     1,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "A": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "7.880107536067219566940000000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "6.156614753256582796688000000000000"
+     }
+    ],
+    "approximation": [
+     7.88010753606722,
+     6.156614753256583
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "9.998476951563912391570000000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "0.1745240643728351281942000000000000"
+     }
+    ],
+    "approximation": [
+     9.998476951563912,
+     0.17452406437283513
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "10"
+     }
+    ],
+    "approximation": [
+     0,
+     10
+    ],
+    "precisionDigits": 17
+   },
+   "T": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "10.24413979688738543702200000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "8.003599179233557635694400000000000"
+     }
+    ],
+    "approximation": [
+     10.244139796887385,
+     8.003599179233557
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {
+   "c1": {
+    "centerExact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "radiusExact": {
+     "kind": "integer",
+     "value": "10"
+    },
+    "approximation": [
+     0,
+     0,
+     10
+    ]
+   }
+  },
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "O",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "X",
+    "op": "TRANSLATE_POINT",
+    "dependencies": [
+     "O"
+    ]
+   },
+   {
+    "nodeId": "c1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "dependencies": [
+     "O"
+    ]
+   },
+   {
+    "nodeId": "A",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "O",
+     "X"
+    ]
+   },
+   {
+    "nodeId": "B",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "O",
+     "X"
+    ]
+   },
+   {
+    "nodeId": "C",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "O",
+     "X"
+    ]
+   },
+   {
+    "nodeId": "T",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "O",
+     "X"
+    ]
+   }
+  ],
+  "order": [
+   "O",
+   "X",
+   "c1",
+   "A",
+   "B",
+   "C",
+   "T"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">반지름 1 사분원에서 38도와 52도의 sin, cos, tan</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"12\"><polygon id=\"a0-sector\" data-role=\"angleSector\" stroke=\"none\" stroke-width=\"1.6\" fill=\"#d9d9d9\" data-owner-points=\"B O A\" data-mark=\"angle\" data-mark-id=\"a0\" data-mark-index=\"0\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"187.403131191,163.290052253 214.162748784,162.822961391 214.122109164,161.743597046 214.037950524,160.666751519 213.910409938,159.59417874 213.739695143,158.527625683 213.526084191,157.468829514 213.269925006,156.419514766 212.971634812,155.381390532 212.631699454,154.356147673 212.250672608,153.345456074 211.829174878,152.350961916 211.367892787,151.374284999 210.867577657,150.417016105 210.329044383,149.480714401 209.753170113,148.566904907 209.140892812,147.677076006 208.493209738,146.812677023\"/></g><g data-layer=\"30\"><line id=\"s0\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"187.403131191\" y1=\"163.290052253\" x2=\"294.441601564\" y2=\"161.421688803\"/></g><g data-layer=\"30\"><line id=\"s1\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"187.403131191\" y1=\"163.290052253\" x2=\"187.403131191\" y2=\"56.23527692\"/></g><g data-layer=\"30\"><line id=\"s2\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"187.403131191\" y1=\"163.290052253\" x2=\"297.071539635\" y2=\"77.607701055\"/></g><g data-layer=\"40\"><circle id=\"c1\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"187.403131191\" cy=\"163.290052253\" r=\"107.054775333\"/></g><g data-layer=\"60\"><polyline id=\"a0-arc-1\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" data-owner-points=\"B O A\" data-mark=\"angle\" data-mark-id=\"a0\" data-mark-index=\"1\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"214.162748784,162.822961391 214.122109164,161.743597046 214.037950524,160.666751519 213.910409938,159.59417874 213.739695143,158.527625683 213.526084191,157.468829514 213.269925006,156.419514766 212.971634812,155.381390532 212.631699454,154.356147673 212.250672608,153.345456074 211.829174878,152.350961916 211.367892787,151.374284999 210.867577657,150.417016105 210.329044383,149.480714401 209.753170113,148.566904907 209.140892812,147.677076006 208.493209738,146.812677023\"/></g><g data-layer=\"70\"><circle id=\"O\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"187.403131191\" cy=\"163.290052253\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"271.763445379\" cy=\"97.380551331\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"294.441601564\" cy=\"161.421688803\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"187.403131191\" cy=\"56.23527692\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"297.071539635\" cy=\"77.607701055\" r=\"3.2\"/></g><g data-layer=\"85\"><line id=\"A-name-owner-leader\" data-role=\"leader\" data-owner-label=\"A-name\" data-owner=\"A\" x1=\"271.763445379\" y1=\"97.380551331\" x2=\"271.763445379\" y2=\"65.380551331\" stroke=\"#666\" stroke-width=\"0.8\" fill=\"none\"/></g><g data-layer=\"90\"><g id=\"a0-label\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"0\" data-font-px=\"22.8\" data-owner=\"a0\" data-fragment-sha=\"sha256:4d28df8630b3f512a7e30eca7f3baa87f45b5623c3c73cb3fac38101e3c9d1c2\" transform=\"translate(247.157099972 128.019977275)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32.75448\" height=\"16.6212\" viewBox=\"0 0 32.75448 16.6212\" data-outline-width=\"32.75448\" data-outline-height=\"16.6212\" id=\"lb-6dc92a43f9b2beb181205af3b7acead9801a619130f03a40d796d5b0b5878019\" data-owner=\"a0\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.119600000000002) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"msup\"><g data-mml-node=\"mn\"><path data-c=\"33\" d=\"M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z\"></path><path data-c=\"38\" d=\"M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z\" transform=\"translate(500,0)\"></path></g><g data-mml-node=\"TeXAtom\" transform=\"translate(1033,393.1) scale(0.707)\" data-mjx-texclass=\"ORD\"><g data-mml-node=\"mo\"><path data-c=\"2218\" d=\"M55 251Q55 328 112 386T249 444T386 388T444 249Q444 171 388 113T250 55Q170 55 113 112T55 251ZM245 403Q188 403 142 361T96 250Q96 183 141 140T250 96Q284 96 313 109T354 135T375 160Q403 197 403 250Q403 313 360 358T245 403Z\"></path></g></g></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"A\" data-fragment-sha=\"sha256:a3d73e7c99877cb07f4d82121dcce2ae1cf85b224e73ae80b7ebdc1eb4342852\" transform=\"translate(263.213445379 49.055751331)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.1\" height=\"16.3248\" viewBox=\"0 0 17.1 16.3248\" data-outline-width=\"17.1\" data-outline-height=\"16.3248\" id=\"lb-7170180ec03d13a23428c77d4a9ab1c7b68c105b99a31ab1a155488ed2ff0e0c\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.3248) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"B\" data-fragment-sha=\"sha256:cb79bd0453f167154f5bc5a678659b5e2acf072f1823fad467e4804e9a9cbaa9\" transform=\"translate(306.441601564 133.849288803)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3052\" height=\"15.5724\" viewBox=\"0 0 17.3052 15.5724\" data-outline-width=\"17.3052\" data-outline-height=\"15.5724\" id=\"lb-d9ca6b137756fdffc70f0eb9ded5b2d5b2de0be650627e6307b1236a7d18839c\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"C\" data-fragment-sha=\"sha256:142611dd80cd0091f20af82a17e924852929c59ed391509a2b6854fc8a794056\" transform=\"translate(178.739131191 27.65967692)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.328\" height=\"16.5756\" viewBox=\"0 0 17.328 16.5756\" data-outline-width=\"17.328\" data-outline-height=\"16.5756\" id=\"lb-28436a328da144109232395c3af8bed642497fdd9c39e3c9658f8efe75be1abe\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.074) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"O-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"O\" data-fragment-sha=\"sha256:089cf05f46cafc1d16972bc9cab039ec2b74f97ec37ed1fb51b91c6f3d21ddb5\" transform=\"translate(199.403131191 175.290052253)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3964\" height=\"16.552799999999998\" viewBox=\"0 0 17.3964 16.552799999999998\" data-outline-width=\"17.3964\" data-outline-height=\"16.552799999999998\" id=\"lb-7d78a304a06a309d9b79f28560934f3e81c4f792a4d2ee18ff2601c7238bccc9\" data-owner=\"O\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.0512) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"T\" data-fragment-sha=\"sha256:c4fe7f20f285fe5d76ab7d666d04af59c291f61cff13c08c2bb5e0239b41695b\" transform=\"translate(309.071539635 50.172101055)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16.0512\" height=\"15.4356\" viewBox=\"0 0 16.0512 15.4356\" data-outline-width=\"16.0512\" data-outline-height=\"15.4356\" id=\"lb-5485eea6dfd086802ddea9d02b537a6ebb050ffb253668d496fbc833161ee28f\" data-owner=\"T\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.4356) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:2c0c16d603e90563f1c151dee0689afd57e1f62e6a70fbb5ce3787d2bc6b2d8e",
+   "modelSha256": "sha256:f5648075ba07b03c5ddbff54bff4168e3ae5ea795c5ea95b55de81c7322adc8f",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:bec71d31ec73435c0ac0b6fcbff6cfd8028cf643387e29ed48e512e257876b6f",
+   "fragmentSha256s": {
+    "O-name": "sha256:089cf05f46cafc1d16972bc9cab039ec2b74f97ec37ed1fb51b91c6f3d21ddb5",
+    "A-name": "sha256:a3d73e7c99877cb07f4d82121dcce2ae1cf85b224e73ae80b7ebdc1eb4342852",
+    "B-name": "sha256:cb79bd0453f167154f5bc5a678659b5e2acf072f1823fad467e4804e9a9cbaa9",
+    "C-name": "sha256:142611dd80cd0091f20af82a17e924852929c59ed391509a2b6854fc8a794056",
+    "T-name": "sha256:c4fe7f20f285fe5d76ab7d666d04af59c291f61cff13c08c2bb5e0239b41695b",
+    "a0-label": "sha256:4d28df8630b3f512a7e30eca7f3baa87f45b5623c3c73cb3fac38101e3c9d1c2"
+   },
+   "measurementsSha256": "sha256:17b09561c8ae0c631c6a907f3380aa8fd7bc2e28519d2f200766db46460a1022",
+   "svgSha256": "sha256:88d1ca562b5d0bae40e44df0a9097b02115d262cf50e660b3de4d16b36380242",
+   "witnessSha256": "sha256:0ea0a288bb116daeb62a907324e7859e85385f3b2d966bd638aed91139ab3733",
+   "staticAuditSha256": "sha256:08d6a2ebb55fd48a9e19035ddb9c85599323df2f67b661c25daf306393518fe6",
+   "renderedLayoutSha256": "sha256:da515eeafb1d144ef6e1253ab203b720810b2d373d6dac6b28eaaf5df9ef0e59"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": [],
+   "planeMarks": {
+    "status": "PASS",
+    "errors": [],
+    "observations": [
+     {
+      "id": "a0-sector",
+      "type": "ANGLE_SECTOR",
+      "drawnDegrees": 37.00000000042297,
+      "radius": 2.500000000000029,
+      "atVertex": true
+     },
+     {
+      "id": "a0",
+      "type": "ANGLE",
+      "drawnDegrees": 37.00000000042297,
+      "pointsDegrees": 37,
+      "arcs": 1,
+      "style": "SECTOR"
+     },
+     {
+      "type": "ON_CIRCLE",
+      "circle": "c1",
+      "points": [
+       "A",
+       "B",
+       "C"
+      ]
+     }
+    ]
+   }
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:88d1ca562b5d0bae40e44df0a9097b02115d262cf50e660b3de4d16b36380242",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:f5cab5e883b784af2ba25168c69c24b44facd9210abca7bb31deaaa5224eb019",
+   "assetPath": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/assets/images/26_팔마중_2학기_중간_중3_유사/q06-solution.svg",
+   "assetResponseSha256": "sha256:88d1ca562b5d0bae40e44df0a9097b02115d262cf50e660b3de4d16b36380242",
+   "archiveRowSha256": "sha256:9229ab122e334009211b710c02a8af22741340271b43915e9acc99083c5ee6e2",
+   "screenshotSha256s": {
+    "image": "sha256:b147141a4a250e8ec9878c87a71f0ded302ffdafcd60118343f533ad1e05d0e4",
+    "context": "sha256:4495295ebbed857cc9411b0c96fec653f9167da8a824df49437b8e5156e2968c",
+    "page": "sha256:2d3d78fc627173647e7ec78da33e10b869e18312317c8273f9250a7e77e6b421"
+   },
+   "matrixSha256": "sha256:135b1cbe5cdb6d14c2e491b77af1171c96be52197dc64bc87bc05698028e510a",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-c5bb8fb9",
+   "asset": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/assets/images/26_팔마중_2학기_중간_중3_유사/q06-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/candidates/26_팔마중_2학기_중간_중3_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257-sol-desktop-va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257.png",
+    "context": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257-sol-desktop-va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257-context.png",
+    "page": ".tmp/archive/pilot-capture-c5bb8fb9/26_팔마중_2학기_중간_중3_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-fb17febb1aeed843e099a1ef16da4c1415075c21c2e438fff969b9c6c105f257-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/test-render/26_팔마중_2학기_중간_중3_유사.js",
+    "bytes": 49804,
+    "sha256": "sha256:1f7397ff2a00d02243058077c5621ea3ca46722eca8f1b7cf95bb1ef836d500b"
+   },
+   "originalQuestionSha256": "sha256:84bdecbfa43433238c53f9a3ce9b737f36eb7e908a2ec2b7eef0deecc64cf74e",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 6
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"LAYOUT_INVENTORY_INCOMPLETE\",\"detail\":{\"unresolved\":[\"a0-label\"],\"suppressed\":[]}}",
+ "capability": "construction-spike-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_팔마중_2학기_중간_중3_유사|11",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:3bc84325dd57068f56662f7871eaee65a2564d4582a180edc865776779e62f3a",
+  "assetId": "va-b4e114d0df3089d94169b62b52287aa3b2d62f2e7ae4853fba48cd4d84c05321"
+ },
+ "code": "LAYOUT_INVENTORY_INCOMPLETE",
+ "detailFull": "{\"status\":\"LAYOUT_INVENTORY_INCOMPLETE\",\"detail\":{\"unresolved\":[\"a0-label\"],\"suppressed\":[]}}",
+ "hint": [
+  "Some labels found no free room on the figure (listed in engineResult). Do not delete them: pull each crowded label out. result.fix lists the failed labels and the options this plan really has: a leader line (coordinateLeader for graph key points, planeMarks.callouts for the marks of a plane figure), the coordinate band (coordinatePanel or coordinatePlacement \"PANEL\"), or a larger canvas (coordinateCanvas, at most 720x600).",
+  "→ 그 선분/각을 planeMarks.callouts로 끌어내 따로 그린다 (3-8절 E37): {id:\"k1\",kind:\"SEGMENT\",path:[점 id 2~6개],at:\"RIGHT\"|\"BELOW\"|\"LEFT\"|\"ABOVE\",scale?,link?:\"ENDS\",dimensions:[{id,from,to,label,unit,side,offset:\"AUTO\"}],marks?} 가 그 경로를 같은 그림 옆에 한 직선으로 펴서 같은 점 이름으로 크게 다시 그린다 (라벨·치수선을 줄이거나 옮기기 전에 먼저 쓴다; coordinateCanvas를 키운다)."
+ ],
+ "fix": [
+  {
+   "path": "planeMarks.callouts",
+   "op": "choose",
+   "labels": [
+    "a0-label"
+   ],
+   "options": [
+    {
+     "suggestion": "LEADER_LINE",
+     "steps": [
+      {
+       "path": "planeMarks.callouts",
+       "op": "add",
+       "ids": [
+        "a0"
+       ]
+      }
+     ]
+    },
+    {
+     "suggestion": "VIEWPORT_EXPANSION",
+     "steps": [
+      {
+       "path": "coordinateCanvas",
+       "op": "set",
+       "value": {
+        "width": 720,
+        "height": 600
+       },
+       "range": {
+        "width": [
+         384,
+         720
+        ],
+        "height": [
+         320,
+         600
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"STATIC_GRAPH_AUDIT_FAIL\",\"detail\":{\"errors\":[\"LABEL_NEAREST_CURVE_MISMATCH:curve-c1-equation\"]}}",
+ "capability": "multi-curve-figure-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_팔마중_1학기_기말_중3_유사|11",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:90c19a83c684bc1c82df61f00500cace8154e45be1819a119d44b3005db31086",
+  "assetId": "va-51fb5a0ab329503767434d513b47faa416f0e1885cd685997b80bebf2a0e913d"
+ },
+ "code": "LABEL_NEAREST_CURVE_MISMATCH",
+ "detailFull": "{\"status\":\"STATIC_GRAPH_AUDIT_FAIL\",\"detail\":{\"errors\":[\"LABEL_NEAREST_CURVE_MISMATCH:curve-c1-equation\"]}}",
+ "errors": [
+  "LABEL_NEAREST_CURVE_MISMATCH:curve-c1-equation"
+ ],
+ "hint": [
+  "multi-curve figure labels: a curve formula must stand within 20 px of its own curve with no other curve as close (LABEL_NEAREST_CURVE_MISMATCH), and an asymptote value x=p or y=q within 12 px of its own dashed line with no other dashed line as close (ASYMPTOTE_LABEL_DETACHED). The engine already tries the places beside the own stroke nearest first; a label with no free spot there (a tall fraction in a small window) keeps an ordinary place marked data-near-room=NONE and is judged by ownership only (own stroke nearest, within 64 px; asymptote value within 40 px); when even that fails the figure is too crowded: hide the label you can say in the caption (curves[].hideLabel or hideLabels:[\"asymptotes\"]), shorten the label, draw fewer curves, or widen the window with the viewport field."
+ ]
+}

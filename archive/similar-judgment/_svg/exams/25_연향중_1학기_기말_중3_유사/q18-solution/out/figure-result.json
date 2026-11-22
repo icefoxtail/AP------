@@ -1,0 +1,30 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"STATIC_GRAPH_AUDIT_FAIL\",\"detail\":{\"errors\":[\"EQUAL_UNIT_SCALE_MISMATCH\"]}}",
+ "capability": "polynomial-spike-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "25_연향중_1학기_기말_중3_유사|18",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:3083cbdc3facf07a57817aa56dcf91b577faf0652190178e50f999dbf6dcf693",
+  "assetId": "va-57d9e1bc07f4e81ad2e2c51ae93c7239a9a4225e06d73acfbe129e48267e8d6e"
+ },
+ "code": "EQUAL_UNIT_SCALE_MISMATCH",
+ "detailFull": "{\"status\":\"STATIC_GRAPH_AUDIT_FAIL\",\"detail\":{\"errors\":[\"EQUAL_UNIT_SCALE_MISMATCH\"]}}",
+ "errors": [
+  "EQUAL_UNIT_SCALE_MISMATCH"
+ ],
+ "hint": [
+  "graphPlan.axisScale:{x,y} (piecewise-polynomial and multi-curve) gives each axis its own scale for a graph whose axes measure different things (minutes against kilometres): x and y are positive integers, decimals or fraction strings, and only their proportion counts ({x:1,y:12} draws one y unit twelve times as long as one x unit; the proportion stays within 1:64 and 64:1). It replaces the automatic squeeze, so axisSqueeze must not be set (AXIS_SCALE_WITH_SQUEEZE). Other families refuse it (AXIS_SCALE_UNSUPPORTED_FAMILY). Write the real tick values in axisTickValues and the axis names in axisTitles. The observer recomputes y/x itself: AXIS_SCALE_RATIO_MISMATCH means the recorded axisRatio differs from it, EQUAL_UNIT_SCALE_MISMATCH that the drawn figure does not follow it."
+ ],
+ "fix": [
+  {
+   "path": "graphPlan.axisRatio",
+   "op": "compare",
+   "current": 0.6666666666666666,
+   "required": 1
+  }
+ ]
+}

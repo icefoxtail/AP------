@@ -1,0 +1,22 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"RENDERED_LAYOUT_FAIL\",\"detail\":{\"errors\":[\"PUBLICATION_TEXT_NOT_READY\"]}}",
+ "capability": "multi-curve-figure-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_왕운중_1학기_기말_중3_유사|20",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:e10cc4961f72511b80623f9489d8e461458a479bfb659d3602dc7de60d55620b",
+  "assetId": "va-756c108f4f9b8bc04d144df9871d7187132ec2bece7a98d3343606c2da532e4e"
+ },
+ "code": "PUBLICATION_TEXT_NOT_READY",
+ "detailFull": "{\"status\":\"RENDERED_LAYOUT_FAIL\",\"detail\":{\"errors\":[\"PUBLICATION_TEXT_NOT_READY\"]}}",
+ "errors": [
+  "PUBLICATION_TEXT_NOT_READY"
+ ],
+ "hint": [
+  "The figure has no value a student can read: every coordinate, tick and formula is hidden, so only the axis names (x, y) are left, and this is not a label collision. For a solution figure, do not hide the values the solution uses (intersection and extremum coordinates, ticks, curve formulas, even the value asked for): show them with graphPlan.axisTickValues, graphPlan.coordinateBand, overlays.points with coordinates, or a curve formula label. Showing the answer is allowed in a solution figure."
+ ]
+}

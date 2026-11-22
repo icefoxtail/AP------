@@ -1,0 +1,26 @@
+{
+ "status": "FAILED",
+ "stage": "compose",
+ "detail": "{\"status\":\"PLANE_MARKS_AUDIT_FAIL\",\"detail\":{\"errors\":[\"POINT_NOT_ON_CIRCLE:A\",\"POINT_NOT_ON_CIRCLE:B\",\"POINT_NOT_ON_CIRCLE:C\",\"POINT_NOT_ON_CIRCLE:D\"]}}",
+ "capability": "construction-spike-v1",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_팔마중_2학기_중간_중3_유사|18",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:a2a98be694e76b9a7a64f1e7066a02d3f3d06b69a065afa884150cd4276064c0",
+  "assetId": "va-8990bf0e5eace808800d67d34ea2634ccffa34bb8d37697a96f3359a8d412c3e"
+ },
+ "code": "POINT_NOT_ON_CIRCLE",
+ "detailFull": "{\"status\":\"PLANE_MARKS_AUDIT_FAIL\",\"detail\":{\"errors\":[\"POINT_NOT_ON_CIRCLE:A\",\"POINT_NOT_ON_CIRCLE:B\",\"POINT_NOT_ON_CIRCLE:C\",\"POINT_NOT_ON_CIRCLE:D\"]}}",
+ "errors": [
+  "POINT_NOT_ON_CIRCLE:A",
+  "POINT_NOT_ON_CIRCLE:B",
+  "POINT_NOT_ON_CIRCLE:C",
+  "POINT_NOT_ON_CIRCLE:D"
+ ],
+ "hint": [
+  "planeMarks.arcs: {id,circle:CIRCLE node,center,from,to,side:MINOR|MAJOR|CCW|CW,label?}; from and to must lie on the circle; a half circle needs side CCW or CW. planeMarks.facts: ON_CIRCLE {circle (displayed),points} and TANGENT_PERPENDICULAR {center,contact,tangent: displayed line or segment id}. Every mark id is new (not a node, segment or other mark id); only the documented keys are allowed; every point a mark names must be displayed.",
+  "The independent plane-marks observer found a mark that does not match the points or the drawing. Fix the plan (the fact or the construction); a label it cannot place without overlap needs a larger figure, a callout (planeMarks.callouts) that pulls it out on a leader, or noLabel on the second angle of an equal pair."
+ ]
+}
