@@ -828,7 +828,7 @@ export function setDiagramSpec(plan,model,opts={}){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   if(objectSha(solveDiagram(plan.diagram))!==objectSha(model))bad('SET_MODEL_MISMATCH');
   const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model,opts)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model,opts)):tableSpec(model,tableLayout(model));
-  return {schemaVersion:SPEC_VERSION,...spec,...(opts.elementLeaders?{elementLeaders:true}:{})};
+  return {schemaVersion:SPEC_VERSION,...spec};
 }
 /** The spec of a Venn panel of a composite exactly as its lineage hashes it (what the composite's observation re-derives), and the texts its labels write. */
 export const setDiagramPanelSpec=(plan,model)=>JSON.parse(JSON.stringify(setDiagramSpec(plan,model,{compact:true})));
@@ -966,7 +966,12 @@ function resolveVenn(spec,placed){
         const box={x,y,width,height};
         if(box.y<labelBand||observerMargin(box,0,circles)<LABEL_CLEAR||occupied.some(other=>overlaps(pad(box),other))||leaders.some(l=>segmentHitsBox(l.start,l.end,{x:box.x-1,y:box.y-1,width:box.width+2,height:box.height+2})))continue;
         for(const dot of dots){
-          const nx=Math.max(box.x,Math.min(dot.x,box.x+width)),ny=Math.max(box.y,Math.min(dot.y,box.y+height)),dx=dot.x-nx,dy=dot.y-ny,len=Math.hypot(dx,dy);
+          // the nearest point of the text itself: a wrapped label's lines are shorter than its box, so its corner can be empty
+          let nx=0,ny=0,dx=0,dy=0,len=Infinity;
+          for(const part of item.fragment.lines?item.fragment.lines.map(l=>({x:box.x+l.x,y:box.y+l.y,width:l.width,height:l.height})):[box]){
+            const px=Math.max(part.x,Math.min(dot.x,part.x+part.width)),py=Math.max(part.y,Math.min(dot.y,part.y+part.height)),d=Math.hypot(dot.x-px,dot.y-py);
+            if(d<len){len=d;nx=px;ny=py;dx=dot.x-px;dy=dot.y-py;}
+          }
           if(len<10||len>150)continue;
           const score=len-2.5*Math.min(dot.clear,16);
           if(pick&&score>=pick.score)continue;
@@ -1187,18 +1192,20 @@ function wrapElementFragment(typeset,label,identity,fontPx,lines){
   let y=0;
   const inner=rows.map(r=>{const g='<g transform="translate('+r6((width-r.intrinsic.width)/2)+' '+r6(y)+')">'+r.svg.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')+'</g>';y+=r.intrinsic.height;return g;}).join('');
   const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" data-outline-width="'+width+'" data-outline-height="'+height+'" id="'+rows[0].namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="GIVEN">'+inner+'</svg>';
-  return {labelId:label.id,owner:label.owner,factRole:'GIVEN',namespace:rows[0].namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:rows[0].fontSha256,intrinsic:{width,height,baseline:rows[0].intrinsic.baseline},fontPx,typesetter:rows[0].typesetter};
+  const lineRects=rows.map((r,i)=>({x:r6((width-r.intrinsic.width)/2),y:r6(rows.slice(0,i).reduce((sum,q)=>sum+q.intrinsic.height,0)),width:r6(r.intrinsic.width),height:r6(r.intrinsic.height)}));
+  return {lines:lineRects,labelId:label.id,owner:label.owner,factRole:'GIVEN',namespace:rows[0].namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:rows[0].fontSha256,intrinsic:{width,height,baseline:rows[0].intrinsic.baseline},fontPx,typesetter:rows[0].typesetter};
 }
 // Everything composing does before it writes the SVG: the spec, every label typeset, the labels placed, the bounds and overlap checks (also what the unit tests run, without a browser).
 export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false}){
     let spec,placed;
-    try{spec=setDiagramSpec(plan,model,{compact,variant,elementLeaders});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
+    try{spec=setDiagramSpec(plan,model,{compact,variant});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
     if(model.kind==='VENN'&&model.shade){
       const anyShade=spec.prims.some(p=>p.role==='shade');
       if(!anyShade)throw new Stop('SET_SPEC_ERROR',{code:'SET_SHADE_EMPTY'});
     }
     const specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
+    if(elementLeaders)spec.elementLeaders=true;   // set after the hash: a panel's spec is hashed (and re-derived by the composite's observation) without it
     placed=[];
     for(const label of spec.labels){
       let fragment;
@@ -1261,7 +1268,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
     for(const {label,fragment,box} of placed){
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}"${fragment.lines?` data-lines="${fragment.lines.map(l=>`${l.x},${l.y},${l.width},${l.height}`).join(';')}"`:''} data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
     }
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));

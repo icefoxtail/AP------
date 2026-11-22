@@ -96,3 +96,41 @@ test('the independent observer refuses the same plan',async()=>{
   const result=(await pythonWorker({chart:named('Z'),svg:'<svg xmlns="http://www.w3.org/2000/svg"/>'},{script:observer})).result;
   assert.ok((result.errors??[result.code]).some(error=>String(error).startsWith(CODE)),JSON.stringify(result));
 });
+
+test('the other spellings of the standard normal variable are refused the same way, an axis called z needs the standard curve (a letter curve in sigma units may call it z)',()=>{
+  for(const label of ['z','Z(0,1)','Z (0, 1)','z(0,1)','N(0,1)'])assert.throws(()=>solveStatChart(named(label)),error=>error.message===CODE,label);
+  assert.throws(()=>solveStatChart({...named('X'),xLabel:'z'}),error=>error.message==='STAT_NORMAL_XLABEL_Z_NOT_STANDARD','xLabel z on N(30, 4^2)');
+  assert.throws(()=>solveStatChart({...named('X'),xLabel:'Z'}),error=>error.message==='STAT_NORMAL_XLABEL_Z_NOT_STANDARD','xLabel Z on N(30, 4^2)');
+  const standard={kind:'NORMAL_CURVE',curves:[{id:'Z',mean:'0',sd:'1',label:'Z'}],ticks:[{x:'0'},{x:'2'}],shades:[{from:'0',to:'2',color:'BLUE'}]};
+  for(const label of ['Z','z','Z(0,1)','N(0,1)'])assert.equal(solveStatChart({...standard,curves:[{id:'Z',mean:'0',sd:'1',label}],xLabel:'z'}).xLabel,'z',label);
+  assert.equal(solveStatChart(standard).xLabel,'x','the default axis name is still x');
+  const framed={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'m',sd:'σ',label:'X'}],ticks:[{z:'0'},{z:'1'}],xLabel:'z'};
+  assert.equal(solveStatChart(framed).xLabel,'z','sigma units, z ticks: the axis is a z axis');
+  assert.equal(solveStatChart({...named('X'),xLabel:'x'}).xLabel,'x');
+  assert.equal(solveStatChart({...named('X'),xLabel:'h'}).xLabel,'h');
+});
+test('the observer refuses the other spellings and the z axis of a real-unit curve',async()=>{
+  for(const chart of [named('z'),named('N(0,1)'),{...named('X'),xLabel:'z'}]){
+    const result=(await pythonWorker({chart,svg:'<svg xmlns="http://www.w3.org/2000/svg"/>'},{script:observer})).result;
+    assert.ok((result.errors??[result.code]).some(error=>/^STAT_NORMAL_(CURVE_NAME|XLABEL)_Z_NOT_STANDARD/.test(String(error))),JSON.stringify(result));
+  }
+});
+
+// the axis runs to 490 (arrow tip 512) as it always did; only a name that does not fit between the tip and the safe margin shortens it to 482 (tip 500)
+test('the axis keeps its length when the axis name fits and is shortened only when it does not; the observer allows exactly these two',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const axisEnd=async fontPx=>{
+      const composed=await composeStatChartFigure({plan:plan(split),model:solveStatChart(split),identity:assetIdentity('26_테스트|9600','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:fontPx,displayScale:1,fontFloorCssPx:11},browser});
+      assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+      const svg=composed.svg;
+      return {x2:Number(svg.match(/id="x-axis"[^>]*? x2="([\d.]+)"/)[1]),svg};
+    };
+    const usual=await axisEnd(20),big=await axisEnd(30);
+    assert.equal(usual.x2,504,'512 - 8');assert.equal(big.x2,492,'500 - 8');
+    const wrong=usual.svg.replace(/(id="x-axis"[^>]*? x2=")504/,'$1498');
+    assert.notEqual((await pythonWorker({chart:split,svg:wrong},{script:observer})).result.status,'PASS','an axis length that is neither of the two');
+  }finally{await browser.close();}
+});
+// 23 팔마고 q9
+const split={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'50',sd:'2',label:'X'}],ticks:['47','50','52'],shades:[{from:'47',to:'50'},{from:'50',to:'52'}]};

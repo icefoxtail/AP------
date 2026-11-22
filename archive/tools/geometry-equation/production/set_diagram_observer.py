@@ -359,7 +359,23 @@ def segments_cross(a, b, c, d):
     return orient(a, b, c) * orient(a, b, d) < 0 and orient(c, d, a) * orient(c, d, b) < 0
 
 
-def audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders):
+def label_lines(label, box, doc, index):
+    """The text lines of a wrapped label (data-lines, relative to its box), as absolute rectangles; the label's whole box when it has none. Every line lies inside the box."""
+    raw = label.get('data-lines')
+    if not raw:
+        return [box]
+    try:
+        rects = [tuple(float(v) for v in part.split(',')) for part in raw.split(';')]
+        rects = [(box[0] + x, box[1] + y, w, h) for x, y, w, h in rects]
+    except ValueError:
+        doc.err('SD_ELEMENT_LINES:%d' % index)
+        return [box]
+    if any(r[0] < box[0] - 0.01 or r[1] < box[1] - 0.01 or r[0] + r[2] > box[0] + box[2] + 0.01 or r[1] + r[3] > box[1] + box[3] + 0.01 for r in rects):
+        doc.err('SD_ELEMENT_LINES:%d' % index)
+    return rects
+
+
+def audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders, label=None):
     """An element led out (its label has no room inside its region): the label is wholly outside every circle (and 2.5 px clear of each line), a dot of radius 2 to 3 stands inside the declared
     region 4 px clear of every line, and the leader runs from 2 px outside the label's box to the dot's centre, crosses no other label and no other leader."""
     code = 'SD_ELEMENT_LEADER:%d' % index
@@ -383,7 +399,7 @@ def audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, 
             break
     ends = [(num(leader, 'x1'), num(leader, 'y1')), (num(leader, 'x2'), num(leader, 'y2'))]
     length = math.hypot(ends[1][0] - centre[0], ends[1][1] - centre[1])
-    if length > 0.05 or abs(box_distance(ends[0], box) - 2.0) > 0.1 or not 10.0 <= math.hypot(ends[0][0] - ends[1][0], ends[0][1] - ends[1][1]) <= 160.0:
+    if length > 0.05 or abs(min(box_distance(ends[0], part) for part in (label_lines(label, box, doc, index) if label is not None else [box])) - 2.0) > 0.1 or not 10.0 <= math.hypot(ends[0][0] - ends[1][0], ends[0][1] - ends[1][1]) <= 160.0:
         doc.err('SD_ELEMENT_LEADER_SHAPE:%d' % index)
     for other_index, other_box in element_boxes.items():
         if other_index == str(index):
@@ -604,7 +620,7 @@ def audit_venn(plan, doc):
         # An element with no room in its region may be led out: its label stands wholly outside every circle and a leader ends in a dot inside the region it belongs to.
         leader, dot = element_leaders.get(str(index)), element_dots.get(str(index))
         if leader is not None or dot is not None:
-            audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders)
+            audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders, label)
             continue
         bits = box_membership(box, ordered, doc, 'SD_ELEMENT_REGION:%d' % index)
         if bits is None:

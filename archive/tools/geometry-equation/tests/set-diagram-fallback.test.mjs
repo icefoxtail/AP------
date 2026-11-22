@@ -5,7 +5,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
-import {solveDiagram,composeSetDiagramFigure,setDiagramSize,setDiagramAttempts,FIGURE_CAPABILITY} from '../production/set-diagram-v1.mjs';
+import {solveDiagram,composeSetDiagramFigure,setDiagramSize,setDiagramAttempts,layoutSetDiagram,setDiagramPanelSpec,FIGURE_CAPABILITY} from '../production/set-diagram-v1.mjs';
+import {typesetter} from '../production/typography.mjs';
+import {objectSha} from '../../pipeline-core/canonical.mjs';
 
 const plan=diagram=>({capability:FIGURE_CAPABILITY,diagram,caption:'c',sourceConditions:[{id:'c1',condition:'c',mappedTo:'diagram'}],newVisualInformation:['n']});
 // the font the Archive asks of a 470 x 330 figure (11.25 css px at the displayed size)
@@ -86,4 +88,29 @@ test('outside elements that fit nowhere are still refused: an outside element ha
     assert.notEqual(composed.status,'COMPOSED');
     assert.ok(/SET_ELEMENT_NO_ROOM/.test(JSON.stringify(composed.detail)),JSON.stringify(composed.detail));
   }finally{await browser.close();}
+});
+
+// A compact Venn panel of a composite that is laid out again (wrapped, or an element led out) is still the figure the composite's inverse observation re-derives: the spec it hashes is the plain one
+import {compositePanels,compositePanelLayout,composeCompositeCandidate,compositeStackSize} from '../production/composite-candidate-svg-v1.mjs';
+test('a compact Venn panel that needs wrapped labels or a leader composes in a composite, with the composite\'s inverse observation passing',async()=>{
+  const setPanel=(diagram,caption)=>({caption:{text:caption},plan:{capability:FIGURE_CAPABILITY,diagram}});
+  const panelPlans=[setPanel({kind:'VENN',sets:[{id:'A'},{id:'B'}],shade:'A'},'ㄱ'),setPanel({kind:'VENN',sets:[{id:'A'},{id:'B'}],elements:[{text:'수학만 30명',in:['A']}],shade:'A∩B'},'ㄴ')];
+  const wrapper={capability:'composite-panels-v1',panels:panelPlans,caption:'세 벤다이어그램'};
+  const browser=await launchBrowser();
+  try{
+    const checked=compositePanels(wrapper);
+    const panels=checked.map(item=>({plan:item.plan,model:solveDiagram(item.plan.diagram)}));
+    const sizes=panels.map(panel=>setDiagramSize(panel.model,{compact:true}));
+    const {width}=compositeStackSize(sizes,0,compositePanelLayout(checked));
+    const composed=await composeCompositeCandidate({plan:{...wrapper,panels:checked.map(item=>({caption:item.caption,plan:item.plan}))},panels,identity:assetIdentity('25_테스트|11','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:32,displayScale:Math.min(1,320/width),fontFloorCssPx:11},browser});
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'&&item.renderedLayout.status==='PASS'));
+  }finally{await browser.close();}
+});
+
+test('the spec a panel hashes does not depend on how its labels were placed (wrapped, led out): the composite re-derives the plain one',()=>{
+  const model=solveDiagram(fits),identity={visualAssetKey:'sha256:probe'},typeset=typesetter();
+  const base=layoutSetDiagram({plan:plan(fits),model,identity,typeset,font:20,compact:true}).specSha256;
+  for(const way of [{wrap:2},{elementLeaders:true},{wrap:3,elementLeaders:true}])assert.equal(layoutSetDiagram({plan:plan(fits),model,identity,typeset,font:20,compact:true,...way}).specSha256,base,JSON.stringify(way));
+  assert.equal(base,objectSha(setDiagramPanelSpec(plan(fits),model)),'and it is the one the composite hashes');
 });

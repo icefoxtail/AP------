@@ -1864,7 +1864,8 @@ def normal_plan(chart):
         curves.append({'id': raw['id'], 'mean': mean, 'sd': sd, 'mean_text': mean_text, 'sd_text': raw['sd'] if sd is None else (decimal_of(sd) or str(sd)), 'label': label,
                        'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1, 'scale': scale, 'scaled': 'sdScale' in raw})
     # the name Z is the standard normal variable: only the curve N(0, 1) may carry it (this observer's own copy of the rule)
-    if any(c['label'] is not None and c['label'].strip() == 'Z' and not (c['mean'] is not None and c['sd'] is not None and c['mean'] == 0 and c['sd'] == 1) for c in curves): fail('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD')
+    is_standard = lambda c: c['mean'] is not None and c['sd'] is not None and c['mean'] == 0 and c['sd'] == 1
+    if any(c['label'] is not None and re.fullmatch(r'(?:[Zz](?:\(0,1\))?|N\(0,1\))', re.sub(r'\s+', '', c['label'])) and not is_standard(c) for c in curves): fail('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD')
     framed = any(c['mean'] is None or c['sd'] is None for c in curves)
     # several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
     if framed and len(curves) > 1 and not all(c['sd'] is None and c['mean_text'] == curves[0]['mean_text'] and c['sd_text'] == curves[0]['sd_text'] and c['scaled'] == (i > 0) for i, c in enumerate(curves)): fail('STAT_NORMAL_SYMBOLIC_MULTI')
@@ -1982,6 +1983,7 @@ def normal_plan(chart):
     if z_axis and all(t['hide_z'] for t in ticks): fail('STAT_NORMAL_Z_AXIS_EMPTY')
     x_label = chart.get('xLabel', 'x')
     if not isinstance(x_label, str) or not re.fullmatch(r'[A-Za-z]', x_label): fail('STAT_NORMAL_LABEL_INVALID')
+    if not framed and x_label in ('z', 'Z') and not all(is_standard(c) for c in curves): fail('STAT_NORMAL_XLABEL_Z_NOT_STANDARD')
     for c in curves:
         if c['mean_line'] and not any(t['u'] == (0 if framed else c['mean']) for t in ticks): fail('STAT_NORMAL_MEAN_NOT_TICKED')
     return {'framed': framed, 'curves': curves, 'lo': lo, 'hi': hi, 'span': span, 'ticks': ticks, 'shades': shades, 'symmetry': symmetry, 'z_axis': z_axis, 'x_label': x_label}
@@ -2065,6 +2067,10 @@ def audit_normal(chart, doc):
     first_pts = points_of(first)
     if len(first_pts) < 50: fail('SC_NORMAL_CURVE_SPARSE')
     xl, xr = first_pts[0][0], first_pts[-1][0]
+    # the axis runs to one of two lengths (the usual one, or the shorter one a figure takes when its axis name would not fit): the curve ends, the axis line and the arrow tell which, and they must agree
+    tip_of = {490.0: 512.0, 482.0: 500.0}
+    x_end = next((k for k in tip_of if abs(xr - k) <= 0.05), None)
+    if x_end is None or abs(xl - 44.0) > 0.05 or abs(num(x_axis, 'x1') - 24.0) > 0.05 or abs(num(x_axis, 'x2') - (tip_of[x_end] - 8)) > 0.05: doc.err('SC_NORMAL_AXIS_GEOMETRY')
     slope = (xr - xl) / float(hi - lo)
     if slope <= 0: fail('SC_AXIS_DIRECTION:x')
     px = lambda u: xl + (float(u) - float(lo)) * slope
