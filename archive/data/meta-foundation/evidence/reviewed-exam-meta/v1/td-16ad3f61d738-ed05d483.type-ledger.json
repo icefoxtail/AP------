@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-16ad3f61d738-ed05d483",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간도형과공간좌표_익힘책_고2/비상_기하_공간도형과공간좌표_익힘책_고2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_90eec290ecea466287ce30ba08491fe709cdb6865aa8d377a3d44c44d248cd6e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "step": "모선이 평면과 평행일 때 밑면과 평면이 이루는 각의 코사인을 구해 정사영 넓이=넓이×cosθ 적용",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 공간도형 정사영 관계 활용",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

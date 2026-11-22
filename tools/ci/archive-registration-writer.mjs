@@ -602,7 +602,11 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
 // Producers import many archive modules, so any archive/ change is never "clearly unrelated"; diff5 fixtures feed the reviewed lane.
 const PROTECTED_PREFIXES=['archive/','tests/fixtures/diff5/','.archive-meta-register/','tools/ci/','tools/lib/','.github/workflows/archive-'];
 const PROTECTED_FILES=[STATE,'package.json','package-lock.json'];
-const isProtectedExtra=f=>PROTECTED_PREFIXES.some(p=>f.startsWith(p))||PROTECTED_FILES.includes(f)
+// 화면 전용 파일(css·html·md)은 archive/ 아래라도 등록 결과를 만들지 않는다. 다만 레인 입력 목록(예: archive/engine.html, 4slot 렌더러 UI 입력)에
+// 들어 있는 것은 아래 matches(f,patterns)가 그대로 잡으므로, 여기서는 "목록에 없는 화면 파일"만 풀어 준다. js·mjs·json·py·sh는 다른 생산자가 가져다 쓸 수 있어 계속 보호한다.
+// 이유: 화면 CSS 한 줄 병합에도 전체 재계산(약 40분 x 재시도)이 돌아 스냅숏 저장이 몇 시간씩 늦어졌다.
+const SCREEN_ONLY_ASSET=/^archive\/(?!data\/|exams\/|tools\/|generated\/|_generated\/|textbook\/|assets\/|fixtures\/)(?:[^/]+\/)*[^/]+\.(?:css|html|md)$/;
+const isProtectedExtra=f=>(!SCREEN_ONLY_ASSET.test(f)&&PROTECTED_PREFIXES.some(p=>f.startsWith(p)))||PROTECTED_FILES.includes(f)
   ||['.gitignore','.gitattributes'].includes(f.split('/').pop());
 export function unrelatedRange({root=ROOT,base,head,lanes}={}) {
   const verdict={unrelated:false,base,head,changedCount:0,firstProtectedHit:null};

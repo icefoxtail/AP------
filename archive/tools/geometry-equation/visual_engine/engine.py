@@ -293,6 +293,78 @@ def _region_leader_anchors(polygons,obstacles,corners,straight_edges=(),avoid=()
         if len(chosen)>=limit:break
     return chosen
 
+# ---- the dot a region value's leader starts on (a value stands outside its region on a leader that starts INSIDE it) -------------------------------------
+# A leader that starts on the boundary of a region reads as the length of the side or radius it touches (40pi on a radius, 24 on a side). The leader of a region value therefore starts on a
+# small dot placed well inside the region: far from its boundary and from every stroke or point, and in no other filled region (the layout checks the other regions, it knows them all).
+REGION_INNER_CLEAR_PX=9.0       # least distance from the dot to the region's own boundary and to any other filled region's boundary
+REGION_INNER_STROKE_PX=7.0      # least distance from the dot to a drawn line, curve or circle
+REGION_INNER_POINT_PX=8.0       # least distance from the dot's edge to a drawn point
+REGION_INNER_GRID_PX=4.0
+REGION_INNER_SPACING_PX=12.0
+REGION_INNER_FIRST=30            # the roomiest spots tried first
+REGION_INNER_MORE=300            # further spots (same order, still 12 px apart) tried only when none of the first ones lets the leader out: a piece of a region cut by strokes has no spot among the roomiest
+
+REGION_CIRCLE_TOUCH_PX=1.5      # a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round IS that circle
+
+def _circles_inside_region(polygons,obstacles):
+    """[(cx,cy,r)] drawn circles that lie wholly inside this region (even-odd, screen px) and are not the region itself: a value standing inside such a circle reads as the circle's area
+    (the incircle of a triangle whose area is the value), so no value or dot of the region goes there."""
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    if not edges:return []
+    found=[]
+    for o in obstacles:
+        g=o.get('geometry')
+        if o.get('kind')!='circle' or not isinstance(g,(list,tuple)) or len(g)<3:continue
+        cx,cy,r=g[:3]
+        if r<=0 or not _inside_even_odd((cx,cy),polygons):continue
+        if min(point_segment_distance((cx,cy),a,b) for a,b in edges)<r-REGION_CIRCLE_TOUCH_PX:continue
+        ring=[(cx+r*math.cos(k*math.pi/18),cy+r*math.sin(k*math.pi/18)) for k in range(36)]
+        if sum(1 for q in ring if min(point_segment_distance(q,a,b) for a,b in edges)<=REGION_CIRCLE_TOUCH_PX)>=0.9*len(ring):continue   # the region's own circle
+        found.append((cx,cy,r))
+    return found
+
+def _value_names_its_quantity(obj):
+    """True when a region's label is written with its name (부채꼴 AOB=8) or an area / volume unit (8cm²): the letters say it is the region's value, so it may stand beside a boundary (a bare number
+    beside an arc reads as the arc's length, one with a length unit as a length). A plain-text name/unit label is weighted MATH and carries '=' after the name (the value never has one)."""
+    text=obj.get('labelText')
+    if not (obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and text):return False
+    if text[-1:] in ('\u00b2','\u00b3'):return True                  # an area / volume unit says it is not a length
+    if '=' not in text:return False
+    name=text.split('=',1)[0].strip()
+    return re.fullmatch(r'[A-Z]{2}|[a-z]',name) is None            # AB=6\u03c0 (a segment or arc) and l=6 (a length letter) read as lengths; 부채꼴 AOB, \u25b3ABC, S do not
+
+def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE,exclude=()):
+    """[{at, clear}] spots inside an even-odd region (screen px), the roomiest first, each at least REGION_INNER_CLEAR_PX from the boundary, REGION_INNER_STROKE_PX from every other stroke."""
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    if not edges:return []
+    xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
+    strokes=[(a,b) for o in obstacles if o.get('kind') in {'line','axis','auxiliary'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2 for a,b in zip(o['geometry'],o['geometry'][1:])]
+    circles=[tuple(o['geometry']) for o in obstacles if o.get('kind')=='circle' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
+    discs=[tuple(o['geometry']) for o in obstacles if o.get('kind')=='point' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
+    rows=[]
+    y=min(ys)+REGION_INNER_GRID_PX/2
+    while y<max(ys):
+        x=min(xs)+REGION_INNER_GRID_PX/2
+        while x<max(xs):
+            at=(x,y)
+            if _inside_even_odd(at,polygons):
+                clear=min(point_segment_distance(at,a,b) for a,b in edges)
+                if (clear>=REGION_INNER_CLEAR_PX
+                        and all(point_segment_distance(at,a,b)>=REGION_INNER_STROKE_PX for a,b in strokes)
+                        and all(abs(math.dist(at,(cx,cy))-r)>=REGION_INNER_STROKE_PX for cx,cy,r in circles)
+                        and all(math.dist(at,(px,py))>=pr+REGION_INNER_POINT_PX for px,py,pr in discs)
+                        and all(math.dist(at,spot)>=REGION_LEADER_MARK_PX for spot in avoid)
+                        and all(math.dist(at,(cx,cy))>=r for cx,cy,r in exclude)):
+                    rows.append({'at':[at[0],at[1]],'clear':clear})
+            x+=REGION_INNER_GRID_PX
+        y+=REGION_INNER_GRID_PX
+    rows.sort(key=lambda row:(-round(row['clear'],1),row['at'][1],row['at'][0]))
+    chosen=[]
+    for row in rows:
+        if all(math.dist(row['at'],other['at'])>=REGION_INNER_SPACING_PX for other in chosen):chosen.append(row)
+        if len(chosen)>=limit:break
+    return chosen
+
 # ---- one equal-length mark for a path of pieces (E32) -------------------------------------------------------------------------------------------------
 EQUAL_PATH_CLEAR_PX=8.0   # the mark of a whole path (B-E-D) stands at least this far from every inner joint and displayed point
 EQUAL_CIRCLE_RADIUS_PX=3.6   # markStyle CIRCLE: the circle's radius and the distance between two circles' centres
@@ -1020,7 +1092,10 @@ def prepare(spec):
                     # LEADER / AUTO_LEADER (E32): the label outside the region on a leader from its outer boundary; the layout also needs every region's area to keep the label out of
                     # the other regions (filled in after the last object)
                     corners=[vp.screen(geometry[name]) for name in owners]
-                    label['regionLeader']={'anchors':_region_leader_anchors(polygons,obstacles,corners,straight_edges,mark_spots),'gaps':list(REGION_LEADER_GAPS),'polygons':polygons,'near':list(place) if place else None,'only':placement=='LEADER'}
+                    label['regionLeader']={'anchors':[],'inner':[],'gaps':list(REGION_LEADER_GAPS),'polygons':polygons,'near':list(place) if place else None,'only':placement=='LEADER','sideExempt':_value_names_its_quantity(obj)}
+                    # LEADER asks for no search inside; but when no place outside the region reads as its value (every one stands beside the middle of a side it would read as the length of),
+                    # the value is written inside the region (AUTO_LEADER has already tried the inside first)
+                    if placement=='LEADER':label['regionLeader']['insideCentres']=_region_label_centres(polygons,obstacles,near=(place[0],place[1],REGION_LABEL_AT_RADIUS_PX) if place else None)
                     region_labels.append(label)
                 labels.append(label)
         elif kind=='GRAPH_REGION':
@@ -1355,6 +1430,14 @@ def prepare(spec):
                 label['at']=on_line(ordered[0]);label['alternateAt']=[on_line(t) for t in ordered[1:]]
                 label['wideRange']=[max(0.0,t0-LINE_AT_BAND),min(1.0,t0+LINE_AT_BAND)];label['wideLeftFirst']=True
             if kind=='EQUATION_LABEL' and obj.get('lineBand') is not None:label['wideRange']=[float(v) for v in obj['lineBand']]
+            if obj.get('axisValue') is not None:
+                # (AXV) a label that names a value on an axis (any kind of graph): its point on that axis is where it must read as the tick of its value
+                if obj['axisValue'] not in ('x','y') or not isinstance(obj.get('axisAt'),(list,tuple)) or len(obj['axisAt'])!=2:raise ValueError('AXIS_VALUE_LABEL_BINDING_INVALID:'+oid)
+                label['axisAnchor']=list(vp.screen(obj['axisAt']))
+            if kind=='GRAPH_ANNOTATION' and obj.get('math') and obj.get('tex') is None and obj['id'] in {'interval-start-label','interval-end-label'}:
+                # a pi fraction at an interval end is a stacked fraction with the sign in front (minus, then frac of 4 pi over 3), as on the tick numbers; never a sign inside the numerator or a slash
+                pi_end=re.fullmatch(r'([-−]?)(\d*)π/(\d+)',obj['text'])
+                if pi_end:label['tex']=('-' if pi_end.group(1) else '')+'{\\displaystyle\\frac{'+pi_end.group(2)+'\\pi}{'+pi_end.group(3)+'}}'
             if kind=='COORDINATE_LABEL':
                 exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']
@@ -1400,7 +1483,16 @@ def prepare(spec):
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
     for label in region_labels:
         site=label['regionLeader']
-        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots)
+        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots);site.pop('inner',None)
+        else:
+            # no dot and no inside value in a drawn circle that lies wholly inside the region (the incircle of a triangle): it would read as that circle's area, not the region's
+            circles=_circles_inside_region(site['polygons'],obstacles)
+            spots=_region_inner_points(site['polygons'],obstacles,mark_spots,exclude=circles)
+            site['inner']=spots[:REGION_INNER_FIRST];site['innerMore']=spots[REGION_INNER_FIRST:]
+            if circles:
+                outside=lambda c:all(math.dist(c,(cx,cy))>=r for cx,cy,r in circles)
+                if site.get('insideCentres'):site['insideCentres']=[c for c in site['insideCentres'] if outside(c)]
+                if not site['only'] and label.get('candidateCenters'):label['candidateCenters']=[c for c in label['candidateCenters'] if outside(c)]
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
     # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,
@@ -1481,7 +1573,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
         prepared['fragmentProfile']='fragment-publication-spike-v1'
         for label in labels:
             label['allowSuppress']=False
-            if label['kind']=='TICK_LABEL':
+            if label['kind']=='TICK_LABEL' or label.get('axisValue'):
                 # The browser's own report of where the glyphs sit inside the frozen fragment (observedBBox: getBBox of the fragment root): the tick gap is judged on it.
                 ink=measured_tick_ink(fragments.get(label['id']))
                 if ink is not None:label['tickInk']=ink
@@ -1497,6 +1589,14 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
+    for row in result.get('labels',[]):
+        # (AXV) A label that names a value on an axis gets a short mark on the axis at that value, so the number has a position to point at (a number over bare axis names no place);
+        # none where a dot, a tick or an earlier mark already stands on that point.
+        if row.get('axisAnchor') is not None and row.get('axisValue') in ('x','y'):
+            ax_x,ax_y=row['axisAnchor'];on_x=row['axisValue']=='x'
+            if any(p.get('kind')=='circle' and math.dist(p['at'],(ax_x,ax_y))<=p.get('radius',0)+1.0 for p in prepared['primitives']):continue
+            if any(p.get('role') in {'tick','axis-value-mark'} and p.get('kind')=='line' and abs((p['from'][0] if on_x else p['from'][1])-(ax_x if on_x else ax_y))<=1.0 and abs((p['to'][0] if on_x else p['to'][1])-(ax_x if on_x else ax_y))<=1.0 for p in prepared['primitives']):continue
+            prepared['primitives'].append({'id':row['id']+'-axis-mark','kind':'line','from':(ax_x,ax_y-4) if on_x else (ax_x-4,ax_y),'to':(ax_x,ax_y+4) if on_x else (ax_x+4,ax_y),'token':'indicator','layer':30,'role':'axis-value-mark','axis':row['axisValue']})
     if 'publication' in semantic:
         from .publication import finalize
         finalize(prepared, result, obstacles)

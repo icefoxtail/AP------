@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b5281e15f5a0-9cb3fb52",
+  "sourceArchiveFile": "similar/high/h1/1mid/25_제일고_1학기_중간_고1_유사.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_eac3334ca1e57d573b3247e5ecf2742fa0db7807b2125f5d8d07978610bdd622",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "i의 제곱과 복소수의 실수부·허수부 정의를 확인한다.",
+      "note": "① i²=-1과③ 허수부분7 모두 참으로 단일정답 불성립. 해설도 인정하며③ 임의선택.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_cb94d1fea606040602a46587c6114fb086e2da2f3e5494e27e9f125c05c86710",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "step": "켤레와 자기자신이 같은 조건을 허수부0으로 바꾼다.",
+      "note": "원문은 x≠0이므로 x=±6 모두 가능하나 해설은 z≠0으로 바꿔 -6을 제외했다. answer⑥도 서술형과 불일치.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

@@ -1,5 +1,4 @@
-// Plane marks that print a wrong value are refused with a code instead of rendering "pass": a degree sign after pi (pi/5 degrees, 4pi degrees) and a bare area
-// value on a forced leader of a sector (the leader starts on a radius, so 40pi reads as that radius's length). The right forms stay valid.
+// Plane marks that print a wrong value are refused with a code instead of rendering "pass": a degree sign after pi (pi/5 degrees, 4pi degrees). The right forms stay valid.
 // Real SymPy worker for the construction model; no browser. Run with --test-concurrency=1.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -24,7 +23,7 @@ let model;
 const code=plan=>{try{specFor(plan,model,identity.assetId);}catch(error){return String(error.message);}return null;};
 test.before(async()=>{const response=await pythonWorker({action:'construction',graph},{timeoutMs:90000});assert.equal(response.status,'OK',JSON.stringify(response.result));model=response.result;});
 
-test('the right forms are accepted: pi labels as MATH, the sector value inside or on a named leader',()=>{
+test('the right forms are accepted: pi labels as MATH, the sector value inside or on a leader',()=>{
   assert.equal(code(sector()),null);
   assert.equal(code(sector({},{},{labelPlacement:'AUTO_LEADER'})),null);
   assert.equal(code(sector({},{},{labelName:'부채꼴 AOB',labelPlacement:'LEADER'})),null);
@@ -36,6 +35,6 @@ test('a degree label with pi in it is refused (the degree sign would make pi/5 d
   assert.equal(code(sector({labelKind:undefined})),'ARC_DEGREE_LABEL_HAS_PI:arc');
   assert.equal(code(sector({label:'π/3',labelKind:'DEGREE'})),'ARC_DEGREE_LABEL_HAS_PI:arc');
 });
-test('a bare value on a forced leader of a sector is refused (it would start on a radius)',()=>{
-  assert.equal(code(sector({},{},{labelPlacement:'LEADER'})),'REGION_SECTOR_LEADER_NEEDS_NAME:sec');
+test('a bare value on a forced leader of a sector is accepted: its leader starts on a dot inside the region (checked in region-inner-leader.test.mjs)',()=>{
+  assert.equal(code(sector({},{},{labelPlacement:'LEADER'})),null);
 });

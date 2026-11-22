@@ -41,6 +41,8 @@
 
 해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인의 기존 현황·공통 품질 기준은 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 읽는다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`다.
 
+- 엔진 결함 수리는 사례가 아니라 결함 종류 단위로, 공통 층에 기능 추가로 넣고 다른 종류 1개로 확장을 확인한다(이유: 2026-11-22 사용자, 같은 결함이 그림 종류마다 되풀이됨).
+
 ### 해설 그림 장부 (2026-11-17)
 
 - 장부는 시험지 하나에 파일 하나다: `archive/tools/geometry-equation/production/exam-figure-ledger/<archive/exams/original 아래 경로>.json`(머리는 `_meta.json`). 옛 한 파일 `exam-figure-ledger.json`은 없앴다. 읽기·쓰기는 `ops/svg-m1/figure_ledger.py`·`figure-ledger.cjs`와 그것을 쓰는 도구(`ledger-upsert.py` 등)로만 하고 손으로 고치지 않는다.

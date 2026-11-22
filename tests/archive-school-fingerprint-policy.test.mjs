@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { auditSchoolFingerprintPolicy } from '../archive/tools/audit-school-fingerprint-policy.mjs';
+import refs from './helpers/html-asset-refs.cjs';
+const { assertLoads } = refs;
 
 test('school alias and threshold policy audit is complete but non-operational', () => {
   const audit = auditSchoolFingerprintPolicy();
@@ -26,6 +28,6 @@ test('checked-in school policy audit remains deterministic', () => {
 
 test('Mixer loads the fingerprint bridge without exposing a preset control', () => {
   const html = fs.readFileSync('archive/mixer.html', 'utf8');
-  assert.match(html, /mixer-school-fingerprint\.js\?v=20260825\.1/);
+  assertLoads(html, 'mixer-school-fingerprint.js', 'html');
   assert.doesNotMatch(html, /school-fingerprint-(?:select|preset)\b/i);
 });

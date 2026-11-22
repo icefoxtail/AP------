@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-61a29b36bfaa-7655ce4f",
+  "requestSha256": "efb55c88a4ab82b0a2a047d89ed426cf0f25135b2e8ad198374f4026fd19832d",
+  "examUid": "19_동산중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+  "sourceBlobSha1": "0b1936f52ec07487d1b3a6aa8a69a20bfd2ef657",
+  "sourceRawSha256": "e77c869ecab88dcfffa25fc046394bad80ebe1d27ca042d311d884cb9fd48604",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-7655ce4f.type-ledger.json",
+        "sha256": "ccb3779ce34c7eb2a1da21864fd67382146a55be3e0eabaac4ce29638407ca44"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_7d8172eaecb4357822d7e6ccdaa0de6a297f0d637e0c61e2be834d105bfdc25f",
+      "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-61a29b36bfaa-7655ce4f",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "세 이차방정식을 인수분해, 제곱근, 근의 공식으로 각각 풀어 해를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "958a40b41a16ad30e79059143a36549ce75af382868f0ee3f9c931d820ae6f79",
+        "judgedContentFingerprint": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "627a71d34a6afa47734616f02917c1bfd56bc51d870ad3da90baebd2d9a65a79",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-7655ce4f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

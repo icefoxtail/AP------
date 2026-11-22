@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aa3d1a82ff75-48837195",
+  "sourceArchiveFile": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_db75a12d5f0febf91a9c603aef20095df960f58b6814efa5a6ddfc771e111252",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "첫째항 1/5와 공비 −2/5를 구해 수렴하는 등비급수의 합 a/(1−r)=1/7을 적용한다.",
+      "note": "등비급수의 수렴과 합: 공비의 절댓값이 1보다 작은 무한등비급수의 합을 첫째항과 공비로 계산한다. 검사: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1fa767f8dedcd9737f0024de535b5a0f3d0def45e98ab5dc74bd443a55f0bc3b",
+      "sourceOrdinal": 6,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "수렴급수의 일반항 극한 0으로 p=1을 정하고 2/n−2/(n+2)의 부분합 소거로 q=3을 구한다.",
+      "note": "급수 수렴조건과 망원급수 합: 일반항 극한 0으로 매개변수를 정한 뒤 부분합에서 소거되는 항을 정리해 무한합을 구한다. 검사: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_28809dddbffe4022d224dcdb35859db1c1c52b490ede2f673588227db5dbcc27",
+      "sourceOrdinal": 9,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "급수 수렴으로 a_n/(2n²)−3→0을 얻어 a_n/n²→6을 추출하고 목표 분수식의 최고차항 비를 계산한다.",
+      "note": "급수 수렴의 필요조건을 이용한 수열 극한: 수렴급수 일반항이 0으로 간다는 조건에서 수열의 정규화 극한을 얻어 다른 극한을 계산한다. 검사: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c179150de2bdb33e1448e65875e0333977f2050e414ed785966cc2e920901111",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "가로·세로의 부호 있는 이동을 공비 −1/4인 두 등비급수로 나누어 극한좌표 16/5와 8/5를 구한다.",
+      "note": "도형·이동의 반복과 등비급수: 반복 도형의 닮음비 또는 방향별 이동 비를 찾아 길이·넓이·좌표의 무한합을 등비급수로 구한다. 검사: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96920ebd21a55e14d6b470da27ef98b91dce9bbb4ccd032c40450bafa788f0ba",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130",
+      "step": "짝수항의 부분합식을 빼서 a_(2n+2)−3a_(2n)=2a_(2n+1)로 환원하고 홀수항 급수에서 첫 항 6을 제외한다.",
+      "note": "귀납적 관계식 추론이 결정적 단계이며 이후 등비급수 꼬리합을 계산한다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_acd72d686a77b2d2a6ab9010ec4c0ec3216210fd07ae2f8bf32ef2df1c71e65a",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "점의 반복 좌표에서 삼각형 넓이 S_n=24/4^(n−1)를 얻어 공비 1/4인 등비급수 합을 구한다.",
+      "note": "도형·이동의 반복과 등비급수: 반복 도형의 닮음비 또는 방향별 이동 비를 찾아 길이·넓이·좌표의 무한합을 등비급수로 구한다. 검사: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h3-1mid.jsonl"
+    }
+  ]
+}

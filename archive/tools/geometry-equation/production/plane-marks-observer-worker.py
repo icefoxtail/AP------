@@ -90,6 +90,7 @@ def wrap180(x):return (x+180.0)%360.0-180.0
 TRACE_LABEL_AT_TOLERANCE=45.0       # degrees: a trace label's direction from the centre against the place its labelAt names
 ANGLE_LABEL_MAX_DISTANCE_PX=90.0    # an angle label without a leader stands within this distance of its vertex (its nearest edge: the label reads as that arc's value)
 ANGLE_LEADER_END_TOLERANCE=0.5      # degrees: a leader may start at an end of its arc, where the arc meets a ray
+ANGLE_LEADER_MAX_CROSSINGS=2          # a last-resort angle leader (data-leader-crossing) crosses at most this many thin strokes
 ARC_LEADER_SPAN_SLACK_DEGREES=0.8     # degrees: a leader of an arc label (labelPlacement LEADER) starts within the arc's own span, this much slack at the ends
 
 # ---- free text labels (E30): this observer's own copy of the placement rules and of the glyph codes a MATH label shows
@@ -840,9 +841,16 @@ def audit(p):
                     # a leader never crosses a drawn stroke (its own arcs excepted, and a ray it starts on)
                     leader=leaders[oid+'-label'];la=(float(leader.get('x1')),float(leader.get('y1')));lb=(float(leader.get('x2')),float(leader.get('y2')))
                     own_arcs={n.get('id') for n in arcs}
-                    for sid,pts in strokes:
-                        if sid in own_arcs:continue
-                        if any(properly_cross(la,lb,p,q) for p,q in zip(pts,pts[1:])):errors.append('ANGLE_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                    crossed=[sid for sid,pts in strokes if sid not in own_arcs and any(properly_cross(la,lb,p,q) for p,q in zip(pts,pts[1:]))]
+                    # (FC) the engine's last resort (data-leader-crossing="1") may cross at most ANGLE_LEADER_MAX_CROSSINGS thin strokes, never one of the angle's own two rays; every other leader crosses nothing
+                    if leader.get('data-leader-crossing')=='1' and len(crossed)<=ANGLE_LEADER_MAX_CROSSINGS:
+                        vx,vy=forward(v);ray_angles=[direction_degrees((forward(q)[0]-vx,forward(q)[1]-vy)) for q in (a,c)]
+                        def own_ray(pts):
+                            if len(pts)!=2:return False
+                            ends=[(p,q) for p,q in (pts,pts[::-1]) if math.hypot(p[0]-vx,p[1]-vy)<=1.5]
+                            return bool(ends) and any(abs(wrap180(direction_degrees((ends[0][1][0]-vx,ends[0][1][1]-vy))-angle))<=1.0 for angle in ray_angles)
+                        crossed=[sid for sid in crossed if own_ray(dict(strokes)[sid])]
+                    errors.extend('ANGLE_LABEL_LEADER_CROSSES:'+oid+':'+str(sid) for sid in crossed)
                 if row.get('labelPlacement')=='LEADER':
                     # labelPlacement LEADER: a visible leader from the angle's own arc, and the whole label outside the wedge the angle sweeps
                     if not has_leader:errors.append('ANGLE_LABEL_LEADER_MISSING:'+oid)

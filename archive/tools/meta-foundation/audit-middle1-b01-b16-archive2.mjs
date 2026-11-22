@@ -13,7 +13,7 @@ const input=read(`${global}/B01_B16_GLOBAL_COMPRESSION_INPUT.json`);
 const mapping=read(`${global}/B01_B16_CANONICAL_MAPPING.json`);
 const metadata=read('archive/data/question_metadata.json');
 const runtime=read('archive/data/meta-foundation/runtime/middle1-v1.json');
-const catalog=core.decodeCatalog(read('archive/data/archive2-catalog.json'));
+const catalog=require(path.join(root,'archive/tools/archive2-catalog-evidence.cjs')).readCatalog({root}); // complete rows (approvedSourceFingerprint is in the evidence file)
 const mainBytes=execFileSync('git',['show','origin/main:archive/data/archive2-catalog.json'],{cwd:root,maxBuffer:100*1024*1024});
 const main=core.decodeCatalog(JSON.parse(mainBytes.toString('utf8')));
 const metaByUid=new Map(metadata.records.map((r)=>[r.questionUid,r]));

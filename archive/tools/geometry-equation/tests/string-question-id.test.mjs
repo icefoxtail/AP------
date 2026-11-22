@@ -46,12 +46,14 @@ test('publish tool patches a string-id question and names the figure after the i
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'string-id-publish-'));
   try{
     const dst=path.join(dir,SOURCE);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.copyFileSync(path.join(root,SOURCE),dst);
+    // the published exam may already carry figures (the tool then skips with HAS_EXISTING_SOLUTION_IMAGE_FIELDS): the scratch copy starts without any
+    const scratch=fs.readFileSync(dst,'utf8').replaceAll('"solutionImage','"scratchImage');fs.writeFileSync(dst,scratch);
     const svg=path.join(dir,'figure.svg');fs.writeFileSync(svg,'<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>');
     const rows=path.join(dir,'rows.json');
     fs.writeFileSync(rows,JSON.stringify([{src:SOURCE,ord:'s01',svg,key:'m3-s01',fam:'M3',size:'medium',alt:'해설 그림: 테스트',caption:'테스트'},{src:SOURCE,ord:'q01',svg,key:'m3-q01',fam:'M3',size:'medium',alt:'해설 그림: 테스트',caption:'테스트'}]));
     const run=args=>JSON.parse(execFileSync('node',[path.join(root,'archive/tools/geometry-equation/ops/svg-m1/publish.mjs'),rows,dir,...args],{env:{...process.env,PUBLISH_REPORT:path.join(dir,'report.json')},encoding:'utf8'}));
     const dry=run([]);assert.equal(dry.figures,2);assert.deepEqual(dry.problems,[]);assert.deepEqual(dry.skips,[]);
-    assert.equal(fs.readFileSync(dst,'utf8'),fs.readFileSync(path.join(root,SOURCE),'utf8'));
+    assert.equal(fs.readFileSync(dst,'utf8'),scratch);
     const done=run(['--apply']);assert.equal(done.figures,2);
     const bank=(code=>{const w={};new Function('window',code)(w);return w.questionBank;})(fs.readFileSync(dst,'utf8'));
     assert.equal(bank.find(q=>q.id==='s01').solutionImage,`assets/images/${EXAM}/s01-solution.svg`);
@@ -138,4 +140,12 @@ test('publish tool writes solutionImage fields into an examData-only exam (scrat
     assert.equal(bank.find(q=>q.id==='q02').solutionImage,undefined);
     assert.ok(fs.existsSync(path.join(dir,'archive/assets/images/examdata_only_publish_test/q01-solution.svg')));
   }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('question UID: the textbook bank content-hash id qid_v1_<64 hex> is accepted, any other long id is still refused',()=>{
+  const qid='qid_v1_'+'1560637dc58248b8da018f2ac85b048e9e68fdb91d0d7ce704bfb0892dc2c58b';
+  assert.equal(qid.length,71);
+  assert.equal(questionUidV2(EXAM,qid),`${EXAM}|${qid}`);
+  assert.deepEqual(parseQuestionUidV2(`${EXAM}|${qid}`),{sourceExamId:EXAM,sourceQuestionOrdinal:qid});
+  for(const bad of [qid.slice(0,-1),qid+'0',qid.toUpperCase(),'qid_v2_'+qid.slice(7),'qid_v1_'+'g'.repeat(64),'x'.repeat(71)])assert.throws(()=>questionUidV2(EXAM,bad),/QUESTION_ORDINAL_INVALID/);
 });

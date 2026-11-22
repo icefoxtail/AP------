@@ -81,7 +81,8 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
+      const axisSource=['x','y'].includes(e.getAttribute('data-axis-value'))&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
       const bbox=safeBox(e),client=rect(e.getBoundingClientRect()),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
@@ -98,7 +99,8 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
+      const axisSource=['x','y'].includes(e.getAttribute('data-axis-value'))&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')&&e.getAttribute('data-role')!=='region').map(e=>{   // a region fill is paint, not a stroke: labels and leaders may lie on it (plane_regions_observer.py checks it)
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
@@ -114,11 +116,14 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',regionDot:e.getAttribute('data-region-dot')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
-    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),...(svg.getAttribute('data-text-free')==='true'?{textFree:true}:{}),labels,geometry,fontStatus:document.fonts.status};
+    // the outline of every filled region (its fill is paint, not a stroke, so it is not in `geometry`): a region value's leader leaves its own region through this outline
+    const regionOutlines={};
+    for(const e of svg.querySelectorAll('path[data-role="region"]')){if(!e.id)continue;const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));const outline=[];for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);outline.push(project(e,p.x,p.y));}regionOutlines[e.id]=outline;}
+    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},coordinateScale:Math.hypot(rootMatrix.a,rootMatrix.b),publicationViewport,safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),regionOutlines,...(svg.getAttribute('data-text-free')==='true'?{textFree:true}:{}),labels,geometry,fontStatus:document.fonts.status};
   },publicationViewport);
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
@@ -237,7 +242,7 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
     }
     // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start). A drawn line or segment running over this tick (the segment y=-5 over the tick -5) is the tick's own ground, touched only at the start too.
     const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
-    const owner=allowedOwnerIds.has(other.id)||circleStartOnly||(other.kind==='point'&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
+    const owner=allowedOwnerIds.has(other.id)||circleStartOnly||(other.kind==='point'&&nearTick(other.at))||(other.kind==='circle'&&other.radius<=6*scale+.25&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-(?:piece-\d+|branch-\d+)/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
     if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
@@ -258,6 +263,31 @@ function properCross(a,b,c,d) {
   // end of either stroke is that rounding, not a crossing (E32: partial-length labels' leaders were refused for "crossing" their own segment at the start point).
   const lengthU=Math.hypot(u[0],u[1]),lengthV=Math.hypot(v[0],v[1]);
   return t>1e-6&&t<1-1e-6&&s>1e-6&&s<1-1e-6&&t*lengthU>1e-3&&(1-t)*lengthU>1e-3&&s*lengthV>1e-3&&(1-s)*lengthV>1e-3;
+}
+function crossPoint(a,b,c,d){
+  const u=[b[0]-a[0],b[1]-a[1]],v=[d[0]-c[0],d[1]-c[1]],w=[c[0]-a[0],c[1]-a[1]];
+  const determinant=u[0]*v[1]-u[1]*v[0];const t=(w[0]*v[1]-w[1]*v[0])/determinant;
+  return [a[0]+u[0]*t,a[1]+u[1]*t];
+}
+function distanceToPolyline(point,points){
+  let best=Infinity;
+  for(let i=1;i<points.length;i++){
+    const a=points[i-1],b=points[i],dx=b[0]-a[0],dy=b[1]-a[1],length2=dx*dx+dy*dy;
+    const t=length2<=1e-18?0:Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2));
+    best=Math.min(best,Math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy)));
+  }
+  return best;
+}
+// A region value's leader (data-region-dot) starts on a dot inside its region and must leave it: the strokes it crosses are allowed only where they lie on the region's own outline
+// (checked here against the outline of the final SVG); a crossing anywhere else is a real LEADER_CROSSING. plane_regions_observer.py checks the same independently.
+const REGION_EXIT_TOLERANCE_PX=1.5;
+function leaderCrossesOnlyOwnOutline(leader,other,outlines){
+  const outline=outlines?.[leader.owner];if(!leader.regionDot||!outline?.length)return false;
+  for(let i=1;i<leader.points.length;i++)for(let j=1;j<other.points.length;j++){
+    if(!properCross(leader.points[i-1],leader.points[i],other.points[j-1],other.points[j]))continue;
+    if(distanceToPolyline(crossPoint(leader.points[i-1],leader.points[i],other.points[j-1],other.points[j]),outline)>REGION_EXIT_TOLERANCE_PX)return false;
+  }
+  return true;
 }
 function isOwnRegionExit(leader,other,geometry) {
   if(leader.ownerKind!=='REGION'||leader.points?.length!==2)return false;
@@ -376,6 +406,23 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       tickEvidence.push({labelId:tick.requiredLabelId,tickOwner:tick.id,axis:tick.axis,numericValue:strictFiniteNumber(tick.value),status:'FAIL',errors:[code],requiredLabelMatches:matches.length});
     }
   }
+  // (AXV) A label that names a value on an axis (a tick number, an interval end such as -4π/3, an intercept) must read as THAT axis's tick: centred on its own value along the axis,
+  // within one text line of the axis, with no other stroke between it and the axis, and not at a place that reads as the other axis's value. Nothing else (a far place, a leader) makes it one.
+  // Written out here on the rendered final SVG, independent of the layout's own test.
+  for(const label of capture.labels.filter(v=>v.axisValue!==null&&v.axisValue!==undefined)) {
+    const fail=code=>errors.push(code+':'+label.id),axis=label.axisValue,source=label.axisSourceClient,axisRows=capture.geometry.filter(v=>v.id===axis+'-axis'&&v.kind==='axis');
+    if(!['x','y'].includes(axis)||!source||!source.every(Number.isFinite)||axisRows.length!==1||!label.client){fail('AXIS_VALUE_LABEL_BINDING_INVALID');continue;}
+    const box=label.client,onX=axis==='x';
+    const delta=onX?Math.abs(box.x+box.width/2-source[0]):Math.abs(box.y+box.height/2-source[1]);
+    const sides=(onX?[source[1]-bottom(box),box.y-source[1]]:[source[0]-right(box),box.x-source[0]]).filter(v=>v>=-.1),gap=sides.length?Math.min(...sides):Infinity;
+    if(delta>4*scale+.25||!(gap<=16*scale+.25)){fail('AXIS_VALUE_LABEL_NOT_ADJACENT');continue;}
+    const near=onX?(source[1]-bottom(box)>=-.1&&source[1]-bottom(box)===gap?bottom(box):box.y):(source[0]-right(box)>=-.1&&source[0]-right(box)===gap?right(box):box.x);
+    const start=near>(onX?source[1]:source[0])?1.5*scale:-1.5*scale,probe=onX?[[source[0],source[1]+start],[source[0],near]]:[[source[0]+start,source[1]],[near,source[1]]];
+    for(const other of capture.geometry){
+      if(other.id===axis+'-axis'||other.kind==='tick'||!Array.isArray(other.points)||other.points.length<2||!['line','curve','axis','auxiliary','leader'].includes(other.kind)||other.id===label.id+'-owner-leader')continue;
+      if(other.points.slice(1).some((point,k)=>segmentIntersection(probe,[other.points[k],point]))){fail('AXIS_VALUE_LABEL_BEHIND_STROKE');break;}
+    }
+  }
   for(let i=0;i<capture.labels.length;i++) {
     const label=capture.labels[i],box=label.client;
     if(!contains(safe,box)){clippedTextCount++;errors.push('TEXT_CLIPPED:'+label.id);}
@@ -417,13 +464,20 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     if(labels.some(v=>!Number.isFinite(v.baseFontPx)||Math.abs(v.baseFontPx-labels[0].baseFontPx)>1e-7))errors.push('PUBLICATION_BASE_FONT_INCONSISTENT');
   }
   const missingGlyphCount=capture.labels.reduce((s,v)=>s+v.missingGlyphCount,0);
-  for(const leader of capture.geometry.filter(v=>v.kind==='leader'))for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
+  // (CL) A last-resort leader (data-leader-crossing) may cross thin strokes, but at most LEADER_MAX_CROSSED_STROKES of them: counted here on the rendered strokes (one per element), independent of the generator's own limit.
+  const LEADER_MAX_CROSSED_STROKES=2,CROSSABLE_KINDS=['line','curve','auxiliary','circle','axis','tick'];
+  const crossesStroke=(leader,other)=>leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)));
+  for(const leader of capture.geometry.filter(v=>v.kind==='leader')){
+    const crossedStrokes=leader.leaderCrossing?capture.geometry.filter(v=>v.id!==leader.id&&v.points&&CROSSABLE_KINDS.includes(v.kind)&&crossesStroke(leader,v)).length:0,crossesTooMany=crossedStrokes>LEADER_MAX_CROSSED_STROKES;
+  for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
     // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line. (G18c) So may a point callout's leader (overlay-callout-*): the layout looks for a place that crosses nothing first and falls back to the axes only when the figure leaves none.
     if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id)||/-coordinates?-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-|^asymptote-|^rational-asymptote-|-asymptote(-|$)/.test(String(other.id))))continue;
     // (CL) a point name's last-resort leader (data-leader-crossing) may cross thin strokes (a segment, a dashed line, a circle, an axis, a tick), never a point or another leader
-    if(leader.leaderCrossing&&['line','curve','auxiliary','circle','axis','tick'].includes(other.kind))continue;
-    if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
+    if(leader.leaderCrossing&&!crossesTooMany&&CROSSABLE_KINDS.includes(other.kind))continue;
+    if(leaderCrossesOnlyOwnOutline(leader,other,capture.regionOutlines))continue;
+    if(crossesStroke(leader,other)){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
+  }
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');

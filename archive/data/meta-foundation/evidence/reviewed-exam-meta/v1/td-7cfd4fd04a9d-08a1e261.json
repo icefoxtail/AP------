@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-7cfd4fd04a9d-08a1e261",
+  "requestSha256": "33850a884cb7b250e05bf0aa91d38fdfebd577cb80c2f087025935ba599550f1",
+  "examUid": "25_연향중_1학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+  "sourceBlobSha1": "e39b48115fa8d81469f020d66cc3d935b12c93e8",
+  "sourceRawSha256": "aef5866ce6f89be4008c80ac29535c961b44c2d5ef15ed74ddf9f1d0ddf70261",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cfd4fd04a9d-08a1e261.type-ledger.json",
+        "sha256": "ab5c006997491bb93eb89105f808ceadb6bf3f31085f30967726c42c3b3f3ab3"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_2edcbb5f0e092c2a04092ec95db7fab83705293a67637bc7826281934ea9a3ba",
+      "sourceArchiveFile": "original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_M2_MONOMIAL",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7cfd4fd04a9d-08a1e261",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "원기둥 B의 반지름과 높이를 A의 문자 r, h로 나타내 부피 π(3r)^2·(h/2)를 단항식 곱셈으로 정리하고 부피의 비 2/9를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "cde8c4477b9d285b349f49bb812590924dad42a3eadf4a9e1a1c866d7af49634",
+        "judgedContentFingerprint": "5fba97c60b5da0f54947606273aad195cadc196f9abcc99c4b779ff75fc0600d",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "17467c0cbecc41e26766ff414a5840fc5e0f22031d9beed546039584303578b7",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cfd4fd04a9d-08a1e261.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

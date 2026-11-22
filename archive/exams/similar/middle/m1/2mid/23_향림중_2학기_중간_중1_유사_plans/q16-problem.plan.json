@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "꼭짓점을 마주 보는 두 삼각형에서 내각과 맞꼭지각의 관계를 나타낸 그림이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "label": "35"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "label": "50"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "D",
+          "C",
+          "O"
+        ],
+        "label": "55"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "label": "y"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "label": "x"
+      }
+    ]
+  },
+  "sourceQuote": "오른쪽 그림에서 $\\angle x + \\ang",
+  "assetPath": "assets/images/23_향림중_2학기_중간_중1_유사/q16.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q16-problem-result.json",
+    "statePath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q16-problem-state.json",
+    "svgPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q16.svg"
+  },
+  "status": "ACTIVE"
+}

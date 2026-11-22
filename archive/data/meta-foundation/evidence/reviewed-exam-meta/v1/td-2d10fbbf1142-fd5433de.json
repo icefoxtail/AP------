@@ -1,0 +1,802 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-2d10fbbf1142-fd5433de",
+  "requestSha256": "fb955cc86a9f41ae37416ea2d02ee42ed99d05fe9910bbfcee167f8119fad8c6",
+  "examUid": "중1_1학기_정비례와반비례_전체_pro",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+  "sourceBlobSha1": "4974a51fbf9c2e27ff938181407cdc395475036b",
+  "sourceRawSha256": "ad6b027f0cb000760a876d16ce7fe389e992aa07b3c3b71b37fe36defeee18a6",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-m1pro-b-20261120",
+      "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.type-ledger.json",
+        "sha256": "0fa3c01783139b118a8548a19b28f6a92ff113c7be7a5210bf873f2e0e1e6903"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 17,
+  "registryChanges": [],
+  "typeApprovals": 17,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 17,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cae8dd612611bc7fbff80a5cf2daee12b5e8de11ff636a857607b540b7785073",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_ORDERED_PAIR_EQUALITY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "두 순서쌍의 같은 위치 성분이 각각 같다는 일차방정식으로 a, b를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7ef7b754d8f774a0cf0748158c2fa6b34bb55d1e177dac7798f2a94b201720e6",
+        "judgedContentFingerprint": "013fd64bb5a6e8827280ee284d2776fd6050bf18d5acfdb1b3f5d4a568cb39da",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "e0983ab25ba405d88e96aede4fd830bd8d67400d52ed65fea30b5136c2a9cffe",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_25d779564b25ccf2f3d497466dbe18f2145706d66f42aa767417900ade4cad85",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x가 10의 약수이고 x와 y의 차가 3인 자연수 순서쌍을 조건에 맞게 열거해 센다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1f2cf371f4c87d1757cae3115295e6820ddea6898716875297f1e36bbc7cb00a",
+        "judgedContentFingerprint": "29bc9420f03022106012bcadb36038e5ae5b60134457358dfa566d7472f98b3c",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d321ee7a9a32928334022c7b47cc0212d34d84ac4e4e496b8965d91db6fd9aee",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_007ecb85bf00ef9328117e1415dc59435688acd98e2f9331f3c3e850c8aa5fce",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "절댓값 조건 |a|=4, |b|=2에서 가능한 부호를 조합해 순서쌍을 모두 나열한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "bf9d8f77f2634301220d8fa247f91f23ec0808d125ab8dd761e5d2623c22d5eb",
+        "judgedContentFingerprint": "f9e1381babef45d727493317f756caca9f1d076d00df84b7394776e576584166",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "44298dd4639af4a73ac8b77fd0aab5546d0d8e739820a729ff773d18d4649bd3",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0a8f18fa59f6b6d6726c2ffcfc7b2e029cf695656af18fd88f90f6b38664354f",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x축 위의 점은 y좌표가 0, y축 위의 점은 x좌표가 0임을 이용해 a, b, c, d를 정한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "86114bdff04f06596a0e20bbd624d23168cb70e25e022b75e1ced01f27e36963",
+        "judgedContentFingerprint": "00710f54e1556c6126af7a94a822a20f08901f83a4320518ebf48c572de7f0e5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d819d0bba5b734b90193280067207390b8e35dc023cf8212282f2ee32edec1e3",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_46ac1dfbe9759328ac41693dda9d74fd92a3ab358a4edea4ab33b4338c804dba",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x축 위의 점의 y좌표=0, y축 위의 점의 x좌표=0으로 b와 a를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "cba8351851d2b78e9490b7d6abdec352afcc443f366f72c2128aecb77a2a9028",
+        "judgedContentFingerprint": "2529c3c19883624b273335ff9e6ff56b3f3f2a36b325c0113244221f53363aa0",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1b3c3779522d1802a9a825530aa69f22c57a352f8fa81ab9b8cc4116756e55ad",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d2addd2749affb00ad9029a880f8dc795c99f5dc3905f7740b2615044461ac9d",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "y축 위와 x축 위의 조건으로 a=3, b=-3을 구한 뒤 x축 위에 있는 보기 점을 찾는다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f2cda321b4253c413b7741166260134a9419af5062afae13ddbce324205e1b5e",
+        "judgedContentFingerprint": "3eacfb6cabb67c62365ae2ff7dafddb68a7de5b87cc565c4c104c13167d26000",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "32bef15ec213b3128adafd6da7012c4f97557800e44e8f709e873cd848323c81",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2b77e0a769c31f1074a90adf4ce9634c3a65a981eedc6eaa29480a47347923a1",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "원점에 대한 대칭점은 부호가 모두 바뀜을 이용해 두 좌표를 비교해 a, b를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4a2503e5c95b2e4983d2a91fc950d281d87bc9bf150bc463c96055b0f1a1de88",
+        "judgedContentFingerprint": "cee5846687d1f8824ae29f03d838de2de0d4809141324b989c1795bdb504802e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "06143748f35ca2ca56b06fdf5d99fd60a965145266ec5cc52a8fe6c09b753d50",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_619c2cf9dac6bfe1403f67fa903ae2f9fcdb1b03ead339d80a8e85ff7a66a7ce",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "y축 대칭은 x좌표만, x축 대칭은 y좌표만 부호를 바꿔 네 값의 합을 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f28973d45c4090c72b98f0c4bad04ba1be7924d36b618694bbda6e94a12f07e6",
+        "judgedContentFingerprint": "3ab6c700ad7c09c362ed22db3418f3d70de831a7e9cdf9ddc0608d26c90e1c82",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "e98a33b7b23f8351e238924d3e9e68dcaff84fa9b8a58798a294051ac2415e1f",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_46cd2e95eaadc6def634849b89a9dc3a74b99493993fef49f7c23505cfa08e67",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x축·원점·y축 대칭점 B, C, D의 좌표를 구해 사각형의 둘레를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "884ff54d4caf88baeaea10e84025782c056651b9e3c7794f50ef33df9278e54b",
+        "judgedContentFingerprint": "bd37bbe427299dca6a693cef4b867cbaf74dc453b3453fa45466c6b3e9aac510",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "62924425c3df518f8b24b73ad3fa3e5b3c8108d932103ac7d090b90c5bc88923",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_abc3738557957fe0e9dd9e5bc98c936c5da01e7563d428e6d5876a5139848a58",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 24,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "각 점이 좌표축 위에 놓이는 조건으로 b, a, c를 구해 합이 가장 작은 경우를 찾는다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "173cf0b663999887a9e3fb6418035f39ef17ec71a379cac6aba7e01108111f1e",
+        "judgedContentFingerprint": "186995127210bd7ecc73cc7929485e7a9e9a0e3dfd43afe348bcc64221a5126b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "40a8b4ea54a6f40f1f3a258a1c82d0d065a556311d0268d3b44b2020c6db4625",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_74a1c1f64391cbf6b84885d1937fed45c251014317b67682a5b3607c6d05012e",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 26,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "y축·x축 대칭을 번갈아 적용한 점이 3번마다 반복됨을 이용해 P100을 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "43fe1b431a81fbcd7135d7b8dcf2ef1f67a74551cfc60fccb76121f6cd95aeea",
+        "judgedContentFingerprint": "490f09314dd79002ccc85318dc9a4be9e165255801d9b63f9041c2e3aa8c6931",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "668e7b1f2fe08aa2b682798540f2c994c9814a04a24b5be02fb960eae2af497a",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d3bb5985a142f0d9e1269ec9d33bbd27e0a56409172163db55ccf0c170b7713e",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 27,
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "2a+b=8을 만족하는 자연수 순서쌍을 열거해 개수를 센다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4569fda98df87cd32428f0a165cfca2a57e85c45cfe13579b5295345c73c93f1",
+        "judgedContentFingerprint": "912fbc811273a3a0158d78c834c6ea376c6ef6a77c7541bcd62aeef6b825c0d5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "e4effbb0f632cfe9391932aeef871eb68c8625a6bec092fe17e4e4fd99ed4b6f",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0036e10cccfd90f70400ca249c2a96363c491c74a4d1b088084843a5206c8c43",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 28,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x축 위의 점의 y좌표=0, y축 위의 점의 x좌표=0으로 a, b를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "dadb90927b8b9f4db8448b6656247d6a7f958810c27f9839d50efa83e78514fc",
+        "judgedContentFingerprint": "caf42e185817b05bc8693095ad3fe19ffaf599b93dbc7941c5df11bca9e35ddf",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "53209e8eb747590759c7adc0bfb2be06085e55e60fc919201b5d96507c3b07ad",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e8324f78248b9b7f54f807b8ac995bcfbf32497f22df26a02e68cfd2601f97cb",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 31,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "y축 위의 점은 x좌표가 0임을 이용해 b+c=0과 |a|=2를 정해 값을 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ca3179b4fc2eab5c9c95227223e49b39405d215088d0e5bf0f633f9c6fc5b2b9",
+        "judgedContentFingerprint": "26bbb8e1f1fa16ca9e19eb035afb1b547e3ef5249ff19601d4a11ca19ade77bb",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "30c095dff23bc66d4f9996d7d7f2cbc6acc4e61e9a0320a096fa9c6d2d3e0d98",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_efd7b69548929a2f31e3293b4dad05217d035b0da09d36f80f8103192bed8aa3",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 34,
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "좌표축 위의 점이면 한 성분이 0이어야 하므로 a=4 또는 a=2를 구한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "2985a5bd6ccfc0c0c88e49b58ce4cee3d6a5039db58b2c9aace1835f2c61a979",
+        "judgedContentFingerprint": "679fe50f9c8b3020f1607a50d6a7b633909bec08019bd32839b0581db08a422a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "03599fe90c78a815b1f5a29553825c54906841072ca81dc02cb0aebcfabddb73",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f2db98c6447b79ecb9e033dc269d03f346fa1a2638d3e210b76690e68de156c8",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 67,
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_CORE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "a=xy=-9를 구해 x, y가 모두 정수인 약수쌍을 빠짐없이 센다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d48569956d7436e3be5ff00828702f97a69ea76644ee3bde09918aeb206a30ab",
+        "judgedContentFingerprint": "35770eb4bb6886e131a4727c3dcdfdcc7e15d473c9f02f2753b9d81625ed660b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0545797108a7db3cbe5c11e697ba1d236e73e40bccc55db28cf9f653d5cb50f6",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_37f692f1978c1dc448d6a885320760d1e182ba4881737c8614e654823d982271",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "sourceOrdinal": 76,
+      "problemTypeKey": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
+      "templateKey": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_CORE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d10fbbf1142-fd5433de",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "xy=15에서 가로·세로가 자연수인 약수쌍을 모두 찾아 직사각형 개수를 센다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a85946d00069262987f549c328480c5dbb1e089766f02e32e1089e745af92b35",
+        "judgedContentFingerprint": "55f57b0fa0e8335dfd4894bde56b0a4992a44ea01ec87c3e5a786cc0a10f1495",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5df76580626b0ac64f8530ccd12657b50ccde3a3e8b1b9efe16384a537e09dd5",
+        "resultSource": {
+          "branch": "data/type-judgment-m1pro-b-20261120",
+          "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-b/m1-pro-types-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d10fbbf1142-fd5433de.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 17,
+  "expectedQuestionCount": 81
+}

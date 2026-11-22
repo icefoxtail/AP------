@@ -55,7 +55,9 @@ const compiledConditions = readJson(conditionsPath);
 const conditionRegistry = readJson(path.join(canonicalRoot, "condition_registry.json"));
 const registryIndex = readJson(indexPath);
 const catalogData = readJson(path.join(root, "archive/data/archive2-catalog.json"));
-const catalog = archive2.decodeCatalog(catalogData);
+// approvedSourceFingerprint is copied from the catalog row below; the downloaded catalog no longer carries it (evidence file).
+const catalog = require(path.join(root, "archive/tools/archive2-catalog-evidence.cjs")).mergeEvidence(archive2.decodeCatalog(catalogData),
+  (relative) => fs.readFileSync(path.join(root, "archive", relative), "utf8"));
 
 globalThis.window = globalThis.window || {};
 require(indexRuntimePath);

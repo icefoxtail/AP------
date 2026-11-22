@@ -776,6 +776,13 @@
         applyFinderFilterChange("semanticSubject");
         render();
         document.querySelector(`[data-action="finder-subject"][data-subject="${b.dataset.subject || ""}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "finder-publisher") {
+        // 교과서 칸의 출판사 단추: 학교 조건(state.find.school)에 쓰고, 같은 단추를 다시 누르면 전체로 돌아간다.
+        const publisher = b.dataset.publisher || "";
+        state.find.school = state.find.school === publisher ? "" : publisher;
+        applyFinderFilterChange("school");
+        render();
+        document.querySelector(`[data-action="finder-publisher"][data-publisher="${publisher}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "similar-list") {
         openSimilarList(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "finder-reset") {

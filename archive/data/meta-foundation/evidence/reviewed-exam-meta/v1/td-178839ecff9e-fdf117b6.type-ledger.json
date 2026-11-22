@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-178839ecff9e-fdf117b6",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b172fcad9b1a05dd4258b247ceaa44327d8f85970ea4890a767f884776b6154c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "각 날의 등급 구간으로 x의 일차부등식을 세워 해를 구하고 공통부분을 취함",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 연립부등식의 공통 구간",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b204a49cf6393bc3d15ae1dd8c2c9e3cf6be4db0d2d2bed7d40b18eb66b633ee",
+      "sourceOrdinal": 26,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "그래프에서 f(x)<0, g(x)≥0 각각의 해 구간을 읽고 공통부분을 구함",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 각 부등식 해의 교집합 구간 결정",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

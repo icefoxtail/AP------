@@ -4255,13 +4255,15 @@ def _overlay_asymptote_values(plan):
     for row in rows:
         try:
             values=[S.Rational(Fraction(str(value))) for value in (row.get('coefficients') or [])]
-            if row['family']=='exponential-affine' and len(values)==3:found.append(('h',values[2]))
+            # a curve drawn as y=|f(x)| (abs:true) approaches |C|, not C
+            fold=(lambda value:abs(value)) if row.get('abs') is True else (lambda value:value)
+            if row['family']=='exponential-affine' and len(values)==3:found.append(('h',fold(values[2])))
             elif row['family']=='logarithmic-affine' and len(values)==4 and values[1]!=0:found.append(('v',-values[2]/values[1]))
             elif row['family']=='rational':
                 numerator=[S.Rational(Fraction(str(value))) for value in row.get('numerator') or []];denominator=[S.Rational(Fraction(str(value))) for value in row.get('denominator') or []]
                 if len(denominator)==2 and denominator[1]!=0:
                     found.append(('v',-denominator[0]/denominator[1]))
-                    if len(numerator)==2:found.append(('h',numerator[1]/denominator[1]))
+                    if len(numerator)==2:found.append(('h',fold(numerator[1]/denominator[1])))
         except (ValueError,TypeError,ZeroDivisionError):continue
     return [item for item in found if item[1]!=0]
 

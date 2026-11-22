@@ -1,9 +1,14 @@
 # usage: publish-exam.py <exam> <srcRel> <review.json> <rows.json> [allow-tie-ords.json]
-import hashlib, json, sys, tempfile
+import hashlib, json, re, sys, tempfile
 from pathlib import Path
 from portable_root import repo_root, run, require_hash, valid_ord, asset_name
 from figure_ledger import load_exam
 ROOT=repo_root()
+GRADES=('중1','중2','중3','고1','고2','고3')
+def grade_of(exam):
+    # the grade mark stands between underscores (_고2_) or ends the name (비상_기하_벡터_대단원학습평가_고2); the first one in reading order wins
+    found=[(m.start(),m.group(1)) for m in re.finditer(r'(?:(?<=_)|^)('+'|'.join(GRADES)+r')(?=_|$)',exam)]
+    return min(found)[1] if found else None
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def main():
     if len(sys.argv) not in (5,6): raise ValueError('exam, source, review and rows required')
@@ -31,7 +36,7 @@ def main():
     bank=json.loads(run(['node','-e',script,ROOT/src],cwd=ROOT).stdout)
     bank={q['id']:q for q in bank}
     adir=ROOT/'archive/assets/images'/Path(src).stem
-    grade=next((g for g in ('중1','중2','중3','고1','고2','고3') if f'_{g}_' in exam),None)
+    grade=grade_of(exam)
     if not grade: raise ValueError('unknown grade')
     fam={'중1':'M1','중2':'M2','중3':'M3','고1':'H1','고2':'H2','고3':'H3'}[grade]
     out=[]

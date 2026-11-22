@@ -536,6 +536,32 @@
     }
     catch (error) { popup.close(); console.error(error); setStatus(error.message || '문제지 준비에 실패했습니다.', true); alert(error.message || '문제지 준비에 실패했습니다.'); }
   }
+  // ---- 문제지 만들기에서 열기 (2026-11-22) ----
+  // 이 권의 문항을 보관함에 저장하려면 문제지 만들기를 거쳐야 한다. 새 전달 형식 없이 문제지 만들기가 이미 읽는
+  // "고른 문항 UID 목록"(workspace.html?view=compose&uid=…, applyUidRoute)으로 넘긴다. 학년이 섞였거나 쓸 수 없는 문항이 있으면
+  // 문제지 만들기가 한국어 안내를 보이고, 여기서는 그 앞의 한도(문항 수·주소 길이)만 막는다.
+  const COMPOSE_UID_MAX = 400; // archive2-workspace.js UID_ROUTE_MAX와 같은 값
+  const COMPOSE_URL_MAX = 7000; // 서버·브라우저 요청 줄 한도(약 8KB)보다 낮게
+  function composeEntryUrl(paper) {
+    const uids = [...new Set((paper?.records || []).map(record => core.getQuestionUid(record)).filter(Boolean))];
+    if (!uids.length) return { error: '이 권의 문항을 알아볼 수 없어 문제지 만들기로 넘길 수 없습니다.' };
+    if (uids.length > COMPOSE_UID_MAX) return { error: `문제지 만들기는 한 번에 ${COMPOSE_UID_MAX}문항까지만 받을 수 있습니다. (이 권 ${uids.length}문항)` };
+    const url = new URL('workspace.html', window.location.href);
+    url.searchParams.set('view', 'compose');
+    uids.forEach(uid => url.searchParams.append('uid', uid));
+    if (url.href.length > COMPOSE_URL_MAX) return { error: `문항이 많아 문제지 만들기로 한 번에 넘길 수 없습니다. (이 권 ${uids.length}문항) 문항 수를 줄여 다시 만들어 주세요.` };
+    return { url: url.href, count: uids.length };
+  }
+  function openPaperInCompose(unitKey, paperIndex) {
+    const paper = getPaper(unitKey, paperIndex);
+    if (!paper) { setStatus('문제지를 찾지 못했습니다.', true); return; }
+    const entry = composeEntryUrl(paper);
+    if (entry.error) { setStatus(entry.error, true); return; }
+    // 눌렀을 때 바로 새 창을 연다(팝업 차단을 피하고, 이 권 목록은 그대로 둔다). 로그인 세션은 출력 창과 같은 방식으로 넘긴다.
+    const popup = window.open(appendSessionHash(entry.url), '_blank');
+    if (!popup) { setStatus('새 창을 열 수 없습니다. 팝업 설정을 확인하세요.', true); return; }
+    setStatus(`${paper.title} ${entry.count}문항을 문제지 만들기에서 열었습니다. 열린 창에서 문제지 만들기를 누르면 이 문항 그대로 담기고, 거기서 보관함에 저장합니다.`);
+  }
   // ---- 화면 안 출제 패널(archive2-assign.js) ----
   // 단원별 기출의 `출제`는 보관함·학교 기출과 같은 패널로 낸다. 패널 스크립트가 없거나 주소에 assign=legacy가 있으면
   // 아래 assignPaper의 옛 경로(index.html iframe)로 간다. 요청 본문은 옛 모달과 같고(archive2-assign.js unitBodyFor) 서버는 그대로다.
@@ -1927,7 +1953,7 @@
       const units = ((result.scopes || []).length > 1 || result.unitKeys.length > 1) && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paperScopes.join(' · '))}</p>` : '';
       const edited = paper.edited ? '<p class="ug-paper-edited">문항을 바꾼 권입니다. 출력·출제에 바꾼 문항이 쓰입니다. 표로 돌아가 선택을 바꾸면 바꾼 내용은 사라집니다.</p>' : '';
       const args = `'${GRID_UNIT_KEY}', '${paper.gridId}', this`;
-      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 출제">출제</button></div></li>`;
+      return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-btn ug-compose" title="이 권의 문항 그대로 문제지 만들기를 열어, 보관함에 저장할 수 있게 합니다" onclick="UnitPastExams.openPaperInCompose(${args})" aria-label="${escapeHtml(paper.title)} 문제지 만들기에서 열기">문제지 만들기에서 열기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 출제">출제</button></div></li>`;
     }).join('');
     // 2권 이상이면 한 번에 모두 출제하는 버튼을 더한다(화면 안 출제 패널일 때만: 옛 iframe 방식은 한 번에 한 권뿐이다).
     const assignAll = result.papers.length > 1 && assignPanelAvailable()
@@ -2163,6 +2189,6 @@
     if (window.Archive2Assign && typeof window.Archive2Assign.handlePopState === 'function' && window.Archive2Assign.handlePopState()) return;
     if (state.ready) gridRestoreFromUrl();
   });
-  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridSchoolEdit, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers };
+  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridSchoolEdit, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers, openPaperInCompose, composeEntryUrl };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

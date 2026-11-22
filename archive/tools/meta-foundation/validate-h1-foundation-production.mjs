@@ -10,6 +10,7 @@ import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import core from "../../archive2-core.js";
+import catalogEvidence from "../archive2-catalog-evidence.cjs";
 
 const require = createRequire(import.meta.url);
 const archive2Source = require("../../archive2-source.js");
@@ -243,8 +244,8 @@ gate("metadataParity", metadataParityMismatch === 0);
 gate("sourceFingerprintIntegrity", sourceFingerprintMismatch === 0);
 gate("sourceFingerprintMismatchOnlyExplicitHolds", sourceRecoveryExplicitFingerprintHoldCount === explicitHoldSourceFingerprintMismatch);
 
-const packedCatalog = readJson("archive/data/archive2-catalog.json");
-const catalog = core.decodeCatalog(packedCatalog);
+// The gate below compares approvedSourceFingerprint of catalog rows; the downloaded catalog no longer carries it (evidence file).
+const catalog = catalogEvidence.readCatalog({ root });
 const vmWindow = {};
 const fetchArchiveAsset = async (url) => {
   const parsed = new URL(String(url));
