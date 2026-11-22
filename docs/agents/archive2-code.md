@@ -12,6 +12,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 구현 완료·병합·MAIN_DONE 전에 `node tools/check-archive2-runtime.cjs`를 실행하고 결과를 확인한다. 해당 흐름을 바꿨다면 실제 Chrome 검증도 실행한다. 검증하지 않은 항목은 PASS로 기록하지 않는다.
 - 이 검사를 생략·격리하거나 데이터 분모를 줄이고, 시간 상한·검증 조건을 완화하여 통과시키지 않는다. 구조 변경이 필요해도 기존 동작·응답성·내용 검증을 먼저 보존한다. 이 계약 자체의 변경은 명시적인 사용자 지시와 근거를 필요로 한다.
 - 시험지 source만 수정하는 CREATE/R1/R2/R3 작업은 기존 시험지 품질 절차를 따른다. 런타임 흐름도 바꾸는 경우에는 이 계약을 함께 적용한다.
+- **원본 열기 속도 (2026-11-23)**: `engine.html`이 시험지 하나를 그리는 시간은 거의 전부 MathJax 조판과 해설 쪽 배치 측정이었다. 로컬 실측(해설 24문항): 약 13.6초 -> 2.9초, 시험지 2.3초 -> 1.3초. 쪽 수·문항 배치는 그대로다. ① MathJax 4 기본값인 의미 분석·낭독·점자·탐색기를 `prepareEnclosedLatinMathJax`(pageReady)에서 끈다(수식 하나 10ms+ -> 0.4ms). `window.MathJax.options`에 쓰면 확장이 덮어써서 소용없다. 부작용: 수식에서 `tabindex`·`data-semantic-*`·화면 낭독용 `aria-label`이 사라진다(다시 켜려면 그 `for` 문을 지운다). ② `print-header-table.js`는 머리글이 생기거나 머리글 안이 바뀔 때만 맞춤을 예약한다(전에는 노드 하나만 바뀌어도 매 프레임 문서 전체를 훑었다, 해설 한 번에 500번). ③ `layout-materializer.js`는 높이를 잴 때마다 프레임을 기다리지 않고(50ms마다 한 번), 같은 상자를 이어서 잴 때 칸에 다시 끼우지 않는다. 지키는 테스트: `tests/archive-original-open-speed.test.js`. 이유: 선생님이 원본 해설을 열고 24초를 기다렸다. 같은 MathJax 설정을 쓰는 `mixed_engine.html`·`mixer.html`·`apmath/wrong_print_engine.html`은 아직 손대지 않았다.
 
 ## 교사 화면 코드(`archive2-workspace*.js`) 파일 지도 (2026-11-19)
 

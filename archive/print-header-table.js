@@ -198,9 +198,28 @@
     PROFILES: PROFILES
   };
 
+  // 머리글이 생기거나 머리글 안이 바뀐 때만 맞춤을 예약한다(2026-11-23).
+  // 전에는 문서 어디든 노드가 하나 바뀌면 다음 프레임에 문서 전체를 두 번 훑었다. 해설·시험지를 그리는 동안
+  // 수식 조판과 높이 측정이 노드를 수없이 넣고 빼서, 매 프레임마다 문서 전체 훑기와 화면 갱신이 걸려 열기가 몇 초씩 느려졌다.
+  function touchesHeader(records) {
+    for (var i = 0; i < records.length; i++) {
+      var record = records[i];
+      var target = record.target;
+      var host = target && target.nodeType === 1 ? target : (target && target.parentElement);
+      if (host && host.closest && host.closest('.page-header')) return true;
+      var added = record.addedNodes;
+      for (var j = 0; j < added.length; j++) {
+        var node = added[j];
+        if (node.nodeType !== 1) continue;
+        if (node.matches('.page, .page-header') || node.querySelector('.page-header')) return true;
+      }
+    }
+    return false;
+  }
+
   function start() {
     if (document.body && typeof MutationObserver === 'function') {
-      new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+      new MutationObserver(function (records) { if (touchesHeader(records)) schedule(); }).observe(document.body, { childList: true, subtree: true });
     }
     schedule();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitAll(true); });
