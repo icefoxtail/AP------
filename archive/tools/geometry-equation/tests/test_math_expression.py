@@ -76,4 +76,15 @@ class VectorNameTests(unittest.TestCase):
         for source,tex in {'v':'v','vec':'vec','x+1':'x+1','2v':'2v','vector':'vector'}.items():
             with self.subTest(source=source):self.assertEqual(serialize(parse(source)),tex)
 
+    def test_a_bracketed_exponent_is_a_superscript(self):
+        # The brackets of a power that is not a bare number are not drawn; a bracketed bare number keeps them (x^(2) has always been drawn that way).
+        expected={'2^(x)':'2^{x}','2^(x+1)':'2^{x+1}','e^(-x)':'e^{-x}','2^(2(x+1))':'2^{2(x+1)}','x^(2)':'x^{(2)}','x^(-1)':'x^{(-1)}','(x+1)^(2)':'(x+1)^{(2)}'}
+        for source,tex in expected.items():
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source)),tex)
+    def test_a_factor_before_a_power_needs_a_product_sign(self):
+        # 3 and 2^(x+1) side by side lex as the number 32; with an explicit * the dot is drawn.
+        self.assertEqual(serialize(parse('y=3*2^(x+1)-2')),r'y=3\cdot 2^{x+1}-2')
+        self.assertEqual(serialize(parse('y=32^(x+1)-2')),'y=32^{x+1}-2')
+        self.assertEqual(serialize(parse('y=3*e^(x)')),'y=3e^{x}')
+
 if __name__=='__main__':unittest.main()

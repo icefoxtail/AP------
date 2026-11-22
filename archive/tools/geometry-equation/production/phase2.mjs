@@ -72,21 +72,28 @@ export function normalizeScalarLabelPrefix(value){
 }
 const expLogDisplayBase=base=>base===undefined||base===null||base==='e'?'e':String(base);
 const expLogPowerBase=base=>{const text=expLogDisplayBase(base);return text==='e'?'e':/^[0-9]+$/.test(text)?text:'('+text+')';};
+// The exponent of y=A*b^(k*(x-p))+C as written text: x, x+1, 2x, 2(x+1), x/2, -x, -(x+1)/2 ... (k and p are exact rational strings). The caller brackets it.
 const expLogExponentText=(k,shift)=>{
   const inner=!shift||shift==='0'?'x':shift.startsWith('-')?`x+${shift.slice(1)}`:`x-${shift}`;
+  const shifted=inner!=='x',body=shifted?`(${inner})`:inner;
   if(k==='1')return inner;
-  if(k==='-1')return `-(${inner})`;
-  return `(${k})*(${inner})`;
+  if(k==='-1')return `-${body}`;
+  const [numerator,denominator]=k.split('/');
+  if(denominator===undefined)return `${numerator}${body}`;
+  const top=numerator==='1'?body:numerator==='-1'?`-${body}`:`${numerator}${body}`;
+  return `${top}/${denominator}`;
 };
 const expLogLinearText=(k,b)=>{
-  const term=k==='1'?'x':k==='-1'?'-x':`(${k})*x`;
+  const term=k==='1'?'x':k==='-1'?'-x':/^-?[0-9]+$/.test(k)?`${k}*x`:`(${k})*x`;
   if(b==='0')return term;
   return term+(b.startsWith('-')?b:'+'+b);
 };
-const expLogFormulaText=row=>{
+export const expLogFormulaText=row=>{
   const base=expLogDisplayBase(row.base);
   if(row.family==='exponential-affine'){
-    const [a,k,c]=row.coefficients;const prefix=a==='1'?'':a==='-1'?'-':a;
+    const [a,k,c]=row.coefficients;
+    // A coefficient and the power are joined by an explicit product sign: 3 and 2^(x+1) written side by side would read as the number 32.
+    const prefix=a==='1'?'':a==='-1'?'-':a+'*';
     const exponent=expLogExponentText(k,row.shiftX||'0');const power=`${expLogPowerBase(base)}^(${exponent})`;
     const tail=c==='0'?'':(c.startsWith('-')?c:'+'+c);
     return `y=${prefix}${power}${tail}`;
@@ -320,7 +327,7 @@ function addGraphOverlays(plan,spec){
   const ownedLabels=p.displayWindow!==undefined||features.points.some(point=>point.coordinates||point.unnamed)||features.segments.some(segment=>segment.length)||!!features.latticePoints;
   for(const line of features.lines){
     const lineId='overlay-line-'+line.id,anchors=ownedLabels&&line.labelAlternates?.length?[...line.labelAlternates,line.labelAt]:null;
-    objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)],...(line.style==='DASHED'?{dash:true}:{}),...(line.color?{color:line.color}:{})});
+    objects.push({id:lineId,kind:'LINE',coefficients:line.kind==='VERTICAL'?[1,0,-exactValue(line.x)]:[exactValue(line.slope),-1,exactValue(line.intercept)],...(line.style==='DASHED'?{dash:true}:{}),...(line.asymptote?{asymptote:true}:{}),...(line.color?{color:line.color}:{})});
     objects.push({id:lineId+'-equation',kind:'EQUATION_LABEL',target:lineId,text:line.text,at:anchors?anchors[0]:line.labelAt,priority:0,
       ...(line.ownership==='NEAREST'?{ownership:'NEAREST'}:{}),
       ...(line.lineAt!==undefined?{lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:line.lineAt}
