@@ -19,12 +19,9 @@ const failed = r => r.status === 'FAILED';
 export const ENV_ERROR = /QUESTION_IMAGE_LOAD_FAILED|IMAGE_LOAD|PAGE_RENDER_ERROR|ERR_MODULE_NOT_FOUND|MODULE_NOT_FOUND|Cannot find module|Cannot find package|ENOENT|EACCES|EPERM|EMFILE|ENOMEM|PLAYWRIGHT_REQUIRED|DEPENDENCY_HASH_MISMATCH|browserType\.launch|Executable doesn't exist|Failed to launch|net::ERR_|Navigation (failed|timeout)|page\.goto|SVG_MISSING|WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed/i;
 // The page rejected the content itself (a formula MathJax cannot typeset): the same on every machine, so an engine/plan verdict, not the machine's.
 // It carries its own marker in the failure signature below. Every other page render error stays an environment error.
-const CONTENT_PAGE_ERROR = /MATH_TYPESET_ERROR/;
-export const envErrorInText = text => {
-  const found = String(text ?? '').match(new RegExp(ENV_ERROR.source, 'gi')) ?? [];
-  const isContent = /PAGE_RENDER_ERROR/i.test(String(text)) && CONTENT_PAGE_ERROR.test(String(text));
-  return found.find(m => !(isContent && /^PAGE_RENDER_ERROR$/i.test(m))) ?? null;
-};
+// Only that exact token is set aside: a second page error in the same text still counts.
+const CONTENT_PAGE_ERROR = /ARCHIVE_PAGE_RENDER_ERROR:MATH_TYPESET_ERROR\b/g;
+export const envErrorInText = text => String(text ?? '').replace(CONTENT_PAGE_ERROR, '').match(ENV_ERROR)?.[0] ?? null;
 export const envErrorOf = r => {
   if (!failed(r)) return null;
   const text = `${r.code ?? ''} ${r.detailFull ?? ''} ${r.detail ?? ''}`;

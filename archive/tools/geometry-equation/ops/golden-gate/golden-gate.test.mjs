@@ -222,6 +222,11 @@ test('a formula the page cannot typeset (MATH_TYPESET_ERROR) is a content verdic
   assert.equal(compareItem('i', typeset(), other).verdict, 'NOT_RUN');
   // a stored record made before this rule carries envError PAGE_RENDER_ERROR: it is judged again from its text
   assert.equal(compareItem('i', {...typeset(), envError: 'PAGE_RENDER_ERROR'}, {...typeset(), envError: 'PAGE_RENDER_ERROR'}).verdict, 'BOTH_FAIL_SAME');
+  // another page error next to it, or a typeset that did not finish, is the machine's: NOT_RUN
+  for (const extra of [' ARCHIVE_PAGE_RENDER_ERROR:SOURCE_LOAD_FAILED', ' ARCHIVE_PAGE_RENDER_ERROR:MATH_TYPESET_INCOMPLETE'])
+    assert.equal(compareItem('i', typeset(extra), typeset(extra)).verdict, 'NOT_RUN');
+  const unfinished = failRec({code: 'X', detailFull: 'ARCHIVE_PAGE_RENDER_ERROR:MATH_TYPESET_INCOMPLETE'});
+  assert.equal(compareItem('i', unfinished, unfinished).verdict, 'NOT_RUN');
   // a real environment error next to a typeset error still counts
   assert.equal(compareItem('i', typeset(' ENOENT: no such file'), typeset(' ENOENT: no such file')).verdict, 'NOT_RUN');
 });

@@ -62,7 +62,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 ## 못 막는 것 (한계)
 
 - 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
-- 수식 조판 실패(MATH_TYPESET_ERROR)는 플랜 내용에 대한 엔진 판정으로 보고 환경 오류로 세지 않는다(같은 값이 전체 체크아웃에서도 나온다). 그 밖의 PAGE_RENDER_ERROR는 계속 환경 오류(NOT_RUN)다.
+- 수식 조판 실패(MATH_TYPESET_ERROR)는 숙주 시험지(또는 플랜)의 TeX 오류이고 어느 PC에서도 같으므로 환경 오류로 세지 않는다(2026-11-23에는 24 효천고 2학기 기말 고1 q11 해설 1곳 때문에 item134·136·144·145·146이 바이트로 비교되지 못했다. 숙주를 고치면 FIXED로 나온다). 그 밖의 PAGE_RENDER_ERROR는 계속 환경 오류(NOT_RUN)다.
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
 - 같은 PC의 같은 Chrome으로만 비교한다. 다른 PC의 결과와 바이트를 맞추려 하지 않는다.
