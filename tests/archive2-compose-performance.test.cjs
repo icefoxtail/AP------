@@ -1,4 +1,5 @@
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
@@ -45,7 +46,7 @@ test('production-size compose curriculum and scope interactions stay responsive'
     const elapsed = performance.now() - start;
     t.diagnostic(`curriculum ${curriculumKey || 'all'}: ${elapsed.toFixed(1)}ms`);
     assert.match(a.nodes.content.innerHTML, /data-scope=/);
-    assert.ok(elapsed < 500, `compose blocks input for ${elapsed.toFixed(1)}ms`);
+    assert.ok(elapsed < timeBudget(500), `compose blocks input for ${elapsed.toFixed(1)}ms`);
   }
   const knownMeta = a.state.catalog.records.find(record => record.L1 && Number.isInteger(record.difficultyBucket));
   assert.ok(knownMeta, 'production catalog must contain a concrete L1 and difficulty projection');
@@ -55,7 +56,7 @@ test('production-size compose curriculum and scope interactions stay responsive'
   a.render();
   const metaElapsed = performance.now() - metaStart;
   t.diagnostic(`shared Meta L1+difficulty render: ${metaElapsed.toFixed(1)}ms`);
-  assert.ok(metaElapsed < 500, `shared Meta filter blocks input for ${metaElapsed.toFixed(1)}ms`);
+  assert.ok(metaElapsed < timeBudget(500), `shared Meta filter blocks input for ${metaElapsed.toFixed(1)}ms`);
   const directMetaResult = problemBankMeta.query(a.state.metaIndex, {
     rpmL1: knownMeta.L1, difficultyBuckets: [knownMeta.difficultyBucket],
   }, { profile: 'DIRECT' });
@@ -70,7 +71,7 @@ test('production-size compose curriculum and scope interactions stay responsive'
   t.diagnostic(`scope checkbox: ${elapsed.toFixed(1)}ms`);
   assert.ok(a.state.scopes.includes(scope));
   assert.match(a.nodes.content.innerHTML, /data-scope="[^"]+" checked/);
-  assert.ok(elapsed < 500, `scope selection blocks input for ${elapsed.toFixed(1)}ms`);
+  assert.ok(elapsed < timeBudget(500), `scope selection blocks input for ${elapsed.toFixed(1)}ms`);
 
   // A new render must recheck quality, even if the filter did not change.
   for (const record of a.state.catalog.records) record.sourceStatus = 'HOLD';
@@ -85,7 +86,7 @@ test('select all and count edits do not block the production-size composition fo
   await a.listeners.click({ target: { closest: selector => selector === 'button' ? { dataset: { action: 'scope-all' } } : null } });
   const selectionElapsed = performance.now() - selectionStart;
   t.diagnostic(`select-all click: ${selectionElapsed.toFixed(1)}ms`);
-  assert.ok(selectionElapsed < 450, `select-all blocks input for ${selectionElapsed.toFixed(1)}ms`);
+  assert.ok(selectionElapsed < timeBudget(450), `select-all blocks input for ${selectionElapsed.toFixed(1)}ms`);
   a.state.scopes = [...a.nodes.content.innerHTML.matchAll(/data-scope="([^"]+)"/g)].map(match => match[1]);
   for (const distribution of ['equal', 'all']) {
     a.state.distribution = distribution;
@@ -94,7 +95,7 @@ test('select all and count edits do not block the production-size composition fo
     a.render();
     const elapsed = performance.now() - start;
     t.diagnostic(`${distribution} selection/count edit: ${elapsed.toFixed(1)}ms`);
-    assert.ok(elapsed < 450, `form blocks input for ${elapsed.toFixed(1)}ms`);
+    assert.ok(elapsed < timeBudget(450), `form blocks input for ${elapsed.toFixed(1)}ms`);
     assert.match(a.nodes.content.innerHTML, /data-action="generate"/);
   }
 });
@@ -121,7 +122,7 @@ test('general useMode and 고2/고3 semantic subject selections stay responsive'
       const elapsed = performance.now() - start;
       t.diagnostic(`${useMode} ${JSON.stringify(filters)}: ${elapsed.toFixed(1)}ms`);
       assert.ok(a.nodes.content.innerHTML.length > 0, `${JSON.stringify(filters)} rendered nothing`);
-      assert.ok(elapsed < 500, `${useMode} ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
+      assert.ok(elapsed < timeBudget(500), `${useMode} ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
     }
   }
 });
@@ -144,7 +145,7 @@ test('first 고2/고3 selection after boot (cold caches) stays responsive in gen
       const elapsed = performance.now() - start;
       t.diagnostic(`cold general ${JSON.stringify(filters)}: ${elapsed.toFixed(1)}ms`);
       assert.ok(a.nodes.content.innerHTML.length > 0, `${JSON.stringify(filters)} rendered nothing`);
-      assert.ok(elapsed < 500, `cold general ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
+      assert.ok(elapsed < timeBudget(500), `cold general ${JSON.stringify(filters)} blocks input for ${elapsed.toFixed(1)}ms`);
     }
   }
 });

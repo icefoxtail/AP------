@@ -2,6 +2,7 @@
 // Module behaviour and shortage rendering use synthetic entries; the screens and the real pool run against the
 // production catalog.
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -325,7 +326,7 @@ test('real catalog: pools are built once, fast, from recorded difficulty and wit
   const start = performance.now();
   const pools = Quick.buildPools(index, { metaByUid });
   const elapsed = performance.now() - start;
-  assert.ok(elapsed < 500, `pool build ${elapsed.toFixed(1)}ms`);
+  assert.ok(elapsed < timeBudget(500), `pool build ${elapsed.toFixed(1)}ms`);
   assert.ok(pools.stats.usable > 3000, `usable ${pools.stats.usable}`);
   const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
   let checked = 0;
@@ -461,7 +462,7 @@ test('screens: each product lists units under 대단원 headings, no old labels,
     const start = performance.now();
     const html = h.w.renderQuick();
     const elapsed = performance.now() - start;
-    assert.ok(elapsed < 500, `${view} first render ${elapsed.toFixed(1)}ms`);
+    assert.ok(elapsed < timeBudget(500), `${view} first render ${elapsed.toFixed(1)}ms`);
     assert.match(html, new RegExp(`<h1>${Quick.PRODUCTS[view].title}</h1>`));
     assert.match(html, /data-view="five-minute"/);
     assert.match(html, /data-view="monthly-test"/);
@@ -475,7 +476,7 @@ test('screens: each product lists units under 대단원 headings, no old labels,
     for (const name of rowNames(html)) assert.doesNotMatch(name, /이전 분류|핵심\s*개념|[A-Za-z]{2,}/, `${view}: ${name}`);
     const t2 = performance.now();
     h.w.renderQuick();
-    assert.ok(performance.now() - t2 < 100, 'a second render reads the cached pools');
+    assert.ok(performance.now() - t2 < timeBudget(100), 'a second render reads the cached pools');
   }
   h.w.state.view = 'five-minute';
   const html = h.w.renderQuick();

@@ -3,6 +3,7 @@
 // resolver may never write to a canonical registry, never convert a curriculum, never attach an
 // extension key to an original exam item and must stay lazy and fast.
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -77,7 +78,7 @@ test('resolver builds from the real registries well under the 500 ms budget and 
     samples.push(Number(process.hrtime.bigint() - started) / 1e6);
   }
   console.log(`# resolver build ms (3 runs): ${samples.map(value => value.toFixed(1)).join(', ')}`);
-  assert.ok(Math.min(...samples) < 500, `resolver build took ${samples}`);
+  assert.ok(Math.min(...samples) < timeBudget(500), `resolver build took ${samples}`);
   assert.ok(built.stats.canonicalKeys > 1500);
   assert.equal(built.stats.extensionKeys, sources.extensions.definitionCount);
   assert.equal(built.badgeOf('PT_SUBSET_COUNT'), '정식');
@@ -298,7 +299,7 @@ test('load() is lazy: nothing is fetched at import and only the crosswalks the e
   assert.ok(requested.includes('data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json'));
   assert.deepEqual(loaded.failedSources, []);
   assert.equal(loaded.resolver.stats.extensionKeys, files['data/archive2-extension-keys.json'].definitionCount);
-  assert.ok(loaded.elapsedMs < 500, `lazy load ${loaded.elapsedMs} ms`);
+  assert.ok(loaded.elapsedMs < timeBudget(500), `lazy load ${loaded.elapsedMs} ms`);
   assert.equal(await Resolver.load({ fetchJson: async () => { throw new Error('cached'); } }), loaded, 'second call reuses the load');
 });
 

@@ -1,6 +1,7 @@
 // Unified 2022-based unit layer for 문제지 만들기 (user decision 2026-10-29).
 // Runs against the real production catalog: every assertion below is about actual records.
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -449,13 +450,13 @@ test('compose list stays fast on the real catalog (cold 500 ms budget)', async (
         best = Math.min(best, performance.now() - started);
       }
       measurements.push([grade, semanticSubject, Math.round(best)]);
-      assert.ok(best < 500, `${grade}/${semanticSubject}: ${best.toFixed(0)}ms`);
+      assert.ok(best < timeBudget(500), `${grade}/${semanticSubject}: ${best.toFixed(0)}ms`);
     }
   }
   // Building the shared index happens once per catalog load.
   const started = performance.now();
   Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
-  assert.ok(performance.now() - started < 1500, 'index build');
+  assert.ok(performance.now() - started < timeBudget(1500), 'index build');
   console.log('unified scope ms', JSON.stringify(measurements));
 });
 

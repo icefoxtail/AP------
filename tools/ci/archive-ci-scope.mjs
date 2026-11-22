@@ -99,23 +99,33 @@ export const TECHNICAL_INPUTS = Object.freeze({
 const INPUT_GROUP = new Map(Object.entries(TECHNICAL_INPUTS).flatMap(([group, files]) => files.map(file => [file, group])));
 // The question metadata is tracked as one shard per exam (a flat folder); the assembled file is ignored by git.
 const METADATA_SHARD = /^archive\/data\/question-metadata\/v1\/[^/]+\.json$/;
-const groupOf = file => INPUT_GROUP.get(file) ?? (METADATA_SHARD.test(file) ? 'metadata' : undefined);
+// 화면·문서 전용 파일: 선생님·학생이 보는 화면 코드/스타일과 문서. 이 파일들은 등록 결과·Worker 번들을 만들지 않는다.
+// 이전에는 목록에 없는 파일이 하나라도 있으면 전체 테스트(3샤드 약 20분)로 떨어졌다(최근 150건 중 140건).
+// 이 그룹은 PR에서만 쓴다(planCiScope가 main push는 전체로 되돌린다). Worker 번들 파일은 제외해 계속 전체로 간다.
+const SCREEN_EXCLUDED = new Set(['archive/archive2-canonical.js', 'archive/archive2-core.js', 'archive/archive2-history.js',
+  'archive/archive2-output-contract.js', 'archive/archive2-output.js']);
+const SCREEN_FILE = /^(?:archive\/(?:archive2-[a-z0-9-]+\.(?:js|css)|archive-(?:home|session)\.js|[a-z0-9_-]+\.css|css\/[^/]+\.css|[a-z0-9_-]+\.html|[^/]+\.md)|docs\/.+\.md|[^/]+\.md)$/;
+export const isScreenFile = file => SCREEN_FILE.test(file) && !SCREEN_EXCLUDED.has(file);
+const UI_FILE = /^archive\/.+\.(?:js|css|html)$/;
+const groupOf = file => INPUT_GROUP.get(file) ?? (METADATA_SHARD.test(file) ? 'metadata' : isScreenFile(file) ? 'screen' : undefined);
 
 export function scopeChecks(scope) {
   const full = scope.mode === 'full';
   const groups = scope.groups || [];
   const technical = groups.length > 0;
+  const screenUiChanged = groups.includes('screen') && (scope.changedFiles || []).some(file => UI_FILE.test(file));
   return {
     workerDependencies: full || technical,
-    runtimeContract: full || groups.includes('output'),
-    solutionBrowser: full || groups.includes('output'),
+    // 화면 그룹은 archive 화면 코드가 바뀐 때만 실제 Chrome 검사를 돈다(문서만 바뀐 PR은 건너뜀).
+    runtimeContract: full || groups.includes('output') || screenUiChanged,
+    solutionBrowser: full || groups.includes('output') || screenUiChanged,
     // Metadata/search and direct-original Chrome retain their existing CI,
     // Shared Meta and Sync policies. The 50-solution job exercises common runtime.
-    runtimeChrome: full || groups.includes('output'),
+    runtimeChrome: full || groups.includes('output') || screenUiChanged,
     // Full fallback deliberately discards bounded groups/sources. It must not
     // discard the need for coherent registration outputs at the same snapshot.
     prepareProjection: registrationInputsChanged(scope.changedFiles) || Boolean(scope.pendingRequestPaths?.length) ||
-      scope.mode === 'archive-content' || groups.includes('metadata') || groups.includes('output'),
+      scope.mode === 'archive-content' || groups.includes('metadata') || groups.includes('output') || screenUiChanged,
   };
 }
 
@@ -203,10 +213,14 @@ export function planCiScope({ root = process.cwd(), eventName = '', event = null
     if (eventName === 'pull_request') throw error;
     return finish({ ...common, changedFiles: null, scopedBrowserChanged: true, ...classifyPaths(null) });
   }
-  const classification = classifyPaths(changedFiles, {
+  let classification = classifyPaths(changedFiles, {
     exists: file => fs.existsSync(path.join(root, file)),
     assetConsumers: asset => consumersAtSnapshot(root, headSha, asset),
   });
+  // main push는 전체 실행을 유지한다. 화면 그룹의 범위 축소는 PR 전용이다.
+  if (eventName !== 'pull_request' && classification.groups?.includes('screen')) {
+    classification = { mode: 'full', reason: 'screen/docs change on a non-PR event keeps the full suite', groups: [], sources: [], assets: [] };
+  }
   return finish({ ...common, changedFiles, scopedBrowserChanged: changedFiles.some(file => CONTENT_BROWSER_DEPENDENCIES.has(file)), ...classification });
 }
 
