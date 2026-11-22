@@ -8,6 +8,7 @@ import { materializePackageShards } from "./materialize-archive-package-shards.m
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { createUnitHinter } from "./unit-hint-lib.mjs";
 import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
@@ -119,27 +120,16 @@ const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
   unit: 0, unitAmbiguous: 0 };
-// 단원 힌트(metaHintUnit): 행에 단원이 없고 승인된 유형(PT)이 있을 때, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년의 대단원
-// 하나만 가리키면 그 대단원 이름을 표시 전용으로 싣는다(모호하면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다
-// (archive2-unified-units.js unitFor: 원본 JS에 단원 값이 없을 때만). 학년은 정확도를 재서 넣는다(중1: 승인된 단원이 있는 문항 2,133건
-// 중 유형으로 정한 단원이 같은 것 97.8%). 유형으로 단원을 정하지 못하는 학년·문항은 예전처럼 "단원 미분류"에 남는다.
-const UNIT_HINT_GRADES = Object.freeze({ "중1": "M1" });
-const middleUnitsByProblemType = new Map();
-for (const row of foundationBindings.bindings) {
-  if (row.status !== "ACTIVE" || !/^M[123]-\d\d$/.test(row.standardUnitKey || "")) continue;
-  const key = row.problemTypeKey + "\u0000" + row.standardUnitKey.slice(0, 2);
-  if (!middleUnitsByProblemType.has(key)) middleUnitsByProblemType.set(key, new Set());
-  middleUnitsByProblemType.get(key).add(row.standardUnitKey);
-}
-function problemTypeUnitHint(pt, grade) {
-  const prefix = UNIT_HINT_GRADES[grade];
-  if (!prefix || !pt) return "";
-  const units = middleUnitsByProblemType.get(pt + "\u0000" + prefix);
-  if (!units) return "";
-  if (units.size !== 1) { hintStats.unitAmbiguous++; return ""; }
-  return standardUnitLabelByKey.get([...units][0]) || "";
-}
-function buildMetaHint(meta, binding, grade = "") {
+// 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
+// 표시 전용으로 싣는다(여러 단원으로 갈리면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 90% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+const unitHinter = createUnitHinter({
+  bindings: foundationBindings.bindings,
+  unitLabelByKey: standardUnitLabelByKey,
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.subUnit])),
+});
+function buildMetaHint(meta, binding, grade = "", subject = "") {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
   // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
@@ -174,9 +164,10 @@ function buildMetaHint(meta, binding, grade = "") {
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
-  if (pt && !String(meta.standardUnitKey || "").trim()) {
-    const unit = problemTypeUnitHint(pt, grade);
+  if (pt) {
+    const unit = unitHinter.hint(pt, grade, subject);
     if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
+    else if (unitHinter.decide(pt, grade).reason === "ambiguous") hintStats.unitAmbiguous++;
   }
   return out;
 }
@@ -494,7 +485,7 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade);
+    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade, exam.subject);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
