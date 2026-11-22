@@ -119,11 +119,11 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  unit: 0, unitAmbiguous: 0 };
+  unit: 0, unitLast: 0, unitSubjectBlocked: 0 };
 // 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
-// 표시 전용으로 싣는다(여러 단원으로 갈리면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 표시 전용으로 싣는다(여러 단원에 걸치면 프로필 순서상 마지막 단원, 과목이 여럿인 학년은 문항 과목 안에서만: 사용자 결정 2026-11-22). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
 // 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
-// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 90% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 70% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
 const unitHinter = createUnitHinter({
   bindings: foundationBindings.bindings,
   unitLabelByKey: standardUnitLabelByKey,
@@ -166,8 +166,9 @@ function buildMetaHint(meta, binding, grade = "", subject = "") {
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
   if (pt) {
     const unit = unitHinter.hint(pt, grade, subject);
-    if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
-    else if (unitHinter.decide(pt, grade).reason === "ambiguous") hintStats.unitAmbiguous++;
+    const reason = unitHinter.decide(pt, grade, subject).reason;
+    if (unit) { out.metaHintUnit = unit; hintStats.unit++; if (reason === "last") hintStats.unitLast++; }
+    else if (reason === "subjectUnknown" || reason === "noUnitInSubject") hintStats.unitSubjectBlocked++;
   }
   return out;
 }

@@ -311,7 +311,8 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
   assert.equal(Unified.originalCurriculum(record({ year: 2024 }), '고1').basis, 'high-year-rule');
 });
 
-// metaHintUnit(표시 전용 단원 힌트, 2026-11-22 중2~고2로 확대): 승인된 유형(PT)의 ACTIVE 연결이 같은 학년에서 통합 단원 하나만 가리키면 싣고, 갈리면 싣지 않는다.
+// metaHintUnit(표시 전용 단원 힌트, 2026-11-22 중2~고2로 확대): 승인된 유형(PT)의 ACTIVE 연결이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을, 여럿이면 통합 단원 프로필 순서상
+// 마지막 단원을 싣는다(사용자 결정 2026-11-22). 과목이 여럿인 학년은 문항의 과목 안 단원들 중에서만 고르고, 과목을 못 정하거나 그 과목 안에 연결 단원이 없으면 싣지 않는다.
 // 소비(unitFor)는 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다.
 const hintLib = () => import(pathToFileURL(path.join(root, 'archive/tools/unit-hint-lib.mjs')).href);
 const hinterFor = async bindings => {
@@ -325,7 +326,7 @@ const hinterFor = async bindings => {
 };
 const bind = (problemTypeKey, standardUnitKey, subUnitKey = '', status = 'ACTIVE') => ({ problemTypeKey, standardUnitKey, subUnitKey, status });
 
-test('unit hint rule: one unit -> hinted, split or unmappable -> not hinted, other grade/inactive/off subject -> not hinted', async () => {
+test('unit hint rule: one unit -> that unit, several -> last unit in profile order (within the question subject), other grade/inactive/off subject -> not hinted', async () => {
   const hinter = await hinterFor([
     bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO'), bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO_APPLICATION'),
     bind('PT_OLDKEY', 'M2-05', 'M2-05-TRIANGLE_PROPERTIES'),
@@ -336,20 +337,46 @@ test('unit hint rule: one unit -> hinted, split or unmappable -> not hinted, oth
     bind('PT_H1_SPLIT', 'H22-C-02'), bind('PT_H1_SPLIT', 'H22-C-03'),
     bind('PT_H2', 'H15-M2-03'),
     bind('PT_H1_UNMAPPED', 'H22-C-02'), bind('PT_H1_UNMAPPED', 'H22-C-77'),
+    bind('PT_H1_ALL_UNMAPPED', 'H22-C-77'),
+    bind('PT_H1_CROSS', 'H22-C-03'), bind('PT_H1_CROSS', 'H22-C2-02'), bind('PT_H1_CROSS', 'H22-C2-01'),
+    bind('PT_H1_ONLY_C1', 'H22-C-02'), bind('PT_H1_ONLY_C1', 'H22-C-05'),
+    bind('PT_H2_MULTI', 'H22-M1-03'), bind('PT_H2_MULTI', 'H22-M1-05'), bind('PT_H2_MULTI', 'H22-M1-04'),
+    bind('PT_H2_CROSS', 'H22-A-04'), bind('PT_H2_CROSS', 'H22-M1-03'),
+    bind('PT_H2_MULTI_UNMAPPED', 'H22-M1-03'), bind('PT_H2_MULTI_UNMAPPED', 'H22-M1-05'), bind('PT_H2_MULTI_UNMAPPED', 'H22-M1-77'),
   ]);
+  const unitsOf = (grade, key) => UnitCore.PROFILES[{ 고1: 'h1', 고2: 'h2' }[grade]].units.findIndex(unit => unit.key === key);
   assert.equal(hinter.hint('PT_ONE', '중3'), '삼각비');
   assert.equal(hinter.hint('PT_OLDKEY', '중2'), '삼각형의 성질', 'an old broad unit that no label can place is placed by its sub-unit');
-  assert.equal(hinter.hint('PT_SPLIT', '중2'), '', 'a PT that binds to two units is never guessed');
+  assert.equal(hinter.hint('PT_SPLIT', '중2'), '사각형의 성질', 'a PT that binds to two units goes to the later unit in profile order (사용자 결정 2026-11-22)');
   assert.equal(hinter.hint('PT_OTHERGRADE', '중2'), '', 'bindings of another grade do not count');
   assert.equal(hinter.hint('PT_INACTIVE', '중3'), '');
   assert.equal(hinter.hint('PT_H1_SAME', '고1', '공통수학1'), 'H22-C-02', 'the 2015 and 2022 keys of one unit are one unit; high school carries the unit key');
-  assert.equal(hinter.hint('PT_H1_SPLIT', '고1', '공통수학1'), '');
-  assert.equal(hinter.hint('PT_H1_UNMAPPED', '고1', '공통수학1'), '', 'a binding that cannot be placed in a unit stops the hint');
+  assert.equal(hinter.hint('PT_H1_SPLIT', '고1', '공통수학1'), 'H22-C-03', 'two units of the subject: the later one');
+  assert.equal(hinter.hint('PT_H1_UNMAPPED', '고1', '공통수학1'), 'H22-C-02', 'a binding that cannot be placed in a unit is left out; the placed ones decide');
+  assert.equal(hinter.hint('PT_H1_ALL_UNMAPPED', '고1', '공통수학1'), '', 'no binding can be placed: nothing to hint');
   assert.equal(hinter.hint('PT_H1_SAME', '고2'), '', 'a 고1 unit key is not a 고2 binding');
   assert.equal(hinter.hint('PT_H2', '고2'), 'H22-M1-03');
   assert.equal(hinter.hint('PT_H2', '고2', '미적분I'), 'H22-M1-03');
-  assert.equal(hinter.hint('PT_H2', '고2', '미적분'), '', 'a subject whose measured agreement was under 90% stays off');
-  assert.equal(hinter.hint('PT_H1_SAME', '고1', '수학(하)'), '');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분'), '', 'a subject whose measured agreement was under 70% stays off');
+  assert.equal(hinter.hint('PT_H1_SAME', '고1', '수학(하)'), 'H22-C-02', 'subjects that measured 70% or more are on');
+  // several units across subjects: only the units inside the question subject count, never another subject
+  assert.equal(hinter.hint('PT_H1_CROSS', '고1', '공통수학2'), 'H22-C2-02', 'last unit inside 공통수학2, not a later unit of another subject');
+  assert.equal(hinter.hint('PT_H1_CROSS', '고1', '공통수학1'), 'H22-C-03');
+  assert.equal(hinter.hint('PT_H1_CROSS', '고1', '수학(상)'), '', 'subject not determined: not hinted');
+  assert.equal(hinter.hint('PT_H1_CROSS', '고1', ''), '');
+  assert.equal(hinter.hint('PT_H1_ONLY_C1', '고1', '공통수학2'), '', 'no bound unit inside the subject: not sent to another subject');
+  assert.equal(hinter.hint('PT_H1_ONLY_C1', '고1', '공통수학1'), 'H22-C-05');
+  assert.equal(hinter.hint('PT_H2_MULTI', '고2', '미적분I'), 'H22-M1-05');
+  assert.equal(hinter.hint('PT_H2_MULTI', '고2', '수학II'), 'H22-M1-05', '2015 수학II is the 미적분Ⅰ subject of the unit profile');
+  assert.equal(hinter.hint('PT_H2_MULTI', '고2', ''), '', 'subject not determined: not hinted');
+  assert.equal(hinter.hint('PT_H2_MULTI', '고2', '확률과통계'), '', 'no bound unit inside the subject');
+  assert.equal(hinter.hint('PT_H2_CROSS', '고2', '대수'), 'H22-A-04');
+  assert.equal(hinter.hint('PT_H2_CROSS', '고2', '수학I'), 'H22-A-04');
+  assert.equal(hinter.hint('PT_H2_CROSS', '고2', '미적분I'), 'H22-M1-03');
+  assert.equal(hinter.hint('PT_H2_MULTI_UNMAPPED', '고2', '미적분I'), 'H22-M1-05');
+  // the later unit really is later in the profile (profile order is the only order used)
+  assert.ok(unitsOf('고2', 'H22-M1-05') > unitsOf('고2', 'H22-M1-03'));
+  assert.ok(unitsOf('고1', 'H22-C2-02') > unitsOf('고1', 'H22-C2-01'));
   assert.equal(hinter.hint('PT_ONE', '고3'), '', 'grades without a measured agreement stay off');
   assert.equal(hinter.hint('', '중3'), '');
 });
@@ -387,6 +414,22 @@ test('metaHintUnit in the catalog equals the rule, and never changes a row the s
   for (const row of lane) {
     assert.ok(row.metaHintPT, 'a unit hint needs a usable PT: ' + row.questionUid);
     assert.equal(row.metaHintUnit, hinter.hint(row.metaHintPT, row.sourceGrade, row.subject), 'the hint is the single unit the PT binds to: ' + row.questionUid);
+  }
+  // a hint chosen among several units (프로필 순서상 마지막) never leaves the question's subject and is the latest bound unit of that subject
+  const { courseOf } = await hintLib();
+  const profileOf = { 고1: 'h1', 고2: 'h2' };
+  for (const row of lane) {
+    const decision = hinter.decide(row.metaHintPT, row.sourceGrade, row.subject);
+    if (decision.reason !== 'last') continue;
+    assert.equal(row.metaHintUnit, decision.value);
+    const units = decision.unitKeys;
+    assert.ok(units.length > 1, 'the last-unit rule is for several bound units: ' + row.questionUid);
+    if (!profileOf[row.sourceGrade]) continue;
+    const profileUnits = UnitCore.PROFILES[profileOf[row.sourceGrade]].units;
+    const course = courseOf(row.sourceGrade, row.subject);
+    assert.ok(course, 'the subject must be determined: ' + row.questionUid);
+    const inSubject = profileUnits.filter(unit => units.includes(unit.key) && unit.course === course);
+    assert.equal(row.metaHintUnit, inSubject[inSubject.length - 1].key, 'last bound unit inside the question subject: ' + row.questionUid);
   }
   // every record of every grade keeps its placement when the hint is removed, except the rows that only the hint places
   let hintedRows = 0;
