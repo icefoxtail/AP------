@@ -334,10 +334,11 @@ test("home rows use the same row with the similar-problem cell, and the hint say
   assert.match(row, /class="exam-row-sim has"/);
   assert.match(row, /오늘/);
   assert.doesNotMatch(row, /finder-card-more/, "the 더보기 menu belongs to 학교별 기출 only");
-  // The same function draws a finder row: identical markup apart from range, 더보기 and the day label.
+  // The same function draws a finder row: identical markup apart from range, 더보기, the day label and the 함께 출제 check (finder only).
   t.w.state.find = { material: "exam", file };
   const finderRow = rowsOf(t.w.renderFind())[0];
-  const strip = (html) => html.replace(/<details class="finder-card-more">.*?<\/details>/s, "").replace(/<div class="exam-row-range">.*?<\/div>/s, "").replace(/ · 오늘/, "").replace(/\s+/g, " ");
+  const strip = (html) => html.replace(/<button data-action="multi-pick"[^>]*>.*?<\/button>/gs, "").replace(/<div class="exam-row-head">(.*?)<\/div>/s, "$1")
+    .replace(/<details class="finder-card-more">.*?<\/details>/s, "").replace(/<div class="exam-row-range">.*?<\/div>/s, "").replace(/ · 오늘/, "").replace(/\s+/g, " ");
   assert.equal(strip(row), strip(finderRow));
 });
 
