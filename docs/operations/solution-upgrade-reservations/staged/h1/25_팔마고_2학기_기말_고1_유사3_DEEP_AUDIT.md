@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 전 문항 수학 감사 — 25_팔마고_2학기_기말_고1_유사3
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_BLOCKER** — 이미지 22개 렌더·육안 검수, 결함 2개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 감사일: 2026-11-22 (KST)
 - 대상: `archive/exams/similar/high/h1/2final/25_팔마고_2학기_기말_고1_유사3.js`
 - 소스 SHA (감사 당시): `1f4eefe4da20259cba2ec4e9040dfb2089366496`
@@ -1128,3 +1131,39 @@ $-\dfrac{5}{2}<k\le -2$
 - 23개 문항의 텍스트·수식에 대해 독립 계산과 원문 정답·해설 일치를 확인하고 전부 KEEP_MATH로 기록.
 - 그림 의존 문항은 해설에 적힌 좌표·화살표·그래프 특징을 수학적으로 사용했으며 **실제 시각 이미지와의 대조 완료를 뜻하지 않음**.
 - 그림 생성·수정 및 이미지 최종 검수는 이번 작업에서 제외. 원본 시험지·해설·이미지 변경 없음.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_BLOCKER**. 연결 그림 22개, 그림 포함 16문항, 결함 후보 2건.
+- 절차: 실제 `archive/assets/images/25_팔마고_2학기_기말_고1_유사3/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_팔마고_2학기_기말_고1_유사3/`) | 최신 판정 |
+|---:|---|---|
+| 1번 | `문제: q01-problem.svg`, `해설: q01-solution.svg` | VISUAL_QA_BLOCKER (P0) |
+| 2번 | `문제: q02-problem.svg`, `해설: q02-solution.svg` | VISUAL_QA_PASS |
+| 3번 | `문제: q03-problem.svg`, `해설: q03-solution.svg` | VISUAL_QA_PASS |
+| 4번 | `해설: q04-solution.svg` | VISUAL_QA_PASS |
+| 5번 | `문제: q05-problem.svg`, `해설: q05-solution.svg` | VISUAL_QA_PASS |
+| 6번 | `해설: q06-solution.svg` | VISUAL_QA_PASS |
+| 7번 | `해설: q07-solution.svg` | VISUAL_QA_PASS |
+| 11번 | `해설: q11-solution.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 17번 | `해설: q17-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `문제: q18-problem.svg`, `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `문제: q19-problem.svg`, `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+| 21번 | `해설: q21-solution.svg` | VISUAL_QA_PASS |
+| 23번 | `해설: q23-solution.svg` | VISUAL_QA_FINDING (P3) |
+
+### 확인된 시각 결함·재검수 필요
+
+- **P0 · 1번 · q01-problem.svg**: 문제 (3)의 x=-2x=2, (5)의 y=2(x=-101) 등 겹치거나 잘못 합쳐진 주석이 노출됨. (4)에서 정답 판정에 필수적인 두 닫힌 끝점 표시가 없고, (5)는 해설에 있는 세 점 중 한 점만 그려짐(원본 SVG data-role=point 2개, 해설 SVG 6개). 문제 이미지 전체 재제작·재검수 전 배포 보류.
+- **P3 · 23번 · q23-solution.svg**: 동일한 (2,0) 표기가 인접해 두 번 노출됨. 의미는 유지되지만 좌표 표기 한 개 정리 권장.
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
