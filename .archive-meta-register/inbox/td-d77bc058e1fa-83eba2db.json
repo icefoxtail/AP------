@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-d77bc058e1fa-83eba2db",
+  "examUid": "20_풍덕중_1학기_중간_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "6d7baf8b3a66255f52977bdbbdfa808a74d2f624",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d77bc058e1fa-83eba2db.type-ledger.json",
+        "sha256": "ccc7e348504e36df2c1f72030898f980e5044b39d81e8883989cd0f141c802e9"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE"
+      },
+      "rationale": "각 진술을 이등변삼각형·직각삼각형 합동·외심의 성질로 하나씩 참·거짓 판정해 예·아니오 방향으로 경로를 따라 도착지를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a1fdf61a28af45cd2c859c00760f07b038419b1b502d469a0d37d92d2b053cb3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d77bc058e1fa-83eba2db.type-ledger.json",
+          "sha256": "ccc7e348504e36df2c1f72030898f980e5044b39d81e8883989cd0f141c802e9"
+        }
+      ]
+    }
+  ]
+}

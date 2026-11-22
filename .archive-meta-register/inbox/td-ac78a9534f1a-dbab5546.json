@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ac78a9534f1a-dbab5546",
+  "examUid": "22_향림중_1학기_기말_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.js",
+  "expectedSourceBlobSha1": "b8b2858cabd93e063ae62dcd1065662d2bf7c575",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ac78a9534f1a-dbab5546.type-ledger.json",
+        "sha256": "c236a97eeaeb8def6045296e2bf5d38e112d28c8fe24e48409bff470ba28ff56"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bab661a5e2755465c245195237420596b13d497356da3954ff362b33943798ca",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE"
+      },
+      "rationale": "a>b의 양변에 음수를 곱하면 부등호 방향이 바뀌는 성질로 보기마다 부등호 방향을 확인해 옳은 것을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "c6d6f675dc34f55ed6b34bce770c6fce734cff22e349a984f6b858861e5d3ea7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ac78a9534f1a-dbab5546.type-ledger.json",
+          "sha256": "c236a97eeaeb8def6045296e2bf5d38e112d28c8fe24e48409bff470ba28ff56"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0e9fe4483734ae0c8eacd9a0aa4e8d796ca9041f1b36666782997e3d5377c485",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING"
+      },
+      "rationale": "다섯 일차부등식을 각각 풀어 해를 비교하고 해가 다른 하나를 찾는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "96073d93cc75cee0ad35617118112445d63c42233d2688ee489215ae6b15949b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ac78a9534f1a-dbab5546.type-ledger.json",
+          "sha256": "c236a97eeaeb8def6045296e2bf5d38e112d28c8fe24e48409bff470ba28ff56"
+        }
+      ]
+    }
+  ]
+}

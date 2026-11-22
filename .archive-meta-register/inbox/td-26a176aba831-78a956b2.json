@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-26a176aba831-78a956b2",
+  "examUid": "20_매산고_1학기_기말_고3_기하",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h3/1final/20_매산고_1학기_기말_고3_기하.js",
+  "expectedSourceBlobSha1": "cdc66c61414736c38ba43059f87a6607956f5726",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-26a176aba831-78a956b2.type-ledger.json",
+        "sha256": "65042e9546e67ec60707576eed916d654cb6df1d769b1233fb087cf9630d484e"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a33eaadef258cf45b97880b425151d9ad38f0438fb095785f0c61cb1abcc5874",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS"
+      },
+      "rationale": "주축의 길이로 a=3을 얻고 점근선이 수직이라 b=a임을 써서 중심이 이동된 쌍곡선식에 점 (k,9)를 대입한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "8dc1f126d177d448ce8a07d61f784491c9cdf03d6ec4277734563d60344af2a5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-26a176aba831-78a956b2.type-ledger.json",
+          "sha256": "65042e9546e67ec60707576eed916d654cb6df1d769b1233fb087cf9630d484e"
+        }
+      ]
+    }
+  ]
+}
