@@ -489,6 +489,8 @@
   const quickState = { grade: "", subject: "", semester: "1", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
     // 진단평가 A·B형 두 벌 (a check box, not a mode); formB: the B paper when its window could not open with A's click.
     twoForms: false, formB: null,
+    // 진단평가 결과표 link: the question UIDs of the paper(s) just made ({ title, a, b }), cleared when the next one starts.
+    report: null,
     presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard", diagnostic: "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";

@@ -201,7 +201,23 @@
       button("finder-grade", esc(label), `type="button" class="find-grade grade-${id}" data-grade="${label}" aria-pressed="${filters.grade === label}"`)).join("");
     const terms = FINDER_TERMS.map(([value, label]) =>
       button("finder-axis-quick", esc(label), `type="button" class="find-term" data-axis="${value}" aria-pressed="${filters.axis === value}"`)).join("");
-    return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div><span class="find-divider" aria-hidden="true"></span><div class="find-terms" role="group" aria-label="시험 시기">${terms}</div></div>`;
+    return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div><span class="find-divider" aria-hidden="true"></span><div class="find-terms" role="group" aria-label="시험 시기">${terms}</div></div>${finderSubjectsMarkup(filters)}`;
+  }
+  // Subjects of the chosen grade (고1 공통수학1·2, 고2·고3 five subjects) as a row right under the grade
+  // buttons. Middle school (one subject) and "no grade yet" show nothing. It reads and writes the same
+  // state.find.semanticSubject as the 과목 select in the fold, so the two never disagree.
+  function finderSubjectChoices(filters) {
+    if (!filters.grade || !unifiedIndex()) return [];
+    const subjects = Unified.subjectChoices(filters.grade);
+    return subjects.length >= 2 ? subjects : [];
+  }
+  function finderSubjectsMarkup(filters) {
+    const subjects = finderSubjectChoices(filters);
+    if (!subjects.length) return "";
+    const current = filters.semanticSubject || Unified.subjectForFamily(filters.family) || "";
+    const buttons = [{ value: "", label: "전체" }, ...subjects].map(({ value, label }) =>
+      button("finder-subject", esc(label), `type="button" class="find-subject" data-subject="${esc(value)}" aria-pressed="${current === value}"`)).join("");
+    return `<div class="find-subjects" role="group" aria-label="과목">${buttons}</div>`;
   }
   // The one-exam filter (a link to a file) is shown by the exam's title, never by its file name.
   function finderFileLabel(file) {
@@ -269,7 +285,9 @@
           filters.family,
           "전체 계열",
         )}</select></label>`;
-    const open = state.findMoreOpen || filters.curriculumKey || filters.courseKey || filters.semanticSubject || filters.school || filters.yearFrom || filters.yearTo || filters.family;
+    // A subject chosen with the buttons under the grade does not pop the fold open.
+    const subjectOpens = filters.semanticSubject && !finderSubjectChoices(filters).length;
+    const open = state.findMoreOpen || filters.curriculumKey || filters.courseKey || subjectOpens || filters.school || filters.yearFrom || filters.yearTo || filters.family;
     return `<details class="find-more"${open ? " open" : ""}><summary>과목 · 학교 · 연도</summary><div class="find-more-fields"><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}<label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${familyField}</div></details>`;
   }
 

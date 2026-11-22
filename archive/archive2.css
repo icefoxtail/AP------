@@ -2127,6 +2127,36 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 .qk-r-after {
   font-size: 13px;
 }
+/* 진단평가 결과표 links of the paper just made; outside .qk-actions so they stay visible below 1100px. */
+.qk-report {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.qk-report-note {
+  margin: 0;
+  font-size: 13px;
+  word-break: keep-all;
+}
+.qk-report-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.qk-report-link:hover {
+  background: var(--chip);
+  color: var(--ink);
+}
 .qk-r-fill {
   padding: 8px 10px;
   border-radius: var(--radius-field);
@@ -3703,6 +3733,19 @@ body[data-archive-view="compose"] .compose-step-number {
 .find-term[aria-pressed="true"] {
   font-weight: 700;
 }
+/* 고1~고3 subjects right under the grade buttons; they wrap (never scroll sideways) so every subject is visible. */
+.find-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.find-subject {
+  padding: 0 16px;
+  font-weight: 500;
+}
+.find-subject[aria-pressed="true"] {
+  font-weight: 700;
+}
 .find-options {
   display: flex;
   flex-wrap: wrap;
@@ -3871,7 +3914,8 @@ body[data-archive-view="compose"] .compose-step-number {
     min-width: 54px;
     padding: 0 10px;
   }
-  .find-term {
+  .find-term,
+  .find-subject {
     padding: 0 14px;
     font-size: 15px;
   }
