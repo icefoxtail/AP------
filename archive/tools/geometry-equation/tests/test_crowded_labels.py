@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'production'))
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from graph_framing import fit_overview
-from visual_engine.label_layout import Box,layout,leader_crossed_strokes,CROSSING_LEADER_MAX_CROSSINGS
+from visual_engine.label_layout import Box,layout,leader_crossed_strokes,crossing_leader_placement,segment_hits_box,CROSSING_LEADER_MAX_CROSSINGS
 
 SAFE=Box(0,0,400,300)
 def name(ident,at,text='G'):
@@ -135,3 +135,64 @@ class OverlayLineFrameTests(unittest.TestCase):
         self.assertGreater(window[1],9)
 
 if __name__=='__main__':unittest.main()
+
+
+def arc_points(v,radius,start,delta,steps=24):
+    return [[v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)] for i in range(steps+1)]
+
+class LastResortCrossingTests(unittest.TestCase):
+    """(FC) The last resort of an angle label, a coordinate label on a curve, and the tick callout leader of a point on a curve."""
+
+    def angle_cell(self):
+        # triangle ABC (apex side BC on top) with O inside; the angle BOC is split by OE (E on BC), so every place outside the angle is beyond a stroke
+        v=(210.0,130.0);b=(190.0,70.0);c=(230.0,70.0);e=(210.0,70.0);a=(210.0,280.0)
+        start=math.atan2(b[1]-v[1],b[0]-v[0]);delta=math.atan2(c[1]-v[1],c[0]-v[0])-start
+        arc=arc_points(v,20.0,start,delta)
+        obstacles=[edge('AB',a,b),edge('AC',a,c),edge('BC',b,c),edge('OB',v,b),edge('OC',v,c),edge('OE',v,e),{'id':'arc1','kind':'curve','geometry':arc},point('O',v)]
+        mid=start+delta/2
+        item={'id':'a1-label','kind':'EQUATION_LABEL','target':'a1','at':[v[0]+24*math.cos(mid),v[1]+24*math.sin(mid)],'text':'BOC=2A','font':13.25,'priority':0,
+            'wedgeSearch':{'vertex':list(v),'bisector':mid,'start':start,'delta':delta,'rMin':24,'rMax':44,'rFar':60,'arcRadius':20.0},'gaps':(24,32,48,64),'leaderOwned':['arc1']}
+        return item,obstacles
+
+    def test_an_angle_label_shut_in_by_its_figure_takes_a_leader_that_crosses_one_stroke_only_in_the_last_resort(self):
+        item,obstacles=self.angle_cell()
+        first=layout([item],obstacles,SAFE,measurements={'a1-label':(60,18)},require_measurements=True,last_resort=False)
+        self.assertEqual(first['unresolved'],['a1-label'],'the ordinary layout never takes a crossing leader')
+        again=layout([item],obstacles,SAFE,measurements={'a1-label':(60,18)},require_measurements=True,last_resort=True)
+        self.assertEqual(again['unresolved'],[])
+        leader=[row for row in again['leaders'] if row['ownerLabelId']=='a1-label'][0]
+        self.assertTrue(leader['crossFallback'])
+        start=tuple(leader['from']);self.assertAlmostEqual(math.dist(start,(210,130)),20.0,places=3,msg='the leader starts on the angle\'s own arc')
+        crossed=leader_crossed_strokes(start,tuple(leader['to']),obstacles,{'arc1','OB','OC'})
+        self.assertTrue(crossed and sum(crossed.values())<=CROSSING_LEADER_MAX_CROSSINGS)
+        self.assertNotIn('OB',crossed);self.assertNotIn('OC',crossed)   # the angle's own rays are never crossed
+
+    def test_an_angle_label_with_room_gets_no_crossing_leader_in_the_last_resort(self):
+        item,obstacles=self.angle_cell()
+        obstacles=[o for o in obstacles if o['id'] in {'OB','OC','arc1','O'}]   # an open angle: its label has room outside the figure's strokes
+        result=layout([item],obstacles,SAFE,measurements={'a1-label':(60,18)},require_measurements=True,last_resort=True)
+        self.assertEqual(result['unresolved'],[])
+        self.assertEqual([row for row in result['leaders'] if row.get('crossFallback')],[])
+
+    def test_a_dot_on_a_sampled_curve_is_the_curves_own_ground_for_a_crossing_leader(self):
+        # the dot lies 0.002 px off the sampled polyline (curve samples never hit an exact value): the curve through it is not a stroke the leader crosses
+        at=(200.0,150.0)
+        curve={'id':'f-piece-1-branch-0','kind':'curve','geometry':[(100.0,150.002),(200.0,150.002),(300.0,150.002)]}
+        wall=[edge('w%d'%k,(200+dx,60),(200+dx,240)) for k,dx in enumerate((-60,60))]
+        label={'id':'P-coordinates','kind':'COORDINATE_LABEL','target':'P','at':list(at),'text':'(3/2,-27/4)','font':12.0,'priority':0,'exact':['3/2','-27/4']}
+        obstacles=[point('P',at),curve]+wall
+        found=crossing_leader_placement(at,40,20,obstacles,lambda box,owner_check=True:box.x>=0 and box.y>=0 and box.right<=400 and box.bottom<=300 and not any(segment_hits_box(*o['geometry'][:2],box) for o in obstacles if o['kind']=='line' and o['id'].startswith('w')),{'P'})
+        self.assertIsNotNone(found,'the curve through the dot is its own ground, the wall beyond is the one stroke crossed')
+        self.assertEqual(found[2],1)
+
+    def test_a_tick_number_on_a_point_where_a_trig_curve_crosses_the_axis_takes_a_callout_leader(self):
+        tick={'id':'tick-x-3','kind':'line','role':'tick','axis':'x','value':3,'geometry':[(100,156),(100,164)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(200,160)]}
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(70,190),(100,160),(130,130)]}   # rising through the tick: below left and above right
+        item={'id':'tick-x-3-label','kind':'TICK_LABEL','at':[100,160],'text':'π','font':11.5,'priority':0,'tickId':'tick-x-3','tickAxis':'x','tickValue':3.0,'tickDisplayValue':'π','directions':('S','N'),'gaps':(8,12)}
+        dot={'id':'trig-key--1','kind':'circle','geometry':(100,160,3.2)}   # the key dot on the tick: the curve runs through it
+        result=layout([item],[tick,axis,curve,dot],Box(0,0,200,240),measurements={item['id']:(20,16)},require_measurements=True)
+        self.assertEqual(result['unresolved'],[])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        bare=layout([item],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(20,16)},require_measurements=True)
+        self.assertEqual(bare['unresolved'],[item['id']],'a curve with no dot on the tick is never its own ground of the tick')

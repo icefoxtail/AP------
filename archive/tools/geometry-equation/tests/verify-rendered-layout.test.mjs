@@ -128,6 +128,30 @@ test('G5b: a vertical overlay line through the tick belongs to the tick and may 
   const beside=make();beside.geometry.push({id:'overlay-line-k',kind:'line',role:'line',points:[[112,20],[112,300]],client:{x:112,y:20,width:1,height:280},strokeWidthPx:1,paintOrder:1});
   assert.ok(analyzeRenderedLayout(beside).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
 });
+test('a trigonometric curve (f-branch-N) through the tick belongs to the tick like a piecewise curve; a curve beside it may not be touched',()=>{
+  const make=()=>{
+    const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+    label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+    const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+    c.geometry.push(leader);return c;
+  };
+  const through=make();through.geometry.push({id:'f-branch-0',kind:'curve',role:'curve',points:[[70,190],[100,160],[100.2,159.8],[108,152]],client:{x:70,y:152,width:38,height:38},strokeWidthPx:1,paintOrder:1});
+  const ok=analyzeRenderedLayout(through);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));
+  const beside=make();beside.geometry.push({id:'f-branch-0',kind:'curve',role:'curve',points:[[112,190],[112,100]],client:{x:112,y:100,width:1,height:90},strokeWidthPx:1,paintOrder:1});
+  assert.ok(analyzeRenderedLayout(beside).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
+});
+test('a key dot (a small circle) drawn on the tick is part of the tick; a large circle centred on it is not',()=>{
+  const make=()=>{
+    const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+    label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+    const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+    c.geometry.push(leader);return c;
+  };
+  const dot=make();dot.geometry.push({id:'trig-key--1',kind:'circle',role:'point',at:[100,160],radius:3.2,client:{x:96.8,y:156.8,width:6.4,height:6.4},strokeWidthPx:0,paintOrder:1});
+  const ok=analyzeRenderedLayout(dot);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));
+  const big=make();big.geometry.push({id:'source-circle',kind:'circle',role:'line',at:[100,160],radius:30,client:{x:70,y:130,width:60,height:60},strokeWidthPx:1,paintOrder:1});
+  assert.ok(analyzeRenderedLayout(big).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
+});
 test('a tick leader may leave its exact circle-axis intersection but may not enter or brush a near circle',()=>{
   const inspect=(center,radius)=>{
     const c=tickCapture({id:'tick-x-6',value:6,point:[100,160],box:{x:121,y:132,width:14,height:12}});

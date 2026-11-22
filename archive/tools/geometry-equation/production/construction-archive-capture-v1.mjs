@@ -99,7 +99,7 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
     const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress,requireOriginal:true});// measureArchiveDisplayEnvelope takes any .js under archive/exams/ (original, similar, textbooks, other folders; no path escape or link out of it)
     if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'INTRINSIC_SVG'});
     createRun(input.runRoot,runId);
-    // One real-Archive measurement of the target at the given solutionImageScale (undefined = the default 60% rule); the evidence it leaves is what the policy is derived from.
+    // One real-Archive measurement of the target at the given solutionImageScale (undefined = the page's default rule: 80% of the column since 2026-11-21, 60% before); the evidence it leaves is what the policy is derived from.
     const measureAt=async scale=>{
       const preflightRun=path.join(input.productionDir,scale===undefined?'display-envelope-preflight':'display-envelope-preflight-scale'+scale);fs.mkdirSync(preflightRun,{recursive:true});
       state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
@@ -112,12 +112,12 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
       state.evidence={observationSha256:objectSha(measured.observation),matrixSha256:bytesSha(fs.readFileSync(path.join(preflightRun,'archive-render-matrix.json'))),archiveRow:fileRef(root,rel(path.join(measured.captureFolder,rowName))),screenshot:fileRef(root,rel(path.join(measured.captureFolder,shotName))),engineSha256:'sha256:'+measured.rowEvidence.engineSha256};
       return measured;
     };
-    // The default 60% display is always the binding side (it is smaller than the phone's), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
+    // The default A4 display (80% of the column = 253 css px) is always the binding side (the phone shows a canvas at that same 253 px at most, with a lower font floor), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
     const derive=(measured,scale)=>requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation:measured.observation,fontFloorCssPx:11,...(scale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(intrinsicSvg.width)}:{})});
     let measured=await measureAt(undefined),policy=null,refusal=null;
     try{policy=derive(measured,undefined);}
     catch(error){if(!isDomainCode(error))throw error;refusal=error;}
-    // 2026-11-19: A4 shows a solution figure at 60% of the column (figure-size.css), so a wide canvas (> about 540 px) would need a base font above the cap.
+    // 2026-11-19 (60% then, 80% since 2026-11-21: figure-size.css --ap-fig-sol): A4 shows a solution figure at a fixed share of the column, so a wide canvas (> about 720 px at 80%) would need a base font above the cap. The default is always the page's own, measured, never assumed.
     // Instead of refusing, the question carries solutionImageScale (% of the column, the same per-figure override the page reads): the figure is measured again
     // at that scale in the real Archive, and the scale is handed to the capture and to publication. Phone layouts ignore it (they size by natural width), so their labels only get larger.
     if(!policy&&refusal.message==='UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE'){
@@ -220,7 +220,7 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
   try{derived=requestedProfileTypographyPolicy({requestedSizeClass:measuredPolicy.policy.requestedSizeClass,intrinsicSvg:envelope.intrinsicSvg,observation,fontFloorCssPx:measuredPolicy.policy.fontFloorCssPx,...(envelope.solutionImageScale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(envelope.intrinsicSvg.width)}:{})});}
   catch(error){bad('POLICY_NOT_DERIVED_FROM_EVIDENCE',{code:errorText(error)});}
   if(!same(derived,measuredPolicy.policy))bad('POLICY_NOT_DERIVED_FROM_EVIDENCE');
-  // The display scale the policy was measured at must be the one the row recorded (none = the default 60% rule): a different scale would display differently from what the policy assumed.
+  // The display scale the policy was measured at must be the one the row recorded (none = the default rule of the page): a different scale would display differently from what the policy assumed.
   if(measuredPolicy.solutionImageScale!==envelope.solutionImageScale)bad('SOLUTION_IMAGE_SCALE_NOT_IN_EVIDENCE',{claimed:measuredPolicy.solutionImageScale??null,measured:envelope.solutionImageScale??null});
   if(!same(envelope.intrinsicSvg,intrinsic))bad('INTRINSIC_SVG_DIFFERS_FROM_MEASURED',{measured:envelope.intrinsicSvg,svg:intrinsic});
   // L1 relocates an owner label only under this measured policy and this source (its repairContext): re-check every such binding here.
