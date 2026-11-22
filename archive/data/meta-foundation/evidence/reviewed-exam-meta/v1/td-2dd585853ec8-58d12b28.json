@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-2dd585853ec8-58d12b28",
+  "requestSha256": "87e6d1eaf0b28aed342d1bca6dfe2edf3402fbc19b9d8fc0b51548ba0ec1ad07",
+  "examUid": "21_연향중_2학기_중간_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_연향중_2학기_중간_중2_수학.js",
+  "sourceBlobSha1": "42f6385953f4298e7fcb6c99ad28493eb512d6a8",
+  "sourceRawSha256": "3b4b369d100cb67a59fa33ab36e00fdd653a7f8704b1b98e8ac5858e1da0190f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2dd585853ec8-58d12b28.type-ledger.json",
+        "sha256": "3cac853609abf37e085c6d761f25444f7acb87b21456441760313c1ec39e4d9e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6eeb88c697961f3b4f2f00395f4c4928483ef2107108f9a1267d4dbc6b94b3da",
+      "sourceArchiveFile": "original/middle/m2/2mid/21_연향중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2dd585853ec8-58d12b28",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "한 쌍의 대변이 평행하고 길이가 같다는 조건에 대각선 AC를 그어 엇각과 공통변으로 합동을 보이고 평행사변형 판정을 완성한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "03686e5691f556ebe6db9de8a650861d1241a940283ec5876021145db88a8fcb",
+        "judgedContentFingerprint": "06718ecbcaa22997577d3c0b34e057e2886ba9b51339716f3d34a77ed12e6341",
+        "rowBinding": "content",
+        "textBindingFingerprint": "bb108bf8b5587f0c89877021c0daa44c87daec2b2fe4c0e76aa9869f8c552c0b",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2dd585853ec8-58d12b28.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 21
+}

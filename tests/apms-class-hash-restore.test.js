@@ -10,6 +10,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const vm = require('node:vm');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
@@ -158,11 +159,11 @@ test('연결: 보호 항목은 해시를 유지하고, hashchange를 듣지 않�
 test('카드 제목과 스크립트 버전', () => {
     assert.ok(read('apmath/js/dashboard.js').includes('>반 관리</h3>') && read('apmath/js/dashboard-teacher.js').includes('>반 관리</h3>'));
     assert.ok(!/>학급관리<\/h3>/.test(read('apmath/js/dashboard.js') + read('apmath/js/dashboard-teacher.js')));
-    assert.match(index, /js\/core\.js\?v=20261117-examdata-1/);
-    assert.match(index, /js\/dashboard\.js\?v=20261105-offline-sync-1/);
-    assert.match(index, /js\/student\.js\?v=20261105-offline-sync-1/);
-    assert.match(index, /app\.js\?v=20261105-offline-sync-1/);
+    assertLoads(index, 'js/core.js', 'index');
+    assertLoads(index, 'js/dashboard.js', 'index');
+    assertLoads(index, 'js/student.js', 'index');
+    assertLoads(index, 'app.js', 'index');
     for (const f of ['ui.js', 'dashboard-teacher.js']) {
-        assert.ok(new RegExp(`js/${f.replace('.', '\\.')}\\?v=20261102-(nav-hash|cleanup|perf)-\\d`).test(index), `${f} ?v= 올림`);
+        assertLoads(index, `js/${f}`, 'index');
     }
 });

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-6901c7e97620-ad3a229f",
+  "requestSha256": "c6e4a8fa0bd6d5658aa63b64ec952582ffb2943778a07018fc07218526984f61",
+  "examUid": "비상_미적분1_미분_대단원학습평가_고2",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_미분_대단원학습평가_고2/비상_미적분1_미분_대단원학습평가_고2.js",
+  "sourceBlobSha1": "941f27b93fb35b002c4dccfed34d41c7c9560fb6",
+  "sourceRawSha256": "157d760ea3b2e4b26ed668055dce71fb8315c2e17ae8ba6efbcd315196aaadc9",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6901c7e97620-ad3a229f.type-ledger.json",
+        "sha256": "5d794248d24437086bb73f7998ab210c4961e695c8c1e75281326d7e551470a8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cdf78dd56059b0a24dac2082d3081ea434b2895c0dfe74ad133e965461791164",
+      "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_미분_대단원학습평가_고2/비상_미적분1_미분_대단원학습평가_고2.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_DERIVATIVE_RATE_RELATION_SLOPE_COMPARE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-6901c7e97620-ad3a229f",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "평균변화율은 두 점을 잇는 할선의 기울기이고 f'(c)는 접선의 기울기이므로 할선과 평행한 접선을 갖는 점의 개수를 그래프에서 센다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request",
+          "rowCourse": "미적분1",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "3cf81cbbbe18f2063e8bd5160f22951f5cc2a51134668baf5c36374b29dbaac7",
+        "judgedContentFingerprint": "012414afa45942b514829910e1f15c0db53f55a599d20143b3da3a97a84129cc",
+        "rowBinding": "content",
+        "textBindingFingerprint": "16b836ca0591e5bf6d32e71b6ebd7bdf52834735168a5e62778e232fb6f640ac",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6901c7e97620-ad3a229f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 14
+}

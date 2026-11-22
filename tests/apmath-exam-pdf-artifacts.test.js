@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { test } = require('node:test');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
@@ -45,10 +46,10 @@ assert.ok(pdfRoute.includes('Archive2PdfReadiness.assertReady'), 'Worker must us
 assert.ok(pdfReadiness.includes('image.naturalWidth <= 0'), 'required image failures should block PDF sealing');
 assert.ok(pdfReadiness.includes('image.decode()'), 'required images must decode before PDF sealing');
 assert.ok(pdfReadiness.includes('layout overflow detected'), 'layout overflow should block PDF sealing');
-assert.ok(mixedEngine.includes('archive2-pdf-readiness.js?v=20261106-output-performance-1'), 'mixed engine should load the shared readiness gate');
-assert.ok(screenEngine.includes('archive2-pdf-readiness.js?v=20261106-output-performance-1'), 'screen engine should load the shared readiness gate');
-assert.ok(mixedEngine.includes('exam-render-executor.js?v=20261118-auto-promote-1'), 'mixed engine should load the current shared slot renderer');
-assert.ok(screenEngine.includes('exam-render-executor.js?v=20261118-auto-promote-1'), 'screen engine should load the current shared slot renderer');
+assertLoads(mixedEngine, 'archive2-pdf-readiness.js', 'mixed engine (shared readiness gate)');
+assertLoads(screenEngine, 'archive2-pdf-readiness.js', 'screen engine (shared readiness gate)');
+assertLoads(mixedEngine, 'exam-render-executor.js', 'mixed engine (shared slot renderer)');
+assertLoads(screenEngine, 'exam-render-executor.js', 'screen engine (shared slot renderer)');
 assert.ok(pdfRoute.includes('env.EXAM_PDF_BUCKET.put'), 'generated PDF should be saved to R2');
 assert.ok(pdfRoute.includes('env.EXAM_PDF_BUCKET.get'), 'downloads should stream the saved R2 object');
 assert.ok(pdfRoute.includes("url.searchParams.set('class'"), 'rendered PDFs should preserve class QR identity');

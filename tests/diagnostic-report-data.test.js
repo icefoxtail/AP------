@@ -237,7 +237,7 @@ for (const input of [undefined, null, {}, { questions: [], responses: [] }, { qu
 const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report-view.js'));
 {
   const unitNames = ['소인수분해', '정수와 유리수', '문자와 식', '좌표평면과 그래프'];
-  const lv = (no) => (no <= 5 ? 1 : no <= 10 ? 2 : no <= 20 ? 3 : no <= 22 ? 4 : 5);
+  const lv = (no) => (no <= 5 ? 1 : no <= 10 ? 2 : no <= 20 ? 3 : no <= 23 ? 4 : 5);
   const viewQuestions = (unitOf) => Array.from({ length: 24 }, (_, k) => {
     const no = k + 1;
     const u = unitOf ? unitOf(no) : unitNames[k % 4];
@@ -256,7 +256,7 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
     assert.ok(!/PT_|TPL_|bucket|UID|qid_|undefined|NaN|null/i.test(flat(out)), '내부 용어·키·빈 값이 화면에 나오면 안 된다');
     assert.ok(out.types.includes('유형 미분류'), '이름 없는 유형은 유형 미분류로 묶는다');
   }
-  assert.ok(/4~5단계\(심화\)까지 모두 안정적으로/.test(hi.summary), '상: 모든 단계 안정');
+  assert.ok(/4단계\(심화\)까지 모두 안정적으로/.test(hi.summary), '상: 모든 단계 안정(1문항뿐인 5단계는 판정하지 않는다)');
   assert.ok(/2단계\(기본\)까지는 안정적으로/.test(mid.summary) && /3단계\(응용\)에서는 10문항 중 6문항/.test(mid.summary), '중: 3단계에서 정답이 줄기 시작');
   assert.ok(/2단계\(기본\)에서는 5문항 중 0문항/.test(low.summary) && /1단계\(기초\)까지는 안정적으로/.test(low.summary), '하: 2단계부터 보완');
   assert.ok(!/(잘못|부족|못합니다|실패)/.test(flat(hi) + flat(mid) + flat(low)), '학생·학부모를 깎아내리는 말을 쓰지 않는다');
@@ -282,6 +282,21 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.strictEqual(low.wrongLayout, 'double');
   assert.ok(low.wrong.includes('two-tables'));
   assert.ok(!/class="tag/.test(hi.heat), '단원×단계 칸에는 태그가 없고 숫자와 농도만 쓴다');
+
+  // 단계는 문항의 실제 단계(1~5)로 나눠 보인다: 시험지 구역 제목과 같고 "4~5단계" 묶음은 어디에도 없다. 문항이 없는 5단계는 줄에서 빠진다.
+  const stageNames = (out) => out.vm.groups.map((x) => x.k);
+  assert.deepStrictEqual(stageNames(hi), ['1단계', '2단계', '3단계', '4단계', '5단계']);
+  assert.ok(/<div class="name">4단계 /.test(hi.levels) && /<div class="name">5단계 /.test(hi.levels) && !/4~5/.test(flat(hi) + flat(mid) + flat(low)));
+  assert.strictEqual(hi.vm.groups.find((x) => x.key === '4').g.total, 3);
+  assert.strictEqual(hi.vm.groups.find((x) => x.key === '5').g.total, 1);
+  assert.ok(/<th>4단계<\/th><th>5단계<\/th>/.test(hi.heat), '단원×단계 열도 4단계·5단계로 나뉜다');
+  assert.ok(/class="legend band-legend">.*4단계.*5단계/.test(hi.line) && /bd4"/.test(hi.line) && /bd5"/.test(hi.line));
+  const noFive = run([8], viewQuestions().map((q) => ({ ...q, difficulty: Math.min(q.difficulty, 4) })));
+  assert.deepStrictEqual(stageNames(noFive), ['1단계', '2단계', '3단계', '4단계']);
+  assert.ok(!/5단계/.test(noFive.levels) && !/<th>5단계<\/th>/.test(noFive.heat), '5단계 문항이 없으면 5단계 줄·열을 보이지 않는다');
+  // 틀린 문항·유형 표의 단계 칸도 실제 단계 숫자다.
+  assert.ok(/<td class="n">5<\/td>/.test(run([24]).wrong), '틀린 문항 표: 5단계 문항은 5');
+  assert.ok(/<td class="n">4<\/td>/.test(run([22]).wrong));
 
   // 작은 표본: 3문항 미만 칸은 판정 문구·색 없이 맞은 수/문항 수만
   const small = run([1, 24], viewQuestions((no) => (no >= 23 ? '통계' : unitNames[no % 4])));

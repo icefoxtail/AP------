@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-fb49b5e82358-2f0f4625",
+  "requestSha256": "917bbbdd9f479779071644dfd344da8e48dedb4ed5b5c80f21f8bd66b77c2c41",
+  "examUid": "21_신흥중_1학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "sourceBlobSha1": "47a44def9a4ce5e734c1933ba9a41d5928d2ce75",
+  "sourceRawSha256": "8c534c86410d8eb7e26c50037c229bd763a151d4dd559e64a50d658b45cdb2ef",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fb49b5e82358-2f0f4625.type-ledger.json",
+        "sha256": "a047100c5951b2019cb7d584d3031490ddcf2e1744de9f689313fbf2bf7b4d6b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c369b18df10631168962b1f36f461ed9b9122bf226f28295e4ba410fa8356c63",
+      "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-fb49b5e82358-2f0f4625",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "보기마다 순환마디를 찾아 처음과 끝 숫자 위에 점을 찍는 표기가 맞는지 확인한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5c7fece3dd093ad028af93a503f3947546c59ea0b8a9b0dba5e72d26fecc05c8",
+        "judgedContentFingerprint": "8d87211f2bd7a3da457e6a94671b471e40ca1cb2e57066d3509c53363759dceb",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "1f2fb9a58a993afdda713db9100d86044a6b1f3debf3f7b9a5ef7781b7f7a4b0",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fb49b5e82358-2f0f4625.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

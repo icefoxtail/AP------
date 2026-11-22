@@ -13,6 +13,7 @@ const core = require('../archive/archive2-core.js');
 const canonical = require('../archive/archive2-canonical.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const archiveDir = path.join(root, 'archive');
@@ -275,7 +276,7 @@ test('textbook figures beside the source JS resolve at render time without touch
   for (const page of ['engine.html', 'mixed_engine.html']) {
     const html = fs.readFileSync(path.join(archiveDir, page), 'utf8');
     assert.match(html, /readiness\.resolveSourceRelativeImage\(src, readiness\.sourceFileOfImage\(image\)/, page);
-    assert.match(html, /question-image-readiness\.js\?v=20261106-output-performance-1/, page);
+    assertLoads(html, 'question-image-readiness.js', page);
   }
   // Every figure the registered textbook sources reference by bare file name exists beside its JS.
   let figures = 0;

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-629a1dc7c0cc-0a96174c",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_147944d7c0520fc1ac7abd1f9fe8e125e88300667335dd63c5bedc6c83bf445c",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "조건의 경계수열을 구하고 부분분수 망원합의 무한극한을 계산한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 원문 공집합 조건에는 자연수 a=1,2도 해당하므로 a1=5와 모순이나 주어진 예에 따른 의도적 수열은 판독 가능. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}
