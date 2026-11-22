@@ -718,6 +718,18 @@ def audit(plan,svg):
         elif leader_key in leaders_by_label:
             errors.append('MEASURE_LEADER_UNEXPECTED:%s'%sid)
 
+    # a coordinate label's leader meets its own label and dot and crosses nothing (as the conic observer asks)
+    for pid in sorted(coordinate_ids):
+        key='point-'+pid;leader=leaders_by_label.get(key);element=label_elements.get(pid)
+        if leader is None or element is None or pid not in points: continue
+        box=_box_of(element)
+        if box is None: continue
+        x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+        ex,ey=pixel(*points[pid])
+        if _box_boundary_distance((x1,y1),box)>2.5: errors.append('MEASURE_LEADER_NOT_AT_LABEL_BOX:%s'%key)
+        if not 3.5<=math.hypot(x2-ex,y2-ey)<=8.0: errors.append('MEASURE_LEADER_NOT_AT_OWNER:%s'%key)
+        leader_clear(key,leader,box)
+
     returns={'status':'PASS' if not errors else 'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
     return returns
 
