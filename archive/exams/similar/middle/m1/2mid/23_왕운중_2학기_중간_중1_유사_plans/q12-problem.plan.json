@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 평행선 l, m 사이에 꺾인 선분이 이루는 각 x, y를 나타낸 그림이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "L1",
+        "P1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P3",
+        "M2"
+      ]
+    }
+  ],
+  "status": "ACTIVE",
+  "assetPath": "assets/images/23_왕운중_2학기_중간_중1_유사/q12.svg",
+  "sourceQuote": "다음 그림에서 $l\\parallel m$일 때, 각 $",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-problem-result.json",
+    "statePath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-problem-state.json",
+    "svgPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-problem-solution.svg"
+  }
+}

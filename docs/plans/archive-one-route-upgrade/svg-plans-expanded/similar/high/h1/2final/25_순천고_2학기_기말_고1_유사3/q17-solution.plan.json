@@ -1,0 +1,108 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -11,
+   4,
+   -2,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "4",
+     "-2"
+    ],
+    "offset": "-2",
+    "abs": true,
+    "domain": [
+     "-10",
+     "2"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "formula",
+     "start"
+    ]
+   },
+   {
+    "id": "a",
+    "kind": "LINE",
+    "coefficients": [
+     "1",
+     "1/2"
+    ],
+    "domain": [
+     "-10",
+     "3"
+    ],
+    "color": "WARM",
+    "label": "y=x/2+1"
+   },
+   {
+    "id": "b",
+    "kind": "LINE",
+    "coefficients": [
+     "1",
+     "1"
+    ],
+    "domain": [
+     "-10",
+     "3"
+    ],
+    "color": "GREEN",
+    "style": "DASHED",
+    "label": "y=x+1"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "0",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "S",
+     "x": "2",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "Ef",
+     "unnamed": true,
+     "x": "-6",
+     "y": "2"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "Ef",
+     "text": "y=f(x)",
+     "direction": "N",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "S": "S"
+ },
+ "caption": "직선 y=kx+1은 항상 점 P(0,1)을 지난다. k=1/2이면 직선이 곡선의 시작점 S(2,2)를 지나고 왼쪽 가지와 한 점에서 더 만나 모두 두 점에서 만난다. k>1/2이면 교점이 한 개뿐이다(예: k=1). 따라서 k의 최댓값은 1/2이므로 답은 ①이다. (곡선은 y=f(x)=|√(4-2x)-2|이다.)",
+ "sourceConditions": [
+  "y=|√(4-2x)-2|와 y=kx+1이 서로 다른 두 점에서 만나는 k의 최댓값"
+ ],
+ "newVisualInformation": [
+  "점 P(0,1)을 지나는 직선 y=x/2+1은 시작점 S(2,2)를 지나고, 더 가파른 직선 y=x+1은 한 점에서만 만남"
+ ]
+}

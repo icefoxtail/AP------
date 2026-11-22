@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "동위각을 옮겨 평행선을 작도하는 올바른 순서를 설명하는 다이어그램이다.",
+  "accessibilityDescription": "동위각 작도 순서와 원리를 나타낸 해설 그림.",
+  "sourceQuote": "동위각을 이용한 평행선의 작도 순서:",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Q",
+    "P",
+    "L1",
+    "L2",
+    "M1",
+    "M2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sQP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "assetPath": "assets/images/24_왕운중_2학기_중간_중1_유사/q10-solution.svg",
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "M1",
+    "M2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q10-solution-result.json",
+    "statePath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q10-solution-state.json",
+    "svgPath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q10-solution-solution.svg"
+  }
+}

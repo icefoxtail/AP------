@@ -111,7 +111,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 두 점 A, B를 잇는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "x=2에서 x=10까지의 평균변화율은 (105-9)/8=12이고 그림의 할선 l의 기울기이다. f′(x)=2x이므로 2a=12에서 a=6이고, 접점 T(6,41)에서의 접선 m의 기울기가 12로 l과 평행하다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -213,10 +218,10 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/22_순천고_2학기_중간_고2_수학II/q8.png",
-    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "홀함수의 음수 구간 대응과 f의 좌우극한을 설명하는 해설 그래프",
-    "solutionImageCaption": "x→−1+, x→−2+를 t=−x로 바꾸어 양수 쪽 좌극한과 부호를 읽는다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점에 대하여 대칭이며 x=-1과 x=1에서 열린 점과 닫힌 점으로 끊어지는 직선 조각들로 이루어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 원점 대칭 그래프이다. [0,2]에서 x→1-일 때 f→1이고 x→2-일 때 f→-2이다. f(-x)=-f(x)이므로 x→-1+에서 f(x)=-f(-x)→-1이고 x→-2+에서 f(x)→2이다. 따라서 합은 -1+2=1이고 답은 ④이다.",
+    "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "content": "정의역이 $\\{x\\mid -2\\le x\\le2\\}$인 함수 $y=f(x)$의 그래프가 구간 $[0,2]$에서 그림과 같고, 정의역에 속하는 모든 실수 $x$에 대하여 $f(-x)=-f(x)$이다. $\\displaystyle\\lim_{x\\to-1+}f(x)+\\lim_{x\\to-2+}f(x)$의 값은? [3.8점]",
     "choices": [
@@ -407,7 +412,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 두 점 O, A에서 지나며 가운데가 봉우리 V인 W 모양의 그래프와 봉우리 V를 지나는 수평선이 그려진 그래프이다.",
+    "solutionImageCaption": "y=|x²-2x|의 그래프는 W 모양이다. 수평선 y=t와의 교점의 개수 f(t)는 t<0에서 0, t=0에서 2(O, A), 0<t<1에서 4, t=1에서 3(그림의 수평선 y=1은 V에서 접하고 양쪽에서 1개씩 만남), t>1에서 2이다. 불연속점 t=0, 1에서 g(0)=g(1)=0이어야 하므로 g(t)=t(t-1)이다. lim f(t)(t→1-)=4, g(3)=6이므로 합은 10이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -491,7 +500,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오른쪽 아래로 내려가는 직선 조각이 점 P에서 위로 볼록한 포물선 조각으로 이어지는 그래프와 대각선 직선 y=x가 있고, 곡선 위의 점 A, P, B가 표시되어 있다.",
+    "solutionImageCaption": "f와 역함수의 그래프는 직선 y=x에 대칭이므로 교점은 y=x 위의 점이거나 대칭인 두 점의 쌍이다. 그림의 f는 P(1,1)에서 직선 y=x 위에 있고 A(-1,2), B(2,-1)은 y=x에 대칭인 한 쌍이다. 이 세 점이 교점이 되도록 f(1)=1에서 c=-3/2, f(-1)=2에서 a=-1/2, b=3/2이다. 따라서 2a+b-c=-1+3/2+3/2=2이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 18,
@@ -628,6 +642,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선의 양쪽 높이가 같은 두 점 P, Q에서의 접선 l, m이 서로 다른 기울기로 그려져 있고, 두 접선이 가로축과 만나는 점 A, B가 표시된 그래프이다.",
+    "solutionImageCaption": "예: k=1일 때의 y=x²-2x+4이다. P(0,4)에서의 접선 l(기울기 -2)과 Q(2,4)에서의 접선 m(기울기 2)이 x축과 만나는 점은 A(2,0), B(0,0)이다. 일반적으로 A의 x좌표는 (3k²+1)/(2k), B의 x좌표는 (k²-1)/(2k)이고 AB=k+1/k이다. k+1/k≥2이고 등호는 k=1일 때이므로 AB의 최솟값 2가 그림의 경우이다. 따라서 답은 2이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

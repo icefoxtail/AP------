@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a276de574b86-c64cb975",
+  "examUid": "21_팔마중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "e823618e19cf461d0cbc0e2843c297a616626542",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a276de574b86-c64cb975.type-ledger.json",
+        "sha256": "41420710d15833fc4b63db9bf72d1a34a67cb097ce8205b6c4550cb6b90abd99"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA"
+      },
+      "rationale": "두 삼각형의 공통각과 대응변의 비로 SAS 닮음을 판정하고 닮음비로 길이를 구해 옳은 설명을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "d80ef93c32d7101e43763bcdab32355d6fd0d8dbdedc4731c6beec3226305f89",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a276de574b86-c64cb975.type-ledger.json",
+          "sha256": "41420710d15833fc4b63db9bf72d1a34a67cb097ce8205b6c4550cb6b90abd99"
+        }
+      ]
+    }
+  ]
+}

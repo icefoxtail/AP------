@@ -22,7 +22,7 @@ export function makeCourseAliases(doc = null) {
   const successor = [];
   for (const group of doc?.successorGroups || []) {
     const sides = Object.entries(group.curricula || {}).map(([curriculum, courses]) => ({ curriculum, courses: new Set(courses.map(canonical)) }));
-    successor.push({ id: group.id, sides });
+    successor.push({ id: group.id, sides, lists: Object.values(group.curricula || {}).map(courses => courses.map(canonical)), raw: Object.values(group.curricula || {}) });
   }
   const moves = doc?.courseMoves || [];
   return {
@@ -43,6 +43,18 @@ export function makeCourseAliases(doc = null) {
         if (sideA >= 0 && sideB >= 0 && sideA !== sideB) return "successor";
       }
       return "";
+    },
+    // The same subject under the other curriculum's name (수학(상) -> 공통수학1, 수학I -> 대수), paired by position in the successor
+    // group's lists (group.curricula lists the courses in the same order on both sides). Returns [] for a name in no successor group.
+    counterparts(value) {
+      const name = canonical(value), found = [];
+      for (const group of successor)
+        group.lists.forEach((list, side) => {
+          const index = list.indexOf(name);
+          if (index < 0) return;
+          group.raw.forEach((courses, other) => { if (other !== side && courses[index]) found.push(courses[index]); });
+        });
+      return found;
     },
     // "reach": the key's course grade is at or below max(row course grade, exam folder grade), or a listed move (courseMoves) says
     // that unit sat in the exam's grade when the exam was taken. Never a key of a higher grade than the exam: that key is wrong or

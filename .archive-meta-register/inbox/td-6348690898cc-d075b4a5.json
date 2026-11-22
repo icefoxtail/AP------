@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6348690898cc-d075b4a5",
+  "examUid": "미래엔_공통수학2_집합과명제_대단원마무리_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_집합과명제_대단원마무리_고1/미래엔_공통수학2_집합과명제_대단원마무리_고1.js",
+  "expectedSourceBlobSha1": "f826afece12cc9e02ee973a8b43e02da4977da49",
+  "expectedQuestionCount": 17,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6348690898cc-d075b4a5.type-ledger.json",
+        "sha256": "361ed531dc78c50a59059d874145bc3b255788b6045312ae6c39cd72b726876e"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1b28f1d22651fffab194ac39eff63150143af38c32236220eb9b584f087451ff",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION"
+      },
+      "rationale": "진리집합의 포함 관계로 충분조건·필요조건·필요충분조건을 각각 판정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "7b3b0603194bea8e88e9be4c53e8899560e56fbc68277ae8776bbf58fead02fc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6348690898cc-d075b4a5.type-ledger.json",
+          "sha256": "361ed531dc78c50a59059d874145bc3b255788b6045312ae6c39cd72b726876e"
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,7 @@ export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
 const REGISTRAR = 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs';
 const DIFFICULTY_REGISTRAR = 'archive/tools/meta-foundation/register-difficulty5.mjs';
+import { questionMetadataBytesAt, hasShards, assembleMetadataFile } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 const METADATA = 'archive/data/question_metadata.json';
 const CONSUMER = 'archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs';
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
@@ -36,7 +37,9 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source, isTextBoundDraft } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from '../../archive/tools/meta-foundation/text-binding-lib.mjs';
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
+import { DECISION_DOCUMENT as TYPE_JUDGMENT_DECISION_DOCUMENT } from '../../archive/tools/meta-foundation/register-type-judgment.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -67,10 +70,13 @@ function fileRef(root, file) {
   const bytes = fs.readFileSync(full);
   return { path: file, sha256: sha(bytes), sizeBytes: bytes.length };
 }
+// Git holds the question metadata as per-exam shards; the native plans declare the one logical file they assemble to.
+// A changed shard therefore counts as a change of METADATA (whose recorded hash is the assembled file's).
+const METADATA_SHARDS = 'archive/data/question-metadata/v1/';
 const dirty = root => sorted([
   ...git(root, 'diff', '--name-only', '-z', 'HEAD', '--').split('\0'),
   ...git(root, 'ls-files', '--others', '--exclude-standard', '-z').split('\0'),
-].filter(Boolean));
+].filter(Boolean).map(file => file.startsWith(METADATA_SHARDS) ? METADATA : file));
 function dirtySnapshot(root) {
   return new Map(dirty(root).map(file => [file, fs.existsSync(safe(root, file)) ? fileRef(root, file).sha256 : null]));
 }
@@ -447,7 +453,7 @@ function fingerprintOnlyFinalQaReassessment(request) {
 function fixedJson(root, headSha, file, cache) {
   safe(root, file);
   if (!cache.has(file)) {
-    const raw = gitBytes(root, `${headSha}:${file}`);
+    const raw = file === METADATA ? questionMetadataBytesAt(root, headSha) : gitBytes(root, `${headSha}:${file}`);
     let value; try { value = JSON.parse(raw); } catch { fail(`INHERITED_REASSESSMENT_JSON:${file}`); }
     cache.set(file, { value, sha256: sha(raw) });
   }
@@ -923,7 +929,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     // A direct type judgment is bound to each question's stem + choices (the registrar checks the text), not to the file blob.
-    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT') || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+    // A plain REVIEW2/FINAL_QA request is likewise bound to the stem + choices of its questions (same predicate as the registrar and the consumer gate).
+    const textBoundReview = blobSha1 !== request.expectedSourceBlobSha1 && !correction && !preservation && !authorityCorrection &&
+      TEXT_BOUND_REVIEW_TYPES.includes(request.approval?.type) &&
+      reviewedSourceTextUnchanged({ root, expectedBlobSha1: request.expectedSourceBlobSha1, currentBytes: gitBytes(root, `${headSha}:${sourcePath}`),
+        ordinals: selectedItems.map(item => item.sourceOrdinal) }).ok;
+    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT' && !textBoundReview) || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
     let bank;
     try {
       const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -1682,6 +1693,10 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
 // actual checkout, consumes inbox files or runs another catalog build.
+// Repository inputs the registrars read from the shadow root (the request, source exam and evidence files are written separately).
+// The type-judgment decision document is read by name from the registrar's own constant: a first registration refuses without it.
+export const SHADOW_RESTORE_PATHS = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy', TYPE_JUDGMENT_DECISION_DOCUMENT];
+
 export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
   if (!requests.length) return { plans: [], outputs: [] };
   const headSha = git(root, 'rev-parse', '--verify', 'HEAD').trim();
@@ -1691,7 +1706,7 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     // Renderer/source reviews revalidate the live asset bytes, including assets
     // reached through an older receipt. Recreate that immutable input tree too;
     // never copy current worktree bytes or share mutable asset inodes.
-    const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
+    const restore = SHADOW_RESTORE_PATHS
       .filter(file => git(root, 'ls-tree', headSha, '--', file).trim());
     // Data plus assets can exceed the child-process memory buffer. Stream Git's
     // exact archive into a private temporary file, removed with this shadow.
@@ -1706,13 +1721,15 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     const extracted = spawnSync('tar', ['-xf', snapshotPath, '-C', shadow], { maxBuffer: 1024 * 1024 });
     if (extracted.error || extracted.status !== 0) fail('SHADOW_EXTRACT_FAILED');
     fs.unlinkSync(snapshotPath);
+    // The archive holds the metadata shards, not the ignored assembled file the registrars read and write: assemble it in the shadow.
+    if (hasShards(shadow)) assembleMetadataFile(shadow);
     const inputs = sorted([...requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]),
       ...referencedNativeHeadInputs(root, headSha, requests)]);
     const attrs = git(root, 'ls-tree', '-r', '--name-only', headSha).split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
     for (const file of sorted([...inputs, ...attrs])) {
       const full = safe(shadow, file);
       fs.mkdirSync(path.dirname(full), { recursive: true });
-      fs.writeFileSync(full, gitBytes(root, `${headSha}:${file}`));
+      fs.writeFileSync(full, file === METADATA ? questionMetadataBytesAt(root, headSha) : gitBytes(root, `${headSha}:${file}`));
     }
     hydrateFixedNativeServedInputs({ root, shadow, headSha: git(root, 'rev-parse', 'HEAD').trim(), requests });
     hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests });

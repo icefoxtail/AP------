@@ -1,0 +1,124 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -3,
+   7,
+   -2,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "-3",
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "-2",
+     "6"
+    ],
+    "abs": true,
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "h",
+    "kind": "LINE",
+    "coefficients": [
+     "3",
+     "0"
+    ],
+    "domain": [
+     "-2",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "m",
+    "kind": "LINE",
+    "coefficients": [
+     "7",
+     "0"
+    ],
+    "domain": [
+     "-2",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "V",
+     "x": "2",
+     "y": "7",
+     "coordinates": true
+    },
+    {
+     "id": "A",
+     "x": "0",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "B",
+     "x": "4",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "i1",
+     "x": "2-sqrt(10)",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "i2",
+     "x": "2+sqrt(10)",
+     "y": "3",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "zA",
+     "point": "A",
+     "text": "A(0,3)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(4,3)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "V": "V"
+ },
+ "caption": "y=|x²-4x-3|=|(x-2)²-7|의 그래프는 꼭짓점 (2,-7)을 x축 위로 접어 올린 모양이어서 (2,7)에서 극대이다. 직선 y=k가 서로 다른 네 점에서 만나려면 0<k<7이다. 예로 k=3이면 네 교점이 생기고 그중 두 점은 (0,3), (4,3)이다. 이러한 정수 k는 1부터 6까지 6개이므로 답은 ②이다.",
+ "sourceConditions": [
+  "f(x)=|x²-4x-3|=k가 서로 다른 네 실근"
+ ],
+ "newVisualInformation": [
+  "극대점 (2,7)과 0<k<7에서 네 점에서 만나는 수평선(예: y=3)"
+ ]
+}

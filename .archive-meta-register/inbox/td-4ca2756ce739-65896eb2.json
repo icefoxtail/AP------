@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4ca2756ce739-65896eb2",
+  "examUid": "17_삼산중_1학기_중간_중1_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+  "expectedSourceBlobSha1": "b2c79038e85ae1d5d245d0440e038c6dfbb4c6b3",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ca2756ce739-65896eb2.type-ledger.json",
+        "sha256": "396b8262f4b8e501edebda9c2fab5cf9a4cfad96fffe227448d55a2c4493b846"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_16a8bc0f225c6131fc4794722e525b619b08990354fe0bc47b7b84494270846d",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+        "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE"
+      },
+      "rationale": "세 변의 정수 합이 모두 5가 되도록 각 변의 빈칸 값을 구해 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "f16040d948c927a77296b4a24d800d8c7ff7f2af2dd9ce3123ea9888ceb68aa2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ca2756ce739-65896eb2.type-ledger.json",
+          "sha256": "396b8262f4b8e501edebda9c2fab5cf9a4cfad96fffe227448d55a2c4493b846"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d68695be6b14d7c5a2610c51be89eaaa98583d2d701d37a87b178149ae9b7f07",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION"
+      },
+      "rationale": "알려진 다섯 과목 점수의 합 430에 문자 a, b를 더하고 과목 수 7로 나누어 평균을 문자식으로 나타낸다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "ee5291213d5caa4de6abd2525f5d3f095b2b48c53b503e944ae48e2c8450fc06",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ca2756ce739-65896eb2.type-ledger.json",
+          "sha256": "396b8262f4b8e501edebda9c2fab5cf9a4cfad96fffe227448d55a2c4493b846"
+        }
+      ]
+    }
+  ]
+}

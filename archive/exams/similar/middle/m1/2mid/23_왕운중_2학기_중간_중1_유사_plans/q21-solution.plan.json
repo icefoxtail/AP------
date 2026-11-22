@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "사다리꼴 ABCD에서 윗변 AB=6, 아랫변 CD=4, 높이 BC=8이므로 넓이는 40이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "status": "ACTIVE",
+  "assetPath": "assets/images/23_왕운중_2학기_중간_중1_유사/q21-solution.svg",
+  "sourceQuote": "네 점의 좌표로부터 변의 길이를 구한다.",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q21-solution-result.json",
+    "statePath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q21-solution-state.json",
+    "svgPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q21-solution-solution.svg"
+  },
+  "axisTickValues": {
+    "x": [
+      -5,
+      3
+    ],
+    "y": [
+      -2,
+      2,
+      4
+    ]
+  }
+}

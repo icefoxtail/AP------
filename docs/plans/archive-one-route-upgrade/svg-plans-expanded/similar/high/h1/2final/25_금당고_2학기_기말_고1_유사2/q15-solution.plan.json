@@ -1,0 +1,122 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   10,
+   -1,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "12",
+     "-4",
+     "1/2"
+    ],
+    "domain": [
+     "4",
+     "8"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "inverseOf": "f",
+    "color": "WARM",
+    "hideLabel": true,
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "9"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "4",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "x": "6",
+     "y": "6",
+     "unnamed": true
+    },
+    {
+     "id": "cf",
+     "x": "7",
+     "y": "17/2",
+     "unnamed": true
+    },
+    {
+     "id": "cg",
+     "x": "17/2",
+     "y": "7",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cP",
+     "point": "P",
+     "text": "P(4,4)",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "cQ",
+     "point": "Q",
+     "text": "Q(6,6)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "cF",
+     "point": "cf",
+     "text": "y=f(x)",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "cG",
+     "point": "cg",
+     "text": "y=f^-1(x)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  }
+ },
+ "caption": "f는 x≥4에서 증가하므로 f의 그래프와 역함수의 그래프는 직선 y=x에 대하여 대칭이고 교점은 모두 y=x 위에 있다. f(x)=x에서 x²-10x+2k=0이고 PQ=2√2이므로 두 근의 차는 2, 합은 10이어서 근은 4, 6이다. 곱 2k=24에서 k=12이므로 답은 ①이다.",
+ "sourceConditions": [
+  "f(x)=x²/2-4x+k (x≥4)와 역함수가 서로 다른 두 점에서 만나고 PQ=2√2"
+ ],
+ "newVisualInformation": [
+  "f와 역함수의 그래프가 직선 y=x 위의 두 점 P(4,4), Q(6,6)에서 만남"
+ ]
+}

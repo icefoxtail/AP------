@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-1c07de61cee4-6a53ab69",
+  "requestSha256": "5cc38f99a316479e593c550a9dce793a474dd870e7f7a8f6775395ea5a6cba7f",
+  "examUid": "21_신흥중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "8729956acdadfd7a7aa48b80e76b07549a13294e",
+  "sourceRawSha256": "f6e6f1de773c03d2e22cd27613a40c3bc8f6fb9484953f0b91a8bc9bc22dd18e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1c07de61cee4-6a53ab69.type-ledger.json",
+        "sha256": "cd2486422b02b58ccd95be2f02eb4aaa06c3d95d130023ca94ca29f77c7e0ecb"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_d39341b231d937868d9ff7ca44e0cf4ef9e9aca0af92a2cc0f5cc9617b2c7c44",
+      "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-1c07de61cee4-6a53ab69",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "직각삼각형의 내접원 반지름 2를 구해 OC 길이를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "068fe4a734cbddbd29a0c8bf73e7bfb1c3809a796be5ef9fde4c9fcaf74090bb",
+        "judgedContentFingerprint": "983bd6763f3027dc34a8e53307f3bfde1223bb0db7435db5651f223ba420b771",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "d42e7e9aae7c42c57acf2a3c126145cc30a2a7c44f3f02fa7e6d1f31b0ace69b",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1c07de61cee4-6a53ab69.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "templateKey": "TM_CIRCLE_INCIRCLE",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

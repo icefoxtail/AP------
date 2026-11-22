@@ -1,0 +1,54 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "A",
+    "name": "A"
+   }
+  ],
+  "elements": [
+   {
+    "text": "1",
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "2",
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "3",
+    "in": []
+   },
+   {
+    "text": "4",
+    "in": []
+   },
+   {
+    "text": "5",
+    "in": []
+   },
+   {
+    "text": "6",
+    "in": []
+   }
+  ],
+  "shade": "A^c"
+ },
+ "caption": "B가 A와 서로소이면 A∩B=∅이므로 B는 1, 2를 원소로 갖지 않는다. 즉 B는 U에서 A를 제외한 색칠한 부분 {3,4,5,6}의 부분집합이다. 부분집합의 개수는 2⁴=16이므로 구하는 집합 B의 개수는 16이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "U={1,2,3,4,5,6}, A={1,2}, A와 서로소인 부분집합 B",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "A와 서로소인 B가 들어갈 영역 A^c={3,4,5,6}"
+ ]
+}

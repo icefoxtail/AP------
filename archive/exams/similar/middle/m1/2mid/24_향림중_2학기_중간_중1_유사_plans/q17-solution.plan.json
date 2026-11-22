@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "평행선 보조선을 그어 엇각의 합으로 x=50°를 구한다.",
+  "accessibilityDescription": "점 P를 지나 l, m에 평행한 보조선을 그어 엇각 50도와 35도를 확인하는 해설 그림.",
+  "sourceQuote": "점 $P$를 지나고 두 직선 $l, m$에 평",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "A",
+    "P",
+    "B",
+    "PL"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPline",
+      "refs": [
+        "PL",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "PL"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "el_L",
+        "ownerSegment": "sL",
+        "text": "l",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "el_M",
+        "ownerSegment": "sM",
+        "text": "m",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q17-solution-result.json",
+    "statePath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q17-solution-state.json",
+    "svgPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q17-solution-solution.svg"
+  },
+  "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q17-solution.svg"
+}

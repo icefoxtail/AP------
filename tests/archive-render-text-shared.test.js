@@ -112,8 +112,52 @@ test('보기 블록: 발문 중간의 [보기]는 상자로 바뀌지 않고, �
   assert.match(midOut, /<div class="question-note-box">ㄱ\. /);
   const long = 'ㄱ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄴ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄷ. 가나다라마바사';
   const lead = T.normalizeViewBlocks('다음 중 옳은 것은?<br><br>[보기]<br>' + long);
-  assert.match(lead, /<b>보기<\/b><br>/);
+  assert.match(lead, /<b>\[보기\]<\/b><br>/);
   assert.match(lead, /ㄷ\. 가나다라마바사<\/div>/);
+  assert.equal((lead.match(/class="question-note-box"/g) || []).length, 1);
+});
+
+test('이미 테두리가 있는 순천여고 4번 보기에는 줄 하나와 원래 상자만 쓴다', () => {
+  const box = '<div style="border: 1px solid #000; padding: 10px; margin: 10px 0;"><b>&lt; 보 기 &gt;</b><br>'
+    + 'ㄱ. $p$는 $q$이기 위한 충분조건이다.<br>ㄴ. 명제 $q \\to r$의 역은 참이다.<br>'
+    + 'ㄷ. 명제 $\\sim p \\to \\sim r$의 대우는 거짓이다.<br>ㄹ. $p$는 $r$이기 위한 필요충분조건이다.</div>';
+  const prompt = '일 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.7점]';
+  assert.equal(T.normalizeViewBlocks(prompt + '<br><br>' + box), prompt + '<br>' + box);
+});
+
+test('보기 제목이 든 상자를 온전히 보존하고 앞의 보기와 합치지 않는다', () => {
+  const example = '<div class="note-box"><div class="note-box-title">&lt;예시&gt;</div>별도 설명</div>';
+  const statements = 'ㄱ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄴ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄷ. 가나다라마바사';
+  assert.equal(T.normalizeViewBlocks(example.replace('별도 설명', statements)), example.replace('별도 설명', statements));
+  const rows = T.normalizeViewBlocks('다음 중 참인 것은?<br><br>' + statements + '<br><br>' + example);
+  assert.ok(rows.includes('</div>' + example) || rows.includes('</div><br>' + example), rows);
+  const reference = '&lt;보기&gt;는 아래 그래프이다. 오른쪽 그래프와 관계있는 식을 고르시오.<br><br>' + example;
+  assert.equal(T.normalizeViewBlocks(reference), reference.replace('<br><br>', '<br>'));
+  const legacy = '<div class="box-region">[보기]<br>' + statements + '</div>';
+  assert.equal(T.normalizeViewBlocks('앞<br><br>' + legacy + '<br><br>끝'), '앞<br>' + legacy + '<br>끝');
+});
+
+test('표시 수식 단위는 유지하고 서술형 소문항 앞 중복 개행만 걷는다', () => {
+  const formula = '$$p: |x|+|y|=0$$';
+  const second = '$$q: f(1)+f(2)=0$$';
+  assert.equal(T.normalizeQuestionContentBreaks('조건<br>' + formula + '<br>' + second + '<br>일 때'),
+    '조건 ' + formula + ' ' + second + ' 일 때');
+  const prompt = '다음 물음에 답하시오. [총 5점]<br><br>(1) $f(1) + (2)$를 구하시오. [2점] (2) (1)의 값을 사용하시오. [3점]';
+  assert.equal(T.normalizeQuestionContentBreaks(prompt, { subjective: true }),
+    '다음 물음에 답하시오. [총 5점]<br>(1) $f(1) + (2)$를 구하시오. [2점]<br>(2) (1)의 값을 사용하시오. [3점]');
+  assert.equal(T.normalizeQuestionContentBreaks(prompt), prompt);
+});
+
+test('표시 수식 경계의 리터럴 개행은 수식 밖에 남긴다', () => {
+  const source = '일 때\\n\\[\\n\\nabla f(x) = 0\\n\\]\\n값을 구하시오.';
+  assert.equal(T.wrapLatex(source), '일 때<br>$$\\nabla f(x) = 0$$<br>값을 구하시오.');
+  assert.equal(T.wrapLatex('계산하시오.\\n\\[\\n\\frac12\\n\\left(x+1\\right)\\n\\]'),
+    '계산하시오.<br>$$\\frac12 \\left(x+1\\right)$$');
+  assert.equal(T.wrapLatex('\\[\\n(2^x-32)\\n\\]'), '$$(2^x-32)$$');
+  assert.equal(T.wrapLatex('\\[\\nabla f(x) = 0\\]'), '$$\\nabla f(x) = 0$$');
+  const cases = '$f(n)=\\begin{cases}n/2&(n\\text{이 짝수})\\\\n+3&(n\\text{이 홀수})\\end{cases}$';
+  assert.equal(T.wrapLatex(cases), cases);
+  assert.equal(T.wrapLatex('$3x=2-1$\\\\n$3x=1$'), '$3x=2-1$<br>$3x=1$');
 });
 
 test('protectRenderSegments: 표·상자·수식을 보호하고 복원하면 원문과 같다 (토큰 노출 없음)', () => {
@@ -225,3 +269,67 @@ test('render-text.js는 아카이브 배포 목록과 CI 범위에 올라 있다
   assert.ok(manifest.archiveRootFiles.includes('render-text.js'), 'archive-pages-release-manifest.json archiveRootFiles');
   assert.match(read('tools/ci/archive-ci-scope.mjs'), /'archive\/render-text\.js'/);
 });
+
+// ---- 본문 앞 문항 번호 제거 ("15. 15. 다음 …" 두 번 찍힘) ---------------------------------------
+// 원본 시험지 일부는 본문이 "15. 다음 …"처럼 번호로 시작하고 엔진이 q-num을 따로 붙인다.
+// 원본 파일은 그대로 두고 그리는 단계에서만 원래 번호(q.id)와 같은 앞 번호를 뗀다.
+
+test('앞 문항 번호: 원래 번호와 같은 "N." 또는 "N)" + 공백 + 본문일 때만 뗀다', () => {
+  const strip = T.stripLeadingQuestionNumber;
+  // original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js 문항 15 (본문이 <p>로 시작)
+  assert.equal(strip('<p>15. 다음 $9$개 자료의 중앙값을 $a$</p>', { id: 15 }), '<p>다음 $9$개 자료의 중앙값을 $a$</p>');
+  assert.equal(strip('15. 다음 중 옳은 것은?', { id: 15 }), '다음 중 옳은 것은?');
+  assert.equal(strip('5) 다음 중 옳은 것은?', { id: 5 }), '다음 중 옳은 것은?');
+  assert.equal(strip('  <br>16.\n이차함수', { id: '16' }), '  <br>이차함수');
+  // 영문 한두 글자가 붙은 id (original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js 의 "Q22")
+  assert.equal(strip('22. (서술형 1) (4점)<br>일차방정식', { id: 'Q22' }), '(서술형 1) (4점)<br>일차방정식');
+  // 번호가 다르면(서술형 번호가 1부터 다시 시작하는 original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js 문항 id 19의 "1.") 그대로 둔다.
+  assert.equal(strip('1. 집합 $X$에서', { id: 19 }), '1. 집합 $X$에서');
+  // 번호가 아닌 것: 소수, 점 뒤 공백 없음, 수식 안, 본문이 없음, 번호가 맨 앞이 아님
+  assert.equal(strip('15.5 이하의 수', { id: 15 }), '15.5 이하의 수');
+  assert.equal(strip('15.다음', { id: 15 }), '15.다음');
+  assert.equal(strip('$15.$ 다음', { id: 15 }), '$15.$ 다음');
+  assert.equal(strip('15. ', { id: 15 }), '15. ');
+  assert.equal(strip('다음 15. 번', { id: 15 }), '다음 15. 번');
+  assert.equal(strip('서술형 1. 다음', { id: 1 }), '서술형 1. 다음');
+  // id가 번호가 아니거나 없으면 건드리지 않는다.
+  assert.equal(strip('15. 다음', { id: 'abc-15x' }), '15. 다음');
+  assert.equal(strip('15. 다음', {}), '15. 다음');
+  assert.equal(strip('15. 다음', null), '15. 다음');
+  assert.equal(strip(undefined, { id: 15 }), undefined);
+  // 한 번만 뗀다(본문 첫 줄이 번호와 같은 숫자로 다시 시작해도 하나만).
+  assert.equal(strip('15. 15. 다음', { id: 15 }), '15. 다음');
+});
+
+test('앞 문항 번호: 실제 시험지 한 개에서 번호로 시작하는 문항은 번호만 떨어지고 나머지는 그대로다', () => {
+  const file = path.join(root, 'archive/exams/original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js');
+  const context = vm.createContext({});
+  context.window = context;
+  vm.runInContext(fs.readFileSync(file, 'utf8'), context);
+  let stripped = 0;
+  for (const q of context.examData.questions) {
+    const raw = String(q.content || q.question || '');
+    const out = T.stripLeadingQuestionNumber(raw, q);
+    const lead = /^((?:<p[^>]*>\s*)?)(\d{1,3})\.\s+/.exec(raw);
+    if (lead && Number(lead[2]) === Number(q.id)) {
+      stripped += 1;
+      assert.equal(out, lead[1] + raw.slice(lead[0].length), `id ${q.id}: 번호만 떨어져야 한다`);
+    } else {
+      assert.equal(out, raw, `id ${q.id}: 번호로 시작하지 않으면 그대로`);
+    }
+  }
+  assert.ok(stripped > 0, '이 시험지에는 번호로 시작하는 문항이 있어야 한다');
+});
+
+for (const file of ENGINES) {
+  test(`${file}: formatQuestionContent가 렌더 사본에서만 앞 번호를 뗀다`, () => {
+    const html = read(file);
+    const start = html.indexOf('function formatQuestionContent(html, q) {');
+    assert.ok(start >= 0, 'formatQuestionContent 선언');
+    const body = html.slice(start, html.indexOf('\n}\n', start));
+    assert.match(body, /html = APRenderText\.stripLeadingQuestionNumber\(html, q\);/);
+    assert.ok(body.indexOf('stripLeadingQuestionNumber') < body.indexOf('__apExamSubjectiveSpacing'), '발문 분리보다 먼저 뗀다');
+    // 저장·지문 계산 쪽으로 새지 않는다: HTML에서는 formatQuestionContent 안에서 한 번만 부른다.
+    assert.equal((html.match(/stripLeadingQuestionNumber/g) || []).length, 1, `${file}: 다른 곳에서 부르지 않는다`);
+  });
+}

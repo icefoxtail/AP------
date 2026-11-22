@@ -12,13 +12,14 @@ import {
 } from "../archive/tools/meta-foundation/build-type-judgment-requests.mjs";
 import { makeCourseAliases } from "../archive/tools/meta-foundation/course-aliases.mjs";
 import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { createGradeBindings } from "../archive/tools/meta-foundation/grade-bindings.mjs";
 
 const EXAM = "original/middle/m1/1mid/24_가나중_1학기_중간_중1_기출.js";
 const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
 const questions = [1, 2, 3, 4, 5, 6, 7].map(n => ({ id: n, content: `학생용 지문 ${n}`, choices: ["1", "2"], answer: "1", solution: `해설 ${n}`, image: "" }));
 const bytes = Buffer.from(`window.questions = ${JSON.stringify(questions)};\n`);
 const registry = makeRegistry({
-  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }, { problemTypeKey: "PT_DRAFT", status: "ACTIVE", ownerPack: "P1" }],
   templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_OTHER", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
   bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" },
     { problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
@@ -61,7 +62,7 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
   assert.equal(r.sourceArchiveFile, EXAM);
   assert.equal(r.expectedQuestionCount, questions.length);
   assert.equal(r.expectedSourceBlobSha1, sha1(bytes));
-  assert.deepEqual(r.items.map(i => i.questionUid), ["uid1"]);
+  assert.deepEqual(r.items.map(i => i.questionUid), ["uid1", "uid7"]);
   const item = r.items[0];
   assert.deepEqual(item.before, { problemTypeKey: "", templateKey: "" });
   assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
@@ -75,10 +76,10 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
 test("rows that already hold a value, other decisions and refused rows are skipped with a counted reason", () => {
   const { requests, skipped } = plan();
   const summary = summarize({ requests, skipped, resultLines: lines().length });
-  assert.equal(summary.items, 1);
-  assert.equal(summary.skippedLines, 6);
+  assert.equal(summary.items, 2);
+  assert.equal(summary.skippedLines, 5);
   assert.deepEqual(summary.skippedByReason, {
-    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, ROW_HAS_APPROVAL_RECEIPT: 1, SCOPE_PT_BOUND_TO_OTHER_COURSE: 1, TYPE_ALREADY_PRESENT: 2 });
+    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, SCOPE_PT_BOUND_TO_OTHER_COURSE: 1, TYPE_ALREADY_PRESENT: 2 });
   assert.ok(skipped.every(s => s.uid && s.reason));
   // every line is accounted for: converted + skipped
   assert.equal(summary.items + summary.skippedLines, lines().length);
@@ -160,6 +161,34 @@ test("scope follows the strict lane and the alias file: another spelling or the 
   assert.equal(sc(strict, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
 
+test("a row that carries the other curriculum's course name falls back to the successor course instead of being refused", () => {
+  const reg = makeRegistry({ problemTypes: [{ problemTypeKey: "PT_X", status: "ACTIVE", ownerPack: "P2" }], templates: [],
+    bindings: [{ problemTypeKey: "PT_X", curriculum: "2022", standardCourse: "공통수학1", ownerPack: "P2", status: "ACTIVE" },
+      { problemTypeKey: "PT_X", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015", "2022"], standardCourses: ["공통수학1", "수학(상)"] }]]) });
+  // 2015 row named with the 2022 course: the same-course binding is 2022 only, the successor 수학(상) exists in 2015
+  const r = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2015", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(r.scope, { curriculum: "2015", standardCourse: "수학(상)" });
+  assert.equal(r.relation, "successor");
+  // the same-course binding still wins when it exists in the row's curriculum
+  const own = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2022", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(own.scope, { curriculum: "2022", standardCourse: "공통수학1" });
+});
+
+test("--exclude-uids leaves a question that another pending request already carries out of the new requests", () => {
+  const { requests, skipped } = plan({ excludeUids: new Set(["uid1"]) });
+  assert.equal(requests[0].items.some(i => i.questionUid === "uid1"), false);
+  assert.ok(skipped.some(s => s.uid === "uid1" && s.reason === "ALREADY_IN_OTHER_REQUEST"));
+  assert.equal(parseCli(["--results", "r", "--exclude-uids", "f.txt"]).excludeUidsFile, "f.txt");
+});
+
+test("--only-uids plans only the listed questions; other PICK rows are neither converted nor counted as skips", () => {
+  const { requests, skipped } = plan({ onlyUids: new Set(["uid1"]) });
+  assert.deepEqual(requests.flatMap(r => r.items.map(i => i.questionUid)), ["uid1"]);
+  assert.ok(skipped.every(s => /^DECISION_/.test(s.reason))); // only NEW_KEY/HOLD lines are counted; PICK rows outside the list are not
+  assert.equal(parseCli(["--results", "r", "--only-uids", "f.txt"]).onlyUidsFile, "f.txt");
+});
+
 test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
   const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
     bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],
@@ -213,9 +242,9 @@ test("a status tag does not block a blank field: approved_semantic_review with n
   assert.equal(rep.skipped[0].reason, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT");
 });
 
-test("rows with receipts on other fields are skipped by default and converted on request", () => {
+test("rows with receipts on other fields are converted by default (the flag is accepted but no longer needed)", () => {
   const dflt = plan();
-  assert.equal(dflt.requests[0].items.some(i => i.questionUid === "uid7"), false);
+  assert.deepEqual(dflt.requests[0].items.map(i => i.questionUid), ["uid1", "uid7"]);
   const opt = plan({ includeReceiptRows: true });
   assert.deepEqual(opt.requests[0].items.map(i => i.questionUid), ["uid1", "uid7"]);
 });
@@ -226,24 +255,30 @@ test("a result line whose own question number differs from the row's source ordi
   assert.deepEqual(skipped.map(s => s.reason), ["RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", "TYPE_ALREADY_PRESENT"]);
 });
 
-test("judged-base check: changed stem/choices skip the row, unchanged rows pass, an unreadable base is counted as unverified", () => {
+test("judged-base check: changed stem/choices keep the type (counted, marked in the ledger), unchanged rows pass, an unreadable base is counted as unverified", () => {
   const copy = () => JSON.parse(JSON.stringify(questions));
   const changed = copy(); changed[0].content = "다른 지문";
   const ctxFor = bank => makeCtx({ ctx: { judgedBank: () => bank } });
+  // 2026-11-22 (학원 원장): a stem or choices edited after the judgment (a minimal source fix) does not change the type; the request binds to the CURRENT text
   let r = planRequests({ ctx: ctxFor(changed), resultRows: [line(1)], approvedBy: "x" });
-  assert.equal(r.requests.length, 0);
-  assert.equal(r.skipped[0].reason, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT");
+  assert.equal(r.requests.length, 1);
+  assert.equal(r.skipped.length, 0);
+  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0, changedKept: 1 });
+  assert.equal(r.requests[0].items[0].textBindingFingerprint, textFingerprint(questions[0]), "bound to the current text (the registrar compares it with the current question)");
+  const ledger = JSON.parse(r.files.get(r.requests[0].approval.evidenceRefs[0].path));
+  assert.equal(ledger.rows[0].stemChangedSinceJudgment, true);
   const choices = copy(); choices[0].choices = ["가", "나"];
-  assert.equal(planRequests({ ctx: ctxFor(choices), resultRows: [line(1)], approvedBy: "x" }).requests.length, 0);
+  assert.equal(planRequests({ ctx: ctxFor(choices), resultRows: [line(1)], approvedBy: "x" }).requests.length, 1);
   r = planRequests({ ctx: ctxFor(copy()), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
-  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0 });
+  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0, changedKept: 0 });
+  assert.equal(JSON.parse(r.files.get(r.requests[0].approval.evidenceRefs[0].path)).rows[0].stemChangedSinceJudgment, undefined);
   // solution/answer changes are not a change of the question text
   const sol = copy(); sol[0].solution = "고친 해설"; sol[0].answer = "2";
   assert.equal(planRequests({ ctx: ctxFor(sol), resultRows: [line(1)], approvedBy: "x" }).requests.length, 1);
   r = planRequests({ ctx: ctxFor(null), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
-  assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1 });
+  assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1, changedKept: 0 });
   // figure/solution changes since the judgment do not matter; the text fingerprint is that of the stem+choices
   const moved = copy(); moved[0].image = "old.png"; moved[0].solution = "옛 해설";
   r = planRequests({ ctx: ctxFor(moved), resultRows: [line(1)], approvedBy: "x" });
@@ -271,14 +306,14 @@ test("selectable-by-type metric counts rows whose metadata is bound to the curre
   const stale = records.map(r => r.sourceOrdinal === 1 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
   const planned = new Map([["uid1", { pt: "PT_A", tpl: "TPL_A" }]]);
   const fresh = typeSelectable(makeCtx(), [EXAM], planned);
-  assert.equal(fresh.selectableBefore, 1); // uid3 already carries an approved PT_A and is bound
-  assert.equal(fresh.selectableAfter, 2);
+  assert.equal(fresh.selectableBefore, 2); // uid2 (a registered draft PT) and uid3 (approved PT_A) are bound and shown
+  assert.equal(fresh.selectableAfter, 3);
   assert.equal(fresh.plannedSelectable, 1);
   // a stale row (fingerprint of an older text) stays hidden unless planned; the planned type is shown
   const staleApproved = records.map(r => r.sourceOrdinal === 3 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
-  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 0);
+  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 1); // only the registered draft of uid2 is still shown
   const hidden = typeSelectable(makeCtx({ records: stale }), [EXAM], planned);
-  assert.equal(hidden.selectableAfter, 2);
+  assert.equal(hidden.selectableAfter, 3);
   assert.equal(hidden.plannedSelectable, 1);
 });
 
@@ -332,4 +367,81 @@ test("reach: a key of a grade at or below the exam's grade is chosen; a key abov
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_COORD").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
   // without alias data nothing is reached
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+});
+
+test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
+  const sem = "approved_semantic_review";
+  const recs = records.map(r => r.sourceOrdinal === 1 ? { ...r, problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } : r);
+  const { requests, skipped } = planRequests({ ctx: makeCtx({ records: recs }), resultRows: [line(1), line(3)], approvedBy: "x" });
+  const item = requests[0].items.find(i => i.questionUid === "uid1");
+  assert.deepEqual(item.before, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" });
+  assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.equal(skipped.find(x => x.uid === "uid3").reason, "TYPE_ALREADY_PRESENT", "uid3 holds an approved ACTIVE key and stays");
+});
+
+test("a type written in the exam file never keeps a judged question out of a request (the registered judgment wins; the registrar records the embedded value)", () => {
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_A", "TPL_A"], 3: ["PT_OFF", ""] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { metadataRevision: "meta-foundation:X" }));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { readBank } });
+  const { requests } = planRequests({ ctx, resultRows: [line(1), line(2), line(3)], approvedBy: "x" });
+  const after = Object.fromEntries(requests.flatMap(r => r.items).map(i => [i.questionUid, i.after]));
+  assert.deepEqual(Object.keys(after).sort(), ["uid1", "uid2", "uid3"]);
+  for (const uid of ["uid1", "uid2", "uid3"]) assert.deepEqual(after[uid], { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+});
+
+test("a later result line for the same question is used when the earlier one was held; once one line is in a request the rest are duplicates", () => {
+  const held = line(1, { decision: "HOLD", pt: null, tpl: null });
+  const better = line(1, { judge: "claude-sonnet-5.5" });
+  const again = line(1, { judge: "dots" });
+  const { requests, skipped } = planRequests({ ctx: makeCtx(), resultRows: [held, better, again], approvedBy: "x" });
+  const items = requests.flatMap(r => r.items);
+  assert.equal(items.length, 1);
+  assert.equal(requests[0].approval.judge, "claude-sonnet-5.5");
+  assert.deepEqual(skipped.map(s => s.reason).sort(), ["DECISION_HOLD", "DUPLICATE_RESULT_LINE"]);
+});
+
+// ---- grade bindings: an existing key of another grade/curriculum is used and the row's own grade binding is added (2026-11-22) -----------
+test("a key bound only to another grade is kept and the row's grade binding is added append-only (existing key reused, no key created)", () => {
+  const master = new Map([["M1-03", { key: "M1-03", keyType: "standardUnitKey" }], ["M1-03-LINEAR_EQUATION", { key: "M1-03-LINEAR_EQUATION", keyType: "subUnitKey", standardUnitKey: "M1-03", labelKo: "일차방정식" }],
+    ["H22-C-01", { key: "H22-C-01", keyType: "standardUnitKey" }]]);
+  const reg = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }], templates: [{ templateKey: "TPL_HIGH", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
+    bindings: [{ problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", standardUnitKey: "H15-SA-01", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015"], standardCourses: ["수학(상)"] }]]) }), packFiles: new Map([["P2", "archive/data/meta-foundation/canonical/packs/p2/pack.json"]]) };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION", curriculum: "2015" }));
+  recs[2] = row(3, { standardUnitKey: "", subUnitKey: "", curriculum: "2015" }); // no unit the master knows
+  const mk = bindingsOn => {
+    const ctx = makeCtx({ records: recs, ctx: { registry: reg, aliases, master } });
+    return bindingsOn ? { ...ctx, gradeBindings: createGradeBindings({ ctx, env: { curriculumGuess: () => "2015", pathGrade: () => "m1" } }) } : ctx;
+  };
+  const rows = [line(1, { pt: "PT_HIGH", tpl: "TPL_HIGH" }), line(2, { pt: "PT_HIGH", tpl: null }), line(3, { pt: "PT_HIGH", tpl: null })];
+  // without the grade-binding step the lines stay skipped, as before
+  assert.deepEqual(planRequests({ ctx: mk(false), resultRows: rows, approvedBy: "x" }).skipped.map(s => s.reason), ["SCOPE_PT_BOUND_TO_OTHER_COURSE", "SCOPE_PT_BOUND_TO_OTHER_COURSE", "SCOPE_PT_BOUND_TO_OTHER_COURSE"]);
+  const { requests, skipped, stats } = planRequests({ ctx: mk(true), resultRows: rows, approvedBy: "x" });
+  assert.deepEqual(skipped.map(s => [s.uid, s.reason, s.was]), [["uid3", "GRADE_BINDING_NO_UNIT", "SCOPE_PT_BOUND_TO_OTHER_COURSE"]], "a row without any valid unit is skipped, no unit is guessed");
+  assert.equal(stats.gradeBindingRows, 2);
+  assert.equal(requests.length, 1);
+  const r = requests[0];
+  assert.ok(r.requestId.startsWith("tc-"), "the request that carries registryChanges sorts first");
+  assert.deepEqual(r.items.map(i => i.scope), [{ curriculum: "2015", standardCourse: "중1 수학" }, { curriculum: "2015", standardCourse: "중1 수학" }]);
+  // the pack gains the course (append-only), and one bindings.json row is added for the PT at the row's own unit
+  const [packChange, bindingChange, ...rest] = r.registryChanges;
+  assert.equal(rest.length, 0);
+  assert.deepEqual(packChange.after.standardCourses, ["수학(상)", "중1 수학"]);
+  assert.equal(bindingChange.path, "archive/data/meta-foundation/canonical/packs/p2/bindings.json");
+  assert.equal(bindingChange.collection, "bindings");
+  assert.equal(bindingChange.before, null);
+  assert.deepEqual(bindingChange.match, { curriculum: "2015", standardCourse: "중1 수학", standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION", problemTypeKey: "PT_HIGH" });
+  assert.equal(bindingChange.after.status, "ACTIVE");
+  assert.equal(bindingChange.after.ownerPack, "P2");
+  assert.equal(bindingChange.after.supportingItemCount, 2);
+  assert.deepEqual(bindingChange.after.supportingQuestionUids, ["uid1", "uid2"]);
+  assert.equal(r.registryChanges.some(c => c.collection === "problemTypes" || c.collection === "templates"), false, "no key is created");
+  const ledger = JSON.parse(planRequests({ ctx: mk(true), resultRows: rows, approvedBy: "x" }).files.get(r.approval.evidenceRefs[0].path));
+  assert.equal(ledger.rows[0].gradeBindingAdded, true);
+  assert.equal(ledger.gradeBindingAdditions.length, 1);
+  // a unit written on the result line (`binding`) stands in for a row without a valid unit
+  const named = planRequests({ ctx: mk(true), resultRows: [line(3, { pt: "PT_HIGH", tpl: null, binding: { standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION" } })], approvedBy: "x" });
+  assert.equal(named.requests.length, 1);
+  assert.equal(named.requests[0].registryChanges.at(-1).match.standardUnitKey, "M1-03");
 });

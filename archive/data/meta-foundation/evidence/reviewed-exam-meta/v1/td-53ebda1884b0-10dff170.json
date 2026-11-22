@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-53ebda1884b0-10dff170",
+  "requestSha256": "9fdcff3b5a74cd190248122204be57f3c8d2b0a3e72ebe60badb30f55737faf7",
+  "examUid": "24_왕운중_1학기_기말_중3_기출c",
+  "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+  "sourceBlobSha1": "bd911c6ff6f074c80dd4e2f7b0dd95e6bc351880",
+  "sourceRawSha256": "435329a28009e58a7ddb4e2d9111a5c19868704894af5c8dff7de80ee754bad0",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53ebda1884b0-10dff170.type-ledger.json",
+        "sha256": "9c63a38f30858efa530f24372b3d9ddea7a19725376289bfe72550721ea30f58"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_f0b1687cdcb0870e2e6b3196232a3b75f6a101cf71fcabe94125b1ea25d769e6",
+      "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-53ebda1884b0-10dff170",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "(2x-4)(x+5)=0은 영인자 성질로, (x-4)^2=16은 제곱근으로 풀어 해를 모두 더한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "c3579e8b30db044e342a5fcc2d03177ffd8dc5812f70058b74279f3834b3e801",
+        "judgedContentFingerprint": "5c1ae65076e6305aecf71ccd05fd2025d1147a0943c378eb8de344d11a98b967",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1842ffcd37dd11f4b43c9084af502d9ec5068a423b45c96ee640f8d6f77ad45f",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53ebda1884b0-10dff170.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

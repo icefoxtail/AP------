@@ -174,7 +174,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "덧셈정리 P(A∪B)=P(A)+P(B)−P(A∩B)에서 2/3=1/2+1/3−P(A∩B)이므로 P(A∩B)=1/6이다. 그림은 겹침 1/6, A만 1/2−1/6=1/3, B만 1/3−1/6=1/6, 바깥 1/3이다. 색칠한 겹침은 A와 B에서 한 번씩 세어져 합집합에서 한 번 빼야 한다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -355,7 +359,12 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "불량품이 되는 두 경로는 A 기계에서 0.6×0.015=0.009(파랑)이고 B 기계에서 0.4×0.02=0.008(주황)이다. 전체 불량 확률은 0.017이다. 불량품이 A 기계에서 나왔을 확률은 분자 0.009를 분모 0.017로 나눈 9/17이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -415,7 +424,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형의 각 변 위에 자리가 두 개씩, 모두 여덟 자리가 놓인 탁자 그림이다.",
+    "solutionImageCaption": "정사각형 탁자의 네 변에 자리가 두 개씩 있어 모두 8자리이다. 점 A와 B, C와 D, E와 F, G와 H가 각각 한 변에 놓인 두 자리이고 같은 부서 두 사람은 한 변에 앉는다. 네 부서를 네 변에 배치하는 방법은 4!=24가지이고 90° 회전한 네 배치는 같은 것으로 보므로 4!÷4=6가지이다. 각 변에서 두 사람이 자리를 바꾸는 방법이 2가지씩 2의 4제곱=16가지이므로 6×16=96이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -592,7 +605,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "B와 C가 독립이므로 P(B∩C)=P(B)P(C)이다. P(B∪C)=P(B)+1/4−P(B)/4=7/10에서 P(B)=3/5이고 겹침은 3/5×1/4=3/20이다. 그림은 B와 C만 나타낸 것이며 B만 9/20, 겹침 3/20, C만 1/10이고 색칠한 B가 3/5이다. A는 B와 배반이므로 P(A∪B)=P(A)+P(B)=4/5에서 P(A)=4/5−3/5=1/5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -711,7 +728,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "주사위 눈 1~6에서 소수가 나오는 A={2, 3, 5}, 6의 약수인 B={1, 2, 3, 6}, 2 이하인 C={1, 2}이다. 그림은 세 집합의 겹침을 원소로 나타낸 것이다. A∩B={2, 3}이고 P(A∩B)=2/6=(3/6)(4/6)이므로 A와 B는 독립이어서 f(A, B)=1이다. A의 여사건과 C의 여사건의 교집합은 {4, 6}이고 독립이어서 1이며, B의 여사건 {4, 5}와 C는 겹치지 않아 배반이므로 −1이다. B와 A의 여사건은 {1, 6}에서 겹치고 독립이어서 1이다. 따라서 3×1+1−2×(−1)+1=7이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1049,7 +1070,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A△B는 색칠한 A만과 B만을 합친, 정확히 한 사건만 일어나는 부분이다. 합집합에서 A△B를 뺀 겹침이 P(A∩B)=1/6이다. 또 P(A△B)=P(A∪B)−P(A∩B)=7/9×P(A∪B)이므로 2/9×P(A∪B)=1/6에서 P(A∪B)=3/4이다. 덧셈정리로 P(A)+P(B)=P(A∪B)+P(A∩B)=3/4+1/6=11/12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

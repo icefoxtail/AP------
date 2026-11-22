@@ -69,6 +69,12 @@ permissions:
   pull-requests: read
   issues: read
 
+# A newer push to the same pull request cancels that PR's older run (runner demand).
+# Comment-triggered and manual runs keep one group per run and are never cancelled.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('archive-stage-validator-pr-{0}', github.event.pull_request.number) || format('archive-stage-validator-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   pilot:
     if: github.event_name == 'pull_request'
@@ -82,6 +88,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Artifact contract v2 regression
         run: node tests/archive-stage-validator-artifact-v2.test.mjs
@@ -135,6 +144,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata of the validator authority (git holds its shards)
+        working-directory: validator-src
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Validate target stage
         shell: bash
@@ -208,6 +221,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata of the validator authority (git holds its shards)
+        working-directory: validator-src
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Validate live PR stage
         shell: bash

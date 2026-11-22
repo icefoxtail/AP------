@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7cfd4fd04a9d-08a1e261",
+  "examUid": "25_연향중_1학기_중간_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "e39b48115fa8d81469f020d66cc3d935b12c93e8",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cfd4fd04a9d-08a1e261.type-ledger.json",
+        "sha256": "ab5c006997491bb93eb89105f808ceadb6bf3f31085f30967726c42c3b3f3ab3"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2edcbb5f0e092c2a04092ec95db7fab83705293a67637bc7826281934ea9a3ba",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL"
+      },
+      "rationale": "원기둥 B의 반지름과 높이를 A의 문자 r, h로 나타내 부피 π(3r)^2·(h/2)를 단항식 곱셈으로 정리하고 부피의 비 2/9를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "17467c0cbecc41e26766ff414a5840fc5e0f22031d9beed546039584303578b7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7cfd4fd04a9d-08a1e261.type-ledger.json",
+          "sha256": "ab5c006997491bb93eb89105f808ceadb6bf3f31085f30967726c42c3b3f3ab3"
+        }
+      ]
+    }
+  ]
+}

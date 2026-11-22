@@ -9,6 +9,7 @@ import { createServer } from "node:http";
 import { execFileSync, spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { buildPagesSite } from "../tools/build-archive-pages-site.mjs";
+import { META_FILE, SHARD_DIR, questionMetadataText, splitMetadataFile } from "../archive/tools/meta-foundation/question-metadata-format.mjs";
 import { computeReleaseIdentity, compareReleaseIdentity, sealReleaseReceipt, validateReleaseIdentity,
   isArchiveValidatorPath, RELEASE_RECEIPT } from "../tools/ci/archive-pages-release-identity.mjs";
 import { decideDeployNeeded, latestSuccessfulDeploymentSha, probe, receiptUrl, readLiveReceipt } from "../tools/ci/archive-pages-deploy-needed.mjs";
@@ -102,6 +103,29 @@ test("student SVG projection is bound to registered source and image bytes", asy
   f.put("archive/assets/images/current.svg", '<svg xmlns="http://www.w3.org/2000/svg"><title>Revised</title></svg>');
   f.commit();
   assert.notEqual((await f.identity()).packageDigest, initial.packageDigest);
+});
+
+test("student similar-link map is derived from registered catalog bytes, shipped, and changes the package identity", async t => {
+  const f = fixture(t);
+  f.manifest.similarLinks = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const exam = (file, extra) => ({ file, school: "S", grade: "G1", year: 2025, semester: "2", examType: "mid", subject: "math", qCount: 5, identityTitle: path.basename(file, ".js"), ...extra });
+  f.put("archive/archive2-similar.js", fs.readFileSync(fileURLToPath(new URL("../archive/archive2-similar.js", import.meta.url)), "utf8"));
+  const catalog = withSet => JSON.stringify({ exams: [exam("original/a/x.js", { contentType: "기출" }),
+    ...(withSet ? [exam("similar/a/x_유사.js", { contentType: "유사" })] : [])] });
+  f.put("archive/data/archive2-catalog.json", catalog(false));
+  f.put("archive/exams/original/a/x.js", "x"); f.put("archive/exams/similar/a/x_유사.js", "y");
+  f.commit();
+  const before = await f.identity();
+  f.put("archive/data/archive2-catalog.json", catalog(true)); f.commit();
+  const after = await f.identity();
+  assert.notEqual(after.packageDigest, before.packageDigest, "a newly linked similar set must be published");
+  const report = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  const built = report.inventory.find(entry => entry.path === "archive/data/similar-links-v1.json");
+  assert.equal(built.transform, "similar-links");
+  const written = JSON.parse(fs.readFileSync(path.join(f.root, "_site/archive/data/similar-links-v1.json"), "utf8"));
+  assert.deepEqual(written.map, { "original/a/x.js": [["similar/a/x_유사.js", 5]] });
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/similar-links-v1.json")), false, "the generated map is never written into the source tree");
 });
 
 test("same-path R2 image replacement and Worker changes invalidate external dependency proof", async t => {
@@ -380,4 +404,49 @@ test("older duplicate dispatch is SUPERSEDED; missing or diverged published ance
   });
   assert.equal(exit, 1, "an ancestry block is a real failed identity step for the final gate");
   assert.match(fs.readFileSync(output, "utf8"), /blocked=true\nstatus=BLOCKED\n/);
+});
+
+// Git holds the question metadata as per-exam shards; the packaged one file (archive/data/question_metadata.json) is their ignored assembly.
+test("the assembled question metadata is accepted only as the assembly of the registered shards and its identity follows them", async t => {
+  const f = fixture(t);
+  f.put(".gitignore", "_site/\nevidence/\narchive/data/question_metadata.json\n");
+  f.manifest.files.push("archive/data/question_metadata.json");
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const doc = rows => ({ schemaVersion: "archive-question-metadata-v1", records: rows });
+  const row = (uid, file) => ({ questionUid: uid, sourceArchiveFile: file, difficultyBucket: 2 });
+  const writeShards = rows => {
+    fs.writeFileSync(path.join(f.root, META_FILE), questionMetadataText(doc(rows)));
+    splitMetadataFile(f.root);
+  };
+  writeShards([row("qid_a", "original/x/a.js"), row("qid_b", "original/x/b.js")]);
+  f.commit();
+  const before = await f.identity();
+  assert.equal(validateReleaseIdentity(before), true);
+
+  // an unrelated commit keeps the identity (NO_OP)
+  f.put("docs/unrelated.md", "documentation only\n"); f.commit();
+  const unrelated = await f.identity();
+  assert.equal(unrelated.packageDigest, before.packageDigest);
+  assert.equal(unrelated.archiveValidationDigest, before.archiveValidationDigest);
+  assert.equal(compareReleaseIdentity(unrelated, f.live(before)).needed, false);
+
+  // a changed shard changes the identity (package bytes and the archive inputs)
+  writeShards([row("qid_a", "original/x/a.js"), { ...row("qid_b", "original/x/b.js"), difficultyBucket: 4 }]);
+  f.commit();
+  const changed = await f.identity();
+  assert.notEqual(changed.packageDigest, before.packageDigest);
+  assert.notEqual(changed.archiveValidationDigest, before.archiveValidationDigest);
+  assert.equal(compareReleaseIdentity(changed, f.live(before)).needed, true);
+
+  // a stale or hand-edited assembled file is not an input: refused
+  const good = fs.readFileSync(path.join(f.root, META_FILE), "utf8");
+  fs.writeFileSync(path.join(f.root, META_FILE), good.replace('"difficultyBucket":4', '"difficultyBucket":5'));
+  await assert.rejects(f.identity(), /does not equal the assembly of the registered snapshot's shards/);
+  fs.writeFileSync(path.join(f.root, META_FILE), good);
+  assert.equal((await f.identity()).packageDigest, changed.packageDigest);
+
+  // the general rule is not widened: without shards in the tree, an untracked packaged file is still refused
+  fs.rmSync(path.join(f.root, SHARD_DIR), { recursive: true, force: true });
+  f.commit();
+  await assert.rejects(f.identity(), /packaged file is not in the registered snapshot.*question_metadata\.json/);
 });

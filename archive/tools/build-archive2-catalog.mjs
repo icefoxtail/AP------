@@ -4,10 +4,13 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
+import unifiedUnits from "../archive2-unified-units.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { createUnitHinter } from "./unit-hint-lib.mjs";
+import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
@@ -101,11 +104,13 @@ const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.
 // (TPL) must be usable by teachers in 문제지 만들기 / 단원별 기출 without fabricating values and
 // without upgrading any approval. The lane is ADDITIVE and DISPLAY/SELECTION-ONLY: it never
 // touches the canonical assignment, curriculumKey/courseKey/L1/L2 or the strict approval metric.
-// A value is exposed only when (a) the metadata row joins the exact source question, (b) the row
-// is bound to the question's CONTENT fingerprint (stem + choices + image, i.e. what the
-// classification describes) and (c) PT/TPL are ACTIVE labelled keys of the compiled taxonomy
-// registry with a consistent PT->TPL parent. Each facet keeps its own status code: A = approved
-// field status, P = recorded but not approved (검토 대기). Explicit field HOLDs are not exposed.
+// A value is exposed only when (a) the metadata row joins the exact source question and (b) PT/TPL
+// are ACTIVE labelled keys of the compiled taxonomy registry with a consistent PT->TPL parent.
+// Concept (L3) and curriculum are exposed only when (c) the row is bound to the question's stem+choices
+// fingerprint. A PT/TPL is shown even when the stem or choices changed after the judgment (user decision
+// 2026-11-22: corrections are minimal edits, so the type barely changes); such rows stay metaBinding "" and are
+// counted in hintStats.unbound / staleTypeShown. Each facet keeps its own status code: A = approved
+// field status, P = recorded but not approved (검토 대기), H = the field carries a hold tag (shown all the same: a value that exists is visible).
 const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
   .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
 const hintActiveTemplates = new Map(foundationTaxonomy.templates
@@ -115,13 +120,24 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 // 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
 // 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
 const textRebinds = loadRebinds(root);
-const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
+const hintStats = { joined: 0, row: 0, type: 0, unbound: 0, staleTypeShown: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  holdSkipped: 0 };
+  unit: 0, unitByRule: {}, unitNotHinted: {} };
+// 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
+// 표시 전용으로 싣는다(여러 단원에 걸치면 옛 대단원으로 좁히고, 이미 단원이 정해진 같은 PT 문항이 가장 많은 단원, 없으면 프로필 순서상 마지막 단원. 과목이 여럿인 학년은 문항 과목 안에서만. 사용자 결정 2026-11-22, 규칙은 unit-hint-lib.mjs). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 70% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+const unitHinter = createUnitHinter({
+  bindings: foundationBindings.bindings,
+  unitLabelByKey: standardUnitLabelByKey,
+  // activeTagOptions는 이름을 label에 담는다(subUnit 필드는 없다). 여기서 row.subUnit을 읽으면 소단원 이름이 비어 중등 연결이 통합 단원으로 옮겨지지 않는다.
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.label])),
+});
 function buildMetaHint(meta, binding) {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
-  const hold = meta.foundationTaxonomyStatus === "HOLD";
+  // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
+  // hold 사유(L4_HOLD·난이도 보류·자료 문제)는 그 칸들의 일이고, 판정된 유형은 발문·보기가 바뀌었어도 그대로 보인다(2026-11-22). 유형을 숨기는 이유는 키가 등록부에 없는 것뿐이다.
   const l3Value = String(meta.L3 || meta.nativeL3 || "").trim();
   const l3State = hintFieldStatus(status.concept);
   const l3Held = l3State === "H" || ["HOLD", "ROUTE_OUT"].includes(meta.l3Disposition);
@@ -131,26 +147,25 @@ function buildMetaHint(meta, binding) {
   let pt = "", tpl = "";
   if (ptKey) {
     if (!hintActiveProblemTypes.has(ptKey)) hintStats.ptUnregistered++;
-    else if (hold || ptState === "H") hintStats.holdSkipped++;
     else pt = ptKey;
   }
   if (tplKey) {
     const row = hintActiveTemplates.get(tplKey);
     if (!row) hintStats.tplUnregistered++;
-    else if (hold || tplState === "H") hintStats.holdSkipped++;
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
-  const l3 = l3Value && !l3Held && binding !== "type" ? l3Value : "";
+  // 발문·보기 지문이 판정 당시와 달라진 행(binding "stale")도 유형(PT/TPL)은 싣는다(2026-11-22 사용자 결정). L3·교육과정은 "row"일 때만 싣는다.
+  const l3 = l3Value && !l3Held && binding === "row" ? l3Value : "";
   const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
-  const curriculum = approvedStandard && binding !== "type" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const curriculum = approvedStandard && binding === "row" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
   const out = {};
   if (l3 || pt || tpl) {
     out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
     if (l3) { out.metaHintL3 = l3; hintStats.l3++; }
-    if (pt) { out.metaHintPT = pt; hintStats.pt++; }
+    if (pt) { out.metaHintPT = pt; hintStats.pt++; if (binding === "stale") hintStats.staleTypeShown++; }
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
@@ -431,14 +446,8 @@ for (const exam of exams) {
       if (!foundationScoped && !reviewedLegacySimilar && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
-      if (
-        sourceValue !== undefined &&
-        sourceValue !== null &&
-        String(sourceValue).trim() !== "" &&
-        value !== undefined &&
-        JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
-      )
+      // 유형(PT/TPL)은 시험지 JS에 적힌 값과 달라도 충돌이 아니다(metadata-conflict-field.mjs). 다른 필드의 충돌 판정은 그대로다.
+      if (isMetadataConflict(field, sourceValue, value, { metaV2Sidecar }))
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
     }
@@ -476,7 +485,8 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind);
+    // 결속(지문)이 어긋난 행("stale")도 등록된 유형은 화면에 쓴다. metaBinding은 그대로 비워 두고 unbound로 센다(나중에 볼 수 있게).
+    const metaHint = buildMetaHint(meta, bindingKind || (validJoin ? "stale" : ""));
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -652,6 +662,32 @@ for (const exam of exams) {
   exam.gradeConflict = examRecords.some((r) => r.gradeConflict);
 }
 assertSourceQualityHoldCoverage(sourceQualityHolds);
+// 단원 힌트(metaHintUnit)는 문항이 다 만들어진 뒤 싣는다: 여러 단원에 걸친 PT는 "같은 학년에서 같은 PT를 가진, 이미 단원이 정해진 문항"이 가장 많은 단원을
+// 따르므로(unit-hint-lib.mjs) 먼저 그 문항 수를 세고, 그다음 힌트를 정한다. 센 값은 이 자리에서만 쓰고 저장하지 않는다(힌트 없이 통합 단원 층이 정한 단원만 센다).
+for (const record of records) {
+  const grade = record.effectiveBrowseGrade || record.sourceGrade;
+  if (!record.metaHintPT || !unitHinter.hasRule(grade)) continue;
+  const entry = unifiedUnits.classify({ ...record, metaHintUnit: "" }).entry;
+  if (entry && !entry.unclassified) unitHinter.addPlaced(record.metaHintPT, grade, entry.unitKey);
+}
+for (const record of records) {
+  const grade = record.effectiveBrowseGrade || record.sourceGrade;
+  if (!record.metaHintPT || !unitHinter.hasRule(grade)) continue;
+  // 교재 단원(chapter) 번호 키는 통합 단원 키와 다른 번호 체계라 옛 대단원으로 쓰지 않는다(unitFor와 같은 이유).
+  const chapterKeyed = core.Canonical?.textbookSource?.(record.sourceFile)?.unitKeys === "chapter";
+  const decision = unitHinter.decide(record.metaHintPT, grade, record.subject, { key: chapterKeyed ? "" : record.legacyStandardUnitKey });
+  // 교재 문항의 과목은 교재 폴더로 정해져 있다. 유형 연결 단원이 하나뿐이라도 그 단원이 다른 과목이면(예: 미적분I 교재 속 이차함수 최대·최소 유형 → 대수 단원)
+  // 문항을 다른 과목으로 옮기지 않고 힌트를 싣지 않는다(교재 과목은 단원을 몰라도 유지).
+  if (decision.value && record.sourceFile.startsWith("textbooks/")) {
+    const before = unifiedUnits.classify({ ...record, metaHintUnit: "" }).entry;
+    const after = unifiedUnits.classify({ ...record, metaHintUnit: decision.value }).entry;
+    if (before?.subject && after?.subject !== before.subject) decision.value = "", decision.reason = "textbookSubjectMismatch";
+  }
+  const bucket = decision.value ? hintStats.unitByRule : hintStats.unitNotHinted;
+  const bucketKey = decision.reason + (decision.moved ? "+movedUnit" : "");
+  bucket[bucketKey] = (bucket[bucketKey] || 0) + 1;
+  if (decision.value) { record.metaHintUnit = decision.value; hintStats.unit++; }
+}
 const gradeCourseRows = projectionPolicy.gradeCourseAllowlist || [];
 const canonicalBasicParents = [];
 const canonicalAdvancedPaths = [];

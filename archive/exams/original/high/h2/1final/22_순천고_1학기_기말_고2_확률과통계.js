@@ -50,7 +50,11 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A와 C가 배반이므로 C는 A와 겹치지 않고, B의 여사건과 C가 배반이므로 C는 B에 포함된다. 따라서 C는 B에서 A를 뺀 부분, 곧 그림에서 색칠한 B만의 영역 {2, 14}의 부분집합이다. 부분집합은 공집합, {2}, {14}, {2, 14}의 4개이므로 가능한 사건 C는 4개이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -739,7 +743,11 @@ window.questionBank = [
       "metaBindingStatus": "EXACT_BINDING_GAP",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점과 두 점 P, Q가 있고 원점에서 P와 Q로 이어진 선분이 있으며 이름 없는 점 네 개가 더 찍혀 있다.",
+    "solutionImageCaption": "다섯 번 중 x축 방향으로 간 횟수를 k라 하면 점의 좌표는 (k, 2(5−k))이고 k=0부터 5까지의 점이 한 직선 위에 놓인다(이름 없는 점). 원점에서 거리가 5인 점은 피타고라스 정리 k²+4(5−k)²=25에서 k=3, 5이고 그림의 P(3, 4)와 Q(5, 0)이다. 독립시행 확률은 k=3일 때 10×(1/27)×(4/9)=40/243, k=5일 때 1/243이므로 합은 41/243이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -853,7 +861,10 @@ window.questionBank = [
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "ADD_SOLUTION_SVG"
     },
-    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q16_solution.svg"
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 B까지는 오른쪽 4칸, 위쪽 2칸이다. 여섯 번에 끝나는 경로는 6C2=15가지이고 그중 P=(3, 2)를 지나는 경로는 A에서 P까지 10가지이다(P에서 B까지는 1가지). 일곱 번에 끝나는 경우까지 확률을 계산하면 P를 지날 조건부확률은 5/7이므로 p+q=12이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

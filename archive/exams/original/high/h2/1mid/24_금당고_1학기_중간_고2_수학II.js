@@ -127,7 +127,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "분모가 0이 되는 점에서 분자의 값이 0이 되도록 계수를 정한 뒤 약분한 극한으로 함수값을 정한다.",
-    "decisiveStep": "x=3에서 분자가 0이 되도록 m을 정하고 연속 조건으로 n을 구한다."
+    "decisiveStep": "x=3에서 분자가 0이 되도록 m을 정하고 연속 조건으로 n을 구한다.",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1인 직선 위에 x=3인 점 P와 x축과 만나는 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=3에서 분모가 0이므로 분자가 0이어야 하고 9-3m+3=0에서 m=4이다. 이때 x≠3에서 f(x)=(x-1)(x-3)/(x-3)=x-1이므로 그래프는 직선 y=x-1이고 x→3의 극한은 2이다. x=3의 함숫값 n이 이 극한과 같아야 연속이므로 점 P(3,2)가 그래프 위에 있고 n=2이다. 따라서 m+n=6이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -213,7 +217,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "인수분해한 식의 극한값과 미분가능성에 따른 함수값 일치를 이용한다.",
-    "decisiveStep": "x≠2에서 약분한 식의 극한으로 f(2)=7을 결정한다."
+    "decisiveStep": "x≠2에서 약분한 식의 극한으로 f(2)=7을 결정한다.",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1인 직선 위에 x=2인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x≠2에서 (x-2)(x+5)/(x-2)=x+5이므로 그래프는 직선 y=x+5이고 x→2의 극한은 7이다. 미분가능한 함수는 연속이므로 x=2의 함숫값 m+1이 7이어야 하고 점 P(2,7)이 직선 위에 채워져 이어진다. 따라서 m=6이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -301,11 +310,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "도함수값을 접선의 기울기와 같게 두어 접점을 찾고 점기울기식에 대입한다.",
     "decisiveStep": "f′(x)=1에서 접점 x=1을 구한 뒤 접선식을 세운다.",
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q7-solution.svg"
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 점 T에서 접하는 기울기가 1인 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "f(x)=x²-x+5의 도함수 2x-1이 기울기 1과 같으려면 2x-1=1에서 x=1이다. f(1)=5이므로 접점은 T(1,5)이고 접선은 y-5=x-1, 즉 y=x+4이다. 그림의 직선 l이 이 접선이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 8,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q8-solution-v2.svg",
     "questionType": "객관식",
     "content": "함수 $f(x)=-2x^2+x+1$에 대하여 닫힌구간 $[1, 2]$에서 평균값 정리를 만족시키는 실수 $c$의 값은? [4점]",
     "choices": [
@@ -346,7 +359,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "평균값 정리의 평균변화율을 구하고 이를 도함수값과 같게 둔다.",
-    "decisiveStep": "평균변화율 −5를 f′(c)=−4c+1과 같게 둔다."
+    "decisiveStep": "평균변화율 −5를 f′(c)=−4c+1과 같게 둔다.",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 위의 두 점 A, B를 잇는 직선 l과 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "구간 [1,2]의 양 끝점 A(1,0), B(2,-5)를 잇는 할선 l의 기울기는 -5이다. 평균값 정리의 c는 f′(c)=-4c+1=-5를 만족하므로 c=3/2이고, 접점 T(3/2,-2)에서의 접선 m이 할선 l과 평행하다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -518,7 +535,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 직선의 기울기를 접선 기울기로 놓아 두 접점을 찾고 두 평행선의 거리를 계산한다.",
     "decisiveStep": "f′(x)=3에서 접점 x=0,2를 얻어 접선 y=3x+1과 y=3x−3의 거리를 구한다.",
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q12-solution.svg"
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 오르는 삼차곡선과 곡선 위의 점 V,  서로 평행하게 곡선의 양쪽 점 T, U에서 접하는 두 직선 l, m, 그리고 두 직선을 잇는 수선 TH를 나타낸 그림이다.",
+    "solutionImageCaption": "f(x)=x³-3x²+3x+1=(x-1)³+2의 도함수는 3(x-1)²이고 기울기가 3이면 x=0 또는 x=2이다. 접점은 T(0,1), U(2,3)이고 접선은 l: y=3x+1, m: y=3x-3이다. T에서 m에 내린 수선의 발을 H(6/5,3/5)라 하면 두 평행선 사이의 거리 TH는 |1-(-3)|/√10=4/√10이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 13,
@@ -658,7 +679,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원과 각 변의 교점 수가 바뀌는 반지름을 변의 가장 가까운 거리와 끝점 거리에서 찾는다.",
     "decisiveStep": "변 AB의 최소 거리 12/5와 끝점 거리 3,4에서 교점 수가 달라지는 것을 확인한다.",
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q15-solution.svg"
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 r에 따라 교점의 개수가 바뀌는 계단 모양의 그래프이고, r=12/5, 3, 4에서 열린 점과 닫힌 점으로 끊어진다.",
+    "solutionImageCaption": "가로축이 r, 세로축이 교점의 개수 f(r)이다. 원 x²+y²=r²과 삼각형 OAB의 세 변이 만나는 점의 수는 0<r<12/5에서 2, r=12/5(변 AB에 접함)에서 3, 12/5<r<3에서 4, r=3(꼭짓점 B)에서 3, 3<r<4에서 2, r=4(꼭짓점 A)에서 1, r>4에서 0이다. 값이 달라지는 불연속점은 12/5, 3, 4이고 합은 12/5+3+4=47/5이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -705,7 +729,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q16-solution.svg"
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 위로 볼록한 부분과 아래로 볼록한 부분이 매끄럽게 이어진 곡선과 P를 지나는 수평선, 오른쪽 영점 Z에서의 접선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "f는 x≤-1에서 (x+1)²+p, x>-1에서 -(x+1)²+p이고 이음점 P(-1,p)에서 기울기가 0이다. 그림은 p=4일 때이며 수평선 y=p가 P에서 두 조각에 접한다. f의 영점은 오른쪽 가지의 Z(-1+√p,0)=Z(1,0)이고 q=-1+√p=1이다. f(p)=f(4)=-21을 만족한다. 직선 l은 점 Z에서의 접선으로 기울기 f′(q)=f′(1)=-4이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 17,
@@ -825,6 +853,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "곡선의 도함수로 l을 구하고, P에서 l에 수직인 중심 방향과 x축 접선 조건으로 원을 결정한다.",
     "decisiveStep": "C=P+t(2,−1), r=√5|t|=4−t에서 t=√5−1, r=5−√5를 얻는다.",
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q19-solution.svg"
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 기울기가 양수인 직선 l과 x축에 모두 접하는 원이 그려져 있고, 원의 중심 C에서 접점 P와 x축 위의 접점 F로 반지름이 그어져 있다.",
+    "solutionImageCaption": "f(1)=-2이고 접선 l의 기울기는 2f(1)-2f′(1)=2이므로 l은 y=2x+2이다. 원 C의 중심은 P에서 l에 수직인 방향 (2,-1)로 t만큼 간 점 (1+2t,4-t)이고 x축에 접하므로 r=4-t, CP=r에서 √5·t=4-t이다. 제1사분면 조건으로 t=√5-1이고 중심은 C(2√5-1, 5-√5), 반지름은 r=5-√5이며 x축과의 접점은 F이다. 원의 넓이는 π(5-√5)²=π(30-10√5)이다.",
+    "solutionImageSize": "full"
   }
 ];

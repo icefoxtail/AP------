@@ -33,16 +33,39 @@
     // SNAPSHOT_COMMON_HARD_GATE:S12 and the whole exam renders nothing, which is
     // worse for students than one 1-column page.
     const SOL_FIT_MAX_LEVEL = 4;
+    // 2026-11-22: 글자 단계(1~4)로도 안 맞는 해설 하나 때문에 해설지 전체가 실패하지 않도록, 그 상자만 data-sol-shrink 1~5단계
+    // (CSS zoom 0.92~0.6)로 칸 안에 줄여 넣는다. 스타일 속성이 아니라 data 속성이라 상자 스타일을 되돌려도 남는다.
+    const SOL_SHRINK_MAX_LEVEL = 5;
+    // MathJax 늘임표(\overline 등)의 안 보이는 공백(mjx-spacer)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우가 많다
+    // (오른쪽 끝에서 줄이 끝나는 \overline). 그 상자에 한해 공백을 paint 안에 가둔다(보이는 선은 그대로, 시험지 쪽 data-ap-mjx-clip과 같은 규칙).
+    function clipStretchySpacers(box) {
+        if (typeof box?.setAttribute !== 'function' || typeof box.querySelector !== 'function') return false;
+        if (box.getAttribute?.('data-ap-mjx-clip') || !box.querySelector('mjx-stretchy-h')) return false;
+        box.setAttribute('data-ap-mjx-clip', '1');
+        return true;
+    }
     function fitSolutionToNarrowColumn(box, column) {
         if (!hasHorizontalSolutionOverflow(box, column)) return true;
+        if (clipStretchySpacers(box) && !hasHorizontalSolutionOverflow(box, column)) return true;
         box.classList.add('sol-fit-narrow');
         let level = Number(box.dataset.solFit || 0);
+        let shrink = Number(box.dataset.solShrink || 0);
         while (hasHorizontalSolutionOverflow(box, column)) {
-            if (level >= SOL_FIT_MAX_LEVEL) return false;
-            level += 1;
-            box.dataset.solFit = String(level);
+            if (level < SOL_FIT_MAX_LEVEL) { level += 1; box.dataset.solFit = String(level); continue; }
+            if (shrink >= SOL_SHRINK_MAX_LEVEL) return false;
+            shrink += 1;
+            box.dataset.solShrink = String(shrink);
         }
         return true;
+    }
+    // 학생 화면에 "줄여서 표시했습니다"를 알릴 상자: 글자 단계 1 이상 또는 zoom 축소가 걸린 해설.
+    function solutionWasShrunk(box) {
+        return Number(box?.dataset?.solFit || 0) >= 1 || Number(box?.dataset?.solShrink || 0) >= 1;
+    }
+    function notifySolutionShrunk(numbers) {
+        const list = [...new Set(numbers.filter(Number.isFinite))].sort((a, b) => a - b);
+        if (!list.length) return;
+        try { global.APArchiveRenderFeedback?.notice?.(`${list.join('번, ')}번 해설이 칸을 넘어 줄여서 표시했습니다.`); } catch (error) { /* 알림 실패가 출력을 막지 않는다 */ }
     }
     function describeHorizontalOverflow(box, column) {
         const boxRight = box.getBoundingClientRect().right;
@@ -61,6 +84,7 @@
         } catch (error) { /* diagnostics must never break rendering */ }
         box.classList.remove('sol-fit-narrow');
         delete box.dataset.solFit;
+        delete box.dataset.solShrink;
         box.style.cssText = originalStyle;
         block.fullWidth = true;
     }
@@ -193,6 +217,17 @@
         const capacity = measuredSolutionCapacity(document, probePage);
         const records = [];
         let succeeded = false;
+        const shrunkNumbers = [];
+        // 전폭 칸에서도 넘치는 해설 하나가 해설지 전체를 막지 않게 한다(2026-11-22): 그 상자만 늘임표 공백 가두기 -> 줄바꿈·글자 단계 -> 축소로 맞추고,
+        // 그래도 남으면 경고만 남기고 그린다(감지는 그대로 두고 처리만 바꿈). 줄였으면 true(높이를 다시 잰다).
+        const fitFullWidthBox = (box, column, block) => {
+            if (!hasHorizontalSolutionOverflow(box, column)) return false;
+            fitSolutionToNarrowColumn(box, column);
+            if (hasHorizontalSolutionOverflow(box, column)) {
+                try { console.warn('[archive-solution] full-width fit failed; keeping this solution as is', { sourceRef: box.dataset.sourceRef, blockId: block.blockId, ...describeHorizontalOverflow(box, column) }); } catch (error) { /* diagnostics only */ }
+            }
+            return true;
+        };
         const flowHeight = (node, wide = false) => {
             const host = wide ? wideCol : cols[0];
             host.replaceChildren(node, marker);
@@ -207,9 +242,7 @@
                     if (fitSolutionToNarrowColumn(box, cols[0])) rawHeight = flowHeight(box, false);
                     else { promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle); fullWidth = true; rawHeight = flowHeight(box, true); }
                 }
-                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
-                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                }
+                if (fullWidth && fitFullWidthBox(box, wideCol, blocks[index])) rawHeight = flowHeight(box, true);
                 deps.autoCompress(box);
                 let compressedHeight = flowHeight(box, fullWidth);
                 let compressedStyle = box.style.cssText;
@@ -225,17 +258,14 @@
                         promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle);
                         fullWidth = true;
                         rawHeight = flowHeight(box, true);
-                        if (hasHorizontalSolutionOverflow(box, wideCol)) {
-                            throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                        }
+                        if (fitFullWidthBox(box, wideCol, blocks[index])) rawHeight = flowHeight(box, true);
                         deps.autoCompress(box);
                         compressedHeight = flowHeight(box, true);
                         compressedStyle = box.style.cssText;
                     }
                 }
-                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
-                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                }
+                if (fullWidth && fitFullWidthBox(box, wideCol, blocks[index])) { compressedHeight = flowHeight(box, true); compressedStyle = box.style.cssText; }
+                if (solutionWasShrunk(box)) shrunkNumbers.push(index + 1);
                 box.style.cssText = originalStyle; deps.stagingHost.appendChild(box);
                 const sourceRef = box.dataset.sourceRef;
                 const measurement = { raw: rawHeight, tight: compressedHeight };
@@ -362,6 +392,7 @@
             }
             deps.onLayoutPlan?.({ mode: 'sol', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan });
             succeeded = true;
+            notifySolutionShrunk(shrunkNumbers);
             return { usableHeight: capacity, placements };
         } finally {
             if (!succeeded) records.forEach(record => { if (record.chunks) deps.clearMath?.(record.chunks); });

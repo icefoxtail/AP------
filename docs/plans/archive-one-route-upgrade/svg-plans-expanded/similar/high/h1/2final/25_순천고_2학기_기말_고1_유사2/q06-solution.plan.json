@@ -1,0 +1,29 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "P",
+    "name": "P"
+   },
+   {
+    "id": "Q",
+    "name": "Q"
+   }
+  ],
+  "elements": [],
+  "shade": "P∪Q"
+ },
+ "caption": "p가 ¬q이기 위한 필요조건이므로 ¬q→p가 참이어서 Qᶜ⊆P이다. Q의 바깥이 모두 P에 들어 있으므로 P와 Q를 합친 색칠한 부분이 전체집합 U 전체이다. 따라서 P∪Q=U이므로 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "Q^c ⊆ P, 즉 P∪Q=U",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "P∪Q가 전체집합 U를 모두 덮는다는 것"
+ ]
+}

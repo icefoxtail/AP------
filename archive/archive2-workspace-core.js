@@ -161,7 +161,9 @@
   const META_FACET_FILTERS = C.META_FACET_KEYS || [];
   const hasMetaFacetFilter = (filters) => META_FACET_FILTERS.some((key) => filters?.[key]);
   function withoutMetaFacets(filters) {
-    if (!hasMetaFacetFilter(filters)) return filters;
+    // Also when the keys exist with empty values (a grade/subject button clears them to ""): the saved-paper server rejects an unknown key
+    // (409) whatever its value, so the key itself must not travel.
+    if (!filters || !META_FACET_FILTERS.some((key) => Object.hasOwn(filters, key))) return filters;
     const stripped = { ...filters };
     for (const key of META_FACET_FILTERS) delete stripped[key];
     return stripped;
@@ -192,6 +194,9 @@
         .find((candidate) => C.normalizeCourseIdentity(candidate.course) === identity)?.value ||
         C.highSemanticSubjectForCourseKey?.(next.courseKey) || "";
     }
+    // 고1 과목 목록이 4과목(공통수학1·2, 수학(상)·(하))이던 때 저장된 옛 초안의 값은 묶음 규칙(수학(상)→공통수학1, 수학(하)→공통수학2)의 과목으로 받는다.
+    if (subject && grade === "고1" && !Unified.subjectByValue(grade, subject))
+      subject = { H1_2015_MATH_UP: "COMMON_MATH_1", H1_2015_MATH_DOWN: "COMMON_MATH_2" }[subject] || subject;
     if (subject && !Unified.subjectByValue(grade, subject)) subject = "";
     next.semanticSubject = subject;
     next.curriculumKey = "";
@@ -453,6 +458,7 @@
     saveResultSignature: "",
     saveResultState: "",
     derivationSource: null,
+    derive: null,
     derivedBaseQuestions: null,
     editSavedPaperId: "",
     urlSources: [],
@@ -480,8 +486,12 @@
   // without changing the compose draft or its selection controls.
   const Quick = window.Archive2QuickPools;
   const QuickTree = window.Archive2UnitTree;
-  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
-    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
+  const quickState = { grade: "", subject: "", semester: "1", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
+    // 진단평가 A·B형 두 벌 (a check box, not a mode); formB: the B paper when its window could not open with A's click.
+    twoForms: false, formB: null,
+    // 진단평가 결과표 link: the question UIDs of the paper(s) just made ({ title, a, b }), cleared when the next one starts.
+    report: null,
+    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard", diagnostic: "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
   const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
@@ -507,15 +517,8 @@
     (session()?.id || session()?.user?.id || "local");
   function headers() {
     const s = session();
+    // 교사 로그인의 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션(옛 세션)은 비밀번호로 대신하지 않고 다시 로그인하게 한다.
     if (s?.session_token) return { Authorization: "Bearer " + s.session_token };
-    const mem = window.__APMATH_AUTH_MEMORY || {},
-      login = mem.login_id || s?.login_id || s?.loginId,
-      password = mem.raw_password || s?.raw_password;
-    if (login && password)
-      return {
-        Authorization:
-          "Basic " + btoa(unescape(encodeURIComponent(login + ":" + password))),
-      };
     throw new Error(
       "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
@@ -537,13 +540,22 @@
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
-      const result = await fetch(base + route, {
-        method,
-        headers: {
+      // headers() throws when there is no login. That happens before fetch(), so nothing was sent: the error is marked
+      // (requestNotSent) so a caller can tell "the request never left" from "sent, answer unknown" (network cut, timeout).
+      let requestHeaders;
+      try {
+        requestHeaders = {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
           ...(options.headers || {}),
-        },
+        };
+      } catch (error) {
+        if (error && typeof error === "object") error.requestNotSent = true;
+        throw error;
+      }
+      const result = await fetch(base + route, {
+        method,
+        headers: requestHeaders,
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
       });
@@ -627,8 +639,11 @@
   function unifiedPrimaryMarkup(filters) {
     // 학년은 학년 색 버튼(학교별 기출·단원별 기출과 같은 구성요소), 과목은 2과목이면 2칸 전환·그 이상이면 칩이다.
     const subjects = Unified.subjectsForGrade(filters.grade);
-    const locked = state.sealed || state.receipts.length > 0 ? "disabled" : "";
-    const pressed = (value) => `aria-pressed="${String(filters.semanticSubject || "") === String(value)}"`;
+    const locked = state.sealed || state.derivationSource || state.receipts.length > 0 ? "disabled" : "";
+    // 과목이 둘뿐인 학년(고1: 공통수학1·공통수학2)은 눌린 단추가 목록에 들어 있는 과목이다. 과목을 따로 고르지 않은 상태(전체)는
+    // 두 단추가 모두 눌린 상태이고, 한 과목만 고르면 그 단추만 눌린다. 필터 값은 단일 값 그대로다(새 상태 없음).
+    const bothOn = subjects.length === 2 && !filters.semanticSubject;
+    const pressed = (value) => `aria-pressed="${bothOn || String(filters.semanticSubject || "") === String(value)}"`;
     const subjectButton = ({ value, label }) =>
       button("compose-subject", esc(label), `type="button" data-subject="${esc(value)}" ${pressed(value)} ${locked}`);
     const subjectField = subjects.length === 2

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-64b05ee32b35-8f945337",
+  "sourceArchiveFile": "original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5687e9c98a77660a06fa3e37d365f0026b7969128b158d33425aab96579722bf",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_EXTREMUM",
+      "templateKey": "TPL_DIFFERENCE_RANGE",
+      "step": "교집합 인원 t의 범위 25≤t≤55를 이용해 수학만 좋아하는 인원 70-t의 양 끝값 45,15를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_86c4d9d8d8b2345966c053ebdcadba6f4e28222627ed8c7b4e239096557dcc3a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "step": "n=2k-1을 제곱하여 f(k)=4k²-4k+1,g(k)=2k²-2k+1을 얻고 f(3)+g(2)=30을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8dc2313934a7528c606d769d2a47624a2516613ad30debd18384cd129ec8ec3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "step": "음수 입력의 반정수값은 겹치지 않고 k-1이 3 또는 6인 k=4,7만 제외하여 일대일인 여덟 k를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_60fd48203c02382fa9c4850400c98956c11a5c1234813bf21cca147b16b99869",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
+      "step": "역합성식으로 g(1)=2,h=f∘g를 얻고 서로 다른 두 순열 배치를 조사하면 두 경우 모두 h(1)=h⁻¹(1)이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb58bedab714a51ea6053b2e204e9b5fe2aec5761b5769660b79455bb4304aeb",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "g=f⁻¹이므로 첫 항은 c이고 그래프의 f(c)=b,f(d)=c를 역추적하면 둘째 항은 d이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_258c6788d267b320845c1e21174eec6c9449004265b50d9c6cdb9b5a7169c57c",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "templateKey": "TPL_FINITE_BIJECTION_DIRECT_DEDUCTION",
+      "step": "공역 제한과 g(x)=f(x)+1로 f(2)=6을 정하고 f(4)<g(3)<6을 적용해 g(3)=f(5)=5를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_255355de71f28803d6e03386cf399e2795e7ad73ca616efb4daea1c6ed64a9b5",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+      "step": "1,2,4를 제외하고 3을 포함시킨 뒤 5,6의 자유 선택 2²가 가능한 X의 개수이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3cbc2f3766036e010ef1f92fe0df96631fde9ceb4d5ca7dfbed428ece5d74c0",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "step": "f(x)=1인 경계를 기준으로 합성식을 네 선분으로 나눠 넓이 6과 직선 교점 두 개를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1ee3e99ff05c5d3bb883fdc1f867bff21192c5e5558c9957906ca193f06c23cb",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EQUATION",
+      "templateKey": "TPL_COMPOSITION_ROOT_COUNT_PARAMETER",
+      "step": "j=[abs(x²-5)]로 놓아 x²=a-j를 대입하면 4<a<5에서 다섯 양의 x²가 생기고 양음 열 근을 만든다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11c43e80f90102e35115b5e5ca6cbaad8e48896c5c83cc017b7a54606ee292ec",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_CAUCHY_EXTREMUM",
+      "step": "차가 (ay-bx)²임을 증명한 코시부등식을 (a,2b),(3,4)에 적용해 상한 10과 등호조건 2a=3b를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f5151588197b9c81026412921cd9c4f58e4f5e992cc67ceec4199d532355e83c",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+      "step": "주기 8과 홀대칭으로 양의 교점만 세고 각 양의 포물선 구간 판별식이 k=1부터 9까지 양수인 n=19,20을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

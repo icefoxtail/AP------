@@ -3,8 +3,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { refuseDirectMetadataWrite } from './question-metadata-format.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+refuseDirectMetadataWrite(root, 'project-middle1-basic-eligibility');
 const read = name => JSON.parse(fs.readFileSync(path.join(root, name), 'utf8'));
 const metadataPath = 'archive/data/question_metadata.json';
 const metadata = read(metadataPath);

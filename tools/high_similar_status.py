@@ -78,7 +78,7 @@ def main():
     for p in sorted(set(x for x in added.split("\n") if re.search(r"_유사\d*\.js$", x))):
         st = Path(p).stem
         # main 등록 writer가 만든 행: question_metadata.json 에 stem 이 있으면 등록됨
-        found = bool(git("grep", "-l", "-F", st, REF, "--", "archive/data/question_metadata.json").strip())
+        found = bool(git("grep", "-l", "-F", st, REF, "--", "archive/data/question_metadata.json", "archive/data/question-metadata/v1").strip())
         campaign.append({"similar": st, "registered": found})
 
     if args.json:

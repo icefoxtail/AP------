@@ -475,7 +475,7 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "<div class=\"small-board\"><p>최단 경로에서는 오른쪽과 위쪽으로만 이동합니다. 빠진 도로는 통과할 수 없으므로 원본 그림의 실제 선분을 먼저 확인합니다.</p><p>각 교차점에 도착하는 최단 경로 수는 <b>왼쪽에서 올 수 있는 수 + 아래에서 올 수 있는 수</b>입니다. 다만 해당 방향 도로가 없으면 그 수를 더하지 않습니다.</p><p>원본 도로망을 아래에서 위로 읽으면 각 행의 누적 수는 다음과 같습니다.</p><p>아래 행: $1,1,1,1,1,1$<br>둘째 행: $1,2,3,4,5,6$<br>셋째 행: $1,3,6,-,5,11$<br>넷째 행: $1,4,10,10,15,26$<br>맨 위 행: $1,5,15,25,40,66$</p><p>따라서 $Q$에 도착하는 최단 경로는 <b>$66$가지, ②</b>입니다. 아래 해설 그림에서 끊긴 선분을 확인하세요.</p></div>",
-    "solutionImage": "assets/solutions/21_매산여고_1학기_중간_고2_확률과통계/q13_paths.svg",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_확률과통계/q13_paths.svg",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-01",
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",

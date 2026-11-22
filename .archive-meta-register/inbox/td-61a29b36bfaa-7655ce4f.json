@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-61a29b36bfaa-7655ce4f",
+  "examUid": "19_동산중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "0b1936f52ec07487d1b3a6aa8a69a20bfd2ef657",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-7655ce4f.type-ledger.json",
+        "sha256": "ccb3779ce34c7eb2a1da21864fd67382146a55be3e0eabaac4ce29638407ca44"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7d8172eaecb4357822d7e6ccdaa0de6a297f0d637e0c61e2be834d105bfdc25f",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "세 이차방정식을 인수분해, 제곱근, 근의 공식으로 각각 풀어 해를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "627a71d34a6afa47734616f02917c1bfd56bc51d870ad3da90baebd2d9a65a79",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-7655ce4f.type-ledger.json",
+          "sha256": "ccb3779ce34c7eb2a1da21864fd67382146a55be3e0eabaac4ce29638407ca44"
+        }
+      ]
+    }
+  ]
+}

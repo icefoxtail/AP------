@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import { META_FILE, questionMetadataBytesAt } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import {
@@ -16,7 +17,7 @@ const run = (args, options = {}) => execFileSync("git", ["-C", root, ...args], {
   stdio: ["ignore", "pipe", "pipe"]
 });
 const runText = (args) => String(run(args)).trim();
-const gitShow = (commit, repoPath) => run(["show", `${commit}:${repoPath}`], { encoding: null });
+const gitShow = (commit, repoPath) => repoPath === META_FILE ? questionMetadataBytesAt(root, commit) : run(["show", `${commit}:${repoPath}`], { encoding: null });
 const requirePacket = () => {
   const packetPath = arg.values.get("packet");
   if (!packetPath) throw new Error("--packet is required");
@@ -31,7 +32,6 @@ const assertRegularFile = (file, label) => {
 const isGeneratedPath = (file) => [
   "archive/db.js",
   "archive/data/question_identity_map.json",
-  "archive/data/question_metadata.json",
   "archive/question-identity.js",
   "archive/question-index.js",
   "archive/question-index-report.md",
@@ -43,6 +43,7 @@ const isGeneratedPath = (file) => [
   "archive/data/archive2-source-verification-index-v2.json",
   "archive/data/archive2-crosswalk-inventory.json"
 ].includes(file) || /^archive\/data\/meta-foundation\/runtime\/[^/]+\.json$/.test(file) ||
+  /^archive\/data\/question-metadata\/v1\/[^/]+\.json$/.test(file) ||
   /^archive\/data\/archive2-source-verification\/v1\/[^/]+\.json$/.test(file) ||
   /^archive\/data\/archive2-source-verification\/index-v2\/[0-9a-f]\.json$/.test(file) ||
   /^archive\/data\/meta-foundation\/evidence\/review-overrides\/v1\/qid_v1_[0-9a-f]{64}\.json$/.test(file);

@@ -18,6 +18,10 @@ W=apmath/worker-backup/worker
 run "node --check Worker entry" node --check "$W/index.js"
 run "node --check backup workflow" node --check "$W/backup-workflow.js"
 
+# The catalog build below reads archive/data/question_metadata.json, which git holds as shards (the one file is an ignored
+# assembly). Assembling here, not in the workflow file, keeps this change from re-triggering a Worker deploy by itself.
+if [ -d archive/data/question-metadata/v1 ]; then run "assemble question metadata from its shards" node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
+
 # Same generated-artifact build tools/run-tests.js performs before the source-verification tests: build from the
 # checked-out source so a code-only change does not depend on already-committed shard outputs.
 run "build canonical Archive2 test projection" node archive/tools/build-archive2-catalog.mjs
@@ -30,9 +34,7 @@ run "tests/apmath-omr-result-identity.test.mjs" node --test tests/apmath-omr-res
 run "tests/apms-result-clinic-uid-bridge.test.mjs" node --test tests/apms-result-clinic-uid-bridge.test.mjs
 
 # Worker unit tests (same selection as tools/run-tests.js).
-run "tests/archive2-worker-validation.test.mjs (Grade/browse contracts)" node --test \
-  --test-name-pattern 'grade-only canonical path filters pass mixed-question validation|Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade|shared browse grade cannot replace saved snapshot source grades at deployment|target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks' \
-  tests/archive2-worker-validation.test.mjs
+run "tests/archive2-worker-validation.test.mjs (Grade/browse contracts)" node --test tests/archive2-worker-validation.test.mjs
 run "tests/archive2-saved-paper-namespace.test.mjs" node --test tests/archive2-saved-paper-namespace.test.mjs
 run "tests/archive2-saved-paper-d1-batching.test.mjs" node --test tests/archive2-saved-paper-d1-batching.test.mjs
 run "tests/archive2-original-source-verification-shard.test.mjs" node --test tests/archive2-original-source-verification-shard.test.mjs

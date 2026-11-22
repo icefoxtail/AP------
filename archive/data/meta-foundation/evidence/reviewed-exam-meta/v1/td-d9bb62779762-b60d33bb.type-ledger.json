@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-d9bb62779762-b60d33bb",
+  "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cbcb608e5cddafb61462ba4b6430029f4f0e8a5649a84d7f6b828df4b15f7fd8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+      "step": "두 점의 좌표 차 4와 -6의 제곱합에 제곱근을 취해 거리를 2√13으로 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5b74231b4789c250094c6cc2a0f268704105a7e46b672f40e34a36912d94968e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_INTERNAL",
+      "step": "B에 가장 가까운 4등분점을 AB의 3:1 내분점으로 보아 좌표 (-3,1/2)를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_18a996954ca22f78af74ae5aaae0945ca3d4317b1e2cd5ac4e8d3c30ebe84d6c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": null,
+      "step": "등분점을 0부터 6까지 좌표화하여 C에서 F,G까지의 거리비가 3:4인 외분임을 확인한다.",
+      "note": "TPL 제안: 내분·외분 판별; 정의: 점의 순서와 거리비를 비교하여 내분·외분에 관한 진술의 참거짓을 가린다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3a9f3be3978029800641dcf24023685bade376adb0e158ee763f11a4dfac35fd",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_DISTANCE_SUM_MIN",
+      "step": "삼각부등식 PA+PB≥AB의 등호가 선분 AB 위에서 성립하므로 AB=6√2가 최솟값이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e538a587965dedb8c32235009b1baf38fefb22b20ce5ec26c8477513d5c4f25a",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_DISTANCE_SQSUM_MIN",
+      "step": "세 거리의 제곱합을 3(x-3)²+3(y-2)²+78로 완전제곱하여 내부점 (3,2)에서 최솟값을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

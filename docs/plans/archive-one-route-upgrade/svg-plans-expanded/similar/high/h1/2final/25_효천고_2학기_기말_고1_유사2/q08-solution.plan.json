@@ -1,0 +1,73 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -2,
+   8,
+   -3,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "2"
+    ],
+    "offset": "0",
+    "domain": [
+     "0",
+     "6"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "label": "y=sqrt(2x)"
+   },
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-4",
+     "2"
+    ],
+    "offset": "-1",
+    "domain": [
+     "2",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=sqrt(2(x-2))-1"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "4",
+     "y": "1",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "평행이동한 함수는 y=√(2(x−2))−1이고 끝점은 (2,−1)이다. 정의역은 x≥2, 치역은 y≥−1이며 x=4일 때 y=1이므로 점 (4,1)을 지난다. 주황색 점선은 처음 함수 y=√(2x)이고, 파란색 곡선은 x축으로 2, y축으로 −1만큼 평행이동한 그래프이다. 그래프는 제1사분면과 제4사분면만 지나고 제3사분면은 지나지 않는다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=√(2x)를 x축으로 2, y축으로 −1 평행이동",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "accessibilityDescription": "원점에서 시작하는 주황색 점선 무리함수 곡선과, 끝점 (2,−1)에서 시작하는 파란색 무리함수 곡선이 그려져 있고 파란 곡선 위의 점 (4,1)이 표시되어 있다.",
+ "newVisualInformation": [
+  "처음 함수와 평행이동한 함수",
+  "끝점 (2,−1), 점 (4,1)"
+ ]
+}

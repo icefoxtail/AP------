@@ -333,7 +333,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "매개변수가 없는 두 식의 공통해를 재대입",
-    "decisiveStep": "상수a가 없는 두 관계를 먼저 연립하여(2,3)을 얻고 남은 식에 넣는다."
+    "decisiveStep": "상수a가 없는 두 관계를 먼저 연립하여(2,3)을 얻고 남은 식에 넣는다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 한 점 P(2,3)에서 만나고 있으며 점 P의 좌표가 표시되어 있다. 한 직선은 오른쪽 아래로, 나머지 두 직선은 오른쪽 위로 향한다.",
+    "solutionImageCaption": "연립방정식의 해는 두 직선의 교점이고, 그 해가 −x+3y=7도 만족하면 세 직선이 한 점에서 만난다. a가 없는 x+2y=8과 −x+3y=7을 더하면 5y=15에서 y=3, x=2이므로 공통점은 P(2,3)이다. 이 점이 2x−y=a도 지나므로 a=4−3=1이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -554,7 +559,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "순환하는 같은 각에서 안쪽 삼각형의 AA 발견",
-    "decisiveStep": "세 외각을 같은 표시각으로 바꾸어DEF와ABC의 각을 대응시키고 실제그림8:4로 DF를 구한다."
+    "decisiveStep": "세 외각을 같은 표시각으로 바꾸어DEF와ABC의 각을 대응시키고 실제그림8:4로 DF를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 세 선분 AF, BD, CE가 서로 교차해 안쪽에 작은 삼각형 DEF가 만들어져 있고 세 꼭짓점 B, C, A에서 같은 크기의 각이 같은 표시로 있으며 변 AB 6, BC 10, CA 8이 적혀 있다.",
+    "solutionImageCaption": "예: ∠ABD=∠BCE=∠CAF를 20°로 둔 그림이다(안쪽 삼각형의 크기는 모양만 나타낸다). 외각의 성질로 ∠FDE=∠DAB+∠ABD=∠DAB+∠CAF=∠A, ∠DEF=∠EBC+∠BCE=∠EBC+∠ABD=∠B, ∠EFD=∠FCA+∠CAF=∠FCA+∠BCE=∠C이다. 세 각이 각각 같으므로 △DEF∽△ABC(AA 닮음)이다. DE=3cm이고 AB=6cm이므로 닮음비는 1:2이고 DF=(1/2)×AC=(1/2)×8=4cm이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -599,7 +608,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 높이의 비례중항과 넓이",
-    "decisiveStep": "AD제곱=BD·CD로CD를 얻고 밑변 전체와 높이로 넓이를 구한다."
+    "decisiveStep": "AD제곱=BD·CD로CD를 얻고 밑변 전체와 높이로 넓이를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC의 빗변 BC에 수선 AD가 내려져 있고 BD 4, AD 6, DC 9가 적혀 있으며 빗변 BC 아래에 13이 적혀 있다.",
+    "solutionImageCaption": "직각삼각형의 닮음에서 AD²=BD×CD이므로 6²=4×CD, CD=9cm이다. 따라서 BC=4+9=13cm이다. 삼각형 ABC의 넓이는 (1/2)×BC×AD=(1/2)×13×6=39cm²이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -644,7 +657,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내부 평행선의 부분비와 전체비",
-    "decisiveStep": "실제그림AE8에AD:DB=2:1을 적용해x를 얻고2:3으로y를 구한다."
+    "decisiveStep": "실제그림AE8에AD:DB=2:1을 적용해x를 얻고2:3으로y를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변 AB, AC 위의 점 D, E를 이은 선분 DE가 밑변 BC와 평행하게 그어져 있고 AD 10, DB 5, AE 8, EC x=4, DE y=10, BC 15가 적혀 있다.",
+    "solutionImageCaption": "BC∥DE이므로 AD:DB=AE:EC에서 10:5=8:x, x=4이다. 또 AD:AB=DE:BC에서 10:15=y:15이므로 y=10이다. 따라서 x+y=4+10=14cm이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -734,7 +751,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각이등분선의 대변 분할비 직접 대입",
-    "decisiveStep": "AB:AC=BD:CD에8,6,3을 넣어BD를 구한다."
+    "decisiveStep": "AB:AC=BD:CD에8,6,3을 넣어BD를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 꼭짓점 A에서 변 BC 위의 점 D로 각의 이등분선 AD가 그어져 있고 A에서 이등분된 두 각에 같은 표시가 있으며 AB 8, AC 6, CD 3, BD 4가 적혀 있다.",
+    "solutionImageCaption": "삼각형의 내각의 이등분선 정리에 의해 AB:AC=BD:CD이다. 8:6=BD:3에서 BD=4cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -869,7 +890,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "무게중심의1/6 넓이와 중점 반분",
-    "decisiveStep": "전체의1/6인GDC를 구하고GC중점E로 다시 절반을 취한다."
+    "decisiveStep": "전체의1/6인GDC를 구하고GC중점E로 다시 절반을 취한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 중선 AD 위에 무게중심 G가 있고 GC의 중점 E에서 D로 선분이 그어져 있다. 삼각형 GDC는 연하게, 그 절반인 삼각형 EDC는 진하게 칠해져 있고 넓이 14와 7이 적혀 있다.",
+    "solutionImageCaption": "삼각형의 세 중선은 삼각형을 넓이가 같은 6개로 나누므로 △GDC=(1/6)×84=14cm²이다(연한 색). E가 GC의 중점이므로 △GDC에서 꼭짓점 D를 공유하고 밑변 GE, EC가 같은 △GDE와 △EDC의 넓이가 같다. 따라서 △EDC=(1/2)×14=7cm²(진한 색)이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -986,7 +1011,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "겹친 삼각형의 뒤바뀐 두 변 대응으로 SAS",
-    "decisiveStep": "BC=9+7을 복원하고BA:BD=BC:BA를 공통각B와 묶는다."
+    "decisiveStep": "BC=9+7을 복원하고BA:BD=BC:BA를 공통각B와 묶는다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 D가 있고 선분 AD가 그어져 있다. AB 12, AC 8, BD 9, DC 7, AD 6이 적혀 있고 꼭짓점 B의 각 β, 같은 크기의 각 ACB와 BAD에 같은 표시가 있다.",
+    "solutionImageCaption": "△ABC와 △DBA에서 ∠B는 공통이고 BA:BD=12:9=4:3, BC:BA=16:12=4:3이므로 두 변의 길이의 비와 그 끼인각이 같아 △ABC∽△DBA(SAS 닮음)이다. 대응변의 비가 4:3이므로 AC:DA=4:3에서 8:AD=4:3이고 AD=6cm이다. 따라서 AD의 길이는 6cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

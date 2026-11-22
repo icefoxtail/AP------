@@ -87,7 +87,7 @@ const cloneRegistry = r => ({ ...r, pt: new Map(r.pt), tpl: new Map(r.tpl), bind
 
 // ---------------------------------------------------------------- planning
 // ctx: the converter's context ({ records, registry, aliases, root }); resultRows: the parsed result lines (with _source);
-// env: { curriculumGuess(row), pathGrade(file) } from the converter. opts: { master, groups, bundlesOnly }.
+// env: { curriculumGuess(row), pathGrade(file) } from the converter. opts: { master, groups, bundlesOnly, ownerPackByBundle }.
 // Returns { ctx (copy with the new keys visible in its registry), rows (converted lines), finalize(items), stats }.
 export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
   const registry = cloneRegistry(ctx.registry);
@@ -128,10 +128,16 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
     if (byPath) return { id: byPath, own: false };
     return expected.length ? { id: expected[0], own: false } : { id: "", own: false };
   };
-  const unitPair = m => {
-    const unit = master.get(m.standardUnitKey);
-    if (!unit || unit.keyType !== "standardUnitKey") return null;
-    const sub = master.get(m.subUnitKey);
+  // The row's own unit; when the row has none the tag master knows, the unit named on the bundle assignment line
+  // (`binding: { standardUnitKey, subUnitKey }`, written by whoever assigned the bundle) is used.
+  const unitPair = (m, uid) => {
+    let unit = master.get(m.standardUnitKey), subKey = m.subUnitKey;
+    if (!unit || unit.keyType !== "standardUnitKey") {
+      const hint = ptAssign.get(uid)?.binding;
+      unit = master.get(text(hint?.standardUnitKey)); subKey = hint?.subUnitKey;
+      if (!unit || unit.keyType !== "standardUnitKey") return null;
+    }
+    const sub = master.get(subKey);
     return { unit: unit.key, sub: sub && sub.keyType === "subUnitKey" && sub.standardUnitKey === unit.key ? sub.key : null };
   };
   const pairKey = p => `${p.unit}\u0000${p.sub ?? ""}`;
@@ -212,7 +218,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
     const pairs = new Map(); // group id -> Map(pairKey -> {pair, n})
     const unitCount = new Map();
     for (const c of list) {
-      const p = unitPair(c.m);
+      const p = unitPair(c.m, c.row.uid);
       if (!p) continue;
       if (!pairs.has(c.group)) pairs.set(c.group, new Map());
       const e = pairs.get(c.group).get(pairKey(p)) || { pair: p, n: 0 }; e.n++; pairs.get(c.group).set(pairKey(p), e);
@@ -224,8 +230,10 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       const withSub = top([...map].filter(([, x]) => x.pair.unit === e.pair.unit && x.pair.sub).map(([kk, x]) => [kk, x.n]), 1)[0];
       if (withSub) { map.get(withSub[0]).n += e.n; map.delete(k); }
     }
-    let owner = "";
-    for (const [unit] of top(unitCount, unitCount.size)) { owner = packOfUnit(unit); if (owner) break; }
+    // ownerPackByBundle (--owner-pack BUNDLE=PACK): an existing pack named by the caller for a bundle whose course no pack has bindings on yet (e.g. 미적분);
+    // the pack then only gets the new course/curriculum values appended (the converter's add-only pack scope addition).
+    let owner = ctx.registry.packs.has(opts.ownerPackByBundle?.get(bundle.bundle)) ? opts.ownerPackByBundle.get(bundle.bundle) : "";
+    if (!owner) for (const [unit] of top(unitCount, unitCount.size)) { owner = packOfUnit(unit); if (owner) break; }
     if (!owner) owner = packOfCourse([...new Set(list.map(c => c.group))].sort()[0]);
     const lost = reason => { for (const c of list) { dropped.add(c.row.uid); } created.pt.set(key, { bundle: bundle.bundle, lost: reason }); };
     if (!owner) { lost("NEW_KEY_OWNER_PACK_UNRESOLVED"); continue; }
@@ -290,7 +298,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       if (it.tplKey && created.tpl.has(it.tplKey)) { if (!usedTpl.has(it.tplKey)) usedTpl.set(it.tplKey, []); usedTpl.get(it.tplKey).push(it); }
     }
     const uids = list => list.map(i => i.row.uid).sort();
-    const unitsOf = list => [...new Set(list.map(i => unitPair(i.m)?.unit).filter(Boolean))].sort();
+    const unitsOf = list => [...new Set(list.map(i => unitPair(i.m, i.row.uid)?.unit).filter(Boolean))].sort();
     const provenance = bundleId => [{ source: BUNDLE_SOURCE, bundle: bundleId, bundleTable: { branch: tables.origin.branch, commit: tables.origin.commit, dir: tables.origin.dir } }];
     const packDir = packId => { const f = ctx.registry.packFiles?.get(packId); return f ? f.replace(/\/pack\.json$/, "") : `archive/data/meta-foundation/canonical/packs/${packId.toLowerCase().replaceAll("_", "-")}`; };
     const changes = [], counts = { problemTypes: 0, templates: 0, bindings: 0 };
@@ -316,7 +324,7 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       const bucket = new Map(own.map(b => [`${b.standardUnitKey}\u0000${b.subUnitKey ?? ""}`, []]));
       const first = bucket.keys().next().value;
       for (const it of g.items) {
-        const p = unitPair(it.m), k = p ? pairKey(p) : null;
+        const p = unitPair(it.m, it.row.uid), k = p ? pairKey(p) : null;
         // own pair, else a binding of the same unit, else the first one
         const target = k && bucket.has(k) ? k : (p && [...bucket.keys()].find(x => x.startsWith(`${p.unit}\u0000`))) || first;
         bucket.get(target).push(it);

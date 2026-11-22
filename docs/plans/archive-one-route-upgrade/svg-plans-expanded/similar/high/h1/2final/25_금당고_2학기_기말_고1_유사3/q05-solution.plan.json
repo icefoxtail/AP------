@@ -1,0 +1,53 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLineCaption": {
+  "text": "위 P, 아래 Q"
+ },
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "-3",
+       "state": "OPEN"
+      },
+      "hi": {
+       "value": "3",
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "0",
+       "state": "OPEN"
+      },
+      "hi": {
+       "value": "2",
+       "state": "OPEN"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "p의 진리집합 P는 -3<x<3, q의 진리집합 Q는 0<x<2이다. Q가 P에 들어 있으므로 q이면 p이다(q→p는 참). 그러나 -3<x≤0인 x는 p만 만족하므로 p→q는 거짓이다. 따라서 p는 q이기 위한 필요조건이지만 충분조건은 아니므로 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "P={x|-3<x<3}, Q={x|0<x<2}",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 진리집합 P, Q를 수직선에 나란히 놓아 Q⊂P임을 보임"
+ ]
+}

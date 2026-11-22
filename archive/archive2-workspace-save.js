@@ -12,7 +12,7 @@
   let
     $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
     clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
-    ownHistoryContext, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
+    ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
     rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
     review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
     selectedScopeQuestionUids, showDialog, state, storageKey, teacherSessionOk, unifiedIndex, unique,
@@ -21,7 +21,7 @@
     ({
       $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
       clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
-      ownHistoryContext, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
+      ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
       rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
       review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
       selectedScopeQuestionUids, showDialog, state, storageKey, teacherSessionOk, unifiedIndex, unique,
@@ -52,12 +52,14 @@
   // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
   let errorToastEl = null;
   let errorToastCloseHooked = false;
+  let errorToastLoginEl = null;
   function hideErrorToast() {
     try { errorToastEl?.parentNode?.removeChild(errorToastEl); } catch {}
   }
   // `info` is describeError()'s result: when it has a detail, the folded "상세 보기" block (original text, file, question
   // number, code, copy button) goes under the sentence. Without a detail the box stays one line, as before.
-  function showErrorToast(message, info = null) {
+  // options.login: 로그인이 없거나 만료돼 막힌 경우. 보관함·출제 패널의 로그인 안내와 같은 "선생님 로그인" 단추(새 탭)를 함께 보인다.
+  function showErrorToast(message, info = null, options = {}) {
     try {
       if (typeof document.createElement !== "function" || !document.body) return;
       if (!errorToastEl) {
@@ -68,16 +70,25 @@
         text.className = "error-toast-text";
         const detail = document.createElement("div");
         detail.className = "error-toast-detail";
+        const login = document.createElement("a");
+        login.className = "button-like primary error-toast-login";
+        login.href = "../apmath/";
+        login.target = "_blank";
+        login.rel = "noopener";
+        login.textContent = "선생님 로그인";
+        login.hidden = true;
+        errorToastLoginEl = login;
         const close = document.createElement("button");
         close.type = "button";
         close.className = "error-toast-close";
         close.setAttribute("aria-label", "오류 알림 닫기");
         close.textContent = "닫기";
         close.addEventListener("click", hideErrorToast);
-        box.append(text, detail, close);
+        box.append(text, detail, login, close);
         errorToastEl = box;
       }
       errorToastEl.firstChild.textContent = message;
+      if (errorToastLoginEl) errorToastLoginEl.hidden = !options.login;
       const detailSlot = errorToastEl.children[1];
       if (detailSlot) detailSlot.innerHTML = info?.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
       // A modal <dialog> makes everything outside it inert, so the alert lives inside the open dialog when there is one.
@@ -112,13 +123,15 @@
     }
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
-    if (error) showErrorToast(message, info);
+    // 요청이 나가기 전 로그인 없음(requestNotSent)과 401(로그인 만료)에는 로그인 단추를 붙인다. 403(권한 없음)에는 붙이지 않는다.
+    const needsLogin = Boolean(cause && typeof cause === "object" && (cause.requestNotSent === true || Number(cause.status) === 401));
+    if (error) showErrorToast(message, info, { login: needsLogin });
     else hideErrorToast();
   }
   // The screen name that goes into the folded detail ("화면: 문제지 만들기"), so a pasted report says where it happened.
   const SCREEN_LABELS = {
     home: "홈", find: "기출 찾기", compose: "문제지 만들기", saved: "보관함", recent: "출제 내역", health: "점검",
-    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트",
+    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트", diagnostic: "진단평가",
   };
   function screenLabel() {
     try { return SCREEN_LABELS[state.view] || String(state.view || ""); } catch { return ""; }
@@ -135,6 +148,51 @@
   function errorDetailMarkup(message) {
     const info = errorInfoByMessage.get(String(message || ""));
     return info && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
+  }
+  // rows[].scopeQuestionUids = 그 행의 범위 안 문항 uid 전체(초안 크기의 큰 몫). 읽는 곳은 (1) 선정을 바꿀 때의 범위 검사(C.review, rowMatches),
+  // (2) 저장 요청의 selection_filters(request(true)), (3) 서버가 저장 문항을 그 범위로 다시 맞춰 보는 검사다. 현재 단원 목록(planRows)이
+  // 만들었고 선정 문항은 언제나 그 안에 있으므로, 단원 목록으로 다시 만들 수 있는 행은 목록을 빼고 저장한다(행에 scopeUidsOmitted 표시).
+  // 열 때 현재 카탈로그의 planRows() 목록 + 그 행에서 뽑은 문항으로 채운다(applyDraft). 단원 목록으로 못 만드는 범위(uid 경로로 고른 범위,
+  // 저장 시험지 수정본, 학교별 기출로 고른 시험, 행이 현재 범위·분배와 안 맞는 경우)는 지금처럼 목록을 그대로 저장한다.
+  // 열 때 그 범위 키를 못 만드는 경우도 목록을 그대로 저장한다: 고등 소단원 묶음 키(대단원키~묶음키)는 묶음표를 비동기로 읽은 뒤에야 만들어지고,
+  // 조건을 바꾸고 다시 만들지 않은 문제지(composeStale)는 저장된 목록이 지금 조건의 계산과 다르다.
+  function rowsRebuildableFromScopes() {
+    if (state.uidRoute || state.derivationSource || state.urlUids?.length || state.sources.length || !state.scopes.length) return false;
+    if (state.composeStale) return false;
+    if (!/^중[123]$/.test(state.filters.grade || "") && state.scopes.some((key) => String(key).includes("~"))) return false;
+    if (!Array.isArray(state.rows) || !state.rows.length) return false;
+    const pooled = state.distribution === "pool";
+    return state.rows.every((row) => row && typeof row === "object" && Array.isArray(row.scopeQuestionUids) &&
+      (pooled ? row.id === "pool" : row.id !== "pool" && state.scopes.includes(row.id)));
+  }
+  function draftRows() {
+    if (!rowsRebuildableFromScopes()) return state.rows;
+    return state.rows.map(({ scopeQuestionUids, ...rest }) => ({ ...rest, scopeUidsOmitted: true }));
+  }
+  // 열 때 위 표시가 있는 행의 목록을 채운다: 현재 단원 목록으로 다시 만든 목록(저장 당시와 같은 함수)에 그 행에서 뽑힌 문항을 합친다.
+  // 합치므로 선정 문항은 항상 범위 안에 남고(서버의 범위 검사 통과), 카탈로그가 바뀌었으면 새 목록을 따른다.
+  function rebuildOmittedRowScopeUids() {
+    if (!state.rows.some((row) => row && row.scopeUidsOmitted === true)) return;
+    const fresh = new Map(planRows().map((row) => [row.id, row.scopeQuestionUids || []]));
+    // 묶음표를 아직 못 읽은 채 소단원 묶음 키가 있으면 합친 목록(pool)은 그 묶음의 문항이 빠진 채로 만들어지므로 쓰지 않는다.
+    const childScopesPending = !/^중[123]$/.test(state.filters.grade || "") && Boolean(QuickTree?.loadGroups) && !QuickTree.groupsLoaded?.() &&
+      state.scopes.some((key) => String(key).includes("~"));
+    const picked = new Map();
+    for (const record of state.selected) {
+      if (!picked.has(record.rowId)) picked.set(record.rowId, []);
+      picked.get(record.rowId).push(record.questionUid);
+    }
+    state.rows = state.rows.map((row) => {
+      if (!row || row.scopeUidsOmitted !== true) return row;
+      const { scopeUidsOmitted, ...rest } = row;
+      // 지금 단원 목록에서 그 행을 못 만들면(예: 고등 소단원 묶음표를 아직 못 읽음) 선정 문항만으로 좁히지 않고 목록 없이 둔다.
+      // 목록 없는 행은 저장 요청이 경로 조건으로 범위를 다시 계산한다(더 넓다).
+      if (!fresh.has(row.id) || (row.id === "pool" && childScopesPending)) return rest;
+      const list = [...fresh.get(row.id)];
+      const have = new Set(list);
+      for (const uid of picked.get(row.id) || []) if (!have.has(uid)) { have.add(uid); list.push(uid); }
+      return { ...rest, scopeQuestionUids: list };
+    });
   }
   function draft() {
     const keys = [
@@ -174,6 +232,7 @@
       "saveResultSignature",
       "saveResultState",
       "derivationSource",
+      "derive",
       "composeShortage",
     ];
     return {
@@ -182,8 +241,8 @@
       indexVersion: state.indexVersion,
       updatedAt: new Date().toISOString(),
       ...Object.fromEntries(keys.map((k) => [k, state[k]])),
+      rows: draftRows(),
       scopeSourcePaths: selectedScopePaths(),
-      scopeQuestionUids: selectedScopeQuestionUids(),
       selected: state.selected.map((r) => ({
         questionUid: r.questionUid,
         rowId: r.rowId,
@@ -200,6 +259,14 @@
       return [];
     }
   }
+  // 초안의 최상위 scopeQuestionUids(범위 안 문항 uid 전체 목록)는 쓰기만 하고 읽는 곳이 없다: applyDraft가 복원 대상에서 빼고
+  // 현재 카탈로그로 범위를 다시 구한다. 초안 크기의 큰 몫이라 새 초안에는 넣지 않고, 이미 저장된 초안도 배열을 다시 쓸 때 이 키만 뺀다
+  // (다른 필드는 그대로, 열 수 있는 정보는 줄지 않는다). 옛 초안·작업 백업 파일에 이 키가 있어도 열린다(검증에서 선택 항목).
+  function withoutUnreadDraftFields(record) {
+    if (!record || typeof record !== "object" || Array.isArray(record) || !("scopeQuestionUids" in record)) return record;
+    const { scopeQuestionUids, ...rest } = record;
+    return rest;
+  }
   function save() {
     if (
       !state.catalog ||
@@ -208,13 +275,14 @@
       return;
     const record = draft();
     try {
+      // 새 초안과 기존 초안 모두 위 정리를 거쳐 쓴다. 공간이 모자라 쓰지 못하면 아무것도 지우지 않고(기존 초안은 그대로) 안내만 한다.
       localStorage.setItem(
         storageKey(),
         JSON.stringify(
           [
             record,
             ...drafts().filter((d) => d.draftId !== record.draftId),
-          ].slice(0, 20),
+          ].slice(0, 20).map(withoutUnreadDraftFields),
         ),
       );
     } catch {
@@ -268,7 +336,8 @@
         (row.count === undefined || isFiniteNumber(row.count)) &&
         (row.difficultyBuckets === undefined || isBuckets(row.difficultyBuckets)) &&
         (row.paths === undefined || isStrArr(row.paths)) &&
-        (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids))),
+        (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids)) &&
+        (row.scopeUidsOmitted === undefined || row.scopeUidsOmitted === true)),
       round: (v) => isInt(v, 1, 999),
       rounds: (v) => Array.isArray(v) && v.length <= 999 && v.every((round) => isObj(round) &&
         isStrArr(round.questionUids) && (round.roundNo === undefined || isInt(round.roundNo, 1, 999))),
@@ -300,6 +369,11 @@
       saveResultSignature: (v) => typeof v === "string",
       saveResultState: (v) => ["", "SAVED", "FAILED", "SAVING", "RESULT_UNKNOWN"].includes(v),
       derivationSource: (v) => v === null || isObj(v),
+      // 기준 시험지로 다시 만들기: 같은 결과를 다시 열고, 다시 뽑을 때 앞서 준 문항을 빼기 위한 기록.
+      derive: (v) => v === null || (isObj(v) && isStrArr(v.baseUids, 400) && isStrArr(v.exclude, 5000) && isStrArr(v.resultUids, 400) &&
+        ["same", "different"].includes(v.typeMode) && ["same", "up-some", "up-one"].includes(v.level) &&
+        isStr(v.baseTitle, 200) && isStr(v.source, 40) && isStr(v.publisher, 200) && isStr(v.seed, 200) &&
+        isStr(v.text, 2000) && isStr(v.levelText, 2000) && Array.isArray(v.notes) && v.notes.length <= 12 && v.notes.every((note) => isStr(note, 2000))),
       composeShortage: (v) => Array.isArray(v) && v.length <= 200 && v.every((item) => isObj(item) &&
         isStr(item.label, 500) && isBuckets(item.difficultyBuckets) && isInt(item.requested, 0, 100000) && isInt(item.got, 0, 100000)),
       pins: (v) => isStrArr(v, 5000),
@@ -448,6 +522,7 @@
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.derivationSource = data.derivationSource || null;
+    state.derive = data.derive || null;
     // 모자라게 뽑은 문제지는 모자람 안내도 함께 복원한다(결과가 없으면 안내할 것도 없다).
     state.composeShortage = data.selected.length && Array.isArray(data.composeShortage)
       ? data.composeShortage.map((item) => ({ label: item.label, difficultyBuckets: item.difficultyBuckets, requested: item.requested, got: item.got }))
@@ -506,6 +581,7 @@
       ...state.byUid.get(r.questionUid),
       rowId: r.rowId,
     }));
+    rebuildOmittedRowScopeUids();
     state.receipts = state.receipts.map((r) => {
       const partIndex = Number.isInteger(r.partIndex)
         ? r.partIndex
@@ -639,6 +715,7 @@
       parentDisplayName: String(paper.library_display_name || paper.title || title),
       derivationType: "REVISION",
     };
+    state.derive = null;
     state.derivedBaseQuestions = structuredClone(snapshot.questions);
     derivedBaseLoad = null;
     state.prepared = [];
@@ -772,24 +849,59 @@
     if (version !== manifest.projectionVersion) throw new Error("canonical manifest digest mismatch");
     return version;
   }
+  // 출제 패널 항목 하나(원본 또는 유사 세트: 둘 다 카탈로그의 시험 파일이다). 원본 정보를 확인할 수 없으면 null.
+  function originalAssignItem(exam) {
+    const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
+    if (!sourceHash || !state.catalog.indexVersion) return null;
+    // 쪽당 문항은 늘 4로 시작한다: 옛 모달이 기억해 둔 값(APMATH_ARCHIVE2_ORIGINAL_QPP)은 쓰지 않는다.
+    const settings = { ...originalSettingsForExam(exam), qpp: 4 };
+    return {
+      kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
+      grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
+    };
+  }
   function openOriginalAssign(exam) {
     const Assign = window.Archive2Assign;
     if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
     if (Assign.isOpen()) return undefined;
-    const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
-    if (!sourceHash || !state.catalog.indexVersion) {
+    const item = originalAssignItem(exam);
+    if (!item) {
       status("이 시험지의 원본 정보를 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.", true);
       return undefined;
     }
     state.originalReceipts = [];
-    // 쪽당 문항은 늘 4로 시작한다: 옛 모달이 기억해 둔 값(APMATH_ARCHIVE2_ORIGINAL_QPP)은 쓰지 않는다.
-    const settings = { ...originalSettingsForExam(exam), qpp: 4 };
     Assign.open({
-      items: [{
-        kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
-        grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
-      }],
-      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
+      items: [item],
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (it) => Source.load(it.file, it.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
+      request: assignRequest,
+      opener: document.activeElement,
+    });
+    return undefined;
+  }
+  // 학교별 기출에서 고른 여러 시험지(원본·유사 섞여도 된다)를 한 번에 같은 패널로 낸다(2026-11-22).
+  // 항목 모양과 패널의 항목별 문항 로드·중복일 제외는 한 장 출제와 같다. 하나라도 원본 정보를 확인할 수 없으면 아무것도 열지 않는다.
+  function openOriginalAssignMany(exams) {
+    const Assign = window.Archive2Assign;
+    const list = (Array.isArray(exams) ? exams : []).filter((exam) => exam?.file);
+    if (!list.length) return undefined;
+    if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) {
+      status("여러 시험지를 한꺼번에 내려면 새 출제 화면이 필요합니다. 한 장씩 출제해 주세요.", true);
+      return undefined;
+    }
+    if (Assign.isOpen()) return undefined;
+    const items = [];
+    for (const exam of list) {
+      const item = originalAssignItem(exam);
+      if (!item) {
+        status(`「${O.displayTitle(exam)}」의 원본 정보를 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.`, true);
+        return undefined;
+      }
+      items.push(item);
+    }
+    state.originalReceipts = [];
+    Assign.open({
+      items,
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (it) => Source.load(it.file, it.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
       request: assignRequest,
       opener: document.activeElement,
     });
@@ -1045,7 +1157,10 @@
       setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
       let recovered = false;
-      if (requestStarted && (!error.status || error.status >= 500)) {
+      // 로그인 정보가 없어 요청이 나가기 전에 난 실패(requestNotSent)는 결과를 모르는 것이 아니다: 서버에 아무것도 가지 않았으므로
+      // 확인할 것이 없고 중복 저장 걱정도 없다. 요청이 나간 뒤의 끊김·시간 초과·5xx만 아래에서 RESULT_UNKNOWN으로 둔다.
+      const notSent = error?.requestNotSent === true && !recoveringUnknown;
+      if (requestStarted && !notSent && (!error.status || error.status >= 500)) {
         try {
           const result = await resolveBatch();
           if (result.saved) {
@@ -1060,7 +1175,7 @@
         const responseStatus = Number(error.status);
         const definiteHttpFailure = requestStarted &&
           Number.isInteger(responseStatus) && responseStatus >= 400 && responseStatus < 500;
-        const keepUnknown = !definiteHttpFailure && (
+        const keepUnknown = !definiteHttpFailure && !notSent && (
           (recoveringUnknown && !recoveryConfirmedAbsent) ||
           (!requestStarted && recoveringUnknown) ||
           (requestStarted && (!error.status || responseStatus >= 500))
@@ -1173,7 +1288,9 @@
   // 서버 원문(영어 포함)은 여기에 넣지 않고 접힌 상세에만 남는다. 요청·재시도 동작은 이 표와 무관하다(문구만 고른다).
   // 네트워크 끊김·시간 초과·서버 오류(5xx)는 거절이 아니라 "결과를 모름"이라 표가 아닌 저장 결과 확인 흐름(RESULT_UNKNOWN)이 안내한다.
   const SAVE_FAILURE_TEXT = {
+    loginMissing: "로그인이 필요합니다. 로그인한 뒤 저장해 주세요. 작업은 초안에 남아 있습니다.",
     loginExpired: "로그인이 만료됐습니다. 다시 로그인한 뒤 저장해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
+    forbidden: "이 계정에는 시험지를 저장할 권한이 없습니다. 관리자에게 확인해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
     tooLarge: "문제지가 너무 커서 저장하지 못했습니다. 권을 나누거나 문항 수를 줄여서 다시 저장해 주세요.",
     staleCatalog: "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.",
     metaMismatch: "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.",
@@ -1184,7 +1301,10 @@
   function saveFailureMessage(error) {
     const code = Number(error?.status);
     const serverText = String(error?.data?.error || error?.message || "");
-    if (code === 401 || code === 403) return SAVE_FAILURE_TEXT.loginExpired;
+    // 요청이 나가기 전(로그인 정보 없음)에 난 실패. 요청이 나간 뒤의 실패에는 이 표시가 없다.
+    if (error?.requestNotSent === true) return SAVE_FAILURE_TEXT.loginMissing;
+    if (code === 401) return SAVE_FAILURE_TEXT.loginExpired;
+    if (code === 403) return SAVE_FAILURE_TEXT.forbidden;
     if (code === 413) return SAVE_FAILURE_TEXT.tooLarge;
     if (code === 409 && SAVE_STALE_VERSION.test(serverText)) return SAVE_FAILURE_TEXT.staleCatalog;
     if (SAVE_PARITY_MISMATCH.test(String(error?.message || ""))) return SAVE_FAILURE_TEXT.metaMismatch;
@@ -1439,6 +1559,7 @@
       saveResultSignature: "",
       saveResultState: "",
       derivationSource: null,
+      derive: null,
       derivedBaseQuestions: null,
     });
     derivedBaseLoad = null;
@@ -1539,6 +1660,7 @@
     openSavedPaperAssign,
     fetchCurrentProjectionVersion,
     openOriginalAssign,
+    openOriginalAssignMany,
     originalIssueBusy,
     setOriginalStep,
     currentSavedPaperIds,

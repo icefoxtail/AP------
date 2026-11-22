@@ -52,7 +52,9 @@
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
+| 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
 | 문제·해설 그림 (Visual·SVG), SVG 엔진 | [docs/agents/visual-svg.md](docs/agents/visual-svg.md) |
+| Google AI Studio 유사 생성·반입 | [docs/agents/aistudio-similar.md](docs/agents/aistudio-similar.md) |
 | 시험지 표 (AP Table Engine) | [docs/agents/table-engine.md](docs/agents/table-engine.md) |
 | Archive 2.0 화면·엔진 코드 | [docs/agents/archive2-code.md](docs/agents/archive2-code.md) |
 | Git 저장 범위, Drive 증거, 이력 정리 | [docs/agents/git-evidence.md](docs/agents/git-evidence.md) |

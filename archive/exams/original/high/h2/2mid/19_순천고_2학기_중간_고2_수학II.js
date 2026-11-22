@@ -334,7 +334,12 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 점 A에서 가파르게 올라 가로축을 지나 점 B에서 꼭대기에 이른 뒤 점 C를 거쳐 내려가 가로축을 지나 오른쪽 아래 점 D에 이르는 꺾은선 그래프이다.",
+    "solutionImageCaption": "예: f(1)=a=-1, f(2)=b=3, f(3)=c=2, f(4)=d=-4인 네 점을 꺾은선으로 이은 연속함수이다(조건 b>c>a>d, |d|>|b|>|c|>|a|, 네 수의 곱이 양수을 만족한다). A에서 B로 갈 때 부호가 -에서 +로, C에서 D로 갈 때 +에서 -로 바뀌어 구간 (1,2)와 (3,4)에서 x축을 지난다. 두 구간은 겹치지 않으므로 근은 적어도 2개이고 n의 최댓값은 2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -370,7 +375,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 양쪽이 높은 열린 점으로 모이고 아래쪽에 닫힌 점이 따로 있으며, x=2에서 뾰족하게 꺾이고 x=3에서 끊어졌다가 다시 오르는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=1에서 좌우 곡선이 모두 높이 3의 열린 점으로 가까워져 극한이 존재하지만 함숫값은 아래의 닫힌 점 f(1)=1이라 불연속이다. x=2는 뾰족하게 꺾인 점이라 미분계수가 없고, x=3에서는 왼쪽 끝의 닫힌 점과 오른쪽 시작의 열린 점의 높이가 달라 불연속이다. x=4에서는 곡선이 올라가므로 f′(4)>0이다. 따라서 옳은 것은 ③(x→1의 극한이 존재한다)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -440,7 +449,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 원점을 지나는 두 직선이 있고, 두 직선이 포물선의 점 S와 점 T에서 각각 접하며 S와 T를 잇는 수평 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "x=t에서의 접선 y=2tx-t²+1이 원점을 지나려면 t²=1이다. 접점은 S(-1,2), T(1,2)이고 두 접선은 l2: y=-2x, l1: y=2x이다. 삼각형 OST의 밑변 ST=2이고 O에서 밑변 y=2까지의 높이는 2이다. 넓이는 (1/2)·2·2=2이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

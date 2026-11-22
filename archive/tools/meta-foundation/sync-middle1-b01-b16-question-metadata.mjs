@@ -5,7 +5,9 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+import { refuseDirectMetadataWrite } from './question-metadata-format.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
+refuseDirectMetadataWrite(root,'sync-middle1-b01-b16-question-metadata');
 const global='archive/_generated/intelligence/phase1/middle1-foundation/global';
 const read=(p)=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const json=(x)=>JSON.stringify(x,null,2)+'\n';

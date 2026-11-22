@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>진단평가 결과표</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+  <link rel="stylesheet" href="diagnostic-report.css?v=20261120-diag-report-4">
+  <!-- 이 파일의 주소(src·href)는 모두 이 파일(assessment/) 위치 기준이다. 자료 읽기 길(data/…)은 document.baseURI를 archive/ 기준으로 읽으므로
+       base 태그 대신 그 주소만 한 칸 위(archive/)로 맞춘다. 다른 스크립트보다 먼저 실행돼야 한다. -->
+  <script>Object.defineProperty(document, "baseURI", { value: new URL("../", location.href).href });</script>
+  <script src="../archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+  <!-- 문항 정보(단원·단계·유형)는 교사 작업공간과 같은 자료 층에서 읽는다. 학생 이름과 O/X는 어디에도 저장하지 않는다. -->
+  <script defer src="../archive2-boot.js?v=20261110-first-paint-1"></script>
+  <script defer src="../mixer-selector.js?v=20261009-meta1"></script>
+  <script defer src="../archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
+  <script defer src="../rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
+  <script defer src="../archive2-core.js?v=20261119-pair-type-spread-1"></script>
+  <script defer src="../unit-past-exams-core.js?v=20261117-middle-parent-1"></script>
+  <script defer src="../archive2-unified-units.js?v=20261117-middle-parent-1"></script>
+  <script defer src="../archive2-key-resolver.js"></script>
+  <script defer src="../meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
+  <script defer src="diagnostic-report-data.js?v=20261120-diag-report-4"></script>
+  <script defer src="diagnostic-report-view.js?v=20261120-diag-report-4"></script>
+  <script defer src="diagnostic-report.js?v=20261120-diag-report-4"></script>
+</head>
+<body>
+  <header class="topbar screen-only">
+    <div>
+      <div><strong>진단평가 결과표</strong> <span class="hint">O/X를 모두 입력하면 A4 2쪽 결과지가 만들어집니다. 입력한 값은 저장되지 않고, 새로고침하면 사라집니다.</span></div>
+      <button class="btn" type="button" id="printBtn" disabled>인쇄</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel screen-only" id="panel" aria-label="입력">
+      <h2>결과지에 적을 내용</h2>
+      <div class="grid">
+        <label class="wide">학생 이름<input id="inName" type="text" maxlength="30" autocomplete="off" spellcheck="false"></label>
+        <label>학년<input id="inGrade" type="text" maxlength="20" autocomplete="off" placeholder="예: 예비 중2"></label>
+        <label>평가일<input id="inTestDate" type="date"></label>
+        <label>상담일<input id="inDate" type="date"></label>
+      </div>
+      <div>
+        <h2>문항별 정오</h2>
+        <p class="sub">번호가 클수록 어려운 문항입니다. 맞으면 O, 틀리면 X를 누르세요.</p>
+      </div>
+      <p class="progress" id="progress" role="status" aria-live="polite"></p>
+      <div class="actions"><button class="btn line" type="button" id="clearBtn" disabled>정오 모두 지우기</button></div>
+      <div class="qlist" id="qlist"></div>
+    </aside>
+
+    <div class="paper-col">
+      <p class="state" id="state" role="status" aria-live="polite">문항 정보를 불러오고 있습니다.</p>
+      <div id="sheets" hidden>
+        <div class="sheetbox">
+          <section class="sheet" id="sheet1" aria-label="결과표 1쪽">
+            <div class="head">
+              <div><div class="kicker">수학 진단평가 결과</div><h1 id="title">종합 진단</h1></div>
+              <div class="org" id="orgLine"></div>
+            </div>
+            <dl class="who">
+              <div><dt>학생</dt><dd id="wName"></dd></div>
+              <div><dt>학년</dt><dd id="wGrade"></dd></div>
+              <div><dt>평가 범위</dt><dd id="wScope"></dd></div>
+              <div><dt>평가일 · 문항</dt><dd class="num" id="wTest"></dd></div>
+            </dl>
+            <div class="top">
+              <div class="donut"><span id="donutSvg"></span><div class="mid"><div class="big num" id="donutBig"></div><div class="sub" id="donutSub"></div></div></div>
+              <div class="verdict">
+                <p id="summary"></p>
+                <dl class="facts" id="facts"></dl>
+              </div>
+            </div>
+            <div class="block">
+              <h2>단계별 성취 <small>칸 하나가 문항 하나입니다. 번호가 클수록 어려운 문항입니다.</small></h2>
+              <div class="levels" id="levels"></div>
+              <div class="legend"><span><i class="c o"></i>맞힌 문항</span><span><i class="c x"></i>틀린 문항</span><span><i class="g"></i>안정 기준 70%</span></div>
+            </div>
+            <div class="two">
+              <div>
+                <h2>문항이 어려워질 때의 흐름</h2>
+                <div id="line"></div>
+                <p class="cap" id="lineCap"></p>
+              </div>
+              <div>
+                <h2>단원별 성취</h2>
+                <div class="bars" id="units"></div>
+                <p class="cap" id="unitCap"></p>
+              </div>
+            </div>
+            <div class="block tight">
+              <h2>단원 × 단계 <small>어느 단원의 어느 단계에서 막히는지</small></h2>
+              <table class="heat" id="heat"></table>
+              <div class="legend"><span><i class="sw h4"></i>전부 정답</span><span><i class="sw h3"></i>70% 이상</span><span><i class="sw h2"></i>50~69%</span><span><i class="sw h1"></i>50% 미만</span><span><i class="sw h0"></i>3문항 미만(판정 없음)</span></div>
+            </div>
+            <div class="foot"><span>평가 1회 기준의 참고 자료입니다. 안정 기준은 단계 정답률 70% 이상입니다.</span><span class="num">1 / 2</span></div>
+          </section>
+        </div>
+
+        <div class="sheetbox">
+          <section class="sheet" id="sheet2" aria-label="결과표 2쪽">
+            <div class="head">
+              <div><div class="kicker">자세히 보기</div><h1>유형별 진단과 학습 계획</h1></div>
+              <div class="org" id="orgLine2"></div>
+            </div>
+            <div class="block tight">
+              <h2>유형별 결과 <small>보완이 필요한 유형부터</small></h2>
+              <table class="types" id="types"></table>
+            </div>
+            <div class="block tight">
+              <h2>틀린 문항 <small id="wrongN"></small></h2>
+              <div id="wrong"></div>
+            </div>
+            <div class="block tight">
+              <h2>다음 4주 수업 계획 <small>학원 수업에서 이렇게 진행합니다</small></h2>
+              <div class="plan" id="plan"></div>
+            </div>
+            <div class="block tight">
+              <h2>선생님 의견</h2>
+              <div class="memo" id="memo" aria-label="선생님 의견(인쇄한 뒤 손으로 적는 빈칸)"></div>
+            </div>
+            <div class="foot"><span>유형 이름과 단계는 문항에 등록된 분류를 그대로 씁니다.</span><span class="num">2 / 2</span></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

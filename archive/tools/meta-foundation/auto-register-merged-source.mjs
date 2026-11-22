@@ -1,5 +1,5 @@
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
-import { questionMetadataText } from './question-metadata-format.mjs';
+import { questionMetadataText, writeMetadataText, assertMetadataAssembledCurrent } from './question-metadata-format.mjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -56,7 +56,7 @@ const pick = (v, keys) => Object.fromEntries(keys.map(k => [k, v?.[k] ?? null]))
 const json = v => JSON.stringify(v, null, 2) + '\n';
 const git = (root, ...args) => execFileSync('git', args, {cwd:root, encoding:'utf8', maxBuffer:64*1024*1024, stdio:['pipe','pipe','pipe']});
 const read = (root, rel, fallback) => fs.existsSync(path.join(root,rel)) ? JSON.parse(fs.readFileSync(path.join(root,rel),'utf8')) : fallback;
-const write = (root, rel, value) => { const f=path.join(root,rel); fs.mkdirSync(path.dirname(f),{recursive:true}); fs.writeFileSync(f,rel===META?questionMetadataText(value):json(value)); };
+const write = (root, rel, value) => { if(rel===META){writeMetadataText(root,questionMetadataText(value));return;} const f=path.join(root,rel); fs.mkdirSync(path.dirname(f),{recursive:true}); fs.writeFileSync(f,json(value)); };
 export const sourceFingerprint = q => sha256(JSON.stringify({content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,answer:q.answer??null,solution:q.solution??null,image:q.image??null}));
 export const contentFingerprint = q => sha256(JSON.stringify({content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,image:q.image??null}));
 export function sourcePath(value) {
@@ -803,7 +803,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   Object.assign(report,backlogCounts(nextState.pending),{mergeNotReached,targetCount:targets.length});
   if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
     tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size,mode,mergeNotReached}));
-  if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
+  if(doWrite){assertMetadataAssembledCurrent(root);for(const [rel,obj]of outputs)write(root,rel,obj);}
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
 }

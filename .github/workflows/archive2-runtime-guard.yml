@@ -63,46 +63,163 @@ permissions:
   contents: read
 
 jobs:
-  runtime-contract:
-    name: Archive2 runtime contract
+  # One job, one full-history checkout. The three former jobs (runtime contract, reviewed problem UI, 50-question
+  # solution Chrome) each repeated that checkout (about 3.5 minutes) and each waited for its own runner. Every check
+  # keeps its own scope condition and its own step name; a failed check does not hide the others (every step after
+  # the scope decision runs under !cancelled()), and the last step lists each check's outcome in the run summary.
+  runtime-guard:
+    name: Archive2 runtime guard
     runs-on: ubuntu-latest
-    # Full history checkout plus the runtime suite consumed the former 5-minute
-    # job budget before Chrome could start. Keep every check and allow both stages.
-    timeout-minutes: 10
+    # The three former budgets were 10 + 8 + 12 minutes with a checkout each; the measured serial run is about 9 minutes.
+    # Browser steps keep their own step limits so one hung check cannot consume the others' time.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
+          # The same immutable PR merge snapshot as CI.
+          ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Classify the fixed snapshot impact
         id: scope
         run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
+
+      # Order matters: the runtime contract check (further down) rewrites tracked derived files in the working tree
+      # (meta compile, SVG accessibility index, catalog, extension keys). The six-case UI check and the solution
+      # checks read tracked bytes and refuse a checkout that differs from the tested commit, as they did on the clean
+      # checkout of their former jobs. So every check that needs the clean tree runs first, the checkout is restored,
+      # and only then the contract and the finder check that consume its rewritten files.
+
+      # --- Archive2 reviewed problem UI (6 cases): contract and plan (the browser step follows the shared Chrome setup) ---
+      - name: Verify the closed problem UI evidence contract
+        id: ui_contract
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' }}
+        run: node --test tests/archive-problem-renderer-ui-contract.test.js
+      - name: Require all six views for exact source, asset or checker changes
+        id: plan
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' }}
+        run: >-
+          node tools/check-reviewed-problem-renderer-browser.cjs --plan
+          --scope "$RUNNER_TEMP/archive-ci-scope.json"
+          --output "$RUNNER_TEMP/reviewed-problem-ui-plan.json"
+
+      # --- Shared browser tooling, installed once for every check below that needs a browser ---
+      - uses: browser-actions/setup-chrome@v1
+        if: ${{ !cancelled() && (steps.scope.outputs.runtime_chrome == 'true' || steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true' || steps.plan.outputs.required == 'true') }}
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        if: ${{ !cancelled() && (steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true' || steps.plan.outputs.required == 'true') }}
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+
+      # --- Archive2 reviewed problem UI (6 cases): browser ---
+      - name: Verify all three reviewed problems in desktop and mobile exam mode
+        id: ui_six_cases
+        if: ${{ !cancelled() && steps.plan.outputs.required == 'true' }}
+        timeout-minutes: 5
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+        run: node tools/check-reviewed-problem-renderer-browser.cjs --output "$RUNNER_TEMP/reviewed-problem-ui-evidence"
+
+      # --- Archive2 50-question solution Chrome ---
+      - name: Verify image deadlines and render feedback regressions
+        id: solution_tests
+        if: ${{ !cancelled() && steps.scope.outputs.solution_browser == 'true' }}
+        timeout-minutes: 5
+        run: >-
+          node --test
+          tests/archive-solution-loading.test.cjs
+          tests/archive-render-feedback.test.cjs
+          tests/archive-font-invalidation.test.cjs
+          tests/archive-inline-image-readiness.test.js
+          tests/archive-question-image-map-regression.test.js
+      - name: Compare 50 real solutions and verify asset failures in actual Chrome
+        id: solution_50
+        if: ${{ !cancelled() && steps.scope.outputs.solution_browser == 'true' }}
+        timeout-minutes: 8
+        # Current code only: no baseline commit is rendered or compared.
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
+          ARCHIVE_SOLUTION_REPEATS: '2'
+        run: node tests/archive2-solution-loading-browser.cjs
+      - name: Load and print the changed original sources in actual Chrome
+        id: content_browser
+        if: ${{ !cancelled() && steps.scope.outputs.mode == 'archive-content' }}
+        timeout-minutes: 6
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
+        run: node tools/check-archive-content-browser.mjs --scope "$RUNNER_TEMP/archive-ci-scope.json"
+      - name: Verify the changed scoped browser checker on one existing original
+        id: scoped_checker
+        if: ${{ !cancelled() && steps.scope.outputs.scoped_browser_changed == 'true' }}
+        timeout-minutes: 4
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+        run: |
+          node tests/archive-original-exam-access.browser.cjs
+          ARCHIVE_OUTPUT_MODE=sol node tests/archive-original-exam-access.browser.cjs
+      - name: Record unchanged common output scope
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' && steps.scope.outputs.solution_browser != 'true' && steps.scope.outputs.mode != 'archive-content' }}
+        env:
+          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
+        run: printf '50-question output check NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
+
+      # --- Archive2 runtime contract (last: it rewrites tracked derived files, see the note above) ---
+      - name: Return the checkout to the tested commit
+        id: restore_checkout
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' }}
+        run: |
+          dirty="$(git status --porcelain)"
+          if [[ -n "$dirty" ]]; then
+            echo "A check before the runtime contract left the checkout changed; restoring it to the tested commit:"
+            echo "$dirty"
+            {
+              echo '#### Checkout restored before the runtime contract'
+              echo '```'
+              echo "$dirty"
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          git restore --source=HEAD --staged --worktree -- .
+          git clean -fd
       - name: Record unchanged shared runtime scope
-        if: steps.scope.outputs.runtime_contract != 'true'
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' && steps.scope.outputs.runtime_contract != 'true' }}
         env:
           SCOPE_MODE: ${{ steps.scope.outputs.mode }}
         run: |
           printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
           echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
       - name: Verify original routes, response budgets, and storage failures
-        if: steps.scope.outputs.runtime_contract == 'true'
+        id: runtime_contract
+        if: ${{ !cancelled() && steps.scope.outputs.runtime_contract == 'true' }}
+        timeout-minutes: 8
         env:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: node tools/check-archive2-runtime.cjs
-      - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.runtime_chrome == 'true'
-        id: chrome
-        with:
-          chrome-version: stable
       - name: Verify finder and current middle RPM selection in actual Chrome
-        if: steps.scope.outputs.runtime_chrome == 'true'
+        id: finder_browser
+        if: ${{ !cancelled() && steps.scope.outputs.runtime_chrome == 'true' }}
+        timeout-minutes: 5
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           RPM_MIDDLE_BROWSER_REPORT_DIR: ${{ runner.temp }}/archive-rpm-middle-browser
         run: node tools/check-archive2-finder-filter-browser.cjs
+
+      # --- Evidence uploads (unchanged names and retention) ---
       - name: Upload middle RPM browser evidence
         if: always() && steps.scope.outputs.runtime_chrome == 'true'
         uses: actions/upload-artifact@v4
@@ -111,48 +228,6 @@ jobs:
           path: ${{ runner.temp }}/archive-rpm-middle-browser/
           if-no-files-found: warn
           retention-days: 14
-
-  reviewed-problem-renderers:
-    name: Archive2 reviewed problem UI (6 cases)
-    runs-on: ubuntu-latest
-    # A separate bounded job preserves the existing solution browser's budget.
-    timeout-minutes: 8
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Verify the closed problem UI evidence contract
-        run: node --test tests/archive-problem-renderer-ui-contract.test.js
-      - name: Classify the immutable snapshot
-        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/reviewed-problem-scope.json"
-      - name: Require all six views for exact source, asset or checker changes
-        id: plan
-        run: >-
-          node tools/check-reviewed-problem-renderer-browser.cjs --plan
-          --scope "$RUNNER_TEMP/reviewed-problem-scope.json"
-          --output "$RUNNER_TEMP/reviewed-problem-ui-plan.json"
-      - uses: browser-actions/setup-chrome@v1
-        if: steps.plan.outputs.required == 'true'
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Install the pinned browser driver outside the checkout
-        if: steps.plan.outputs.required == 'true'
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-        run: npm install --prefix "$RUNNER_TEMP/reviewed-problem-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
-      - name: Verify all three reviewed problems in desktop and mobile exam mode
-        if: steps.plan.outputs.required == 'true'
-        timeout-minutes: 5
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/reviewed-problem-browser/node_modules
-        run: node tools/check-reviewed-problem-renderer-browser.cjs --output "$RUNNER_TEMP/reviewed-problem-ui-evidence"
       - name: Upload only problem screenshots and hash-bound technical metadata
         if: always() && steps.plan.outputs.required == 'true'
         uses: actions/upload-artifact@v4
@@ -165,73 +240,6 @@ jobs:
             ${{ runner.temp }}/reviewed-problem-ui-evidence/*-mobile-tile-*.png
           if-no-files-found: error
           retention-days: 14
-
-  solution-loading:
-    name: Archive2 50-question solution Chrome
-    runs-on: ubuntu-latest
-    timeout-minutes: 12
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          # Test the same immutable PR merge snapshot as CI and runtime-contract.
-          ref: ${{ github.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Classify the fixed snapshot impact
-        id: scope
-        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
-      - name: Verify image deadlines and render feedback regressions
-        if: steps.scope.outputs.solution_browser == 'true'
-        run: >-
-          node --test
-          tests/archive-solution-loading.test.cjs
-          tests/archive-render-feedback.test.cjs
-          tests/archive-font-invalidation.test.cjs
-          tests/archive-inline-image-readiness.test.js
-          tests/archive-question-image-map-regression.test.js
-      - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Install the pinned browser driver outside the checkout
-        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-        run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
-      - name: Compare 50 real solutions and verify asset failures in actual Chrome
-        if: steps.scope.outputs.solution_browser == 'true'
-        timeout-minutes: 8
-        # Current code only: no baseline commit is rendered or compared.
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
-          ARCHIVE_SOLUTION_REPEATS: '2'
-        run: node tests/archive2-solution-loading-browser.cjs
-      - name: Load and print the changed original sources in actual Chrome
-        if: steps.scope.outputs.mode == 'archive-content'
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
-        run: node tools/check-archive-content-browser.mjs --scope "$RUNNER_TEMP/archive-ci-scope.json"
-      - name: Verify the changed scoped browser checker on one existing original
-        if: steps.scope.outputs.scoped_browser_changed == 'true'
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-        run: |
-          node tests/archive-original-exam-access.browser.cjs
-          ARCHIVE_OUTPUT_MODE=sol node tests/archive-original-exam-access.browser.cjs
-      - name: Record unchanged common output scope
-        if: steps.scope.outputs.solution_browser != 'true' && steps.scope.outputs.mode != 'archive-content'
-        env:
-          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
-        run: printf '50-question output check NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload solution loading metadata, including failures
         if: always()
         uses: actions/upload-artifact@v4
@@ -240,3 +248,43 @@ jobs:
           path: ${{ runner.temp }}/archive-solution-loading-evidence/
           if-no-files-found: warn
           retention-days: 14
+
+      # --- One look at which check ended how (the job itself already fails when any step above failed) ---
+      - name: Summarize each check's outcome
+        if: ${{ always() }}
+        env:
+          O_SCOPE: ${{ steps.scope.outcome }}
+          O_RUNTIME_CONTRACT: ${{ steps.runtime_contract.outcome }}
+          O_FINDER_BROWSER: ${{ steps.finder_browser.outcome }}
+          O_UI_CONTRACT: ${{ steps.ui_contract.outcome }}
+          O_UI_PLAN: ${{ steps.plan.outcome }}
+          O_UI_SIX_CASES: ${{ steps.ui_six_cases.outcome }}
+          O_SOLUTION_TESTS: ${{ steps.solution_tests.outcome }}
+          O_SOLUTION_50: ${{ steps.solution_50.outcome }}
+          O_CONTENT_BROWSER: ${{ steps.content_browser.outcome }}
+          O_SCOPED_CHECKER: ${{ steps.scoped_checker.outcome }}
+        run: |
+          {
+            echo '### Archive2 runtime guard: outcome per check'
+            echo
+            echo '| Check (former job) | Outcome |'
+            echo '| --- | --- |'
+          } >> "$GITHUB_STEP_SUMMARY"
+          row() {
+            local label="$1" outcome="$2"
+            printf '| %s | %s |\n' "$label" "${outcome:-not reached}" >> "$GITHUB_STEP_SUMMARY"
+            if [[ "$outcome" == failure ]]; then
+              echo "::error title=Archive2 runtime guard::FAILED: $label"
+            fi
+          }
+          row 'Scope decision (all)' "$O_SCOPE"
+          row 'Original routes, response budgets, storage failures (runtime contract)' "$O_RUNTIME_CONTRACT"
+          row 'Finder and middle RPM selection in Chrome (runtime contract)' "$O_FINDER_BROWSER"
+          row 'Closed problem UI evidence contract (reviewed problem UI)' "$O_UI_CONTRACT"
+          row 'Six-view requirement plan (reviewed problem UI)' "$O_UI_PLAN"
+          row 'Three reviewed problems, desktop and mobile (reviewed problem UI)' "$O_UI_SIX_CASES"
+          row 'Image deadline and render feedback regressions (50-question solution Chrome)' "$O_SOLUTION_TESTS"
+          row '50 real solutions and asset failures in Chrome (50-question solution Chrome)' "$O_SOLUTION_50"
+          row 'Changed original sources load and print in Chrome (50-question solution Chrome)' "$O_CONTENT_BROWSER"
+          row 'Changed scoped browser checker on one original (50-question solution Chrome)' "$O_SCOPED_CHECKER"
+          echo 'An outcome of skipped means the scope decision did not select that check for this change; it is not a pass for the excluded area.' >> "$GITHUB_STEP_SUMMARY"

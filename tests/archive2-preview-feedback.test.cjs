@@ -9,13 +9,13 @@ function app() {
   let resolve;
   const deferred = new Promise(done => resolve = done);
   const doc = { body: {}, documentElement: { dataset: { apRenderError: 'blocked output' } }, querySelector: () => null, addEventListener() {} };
-  const element = () => ({ attrs: {}, children: [], events: {},
+  const element = () => ({ attrs: {}, children: [], events: {}, dataset: {}, style: {}, offsetHeight: 0,
     setAttribute(key, value) { this.attrs[key] = value; },
     replaceChildren(...children) { this.children = children; },
     addEventListener(name, callback) { this.events[name] = callback; },
   });
   const host = element(), nodes = { 'preview-host': host };
-  const window = { Archive2Core: {}, Archive2Output: {}, addEventListener() {}, deferred };
+  const window = { Archive2Core: {}, Archive2Output: {}, Archive2Papers: { receipt: () => null }, addEventListener() {}, deferred };
   loadWorkspace({
     window, crypto, console, setTimeout: () => 0, clearTimeout() {},
     URLSearchParams, location: { search: '' },

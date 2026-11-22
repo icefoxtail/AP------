@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8c7d64fbfad8-af940824",
+  "sourceArchiveFile": "original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4c373af2f3e1dbd962dbab623d49339541f7e828967402bd4905f8665c066efa",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "첫째항 1/4와 공비 −1/4의 절댓값이 1보다 작으므로 무한 등비급수 합 (1/4)/(1+1/4)=1/5를 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. 새 유형 제안명: 무한 등비급수의 수렴과 합. 정의: |r|<1을 확인하고 첫째항/(1−공비)로 무한합을 계산한다. 구별 단서: 유한 등비수열 합이 아니라 무한 항의 수렴 합이다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1295ae8fe45e98bd0db5550a84771ab77ccf3cc354c8e4379e5340e522e0c7d",
+      "sourceOrdinal": 6,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "등차합 S_n=n(2n+1)을 구하고 급수 일반항의 극한 0에서 p=2를 정한 뒤 1/n−1/(n+1)의 부분합 극한으로 q=1을 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. 새 유형 제안명: 급수 일반항 영극한과 망원합. 정의: 급수 수렴의 필요조건으로 매개변수를 정한 뒤 인접항 차로 소거되는 부분합의 극한을 계산한다. 구별 단서: 수렴조건과 무한 망원합을 함께 사용한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7667df81767fc2db0ed2609f3b91d8a7260d767901cda0260caa2545b6785344",
+      "sourceOrdinal": 9,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "급수 수렴에서 a_n/n²−5→0을 얻고 목표 분수의 분자분모를 n²로 나누어 (3+15)/(−1+10)=2를 계산한다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. 새 유형 제안명: 급수 수렴의 필요조건으로 수열 극한 결정. 정의: 수렴급수의 일반항이 0으로 감을 이용해 정규화 수열의 극한을 복원한다. 구별 단서: 급수 합을 구하지 않고 수렴 사실만 사용한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_812420e4afcae513ba095924a1f7b90b5e902eab820530fbbc422b8e8e9de901",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "교대 수평·수직 이동을 공비 1/9인 두 등비급수로 분리하여 좌표 극한 9/8과 3/8의 차 3/4를 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 필수 원본 그림 Git blob 추출 후 시각 확인. 새 유형 제안명: 도형 반복의 무한 등비급수. 정의: 반복 도형이나 이동의 크기비를 구해 길이·좌표의 무한합을 등비급수로 계산한다. 구별 단서: 반복되는 기하적 길이의 축적이다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_975252b57a02328d56a9cb340942fd71ba412437a351036d6b544b46ecff11fb",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "짝수항 합 관계의 차에서 a_(2n+2)−2a_(2n)=a_(2n+1)을 얻고 홀수항 등비급수 합 4에서 첫째항 2를 빼어 2를 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. 새 유형 제안명: 점화식 변형과 무한 등비급수 합. 정의: 합으로 주어진 점화 관계를 차분하여 목표 급수를 등비 부분수열의 꼬리합으로 변형한다. 구별 단서: 홀짝 부분수열과 누적합 점화 관계가 결합된다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b8e51d90aaabf6bf8ba5ebc49dba5f8b2337e8ec426ce317d0826e6df811346",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "대칭이동은 좌표를 바꾸고 수평교점 이동은 1/3로 축소하므로 대응점 길이가 첫항 4√2,공비 1/3인 무한등비급수가 되어 합 6√2이다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. 새 유형 제안명: 도형 반복의 무한 등비급수. 정의: 반복 도형이나 이동의 크기비를 구해 길이·좌표의 무한합을 등비급수로 계산한다. 구별 단서: 반복되는 기하적 길이의 축적이다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    }
+  ]
+}

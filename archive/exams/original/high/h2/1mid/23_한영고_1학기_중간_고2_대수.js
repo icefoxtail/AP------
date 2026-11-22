@@ -73,9 +73,9 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q3-solution.svg",
-    "solutionImageAlt": "로그함수 y=log₁⁄₃(x−2)−1의 그래프가 점근선 x=2에 한없이 가까워지고 점 (3,−1)을 지나며 오른쪽으로 갈수록 감소하는 모습을 나타낸 그래프.",
-    "solutionImageCaption": "log_shift",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세로 점근선 x=2 오른쪽에서 내려가는 파란 로그 곡선 f와 오른쪽 위로 올라가는 주황 곡선 g가 있다. f 위의 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=log(1/3)(x−2)−1의 그래프, g는 g(x)=log₃x의 그래프이다. f의 정의역은 x>2이고 점근선은 x=2이며 점 P(3, −1)을 지난다. 밑이 1/3로 1보다 작아 f는 x가 커지면 감소한다. g는 증가하는 곡선이므로 평행이동으로 f와 겹쳐질 수 없다. 따라서 옳지 않은 ⑤가 답이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y = \\log_{\\frac{1}{3}}(x-2)-1$ 에 대한 설명으로 옳지 않은 것은? [4.2점]",
@@ -406,13 +406,18 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 가로축과 두 점에서 만나고 두 교점이 모두 세로축 오른쪽에 있다. 세로축과 만나는 점 A와 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: k=8일 때 f(t)=t²−6t+(k−4)=t²−6t+4의 그래프이다. t=3ˣ>0이므로 서로 다른 두 양의 근이 필요하다. 이 그래프는 t축과 두 점에서 만나고 두 점 모두 t>0이며 f(0)=4>0(A)이고 꼭짓점 V(3, −5)는 t축 아래에 있다. 조건은 D/4=9−(k−4)>0에서 k<13, 두 근의 곱 k−4>0에서 k>4이므로 4<k<13이다. 자연수 k는 5부터 12까지 8개이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 12,
-    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q12-solution.svg",
-    "solutionImageAlt": "두 지수함수 y=a^x와 y=b^x의 그래프를 겹쳐 그려 x<0인 구간에서 a^x가 b^x보다 위에 있으면 a<b임을 보여주고, 옳은 보기 ㄱ, ㄷ을 표시한 그래프.",
-    "solutionImageCaption": "exp_compare",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x가 0보다 작은 쪽에서 두 쌍의 지수 곡선이 점 (0, 1)으로 모인다. 각 쌍에서 밑이 더 작은 곡선이 위에 있고, 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x<0에서 a의 곡선이 b의 곡선 위에 있으려면 a<b이다. 그림은 두 경우의 예이다. a=2, b=3(파란 곡선이 주황 곡선보다 위)이면 b>1이어서 ㄱ은 참이다. a=1/3, b=1/2(초록 곡선이 분홍 곡선보다 위)는 0<a<1이어도 b가 1보다 작을 수 있어 ㄴ은 거짓이다. 0<b<1이면 0<a<b<1이므로 ab<1이어서 ㄷ은 참이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "$x < 0$에서 $f(x) = a^x$ 그래프가 $g(x) = b^x$ 보다 항상 위에 있을 때, 옳은 것만을 보기에서 고른 것은? [4.5점]\\nㄱ. $a > 1$이면 $b > 1$이다. \\nㄴ. $0 < a < 1$이면 $b > 1$이다. \\nㄷ. $0 < b < 1$이면 $ab < 1$이다.",
@@ -448,7 +453,8 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -527,7 +533,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 1에서 27까지의 구간에서 아래로 볼록한 포물선이 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "3의 (log₅x)제곱을 t로 두면 1≤x≤125에서 1≤t≤27이고 y=t²−18t=(t−9)²−81이다. 그래프는 꼭짓점 V(9, −81)에서 최소이고 구간 끝 B(27, 243)에서 최대이다(왼쪽 끝은 A(1, −17)). 따라서 M=243, m=−81이고 √(M−m)=√324=18이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,
@@ -782,6 +793,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선 f, 오른쪽으로 완만히 올라가는 주황 로그 곡선 g, 오른쪽 아래로 내려가는 초록 직선 l과 점선 y=x−1이 있다. 점 A, B, M의 좌표가 표시되어 있고 삼각형 ABC가 색칠되어 있다.",
+    "solutionImageCaption": "a=81/4일 때의 그림이고 f는 y=aˣ⁻¹, g는 y=logₐ(x−1), l은 y=−x+6이다. 두 곡선은 직선 y=x−1에 대칭이므로 l과 y=x−1의 교점 M(7/2, 5/2)가 선분 AB의 중점이다. AB=4√2이고 기울기가 −1이므로 A(3/2, 9/2), B(11/2, 1/2)이다. A가 f 위의 점이므로 a의 1/2제곱이 9/2이고 a=81/4이다. 삼각형 ABC의 넓이는 S=(1/2)|(3/2)(1/2)−(11/2)(9/2)|=12이므로 81S=972이다. 따라서 답은 a=81/4, 81S=972이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

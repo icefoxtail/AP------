@@ -829,15 +829,10 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q18.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "content": "다음 중 두 변량 $x,y$에 대한 산점도를 그렸을 때, 대체로 다음 그림과 같은 모양이 되는 것은? (4점)",
-    "choices": [
-      "그림 ①",
-      "그림 ②",
-      "그림 ③",
-      "그림 ④",
-      "그림 ⑤"
-    ],
+    "choices": [],
     "answer": "⑤",
     "solution": "제시된 산점도는 $x$가 증가할수록 $y$도 대체로 증가하는 모양이므로 양의 상관관계이다.\n겨울철 기온과 난방비, 산의 높이와 기온, 쌀 소비량과 재고량, 지구의 기온과 빙하의 크기는 대체로 한쪽이 증가하면 다른 쪽이 감소한다.\n반면 에어컨 사용 시간이 늘어나면 전기 요금도 대체로 증가한다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
@@ -924,6 +919,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q20.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "content": "다음 산점도는 어느 사격 동아리 학생 $30$명이 사격시험에서 $1,2$차에 쏘아 얻은 점수를 조사하여 나타낸 것이다. 아래 조건을 모두 만족시키는 학생의 비율은? (4점)",
     "choices": [
@@ -973,6 +969,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q21.png",
+    "imageScale": 90,
     "imageSize": "tall",
     "content": "다음은 원 $O$에 내접하는 정오각형과 그 대각선을 이어서 그린 별 모양을 보며 두 사람이 나눈 대화이다. $\\angle CAD$의 크기를 두 사람의 방법 중 하나를 선택하여 구하고, 그 과정을 서술하시오. (4점)",
     "choices": [],

@@ -1,5 +1,6 @@
 // A new BASIC parent after a separately reviewed current-source wording repair.
 // This is not preservation of a prior canonical approval and grants no PT/TPL.
+import { META_FILE, questionMetadataBytesAt } from "./question-metadata-format.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -44,6 +45,7 @@ function local(root, relative) {
 function gitBytes(root, commit, relative) {
   if (!/^[a-f0-9]{40}$/.test(commit || "")) fail("immutable commit required");
   local(root, relative);
+  if (relative === META_FILE) return questionMetadataBytesAt(root, commit);
   try { return execFileSync("git", ["show", `${commit}:${relative}`], { cwd: root, maxBuffer: 128 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
   catch { fail("immutable input unavailable"); }
 }

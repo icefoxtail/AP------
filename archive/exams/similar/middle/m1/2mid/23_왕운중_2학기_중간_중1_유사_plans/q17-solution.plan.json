@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 주별 키의 변화량을 누적하여 실제 키를 계산하는 해설 다이어그램이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "T0",
+        "T1"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "T2",
+        "T3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "T3",
+        "T4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "T4",
+        "T5"
+      ]
+    },
+    {
+      "id": "s56",
+      "refs": [
+        "T5",
+        "T6"
+      ]
+    }
+  ],
+  "status": "ACTIVE",
+  "assetPath": "assets/images/23_왕운중_2학기_중간_중1_유사/q17-solution.svg",
+  "sourceQuote": "세로축 $y$는 처음 키 $50\\,\\mathrm{cm}",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q17-solution-result.json",
+    "statePath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q17-solution-state.json",
+    "svgPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q17-solution-solution.svg"
+  }
+}

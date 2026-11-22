@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
+  "ordinal": 17,
+  "dir": "q17-problem"
+ },
+ "identity": {
+  "questionUid": "23_왕운중_2학기_중간_중1_기출|17",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:c3a8d0e04c8e47a932b71623d73c5d52df31d9d800fff555392269cbecfff4da",
+  "assetId": "va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "묘목을 심은 후 경과 시간에 따른 키의 변화량을 나타낸 꺾은선그래프이다.",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "T0",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "1"
+       },
+       {
+        "kind": "integer",
+        "value": "1"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "2"
+       },
+       {
+        "kind": "integer",
+        "value": "2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T3",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T4",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "5"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T5",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "5"
+       },
+       {
+        "kind": "integer",
+        "value": "8"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "T6",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "integer",
+        "value": "10"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "T0",
+   "T1",
+   "T2",
+   "T3",
+   "T4",
+   "T5",
+   "T6"
+  ],
+  "displaySegments": [
+   {
+    "id": "s01",
+    "refs": [
+     "T0",
+     "T1"
+    ]
+   },
+   {
+    "id": "s12",
+    "refs": [
+     "T1",
+     "T2"
+    ]
+   },
+   {
+    "id": "s23",
+    "refs": [
+     "T2",
+     "T3"
+    ]
+   },
+   {
+    "id": "s34",
+    "refs": [
+     "T3",
+     "T4"
+    ]
+   },
+   {
+    "id": "s45",
+    "refs": [
+     "T4",
+     "T5"
+    ]
+   },
+   {
+    "id": "s56",
+    "refs": [
+     "T5",
+     "T6"
+    ]
+   }
+  ]
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "T0": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "T1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "1"
+     },
+     {
+      "kind": "integer",
+      "value": "1"
+     }
+    ],
+    "approximation": [
+     1,
+     1
+    ],
+    "precisionDigits": 17
+   },
+   "T2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "2"
+     },
+     {
+      "kind": "integer",
+      "value": "2"
+     }
+    ],
+    "approximation": [
+     2,
+     2
+    ],
+    "precisionDigits": 17
+   },
+   "T3": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "2"
+     }
+    ],
+    "approximation": [
+     3,
+     2
+    ],
+    "precisionDigits": 17
+   },
+   "T4": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "5"
+     }
+    ],
+    "approximation": [
+     4,
+     5
+    ],
+    "precisionDigits": 17
+   },
+   "T5": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "5"
+     },
+     {
+      "kind": "integer",
+      "value": "8"
+     }
+    ],
+    "approximation": [
+     5,
+     8
+    ],
+    "precisionDigits": 17
+   },
+   "T6": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "6"
+     },
+     {
+      "kind": "integer",
+      "value": "10"
+     }
+    ],
+    "approximation": [
+     6,
+     10
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "T0",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T3",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T4",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T5",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "T6",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "T0",
+   "T1",
+   "T2",
+   "T3",
+   "T4",
+   "T5",
+   "T6"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">묘목을 심은 후 경과 시간에 따른 키의 변화량을 나타낸 꺾은선그래프이다.</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"s01\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"123.428571429\" y1=\"274.285714286\" x2=\"146.285714286\" y2=\"251.428571429\"/></g><g data-layer=\"30\"><line id=\"s12\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"146.285714286\" y1=\"251.428571429\" x2=\"169.142857143\" y2=\"228.571428571\"/></g><g data-layer=\"30\"><line id=\"s23\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"169.142857143\" y1=\"228.571428571\" x2=\"192\" y2=\"228.571428571\"/></g><g data-layer=\"30\"><line id=\"s34\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"228.571428571\" x2=\"214.857142857\" y2=\"160\"/></g><g data-layer=\"30\"><line id=\"s45\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"214.857142857\" y1=\"160\" x2=\"237.714285714\" y2=\"91.428571429\"/></g><g data-layer=\"30\"><line id=\"s56\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"237.714285714\" y1=\"91.428571429\" x2=\"260.571428571\" y2=\"45.714285714\"/></g><g data-layer=\"70\"><circle id=\"T0\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"123.428571429\" cy=\"274.285714286\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T1\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"146.285714286\" cy=\"251.428571429\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T2\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"169.142857143\" cy=\"228.571428571\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T3\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"192\" cy=\"228.571428571\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T4\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"214.857142857\" cy=\"160\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T5\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"237.714285714\" cy=\"91.428571429\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"T6\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"260.571428571\" cy=\"45.714285714\" r=\"3.2\"/></g><g data-layer=\"85\"><line id=\"T1-name-owner-leader\" data-role=\"leader\" data-owner-label=\"T1-name\" data-owner=\"T1\" x1=\"146.285714286\" y1=\"251.428571429\" x2=\"166.285714286\" y2=\"251.428571429\" stroke=\"#666\" stroke-width=\"0.8\" fill=\"none\"/></g><g data-layer=\"90\"><g id=\"T0-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T0\" data-fragment-sha=\"sha256:66ea3f6f522c1f1023ec716c33e9379f090328f2e8181b4c3adbe75c3b0b3906\" transform=\"translate(111.388571429 286.285714286)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.98\" viewBox=\"0 0 24.08 13.98\" data-outline-width=\"24.08\" data-outline-height=\"13.98\" id=\"lb-4f80edd68a11b022a575a6f16074d26ea83c1cd22a1b070b027be9a7ba6d17e6\" data-owner=\"T0\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T1-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T1\" data-fragment-sha=\"sha256:accc7c667de923c65afe5dad3ffb998c94e51c7f9ecf8f41b53dc7abd8da1287\" transform=\"translate(166.285714286 244.658571429)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.54\" viewBox=\"0 0 24.08 13.54\" data-outline-width=\"24.08\" data-outline-height=\"13.54\" id=\"lb-0da19ce39729b8c7007b411bd05e87773b459d61a236f6a3ad496756d2e7c822\" data-owner=\"T1\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"31\" d=\"M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T2-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T2\" data-fragment-sha=\"sha256:424322db69ff6d7fb85c48a4a691f0b2403511a559fa93972a3c881a4be5ed76\" transform=\"translate(154.092857143 203.031428571)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.54\" viewBox=\"0 0 24.08 13.54\" data-outline-width=\"24.08\" data-outline-height=\"13.54\" id=\"lb-4bc723209fe0b2f2659483debc37b93b7fab4ebfa17f003e48f04d0225eebfb7\" data-owner=\"T2\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"32\" d=\"M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T3-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T3\" data-fragment-sha=\"sha256:e926ee6eeb9b85b8f48a29bfbc2cf733f8c832e57e41119b3ba92fcff890c2af\" transform=\"translate(204 221.581428571)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.98\" viewBox=\"0 0 24.08 13.98\" data-outline-width=\"24.08\" data-outline-height=\"13.98\" id=\"lb-2cfa53340b1d4acaca2d888fcd49948d956c09fa8d376517eb8b7d547d67cb21\" data-owner=\"T3\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"33\" d=\"M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T4-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T4\" data-fragment-sha=\"sha256:9cba0e8a8ca025389e1c163118895caee25f2bd8dc9976cbf2adcb9949cb47ca\" transform=\"translate(226.857142857 153.23)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.54\" viewBox=\"0 0 24.08 13.54\" data-outline-width=\"24.08\" data-outline-height=\"13.54\" id=\"lb-560a1ca435e4c67137320f7ff586db30cd3d4f1acfe4a3e22963e43a6aab7d11\" data-owner=\"T4\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"34\" d=\"M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T5-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T5\" data-fragment-sha=\"sha256:44e44ac5e038a78d6f293365e2e5b73137a2149f26301fe837b7b5a752259427\" transform=\"translate(249.714285714 103.428571429)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.98\" viewBox=\"0 0 24.08 13.98\" data-outline-width=\"24.08\" data-outline-height=\"13.98\" id=\"lb-d906dc5a2b9bc1d66a839375cf793cef0bda44117a24cf31acb996d7dee4d365\" data-owner=\"T5\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"35\" d=\"M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"T6-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"T6\" data-fragment-sha=\"sha256:c8b00788508f4d7f7aa9e9175ed2bbc51ef44773609680dcd2d8c20777d5f508\" transform=\"translate(248.531428571 19.734285714)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24.08\" height=\"13.98\" viewBox=\"0 0 24.08 13.98\" data-outline-width=\"24.08\" data-outline-height=\"13.98\" id=\"lb-0249a1f5f585accfbefa724e3ae29969888d927cee6724c8ceb0a76511193ede\" data-owner=\"T6\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.54) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(704,0)\"><path data-c=\"36\" d=\"M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:1aa06a6587546153a0d650dc14ddc631e8b87f7691fea8571fcbc3e16d131979",
+   "modelSha256": "sha256:a8b3c7bf49b2b5cfe0977a60cfabe3d300a901a223dc0f9d232fb47155229f75",
+   "typographyPolicySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "specSha256": "sha256:40ae6071c0d5d3685157105605a6e70de8c15a2394399fe39da0f85b904a13da",
+   "fragmentSha256s": {
+    "T0-name": "sha256:66ea3f6f522c1f1023ec716c33e9379f090328f2e8181b4c3adbe75c3b0b3906",
+    "T1-name": "sha256:accc7c667de923c65afe5dad3ffb998c94e51c7f9ecf8f41b53dc7abd8da1287",
+    "T2-name": "sha256:424322db69ff6d7fb85c48a4a691f0b2403511a559fa93972a3c881a4be5ed76",
+    "T3-name": "sha256:e926ee6eeb9b85b8f48a29bfbc2cf733f8c832e57e41119b3ba92fcff890c2af",
+    "T4-name": "sha256:9cba0e8a8ca025389e1c163118895caee25f2bd8dc9976cbf2adcb9949cb47ca",
+    "T5-name": "sha256:44e44ac5e038a78d6f293365e2e5b73137a2149f26301fe837b7b5a752259427",
+    "T6-name": "sha256:c8b00788508f4d7f7aa9e9175ed2bbc51ef44773609680dcd2d8c20777d5f508"
+   },
+   "measurementsSha256": "sha256:6936ddd5059a3bb2af1164d806e0114148d071d3da8b1a5e1d2bdce5fb2d4e0c",
+   "svgSha256": "sha256:6c23a292b8ddeb578db998cf304d2cdf28ac9f78307a5b508d3b4df3aae850b0",
+   "witnessSha256": "sha256:21ad0f2049f20661cdedd54a2c5585d0b2a367f12cb57c4bc9ec225c7b77a0b6",
+   "staticAuditSha256": "sha256:4e4643791b649f4ef9a47f4329a11aafcd77f644e28cfa11036381b4be647435",
+   "renderedLayoutSha256": "sha256:a5ad2025253dfb74f0fbdd1073bb0ee7e7e8d779a09e7c5861fdbfd6f002c6ed"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 210.75520833333331
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:6c23a292b8ddeb578db998cf304d2cdf28ac9f78307a5b508d3b4df3aae850b0",
+   "policySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "candidateBankSha256": "sha256:8fb1149f38b60180a1769c27c54dfb199ec1fc270cb8d160082cbefb2db08d8d",
+   "assetPath": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+   "assetResponseSha256": "sha256:6c23a292b8ddeb578db998cf304d2cdf28ac9f78307a5b508d3b4df3aae850b0",
+   "archiveRowSha256": "sha256:d663ad945bbd78bd6acd7f06d8b61fc634a9a2f9811c8f1e49fbf693d8298725",
+   "screenshotSha256s": {
+    "image": "sha256:be6c66d9f92f9f6b1e6034fb647ff7f632cfa9132e5fa581445569f3d58d31da",
+    "context": "sha256:bd100da9ffb2788b6de087da4120e201ffccee798e7f8e26eeab6677829f9fe0",
+    "page": "sha256:4cc6731dead0a1ee3a2f2adce49e01c445c9fa62932d7110a0da809532421241"
+   },
+   "matrixSha256": "sha256:4819249397846a272ac24aa7cf103229cbfde89f8e37bf8bfeda8c718d1f2dea",
+   "engineSha256": "sha256:b2787e1b76f3d32e3d0d8c39c013a8e928068667652f309bae01c7d1c3c8fd74"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-5b318307",
+   "asset": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/assets/images/23_왕운중_2학기_중간_중1_기출/q17-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/candidates/23_왕운중_2학기_중간_중1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63-sol-desktop-va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63.png",
+    "context": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63-sol-desktop-va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63-context.png",
+    "page": ".tmp/archive/pilot-capture-5b318307/23_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-7fbb2163f7d4f796f9c955218a8a00e1e9982e94ebbcf0371b2566b7d4bdff63-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
+    "bytes": 59098,
+    "sha256": "sha256:d29b668641ae7328b7324af7cadf926ce1ba75ef64a02c5f71e3db4f541df61d"
+   },
+   "originalQuestionSha256": "sha256:713c02adeff3196fcdf642a561ed8ef38813618881d364a5901d0204be38cea0",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 17
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.6586100260416666,
+  "expectedDisplayScale": 0.6586100260416666,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

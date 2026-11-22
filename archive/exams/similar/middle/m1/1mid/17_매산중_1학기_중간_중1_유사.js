@@ -540,11 +540,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 $3 \\times 3$ 표의 가로, 세로, 대각선에 놓인 세 수의 합이 모두 같을 때, $A - B$의 값은?\n\n| $2$ | $-5$ | $A$ |\n| :---: | :---: | :---: |\n| $-3$ | $-1$ | $1$ |\n| $B$ | $3$ | $-4$ |",
     "choices": [
-      "$-4$",
-      "$2$",
       "$0$",
-      "$-2$",
-      "$4$"
+      "$2$",
+      "$4$",
+      "$6$",
+      "$8$"
     ],
     "answer": "②",
     "points": 5,
@@ -658,9 +658,9 @@ window.questionBank = [
     "wide": false,
     "content": "$0$이 아닌 유리수 $x$에 대하여 $x \\div \\left(-2\\dfrac{2}{5}\\right) = x \\times \\square$가 성립할 때, $\\square$ 안에 알맞은 수는?",
     "choices": [
+      "$-3$",
+      "$-\\dfrac{5}{2}$",
       "$-\\dfrac{12}{5}$",
-      "$-\\dfrac{2}{5}$",
-      "$\\dfrac{5}{12}$",
       "$-\\dfrac{5}{12}$",
       "$\\dfrac{12}{5}$"
     ],

@@ -1,0 +1,113 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "좌표평면 위의 세 점 A(-2, 5), B(-2, -1), C(3, 1)을 꼭짓점으로 하는 삼각형 ABC이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "axisTickValues": {
+    "x": [
+      -2,
+      3
+    ],
+    "y": [
+      -1,
+      1,
+      5
+    ]
+  },
+  "status": "ACTIVE",
+  "sourceQuote": "[서술형 1] 좌표평면 위의 세 점 $A(-2,\\,5)",
+  "assetPath": "assets/images/23_금당중_2학기_중간_중1_유사/q21.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q21-problem-result.json",
+    "statePath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q21-problem-state.json",
+    "svgPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q21-problem-solution.svg"
+  }
+}

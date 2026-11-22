@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-5bd137e3436f-8a6a9968",
+  "requestSha256": "1f3e01d9ec1c80c8194e6c1ddbe392d709653a5f06b0e73ab4ad0cd326e2ee46",
+  "examUid": "19_서울가산중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+  "sourceBlobSha1": "e2617321b6614ef038b0d04b60205253b3f8a81d",
+  "sourceRawSha256": "56b4e2c5240b6ff7fa763ede58ce8232673fb71fb9883044a7748b3fb08da828",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5bd137e3436f-8a6a9968.type-ledger.json",
+        "sha256": "ca868170bc8c6192cba3e2dfac1dcf4059cef93a0e5f98100e2d9d18e495054d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c70de5d84d2a0e5cd3808ddca2a531f38e82e0a47946a373154657b5482cdff0",
+      "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-5bd137e3436f-8a6a9968",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "그래프의 꼭짓점과 y절편으로 y=a(x-p)^2+q의 식을 정하고 성질을 묻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b007b80c50082e763ce3d5ee5938b3d9a899f9b0eb4e373a50c8562794507f87",
+        "judgedContentFingerprint": "ea76e4f4b4539c78230d89eb809da900a2dbb34707aa273a9535a126f25766e8",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "424d087f07b971f64542d7afbcab39874be0e2ee718a331e05181ea1aa48d128",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5bd137e3436f-8a6a9968.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

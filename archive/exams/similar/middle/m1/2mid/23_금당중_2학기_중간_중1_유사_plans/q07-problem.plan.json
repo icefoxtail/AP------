@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "하루 동안 시간에 따른 기온의 변화를 나타낸 꺾은선그래프이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "T0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T15",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T18",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T24",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T0",
+    "T3",
+    "T6",
+    "T9",
+    "T12",
+    "T15",
+    "T18",
+    "T21",
+    "T24"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "T0",
+        "T3"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "T3",
+        "T6"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "T6",
+        "T9"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "T9",
+        "T12"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "T12",
+        "T15"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "T15",
+        "T18"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "T18",
+        "T21"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "T21",
+        "T24"
+      ]
+    }
+  ],
+  "axisTickValues": {
+    "x": [
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24
+    ],
+    "y": [
+      10,
+      14,
+      18,
+      22
+    ]
+  },
+  "status": "ACTIVE",
+  "sourceQuote": "다음 그림은 어느 도시의 하루 동안 시간에 따른 기온의",
+  "assetPath": "assets/images/23_금당중_2학기_중간_중1_유사/q07.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q07-problem-result.json",
+    "statePath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q07-problem-state.json",
+    "svgPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q07-problem-solution.svg"
+  }
+}

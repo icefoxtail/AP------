@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { materializeReviewedSourceMetadata, SOURCE_METADATA_MANIFEST_SCHEMA, M3_SOURCE_METADATA_PROFILE } from '../../archive/tools/meta-foundation/materialize-reviewed-source-metadata.mjs';
+import { questionMetadataBytesAt } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 import { registerReviewedExamV2 } from '../../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs';
 import { loadActiveMetaRegistry } from '../../archive/tools/meta-foundation/active-registry.mjs';
 import { loadBank } from '../../archive/tools/meta-foundation/auto-register-merged-source.mjs';
@@ -70,7 +71,7 @@ export function verifyHoldMetadataReplay({root,carrierPath,carrierCommit,carrier
   // with an absent property after that derivation.
   const selectedUids=new Set(request.items.map(item=>item.questionUid));
   const initialMetadata=(()=>{
-    const raw=run(['show',candidate.baseCommit+':archive/data/question_metadata.json']),document=JSON.parse(raw);
+    const raw=questionMetadataBytesAt(root,candidate.baseCommit),document=JSON.parse(raw);
     if(!Array.isArray(document.records))fail('BASE_METADATA_SCOPE');
     return {sha256:sha(raw),records:document.records.filter(row=>selectedUids.has(row.questionUid))};
   })();

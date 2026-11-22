@@ -982,7 +982,7 @@ window.questionBank = [
     "그래프"
   ],
   "wide": false,
-  "content": "다음 그림은 A반과 B반 학생들이 1년 동안 읽은 책의 권수에 대한 상대도수 분포다각형이다. 계급은 0권 이상 3권 미만, 3권 이상 6권 미만, 6권 이상 9권 미만, 9권 이상 12권 미만, 12권 이상 15권 미만, 15권 이상 18권 미만이다. 다음 중 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q17-student-replacement-label-layout-v2.svg\" style=\"max-width: 520px; display: block; margin: 10px 0;\">",
+  "content": "다음 그림은 A반과 B반 학생들이 1년 동안 읽은 책의 권수에 대한 상대도수 분포다각형이다. 계급은 0권 이상 3권 미만, 3권 이상 6권 미만, 6권 이상 9권 미만, 9권 이상 12권 미만, 12권 이상 15권 미만, 15권 이상 18권 미만이다. 다음 중 옳지 않은 것은? (4점)<br><br><img data-scale=\"100\" src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q17-problem-engine-v1.svg\" alt=\"가로축은 읽은 책의 권수 계급, 세로축은 상대도수이다. A반은 실선, B반은 점선으로 각 계급의 점을 이은 상대도수 분포다각형이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:10px auto;\">",
   "choices": [
     "A반과 B반의 상대도수의 합은 서로 같다.",
     "A반에서 6권 이상 9권 미만의 상대도수는 0.35이다.",

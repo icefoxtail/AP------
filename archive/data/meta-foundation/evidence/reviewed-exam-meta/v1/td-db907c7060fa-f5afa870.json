@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-db907c7060fa-f5afa870",
+  "requestSha256": "d2be62d9a231370aabd7d6940d7b0b7bf4cd92838bc6da808f14386382385e2b",
+  "examUid": "25_팔마고_1학기_기말_고1_유사2",
+  "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사2.js",
+  "sourceBlobSha1": "ccf5a2a8f98bfd4d4b19ccc6c4f45644d6e43985",
+  "sourceRawSha256": "1818a56e9f68e124f0c246f80b3995a84f8cb2a218ed8f9dd902b4c0d410e478",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-db907c7060fa-f5afa870.type-ledger.json",
+        "sha256": "856c3baa2bdcdef51dbfc4edaba2dbb440bd7a180e29641af97b4cb2e292e8ea"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_a8811b4ae68a3a330f974176b76a4b0d3570c51d361919641e59040ebea0009f",
+      "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사2.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-db907c7060fa-f5afa870",
+        "judge": "dots",
+        "rationale": "삼각형조건x>4와최장변둔각조건(x+2)²>x²+(x−2)²에서x<8을교차하여5+6+7=18.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request",
+          "rowCourse": "공통수학2",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "20935f0c0de99792c19ab4053e324d291129b73c38171dd15f5ab8913421f62e",
+        "judgedContentFingerprint": "757ff6baa639ef36e4469f6525535663d3b676fb57357e883533a98b46cc8245",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "3ee160ff9a2969626d4f0f2813ee781b42f94f6b884539ef4f82360b67417487",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-db907c7060fa-f5afa870.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

@@ -55,18 +55,18 @@ window.questionBank = [
     "wide": false,
     "content": "$x$축 위를 움직이는 점 $P$의 시각 $t$일 때의 좌표가<br>$x=t^3-6t^2-15t$, $t\\ge 0$<br>이다. 점 $P$가 운동 방향을 바꾸는 시각에서 가속도는? [3.2점]",
     "choices": [
+      "$6$",
       "$12$",
       "$18$",
       "$24$",
-      "$30$",
-      "$36$"
+      "$30$"
     ],
-    "answer": "②",
+    "answer": "③",
     "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q01-solution.svg",
     "solutionImageAlt": "속도 v(t)=3(t−5)(t+1)의 부호가 t=5에서 바뀌는 것을 나타낸 그래프",
     "solutionImageCaption": "t=5에서 속도의 부호가 바뀌며 가속도는 18이다.",
     "solutionImageSize": "full",
-    "solution": "운동 방향을 바꾸는 때는 속도의 부호가 바뀌는 때이다.\n위치함수를 미분하면\n$v(t)=x'(t)=3t^2-12t-15$\n$=3(t-5)(t+1)$이다.\n\n$t\\ge0$에서 속도가 $0$인 시각은 $t=5$이다.\n$0\\le t<5$에서는 $v(t)<0$이므로 왼쪽으로 움직이고,\n$t>5$에서는 $v(t)>0$이므로 오른쪽으로 움직인다.\n따라서 방향을 바꾸는 시각은 $t=5$이다.\n\n가속도는 속도를 미분하여\n$a(t)=v'(t)=6t-12$이고\n$a(5)=6\\cdot5-12=18$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "운동 방향을 바꾸는 때는 속도의 부호가 바뀌는 때이다.\n위치함수를 미분하면\n$v(t)=x'(t)=3t^2-12t-15$\n$=3(t-5)(t+1)$이다.\n\n$t\\ge0$에서 속도가 $0$인 시각은 $t=5$이다.\n$0\\le t<5$에서는 $v(t)<0$이므로 왼쪽으로 움직이고,\n$t>5$에서는 $v(t)>0$이므로 오른쪽으로 움직인다.\n따라서 방향을 바꾸는 시각은 $t=5$이다.\n\n가속도는 속도를 미분하여\n$a(t)=v'(t)=6t-12$이고\n$a(5)=6\\cdot5-12=18$이다.\n\n따라서 정답은 ③이다.",
     "problemPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q01-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q01-solution.plan.json"
   },
@@ -585,14 +585,14 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 $f(x)=6x^2-x+\\displaystyle\\int_0^1 4f(x)dx$를 만족시킬 때 $f(2)$의 값은? [3.9점]",
     "choices": [
+      "$12$",
+      "$14$",
+      "$16$",
       "$18$",
-      "$20$",
-      "$22$",
-      "$24$",
-      "$26$"
+      "$20$"
     ],
-    "answer": "②",
-    "solution": "정적분 부분은 $x$와 무관한 상수이므로 문자로 둔다.\n$I=\\displaystyle\\int_0^1 4f(t)\\,dt$라 하면\n$f(x)=6x^2-x+I$이다.\n\n이 식을 $I$의 정의에 대입한다.\n$I=4\\displaystyle\\int_0^1(6t^2-t+I)\\,dt$\n$=4\\left[2t^3-\\dfrac12t^2+It\\right]_0^1$\n$=4\\left(\\dfrac32+I\\right)$\n$=6+4I$이다.\n\n따라서 $3I=-6$, $I=-2$이다.\n\n그러므로 $f(x)=6x^2-x-2$이고\n$f(2)=24-2-2=20$이다.\n\n따라서 정답은 ②이다.",
+    "answer": "⑤",
+    "solution": "정적분 부분은 $x$와 무관한 상수이므로 문자로 둔다.\n$I=\\displaystyle\\int_0^1 4f(t)\\,dt$라 하면\n$f(x)=6x^2-x+I$이다.\n\n이 식을 $I$의 정의에 대입한다.\n$I=4\\displaystyle\\int_0^1(6t^2-t+I)\\,dt$\n$=4\\left[2t^3-\\dfrac12t^2+It\\right]_0^1$\n$=4\\left(\\dfrac32+I\\right)$\n$=6+4I$이다.\n\n따라서 $3I=-6$, $I=-2$이다.\n\n그러므로 $f(x)=6x^2-x-2$이고\n$f(2)=24-2-2=20$이다.\n\n따라서 정답은 ⑤이다.",
     "problemPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q09-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q09-solution.plan.json"
   },
@@ -647,14 +647,14 @@ window.questionBank = [
     "wide": false,
     "content": "점 $(1,3)$을 지나는 곡선 $y=f(x)$ 위의 임의의 점 $(x,f(x))$에서 접선의 기울기는 $3x^2-4x+5$이다. 이때, $f(2)$의 값은? [4.0점]",
     "choices": [
-      "$5$",
-      "$7$",
-      "$8$",
       "$9$",
-      "$10$"
+      "$11$",
+      "$13$",
+      "$15$",
+      "$17$"
     ],
-    "answer": "④",
-    "solution": "곡선 위의 점에서 접선의 기울기는 도함수의 값이다.\n$f'(x)=3x^2-4x+5$이다.\n\n양변을 적분하면\n$f(x)=\\displaystyle\\int(3x^2-4x+5)\\,dx$\n$=x^3-2x^2+5x+C$이다.\n\n점 $(1,3)$을 지나므로 $f(1)=3$이다.\n$3=1-2+5+C$\n$3=4+C$\n$C=-1$이다.\n\n따라서\n$f(2)=2^3-2\\cdot2^2+5\\cdot2-1$\n$=8-8+10-1=9$이다.\n\n따라서 정답은 ④이다.",
+    "answer": "①",
+    "solution": "곡선 위의 점에서 접선의 기울기는 도함수의 값이다.\n$f'(x)=3x^2-4x+5$이다.\n\n양변을 적분하면\n$f(x)=\\displaystyle\\int(3x^2-4x+5)\\,dx$\n$=x^3-2x^2+5x+C$이다.\n\n점 $(1,3)$을 지나므로 $f(1)=3$이다.\n$3=1-2+5+C$\n$3=4+C$\n$C=-1$이다.\n\n따라서\n$f(2)=2^3-2\\cdot2^2+5\\cdot2-1$\n$=8-8+10-1=9$이다.\n\n따라서 정답은 ①이다.",
     "problemPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q10-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q10-solution.plan.json"
   },
@@ -784,10 +784,10 @@ window.questionBank = [
     "content": "$a\\lt 3$인 정수 $a$에 대해 곡선 $y=3x^2-6x+a$와 $x$축으로 둘러싸인 도형의 넓이가 $32$일 때 $a$의 값은? [4.2점]",
     "choices": [
       "$-9$",
-      "$-8$",
-      "$-6$",
-      "$-4$",
-      "$-2$"
+      "$-7$",
+      "$-5$",
+      "$-3$",
+      "$-1$"
     ],
     "answer": "①",
     "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q12-solution.svg",
@@ -1135,18 +1135,18 @@ window.questionBank = [
     "wide": false,
     "content": "사차함수 $g(x)$와 최고차항의 계수가 $1$인 삼차함수 $f(x)$가 $g'(x)=(x-1)f'(x)$를 만족하고 $g(x)$는 $x=-2$에서만 극값을 가질 때 $f'(0)$의 값은? [4.5점]",
     "choices": [
+      "$-18$",
       "$-12$",
       "$-6$",
       "$0$",
-      "$6$",
-      "$12$"
+      "$6$"
     ],
-    "answer": "②",
+    "answer": "③",
     "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q17-solution.svg",
     "solutionImageAlt": "g′(x)=3(x+2)(x−1)²의 그래프가 x=−2에서는 x축을 뚫고 x=1에서는 접하는 그림",
     "solutionImageCaption": "g′는 x=−2에서 부호가 바뀌고 x=1에서는 바뀌지 않는다.",
     "solutionImageSize": "full",
-    "solution": "$g'(x)=(x-1)f'(x)$이고 $g$는 $x=-2$에서만 극값을 가진다.\n$f$의 최고차항 계수가 $1$이므로 $f'(x)$는 최고차항 계수가 $3$인 이차식이다.\n\n극값을 가지는 점에서는 $g'(x)$의 부호가 바뀌어야 한다.\n$x=-2$에서 $x-1\\ne0$이므로 $g'(-2)=0$이려면 $f'(-2)=0$이다.\n\n$x=1$에서는 인수 $x-1$ 때문에 $g'(1)=0$이지만 $g$는 $x=1$에서 극값을 갖지 않는다.\n따라서 $x=1$의 좌우에서 $g'(x)$의 부호가 바뀌지 않아야 한다.\n$f'(1)\\ne0$이면 $g'(x)$는 $x=1$에서 인수 $x-1$이 한 번만 나타나 부호가 바뀐다.\n그러므로 $f'(1)=0$이다.\n\n이차식 $f'(x)$의 두 근이 $-2,1$이고 최고차항 계수가 $3$이므로\n$f'(x)=3(x+2)(x-1)$이다.\n그러면 $g'(x)=3(x+2)(x-1)^2$이고\n$x=-2$에서만 부호가 바뀐다.\n\n따라서\n$f'(0)=3\\cdot2\\cdot(-1)=-6$이므로\n정답은 ②이다.",
+    "solution": "$g'(x)=(x-1)f'(x)$이고 $g$는 $x=-2$에서만 극값을 가진다.\n$f$의 최고차항 계수가 $1$이므로 $f'(x)$는 최고차항 계수가 $3$인 이차식이다.\n\n극값을 가지는 점에서는 $g'(x)$의 부호가 바뀌어야 한다.\n$x=-2$에서 $x-1\\ne0$이므로 $g'(-2)=0$이려면 $f'(-2)=0$이다.\n\n$x=1$에서는 인수 $x-1$ 때문에 $g'(1)=0$이지만 $g$는 $x=1$에서 극값을 갖지 않는다.\n따라서 $x=1$의 좌우에서 $g'(x)$의 부호가 바뀌지 않아야 한다.\n$f'(1)\\ne0$이면 $g'(x)$는 $x=1$에서 인수 $x-1$이 한 번만 나타나 부호가 바뀐다.\n그러므로 $f'(1)=0$이다.\n\n이차식 $f'(x)$의 두 근이 $-2,1$이고 최고차항 계수가 $3$이므로\n$f'(x)=3(x+2)(x-1)$이다.\n그러면 $g'(x)=3(x+2)(x-1)^2$이고\n$x=-2$에서만 부호가 바뀐다.\n\n따라서\n$f'(0)=3\\cdot2\\cdot(-1)=-6$이므로\n정답은 ③이다.",
     "problemPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q17-solution.plan.json"
   },
@@ -1204,14 +1204,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항함수 $f(x)$, $g(x)$가 다음 조건을 모두 만족시킬 때 $\\displaystyle\\int_0^3 t^2f(t)dt$의 값은? [4.7점]<br><b>&lt;조건&gt;</b><br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>(가) $\\displaystyle\\lim_{x\\to3}\\dfrac{\\int_0^x(x-t)f(t)dt}{x-3}=6$</td></tr><tr><td>(나) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{g(x)}{x^2+x-5}=3$, $g(3)=g'(3)=0$</td></tr><tr><td>(다) $\\displaystyle\\int_0^3f(t)g(t)dt=12$</td></tr></tbody></table></div>",
     "choices": [
+      "$28$",
       "$38$",
       "$48$",
       "$58$",
-      "$68$",
-      "$78$"
+      "$68$"
     ],
-    "answer": "③",
-    "solution": "적분식의 조건을 순서대로 사용한다.\n$H(x)=\\displaystyle\\int_0^x(x-t)f(t)\\,dt$라 하자.\n$H(x)=x\\displaystyle\\int_0^xf(t)\\,dt-\\int_0^xtf(t)\\,dt$이므로\n$H'(x)=\\displaystyle\\int_0^xf(t)\\,dt+xf(x)-xf(x)$\n$=\\displaystyle\\int_0^xf(t)\\,dt$이다.\n\n(가)에서 $\\displaystyle\\lim_{x\\to3}\\dfrac{H(x)}{x-3}=6$이 유한하므로\n$H(3)=0$, $H'(3)=6$이다.\n따라서\n$\\displaystyle\\int_0^3f(t)\\,dt=6$이다.\n\n또한\n$H(3)=\\displaystyle\\int_0^3(3-t)f(t)\\,dt=0$이므로\n$3\\displaystyle\\int_0^3f(t)\\,dt-\\int_0^3tf(t)\\,dt=0$\n$18-\\displaystyle\\int_0^3tf(t)\\,dt=0$이다.\n따라서 $\\displaystyle\\int_0^3tf(t)\\,dt=18$이다.\n\n(나)에서 다항함수 $g$의 극한값이 $0$이 아닌 유한한 값이므로 $g$는 이차함수이고 최고차항 계수는 $3$이다.\n$g(3)=g'(3)=0$이므로\n$g(t)=3(t-3)^2$이다.\n\n$I=\\displaystyle\\int_0^3t^2f(t)\\,dt$라 하면 (다)에서\n$12=\\displaystyle\\int_0^3f(t)g(t)\\,dt$\n$=3\\displaystyle\\int_0^3(t^2-6t+9)f(t)\\,dt$\n$=3\\left(I-6\\cdot18+9\\cdot6\\right)$\n$=3(I-54)$이다.\n\n따라서 $I-54=4$, $I=58$이므로 정답은 ③이다.",
+    "answer": "④",
+    "solution": "적분식의 조건을 순서대로 사용한다.\n$H(x)=\\displaystyle\\int_0^x(x-t)f(t)\\,dt$라 하자.\n$H(x)=x\\displaystyle\\int_0^xf(t)\\,dt-\\int_0^xtf(t)\\,dt$이므로\n$H'(x)=\\displaystyle\\int_0^xf(t)\\,dt+xf(x)-xf(x)$\n$=\\displaystyle\\int_0^xf(t)\\,dt$이다.\n\n(가)에서 $\\displaystyle\\lim_{x\\to3}\\dfrac{H(x)}{x-3}=6$이 유한하므로\n$H(3)=0$, $H'(3)=6$이다.\n따라서\n$\\displaystyle\\int_0^3f(t)\\,dt=6$이다.\n\n또한\n$H(3)=\\displaystyle\\int_0^3(3-t)f(t)\\,dt=0$이므로\n$3\\displaystyle\\int_0^3f(t)\\,dt-\\int_0^3tf(t)\\,dt=0$\n$18-\\displaystyle\\int_0^3tf(t)\\,dt=0$이다.\n따라서 $\\displaystyle\\int_0^3tf(t)\\,dt=18$이다.\n\n(나)에서 다항함수 $g$의 극한값이 $0$이 아닌 유한한 값이므로 $g$는 이차함수이고 최고차항 계수는 $3$이다.\n$g(3)=g'(3)=0$이므로\n$g(t)=3(t-3)^2$이다.\n\n$I=\\displaystyle\\int_0^3t^2f(t)\\,dt$라 하면 (다)에서\n$12=\\displaystyle\\int_0^3f(t)g(t)\\,dt$\n$=3\\displaystyle\\int_0^3(t^2-6t+9)f(t)\\,dt$\n$=3\\left(I-6\\cdot18+9\\cdot6\\right)$\n$=3(I-54)$이다.\n\n따라서 $I-54=4$, $I=58$이므로 정답은 ④이다.",
     "problemPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q18-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/q18-solution.plan.json"
   },

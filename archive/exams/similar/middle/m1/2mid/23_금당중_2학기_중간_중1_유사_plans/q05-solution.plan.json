@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "caption": "기울기가 완만해지므로 그릇의 단면적이 넓어짐을 나타낸 그래프이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "9/2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        9
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "id": "Q",
+        "x": 9,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3,
+        9
+      ],
+      "y": [
+        6,
+        9
+      ]
+    }
+  },
+  "status": "ACTIVE",
+  "sourceQuote": "매초 일정한 양의 물을 채울 때 그래프의 기울기가 클수",
+  "assetPath": "assets/images/23_금당중_2학기_중간_중1_유사/q05-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q05-solution-result.json",
+    "statePath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q05-solution-state.json",
+    "svgPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q05-solution-solution.svg"
+  }
+}

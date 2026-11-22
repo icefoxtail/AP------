@@ -302,7 +302,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오른쪽 위로 오르는 직선이 점 P에서 위로 볼록한 포물선으로 이어지는 그래프이고 포물선의 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "x→1-에서 5-2k, x→1+에서 -1+3+k=2+k이다. 극한이 존재하려면 5-2k=2+k에서 k=1이다. 그림은 k=1일 때 직선 5x-2 (x<1)와 포물선 -x²+3x+1 (x≥1)이 점 P(1,3)에서 끊기지 않고 이어지는 모습이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -662,7 +667,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번 오르고 내려갔다 다시 오르는 삼차곡선과 서로 평행한 두 접선 l, m이 곡선의 양쪽 점 T, U에서 접하는 그래프이다.",
+    "solutionImageCaption": "접점의 x좌표 t에서 기울기 6t²-6t=12이면 t=2 또는 -1이다. t=2이면 접점 T(2,4)에서 y=12x-20(그림의 l, k=-20), t=-1이면 접점 U(-1,-5)에서 y=12x+7(그림의 m, k=7)이다. 양수인 k는 7이므로 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -922,7 +932,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 올라 점 M에서 극대가 되고 내려가 점 N에서 극소가 된 뒤 오르는 삼차곡선과, 점 M과 오른쪽 점 B를 잇는 수평선 l, 점 N에서 접하는 수평선 m이 그려진 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x³-3x이다. x=-1에서 극대(점 M), x=1에서 극소(점 N)이다. x=0에서는 내려가 f′(0)<0이고 x=2에서는 올라가 f′(2)>0이므로 (가) f′(0)>f′(2)는 거짓이다. 구간 [-1,2]의 양 끝 M(-1,2), B(2,2)를 잇는 할선 l의 기울기 0과 같은 접선이 N에서 생겨 (나)가 참이고, N에서의 수평 접선 m이 f′(1)=0인 c=1로 (다)가 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -972,7 +986,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 시작해 점 B로 내려갔다가 점 C까지 높이 올라가 점 D로 내려가고 점 E로 오르는 꺾은선과, 이 꺾은선과 세 번 만나는 대각선 직선이 그려진 그래프이다.",
+    "solutionImageCaption": "예: 다섯 점 A(-2,-1), B(-1,-2), C(0,1), D(1,-2), E(2,-1/2)를 꺾은선으로 이은 연속함수이다. h(x)=f(x)-x의 부호가 A에서 +, B에서 -, C에서 +, D에서 -, E에서 -이므로 직선 y=x와 구간 (-2,-1), (-1,0), (0,1)에서 한 번씩 만나 근이 적어도 3개이다. (1,2)에서는 양 끝 부호가 같아 근이 보장되지 않는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1080,7 +1098,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 N에서 x축을 지나 올랐다 내려와 원점 O에서 x축에 접하고 오른쪽 위로 가파르게 오르는 삼차곡선과 곡선 위의 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=0에서 g가 연속이려면 g(0)=|f(0)|+1≥1이고 x²/f(x)가 0이 아닌 유한한 극한을 가져야 하므로 0은 f의 이중근이다. 그래서 f(x)=x²(x+c)이고 g(x)=1/(x+c)에서 1/c=1이므로 c=1이다. 그림은 f(x)=x²(x+1)로 원점 O에서 x축에 접하고 N(-1,0)을 지난다. f(2)=12인 점 Q가 그림에 있다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 22,
@@ -1350,7 +1373,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q26-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 두 점 A, B에서 뾰족하게 지나는 W 모양의 그래프이고 두 점 사이에 봉우리 V가 있다.",
+    "solutionImageCaption": "f(x)=|x²-4x+3|의 그래프는 W 모양이고 A(1,0), B(3,0)에서 뾰족하게 꺾인다. g(x)=2f′(x)이므로 x<1 또는 x>3에서 4x-8, 1<x<3에서 8-4x이고, 뾰족점 x=1, 3에서는 대칭차분이라 g(1)=g(3)=0이다. g(0)=-8, g(1)=g(2)=g(3)=0, g(4)부터 g(10)까지의 합은 8+12+…+32=140이므로 합은 132이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 27,
@@ -1396,7 +1423,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q27-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 수평선이 x=1에서 더 높은 곳에서 시작하는 꺾은선으로 바뀌고, x=2에서 열린 점 두 개와 위쪽의 닫힌 점이 있으며, x=3에서는 닫힌 점 없이 두 열린 점 사이가 비어 있는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=0에서는 좌우 극한과 닫힌 점 Q(0,1)의 높이가 모두 1이라 연속이다. x=1에서는 좌극한 1, 우극한 3/2로 불연속이다. x=2에서는 극한 1이지만 닫힌 점의 높이 f(2)=3/2라 불연속이다. x=3에서는 극한 3/2이지만 닫힌 점이 없어 f(3)이 정의되지 않으므로 불연속이다. 따라서 x=0에서만 연속이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 28,
@@ -1488,7 +1519,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q29-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 내려가 점 V에서 가장 낮고 오른쪽 끝 점 B로 올라가는 삼차곡선과 높이가 같은 A, B를 지나는 수평선 h, V에서 접하는 수평선 t가 그려진 그래프이다.",
+    "solutionImageCaption": "f(-a)=f(a)에서 (2/3)a(a²-9)=0이므로 a=3이다. 그림은 구간 [-3,3]의 양 끝 A(-3,8), B(3,8)가 같은 높이(수평선 h)인 곡선이다. f′(x)=(x+3)(x-1)이므로 f′(c)=0인 c는 -3과 1이지만 -3은 구간의 끝점이라 제외되고, 그림의 극소점 V(1,-8/3)에서 수평 접선 t가 생기는 c=1만 가능하다. 따라서 a+c=4이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 30,
@@ -1538,6 +1574,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q30-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 원점 대칭 곡선으로, 원점에서 가로축과 매끄럽게 접하고 양쪽으로 올랐다 내려가 가로축을 점 A와 점 B에서 지나는 그래프이다.",
+    "solutionImageCaption": "n=3일 때 f(x)=x²·x(2-|x|)/|x|=x|x|(2-|x|)이다. x>0에서 2x²-x³, x<0에서 -2x²-x³이고 원점 O에서 값 0, 기울기 0으로 부드럽게 이어져 미분가능하며 f′(0)=0이다. 그림은 B(-2,0), A(2,0)을 지나는 원점 대칭 그래프이다. n=0, 1, 2는 O에서 끊기거나 좌우 미분계수가 달라 미분가능하지 않으므로 최소 n=3이고 합은 3+0=3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

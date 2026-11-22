@@ -1,5 +1,6 @@
 // Exact continuation of an existing basic approval after an independently
 // reviewed display/text repair. This is separate from the figure-only gate.
+import { META_FILE, questionMetadataBytesAt } from "./question-metadata-format.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -38,6 +39,7 @@ function safe(relative) {
 function gitBytes(root, commit, relative) {
   if (!/^[a-f0-9]{40}$/.test(commit || "")) fail("immutable commit required");
   safe(relative);
+  if (relative === META_FILE) return questionMetadataBytesAt(root, commit);
   try { return execFileSync("git", ["show", `${commit}:${relative}`], {
     cwd: root, maxBuffer: 256 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"],
   }); } catch { fail(`immutable input unavailable: ${commit}:${relative}`); }

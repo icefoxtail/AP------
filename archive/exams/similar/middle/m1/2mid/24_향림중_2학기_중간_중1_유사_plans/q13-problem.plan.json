@@ -1,0 +1,161 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "한 꼭짓점에 정다각형들과 정삼각형이 맞닿아 있는 다이어그램이다.",
+  "accessibilityDescription": "한 점 O를 둘러싸고 두 정다각형과 한 정삼각형이 꼭짓점을 공유하는 그림.",
+  "sourceQuote": "오른쪽 그림과 같이 한 점에 합동인 두 정다각",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP1",
+      "refs": [
+        "O",
+        "P1"
+      ]
+    },
+    {
+      "id": "sOP2",
+      "refs": [
+        "O",
+        "P2"
+      ]
+    },
+    {
+      "id": "sOP3",
+      "refs": [
+        "O",
+        "P3"
+      ]
+    },
+    {
+      "id": "sOP4",
+      "refs": [
+        "O",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP1P4",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    }
+  ],
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q13-problem-result.json",
+    "statePath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q13-problem-state.json",
+    "svgPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q13-problem-solution.svg"
+  },
+  "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q13.svg"
+}

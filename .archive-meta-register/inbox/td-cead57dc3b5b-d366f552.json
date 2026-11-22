@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-cead57dc3b5b-d366f552",
+  "examUid": "이차함수_중3_유형_3월모의고사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m3/이차함수_중3_유형_3월모의고사.js",
+  "expectedSourceBlobSha1": "5c909fb289aa054eaf702b33023fdb8314deb085",
+  "expectedQuestionCount": 11,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cead57dc3b5b-d366f552.type-ledger.json",
+        "sha256": "5b2c470f8b5f58286abff60a1371839fb4c544fdf8d8c9246cd9ae03cc61370c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cfab8249f7c8c9818a829443ec569d79ee4c0843b5449a08cb0c2162626aa133",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY"
+      },
+      "rationale": "이차함수의 꼭짓점과 대칭성으로 점 A, B, C, D의 좌표를 정하고 평행 조건으로 점 E를 구해 삼각형의 넓이 조건에서 값을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "4b62a745a4dfd70fbc690ef83025384cddfb187fae90226dc6caf8d53bac723a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cead57dc3b5b-d366f552.type-ledger.json",
+          "sha256": "5b2c470f8b5f58286abff60a1371839fb4c544fdf8d8c9246cd9ae03cc61370c"
+        }
+      ]
+    }
+  ]
+}

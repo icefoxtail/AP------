@@ -103,7 +103,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 가운데가 솟은 W 모양의 사차곡선과 높이 2의 수평선이 그려져 있고, 수평선이 곡선과 만나는 두 끝 점 A, B와 접선이 수평이 되는 세 점 M, N, K가 표시되어 있다.",
+    "solutionImageCaption": "f(-1)=f(√3)=2이므로 수평선 y=2가 구간 양 끝 A(-1,2), B(√3,2)를 지나 롤의 정리를 쓸 수 있다. f′(x)=4x(x²-2)=0의 근은 0, ±√2이고 그림의 M(0,5), N(√2,1), K(-√2,1)이 접선이 수평인 점이다. 이 중 열린구간 (-1,√3)에 속하는 것은 x=0과 x=√2뿐이고 -√2는 -1보다 작아 구간 밖이다. 합은 0+√2=√2이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -189,9 +193,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "점 $(0,-1)$에서 곡선 $y=2x^2-x+1$에 그은 두 접선의 기울기의 곱은? [4.0점]",
-    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "외부점 (0,−1)을 지나는 두 접선과 포물선의 접점 t=±1을 설명하는 해설 그림",
-    "solutionImageCaption": "두 접점의 접선 기울기 3과 −5의 곱을 구한다.",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 포물선 바깥의 점 P에서 그은 두 접선 l, m이 서로 다른 두 접점 T, U에서 접하는 그래프이다.",
+    "solutionImageCaption": "접점을 (t, 2t²-t+1)이라 하면 접선의 기울기는 4t-1이고 점 P(0,-1)을 지나려면 2t²=2에서 t=±1이다. 그림의 두 접선은 T(1,2)에서의 l(기울기 3)과 U(-1,4)에서의 m(기울기 -5)이며 둘 다 P(0,-1)을 지난다. 두 기울기의 곱은 3×(-5)=-15이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -409,7 +413,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 조각과 직선 조각이 점 P에서 부드럽게 이어진 오른쪽 위로 오르는 그래프이다.",
+    "solutionImageCaption": "x=1에서 연속이려면 1-a+3b=4-b에서 -a+4b=3이고, 미분가능하려면 좌미분계수 3-a와 우미분계수 4가 같아야 하므로 a=-1이다. 그러면 b=1/2이고 두 조각은 P(1,7/2)에서 값과 기울기(둘 다 4)가 같게 이어진다. 그림은 x³+x+3/2 (x<1)와 4x-1/2 (x≥1)이다. 2ab=-1이므로 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -498,9 +507,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "양수 $t$와 함수 $f(x)=\\begin{cases}8x&(x\\le1)\\\\x^3+ax^2+bx&(x\\gt1)\\end{cases}$에 대하여 닫힌구간 $[0,t]$에서 함수 $f(x)$의 평균변화율을 $g(t)$라 하자. 함수 $g(t)$가 $t\\gt0$에서 미분가능할 때, 함수 $y=g(t)$의 그래프와 직선 $y=mt$의 교점이 존재하도록 하는 실수 $m$의 최솟값은? (단, $a$와 $b$는 상수) [4.5점]",
-    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "구간별 평균변화율 g(t)와 원점을 지나는 최소 기울기 직선의 접점을 보여 주는 해설 그래프",
-    "solutionImageCaption": "t=3에서 y=4t가 g(t)에 접해 최소 기울기 4를 만든다.",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 높이 8의 수평선이 점 P에서 아래로 볼록한 포물선으로 이어지는 그래프와, 원점을 지나 점 T에서 포물선에 접하는 직선 s가 그려져 있다.",
+    "solutionImageCaption": "f(0)=0이므로 g(t)=f(t)/t이다. g(t)는 0<t≤1에서 8이고 t>1에서 t²-2t+9이며 P(1,8)에서 이어진다. 직선 y=mt가 g의 그래프와 만나는 m의 최솟값은 직선이 t>1의 포물선에 접할 때이고, m=t+9/t-2가 t=3에서 최소 4이므로 그림의 직선 s: y=4t는 T(3,12)에서 접한다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -515,7 +524,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 16,
@@ -548,7 +558,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오른쪽 위로 오르는 직선이 점 P에서 꼭짓점이 P인 포물선으로 이어지며 계속 오르는 그래프이고, 포물선 위에 점 Q가 표시되어 있다.",
+    "solutionImageCaption": "g는 연속이므로 f(1)=6이고, 역함수가 있으려면 g가 증가해야 하므로 x≥1에서 f′(x)≥0이어야 한다. f(x)=(x-1)²+k(x-1)+6에서 k≥0이고 f(3)=10+2k이다. 그림은 최솟값을 주는 k=0인 경우로, 직선 y=4x+2가 P(1,6)에서 꼭짓점이 P인 포물선 f(x)=(x-1)²+6으로 이어지고 Q(3,10)이 f(3)이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 17,
@@ -640,7 +655,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 x축에 접하고 점 B에서 x축을 지나는 삼차곡선과, 높이 -32의 수평선이 그려져 있고, 수평선이 곡선과 만나는 점 P와 극소점 E가 표시되어 있다.",
+    "solutionImageCaption": "f′의 그래프가 x=3에 대칭인 이차함수이므로 f′(x)=3(x-3)²+C이고 f′(1)=0에서 C=-12, f′(x)=3(x-1)(x-5)이다. 따라서 f는 x=1에서 극대, x=5에서 극소이다. f(x)=x³-9x²+15x+D이고 f(1)=0에서 D=-7이므로 f(x)=(x-1)²(x-7)이다. 그림은 A(1,0)에서 x축에 접하고 B(7,0)을 지나며 극솟값 -32인 E(5,-32)와 같은 높이의 P(-1,-32)를 보인다. f(-1)=-32이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 20,

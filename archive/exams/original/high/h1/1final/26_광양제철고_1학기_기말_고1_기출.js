@@ -318,7 +318,7 @@ window.questionBank = [
       "$-3w$"
     ],
     "answer": "①",
-    "solution": "따라서 $-w^2-1=-w$이다. $z=-w$라 두면 $z^3=1$, $z\\ne1$이고 $1+z+z^2=0$이다. 주어진 합은 $z+z^2+\\cdots+z^{22}$이며 21항까지는 세 항씩 상쇄되고 마지막 항은 $z=-w$이다.\n따라서 정답은 ①이다.",
+    "solution": "허근 $w$는 $w^3+1=0$을 만족한다. 인수분해하면\n\n$$\n(w+1)(w^2-w+1)=0\n$$\n\n이다. $w$는 허근이므로 $w\\ne-1$이고,\n\n$$\nw^2-w+1=0,\\qquad w^2=w-1.\n$$\n\n따라서 한 항의 밑은\n\n$$\n-w^2-1=-(w-1)-1=-w\n$$\n\n이다. $z=-w$라 놓으면\n\n$$\nz^3=(-w)^3=-w^3=-(-1)=1\n$$\n\n이다. $z\\ne1$이므로\n\n$$\nz^3-1=(z-1)(z^2+z+1)=0\n$$\n\n에서\n\n$$\n1+z+z^2=0\n$$\n\n이다. 이제 주어진 22개 항의 합을 세 항씩 묶는다.\n\n$$\n\\begin{aligned}\nS&=z+z^2+z^3+\\cdots+z^{21}+z^{22}\\\\\n&=(z+z^2+z^3)+(z^4+z^5+z^6)+\\cdots\\\\\n&\\qquad +(z^{19}+z^{20}+z^{21})+z^{22}\\\\\n&=7(z+z^2+1)+z^{21}z\\\\\n&=7\\cdot0+(z^3)^7z\\\\\n&=0+1^7z\\\\\n&=z=-w.\n\\end{aligned}\n$$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
