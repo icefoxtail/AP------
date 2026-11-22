@@ -121,6 +121,12 @@
 - 실행 기록: 신흥중 25 중3 Q19·Q20 신규 TPL `TPL_M3_COMMON_FACTOR_BY_FACTORIZATION`, `TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION`(+ 크로스워크 `M3-RPM-025` FAMILY_ACTIVE) `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json`, 비워 둔 RPM 경로 8문항과 금당고 유사 Q1·Q16 단원 재정렬 `.../rpmpath-8q-crosswalk-decisions-20261102.review.json`. 같은 형태 문항을 만나면 이 사례를 먼저 본다.
 - 도구: `python3 tools/main_merge_master.py --exam <시험지> --rpm-path-delta --request-tag <태그> --evidence <결정 파일>`은 이미 한 번 delta를 낸 시험지에 새 requestId로 두 번째 delta를 만든다(같은 requestId는 등록기가 거부). 소형 메타 항목에 `unitRealign: true`와 바뀐 단원 필드(`standardUnitKey/standardUnit/subUnitKey/subUnit/conceptClusterKey`)·`parentAssignment`를 적으면 그 단원 필드와 RPM 경로를 한 요청으로 보낸다(내용이 속한 교육과정 단원과 등록 단원이 달라 경로와 어긋날 때). 시험지 JS의 같은 필드도 함께 맞춰야 등록기가 받는다.
 
+## CURRENT — 학년이 달라도 같은 형태의 유형은 기존 키를 재사용하고 그 학년 연결을 추가한다 (2026-11-22, 사용자 결정)
+
+- 같은 형태의 유형이 다른 학년에 이미 있으면 학년별 사본 키를 만들지 않는다. 기존 키를 그대로 쓰고, 그 학년의 과정·단원 연결(binding)과 소속 pack 범위를 add-only `registryChanges`로 추가해 그 학년에서도 등록·검색되게 한다. "같은 학년·과목의 키만" 규칙은 이 경우에 한해 풀린다. 형태가 정말 같을 때만이고, 비슷해 보인다고 붙이지 않는다(맞는 키가 없으면 위 확장 원칙대로 새 키). 문항 행에 맞는 단원이 없어 단원 연결을 만들 수 없으면 단원 없이 유형만 건다.
+- 등록기·변환기는 키에 그 학년·교육과정 연결이 있으면 통과한다(코드 변경 없음). 연결이 없으면 변환기가 `SCOPE_PT_BOUND_TO_OTHER_COURSE`·`SCOPE_CURRICULUM_MISMATCH`로 건너뛴다. 변환기가 연결을 아직 자동으로 만들지 못하므로, 연결 추가는 요청의 `registryChanges`로 직접 넣는다(예: PR #2651의 중1 경우의 수, 2015 기하 평면벡터).
+- 이유: 교육과정 개정으로 유형이 학년을 옮기며, 학년별 사본 키는 같은 유형을 갈라 검색·다시 만들기를 약하게 한다.
+
 ## CURRENT — 기본범위 승인 재결속 `archive-basic-scope-rebind-request-v1` (2026-11-02, 사용자 결정)
 
 - 기본범위 승인(운영 메타 `question_metadata.json`의 standardUnit/subUnit 승인 행, 시험별 조각 `archive/data/question-metadata/v1/` + `basic-scope-source-links.json` 부모 연결)된 문항의 그림만 바뀌어 fingerprint가 어긋나 strict 검색에서 사라졌을 때, 메타 값은 그대로 두고 원본 해시만 다시 묶는 등록 요청이다. 구현: `archive/tools/meta-foundation/register-basic-scope-rebind.mjs`, 테스트: `tests/archive-basic-scope-rebind.test.mjs`. 이유: 기존 등록기(v2)는 시험지 전체 재등록만 받아 그림 하나 때문에 전체 재검수를 해야 했고, 등록 동기화(main 등록기)는 본문 fingerprint가 달라진 부모 연결을 조용히 버린다.

@@ -19,13 +19,13 @@
     },
     "resultSource": {
       "branch": "data/type-judgment-u-20261122",
-      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
       "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
     },
     "evidenceRefs": [
       {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
-        "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+        "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
       }
     ]
   },
@@ -108,7 +108,119 @@
       "evidenceRefs": [
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
-          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "PROBABILITY_STATISTICS",
+        "packVersion": "1.0.6",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "PROBABILITY_STATISTICS",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "확률과 통계",
+          "확률과통계",
+          "중2 수학",
+          "M2-2"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-PS-01",
+          "H15-PS-02",
+          "H15-PS-03",
+          "H15-PS-04",
+          "H15-PS-05",
+          "H15-PS-06",
+          "H22-PS-01",
+          "H22-PS-02",
+          "H22-PS-03",
+          "H22-PS-04",
+          "M2-03",
+          "M2-08"
+        ],
+        "activeItemEvidenceCount": 704,
+        "problemTypeCount": 22,
+        "templateCount": 38,
+        "bindingCount": 92,
+        "aliasCount": 0,
+        "externalProblemTypeReferenceCount": 1,
+        "externalTemplateReferenceCount": 4,
+        "productionJsMutation": false,
+        "identityMaterialization": "704/704 COMPLETE",
+        "notes": [
+          "Built only from the frozen 704-row PROBABILITY_STATISTICS identity materialization; no item re-review in Stage 2.",
+          "PT_FUNCTION_COUNTING and four used child templates remain external FUNCTIONS_GRAPHS canonical references and are not redefined.",
+          "H22-PS-03 label correction remains a separate L1/L2 authority candidate and is not silently applied here.",
+          "H22-PS-04 uses explicit STANDARD_UNIT_DIRECT curriculum-leaf bindings to existing L3 keys; no synthetic subUnitKey is created.",
+          "Two approved solution-only source repairs are included in the isolated Stage 3 tree; main remains unchanged.",
+          "Pack-generic validator, official compiler, runtime bridge, and Archive2 projection were executed in this repository branch; all bounded gates pass.",
+          "2026-10-20 scoped meta binding correction for 21_제일고 1mid probability-statistics q12/q15; existing PT/TPL reused and exam JS/solutions unchanged."
+        ],
+        "promotionReviewDisposition": "PROMOTION_READY_STAGE3C_EXECUTION_PASS"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "PROBABILITY_STATISTICS",
+        "packVersion": "1.0.6",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "PROBABILITY_STATISTICS",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "확률과 통계",
+          "확률과통계",
+          "중2 수학",
+          "M2-2",
+          "중1 수학"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-PS-01",
+          "H15-PS-02",
+          "H15-PS-03",
+          "H15-PS-04",
+          "H15-PS-05",
+          "H15-PS-06",
+          "H22-PS-01",
+          "H22-PS-02",
+          "H22-PS-03",
+          "H22-PS-04",
+          "M2-03",
+          "M2-08"
+        ],
+        "activeItemEvidenceCount": 704,
+        "problemTypeCount": 22,
+        "templateCount": 38,
+        "bindingCount": 92,
+        "aliasCount": 0,
+        "externalProblemTypeReferenceCount": 1,
+        "externalTemplateReferenceCount": 4,
+        "productionJsMutation": false,
+        "identityMaterialization": "704/704 COMPLETE",
+        "notes": [
+          "Built only from the frozen 704-row PROBABILITY_STATISTICS identity materialization; no item re-review in Stage 2.",
+          "PT_FUNCTION_COUNTING and four used child templates remain external FUNCTIONS_GRAPHS canonical references and are not redefined.",
+          "H22-PS-03 label correction remains a separate L1/L2 authority candidate and is not silently applied here.",
+          "H22-PS-04 uses explicit STANDARD_UNIT_DIRECT curriculum-leaf bindings to existing L3 keys; no synthetic subUnitKey is created.",
+          "Two approved solution-only source repairs are included in the isolated Stage 3 tree; main remains unchanged.",
+          "Pack-generic validator, official compiler, runtime bridge, and Archive2 projection were executed in this repository branch; all bounded gates pass.",
+          "2026-10-20 scoped meta binding correction for 21_제일고 1mid probability-statistics q12/q15; existing PT/TPL reused and exam JS/solutions unchanged."
+        ],
+        "promotionReviewDisposition": "PROMOTION_READY_STAGE3C_EXECUTION_PASS"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
         }
       ]
     },
@@ -137,7 +249,71 @@
       "evidenceRefs": [
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
-          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnitLabelKo": "경우의 수와 확률",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_0d4243828ae864211f7ad293fd342424baa6c3e5f739054e7923a32d575089e8"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": "PT_M2_COUNTING"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M2_COUNTING",
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnitLabelKo": "경우의 수와 확률",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
         }
       ]
     }
@@ -163,7 +339,7 @@
       "evidenceRefs": [
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
-          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+          "sha256": "e10277a1c3c09a576be75de17edbee9fc188a30bed0187339a34f7d32efc3c4f"
         }
       ]
     }
