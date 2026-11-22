@@ -45,6 +45,7 @@ function loadPrintHeaderTable() {
 function element({ headerAncestor = false, matchesPageOrHeader = false, containsHeader = false } = {}) {
   return {
     nodeType: 1,
+    querySelectorAll: () => [],
     closest: selector => (headerAncestor && selector === '.page-header' ? {} : null),
     matches: selector => matchesPageOrHeader && /\.page/.test(selector),
     querySelector: selector => (containsHeader && selector === '.page-header' ? {} : null),
