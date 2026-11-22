@@ -362,6 +362,20 @@ class ElementLeader(unittest.TestCase):
         plan={**VENN_PLAN,'elements':[{'text':'9','in':[]},{'text':'9','in':['A','B']}]}
         self.assertIn('SD_ELEMENT_LEADER_UNNEEDED:0',self.audit(self.figure(),plan)['errors'])
 
+    def with_lines(self, lines, **kw):
+        svg = self.figure(**kw)
+        return svg.replace('data-element="0"/>', 'data-element="0" data-lines="%s"/>' % lines, 1)
+
+    def test_a_wrapped_label_leader_starts_two_pixels_from_the_nearest_text_line(self):
+        # box (34,250,16,20): the text is one line in the upper left; the dot is at (100,170): the nearest point of the line is its top right corner (50,250)
+        ok = self.audit(self.with_lines('0,0,16,10'))
+        self.assertEqual(ok['status'], 'PASS', ok['errors'])
+        # ink only along the left edge of the box: the leader that starts at the box's corner is 8 px too far from it
+        self.assertIn('SD_ELEMENT_LEADER_SHAPE:0', self.audit(self.with_lines('0,0,8,20'))['errors'])
+        # a line outside the box is refused
+        self.assertIn('SD_ELEMENT_LINES:0', self.audit(self.with_lines('0,0,40,10'))['errors'])
+        self.assertIn('SD_ELEMENT_LINES:0', self.audit(self.with_lines('x,0,8,20'))['errors'])
+
     def test_a_leader_through_another_label_is_caught(self):
         # element 1 is moved onto the leader's path
         blocked=self.figure().replace('data-box="157,160,16,20"','data-box="66,200,16,20"')
