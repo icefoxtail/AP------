@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      5,
+      0,
+      35
+    ],
+    "curves": [
+      {
+        "id": "h",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "10",
+          "20",
+          "-5"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "h(t)",
+        "color": "BLUE"
+      },
+      {
+        "id": "ref",
+        "kind": "LINE",
+        "coefficients": [
+          "25",
+          "0"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "25m 기준",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "25"
+        },
+        {
+          "id": "V",
+          "x": "2",
+          "y": "30"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "25"
+        }
+      ]
+    }
+  },
+  "caption": "물체 높이 h(t)는 2초에 30m로 최대, 1초에서 3초까지 25m 이상이다.",
+  "sourceQuote": "$h(t) = -5(t-2)^2 + 30$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "h(t)=−5t²+20t+10이며 기준 높이는 25m이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최고점 (2,30)과 기준 높이의 두 교점 (1,25),(3,25)를 표시한다."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -11,
+      13
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=(x−2)²−9의 꼭짓점 (2,−9)을 해설도로 표시한다.",
+  "sourceQuote": "$y=x^{2}-4x-5$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x²−4x−5이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값 −9가 곡선의 가장 낮은 점이다."
+  ]
+}

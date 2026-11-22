@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      4,
+      -33,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-15",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-13",
+          "4"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "g(x), a=−15",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=−15에서 직선 y=4x−13은 포물선 y=−x²+2x−15 위에 항상 놓인다.",
+  "sourceQuote": "$에 대하여 $",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "차이 g−f=x²+2x+a+17이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a의 최소 정수 −15에서 두 곡선이 접하지 않고 떨어져 있다."
+  ]
+}

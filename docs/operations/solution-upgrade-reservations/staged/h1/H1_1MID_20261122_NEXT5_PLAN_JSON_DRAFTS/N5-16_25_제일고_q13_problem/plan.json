@@ -1,0 +1,44 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-18",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -5,
+      8
+    ],
+    "viewport": [
+      -6,
+      9,
+      -22,
+      20
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        -3,
+        6
+      ],
+      "y": []
+    }
+  },
+  "caption": "f(x)=0의 x절편 −3,6만 고정하는 대표 포물선. 이차항의 부호는 문제에서 주지 않으므로 시각적 예시임을 명시한다.",
+  "sourceQuote": "$y=f(x)$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)의 영점은 −3과 6이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원래 영점만 표시하고 이동된 근 −5,4는 드러내지 않는다."
+  ]
+}

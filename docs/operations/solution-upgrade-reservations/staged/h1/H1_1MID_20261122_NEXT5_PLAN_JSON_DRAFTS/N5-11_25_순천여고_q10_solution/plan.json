@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "11/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "양의 정수 k",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "k≤11/2이고 양의 정수는 1,2,3,4,5이다."
+  },
+  "caption": "D/4=33−6k≥0이므로 양의 정수 k는 1부터 5까지 다섯 개다.",
+  "sourceQuote": "$D \\ge 0$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k≤11/2인 양의 정수를 센다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점 11/2는 정수가 아니며 마지막 정수점은 5임을 표시한다."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "4",
+      "-1"
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1.7,
+      1.7,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "−1≤x≤1에서 y=−x²+4x+5는 증가한다. 끝점 최솟값 0과 최댓값 8을 그래프로 보여 준다.",
+  "sourceQuote": "$\\because y = -(x-2)^{2}+9$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정의역은 −1≤x≤1이고 식은 y=−x²+4x+5이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "현재 해설 SVG의 문제와 무관한 L,R,T 거리 구간을 모두 제거한다.",
+    "실제 함수 끝점과 단조성을 보여 준다."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 7,
+      "names": "ABCDEFGH"
+    },
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 7,
+      "names": "IJKLMNOP"
+    },
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 7,
+      "names": "QRSTUVWX"
+    }
+  ],
+  "solidCaption": {
+    "text": "[그림 1] 한 기둥과 [그림 2] 세 직교 기둥의 관계 — 두 장면을 독립 표시"
+  },
+  "caption": "원문 [그림 1]에는 x×x×y 정사각기둥 하나, [그림 2]에는 세 기둥이 중앙의 x×x×x 큐브를 공유하는 교차 입체가 모두 필요하다.",
+  "sourceQuote": "$x, x, y$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 정사각기둥이 중앙에서 직교하며 y>x이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "현재 SVG에는 그림 2만 있으므로 그림 1을 반드시 추가한다.",
+    "공유하는 중심 큐브가 하나이므로 3x²y−2x³과 일치한다."
+  ]
+}

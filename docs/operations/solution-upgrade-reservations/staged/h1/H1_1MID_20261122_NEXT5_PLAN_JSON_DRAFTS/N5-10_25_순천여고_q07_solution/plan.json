@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "4"
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -1,
+      8,
+      -10,
+      25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "11"
+      },
+      {
+        "id": "C",
+        "x": "6",
+        "y": "19"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 (2,3), (4,11)을 지나는 일차식 R(x)=4x−5에서 R(6)=19를 읽는다.",
+  "sourceQuote": "$R(x)=ax+b$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "R(2)=3, R(4)=11이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 조건점의 연결선과 평가점 (6,19)을 같은 식에서 표시한다."
+  ]
+}

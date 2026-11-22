@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "6",
+      "-3/2"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4.5,
+      -1,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "S(x)=−3x²/2+6x의 꼭짓점 (2,6). 내접 직사각형의 최대 넓이는 6이다.",
+  "sourceQuote": "$h=4$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤x≤4에서 S(x)=−3x²/2+6x이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최적 높이 x=2와 최대 넓이 6을 표시한다."
+  ]
+}

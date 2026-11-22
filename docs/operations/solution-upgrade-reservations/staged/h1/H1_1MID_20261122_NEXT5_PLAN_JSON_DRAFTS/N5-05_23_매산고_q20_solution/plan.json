@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -2,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "y=−x²+4x",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "64/9",
+          "-4/3"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "y=−4x/3+64/9",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "16/3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "64/9"
+        },
+        {
+          "id": "C",
+          "x": "8/3",
+          "y": "32/9"
+        },
+        {
+          "id": "D",
+          "x": "8/3",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "최대 기울기 a=−4/3인 접선과 A(16/3,0), B(0,64/9), C(8/3,32/9), D(8/3,0).",
+  "sourceQuote": "$좌표를 $",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접점 x좌표 t=8/3일 때 a=−4/3, b=64/9이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "접선·포물선·두 삼각형의 꼭짓점이 같은 좌표계를 공유한다."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-16/3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "공통 k",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−16/3≤k<2인 정수 중 최댓값은 1이다."
+  },
+  "caption": "실근과 허근 판별식의 교집합은 −16/3≤k<2이며 최대 정수는 1이다.",
+  "sourceQuote": "$\\frac{D_1}{4}=(-4)^2-3(-k) \\ge 0 \\implies 16+3k \\ge 0 \\implies k \\ge -\\frac{16}{3}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "실근: k≥−16/3, 허근: k<2이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "좌측 닫힘·우측 열림과 정수 1의 위치를 보여 준다."
+  ]
+}

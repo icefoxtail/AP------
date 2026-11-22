@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "정수 a",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−5≤a<4의 정수 −5부터 3까지 아홉 개가 복소근호 등식을 만족한다."
+  },
+  "caption": "복소수 주제곱근에서 a+5≥0, a−4<0일 때 양변이 같아진다.",
+  "sourceQuote": "$\\frac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\frac{A}{B}}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a의 범위는 −5≤a<4이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "−5에서 닫힌 점, 4에서 열린 점, 정수 아홉 개를 표시한다."
+  ]
+}

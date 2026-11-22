@@ -1,0 +1,53 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "t∈[1,5]의 y=(t−2)²+1. 최솟값 1, 최댓값 10이므로 합은 11이며 현재 정답 12와 불일치.",
+  "sourceQuote": "$x^2-2x+2 = t$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=x²−2x+2이고 1≤t≤5이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 극값 m=1, M=10을 보여 준다.",
+    "정답·선택지가 교정될 때까지 이미지 발행을 막는다."
+  ]
+}

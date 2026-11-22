@@ -1,0 +1,107 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=0의 접점"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "1"
+          ],
+          "domain": [
+            -2,
+            5
+          ],
+          "viewport": [
+            -3,
+            6,
+            -3,
+            22
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "g",
+                "slope": "5/2",
+                "intercept": "-25/16",
+                "label": "y=5x/2−25/16",
+                "labelAt": "END"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=1의 접점"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "9",
+            "-4",
+            "1"
+          ],
+          "domain": [
+            -2,
+            5
+          ],
+          "viewport": [
+            -3,
+            6,
+            -3,
+            22
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "g",
+                "slope": "5/2",
+                "intercept": "-25/16",
+                "label": "y=5x/2−25/16",
+                "labelAt": "END"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "k=0,1의 포물선이 모두 동일한 직선 y=5x/2−25/16에 접한다.",
+  "sourceQuote": "$x^2-(4k+a)x+(4k^2+5k-b)=0$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "항등식 계수비교로 a=5/2, b=−25/16이다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 k 예에서 접선이 동일함을 독립된 두 그림으로 확인한다."
+  ]
+}

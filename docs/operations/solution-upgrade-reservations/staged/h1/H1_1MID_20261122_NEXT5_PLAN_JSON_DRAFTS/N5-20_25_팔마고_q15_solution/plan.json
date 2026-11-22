@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -1,
+      17
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=6이면 y=(x−2)²가 x축에 접점 (2,0) 하나만 갖는다.",
+  "sourceQuote": "$2-i$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=6에서 y=x²−4x+4이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "중근 x=2와 접하는 모양을 표시한다."
+  ]
+}

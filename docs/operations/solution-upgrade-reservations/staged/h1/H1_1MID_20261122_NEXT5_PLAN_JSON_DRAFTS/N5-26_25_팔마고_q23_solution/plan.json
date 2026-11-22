@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "18",
+      "0",
+      "-2"
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -3,
+      22
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "중근을 위한 판별식 D/4=18−2k²의 두 영점 −3,3 중 양수 k=3을 선택한다.",
+  "sourceQuote": "$x = y+k$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D/4=k²−3(k²−6)=18−2k²이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "k=−3와 k=3을 구분하고 양의 k만 정답으로 선택한다."
+  ]
+}

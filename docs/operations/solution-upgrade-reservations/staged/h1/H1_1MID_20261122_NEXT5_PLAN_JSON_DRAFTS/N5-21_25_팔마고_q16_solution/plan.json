@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "-2",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "-1",
+            "showValue": false
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "판별식 k⁴−8k>0을 만족하는 정수 k는 −3,−2,−1,3이다."
+  },
+  "caption": "순서쌍 (m,n)에 대응하는 k의 허용값은 −3,−2,−1,3으로 네 개다.",
+  "sourceQuote": "$m^{2}-4n=0 \\implies n=\\frac{m^{2}}{4}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "n=k²≤10 및 k⁴−8k>0을 만족한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "불허용 k=0,1,2를 포함하지 않는 네 정수점만 표시한다."
+  ]
+}

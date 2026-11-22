@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      9,
+      -22,
+      100
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3",
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "y=2x²−5x−3",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "7"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "y=7x+1",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 곡선의 교점 x좌표의 합은 6이며 x²−6x−2=0을 이용한다.",
+  "sourceQuote": "$2x^{2}-5x-3=7x+1$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "교점 x좌표의 방정식은 x²−6x−2=0이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점과 근의 합이 6인 관계를 읽는다."
+  ]
+}

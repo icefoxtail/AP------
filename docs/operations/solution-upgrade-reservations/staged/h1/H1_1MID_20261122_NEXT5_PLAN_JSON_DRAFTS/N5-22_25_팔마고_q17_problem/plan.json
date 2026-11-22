@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "s_A_B",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s_A_C",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s_B_C",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s_P_Q",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s_Q_R",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "s_R_S",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "s_S_P",
+      "refs": [
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "base",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "밑변 6, 높이 4인 이등변삼각형 내부에 밑변과 평행한 직사각형이 놓인 모식도. 최적 높이는 표시하지 않는다.",
+  "sourceQuote": "$, 높이가 $",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑변 길이는 6, 높이는 4이고 직사각형은 밑변과 평행하다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "사다리꼴로 잘린 윗부분과 대칭 직사각형의 위치를 보여 준다."
+  ]
+}

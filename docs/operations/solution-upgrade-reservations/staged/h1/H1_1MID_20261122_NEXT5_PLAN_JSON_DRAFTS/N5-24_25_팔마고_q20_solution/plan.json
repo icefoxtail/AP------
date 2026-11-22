@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-2",
+      "1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      0,
+      24
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "R(x)=x²−2x+3이며 R(−1)=6, R(1)=2이다.",
+  "sourceQuote": "$f(x) = (x-2)^2(x+1)Q(x) + R(x)$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "R(x)=(x−2)²+2x−1=x²−2x+3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "나머지의 두 검산값과 질문의 R(1)=2를 표시한다."
+  ]
+}

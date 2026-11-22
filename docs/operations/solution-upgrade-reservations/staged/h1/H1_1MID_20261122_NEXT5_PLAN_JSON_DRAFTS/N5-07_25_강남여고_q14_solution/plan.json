@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "19/4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "교점 존재 k",
+        "integerPoints": {
+          "range": [
+            "1",
+            "4"
+          ]
+        },
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "교점 존재의 정수 k≤19/4. 최댓값은 4."
+  },
+  "caption": "판별식 D=76−16k≥0이므로 정수 k의 최대는 4이다.",
+  "sourceQuote": "$ 이상이어야 한다.\n\n[전개]\n$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선이 만나려면 k≤19/4이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 경계 k=19/4와 그 왼쪽 정수 k=4를 비교한다."
+  ]
+}

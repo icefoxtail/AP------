@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      7,
+      -4,
+      16
+    ],
+    "curves": [
+      {
+        "id": "Q",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "10",
+          "-7",
+          "1"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "Q(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "P",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "12",
+          "-7",
+          "1"
+        ],
+        "domain": [
+          "-15",
+          "70"
+        ],
+        "label": "P(x)=Q(x)+2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "Q의 근 2,5와 P의 근 3,4로 네 연속 자연수 근을 표현한다.",
+  "sourceQuote": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정<br>\\\\\\(\\\\because P(x)-Q(x)=2, \\근이 연",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Q(x)=(x−2)(x−5), P(x)=(x−3)(x−4)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선이 수직으로 2만큼 평행이동했음을 보인다."
+  ]
+}
