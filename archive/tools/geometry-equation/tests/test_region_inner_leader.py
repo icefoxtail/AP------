@@ -116,6 +116,10 @@ class ValueNamesItsQuantity(unittest.TestCase):
         self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '부채꼴 AOB=8cm²'}))
         self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '6cm²'}))
         self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '8m³'}))
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': 'S=6'}))          # one capital: an area name
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': 'AB=6cm²'}))  # an area unit wins over the name
+        self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': 'AB=6π'}))   # a segment or arc name: a length
+        self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': 'l=6'}))          # a length letter
         self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '6cm'}))
         self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '6'}))
         self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '△ABC'}))

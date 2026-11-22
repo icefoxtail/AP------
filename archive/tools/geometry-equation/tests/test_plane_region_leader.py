@@ -252,4 +252,72 @@ class ObserverTests(unittest.TestCase):
         self.assertNotIn('REGION_LABEL_LEADER_MISSING',fx.codes(svg=bare.replace('</svg>',label_group('rABC-label',inside,'6')+'</svg>')))
         self.assertIn('REGION_LABEL_LEADER_MISSING',fx.codes(svg=bare.replace('</svg>',label_group('rABC-label',box,TEXT)+'</svg>')))
 
+
+# a whole disk (the region's boundary is a circle all round: the loop of two arcs) with the circle drawn: no ends, so a value beside it reads as the circle's length wherever it stands
+DISK_POINTS={'O':(0.0,0.0),'A':(2.0,0.0),'B':(0.0,2.0)}
+DISK_LOOP={'start':'A','steps':[{'to':'B','arc':{'center':'O','sweep':'CCW'}},{'to':'A','arc':{'center':'O','sweep':'CCW'}}]}
+DISK_PLAN_LOOP={'start':'A','steps':[{'to':'B','arc':{'center':'O','side':'MINOR'}},{'to':'A','arc':{'center':'O','side':'MAJOR'}}]}
+
+class DiskFixture:
+    def __init__(self,text,kind='MATH',weight=None,size=(36.0,18.0)):
+        objects=[{'id':k,'kind':'POINT','at':list(v),'name':k} for k,v in DISK_POINTS.items()]+[{'id':'k','kind':'CIRCLE','center':[0.0,0.0],'radius':2.0}]
+        objects.append({'id':'rD','kind':'FILL_REGION','fill':'LIGHT','loops':[DISK_LOOP],'labelText':text,'labelKind':kind,'labelPlacement':'LEADER',**({'labelWeight':weight} if weight else {})})
+        spec={'id':'disk','visualType':'line_circle_geometry','viewport':{'xMin':-3.6,'xMax':3.6,'yMin':-3.3,'yMax':3.3,'width':560,'height':420,'panel':0,'equalUnits':True},
+              'axes':False,'title':'t','sourceFacts':{},'derivedFacts':{},'displayFacts':{},'objects':objects}
+        self.result=build(spec,measurements={'rD-label':list(size)})
+        self.transform=self.result['witness']['coordinateModel'];self.svg0=self.result['svg']
+        self.row={row['id']:row for row in self.result['witness']['layout']['labels']}['rD-label']
+        c=re.search(r'<circle\s[^>]*data-role="circle"[^>]*/>',self.svg0).group(0)
+        self.circle=tuple(float(re.search(r'\s%s="([^"]+)"'%k,c).group(1)) for k in ('cx','cy','r'))
+        self.text=text
+    def ring_distances(self,box):
+        cx,cy,r=self.circle
+        return [abs(math.dist((box['x']+box['width']*i/4,box['y']+box['height']*j/2),(cx,cy))-r) for i in range(5) for j in range(3)]
+    def inside(self,box):
+        cx,cy,r=self.circle
+        return all(math.dist((box['x']+box['width']*i,box['y']+box['height']*j),(cx,cy))<r for i in (0,1) for j in (0,1))
+    def audit(self,svg,marks):
+        return OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in DISK_POINTS.items()},'marks':marks,'segments':[],'transform':self.transform})
+    def marks(self,**row):
+        return {'regions':[{'id':'rD','fill':'LIGHT','label':self.text,'labelPlacement':'LEADER','shapes':[{'loop':DISK_PLAN_LOOP}],**row}]}
+    def codes(self,svg,marks):return [error.split(':')[0] for error in self.audit(svg,marks)['errors']]
+    def leader_exit(self):
+        tag=re.search(r'<line\s[^>]*data-role="leader"[^>]*data-owner-label="rD-label"[^>]*/>',self.svg0).group(0)
+        a,b=[(float(re.search(r'\s%s="([^"]+)"'%x,tag).group(1)),float(re.search(r'\s%s="([^"]+)"'%y,tag).group(1))) for x,y in (('x1','y1'),('x2','y2'))]
+        cx,cy,r=self.circle
+        return next(((a[0]+(b[0]-a[0])*k/400,a[1]+(b[1]-a[1])*k/400) for k in range(400) if math.dist((a[0]+(b[0]-a[0])*k/400,a[1]+(b[1]-a[1])*k/400),(cx,cy))>=r))
+    def with_label_at(self,box):
+        base=re.sub(r'<text\s[^>]*id="rD-label"[^>]*>.*?</text>','',self.svg0,flags=re.S)
+        return base.replace('</svg>',label_group('rD-label',box,self.text)+'</svg>')
+
+class DiskTests(unittest.TestCase):
+    """The circle that is the whole boundary of a disk region: the generator and the observer both see it, a named value is exempt only when its name or unit says it is not a length."""
+    def test_generator_keeps_a_bare_value_away_from_a_circle_that_is_the_whole_boundary(self):
+        fx=DiskFixture('16pi')
+        self.assertTrue(fx.row['placement'].startswith('OWNER_LEADER_'),fx.row['placement'])
+        self.assertGreater(min(fx.ring_distances(fx.row['box'])),48.0)
+    def test_generator_lets_a_value_with_a_name_stand_beside_the_circle_but_not_AB_or_l(self):
+        wide=(150.0,24.0)
+        named=DiskFixture('\ubd80\ucc44\uaf34 AOB=8cm\u00b2','TEXT','MATH',wide)
+        self.assertLessEqual(min(named.ring_distances(named.row['box'])),48.0,'a named value may stand beside the circle (the exemption is wired to the layout)')
+        for text in ('AB=16\u03c0','l=6'):
+            plain=DiskFixture(text,'TEXT','MATH',wide)
+            self.assertGreater(min(plain.ring_distances(plain.row['box'])),48.0,text+' reads as a length: it keeps off the circle')
+    def tamper_beside_the_circle(self,fx,degrees):
+        cx,cy,r=fx.circle;exit_at=fx.leader_exit();theta=math.atan2(exit_at[1]-cy,exit_at[0]-cx)+math.radians(degrees)
+        centre=(cx+(r+31.0)*math.cos(theta),cy+(r+31.0)*math.sin(theta))
+        return fx.with_label_at({'x':centre[0]-18.0,'y':centre[1]-9.0,'width':36.0,'height':18.0})
+    def test_observer_refuses_a_bare_value_beside_the_circle_on_either_side_of_the_seam(self):
+        # the circle has no ends: just past the point where the leader leaves, on either side, the value is as much a length as anywhere else
+        fx=DiskFixture('16pi')
+        for degrees in (8.0,-8.0,90.0):
+            self.assertIn('REGION_LEADER_READS_AS_SIDE',fx.codes(self.tamper_beside_the_circle(fx,degrees),fx.marks()),degrees)
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',fx.codes(fx.with_label_at(fx.row['box']),fx.marks()))   # the genuine figure is not refused
+    def test_observer_exempts_a_name_that_is_not_a_length_and_refuses_AB_and_l(self):
+        for name,text,exempt in (('\ubd80\ucc44\uaf34 AOB','\ubd80\ucc44\uaf34 AOB=16\u03c0',True),('S','S=16\u03c0',True),('AB','AB=16\u03c0',False),('l','l=16\u03c0',False)):
+            fx=DiskFixture(text,'TEXT','MATH',(120.0,22.0));marks=fx.marks(labelName=name,label='16pi')
+            drawn=regions.region_label_text(marks['regions'][0])
+            moved=fx.with_label_at({'x':fx.circle[0]+fx.circle[2]+20.0,'y':fx.circle[1]-11.0,'width':120.0,'height':22.0}).replace('data-text="'+text+'"','data-text="'+drawn+'"')
+            self.assertEqual(exempt,'REGION_LEADER_READS_AS_SIDE' not in fx.codes(moved,marks),name)
+
 if __name__=='__main__':unittest.main()

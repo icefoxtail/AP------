@@ -327,7 +327,11 @@ def _value_names_its_quantity(obj):
     """True when a region's label is written with its name (부채꼴 AOB=8) or an area / volume unit (8cm²): the letters say it is the region's value, so it may stand beside a boundary (a bare number
     beside an arc reads as the arc's length, one with a length unit as a length). A plain-text name/unit label is weighted MATH and carries '=' after the name (the value never has one)."""
     text=obj.get('labelText')
-    return obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and ('=' in text or text[-1:] in ('\u00b2','\u00b3'))
+    if not (obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and text):return False
+    if text[-1:] in ('\u00b2','\u00b3'):return True                  # an area / volume unit says it is not a length
+    if '=' not in text:return False
+    name=text.split('=',1)[0].strip()
+    return re.fullmatch(r'[A-Z]{2}|[a-z]',name) is None            # AB=6\u03c0 (a segment or arc) and l=6 (a length letter) read as lengths; 부채꼴 AOB, \u25b3ABC, S do not
 
 def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE,exclude=()):
     """[{at, clear}] spots inside an even-odd region (screen px), the roomiest first, each at least REGION_INNER_CLEAR_PX from the boundary, REGION_INNER_STROKE_PX from every other stroke."""

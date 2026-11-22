@@ -34,8 +34,10 @@ def named_value_drawn(row,node):
     A bare number, a length unit (cm, m) or a letter value does not; neither does a label whose name or unit was left out of the drawing."""
     expected=region_label_text(row)
     if expected is None or node is None or node.get('data-text')!=expected:return False
-    named=isinstance(row.get('labelName'),str) and row['labelName'].strip()!=''
     powered=re.fullmatch(r'[a-z]+\^[23]',str(row.get('unit','')))is not None
+    name=row.get('labelName')
+    # a name alone: not one of a segment or arc (two capitals, AB=6\u03c0) or a length letter (l=6), which read as lengths
+    named=isinstance(name,str) and name.strip()!='' and re.fullmatch(r'[A-Z]{2}|[a-z]',name.strip()) is None
     return named or powered
 
 def region_label_text(row):
@@ -273,6 +275,12 @@ def drawn_boundaries(root):
 
 LEADER_STRETCH_TOLERANCE=2.5      # svg px: a point of a drawn circle or curve lies on the region's boundary when it is this near it
 
+def closed_whole(points,polygons):
+    """True when a drawn closed curve (a circle's ring) is this region's boundary all round (a disk): no ends, so only the distance to it counts."""
+    if len(points)<=3 or norm(sub(points[0],points[-1]))>=1e-6:return False
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    return bool(edges) and all(min(point_segment_distance(p,a,b) for a,b in edges)<=LEADER_STRETCH_TOLERANCE for p in points[:-1])
+
 def region_stretch(points,at,polygons):
     """Of a drawn circle or curve, only the stretch that is THIS region's boundary and holds the point `at` (a sector's arc out of the whole circle): a closed circle has no ends, so measured whole,
     every place beside it would lie within 5-95 % of it. A straight 2-point side stays whole."""
@@ -476,6 +484,9 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                     # each WHOLE drawn boundary (a straight side, an arc, a curve, a circle) is one side: its length is what a value beside it reads as
                     for sid,pts in ([] if named_value_drawn(row,by_id.get(oid+'-label')) else drawn_boundaries(root)):
                         if exit_at is None or boundary_position(pts,exit_at)[1]>LEADER_BOUNDARY_TOLERANCE+2.0:continue
+                        if closed_whole(pts,record['polygons']):
+                            if any(boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2))[1]<=LEADER_SIDE_NEAR for i in range(5) for j in range(3)):errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
+                            continue
                         pts=region_stretch(pts,exit_at,record['polygons'])
                         close=[t for t,d in (boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)) if d<=LEADER_SIDE_NEAR]
                         if close and max(close)>LEADER_SIDE_SPAN[0] and min(close)<LEADER_SIDE_SPAN[1]:errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))

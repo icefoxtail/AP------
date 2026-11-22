@@ -894,6 +894,12 @@ def boundary_run(points,exit_point,own):
         k=(k+1)%n;run.append(ring[k])
     return run if len(run)>=2 else [ring[near],ring[(near+1)%n] if closed or near+1<n else ring[near-1]]
 
+def boundary_is_whole_closed(points,own):
+    """True when a drawn closed curve (a circle's ring) is the region's boundary ALL round (a disk): it has no ends, so there is no stretch to measure along, only the distance to it."""
+    if len(points)<=3 or not own or math.dist(points[0],points[-1])>=1e-6:return False
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in own for i in range(len(poly))]
+    return all(min(point_segment_distance(p,a,b) for a,b in edges)<=REGION_BOUNDARY_RUN_TOLERANCE_PX for p in points[:-1])
+
 def label_reads_as_side(box,exit_point,sides,own=None):
     """True when the label stands right beside the drawn boundary its leader crosses: that boundary counts as ONE side (a straight side, or, of a drawn circle or curve, the stretch that is this
     region's boundary: a sector's arc), and any part of the label's box within 48 px of it and along 5-95 % of its length reads as that side's length (a sector's value right beside its arc
@@ -901,6 +907,10 @@ def label_reads_as_side(box,exit_point,sides,own=None):
     probes=[(box.x+box.width*i/4,box.y+box.height*j/2) for i in range(5) for j in range(3)]
     for points in sides:
         if stroke_position(points,exit_point)[1]>REGION_INNER_EXIT_TOLERANCE_PX:continue
+        if boundary_is_whole_closed(points,own):
+            # a closed boundary that is all of the region's boundary has no ends: any label within 48 px of it reads as its length, however far round it stands from the seam
+            if any(stroke_position(points,q)[1]<=REGION_SIDE_NEAR_PX for q in probes):return True
+            continue
         points=boundary_run(points,exit_point,own)
         near=[stroke_position(points,q) for q in probes]
         close=[t for t,d in near if d<=REGION_SIDE_NEAR_PX]
