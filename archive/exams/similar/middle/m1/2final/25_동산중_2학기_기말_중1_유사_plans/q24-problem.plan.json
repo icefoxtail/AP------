@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mx",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Sx",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Yd",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "M",
+    "A",
+    "S",
+    "Mx",
+    "Sx",
+    "Yd"
+  ],
+  "hiddenPointNames": [
+    "U",
+    "Mx",
+    "Sx",
+    "Yd"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "segMinwoo",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "style": "SOLID"
+    },
+    {
+      "id": "segSuji",
+      "refs": [
+        "A",
+        "S"
+      ],
+      "style": "SOLID"
+    },
+    {
+      "id": "sMx",
+      "refs": [
+        "M",
+        "Mx"
+      ],
+      "style": "DASHED"
+    },
+    {
+      "id": "sMy",
+      "refs": [
+        "M",
+        "Yd"
+      ],
+      "style": "DASHED"
+    },
+    {
+      "id": "sSx",
+      "refs": [
+        "S",
+        "Sx"
+      ],
+      "style": "DASHED"
+    }
+  ],
+  "pointNames": {
+    "O": "O",
+    "M": "M",
+    "S": "S",
+    "A": "A"
+  },
+  "coordinateLabels": [
+    "M",
+    "S"
+  ],
+  "caption": "수지와 민우의 공원 산책에서 시간에 따른 이동 거리의 변화를 나타낸 그래프이다.",
+  "sourceQuote": "수지와 민우의 공원 산책에서 시간에 따른 이동 거리의 변화",
+  "assetPath": "assets/images/25_동산중_2학기_기말_중1_유사/q24.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q24-result.json",
+    "statePath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q24-state.json",
+    "svgPath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q24-solution.svg"
+  }
+}

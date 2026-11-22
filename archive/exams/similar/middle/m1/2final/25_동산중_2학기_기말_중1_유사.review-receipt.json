@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "archive-similar-exam-review-receipt-v1",
+  "examUid": "25_동산중_2학기_기말_중1_유사",
+  "candidateJsPath": "archive/exams/similar/middle/m1/2final/25_동산중_2학기_기말_중1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/middle/m1/2final/25_동산중_2학기_기말_중1_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "a8f8ec6e78146b0d6d348b26887a344c83162d1d",
+  "reviewTimestamp": "2026-11-22T18:17:29.072Z",
+  "reviewerRole": "MIDDLE_SIMILAR_REVIEWER_MERGER",
+  "signOffStatus": "SIGNED_OFF_PASS",
+  "overallVerdict": "PASS",
+  "auditSummary": {
+    "totalQuestions": 24,
+    "totalScore": 100,
+    "mcAnswerDistribution": {
+      "①": 4,
+      "②": 4,
+      "③": 4,
+      "④": 4,
+      "⑤": 5
+    },
+    "visualEngineAudit": "PASS",
+    "harnessGate": "PASS"
+  },
+  "blindFirstPass": {
+    "totalSolved": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0
+  },
+  "defects": [
+    {
+      "qid": "ALL",
+      "description": "JS 내 문항 객체 points 필드 누락 결함",
+      "repairAction": "배점 합 100.0점에 맞추어 각 문항 points 필드 직접 주입 및 배점 정합 완결",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 5,
+      "description": "5번 문항 5번 보기 숫자 LaTeX 미표기 결함",
+      "repairAction": "차수가 $2$인 다항식이다로 수식 인라인 감싸기 수정",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": "15,16,18,19,24",
+      "description": "발문 이미지 태그 인라인 누출 및 q.image 탑레벨 필드 누락",
+      "repairAction": "q.content 본문에서 div 태그 정리 및 q.image 공식 자산 경로 결속",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": "15,16,18,19,24",
+      "description": "SVG 엔진 플랜 sourceQuote, assetPath, engineEvidence 누락 및 정답 노출 방지",
+      "repairAction": "공식 렌더러로 깨끗한 발문 캡션 렌더링 및 ARCHIVE_BOUND 증거 삼원 결속",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 21,
+      "description": "발문 플랜 UNSUPPORTED 기재 오류",
+      "repairAction": "순수 대수 좌표 계산 문항이므로 발문 플랜 EXEMPT로 정정",
+      "status": "VERIFIED_REPAIRED"
+    }
+  ],
+  "questionReviews": [
+    {
+      "qid": 1,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "⑤",
+      "derivedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "곱셈 기호와 나눗셈 기호를 생략하는 규칙에 따라 같은 문자의 곱은 거듭제곱으로 나타내므로 a*b*a = a^2*b이다. ①은 -3x, ②는 a/4, ③은 y^2, ④는 2(x-1)이어야 하므로 옳은 것은 ⑤이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "문자식 기호 생략 규칙 검증 완료.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 2,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "②",
+      "derivedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "사탕 a개 중 3개가 남았으므로 4명에게 나누어 준 사탕의 총 개수는 a-3개이다. 이를 4명에게 똑같이 나누어 주었으므로 한 사람이 받는 사탕의 개수는 (a-3)/4개이다. 따라서 옳은 것은 ②이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "나눗셈 상황 문자식 표현 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 3,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "④",
+      "derivedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "x=3을 주어진 식 4x-5에 대입하여 계산하면 4*(3)-5 = 12-5 = 7이다. 따라서 식의 값은 7이므로 정답은 ④이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "일차식의 수치 대입 계산 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 4,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "②",
+      "derivedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "x=-3, y=-2를 대입하면 x^2 = (-3)^2 = 9이므로 -x^2 = -9이다. 또한 4/y = 4/(-2) = -2이다. 따라서 -x^2 - 4/y = -9 - (-2) = -9 + 2 = -7이다. 정답은 ②이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "거듭제곱 및 음수 분수 대입 연산 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 5,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "③",
+      "derivedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "식 2x-5에서 항은 2x와 -5이며, x의 계수는 2, 상수항은 -5이다. 차수가 1인 일차식이자 두 항으로 이루어진 다항식이다. 따라서 옳은 설명은 상수항이 -5인 ③이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "항, 계수, 상수항 개념 분석 명확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 6,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "④",
+      "derivedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "문자와 차수가 같은 항이 동류항이므로 3x의 동류항 ㉠은 +2x이고, 상수항 -2의 동류항 ㉡은 +5이다. 동류항끼리 묶어 계산하면 (3+2)x + (-2+5) = 5x+3으로 ㉢은 5x+3이다. 따라서 정답은 ④이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "동류항 판별 및 덧셈 정리 완결.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 7,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "④",
+      "derivedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(5-2x)-(-4x-3)의 괄호를 풀면 5-2x+4x+3이 된다. 동류항끼리 계산하면 (-2x+4x)+(5+3) = 2x+8이다. 따라서 옳은 계산 결과는 ④이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "괄호 부호 처리 및 일차식 덧셈 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 8,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "⑤",
+      "derivedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "나눗셈은 역수의 곱셈으로 바꾸므로 (12x-18)*(-2/3)이다. 분배법칙을 적용하면 12x*(-2/3) - 18*(-2/3) = -8x + 12이다. 따라서 정답은 ⑤이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "분배법칙 및 분수 곱셈 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 9,
+      "type": "객관식",
+      "score": 5,
+      "candidateAnswer": "②",
+      "derivedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "분모 3과 6의 최소공배수인 6으로 통분하면 2(-x-2)/6 - (2x-1)/6 = (-2x-4-2x+1)/6 = (-4x-3)/6 = -2/3x - 1/2이다. 따라서 정답은 ②이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "분수식 통분 및 동류항 정리 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 10,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "④",
+      "derivedAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "한 자루에 x원인 볼펜 4자루의 가격은 4x원이다. 5000원을 내고 거스름돈이 1400원이므로 지불한 금액에서 가격을 뺀 5000-4x가 거스름돈 1400과 같다. 즉 5000-4x=1400이므로 정답은 ④이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "실생활 상황 등식 변환 타당함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 11,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "⑤",
+      "derivedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "x=2를 대입하여 참이 되는 식을 찾는다. ⑤ 3*(2)-2 = 6-2 = 4로 우변과 일치하여 참이다. ①은 5!=1, ②는 6!=-6, ③은 3!=2, ④는 -1!=1이다. 따라서 정답은 ⑤이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "방정식의 해 정의 및 대입 판정 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 12,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "③",
+      "derivedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "2x-3=5에서 좌변의 -3을 우변으로 부호를 바꾸어 옮긴 것은 이항(ㄴ)이며, 이는 양변에 같은 수 3을 더한 등식의 성질(ㄱ)에 기초한다. 2x=8에서 양변을 2로 나누어 x=4를 얻은 것은 0이 아닌 같은 수로 나눈 성질(ㄷ)이다. 따라서 (가) ㄱ·ㄴ, (나) ㄷ인 ③이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "등식의 성질과 이항의 원리 분석 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 13,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "①",
+      "derivedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "괄호를 전개하면 3x-24 = -5x이다. x항을 좌변으로, 상수항을 우변으로 이항하면 3x+5x = 24가 되어 8x = 24이다. 양변을 8로 나누면 x = 3이다. 따라서 정답은 ①이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "일차방정식 기본 이항 풀이 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 14,
+      "type": "객관식",
+      "score": 5,
+      "candidateAnswer": "③",
+      "derivedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "첫째 방정식 1/2(-x-3)=0.7x+0.9의 양변에 10을 곱하면 5(-x-3)=7x+9, -5x-15=7x+9, -12x=24에서 x=-2이다. 둘째 방정식에 x=-2를 대입하면 0.3(-2-2a)-1/4 = a(2+6)/8, -0.6-0.6a-0.25 = a, -0.85 = 1.6a, a = -85/160 = -17/32이다. 따라서 정답은 ③이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "연립 조건 및 매개변수 일차방정식 연계 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 15,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "①",
+      "derivedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "좌표평면의 네 점을 읽으면 점 A는 x=-4, y=3이므로 A(-4,3)이다. 점 B는 y축 위의 점으로 (0,-2), 점 C는 (3,4), 점 D는 (2,-3)이다. 따라서 바르게 나타낸 것은 ①이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "좌표평면 점 읽기 및 SVG 시각자료 일치.",
+      "assetCheck": "SVG_PASS"
+    },
+    {
+      "qid": 16,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "⑤",
+      "derivedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "가로의 x축과 세로의 y축이 만나는 교점을 원점 O(0,0)이라고 한다. ① (3,0)은 x축 위, ② (-2,-4)는 제3사분면, ③ 원점은 (0,0), ④ 앞이 x좌표 뒤가 y좌표이다. 따라서 옳은 설명은 ⑤이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "좌표축과 사분면 구조 분석 타당함.",
+      "assetCheck": "SVG_PASS"
+    },
+    {
+      "qid": 17,
+      "type": "객관식",
+      "score": 4.5,
+      "candidateAnswer": "②",
+      "derivedAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "점 A(a,b)가 제2사분면 위의 점이므로 a<0, b>0이다. 점 B(a-b, -b/a)에서 x좌표 a-b는 (음수)-(양수)이므로 음수(<0)이고, y좌표 -b/a는 a<0, b>0에서 b/a<0이므로 -b/a>0(양수)이다. x좌표 음수, y좌표 양수인 점은 제2사분면이다. 정답은 ②이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "부호 판별을 통한 사분면 결정 정확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 18,
+      "type": "객관식",
+      "score": 3,
+      "candidateAnswer": "③",
+      "derivedAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "시간에 따른 속력 변화에서 일정한 속력으로 달리는 구간은 시간축에 평행한 수평선으로 나타나고, 속력을 줄여 정지하는 구간은 속력이 0으로 우하향하는 선분으로 나타난다. 이 두 상황이 순서대로 이어진 그래프는 ③이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "상황 그래프 해석 및 SVG 엔진 렌더 정합.",
+      "assetCheck": "SVG_PASS"
+    },
+    {
+      "qid": 19,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "①",
+      "derivedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "그래프의 y축 최대 눈금은 40m이므로 최고 높이는 40m이다. 주기는 30분이므로 최고 높이 도달 시간은 15분이고 30분 후 높이는 0m이다. 60분 동안 높이가 20m인 순간은 한 주기당 2번씩 총 4번이다. 따라서 옳은 설명은 ①이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "주기적 변화 그래프 해석 완결.",
+      "assetCheck": "SVG_PASS"
+    },
+    {
+      "qid": 20,
+      "type": "객관식",
+      "score": 4,
+      "candidateAnswer": "①",
+      "derivedAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "정비례는 y=ax (a!=0) 꼴이다. ① 색연필 x자루 가격 y = 800x로 정비례이다. ② xy=36, y=36/x로 반비례, ③ 2(x+y)=20, y=10-x, ④ y=x+13, ⑤ y=50/x로 반비례이다. 따라서 정비례인 것은 ①이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "정비례 관계식 정의 판별 타당함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 21,
+      "type": "객관식",
+      "score": 4.5,
+      "candidateAnswer": "⑤",
+      "derivedAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "점 (-4,3)이 y=ax 위의 점이므로 3 = a*(-4)에서 a = -3/4이다. 또한 y=b/x 위의 점이므로 3 = b/(-4)에서 b = -12이다. 따라서 ab = (-3/4)*(-12) = 9이다. 정답은 ⑤이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "정비례·반비례 교점 계산 정확함. 해설 텍스트 완결.",
+      "assetCheck": "UNSUPPORTED_TEXT_COMPLETE"
+    },
+    {
+      "qid": 22,
+      "type": "서술형",
+      "score": 7,
+      "candidateAnswer": "(1) $3.2x+2.4y\\,\\mathrm{mg}$ (2) $1280\\,\\mathrm{mg}$",
+      "derivedAnswer": "(1) $3.2x+2.4y\\,\\mathrm{mg}$ (2) $1280\\,\\mathrm{mg}$",
+      "blindMatch": true,
+      "blindDerivation": "100g당 칼슘 함량이 P는 320mg, Q는 240mg이므로 1g당 함량은 각각 3.2mg, 2.4mg이다. (1) P 식품 x g과 Q 식품 y g의 총 칼슘 양은 3.2x+2.4y (mg)이다. (2) x=250, y=200을 대입하면 3.2*250 + 2.4*200 = 800 + 480 = 1280 (mg)이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "표 자료 해석 및 2단계 서술형 풀이 명확함.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 23,
+      "type": "서술형",
+      "score": 7,
+      "candidateAnswer": "$4\\,\\mathrm{km}$",
+      "derivedAnswer": "$4\\,\\mathrm{km}$",
+      "blindMatch": true,
+      "blindDerivation": "(1) 집과 도서관 사이의 거리를 x km라 하자. (2) 걸어갈 때 걸리는 시간 x/6시간, 버스 탈 때 x/30시간이고 32분은 32/60=8/15시간이므로 x/6 - x/30 = 8/15이다. (3) 양변에 30을 곱하면 5x - x = 16, 4x = 16, x = 4이다. (4) 집과 도서관 사이 거리는 4km이다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "거리·속력·시간 4단계 서술형 풀이 정합.",
+      "assetCheck": "EXEMPT"
+    },
+    {
+      "qid": 24,
+      "type": "서술형",
+      "score": 6,
+      "candidateAnswer": "(1) 수지는 산책이 시작된 지 10분 뒤에 출발한다. (2) 민우는 출발 후 50분에 2.5km 지점에 도착한다.",
+      "derivedAnswer": "(1) 수지는 산책이 시작된 지 10분 뒤에 출발한다. (2) 민우는 출발 후 50분에 2.5km 지점에 도착한다.",
+      "blindMatch": true,
+      "blindDerivation": "그래프에서 수지의 이동 선분은 (10, 0)에서 시작하여 (40, 2.5)에서 끝나므로 수지는 시작 10분 뒤 출발하여 30분 동안 걸어 2.5km 지점에 도착한다. 민우는 (0,0)에서 시작하여 (50, 2.5)에 도달하므로 50분 동안 2.5km를 걸어 도착한다. 두 사실을 수치를 포함하여 서술하면 된다.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "이동 거리 그래프 서술형 분석 및 수치 포함 완결.",
+      "assetCheck": "SVG_PASS"
+    }
+  ]
+}

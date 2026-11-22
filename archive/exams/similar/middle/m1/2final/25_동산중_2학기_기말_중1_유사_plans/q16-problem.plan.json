@@ -1,0 +1,137 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Px",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Py",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "P",
+    "Px",
+    "Py"
+  ],
+  "hiddenPointNames": [
+    "U",
+    "Px",
+    "Py"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sPx",
+      "refs": [
+        "P",
+        "Px"
+      ],
+      "style": "DASHED"
+    },
+    {
+      "id": "sPy",
+      "refs": [
+        "P",
+        "Py"
+      ],
+      "style": "DASHED"
+    }
+  ],
+  "pointNames": {
+    "O": "O",
+    "P": "P"
+  },
+  "coordinateLabels": [
+    "P"
+  ],
+  "caption": "좌표축의 교점인 원점 O(0,0)과 점 P의 좌표를 나타낸 그림이다.",
+  "sourceQuote": "다음 좌표평면에 대한 설명으로 옳은 것을 고르시오.",
+  "assetPath": "assets/images/25_동산중_2학기_기말_중1_유사/q16.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q16-result.json",
+    "statePath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q16-state.json",
+    "svgPath": "archive/assets/images/25_동산중_2학기_기말_중1_유사/q16-solution.svg"
+  }
+}
