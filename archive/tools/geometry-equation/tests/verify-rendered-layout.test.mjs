@@ -266,3 +266,41 @@ test('Playwright rejects invalid or blank tick numeric attributes and accepts ne
     const missingDisplayValue=await analyze(renderedTickSvg(),{id:'tick-x--2-label',attr:'data-tick-display-value',remove:true});assert.ok(missingDisplayValue.errors.includes('TICK_LABEL_DISPLAY_VALUE_INVALID:tick-x--2-label'));
   }finally{await browser.close();}
 });
+
+// (AXV) a label that names a value on the x axis (an interval end: -π, 9π, -4π/3) is bound to its own x on the axis.
+function axisValueCapture({box={x:93,y:172,width:14,height:12},source=[100,160],strokes=[],axis='x'}={}) {
+  const c=capture();
+  c.labels=[{id:'interval-end-label',kind:'GRAPH_ANNOTATION',priority:0,value:'9π',client:box,bbox:{width:box.width,height:box.height},missingGlyphCount:0,axisValue:axis,axisSource:source,axisSourceClient:source}];
+  c.geometry=[axis==='x'?{id:'x-axis',kind:'axis',role:'axis',points:[[0,160],[300,160]],client:{x:0,y:160,width:300,height:0}}:{id:'y-axis',kind:'axis',role:'axis',points:[[100,0],[100,300]],client:{x:100,y:0,width:0,height:300}},...strokes];
+  return c;
+}
+const axisValueErrors=c=>analyzeRenderedLayout(c).errors.filter(v=>v.startsWith('AXIS_VALUE_LABEL'));
+test('an axis value label centred on its own x, one line below or above the axis, passes',()=>{
+  assert.deepEqual(axisValueErrors(axisValueCapture()),[]);
+  assert.deepEqual(axisValueErrors(axisValueCapture({box:{x:93,y:136,width:14,height:12}})),[]);
+});
+test('an axis value label far below the axis (the -π and 9π of the maesan trig q10 figure) is refused',()=>{
+  const far=axisValueCapture({box:{x:93,y:212,width:14,height:12}});
+  assert.deepEqual(axisValueErrors(far),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+});
+test('an axis value label beside its x (it would read as a y value or another tick) is refused',()=>{
+  const aside=axisValueCapture({box:{x:63,y:172,width:14,height:12}});
+  assert.deepEqual(axisValueErrors(aside),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+});
+test('an axis value label with another line between it and the axis (the -4π/3 under the line y=-1/2) is refused',()=>{
+  const line={id:'line-1',kind:'line',role:'line',points:[[0,166],[300,166]],client:{x:0,y:166,width:300,height:0},strokeWidthPx:.8,paintOrder:1};
+  assert.deepEqual(axisValueErrors(axisValueCapture({box:{x:93,y:172,width:14,height:12},strokes:[line]})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);
+});
+test('an axis value label with a missing or invalid binding fails closed',()=>{
+  const c=axisValueCapture();c.labels[0].axisSourceClient=null;
+  assert.deepEqual(axisValueErrors(c),['AXIS_VALUE_LABEL_BINDING_INVALID:interval-end-label']);
+  const d=axisValueCapture();d.geometry=[];
+  assert.deepEqual(axisValueErrors(d),['AXIS_VALUE_LABEL_BINDING_INVALID:interval-end-label']);
+});
+test('the y axis follows the same rule: beside its own y it passes, far to the side or behind another line it is refused',()=>{
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:154,width:14,height:12}})),[]);
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:30,y:154,width:14,height:12}})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:130,width:14,height:12}})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  const line={id:'line-1',kind:'line',role:'line',points:[[94,0],[94,300]],client:{x:94,y:0,width:0,height:300},strokeWidthPx:.8,paintOrder:1};
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:154,width:12,height:12},strokes:[line]})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);
+});

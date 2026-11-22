@@ -692,6 +692,19 @@ def tick_box_respects_owner(box,at,axis,ink=None):
     else:return False
     return aligned and any(-.01<=gap<=TICK_LABEL_MAX_EDGE_GAP for gap in gaps)
 
+def axis_value_box_ok(box,label):
+    """(AXV) THE rule for a label that names a value on an axis (a tick number, an interval end such as -4π/3, a y intercept): it must read as THAT axis's tick of its own value.
+    The box is centred on its own value along the axis and one text line from the axis (tick_box_respects_owner: the same measure as a tick number, on the measured ink). A place
+    that fails it reads as the other axis's value, as another line's label or as the value of another tick. Axis x or y, any graph kind: a label carries axisValue ('x'|'y') and
+    axisAnchor (its point on that axis); nothing here knows which family drew it."""
+    return tick_box_respects_owner(box,label.get('axisAnchor',label['at']),label['axisValue'],label.get('tickInk'))
+
+def axis_anchor_retry(label):
+    """The way an axis value label is placed when its ordinary place (the author's anchor, the ordinary gaps) does not read as its tick: on the axis point itself, one text line
+    to either side like a tick number. Only tried after the ordinary attempt failed, so a label that already reads as its tick is placed exactly as before."""
+    on_x=label['axisValue']=='x'
+    return {**label,'at':list(label['axisAnchor']),'directions':('S','N') if on_x else ('W','E'),'preferred':'S' if on_x else 'W','gaps':TICK_LABEL_GAPS,'centered':True,'_axisRetry':True}
+
 def _segment_intersection(a,b):
     if len(a)!=2 or len(b)!=2:return None
     u=(a[1][0]-a[0][0],a[1][1]-a[0][1]);v=(b[1][0]-b[0][0],b[1][1]-b[0][1]);w=(b[0][0]-a[0][0],b[0][1]-a[0][1])
@@ -1060,7 +1073,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
     measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[];leaders=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
-    for label in sorted(labels,key=order or (lambda v:(v.get('priority',2),v['id']))):
+    queue=sorted(labels,key=order or (lambda v:(v.get('priority',2),v['id'])));queue_at=0   # (AXV) a queue, so a label that failed its ordinary place can be tried once more on its axis
+    while queue_at<len(queue):
+        label=queue[queue_at];queue_at+=1
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
         tick_owner=None
@@ -1126,7 +1141,8 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied),*((label['lineBarrierKinds'],) if 'lineBarrierKinds' in label else ())))
-                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk'))))
+                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk')))
+                and (not label.get('axisValue') or axis_value_box_ok(box,label)))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
             leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {})})
@@ -1617,6 +1633,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     box,end,_crossings,direction=found
                     tie_to_owner(end);leaders[-1]['crossFallback']=True;ring=box;ring_method='OWNER_LEADER_'+direction
             if ring is not None:chosen=ring;method=ring_method
+        if chosen is not None and label.get('axisValue') and not axis_value_box_ok(chosen,label):chosen=None   # (AXV) never kept away from its axis, whatever fallback placed it
+        if chosen is None and label.get('axisAnchor') is not None and label.get('axisValue') in ('x','y') and not label.get('_axisRetry'):
+            queue.append(axis_anchor_retry(label));continue   # after every other label: the tick numbers (required, owned) take their places first, the axis value gets what is left of its own x
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue

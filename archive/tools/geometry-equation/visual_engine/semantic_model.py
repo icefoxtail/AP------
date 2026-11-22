@@ -22,6 +22,7 @@ FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refin
 FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
 FIELDS|={'markerState'}   # a graph overlay point drawn as a hollow circle (markerState:'OPEN'); with `color` (POINT) a coloured dot
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
+FIELDS|={'axisValue','axisAt'}   # (AXV) a label that names a value on an axis: axisValue 'x'|'y' and axisAt, its point on that axis (the label must read as that axis's tick)
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b

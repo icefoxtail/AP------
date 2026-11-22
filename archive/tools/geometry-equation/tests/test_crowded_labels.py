@@ -196,3 +196,77 @@ class LastResortCrossingTests(unittest.TestCase):
         self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
         bare=layout([item],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(20,16)},require_measurements=True)
         self.assertEqual(bare['unresolved'],[item['id']],'a curve with no dot on the tick is never its own ground of the tick')
+
+
+class AxisValueLabelTests(unittest.TestCase):
+    """(AXV) A label that names a value on an axis (an interval end -4π/3 or 9π on x, an intercept on y) reads as that axis's tick of its own value, or it is refused.
+    One rule for both axes and every graph kind (axisValue + axisAnchor on the label); the ordinary place is kept when it already reads as the tick."""
+    XAXIS={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(300,160)]}
+    YAXIS={'id':'y-axis','kind':'axis','role':'axis','axis':'y','geometry':[(100,0),(100,240)]}
+    def xlabel(self,at=(100.0,160.0)):
+        return {'id':'interval-end-label','kind':'GRAPH_ANNOTATION','at':list(at),'text':'9π','font':13,'priority':0,'gaps':(12,20,32,48),'axisValue':'x','axisAnchor':[100.0,160.0]}
+    def ylabel(self,at=(100.0,160.0)):
+        return {'id':'intercept-label','kind':'GRAPH_ANNOTATION','at':list(at),'text':'3','font':13,'priority':0,'gaps':(12,20,32,48),'axisValue':'y','axisAnchor':[100.0,160.0]}
+    def unbound(self,item):return {k:v for k,v in item.items() if k not in {'axisValue','axisAnchor'}}
+    def run_label(self,item,obstacles,axes=None):
+        return layout([item],(axes or [self.XAXIS])+obstacles,Box(0,0,300,240),measurements={item['id']:(22,16)},require_measurements=True)
+    def test_a_label_whose_ordinary_place_already_reads_as_its_tick_keeps_that_place_exactly(self):
+        item=self.xlabel()
+        kept=self.run_label(item,[]);before=self.run_label(self.unbound(item),[])
+        self.assertEqual(kept['unresolved'],[])
+        self.assertEqual(kept['labels'][0]['box'],before['labels'][0]['box'],'no axis binding changes a place that was already right')
+        self.assertEqual(kept['labels'][0]['placement'],before['labels'][0]['placement'])
+    def test_a_label_the_ordinary_attempt_left_far_from_its_axis_is_put_beside_its_own_x(self):
+        item=self.xlabel(at=(100.0,216.0))   # the anchor 56 px below the axis (7% of a tall viewport and more): the ordinary gaps leave the box 28 px from the axis
+        far=Box(**self.run_label(self.unbound(item),[])['labels'][0]['box'])
+        self.assertGreater(min(abs(far.y-160),abs(160-far.bottom)),16.0,'the ordinary place leaves the box far below its axis: it floats like a y value (this is how -pi and 9pi were detached)')
+        result=self.run_label(item,[])
+        self.assertEqual(result['unresolved'],[])
+        box=Box(**result['labels'][0]['box'])
+        self.assertLessEqual(abs(box.x+box.width/2-100.0),4.0)
+        self.assertTrue(-.01<=box.y-160<=16.0 or -.01<=160-box.bottom<=16.0,'one text line from the axis')
+        self.assertEqual(result['leaders'],[])
+    def test_a_curve_under_the_label_sends_it_to_the_other_side_of_the_axis_within_one_line(self):
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(60,200),(100,176),(140,200)]}
+        result=self.run_label(self.xlabel(at=(100.0,181.0)),[curve])
+        self.assertEqual(result['unresolved'],[])
+        box=Box(**result['labels'][0]['box'])
+        self.assertTrue(-.01<=160-box.bottom<=16.0)
+    def test_when_both_sides_of_its_own_x_are_shut_the_label_is_refused_not_taken_far_away(self):
+        below={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(60,176),(100,176),(140,176)]}
+        above={'id':'g-branch-0','kind':'curve','role':'curve','geometry':[(60,144),(100,144),(140,144)]}
+        item=self.xlabel(at=(100.0,181.0))
+        result=self.run_label(item,[below,above])
+        self.assertEqual(result['unresolved'],[item['id']],'no place that reads as its own tick: refused, never another line label or a y value place')
+        self.assertEqual((result['labels'],result['leaders']),([],[]))
+        free=self.run_label(self.unbound(item),[below,above])
+        self.assertEqual(free['unresolved'],[],'without the binding it would have been kept somewhere far, which is the defect')
+    def test_the_y_axis_is_the_same_rule_on_its_own_side(self):
+        item=self.ylabel(at=(70.0,160.0))   # 30 px left of the y axis: the ordinary place
+        result=self.run_label(item,[],[self.YAXIS])
+        self.assertEqual(result['unresolved'],[])
+        box=Box(**result['labels'][0]['box'])
+        self.assertLessEqual(abs(box.y+box.height/2-160.0),4.0)
+        self.assertTrue(-.01<=100-box.right<=16.0 or -.01<=box.x-100<=16.0)
+        shut=[{'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(84,100),(84,220)]},{'id':'g-branch-0','kind':'curve','role':'curve','geometry':[(116,100),(116,220)]}]
+        self.assertEqual(self.run_label(item,shut,[self.YAXIS])['unresolved'],[item['id']])
+    def test_another_graph_kind_through_the_whole_engine_follows_the_same_rule(self):
+        # a cubic (not a trig or piecewise graph): an x value and a y value named far from their axes are brought beside their own ticks, bound in the final SVG
+        sys.path.insert(0,str(Path(__file__).resolve().parent))
+        from test_engine import spec
+        from visual_engine.engine import build
+        import xml.etree.ElementTree as ET
+        s=spec();s['id']='axv-cubic';s['visualType']='function_graph';s['viewport']={'xMin':-2,'xMax':2,'yMin':-2,'yMax':2}
+        s['objects']=[{'id':'g','kind':'FUNCTION_GRAPH','expression':'x^3','domain':[-2,2]},
+            {'id':'x-end','kind':'GRAPH_ANNOTATION','text':'1.5','at':[1.5,-1.4],'math':True,'axisValue':'x','axisAt':[1.5,0],'priority':0},
+            {'id':'y-end','kind':'GRAPH_ANNOTATION','text':'1.2','at':[-1.4,1.2],'math':True,'axisValue':'y','axisAt':[0,1.2],'priority':0}]
+        result=build(s);self.assertEqual(result['witness']['layout']['unresolved'],[])
+        boxes={row['id']:row['box'] for row in result['witness']['layout']['labels']}
+        nodes={row.get('id'):row for row in ET.fromstring(result['svg']).iter() if row.get('id') in {'x-end','y-end'}}
+        self.assertEqual({k:v.get('data-axis-value') for k,v in nodes.items()},{'x-end':'x','y-end':'y'})
+        x,y=boxes['x-end'],boxes['y-end']
+        ax_y=float(nodes['x-end'].get('data-axis-source-y'));ax_x=float(nodes['y-end'].get('data-axis-source-x'))
+        self.assertTrue(-.01<=x['y']-ax_y<=16.0 or -.01<=ax_y-(x['y']+x['height'])<=16.0)
+        self.assertTrue(-.01<=y['x']-ax_x<=16.0 or -.01<=ax_x-(y['x']+y['width'])<=16.0)
+        marks={row.get('id'):row for row in ET.fromstring(result['svg']).iter() if row.get('data-role')=='axis-value-mark'}
+        self.assertEqual(set(marks),{'x-end-axis-mark','y-end-axis-mark'},'a label put on its axis gets a short mark at its value, so the number has a position to point at')

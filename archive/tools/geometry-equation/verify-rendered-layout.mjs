@@ -81,7 +81,8 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
+      const axisSource=e.getAttribute('data-axis-value')==='x'&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
       const bbox=safeBox(e),client=rect(e.getBoundingClientRect()),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
@@ -98,7 +99,8 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
+      const axisSource=e.getAttribute('data-axis-value')==='x'&&e.hasAttribute('data-axis-source-x')?[strictNumber(e.getAttribute('data-axis-source-x')),strictNumber(e.getAttribute('data-axis-source-y'))]:null;
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,axisValue:e.getAttribute('data-axis-value'),axisSource,axisSourceClient:axisSource?project(svg,...axisSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')&&e.getAttribute('data-role')!=='region').map(e=>{   // a region fill is paint, not a stroke: labels and leaders may lie on it (plane_regions_observer.py checks it)
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
@@ -374,6 +376,23 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     if(matches.length!==1||matches[0].kind!=='TICK_LABEL'||matches[0].tickOwner!==tick.id) {
       const code='REQUIRED_TICK_LABEL_MISSING_OR_MISOWNED:'+tick.requiredLabelId;errors.push(code);
       tickEvidence.push({labelId:tick.requiredLabelId,tickOwner:tick.id,axis:tick.axis,numericValue:strictFiniteNumber(tick.value),status:'FAIL',errors:[code],requiredLabelMatches:matches.length});
+    }
+  }
+  // (AXV) A label that names a value on an axis (a tick number, an interval end such as -4π/3, an intercept) must read as THAT axis's tick: centred on its own value along the axis,
+  // within one text line of the axis, with no other stroke between it and the axis, and not at a place that reads as the other axis's value. Nothing else (a far place, a leader) makes it one.
+  // Written out here on the rendered final SVG, independent of the layout's own test.
+  for(const label of capture.labels.filter(v=>v.axisValue!==null&&v.axisValue!==undefined)) {
+    const fail=code=>errors.push(code+':'+label.id),axis=label.axisValue,source=label.axisSourceClient,axisRows=capture.geometry.filter(v=>v.id===axis+'-axis'&&v.kind==='axis');
+    if(!['x','y'].includes(axis)||!source||!source.every(Number.isFinite)||axisRows.length!==1||!label.client){fail('AXIS_VALUE_LABEL_BINDING_INVALID');continue;}
+    const box=label.client,onX=axis==='x';
+    const delta=onX?Math.abs(box.x+box.width/2-source[0]):Math.abs(box.y+box.height/2-source[1]);
+    const sides=(onX?[source[1]-bottom(box),box.y-source[1]]:[source[0]-right(box),box.x-source[0]]).filter(v=>v>=-.1),gap=sides.length?Math.min(...sides):Infinity;
+    if(delta>4*scale+.25||!(gap<=16*scale+.25)){fail('AXIS_VALUE_LABEL_NOT_ADJACENT');continue;}
+    const near=onX?(source[1]-bottom(box)>=-.1&&source[1]-bottom(box)===gap?bottom(box):box.y):(source[0]-right(box)>=-.1&&source[0]-right(box)===gap?right(box):box.x);
+    const start=near>(onX?source[1]:source[0])?1.5*scale:-1.5*scale,probe=onX?[[source[0],source[1]+start],[source[0],near]]:[[source[0]+start,source[1]],[near,source[1]]];
+    for(const other of capture.geometry){
+      if(other.id===axis+'-axis'||other.kind==='tick'||!Array.isArray(other.points)||other.points.length<2||!['line','curve','axis','auxiliary','leader'].includes(other.kind)||other.id===label.id+'-owner-leader')continue;
+      if(other.points.slice(1).some((point,k)=>segmentIntersection(probe,[other.points[k],point]))){fail('AXIS_VALUE_LABEL_BEHIND_STROKE');break;}
     }
   }
   for(let i=0;i<capture.labels.length;i++) {

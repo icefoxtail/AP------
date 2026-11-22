@@ -209,6 +209,9 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(stuckPath)throw new Stop('PATH_LABEL_NO_ROOM',{id:stuckPath.slice(0,-'-label'.length),unresolved,suppressed});
     // (G11) the label of a callout's angle dimension (kX__angDim-label) found no room, not even on a leader: its own code, so the author moves it (radiusFactor, radius, at) instead of retrying elsewhere
     if([...unresolved,...suppressed].some(id=>/__angDim-label$/.test(String(id?.id??id))))throw new Stop('CALLOUT_ANGLE_DIMENSION_NO_ROOM',{unresolved,suppressed});
+    // (AXV) a label that names a value on an axis (an interval end such as -4π/3) found no place that reads as that axis's tick of its own value: its own code. It is never moved far from the axis or onto a leader (it would read as a y value or as another line's label); the plan (viewport, the other labels or lines near that x) has to change.
+    const axisValueIds=new Set((bridged.spec.objects??[]).filter(row=>row?.axisValue).map(row=>row.id)),axisStuck=[...unresolved,...suppressed].map(id=>String(id?.id??id)).filter(id=>axisValueIds.has(id));
+    if(axisStuck.length)throw new Stop('AXIS_VALUE_LABEL_NO_PLACE',{labelIds:axisStuck,unresolved,suppressed});
     if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
     // Binding a repair needs Archive profile/policy refs: without repairContext never accept one silently.
     if(repairs.length&&!repairContext)throw new Stop('LAYOUT_REPAIR_NOT_BOUND',{repairs});
