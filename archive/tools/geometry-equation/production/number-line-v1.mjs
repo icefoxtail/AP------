@@ -4,6 +4,7 @@ import {pythonWorker} from './worker.mjs';
 import {pointNameModel} from './point-names.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
 import {presentFields} from './composite-expand-fields.mjs';
+import {RUN_GAP,PIECE_SEPARATED_GAP,SET_SHIFT_MAX,SET_OVER_BAND_INSET,lineGap,runTogether,dropMiddleIntegers} from './number-line-run-together.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
@@ -179,12 +180,16 @@ function solveSpans(raw,byId){
     return out;
   });
 }
-/** A row label: one line of at most ROW_LABEL_MAX_CHARS characters, plain text ("<" ">" "≤" "≥" "−" are fine; & " \ $ and control characters are not), whose estimated room is at most ROW_LABEL_MAX_LEFT. */
+/** A row label: one line of at most ROW_LABEL_MAX_CHARS characters, plain text (< > & " \ $ and control characters are not allowed: an inequality is the SET label's job), whose estimated room is at most ROW_LABEL_MAX_LEFT.
+ * A label with no Hangul that states a relation (≤ ≥ =: "−4≤x≤3", "x≤6") is set in the math face (an upright x and a hyphen-minus in the text face read badly): rowLabelTex. */
 function rowLabelOf(raw){
   if(raw.label===undefined)return {};
-  if(typeof raw.label!=='string'||!raw.label.trim()||raw.label!==raw.label.trim()||[...raw.label].length>ROW_LABEL_MAX_CHARS||/[\u0000-\u001f&"\\$]/.test(raw.label)||/ {2}/.test(raw.label)||SAFE+rowLabelPx(raw.label)+ROW_LABEL_GAP>ROW_LABEL_MAX_LEFT)bad('NUMBER_LINE_ROW_LABEL_INVALID');
+  if(typeof raw.label!=='string'||!raw.label.trim()||raw.label!==raw.label.trim()||[...raw.label].length>ROW_LABEL_MAX_CHARS||/[\u0000-\u001f<>&"\\$]/.test(raw.label)||/ {2}/.test(raw.label)||SAFE+rowLabelPx(raw.label)+ROW_LABEL_GAP>ROW_LABEL_MAX_LEFT)bad('NUMBER_LINE_ROW_LABEL_INVALID');
   return {label:raw.label};
 }
+const ROW_LABEL_MATH=/^[A-Za-z0-9 .,()+−=≤≥-]{1,16}$/u;
+export const rowLabelIsMath=label=>typeof label==='string'&&!/[가-힣ㄱ-ㅎㅏ-ㅣ]/u.test(label)&&/[≤≥=]/u.test(label)&&ROW_LABEL_MATH.test(label);
+export const rowLabelTex=label=>label.replace(/≤/gu,'\\le ').replace(/≥/gu,'\\ge ').replace(/−/gu,'-');
 /** hideSetLabel:true (SET and RESULT rows): the inequality the engine writes over the row (-9/2<x<9/2) is left out, for a figure whose problem already names the variable or the set. */
 function hideSetLabelOf(raw){
   if(raw.hideSetLabel===undefined)return {};
@@ -651,7 +656,7 @@ function buildSpec(model,names,stagger){
   for(const [r,row] of model.rows.entries()){
     const n=r+1,{axisY,head,top,belowRow}=layout.rows[r],dots=[],ticks=[],bands=[];
     const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks,...(row.color?{color:row.color}:{}),...(layout.rows[r].lanes?{lanes:layout.rows[r].lanes}:{})};
-    if(row.label)labels.push({id:`r${n}-row-label`,role:'row-label',owner:`r${n}-axis`,kind:'TEXT',text:row.label,plain:row.label,anchor:{x:AXL-ROW_LABEL_GAP,y:axisY,align:'left'},rowHeight:ROW_LABEL_ROW_HEIGHT,row:n});
+    if(row.label)labels.push({id:`r${n}-row-label`,role:'row-label',owner:`r${n}-axis`,...(rowLabelIsMath(row.label)?{kind:'MATH',tex:DISPLAY+rowLabelTex(row.label)}:{kind:'TEXT',text:row.label}),plain:row.label,anchor:{x:AXL-ROW_LABEL_GAP,y:axisY,align:'left'},rowHeight:ROW_LABEL_ROW_HEIGHT,row:n});
     if(row.kind==='POINTS'){
       const placed=row.points.map(point=>({...point,x:px(point.approx)}));
       const sorted=[...placed].sort((a,b)=>a.x-b.x),{nameRow=NAME_ROW,valueAbove=belowRow}=layout.rows[r],stacked=!!row.scale;
@@ -805,7 +810,7 @@ function buildSpec(model,names,stagger){
 // smallest base font a 512 px panel gets: a row that collides at that size cannot be composed at any size) keeps room for a second line under its labels and, when its names are not drawn, for a line over
 // its dots. When the figure is composed (with the real font) each label that does not fit on the first line takes the first lane that does: the line over its dot (right above it), or the second line
 // under, joined to its dot by a vertical leader (a leader may not cross a label). A row whose labels do not collide keeps its layout and its bytes.
-const LANE_GAP=4,LANE_PAD=1.5,LEADER_STROKE=1,LEADER_START=1.2,STAGGER_FONT_PX=21.4,STAGGER_NEAR_PX=140,STAGGER_ROLES=['endpoint','point-value'];
+const LANE_GAP=4,LANE_PAD=1.5,BOX_PAD=RUN_GAP,LEADER_STROKE=1,LEADER_START=1.2,STAGGER_FONT_PX=21.4,STAGGER_NEAR_PX=140,STAGGER_ROLES=['endpoint','point-value'];
 const NO_STAGGER=new Set(),staggerCache=new WeakMap(),widthCache=new Map();
 let measureTypeset=null;
 function measuredWidth(label){
@@ -829,7 +834,7 @@ function staggerRows(model){
       const items=spec.labels.filter(label=>label.row===row.n&&STAGGER_ROLES.includes(label.role)&&label.anchor.align==='below').sort((a,b)=>a.anchor.x-b.anchor.x);
       if(!items.some((item,i)=>i&&item.anchor.x-items[i-1].anchor.x<STAGGER_NEAR_PX))continue;
       const widths=items.map(measuredWidth);
-      if(items.some((a,i)=>items.slice(i+1).some((b,j)=>Math.abs(b.anchor.x-a.anchor.x)<(widths[i]+widths[i+1+j])/2)))out.add(row.n);
+      if(items.some((a,i)=>items.slice(i+1).some((b,j)=>Math.abs(b.anchor.x-a.anchor.x)<(widths[i]+widths[i+1+j])/2+RUN_GAP)))out.add(row.n);
     }
   }catch{/* a figure that cannot be specified is refused by the real specification with its own code; here it simply has no staggered rows */}
   staggerCache.set(model,out);
@@ -873,7 +878,7 @@ function assignLanes(spec,placed){
       }
       const fits=lane=>{
         if(lane.box.x<SAFE||lane.box.x+lane.box.width>limit)return false;
-        if(decided.some(other=>boxHit(lane.box,other,LANE_PAD))||rowLeaders.some(other=>leaderHitsBox(other,lane.box,LANE_PAD)))return false;
+        if(decided.some(other=>boxHit(lane.box,other,BOX_PAD))||rowLeaders.some(other=>leaderHitsBox(other,lane.box,LANE_PAD)))return false;
         const leader=lane.leader;
         if(!leader)return true;
         return !decided.some(other=>leaderHitsBox(leader,other,LANE_PAD))&&!rowLeaders.some(other=>leadersCross(leader,other))&&!dots.some(dot=>dot.id!==label.owner&&leaderHitsBox(leader,{x:dot.x-dot.r,y:dot.y-dot.r,width:2*dot.r,height:2*dot.r},0.5));
@@ -885,6 +890,42 @@ function assignLanes(spec,placed){
     if(rowLeaders.length)leaders.set(row.n,rowLeaders);
   }
   return leaders;
+}
+
+/**
+ * The inequalities of two neighbouring pieces of one set stand on one line ("−3<x<−2" "−2<x<9"): when they are closer than PIECE_SEPARATED_GAP the earlier one gets a comma ("−3<x<−2,") and the later one
+ * slides right (the earlier one left when the later has no room) until they stand PIECE_SEPARATED_GAP apart; each stays over its own band (its band's centre within its box) and at most SET_SHIFT_MAX off the centre.
+ * Pieces that stand far enough apart keep their layout and bytes.
+ */
+export function separatePieces(spec,placed,typeset,font,identity){
+  const limit=WIDTH-SAFE;
+  for(const row of spec.rows){
+    const sets=placed.filter(item=>item.label.row===row.n&&item.label.role==='set').sort((a,b)=>a.box.x-b.box.x);
+    for(let i=1;i<sets.length;i++){
+      const a=sets[i-1],b=sets[i];
+      let gap=lineGap(a.box,b.box);
+      if(gap===null||gap>=PIECE_SEPARATED_GAP)continue;
+      if(!a.label.tex.endsWith(',')){
+        const label={...a.label,tex:a.label.tex+','};
+        let fragment;
+        try{fragment=typeset({id:label.id,owner:label.owner,factRole:'CONCLUSION',fontPx:font,panelId:'number-line',kind:'MATH',tex:label.tex},identity);}
+        catch(error){if(!isDomainCode(error))throw error;throw new Stop('NUMBER_LINE_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+        const {width,height}=fragment.intrinsic,centre=a.box.x+a.box.width/2;
+        if(height>label.rowHeight)throw new Stop('NUMBER_LINE_LABEL_TOO_LARGE',{labelId:label.id,height,rowHeight:label.rowHeight});
+        a.label=label;a.fragment=fragment;a.box={...a.box,x:r6(centre-width/2),width,height};
+        gap=lineGap(a.box,b.box);
+      }
+      let need=PIECE_SEPARATED_GAP-gap;
+      const at=item=>item.label.anchor.x,off=item=>Math.abs(item.box.x+item.box.width/2-at(item));
+      const toB=Math.max(0,Math.min(need,limit-(b.box.x+b.box.width),at(b)-SET_OVER_BAND_INSET-b.box.x,SET_SHIFT_MAX-(b.box.x+b.box.width/2-at(b))));
+      b.box={...b.box,x:r6(b.box.x+toB)};need-=toB;
+      if(need>0.001){
+        const toA=Math.max(0,Math.min(need,a.box.x-SAFE,a.box.x+a.box.width-SET_OVER_BAND_INSET-at(a),SET_SHIFT_MAX-(at(a)-(a.box.x+a.box.width/2))));
+        a.box={...a.box,x:r6(a.box.x-toA)};need-=toA;
+      }
+      if(need>0.001||off(a)>SET_SHIFT_MAX||off(b)>SET_SHIFT_MAX)throw new Stop('NUMBER_LINE_LABELS_TOO_CLOSE',{labels:[a.label.id,b.label.id]});
+    }
+  }
 }
 
 // --- composing --------------------------------------------------------------------------------------------------------------------------------
@@ -921,7 +962,10 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     }
     // a row that keeps lanes (see staggerRows) moves the value labels that collide: over the dot, or on a second line under with a leader
     const leaders=assignLanes(spec,placed);
-    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)){
+    // labels of one line that run together ("−3" "−2" read as "−3−2"): integer labels fall back to the two ends, the labels of neighbouring pieces of a set stand apart with a comma between them
+    for(const row of spec.rows)if(row.integerLabels==='ALL'&&dropMiddleIntegers(placed,row.n))row.integerLabels='ENDS';
+    separatePieces(spec,placed,typeset,font,identity);
+    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)||runTogether(placed[i],other)){
       const roles=[placed[i].label.role,other.label.role];
       throw new Stop(roles.every(role=>role==='integer')?'NUMBER_LINE_INTEGER_POINTS_TOO_DENSE':'NUMBER_LINE_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
     }

@@ -203,6 +203,7 @@ def audit(numberLine, svg, pointNames=None):
     # Labels: read every label's TeX back and bind it to its owner.
     labels = [element for element in root.iter(NS + 'g') if element.get('data-label-role')]
     boxes = []
+    items = []
     owners = {}
     for label in labels:
         role, owner, label_id = label.get('data-label-role'), label.get('data-owner'), label.get('id')
@@ -211,6 +212,7 @@ def audit(numberLine, svg, pointNames=None):
         if not match or inner is None: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(label_id)); continue
         box = (float(match.group(1)), float(match.group(2)), _num(inner, 'width'), _num(inner, 'height'))
         boxes.append((label_id, box))
+        items.append((label_id, role, box, label.get('data-tex')))
         centre = box[0] + box[2] / 2
         owners.setdefault(owner, []).append(label_id)
         tex = label.get('data-tex')
@@ -259,6 +261,7 @@ def audit(numberLine, svg, pointNames=None):
         if len(owners.get(element.get('id'), [])) != (1 if text in labelled else 0): errors.append('NL_LABEL_COUNT:' + str(element.get('id')))
     if len([label for label in labels if label.get('data-label-role') == 'header']) != 1: errors.append('NL_HEADER_COUNT')
     # Clear of each other, of every dot (with its stroke) and of every tick.
+    _run_together(items, errors)
     for i, (label_id, a) in enumerate(boxes):
         for other_id, b in boxes[i + 1:]:
             if a[0] < b[0] + b[2] and b[0] < a[0] + a[2] and a[1] < b[1] + b[3] and b[1] < a[1] + a[3]: errors.append('NL_LABEL_OVERLAP:' + label_id + ':' + other_id)
@@ -289,6 +292,46 @@ SYMBOL_SEPARATION_PX = 10.0
 NAME_BESIDE_ARC_PX = 12.0
 # N08 (this observer's own copies): the first line of value labels stands 5 px under its dot; a label over its dot is at most LANE_OVER_DOT_MAX_PX above it; a leader starts at the dot's edge and ends at the label's top
 LANE_FIRST_LINE_MAX_PX, LANE_OVER_DOT_MAX_PX, LEADER_END_MAX_PX, LANE_SHIFT_MAX_PX = 8.0, 6.0, 2.5, 100.0
+# Run-together labels (this observer's own copies): two labels on one line read as one number or as a subtraction ("-3" "-2" -> "-3-2") when they stand closer than LABEL_GAP_MIN_PX
+# (the same meaning as SC_NORMAL_TICK_NUMBERS_CLOSE of the statistics observer, 5 px). The inequalities of neighbouring pieces of a set ("-3<x<-2" "-2<x<9") need more: under PIECE_GAP_MIN_PX they touch,
+# under PIECE_SEPARATED_PX the earlier one must end with a comma (it may stand off its band's centre, but still over its band, by at most SET_SHIFT_MAX_PX).
+LABEL_GAP_MIN_PX, PIECE_GAP_MIN_PX, PIECE_SEPARATED_PX, SET_SHIFT_MAX_PX, SET_OVER_BAND_INSET_PX = 5.0, 14.0, 30.0, 60.0, 4.0
+RUN_TOGETHER_SKIP = ('note', 'ratio', 'row-label', 'span-label', 'source-name', 'variable', 'header')
+
+
+ROW_LABEL_MATH = re.compile('^[A-Za-z0-9 .,()+−=≤≥-]{1,16}$')   # this observer's own copy: the row label that is set in the math face
+HANGUL = re.compile('[가-힣ㄱ-ㅎㅏ-ㅣ]')
+
+
+def _row_label_is_math(label):
+    return isinstance(label, str) and HANGUL.search(label) is None and re.search('[≤≥=]', label) is not None and ROW_LABEL_MATH.fullmatch(label) is not None
+
+
+def _row_label_tex(label):
+    return label.replace('≤', '\\le ').replace('≥', '\\ge ').replace('−', '-')
+
+
+def _line_gap(a, b):
+    """The horizontal gap between two label boxes (x, y, w, h) that stand on one line (their heights overlap), None otherwise; negative when they overlap."""
+    if min(a[1] + a[3], b[1] + b[3]) <= max(a[1], b[1]): return None
+    return b[0] - (a[0] + a[2]) if b[0] >= a[0] else a[0] - (b[0] + b[2])
+
+
+def _run_together(items, errors):
+    """items: (id, role, box, tex). Every pair on one line keeps its gap; set labels of one row also keep the comma that separates the pieces."""
+    for i, (id_a, role_a, box_a, tex_a) in enumerate(items):
+        for id_b, role_b, box_b, tex_b in items[i + 1:]:
+            if role_a in RUN_TOGETHER_SKIP or role_b in RUN_TOGETHER_SKIP: continue
+            gap = _line_gap(box_a, box_b)
+            if gap is None or gap < 0: continue            # an overlap has its own error
+            if role_a == 'set' and role_b == 'set':
+                first, second = (id_a, tex_a, box_a), (id_b, tex_b, box_b)
+                if box_b[0] < box_a[0]: first, second = second, first
+                if gap < PIECE_GAP_MIN_PX: errors.append('NL_LABELS_RUN_TOGETHER:%s:%s' % (id_a, id_b))
+                elif gap < PIECE_SEPARATED_PX and not (first[1] or '').rstrip().endswith(','): errors.append('NL_PIECE_LABELS_NO_SEPARATOR:%s:%s' % (id_a, id_b))
+            elif gap < LABEL_GAP_MIN_PX: errors.append('NL_LABELS_RUN_TOGETHER:%s:%s' % (id_a, id_b))
+
+
 SOURCE_RIGHT_ANGLE_PX = 9.0          # the side of the right angle mark at the foot of a source perpendicular
 ARC_PATH = re.compile(r'^M (-?[\d.e]+) (-?[\d.e]+) A (-?[\d.e]+) (-?[\d.e]+) 0 0 ([01]) (-?[\d.e]+) (-?[\d.e]+)$')
 ARC_MIN_RISE_PX, ARC_MAX_RISE_PX, ARC_MAX_ANGLE_DEG, ARC_CLEAR_PX, ARC_SAMPLES = 8.0, 80.0, 40.0, 1.2, 48
@@ -821,7 +864,11 @@ def audit_figure(numberLine, svg, pointNames=None):
         elif len(row_label_nodes) != 1: errors.append('NL_ROW_LABEL_COUNT:%d' % index)
         else:
             node = row_label_nodes[0]
-            if node.get('data-text') != row_label_plan or node.get('data-tex') is not None or node.get('data-owner') != 'r%d-axis' % index: errors.append('NL_ROW_LABEL_TEXT:%d' % index)
+            if _row_label_is_math(row_label_plan):
+                # a label that states a relation (no Hangul, with <= >= =) is set in the math face: its TeX is the text with the relation signs written out
+                text_ok = node.get('data-text') is None and re.sub(r'^\\displaystyle\s*', '', node.get('data-tex') or '') == _row_label_tex(row_label_plan)
+            else: text_ok = node.get('data-text') == row_label_plan and node.get('data-tex') is None
+            if not text_ok or node.get('data-owner') != 'r%d-axis' % index: errors.append('NL_ROW_LABEL_TEXT:%d' % index)
             inner, match = node.find(NS + 'svg'), TRANSLATE.fullmatch(node.get('transform') or '')
             if inner is None or not match: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(node.get('id')))
             else:
@@ -1008,7 +1055,7 @@ def audit_figure(numberLine, svg, pointNames=None):
             if hide_set is not None and not isinstance(hide_set, bool): raise ValueError('NL_OBSERVER_PLAN_INVALID')
             if len(mine) != (0 if hide_set else 1): errors.append('NL_SET_LABEL_COUNT:%s' % band.get('id'))
             for l in mine:
-                try: lower, lower_closed, upper, upper_closed = parse_header(l.get('data-tex') or '', variable, free)
+                try: lower, lower_closed, upper, upper_closed = parse_header(re.sub(r',s*$', '', l.get('data-tex') or ''), variable, free)
                 except ValueError as error: errors.append(str(error) + ':' + str(l.get('id'))); continue
                 ok = (lower is None) == (not piece.inf.is_finite) and (upper is None) == (not piece.sup.is_finite)
                 if ok and lower is not None: ok = at_value(lower - piece.inf) == 0 and lower_closed == (not piece.left_open)
@@ -1085,6 +1132,8 @@ def audit_figure(numberLine, svg, pointNames=None):
             except ValueError as error: errors.append(str(error))
     # geometry of every label: centred on its owner, on the right side of its axis, clear of each other, of every dot and of every tick
     boxes = []
+    items = []
+    shifted_sets = []
     lane_leaders = []
     for label in labels:
         role, owner, label_id = label.get('data-label-role'), label.get('data-owner'), label.get('id')
@@ -1092,6 +1141,7 @@ def audit_figure(numberLine, svg, pointNames=None):
         if not match or inner is None: errors.append('NL_LABEL_GEOMETRY_UNREADABLE:' + str(label_id)); continue
         box = (float(match.group(1)), float(match.group(2)), _num(inner, 'width'), _num(inner, 'height'))
         boxes.append((label_id, box))
+        items.append((label_id, role, box, label.get('data-tex')))
         centre = box[0] + box[2] / 2
         row_n = label.get('data-row')
         axis = by_id.get('r%s-axis' % row_n) if row_n else None
@@ -1110,6 +1160,7 @@ def audit_figure(numberLine, svg, pointNames=None):
             dot_x = _num(target, 'cx')
             beside = box[0] >= dot_x and box[0] - dot_x <= NAME_BESIDE_ARC_PX if 'RIGHT' in sides else box[0] + box[2] <= dot_x and dot_x - (box[0] + box[2]) <= NAME_BESIDE_ARC_PX
             if not beside: errors.append('NL_CONSTRUCTION_NAME_SIDE:' + str(label_id))
+        elif role == 'set' and abs(centre - at) > 0.5 and abs(centre - at) <= SET_SHIFT_MAX_PX and box[0] + SET_OVER_BAND_INSET_PX <= at <= box[0] + box[2] - SET_OVER_BAND_INSET_PX: shifted_sets.append((label_id, box))
         elif abs(centre - at) > 0.5 and not (role in ('endpoint', 'point-value') and any(l.get('data-role') == 'label-leader' and l.get('data-label') == label_id for l in lines)): errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
         # a point's value is written below the axis, or (on a graduated axis, whose ticks use the space below) stacked above its name
         stacked = role == 'point-value' and (any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n) or (row_n, target.get('data-point-id')) in value_above)
@@ -1161,6 +1212,11 @@ def audit_figure(numberLine, svg, pointNames=None):
         for second in lane_leaders[i + 1:]:
             a, b = first[2:], second[2:]
             if _orient(*a[:2], *a[2:], *b[:2]) != _orient(*a[:2], *a[2:], *b[2:]) and _orient(*b[:2], *b[2:], *a[:2]) != _orient(*b[:2], *b[2:], *a[2:]): errors.append('NL_LEADER_CROSSES_LEADER:' + first[0] + ':' + second[0])
+    _run_together(items, errors)
+    for label_id, role, box, tex in items:
+        if role == 'set' and (tex or '').rstrip().endswith(',') and not any(other_id != label_id and other_role == 'set' and other_box[0] > box[0] and _line_gap(box, other_box) is not None and 0 <= _line_gap(box, other_box) < PIECE_SEPARATED_PX + 6 for other_id, other_role, other_box, _ in items): errors.append('NL_SET_COMMA_UNEXPECTED:' + label_id)
+    for label_id, box in shifted_sets:
+        if not any(other_id != label_id and role == 'set' and _line_gap(box, other_box) is not None and 0 <= _line_gap(box, other_box) < PIECE_SEPARATED_PX + 6 for other_id, role, other_box, _ in items): errors.append('NL_LABEL_NOT_CENTRED:' + label_id)
     for i, (label_id, a) in enumerate(boxes):
         for other_id, b in boxes[i + 1:]:
             if a[0] < b[0] + b[2] and b[0] < a[0] + a[2] and a[1] < b[1] + b[3] and b[1] < a[1] + a[3]: errors.append('NL_LABEL_OVERLAP:' + label_id + ':' + other_id)

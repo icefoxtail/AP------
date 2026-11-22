@@ -484,10 +484,16 @@ export function countedEdges(solid){
 // A short word the author writes on the figure (labels:[{text,at}], axis:{label}): Korean syllables, letters, digits, spaces, parentheses and a middle dot, no TeX.
 const WORD_LABEL=/[가-힣·]/u;// a text with a Hangul syllable is a word, not TeX
 const AXIS_LETTER=/^[A-Za-z]$/;// the text of an axis label that is one letter: a math symbol (the axis l)
-// A text label is plain text: up to 20 characters of Hangul, letters, digits and the signs of a measure (. , = + × √ and the middle dot); the room it needs is measured when it is placed (SOLID_LABELS_NO_ROOM), not guessed here.
-// (They were 12 characters of Hangul, letters, digits, space, middle dot and parentheses, six labels: a size chosen with the first figures, not a reading rule.)
-const MAX_TEXT_LABELS=8,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·().,=+×√]{1,20}$/u;
+// A text label is plain text: up to 20 characters of Hangul, letters, digits, spaces, a middle dot, parentheses, a point and a comma; the room it needs is measured when it is placed (SOLID_LABELS_NO_ROOM), not guessed here.
+// (They were 12 characters, six labels: a size chosen with the first figures, not a reading rule.)
+const MAX_TEXT_LABELS=8,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·().,]{1,20}$/u;
 const textLabelOk=text=>typeof text==='string'&&TEXT_LABEL.test(text)&&text.trim()===text&&text.length>0;
+// A label written on a part of the figure (labels:[{text,at}]) may also be a formula: no Hangul, with a sign of an expression (= + × √), up to 20 characters of letters, digits, spaces, ( ) . , and those signs.
+// It is set in the math face (MathJax, data-tex), not in the text face: "P+Q", "x=2√3". A root is written √ followed by the digits or the one letter under it (2√3 -> 2\sqrt{3}); "×" is \times.
+// A text with Hangul never takes these signs (the text face has no true root bar), so "높이 2√3 cm" is refused: write the word in the caption and the formula in the label.
+const FORMULA_LABEL=/^[A-Za-z0-9 .,()=+×√]{1,20}$/u;
+export const isFormulaLabel=text=>typeof text==='string'&&FORMULA_LABEL.test(text)&&text.trim()===text&&/[=+×√]/u.test(text)&&!/√(?![0-9A-Za-z])/u.test(text)&&!/√[0-9A-Za-z]*√/u.test(text);
+export const formulaTex=text=>text.replace(/×/gu,'\\times ').replace(/√([0-9]+|[A-Za-z])/gu,'\\sqrt{$1}');
 /** The axis of a rotation solid (axis:true | axis:{label?}): drawn as a dash-dot line, extended beyond both ends of the solid, optionally with a word beside it. */
 export const AXIS_EXTENSION=0.14;// of the solid's height, above the top and below the bottom
 function parseAxis(axis,kind,nested,standsOn){
@@ -1815,7 +1821,7 @@ function textLabels(plan,solids,named,vref,drawnPair){
   if(!Array.isArray(plan.labels)||plan.labels.length<1||plan.labels.length>MAX_TEXT_LABELS)bad('SOLID_LABELS_INVALID');
   for(const entry of plan.labels){
     onlyKeys(entry,['text','at'],'SOLID_LABELS_INVALID');
-    if(!textLabelOk(entry.text))bad('SOLID_LABEL_TEXT_INVALID');
+    if(!textLabelOk(entry.text)&&!isFormulaLabel(entry.text))bad('SOLID_LABEL_TEXT_INVALID');
     const at=entry.at;
     if(typeof at==='string'){
       const key=vref(at,'SOLID_LABEL_AT_UNKNOWN:'+at.slice(0,16));
@@ -2230,11 +2236,6 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
-// SOLID_SCALE_BOOSTS: when the labels of a thin solid find no room at the usual size (SOLID_LABELS_NO_ROOM), the caller draws it larger (the largest scale and height are multiplied) and asks the size again: the first
-// attempt is always the size the figure has always had (see render-plan).
-export const SOLID_SCALE_BOOSTS=Object.freeze([1,1.4,1.9]);
-const scaleBoost=new WeakMap();
-export const setSolidScaleBoost=(model,boost)=>{if(!SOLID_SCALE_BOOSTS.includes(boost))throw Error('SOLID_SCALE_BOOST_INVALID');scaleBoost.set(model,boost);};
 const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64,DIAMETER_ROOM=40,DIAMETER_LINE_OFFSET=22;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
@@ -2267,8 +2268,7 @@ export function figureFrame(model){
   const tiers=model.mode==='SOLIDS'?outsideTiers(model):new Map(),tierRoom=side=>OUTSIDE_STEP*Math.max(0,...[...tiers].filter(([id])=>outsideSide(model.dims.find(d=>d.id===id))===side).map(([,t])=>t));
   const lineRoom=side=>{const ts=model.mode==='SOLIDS'?model.dims.filter(d=>d.type==='SEGMENT'&&d.line&&d.side===side).map(d=>d.line):[];return ts.length?SIDE_DIM_ROOM+8+OUTSIDE_STEP*(Math.max(...ts)-1):0;};
   const roomL=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='LEFT')||model.dims.some(d=>outsideSide(d)==='LEFT'))?SIDE_DIM_ROOM+tierRoom('LEFT'):0,lineRoom('LEFT')),roomR=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='RIGHT')||model.dims.some(d=>outsideSide(d)==='RIGHT'))?SIDE_DIM_ROOM+tierRoom('RIGHT'):0,lineRoom('RIGHT'));
-  const boost=scaleBoost.get(model)??1;
-  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H*boost/bh,MAX_SCALE*boost));
+  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
   // a diameter written outside (diameter with side TOP|BOTTOM) takes room above or below the solid for its line and its label
   const roomT=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='TOP')?DIAMETER_ROOM:0,roomB=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='BOTTOM')?DIAMETER_ROOM:0;
   const height=Math.ceil(bh*scale+2*MARGIN_Y+roomT+roomB);
@@ -2728,7 +2728,7 @@ function spec3d(plan,model,ctx){
   }
   // text labels: a word on a vertex (its open side), on the axis / an edge / a cone's slant (beside the segment, with a leader when there is no room) or inside a visible face
   for(const tl of model.labels??[]){
-    const label={id:'text-'+tl.id,role:'text-label',owner:'text-'+tl.id,kind:'TEXT',text:tl.text,plain:tl.text,value:tl.text,textId:tl.id,atKind:tl.at.kind};
+    const label={id:'text-'+tl.id,role:'text-label',owner:'text-'+tl.id,...(isFormulaLabel(tl.text)?{kind:'MATH',tex:formulaTex(tl.text)}:{kind:'TEXT',text:tl.text}),plain:tl.text,value:tl.text,textId:tl.id,atKind:tl.at.kind};
     const at=tl.at;
     if(at.kind==='VERTEX'){
       const {here,dir}=vertexSpot.get(at.key)();

@@ -103,9 +103,9 @@ test('N04b: a point whose name is not drawn may have a plain id; a row may hold 
 
 test('N04a: a longer row label reserves the room it needs (measured when placed) and a label that cannot fit is refused',async()=>{
   const labelled=label=>({rows:[{kind:'SET',label,pieces:[{lo:{value:'-2',state:'CLOSED'},hi:open('5')}]}]});
-  const composed=await compose(labelled('−2≤x<5'),'row-label');
+  const composed=await compose(labelled('−2≤x≤5'),'row-label');
   assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
-  assert.equal((await audit(composed.svg,labelled('−2≤x<5'))).status,'PASS');
+  assert.equal((await audit(composed.svg,labelled('−2≤x≤5'))).status,'PASS');
   const six=await compose(labelled('가나다라마바'),'six'),bare=await compose({rows:[labelled('x').rows[0]]},'one-char');
   assert.equal(six.status,'COMPOSED');assert.equal(bare.status,'COMPOSED');
   const mapLeft=text=>Number(/data-px-left="([\d.]+)"/.exec(text)[1]);

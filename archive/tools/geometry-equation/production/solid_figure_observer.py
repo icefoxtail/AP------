@@ -2981,7 +2981,17 @@ def check_dim_lines(plan, ctx):
 AXIS_EXT = 0.14
 SAFE_PX = 10.0   # the figure's safe margin
 AXIS_DASH = '10 3 2 3'
-TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·().,=+×√]{1,20}$')   # this observer's own copy of the text-label alphabet (A11: up to 20 characters)
+TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·().,]{1,20}$')   # this observer's own copy of the text-label alphabet (A11: up to 20 characters)
+FORMULA_LABEL = re.compile(r'^[A-Za-z0-9 .,()=+×√]{1,20}$')   # and of the formula label: no Hangul, a sign of an expression, set in the math face
+
+
+def is_formula_label(text):
+    return bool(FORMULA_LABEL.fullmatch(text)) and text.strip() == text and re.search(r'[=+×√]', text) is not None and not re.search(r'√(?![0-9A-Za-z])', text) and not re.search(r'√[0-9A-Za-z]*√', text)
+
+
+def formula_tex(text):
+    return re.sub(r'√([0-9]+|[A-Za-z])', lambda m: '\\sqrt{' + m.group(1) + '}', text.replace('×', '\\times '))
+
 TEXT_NEAR_VERTEX = 34.0   # px from the vertex to the nearest edge of its word's box
 TEXT_NEAR_SEGMENT = 34.0  # px from the segment to the nearest edge of its word's box
 
@@ -3006,7 +3016,7 @@ def planned_text_labels(plan, solids, norm):
         return found
     for entry in plan.get('labels') or []:
         text, at = entry['text'], entry['at']
-        if not isinstance(text, str) or not TEXT_LABEL.fullmatch(text) or text.strip() != text: raise ValueError('SOLID_LABEL_TEXT_INVALID')
+        if not isinstance(text, str) or text.strip() != text or not (TEXT_LABEL.fullmatch(text) or is_formula_label(text)): raise ValueError('SOLID_LABEL_TEXT_INVALID')
         if isinstance(at, str):
             key = norm(at, 'SOLID_LABEL_AT_UNKNOWN:' + at[:16])
             out.append(('VERTEX', text, key, {'key': key}))
@@ -3087,7 +3097,10 @@ def check_axes_and_text_labels(plan, ctx):
     for lid, kind, text, target, extra in planned:
         g = drawn.get(lid)
         if g is None: continue
-        if kind in ('AXIS', 'BASE') and re.fullmatch(r'[A-Za-z]', text):
+        if kind not in ('AXIS', 'BASE') and is_formula_label(text):
+            # a formula is set in the math face: its TeX is the text with the root and times signs written out
+            if g.get('data-tex') != formula_tex(text) or g.get('data-value') != text or g.get('data-text') is not None: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
+        elif kind in ('AXIS', 'BASE') and re.fullmatch(r'[A-Za-z]', text):
             # a single letter on the axis (the rotation axis l) is a math symbol, set in italics
             if g.get('data-tex') != text or g.get('data-value') != text or g.get('data-text') is not None: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)
         elif g.get('data-text') != text or g.get('data-value') != text: errors.append('SOLID_TEXT_LABEL_TEXT_MISMATCH:' + lid)

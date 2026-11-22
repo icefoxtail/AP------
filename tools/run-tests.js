@@ -34,6 +34,7 @@ function idleSuiteCommands() {
     'archive/tools/generated-meta/auto-register-source-rebind.test.mjs',
     'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide.test.mjs',
+    'archive/tools/geometry-equation/tests/composite-expand-optional-fields.test.mjs',
     'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
     'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
     'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
