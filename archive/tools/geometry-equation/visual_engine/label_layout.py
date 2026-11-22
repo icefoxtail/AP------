@@ -24,7 +24,8 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
-TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18],
+    [36,-40],[-36,-40],[36,40],[-36,40],[52,-40],[-52,-40],[52,40],[-52,40])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
 # The central opening at a shared x-axis crossing can be narrower than a diagonal leader.
 SHARED_ZERO_TICK_CALLOUT_OFFSETS=([8,66],[-8,66],[0,66],[8,-66],[-8,-66],[0,-66])
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
@@ -202,6 +203,8 @@ CROSSING_LEADER_MAX_CROSSINGS=2
 CROSSING_LEADER_MIN_ANGLE_DEGREES=35.0
 CROSSING_LEADER_CORNER_CLEARANCE_PX=4.0
 CROSSING_LEADER_MAX_RADIUS=160
+CROSSING_LEADER_COORDINATE_MAX_RADIUS=300   # a wide coordinate label (a stacked fraction pair) needs a farther free box than a point name
+CROSSING_LEADER_ON_STROKE_PX=0.05
 
 def leader_crossed_strokes(start,end,obstacles,owner_ids):
     """The ids of the thin strokes (segment, dashed line, curve, axis, tick, circle) the leader start->end properly crosses with their crossing count, or None when a crossing is not allowed:
@@ -231,7 +234,7 @@ def leader_crossed_strokes(start,end,obstacles,owner_ids):
             q=(c[0]-start[0],c[1]-start[1]);t=(q[0]*r[1]-q[1]*r[0])/den;u=(q[0]*d[1]-q[1]*d[0])/den
             if not (-1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9):continue
             if ident in owner_ids:
-                if t*length<=1e-3:continue                 # a line through the start is touched at the start only
+                if t*length<=CROSSING_LEADER_ON_STROKE_PX:continue   # a line through the start is touched at the start only
                 return None
             point=(start[0]+t*d[0],start[1]+t*d[1]);seg=math.hypot(*r)
             if t*length<CROSSING_LEADER_CORNER_CLEARANCE_PX or (1-t)*length<CROSSING_LEADER_CORNER_CLEARANCE_PX:return None
@@ -241,20 +244,41 @@ def leader_crossed_strokes(start,end,obstacles,owner_ids):
         if hits:crossed[ident]=hits
     return crossed if sum(crossed.values())<=CROSSING_LEADER_MAX_CROSSINGS else None
 
-def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids):
-    """(box, leader end, number of crossings, compass direction) of the nearest free box for a point name reached by a leader that crosses the fewest thin strokes, or None."""
+def nearest_free_box(at,w,h,safe_area,acceptable,step=6.0):
+    """The free box (acceptable) of size w x h inside safe_area whose centre is nearest `at`, scanned on a grid of `step` px, or None."""
     best=None
+    nx=int((safe_area.width-w)//step)+1;ny=int((safe_area.height-h)//step)+1
+    if nx<=0 or ny<=0:return None
+    for i in range(nx):
+        for j in range(ny):
+            x=safe_area.x+i*step;y=safe_area.y+j*step
+            distance=math.hypot(x+w/2-at[0],y+h/2-at[1])
+            if best is not None and distance>=best[0]:continue
+            box=Box(x,y,w,h)
+            if acceptable(box):best=(distance,box)
+    return best[1] if best else None
+
+def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids,allow_zero=False,max_radius=None):
+    """(box, leader end, number of crossings, compass direction) of the nearest free box for a point name reached by a leader that crosses the fewest thin strokes, or None.
+    allow_zero (a segment or line label's last resort): a clear leader that crosses nothing counts too (the ordinary search of such a label stops at a short reach)."""
+    best=None
+    # A curve is a sampled polyline: a dot drawn exactly on it can lie a few thousandths of a pixel off the sampled segment. A stroke through the dot within CROSSING_LEADER_ON_STROKE_PX is the
+    # dot's own ground (the leader leaves it at its start) and is never counted as one the leader crosses.
+    owner_ids=set(owner_ids)|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+        and any(point_segment_distance(at,c,d)<=CROSSING_LEADER_ON_STROKE_PX for c,d in zip(o['geometry'],o['geometry'][1:]))}
     ticks=frozenset(o['id'] for o in occupied if (o.get('kind')=='tick' or o.get('role')=='tick') and isinstance(o.get('id'),str))   # a 4 px tick stub beside the point is brushed, not avoided
+    limit=CROSSING_LEADER_MAX_RADIUS if max_radius is None else max_radius
     for radius in POINT_NAME_RING_RADII:
-        if radius>CROSSING_LEADER_MAX_RADIUS:break
+        if radius>limit:break
         for step in range(48):
             angle=math.radians(step*7.5)
             box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
             if not acceptable(box,owner_check=False):continue
             end=owner_leader_endpoint(box,at,(box.x+box.width/2,box.y+box.height/2))
             crossed=leader_crossed_strokes(at,end,occupied,owner_ids)
-            if not crossed:continue                       # no crossing at all: the ordinary search already tried this place
-            if not leader_clear(at,end,occupied,owner_ids,near_start=True,skip_ids=frozenset(crossed)|ticks):continue
+            if crossed is None:continue
+            if not crossed and not allow_zero:continue    # no crossing at all: the ordinary search already tried this place
+            if not leader_clear(at,end,occupied,owner_ids,near_start=True,skip_ids=frozenset(crossed)|ticks,start_tolerance=CROSSING_LEADER_ON_STROKE_PX):continue
             key=(sum(crossed.values()),radius,step)
             if best is None or key<best[0]:best=(key,box,end,step)
         if best is not None and best[0][0]==1:break       # a one-crossing leader at this radius beats anything farther out
@@ -668,6 +692,19 @@ def tick_box_respects_owner(box,at,axis,ink=None):
     else:return False
     return aligned and any(-.01<=gap<=TICK_LABEL_MAX_EDGE_GAP for gap in gaps)
 
+def axis_value_box_ok(box,label):
+    """(AXV) THE rule for a label that names a value on an axis (a tick number, an interval end such as -4π/3, a y intercept): it must read as THAT axis's tick of its own value.
+    The box is centred on its own value along the axis and one text line from the axis (tick_box_respects_owner: the same measure as a tick number, on the measured ink). A place
+    that fails it reads as the other axis's value, as another line's label or as the value of another tick. Axis x or y, any graph kind: a label carries axisValue ('x'|'y') and
+    axisAnchor (its point on that axis); nothing here knows which family drew it."""
+    return tick_box_respects_owner(box,label.get('axisAnchor',label['at']),label['axisValue'],label.get('tickInk'))
+
+def axis_anchor_retry(label):
+    """The way an axis value label is placed when its ordinary place (the author's anchor, the ordinary gaps) does not read as its tick: on the axis point itself, one text line
+    to either side like a tick number. Only tried after the ordinary attempt failed, so a label that already reads as its tick is placed exactly as before."""
+    on_x=label['axisValue']=='x'
+    return {**label,'at':list(label['axisAnchor']),'directions':('S','N') if on_x else ('W','E'),'preferred':'S' if on_x else 'W','gaps':TICK_LABEL_GAPS,'centered':True,'_axisRetry':True}
+
 def _segment_intersection(a,b):
     if len(a)!=2 or len(b)!=2:return None
     u=(a[1][0]-a[0][0],a[1][1]-a[0][1]);v=(b[1][0]-b[0][0],b[1][1]-b[0][1]);w=(b[0][0]-a[0][0],b[0][1]-a[0][1])
@@ -777,6 +814,39 @@ def angle_outside_leader(label,w,h,occupied,acceptable,owner_ids):
                 if not angle_leader_clear(start,end,occupied,owner_ids,own,through,outward):continue
                 return box,start,owner_leader_endpoint(box,start,center),('E','SE','S','SW','W','NW','N','NE')[int(((math.degrees(theta)%360)+22.5)%360//45)]
     return None
+
+def angle_crossing_leader(label,w,h,occupied,acceptable,owner_ids):
+    """(FC) The last resort of an angle label (only layout(last_resort=True) enables it): the label has no place inside its angle and no clear leader outside it, because the angle sits
+    inside a closed cell (a point inside a triangle, every ray drawn to a vertex). The nearest free box on a straight leader that starts on the angle's outermost arc and crosses at most
+    CROSSING_LEADER_MAX_CROSSINGS thin strokes (a side, a line through the vertex, another angle's arc) at a clear angle; it never crosses the angle's own two rays, a point or a label.
+    A stroke drawn through the leader's start (another angle's arc of the same radius) is the arc's own ground. Returns (box, start, end, direction, crossings) or None."""
+    ws=label['wedgeSearch'];vertex=ws['vertex'];radius=ws['arcRadius'];first=ws['start'];delta=ws['delta']
+    own,through=lines_through_vertex(occupied,vertex,first,delta)
+    own_ids={obstacle.get('id') for obstacle,_c,_d in own}
+    ticks=frozenset(o['id'] for o in occupied if (o.get('kind')=='tick' or o.get('role')=='tick') and isinstance(o.get('id'),str))
+    steps=int(360/ANGLE_OUTSIDE_LEADER_STEP_DEGREES);best=None
+    for fraction in ANGLE_OUTSIDE_LEADER_ARC_FRACTIONS:
+        if fraction<=0.0 or fraction>=1.0:continue        # a leader leaving across one of the angle's own rays is the ordinary search's business
+        angle=first+delta*fraction
+        start=(vertex[0]+radius*math.cos(angle),vertex[1]+radius*math.sin(angle))
+        ground={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+            and any(point_segment_distance(start,c,d)<=CROSSING_LEADER_ON_STROKE_PX for c,d in zip(o['geometry'],o['geometry'][1:]))}
+        fixed=set(owner_ids)|own_ids|ground
+        for length in ANGLE_OUTSIDE_LEADER_LENGTHS:
+            for k in range(steps):
+                theta=2*math.pi*k/steps;ux,uy=math.cos(theta),math.sin(theta)
+                end=[start[0]+length*ux,start[1]+length*uy]
+                tx=math.inf if abs(ux)<=1e-12 else (w/2)/abs(ux);ty=math.inf if abs(uy)<=1e-12 else (h/2)/abs(uy)
+                reach=min(tx,ty);center=(end[0]+ux*reach,end[1]+uy*reach);box=Box(center[0]-w/2,center[1]-h/2,w,h)
+                if not acceptable(box):continue
+                crossed=leader_crossed_strokes(start,end,occupied,fixed)
+                if not crossed:continue                    # nothing crossed: the ordinary outside search already tried this place
+                if not leader_clear(start,end,occupied,fixed,near_start=True,skip_ids=frozenset(crossed)|ticks,start_tolerance=CROSSING_LEADER_ON_STROKE_PX):continue
+                key=(sum(crossed.values()),length,fraction,k)
+                if best is None or key<best[0]:best=(key,box,start,end,center,theta)
+    if best is None:return None
+    key,box,start,end,center,theta=best
+    return box,start,owner_leader_endpoint(box,start,center),('E','SE','S','SW','W','NW','N','NE')[int(((math.degrees(theta)%360)+22.5)%360//45)],key[0]
 
 def angle_labels_first_order(label):
     """The second-pass order: at one priority the angle labels go first, the narrowest angle first (a label inside a nested angle is placed before the
@@ -951,12 +1021,16 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     if last_resort and result['unresolved']:
         stuck_ids={label['id'] for label in current if label['id'] in result['unresolved'] and (
             (label.get('kind')=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
-            or (label.get('lineOwned') and not label.get('collinearOwners')))}
+            or (label.get('lineOwned') and not label.get('collinearOwners'))
+            or ('wedgeSearch' in label and label.get('crossFallbackAllowed') is not True and label.get('tickLabelCallout') is None))}
         if stuck_ids:
             trial=[]
             for label in current:
                 label=copy.deepcopy(label)
-                if label['id'] in stuck_ids:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
+                if label['id'] in stuck_ids:
+                    if 'wedgeSearch' in label:label['crossFallbackAllowed']=True          # (FC) an angle label may take a leader from its arc that crosses a thin stroke or two
+                    else:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
+                    if label.get('lineOwned'):label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
                 trial.append(label)
             try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
             except ValueError:retry=None
@@ -999,7 +1073,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
     measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[];leaders=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
-    for label in sorted(labels,key=order or (lambda v:(v.get('priority',2),v['id']))):
+    queue=sorted(labels,key=order or (lambda v:(v.get('priority',2),v['id'])));queue_at=0   # (AXV) a queue, so a label that failed its ordinary place can be tried once more on its axis
+    while queue_at<len(queue):
+        label=queue[queue_at];queue_at+=1
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
         tick_owner=None
@@ -1065,7 +1141,8 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied),*((label['lineBarrierKinds'],) if 'lineBarrierKinds' in label else ())))
-                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk'))))
+                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk')))
+                and (not label.get('axisValue') or axis_value_box_ok(box,label)))
         def tie_to_owner(end):
             leader_id=label['id']+'-owner-leader'
             leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {})})
@@ -1094,8 +1171,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}|tick_start_circle_ids(occupied,label['at'],end)
                 # A dot drawn exactly on its own tick (a declared function value on an axis) is part of that tick, not an obstacle to its leader.
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
+                # A trigonometric curve (f-branch-N) is the ground of a tick only through a key dot drawn exactly on that tick (the curve's zero or extremum on the axis): the dot is part of the tick and the curve runs through the dot.
+                dot_on_tick=any(o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3 for o in occupied)
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
-                owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-','trig-pole-','line-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-','trig-pole-','line-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g') or o.get('kind')=='curve' and dot_on_tick and re.fullmatch(r'[fg]-branch-[0-9]+',str(o.get('id','')))) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     # A drawn segment or line running over the tick (the segment y=-5 over the tick -5) is the tick's own ground: its crossing at the leader's start is allowed.
                     owner_ids|=tick_ground_line_ids(occupied,label['at'])
@@ -1350,6 +1429,12 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if found is not None:
                 box,start,end,direction=found
                 label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
+            elif label.get('crossFallbackAllowed') is True and far_choice is None:
+                # (FC) last resort: a leader from the angle's own arc that crosses a thin stroke or two (a side of the figure, a line through the vertex)
+                found=angle_crossing_leader(label,w,h,occupied,acceptable,leader_owned_ids)
+                if found is not None:
+                    box,start,end,direction,_crossings=found
+                    label={**label,'at':list(start)};tie_to_owner(end);leaders[-1]['crossFallback']=True;chosen=box;method='OWNER_LEADER_'+direction
         if chosen is None and far_choice is not None:chosen,method=far_choice
         if chosen is None and line_owner is not None:
             # The first anchor found no room: the same line may be written from other anchors on it (nearer boxes need no leader, farther ones a visible one).
@@ -1423,6 +1508,26 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen:break
                     if chosen:break
+        if chosen is None and label.get('id')=='formula' and label.get('kind')=='EQUATION_LABEL' and label.get('target') is None and tick_owner is None and 'wedgeSearch' not in label:
+            # (FC) The formula text of a graph belongs to no stroke: when no box beside its usual place is free (the y axis runs through the top strip and the text is wider than
+            # either side of it), the nearest free box anywhere in the plot area takes it, so a long formula is never dropped. Reached only after every ordinary place failed.
+            found=nearest_free_box(label['at'],w,h,safe_area,acceptable)
+            if found is not None:chosen=found;method='FREE_AREA_NEAREST'
+        if chosen is None and line_owner is not None and label.get('crossFallbackAllowed') is True and not leader_only:
+            # (FC) Last resort of a segment or line label (only layout(last_resort=True) sets crossFallbackAllowed): no box beside its line, no clear leader. The nearest free box
+            # on a leader that starts on the label's own line and crosses at most CROSSING_LEADER_MAX_CROSSINGS thin strokes (an axis, a tick, a segment, a circle) at a clear angle.
+            # The leader is marked crossFallback, which the rendered-layout check already allows; the observer still ties the label back to its line by that leader.
+            best=None
+            for anchor in [tuple(label['at'])]+[tuple(v) for v in label.get('alternateAt',())]:
+                incident=set(owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']})
+                # a stroke drawn through the anchor itself (the x axis under a segment lying on it) is the label's own ground: the leader leaves it at the anchor, like its own line
+                incident|={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                    and any(point_segment_distance(anchor,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                found=crossing_leader_placement(anchor,w,h,occupied,acceptable,incident,allow_zero=True)
+                if found is not None and (best is None or found[2]<best[0][2]):best=(found,anchor)
+            if best is not None:
+                (box,end,_crossings,direction),anchor=best
+                label={**label,'at':list(anchor)};tie_to_owner(end);leaders[-1]['crossFallback']=True;chosen=box;method='OWNER_LEADER_'+direction
         repair=None
         if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
             and not label.get('candidateCenters') and isinstance(label.get('measuredFragmentSha256'),str)
@@ -1523,11 +1628,14 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if ring is None and ((label['kind']=='POINT_NAME' and label.get('crossFallbackAllowed') is True) or (label['kind']=='COORDINATE_LABEL' and ring_like and not label.get('ringLeader'))) and owner_marker is not None and not leader_only:   # a coordinate label that found no clear leader either: the nearest free box on a leader that crosses a thin stroke or two (marked, never a point or another leader)
                 # (CL) no clear place and no clear leader: the nearest free box on a leader that crosses a thin stroke or two
                 incident=incident or owner_incident_ids(at,owner_marker,occupied)
-                found=crossing_leader_placement(at,w,h,occupied,acceptable,incident)
+                found=crossing_leader_placement(at,w,h,occupied,acceptable,incident,max_radius=CROSSING_LEADER_COORDINATE_MAX_RADIUS if label['kind']=='COORDINATE_LABEL' else None)
                 if found is not None:
                     box,end,_crossings,direction=found
                     tie_to_owner(end);leaders[-1]['crossFallback']=True;ring=box;ring_method='OWNER_LEADER_'+direction
             if ring is not None:chosen=ring;method=ring_method
+        if chosen is not None and label.get('axisValue') and not axis_value_box_ok(chosen,label):chosen=None   # (AXV) never kept away from its axis, whatever fallback placed it
+        if chosen is None and label.get('axisAnchor') is not None and label.get('axisValue') in ('x','y') and not label.get('_axisRetry'):
+            queue.append(axis_anchor_retry(label));continue   # after every other label: the tick numbers (required, owned) take their places first, the axis value gets what is left of its own x
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue

@@ -73,6 +73,8 @@ export const IMPORT_EXCEPTIONS = {
 
 // Files that render-plan.mjs reaches for every kind (or whose reach cannot be told apart by kind): the whole golden set.
 const SHARED_PRODUCTION = [
+  // added with engine 3: imported across kinds, so a change runs all 209
+  'coordinate-frame.mjs', 'polynomial-text.mjs',
   'render-plan.mjs', 'worker.mjs', 'worker.py', 'worker_host.py', 'phase2.mjs', 'contracts.mjs', 'dependencies.mjs', 'dependency-lock.json', 'typography.mjs', 'palette.mjs',
   'store.mjs', 'fingerprint.mjs', 'attempt-log.mjs', 'error-guidance.mjs', 'hidden-curve-label.mjs', 'duplicate-key-point.mjs', 'point-name-observer.mjs',
   'point-names.mjs', 'display-envelope.mjs', 'display-profile-audit.mjs', 'construction-archive-capture-v1.mjs', 'construction-candidate-svg-v1.mjs',

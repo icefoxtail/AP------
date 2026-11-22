@@ -606,14 +606,14 @@ class AngleLabelOwnershipTests(unittest.TestCase):
     def on_circle(self,degrees,radius=None):
         radius=self.radius if radius is None else radius;a=math.radians(degrees)
         return (self.vertex[0]+radius*math.cos(a),self.vertex[1]-radius*math.sin(a))      # math degrees: the wedge of aD runs from 0 to 70
-    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True):
+    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True,crossing=False):
         x,y=center[0]-size[0]/2,center[1]-size[1]/2
         group='<g id="aD-label" data-fragment-sha="sha256:test" transform="translate(%.6f,%.6f)"><svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f"></svg></g>'%(x,y,size[0],size[1])
         if leader_from is not None:
             # the leader ends on the label box edge nearest to its start
             ex=min(max(leader_from[0],x),x+size[0]);ey=min(max(leader_from[1],y),y+size[1])
             if x<leader_from[0]<x+size[0] and y<leader_from[1]<y+size[1]:ex=x
-            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD" x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
+            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD"'+(' data-leader-crossing="1"' if crossing else '')+' x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
         return self.svg.replace('</svg>',group+'</svg>')
     def codes(self,svg,marks=None):
         report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})
@@ -638,6 +638,13 @@ class AngleLabelOwnershipTests(unittest.TestCase):
         # from the middle of the arc across the ray DA (70 degrees) to a label outside the angle
         label=self.on_circle(95,90)
         self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(label,leader_from=self.on_circle(35))))
+    def test_a_last_resort_leader_may_cross_a_side_but_never_the_angles_own_ray(self):
+        # (FC) the engine's last resort (data-leader-crossing): a leader from the arc to a label beyond the far side sBC is allowed; the unmarked one is refused, and the marked one still may not cross the own ray DA
+        far=self.on_circle(20,400)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sBC',self.codes(self.with_label(far,leader_from=self.on_circle(35))))
+        self.assertEqual(self.only(self.codes(self.with_label(far,leader_from=self.on_circle(35),crossing=True)),'ANGLE_LABEL_LEADER_CROSSES'),[])
+        over_ray=self.on_circle(95,90)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(over_ray,leader_from=self.on_circle(35),crossing=True)))
     def test_a_label_without_a_leader_far_from_its_vertex_is_refused(self):
         errors=self.codes(self.with_label(self.on_circle(35,170)))
         self.assertIn('ANGLE_LABEL_TOO_FAR:aD',errors)

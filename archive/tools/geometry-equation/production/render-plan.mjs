@@ -10,12 +10,13 @@ import {pythonWorker,closeWorkers} from './worker.mjs';
 import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
-import {isPlaneFigure} from './plane-marks.mjs';
+import {isPlaneFigure,inferNestedAngleOver} from './plane-marks.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
+import {ensureCoordinateFrame} from './coordinate-frame.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import {expandPlaneVectors} from './plane-vectors.mjs';
@@ -95,11 +96,13 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    // A source-coordinate construction without its frame nodes (origin, unit axis) gets them added, so the plan does not fail for bookkeeping it need not carry.
+    if(authored.capability==='construction-spike-v1')authored=ensureCoordinateFrame(authored);
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
       stage='packet';
-      // A figure too wide for the default 60% display is bound at solutionImageScale (% of the column): the publisher writes it to the question beside solutionImageSize.
+      // A figure too wide for the default A4 display (80% of the column) is bound at solutionImageScale (% of the column): the publisher writes it to the question beside solutionImageSize.
       if(capture?.solutionImageScale!==undefined)row.solutionImageScale=capture.solutionImageScale;
       let packet;
       if(packetDir)packet=await obs.prepareInverseObservationPacket({capture,packetDir:path.join(packetDir,`packet-${name}-${tag}`)});
@@ -433,6 +436,20 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
             }else{plan=prevPlan;model=prevModel;}
           }
         }catch{/* the original failure stays */}
+      }
+    }
+    // (NEST) A plane figure whose angle label found no place while two of its angles nest at one vertex (a whole angle and a part of it, no `over`/`ring` written, so both arcs
+    // share one radius from their common ray): the enclosing angles get `over` and the arcs stand one ring apart. Kept only when it composes; otherwise the failure stays as it was.
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&plan.mathPlan&&!plan.graphPlan&&Array.isArray(plan.planeMarks?.angles)&&(composed.detail?.unresolved||[]).some(id=>/-label$/.test(String(id))&&plan.planeMarks.angles.some(row=>row?.id===String(id).slice(0,-6)))){
+      const at=id=>{const p=model.points?.[id]?.approximation;if(!Array.isArray(p))throw Error('NEST_POINT_UNKNOWN');return p;};
+      let nested=null;try{nested=inferNestedAngleOver(plan.planeMarks.angles,at);}catch{nested=null;}
+      if(nested&&nested!==plan.planeMarks.angles){
+        const nestPlan={...plan,planeMarks:{...plan.planeMarks,angles:nested}};
+        let tried=null;try{tried=await attempt(nestPlan,'-nest');}catch{tried=null;}
+        if(tried&&tried.composed.status!=='LAYOUT_INVENTORY_INCOMPLETE'){
+          (row.fallback??=[]).push({from:clip(composed.detail),to:'ANGLE_NEST_RINGS',angles:nested.filter((r,i)=>r!==plan.planeMarks.angles[i]).map(r=>r.id)});
+          plan=nestPlan;({size,measured,composed}=tried);
+        }else if(tried){plan=nestPlan;({size,measured,composed}=tried);}   // still incomplete: the last resort below works on the nested rings
       }
     }
     // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a

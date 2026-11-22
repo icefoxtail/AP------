@@ -2701,7 +2701,14 @@ def _pd_audit_curve(plan,svg,transform,prefix='',shared_mode=False):
                 if _pd_defines(piece,value):return _pd_value(piece,value)
             return None
         for point in required:
-            at=_pp_coeff(str(point['x']));near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
+            # A required point's x is a float in the framed plan (1/2 -> 0.5); its exact text is the plan's exactCoordinates entry (the framer checked it against the float), and the observer
+            # reads that exact value and checks the float against it, so a fraction or a root is compared exactly and never through a decimal.
+            pair=(plan.get('exactCoordinates') or {}).get(point.get('id'))
+            if isinstance(pair,list) and len(pair)==2:
+                at=_pp_coeff(str(pair[0]))
+                if abs(float(at)-point['x'])>1e-9*max(1,abs(point['x'])):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_X_MISMATCH:'+str(point.get('id')))
+            else:at=_pp_coeff(str(point['x']))
+            near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
             value=defined_value(at)
             if not ((value is not None and near(value)) or any(_pp_same(at,at_value) and near(declared) for at_value,declared in jumps)):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
         for at,value,_ in extrema:
@@ -3492,13 +3499,13 @@ def _ov_surd_terms(value):
     return ([(a,None)] if a else [])+[(int(q*d),int(radicand))],int(d)
 
 def _ov_surd_form(value):
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))   # an exact curve value such as (-3-sqrt(5))**2+6*(-3-sqrt(5))+4 is the rational 0 only once expanded
     return value.is_Rational or _ov_surd_terms(value) is not None
 
 def _ov_coordinate_codes(value):
     """(G5b) Glyph codes of a coordinate written as an integer, a fraction or p+q*sqrt(r) over a denominator: terms in reading order (+ is U+002B, - is U+2212), the radicand
     digits before the radical U+221A (MathJax draws the radicand first), then the denominator digits (a stacked fraction reads numerator first)."""
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))
     if value.is_Rational:return _ov_int_codes(value)
     rows=_ov_surd_terms(value)
     if rows is None:raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')

@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {tidyPolynomialText} from './polynomial-text.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -739,14 +740,19 @@ function specForFamily(plan,model,id){
     const ends=p.intervalFeatures.endpoints;
     const endText=text=>features.axisUnit==='PI'?piTickText(text):String(text).replace('-','−');
     // A finite endpoint label can stand beside its dot. At a pole label the x value on the axis.
+    // (AXV) A label that names an x value on the axis (no dot of its own beside it) carries axisValue:'x' and axisAt (its point on the axis): it keeps its place when that already reads as its tick
+    // (centred on its x, one text line from the axis), otherwise the layout puts it there like a tick number; the rendered-layout check refuses any other place. A label beside its dot (endLabelSides) is not an axis value.
+    const axisDrawn=v[2]<0&&v[3]>0;
+    const endBesideDot=i=>Boolean(ends.find(row=>row.side===(i===0?'START':'END'))&&p.endLabelSides);
     const endAt=i=>{
       const endpoint=ends.find(row=>row.side===(i===0?'START':'END'));
       const y=endpoint&&p.endLabelSides?Number(endpoint.y)+(p.endLabelSides[i]==='BELOW'?-1:1)*(v[3]-v[2])*.07:-(v[3]-v[2])*.07;
       return [p.domain[i],y];
     };
+    const axisValueOf=i=>!endBesideDot(i)&&axisDrawn?{axisValue:'x',axisAt:[p.domain[i],0]}:{};
     const hiddenEndLabels=new Set(p.hideIntervalEndLabels??[]);
-    if(!hiddenEndLabels.has('START')&&features.sourceInterval.lo!=='0')objects.push({id:'interval-start-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.lo),at:endAt(0),math:features.axisUnit==='PI',priority:0});
-    if(!hiddenEndLabels.has('END')&&features.sourceInterval.hi!=='0')objects.push({id:'interval-end-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.hi),at:endAt(1),math:features.axisUnit==='PI',priority:0});
+    if(!hiddenEndLabels.has('START')&&features.sourceInterval.lo!=='0')objects.push({id:'interval-start-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.lo),at:endAt(0),math:features.axisUnit==='PI',priority:0,...axisValueOf(0)});
+    if(!hiddenEndLabels.has('END')&&features.sourceInterval.hi!=='0')objects.push({id:'interval-end-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.hi),at:endAt(1),math:features.axisUnit==='PI',priority:0,...axisValueOf(1)});
     return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:v[2]<0&&v[3]>0,y:v[0]<=0&&v[1]>=0},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...trigTickFacts(p,features.axisUnit),intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy,trigIntervalFeatures:features,trigIntervalPolicy:policy},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.trigIntervalFeatures!==undefined){
@@ -763,9 +769,10 @@ function specForFamily(plan,model,id){
       objects.push({id:'line-'+row.id+'-equation',kind:'EQUATION_LABEL',text:lineText(row),at:[v[1]-(v[1]-v[0])*.07,row.kind==='HORIZONTAL'?level+(v[3]-v[2])*.07:slope*(v[1]-(v[1]-v[0])*.07)+level+(v[3]-v[2])*.07],priority:0});
       for(const [i,point] of row.intersections.entries())objects.push({id:'intersection-'+row.id+'-'+(i+1),kind:'POINT',at:[point.x,point.y],name:null});
     }
-    const ends=p.intervalFeatures.endpoints,piText=text=>{const [n,d='1']=String(text).split('/');return (d==='1'?(n==='1'?'':n==='-1'?'-':n):'\\frac{'+n+'}{'+d+'}')+'π';};
-    if(features.sourceInterval.hiPi!=='0')objects.push({id:'interval-end-label',kind:'GRAPH_ANNOTATION',text:piText(features.sourceInterval.hiPi),at:[Number(ends[1].x),-(v[3]-v[2])*.07],math:true,priority:0});
-    if(features.sourceInterval.loPi!=='0')objects.push({id:'interval-start-label',kind:'GRAPH_ANNOTATION',text:piText(features.sourceInterval.loPi),at:[Number(ends[0].x),-(v[3]-v[2])*.07],math:true,priority:0});
+    // the interval-end values are the same plain pi text as the tick numbers (-4π/3): the engine typesets a pi fraction with the sign in front of the stacked fraction (AXV: a label that names an x on the drawn axis is bound to it, see the generic interval labels above)
+    const ends=p.intervalFeatures.endpoints,axisDrawn=v[2]<0&&v[3]>0,piText=text=>piTickText(text);
+    if(features.sourceInterval.hiPi!=='0')objects.push({id:'interval-end-label',kind:'GRAPH_ANNOTATION',text:piText(features.sourceInterval.hiPi),at:[Number(ends[1].x),-(v[3]-v[2])*.07],math:true,priority:0,...(axisDrawn?{axisValue:'x',axisAt:[Number(ends[1].x),0]}:{})});
+    if(features.sourceInterval.loPi!=='0')objects.push({id:'interval-start-label',kind:'GRAPH_ANNOTATION',text:piText(features.sourceInterval.loPi),at:[Number(ends[0].x),-(v[3]-v[2])*.07],math:true,priority:0,...(axisDrawn?{axisValue:'x',axisAt:[Number(ends[0].x),0]}:{})});
     return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:v[2]<0&&v[3]>0,y:v[0]<=0&&v[1]>=0},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'){
@@ -1186,7 +1193,12 @@ function piecewisePolynomialSpec(plan,id){
   if(p.sampleNote!==undefined&&(typeof p.sampleNote!=='string'||!/^[0-9A-Za-z=+\-*/(). ]{1,32}$/.test(p.sampleNote)||!p.sampleNote.trim()))throw Error('PIECEWISE_POLY_SAMPLE_NOTE_INVALID');
   const nameVariable=p.nameVariable??'x';
   if(typeof nameVariable!=='string'||!/^[a-z]$/.test(nameVariable)||nameVariable===functionName)throw Error('PIECEWISE_POLY_NAME_VARIABLE_INVALID');
-  const headerText=p.formula!==undefined?(functionName?functionName+'('+nameVariable+')':'y')+'='+p.formula:null;
+  // The header as a person writes it: the formula tidied (coefficient 1 and zero terms left out, falling degree) and written in the letter the x axis carries (an axis titled k reads k, not x);
+  // an unnamed function is named by its y axis title when that is one letter or a letter over a number (D/4), as the axis says.
+  const axisLetter=title=>typeof title==='string'&&/^[A-Za-z](?:\/\d{1,2})?$/.test(title)?title:undefined;
+  const shownVariable=/^[a-z]$/.test(p.axisTitles?.x??'')&&p.axisTitles.x!==functionName&&p.axisTitles.x!=='y'?p.axisTitles.x:'x';
+  const headerLeft=functionName?functionName+'('+nameVariable+')':axisLetter(p.axisTitles?.y)??'y';
+  const headerText=p.formula!==undefined?headerLeft+'='+tidyPolynomialText(p.formula,{shown:functionName?nameVariable:shownVariable}):null;
   const headerPx=headerText===null?0:80,canvas={width:512,height:plot.height+64+headerPx,panel:0,topInset:headerPx};
   const spanX=v[1]-v[0],spanY=v[3]-v[2],clampY=y=>Math.max(v[2]+spanY*.06,Math.min(v[3]-spanY*.06,y));
   const evalCoefficients=(values,x)=>values.reduce((sum,c,index)=>sum+exactValue(c)*x**index,0);
@@ -1238,7 +1250,7 @@ function piecewisePolynomialSpec(plan,id){
       objects.push({id:'f-ref-'+curve.id,kind:'FUNCTION_GRAPH',expression:polyText(curve.coefficients),domain:curve.drawInterval,criticalX:curveKeyX.filter(x=>curve.drawInterval[0]<=x&&x<=curve.drawInterval[1]),branch:'REF_'+curve.id,...(source.color?{color:source.color}:{})});
     }
     const labelId='ref-curve-'+curve.id+'-equation';
-    const labelText=curve.pieces?(source.formula!==undefined?(source.name?source.name+'(x)':'y')+'='+source.formula:source.name?source.name+'(x)':'y'):(source.name?source.name+'(x)':'y')+'='+readablePoly(curve.coefficients);
+    const labelText=curve.pieces?(source.formula!==undefined?(source.name?source.name+'(x)':'y')+'='+tidyPolynomialText(source.formula):source.name?source.name+'(x)':'y'):(source.name?source.name+'(x)':'y')+'='+readablePoly(curve.coefficients);
     if(curve.pieces){
       // The second piecewise curve is named next to its own drawing; a corner (or the middle of its widest piece) anchors the label.
       let at;
