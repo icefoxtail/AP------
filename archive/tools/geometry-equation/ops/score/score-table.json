@@ -1,7 +1,11 @@
 {
- "version": "score-table-v1",
+ "version": "score-table-v2",
  "schema": "svg-score-gate-v1",
  "decidedBy": "원장님 2026-11-23: 겹침 같은 걸 다 실패로 처리하지 말고, 학생이 봤을 때 최소한 읽히면 통과. 100점짜리가 아니라 90점짜리 SVG.",
+ "history": {
+  "score-table-v1": "fixed deduction 6 for a finding without a degree",
+  "score-table-v2": "fixed deduction 3 (원장님 2026-11-23); block rules and pass line 90 unchanged. Re-score by receipt tableVersion: lowest scores first."
+ },
  "about": "Publication gate only. The observers keep finding and recording everything; this table decides what a finding costs. Fields may be added, never removed or loosened silently (bump version).",
  "baseScore": 100,
  "passScore": 90,
@@ -68,7 +72,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -76,7 +80,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -84,7 +88,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -92,7 +96,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -100,7 +104,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -108,7 +112,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -116,7 +120,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -124,7 +128,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -132,7 +136,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -140,7 +144,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
@@ -148,7 +152,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -156,7 +160,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -164,7 +168,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -172,7 +176,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -180,7 +184,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -188,7 +192,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "overlap",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "generator throws on first overlapping pair; detail names the two labels only"
   },
@@ -196,7 +200,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -204,7 +208,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -212,7 +216,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -220,7 +224,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -228,7 +232,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -236,7 +240,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -244,7 +248,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -252,7 +256,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -260,7 +264,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
   },
@@ -268,7 +272,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -276,7 +280,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -284,7 +288,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -292,7 +296,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -300,7 +304,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -308,7 +312,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -316,7 +320,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -324,7 +328,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -332,7 +336,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -340,7 +344,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -348,7 +352,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -356,7 +360,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -364,7 +368,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -372,7 +376,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -380,7 +384,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -388,7 +392,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -396,7 +400,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -404,7 +408,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -412,7 +416,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "distance",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
@@ -420,7 +424,7 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "outside",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "detail carries box and size: the degree is computable (score.mjs degreeFromDetail); SAFE margin 12 px, viewBox clip is separate"
   },
@@ -428,21 +432,21 @@
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "outside",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none"
   },
   "CONTAINER_LABEL_OUT_OF_BOUNDS": {
    "track": "DEDUCT",
    "stage": "placement",
    "degreeKind": "outside",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "none"
   },
   "TEXT_CLIPPED": {
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "outside",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
   },
@@ -450,7 +454,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "outside",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
   },
@@ -458,7 +462,7 @@
    "track": "DEDUCT",
    "stage": "post-render",
    "degreeKind": "fontShortfall",
-   "fixed": 6,
+   "fixed": 3,
    "degree": "output",
    "note": "effectiveFontPx is in labelMeasurements"
   },

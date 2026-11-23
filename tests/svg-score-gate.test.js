@@ -30,14 +30,19 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   for (const c of ['PUBLICATION_TEXT_NOT_READY', 'GEOMETRY_VIEWPORT_CLIPPING', 'OVERLAY_LINE_MISMATCH', 'SOME_UNLISTED_CODE_X']) assert.strictEqual(score.classify(c).track, 'BLOCK', c);
 
   const one = c => score.scoreFigure({ findings: [{ code: c }], hasSvg: true });
-  // one mild finding still passes, two do not (accumulation without a cap)
+  // v2: a finding without a degree costs 3: three light flaws pass (91), four do not (88); repeats of one code add up with no cap
+  assert.strictEqual(table.version, 'score-table-v2');
   const mild = one('STAT_LABELS_TOO_CLOSE');
   assert.strictEqual(mild.verdict, 'PASS');
-  assert.ok(mild.score >= 90 && mild.score < 100);
-  const two = score.scoreFigure({ findings: [{ code: 'STAT_LABELS_TOO_CLOSE' }, { code: 'ANGLE_LABEL_TOO_FAR' }], hasSvg: true });
-  assert.strictEqual(two.verdict, 'FAIL_SCORE');
-  assert.ok(two.score < 90);
-  const same = score.scoreFigure({ findings: [{ code: 'LABEL_OVERLAP', id: 'a:b' }, { code: 'LABEL_OVERLAP', id: 'c:d' }], hasSvg: true });
+  assert.strictEqual(mild.score, 97);
+  const finding = c => ({ code: c });
+  const three = score.scoreFigure({ findings: ['STAT_LABELS_TOO_CLOSE', 'ANGLE_LABEL_TOO_FAR', 'LEADER_CROSSING'].map(finding), hasSvg: true });
+  assert.strictEqual(three.verdict, 'PASS');
+  assert.strictEqual(three.score, 91);
+  const four = score.scoreFigure({ findings: ['STAT_LABELS_TOO_CLOSE', 'ANGLE_LABEL_TOO_FAR', 'LEADER_CROSSING', 'ASYMPTOTE_LABEL_DETACHED'].map(finding), hasSvg: true });
+  assert.strictEqual(four.verdict, 'FAIL_SCORE');
+  assert.strictEqual(four.score, 88);
+  const same = score.scoreFigure({ findings: [1, 2, 3, 4].map(i => ({ code: 'LABEL_GEOMETRY_COLLISION', id: 'a:s' + i })), hasSvg: true });
   assert.strictEqual(same.verdict, 'FAIL_SCORE');
 
   // a block is 0 whatever else is true; verdicts that cannot be scored carry no score
