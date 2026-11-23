@@ -1399,7 +1399,7 @@ function getStudentRecentActivityValues(sid) {
     const examRows = Array.isArray(timetableDetail?.exam_sessions) ? timetableDetail.exam_sessions : (state.db.exam_sessions || []);
     const classRows = Array.isArray(timetableDetail?.class_daily_records) ? timetableDetail.class_daily_records : (state.db.class_daily_records || []);
     const recentExam = examRows
-        .filter(e => String(e.student_id) === String(sid))
+        .filter(e => String(e.student_id) === String(sid) && !globalThis.ApSimilarExam?.isSimilarExamRow(e))
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
     const classRecord = cls ? classRows
         .filter(row => String(row.class_id) === String(cls.id))
@@ -2448,16 +2448,18 @@ function renderGradeTab(sid) {
  */
 function renderStudentAcademyGradeTab(sid) {
     const exs = getStudentAcademyExamSessionsForDetail(sid);
+    // 성적 그래프·최근 점수는 학교 시험 성적만(유사 시험지로 출제된 응시는 목록에만 "유사 · 자습용"으로 보인다, js/similar-exam.js).
+    const scoreExs = exs.filter(e => !globalThis.ApSimilarExam?.isSimilarExamRow(e));
     const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === String(sid));
     const canEdit = student?.timetable_can_edit !== false;
     
-    const chartArea = exs.length > 0
+    const chartArea = scoreExs.length > 0
         ? `<div style="padding: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;">
              <canvas id="studentGradeChart" style="width: 100%; height: 160px;"></canvas>
            </div>`
         : `<div style="padding: 28px 20px; text-align: center; color: var(--secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-weight:500; line-height: 1.5;">누적된 성적 기록이 없습니다.</div>`;
 
-    const recentExam = [...exs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
+    const recentExam = [...scoreExs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
 
     const historyRows = exs.map(e => {
         const timetableWrongRows = state.ui?.timetableStudentDetails?.[String(sid)]?.wrong_answers;
@@ -2475,7 +2477,7 @@ function renderStudentAcademyGradeTab(sid) {
             <div style="padding: 12px 2px; border-bottom: 1px solid var(--border);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px;">
                     <div style="min-width: 0;">
-                        <div style="font-size: 13px; font-weight:600; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
+                        <div style="font-size: 13px; font-weight:600; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}${globalThis.ApSimilarExam?.isSimilarExamRow(e) ? ' <span style="font-size: 11px; padding: 2px 7px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--secondary); font-weight: 600; white-space: nowrap;" title="유사 시험지 자습용 · 성적 그래프·평균에서 제외">유사 · 자습용</span>' : ''}</div>
                         <div style="font-size: 12px; color: var(--secondary); font-weight: 500; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
                     </div>
                     <div style="font-size: 18px; font-weight:700; color: #334155; line-height: 1.2;">${e.score}점</div>
@@ -2669,7 +2671,7 @@ function drawGradeChart(sid) {
     const exs = (typeof getStudentAcademyExamSessionsForDetail === 'function'
         ? getStudentAcademyExamSessionsForDetail(sid)
         : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
-    ).slice().sort((a,b)=>String(a.exam_date||'').localeCompare(String(b.exam_date||''))).slice(-7);
+    ).filter(e => !globalThis.ApSimilarExam?.isSimilarExamRow(e)).slice().sort((a,b)=>String(a.exam_date||'').localeCompare(String(b.exam_date||''))).slice(-7);
     if (!exs.length) return;
 
     if (currentStudentChart) { currentStudentChart.destroy(); }

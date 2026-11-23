@@ -133,7 +133,9 @@ function wsxListHtml() {
         const active = exam.key === wsx.selKey;
         const meta = exam.isDraft
             ? `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 새 시험`
-            : `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 제출 ${exam.count}/${exam.targetCount}명 (${exam.pct}%)`;
+            : exam.similar
+                ? `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 유사 · 자습용 · 응시 ${exam.count}명`
+                : `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 제출 ${exam.count}/${exam.targetCount}명 (${exam.pct}%)`;
         return `<button type="button" class="apms-workspace__item wsx-exam-item${active ? ' is-active' : ''}" aria-current="${active ? 'true' : 'false'}" onclick="wsxSelectExam(${idx})">
             <span class="wsx-exam-item__main">
                 <span class="wsx-exam-item__title">${wsxEsc(exam.displayTitle)}</span>
@@ -153,6 +155,15 @@ function wsxWrongChip(session, qid) {
     const bp = typeof findBlueprintForWrong === 'function' ? findBlueprintForWrong(session, qid) : null;
     const unit = bp ? (bp.standard_unit || bp.standard_unit_key || '') : '';
     return `<span class="wsx-chip">Q${wsxEsc(qid)}${unit ? ` · ${wsxEsc(unit)}` : ''}</span>`;
+}
+
+// 학부모 상담용 한 장(archive/assessment/counsel-report.html)으로 가는 링크. 제출한 학생의 출제(assignment_id)가 있을 때만 단다.
+// 주소에는 내부 id만 둔다(학생 이름은 두지 않는다). 교사 로그인은 같은 사이트의 세션을 보관함이 읽는다.
+function wsxCounselLink(row) {
+    const assignmentId = row && row.session ? String(row.session.assignment_id || '') : '';
+    if (!assignmentId || !wsx || !wsx.classId) return '';
+    const query = `class=${encodeURIComponent(wsx.classId)}&assignment=${encodeURIComponent(assignmentId)}&student=${encodeURIComponent(row.sid)}`;
+    return `<a class="wsx-counsel-link" href="../archive/assessment/counsel-report.html?${query}" target="_blank" rel="noopener">상담지</a>`;
 }
 
 function wsxWeakUnitsHtml(detail) {
@@ -229,7 +240,7 @@ function wsxStudentsHtml(detail) {
         const sess = r.session;
         const chips = r.pending ? '' : (r.wrongs.length
             ? r.wrongs.map(qid => wsxWrongChip(sess, qid)).join('')
-            : '<span class="wsx-student__none">오답 없음</span>');
+            : '<span class="wsx-student__none">오답 없음</span>') + wsxCounselLink(r);
         return `<div class="wsx-student${open ? ' is-open' : ''}" data-sid="${wsxEsc(r.sid)}" data-pending="${r.pending ? 1 : 0}">
             <div class="wsx-student__row">
                 <span class="wsx-student__name">${wsxEsc(r.name)}</span>
@@ -271,7 +282,7 @@ function wsxDetailHtml() {
     const detail = wsxDetail();
     if (!detail) return '<div class="wsx-empty">왼쪽에서 시험을 고르면 학생별 점수와 입력 칸이 여기에 나옵니다.</div>';
     const exam = detail.exam;
-    const meta = [exam.date, `${detail.qCount}문항`, `제출 ${detail.submittedCount}/${detail.total}명`, detail.avg === null ? '' : `평균 ${detail.avg}점`].filter(Boolean).join(' · ');
+    const meta = [exam.date, `${detail.qCount}문항`, exam.similar ? `유사 · 자습용 · 응시 ${detail.submittedCount}명` : `제출 ${detail.submittedCount}/${detail.total}명`, detail.avg === null ? '' : `평균 ${detail.avg}점`].filter(Boolean).join(' · ');
     const f = wsx.filter;
     const tab = (id, label, n) => `<button type="button" class="wsx-filter__btn${f === id ? ' is-active' : ''}" aria-pressed="${f === id}" onclick="wsxSetFilter('${id}')">${label} ${n}</button>`;
     return `<div class="wsx-detail__head">

@@ -105,7 +105,7 @@ function renderStudentScreensWithExam(overrides = {}) {
     'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
     'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
     'renderOmrPdfAction', 'renderSimilarEntry', 'renderOmrExamCard', 'renderOmrHomeSection',
-    'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
+    'isStudentPortalSelfStudy', 'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
     'renderStudentQuickActions', 'renderOmrExamBrowser'
   ].map(studentFunction).join('\n'), context);
   return {
