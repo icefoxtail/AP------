@@ -38,7 +38,7 @@ function fakeServer() {
     if (method === 'POST' && route === '/archive-saved-papers') {
       const body = JSON.parse(init.body);
       server.posts.push(body);
-      if (server.failNext) { const code = server.failNext; server.failNext = 0; return respond(code, { success: false, error: 'x' }); }
+      if (server.failNext) { const code = server.failNext; if (!server.failKeep) server.failNext = 0; return respond(code, { success: false, error: server.failText || 'x' }); }
       if (server.batches.has(body.save_batch_id)) return respond(200, { success: true, saved: true, papers: server.batches.get(body.save_batch_id).map(p => ({ id: p.id })) });
       assert.ok(body.papers.length >= 1 && body.papers.length <= 8, 'a request holds 1..8 papers');
       assert.deepEqual(Object.keys(body.selection_filters).filter(key => !keys.has(key)), [], 'only keys the server knows');
@@ -303,6 +303,88 @@ test('제목: 파생본·모의고사 저장본에서 다시 들어와도 "다�
   await act(M, 'derive-compose-again');
   await act(M, 'derive-compose');
   assert.doesNotMatch(M.w.state.title, /다시 ?만들기/);
+});
+
+test('제목: 실제 시험 이름의 "모의고사 N회"·"3월모의고사"는 자르지 않는다', async () => {
+  const exam = pickBaseExam();
+  const uids = catalogBase.records.filter(r => r.sourceFile === exam.file).map(r => r.questionUid);
+  const cases = [
+    ['중1 2학기 기말 모의고사 1회', '중1 2학기 기말 모의고사 1회 다시 만들기'],
+    ['중1 2학기 기말 모의고사 1회 다시 만들기', '중1 2학기 기말 모의고사 1회 다시 만들기'],
+    ['중1 2학기 기말 모의고사 1회 다시만들기 다시만들기', '중1 2학기 기말 모의고사 1회 다시 만들기'],
+    ['AP수학학원 1학기 기말 중1 모의고사 3회', 'AP수학학원 1학기 기말 중1 모의고사 3회 다시 만들기'],
+    ['고1 3월모의고사', '고1 3월모의고사 다시 만들기'],
+    ['중1 2학기 기말 모의고사 1회 (기본)', '중1 2학기 기말 다시 만들기'],
+  ];
+  for (const [input, expected] of cases) {
+    const H = harness(fakeServer(), { session: false });
+    H.api.deriveStartFromItems(uids.map(uid => ({ uid })), { title: input });
+    await act(H, 'derive-run');
+    await act(H, 'derive-compose');
+    assert.equal(H.w.state.title, expected, input);
+    // 다시 만들기를 한 번 더 반복해도 한 번만
+    await act(H, 'derive-compose-again');
+    await act(H, 'derive-compose');
+    assert.equal(H.w.state.title, expected, `${input} (반복)`);
+  }
+});
+
+test('저장됨 안내는 지금 화면의 결과에만: 탭 전환·다시 뽑기 뒤에는 옛 저장본을 가리키지 않는다 · 저장된 뒤 주 단추는 "저장됨"', async () => {
+  const server = fakeServer();
+  const H = harness(server);
+  H.api.startMockForExam(pickBaseExam());
+  await act(H, 'derive-mock-level', 'same');
+  await act(H, 'derive-mock-save');
+  assert.match(H.body(), /data-mock-saved/);
+  assert.doesNotMatch(H.body(), /data-action="derive-mock-save"/, '저장된 뒤에는 저장 단추가 주 단추가 아니다');
+  assert.match(H.body(), /mock-save-done[^>]*disabled>저장됨</);
+  await act(H, 'derive-mock-level', 'up-some');
+  assert.doesNotMatch(H.body(), /data-mock-saved>/, '탭 전환 뒤 옛 저장본 안내 없음');
+  assert.doesNotMatch(H.body(), /data-action="saved-paper-issue"/);
+  assert.match(H.body(), /data-action="derive-mock-save"/);
+  await act(H, 'derive-mock-level', 'same');
+  await act(H, 'derive-again');
+  assert.doesNotMatch(H.body(), /data-mock-saved>/, '다시 뽑은 뒤 옛 저장본 안내 없음');
+  assert.equal(server.posts.length, 1);
+});
+
+test('세 벌 저장 뒤 같은 탭에서 시험지 열기는 한 번 더 저장하지 않는다', async () => {
+  const server = fakeServer();
+  const H = harness(server);
+  H.api.startMockForExam(pickBaseExam());
+  await act(H, 'derive-mock-all');
+  const sets = H.V.derive.dlg.sets;
+  const taken = new Set();
+  for (const level of ['up-one', 'up-some', 'same']) {
+    sets[level].items = sets[level].items.filter(r => !taken.has(r.questionUid));
+    sets[level].items.forEach(r => taken.add(r.questionUid));
+  }
+  await act(H, 'derive-mock-save-all');
+  assert.equal(server.posts.length, 1);
+  await act(H, 'derive-mock-level', 'same');
+  H.api.deriveAction('derive-popup', {});
+  await settle(() => false);
+  assert.equal(server.posts.length, 1, '이미 저장한 벌은 다시 저장하지 않는다');
+  assert.equal(server.papers.length, 3);
+});
+
+test('저장 실패 문구: 서버 원문은 한국어로, 5xx 뒤 숨은 작업 상태를 남기지 않는다', async () => {
+  const exam = pickBaseExam();
+  for (const [code, text] of [[409, 'duplicate_uid_in_batch'], [500, 'internal'], [401, 'unauthorized'], [500, '']]) {
+    const server = fakeServer();
+    const H = harness(server);
+    H.api.startMockForExam(exam);
+    await act(H, 'derive-mock-level', 'same');
+    server.failNext = code; server.failText = text; server.failKeep = true; // 확인 요청도 계속 실패
+    await act(H, 'derive-mock-save');
+    const msg = H.V.derive.dlg.error;
+    assert.match(msg, /[가-힣]/, `${code}`);
+    assert.doesNotMatch(msg, /duplicate_uid|internal|unauthorized|[A-Za-z]{6,}/, `서버 원문 없음 ${code}`);
+    assert.doesNotMatch(msg, /초안에 남아 있습니다/, '이 길에서는 사실이 아닌 문장');
+    if (code === 401) assert.match(msg, /로그인이 만료/);
+    assert.equal(H.w.state.saveResultState, '', `${code}: 숨은 저장 상태가 문제지 만들기를 잠그지 않는다`);
+    assert.equal(H.w.state.selected.length, 0, `${code}: 숨은 문항 선택이 남지 않는다`);
+  }
 });
 
 test('로그인 전·저장 실패: 결과는 창에 남고, 실패한 뒤 다시 누르면 저장된다', async () => {

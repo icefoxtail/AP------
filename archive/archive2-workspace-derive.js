@@ -13,12 +13,12 @@
   let
     $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
     render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
-    planRows, savePapers, discardDraftSilently;
+    planRows, savePapers, discardDraftSilently, saveFailureMessage;
   WS.links.push(() => {
     ({
       $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
       render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
-      planRows, savePapers, discardDraftSilently
+      planRows, savePapers, discardDraftSilently, saveFailureMessage
     } = WS.api);
   });
   const Derive = () => window.Archive2Derive;
@@ -165,7 +165,8 @@
     const original = text(value);
     let title = original;
     for (let i = 0; i < 12; i++) {
-      const next = title.replace(/\s*다시\s*만들기\s*$/, "").replace(/\s*모의고사\s*(?:\d+\s*회)?\s*(?:\([^)]*\))?\s*$/, "").trim();
+      // 모의고사 접미는 이 기능이 붙인 형태("모의고사 N회 (기본|응용|심화)", 로그인 전 "모의고사 (기본)")만 벗긴다. 시험 이름 자체의 "모의고사 1회"는 그대로 둔다.
+      const next = title.replace(/\s*다시\s*만들기\s*$/, "").replace(/\s*모의고사(?:\s*\d+\s*회)?\s*\((?:기본|응용|심화)\)\s*$/, "").trim();
       if (next === title) break;
       title = next;
     }
@@ -435,7 +436,7 @@
     if (!sets.length || (all && sets.length !== MOCK_LEVELS.length)) { setError("저장할 모의고사가 아직 없습니다. 난이도를 만든 뒤 저장해 주세요."); return; }
     const memoKey = mockMemoKey(sets);
     dlg.saved ||= {};
-    if (dlg.saved[memoKey]) { dlg.lastSaved = dlg.saved[memoKey]; renderDialog(); return; }
+    if (dlg.saved[memoKey]) { dlg.lastSaved = { ...dlg.saved[memoKey], key: memoKey }; renderDialog(); return; }
     V.derive.busy = true;
     dlg.error = "";
     dlg.autoFailed = false;
@@ -458,12 +459,15 @@
         total.ids.push(...info.ids); total.titles.push(...info.titles); total.levels.push(...info.levels);
       }
       if (total.ids.length) {
-        dlg.lastSaved = total;
-        if (!failed) dlg.saved[memoKey] = total;
-        else dlg.error = `${dlg.error} 일부(${total.ids.length}개)는 저장했습니다. 다시 누르면 남은 것만 저장합니다.`;
+        dlg.lastSaved = { ...total, key: memoKey };
+        if (!failed) {
+          dlg.saved[memoKey] = total;
+          // 세 벌을 한 요청으로 저장했어도 각 벌의 단일 키를 저장됨으로 적어, 같은 탭에서 "시험지 열기"가 한 번 더 저장하지 않게 한다.
+          if (sets.length > 1) sets.forEach((set, i) => { dlg.saved[mockMemoKey([set])] ||= { ids: [total.ids[i]], titles: [total.titles[i]], levels: [total.levels[i]] }; });
+        } else dlg.error = `${dlg.error} 일부(${total.ids.length}개)는 저장했습니다. 다시 누르면 남은 것만 저장합니다.`;
       }
     } catch (error) {
-      dlg.error = teacherErrorMessage(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+      dlg.error = mockSaveFailure(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
       console.warn("[archive2] mock save failed:", error);
     } finally {
       dlg.autoFailed = auto && Boolean(dlg.error);
@@ -473,13 +477,12 @@
   }
   // 한 요청으로 저장한다(문제지 만들기와 같은 savePapers). 성공하면 저장 정보, 실패하면 dlg.error를 채우고 null.
   async function saveGroup(dlg, sets, titles, memoKey) {
-    const pending = V.derive.pendingSave;
-    const retry = Boolean(pending && pending.memoKey === memoKey && state.saveResultState === "RESULT_UNKNOWN");
-    let draftId = pending?.draftId || "";
+    let draftId = "";
+    // 어떤 실패든 숨은 작업 상태를 비운다: 선생님이 만들지 않은 초안이 문제지 만들기를 잠그면 안 된다.
+    const cleanup = () => { discardDraftSilently(draftId); resetWorkingDraft(); };
     try {
       let papers;
-      if (retry) papers = pending.papers;
-      else {
+      {
         const plan = { titles };
         await Promise.all(sets.map((set) => restoreForPaper(set.result.items)));
         const ordered = sets.map((set) => paperOrder(set.result.items));
@@ -517,33 +520,54 @@
             },
           };
         });
-        V.derive.pendingSave = { memoKey, papers, draftId };
       }
       await savePapers({ papers });
+      // 네트워크 끊김·5xx로 결과를 모르면 같은 요청(같은 save_batch_id)으로 한 번 더 확인한다.
+      if (state.saveResultState === "RESULT_UNKNOWN") await savePapers({ papers });
       if (state.saveResultState === "SAVED") {
         const info = { ids: [...state.savedPaperIds], titles: papers.map((paper) => paper.meta.title), levels: sets.map((set) => set.level) };
         dlg.saved[memoKey] = info;
-        dlg.lastSaved = info;
+        dlg.lastSaved = { ...info, key: memoKey };
         dlg.savedCount = (dlg.savedCount || 0) + info.ids.length;
-        V.derive.pendingSave = null;
-        discardDraftSilently(draftId);
-        resetWorkingDraft();
+        cleanup();
         status(`${info.ids.length === 1 ? "모의고사 1개" : `모의고사 ${info.ids.length}개`}를 보관함에 저장했습니다(출제 전). 필요 없으면 보관함에서 지울 수 있습니다.`);
         return info;
       }
-      // 실패해도 만든 결과는 창에 남아 다시 누를 수 있다. 결과를 모르는 경우(RESULT_UNKNOWN)만 같은 요청을 이어서 확인한다.
-      dlg.error = state.saveError || "저장하지 못했습니다. 잠시 뒤 다시 눌러 주세요.";
-      if (state.saveResultState !== "RESULT_UNKNOWN") { V.derive.pendingSave = null; discardDraftSilently(draftId); resetWorkingDraft(); }
+      // 실패해도 만든 결과는 창에 남아 다시 누를 수 있다. 서버 원문(영어)은 창에 내지 않는다.
+      const unknown = state.saveResultState === "RESULT_UNKNOWN";
+      dlg.error = unknown
+        ? "저장 결과를 확인하지 못했습니다. 보관함을 확인한 뒤, 없으면 다시 저장해 주세요."
+        : mockSaveFailureText(state.saveError, "저장하지 못했습니다. 잠시 뒤 다시 눌러 주세요.");
+      cleanup();
       return null;
     } catch (error) {
-      dlg.error = teacherErrorMessage(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+      dlg.error = mockSaveFailure(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
       console.warn("[archive2] mock save failed:", error);
+      cleanup();
       return null;
     }
   }
+  // 창에 내는 저장 실패 문구: 한글이 아닌 서버 원문("internal" 등)은 일반 문구로 바꾸고, 이 길에서는 사실이 아닌 "작업은 초안에 남아 있습니다" 문장은 뺀다.
+  const noDraftClaim = (value) => String(value || "").replace(/\s*[^.]*초안에 남아 있습니다\.?/g, "").trim();
+  function mockSaveFailureText(value, fallback) {
+    const raw = noDraftClaim(value);
+    return /[가-힣]/.test(raw) ? raw : fallback;
+  }
+  function mockSaveFailure(error, fallback) {
+    const known = saveFailureMessage(error);
+    return mockSaveFailureText(known || teacherErrorMessage(error, fallback), fallback);
+  }
+  // 지금 화면의 결과(한 벌 / 세 벌)가 저장된 적이 있는 키. 탭 전환·다시 뽑기로 결과가 바뀌면 저장됨 안내는 사라진다.
+  function currentSaveKeys(dlg) {
+    const keys = [];
+    const one = dlg.sets?.[dlg.level] || dlg.result;
+    if (one?.items?.length) keys.push(mockMemoKey([{ level: dlg.level, result: one }]));
+    if (MOCK_LEVELS.every((level) => dlg.sets?.[level]?.items.length)) keys.push(mockMemoKey(MOCK_LEVELS.map((level) => ({ level, result: dlg.sets[level] }))));
+    return keys;
+  }
   function mockSavedMarkup(dlg) {
     const info = dlg.lastSaved;
-    if (!info) return "";
+    if (!info || !currentSaveKeys(dlg).includes(info.key)) return "";
     const rows = info.ids.map((id, i) => `<li><strong>${esc(info.titles[i] || "")}</strong> · <a href="workspace.html?view=saved&amp;paper_id=${encodeURIComponent(id)}" target="_blank" rel="noopener">보관함에서 보기</a> ${button("saved-paper-issue", "출제하기", `type="button" class="primary small" data-paper-id="${esc(id)}"`)}</li>`).join("");
     return `<div class="callout mock-saved" role="status" data-mock-saved><strong>저장됨</strong> · 아직 학생에게 출제되지는 않았습니다.<ul>${rows}</ul></div>`;
   }
@@ -616,8 +640,12 @@
       ? `<p class="warn mock-gap" role="status" data-mock-gap>못 채운 자리: ${[...unfilled].map((slot) => `${slot}번`).join(", ")}. 문제지 만들기에서 직접 골라 채울 수 있습니다.</p>` : "";
     const three = MOCK_LEVELS.every((level) => dlg.sets[level]?.items.length);
     const all = three ? button("derive-mock-open-all", "세 벌 모두 열기") : "";
-    const saveButton = three && dlg.allMade
-      ? button("derive-mock-save-all", "세 벌 모두 저장", 'class="primary"')
+    const allMode = three && dlg.allMade;
+    const keys = currentSaveKeys(dlg);
+    const saveKey = allMode ? keys[keys.length - 1] : keys[0];
+    const saveButton = dlg.saved?.[saveKey]
+      ? '<button type="button" class="mock-save-done" disabled>저장됨</button>'
+      : allMode ? button("derive-mock-save-all", "세 벌 모두 저장", 'class="primary"')
       : button("derive-mock-save", "보관함에 저장", 'class="primary"');
     const savedLine = dlg.savedCount ? `<p class="muted mock-saved-count" data-mock-saved-count>저장된 모의고사 ${dlg.savedCount}개 · <a href="workspace.html?view=saved" target="_blank" rel="noopener">보관함에서 보기</a></p>` : "";
     const autoLine = !hasSession()
