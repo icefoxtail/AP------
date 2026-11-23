@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "domain": [
+      -1.5,
+      3
+    ],
+    "viewport": [
+      -1.5,
+      3,
+      -5,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1-sqrt(2)",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "(2-sqrt(7))/3",
+        "y": "(20+14*sqrt(7))/27"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "1+sqrt(2)",
+        "y": "2"
+      },
+      {
+        "id": "N",
+        "x": "(2+sqrt(7))/3",
+        "y": "(20-14*sqrt(7))/27"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "0"
+      ],
+      "D": [
+        "1",
+        "0"
+      ],
+      "E": [
+        "2",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "N"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "k",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=k"
+        }
+      ]
+    }
+  },
+  "caption": "원본 q8.png의 영점 a<0<d<e, 극대점 c<0 순서를 보존하도록 예시 삼차함수를 왼쪽으로 평행이동해 g(x)=x³-2x²-x+2, k=2로 그린 개형 근사다. A(-1,0), D(1,0), E(2,0)가 영점이고, B(1-√2,2)·F(1+√2,2)는 수평선 y=k 위에 있다. C에서 g′(c)=0이고 A에서 g′(a)>0이므로 ㄱ은 거짓, g(d)-g(c)<d-c라 ㄴ은 참, D에서 g′(d)<0이나 할선 기울기는 0이라 ㄷ은 거짓이다. 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "양수 $k$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=k$가 아래와 같을 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $g(a)=g(d)=g(e)=0$, $g(b)=g(f)=k$이다.) [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "예시 삼차함수에서 점 A, D, E의 영점, 직선 y=k와 만나는 점 B, F, 극대점 C를 보이고 접선 기울기와 평균변화율의 부호를 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 왼쪽 극댓점 c<0, 양의 영점 d·e와 음의 영점 a, y=k의 두 점 b·f의 상대적 위치를 유지하는 예시 삼차함수이다."
+  ],
+  "accessibilityDescription": "x축과 세 점 A, D, E에서 만나고 수평선 y=k와 두 점 B, F에서 만나는 삼차함수의 그래프이며 극대점 C와 극소점 N이 표시되어 있다."
+}

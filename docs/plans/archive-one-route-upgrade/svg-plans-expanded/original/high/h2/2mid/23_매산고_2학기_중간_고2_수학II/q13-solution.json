@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5,
+      -7,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "M1",
+        "x": "2-2*sqrt(3)/3",
+        "y": "16*sqrt(3)/9"
+      },
+      {
+        "id": "M2",
+        "x": "2+2*sqrt(3)/3",
+        "y": "-16*sqrt(3)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "M1": [
+        "2-2*sqrt(3)/3",
+        "16*sqrt(3)/9"
+      ],
+      "M2": [
+        "2+2*sqrt(3)/3",
+        "-16*sqrt(3)/9"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "M1",
+        "M2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "2-sqrt(15)/3"
+        },
+        {
+          "id": "B",
+          "curveX": "2+sqrt(15)/3"
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "-1",
+          "intercept": "0",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "1",
+          "intercept": "-2+10*sqrt(15)/9",
+          "label": "l2"
+        },
+        {
+          "id": "l3",
+          "slope": "1",
+          "intercept": "-2-10*sqrt(15)/9",
+          "label": "l3"
+        }
+      ]
+    }
+  },
+  "caption": "원점을 지나는 접선의 접점은 f(t)=tf′(t)에서 t=0 또는 3이고 기울기는 8, -1이므로 l1은 접점 T(3,-3)에서의 접선 y=-x이다. l1과 수직인 접선은 기울기가 1이므로 f′(x)=1, 즉 3x²-12x+7=0이고 그림의 l2, l3이 접점 A, B에서 접한다. 두 근 a, b의 곱은 7/3이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원점 $(0,0)$에서 삼차함수 $f(x)=x^3-6x^2+8x$에 그은 접선 중 기울기가 음수인 직선을 $l_1$이라 하자. $l_1$과 수직이면서 곡선 $y=f(x)$에 접하는 두 직선을 $l_2$, $l_3$이라 하자. 두 직선 $l_2$, $l_3$과 곡선 $y=f(x)$의 접점의 $x$좌표를 각각 $a,b$라 할 때, $ab$의 값은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점을 지나는 접선 l1(기울기 -1)과 기울기 1인 두 접선 l2, l3의 접점 A, B를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접선 l1은 T(3,-3)에서 접하고 기울기 1인 두 접선 l2, l3은 3x²-12x+7=0의 두 근 a, b에서 접한다."
+  ],
+  "accessibilityDescription": "삼차곡선과 원점을 지나는 접선 l1, 그에 수직한 두 접선 l2, l3와 세 접점 T, A, B를 나타낸 그래프이다."
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3/2",
+          "1/2",
+          "-1"
+        ],
+        "domain": [
+          "-3/2",
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/4",
+        "y": "25/16"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "limitArrows": [
+      {
+        "at": "2",
+        "side": "LEFT",
+        "toY": "2"
+      }
+    ]
+  },
+  "caption": "원본 q1.png의 왼쪽 아래로 볼록한 곡선, x=1에서 열린 점 (1,1)과 별도 닫힌 점 A(1,2), x=1부터 x=2까지 위로 올라가는 둥근 곡선, x=2의 열린 점 (2,2)과 닫힌 점 (2,1), 오른쪽 수평선 y=1을 이차식 조각으로 정성적 근사한다. f(1)=2이고 x→2-에서의 극한은 2이므로 합은 4, 답은 ④이다. 곡선의 실제 식은 미제공이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같을 때, $f(1)+\\displaystyle\\lim_{x\\to2-}f(x)$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 채워진 점 A에서 함숫값 2를, x=2의 왼쪽에서 열린 점 B로 다가가는 극한 2를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1의 열린 점 높이 1과 별도 채워진 점 높이 2, x=2의 왼쪽 열린 점 높이 2와 오른쪽 닫힌 점 높이 1을 구분하고 원본의 좌우 곡선·수평선을 표현한다."
+  ],
+  "accessibilityDescription": "왼쪽 곡선은 낮은 곳에서 올라가 한 번 꺾이며 (1,1)의 열린 점으로 내려오고, (1,2)의 채워진 점이 위에 따로 있다. 가운데 곡선은 (1,1)에서 (2,2) 열린 점까지 올라가며, (2,1)의 채워진 점에서 오른쪽으로 높이 1 수평선이 이어진다."
+}

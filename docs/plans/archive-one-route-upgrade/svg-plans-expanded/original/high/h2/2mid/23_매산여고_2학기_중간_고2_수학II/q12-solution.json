@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -12,
+      33
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/4",
+        "y": "31/8"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1/4",
+        "31/8"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "-5",
+          "intercept": "2",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "11",
+          "intercept": "-14",
+          "label": "l2"
+        }
+      ]
+    }
+  },
+  "caption": "점 A(1,-3)에서 곡선에 그은 접선의 접점은 t²-2t-3=0에서 t=-1, 3이다. 접점 T(-1,7)에서 기울기는 4·(-1)-1=-5이고 접점 S(3,19)에서 기울기는 4·3-1=11이다. 그림의 두 접선 l1, l2가 모두 점 A를 지난다. 기울기의 합은 -5+11=6이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(1,-3)$에서 곡선 $y=2x^2-x+4$에 그은 두 접선의 기울기의 합은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 A에서 그은 두 접선 l1, l2와 접점 T, S를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 A(1,-3)에서 곡선에 그은 두 접선의 접점은 T(-1,7), S(3,19)이고 기울기는 -5, 11이다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 곡선 밖의 점 A, 점 A를 지나 두 접점 T, S에서 접하는 두 접선을 나타낸 그래프이다."
+}

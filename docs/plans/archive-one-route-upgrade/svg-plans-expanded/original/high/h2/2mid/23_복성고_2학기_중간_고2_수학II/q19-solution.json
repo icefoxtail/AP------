@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "viewport": [
+      -0.5,
+      4,
+      -0.5,
+      3.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "A",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "0",
+        "2"
+      ],
+      "A": [
+        "3",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "t=1/2",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5/2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "5/2",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "3/2",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "x": "9/5",
+          "y": "4/5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: AP=BQ=t=1/2일 때의 그림이다. 선분 AB는 2x+3y=6이고 P(5/2,0), Q(0,5/2)를 잇는 선분 PQ와 R(3/2,1)에서 만난다. t→0이면 P→A, Q→B이고 교점 R은 점 S(9/5,4/5)에 한없이 가까워진다. 일반적으로 y=(4+2t)/5이므로 t→0에서 y→4/5, x→9/5이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $x$축 위의 점 $A(3,0)$, $y$축 위의 점 $B(0,2)$가 있다. 점 $P$는 $x$축을 따라 점 $A$의 왼쪽에서 점 $A$로, 점 $Q$는 $y$축을 따라 점 $B$의 위쪽에서 점 $B$로 한없이 가까워진다. $\\overline{PQ}$가 $\\overline{AP}=\\overline{BQ}$를 만족하면서 움직일 때, $\\overline{AB}$, $\\overline{PQ}$의 교점 $R$은 어떤 점에 한없이 가까워지는가? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1/2일 때 AB와 PQ의 교점 R과 t→0에서 R이 가까워지는 점 S(9/5,4/5)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1/2일 때 교점 R(3/2,1)이고 t→0에서 R은 S(9/5,4/5)로 다가간다."
+  ],
+  "accessibilityDescription": "x축 위의 점 A와 y축 위의 점 B를 잇는 선분 AB와 두 축 위의 점 P, Q를 잇는 선분 PQ가 점 R에서 만나는 모습과 극한점 S를 나타낸 그림이다."
+}

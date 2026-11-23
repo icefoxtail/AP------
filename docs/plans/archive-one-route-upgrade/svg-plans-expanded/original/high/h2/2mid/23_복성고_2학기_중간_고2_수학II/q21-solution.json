@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "limitArrows": [
+      {
+        "at": "0",
+        "side": "RIGHT",
+        "toY": "2"
+      },
+      {
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "3"
+      }
+    ]
+  },
+  "caption": "f는 x=0에서 좌극한 1(점 A), 우극한 2로, x=1에서 좌극한 2(점 C), 우극한 3으로 불연속이다. g∘f가 이 두 점에서 연속이려면 g가 f의 극한값들에서 같은 값을 가져야 하므로 g(1)=g(2)=g(3)이다. g(1)=g(2)에서 3a+b=-7, g(2)=g(3)에서 5a+b=-19이므로 a=-6, b=11이다. 따라서 구하는 값은 a=-6, b=11이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 함수 $f(x)=\\begin{cases}-2x+5&(x\\gt1)\\\\2&(0\\lt x\\le1)\\\\x+1&(x\\le0)\\end{cases}$의 그래프가 그림과 같다. 삼차함수 $g(x)=x^3+ax^2+bx$ ($a$, $b$는 상수)에 대하여 함수 $(g\\circ f)(x)$가 실수 전체의 집합에서 연속일 때, 상수 $a$, $b$의 값을 구하고 그 과정을 서술하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 불연속점 x=0, 1에서 좌우극한 1, 2, 3을 읽어 g(1)=g(2)=g(3) 조건을 세운다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 x=0에서 1에서 2로, x=1에서 2에서 3으로 뛰므로 g가 1, 2, 3에서 같은 값을 가져야 한다."
+  ],
+  "accessibilityDescription": "x=0과 x=1에서 끊어지는 세 조각 직선으로 된 f의 그래프이며 두 불연속점의 왼쪽과 오른쪽 값을 나타내는 점 A, B, C, D가 표시되어 있다."
+}

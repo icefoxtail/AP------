@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -9,
+      4
+    ],
+    "curves": [
+      {
+        "id": "L",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "-11/10"
+        ],
+        "label": "y=1/(x+1)+2",
+        "color": "BLUE"
+      },
+      {
+        "id": "M",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=2x^2-1",
+        "color": "WARM"
+      },
+      {
+        "id": "R",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "11/10",
+          "4"
+        ],
+        "label": "y=1/x",
+        "color": "BLUE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x=-1의 왼쪽 조각 1/(x+1)+2는 x→-1-에서 한없이 작아지는(-∞로 가는) 발산이고, 오른쪽 조각 2x²-1은 x→-1+에서 1로 간다(점 P). 좌극한이 발산하므로 x→-1에서 극한값이 존재하지 않는다. 나머지 x→-∞(2), x→0(-1), x→1(1), x→∞(0)은 모두 존재한다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}\\dfrac{1}{x}&(x\\gt1)\\\\2x^2-1&(-1\\le x\\le1)\\\\\\dfrac{1}{x+1}+2&(x\\lt-1)\\end{cases}$에 대하여 다음 중 극한값이 존재하지 않는 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1의 왼쪽 조각이 아래로 발산하고 오른쪽 조각은 점 P(-1,1)로 가는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x→-1-에서 왼쪽 조각은 아래로 발산하고 x→-1+에서 오른쪽 조각은 1로 간다."
+  ],
+  "accessibilityDescription": "x=-1의 왼쪽에서 아래로 한없이 내려가는 곡선, 가운데 아래로 볼록한 포물선 조각, x>1의 반비례 곡선으로 된 조각 함수의 그래프이다."
+}

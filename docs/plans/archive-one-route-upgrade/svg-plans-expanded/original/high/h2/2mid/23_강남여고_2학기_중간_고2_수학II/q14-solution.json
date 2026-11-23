@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1/2",
+          "1/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1/2",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "-1/2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "-3/4"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "-1/2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "-3/2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-3/4"
+      ],
+      "C": [
+        "0",
+        "-1/2"
+      ],
+      "B": [
+        "2",
+        "-3/2"
+      ]
+    }
+  },
+  "caption": "f=(x-2)(x+1)이고 x<0에서 g=4(x+1), x≥0에서 g=-2(x-2)이다. 약분하면 x<0에서 h=(x-2)/4, x≥0에서 h=-(x+1)/2이다. 그림의 두 직선은 x=0에서 값 -1/2로 이어지고(경계 C도 연속), 빠진 점을 채우는 값이 A(-1,-3/4)의 a=-3/4, B(2,-3/2)의 b=-3/2이다. a+b=-9/4이므로 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 두 함수 $f(x)=x^2-x-2$, $g(x)=x-|3x|+4$에 대하여 함수\n$$h(x) = \\begin{cases} \\frac{f(x)}{g(x)} & (x \\ne -1, \\ x \\ne 2) \\\\ a & (x = -1) \\\\ b & (x = 2) \\end{cases}$$\n가 실수 전체의 집합에서 연속일 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "약분한 h의 두 직선과 x=-1, 2에서 채우는 값 a, b, 경계 x=0의 연속을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "h가 x=-1에서 a=-3/4, x=2에서 b=-3/2로 이어지고 x=0에서도 연속이다."
+  ],
+  "accessibilityDescription": "x=0에서 꺾여 이어지는 두 직선 조각의 그래프이며 x=-1, x=0, x=2의 점 A, C, B가 표시되어 있다."
+}

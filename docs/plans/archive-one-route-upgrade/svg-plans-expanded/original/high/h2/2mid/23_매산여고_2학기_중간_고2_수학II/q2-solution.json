@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "11",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "11"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "11"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "11"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "11"
+      ]
+    }
+  },
+  "caption": "x→3에서 극한이 존재하려면 좌극한과 우극한이 같아야 한다. 우극한은 9-9+11=11이고 좌극한은 6+k이므로 k=5이다. 그림은 k=5일 때 직선 조각과 포물선 조각이 P(3,11)에서 만나 좌극한과 우극한이 모두 11인 모습이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}x^2-3x+11&(x\\ge3)\\\\2x+k&(x\\lt3)\\end{cases}$에서 $\\lim_{x\\to3}f(x)$가 존재할 때, 상수 $k$의 값은? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=5일 때 x=3에서 좌극한과 우극한이 모두 11로 만나는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=5일 때 직선 조각과 포물선 조각이 P(3,11)에서 만나 좌극한과 우극한이 같다."
+  ],
+  "accessibilityDescription": "x=3에서 이어지는 직선 조각과 아래로 볼록한 포물선 조각의 그래프이며 이어지는 점 P의 좌표가 표시되어 있다."
+}

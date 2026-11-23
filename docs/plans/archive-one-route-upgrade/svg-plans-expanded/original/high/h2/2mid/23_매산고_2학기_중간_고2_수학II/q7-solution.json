@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2",
+        "-1"
+      ]
+    },
+    "requiredPoints": [],
+    "limitArrows": [
+      {
+        "at": "0",
+        "side": "LEFT",
+        "toY": "2"
+      },
+      {
+        "at": "1",
+        "side": "LEFT",
+        "toY": "-1"
+      }
+    ]
+  },
+  "caption": "원본 q7.png를 직접 확인해 세 직선 조각을 복원한다. 왼쪽 y=x+2는 열린 점 (0,2)로, 가운데 y=x-2는 열린 점 (0,-2)부터 (1,-1)까지, 오른쪽 y=2-x는 닫힌 점 (1,1)에서 시작한다. 별도 닫힌 점 f(0)=0을 둔다. x→1-이면 x-1→0-이므로 f(x-1)→2, f(x)→-1이고 곱의 극한은 -2, 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래와 같을 때, $\\displaystyle\\lim_{x\\to1-}f(x)f(x-1)$의 값을 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x→1-에서 f의 극한 -1(점 B)과 t→0-에서 f의 극한 2(점 A)를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 왼쪽 상승 직선, x=0의 열린 점 높이 2와 -2·닫힌 점 높이 0, 가운데 상승 직선과 x=1의 열린 점 높이 -1·닫힌 점 높이 1, 오른쪽 하강 직선을 정확히 구별한다."
+  ],
+  "accessibilityDescription": "x=0까지 올라가는 왼쪽 직선의 열린 끝점은 (0,2), x=0부터 x=1까지 올라가는 가운데 직선의 양 열린 끝점은 (0,-2), (1,-1), x=1의 닫힌 점 (1,1)에서 오른쪽으로 내려가는 직선, 별도의 닫힌 점 (0,0)이 있다."
+}

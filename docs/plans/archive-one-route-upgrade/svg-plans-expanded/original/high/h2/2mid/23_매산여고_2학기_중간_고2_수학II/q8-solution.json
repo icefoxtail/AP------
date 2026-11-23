@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "0",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "5"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3/2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "0",
+        "-3"
+      ],
+      "P": [
+        "1",
+        "-1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "t",
+          "slope": "4",
+          "intercept": "-5",
+          "label": "y=4x-5"
+        }
+      ]
+    }
+  },
+  "caption": "x=1에서 우미분계수 2a-6과 좌미분계수 4가 같아야 하므로 a=5이다. 연속 조건 a-6=2-b에서 b=3이다. 그림은 a=5, b=3일 때 포물선 조각 두 개가 P(1,-1)에서 이어지며 기울기 4인 같은 접선 y=4x-5를 갖는 모습이다. 따라서 ab=15이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}ax^2-6x&(x\\ge1)\\\\2x^2-b&(x\\lt1)\\end{cases}$가 $x=1$에서 미분가능할 때, 상수 $ab$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=5, b=3일 때 두 조각이 P(1,-1)에서 연속이고 기울기 4로 접선이 같음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=5, b=3일 때 두 포물선 조각이 P(1,-1)에서 이어지고 접선이 y=4x-5로 같다."
+  ],
+  "accessibilityDescription": "점 P에서 이어지는 두 포물선 조각의 그래프이며 P에서 두 조각에 공통으로 접하는 직선이 그려져 있다."
+}

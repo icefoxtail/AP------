@@ -1,0 +1,132 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -2,
+      3
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "-2"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "1"
+            ],
+            "domain": [
+              -1,
+              0
+            ],
+            "end": "OPEN"
+          },
+          {
+            "coefficients": [
+              "-1",
+              "1"
+            ],
+            "domain": [
+              0,
+              3
+            ],
+            "start": "CLOSED"
+          }
+        ],
+        "axisTickValues": {
+          "x": [
+            "1",
+            "2"
+          ],
+          "y": [
+            "1",
+            "-1"
+          ]
+        }
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "1"
+      },
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "0"
+      },
+      {
+        "curve": "g",
+        "at": "0",
+        "side": "LEFT",
+        "toY": "1"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "원본 q14.png의 두 함수를 STACKED로 재구성한다. f는 x<0에서 y=x+1, 0≤x<1에서 y=x, x≥1에서 y=2-2x로 이어지며 x=0에서 열린 (0,1)·닫힌 (0,0), x=1에서 열린 (1,1)·닫힌 (1,0)이 나뉜다. g는 x<0에서 y=1, x≥0에서 y=x-1이며 열린 (0,1)과 닫힌 (0,-1)이 다르다. 곱 f·g의 x=0 불연속으로 ㄱ은 거짓, [0,2]의 최소값 존재로 ㄴ은 참, x→2에서 g(x)가 1의 양쪽으로 접근해 f(g(x))의 좌우극한이 달라 ㄷ은 거짓이다. 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 x=0, 1에서의 불연속, g의 x=0에서의 불연속과 g(2)=1을 한 그림에 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본과 같은 세 f 직선, 두 g 직선의 실제 기울기와 x=0·1의 열린·닫힌 점을 나누어 표시한다."
+  ],
+  "accessibilityDescription": "위 f 그래프는 x=0에서 왼쪽 열린 점 (0,1)과 닫힌 원점, x=1에서 왼쪽 열린 점 (1,1)과 닫힌 원점 높이 점 (1,0)을 가진 세 직선이고 오른쪽 직선은 내려간다. 아래 g는 y=1 수평선의 열린 끝점 (0,1)과 (0,-1)에서 오른쪽으로 상승하는 직선으로 구성된다."
+}

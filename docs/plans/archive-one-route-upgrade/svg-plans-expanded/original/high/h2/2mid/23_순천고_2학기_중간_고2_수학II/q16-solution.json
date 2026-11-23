@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      6,
+      -1,
+      10
+    ],
+    "curves": [
+      {
+        "id": "H1",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "4"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "-13/4"
+        ],
+        "label": "y=h(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "H2",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6",
+          "-4"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-11/4",
+          "-3/2"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula",
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "H3",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "4"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-3/2",
+          "6"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula",
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "T4",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "6"
+        ],
+        "label": "y=4",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Z",
+          "x": "-3/2",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "h(x)=|-2x/(x+3)-2|=|-4+6/(x+3)|의 그래프이다. 수평선 y=t와의 교점 수 f(t)는 t<0이면 0, t=0이면 1(점 Z)이고, t>0이면 2개인데 t=4일 때는 수평선 y=4가 점근선처럼 되어 1개로 줄어든다. 따라서 f(t)는 t=0, 4에서 불연속이다. f(x)g(x)가 연속이려면 g(0)=g(4)=0이어야 하므로 g(x)=|x-2|-2, 즉 a=2, b=-2이다. g(a+2b)=g(-2)=2이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $t$에 대하여 직선 $y=t$와 함수 $y=\\left|\\dfrac{-2x}{x+3}-2\\right|$의 그래프의 교점의 개수를 $f(t)$라 하자. 함수 $f(x)$와 함수 $g(x)=|-x+a|+b$에 대하여 함수 $f(x)g(x)$가 모든 실수 $x$에서 연속일 때, $g(a+2b)$의 값은? [5점]\n(단, $a,b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "절댓값 유리함수 그래프와 수평선 y=4, 영점 Z로 교점 수가 바뀌는 t=0, 4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "h의 그래프는 x축과 Z에서 만나고 수평선 y=4가 접근선이 되어 교점 수가 t=0, 4에서 바뀐다."
+  ],
+  "accessibilityDescription": "절댓값을 씌운 유리함수의 그래프 세 부분과 수평선 y=4, x축 위의 점 Z를 나타낸 그림이다."
+}

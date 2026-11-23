@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-2",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "-5",
+        "34"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-5"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "34"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "-5"
+      ],
+      "B": [
+        "4",
+        "34"
+      ]
+    }
+  },
+  "caption": "그림은 y=f′(x)=3x²-2x-6의 구간 [1,4] 부분으로 증가하며 A(1,-5)에서 B(4,34)까지 움직인다. 평균값 정리에 의해 k=f′(c)(1<c<4)이므로 -5<k<34이다. 길이가 작은 구간의 평균변화율이 연속으로 변하므로 -4부터 33까지의 모든 정수가 실제로 나타난다. 정수의 개수는 33-(-4)+1=38이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-x^2-6x$와 닫힌구간 $[1,4]$에 속하는 임의의 두 실수 $x_1,x_2\\,(x_1\\lt x_2)$에 대하여 $\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}=k$를 만족시키는 모든 정수 $k$의 개수를 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′이 [1,4]에서 증가하며 -5에서 34까지 가는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′이 구간 [1,4]에서 A(1,-5)에서 B(4,34)로 증가해 k의 범위가 -5<k<34이다."
+  ],
+  "accessibilityDescription": "구간 [1,4]에서 아래로 볼록한 포물선의 증가하는 부분과 양 끝점 A, B가 표시된 그래프이다."
+}

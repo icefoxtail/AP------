@@ -1,0 +1,101 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "2",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0.4,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5,
+      -0.5,
+      5
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "0",
+          "label": "l"
+        },
+        {
+          "id": "n",
+          "slope": "-1/2",
+          "intercept": "2",
+          "label": "n"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "P": "P",
+    "T": "T",
+    "Q": "Q",
+    "R": "R"
+  },
+  "caption": "예: m=2일 때의 그림이다. 직선 l은 y=2x이고 곡선 y=2/x와 P(1,2)에서 만난다. l에 수직인 접선 n은 기울기 -1/2이고 T(2,1)에서 접하며 x축, y축과 Q(4,0), R(0,2)에서 만난다. 일반적으로 OQ²=8m, QR²=8m+8/m, OP²=2m+2/m이고 극한은 16m/(2m)=8이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원점 $O$를 지나고 기울기가 $m\\,(m\\gt0)$인 직선 $l$과 곡선 $y=2/x\\,(x\\gt0)$가 만나는 점을 $P$라 하자. $l$에 수직이고 이 곡선에 접하는 직선이 $x$축, $y$축과 만나는 점을 각각 $Q,R$이라 할 때, $\\displaystyle\\lim_{m\\to\\infty}\\dfrac{OQ^2+QR^2}{OP^2}$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "m=2의 예에서 직선 l, 접선 n, 점 P, T, Q, R을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "m=2의 예에서 P(1,2), 접점 T(2,1), 절편 Q(4,0), R(0,2)이다."
+  ],
+  "accessibilityDescription": "제1사분면의 반비례 곡선과 원점을 지나는 직선 l, 곡선에 접하는 수직인 직선 n, 두 직선과 곡선의 교점 P, T 및 n의 두 절편 Q, R을 나타낸 그림이다."
+}

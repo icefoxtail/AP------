@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          1,
+          7
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          7,
+          17
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          17,
+          31
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          31,
+          49
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "5"
+        ],
+        "domain": [
+          49,
+          71
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "7",
+        "17"
+      ],
+      "y": [
+        "1",
+        "2",
+        "5"
+      ]
+    },
+    "requiredPoints": []
+  },
+  "caption": "f(x)는 2n²-1≤x<2(n+1)²-1일 때 n인 계단함수이다. 그림은 앞부분(0≤x<71)만 그린 것으로 값이 0에서 1로 바뀌는 x=1, 1에서 2로 바뀌는 x=7, 2에서 3으로 바뀌는 x=17 등이 보이고, 6에서 7로 바뀌는 곳은 같은 규칙으로 x=97(그림 밖)이다. f(f(x))는 f(x)가 0→1(f(0)=0, f(1)=1)로 바뀌는 x=1과 6→7(f(6)=1, f(7)=2)로 바뀌는 x=97에서만 불연속이다. 합은 1+97=98이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x\\ge0$일 때, $\\sqrt{\\dfrac12x+\\dfrac12}$보다 크지 않은 최대의 정수를 $f(x)$라 하자. $0\\le x\\lt 200$에서 함수 $f(f(x))$가 불연속이 되는 $x$의 값을 $a$라 할 때, 모든 $a$의 값의 합은? [5.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "계단함수 f의 값이 바뀌는 x=1, 7, 17, 31, 49를 보이고 규칙을 잇는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f는 x=1, 7, 17, 31, 49에서 1씩 오르는 계단이며(그림은 x<71) f(f(x))의 불연속은 x=1, 97이다."
+  ],
+  "accessibilityDescription": "x=1, 7, 17, 31, 49에서 한 칸씩 오르는 계단 모양의 그래프이다."
+}

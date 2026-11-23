@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-5",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-3/2",
+        "y": "-9/4"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-3",
+        "0"
+      ],
+      "V": [
+        "-3/2",
+        "-9/4"
+      ],
+      "O": [
+        "0",
+        "0"
+      ]
+    },
+    "sampleNote": "k=1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "k",
+          "slope": "0",
+          "intercept": "-1",
+          "label": "y=-k"
+        },
+        {
+          "id": "m",
+          "slope": "0",
+          "intercept": "-9/4",
+          "label": "y=-9/4"
+        }
+      ]
+    }
+  },
+  "caption": "그림은 y=f(x)이고 수평선 y=-k와의 교점이 g의 영점이다(예: k=1). f는 x=-3인 점 P에서 꺾이고 오른쪽 포물선의 최솟값은 V(-3/2,-9/4)이다. 0<k<9/4이면 오른쪽 포물선과의 단순한 교점이 2개이므로 A=2이고 g가 꺾이는 점은 P를 포함해 3개라 B=3, AB=6이다. k<0일 때도 A=2, B=3이다. k=0이면 AB=4이고 k=9/4는 접점이라 A=0, k>9/4도 A=0이다. 최댓값 6이 되는 범위는 k<0 또는 0<k<9/4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 함수 $f(x)=(x-1)(x+3)+|x+3|$와 실수 $k$에 대하여 함수 $g(x)=|f(x)+k|$이고 다음 조건을 만족시키는 실수 $a$의 개수를 $A(k)$, 실수 $b$의 개수를 $B(k)$라 하자. $A(k)\\times B(k)$이 최댓값 $m$을 가질 때, $k$값의 범위를 구하는 과정을 서술하시오. [10.0점]\n<div style=\"border:1px solid #000;padding:8px 10px;margin-top:8px;line-height:1.8\">(가) $\\displaystyle\\lim_{h\\to0+}\\dfrac{g(a+h)\\times g(a-h)}{h^2}=l$ ($l$은 양의 실수)<br>(나) $\\displaystyle\\lim_{h\\to0+}\\dfrac{g(b+h)-g(b)}h+\\lim_{h\\to0+}\\dfrac{g(b-h)-g(b)}h\\ne0$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "수평선 y=-k와 f의 교점 수, 접선 y=-9/4와 꺾이는 점 P를 k의 범위별로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 x=-3에서 꺾이고 최솟값 -9/4를 가지며 수평선 y=-k와의 교점 수가 k의 범위에 따라 바뀐다."
+  ],
+  "accessibilityDescription": "x=-3에서 꺾이는 두 포물선 조각으로 된 f의 그래프와 수평선 두 개를 나타낸 그림이며 꺾이는 점 P, 최저점 V, 원점 O가 표시되어 있다."
+}

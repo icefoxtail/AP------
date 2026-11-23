@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "9",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -30,
+      25
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "-10"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-10"
+      ],
+      "B": [
+        "0",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "F(x)=x³-x²+9x+1에서 F′(x)=3x²-2x+9는 판별식이 -104<0이라 항상 양수이므로 F는 계속 증가한다. 그림의 점 A(-1,-10), B(0,1)에서 F(-1)<0<F(0)이므로 유일한 실근은 구간 (-1,0)에 있다. 열린구간 (-2,m)이 이 근을 포함하는 최소 정수 m은 0이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $x^3-x^2+9x+1=0$이 열린구간 $(-2,m)$에서 적어도 하나의 실근을 가질 때, 정수 $m$의 최솟값을 구하면? (단, $m\\gt-2$이다.) [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "증가하는 삼차함수가 x=-1에서 음수, x=0에서 양수가 되는 점 A, B를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "증가하는 삼차함수가 A(-1,-10)에서 B(0,1)로 x축을 지나므로 실근이 (-1,0)에 있다."
+  ],
+  "accessibilityDescription": "계속 증가하는 삼차함수의 그래프이며 x=-1에서 x축 아래의 점 A, x=0에서 x축 위의 점 B가 표시되어 있다."
+}

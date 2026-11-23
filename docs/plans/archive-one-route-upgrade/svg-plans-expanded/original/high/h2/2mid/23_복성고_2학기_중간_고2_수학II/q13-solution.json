@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -7,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "M1",
+        "x": "-2*sqrt(3)/3",
+        "y": "16*sqrt(3)/9"
+      },
+      {
+        "id": "M2",
+        "x": "2*sqrt(3)/3",
+        "y": "-16*sqrt(3)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "M1": [
+        "-2*sqrt(3)/3",
+        "16*sqrt(3)/9"
+      ],
+      "M2": [
+        "2*sqrt(3)/3",
+        "-16*sqrt(3)/9"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "M1",
+        "M2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "-2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "t",
+          "slope": "-1",
+          "intercept": "-2",
+          "label": "t"
+        },
+        {
+          "id": "u",
+          "slope": "8",
+          "intercept": "20",
+          "label": "u"
+        }
+      ]
+    }
+  },
+  "caption": "y′=3x²-4이므로 A(1,-3)에서의 접선 t의 기울기는 -1이고 t는 y=-x-2이다. 곡선과의 교점 방정식 x³-3x+2=(x-1)²(x+2)=0에서 접점 A 외의 교점은 B(-2,4)이다. B에서의 접선 u의 기울기는 3·4-4=8이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-4x$ 위의 점 $A(1,-3)$에서의 접선이 곡선과 다시 만나는 점을 $B$라 할 때, 점 $B$에서의 접선의 기울기는? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접선 t가 곡선과 다시 만나는 점 B(-2,4)와 B에서의 접선 u(기울기 8)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 A(1,-3)에서의 접선 t가 곡선과 B(-2,4)에서 다시 만나고 B에서의 접선 u의 기울기는 8이다."
+  ],
+  "accessibilityDescription": "삼차곡선과 점 A에서 접하는 직선 t, 직선 t가 곡선과 다시 만나는 점 B, 점 B에서 접하는 직선 u를 나타낸 그래프이다."
+}
