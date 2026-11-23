@@ -5,7 +5,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs";
-import { textFingerprint } from "./text-binding-lib.mjs";
+import { textFingerprint, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 
 // Registers Gemini's already-decided 5-level difficulty (req_diff5_*.json) into the canonical
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
@@ -59,6 +59,20 @@ export function isTextBoundDraft(request) {
   const items = request?.gemini?.items;
   return request?.approvalType === DRAFT_SINGLE_MODEL && !request.reviewedCorrection && Array.isArray(items) && items.length > 0 &&
     items.every(item => typeof item?.textBindingFingerprint === "string" && /^[a-f0-9]{64}$/.test(item.textBindingFingerprint));
+}
+
+// 요청이 만들어진 뒤 시험지 파일이 바뀌었어도(다른 문항 해설·그림·정답 수정, 이 문항의 해설·정답 수정) 요청이 다루는 문항의
+// 발문·보기(text-v1)가 요청이 고정한 옛 blob(latestBlobSha, git에서 읽음)과 같으면 같은 문제에 대한 판정이므로 받는다.
+// 발문·보기가 다르거나 문항 수가 다르거나 옛 blob을 git에서 못 읽으면 받지 않는다(전과 같이 blob drift).
+// 이유: 시험지 수정 프로토콜(최소 수정)로 운영 시험지가 고쳐질 때마다 등록 전 요청이 헛거절되었다. 등록기·PR 미리 검증·소비자 게이트가 같이 쓴다.
+export function sourceTextUnchangedSinceRequest({ root, request, sourceBytes }) {
+  const g = request?.gemini;
+  // A reviewed correction carries evidence made on one exact source edition, so it keeps the whole-file blob binding
+  // (same as isTextBoundDraft, which also excludes it). All three callers (registrar, PR preview, consumer gate) go through here.
+  if (request?.reviewedCorrection) return { ok: false, reason: "reviewed correction keeps the exact blob binding" };
+  if (!g || !Array.isArray(g.items) || !g.items.length) return { ok: false, reason: "no items" };
+  const ordinals = g.items.map(item => item.ordinal);
+  return reviewedSourceTextUnchanged({ root, expectedBlobSha1: g.latestBlobSha, currentBytes: sourceBytes, ordinals });
 }
 
 // 1 = 하, 2·3 = 중, 4·5 = 상
@@ -243,7 +257,10 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
   const { bytes: sourceBytes, sha } = bindDifficulty5Source(fs.readFileSync(sourcePath), g.latestBlobSha);
-  if (sha !== g.latestBlobSha && !isTextBoundDraft(request)) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
+  if (sha !== g.latestBlobSha && !isTextBoundDraft(request)) {
+    const same = sourceTextUnchangedSinceRequest({ root, request, sourceBytes });
+    if (!same.ok) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + "; " + same.reason + ")");
+  }
 
   const doc = read(root, META);
   const ids = read(root, IDENTITY);

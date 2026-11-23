@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validateSvgStudentLanguage } = require('./svg-language-contract.cjs');
+const { validateSvgStudentLanguage, assertSvgStudentLanguage } = require('./svg-language-contract.cjs');
 
 function svg(body = '', title = '두 원의 교점', description = '두 원의 중심과 교점을 좌표평면에 나타낸 그림', rootAttrs = 'role="img" aria-labelledby="title desc"') {
   return `<svg xmlns="http://www.w3.org/2000/svg" ${rootAttrs}><title id="title">${title}</title><desc id="desc">${description}</desc>${body}</svg>`;
@@ -96,4 +96,17 @@ test('student SVG language contract counts only real id attributes, not data-*-i
   assert.ok(sameIdTwice.errors.some(error => error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID'));
   const duplicateWithLookAlike = validateSvgStudentLanguage(svg('<g id="same" data-mark-id="x"/><g data-mark-id="y" id="same"/>'));
   assert.ok(duplicateWithLookAlike.errors.some(error => error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID'));
+});
+
+test('advisory mode lists description-quality findings without blocking, and still throws real defects', () => {
+  const generic = svg('', '원과 중심', '그림입니다. 이것을 나타낸 그림입니다.');
+  assert.throws(() => assertSvgStudentLanguage(generic, { assetRef: 'a.svg' }), /DESCRIPTION_NOT_SUBSTANTIVE/);
+  const advisory = [];
+  const result = assertSvgStudentLanguage(generic, { assetRef: 'a.svg', advisory });
+  assert.equal(result.status, 'PASS');
+  assert.ok(advisory.some(row => row.assetRef === 'a.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'));
+  // 실제 결함(참조 깨짐, 루트 없음)은 advisory 모드에서도 막는다.
+  const broken = svg('', '두 원의 교점', '그림입니다.', 'role="img" aria-labelledby="missing desc"');
+  assert.throws(() => assertSvgStudentLanguage(broken, { assetRef: 'b.svg', advisory: [] }), /ARIA_REFERENCE_INVALID/);
+  assert.throws(() => assertSvgStudentLanguage('<g/>', { assetRef: 'c.svg', advisory: [] }), /SVG_ROOT_MISSING/);
 });
