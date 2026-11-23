@@ -21,7 +21,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-    UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+    UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
     applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
     askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
     changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -45,7 +45,7 @@
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-      UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+      UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
       applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
       askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
       changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -243,12 +243,20 @@
       // First screen first: home and 출제 내역 are drawn without the catalog; every other screen shows its
       // name and the progress, and render() draws it for real as soon as the catalog is ready.
       syncViewNavigation();
+      // 학교별 기출은 시험지 목록만으로 먼저 그린다(학년·교육과정·과목 칸과 문항 단위 검색은 전체 자료가 오면 채워진다).
+      // 전체 자료는 이 화면이 그려진 직후 백그라운드로 받기 시작한다.
+      if (state.view === "find" && lightFindUsable()) {
+        setContentKeepingPreview(renderFind());
+        Boot?.refresh?.();
+        startCatalogAfterPaint();
+        return;
+      }
       $("content").innerHTML = state.view === "home" ? renderHome()
         : state.view === "recent" ? renderRecent()
           : preparingMarkup();
       Boot?.refresh?.();
       // The home opened on the small exam list without the catalog; leaving it for a screen that needs the catalog starts it now.
-      if (state.view !== "home" && Boot?.catalogDeferred) ensureCatalog();
+      if (state.view !== "home" && Boot?.catalogDeferred && !lightPending) ensureCatalog();
       return;
     }
     const questionList = $("question-list");
@@ -387,6 +395,11 @@
     // The rows of the home exam list: opening an original reads the exam list only (never the catalog).
     "source-output-direct", "similar-list",
   ]);
+  // 학교별 기출을 시험지 목록만으로 그린 동안(state.light, 카탈로그 아직 없음)의 조건 단추·쪽 넘김·함께 출제 고르기: 시험지 목록만 읽는다.
+  const LIGHT_FIND_ACTIONS = new Set([
+    "finder-search", "finder-axis-quick", "finder-grade", "finder-publisher", "finder-reset", "material", "page-prev", "page-next",
+    "multi-pick", "multi-pick-clear",
+  ]);
   let deferredClick = null;
   const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
   // A button that needs the catalog was pressed before it is ready: say so and press it again when it is.
@@ -471,7 +484,7 @@
       }
       const a = b.dataset.action;
       if (a === "boot-retry") { location.reload(); return; }
-      if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a)) {
+      if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a) && !(state.light && LIGHT_FIND_ACTIONS.has(a))) {
         deferUntilCatalog(b);
         return;
       }
@@ -847,7 +860,7 @@
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         openOriginalAssign(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "multi-pick") {
-        toggleMultiPick(state.catalog.exams[Number(b.dataset.exam)]);
+        toggleMultiPick(catalogExams()[Number(b.dataset.exam)]);
       } else if (a === "multi-pick-clear") {
         clearMultiPick();
       } else if (a === "multi-assign") {
@@ -1737,6 +1750,7 @@
     RECENT_URL_KEYS,
     QUICK_URL_KEYS,
     CATALOG_FREE_ACTIONS,
+    LIGHT_FIND_ACTIONS,
     DEFERRED_NOTICE,
     UID_ROUTE_SCOPE_KEY,
     UID_ROUTE_MAX,
@@ -1747,12 +1761,48 @@
   // The catalog (download, hash check, resolve) is started once, by whoever needs it first: the boot below, or, for a
   // home that opened on the small exam list, the first screen or button that reads the catalog.
   let catalogLoad = null;
+  // 시험지 목록을 받는 동안(lightPending)에는 화면이 카탈로그를 시작하지 않는다: 목록으로 그릴 수 있는지 먼저 정한다.
+  let lightPending = false;
+  let catalogStartQueued = false;
+  // 그린 다음 프레임에 시작해 첫 그리기를 막지 않는다.
+  function startCatalogAfterPaint() {
+    if (!Boot?.catalogDeferred || catalogLoad || catalogStartQueued) return;
+    catalogStartQueued = true;
+    const start = () => { catalogStartQueued = false; ensureCatalog(); };
+    if (typeof requestAnimationFrame === "function" && !document.hidden) requestAnimationFrame(() => setTimeout(start, 0));
+    else setTimeout(start, 0);
+  }
   function ensureCatalog() {
     if (!catalogLoad) catalogLoad = loadCatalog();
     return catalogLoad;
   }
   // The small exam list (archive/data/exam-list-v1.json, built with the release, about 30 KB compressed) lets the home
   // draw its school chips and exam rows without the catalog. Absent (local checkout) or unusable: the catalog loads as before.
+  // 목록만으로 그린 학교별 기출을 전체 자료로 다시 그린다: 보던 위치(스크롤)·입력 중인 검색어·포커스는 그대로 둔다.
+  function renderKeepingFindPlace() {
+    const scrollY = window.scrollY;
+    const active = document.activeElement;
+    const input = $("finder-query");
+    const typed = input ? input.value : null;
+    const focus = active?.id === "finder-query" ? { id: "finder-query", start: active.selectionStart, end: active.selectionEnd }
+      : active?.dataset?.group === "find" && active.dataset.filter ? { filter: active.dataset.filter }
+        : active?.dataset?.action ? { action: active.dataset.action, key: active.dataset.grade || active.dataset.axis || active.dataset.material || active.dataset.publisher || "" }
+          : null;
+    // The boot's own "restore the scroll of this history entry" step runs right after; make it restore this position.
+    rememberCurrentHistoryEntry();
+    render();
+    const next = $("finder-query");
+    if (next && typed !== null && typed !== next.value && focus?.id === "finder-query") next.value = typed;
+    const target = !focus ? null
+      : focus.id ? next
+        : focus.filter ? document.querySelector(`[data-group="find"][data-filter="${focus.filter}"]`)
+          : [...document.querySelectorAll(`[data-action="${focus.action}"]`)].find((el) => (el.dataset.grade || el.dataset.axis || el.dataset.material || el.dataset.publisher || "") === focus.key);
+    if (target && !target.disabled) {
+      target.focus({ preventScroll: true });
+      if (focus.id && typeof target.setSelectionRange === "function" && focus.start != null) { try { target.setSelectionRange(focus.start, focus.end); } catch { /* not a text field */ } }
+    }
+    window.scrollTo(0, scrollY);
+  }
   async function loadLightExamList() {
     try {
       const response = await fetch("data/exam-list-v1.json", { cache: "no-cache" });
@@ -1770,15 +1820,24 @@
     if (isQuickAssessmentView()) quickLoadGroups();
     else if (state.view === "compose") composeLoadGroups();
     Boot?.mountProgress?.($("boot-progress"));
+    // The exam list is requested first for a plain home or school finder; until it is here no screen starts the catalog.
+    lightPending = Boolean(Boot?.catalogDeferred && (state.view === "home" || state.view === "find"));
     // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
     render();
     Boot?.firstPaint?.();
     if (state.view === "recent") loadRecentOnBoot();
-    // 1b) A plain home opens on the exam list alone: no catalog download until a screen or button needs it.
-    if (Boot?.catalogDeferred && state.view === "home" && await loadLightExamList()) {
-      if (state.view === "home") fillHomeFromCatalog();
-      if (!catalogLoad) Boot?.standby?.();
-      return;
+    // 1b) A plain home opens on the exam list alone (no catalog download until a screen or button needs it); the school
+    // finder draws from the same list first and starts the catalog right after that first draw.
+    if (lightPending) {
+      const listed = await loadLightExamList();
+      lightPending = false;
+      if (listed) {
+        if (state.view === "home") {
+          fillHomeFromCatalog();
+          if (!catalogLoad) Boot?.standby?.();
+        } else if (!state.catalog && state.view !== "saved") render();
+        return;
+      }
     }
     ensureCatalog();
   })();
@@ -1824,6 +1883,7 @@
       // are already on screen; every other screen is drawn now.
       if (state.view === "home") fillHomeFromCatalog();
       else if (state.view === "recent") refreshRecentRowsFromCatalog();
+      else if (state.view === "find") renderKeepingFindPlace();
       else if (state.view !== "saved") render();
       // The catalog totals live on the "자료 점검" screen; the status line only reports progress and problems.
       if (!state.uidRoute?.error) status("");

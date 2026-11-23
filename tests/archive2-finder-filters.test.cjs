@@ -403,7 +403,7 @@ test("workspace readUrl and popstate paths reconcile parsed Finder state", () =>
   );
   assert.match(
     workspace,
-    /function reconcileFinderFilters\(filters\)\s*\{\s*if \(!unifiedIndex\(\)\) return C\.reconcileFinderFilters\(filters, state\.catalog\.taxonomy\);/,
+    /function reconcileFinderFilters\(filters\)\s*\{\s*if \(!finderUnified\(\)\) return C\.reconcileFinderFilters\(filters, state\.catalog\.taxonomy\);/,
   );
   assert.match(workspace, /function replaceFinderUrlState\(\)\s*\{[\s\S]*?history\.replaceState\(history\.state \|\| \{\}, "", routeUrl\(\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("page", String\(state\.page\)\)/);

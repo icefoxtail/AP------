@@ -46,7 +46,11 @@ test('only a plain home on an opted-in page defers the catalog; any other addres
   assert.equal(bootFor({ search: '' }).catalogDeferred, true);
   assert.equal(bootFor({ search: '?view=home' }).catalogDeferred, true);
   assert.equal(bootFor({ search: '?perf=1&view=home' }).catalogDeferred, true);
-  for (const search of ['?view=find', '?view=compose', '?view=saved', '?view=recent', '?uid=Q1', '?source=a.js', '?paper_id=x', '?edit_saved_paper=1', '?assign=legacy', '?recipe=five-minute'])
+  // The school finder opens on the list too, unless the address carries a condition only the records can decide.
+  for (const search of ['?view=find', '?view=find&material=exam', '?view=find&query=%EA%B8%88%EB%8B%B9%EA%B3%A0&material=exam&page=1', '?view=find&grade=%EA%B3%A01&axis=1-mid&similarOnly=1'])
+    assert.equal(bootFor({ search }).catalogDeferred, true, search);
+  for (const search of ['?view=find&semanticSubject=ALGEBRA', '?view=find&curriculumKey=2022', '?view=find&courseKey=x', '?view=find&family=COMMON_1', '?view=find&uid=Q1', '?view=find&source=a.js',
+    '?view=compose', '?view=saved', '?view=recent', '?uid=Q1', '?source=a.js', '?paper_id=x', '?edit_saved_paper=1', '?assign=legacy', '?recipe=five-minute', '?grade=%EA%B3%A01'])
     assert.equal(bootFor({ search }).catalogDeferred, false, search);
   assert.equal(bootFor({ search: '', lazyAttribute: false }).catalogDeferred, false, 'a page that does not opt in never defers');
 });
@@ -131,8 +135,13 @@ function loadHome() {
   vm.runInContext(readArchive('archive2-canonical.js'), ctx);
   vm.runInContext(readArchive('archive2-core.js'), ctx);
   vm.runInContext(readArchive('archive2-history.js'), ctx);
+  vm.runInContext(readArchive('rpm-middle-toc.js'), ctx);
+  vm.runInContext(readArchive('unit-past-exams-core.js'), ctx);
+  vm.runInContext(readArchive('archive2-unified-units.js'), ctx);
+  vm.runInContext(readArchive('archive2-similar.js'), ctx);
   loadWorkspace(ctx, `
-    globalThis.homeTest = { state, catalogExams, homeSchoolChips, homeExamList, renderHome, similarPairs, examIndexOf, CATALOG_FREE_ACTIONS };
+    globalThis.homeTest = { state, catalogExams, homeSchoolChips, homeExamList, renderHome, similarPairs, examIndexOf, CATALOG_FREE_ACTIONS,
+      renderFind, findExams, lightFindUsable, finderSchoolValues, reconcileFinderFilters, LIGHT_FIND_ACTIONS };
   `);
   return ctx.homeTest;
 }
@@ -177,10 +186,11 @@ test('opening an original from the home list needs no catalog, and everything th
   assert.ok(block.includes('openFinderOutput'));
   assert.doesNotMatch(block, /state\.catalog/, 'the original is opened from the exam row only');
   // Leaving the home for a screen that reads the catalog, or pressing a button that does, starts the download.
-  assert.match(main, /if \(state\.view !== "home" && Boot\?\.catalogDeferred\) ensureCatalog\(\);/);
+  assert.match(main, /if \(state\.view !== "home" && Boot\?\.catalogDeferred && !lightPending\) ensureCatalog\(\);/);
   assert.match(main, /status\(DEFERRED_NOTICE\);\s*ensureCatalog\(\);/);
-  // The boot starts the catalog itself unless the home opened on the list.
-  assert.match(main, /Boot\?\.catalogDeferred && state\.view === "home" && await loadLightExamList\(\)/);
+  // The boot asks for the exam list first on a plain home or school finder, and starts the catalog itself otherwise or when the list is unusable.
+  assert.match(main, /lightPending = Boolean\(Boot\?\.catalogDeferred && \(state\.view === "home" \|\| state\.view === "find"\)\);/);
+  assert.match(main, /if \(lightPending\) \{\s*const listed = await loadLightExamList\(\);/);
   assert.match(main, /\n    ensureCatalog\(\);\n  \}\)\(\);/);
   // A list that belongs to another release drops the pending press instead of replaying it on the wrong exam.
   assert.match(main, /state\.light\.identityDigest !== catalog\.identityDigest\) deferredClick = null/);
@@ -190,4 +200,63 @@ test('workspace.html opts in and the release manifest ships the exam list', () =
   assert.match(readArchive('workspace.html'), /<script defer src="archive2-boot\.js[^"]*" data-lazy-catalog><\/script>/);
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools/archive-pages-release-manifest.json'), 'utf8'));
   assert.equal(manifest.examList, true, 'without this the home falls back to downloading the whole catalog');
+});
+
+// ---- the school finder draws from the list first and is the same screen once the catalog is there ----
+const findRows = () => [
+  exam('original/a/25_가나고_고1.js', '가나고', 2025), exam('original/a/26_가나고_고2.js', '가나고', 2026, { grade: '고2', subject: '대수' }),
+  exam('original/a/26_다라고_고1.js', '다라고', 2026), exam('original/a/24_다라고_중1.js', '다라고', 2024, { grade: '중1' }),
+  exam('similar/a/26_가나고_고2_유사.js', '가나고', 2026, { contentType: '유형', material: 'similar', grade: '고2' }),
+];
+const squash = (html) => html.replace(/\s+/g, ' ').replace(/ disabled(?=[ >])/g, '');
+test('the finder draws from the exam list alone, and with the catalog it is the same markup', () => {
+  const light = loadHome();
+  light.state.light = { exams: findRows(), identityDigest: 'a'.repeat(64) };
+  light.state.find = { material: 'exam' };
+  assert.equal(light.lightFindUsable(), true);
+  const lightMarkup = light.renderFind();
+  assert.doesNotMatch(lightMarkup, /find-light-note/, 'a plain list needs no "preparing" line');
+  assert.match(lightMarkup, /가나고/);
+
+  const full = loadHome();
+  full.state.catalog = { exams: findRows(), records: [], taxonomy: [], projectionPolicy: {} };
+  full.state.finderIndex = new Map();
+  full.state.find = { material: 'exam' };
+  assert.equal(squash(full.renderFind()), squash(lightMarkup), 'same rows, same order, same boxes (the list-only screen only has some boxes disabled)');
+  assert.match(lightMarkup, /<select data-filter="curriculumKey" data-group="find" disabled>/, 'the record-based boxes hold their place, disabled');
+});
+
+test('conditions only the records can decide wait for the catalog; the ones a list can answer do not', () => {
+  const light = loadHome();
+  light.state.light = { exams: findRows(), identityDigest: 'a'.repeat(64) };
+  for (const key of ['curriculumKey', 'courseKey', 'semanticSubject', 'family']) {
+    light.state.find = { material: 'exam', [key]: 'x' };
+    assert.equal(light.lightFindUsable(), false, `${key} waits for the catalog`);
+  }
+  light.state.find = { material: 'exam', school: '가나고', yearFrom: '2025', axis: '1-mid', grade: '고2' };
+  assert.equal(light.lightFindUsable(), true);
+  assert.deepEqual(light.findExams().map((e) => e.file), ['original/a/26_가나고_고2.js']);
+  // A word and a grade can still change once the question texts / record grades are known: say so, never "no results".
+  light.state.find = { material: 'exam', query: '아무글자' };
+  const markup = light.renderFind();
+  assert.match(markup, /문항 단위 검색을 준비하는 중…/);
+  assert.match(markup, /find-empty-pending/);
+  assert.doesNotMatch(markup, /현재 조건에 맞는 자료가 없습니다/);
+  light.state.catalog = { exams: findRows(), records: [], taxonomy: [], projectionPolicy: {} };
+  light.state.finderIndex = new Map();
+  const done = light.renderFind();
+  assert.doesNotMatch(done, /find-light-note|find-empty-pending/);
+  assert.match(done, /현재 조건에 맞는 자료가 없습니다/, 'the empty message appears only once the catalog is ready');
+});
+
+test('the finder buttons run on the list alone only while there is a list, and the rest still waits for the catalog', () => {
+  const home = loadHome();
+  for (const action of ['finder-search', 'finder-axis-quick', 'finder-grade', 'finder-publisher', 'finder-reset', 'material', 'page-prev', 'page-next', 'multi-pick', 'multi-pick-clear'])
+    assert.ok(home.LIGHT_FIND_ACTIONS.has(action), action);
+  for (const action of ['go-compose', 'source-issue', 'multi-assign', 'source-toggle', 'sources-clear', 'finder-subject'])
+    assert.equal(home.LIGHT_FIND_ACTIONS.has(action), false, `${action} waits for the catalog`);
+  const main = readWorkspacePart('main');
+  assert.match(main, /!\(state\.light && LIGHT_FIND_ACTIONS\.has\(a\)\)/);
+  assert.match(main, /startCatalogAfterPaint\(\);\s*return;/, 'the catalog starts after the list-only draw');
+  assert.match(main, /else if \(state\.view === "find"\) renderKeepingFindPlace\(\);/, 'the full screen replaces the list-only one in place');
 });

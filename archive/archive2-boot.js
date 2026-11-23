@@ -8,13 +8,20 @@
   //  - 첫 화면이 그려지기 전에는 큰 자료를 canonical에 넘기지 않아(내려받기는 계속) 해시·해석이 첫 그리기를 막지 않는다.
   // 이 파일은 자료를 해석하거나 검증하지 않는다. canonical.loadInputBundle이 받는 fetcher만 바꿔 끼운다.
   const NS = "archive2:boot:";
-  // 가벼운 홈 (2026-11-23): 페이지가 `data-lazy-catalog`로 알리고 주소가 평범한 홈이면, 전체 카탈로그 받기를 시작하지 않고
-  // (meta-foundation-runtime.js가 이 값을 본다) 시험지 목록만으로 홈을 먼저 그린다. 카탈로그는 필요한 화면·버튼이 처음 누를 때 시작한다.
-  // 주소에 다른 값(view=find, uid, source 등)이 있으면 항상 지금처럼 바로 받는다.
+  // 가벼운 홈·학교별 기출 (2026-11-23): 페이지가 `data-lazy-catalog`로 알리고 주소가 평범한 홈 또는 학교별 기출이면, 전체 카탈로그 받기를
+  // 로드 때 시작하지 않고(meta-foundation-runtime.js가 이 값을 본다) 시험지 목록만으로 먼저 그린다. 카탈로그는 workspace 코드가
+  // 목록을 그린 뒤(학교별 기출) 또는 필요한 화면·버튼이 처음 누를 때(홈) 시작한다.
+  // 학교별 기출 주소에 교육과정·과목·계열(레코드에서 판정하는 값)이나 다른 값(uid, source 등)이 있으면 항상 지금처럼 바로 받는다.
+  const LIGHT_FIND_KEYS = new Set(["perf", "view", "page", "grade", "school", "yearFrom", "yearTo", "axis", "query", "material", "file", "similarOnly"]);
   const lazyCatalogPage = (() => {
     try {
       if (!document.currentScript || !document.currentScript.hasAttribute("data-lazy-catalog")) return false;
       const params = new URLSearchParams(location.search);
+      const view = params.get("view");
+      if (view === "find") {
+        for (const key of params.keys()) if (!LIGHT_FIND_KEYS.has(key)) return false;
+        return true;
+      }
       for (const [key, value] of params) if (!(key === "perf" || (key === "view" && value === "home"))) return false;
       return true;
     } catch { return false; }
