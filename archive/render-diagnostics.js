@@ -217,6 +217,9 @@
     }
     function questionNoOf(box) {
         if (!box) return null;
+        // 오답 인쇄(apmath/wrong_print_engine.html)는 학생마다 번호를 1부터 다시 매기고, 이어짐 상자에는 번호 칸이 없어 상자에 번호를 직접 적어 둔다.
+        const stamped = Number(box.getAttribute?.('data-ap-diag-no'));
+        if (Number.isFinite(stamped) && stamped > 0) return stamped;
         const label = box.querySelector?.('.q-num')?.textContent || '';
         const shown = /(\d+)/.exec(label);
         if (shown) return Number(shown[1]);
@@ -236,13 +239,19 @@
         const isImage = node.hasAttribute('data-ap-image-error');
         const ref = box?.getAttribute('data-source-ref') || node.closest('[data-source-ref]')?.getAttribute('data-source-ref') || '';
         const file = (ref.split('#')[0] || String(root.AppState?.sourceArchiveFile || ''));
-        return {
+        const entry = {
             file,
             questionNo: questionNoOf(box),
             part: isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
             code: node.getAttribute('data-ap-math-error') || node.getAttribute('data-ap-image-error') || 'MATH_TYPESET_ERROR',
             excerpt: node.getAttribute('data-ap-math-excerpt') || node.getAttribute('data-ap-image-excerpt') || ''
         };
+        // 여러 학생·여러 원본 시험이 섞이는 화면(오답 인쇄)만 상자에 적어 둔 학생·원본 문항 번호가 더 붙는다. 없으면 기존 모양 그대로.
+        const student = box?.getAttribute?.('data-ap-diag-student');
+        if (student) entry.student = student;
+        const sourceNo = box?.getAttribute?.('data-ap-diag-src-no');
+        if (sourceNo) entry.sourceNo = /^\d+$/.test(sourceNo) ? Number(sourceNo) : sourceNo;
+        return entry;
     }
     function collect(scope) {
         const area = scope || root.document?.getElementById('print-area');
@@ -255,10 +264,17 @@
         if (!bar || doc.body?.classList.contains('screen-fit-mode')) return false;
         try { return root.getComputedStyle(bar).display !== 'none'; } catch (error) { return true; }
     }
+    function shortFile(file) {
+        const name = String(file || '').split('/').pop().replace(/\.js$/i, '');
+        return name.length > 40 ? name.slice(0, 39) + '…' : name;
+    }
     function targetLabel(entry) {
         if (isImageEntry(entry)) return (entry.questionNo == null ? '문항 번호를 알 수 없는 곳' : entry.questionNo + '번') + ' ' + entry.part;
         const where = entry.questionNo == null ? '문항 번호를 알 수 없는 곳' : entry.questionNo + '번';
-        return entry.part ? where + ' ' + entry.part : (entry.questionNo == null ? where : where + ' 문항');
+        const base = entry.part ? where + ' ' + entry.part : (entry.questionNo == null ? where : where + ' 문항');
+        // 오답 인쇄: "김가나 2번 해설 (원본 시험이름 4번)" — 어느 학생의 어느 원본 문항인지 함께 알린다.
+        const source = entry.sourceNo == null ? '' : ' (원본 ' + (shortFile(entry.file) ? shortFile(entry.file) + ' ' : '') + entry.sourceNo + '번)';
+        return (entry.student ? entry.student + ' ' : '') + base + source;
     }
     function flash(node) {
         node.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
@@ -285,7 +301,7 @@
         const groups = [];
         const nodes = Array.from(area.querySelectorAll(ALL_MARKS));
         entries.forEach((entry, index) => {
-            const key = entry.questionNo + '|' + entry.part;
+            const key = [entry.student || '', entry.file || '', entry.sourceNo ?? '', entry.questionNo, entry.part].join('|');
             let group = groups.find(item => item.key === key);
             if (!group) { group = { key, entry, node: nodes[index], count: 0 }; groups.push(group); }
             group.count += 1;
