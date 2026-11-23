@@ -19,6 +19,8 @@ const EXAM_UID=/^[\p{L}\p{N}_.-]{1,180}$/u;
 export const DISPLAY_SCALE_TOLERANCE_CSS_PX=1;// compareActualDisplayEnvelope's default toleranceCssPx
 const FLOAT_SLACK=1e-9;// exactly 1 px must not be refused for float noise (a 1 px difference of 174/384 computes to 1.000000000000007)
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});// the matrix row below, as in phase2.mjs 739
+// A phone (<= 640 px wide: archive2-preview-mobile.css shows the solution figure at most 92% of the box wide and 340 px high). 390 x 844 is the common modern phone.
+export const PHONE_VIEWPORT=Object.freeze({width:390,height:844});
 const PROTECTED_FIELDS=['content','choices','answer','solution','image'];
 const PATCHED_FIELDS=['solutionImage','solutionImageSize','solutionImageAlt'];
 const SCALE_FIELD='solutionImageScale';// added to the patch only when the measured policy carries a scale (% of the column, 30-100)
@@ -104,7 +106,7 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
       const preflightRun=path.join(input.productionDir,scale===undefined?'display-envelope-preflight':'display-envelope-preflight-scale'+scale);fs.mkdirSync(preflightRun,{recursive:true});
       state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
       let measured;
-      try{measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef:input.sourceRef,sourceOrdinal:ordinal,targetId:identity.assetId,questionUid:identity.questionUid,intrinsicSvg,signal,onProgress,blockExternalRequests:true,...(scale!==undefined?{solutionImageScale:scale}:{})});}
+      try{measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef:input.sourceRef,sourceOrdinal:ordinal,targetId:identity.assetId,questionUid:identity.questionUid,intrinsicSvg,signal,onProgress,blockExternalRequests:true,sizeClasses:[requestedSizeClass],...(scale!==undefined?{solutionImageScale:scale}:{})});}
       catch(error){if(isCancel(error))throw error;throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:errorText(error)});}
       if(measured.status!=='PASS')throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'MEASUREMENT_NOT_PASS'});
       const names=fs.readdirSync(measured.captureFolder),rowName=names.find(name=>name===identity.assetId+'-sol-desktop-envelope.json'),shotName=names.find(name=>name.endsWith('-'+identity.assetId+'-envelope-context.png'));
@@ -283,8 +285,8 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
  */
 export async function captureArchiveCandidate({composed,identity,sourcePath,ordinal,requestedSizeClass,measuredPolicy,alt,runId,signal,onProgress,fixtureClassification=null}={}){
   const lineage=Object.fromEntries(LINEAGE_KEYS.map(key=>[key,null]));
-  const state={paths:null,protectedParity:null,solutionImageScale:undefined,sizeClass:null,observedDisplayScale:null,expectedDisplayScale:null,displayScaleDeltaCssPx:null,layout:null,checks:null};
-  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,lineage:{...lineage},paths:state.paths,protectedParity:state.protectedParity,...(state.solutionImageScale!==undefined?{solutionImageScale:state.solutionImageScale}:{}),sizeClass:state.sizeClass,observedDisplayScale:state.observedDisplayScale,expectedDisplayScale:state.expectedDisplayScale,displayScaleDeltaCssPx:state.displayScaleDeltaCssPx,layout:state.layout,checks:state.checks,fixtureClassification,...flags(onProgress)});
+  const state={paths:null,protectedParity:null,solutionImageScale:undefined,phone:null,pageNotes:[],sizeClass:null,observedDisplayScale:null,expectedDisplayScale:null,displayScaleDeltaCssPx:null,layout:null,checks:null};
+  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,lineage:{...lineage},paths:state.paths,protectedParity:state.protectedParity,...(state.solutionImageScale!==undefined?{solutionImageScale:state.solutionImageScale}:{}),sizeClass:state.sizeClass,observedDisplayScale:state.observedDisplayScale,expectedDisplayScale:state.expectedDisplayScale,displayScaleDeltaCssPx:state.displayScaleDeltaCssPx,layout:state.layout,checks:state.checks,...(state.phone?{phone:state.phone}:{}),...(state.pageNotes.length?{pageNotes:state.pageNotes}:{}),fixtureClassification,...flags(onProgress)});
   try{
     const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress});
     if(typeof alt!=='string'||!alt.trim())throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'ALT'});
@@ -324,7 +326,9 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     writeNew(candidateFile,candidateBytes);lineage.candidateBankSha256=bytesSha(candidateBytes);
     // matrix: phase2.mjs 738-740, except that the asset carries no sizeClass, so the row reports the class of the rendered wrapper instead of echoing the request
     const info={id:assetId,sourcePath,sourceSha256:bare(input.sourceRef.sha256),candidatePath:rel(candidateFile),candidateSha256:bare(lineage.candidateBankSha256),questionCount:input.bank.length,assets:[{id:assetId,path:lineage.assetPath,archivePath:archiveAssetRef,sha256:bare(svgSha256),questionId:ordinal}]};
-    const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:bare(engineRef.sha256),sources:[info],rows:[{...info,mode:'sol',viewport:'desktop',...PUBLICATION_VIEWPORT,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))}]};
+    const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:bare(engineRef.sha256),sources:[info],rows:[{...info,mode:'sol',viewport:'desktop',...PUBLICATION_VIEWPORT,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))},
+      // the same exam page on a phone: the figure must load, stay inside its question box and the screen, and keep its labels whole at the size the phone shows it
+      {...info,mode:'sol',viewport:'phone',...PHONE_VIEWPORT,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))}]};
     const archiveRun=path.join(input.productionDir,'archive-capture'),matrixFile=path.join(archiveRun,'archive-render-matrix.json'),matrixBytes=Buffer.from(canonicalJson(matrix),'utf8');
     writeNew(matrixFile,matrixBytes);lineage.matrixSha256=bytesSha(matrixBytes);
     state.paths={runRoot:rel(input.runRoot),asset:lineage.assetPath,candidateBank:rel(candidateFile),matrix:rel(matrixFile),archiveRow:null,screenshots:null};
@@ -334,7 +338,7 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     let archive;
     try{archive=await recordArchiveEvidence({run:archiveRun,signal,onProgress,blockExternalRequests:true});}
     catch(error){if(isCancel(error))throw error;throw new Stop('ARCHIVE_CAPTURE_ERROR',{message:errorText(error)});}
-    const captureFolder=path.join(archiveRun,'archive-render/attempt-01'),prefix=assetId+'-sol-desktop',rowFile=path.join(captureFolder,prefix+'.json');
+    const captureFolder=path.join(archiveRun,'archive-render/attempt-01'),prefix=assetId+'-sol-desktop',phonePrefix=assetId+'-sol-phone',rowFile=path.join(captureFolder,prefix+'.json');
     if(!fs.existsSync(rowFile))throw new Stop('ARCHIVE_CAPTURE_ERROR',{message:'ARCHIVE_ROW_MISSING'});
     const rowBytes=fs.readFileSync(rowFile),row=JSON.parse(rowBytes.toString('utf8'));
     lineage.archiveRowSha256=bytesSha(rowBytes);state.paths.archiveRow=rel(rowFile);state.paths.screenshots={};lineage.screenshotSha256s={};
@@ -343,7 +347,8 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     const received=urlPath=>(row.responses||[]).filter(response=>normalizeArchiveImageUrlPath(response.url)===urlPath);
     const responses=received('/archive/'+archiveAssetRef),bankResponses=received('/'+sourcePath);
     lineage.assetResponseSha256=responseSha(responses);
-    if(archive.status!=='PASS')throw new Stop('ARCHIVE_CAPTURE_FAIL',{rows:archive.rows,errors:archive.rows.flatMap(item=>item.errors??[])});
+    const desktopRows=archive.rows.filter(item=>item.id===prefix),phoneRows=archive.rows.filter(item=>item.id===phonePrefix);
+    if(desktopRows.some(item=>item.status!=='PASS'))throw new Stop('ARCHIVE_CAPTURE_FAIL',{rows:desktopRows,errors:desktopRows.flatMap(item=>item.errors??[])});
 
     // bind
     const target=row.state?.targets?.find(item=>item.id===assetId),rect=target?.rect;
@@ -372,7 +377,6 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
       assetResponse:pass(responses.length===1&&responses[0].status===200&&lineage.assetResponseSha256===svgSha256),
       bankResponse:pass(bankResponses.length===1&&bankResponses[0].status===200&&responseSha(bankResponses)===lineage.candidateBankSha256),
       naturalSize:pass(target?.loaded===true&&target.naturalWidth===intrinsic.width&&target.naturalHeight===intrinsic.height),
-      sizeClass:pass(target?.sizeClass===requestedSizeClass),
       displayScale:pass(finite&&difference.withinTolerance),
       layout:pass(layout.status==='PASS')
     };
@@ -381,12 +385,25 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
       assetResponse:{expected:svgSha256,responses:responses.map(({status,sha256,bytes})=>({status,sha256,bytes}))},
       bankResponse:{expected:lineage.candidateBankSha256,responses:bankResponses.map(({status,sha256,bytes})=>({status,sha256,bytes}))},
       naturalSize:{expected:intrinsic,observed:target?{loaded:target.loaded,width:target.naturalWidth,height:target.naturalHeight}:null},
-      sizeClass:{requested:requestedSizeClass,observed:target?.sizeClass??null},
       displayScale:{expected:state.expectedDisplayScale,observed:state.observedDisplayScale,deltaCssPx:state.displayScaleDeltaCssPx,toleranceCssPx:DISPLAY_SCALE_TOLERANCE_CSS_PX,imageRect:rect??null},
       layout:{source:layout.source,errors:layout.errors}
     };
-    const failed=[['network','ARCHIVE_NETWORK_NOT_LOCAL'],['assetResponse','ARCHIVE_ASSET_RESPONSE_MISMATCH'],['bankResponse','ARCHIVE_BANK_RESPONSE_MISMATCH'],['naturalSize','ARCHIVE_ASSET_RESPONSE_MISMATCH'],['sizeClass','ARCHIVE_SIZE_CLASS_MISMATCH'],['displayScale','ARCHIVE_DISPLAY_SCALE_MISMATCH'],['layout','ARCHIVE_LAYOUT_FAIL']].find(([key])=>state.checks[key]!=='PASS');
+    const failed=[['network','ARCHIVE_NETWORK_NOT_LOCAL'],['assetResponse','ARCHIVE_ASSET_RESPONSE_MISMATCH'],['bankResponse','ARCHIVE_BANK_RESPONSE_MISMATCH'],['naturalSize','ARCHIVE_ASSET_RESPONSE_MISMATCH'],['displayScale','ARCHIVE_DISPLAY_SCALE_MISMATCH'],['layout','ARCHIVE_LAYOUT_FAIL']].find(([key])=>state.checks[key]!=='PASS');
     if(failed)throw new Stop(failed[1],{check:failed[0],...detail[failed[0]]});
+    // Notes about the rest of the exam page (not this figure) travel with the result but never fail it.
+    state.pageNotes=[...(row.pageNotes||[])];
+    // The same page on a phone (<= 640 px): the figure loaded, inside its question box and the screen, with whole labels (isolated replay at the rect the phone really gives it).
+    const phoneFile=path.join(captureFolder,phonePrefix+'.json');
+    if(fs.existsSync(phoneFile)){
+      const phoneRow=JSON.parse(fs.readFileSync(phoneFile,'utf8')),phoneTarget=phoneRow.state?.targets?.find(item=>item.id===assetId),phoneRect=phoneTarget?.rect;
+      const phoneRectOk=phoneRect&&['width','height'].every(key=>Number.isFinite(phoneRect[key])&&phoneRect[key]>0);
+      const outsideScreenPx=phoneRectOk?Math.max(0,-phoneRect.x,phoneRect.x+phoneRect.width-PHONE_VIEWPORT.width):null;
+      const phoneErrors=[...(phoneRow.errors||[])];
+      if(phoneRectOk&&outsideScreenPx>DISPLAY_SCALE_TOLERANCE_CSS_PX)phoneErrors.push('TARGET_OUTSIDE_SCREEN:'+assetId);
+      if(!phoneRectOk&&!phoneErrors.length)phoneErrors.push('NO_TARGET_RECT');
+      state.phone={status:phoneErrors.length?'FAIL':'PASS',viewport:{...PHONE_VIEWPORT},imageRect:phoneRect??null,displayScale:phoneRectOk?Math.min(phoneRect.width/intrinsic.width,phoneRect.height/intrinsic.height):null,outsideScreenPx,errors:phoneErrors,...(phoneRow.pageNotes?.length?{pageNotes:phoneRow.pageNotes}:{})};
+      if(phoneErrors.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL',{...state.phone});
+    }else if(phoneRows.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL',{errors:phoneRows.flatMap(item=>item.errors??[])});
     return outcome('ARCHIVE_BOUND');
   }catch(error){
     if(!(error instanceof Stop))throw error;

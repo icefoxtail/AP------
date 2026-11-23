@@ -108,7 +108,7 @@ async function fixtureCapture(composed,tag){
   return {schemaVersion:'construction-archive-capture-v1',status:'ARCHIVE_BOUND',detail:null,
     lineage:{l1SvgSha256:composed.lineage.svgSha256,policySha256:fake('policy'),candidateBankSha256:fake('bank'),assetPath:null,assetResponseSha256:composed.lineage.svgSha256,archiveRowSha256:bytesSha(rowBytes),screenshotSha256s:sha,matrixSha256:fake('matrix'),engineSha256:fake('engine')},
     paths:{runRoot:relOf(dir),asset:null,candidateBank:null,matrix:null,archiveRow:relOf(rowFile),screenshots:paths},
-    checks:{network:'PASS',assetResponse:'PASS',bankResponse:'PASS',naturalSize:'PASS',sizeClass:'PASS',displayScale:'PASS',layout:'PASS'},
+    checks:{network:'PASS',assetResponse:'PASS',bankResponse:'PASS',naturalSize:'PASS',displayScale:'PASS',layout:'PASS'},
     evidenceIntegrity:'NO_CALLER_HOOK',uidAuthority:'STRUCTURAL_ONLY',independentInverseObservation:'NOT_RUN',qualification:'NOT_RUN',publication:'NOT_RUN',productionAuthorized:false,fixtureClassification:'HAND_BUILT_CAPTURE_REAL_PNG'};
 }
 const context=()=>contextPromise??=(async()=>{
