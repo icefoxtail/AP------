@@ -66,3 +66,35 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
 - 같은 PC의 같은 Chrome으로만 비교한다. 다른 PC의 결과와 바이트를 맞추려 하지 않는다.
+
+## 의미 골든 (semantic golden, R0-2)
+
+golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌는 수정이 **학생에게 맞는 그림인가**는 보증하지 못한다. 의미 골든은 학생이 실제로 틀리게 읽은 그림(3·2^(x+1)이 `32^(x+1)`로 붙음, 각 라벨 `4π°`, 축 이름이 다른 글자, 넓이 값이 변 옆에 놓여 길이로 읽힘, −π 눈금이 y값처럼 읽힘)을 표 한 장으로 고정한다. 같은 결함이 다시 생기면 테스트가 실패하고, 새 결함은 표에 행 하나를 더하면 된다.
+
+- 표: `ops/semantic-golden/table.json`. 실행기: `ops/semantic-golden/semantic-golden.mjs`(node), 파이썬 쪽 `semantic_golden.py`, 이름 붙은 SVG 변조 `semantic_mutations.py`(표준 라이브러리만)·`layout-capture.mjs`(JS 관측기 쪽).
+- 실행: `node archive/tools/geometry-equation/ops/semantic-golden/semantic-golden.mjs [--ids a,b] [--neutralize 변조이름,...]`. 렌더 의존성(sympy, mathjax)이 필요하다(`PYTHONPATH=<저장소>/.tmp/apmath-visual-engine/dependencies/python`). 브라우저는 쓰지 않는다. 행당 수십 초(sympy 불러오기가 대부분).
+- 종료 코드: 0 모두 기대대로(KNOWN_GAP은 따로 나열, 통과로 세지 않음), 1 실패, 2 의존성이 없어 돌리지 못함(NOT_RUN).
+- 테스트: `node --test archive/tools/geometry-equation/ops/semantic-golden/semantic-golden.test.mjs`(`tools/run-tests.js`에 들어 있음). 표 형식·변조 단위 시험은 python만 있으면 돌고, 표 전체 대조는 의존성이 없으면 skip한다.
+
+### 한 행
+
+| 필드 | 뜻 |
+|---|---|
+| `id` | kebab-case, 표 안에서 유일 |
+| `defect` | 학생이 무엇을 틀리게 읽는가(한 줄) |
+| `reuses` | 이 행이 기대는 저장소의 기존 테스트·관측기 파일 경로(1개 이상, 존재해야 함). 같은 검사를 두 벌 만들지 않기 위한 표시 |
+| `plan` | 작은 인라인 plan 객체, 또는 이 폴더 기준 plan 파일 경로(`plans/…json`). `planPatch`(`{"점.찍은.경로": 값}`)로 일부만 바꿀 수 있다 |
+| `generator.kind` | plan을 무엇으로 돌리나: `exp-label-tex`(지수 식 글자·TeX), `math-label-serialize`(공용 수식 직렬화), `construction-marks`(작도 plan의 plane marks, specFor), `angle-fixture`·`region-fixture`(엔진이 만든 그림을 기존 테스트의 fixture로 관측기에 넣음), `axis-titles-model`(그래프 plan의 축 이름), `axis-value-layout`(축 값 라벨 배치) |
+| `expect` | 생성기 판정: `PASS` 또는 `REJECT:<코드>`(코드나 `코드:세부`와 일치) |
+| `observer.kind` | (선택) 정상 그림을 읽는 관측기: `exp-formula-glyphs`, `angle-label`, `region-label`, `axis-titles`, `layout-capture`(`codePrefix`로 이 규칙의 코드만 본다) |
+| `mutations[]` | (observer가 있으면 필수) `{name, args?, expect, knownGap?}`. 정상 그림에 이름 붙은 변조를 가해 관측기에 넣었을 때 `expect` 코드가 나와야 한다. 정상 그림은 관측기가 오류 없이 받아들여야 한다 |
+
+### 행을 더하는 법
+
+1. 결함 하나를 정한다. 저장소에서 그 결함을 이미 막는 테스트·관측기 코드를 먼저 찾는다(`reuses`에 적는다). 새 검사를 만들지 않고 그것을 부른다.
+2. 변조가 필요하면 이름 붙은 함수 하나를 만든다. SVG 문자열을 바꾸는 것은 `semantic_mutations.py`(그리고 `SVG_MUTATIONS`·`test_semantic_mutations.py`), 기존 test fixture가 필요한 것은 `semantic_golden.py`의 해당 관측기, JS 캡처를 바꾸는 것은 `layout-capture.mjs`의 `MUTATIONS`에 둔다. 바꿀 것이 없으면 `MutationNotApplicable`을 내서(조용히 아무것도 안 하지 않는다) 행이 이유 없이 통과하지 못하게 한다.
+3. 새 변조·관측기·생성기 이름은 `semantic-golden.mjs`의 `GENERATOR_KINDS`/`OBSERVER_MUTATIONS`와 `semantic_golden.py`의 레지스트리에 같이 적는다. `semantic-golden.test.mjs`가 두 쪽이 같은지 확인한다.
+4. 표에 행을 적고 `--ids <id>`로 돌린다. **훼손 확인**: 변조 이름을 `--neutralize`로 꺼 보면 그 행이 FAIL이어야 하고(테스트가 모든 변조에 대해 자동으로 확인한다), 관측기의 해당 판정을 잠깐 꺼도 FAIL이어야 한다. 확인한 뒤 원복한다.
+5. 관측기가 실제로는 그 변조를 못 잡으면 관측기를 고치지 않는다(R0 범위 밖). 그 변조 줄에 `knownGap`(이유 10자 이상)을 적는다. 실행기는 `KNOWN_GAP`으로 따로 나열하고 통과로 세지 않는다. 나중에 관측기가 그것을 잡게 되면 그 행이 FAIL로 바뀌어 `knownGap`을 지우라고 알려 준다.
+
+원칙: 기존 관측기·생성기 규칙·거절 코드·테스트 기대값은 바꾸지 않고, 표는 그것을 부르기만 한다. 엔진 코드를 바꿔야 할 것 같으면 표에 맞추지 말고 멈추고 보고한다.
