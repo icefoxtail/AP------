@@ -20,7 +20,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\angle x$의 크기를 구하면? (3점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q01-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림에서 $\\angle x$의 크기를 구하면? (3점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q01-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$25^\\circ$",
       "$30^\\circ$",
@@ -30,8 +30,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "일직선과 삼각형의 내각의 합을 차례로 이용한다.\n세 점 $A,E,C$가 한 직선 위에 있으므로\n$\\angle CED=180^\\circ-130^\\circ=50^\\circ$이다.\n\n$\\triangle CED$에서\n$\\angle ECD=180^\\circ-50^\\circ-60^\\circ=70^\\circ$이다.\n세 점 $B,C,D$가 한 직선 위에 있으므로\n$\\angle BCA=180^\\circ-70^\\circ=110^\\circ$이다.\n\n따라서 $\\triangle ABC$에서\n$\\angle x=180^\\circ-40^\\circ-110^\\circ=30^\\circ$이다.\n정답은 ②이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q01-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q01-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q01-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q01-solution.svg",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
     "crossConceptKeys": [],
@@ -127,7 +127,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 정팔각형과 정육각형의 일부를 겹쳐 놓은 것이다. 이때 $\\angle x+\\angle y$의 값은? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 정팔각형과 정육각형의 일부를 겹쳐 놓은 것이다. 이때 $\\angle x+\\angle y$의 값은? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q03-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$150^\\circ$",
       "$155^\\circ$",
@@ -137,8 +137,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "정다각형의 한 내각의 크기를 구하여 겹친 오각형의 내각의 합을 이용한다.\n정팔각형의 한 내각의 크기는\n$\\dfrac{(8-2)\\times180^\\circ}{8}=135^\\circ$이다.\n정육각형의 한 내각의 크기는\n$\\dfrac{(6-2)\\times180^\\circ}{6}=120^\\circ$이다.\n\n겹친 부분은 오각형이므로 내각의 합은\n$(5-2)\\times180^\\circ=540^\\circ$이다.\n이 오각형의 다섯 내각은 $135^\\circ, 135^\\circ, 120^\\circ, \\angle x, \\angle y$이므로\n$135^\\circ+135^\\circ+120^\\circ+\\angle x+\\angle y=540^\\circ$\n$390^\\circ+\\angle x+\\angle y=540^\\circ$\n따라서 $\\angle x+\\angle y=150^\\circ$이다.\n정답은 ①이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q03-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q03-solution.svg",
     "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
     "crossConceptKeys": [],
@@ -184,7 +184,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 반지름의 길이가 같은 두 원 $O$, $O'$이 서로 다른 원의 중심을 지나게 놓은 것이다. 두 원의 반지름의 길이가 6일 때, $\\wideparen{AOB}+\\wideparen{AO'B}$는? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 반지름의 길이가 같은 두 원 $O$, $O'$이 서로 다른 원의 중심을 지나게 놓은 것이다. 두 원의 반지름의 길이가 6일 때, $\\wideparen{AOB}+\\wideparen{AO'B}$는? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$4\\pi$",
       "$5\\pi$",
@@ -194,8 +194,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "두 원의 중심 $O, O'$과 교점 $A, B$를 잇는다.\n$OA=OO'=O'A=6$이므로 $\\triangle AOO'$는 정삼각형이다.\n마찬가지로 $\\triangle BOO'$도 정삼각형이다.\n따라서 $\\angle AOB=\\angle AO'B=60^\\circ+60^\\circ=120^\\circ$이다.\n\n반지름이 $6$인 원에서 중심각 $120^\\circ$인 호의 길이는\n$2\\pi\\times6\\times\\dfrac{120}{360}=4\\pi$이다.\n두 호의 길이의 합은\n$4\\pi+4\\pi=8\\pi$이다.\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q04-solution.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [
@@ -243,7 +243,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 한 변의 길이가 $9\\rm\\,cm$인 정사각형 $ABCD$에서 두 점 $A$, $B$를 중심으로 하는 부채꼴을 각각 그린 것이다. 이때 색칠한 부분의 둘레의 길이는? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q05-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 한 변의 길이가 $9\\rm\\,cm$인 정사각형 $ABCD$에서 두 점 $A$, $B$를 중심으로 하는 부채꼴을 각각 그린 것이다. 이때 색칠한 부분의 둘레의 길이는? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q05-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$(3\\pi+18)\\rm\\,cm$",
       "$(4\\pi+18)\\rm\\,cm$",
@@ -253,8 +253,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "두 부채꼴의 교점을 $E$라 하면 $AE=BE=AB=9\\rm\\,cm$이므로 $\\triangle ABE$는 정삼각형이다.\n따라서 $\\angle EAB=\\angle ABE=60^\\circ$이다.\n\n색칠한 부분의 곡선 경계는 반지름 $9\\rm\\,cm$, 중심각 $60^\\circ$인 두 호이므로 각 호의 길이는\n$2\\pi\\times9\\times\\dfrac{60}{360}=3\\pi\\rm\\,cm$이다.\n두 호의 길이의 합은 $3\\pi\\times2=6\\pi\\rm\\,cm$이다.\n직선 경계의 길이는 선분 $AE+BE=9+9=18\\rm\\,cm$이다.\n\n따라서 색칠한 부분의 둘레의 길이는\n$(6\\pi+18)\\rm\\,cm$이다.\n정답은 ③이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q05-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q05-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q05-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q05-solution.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [
@@ -302,7 +302,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 원 $O$에서 $\\angle AOB=\\angle BOC$라고 할 때, 이에 대한 설명 중 옳지 않은 것은? (5점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg\" alt=\"\"><br>",
+    "content": "다음 원 $O$에서 $\\angle AOB=\\angle BOC$라고 할 때, 이에 대한 설명 중 옳지 않은 것은? (5점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$\\wideparen{AB}=\\wideparen{BC}$",
       "$\\overline{AC}=2\\overline{AB}$",
@@ -312,8 +312,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "중심각의 크기와 호, 현, 부채꼴의 넓이 사이의 관계를 확인한다.\n$\\angle AOB=\\angle BOC$이므로 호의 길이와 부채꼴의 넓이는 중심각의 크기에 정비례하여\n$\\wideparen{AB}=\\wideparen{BC}$, $\\wideparen{AC}=2\\wideparen{AB}$,\n(부채꼴 $AOC$의 넓이)$=2\\times$(부채꼴 $AOB$의 넓이)는 모두 옳다.\n또한 $OA=OB=OC$이고 끼인각이 같으므로 $\\triangle AOB \\equiv \\triangle BOC$ (SAS합동)도 옳다.\n\n그러나 현의 길이는 중심각의 크기에 정비례하지 않는다.\n$\\triangle ABC$에서 삼각형의 두 변의 길이의 합은 나머지 한 변보다 크므로\n$\\overline{AC} < \\overline{AB}+\\overline{BC}=2\\overline{AB}$이다.\n따라서 $\\overline{AC}=2\\overline{AB}$는 옳지 않다.\n정답은 ②이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q06-solution.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [
@@ -462,7 +462,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 직사각형 $ABCD$를 변 $CD$를 회전축으로 하여 1회전 시켜 회전체를 만든다고 할 때, 이 회전체를 회전축에 수직인 평면으로 자른 단면의 넓이는? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q09-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같은 직사각형 $ABCD$를 변 $CD$를 회전축으로 하여 1회전 시켜 회전체를 만든다고 할 때, 이 회전체를 회전축에 수직인 평면으로 자른 단면의 넓이는? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q09-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$12\\pi\\rm\\,cm^2$",
       "$16\\pi\\rm\\,cm^2$",
@@ -472,8 +472,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "직사각형의 한 변을 축으로 회전시키면 원기둥이 만들어진다.\n변 $CD$를 회전축으로 1회전 시키면 반지름의 길이가 $AD=6\\rm\\,cm$이고 높이가 $CD=8\\rm\\,cm$인 원기둥이 된다.\n\n회전축에 수직인 평면으로 자른 단면은 밑면과 평행한 원이므로 반지름이 $6\\rm\\,cm$인 원이다.\n따라서 단면의 넓이는\n$\\pi\\times6^2=36\\pi\\rm\\,cm^2$이다.\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q09-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q09-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q09-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q09-solution.svg",
     "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
     "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
     "crossConceptKeys": [],
@@ -571,7 +571,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $r\\rm\\,cm$인 반구 모양의 쇠를 여러 개 녹여 밑면의 반지름의 길이가 $3r\\rm\\,cm$이고 높이가 $2r\\rm\\,cm$인 원기둥 모양의 쇠를 만든다고 할 때, 반구 모양의 쇠가 총 몇 개 필요한지 구하면? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q11-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 반지름의 길이가 $r\\rm\\,cm$인 반구 모양의 쇠를 여러 개 녹여 밑면의 반지름의 길이가 $3r\\rm\\,cm$이고 높이가 $2r\\rm\\,cm$인 원기둥 모양의 쇠를 만든다고 할 때, 반구 모양의 쇠가 총 몇 개 필요한지 구하면? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q11-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$24$개",
       "$25$개",
@@ -581,8 +581,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "쇠를 녹이기 전과 녹인 후의 부피가 같음을 이용한다.\n반지름의 길이가 $r$인 반구 한 개의 부피는\n$\\dfrac{1}{2}\\times\\dfrac{4}{3}\\pi r^3=\\dfrac{2}{3}\\pi r^3$이다.\n\n밑면의 반지름의 길이가 $3r$, 높이가 $2r$인 원기둥의 부피는\n$\\pi (3r)^2\\times(2r)=18\\pi r^3$이다.\n\n필요한 반구 모양의 쇠의 개수를 $n$이라 하면\n$n\\times\\dfrac{2}{3}\\pi r^3=18\\pi r^3$\n$n=18\\times\\dfrac{3}{2}=27$이다.\n따라서 반구 모양의 쇠는 총 27개가 필요하다.\n정답은 ③이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q11-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q11-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q11-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q11-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
     "crossConceptKeys": [],
@@ -628,7 +628,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 [ㄱ]~[ㄷ]에 해당하는 입체도형의 겉넓이를 크기가 작은 것부터 차례대로 나열한 것은? (5점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q12-problem.svg\" alt=\"\"><div class='question-note-box'>[ㄱ] 밑면의 반지름의 길이가 $3\\rm\\,cm$인 반구와 밑면의 반지름의 길이가 $3\\rm\\,cm$, 모선의 길이가 $5\\rm\\,cm$인 원뿔의 밑면을 맞붙인 입체도형<br>[ㄴ] 반지름의 길이가 $6\\rm\\,cm$, 중심각의 크기가 $60^\\circ$인 부채꼴을 밑면으로 하고 높이가 $10\\rm\\,cm$인 기둥<br>[ㄷ] 반지름의 길이가 $4\\rm\\,cm$인 구에서 서로 수직인 두 평면으로 $\\dfrac{1}{4}$을 잘라낸 입체도형</div>",
+    "content": "다음 [ㄱ]~[ㄷ]에 해당하는 입체도형의 겉넓이를 크기가 작은 것부터 차례대로 나열한 것은? (5점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q12-problem.svg\" alt=\"\"><div class='question-note-box'>[ㄱ] 밑면의 반지름의 길이가 $3\\rm\\,cm$인 반구와 밑면의 반지름의 길이가 $3\\rm\\,cm$, 모선의 길이가 $5\\rm\\,cm$인 원뿔의 밑면을 맞붙인 입체도형<br>[ㄴ] 반지름의 길이가 $6\\rm\\,cm$, 중심각의 크기가 $60^\\circ$인 부채꼴을 밑면으로 하고 높이가 $10\\rm\\,cm$인 기둥<br>[ㄷ] 반지름의 길이가 $4\\rm\\,cm$인 구에서 서로 수직인 두 평면으로 $\\dfrac{1}{4}$을 잘라낸 입체도형</div>",
     "choices": [
       "$[ㄱ]-[ㄴ]-[ㄷ]$",
       "$[ㄱ]-[ㄷ]-[ㄴ]$",
@@ -638,8 +638,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "각 도형의 겉에 드러난 면의 넓이를 구한다.\n\n[ㄱ] 반지름 $3\\rm\\,cm$인 반구와 밑면 반지름 $3\\rm\\,cm$, 모선 길이 $5\\rm\\,cm$인 원뿔을 붙인 도형이다. 붙인 원면은 겉넓이에서 제외된다.\n반구 곡면: $2\\pi\\times3^2=18\\pi\\rm\\,cm^2$\n원뿔 옆면: $\\pi\\times3\\times5=15\\pi\\rm\\,cm^2$\n겉넓이 $[ㄱ]=18\\pi+15\\pi=33\\pi\\rm\\,cm^2\\approx103.7\\rm\\,cm^2$\n\n[ㄴ] 반지름 $6\\rm\\,cm$, 중심각 $60^\\circ$인 부채꼴을 밑면으로 하고 높이가 $10\\rm\\,cm$인 기둥이다.\n밑면 호의 길이: $2\\pi\\times6\\times\\dfrac{60}{360}=2\\pi\\rm\\,cm$\n밑면 둘레: $6+6+2\\pi=12+2\\pi\\rm\\,cm$\n옆넓이: $(12+2\\pi)\\times10=120+20\\pi\\rm\\,cm^2$\n두 밑면 넓이: $2\\times\\left(\\pi\\times6^2\\times\\dfrac{60}{360}\\right)=12\\pi\\rm\\,cm^2$\n겉넓이 $[ㄴ]=120+32\\pi\\rm\\,cm^2\\approx220.5\\rm\\,cm^2$\n\n[ㄷ] 반지름 $4\\rm\\,cm$인 구에서 서로 수직인 두 평면으로 $\\dfrac{1}{4}$을 잘라낸 나머지 $\\dfrac{3}{4}$ 구이다.\n구의 곡면 넓이: $\\dfrac{3}{4}\\times4\\pi\\times4^2=48\\pi\\rm\\,cm^2$\n두 잘린 단면(반원 2개 = 원 1개): $\\pi\\times4^2=16\\pi\\rm\\,cm^2$\n겉넓이 $[ㄷ]=48\\pi+16\\pi=64\\pi\\rm\\,cm^2\\approx201.1\\rm\\,cm^2$\n\n대소 관계를 비교하면 $33\\pi < 64\\pi < 120+32\\pi$이므로\n작은 것부터 $[ㄱ]-[ㄷ]-[ㄴ]$이다.\n정답은 ②이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q12-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q12-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q12-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q12-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -685,7 +685,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 사각뿔대의 겉넓이가 $340\\rm\\,cm^2$라 할 때, $x$의 값을 구하면? (단, 사각뿔대의 밑면은 모두 정사각형이고, 옆면은 모두 합동이다.) (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q13-problem.svg\" alt=\"\"><br>",
+    "content": "다음 사각뿔대의 겉넓이가 $340\\rm\\,cm^2$라 할 때, $x$의 값을 구하면? (단, 사각뿔대의 밑면은 모두 정사각형이고, 옆면은 모두 합동이다.) (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q13-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$6$",
       "$7$",
@@ -695,8 +695,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "두 정사각형 밑면과 네 개의 합동인 사다리꼴 옆면의 넓이를 합한다.\n두 밑면의 넓이의 합은\n$4^2+10^2=16+100=116\\rm\\,cm^2$이다.\n\n옆면 한 개는 윗변 $4\\rm\\,cm$, 아랫변 $10\\rm\\,cm$, 높이 $x\\rm\\,cm$인 사다리꼴이므로 넓이는\n$\\dfrac{4+10}{2}\\times x=7x\\rm\\,cm^2$이다.\n네 옆면의 넓이의 합은 $4\\times7x=28x\\rm\\,cm^2$이다.\n\n겉넓이가 $340\\rm\\,cm^2$이므로\n$116+28x=340$\n$28x=224$\n$x=8$이다.\n정답은 ③이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q13-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q13-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q13-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q13-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
     "crossConceptKeys": [],
@@ -793,7 +793,7 @@ window.questionBank = [
       "공통자료"
     ],
     "wide": false,
-    "content": "[15~16] 다음 그림은 지호네 반 학생 20명의 50m 달리기 기록을 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 자료의 중앙값과 최빈값이 같다고 할 때, 물음에 답하시오. (단, 최빈값은 1개뿐이다.)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q15-problem.svg\" alt=\"\"><br>$a+b+A+B$의 값은? (3점)",
+    "content": "[15~16] 다음 그림은 지호네 반 학생 20명의 50m 달리기 기록을 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 자료의 중앙값과 최빈값이 같다고 할 때, 물음에 답하시오. (단, 최빈값은 1개뿐이다.)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q15-problem.svg\" alt=\"\"><br>$a+b+A+B$의 값은? (3점)",
     "choices": [
       "$12$",
       "$13$",
@@ -803,8 +803,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "줄기와 잎 그림의 도수와 중앙값=최빈값 조건을 함께 이용한다.\n6초대는 2명이므로 $A=2$이다.\n8초대는 3명이므로 $B=3$이다.\n\n전체 학생이 20명이므로 중앙값은 10번째와 11번째 기록의 평균이다.\n6초대 2명, 7초대 6명 다음 8초대의 세 기록이 $8+a/10, 8+b/10, 8.5$초이다.\n중앙값과 최빈값이 같고 최빈값이 유일하려면 8.5초가 3번 나타나야 하므로 잎 $a=5, b=5$이다.\n이때 최빈값은 8.5초로 유일하고, 10번째와 11번째 기록도 모두 8.5초이므로 중앙값도 8.5초가 된다.\n\n따라서\n$a+b+A+B=5+5+2+3=15$이다.\n정답은 ④이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q15-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q15-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q15-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q15-solution.svg",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
     "crossConceptKeys": [],
@@ -903,7 +903,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그래프는 유진이네 반 학생 30명의 수학 공부시간을 조사하여 히스토그램으로 나타낸 것이다. 이에 대한 설명으로 옳은 것만을 보기에서 모두 고른 것을 고르면? (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q17-problem.svg\" alt=\"\"><div class='question-note-box'><div style='text-align:center'>&lt;보기&gt;</div>ㄱ. 계급의 크기는 20분이다.<br>ㄴ. 도수가 가장 큰 계급은 120분 이상 140분 미만이다.<br>ㄷ. 최빈값은 10명이다.<br>ㄹ. 수학 공부 시간이 2시간 이상인 학생은 전체의 40%이다.</div>",
+    "content": "다음 그래프는 유진이네 반 학생 30명의 수학 공부시간을 조사하여 히스토그램으로 나타낸 것이다. 이에 대한 설명으로 옳은 것만을 보기에서 모두 고른 것을 고르면? (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q17-problem.svg\" alt=\"\"><div class='question-note-box'><div style='text-align:center'>&lt;보기&gt;</div>ㄱ. 계급의 크기는 20분이다.<br>ㄴ. 도수가 가장 큰 계급은 120분 이상 140분 미만이다.<br>ㄷ. 최빈값은 10명이다.<br>ㄹ. 수학 공부 시간이 2시간 이상인 학생은 전체의 40%이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -913,8 +913,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "히스토그램의 각 계급별 도수를 확인한다.\n계급별 도수는 60~80분이 3명, 80~100분이 5명, 100~120분이 8명, 120~140분이 10명, 140~160분이 4명이다.\n전체 학생 수는 $3+5+8+10+4=30$명이다.\n\nㄱ. 계급의 크기는 $80-60=20$분이므로 참이다.\nㄴ. 도수가 가장 큰 계급은 도수가 10명인 120분 이상 140분 미만이므로 참이다.\nㄷ. 10명은 도수이지 최빈값이 아니므로 거짓이다.\nㄹ. 수학 공부 시간이 2시간(120분) 이상인 학생은 $10+4=14$명이고, 전체의 $\\dfrac{14}{30}\\times100\\approx46.7\\%$이므로 거짓이다.\n\n따라서 옳은 것은 ㄱ, ㄴ이다.\n정답은 ②이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q17-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q17-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q17-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q17-solution.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -960,7 +960,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그래프는 영호네 반 학생들이 1분 동안 줄넘기를 한 횟수를 조사하여 도수분포다각형으로 나타낸 것이다. 1분 동안 줄넘기를 50회 이상 한 학생은 모두 몇 명인가? (3점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q18-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그래프는 영호네 반 학생들이 1분 동안 줄넘기를 한 횟수를 조사하여 도수분포다각형으로 나타낸 것이다. 1분 동안 줄넘기를 50회 이상 한 학생은 모두 몇 명인가? (3점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q18-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$7$명",
       "$8$명",
@@ -970,8 +970,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "도수분포다각형에서 50회 이상인 계급의 도수를 찾는다.\n50회 이상 60회 미만의 도수는 7명이고,\n60회 이상 70회 미만의 도수는 5명이다.\n\n따라서 50회 이상 줄넘기를 한 학생은\n$7+5=12$명이다.\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q18-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q18-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q18-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q18-solution.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -1069,7 +1069,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그래프는 A학교 학생 100명과 B학교 학생 200명의 일주일 평균 독서량에 대한 상대도수의 분포를 도수분포다각형으로 나타낸 것인데 그 일부가 찢어져 있다. 이에 대한 설명으로 옳지 않은 것은? (5점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q20-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그래프는 A학교 학생 100명과 B학교 학생 200명의 일주일 평균 독서량에 대한 상대도수의 분포를 도수분포다각형으로 나타낸 것인데 그 일부가 찢어져 있다. 이에 대한 설명으로 옳지 않은 것은? (5점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q20-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$B$학교에서 책을 $4$권 이상 $5$권 미만 읽은 학생은 $44$명이다.",
       "$A$학교보다 $B$학교의 학생들이 상대적으로 책을 더 많이 읽었다.",
@@ -1079,8 +1079,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "상대도수의 합이 1임을 이용하여 찢어진 부분의 상대도수를 구하고 실제 학생 수를 계산한다.\n\nA학교의 상대도수는 $0.12, 0.24, (\\ ?\\ ), 0.24, 0.04$이므로 찢어진 4권 이상 5권 미만의 상대도수는\n$1-(0.12+0.24+0.24+0.04)=0.36$이다.\nB학교의 상대도수는 $0.10, 0.16, 0.22, 0.38, 0.14$이다.\n\n3권 이상 4권 미만 계급의 학생 수를 구하면\nA학교: $100\\times0.24=24$명\nB학교: $200\\times0.16=32$명\n따라서 B학교의 학생 수가 더 많으므로, A학교가 더 많다는 ④의 설명은 옳지 않다.\n\n① B학교의 4~5권 학생 수는 $200\\times0.22=44$명이므로 옳다.\n② B학교의 그래프가 A학교보다 전체적으로 오른쪽에 치우쳐 있으므로 B학교 학생들이 상대적으로 책을 더 많이 읽었다는 설명은 옳다.\n③ A학교에서 4~5권의 상대도수는 $0.36$으로 가장 크므로 옳다.\n⑤ 5권 이상 읽은 학생 수는\nA학교: $100\\times(0.24+0.04)=28$명\nB학교: $200\\times(0.38+0.14)=104$명\n두 학교 합하여 $28+104=132$명이므로 옳다.\n따라서 옳지 않은 것은 ④이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q20-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q20-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q20-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q20-solution.svg",
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
     "crossConceptKeys": [],
@@ -1127,12 +1127,12 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg\" alt=\"\"><br>",
     "choices": [],
     "answer": "$105^\\circ$",
     "solution": "두 이등변삼각형의 밑각을 차례로 구한다.\n$\\overline{AC}=\\overline{CD}$이므로 $\\triangle ACD$는 이등변삼각형이다.\n$\\angle ADC=70^\\circ$이므로 $\\angle CAD=70^\\circ$이다.\n따라서 $\\angle ACD=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n세 점 $B,A,D$가 한 직선 위에 있으므로\n$\\angle BAC=180^\\circ-70^\\circ=110^\\circ$이다.\n$\\overline{AB}=\\overline{AC}$이므로 $\\triangle ABC$도 이등변삼각형이다.\n$\\angle BCA=(180^\\circ-110^\\circ)\\div2=35^\\circ$이다.\n\n따라서 $\\angle BCD=35^\\circ+40^\\circ=75^\\circ$이고,\n구하는 외각의 크기는\n$\\angle x=180^\\circ-75^\\circ=105^\\circ$이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q21-solution.svg",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
     "crossConceptKeys": [],
@@ -1179,12 +1179,12 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 직사각형과 부채꼴이 겹쳐진 것이다. 색칠한 두 부분의 넓이 $S_1$, $S_2$에 대하여 $S_1=S_2$이고, $\\overline{AB}=12$일 때, $\\overline{BC}$의 길이를 구하시오. (6점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 직사각형과 부채꼴이 겹쳐진 것이다. 색칠한 두 부분의 넓이 $S_1$, $S_2$에 대하여 $S_1=S_2$이고, $\\overline{AB}=12$일 때, $\\overline{BC}$의 길이를 구하시오. (6점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q22-problem.svg\" alt=\"\"><br>",
     "choices": [],
     "answer": "$3\\pi$",
     "solution": "$S_1=S_2$이면 직사각형의 넓이와 사분원의 넓이가 같아진다.\n공통부분의 넓이를 $S$라 하면\n(직사각형의 넓이) $= S_1+S$\n(사분원의 넓이) $= S_2+S$\n$S_1=S_2$이므로 직사각형의 넓이와 사분원의 넓이가 같다.\n\n부채꼴은 중심이 $B$이고 반지름이 $\\overline{BA}=12$인 사분원이므로 사분원의 넓이는\n$\\dfrac{1}{4}\\times\\pi\\times12^2=36\\pi$이다.\n\n직사각형의 넓이는 $12\\times\\overline{BC}$이므로\n$12\\times\\overline{BC}=36\\pi$\n$\\overline{BC}=3\\pi$이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q22-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q22-solution.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -1231,12 +1231,12 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 두 직육면체 모양의 그릇 (가), (나)에 같은 양의 물이 들어 있다. 그릇 (가)는 밑면의 가로가 $10\\rm\\,cm$, 세로가 $15\\rm\\,cm$이고 전체 높이 $12\\rm\\,cm$의 $\\dfrac{1}{3}$만큼 물이 채워져 있고, 그릇 (나)는 밑면의 가로가 $6\\rm\\,cm$, 세로가 $20\\rm\\,cm$일 때, (나)에 채워진 물의 높이 $x$의 값을 구하시오. (단, 그릇의 두께는 생각하지 않는다.) (5점)<br><img src=\"archive/assets/images/25_왕운중_2학기_기말_중1_유사/q23-problem.svg\" alt=\"\"><br>",
+    "content": "다음 두 직육면체 모양의 그릇 (가), (나)에 같은 양의 물이 들어 있다. 그릇 (가)는 밑면의 가로가 $10\\rm\\,cm$, 세로가 $15\\rm\\,cm$이고 전체 높이 $12\\rm\\,cm$의 $\\dfrac{1}{3}$만큼 물이 채워져 있고, 그릇 (나)는 밑면의 가로가 $6\\rm\\,cm$, 세로가 $20\\rm\\,cm$일 때, (나)에 채워진 물의 높이 $x$의 값을 구하시오. (단, 그릇의 두께는 생각하지 않는다.) (5점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중1_유사/q23-problem.svg\" alt=\"\"><br>",
     "choices": [],
     "answer": "5",
     "solution": "두 그릇에 들어 있는 물의 부피가 같다는 조건을 이용한다.\n\n그릇 (가)에서 밑면의 가로가 $10\\rm\\,cm$, 세로가 $15\\rm\\,cm$이고, 전체 높이 $12\\rm\\,cm$의 $\\dfrac{1}{3}$까지 물이 차 있으므로 물의 높이는\n$12\\times\\dfrac{1}{3}=4\\rm\\,cm$이다.\n따라서 (가)에 담긴 물의 부피는\n$10\\times15\\times4=600\\rm\\,cm^3$이다.\n\n그릇 (나)에서 물이 차 있는 밑면은 가로가 $6\\rm\\,cm$, 세로가 $20\\rm\\,cm$이고 물의 높이가 $x\\rm\\,cm$이므로 물의 부피는\n$6\\times20\\times x=120x\\rm\\,cm^3$이다.\n\n두 그릇의 물의 양이 같으므로\n$120x=600$\n$x=5$이다.\n따라서 $x$의 값은 5이다.",
-    "image": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q23-problem.svg",
-    "solutionImage": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q23-solution.svg",
+    "image": "assets/images/25_왕운중_2학기_기말_중1_유사/q23-problem.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_유사/q23-solution.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
     "crossConceptKeys": [],

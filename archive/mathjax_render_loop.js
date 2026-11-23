@@ -16,6 +16,8 @@
     }
 
     function start(meta = {}) {
+        // 새 렌더는 조판 정지 상태를 처음부터 다시 본다(한 번 예산을 넘겼다고 다음 렌더의 수식이 글자로 남지 않게). 시간 초과 기록(__AP_RENDER_BUDGET_HITS__)은 진단이라 유지한다.
+        typesetStalled = false;
         const metrics = {
             renderer: rendererMode(),
             mode: meta.mode || '',

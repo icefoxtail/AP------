@@ -47,6 +47,7 @@
         else if(url.pathname.endsWith('/student-portal/exams'))body={success:true,exams};
         else if(url.pathname.endsWith('/student-portal/wrong-clinics'))body={success:true,packets:[]};
         else if(url.pathname.endsWith('/student-portal/learning-history'))body={success:true,items:[],next_cursor:null,has_more:false};
+        else if(url.pathname.endsWith('/student-portal/self-study'))body={success:false,code:'FEATURE_UNAVAILABLE',sets:[]}; // 자습 기록: 기능이 꺼진 서버와 같은 응답
         else if(url.pathname.endsWith('/material-omr/student-assignments'))body={success:true,items:[]};
         else if(url.pathname.endsWith('/student-portal/omr-submit')){
           const submitted=JSON.parse(req.postData()||'{}');sent.push(submitted);
