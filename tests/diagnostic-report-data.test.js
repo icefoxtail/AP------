@@ -472,6 +472,8 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.strictEqual(a.label, '상위 약 54%'); // z=-0.095 → 53.8%
   assert.strictEqual(a.percentileTop, 54);
   assert.strictEqual(a.edge, null);
+  assert.strictEqual(a.tier, 6); // 53.8% → 상위 50~60% 구간
+  assert.strictEqual(a.tierLabel, '10구간 중 6구간');
   // (b) 만점은 1% 단위로(z=1.81 → 3.5%), 끝(1% 이하·99% 이상)만 닫아 표현
   const b = computeExpectedPosition(lv3, 20, 0);
   assert.strictEqual(b.label, '상위 약 4%');
@@ -479,9 +481,11 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   const top = computeExpectedPosition(Array(20).fill(5), 20, 0);
   assert.strictEqual(top.label, '상위 1% 이내');
   assert.strictEqual(top.edge, 'top');
+  assert.strictEqual(top.tier, 1);
   const c = computeExpectedPosition(lv3, 0, 0);
   assert.strictEqual(c.label, '하위 1% 이내');
   assert.strictEqual(c.edge, 'bottom');
+  assert.strictEqual(c.tier, 10);
   // (d) 미응답이 하나라도 있거나 5문항 미만이면 값 없음
   assert.strictEqual(computeExpectedPosition(lv3, 12, 1), null);
   assert.strictEqual(computeExpectedPosition(Array(4).fill(3), 2, 0), null);
@@ -513,7 +517,7 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.strictEqual(gap.expected, null);
   // 화면: "예상"과 "실제 석차가 아닙니다"가 함께, 값이 없으면 줄이 없다.
   const out = View.render(full);
-  assert.ok(out.expect.includes('예상 위치') && out.expect.includes(full.expected.label) && out.expect.includes('예상 평균 16.1 / 24문항') && out.expect.includes('실제 석차가 아닙니다'), out.expect);
+  assert.ok(out.expect.includes('예상 위치') && out.expect.includes(full.expected.label) && out.expect.includes(full.expected.tierLabel) && out.expect.includes('예상 평균 16.1 / 24문항') && out.expect.includes('실제 석차가 아닙니다'), out.expect);
   assert.ok(!/undefined|NaN|null/.test(out.expect));
   assert.strictEqual(View.render(gap).expect, '');
   const dir = path.join(root, 'archive', 'assessment');

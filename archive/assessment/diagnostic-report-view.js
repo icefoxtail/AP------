@@ -222,7 +222,7 @@
     const e = report.expected;
     if (!e) return "";
     const mean = (Math.round(e.mean * 10) / 10).toFixed(1);
-    return `<span class="expect-main">예상 위치: <b>${esc(e.label)}</b></span>`
+    return `<span class="expect-main">예상 위치: <b>${esc(e.label)}</b> · ${esc(e.tierLabel)}</span>`
       + `<span class="expect-note">이 평가지의 예상 평균 ${mean} / ${e.questions}문항 · 문항 난이도로 계산한 예상값이며 실제 석차가 아닙니다.</span>`;
   }
 
