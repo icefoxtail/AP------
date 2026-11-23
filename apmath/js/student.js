@@ -2371,6 +2371,80 @@ function openStudentExamClinicFromDetail(sid, sessionId) {
     });
 }
 
+// 한 시험(응시 한 건)의 틀린 문항 행. 성적 탭 목록과 오답 클리닉 선택이 같은 값을 쓴다.
+function getStudentWrongRowsForSession(sid, sessionId) {
+    const timetableWrongRows = state.ui?.timetableStudentDetails?.[String(sid)]?.wrong_answers;
+    return Array.isArray(timetableWrongRows)
+        ? timetableWrongRows.filter(w => String(w.session_id) === String(sessionId))
+        : typeof apmsGetWrongAnswersForSession === 'function'
+        ? apmsGetWrongAnswersForSession(sessionId)
+        : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(sessionId));
+}
+
+// 성적 탭의 시험 선택 줄(체크한 시험 수·틀린 문항 수 요약, 단추 활성). 체크 상태는 화면의 체크박스가 그대로 가진다.
+function readStudentExamClinicPicks() {
+    return Array.from(document.querySelectorAll('input[data-student-exam-pick]:checked')).map(input => String(input.value));
+}
+
+function updateStudentExamClinicBar() {
+    const picks = Array.from(document.querySelectorAll('input[data-student-exam-pick]:checked'));
+    const wrongTotal = picks.reduce((sum, input) => sum + (Number(input.getAttribute('data-wrong-count')) || 0), 0);
+    const target = Number(document.getElementById('student-exam-clinic-target')?.value) || 0;
+    const summary = document.getElementById('student-exam-clinic-summary');
+    const button = document.getElementById('student-exam-clinic-open');
+    if (summary) {
+        const similar = target > wrongTotal && wrongTotal > 0 ? target - wrongTotal : 0;
+        summary.textContent = !picks.length ? '시험을 체크하세요'
+            : similar ? `시험 ${picks.length}개 · 틀린 문항 ${wrongTotal} + 유사 최대 ${similar} = ${target}문항`
+            : target && wrongTotal >= target ? `시험 ${picks.length}개 · 틀린 문항 ${wrongTotal}개 (목표 ${target}문항 이상, 전부 출력)`
+            : `시험 ${picks.length}개 · 틀린 문항 ${wrongTotal}개`;
+    }
+    if (button) button.disabled = !picks.length;
+}
+
+// "최근 N개 선택": 날짜가 가장 늦은 시험부터 N개(오답이 있는 시험만)를 체크한다.
+function selectStudentExamClinicRecent(count = 3) {
+    const boxes = Array.from(document.querySelectorAll('input[data-student-exam-pick]:not(:disabled)'));
+    boxes.forEach(input => { input.checked = false; });
+    boxes.slice().sort((a, b) => String(b.getAttribute('data-exam-date') || '').localeCompare(String(a.getAttribute('data-exam-date') || '')))
+        .slice(0, count).forEach(input => { input.checked = true; });
+    updateStudentExamClinicBar();
+}
+
+// 체크한 시험 여러 개 -> 그 학생·그 시험들의 오답 클리닉. 기존 출력 센터(openClinicForStudentExams)를 쓴다.
+// sessionIds/target을 생략하면 화면의 체크 상태·목표 선택을 읽는다. 시험은 날짜 오름차순으로 넘긴다.
+function openStudentExamsClinicFromDetail(sid, sessionIds, target) {
+    const ids = [...new Set((Array.isArray(sessionIds) ? sessionIds : readStudentExamClinicPicks()).map(String))];
+    const sessions = getStudentAcademyExamSessionsForDetail(sid);
+    const picked = ids.map(id => sessions.find(row => String(row.id) === id)).filter(Boolean)
+        .filter(row => getStudentWrongRowsForSession(sid, row.id).length)
+        .sort((a, b) => String(a.exam_date || '').localeCompare(String(b.exam_date || '')));
+    if (!picked.length) {
+        toast('오답이 있는 시험을 하나 이상 체크하세요.', 'warn');
+        return;
+    }
+    // 시험이 여러 반에 걸쳐 있으면 가장 많은 반(같으면 가장 최근 시험의 반)으로 연다. 다른 반의 시험은 출력 센터가 알려 주고 뺀다.
+    const counts = new Map();
+    picked.forEach(row => { const key = String(row.class_id || ''); if (key) counts.set(key, (counts.get(key) || 0) + 1); });
+    const best = Math.max(0, ...counts.values());
+    const latestClass = [...picked].reverse().map(row => String(row.class_id || '')).find(key => key && counts.get(key) === best);
+    const classId = String(latestClass || getApStudentCurrentClass(sid)?.id || '');
+    if (!classId || typeof openClinicForStudentExams !== 'function') {
+        toast('클리닉 화면을 불러오지 못했습니다. 새로고침 후 다시 시도하세요.', 'warn');
+        return;
+    }
+    const wrongTotal = picked.reduce((sum, row) => sum + getStudentWrongRowsForSession(sid, row.id).length, 0);
+    const goal = Math.floor(Number(target !== undefined ? target : document.getElementById('student-exam-clinic-target')?.value)) || 0;
+    const options = goal > wrongTotal ? { recommendationCount: goal - wrongTotal } : {};
+    openClinicForStudentExams(classId, sid, picked.map(row => ({
+        sessionId: row.id,
+        examDate: row.exam_date,
+        examTitle: row.exam_title,
+        archiveFile: row.archive_file || '',
+        questionCount: row.question_count
+    })), options);
+}
+
 function renderStudentSchoolLatestCard(sid, records) {
     const latest = (records || [])[0];
     if (!latest) return '';
@@ -2478,14 +2552,10 @@ function renderStudentAcademyGradeTab(sid) {
 
     const recentExam = [...scoreExs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
 
+    const clinicPickable = canEdit && typeof openClinicForStudentExams === 'function';
+    const clinicEligibleCount = clinicPickable ? exs.filter(e => getStudentWrongRowsForSession(sid, e.id).length).length : 0;
     const historyRows = exs.map(e => {
-        const timetableWrongRows = state.ui?.timetableStudentDetails?.[String(sid)]?.wrong_answers;
-        const wrongRows = (Array.isArray(timetableWrongRows)
-            ? timetableWrongRows.filter(w => String(w.session_id) === String(e.id))
-            : typeof apmsGetWrongAnswersForSession === 'function'
-            ? apmsGetWrongAnswersForSession(e.id)
-            : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(e.id))
-        );
+        const wrongRows = getStudentWrongRowsForSession(sid, e.id);
         const wrs = wrongRows
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
             .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; margin: 2px; color: var(--text-soft); font-weight: 500;">Q${w.question_id}</span>`)
@@ -2494,7 +2564,8 @@ function renderStudentAcademyGradeTab(sid) {
         return `
             <div style="padding: 12px 2px; border-bottom: 1px solid var(--border);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px;">
-                    <div style="min-width: 0;">
+                    ${clinicPickable ? `<label class="ws-exam-pick" title="${wrongRows.length ? '오답 클리닉에 쓸 시험으로 선택' : '틀린 문항이 없는 시험은 선택할 수 없습니다'}"><input type="checkbox" data-student-exam-pick value="${apmsStudentDetailEsc(e.id)}" data-wrong-count="${wrongRows.length}" data-exam-date="${apmsStudentDetailEsc(e.exam_date || '')}" ${wrongRows.length ? '' : 'disabled'} aria-label="${apmsStudentDetailEsc(e.exam_title || '시험')} 오답 클리닉에 선택" onchange="updateStudentExamClinicBar()"></label>` : ''}
+                    <div style="min-width: 0; flex: 1 1 auto;">
                         <div style="font-size: 13px; font-weight:600; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}${globalThis.ApSimilarExam?.isSimilarExamRow(e) ? ' <span style="font-size: 11px; padding: 2px 7px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--secondary); font-weight: 600; white-space: nowrap;" title="유사 시험지 자습용 · 성적 그래프·평균에서 제외">유사 · 자습용</span>' : ''}</div>
                         <div style="font-size: 12px; color: var(--secondary); font-weight: 500; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
                     </div>
@@ -2562,6 +2633,20 @@ function renderStudentAcademyGradeTab(sid) {
         <section class="ap-student-card">
             <div class="ap-student-section-head"><h3>원내 평가 추이</h3><span>최근 추세</span></div>
             ${chartArea}
+            ${clinicEligibleCount ? `<div class="ws-exam-clinic-bar" id="student-exam-clinic-bar">
+                <div class="ws-exam-clinic-bar__row">
+                    <button type="button" class="btn apms-button apms-button--quiet ws-exam-clinic-bar__quick" onclick="selectStudentExamClinicRecent(3)">최근 3개 선택</button>
+                    <label class="ws-exam-clinic-bar__goal">목표 문항
+                        <select id="student-exam-clinic-target" onchange="updateStudentExamClinicBar()" aria-label="오답 클리닉 목표 문항 수">
+                            <option value="0">틀린 문항만</option><option value="20">20문항</option><option value="30">30문항</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="ws-exam-clinic-bar__row">
+                    <button type="button" id="student-exam-clinic-open" class="btn apms-button apms-button--primary btn-primary ws-exam-clinic-bar__open" disabled onclick="openStudentExamsClinicFromDetail(${apmsStudentJsString(sid)})">선택한 시험으로 오답 클리닉</button>
+                    <span id="student-exam-clinic-summary" class="ws-exam-clinic-bar__summary" aria-live="polite">시험을 체크하세요</span>
+                </div>
+            </div>` : ''}
             <div style="max-height: 360px; overflow-y: auto; padding-right: 2px; margin-top:8px;">${historyRows || '<p style="text-align: center; padding: 16px; color: var(--secondary); font-size: 13px; font-weight:500;">기록 없음</p>'}</div>
         </section>
         <section class="ap-student-card ap-student-card-amber">

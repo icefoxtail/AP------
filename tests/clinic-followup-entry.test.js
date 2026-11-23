@@ -279,3 +279,89 @@ test('입구: 시험·학생 첫 그리기만 선택을 쓰고 그 뒤에는 비
   const checkedKeys = [...html.matchAll(/name="clinic-print-exam" value="([^"]*)" (checked)?/g)].filter((m) => m[2]).map((m) => m[1]);
   assert.deepEqual(checkedKeys, [pre.examKey], '고른 시험 하나만 체크된다');
 });
+
+// ---------- 학생 상세 입구: 시험 여러 개를 한 번에 (openClinicForStudentExams) ----------
+function multiExamApp() {
+  const { c, db } = entryApp();
+  db.exam_sessions.push({ id: 'f1', student_id: 's1', class_id: 'c1', assignment_id: 'a3', exam_title: '기말고사', exam_date: '2026-12-01', question_count: 3, archive_file: 'original/high/h1/2final/24_school_h1_final_math1.js' });
+  db.wrong_answers.push({ session_id: 'f1', question_id: '2' });
+  db.class_exam_assignments.push({ id: 'a3', class_id: 'c1', exam_title: '기말고사', exam_date: '2026-12-01', question_count: 3, archive_file: 'original/high/h1/2final/24_school_h1_final_math1.js', can_manage: true });
+  return { c, db };
+}
+const MID = 'original/high/h1/1mid/25_school_h1_mid_math1.js';
+const QUIZ = 'original/high/h1/1mid/25_school_h1_mid_quiz.js';
+
+test('여러 시험 입구: 기존 출력 센터를 시험 여러 개·학생 한 명 선택 값과 함께 연다(새 센터 없음)', async () => {
+  const { c } = multiExamApp();
+  const calls = [];
+  c.openClinicPrintCenter = async (classId, options) => { calls.push([classId, options]); return true; };
+  await vm.runInContext(`openClinicForStudentExams('c1', 's1', [
+    { sessionId: 'o1', examDate: '2026-11-10', examTitle: '쪽지시험', archiveFile: '${QUIZ}', questionCount: 3 },
+    { sessionId: 'e1', examDate: '2026-11-20', examTitle: '중간고사', archiveFile: '${MID}', questionCount: 4 }])`, c);
+  assert.equal(calls.length, 1);
+  const pre = calls[0][1].preselect;
+  assert.equal(pre.studentId, 's1');
+  assert.deepEqual([...pre.sessionIds], ['o1', 'e1']);
+  assert.equal(pre.examKeys.length, 2);
+  assert.equal(calls[0][1].recommendation, undefined, '목표를 안 골랐으면 추천 입력은 건드리지 않는다');
+  assert.equal(vm.runInContext(`openClinicForStudentExams('c1', 's1', [])`, c), false, '시험이 0개면 열지 않는다');
+  assert.equal(c.__toasts.length, 1);
+});
+
+test('여러 시험 입구: 목표 문항을 골랐으면 추천 입력(문항 수·틀린 유형 기준)만 전달한다', async () => {
+  const { c } = multiExamApp();
+  const calls = [];
+  c.openClinicPrintCenter = async (classId, options) => { calls.push(options); return true; };
+  await vm.runInContext(`openClinicForStudentExams('c1', 's1', [{ sessionId: 'e1', examDate: '2026-11-20', examTitle: '중간고사', archiveFile: '${MID}', questionCount: 4 }], { recommendationCount: 18 })`, c);
+  assert.deepEqual({ ...calls[0].recommendation }, { countPerStudent: 18, selectionBasis: 'wrong_type' });
+});
+
+test('여러 시험 입구: 시험 묶음 키를 모두 찾고 같은 시험은 한 번만, 필터는 모두 보이게 맞춘다', () => {
+  const { c } = multiExamApp();
+  const same = c.clinicPrintResolvePreselect('c1', { preselect: { studentId: 's1', sessionIds: ['o1', 'e1', 'e1'], examKeys: ['', '', ''] } });
+  assert.equal(same.examKeys.length, 2, '같은 시험이 겹쳐도 한 번만');
+  assert.equal(vm.runInContext("clinicPrintExamPeriodFilters.get('c1')", c), '1mid', '한 학기에 모이면 그 학기');
+  const mixed = c.clinicPrintResolvePreselect('c1', { preselect: { studentId: 's1', sessionIds: ['o1', 'f1'], examKeys: ['', ''] } });
+  assert.equal(mixed.examKeys.length, 2);
+  assert.equal(vm.runInContext("clinicPrintExamPeriodFilters.get('c1')", c), 'all', '학기가 갈리면 전체');
+  assert.equal(vm.runInContext("clinicPrintExamYearFilters.get('c1')", c), 'all', '연도가 갈리면 전체');
+});
+
+test('여러 시험 입구: 원문이 없는 시험은 빼고 나머지로 열며 안내하고, 전부 없으면 null', () => {
+  const { c, db } = multiExamApp();
+  db.exam_sessions.push({ id: 'x1', student_id: 's1', class_id: 'c1', assignment_id: '', exam_title: '직접입력', exam_date: '2026-11-21', question_count: 5, archive_file: '' });
+  const pre = c.clinicPrintResolvePreselect('c1', { preselect: { studentId: 's1', sessionIds: ['o1', 'x1'], examKeys: ['', '2026-11-21|직접입력||5'] } });
+  assert.equal(pre.examKeys.length, 1);
+  assert.equal(c.__toasts.length, 1);
+  assert.equal(c.clinicPrintResolvePreselect('c1', { preselect: { studentId: 's1', sessionIds: ['x1'], examKeys: ['2026-11-21|직접입력||5'] } }), null);
+});
+
+test('여러 시험 입구: 시험 목록 첫 그리기는 고른 시험들을 모두 체크한다', () => {
+  const { c } = multiExamApp();
+  const pre = c.clinicPrintResolvePreselect('c1', { preselect: { studentId: 's1', sessionIds: ['o1', 'e1'], examKeys: ['', ''] } });
+  vm.runInContext('clinicPrintPendingPreselect = __pre', Object.assign(c, { __pre: pre }));
+  c.document.querySelector = () => null;
+  c.document.querySelectorAll = () => [];
+  const html = c.clinicPrintRenderExamListHtml('c1', 'class');
+  const checkedKeys = [...html.matchAll(/name="clinic-print-exam" value="([^"]*)" (checked)?/g)].filter((m) => m[2]).map((m) => m[1]);
+  assert.deepEqual(checkedKeys.sort(), [...pre.examKeys].sort());
+});
+
+test('여러 시험 입구: 기본 제목은 "이름 오답 클리닉 · 시험 N개"이고, 학생 상세를 거치지 않은 클리닉은 기존 제목 그대로다', () => {
+  const { c } = multiExamApp();
+  assert.match(c.clinicPrintGetHeaderDefaultTitle('c1'), /학생별 오답 클리닉$/);
+  vm.runInContext(`clinicPrintStudentTitleHint = { classId: 'c1', studentId: 's1', examCount: 3 }`, c);
+  assert.equal(c.clinicPrintGetHeaderDefaultTitle('c1'), '가학생 오답 클리닉 · 시험 3개');
+  vm.runInContext(`clinicPrintStudentTitleHint = { classId: 'c1', studentId: 's1', examCount: 1 }`, c);
+  assert.equal(c.clinicPrintGetHeaderDefaultTitle('c1'), '가학생 오답 클리닉');
+  c.document.querySelectorAll = (selector) => (selector.includes('clinic-print-student') ? [{ value: 's1' }, { value: 's2' }] : []);
+  assert.match(c.clinicPrintGetHeaderDefaultTitle('c1'), /학생별 오답 클리닉$/, '받는 학생이 여럿이면 기존 제목');
+});
+
+test('여러 시험 입구: 같은 원본 문항(UID)을 여러 시험에서 틀려도 한 번만 나온다(기존 중복 제거를 그대로 쓴다)', () => {
+  const { c } = multiExamApp();
+  const item = (uid, date, no) => ({ sourceQuestionUid: uid, sourceArchiveFile: MID, sourceQuestionNo: no, questionNo: no, archiveFile: MID, examDate: date, sourceOriginRefs: [{ sessionId: 'x' + date + no, orderNo: no }] });
+  const out = c.clinicPrintDedupeWrongItemsBySource([item('u1', '2026-11-10', 1), item('u2', '2026-11-10', 2), item('u1', '2026-11-20', 7)]);
+  assert.equal(out.length, 2);
+  assert.equal(out.find((row) => row.sourceQuestionUid === 'u1').sourceOriginRefs.length, 2, '어느 시험에서 틀렸는지 출처는 합쳐 둔다');
+});
