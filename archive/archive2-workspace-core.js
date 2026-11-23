@@ -375,6 +375,8 @@
   };
   const state = {
     catalog: null,
+    // 시험지 목록만 먼저 받은 홈(가벼운 진입, 2026-11-23): { exams, identityDigest }. 전체 카탈로그가 오면 catalog가 우선한다.
+    light: null,
     // ?assign=legacy(옛 출제 화면으로 되돌리는 스위치)는 페이지를 열 때 읽어 둔다. 시작할 때 routeUrl()이 주소를
     // 다시 쓰면 location.search에서 사라지므로, 이 값을 보고 주소를 다시 쓸 때마다 assign=legacy를 붙여 유지한다.
     assignLegacy: new URLSearchParams(location.search).get("assign") === "legacy",
@@ -723,6 +725,11 @@
   // unified (2022-based) subject of the units the exam covers, so a 2015 수학(상) exam with 도형의
   // 방정식 questions is found under 공통수학2 as well. Exams without any placed question keep the
   // shared matcher's own subject projection.
+  // The exam list the home screen draws from: the full catalog once it is ready, else the small exam list it opened on.
+  // Both keep the same order, so an index (data-exam) means the same exam in either.
+  function catalogExams() {
+    return state.catalog?.exams || state.light?.exams || [];
+  }
   function finderIdentityMatch(exam, filters) {
     const index = unifiedIndex();
     const subject = index ? filters.semanticSubject || Unified.subjectForFamily(filters.family) : "";
@@ -880,6 +887,7 @@
     taxonomyRowsForFilters,
     computeTaxonomyRowsForFilters,
     state,
+    catalogExams,
     Quick,
     QuickTree,
     quickState,
