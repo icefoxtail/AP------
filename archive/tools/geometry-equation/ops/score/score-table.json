@@ -1,0 +1,720 @@
+{
+ "version": "score-table-v1",
+ "schema": "svg-score-gate-v1",
+ "decidedBy": "원장님 2026-11-23: 겹침 같은 걸 다 실패로 처리하지 말고, 학생이 봤을 때 최소한 읽히면 통과. 100점짜리가 아니라 90점짜리 SVG.",
+ "about": "Publication gate only. The observers keep finding and recording everything; this table decides what a finding costs. Fields may be added, never removed or loosened silently (bump version).",
+ "baseScore": 100,
+ "passScore": 90,
+ "accumulation": "every finding costs points and repeats of the same code add up with no cap",
+ "tracks": {
+  "DEDUCT": "quality judgement (overlap, nearness, distance, density): points off by degree",
+  "WAIT_ENGINE": "no place found, so no figure: the engine must place at a fallback spot (R1-2); not scored here",
+  "INDETERMINATE": "cannot judge / environment: never covered by a score",
+  "BLOCK": "0 points regardless of the rest: wrong value, answer shown in a problem figure, required value missing, broken or empty figure, label pointing at the wrong object, clipped by the viewBox, or a severe degree"
+ },
+ "stages": {
+  "post-render": "observer ran on the rendered SVG, so a candidate SVG exists inside the compose step",
+  "placement": "the generator stopped before any SVG existed",
+  "infra": "measurement or environment"
+ },
+ "degreeKinds": {
+  "overlap": {
+   "unit": "overlapped area / area of the smaller label box (0..1)",
+   "base": 3,
+   "perUnit": 24,
+   "blockAt": 0.5,
+   "note": "half of a label hidden by another label or shape is a block"
+  },
+  "distance": {
+   "unit": "shortfall (too close) or excess (too far) in label-box heights",
+   "base": 3,
+   "perUnit": 6,
+   "blockAt": 1.5
+  },
+  "outside": {
+   "unit": "px the label box lies inside the safe margin shortfall / margin (d), plus fraction of the box outside the viewBox (clippedFraction)",
+   "base": 2,
+   "perUnit": 6,
+   "blockAtClippedFraction": 0.1,
+   "note": "more than 10% of the label box outside the viewBox is a clipped value = block"
+  },
+  "oversize": {
+   "unit": "label size / room - 1",
+   "base": 3,
+   "perUnit": 20,
+   "blockAt": 0.5,
+   "note": "only for codes waiting on the engine (WAIT_ENGINE); reference value"
+  },
+  "fontShortfall": {
+   "unit": "(11 CSS px - effective font px) / 11",
+   "base": 3,
+   "perUnit": 30,
+   "blockAt": 0.27,
+   "note": "below about 8 CSS px is unreadable"
+  }
+ },
+ "blockAlways": [
+  "wrong value",
+  "answer shown in a problem figure",
+  "required value missing",
+  "broken or empty figure",
+  "label points at the wrong object (owner error)",
+  "clipped by the viewBox (more than 10% of a label box, or any figure part)",
+  "label more than half covered by another label or shape",
+  "value digits unreadable"
+ ],
+ "codes": {
+  "LABEL_OVERLAP": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "LABEL_GEOMETRY_COLLISION": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "BOX_COLLISION": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "MARK_LABEL_OVERLAPS": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "MAPPING_COLUMN_NAME_OVERLAPS_OVAL": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "MAPPING_ARROW_BLOCKS_LABEL": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "NUMBER_LINE_CONSTRUCTION_SOURCE_ON_LABEL": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "NUMBER_LINE_CONSTRUCTION_ARC_ON_LABEL": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "CONTAINER_LABEL_ON_LINE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "SD_LABEL_OVERLAP": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+  },
+  "STAT_LABELS_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "SET_LABELS_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "CONTAINER_LABELS_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "STAT_CLASS_SUM_OVERLAP": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "STAT_DICE_GROUP_OVERLAP": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "STAT_STEM_CLASS_OVERLAP": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "overlap",
+   "fixed": 6,
+   "degree": "none",
+   "note": "generator throws on first overlapping pair; detail names the two labels only"
+  },
+  "NUMBER_LINE_LABELS_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "NUMBER_LINE_SYMBOL_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "NUMBER_LINE_VALUES_TOO_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "NUMBER_LINE_TICKS_TOO_DENSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "NUMBER_LINE_INTEGER_POINTS_TOO_DENSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "SC_NORMAL_TICK_NUMBERS_CLOSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "REGION_HATCH_TOO_DENSE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "STAT_TREE_LABEL_TOO_WIDE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "NUMBER_LINE_ROW_LABEL_TOO_WIDE": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "detail has no measured gap (ROW_LABEL_TOO_WIDE carries width only)"
+  },
+  "ANGLE_LABEL_TOO_FAR": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "RIGHT_ANGLE_LABEL_TOO_FAR": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "TICK_LABEL_OWNER_LEADER_TOO_LONG": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "TICK_LABEL_ALONG_AXIS_MISALIGNMENT": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "AXIS_VALUE_LABEL_NOT_ADJACENT": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "AXIS_VALUE_LABEL_BEHIND_STROKE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "LABEL_NEAREST_CURVE_MISMATCH": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "ASYMPTOTE_LABEL_DETACHED": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "ASYMPTOTE_LABEL_TOUCHES_CURVE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "ASYMPTOTE_LABEL_ON_CURVE_SIDE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "VERTICAL_ASYMPTOTE_LABEL_NEAR_Y_AXIS": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "OVERLAY_LINE_LABEL_NOT_NEAR_OWNER": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "DIMENSION_CROSSES_STROKE": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "LEADER_CROSSING": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "LEADER_NEAR_GEOMETRY": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "SOLID_ARC_STRADDLES_VISIBILITY": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "HIDDEN_POINT_MARKER_AT_POINT": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "distance",
+   "fixed": 6,
+   "degree": "none",
+   "note": "the observer compares a measured distance with a limit but returns only the code and label id"
+  },
+  "STAT_LABEL_OUT_OF_BOUNDS": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "outside",
+   "fixed": 6,
+   "degree": "output",
+   "note": "detail carries box and size: the degree is computable (score.mjs degreeFromDetail); SAFE margin 12 px, viewBox clip is separate"
+  },
+  "SET_LABEL_OUT_OF_BOUNDS": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "outside",
+   "fixed": 6,
+   "degree": "none"
+  },
+  "CONTAINER_LABEL_OUT_OF_BOUNDS": {
+   "track": "DEDUCT",
+   "stage": "placement",
+   "degreeKind": "outside",
+   "fixed": 6,
+   "degree": "none"
+  },
+  "TEXT_CLIPPED": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "outside",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
+  },
+  "CONDITION_BOX_OVERFLOW": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "outside",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
+  },
+  "PUBLICATION_FONT_BELOW_11_CSS_PX": {
+   "track": "DEDUCT",
+   "stage": "post-render",
+   "degreeKind": "fontShortfall",
+   "fixed": 6,
+   "degree": "observer-internal",
+   "note": "effectiveFontPx is in labelMeasurements"
+  },
+  "SOLID_LABELS_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "AXIS_VALUE_LABEL_NO_PLACE": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "CALLOUT_ANGLE_DIMENSION_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "CONTAINER_NOTE_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "ELLIPSE_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "EQUAL_MARK_PATH_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "LATTICE_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "PATH_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "SET_COUNT_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "SET_ELEMENT_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "STAT_BRANCH_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "STAT_NORMAL_AREA_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "STAT_NORMAL_CURVE_NAME_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "VERTICAL_ASYMPTOTE_LABEL_NO_ROOM": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "ELLIPSE_FIGURE_TOO_LARGE": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
+  "NUMBER_LINE_LABEL_TOO_LARGE": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "output",
+   "note": "detail carries height and rowHeight: degree = height/rowHeight-1"
+  },
+  "LAYOUT_INVENTORY_INCOMPLETE": {
+   "track": "INDETERMINATE",
+   "stage": "placement",
+   "degree": "none",
+   "note": "the layout could not place every label (labels listed in engineResult). Listed under 판정 불능 as agreed, but it behaves like NO_ROOM (hint tells the author to pull labels out); the engine line may move it to WAIT_ENGINE"
+  },
+  "WORKER_TIMEOUT": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "WORKER_ERROR": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "UNSUPPORTED_DISPLAY_ENVELOPE": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "POLICY_PROVENANCE_MISMATCH": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "ARCHIVE_PREFLIGHT_FAIL": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "ARCHIVE_POLICY_UNSUPPORTED": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "ARCHIVE_BANK_RESPONSE_MISMATCH": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "MEASURED_OWNER_LAYOUT_COMPETITOR_LOOKUP_FAIL": {
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "degree": "none",
+   "note": "display-size family (UNSUPPORTED_DISPLAY_ENVELOPE, *DISPLAY_ENVELOPE*, *PREFLIGHT_FAIL) is held by the refactor line against the archive figure-size rules"
+  },
+  "PUBLICATION_TEXT_NOT_READY": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "no readable value, a figure part cut by the viewBox, or a missing glyph"
+  },
+  "GEOMETRY_VIEWPORT_CLIPPING": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "no readable value, a figure part cut by the viewBox, or a missing glyph"
+  },
+  "MISSING_GLYPH": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "no readable value, a figure part cut by the viewBox, or a missing glyph"
+  },
+  "PUBLICATION_TEXT_BOUNDS_INVALID": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "no readable value, a figure part cut by the viewBox, or a missing glyph"
+  },
+  "ANGLE_DEGREE_LABEL_HAS_PI": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
+  },
+  "OVERLAY_LINE_MISMATCH": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
+  },
+  "RIGHT_ANGLE_RAY_OWNER_MISMATCH": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
+  },
+  "EQUAL_UNIT_SCALE_MISMATCH": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
+  },
+  "NON_CANONICAL_NUMBER": {
+   "track": "BLOCK",
+   "stage": "post-render",
+   "degree": "none",
+   "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
+  }
+ },
+ "families": [
+  {
+   "match": "^(ACTUAL_ARCHIVE_|ACTUAL_DISPLAY_|ACTUAL_FONT_BELOW|ARCHIVE_BANK_|ARCHIVE_INPUT_INVALID|ARCHIVE_POLICY_|DISPLAY_ENVELOPE|DISPLAY_PROFILE|ENVELOPE_TARGET|PRESENTATION_|LAYOUT_REPAIR_|MEASURED_OWNER_LAYOUT_|BROWSER_MEASUREMENT|FINAL_LABEL_|OBSERVER_INPUT|IMMUTABLE_PREFLIGHT|PROFILE_TOPOLOGY|INVALID_ENVELOPE)",
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "reason": "display-size / provenance / measurement plumbing: the judgement could not run"
+  },
+  {
+   "match": "(_ENVELOPE_|PREFLIGHT_FAIL$)",
+   "track": "INDETERMINATE",
+   "stage": "infra",
+   "reason": "display-size / preflight family"
+  },
+  {
+   "match": "(_NO_ROOM|_NO_PLACE)$",
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "reason": "no place found for a label or mark"
+  },
+  {
+   "match": "LABEL_TOO_LARGE$",
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "reason": "label larger than its room"
+  },
+  {
+   "match": "(_OWNER_AMBIGUOUS|_OWNER_MISMATCH|_OWNER_NOT_|_OWNER_MISSING|_OWNER_INVALID)",
+   "track": "BLOCK",
+   "stage": "post-render",
+   "reason": "owner / belonging error: a label may point at the wrong target"
+  }
+ ],
+ "default": {
+  "track": "BLOCK",
+  "stage": "unknown",
+  "reason": "unlisted code is treated as a real defect (plan or math error)"
+ }
+}
