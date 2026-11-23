@@ -738,7 +738,7 @@ window.questionBank = [
     "content": "$(1+2x) + (1+2x)^2 + (1+2x)^3 + \\dots + (1+2x)^{10}$의 전개식에서 $x^3$의 계수를 구하는 과정을 구체적으로 서술하시오.\\n(6점, 부분 점수 있음.)",
     "choices": [],
     "answer": "2640",
-    "solution": "주어진 식은 첫째항이 $(1+2x)$, 공비가 $(1+2x)$인 등비수열의 합이다.\\n$S = \\frac{(1+2x)\\{(1+2x)^{10}-1\\}}{(1+2x)-1} = \\frac{(1+2x)^{11}-(1+2x)}{2x}$\\n$x^3$의 계수는 분자의 $x^4$ 계수를 2로 나눈 값이다.\\n분자의 $x^4$ 계수는 $_{11}C_{4} \\times 2^4 = 330 \\times 16 = 5280$\\n$\\therefore \\frac{5280}{2} = 2640$",
+    "solution": "각 $(1+2x)^k$의 전개에서 $k\\ge3$일 때 $x^3$항은 $\\binom{k}{3}(2x)^3=8\\binom{k}{3}x^3$이고, $k=1,2$일 때는 $x^3$항이 없다.\n따라서 전체 식에서 $x^3$의 계수는 $8\\left(\\binom{3}{3}+\\binom{4}{3}+\\cdots+\\binom{10}{3}\\right)$이다.\n파스칼 항등식 $\\binom{k+1}{4}=\\binom{k}{4}+\\binom{k}{3}$에서 $\\binom{k}{3}=\\binom{k+1}{4}-\\binom{k}{4}$이므로\n$$\\binom{3}{3}+\\binom{4}{3}+\\cdots+\\binom{10}{3}=\\binom{11}{4}-\\binom{3}{4}=\\frac{11\\cdot10\\cdot9\\cdot8}{4\\cdot3\\cdot2\\cdot1}-0=330$$\n이다.\n따라서 구하는 값은 $8\\cdot330=2640$이다.",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-02",

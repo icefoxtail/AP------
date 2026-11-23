@@ -477,7 +477,7 @@ window.questionBank = [
       "로그의 성질"
     ],
     "answer": "①",
-    "solution": "각 로그 성질을 확인한다.\nㄱ. 곱의 로그 법칙은 $\\log_a(xy)=\\log_a x+\\log_a y$이다. 주어진 식처럼 두 로그값을 곱하는 것은 일반적으로 합과 같지 않으므로 거짓이다.\nㄴ. 밑의 변환을 쓰면 $\\dfrac{\\log_a x}{\\log_a y}=\\dfrac{\\ln x}{\\ln y}=\\log_y x$이므로 참이다.\nㄷ. 로그의 차는 $\\log_a(x/y)$에 해당하며 $\\log_a(x-y)$와 같지 않으므로 거짓이다.\nㄹ. 거듭제곱 법칙은 $\\log_a(x^n)=n\\log_a x$이다. 주어진 좌변은 로그값 자체를 거듭제곱한 것이므로 거짓이다.\n따라서 옳은 것은 ㄴ뿐이고 정답은 ①이다.",
+    "solution": "로그의 정의 조건부터 확인한다. $x>0$, $y>0$, $a>0$, $a\\ne1$이고, ㄴ에서는 $y\\ne1$이어야 $\\log_y x$가 정의된다.\nㄱ. $\\log_a(xy)=\\log_a x+\\log_a y$인데, 이를 $(\\log_a x)(\\log_a y)$와 혼동한 식이다. 예를 들어 $a=2$, $x=y=2$이면 좌변은 $1$, 우변은 $2$이므로 거짓이다.\nㄴ. 밑의 변환을 쓰면 $\\dfrac{\\log_a x}{\\log_a y}=\\dfrac{\\log x/\\log a}{\\log y/\\log a}=\\dfrac{\\log x}{\\log y}=\\log_y x$이고, $y\\ne1$이므로 분모가 $0$이 아니어서 참이다.\nㄷ. 올바른 법칙은 $\\log_a\\dfrac{x}{y}=\\log_a x-\\log_a y$이며 $\\log_a(x-y)$와 같지 않으므로 거짓이다.\nㄹ. 올바른 법칙은 $\\log_a(x^n)=n\\log_a x$이다. 예를 들어 $a=2$, $x=8$, $n=2$이면 좌변은 $9$, 우변은 $6$이므로 거짓이다.\n따라서 옳은 것은 ㄴ뿐이고 정답은 ①이다.",
     "level": "중",
     "category": "지수와 로그",
     "originalCategory": "지수와 로그",

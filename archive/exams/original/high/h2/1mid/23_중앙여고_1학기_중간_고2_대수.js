@@ -68,7 +68,7 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 두 무리수의 합이 자연수가 되기 위해서는 각 항이 각각 유리수(자연수)가 되어야 함.\\n$\\sqrt[3]{a}$와 $\\sqrt{b}$가 각각 자연수가 되는 조건을 탐색함.\\n$i)  a  의 조건 분석: $\\n$a$는 어떤 자연수의 세제곱수($k^3$)여야 함.\\n주어진 범위 $100 \\le a \\le 130$ 내의 세제곱수를 나열함.\\n$4^3 = 64$ (범위 미달), $5^3 = 125$ (포함), $6^3 = 216$ (범위 초과)\\n$\\therefore a = 125$\\n$ii)  b  의 조건 분석: $\\n$b$는 어떤 자연수의 제곱수($n^2$)여야 함.\\n주어진 범위 $5 \\le b \\le 10$ 내의 제곱수를 나열함.\\n$2^2 = 4$ (범위 미달), $3^2 = 9$ (포함), $4^2 = 16$ (범위 초과)\\n$\\therefore b = 9$\\n$iii) 최종 값 산출: $\\n$a - b = 125 - 9 = 116$\\n$\\therefore 116$",
+    "solution": "$N=\\sqrt[3]{a}+\\sqrt{b}$가 자연수라 하자. $\\sqrt{b}=N-\\sqrt[3]{a}$이다.\n$u=\\sqrt{b}$로 놓으면 $a=(N-u)^3=N^3+3Nb-(3N^2+b)u$이다.\n$a,N,b$는 정수이고 $3N^2+b>0$이므로 $u$가 무리수이면 우변이 무리수가 되어 모순이다. 따라서 $\\sqrt{b}$는 유리수이고, $b$가 정수이므로 $\\sqrt{b}$도 정수이다.\n$5\\le b\\le 10$에서 완전제곱수는 $9$뿐이므로 $b=9$, $\\sqrt{b}=3$이다.\n$N=\\sqrt[3]{a}+3$이 정수이므로 $\\sqrt[3]{a}$도 정수이다.\n$100\\le a\\le 130$에서 완전세제곱수는 $125=5^3$뿐이므로 $a=125$이다.\n$a-b=125-9=116$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
@@ -105,7 +105,7 @@ window.questionBank = [
       "표해석"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 거듭제곱근의 정의를 지수 식으로 변환하여 $xy$와 $x+y$에 대한 관계식을 유도함.\\n$i) 조건 (가) 해석: $\\n$xy$의 $n$제곱근이 $m^3$이라는 것은 $(m^3)^n = xy$를 의미함.\\n$\\therefore xy = m^{3n} \\quad \\cdots (1)$\\n$ii) 조건 (나) 해석: $\\n$n^{x+y}$의 제곱근이 $n^{\\frac{m}{2}}$이라는 것은 $(n^{\\frac{m}{2}})^2 = n^{x+y}$를 의미함.\\n$\\implies n^m = n^{x+y}$\\n$\\therefore x + y = m \\quad \\cdots (2)$\\n$iii) 목표 식의 변형 및 계산: $\\n구하고자 하는 식은 $\\log_m(x^2y+xy^2)$ 임.\\n공통인수 $xy$로 묶으면 $\\log_m(xy(x+y))$ 가 됨.\\n여기에 $(1)$과 $(2)$의 결과를 대입함.\\n$\\implies \\log_m(m^{3n} \\cdot m) = \\log_m(m^{3n+1})$\\n로그의 성질 $\\log_a a^k = k$를 적용함.\\n$\\therefore 3n + 1$",
+    "solution": "(가)에서 $m^3$이 $xy$의 $n$제곱근이므로\n$$(m^3)^n=xy \\quad \\therefore xy=m^{3n}$$\n(나)에서 $n^{\\frac{m}{2}}$는 $n^{x+y}>0$의 양의 제곱근이므로\n$$\\left(n^{\\frac{m}{2}}\\right)^2=n^{x+y} \\quad \\therefore n^m=n^{x+y}$$\n$n>0$, $n\\ne1$이므로 $x+y=m$이다.\n구하는 식은\n$$\\log_m(x^2y+xy^2)=\\log_m(xy(x+y))=\\log_m(m^{3n}\\cdot m)=\\log_m m^{3n+1}=3n+1$$\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
