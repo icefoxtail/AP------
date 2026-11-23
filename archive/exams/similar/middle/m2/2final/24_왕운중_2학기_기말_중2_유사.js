@@ -71,11 +71,11 @@ window.questionBank = [
     "wide": false,
     "content": "세 변의 길이가 각각 다음과 같이 주어졌을 때, 직각삼각형인 것은?",
     "choices": [
-      "$5 m\\,cm, 12 m\\,cm, 13 m\\,cm$",
-      "$3 m\\,cm, 5 m\\,cm, 6 m\\,cm$",
-      "$4 m\\,cm, 6 m\\,cm, 8 m\\,cm$",
-      "$7 m\\,cm, 9 m\\,cm, 11 m\\,cm$",
-      "$8 m\\,cm, 10 m\\,cm, 14 m\\,cm$"
+      "$5\\,\\text{cm}, 12\\,\\text{cm}, 13\\,\\text{cm}$",
+      "$3\\,\\text{cm}, 5\\,\\text{cm}, 6\\,\\text{cm}$",
+      "$4\\,\\text{cm}, 6\\,\\text{cm}, 8\\,\\text{cm}$",
+      "$7\\,\\text{cm}, 9\\,\\text{cm}, 11\\,\\text{cm}$",
+      "$8\\,\\text{cm}, 10\\,\\text{cm}, 14\\,\\text{cm}$"
     ],
     "answer": "①",
     "solution": "삼각형의 가장 긴 변의 길이의 제곱이 나머지 두 변의 길이의 제곱의 합과 같으면 피타고라스 정리의 역에 의해 직각삼각형이다.\n각 선지를 검토하면 다음과 같다.\n$$\n\\begin{aligned}\n\\text{① } &5^2 + 12^2 = 25 + 144 = 169 = 13^2 \\quad (\\text{직각삼각형}) \\\n\\text{② } &3^2 + 5^2 = 9 + 25 = 34 \ne 36 = 6^2 \\\n\\text{③ } &4^2 + 6^2 = 16 + 36 = 52 \ne 64 = 8^2 \\\n\\text{④ } &7^2 + 9^2 = 49 + 81 = 130 \ne 121 = 11^2 \\\n\\text{⑤ } &8^2 + 10^2 = 64 + 100 = 164 \ne 196 = 14^2\n\\end{aligned}\n$$\n따라서 직각삼각형인 것은 ①이다.",
@@ -205,16 +205,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$에서 변 $AC$의 중점을 $E$라 하고, 중선 $BE$ 위의 점 $G$가 $\\triangle ABC$의 무게중심이다. $\\overline{BG}=8 m\\,cm$일 때, 선분 $\\overline{GE}$의 길이는?",
+    "content": "$\\triangle ABC$에서 변 $AC$의 중점을 $E$라 하고, 중선 $BE$ 위의 점 $G$가 $\\triangle ABC$의 무게중심이다. $\\overline{BG}=8\\,\\text{cm}$일 때, 선분 $\\overline{GE}$의 길이는?",
     "choices": [
-      "$2 m\\,cm$",
-      "$\\dfrac{5}{2} m\\,cm$",
-      "$3 m\\,cm$",
-      "$4 m\\,cm$",
-      "$\\dfrac{9}{2} m\\,cm$"
+      "$2\\,\\text{cm}$",
+      "$\\dfrac{5}{2}\\,\\text{cm}$",
+      "$3\\,\\text{cm}$",
+      "$4\\,\\text{cm}$",
+      "$\\dfrac{9}{2}\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "삼각형의 무게중심은 각 중선을 꼭짓점으로부터 $2:1$로 나눈다. 선분 $\\overline{BE}$는 꼭짓점 $B$에서 대변의 중점 $E$를 이은 중선이므로 $$\n\\begin{aligned}\n\\overline{BG} : \\overline{GE} &= 2 : 1 \\\n\\overline{GE} &= \\frac{1}{2}\\overline{BG} \\\n&= \\frac{1}{2} \\times 8 \\\n&= 4 m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{GE}$의 길이는 $4 m\\,cm$이다.",
+    "solution": "삼각형의 무게중심은 각 중선을 꼭짓점으로부터 $2:1$로 나눈다. 선분 $\\overline{BE}$는 꼭짓점 $B$에서 대변의 중점 $E$를 이은 중선이므로 $$\n\\begin{aligned}\n\\overline{BG} : \\overline{GE} &= 2 : 1 \\\n\\overline{GE} &= \\frac{1}{2}\\overline{BG} \\\n&= \\frac{1}{2} \\times 8 \\\n&= 4\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{GE}$의 길이는 $4\\,\\text{cm}$이다.",
     "score": 3,
     "points": 3,
     "difficultyBucket": 3,
@@ -297,16 +297,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$의 두 변 $AB, AC$ 위의 점 $D, E$에 대하여 $\\overline{DE} \\parallel \\overline{BC}$이다. $\\overline{AB}=18 m\\,cm$, $\\overline{BD}=6 m\\,cm$, $\\overline{AE}=10 m\\,cm$일 때, 선분 $\\overline{EC}$의 길이는?",
+    "content": "$\\triangle ABC$의 두 변 $AB, AC$ 위의 점 $D, E$에 대하여 $\\overline{DE} \\parallel \\overline{BC}$이다. $\\overline{AB}=18\\,\\text{cm}$, $\\overline{BD}=6\\,\\text{cm}$, $\\overline{AE}=10\\,\\text{cm}$일 때, 선분 $\\overline{EC}$의 길이는?",
     "choices": [
-      "$5 m\\,cm$",
-      "$6 m\\,cm$",
-      "$7 m\\,cm$",
-      "$8 m\\,cm$",
-      "$9 m\\,cm$"
+      "$5\\,\\text{cm}$",
+      "$6\\,\\text{cm}$",
+      "$7\\,\\text{cm}$",
+      "$8\\,\\text{cm}$",
+      "$9\\,\\text{cm}$"
     ],
     "answer": "①",
-    "solution": "점 $D$가 변 $\\overline{AB}$ 위의 점이므로 $$\n\\overline{AD} = \\overline{AB} - \\overline{BD} = 18 - 6 = 12 m\\,cm\n$$ $\\overline{DE} \\parallel \\overline{BC}$이므로 삼각형에서 평행선과 선분의 길이의 비 성질에 따라 $$\n\\begin{aligned}\n\\overline{AD} : \\overline{BD} &= \\overline{AE} : \\overline{EC} \\\n12 : 6 &= 10 : \\overline{EC} \\\n2 : 1 &= 10 : \\overline{EC} \\\n2 \\times \\overline{EC} &= 10 \\\n\\overline{EC} &= 5 m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{EC}$의 길이는 $5 m\\,cm$이다.",
+    "solution": "점 $D$가 변 $\\overline{AB}$ 위의 점이므로 $$\n\\overline{AD} = \\overline{AB} - \\overline{BD} = 18 - 6 = 12\\,\\text{cm}\n$$ $\\overline{DE} \\parallel \\overline{BC}$이므로 삼각형에서 평행선과 선분의 길이의 비 성질에 따라 $$\n\\begin{aligned}\n\\overline{AD} : \\overline{BD} &= \\overline{AE} : \\overline{EC} \\\n12 : 6 &= 10 : \\overline{EC} \\\n2 : 1 &= 10 : \\overline{EC} \\\n2 \\times \\overline{EC} &= 10 \\\n\\overline{EC} &= 5\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{EC}$의 길이는 $5\\,\\text{cm}$이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
@@ -388,16 +388,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$의 변 $BC$ 위의 점 $E$, 변 $AC$ 위의 점 $D$에 대하여 $\\angle B = \\angle CDE$이다. $\\overline{BE}=5 m\\,cm$, $\\overline{EC}=7 m\\,cm$, $\\overline{CD}=6 m\\,cm$일 때, 선분 $\\overline{AD}$의 길이는?",
+    "content": "$\\triangle ABC$의 변 $BC$ 위의 점 $E$, 변 $AC$ 위의 점 $D$에 대하여 $\\angle B = \\angle CDE$이다. $\\overline{BE}=5\\,\\text{cm}$, $\\overline{EC}=7\\,\\text{cm}$, $\\overline{CD}=6\\,\\text{cm}$일 때, 선분 $\\overline{AD}$의 길이는?",
     "choices": [
-      "$7 m\\,cm$",
-      "$8 m\\,cm$",
-      "$9 m\\,cm$",
-      "$10 m\\,cm$",
-      "$11 m\\,cm$"
+      "$7\\,\\text{cm}$",
+      "$8\\,\\text{cm}$",
+      "$9\\,\\text{cm}$",
+      "$10\\,\\text{cm}$",
+      "$11\\,\\text{cm}$"
     ],
     "answer": "②",
-    "solution": "변 $\\overline{BC}$의 전체 길이는 $$\n\\overline{BC} = \\overline{BE} + \\overline{EC} = 5 + 7 = 12 m\\,cm\n$$ $\\triangle ABC$와 $\\triangle DEC$에서 $$\n\\begin{aligned}\n\\angle C &\\text{는 공통} \\\n\\angle B &= \\angle CDE\n\\end{aligned}\n$$\n두 쌍의 대응각의 크기가 각각 같으므로\n$$\n\\triangle ABC \\sim \\triangle DEC \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비가 같으므로\n$$\n\\begin{aligned}\n\\overline{BC} : \\overline{DC} &= \\overline{AC} : \\overline{EC} \\\n12 : 6 &= \\overline{AC} : 7 \\\n2 : 1 &= \\overline{AC} : 7 \\\n\\overline{AC} &= 14 m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{AD}$의 길이는 $$\n\\begin{aligned}\n\\overline{AD} &= \\overline{AC} - \\overline{CD} \\\n&= 14 - 6 \\\n&= 8 m\\,cm\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
+    "solution": "변 $\\overline{BC}$의 전체 길이는 $$\n\\overline{BC} = \\overline{BE} + \\overline{EC} = 5 + 7 = 12\\,\\text{cm}\n$$ $\\triangle ABC$와 $\\triangle DEC$에서 $$\n\\begin{aligned}\n\\angle C &\\text{는 공통} \\\n\\angle B &= \\angle CDE\n\\end{aligned}\n$$\n두 쌍의 대응각의 크기가 각각 같으므로\n$$\n\\triangle ABC \\sim \\triangle DEC \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비가 같으므로\n$$\n\\begin{aligned}\n\\overline{BC} : \\overline{DC} &= \\overline{AC} : \\overline{EC} \\\n12 : 6 &= \\overline{AC} : 7 \\\n2 : 1 &= \\overline{AC} : 7 \\\n\\overline{AC} &= 14\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{AD}$의 길이는 $$\n\\begin{aligned}\n\\overline{AD} &= \\overline{AC} - \\overline{CD} \\\n&= 14 - 6 \\\n&= 8\\,\\text{cm}\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 4,
@@ -434,16 +434,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "$\\angle BAC = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $\\overline{BC}$에 내린 수선의 발을 $D$라 하자. $\\overline{AD}=6 m\\,cm$, $\\overline{CD}=4 m\\,cm$일 때, 선분 $\\overline{BD}$의 길이는?",
+    "content": "$\\angle BAC = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $\\overline{BC}$에 내린 수선의 발을 $D$라 하자. $\\overline{AD}=6\\,\\text{cm}$, $\\overline{CD}=4\\,\\text{cm}$일 때, 선분 $\\overline{BD}$의 길이는?",
     "choices": [
-      "$6 m\\,cm$",
-      "$7 m\\,cm$",
-      "$8 m\\,cm$",
-      "$9 m\\,cm$",
-      "$10 m\\,cm$"
+      "$6\\,\\text{cm}$",
+      "$7\\,\\text{cm}$",
+      "$8\\,\\text{cm}$",
+      "$9\\,\\text{cm}$",
+      "$10\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "직각삼각형의 닮음에 의한 높이 공식에서\n$$\n\\overline{AD}^2 = \\overline{BD} \\times \\overline{CD}\n$$\n이 성립한다. 주어진 값을 대입하면\n$$\n\\begin{aligned}\n6^2 &= \\overline{BD} \\times 4 \\\n36 &= 4 \\times \\overline{BD} \\\n\\overline{BD} &= 9 m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{BD}$의 길이는 $9 m\\,cm$이다.",
+    "solution": "직각삼각형의 닮음에 의한 높이 공식에서\n$$\n\\overline{AD}^2 = \\overline{BD} \\times \\overline{CD}\n$$\n이 성립한다. 주어진 값을 대입하면\n$$\n\\begin{aligned}\n6^2 &= \\overline{BD} \\times 4 \\\n36 &= 4 \\times \\overline{BD} \\\n\\overline{BD} &= 9\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{BD}$의 길이는 $9\\,\\text{cm}$이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
@@ -660,16 +660,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "그림과 같이 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$이고, 선분 $BC$ 위에 점 $F$가 있다. $\\overline{AB}=12 m\\,cm$, $\\overline{DC}=8 m\\,cm$일 때, 선분 $\\overline{EF}$의 길이는?",
+    "content": "그림과 같이 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$이고, 선분 $BC$ 위에 점 $F$가 있다. $\\overline{AB}=12\\,\\text{cm}$, $\\overline{DC}=8\\,\\text{cm}$일 때, 선분 $\\overline{EF}$의 길이는?",
     "choices": [
-      "$\\dfrac{21}{5} m\\,cm$",
-      "$\\dfrac{22}{5} m\\,cm$",
-      "$\\dfrac{23}{5} m\\,cm$",
-      "$\\dfrac{24}{5} m\\,cm$",
-      "$5 m\\,cm$"
+      "$\\dfrac{21}{5}\\,\\text{cm}$",
+      "$\\dfrac{22}{5}\\,\\text{cm}$",
+      "$\\dfrac{23}{5}\\,\\text{cm}$",
+      "$\\dfrac{24}{5}\\,\\text{cm}$",
+      "$5\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "$\\overline{AB} \\parallel \\overline{DC}$이므로 엇각과 맞꼭지각에 의해 $$\n\\triangle ABE \\sim \\triangle CDE \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비는\n$$\n\\overline{BE} : \\overline{ED} = \\overline{AB} : \\overline{DC} = 12 : 8 = 3 : 2\n$$ 따라서 선분 $\\overline{BE}$와 $\\overline{BD}$의 길이의 비는 $$\n\\overline{BE} : \\overline{BD} = 3 : (3 + 2) = 3 : 5\n$$ $\\triangle BDC$에서 $\\overline{EF} \\parallel \\overline{DC}$이므로 $\\triangle BEF \\sim \\triangle BDC$이고 $$\n\\begin{aligned}\n\\overline{EF} : \\overline{DC} &= \\overline{BE} : \\overline{BD} \\\n\\overline{EF} : 8 &= 3 : 5 \\\n5 \\times \\overline{EF} &= 24 \\\n\\overline{EF} &= \\frac{24}{5} m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{EF}$의 길이는 $\\dfrac{24}{5} m\\,cm$이다.",
+    "solution": "$\\overline{AB} \\parallel \\overline{DC}$이므로 엇각과 맞꼭지각에 의해 $$\n\\triangle ABE \\sim \\triangle CDE \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비는\n$$\n\\overline{BE} : \\overline{ED} = \\overline{AB} : \\overline{DC} = 12 : 8 = 3 : 2\n$$ 따라서 선분 $\\overline{BE}$와 $\\overline{BD}$의 길이의 비는 $$\n\\overline{BE} : \\overline{BD} = 3 : (3 + 2) = 3 : 5\n$$ $\\triangle BDC$에서 $\\overline{EF} \\parallel \\overline{DC}$이므로 $\\triangle BEF \\sim \\triangle BDC$이고 $$\n\\begin{aligned}\n\\overline{EF} : \\overline{DC} &= \\overline{BE} : \\overline{BD} \\\n\\overline{EF} : 8 &= 3 : 5 \\\n5 \\times \\overline{EF} &= 24 \\\n\\overline{EF} &= \\frac{24}{5}\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{EF}$의 길이는 $\\dfrac{24}{5}\\,\\text{cm}$이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 4,
@@ -888,16 +888,16 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=6 m\\,cm$, $\\overline{BC}=10 m\\,cm$이고, $\\angle B$의 이등분선이 변 $AC$와 만나는 점을 $D$라 하자. 점 $D$에서 빗변 $BC$에 내린 수선의 발을 $E$, 점 $E$를 지나고 선분 $BD$에 평행한 직선이 변 $AC$와 만나는 점을 $F$, 점 $F$에서 변 $BC$에 내린 수선의 발을 $G$라 할 때, 선분 $\\overline{FG}$의 길이는?",
+    "content": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=6\\,\\text{cm}$, $\\overline{BC}=10\\,\\text{cm}$이고, $\\angle B$의 이등분선이 변 $AC$와 만나는 점을 $D$라 하자. 점 $D$에서 빗변 $BC$에 내린 수선의 발을 $E$, 점 $E$를 지나고 선분 $BD$에 평행한 직선이 변 $AC$와 만나는 점을 $F$, 점 $F$에서 변 $BC$에 내린 수선의 발을 $G$라 할 때, 선분 $\\overline{FG}$의 길이는?",
     "choices": [
-      "$1 m\\,cm$",
-      "$\\dfrac{9}{10} m\\,cm$",
-      "$\\dfrac{11}{10} m\\,cm$",
-      "$\\dfrac{6}{5} m\\,cm$",
-      "$\\dfrac{7}{5} m\\,cm$"
+      "$1\\,\\text{cm}$",
+      "$\\dfrac{9}{10}\\,\\text{cm}$",
+      "$\\dfrac{11}{10}\\,\\text{cm}$",
+      "$\\dfrac{6}{5}\\,\\text{cm}$",
+      "$\\dfrac{7}{5}\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "직각삼각형 $ABC$에서 피타고라스 정리에 의해 $$\n\\overline{AC} = \\sqrt{10^2 - 6^2} = 8 m\\,cm\n$$ $\\overline{BD}$가 $\\angle B$의 이등분선이므로 각의 이등분선의 성질에 의해 $$\n\\begin{aligned}\n\\overline{AD} : \\overline{DC} &= \\overline{AB} : \\overline{BC} = 6 : 10 = 3 : 5 \\\n\\overline{AD} &= 8 \\times \\frac{3}{3+5} = 3 m\\,cm \\\n\\overline{DC} &= 8 \\times \\frac{5}{3+5} = 5 m\\,cm\n\\end{aligned}\n$$ $\\triangle ABD$와 $\\triangle EBD$에서 $\\angle A = \\angle DEB = 90^\\circ$, $\\angle ABD = \\angle EBD$, $\\overline{BD}$는 공통이므로 $$\n\\triangle ABD \\equiv \\triangle EBD \\quad (\\text{RHA 합동})\n$$ 따라서 $\\overline{DE} = \\overline{AD} = 3 m\\,cm$이다. 직각삼각형 $CDE$에서 피타고라스 정리에 의해 $$\n\\overline{CE} = \\sqrt{\\overline{DC}^2 - \\overline{DE}^2} = \\sqrt{5^2 - 3^2} = 4 m\\,cm\n$$ $\\overline{EF} \\parallel \\overline{BD}$이므로 $\\triangle CEF \\sim \\triangle CBD$이고 닮음비는 $$\n\\overline{CE} : \\overline{CB} = 4 : 10 = 2 : 5\n$$ 따라서 $\\overline{CF} : \\overline{CD} = 2 : 5$이다. $\\overline{FG} \\perp \\overline{BC}$이고 $\\overline{DE} \\perp \\overline{BC}$이므로 $\\overline{FG} \\parallel \\overline{DE}$이다. $\\triangle CGF \\sim \\triangle CED$이고 닮음비는 $\\overline{CF} : \\overline{CD} = 2 : 5$이므로 $$\n\\begin{aligned}\n\\overline{FG} : \\overline{DE} &= 2 : 5 \\\n\\overline{FG} : 3 &= 2 : 5 \\\n5 \\times \\overline{FG} &= 6 \\\n\\overline{FG} &= \\frac{6}{5} m\\,cm\n\\end{aligned}\n$$\n따라서 정답은 ④이다.",
+    "solution": "직각삼각형 $ABC$에서 피타고라스 정리에 의해 $$\n\\overline{AC} = \\sqrt{10^2 - 6^2} = 8\\,\\text{cm}\n$$ $\\overline{BD}$가 $\\angle B$의 이등분선이므로 각의 이등분선의 성질에 의해 $$\n\\begin{aligned}\n\\overline{AD} : \\overline{DC} &= \\overline{AB} : \\overline{BC} = 6 : 10 = 3 : 5 \\\n\\overline{AD} &= 8 \\times \\frac{3}{3+5} = 3\\,\\text{cm} \\\n\\overline{DC} &= 8 \\times \\frac{5}{3+5} = 5\\,\\text{cm}\n\\end{aligned}\n$$ $\\triangle ABD$와 $\\triangle EBD$에서 $\\angle A = \\angle DEB = 90^\\circ$, $\\angle ABD = \\angle EBD$, $\\overline{BD}$는 공통이므로 $$\n\\triangle ABD \\equiv \\triangle EBD \\quad (\\text{RHA 합동})\n$$ 따라서 $\\overline{DE} = \\overline{AD} = 3\\,\\text{cm}$이다. 직각삼각형 $CDE$에서 피타고라스 정리에 의해 $$\n\\overline{CE} = \\sqrt{\\overline{DC}^2 - \\overline{DE}^2} = \\sqrt{5^2 - 3^2} = 4\\,\\text{cm}\n$$ $\\overline{EF} \\parallel \\overline{BD}$이므로 $\\triangle CEF \\sim \\triangle CBD$이고 닮음비는 $$\n\\overline{CE} : \\overline{CB} = 4 : 10 = 2 : 5\n$$ 따라서 $\\overline{CF} : \\overline{CD} = 2 : 5$이다. $\\overline{FG} \\perp \\overline{BC}$이고 $\\overline{DE} \\perp \\overline{BC}$이므로 $\\overline{FG} \\parallel \\overline{DE}$이다. $\\triangle CGF \\sim \\triangle CED$이고 닮음비는 $\\overline{CF} : \\overline{CD} = 2 : 5$이므로 $$\n\\begin{aligned}\n\\overline{FG} : \\overline{DE} &= 2 : 5 \\\n\\overline{FG} : 3 &= 2 : 5 \\\n5 \\times \\overline{FG} &= 6 \\\n\\overline{FG} &= \\frac{6}{5}\\,\\text{cm}\n\\end{aligned}\n$$\n따라서 정답은 ④이다.",
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
@@ -934,10 +934,10 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "[서술형 1] 사각형 $ABCD$에서 $\\angle A = \\angle C = 90^\\circ$이고 $\\overline{AB}=8 m\\,cm$, $\\overline{AD}=4 m\\,cm$, $\\overline{BC}=2 m\\,cm$, $\\overline{CD}=x m\\,cm$일 때, $x$의 값을 구하고 그 과정을 서술하시오. [4점]",
+    "content": "[서술형 1] 사각형 $ABCD$에서 $\\angle A = \\angle C = 90^\\circ$이고 $\\overline{AB}=8\\,\\text{cm}$, $\\overline{AD}=4\\,\\text{cm}$, $\\overline{BC}=2\\,\\text{cm}$, $\\overline{CD}=x\\,\\text{cm}$일 때, $x$의 값을 구하고 그 과정을 서술하시오. [4점]",
     "choices": [],
-    "answer": "$2\\sqrt{19} m\\,cm$",
-    "solution": "대각선 $\\overline{BD}$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 빗변이 $\\overline{BD}$인 직각삼각형이다. 직각삼각형 $ABD$에서 피타고라스 정리에 의해 $$\n\\begin{aligned}\n\\overline{BD}^2 &= \\overline{AB}^2 + \\overline{AD}^2 \\\n&= 8^2 + 4^2 \\\n&= 64 + 16 \\\n&= 80\n\\end{aligned}\n$$ 직각삼각형 $BCD$에서 피타고라스 정리에 의해 $$\n\\overline{BD}^2 = \\overline{BC}^2 + \\overline{CD}^2\n$$ 위에서 구한 $\\overline{BD}^2 = 80$을 대입하면 $$\n\\begin{aligned}\n80 &= 2^2 + x^2 \\\n80 &= 4 + x^2 \\\nx^2 &= 76\n\\end{aligned}\n$$\n길이는 양수이므로\n$$\nx = \\sqrt{76} = 2\\sqrt{19} m\\,cm\n$$ 따라서 $x$의 값은 $2\\sqrt{19} m\\,cm$이다.",
+    "answer": "$2\\sqrt{19}\\,\\text{cm}$",
+    "solution": "대각선 $\\overline{BD}$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 빗변이 $\\overline{BD}$인 직각삼각형이다. 직각삼각형 $ABD$에서 피타고라스 정리에 의해 $$\n\\begin{aligned}\n\\overline{BD}^2 &= \\overline{AB}^2 + \\overline{AD}^2 \\\n&= 8^2 + 4^2 \\\n&= 64 + 16 \\\n&= 80\n\\end{aligned}\n$$ 직각삼각형 $BCD$에서 피타고라스 정리에 의해 $$\n\\overline{BD}^2 = \\overline{BC}^2 + \\overline{CD}^2\n$$ 위에서 구한 $\\overline{BD}^2 = 80$을 대입하면 $$\n\\begin{aligned}\n80 &= 2^2 + x^2 \\\n80 &= 4 + x^2 \\\nx^2 &= 76\n\\end{aligned}\n$$\n길이는 양수이므로\n$$\nx = \\sqrt{76} = 2\\sqrt{19}\\,\\text{cm}\n$$ 따라서 $x$의 값은 $2\\sqrt{19}\\,\\text{cm}$이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 4,
@@ -1052,10 +1052,10 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "[서술형 4] 세 평행한 직선 $l, m, n$이 두 직선과 만나는 점을 각각 $A, B, C$와 $D, E, F$라 하자. $\\overline{AB}=6 m\\,cm$, $\\overline{BC}=9 m\\,cm$, $\\overline{AD}=10 m\\,cm$, $\\overline{CF}=25 m\\,cm$일 때, 선분 $\\overline{BE}$의 길이를 구하고 그 과정을 서술하시오. [6점]",
+    "content": "[서술형 4] 세 평행한 직선 $l, m, n$이 두 직선과 만나는 점을 각각 $A, B, C$와 $D, E, F$라 하자. $\\overline{AB}=6\\,\\text{cm}$, $\\overline{BC}=9\\,\\text{cm}$, $\\overline{AD}=10\\,\\text{cm}$, $\\overline{CF}=25\\,\\text{cm}$일 때, 선분 $\\overline{BE}$의 길이를 구하고 그 과정을 서술하시오. [6점]",
     "choices": [],
-    "answer": "$16 m\\,cm$",
-    "solution": "점 $A$를 지나고 직선 $DF$에 평행한 직선을 그어 직선 $m, n$과 만나는 점을 각각 $E', F'$이라 하자. $\\overline{AD} \\parallel \\overline{E'E} \\parallel \\overline{F'F}$이고 $\\overline{AF'} \\parallel \\overline{DF}$이므로 사각형 $ADE'E$와 사각형 $ADF'F$는 모두 평행사변형이다.\n따라서 대변의 길이가 같으므로\n$$\n\\overline{BE'} = \\overline{CF'} = \\overline{AD} = 10 m\\,cm\n$$ 선분 $\\overline{F'F}$의 길이는 $$\n\\overline{F'F} = \\overline{CF} - \\overline{CF'} = 25 - 10 = 15 m\\,cm\n$$ $\\triangle ACF'$에서 $\\overline{E'E} \\parallel \\overline{F'F}$이므로 삼각형에서 평행선 사이의 선분의 길이의 비 성질에 의해 $$\n\\begin{aligned}\n\\overline{AB} : \\overline{AC} &= \\overline{E'E} : \\overline{F'F} \\\n6 : (6 + 9) &= \\overline{E'E} : 15 \\\n6 : 15 &= \\overline{E'E} : 15 \\\n2 : 5 &= \\overline{E'E} : 15 \\\n5 \\times \\overline{E'E} &= 30 \\\n\\overline{E'E} &= 6 m\\,cm\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{BE}$의 길이는 $$\n\\begin{aligned}\n\\overline{BE} &= \\overline{BE'} + \\overline{E'E} \\\n&= 10 + 6 \\\n&= 16 m\\,cm\n\\end{aligned}\n$$ 따라서 선분 $\\overline{BE}$의 길이는 $16 m\\,cm$이다.",
+    "answer": "$16\\,\\text{cm}$",
+    "solution": "점 $A$를 지나고 직선 $DF$에 평행한 직선을 그어 직선 $m, n$과 만나는 점을 각각 $E', F'$이라 하자. $\\overline{AD} \\parallel \\overline{E'E} \\parallel \\overline{F'F}$이고 $\\overline{AF'} \\parallel \\overline{DF}$이므로 사각형 $ADE'E$와 사각형 $ADF'F$는 모두 평행사변형이다.\n따라서 대변의 길이가 같으므로\n$$\n\\overline{BE'} = \\overline{CF'} = \\overline{AD} = 10\\,\\text{cm}\n$$ 선분 $\\overline{F'F}$의 길이는 $$\n\\overline{F'F} = \\overline{CF} - \\overline{CF'} = 25 - 10 = 15\\,\\text{cm}\n$$ $\\triangle ACF'$에서 $\\overline{E'E} \\parallel \\overline{F'F}$이므로 삼각형에서 평행선 사이의 선분의 길이의 비 성질에 의해 $$\n\\begin{aligned}\n\\overline{AB} : \\overline{AC} &= \\overline{E'E} : \\overline{F'F} \\\n6 : (6 + 9) &= \\overline{E'E} : 15 \\\n6 : 15 &= \\overline{E'E} : 15 \\\n2 : 5 &= \\overline{E'E} : 15 \\\n5 \\times \\overline{E'E} &= 30 \\\n\\overline{E'E} &= 6\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 구하는 선분 $\\overline{BE}$의 길이는 $$\n\\begin{aligned}\n\\overline{BE} &= \\overline{BE'} + \\overline{E'E} \\\n&= 10 + 6 \\\n&= 16\\,\\text{cm}\n\\end{aligned}\n$$ 따라서 선분 $\\overline{BE}$의 길이는 $16\\,\\text{cm}$이다.",
     "score": 6,
     "points": 6,
     "difficultyBucket": 4,
