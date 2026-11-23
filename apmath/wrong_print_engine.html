@@ -55,7 +55,7 @@
         body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
         body.preview-mode #print-area { gap: 12px; padding: 12px 0 24px; transform: scale(var(--screen-page-scale, 0.72)); transform-origin: top center; }
         body.screen-fit-mode { overflow-x: hidden; }
-        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: translateX(var(--screen-page-shift, 0px)) scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
@@ -2916,6 +2916,11 @@ function updateScreenFitScale() {
     const cap = document.body.classList.contains('preview-mode') ? 0.72 : 1;
     const scale = Math.max(0.32, Math.min(cap, availableWidth / pageWidth));
     document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+    // 화면보다 넓은 쪽 상자(794px)는 margin:auto로 가운데 맞춰지지 않고 왼쪽 끝에 놓인다. 확대·축소 기준점이 상자 가운데라 줄여도 가운데가 화면 밖(오른쪽)에 남아
+    // 휴대폰 폭(390) 미리보기에서 쪽이 오른쪽으로 잘렸다. 상자 가운데가 화면 가운데에 오도록 옮긴다(화면이 더 넓어 이미 가운데면 0).
+    const boxWidth = area.offsetWidth || pageWidth;
+    const boxCenter = Math.max(0, (window.innerWidth - boxWidth) / 2) + boxWidth / 2;
+    document.documentElement.style.setProperty('--screen-page-shift', Math.round(window.innerWidth / 2 - boxCenter) + 'px');
 }
 
 if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
