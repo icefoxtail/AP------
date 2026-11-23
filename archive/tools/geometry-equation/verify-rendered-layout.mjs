@@ -130,6 +130,27 @@ const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
 // degree helpers for the score gate (ops/score): overlapped area over the smaller box; fraction of the box outside a frame and the shortfall inside a safe rectangle in box heights
 const boxOverlapRatio=(a,b)=>{const w=Math.min(right(a),right(b))-Math.max(a.x,b.x),h=Math.min(bottom(a),bottom(b))-Math.max(a.y,b.y);if(w<=0||h<=0)return 0;const small=Math.min(a.width*a.height,b.width*b.height);return small>0?w*h/small:0;};
 const boxOutside=(box,frame,safeRect)=>{const w=Math.max(0,Math.min(right(box),right(frame))-Math.max(box.x,frame.x)),h=Math.max(0,Math.min(bottom(box),bottom(frame))-Math.max(box.y,frame.y));const total=box.width*box.height;const shortfall=Math.max(0,safeRect.x-box.x,safeRect.y-box.y,right(box)-right(safeRect),bottom(box)-bottom(safeRect));return{kind:'outside',clippedFraction:total>0?1-w*h/total:1,d:shortfall/Math.max(1,box.height)};};
+// Score gate (ops/score), failure path only: how much of a label box the stroke / dot / knockout of one geometry primitive hides (sampled grid over the box, 0..1), and how much all of them hide together.
+const coverSegmentDistance=(x,y,a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],len=dx*dx+dy*dy,t=len>0?Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/len)):0;return Math.hypot(x-(a[0]+t*dx),y-(a[1]+t*dy));};
+const geometryCovers=(g,pad,box)=>{
+  if(g.kind==='tickLabelKnockout'||g.kind==='conditionBox'){const e=expand(g.client,pad);return (x,y)=>x>=e.x&&x<=e.x+e.width&&y>=e.y&&y<=e.y+e.height;}
+  if(g.kind==='point'||g.kind==='circle'){const [cx,cy]=g.at;return g.kind==='point'?(x,y)=>Math.hypot(x-cx,y-cy)<=g.radius+pad:(x,y)=>Math.abs(Math.hypot(x-cx,y-cy)-g.radius)<=pad;}
+  // only the segments that come near the label box matter (a region outline can hold thousands)
+  const near=expand(box,pad),segs=[];
+  (g.points||[]).forEach((p,j,all)=>{if(j>0){const q=all[j-1];if(Math.max(p[0],q[0])>=near.x&&Math.min(p[0],q[0])<=near.x+near.width&&Math.max(p[1],q[1])>=near.y&&Math.min(p[1],q[1])<=near.y+near.height)segs.push([q,p]);}});
+  return (x,y)=>segs.some(([a,b])=>coverSegmentDistance(x,y,a,b)<=pad);
+};
+// a sample every half CSS px (at most 96 per side), so a 1.5 px stroke is never stepped over
+function labelCoverage(box,hits){
+  const nx=Math.min(96,Math.max(8,Math.ceil(box.width/.5))),ny=Math.min(96,Math.max(8,Math.ceil(box.height/.5)));
+  const tests=hits.map(h=>geometryCovers(h.g,h.pad,box)),each=hits.map(()=>0);let any=0;
+  for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){
+    const x=box.x+box.width*(i+.5)/nx,y=box.y+box.height*(j+.5)/ny;let hit=false;
+    tests.forEach((t,k)=>{if(t(x,y)){each[k]++;hit=true;}});
+    if(hit)any++;
+  }
+  const n=nx*ny;return {each:each.map(c=>c/n),union:any/n};
+}
 const expand=(b,p)=>({x:b.x-p,y:b.y-p,width:b.width+2*p,height:b.height+2*p});
 const overlap=(a,b)=>a.x<right(b)-.1&&b.x<right(a)-.1&&a.y<bottom(b)-.1&&b.y<bottom(a)-.1;
 const contains=(a,b)=>a.x-.1<=b.x&&right(b)<=right(a)+.1&&a.y-.1<=b.y&&bottom(b)<=bottom(a)+.1;
@@ -432,6 +453,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     const label=capture.labels[i],box=label.client;
     if(!contains(safe,box)){clippedTextCount++;errors.push('TEXT_CLIPPED:'+label.id);degrees.set('TEXT_CLIPPED:'+label.id,boxOutside(box,capture.svg,safe));}
     for(const other of capture.labels.slice(i+1))if(overlap(box,other.client)){labelCollisionCount++;if(Math.min(label.priority,other.priority)<=2)criticalCollisionCount++;errors.push('LABEL_OVERLAP:'+label.id+':'+other.id);degrees.set('LABEL_OVERLAP:'+label.id+':'+other.id,{kind:'overlap',d:boxOverlapRatio(box,other.client)});}
+    const coverHits=[];
     for(const g of capture.geometry) {
       let hit=false;
       const strokePad=(g.strokeWidthPx??0)/2;
@@ -452,9 +474,11 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       if(hit){
         const legacyLineMask=tickKnockouts.some(mask=>validLegacyLineMaskIds.has(mask.id)&&mask.ownerLabelId===label.id&&mask.occludedPrimitiveIds.includes(g.id)&&label.id==='tick-x--1-label'&&g.id==='segmentAB'&&g.kind==='line');
         observedLabelCollisionCount++;if(label.priority<=2)observedCriticalCollisionCount++;
-        if(!legacyLineMask){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
+        if(!legacyLineMask){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);coverHits.push({g,pad:Math.max(strokePad,.5)});}
       }
     }
+    // Score gate: the share of this label each colliding shape hides (d) and all of them together (labelHidden); output only, the errors above are unchanged.
+    if(coverHits.length){const cover=labelCoverage(box,coverHits);coverHits.forEach((h,k)=>degrees.set('LABEL_GEOMETRY_COLLISION:'+label.id+':'+h.g.id,{kind:'overlap',d:cover.each[k],labelHidden:cover.union}));}
   }
   const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);
   const displayTextBelow11px=[];

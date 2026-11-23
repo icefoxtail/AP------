@@ -31,7 +31,7 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
 
   const one = c => score.scoreFigure({ findings: [{ code: c }], hasSvg: true });
   // v2: a finding without a degree costs 3: three light flaws pass (91), four do not (88); repeats of one code add up with no cap
-  assert.strictEqual(table.version, 'score-table-v2');
+  assert.strictEqual(table.version, 'score-table-v3');
   const mild = one('STAT_LABELS_TOO_CLOSE');
   assert.strictEqual(mild.verdict, 'PASS');
   assert.strictEqual(mild.score, 97);
@@ -102,6 +102,24 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   assert.strictEqual(score.scoreFigure({ findings: clipped.violations, hasSvg: true }).verdict, 'BLOCK');
   const lightTouch = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 47, 10, 40, 20)]));
   assert.strictEqual(score.scoreFigure({ findings: lightTouch.violations, hasSvg: true }).verdict, 'PASS');
+
+  // v3: a label crossed by a thin line keeps the light deduction; a label mostly hidden by shapes (one wide stroke, or several strokes together) is a block; a clean figure has no such field
+  const line = (id, x1, y1, x2, y2, w) => ({ id, kind: 'line', points: [[x1, y1], [x2, y2]], client: { x: Math.min(x1, x2), y: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) }, strokeWidthPx: w });
+  const capG = (labels, geometry) => ({ ...cap(labels), geometry });
+  const thin = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 30, 5, 30, 60, 1.5)]));
+  assert.deepStrictEqual(thin.violations.map(v => v.code), ['LABEL_GEOMETRY_COLLISION']);
+  assert.ok(thin.violations[0].degree.d > 0.02 && thin.violations[0].degree.d < 0.15, 'thin line hides a little: ' + thin.violations[0].degree.d);
+  assert.strictEqual(score.scoreFigure({ findings: thin.violations, hasSvg: true }).verdict, 'PASS');
+  const wide = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 5, 20, 150, 20, 16)]));
+  assert.ok(wide.violations[0].degree.d > 0.6);
+  assert.strictEqual(score.scoreFigure({ findings: wide.violations, hasSvg: true }).verdict, 'BLOCK');
+  // three strokes each cover about a third of the label: no single one is a block, together they hide it
+  const trio = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 18, 5, 18, 60, 9), line('s2', 30, 5, 30, 60, 9), line('s3', 42, 5, 42, 60, 9)]));
+  assert.ok(trio.violations.every(v => v.degree.d < 0.5 && v.degree.labelHidden >= 0.5), JSON.stringify(trio.violations.map(v => v.degree)));
+  assert.strictEqual(score.scoreFigure({ findings: trio.violations, hasSvg: true }).verdict, 'BLOCK');
+  const free = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 120, 5, 120, 60, 1.5)]));
+  assert.strictEqual(free.status, 'PASS');
+  assert.ok(!('violations' in free));
 
   // PREFIX:REASON codes (phone display check): the reason decides
   const phone = r => score.classify('ARCHIVE_PHONE_DISPLAY_FAIL:' + r).track;

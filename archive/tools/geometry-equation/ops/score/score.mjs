@@ -118,7 +118,9 @@ export function pointsFor(entry,degree,table=loadTable()){
       return {points:k.base+k.perUnit*degree.d,block:false,basis:'degree'};
     }
     if(Number.isFinite(degree.d)){
-      if(k.blockAt!=null&&degree.d>=k.blockAt)return {points:100,block:true,reason:`degree ${degree.d.toFixed(2)} >= ${k.blockAt}`,basis:'degree'};
+      // labelHidden (v3): the share of the label all colliding shapes hide together; one shape may cover little while three hide the label
+      const worst=Math.max(degree.d,Number.isFinite(degree.labelHidden)?degree.labelHidden:0);
+      if(k.blockAt!=null&&worst>=k.blockAt)return {points:100,block:true,reason:`degree ${worst.toFixed(2)} >= ${k.blockAt}`,basis:'degree'};
       return {points:k.base+k.perUnit*Math.max(0,degree.d),block:false,basis:'degree'};
     }
   }

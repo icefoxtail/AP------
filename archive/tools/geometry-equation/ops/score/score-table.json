@@ -1,10 +1,11 @@
 {
- "version": "score-table-v2",
+ "version": "score-table-v3",
  "schema": "svg-score-gate-v1",
  "decidedBy": "원장님 2026-11-23: 겹침 같은 걸 다 실패로 처리하지 말고, 학생이 봤을 때 최소한 읽히면 통과. 100점짜리가 아니라 90점짜리 SVG.",
  "history": {
   "score-table-v1": "fixed deduction 6 for a finding without a degree",
-  "score-table-v2": "fixed deduction 3 (원장님 2026-11-23); block rules and pass line 90 unchanged. Re-score by receipt tableVersion: lowest scores first."
+  "score-table-v2": "fixed deduction 3 (원장님 2026-11-23); block rules and pass line 90 unchanged. Re-score by receipt tableVersion: lowest scores first.",
+  "score-table-v3": "LABEL_GEOMETRY_COLLISION now carries the share of the label box hidden by the shape (degree.d) and by all colliding shapes together (degree.labelHidden); 0.5 or more of the label hidden is a block (overlap blockAt). Fixed 3 stays for a finding without a degree. Re-score v2 receipts of this code."
  },
  "about": "Publication gate only. The observers keep finding and recording everything; this table decides what a finding costs. Fields may be added, never removed or loosened silently (bump version).",
  "baseScore": 100,
@@ -81,8 +82,8 @@
    "stage": "post-render",
    "degreeKind": "overlap",
    "fixed": 3,
-   "degree": "none",
-   "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
+   "degree": "output",
+   "note": "v3: verify-rendered-layout samples the label box and returns d (share hidden by this shape) and labelHidden (share hidden by every colliding shape of the label); either >= 0.5 is a block"
   },
   "BOX_COLLISION": {
    "track": "DEDUCT",
