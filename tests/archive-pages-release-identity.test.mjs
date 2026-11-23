@@ -477,3 +477,59 @@ test("the assembled question metadata is accepted only as the assembly of the re
   f.commit();
   await assert.rejects(f.identity(), /packaged file is not in the registered snapshot.*question_metadata\.json/);
 });
+
+// The browser copy of the question metadata (no review evidence) is derived from the assembled sidecar: shipped with the release,
+// bound to the registered shards by the identity check, and changed by any shard change.
+test("question metadata browser copy: shipped, equals the projection of the registered shards, and follows them", async t => {
+  const f = fixture(t);
+  f.put(".gitignore", "_site/\nevidence/\narchive/data/question_metadata.json\n");
+  f.manifest.files.push("archive/data/question_metadata.json");
+  f.manifest.questionMetadataBrowser = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const doc = rows => ({ schemaVersion: "archive-question-metadata-v1", digest: "d".repeat(64), records: rows });
+  const row = (uid, file, extra = {}) => ({ questionUid: uid, sourceArchiveFile: file, sourceOrdinal: 1, difficultyBucket: 2,
+    typeApproval: { big: "x".repeat(50) }, fieldStatus: { a: "approved" }, approvalEvidence: ["p.json"], ...extra });
+  const writeShards = rows => {
+    fs.writeFileSync(path.join(f.root, META_FILE), questionMetadataText(doc(rows)));
+    splitMetadataFile(f.root);
+  };
+  const copyOf = () => fs.readFileSync(path.join(f.root, "_site/archive/data/question-metadata-browser-v1.json"), "utf8");
+  const rebuild = async () => { fs.rmSync(path.join(f.root, "_site"), { recursive: true, force: true }); return buildPagesSite({ sourceRoot: f.root, manifest: f.manifest }); };
+  writeShards([row("qid_a", "original/x/a.js"), row("qid_b", "original/x/b.js")]);
+  f.commit();
+  const before = await f.identity();
+  assert.equal(validateReleaseIdentity(before), true);
+
+  const report = await rebuild();
+  const built = report.inventory.find(entry => entry.path === "archive/data/question-metadata-browser-v1.json");
+  assert.equal(built.transform, "question-metadata-browser");
+  const written = JSON.parse(copyOf());
+  assert.equal(written.browserProjection, "archive2-question-metadata-browser-v1");
+  assert.equal(written.digest, "d".repeat(64), "the full sidecar's own top-level values are kept");
+  assert.deepEqual(written.records.map(r => r.questionUid), ["qid_a", "qid_b"], "record order is kept");
+  for (const record of written.records) {
+    assert.equal(record.difficultyBucket, 2);
+    assert.equal(record.sourceOrdinal, 1);
+    for (const dropped of ["typeApproval", "fieldStatus", "approvalEvidence"]) assert.equal(dropped in record, false, `${dropped} is review evidence, not shipped to the screens`);
+  }
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/question-metadata-browser-v1.json")), false, "never written into the source tree");
+
+  // a changed shard value changes the package (the browser copy is part of the packaged bytes)
+  writeShards([row("qid_a", "original/x/a.js"), row("qid_b", "original/x/b.js", { difficultyBucket: 4 })]);
+  f.commit();
+  const changed = await f.identity();
+  assert.notEqual(changed.packageDigest, before.packageDigest);
+
+  // an evidence-only change moves the full sidecar but not the browser copy
+  await rebuild();
+  const copyBefore = copyOf();
+  writeShards([row("qid_a", "original/x/a.js"), row("qid_b", "original/x/b.js", { difficultyBucket: 4, fieldStatus: { a: "other" } })]);
+  f.commit();
+  await rebuild();
+  assert.equal(copyOf(), copyBefore, "evidence fields are not in the browser copy");
+
+  // without the flag nothing is shipped (a checkout that opts out keeps reading the full sidecar)
+  f.manifest.questionMetadataBrowser = false;
+  const without = await rebuild();
+  assert.equal(without.inventory.some(entry => entry.path === "archive/data/question-metadata-browser-v1.json"), false);
+});
