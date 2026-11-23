@@ -41,8 +41,13 @@
     }
     return merged;
   };
-  window.__ARCHIVE_METADATA_READY__ = fetch(new URL('data/question_metadata.json', document.baseURI))
-    .then(response => { if (!response.ok) throw new Error('metadata sidecar HTTP ' + response.status); return response.json(); })
+  // The release build ships a browser copy of the sidecar without review evidence (about 4 MB instead of 16.5 MB compressed;
+  // tools/lib/build-question-metadata-browser.mjs). A checkout without it (local static server) reads the full sidecar as before.
+  const fetchSidecar = name => fetch(new URL(name, document.baseURI)).then(response => { if (!response.ok) throw new Error('metadata sidecar HTTP ' + response.status); return response.json(); });
+  const readSidecar = () => fetchSidecar('data/question-metadata-browser-v1.json')
+    .then(data => { if (!data || data.browserProjection !== 'archive2-question-metadata-browser-v1' || !Array.isArray(data.records)) throw new Error('browser metadata copy is not usable'); return data; })
+    .catch(() => fetchSidecar('data/question_metadata.json'));
+  window.__ARCHIVE_METADATA_READY__ = readSidecar()
     .then(data => {
       state.data = data;
       for (const record of data.records || []) {
