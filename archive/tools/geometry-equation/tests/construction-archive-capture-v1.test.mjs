@@ -280,17 +280,17 @@ test('E4c INJECTED candidate bank changed after the parity check, while Chrome i
   assert.equal(result.lineage.assetResponseSha256,c.composed.lineage.svgSha256);
 });
 
-test('E5 medium policy, large capture: size class matches the request and the asset bytes match, the actual display scale does not',async()=>{
+test('E5 medium policy, large capture: the page ignores the size class, so the capture binds at the measured scale, no size-class check exists and the phone row is judged',async()=>{
   const c=await context(),runId=runIdOf('e5'),result=await capture(c,{requestedSizeClass:'large',runId});
-  console.log('R1A_E5='+JSON.stringify({status:result.status,sizeClass:result.sizeClass,observed:result.observedDisplayScale,expected:result.expectedDisplayScale,deltaCssPx:result.displayScaleDeltaCssPx,checks:result.checks}));
-  assert.equal(result.status,'ARCHIVE_DISPLAY_SCALE_MISMATCH',JSON.stringify(result.detail));assertShape(result);
-  assert.equal(result.sizeClass,'large');assert.equal(result.checks.assetResponse,'PASS');assert.equal(result.checks.bankResponse,'PASS');assert.equal(result.checks.sizeClass,'PASS');assert.equal(result.checks.displayScale,'FAIL');
+  console.log('R1A_E5='+JSON.stringify({status:result.status,sizeClass:result.sizeClass,observed:result.observedDisplayScale,expected:result.expectedDisplayScale,deltaCssPx:result.displayScaleDeltaCssPx,checks:result.checks,phone:result.phone}));
+  assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));assertShape(result);
+  assert.equal(Object.hasOwn(result.checks,'sizeClass'),false);
+  assert.equal(result.checks.assetResponse,'PASS');assert.equal(result.checks.bankResponse,'PASS');assert.equal(result.checks.displayScale,'PASS');
   assert.equal(result.lineage.assetResponseSha256,c.composed.lineage.svgSha256);
-  const row=JSON.parse(read(result.paths.archiveRow).toString('utf8')),target=row.state.targets.find(item=>item.id===identity.assetId);
-  const observed=Math.min(target.rect.width/INTRINSIC.width,target.rect.height/INTRINSIC.height);
-  assert.equal(result.observedDisplayScale,observed);assert.equal(result.expectedDisplayScale,c.measured.policy.displayScale);
-  const delta=Math.abs(observed-c.measured.policy.displayScale)*Math.max(INTRINSIC.width,INTRINSIC.height);assert.ok(delta>1,'a real display difference: '+delta);assert.equal(result.displayScaleDeltaCssPx,delta);
-  assert.equal(result.detail.toleranceCssPx,1);
+  assert.ok(result.displayScaleDeltaCssPx<=1);
+  // the phone row (390 px wide): the figure loaded inside the screen with its own display scale
+  assert.equal(result.phone.status,'PASS',JSON.stringify(result.phone));assert.equal(result.phone.viewport.width,390);assert.ok(result.phone.displayScale>0);assert.ok(result.phone.outsideScreenPx<=1);
+  assert.ok(result.paths.screenshots&&fs.existsSync(path.join(root,result.paths.archiveRow.replace('-sol-desktop.json','-sol-phone.json'))));
 });
 
 test('E6 a used runId is refused by both functions and the earlier evidence is untouched',async()=>{
@@ -366,11 +366,10 @@ test('B the 1 CSS px display-scale tolerance holds at exactly 1 px despite float
   assert.equal(api.displayScaleDifference({observed,expected:175/384,intrinsic:INTRINSIC,toleranceCssPx:0.5}).withinTolerance,false);
 });
 
-test('E8 the small class cannot host the minimum font for this SVG: the measurement is kept, the policy is refused',async()=>{
+test('E8 the small class measures like any other (the page ignores the class): the policy is built from the measured row',async()=>{
   const c=await context(),runId=runIdOf('e8'),result=await measure(c,{requestedSizeClass:'small',runId});
   console.log('R1A_E8='+JSON.stringify({status:result.status,detail:result.detail}));
-  assert.equal(result.status,'ARCHIVE_POLICY_UNSUPPORTED');assert.match(result.detail.message,/UNSUPPORTED_DISPLAY_ENVELOPE/);
-  assert.equal(result.policy,null);assert.equal(result.policySha256,null);assert.equal(result.provenance,null);assertFlags(result);
+  assert.equal(result.status,'MEASURED');assert.equal(result.policy.requestedSizeClass,'small');assert.equal(result.provenance,'ARCHIVE_MEASURED');assertFlags(result);
   assert.match(result.evidence.archiveRow.sha256,HASH);assert.equal(bytesSha(read(result.evidence.archiveRow.path)),result.evidence.archiveRow.sha256);
 });
 
