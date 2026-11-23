@@ -75,7 +75,7 @@
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="render-diagnostics.js?v=20261123-wrong-notice-1"></script>
+    <script src="render-diagnostics.js?v=20261123-image-fail-2"></script>
     <script src="mathjax_render_loop.js?v=20261123-one-item-1"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
@@ -446,10 +446,10 @@
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
-    <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="question-image-readiness.js?v=20261123-image-fail-1"></script>
     <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <script src="common-fast-runtime.js?v=20261123-one-item-1"></script>
-    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
+    <script src="equal-slot-engine.js?v=20261123-image-fail-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
     <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1"></script>
@@ -1812,7 +1812,19 @@ function normalizeQuestionImageSources(root) {
     });
 }
 
+// 그림 하나가 안 받아져도 시험지 전체를 막지 않는다(2026-11-23): 그 <img>를 같은 자리의 "그림을 불러오지 못했습니다" 빈 상자로 바꾸고
+// 진단 배열·알림 띠에 남긴다(render-diagnostics.js). 진단 파일이 없는 화면은 false를 돌려 예전처럼 실패한다.
+function recoverFailedQuestionImage(image, result) {
+    return window.APRenderDiagnostics?.replaceImage?.(image, result) === true;
+}
+
 function validateQuestionImageReadiness(root) {
+    // 대기 단계가 놓친 안 받아진 그림이 남아 있어도(드묾) 같은 표식으로 바꾼 뒤 검사한다.
+    const readiness = window.APQuestionImageReadiness;
+    collectQuestionImages(root).forEach(image => {
+        const state = readiness.inspectImage(image);
+        if (state.status !== 'loaded') recoverFailedQuestionImage(image, state);
+    });
     return window.APQuestionImageReadiness.validateImages(collectQuestionImages(root), {
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' }
     });
@@ -1823,6 +1835,7 @@ async function waitForQuestionImages(root, timeoutMs = 1200, signal) {
     const result = await window.APQuestionImageReadiness.waitForImages(images, {
         timeoutMs, signal,
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
+        onFailure: recoverFailedQuestionImage,
         throwOnFailure: true
     });
     return result.summary;
@@ -1835,6 +1848,7 @@ async function prepareQuestionImages(root, timeoutMs = 1200, signal) {
 async function waitForQuestionImage(img, timeoutMs = 1200) {
     const result = await window.APQuestionImageReadiness.waitForImage(img, timeoutMs);
     if (result.status !== 'loaded') {
+        if (recoverFailedQuestionImage(img, result)) return result;
         throw window.APQuestionImageReadiness.createReadinessError([result], {
             error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE'
         });

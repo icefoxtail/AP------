@@ -420,6 +420,53 @@ async function assertPrintBlocked(page, stage = 'failed-render') {
   return result;
 }
 
+// 2026-11-23 계약 변경(사용자 결정 "한 문항 때문에 인쇄가 실패되는 경우는 없어야 한다"): 그림 하나가 안 받아지면 그 자리만 표식(.ap-image-missing)으로
+// 바뀌고 진단 배열·띠에 남으며, 나머지 문항은 그려지고 인쇄 사전 점검·safePrint는 그대로 통과한다. 아래는 그 상태를 읽고 인쇄가 실제로 나가는지 보는 도우미다.
+async function imageFaultState(page) {
+  return bounded(page.evaluate(() => {
+    const notice = document.getElementById('ap-render-notice');
+    const feedback = document.getElementById('ap-archive-render-feedback');
+    return {
+      diagnostics: (window.apRenderDiagnostics || []).map(entry => ({ questionNo: entry.questionNo, part: entry.part, code: entry.code, excerpt: entry.excerpt })),
+      diagnosticsCount: document.documentElement.dataset.apRenderDiagnostics ?? null,
+      markers: [...document.querySelectorAll('#print-area .ap-image-missing')].map(node => ({
+        questionNo: parseInt(node.closest('.q-box')?.querySelector('.q-num')?.textContent, 10), text: node.textContent,
+        width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height })),
+      brokenImages: [...document.querySelectorAll('#print-area img')].filter(img => !(img.complete && img.naturalWidth > 0)).length,
+      noticeVisible: !!notice && !notice.hidden && getComputedStyle(notice).display !== 'none', noticeText: notice?.textContent || '',
+      feedbackFailed: !!feedback && !feedback.hidden && feedback.dataset.state === 'failed'
+    };
+  }), 15000, 'IMAGE_FAULT_STATE_TIMEOUT');
+}
+// 그림 한 장이 실패한 출력도 인쇄 사전 점검을 통과하고 safePrint가 print()까지 간다(막히지 않는다).
+async function assertPrintAllowed(page, before, stage) {
+  const preflightResult = await verifiedPreflight(page, before);
+  const probe = await bounded(page.evaluate(async () => {
+    const start = window.__solutionLoadingQA.prints;
+    await window.safePrint('vector');
+    return { before: start, after: window.__solutionLoadingQA.prints, alerts: window.__solutionLoadingQA.alerts };
+  }), 25000, 'PRINT_PROBE_TIMEOUT');
+  requireThat(probe.after === probe.before + 1, 'FAILED_FIGURE_BLOCKED_PRINT', { stage, ...probe });
+  requireThat(probe.alerts === 0, 'FAILED_FIGURE_PRINT_ALERT', { stage, ...probe });
+  return { stage, preflight: preflightResult, probe };
+}
+function assertOneFailedFigure(row, state, healthy, code, stage) {
+  const where = { stage, code: row.outcome.code, diagnostics: state.diagnostics };
+  requireThat(row.outcome.ok, 'EXPECTED_RENDER_READY_WITH_FAILED_FIGURE', where);
+  requireThat(row.attempts.at(-1)?.state === 'SUCCEEDED' && row.attempts.at(-1)?.committed === true, 'FAILED_FIGURE_RENDER_NOT_COMMITTED', where);
+  requireThat(!state.feedbackFailed, 'FAILED_FIGURE_SHOWED_RENDER_ERROR_UI', where);
+  requireThat(row.questionCount === healthy.questionCount && row.blockCount === healthy.blockCount, 'FAILED_FIGURE_CHANGED_QUESTION_COUNT', { ...where, rows: [row.blockCount, healthy.blockCount] });
+  requireThat(row.pageCount === healthy.pageCount && row.pageCount > 0, 'FAILED_FIGURE_CHANGED_PAGE_COUNT', { ...where, pages: [row.pageCount, healthy.pageCount] });
+  requireThat(JSON.stringify(row.sourceOrder) === JSON.stringify(row.expectedOrder), 'FAILED_FIGURE_CHANGED_SOURCE_ORDER', where);
+  requireThat(row.mathErrors === 0 && row.unrenderedMath === 0, 'FAILED_FIGURE_BROKE_MATH', where);
+  requireThat(state.markers.length === 1 && state.markers[0].questionNo === 25 && /그림을 불러오지 못했습니다/.test(state.markers[0].text)
+    && state.markers[0].width > 20 && state.markers[0].height > 10, 'FAILED_FIGURE_MARKER_MISSING', { ...where, markers: state.markers });
+  requireThat(state.brokenImages === 0 && row.images.every(image => image.loaded) && row.images.length === healthy.images.length - 1, 'FAILED_FIGURE_LEFT_BROKEN_IMG', { ...where, images: row.images.length, healthyImages: healthy.images.length });
+  requireThat(state.diagnostics.length === 1 && state.diagnostics[0].questionNo === 25 && state.diagnostics[0].part === '해설 그림'
+    && state.diagnostics[0].code === code && /\/?[a-z-]+\.svg$/.test(state.diagnostics[0].excerpt), 'FAILED_FIGURE_DIAGNOSTIC_MISSING', where);
+  requireThat(state.noticeVisible && /25번 해설 그림 1개/.test(state.noticeText), 'FAILED_FIGURE_NOTICE_MISSING', { ...where, noticeText: state.noticeText });
+}
+
 async function main() {
   requireThat(repeats === 2 || repeats === 3, 'TWO_OR_THREE_REPETITIONS_REQUIRED');
   const chrome = process.env.CHROME_BIN;
@@ -546,43 +593,66 @@ async function main() {
 
     await record('slow-svg-1600ms-current', () => readyCase('current', { variant: 'slow' }));
     await record('slow-svg-6000ms-current', () => readyCase('current', { variant: 'slow-long' }));
-    for (const variant of ['broken', 'hanging']) await record(`image-${variant}-blocks-print`, async () => {
+    // 같은 50문항 합성 해설(25번에 해설 그림 하나)에서 그림만 정상 → 깨짐(404) → 응답 없음으로 바꾼다. 정상 실행이 기준선이다.
+    let healthyFigure;
+    await record('image-healthy-baseline', async () => {
+      currentServer.state.retryRecovered = true;
+      const session = await openSession('current', { variant: 'retry' });
+      try {
+        const row = await session.snapshot(); assertReady(row, 50, 'figure-healthy-baseline');
+        const state = await imageFaultState(session.page);
+        requireThat(state.diagnostics.length === 0 && state.markers.length === 0 && !state.noticeVisible, 'HEALTHY_FIGURE_SHOWED_FAILURE_MARKER', state);
+        requireThat(row.images.length === 1, 'HEALTHY_FIGURE_COUNT_CHANGED', { images: row.images.length });
+        healthyFigure = row;
+        return { row, state };
+      } finally { await session.close(); }
+    });
+    for (const variant of ['broken', 'hanging']) await record(`image-${variant}-marked-not-blocked`, async () => {
+      requireThat(healthyFigure, 'HEALTHY_BASELINE_MISSING');
+      const code = variant === 'broken' ? 'QUESTION_IMAGE_LOAD_FAILED' : 'QUESTION_IMAGE_READINESS_INCOMPLETE';
+      const startedAt = Date.now();
       const session = await openSession('current', { variant });
       try {
         const row = await session.snapshot();
-        requireThat(!row.outcome.ok && /IMAGE/.test(row.outcome.code), 'BAD_IMAGE_DID_NOT_FAIL', { code: row.outcome.code });
-        requireThat(row.attempts.at(-1)?.state === 'FAILED' && !row.attempts.at(-1)?.committed, 'FAILED_IMAGE_WAS_COMMITTED');
-        requireThat(row.pageCount === 0, 'PARTIAL_SOLUTION_BECAME_VISIBLE');
-        requireThat(row.feedback.visible && row.feedback.state === 'failed' && row.feedback.retry, 'RENDER_ERROR_RECOVERY_UI_MISSING');
-        row.printProbe = await assertPrintBlocked(session.page, `initial-${variant}-failure`);
-        return row;
+        const elapsedMs = Date.now() - startedAt;
+        // 응답 없는 그림(서버는 60초 뒤에야 답함)도 기존 그림 대기 시간 제한(15초) 안에서 끝난다: 정상 실행 시간 + 제한 + 여유.
+        if (variant === 'hanging') requireThat(elapsedMs < healthyFigure.operationElapsedMs + 15000 + 15000 && elapsedMs < 55000, 'HANGING_FIGURE_WAITED_PAST_LIMIT', { elapsedMs });
+        const state = await imageFaultState(session.page);
+        assertOneFailedFigure(row, state, healthyFigure, code, `figure-${variant}`);
+        row.printAllowed = await assertPrintAllowed(session.page, row, `figure-${variant}`);
+        return { ...row, elapsedMs, imageFault: state };
       } finally { await session.close(); }
     });
-    await record('mixed-mode-failure-retry', async () => {
+    // 모드를 바꿔도 이전 모드의 실패 상태가 남지 않고, 진단·표식·띠가 그 모드 기준으로 다시 계산되며, 그림이 정상으로 돌아오면 모두 사라진다.
+    await record('mixed-mode-figure-failure-recomputed', async () => {
       currentServer.state.retryRecovered = false;
       const session = await openSession('current', { variant: 'retry', mode: 'exam' });
       try {
-        const exam = await session.snapshot(); assertReady(exam, 50, 'mixed-before-image-failure-exam');
+        const exam = await session.snapshot(); assertReady(exam, 50, 'mixed-figure-exam');
+        const examState = await imageFaultState(session.page);
+        requireThat(examState.diagnostics.length === 0 && examState.markers.length === 0 && !examState.noticeVisible, 'EXAM_MODE_HAS_FIGURE_FAILURE', examState);
+        // 해설 모드: 그림이 404 → 표식 + 진단 1개, 쪽·문항 수는 정상 기준선과 같고 인쇄는 막히지 않는다
         const failed = await session.transition('sol');
-        requireThat(!failed.outcome.ok && /IMAGE/.test(failed.outcome.code), 'MODE_CHANGE_IMAGE_FAILURE_MISSING');
-        requireThat(failed.mode === 'exam' && failed.bodyHash === exam.bodyHash, 'MODE_FAILURE_REPLACED_PREVIOUS_OUTPUT');
-        requireThat(failed.feedback.visible && failed.feedback.state === 'failed' && failed.feedback.retry, 'MODE_FAILURE_RETRY_MISSING');
-        const printProbe = await assertPrintBlocked(session.page, 'mixed-after-solution-image-failure');
+        const failedState = await imageFaultState(session.page);
+        assertOneFailedFigure(failed, failedState, healthyFigure, 'QUESTION_IMAGE_LOAD_FAILED', 'mixed-sol-figure-failed');
+        requireThat(failed.mode === 'sol', 'MODE_FAILURE_DID_NOT_SWITCH_MODE');
+        const printWhileFailed = await assertPrintAllowed(session.page, failed, 'mixed-sol-figure-failed');
+        // 시험지로 돌아가면 해설 모드의 실패 진단·표식·띠가 남지 않고, 처음 시험지와 내용이 같다
+        const backToExam = await session.transition('exam'); assertReady(backToExam, 50, 'mixed-figure-back-to-exam');
+        const backState = await imageFaultState(session.page);
+        requireThat(backState.diagnostics.length === 0 && backState.markers.length === 0 && !backState.noticeVisible && backState.diagnosticsCount === '0', 'EXAM_MODE_KEPT_SOLUTION_FAILURE', backState);
+        requireThat(backToExam.bodyHash === exam.bodyHash, 'MODE_ROUNDTRIP_CONTENT_CHANGED');
+        // 그림이 정상으로 돌아온 뒤 해설 모드를 다시 열면 표식·진단·띠가 없고 그림이 실제로 보인다(실패한 결과를 재사용하지 않는다)
+        const requestsBefore = currentServer.state.faults.retry || 0;
         currentServer.state.retryRecovered = true;
-        const previous = await session.page.evaluate(() => {
-          const count = window.mixedScreenRuntime.inspect().attempts.length;
-          Object.assign(window.__solutionLoadingQA, { operationStart: performance.now(), targetMode: 'sol', firstBoxMs: null, previousArea: document.getElementById('print-area') });
-          document.querySelector('#ap-archive-render-feedback button:not([hidden])').click();
-          return count;
-        });
-        session.outcome = await waitForOutcome(session.page, previous);
-        const recovered = await session.snapshot(); assertReady(recovered, 50, 'mixed-recovered-sol');
-        requireThat(recovered.mode === 'sol' && !recovered.feedback.visible, 'RETRY_DID_NOT_RESTORE_REQUESTED_MODE');
+        const recovered = await session.transition('sol'); assertReady(recovered, 50, 'mixed-figure-recovered-sol');
+        const recoveredState = await imageFaultState(session.page);
+        requireThat(recoveredState.diagnostics.length === 0 && recoveredState.markers.length === 0 && !recoveredState.noticeVisible && recoveredState.diagnosticsCount === '0', 'RECOVERED_FIGURE_KEPT_FAILURE_MARKER', recoveredState);
+        requireThat(recovered.images.length === 1 && recovered.images[0].loaded, 'RECOVERED_FIGURE_NOT_SHOWN');
+        requireThat((currentServer.state.faults.retry || 0) > requestsBefore, 'RECOVERED_FIGURE_WAS_NOT_REQUESTED_AGAIN');
         assertBatched(recovered);
-        const answer = await session.transition('ans'); assertReady(answer, 50, 'mixed-after-retry-ans');
-        const returned = await session.transition('exam'); assertReady(returned, 50, 'mixed-after-retry-exam');
-        requireThat(returned.bodyHash === exam.bodyHash, 'MODE_ROUNDTRIP_CONTENT_CHANGED');
-        return { exam, failed, printProbe, recovered, answer, returned, recoveredImageRequests: currentServer.state.faults.retry };
+        const answer = await session.transition('ans'); assertReady(answer, 50, 'mixed-figure-after-recovery-ans');
+        return { exam, failed, failedState, printWhileFailed, backToExam, recovered, answer, retryImageRequests: currentServer.state.faults.retry };
       } finally { await session.close(); }
     });
 

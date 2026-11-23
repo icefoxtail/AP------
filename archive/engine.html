@@ -127,7 +127,7 @@
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="render-diagnostics.js?v=20261123-wrong-notice-1"></script>
+    <script src="render-diagnostics.js?v=20261123-image-fail-2"></script>
     <script src="mathjax_render_loop.js?v=20261123-one-item-1"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <!-- 2026-11-20 승인 메타 sidecar(question-meta.js → data/question_metadata.json, 압축 전 87.6MB·gzip 15MB)는 시험지를 그리는 데 쓰이지 않고
@@ -148,7 +148,7 @@
     <script src="layout-materializer.js?v=20261123-open-speed-1"></script>
     <script src="solution-render-executor.js?v=20261122-sol-fit-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
+    <script src="equal-slot-engine.js?v=20261123-image-fail-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
     <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
@@ -157,7 +157,7 @@
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
-    <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="question-image-readiness.js?v=20261123-image-fail-1"></script>
     <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <script src="screen-runtime-adapter.js?v=20261123-korean-titles-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
@@ -542,6 +542,13 @@
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right" style="display:flex; gap:10px; align-items:center;">
+            <div class="qpp-switch" id="qpp-switch" role="radiogroup" aria-label="쪽당 문항 수" hidden>
+                <span class="qpp-switch-label" aria-hidden="true">쪽당</span>
+                <button type="button" class="qpp-opt" role="radio" aria-checked="false" data-qpp="2" aria-label="쪽당 2문항" onclick="chooseArchiveQpp(2)">2</button>
+                <button type="button" class="qpp-opt" role="radio" aria-checked="false" data-qpp="4" aria-label="쪽당 4문항" onclick="chooseArchiveQpp(4)">4</button>
+                <button type="button" class="qpp-opt qpp-opt--minor" role="radio" aria-checked="false" data-qpp="6" aria-label="쪽당 6문항" onclick="chooseArchiveQpp(6)">6</button>
+                <button type="button" class="qpp-opt qpp-opt--minor" role="radio" aria-checked="false" data-qpp="8" aria-label="쪽당 8문항" onclick="chooseArchiveQpp(8)">8</button>
+            </div>
             <span id="qpp-display"></span>
             <div class="print-header-editor-wrap" id="print-header-editor-wrap">
                 <button class="print-header-editor-btn ctrl-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
@@ -1740,6 +1747,46 @@ function readRecentArchiveEngineLaunch() {
     }
 }
 
+// 쪽당 문항 수 선택(원본 기출을 data= 주소로 직접 연 화면 전용). 출제·저장본·학생·미리보기·QR 화면에는 만들지 않는다.
+// 기억값은 archive2-entry / workspace-core가 쓰는 같은 저장 키를 갱신해 다음에 원본을 열 때 이어진다.
+const ARCHIVE_ORIGINAL_QPP_KEY = 'APMATH_ARCHIVE2_ORIGINAL_QPP';
+function qppSwitchEligible() {
+    const p = new URLSearchParams(window.location.search);
+    return !!p.get('data') && !isPreviewMode() && p.get('fit') !== 'screen' && p.get('qr') !== '1'
+        && p.get('studentReview') !== '1' && !p.get('assignmentId') && !p.get('originalSnapshot');
+}
+function syncQppSwitch() {
+    const box = document.getElementById('qpp-switch');
+    if (!box) return;
+    box.hidden = !qppSwitchEligible();
+    box.querySelectorAll('[data-qpp]').forEach(button => {
+        const on = Number(button.dataset.qpp) === Number(AppState.qpp);
+        button.classList.toggle('is-active', on);
+        button.setAttribute('aria-checked', String(on));
+    });
+}
+let qppSwitchBusy = false;
+async function chooseArchiveQpp(value) {
+    const qpp = Number(value);
+    if (![2, 4, 6, 8].includes(qpp) || qpp === Number(AppState.qpp) || qppSwitchBusy || !qppSwitchEligible()) return;
+    try { localStorage.setItem(ARCHIVE_ORIGINAL_QPP_KEY, String(qpp)); } catch (e) { /* 기억값 저장 실패는 화면을 막지 않는다 */ }
+    if (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__) {
+        // 시험·해설 탭을 오간 뒤에는 쪽당 값이 출력 스냅샷에 묶여 있으므로, 직접 열기 주소로 다시 연다.
+        const url = new URL(window.location.href);
+        ['archive2Context', 'archive2OutputContract', 'outputRequestId', 'outputOwnerId', 'studio'].forEach(key => url.searchParams.delete(key));
+        url.searchParams.set('qpp', String(qpp));
+        window.location.replace(url.href);
+        return;
+    }
+    qppSwitchBusy = true;
+    document.getElementById('qpp-switch')?.classList.add('is-busy');
+    try { await setArchiveQpp(qpp); } finally {
+        qppSwitchBusy = false;
+        document.getElementById('qpp-switch')?.classList.remove('is-busy');
+        syncQppSwitch();
+    }
+}
+
 async function init() {
     if (archiveScreenRuntime) return initArchiveScreenRuntime();
     installArchivePreviewWitness();
@@ -2180,7 +2227,19 @@ function normalizeQuestionImageSources(root, renderState = AppState) {
     });
 }
 
+// 그림 하나가 안 받아져도 시험지 전체를 막지 않는다(2026-11-23): 그 <img>를 같은 자리의 "그림을 불러오지 못했습니다" 빈 상자로 바꾸고
+// 진단 배열·알림 띠에 남긴다(render-diagnostics.js). 진단 파일이 없는 화면은 false를 돌려 예전처럼 실패한다.
+function recoverFailedQuestionImage(image, result) {
+    return window.APRenderDiagnostics?.replaceImage?.(image, result) === true;
+}
+
 function validateQuestionImageReadiness(root) {
+    // 대기 단계가 놓친 안 받아진 그림이 남아 있어도(드묾) 같은 표식으로 바꾼 뒤 검사한다.
+    const readiness = window.APQuestionImageReadiness;
+    collectQuestionImages(root).forEach(image => {
+        const state = readiness.inspectImage(image);
+        if (state.status !== 'loaded') recoverFailedQuestionImage(image, state);
+    });
     return window.APQuestionImageReadiness.validateImages(collectQuestionImages(root), {
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' }
     });
@@ -2191,6 +2250,7 @@ async function waitForQuestionImages(root, timeoutMs = 1200, signal) {
     const result = await window.APQuestionImageReadiness.waitForImages(images, {
         timeoutMs, signal,
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
+        onFailure: recoverFailedQuestionImage,
         throwOnFailure: true
     });
     return result.summary;
@@ -2203,6 +2263,7 @@ async function prepareQuestionImages(root, timeoutMs = 1200, signal) {
 async function waitForQuestionImage(img, timeoutMs = 1200) {
     const result = await window.APQuestionImageReadiness.waitForImage(img, timeoutMs);
     if (result.status !== 'loaded') {
+        if (recoverFailedQuestionImage(img, result)) return result;
         throw window.APQuestionImageReadiness.createReadinessError([result], {
             error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE'
         });
@@ -3439,6 +3500,9 @@ window.onload = () => {
     if (isPreviewMode()) document.body.classList.add('preview-mode', 'screen-fit-mode');
     else if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
     updateScreenFitScale();
+    // 엔진이 "쪽당 N문항" 글자를 다시 쓸 때마다(첫 그리기·다시 그리기·되돌림) 선택 표시를 맞춘다.
+    const qppDisplay = document.getElementById('qpp-display');
+    if (qppDisplay) new MutationObserver(syncQppSwitch).observe(qppDisplay, { childList: true, characterData: true, subtree: true });
     init();
 };
 </script>
