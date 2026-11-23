@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 9,
-  "templateCount": 35,
+  "templateCount": 50,
   "foundationPack": "LIMIT_CONTINUITY",
   "ownerPack": "LIMIT_CONTINUITY",
   "problemTypes": [
@@ -1319,6 +1319,186 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_CONVERGENCE_JUDGMENT",
+      "canonicalLabelKo": "수열의 수렴·발산 판정",
+      "definition": "일반항과 조건을 분석하여 수열이 수렴하는지 발산하는지 판정하거나 수렴 조건과 극한의 존재를 따지는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "수열의 거동 분석 → 수렴 조건 확인 → 수렴·발산 판정",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+      "canonicalLabelKo": "극한의 성질과 대수적 계산",
+      "definition": "극한의 기본 성질과 최고차항 정리, 유리화로 ∞/∞·∞-∞ 꼴을 정리하여 수열의 극한값을 계산하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "부정형 확인 → 최고차항 정리 또는 유리화 → 극한의 성질로 값 계산",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_GEOMETRIC_RATIO",
+      "canonicalLabelKo": "등비수열의 극한과 공비 조건",
+      "definition": "r^n 꼴을 포함한 수열에서 공비의 범위를 나누어 극한을 구하거나 수렴하는 공비의 조건을 정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "공비 범위 분류 → 범위별 극한 계산 → 수렴 조건 정리",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_PARAMETER",
+      "canonicalLabelKo": "극한 조건으로 미정계수 결정",
+      "definition": "수열의 극한값이 주어질 때 부정형이 성립하도록 계수를 정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "극한이 유한하기 위한 차수 조건 → 계수 비교 → 미정계수 결정",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_SQUEEZE",
+      "canonicalLabelKo": "수열의 극한의 대소 관계",
+      "definition": "부등식으로 수열을 위아래에서 눌러 극한값을 구하거나 극한의 대소 관계를 이용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "수열을 부등식으로 포위 → 양쪽 극한 확인 → 값 결정",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_RECURSIVE",
+      "canonicalLabelKo": "귀납적으로 정의된 수열의 극한",
+      "definition": "점화식으로 정의된 수열이 수렴한다는 조건에서 극한값이 만족하는 식을 세워 극한을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "점화식 양변의 극한 → 극한값의 방정식 → 조건에 맞는 값 선택",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SEQ_LIMIT_APPLICATION",
+      "canonicalLabelKo": "도형·상황에서 만든 수열의 극한",
+      "definition": "도형의 변화나 실생활 상황에서 일반항을 세우고 그 극한을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "규칙 파악 → 일반항 설정 → 극한 계산",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SERIES_PARTIAL_SUM",
+      "canonicalLabelKo": "부분합과 급수의 합",
+      "definition": "부분합을 구하고 그 극한으로 급수의 합을 계산하며 부분분수·소거 구조를 이용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "부분합 S_n 계산 → 극한 → 급수의 합",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SERIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SERIES_CONVERGENCE_CONDITION",
+      "canonicalLabelKo": "급수의 수렴 조건",
+      "definition": "급수가 수렴할 때 일반항의 극한이 0이라는 필요조건 등으로 수렴·발산이나 계수 조건을 판정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "일반항 극한 확인 → 수렴 조건 적용 → 판정·미정계수 결정",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SERIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_CONDITION",
+      "canonicalLabelKo": "등비급수의 수렴 조건",
+      "definition": "등비급수가 수렴하기 위한 공비의 범위를 구하거나 수렴 조건에서 미지수 범위를 정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "공비 |r|<1 조건 → 미지수 범위 결정",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SERIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_SUM",
+      "canonicalLabelKo": "등비급수의 합",
+      "definition": "첫째항과 공비로 등비급수의 합을 구하거나 합이 주어진 조건에서 항·공비를 결정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "첫째항·공비 확인 → a/(1-r) 적용",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SERIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+      "canonicalLabelKo": "등비급수의 활용",
+      "definition": "도형이 반복되어 만들어지는 길이·넓이·좌표의 열을 등비급수로 나타내어 합을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "첫 단계 값과 닮음비 파악 → 등비수열 설정 → 등비급수의 합",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_CALCULUS_SERIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_LIMIT_EXP_LOG_STANDARD",
+      "canonicalLabelKo": "지수·로그함수의 극한",
+      "definition": "(e^x-1)/x, ln(1+x)/x, e의 정의 등 지수·로그함수의 기본 극한으로 극한값을 계산하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "기본 극한 꼴로 변형 → 치환 → 극한값 계산",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_LIMIT_TRIG_STANDARD",
+      "canonicalLabelKo": "삼각함수의 극한",
+      "definition": "sin x/x, (1-cos x)/x^2 등 삼각함수의 기본 극한으로 극한값을 계산하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "기본 극한 꼴로 변형 → 치환 → 극한값 계산",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_LIMIT_TRIG_GEOMETRIC_FIGURE",
+      "canonicalLabelKo": "도형에서 만든 삼각함수의 극한",
+      "definition": "호·넓이·내접원 등 도형의 양을 각의 삼각함수로 나타내고 그 극한을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "도형의 양을 각으로 표현 → 기본 극한으로 변형 → 값 계산",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
     }
   ]
 }

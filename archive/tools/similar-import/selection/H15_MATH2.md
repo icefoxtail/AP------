@@ -52,6 +52,7 @@
   - `TPL_LIMIT_ASYMPTOTIC_RELATION` 두 함수의 관계를 이용한 무한대 극한
   - `TPL_LIMIT_DIRECT_SUBSTITUTION` 직접 대입으로 극한값 구하기
   - `TPL_LIMIT_DIRECTIONAL_APPROACH` 접근 방향을 고려한 극한
+  - `TPL_LIMIT_EXP_LOG_STANDARD` 지수·로그함수의 극한
   - `TPL_LIMIT_FACTOR_CANCEL` 인수분해와 약분으로 극한 계산
   - `TPL_LIMIT_GEOMETRY_PARAMETERIZATION` 도형의 조건을 식으로 나타내어 극한 구하기
   - `TPL_LIMIT_GRAPH_DIRECTION_READ` 그래프에서 좌극한·우극한 구하기
@@ -60,6 +61,8 @@
   - `TPL_LIMIT_OPERATION_LAWS` 극한의 사칙연산
   - `TPL_LIMIT_RATIONALIZATION` 유리화로 극한 계산
   - `TPL_LIMIT_SQUEEZE` 함수의 대소 관계를 이용한 극한값 계산
+  - `TPL_LIMIT_TRIG_GEOMETRIC_FIGURE` 도형에서 만든 삼각함수의 극한
+  - `TPL_LIMIT_TRIG_STANDARD` 삼각함수의 극한
   - `TPL_LIMIT_VALUE_CALC_CONVERGENCE` 역수식 수렴과 발산
   - `TPL_LIMIT_VALUE_CALC_DOMINANCE` 지배항
   - `TPL_LIMIT_VALUE_CALC_MULTI` 극한 종합 계산
@@ -170,7 +173,13 @@
   - `TPL_AVERAGE_RATE_DERIVATIVE_LINK` 평균변화율과 미분계수 연결
   - `TPL_DERIVATIVE_RATE_RELATION_SLOPE_COMPARE` 할선 접선 기울기 비교
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
 - `PT_DIFFERENTIABILITY_CONDITION` **미분가능 조건** — 조각함수, 절댓값, 제거가능 인자 등의 경계에서 연속성과 좌우 미분계수를 분석하여 미분가능 조건 또는 미분불가능점 구조를 판정하는 문제유형.
   - `TPL_DIFFERENTIABILITY_POINT_CONDITION` 한 점의 미분가능 조건
   - `TPL_NONDIFFERENTIABILITY_STRUCTURE` 미분불가능 구조 판정
@@ -212,7 +221,13 @@
   - `TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS` 도함수 그래프의 정성 해석
   - `TPL_DERIVATIVE_GRAPH_QUANTITATIVE_RECOVERY` 도함수 그래프의 정량 복원
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
 - `PT_DIFFERENTIABILITY_CONDITION` **미분가능 조건** — 조각함수, 절댓값, 제거가능 인자 등의 경계에서 연속성과 좌우 미분계수를 분석하여 미분가능 조건 또는 미분불가능점 구조를 판정하는 문제유형.
   - `TPL_DIFFERENTIABILITY_POINT_CONDITION` 한 점의 미분가능 조건
   - `TPL_NONDIFFERENTIABILITY_STRUCTURE` 미분불가능 구조 판정
@@ -305,6 +320,7 @@
   - `TPL_DERIVATIVE_MOTION_GEOMETRIC_RATE` 도형 변화율
   - `TPL_MOTION_COMPOSITE_MODEL` 복합 운동 모델의 매개변수 최적화
   - `TPL_MOTION_EVENT_ANALYSIS` 운동의 사건 시각·상태 분석
+  - `TPL_MOTION_PLANE_VELOCITY` 평면 위 운동의 속도·가속도
 - `PT_DERIVATIVE_RATE_RELATION` **평균변화율과 미분계수** — 구간의 평균변화율을 계산·비교하거나 한 점의 미분계수와 연결하여 값·범위·매개변수를 결정하는 문제유형.
   - `TPL_AVERAGE_RATE_ANALYSIS` 평균변화율 계산과 조건 해석
   - `TPL_AVERAGE_RATE_DERIVATIVE_LINK` 평균변화율과 미분계수 연결
@@ -416,6 +432,7 @@
   - `TPL_INTERSECTION_SIGN_AREA` 교점과 부호를 이용한 넓이
 - `PT_MOTION_BY_INTEGRAL` **속도와 거리** — 속도를 적분하여 위치·변위·이동거리를 구하거나 두 점의 운동 조건에서 만나는 시각과 매개변수를 결정하는 문제 유형.
   - `TPL_MOTION_CONDITION_PARAMETER` 운동 조건으로 만남·매개변수 결정
+  - `TPL_MOTION_PLANE_DISTANCE` 평면 위 운동의 이동거리
   - `TPL_VELOCITY_TO_POSITION_DISTANCE` 속도에서 위치·변위·이동거리 구하기
 
 ## 아래 학년 유형
@@ -1097,13 +1114,13 @@
 - `PT_DERIVATIVE_DEFINITION` 미분계수의 정의와 극한 (TPL 2)
 - `PT_DERIVATIVE_EXTREMA` 극대·극소 (TPL 2)
 - `PT_DERIVATIVE_FUNCTION_DETERMINATION` 도함수 조건을 이용한 함수 결정 (TPL 4)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTIONAL_EQUATION` 함수방정식 (TPL 4)
 - `PT_INTERMEDIATE_VALUE_APPLICATION` 사잇값 정리의 활용 (TPL 2)
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 15)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
 ### 확률과 통계 (PROBABILITY_STATISTICS) · 고2 — 파일 `PROBABILITY_STATISTICS.md`

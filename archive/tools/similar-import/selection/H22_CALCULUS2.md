@@ -6,14 +6,14 @@
 
 ## 단원 목차
 
-- `H22-M2-01` 수열의 극한 (소단원 0 · RPM 6 · 유형 0)
-- `H22-M2-02` 급수 (소단원 0 · RPM 6 · 유형 0)
-- `H22-M2-03` 지수함수와 로그함수의 미분 (소단원 0 · RPM 6 · 유형 1)
-- `H22-M2-04` 삼각함수의 미분 (소단원 0 · RPM 4 · 유형 1)
-- `H22-M2-05` 여러 가지 미분법 (소단원 0 · RPM 5 · 유형 1)
-- `H22-M2-06` 도함수의 활용 (소단원 0 · RPM 10 · 유형 6)
-- `H22-M2-07` 여러 가지 적분법 (소단원 0 · RPM 8 · 유형 0)
-- `H22-M2-08` 정적분의 활용 (소단원 0 · RPM 6 · 유형 2)
+- `H22-M2-01` 수열의 극한 (소단원 0 · RPM 12 · 유형 2)
+- `H22-M2-02` 급수 (소단원 0 · RPM 12 · 유형 2)
+- `H22-M2-03` 지수함수와 로그함수의 미분 (소단원 0 · RPM 6 · 유형 4)
+- `H22-M2-04` 삼각함수의 미분 (소단원 0 · RPM 4 · 유형 5)
+- `H22-M2-05` 여러 가지 미분법 (소단원 0 · RPM 5 · 유형 2)
+- `H22-M2-06` 도함수의 활용 (소단원 0 · RPM 10 · 유형 8)
+- `H22-M2-07` 여러 가지 적분법 (소단원 0 · RPM 16 · 유형 6)
+- `H22-M2-08` 정적분의 활용 (소단원 0 · RPM 6 · 유형 5)
 
 ## H22-M2-01 수열의 극한
 
@@ -31,10 +31,29 @@
 - `H2-CALC-RPM-059` 수열의 극한 > 수열의 극한 > 극한의 계산 > 샌드위치
 - `H2-CALC-RPM-060` 수열의 극한 > 수열의 극한 > 등비수열의 극한 > 공비 조건
 - `H2-CALC-RPM-061` 수열의 극한 > 수열의 극한 > 등비수열의 극한 > 무한등비수열
+- `H2-CALC-RPM-125` 수열의 극한 > 수열의 극한 > 수열의 수렴과 발산 > 극한값
+- `H2-CALC-RPM-126` 수열의 극한 > 수열의 극한 > 수열의 수렴과 발산 > 수렴 조건
+- `H2-CALC-RPM-127` 수열의 극한 > 수열의 극한 > 극한의 계산 > 대수적 계산
+- `H2-CALC-RPM-128` 수열의 극한 > 수열의 극한 > 극한의 계산 > 샌드위치
+- `H2-CALC-RPM-129` 수열의 극한 > 수열의 극한 > 등비수열의 극한 > 공비 조건
+- `H2-CALC-RPM-130` 수열의 극한 > 수열의 극한 > 등비수열의 극한 > 무한등비수열
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
-- (이 단원에 묶인 유형이 아직 없다)
+- `PT_CALCULUS_SEQUENCE_LIMIT` **수열의 극한** — 수열의 일반항·지배항과 공비의 거동을 분석하여 극한값·수렴 조건 또는 극한으로 정의된 함수의 값을 구한다.
+  - `TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC` 극한의 성질과 대수적 계산
+  - `TPL_CALCULUS_SEQ_LIMIT_APPLICATION` 도형·상황에서 만든 수열의 극한
+  - `TPL_CALCULUS_SEQ_LIMIT_CONVERGENCE_JUDGMENT` 수열의 수렴·발산 판정
+  - `TPL_CALCULUS_SEQ_LIMIT_GEOMETRIC_RATIO` 등비수열의 극한과 공비 조건
+  - `TPL_CALCULUS_SEQ_LIMIT_PARAMETER` 극한 조건으로 미정계수 결정
+  - `TPL_CALCULUS_SEQ_LIMIT_RECURSIVE` 귀납적으로 정의된 수열의 극한
+  - `TPL_CALCULUS_SEQ_LIMIT_SQUEEZE` 수열의 극한의 대소 관계
+- `PT_CALCULUS_SERIES` **급수** — 부분합의 극한과 일반항의 수렴 조건을 이용하여 무한급수의 성질과 합을 구한다.
+  - `TPL_CALCULUS_SERIES_CONVERGENCE_CONDITION` 급수의 수렴 조건
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION` 등비급수의 활용
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_CONDITION` 등비급수의 수렴 조건
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_SUM` 등비급수의 합
+  - `TPL_CALCULUS_SERIES_PARTIAL_SUM` 부분합과 급수의 합
 
 ## H22-M2-02 급수
 
@@ -52,10 +71,29 @@
 - `H2-CALC-RPM-065` 수열의 극한 > 급수 > 등비급수 > 활용
 - `H2-CALC-RPM-066` 수열의 극한 > 급수 > 급수의 성질 > 급수 계산
 - `H2-CALC-RPM-067` 수열의 극한 > 급수 > 급수의 성질 > 수렴성 판정
+- `H2-CALC-RPM-131` 수열의 극한 > 급수 > 급수의 수렴과 발산 > 부분합
+- `H2-CALC-RPM-132` 수열의 극한 > 급수 > 급수의 수렴과 발산 > 수렴 조건
+- `H2-CALC-RPM-133` 수열의 극한 > 급수 > 등비급수 > 무한등비급수
+- `H2-CALC-RPM-134` 수열의 극한 > 급수 > 등비급수 > 활용
+- `H2-CALC-RPM-135` 수열의 극한 > 급수 > 급수의 성질 > 급수 계산
+- `H2-CALC-RPM-136` 수열의 극한 > 급수 > 급수의 성질 > 수렴성 판정
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
-- (이 단원에 묶인 유형이 아직 없다)
+- `PT_CALCULUS_SEQUENCE_LIMIT` **수열의 극한** — 수열의 일반항·지배항과 공비의 거동을 분석하여 극한값·수렴 조건 또는 극한으로 정의된 함수의 값을 구한다.
+  - `TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC` 극한의 성질과 대수적 계산
+  - `TPL_CALCULUS_SEQ_LIMIT_APPLICATION` 도형·상황에서 만든 수열의 극한
+  - `TPL_CALCULUS_SEQ_LIMIT_CONVERGENCE_JUDGMENT` 수열의 수렴·발산 판정
+  - `TPL_CALCULUS_SEQ_LIMIT_GEOMETRIC_RATIO` 등비수열의 극한과 공비 조건
+  - `TPL_CALCULUS_SEQ_LIMIT_PARAMETER` 극한 조건으로 미정계수 결정
+  - `TPL_CALCULUS_SEQ_LIMIT_RECURSIVE` 귀납적으로 정의된 수열의 극한
+  - `TPL_CALCULUS_SEQ_LIMIT_SQUEEZE` 수열의 극한의 대소 관계
+- `PT_CALCULUS_SERIES` **급수** — 부분합의 극한과 일반항의 수렴 조건을 이용하여 무한급수의 성질과 합을 구한다.
+  - `TPL_CALCULUS_SERIES_CONVERGENCE_CONDITION` 급수의 수렴 조건
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION` 등비급수의 활용
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_CONDITION` 등비급수의 수렴 조건
+  - `TPL_CALCULUS_SERIES_GEOMETRIC_SUM` 등비급수의 합
+  - `TPL_CALCULUS_SERIES_PARTIAL_SUM` 부분합과 급수의 합
 
 ## H22-M2-03 지수함수와 로그함수의 미분
 
@@ -76,8 +114,46 @@
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
+- `PT_CONTINUITY_CONDITION` **함수의 연속 조건** — 함수가 특정 점 또는 전 구간에서 연속이 되도록 함숫값·계수·매개변수·함수식 또는 보정 인수의 조건을 결정하는 문제 유형.
+  - `TPL_CONTINUITY_COMPOSITION_CONDITION` 합성함수가 연속이 되기 위한 조건
+  - `TPL_CONTINUITY_CONDITION_COMPOSITION` 합성함수 연속 조건
+  - `TPL_CONTINUITY_DENOMINATOR_NONZERO` 분모가 0이 되지 않는 조건
+  - `TPL_CONTINUITY_FACTOR_CONDITION` 인수 조건을 이용한 연속성 확보
+  - `TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION` 연속인 함수의 식 결정
+  - `TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH` 구간별로 정의된 함수의 연속 조건
+  - `TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION` 곱함수가 연속이 되기 위한 조건
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
+- `PT_LIMIT_PARAMETER_DETERMINATION` **극한 조건으로 함수·계수 결정** — 극한의 존재·값·차수·영점 조건을 이용하여 미정계수, 매개변수 또는 다항함수 자체를 결정하는 문제 유형.
+  - `TPL_LIMIT_FINITE_CONDITION_PARAMETER` 유한 극한 조건으로 계수 결정
+  - `TPL_LIMIT_PARAMETER_DETERMINATION_ONE_SIDED` 좌우 극한 일치
+  - `TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION` 극한 조건으로 다항함수 구하기
+  - `TPL_LIMIT_ZERO_MULTIPLICITY` 극한이 존재하기 위한 인수 조건
+- `PT_LIMIT_VALUE_CALC` **함수의 극한값 계산** — 식·그래프·도형·대소 관계 등 다양한 표현을 필요한 계산 구조로 바꾸어 함수의 극한값을 구하는 문제 유형.
+  - `TPL_LIMIT_ASYMPTOTIC_RELATION` 두 함수의 관계를 이용한 무한대 극한
+  - `TPL_LIMIT_DIRECT_SUBSTITUTION` 직접 대입으로 극한값 구하기
+  - `TPL_LIMIT_DIRECTIONAL_APPROACH` 접근 방향을 고려한 극한
+  - `TPL_LIMIT_EXP_LOG_STANDARD` 지수·로그함수의 극한
+  - `TPL_LIMIT_FACTOR_CANCEL` 인수분해와 약분으로 극한 계산
+  - `TPL_LIMIT_GEOMETRY_PARAMETERIZATION` 도형의 조건을 식으로 나타내어 극한 구하기
+  - `TPL_LIMIT_GRAPH_DIRECTION_READ` 그래프에서 좌극한·우극한 구하기
+  - `TPL_LIMIT_INFINITY_LEADING_TERM` 지배항을 이용한 무한대 극한 계산
+  - `TPL_LIMIT_MULTI_METHOD_CHECK` 여러 극한식의 옳고 그름 판정
+  - `TPL_LIMIT_OPERATION_LAWS` 극한의 사칙연산
+  - `TPL_LIMIT_RATIONALIZATION` 유리화로 극한 계산
+  - `TPL_LIMIT_SQUEEZE` 함수의 대소 관계를 이용한 극한값 계산
+  - `TPL_LIMIT_TRIG_GEOMETRIC_FIGURE` 도형에서 만든 삼각함수의 극한
+  - `TPL_LIMIT_TRIG_STANDARD` 삼각함수의 극한
+  - `TPL_LIMIT_VALUE_CALC_CONVERGENCE` 역수식 수렴과 발산
+  - `TPL_LIMIT_VALUE_CALC_DOMINANCE` 지배항
+  - `TPL_LIMIT_VALUE_CALC_MULTI` 극한 종합 계산
+  - `TPL_LIMIT_VALUE_CALC_STANDARD` 기본 극한
 
 ## H22-M2-04 삼각함수의 미분
 
@@ -96,8 +172,51 @@
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
+- `PT_CALCULUS_TRIG_ADDITION` **삼각함수의 덧셈정리** — 사인·코사인·탄젠트의 덧셈정리와 배각공식, csc·sec·cot의 정의를 이용하여 삼각함수의 값·각의 크기 또는 도형의 각을 구하는 문제 유형.
+  - `TPL_CALCULUS_TRIG_ADDITION_VALUE` 덧셈정리로 값 구하기
+  - `TPL_CALCULUS_TRIG_ANGLE_BETWEEN` 두 직선·도형의 각
+  - `TPL_CALCULUS_TRIG_DOUBLE_ANGLE` 배각공식
+  - `TPL_CALCULUS_TRIG_RECIPROCAL` csc·sec·cot
+- `PT_CONTINUITY_CONDITION` **함수의 연속 조건** — 함수가 특정 점 또는 전 구간에서 연속이 되도록 함숫값·계수·매개변수·함수식 또는 보정 인수의 조건을 결정하는 문제 유형.
+  - `TPL_CONTINUITY_COMPOSITION_CONDITION` 합성함수가 연속이 되기 위한 조건
+  - `TPL_CONTINUITY_CONDITION_COMPOSITION` 합성함수 연속 조건
+  - `TPL_CONTINUITY_DENOMINATOR_NONZERO` 분모가 0이 되지 않는 조건
+  - `TPL_CONTINUITY_FACTOR_CONDITION` 인수 조건을 이용한 연속성 확보
+  - `TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION` 연속인 함수의 식 결정
+  - `TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH` 구간별로 정의된 함수의 연속 조건
+  - `TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION` 곱함수가 연속이 되기 위한 조건
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
+- `PT_LIMIT_PARAMETER_DETERMINATION` **극한 조건으로 함수·계수 결정** — 극한의 존재·값·차수·영점 조건을 이용하여 미정계수, 매개변수 또는 다항함수 자체를 결정하는 문제 유형.
+  - `TPL_LIMIT_FINITE_CONDITION_PARAMETER` 유한 극한 조건으로 계수 결정
+  - `TPL_LIMIT_PARAMETER_DETERMINATION_ONE_SIDED` 좌우 극한 일치
+  - `TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION` 극한 조건으로 다항함수 구하기
+  - `TPL_LIMIT_ZERO_MULTIPLICITY` 극한이 존재하기 위한 인수 조건
+- `PT_LIMIT_VALUE_CALC` **함수의 극한값 계산** — 식·그래프·도형·대소 관계 등 다양한 표현을 필요한 계산 구조로 바꾸어 함수의 극한값을 구하는 문제 유형.
+  - `TPL_LIMIT_ASYMPTOTIC_RELATION` 두 함수의 관계를 이용한 무한대 극한
+  - `TPL_LIMIT_DIRECT_SUBSTITUTION` 직접 대입으로 극한값 구하기
+  - `TPL_LIMIT_DIRECTIONAL_APPROACH` 접근 방향을 고려한 극한
+  - `TPL_LIMIT_EXP_LOG_STANDARD` 지수·로그함수의 극한
+  - `TPL_LIMIT_FACTOR_CANCEL` 인수분해와 약분으로 극한 계산
+  - `TPL_LIMIT_GEOMETRY_PARAMETERIZATION` 도형의 조건을 식으로 나타내어 극한 구하기
+  - `TPL_LIMIT_GRAPH_DIRECTION_READ` 그래프에서 좌극한·우극한 구하기
+  - `TPL_LIMIT_INFINITY_LEADING_TERM` 지배항을 이용한 무한대 극한 계산
+  - `TPL_LIMIT_MULTI_METHOD_CHECK` 여러 극한식의 옳고 그름 판정
+  - `TPL_LIMIT_OPERATION_LAWS` 극한의 사칙연산
+  - `TPL_LIMIT_RATIONALIZATION` 유리화로 극한 계산
+  - `TPL_LIMIT_SQUEEZE` 함수의 대소 관계를 이용한 극한값 계산
+  - `TPL_LIMIT_TRIG_GEOMETRIC_FIGURE` 도형에서 만든 삼각함수의 극한
+  - `TPL_LIMIT_TRIG_STANDARD` 삼각함수의 극한
+  - `TPL_LIMIT_VALUE_CALC_CONVERGENCE` 역수식 수렴과 발산
+  - `TPL_LIMIT_VALUE_CALC_DOMINANCE` 지배항
+  - `TPL_LIMIT_VALUE_CALC_MULTI` 극한 종합 계산
+  - `TPL_LIMIT_VALUE_CALC_STANDARD` 기본 극한
 
 ## H22-M2-05 여러 가지 미분법
 
@@ -118,7 +237,16 @@
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
+- `PT_DIFFERENTIABILITY_CONDITION` **미분가능 조건** — 조각함수, 절댓값, 제거가능 인자 등의 경계에서 연속성과 좌우 미분계수를 분석하여 미분가능 조건 또는 미분불가능점 구조를 판정하는 문제유형.
+  - `TPL_DIFFERENTIABILITY_POINT_CONDITION` 한 점의 미분가능 조건
+  - `TPL_NONDIFFERENTIABILITY_STRUCTURE` 미분불가능 구조 판정
 
 ## H22-M2-06 도함수의 활용
 
@@ -143,6 +271,12 @@
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
+- `PT_CALCULUS_CONCAVITY_INFLECTION` **곡선의 오목·볼록과 변곡점** — 이계도함수의 부호로 곡선의 오목·볼록 구간을 판정하거나 변곡점의 위치·존재 조건과 그에 따른 미정계수를 결정하는 문제 유형.
+  - `TPL_CALCULUS_CONCAVITY_INTERVAL` 오목·볼록 구간 판정
+  - `TPL_CALCULUS_INFLECTION_CONDITION` 변곡점 조건
+- `PT_CALCULUS_GRAPH_SKETCH` **함수의 그래프 개형** — 도함수·이계도함수의 부호, 극값, 점근선, 대칭성을 종합하여 함수의 그래프 개형을 파악하고 그 성질을 판단하는 문제 유형.
+  - `TPL_CALCULUS_GRAPH_SKETCH_BY_DERIVATIVE` 증감·점근선으로 그래프 개형
+  - `TPL_CALCULUS_GRAPH_SKETCH_STANDARD_FORM` 표준 함수의 그래프 개형
 - `PT_DERIVATIVE_EQUATION_INEQUALITY` **방정식·부등식에의 활용** — 함수의 극값·증감과 최솟값을 이용하여 방정식의 실근 개수·위치 또는 모든 실수에서 성립하는 부등식 조건을 판정하는 문제유형.
   - `TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE` 미분을 이용한 전역 부등식
   - `TPL_ROOT_COUNT_BY_EXTREMA` 극값을 이용한 실근 개수 판정
@@ -159,6 +293,7 @@
   - `TPL_DERIVATIVE_MOTION_GEOMETRIC_RATE` 도형 변화율
   - `TPL_MOTION_COMPOSITE_MODEL` 복합 운동 모델의 매개변수 최적화
   - `TPL_MOTION_EVENT_ANALYSIS` 운동의 사건 시각·상태 분석
+  - `TPL_MOTION_PLANE_VELOCITY` 평면 위 운동의 속도·가속도
 - `PT_TANGENT_DERIVATIVE` **접선과 미분** — 미분계수를 접선의 기울기로 해석하여 접선·법선의 방정식, 접점 관계, 접선 개수 및 평행·수직 기하조건을 다루는 문제유형.
   - `TPL_TANGENCY_RELATION_GEOMETRY` 접선 관계와 기하 활용
   - `TPL_TANGENT_CONSTRUCTION` 접선·법선 구성
@@ -181,10 +316,42 @@
 - `H2-CALC-RPM-098` 적분법 > 치환적분법과 부분적분법 > 치환적분 > 정적분
 - `H2-CALC-RPM-099` 적분법 > 치환적분법과 부분적분법 > 부분적분 > 기본형
 - `H2-CALC-RPM-100` 적분법 > 치환적분법과 부분적분법 > 부분적분 > 반복형
+- `H2-CALC-RPM-137` 적분법 > 여러 가지 함수의 적분 > 지수·로그함수의 적분 > 지수함수
+- `H2-CALC-RPM-138` 적분법 > 여러 가지 함수의 적분 > 지수·로그함수의 적분 > 로그형
+- `H2-CALC-RPM-139` 적분법 > 여러 가지 함수의 적분 > 삼각함수의 적분 > 기본 삼각함수
+- `H2-CALC-RPM-140` 적분법 > 여러 가지 함수의 적분 > 삼각함수의 적분 > 합성형
+- `H2-CALC-RPM-141` 적분법 > 치환적분법과 부분적분법 > 치환적분 > 부정적분
+- `H2-CALC-RPM-142` 적분법 > 치환적분법과 부분적분법 > 치환적분 > 정적분
+- `H2-CALC-RPM-143` 적분법 > 치환적분법과 부분적분법 > 부분적분 > 기본형
+- `H2-CALC-RPM-144` 적분법 > 치환적분법과 부분적분법 > 부분적분 > 반복형
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
-- (이 단원에 묶인 유형이 아직 없다)
+- `PT_CALCULUS_FUNCTION_INTEGRAL` **여러 가지 함수의 적분** — 지수함수·로그함수·삼각함수와 실수 거듭제곱 함수의 부정적분·정적분을 공식으로 직접 계산하는 문제 유형.
+  - `TPL_CALCULUS_INTEGRAL_POWER_EXP_LOG` 거듭제곱·지수·로그함수의 적분
+  - `TPL_CALCULUS_INTEGRAL_TRIG` 삼각함수의 적분
+- `PT_CALCULUS_INTEGRATION_BY_PARTS` **부분적분** — 적(곱)의 미분법을 거꾸로 이용하여 두 함수의 곱의 부정적분·정적분을 계산하거나 부분적분으로 얻은 관계식으로 값을 구하는 문제 유형.
+  - `TPL_CALCULUS_PARTS_CYCLIC` 순환 부분적분
+  - `TPL_CALCULUS_PARTS_DEFINITE` 정적분의 부분적분
+  - `TPL_CALCULUS_PARTS_PRODUCT` 두 함수 곱의 부분적분
+- `PT_CALCULUS_SUBSTITUTION_INTEGRAL` **치환적분** — 적분 변수를 치환하여 부정적분 또는 정적분을 계산하고, 정적분에서는 적분 구간을 함께 바꾸어 값을 구하는 문제 유형.
+  - `TPL_CALCULUS_SUBSTITUTION_DEFINITE` 정적분의 치환적분
+  - `TPL_CALCULUS_SUBSTITUTION_INDEFINITE` 부정적분의 치환적분
+  - `TPL_CALCULUS_SUBSTITUTION_WITH_PARTS` 치환·부분적분 결합
+- `PT_DEFINITE_INTEGRAL_FUNCTION_RELATION` **정적분과 함수** — 정적분으로 정의된 함수를 미분·분석하거나 적분이 포함된 관계식과 적분 조건을 이용하여 함수의 식·성질을 결정하는 문제 유형.
+  - `TPL_DIFFERENTIATE_INTEGRAL_RELATION` 적분이 포함된 식을 미분하여 함수 구하기
+  - `TPL_GLOBAL_INTEGRAL_CONSTRAINT` 모든 구간의 적분 조건으로 함수 성질 결정
+  - `TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS` 적분으로 정의된 함수의 성질 분석
+  - `TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION` 적분으로 정의된 함수의 미분
+  - `TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION` 정적분 값을 미지수로 두어 함수 구하기
+- `PT_DEFINITE_INTEGRAL_OPERATION` **정적분의 계산과 성질** — 정적분을 직접 계산하거나 구간의 방향·분할, 대칭성, 주기성 등의 성질을 이용하여 정적분식을 변형하고 값을 구하는 문제 유형.
+  - `TPL_DEFINITE_EVALUATION` 정적분 값 계산
+  - `TPL_DEFINITE_INTEGRAL_OPERATION_INVERSE_AREA` 역함수 적분 영역 합
+  - `TPL_DEFINITE_PROPERTY_TRANSFORM` 정적분의 성질을 이용한 식 변형
+  - `TPL_INVERSE_FUNCTION_INTEGRATION` 역함수의 식을 구하여 정적분 계산
+- `PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION` **부정적분과 함수** — 부정적분과 미분의 역관계, 도함수와 함수값의 관계를 이용하여 함수 또는 함숫값을 구하거나 원시함수와 적분상수의 성질을 판단하는 문제 유형.
+  - `TPL_DERIVATIVE_TO_FUNCTION` 도함수에서 함수·함숫값 구하기
+  - `TPL_INDEFINITE_DIFFERENTIAL_RELATION` 부정적분과 미분의 관계
 
 ## H22-M2-08 정적분의 활용
 
@@ -209,8 +376,18 @@
   - `TPL_AREA_CONDITION_MODEL_DETERMINATION` 넓이 조건으로 함수·매개변수 결정
   - `TPL_AREA_FROM_INTEGRAL_DATA` 주어진 정적분 정보로 넓이 복원
   - `TPL_INTERSECTION_SIGN_AREA` 교점과 부호를 이용한 넓이
+- `PT_CALCULUS_CURVE_LENGTH` **곡선의 길이** — 정적분을 이용하여 함수의 그래프 또는 매개변수로 나타낸 곡선의 길이를 구하는 문제 유형.
+  - `TPL_CALCULUS_CURVE_LENGTH_GRAPH` 함수 그래프의 길이
+  - `TPL_CALCULUS_CURVE_LENGTH_PARAMETRIC` 매개변수 곡선의 길이
+- `PT_CALCULUS_RIEMANN_SUM` **정적분과 급수** — 구간을 n등분한 급수의 합과 그 극한을 정적분으로 바꾸어 나타내거나, 정적분의 값을 급수의 극한으로 해석하여 계산하는 문제 유형.
+  - `TPL_CALCULUS_RIEMANN_AREA_PARTITION` 구분구적법
+  - `TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL` 급수의 극한을 정적분으로
+- `PT_CALCULUS_SOLID_VOLUME` **입체도형의 부피** — 단면의 넓이를 정적분하거나 회전체의 단면을 이용하여 입체도형의 부피를 구하는 문제 유형.
+  - `TPL_CALCULUS_VOLUME_CROSS_SECTION` 단면이 주어진 입체의 부피
+  - `TPL_CALCULUS_VOLUME_REVOLUTION` 회전체의 부피
 - `PT_MOTION_BY_INTEGRAL` **속도와 거리** — 속도를 적분하여 위치·변위·이동거리를 구하거나 두 점의 운동 조건에서 만나는 시각과 매개변수를 결정하는 문제 유형.
   - `TPL_MOTION_CONDITION_PARAMETER` 운동 조건으로 만남·매개변수 결정
+  - `TPL_MOTION_PLANE_DISTANCE` 평면 위 운동의 이동거리
   - `TPL_VELOCITY_TO_POSITION_DISTANCE` 속도에서 위치·변위·이동거리 구하기
 
 ## 아래 학년 유형
@@ -864,9 +1041,9 @@
 - `PT_DERIVATIVE_GRAPH_ANALYSIS` 도함수 그래프 해석 (TPL 2)
 - `PT_DERIVATIVE_MAX_MIN` 최댓값·최솟값 (TPL 2)
 - `PT_DERIVATIVE_MONOTONICITY` 함수의 증가·감소 (TPL 2)
-- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 3)
+- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 4)
 - `PT_DERIVATIVE_RATE_RELATION` 평균변화율과 미분계수 (TPL 3)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTION_EXTREMUM` 함수의 최댓값·최솟값 (TPL 7)
 - `PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION` 부정적분과 함수 (TPL 2)
@@ -876,9 +1053,9 @@
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
 - `PT_LIMIT_STATEMENT_LOGIC` 함수의 극한에 대한 참·거짓 (TPL 1)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 15)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_MEAN_VALUE_THEOREM` 평균값 정리와 롤의 정리 (TPL 2)
-- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 2)
+- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 3)
 - `PT_ONE_TO_ONE_BIJECTION` 일대일함수와 일대일대응 (TPL 5)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
@@ -924,13 +1101,13 @@
 - `PT_DERIVATIVE_DEFINITION` 미분계수의 정의와 극한 (TPL 2)
 - `PT_DERIVATIVE_EXTREMA` 극대·극소 (TPL 2)
 - `PT_DERIVATIVE_FUNCTION_DETERMINATION` 도함수 조건을 이용한 함수 결정 (TPL 4)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTIONAL_EQUATION` 함수방정식 (TPL 4)
 - `PT_INTERMEDIATE_VALUE_APPLICATION` 사잇값 정리의 활용 (TPL 2)
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 15)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
 ### 확률과 통계 (PROBABILITY_STATISTICS) · 고2 — 파일 `PROBABILITY_STATISTICS.md`
@@ -957,5 +1134,30 @@
 
 ### 미적분 (H15_CALCULUS) · 고3 — 파일 `H15_CALCULUS.md`
 
-- `PT_CALCULUS_SEQUENCE_LIMIT` 수열의 극한
-- `PT_CALCULUS_SERIES` 급수
+- `PT_AREA_BY_DEFINITE_INTEGRAL` 곡선으로 둘러싸인 도형의 넓이 (TPL 3)
+- `PT_CALCULUS_CONCAVITY_INFLECTION` 곡선의 오목·볼록과 변곡점 (TPL 2)
+- `PT_CALCULUS_CURVE_LENGTH` 곡선의 길이 (TPL 2)
+- `PT_CALCULUS_FUNCTION_INTEGRAL` 여러 가지 함수의 적분 (TPL 2)
+- `PT_CALCULUS_GRAPH_SKETCH` 함수의 그래프 개형 (TPL 2)
+- `PT_CALCULUS_INTEGRATION_BY_PARTS` 부분적분 (TPL 3)
+- `PT_CALCULUS_RIEMANN_SUM` 정적분과 급수 (TPL 2)
+- `PT_CALCULUS_SEQUENCE_LIMIT` 수열의 극한 (TPL 7)
+- `PT_CALCULUS_SERIES` 급수 (TPL 5)
+- `PT_CALCULUS_SOLID_VOLUME` 입체도형의 부피 (TPL 2)
+- `PT_CALCULUS_SUBSTITUTION_INTEGRAL` 치환적분 (TPL 3)
+- `PT_CALCULUS_TRIG_ADDITION` 삼각함수의 덧셈정리 (TPL 4)
+- `PT_CONTINUITY_CONDITION` 함수의 연속 조건 (TPL 7)
+- `PT_DEFINITE_INTEGRAL_FUNCTION_RELATION` 정적분과 함수 (TPL 5)
+- `PT_DEFINITE_INTEGRAL_OPERATION` 정적분의 계산과 성질 (TPL 4)
+- `PT_DERIVATIVE_EQUATION_INEQUALITY` 방정식·부등식에의 활용 (TPL 2)
+- `PT_DERIVATIVE_EXTREMA` 극대·극소 (TPL 2)
+- `PT_DERIVATIVE_MAX_MIN` 최댓값·최솟값 (TPL 2)
+- `PT_DERIVATIVE_MONOTONICITY` 함수의 증가·감소 (TPL 2)
+- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 4)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
+- `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
+- `PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION` 부정적분과 함수 (TPL 2)
+- `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
+- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 3)
+- `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)

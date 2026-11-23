@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 8,
-  "templateCount": 18,
+  "problemTypeCount": 9,
+  "templateCount": 22,
   "problemTypes": [
     {
       "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
@@ -150,6 +150,20 @@
         "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "problemTypeKey": "PT_CALCULUS_TRIG_ADDITION",
+      "canonicalLabelKo": "삼각함수의 덧셈정리",
+      "definition": "사인·코사인·탄젠트의 덧셈정리와 배각공식, csc·sec·cot의 정의를 이용하여 삼각함수의 값·각의 크기 또는 도형의 각을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "H22-M2-04",
+        "H15-CALC-04"
+      ]
     }
   ],
   "templates": [
@@ -509,6 +523,54 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_CALCULUS_TRIG_ADDITION_VALUE",
+      "canonicalLabelKo": "덧셈정리로 값 구하기",
+      "definition": "사인·코사인·탄젠트의 덧셈정리로 합·차의 삼각함수값을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "각을 합·차로 분해 → 덧셈정리 적용 → 값 계산",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_CALCULUS_TRIG_ADDITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_TRIG_DOUBLE_ANGLE",
+      "canonicalLabelKo": "배각공식",
+      "definition": "배각공식으로 2θ의 삼각함수값을 구하거나 식을 변형하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "배각공식 선택 → 식 변형 → 값 계산",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_CALCULUS_TRIG_ADDITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_TRIG_ANGLE_BETWEEN",
+      "canonicalLabelKo": "두 직선·도형의 각",
+      "definition": "탄젠트의 덧셈정리로 두 직선이 이루는 각이나 도형의 각의 크기를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "기울기·변의 비로 tan 값 → 덧셈정리 → 각 결정",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_CALCULUS_TRIG_ADDITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_TRIG_RECIPROCAL",
+      "canonicalLabelKo": "csc·sec·cot",
+      "definition": "csc θ, sec θ, cot θ의 정의로 삼각함수값을 계산하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "정의로 역수 관계 → 값 계산",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_CALCULUS_TRIG_ADDITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
     }
   ],
   "ownerPack": "TRIGONOMETRY"

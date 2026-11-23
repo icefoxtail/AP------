@@ -50,6 +50,7 @@
   - `TPL_LIMIT_ASYMPTOTIC_RELATION` 두 함수의 관계를 이용한 무한대 극한
   - `TPL_LIMIT_DIRECT_SUBSTITUTION` 직접 대입으로 극한값 구하기
   - `TPL_LIMIT_DIRECTIONAL_APPROACH` 접근 방향을 고려한 극한
+  - `TPL_LIMIT_EXP_LOG_STANDARD` 지수·로그함수의 극한
   - `TPL_LIMIT_FACTOR_CANCEL` 인수분해와 약분으로 극한 계산
   - `TPL_LIMIT_GEOMETRY_PARAMETERIZATION` 도형의 조건을 식으로 나타내어 극한 구하기
   - `TPL_LIMIT_GRAPH_DIRECTION_READ` 그래프에서 좌극한·우극한 구하기
@@ -58,6 +59,8 @@
   - `TPL_LIMIT_OPERATION_LAWS` 극한의 사칙연산
   - `TPL_LIMIT_RATIONALIZATION` 유리화로 극한 계산
   - `TPL_LIMIT_SQUEEZE` 함수의 대소 관계를 이용한 극한값 계산
+  - `TPL_LIMIT_TRIG_GEOMETRIC_FIGURE` 도형에서 만든 삼각함수의 극한
+  - `TPL_LIMIT_TRIG_STANDARD` 삼각함수의 극한
   - `TPL_LIMIT_VALUE_CALC_CONVERGENCE` 역수식 수렴과 발산
   - `TPL_LIMIT_VALUE_CALC_DOMINANCE` 지배항
   - `TPL_LIMIT_VALUE_CALC_MULTI` 극한 종합 계산
@@ -152,7 +155,13 @@
   - `TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE` 국소 값·미분 조건으로 함수 결정
   - `TPL_STRUCTURAL_FUNCTION_DETERMINE` 근·대칭·인수 구조로 함수 결정
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
 - `PT_FUNCTIONAL_EQUATION` **함수방정식** — 모든 입력에 대해 성립하는 함수 관계식에 값을 대입·치환하여 새로운 관계나 함수값을 구하는 문제 유형.
   - `TPL_FUNCTIONAL_EQUATION_ADDITIVE` 가법형 함수방정식
   - `TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT` 함수방정식 미분으로 불변식 구성
@@ -917,9 +926,9 @@
 - `PT_DERIVATIVE_GRAPH_ANALYSIS` 도함수 그래프 해석 (TPL 2)
 - `PT_DERIVATIVE_MAX_MIN` 최댓값·최솟값 (TPL 2)
 - `PT_DERIVATIVE_MONOTONICITY` 함수의 증가·감소 (TPL 2)
-- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 3)
+- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 4)
 - `PT_DERIVATIVE_RATE_RELATION` 평균변화율과 미분계수 (TPL 3)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTION_EXTREMUM` 함수의 최댓값·최솟값 (TPL 7)
 - `PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION` 부정적분과 함수 (TPL 2)
@@ -929,9 +938,9 @@
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
 - `PT_LIMIT_STATEMENT_LOGIC` 함수의 극한에 대한 참·거짓 (TPL 1)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 15)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_MEAN_VALUE_THEOREM` 평균값 정리와 롤의 정리 (TPL 2)
-- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 2)
+- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 3)
 - `PT_ONE_TO_ONE_BIJECTION` 일대일함수와 일대일대응 (TPL 5)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
