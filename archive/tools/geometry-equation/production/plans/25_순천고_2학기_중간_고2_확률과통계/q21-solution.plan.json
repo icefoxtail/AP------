@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "180",
+        "sd": "6",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "174"
+      },
+      {
+        "x": "180"
+      }
+    ],
+    "shades": [
+      {
+        "from": "174",
+        "to": null,
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "확률질량함수는 성공확률 4/5인 이항분포이고 평균 4n/5=180에서 n=225이다. 분산은 225×4/5×1/5=36, 표준편차는 6이다. X≥174를 표준화하면 z=(174−180)/6=−1 이상이므로 확률은 0.5+0.3413=0.8413이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "174가 z=−1에 대응하고 구하는 확률이 오른쪽 전체 넓이임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $n$에 대하여 확률변수 $X$가 다음 조건을 만족시킨다.<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">(가) $P(X=x)={}_nC_x\\dfrac{4^x}{5^n}$ $(x=0,1,2,\\cdots,n)$<br>(나) $\\displaystyle\\sum_{k=0}^{n} k\\,{}_nC_k\\dfrac{4^k}{5^n}=180$</div>$\\displaystyle\\sum_{k=174}^{n}{}_nC_k\\dfrac{4^k}{5^n}$의 값을 오른쪽 표준정규분포표를 이용하여 구하면? (단, $n>174$) [4.2점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$0.5$</td><td>$0.1915$</td></tr><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

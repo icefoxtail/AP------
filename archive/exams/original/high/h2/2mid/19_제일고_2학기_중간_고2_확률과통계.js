@@ -526,8 +526,7 @@ window.questionBank = [
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "tags": [],
-    "image": "",
-    "solutionImage": "",
+    "image": ""
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -553,7 +552,11 @@ window.questionBank = [
     "curriculum": "2015",
     "rpmL3": "정규분포",
     "rpmL4": "정규분포 확률",
-    "rpmSemanticStatus": "EXACT_ACTIVE"
+    "rpmSemanticStatus": "EXACT_ACTIVE",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(20, 4)이므로 평균 20, 표준편차 2이다. 23은 z=1.5이고 P(Z≤1.5)=0.9332이다. 색칠한 구간의 넓이가 0.6247이면 경계 a의 왼쪽 넓이가 0.9332−0.6247=0.3085이고 P(Z≤−0.5)=0.3085이므로 a는 z=−0.5이다. a=20−0.5×2=19이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -576,8 +579,7 @@ window.questionBank = [
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "tags": [],
-    "image": "",
-    "solutionImage": "",
+    "image": ""
     "level": "하",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -603,7 +605,11 @@ window.questionBank = [
     "curriculum": "2015",
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
-    "rpmSemanticStatus": "EXACT_ACTIVE"
+    "rpmSemanticStatus": "EXACT_ACTIVE",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "무게 X는 평균 400, 표준편차 10인 정규분포를 따른다. 390은 z=(390−400)/10=−1이다. 색칠한 왼쪽 꼬리의 넓이는 0.5−P(0≤Z≤1)=0.5−0.3413=0.1587이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

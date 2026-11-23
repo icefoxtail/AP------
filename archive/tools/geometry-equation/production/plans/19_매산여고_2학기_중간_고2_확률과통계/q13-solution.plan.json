@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "40",
+        "sd": "5",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "25"
+      },
+      {
+        "x": "40"
+      },
+      {
+        "x": "55"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "25",
+        "color": "WARM"
+      },
+      {
+        "from": "55",
+        "to": null,
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.0013"
+      },
+      {
+        "shade": 1,
+        "text": "0.0013"
+      }
+    ]
+  },
+  "caption": "P(X≥m+3σ)=0.0013이면 대칭으로 P(X≤m−3σ)=0.0013이다. P(X≥k)=0.9987이면 P(X<k)=0.0013이므로 k는 왼쪽 꼬리의 경계 m−3σ이다. 평균 40, 표준편차 5이므로 k=40−15=25이다. 그림은 양쪽 꼬리 0.0013씩이며 오른쪽 꼬리의 경계는 55이다. 따라서 답은 ③이다.",
+  "newVisualInformation": [
+    "평균에서 같은 거리 3σ에 있는 두 꼬리가 대칭으로 같고 k=25가 왼쪽 꼬리의 경계임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 정규분포 $\\mathrm{N}(m, \\sigma^2)$을 따르고, $P(X \\ge m+3\\sigma) = 0.0013$를 만족시킨다. $X$의 평균이 40, 표준편차가 5일 때, $P(X \\ge k) = 0.9987$을 만족하는 상수 $k$의 값을 구하시오. [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

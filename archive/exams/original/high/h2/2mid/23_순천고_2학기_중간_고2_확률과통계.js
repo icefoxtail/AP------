@@ -222,7 +222,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X가 N(50, 3²)이면 X=44는 z=−2, X=53은 z=1이다. P(44≤X≤53)=P(−2≤Z≤1)이고 평균 0을 경계로 −2부터 0까지 0.4772, 0부터 1까지 0.3413이다. 합은 0.8185이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -276,7 +280,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "이항분포 B(100, 1/5)의 평균은 20, 분산은 16, 표준편차는 4이므로 N(20, 4²)으로 근사한다. X=24는 z=1이고 P(X≥24)는 z=1의 오른쪽 꼬리이다. 표에서 P(0≤Z≤1)=0.3413이므로 꼬리의 넓이는 0.5−0.3413=0.1587이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -330,7 +338,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "통계적 추정",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "한 개의 무게는 N(10, 2²)이고 4개의 표본평균은 평균 10, 표준편차 2/√4=1인 분포를 따른다. 표본평균이 9 이상은 z=(9−10)/1=−1 이상이다. 표에서 −1부터 0까지 0.3413과 0 이상 0.5를 더해 0.8413이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -712,7 +724,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "청소 시간이 a분 이상일 확률이 0.8413=0.5+0.3413이므로 P(Z≥−1)에 해당한다. 그림은 −1부터 0까지 0.3413과 오른쪽 절반 0.5를 더한 0.8413이다. (a−130)/20=−1에서 a=110이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -825,7 +841,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "한 세트가 합격일 확률은 (2/3×6/7×7/8)²=(1/2)²=1/4이다. 합격 세트 수 X는 B(432, 1/4)이고 평균 108, 분산 81, 표준편차 9이므로 N(108, 9²)으로 근사한다. X≥126은 z=(126−108)/9=2 이상이므로 확률은 0.5−0.4772=0.0228이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

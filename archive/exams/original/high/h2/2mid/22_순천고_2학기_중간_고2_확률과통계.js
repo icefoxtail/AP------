@@ -328,7 +328,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표본평균은 평균 302, 표준편차 9/√n인 분포를 따른다. P(X̄≤300)=0.0228=0.5−0.4772이므로 300은 z=−2에 해당한다. (300−302)/(9/√n)=−2에서 √n=9이므로 n=81이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -369,7 +373,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "응시 시간 X는 N(81, 6²)이고 90분은 z=(90−81)/6=1.5이다. P(X≤90)=P(Z≤1.5)이므로 왼쪽 절반 0.5와 0부터 1.5까지 0.4332를 더한 0.9332이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -580,7 +588,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "+3점을 얻은 횟수를 H라 하면 H는 B(432, 1/4)이고 총점은 S=4H−432이다. S≥108은 H≥135와 같다. H의 평균은 108, 표준편차는 9이므로 135는 z=3이다. 따라서 확률은 오른쪽 꼬리 0.5−0.4987=0.0013이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -621,7 +633,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "25마리의 총무게는 평균 25×780=19500g, 표준편차 35×√25=175g인 정규분포를 따른다. 기준 19.675kg=19675g은 z=(19675−19500)/175=1이다. 따라서 확률은 오른쪽 꼬리 0.5−0.3413=0.1587이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -859,6 +875,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "한 번의 시행에서 합이 5보다 작은 경우는 (1,1), (1,2), (2,2)로 1+4+1=6개이고 전체 6C2=15개이므로 성공확률은 2/5이다. X는 B(150, 2/5)이고 평균 60, 표준편차 6이므로 N(60, 6²)으로 근사한다. 54는 z=−1, 72는 z=2이므로 P(−1≤Z≤2)=0.3413+0.4772=0.8185이다.",
+    "solutionImageSize": "full"
   }
 ];

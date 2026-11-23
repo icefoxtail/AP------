@@ -912,7 +912,11 @@ window.questionBank = [
     "questionUidProvisional": "qid_candidate_588b4da6a89d1bcfcba634ee1724a10671138750",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "E(X)=n×3/4=144에서 n=192이고 분산은 192×3/4×1/4=36, 표준편차는 6이다. 평균 144, 표준편차 6인 정규분포로 근사하면 X=153은 z=(153−144)/6=1.5이다. 구하는 오른쪽 꼬리는 0.5−0.4332=0.0668이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1091,6 +1095,10 @@ window.questionBank = [
     "questionUidProvisional": "qid_candidate_a59dbf44a2f3a3fab5262a038a38a815e7a88803",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 평균 72, 표준편차 4인 정규분포를 따르므로 71은 z=−0.25, 75는 z=0.75이다. 평균을 경계로 −0.25부터 0까지는 대칭으로 0부터 0.25까지와 같아 0.0987이고 0부터 0.75까지는 0.2734이다. 두 넓이의 합은 0.0987+0.2734=0.3721이다. 따라서 구하는 확률은 0.3721이다.",
+    "solutionImageSize": "full"
   }
 ];

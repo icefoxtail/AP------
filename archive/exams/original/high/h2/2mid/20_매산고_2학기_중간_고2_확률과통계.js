@@ -319,7 +319,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "sourceQid": 7,
     "sourceProvenance": "ORIGINAL",
-    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc"
+    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X를 표준화하면 X=−5는 z=−2, X=10은 z=−0.5이다. 색칠한 구간은 평균 15의 왼쪽이다. 정규분포는 좌우 대칭이므로 이 넓이는 z=0.5부터 2까지의 넓이와 같고 0.4772−0.1915=0.2857이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
