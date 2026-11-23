@@ -182,28 +182,46 @@ export function examImageR2Url(env, assetPath) {
   return new URL(`${base}/exams/images/${parts.map(encodeURIComponent).join("/")}`);
 }
 
-// Reads one source image (R2 first, Pages copy as the rollback path). Used to embed it (old format) and to check it (key refs).
+// A failed read is "transient" (network error, 429, 5xx: reading again may work) or definite (404 and other 4xx: the file
+// is not there). Only transient failures are read once more.
+const isTransientStatus = (status) => status === 429 || status >= 500;
+async function dropBody(response) {
+  try { await response.body?.cancel(); } catch { /* body already closed */ }
+}
+
+// Reads one source image (R2 first, Pages copy as the rollback path) for its sha256 + size.
+// Returns { bytes } or, when the image cannot be read, { missing: true, transient }. Nothing here rejects the save: the
+// caller records the image as "not verified at save time". An image over the size limit still stops the save (413).
 async function fetchSourceAsset(env, path) {
   const base = String(
     env.ARCHIVE_PUBLIC_BASE_URL || "https://icefoxtail.github.io/AP------/archive",
   ).replace(/\/+$/, "") + "/";
+  let transient = false;
   let response = null;
   const r2Url = examImageR2Url(env, path);
   if (r2Url) {
-    try { response = await fetch(r2Url); } catch { response = null; }
+    try { response = await fetch(r2Url); } catch { response = null; transient = true; }
     if (response && !response.ok) {
-      try { await response.body?.cancel(); } catch { /* body already closed */ }
+      transient ||= isTransientStatus(response.status);
+      await dropBody(response);
       response = null;
     }
   }
   if (!response) {
     // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
     const url = new URL(path, base);
-    response = env.ARCHIVE2_ASSETS
-      ? await env.ARCHIVE2_ASSETS.fetch(url)
-      : await fetch(url);
+    try {
+      response = env.ARCHIVE2_ASSETS
+        ? await env.ARCHIVE2_ASSETS.fetch(url)
+        : await fetch(url);
+    } catch { response = null; transient = true; }
+    if (response && !response.ok) {
+      transient ||= isTransientStatus(response.status);
+      await dropBody(response);
+      response = null;
+    }
   }
-  if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
+  if (!response) return { missing: true, transient };
   const reader = response.body?.getReader();
   let bytes;
   if (reader) {
@@ -220,8 +238,11 @@ async function fetchSourceAsset(env, path) {
         }
         chunks.push(chunk);
       }
+    } catch (error) {
+      if (error?.status) throw error;
+      return { missing: true, transient: true };
     } finally {
-      reader.releaseLock();
+      try { reader.releaseLock(); } catch { /* stream already errored */ }
     }
     bytes = new Uint8Array(size);
     let offset = 0;
@@ -230,7 +251,7 @@ async function fetchSourceAsset(env, path) {
       offset += chunk.byteLength;
     }
   } else {
-    bytes = new Uint8Array(await response.arrayBuffer());
+    try { bytes = new Uint8Array(await response.arrayBuffer()); } catch { return { missing: true, transient: true }; }
     if (bytes.byteLength > MAX_SAVED_PAPER_BYTES)
       fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
   }
@@ -250,14 +271,51 @@ async function sha256Bytes(bytes) {
 }
 
 // The saved paper keeps the exam image PATH in its text and records each image as { path, sha256, bytes } (a later asset
-// replacement is then detectable). One list per paper. An image that cannot be read stops the whole save: no partial paper.
+// replacement is then detectable). One list per paper. An image that cannot be read does NOT stop the save (one picture
+// must not block the whole paper): it is recorded as { path, sha256: null, bytes: null, missing: true } = "not verified at
+// save time", and the response names the question(s) that use it. A failure that may be temporary (network error,
+// 429, 5xx) is read once more; a 404 is not.
 async function recordSavedPaperAssets(env, papers) {
   const known = new Map();
   for (const path of new Set(papers.flatMap((paper) => paper.questions.flatMap(questionAssetPaths)))) {
-    const { bytes } = await fetchSourceAsset(env, path);
-    known.set(path, { path, sha256: await sha256Bytes(bytes), bytes: bytes.byteLength });
+    let read = await fetchSourceAsset(env, path);
+    if (read.missing && read.transient) read = await fetchSourceAsset(env, path);
+    known.set(path, read.missing
+      ? { path, sha256: null, bytes: null, missing: true }
+      : { path, sha256: await sha256Bytes(read.bytes), bytes: read.bytes.byteLength });
   }
   return papers.map((paper) => [...new Set(paper.questions.flatMap(questionAssetPaths))].sort().map((path) => known.get(path)));
+}
+
+// The images a saved paper could not verify, with the question that uses each one: [{ part, question, place, path }].
+// `part` / `question` are 1-based ("1권 3번"). Works from a stored snapshot too (a retried save answers the same way).
+export function missingImageItems(partIndex, snapshot) {
+  const missing = new Set((Array.isArray(snapshot?.assets) ? snapshot.assets : []).filter((asset) => asset?.missing === true).map((asset) => asset.path));
+  if (!missing.size || !Array.isArray(snapshot.questions)) return [];
+  const items = [];
+  snapshot.questions.forEach((question, questionIndex) => {
+    let paths = [];
+    try { paths = [...new Set(questionAssetPaths(question))]; } catch { paths = []; }
+    for (const path of paths)
+      if (missing.has(path)) items.push({ part: partIndex + 1, question: questionIndex + 1, place: questionPlace(partIndex, questionIndex), path });
+  });
+  return items;
+}
+
+// Response block for a save: absent images are listed by count (distinct files) and by place.
+export function missingImagesReport(items) {
+  return { count: new Set(items.map((item) => item.path)).size, items };
+}
+
+// The same report for papers already stored (the retry of a save answers from the stored snapshots).
+export function missingImagesFromRows(rows) {
+  const items = [];
+  for (const row of rows) {
+    let snapshot = null;
+    try { snapshot = JSON.parse(row.snapshot_json); } catch { snapshot = null; }
+    items.push(...missingImageItems(Number(row.part_index), snapshot));
+  }
+  return missingImagesReport(items);
 }
 
 export async function prepareSavedPaperBatch(env, input, metadataAuthority = null) {
@@ -339,6 +397,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
   }
   // Images stay as paths in the text; their sha256 and size are recorded in the snapshot (see recordSavedPaperAssets).
   const assetsByPaper = await recordSavedPaperAssets(env, input.papers);
+  const missingItems = [];
 
   for (let i = 0; i < input.papers.length; i++) {
     const paper = input.papers[i];
@@ -374,6 +433,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
       assets: assetsByPaper[i],
       verifiedAt: new Date().toISOString(),
     };
+    missingItems.push(...missingImageItems(i, snapshot));
     const snapshotJson = stableStringify(snapshot);
     const size = byteLength(snapshotJson);
     if (size > MAX_SAVED_PAPER_BYTES)
@@ -399,6 +459,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
     currentIndexVersion,
     selectionFilters,
     totalQuestions,
+    missingImages: missingImagesReport(missingItems),
     papers: prepared,
   };
 }
@@ -434,11 +495,15 @@ export async function readAndVerifySavedSnapshot(row) {
 // Key-reference snapshots keep the exam image paths as they are and list every image they use as { path, sha256, bytes }.
 // Old snapshots have no `assets` list (their images are embedded) and are read exactly as before.
 const ASSET_SHA256 = /^[0-9a-f]{64}$/;
+// An image the server could not read at save time is { path, sha256: null, bytes: null, missing: true }. Every other entry
+// is checked exactly as before (64-hex sha256 and a byte count).
 function validSnapshotAssets(assets) {
   try {
     return Array.isArray(assets) &&
       assets.every((asset) => isPlainObject(asset) && sourceAssetPath(asset.path) === asset.path &&
-        ASSET_SHA256.test(String(asset.sha256)) && Number.isInteger(asset.bytes) && asset.bytes >= 0) &&
+        (asset.missing === true
+          ? asset.sha256 === null && asset.bytes === null
+          : asset.missing === undefined && ASSET_SHA256.test(String(asset.sha256)) && Number.isInteger(asset.bytes) && asset.bytes >= 0)) &&
       new Set(assets.map((asset) => asset.path)).size === assets.length;
   } catch { return false; }
 }

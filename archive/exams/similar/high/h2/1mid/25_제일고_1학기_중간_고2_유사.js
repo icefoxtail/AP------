@@ -445,7 +445,7 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 삼각함수의 주기성과 그래프의 선대칭성을 이용하여 교점의 좌표 합을 계산한다.\\n조건 정리: 함수 $y = \\cos\\frac{k}{3}x$의 주기 $T$를 구하고, 직선 $y=a$와 $y=-a$의 대칭성을 파악한다.\\n풀이 방향: 한 주기 내에서 발생하는 네 교점의 대칭축을 찾아 합을 $k$에 관한 식으로 나타낸다.\\n정석 풀이: \\n1단계: $y = \\cos(\\frac{k}{3}x)$의 주기는 $T = \\frac{2\\pi}{\\frac{k}{3}} = \\frac{6\\pi}{k}$이다.\\n2단계: 코사인 그래프는 각 주기 내에서 $x = \\frac{T}{2}$ (즉, $\\frac{3\\pi}{k}$)에 대하여 선대칭이다.\\n3단계: $y=a$와 만나는 두 점 $\\alpha, \\beta$는 한 주기 내에서 대칭축 $x=\\frac{T}{2}$가 아닌 $x=0$과 $x=T$를 기준으로 대칭적 위치에 있으나, 한 주기 내에서 $\\alpha+\\beta=T$가 성립함이 코사인 기본 성질에서 유도된다. (예: $\\cos\\theta=a$의 해가 $\\theta_1, 2\\pi-\\theta_1$인 것과 동일)\\n4단계: $y=-a$와 만나는 두 점 $\\gamma, \\delta$ 역시 같은 원리에 의해 한 주기 내에서 $\\gamma+\\delta=T$가 성립한다.\\n5단계: 따라서 네 근의 합은 $\\alpha+\\beta+\\gamma+\\delta = T + T = 2T = \\frac{12\\pi}{k}$이다.\\n핵심 확인: $\\tan(\\frac{12\\pi}{k}) = 1$이므로 $\\frac{12\\pi}{k} = n\\pi + \\frac{\\pi}{4}$ (단, $n$은 정수)이다.\\n결론: 양수 $k$가 최댓값을 가지려면 우변의 값이 최소 양수여야 하므로 $n=0$일 때 $\\frac{12\\pi}{k} = \\frac{\\pi}{4}$에서 $k=48$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 코사인 그래프의 주기와 대칭성을 이용해 네 교점의 $x$좌표의 합을 구한다.\\n조건 정리: $y=\\cos\\frac{k}{3}x$의 주기는 $T=\\frac{2\\pi}{k/3}=\\frac{6\\pi}{k}$이다.\\n풀이 방향: $\\cos\\frac{k}{3}x=a$와 $\\cos\\frac{k}{3}x=-a$의 해를 $\\theta=\\arccos a\\ (0<\\theta<\\frac{\\pi}{2})$로 나타내어 크기순으로 나열한다.\\n정석 풀이: \\n1단계: $\\frac{k}{3}x=2n\\pi\\pm\\theta$에서 $y=a$와의 교점은 $\\frac{3}{k}\\theta,\\ \\frac{3}{k}(2\\pi-\\theta),\\ \\cdots$이고, $\\frac{k}{3}x=2n\\pi+\\pi\\pm\\theta$에서 $y=-a$와의 교점은 $\\frac{3}{k}(\\pi-\\theta),\\ \\frac{3}{k}(\\pi+\\theta),\\ \\cdots$이다.\\n2단계: 작은 순서대로 나열하면 $\\alpha=\\frac{3}{k}\\theta,\\ \\beta=\\frac{3}{k}(\\pi-\\theta),\\ \\gamma=\\frac{3}{k}(\\pi+\\theta),\\ \\delta=\\frac{3}{k}(2\\pi-\\theta)$이다.\\n3단계: 따라서 $\\alpha+\\beta+\\gamma+\\delta=\\frac{3}{k}\\cdot 4\\pi=\\frac{12\\pi}{k}$이다.\\n4단계: $\\tan\\frac{12\\pi}{k}=1$이므로 $\\frac{12\\pi}{k}=n\\pi+\\frac{\\pi}{4}$에서 $k=\\frac{48}{4n+1}$ ($n=0,1,2,\\cdots$)이다.\\n5단계: $k$가 최대가 되려면 $n=0$일 때이므로 $k=48$이다.\\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -475,7 +475,7 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원주각과 중심각의 성질을 이용하여 각 호에 대응하는 중심각을 구하고, 코사인법칙을 통해 변의 길이를 반지름 $R$에 관한 식으로 나타낸다.\\n조건 정리: 반원의 반지름을 $R$이라 하자. $\\angle BAC = \\pi/4$는 호 $BC$에 대한 원주각이므로, 호 $BC$에 대한 중심각 $\\angle BOC = \\pi/2$이다.\\n풀이 방향: 호의 길이 비를 이용해 점 $D, E$의 위치를 각도로 특정하고, 코사인법칙으로 $CD^2, CE^2, BC^2$을 각각 $R$로 표현한다.\\n정석 풀이: \\n1단계: 중심각 $\\angle BOC = 90^\\circ$이다. 호 $CD$는 호 $BC$의 $\\frac{1}{3}$이므로 중심각 $\\angle COD = 90^\\circ \\times (\\frac{1}{3}) = 30^\\circ$이다.\\n2단계: 점 $E$는 호 $CD$를 이등분하므로 중심각 $\\angle COE = 30^\\circ \\times (\\frac{1}{2}) = 15^\\circ$이다.\\n3단계: 코사인법칙에 의해 $CD^2 = R^2 + R^2 - 2R^2\\cos 30^\\circ = 2R^2(1 - \\frac{\\sqrt{3}}{2}) = R^2(2 - \\sqrt{3})$이다.\\n4단계: 같은 방법으로 $CE^2 = R^2 + R^2 - 2R^2\\cos 15^\\circ = 2R^2(1 - \\cos 15^\\circ)$이다. $\\cos 15^\\circ = \\frac{\\sqrt{6}+\\sqrt{2}}{4}$임을 이용하면 $CE^2 = R^2(2 - \\frac{\\sqrt{6}+\\sqrt{2}}{2})$이다.\\n5단계: 주어진 조건 $CD^2 - CE^2 = 8\\sqrt{3}-8$을 풀면 $R^2 = 8$이 도출된다.\\n6단계: $BC^2 = R^2 + R^2 - 2R^2\\cos 90^\\circ = 2R^2$이므로 $BC^2 = 2 \\times 8 = 16$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 원주각과 중심각의 관계로 각 호의 중심각을 구한 뒤 코사인법칙을 적용한다.\\n조건 정리: 반지름을 $R$이라 하면 $\\angle BAC=\\frac{\\pi}{4}$는 호 $BC$에 대한 원주각이므로 중심각 $\\angle BOC=\\frac{\\pi}{2}$이다. 호 $BC$의 삼등분점 중 $B$에 가장 가까운 점이 $D$이므로 $\\angle BOD=\\frac{\\pi}{6}$, $\\angle COD=\\frac{\\pi}{3}$이다. 또 $E$가 호 $CD$를 이등분하므로 $\\angle COE=\\frac{\\pi}{6}$이다.\\n풀이 방향: $\\triangle OCD$와 $\\triangle OCE$에 코사인법칙을 적용하여 $CD^2$, $CE^2$을 각각 $R^2$으로 나타낸다.\\n정석 풀이: \\n1단계: $CD^2=R^2+R^2-2R^2\\cos\\frac{\\pi}{3}=2R^2(1-\\frac{1}{2})=R^2$이다.\\n2단계: $CE^2=R^2+R^2-2R^2\\cos\\frac{\\pi}{6}=2R^2(1-\\frac{\\sqrt{3}}{2})=R^2(2-\\sqrt{3})$이다.\\n3단계: $CD^2=CE^2+8\\sqrt{3}-8$에서 $R^2=R^2(2-\\sqrt{3})+8(\\sqrt{3}-1)$이므로 $R^2(\\sqrt{3}-1)=8(\\sqrt{3}-1)$, 즉 $R^2=8$이다.\\n4단계: $BC^2=2R^2(1-\\cos\\frac{\\pi}{2})=2R^2=16$이다.\\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -494,16 +494,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "$1$이 아닌 세 양수 $a, b, c$가 이 순서대로 등차수열을 이룰 때, 보기에서 항상 옳은 것만을 모두 고른 것은?<br><br>가) $2^a, 2^b, 2^c$는 이 순서대로 등비수열을 이룬다.<br>나) $\\log_2 a, \\log_2 b, \\log_2 c$는 이 순서대로 등차수열을 이룬다.<br>다) 세 양수 $x, y, z$에 대하여 $\\log_x a = \\log_y b = \\log_z c = 2$ 이면 $x, y, z$는 이 순서대로 등차수열을 이룬다.",
-    "choices": [
-      "② ㄴ",
-      "③ ㄱ, ㄷ",
-      "④ ㄴ, ㄷ",
-      "① ㄱ",
-      "⑤ ㄱ, ㄴ, ㄷ"
-    ],
-    "answer": "④",
-    "solution": "[키포인트] 등차중항의 성질 $2b = a+c$를 지수와 로그의 연산 법칙에 대입하여 성립 여부를 판단한다.\\n조건 정리: $a, b, c$가 등차수열이므로 $b = \\frac{a+c}{2}$이다.\\n풀이 방향: 각 보기의 수열이 등차 또는 등비수열의 정의(중항 성질)를 만족하는지 확인한다.\\n정석 풀이: \\nㄱ. $(2^b)^2 = 2^{2b}$이고 $2^a \\times 2^c = 2^{a+c}$이다. $2b = a+c$이므로 $2^{2b} = 2^{a+c}$가 성립하여 등비수열이다. (참)\\nㄴ. 등차수열이려면 $2\\log_2 b = \\log_2 a + \\log_2 c$여야 하므로 $b^2 = ac$가 성립해야 한다. 그러나 등차수열에서 산술-기하 평균 관계에 의해 $b^2 \\ge ac$이며, $a, b, c$가 모두 같지 않은 이상 성립하지 않는다. (거짓)\\nㄷ. $\\sqrt{x}=a, \\sqrt{y}=b, \\sqrt{z}=c$이므로 $x=a^2, y=b^2, z=c^2$이다. 등차수열이려면 $2b^2 = a^2+c^2$이어야 하는데, 이는 일반적인 등차수열 조건 $2b=a+c$와 일치하지 않는다. (거짓)\\n따라서 정답은 ④이다.",
+    "content": "$1$이 아닌 세 양수 $a, b, c$가 이 순서대로 등차수열을 이룰 때, 보기에서 항상 옳은 것만을 모두 고른 것은?<br><br>ㄱ. $2^a, 2^b, 2^c$는 이 순서대로 등비수열을 이룬다.<br>ㄴ. $\\log_2 a, \\log_2 b, \\log_2 c$는 이 순서대로 등차수열을 이룬다.<br>ㄷ. 세 양수 $x, y, z$에 대하여 $\\log_x a = \\log_y b = \\log_z c = 2$ 이면 $x, y, z$는 이 순서대로 등차수열을 이룬다.",
+    "choices": ["① ㄱ","② ㄴ","③ ㄱ, ㄷ","④ ㄴ, ㄷ","⑤ ㄱ, ㄴ, ㄷ"],
+    "answer": "①",
+    "solution": "[키포인트] 등차중항의 성질 $2b=a+c$를 지수와 로그의 연산 법칙에 대입하여 성립 여부를 판단한다.\n조건 정리: $a, b, c$가 이 순서대로 등차수열이므로 $2b=a+c$이다.\n풀이 방향: 각 보기의 수열이 등차수열 또는 등비수열의 중항 성질을 만족하는지 확인한다.\n정석 풀이:\nㄱ. $(2^b)^2=2^{2b}$이고 $2^a\\times2^c=2^{a+c}$이다. $2b=a+c$이므로 $(2^b)^2=2^a\\times2^c$가 성립하여 $2^a, 2^b, 2^c$는 이 순서대로 등비수열이다. (참)\nㄴ. 등차수열이려면 $2\\log_2 b=\\log_2 a+\\log_2 c$, 즉 $b^2=ac$여야 한다. 그런데 $2b=a+c$에서 $a\\ne c$이면 $b^2-ac=\\frac{(a-c)^2}{4}>0$이므로 $b^2\\ne ac$이다. 따라서 항상 성립하지 않는다. (거짓)\nㄷ. $\\log_x a=2$에서 $x^2=a$, 즉 $x=\\sqrt{a}$이고 마찬가지로 $y=\\sqrt{b}$, $z=\\sqrt{c}$이다. $x, y, z$가 등차수열이려면 $2\\sqrt{b}=\\sqrt{a}+\\sqrt{c}$여야 하는데, 제곱하여 정리하면 $a=c$일 때만 성립한다. 따라서 항상 성립하지 않는다. (거짓)\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",

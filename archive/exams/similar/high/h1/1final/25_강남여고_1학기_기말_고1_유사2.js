@@ -23,7 +23,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "첫 곱을 전개하면 $xa,xb,xc,ya,yb,yc,za,zb,zc$의 9항이다. 여기서 $(x+y)(a+b)=xa+xb+ya+yb$의 4항을 빼면 $xc+yc+za+zb+zc$가 남는다. 서로 다른 항은 5개이므로 정답은 ②이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "540"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "전체 학생은 $2+3+4=9$명이므로 세 직책의 순서 있는 선출은 $9\\times8\\times7=504$가지다. 3학년 4명만 쓰면 $4\\times3\\times2=24$가지이므로 $a-b=504-24=480$이다. 정답은 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$n\\ge4$이고 $n(n-1)(n-2)=4\\cdot\\dfrac{n(n-1)(n-2)(n-3)}{24}$이다. 공통인 양의 인수를 약분하면 $1=(n-3)/6$, 따라서 $n=9$이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "첫 부등식에서 $x>-(a+1)/2$, 둘째에서 $x\\le2$이다. 정수해가 정확히 3개이려면 해가 $0,1,2$이므로 $-1\\le-(a+1)/2<0$이다. 이를 정리하면 $-1<a\\le1$이므로 정수 $a=0,1$의 합은 1이다. 정답은 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$y=(x-a)^2+2a^2-8a+15$이므로 $x=a$에서의 최솟값은 $m=2(a-2)^2+7$이다. 실수 $a$에 대해 $m\\ge7$이고 $a=2$에서 등호가 성립한다. 따라서 답은 7, 즉 ②이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "28"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "$|x-a|<2x-4$는 $x>2$에서 $4-x<a<3x-4$와 같다. 정수해의 최솟값이 5이려면 $x=5$는 가능하고 $x=4$는 불가능해야 한다. $x=5$에서 $-1<a<11$, $x=4$에서 $0<a<8$이므로 가능한 정수 $a$는 $0,8,9,10$이다. 합은 27로 ④이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
+    "solution": "$X+Y=A$, $X-2Y=B$에서 둘째 식에 첫째 식의 두 배를 더하면 $3X=2A+B$이다. $A$의 성분 합은 12, $B$의 성분 합은 6이므로 $X$의 성분 합은 $(2\\cdot12+6)/3=10$이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "주어진 조건에 의해 $f(u)\\le0$의 해는 $-2\\le u\\le4$이다. $u=(x-1)/2$로 두면 $-2\\le(x-1)/2\\le4$, 즉 $-3\\le x\\le9$이다. 정수 최솟값과 최댓값의 합은 $-3+9=6$이므로 ③이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "꼭짓점의 $x$좌표가 3이고 두 근의 차가 4이므로 두 근은 1과 5이다. 따라서 $f(x)=a(x-1)(x-5)$이다. $f(3)=-4a=-4$에서 $a=1$이므로 $f(0)=(-1)(-5)=5$이다. 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$x^2+y^2-4x=0$은 $(x-2)^2+y^2=4$이므로 중심 $(2,0)$, 반지름 2인 원이다. 직선 $2x+y=k$와 서로 다른 두 점에서 만나려면 중심에서 직선까지의 거리가 반지름보다 작아야 한다. 즉 $|k-4|/\\sqrt5<2$이다. 정수 $k$의 최댓값은 8로 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "93"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "A에서 B,C를 모두 거치는 경로는 $A\\to B\\to C\\to D$의 $3\\cdot x\\cdot4$가지와 $A\\to C\\to B\\to D$의 $2\\cdot x\\cdot3$가지다. 따라서 $18x=72$로 $x=4$이다. 두 지점을 모두 거치지 않는 경로 $A\\to B\\to D$는 9가지, $A\\to C\\to D$는 8가지이다. 전체는 $72+9+8=89$가지이므로 ③이다.",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ⑤이다.",
+    "solution": "$i,j\\in\\{1,2\\}$에서 $A$의 성분 합은 $2(1^2+2^2)+2(1+2)k=10+6k$이다. $B=kA^T$이므로 그 성분 합은 $k(10+6k)$이다. 따라서 $(1+k)(10+6k)=112$, 즉 $3k^2+8k-51=0=(3k-9)(k+17/3)$이다. 양수해는 $k=3$이므로 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$y=(x-1)^2-1$은 $x=1$에서 최소다. 구간 $[a,a+2]$가 꼭짓점의 한쪽에 있으면 최대·최솟값의 합은 $f(a)+f(a+2)=2a^2$이므로 $a=\\pm2$가 나온다. 두 값은 각각 구간이 꼭짓점 한쪽에 있어 유효하다. 꼭짓점이 구간 안에 있는 $-1\\le a\\le1$에서는 두 극값의 합이 8에 못 미친다. 따라서 모든 $a$의 곱은 $(-2)\\cdot2=-4$로 ②이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -387,7 +387,7 @@ window.questionBank = [
       "26"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "$s=x+y$, $p=xy$라 두면 $s^2-2p=10$이므로 $p=(s^2-10)/2$이다. 또 $s-p=5$이므로 $2s-s^2+10=10$, 즉 $s=0$ 또는 $s=2$다. $x^3+y^3=s^3-3ps$는 각각 0, 26이고 두 경우 모두 실수 $x,y$가 존재한다. 따라서 최댓값은 26으로 ⑤이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "system of equations",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -415,7 +415,7 @@ window.questionBank = [
       "336"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "첫째·셋째 자리 숫자의 합이 짝수이려면 두 숫자의 홀짝이 같아야 하고 둘째·넷째 자리도 같다. 네 자리 모두 홀수 또는 모두 짝수인 경우는 각각 $4!=24$가지다. 두 자리쌍의 홀짝이 서로 다른 경우는 $4P_2\\cdot4P_2=12\\cdot12=144$가지씩 두 경우다. 합은 $24+24+144+144=336$으로 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -443,7 +443,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ①이다.",
+    "solution": "$A^2=A-E$에서 $A^3=A^2-A=-E$이므로 $A^6=E$이다. $X-Y$에는 짝수 거듭제곱이 소거되어 $A+A^3+\\cdots+A^{19}$만 남는다. 세 항씩 묶으면 $A+A^3+A^5=A-E+(E-A)=O$이고 열 항 중 마지막은 $A^{19}=A$이다. 따라서 $X-Y=A$, $p=1,q=0$이고 $p^2+q^2=1$로 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -471,7 +471,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$k>0$일 때 $|x-k|+|x-3k|\\le8$의 해가 있으려면 $2k\\le8$이다. 이때 해는 $2k-4\\le x\\le2k+4$이다. 최고차항 계수가 1인 $f(x)$의 두 근이 이 양끝이므로 근의 곱은 $(2k-4)(2k+4)=4k^2-16=-12$다. $k>0$에서 $k=1$이므로 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -499,7 +499,7 @@ window.questionBank = [
       "-3"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "$f(x)=x^2-6x$의 같은 함수값을 갖는 두 $x$좌표의 합은 6이다. $x_A=1$이므로 $x_C=5$이고, $x_B=t$이면 $x_D=6-t$이다. 두 삼각형은 A,B에서 같은 높이 차를 가지므로 넓이비 $ABD:ABC=|2t-6|:4=1:2$이다. 따라서 $t=2$ 또는 4. A,B를 잇는 직선의 기울기는 $(f(t)-f(1))/(t-1)=t-5$, 절편은 $-t$이므로 두 경우 모두 $m+n=-5$로 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -527,7 +527,7 @@ window.questionBank = [
       "17"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "첫 부등식 $|x-3|\\le7$의 해는 $-4\\le x\\le10$이다. 둘째 부등식은 $(x-a)(x-2a)<0$으로, $a$와 $2a$ 사이의 정수만 허용한다. 이 범위를 교집합으로 직접 세면 정확히 네 정수가 남는 정수 $a$는 5, 6뿐이다(각각 $6,7,8,9$ 및 $7,8,9,10$). 합은 11이므로 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -555,7 +555,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "포물선을 $f(x)=-x^2+cx$라 하면 직선 $y=2x$와의 양의 교점은 $x_A=c-2=\\alpha$이다. $0<t<\\alpha$에서 $PQ=f(t)-2t=t(\\alpha-t)$이며 최댓값 $\\alpha^2/4=4$이므로 $\\alpha=4$이다. $A=(4,8)$이고 삼각형 OAP의 넓이는 행렬식으로 $2t(4-t)$가 되어 $t=2$에서 최대 8이다. 정답은 ④이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -579,7 +579,7 @@ window.questionBank = [
     "content": "최고차항의 계수가 1인 삼차다항식 $P(x)$가 $P(1)=2$, $P(2)=4$, $P(3)=6$을 만족시킬 때, 방정식 $P(x)=0$의 세 근의 곱을 구하시오.",
     "choices": [],
     "answer": "6",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 6이다.",
+    "solution": "$Q(x)=P(x)-2x$라 두면 $Q(1)=Q(2)=Q(3)=0$이고 최고차항 계수가 1이다. 따라서 $Q(x)=(x-1)(x-2)(x-3)$이고 $P(x)=(x-1)(x-2)(x-3)+2x$다. 상수항은 $P(0)=-6$이므로 최고차항 계수가 1인 삼차방정식의 세 근의 곱은 $-P(0)=6$이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -603,7 +603,7 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2 - (k-2)x - 2k < 0 \\\\ x^2 - 4x - 12 \\ge 0 \\end{cases}$ 를 만족시키는 정수 $x$의 개수가 3개가 되도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "3",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 3이다.",
+    "solution": "첫 부등식은 $(x-k)(x+2)<0$, 둘째는 $(x-6)(x+2)\\ge0$, 즉 $x\\le-2$ 또는 $x\\ge6$이다. $k<-2$이면 허용 정수가 $k<x<-2$에 있으므로 세 개를 얻는 값은 $k=-6$이다. $k>6$이면 $6\\le x<k$의 정수가 세 개일 때 $k=9$이다. 다른 $k$에는 세 개가 없으므로 합은 $-6+9=3$이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -627,7 +627,7 @@ window.questionBank = [
     "content": "어느 디저트 가게에서 빵 4종류, 음료 3종류, 샐러드 3종류를 판매한다. 이 10종류의 메뉴 중에서 빵 2종류, 음료 1종류, 샐러드 1종류를 선택하여 세트 메뉴를 구성하는 방법의 수를 $p$라 하자. 10종류의 메뉴 중 5종류를 선택할 때, 빵, 음료, 샐러드가 각각 적어도 1종류 이상 포함되도록 선택하는 방법의 수를 $q$라 할 때, $p+q$의 값을 구하시오. (단, 같은 종류의 메뉴는 중복해서 선택하지 않는다.)",
     "choices": [],
     "answer": "258",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 258이다.",
+    "solution": "빵 2종·음료 1종·샐러드 1종을 고르는 수는 $p=\\binom42\\binom31\\binom31=54$다. 10종 중 5종은 $\\binom{10}{5}=252$가지이고, 세 분류 중 하나가 빠진 경우는 빵 없이 $\\binom65=6$, 음료 없이 $\\binom75=21$, 샐러드 없이 $\\binom75=21$가지다. 두 분류가 동시에 빠진 5종 선택은 불가능하다. 따라서 $q=252-6-21-21=204$이고 $p+q=258$이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -651,7 +651,7 @@ window.questionBank = [
     "content": "이차정사각행렬 $A$가 $A^2 - A + E = O$를 만족시킨다. $A \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$일 때, $(A^{10} + A^5 + E) \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$이다. $x+y$의 값을 구하시오. (단, $E$는 단위행렬, $O$는 영행렬이다.)",
     "choices": [],
     "answer": "4",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 4이다.",
+    "solution": "$A^2=A-E$이므로 $A^3=-E$, $A^6=E$이다. 따라서 $A^{10}=A^4=-A$, $A^5=E-A$이고 $A^{10}+A^5+E=2(E-A)$이다. $v=(2,1)^T$, $Av=(4,-3)^T$를 대입하면 $2(v-Av)=2(-2,4)^T=(-4,8)^T$이다. 따라서 $x+y=4$이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
