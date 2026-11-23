@@ -194,9 +194,10 @@ assert(
 
 const cardRenderer = studentPortal.match(/function renderOmrExamCard\(exam\) \{[\s\S]*?\n    \}/);
 const submissionStatus = studentPortal.match(/function getStudentPortalRecordedSubmission\(exam\) \{[\s\S]*?\n    \}/);
-assert(cardRenderer && submissionStatus, 'exam card and recorded submission helpers should exist');
+const examTitleHelper = studentPortal.match(/function studentExamTitle\(exam, fallback\) \{[\s\S]*?\n    \}/);
+assert(cardRenderer && submissionStatus && examTitleHelper, 'exam card, exam title and recorded submission helpers should exist');
 Object.assign(actionContext, { window: {}, isStudentPortalSelfStudy: () => false, isTeacherPreview: false, isLegacyMixedOmrReview: () => false, renderSimilarEntry: () => '', renderSelfStudyActions: () => '' });
-vm.runInContext(submissionStatus[0] + '\n' + cardRenderer[0], actionContext);
+vm.runInContext(examTitleHelper[0] + '\n' + submissionStatus[0] + '\n' + cardRenderer[0], actionContext);
 for (const isSubmitted of [0, 1]) {
   const card = actionContext.renderOmrExamCard({ assignment_id: 'issued-exam', is_submitted: isSubmitted, pdf_ready: true });
   for (const label of ['시험지 보기', '정답 보기', '해설 보기', 'PDF 다운로드']) {
