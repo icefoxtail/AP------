@@ -146,7 +146,9 @@
         box.style.transformOrigin = 'top left';
     }
     async function ready(area) {
-        await area.ownerDocument.fonts?.ready;
+        // 글꼴 대기는 끝없이 두지 않는다(시간 예산, 초과는 알림으로 남기고 계속). APRenderLoop가 없는 화면은 예전처럼 기다린다.
+        if (root.APRenderLoop?.fontsReady) await root.APRenderLoop.fontsReady(area.ownerDocument);
+        else await area.ownerDocument.fonts?.ready;
         const images = list(area, 'img');
         if (root.APQuestionImageReadiness) {
             // 안 받아진 그림 한 장은 render-diagnostics의 빈 상자로 바꾸고 계속한다(진단 파일이 없는 화면은 예전처럼 던진다).

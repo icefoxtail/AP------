@@ -448,6 +448,7 @@
             const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(q, i, 'box') : '';
             box.innerHTML = `${sectionHtml}<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             deps.normalizeQuestionImageSources(box);
+            root?.APRenderDiagnostics?.noteHtml?.(box, [q.content, q.solution]); // 태그 짝이 안 맞으면 알림 띠에만 알린다(그림은 그대로)
             staging.appendChild(box);
             return box;
         });

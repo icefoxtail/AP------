@@ -78,12 +78,12 @@
                 ctx.readinessTracker.begin({ transactionId: ctx.transactionId });
                 ctx.typeset = async (label, nodes) => { check(ctx); const result = await root.APRenderLoop.typeset(label, nodes, ctx.metrics); check(ctx); return result; };
                 ctx.raf = async () => { check(ctx); ctx.metrics.rafCount += 1; ctx.metrics.layoutBarrierCount += 1; await new Promise(resolve => { let done = false; const finish = () => { if (!done) { done = true; resolve(); } }; requestAnimationFrame(finish); setTimeout(finish, 32); }); check(ctx); };
-                await document.fonts?.ready;
+                await (root.APRenderLoop?.fontsReady ? root.APRenderLoop.fontsReady(document) : document.fonts?.ready); // 시간 예산(초과는 알림으로 남기고 계속)
                 check(ctx);
                 ctx.binding = policy.createBuild(ctx);
                 await ctx.binding.build();
                 check(ctx);
-                await document.fonts?.ready;
+                await (root.APRenderLoop?.fontsReady ? root.APRenderLoop.fontsReady(document) : document.fonts?.ready); // 시간 예산(초과는 알림으로 남기고 계속)
                 const images = await ctx.binding.waitImages(ctx.targetArea);
                 ctx.readinessTracker.mark('IMAGE_READY', images);
                 ctx.readinessTracker.mark('LAYOUT_READY', { pages: ctx.targetArea.querySelectorAll('.page').length });

@@ -203,6 +203,7 @@
                              ${imageHTML}
                              ${choicesHTML}`;
             deps.normalizeQuestionImageSources(box);
+            root.APRenderDiagnostics?.noteHtml?.(box, [q.content, q.choices]); // 태그 짝이 안 맞으면 알림 띠에만 알린다(그림은 그대로)
             staging.appendChild(box);
             return { q, box, originalIndex: i };
         });
