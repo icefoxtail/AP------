@@ -21,7 +21,7 @@
     const kept = [];
     for (let i = 0; i < tokens.length; i += 1) {
       const token = tokens[i];
-      if (MARKER_TOKENS.has(token)) continue;
+      if (MARKER_TOKENS.has(token.toLowerCase())) continue; // 대소문자 변형("기출C", "C")도 같은 표시
       kept.push(token);
     }
     return kept.join(' ');
@@ -38,5 +38,37 @@
     return subject ? `${base} · ${subject}` : base;
   }
 
-  return { readableExamTitle, PATTERN };
+  // ---- 과목 칸 표시 (2026-11-23, 원장님 지시: "기출c"도 "기출"로) ----
+  // 파일 이름 끝의 "c"(content, 초반에 '정리 끝난 시험지'를 뜻하던 표시)는 지금은 의미가 없어 화면에 나오지 않게 한다.
+  // 카탈로그 subject 값(예: "기출c", "기출_c", "c", "대수c")은 파일 이름에서 온 값이라 그대로 두고, 보이는 글자만 바꾼다.
+  // "기출c"·"기출C"·"기출_c"·"기출_content"는 모두 "기출"과 같게 취급한다. 파일 이름·식별자·검색 색인 값은 건드리지 않는다.
+  /** 글 속의 content 표시("c")를 걷어 낸다: 기출c·기출_c → 기출, 단독 c 조각 제거, 대수c → 대수. */
+  function withoutContentMark(raw) {
+    return String(raw == null ? '' : raw)
+      .replace(/기출[\s_]*(?:c|content)(?![A-Za-z0-9])/gi, '기출')
+      .replace(/(^|[\s_])(?:c|content)(?=$|[\s_])/gi, '$1')
+      .replace(/([가-힣])[cC](?![A-Za-z0-9])/g, '$1')
+      .replace(/[\s_]+/g, ' ')
+      .trim();
+  }
+
+  /** 과목 칸에 보이는 글자. "기출"뿐인 값(기출c·기출_c·c 포함)은 과목이 아니므로 opts.fallback(예: 표준 과목)이 있으면 그것, 없으면 "기출". */
+  function displaySubjectOf(raw, opts) {
+    const options = opts || {};
+    const fallback = String(options.fallback == null ? '' : options.fallback).trim();
+    const raw0 = String(raw == null ? '' : raw).trim();
+    if (!raw0) return fallback;
+    const text = withoutContentMark(raw0);
+    if (!text || text === '기출') return fallback || '기출';
+    return text;
+  }
+
+  /** 시험(카탈로그 레코드 모양) 하나의 과목 칸: subject를 정리하고, 과목이 아닌 값이면 표준 과목으로 대신한다. */
+  function displaySubjectOfExam(exam) {
+    const row = exam || {};
+    const course = String(row.primaryStandardCourse || (row.courseRanges && row.courseRanges[0] && row.courseRanges[0].standardCourse) || '').trim();
+    return displaySubjectOf(row.subject, { fallback: course });
+  }
+
+  return { readableExamTitle, withoutContentMark, displaySubjectOf, displaySubjectOfExam, PATTERN };
 });

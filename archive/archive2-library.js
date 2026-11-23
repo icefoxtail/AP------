@@ -76,7 +76,7 @@
   }
   const paperMetaLabel = (paper) => [
     paper.grade,
-    paper.subject,
+    globalThis.ExamDisplayTitle?.displaySubjectOf?.(paper.subject) ?? paper.subject,
     `${Number(paper.question_count)}문항`,
     `${dateLabel(paper.created_at)} 저장`,
   ].filter(Boolean).join(" · ");
@@ -270,7 +270,7 @@
           : `<button type="button" data-library-action="library-status" data-paper-id="${id}" data-status="ACTIVE">복원</button>`;
     const trashed = status === "TRASHED";
     const parts = Number(paper.part_count) > 1 ? `${Number(paper.part_count)}권 중 ${Number(paper.part_index) + 1}권` : "";
-    const meta = [paper.subject, dayLabel(paper.created_at) ? `${dayLabel(paper.created_at)} 저장` : "", parts]
+    const meta = [globalThis.ExamDisplayTitle?.displaySubjectOf?.(paper.subject) ?? paper.subject, dayLabel(paper.created_at) ? `${dayLabel(paper.created_at)} 저장` : "", parts]
       .filter(Boolean).map((value) => `<span>${esc(value)}</span>`).join('<span aria-hidden="true">·</span>');
     const stateBadge = status === "ARCHIVED" ? '<span class="badge">보관</span>' : trashed ? '<span class="badge">휴지통</span>' : "";
     const count = Number.isFinite(Number(paper.question_count)) ? String(Number(paper.question_count)) : "–";
