@@ -208,6 +208,21 @@ test("본문과 헤더가 옛 구현(entry.js + index.html 원본 분기)이 보
   assert.deepEqual(call.body.original_payload_json.questions, QUESTIONS);
 });
 
+test("쪽당 문항 2를 고르면 출제 요청의 pdf_qpp와 meta.qpp에 2가 실린다 (풀이 자리가 넓은 배치)", async () => {
+  const item = examItem();
+  const { model, api } = await build({ items: [item], storage: memoryStorage() });
+  assert.equal(model.state.qpp, 4, "기본값은 그대로 4");
+  assert.equal(model.setQpp(2), true);
+  assert.equal(model.state.qpp, 2);
+  assert.match(Assign.render(model).body, /assign-qpp-line is-changed">한 쪽 2문항</);
+  await pick(model, "c1");
+  await model.start();
+  const [call] = api.posts();
+  assert.equal(call.body.pdf_qpp, 2);
+  assert.equal(call.body.original_payload_json.meta.qpp, 2);
+  assert.equal(model.setQpp(3), false, "지원하지 않는 값은 거절");
+});
+
 test("옛 구현과 대조: 쪽당 문항 6, 반 여러 개(target_scope grade)도 같은 값이다", async () => {
   const item = examItem();
   const storage = memoryStorage();
@@ -744,13 +759,13 @@ test("패널 화면: 제목은 '반에 출제', 주 버튼은 '출제하기', �
   assert.match(parts.head, /<h2 id="assign-title"[^>]*>반에 출제<\/h2>/);
   assert.match(parts.head, /2025 왕운중 중1 1학기 중간고사 · 3문항/);
   assert.match(parts.foot, />출제하기<\/button>/);
-  // 쪽당 문항 수: 늘 4로 시작하고 한 줄만 보이며 `바꾸기`를 눌러야 4·6·8이 펼쳐진다
+  // 쪽당 문항 수: 늘 4로 시작하고 한 줄만 보이며 `바꾸기`를 눌러야 2·4·6·8이 펼쳐진다
   assert.match(parts.body, /<span class="assign-qpp-line">한 쪽 4문항<\/span><button[^>]*data-assign-action="qpp-toggle"[^>]*aria-expanded="false">바꾸기<\/button>/);
   assert.doesNotMatch(parts.body, /data-assign-action="qpp-set"/);
   model.toggleQpp();
   const opened = Assign.render(model).body;
   assert.match(opened, /aria-expanded="true">접기<\/button>/);
-  for (const n of [4, 6, 8]) assert.match(opened, new RegExp(`data-assign-action="qpp-set" data-qpp="${n}"[^>]*aria-pressed="${n === 4}"`));
+  for (const n of [2, 4, 6, 8]) assert.match(opened, new RegExp(`data-assign-action="qpp-set" data-qpp="${n}"[^>]*aria-pressed="${n === 4}"`));
   model.setQpp(6);
   assert.match(Assign.render(model).body, /assign-qpp-line is-changed">한 쪽 6문항</);
   model.setQpp(4);

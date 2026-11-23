@@ -8,6 +8,9 @@
  *    표식은 DOM에 들어간 채 쪽 나누기·측정·준비 스냅숏을 지나므로 인쇄도 같은 모양이다(준비 뒤에 DOM을 다시 쓰지 않는다).
  *  - publish(root): 렌더가 확정(commit)될 때 window.apRenderDiagnostics = [{file, questionNo, part, code, excerpt}]를 만들고
  *    교사용 조작줄이 있는 화면에는 알림 띠(#ap-render-notice, 인쇄 제외)를 그린다.
+ *  - replaceImage(image, result): 그림 하나가 안 받아질 때(404·디코드 오류·시간 초과) 그 <img>를 같은 자리의 "그림을 불러오지 못했습니다" 빈 상자로 바꾼다
+ *    (2026-11-23). APQuestionImageReadiness.waitForImages의 onFailure와 engine/mixed_engine의 waitForQuestionImage가 부른다. 상자는 `.q-image-wrap` 안에 들어가
+ *    칸·문항 번호를 그대로 두고, 인쇄물에도 찍히며, 진단 배열·알림 띠에 수식 오류와 같은 객체·같은 띠로 합쳐진다. <img>가 사라지므로 뒤따르는 이미지 검사는 그 자리를 보지 않는다.
  *  - MathJax가 없거나 조판이 예외로 끝난 경우(진짜 전체 실패)는 여기서 다루지 않는다. data-ap-render-error는 그때만 남는다.
  */
 (function attachRenderDiagnostics(root, factory) {
@@ -18,6 +21,9 @@
     'use strict';
 
     const MARK = '[data-ap-math-error]';
+    const IMAGE_MARK = '[data-ap-image-error]';
+    const ALL_MARKS = MARK + ',' + IMAGE_MARK;
+    const IMAGE_MESSAGE = '그림을 불러오지 못했습니다';
     const NOTICE_ID = 'ap-render-notice';
     const STYLE_ID = 'ap-render-diagnostics-style';
     // MathJax가 건너뛰는 자리(코드·스크립트)와 이미 표식인 자리의 글자는 "남은 $" 검사에서 다시 보지 않는다.
@@ -30,6 +36,8 @@
 .ap-math-error__tex{background:none;padding:0;color:inherit;font:400 .9em/1.5 Consolas,'Courier New',monospace}
 .q-box[data-ap-math-error]{outline:2px dashed #c62828;outline-offset:-2px}
 .ap-math-error--flash{outline:3px solid #f59e0b;outline-offset:2px}
+.ap-image-missing{display:inline-block;box-sizing:border-box;min-width:28mm;max-width:100%;min-height:10mm;padding:3mm 2mm;border:1px dashed #c62828;border-radius:3px;background:#fff1f0;color:#8a1c1c;font:700 9pt/1.4 'Pretendard','Noto Sans KR',sans-serif;text-align:center;text-indent:0;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ap-image-missing--figure{display:flex;align-items:center;justify-content:center;width:100%;min-height:28mm;margin:2mm auto}
 .ap-render-notice{position:sticky;top:54px;z-index:900;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:6px 16px;background:#fff4d6;color:#5c3b00;border-bottom:1px solid #e0b252;font:13px/1.5 'Pretendard','Noto Sans KR',sans-serif}
 .ap-render-notice[hidden]{display:none}
 .ap-render-notice__lead{font-weight:700}
@@ -119,6 +127,38 @@
         return count;
     }
 
+    // 그림 주소에서 알아볼 끝부분만 남긴다(도메인·캐시 번호 제거): ".../<폴더>/<파일>".
+    function imageExcerpt(src) {
+        const raw = String(src || '').trim();
+        if (!raw) return '';
+        let path = raw;
+        try { path = decodeURIComponent(new URL(raw, 'http://x/').pathname); } catch (error) { path = raw.split(/[?#]/)[0]; }
+        const parts = path.split('/').filter(Boolean);
+        return clip(parts.slice(-3).join('/') || raw, 80);
+    }
+
+    // 안 받아진 그림 하나를 같은 자리의 빈 상자로 바꾼다. 바꿨으면 true. 예외를 던지지 않는다.
+    function replaceImage(image, result) {
+        try {
+            if (!image?.parentNode) return false;
+            const doc = ownerDocument(image);
+            ensureStyle(doc);
+            const code = result?.status === 'error' ? 'QUESTION_IMAGE_LOAD_FAILED' : 'QUESTION_IMAGE_READINESS_INCOMPLETE';
+            const span = doc.createElement('span');
+            span.className = 'ap-image-missing tex2jax_ignore' + (image.closest?.('.q-image-wrap,.sol-image-wrap') ? ' ap-image-missing--figure' : '');
+            span.setAttribute('data-ap-image-error', code);
+            span.setAttribute('data-ap-image-excerpt', imageExcerpt(image.getAttribute?.('src') || result?.src));
+            span.setAttribute('role', 'img');
+            span.setAttribute('aria-label', IMAGE_MESSAGE);
+            span.textContent = IMAGE_MESSAGE;
+            image.replaceWith(span);
+            return true;
+        } catch (error) {
+            console.warn('[archive-render-diagnostics] replaceImage failed', error);
+            return false;
+        }
+    }
+
     // 표식으로 바뀐 글자를 뺀 본문 글자. mathjax_render_loop.unrenderedMathCount가 쓴다(표식 안의 원문 $는 "남은 $"가 아니다).
     function textWithoutMarks(scope) {
         if (!scope) return '';
@@ -177,28 +217,46 @@
     }
     function questionNoOf(box) {
         if (!box) return null;
+        // 오답 인쇄(apmath/wrong_print_engine.html)는 학생마다 번호를 1부터 다시 매기고, 이어짐 상자에는 번호 칸이 없어 상자에 번호를 직접 적어 둔다.
+        const stamped = Number(box.getAttribute?.('data-ap-diag-no'));
+        if (Number.isFinite(stamped) && stamped > 0) return stamped;
         const label = box.querySelector?.('.q-num')?.textContent || '';
         const shown = /(\d+)/.exec(label);
         if (shown) return Number(shown[1]);
         const ordinal = /#ordinal:(\d+)/.exec(box.getAttribute('data-source-ref') || '');
         return ordinal ? Number(ordinal[1]) : null;
     }
+    function imagePartOf(node) {
+        if (node.closest('.sol-exp,.sol-chunk,.sol-meta,.sol-ans')) return '해설 그림';
+        if (node.closest('.choices,.choice-item,.choice-text')) return '보기 그림';
+        return '문제 그림';
+    }
+    function isImageEntry(entry) {
+        return /^QUESTION_IMAGE_/.test(String(entry?.code || ''));
+    }
     function describe(node) {
         const box = boxOf(node);
+        const isImage = node.hasAttribute('data-ap-image-error');
         const ref = box?.getAttribute('data-source-ref') || node.closest('[data-source-ref]')?.getAttribute('data-source-ref') || '';
         const file = (ref.split('#')[0] || String(root.AppState?.sourceArchiveFile || ''));
-        return {
+        const entry = {
             file,
             questionNo: questionNoOf(box),
-            part: node === box ? '' : partOf(node),
-            code: node.getAttribute('data-ap-math-error') || 'MATH_TYPESET_ERROR',
-            excerpt: node.getAttribute('data-ap-math-excerpt') || ''
+            part: isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
+            code: node.getAttribute('data-ap-math-error') || node.getAttribute('data-ap-image-error') || 'MATH_TYPESET_ERROR',
+            excerpt: node.getAttribute('data-ap-math-excerpt') || node.getAttribute('data-ap-image-excerpt') || ''
         };
+        // 여러 학생·여러 원본 시험이 섞이는 화면(오답 인쇄)만 상자에 적어 둔 학생·원본 문항 번호가 더 붙는다. 없으면 기존 모양 그대로.
+        const student = box?.getAttribute?.('data-ap-diag-student');
+        if (student) entry.student = student;
+        const sourceNo = box?.getAttribute?.('data-ap-diag-src-no');
+        if (sourceNo) entry.sourceNo = /^\d+$/.test(sourceNo) ? Number(sourceNo) : sourceNo;
+        return entry;
     }
     function collect(scope) {
         const area = scope || root.document?.getElementById('print-area');
         if (!area?.querySelectorAll) return [];
-        return Array.from(area.querySelectorAll(MARK)).map(describe);
+        return Array.from(area.querySelectorAll(ALL_MARKS)).map(describe);
     }
 
     function noticeVisible(doc) {
@@ -206,9 +264,17 @@
         if (!bar || doc.body?.classList.contains('screen-fit-mode')) return false;
         try { return root.getComputedStyle(bar).display !== 'none'; } catch (error) { return true; }
     }
+    function shortFile(file) {
+        const name = String(file || '').split('/').pop().replace(/\.js$/i, '');
+        return name.length > 40 ? name.slice(0, 39) + '…' : name;
+    }
     function targetLabel(entry) {
+        if (isImageEntry(entry)) return (entry.questionNo == null ? '문항 번호를 알 수 없는 곳' : entry.questionNo + '번') + ' ' + entry.part;
         const where = entry.questionNo == null ? '문항 번호를 알 수 없는 곳' : entry.questionNo + '번';
-        return entry.part ? where + ' ' + entry.part : (entry.questionNo == null ? where : where + ' 문항');
+        const base = entry.part ? where + ' ' + entry.part : (entry.questionNo == null ? where : where + ' 문항');
+        // 오답 인쇄: "김가나 2번 해설 (원본 시험이름 4번)" — 어느 학생의 어느 원본 문항인지 함께 알린다.
+        const source = entry.sourceNo == null ? '' : ' (원본 ' + (shortFile(entry.file) ? shortFile(entry.file) + ' ' : '') + entry.sourceNo + '번)';
+        return (entry.student ? entry.student + ' ' : '') + base + source;
     }
     function flash(node) {
         node.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
@@ -233,9 +299,9 @@
         if (anchor?.parentNode && bar.nextSibling !== anchor) anchor.parentNode.insertBefore(bar, anchor);
         // 문항 번호·위치별로 묶는다(같은 문항의 같은 위치에 둘 이상이면 "N개").
         const groups = [];
-        const nodes = Array.from(area.querySelectorAll(MARK));
+        const nodes = Array.from(area.querySelectorAll(ALL_MARKS));
         entries.forEach((entry, index) => {
-            const key = entry.questionNo + '|' + entry.part;
+            const key = [entry.student || '', entry.file || '', entry.sourceNo ?? '', entry.questionNo, entry.part].join('|');
             let group = groups.find(item => item.key === key);
             if (!group) { group = { key, entry, node: nodes[index], count: 0 }; groups.push(group); }
             group.count += 1;
@@ -250,14 +316,19 @@
             bar.append(node);
             return node;
         };
-        const kindWord = entries.every(entry => /^MATH_/.test(entry.code)) ? '수식' : '내용';
+        const allImages = entries.every(isImageEntry);
+        const kindWord = allImages ? '그림' : entries.every(entry => /^MATH_/.test(entry.code)) ? '수식' : '내용';
+        const failWord = allImages ? '불러오지 못했습니다' : '표시하지 못했습니다';
         if (groups.length === 1) {
             const only = groups[0];
-            const button = add('button', 'ap-render-notice__item', `${targetLabel(only.entry)}의 ${kindWord} ${only.count}개를 표시하지 못했습니다 (눌러서 보기)`);
+            const text = isImageEntry(only.entry)
+                ? `${targetLabel(only.entry)} ${only.count}개를 불러오지 못했습니다 (눌러서 보기)`
+                : `${targetLabel(only.entry)}의 ${kindWord} ${only.count}개를 표시하지 못했습니다 (눌러서 보기)`;
+            const button = add('button', 'ap-render-notice__item', text);
             button.type = 'button';
             button.addEventListener('click', () => only.node && flash(only.node));
         } else {
-            add('span', 'ap-render-notice__lead', `${kindWord} ${total}개를 표시하지 못했습니다:`);
+            add('span', 'ap-render-notice__lead', `${kindWord} ${total}개를 ${failWord}:`);
             for (const group of groups) {
                 const button = add('button', 'ap-render-notice__item', `${targetLabel(group.entry)} ${group.count}개`);
                 button.type = 'button';
@@ -282,5 +353,5 @@
         }
     }
 
-    return Object.freeze({ sanitize, collect, publish, textWithoutMarks, leftoverCount, MARK });
+    return Object.freeze({ sanitize, replaceImage, collect, publish, textWithoutMarks, leftoverCount, MARK, IMAGE_MARK });
 }));
