@@ -1,0 +1,132 @@
+name: SVG Engine Tests
+
+# Runs the whole SVG engine suite (archive/tools/geometry-equation: node *.test.mjs + python test_*.py) in shards and
+# publishes the full result in the job summary. NOT a required check yet: first the result is published, then failures
+# are repaired, then it becomes required. Before making it required, check whether a paths-filtered run that does not
+# start leaves the required check "pending" and blocks merges; if so, require only the always-on aggregate job
+# ("SVG engine tests") through a thin always-running wrapper, never the paths-filtered shards.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'archive/tools/geometry-equation/**'
+      - 'archive/tools/pipeline-core/**'
+      - 'tools/ci/svg-engine-*'
+      - '.github/workflows/svg-engine-tests.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/tools/geometry-equation/**'
+      - 'archive/tools/pipeline-core/**'
+      - 'tools/ci/svg-engine-*'
+      - '.github/workflows/svg-engine-tests.yml'
+  workflow_dispatch:
+
+# A newer push to the same pull request cancels that PR's older run. main and manual runs are never cancelled.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('svg-engine-tests-pr-{0}', github.event.pull_request.number) || format('svg-engine-tests-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  shard:
+    name: shard ${{ matrix.suite }} ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {suite: py, shard: 1/2}
+          - {suite: py, shard: 2/2}
+          - {suite: node, shard: 1/4}
+          - {suite: node, shard: 2/4}
+          - {suite: node, shard: 3/4}
+          - {suite: node, shard: 4/4}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: archive/tools/geometry-equation/production/runtime-package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: archive/tools/geometry-equation/production/requirements.txt
+      # Same Chrome source as Archive Output Performance (browser-actions/setup-chrome) but a fixed version:
+      # `stable` moved mid-run once and broke a count. Change this number on purpose when re-baselining.
+      - uses: browser-actions/setup-chrome@v1
+        if: matrix.suite == 'node'
+        id: chrome
+        with:
+          chrome-version: 157.0.8103.78
+      - name: Install the engine dependencies (npm ci + hashed pip + hashed font; the same script as the local setup)
+        run: node archive/tools/geometry-equation/production/setup-spikes.mjs
+      - name: Run this share of the node engine tests
+        if: matrix.suite == 'node'
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.tmp/apmath-visual-engine/dependencies/python
+          PYTHONUTF8: '1'
+          GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+        run: >-
+          node tools/ci/svg-engine-shard-run.mjs --suite node --shard "${{ matrix.shard }}"
+          --out "$RUNNER_TEMP/svg-engine-result" --jobs 4
+          --tests 'archive/tools/geometry-equation/tests/*.test.mjs'
+          --tests 'archive/tools/geometry-equation/ops/svg-m1/*.test.mjs'
+      - name: Run this share of the python engine tests
+        if: matrix.suite == 'py'
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.tmp/apmath-visual-engine/dependencies/python
+          PYTHONUTF8: '1'
+        run: >-
+          node tools/ci/svg-engine-shard-run.mjs --suite py --shard "${{ matrix.shard }}"
+          --out "$RUNNER_TEMP/svg-engine-result" --jobs 4
+          --tests 'archive/tools/geometry-equation/tests/test_*.py'
+      - name: Publish this shard's result in the job summary
+        if: always()
+        run: node tools/ci/svg-engine-test-summary.mjs "$RUNNER_TEMP/svg-engine-result" --expect "${{ matrix.suite }}" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload this shard's result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: svg-engine-result-${{ matrix.suite }}-${{ strategy.job-index }}
+          path: ${{ runner.temp }}/svg-engine-result/
+          if-no-files-found: warn
+          retention-days: 14
+
+  # The single verdict for the whole suite. Always runs after the shards (even when they fail) and fails when any
+  # shard failed, was cancelled or left no result. This is the job that would become required.
+  engine-tests:
+    name: SVG engine tests
+    needs: shard
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout: tools/ci
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: svg-engine-result-*
+          path: ${{ runner.temp }}/svg-engine-all
+      - name: Publish the full result of all shards
+        run: node tools/ci/svg-engine-test-summary.mjs "$RUNNER_TEMP/svg-engine-all" >> "$GITHUB_STEP_SUMMARY"
+      - name: Verdict
+        env:
+          SHARDS_RESULT: ${{ needs.shard.result }}
+        run: |
+          echo "shards: $SHARDS_RESULT"
+          test "$SHARDS_RESULT" = success

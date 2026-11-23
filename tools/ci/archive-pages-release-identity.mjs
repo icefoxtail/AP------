@@ -8,6 +8,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+import { projectQuestionMetadata, QUESTION_METADATA_BROWSER_PATH } from "../lib/build-question-metadata-browser.mjs";
 import { questionMetadataBytesAt, META_FILE as METADATA_FILE, SHARD_DIR } from "../../archive/tools/meta-foundation/question-metadata-format.mjs";
 
 export const RELEASE_SCHEMA = "ARCHIVE_PAGES_RELEASE_V1";
@@ -166,6 +167,11 @@ export async function computeReleaseIdentity({ sourceRoot = process.cwd(), regis
       // Derived from one registered input (the catalog's exam rows); its bytes are in packageDigest, so a changed exam row changes the identity.
       if (!entry.examListInputs?.every(input => registeredPaths.has(input)))
         throw new Error("exam-list projection has an input outside the registered snapshot");
+    } else if (entry.path === QUESTION_METADATA_BROWSER_PATH && packageManifest.questionMetadataBrowser === true) {
+      // Derived from the question metadata assembly: it must equal the projection of the registered snapshot's own shards (built from git objects, not the working tree).
+      const expected = projectQuestionMetadata(questionMetadataBytesAt(sourceRoot, registeredMainSHA).toString("utf8"));
+      if (item.bytes !== expected.length || item.sha256 !== sha256(expected))
+        throw new Error("question-metadata browser copy does not equal the projection of the registered snapshot's metadata shards");
     } else if (entry.path === METADATA_FILE && tree.some(row => row.path.startsWith(`${SHARD_DIR}/`))) {
       // Git holds the question metadata as per-exam shards; the packaged one file is their assembly. It is accepted only
       // when its bytes equal the assembly of the registered commit's own shards (built from git objects, not the working tree).
