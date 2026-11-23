@@ -99,7 +99,7 @@ function validateRecord(record, repoRoot, seen, options = {}) {
     fail('SVG_ACCESSIBILITY_ASSET_NOT_FOUND', assetRef);
   }
   const bytes = fs.readFileSync(assetPath);
-  const newPath = options.isNewPath ? options.isNewPath(assetRef) : false;
+  const newPath = options.isNewPath ? () => options.isNewPath(assetRef) : false;
   assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory, newPath });
   const substitute = record.textSource === TEXT_SOURCE_SUBSTITUTE;
   if (record.textSource !== undefined && !substitute) fail('INVALID_SVG_ACCESSIBILITY_TEXT_SOURCE', assetRef);
@@ -145,7 +145,7 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
   try { text = svgAccessibilityText(bytes, assetRef); }
   catch (error) {
     // 옛 그림에 title/desc가 없으면 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남는다). 엔진 그림은 계속 막는다.
-    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8'), { newPath: options.isNewPath ? options.isNewPath(assetRef) : false }) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
+    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8'), { newPath: options.isNewPath ? () => options.isNewPath(assetRef) : false }) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
     const substitute = substituteAccessibilityText(use);
     text = { titleKo: substitute, descriptionKo: substitute, textSource: TEXT_SOURCE_SUBSTITUTE };
     options.advisory.push({ assetRef, code: 'SVG_ACCESSIBILITY_LEGACY_TEXT_SUBSTITUTED', surface: '' });
@@ -190,19 +190,35 @@ function sourceIndexForCoverage(manifest, sourceIndexPath) {
   return { sourceIndex, sourceIndexBytes, sourceIndexPath: null };
 }
 
+// `--base`에 없던 경로(새 파일)인지 묻는 함수. base 커밋의 archive/assets 파일 목록을 git으로 한 번만(처음 물을 때) 읽어 Set으로 두고
+// 이후에는 git을 부르지 않는다(자산마다 git을 띄우면 약 2만 번이라 등록기 명령 시간 안에 못 끝났다). 경로는 -z로 읽어 한글 경로가 인용되지 않는다.
+function createBaseAssetLookup(repoRoot, baseRef, run = execFileSync) {
+  let known = null;
+  return assetRef => {
+    if (known === null) {
+      let out;
+      try {
+        out = run('git', ['-c', 'core.quotepath=false', '-C', repoRoot, 'ls-tree', '-r', '--name-only', '-z', baseRef, '--', 'archive/assets'],
+          { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
+      } catch (error) {
+        throw new Error(`SVG_ACCESSIBILITY_GIT_SCOPE_FAILED:ls-tree ${baseRef} archive/assets:${error.stderr?.toString().trim() || error.message}`);
+      }
+      known = new Set(String(out).split('\0').filter(Boolean));
+    }
+    return !known.has(`archive/${assetRef}`);
+  };
+}
+
 function productionRows(manifest, repoRoot, scopeOptions) {
   // 문구 품질 미달(QUALITY_ONLY_CODES)은 막지 않고 여기에 모아 보고만 한다. 실제 결함은 assert가 계속 던진다.
   const advisory = [];
   const live = collectSvgAccessibilitySourceIndex({ repoRoot });
   const scope = collectChangedSourceScope({ ...scopeOptions, repoRoot, currentIndex: live });
   // --base에 없던 경로(새 파일)인가. 옛 엔진이 표기 없이 낸 그림이 있는 신규 경로 표지는 새 파일일 때만 엔진 산출물로 본다.
-  const isNewPath = assetRef => {
-    try { execFileSync('git', ['-C', repoRoot, 'cat-file', '-e', `${scope.baseRef}:archive/${assetRef}`], { stdio: 'ignore' }); return false; }
-    catch { return true; }
-  };
+  const isNewPath = createBaseAssetLookup(repoRoot, scope.baseRef);
   for (const assetRef of scope.changedSvgRefs) {
     const bytes = fs.readFileSync(path.resolve(repoRoot, 'archive', assetRef));
-    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory, newPath: isNewPath(assetRef) });
+    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory, newPath: () => isNewPath(assetRef) });
   }
   const byKey = new Map();
   for (const row of manifest.records) byKey.set(manifestRecordKey(row), row);
@@ -425,4 +441,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { compileManifest, validateAssetRef, gitBlobSha, roleKeysFromSourceIndex, assertManifestCoverage, SCHEMA_VERSION, productionRows };
+module.exports = { compileManifest, createBaseAssetLookup, validateAssetRef, gitBlobSha, roleKeysFromSourceIndex, assertManifestCoverage, SCHEMA_VERSION, productionRows };

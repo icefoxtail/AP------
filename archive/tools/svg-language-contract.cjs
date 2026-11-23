@@ -210,7 +210,9 @@ function isEngineSvg(svg, options = {}) {
   const root = String(svg ?? '').match(/<(?:[a-z_][\w.-]*:)?svg\b[^>]*>/i);
   if (!root) return false;
   if (CONFIRMED_ENGINE_MARKERS.some(pattern => pattern.test(root[0]))) return true;
-  return options.newPath === true && NEW_PATH_ENGINE_MARKERS.some(pattern => pattern.test(root[0]));
+  if (!options.newPath || !NEW_PATH_ENGINE_MARKERS.some(pattern => pattern.test(root[0]))) return false;
+  // newPath는 true/false 또는 함수. 함수는 "확정 표지가 없고 신규 경로 표지가 있을 때만" 불러 새 파일 여부를 늦게 묻는다.
+  return typeof options.newPath === 'function' ? options.newPath() === true : options.newPath === true;
 }
 // 시험지·문항·역할에서 만들 수 있는 것만 쓰는 기계 대체 문구(그림 내용을 추측하지 않는다).
 function substituteAccessibilityText(use = {}) {

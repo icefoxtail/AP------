@@ -310,6 +310,34 @@ test('production compiler lets a legacy SVG without accessibility markup through
   assert.throws(compile, /SVG_ROOT_MISSING|SVG_STUDENT_LANGUAGE_CONTRACT_FAIL/);
 });
 
+test('the new-file check reads the base asset list with git once, lazily, and fails loudly when git fails', () => {
+  const { createBaseAssetLookup } = loadCompiler();
+  const calls = [];
+  const run = (program, args) => { calls.push([program, ...args]); return 'archive/assets/images/한글 폴더/old.svg\0archive/assets/images/b.svg\0'; };
+  const isNew = createBaseAssetLookup('/repo', 'abc123', run);
+  assert.equal(calls.length, 0, 'nothing is read until the first question');
+  for (let i = 0; i < 1000; i++) assert.equal(isNew('assets/images/b.svg'), false);
+  assert.equal(isNew('assets/images/한글 폴더/old.svg'), false);
+  assert.equal(isNew('assets/images/new.svg'), true);
+  assert.equal(calls.length, 1, 'one git call for every lookup');
+  assert.ok(calls[0].includes('-z') && calls[0].includes('ls-tree') && calls[0].includes('abc123'));
+  const failing = createBaseAssetLookup('/repo', 'abc123', () => { throw Object.assign(new Error('boom'), { stderr: Buffer.from('bad object') }); });
+  assert.throws(() => failing('assets/images/x.svg'), /SVG_ACCESSIBILITY_GIT_SCOPE_FAILED.*bad object/);
+});
+
+test('the new-file question is asked only for a figure with a new-path marker and no confirmed marker', () => {
+  const { isEngineSvg } = require(path.join(__dirname, '..', 'archive', 'tools', 'svg-language-contract.cjs'));
+  let asked = 0;
+  const newPath = () => { asked += 1; return true; };
+  const svg = marker => `<svg xmlns="http://www.w3.org/2000/svg" ${marker}></svg>`;
+  assert.equal(isEngineSvg(svg(''), { newPath }), false);
+  assert.equal(isEngineSvg(svg('data-engine-version="geometry-visual-v1"'), { newPath }), true);
+  assert.equal(isEngineSvg(svg('data-stat-chart="stat-chart-figure-v1" data-composite="composite-panels-v1"'), { newPath }), true);
+  assert.equal(asked, 0, 'unmarked and confirmed-marker figures never ask');
+  assert.equal(isEngineSvg(svg('data-composite="composite-panels-v1"'), { newPath }), true);
+  assert.equal(asked, 1);
+});
+
 function productionFixture(t, sourceRoot = 'archive/exams') {
   const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'svg-accessibility-production-'));
   t.after(() => fs.rmSync(repoRoot, { recursive: true, force: true }));
