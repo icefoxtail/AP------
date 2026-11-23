@@ -115,5 +115,193 @@
     };
   }
 
-  return { SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, identityOfRecord, assembleAuthority, assembleCatalog };
+  // ---- the loader (stage 2-2): fetch, verify, assemble ---------------------------------------------------------------------
+  // `createLoader({ base, fetch })` -> { loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, loadShard, loadShards, loadCommon, loadCatalog }.
+  //
+  // What it promises a screen:
+  //  - Every shard and the common file is checked against the sha256 and byte length in index.json (the index of the same release). The
+  //    check is on the raw bytes, before they are parsed. The index is the root: it is fetched with revalidation and carries the
+  //    projection version string (`indexVersion`) the screens send to the server as index_version.
+  //  - A file that fails (hash, length, 404, broken JSON, network) is retried ONCE after fetching the index again, because the usual cause is
+  //    a release that went out between the index and the file. If the index names another version everything held is dropped and reloaded.
+  //    A second failure is an error with `retryable: true` and a teacher-readable message. The loader never falls back to the whole bundle
+  //    by itself, and never returns a catalog made of files of two releases.
+  //  - A shard already received in this document is not received again. URLs carry `?v=<first 16 of sha256>`, so the browser cache keeps
+  //    them across visits and a changed file is a new URL.
+  //  - When there are no shards at all (the build skipped them, a local checkout) `loadIndex` throws code CATALOG_SHARDS_UNAVAILABLE; the
+  //    screen decides to use the whole bundle (see isUnavailable).
+  const INDEX_SCHEMA = "archive2-catalog-shards-v1";
+  const STALE_MESSAGE = "자료가 갱신되는 중입니다. 잠시 뒤 다시 시도해 주세요.";
+  const UNAVAILABLE_MESSAGE = "문항 조각 자료를 사용할 수 없습니다.";
+  const failure = (code, message, retryable, cause) => Object.assign(new Error(message), { code, retryable: Boolean(retryable), ...(cause ? { cause } : {}) });
+  const isUnavailable = (error) => Boolean(error) && error.code === "CATALOG_SHARDS_UNAVAILABLE";
+  const hex = (buffer) => Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  async function sha256Of(bytes) {
+    const subtle = globalThis.crypto && globalThis.crypto.subtle;
+    if (!subtle) throw failure("CATALOG_SHARD_STALE", "SHA-256 is not available", false);
+    return hex(await subtle.digest("SHA-256", bytes));
+  }
+  const withSlash = (value) => (String(value).endsWith("/") ? String(value) : String(value) + "/");
+
+  function createLoader(options = {}) {
+    const doFetch = options.fetch || ((url, init) => globalThis.fetch(url, init));
+    const base = withSlash(options.base || "data/archive2-catalog-shards-v1/");
+    const digest = options.sha256 || sha256Of;
+    const decoder = new TextDecoder("utf-8");
+    let index = null; // the index of the release this document is working with
+    let indexRequest = null;
+    let generation = 0; // changes when the index names another release: everything received before is dropped
+    const memo = new Map(); // `${generation}|${file path}` -> Promise of the parsed file
+    const wanted = new Set(); // shard keys asked for so far (a screen adds courses one after another)
+
+    async function getBytes(url, cache) {
+      let response;
+      try { response = await doFetch(url, { cache }); }
+      catch (error) { throw failure("CATALOG_SHARD_FETCH_FAILED", "network error: " + url, true, error); }
+      if (!response || !response.ok) throw failure("CATALOG_SHARD_FETCH_FAILED", "HTTP " + (response && response.status) + ": " + url, true);
+      return new Uint8Array(await response.arrayBuffer());
+    }
+    function parseIndex(bytes) {
+      let doc;
+      try { doc = JSON.parse(decoder.decode(bytes)); } catch (error) { throw failure("CATALOG_SHARDS_UNAVAILABLE", UNAVAILABLE_MESSAGE, false, error); }
+      if (!doc || doc.schemaVersion !== INDEX_SCHEMA || !Array.isArray(doc.shards) || !Array.isArray(doc.courses) || !doc.common || !doc.examShard
+          || !/^archive2-canonical-v1:[a-f0-9]{64}$/.test(String(doc.indexVersion)))
+        throw failure("CATALOG_SHARDS_UNAVAILABLE", UNAVAILABLE_MESSAGE, false);
+      return doc;
+    }
+    // fresh: true asks the network, not the cache (after a failure; the first read revalidates).
+    function fetchIndex(fresh) {
+      const request = (async () => {
+        let bytes;
+        try { bytes = await getBytes(base + "index.json", fresh ? "reload" : "no-cache"); }
+        catch (error) { throw failure("CATALOG_SHARDS_UNAVAILABLE", UNAVAILABLE_MESSAGE, false, error); }
+        const next = parseIndex(bytes);
+        if (index && next.indexVersion !== index.indexVersion) generation += 1;
+        index = next;
+        return index;
+      })();
+      return request;
+    }
+    // Files that fail together share one fresh index request.
+    let freshRequest = null;
+    function refreshIndex() {
+      if (!freshRequest) freshRequest = fetchIndex(true).finally(() => { freshRequest = null; });
+      return freshRequest;
+    }
+    function loadIndex() {
+      if (index) return Promise.resolve(index);
+      if (!indexRequest) indexRequest = fetchIndex(false).catch((error) => { indexRequest = null; throw error; });
+      return indexRequest;
+    }
+    function needIndex() {
+      if (!index) throw failure("CATALOG_SHARDS_UNAVAILABLE", "the shard index is not loaded yet (await loadIndex() first)", false);
+      return index;
+    }
+    function courses() { return needIndex().courses.map((course) => ({ ...course, shards: [...course.shards] })); }
+    function shardKeysOfCourse(courseKey) {
+      const course = needIndex().courses.find((row) => row.key === courseKey);
+      if (!course) throw failure("CATALOG_SHARD_UNKNOWN", "unknown course: " + courseKey, false);
+      return [...course.shards];
+    }
+    // The shard the questions of an exam are in. Looked up in the index (never derived from the subject name: the five 중2 exams whose
+    // registered course says 중1 are in the m2 shard).
+    function shardKeyOfExam(file) { return needIndex().examShard[file] || null; }
+
+    // One verified file. `entryOf(index)` finds the file's entry in an index; the retry asks it again after a fresh index.
+    async function verified(entryOf, cacheMode) {
+      const entry = entryOf(index);
+      if (!entry) throw failure("CATALOG_SHARD_UNKNOWN", "the index does not list this file", false);
+      const url = base + entry.path + "?v=" + String(entry.sha256).slice(0, 16);
+      const bytes = await getBytes(url, cacheMode);
+      if (bytes.length !== entry.bytes || (await digest(bytes)) !== entry.sha256)
+        throw failure("CATALOG_SHARD_FETCH_FAILED", "digest mismatch: " + entry.path, true);
+      try { return JSON.parse(decoder.decode(bytes)); }
+      catch (error) { throw failure("CATALOG_SHARD_FETCH_FAILED", "unreadable JSON: " + entry.path, true, error); }
+    }
+    async function loadVerified(entryOf) {
+      await loadIndex();
+      try { return await verified(entryOf, "default"); }
+      catch {
+        try {
+          await refreshIndex();
+          return await verified(entryOf, "reload");
+        } catch (second) {
+          // the file is gone from the new index, or fails again: the release is moving; the teacher is asked to try again shortly
+          throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true, second);
+        }
+      }
+    }
+    function memoized(path, entryOf) {
+      const id = generation + "|" + path;
+      if (!memo.has(id)) {
+        const request = loadVerified(entryOf).catch((error) => { if (memo.get(id) === request) memo.delete(id); throw error; });
+        memo.set(id, request);
+      }
+      return memo.get(id);
+    }
+    function loadShard(key) {
+      return loadIndex().then(() => {
+        if (!index.shards.some((shard) => shard.key === key)) throw failure("CATALOG_SHARD_UNKNOWN", "unknown shard: " + key, false);
+        return memoized("shard:" + key, (current) => current.shards.find((shard) => shard.key === key));
+      });
+    }
+    function loadShards(keys) { return Promise.all([...new Set(keys)].map(loadShard)); }
+    function loadCommon() { return loadIndex().then(() => memoized("common", (current) => current.common)); }
+
+    // The state.catalog for everything asked for so far plus `want`: { courses: [course keys], shards: [shard keys], exams: [exam files] }.
+    // Calling it again with more adds to the same set (고1, then 고2).
+    async function loadCatalog(want = {}) {
+      await loadIndex();
+      for (const course of want.courses || []) for (const key of shardKeysOfCourse(course)) wanted.add(key);
+      for (const key of want.shards || []) wanted.add(key);
+      for (const file of want.exams || []) {
+        const key = shardKeyOfExam(file);
+        if (!key) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + file, false);
+        wanted.add(key);
+      }
+      if (!wanted.size) throw failure("CATALOG_SHARD_UNKNOWN", "no course, shard or exam was asked for", false);
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        const at = generation;
+        const keys = [...wanted];
+        const [common, docs] = await Promise.all([loadCommon(), loadShards(keys)]);
+        // a release change during the load: what was received is of two releases, so load it again from the current index
+        if (at !== generation || !keys.every((key) => index.shards.some((shard) => shard.key === key))) continue;
+        return assembleCatalog(index, common, docs);
+      }
+      throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true);
+    }
+    return {
+      loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, loadShard, loadShards, loadCommon, loadCatalog,
+      // for tests and the screen's status line: what is held now
+      held: () => ({ indexVersion: index && index.indexVersion, shards: [...wanted], generation }),
+    };
+  }
+
+  // ?shards=1 -> the first course of the index; ?shards=m1,high2-math1 -> those courses. Anything else (no parameter, shards=0|off) -> null.
+  function switchFromSearch(search) {
+    const match = /[?&]shards=([^&#]*)/.exec(String(search || ""));
+    if (!match) return null;
+    const value = decodeURIComponent(match[1]).trim();
+    if (!value || value === "0" || value === "off" || value === "false") return null;
+    return value === "1" || value === "on" || value === "true" ? { courses: [] } : { courses: value.split(",").map((part) => part.trim()).filter(Boolean) };
+  }
+
+  // The check switch of one screen (stage 2-2): the catalog made of the shards the address asks for. Returns null when the switch is off.
+  // Also sets the PT/TPL label tables the whole-bundle loader sets, when nobody has.
+  async function loadForSwitch(search, loaderOptions = {}) {
+    const asked = switchFromSearch(search);
+    if (!asked) return null;
+    const loader = createLoader(loaderOptions);
+    const index = await loader.loadIndex();
+    const course = asked.courses.length ? asked.courses : [index.courses[0].key];
+    const catalog = await loader.loadCatalog({ courses: course });
+    const labels = await loader.loadCommon().then((common) => common.labels).catch(() => null);
+    if (labels && typeof window !== "undefined" && !window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = labels;
+    return { catalog, loader, courses: course };
+  }
+
+  return {
+    SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, UNAVAILABLE_MESSAGE,
+    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, switchFromSearch, loadForSwitch,
+  };
 });

@@ -1897,11 +1897,32 @@
     }
     ensureCatalog();
   })();
+  // 조각 로더는 스위치가 켜졌을 때만 받는다. 조각이 사이트에 없으면(빌드가 건너뜀·로컬) 전체 묶음으로 간다(그 밖의 실패는 그대로 오류).
+  async function shardCatalog() {
+    if (!window.Archive2CatalogShards)
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "archive2-catalog-shards.js?v=20261124-shards-1";
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("문항 조각 로더를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요."));
+        document.head.appendChild(script);
+      });
+    const Shards = window.Archive2CatalogShards;
+    try {
+      const found = await Shards.loadForSwitch(location.search);
+      if (found) return found.catalog;
+    } catch (error) {
+      if (!Shards.isUnavailable(error)) throw error;
+      console.warn("[archive2] catalog shards are not available; using the whole bundle:", error);
+    }
+    return window.applyArchiveMetaFoundationCatalog();
+  }
   async function loadCatalog() {
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
-      const catalog = await window.applyArchiveMetaFoundationCatalog();
+      // 확인용 스위치(2단계 2-2): 주소에 ?shards=1 (또는 ?shards=과목키,...)이 있을 때만 전체 묶음 대신 조각으로 목록을 만든다. 없으면 이 줄은 그대로 전체 묶음이다.
+      const catalog = await (/[?&]shards=/.test(location.search) ? shardCatalog() : window.applyArchiveMetaFoundationCatalog());
       if (!ProblemBankMeta) throw Object.assign(new Error("문항 분류 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "PROBLEM_BANK_META_UNAVAILABLE" });
       Boot?.begin?.("index");
       Boot?.setStage?.("index");

@@ -22,7 +22,8 @@
         for (const key of params.keys()) if (!LIGHT_FIND_KEYS.has(key)) return false;
         return true;
       }
-      for (const [key, value] of params) if (!(key === "perf" || key === "warm" || (key === "view" && value === "home"))) return false;
+      // 확인용 스위치 ?shards=(2단계 2-2)가 있으면 홈이 아닌 화면(문제지 만들기)도 전체 받기를 시작하지 않는다: 조각 로더가 그 화면의 목록을 만든다.
+      for (const [key, value] of params) if (!(key === "perf" || key === "warm" || key === "shards" || (key === "view" && (value === "home" || params.has("shards"))))) return false;
       return true;
     } catch { return false; }
   })();
