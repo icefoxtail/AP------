@@ -39,6 +39,7 @@ function idleSuiteCommands() {
     'archive/tools/geometry-equation/tests/composite-expand-optional-fields.test.mjs',
     'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
     'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
+    'archive/tools/geometry-equation/tests/graph-g-bundle.test.mjs',
     'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
     'archive/tools/geometry-equation/tests/native-solution-overlay.test.mjs',
     'archive/tools/geometry-equation/tests/number-line-surd-ends.test.mjs',

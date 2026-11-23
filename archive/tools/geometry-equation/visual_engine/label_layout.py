@@ -1497,7 +1497,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         chosen=box;method='FROZEN_OWNER_BASELINE';break
             if '_nearCenters' in label:
                 near_won=False
-                for x,y in label['_nearCenters']:
+                if label.get('nearAtFirst') and owner_marker is None and line_owner is None and tick_owner is None and '_nearData' in label:
+                    # nearAtFirst (single-curve families): the place the label has always had (the boxes around its own anchor, nearest gap first) is kept when it is beside its own curve and
+                    # not clearly nearer another one; only a label that stood away from its curve (or by another one) is moved to the places beside its own stroke.
+                    for gap in default_gaps:
+                        for direction in directions:
+                            box=candidate(label['at'],w,h,direction,gap)
+                            if not acceptable(box):continue
+                            own_gap=min(near_box_polyline_distance(box,pts) for pts in label['_nearOwn'])
+                            if own_gap<=label['_nearReach'] and not any(near_box_polyline_distance(box,pts)<own_gap+NEAR_OTHER_MARGIN_PX for pts in label['_nearData']['others']):
+                                chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction;default_gaps=();near_won=True
+                            break
+                        if near_won:break
+                for x,y in ([] if near_won else label['_nearCenters']):
                     box=Box(x-w/2,y-h/2,w,h)
                     if acceptable(box):
                         chosen=box;method='NEAR_OWN_STROKE';default_gaps=()
@@ -1519,7 +1531,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         box,anchor,end,direction=found
                         label={**label,'at':list(anchor),'target':label['_nearData']['id']};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;default_gaps=();near_won=True
                 # no room within reach of its own stroke (a tall fraction in a small window): the label stands at the nearest free place and says so on its group, so the observer judges it by ownership and a wider reach
-                label={**{k:v for k,v in label.items() if k not in ('_nearCenters','_nearOwn','_nearReach','_nearData')},**({} if near_won else {'nearRoom':'NONE'})}
+                label={**{k:v for k,v in label.items() if k not in ('_nearCenters','_nearOwn','_nearReach','_nearData','nearAtFirst')},**({} if near_won else {'nearRoom':'NONE'})}
             if 'candidateCenters' in label:
                 from .publication import box_owned
                 for x, y in label['candidateCenters']:

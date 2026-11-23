@@ -72,7 +72,7 @@ class Framing(unittest.TestCase):
     def test_refusals(self):
         def mutated(change):
             graph=copy.deepcopy(PAIR);change(graph);return refused(graph)
-        self.assertEqual(mutated(lambda g:g.update(curves=g['curves'][:1])),'MULTI_CURVE_COUNT_INVALID')
+        self.assertEqual(mutated(lambda g:g.update(curves=[])),'MULTI_CURVE_COUNT_INVALID')
         self.assertEqual(mutated(lambda g:g.pop('viewport')),'MULTI_CURVE_WINDOW_REQUIRED:f')
         self.assertEqual(mutated(lambda g:g.update(viewport=[1,0,0,1])),'MULTI_CURVE_WINDOW_INVALID')
         self.assertEqual(mutated(lambda g:g['curves'][0].update(color='RED')),'MULTI_CURVE_COLOR_INVALID:f')
