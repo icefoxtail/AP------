@@ -38,16 +38,21 @@ test('phone minimum base font grows with the canvas and stops at the policy cap'
   assert.equal(phoneMinimumBaseFontPx(900), 32);
 });
 
-test('scaled display passes the policy where the default 60% display is refused', async () => {
+test('scaled display reaches the floor where the default 60% display only records displayTextBelow11px (the refusal was released 2026-11-23)', async () => {
   const { requestedProfileTypographyPolicy } = await envelope();
   const { phoneMinimumBaseFontPx } = await capture();
   const intrinsic = { width: 610, height: 320 };
   const profile = (width, sizeClass) => ({ status: 'PASS', sizeClass, imageRect: { x: 0, y: 0, width, height: width * 320 / 610 }, naturalWidth: 610, naturalHeight: 320 });
   const observation = width => ({ status: 'PASS', synthetic: false, runtime: 'playwright-chromium', profiles: ['small', 'medium', 'large', 'full'].map(sizeClass => profile(width, sizeClass)) });
-  assert.throws(() => requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(189.7) }), /REQUESTED_PROFILE_FONT_SCALE/);
+  // before 2026-11-23 the default (60%) display was refused with REQUESTED_PROFILE_FONT_SCALE; now the base font stays at the cap (32) and the policy records displayTextBelow11px
+  const refusedBefore = requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(189.7) });
+  assert.equal(refusedBefore.baseFontPx, 32);
+  assert.equal(refusedBefore.displayTextBelow11px, true);
+  assert.ok(refusedBefore.displayedFontPx < 11.25);
   const policy = requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(284.6), minimumBaseFontPx: phoneMinimumBaseFontPx(610) });
   assert.ok(policy.baseFontPx >= phoneMinimumBaseFontPx(610) && policy.baseFontPx <= 32);
   assert.ok(policy.baseFontPx * policy.displayScale >= 11.25 - 1e-6, 'A4 labels reach the floor');
+  assert.equal('displayTextBelow11px' in policy, false);
 });
 
 function publishFixture() {

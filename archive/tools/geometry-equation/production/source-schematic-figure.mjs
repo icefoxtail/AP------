@@ -238,7 +238,7 @@ export function prepareSourceSchematic(plan,{repoRoot,question,identity,typograp
     [formulaNames[0]]:curveIds[0],[formulaNames[1]]:curveIds[1]};
   if(!keys(plan.labelOrigins,labels)||!Object.values(plan.labelOrigins).every(at=>screenPoint(at,frame)))refuse('SCHEMATIC_INVALID_LABEL_POSITIONS');
   const {baseFontPx,displayScale}=typography??{};
-  if(!Number.isFinite(baseFontPx)||baseFontPx<20||baseFontPx>36||!Number.isFinite(displayScale)||displayScale<=0||displayScale>2||baseFontPx*displayScale<11)
+  if(!Number.isFinite(baseFontPx)||baseFontPx<20||baseFontPx>36||!Number.isFinite(displayScale)||displayScale<=0||displayScale>2)// 2026-11-23 (owner): the displayed font (baseFontPx*displayScale) no longer has to reach 11; the authored baseFontPx >= 20 above still does
     refuse('SCHEMATIC_TYPOGRAPHY_INVALID');
   const text={...Object.fromEntries(pointNames.map(id=>[id,id])),x:'x',y:'y',
     [formulaNames[0]]:formulas[formulaNames[0]],[formulaNames[1]]:formulas[formulaNames[1]],line:formulas.line,schematic:'개형'};
