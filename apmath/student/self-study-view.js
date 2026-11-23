@@ -169,19 +169,49 @@
     return list;
   }
 
+  /** Same rule as archive/engine.html normalizeArchiveExamScriptPath: only "exams/<name>.js" in a plain relative form, else ''. */
+  function safeExamPath(raw) {
+    const value = String(raw || '').trim();
+    if (!value || value.length > 512 || /\\|%5c/i.test(value)) return '';
+    let decoded;
+    try { decoded = decodeURIComponent(value); } catch (error) { return ''; }
+    if (/\\/.test(decoded)) return '';
+    decoded = decoded.trim().replace(/^\.\/+/, '').replace(/^archive\/exams\//, 'exams/');
+    if (!decoded || decoded.length > 512 || /[?#]/.test(decoded)) return '';
+    if (/^(https?:)?\/\//i.test(decoded) || /^(javascript|data|blob):/i.test(decoded)) return '';
+    if (decoded.includes('../') || decoded.includes('/./') || decoded.includes('//') || /%2e|%2f|%5c/i.test(decoded)) return '';
+    return /^exams\/[a-zA-Z0-9가-힣_\-./]+\.js$/.test(decoded) ? decoded : '';
+  }
+
+  /** One exam JS file (path relative to archive/, e.g. "exams/similar/..js") -> its question list. Nothing else is ever downloaded and run. */
+  async function fetchQuestionList(relativePath, { fetchImpl, baseUrl } = {}) {
+    const fetcher = fetchImpl || (typeof fetch === 'function' ? fetch.bind(root) : null);
+    const safe = safeExamPath(relativePath);
+    if (!safe) throw new Error('EXAM_PATH_REJECTED');
+    const here = new URL(baseUrl || root.location.href);
+    const archive = new URL('../../archive/', here);
+    const url = new URL(safe, archive);
+    if (url.origin !== here.origin || !url.pathname.startsWith(`${archive.pathname}exams/`) || !url.pathname.endsWith('.js')) throw new Error('EXAM_PATH_REJECTED');
+    const response = await fetcher(url.href);
+    if (!response || !response.ok) throw new Error('EXAM_FETCH_FAILED');
+    return parseExamSource(await response.text());
+  }
+
+  /** The exam's own file questions (never the frozen snapshot); only for an exam that is one plain past-exam file. */
+  function loadExamFile(exam, options) {
+    const archiveFile = String(exam?.archive_file || '').trim();
+    if (!archiveFile || archiveFile.startsWith('MIXED:')) return Promise.reject(new Error('EXAM_SOURCE_UNAVAILABLE'));
+    return fetchQuestionList(archiveFile, options);
+  }
+
   /** The issued questions of an assignment: the frozen snapshot when the server sent one, otherwise the exam's own file. */
   async function loadExamQuestions(exam, { fetchImpl, baseUrl } = {}) {
-    const fetcher = fetchImpl || (typeof fetch === 'function' ? fetch.bind(root) : null);
     const archiveFile = String(exam?.archive_file || '').trim();
     let frozen = null;
     try { frozen = JSON.parse(String(exam?.mixed_payload_json || 'null')); } catch (error) { frozen = null; }
     let questions = Array.isArray(frozen?.questions) && frozen.questions.length ? frozen.questions : null;
     if (!questions) {
-      if (!archiveFile || archiveFile.startsWith('MIXED:')) throw new Error('EXAM_SOURCE_UNAVAILABLE');
-      const url = new URL(archiveFile.replace(/^\.?\/?(?:archive\/)?/, ''), new URL('../../archive/', baseUrl || root.location.href));
-      const response = await fetcher(url.href);
-      if (!response || !response.ok) throw new Error('EXAM_FETCH_FAILED');
-      questions = parseExamSource(await response.text());
+      questions = await loadExamFile(exam, { fetchImpl, baseUrl });
     }
     const refresher = root.ArchiveStudentSvgRefresh;
     if (refresher?.refresh && exam?.assignment_id) {
@@ -325,8 +355,10 @@
     const cards = questions.map(entry => renderCard(entry, deps)).join('');
     container.innerHTML = shell(`
       ${assets.mathReady ? '' : '<p class="notice ss-math-notice" role="status">수식 표시를 불러오지 못해 일부 수식이 기호 그대로 보일 수 있어요.</p>'}
-      ${cards ? `<div class="ss-list">${cards}</div>` : '<div class="empty">표시할 문항이 없습니다.</div>'}
+      ${cards ? `<div class="ss-list">${cards}</div>` : `<div class="empty">${escapeHtml(set?.emptyText || '표시할 문항이 없습니다.')}</div>`}
+      ${cards && options.bottomAction ? `<button type="button" class="btn btn-primary ss-next" data-ss-next>${escapeHtml(options.bottomAction.label)}</button>` : ''}
       <button type="button" class="btn back-btn ss-back-bottom" data-ss-back>← 돌아가기</button>`);
+    container.querySelector('[data-ss-next]')?.addEventListener('click', () => options.bottomAction?.onClick?.());
     container.querySelectorAll('[data-ss-back]').forEach(button => button.addEventListener('click', () => options.onBack?.()));
 
     // Listeners live on this screen's own root (rebuilt on every open), not on the shared container.
@@ -376,6 +408,6 @@
 
   return {
     normalizeNumbers, buildWrongSet, buildTitle, hasRealSolution, hasAnswer, renderCard, failedCardHtml,
-    parseExamSource, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT
+    parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT
   };
 });

@@ -9,33 +9,34 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.23.2">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.2">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.2">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.2">
+  <link rel="manifest" href="./manifest.json?v=2026.11.23.3">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.3">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.3">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.3">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261111-student-navigation-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.23.2"></script>
-  <script src="../js/similar-exam.js?v=2026.11.23.2"></script>
-  <script src="./similar-link.js?v=2026.11.23.2"></script>
-  <script src="./self-study-view.js?v=2026.11.23.2"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.23.2"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.2">
-  <script src="../js/student-navigation.js?v=2026.11.23.2" data-student-navigation="manual"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.23.3"></script>
+  <script src="../js/similar-exam.js?v=2026.11.23.3"></script>
+  <script src="./similar-link.js?v=2026.11.23.3"></script>
+  <script src="./self-study-view.js?v=2026.11.23.3"></script>
+  <script src="./self-study-similar.js?v=2026.11.23.3"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.23.3"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.3">
+  <script src="../js/student-navigation.js?v=2026.11.23.3" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.2">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.3">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.2" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.3" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -58,7 +59,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.23.2';
+    const STUDENT_APP_VERSION = '2026.11.23.3';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -84,6 +85,7 @@
     let omrDraft = null;
     let omrResultAssignmentId = '';
     let selfStudyAssignmentId = '';
+    let selfStudyKind = 'wrong';
     let omrListFilter = 'all';
     let materialWrongData = null;
     let wrongClinicData = null;
@@ -213,7 +215,7 @@
       const state = { apStudentView: view };
       if (view === 'omr-input') state.assignmentId = omrDraft?.assignment_id || '';
       if (view === 'omr-result') state.assignmentId = omrResultAssignmentId;
-      if (view === 'omr-self-study') state.assignmentId = selfStudyAssignmentId;
+      if (view === 'omr-self-study') { state.assignmentId = selfStudyAssignmentId; state.kind = selfStudyKind; }
       if (view === 'clinic-review') state.packetKey = wrongClinicDraft?.packet_key || '';
       if (view === 'material-wrong') state.assignmentId = materialWrongTargetId || materialWrongDraft?.assignment_id || '';
       const previous = window.history.state;
@@ -221,7 +223,7 @@
         const url = new URL(window.location.href);
         url.searchParams.set('view', studentRouteForView(view));
         if (!studentHistoryReady) { window.history.replaceState(state, '', url.toString()); studentHistoryReady = true; }
-        else if (previous?.apStudentView !== view || previous?.assignmentId !== state.assignmentId || previous?.packetKey !== state.packetKey) {
+        else if (previous?.apStudentView !== view || previous?.assignmentId !== state.assignmentId || previous?.packetKey !== state.packetKey || previous?.kind !== state.kind) {
           window.history.pushState(state, '', url.toString());
           window.scrollTo(0, 0);
         }
@@ -247,7 +249,7 @@
           else renderOmrInput(exam.assignment_id);
         } else if (view === 'omr-self-study') {
           const exam = findOmrExam(event.state.assignmentId);
-          if (exam && getSelfStudyWrongCount(exam)) await openSelfStudyWrong(exam.assignment_id, 'list');
+          if (exam && getSelfStudyWrongCount(exam)) await openSelfStudy(event.state.kind === 'similar' && canOfferSelfStudySimilar(exam) ? 'similar' : 'wrong', exam.assignment_id, 'list');
           else await renderOmrExams();
         } else if (view === 'clinic-review' && findWrongClinicPacket(event.state.packetKey)) renderWrongClinicReview(event.state.packetKey);
         else if (view === 'material-wrong' && event.state.assignmentId) await openMaterialWrongOmr(event.state.assignmentId);
@@ -1646,11 +1648,13 @@
     }
     function renderSimilarEntry(exam) {
       if (!window.StudentSimilarLink || !similarLinksMap) return '';
-      return window.StudentSimilarLink.renderEntry(exam, similarLinksMap, {
+      const entry = window.StudentSimilarLink.renderEntry(exam, similarLinksMap, {
         baseUrl: window.location.href,
         returnTarget: window.StudentArchiveReviewOutput?.studentReturnTarget?.(window.location.href) || '',
         escapeHtml
       });
+      // 유사 시험지 전체(풀어보기·정답·해설 링크)는 접어 둔다: 카드의 큰 단추는 "오답 다시 풀기"·"유사 문항 풀어보기"가 맡는다.
+      return entry ? `<details class="similar-all"><summary>유사 시험지 전체 보기 <span aria-hidden="true">＋</span></summary>${entry}</details>` : '';
     }
     function getOmrExams() {
       return Array.isArray(omrData?.exams) ? omrData.exams : [];
@@ -1885,41 +1889,74 @@
         ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
       `;
     }
-    // "오답 다시 풀기": 제출했고 틀린 번호가 있으며 문항을 읽어 올 수 있는 시험에만. 틀린 번호는 서버가 wrong_answers에서 채워 준다.
+    // 스스로 공부: "오답 다시 풀기"(틀린 문항)와 "유사 문항 풀어보기"(틀린 문항 각각의 같은 번호 유사 문항). 둘 다 제출했고 틀린 번호가 있는 시험에만.
+    // 틀린 번호는 서버가 wrong_answers에서 채워 준다. 유사 단추는 유사 시험지가 문항 수까지 맞게 연결된 시험에만(빌드가 만든 작은 표로 판단, 내려받기 없음).
     function getSelfStudyWrongCount(exam) {
       if (getStudentPortalRecordedSubmission(exam) !== 'submitted' || !isOmrReviewAvailable(exam)) return 0;
       return normalizeOmrWrongIds(exam?.wrong_ids).length;
+    }
+    function canOfferSelfStudySimilar(exam) {
+      return getSelfStudyWrongCount(exam) > 0 && Boolean(globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink));
     }
     function renderSelfStudyWrongButton(exam, from) {
       const count = getSelfStudyWrongCount(exam);
       if (!count || !globalThis.StudentSelfStudyView) return '';
       return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudyWrong('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">오답 다시 풀기 <span class="button-meta">${count}문항</span></button>`;
     }
-    async function openSelfStudyWrong(assignmentId, from = 'list') {
+    function renderSelfStudySimilarButton(exam, from) {
+      if (!globalThis.StudentSelfStudyView || !canOfferSelfStudySimilar(exam)) return '';
+      return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudySimilar('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">유사 문항 풀어보기</button>`;
+    }
+    function renderSelfStudyActions(exam, from) {
+      const wrong = renderSelfStudyWrongButton(exam, from);
+      if (!wrong) return '';
+      const similar = renderSelfStudySimilarButton(exam, from);
+      return `<div class="self-study-row${similar ? ' has-two' : ''}">${wrong}${similar}</div>`;
+    }
+    async function openSelfStudy(kind, assignmentId, from = 'list') {
+      const similar = kind === 'similar';
       const exam = findOmrExam(assignmentId);
       const wrongIds = exam ? normalizeOmrWrongIds(exam.wrong_ids) : [];
-      if (!exam || !wrongIds.length || !globalThis.StudentSelfStudyView) {
-        toast('오답 문항을 열 수 없습니다. 시험지 목록을 새로고침한 뒤 다시 시도해 주세요.');
+      const selfStudy = globalThis.StudentSelfStudyView;
+      const supply = globalThis.StudentSelfStudySimilar;
+      if (!exam || !wrongIds.length || !selfStudy || (similar && !supply)) {
+        toast(`${similar ? '유사' : '오답'} 문항을 열 수 없습니다. 시험지 목록을 새로고침한 뒤 다시 시도해 주세요.`);
         return;
       }
       selfStudyAssignmentId = String(exam.assignment_id || '');
+      selfStudyKind = similar ? 'similar' : 'wrong';
       const view = enterStudentView('omr-self-study', false, true);
       window.scrollTo(0, 0);
-      const selfStudy = globalThis.StudentSelfStudyView;
       const examTitle = (typeof studentExamTitle === 'function' ? studentExamTitle(exam, '') : '') || String(exam.exam_title || '').trim() || '시험지';
-      const title = selfStudy.buildTitle({ date: exam.exam_date, examTitle, purpose: '오답 다시 풀기', count: wrongIds.length });
+      const purpose = similar ? '유사 문항' : '오답 다시 풀기';
+      const titleFor = count => selfStudy.buildTitle({ date: exam.exam_date, examTitle, purpose, count });
       const back = () => (from === 'result' && getStudentPortalRecordedSubmission(exam) === 'submitted' ? renderOmrResult(exam) : renderOmrExams());
       const app = $('app');
-      app.innerHTML = `<div class="student-shell self-study">${renderPreviewNotice()}<button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button><h1 class="card-title ss-title">${escapeHtml(title)}</h1><div class="empty" role="status">틀린 문항을 불러오는 중입니다.</div></div>`;
+      const shell = (title, body) => `<div class="student-shell self-study">${renderPreviewNotice()}<button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button><h1 class="card-title ss-title">${escapeHtml(title)}</h1>${body}</div>`;
+      app.innerHTML = shell(titleFor(similar ? 0 : wrongIds.length), `<div class="empty" role="status">${similar ? '유사 문항을' : '틀린 문항을'} 불러오는 중입니다.</div>`);
       try {
-        const questions = await selfStudy.loadExamQuestions(exam);
-        if (!isStudentViewCurrent(view, 'omr-self-study')) return;
-        await selfStudy.show(selfStudy.buildWrongSet({ title, questions, wrongIds }), { container: app, onBack: back, headerHtml: renderPreviewNotice() });
+        let set;
+        let other = null;
+        if (similar) {
+          const loaded = await supply.loadSimilarSets(exam, similarLinksMap, { view: selfStudy, link: globalThis.StudentSimilarLink });
+          if (!isStudentViewCurrent(view, 'omr-self-study')) return;
+          set = supply.buildSimilarSet({ ...loaded, wrongIds });
+          set.title = titleFor(set.questions.length);
+          other = { label: '오답 다시 풀기', onClick: () => openSelfStudy('wrong', exam.assignment_id, from) };
+        } else {
+          const questions = await selfStudy.loadExamQuestions(exam);
+          if (!isStudentViewCurrent(view, 'omr-self-study')) return;
+          set = selfStudy.buildWrongSet({ title: titleFor(wrongIds.length), questions, wrongIds });
+          if (canOfferSelfStudySimilar(exam)) other = { label: '유사 문항 풀어보기', onClick: () => openSelfStudy('similar', exam.assignment_id, from) };
+        }
+        await selfStudy.show(set, { container: app, onBack: back, headerHtml: renderPreviewNotice(), bottomAction: other });
       } catch (error) {
         if (!isStudentViewCurrent(view, 'omr-self-study')) return;
-        app.innerHTML = `<div class="student-shell self-study">${renderPreviewNotice()}<button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button><h1 class="card-title ss-title">${escapeHtml(title)}</h1><div class="empty" role="alert"><strong>틀린 문항을 불러오지 못했어요.</strong><p>연결을 확인한 뒤 다시 시도해 주세요.</p><button type="button" class="btn" onclick="openSelfStudyWrong('${escapeHtml(selfStudyAssignmentId)}', '${from === 'result' ? 'result' : 'list'}')">다시 불러오기</button></div></div>`;
+        app.innerHTML = shell(titleFor(0), `<div class="empty" role="alert"><strong>${similar ? '유사' : '틀린'} 문항을 불러오지 못했어요.</strong><p>연결을 확인한 뒤 다시 시도해 주세요.</p><button type="button" class="btn" onclick="openSelfStudy('${similar ? 'similar' : 'wrong'}', '${escapeHtml(selfStudyAssignmentId)}', '${from === 'result' ? 'result' : 'list'}')">다시 불러오기</button></div>`);
       }
     }
+    function openSelfStudyWrong(assignmentId, from = 'list') { return openSelfStudy('wrong', assignmentId, from); }
+    function openSelfStudySimilar(assignmentId, from = 'list') { return openSelfStudy('similar', assignmentId, from); }
     function renderOmrPdfAction(exam) {
       if (exam?.is_review_only === true) return '';
       const status = String(exam?.pdf_status || 'pending');
@@ -2002,7 +2039,7 @@
           ${submissionUnknown ? '<p class="omr-review-unavailable">제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님께 확인하세요.</p>' : ''}
           ${showActionArea && hasActionContent ? `
             <div class="omr-card-actions ${submitted ? 'is-submitted' : ''} ${canInput && !isTeacherPreview ? '' : 'no-input'} ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
-              ${renderSelfStudyWrongButton(exam, 'list')}
+              ${renderSelfStudyActions(exam, 'list')}
               ${submitted ? `<button type="button" class="btn btn-primary score-open" onclick="renderOmrResult(findOmrExam('${escapeHtml(exam.assignment_id)}'))">점수·오답 확인</button>` : ''}
               ${isTeacherPreview || submitted ? '' : submissionUnknown || exam.is_review_only || exam.is_cancelled || exam.is_replaced ? '' : `<button class="btn btn-primary omr-start" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">틀린 번호 체크 <span class="button-meta">OMR</span></button>`}
               <div class="omr-sub-actions">
@@ -2137,7 +2174,7 @@
             <div class="recorded-score"><span>기록 점수</span><strong>${hasScore ? escapeHtml(exam.score) : '확인 필요'}${hasScore ? '<small>점</small>' : ''}</strong></div>
             <p class="card-desc">${hasScore ? '제출한 결과가 저장되었습니다.' : '제출은 완료됐어요. 점수는 선생님께 확인해 주세요.'} 제출한 OMR은 다시 수정할 수 없습니다.</p>
             <div class="recorded-wrongs"><strong>${hasWrongRecord ? wrong.length ? `오답 ${wrong.length}개` : '기록된 오답 없음' : '오답 번호 확인 필요'}</strong><span>${hasWrongRecord ? wrong.length ? wrong.map(no => `${no}번`).join(' · ') : '정답과 해설로 풀이를 확인해 보세요.' : '이 기록에는 오답 번호가 제공되지 않았습니다. 선생님께 확인해 주세요.'}</span></div>
-            <div class="omr-actions is-submitted">${renderSelfStudyWrongButton(exam, 'result')}${renderOmrReviewActions(exam)}${renderOmrPdfAction(exam)}</div>
+            <div class="omr-actions is-submitted">${renderSelfStudyActions(exam, 'result')}${renderOmrReviewActions(exam)}${renderOmrPdfAction(exam)}</div>
             <button type="button" class="list-more" onclick="renderOmrExams()">다른 시험지 확인하기 →</button>
           </section>
         </div>

@@ -78,9 +78,9 @@ test('exam source is read from the exam file or from the frozen snapshot, never 
   const source = 'window.examTitle = "x";\nwindow.questionBank = [{"id":"Q01","content":"a","choices":[],"answer":"1"},{"id":"Q02","content":"b","choices":[],"answer":"2"}];';
   const requested = [];
   const fetchImpl = async url => { requested.push(url); return { ok: true, text: async () => source }; };
-  const fromFile = await view.loadExamQuestions({ assignment_id: 'a', archive_file: 'exams/original/high/h1/2mid/가 고.js' }, { fetchImpl, baseUrl: 'https://school.test/AP------/apmath/student/index.html' });
+  const fromFile = await view.loadExamQuestions({ assignment_id: 'a', archive_file: 'exams/original/high/h1/2mid/25_가고_기출.js' }, { fetchImpl, baseUrl: 'https://school.test/AP------/apmath/student/index.html' });
   assert.deepEqual(fromFile.map(q => q.id), ['Q01', 'Q02']);
-  assert.equal(requested[0], 'https://school.test/AP------/archive/exams/original/high/h1/2mid/%EA%B0%80%20%EA%B3%A0.js');
+  assert.equal(requested[0], 'https://school.test/AP------/archive/exams/original/high/h1/2mid/25_%EA%B0%80%EA%B3%A0_%EA%B8%B0%EC%B6%9C.js');
   const frozen = JSON.stringify({ questions: [{ id: 7, content: 'frozen' }], meta: {} });
   requested.length = 0;
   const fromSnapshot = await view.loadExamQuestions({ assignment_id: 'a', archive_file: 'MIXED:k', mixed_payload_json: frozen }, { fetchImpl, baseUrl: 'https://school.test/AP------/apmath/student/index.html' });
@@ -88,6 +88,26 @@ test('exam source is read from the exam file or from the frozen snapshot, never 
   assert.equal(requested.length, 0, 'a frozen snapshot is used as issued, no file request');
   await assert.rejects(view.loadExamQuestions({ archive_file: 'MIXED:k' }, { fetchImpl }), /EXAM_SOURCE_UNAVAILABLE/);
   await assert.rejects(view.loadExamQuestions({ archive_file: 'exams/a.js' }, { fetchImpl: async () => ({ ok: false }), baseUrl: 'https://school.test/AP------/apmath/student/index.html' }), /EXAM_FETCH_FAILED/);
+});
+
+test('only plain exams/<name>.js paths on the same origin are downloaded and run; everything else is rejected before any request', async () => {
+  const base = 'https://school.test/AP------/apmath/student/index.html';
+  let called = 0;
+  const fetchImpl = async () => { called += 1; return { ok: true, text: async () => 'window.questionBank=[{"id":1}];' }; };
+  const rejected = [
+    'https://evil.test/x.js', '//evil.test/x.js', 'http://school.test/AP------/archive/exams/a.js',
+    'exams/../../apmath/x.js', 'exams/a/../b.js', 'exams\\a.js', 'exams/a%5Cb.js', 'exams/%2e%2e/x.js', 'exams//a.js',
+    'exams/a.js?x=1', 'exams/a.js#h', 'exams/a.txt', 'javascript:alert(1)', 'data:text/javascript,1', 'blob:https://school.test/x',
+    'data/similar-links-v1.json', 'assets/x.js', '', 'exams/' + 'a'.repeat(600) + '.js'
+  ];
+  for (const path of rejected) {
+    await assert.rejects(view.fetchQuestionList(path, { fetchImpl, baseUrl: base }), /EXAM_PATH_REJECTED/, `must reject: ${path}`);
+  }
+  assert.equal(called, 0, 'rejected paths never reach fetch');
+  assert.equal(view.safeExamPath('archive/exams/similar/high/h1/x_유사1.js'), 'exams/similar/high/h1/x_유사1.js');
+  await assert.rejects(view.loadExamFile({ archive_file: 'https://evil.test/x.js' }, { fetchImpl, baseUrl: base }), /EXAM_PATH_REJECTED/);
+  assert.equal((await view.fetchQuestionList('exams/similar/x/a_유사.js', { fetchImpl, baseUrl: base })).length, 1);
+  assert.equal(called, 1);
 });
 
 function buttonHelpers() {
@@ -115,8 +135,8 @@ test('the exam card offers the button only for a submitted exam with at least on
 
 test('the portal wires the button on the list card and the result screen and loads the view lazily', () => {
   assert.match(html, /<script src="\.\/self-study-view\.js\?v=[^"]+"><\/script>/);
-  assert.match(html, /\$\{renderSelfStudyWrongButton\(exam, 'list'\)\}/);
-  assert.match(html, /\$\{renderSelfStudyWrongButton\(exam, 'result'\)\}/);
+  assert.match(html, /\$\{renderSelfStudyActions\(exam, 'list'\)\}/);
+  assert.match(html, /\$\{renderSelfStudyActions\(exam, 'result'\)\}/);
   assert.match(html, /'omr-self-study':'exams'/);
   assert.match(html, /view === 'omr-self-study'/);
   const source = fs.readFileSync(path.join(root, 'apmath/student/self-study-view.js'), 'utf8');
