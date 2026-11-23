@@ -102,7 +102,7 @@ function renderStudentScreensWithExam(overrides = {}) {
     splitAssignments: () => ({ missing: [], done: [] })
   });
   vm.runInContext([
-    'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
+    'escapeHtml', 'studentExamTitle', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
     'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
     'renderOmrPdfAction', 'renderSimilarEntry', 'renderOmrExamCard', 'renderOmrHomeSection',
     'isStudentPortalSelfStudy', 'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
