@@ -573,6 +573,8 @@
   async function printPaper(unitKey, paperIndex, button, mode = 'exam') {
     const popup = window.open('about:blank', '_blank');
     if (!popup) { alert('새 창을 허용한 뒤 다시 출력해 주세요.'); return; }
+    // 출력 화면이 올 때까지 빈 흰 창이 길게 보이지 않게 안내를 먼저 쓴다(느린 망에서 6초 넘게 걸린다).
+    try { popup.document.title = '시험지 준비 중'; popup.document.body.textContent = '시험지를 준비하고 있습니다.'; } catch (error) { /* 안내를 못 써도 출력은 그대로 */ }
     try {
       let { outputEnvelope } = await preparePaper(unitKey, paperIndex, button);
       if (mode === 'sol' || mode === 'ans') outputEnvelope = await window.Archive2Output.publishOutputEnvelopeMode(outputEnvelope, mode);
