@@ -526,7 +526,7 @@ window.questionBank = [
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "tags": [],
-    "image": ""
+    "image": "",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -579,7 +579,7 @@ window.questionBank = [
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "tags": [],
-    "image": ""
+    "image": "",
     "level": "하",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
