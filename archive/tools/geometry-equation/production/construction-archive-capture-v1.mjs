@@ -19,6 +19,18 @@ const EXAM_UID=/^[\p{L}\p{N}_.-]{1,180}$/u;
 export const DISPLAY_SCALE_TOLERANCE_CSS_PX=1;// compareActualDisplayEnvelope's default toleranceCssPx
 const FLOAT_SLACK=1e-9;// exactly 1 px must not be refused for float noise (a 1 px difference of 174/384 computes to 1.000000000000007)
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});// the matrix row below, as in phase2.mjs 739
+// Why a phone row failed, one short code per error (the part after ARCHIVE_PHONE_DISPLAY_FAIL:), so a scorer can tell a figure that is cut off or lost (blocking) from labels that touch (a deduction).
+// An error is "<assetId>:<CODE>:<detail>" (layout replay) or "<CODE>:<assetId>" (row checks); a page exception text has no code at all.
+const PHONE_REASON_ORDER=['IMAGE_LOAD_FAIL','TARGET_OUTSIDE_SCREEN','TARGET_HORIZONTAL_OVERFLOW','TEXT_CLIPPED','GEOMETRY_VIEWPORT_CLIPPING'];
+export function phoneFailureReasons(errors,assetId){
+  const reasons=[];
+  for(const error of errors){
+    const text=String(error),stripped=text.startsWith(assetId+':')?text.slice(assetId.length+1):text,head=stripped.split(':')[0];
+    const reason=head==='TARGET_SVG_LOAD_FAIL'?'IMAGE_LOAD_FAIL':/^[A-Z][A-Z0-9_]*$/.test(head)?head:'PAGE_ERROR';
+    if(!reasons.includes(reason))reasons.push(reason);
+  }
+  return reasons.sort((a,b)=>{const ia=PHONE_REASON_ORDER.indexOf(a),ib=PHONE_REASON_ORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib);});
+}
 // A phone (<= 640 px wide: archive2-preview-mobile.css shows the solution figure at most 92% of the box wide and 340 px high). 390 x 844 is the common modern phone.
 export const PHONE_VIEWPORT=Object.freeze({width:390,height:844});
 const PROTECTED_FIELDS=['content','choices','answer','solution','image'];
@@ -401,9 +413,10 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
       const phoneErrors=[...(phoneRow.errors||[])];
       if(phoneRectOk&&outsideScreenPx>DISPLAY_SCALE_TOLERANCE_CSS_PX)phoneErrors.push('TARGET_OUTSIDE_SCREEN:'+assetId);
       if(!phoneRectOk&&!phoneErrors.length)phoneErrors.push('NO_TARGET_RECT');
-      state.phone={status:phoneErrors.length?'FAIL':'PASS',viewport:{...PHONE_VIEWPORT},imageRect:phoneRect??null,displayScale:phoneRectOk?Math.min(phoneRect.width/intrinsic.width,phoneRect.height/intrinsic.height):null,outsideScreenPx,errors:phoneErrors,...(phoneRow.pageNotes?.length?{pageNotes:phoneRow.pageNotes}:{})};
-      if(phoneErrors.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL',{...state.phone});
-    }else if(phoneRows.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL',{errors:phoneRows.flatMap(item=>item.errors??[])});
+      const phoneReasons=phoneFailureReasons(phoneErrors,assetId);
+      state.phone={status:phoneErrors.length?'FAIL':'PASS',viewport:{...PHONE_VIEWPORT},imageRect:phoneRect??null,displayScale:phoneRectOk?Math.min(phoneRect.width/intrinsic.width,phoneRect.height/intrinsic.height):null,outsideScreenPx,reasons:phoneReasons,errors:phoneErrors,...(phoneRow.pageNotes?.length?{pageNotes:phoneRow.pageNotes}:{})};
+      if(phoneErrors.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL:'+phoneReasons[0],{...state.phone});
+    }else if(phoneRows.length){const rowErrors=phoneRows.flatMap(item=>item.errors??[]),reasons=phoneFailureReasons(rowErrors,assetId);throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL:'+(reasons[0]??'NO_PHONE_ROW'),{reasons,errors:rowErrors});}
     return outcome('ARCHIVE_BOUND');
   }catch(error){
     if(!(error instanceof Stop))throw error;

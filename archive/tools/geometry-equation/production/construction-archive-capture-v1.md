@@ -105,7 +105,7 @@ outside the repository (in the R1-a evidence directory). The same holds for `net
 
 After those, the same exam page is judged on a phone (the `phone` row, 390 px wide, which makes the page use its <= 640 px layout, archive2-preview-mobile.css):
 the figure must load, stay inside its question box and the screen (`TARGET_HORIZONTAL_OVERFLOW:<id>`, `TARGET_OUTSIDE_SCREEN:<id>`) and keep its labels whole at
-the size the phone really gives it (the same isolated replay as on desktop). Any of these is `ARCHIVE_PHONE_DISPLAY_FAIL` (`detail`: the `phone` record); the result
+the size the phone really gives it (the same isolated replay as on desktop). Any of these is `ARCHIVE_PHONE_DISPLAY_FAIL:<REASON>` (`detail`: the `phone` record; REASON is the first of `phone.reasons`, blocking ones first: `IMAGE_LOAD_FAIL`, `TARGET_OUTSIDE_SCREEN`, `TARGET_HORIZONTAL_OVERFLOW`, `TEXT_CLIPPED`, `GEOMETRY_VIEWPORT_CLIPPING`, then the rest such as `LABEL_OVERLAP`, `LABEL_GEOMETRY_COLLISION`, `PAGE_ERROR`); the result
 always carries `phone` (`status`, `imageRect`, `displayScale`, `outsideScreenPx`, `errors`). There is no size-class check any more (`ARCHIVE_SIZE_CLASS_MISMATCH` is gone):
 the page ignores the class, so what counts is the size the Archive really displays, caught by `displayScale`.
 

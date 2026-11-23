@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {phoneFailureReasons} from '../production/construction-archive-capture-v1.mjs';
 import {recordArchiveEvidence,judgeArchivePage,judgeArchiveTarget} from '../record-visual-browser-evidence.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
@@ -100,4 +101,12 @@ test('judgeArchiveTarget: each target of one exam is judged on its own',()=>{
   assert.deepEqual(judgeArchiveTarget(state,item,'b').errors,['TARGET_HORIZONTAL_OVERFLOW:b']);
   assert.deepEqual(judgeArchiveTarget(state,item,'b').pageNotes,[]);
   assert.deepEqual(judgeArchivePage(state,item).errors,['TARGET_HORIZONTAL_OVERFLOW:b']);
+});
+
+test('phoneFailureReasons: each phone error becomes one short reason, blocking ones first, the first goes behind ARCHIVE_PHONE_DISPLAY_FAIL:',()=>{
+  const id='va-1';
+  assert.deepEqual(phoneFailureReasons([`${id}:LABEL_OVERLAP:A:B`,`${id}:TEXT_CLIPPED:A`,'TARGET_OUTSIDE_SCREEN:'+id],id),['TARGET_OUTSIDE_SCREEN','TEXT_CLIPPED','LABEL_OVERLAP']);
+  assert.deepEqual(phoneFailureReasons(['TARGET_SVG_LOAD_FAIL:'+id],id),['IMAGE_LOAD_FAIL']);
+  assert.deepEqual(phoneFailureReasons(['TARGET_HORIZONTAL_OVERFLOW:'+id,`${id}:LABEL_GEOMETRY_COLLISION:A:g`,`${id}:LABEL_GEOMETRY_COLLISION:B:g`],id),['TARGET_HORIZONTAL_OVERFLOW','LABEL_GEOMETRY_COLLISION']);
+  assert.deepEqual(phoneFailureReasons(['page.waitForFunction: Error: timeout'],id),['PAGE_ERROR']);
 });
