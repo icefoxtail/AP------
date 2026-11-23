@@ -140,8 +140,6 @@
     minQuestions: 5,
     // 표시값은 이 단위(%)로 반올림하고 [step, 100−step]로 자른다.
     stepPercent: 1,
-    // 상위 비율을 같은 폭으로 나눈 계급(구간) 수. 10이면 10% 폭.
-    tierCount: 10,
   });
 
   // 표준정규 누적분포. erf는 Abramowitz-Stegun 7.1.26 근사(오차 1.5e-7 이하). 외부 라이브러리를 쓰지 않는다.
@@ -179,12 +177,9 @@
     // 학부모가 읽기 쉽게 "상위 N%" 한 방향으로 통일한다. 끝만 닫는다: 상위 1% 이내 / 하위 1% 이내.
     const edge = topPercent <= step ? "top" : topPercent >= 100 - step ? "bottom" : null;
     const label = edge === "top" ? `상위 ${step}% 이내` : edge === "bottom" ? `하위 ${step}% 이내` : `상위 약 ${topPercent}%`;
-    // 10% 폭의 계급(구간) 10개: 1구간 = 상위 0~10%, …, 10구간 = 상위 90~100%. 반올림 전 값으로 정한다.
-    const tier = Math.min(A.tierCount, Math.max(1, Math.ceil(topRaw / (100 / A.tierCount))));
-    const tierLabel = `${A.tierCount}구간 중 ${tier}구간`;
     return {
       questions: n, score: correct, mean, sd, z,
-      percentileTopRaw: topRaw, percentileTop: topPercent, edge, label, tier, tierLabel,
+      percentileTopRaw: topRaw, percentileTop: topPercent, edge, label,
       unratedCount: unrated,
       assumptions: { pByLevel: { ...A.pByLevel }, noLevel: A.noLevel, abilitySpread: A.abilitySpread, minQuestions: A.minQuestions, stepPercent: step },
     };
