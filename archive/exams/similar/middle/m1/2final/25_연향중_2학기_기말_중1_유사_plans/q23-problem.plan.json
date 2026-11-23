@@ -1,0 +1,48 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "c1",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 6,
+      "inside": [
+        {
+          "kind": "SPHERE",
+          "radius": 3
+        }
+      ]
+    }
+  ],
+  "dims": [
+    {
+      "solid": "c1",
+      "radius": "bottom"
+    },
+    {
+      "solid": "c1",
+      "height": true,
+      "side": "RIGHT"
+    }
+  ],
+  "caption": "원기둥에 꼭 맞게 들어간 구",
+  "accessibilityDescription": "밑면의 반지름이 3cm, 높이가 6cm인 원기둥에 꼭 맞게 들어간 구를 나타낸 입체도형 그림이다.",
+  "sourceQuote": "다음 그림과 같이 밑면의 반지름의 길이가 $",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "sphere inscribed in cylinder",
+      "mappedTo": [
+        "solids"
+      ]
+    }
+  ],
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q23.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q23-result.json",
+    "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q23-state.json",
+    "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q23-solution.svg"
+  }
+}

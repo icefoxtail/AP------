@@ -71,7 +71,7 @@ test('엔진: 시험지 JS는 건드리지 않고 표시 제목만 바꾼다(exa
   assert.match(engine, /AppState\.displayTitle = window\.examDisplayTitle \|\| readableTitle\(AppState\.title\);/);
   // 실제로 쓰이는 길은 화면 실행기 어댑터다: 식별 제목(title)은 그대로, 표시 제목만 읽는 이름으로.
   const adapter = fs.readFileSync(path.join(root, 'archive', 'screen-runtime-adapter.js'), 'utf8');
-  assert.match(adapter, /displayTitle = window\.examDisplayTitle \|\| window\.ExamDisplayTitle\?\.readableExamTitle\?\.\(title\) \|\| title;/);
+  assert.match(adapter, /displayTitle = window\.examDisplayTitle \|\| window\.ExamDisplayTitle\?\.displayTitleOf\?\.\(title, \{ hint: input\.title \}\) \|\| title;/);
   assert.match(adapter, /title, identityTitle: title, displayTitle,/, '식별 제목은 원래 값 그대로');
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools', 'archive-pages-release-manifest.json'), 'utf8'));
   assert.ok(manifest.archiveRootFiles.includes('exam-display-title.js'), '배포 manifest에 새 파일이 들어 있다');

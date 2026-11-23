@@ -70,11 +70,12 @@
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20261119.1"></script>
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+    <script src="exam-display-title.js?v=20261123-korean-titles-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="render-diagnostics.js?v=20261123-wrong-notice-1"></script>
+    <script src="render-diagnostics.js?v=20261123-image-fail-2"></script>
     <script src="mathjax_render_loop.js?v=20261123-one-item-1"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
@@ -445,10 +446,10 @@
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
-    <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="question-image-readiness.js?v=20261123-image-fail-1"></script>
     <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <script src="common-fast-runtime.js?v=20261123-one-item-1"></script>
-    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
+    <script src="equal-slot-engine.js?v=20261123-image-fail-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
     <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1"></script>
@@ -571,9 +572,20 @@ function getIdentityTitle() {
         || 'JS아카이브 믹서 출제';
 }
 
+// 보이는 제목: 내부 키(파일 이름·스냅샷 키)가 제목 자리에 나오지 않게 한다. 식별값(getIdentityTitle)은 그대로 둔다.
+function getDisplayTitle() {
+    const identity = getIdentityTitle();
+    return window.ExamDisplayTitle?.displayTitleOf?.(identity, { fallback: identity }) || identity;
+}
+
+// 탭 제목 = "인쇄 → PDF로 저장"의 기본 파일 이름. 한글 제목(+ 해설/정답).
+function syncMixedDocumentTitle() {
+    document.title = window.ExamDisplayTitle?.titleWithMode?.(getDisplayTitle(), AppState.mode) || document.title;
+}
+
 function getDefaultPrintHeaderOptions() {
     return {
-        title: getIdentityTitle(),
+        title: getDisplayTitle(),
         metaRight: window.APPrintHeaderTable?.getAcademy?.() || '',
         subtitle: '',
         showNameLine: true,
@@ -647,7 +659,7 @@ function togglePrintHeaderEditor(event) {
 function getRenderHeaderTitle(type, fallbackTitle) {
     const opts = getPrintHeaderOptions();
     if (shouldApplyPrintHeader(type) && opts.title) return opts.title;
-    return fallbackTitle || getIdentityTitle();
+    return fallbackTitle || getDisplayTitle();
 }
 
 function getRenderHeaderMetaRight(type, fallbackMetaRight) {
@@ -1800,7 +1812,19 @@ function normalizeQuestionImageSources(root) {
     });
 }
 
+// 그림 하나가 안 받아져도 시험지 전체를 막지 않는다(2026-11-23): 그 <img>를 같은 자리의 "그림을 불러오지 못했습니다" 빈 상자로 바꾸고
+// 진단 배열·알림 띠에 남긴다(render-diagnostics.js). 진단 파일이 없는 화면은 false를 돌려 예전처럼 실패한다.
+function recoverFailedQuestionImage(image, result) {
+    return window.APRenderDiagnostics?.replaceImage?.(image, result) === true;
+}
+
 function validateQuestionImageReadiness(root) {
+    // 대기 단계가 놓친 안 받아진 그림이 남아 있어도(드묾) 같은 표식으로 바꾼 뒤 검사한다.
+    const readiness = window.APQuestionImageReadiness;
+    collectQuestionImages(root).forEach(image => {
+        const state = readiness.inspectImage(image);
+        if (state.status !== 'loaded') recoverFailedQuestionImage(image, state);
+    });
     return window.APQuestionImageReadiness.validateImages(collectQuestionImages(root), {
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' }
     });
@@ -1811,6 +1835,7 @@ async function waitForQuestionImages(root, timeoutMs = 1200, signal) {
     const result = await window.APQuestionImageReadiness.waitForImages(images, {
         timeoutMs, signal,
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
+        onFailure: recoverFailedQuestionImage,
         throwOnFailure: true
     });
     return result.summary;
@@ -1823,6 +1848,7 @@ async function prepareQuestionImages(root, timeoutMs = 1200, signal) {
 async function waitForQuestionImage(img, timeoutMs = 1200) {
     const result = await window.APQuestionImageReadiness.waitForImage(img, timeoutMs);
     if (result.status !== 'loaded') {
+        if (recoverFailedQuestionImage(img, result)) return result;
         throw window.APQuestionImageReadiness.createReadinessError([result], {
             error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE'
         });
@@ -2185,7 +2211,7 @@ function makePage(area, type, pNum) {
     if (showHeader) {
         const header = document.createElement('div');
         header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-        const title = getIdentityTitle();
+        const title = getDisplayTitle();
 
         if (type === 'exam') {
             const textWrap = document.createElement('div');
@@ -3362,8 +3388,8 @@ async function init() {
                 applyQrSolutionLockUI();
                 AppState.qpp = normalizeMixedQpp(p.get('qpp') || AppState.meta.qpp);
                 AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
-                const title = getIdentityTitle();
-                document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
+                const title = getDisplayTitle();
+                document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title; syncMixedDocumentTitle();
                 document.getElementById('qppSelect').value = String(AppState.qpp);
                 document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
                 renderPrintHeaderControls();
@@ -3419,8 +3445,8 @@ async function init() {
     AppState.qpp = normalizeMixedQpp(strictOutput ? outputEnvelope.meta.qpp : (p.get('qpp') || AppState.meta.qpp));
 
     AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
-    const title = getIdentityTitle();
-    document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
+    const title = getDisplayTitle();
+    document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title; syncMixedDocumentTitle();
     document.getElementById('qppSelect').value = String(AppState.qpp);
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
     renderPrintHeaderControls();
@@ -3701,7 +3727,7 @@ return { AppState,
         if (ctx) mixedReadinessTracker = ctx.readinessTracker;
         renderPrintHeaderControls();
         syncQrOutputControls(ctx?.input.url);
-        document.getElementById('ctrl-title').textContent = getIdentityTitle(); document.getElementById('ctrl-title').title = getIdentityTitle();
+        document.getElementById('ctrl-title').textContent = getDisplayTitle(); document.getElementById('ctrl-title').title = getDisplayTitle(); syncMixedDocumentTitle();
         document.getElementById('qppSelect').value = String(AppState.qpp);
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${AppState.mode}`));
         applyQrSolutionLockUI();

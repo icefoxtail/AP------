@@ -18,7 +18,8 @@ test('archive/exams questionBank inline image inventory validates production ima
   // exam publish that adds an inline image does not turn CI red without a defect.
   const generated = buildInlineImageInventoryReport();
 
-  assert.equal(generated.testFixtureTotal, 4);
+  // 5 = the four earlier fixture images plus test-fixtures/render-image-fault.js (one inline figure for the missing-figure check).
+  assert.equal(generated.testFixtureTotal, 5);
   assert.equal(generated.validation.relativePathInvalidCount, 0);
   assert.equal(generated.validation.errorCount, 0);
   assert.equal(generated.validation.missingProductionAssetCount,
@@ -46,8 +47,11 @@ test('archive/exams questionBank inline image inventory validates production ima
     console.warn(`WARNING inline-image known-missing entries now resolved (owner may remove): ${JSON.stringify(generated.resolvedKnownMissing)}`);
   }
   assert.ok(generated.records.filter(row => !row.testFixture && row.assetExists).every(row => row.relativePathValid));
-  assert.equal(generated.records.filter(row => row.testFixture && !row.assetExists).length, 1,
-    'the single missing image remains isolated to the intentional readiness test fixture');
+  const missingFixtureRows = generated.records.filter(row => row.testFixture && !row.assetExists);
+  assert.equal(missingFixtureRows.length, 2,
+    'missing images remain isolated to the two intentional test fixtures (readiness, missing-figure)');
+  assert.ok(missingFixtureRows.some(row => row.file === 'test-fixtures/render-image-fault.js'),
+    'the missing-figure fixture is one of them');
 
   const q9 = generated.records.find(row => row.file === 'original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js' && row.questionId === 9);
   assert.deepEqual(q9, { file: 'original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js', questionId: 9, sourceOrdinal: 9,

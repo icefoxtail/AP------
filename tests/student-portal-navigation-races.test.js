@@ -25,7 +25,7 @@ function productionFunction(name) {
 }
 
 const functionNames = [
-  'escapeHtml', 'beginStudentRequest', 'captureStudentAuthContext',
+  'escapeHtml', 'studentExamTitle', 'beginStudentRequest', 'captureStudentAuthContext',
   'isStudentAuthContextCurrent', 'isStudentRequestCurrent',
   'enterStudentView', 'captureStudentView', 'isStudentViewCurrent',
   'recordStudentView', 'studentRouteForView', 'restoreStudentView', 'hasPortalReadAccess', 'renderPreviewNotice',
