@@ -23,7 +23,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "$y=x^2+2kx+k$가 $x$축에 접하려면 판별식이 0이어야 한다. $D=(2k)^2-4\\cdot1\\cdot k=4k(k-1)=0$이므로 $k=0$ 또는 $1$이다. 두 실수의 합은 1이므로 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$2x^3-mx^2+2x=x(2x^2-mx+2)=0$이다. $x=0$ 외에 서로 다른 두 실근이 있으려면 이차식의 판별식 $m^2-16>0$이어야 하며 두 근의 곱은 1이라 0과 겹치지 않는다. 자연수 $m$은 5부터 10까지 6개이므로 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$x^2-3xy-4y^2=(x-4y)(x+y)=0$이다. $x=a>0,y=b<0$이므로 $x=4y$는 성립하지 않고 $x=-y$다. 이를 $x^2+xy+y^2=7$에 대입하면 $x^2=7$이므로 $xy=-x^2=-7$이다. 정답은 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$-\\dfrac{1}{2}$"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$-1\\le3x+2$에서 $3x\\ge-3$이므로 $x\\ge-1$이다. $3x+2\\le-x$에서 $4x\\le-2$이므로 $x\\le-1/2$이다. 따라서 $a=-1,b=-1/2$이고 $a+b=-3/2$로 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$|2x-1|\\le x+1$은 $-(x+1)\\le2x-1\\le x+1$과 같다. 왼쪽에서 $x\\ge0$, 오른쪽에서 $x\\le2$를 얻으므로 해는 $0\\le x\\le2$다. 따라서 $b-a=2$로 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "$13$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
+    "solution": "행렬이 같으므로 $a+2=b+4$, $3=a-1$, $b-1=-b+3$, $c+2=2c-1$이 성립한다. 차례대로 $a=4,b=2,c=3$이고 모든 성분 조건과 맞는다. 따라서 $a+b+c=9$로 정답은 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -193,7 +193,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "밑변 60cm·높이 30cm인 직각삼각형에서 세로 길이가 $a$인 내접 직사각형의 가로 길이는 닮음으로 $60(1-a/30)=60-2a$이다. 넓이는 $S(a)=a(60-2a)=-2(a-15)^2+450$이므로 $0\\le a\\le30$에서 $a=15$일 때 최대다. 따라서 15cm로 ③이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -221,7 +221,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "$w^3=1$의 허근은 $w^2+w+1=0$을 만족하므로 $w+\\overline w=-1$, $w\\overline w=1$이다. 따라서 $(w+1)(\\overline w+1)=w\\overline w+w+\\overline w+1=1$이다. 주어진 왼쪽 식은 $w$이므로 $a=1,b=0$, $a+b=1$로 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -249,7 +249,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$x+2y=5$에서 $x=5-2y$이고 $xy=2$이므로 $(5-2y)y=2$, 즉 $2y^2-5y+2=(2y-1)(y-2)=0$이다. 두 해는 $(x,y)=(4,1/2)$ 또는 $(1,2)$다. 조건 $\\alpha<\\beta$를 만족하는 것은 $(1,2)$이므로 $\\alpha+\\beta=3$으로 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -277,7 +277,7 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$1200=2^4\\cdot3\\cdot5^2$이다. 그 양의 약수가 6의 배수이려면 소인수 2의 지수는 1~4 중 하나(4가지), 소인수 3의 지수는 1(1가지), 5의 지수는 0~2(3가지)여야 한다. 경우의 수는 $4\\cdot1\\cdot3=12$로 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -305,7 +305,7 @@ window.questionBank = [
       "$780$"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "네 자리 짝수의 끝자리는 0,2,4,6 중 하나다. 끝자리가 0이면 첫 자리는 1~7에서 7가지, 가운데 두 자리는 남은 6·5가지이므로 210개다. 끝자리가 2,4,6이면 끝자리 3가지, 첫 자리는 0과 끝자리를 제외한 6가지, 가운데는 6·5가지이므로 540개다. 전체는 750개로 ④이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
     "subUnit": "permutation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -333,7 +333,7 @@ window.questionBank = [
       "${}_{n-2}C_{r}+{}_{n-2}C_{r-1}$"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "특정한 2명은 반드시 뽑아야 하므로 이 두 사람을 먼저 포함한다. 남은 $n-2$명 중에서 $r-2$명을 뽑기만 하면 된다. 경우의 수는 $\\binom{n-2}{r-2}={}_{n-2}C_{r-2}$이므로 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -361,7 +361,7 @@ window.questionBank = [
       "$AB=O$이면 $A=O$ 또는 $B=O$이다."
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ④이다.",
+    "solution": "행렬 $A+B=A-B$가 성립하면 양변에서 $A$를 빼서 $B=-B$를 얻는다. 즉 $2B=O$이므로 실수 성분 행렬에서 $B=O$이다. 역으로도 성립하므로 항상 옳은 명제는 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -389,7 +389,7 @@ window.questionBank = [
       "$\\dfrac{41}{4}$"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "$f(-2)=f(2)$에서 $4-2a+b=4+2a+b$이므로 $a=0$이다. 따라서 $f(x)=x^2+b$이다. 직선 $y=x+1$과 만나려면 $x^2-x+(b-1)=0$이 실근을 가져야 하므로 판별식 $1-4(b-1)=5-4b\\ge0$, 즉 $b\\le5/4$다. 따라서 $f(3)=9+b$의 최댓값은 $41/4$로 ⑤이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -417,7 +417,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$kx^2-4kx+3=k(x-2)^2+3-4k$이다. $k<0$이면 $|x|$가 큰 곳에서 음수가 되므로 해가 있다. 양의 정수 $k$이면 $x=2$에서 $3-4k\\le-1$이라 해가 있다. $k=0$이면 부등식이 $3\\le0$으로 거짓이므로 해가 없다. 따라서 가장 작은 정수는 0으로 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -445,7 +445,7 @@ window.questionBank = [
       "$0$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "교점의 $x$좌표가 $-4,0$이므로 $h(x)=f(x)-g(x)=a x(x+4)$로 놓을 수 있다. $f$가 아래로 볼록하고 $g$는 직선이므로 $a>0$이다. 구간 $[-3,1]$에서 꼭짓점 $x=-2$의 값은 $-4a$, 양끝 값은 $h(-3)=-3a$, $h(1)=5a$다. 최댓값 $5a=5$에서 $a=1$이므로 최솟값은 $-4$로 ③이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -473,7 +473,7 @@ window.questionBank = [
       "$40$"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "첫 부등식은 $(x-1)(x-4)<0$이므로 $1<x<4$이고 정수 후보는 2,3이다. 둘째는 $(x-1)(x-b+1)>0$으로, $x=2$에서는 $b<3$, $x=3$에서는 $b<4$일 때 성립한다. 두 정수 모두 배제되려면 $b\\ge4$여야 하고 $b>2$도 만족한다. 최솟값 $M=4$이므로 $10M=40$으로 ⑤이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -501,7 +501,7 @@ window.questionBank = [
       "$2^{4051}$"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ⑤이다.",
+    "solution": "각 이차방정식의 판별식은 $9i^2-4j$이다. $i,j$가 각각 1,2일 때 이 값은 모두 양수이므로 서로 다른 실근은 각 2개다. 따라서 $A=\\begin{pmatrix}2&2\\\\2&2\\end{pmatrix}$이다. $A^2=4A$이므로 $A^{2025}=4^{2024}A$이고 성분 합은 $8\\cdot4^{2024}=2^{4051}$로 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -529,7 +529,7 @@ window.questionBank = [
       "$80$"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$a_2=5$로 고정되어 있다. $a_1\\le5$이므로 $a_1$은 1~5의 5가지다. $a_3>5$이므로 6,7,8,9 중 하나이며, 각 경우 $a_4\\ge a_3$의 선택은 4,3,2,1가지다. 따라서 $5(4+3+2+1)=50$가지로 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -553,7 +553,7 @@ window.questionBank = [
     "content": "$x$값의 범위가 $-3\\leq x\\leq1$일 때, 이차함수 $y=3x^2-6x+1$의 최솟값을 구하고 그 풀이과정을 서술하시오.",
     "choices": [],
     "answer": "$-2$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $-2$이다.",
+    "solution": "$y=3x^2-6x+1=3(x-1)^2-2$이므로 모든 실수에서 $y\\ge-2$다. 주어진 구간 $-3\\le x\\le1$에 꼭짓점 $x=1$이 포함되어 이 값이 실제로 달성된다. 따라서 최솟값은 $-2$다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -577,7 +577,7 @@ window.questionBank = [
     "content": "두 행렬 $A=\\begin{pmatrix} 3 & 2 \\\\ 1 & 4 \\end{pmatrix}$, $B=\\begin{pmatrix} 1 & -2 \\\\ 3 & -1 \\end{pmatrix}$에 대하여 두 이차정사각행렬 $X$, $Y$가 $X+Y=A$, $X-Y=B$를 만족시킬 때, 행렬 $XY$의 모든 성분의 합을 구하고 그 풀이과정을 서술하시오.",
     "choices": [],
     "answer": "$\\dfrac{57}{4}$",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 $\\dfrac{57}{4}$이다.",
+    "solution": "$X+Y=A$, $X-Y=B$에서 $X=(A+B)/2=\\begin{pmatrix}2&0\\\\2&3/2\\end{pmatrix}$, $Y=(A-B)/2=\\begin{pmatrix}1&2\\\\-1&5/2\\end{pmatrix}$이다. 곱하면 $XY=\\begin{pmatrix}2&4\\\\1/2&31/4\\end{pmatrix}$이다. 따라서 모든 성분의 합은 $2+4+1/2+31/4=57/4$다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -601,7 +601,7 @@ window.questionBank = [
     "content": "실수 $a$, $b$에 대하여 이차부등식 $ax^2-2x+b<0$의 해가 $-1<x<3$일 때, 이차부등식 $ax^2-2x+b\\leq0$을 만족시키는 정수 $x$의 개수를 구하고 그 풀이과정을 서술하시오.",
     "choices": [],
     "answer": "$5$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $5$이다.",
+    "solution": "$ax^2-2x+b<0$의 해가 $-1<x<3$이므로 최고차항 계수는 양수이고 두 근이 $-1,3$이다. 따라서 $ax^2-2x+b=a(x+1)(x-3)$이다. 등호를 허용한 부등식의 해는 $-1\\le x\\le3$이며 정수는 $-1,0,1,2,3$의 5개다.",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -625,7 +625,7 @@ window.questionBank = [
     "content": "다음 조건을 만족시키는 세 정수 $a$, $b$, $c$에 대하여 일의 자리의 수가 $a$, 십의 자리의 수가 $b$, 백의 자리의 수가 $c$인 세 자리 자연수의 개수를 구하고 그 풀이과정을 서술하시오.<br><br>가) $(a-b)(b-c)(a-2c)\\neq0$<br>나) $0\\leq a\\leq3$, $1\\leq b\\leq5$, $2\\leq c\\leq6$",
     "choices": [],
     "answer": "$71$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $71$이다.",
+    "solution": "범위만 보면 $a$ 4가지, $b$ 5가지, $c$ 5가지이므로 100가지다. $a=2c$는 $a\\le3$, $c\\ge2$이므로 불가능하여 자동으로 조건을 만족한다. $a=b$인 경우는 $a=b\\in\\{1,2,3\\}$과 $c$ 5가지로 15가지, $b=c$는 $b=c\\in\\{2,3,4,5\\}$과 $a$ 4가지로 16가지다. 양쪽에 중복으로 빠진 $a=b=c=2,3$의 2가지를 더하면 $100-15-16+2=71$개다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",

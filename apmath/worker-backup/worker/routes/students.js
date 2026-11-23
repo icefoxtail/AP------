@@ -1,6 +1,7 @@
 import { jsonResponse } from '../helpers/response.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser, makeId } from '../helpers/foundation-db.js';
 import { normalizeBranch } from '../helpers/branch.js';
+import { loadSelfStudySummaryForStudent } from '../helpers/student-self-study.js';
 import {
   buildStudentIdentityKey,
   generateUniqueStudentPin,
@@ -562,12 +563,15 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
         ORDER BY cth.changed_at DESC, cth.id DESC
       `).bind(studentId).all()
     ]);
+    const selfStudy = await loadSelfStudySummaryForStudent(env, studentId);
     return jsonResponse({
       success: true,
       student_id: studentId,
       parent_contacts: parentContactsRes.results || [],
       student_status_history: statusHistoryRes.results || [],
-      class_transfer_history: transferHistoryRes.results || []
+      class_transfer_history: transferHistoryRes.results || [],
+      self_study: selfStudy.rows,
+      self_study_available: selfStudy.available
     });
   }
 

@@ -452,13 +452,22 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     }
   }
   const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);
+  const displayTextBelow11px=[];
   if(publication) {
     const desktopPublication=!capture.publicationViewport||Number.isFinite(capture.publicationViewport?.width)&&capture.publicationViewport.width>=1280;
     const kinds=new Set(['POINT_NAME','ANGLE_LABEL','LENGTH_LABEL','AREA_LABEL','COORDINATE_LABEL','EQUATION_LABEL','TICK_LABEL']);
     const labels=capture.labels.filter(v=>kinds.has(v.kind));
     if((!labels.length&&!textFreeFigure)||capture.fontStatus!=='loaded')errors.push('PUBLICATION_TEXT_NOT_READY');
     for(const label of capture.labels) {
-      if(desktopPublication&&(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
+      // 2026-11-23 (owner): only the AUTHORED font (the label's own size in SVG units, baseFontPx) keeps the 11 floor. A label authored at 11 or more that displays smaller because the page shrinks the figure
+      // no longer fails ("students zoom in"); it is listed in displayTextBelow11px. A label with no known authored font (legacy outlines) keeps the old displayed-size rule.
+      if(desktopPublication){
+        const authored=label.baseFontPx,authoredKnown=Number.isFinite(authored)&&authored>0,displayedBelow=Number.isFinite(label.effectiveFontPx)&&label.effectiveFontPx<11-1e-7;
+        // cross-check: data-font-px may say 20 while a nested viewport shrank the outline; effectiveFontPx / root display scale is the font in SVG units that was really drawn, and that stays under the authored floor
+        const rootScale=capture.coordinateScale,drawn=Number.isFinite(rootScale)&&rootScale>0?label.effectiveFontPx/rootScale:null;
+        if(!Number.isFinite(label.effectiveFontPx)||(authoredKnown?(authored<11-1e-7||(drawn!==null&&drawn<11-1e-3)):displayedBelow))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
+        else if(displayedBelow)displayTextBelow11px.push({id:label.id,effectiveFontPx:label.effectiveFontPx});
+      }
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
     }
     if(labels.some(v=>!Number.isFinite(v.baseFontPx)||Math.abs(v.baseFontPx-labels[0].baseFontPx)>1e-7))errors.push('PUBLICATION_BASE_FONT_INCONSISTENT');
@@ -483,6 +492,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
   return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,tickLabelEvidence:tickEvidence,tickKnockoutEvidence,
     labelCollisionCount,criticalCollisionCount,observedLabelCollisionCount,observedCriticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,
+    // present only when a label displays below 11 CSS px (information, not a failure; 2026-11-23): keeps every other analysis, and its hash, unchanged
+    ...(displayTextBelow11px.length?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:displayTextBelow11px.length,displayTextBelow11pxLabels:displayTextBelow11px}:{}),
     labelMeasurements:capture.labels.map(v=>({id:v.id,kind:v.kind,owner:v.owner,annotation:v.annotation,finalViewportCssFontPx:v.effectiveFontPx,baseFontPx:v.baseFontPx,font:v.font,client:v.client,bbox:v.bbox})),
     measurements:Object.fromEntries(capture.labels.map(v=>[v.id,[v.bbox.width+2,v.bbox.height+2]]))};
 }

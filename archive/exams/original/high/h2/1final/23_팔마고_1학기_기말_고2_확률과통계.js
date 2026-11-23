@@ -335,7 +335,7 @@ window.questionBank = [
       "복수정답"
     ],
     "wide": false,
-    "content": "공사건이 아닌 두 사건 $A$, $B$가 서로 독립일 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $P(B|A^C)=P(B)$\nㄴ. $P(A^C\\cup B^C)=1-P(A)P(B)$\nㄷ. $P(A\\cup B)-P(B)=P(A)P(B^C)$",
+    "content": "공사건이 아닌 두 사건 $A$, $B$가 서로 독립이고 $P(A)<1$일 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $P(B|A^C)=P(B)$\nㄴ. $P(A^C\\cup B^C)=1-P(A)P(B)$\nㄷ. $P(A\\cup B)-P(B)=P(A)P(B^C)$",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -344,7 +344,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 독립사건에서는 $P(A\\cap B)=P(A)P(B)$이고 여사건과도 독립성이 유지된다.\n조건 정리: $A$와 $B$는 공사건이 아니고 서로 독립이다.\n풀이 방향: ㄱ, ㄴ, ㄷ을 각각 독립성과 드모르간 법칙, 합사건 공식으로 판정한다.\n정석 풀이: ㄱ은 $A$와 $B$가 독립이면 $A^C$와 $B$도 독립이므로 $P(B|A^C)=P(B)$가 되어 참이다. ㄴ은 $A^C\\cup B^C=(A\\cap B)^C$이므로 $P(A^C\\cup B^C)=1-P(A\\cap B)=1-P(A)P(B)$가 되어 참이다. ㄷ은 $P(A\\cup B)-P(B)=P(A)+P(B)-P(A\\cap B)-P(B)=P(A)-P(A)P(B)=P(A)P(B^C)$가 되어 참이다. 따라서 ㄱ, ㄴ, ㄷ 모두 옳다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 독립사건에서는 $P(A\\cap B)=P(A)P(B)$이고 여사건과도 독립성이 유지된다.\n조건 정리: $A$와 $B$는 공사건이 아니고 서로 독립이며 $P(A)<1$이다.\n풀이 방향: ㄱ, ㄴ, ㄷ을 각각 독립성과 드모르간 법칙, 합사건 공식으로 판정한다.\n정석 풀이: ㄱ은 $P(A)<1$이므로 $P(A^C)>0$이고, $A$와 $B$가 독립이면 $A^C$와 $B$도 독립이므로 $P(B|A^C)=P(B)$가 되어 참이다. ㄴ은 $A^C\\cup B^C=(A\\cap B)^C$이므로 $P(A^C\\cup B^C)=1-P(A\\cap B)=1-P(A)P(B)$가 되어 참이다. ㄷ은 $P(A\\cup B)-P(B)=P(A)+P(B)-P(A\\cap B)-P(B)=P(A)-P(A)P(B)=P(A)P(B^C)$가 되어 참이다. 따라서 ㄱ, ㄴ, ㄷ 모두 옳다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "conditional probability",
     "subUnitConfidence": "category_or_cue_inferred",

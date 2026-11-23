@@ -56,7 +56,7 @@
         body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
         body.preview-mode #print-area { gap: 12px; padding: 12px 0 24px; transform: scale(var(--screen-page-scale, 0.72)); transform-origin: top center; }
         body.screen-fit-mode { overflow-x: hidden; }
-        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: translateX(var(--screen-page-shift, 0px)) scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
@@ -1638,7 +1638,23 @@ function getQuestionSolution(q) {
 // 보이는 시험 이름: 저장된 시험 이름이 내부 키(파일 이름 등)면 한글 제목으로 푼다. 저장값은 그대로.
 function readableExamLabel(value) {
     const text = String(value ?? '');
-    return window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    const readable = window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    // 해석 못 한 이름의 "기출c"는 "기출"로 보인다(보이는 글자만).
+    return /기출[\s_]*(?:c|content)(?![A-Za-z0-9])/i.test(readable) ? (window.ExamDisplayTitle?.withoutContentMark?.(readable) || readable) : readable;
+}
+
+// 유사 추천 문항의 출처 이름 앞말(clinic-print.js가 붙인다). 뒤의 시험 이름만 한글 제목으로 푼다.
+const SIMILAR_EXAM_TITLE_PREFIX = /^(유사 추천|다른 유사문항|같은 UID 재연습) · ([\s\S]+)$/;
+
+// 문항 한 개의 출처 꼬리표: "2024 강남여고 고1 1학기 중간 · 원본 1번". 유사 추천 문항은 어느 오답의 유사인지 알면
+// "2024 강남여고 고1 1학기 중간 3번의 유사"로, 모르면 "유사 추천 · <시험 제목> · 원본 N번"으로 쓴다.
+function wrongNoteLabel(item) {
+    const similarOf = item && item.similarOf;
+    if (similarOf && similarOf.questionNo) return `${readableExamLabel(similarOf.examTitle) || '시험'} ${similarOf.questionNo}번의 유사`;
+    const raw = String(item?.examTitle || '');
+    const match = SIMILAR_EXAM_TITLE_PREFIX.exec(raw);
+    if (match) return `${match[1]} · ${readableExamLabel(match[2])} · 원본 ${item.questionNo}번`;
+    return `${readableExamLabel(raw) || '시험'} · 원본 ${item.questionNo}번`;
 }
 
 function getStudentExamLabel(payload, student) {
@@ -2153,7 +2169,7 @@ async function renderStudentPages(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         await renderMeasuredExamPages(area, items, {
@@ -2623,7 +2639,7 @@ async function renderSol(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         await placeSolutionItems(area, items, {
@@ -2833,7 +2849,7 @@ async function renderStudentReviewPacket(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
@@ -2956,6 +2972,11 @@ function updateScreenFitScale() {
     const cap = document.body.classList.contains('preview-mode') ? 0.72 : 1;
     const scale = Math.max(0.32, Math.min(cap, availableWidth / pageWidth));
     document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+    // 화면보다 넓은 쪽 상자(794px)는 margin:auto로 가운데 맞춰지지 않고 왼쪽 끝에 놓인다. 확대·축소 기준점이 상자 가운데라 줄여도 가운데가 화면 밖(오른쪽)에 남아
+    // 휴대폰 폭(390) 미리보기에서 쪽이 오른쪽으로 잘렸다. 상자 가운데가 화면 가운데에 오도록 옮긴다(화면이 더 넓어 이미 가운데면 0).
+    const boxWidth = area.offsetWidth || pageWidth;
+    const boxCenter = Math.max(0, (window.innerWidth - boxWidth) / 2) + boxWidth / 2;
+    document.documentElement.style.setProperty('--screen-page-shift', Math.round(window.innerWidth / 2 - boxCenter) + 'px');
 }
 
 if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
@@ -3343,6 +3364,8 @@ return { state,
     formatCorrectRateLabel,
     getQuestionSolution,
     getStudentExamLabel,
+    readableExamLabel,
+    wrongNoteLabel,
     getGradePrintLabel,
     cloneQuestionForRender,
     getClinicQuestionSourceRef,

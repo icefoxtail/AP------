@@ -66,6 +66,8 @@ export default {async fetch(request, env) {
     bundle: true, write: false, format: "esm", platform: "browser", external: ["cloudflare:*", "node:*"],
   });
   const r2Requests = [];
+  // Image keys (the part after /exams/images/) the fake R2 answers 404 for: a test adds one to model a picture that cannot be read.
+  const missingImageKeys = new Set();
   const mf = new Miniflare({
     modules: true, script: bundle.outputFiles[0].text, compatibilityDate: "2026-07-11", compatibilityFlags: ["nodejs_compat"],
     d1Databases: ["DB"], r2Buckets: ["EXAM_PDF_BUCKET"],
@@ -75,13 +77,17 @@ export default {async fetch(request, env) {
       if (url.origin !== "https://img.wangjiedu.com" || !url.pathname.startsWith("/exams/images/"))
         return new Response("Unexpected outbound request " + request.url, { status: 502 });
       r2Requests.push(request.url);
-      return localFile(path.join(root, "archive/assets/images"), decodeURIComponent(url.pathname.slice("/exams/images/".length)));
+      const key = decodeURIComponent(url.pathname.slice("/exams/images/".length));
+      if (missingImageKeys.has(key)) return new Response("Not found", { status: 404 });
+      return localFile(path.join(root, "archive/assets/images"), key);
     },
     serviceBindings: {
       ARCHIVE2_ASSETS: (request) => {
         const url = new URL(request.url);
         const mounts = [["/AP------/archive/", path.join(root, "archive")], ["/AP------/docs/", path.join(root, "docs")]];
         const mount = mounts.find(([prefix]) => url.pathname.startsWith(prefix));
+        // The Pages package ships no exam images (they live on R2): a request for one is a 404, as in production.
+        if (/\/assets\/images\//i.test(decodeURIComponent(url.pathname))) return new Response("Not found", { status: 404 });
         return mount ? localFile(mount[1], decodeURIComponent(url.pathname.slice(mount[0].length))) : new Response("Not found", { status: 404 });
       },
     },
@@ -111,7 +117,7 @@ export default {async fetch(request, env) {
   for (const name of ["20260916_archive2_question_bridge", "20261015_assessment_result_uid_meta_snapshot",
     "20260929_archive_saved_papers", "20261002_archive2_paper_lifecycle_foundation", "20261002_archive2_assignment_context"])
     await migrate(fs.readFileSync(path.join(worker, "migrations", name + ".sql"), "utf8"));
-  return { mf, db, r2Requests, dispose: () => mf.dispose() };
+  return { mf, db, r2Requests, missingImageKeys, dispose: () => mf.dispose() };
 }
 
 // ---------------------------------------------------------------- Workspace (the real screen script in a vm)

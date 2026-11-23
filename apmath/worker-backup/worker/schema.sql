@@ -1337,3 +1337,27 @@ CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone
 
 CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone_digits
   ON public_inquiries(phone_digits);
+
+-- Student self-study records (오답 다시 풀기 / 유사 문항). Same definition as
+-- migrations/20261123_student_self_study_sets.sql; the Worker reports
+-- FEATURE_UNAVAILABLE until the table exists and never creates it itself.
+CREATE TABLE IF NOT EXISTS student_self_study_sets (
+  student_id TEXT NOT NULL,
+  assignment_id TEXT NOT NULL,
+  kind TEXT NOT NULL CHECK (kind IN ('wrong', 'similar')),
+  class_id TEXT,
+  total INTEGER NOT NULL DEFAULT 0,
+  correct INTEGER NOT NULL DEFAULT 0,
+  wrong INTEGER NOT NULL DEFAULT 0,
+  items_json TEXT NOT NULL DEFAULT '[]',
+  started_at TEXT,
+  updated_at TEXT,
+  completed_at TEXT,
+  PRIMARY KEY (student_id, assignment_id, kind)
+);
+
+CREATE INDEX IF NOT EXISTS idx_student_self_study_sets_assignment
+  ON student_self_study_sets (assignment_id, kind);
+
+CREATE INDEX IF NOT EXISTS idx_student_self_study_sets_class_updated
+  ON student_self_study_sets (class_id, updated_at);

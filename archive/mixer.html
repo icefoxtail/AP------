@@ -41,6 +41,7 @@
 <script src="mixer-school-fingerprint.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint bridge 로드 실패 — fingerprint preset 비활성화')"></script>
 <script src="mixer-school-fingerprint-runtime.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint runtime 로드 실패 — fingerprint preset 비활성화')"></script>
 <script src="exam-source-reader.js?v=20261118-body-1"></script>
+<script src="exam-display-title.js?v=20261123-korean-titles-1"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -1315,7 +1316,7 @@ function renderExamList() {
         const div = document.createElement('div'); div.className = `paper-item ${isActive ? 'active' : ''} ${isSelected ? 'selected' : ''}`;
         div.onclick = () => loadSingleExam(ex);
         div.innerHTML = `<div class="card-title">${ex.school || ex.topic || ex.file}</div>
-            <div class="card-meta"><span class="m-badge">${ex.grade}</span><span class="m-badge blue">${getAxisLabel(ex._axis)}</span><span class="m-badge">${ex.subject || '수학'}</span></div>
+            <div class="card-meta"><span class="m-badge">${ex.grade}</span><span class="m-badge blue">${getAxisLabel(ex._axis)}</span><span class="m-badge">${window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) || ex.subject || '수학'}</span></div>
             <div class="card-file">${formatArchiveDisplayName(ex.file)}</div>
             <button class="btn-card-select" onclick="event.stopPropagation(); toggleFileSelection('${ex.file}')"><i class="fa-solid ${isSelected ? 'fa-check-square' : 'fa-square'}"></i></button>`;
         container.appendChild(div);

@@ -188,7 +188,7 @@ window.questionBank = [
       "무한대의 극한"
     ],
     "wide": false,
-    "content": "함수 $f(x)$가 모든 실수 $x$에 대하여 $\\dfrac{x}{5x+3}\\le f(x)\\le\\dfrac{x+2}{5x+4}$를 만족시킬 때, $\\displaystyle\\lim_{x\\to\\infty}f(x)$의 값은? [3점]",
+    "content": "함수 $f(x)$가 충분히 큰 모든 양수 $x$에 대하여 $\\dfrac{x}{5x+3}\\le f(x)\\le\\dfrac{x+2}{5x+4}$를 만족시킬 때, $\\displaystyle\\lim_{x\\to\\infty}f(x)$의 값은? [3점]",
     "choices": [
       "1",
       "$\\dfrac12$",
@@ -197,7 +197,7 @@ window.questionBank = [
       "$\\dfrac15$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 양쪽 함수의 극한이 같으면 조임정리로 가운데 함수의 극한을 정할 수 있다.\n조건 정리: $\\dfrac{x}{5x+3}\\le f(x)\\le\\dfrac{x+2}{5x+4}$이다.\n풀이 방향: 양 끝 유리함수의 무한대 극한을 계산한다.\n정석 풀이: $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{x}{5x+3}=\\dfrac15$이고 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{x+2}{5x+4}=\\dfrac15$이다. 양쪽 극한이 같으므로 조임정리에 의해 $\\displaystyle\\lim_{x\\to\\infty}f(x)=\\dfrac15$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 양쪽 함수의 극한이 같으면 조임정리로 가운데 함수의 극한을 정할 수 있다.\n조건 정리: 충분히 큰 모든 양수 $x$에 대하여 $\\dfrac{x}{5x+3}\\le f(x)\\le\\dfrac{x+2}{5x+4}$이다.\n풀이 방향: 양 끝 유리함수의 무한대 극한을 계산한다.\n정석 풀이: $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{x}{5x+3}=\\dfrac15$이고 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{x+2}{5x+4}=\\dfrac15$이다. 양쪽 극한이 같으므로 조임정리에 의해 $\\displaystyle\\lim_{x\\to\\infty}f(x)=\\dfrac15$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",

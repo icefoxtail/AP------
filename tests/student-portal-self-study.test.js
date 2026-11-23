@@ -1,0 +1,187 @@
+// Student portal: "오답 다시 풀기" + the question-card screen the similar-problem step reuses.
+// Defect conditions only (wrong-number filter, stock explanations hidden, one broken question never blocks the rest);
+// no fixed operating counts.
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+
+const root = path.resolve(__dirname, '..');
+const view = require('../apmath/student/self-study-view.js');
+const APRenderText = require('../archive/render-text.js');
+const html = fs.readFileSync(path.join(root, 'apmath/student/index.html'), 'utf8');
+
+const deps = {
+  text: APRenderText,
+  imageUrl: src => `https://img.test/${src}`,
+  crossOrigin: () => '',
+  resolveHtml: value => value
+};
+const bank = [
+  { id: 1, content: '1. 첫 문항 $x^2$', choices: ['1', '2', '3', '4', '5'], answer: '③', solution: '풀이 $x=1$' },
+  { id: 2, content: '둘째', choices: ['주관식'], answer: '12', solution: '[JS 기준 풀이] 틀 문구이다. 계산 결과는 12이다.' },
+  { id: 3, content: '셋째', choices: ['a', 'b', 'c', 'd', 'e'], answer: '①', solution: '   ' },
+  { id: 4, content: '넷째', image: 'assets/images/x/4.png', choices: [], answer: '7', solution: '해설 있음' }
+];
+
+test('wrong numbers pick questions by position, whatever the question id looks like', () => {
+  const numeric = view.buildWrongSet({ title: 't', questions: bank, wrongIds: ['3', 1, 3, 'x', 0, -2] });
+  assert.deepEqual(numeric.questions.map(q => q.no), [1, 3]);
+  assert.equal(numeric.questions[1].content, '셋째');
+  const qIds = bank.map((q, i) => ({ ...q, id: `Q${String(i + 1).padStart(2, '0')}` }));
+  const prefixed = view.buildWrongSet({ title: 't', questions: qIds, wrongIds: [4, 2] });
+  assert.deepEqual(prefixed.questions.map(q => [q.no, q.id]), [[2, 'Q02'], [4, 'Q04']]);
+  const noQuestion = view.buildWrongSet({ title: 't', questions: bank, wrongIds: [2, 99] });
+  assert.equal(noQuestion.questions[1].missing, true, 'a number with no question stays visible as a failed card');
+  assert.deepEqual(view.buildWrongSet({ title: 't', questions: bank, wrongIds: [] }).questions, []);
+  assert.deepEqual(view.buildWrongSet({ title: 't', questions: { questions: bank }, wrongIds: [1] }).questions.map(q => q.no), [1]);
+});
+
+test('title keeps the portal exam title and the purpose with the question count', () => {
+  assert.equal(view.buildTitle({ date: '2026-11-20', examTitle: '왕지중 1회', purpose: '오답 다시 풀기', count: 5 }), '11/20 왕지중 1회 · 오답 다시 풀기 5문항');
+  assert.equal(view.buildTitle({ examTitle: '', purpose: '오답 다시 풀기', count: 0 }), '오답 다시 풀기');
+});
+
+test('a card keeps answer and explanation closed until answered; a stock explanation hides only the explanation', () => {
+  const full = view.renderCard({ ...bank[0], no: 1 }, deps);
+  assert.match(full, /data-mode="mc"/);
+  assert.match(full, /data-ss-act="grade"[^>]*disabled/, 'a pick-one question is graded, and the grade button waits for a pick');
+  assert.match(full, /data-choice="1"[\s\S]*data-choice="5"/, 'every choice is a tap target');
+  assert.match(full, /data-ss-act="unknown"/, '"모르겠어요" is always there');
+  assert.match(full, /id="ss-a-1"[^>]*hidden/);
+  assert.match(full, /id="ss-s-1"[^>]*hidden/);
+  assert.match(full, /풀고 나면 정답·해설이 열려요/);
+  assert.doesNotMatch(full, /data-ss-toggle/, 'no button opens the answer before it is answered');
+  assert.doesNotMatch(full, /<div class="ss-stem">1\. /, 'the leading "1." is stripped like the engine does');
+  for (const code of ['calc', 'misread', 'concept', 'method', 'guess']) assert.match(full, new RegExp('data-ss-why="' + code + '"'));
+  const typed = view.renderCard({ ...bank[1], no: 2 }, deps);
+  assert.match(typed, /data-mode="sub"/);
+  assert.match(typed, /data-ss-act="done"/, 'a typed-answer question opens its answer with "다 풀었어요"');
+  assert.match(typed, /data-ss-act="judge-c"[\s\S]*data-ss-act="judge-w"/);
+  assert.match(typed, /id="ss-a-2"/);
+  assert.doesNotMatch(typed, /id="ss-s-2"/, 'stock explanation: only the answer exists');
+  assert.match(typed, /풀고 나면 정답이 열려요/);
+  assert.doesNotMatch(view.renderCard({ ...bank[2], no: 3 }, deps), /id="ss-s-3"/, 'empty explanation: no explanation panel');
+  assert.doesNotMatch(typed, /기준 풀이/);
+  assert.equal(view.hasRealSolution({ solution: '[JS 기준 풀이] x' }), false);
+  assert.equal(view.hasRealSolution({ solution: ' ' }), false);
+  assert.equal(view.hasRealSolution({ solution: '실제 풀이' }), true);
+  const figure = view.renderCard({ ...bank[3], no: 4 }, deps);
+  assert.match(figure, /<img src="https:\/\/img\.test\/assets\/images\/x\/4\.png"/);
+  const bare = view.renderCard({ id: 9, no: 9, content: '답 없음', choices: [] }, deps);
+  assert.doesNotMatch(bare, /ss-lock/, 'no answer and no explanation: nothing to unlock');
+  assert.match(bare, /data-ss-act="done"/, 'still judgeable by the student');
+  const embedded = view.renderCard({ id: 8, no: 8, content: '그림 보기', choices: [], choicesEmbeddedInImage: true, answer: '④', solution: '풀이' }, deps);
+  assert.match(embedded, /data-mode="mc"/);
+  assert.equal((embedded.match(/data-choice="/g) || []).length, 5, 'choices drawn inside the figure get 5 number chips');
+});
+
+test('cards carry their record key; the wrong set uses the question UID, else w:<number>', () => {
+  const withUid = [{ ...bank[0], questionUid: 'qid_v1_aaa' }, bank[1], { ...bank[2], source_question_uid: 'qid_v1_ccc' }];
+  const set = view.buildWrongSet({ title: 't', questions: withUid, wrongIds: [1, 2, 3, 9] });
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssKey), ['qid_v1_aaa', 'w:2', 'qid_v1_ccc']);
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssUid), ['qid_v1_aaa', null, 'qid_v1_ccc']);
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssSrc), [1, 2, 3]);
+  assert.equal(set.questions[3].ssKey, undefined, 'a number with no question has no record');
+  assert.match(view.renderCard(set.questions[0], deps), /data-key="qid_v1_aaa"/);
+});
+
+test('one question that cannot be drawn becomes a failed card and never throws into the others', () => {
+  const broken = { get content() { throw new Error('bad'); }, no: 2 };
+  const cards = [view.renderCard({ ...bank[0], no: 1 }, deps), view.renderCard(broken, deps), view.renderCard({ no: 5, missing: true }, deps)];
+  assert.match(cards[0], /class="ss-card"/);
+  for (const card of cards.slice(1)) {
+    assert.match(card, new RegExp(view.FAIL_CARD_TEXT));
+    assert.match(card, /is-failed/);
+  }
+});
+
+test('exam source is read from the exam file or from the frozen snapshot, never both guessed', async () => {
+  const source = 'window.examTitle = "x";\nwindow.questionBank = [{"id":"Q01","content":"a","choices":[],"answer":"1"},{"id":"Q02","content":"b","choices":[],"answer":"2"}];';
+  const requested = [];
+  const fetchImpl = async url => { requested.push(url); return { ok: true, text: async () => source }; };
+  const fromFile = await view.loadExamQuestions({ assignment_id: 'a', archive_file: 'exams/original/high/h1/2mid/25_가고_기출.js' }, { fetchImpl, baseUrl: 'https://school.test/AP------/apmath/student/index.html' });
+  assert.deepEqual(fromFile.map(q => q.id), ['Q01', 'Q02']);
+  assert.equal(requested[0], 'https://school.test/AP------/archive/exams/original/high/h1/2mid/25_%EA%B0%80%EA%B3%A0_%EA%B8%B0%EC%B6%9C.js');
+  const frozen = JSON.stringify({ questions: [{ id: 7, content: 'frozen' }], meta: {} });
+  requested.length = 0;
+  const fromSnapshot = await view.loadExamQuestions({ assignment_id: 'a', archive_file: 'MIXED:k', mixed_payload_json: frozen }, { fetchImpl, baseUrl: 'https://school.test/AP------/apmath/student/index.html' });
+  assert.deepEqual(fromSnapshot.map(q => q.content), ['frozen']);
+  assert.equal(requested.length, 0, 'a frozen snapshot is used as issued, no file request');
+  await assert.rejects(view.loadExamQuestions({ archive_file: 'MIXED:k' }, { fetchImpl }), /EXAM_SOURCE_UNAVAILABLE/);
+  await assert.rejects(view.loadExamQuestions({ archive_file: 'exams/a.js' }, { fetchImpl: async () => ({ ok: false }), baseUrl: 'https://school.test/AP------/apmath/student/index.html' }), /EXAM_FETCH_FAILED/);
+});
+
+test('only plain exams/<name>.js paths on the same origin are downloaded and run; everything else is rejected before any request', async () => {
+  const base = 'https://school.test/AP------/apmath/student/index.html';
+  let called = 0;
+  const fetchImpl = async () => { called += 1; return { ok: true, text: async () => 'window.questionBank=[{"id":1}];' }; };
+  const rejected = [
+    'https://evil.test/x.js', '//evil.test/x.js', 'http://school.test/AP------/archive/exams/a.js',
+    'exams/../../apmath/x.js', 'exams/a/../b.js', 'exams\\a.js', 'exams/a%5Cb.js', 'exams/%2e%2e/x.js', 'exams//a.js',
+    'exams/a.js?x=1', 'exams/a.js#h', 'exams/a.txt', 'javascript:alert(1)', 'data:text/javascript,1', 'blob:https://school.test/x',
+    'data/similar-links-v1.json', 'assets/x.js', '', 'exams/' + 'a'.repeat(600) + '.js'
+  ];
+  for (const path of rejected) {
+    await assert.rejects(view.fetchQuestionList(path, { fetchImpl, baseUrl: base }), /EXAM_PATH_REJECTED/, `must reject: ${path}`);
+  }
+  assert.equal(called, 0, 'rejected paths never reach fetch');
+  assert.equal(view.safeExamPath('archive/exams/similar/high/h1/x_유사1.js'), 'exams/similar/high/h1/x_유사1.js');
+  await assert.rejects(view.loadExamFile({ archive_file: 'https://evil.test/x.js' }, { fetchImpl, baseUrl: base }), /EXAM_PATH_REJECTED/);
+  assert.equal((await view.fetchQuestionList('exams/similar/x/a_유사.js', { fetchImpl, baseUrl: base })).length, 1);
+  assert.equal(called, 1);
+});
+
+test('a difficulty tag at the very start or end of the stem is hidden on the card; points, [보기] and inner brackets stay', () => {
+  for (const tag of ['하', '중', '상', '최상']) {
+    assert.equal(view.stripDifficultyTag(`[${tag}] 다음 값은?`), '다음 값은?', `leading [${tag}]`);
+    assert.equal(view.stripDifficultyTag(`다음 값은? [${tag}]`), '다음 값은?', `trailing [${tag}]`);
+    assert.doesNotMatch(view.renderCard({ id: 1, no: 1, content: `  [${tag}]  본문 $x$`, choices: [], answer: '1' }, deps), new RegExp(`\\[${tag}\\]`));
+  }
+  for (const keep of ['다음 값은? [3점]', '[4.4점] 값은?', '[보기] ㄱ. $x>0$', '구간 [중] 사이', '$x\\in[상]$ 일 때', '[서술형 1] 구하시오', '[상세] 설명', '$[하]$ 값은?']) {
+    assert.equal(view.stripDifficultyTag(keep), keep, `must keep: ${keep}`);
+  }
+  const rendered = view.renderCard({ id: 1, no: 1, content: '[중] 값은? [4.4점]', choices: [], answer: '1' }, deps);
+  assert.match(rendered, /값은\? \[4\.4점\]/);
+  const original = { id: 1, content: '[상] 원문' };
+  view.renderCard({ ...original, no: 1 }, deps);
+  assert.equal(original.content, '[상] 원문', 'source data is not changed');
+});
+
+function buttonHelpers() {
+  const grab = name => html.match(new RegExp(`    function ${name}\\([^)]*\\) \\{[\\s\\S]*?\\n    \\}`))[0];
+  const context = vm.createContext({
+    globalThis: { StudentSelfStudyView: view },
+    escapeHtml: value => String(value),
+    isOmrReviewAvailable: exam => Boolean(exam.archive_file)
+  });
+  vm.runInContext([grab('normalizeOmrWrongIds'), grab('getStudentPortalRecordedSubmission'), grab('getSelfStudyWrongCount'), grab('selfStudyProgressText'), grab('renderSelfStudyWrongButton')].join('\n'), context);
+  return context;
+}
+
+test('the exam card offers the button only for a submitted exam with at least one wrong number', () => {
+  const h = buttonHelpers();
+  const base = { assignment_id: 'a1', archive_file: 'exams/x.js', is_submitted: 1 };
+  assert.match(h.renderSelfStudyWrongButton({ ...base, wrong_ids: [3, 1] }, 'list'), /오답 다시 풀기.*2문항/s);
+  assert.match(h.renderSelfStudyWrongButton({ ...base, wrong_ids: [3] }, 'result'), /openSelfStudyWrong\('a1', 'result'\)/);
+  assert.equal(h.renderSelfStudyWrongButton({ ...base, wrong_ids: [] }, 'list'), '', 'no wrong number: no button');
+  assert.equal(h.renderSelfStudyWrongButton({ ...base, wrong_ids: null }, 'list'), '', 'wrong numbers not received: no button, not "no wrong"');
+  assert.equal(h.renderSelfStudyWrongButton({ ...base, is_submitted: 0, wrong_ids: [1] }, 'list'), '');
+  assert.equal(h.renderSelfStudyWrongButton({ ...base, is_submitted: undefined, wrong_ids: [1] }, 'list'), '');
+  assert.equal(h.renderSelfStudyWrongButton({ ...base, archive_file: '', wrong_ids: [1] }, 'list'), '', 'no readable questions: no button');
+});
+
+test('the portal wires the button on the list card and the result screen and loads the view lazily', () => {
+  assert.match(html, /<script src="\.\/self-study-record\.js\?v=[^"]+"><\/script>/);
+  assert.match(html, /<script src="\.\/self-study-view\.js\?v=[^"]+"><\/script>/);
+  assert.match(html, /\$\{renderSelfStudyActions\(exam, 'list'\)\}/);
+  assert.match(html, /\$\{renderSelfStudyActions\(exam, 'result'\)\}/);
+  assert.match(html, /'omr-self-study':'exams'/);
+  assert.match(html, /view === 'omr-self-study'/);
+  const source = fs.readFileSync(path.join(root, 'apmath/student/self-study-view.js'), 'utf8');
+  assert.doesNotMatch(source, /method:\s*['"](?:POST|PUT|PATCH|DELETE)|apiPost|XMLHttpRequest|localStorage\.setItem|fetch\(/, 'the card screen itself neither stores nor sends: the recorder it is given does');
+  for (const lazy of ['render-text.js', 'archive-asset-base.js', 'tex-mml-chtml-mathjax-tex.js']) {
+    assert.doesNotMatch(html, new RegExp(lazy), `${lazy} must not load at portal start`);
+  }
+});

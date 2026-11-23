@@ -532,7 +532,7 @@ window.questionBank = [
     "id": 10,
     "questionNumber": 10,
     "questionType": "객관식",
-    "content": "10. 정규분포 $N(15, 4)$를 따르는 모집단에서 크기가 $4$인 표본을 임의추출하였을 때, 그 표본의 값의 합을 확률변수 $S$라고 하자. $P(S \\ge 64)$을 구하면? [4.2점]<br><table class=\"question-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>0.5</td><td>0.20</td></tr><tr><td>1.0</td><td>0.35</td></tr><tr><td>1.5</td><td>0.43</td></tr><tr><td>2.0</td><td>0.48</td></tr></table>",
+    "content": "10. 정규분포 $N(15, 4)$를 따르는 모집단에서 크기가 $4$인 표본을 임의추출하였을 때, 그 표본의 값의 합을 확률변수 $S$라고 하자. $P(S \\ge 64)$을 아래 표의 값으로 계산하여 구하면? [4.2점]<br><table class=\"question-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>0.5</td><td>0.20</td></tr><tr><td>1.0</td><td>0.35</td></tr><tr><td>1.5</td><td>0.43</td></tr><tr><td>2.0</td><td>0.48</td></tr></table>",
     "choices": [
       "$0.35$",
       "$0.24$",

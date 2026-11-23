@@ -64,8 +64,8 @@ construction-spike-v1(좌표·작도·원·삼각형·단위원, mathPlan·plane
 - **수직선**(number-line-figure-v1): POINTS 행은 점 1~16개, 이름을 그리는 점의 id 는 영문 대문자 한 글자, 이름을 안 그리는 점(`hideName:true`)은 `"P0"`처럼 영문자로 시작하는 6자 이내 id(`NUMBER_LINE_POINTS_INVALID`). 값 라벨이 서로 가까우면 엔진이 점 위나 둘째 줄로 옮기고 지시선을 긋는다(plan에 쓸 것 없음). 행 `label` 은 16자 이내(한글 9자, 한글 없는 영문·기호는 15자)이고 `≤`·`≥` 는 된다(`"−4≤x≤3"`). `<`·`>` 는 행 라벨로 쓸 수 없다(`<` 가 든 부등식은 SET 행이 자동으로 쓴다).
 - **정규분포**(NORMAL_CURVE): 눈금 `text` 가 숫자면 그 눈금의 `x` 와 같아야 한다(`{"x":"-2","text":"430"}` 불가: `STAT_NORMAL_TICK_TEXT_MISMATCH`). 실제 단위로 쓰려면 curves 의 `mean`·`sd` 를 실제 값(`"450"`,`"10"`)으로 하고 눈금은 `{"x":"430"}`. 색칠 `shades` 의 from/to 는 모두 ticks 에 있는 값이다.
 - **수형도**(TREE): 가지 `label` 은 6자 이내, 단계는 3단계 이내(`STAT_TREE_LABEL_INVALID`·`STAT_TREE_TOO_DEEP`). **벤다이어그램** 원소는 `elements` 항목 하나에 원소 하나(`"4, 12"` 처럼 쉼표로 묶으면 `SET_ELEMENT_TEXT_UNSUPPORTED`).
-- **합성(composite-panels-v1) 그림 크기**: 위아래로 쌓은 전체가 높이 약 820, 폭 828 이상이면 렌더가 거절한다(`UNSUPPORTED_DISPLAY_ENVELOPE`). 패널을 줄이거나 패널 안 그림의 viewport 를 줄인다.
-- 벤 그림 등 패널 2개를 합성할 때는 최상위에 `"columns":1`을 쓴다. 기본 2열이면 표시 크기 초과(`UNSUPPORTED_DISPLAY_ENVELOPE`)가 난다.
+- **합성(composite-panels-v1) 그림 크기**: 2026-11-23부터 크기만으로는 렌더가 거절하지 않는다(표시 글자 11px 하한 해제: 글자가 작게 보이면 `displayTextBelow11px` 로 기록할 뿐). 그래도 읽기 좋게 패널을 줄이거나 패널 안 그림의 viewport 를 줄인다. 쪽 높이 초과(`COMPOSITE_TOO_TALL`)는 그대로다.
+- 벤 그림 등 패널 2개를 합성할 때는 최상위에 `"columns":1`을 쓴다. 기본 2열이면 패널이 작게 보여 읽기 어렵다(2026-11-23부터 거절은 아니다).
 - plain ellipse는 점 `coordinates`와 직선 `dashed`를 받지 않는다.
 - 합성 그림 패널에는 삼각·지수·로그 그래프를 넣지 못한다. 한 장으로 합치거나 대표 패널만 남긴다.
 - multi-curve는 분모에 x²가 있는 유리식과 삼차 이상을 못 그린다. 삼차 이상은 piecewise-polynomial로 옮긴다.

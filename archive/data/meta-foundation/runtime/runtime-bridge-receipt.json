@@ -33,14 +33,14 @@
     "integralCalculusCatalogJoin": 203,
     "integralCalculusCatalogJoinMismatch": 0,
     "integralCalculusDifficultyDeferred": 0,
-    "integralCalculusAutomaticEligibleExpected": 201,
+    "integralCalculusAutomaticEligibleExpected": 198,
     "integralCalculusSupplementary": 1,
     "integralCalculusDifficultyReviewed": 135,
     "integralCalculusRuntimeVersion": "INTEGRAL_CALCULUS@1.0.0/runtime-bridge-v2",
     "integralCalculusCrossConceptReferenceCount": 63,
     "integralCalculusNewCanonicalCrossConceptCount": 8,
     "integralCalculusReusedCanonicalCrossConceptCount": 4,
-    "integralCalculusSourceHold": 1,
+    "integralCalculusSourceHold": 4,
     "derivativeCanonicalAssignments": 320,
     "derivativeRuntimeRecords": 411,
     "derivativeExistingCatalogUidJoin": 411,
@@ -48,13 +48,13 @@
     "derivativeCatalogJoin": 411,
     "derivativeCatalogJoinMismatch": 0,
     "derivativeDifficultyDeferred": 0,
-    "derivativeAutomaticEligibleExpected": 410,
+    "derivativeAutomaticEligibleExpected": 407,
     "derivativeDifficultyReviewed": 320,
     "derivativeRuntimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v3",
     "derivativeCrossConceptReferenceCount": 165,
     "derivativeNewCanonicalCrossConceptCount": 8,
     "derivativeReusedCanonicalCrossConceptCount": 24,
-    "derivativeSourceHold": 1,
+    "derivativeSourceHold": 4,
     "crossPackPrimaryOwnershipResolved": 14,
     "crossPackDuplicateUidCount": 0,
     "crossPackDuplicateSourceIdentityCount": 0,
@@ -79,7 +79,7 @@
     "probabilityStatisticsSourceHold": 0,
     "questionMetadataFingerprintSync": 3,
     "questionMetadataDigest": "817f5314751f27e9216955de3be961443ebaf8e39d31f76f0382cc0f74a3d8f3",
-    "archive2CatalogIndexVersion": "archive2-canonical-v1:e9769df99b41bfada1663b3afddda1e4100135fe1cd0768bb267c724164c89ca",
+    "archive2CatalogIndexVersion": "archive2-canonical-v1:737528ffd161c637bfb696776cc578e1aa408d2f829ee91dc858078a2f3c88e8",
     "metaFoundationRuntimePackCount": 11,
     "metaFoundationRuntimeUrlCount": 11,
     "probabilityStatisticsTaxonomyRows": 95,
@@ -137,7 +137,7 @@
     "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
     "currentCanonicalSourceReadinessV1": {
       "schemaVersion": "ARCHIVE2_META_FOUNDATION_SOURCE_READINESS_V1",
-      "catalogIndexVersion": "archive2-canonical-v1:e9769df99b41bfada1663b3afddda1e4100135fe1cd0768bb267c724164c89ca",
+      "catalogIndexVersion": "archive2-canonical-v1:737528ffd161c637bfb696776cc578e1aa408d2f829ee91dc858078a2f3c88e8",
       "combinedRuntimeRecords": 7805,
       "combinedUniqueUid": 7805,
       "combinedUniqueSourceIdentity": 7805,
@@ -150,12 +150,46 @@
           "currentCatalogUidDirectJoinCount": 411,
           "currentCatalogSourceIdentityRepairJoinCount": 0,
           "currentCatalogJoinMismatchCount": 0,
-          "currentCatalogSourceHoldDirectCount": 1,
-          "sourceReadyCount": 410,
-          "sourceHoldCount": 1,
+          "currentCatalogSourceHoldDirectCount": 4,
+          "sourceReadyCount": 407,
+          "sourceHoldCount": 4,
           "supplementaryCount": 0,
-          "automaticEligibleExpected": 410,
+          "automaticEligibleExpected": 407,
           "heldRecords": [
+            {
+              "questionUid": "qid_v1_1ba96a1e9f6e335a40298f489fa26b0c829cf89765d305bbf22a9fed251944a5",
+              "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 24,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "bc1e56afa94a4b5786729e0f373d3e51d87396e7224615923ee499a6bb040580",
+              "currentSourceFingerprint": "9dfd909c32f347251ed90c71d84f04e6096cb3ec87bc26681407744badb08153",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_3134669e204dd96f17396b2c3f6a886d95d034c9f63cc72a5c392a2398742b17",
+              "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 14,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "e8a3c022809b9812acc6b0a9c4343b0bf37dc054ecacd58e558492c0fd9b5a66",
+              "currentSourceFingerprint": "7190dc79982aac79b76cad821c8b11948d4d9711c405a9a5237e2e74045ad0d3",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
             {
               "questionUid": "qid_v1_e159615f4259f2db573c1af6d4a58bfff16246b61410a0e4d270c2c8baaf0fe7",
               "sourceArchiveFile": "original/high/h2/2final/25_매산고_2학기_기말_고2_수학II.js",
@@ -165,6 +199,23 @@
               "sourceIntegrityStatus": "VERIFIED",
               "approvedSourceFingerprint": "04623cb4219dfac6a10bee50ce9346c34701a2153f191569c451e4b0725740ce",
               "currentSourceFingerprint": "d8eeea74c19a6012d3721916d5c9f97288a2befaa1783f59b8268f1e9c7ffa0f",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_f58e8657047bbc40548e0ae006ddd51d8184e72430362678d66474a6a8902854",
+              "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 7,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "04e93508848a18be2dc51725a39cfbbe3ad69772d8416a094af4bdb57be66a7b",
+              "currentSourceFingerprint": "d3263d533c03ee97323a2d0390f123c1d720c0eea632f9f43bbd6381833d6939",
               "releaseGateReasons": [
                 "source_release",
                 "taxonomy",
@@ -183,12 +234,29 @@
           "currentCatalogUidDirectJoinCount": 203,
           "currentCatalogSourceIdentityRepairJoinCount": 0,
           "currentCatalogJoinMismatchCount": 0,
-          "currentCatalogSourceHoldDirectCount": 1,
-          "sourceReadyCount": 202,
-          "sourceHoldCount": 1,
+          "currentCatalogSourceHoldDirectCount": 4,
+          "sourceReadyCount": 199,
+          "sourceHoldCount": 4,
           "supplementaryCount": 1,
-          "automaticEligibleExpected": 201,
+          "automaticEligibleExpected": 198,
           "heldRecords": [
+            {
+              "questionUid": "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5",
+              "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 12,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "15261b2059c46964d635a8ddadd04f14d963d79a8b836cecd5122a0724a36541",
+              "currentSourceFingerprint": "ba3584050438a02359c35ba9ae216a58bcbfa06e80fa424e6dd37b31cd196f72",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
             {
               "questionUid": "qid_v1_1bce1dbfb0c6abc69199b3feef8c914dab5c402b93ba7bd194c465a606f7f9e5",
               "sourceArchiveFile": "original/high/h2/2final/23_제일고_2학기_기말_고2_수학II.js",
@@ -198,6 +266,40 @@
               "sourceIntegrityStatus": "VERIFIED",
               "approvedSourceFingerprint": "69fd0161924975a9548e02e0ed55d4431251af3dab2b82afdd63985f9ee6ef84",
               "currentSourceFingerprint": "10bfdf130dcb43691804a9b116d88c6a67d73314fc284385e7834f123f69bc7c",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
+              "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 18,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "34bb6f44a296c5ae323fa6fa2fa5f6066f506a0a3373e0bbb0d3e7324527ed2e",
+              "currentSourceFingerprint": "7063d537339dc19e3ce93dd5fb351acd74552ecfcff75cd66ed9b27594ba9ce8",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_a1c26675b7a9a130c98517dc1480a18058bf9d4b5cbeb2433e57e16fabdb7107",
+              "sourceArchiveFile": "original/high/h2/2final/23_매산여고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 14,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "10c78021c7c4ae10965beb6458804995b775854a49fda1aa2dd67d41aa0ab640",
+              "currentSourceFingerprint": "5678f991c38c91e90e354d08ca0a35cbfdb52deb61998ca4e8d7d53350a209fa",
               "releaseGateReasons": [
                 "source_release",
                 "taxonomy",
@@ -272,7 +374,7 @@
         "packId": "DERIVATIVE",
         "records": 411,
         "runtimeFile": "derivative-v1.json",
-        "runtimeSha256": "246c68d11917d6c27a65cbb5660b89ac23792ea3a6103efd616740f9327dfcb9"
+        "runtimeSha256": "0353f161b476729beb157b7872e632382433a25e58d0dfcfff5d2ef537a36811"
       },
       {
         "packId": "FUNCTIONS_GRAPHS",
@@ -302,7 +404,7 @@
         "packId": "INTEGRAL_CALCULUS",
         "records": 203,
         "runtimeFile": "integral-calculus-v1.json",
-        "runtimeSha256": "a0b8fa3326b040cbe80be7df366c619fc320152ea4e006c7d78ee40fb8d5e64d"
+        "runtimeSha256": "747049c6d9a203da8e833dc6c24bd7aadc837e074cd0afc70a2e4772927f8049"
       },
       {
         "packId": "LIMIT_CONTINUITY",

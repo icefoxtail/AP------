@@ -67,12 +67,14 @@
    "match": [
     "tests/archive-font-invalidation.test.cjs",
     "tests/archive-render-feedback.test.cjs",
-    "tests/archive-solution-loading.test.cjs"
+    "tests/archive-solution-loading.test.cjs",
+    "tests/archive2-preview-print-parity.e2e.cjs"
    ]
   },
   {
    "job": ".github/workflows/archive2-save-roundtrip.yml",
    "match": [
+    "tests/archive-saved-papers-many-images.test.mjs",
     "tests/archive2-save-roundtrip.e2e.mjs"
    ]
   },

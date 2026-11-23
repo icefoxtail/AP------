@@ -4,7 +4,7 @@
     <script src="archive2-review.js"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-    <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
+    <script src="archive2-output.js?v=20261123-similar-title-1"></script>
     <script src="archive2-pdf-readiness.js?v=20261106-output-performance-1"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +150,7 @@
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261123-image-fail-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
-    <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
+    <link rel="stylesheet" href="figure-size.css?v=20261123-wide-full-1">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="side-effect-ledger.js?v=20260911.5"></script>
@@ -525,11 +525,11 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
-    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
+    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261123-reader-qpp-1">
     <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
-    <link rel="stylesheet" href="print-header-table.css?v=20261122-ph-1">
+    <link rel="stylesheet" href="print-header-table.css?v=20261123-no-underline-1">
     <script src="print-header-table.js?v=20261123-ph-3"></script>
-    <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
+    <script defer src="archive2-reader-controls.js?v=20261123-reader-qpp-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
 </head>
@@ -1050,7 +1050,7 @@ function buildSubmitQrTargetUrl() {
     }
 
     const q = params.get('q') || AppState.data.length || 0;
-    const exam = getIdentityTitle() || '시험지';
+    const exam = getDisplayTitle() || '시험지';
     const dataUrl = params.get('data') || '';
 
     const url = new URL('../apmath/student/', window.location.href);
@@ -1228,7 +1228,8 @@ async function registerClassExamAssignmentToOS(candidate = null) {
     const subject = params.get('subject') || '';
     const qCountRaw = params.get('q');
     const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
-    const examTitle = getIdentityTitle(AppState) || '시험지';
+    // 저장되는 시험 이름도 한글 표시 제목이다(식별 제목은 파일 이름 키일 수 있다).
+    const examTitle = getDisplayTitle(AppState) || '시험지';
 
     const sig = [classId, examDate, archiveFile, questionCount, 'archive'].join('|');
     if (!candidate && sig === _classExamAssignmentRegisteredSig) return { ok: true };

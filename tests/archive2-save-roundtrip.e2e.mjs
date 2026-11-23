@@ -9,7 +9,7 @@
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import { after, before, test } from "node:test";
-import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
+import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
 // 고3 is not sampled: its general-use pool has too few questions per unit for a 20-question, two-unit paper.
 const GRADES = ["중1", "중2", "중3", "고1", "고2"];
@@ -368,4 +368,35 @@ test("negative: metadata that differs from the catalog, or a stale list version,
   assert.equal(stale.status, 409, "a stale list version must be refused");
   assert.match(stale.error, /분류 기준이 갱신/, "refused because the list version is stale, not for another reason");
   assert.notEqual(good.ws.state.saveResultState, "SAVED");
+});
+
+test("a picture the server cannot read does not stop the save: the paper is saved and the screen names the question", async () => {
+  const grade = GRADES[0];
+  const sample = await sampleFor(grade);
+  const { ws, wire, seedMode } = createWorkspace(server);
+  configureSample(ws, seedMode, grade, sample.keys, PER_UNIT);
+  let lostKey = "", questionNo = 0;
+  wire.beforePost = (body) => {
+    body.papers[0].questions.some((question, index) => {
+      const [first] = imageRefs(question);
+      if (!first) return false;
+      lostKey = first.replace(/^assets\/images\//, "");
+      questionNo = index + 1;
+      return true;
+    });
+    assert.ok(lostKey, "the sample paper has a picture");
+    server.missingImageKeys.add(lostKey);
+    return body;
+  };
+  try {
+    await ws.savePapers();
+  } finally {
+    server.missingImageKeys.delete(lostKey);
+  }
+  assert.equal(ws.state.saveResultState, "SAVED", sendFailure(ws, "missing picture"));
+  assert.equal(wire.log.find((l) => l.method === "POST").status, 200);
+  assert.match(ws.state.saveMessage, new RegExp("그림 1개를 확인하지 못했습니다\\(1권 " + questionNo + "번 문항"), "the message names the question");
+  const [paperId] = ws.state.savedPaperIds;
+  const { paper } = await (await api("/archive-saved-papers/" + paperId)).json();
+  assert.deepEqual(paper.snapshot.assets.filter((asset) => asset.missing).map((asset) => asset.path), ["assets/images/" + lostKey], "only that picture is marked");
 });

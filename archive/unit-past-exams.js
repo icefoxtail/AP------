@@ -250,21 +250,46 @@
     state.fileCache.set(sourceFile, promise);
     return promise;
   }
+  // 원본 문항의 번호 칸은 시험지마다 다르다: id(숫자·"Q01"·"s01"), 일부 중등 시험지는 number. 색인 id도 같은 규칙(id ?? number)이다.
+  const sourceQuestionKey = question => (question && question.id !== undefined && question.id !== null && question.id !== '' ? question.id : question?.number);
+  // 한 문항 찾기: ① 색인 id와 글자 그대로 같은 문항 → ② 번호(숫자)가 같은 문항이 하나뿐이면 그것, 여럿이면 색인 자리(sourceOrdinal)에 있는 것.
+  // 번호만 보면 서술형 "s01"이 객관식 1번으로 잡히므로 ①이 먼저다. 둘 다 안 되면 다른 문항을 추측하지 않고 못 찾은 것으로 둔다.
+  function findSourceQuestion(questions, record) {
+    const rawId = record.id !== undefined && record.id !== null ? String(record.id) : '';
+    if (rawId) {
+      const exact = questions.find(question => { const key = sourceQuestionKey(question); return key !== undefined && key !== null && String(key) === rawId; });
+      if (exact) return exact;
+    }
+    const sameNo = questions.filter(question => matchQuestionNo(sourceQuestionKey(question), record.sourceQuestionNo));
+    if (sameNo.length === 1) return sameNo[0];
+    if (sameNo.length > 1) {
+      const atSlot = questions[Number(record.sourceOrdinal) - 1];
+      if (atSlot && sameNo.includes(atSlot)) return atSlot;
+    }
+    return null;
+  }
+  // 문항 하나를 못 찾아도 나머지는 복원한다(한 문항 때문에 문제지 전체가 막히지 않게). 못 찾은 문항은 missing에 담아
+  // 부른 쪽이 어느 시험지 몇 번인지 알린다. 복원된 문항이 하나도 없을 때만 예전처럼 오류를 던진다.
+  // records는 복원된 문항의 기록이고 questions와 같은 순서다.
   async function restorePaperQuestions(paper) {
     const grouped = new Map();
     paper.records.forEach(record => {
       if (!grouped.has(record.sourceFile)) grouped.set(record.sourceFile, []);
       grouped.get(record.sourceFile).push(record);
     });
+    // 서술형 "s01"과 객관식 1번은 sourceQuestionNo가 같으므로 색인 자리(sourceOrdinal)까지 넣어 구분한다.
+    const identityKey = record => `${record.sourceFile}#${record.sourceOrdinal ?? ''}#${record.sourceQuestionNo}`;
     const restoredByIdentity = new Map();
+    const missing = [];
     for (const [sourceFile, records] of grouped.entries()) {
       const questions = await loadQuestionFile(sourceFile);
       for (const record of records) {
-        const original = questions.find(question => matchQuestionNo(question?.id, record.sourceQuestionNo));
-        if (!original) throw markError(new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`), {
-          file: sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: core.getQuestionUid(record), code: 'QUESTION_NOT_FOUND',
-        });
-        restoredByIdentity.set(`${sourceFile}#${record.sourceQuestionNo}`, {
+        const original = findSourceQuestion(questions, record);
+        if (!original) {
+          missing.push({ file: sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: core.getQuestionUid(record), code: 'QUESTION_NOT_FOUND' });
+          continue;
+        }
+        restoredByIdentity.set(identityKey(record), {
           ...original, _sourceFile: sourceFile, _sourceQuestionNo: record.sourceQuestionNo,
           _qKey: `${sourceFile}_${record.sourceQuestionNo}`, questionUid: core.getQuestionUid(record),
           sourceOrdinal: record.sourceOrdinal, subUnitKey: record.subUnitKey || '', subUnit: core.getSubUnitLabel(record),
@@ -279,7 +304,25 @@
         });
       }
     }
-    return paper.records.map(record => restoredByIdentity.get(`${record.sourceFile}#${record.sourceQuestionNo}`));
+    const keptRecords = paper.records.filter(record => restoredByIdentity.has(identityKey(record)));
+    if (!keptRecords.length && missing.length) {
+      const first = missing[0];
+      throw markError(new Error(`${first.file}의 ${first.questionNo}번 문항을 찾지 못했습니다.`), first);
+    }
+    return { questions: keptRecords.map(record => restoredByIdentity.get(identityKey(record))), records: keptRecords, missing };
+  }
+  // 원본에서 못 찾은 문항이 있어도 나머지로 출력·출제를 잇는다. 쪽 머리(meta.sections)는 문항 자리(at)를 쓰므로
+  // 못 찾은 문항을 뺀 기록으로 만든다(원래 문제지 기록은 그대로 둔다).
+  async function restoreUsablePaper(paper) {
+    const restored = await restorePaperQuestions(paper);
+    const usablePaper = restored.missing.length ? Object.assign(Object.create(paper), { records: restored.records }) : paper;
+    return { questions: restored.questions, usablePaper, missing: restored.missing };
+  }
+  // 어느 시험지 몇 번 문항을 뺐는지 한국어로 알린다(화면의 알림 자리: setStatus의 오류 알림).
+  function describeMissingQuestions(missing) {
+    const named = missing.slice(0, 5).map(item => `${(typeof getSourceExamLabel === 'function' && getSourceExamLabel(item.file)) || String(item.file).split('/').pop()} ${item.questionNo}번`);
+    const more = missing.length > named.length ? ` 외 ${missing.length - named.length}문항` : '';
+    return `원본 시험지에서 찾지 못한 ${missing.length}문항은 빼고 만들었습니다: ${named.join(', ')}${more}.`;
   }
   function getQpp() {
     const value = String(document.getElementById('unit-qpp')?.value || state.qpp || '4');
@@ -515,10 +558,11 @@
     if (button) { button.disabled = true; button.textContent = '준비 중…'; }
     setStatus(`${paper.title} 문항과 이미지 에셋을 불러오는 중입니다.`);
     try {
-      const questions = await restorePaperQuestions(paper);
-      const meta = buildMixedMeta(unit, paper, questions);
+      const { questions, usablePaper, missing } = await restoreUsablePaper(paper);
+      const meta = buildMixedMeta(unit, usablePaper, questions);
       const outputEnvelope = await prepareOutputEnvelope(paper, questions, meta);
-      setStatus(`${paper.title} · ${questions.length}문항 준비 완료`);
+      if (missing.length) setStatus(`${paper.title} · ${questions.length}문항 준비 완료. ${describeMissingQuestions(missing)}`, true);
+      else setStatus(`${paper.title} · ${questions.length}문항 준비 완료`);
       return { unit, paper, questions, meta, outputEnvelope };
     } finally {
       state.busyKey = '';
@@ -636,8 +680,9 @@
     const unit = getUnit(item.ref.unitKey);
     const paper = getPaper(item.ref.unitKey, item.ref.paperIndex);
     if (!unit || !paper) throw new Error('문제지를 찾지 못했습니다.');
-    const questions = await restorePaperQuestions(paper);
-    const meta = buildMixedMeta(unit, paper, questions);
+    const { questions, usablePaper, missing } = await restoreUsablePaper(paper);
+    const meta = buildMixedMeta(unit, usablePaper, questions);
+    if (missing.length) setStatus(describeMissingQuestions(missing), true);
     return { questions, meta };
   }
   function openAssignPanel(refs, opener) {

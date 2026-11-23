@@ -287,7 +287,6 @@ test('E2 an invalid typography policy is refused before any worker call',async()
     ['schema mismatch',{...policy,schemaVersion:'REQUESTED_PROFILE_TYPOGRAPHY_v0'}],
     ['missing',undefined],['null',null],
     ['NaN base font',{...policy,baseFontPx:NaN}],['Infinity scale',{...policy,displayScale:Infinity}],['string floor',{...policy,fontFloorCssPx:'11'}],['missing floor',{...policy,fontFloorCssPx:undefined}],
-    ['font below floor (20 x 0.5 = 10 < 11)',{...policy,displayScale:0.5}],
     ['floor below 11',{...policy,fontFloorCssPx:10}],['non-positive scale',{...policy,displayScale:0}],
     ['base font below 11 even though the product reaches the floor',{...policy,baseFontPx:6,displayScale:2}]
   ];
@@ -298,23 +297,25 @@ test('E2 an invalid typography policy is refused before any worker call',async()
   }
 });
 
-test('E6r REAL input, Chrome 1/64px layout snap dependent (environment dependent): a policy whose font product sits exactly on the floor fails the real render',async()=>{
-  // ENVIRONMENT DEPENDENT: this relies on Blink laying the 211.2px wide SVG out on a 1/64px grid (211.1875px) at browser scale factor 1.
-  // A Chrome update or another scale factor can flip it; then re-derive the input, do not loosen the assertion.
-  // The deterministic proof that the RENDERED_LAYOUT_FAIL axis is reached is the INJECTED E6 below.
-  // 20 x 0.55 === 11, so the policy check accepts it; the real policy builder targets the floor plus 0.25px, so a real policy never sits here.
+test('E6r REAL input, Chrome 1/64px layout snap dependent (environment dependent): a policy whose displayed font sits just under the floor composes and is recorded as displayTextBelow11px (2026-11-23)',async()=>{
+  // Before 2026-11-23 20 x 0.55 === 11 was accepted by the policy check and then failed the real render (every label PUBLICATION_FONT_BELOW_11_CSS_PX).
+  // The displayed font floor is released ("students zoom in"): the same input now composes; the labels are authored at 20 (>= 11), so only the display size is below 11.
+  // ENVIRONMENT DEPENDENT: Blink lays the 211.2px wide SVG out on a 1/64px grid (211.1875px) at browser scale factor 1, so the displayed font is 10.99; a Chrome update can flip that, then the info flag may be absent (asserted below from the independent render).
   const edge={...policy,displayScale:0.55};assert.equal(edge.baseFontPx*edge.displayScale,edge.fontFloorCssPx);
   const s=spy(),result=await compose({typographyPolicy:edge,identity:idOf(4),worker:s.worker});
-  assertNotRun(result);assert.equal(result.status,'RENDERED_LAYOUT_FAIL',JSON.stringify(result.detail));
-  assert.equal(result.staticAudit.status,'PASS');assert.equal(result.renderedLayout.status,'FAIL');
-  const labelIds=s.of('prepare')[0].response.result.labels.map(label=>label.id);
-  assert.deepEqual([...result.renderedLayout.errors].sort(),labelIds.map(id=>'PUBLICATION_FONT_BELOW_11_CSS_PX:'+id).sort());assert.deepEqual(result.detail.errors,result.renderedLayout.errors);// every label fails, reported in DOM order
-  assert.equal(result.svg,null);assert.match(result.lineage.svgSha256,HASH);assert.match(result.lineage.renderedLayoutSha256,HASH);
-  const independent=await renderIndependently(s.of('build')[0].response.result.svg,edge.displayScale);
+  assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));
+  assert.equal(result.renderedLayout.status,'PASS');assert.deepEqual(result.renderedLayout.errors,[]);
+  const independent=await renderIndependently(result.svg,edge.displayScale);
   assert.equal(renderRecordSha(result.lineage.svgSha256,independent),result.lineage.renderedLayoutSha256);
-  const sizes=independent.labelMeasurements.map(label=>label.finalViewportCssFontPx);assert.ok(sizes.every(size=>size<11&&size>10.99),JSON.stringify(sizes));
-  // a hair more scale is enough to compose, so the failure is the font floor and nothing else
-  assert.equal((await compose({typographyPolicy:{...policy,displayScale:0.56},identity:idOf(4)})).status,'COMPOSED');
+  const sizes=independent.labelMeasurements.map(label=>label.finalViewportCssFontPx);
+  assert.equal(result.renderedLayout.displayTextBelow11px===true,sizes.some(size=>size<11-1e-7),JSON.stringify(sizes));
+  // a displayed font well below 11 (20 x 0.5 = 10) composes too; it used to be TYPOGRAPHY_POLICY_INVALID (FONT_BELOW_FLOOR)
+  const small=await compose({typographyPolicy:{...policy,displayScale:0.5},identity:idOf(4)});
+  assert.equal(small.status,'COMPOSED',JSON.stringify(small.detail));assert.equal(small.renderedLayout.displayTextBelow11px,true);
+  assert.equal(small.renderedLayout.displayTextBelow11pxLabelCount,sizes.length);
+  // the AUTHORED font still has its floor: a base font below 11 is a TYPOGRAPHY_POLICY_INVALID (RANGE) even where the product reaches the floor
+  const authored=await compose({typographyPolicy:{...policy,baseFontPx:6,displayScale:2},identity:idOf(4)});
+  assert.equal(authored.status,'TYPOGRAPHY_POLICY_INVALID');
 });
 
 test('E3 a graph plan outside the supported quadratic route, and a construction plan without a usable mathPlan, are UNSUPPORTED_CAPABILITY',async()=>{
@@ -515,7 +516,7 @@ test('the module closes only a browser it opened itself, and opens none when not
   const chromium=playwright().chromium,realLaunch=chromium.launch.bind(chromium),opened=[];
   chromium.launch=async(...args)=>{const instance=await realLaunch(...args);opened.push(instance);return instance;};
   try{
-    const identity=idOf(12),early=await composeConstructionCandidate({plan:basePlan,model:baseModel,identity,typographyPolicy:{...policy,displayScale:0.5}});
+    const identity=idOf(12),early=await composeConstructionCandidate({plan:basePlan,model:baseModel,identity,typographyPolicy:{...policy,baseFontPx:6,displayScale:2}});
     assert.equal(early.status,'TYPOGRAPHY_POLICY_INVALID');assert.equal(opened.length,0,'no Chrome is started for an input error');
     const badIdentity=await composeConstructionCandidate({plan:basePlan,model:baseModel,identity:{...identity,assetId:'x'},typographyPolicy:policy});
     assert.equal(badIdentity.status,'FRAGMENT_IDENTITY_INVALID');assert.equal(opened.length,0);

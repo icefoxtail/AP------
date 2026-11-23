@@ -62,6 +62,8 @@ export function auditSlice(root,resultRef){
   const rawRows=capture.outputs.filter(o=>o.path.endsWith('desktop.json')).map(o=>JSON.parse(readBoundFile(root,o)));
   if(!rawRows.length||rawRows.some(r=>r.status!=='PASS'))errors.push('ACTUAL_CAPTURE_ROW_NOT_PASS');
   const fonts=rawRows.flatMap(r=>r.layouts.flatMap(l=>l.labelMeasurements.map(m=>m.finalViewportCssFontPx)));
-  if(!fonts.length||Math.min(...fonts)<11)errors.push('FONT_GATE');
-  return {status:errors.length?'FAIL':'PASS',errors,questionUid:result.identity.questionUid,minCssFont:Math.min(...fonts),finalSvgRef:result.finalSvgRef,stageCount:stages.length,resultRef,productionAuthorized:false};
+  // 2026-11-23 (owner): a displayed font below 11 CSS px no longer fails the slice audit (recorded as displayTextBelow11px); a missing or non-finite metric still does.
+  if(!fonts.length||fonts.some(value=>!Number.isFinite(value)))errors.push('FONT_GATE');
+  const displayTextBelow11px=fonts.length>0&&fonts.every(Number.isFinite)&&Math.min(...fonts)<11;
+  return {status:errors.length?'FAIL':'PASS',errors,...(displayTextBelow11px?{displayTextBelow11px:true}:{}),questionUid:result.identity.questionUid,minCssFont:Math.min(...fonts),finalSvgRef:result.finalSvgRef,stageCount:stages.length,resultRef,productionAuthorized:false};
 }

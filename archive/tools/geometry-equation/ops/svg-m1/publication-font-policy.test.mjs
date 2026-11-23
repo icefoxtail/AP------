@@ -45,9 +45,9 @@ test('empty, unready, synthetic or differently hashed drawings fail closed',()=>
   const missing=empty();delete missing.fontInspection;assert.throws(()=>decide(missing));
 });
 
-test('ordinary 11 CSS px threshold and complete measurement remain mandatory',()=>{
+test('complete measurement remains mandatory; a displayed font below 11 CSS px is recorded, not a failure (2026-11-23 owner decision)',()=>{
   assert.deepEqual(decide(normal(11)),{fontApplicability:'APPLICABLE',minFontPx:11});
-  assert.throws(()=>decide(normal(10.99)),/below 11/);
+  assert.deepEqual(decide(normal(10.99)),{fontApplicability:'APPLICABLE',minFontPx:10.99,displayTextBelow11px:true});
   assert.throws(()=>decide(normal(NaN)),/unmeasurable/);
   const missing=normal(14);missing.measuredLabelCount=0;assert.throws(()=>decide(missing),/unmeasurable/);
   // Existing recursive measurement remains available to ordinary SVGs.
@@ -75,7 +75,9 @@ test('Python publication consumer enforces the same zero-label evidence and norm
   invalid('N/A with labels',r=>{r.expectedLabelCount=r.measuredLabelCount=1;r.labels=[{finalViewportCssFontPx:14}];});
   invalid('unexpected font number',r=>{r.minFontPx=14;});
   const standard=normal(11);cases.push({name:'normal 11px',row:report(standard,decide(standard)),ok:true});
-  cases.push({name:'normal below 11px',row:report(normal(10.99),{fontApplicability:'APPLICABLE',minFontPx:10.99}),ok:false});
+  const below=normal(10.99);cases.push({name:'normal below 11px is recorded, not refused (2026-11-23)',row:report(below,decide(below)),ok:true});
+  cases.push({name:'non-positive font metric',row:report(normal(0),{fontApplicability:'APPLICABLE',minFontPx:0}),ok:false});
+  cases.push({name:'non-finite font metric',row:report(normal(14),{fontApplicability:'APPLICABLE',minFontPx:null}),ok:false});
   const unmarked=empty();unmarked.fontInspection.rootMarked=false;
   cases.push({name:'ordinary empty',row:report(unmarked,notApplicable(unmarked)),ok:false});
   const script="import json,sys;sys.path.insert(0,sys.argv[1]);from pubflow import validate_font_row\nresults=[]\nfor case in json.load(sys.stdin):\n try:\n  validate_font_row(case['row'],sys.argv[2]);results.append(True)\n except ValueError:\n  results.append(False)\nprint(json.dumps(results))";
