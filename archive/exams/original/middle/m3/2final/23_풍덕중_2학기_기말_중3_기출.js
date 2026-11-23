@@ -471,7 +471,7 @@ window.questionBank=[
     "choices": [
       "$10+6\\sqrt{3}$",
       "$10+6\\sqrt{5}$",
-      "$10+6\\sqrt{3}$",
+      "$10+6\\sqrt{7}$",
       "$6\\sqrt{5}$",
       "$6\\sqrt{3}$"
     ],
