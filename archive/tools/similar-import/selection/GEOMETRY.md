@@ -13,15 +13,15 @@
 - `H15-GV-03` 쌍곡선 (소단원 0 · RPM 2 · 유형 0)
 - `H22-GE-03` 공간도형 (소단원 1 · RPM 8 · 유형 2)
 - `H15-GV-04` 이차곡선과 직선 (소단원 0 · RPM 8 · 유형 0)
-- `H22-GE-04` 공간좌표 (소단원 1 · RPM 6 · 유형 2)
+- `H22-GE-04` 공간좌표 (소단원 1 · RPM 12 · 유형 2)
 - `H15-GV-05` 벡터의 연산 (소단원 0 · RPM 6 · 유형 0)
 - `H22-GE-05` 벡터의 연산 (소단원 3 · RPM 6 · 유형 3)
-- `H15-GV-06` 평면벡터의 성분과 내적 (소단원 0 · RPM 6 · 유형 0)
+- `H15-GV-06` 평면벡터의 성분과 내적 (소단원 0 · RPM 6 · 유형 1)
 - `H22-GE-06` 벡터의 성분 (소단원 3 · RPM 4 · 유형 2)
 - `H15-GV-07` 직선과 원의 방정식 (소단원 0 · RPM 0 · 유형 0)
 - `H22-GE-07` 벡터의 내적 (소단원 3 · RPM 2 · 유형 2)
 - `H15-GV-08` 공간도형 (소단원 0 · RPM 6 · 유형 0)
-- `H22-GE-08` 도형의 방정식 (소단원 1 · RPM 6 · 유형 3)
+- `H22-GE-08` 도형의 방정식 (소단원 1 · RPM 8 · 유형 4)
 - `H15-GV-09` 공간좌표 (소단원 0 · RPM 6 · 유형 2)
 
 ## H15-GV-01 포물선
@@ -229,11 +229,23 @@
 - `H2-GEO-RPM-062` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-063` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-064` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-086` 공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 점의 좌표 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-087` 공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 두 점 사이 거리 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-088` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 내분점·외분점 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-089` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-090` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-091` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
 
 ## H15-GV-05 벡터의 연산
 
@@ -287,6 +299,9 @@
   - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
   - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_VECTOR` **벡터** — 평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.
 
 ## H15-GV-06 평면벡터의 성분과 내적
@@ -308,7 +323,15 @@
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
-- (이 단원에 묶인 유형이 아직 없다)
+- `PT_GEO_PLANE_VECTOR` **평면벡터 문제** — 평면벡터의 뜻과 연산·성분 관계를 이용해 벡터를 표현·계산하거나 도형 조건을 해결하는 문제 유형.
+  - `TPL_GEO_PLANE_VECTOR_ANGLE` 벡터 각
+  - `TPL_GEO_PLANE_VECTOR_DOT` 내적 계산
+  - `TPL_GEO_PLANE_VECTOR_DOT_ZERO` 내적 영 수직 조건
+  - `TPL_GEO_PLANE_VECTOR_EXTREMA` 내적 최적화
+  - `TPL_GEO_PLANE_VECTOR_LOCUS` 내적 자취
+  - `TPL_GEO_PLANE_VECTOR_PARAMETER` 벡터 조건
+  - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
+  - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 
 ## H22-GE-06 벡터의 성분
 
@@ -413,12 +436,22 @@
 - `H2-GEO-RPM-080` 벡터 > 도형의 방정식 > 벡터를 이용한 평면 > 평면의 방정식 · `H22-GE-08-CORE`
 - `H2-GEO-RPM-081` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 점과 직선·평면 거리 · `H22-GE-08-CORE`
 - `H2-GEO-RPM-082` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 교점·각 · `H22-GE-08-CORE`
+- `H2-GEO-RPM-092` 벡터 > 도형의 방정식 > 벡터를 이용한 직선 > 방향벡터 · `H22-GE-08-CORE`
+- `H2-GEO-RPM-093` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 교점·각 · `H22-GE-08-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_PLANE_EQUATION` **평면의 방정식** — 한 점과 법선벡터의 내적 관계로 평면식을 세우거나 점에서 평면까지의 거리를 구한다.
 - `PT_GEO_SPACE_LINE` **공간직선** — 공간 직선을 매개변수로 나타내고 다른 직선 또는 평면의 식과 연립하여 교점을 구한다.
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
+- `PT_GEO_VECTOR_LINE_CIRCLE` **벡터를 이용한 직선·원의 방정식** — 방향벡터·법선벡터와 위치벡터를 이용하여 평면 위 직선과 원의 방정식을 세우고, 직선의 평행·수직·교각 관계를 해석하는 문제 유형.
+  - `TPL_GEO_VEC_CIRCLE` 벡터로 나타낸 원의 방정식
+  - `TPL_GEO_VEC_LINE_DIRECTION` 방향벡터로 직선의 방정식
+  - `TPL_GEO_VEC_LINE_NORMAL` 법선벡터로 직선의 방정식
+  - `TPL_GEO_VEC_LINE_RELATION` 두 직선의 평행·수직·각
 
 ## H15-GV-09 공간좌표
 
@@ -440,7 +473,13 @@
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
 
 ## 아래 학년 유형
 
@@ -453,7 +492,7 @@
 - `PT_BOUNDED_PRIME_COUNT` 범위 안의 소수 개수 (TPL 1)
 - `PT_CIRCLE_ANGLE_RELATIONS` 원주각·중심각과 원의 각 관계 (TPL 11)
 - `PT_CONSTRAINED_FACTOR_PAIR` 조건을 만족하는 인수쌍 (TPL 1)
-- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 3)
+- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 5)
 - `PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION` 정비례·반비례 관계 판별 (TPL 1)
 - `PT_DIVISOR_COUNT` 약수의 개수 조건 (TPL 2)
 - `PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY` 절댓값이 같은 두 수의 차 (TPL 2)
@@ -462,6 +501,7 @@
 - `PT_FUNCTION_GRAPH_PROPERTIES` 함수 그래프의 성질 (TPL 4)
 - `PT_FUNCTION_GRAPH_QUADRANT` 함수 그래프와 사분면 (TPL 3)
 - `PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE` 수위 그래프와 용기 모양 대응 (TPL 2)
+- `PT_H1_POLY_IDENTITY_COEFFICIENT` 항등식과 미정계수 (TPL 2)
 - `PT_INTEGER_MEMBERSHIP_COUNT` 정수에 해당하는 값의 개수 (TPL 2)
 - `PT_LCM_APPLICATION` 최소공배수의 상황 적용 (TPL 7)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
@@ -469,14 +509,14 @@
 - `PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION` 문장과 식의 대응·표기 검사 (TPL 8)
 - `PT_M1_BASIC_CONSTRUCTION` 기본 작도 도구와 절차 (TPL 3)
 - `PT_M1_BASIC_GEOMETRY_JUDGMENT` 기본도형의 용어·관계 진술 판단 (TPL 3)
-- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 9)
+- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 10)
 - `PT_M1_CIRCLE_MEASURE` 원과 부채꼴
 - `PT_M1_COMMON_DIVISIBILITY_FILTER` 공약수·공배수 조건 검사 (TPL 4)
 - `PT_M1_CONGRUENCE_DATA_TRANSFER` 합동인 삼각형의 대응 관계 적용 (TPL 10)
 - `PT_M1_CONGRUENCE_INVARIANTS` 합동에서 보존되는 성질 (TPL 1)
 - `PT_M1_CONGRUENCE_UNIQUENESS` 삼각형 합동·작도 유일조건 (TPL 2)
 - `PT_M1_CONTEXT_GRAPH_INTERPRETATION` 상황을 그래프의 변화로 해석 (TPL 7)
-- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 2)
+- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 3)
 - `PT_M1_COORDINATE_AXIS_DISTANCE` 좌표와 축까지의 거리 (TPL 1)
 - `PT_M1_COORDINATE_COMPOSITE_AREA` 좌표·함수와 도형 넓이 결합 (TPL 3)
 - `PT_M1_COORDINATE_POINT_CONSTRAINT` 좌표 성분과 점의 위치조건 (TPL 3)
@@ -489,7 +529,7 @@
 - `PT_M1_DIVISOR` 약수
 - `PT_M1_DIVISOR_MULTIPLE_EXPONENT` 소인수 지수로 약수·배수 판별 (TPL 3)
 - `PT_M1_EQUAL_SUM` 같은 합
-- `PT_M1_EQUATION` 등식과 방정식
+- `PT_M1_EQUATION` 등식과 방정식 (TPL 2)
 - `PT_M1_FACTOR_PAIR` 인수쌍
 - `PT_M1_FINITE_LIST_PRIME_COUNT` 유한 목록의 소수 개수 (TPL 1)
 - `PT_M1_FREQUENCY` 도수분포
@@ -498,7 +538,7 @@
 - `PT_M1_GCD_LCM` 최대공약수와 최소공배수
 - `PT_M1_GCD_LCM_EXPONENT_CONSTRAINT` 최대공약수·최소공배수의 소인수 지수 조건 (TPL 6)
 - `PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT` 점에서 결정되는 직선·반직선·선분 개수 (TPL 2)
-- `PT_M1_IDENTITY` 항등식
+- `PT_M1_IDENTITY` 항등식 (TPL 2)
 - `PT_M1_INEQUALITY` 부등식
 - `PT_M1_INTERSECTING_ANGLE_RELATIONS` 교차선·맞꼭지각의 계산 (TPL 5)
 - `PT_M1_INVERSE` 반비례
@@ -566,6 +606,7 @@
 - `PT_M1_TRIANGLE_AREA` 삼각형 넓이
 - `PT_M1_TRIANGLE_CONSTRUCTION_ORDER` 삼각형의 작도 순서와 선행조건 (TPL 2)
 - `PT_M1_TRIANGLE_SIDE_FEASIBILITY` 삼각형 성립조건과 가능한 변 세기 (TPL 4)
+- `PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION` 잘못 더한 다항식의 바른 계산 복원 (TPL 2)
 - `PT_MAGIC_SQUARE_ENTRY_RECOVERY` 마방진의 빠진 값 (TPL 1)
 - `PT_MINIMUM_COMMON_MULTIPLIER_FOR_RATIONALS` 유리수의 최소 공통 배수 인자 (TPL 1)
 - `PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE` 완전제곱수가 되는 최소 인자 (TPL 3)
@@ -574,6 +615,7 @@
 - `PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE` 입체 모서리의 수선의 발 (TPL 1)
 - `PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT` 연속된 수의 곱에서 소인수 지수 (TPL 1)
 - `PT_QUADRILATERAL_PROPERTIES` 사각형의 성질과 판정 (TPL 4)
+- `PT_RATIONAL_EXPRESSION` 유리식의 계산 (TPL 5)
 - `PT_RATIONAL_EXPRESSION_BOUNDED_INTEGER_SUM` 유리수식과 범위 정수의 합 (TPL 1)
 - `PT_RIGHT_TRIANGLE_CONGRUENCE` 직각삼각형의 합동 (TPL 3)
 - `PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS` 유리수 곱·차 조건에서 부호 추론 (TPL 1)
@@ -584,6 +626,7 @@
 - `PT_CIRCLE_LINE_RELATION` 원과 직선 (TPL 8)
 - `PT_COORD_CENTROID` 삼각형의 무게중심 (TPL 6)
 - `PT_COUNTING_ARRANGEMENT` 순열 (TPL 6)
+- `PT_COUNTING_SELECTION_DISTRIBUTION` 조합·중복조합 (TPL 7)
 - `PT_FUNCTION_GRAPH_GEOMETRY` 함수 그래프와 도형 (TPL 9)
 - `PT_FUNCTION_GRAPH_INTERSECTION` 함수 그래프의 교점 (TPL 7)
 - `PT_FUNCTION_GRAPH_PROPERTIES` 함수 그래프의 성질 (TPL 4)
@@ -593,7 +636,7 @@
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
 - `PT_H1_SYSTEM_EQUATION` 연립방정식과 공통근 (TPL 2)
 - `PT_ISOSCELES_TRIANGLE` 이등변삼각형의 성질 (TPL 5)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
 - `PT_M1_LINEAR_EQUATION_MODELING` 상황을 일차방정식으로 나타내기 (TPL 2)
@@ -641,7 +684,7 @@
 - `PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA` 다항식 넓이에서 삼각형 높이 계산 (TPL 1)
 - `PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA` 접힌 삼각형의 넓이 계산 (TPL 1)
 - `PT_M2_PROBABILITY` 확률
-- `PT_M2_PYTHAGOREAN_RELATION` 피타고라스 정리·역 및 도형 활용 (TPL 8)
+- `PT_M2_PYTHAGOREAN_RELATION` 피타고라스 정리·역 및 도형 활용 (TPL 9)
 - `PT_M2_RATIO_DISTRIBUTION` 비와 비례배분
 - `PT_M2_REPEATING_DECIMAL` 순환소수
 - `PT_M2_SYSTEM_INEQUALITY` 연립부등식
@@ -657,6 +700,7 @@
 - `PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME` 가위바위보 계단 문제 (TPL 2)
 - `PT_M2_TRIANGLE_ANGLE` 삼각형의 각
 - `PT_M2_TRIANGLE_CONGRUENCE` 삼각형의 합동
+- `PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE` 삼각형 성질의 참·거짓 판별
 - `PT_M2_TWO_VARIABLE_LINEAR_EQUATION` 미지수가 두 개인 일차방정식
 - `PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION` 평행선 조건으로 넓이가 같은 삼각형 찾기 (TPL 1)
 - `PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT` 평행사변형의 각 이등분선이 만드는 선분 계산 (TPL 2)
@@ -736,6 +780,7 @@
 - `PT_M3_REAL_NUMBER_COMPARISON` 실수의 대소와 범위 판단 (TPL 9)
 - `PT_M3_REAL_NUMBER_LINE` 수직선 위 실수의 위치 결정 (TPL 3)
 - `PT_M3_REAL_NUMBERS` 실수
+- `PT_M3_REGULAR_POLYGON` 정다각형
 - `PT_M3_REPRESENTATIVE` 대푯값
 - `PT_M3_ROOT_COEFFICIENT` 근과 계수의 관계
 - `PT_M3_ROOT_FORMULA` 근의 공식
@@ -746,6 +791,7 @@
 - `PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE` 편차·분산·표준편차 개념 판정 (TPL 5)
 - `PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS` 꺾은선그래프로 대푯값 비교 (TPL 1)
 - `PT_M3_VARIANCE` 분산과 표준편차
+- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 2)
 - `PT_TRIANGLE_ANGLE_BISECTOR` 삼각형의 각의 이등분선 (TPL 2)
 - `PT_TRIANGLE_CENTERS` 삼각형의 외심·내심 (TPL 5)
 - `PT_TRIANGLE_SIMILARITY` 삼각형의 닮음 (TPL 2)
@@ -854,7 +900,7 @@
 - `PT_H1_COMPLEX_OPERATION` 복소수의 연산과 상등 (TPL 4)
 - `PT_H1_COMPLEX_POWER_ROOT` 복소수의 거듭제곱과 단위근 (TPL 2)
 - `PT_H1_EQUATION_APPLICATION` 방정식의 활용 (TPL 2)
-- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 5)
+- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 6)
 - `PT_H1_HIGHER_DEGREE_EQUATION` 고차방정식의 풀이 (TPL 4)
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
 - `PT_H1_POLY_DIVISION` 다항식의 나눗셈 (TPL 4)
@@ -873,7 +919,7 @@
 - `PT_INTERCEPT_OPTIMIZATION` 절편을 이용한 최댓값·최솟값 (TPL 2)
 - `PT_LINE_ANGLE_BISECTOR` 두 직선이 이루는 각의 이등분선 (TPL 2)
 - `PT_LINE_DISTANCE_EXTREMUM` 점과 직선 사이의 거리의 최댓값·최솟값 (TPL 2)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_FAMILY_COMMON_POINT` 정점을 지나는 직선 (TPL 1)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
@@ -882,7 +928,7 @@
 - `PT_MOVE_COMPOSITE` 여러 번의 도형의 이동 (TPL 6)
 - `PT_MOVE_EQUATION_TRANSFORM` 방정식으로 나타낸 도형의 이동 (TPL 3)
 - `PT_MOVE_FOLDING_REFLECTION` 접기와 대칭이동 (TPL 3)
-- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 1)
+- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 2)
 - `PT_MOVE_GRAPH_TRANSLATION` 그래프의 평행이동 (TPL 1)
 - `PT_MOVE_LINE_REFLECTION` 직선의 대칭이동 (TPL 1)
 - `PT_MOVE_LINE_TRANSLATION` 직선의 평행이동 (TPL 4)
@@ -907,7 +953,7 @@
 - `PT_H1_COUNTING_PRINCIPLE_GENERAL` 경우의 수의 합·곱 법칙 (TPL 4)
 - `PT_H1_DIVISOR` 약수
 - `PT_H1_EQUATION_APPLICATION` 방정식의 활용 (TPL 2)
-- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 5)
+- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 6)
 - `PT_H1_HIGHER_DEGREE_EQUATION` 고차방정식의 풀이 (TPL 4)
 - `PT_H1_INEQUALITY_APPLICATION` 부등식의 활용 (TPL 3)
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
@@ -971,7 +1017,7 @@
 - `PT_INVERSE_VALUE` 역함수 구하기와 함수값 (TPL 4)
 - `PT_ITERATED_COMPOSITION` 반복합성 (TPL 5)
 - `PT_LINE_DISTANCE_EXTREMUM` 점과 직선 사이의 거리의 최댓값·최솟값 (TPL 2)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
 - `PT_LOGIC_CHAIN` 논리 관계와 추론 (TPL 2)
@@ -1072,9 +1118,9 @@
 - `PT_DERIVATIVE_GRAPH_ANALYSIS` 도함수 그래프 해석 (TPL 2)
 - `PT_DERIVATIVE_MAX_MIN` 최댓값·최솟값 (TPL 2)
 - `PT_DERIVATIVE_MONOTONICITY` 함수의 증가·감소 (TPL 2)
-- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 3)
+- `PT_DERIVATIVE_MOTION` 속도·가속도와 변화율 (TPL 4)
 - `PT_DERIVATIVE_RATE_RELATION` 평균변화율과 미분계수 (TPL 3)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTION_EXTREMUM` 함수의 최댓값·최솟값 (TPL 7)
 - `PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION` 부정적분과 함수 (TPL 2)
@@ -1084,9 +1130,9 @@
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
 - `PT_LIMIT_STATEMENT_LOGIC` 함수의 극한에 대한 참·거짓 (TPL 1)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 13)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_MEAN_VALUE_THEOREM` 평균값 정리와 롤의 정리 (TPL 2)
-- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 2)
+- `PT_MOTION_BY_INTEGRAL` 속도와 거리 (TPL 3)
 - `PT_ONE_TO_ONE_BIJECTION` 일대일함수와 일대일대응 (TPL 5)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
@@ -1132,13 +1178,13 @@
 - `PT_DERIVATIVE_DEFINITION` 미분계수의 정의와 극한 (TPL 2)
 - `PT_DERIVATIVE_EXTREMA` 극대·극소 (TPL 2)
 - `PT_DERIVATIVE_FUNCTION_DETERMINATION` 도함수 조건을 이용한 함수 결정 (TPL 4)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTIONAL_EQUATION` 함수방정식 (TPL 4)
 - `PT_INTERMEDIATE_VALUE_APPLICATION` 사잇값 정리의 활용 (TPL 2)
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 13)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
 ### 확률과 통계 (PROBABILITY_STATISTICS) · 고2 — 파일 `PROBABILITY_STATISTICS.md`

@@ -116,14 +116,26 @@
             .map((r) => r.courseKey),
         ).map((value) => ({ value, label: courseLabel(value) }));
   }
+  // ---- 학교별 기출을 목록만으로 먼저 그리기 (2026-11-23) ----
+  // 시험지 목록(state.light)만 있고 카탈로그가 아직 없을 때: 시험지 단위 값(학교·연도·학기·학년·종류·검색어의 시험지 글자)으로 먼저 보이고,
+  // 레코드에서 판정하는 것(교육과정·과목, 문항 단위 검색어, 레코드 기준 학년)은 전체 자료가 온 뒤 같은 화면이 다시 그려져 채워진다.
+  const findLight = () => !state.catalog && Boolean(state.light);
+  // 교육과정·과목·계열은 목록만으로 판정하지 않는다: 이런 조건이 주소에 있으면 전체 자료를 기다린다(준비 중 화면).
+  const LIGHT_BLOCKED_FILTERS = ["curriculumKey", "courseKey", "semanticSubject", "family"];
+  const lightFindUsable = () => findLight() && !LIGHT_BLOCKED_FILTERS.some((key) => state.find[key]);
+  // 통합 과목 목록(학년별 고정 목록)이 있는 화면으로 그린다: 전체 자료가 오기 전에도 칸 모양이 같다.
+  const finderUnified = () => Boolean(unifiedIndex()) || findLight();
+  // 목록만으로 보인 결과가 전체 자료가 오면 달라질 수 있는 조건(검색어, 학년): 이때만 "준비하는 중" 줄을 보이고 "결과 없음"을 단정하지 않는다.
+  const lightResultsPending = () => findLight() && Boolean(state.find.query || state.find.grade);
+  // The finder screen can be drawn from the exam list alone (see lightFindUsable): main part asks before it draws.
   // Finder filters in the unified vocabulary: the subject comes from the unified list for the
   // chosen grade (all unified subjects while no grade is chosen); the old subject family, the
   // semester-course select and shared-matcher subject rules no longer apply.
   function reconcileFinderFilters(filters) {
-    if (!unifiedIndex()) return C.reconcileFinderFilters(filters, state.catalog.taxonomy);
+    if (!finderUnified()) return C.reconcileFinderFilters(filters, state.catalog.taxonomy);
     const next = C.reconcileFinderFilters(
       { ...filters, semanticSubject: "", family: "", courseKey: "" },
-      state.catalog.taxonomy,
+      state.catalog?.taxonomy || [],
     );
     const subject = filters.semanticSubject || Unified.subjectForFamily(filters.family);
     next.semanticSubject = Unified.isKnownSubject(next.grade || "", subject) ? subject : "";
@@ -210,7 +222,7 @@
   // buttons. Middle school (one subject) and "no grade yet" show nothing. It reads and writes the same
   // state.find.semanticSubject as the 과목 select in the fold, so the two never disagree.
   function finderSubjectChoices(filters) {
-    if (!filters.grade || !unifiedIndex()) return [];
+    if (!filters.grade || !finderUnified()) return [];
     const subjects = Unified.subjectChoices(filters.grade);
     return subjects.length >= 2 ? subjects : [];
   }
@@ -219,7 +231,7 @@
     if (!subjects.length) return "";
     const current = filters.semanticSubject || Unified.subjectForFamily(filters.family) || "";
     const buttons = [{ value: "", label: "전체" }, ...subjects].map(({ value, label }) =>
-      button("finder-subject", esc(label), `type="button" class="find-subject" data-subject="${esc(value)}" aria-pressed="${current === value}"`)).join("");
+      button("finder-subject", esc(label), `type="button" class="find-subject" data-subject="${esc(value)}" aria-pressed="${current === value}"${findLight() ? " disabled" : ""}`)).join("");
     return `<div class="find-subjects" role="group" aria-label="과목">${buttons}</div>`;
   }
   // 출판사 단추(교과서 칸): 학년·과목 조건에 맞는 교과서의 출판사만 보이고, 고른 값은 학교 조건(state.find.school) 그대로다.
@@ -232,7 +244,7 @@
   }
   // The one-exam filter (a link to a file) is shown by the exam's title, never by its file name.
   function finderFileLabel(file) {
-    const exam = (state.catalog?.exams || []).find((item) => C.normalizeFile(item.file) === C.normalizeFile(file));
+    const exam = catalogExams().find((item) => C.normalizeFile(item.file) === C.normalizeFile(file));
     return exam ? O.displayTitle(exam) : "선택한 시험지";
   }
   function finderActiveMarkup(filters) {
@@ -245,7 +257,7 @@
           ? `${filters.yearFrom || "…"}~${filters.yearTo || "…"}`
           : "",
       ],
-      unifiedIndex()
+      finderUnified()
         ? ["", ""]
         : ["과목 계열", filters.family ? finderFamilyLabel(filters.family) : ""],
     ].filter(([, value]) => value);
@@ -271,17 +283,17 @@
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
     let subjectField = "";
-    if (unifiedIndex()) {
+    if (finderUnified()) {
       const subjects = Unified.subjectChoices(filters.grade || "");
       if (subjects.length)
-        subjectField = `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(subjects, filters.semanticSubject || Unified.subjectForFamily(filters.family), "전체 과목")}</select></label>`;
+        subjectField = `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find"${findLight() ? " disabled" : ""}>${options(subjects, filters.semanticSubject || Unified.subjectForFamily(filters.family), "전체 과목")}</select></label>`;
     } else {
       const courses = finderCourseOptions(filters);
       subjectField = projected
         ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
         : `<label class="finder-field finder-course"><span>과목</span><select data-filter="courseKey" data-group="find">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
     }
-    const familyField = filters.grade || unifiedIndex()
+    const familyField = filters.grade || finderUnified()
       ? ""
       : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
           [
@@ -299,7 +311,7 @@
     // A subject chosen with the buttons under the grade does not pop the fold open.
     const subjectOpens = filters.semanticSubject && !finderSubjectChoices(filters).length;
     const open = state.findMoreOpen || filters.curriculumKey || filters.courseKey || subjectOpens || (filters.school && filters.material !== "textbook") || filters.yearFrom || filters.yearTo || filters.family;
-    return `<details class="find-more"${open ? " open" : ""}><summary>과목 · 학교 · 연도</summary><div class="find-more-fields"><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}<label class="finder-field finder-school"><span>${filters.material === "textbook" ? "출판사" : "학교"}</span><select data-filter="school" data-group="find">${options(schools, filters.school, filters.material === "textbook" ? "전체 출판사" : "전체 학교")}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${familyField}</div></details>`;
+    return `<details class="find-more"${open ? " open" : ""}><summary>과목 · 학교 · 연도</summary><div class="find-more-fields"><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find"${findLight() ? " disabled" : ""}>${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${subjectField}<label class="finder-field finder-school"><span>${filters.material === "textbook" ? "출판사" : "학교"}</span><select data-filter="school" data-group="find">${options(schools, filters.school, filters.material === "textbook" ? "전체 출판사" : "전체 학교")}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${familyField}</div></details>`;
   }
 
 
@@ -307,8 +319,15 @@
   // the uid and L1-L4 text of its questions. Exact current middle-school parents are search
   // aliases from the shared selection index; stored source/request paths remain unchanged.
   let findSearchIndex = null;
+  const lightSearchText = new WeakMap();
   function findSearchText(exam) {
     const catalog = state.catalog;
+    // 목록만 있을 때는 시험지 글자까지만(문항의 uid·L1~L4는 전체 자료가 온 뒤 더해진다).
+    if (!catalog) {
+      let lightText = lightSearchText.get(exam);
+      if (lightText === undefined) lightSearchText.set(exam, (lightText = examSearchParts(exam).join("\n")));
+      return lightText;
+    }
     if (!findSearchIndex || findSearchIndex.exams !== catalog.exams || findSearchIndex.records !== catalog.records) {
       const questionsByFile = new Map();
       const index = unifiedIndex();
@@ -325,24 +344,29 @@
     }
     let text = findSearchIndex.text.get(exam);
     if (text === undefined) {
-      const parts = [];
-      const collect = (value, depth) => {
-        if (typeof value === "string" || typeof value === "number") {
-          const piece = C.normalizeSearch(value);
-          if (piece) parts.push(piece);
-        } else if (depth < 4 && value && typeof value === "object") {
-          for (const item of Array.isArray(value) ? value : Object.values(value)) collect(item, depth + 1);
-        }
-      };
-      collect(exam, 0);
-      // The card title ("2026 팔마고 고3 1학기 중간고사") is built from separate fields, so words
-      // such as "1학기" or "중간고사" only exist in the displayed title.
-      collect(O.displayTitle(exam), 0);
+      const parts = examSearchParts(exam);
       parts.push(...(findSearchIndex.questionsByFile.get(exam.file) || []));
       text = parts.join("\n");
       findSearchIndex.text.set(exam, text);
     }
     return text;
+  }
+  // The exam's own visible values plus its card title.
+  function examSearchParts(exam) {
+    const parts = [];
+    const collect = (value, depth) => {
+      if (typeof value === "string" || typeof value === "number") {
+        const piece = C.normalizeSearch(value);
+        if (piece) parts.push(piece);
+      } else if (depth < 4 && value && typeof value === "object") {
+        for (const item of Array.isArray(value) ? value : Object.values(value)) collect(item, depth + 1);
+      }
+    };
+    collect(exam, 0);
+    // The card title ("2026 팔마고 고3 1학기 중간고사") is built from separate fields, so words
+    // such as "1학기" or "중간고사" only exist in the displayed title.
+    collect(O.displayTitle(exam), 0);
+    return parts;
   }
   // One rule for every way into the finder (menu, address, back button): without a material it lists
   // 학교 기출; a link to one exam file keeps listing every kind so the file is found.
@@ -356,7 +380,7 @@
       .split(/\s+/)
       .map(C.normalizeSearch)
       .filter(Boolean);
-    return state.catalog.exams.filter((exam) => {
+    return catalogExams().filter((exam) => {
       const hasYearFilter = Boolean(f.yearFrom || f.yearTo);
       const examYear = Number(exam.year);
       if (
@@ -370,7 +394,7 @@
       if (f.file && C.normalizeFile(exam.file) !== C.normalizeFile(f.file)) return false;
       if (f.axis && `${exam.semester}-${exam.examType}` !== f.axis)
         return false;
-      if (!unifiedIndex() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
+      if (!finderUnified() && f.family && !f.grade && !exam.courseFamilies.includes(f.family))
         return false;
       if (!finderIdentityMatch(exam, f)) return false;
       if (f.similarOnly && findSimilarFilterApplies(f) && !similarPairs().setsFor(exam.file).length) return false;
@@ -555,7 +579,7 @@
   // 고른 것은 이 화면(메모리)에만 있다: 필터·검색·쪽을 바꿔도 남고, 저장소·서버에는 쓰지 않는다. 고른 순서가 출제 순서다.
   const multiPicked = [];
   const multiPickedExams = () => {
-    const exams = state.catalog?.exams || [];
+    const exams = catalogExams();
     return multiPicked.map((file) => exams[examIndexOf({ file })]).filter(Boolean);
   };
   function multiPickButton(exam, index, extraClass = "") {
@@ -571,7 +595,7 @@
   }
   // 체크 칸과 아래 단추를 다시 그리지 않고 제자리에서 맞춘다(목록 위치·열린 대화상자를 건드리지 않는다).
   function refreshMultiPick() {
-    const exams = state.catalog?.exams || [];
+    const exams = catalogExams();
     document.querySelectorAll('[data-action="multi-pick"]').forEach((el) => {
       const file = exams[Number(el.dataset.exam)]?.file;
       const on = multiPicked.includes(file);
@@ -818,9 +842,10 @@
       <div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["textbook","교과서"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" && state.find.material !== "textbook" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" || state.find.material === "textbook" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>
       <section class="find-panel" aria-label="검색 조건">${finderSearchMarkup(state.find)}${finderQuickMarkup(state.find)}<div class="find-options">${showSimilarFilter ? `<label class="find-check"><input type="checkbox" data-filter="similarOnly" data-group="find"${state.find.similarOnly ? " checked" : ""}>유사문제 있는 시험만</label>` : ""}${finderMoreFiltersMarkup(state.find)}</div>${finderActiveMarkup(state.find)}</section>
       ${state.find.material && state.find.material !== "exam" && state.find.material !== "textbook" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
+      ${lightResultsPending() ? '<p class="muted find-light-note" role="status" aria-live="polite">문항 단위 검색을 준비하는 중…</p>' : ""}
       <div class="find-resultbar"><h2>${esc(findSummaryText(state.find, exams.length))}</h2>${showSimilarFilter && withSimilar ? `<span class="find-sim-count">유사문제 있는 시험 ${withSimilar.toLocaleString()}개</span>` : ""}${exams.length ? '<span class="find-multi-hint">체크하면 여러 시험지를 한꺼번에 출제할 수 있습니다.</span>' : ""}</div>
       <div class="exam-rows find-rows">${showSimilarFilter && exams.length ? '<div class="exam-rows-head" aria-hidden="true"><span>기출</span><span>이 시험의 유사문제</span></div>' : ""}${rows}</div>
-      ${!exams.length ? emptyFindMarkup() : ""}
+      ${!exams.length ? (lightResultsPending() ? '<div class="empty find-empty-pending">문항까지 찾는 중입니다. 준비가 끝나면 결과가 나옵니다.</div>' : emptyFindMarkup()) : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
       <div class="multi-assign-slot" data-multi-slot>${multiBarMarkup()}</div>
       ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
@@ -985,6 +1010,7 @@
     homeRecentTitle,
     homeRecentBodyMarkup,
     fillHomeFromCatalog,
+    lightFindUsable,
     PREPARING_TITLES,
     preparingMarkup,
     renderHome,

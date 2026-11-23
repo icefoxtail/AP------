@@ -8,9 +8,9 @@
 
 - `M1-01` 소인수분해 (소단원 2 · RPM 24 · 유형 25)
 - `M1-02` 정수와 유리수 (소단원 2 · RPM 28 · 유형 22)
-- `M1-03` 문자와 식 (소단원 3 · RPM 49 · 유형 18)
+- `M1-03` 문자와 식 (소단원 3 · RPM 49 · 유형 21)
 - `M1-04` 좌표평면과 그래프 (소단원 2 · RPM 31 · 유형 20)
-- `M1-05` 기본도형 (소단원 3 · RPM 65 · 유형 25)
+- `M1-05` 기본도형 (소단원 3 · RPM 65 · 유형 26)
 - `M1-06` 평면도형의 성질 (소단원 2 · RPM 36 · 유형 13)
 - `M1-07` 입체도형의 성질 (소단원 2 · RPM 31 · 유형 8)
 - `M1-08` 자료의 정리와 해석 (소단원 2 · RPM 28 · 유형 8)
@@ -319,6 +319,9 @@
 
 - `PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY` **곱셈식의 빠진 항 복원** — The target is a missing product from overlapping algebraic products; distributive expansion isolates it.
   - `TPL_ALGEBRAIC_PRODUCT_TERM_RECOVERY_CORE` 곱셈식의 빠진 항 복원 — 기본 풀이 골격
+- `PT_H1_POLY_IDENTITY_COEFFICIENT` **항등식과 미정계수** — 항등식의 특수값 대입 또는 계수비교로 미정계수를 정하는 유형.
+  - `TPL_H1_IDENTITY_COEFFICIENT_COMPARE` 항등식의 계수비교
+  - `TPL_H1_IDENTITY_SPECIAL_VALUE` 항등식의 특수값 대입
 - `PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION` **문자식에 수 대입·계산** — The target is the value of a newly defined operation; interpret its rule and substitute the inputs.
   - `TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE` 문자식에 수 대입·계산 — 기본 풀이 골격
   - `TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_EXTREME` 규칙 최적화
@@ -333,7 +336,11 @@
   - `TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION` 단위량을 이용한 수량식과 식의 값
   - `TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION` 문장과 식의 대응·표기 검사 — 조건별 풀이 골격
 - `PT_M1_EQUATION` **등식과 방정식** — 등식의 의미와 변형 성질을 적용하고 정리한 일차항 계수로 일차방정식을 판별한다.
+  - `TPL_M1_EQUATION_DEFINITION` 등식 판별
+  - `TPL_M1_EQUATION_LINEAR_CLASSIFICATION` 일차방정식 판별
 - `PT_M1_IDENTITY` **항등식** — 양변을 정리하여 모든 입력에서 같은 식이 되는지 확인하거나 계수를 비교한다.
+  - `TPL_M1_IDENTITY_RECOGNITION` 항등식 판별
+  - `TPL_M1_IDENTITY_UNDETERMINED_COEFFICIENT` 항등식 조건으로 미정계수 결정
 - `PT_M1_LINEAR_EQUATION_MODELING` **상황을 일차방정식으로 나타내기** — 수량 또는 속력·시간·거리 상황의 조건을 일차방정식으로 모델링한다.
   - `TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY` 수량·가격 관계식
   - `TPL_M1_LINEAR_EQUATION_MODEL_RATE` 속력·시간·거리 관계식
@@ -380,6 +387,15 @@
   - `TPL_M1_RATIONAL_VALUE_COMPARISON_SYMBOL_ORDER` 문자식 비교
 - `PT_M1_TRANSLATION` **문자식의 활용** — 자릿값·수량·도형의 관계를 읽어 문자식이나 등식으로 나타내고 정리한다.
 - `PT_M1_TRIANGLE_AREA` **삼각형 넓이** — 같은 높이의 삼각형 밑변비와 부분 넓이의 합차로 목표 넓이를 구한다.
+- `PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION` **잘못 더한 다항식의 바른 계산 복원** — 어떤 식에서 빼야 할 식을 잘못 더한 결과가 주어졌을 때, 원래 식을 거꾸로 구해 바르게 계산하는 과제.
+  - `TPL_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION_REVERSE` 오독 복원
+  - `TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION` 오연산 되돌림 다항식 복원 절차
+- `PT_RATIONAL_EXPRESSION` **유리식의 계산** — 유리식을 통분·약분·부분분수·망원합 등으로 정리하고 값을 구하는 문제 유형.
+  - `TPL_RATIONAL_EXPRESSION_IDENTIFICATION` 유리식 판정
+  - `TPL_RATIONAL_EXPRESSION_SIMPLIFY` 유리식 간단히 하기
+  - `TPL_RATIONAL_NESTED_FRACTION` 복분수형 유리식 정리
+  - `TPL_RATIONAL_PARTIAL_FRACTION` 부분분수로 유리식 정리
+  - `TPL_RATIONAL_TELESCOPING_SUM` 유리식의 망원합
 
 ## M1-04 좌표평면과 그래프
 
@@ -433,6 +449,8 @@
   - `TPL_COORDINATE_POINT_READING_CLAIM_AUDIT` 좌표평면의 좌표·축 성질 진술 검토
   - `TPL_COORDINATE_POINT_READING_CORE` 좌표평면의 점 좌표 읽기 — 기본 풀이 골격
   - `TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM` 사분면 부호 조건에서 좌표식 변환
+  - `TPL_COORDINATE_POINT_READING_REFLECTION` 대칭이동한 점의 좌표
+  - `TPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION` 순서쌍 열거
 - `PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION` **정비례·반비례 관계 판별** — 대수식으로 주어진 두 변수 관계를 정비례인지 판정하고 개수를 구한다.
   - `TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE` 정비례·반비례 관계 판별 — 기본 풀이 골격
 - `PT_FUNCTION_GRAPH_INTERSECTION` **함수 그래프의 교점** — 두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.
@@ -466,6 +484,7 @@
 - `PT_M1_COORD_TRIANGLE_AREA` **좌표를 이용한 삼각형의 넓이** — 좌표평면에서 삼각형의 꼭짓점 좌표로 밑변과 수직 높이 또는 대응하는 좌표 관계를 구해 넓이를 계산한다.
   - `TPL_COORD_TRIANGLE_AREA_CORE` 좌표를 이용한 삼각형의 넓이 — 기본 풀이 골격
   - `TPL_M1_COORD_TRIANGLE_AREA_DIRECT` 좌표를 이용한 삼각형의 넓이 구하기
+  - `TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED` 직선 교점 넓이
 - `PT_M1_COORDINATE_AXIS_DISTANCE` **좌표와 축까지의 거리** — Fresh M1 type for summing point-to-axis distances from coordinate pairs.
   - `TPL_M1_COORDINATE_AXIS_DISTANCE_CORE` 좌표와 축까지의 거리 — 기본 풀이 골격
 - `PT_M1_COORDINATE_COMPOSITE_AREA` **좌표·함수와 도형 넓이 결합** — 좌표로 정의된 사각형의 넓이를 구하는 목표이며, 단순 좌표 읽기가 아니라 변의 길이·사이거리로 area를 결정한다. 중1용 ACTIVE L3 binding이 없어 proposal이다.
@@ -616,6 +635,8 @@
 - `PT_M1_CONGRUENCE_UNIQUENESS` **삼각형 합동·작도 유일조건** — The goal is to identify data that determine exactly one triangle; compare existence and uniqueness across construction conditions.
   - `TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION` 삼각형 합동·작도 유일조건 — 조건별 풀이 골격
   - `TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA` 삼각형 합동·작도 유일조건 — 조건별 풀이 골격
+- `PT_M1_CROSSING_POLYGON_ANGLE_SUM` **교차 다각형의 각의 합** — 변이 교차하는 도형을 삼각형과 다각형으로 나누고 교차점의 각 관계를 이용해 표시된 각의 합을 결정하는 유형이다.
+  - `TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION` 교차 다각형의 분할과 보조각 소거
 - `PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT` **점에서 결정되는 직선·반직선·선분 개수** — 점의 공선 배치에서 만들어지는 서로 다른 직선·반직선·선분의 수를 세는 유형이다.
   - `TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT` 점에서 결정되는 직선·반직선·선분 개수 — 조건별 풀이 골격
   - `TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_SEGMENT_COUNT` 점에서 결정되는 직선·반직선·선분 개수 — 조건별 풀이 골격
@@ -957,6 +978,7 @@
 
 - `PT_M1_CENTRAL_TENDENCY` **대푯값의 해석과 조건 복원** — 평균·중앙값·최빈값을 계산·비교하고 대푯값 조건으로 자료의 누락값을 복원한다.
   - `TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION` 평균·중앙값·최빈값을 함께 구해 결합
+  - `TPL_M1_CENTRAL_TENDENCY_AUDIT` 통계량 검토
   - `TPL_M1_CENTRAL_TENDENCY_CENTRAL_VALUES` 중앙값과 최빈값
   - `TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION` 대푯값 조건으로 자료 복원
   - `TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON` 두 자료의 평균·중앙값·최빈값 비교

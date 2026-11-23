@@ -733,6 +733,9 @@
     return state.catalog?.exams || state.light?.exams || [];
   }
   function finderIdentityMatch(exam, filters) {
+    // 목록만 있을 때(학교별 기출을 먼저 그리는 중): 학년만 시험지 줄 값으로 가린다(레코드의 출처 학년 대신 시험지의 학년).
+    // 교육과정·과목은 이 화면이 전체 자료가 올 때까지 쓰지 못하게 막아 두므로 여기로 오지 않는다. 전체 자료가 오면 아래 규칙이 다시 판정한다.
+    if (!state.catalog) return C.finderMatches(exam, { grade: filters.grade }, new Map());
     const index = unifiedIndex();
     const subject = index ? filters.semanticSubject || Unified.subjectForFamily(filters.family) : "";
     const matched = C.finderMatches(
@@ -757,7 +760,7 @@
   }
   function finderSchoolValues(filters = state.find) {
     return unique(
-      state.catalog.exams
+      catalogExams()
         .filter((exam) => finderUpstreamMatch(exam, filters))
         .map((exam) => exam.school),
     ).sort((a, b) => a.localeCompare(b, "ko"));

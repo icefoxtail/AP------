@@ -10,10 +10,10 @@
 - `M2-02` 일차부등식 (소단원 2 · RPM 26 · 유형 12)
 - `M2-03` 연립일차방정식 (소단원 2 · RPM 33 · 유형 17)
 - `M2-04` 일차함수와 그래프 (소단원 2 · RPM 30 · 유형 31)
-- `M2-05` 도형의 성질 (소단원 2 · RPM 48 · 유형 26)
+- `M2-05` 도형의 성질 (소단원 2 · RPM 48 · 유형 27)
 - `M2-06` 도형의 닮음 (소단원 6 · RPM 37 · 유형 10)
 - `M2-07` 피타고라스 정리 (소단원 2 · RPM 12 · 유형 2)
-- `M2-08` 확률 (소단원 2 · RPM 24 · 유형 9)
+- `M2-08` 확률 (소단원 2 · RPM 24 · 유형 10)
 
 ## M2-01 수와 식
 
@@ -315,6 +315,7 @@
 - `PT_FUNCTION_VALUE` **함숫값 계산** — 주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.
   - `TPL_FUNCTION_VALUE_DIRECT` 함숫값 직접 계산
 - `PT_LINE_EQUATION` **직선의 방정식 구하기** — 주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.
+  - `TPL_LINE_EQUATION_DIRECTION` 점과 방향벡터 직선식
   - `TPL_LINE_EQUATION_SLOPE` 평행·수직 직선
   - `TPL_LINE_GRAPH_BY_COEFFICIENTS` 직선의 계수와 그래프
   - `TPL_LINE_MULTI_CONDITION` 조건이 주어진 직선의 방정식
@@ -485,6 +486,7 @@
   - `TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA` 두 평행쌍과 공통 대각선의 ASA 합동 증명
 - `PT_M2_TRIANGLE_ANGLE` **삼각형의 각** — 삼각형의 내각의 합과 외각의 관계를 이용하여 각의 크기를 구한다.
 - `PT_M2_TRIANGLE_CONGRUENCE` **삼각형의 합동** — 두 삼각형의 합동 조건을 확인하고 대응하는 변과 각의 성질을 이용한다.
+- `PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE` **삼각형 성질의 참·거짓 판별** — 이등변삼각형·직각삼각형의 합동 조건·외심 등 삼각형의 성질에 관한 진술을 하나씩 참·거짓으로 판정하고 그 결과로 경로나 개수를 정한다.
 - `PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION` **평행선 조건으로 넓이가 같은 삼각형 찾기** — 주어진 사각형과 삼각형의 넓이가 같아지도록 하는 평행 조건을 찾는 과제.
   - `TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL` 공통 밑변 삼각형의 등적변형 조건 절차
 - `PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT` **평행사변형의 각 이등분선이 만드는 선분 계산** — 평행사변형에서 두 내각의 이등분선이 만드는 겹치는 선분의 길이를 구하는 과제.
@@ -662,6 +664,7 @@
   - `TPL_M2_PYTHAGOREAN_CONVERSE` 피타고라스 정리의 역으로 직각 판정
   - `TPL_M2_PYTHAGOREAN_RELATION_ANGLE_TYPE` 삼각형 판별
   - `TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH` 넓이와 높이
+  - `TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH` 반지름과 현
   - `TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION` 제곱식 소거
   - `TPL_M2_PYTHAGOREAN_RELATION_PROOF` 넓이 증명
   - `TPL_M2_PYTHAGOREAN_SIDE_LENGTH` 피타고라스 정리로 변 길이
@@ -715,6 +718,14 @@
   - `TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK` 사전식 순열 순위·역순위
   - `TPL_IDENTICAL_OBJECT_PERMUTATION` 같은 것이 있는 순열
   - `TPL_PERMUTATION_STANDARD_CONSTRAINT` 일반 순열·조건 배열
+- `PT_COUNTING_SELECTION_DISTRIBUTION` **조합·중복조합** — 조합·중복조합을 이용하여 대상을 선택하거나 동일한 대상을 분배하는 경우의 수를 구하는 문제유형.
+  - `TPL_COMBINATION_SELECTION` 조합과 선택
+  - `TPL_H1_BINOMIAL_IDENTITY_CHECK` 조합 항등식 증명·판정
+  - `TPL_H1_BINOMIAL_PARAMETER_RELATION` 순열·조합 관계로 매개변수 결정
+  - `TPL_H1_SELECTION_BOX_IDENTITY` 상자 배정에서 동일·서로 다른 대상 구분
+  - `TPL_H1_SELECTION_CAPACITY_DISTRIBUTION` 수용량 제약이 있는 대상 분배
+  - `TPL_H1_SELECTION_GEOMETRIC_DEGENERACY` 기하 점 선택 후 퇴화 경우 제외
+  - `TPL_REPEATED_COMBINATION_DISTRIBUTION` 중복조합·정수해·동일물 분배
 - `PT_M2_BASIC_COUNTING_CASE_SPLIT` **합의 법칙으로 경우의 수 나누어 세기** — 서로 겹치지 않는 여러 조건의 경우를 독립적으로 열거한 다음 합의 법칙으로 전체 경우의 수를 구하는 중등 유형.
   - `TPL_M2_BASIC_COUNTING_ADD_CASES` 서로 배타적인 경우를 나누어 합산
   - `TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT` 합과 곱의 법칙 결합
@@ -742,7 +753,7 @@
 - `PT_BOUNDED_PRIME_COUNT` 범위 안의 소수 개수 (TPL 1)
 - `PT_CIRCLE_ANGLE_RELATIONS` 원주각·중심각과 원의 각 관계 (TPL 11)
 - `PT_CONSTRAINED_FACTOR_PAIR` 조건을 만족하는 인수쌍 (TPL 1)
-- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 3)
+- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 5)
 - `PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION` 정비례·반비례 관계 판별 (TPL 1)
 - `PT_DIVISOR_COUNT` 약수의 개수 조건 (TPL 2)
 - `PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY` 절댓값이 같은 두 수의 차 (TPL 2)
@@ -751,6 +762,7 @@
 - `PT_FUNCTION_GRAPH_PROPERTIES` 함수 그래프의 성질 (TPL 4)
 - `PT_FUNCTION_GRAPH_QUADRANT` 함수 그래프와 사분면 (TPL 3)
 - `PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE` 수위 그래프와 용기 모양 대응 (TPL 2)
+- `PT_H1_POLY_IDENTITY_COEFFICIENT` 항등식과 미정계수 (TPL 2)
 - `PT_INTEGER_MEMBERSHIP_COUNT` 정수에 해당하는 값의 개수 (TPL 2)
 - `PT_LCM_APPLICATION` 최소공배수의 상황 적용 (TPL 7)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
@@ -758,14 +770,14 @@
 - `PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION` 문장과 식의 대응·표기 검사 (TPL 8)
 - `PT_M1_BASIC_CONSTRUCTION` 기본 작도 도구와 절차 (TPL 3)
 - `PT_M1_BASIC_GEOMETRY_JUDGMENT` 기본도형의 용어·관계 진술 판단 (TPL 3)
-- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 9)
+- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 10)
 - `PT_M1_CIRCLE_MEASURE` 원과 부채꼴
 - `PT_M1_COMMON_DIVISIBILITY_FILTER` 공약수·공배수 조건 검사 (TPL 4)
 - `PT_M1_CONGRUENCE_DATA_TRANSFER` 합동인 삼각형의 대응 관계 적용 (TPL 10)
 - `PT_M1_CONGRUENCE_INVARIANTS` 합동에서 보존되는 성질 (TPL 1)
 - `PT_M1_CONGRUENCE_UNIQUENESS` 삼각형 합동·작도 유일조건 (TPL 2)
 - `PT_M1_CONTEXT_GRAPH_INTERPRETATION` 상황을 그래프의 변화로 해석 (TPL 7)
-- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 2)
+- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 3)
 - `PT_M1_COORDINATE_AXIS_DISTANCE` 좌표와 축까지의 거리 (TPL 1)
 - `PT_M1_COORDINATE_COMPOSITE_AREA` 좌표·함수와 도형 넓이 결합 (TPL 3)
 - `PT_M1_COORDINATE_POINT_CONSTRAINT` 좌표 성분과 점의 위치조건 (TPL 3)
@@ -778,7 +790,7 @@
 - `PT_M1_DIVISOR` 약수
 - `PT_M1_DIVISOR_MULTIPLE_EXPONENT` 소인수 지수로 약수·배수 판별 (TPL 3)
 - `PT_M1_EQUAL_SUM` 같은 합
-- `PT_M1_EQUATION` 등식과 방정식
+- `PT_M1_EQUATION` 등식과 방정식 (TPL 2)
 - `PT_M1_FACTOR_PAIR` 인수쌍
 - `PT_M1_FINITE_LIST_PRIME_COUNT` 유한 목록의 소수 개수 (TPL 1)
 - `PT_M1_FREQUENCY` 도수분포
@@ -787,7 +799,7 @@
 - `PT_M1_GCD_LCM` 최대공약수와 최소공배수
 - `PT_M1_GCD_LCM_EXPONENT_CONSTRAINT` 최대공약수·최소공배수의 소인수 지수 조건 (TPL 6)
 - `PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT` 점에서 결정되는 직선·반직선·선분 개수 (TPL 2)
-- `PT_M1_IDENTITY` 항등식
+- `PT_M1_IDENTITY` 항등식 (TPL 2)
 - `PT_M1_INEQUALITY` 부등식
 - `PT_M1_INTERSECTING_ANGLE_RELATIONS` 교차선·맞꼭지각의 계산 (TPL 5)
 - `PT_M1_INVERSE` 반비례
@@ -855,6 +867,7 @@
 - `PT_M1_TRIANGLE_AREA` 삼각형 넓이
 - `PT_M1_TRIANGLE_CONSTRUCTION_ORDER` 삼각형의 작도 순서와 선행조건 (TPL 2)
 - `PT_M1_TRIANGLE_SIDE_FEASIBILITY` 삼각형 성립조건과 가능한 변 세기 (TPL 4)
+- `PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION` 잘못 더한 다항식의 바른 계산 복원 (TPL 2)
 - `PT_MAGIC_SQUARE_ENTRY_RECOVERY` 마방진의 빠진 값 (TPL 1)
 - `PT_MINIMUM_COMMON_MULTIPLIER_FOR_RATIONALS` 유리수의 최소 공통 배수 인자 (TPL 1)
 - `PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE` 완전제곱수가 되는 최소 인자 (TPL 3)
@@ -863,6 +876,7 @@
 - `PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE` 입체 모서리의 수선의 발 (TPL 1)
 - `PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT` 연속된 수의 곱에서 소인수 지수 (TPL 1)
 - `PT_QUADRILATERAL_PROPERTIES` 사각형의 성질과 판정 (TPL 4)
+- `PT_RATIONAL_EXPRESSION` 유리식의 계산 (TPL 5)
 - `PT_RATIONAL_EXPRESSION_BOUNDED_INTEGER_SUM` 유리수식과 범위 정수의 합 (TPL 1)
 - `PT_RIGHT_TRIANGLE_CONGRUENCE` 직각삼각형의 합동 (TPL 3)
 - `PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS` 유리수 곱·차 조건에서 부호 추론 (TPL 1)
