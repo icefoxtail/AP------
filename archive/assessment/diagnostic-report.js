@@ -16,7 +16,9 @@
   // 결과지 머리에 찍는 학원명. 입력·설정 없이 이 상수 한 곳에서만 정한다(2026-11-20 사용자 확정).
   const ORG_NAME = "AP 수학학원";
 
-  const state = { questions: [], responses: Object.create(null), labelOf: null, labelNote: "", grade: "", unitCount: 0, report: null };
+  // 기본값 규칙: 열면 모든 문항이 정답(O)으로 채워진 "입력 중(draft)"이다. 선생님이 ‘결과표 만들기’를 눌러 confirmed가 된 뒤에야
+  // 결과표가 나온다. 확인 전의 O는 결과가 아니다(안 열어 본 학생이 만점 결과지가 되지 않게). 규칙 계산은 DiagnosticReportData.inputStatus.
+  const state = { questions: [], responses: Object.create(null), confirmed: false, labelOf: null, labelNote: "", grade: "", unitCount: 0, report: null };
 
   function setState(text, error) {
     const el = $("state");
@@ -99,7 +101,6 @@
       button.setAttribute("aria-pressed", String(state.responses[button.dataset.no] === button.dataset.v));
     }
   }
-  const answeredCount = () => state.questions.filter((q) => state.responses[q.no]).length;
 
   // ---- 날짜·글 ----
   const todayIso = () => {
@@ -191,17 +192,35 @@
   }
 
   // ---- 그리기 ----
+  function wrongNosText() {
+    return state.questions.filter((q) => state.responses[q.no] === "X").map((q) => q.no).join(" ");
+  }
+  function statusLine(s) {
+    const pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+    const score = `${s.total}문항 중 ${s.correct}개 정답 · ${s.wrong}개 오답 (${pct}%)`;
+    if (s.phase === "empty") return `<span class="phase">미입력</span>아직 입력하지 않았습니다. 결과표·집계에 들어가지 않습니다.`;
+    if (s.phase === "partial") return `<span class="phase partial">입력 중</span>입력 ${s.answered} / ${s.total} · 남은 ${s.unanswered}문항이 비어 있습니다.`;
+    if (s.phase === "draft") return `<span class="phase draft">입력 중</span>확인 전: 결과표 만들기를 누르면 ${s.total}문항 중 ${s.correct}개 정답으로 만들어집니다.`;
+    return `<span class="phase confirmed">입력 완료</span>${score}`;
+  }
   function recompute() {
     const total = state.questions.length;
-    const done = answeredCount();
-    $("progress").innerHTML = `입력 <b>${done}</b> / ${total}`;
-    $("clearBtn").disabled = done === 0;
+    const s = Data.inputStatus({ questions: state.questions, responses: state.responses, confirmed: state.confirmed });
+    $("progress").innerHTML = statusLine(s);
+    $("clearBtn").disabled = s.answered === 0;
+    $("allOkBtn").textContent = s.answered === 0 ? "모두 정답으로" : "남은 문항 모두 정답으로";
+    $("allOkBtn").disabled = s.unanswered === 0;
+    $("confirmBtn").disabled = s.phase !== "draft";
+    $("confirmBtn").hidden = s.phase === "confirmed";
+    if ($("inWrong") !== document.activeElement) $("inWrong").value = wrongNosText();
     syncButtons();
-    if (done < total) {
+    if (s.phase !== "confirmed") {
       state.report = null;
       $("sheets").hidden = true;
       $("printBtn").disabled = true;
-      setState(`문항별 O/X를 모두 입력하면 결과표가 나타납니다. (${done} / ${total})`);
+      if (s.phase === "draft") setState(`모두 입력되어 있습니다(기본은 정답 O). 틀린 문항만 X로 바꾼 뒤 ‘결과표 만들기’를 누르세요. 누르기 전에는 결과표·집계에 쓰이지 않습니다. (지금 ${s.correct} / ${total}개 정답)`);
+      else if (s.phase === "partial") setState(`비어 있는 문항이 있습니다. ‘남은 문항 모두 정답으로’나 O/X로 채운 뒤 ‘결과표 만들기’를 누르세요. (${s.answered} / ${total})`);
+      else setState("입력하지 않은 상태입니다. ‘모두 정답으로’를 누르거나 문항마다 O/X를 눌러 주세요.");
       return;
     }
     const report = Data.computeDiagnosticReport({ questions: state.questions, responses: state.responses, labelOf: state.labelOf || undefined });
@@ -234,9 +253,22 @@
     fitAll();
   }
 
+  // X를 누르면 오답, 이미 X인 칸을 다시 누르면 정답(O)으로 돌아온다. O를 누르면 정답. 입력 칸을 비우는 일은 ‘정오 모두 지우기’만 한다.
   function setAnswer(no, value) {
-    if (state.responses[no] === value) delete state.responses[no];
-    else state.responses[no] = value;
+    state.responses[no] = value === "X" && state.responses[no] === "X" ? "O" : value;
+    recompute();
+  }
+  function setWrongMessage(text, error) {
+    const el = $("wrongMsg");
+    el.textContent = text;
+    el.classList.toggle("err", Boolean(error));
+  }
+  function applyWrongLine() {
+    const result = Data.applyWrongNumbers(state.questions, $("inWrong").value);
+    if (!result.ok) { setWrongMessage(result.error, true); return; }
+    state.responses = result.responses;
+    $("inWrong").value = result.wrongNos.join(" ");
+    setWrongMessage(result.wrongNos.length ? `${result.wrongNos.join(", ")}번을 X로, 나머지는 O로 맞췄습니다.` : "틀린 번호가 없어 모두 O로 맞췄습니다.", false);
     recompute();
   }
 
@@ -245,9 +277,26 @@
       const button = event.target.closest("button[data-no]");
       if (button) setAnswer(button.dataset.no, button.dataset.v);
     });
+    $("allOkBtn").addEventListener("click", () => {
+      state.responses = Data.fillRemainingCorrect(state.questions, state.responses);
+      recompute();
+    });
     $("clearBtn").addEventListener("click", () => {
       state.responses = Object.create(null);
+      state.confirmed = false;
+      setWrongMessage("적으면 그 번호만 X, 나머지는 모두 O가 됩니다.", false);
       recompute();
+    });
+    $("confirmBtn").addEventListener("click", () => {
+      if (Data.inputStatus({ questions: state.questions, responses: state.responses }).unanswered) return;
+      state.confirmed = true;
+      recompute();
+      // 좁은 화면에서는 결과표가 입력 칸 아래에 있어, 만든 직후 그 자리로 옮겨 준다.
+      if (window.innerWidth <= 1160 && !$("sheets").hidden) $("sheets").scrollIntoView({ block: "start" });
+    });
+    $("wrongBtn").addEventListener("click", applyWrongLine);
+    $("inWrong").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") { event.preventDefault(); applyWrongLine(); }
     });
     for (const id of ["inName", "inGrade", "inDate", "inTestDate"]) {
       $(id).addEventListener("input", () => {
@@ -289,6 +338,8 @@
       return;
     }
     buildQuestionList();
+    state.responses = Data.allCorrectResponses(state.questions);
+    state.confirmed = false;
     $("panel").hidden = false;
     renderTexts();
     recompute();

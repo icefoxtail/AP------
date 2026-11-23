@@ -353,5 +353,53 @@
     };
   }
 
-  return Object.freeze({ LEVELS, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus });
+  // ---- 입력 규칙(화면이 쓰는 순수 함수) ----
+  // 기본은 "전부 정답(O)"이고 틀린 문항만 X로 바꾼다. 그러나 기본값은 선생님이 결과표 만들기를 누른(confirmed) 뒤에야 결과가 된다.
+  // 단계: empty(입력 없음) → partial(일부만 입력) → draft(전부 입력, 아직 확인 전) → confirmed(확인함, 결과표 만듦).
+  // 확인하지 않은 응답은 결과표·집계에 쓰지 않는다. 이 파일은 상태를 저장하지 않는다.
+  const questionNos = (questions) => (Array.isArray(questions) ? questions : []).map((q, i) => String(q && q.no != null ? q.no : i + 1));
+  const isAnswer = (value) => value === "O" || value === "X";
+
+  function allCorrectResponses(questions) {
+    const out = Object.create(null);
+    for (const no of questionNos(questions)) out[no] = "O";
+    return out;
+  }
+  // 입력 안 한 문항(미입력)만 O로 채운다. 이미 O/X인 문항은 그대로 둔다.
+  function fillRemainingCorrect(questions, responses) {
+    const out = Object.create(null);
+    const src = responses || {};
+    for (const no of questionNos(questions)) out[no] = isAnswer(src[no]) ? src[no] : "O";
+    return out;
+  }
+  // "3 7 12 15" 같은 틀린 번호 한 줄 → 그 번호만 X, 나머지는 모두 O. 범위 밖·숫자 아님은 오류(아무것도 바꾸지 않는다). 같은 번호 중복은 한 번으로 센다.
+  function applyWrongNumbers(questions, textInput) {
+    const nos = questionNos(questions);
+    const known = new Set(nos);
+    const tokens = String(textInput == null ? "" : textInput).split(/[\s,.;/]+/).filter(Boolean);
+    const wrong = [];
+    for (const token of tokens) {
+      if (!/^\d+$/.test(token) || !known.has(String(Number(token)))) return { ok: false, error: `‘${token}’은(는) 1~${nos.length}번 안의 번호가 아닙니다.`, responses: null, wrongNos: [] };
+      const no = String(Number(token));
+      if (!wrong.includes(no)) wrong.push(no);
+    }
+    const responses = allCorrectResponses(questions);
+    for (const no of wrong) responses[no] = "X";
+    return { ok: true, error: "", responses, wrongNos: wrong.map(Number).sort((a, b) => a - b) };
+  }
+  function inputStatus(input) {
+    const options = input && typeof input === "object" ? input : {};
+    const nos = questionNos(options.questions);
+    const src = options.responses || {};
+    const total = nos.length;
+    const correct = nos.filter((no) => src[no] === "O").length;
+    const wrong = nos.filter((no) => src[no] === "X").length;
+    const answered = correct + wrong;
+    let phase = "empty";
+    if (answered > 0 && answered < total) phase = "partial";
+    else if (total > 0 && answered === total) phase = options.confirmed === true ? "confirmed" : "draft";
+    return { phase, total, answered, correct, wrong, unanswered: total - answered, counted: phase === "confirmed" };
+  }
+
+  return Object.freeze({ LEVELS, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus, allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus });
 });
