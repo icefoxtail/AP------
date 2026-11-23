@@ -195,6 +195,9 @@ function bootHome({ search = '?view=home', nav, visibilityState = 'visible', ses
   const node = (id) => { if (!nodes.has(id)) nodes.set(id, makeNode(id)); return nodes.get(id); };
   let catalogCalls = 0;
   const gate = (() => { let resolve; const promise = new Promise((ok) => { resolve = ok; }); return { promise, resolve }; })();
+  // one behaviour per call of applyArchiveMetaFoundationCatalog: a promise, or a function returning one; the last one repeats
+  const script = [];
+  const catalogOf = () => ({ indexVersion: 'i', records: [], taxonomy: [], exams, sourceHashes: [], health: {}, canonicalAuthority: {} });
   if (session) storage.set('APMATH_SESSION', JSON.stringify({ login_id: 'teacher', session_token: 'fake', role: 'teacher' }));
   const exams = [
     { file: 'a.js', school: '가나고', grade: '고1', year: 2025, semester: 1, examType: 'mid', material: 'exam', qCount: 22, subject: '공통수학1', courseFamilies: [] },
@@ -248,10 +251,15 @@ function bootHome({ search = '?view=home', nav, visibilityState = 'visible', ses
     },
     Archive2Source: {}, ProblemBankMeta: require('../archive/problem-bank-meta.js'),
     Archive2Papers: { receipt: () => null, partIndex: (i) => Math.floor(i / 50), lockedUids: () => new Set(), status: () => ({}) },
-    applyArchiveMetaFoundationCatalog: () => { catalogCalls += 1; return gate.promise; },
+    applyArchiveMetaFoundationCatalog: () => {
+      catalogCalls += 1;
+      const step = script.length > 1 ? script.shift() : script[0];
+      return step ? step() : gate.promise;
+    },
   };
   context.window = context;
   context.addEventListener = (name, callback) => { if (!events.has('w:' + name)) events.set('w:' + name, []); events.get('w:' + name).push(callback); };
+  context.removeEventListener = () => {};
   const ctx = vm.createContext(context);
   vm.runInContext(read('archive2-boot.js'), ctx);
   vm.runInContext(read('archive2-canonical.js'), ctx);
@@ -259,7 +267,8 @@ function bootHome({ search = '?view=home', nav, visibilityState = 'visible', ses
   vm.runInContext(read('archive2-history.js'), ctx);
   loadWorkspace(ctx, 'globalThis.__ws = { state, render };', { boot: true });
   return {
-    ctx, ws: ctx.__ws, Boot: ctx.Archive2Boot, calls: () => catalogCalls,
+    ctx, ws: ctx.__ws, Boot: ctx.Archive2Boot, calls: () => catalogCalls, script, catalogOf, content: () => node('content').innerHTML,
+    fill: (name) => nodes.get('fill:' + name),
     show() { context.document.visibilityState = 'visible'; for (const fn of [...(docListeners.get('visibilitychange') || [])]) fn({}); },
     resolveCatalog: async () => {
       gate.resolve({ indexVersion: 'i', records: [], taxonomy: [], exams, sourceHashes: [], health: {}, canonicalAuthority: {} });
@@ -343,4 +352,242 @@ test('the warm-up reuses the normal start: ensureCatalog is the only caller and 
   assert.match(runtime, /Boot\.pause\(\)/, 'the long steps breathe and wait for quiet input through one helper');
   const boot = read('archive2-boot.js');
   assert.doesNotMatch(boot, /sha256|digest\(/i);
+});
+
+// ---- a failure of the background attempt is forgotten; a failure somebody waits for is shown ---------
+const failing = (message = 'network down') => () => Promise.reject(Object.assign(new Error(message), { code: 'TEST_FAILURE' }));
+const quietConsole = () => { const saved = { warn: console.warn, error: console.error }; console.warn = () => {}; console.error = () => {}; return () => Object.assign(console, saved); };
+
+test('a background attempt that fails shows nothing, sets no bootError, and the next request starts again as the first one', async () => {
+  const restore = quietConsole();
+  try {
+    const h = bootHome();
+    h.script.push(failing(), () => Promise.resolve(h.catalogOf()));
+    await tick(30);
+    assert.equal(h.calls(), 1, 'the warm-up tried once');
+    assert.equal(h.ws.state.bootError ?? null, null, 'no error text was set');
+    assert.doesNotMatch(h.content() + (h.fill('recent')?.innerHTML || '') + (h.fill('chips')?.innerHTML || ''), /network down|불러오지 못했습니다|data-boot-wait="failed"/);
+    assert.equal(h.Boot.progress.finished, false, 'the failed attempt left no "finished/failed" state behind');
+    assert.equal(h.Boot.progress.failed, false);
+    assert.equal(h.Boot.progress.waiting, true, 'the progress line stays hidden');
+    assert.equal(h.ws.state.light?.exams?.length, 2, 'the home still works from the exam list');
+    await tick(30);
+    assert.equal(h.calls(), 1, 'it does not run again by itself on the same home (a dropped line is not asked in a loop)');
+    // the teacher goes to a screen that needs the catalog: a new attempt, like the first one
+    h.ws.state.view = 'compose';
+    h.ws.render();
+    await tick(30);
+    assert.equal(h.calls(), 2);
+    assert.ok(h.ws.state.catalog, 'the second attempt succeeded and the catalog is there');
+    assert.equal(h.ws.state.bootError ?? null, null);
+    assert.equal(h.Boot.progress.finished, true);
+    assert.equal(h.Boot.progress.failed, false, 'ready is not spoiled by the earlier failure');
+    assert.equal(h.ctx.Archive2Boot.progress.stage, 'ready');
+  } finally { restore(); }
+});
+
+test('after a background failure the warm-up is tried once more when the page is shown again, not before and not a third time', async () => {
+  const restore = quietConsole();
+  try {
+    const h = bootHome();
+    h.script.push(failing(), failing(), () => Promise.resolve(h.catalogOf()));
+    await tick(30);
+    assert.equal(h.calls(), 1);
+    h.show(); // visibilitychange
+    await tick(30);
+    assert.equal(h.calls(), 2, 'one more background try');
+    h.show();
+    await tick(30);
+    assert.equal(h.calls(), 2, 'never a third');
+    assert.equal(h.ws.state.bootError ?? null, null);
+  } finally { restore(); }
+});
+
+test('somebody waits while the background attempt runs: its failure gets one automatic second try, then the error is shown', async () => {
+  const restore = quietConsole();
+  try {
+    const h = bootHome();
+    let reject;
+    h.script.push(() => new Promise((_ok, fail) => { reject = fail; }), failing('still down'));
+    await tick(20);
+    assert.equal(h.calls(), 1);
+    h.ws.state.view = 'compose';
+    h.ws.render(); // the teacher asks: the attempt is theirs now
+    await tick(4);
+    assert.equal(h.calls(), 1, 'it joined the running attempt');
+    reject(Object.assign(new Error('first failure'), { code: 'TEST_FAILURE' }));
+    await tick(30);
+    assert.equal(h.calls(), 2, 'one automatic second try');
+    assert.ok(h.ws.state.bootError, 'the second failure is shown');
+    assert.equal(h.Boot.progress.failed, true);
+    assert.match(h.content(), /data-boot-wait="failed"/);
+    await tick(30);
+    assert.equal(h.calls(), 2, 'no endless retry');
+  } finally { restore(); }
+});
+
+test('somebody waits while the background attempt runs and the second try works: no error at all', async () => {
+  const restore = quietConsole();
+  try {
+    const h = bootHome();
+    let reject;
+    h.script.push(() => new Promise((_ok, fail) => { reject = fail; }), () => Promise.resolve(h.catalogOf()));
+    await tick(20);
+    h.ws.state.view = 'compose';
+    h.ws.render();
+    await tick(4);
+    reject(Object.assign(new Error('blip'), { code: 'TEST_FAILURE' }));
+    await tick(30);
+    assert.equal(h.calls(), 2);
+    assert.equal(h.ws.state.bootError ?? null, null);
+    assert.ok(h.ws.state.catalog);
+    assert.equal(h.Boot.progress.stage, 'ready');
+  } finally { restore(); }
+});
+
+test('an attempt started by a request fails exactly as before: error shown, no automatic retry, no warm state', async () => {
+  const restore = quietConsole();
+  try {
+    const h = bootHome({ search: '?view=home&warm=off' });
+    h.script.push(failing('down'), () => Promise.resolve(h.catalogOf()));
+    await tick(20);
+    assert.equal(h.calls(), 0);
+    h.ws.state.view = 'compose';
+    h.ws.render();
+    await tick(30);
+    assert.equal(h.calls(), 1);
+    assert.ok(h.ws.state.bootError, 'the error is shown');
+    assert.equal(h.Boot.progress.failed, true);
+    assert.equal(h.Boot.progress.finished, true);
+    assert.match(h.content(), /data-boot-wait="failed"/);
+    await tick(30);
+    assert.equal(h.calls(), 1, 'no retry');
+  } finally { restore(); }
+});
+
+// ---- the runtime bridge forgets a failed background load ------------------------------------------
+function runtimeWith({ warmStarted }) {
+  let started = 0;
+  const flag = { warmStarted };
+  const context = {
+    console, URL, setTimeout, clearTimeout,
+    document: { baseURI: 'https://t.test/archive/workspace.html' },
+    fetch: async () => { throw new Error('unexpected network'); },
+    Archive2Canonical: { loadInputBundle() { started += 1; return Promise.reject(new Error('manifest changed')); }, RUNTIME_INPUT_PATHS: [] },
+    Archive2Boot: { catalogDeferred: true, fetcher: (raw) => raw, yield() {}, warmStarted: () => flag.warmStarted },
+  };
+  context.window = context;
+  vm.runInContext(read('meta-foundation-runtime.js'), vm.createContext(context));
+  return { context, started: () => started, flag };
+}
+
+test('runtime: a load the home started in the background is forgotten when it fails, so the next request loads again', async () => {
+  const r = runtimeWith({ warmStarted: true });
+  await assert.rejects(() => r.context.applyArchiveMetaFoundationCatalog());
+  assert.equal(r.started(), 1);
+  assert.equal(r.context.__META_FOUNDATION_RUNTIME_READY__, undefined, 'the rejected promise is not kept');
+  await assert.rejects(() => r.context.applyArchiveMetaFoundationCatalog());
+  assert.equal(r.started(), 2, 'asked again: a new load');
+});
+
+test('runtime: a load started by a request keeps its failure as before (no new load)', async () => {
+  const r = runtimeWith({ warmStarted: false });
+  await assert.rejects(() => r.context.applyArchiveMetaFoundationCatalog());
+  await assert.rejects(() => r.context.applyArchiveMetaFoundationCatalog());
+  assert.equal(r.started(), 1);
+  assert.ok(r.context.__META_FOUNDATION_RUNTIME_READY__);
+});
+
+// ---- boot: the end of a warm-up -------------------------------------------------------------------
+test('warmAbort puts the progress back to the start, and does nothing once somebody waits', () => {
+  const h = loadBoot();
+  const { Boot } = h;
+  assert.equal(Boot.warmAbort(), false, 'no warm-up: nothing to abort');
+  Boot.standby();
+  Boot.warmBegin();
+  assert.equal(Boot.warmStarted(), true);
+  Boot.setStage('fetch', { total: 5, done: 3 });
+  Boot.setStage('resolve');
+  assert.equal(Boot.warmAbort(), true);
+  assert.equal(Boot.warmStarted(), false);
+  const p = Boot.progress;
+  assert.deepEqual([p.stage, p.done, p.total, p.fraction, p.finished, p.failed, p.waiting], ['fetch', 0, 0, 0, false, false, true]);
+  assert.ok(h.marks.includes('archive2:boot:warm-failed'));
+  assert.equal(h.listenerCount(), 0);
+  // a later start begins clean and its end is a normal ready
+  Boot.warmBegin();
+  Boot.demand();
+  assert.equal(Boot.warmAbort(), false, 'somebody waits: the failure is theirs');
+  assert.equal(Boot.warmStarted(), true, 'it stays a warm-started attempt (one automatic retry applies)');
+  Boot.finish(false);
+  assert.equal(Boot.progress.stage, 'ready');
+});
+
+test('when the warm-up finishes the input watching ends; only the idle work waits, for at most 10 s', async () => {
+  const h = loadBoot();
+  const { Boot, now, fire, timers } = h;
+  Boot.warmBegin();
+  now.t = 1000;
+  fire('pointermove');
+  Boot.finish(false);
+  assert.ok(h.marks.includes('archive2:boot:warm-done'));
+  assert.equal(Boot.warmStarted(), false);
+  assert.equal(Boot.progress.waiting, false);
+  // still moving the mouse right after the end: the snapshot write / index warm-up yield ...
+  now.t = 1200;
+  fire('pointermove');
+  let written = false;
+  Boot.quiet().then(() => { written = true; });
+  await tick(2);
+  assert.equal(written, false, 'yields to input while the settle window is open');
+  // ... but only until the cap: the settle timer closes the window and releases them, input or not
+  const settle = timers.find((timer) => timer.ms === 10000);
+  assert.ok(settle, 'the cap is a 10 s timer');
+  settle.fn();
+  await tick(2);
+  assert.equal(written, true, 'released by the cap even though the mouse is still moving');
+  assert.equal(h.listenerCount(), 0, 'input listeners are gone after the cap');
+  now.t = 11300;
+  fire('pointermove');
+  let later = false;
+  Boot.quiet().then(() => { later = true; });
+  await tick(2);
+  assert.equal(later, true, 'nothing waits any more');
+  Boot.demand();
+  assert.equal(h.marks.includes('archive2:boot:warm-demanded'), false, 'a request after the end is not a "demanded" warm-up');
+});
+
+test('a request during the settle window ends it at once', async () => {
+  const h = loadBoot();
+  h.Boot.warmBegin();
+  h.now.t = 500;
+  h.fire('keydown');
+  h.Boot.finish(false);
+  h.now.t = 600;
+  h.fire('keydown');
+  let ran = false;
+  h.Boot.quiet().then(() => { ran = true; });
+  await tick(2);
+  assert.equal(ran, false);
+  h.Boot.demand();
+  await tick(2);
+  assert.equal(ran, true);
+  assert.equal(h.listenerCount(), 0);
+});
+
+test('late events of a forgotten background attempt do not show the progress line; a request that starts again does', () => {
+  const { Boot } = loadBoot();
+  Boot.standby();
+  Boot.warmBegin();
+  Boot.setStage('fetch');
+  Boot.warmAbort();
+  Boot.setStage('verify'); // a download of the dead attempt finishing late
+  Boot.setStage('resolve');
+  assert.equal(Boot.progress.stage, 'fetch');
+  assert.equal(Boot.progress.waiting, true, 'still hidden');
+  Boot.demand(); // somebody needs the catalog: a normal start from here
+  Boot.setStage('fetch');
+  assert.equal(Boot.progress.waiting, false, 'now it is shown like any other start');
+  Boot.setStage('resolve');
+  assert.equal(Boot.progress.stage, 'resolve');
 });

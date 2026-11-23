@@ -64,6 +64,7 @@
     failed: { from: 0, to: 0, label: "" },
   };
   let silent = false;
+  let aborted = false; // a background attempt failed and was forgotten: nothing moves the progress until somebody starts again
   const progress = { stage: "fetch", done: 0, total: 0, fraction: 0, label: STAGES.fetch.label, finished: false, failed: false, waiting: false };
   const listeners = new Set();
   function publish() {
@@ -72,7 +73,7 @@
     }
   }
   function setStage(stage, patch = {}) {
-    if (progress.finished || !STAGES[stage]) return;
+    if (progress.finished || aborted || !STAGES[stage]) return; // after a forgotten background attempt its late events change nothing
     const def = STAGES[stage];
     progress.waiting = silent; // a warm-up in the background keeps the top line hidden until somebody actually waits for it
     progress.stage = stage;
@@ -92,7 +93,7 @@
     publish();
     flushSpans();
     if (failed) mark("failed"); else mark("ready");
-    if (warmActive) mark(failed ? "warm-failed" : "warm-done");
+    if (warmActive) { mark(failed ? "warm-failed" : "warm-done"); settleWarm(); }
     if (verbose) report();
   }
   // 가벼운 홈이 시험지 목록만으로 그려졌고 카탈로그는 아직 시작하지 않았다: 진행 줄을 숨긴다(받기가 시작되면 다시 나타난다).
@@ -157,7 +158,12 @@
   const QUIET_MS = 1000;
   // A moving pointer counts too: somebody heading for a button is about to click, and a click that lands inside a long step waits for it.
   const INPUT_EVENTS = ["keydown", "input", "wheel", "touchstart", "touchmove", "pointerdown", "pointermove", "scroll"];
+  const SETTLE_MS = 10000; // 준비가 끝난 뒤 보관본 쓰기·색인 예열이 입력에 양보하는 최대 시간
   let warmActive = false; // 미리 준비 중이고 아직 아무도 기다리지 않는다
+  let warmStartedFlag = false; // 미리 준비로 시작한 시도가 진행 중이다(누군가 기다리기 시작했어도 끝날 때까지 true)
+  let settleUntil = 0;
+  let settleTimer = null;
+  const gateOn = () => warmActive || nowMs() < settleUntil;
   let lastInputAt = -Infinity;
   const quietWaiters = new Set();
   let quietTimer = null;
@@ -182,12 +188,12 @@
     const wait = QUIET_MS - (nowMs() - lastInputAt);
     quietTimer = setTimeout(() => {
       quietTimer = null;
-      if (!warmActive || nowMs() - lastInputAt >= QUIET_MS) releaseQuiet(); else pollQuiet();
+      if (!gateOn() || nowMs() - lastInputAt >= QUIET_MS) releaseQuiet(); else pollQuiet();
     }, Math.max(20, wait));
   }
   // 미리 준비하는 동안만 기다린다. 그 밖에는(누군가 기다리는 중 포함) 곧바로 풀린다.
   function quiet() {
-    if (!warmActive || nowMs() - lastInputAt >= QUIET_MS) return Promise.resolve();
+    if (!gateOn() || nowMs() - lastInputAt >= QUIET_MS) return Promise.resolve();
     return new Promise((resolve) => { quietWaiters.add(resolve); pollQuiet(); });
   }
   // 미리 준비하지 않는 이유(없으면 ""). hidden만 나중에 다시 볼 수 있다.
@@ -208,13 +214,51 @@
   function warmBegin() {
     if (warmActive || progress.finished) return;
     warmActive = true;
+    aborted = false;
+    warmStartedFlag = true;
     silent = true;
     listenInput(true);
     mark("warm-start");
   }
+  // 준비가 끝났다: 입력 감시와 진행 줄 숨김을 끝낸다. 보관본 쓰기·색인 예열만 최대 SETTLE_MS 동안 입력에 양보하고(그 뒤에는 입력 중이어도 한다),
+  // 그때 입력 감시도 뗀다.
+  function settleWarm() {
+    warmActive = false;
+    silent = false;
+    warmStartedFlag = false;
+    settleUntil = nowMs() + SETTLE_MS;
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(closeSettle, SETTLE_MS);
+  }
+  function closeSettle() {
+    settleUntil = 0;
+    clearTimeout(settleTimer);
+    settleTimer = null;
+    listenInput(false);
+    releaseQuiet();
+  }
+  // 미리 준비로 시작한 시도가 실패했고 아직 아무도 기다리지 않았다: 실패를 버리고 처음 상태로 되돌린다(화면에 아무것도 보이지 않는다).
+  // 누군가 이미 기다리는 중이면 아무것도 하지 않고 false를 돌려준다(그 실패는 보여야 한다).
+  function warmAbort() {
+    if (!warmActive) return false;
+    warmActive = false;
+    warmStartedFlag = false;
+    silent = false;
+    listenInput(false);
+    releaseQuiet();
+    progress.stage = "fetch"; progress.done = 0; progress.total = 0; progress.fraction = 0; progress.label = STAGES.fetch.label;
+    progress.finished = false; progress.failed = false; progress.waiting = true;
+    aborted = true;
+    spans.clear();
+    bundleDoneAt = null;
+    mark("warm-failed");
+    publish();
+    return true;
+  }
   // 누군가 카탈로그를 기다리기 시작했다: 기다림을 풀고 진행 줄을 보인다. 미리 준비 중이 아니면 아무 일도 하지 않는다.
   function demand() {
-    if (!warmActive) return;
+    if (aborted) { aborted = false; progress.done = 0; progress.total = 0; progress.fraction = 0; } // a new start by a request: events count again from here
+    if (!warmActive) { if (settleUntil) closeSettle(); return; }
     warmActive = false;
     silent = false;
     listenInput(false);
@@ -400,7 +444,7 @@
     mark, begin, end, span, finish, report,
     setStage, standby, onProgress, progress, mountProgress, catalogDeferred: lazyCatalogPage,
     firstPaint, whenPainted, nextPaint, yield: yieldToMain, idle, refresh: () => publish(),
-    pause, quiet, warmBlocked, warmBegin, demand,
+    pause, quiet, warmBlocked, warmBegin, warmAbort, demand, warmStarted: () => warmStartedFlag,
     fetcher: makeFetcher, bundleDone,
   });
 })();

@@ -330,8 +330,16 @@
   let runtimeReadyPromise = null;
   const beginRuntime = () => {
     if (!runtimeReadyPromise) {
-      runtimeReadyPromise = startRuntime();
-      window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReadyPromise;
+      const started = startRuntime();
+      runtimeReadyPromise = started;
+      window.__META_FOUNDATION_RUNTIME_READY__ = started;
+      // An attempt the home started in the background (nobody asked for it) must not turn its failure into a permanent one: forget the
+      // rejected promise so the next request starts again. An attempt started by a request keeps today's behaviour.
+      started.catch(() => {
+        if (runtimeReadyPromise !== started || !(Boot && typeof Boot.warmStarted === "function" && Boot.warmStarted())) return;
+        runtimeReadyPromise = null;
+        if (window.__META_FOUNDATION_RUNTIME_READY__ === started) delete window.__META_FOUNDATION_RUNTIME_READY__;
+      });
     }
     return runtimeReadyPromise;
   };

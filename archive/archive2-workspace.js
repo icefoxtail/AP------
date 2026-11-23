@@ -1785,6 +1785,21 @@
   // 시작하는 시점만 앞당긴다. 아래 경우에는 시작하지 않는다: 주소 ?warm=off, 데이터 절약, 2g·slow-2g, 휴대폰·작은 메모리, 문서가 숨겨진 동안
   // (다시 보이면 그때), 이미 시작·완료됨, 홈이 아님(판정은 Boot.warmBlocked). 준비 도중 긴 계산은 사용자의 입력이 잠잠할 때만 한다(Boot.quiet).
   const WARM_DELAY_MS = 2000;
+  let catalogRetried = false;
+  let warmRetryLeft = 1;
+  // After a background failure: once more when the page is shown again or the network comes back (never right away: a dropped line would be asked in a loop).
+  function armWarmRetry() {
+    if (warmRetryLeft <= 0) return;
+    const again = () => {
+      if (document.visibilityState === "hidden" || catalogLoad || state.catalog || warmRetryLeft <= 0) return;
+      warmRetryLeft -= 1;
+      document.removeEventListener("visibilitychange", again);
+      window.removeEventListener("online", again);
+      scheduleWarm();
+    };
+    document.addEventListener("visibilitychange", again);
+    window.addEventListener("online", again);
+  }
   let warmTimer = null;
   let warmWaitingVisible = false;
   function scheduleWarm() {
@@ -1946,6 +1961,24 @@
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,
         );
     } catch (e) {
+      // An attempt the home started by itself (nobody asked): a failure is forgotten, not shown, and the next request starts again as if
+      // it were the first. If somebody started waiting meanwhile, the attempt is theirs: one automatic second try, then the error.
+      if (!state.catalog && Boot?.warmStarted?.()) {
+        if (Boot.warmAbort?.()) {
+          console.warn("[archive2] background catalog preparation failed; it starts again when needed:", e?.code || "", e);
+          catalogLoad = null;
+          armWarmRetry();
+          return;
+        }
+        if (!catalogRetried) {
+          catalogRetried = true;
+          console.warn("[archive2] catalog preparation failed while waiting; trying once more:", e?.code || "", e);
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          catalogLoad = null;
+          ensureCatalog();
+          return;
+        }
+      }
       Boot?.finish?.(true);
       if (state.view === "saved") {
         status("문항 목록을 사용할 수 없어도 저장한 시험지는 서버에서 열 수 있습니다.");
