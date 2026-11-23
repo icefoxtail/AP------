@@ -109,6 +109,39 @@ export async function computeSavedPaperCopyRequestHash({ save_batch_id, parent_i
   }));
 }
 
+// Questions per page a saved paper may print with. Same set as the screen (archive2-output.js supportedQpp) and as
+// routes/archive2.js, routes/exams.js and routes/exam-pdf.js, so a paper that saves can also be assigned and printed.
+const SAVED_PAPER_QPP_VALUES = [1, 2, 4, 6, 8];
+
+// "1권 3번 문항" style position of a question, as the teacher counts them (1-based).
+function questionPlace(partIndex, questionIndex) {
+  return `${partIndex + 1}권 ${questionIndex + 1}번 문항`;
+}
+
+// validateApprovedMixedQuestions() reports the 0-based position of the rejected question in the flattened list. Map it
+// back to "N권 M번 문항" and put it in front of the Korean reason. A reason that is not Korean (a field name, a code) is
+// not shown as it is; the teacher gets a plain sentence instead.
+function withQuestionPlace(error, papers) {
+  const flat = error?.questionIndex;
+  if (!Number.isInteger(flat) || flat < 0) return error;
+  let rest = flat;
+  for (let p = 0; p < papers.length; p++) {
+    const count = papers[p].questions.length;
+    if (rest < count) {
+      const place = questionPlace(p, rest);
+      const reason = String(error.message || "");
+      const wrapped = new Error(
+        /[가-힣]/.test(reason) ? `${place}: ${reason}` : `${place}의 분류 정보가 승인된 값과 다릅니다.`,
+      );
+      wrapped.status = error.status;
+      wrapped.questionIndex = flat;
+      return wrapped;
+    }
+    rest -= count;
+  }
+  return error;
+}
+
 function validateQuestionObject(question, partIndex, questionIndex) {
   if (!isPlainObject(question)) fail(`문항 ${questionIndex + 1}의 형식이 올바르지 않습니다.`, 409);
   const uid = String(question.questionUid || "");
@@ -251,33 +284,38 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
     if (totalQuestions > MAX_SAVED_QUESTIONS) fail("한 번에 최대 400문항까지 저장할 수 있습니다.", 413);
     paper.questions.forEach((question, questionIndex) => {
       validateQuestionObject(question, i, questionIndex);
-      if (seenUids.has(question.questionUid)) fail("시험지 묶음 안에 중복 문항이 있습니다.", 409);
+      if (seenUids.has(question.questionUid)) fail(`${questionPlace(i, questionIndex)}이 시험지 묶음 안의 다른 문항과 겹칩니다.`, 409);
       seenUids.add(question.questionUid);
     });
     const expectedUids = paper.questions.map((question) => question.questionUid);
     if (!Array.isArray(paper.meta.questionUids) || stableStringify(paper.meta.questionUids) !== stableStringify(expectedUids))
       fail("문항 순서와 출력 설정의 UID 목록이 다릅니다.", 409);
   }
-  const currentCatalog = await validateApprovedMixedQuestions(
-    env,
-    input.papers.flatMap((paper) => paper.questions),
-    {
-      index_version: input.index_version,
-      selection_filters: selectionFilters,
-      include_extended: input.include_extended === true,
-    },
-  );
+  let currentCatalog;
+  try {
+    currentCatalog = await validateApprovedMixedQuestions(
+      env,
+      input.papers.flatMap((paper) => paper.questions),
+      {
+        index_version: input.index_version,
+        selection_filters: selectionFilters,
+        include_extended: input.include_extended === true,
+      },
+    );
+  } catch (error) {
+    throw withQuestionPlace(error, input.papers);
+  }
   const currentIndexVersion = currentCatalog.indexVersion;
   const sourceGradeByUid = new Map(
     currentCatalog.records
       .filter((record) => record.questionUid)
       .map((record) => [record.questionUid, record.sourceGrade]),
   );
-  for (const paper of input.papers) {
-    for (const question of paper.questions) {
+  for (const [paperIndex, paper] of input.papers.entries()) {
+    for (const [questionIndex, question] of paper.questions.entries()) {
       const sourceGrade = sourceGradeByUid.get(question.questionUid);
       if (!core.gradeRank(sourceGrade))
-        fail("저장한 시험지 source grade를 확인할 수 없습니다.", 409);
+        fail(`${questionPlace(paperIndex, questionIndex)}의 학년 정보를 확인할 수 없습니다.`, 409);
       const identity = currentCatalog.canonicalAuthority.identityByUid?.[question.questionUid];
       const sourceFile = core.normalizeFile(question.sourceArchiveFile || question.sourceFile);
       const identitySourceFile = core.normalizeFile(identity?.sourceArchiveFile);
@@ -286,7 +324,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
         String(identity.questionUid || question.questionUid) !== String(question.questionUid) ||
         identitySourceFile !== sourceFile ||
         Number(identity.sourceOrdinal) !== Number(question.sourceOrdinal)
-      ) fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+      ) fail(`${questionPlace(paperIndex, questionIndex)}의 출처 정보를 확인할 수 없습니다.`, 409);
       question.sourceGrade = sourceGrade;
       question.sourceIdentityEvidence = {
         schemaVersion: "archive2-saved-source-identity-v1",
@@ -308,7 +346,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
     const title = String(paper.meta.title || paper.meta.printHeaderOptions?.title || "").trim();
     if (!title || title.length > 150) fail("시험지 제목을 1~150자로 입력해 주세요.", 409);
     const qpp = Number(paper.meta.qpp || 4);
-    if (![2, 4, 6, 8].includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
+    if (!SAVED_PAPER_QPP_VALUES.includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
     const meta = {
       ...paper.meta,
       title,
@@ -383,7 +421,7 @@ export async function readAndVerifySavedSnapshot(row) {
     (snapshot.assets !== undefined && !validSnapshotAssets(snapshot.assets)) ||
     snapshot.bridgeRows.length !== Number(row.question_count) ||
     snapshot.questions.length !== Number(row.question_count) ||
-    ![2, 4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
+    !SAVED_PAPER_QPP_VALUES.includes(Number(snapshot.meta.qpp)) ||
     String(snapshot.meta.title || "") !== String(row.title || "") ||
     String(snapshot.meta.grade || "") !== String(row.grade || "") ||
     stableStringify(snapshot.meta.questionUids) !== stableStringify(snapshot.questions.map((question) => question.questionUid)) ||
