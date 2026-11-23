@@ -314,6 +314,10 @@ test('여러 시험 입구: 목표 문항을 골랐으면 추천 입력(문항 �
   c.openClinicPrintCenter = async (classId, options) => { calls.push(options); return true; };
   await vm.runInContext(`openClinicForStudentExams('c1', 's1', [{ sessionId: 'e1', examDate: '2026-11-20', examTitle: '중간고사', archiveFile: '${MID}', questionCount: 4 }], { recommendationCount: 18 })`, c);
   assert.deepEqual({ ...calls[0].recommendation }, { countPerStudent: 18, selectionBasis: 'wrong_type' });
+  await vm.runInContext(`openClinicForStudentExams('c1', 's1', [{ sessionId: 'e1', examDate: '2026-11-20', examTitle: '중간고사', archiveFile: '${MID}', questionCount: 4 }], { recommendationCount: 18, targetCount: 20 })`, c);
+  assert.equal(calls[1].recommendation.targetCount, 20, '목표를 골랐으면 센터가 자동 추천에 쓸 목표를 받는다');
+  await vm.runInContext(`openClinicForStudentExam('c1', 's1', { sessionId: 'e1', examDate: '2026-11-20', examTitle: '중간고사', archiveFile: '${MID}', questionCount: 4 })`, c);
+  assert.equal(calls[2].recommendation, undefined, '한 건 단추는 자동 추천 없음');
 });
 
 test('여러 시험 입구: 시험 묶음 키를 모두 찾고 같은 시험은 한 번만, 필터는 모두 보이게 맞춘다', () => {
@@ -364,4 +368,74 @@ test('여러 시험 입구: 같은 원본 문항(UID)을 여러 시험에서 틀
   const out = c.clinicPrintDedupeWrongItemsBySource([item('u1', '2026-11-10', 1), item('u2', '2026-11-10', 2), item('u1', '2026-11-20', 7)]);
   assert.equal(out.length, 2);
   assert.equal(out.find((row) => row.sourceQuestionUid === 'u1').sourceOriginRefs.length, 2, '어느 시험에서 틀렸는지 출처는 합쳐 둔다');
+});
+
+// ---------- 목표 문항을 골라 열면 센터가 유사 추천을 자동으로 불러와 고른다 (clinicPrintAutoRecommendForTarget) ----------
+function autoApp({ loadStatus = 'ready', uids = ['u1', 'u2'] } = {}) {
+  const { c } = multiExamApp();
+  const keys = c.clinicPrintGetClassExamGroups('c1', 'class').filter((g) => g.sessions.some((s) => ['e1', 'o1'].includes(s.id))).map((g) => g.examKey);
+  const notes = [];
+  const calls = { load: 0, toggles: [] };
+  const countInput = { value: '5' };
+  const basisRadio = { checked: false };
+  const noteEl = { hidden: true, set textContent(v) { notes.push(v); this._t = v; }, get textContent() { return this._t; } };
+  c.document.getElementById = (id) => (id === 'clinic-print-auto-note' ? noteEl : id === 'clinic-print-recommendation-count' ? countInput : null);
+  c.document.querySelector = (sel) => (sel.includes('clinic-print-mode') ? { value: 'student' } : sel.includes('recommendation-basis') ? basisRadio : null);
+  c.document.querySelectorAll = (sel) => (sel.includes('clinic-print-student') ? [{ value: 's1' }] : sel.includes('clinic-print-exam') ? keys.map((value) => ({ value })) : []);
+  vm.runInContext(`clinicPrintActiveClassId = 'c1'`, c);
+  c.clinicPrintLoadRecommendations = async () => {
+    calls.load += 1;
+    vm.runInContext(`clinicPrintRecommendationState = { scope: 'class', status: '${loadStatus}', classId: 'c1', result: { candidates: [{ studentId: 's1', items: ${JSON.stringify(uids.map((u) => ({ sourceQuestionUid: u })))} }] }, selectedKeys: new Set() }`, c);
+  };
+  c.clinicPrintToggleRecommendation = async (classId, studentId, uid, checked) => { calls.toggles.push([studentId, uid, checked]); };
+  c.clinicPrintGetSelectedRecommendationItems = () => calls.toggles.map(([, uid]) => ({ sourceQuestionUid: uid }));
+  return { c, calls, notes, countInput, basisRadio, noteEl };
+}
+
+test('자동 추천: 학생별 문항 수 = 목표 - 중복 제거된 틀린 문항 수, 틀린 유형 기준으로 한 번 불러와 후보를 모두 고른다', async () => {
+  const a = autoApp({ uids: ['u1', 'u2', 'u3'] });
+  await a.c.clinicPrintAutoRecommendForTarget('c1', 20);
+  assert.equal(a.calls.load, 1);
+  assert.equal(a.countInput.value, '17', '틀린 3개(중간고사 1·3, 쪽지시험 1) -> 유사 17개');
+  assert.equal(a.basisRadio.checked, true);
+  assert.deepEqual(a.calls.toggles.map((row) => row[1]), ['u1', 'u2', 'u3']);
+  assert.ok(a.notes[0].includes('고르는 중'), '불러오는 동안 한 줄');
+  assert.match(a.notes.at(-1), /유사 3개만 찾았습니다.*6문항.*목표 20문항/, '모자라면 있는 만큼만 넣고 알린다');
+});
+
+test('자동 추천: 후보가 충분하면 합계 문항을 알리고, 못 찾거나 실패하면 막지 않고 틀린 문항만 담는다고 알린다', async () => {
+  const ok = autoApp({ uids: Array.from({ length: 17 }, (_, i) => `u${i}`) });
+  await ok.c.clinicPrintAutoRecommendForTarget('c1', 20);
+  assert.match(ok.notes.at(-1), /틀린 문항 3개 \+ 유사 17개 = 20문항/);
+  for (const status of ['empty', 'error']) {
+    const a = autoApp({ loadStatus: status });
+    await a.c.clinicPrintAutoRecommendForTarget('c1', 20);
+    assert.equal(a.calls.toggles.length, 0);
+    assert.match(a.notes.at(-1), /유사 문항을 찾지 못했습니다\. 틀린 문항 3개만 담았습니다/);
+  }
+});
+
+test('자동 추천: 틀린 문항이 목표 이상이면 추천을 부르지 않고 전부 담는다', async () => {
+  const a = autoApp();
+  await a.c.clinicPrintAutoRecommendForTarget('c1', 3);
+  assert.equal(a.calls.load, 0);
+  assert.match(a.notes.at(-1), /전부 담았습니다/);
+});
+
+test('자동 추천: 학생 모드가 아니거나 받는 학생이 한 명이 아니면 아무것도 하지 않는다', async () => {
+  const a = autoApp();
+  a.c.document.querySelectorAll = (sel) => (sel.includes('clinic-print-student') ? [{ value: 's1' }, { value: 's2' }] : []);
+  await a.c.clinicPrintAutoRecommendForTarget('c1', 20);
+  assert.equal(a.calls.load, 0);
+});
+
+test('자동 추천: 목표를 골라 연 센터에서만 예약되고, 직접 연 클리닉·한 건 단추는 예약이 없다', () => {
+  const src = fs.readFileSync(path.join(__dirname, '../apmath/js/clinic-print.js'), 'utf8');
+  assert.match(src, /const autoTargetCount = clinicPrintPendingPreselect\?\.studentId && Number\(options\.recommendation\?\.targetCount\) >= 1/);
+  assert.equal((src.match(/clinicPrintAutoRecommendForTarget\(classId, autoTargetCount\)/g) || []).length, 1, '예약은 센터 열기 한 곳');
+  assert.match(src, /if \(autoTargetCount && \(!wsToken \|\| wsClinicIsCurrent\(wsToken\)\)\) setTimeout/);
+  // 새 선정 로직 없이 기존 추천 함수만 부른다
+  const body = src.slice(src.indexOf('async function clinicPrintAutoRecommendForTarget'));
+  assert.match(body, /await clinicPrintLoadRecommendations\(classId\)/);
+  assert.match(body, /clinicPrintToggleRecommendation\(classId, studentId/);
 });

@@ -6071,8 +6071,17 @@ function openClinicForStudentExams(classId, studentId, exams = [], options = {})
             examKeys
         }
     };
+    // 목표 문항(targetCount)을 골라 열면 센터가 열린 뒤 유사 추천을 한 번 자동으로 불러와 고른다(clinicPrintAutoRecommendForTarget).
+    // recommendationCount는 자동 실행 전에 추천 입력칸에 미리 보일 값이다.
+    const targetCount = Math.floor(Number(options?.targetCount));
     const recommendationCount = Math.floor(Number(options?.recommendationCount));
-    if (recommendationCount >= 1) openOptions.recommendation = { countPerStudent: Math.min(400, recommendationCount), selectionBasis: 'wrong_type' };
+    if (targetCount >= 1 || recommendationCount >= 1) {
+        openOptions.recommendation = {
+            countPerStudent: Math.min(400, Math.max(1, recommendationCount || 1)),
+            selectionBasis: 'wrong_type',
+            ...(targetCount >= 1 ? { targetCount: Math.min(400, targetCount) } : {})
+        };
+    }
     return openClinicPrintCenter(classId, openOptions);
 }
 
@@ -6337,6 +6346,8 @@ async function openClinicPrintCenter(classId, options = {}) {
     // 불러오는 동안 다른 반·탭으로 바꿨거나 닫았으면 이 응답으로 화면을 덮지 않는다.
     if (wsToken && !wsClinicIsCurrent(wsToken)) return;
     clinicPrintPendingPreselect = clinicPrintResolvePreselect(classId, options);
+    const autoTargetCount = clinicPrintPendingPreselect?.studentId && Number(options.recommendation?.targetCount) >= 1
+        ? Math.floor(Number(options.recommendation.targetCount)) : 0;
     clinicPrintStudentTitleHint = clinicPrintPendingPreselect?.studentId && (clinicPrintPendingPreselect.examKeys || []).length
         ? { classId: String(classId), studentId: String(clinicPrintPendingPreselect.studentId), examCount: clinicPrintPendingPreselect.examKeys.length } : null;
     // 학생 상세에서 목표 문항 수를 골랐으면 추천 입력(학생별 문항 수·틀린 유형 기준)만 미리 맞춘다. 후보 찾기·선택은 화면에서 그대로 한다.
@@ -6361,6 +6372,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div class="clinic-print-summary-card__title">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
                 <div id="clinic-print-summary" class="clinic-print-summary-card__meta">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
             </div>
+            <div id="clinic-print-auto-note" class="clinic-print-note" aria-live="polite" hidden></div>
 
             <section class="clinic-print-section">
                 <div class="clinic-print-section-title">출제 기준</div>
@@ -6551,4 +6563,49 @@ async function openClinicPrintCenter(classId, options = {}) {
         input.addEventListener('change', () => clinicPrintSchedulePreviewPush(classId));
     });
     setTimeout(() => clinicPrintSwitchMode(classId), 0);
+    // 학생 상세에서 목표 문항(20/30)을 골라 연 경우에만: 첫 그리기가 끝난 뒤 유사 추천을 자동으로 불러와 고른다.
+    if (autoTargetCount && (!wsToken || wsClinicIsCurrent(wsToken))) setTimeout(() => clinicPrintAutoRecommendForTarget(classId, autoTargetCount), 0);
+}
+
+function clinicPrintSetAutoNote(text) {
+    const el = document.getElementById('clinic-print-auto-note');
+    if (!el) return;
+    el.textContent = text || '';
+    el.hidden = !text;
+}
+
+// 목표 문항 수에 맞춰 기존 추천 함수(clinicPrintLoadRecommendations / clinicPrintToggleRecommendation)를 그대로 한 번 실행한다.
+// 학생별 문항 수 = 목표 - (중복 제거된 틀린 문항 수). 새 선정 로직은 없다. 실패하거나 모자라도 틀린 문항 출력은 그대로 가능하다.
+async function clinicPrintAutoRecommendForTarget(classId, targetCount) {
+    const studentIds = clinicPrintGetCheckedValues('clinic-print-student').map(String);
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    if (mode !== 'student' || studentIds.length !== 1 || String(clinicPrintActiveClassId) !== String(classId)) return;
+    const studentId = studentIds[0];
+    const examKeys = clinicPrintGetCheckedValues('clinic-print-exam');
+    const wrongCount = (clinicPrintBuildStudentWrongItems(classId, examKeys, [studentId]).find(row => String(row.studentId) === studentId)?.wrongItems || []).length;
+    const need = Math.min(400, Number(targetCount) - wrongCount);
+    if (need < 1) {
+        clinicPrintSetAutoNote(`틀린 문항 ${wrongCount}개가 목표 ${targetCount}문항 이상이라 유사 문항 없이 전부 담았습니다.`);
+        return;
+    }
+    const countInput = document.getElementById('clinic-print-recommendation-count');
+    if (countInput) countInput.value = String(need);
+    const basis = document.querySelector('input[name="clinic-print-recommendation-basis"][value="wrong_type"]');
+    if (basis) basis.checked = true;
+    clinicPrintSetAutoNote('유사 문항을 고르는 중…');
+    await clinicPrintLoadRecommendations(classId);
+    const state = clinicPrintRecommendationState;
+    if (state.classId !== String(classId) || String(clinicPrintActiveClassId) !== String(classId)) return;
+    const items = state.status === 'ready'
+        ? ((state.result?.candidates || []).find(group => String(group.studentId || '') === studentId)?.items || []) : [];
+    if (!items.length) {
+        clinicPrintSetAutoNote(`유사 문항을 찾지 못했습니다. 틀린 문항 ${wrongCount}개만 담았습니다.`);
+        return;
+    }
+    await Promise.all(items.map(item => clinicPrintToggleRecommendation(classId, studentId, String(item.sourceQuestionUid || ''), true)));
+    if (clinicPrintRecommendationState !== state) return;
+    const picked = clinicPrintGetSelectedRecommendationItems(studentId).length;
+    clinicPrintSetAutoNote(picked >= need
+        ? `틀린 문항 ${wrongCount}개 + 유사 ${picked}개 = ${wrongCount + picked}문항을 담았습니다.`
+        : `유사 ${picked}개만 찾았습니다. 틀린 문항 ${wrongCount}개와 합쳐 ${wrongCount + picked}문항입니다 (목표 ${targetCount}문항).`);
 }

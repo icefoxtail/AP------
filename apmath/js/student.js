@@ -2435,7 +2435,8 @@ function openStudentExamsClinicFromDetail(sid, sessionIds, target) {
     }
     const wrongTotal = picked.reduce((sum, row) => sum + getStudentWrongRowsForSession(sid, row.id).length, 0);
     const goal = Math.floor(Number(target !== undefined ? target : document.getElementById('student-exam-clinic-target')?.value)) || 0;
-    const options = goal > wrongTotal ? { recommendationCount: goal - wrongTotal } : {};
+    // 목표를 골랐으면 센터가 열린 뒤 유사 추천을 자동으로 불러와 고른다. 틀린 문항 수는 센터가 중복을 뺀 값으로 다시 센다(여기 값은 입력칸 미리 채움용).
+    const options = goal > 0 ? { targetCount: goal, recommendationCount: Math.max(1, goal - wrongTotal) } : {};
     openClinicForStudentExams(classId, sid, picked.map(row => ({
         sessionId: row.id,
         examDate: row.exam_date,

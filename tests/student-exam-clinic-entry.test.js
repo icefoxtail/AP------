@@ -67,7 +67,7 @@ test('단추는 편집 권한이 있고 틀린 문항이 있는 시험에만 붙
 });
 
 test('고친 student.js의 ?v=는 apmath/index.html에서 새 값이다', () => {
-  assert.match(indexHtml, /js\/student\.js\?v=20261123-exam-clinic-pick-1/);
+  assert.match(indexHtml, /js\/student\.js\?v=20261123-exam-clinic-pick-2/);
 });
 
 // ---------- 시험 여러 개 선택 -> 오답 클리닉 한 번에 ----------
@@ -110,13 +110,14 @@ test('여러 시험: 체크한 시험들이 날짜순으로 한 번에 넘어가
   assert.deepEqual(JSON.parse(JSON.stringify(options)), {}, '목표를 안 골랐으면 추천 입력은 없다');
 });
 
-test('여러 시험: 목표 문항(20)을 고르면 틀린 문항을 뺀 수만큼 유사 추천 수를 넘기고, 틀린 문항이 목표 이상이면 넘기지 않는다', () => {
+test('여러 시험: 목표 문항(20)을 고르면 틀린 문항을 뺀 수만큼 유사 추천 수를 넘기고, 틀린 문항이 목표 이상이어도 목표를 넘긴다', () => {
   const h = multiHarness({ sessions: THREE, wrongs: WRONGS, checked: ['s1', 's2', 's3'], target: '20' });
   h.sandbox.openStudentExamsClinicFromDetail('stu1');
   assert.equal(h.calls.clinic[0][3].recommendationCount, 14, '틀린 6개 + 유사 14개 = 20');
+  assert.equal(h.calls.clinic[0][3].targetCount, 20, '센터가 열린 뒤 자동 추천에 쓸 목표');
   const over = multiHarness({ sessions: THREE, wrongs: WRONGS, checked: ['s1', 's2', 's3'], target: '5' });
   over.sandbox.openStudentExamsClinicFromDetail('stu1');
-  assert.equal(JSON.stringify(over.calls.clinic[0][3]), '{}');
+  assert.equal(over.calls.clinic[0][3].targetCount, 5, '틀린 문항이 목표 이상이어도 목표는 넘긴다(센터가 중복을 뺀 값으로 다시 판단)');
 });
 
 test('여러 시험: 선택이 0개이거나 틀린 문항이 없는 시험뿐이면 열지 않고 안내한다', () => {
