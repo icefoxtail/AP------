@@ -18,11 +18,13 @@ test('batch renderer is the default and legacy remains an explicit fallback', ()
 });
 
 test('both archive engines install render metrics and the shared loop runtime', () => {
-  const version = '20261123-one-item-1';
+  // 버전 문자열은 엔진을 고칠 때마다 바뀌므로 값을 고정하지 않고, 두 엔진이 같은 판을 부르는지만 본다.
+  const versions = new Set();
   for (const filename of ['engine.html', 'mixed_engine.html']) {
     const html = fs.readFileSync(path.join(root, 'archive', filename), 'utf8');
-    assert.ok(html.includes(`<script src="mathjax_render_loop.js?v=${version}"></script>`),
-      `${filename} must load the shared render loop at version ${version}`);
+    const loaded = html.match(/<script src="mathjax_render_loop\.js\?v=([\w.-]+)"><\/script>/);
+    assert.ok(loaded, `${filename} must load the shared render loop with a version`);
+    versions.add(loaded[1]);
     assert.match(html, /APRenderLoop\?\.start/);
     assert.match(html, /APRenderLoop\?\.finish/);
     assert.match(html, /async function typesetMath\(label, elements\)/);
@@ -35,6 +37,7 @@ test('both archive engines install render metrics and the shared loop runtime', 
     assert.doesNotMatch(html, /MathJax\.typesetPromise\(\[targetCol\]\)/);
     assert.match(html, /MathJax\.typesetClear\(\[area, staging\]\)/);
   }
+  assert.equal(versions.size, 1, 'both engines must load the same render loop version');
 });
 
 test('render metrics are exposed on the document for browser QA', () => {

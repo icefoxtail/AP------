@@ -24,6 +24,9 @@ test('학생 화면 판정: studentReview=1 이거나 학생 포털 안일 때�
   assert.equal(zoom.isStudentContext({ pathname: '/apmath/wrong_print_engine.html', search: '?packet=x' }), false);
   assert.equal(zoom.isStudentContext({ pathname: '/archive/workspace.html', search: '?view=find' }), false);
   assert.equal(zoom.isStudentContext(null), false);
+  assert.equal(zoom.isStudentContext({ pathname: '/archive/engine.html', search: '?mode=exam&studentReview=1&figureZoom=0' }), false, 'figureZoom=0은 끈다(렌더 검증 CI용)');
+  assert.equal(zoom.isStudentContext({ pathname: '/apmath/student/index.html', search: '?figureZoom=0' }), false);
+  assert.equal(zoom.isStudentContext({ pathname: '/archive/engine.html', search: '?studentReview=1&figureZoom=1' }), true);
 });
 
 test('큰 그림 크기: 칸에 비율을 지키며 꽉 차고, 래스터는 원본 2배까지만', () => {
