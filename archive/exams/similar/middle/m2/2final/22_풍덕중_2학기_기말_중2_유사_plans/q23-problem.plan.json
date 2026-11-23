@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      8,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "a",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "x-y=0",
+        "color": "BLUE"
+      },
+      {
+        "id": "b",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "x+y=4",
+        "color": "WARM"
+      },
+      {
+        "id": "c",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "label": "2x-y=6",
+        "color": "GREEN"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-2"
+        ],
+        "domain": [
+          "1",
+          "7"
+        ],
+        "label": "2x+y=10",
+        "color": "ROSE"
+      }
+    ]
+  },
+  "caption": "네 일차방정식 x-y=0, x+y=4, 2x-y=6, 2x+y=10의 그래프를 같은 좌표평면에 나타낸 것이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 일차방정식 x-y=0, x+y=4, 2x-y=6, 2x+y=10",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "네 일차방정식의 그래프"
+  ]
+}

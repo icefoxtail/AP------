@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -5,
+        "marker": "NONE"
+      },
+      {
+        "id": "P1",
+        "x": -2,
+        "y": 11,
+        "marker": "NONE"
+      },
+      {
+        "id": "P2",
+        "x": 6,
+        "y": 11,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "이차함수 y=ax^2+bx+c의 개형과 원점 O",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "아래로 볼록하고 축이 y축 오른쪽에 있으며 y절편이 음수인 포물선 y=ax^2+bx+c"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 개형: a>0, 축 x>0, y절편 c<0"
+    }
+  ]
+}

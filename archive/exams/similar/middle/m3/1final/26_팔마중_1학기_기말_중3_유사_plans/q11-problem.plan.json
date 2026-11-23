@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-5/4",
+          "5/4"
+        ],
+        "label": "y=4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-9/5",
+          "9/5"
+        ],
+        "label": "y=ax^2"
+      },
+      {
+        "id": "c3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=2/3x^2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "세 이차함수 y=4x^2, y=ax^2, y=2/3x^2의 그래프와 원점 O",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 이차함수 y=ax^2, y=4x^2, y=2/3x^2의 그래프"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 폭의 순서: y=4x^2가 가장 좁고 y=2/3x^2가 가장 넓으며 y=ax^2는 그 사이에 있다."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [
+      -2,
+      4
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "-2"
+      ]
+    }
+  },
+  "caption": "함수 y=f(x)의 그래프로, x=0과 x=2에서 함숫값이 끊어져 있다.",
+  "accessibilityDescription": "x=0의 위쪽 열린 점과 아래쪽 채운 점이 세로로 떨어져 있고, x=1의 채운 점에서 시작한 포물선 모양이 x=2의 열린 점까지 올라간 뒤 x=2의 아래쪽 채운 점과 이어진다.",
+  "newVisualInformation": [
+    "x=0에서 좌우 극한은 1이고 함숫값은 -2이다.",
+    "x=2에서 왼쪽 극한은 2이고 함숫값은 1이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 함수 $f(x)$에 대한 설명으로 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
