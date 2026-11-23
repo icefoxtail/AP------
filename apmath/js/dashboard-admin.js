@@ -1770,7 +1770,7 @@ function renderAdminControlCenter() {
     `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--four" aria-label="원장님 바로가기">
+        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--five" aria-label="원장님 바로가기">
             <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="4" width="13" height="17" rx="2.2"/><path d="M9 4V3.2A1.2 1.2 0 0 1 10.2 2h3.6A1.2 1.2 0 0 1 15 3.2V4"/><path d="M8.6 12.4l2.1 2.1 4.1-4.2"/></svg></span>
@@ -1791,6 +1791,12 @@ function renderAdminControlCenter() {
                     onclick="openDashboardArchiveWindow(event)">
                 <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="4.3" rx="1.5"/><path d="M5 8.8v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/><path d="M10 12.4h4"/></svg></span>
                 아카이브
+            </button>
+            <button class="btn ap-admin-action-card ap-surface-action"
+                    title="아카이브 빠른 평가 · 진단평가 (만든 뒤 결과표 열기)"
+                    onclick="openDashboardDiagnosticWindow(event)">
+                <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7.5A2.5 2.5 0 0 0 5 5.5v13A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5V8z"/><path d="M14 3v5h5"/><path d="M9 14.2l2.2 2.2 3.8-4"/></svg></span>
+                진단평가
             </button>
         </div>
     `;
