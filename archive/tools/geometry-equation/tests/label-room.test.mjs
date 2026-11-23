@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {ROOM_STEPS, orderSteps, runRoomLadder, selfLeader, ringCandidates, placeWithLeader, staggerRows, marginNeeded, degradeCollector, bestEffortRecord, overlapArea, boxesTouch} from '../production/label-room.mjs';
 import {STANDALONE_KINDS} from '../production/standalone-kinds.mjs';
 import {solveStatChart, statChartSize} from '../production/stat-chart-v1.mjs';
+import {placeLabels} from '../production/ellipse-figure-v1.mjs';
 
 test('the steps are fixed and finite: stagger, wrap, leader, margin (margin last)', () => {
   assert.deepEqual([...ROOM_STEPS], ['STAGGER', 'WRAP', 'LEADER', 'MARGIN']);
@@ -127,4 +128,24 @@ test('a stat figure that fits is sized and spec-ed exactly as before; the MARGIN
   assert.ok(margin.height > plain.height, `margin ${margin.height} > plain ${plain.height}`);
   const padded = statChartSize(model, {fontPx: 21, room: 'MARGIN', roomPad: 12});
   assert.equal(padded.height, margin.height + 12);
+});
+
+test('ellipse: a segment length (6√3) with no near place goes on a leader that starts at the middle of its own segment; without the LEADER room it is refused as before, and no leader crosses another stroke', () => {
+  const mid = [200, 150], own = {a: [140, 150], b: [260, 150]};
+  const wall = (a, b) => ({a, b});
+  // the owner segment and a closed ring round it with one gap (top side, between x=194 and x=206: narrower than a label)
+  const segments = [wall(own.a, own.b), wall([150, 126], [194, 126]), wall([206, 126], [250, 126]), wall([150, 174], [250, 174]), wall([150, 126], [150, 174]), wall([250, 126], [250, 174])];
+  const obstacles = {points: [], curve: [], segments};
+  const layout = {size: {width: 400, height: 300}};
+  const near = [];   // no near place at all (every one of the eight directions is blocked in the figure): the entry brings none
+  const entry = () => ({key: 'measure-s1', role: 'measure', segmentId: 's1', text: '6√3', width: 34, height: 18, requiresLeader: false, ownerSegment: own, pointX: mid[0], pointY: mid[1], centerX: mid[0], centerY: mid[1], candidates: near});
+  assert.throws(() => placeLabels([entry()], layout, obstacles), error => error.status === 'ELLIPSE_LABEL_NO_ROOM');
+  const [placed] = placeLabels([entry()], layout, obstacles, {room: 'LEADER'});
+  assert.ok(placed.leader, 'a leader');
+  assert.ok(Math.abs(placed.leader.b[0] - mid[0]) < 1e-6 && Math.abs(placed.leader.b[1] - mid[1]) < 1e-6, 'it ends at the middle of its own segment');
+  const {box} = placed;
+  assert.ok(placed.leader.a[0] >= box.x - 1e-6 && placed.leader.a[0] <= box.x + box.width + 1e-6 && placed.leader.a[1] >= box.y - 1e-6 && placed.leader.a[1] <= box.y + box.height + 1e-6, 'it starts on the label box');
+  assert.ok(box.y + box.height < 126, 'the label stands outside the ring, and its leader goes through the gap');
+  assert.ok(placed.leader.a[0] > 194 && placed.leader.a[0] < 206 && Math.abs(placed.leader.b[0] - 200) < 1e-6);
+  assert.equal(placed.text, '6√3', 'the exact value is written as it always was');
 });
