@@ -431,8 +431,8 @@ test('자동 추천: 학생 모드가 아니거나 받는 학생이 한 명이 �
 
 test('자동 추천: 목표를 골라 연 센터에서만 예약되고, 직접 연 클리닉·한 건 단추는 예약이 없다', () => {
   const src = fs.readFileSync(path.join(__dirname, '../apmath/js/clinic-print.js'), 'utf8');
-  assert.match(src, /const autoTargetCount = clinicPrintPendingPreselect\?\.studentId && Number\(options\.recommendation\?\.targetCount\) >= 1/);
-  assert.equal((src.match(/clinicPrintAutoRecommendForTarget\(classId, autoTargetCount\)/g) || []).length, 1, '예약은 센터 열기 한 곳');
+  assert.match(src, /const autoTargetCount = clinicPrintPendingPreselect && \(clinicPrintPendingPreselect\.studentId \|\| classBatch\) && Number\(options\.recommendation\?\.targetCount\) >= 1/, '학생을 고르지 않은 열기는 반 전체(classBatch)일 때만 예약');
+  assert.equal((src.match(/clinicPrintAutoRecommendForTarget\(classId, autoTargetCount, classBatch\)/g) || []).length, 1, '예약은 센터 열기 한 곳');
   assert.match(src, /if \(autoTargetCount && \(!wsToken \|\| wsClinicIsCurrent\(wsToken\)\)\) setTimeout/);
   // 새 선정 로직 없이 기존 추천 함수만 부른다
   const body = src.slice(src.indexOf('async function clinicPrintAutoRecommendForTarget'));

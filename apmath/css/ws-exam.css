@@ -111,6 +111,13 @@
 .wsx .wsx-detail__title { font-size: 16px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; word-break: keep-all; }
 .wsx .wsx-detail__meta { color: var(--secondary); font-size: 12px; line-height: 1.5; }
 .wsx .wsx-detail__tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+/* 반 전체 · 학생별 오답 클리닉: 시험 머리말 아래 한 줄(목표 문항 고르고 열기) */
+.wsx .wsx-classclinic { display: flex; flex-direction: column; gap: 6px; margin: 0 0 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.wsx .wsx-classclinic__label { font-size: 13px; font-weight: 600; }
+.wsx .wsx-classclinic__sub { color: var(--secondary); font-size: 12px; font-weight: 400; margin-left: 4px; }
+.wsx .wsx-classclinic__row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.wsx .wsx-classclinic__select { flex: 0 1 220px; min-width: 0; min-height: 44px; }
+.wsx .wsx-classclinic__open { flex: 0 0 auto; }
 
 /* 보기 구분 */
 .wsx .wsx-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
