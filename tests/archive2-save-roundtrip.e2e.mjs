@@ -511,12 +511,89 @@ for (const grade of ["중1", "고1"]) {
   });
 }
 
-// the shard path is given up for the verified whole bundle when a file stays wrong, and the waiting screen shows what it is doing
-test("shard failures: the message tells the connection from the release, and the screen falls back to the whole bundle once", () => {
+// The connection fails, or the shard files are wrong while the whole bundle is not there either: whatever the combination, nothing is left
+// half done (the catalog, the loader and the screen's busy flag), no query throws, and the same action works when things are back.
+const NETWORK_MESSAGE = "문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.";
+test("offline: a grade change and a draft restore fail with the connection message, leave the screen as it was, and work again when the connection is back", async () => {
+  const files = await shardFiles();
+  const net = { offline: false };
+  const otherSample = await sampleFor("중1");
+  const maker = createWorkspace(server);
+  configureSample(maker.ws, maker.seedMode, "중1", otherSample.keys, PER_UNIT);
+  const made = JSON.parse(JSON.stringify(maker.ws.draft()));
+  const wanted = made.selected.map((row) => row.questionUid);
+  const { ws } = createWorkspace(server, { shardFiles: files, net });
+  // a screen with no index yet answers "needed", it does not throw
+  assert.equal(ws.shardGlue.shardMissing({ grades: ["고1"] }), true);
+  ws.state.filters = { grade: "고1" };
+  const held = await ws.bootFromShards();
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  const heldKeys = [...held.shardKeys];
+  net.offline = true;
+  // (1) the teacher clicks another grade
+  ws.state.filters = { grade: "중1" };
+  assert.equal(ws.shardGlue.shardNeedsLoading(), true);
+  await assert.rejects(ws.shardGlue.ensureShards(ws.shardGlue.shardNeed()), (error) => {
+    assert.equal(error.code, "CATALOG_SHARD_NETWORK");
+    assert.equal(error.message, NETWORK_MESSAGE);
+    return true;
+  });
+  assert.equal(net.wholeBundleCalls || 0, 0, "a failed connection does not start the 20MB whole bundle");
+  assert.equal(ws.state.catalog, held, "the catalog is exactly what it was");
+  assert.doesNotThrow(() => ws.shardGlue.shardNeedsLoading());
+  assert.equal(ws.shardGlue.shardNeedsLoading(), true, "still waiting for the grade, and asking says so without throwing");
+  // (e) the grade that is open can be worked in again: it needs nothing more
+  ws.state.filters = { grade: "고1" };
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  // (2) the restore of a draft of another grade, offline: refused with the same message, the busy flag is released
+  await assert.rejects(ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] }), (error) => error.code === "CATALOG_SHARD_NETWORK");
+  assert.equal(ws.state.shardBusy, false, "the buttons are enabled again");
+  assert.deepEqual([...ws.state.catalog.shardKeys], heldKeys);
+  // back online: the same two actions work, with the choices kept
+  net.offline = false;
+  ws.state.filters = { grade: "중1" };
+  await ws.shardGlue.ensureShards(ws.shardGlue.shardNeed());
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  assert.ok(ws.state.catalog.shardKeys.includes("m1"));
+  ws.state.filters = { grade: "고1" };
+  await ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] });
+  ws.applyDraft(made);
+  assert.deepEqual(ws.state.selected.map((row) => row.questionUid), wanted);
+  assert.equal(ws.state.shardBusy, false);
+});
+
+test("the shard files are wrong and the whole bundle is not there either: the screen stays on its shards, says why, and recovers when the files are right", async () => {
+  const files = await shardFiles();
+  const net = { offline: false, corrupt: new Set() };
+  const { ws } = createWorkspace(server, { shardFiles: files, net });
+  ws.state.filters = { grade: "고1" };
+  const held = await ws.bootFromShards();
+  net.corrupt.add("shard-m1.json");
+  ws.state.filters = { grade: "중1" };
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    await assert.rejects(ws.shardGlue.ensureShards(ws.shardGlue.shardNeed()), (error) => {
+      assert.equal(error.code, "CATALOG_SHARD_STALE");
+      assert.equal(error.message, "자료가 갱신되는 중입니다. 잠시 뒤 다시 시도해 주세요.");
+      return true;
+    });
+    assert.equal(net.wholeBundleCalls, attempt, "the whole bundle was tried (and is not there)");
+    assert.equal(ws.state.catalog, held, "nothing changed");
+    assert.doesNotThrow(() => ws.shardGlue.shardNeedsLoading());
+    assert.equal(ws.shardGlue.shardNeedsLoading(), true);
+  }
+  net.corrupt.clear();
+  await ws.shardGlue.ensureShards(ws.shardGlue.shardNeed());
+  assert.ok(ws.state.catalog.shardKeys.includes("m1"), "recovered by asking again");
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+});
+
+// the screen code that decides between the message and the whole bundle
+test("shard failure policy in the screen: connection = message and retry, release/bytes = verified whole bundle, nothing changes until it arrives", () => {
   const source = readFileSync(root + "/archive/archive2-workspace.js", "utf8");
-  assert.match(source, /function giveUpShards\(error\)/);
-  assert.match(source, /catch \(error\) \{\s*if \(!isShardFailure\(error\)\) throw error;\s*giveUpShards\(error\);\s*return null;/);
-  assert.match(source, /await swapToWholeBundle\(error\)/);
-  assert.match(source, /ensureShardFiles\(restoring\?\.selected, restoring\?\.sources, \{ grades: \[restoring\?\.filters\?\.grade\] \}\)/);
+  assert.match(source, /if \(isNetworkFailure\(error\)\) throw shardNetworkError\(error\);\s*if \(!isShardFailure\(error\)\) throw error;\s*await swapToWholeBundle\(error\);/);
+  assert.match(source, /const full = await window\.applyArchiveMetaFoundationCatalog\(\);\s*shardsBroken = true; shardSession = null;/, "the session is dropped only after the whole bundle arrived");
+  assert.match(source, /function shardMissing\(need\) \{\s*try \{/, "a lookup never throws");
+  assert.match(source, /ensureShardFiles\(restoring\?\.selected, restoring\?\.sources, \{ grades: \[restoring\?\.filters\?\.grade\] \}\);\s*\$\("modal"\)\.close\(\);/, "the dialog closes after the shards came");
   assert.match(source, /ensureShardFiles\(imported\?\.selected, imported\?\.sources, \{ grades: \[imported\?\.filters\?\.grade\] \}\)/);
+  assert.match(source, /a === "shard-back"/);
 });

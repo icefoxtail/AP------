@@ -146,7 +146,11 @@
   const NETWORK_MESSAGE = "문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.";
   const UNAVAILABLE_MESSAGE = "문항 조각 자료를 사용할 수 없습니다.";
   // a failure that came from the connection (no response, HTTP error), as opposed to bytes that arrived but do not match the index
-  const isNetworkFailure = (error) => Boolean(error) && (error.network === true || Boolean(error.cause && error.cause.network === true));
+  const isNetworkFailure = (error) => {
+    for (let hop = 0, current = error; current && hop < 6; hop += 1, current = current.cause)
+      if (current.network === true || current.code === "CATALOG_SHARD_NETWORK") return true;
+    return false;
+  };
   // every error this loader throws about files it could not get right (the screen may give up the shard path for these)
   const isShardFailure = (error) => Boolean(error) && typeof error.code === "string" && /^CATALOG_SHARD/.test(error.code);
   const failure = (code, message, retryable, cause) => Object.assign(new Error(message), { code, retryable: Boolean(retryable), ...(cause ? { cause } : {}) });
@@ -307,7 +311,7 @@
       throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true);
     }
     return {
-      loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
+      loadIndex, hasIndex: () => index !== null, courses, shardKeysOfCourse, shardKeyOfExam, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
       // for tests and the screen's status line: what is held now
       held: () => ({ indexVersion: index && index.indexVersion, shards: [...wanted], generation }),
     };
@@ -318,6 +322,6 @@
 
   return {
     SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
-    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, shardsDisabled,
+    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
   };
 });

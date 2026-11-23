@@ -350,8 +350,11 @@ test('the shard path is the default of 문제지 만들기 and ?shards=0 is the 
   assert.ok(/if \(!window\.Archive2CatalogShards\.isUnavailable\(error\)\)/.test(workspace), 'a prefetch failure that is not "not on the site" is only logged');
   assert.ok(/shardsBroken = true/.test(workspace));
   // a shard file that stays wrong after the loader's retry: the screen gives the shard path up (console warning) for the verified whole bundle
-  assert.ok(/function giveUpShards\(error\)/.test(workspace) && /using the verified whole bundle instead/.test(workspace));
-  assert.ok(/applyArchiveMetaFoundationCatalog\(\);\s*\} catch \(error\) \{ shardsBroken = false/.test(workspace), 'if the whole bundle fails too the screen stays on shards and shows the shard error');
+  assert.ok(/function warnGiveUp\(error\)/.test(workspace) && /using the verified whole bundle instead/.test(workspace));
+  assert.ok(/const full = await window\.applyArchiveMetaFoundationCatalog\(\);\s*shardsBroken = true; shardSession = null;/.test(workspace), 'the shard session is dropped only after the whole bundle arrived: if it fails too the screen stays on shards');
+  // a loader without an index answers questions about it without throwing (the screen asks "is more needed?" on every render)
+  const bare = shards.createLoader({ base: BASE, fetch: async () => { throw new TypeError('Failed to fetch'); } });
+  assert.equal(bare.hasIndex(), false);
   // the screens that read the catalog do not know about shards
   for (const file of ['archive/archive2-core.js', 'archive/archive2-canonical.js', 'archive/archive2-workspace-core.js', 'archive/archive2-workspace-compose.js', 'archive/meta-foundation-runtime.js', 'archive/archive2-output.js', 'archive/archive2-history.js', 'archive/mixer-selector.js', 'archive/archive2-output-contract.js']) assert.equal(/Archive2CatalogShards/.test(read(file)), false, file);
   const manifest = JSON.parse(read('tools/archive-pages-release-manifest.json'));

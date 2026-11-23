@@ -495,6 +495,12 @@
       const a = b.dataset.action;
       if (a === "boot-retry") { location.reload(); return; }
       if (a === "shard-retry") { state.shardError = ""; render(); return; }
+      if (a === "shard-back") {
+        // back to the grade whose shards are held: the work in it goes on
+        state.shardError = "";
+        if (b.dataset.grade && state.view === "compose") changeComposeFilter("grade", b.dataset.grade); else render();
+        return;
+      }
       if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a) && !(state.light && LIGHT_FIND_ACTIONS.has(a))) {
         deferUntilCatalog(b);
         return;
@@ -1061,9 +1067,10 @@
         download(draft(), `archive2-${state.draftId}.json`);
       } else if (a === "import") $("import-file").click();
       else if (a === "restore") {
-        $("modal").close();
         const restoring = drafts()[Number(b.dataset.draft)];
+        // the shards first, with the dialog still open: if they do not come, the teacher can press the button again
         await ensureShardFiles(restoring?.selected, restoring?.sources, { grades: [restoring?.filters?.grade] });
+        $("modal").close();
         applyDraft(restoring);
       } else if (a === "delete-draft") askDeleteDraft(b.dataset.draftId);
       else if (a === "delete-draft-confirm") deleteDraft(b.dataset.draftId);
@@ -1240,10 +1247,10 @@
         if (el.files[0].size > 1000000)
           throw new Error("작업 파일이 너무 큽니다.");
         const imported = JSON.parse(await el.files[0].text());
+        el.value = ""; // the same file can be chosen again if the shards do not come
         await ensureShardFiles(imported?.selected, imported?.sources, { grades: [imported?.filters?.grade] });
         applyDraft(imported);
         save();
-        el.value = "";
       }
     } catch (e) {
       status(e.message, true, e);
@@ -1776,6 +1783,8 @@
     installCatalogDerived,
     shardNeed,
     ensureShards,
+    shardMissing,
+    shardNeedsLoading,
   });
   WS.link(); // again: the constants exported by this file are now visible to the other parts
   // The catalog (download, hash check, resolve) is started once, by whoever needs it first: the boot below, or, for a
@@ -1948,19 +1957,29 @@
     state.healthComposeScope = null;
     composeMetaQueryCache.clear();
   }
+  // Never throws: with no index in the loader (a failed first fetch, a new loader) or a need it cannot name, the answer is "needed", so a
+  // render never fails on it and the screen asks again instead.
   function shardMissing(need) {
-    const { keys, unknownExams } = shardLoader().keysFor(need);
-    const have = new Set(state.catalog?.shardKeys || []);
-    return unknownExams.length > 0 || keys.some((key) => !have.has(key));
+    try {
+      const loader = shardLoader();
+      if (!loader.hasIndex()) return true;
+      const { keys, unknownExams } = loader.keysFor(need);
+      const have = new Set(state.catalog?.shardKeys || []);
+      return unknownExams.length > 0 || keys.some((key) => !have.has(key));
+    } catch { return true; }
   }
   // The first catalog of this document from shards (after the index is known). null = the shards are not on this site.
   // A shard file or the common file that stays wrong after the loader's one retry (bytes that do not match the index, a release that moves,
   // a connection that fails): this document gives the shard path up and uses the whole bundle, whose own integrity checks run as always. The
   // teacher does not need to know ?shards=0. Nothing is accepted unverified: either the shard files verified, or the verified whole bundle.
   const isShardFailure = (error) => Boolean(window.Archive2CatalogShards?.isShardFailure?.(error));
-  function giveUpShards(error) {
+  // A failed connection is NOT a reason to leave the shard path: with no connection the whole bundle fails too. It is shown as a message with
+  // "다시 시도" and the screen stays as it was. Only files that arrive wrong while the index and the other shards arrive (a release that is
+  // moving, bytes that do not match) send the screen to the whole bundle. One place decides which is which.
+  const isNetworkFailure = (error) => Boolean(window.Archive2CatalogShards?.isNetworkFailure?.(error));
+  const shardNetworkError = (error) => Object.assign(new Error(window.Archive2CatalogShards.NETWORK_MESSAGE), { code: "CATALOG_SHARD_NETWORK", retryable: true, cause: error });
+  function warnGiveUp(error) {
     console.warn("[archive2] catalog shards failed after a retry; using the verified whole bundle instead:", error?.code || "", error);
-    shardsBroken = true; shardSession = null;
   }
   async function shardCatalog() {
     if (!(await prefetchShards())) return null;
@@ -1973,22 +1992,24 @@
       if (!window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = common.labels;
       return catalog;
     } catch (error) {
+      if (isNetworkFailure(error)) throw shardNetworkError(error); // the first load shows its own error and retry
       if (!isShardFailure(error)) throw error;
-      giveUpShards(error);
+      warnGiveUp(error);
+      shardsBroken = true; shardSession = null;
       return null; // loadCatalog() takes the whole bundle
     }
   }
-  // The whole bundle in place of a partial shard catalog (the shard path failed in the middle of the session). If that fails too, the shard
-  // error is the one the teacher reads (it says whether the connection or the release is the problem).
+  // The whole bundle in place of a partial shard catalog (the shard files failed in the middle of the session). Nothing changes until the
+  // whole bundle has arrived: if it fails too, the session, the shards already held and the screen stay exactly as they were, and the
+  // shard error is the one the teacher reads.
   let wholeBundleSwap = null;
   function swapToWholeBundle(shardError) {
     if (!wholeBundleSwap) {
-      giveUpShards(shardError);
+      warnGiveUp(shardError);
       wholeBundleSwap = (async () => {
-        let full;
-        // the whole bundle did not come either: the screen stays on the shards it has (and will ask again), not on a half-switched state
         Boot?.demand?.(); // the page holds the big files back until something asks for them: the teacher is waiting for them now
-        try { full = await window.applyArchiveMetaFoundationCatalog(); } catch (error) { shardsBroken = false; shardLoader(); throw error; }
+        const full = await window.applyArchiveMetaFoundationCatalog();
+        shardsBroken = true; shardSession = null;
         installCatalogDerived(full);
         state.catalog = full;
       })().finally(() => { wholeBundleSwap = null; });
@@ -1997,15 +2018,17 @@
   }
   // Brings the catalog up to a need (more shards), keeping everything chosen. Resolves when state.catalog has them.
   async function ensureShards(need) {
-    if (wholeBundleSwap) { await wholeBundleSwap.catch(() => {}); return; }
+    if (wholeBundleSwap) await wholeBundleSwap.catch(() => {});
     if (!shardSession || !state.catalog || state.catalog.complete !== false) return;
-    if (!shardMissing(need)) return;
     const loader = shardLoader();
-    const asked = loader.keysFor(need).unknownExams.length ? { all: true } : need;
     let next;
     try {
+      await loader.loadIndex();
+      if (!shardMissing(need)) return;
+      const asked = loader.keysFor(need).unknownExams.length ? { all: true } : need;
       next = await loader.loadCatalog(asked, { onProgress: showShardProgress });
     } catch (error) {
+      if (isNetworkFailure(error)) throw shardNetworkError(error);
       if (!isShardFailure(error)) throw error;
       await swapToWholeBundle(error);
       return;
@@ -2055,23 +2078,33 @@
       if (uids.length && missingUid()) await ensureShards({ all: true });
     });
   }
-  const shardNeedsLoading = () => {
+  function shardNeedsLoading() {
     if (!shardSession || !state.catalog || state.catalog.complete !== false || state.view === "saved") return false;
     return shardMissing(shardNeed());
   }
   function shardLoadingMarkup() {
     const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || { find: "학교별 기출", compose: "문제지 만들기", health: "자료 점검", home: "홈", recent: "출제 내역" }[state.view] || "아카이브";
-    if (state.shardError)
-      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.shardError)}</p><p>${button("shard-retry", "다시 시도", 'class="primary"')}</p></section>`;
+    if (state.shardError) {
+      // the grade the teacher was working in (its shards are held) stays reachable
+      const back = state.view === "compose" && shardLastOkGrade && shardLastOkGrade !== state.filters?.grade
+        ? ` ${button("shard-back", `${esc(shardLastOkGrade)}(으)로 돌아가기`, `data-grade="${esc(shardLastOkGrade)}"`)}` : "";
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.shardError)}</p><p>${button("shard-retry", "다시 시도", 'class="primary"')}${back}</p><p class="muted">고른 조건은 그대로 두었습니다.</p></section>`;
+    }
     return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1><p class="boot-wait-text">${SHARD_NOTICE}</p><p class="boot-wait-text" data-shard-progress role="status"></p><p class="muted">고른 조건은 그대로 두었습니다. 불러오면 이 화면이 저절로 열립니다.</p></section>`;
   }
   // Called by renderContent: when the screen needs shards the catalog does not hold yet, it shows the notice and starts the load.
+  let shardLastOkGrade = ""; // the last grade of 문제지 만들기 whose shards the screen held when it was drawn
   function shardGate() {
-    if (!shardNeedsLoading()) return false;
+    if (!shardNeedsLoading()) {
+      if (shardSession && state.catalog && state.view === "compose" && state.filters?.grade) shardLastOkGrade = state.filters.grade;
+      return false;
+    }
     syncViewNavigation();
-    if (state.shardError) { $("content").innerHTML = shardLoadingMarkup(); return true; }
     const need = shardNeed();
     const sig = JSON.stringify(need);
+    // an error belongs to the need it was raised for: a screen that needs something else starts over
+    if (state.shardError && state.shardErrorSig !== sig) state.shardError = "";
+    if (state.shardError) { $("content").innerHTML = shardLoadingMarkup(); return true; }
     $("content").innerHTML = shardLoadingMarkup();
     status(SHARD_NOTICE);
     if (shardLoading.sig !== sig || !shardLoading.promise) {
@@ -2086,8 +2119,9 @@
         shardLoading = { sig: "", promise: null };
         console.error("[archive2] shard load failed:", error?.code || "", error);
         state.shardError = teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+        state.shardErrorSig = sig;
         status("");
-        render();
+        try { render(); } catch (renderError) { console.error("[archive2] render after a shard failure failed:", renderError); }
       });
       shardLoading.promise = promise;
     }
