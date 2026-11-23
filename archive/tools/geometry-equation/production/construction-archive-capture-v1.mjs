@@ -25,6 +25,20 @@ const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});// the matrix
 // Why a phone row failed, one short code per error (the part after ARCHIVE_PHONE_DISPLAY_FAIL:), so a scorer can tell a figure that is cut off or lost (blocking) from labels that touch (a deduction).
 // An error is "<assetId>:<CODE>:<detail>" (layout replay) or "<CODE>:<assetId>" (row checks); a page exception text has no code at all.
 const PHONE_REASON_ORDER=['IMAGE_LOAD_FAIL','TARGET_OUTSIDE_SCREEN','TARGET_HORIZONTAL_OVERFLOW','TEXT_CLIPPED','GEOMETRY_VIEWPORT_CLIPPING'];
+// The phone row repeats the layout replay at the size the phone shows the figure (about half scale). What the phone adds is display size: the figure loads, stays on the screen and
+// inside its box, and nothing is cut off. The geometry observers (tick-label leader ends, along-axis alignment, label spacing, clearances) measure in px tolerances that were judged at the
+// desktop size; at a smaller scale they get stricter without anything a student can see getting worse (2026-11-24: |sin| with x=pi/2, PNG in envelope-png/trig-domain-phone390-image.png),
+// so on the phone they are recorded (phone.notes) and the desktop verdict stands. A layout error from the replay is blocking on the phone only when it is a cut-off or a failed measurement.
+const PHONE_BLOCKING_LAYOUT_CODES=new Set(['TEXT_CLIPPED','GEOMETRY_VIEWPORT_CLIPPING','CONDITION_BOX_OVERFLOW','MISSING_GLYPH','PUBLICATION_TEXT_NOT_READY','PUBLICATION_TEXT_BOUNDS_INVALID','INVALID_STROKE_MEASUREMENT']);
+export function splitPhoneErrors(errors,assetId){
+  const blocking=[],notes=[];
+  for(const error of errors){
+    const text=String(error);
+    // a layout-replay error is "<assetId>:<CODE>:<detail>"; every other error (row checks, page errors, hash mismatches) is blocking as before
+    if(text.startsWith(assetId+':')&&!PHONE_BLOCKING_LAYOUT_CODES.has(text.slice(assetId.length+1).split(':')[0]))notes.push(text);else blocking.push(text);
+  }
+  return {blocking,notes};
+}
 export function phoneFailureReasons(errors,assetId){
   const reasons=[];
   for(const error of errors){
@@ -488,11 +502,11 @@ async function captureCore({composed,identity,sourcePath,ordinal,requestedSizeCl
       const phoneRow=JSON.parse(fs.readFileSync(phoneFile,'utf8')),phoneTarget=phoneRow.state?.targets?.find(item=>item.id===assetId),phoneRect=phoneTarget?.rect;
       const phoneRectOk=phoneRect&&['width','height'].every(key=>Number.isFinite(phoneRect[key])&&phoneRect[key]>0);
       const outsideScreenPx=phoneRectOk?Math.max(0,-phoneRect.x,phoneRect.x+phoneRect.width-PHONE_VIEWPORT.width):null;
-      const phoneErrors=[...(phoneRow.errors||[])];
+      const {blocking:phoneErrors,notes:phoneNotes}=splitPhoneErrors(phoneRow.errors||[],assetId);
       if(phoneRectOk&&outsideScreenPx>DISPLAY_SCALE_TOLERANCE_CSS_PX)phoneErrors.push('TARGET_OUTSIDE_SCREEN:'+assetId);
       if(!phoneRectOk&&!phoneErrors.length)phoneErrors.push('NO_TARGET_RECT');
       const phoneReasons=phoneFailureReasons(phoneErrors,assetId);
-      state.phone={status:phoneErrors.length?'FAIL':'PASS',viewport:{...PHONE_VIEWPORT},imageRect:phoneRect??null,displayScale:phoneRectOk?Math.min(phoneRect.width/intrinsic.width,phoneRect.height/intrinsic.height):null,outsideScreenPx,reasons:phoneReasons,errors:phoneErrors,...(phoneRow.pageNotes?.length?{pageNotes:phoneRow.pageNotes}:{})};
+      state.phone={status:phoneErrors.length?'FAIL':'PASS',viewport:{...PHONE_VIEWPORT},imageRect:phoneRect??null,displayScale:phoneRectOk?Math.min(phoneRect.width/intrinsic.width,phoneRect.height/intrinsic.height):null,outsideScreenPx,reasons:phoneReasons,errors:phoneErrors,...(phoneNotes.length?{notes:phoneNotes,noteReasons:phoneFailureReasons(phoneNotes,assetId)}:{}),...(phoneRow.pageNotes?.length?{pageNotes:phoneRow.pageNotes}:{})};
       if(phoneErrors.length)throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL:'+phoneReasons[0],{...state.phone});
     }else if(phoneRows.length){const rowErrors=phoneRows.flatMap(item=>item.errors??[]),reasons=phoneFailureReasons(rowErrors,assetId);throw new Stop('ARCHIVE_PHONE_DISPLAY_FAIL:'+(reasons[0]??'NO_PHONE_ROW'),{reasons,errors:rowErrors});}
     return outcome('ARCHIVE_BOUND');

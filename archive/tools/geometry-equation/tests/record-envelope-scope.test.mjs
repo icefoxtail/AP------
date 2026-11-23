@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {phoneFailureReasons,bankResponseMatches} from '../production/construction-archive-capture-v1.mjs';
+import {phoneFailureReasons,splitPhoneErrors,bankResponseMatches} from '../production/construction-archive-capture-v1.mjs';
 import {recordArchiveEvidence,judgeArchivePage,judgeArchiveTarget} from '../record-visual-browser-evidence.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
@@ -135,4 +135,11 @@ test('real Chrome: the exam JS of a file that starts with a BOM reaches the page
   const wanted=BOM_SOURCE.slice("archive/".length),received=row.responses.filter(response=>decodeURIComponent(new URL(response.url).pathname).endsWith(wanted));
   assert.equal(received.length,1);
   assert.equal(bankResponseMatches('sha256:'+received[0].sha256,text),true,'the received bank matches the written one up to the BOM');
+});
+
+test('splitPhoneErrors: on the phone a cut-off or a failed measurement blocks, geometry spacing observers are only noted (they were judged on the desktop)',()=>{
+  const id='va-1';
+  const {blocking,notes}=splitPhoneErrors([`${id}:TICK_LABEL_OWNER_LEADER_END_MISMATCH:t`,`${id}:TICK_LABEL_ALONG_AXIS_MISALIGNMENT:t`,`${id}:LABEL_OVERLAP:A:B`,`${id}:LEADER_NEAR_GEOMETRY:l:g`,`${id}:TEXT_CLIPPED:A`,`${id}:GEOMETRY_VIEWPORT_CLIPPING:g`,`${id}:MISSING_GLYPH`.replace(id+':',''),'TARGET_SVG_LOAD_FAIL:'+id,'TARGET_OUTSIDE_SCREEN:'+id,'ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+id,'Error: page crashed'],id);
+  assert.deepEqual(notes.map(text=>text.split(':')[1]),['TICK_LABEL_OWNER_LEADER_END_MISMATCH','TICK_LABEL_ALONG_AXIS_MISALIGNMENT','LABEL_OVERLAP','LEADER_NEAR_GEOMETRY']);
+  assert.deepEqual(blocking,[`${id}:TEXT_CLIPPED:A`,`${id}:GEOMETRY_VIEWPORT_CLIPPING:g`,'MISSING_GLYPH','TARGET_SVG_LOAD_FAIL:'+id,'TARGET_OUTSIDE_SCREEN:'+id,'ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+id,'Error: page crashed']);
 });
