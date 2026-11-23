@@ -161,7 +161,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "E(2X+5)=2m+5=95에서 m=45이고 V(2X+5)=4σ²=36에서 σ=3이다. 두 꼬리의 확률이 같으므로 두 경계 3+a와 5−b는 평균 45에 대하여 대칭이다. 그래서 (3+a)+(5−b)=90이고 a−b=82이다. 그림에서 두 경계의 위치(42, 48)는 대칭을 보이는 예이다. 따라서 a−b+σ=85이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -228,7 +232,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "전체 구간 [m−3σ, m+3σ]의 확률이 a이고 [m−2σ, m+3σ]가 b이므로 왼쪽 파란 부분은 a−b이다(그림의 c). 평균에 대한 대칭으로 오른쪽 파란 부분도 c=a−b이다. 따라서 가운데 초록 부분(그림의 ?) P(m−2σ≤X≤m+2σ)는 b−(a−b)=2b−a이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

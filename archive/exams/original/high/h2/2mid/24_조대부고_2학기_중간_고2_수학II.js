@@ -333,7 +333,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "x>1에서 직선과 아래로 볼록한 곡선이 한 점에서 시작해 갈라지는 그래프이며 1과 2의 눈금이 표시되어 있다.",
+    "solutionImageCaption": "곡선은 y=x²+1이고 직선은 y=x+1이다. x>1에서 약분하면 x+1 ≤ f(x)/(x+3) ≤ x²+1이다. x→1+일 때 두 식이 모두 (1, 2)의 값 2로 모이므로 f(x)/(x+3)→2이다. 따라서 f(x)=(x+3)·f(x)/(x+3)→4×2=8이고 a=8이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

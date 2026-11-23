@@ -607,7 +607,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 86에서 98 이하가, 오른쪽 곡선은 평균 88에서 a 이하가 칠해져 있다.",
+    "solutionImageCaption": "주봉이 과수원 사과는 N(86, 15²)이므로 98의 표준점수는 (98−86)/15=0.8이다. 양현이 과수원 사과는 N(88, 10²)이고 누적확률이 같으면 표준점수가 같으므로 (a−88)/10=0.8이다. 따라서 a=96이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -666,6 +670,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "표준정규분포 곡선 두 개가 나란히 있다. 왼쪽 곡선은 평균 70에 대응하는 중심과 90의 오른쪽 꼬리가, 오른쪽 곡선은 78.4의 오른쪽 꼬리가 칠해져 있다.",
+    "solutionImageCaption": "(1) 90점의 표준점수는 (90−70)/10=2이고 표에서 오른쪽 꼬리는 0.5−0.48=0.02이다. 1000명 중 1000×0.02=20명이 90점 이상이므로 약 20등이다. (2) 500명 중 100등은 상위 100/500=0.20이므로 오른쪽 꼬리가 0.20이다. 이때 P(0≤Z≤z)=0.30에서 z=0.84이므로 점수는 70+10×0.84=78.4점이다.",
+    "solutionImageSize": "full"
   }
 ];

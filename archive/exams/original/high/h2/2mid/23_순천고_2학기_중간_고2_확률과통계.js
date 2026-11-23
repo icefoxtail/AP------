@@ -658,7 +658,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "a는 −1부터 2까지의 넓이이고 b는 0부터 2까지의 넓이이므로 −1부터 0까지의 넓이는 a−b이다(그림의 c). 0을 중심으로 한 대칭성으로 0부터 1까지의 넓이도 c=a−b이다. 오른쪽 절반 1/2에서 이 넓이를 빼면 P(Z≥1)(그림의 ?)=1/2−a+b이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

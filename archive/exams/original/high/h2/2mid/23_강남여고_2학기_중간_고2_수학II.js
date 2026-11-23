@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "기울기 1인 직선의 한 점 H가 속이 빈 점으로 표시된 그래프이며 H의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "x≠1에서 (x-1)(x+3)/(x-1)=x+3이므로 그래프는 직선 y=x+3에서 x=1인 점 H(1,4)만 빠진(속이 빈) 모양이다. x가 1에 가까워질 때 값은 4에 가까워지므로 극한은 4이다. x=1에서의 함숫값은 없지만 극한은 존재한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

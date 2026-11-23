@@ -261,7 +261,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "기울기가 3으로 같은 두 평행한 직선과 그 사이의 띠 모양 영역을 나타낸 그래프이다.",
+    "solutionImageCaption": "그림의 아래 직선은 y=3x+2, 위 직선은 y=3x+5이고 x>0에서 f(x)는 두 직선 사이에 있다. 각 변을 x로 나누면 3+2/x < f(x)/x < 3+5/x이다. x→∞일 때 양 끝의 3+2/x와 3+5/x가 모두 3에 수렴하므로 f(x)/x도 3에 수렴한다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

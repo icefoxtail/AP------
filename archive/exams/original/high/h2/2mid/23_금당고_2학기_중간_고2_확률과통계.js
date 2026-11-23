@@ -521,7 +521,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "6과 7은 A와 B에 모두 속하고 8은 세 집합 밖에 있다. 나머지 원소 1부터 5는 각각 A만, B만, C만 중 정확히 한 곳에 속하므로 3⁵=243가지이다. 이 중 C가 공집합이 되는 2⁵=32가지와 A=B가 되는 1가지를 빼면 243−32−1=210이다. 따라서 구하는 값은 210이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

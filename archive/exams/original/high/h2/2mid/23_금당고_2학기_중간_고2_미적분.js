@@ -292,7 +292,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
     "subUnit": "지수함수와 로그함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q9-solution.svg",
+    "solutionImageAlt": "점 P에서 왼쪽 직선과 오른쪽 지수곡선이 이어지고 P에서 두 조각에 접하는 점선 직선이 함께 그려진 그래프이다.",
+    "solutionImageCaption": "x=0에서 연속이므로 e의 b제곱이 2이므로 b=ln2이다. 미분가능하려면 좌미분계수 a와 우미분계수 e의 b제곱=2가 같아야 하므로 a=2이다. 그림은 x≥0의 곡선 y=2eˣ(=f(x))와 점 P(0,2)를 지나는 직선 y=2x+2를 보인다. x<0에서는 f가 이 직선이고, 직선은 P에서 곡선에 접하므로 두 조각이 P에서 매끄럽게 이어진다. ab=2ln2이므로 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -360,7 +364,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-02-SERIES",
     "subUnit": "급수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q11-solution.svg",
+    "solutionImageAlt": "한 변이 1인 정사각형 OA₁B₁C₁과 그 안의 사분원, 삼각형 OA₁C₁에 내접하는 한 변이 1/2인 정사각형 OA₂B₂C₂와 그 안의 작은 사분원이 그려져 있다. 각 사분원에서 삼각형을 뺀 활꼴이 S₁과 S₂로 칠해져 있다.",
+    "solutionImageCaption": "S₁은 반지름 1인 사분원에서 직각이등변삼각형 OA₁C₁을 뺀 부분으로 S₁=π/4-1/2이다. 내접하는 정사각형 OA₂B₂C₂의 한 변은 s이고 B₂(s,s)가 빗변 x+y=1 위에 있으므로 s=1/2이다. 그림처럼 변의 길이가 1/2배, 넓이가 1/4배로 되풀이되므로 S₂는 S₁의 1/4이다. 공비 1/4인 등비급수의 합은 (π/4-1/2)/(1-1/4)=(π-2)/3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -569,7 +577,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
     "subUnit": "수열의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q17-solution.svg",
+    "solutionImageAlt": "x=-2와 x=2에서 끊어지는 세 조각의 그래프와 원점을 지나는 완만한 직선이 그려져 있고, 직선이 두 끊어지는 지점의 닫힌 점 P, Q와 원점 O를 지난다.",
+    "solutionImageCaption": "|x|>2에서 f(x)=3x/2, |x|<2에서 f(x)=-x이고 f(2)=1/2, f(-2)=-1/2이다. 직선 y=x/4와의 교점이 f(k)=k/4의 해이다. |x|>2에서는 3x/2=x/4에서 x=0이라 교점이 없고, |x|<2에서 -x=x/4는 x=0이며, x=±2에서는 점 Q(2,1/2), P(-2,-1/2)가 직선 위에 있다. 따라서 k=-2, 0, 2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

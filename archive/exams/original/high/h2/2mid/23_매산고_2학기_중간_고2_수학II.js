@@ -348,7 +348,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "x=1과 x=2에서 끊어지는 세 조각 포물선으로 된 곱함수의 그래프이며 두 경계에서 좌극한과 함숫값을 나타내는 점 A, B, C, D가 표시되어 있다.",
+    "solutionImageCaption": "그림은 y=f(x)g(x)이다. x<1에서 3x(x+1), 1≤x≤2에서 2x(x-1), x>2에서 (x+2)(x+1)이다. x=1에서 좌극한은 6, 함숫값과 우극한은 0(점 B)이라 불연속이다. x=2에서 좌극한과 함숫값은 4(점 C), 우극한은 12라 불연속이다. 그 밖의 점에서는 연속이므로 불연속인 점은 2개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -590,7 +594,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "x=1에서 끊어지는 두 직선 조각의 그래프이며 x=1의 두 점 P, Q, x축과 만나는 점 Z, x=4의 점 R이 표시되어 있다.",
+    "solutionImageCaption": "f는 x=1에서 함숫값 3(점 P)이고 우극한은 0인 불연속이며 f(y)=0의 해는 y=-2(점 Z)뿐이다. g(x)=f(x-a){f(x)-b}가 연속이려면 x=1에서 f(x-a)=0이어야 하므로 1-a=-2, a=3이다. 그러면 f(x-3)의 불연속점 x=4에서 f(4)-b=0이어야 하고 점 R(4,2)에서 f(4)=2이므로 b=2이다. 따라서 10a+b=32이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

@@ -219,7 +219,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 15에서 12부터 21까지, 오른쪽 곡선은 평균 24에서 14부터 29까지가 칠해져 있다.",
+    "solutionImageCaption": "X는 N(15, 3²)이므로 12는 z=−1, 21은 z=2이다. Y는 N(24, 5²)이고 29는 z=1이다. 같은 넓이가 되려면 구간이 평균을 기준으로 왼쪽 2, 오른쪽 1이어야 하므로 왼쪽 끝은 z=−2이다. (a−24)/5=−2에서 a=14이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -343,7 +347,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "정규분포 곡선의 중심 위치가 평균이므로 왼쪽부터 A, B, C이면 평균은 A<B<C 순이다. 곡선이 좁고 높을수록 표준편차가 작으므로 가장 좁은 B가 가장 작고 가장 넓은 C가 가장 크다. 따라서 표준편차는 B<A<C 순이다. 그림은 이 관계를 보이는 예이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -437,7 +445,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표준화하면 a=P(Z≥−1), b=P(Z≥0.5), c=P(Z≥2)이다. 한 표준정규분포 곡선에서 오른쪽 꼬리는 시작점이 왼쪽일수록 넓다. 주황 부분이 c, 초록과 주황이 b, 파랑과 초록과 주황이 a이다. 따라서 a>b>c이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -529,7 +541,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "240번째 학생은 위에서 240/800=0.3의 비율이므로 그 몸무게 이상의 확률이 0.3이다. 평균 0과 z 사이 넓이가 0.20이면 오른쪽 꼬리가 0.5−0.20=0.30이므로 경계는 z=0.52이다. 몸무게는 65+0.52×5=67.6kg이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

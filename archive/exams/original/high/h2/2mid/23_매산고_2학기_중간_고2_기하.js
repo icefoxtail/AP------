@@ -235,7 +235,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q7-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 오른쪽 초점 F, 왼쪽 초점 F′가 있다. F를 지나는 세로선의 위아래 끝점 A, B와 F′를 잇는 두 선분이 그려져 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "예: 주축의 길이 6인 쌍곡선 x²/9−y²/12=1의 그림이다. F를 지나는 직선과 만나는 점 A, B는 F의 양쪽에 있다. 쌍곡선의 정의로 AF′−AF=6, BF′−BF=6이고 두 식을 더하면 (AF′+BF′)−(AF+BF)=12이다. AF′+BF′=20이므로 AF+BF=8이고 F가 선분 AB 위에 있으므로 AB=AF+BF=8이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -301,7 +305,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q9-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 꼭짓점 A, B를 잇는 직선, 이 직선과 평행한 두 접선이 있다. 아래쪽 접선의 접점 P와 삼각형 ABP가 색칠되어 있고, 위쪽 접점 Q가 표시되어 있다.",
+    "solutionImageCaption": "밑변 AB가 고정되어 있으므로 삼각형 ABP의 넓이는 P에서 직선 AB까지의 거리가 클 때 최대이다. 직선 AB는 y=−(3/5)x+3이고, 기울기 −3/5인 타원의 접선은 y=−(3/5)x±3√2이다. 직선 AB에서 더 먼 접선은 y=−(3/5)x−3√2이고 접점이 P이다. 점 Q는 P와 중심 O에 대하여 대칭이며 다른 접선의 접점이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -478,7 +486,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q14-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 두 점선 점근선이 있다. 오른쪽 가지의 꼭짓점 P에서 두 점근선에 내린 수선의 발 Q, R와 사각형 OQPR이 색칠되어 있고 대각선 OP의 길이 4가 표시되어 있다.",
+    "solutionImageCaption": "x²/16−y²/9=1에서 주축의 길이는 2a=8이고 점근선은 y=±(3/4)x로 기울기의 곱은 −9/16이다. 예: P가 꼭짓점 (4, 0)이면 수선의 발은 Q(64/25, 48/25), R(64/25, −48/25)이고 대각선 OP=4, QR=96/25가 서로 수직이어서 넓이는 (1/2)×4×96/25=192/25이다. 이는 144/25가 아니므로 ㄷ은 거짓이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -599,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-07-VECTOR_BASIC",
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q18-solution.svg",
+    "solutionImageAlt": "B에서 직각을 이루는 직각삼각형 ABC가 있고 빗변 AC 위에 점 P가 있다. 선분 BP는 점선이며 AB=3, BC=4, AP=3, PC=2와 각 θ가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형 ABC에서 AC=5이고 ∠A=θ이면 sinθ=BC/AC=4/5이다. 점 P가 AC 위에 있고 AP=AB=3이므로 ∠PAB=θ이다. 삼각형 ABP의 넓이는 S=(1/2)×3×3×sinθ=(1/2)×3×3×4/5=18/5이다. 따라서 5S=18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

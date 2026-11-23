@@ -322,7 +322,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "점 A에서 아래로 내려가 점 B를 지나 점 C까지 올라가고 점 D로 내려가는 꺾은선과, 대각선 직선 및 위로 열린 포물선이 함께 그려진 그래프이다.",
+    "solutionImageCaption": "예: 네 점 A, B, C, D를 꺾은선으로 이은 연속함수이다. f(x)=0은 부호가 바뀌는 (-1,0), (0,1)에서 근이 두 개(ㄱ 참)이다. 직선 y=x와는 구간 (-1,0), (0,1), (1,2)에서 한 번씩 만나 세 근(ㄴ 참)이다. 포물선 y=x²(q, 꼭짓점 O(0,0))와는 f-x²의 부호가 0, 1, 2에서 -, +, -이므로 두 구간에서만 근이 보장되고 세 개는 보장되지 않는다(ㄷ 거짓). 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -560,7 +564,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 점 P와 점 Q에서 꺾이는 V자에 가까운 꺾은선이, 둘째 패널에는 점 R, P, Q에서 꺾이는 꺾은선이 그려져 있다.",
+    "solutionImageCaption": "g는 x≥0에서 |3x-9|이고 x<0에서 (3/2)|3(x+a)-9|이다. 두 패널은 g가 x=0에서 연속인 a=1, 5의 경우이고 g의 꺾이는 점에서 h(x)g(x)가 미분가능하려면 h가 그 점에서 0이어야 한다. a=1이면 g는 P(0,9)와 Q(3,0)에서 꺾여 h(0)=h(3)=0이고 h(x)=x(x-3)(x+2)로 h(1)=-6이다. a=5이면 R(-2,0), P, Q에서 꺾여 같은 h를 쓰며 h(5)=70이다. 따라서 곱은 -420이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -608,7 +616,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "가운데에서 위에서 아래로 내려가는 파란 곡선과 양 끝에서 이어지는 두 주황색 곡선이 점 P와 점 Q에서 끊기지 않고 이어진 그래프이다.",
+    "solutionImageCaption": "A={x|-2/3≤x≤2}이고 a=-2일 때의 g이다. A 안에서는 f(x)=-2x/(x+2)(파란색), 밖에서는 (x+2)/(-2x)(주황색)이다. 경계 x=2에서 두 식이 모두 -1이고 x=-2/3에서 모두 1이어서 점 P(-2/3,1), Q(2,-1)에서 끊기지 않고 이어진다. 연속 조건 4a²=(2-a)², 4a²=(2+3a)²를 모두 만족하는 값은 a=-2뿐이다. 따라서 답은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
