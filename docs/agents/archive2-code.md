@@ -536,3 +536,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **화면 스크립트가 사이드카 레코드의 새 필드를 읽기 시작하면** 그 필드를 `BROWSER_RECORD_FIELDS`에 더한다. 안 더하면 릴리스에서만 값이 비어 보인다. `tests/question-metadata-browser.test.js`가 `question-meta.js`의 병합 목록, `unit-past-exams.js` `joinApprovedMetadata`의 `meta.<필드>` 읽기, `validateMetaFoundationSelection`, `meta-foundation-runtime.js`의 base 읽기를 사본 목록과 대조하고, `_archiveMetadata`(병합된 문항에 붙는 레코드 전체)를 읽는 스크립트가 늘면 실패한다.
 - **`question-meta.js`는 생성 파일이다.** 고칠 때 `archive/tools/intelligence/build-approved-question-metadata-v1.mjs`의 같은 부분도 같이 고친다(테스트가 두 곳이 같은지 본다).
 - **`?v=`:** `engine.html`·`mixed_engine.html`(스탬프 제외 9개)이 부르는 `question-meta.js?v=`·`output-metadata-loader.js?v=`는 손으로 올려야 사본을 받는다. 올리기 전에는 그 두 창은 예전처럼 전체 파일을 받는다(그 창들은 반 출제 등록 때만 이 파일을 읽는다). 단원별 기출·mixer는 스탬프 대상이라 자동이다.
+
+## 학생 화면에서 그림 눌러서 크게 보기 (2026-11-24 원장님 결정)
+
+- 문제·해설 그림은 2단 시험지 배치에 맞춰 단 폭의 일부로 줄여 그리므로 휴대폰·패드에서 그림 속 글자가 작다. 그래서 그림 속 글자 크기를 렌더에서 더 키우지 않고, 학생이 그림을 눌러 크게 본다(원장님: "애들이 패드나 핸드폰에서 그림을 확대할 수 있으니까").
+- 구현은 공용 `archive/figure-zoom.js` + `figure-zoom.css` 하나다. **학생 화면에서만 켜진다**: 주소에 `studentReview=1`(포털이 여는 `engine.html`·`mixed_engine.html`, 유사문제 풀어보기·원본 열기 포함) 또는 `/apmath/student/` 안(포털 자습 화면 `.ss-card`). 판정은 `archive-asset-base.js`의 `isStudentPage`와 같은 두 신호다. 선생님의 출력·미리보기·인쇄·PDF 주소에는 아무것도 붙지 않는다. 오답 출력 엔진(`apmath/wrong_print_engine.html`)에는 붙이지 않는다(선생님 인쇄용, 같은 파일이 학생 `studentReview=1`로도 열리지만 이번 범위가 아니다).
+- "크게" 표시(돋보기 단추)는 그림 옆 DOM이 아니라 `body` 끝의 층(`.ap-fz-layer`) 하나에 쪽 좌표로 모아 둔다. 쪽 배치 측정과 래스터 인쇄(쪽별 캡처)에 닿지 않고, `@media print`에서 층 전체가 숨는다. 그림 요소 자체는 바꾸지 않는다(클릭은 문서 위임). 숨은 측정 칸(`#staging`)의 그림에는 표시가 없다(`#print-area` 안만 본다).
+- 열면 화면을 덮는 `role="dialog"` 층에 같은 src(SVG는 벡터 그대로, 래스터는 원본 2배까지) 또는 인라인 svg 복제를 칸에 꽉 차게 띄운다. 두 손가락 확대·끌기는 브라우저 기본(`touch-action: pan-x pan-y pinch-zoom`)이다. 닫기: 단추·그림 바깥·Esc·뒤로 가기(`pushState` 한 칸을 쓰고 `popstate`를 캡처 단계에서 받아 학생 포털의 화면 복원에는 넘기지 않는다). 열려 있는 동안 `html.ap-fz-lock`으로 뒤 스크롤을 잠그고, 닫으면 스크롤 위치와 초점(열었던 표시)을 되돌린다.
+- `?v=`: `engine.html`·`mixed_engine.html`은 CI 스탬프 제외 페이지라 `figure-zoom.js`·`.css`의 `?v=`를 손으로 올리고 두 곳을 같게 둔다(학생 포털 `apmath/student/index.html`도 스탬프 제외라 같은 값). 지키는 테스트: `tests/figure-zoom.test.js`(실제 Chrome 부분은 Chrome이 없으면 NOT_RUN).
