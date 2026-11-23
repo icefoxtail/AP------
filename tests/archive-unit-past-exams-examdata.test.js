@@ -132,14 +132,14 @@ test('restorePaperQuestions: 문항 id가 Q01, 12, 7 꼴이어도 sourceQuestion
       { sourceFile: 'p/q01.js', sourceQuestionNo: 7, sourceOrdinal: 3, mappedUnitKey: 'u1' },
     ]
   };
-  const restored = await restorer.restore(paper);
+  const restored = (await restorer.restore(paper)).questions;
   assert.equal(restored.length, 3);
   assert.equal(restored[0].question, '1번 본문');
   assert.equal(restored[1].question, '12번 본문');
   assert.equal(restored[2].question, '7번 본문');
 });
 
-test('restorePaperQuestions: 일치하는 번호가 없으면 다른 순서 문항을 추측하지 않고 예외를 던진다', async () => {
+test('restorePaperQuestions: 복원된 문항이 하나도 없으면 다른 순서 문항을 추측하지 않고 예외를 던진다', async () => {
   const restorer = createRestorer({
     'p/missing.js': 'window.examData = { questions: [{ id: "Q02", question: "2번 본문" }] };'
   });
@@ -150,4 +150,61 @@ test('restorePaperQuestions: 일치하는 번호가 없으면 다른 순서 문�
     () => restorer.restore(paper),
     /p\/missing\.js의 1번 문항을 찾지 못했습니다/,
   );
+});
+
+test('restorePaperQuestions: 번호 칸이 number인 시험지도 sourceQuestionNo로 복원한다', async () => {
+  const restorer = createRestorer({
+    'p/number.js': 'window.examData = { questions: [{ number: 1, question: "1번 본문" }, { number: 2, question: "2번 본문" }] };'
+  });
+  const paper = { records: [
+    { sourceFile: 'p/number.js', id: 2, sourceQuestionNo: 2, sourceOrdinal: 2 },
+    { sourceFile: 'p/number.js', id: 1, sourceQuestionNo: 1, sourceOrdinal: 1 },
+  ] };
+  const restored = await restorer.restore(paper);
+  assert.deepEqual(restored.questions.map(question => question.question), ['2번 본문', '1번 본문']);
+  assert.equal(restored.missing.length, 0);
+});
+
+test('restorePaperQuestions: 서술형 s01은 같은 번호의 객관식 q01이 아니라 자기 문항으로 복원된다', async () => {
+  const restorer = createRestorer({
+    'p/essay.js': 'window.questions = [{ id: "q01", question: "객관식 1" }, { id: "q02", question: "객관식 2" }, { id: "s01", question: "서술형 1" }];'
+  });
+  const paper = { records: [
+    { sourceFile: 'p/essay.js', id: 'q01', sourceQuestionNo: 1, sourceOrdinal: 1 },
+    { sourceFile: 'p/essay.js', id: 's01', sourceQuestionNo: 1, sourceOrdinal: 3 },
+  ] };
+  const restored = await restorer.restore(paper);
+  assert.deepEqual(restored.questions.map(question => question.question), ['객관식 1', '서술형 1']);
+  assert.equal(restored.records.length, 2);
+});
+
+test('restorePaperQuestions: id 글자가 안 맞고 번호가 겹치면 색인 자리가 맞을 때만 잇고 아니면 추측하지 않는다', async () => {
+  const restorer = createRestorer({
+    'p/dup.js': 'window.questions = [{ id: "a1", question: "첫째" }, { id: "b1", question: "둘째" }];'
+  });
+  const paper = { records: [
+    { sourceFile: 'p/dup.js', id: 'x1', sourceQuestionNo: 1, sourceOrdinal: 2 },
+    { sourceFile: 'p/dup.js', id: 'x1', sourceQuestionNo: 1, sourceOrdinal: 9 },
+  ] };
+  const restored = await restorer.restore(paper);
+  assert.deepEqual(restored.questions.map(question => question.question), ['둘째']);
+  assert.equal(restored.missing.length, 1);
+});
+
+test('restorePaperQuestions: 한 문항을 못 찾아도 나머지는 복원하고 못 찾은 문항을 알려 준다', async () => {
+  const restorer = createRestorer({
+    'p/partial.js': 'window.questions = [{ id: "Q01", question: "1번" }, { id: "Q03", question: "3번" }];'
+  });
+  const paper = { records: [
+    { sourceFile: 'p/partial.js', sourceQuestionNo: 1, sourceOrdinal: 1 },
+    { sourceFile: 'p/partial.js', sourceQuestionNo: 2, sourceOrdinal: 2 },
+    { sourceFile: 'p/partial.js', sourceQuestionNo: 3, sourceOrdinal: 3 },
+  ] };
+  const restored = await restorer.restore(paper);
+  assert.deepEqual(restored.questions.map(question => question.question), ['1번', '3번']);
+  assert.deepEqual(restored.records.map(record => record.sourceQuestionNo), [1, 3]);
+  assert.equal(restored.missing.length, 1);
+  assert.equal(restored.missing[0].file, 'p/partial.js');
+  assert.equal(restored.missing[0].questionNo, 2);
+  assert.equal(restored.missing[0].code, 'QUESTION_NOT_FOUND');
 });
