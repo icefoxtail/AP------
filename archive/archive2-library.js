@@ -138,7 +138,8 @@
   }
 
   function detailMarkup(paper, envelope, mode = "exam") {
-    const title = paper.library_display_name || paper.title || paper.snapshot.meta.title || "저장한 시험지";
+    const shown = (text) => globalThis.ExamDisplayTitle?.withoutContentMark?.(text) ?? text; // 보이는 글자만(저장 이름은 그대로)
+    const title = shown(paper.library_display_name || paper.title || paper.snapshot.meta.title || "저장한 시험지");
     const status = paper.library_status || "ACTIVE";
     if (status === "TRASHED") {
       const restore = paper.legacy_tombstone
@@ -259,7 +260,8 @@
 
   function paperRowMarkup(paper, history) {
     const status = paper.library_status || "ACTIVE";
-    const title = paper.library_display_name || paper.title || "저장한 시험지";
+    const shown = (text) => globalThis.ExamDisplayTitle?.withoutContentMark?.(text) ?? text; // 보이는 글자만(저장 이름은 그대로)
+    const title = shown(paper.library_display_name || paper.title || "저장한 시험지");
     const id = esc(paper.id);
     const statusAction = status === "ACTIVE"
       ? `<button type="button" data-library-action="library-status" data-paper-id="${id}" data-status="ARCHIVED">보관</button>`

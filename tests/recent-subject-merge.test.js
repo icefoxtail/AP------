@@ -57,8 +57,7 @@ test('합쳐진 줄을 고르면 두 값의 내역이 모두 걸린다', () => {
   for (const selected of ['raw:기출c', 'raw:기출']) {
     h.workspace.state.recentFilters.subject = selected;
     const markup = h.workspace.recentAssignmentMarkup();
-    assert.ok(markup.includes('기출c 시험'), `${selected}: 기출c 내역`);
-    assert.ok(markup.includes('기출 시험'), `${selected}: 기출 내역`);
+    assert.equal(markup.split('<h3 class="history-title">기출 시험</h3>').length - 1, 2, `${selected}: 기출c·기출 두 내역(제목은 둘 다 "기출 시험"으로 보인다)`);
     assert.ok(!markup.includes('다른 과목 시험'), `${selected}: 다른 과목은 걸러진다`);
   }
   h.workspace.state.recentFilters.subject = 'raw:공통수학1';
@@ -75,4 +74,18 @@ test('요청은 고른 값을 그대로 보내고 두 값의 과목어를 함께
   assert.equal(params.get('subject'), 'raw:기출c', '요청의 subject 값은 바뀌지 않는다');
   assert.deepEqual(Array.from(params.getAll('subject_term')).sort(), ['기출', '기출c']);
   assert.equal(h.workspace.state.recentFilters.subject, 'raw:기출c', '저장된 값도 그대로다');
+});
+
+test('줄 제목은 "기출c"가 "기출"로 보이고, 제목 검색은 원문과 보이는 이름 둘 다에 걸린다(저장값은 그대로)', () => {
+  const h = setup();
+  const markup = h.workspace.recentAssignmentMarkup();
+  assert.ok(!/기출c/.test(markup), '화면에는 기출c가 남지 않는다');
+  assert.ok(markup.includes('<h3 class="history-title">기출 시험</h3>'));
+  assert.equal(h.workspace.state.recentRows[0].title, '기출c 시험', '저장된 제목은 그대로');
+  for (const query of ['기출c', '기출 시험']) {
+    h.workspace.state.recentFilters.query = query;
+    const found = h.workspace.recentAssignmentMarkup();
+    assert.ok(found.includes('<h3 class="history-title">기출 시험</h3>'), `검색 "${query}"`);
+    assert.ok(!found.includes('다른 과목 시험'), `검색 "${query}": 다른 줄은 걸러진다`);
+  }
 });
