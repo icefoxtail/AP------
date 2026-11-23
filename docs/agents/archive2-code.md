@@ -288,6 +288,15 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 서버·`archive/index.html`·`archive2-entry.js`는 바꾸지 않았다. `unit-past-exams.html`이 `archive2-assign.css/js`를 읽고(`workspace.html`과 같은 `?v=`) 테스트는 `tests/archive2-assign-unit.test.js`다.
 - **패널 버튼 모양은 패널이 스스로 갖는다**: 패널은 작업공간과 단원별 기출 두 화면에서 열리는데 단원 페이지는 `archive2.css`를 읽지 않아 버튼·입력이 브라우저 기본 회색으로 나왔다. `archive2-assign.css`가 `:where(dialog.assign-panel)` 범위로 작업공간의 최종 계산값과 같은 기본 모양(button·primary·small·aria-pressed·input·label·링크형 버튼)을 갖고, 단원 페이지의 `.unit-page button { font: inherit }`가 글자 크기·굵기를 덮지 않게 버튼 글자만 한 단계 높여 적는다. 두 화면에서 같은 패널의 버튼·입력 20곳의 계산 스타일(배경·글자색·테두리·둥근 정도·높이·글꼴)이 같음을 확인했다. `archive2.css` 전체를 단원 페이지에 더하지 않는다(단원 페이지 다른 모양이 바뀐다).
 
+## 단원별 기출: 이미 준 문항 빼고 뽑기 (2026-11-23 원장 요청)
+
+- **왜**: 중1 학생에게 같은 단원으로 20문항을 준 뒤 "하나 더 풀고 싶어요" 하면 앞서 준 문항이 아닌 다른 문항이 나와야 한다. 체크 하나로 되게 한다.
+- **화면**: 오른쪽 패널 "대상 (선택)"에서 반 → 학생(또는 반 전체)을 고르면 체크 "이 학생에게(이 반에) 이미 준 문항 빼기"가 기본 켜짐으로 나온다. 대상을 안 고르면 이 기능은 없는 것과 같다(결과·권 키가 이전과 같다). 결과 줄에 "이미 준 문항 n개 제외", 후보가 모자라면 빈 자리 대신 이미 준 문항으로 채우고 "후보가 모자라 이미 준 문항 m개 포함"을 보인다. 권 목록에는 "다시 뽑기"(지금 문제지를 이미 뽑은 것으로 치고 다른 문항으로 다시 뽑음)가 있다. 대상은 같은 탭(sessionStorage `archive2.unitGiven.target.v1`)에서 새로고침해도 유지된다.
+- **이미 준 문항의 출처**: 서버 `GET /class-exam-assignments/given-questions?student_ids=a,b` 또는 `?class_id=…`(선택 `&from=YYYY-MM-DD`, 읽기 전용, 교사 인증·반/학생 권한은 기존 규칙). 학생 기준은 출제 때 받는 사람으로 적힌 출제에서 제외 학생과 취소된 출제를 뺀 것이고, 반 기준은 그 반의 취소되지 않은 출제 전부다. UID는 `class_exam_assignment_questions`의 확인된 UID와 출제본 `mixed_payload_json`의 `questions[].questionUid`를 합친다(`worker/helpers/given-question-uids.js`). **단원별 기출 출제본은 서버가 원본과 대조하지 않아 문항 다리의 UID가 비어 있으므로(`UNRESOLVED`) 기존 `question-history`로는 이 출제를 볼 수 없다.** 그래서 본문 UID를 읽는 새 조회를 만들었다. 출제 건수는 최신 500건까지만 본다.
+- **한계**: 출제로 등록하지 않고 인쇄만 한 문제지는 서버에 기록이 없다. 이 화면에서 인쇄했거나 "다시 뽑기"를 누른 문항은 이번 접속(탭) 동안만 따로 기억해 뺀다(`createSessionMemory`, UID 목록만 저장). 문항을 알 수 없는 출제(본문이 없거나 깨진 출제)는 건수만 알리고 뺄 수 없다. 원본 ↔ 유사 짝은 빼지 않는다(단원별 기출은 원본 문항만 뽑고 유사 UID와의 대응표가 없다). 조회가 실패하면(로그인 만료·옛 서버 404·시간 초과) 뽑기는 막지 않고 제외 없이 진행하며 한 줄로 알린다.
+- **코드**: 선택은 `UnitPastExamsCore.buildSelectionPapers`의 옵션 `givenUids`(Set)다. 칸마다 N문항이면 새 문항 먼저·모자란 만큼만 이미 준 문항, "있는 만큼 전부"는 이미 준 문항을 빼고 전부 이미 준 문항이면 그대로 넣는다. 결과의 `given: { excluded, overlap, allGiven }`과 권의 `givenCount`로 화면이 알린다. 조회·기억은 화면에 묶이지 않는 `archive/archive2-given-questions.js`(`fetchGiven`·`createSessionMemory`·`classOptions`)이고, **문제지 만들기에도 이 모듈의 `fetchGiven(request, { kind, studentId|classId })`를 그대로 붙이면 된다**(그 화면은 아직 연결하지 않았다). 테스트: `tests/archive-unit-given-exclude.test.js`.
+- 배포 순서: 새 Worker 조회가 없는 옛 서버(404)에서는 제외 없이 뽑고 안내한다. 새 화면 + 새 Worker가 함께 있어야 제외가 된다.
+
 ## 출제 내역·만들던 문제지에서 바로 지우기 (2026-11-11 사용자 요청)
 
 - **출제 내역 줄의 `출제 취소`**: 잘못 낸 건·테스트 건을 APMS로 가지 않고 그 자리에서 멈춘다. 서버 `POST /class-exam-assignments/:id/cancel`을 부르고, 확인 대화상자를 거친다(되돌리는 경로가 없다).
