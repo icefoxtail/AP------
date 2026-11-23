@@ -1672,11 +1672,15 @@ function normalSpec(m,ctx){
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
-export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
+// label-room MARGIN for a chart whose labels end a few px past the bottom or right edge: ctx.roomGrow {right, bottom} (px) makes the frame that much larger, nothing in it moves. Absent for a figure that fits.
+const grown=(size,ctx)=>ctx?.roomGrow?{width:size.width+(ctx.roomGrow.right??0),height:size.height+(ctx.roomGrow.bottom??0)}:size;
+export const statChartSize=(model,ctx)=>({...grown(SPEC_BY_KIND[model.kind](model,ctx).size,ctx)});
+export const STAT_SAFE=SAFE;
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
   if(objectSha(solveStatChart(plan.chart,{compact:model?.compact===true}))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
   const spec=SPEC_BY_KIND[model.kind](model,ctx);
+  if(ctx?.roomGrow)spec.size=grown(spec.size,ctx);
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
@@ -1998,7 +2002,7 @@ function slideBranchLabels(spec,placed,branchItems,lines){
 /** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
 // room / roomPad / degrade (label-room.mjs): only a figure that already failed with a room code is composed again with them. room 'LEADER' leads the normal-curve area labels out, room 'MARGIN' sizes the rows below the
 // axis by the real label heights and roomPad (px) widens the margins; degrade (a collector) turns the final geometry checks into a record and the audits into notes, so the best place is drawn (status BEST_EFFORT, never bound).
-export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize,rowScale:startScale=1,room,roomPad,degrade}={}){
+export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize,rowScale:startScale=1,room,roomPad,roomGrow,degrade}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
   const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,rowScale:state.rowScale??startScale,svg:status==='COMPOSED'||status==='BEST_EFFORT'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
@@ -2010,7 +2014,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     let usedScale=startScale;
     for(const rowScale of TREE_ROW_SCALES.filter(scale=>scale>=startScale)){
       usedScale=rowScale;
-      try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx,rowScale,...(room?{room}:{}),...(roomPad?{roomPad}:{})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+      try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx,rowScale,...(room?{room}:{}),...(roomPad?{roomPad}:{}),...(roomGrow?{roomGrow}:{})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
       if(minSize)spec.size={width:Math.max(spec.size.width,minSize.width),height:Math.max(spec.size.height,minSize.height)};   // the size the Archive measured (never smaller than the labels need)
       lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
       const typeset=typesetter();placed=[];

@@ -18,7 +18,7 @@ import * as scf from './stat-chart-v1.mjs';
 import * as ell from './ellipse-figure-v1.mjs';
 import * as cfv from './container-fill-v1.mjs';
 import * as lpf from './lattice-path-v1.mjs';
-import {runRoomLadder,degradeCollector,bestEffortRecord} from './label-room.mjs';
+import {runRoomLadder,degradeCollector,bestEffortRecord,marginNeeded} from './label-room.mjs';
 
 // ---- measure/compose policies ----------------------------------------------------------------------------------------------
 // c: {authored, model, identity, st(stage), measure(size, suffix), measureRaw(size, suffix), compose(extra), row, clip}
@@ -72,7 +72,7 @@ const ROOM_PADS = [0, 12, 28];
 const statRoom = {
   codes: ['STAT_LABEL_OUT_OF_BOUNDS', 'STAT_LABELS_TOO_CLOSE', 'STAT_NORMAL_AREA_LABEL_NO_ROOM', 'STAT_NORMAL_CURVE_NAME_NO_ROOM', 'STAT_BRANCH_LABEL_NO_ROOM', 'STAT_VALUE_LABEL_NO_ROOM', 'STAT_DOT_DEVIATION_NO_ROOM'],
   steps: ['LEADER', 'MARGIN'],
-  async apply(step, c) {
+  async apply(step, c, first) {
     const kind = c.model.kind;
     if (step === 'LEADER') return kind === 'NORMAL_CURVE' && c.model.shades?.some(s => s.label != null) ? {...await statSettle(c, {room: 'LEADER'}, '-roomLEADER'), target: 'area-labels'} : null;
     if (step === 'MARGIN' && (kind === 'NORMAL_CURVE' || kind === 'TREE')) {
@@ -80,6 +80,21 @@ const statRoom = {
       for (const pad of kind === 'TREE' ? ROOM_PADS.slice(1) : ROOM_PADS) {
         out = await statSettle(c, {room: 'MARGIN', ...(pad ? {roomPad: pad} : {})}, `-roomMARGIN${pad}`);
         if (out.composed.status === 'COMPOSED') return {...out, target: {pad}};
+      }
+      return out;
+    }
+    if (step === 'MARGIN') {
+      // any other chart (histogram class sums, polygons ...): a label that ends a few px past the bottom or right edge gets that much more frame, with a little to spare; the frame grows, nothing in it moves.
+      // A label past the top or left edge would need everything shifted, so that is not tried here.
+      const d = first.composed.detail;
+      if (first.composed.status !== 'STAT_LABEL_OUT_OF_BOUNDS' || !d?.box || !d?.size) return null;
+      const need = marginNeeded([d.box], d.size, scf.STAT_SAFE);
+      if (need.left > 0 || need.top > 0 || (need.right === 0 && need.bottom === 0)) return null;
+      let out = null;
+      for (const extra of [4, 14, 30]) {
+        const roomGrow = {right: need.right ? need.right + extra : 0, bottom: need.bottom ? need.bottom + extra : 0};
+        out = await statSettle(c, {room: 'MARGIN', roomGrow}, `-roomGROW${extra}`);
+        if (out.composed.status === 'COMPOSED') return {...out, target: {grow: roomGrow}};
       }
       return out;
     }
