@@ -217,6 +217,15 @@
       + cell("권장 시작 수준", reach && next ? `${reach.n} → ${next.n} 연결` : next ? `${next.n} 수준부터` : `${last.n} 이후 확장`);
   }
 
+  // ---- 예상 위치: 맞은 개수 옆의 한 줄. 문항 난이도로 계산한 추정치이므로 "예상"과 "실제 석차가 아님"을 항상 함께 쓴다. 값이 없으면 줄을 만들지 않는다. ----
+  function expectedHtml(report) {
+    const e = report.expected;
+    if (!e) return "";
+    const mean = (Math.round(e.mean * 10) / 10).toFixed(1);
+    return `<span class="expect-main">예상 위치: <b>${esc(e.label)}</b> · ${esc(e.tierLabel)}</span>`
+      + `<span class="expect-note">이 평가지의 예상 평균 ${mean} / ${e.questions}문항 · 문항 난이도로 계산한 예상값이며 실제 석차가 아닙니다.</span>`;
+  }
+
   // ---- 단계별 성취 ----
   function levelsHtml(vm) {
     const cols = vm.groups.map((x) => `${Math.max(x.g.total, 3)}fr`).join(" ");
@@ -408,6 +417,7 @@
       donutSub: `정답률 ${pct(rateOf(t))}%`,
       summary: summaryHtml(vm),
       facts: factsHtml(vm),
+      expect: expectedHtml(report),
       levelsCols: levels.cols,
       levels: levels.html,
       line: line.svg,

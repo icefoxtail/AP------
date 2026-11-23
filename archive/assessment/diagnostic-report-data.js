@@ -126,6 +126,70 @@
     return byNo;
   }
 
+  // ---- 예상 위치(백분위) ----
+  // 이 평가지는 학년·단원마다 문항 구성이 달라 실제 응시 평균을 쌓을 수 없다. 그래서 문항 난이도(1~5)로 "실제 학교 시험 수준의 학생 집단"이 풀었을 때의
+  // 예상 평균을 내부에서 계산하고, 점수 분포를 정규분포로 보아 이 학생의 예상 상위 비율을 낸다. 실제 석차가 아니라 추정치다(화면에 그렇게 쓴다).
+  // 아래 상수는 모두 내부 가정값이며 조정할 수 있다. 값을 바꾸면 이 표만 고친다.
+  const EXPECTED_ASSUMPTIONS = Object.freeze({
+    // 난이도별 예상 정답률 p: 실제 시험 응시 집단의 평균 학생이 그 문항을 맞힐 확률. 난이도 정보가 없는 문항은 noLevel.
+    pByLevel: Object.freeze({ 1: 0.90, 2: 0.78, 3: 0.62, 4: 0.42, 5: 0.25 }),
+    noLevel: 0.60,
+    // 학생 간 실력 차로 총점이 문항 수의 이 비율만큼 퍼진다고 본다: sd = sqrt(Σp(1−p) + (spread × n)²).
+    abilitySpread: 0.18,
+    // 문항이 이보다 적으면 값을 내지 않는다.
+    minQuestions: 5,
+    // 표시값은 이 단위(%)로 반올림하고 [step, 100−step]로 자른다.
+    stepPercent: 1,
+    // 상위 비율을 같은 폭으로 나눈 계급(구간) 수. 10이면 10% 폭.
+    tierCount: 10,
+  });
+
+  // 표준정규 누적분포. erf는 Abramowitz-Stegun 7.1.26 근사(오차 1.5e-7 이하). 외부 라이브러리를 쓰지 않는다.
+  function erf(x) {
+    const sign = x < 0 ? -1 : 1;
+    const a = Math.abs(x);
+    const t = 1 / (1 + 0.3275911 * a);
+    const poly = ((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592;
+    return sign * (1 - poly * t * Math.exp(-a * a));
+  }
+  const normalCdf = (z) => 0.5 * (1 + erf(z / Math.SQRT2));
+
+  // levels: 문항별 난이도 배열(1~5 또는 null), correct: 맞은 문항 수, unchecked: 미응답 문항 수.
+  // 문항이 너무 적거나 미응답이 하나라도 있으면 null(근거 없는 숫자를 내지 않는다).
+  function computeExpectedPosition(levels, correct, unchecked) {
+    const A = EXPECTED_ASSUMPTIONS;
+    const list = Array.isArray(levels) ? levels : [];
+    const n = list.length;
+    if (n < A.minQuestions || unchecked > 0 || !Number.isFinite(correct)) return null;
+    let mean = 0;
+    let variance = 0;
+    let unrated = 0;
+    for (const level of list) {
+      const known = Number.isInteger(level) && level >= 1 && level <= 5;
+      if (!known) unrated += 1;
+      const p = known ? A.pByLevel[level] : A.noLevel;
+      mean += p;
+      variance += p * (1 - p);
+    }
+    const sd = Math.sqrt(variance + (A.abilitySpread * n) ** 2);
+    const z = (correct - mean) / sd;
+    const topRaw = (1 - normalCdf(z)) * 100;
+    const step = A.stepPercent;
+    const topPercent = Math.min(100 - step, Math.max(step, Math.round(topRaw / step) * step));
+    // 학부모가 읽기 쉽게 "상위 N%" 한 방향으로 통일한다. 끝만 닫는다: 상위 1% 이내 / 하위 1% 이내.
+    const edge = topPercent <= step ? "top" : topPercent >= 100 - step ? "bottom" : null;
+    const label = edge === "top" ? `상위 ${step}% 이내` : edge === "bottom" ? `하위 ${step}% 이내` : `상위 약 ${topPercent}%`;
+    // 10% 폭의 계급(구간) 10개: 1구간 = 상위 0~10%, …, 10구간 = 상위 90~100%. 반올림 전 값으로 정한다.
+    const tier = Math.min(A.tierCount, Math.max(1, Math.ceil(topRaw / (100 / A.tierCount))));
+    const tierLabel = `${A.tierCount}구간 중 ${tier}구간`;
+    return {
+      questions: n, score: correct, mean, sd, z,
+      percentileTopRaw: topRaw, percentileTop: topPercent, edge, label, tier, tierLabel,
+      unratedCount: unrated,
+      assumptions: { pByLevel: { ...A.pByLevel }, noLevel: A.noLevel, abilitySpread: A.abilitySpread, minQuestions: A.minQuestions, stepPercent: step },
+    };
+  }
+
   function newGroup(extra) {
     return {
       ...extra,
@@ -304,6 +368,7 @@
       byUnit, bySubUnit, byProblemType, byTemplate, byCrossConcept, byCondition, byFormat,
       levelByUnit,
       wrongList, sequence,
+      expected: computeExpectedPosition(questions.map((q) => q.difficulty), totals.correct, totals.unchecked),
       weakProblemTypes: rankWeak(byProblemType.groups),
       weakTemplates: rankWeak(byTemplate.groups),
       diagnostics,
@@ -419,5 +484,5 @@
     return { phase, total, answered, correct, wrong, unanswered: total - answered, counted: phase === "confirmed" };
   }
 
-  return Object.freeze({ LEVELS, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus, allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus, confirmInput });
+  return Object.freeze({ LEVELS, EXPECTED_ASSUMPTIONS, computeExpectedPosition, normalCdf, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus, allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus, confirmInput });
 });

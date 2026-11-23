@@ -118,6 +118,11 @@ dl, dd, p, h1, h2 { margin: 0; }
 .facts div:first-child { border-left: 0; }
 .facts dt { font-size: 10.5px; color: var(--ink3); }
 .facts dd { font-weight: 700; font-size: 14px; }
+.expect { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin-top: -4px; min-width: 0; }
+.expect[hidden] { display: none; }
+.expect-main { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.expect-main b { font-weight: 700; }
+.expect-note { font-size: 10.5px; color: var(--ink3); line-height: 1.45; overflow-wrap: anywhere; }
 .block { display: flex; flex-direction: column; gap: 10px; }
 .block.tight { gap: 8px; }
 .levels { display: grid; grid-template-columns: var(--cols, 5fr 5fr 10fr 4fr); gap: 14px; }
