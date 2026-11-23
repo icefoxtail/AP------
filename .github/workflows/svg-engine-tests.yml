@@ -39,10 +39,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {suite: py, shard: 1/4}
-          - {suite: py, shard: 2/4}
-          - {suite: py, shard: 3/4}
-          - {suite: py, shard: 4/4}
+          - {suite: py, shard: 1/2}
+          - {suite: py, shard: 2/2}
           - {suite: node, shard: 1/4}
           - {suite: node, shard: 2/4}
           - {suite: node, shard: 3/4}

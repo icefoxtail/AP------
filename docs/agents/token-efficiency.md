@@ -101,6 +101,6 @@
 ## 15. SVG 엔진 테스트는 별도 워크플로로 돈다 (2026-11-23, 비필수)
 
 - `archive/tools/geometry-equation/` 안의 node `*.test.mjs`(tests·ops/svg-m1)와 python `test_*.py` 전부가 `.github/workflows/svg-engine-tests.yml`에서 돈다. 엔진·pipeline-core·이 워크플로가 바뀐 PR과 main push에서만 돌고, 화면·자료 PR에는 돌지 않는다. `test` 샤드(ci.yml)에는 넣지 않는다. 이유: 샤드는 12~18분 걸리고 범위 불일치로 중단되는 문제가 있다.
-- 8개 샤드(node 4 + python 4, `tools/ci/svg-engine-shard-run.mjs`, 분할은 `test-shard.cjs`와 같은 규칙, 시간 힌트 `tools/ci/svg-engine-test-durations.json`)로 나뉘고, `SVG engine tests` 잡이 결과를 모아 작업 요약에 공개한다. 의존성은 로컬과 같은 `production/setup-spikes.mjs`(npm ci·해시 고정 pip·해시 고정 글꼴)로 깔고, Chrome은 버전을 고정한다.
+- 6개 샤드(node 4 + python 2, `tools/ci/svg-engine-shard-run.mjs`, 분할은 `test-shard.cjs`와 같은 규칙, 시간 힌트 `tools/ci/svg-engine-test-durations.json`)로 나뉘고, `SVG engine tests` 잡이 결과를 모아 작업 요약에 공개한다. 의존성은 로컬과 같은 `production/setup-spikes.mjs`(npm ci·해시 고정 pip·해시 고정 글꼴)로 깔고, Chrome은 버전을 고정한다.
 - 필수 체크가 아니다. 순서: 전체 결과 공개 → 깨진 것 수리(격리·skip으로 초록 만들지 않음) → 필수. 필수로 바꾸기 전에 paths 필터로 안 돈 체크가 "대기"로 남아 병합을 막는지 먼저 확인하고, 막으면 항상 도는 얇은 집계 잡 하나만 필수로 둔다.
 - 비필수 기간에 실패한 테스트도 `tests/test-inventory.json`의 `elsewhere`에 둔 채 수리 목록에 올린다(`notRun`으로 되돌리지 않는다).
