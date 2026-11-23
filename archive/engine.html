@@ -542,6 +542,13 @@
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right" style="display:flex; gap:10px; align-items:center;">
+            <div class="qpp-switch" id="qpp-switch" role="radiogroup" aria-label="쪽당 문항 수" hidden>
+                <span class="qpp-switch-label" aria-hidden="true">쪽당</span>
+                <button type="button" class="qpp-opt" role="radio" aria-checked="false" data-qpp="2" aria-label="쪽당 2문항" onclick="chooseArchiveQpp(2)">2</button>
+                <button type="button" class="qpp-opt" role="radio" aria-checked="false" data-qpp="4" aria-label="쪽당 4문항" onclick="chooseArchiveQpp(4)">4</button>
+                <button type="button" class="qpp-opt qpp-opt--minor" role="radio" aria-checked="false" data-qpp="6" aria-label="쪽당 6문항" onclick="chooseArchiveQpp(6)">6</button>
+                <button type="button" class="qpp-opt qpp-opt--minor" role="radio" aria-checked="false" data-qpp="8" aria-label="쪽당 8문항" onclick="chooseArchiveQpp(8)">8</button>
+            </div>
             <span id="qpp-display"></span>
             <div class="print-header-editor-wrap" id="print-header-editor-wrap">
                 <button class="print-header-editor-btn ctrl-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
@@ -1736,6 +1743,46 @@ function readRecentArchiveEngineLaunch() {
     } catch (e) {
         console.warn('[archive-engine] failed to restore recent archive launch:', e);
         return null;
+    }
+}
+
+// 쪽당 문항 수 선택(원본 기출을 data= 주소로 직접 연 화면 전용). 출제·저장본·학생·미리보기·QR 화면에는 만들지 않는다.
+// 기억값은 archive2-entry / workspace-core가 쓰는 같은 저장 키를 갱신해 다음에 원본을 열 때 이어진다.
+const ARCHIVE_ORIGINAL_QPP_KEY = 'APMATH_ARCHIVE2_ORIGINAL_QPP';
+function qppSwitchEligible() {
+    const p = new URLSearchParams(window.location.search);
+    return !!p.get('data') && !isPreviewMode() && p.get('fit') !== 'screen' && p.get('qr') !== '1'
+        && p.get('studentReview') !== '1' && !p.get('assignmentId') && !p.get('originalSnapshot');
+}
+function syncQppSwitch() {
+    const box = document.getElementById('qpp-switch');
+    if (!box) return;
+    box.hidden = !qppSwitchEligible();
+    box.querySelectorAll('[data-qpp]').forEach(button => {
+        const on = Number(button.dataset.qpp) === Number(AppState.qpp);
+        button.classList.toggle('is-active', on);
+        button.setAttribute('aria-checked', String(on));
+    });
+}
+let qppSwitchBusy = false;
+async function chooseArchiveQpp(value) {
+    const qpp = Number(value);
+    if (![2, 4, 6, 8].includes(qpp) || qpp === Number(AppState.qpp) || qppSwitchBusy || !qppSwitchEligible()) return;
+    try { localStorage.setItem(ARCHIVE_ORIGINAL_QPP_KEY, String(qpp)); } catch (e) { /* 기억값 저장 실패는 화면을 막지 않는다 */ }
+    if (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__) {
+        // 시험·해설 탭을 오간 뒤에는 쪽당 값이 출력 스냅샷에 묶여 있으므로, 직접 열기 주소로 다시 연다.
+        const url = new URL(window.location.href);
+        ['archive2Context', 'archive2OutputContract', 'outputRequestId', 'outputOwnerId', 'studio'].forEach(key => url.searchParams.delete(key));
+        url.searchParams.set('qpp', String(qpp));
+        window.location.replace(url.href);
+        return;
+    }
+    qppSwitchBusy = true;
+    document.getElementById('qpp-switch')?.classList.add('is-busy');
+    try { await setArchiveQpp(qpp); } finally {
+        qppSwitchBusy = false;
+        document.getElementById('qpp-switch')?.classList.remove('is-busy');
+        syncQppSwitch();
     }
 }
 
@@ -3438,6 +3485,9 @@ window.onload = () => {
     if (isPreviewMode()) document.body.classList.add('preview-mode', 'screen-fit-mode');
     else if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
     updateScreenFitScale();
+    // 엔진이 "쪽당 N문항" 글자를 다시 쓸 때마다(첫 그리기·다시 그리기·되돌림) 선택 표시를 맞춘다.
+    const qppDisplay = document.getElementById('qpp-display');
+    if (qppDisplay) new MutationObserver(syncQppSwitch).observe(qppDisplay, { childList: true, characterData: true, subtree: true });
     init();
 };
 </script>
