@@ -35,7 +35,8 @@
     const status = Number(error && error.status) || 0;
     if (status === 401) return 'login';
     if (status === 403) return 'forbidden';
-    if (status === 404 || status === 405) return 'unsupported'; // 옛 서버: 새 조회를 아직 모름
+    // 옛 서버: 이 경로를 모르는 서버는 404·405가 아니라 같은 주소의 다른 처리(`class_id` 필수)로 400을 준다. 모두 "아직 이 조회를 모름"이다.
+    if (status === 400 || status === 404 || status === 405) return 'unsupported';
     if (error && error.timeout) return 'timeout';
     return 'error';
   }
@@ -43,7 +44,7 @@
     return ({
       login: '로그인이 끝나 이미 준 문항을 확인하지 못했습니다. 제외 없이 뽑았습니다. 로그인한 뒤 대상을 다시 고르면 제외됩니다.',
       forbidden: '이 대상의 출제 기록을 볼 권한이 없어 제외 없이 뽑았습니다.',
-      unsupported: '서버가 아직 이미 준 문항 조회를 지원하지 않아 제외 없이 뽑았습니다.',
+      unsupported: '서버가 아직 이 조회를 지원하지 않아 제외 없이 뽑았습니다.',
       timeout: '이미 준 문항 확인이 늦어져 제외 없이 뽑았습니다. 대상을 다시 고르면 다시 확인합니다.',
       error: '이미 준 문항을 확인하지 못해 제외 없이 뽑았습니다. 대상을 다시 고르면 다시 확인합니다.'
     })[reason] || '이미 준 문항을 확인하지 못해 제외 없이 뽑았습니다.';

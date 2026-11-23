@@ -131,7 +131,8 @@ test('fetchGiven: 성공하면 UID 집합과 건수를 돌려주고 잘못된 UI
 test('fetchGiven: 로그인 만료·옛 서버(404)·시간 초과·네트워크 오류도 던지지 않고 실패로 돌려준다', async () => {
   const fail = error => given.fetchGiven(async () => { throw error; }, { kind: 'class', classId: 'c1' });
   for (const [error, reason] of [[Object.assign(new Error('x'), { status: 401 }), 'login'], [Object.assign(new Error('x'), { status: 403 }), 'forbidden'],
-    [Object.assign(new Error('x'), { status: 404 }), 'unsupported'], [Object.assign(new Error('x'), { timeout: true }), 'timeout'], [new Error('network'), 'error']]) {
+    [Object.assign(new Error('x'), { status: 404 }), 'unsupported'], [Object.assign(new Error('x'), { status: 400 }), 'unsupported'], // 옛 서버는 이 경로를 400(class_id 필수)으로 받는다
+    [Object.assign(new Error('x'), { timeout: true }), 'timeout'], [new Error('network'), 'error']]) {
     const result = await fail(error);
     assert.equal(result.ok, false);
     assert.equal(result.reason, reason);
@@ -193,7 +194,7 @@ function createD1() {
   return { db, env: { DB: { prepare } } };
 }
 function addAssignment(db, { id, classId = 'c1', date = '2026-11-01', uids = [], payload = true, cancelled = false, students = ['s1'], excluded = [], bridge = [] }) {
-  const body = payload === 'broken' ? '{not json' : payload ? JSON.stringify({ questions: uids.map(uid => ({ questionUid: uid })), meta: {} }) : '';
+  const body = payload === 'broken' ? '{not json' : payload === 'questions-string' ? '{"questions":"abc"}' : payload === 'string-element' ? '{"questions":["abc",{"questionUid":"x"}]}' : payload ? JSON.stringify({ questions: uids.map(uid => ({ questionUid: uid })), meta: {} }) : '';
   db.prepare('INSERT INTO class_exam_assignments (id, class_id, exam_title, exam_date, archive_file, mixed_payload_json, cancelled_at) VALUES (?,?,?,?,?,?,?)')
     .run(id, classId, id, date, `MIXED:${id}`, body, cancelled ? '2026-11-02' : null);
   for (const student of students) db.prepare('INSERT INTO class_exam_assignment_recipients VALUES (?,?)').run(id, student);
@@ -229,6 +230,32 @@ test('Worker 조회: 학생 기준은 받는 사람으로 적힌 출제의 본�
   assert.equal(classWide.scope, 'class');
   assert.ok(classWide.question_uids.includes(uidFor(3)) && !classWide.question_uids.includes(uidFor(4)));
   assert.equal((await loadGivenQuestionUids(env, { classId: 'other' })).assignment_count, 0);
+});
+
+test('Worker 조회: 모양이 깨진 본문(questions가 문자열, 문자열 원소) 한 건이 섞여도 조회 전체가 실패하지 않고 나머지 UID와 unresolved를 돌려준다', async () => {
+  const { loadGivenQuestionUids } = await import(require('node:url').pathToFileURL(path.join(root, 'apmath/worker-backup/worker/helpers/given-question-uids.js')).href);
+  const { db, env } = createD1();
+  addAssignment(db, { id: 'g1', uids: [uidFor(11)] });
+  addAssignment(db, { id: 'g2', uids: [], payload: 'questions-string' });
+  addAssignment(db, { id: 'g3', uids: [], payload: 'string-element' });
+  addAssignment(db, { id: 'g4', uids: [uidFor(12)] });
+  // 본문 묶음 크기(20)를 넘겨 다음 묶음의 건도 읽히는지 본다.
+  for (let i = 0; i < 25; i += 1) addAssignment(db, { id: `h${i}`, uids: [uidFor(100 + i)], date: `2026-10-${String(1 + (i % 9)).padStart(2, '0')}` });
+  const result = await loadGivenQuestionUids(env, { studentIds: ['s1'] });
+  assert.ok(result.question_uids.includes(uidFor(11)) && result.question_uids.includes(uidFor(12)), '읽을 수 있는 출제의 UID는 그대로 온다');
+  assert.ok(result.question_uids.includes(uidFor(124)), '다음 묶음도 읽힌다');
+  assert.ok(result.unresolved_assignment_count >= 1 && result.unresolved_assignment_count <= 2, '읽지 못한 출제는 unresolved로 센다');
+  assert.equal(result.assignment_count, 29);
+  assert.equal(new Set(result.question_uids).size, result.question_uids.length);
+});
+
+test('대상 저장·접힘: 이름은 저장하지 않고(id만), 대상을 고르기 전에는 모든 폭에서 접혀 있다', () => {
+  const source = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.js'), 'utf8');
+  const save = source.slice(source.indexOf('function gridTargetSave()'), source.indexOf('function gridTargetFillNames()'));
+  assert.doesNotMatch(save, /className|studentName/, '저장 값에 이름 없음');
+  assert.match(source, /\$\{gridTargetHtml\(false\)\}/, '넓은 화면에서도 기본으로 열지 않는다');
+  assert.match(source, /open \|\| G\.target \? ' open'/, '저장된 대상이 있으면 열린다');
+  assert.match(source, /if \(targetBox && targetBox\.open\) gridTargetOpened/, '열려 있을 때만 반 목록을 받는다');
 });
 
 test('Worker 경로와 화면 연결: 읽기 전용 GET 경로, 권한 확인, 단원 페이지가 새 모듈을 먼저 읽는다', () => {

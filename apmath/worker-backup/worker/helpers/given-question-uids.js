@@ -9,6 +9,7 @@
 
 const UID = /^qid_v1_[a-f0-9]{64}$/;
 const CHUNK = 80; // D1 바인딩 변수 한도(100)보다 작게
+const PAYLOAD_CHUNK = 20; // 본문 JSON은 크므로 더 작은 묶음으로 읽는다
 export const GIVEN_ASSIGNMENT_LIMIT = 500; // 한 번에 보는 출제 건수 상한(최신 출제일부터)
 
 const marks = (list) => list.map(() => '?').join(',');
@@ -62,7 +63,24 @@ async function collectUids(env, assignmentIds) {
        WHERE q.assignment_id IN (${marks(part)}) AND q.question_uid IS NOT NULL AND q.question_uid != ''`,
     ).bind(...part).all();
     for (const row of bridge.results || []) if (UID.test(row.uid)) byAssignment.get(row.aid)?.add(row.uid);
-    if (!hasPayload) continue;
+  }
+  if (!hasPayload) return byAssignment;
+  // 본문은 크고 모양이 제각각이다(questions가 문자열이거나 문자열 원소가 있으면 json_each/json_extract가 "malformed JSON"을 던진다).
+  // 한 건 때문에 조회 전체가 실패하지 않게 묶음 단위로 시도하고, 묶음이 실패하면 한 건씩 다시 시도한다. 끝내 못 읽은 출제는 UID 없이 남는다(unresolved).
+  for (let i = 0; i < assignmentIds.length; i += PAYLOAD_CHUNK) {
+    const part = assignmentIds.slice(i, i + PAYLOAD_CHUNK);
+    let rows = await payloadRows(env, part);
+    if (rows === null) {
+      rows = [];
+      if (part.length > 1) for (const id of part) rows.push(...((await payloadRows(env, [id])) || []));
+    }
+    for (const row of rows) if (UID.test(row.uid || '')) byAssignment.get(row.aid)?.add(row.uid);
+  }
+  return byAssignment;
+}
+
+async function payloadRows(env, part) {
+  try {
     // json_valid가 아닌 값은 '{}'로 바꿔 json_each가 오류 없이 빈 결과를 내게 한다.
     const payload = await env.DB.prepare(
       `SELECT a.id AS aid,
@@ -72,9 +90,10 @@ async function collectUids(env, assignmentIds) {
             json_each(CASE WHEN json_valid(a.mixed_payload_json) THEN a.mixed_payload_json ELSE '{}' END, '$.questions') je
        WHERE a.id IN (${marks(part)})`,
     ).bind(...part).all();
-    for (const row of payload.results || []) if (UID.test(row.uid || '')) byAssignment.get(row.aid)?.add(row.uid);
+    return payload.results || [];
+  } catch {
+    return null;
   }
-  return byAssignment;
 }
 
 export async function loadGivenQuestionUids(env, { studentIds = [], classId = '', from = '' } = {}) {

@@ -1741,14 +1741,25 @@
     return G.target.kind === 'student' ? `${G.target.className ? `${G.target.className} · ` : ''}${G.target.studentName || '학생'}` : (G.target.className || '반');
   }
   function gridTargetSave() {
-    try { window.sessionStorage.setItem(TARGET_STORAGE_KEY, JSON.stringify(G.target ? { ...G.target, exclude: G.exclude } : null)); } catch (error) { /* 저장소가 막혀 있어도 화면은 동작한다 */ }
+    // id만 저장한다(반·학생 이름은 저장하지 않고, 복원 때 반 목록·명단에서 채운다).
+    const saved = G.target ? { kind: G.target.kind, classId: G.target.classId, studentId: G.target.studentId, exclude: G.exclude } : null;
+    try { window.sessionStorage.setItem(TARGET_STORAGE_KEY, JSON.stringify(saved)); } catch (error) { /* 저장소가 막혀 있어도 화면은 동작한다 */ }
+  }
+  // 복원된 대상의 이름을 반 목록·명단이 도착한 뒤 채운다.
+  function gridTargetFillNames() {
+    if (!G.target) return;
+    if (!G.target.className) { const row = G.classes.rows.find(item => item.id === G.target.classId); if (row) G.target.className = row.name; }
+    if (G.target.kind === 'student' && !G.target.studentName && G.roster.classId === G.target.classId) {
+      const row = G.roster.rows.find(item => item.id === G.target.studentId);
+      if (row) G.target.studentName = row.name;
+    }
   }
   function gridTargetRestore() {
     if (G.target || !GQ()) return;
     try {
       const saved = JSON.parse(window.sessionStorage.getItem(TARGET_STORAGE_KEY) || 'null');
       if (!saved || !GQ().targetKey(saved)) return;
-      G.target = { kind: saved.kind, classId: String(saved.classId || ''), className: String(saved.className || ''), studentId: String(saved.studentId || ''), studentName: String(saved.studentName || '') };
+      G.target = { kind: saved.kind, classId: String(saved.classId || ''), className: '', studentId: String(saved.studentId || ''), studentName: '' };
       G.exclude = saved.exclude !== false;
       G.givenVersion += 1;
     } catch (error) { /* 깨진 값은 무시한다 */ }
@@ -1916,7 +1927,7 @@
       } else students = `<p class="ug-types-help">${G.roster.state === 'error' ? '명단을 불러오지 못했습니다. 반 전체로 뽑습니다.' : '명단을 불러오는 중…'}</p>`;
     }
     const check = G.target ? `<label class="ug-target-check"><input type="checkbox" data-focus="g:exclude"${G.exclude ? ' checked' : ''} onchange="UnitPastExams.gridTargetExclude(this.checked)"><span>${gridTargetIsClass() ? '이 반에 이미 준 문항 빼기' : '이 학생에게 이미 준 문항 빼기'}</span></label>` : '';
-    return `<label class="ug-target-field"><span>반</span><select id="ug-target-class" data-focus="g:class" onchange="UnitPastExams.gridTargetClass(this.value)">${classOptions}</select></label>${students}${check}<div id="ug-target-stat">${gridTargetStatHtml()}</div>${help}`;
+    return `<label class="ug-target-field"><span>반</span><select id="ug-target-class" data-focus="g:class" onchange="UnitPastExams.gridTargetClass(this.value)">${classOptions}</select></label>${students}${check}${gridTargetIsClass() ? '<p class="ug-types-help">이 반의 어느 출제에든 실린 문항을 뺍니다(일부 학생에게만 준 것 포함).</p>' : ''}<div id="ug-target-stat">${gridTargetStatHtml()}</div>${help}`;
   }
   function gridTargetHtml(open) {
     if (!GQ()) return '';
@@ -1924,6 +1935,7 @@
   }
   // 선택 목록은 바뀐 부분만 다시 그린다(열려 있는 목록을 닫지 않게): 본문 전체는 대상·목록이 바뀔 때, 건수 줄은 표를 다시 셀 때마다.
   function gridTargetPatch() {
+    gridTargetFillNames();
     gridPatch('ug-target-body', gridTargetBodyHtml());
     const now = document.getElementById('ug-target-now');
     if (now) now.textContent = gridTargetNowText();
@@ -2209,7 +2221,7 @@
     const hasChildren = (state.catalog?.units || []).some(unit => gridChildren(unit.key).length);
     const childHelp = hasChildren ? ` 단원 이름 옆 화살표를 누르면 ${gridUnitKindName()}이 펼쳐져 ${gridUnitKindName()}만 골라 만들 수도 있습니다.` : '';
     const types = `<details class="ug-options ug-types" id="ug-types"><summary><span class="ug-options-title">유형</span><span class="ug-options-now" id="ug-types-now">${escapeHtml(gridTypesNowText())}</span></summary><div class="ug-types-body" id="ug-types-body">${gridTypesBodyHtml()}</div></details>`;
-    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<section class="ug-cond" id="ug-cond" aria-label="기출 조건">${gridCondHtml()}</section><p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다.${childHelp} 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><span class="ug-filter-note" id="ug-filter-note">${escapeHtml(gridFilterNoteHtml())}</span><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다. 점선 칸은 펼친 줄 일부만 고른 단원입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${gridTargetHtml(wide)}${options}${types}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
+    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<section class="ug-cond" id="ug-cond" aria-label="기출 조건">${gridCondHtml()}</section><p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다.${childHelp} 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><span class="ug-filter-note" id="ug-filter-note">${escapeHtml(gridFilterNoteHtml())}</span><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다. 점선 칸은 펼친 줄 일부만 고른 단원입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${gridTargetHtml(false)}${options}${types}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
     setStatusKeepSummary();
     // 대상 선택은 열려 있을 때만 반 목록을 받는다(열지 않는 교사에게는 요청이 늘지 않는다). 복원된 대상은 기록을 다시 확인한다.
     const targetBox = document.getElementById('ug-target');
