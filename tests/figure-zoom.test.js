@@ -64,8 +64,53 @@ test('스크립트는 alert/confirm/prompt에 기대지 않고, CSS는 인쇄에
   assert.ok(!/\b(?:alert|confirm|prompt)\s*\(/.test(js));
   const css = read('archive/figure-zoom.css');
   assert.match(css, /@media print\s*\{[^}]*\.ap-fz-layer[^}]*display:\s*none\s*!important/);
-  const selectors = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media print\s*\{[\s\S]*?\n\}/, '').split('{').slice(0, -1).map(part => part.split('}').pop().trim()).filter(Boolean);
+  const selectors = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media print\s*\{[\s\S]*?\n\}/, '').replace(/@media \([^)]*\)\s*\{([\s\S]*?)\n\}/g, '$1').split('{').slice(0, -1).map(part => part.split('}').pop().trim()).filter(Boolean);
   for (const selector of selectors) assert.ok(/ap-fz/.test(selector), `규칙이 학생 화면 전용 클래스 아래에 있다: ${selector.slice(0, 60)}`);
+});
+
+// ---------- 신고 보조 함수 ----------
+const el = (attrs, closestMap = {}) => ({ tagName: attrs.tag || 'img', getAttribute: name => (attrs[name] === undefined ? null : attrs[name]),
+  closest: selector => closestMap[selector] || null });
+
+test('그림 경로: R2 주소·사이트 주소를 assets/ 상대 경로로 돌리고, 인라인·데이터 주소는 빈 값', () => {
+  const path = 'assets/images/25_금당고_2학기_중간_고1_기출/q1-solution-v2.svg';
+  assert.equal(zoom.figurePathOf('assets/images/25_금당고_2학기_중간_고1_기출/q1-solution-v2.svg?v=2'), path);
+  assert.equal(zoom.figurePathOf('https://img.wangjiedu.com/exams/images/25_%EA%B8%88%EB%8B%B9%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C/q1-solution-v2.svg?v=3'), path);
+  assert.equal(zoom.figurePathOf('http://127.0.0.1:8934/archive/assets/images/25_%EA%B8%88%EB%8B%B9%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C/q1-solution-v2.svg'), path);
+  assert.equal(zoom.figurePathOf('data:image/svg+xml;utf8,%3Csvg%3E'), '');
+  assert.equal(zoom.figurePathOf(''), '');
+  assert.equal(zoom.figurePathOf('https://example.com/x.png'), '');
+});
+
+test('문항 식별: legacy uid는 파일+번호로, 그 밖의 uid는 uid와 화면 번호로', () => {
+  assert.deepEqual(zoom.questionOf('exams/o/a.js#legacy:exams/o/a.js#ordinal:3', '3.'), { uid: '', file: 'exams/o/a.js', no: 3 });
+  assert.deepEqual(zoom.questionOf('exams/o/a.js#uid-7', '7.'), { uid: 'uid-7', file: 'exams/o/a.js', no: 7 });
+  assert.deepEqual(zoom.questionOf('exams/o/a.js#uid-7', ''), { uid: 'uid-7', file: 'exams/o/a.js', no: 0 });
+  assert.deepEqual(zoom.questionOf('', '1.'), { uid: '', file: '', no: 0 });
+});
+
+test('화면 종류·폭 구간·세션: 포털 시험/유사/원본/자습, 폭 4구간, 선생님 미리보기는 세션 없음', () => {
+  const at = (pathname, search) => zoom.screenKind({ pathname, search });
+  assert.equal(at('/archive/engine.html', '?data=exams/similar/x.js&studentReview=1'), 'similar');
+  assert.equal(at('/archive/engine.html', '?data=exams/original/x.js&studentReview=1&assignmentId=a1&studio=1'), 'exam');
+  assert.equal(at('/archive/engine.html', '?data=exams/original/x.js&studentReview=1&originalSnapshot=o-1'), 'exam');
+  assert.equal(at('/archive/engine.html', '?data=exams/original/x.js&studentReview=1&mode=sol'), 'original');
+  assert.equal(at('/apmath/student/index.html', ''), 'self_study');
+  assert.deepEqual([479, 480, 767, 768, 1099, 1100].map(zoom.widthBucket), ['xs', 'sm', 'sm', 'md', 'md', 'lg']);
+  const storage = { getItem: () => JSON.stringify({ student_id: 's1', student_token: 'tok', name: '홍길동' }) };
+  assert.deepEqual(zoom.studentCredentials({ search: '?studentReview=1' }, storage), { student_id: 's1', student_token: 'tok' });
+  assert.equal(zoom.studentCredentials({ search: '?studentReview=1&studentReturnTo=%2Fapmath%2Fstudent%2F%3Fteacher_preview%3D1' }, storage), null);
+  assert.equal(zoom.studentCredentials({ search: '?teacher_preview=1' }, storage), null);
+  assert.equal(zoom.studentCredentials({ search: '' }, { getItem: () => null }), null);
+  assert.equal(zoom.reportApiBase({ hostname: 'icefoxtail.github.io', search: '?figureReportApi=http://127.0.0.1:8787/api' }), 'https://ap-math-os-v2612.js-pdf.workers.dev/api', '운영 주소에서는 바꿀 수 없다');
+  assert.equal(zoom.reportApiBase({ hostname: '127.0.0.1', search: '?figureReportApi=http://127.0.0.1:8787/api' }), 'http://127.0.0.1:8787/api');
+  assert.equal(zoom.reportApiBase({ hostname: '127.0.0.1', search: '?figureReportApi=https://evil.example/api' }), 'https://ap-math-os-v2612.js-pdf.workers.dev/api');
+  assert.deepEqual(zoom.REASONS.map(item => item[0]), ['not_visible', 'text_unreadable', 'mismatch', 'missing_parts', 'other']);
+  const box = { getAttribute: () => 'exams/o/a.js#legacy:exams/o/a.js#ordinal:3', querySelector: () => ({ textContent: '3.' }) };
+  const figure = el({ src: 'assets/images/a/q3.svg' }, { '.ss-card': null, '[data-source-ref]': box, '.choices': null });
+  assert.deepEqual(zoom.describe(figure, { pathname: '/archive/engine.html', search: '?studentReview=1' }, 390),
+    { question_uid: '', archive_file: 'exams/o/a.js', question_no: 3, figure_path: 'assets/images/a/q3.svg', role: 'problem', screen: 'original', width_bucket: 'xs' });
+  assert.equal(zoom.describe(el({ src: 'x' }, {}), { pathname: '/archive/engine.html', search: '' }, 390), null, '문항을 알 수 없으면 보낼 수 없다');
 });
 
 // ---------- 실제 Chrome ----------
@@ -211,4 +256,84 @@ test('실제 Chrome: 선생님 주소는 DOM 그대로, 학생 주소는 눌러�
   const printed = await page.eval(`[...document.querySelectorAll('.ap-fz-layer, .ap-fz-badge')].map(e => e.getClientRects().length === 0 ? 'none' : getComputedStyle(e).display)`);
   await page.media('');
   assert.ok(printed.length > 0 && printed.every(value => value === 'none'), `인쇄에서 숨김: ${printed.join(',')}`);
+});
+
+test('실제 Chrome: 그림이 이상해요 - 사유만 고르면 전송, 학생 정보는 본문에 로그인 확인용만, 같은 그림은 다시 못 보냄', async t => {
+  const server = await serve();
+  t.after(() => server.close());
+  const chrome = await launchChrome();
+  if (chrome.reason) { t.skip(`NOT_RUN: ${chrome.reason}`); return; }
+  t.after(() => chrome.close());
+  const { page } = chrome;
+  const base = `http://127.0.0.1:${server.address().port}/tests/fixtures/figure-zoom-page.html?studentReview=1`;
+  await page.size(390, 844);
+
+  // 로그인 세션이 없으면 신고 단추가 없다(크게 보기는 된다).
+  await page.goto(base);
+  await page.eval(`localStorage.clear(); 0`);
+  await page.goto(base);
+  await page.eval(`document.getElementById('fig-s').click(); 0`);
+  await page.sleep(300);
+  assert.equal(await page.eval(`!!document.querySelector('.ap-fz-dialog') && !document.querySelector('.ap-fz-report')`), true);
+
+  // 세션이 있으면 단추 -> 사유 선택지 5개(입력 칸 없음)
+  await page.eval(`localStorage.setItem('APMATH_STUDENT_PORTAL_SESSION', JSON.stringify({ student_id: 's-1', student_token: 'tok', student_name: '홍길동' })); 0`);
+  await page.goto(base);
+  await page.eval(`window.__sent = []; window.__mode = 'ok';
+    window.fetch = (url, init) => { window.__sent.push({ url: String(url), body: JSON.parse(init.body) });
+      return window.__mode === 'ok' ? Promise.resolve(new Response(JSON.stringify({ ok: true, success: true }), { status: 200 }))
+        : window.__mode === 'limit' ? Promise.resolve(new Response(JSON.stringify({ ok: false, code: 'DAILY_LIMIT' }), { status: 429 }))
+        : Promise.reject(new TypeError('network')); };
+    document.getElementById('fig-s').click(); 0`);
+  await page.sleep(300);
+  const ui = await page.eval(`({ report: document.querySelector('.ap-fz-report').textContent, sheetHidden: document.querySelector('.ap-fz-sheet').hidden,
+    reasons: [...document.querySelectorAll('.ap-fz-reason')].map(b => b.textContent), inputs: document.querySelectorAll('.ap-fz-dialog input, .ap-fz-dialog textarea, .ap-fz-dialog [contenteditable]').length })`);
+  assert.equal(ui.report, '그림이 이상해요');
+  assert.equal(ui.sheetHidden, true);
+  assert.deepEqual(ui.reasons, ['그림이 안 보여요', '글자·숫자가 안 읽혀요', '그림이 문제와 달라요', '선이나 점이 빠진 것 같아요', '기타']);
+  assert.equal(ui.inputs, 0, '자유 글 입력이 없다');
+
+  // 실패(네트워크 오류 = 옛 Worker/오프라인과 같은 처리): 문구, 다시 고를 수 있음, 보냈다는 표시는 안 남음
+  await page.eval(`window.__mode = 'fail'; document.querySelector('.ap-fz-report').click(); document.querySelector('.ap-fz-reason[data-reason="mismatch"]').click(); 0`);
+  await page.sleep(500);
+  assert.equal(await page.eval(`document.querySelector('.ap-fz-note').textContent`), '지금은 보낼 수 없어요');
+  assert.equal(await page.eval(`[...document.querySelectorAll('.ap-fz-reason')].every(b => !b.disabled)`), true);
+  assert.equal(await page.eval(`localStorage.getItem('ap.figureReports.sent.v1')`), null);
+  // 하루 상한 응답
+  await page.eval(`window.__mode = 'limit'; document.querySelector('.ap-fz-reason[data-reason="other"]').click(); 0`);
+  await page.sleep(500);
+  assert.equal(await page.eval(`document.querySelector('.ap-fz-note').textContent`), '오늘은 더 보낼 수 없어요');
+
+  // 성공: 본문 형식, 감사 문구, 보냈다는 표시
+  await page.eval(`window.__mode = 'ok'; window.__sent.length = 0; document.querySelector('.ap-fz-reason[data-reason="missing_parts"]').click(); 0`);
+  await page.sleep(500);
+  const sent = await page.eval('window.__sent');
+  assert.equal(sent.length, 1);
+  assert.ok(sent[0].url.endsWith('/api/student-portal/figure-report'));
+  assert.deepEqual(sent[0].body, {
+    student_id: 's-1', student_token: 'tok', question_uid: 'question-uid-7', archive_file: 'exams/fixture/a.js', question_no: 7,
+    figure_path: 'assets/images/25_금당고_2학기_중간_고1_기출/q1-solution-v2.svg', role: 'solution', screen: 'original', width_bucket: 'xs', reason_code: 'missing_parts',
+  });
+  assert.ok(!JSON.stringify(sent[0].body).includes('홍길동'), '이름은 보내지 않는다');
+  assert.equal(await page.eval(`document.querySelector('.ap-fz-note').textContent`), '알려 줘서 고마워요');
+  const after = await page.eval(`({ label: document.querySelector('.ap-fz-report').textContent, disabled: document.querySelector('.ap-fz-report').disabled, stored: localStorage.getItem('ap.figureReports.sent.v1') })`);
+  assert.equal(after.label, '이미 알려 주셨어요');
+  assert.equal(after.disabled, true);
+  assert.equal(JSON.parse(after.stored).length, 1);
+
+  // 닫았다 다시 열어도 못 보낸다. 다른 그림(legacy uid의 문제 그림)은 보낼 수 있고 파일+번호로 간다.
+  await page.eval(`document.querySelector('.ap-fz-close').click(); 0`);
+  await page.sleep(600);
+  await page.eval(`window.__sent.length = 0; document.getElementById('fig-s').click(); 0`);
+  await page.sleep(300);
+  assert.equal(await page.eval(`document.querySelector('.ap-fz-report').disabled`), true);
+  await page.eval(`document.querySelector('.ap-fz-close').click(); 0`);
+  await page.sleep(600);
+  await page.eval(`document.getElementById('fig-q').click(); 0`);
+  await page.sleep(300);
+  assert.equal(await page.eval(`document.querySelector('.ap-fz-report').disabled`), false);
+  await page.eval(`document.querySelector('.ap-fz-report').click(); document.querySelector('.ap-fz-reason[data-reason="not_visible"]').click(); 0`);
+  await page.sleep(500);
+  const second = (await page.eval('window.__sent'))[0].body;
+  assert.deepEqual([second.question_uid, second.archive_file, second.question_no, second.figure_path, second.role], ['', 'exams/fixture/a.js', 3, '', 'problem']);
 });

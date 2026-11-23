@@ -1361,3 +1361,30 @@ CREATE INDEX IF NOT EXISTS idx_student_self_study_sets_assignment
 
 CREATE INDEX IF NOT EXISTS idx_student_self_study_sets_class_updated
   ON student_self_study_sets (class_id, updated_at);
+
+-- "그림이 이상해요" 신고. Same definition as migrations/20261124_figure_reports.sql; the Worker
+-- reports FEATURE_UNAVAILABLE until the table exists and never creates it itself.
+CREATE TABLE IF NOT EXISTS figure_reports (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_at TEXT NOT NULL,
+  report_day TEXT NOT NULL,
+  question_uid TEXT NOT NULL DEFAULT '',
+  archive_file TEXT NOT NULL DEFAULT '',
+  question_no INTEGER NOT NULL DEFAULT 0,
+  figure_path TEXT NOT NULL DEFAULT '',
+  role TEXT NOT NULL CHECK (role IN ('problem', 'solution', 'choice')),
+  reason_code TEXT NOT NULL CHECK (reason_code IN ('not_visible', 'text_unreadable', 'mismatch', 'missing_parts', 'other')),
+  screen TEXT NOT NULL CHECK (screen IN ('exam', 'similar', 'original', 'self_study')),
+  width_bucket TEXT NOT NULL CHECK (width_bucket IN ('xs', 'sm', 'md', 'lg')),
+  limit_key TEXT NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_figure_reports_once
+  ON figure_reports (limit_key, question_uid, archive_file, question_no, figure_path, role, reason_code)
+  WHERE limit_key <> '';
+
+CREATE INDEX IF NOT EXISTS idx_figure_reports_day
+  ON figure_reports (report_day);
+
+CREATE INDEX IF NOT EXISTS idx_figure_reports_figure
+  ON figure_reports (figure_path, question_uid);

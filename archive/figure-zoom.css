@@ -38,6 +38,31 @@ html.ap-fz-lock, html.ap-fz-lock body { overflow: hidden !important; }
 .ap-fz-figure { margin: auto; background: #fff; border-radius: 6px; padding: 2px; max-width: none; line-height: 0; }
 .ap-fz-large { display: block; max-width: none; max-height: none; margin: 0; background: #fff; }
 
+/* "그림이 이상해요" 신고: 막대 안의 단추와 아래에서 올라오는 사유 선택지(자유 글 없음). */
+.ap-fz-report {
+    flex: none; min-height: 44px; padding: 0 14px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 22px;
+    background: transparent; color: #fff; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.ap-fz-report[disabled] { opacity: 0.7; cursor: default; }
+.ap-fz-report:focus-visible, .ap-fz-reason:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+.ap-fz-sheet {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 14px 14px max(14px, env(safe-area-inset-bottom));
+    background: #fff; color: #0f172a; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+.ap-fz-sheet[hidden] { display: none; }
+.ap-fz-sheet-title { margin: 0 0 8px; font-size: 15px; font-weight: 700; }
+.ap-fz-reasons { display: flex; flex-direction: column; gap: 8px; }
+.ap-fz-reasons[hidden] { display: none; }
+.ap-fz-reason {
+    min-height: 46px; padding: 0 14px; border: 1px solid #94a3b8; border-radius: 10px; background: #f8fafc; color: #0f172a;
+    font: inherit; font-size: 15px; text-align: left; cursor: pointer;
+}
+.ap-fz-reason:disabled { opacity: 0.6; cursor: default; }
+.ap-fz-note { margin: 8px 0 0; min-height: 1.4em; font-size: 14px; font-weight: 600; color: #1d4ed8; }
+@media (min-width: 720px) {
+    .ap-fz-sheet { left: auto; right: 16px; bottom: 16px; width: 340px; border-radius: 14px; }
+}
+
 @media print {
     .ap-fz-layer, .ap-fz-dialog { display: none !important; }
     html.ap-fz-on :is(img, svg) { cursor: auto; }

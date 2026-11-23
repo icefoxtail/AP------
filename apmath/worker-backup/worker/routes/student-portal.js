@@ -15,6 +15,7 @@ import {
 import { saveAssessmentResultItems } from '../helpers/assessment-result-items.js';
 import { buildStudentClinicLineage, unavailableClinicLineage } from '../helpers/clinic-provenance.js';
 import { loadStudentLearningHistory } from '../helpers/student-learning-history.js';
+import { handleFigureReportPost, handleFigureReportsGet } from '../helpers/figure-reports.js';
 
 import {
   SELF_STUDY_KINDS,
@@ -685,6 +686,14 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     if (!packet) return jsonResponse({ success: false, message: '오답 클리닉을 찾을 수 없습니다.' }, 404);
     if (packet.error === 'not_submitted') return jsonResponse({ success: false, message: '제출 후 오답을 저장할 수 있습니다.' }, 409);
     return jsonResponse({ success: true, packet });
+  }
+
+  // "그림이 이상해요" 신고(학생 POST, 선생님 집계 GET). 학생 정보는 저장하지 않는다(helpers/figure-reports.js).
+  if (method === 'POST' && id === 'figure-report') {
+    return handleFigureReportPost(request, env, { verifyStudent: verifyStudentPortalSession });
+  }
+  if (method === 'GET' && id === 'figure-reports') {
+    return handleFigureReportsGet(request, env, teacher, url);
   }
 
   // 자습 기록: 학생이 스스로 푼 "오답 다시 풀기"/"유사 문항" 결과. 원 시험 기록은 건드리지 않는다.
