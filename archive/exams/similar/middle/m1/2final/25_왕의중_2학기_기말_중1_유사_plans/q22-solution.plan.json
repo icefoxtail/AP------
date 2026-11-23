@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "반구의 부피 18π cm³에서 원뿔의 부피 9π cm³를 빼면 회전체의 부피는 9π cm³이다.",
+  "accessibilityDescription": "사분원의 회전체인 반구에서 직각삼각형의 회전체인 원뿔을 빼어 활꼴 회전체의 부피를 구하는 해설 그림이다.",
+  "sourceQuote": "주어진 사분원을 직선 $l$을 축으로 1회전 시키면",
+  "newVisualInformation": [
+    "반구 18π와 원뿔 9π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "quadrant of radius 3cm with shaded segment and rotation axis l"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ltop",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lbot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "Ltop",
+    "Lbot"
+  ],
+  "hiddenPointNames": [
+    "Ltop",
+    "Lbot"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAxis",
+      "refs": [
+        "Lbot",
+        "Ltop"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "raO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 560
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ],
+    "regions": [
+      {
+        "id": "segmentFill",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOB",
+        "from": "O",
+        "to": "B",
+        "label": "3",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q22-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q22-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q22-solution.svg"
+  }
+}

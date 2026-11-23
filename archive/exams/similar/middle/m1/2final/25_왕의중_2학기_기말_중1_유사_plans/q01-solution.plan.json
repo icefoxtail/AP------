@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 A=60°의 이등분으로 각 BAD=각 CAD=30°이므로 외각 성질에 의해 각 ADC=70°이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭지각 A가 60도이고 이등분각이 30도씩 나뉘어 외각 ADC가 70도임을 보여주는 해설 그림이다.",
+  "sourceQuote": "삼각형 $ABC$의 세 내각의 크기의 합은 $180^\\circ$",
+  "newVisualInformation": [
+    "꼭지각 60도와 이등분각 30도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "triangle ABC with angle B=40, angle C=80 and angle bisector AD"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bdir",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Bdir"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cdir",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Cdir"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineBA",
+          "lineCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisectorA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineBC",
+          "bisectorA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 40,
+        "label": "40"
+      },
+      {
+        "id": "angC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 80,
+        "label": "80"
+      },
+      {
+        "id": "angADC",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 70,
+        "label": "70"
+      },
+      {
+        "id": "angBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "id": "angCAD",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q01-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q01-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q01-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q01-solution.svg"
+  }
+}

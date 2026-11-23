@@ -1,0 +1,809 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/21_순천고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "4e08a2fcbcff096a7e9598ec05ae706886d3f39d",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "x=3+i$, $y=3-i$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "\\frac{x^2+y^2}{xy}"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "\\frac{(x+y)^2-2xy}{xy}",
+            "evidenceType": "IMPLIED",
+            "justification": "x+y와 xy를 구한 뒤 곱셈 공식의 변형으로 x^2+y^2을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "x^3-7x^2+15x-9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "바르게 인수분해한 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "P(1)=1-7+15-9=0$이므로 $x-1$을 인수로",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1 대입으로 0이 되는 인수를 찾아 조립제법으로 인수분해함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $A$, $B$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $A$, $B$가"
+          }
+        ],
+        "method": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "주어진 식을 간단히 정리하면 $-5A-2B+6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식이 될 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=0$이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $3x^2+4x-k=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "가장 큰 정수 $k$"
+          }
+        ],
+        "method": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "허근을 가지므로 판별식 $D<0$이다. $$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "허근을 갖도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "두 부등식으로 나누어"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 양의 정수 $x$의 값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "연립부등식을 두 부등식으로 나누어 풀면\n\n-",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "P(x)=x^4+x^3-7x^2-x+6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사차방정식",
+            "src": "stem",
+            "quote": "사차방정식 $x^4+x^3-7x^2-x+6=0$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "P(1)=1+1-7-1+6=0$, $P(-1)=1-1-7+1+6=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1, -1 대입으로 인수를 찾아 조립제법으로 네 근을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(4-x)(4-y)(4-z)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "(4-x)(4-y)(4-z)"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "4^3-(x+y+z)\\cdot 4^2+(xy+yz+zx)\\cdot 4-xyz",
+            "evidenceType": "IMPLIED",
+            "justification": "(4-x)(4-y)(4-z) 전개 공식에 세 기본대칭식 값을 대입함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x$의 계수와 상수항이 정수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해되는 것의 개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "m$은 자연수",
+            "evidenceType": "IMPLIED",
+            "justification": "상수항 -1 분해로 kx^2-3x-1=(ax+1)(bx-1)을 세워 k=m(m+3)&lt;=2000을 풂"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "215 = 4\\times 53+3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $z=\\dfrac{1-i}{\\sqrt{2}}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "허수",
+            "src": "solution",
+            "quote": "z^2 = \\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^2 = \\dfrac{-2i}{2} = -i$",
+            "evidenceType": "IMPLIED",
+            "justification": "z^2=-i를 구한 뒤 (-i)^4=1 주기성을 적용해 430제곱을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나누었을 때의 나머지는"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "(\\alpha+\\beta)^2-2\\alpha\\beta"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "이차방정식 $x^2-3x+4=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+4x-k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-2ax+a^2+6a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $m$, $n$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "a$에 대한 항등식이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값이 $15$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "이차함수의 최솟값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+4x+k$",
+            "evidenceType": "IMPLIED",
+            "justification": "표준형 변환으로 x=2 최댓값에서 k=3을 구하고 꼭짓점 최솟값을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "solution",
+            "quote": "중근을 가져야"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases} x+y=-4"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "\\frac{D}{4} = 4^2-2(14-a) = 2a-12 = 0",
+            "evidenceType": "IMPLIED",
+            "justification": "대입 후 얻은 이차방정식의 중근 조건에 판별식 D/4=0을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "항등식의 양변에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "최고차항 계수 $a_{15}=1$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "양변에 $x=1$과 $x=-1$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1, -1 수치대입으로 홀수차 계수합을 구한 뒤 a_5와 a_15를 빼서 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "-500(x-4)^2+32000"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "x=4$일 때 이익금이 최대"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "-500(x-4)^2+32000",
+            "evidenceType": "IMPLIED",
+            "justification": "총 이익금을 할인 횟수 x의 이차함수로 세워 꼭짓점 x=4에서 판매량을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "x$축과의 교점이 $(-3, 0), (5, 0)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값을 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$",
+            "evidenceType": "IMPLIED",
+            "justification": "x절편을 인수로 식을 세우고 y절편으로 a를 구해 표준형 최댓값을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $z=x^2+(2+i)x-15-3i$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$의 값을 $a$"
+          }
+        ],
+        "method": [
+          {
+            "term": "순허수",
+            "src": "solution",
+            "quote": "z$는 순허수이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "solution",
+            "quote": "삼차방정식이 중근을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 갖도록 하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": ": 판별식 $D = 3^2-4(9-m) = ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

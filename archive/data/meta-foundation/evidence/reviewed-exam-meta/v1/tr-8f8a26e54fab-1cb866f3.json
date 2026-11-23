@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-8f8a26e54fab-1cb866f3",
+  "requestSha256": "ab48cd422e9aa0f29bb92ddf88abfddb03c7e5b338cd11e5f702127941fff05b",
+  "examUid": "19_매산여고_1학기_기말_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+  "sourceBlobSha1": "7a4df1d657ce2d528b4cea90f1d22bdf468aef11",
+  "sourceRawSha256": "34d03953065eb03228b63e72db97c6659a97e8936a6aa202513bf310a38e74da",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-1cb866f3.type-ledger.json",
+        "sha256": "e8af0da27c4aad768803c61268258b5f3d323ea9127748eb80023f46d1cf9a5d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_a905b291e0904cdcdd4b65b582be5ac4568db23d80cf831a3ea5d1934eba212e",
+      "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-8f8a26e54fab-1cb866f3",
+        "judge": "dots",
+        "rationale": "각 원소를 A·B모두/B만/둘다아님의3상태에 배정하여3⁵이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(하)",
+          "curriculumSource": "request",
+          "rowCourse": "확률과 통계",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "f2122aece6dfd05876874b4ad9b1af86817bbcbfd55e27f7779e0df8ad143799",
+        "judgedContentFingerprint": "f6bd66305bfb12a118623ddb517a9bd29f7e64ad7b51dca1ba2b8a4059c5bb74",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ef64c22bcb403071c3392cd9b666be5cfe2915210e5bc6b87176b92bd03a484e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-1cb866f3.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

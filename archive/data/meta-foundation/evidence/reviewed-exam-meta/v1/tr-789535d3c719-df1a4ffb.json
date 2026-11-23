@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-789535d3c719-df1a4ffb",
+  "requestSha256": "9b8a0544818ee869d355ab8f4ff09701116c318178f703ae66cf1e3279d5ad13",
+  "examUid": "21_매산여고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/21_매산여고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "89fa90fc499993173750ca6b96b2e7200731a986",
+  "sourceRawSha256": "5d5b7a4f8377662d169d9dee8a7881c1da912b701c23dd9b15ab0aabbd16a02f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-789535d3c719-df1a4ffb.type-ledger.json",
+        "sha256": "1fed0a95ea3757bbf9df4636a589bfeb9f28ee1d2cb1d8437bad614ba873baf8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_989b94324cd0237a3b81dcd3c75bcead22dd11f01cd1edb5ff4799bc8c29b7f6",
+      "sourceArchiveFile": "original/high/h2/1mid/21_매산여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-789535d3c719-df1a4ffb",
+        "judge": "dots",
+        "rationale": "원그림의 빠진 중앙도로를 제외하고 각꼭짓점 왼쪽·아래 경로수를 합산하여Q66을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(하)",
+          "curriculumSource": "request",
+          "rowCourse": "확률과 통계",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "1f7ba4ec2d64107d0448ce897c3d0892002a02612ec54ee13e6a1417864ca7a3",
+        "judgedContentFingerprint": "361585e817a56cf1d598369bfe3e1081e27abe41310c83be1a436bef052c62ab",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "bc1c81090d6c6b550d1630888525a5814596e1409a6697cd93f49e2f0f59e4c5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-789535d3c719-df1a4ffb.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_112fe80a3751927f22db5dd285efd60e043a361ff70a832162f5e3ad21e6bdc2",
+      "sourceArchiveFile": "original/high/h2/1mid/21_매산여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-789535d3c719-df1a4ffb",
+        "judge": "dots",
+        "rationale": "각원소의 Q밖/Q만/PQ모두3상태로3⁸을 세고9로나누어729이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(하)",
+          "curriculumSource": "request",
+          "rowCourse": "확률과 통계",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "973e0588e9acfd5f581d93ceb26c7b5a7a029a56a8818781eb0362baf6efdce4",
+        "judgedContentFingerprint": "bcc7c6008f248e86d3f1da1adda4806b831159bca85cfa111d0c124d36747ae1",
+        "rowBinding": "content",
+        "textBindingFingerprint": "5a9844927f675f8a92673387497234f0cd13ae38b72164d69f56de1d777aa11e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-789535d3c719-df1a4ffb.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 23
+}

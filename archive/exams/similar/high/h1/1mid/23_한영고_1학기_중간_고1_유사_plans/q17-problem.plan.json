@@ -1,0 +1,90 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 k값에 따른 포물선과 x축의 위치 관계를 보여준다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "4",
+            "4",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -5,
+            1
+          ],
+          "viewport": [
+            -5,
+            1,
+            -2,
+            6
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": -2,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              -2
+            ],
+            "y": []
+          }
+        },
+        "caption": "k=4일 때 x축에 접함 (실근 존재)"
+      },
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "6",
+            "4",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -5,
+            1
+          ],
+          "viewport": [
+            -5,
+            1,
+            -1,
+            7
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": -2,
+              "y": 2
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              -2
+            ],
+            "y": [
+              2
+            ]
+          }
+        },
+        "caption": "k=6일 때 x축 위에 떠 있음 (실근 없음)"
+      }
+    ],
+    "caption": "k>4일 때 그래프가 x축과 만나지 않아 실근이 없다."
+  }
+}

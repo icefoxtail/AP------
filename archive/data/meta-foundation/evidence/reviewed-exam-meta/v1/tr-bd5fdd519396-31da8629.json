@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-bd5fdd519396-31da8629",
+  "requestSha256": "7f24512fb4687fd0a2c7d5e618f81c5f0ed59cf3216af41e5f19b021b4fe160b",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "e287f73e6f284d6b679c88c18414aa10a3ed0aed",
+  "sourceRawSha256": "3e9fc3138f01acf505cbf40246fe8a7590be27ed54d47154e6c03f096df30ea8",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-bd5fdd519396-31da8629.type-ledger.json",
+        "sha256": "6e0511a97199e7bdd52e3a21ffbae79f9752428960ea93d6d50aa01ba578633f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-bd5fdd519396-31da8629",
+        "judge": "dots",
+        "rationale": "공통 빗변OP와 같은 반지름OA=OB로 RHS 합동 증명의 빈칸을 확인한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "35249b5aeff0c56818bda882711ba06706223672daa5eaa1bc659fe1ab437f41",
+        "judgedContentFingerprint": "dfa59aa00ccbc3852da03eea6dddb9c6e2feebe213efb896ab9b152f142b6220",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ce2427c826ac94d9698c66287a29de253fa87ae4f02a0dc56f8e76f5c852703e",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-bd5fdd519396-31da8629.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": null,
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

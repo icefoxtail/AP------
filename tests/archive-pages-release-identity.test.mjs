@@ -533,3 +533,26 @@ test("question metadata browser copy: shipped, equals the projection of the regi
   const without = await rebuild();
   assert.equal(without.inventory.some(entry => entry.path === "archive/data/question-metadata-browser-v1.json"), false);
 });
+
+// Catalog shards are stage 1 (no screen reads them yet): a shard build that cannot run must never stop a student-site release.
+// The identity probe and the site build run the same function, so both skip the shards the same way and the package digest agrees.
+test("catalog shards: when they cannot be built the package, its identity and the build are unchanged and the release goes on", async t => {
+  const f = fixture(t), before = await f.identity();
+  f.manifest.catalogShards = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  f.commit();
+  const warnings = [];
+  const original = console.warn;
+  console.warn = line => { warnings.push(String(line)); };
+  let identity, report;
+  try {
+    identity = await f.identity();
+    report = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  } finally { console.warn = original; }
+  assert.equal(validateReleaseIdentity(identity), true);
+  assert.equal(identity.packageDigest, before.packageDigest, "no shards, same package");
+  assert.equal(report.catalogShards.status, "SKIPPED");
+  assert.equal(report.inventory.some(entry => entry.path.startsWith("archive/data/archive2-catalog-shards-v1/")), false);
+  assert.equal(warnings.length, 2, "one warning from the identity probe, one from the build");
+  assert.match(warnings[0], /^::warning title=Catalog shards skipped::/);
+});

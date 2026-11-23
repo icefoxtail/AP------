@@ -1,0 +1,143 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 축 a의 위치에 따른 세 가지 경우를 그래프로 비교한다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "-2",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "CLOSED_INTERVAL",
+            "range": [
+              0,
+              1
+            ]
+          },
+          "domain": [
+            0,
+            1
+          ],
+          "viewport": [
+            -0.5,
+            1.5,
+            -4,
+            2
+          ],
+          "requiredPoints": [
+            {
+              "id": "M",
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              0,
+              1
+            ],
+            "y": []
+          }
+        },
+        "caption": "a<0일 때 x=0에서 최대"
+      },
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "1",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "CLOSED_INTERVAL",
+            "range": [
+              0,
+              1
+            ]
+          },
+          "domain": [
+            0,
+            1
+          ],
+          "viewport": [
+            -0.5,
+            1.5,
+            -1,
+            2
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 0.5,
+              "y": 0.25
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              0,
+              1
+            ],
+            "y": []
+          }
+        },
+        "caption": "0<=a<=1일 때 x=a에서 최대"
+      },
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "8",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "CLOSED_INTERVAL",
+            "range": [
+              0,
+              1
+            ]
+          },
+          "domain": [
+            0,
+            1
+          ],
+          "viewport": [
+            -0.5,
+            1.5,
+            -1,
+            9
+          ],
+          "requiredPoints": [
+            {
+              "id": "M",
+              "x": 1,
+              "y": 7
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              0,
+              1
+            ],
+            "y": [
+              7
+            ]
+          }
+        },
+        "caption": "a>1일 때 x=1에서 최댓값 7 (a=4)"
+      }
+    ],
+    "caption": "대칭축 x=a의 위치에 따른 구간 [0, 1]에서의 최댓값 비교"
+  }
+}

@@ -131,6 +131,26 @@ for (const pack of data.packs.filter((p) => p.questions.some((q) => q._scopeId))
   assert(Object.values(pack.difficultyMix).reduce((a, b) => a + b, 0) === pack.questions.length, `${pack.id}: 난이도 칩(difficultyMix) 합이 문항 수와 다릅니다.`);
 }
 
+// 팩이 가리키는 그림은 사이트에 실리는 파일이어야 한다. 사이트 포장이 빼는 그림(원본 품질 보류 문항의 의존 파일)을 경로나 이름으로
+// 가리키면 학생 화면에서 그림이 깨지고 tests/archive-pages-site-reach.test.mjs가 실패한다. 빼는 목록은 build-scoped-mock.cjs가 쓰는 것과 같다.
+{
+  const run = require('child_process').spawnSync(process.execPath, [path.join(toolsDir, 'left-out-figures.mjs')], { encoding: 'utf8' });
+  assert(run.status === 0, `사이트에서 빠지는 그림 목록을 읽지 못했습니다: ${String(run.stderr).slice(0, 200)}`);
+  const left = JSON.parse(run.stdout);
+  const leftPaths = new Set(left.paths);
+  const leftNames = new Set(left.names);
+  for (const pack of data.packs) {
+    for (const q of pack.questions) {
+      const files = [q.image, q.solutionImage].filter(Boolean);
+      for (const text of [q.content, q.solution, ...(q.choices || [])]) for (const m of String(text ?? '').matchAll(imageRe)) files.push(m[1]);
+      for (const f of files) {
+        const rel = String(f).replace(/^\.?\//, '').replace(/^archive\//, '').split(/[?#]/)[0];
+        assert(!leftPaths.has(rel) && !leftNames.has(path.posix.basename(rel)), `${pack.id} ${q._qKey}: 사이트에 실리지 않는 그림을 가리킵니다: ${f}`);
+      }
+    }
+  }
+}
+
 // 도구로 다시 조립한 결과(기본 5회 + 맞춤 팩 + sourceSummary)가 커밋된 자료와 JSON으로 같아야 한다. 카탈로그가 바뀌어 달라지면 다시 조립한다.
 const rebuilt = require(path.join(toolsDir, 'build-m1-2final-mock.cjs')).buildAllPacks();
 const REBUILD_MSG = '자료 파일이 도구로 다시 조립한 결과와 다릅니다. node archive/tools/assessment-mock/build-m1-2final-mock.cjs 로 다시 조립하세요.';

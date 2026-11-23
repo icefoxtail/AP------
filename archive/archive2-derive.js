@@ -331,19 +331,24 @@
       return cand ? { cand, rung: "none", relaxed: different, hintOnly: false } : null;
     };
 
-    // 후보가 적은 기준 문항부터 처리한다(희귀한 칸을 먼저 확보). 같으면 기준 순서.
+    // 후보가 적은 기준 문항부터 처리한다(희귀한 칸을 먼저 확보). 후보 수가 같으면 더 가까운 단(세부 유형이 유형보다 앞)에서
+    // 후보를 가진 자리가 먼저, 그것도 같으면 기준 순서. 가까운 단이 없는 자리가 먼저 돌면 가장 넓은 단(none)에서 다른 자리의
+    // 같은 세부 유형 후보를 가져가 버려, 오답 클리닉의 "틀린 유형 기준"이 같은 유형 대신 같은 단원 문항을 내놓는다.
     // 후보 수는 실제로 뽑을 수 있는 문항만 센다(기준 문항 자신·제외·경계 밖·출처 밖은 뺀다). 자기 자신뿐인 칸을 "희귀"로 오해해
     // 먼저 처리하면, 그 자리가 가장 넓은 단(범위 안 다른 단원)에서 다른 자리가 쓸 같은 유형 후보를 가져가 버린다.
     const countable = (cand) => !blocked.has(cand.uid) && !familyBlocked(cand) && inBoundary(cand) && allowSource(cand) && (opts.includeBlank || !cand.blank);
     const order = bases.map((base, i) => i).filter((i) => bases[i]).sort((a, b) => {
       const size = (i) => {
-        for (const rung of different ? ["subunit", "unit"] : LADDER) {
-          const n = poolFor(bases[i], rung).filter(countable).length;
-          if (n) return n;
+        const rungs = different ? ["subunit", "unit"] : LADDER;
+        for (let r = 0; r < rungs.length; r++) {
+          const n = poolFor(bases[i], rungs[r]).filter(countable).length;
+          if (n) return { n, r };
         }
-        return 1e9;
+        return { n: 1e9, r: rungs.length };
       };
-      return size(a) - size(b) || a - b;
+      const sa = size(a);
+      const sb = size(b);
+      return sa.n - sb.n || sa.r - sb.r || a - b;
     });
     const picks = new Array(bases.length).fill(null);
     let dev = 0;
