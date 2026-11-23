@@ -392,7 +392,7 @@ window.questionBank = [
     "id": 13,
     "questionNumber": 13,
     "questionType": "객관식",
-    "content": "13. 어느 과일가게에서 판매하는 메론 한 개의 무게는 표준편차가 $32\\mathrm{g}$인 정규분포를 따른다고 한다. 이 가게에서 판매하는 메론 중에서 64개를 임의추출하여 모평균을 신뢰도 $a\\%$로 추정한 신뢰구간의 길이가 15.04일 때, $a$의 값을 주어진 표준정규분포표를 이용하여 구하면? [4.8점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>1.84</td><td>0.460</td></tr><tr><td>1.86</td><td>0.465</td></tr><tr><td>1.88</td><td>0.470</td></tr><tr><td>1.96</td><td>0.475</td></tr><tr><td>2.58</td><td>0.495</td></tr></table>",
+    "content": "13. 어느 과일가게에서 판매하는 메론 한 개의 무게는 표준편차가 $32\\mathrm{g}$인 정규분포를 따른다고 한다. 이 가게에서 판매하는 메론 중에서 64개를 임의추출하여 모평균을 신뢰도 $a\\%$로 추정한 신뢰구간의 길이가 15.04일 때, $a$의 값을 주어진 표준정규분포표를 이용하여 구하면? [4.8점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>1.84</td><td>0.467</td></tr><tr><td>1.86</td><td>0.469</td></tr><tr><td>1.88</td><td>0.470</td></tr><tr><td>1.96</td><td>0.475</td></tr><tr><td>2.58</td><td>0.495</td></tr></table>",
     "choices": [
       "$94$",
       "$95$",

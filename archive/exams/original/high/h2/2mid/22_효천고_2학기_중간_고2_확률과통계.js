@@ -418,7 +418,7 @@ window.questionBank = [
     "id": 11,
     "questionNumber": 11,
     "questionType": "객관식",
-    "content": "11. 확률변수 $X$가 이항분포 $B(8, p)$를 따르고, $P(X=3) = \\frac{3}{5}P(X=4)$ 가 성립할 때, $E(7X)$값은? [4.0점]",
+    "content": "11. 확률변수 $X$가 이항분포 $B(8, p)$ (단, $0<p<1$)를 따르고, $P(X=3) = \\frac{3}{5}P(X=4)$ 가 성립할 때, $E(7X)$값은? [4.0점]",
     "choices": [
       "$30$",
       "$31$",
@@ -428,7 +428,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "③",
-    "solution": "$X\\sim B(8,p)$에서 $P(X=3)={}_8C_3p^3(1-p)^5$, $P(X=4)={}_8C_4p^4(1-p)^4$이다.\n따라서 $\\frac{P(X=3)}{P(X=4)}=\\frac{{}_8C_3}{{}_8C_4}\\cdot\\frac{1-p}{p}=\\frac45\\cdot\\frac{1-p}{p}$이다.\n이 비가 $\\frac35$이므로 $4(1-p)=3p$, $4=7p$, $p=\\frac47$이다.\n$E(7X)=7E(X)=7\\cdot8\\cdot\\frac47=32$이다.\n보기 판단: ① $30$, ② $31$, ④ $33$, ⑤ $34$는 위의 평균값과 다르다. ③ $32$가 맞다.",
+    "solution": "$X\\sim B(8,p)$ ($0<p<1$)에서 $P(X=3)={}_8C_3p^3(1-p)^5$, $P(X=4)={}_8C_4p^4(1-p)^4$이다.\n따라서 $\\frac{P(X=3)}{P(X=4)}=\\frac{{}_8C_3}{{}_8C_4}\\cdot\\frac{1-p}{p}=\\frac45\\cdot\\frac{1-p}{p}$이다.\n이 비가 $\\frac35$이므로 $4(1-p)=3p$, $4=7p$, $p=\\frac47$이다.\n$E(7X)=7E(X)=7\\cdot8\\cdot\\frac47=32$이다.\n보기 판단: ① $30$, ② $31$, ④ $33$, ⑤ $34$는 위의 평균값과 다르다. ③ $32$가 맞다.",
     "examUid": "22_효천고_2학기_중간_고2_확률과통계",
     "sourceQid": 11,
     "curriculum": "2015",

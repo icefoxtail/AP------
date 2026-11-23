@@ -264,7 +264,7 @@ window.questionBank = [
   {
     "id": 8,
     "level": "상",
-    "content": "보기 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\neq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
+    "content": "보기 중 옳은 것만을 고른 것은? (단, $x, y > 0, y \\neq 1, a > 0, a \\neq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -289,7 +289,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 로그의 기본 공식과 밑 변환 공식을 정확히 판별함.\\nㄱ. $\\log_a x + \\log_a y = \\log_a (xy)$ 이므로 곱셈은 성립하지 않음. (거짓)\\nㄴ. 밑 변환 공식 $\\frac{\\log_a x}{\\log_a y} = \\log_y x$ 는 참임. (참)\\nㄷ. $\\log_a x - \\log_a y = \\log_a (\\frac{x}{y})$ 임. (거짓)\\nㄹ. $\\log_a (x^n) = n\\log_a x$ 이나, 전체의 $n$제곱과는 다름. (거짓)\\n$\\therefore$ ㄴ",
+    "solution": "<b>[Logical Anchor]</b> 로그의 기본 공식과 밑 변환 공식을 정확히 판별함.\\nㄱ. $\\log_a x + \\log_a y = \\log_a (xy)$ 이므로 곱셈은 성립하지 않음. (거짓)\\nㄴ. 밑 변환 공식 $\\frac{\\log_a x}{\\log_a y} = \\log_y x$ 는 $y \\neq 1$ 일 때 참임. (참)\\nㄷ. $\\log_a x - \\log_a y = \\log_a (\\frac{x}{y})$ 임. (거짓)\\nㄹ. $\\log_a (x^n) = n\\log_a x$ 이나, 전체의 $n$제곱과는 다름. (거짓)\\n$\\therefore$ ㄴ",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",

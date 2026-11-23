@@ -717,7 +717,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "content": "어느 과수원에서 생산한 사과의 무게는 모평균이 $m$, 모표준편차가 $\\dfrac{1}{2}$인 정규분포를 따른다고 한다. 이 과수원에서 생산한 사과 중에서 $25$개를 임의추출하여 신뢰도 $\\alpha\\%$로 추정한 모평균 $m$에 대한 신뢰구간이 $[x,\\, y]$일 때, $P(|Z|\\le k)=\\alpha$를 만족시키는 $k$를 $x$, $y$로 나타내시오. (단, 확률변수 $Z$는 표준정규분포를 따른다.)",
+    "content": "어느 과수원에서 생산한 사과의 무게는 모평균이 $m$, 모표준편차가 $\\dfrac{1}{2}$인 정규분포를 따른다고 한다. 이 과수원에서 생산한 사과 중에서 $25$개를 임의추출하여 신뢰도 $\\alpha\\%$로 추정한 모평균 $m$에 대한 신뢰구간이 $[x,\\, y]$일 때, $P(|Z|\\le k)=\\dfrac{\\alpha}{100}$를 만족시키는 $k$를 $x$, $y$로 나타내시오. (단, 확률변수 $Z$는 표준정규분포를 따른다.)",
     "choices": [
       "$3(x-y)$",
       "$\\dfrac{7}{2}(x-y)$",
@@ -726,7 +726,7 @@ window.questionBank = [
       "$5(y-x)$"
     ],
     "answer": "⑤",
-    "solution": "모평균의 신뢰구간은 $m\\in\\left[\\overline{X}-k\\dfrac{\\sigma}{\\sqrt{n}},\\,\\overline{X}+k\\dfrac{\\sigma}{\\sqrt{n}}\\right]$의 꼴이다.\n따라서 신뢰구간의 길이는 $y-x=2k\\dfrac{\\sigma}{\\sqrt{n}}=2k\\cdot \\dfrac{1/2}{5}=\\dfrac{k}{5}$이다.\n그러므로 $k=5(y-x)$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "신뢰도 $\\alpha\\%$는 확률 $\\dfrac{\\alpha}{100}$으로 환산한다.\n모평균의 신뢰구간은 $m\\in\\left[\\overline{X}-k\\dfrac{\\sigma}{\\sqrt{n}},\\,\\overline{X}+k\\dfrac{\\sigma}{\\sqrt{n}}\\right]$의 꼴이다.\n따라서 신뢰구간의 길이는 $y-x=2k\\dfrac{\\sigma}{\\sqrt{n}}=2k\\cdot \\dfrac{1/2}{5}=\\dfrac{k}{5}$이다.\n그러므로 $k=5(y-x)$이다.\n따라서 정답은 ⑤이다.",
     "examId": "23_복성고_2학기_기말_고2_확률과통계",
     "displayNo": "18",
     "type": "multiple_choice",
