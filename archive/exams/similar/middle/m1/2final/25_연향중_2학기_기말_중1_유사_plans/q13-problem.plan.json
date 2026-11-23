@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "회전축을 포함하는 평면으로 자른 이등변삼각형 단면",
+  "accessibilityDescription": "밑변의 길이가 8cm이고 높이가 9cm인 이등변삼각형 단면을 나타낸 그림이다.",
+  "sourceQuote": "어떤 회전체를 회전축에 수직인 평면으로 자른",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "tri",
+      "condition": "isosceles triangle with base 8cm and height 9cm",
+      "mappedTo": "segments AB, BC, CA, AH"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "planeMarks": {},
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q13.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q13-result.json",
+    "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q13-state.json",
+    "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q13-solution.svg"
+  }
+}
