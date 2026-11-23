@@ -1276,15 +1276,18 @@ function getClassroomStatusArchiveDisplayTitle(raw = '') {
     if (!value) return '';
     const compact = value.replace(/^MIXED:/, '');
     const leaf = compact.split(/[\\/]/).pop() || compact;
-    return leaf
+    const name = leaf
         .replace(/\.js(?:\?.*)?$/i, '')
         .replace(/^exams\//, '')
         .replace(/^archive\//, '')
         .trim();
+    // 보이는 제목은 한글 제목(공용 archive/exam-display-title.js)
+    return globalThis.ExamDisplayTitle?.displayTitleOf?.(name) || name;
 }
 
 function getClassroomStatusExamDisplayTitle(row = {}) {
-    return String(row.exam_title || row.title || '').trim() ||
+    const given = String(row.exam_title || row.title || '').trim();
+    return (given && (globalThis.ExamDisplayTitle?.displayTitleOf?.(given) || given)) ||
         getClassroomStatusArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
         '출제 시험';
 }

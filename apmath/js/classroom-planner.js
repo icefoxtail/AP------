@@ -191,16 +191,18 @@ function normalizeClassroomArchiveFile(raw = '') {
     return `exams/${path}`;
 }
 
-function getClassroomExamArchiveDisplayTitle(raw = '') {
+function getClassroomExamArchiveDisplayTitle(raw = '', hint = '') {
     const s = String(raw || '').trim();
     if (!s) return '';
     const compact = s.replace(/^MIXED:/, '');
     const leaf = compact.split(/[\\/]/).pop() || compact;
-    return leaf
+    const name = leaf
         .replace(/\.js(?:\?.*)?$/i, '')
         .replace(/^exams\//, '')
         .replace(/^archive\//, '')
         .trim();
+    // 보이는 제목은 한글 제목(공용 archive/exam-display-title.js). 파일 이름 키는 제목 자리에 나오지 않는다.
+    return globalThis.ExamDisplayTitle?.displayTitleOf?.(name, { hint }) || name;
 }
 
 const CLASSROOM_UNIT_PAST_KEY_LABELS = Object.freeze({
@@ -263,7 +265,8 @@ function getClassroomExamDisplayTitle(row = {}) {
         return `${withoutDuplicateSuffix} · 단원별 기출`;
     }
 
-    return getClassroomExamArchiveDisplayTitle(archive) || rawExamTitle || '원내평가';
+    return getClassroomExamArchiveDisplayTitle(archive, rawExamTitle)
+        || globalThis.ExamDisplayTitle?.displayTitleOf?.(rawExamTitle) || rawExamTitle || '원내평가';
 }
 
 function makeExamListKey(title, date, archiveFile = '') {
