@@ -563,3 +563,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **동등성 검사 `tests/archive2-catalog-shards-authority.test.js`(실제 입력, 개수 고정 없음):** 조각 하나만으로·전부로·두 조각으로 만든 권한이 전체 권한과 모든 레코드에서 `validateBasicAssignment`·`validateAdvancedAssignment`·`basicEligibility`(ok·reasons)·`advancedEligible` 결과가 같다(둘 다 통과·탈락이 실제로 나오는지 확인해 이빨이 있다). 조각 밖 문항은 거부된다. 판정 함수가 새 키를 읽거나 화면이 권한 표를 새로 읽으면 실패한다.
 - **크기(이 PC):** 조각 11개 합계 원본 84.9MB·압축 7.44MB(1단계 6.52MB에서 +0.92MB), `common.json` 2.17MB·압축 182KB, `index.json` 압축 10KB. 한 학년·과목에 처음 들어올 때 받는 양(압축): 중1 약 0.91MB, 중3 약 1.57MB, 고2 수학I/대수 약 0.91MB, 고1 공통(조각 3개) 약 2.6MB. 요청은 index + common + 조각 수.
 - **건너뛰기 동작은 그대로:** 아직 어느 화면도 읽지 않으므로 조각 빌드 실패는 배포를 막지 않는다.
+
+## 학생 화면에서 그림 눌러서 크게 보기 (2026-11-24 원장님 결정)
+
+- 문제·해설 그림은 2단 시험지 배치에 맞춰 단 폭의 일부로 줄여 그리므로 휴대폰·패드에서 그림 속 글자가 작다. 그래서 그림 속 글자 크기를 렌더에서 더 키우지 않고, 학생이 그림을 눌러 크게 본다(원장님: "애들이 패드나 핸드폰에서 그림을 확대할 수 있으니까").
+- 구현은 공용 `archive/figure-zoom.js` + `figure-zoom.css` 하나다. **학생 화면에서만 켜진다**: 주소에 `studentReview=1`(포털이 여는 `engine.html`·`mixed_engine.html`, 유사문제 풀어보기·원본 열기 포함) 또는 `/apmath/student/` 안(포털 자습 화면 `.ss-card`). 판정은 `archive-asset-base.js`의 `isStudentPage`와 같은 두 신호다. 선생님의 출력·미리보기·인쇄·PDF 주소에는 아무것도 붙지 않는다. 오답 출력 엔진(`apmath/wrong_print_engine.html`)에는 붙이지 않는다(선생님 인쇄용, 같은 파일이 학생 `studentReview=1`로도 열리지만 이번 범위가 아니다).
+- "크게" 표시(돋보기 단추)는 그림 옆 DOM이 아니라 `body` 끝의 층(`.ap-fz-layer`) 하나에 쪽 좌표로 모아 둔다. 쪽 배치 측정과 래스터 인쇄(쪽별 캡처)에 닿지 않고, `@media print`에서 층 전체가 숨는다. 그림 요소 자체는 바꾸지 않는다(클릭은 문서 위임). 숨은 측정 칸(`#staging`)의 그림에는 표시가 없다(`#print-area` 안만 본다).
+- 열면 화면을 덮는 `role="dialog"` 층에 같은 src(SVG는 벡터 그대로, 래스터는 원본 2배까지) 또는 인라인 svg 복제를 칸에 꽉 차게 띄운다. 두 손가락 확대·끌기는 브라우저 기본(`touch-action: pan-x pan-y pinch-zoom`)이다. 닫기: 단추·그림 바깥·Esc·뒤로 가기(`pushState` 한 칸을 쓰고 `popstate`를 캡처 단계에서 받아 학생 포털의 화면 복원에는 넘기지 않는다). 열려 있는 동안 `html.ap-fz-lock`으로 뒤 스크롤을 잠그고, 닫으면 스크롤 위치와 초점(열었던 표시)을 되돌린다.
+- `?v=`: `engine.html`·`mixed_engine.html`은 CI 스탬프 제외 페이지라 `figure-zoom.js`·`.css`의 `?v=`를 손으로 올리고 두 곳을 같게 둔다(학생 포털 `apmath/student/index.html`도 스탬프 제외라 같은 값). 지키는 테스트: `tests/figure-zoom.test.js`(실제 Chrome 부분은 Chrome이 없으면 NOT_RUN).
+- 끄는 스위치: 주소에 `figureZoom=0`을 붙이면 학생 화면이어도 이 기능이 아무것도 하지 않는다. 승인된 문제 렌더를 화면 그대로 찍어 검증하는 CI 검사(`tools/check-reviewed-problem-renderer-browser.cjs`와 같은 갈래의 `check-m*` 검사)는 문제 영역에 다른 요소가 찍히면 `UI_CAPTURE_FOREIGN_CONTENT`로 실패하므로 그 주소에 `&figureZoom=0`을 붙인다. 학생 화면을 `studentReview=1`로 열어 캡처하는 새 검사를 만들 때도 같다.

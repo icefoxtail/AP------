@@ -1,0 +1,44 @@
+/*
+ * 그림 눌러서 크게 보기 (학생 화면 전용, archive/figure-zoom.js가 켠다)
+ *
+ * 이 파일의 규칙은 전부 JS가 붙이는 요소(.ap-fz-layer, .ap-fz-dialog)와 html.ap-fz-on 아래에만 걸린다. JS가 학생 화면이 아니라고
+ * 판단하면 html.ap-fz-on이 없고 층도 없으므로 선생님의 출력·미리보기·인쇄에는 아무 영향이 없다. 인쇄 매체에서는 한 번 더 숨긴다.
+ */
+html.ap-fz-on #print-area :is(.q-content, .q-image-wrap, [data-semantic-content="1"], .choices, .sol-image-wrap, .sol-exp, .sol-chunk) img,
+html.ap-fz-on .ss-card img { cursor: zoom-in; }
+
+.ap-fz-layer { position: absolute; top: 0; left: 0; width: 0; height: 0; margin: 0; padding: 0; overflow: visible; z-index: 5; pointer-events: none; }
+.ap-fz-layer[hidden] { display: none !important; }
+.ap-fz-badge {
+    position: absolute; width: 32px; height: 32px; margin: 0; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(71, 85, 105, 0.55); border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88); color: #0f172a; opacity: 0.8;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.22);
+    cursor: zoom-in; pointer-events: auto; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.ap-fz-badge:hover, .ap-fz-badge:focus-visible { opacity: 1; background: #fff; }
+.ap-fz-badge:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; }
+
+html.ap-fz-lock, html.ap-fz-lock body { overflow: hidden !important; }
+.ap-fz-dialog {
+    position: fixed; inset: 0; z-index: 2147483000; display: flex; flex-direction: column;
+    background: rgba(15, 23, 42, 0.97); color: #fff; overscroll-behavior: contain;
+}
+.ap-fz-bar { flex: none; display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 6px 12px; padding-top: max(6px, env(safe-area-inset-top)); }
+.ap-fz-title { flex: none; font-size: 15px; font-weight: 700; }
+.ap-fz-extra { flex: 1 1 auto; display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-width: 0; }
+.ap-fz-close {
+    flex: none; min-width: 64px; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 22px;
+    background: #fff; color: #0f172a; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.ap-fz-close:focus-visible, .ap-fz-stage:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+/* 두 손가락 확대와 끌어 옮기기는 브라우저 기본 동작을 쓴다(touch-action으로 막지 않는다). */
+.ap-fz-stage { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 4px 4px 12px; display: flex; touch-action: pan-x pan-y pinch-zoom; -webkit-overflow-scrolling: touch; }
+.ap-fz-figure { margin: auto; background: #fff; border-radius: 6px; padding: 2px; max-width: none; line-height: 0; }
+.ap-fz-large { display: block; max-width: none; max-height: none; margin: 0; background: #fff; }
+
+@media print {
+    .ap-fz-layer, .ap-fz-dialog { display: none !important; }
+    html.ap-fz-on :is(img, svg) { cursor: auto; }
+}

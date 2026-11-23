@@ -546,7 +546,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X가 N(300, 5²)이면 295는 z=−1, 310은 z=2이다. P(295≤X≤310)=P(−1≤Z≤2)이고 평균 0을 경계로 −1부터 0까지 0.3413, 0부터 2까지 0.4772이다. 합은 0.8185이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -825,6 +829,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "주어진 합은 이항분포 B(180, 1/6)의 P(20≤X≤45)이다. 평균 30, 분산 25, 표준편차 5이므로 N(30, 5²)으로 근사한다. 20과 45의 표준점수는 −2와 3이다. 대칭으로 −2부터 0까지는 0.4772이고 0부터 3까지는 0.4987이므로 합은 0.9759이다. 따라서 답은 0.9759이다.",
+    "solutionImageSize": "full"
   }
 ];

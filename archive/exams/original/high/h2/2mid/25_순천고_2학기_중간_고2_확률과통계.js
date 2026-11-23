@@ -158,7 +158,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "통학 시간 X가 N(30, 5²)이면 X=40의 표준화 값은 (40−30)/5=2이다. 지각은 X>40이므로 표준정규분포 곡선에서 z=2의 오른쪽 꼬리이다. 표에서 P(0≤Z≤2)=0.4772이므로 꼬리의 넓이는 0.5−0.4772=0.0228이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -351,7 +355,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(X≤5)=0.0228이므로 5의 표준화 값은 −2이고 (5−m)/2=−2에서 m=9이다. 4는 z=−2.5, 11은 z=1이므로 P(4≤X≤11)=P(−2.5≤Z≤1)이다. 표에서 0.4938+0.3413=0.8351이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -613,7 +621,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "두 근의 합이 24이므로 두 근 α, β는 평균 12에 대하여 대칭이다. P(α≤X≤β)=0.8664=2×0.4332이므로 경계는 z=±1.5이고 평균에서 거리가 1.5×2=3이다. 따라서 α=9, β=15이고 a=9×15=135이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -677,7 +689,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "확률질량함수는 성공확률 4/5인 이항분포이고 평균 4n/5=180에서 n=225이다. 분산은 225×4/5×1/5=36, 표준편차는 6이다. X≥174를 표준화하면 z=(174−180)/6=−1 이상이므로 확률은 0.5+0.3413=0.8413이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -703,7 +719,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "밀도는 평균에 가까울수록 크므로 f(11)>f(21)에서 m<16, f(5)<f(23)에서 m>14이다. m이 자연수이므로 m=15이다. 11은 z=−1, 23은 z=2이므로 P(11≤X≤23)=0.3413+0.4772=0.8185이다. 따라서 답은 0.8185이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

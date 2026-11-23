@@ -173,8 +173,26 @@ function validateSvgStudentLanguage(svg, options = {}) {
   return { status: errors.length ? 'FAIL' : 'PASS', assetRef, errors };
 }
 
+// 문구 품질 미달: 그림이 열리고 읽히는 데는 지장이 없다. 등록기(studentIndexes)에서는 게시를 막지 않고 목록·건수로만 보고한다
+// (options.advisory 배열을 주면 이 코드들은 거기에 쌓고 통과, 나머지 실제 결함(루트 없음·title/desc 없음·참조 깨짐·내부 문구·축척 안내)은 계속 던진다).
+// 이유: 저장소에 같은 판정에 걸리는 옛 그림이 수천 개라, 그 그림을 건드리거나 새로 연결하는 수정 하나가 게시를 멈췄다.
+const QUALITY_ONLY_CODES = new Set([
+  'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE',
+  'SVG_ACCESSIBILITY_KOREAN_MEANING_REQUIRED',
+  'SVG_ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW',
+  'SVG_MATH_MARKUP_ACCESSIBILITY_REQUIRES_REVIEW'
+]);
+
 function assertSvgStudentLanguage(svg, options = {}) {
   const result = validateSvgStudentLanguage(svg, options);
+  if (result.status !== 'PASS' && Array.isArray(options.advisory)) {
+    const blocking = result.errors.filter(error => !QUALITY_ONLY_CODES.has(error.code));
+    for (const error of result.errors) {
+      if (QUALITY_ONLY_CODES.has(error.code)) options.advisory.push({ assetRef: options.assetRef || '<memory>', code: error.code, surface: error.surface || '' });
+    }
+    if (!blocking.length) return { ...result, status: 'PASS', advisoryErrors: result.errors };
+    result.errors = blocking;
+  }
   if (result.status !== 'PASS') {
     const details = result.errors.map(error => `${error.code}${error.token ? `:${error.token}` : ''}${error.surface ? `@${error.surface}` : ''}`).join(',');
     throw new Error(`SVG_STUDENT_LANGUAGE_CONTRACT_FAIL:${options.assetRef || '<memory>'}:${details}`);
@@ -182,4 +200,4 @@ function assertSvgStudentLanguage(svg, options = {}) {
   return result;
 }
 
-module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage };
+module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES };

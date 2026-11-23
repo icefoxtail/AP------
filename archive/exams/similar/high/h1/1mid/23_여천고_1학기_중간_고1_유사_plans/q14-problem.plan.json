@@ -1,0 +1,47 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 포물선과 접선의 관계를 보여준다."
+  },
+  "solution": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "0",
+            "1",
+            "-1/2"
+          ]
+        }
+      ],
+      "breakpoints": [],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "formula": "-1/2*x^2+x",
+      "referenceLines": [
+        {
+          "id": "t",
+          "slope": "1-sqrt(6)",
+          "intercept": "3"
+        }
+      ],
+      "requiredPoints": [
+        {
+          "id": "Y",
+          "x": 0,
+          "y": 3
+        }
+      ],
+      "axisTickValues": {
+        "x": [],
+        "y": [
+          3
+        ]
+      }
+    },
+    "caption": "점 (0, 3)을 지나고 기울기가 1-sqrt(6)인 직선이 포물선 y=-1/2x^2+x에 접한다."
+  }
+}

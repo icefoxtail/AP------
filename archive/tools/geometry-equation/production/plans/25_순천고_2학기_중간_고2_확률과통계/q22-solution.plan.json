@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "15",
+        "sd": "4",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "11"
+      },
+      {
+        "x": "15"
+      },
+      {
+        "x": "23"
+      }
+    ],
+    "shades": [
+      {
+        "from": "11",
+        "to": "15",
+        "color": "BLUE"
+      },
+      {
+        "from": "15",
+        "to": "23",
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.3413"
+      },
+      {
+        "shade": 1,
+        "text": "0.4772"
+      }
+    ]
+  },
+  "caption": "밀도는 평균에 가까울수록 크므로 f(11)>f(21)에서 m<16, f(5)<f(23)에서 m>14이다. m이 자연수이므로 m=15이다. 11은 z=−1, 23은 z=2이므로 P(11≤X≤23)=0.3413+0.4772=0.8185이다. 따라서 답은 0.8185이다.",
+  "newVisualInformation": [
+    "평균 m=15와 구간 [11, 23]이 z=−1부터 2까지에 대응하고 두 부분 넓이 0.3413과 0.4772를 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형1&gt; 평균이 $m$, 표준편차가 $4$인 정규분포를 따르는 확률변수 $X$의 확률밀도함수 $f(x)$가 다음 조건을 만족시킨다.<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">(가) $f(11)>f(21)$<br>(나) $f(5)<f(23)$</div>$m$이 자연수일 때, $P(11\\le X\\le23)$의 값을 오른쪽 표준정규분포표를 이용하여 구하시오. 서술형 답안지에 자세한 풀이와 함께 서술하시오. [부분 점수 있음, 6점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$0.5$</td><td>$0.1915$</td></tr><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -176,7 +176,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           externalRequests.push({ host: url.hostname, urlSha256: sha256(url.href) });
           return route.abort('blockedbyclient');
         }));
-        const url = `${origin}/archive/engine.html?data=${encodeURIComponent(sourcePath.slice('archive/'.length))}&mode=exam&fit=screen&studentReview=1`;
+        const url = `${origin}/archive/engine.html?data=${encodeURIComponent(sourcePath.slice('archive/'.length))}&mode=exam&fit=screen&studentReview=1&figureZoom=0`;
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await page.waitForFunction(() => {
           const readiness = JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}');

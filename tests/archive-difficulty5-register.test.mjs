@@ -7,11 +7,11 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync, spawnSync } from "node:child_process";
-import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, normalizeGeminiPayload, bindDifficulty5Source, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, computeLegacyCompat, wrapGeminiFile, normalizeGeminiPayload, bindDifficulty5Source, sourceTextUnchangedSinceRequest, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const FIXTURE = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
-const gemini = JSON.parse(fs.readFileSync(FIXTURE, "utf8"));
+const FIXTURE_RAW = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
+const gemini = JSON.parse(fs.readFileSync(FIXTURE_RAW, "utf8"));
 const SOURCE = gemini.sourceArchiveFile;
 // The fixture is a derived copy of one real exam's difficulty request. Its latestBlobSha must not pin the live exam
 // file: publishing a solution figure to that exam changes the blob and would redden this test until someone repins it
@@ -20,6 +20,11 @@ const SOURCE = gemini.sourceArchiveFile;
   const lf = Buffer.from(fs.readFileSync(path.join(repo, "archive/exams", SOURCE)).toString("utf8").replace(/\r\n/g, "\n"), "utf8");
   gemini.latestBlobSha = crypto.createHash("sha1").update("blob " + lf.length + "\0").update(lf).digest("hex");
 }
+// The CLI/wrap tests read the request from a file. The checked-in fixture carries the exam's blob at fixture-creation time, and the live exam is a
+// working file that keeps being corrected, so those tests read a temp copy that carries the load-time blob above (same content otherwise).
+const FIXTURE = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "diff5-fixture-")), "req_diff5_17.json");
+fs.writeFileSync(FIXTURE, JSON.stringify(gemini, null, 2) + "\n");
+process.on("exit", () => fs.rmSync(path.dirname(FIXTURE), { recursive: true, force: true }));
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");
@@ -187,6 +192,51 @@ test("latestBlobSha drift rejects the whole file", t => {
   const g = structuredClone(gemini); g.latestBlobSha = "0".repeat(40);
   assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g), write: true }), /blob drift/);
   assert.deepEqual(x.snap(), before);
+});
+
+test("a source edited after the request was made is accepted when the stem and choices of the requested questions are unchanged", t => {
+  const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" });
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "diff5-text-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const file = path.join(root, "exam.js");
+  git("init", "-q");
+  git("config", "user.email", "t@example.invalid"); git("config", "user.name", "t");
+  const original = sourceBytes.toString("utf8").replace(/\r\n/g, "\n");
+  fs.writeFileSync(file, original);
+  git("add", "exam.js"); git("commit", "-qm", "request time");
+  const requestBlob = git("rev-parse", "HEAD:exam.js").trim();
+  const request = { gemini: { latestBlobSha: requestBlob, items: [{ ordinal: 1 }, { ordinal: 2 }] } };
+  const edit = (re, to) => { assert.match(original, re); return Buffer.from(original.replace(re, to), "utf8"); };
+  // solution edit (any question): same stem and choices, accepted
+  assert.equal(sourceTextUnchangedSinceRequest({ root, request, sourceBytes: edit(/("solution": ")/, "$1(수정) ") }).ok, true);
+  // stem edit of a requested question: refused
+  const stem = sourceTextUnchangedSinceRequest({ root, request, sourceBytes: edit(/("content": ")/, "$1(조건 추가) ") });
+  assert.equal(stem.ok, false);
+  assert.match(stem.reason, /stem\/choices changed/);
+  // a blob that git does not know cannot be compared: refused
+  assert.equal(sourceTextUnchangedSinceRequest({ root, request: { gemini: { ...request.gemini, latestBlobSha: "0".repeat(40) } }, sourceBytes }).ok, false);
+});
+
+test("registrar end to end: an exam solution edited after the request is accepted, a stem edit and a reviewed correction keep the blob refusal", t => {
+  const x = make(t);
+  const git = (...args) => execFileSync("git", args, { cwd: x.root, encoding: "utf8" });
+  const examFile = path.join(x.root, "archive/exams", SOURCE);
+  const original = sourceBytes.toString("utf8").replace(/\r\n/g, "\n");
+  fs.writeFileSync(examFile, original);
+  git("init", "-q"); git("config", "user.email", "t@example.invalid"); git("config", "user.name", "t");
+  git("add", "-A"); git("commit", "-qm", "request time");
+  const g = structuredClone(gemini); g.latestBlobSha = git("rev-parse", "HEAD:archive/exams/" + SOURCE).trim();
+  assert.equal(registerDifficulty5({ root: x.root, request: x.req(g) }).summary.APPLY, 23, "unchanged source");
+  // solution-only edit after the request: stem and choices unchanged, so the request still applies
+  fs.writeFileSync(examFile, original.replace(/("solution": ")/, "$1(수정) "));
+  assert.equal(registerDifficulty5({ root: x.root, request: x.req(g) }).summary.APPLY, 23, "solution edit accepted");
+  // stem edit of a requested question: the grade belongs to another problem
+  fs.writeFileSync(examFile, original.replace(/("content": ")/, "$1(조건 추가) "));
+  assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g) }), /blob drift/);
+  // a reviewed correction keeps the exact whole-file blob binding even for a solution-only edit
+  fs.writeFileSync(examFile, original.replace(/("solution": ")/, "$1(수정) "));
+  const bytes = fs.readFileSync(examFile);
+  assert.equal(sourceTextUnchangedSinceRequest({ root: x.root, request: { ...x.req(g), reviewedCorrection: {} }, sourceBytes: bytes }).ok, false);
 });
 
 test("examData.questions is accepted as the source bank without relaxing identity guards", t => {

@@ -123,7 +123,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X가 N(10, 4²)이면 X=8은 z=−0.5, X=14는 z=1이다. P(8≤X≤14)=P(−0.5≤Z≤1)은 평균 0을 경계로 나눈 두 부분의 합이다. 대칭성으로 P(−0.5≤Z≤0)=P(0≤Z≤0.5)=0.1915이고 P(0≤Z≤1)=0.3413이므로 합은 0.5328이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -375,7 +379,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "이항분포의 평균은 625×1/5=125, 분산은 625×1/5×4/5=100이므로 표준편차는 10이다. 정규분포로 근사하면 X=105는 z=−2, X=140은 z=1.5이다. P(−2≤Z≤1.5)=0.4772+0.4332=0.9104이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -407,7 +415,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(X≤k)=P(X≥40−k)가 모든 k에서 성립하면 곡선이 직선 x=20에 대하여 대칭이므로 m=20이다. X=14는 z=−1.5, X=16은 z=−1이다. 14부터 16까지의 넓이는 대칭인 24부터 26까지(z=1부터 1.5)의 넓이와 같고 0.4332−0.3413=0.0919이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -561,7 +573,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "성공 횟수는 B(150, 0.6)이므로 평균 90, 분산 150×0.6×0.4=36, 표준편차 6이다. 0.8413=0.5+0.3413이므로 P(Z≤1)이고 경계가 z=1이다. (a−90)/6=1에서 a=96이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -593,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "곡선과 직선이 만나려면 x²+(W−1)x+(1−W)=0의 판별식 (W−1)(W+3)≥0이어야 하므로 W≤−3 또는 W≥1이다. W가 N(1, 4²)이면 W=−3은 z=−1, W=1은 z=0이다. 왼쪽 꼬리 0.1587과 오른쪽 절반 0.5를 더해 0.6587이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -700,6 +720,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "+2 이동 횟수를 K라 하면 K는 B(450, 2/3)이고 위치 S=3K−450이다. K는 근사적으로 N(300, 100)이므로 S는 N(450, 900), 표준편차 30이다. S≤465는 z=(465−450)/30=0.5 이하이므로 확률은 0.5+0.1915=0.6915이다.",
+    "solutionImageSize": "full"
   }
 ];
