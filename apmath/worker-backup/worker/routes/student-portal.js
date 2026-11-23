@@ -235,7 +235,19 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     ...(classScope || []),
     ...(exactAssignmentId ? [] : [safeLimit])
   ];
-  const [assignments, sessions] = await Promise.all([
+  // exam_sessions has no wrong_ids column: the wrong numbers live in wrong_answers (one row per wrong position, written by omr-submit).
+  // One read-only join for this student's sessions (both ids must be the student), never one query per exam. A failed read is
+  // reported as "unknown" (wrong_ids: null) instead of "no wrong answers".
+  const wrongRowsPromise = env.DB.prepare(`
+    SELECT wa.session_id AS session_id, wa.question_id AS question_id
+    FROM wrong_answers wa
+    JOIN exam_sessions es ON es.id = wa.session_id
+    WHERE es.student_id = ?
+      AND wa.student_id = ?
+      ${exactAssignmentId ? 'AND es.assignment_id = ?' : ''}
+  `).bind(...(exactAssignmentId ? [studentId, studentId, exactAssignmentId] : [studentId, studentId])).all()
+    .then(result => result.results || [], () => null);
+  const [assignments, sessions, wrongRows] = await Promise.all([
     env.DB.prepare(`
       WITH scoped_assignments AS (
         SELECT
@@ -271,8 +283,15 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
         ${exactAssignmentId ? 'AND assignment_id = ?' : ''}
       ORDER BY exam_date DESC, updated_at DESC
       ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT 300'}
-    `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all()
+    `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all(),
+    wrongRowsPromise
   ]);
+  const wrongBySession = new Map();
+  (wrongRows || []).forEach(row => {
+    const key = String(row.session_id || '');
+    if (!wrongBySession.has(key)) wrongBySession.set(key, []);
+    wrongBySession.get(key).push(row.question_id);
+  });
 
   const sessionByAssignment = new Map();
   const sessionByExam = new Map();
@@ -338,7 +357,9 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
       session_id: session?.id || null,
       score: session?.score ?? null,
       submitted_at: session?.updated_at || session?.created_at || null,
-      wrong_ids: normalizeWrongIds(session?.wrong_ids || [], Number(row.question_count || session?.question_count || 0))
+      wrong_ids: wrongRows === null && session
+        ? null
+        : normalizeWrongIds(session ? wrongBySession.get(String(session.id || '')) || [] : [], Number(row.question_count || session?.question_count || 0))
     };
   });
 }

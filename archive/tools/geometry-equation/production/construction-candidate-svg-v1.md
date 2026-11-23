@@ -25,7 +25,7 @@ browser it launched itself.
 
 - `identity` is recomputed with `assetIdentity(identity.questionUid, identity.surface, identity.visualRole)` before any worker call and must equal the given object field by field, with no extra field; otherwise `FRAGMENT_IDENTITY_INVALID` (`detail.reason` `MISSING`, `NOT_RECOMPUTABLE` or `FIELD_MISMATCH`). The spec id is `identity.assetId` and the verified object is passed to the typesetter unchanged (runPhase2 423 and 627), so the question, surface and role are part of every fragment namespace and fragment hash. A caller that passes the same identity runPhase2 would use gets the same fragment bytes.
 - `status`: `COMPOSED` or one of
-  - input: `UNSUPPORTED_CAPABILITY` (not `construction-spike-v1` with a `construction-spike-v1` `mathPlan`, or a `graphPlan` present), `TYPOGRAPHY_POLICY_INVALID` (wrong schema, non-finite, `baseFontPx` or `fontFloorCssPx` below 11, non-positive scale, or `baseFontPx x displayScale < fontFloorCssPx`; `detail.reason`), `FRAGMENT_IDENTITY_INVALID`, `INPUT_NOT_CANONICAL`
+  - input: `UNSUPPORTED_CAPABILITY` (not `construction-spike-v1` with a `construction-spike-v1` `mathPlan`, or a `graphPlan` present), `TYPOGRAPHY_POLICY_INVALID` (wrong schema, non-finite, `baseFontPx` or `fontFloorCssPx` below 11, or non-positive scale; `detail.reason`. Since 2026-11-23 a displayed font `baseFontPx x displayScale` below `fontFloorCssPx` is no longer invalid: the rendered layout records it as `displayTextBelow11px`), `FRAGMENT_IDENTITY_INVALID`, `INPUT_NOT_CANONICAL`
   - binding: `MODEL_PLAN_MISMATCH` (`compareReconstruction` not PASS, or the peer threw an error whose message starts with `CINDY_`; `detail.failedIds`/`errors`/`code`), `UNSUPPORTED_NUMERIC_SCOPE` (message starts with `UNSUPPORTED_CINDY_`). Any other exception from the peer propagates.
   - spec/fragments: `SPEC_ERROR` (`specFor` threw a plain `Error` whose message is an UPPER_SNAKE code; any other exception propagates), `WORKER_ERROR` (`detail.stage` in `prepare`/`build`/`staticAudit`, original `code`, `workerStatus` when the worker answered), `UNSUPPORTED_MULTILINE_LABEL` (`CONDITION_BOX`), `FRAGMENT_TYPESET_ERROR` (same plain-code rule), `FRAGMENT_BROWSER_MEASUREMENT_MISSING`
   - layout: `LAYOUT_INVENTORY_INCOMPLETE` (`witness.layout.unresolved`/`suppressed` not empty), `LAYOUT_REPAIR_NOT_BOUND` (`repairs` not empty: a repair needs Archive profile/policy refs, so it is refused, never accepted)
@@ -53,9 +53,9 @@ measured owner-safe layout repair binding and its audit (674-688, 693-707; refus
 (`auditCandidateProfiles`); the actual Archive `mode=sol` capture; independent visual review; qualification; any Archive asset or
 student JS write. Graph plans (`graphPlan`) are out of scope. `displayScale` has no upper bound in the policy check.
 
-Boundary: a policy whose font product sits exactly on the floor (for example `baseFontPx 20`, `displayScale 0.55`)
-passes the policy check but was observed to render just under 11 CSS px in the Chrome used for the tests, and is then
-reported as `RENDERED_LAYOUT_FAIL`. That depends on the browser's layout rounding and scale factor and is environment
+Boundary (until 2026-11-23): a policy whose font product sits exactly on the floor (for example `baseFontPx 20`, `displayScale 0.55`)
+rendered just under 11 CSS px in the Chrome used for the tests and was reported as `RENDERED_LAYOUT_FAIL`. Since 2026-11-23 the displayed font floor is released
+(owner decision: students zoom in), so such a policy composes and `renderedLayout.displayTextBelow11px` is true when a label displays under 11 CSS px. The authored font (`baseFontPx >= 11`) keeps its floor. The value depends on the browser's layout rounding and scale factor and is environment
 dependent. `requestedProfileTypographyPolicy` targets the floor plus `comfortCssPx` (default 0.25), so a policy built by it
 does not sit exactly on the floor.
 A baseline font of 24.9 px (the medium-class fixture) leaves a tick label unresolved in the triangle example and is

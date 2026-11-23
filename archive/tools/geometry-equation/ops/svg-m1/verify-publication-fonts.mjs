@@ -29,8 +29,8 @@ export function evaluatePublicationFonts(measurement,sourceSvgSha,responseSha){
   }
   if(all.some(x=>!Number.isFinite(x.finalViewportCssFontPx)||x.finalViewportCssFontPx<=0))throw Error('FAIL: missing or unmeasurable labels');
   const minFontPx=Math.min(...all.map(x=>x.finalViewportCssFontPx));
-  if(minFontPx<11)throw Error('FAIL: font below 11 CSS px');
-  return {fontApplicability:'APPLICABLE',minFontPx};
+  // 2026-11-23 (owner): a measured (displayed) font below 11 CSS px no longer fails the publication; it is recorded as displayTextBelow11px ("students zoom in"). Missing or non-finite metrics still fail above.
+  return {fontApplicability:'APPLICABLE',minFontPx,...(minFontPx<11?{displayTextBelow11px:true}:{})};
 }
 
 export async function main(){

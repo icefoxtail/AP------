@@ -110,7 +110,7 @@ function harness() {
     drawOmrInput: exam => calls.draws.push({ type: 'omr', id: exam.assignment_id }),
     updateOmrDraftSummary() {},
     drawWrongClinicReview: packet => calls.draws.push({ type: 'clinic', id: packet.packet_key }),
-    renderOmrReviewActions: () => '', renderOmrPdfAction: () => '',
+    renderOmrReviewActions: () => '', renderOmrPdfAction: () => '', renderSelfStudyActions: () => '',
     getVisibleOmrExams: () => Array.from(exams.values()),
     renderOmrExamBrowser: () => '<div>exam browser</div>',
     loadOmrExams: async () => {},

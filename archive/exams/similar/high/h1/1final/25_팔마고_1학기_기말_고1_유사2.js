@@ -23,7 +23,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$2x-1\\le5$에서 $x\\le3$, $x-a>0$에서 $x>a$이다. 정수해가 정확히 두 개라면 맨 위의 두 정수 $2,3$만 들어가야 하므로 정수 $a=1$이다. 정답은 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$x^2-(k+2)x+2k=(x-2)(x-k)$이다. 이 곱이 0 이하인 정수는 $2$와 $k$ 사이의 모든 정수다. 자연수 $k\\ge2$에서는 $k-1$개이므로 $k-1=5$에서 $k=6$이다. $k=1$은 두 정수뿐이므로 제외한다. 정답은 ③이다.",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "두 주사위 눈의 합은 2부터 12까지다. 4의 배수는 4, 8, 12이고 합이 4인 경우는 3가지, 8인 경우는 5가지, 12인 경우는 $(6,6)$ 한 가지다. 전체 $3+5+1=9$가지로 ③이다.",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$nP_4=n(n-1)(n-2)(n-3)$, $nP_2=n(n-1)$이다. $n\\ge4$이므로 공통인 $n(n-1)$을 약분해 $(n-2)(n-3)=12$를 얻는다. 연속된 양의 정수 4와 3이므로 $n=6$이다. 정답은 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "21"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
+    "solution": "같은 위치 성분을 비교하면 $x+y=5$, $x-y=1$, $z^2=4$이다. 앞 두 식에서 $x=3,y=2$이고 $z>0$에서 $z=2$다. 따라서 $x^2+y^2+z^2=9+4+4=17$로 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "17"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
+    "solution": "$2A-X=3B$에서 $X=2A-3B$이다. $A$의 성분 합은 $2-1+1+3=5$, $B$의 성분 합은 $-1+2+0-2=-1$이다. 그러므로 $X$의 성분 합은 $2\\cdot5-3\\cdot(-1)=13$으로 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "$5<a\\le6$"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$|x-1|\\ge2$는 $x\\le-1$ 또는 $x\\ge3$이다. $-2\\le x<a$, $a>0$과 교집합을 취하면 정수 $-2,-1$은 항상 포함된다. 정확히 네 개가 되려면 양의 쪽에서 3,4만 더 포함되어야 하므로 $4<a\\le5$이다. 정답은 ①이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "모든 실수 $x$에 대해 $2x-1\\le ax+b$이려면 $(a-2)x+(b+1)\\ge0$이어야 하므로 $a=2$이고 $b\\ge-1$이다. 또 $2x+b\\le x^2+2x+3$에서 $x^2+3-b\\ge0$이 모든 실수에 대해 성립해야 하므로 $b\\le3$이다. 따라서 $a+b$의 최댓값은 $2+3=5$로 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "최고차항 계수가 1이고 $f(x)<0$의 해가 $-1<x<3$이므로 $f(x)=(x+1)(x-3)$이다. $u=1-x$로 치환하면 $f(1-x)=(2-x)(-2-x)=(x-2)(x+2)$다. 이는 $x\\le-2$ 또는 $x\\ge2$에서 0 이상이므로 자연수 최솟값은 2로 ②이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "27"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "삼각형이 되려면 짧은 두 변의 합이 긴 변보다 커야 하므로 $(x-2)+x>x+2$, 즉 $x>4$이다. 가장 긴 변 $x+2$에 대해 둔각 조건 $(x+2)^2>(x-2)^2+x^2$를 정리하면 $x(x-8)<0$이므로 $x<8$이다. 정수 $x=5,6,7$의 합은 18로 ②이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "어른 $n$명과 어린이 3명을 모두 서로 구별하면 전체 배열은 $(n+3)!$가지다. 양 끝이 모두 어른인 배열은 $n(n-1)(n+1)!$가지이므로 적어도 한 끝에 어린이가 있는 경우는 그 차이다. $n=4$에서 $7!-4\\cdot3\\cdot5!=5040-1440=3600$이고 $n$이 증가할수록 수가 증가하므로 $n=4$다. 정답은 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "s"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "문자의 사전순은 $e<i<l<m<s$이다. 첫 글자별 24개씩이므로 85번째는 73~96번째인 $m$ 묶음의 13번째다. 그 안에서 둘째 글자별 6개씩이므로 13번째는 둘째가 $l$인 묶음의 첫 번째다. 남은 $e,i,s$를 사전순으로 놓으면 85번째 문자열은 $mleis$다. 마지막 글자는 $s$이므로 ⑤이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
     "subUnit": "permutation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "조합 수 $\\binom{2k}{x}=\\binom{2k}{y}$이고 $x<y$이면 아래첨자가 다르므로 대칭성으로 $x+y=2k$여야 한다. 자연수인 순서쌍은 $(1,2k-1),\\ldots,(k-1,k+1)$의 $k-1$개다. 이것이 3개이므로 $k=4$로 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -387,7 +387,7 @@ window.questionBank = [
       "30"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ④이다.",
+    "solution": "제품 X의 단위 이익은 $5-2=3$, Y의 이익은 $7-3=4$이다. 상반기 이익은 $3\\cdot10+4\\cdot15=90$이고 하반기 이익은 $3x+4\\cdot20=3x+80$이다. 하반기가 50만큼 많으므로 $3x+80=140$, 따라서 $x=20$으로 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -415,7 +415,7 @@ window.questionBank = [
       "125"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ②이다.",
+    "solution": "행렬을 곱하면 왼쪽은 $\\begin{pmatrix}x^2+y^2&x+2y\\\\x-y&-1\\end{pmatrix}$이다. 오른쪽과 비교해 $x^2+y^2=10$, $x+2y=5$, $x-y=2x-y+1$을 얻으므로 $x=-1$, $y=3$이다. 조건 $x<y$도 만족한다. 따라서 $(x+y)^3=2^3=8$로 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -443,7 +443,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "교집합이 $x\\ge k$처럼 오른쪽으로 무한히 이어지면서 왼쪽 먼 곳에는 해가 없다면, 두 이차식의 최고차항 계수 $m+n$, $m-n$ 중 하나는 0이어야 한다. $m>0$에서 $n=-m$이면 공통해는 왼쪽 방향이 되어 조건과 맞지 않는다. $n=m$이면 첫 부등식은 $m(2x+3)(x-2)\\ge0$, 둘째는 $mx\\ge0$이다. 교집합은 $x\\ge2$이므로 $k=2$이고 ④이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -471,7 +471,7 @@ window.questionBank = [
       "95"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "정확히 두 상자만 번호가 일치하고 1번 상자는 일치하지 않으므로 일치할 두 상자는 2~6번 중에서 고른다. 이는 $\\binom52=10$가지다. 나머지 네 상자의 공은 모두 자기 번호와 다른 곳에 있어야 하므로 완전순열 $!4=9$가지다. 전체는 $10\\cdot9=90$가지로 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -501,7 +501,7 @@ window.questionBank = [
       "48"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "그림의 5단 계단은 위부터 가로 1,2,3,4,5칸이다. 모든 직사각형은 가장 위에 포함하는 행을 $r$이라 하면 $(6-r)\\binom{r+1}{2}$개씩 생겨 합이 $5+12+18+20+15=70$개다. 정사각형은 1×1이 15개, 2×2가 6개, 3×3이 1개로 22개다. 따라서 정사각형이 아닌 직사각형은 $70-22=48$개로 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -529,7 +529,7 @@ window.questionBank = [
       "24"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ⑤이다.",
+    "solution": "행렬 $P$는 $45^\\circ$ 회전 행렬이고 $Q$는 $-30^\\circ$ 회전 행렬이다. 곱 $PQ$는 $15^\\circ$ 회전이며 $(PQ)^n$은 $15n^\\circ$ 회전에 대응한다. 처음 단위행렬이 되는 최소 양의 정수는 $15n=360$을 만족하는 $n=24$다. 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -553,7 +553,7 @@ window.questionBank = [
     "content": "$x$에 대한 부등식 $(k-3)x^2-2(k-3)x+4>0$ 이 모든 실수 $x$에 대하여 성립하도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "18",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 18이다.",
+    "solution": "식을 완전제곱하면 $(k-3)x^2-2(k-3)x+4=(k-3)(x-1)^2+7-k$이다. $k<3$이면 아래로 열려 모든 실수에서 양수가 될 수 없다. $k=3$이면 값이 4라 항상 양수다. $k>3$이면 최솟값 $7-k>0$이어야 하므로 정수 $k=4,5,6$이다. 모든 정수는 3,4,5,6으로 합이 18이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -577,7 +577,7 @@ window.questionBank = [
     "content": "부등식 $|x+2|+2|x-1|<a$ 를 만족시키는 정수 $x$의 개수가 $5$개가 되도록 하는 모든 자연수 $a$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "24",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 24이다.",
+    "solution": "$|x+2|+2|x-1|$은 $x=-2,1$에서 식이 바뀐다. 정수 $x=-2,-1,0,1,2$의 함수값은 차례로 $6,5,4,3,6$이고, 다음 바깥 정수 $-3,3$에서는 값이 9다. 부등식은 엄격한 $<a$이므로 정확히 이 다섯 정수만 해가 되려면 자연수 $a=7,8,9$다. 합은 24다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -601,7 +601,7 @@ window.questionBank = [
     "content": "$1$번부터 $8$번까지 번호가 붙은 $8$개의 상자에 서로 같은 공 $3$개를 넣으려고 한다. 한 상자에 많아야 $1$개의 공만 들어갈 수 있고, 공이 들어간 상자의 번호 중 어느 두 개도 서로 이웃하지 않도록 공을 넣는 모든 방법의 수를 구하시오.",
     "choices": [],
     "answer": "20",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 20이다.",
+    "solution": "공이 들어갈 상자 번호를 $1\\le a<b<c\\le8$이라 하면 서로 이웃하지 않게 하려면 $a+1<b$, $b+1<c$이다. $u=a$, $v=b-1$, $w=c-2$로 바꾸면 $1\\le u<v<w\\le6$이므로 경우의 수는 $\\binom63=20$이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -625,7 +625,7 @@ window.questionBank = [
     "content": "행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ -1 & 3 \\end{pmatrix}$ 에 대하여 등식 $A^4-4A^3+6A^2-A-5E=pA+qE$ 를 만족시키는 두 실수 $p,q$가 존재한다. 이때 $p-q$의 값을 구하시오. (단, $E$는 단위행렬이다.)",
     "choices": [],
     "answer": "13",
-    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 13이다.",
+    "solution": "$\\mathrm{tr}(A)=4$, $\\det(A)=5$이므로 $A^2-4A+5E=O$, 즉 $A^2=4A-5E$다. 이를 반복하면 $A^3=11A-20E$, $A^4=24A-55E$이다. 주어진 식은 $(24-44+24-1)A+(-55+80-30-5)E=3A-10E$이므로 $p=3,q=-10$, 따라서 $p-q=13$이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",

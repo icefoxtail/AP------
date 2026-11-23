@@ -582,6 +582,10 @@ const requiredCommands = [
     args: ['--test', 'tests/apmath-omr-result-identity.test.mjs']
   },
   {
+    label: 'tests/student-portal-wrong-ids-reload.test.mjs',
+    args: ['--test', 'tests/student-portal-wrong-ids-reload.test.mjs']
+  },
+  {
     label: 'tests/apms-clinic-uid-refresh.test.cjs',
     args: ['--test', 'tests/apms-clinic-uid-refresh.test.cjs']
   },

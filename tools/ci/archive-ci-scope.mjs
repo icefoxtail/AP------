@@ -56,7 +56,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
     'tools/check-archive2-runtime.cjs', 'tools/check-archive2-finder-filter-browser.cjs',
     'tools/check-archive-rpm-middle-browser.cjs',
     'tools/check-archive-content-browser.mjs', 'tests/archive-original-exam-access.browser.cjs',
-    'tests/archive2-solution-loading-browser.cjs',
+    'tests/archive2-solution-loading-browser.cjs', 'tests/archive2-preview-print-parity.e2e.cjs',
     'tests/fixtures/archive2-output-browser-smoke.html', 'tests/fixtures/archive2-pdf-readiness-browser-smoke.html',
   ]),
   registration: Object.freeze([

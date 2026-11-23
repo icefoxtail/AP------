@@ -78,7 +78,7 @@ outlines. Its 12-unit outer label margin is distinct from the legacy 32-unit plo
 margin; legacy publication bytes/profile remain unchanged. Required axis ticks
 keep their coordinate alignment and are placed before auxiliary equation labels.
 Source metric labels use the existing LENGTH_LABEL path with typed unit suffixes.
-The actual CSS font floor is 11px. Phase 3 resolves the current Archive `.sol-meta`
+The authored font floor is 11 SVG units; the displayed CSS font floor (11px) was released on 2026-11-23 (recorded as displayTextBelow11px, not a failure). Phase 3 resolves the current Archive `.sol-meta`
 content box and small/medium/large/full image policy before layout. It captures the
 same candidate SVG at every measured image size, binds each label/font/stroke and
 topology record to the SVG SHA and browser screenshot, and selects the smallest

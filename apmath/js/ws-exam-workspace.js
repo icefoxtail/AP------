@@ -190,6 +190,52 @@ function wsxOpenClinic(sid) {
     });
 }
 
+// 이 시험을 본 반 전체의 학생별 오답 클리닉(기존 출력 센터, "학생별 오답" 모드·오답 있는 학생 전원 선택)으로 가는 한 줄.
+// 목표 문항: 틀린 문항만(기본, 지금 단추와 같은 동작) / 20 / 30. 20·30을 고르면 센터가 열린 뒤 학생마다 부족한 만큼 유사 문항을 자동으로 채운다.
+function wsxClassClinicRows(detail) {
+    return detail ? detail.rows.filter(r => !r.pending && r.session && r.wrongs.length) : [];
+}
+
+function wsxClassClinicHtml(detail) {
+    if (typeof openClinicForClassExams !== 'function' || detail.exam.isDraft) return '';
+    const rows = wsxClassClinicRows(detail);
+    if (!rows.length) return '';
+    const target = String(wsx.classClinicTarget || '0');
+    const opt = (value, label) => `<option value="${value}"${target === value ? ' selected' : ''}>${label}</option>`;
+    return `<div class="wsx-classclinic">
+        <label class="wsx-classclinic__label" for="wsx-classclinic-target">반 전체 · 학생별 오답 클리닉 <span class="wsx-classclinic__sub">오답 있는 ${rows.length}명</span></label>
+        <div class="wsx-classclinic__row">
+            <select id="wsx-classclinic-target" class="apms-unified-control wsx-classclinic__select" onchange="wsxSetClassClinicTarget(this.value)" aria-label="문항 수">
+                ${opt('0', '틀린 문항만')}${opt('20', '20문항으로')}${opt('30', '30문항으로')}
+            </select>
+            <button type="button" class="btn apms-unified-quiet wsx-btn wsx-classclinic__open" onclick="wsxOpenClassClinic()">열기</button>
+        </div>
+    </div>`;
+}
+
+function wsxSetClassClinicTarget(value) {
+    if (wsx) wsx.classClinicTarget = ['20', '30'].includes(String(value)) ? String(value) : '0';
+}
+
+function wsxOpenClassClinic() {
+    const detail = wsxDetail();
+    const rows = wsxClassClinicRows(detail);
+    if (!rows.length || typeof openClinicForClassExams !== 'function') {
+        toast('오답이 있는 제출 학생이 없거나 클리닉 화면을 불러오지 못했습니다.', 'warn');
+        return;
+    }
+    if (!wsxConfirmLeave()) return;
+    const session = rows[0].session;
+    const targetCount = Number(wsx.classClinicTarget) >= 1 ? Number(wsx.classClinicTarget) : 0;
+    openClinicForClassExams(wsx.classId, [{
+        sessionId: session.id,
+        examDate: session.exam_date || detail.exam.date,
+        examTitle: session.exam_title || detail.exam.title,
+        archiveFile: session.archive_file || detail.exam.archiveFile || '',
+        questionCount: session.question_count || detail.qCount
+    }], targetCount ? { targetCount } : {});
+}
+
 function wsxWeakUnitsHtml(detail) {
     const items = wsExamWeakUnits(wsx.source, detail);
     if (!items.length) return '<div class="wsx-weak__empty">오답 단원 데이터 없음</div>';
@@ -316,6 +362,7 @@ function wsxDetailHtml() {
                 ${wsxPdfButtonHtml(detail)}
                 ${exam.isDraft ? '' : '<button type="button" class="btn wsx-btn wsx-btn--danger" onclick="wsxDeleteExam()">시험 기록 전체 삭제</button>'}
             </div>
+            ${wsxClassClinicHtml(detail)}
         </div>
         <div class="wsx-filter" role="group" aria-label="학생 보기">${tab('all', '전체', detail.total)}${tab('pending', '미제출', detail.pendingCount)}${tab('done', '제출', detail.submittedCount)}</div>
         <div class="wsx-students" id="wsx-students">${wsxStudentsHtml(detail)}</div>

@@ -241,7 +241,7 @@ window.questionBank = [
     "id": 6,
     "questionNumber": 6,
     "questionType": "객관식",
-    "content": "[6-8번] 확률변수 $Z$는 표준정규분포를 따른다. 오른쪽 표를 보고 아래 문제들을 해결하시오.<br><table border='1'><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4983</td></tr></table><br>6. 확률변수 $X$가 정규분포 $N(70, 3^2)$을 따를 때, $P(67 \\le X \\le 74.5)$의 값은? [3.4점]",
+    "content": "[6-8번] 확률변수 $Z$는 표준정규분포를 따른다. 오른쪽 표를 보고 아래 문제들을 해결하시오.<br><table border='1'><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></table><br>6. 확률변수 $X$가 정규분포 $N(70, 3^2)$을 따를 때, $P(67 \\le X \\le 74.5)$의 값은? [3.4점]",
     "choices": [
       "$0.7745$",
       "$0.8185$",

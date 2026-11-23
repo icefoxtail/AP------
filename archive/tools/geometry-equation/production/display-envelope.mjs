@@ -34,9 +34,13 @@ export function requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSv
   if(profile?.status!=='PASS'||!finiteRect(profile.imageRect)||profile.naturalWidth!==intrinsicSvg.width||profile.naturalHeight!==intrinsicSvg.height)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_MEASUREMENT_INVALID');
   const displayScale=Math.min(profile.imageRect.width/intrinsicSvg.width,profile.imageRect.height/intrinsicSvg.height);
   const cssTargetFontPx=fontFloorCssPx+comfortCssPx,requiredBaseFontPx=cssTargetFontPx/displayScale;
-  const baseFontPx=Math.max(minimumBaseFontPx,Math.ceil((requiredBaseFontPx-1e-9)*10)/10);
-  if(!Number.isFinite(displayScale)||displayScale<=0||!Number.isFinite(baseFontPx)||baseFontPx>maximumBaseFontPx)throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE');
-  return{schemaVersion:'REQUESTED_PROFILE_TYPOGRAPHY_v1',requestedSizeClass,displayScale,cssTargetFontPx,fontFloorCssPx,comfortCssPx,minimumBaseFontPx,maximumBaseFontPx,baseFontPx,rounding:'CEIL_TO_TENTH_BASE_PX'};
+  const wantedBaseFontPx=Math.max(minimumBaseFontPx,Math.ceil((requiredBaseFontPx-1e-9)*10)/10);
+  // A missing or non-positive display scale is a measurement failure and still refuses.
+  if(!Number.isFinite(displayScale)||displayScale<=0||!Number.isFinite(wantedBaseFontPx))throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE');
+  // 2026-11-23 (owner): the DISPLAYED font floor is released ("students zoom in on pads and phones"). When the wanted base font passes the authoring cap the policy is no longer refused:
+  // the base font stays at the cap (an authored font, still >= minimumBaseFontPx >= 11) and the figure is recorded as displayTextBelow11px. The key exists only in that case, so every policy that met the floor is byte-identical to before.
+  const baseFontPx=Math.min(wantedBaseFontPx,maximumBaseFontPx),displayedFontPx=baseFontPx*displayScale;
+  return{schemaVersion:'REQUESTED_PROFILE_TYPOGRAPHY_v1',requestedSizeClass,displayScale,cssTargetFontPx,fontFloorCssPx,comfortCssPx,minimumBaseFontPx,maximumBaseFontPx,baseFontPx,rounding:'CEIL_TO_TENTH_BASE_PX',...(wantedBaseFontPx>maximumBaseFontPx?{displayTextBelow11px:true,displayedFontPx}:{})};
 }
 
 function normalizePolicyRefs(policyRefs){
@@ -211,15 +215,18 @@ export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium
   const profiles=measuredProfiles(observation,intrinsicSvg,candidateLabelInventory),start=DISPLAY_SIZE_CLASSES.indexOf(requestedSizeClass);
   if(typographyPolicy){
     const requested=profiles.find(profile=>profile.sizeClass===requestedSizeClass);
-    if(typographyPolicy.schemaVersion!=='REQUESTED_PROFILE_TYPOGRAPHY_v1'||typographyPolicy.requestedSizeClass!==requestedSizeClass||!near(typographyPolicy.displayScale,requested.displayScale,1e-9)||typographyPolicy.fontFloorCssPx!==fontFloorCssPx||candidateLabelInventory.some(label=>label.fontPx!==typographyPolicy.baseFontPx)||typographyPolicy.baseFontPx*requested.displayScale<typographyPolicy.cssTargetFontPx-1e-7||typographyPolicy.cssTargetFontPx<fontFloorCssPx||typographyPolicy.baseFontPx<typographyPolicy.minimumBaseFontPx||typographyPolicy.baseFontPx>typographyPolicy.maximumBaseFontPx)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID');
+    if(typographyPolicy.schemaVersion!=='REQUESTED_PROFILE_TYPOGRAPHY_v1'||typographyPolicy.requestedSizeClass!==requestedSizeClass||!near(typographyPolicy.displayScale,requested.displayScale,1e-9)||typographyPolicy.fontFloorCssPx!==fontFloorCssPx||candidateLabelInventory.some(label=>label.fontPx!==typographyPolicy.baseFontPx)||(typographyPolicy.baseFontPx*requested.displayScale<typographyPolicy.cssTargetFontPx-1e-7&&!(typographyPolicy.displayTextBelow11px===true&&typographyPolicy.baseFontPx===typographyPolicy.maximumBaseFontPx))||typographyPolicy.cssTargetFontPx<fontFloorCssPx||typographyPolicy.baseFontPx<typographyPolicy.minimumBaseFontPx||typographyPolicy.baseFontPx>typographyPolicy.maximumBaseFontPx)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID');
   }
-  const provisional=profiles.slice(start).find(profile=>profile.provisionalMinimumCssFontPx>=fontFloorCssPx-1e-7);
+  // 2026-11-23 (owner): the displayed font floor no longer moves a figure to a larger size class (students zoom in); the requested class is the plan. A displayed font below the floor is only recorded.
+  const provisional=profiles[start];
+  const displayTextBelow11px=provisional.provisionalMinimumCssFontPx<fontFloorCssPx-1e-7;
   return {
-    schemaVersion:'DISPLAY_ENVELOPE_v1',status:provisional?'PLANNED':'PLANNED_RECOMPOSITION_REQUIRED',questionUid,occurrence:0,
-    requestedSizeClass,plannedSizeClass:provisional?.sizeClass||null,
-    policyChange:provisional&&provisional.sizeClass!==requestedSizeClass?{from:requestedSizeClass,to:provisional.sizeClass,reason:'PROVISIONAL_LABEL_INVENTORY_FLOOR_ONLY'}:null,
+    schemaVersion:'DISPLAY_ENVELOPE_v1',status:'PLANNED',questionUid,occurrence:0,
+    requestedSizeClass,plannedSizeClass:provisional.sizeClass,
+    policyChange:null,
     intrinsicSvg:{...intrinsicSvg},candidateLabelInventory:candidateLabelInventory.map(v=>({id:v.id,fontPx:v.fontPx})),fontFloorCssPx,typographyPolicy,
-    provisionalMinimumCssFontPx:provisional?.provisionalMinimumCssFontPx??null,
+    provisionalMinimumCssFontPx:provisional.provisionalMinimumCssFontPx,
+    ...(displayTextBelow11px?{displayTextBelow11px:true}:{}),
     fit:'NONE',container:{qBoxRect:observation.qBoxRect,solutionMetaRect:observation.solutionMetaRect,solutionMetaContentWidth:observation.solutionMetaContentWidth},
     profiles,archiveEngineSha256,sourceRef,solutionRef,policyRefs:identity.policyRefs,inputIdentity:identity,inputIdentitySha256,preflightEvidence,preflightEvidenceSha256:objectSha(preflightEvidence),
     measurementStatus:'ACTUAL_ARCHIVE_DOM_PREFLIGHT_NOT_FINAL_SUPPORT',
@@ -264,7 +271,9 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
     if(!allFontsValid)errors.push('FINAL_LABEL_FONT_METRIC_MISSING_OR_NONFINITE');
     const fonts=allFontsValid?labels.map(v=>v.finalViewportCssFontPx):[];
     const minimumCssFontPx=fonts.length?Math.min(...fonts):null;
-    if(minimumCssFontPx===null||minimumCssFontPx<plannedEnvelope.fontFloorCssPx-1e-7)errors.push('FONT_FLOOR_FAIL');
+    // 2026-11-23 (owner): a displayed font below the floor no longer fails the profile; it is recorded (displayTextBelow11px). A missing metric still fails.
+    if(minimumCssFontPx===null&&!errors.includes('FINAL_LABEL_FONT_METRIC_MISSING_OR_NONFINITE'))errors.push('FINAL_LABEL_FONT_METRIC_MISSING_OR_NONFINITE');
+    const displayTextBelow11px=minimumCssFontPx!==null&&minimumCssFontPx<plannedEnvelope.fontFloorCssPx-1e-7;
     if(measurement?.layoutStatus!=='PASS')errors.push('LAYOUT_AUDIT_FAIL');
     if(measurement?.graphRequired){
       if(measurement.graphStatus!=='PASS')errors.push('GRAPH_PROFILE_AUDIT_FAIL');
@@ -281,7 +290,7 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
     return {
       ...plannedProfile,
       supportStatus:auditErrors.length?'FAIL':'PASS',
-      finalAudit:{runtime:measurement?.runtime||null,synthetic:measurement?.synthetic??null,browserVersion:measurement?.browserVersion||null,layoutStatus:measurement?.layoutStatus||'NOT_RUN',minimumCssFontPx,minimumCssFontLabelId:labels?.find(v=>v?.finalViewportCssFontPx===minimumCssFontPx)?.id||null,labelMeasurements:labels||[],graphRequired:!!measurement?.graphRequired,graphStatus:measurement?.graphStatus||'NOT_APPLICABLE',graphEvidenceRef:measurement?.graphEvidenceRef||null,topologyRequired:!!measurement?.topologyRequired,topologyStatus:measurement?.topologyStatus||'NOT_APPLICABLE',topologyEvidenceRef:measurement?.topologyEvidenceRef||null,strokeStatus:measurement?.strokeStatus||'NOT_RUN',strokeMeasurements:measurement?.strokeMeasurements||[],measurementRef:audit.measurementRef||null,screenshotRef:evidence?.screenshotRef||null,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plannedEnvelope.inputIdentitySha256,errors:auditErrors}
+      finalAudit:{runtime:measurement?.runtime||null,synthetic:measurement?.synthetic??null,browserVersion:measurement?.browserVersion||null,layoutStatus:measurement?.layoutStatus||'NOT_RUN',minimumCssFontPx,...(displayTextBelow11px?{displayTextBelow11px:true,belowFloorLabelCount:fonts.filter(value=>value<plannedEnvelope.fontFloorCssPx-1e-7).length}:{}),minimumCssFontLabelId:labels?.find(v=>v?.finalViewportCssFontPx===minimumCssFontPx)?.id||null,labelMeasurements:labels||[],graphRequired:!!measurement?.graphRequired,graphStatus:measurement?.graphStatus||'NOT_APPLICABLE',graphEvidenceRef:measurement?.graphEvidenceRef||null,topologyRequired:!!measurement?.topologyRequired,topologyStatus:measurement?.topologyStatus||'NOT_APPLICABLE',topologyEvidenceRef:measurement?.topologyEvidenceRef||null,strokeStatus:measurement?.strokeStatus||'NOT_RUN',strokeMeasurements:measurement?.strokeMeasurements||[],measurementRef:audit.measurementRef||null,screenshotRef:evidence?.screenshotRef||null,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plannedEnvelope.inputIdentitySha256,errors:auditErrors}
     };
   });
   const start=DISPLAY_SIZE_CLASSES.indexOf(plannedEnvelope.requestedSizeClass),selected=profiles.slice(start).find(profile=>profile.supportStatus==='PASS');
@@ -290,6 +299,7 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
     ...plannedEnvelope,status:selected?'PASS':'UNSUPPORTED_DISPLAY_ENVELOPE',sizeClass:selected?.sizeClass||null,
     policyChange:policyChange||plannedEnvelope.policyChange,
     expectedMinimumScale:selected?.displayScale??null,expectedMinimumCssFontPx:selected?.finalAudit.minimumCssFontPx??null,
+    ...(selected?.finalAudit.displayTextBelow11px?{displayTextBelow11px:true}:{}),
     candidateSvgRef,selectedProfile:selected||null,profiles,
     measurementStatus:selected?'ACTUAL_ARCHIVE_PREFLIGHT_PLUS_BOUND_FINAL_PLAYWRIGHT_PROFILE_AUDITS':'FINAL_CANDIDATE_PROFILE_AUDITS_FAILED',
     errors:selected?[]:['NO_PROFILE_PASSED_FINAL_CANDIDATE_AUDITS']
@@ -342,6 +352,8 @@ export function compareActualDisplayEnvelope(envelope,{root,actualRef}={}, {tole
   if(finiteRect(actual?.qBoxRect)&&!near(actual.qBoxRect.width,envelope.container.qBoxRect.width,toleranceCssPx))errors.push('ACTUAL_QBOX_WIDTH_DIFFERS_FROM_PREFLIGHT');
   const style=envelope.selectedProfile?.computedStyle;
   for(const key of ['maxWidth','maxHeight','objectFit','transform'])if(actual?.computedStyle?.[key]!==style?.[key])errors.push('ACTUAL_DISPLAY_POLICY_DIFFERS_FROM_PREFLIGHT:'+key);
-  if(!Number.isFinite(actual?.minimumCssFontPx)||actual.minimumCssFontPx<envelope.fontFloorCssPx-1e-7)errors.push('ACTUAL_FONT_BELOW_ENVELOPE_FLOOR');
-  return {status:errors.length?'FAIL':'PASS',errors,questionUid:envelope?.questionUid,sizeClass:envelope?.sizeClass,actualRef,expectedImageRect:envelope?.selectedProfile?.imageRect,actualImageRect:actual?.imageRect,toleranceCssPx};
+  // 2026-11-23 (owner): the displayed font floor is released; a missing metric still fails, a font below the floor is only recorded.
+  if(!Number.isFinite(actual?.minimumCssFontPx))errors.push('ACTUAL_FONT_METRIC_MISSING');
+  const displayTextBelow11px=Number.isFinite(actual?.minimumCssFontPx)&&actual.minimumCssFontPx<envelope.fontFloorCssPx-1e-7;
+  return {status:errors.length?'FAIL':'PASS',errors,...(displayTextBelow11px?{displayTextBelow11px:true,minimumCssFontPx:actual.minimumCssFontPx}:{}),questionUid:envelope?.questionUid,sizeClass:envelope?.sizeClass,actualRef,expectedImageRect:envelope?.selectedProfile?.imageRect,actualImageRect:actual?.imageRect,toleranceCssPx};
 }

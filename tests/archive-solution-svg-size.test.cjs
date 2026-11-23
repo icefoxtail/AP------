@@ -138,8 +138,8 @@ const byName = (rows, name) => { const fixture = cases.find((item) => item.name 
 // 이전에는 이 세 테스트가 "자연 폭 x 0.6, 칸 90%·340px, 래스터는 등급 상한 105/145/180px, override full·fullwidth는 예외"를 단정했다.
 const COLUMN_PX = 83.65 * 96 / 25.4;
 const SOL_RATIO = 0.8;
-const WIDE_W = 0.88;
-const WIDE_H = 0.3;
+const WIDE_W = 1;
+const WIDE_H = 0.45;
 const naturalOf = (name) => {
   const fixture = cases.find((item) => item.name === name);
   const match = /width="(\d+)" height="(\d+)"/.exec(fixture.bytes.toString());
@@ -154,7 +154,8 @@ test("PC: every regular solution figure is capped at 80% of the column width and
     assert.ok(row, item.name);
     const [naturalWidth, naturalHeight] = naturalOf(item.name);
     const wide = naturalWidth / naturalHeight >= 2;
-    const maxW = COLUMN_PX * (wide ? WIDE_W : SOL_RATIO);
+    // the rule is max-width: min(100%, column x ratio): a wide figure at ratio 1 is bounded by the box it sits in
+    const maxW = Math.min(COLUMN_PX * (wide ? WIDE_W : SOL_RATIO), Number(row.column) || Infinity);
     const maxH = COLUMN_PX * (wide ? WIDE_H : SOL_RATIO);
     assert.ok(row.width <= maxW + 1.5, `${item.name} must be at most ${Math.round(maxW)}px wide: ${JSON.stringify(row)}`);
     assert.ok(row.height <= maxH + 1.5, `${item.name} must be at most ${Math.round(maxH)}px tall: ${JSON.stringify(row)}`);
@@ -183,7 +184,9 @@ test("PC: a 3:1 wide figure is 88% wide at most and 30% of the column tall at mo
   const rows = await measure(1440);
   const row = byName(rows, "wide 3:1 svg");
   assert.ok(row, "wide 3:1 svg");
-  assert.ok(row.width <= COLUMN_PX * WIDE_W + 1.5 && row.width >= COLUMN_PX * WIDE_W - 2, JSON.stringify(row));
+  // at ratio 1 the figure fills the box it sits in (max-width: min(100%, column x ratio))
+  const wideLimit = Math.min(COLUMN_PX * WIDE_W, Number(row.column) || Infinity);
+  assert.ok(row.width <= wideLimit + 1.5 && row.width >= wideLimit - 2, JSON.stringify(row));
   assert.ok(row.height <= COLUMN_PX * WIDE_H + 1.5, JSON.stringify(row));
 });
 

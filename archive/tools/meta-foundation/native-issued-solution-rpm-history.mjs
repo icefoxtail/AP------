@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { validateRpmPrimaryProvenance } from './reviewed-rpm-provenance.mjs';
+import { judgeLockedMaster } from './rpm-master-add-only.mjs';
 import { readIssuedChildContinuity } from './native-issued-child-continuity.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 
@@ -240,13 +241,16 @@ function validateCurrentCrosswalk(history) {
   need(now.size >= before.size && [...before.keys()].every(id => now.has(id)), 'old RPM inventory removed');
   const selectedId = prior.rpmPrimaryBindings[0].recordId;
   need(before.has(selectedId) && equal(before.get(selectedId), now.get(selectedId)), 'selected RPM row changed');
-  need(sha(read(root, MASTER)) === masterRef.sha256, 'LOCKED master bytes changed');
-  const master = parse(read(root, MASTER));
+  // The master is add-only: the pinned bytes may be an older Git revision that the current master still contains.
+  const masterBytes = read(root, MASTER);
+  need(judgeLockedMaster({ root, pinnedSha256: masterRef.sha256, currentBytes: masterBytes }).ok, 'LOCKED master bytes changed');
+  const master = parse(masterBytes);
   need(master.schemaVersion === 'js-archive-taxonomy-rpm-primary-v1.0' && master.authorityStatus === 'LOCKED', 'LOCKED master authority changed');
   const original = prior.rpmPrimaryBindings[0];
   const live = validateRpmPrimaryProvenance({ root, question: sourceBank[ordinal - 1], final: prior.appliedRecords[0], cache: new Map() });
   need(live && live.crosswalkRef.path === CROSSWALK && live.crosswalkRef.sha256 === sha(currentBytes)
-    && equal({ ...live, crosswalkRef }, without(original, ['questionUid', 'sourceOrdinal'])), 'selected current RPM provenance changed');
+    && live.masterRef.path === MASTER && live.masterRef.sha256 === sha(masterBytes)
+    && equal({ ...live, crosswalkRef, masterRef }, without(original, ['questionUid', 'sourceOrdinal'])), 'selected current RPM provenance changed');
   const definitions = currentTaxonomy(history);
   return { currentCrosswalkRef: { path: CROSSWALK, sha256: sha(currentBytes) },
     currentCrosswalkGitBlobSha1: blob(currentBytes), oldRowCount: before.size, currentRowCount: now.size,
@@ -375,7 +379,8 @@ function loadHistory({ root, envelope, bytes, bank: questions, current, identity
         && label.schemaVersion === 'archive-meta-pipeline-parent-label-evidence-v1',
       'only the original typed parent-label artifact may share the receipt directory');
     }
-    if (evidence.path !== CROSSWALK) need(sha(read(root, evidence.path)) === evidence.sha256, 'non-RPM current evidence changed');
+    if (evidence.path === MASTER) need(judgeLockedMaster({ root, pinnedSha256: evidence.sha256 }).ok, 'non-RPM current evidence changed');
+    else if (evidence.path !== CROSSWALK) need(sha(read(root, evidence.path)) === evidence.sha256, 'non-RPM current evidence changed');
   }
   const expected = issued ? oneReceipt(envelope, uid, ordinal) : oldState;
   if (issued) {
@@ -423,7 +428,12 @@ export function readIssuedSolutionRpmHistoricalEvidence(context, receipt, ref) {
   const h = contexts.get(context); need(h && equal(receipt, h.prior)
     && h.prior.approval.evidenceRefs.some(r => equal(r, ref)), 'reference is not an authenticated original approval input');
   if (ref.path === CROSSWALK) { validateCurrentCrosswalk(h); return h.oldCrosswalk.bytes; }
-  const bytes = read(h.root, ref.path); need(sha(bytes) === ref.sha256, 'ordinary evidence digest changed'); return bytes;
+  const bytes = read(h.root, ref.path);
+  if (ref.path === MASTER) {
+    const kept = judgeLockedMaster({ root: h.root, pinnedSha256: ref.sha256, currentBytes: bytes });
+    need(kept.ok, 'ordinary evidence digest changed'); return kept.bytes;
+  }
+  need(sha(bytes) === ref.sha256, 'ordinary evidence digest changed'); return bytes;
 }
 
 // The context only selects authentic historical inputs. The existing official

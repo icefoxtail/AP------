@@ -190,7 +190,7 @@ window.questionBank = [
       "$\\dfrac{35\\pi}{4}$"
     ],
     "answer": "②",
-    "solution": "각에 $2\\pi$의 정수배를 더하거나 빼어 $0\\le\\theta<2\\pi$로 나타낸다.\n① $-\\dfrac{19\\pi}{12}+2\\pi=\\dfrac{5\\pi}{12}$이므로 제1사분면이다.\n② $\\dfrac{43\\pi}{6}-6\\pi=\\dfrac{7\\pi}{6}$이고 $\\pi<\\dfrac{7\\pi}{6}<\\dfrac{3\\pi}{2}$이므로 제3사분면이다.\n③ $\\dfrac{23\\pi}{4}-4\\pi=\\dfrac{7\\pi}{4}$이므로 제4사분면이다.\n④ $-\\dfrac{37\\pi}{15}+4\\pi=\\dfrac{23\\pi}{15}$이고 $\\dfrac{3\\pi}{2}=\\dfrac{45\\pi}{30}<\\dfrac{46\\pi}{30}=\\dfrac{23\\pi}{15}<2\\pi$이므로 제4사분면이다.\n⑤ $\\dfrac{14\\pi}{3}-4\\pi=\\dfrac{2\\pi}{3}$이므로 제2사분면이다.\n따라서 제3사분면에 있는 것은 ②이다.",
+    "solution": "각에서 $2\\pi$의 정수배를 빼어 $0\\le\\theta<2\\pi$인 각으로 나타낸다.\n① $\\dfrac{14\\pi}{3}-4\\pi=\\dfrac{2\\pi}{3}$이므로 제2사분면이다.\n② $\\dfrac{43\\pi}{6}-6\\pi=\\dfrac{7\\pi}{6}$이고 $\\pi<\\dfrac{7\\pi}{6}<\\dfrac{3\\pi}{2}$이므로 제3사분면이다.\n③ $\\dfrac{31\\pi}{4}-6\\pi=\\dfrac{7\\pi}{4}$이므로 제4사분면이다.\n④ $\\dfrac{25\\pi}{3}-8\\pi=\\dfrac{\\pi}{3}$이므로 제1사분면이다.\n⑤ $\\dfrac{35\\pi}{4}-8\\pi=\\dfrac{3\\pi}{4}$이므로 제2사분면이다.\n따라서 제3사분면에 있는 것은 ②이다.",
     "points": 3,
     "curriculum": "2022",
     "curriculumKey": "2022",

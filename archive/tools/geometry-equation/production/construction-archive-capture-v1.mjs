@@ -123,6 +123,8 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
       measured=await measureAt(carried);
       try{policy=derive(measured,carried);state.solutionImageScale=carried;}
       catch(error){if(!isDomainCode(error))throw error;policy=null;}
+      // 2026-11-23: a carried scale whose labels still display below the floor is treated like the old refusal: the default path below runs and may find a larger scale.
+      if(policy?.displayTextBelow11px){policy=null;delete state.solutionImageScale;}
     }
     if(!policy){
       measured=await measureAt(undefined);
@@ -132,12 +134,14 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
     // 2026-11-19 (60% then, 80% since 2026-11-21: figure-size.css --ap-fig-sol): A4 shows a solution figure at a fixed share of the column, so a wide canvas (> about 720 px at 80%) would need a base font above the cap. The default is always the page's own, measured, never assumed.
     // Instead of refusing, the question carries solutionImageScale (% of the column, the same per-figure override the page reads): the figure is measured again
     // at that scale in the real Archive, and the scale is handed to the capture and to publication. Phone layouts ignore it (they size by natural width), so their labels only get larger.
-    if(!policy&&refusal.message==='UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE'){
-      for(const scale of solutionImageScaleCandidates({intrinsicSvg,observation:measured.observation})){
-        measured=await measureAt(scale);
-        try{policy=derive(measured,scale);state.solutionImageScale=scale;break;}
-        catch(error){if(!isDomainCode(error))throw error;refusal=error;}
-      }
+    // 2026-11-23 (owner: the displayed font floor is released, never a refusal): the search stays, but its trigger is no longer a refusal, it is policy.displayTextBelow11px (the default display cannot show 11.25 CSS px labels even at the base font cap).
+    // Candidates are tried smallest first and the first one whose labels display at 11.25 or more is taken; when none does, the largest candidate is taken (the figure is shown as large as the column allows) and displayTextBelow11px stays recorded.
+    // A candidate that errors is skipped; if every candidate fails the default policy is kept.
+    if((policy?.displayTextBelow11px)||(!policy&&refusal?.message==='UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE')){
+      const observation=measured.observation;
+      const chosen=await selectSolutionImageScale({defaultPolicy:policy,scales:solutionImageScaleCandidatesWithMaximum({intrinsicSvg,observation}),derivePolicy:async scale=>derive(await measureAt(scale),scale),isDomainCode});
+      if(chosen.refusal)refusal=chosen.refusal;
+      policy=chosen.policy;if(chosen.scale!==undefined)state.solutionImageScale=chosen.scale;
     }
     if(!policy)throw new Stop('ARCHIVE_POLICY_UNSUPPORTED',{message:errorText(refusal)});
     state.policy=policy;state.policySha256=objectSha(policy);state.provenance='ARCHIVE_MEASURED';
@@ -152,6 +156,32 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
 // (phone layouts ignore the scale and show the figure at 90% of the column, viewport - 94 px: measured at 360/375/390 px), and the base label font the scale aims at
 // (the policy allows 20-32 SVG units; the middle of the range keeps labels in the proportion the standard 384-wide canvases have).
 export const A4_FIGURE_COLUMN_CSS_PX=316.2;
+/** Candidate scales for a figure whose default display shows labels under the floor: solutionImageScaleCandidates plus the largest whole percent the column allows (a figure too wide for any listed candidate is still shown as large as possible). Ascending. */
+export function solutionImageScaleCandidatesWithMaximum({intrinsicSvg,observation}){
+  const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
+  const maximumScale=Math.min(100,Math.floor(column/A4_FIGURE_COLUMN_CSS_PX*100+1e-9));
+  const scales=solutionImageScaleCandidates({intrinsicSvg,observation});
+  if(maximumScale>=30&&!scales.includes(maximumScale))scales.push(maximumScale);
+  return scales.sort((x,y)=>x-y);
+}
+/**
+ * 2026-11-23 (owner: the displayed font floor is released, never a refusal). Pick the display scale (% of the column) once the default display shows labels under the floor:
+ * candidates are tried smallest first; the first whose policy has no displayTextBelow11px is taken, otherwise the largest candidate (displayTextBelow11px stays recorded).
+ * A candidate whose derivation fails with a domain code is skipped. A candidate that still shows labels under the floor is taken only if it displays larger than the default.
+ * Returns {policy,scale,refusal}: scale is undefined when the default is kept; policy is null only when there is no default and every candidate failed.
+ */
+export async function selectSolutionImageScale({defaultPolicy,scales,derivePolicy,isDomainCode:domain=()=>true}){
+  let largest=null,refusal=null;
+  for(const scale of scales){
+    let candidate;
+    try{candidate=await derivePolicy(scale);}
+    catch(error){if(!domain(error))throw error;refusal=error;continue;}
+    largest={policy:candidate,scale};
+    if(!candidate.displayTextBelow11px)break;
+  }
+  if(largest&&(!largest.policy.displayTextBelow11px||!defaultPolicy||largest.policy.displayScale>defaultPolicy.displayScale+1e-9))return {policy:largest.policy,scale:largest.scale,refusal};
+  return {policy:defaultPolicy??null,scale:undefined,refusal};
+}
 /** The valid per-figure A4 scale (30-100, % of the column) a bank question already carries, else undefined. */
 export const carriedSolutionImageScale=question=>Number.isFinite(question?.[SCALE_FIELD])&&question[SCALE_FIELD]>=30&&question[SCALE_FIELD]<=100?question[SCALE_FIELD]:undefined;
 export const PHONE_FIGURE_WIDTH_CSS_PX=253;

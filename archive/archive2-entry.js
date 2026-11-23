@@ -49,7 +49,7 @@
     const s =
       originalSettings ||
       O.settings({
-        header: { title: O.displayTitle(item), subtitle: item.subject },
+        header: { title: O.displayTitle(item), subtitle: globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? item.subject },
       });
     if (!originalQuestions) {
       const provided = parentSource && parentSource.file === item.file ? parentSource : null;
@@ -174,7 +174,7 @@
       ? Number(params.get("qpp"))
       : 4;
     originalSettings = O.settings({
-      header: { title: O.displayTitle(item), subtitle: item.subject },
+      header: { title: O.displayTitle(item), subtitle: globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? item.subject },
       qpp: _pendingQpp,
     });
     await openAssignTargetPanel(item, _pendingQpp);
