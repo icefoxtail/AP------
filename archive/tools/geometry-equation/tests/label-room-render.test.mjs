@@ -121,3 +121,12 @@ test('construction: a region value that does not fit inside its region goes out 
   assert.equal(roomStep(pad)?.to, 'ROOM_MARGIN');
   assert.ok(roomStep(pad).target.pad > 0 || roomStep(pad).target.dimensionOffsetPx > 0);
 });
+
+test('construction: roomPad is the rescue ladder\'s own value; a plan that carries it from its author is refused by name, before any figure is drawn', {timeout: 120000}, async () => {
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'label-room-'));
+  const authored = {...plan('construction-region-leader'), roomPad: 0.24};
+  const result = await renderPlan({item: {sourcePath: 'archive/exams/original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', ordinal: 22, dir: 'authored-pad'}, plan: authored, outDir: out});
+  assert.equal(result.status, 'FAILED');
+  assert.match(String(result.code ?? result.detail), /ROOM_PAD_NOT_AUTHORABLE/);
+  assert.equal(result.fallback, undefined, 'no try was made with the author\'s pad');
+});

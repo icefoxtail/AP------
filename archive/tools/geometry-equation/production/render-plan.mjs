@@ -106,6 +106,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       authored=JSON.parse(fs.readFileSync(authored,'utf8'));
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
+    // roomPad is the frame padding only the label-room rescue below sets (phase2 ROOM_PADS); a plan that carries it from its author would change the frame of the first try
+    if(authored.roomPad!==undefined)throw new Error('ROOM_PAD_NOT_AUTHORABLE: roomPad is set only by the engine label-room rescue; delete it from the plan');
     where.authored=where.plan=authored;
     // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
     {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
@@ -403,6 +405,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
           return null;
         }});
       if(rescued.composed.status==='COMPOSED'){plan=rescued.plan;({size,measured,composed}=rescued);}
+      where.plan=plan;   // a failed rescue leaves the plan the failure guidance reads as it was before the ladder (never a rescue plan: AUTO_LEADER, roomPad), a composed one is the plan that is bound
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
     if(composed.status!=='COMPOSED'&&composed.bestEffort){
