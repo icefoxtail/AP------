@@ -81,7 +81,7 @@ for(const [rel,items] of exams){
     const scale=st.capture?.solutionImageScale;
     if(scale!==undefined&&!(typeof scale==='number'&&scale>=30&&scale<=100)){res.items.push({ord:it.ord,skip:'BAD_SOLUTION_IMAGE_SCALE'});continue;}
     patched=insertFields(patched,obj,{solutionImage:assetRel,solutionImageAlt:caption,solutionImageCaption:caption,solutionImageSize:size,...(scale!==undefined?{[SCALE_KEY]:scale}:{})});
-    if(process.env.DEBUG_EACH){try{bankOf(patched);}catch(e){const k=patched.indexOf('/q'+it.ord+'-solution.svg');console.log('BREAKS at q'+it.ord,JSON.stringify(patched.slice(Math.max(0,k-300),k+60)));}}assets.push({from:it.svg,to:path.join(root,'archive',assetRel)});res.items.push({ord:it.ord,ok:true,size});
+    if(process.env.DEBUG_EACH){try{bankOf(patched);}catch(e){const k=patched.indexOf('/q'+it.ord+'-solution.svg');console.log('BREAKS at q'+it.ord,JSON.stringify(patched.slice(Math.max(0,k-300),k+60)));}}assets.push({from:it.svg,to:path.join(root,'archive',assetRel)});res.items.push({ord:it.ord,ok:true,size,...(it.scoreGate?{scoreGate:{status:it.scoreGate.status,score:it.scoreGate.score,tableVersion:it.scoreGate.tableVersion}}:{})});
   }
   if(assets.length){
     // verification: the patched bank equals the original except for the four fields on the chosen questions

@@ -41,6 +41,7 @@
 | `run-impl.sh` / `run-rev.sh` | **과거(루나)** 위 launch들이 부르는 실제 Codex 실행. `OUT`/`IMPL`/`REV`/`EXTRA`로 폴더·추가 지시를 직접 지정 |
 | `resume.sh` | **과거(루나)** 중단된 루나 실행에 정정 지시를 붙여 이어 하기 |
 | `render.mjs` | 공식 엔진 렌더(`render.lock`으로 직렬화, 환경 설정 포함) |
+| `render.mjs --manifest <packetDir> --out <outDir> --exam-batch 20` | 같은 시험지의 그림을 20개씩 묶어 아카이브 화면을 한 번만 열어 측정·캡처한다(2026-11-23, `production/exam-batch.mjs`). 결과(SVG·오류 코드)는 한 건씩과 같다. `APMS_EXAM_BATCH=20`으로도 켠다. 건마다 `--item`을 부르는 방식에는 효과가 없다 |
 | `a11y.sh` | 출력 SVG에 루트 `role=img`·title·desc 보강 |
 | `ledger2md.cjs` | 원장 상태로 판정표 생성(판정표가 없고 원장에는 있는 시험지) |
 | `make-dec.cjs` / `make-dec-open.cjs` | 게시 결정 파일 `dec-<key>[-open].json` 생성 |

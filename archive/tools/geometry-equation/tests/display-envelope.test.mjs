@@ -71,6 +71,7 @@ const fakePng=(width,height)=>{
   return Buffer.concat([signature,pngChunk('IHDR',header),pngChunk('IDAT',pixels),pngChunk('IEND',Buffer.alloc(0))]);
 };
 
+// 2026-11-23: the page no longer reads a size class, so a plan holds ONE profile, the requested class (default large: 216 x 180 here); the observation still lists all four.
 function fixture(t,{minimumByClass={small:6.56,medium:9.06,large:11.25,full:20},patches={},candidateSize=intrinsic,requestedSizeClass='large'}={}){
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'apmath-display-envelope-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
@@ -91,13 +92,14 @@ function fixture(t,{minimumByClass={small:6.56,medium:9.06,large:11.25,full:20},
   const preflightMeasurementRef=write(root,'.tmp/archive/control-fixture/exam/visual-engine/production/capture/preflight.json',canonicalJson({schemaVersion:'DISPLAY_ENVELOPE_PREFLIGHT_v1',status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:uid,targetId:'control-target',sourceRef,candidateRef:candidateSourceRef,archiveRowRef,screenshotRef:preflightScreenshotRef,screenshotViewport:{width:1440,height:1000},observation,sourceAuthorityStatus:'CONTROL_FIXTURE'}));
   const preflightEvidence={measurementRef:preflightMeasurementRef,archiveRowRef,screenshotRef:preflightScreenshotRef};
   const plan=planDisplayEnvelope({root,questionUid:uid,requestedSizeClass,intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation,preflightEvidence,archiveEngineSha256:policyRefs[0].ref.sha256,sourceRef,solutionRef,policyRefs});
-  const profileAudits=classes.map(([sizeClass,width,height],index)=>{
+  const profileAudits=classes.filter(([sizeClass])=>sizeClass===requestedSizeClass).map(([sizeClass,width,height])=>{
+    const index=classes.findIndex(row=>row[0]===sizeClass);
     const pngRef=write(root,`capture/${sizeClass}.png`,fakePng(width,height));
     const base={
       schemaVersion:'DISPLAY_PROFILE_AUDIT_v1',status:'PASS',questionUid:uid,sizeClass,
       synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',
       candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,sourceRef,solutionRef,policyRefs:plan.policyRefs,inputIdentitySha256:plan.inputIdentitySha256,
-      imageRect:observedProfiles[index].imageRect,computedStyle:observedProfiles[index].computedStyle,profilePolicySha256:plan.profiles[index].profilePolicySha256,
+      imageRect:observedProfiles[index].imageRect,computedStyle:observedProfiles[index].computedStyle,profilePolicySha256:plan.profiles[0].profilePolicySha256,
       rawCapture:{viewBox:{x:0,y:0,width:intrinsic.width,height:intrinsic.height},svg:observedProfiles[index].imageRect},
       screenshotViewport:{width,height},screenshotRef:pngRef,
       labelMeasurements:labelInventory.map(label=>({id:label.id,finalViewportCssFontPx:minimumByClass[sizeClass]})),
@@ -124,39 +126,39 @@ const addWorkerEvidence=(fx,sizeClass,kind,patch={})=>{
   return ref;
 };
 
-test('logic: preflight stays provisional; the requested class is planned and a displayed font below the floor is recorded, not failed (2026-11-23)',t=>{
+test('logic: the plan holds only the requested profile; a displayed font below the floor is recorded, never a failure or a move to another class (2026-11-23)',t=>{
   const fx=fixture(t),plan=fx.plan;
   assert.equal(plan.status,'PLANNED');
   assert.equal(plan.plannedSizeClass,'large');
+  assert.deepEqual(plan.profiles.map(v=>v.sizeClass),['large']);
+  assert.equal('policyChange' in plan,false);
   assert.equal('displayTextBelow11px' in plan,false);   // large met the floor: the plan is unchanged
-  assert.equal(plan.profiles.find(v=>v.sizeClass==='medium').supportStatus,'NOT_AUDITED');
+  assert.equal(plan.profiles[0].supportStatus,'NOT_AUDITED');
   const envelope=qualify(fx);
   assert.equal(envelope.status,'PASS');
   assert.equal(envelope.sizeClass,'large');
-  assert.equal(envelope.policyChange,null);
+  assert.equal('policyChange' in envelope,false);
   assert.equal(envelope.expectedMinimumCssFontPx,11.25);
   assert.equal('displayTextBelow11px' in envelope,false);
   assert.equal(envelope.selectedProfile.computedStyle.maxHeight,'180px');
-  // medium's displayed font (9.06 < 11.25) no longer fails the profile and no longer pushes the figure to a larger class
+  // medium's displayed font (9.06 < 11.25) neither fails the profile nor pushes the figure to a larger class
   const medium=fixture(t,{requestedSizeClass:'medium'}),mediumPlan=medium.plan;
-  assert.equal(mediumPlan.status,'PLANNED');assert.equal(mediumPlan.plannedSizeClass,'medium');assert.equal(mediumPlan.policyChange,null);assert.equal(mediumPlan.displayTextBelow11px,true);
+  assert.equal(mediumPlan.status,'PLANNED');assert.equal(mediumPlan.plannedSizeClass,'medium');assert.equal(mediumPlan.displayTextBelow11px,true);
   const mediumEnvelope=qualify(medium),mediumProfile=mediumEnvelope.profiles.find(v=>v.sizeClass==='medium');
-  assert.equal(mediumEnvelope.status,'PASS');assert.equal(mediumEnvelope.sizeClass,'medium');assert.equal(mediumEnvelope.policyChange,null);
+  assert.equal(mediumEnvelope.status,'PASS');assert.equal(mediumEnvelope.sizeClass,'medium');assert.equal('policyChange' in mediumEnvelope,false);
   assert.equal(mediumProfile.supportStatus,'PASS');assert.equal(mediumProfile.finalAudit.displayTextBelow11px,true);assert.equal(mediumProfile.finalAudit.belowFloorLabelCount,2);
   assert.equal(mediumProfile.finalAudit.errors.includes('FONT_FLOOR_FAIL'),false);
   assert.equal(mediumEnvelope.displayTextBelow11px,true);assert.equal(mediumEnvelope.expectedMinimumCssFontPx,9.06);
+  // a requested class that the measurement lacks is refused, not replaced by another class
+  const observation={...JSON.parse(fs.readFileSync(path.join(fx.root,...fx.preflightEvidence.measurementRef.path.split('/')),'utf8')).observation};
+  assert.throws(()=>planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'full',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:{...observation,profiles:observation.profiles.filter(v=>v.sizeClass!=='full')},preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs}),/ACTUAL_ARCHIVE_PREFLIGHT_OBSERVATION_NOT_BOUND|DISPLAY_ENVELOPE_PROFILE_MEASUREMENT_INVALID:full/);
 });
 
-test('logic: a requested full class stays full while a smaller class below the floor is also recorded as PASS (2026-11-23: no floor failure)',t=>{
-  const fx=fixture(t,{minimumByClass:{small:6.56,medium:9.06,large:9.5,full:20}});
-  const preflight=JSON.parse(fs.readFileSync(path.join(fx.root,...fx.preflightEvidence.measurementRef.path.split('/')),'utf8')).observation;
-  fx.plan=planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'full',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:preflight,preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs});
+test('logic: a requested full class qualifies as full',t=>{
+  const fx=fixture(t,{requestedSizeClass:'full',minimumByClass:{small:6.56,medium:9.06,large:9.5,full:20}});
   const envelope=qualify(fx);
   assert.equal(envelope.sizeClass,'full');
-  assert.equal(envelope.policyChange,null);
   assert.equal(envelope.selectedProfile.computedStyle.maxHeight,'none');
-  assert.equal(envelope.profiles.find(v=>v.sizeClass==='medium').supportStatus,'PASS');
-  assert.equal(envelope.profiles.find(v=>v.sizeClass==='medium').finalAudit.displayTextBelow11px,true);
 });
 
 test('logic: a clamped typography policy (base font at the cap, displayTextBelow11px) binds to the plan; a forged one does not',t=>{
@@ -166,7 +168,7 @@ test('logic: a clamped typography policy (base font at the cap, displayTextBelow
   assert.equal(policy.baseFontPx,32);assert.equal(policy.displayTextBelow11px,true);
   const plan=(typographyPolicy,fontPx)=>planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'small',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory.map(label=>({id:label.id,fontPx})),observation,preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs,typographyPolicy});
   const planned=plan(policy,32);
-  assert.equal(planned.status,'PLANNED');assert.equal(planned.plannedSizeClass,'small');assert.equal(planned.policyChange,null);assert.equal(planned.displayTextBelow11px,true);
+  assert.equal(planned.status,'PLANNED');assert.equal(planned.plannedSizeClass,'small');assert.equal('policyChange' in planned,false);assert.equal(planned.displayTextBelow11px,true);
   // a base font short of the target that is NOT the recorded cap is still a forged policy
   assert.throws(()=>plan({...policy,baseFontPx:30,displayedFontPx:30*policy.displayScale},30),/REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID/);
   assert.throws(()=>plan({...policy,displayTextBelow11px:undefined},32),/REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID/);
@@ -203,7 +205,7 @@ test('logic: graph and topology worker records bind the same candidate SVG and d
   assert.equal(graphResult.supportStatus,'FAIL');
   assert.ok(graphResult.finalAudit.errors.includes('GRAPH_PROFILE_EVIDENCE_SVG_MISMATCH'));
 
-  const topology=fixture(t);addWorkerEvidence(topology,'full','TOPOLOGY',{displayScale:0.5});
+  const topology=fixture(t,{requestedSizeClass:'full'});addWorkerEvidence(topology,'full','TOPOLOGY',{displayScale:0.5});
   const topologyResult=qualify(topology).profiles.find(v=>v.sizeClass==='full');
   assert.equal(topologyResult.supportStatus,'FAIL');
   assert.ok(topologyResult.finalAudit.errors.includes('TOPOLOGY_PROFILE_EVIDENCE_SCALE_MISMATCH'));
@@ -283,31 +285,25 @@ test('logic: candidate SHA, source, solution and policy identity mutations canno
 
 test('logic: synthetic and wrong-runtime final audits cannot pass even with good numeric metrics',t=>{
   for(const [field,value,code] of [['synthetic',true,'PROFILE_SYNTHETIC_EVIDENCE_REJECTED'],['runtime','fixture','PROFILE_PLAYWRIGHT_RUNTIME_REQUIRED']]){
-    const fx=fixture(t);mutateAudit(fx,'full',m=>{m[field]=value;});
+    const fx=fixture(t,{requestedSizeClass:'full'});mutateAudit(fx,'full',m=>{m[field]=value;});
     const row=qualify(fx).profiles.find(v=>v.sizeClass==='full');
     assert.equal(row.supportStatus,'FAIL');assert.ok(row.finalAudit.errors.includes(code));
   }
 });
 
-test('logic: raw measurement and screenshot refs are mandatory, unique, hash-bound PNG evidence',t=>{
-  const missing=fixture(t);missing.profileAudits[3].measurementRef=null;
+test('logic: raw measurement and screenshot refs are mandatory, hash-bound PNG evidence',t=>{
+  const missing=fixture(t,{requestedSizeClass:'full'});missing.profileAudits[0].measurementRef=null;
   const failed=qualify(missing).profiles.find(v=>v.sizeClass==='full');
   assert.equal(failed.supportStatus,'FAIL');assert.ok(failed.finalAudit.errors.includes('PROFILE_MEASUREMENT_REF_REQUIRED'));
 
-  const noPng=fixture(t);mutateAudit(noPng,'full',m=>{m.screenshotRef={path:'capture/missing.png',bytes:1,sha256:'sha256:'+'0'.repeat(64)};});
+  const noPng=fixture(t,{requestedSizeClass:'full'});mutateAudit(noPng,'full',m=>{m.screenshotRef={path:'capture/missing.png',bytes:1,sha256:'sha256:'+'0'.repeat(64)};});
   const broken=qualify(noPng).profiles.find(v=>v.sizeClass==='full');
   assert.equal(broken.supportStatus,'FAIL');
   assert.ok(broken.finalAudit.errors.includes('PROFILE_SCREENSHOT_REF_INVALID'));
 
-  const stub=fixture(t),stubBytes=Buffer.alloc(24);Buffer.from([137,80,78,71,13,10,26,10]).copy(stubBytes,0);stubBytes.writeUInt32BE(13,8);stubBytes.write('IHDR',12,'ascii');stubBytes.writeUInt32BE(1,16);stubBytes.writeUInt32BE(1,20);
+  const stub=fixture(t,{requestedSizeClass:'full'}),stubBytes=Buffer.alloc(24);Buffer.from([137,80,78,71,13,10,26,10]).copy(stubBytes,0);stubBytes.writeUInt32BE(13,8);stubBytes.write('IHDR',12,'ascii');stubBytes.writeUInt32BE(1,16);stubBytes.writeUInt32BE(1,20);
   const stubRef=write(stub.root,'capture/header-only.png',stubBytes);mutateAudit(stub,'full',m=>{m.screenshotRef=stubRef;m.screenshotViewport={width:1,height:1};});
   assert.ok(qualify(stub).profiles.find(v=>v.sizeClass==='full').finalAudit.errors.includes('PROFILE_SCREENSHOT_PNG_INVALID'));
-
-  const reused=fixture(t),largeMeasure=reused.profileAudits.find(a=>a.sizeClass==='large').measurementRef;
-  const largeAudit=JSON.parse(fs.readFileSync(path.join(reused.root,...largeMeasure.path.split('/')),'utf8'));
-  mutateAudit(reused,'full',m=>{m.screenshotRef=largeAudit.screenshotRef;m.screenshotViewport=largeAudit.screenshotViewport;});
-  const duplicate=qualify(reused);
-  assert.ok(duplicate.profiles.find(v=>v.sizeClass==='full').finalAudit.errors.includes('PROFILE_SCREENSHOT_REF_REUSED'));
 });
 
 function actualCaptureRef(fx,patch={}){
@@ -346,7 +342,7 @@ test('logic: actual loaded image rect, container width, size class and computed 
   const actualRef=write(fx.root,'actual/mutated-geometry.json',canonicalJson({...original,sizeClass:'full',imageRect:rect(384,320),computedStyle:{...original.computedStyle,maxHeight:'none'}}));
   const rejected=compareActualDisplayEnvelope(envelope,{root:fx.root,actualRef});
   assert.equal(rejected.status,'FAIL');
-  assert.ok(rejected.errors.includes('ACTUAL_DISPLAY_SIZE_CLASS_MISMATCH'));
+  assert.equal(rejected.errors.includes('ACTUAL_DISPLAY_SIZE_CLASS_MISMATCH'),false);// the class the wrapper carries is no longer judged: only the measured size and the computed policy are
   assert.ok(rejected.errors.includes('ACTUAL_DISPLAY_WIDTH_DIFFERS_FROM_PREFLIGHT'));
   assert.ok(rejected.errors.includes('ACTUAL_DISPLAY_POLICY_DIFFERS_FROM_PREFLIGHT:maxHeight'));
 });
