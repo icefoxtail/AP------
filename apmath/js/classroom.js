@@ -1375,6 +1375,7 @@ function buildClassroomAssignmentStatusRows(classId, students) {
             return {
                 ...group,
                 submittedCount: group.sessions.length,
+                similar: globalThis.ApSimilarExam?.isSimilarExamFile(group.archiveFile) === true,
                 targetCount: Math.max(0, activeCount - excludedStudents.size),
                 wrongCount: wrongs.filter(row => sessionIds.has(String(row?.session_id || ''))).length
             };
@@ -1393,7 +1394,7 @@ function renderClassroomAssignmentStatusCategory(classId, students) {
             const meta = [
                 date,
                 qCount ? `${qCount}문항` : '',
-                `제출 ${row.submittedCount}/${row.targetCount}`,
+                row.similar ? `유사 · 자습용 · 응시 ${row.submittedCount}명` : `제출 ${row.submittedCount}/${row.targetCount}`,
                 `오답 ${row.wrongCount}문항`
             ].filter(Boolean).join(' · ');
             return `
