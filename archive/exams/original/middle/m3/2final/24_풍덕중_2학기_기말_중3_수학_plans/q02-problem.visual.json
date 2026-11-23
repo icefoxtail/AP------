@@ -167,22 +167,18 @@
         "caption": "원 O의 현과 중심에서 현에 내린 수선",
         "accessibilityDescription": "원 O에서 길이 20cm인 현과, 중심에서 현에 내린 수선의 발이 현을 둘로 나누고 한쪽 길이가 x cm인 그림.",
         "planeMarks": {
-          "pathLabels": [
+          "dimensions": [
             {
-              "id": "p20",
-              "points": [
-                "A",
-                "M",
-                "B"
-              ],
+              "id": "d20",
+              "from": "A",
+              "to": "B",
               "label": "20",
               "unit": "cm",
               "side": "RIGHT",
-              "anchor": 0.5,
-              "factRole": "GIVEN"
-            }
-          ],
-          "dimensions": [
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "offset": 3
+            },
             {
               "id": "dx",
               "from": "M",
@@ -191,16 +187,11 @@
               "unit": "cm",
               "side": "RIGHT",
               "style": "ARROW",
-              "factRole": "GIVEN"
+              "factRole": "GIVEN",
+              "offset": 1
             }
           ]
         },
-        "hiddenPointNames": [
-          "A",
-          "B",
-          "M"
-        ],
-        "hiddenPointStyle": "NONE",
         "rightAngles": [
           {
             "id": "rMAO",
