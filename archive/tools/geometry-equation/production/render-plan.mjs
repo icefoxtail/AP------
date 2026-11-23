@@ -26,9 +26,7 @@ import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
-import * as ell from './ellipse-figure-v1.mjs';
-import * as cfv from './container-fill-v1.mjs';
-import * as lpf from './lattice-path-v1.mjs';
+import {standaloneKindFor,runStandaloneKind} from './standalone-kinds.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
@@ -111,134 +109,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
       write(`${name}-solution.svg`,composed.svg);
     };
-    if(authored.capability===sdg.FIGURE_CAPABILITY){
-      // A standalone set diagram: the exact regions and shading derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='set-diagram';
-      const model=sdg.checkSetDiagramPlan(authored);let size=sdg.setDiagramSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // A mapping whose element rows follow the policy font (setDiagramSize with fontPx) is taller than its base size when the font is large: measure again at that size until the size the font gives is the size measured.
-      for(let again=1;again<=6;again++){
-        const exact=sdg.setDiagramSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width===size.width&&exact.height===size.height)break;
-        size=exact;
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      const composed=await sdg.composeSetDiagramFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===scf.FIGURE_CAPABILITY){
-      // A standalone statistics / probability figure: solved exactly, composed once, read back by its own observer, then the same Archive capture.
-      stage='stat-chart';
-      const model=scf.checkStatChartPlan(authored);let size=scf.statChartSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives, and the font on the size: measure again at the
-      // larger size until the font that size gives needs no more room (sizes only grow; the figure is then composed at exactly the measured size).
-      for(let again=1;again<=6;again++){
-        const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width<=size.width&&exact.height<=size.height)break;
-        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      // A tree whose branch labels found no room at the first leaf pitch is composed at a wider pitch (composed.rowScale): measure again at that size and compose at it.
-      let composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
-      for(let wider=1;wider<=3&&composed.status==='COMPOSED'&&composed.rowScale>1&&!(composed.rowScale===(composed.settledScale??1));wider++){
-        const rowScale=composed.rowScale,exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx,rowScale});
-        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-s${wider}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-        composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size,rowScale});
-        composed.settledScale=rowScale;
-      }
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===cfv.FIGURE_CAPABILITY){
-      // A standalone vessel-and-water-height figure: the exact volumes derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='container-fill';
-      const model=cfv.checkContainerFillPlan(authored);let size=cfv.containerFillSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // The room the labels need (title above the axis, title beside it, label rows) follows the policy font: measure again at the size that font gives until it is the size measured.
-      for(let again=1;again<=6;again++){
-        const exact=cfv.containerFillSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width===size.width&&exact.height===size.height)break;
-        size=exact;
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===lpf.FIGURE_CAPABILITY){
-      // A standalone road-network / lattice shortest-path figure: the exact path counts derived once, composed, read back by its own brute-force observer, then the same Archive capture.
-      stage='lattice-path';
-      const model=lpf.checkLatticePathPlan(authored),size=lpf.latticePathSize(model);
-      stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      const composed=await lpf.composeLatticePathFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===ell.FIGURE_CAPABILITY){
-      // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='ellipse';
-      const model=await ell.solveEllipseFigure(authored);
-      // No room for a label at the real font: the frame is widened (24, 48, 80, 120 px each side), measured and composed again. The first attempt is the frame the figure has always had.
-      let measured,composed;
-      for(const [attempt,extra] of ell.ELLIPSE_FRAME_STEPS.entries()){
-        ell.setEllipseFrameExtra(model,extra);
-        stage='measure';
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:ell.ellipseFigureSize(model),runId:`pilot-measure-${tag}${attempt?`-frame${attempt}`:''}`});
-        // a widened frame the display profile cannot hold (its font would pass the largest allowed) ends the attempts: the figure fails as it failed before, with the no-room refusal
-        if(measured.status!=='MEASURED'&&attempt>0){stage='compose';ell.setEllipseFrameExtra(model,0);break;}
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-        stage='compose';
-        composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-        if(composed.status!=='ELLIPSE_LABEL_NO_ROOM'||attempt===ell.ELLIPSE_FRAME_STEPS.length-1)break;
-        (row.fallback??=[]).push({from:clip(composed.detail),to:'ELLIPSE_FRAME_WIDEN',extra:ell.ELLIPSE_FRAME_STEPS[attempt+1]});
-      }
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
+    // Standalone figure kinds (set diagram, stat chart, container fill, lattice path, ellipse): one table row each (standalone-kinds.mjs), one shared runner.
+    {const standalone=standaloneKindFor(authored.capability);
+    if(standalone){await runStandaloneKind(standalone,{authored,identity,meta,tag,row,setStage:s=>{stage=s;},bind,clip});return finish();}}
     if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
