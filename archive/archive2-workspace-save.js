@@ -1021,7 +1021,9 @@
       document.querySelector("#content")?.insertAdjacentHTML("beforeend", markup);
     }
   }
-  async function savePapers() {
+  // options.papers: 이미 만든 [{ index, questions, meta }](학교 모의고사 "보관함에 저장"이 한 요청에 여러 권을 보낼 때). 없으면 지금 문제지에서 만든다.
+  // 요청 본문은 어느 쪽이든 아래 payloadFor 하나로 만든다(같은 직렬화·같은 검증).
+  async function savePapers(options = {}) {
     if (state.saveBusy) return;
     const recoveringUnknown = state.saveResultState === "RESULT_UNKNOWN";
     const pendingBatchId = state.saveBatchId;
@@ -1086,7 +1088,7 @@
         render();
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
-      const papers = await prepare();
+      const papers = Array.isArray(options.papers) && options.papers.length ? options.papers : await prepare();
       // 전송 사본: 저장본에서 온(수정본의) 문항은 서버가 내장해 둔 그림(data: URL)을 원래 경로로 되돌려 보낸다(화면용 문항은 그대로).
       const wireQuestions = await Promise.all(papers.map((paper) => saveWireQuestionsFor(paper)));
       const filters = saveRequestFilters(request(true).filters);
@@ -1580,6 +1582,12 @@
       <p>이 기기에 저장된 작업을 지웁니다. 되돌릴 수 없습니다. 보관함에 저장한 문제지와 이미 낸 출제는 그대로 남습니다.</p>
       <div class="actions">${button("delete-draft-confirm", "삭제", `data-draft-id="${esc(record.draftId)}" class="primary"`)}</div>`);
   }
+  // 화면을 건드리지 않고 초안 한 건만 지운다(바로 저장한 모의고사가 "이전 작업이 있습니다"로 남지 않게).
+  function discardDraftSilently(draftId) {
+    const id = String(draftId || "");
+    if (!id) return;
+    try { localStorage.setItem(storageKey(), JSON.stringify(drafts().filter((d) => d.draftId !== id))); } catch {}
+  }
   function deleteDraft(draftId) {
     const id = String(draftId || "");
     if (!id) return false;
@@ -1709,6 +1717,7 @@
     resetWorkingDraft,
     askDeleteDraft,
     deleteDraft,
+    discardDraftSilently,
     saveAndAssign,
   });
 })();

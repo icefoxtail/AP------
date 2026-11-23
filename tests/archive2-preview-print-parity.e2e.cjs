@@ -158,7 +158,11 @@ async function main() {
           if (route.overflowedPages) problems.push(`${route.route}: 칸 밖으로 넘친 쪽 ${route.overflowedPages}`);
           if (route.pageCount === 0) problems.push(`${route.route}: 쪽 없음`);
           const refs = route.pages.flat().map((block) => block.ref);
-          if (refs.length !== questions.length || new Set(refs).size !== questions.length) problems.push(`${route.route}: 문항 수 ${refs.length}/${questions.length}`);
+          // 해설은 길면 다음 단·다음 쪽으로 이어져 한 문항이 블록 둘이 될 수 있다(해설 내용은 언제든 바뀌는 자료다).
+          // 그래서 해설 모드는 "빠진 문항·엉뚱한 문항이 없는가"(서로 다른 문항 수)만 보고, 문제 모드는 블록 수까지 본다.
+          const distinct = new Set(refs).size;
+          const countOk = sample.mode === 'sol' ? distinct === questions.length : (refs.length === questions.length && distinct === questions.length);
+          if (!countOk) problems.push(`${route.route}: 문항 수 ${refs.length}(서로 다른 ${distinct})/${questions.length}`);
         }
         if (preview.pageCount !== print.pageCount) problems.push(`쪽 수 다름: 미리보기 ${preview.pageCount} / 인쇄 ${print.pageCount}`);
         const perPage = (route) => route.pages.map((blocks) => blocks.map((block) => `${block.no || '?'}:${block.ref.split(':').pop()}`).join(','));

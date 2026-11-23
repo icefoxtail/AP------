@@ -7,6 +7,8 @@ import originalSourceError from '../../tools/4slot/original-source-error-hold.cj
 
 export const SOURCE_QUALITY_HOLD_SCHEMA = 'archive-source-quality-holds-v1';
 export const SOURCE_QUALITY_HOLD_LEDGER = 'archive/data/meta-foundation/source-quality-holds-v1.json';
+export const SOURCE_QUALITY_HOLD_RESOLUTIONS = 'archive/data/meta-foundation/source-quality-hold-resolutions-v1.json';
+export const SOURCE_QUALITY_HOLD_RESOLUTION_SCHEMA = 'archive-source-quality-hold-resolutions-v1';
 export const SOURCE_QUALITY_HOLD_FIELDS = Object.freeze(['sourceIssueHold', 'sourceQualityHold']);
 const UID = /^qid_v1_[a-f0-9]{64}$/;
 const SHA1 = /^[a-f0-9]{40}$/;
@@ -78,6 +80,29 @@ function ledger(root) {
   return { raw, doc };
 }
 
+// Append-only owner-decision resolutions (docs/architecture/source-quality-holds-v1.md, exception section).
+// A hold with a resolution no longer pins its source file to any edition; the ledger record itself is never edited.
+// The file is optional. A hold without a matching record is unchanged, and status edits alone are still rejected.
+function resolutions(root, doc) {
+  const file = path.resolve(fs.realpathSync(root), SOURCE_QUALITY_HOLD_RESOLUTIONS);
+  if (!fs.existsSync(file)) return { resolved: new Set(), raw: null };
+  const raw = bytes(root, SOURCE_QUALITY_HOLD_RESOLUTIONS), res = parse(raw);
+  keys(res, ['schemaVersion', 'records']);
+  ensure(res.schemaVersion === SOURCE_QUALITY_HOLD_RESOLUTION_SCHEMA && Array.isArray(res.records) && res.records.length <= 1000, 'RESOLUTION_LEDGER');
+  const holdIds = new Set(doc.records.map(r => r.holdId)), resolved = new Set(), text = v => typeof v === 'string' && v.trim().length > 0;
+  for (const row of res.records) {
+    keys(row, ['holdId', 'resolutionKind', 'decidedAt', 'decisionQuote', 'basis', 'changedOrdinals']);
+    ensure(row.resolutionKind === 'OWNER_DECISION_MINIMAL_FIX' && text(row.decisionQuote) && text(row.basis) &&
+      text(row.decidedAt) && /^\d{4}-\d{2}-\d{2}/.test(row.decidedAt) &&
+      Array.isArray(row.changedOrdinals) && row.changedOrdinals.length > 0 &&
+      row.changedOrdinals.every(n => Number.isSafeInteger(n) && n > 0), 'RESOLUTION_RECORD');
+    ensure(holdIds.has(row.holdId), 'RESOLUTION_HOLD_ID');
+    ensure(!resolved.has(row.holdId), 'RESOLUTION_DUPLICATE');
+    resolved.add(row.holdId);
+  }
+  return { resolved, raw };
+}
+
 // Dependency selectors use the same closed ledger schema. Full byte/identity validation happens
 // before catalog publication. A missing or malformed ledger never turns a held UID into an unheld UID.
 export function sourceQualityHoldDependencyPaths(root) {
@@ -89,7 +114,9 @@ export function sourceQualityHoldDependencyPaths(root) {
     ensure(Array.isArray(refs) && refs.length > 0, 'RECEIPT_EVIDENCE');
     return refs.map(ref => { approvalRefSchema(ref); return ref.path; });
   });
-  return [...new Set([SOURCE_QUALITY_HOLD_LEDGER, 'archive/tools/source-quality-holds.mjs',
+  resolutions(root, doc);
+  const resolutionPath = fs.existsSync(path.join(root, SOURCE_QUALITY_HOLD_RESOLUTIONS)) ? [SOURCE_QUALITY_HOLD_RESOLUTIONS] : [];
+  return [...new Set([SOURCE_QUALITY_HOLD_LEDGER, ...resolutionPath, 'archive/tools/source-quality-holds.mjs',
     ...receiptEvidence, ...originalSourceError.dependencyPaths(root),
     ...doc.records.flatMap(row => ['archive/exams/' + row.sourceArchiveFile, row.image.path,
       row.originalReceipt.path, row.pendingRootEvidence.path, row.independentEvidence.path,
@@ -99,12 +126,15 @@ export function sourceQualityHoldDependencyPaths(root) {
 export function loadSourceQualityHolds({ root, identity }) {
   const { raw, doc } = ledger(root), ledgerSha256 = sha(raw), holds = new Map(), observed = new Set();
   ensure(Array.isArray(identity?.records), 'IDENTITY_REQUIRED');
-  const proofPaths = new Set([SOURCE_QUALITY_HOLD_LEDGER]);
+  const proofPaths = new Set([SOURCE_QUALITY_HOLD_LEDGER]), { resolved, raw: resolutionRaw } = resolutions(root, doc);
+  if (resolutionRaw) proofPaths.add(SOURCE_QUALITY_HOLD_RESOLUTIONS);
   const readRef = ref => {
     const raw = bytes(root, ref.path); ensure(sha(raw) === ref.sha256, 'EVIDENCE_DIGEST');
     proofPaths.add(ref.path); return parse(raw);
   };
   for (const row of doc.records) {
+    // Owner-resolved hold: not bound to any source edition, receipt blob, fingerprint or unresolved evidence; the row is ordinary.
+    if (resolved.has(row.holdId)) continue;
     const sourcePath = 'archive/exams/' + row.sourceArchiveFile, source = bytes(root, sourcePath);
     ensure(blob(source) === row.sourceBlobSha1 && sha(source) === row.sourceSha256, 'SOURCE_EDITION');
     const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };

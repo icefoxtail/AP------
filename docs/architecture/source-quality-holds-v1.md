@@ -39,3 +39,14 @@ The ledger, helper, test and contract are ordinary reviewable source files. Shar
 ## Verification required before publication
 
 Focused regressions cover exact binding, unrelated-row preservation, changed source/image/evidence/receipt bytes, wrong UID or ordinal, incomplete catalog coverage, duplicate or removed holds, and the shared basic/advanced/VERIFIED behavior. An actual-current, one-exam catalog rebuild must show Q23 rejected for `source_issue`, advanced selection false, VERIFIED exclusion, and the other 23 rows unchanged outside projection-version identifiers. Source, image, identity, metadata, native receipt and runtime raw hashes must remain unchanged. Remote CI, main writer and Pages results are reported separately after actual publication.
+
+## Exception: owner-decision minimal-fix resolution (2026-11-23)
+
+The v1 ledger above is unchanged. This section adds one append-only exception; it is not a general release operation.
+
+- **What:** `archive/data/meta-foundation/source-quality-hold-resolutions-v1.json` (optional file, schema `archive-source-quality-hold-resolutions-v1`). A hold that has a matching resolution record is no longer bound to any source edition. For that hold only, the loader skips the `SOURCE_EDITION`, source count/UID, identity fingerprint, image, native receipt and unresolved-evidence checks, does not project `sourceIssueHold`/`sourceQualityHold`, and the question is an ordinary catalog row. The ledger record, its receipt and its evidence files are not edited. A hold without a record behaves exactly as before, including rejecting an implicit status change.
+- **When:** only when the owner explicitly decides it. The decision quote is recorded verbatim.
+- **Why:** original-source comparison is required for the first work only; later corrections are minimal fixes at the worker's discretion (user, 2026-11-23). The hold pinned the whole file and blocked error corrections of other questions in it.
+- **Why no new hash:** a resolved hold is not tied to a new edition again. Re-pinning would stop the registrar at the next edit of the same file (the 2026-11-23 incident).
+- **Record format:** `holdId` (must match a ledger record, no duplicates), `resolutionKind` (`OWNER_DECISION_MINIMAL_FIX`), `decidedAt` (YYYY-MM-DD...), `decisionQuote` (non-empty), `basis` (what was fixed and how, one or two sentences), `changedOrdinals` (question numbers changed). Any other key is rejected. Records are only appended.
+- **Review:** a change to this loader or to a resolution record is reviewed by a reviewer other than its author. The mathematics of a fixed question is rechecked independently in the same PR.
