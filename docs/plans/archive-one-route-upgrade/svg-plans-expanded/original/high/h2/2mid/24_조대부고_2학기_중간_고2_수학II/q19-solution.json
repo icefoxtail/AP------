@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -2,
+      7
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          3,
+          5
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-3",
+              "1"
+            ],
+            "domain": [
+              0,
+              5
+            ]
+          }
+        ],
+        "jumpValues": [],
+        "axisTickValues": {
+          "x": [
+            "3"
+          ],
+          "y": [
+            "-3"
+          ]
+        }
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "3",
+        "side": "LEFT",
+        "toY": "2"
+      },
+      {
+        "curve": "f",
+        "at": "3",
+        "side": "RIGHT",
+        "toY": "1"
+      },
+      {
+        "curve": "g",
+        "at": "3",
+        "side": "LEFT",
+        "toY": "0"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "위는 y=f(x), 아래는 a=-3일 때 y=g(x)=x-3이다. f는 x=3에서 좌극한 2, 우극한 1로 끊어진다. 곱이 연속이려면 2(3+a)=1(3+a)이어야 하므로 3+a=0, a=-3이다. 이때 g(3)=0이라 곱의 좌극한, 우극한, 함숫값이 모두 0이다. 따라서 구하는 값은 -3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\begin{cases}x-1&(x\\lt3)\\\\x-2&(x\\ge3)\\end{cases}$, $g(x)=x+a$에 대하여 함수 $f(x)g(x)$가 $x=3$에서 연속일 때, 상수 $a$의 값을 구하시오. [5점]<br><table class=\"question-table\"><tr><th>채점 기준</th><th>배점</th></tr><tr><td>연속의 정의를 이용한 경우</td><td>4점</td></tr><tr><td>$a$값을 구한 경우</td><td>1점</td></tr></table><br>※ 서술 과정에 따라 부분 점수를 부여함.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 점프 2→1이 g(3)=0과 곱해져 사라지는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=3에서 f는 2에서 1로 점프하지만 a=-3일 때 g는 x=3에서 0이 된다."
+  ],
+  "accessibilityDescription": "위쪽에 x=3에서 끊어지는 f의 그래프, 아래쪽에 x=3에서 x축을 지나는 직선 g를 나란히 그리고 x=3 근처의 극한을 화살표로 표시한 그림이다."
+}

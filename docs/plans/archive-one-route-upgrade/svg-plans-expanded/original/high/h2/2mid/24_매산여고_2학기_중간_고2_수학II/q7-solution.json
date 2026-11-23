@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-9",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -30,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "6"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "-26"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "6"
+      ],
+      "Q": [
+        "3",
+        "-26"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f′(x)=3x²-6x-9=3(x+1)(x-3)이므로 f′은 x=-1에서 양에서 음으로, x=3에서 음에서 양으로 바뀐다. 따라서 극대점은 P(-1,6), 극소점은 Q(3,-26)이고 M=6, m=-26이다. 5M+m=30-26=4이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-3x^2-9x+1$의 극댓값과 극솟값을 각각 $M$, $m$이라 할 때, $5M+m$의 값을 구하면? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′의 부호 변화로 정한 극대점 P(-1,6)과 극소점 Q(3,-26)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 P(-1,6)과 극소점 Q(3,-26)의 위치와 값이다."
+  ],
+  "accessibilityDescription": "삼차함수의 그래프에 극대점 P와 극소점 Q가 표시된 그림이다."
+}

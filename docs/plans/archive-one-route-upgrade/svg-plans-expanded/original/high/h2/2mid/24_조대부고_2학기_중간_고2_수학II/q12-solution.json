@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          0,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "F",
+        "x": "5",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "0"
+      ],
+      "B": [
+        "0",
+        "2"
+      ],
+      "F": [
+        "5",
+        "0"
+      ],
+      "V": [
+        "2",
+        "1"
+      ]
+    }
+  },
+  "caption": "f는 x=0에서 좌극한 2, f(0)=2(점 B), 우극한 -1로 끊어진다. x=k에서 f(x)f(x-k)의 좌극한은 2f(k), 우극한은 -f(k)이므로 연속이려면 f(k)=0이어야 한다. 그림에서 f가 x축과 만나는 곳은 x=-1(점 A), 2-√2, 2+√2, 5(점 F)이고 포물선 조각의 꼭짓점은 V(2,1)이다. k=0이면 좌극한 4, 우극한 1이라 연속이 아니다. 따라서 합은 8이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}2x+2&(x\\le0)\\\\-\\dfrac12(x-2)^2+1&(0\\lt x\\le4)\\\\x-5&(x\\gt4)\\end{cases}$의 그래프는 그림과 같다. 함수 $f(x)f(x-k)$가 $x=k$에서 연속이 되도록 하는 모든 상수 $k$의 값의 합은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 f의 끊어짐과 f(k)=0이 되는 x축 위의 네 점을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 x=0에서 끊어지고 x축과 x=-1, 2-√2, 2+√2, 5에서 만난다."
+  ],
+  "accessibilityDescription": "x=0에서 끊어지는 조각 함수의 그래프이며 x=0의 점 B, x축과 만나는 점 A와 F, 포물선 조각의 꼭짓점 V가 표시되어 있다."
+}

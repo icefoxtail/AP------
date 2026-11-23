@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      -15,
+      85
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "M",
+        "x": "4/3",
+        "y": "112/27"
+      },
+      {
+        "id": "N",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "P",
+        "x": "5",
+        "y": "40"
+      }
+    ],
+    "exactCoordinates": {
+      "O": [
+        "0",
+        "0"
+      ],
+      "M": [
+        "4/3",
+        "112/27"
+      ],
+      "N": [
+        "2",
+        "4"
+      ],
+      "P": [
+        "5",
+        "40"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "8",
+          "intercept": "0",
+          "label": "y=8x"
+        }
+      ]
+    }
+  },
+  "caption": "(가)에서 f′(2)=12+4a+b=0이다. f(x)-8x=x{x²+ax+(b-8)}이고 서로 다른 실근이 2개이려면 b=8이어야 하므로 a=-5이다. f(x)=x³-5x²+8x이면 f(x)-8x=x²(x-5)이어서 그림처럼 직선 y=8x가 원점 O에서 접하고 P(5,40)에서 다시 만난다. f′(x)=(3x-4)(x-2)이므로 x=2에서 극소이고 극솟값은 N(2,4)의 4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+ax^2+bx$ (단, $a,b$는 실수)가 다음 조건을 만족시킬 때, $f(x)$의 극솟값을 구하시오. [8점]<br><div class=\"note-box\">(가) 함수 $f(x)$는 $x=2$에서 극값을 갖는다.<br>(나) 방정식 $f(x)-8x=0$의 서로 다른 실근의 개수는 $2$이다.</div><br><table class=\"question-table\"><tr><th>채점 기준</th><th>배점</th></tr><tr><td>풀이 과정을 논리적 모순 없이 서술하고 정답 작성</td><td>8점</td></tr><tr><td>정답만 작성한 경우</td><td>1점</td></tr></table><br>※ 서술 과정에 따라 부분 점수를 부여함.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직선 y=8x가 원점에서 접하고 x=5에서 만나는 것과 극대점 M, 극소점 N을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y=f(x)와 y=8x가 원점에서 접하고 P(5,40)에서 만나며 극대점 M(4/3,112/27), 극소점 N(2,4)이 있다."
+  ],
+  "accessibilityDescription": "삼차곡선과 원점을 지나는 직선이 원점에서 접하고 한 점 P에서 다시 만나는 그래프이며 곡선의 극대점 M과 극소점 N이 표시되어 있다."
+}

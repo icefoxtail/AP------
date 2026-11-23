@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-10",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      3.5
+    ],
+    "viewport": [
+      -0.5,
+      3.5,
+      -3,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "7/3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "5/3",
+        "y": "-4/3"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "0"
+      ],
+      "Q": [
+        "7/3",
+        "0"
+      ],
+      "V": [
+        "5/3",
+        "-4/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=x³+Ax²+Bx+C라 하면 x=1에서 극대이므로 f′(1)=0이고 B=-3-2A이다. f′의 다른 근 r은 (1,2)에서 f′<0이어야 하므로 r≥2이고 이로부터 A≤-5이다. f(5)-f(3)=92+12A는 A=-5일 때 최대이다. 그림은 이때의 y=f′(x)=3x²-10x+7=(x-1)(3x-7)이며 P(1,0), Q(7/3,0)에서 x축과 만나 x<1에서는 f′>0으로 증가, 1<x<7/3에서는 f′<0으로 감소한다. 최댓값은 92-60=32이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족시키는 모든 함수 $f(x)$에 대하여 $f(5)-f(3)$의 최댓값을 구하면? [4.5점]<div class=\"note-box\">(가) 함수 $f(x)$는 최고차항의 계수가 $1$이고, 모든 항의 계수가 정수인 삼차함수이다.<br>(나) 함수 $f(x)$는 열린구간 $(-2,1)$에서 증가한다.<br>(다) 함수 $f(x)$는 열린구간 $(1,2)$에서 감소한다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A=-5일 때 f′의 두 근 1과 7/3, 그 사이의 음수 구간을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A=-5일 때 f′이 x=1에서 양에서 음으로, x=7/3에서 음에서 양으로 바뀐다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 x축의 두 교점 P, Q, 꼭짓점 V를 나타낸 도함수의 그래프이다."
+}

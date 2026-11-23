@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          -3,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "6",
+        "-2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-2"
+      }
+    ]
+  },
+  "caption": "원본 q5.png의 왼쪽 x=0에서 높이 6으로 접근하는 오목한 상승곡선과 (0,-2)에서 시작해 오른쪽으로 상승하는 직선을 정적 대조해 반영했다. 곡선의 정확한 식은 제공되지 않아 왼쪽은 이차 개형 근사이다. x=0에서 {f(x)-a}²의 좌극한은 (6-a)², 함숫값은 (-2-a)²이므로 (6-a)²=(-2-a)²을 풀면 a=2이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다. 함수 $\\{f(x)-a\\}^2$이 $x=0$에서 연속일 때, 상수 $a$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본에서 x=0의 왼쪽은 증가하며 기울기가 작아지는 곡선으로 높이 6의 빈 점에 접근하고, 오른쪽은 (0,-2)의 채운 점에서 직선으로 증가한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0의 왼쪽 이차 근사곡선은 열린 (0,6)으로, 오른쪽 상승 직선은 채운 (0,-2)로 시작하여 불연속점의 두 높이를 구별한다."
+  ],
+  "accessibilityDescription": "x<0에서는 왼쪽 아래에서 (0,6)의 열린 점으로 올라가는 이차 개형 근사곡선이 있고, x≥0에서는 (0,-2)의 채운 점 B에서 시작하여 오른쪽 위로 올라가는 직선이 있다."
+}
