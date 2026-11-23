@@ -12,6 +12,27 @@ import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
 // Slack for sub-pixel layout when judging a target box (the page-wide check allowed 2 px too).
 export const BOX_OVERFLOW_TOLERANCE_PX=2;
 
+// What the page state says about a row. A row that names targets (a figure under test, or an envelope probe) is judged on those targets (2026-11-23): what the
+// student sees of THIS figure. What is wrong elsewhere in the same exam page (another question's missing picture, a wide formula, a question count) is the exam's,
+// not this figure's: it is returned as a pageNote (scope EXAM) and does not fail the row. A row with no target keeps judging the whole page, as before.
+export function judgeArchivePage(state,item){
+  const errors=[],pageNotes=[];
+  const scoped=(item.assets?.length||0)+(item.envelopeTargets?.length||0)>0;
+  const pageLevel=(code,detail)=>{if(scoped)pageNotes.push({scope:'EXAM',code,...detail});else errors.push(code);};
+  if(state.questionBlocks!==item.questionCount)pageLevel('ARCHIVE_QCOUNT_FAIL',{questionBlocks:state.questionBlocks,expected:item.questionCount});
+  if(!state.pageCount||!state.mathJaxReady)errors.push('ARCHIVE_RENDER_NOT_READY');// nothing to measure on a page that did not render
+  else if(state.errorText)pageLevel('ARCHIVE_RENDER_NOT_READY',{errorText:String(state.errorText).slice(0,200)});
+  if(state.horizontalOverflow)pageLevel('ARCHIVE_HORIZONTAL_OVERFLOW',{});
+  if(!state.allImagesLoaded)pageLevel('ARCHIVE_IMAGE_LOAD_FAIL',{images:(state.failedImages||[]).filter(v=>!v.inTargetBox).map(v=>v.src)});
+  if(scoped){
+    // inside the target's box: a picture of that question that did not load is a defect of the question, noted, not blamed on the figure under test
+    const inBox=(state.failedImages||[]).filter(v=>v.inTargetBox);if(inBox.length)pageNotes.push({scope:'TARGET_BOX',code:'ARCHIVE_IMAGE_LOAD_FAIL',images:inBox.map(v=>v.src)});
+    // the target question's own box: content wider than the box or the figure outside it is what the student would see clipped or scrolled
+    for(const target of state.targets||[])if(target.boxOverflow&&(target.boxOverflow.scrollOverflowPx>BOX_OVERFLOW_TOLERANCE_PX||target.boxOverflow.imageOutsidePx>BOX_OVERFLOW_TOLERANCE_PX))errors.push('TARGET_HORIZONTAL_OVERFLOW:'+target.id);
+  }
+  return {errors,pageNotes};
+}
+
 export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
 }
@@ -159,22 +180,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2;
           return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,displayEnvelopes,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,mathJaxSource:window.__AP_MATHJAX_SOURCE__||null,mathJaxCdnFallback:window.__AP_MATHJAX_SOURCE__==='cdn-fallback',qrRendererAvailable:typeof window.QRious==='function',allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length,failedImages,targetBoxOverflows,viewportWidth:innerWidth};
         },{mode:item.mode,assets:item.assets,envelopeTargets:item.envelopeTargets||[]});
-        // A row that names targets (a figure under test, or an envelope probe) is judged on those targets (2026-11-23): what the student sees of THIS figure.
-        // What is wrong elsewhere in the same exam page (another question's missing picture, a wide formula, a question count) is the exam's, not this figure's:
-        // it is recorded in row.pageNotes with scope EXAM and does not fail the row. A row with no target keeps judging the whole page, as before.
-        const scoped=(item.assets?.length||0)+(item.envelopeTargets?.length||0)>0;
-        const pageLevel=(code,detail)=>{if(scoped)pageNotes.push({scope:'EXAM',code,...detail});else errors.push(code);};
-        if(state.questionBlocks!==item.questionCount)pageLevel('ARCHIVE_QCOUNT_FAIL',{questionBlocks:state.questionBlocks,expected:item.questionCount});
-        if(!state.pageCount||!state.mathJaxReady)errors.push('ARCHIVE_RENDER_NOT_READY');// nothing to measure on a page that did not render
-        else if(state.errorText)pageLevel('ARCHIVE_RENDER_NOT_READY',{errorText:String(state.errorText).slice(0,200)});
-        if(state.horizontalOverflow)pageLevel('ARCHIVE_HORIZONTAL_OVERFLOW',{});
-        if(!state.allImagesLoaded)pageLevel('ARCHIVE_IMAGE_LOAD_FAIL',{images:(state.failedImages||[]).filter(v=>!v.inTargetBox).map(v=>v.src)});
-        if(scoped){
-          // inside the target's box: a picture of that question that did not load is a defect of the question, noted, not blamed on the figure under test
-          const inBox=(state.failedImages||[]).filter(v=>v.inTargetBox);if(inBox.length)pageNotes.push({scope:'TARGET_BOX',code:'ARCHIVE_IMAGE_LOAD_FAIL',images:inBox.map(v=>v.src)});
-          // the target question's own box: content wider than the box or the figure outside it is what the student would see clipped or scrolled
-          for(const target of state.targets||[])if(target.boxOverflow&&(target.boxOverflow.scrollOverflowPx>BOX_OVERFLOW_TOLERANCE_PX||target.boxOverflow.imageOutsidePx>BOX_OVERFLOW_TOLERANCE_PX))errors.push('TARGET_HORIZONTAL_OVERFLOW:'+target.id);
-        }
+        {const verdict=judgeArchivePage(state,item);errors.push(...verdict.errors);pageNotes.push(...verdict.pageNotes);}
         if(item.requireQrRenderer&&!state.qrRendererAvailable)errors.push('ARCHIVE_QR_RENDERER_NOT_LOADED');
         if(item.requireLocalResources&&(externalRequests.length||state.mathJaxCdnFallback))errors.push('ARCHIVE_EXTERNAL_RUNTIME_REQUEST_DETECTED');
         for(const envelope of state.displayEnvelopes||[])if(envelope.status!=='PASS')errors.push(...(envelope.errors||['DISPLAY_ENVELOPE_PROBE_FAIL']));
@@ -263,7 +269,11 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
   const rowEvidence=JSON.parse(fs.readFileSync(rowPath,'utf8'));
   const rawObservation=rowEvidence.state?.displayEnvelopes?.find(v=>v.id===targetId);
   const observation=rawObservation?{...rawObservation,...(questionUid?{questionUid}:{}),synthetic:false,runtime:rowEvidence.runtime,browserVersion:rowEvidence.browserVersion,sourceRef,sourceAuthorityStatus}:null;
-  if(archive.status!=='PASS'||rowEvidence.status!=='PASS'||observation?.status!=='PASS')throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors}));
+  if(archive.status!=='PASS'||rowEvidence.status!=='PASS'||observation?.status!=='PASS'){
+    // scope: EXAM_PAGE when the only thing wrong is that the exam page itself did not render (another question's content stopped it: nothing of this figure can be measured, retry or leave to the exam), TARGET otherwise.
+    const failures=rowEvidence.errors||[],scope=failures.length&&failures.every(item=>String(item).includes('ARCHIVE_PAGE_RENDER_ERROR:'))?'EXAM_PAGE':'TARGET';
+    throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({scope,archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors,...(rowEvidence.pageNotes?.length?{pageNotes:rowEvidence.pageNotes}:{})}));
+  }
   return {status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json'))),archive,rowEvidence,observation,captureFolder};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
