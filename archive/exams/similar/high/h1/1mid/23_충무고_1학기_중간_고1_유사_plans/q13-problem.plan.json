@@ -1,0 +1,46 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 위로 볼록한 포물선의 꼭짓점을 보여준다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "-2",
+        "8",
+        "-1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        0,
+        8
+      ],
+      "viewport": [
+        0,
+        8,
+        -2,
+        16
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 4,
+          "y": 14
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          4
+        ],
+        "y": [
+          14
+        ]
+      }
+    },
+    "caption": "f(x)=-(x-4)^2+14는 꼭짓점 x=4에서 최댓값 14를 갖는다."
+  }
+}

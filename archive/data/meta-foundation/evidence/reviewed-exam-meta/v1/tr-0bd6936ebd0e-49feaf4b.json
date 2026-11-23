@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-0bd6936ebd0e-49feaf4b",
+  "requestSha256": "b5cf7d8ad07d7d9f78957f56be32aa6129b452c87ff6c9a9cc0a8d780b66d218",
+  "examUid": "21_매산고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "43e254fa96efacd3707cc6c21c21bc63e252d592",
+  "sourceRawSha256": "9abba2a7a3afaf9ae0a51d27240d5fd866f1643fa58211465652b5a9ece67ea2",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0bd6936ebd0e-49feaf4b.type-ledger.json",
+        "sha256": "402c2c82475b22c7948d98b7de449b9d1709f467b362af9982ac4160b7610b39"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e8128f7246f7b06d4d2ed19774b85f08f1c8f5707c20a60c529852544441004e",
+      "sourceArchiveFile": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_EXTREMUM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-0bd6936ebd0e-49feaf4b",
+        "judge": "dots",
+        "rationale": "실수 조건으로 sin x∈[1/2,1]을 확보한 뒤 두 근호의 합을 최적화하면 최댓값 1과 최솟값 1/√2에서 비 √2를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(하)",
+          "curriculumSource": "request",
+          "rowCourse": "수학I",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "eb87776d9632ad766e7748485c21c87ddc478761c8cfd90f1459a4ede38ccd19",
+        "judgedContentFingerprint": "98993b0272694885d48beffffef845d3b0365730abf4f8aad1195504d052c7d4",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "64bd41babd4388cfbd062048f19adf5c64795e94a44c41b7a27513632f6c3cab",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0bd6936ebd0e-49feaf4b.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f8355b5fcb78-f4074f7e",
+  "requestSha256": "dcefcee470bd41e89c947eaf07a028eefb4ab8bb346b76144baf4dc569382b8d",
+  "examUid": "21_이수중_2학기_기말_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+  "sourceBlobSha1": "1bec0b755fa92b301a1e5fdac4d37149af13f563",
+  "sourceRawSha256": "48e55f40f4a054d29c0bf521d5975567f872cfecb1b30618fc2086465c6b74ad",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8355b5fcb78-f4074f7e.type-ledger.json",
+        "sha256": "38f70f721226b455502137064662ccb7142d3fdc7bd9775601efa0fde9669067"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_b3d2cab9ca0958bf9a22a5217eaa3eecb6a0220571604e789e7fc7569f053202",
+      "sourceArchiveFile": "original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f8355b5fcb78-f4074f7e",
+        "judge": "dots",
+        "rationale": "원래 높이8과 잘린 높이4의 닮음비1:2에서 작은 원뿔 부피1/8을 전체96파이에서 뺀다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "911a5cba8386a0774fc7644e5688367c1e1ac9b5124936fe3a37a6fea1aec6e8",
+        "judgedContentFingerprint": "8b9e1fc36444ead62716599bb428b4933832f4f507c7f765b5b087dfb3310783",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "4bae4f6bc266ece23e19b9252e4c972d2f31f23a5efc0555eb40316b098ff74f",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8355b5fcb78-f4074f7e.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 26
+}

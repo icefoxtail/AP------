@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "9",
+        "sd": "2",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "4"
+      },
+      {
+        "x": "5"
+      },
+      {
+        "x": "9"
+      },
+      {
+        "x": "11"
+      }
+    ],
+    "shades": [
+      {
+        "from": "4",
+        "to": "11",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "P(X≤5)=0.0228이므로 5의 표준화 값은 −2이고 (5−m)/2=−2에서 m=9이다. 4는 z=−2.5, 11은 z=1이므로 P(4≤X≤11)=P(−2.5≤Z≤1)이다. 표에서 0.4938+0.3413=0.8351이다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "평균 9와 구간 [4, 11]이 z=−2.5부터 1까지에 대응함을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 평균이 $m$, 표준편차가 $2$인 정규분포를 따르고 $P(X\\le5)=0.0228$일 때, $P(4\\le X\\le11)$의 값을 오른쪽 표준정규분포표를 이용하여 구하면? [3.8점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr><tr><td>$2.5$</td><td>$0.4938$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

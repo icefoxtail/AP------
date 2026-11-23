@@ -100,6 +100,10 @@
 - 이미 게시한 확통 그림은 이 절 때문에 되돌리거나 지우지 않는다. 새로 판정하고 만드는 문항에만 적용한다.
 - 이유: 단순 계산 문항에도 해설 식과 같은 내용의 그림을 억지로 넣은 경우가 있었다. 다른 과목은 그래프·단위원·도형이 실제로 필요해서 이 문제가 확통에만 있다.
 
+## 설명 문구 품질 미달은 등록·게시를 막지 않는다 (2026-11-24, 사용자 결정: "수정프로토콜에 걸림 있는 건 다 없애버리는 게 맞다")
+
+등록기 studentIndexes 레인(`build-svg-accessibility-index.cjs --base`)에서 `--base` 이후 바뀐·새로 연결된 SVG가 `SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE`(설명이 구체적이지 않음)·`KOREAN_MEANING_REQUIRED`·`ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW`·`MATH_MARKUP_ACCESSIBILITY_REQUIRES_REVIEW`에 걸려도 색인은 만들어지고, 빌더가 `SVG_ACCESSIBILITY_QUALITY_ADVISORY svgs=N findings=M` 줄과 그림 목록(앞 50개)을 출력한다. 이 목록이 수리 목록이다. 루트 없음·title/desc 없음·id 중복·aria 참조 깨짐·내부 문구·축척 안내 같은 실제 결함은 전과 같이 막는다(`svg-language-contract.cjs`의 `QUALITY_ONLY_CODES`, 호출 쪽이 `advisory` 배열을 줄 때만 적용). 그림을 만드는 작업(엔진·`assertSvgStudentLanguage` 직접 호출)과 `--expected-source-index` 감사 모드는 그대로 엄격하다. 전체 목록(저장소 모든 SVG, 시험지·문항 번호·현재 title/desc 포함, ENGLISH·MATH 코드 먼저)은 `node archive/tools/build-svg-accessibility-index.cjs --quality-report <out.tsv|out.json>`로 뽑는다(색인은 쓰지 않고 차단하지 않음, `svg-quality-report.cjs`). 이유: 저장소에 같은 판정에 걸리는 옛 그림이 2,600개 넘게 있어, 그 그림이 든 시험지를 고치거나 새 유사 세트를 올리는 것만으로 필수 레인이 멈춰 학생 사이트 게시가 막혔다(run 45170490117·45171814773).
+
 ## 해설 그림 정보 우선 (2026-11-17, 사용자 결정)
 
 해설 SVG는 학생이 그래프를 보고 이해해 마지막에 정답을 유추하게 돕는 것이라 풀이 과정 정보를 최대한 넣고, 정답이 그림에 있다는 이유로 반려하지 않는다(정답이 꼭 있을 필요도 없다). 문제 그림은 종전대로 정답·새 풀이 보조선을 노출하지 않는다. 이 절이 이전의 해설 그림 정답 숨김·정답 노출 FAIL 조항(공통 프롬프트, 고1 2학기 기말 경로, AUTHOR_GUIDE, ops 지시서·인계 문서)보다 우선한다. 이유: 학생 화면(`archive/engine.html`)은 [정답]을 맨 위에 보여 준 뒤 해설 그림을 붙이므로 정답을 숨겨도 막는 것이 없고 그림만 빈약해지며, 정답 관련 좌표·눈금·식을 모두 숨긴 사양 8개가 축 이름만 남아 렌더 관문에서 실패했다.

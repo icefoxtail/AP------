@@ -80,7 +80,7 @@ test('manifest compiler validates current SVG hashes and emits the browser proje
   const files = fixture(t);
   const report = compileManifest(files);
   const sourceIndexSha256 = `sha256:${sha256(fs.readFileSync(files.sourceIndexPath))}`;
-  assert.deepEqual(report, { recordCount: 1, outputPath: files.outputPath, sourceIndexSha256 });
+  assert.deepEqual(report, { recordCount: 1, qualityAdvisory: [], outputPath: files.outputPath, sourceIndexSha256 });
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(files.outputPath, 'utf8'), context);
   assert.equal(context.window.APSvgAccessibilityIndex.records[0].assetRef, files.record.assetRef);
@@ -249,6 +249,22 @@ test('production compiler retains a byte-current managed problem clearance when 
   assert.equal(current.semanticClearanceOrigin, 'MANAGED_VERIFIED_RECORD');
 });
 
+test('production compiler lists description-quality shortfalls as advisory and still blocks real SVG defects', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const newSvg = path.join(files.repoRoot, 'archive', 'assets', 'images', 'new.svg');
+  const write = (title, description, aria = 'svg-title svg-desc') => fs.writeFileSync(newSvg,
+    `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="${aria}"><title id="svg-title">${title}</title><desc id="svg-desc">${description}</desc><circle r="5"/></svg>\n`);
+  // 설명 문구 품질 미달: 게시(색인 생성)를 막지 않고 목록에 남는다.
+  write('도형의 관계', '문항의 핵심 관계를 표시한 도형');
+  const report = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  assert.equal(report.recordCount, 2);
+  assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'), JSON.stringify(report.qualityAdvisory));
+  // 실제 결함(참조 깨짐)은 계속 막는다.
+  write('직선과 점', '한 점을 지나고 기울기가 일정한 직선을 나타낸 그림', 'missing svg-desc');
+  assert.throws(() => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }), /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*ARIA_REFERENCE_INVALID/);
+});
+
 function productionFixture(t, sourceRoot = 'archive/exams') {
   const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'svg-accessibility-production-'));
   t.after(() => fs.rmSync(repoRoot, { recursive: true, force: true }));
@@ -321,4 +337,32 @@ test('student SVG accessibility index tracks the manifest hash and current Geumd
     assert.equal(current.titleKo, source.titleKo);
     assert.equal(current.descriptionKo, source.descriptionKo);
   }
+});
+
+test('--quality-report lists every flagged SVG with its exams and text, English/math-markup findings first, and never blocks', t => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'svg-quality-report-'));
+  t.after(() => fs.rmSync(repoRoot, { recursive: true, force: true }));
+  const dir = path.join(repoRoot, 'archive', 'assets', 'images');
+  fs.mkdirSync(dir, { recursive: true });
+  const svg = (title, desc) => `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d"><title id="t">${title}</title><desc id="d">${desc}</desc></svg>\n`;
+  fs.writeFileSync(path.join(dir, 'good.svg'), svg('원과 중심', '중심에서 원 위의 점까지의 거리가 같은 원을 나타낸 그림'));
+  fs.writeFileSync(path.join(dir, 'generic.svg'), svg('도형의 관계', '문항의 핵심 관계를 표시한 도형'));
+  fs.writeFileSync(path.join(dir, 'english.svg'), svg('similar triangles', 'Right triangle ADE with a right angle at D and a parallel segment BC'));
+  fs.writeFileSync(path.join(dir, 'broken.svg'), '<svg xmlns="http://www.w3.org/2000/svg"><circle r="5"/></svg>\n');
+  const uses = { uses: [{ assetRef: 'assets/images/english.svg', uses: [{ visualRole: 'solution', sourceExamRef: 'archive/exams/a.js', sourceQid: 'q3' }, { visualRole: 'solution', sourceExamRef: 'archive/exams/b.js', sourceQid: 'q9' }] }] };
+  const { writeQualityReport } = require(path.join(__dirname, '..', 'archive', 'tools', 'svg-quality-report.cjs'));
+  const out = path.join(repoRoot, 'report.tsv');
+  const result = writeQualityReport({ repoRoot, outPath: out, uses });
+  assert.equal(result.scanned, 4);
+  assert.equal(result.flagged, 3);
+  const rows = fs.readFileSync(out, 'utf8').trim().split('\n').slice(1).map(line => line.split('\t'));
+  assert.equal(rows[0][0], 'assets/images/english.svg', 'English/math-markup findings come first');
+  assert.equal(rows[0][1], 'quality');
+  assert.equal(rows[0][4], 'archive/exams/a.js;archive/exams/b.js');
+  assert.equal(rows[0][5], 'archive/exams/a.js#q3;archive/exams/b.js#q9');
+  assert.ok(rows.some(row => row[0] === 'assets/images/generic.svg' && /DESCRIPTION_NOT_SUBSTANTIVE/.test(row[2])));
+  assert.ok(rows.some(row => row[0] === 'assets/images/broken.svg' && row[1] === 'defect'));
+  const jsonOut = path.join(repoRoot, 'report.json');
+  assert.equal(writeQualityReport({ repoRoot, outPath: jsonOut, uses }).flagged, 3);
+  assert.equal(JSON.parse(fs.readFileSync(jsonOut, 'utf8')).rows.length, 3);
 });

@@ -1,0 +1,64 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "20",
+        "sd": "4",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "14"
+      },
+      {
+        "x": "16"
+      },
+      {
+        "x": "20"
+      },
+      {
+        "x": "24"
+      },
+      {
+        "x": "26"
+      }
+    ],
+    "shades": [
+      {
+        "from": "14",
+        "to": "16",
+        "color": "BLUE"
+      },
+      {
+        "from": "24",
+        "to": "26",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.0919"
+      },
+      {
+        "shade": 1,
+        "text": "0.0919"
+      }
+    ]
+  },
+  "caption": "P(X≤k)=P(X≥40−k)가 모든 k에서 성립하면 곡선이 직선 x=20에 대하여 대칭이므로 m=20이다. X=14는 z=−1.5, X=16은 z=−1이다. 14부터 16까지의 넓이는 대칭인 24부터 26까지(z=1부터 1.5)의 넓이와 같고 0.4332−0.3413=0.0919이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "대칭축 x=20과 14부터 16까지의 넓이가 24부터 26까지의 넓이와 같다는 것을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 정규분포 $N(m,4^2)$을 따를 때, 모든 실수 $k$에 대하여 $P(X\\le k)=P(X\\ge 40-k)$를 만족한다고 한다. 아래 표준정규분포표를 이용하여 $P(14\\le X\\le16)$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
