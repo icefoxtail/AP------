@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {phoneFailureReasons} from '../production/construction-archive-capture-v1.mjs';
+import {phoneFailureReasons,bankResponseMatches} from '../production/construction-archive-capture-v1.mjs';
 import {recordArchiveEvidence,judgeArchivePage,judgeArchiveTarget} from '../record-visual-browser-evidence.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
@@ -22,8 +22,9 @@ const runRoot=path.join(root,'.tmp/archive',runId);
 test.after(()=>fs.rmSync(runRoot,{recursive:true,force:true}));
 
 // A copy of the exam in which question `wideId` carries a wide block, and (when asset) question 1 shows a solution figure.
-function build(name,{wideId,asset=false}){
-  const raw=fs.readFileSync(path.join(root,SOURCE),'utf8'),bank=loadBank(raw);
+function build(name,{wideId,asset=false,source=SOURCE}){
+  const EXAM=path.posix.basename(source,'.js');
+  const raw=fs.readFileSync(path.join(root,source),'utf8'),bank=loadBank(raw);
   const patch=[];
   if(wideId!==undefined)patch.push(`Object.assign(window.questionBank.find(q=>q.id===${wideId}),{content:window.questionBank.find(q=>q.id===${wideId}).content+${JSON.stringify(WIDE)}});`);
   const run=path.join(runRoot,EXAM,name);fs.mkdirSync(run,{recursive:true});
@@ -36,8 +37,8 @@ function build(name,{wideId,asset=false}){
   }
   const text=raw+bankAliasSuffix(raw)+'\n;'+patch.join('\n')+'\n';
   const candidate=path.join(run,EXAM+'.js');fs.writeFileSync(candidate,text);
-  const info={id:name,sourcePath:SOURCE,sourceSha256:sha256(fs.readFileSync(path.join(root,SOURCE))),candidatePath:rel(candidate),candidateSha256:sha256(Buffer.from(text,'utf8')),questionCount:bank.length,assets:assetInfo?[assetInfo]:[]};
-  const row={...info,mode:'sol',viewport:'desktop',width:1440,height:1000,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(SOURCE.replace(/^archive\//,''))};
+  const info={id:name,sourcePath:source,sourceSha256:sha256(fs.readFileSync(path.join(root,source))),candidatePath:rel(candidate),candidateSha256:sha256(Buffer.from(text,'utf8')),questionCount:bank.length,assets:assetInfo?[assetInfo]:[]};
+  const row={...info,mode:'sol',viewport:'desktop',width:1440,height:1000,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(source.replace(/^archive\//,''))};
   return {run,info,row};
 }
 async function record(name,options,rowPatch){
@@ -109,4 +110,29 @@ test('phoneFailureReasons: each phone error becomes one short reason, blocking o
   assert.deepEqual(phoneFailureReasons(['TARGET_SVG_LOAD_FAIL:'+id],id),['IMAGE_LOAD_FAIL']);
   assert.deepEqual(phoneFailureReasons(['TARGET_HORIZONTAL_OVERFLOW:'+id,`${id}:LABEL_GEOMETRY_COLLISION:A:g`,`${id}:LABEL_GEOMETRY_COLLISION:B:g`],id),['TARGET_HORIZONTAL_OVERFLOW','LABEL_GEOMETRY_COLLISION']);
   assert.deepEqual(phoneFailureReasons(['page.waitForFunction: Error: timeout'],id),['PAGE_ERROR']);
+});
+
+const BOM_SOURCE='archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_확률과통계.js';
+const hex=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+test('bankResponseMatches: one leading UTF-8 BOM is ignored, every other byte difference still refuses',()=>{
+  const body=Buffer.from('window.questionBank=[{id:1}];','utf8'),bom=Buffer.from([0xef,0xbb,0xbf]);
+  const withBom=Buffer.concat([bom,body]),sha=bytes=>'sha256:'+hex(bytes);
+  assert.equal(bankResponseMatches(sha(body),body),true);                                         // plain file
+  assert.equal(bankResponseMatches(sha(withBom),withBom),true);                                   // the received bytes keep the BOM
+  assert.equal(bankResponseMatches(sha(body),withBom),true);                                      // the received bytes lost exactly one BOM
+  assert.equal(bankResponseMatches(sha(Buffer.concat([body,Buffer.from(' ')])),withBom),false);   // another byte differs
+  assert.equal(bankResponseMatches(sha(Buffer.from('window.questionBank=[{id:2}];')),withBom),false);
+  assert.equal(bankResponseMatches(sha(body),Buffer.concat([bom,bom,body])),false);               // a second BOM is not forgiven
+  assert.equal(bankResponseMatches(sha(withBom),body),false);                                     // a BOM the file does not have is not invented
+  assert.equal(bankResponseMatches(null,withBom),false);assert.equal(bankResponseMatches('not-a-hash',body),false);
+});
+
+test('real Chrome: the exam JS of a file that starts with a BOM reaches the page without the BOM (what bankResponseMatches forgives)',async()=>{
+  const bytes=fs.readFileSync(path.join(root,BOM_SOURCE));
+  assert.deepEqual([...bytes.subarray(0,3)],[0xef,0xbb,0xbf],'the fixture exam really starts with a BOM');
+  const {row}=await record('bom-bank',{source:BOM_SOURCE},{envelopeTargets:[{id:'probe',questionId:1,displayOrdinal:1,intrinsicSvg:{width:384,height:320},sizeClasses:['full']}]});
+  const text=fs.readFileSync(path.join(runRoot,path.posix.basename(BOM_SOURCE,'.js'),'bom-bank',path.posix.basename(BOM_SOURCE)));
+  const wanted=BOM_SOURCE.slice("archive/".length),received=row.responses.filter(response=>decodeURIComponent(new URL(response.url).pathname).endsWith(wanted));
+  assert.equal(received.length,1);
+  assert.equal(bankResponseMatches('sha256:'+received[0].sha256,text),true,'the received bank matches the written one up to the BOM');
 });

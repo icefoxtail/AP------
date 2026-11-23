@@ -93,7 +93,7 @@ a non-PASS summary becomes `ARCHIVE_CAPTURE_FAIL` (`detail.rows`, `detail.errors
 | --- | --- |
 | `network`: policy `LOCAL_ONLY`, no external request | `ARCHIVE_NETWORK_NOT_LOCAL` |
 | `assetResponse`: exactly one response for the asset path, status 200, its SHA = `lineage.svgSha256` | `ARCHIVE_ASSET_RESPONSE_MISMATCH` |
-| `bankResponse`: exactly one response for the exam JS path (`/<sourcePath>`), status 200, its SHA = `lineage.candidateBankSha256` | `ARCHIVE_BANK_RESPONSE_MISMATCH` |
+| `bankResponse`: exactly one response for the exam JS path (`/<sourcePath>`), status 200, its SHA = `lineage.candidateBankSha256` (one leading UTF-8 BOM is ignored: Chrome hands the page the script without it; `bankResponseMatches`) | `ARCHIVE_BANK_RESPONSE_MISMATCH` |
 | `naturalSize`: loaded, natural size = SVG intrinsic size | `ARCHIVE_ASSET_RESPONSE_MISMATCH` (`detail.check`) |
 | `displayScale`: `min(rect.w/w, rect.h/h)` vs `policy.displayScale`, difference x larger side <= 1 CSS px plus 1e-9 for float noise (exactly 1 px is accepted, more is refused; `displayScaleDifference`) | `ARCHIVE_DISPLAY_SCALE_MISMATCH` |
 | `layout`: the Archive row's isolated replay at the real rect (`layout.source` `ARCHIVE_ROW_ISOLATED_REPLAY`), or, if the row has no record of the asset, the same SVG replayed at the rect (`MODULE_REPLAY_AT_ACTUAL_RECT`) | `ARCHIVE_LAYOUT_FAIL` |

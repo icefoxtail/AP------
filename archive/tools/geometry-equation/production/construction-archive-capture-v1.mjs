@@ -53,6 +53,17 @@ const same=(a,b)=>canonicalJson(a)===canonicalJson(b);
 // The SHA of the one response in `list`, as the Archive recorded it; null if there is not exactly one or it is not a bare 64-hex digest.
 const responseSha=list=>{if(list.length!==1)return null;try{return 'sha256:'+archiveAssetSha256(list[0].sha256);}catch{return null;}};
 
+/**
+ * Does the SHA of what the Archive received equal the bank this module wrote? Chrome hands a script's body to the page recorder as decoded text, so a file that starts with a
+ * UTF-8 byte order mark (EF BB BF) arrives without it (2026-11-23: 22_효천고_2학기_중간_고2_확률과통계.js). Exactly ONE leading BOM is ignored; any other byte difference, and a second BOM, still refuse.
+ */
+export function bankResponseMatches(responseSha256,candidateBytes){
+  if(!HASH.test(responseSha256))return false;
+  if(bytesSha(candidateBytes)===responseSha256)return true;
+  const bom=candidateBytes.length>=3&&candidateBytes[0]===0xef&&candidateBytes[1]===0xbb&&candidateBytes[2]===0xbf;
+  return bom&&bytesSha(candidateBytes.subarray(3))===responseSha256;
+}
+
 /** Observed vs expected display scale, in CSS px of the larger side. Exactly the tolerance passes; anything above it does not. */
 export function displayScaleDifference({observed,expected,intrinsic,toleranceCssPx=DISPLAY_SCALE_TOLERANCE_CSS_PX}){
   const deltaCssPx=Math.abs(observed-expected)*Math.max(intrinsic.width,intrinsic.height);
@@ -417,7 +428,7 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     state.checks={
       network:pass(row.network?.policy==='LOCAL_ONLY'&&Array.isArray(row.network.externalRequests)&&row.network.externalRequests.length===0),
       assetResponse:pass(responses.length===1&&responses[0].status===200&&lineage.assetResponseSha256===svgSha256),
-      bankResponse:pass(bankResponses.length===1&&bankResponses[0].status===200&&responseSha(bankResponses)===lineage.candidateBankSha256),
+      bankResponse:pass(bankResponses.length===1&&bankResponses[0].status===200&&bankResponseMatches(responseSha(bankResponses),candidateBytes)),
       naturalSize:pass(target?.loaded===true&&target.naturalWidth===intrinsic.width&&target.naturalHeight===intrinsic.height),
       displayScale:pass(finite&&difference.withinTolerance),
       layout:pass(layout.status==='PASS')
