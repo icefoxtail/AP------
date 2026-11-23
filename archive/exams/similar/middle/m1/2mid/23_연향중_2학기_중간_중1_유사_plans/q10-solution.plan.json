@@ -1,8 +1,5 @@
 {
   "capability": "construction-spike-v1",
-  "caption": "보조 평행선을 그어 엇각을 정리하면 각 x - 각 y의 크기는 55도이다.",
-  "sourceQuote": "두 직선 $l, m$이 평행하므로 꺾인 점마다",
-  "assetPath": "assets/images/23_연향중_2학기_중간_중1_유사/q10-solution.svg",
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
     "realization": {
@@ -12,75 +9,18 @@
     },
     "nodes": [
       {
-        "id": "L1",
+        "id": "lL",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
             {
               "kind": "integer",
-              "value": "-6"
+              "value": "177"
             },
             {
               "kind": "integer",
-              "value": "4"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "L2",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "4"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "M1",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-6"
-            },
-            {
-              "kind": "integer",
-              "value": "-4"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "M2",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "-4"
+              "value": "1000"
             }
           ]
         },
@@ -95,11 +35,11 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "-2"
+              "value": "677"
             },
             {
               "kind": "integer",
-              "value": "2"
+              "value": "1000"
             }
           ]
         },
@@ -107,18 +47,18 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "P2",
+        "id": "lR",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
             {
               "kind": "integer",
-              "value": "2"
+              "value": "1177"
             },
             {
               "kind": "integer",
-              "value": "0"
+              "value": "1000"
             }
           ]
         },
@@ -126,83 +66,491 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "P3",
+        "id": "V1",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
             {
               "kind": "integer",
-              "value": "-1"
+              "value": "200"
             },
             {
               "kind": "integer",
-              "value": "-2"
+              "value": "600"
             }
           ]
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "653"
+            },
+            {
+              "kind": "integer",
+              "value": "389"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1043"
+            },
+            {
+              "kind": "integer",
+              "value": "614"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1476"
+            },
+            {
+              "kind": "integer",
+              "value": "364"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "mL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "976"
+            },
+            {
+              "kind": "integer",
+              "value": "364"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "mR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1976"
+            },
+            {
+              "kind": "integer",
+              "value": "364"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aux1R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "600"
+            },
+            {
+              "kind": "integer",
+              "value": "600"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aux2L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "253"
+            },
+            {
+              "kind": "integer",
+              "value": "389"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aux2R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1053"
+            },
+            {
+              "kind": "integer",
+              "value": "389"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aux3L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "643"
+            },
+            {
+              "kind": "integer",
+              "value": "614"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aux3R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1443"
+            },
+            {
+              "kind": "integer",
+              "value": "614"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
   "displayPoints": [
-    "L1",
-    "L2",
-    "M1",
-    "M2",
+    "lL",
     "P1",
-    "P2",
-    "P3"
+    "lR",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "mL",
+    "mR",
+    "aux1R",
+    "aux2L",
+    "aux2R",
+    "aux3L",
+    "aux3R"
   ],
+  "hiddenPointNames": [
+    "lL",
+    "P1",
+    "lR",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "mL",
+    "mR",
+    "aux1R",
+    "aux2L",
+    "aux2R",
+    "aux3L",
+    "aux3R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
   "displaySegments": [
     {
-      "id": "sL",
+      "id": "sl",
       "refs": [
-        "L1",
-        "L2"
+        "lL",
+        "lR"
       ]
     },
     {
-      "id": "sM",
-      "refs": [
-        "M1",
-        "M2"
-      ]
-    },
-    {
-      "id": "s1",
-      "refs": [
-        "L1",
-        "P1"
-      ]
-    },
-    {
-      "id": "s2",
+      "id": "sP1V1",
       "refs": [
         "P1",
-        "P2"
+        "V1"
       ]
     },
     {
-      "id": "s3",
+      "id": "sV1V2",
       "refs": [
-        "P2",
-        "P3"
+        "V1",
+        "V2"
       ]
     },
     {
-      "id": "s4",
+      "id": "sV2V3",
       "refs": [
-        "P3",
-        "M2"
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3V4",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    },
+    {
+      "id": "sm",
+      "refs": [
+        "mL",
+        "mR"
+      ]
+    },
+    {
+      "id": "sAux1",
+      "refs": [
+        "V1",
+        "aux1R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAux2L",
+      "refs": [
+        "aux2L",
+        "V2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAux2R",
+      "refs": [
+        "V2",
+        "aux2R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAux3L",
+      "refs": [
+        "aux3L",
+        "V3"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAux3R",
+      "refs": [
+        "V3",
+        "aux3R"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a40",
+        "refs": [
+          "lL",
+          "P1",
+          "V1"
+        ],
+        "value": 40.0,
+        "label": "40",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "P1",
+          "V1",
+          "V2"
+        ],
+        "value": 65.0,
+        "label": "y",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a125",
+        "refs": [
+          "V1",
+          "V2",
+          "V3"
+        ],
+        "value": 125.0,
+        "label": "125",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "V2",
+          "V3",
+          "V4"
+        ],
+        "value": 120.0,
+        "label": "x",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a150",
+        "refs": [
+          "V3",
+          "V4",
+          "mR"
+        ],
+        "value": 150.0,
+        "label": "150",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_alpha2",
+        "refs": [
+          "aux2L",
+          "V2",
+          "V1"
+        ],
+        "value": 25.0,
+        "label": "α",
+        "arcs": 2,
+        "side": "INNER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a_beta1",
+        "refs": [
+          "V3",
+          "V2",
+          "aux2R"
+        ],
+        "value": 30.0,
+        "label": "β",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a30_v4",
+        "refs": [
+          "mL",
+          "V4",
+          "V3"
+        ],
+        "value": 30.0,
+        "label": "30",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sl",
+        "text": "l",
+        "labelAt": "START"
+      },
+      {
+        "id": "lbl_m",
+        "ownerSegment": "sm",
+        "text": "m",
+        "labelAt": "END"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "해설 그림: 각 꺾인 점을 지나 l, m과 평행한 보조선을 그어 엇각 40도, alpha, beta, 30도를 표시한 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선 l과 m이 서로 평행하다.",
+      "mappedTo": [
+        "planeMarks.parallels",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "각 꺾인 점에 평행한 보조선을 긋는다.",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.angles"
       ]
     }
   ],
-  "status": "ACTIVE",
-  "engineEvidence": {
-    "resultPath": "archive/assets/images/23_연향중_2학기_중간_중1_유사/q10-solution-result.json",
-    "statePath": "archive/assets/images/23_연향중_2학기_중간_중1_유사/q10-solution-state.json",
-    "svgPath": "archive/assets/images/23_연향중_2학기_중간_중1_유사/q10-solution-solution.svg"
-  }
+  "newVisualInformation": [
+    "보조선과 엇각 및 평각을 이용한 중간 단계 각도를 나타낸다."
+  ]
 }
