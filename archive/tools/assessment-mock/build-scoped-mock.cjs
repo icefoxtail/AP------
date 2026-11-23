@@ -7,6 +7,7 @@
 // 범위는 카탈로그의 2022 중단원(단원별 기출 화면과 같은 판정)과 유형 키로만 판정한다. 발문을 읽어 범위를 정하지 않는다.
 const fs = require('fs');
 const path = require('path');
+const { spawnSync } = require('child_process');
 const { ARCHIVE_ROOT, EXAMS_ROOT, loadExam, parseSource } = require('./load-pool.cjs');
 const { stripScoreLabels } = require('./clean-stem.cjs');
 const { loadCatalogRecords, groupIndexOf } = require('./scoped-units.cjs');
@@ -32,7 +33,33 @@ function figureFilesOf(q) {
   if (q.solutionImage) files.push(q.solutionImage);
   for (const m of String(q.content ?? '').matchAll(IMG_RE)) files.push(m[1]);
   for (const c of q.choices || []) for (const m of String(c).matchAll(IMG_RE)) files.push(m[1]);
+  for (const m of String(q.solution ?? '').matchAll(IMG_RE)) files.push(m[1]);
   return files;
+}
+// 사이트(Pages)에 싣지 않는 그림 경로. 원본 품질 보류 문항의 의존 파일이라 사이트 배포에서 빠진다.
+// 이런 그림을 가리키는 문항은 모의고사에 넣지 않는다(학생 화면에서 그림이 깨지고, 사이트 도달 검사가 실패한다).
+let leftOutCache = null;
+function leftOutFigures() {
+  if (leftOutCache) return leftOutCache;
+  const run = spawnSync(process.execPath, [path.join(__dirname, 'left-out-figures.mjs')], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  if (run.status !== 0) throw new Error('사이트에서 빠지는 그림 목록을 읽지 못했습니다: ' + String(run.stderr || run.error || '').slice(0, 300));
+  const parsed = JSON.parse(run.stdout);
+  leftOutCache = { paths: new Set(parsed.paths), names: new Set(parsed.names) };
+  return leftOutCache;
+}
+// 그림 경로가 사이트에서 빠지는 파일이거나, 그 파일과 이름이 같으면(사이트 도달 검사가 이름만으로도 걸러 낸다) true.
+function isLeftOutFigure(f) {
+  const left = leftOutFigures();
+  const rel = normFigure(f);
+  return left.paths.has(rel) || left.names.has(path.posix.basename(rel));
+}
+function normFigure(f) { return String(f).replace(/^\.?\//, '').replace(/^archive\//, '').split(/[?#]/)[0]; }
+// 그림이 다른 시험지의 그림 폴더(assets/images/<다른 시험>/...)를 가리키면 true. 공유 그림일 수 있어 제외 조건이 아니라 집계용이다.
+function isForeignFolder(file, f) {
+  const m = /^assets\/images\/([^/]+)\//.exec(normFigure(f));
+  if (!m) return false;
+  const stem = String(file).replace(/\.js$/i, '').split(/[\\/]/).pop();
+  return m[1] !== stem;
 }
 // 제외 사유(문자열) 또는 '' (사용 가능). 정답·해설 비어 있음, 그림 파일 없음·그림이 필요한데 없음, 원본 품질 보류, 보기 부족.
 function rejectReason(q, rec) {
@@ -46,6 +73,7 @@ function rejectReason(q, rec) {
     if (!choicesInFigure && !(Array.isArray(q.choices) && q.choices.length >= 4)) return '보기 부족';
   }
   for (const f of figureFilesOf(q)) if (!fileExists(f)) return '그림 파일 없음';
+  for (const f of figureFilesOf(q)) if (isLeftOutFigure(f)) return '그림이 사이트에 실리지 않음';
   const text = String(q.content ?? '') + ' ' + (q.choices || []).join(' ');
   const hasFigure = Boolean(q.image) || /<img\b|<svg\b/i.test(text);
   // "줄기와 잎 그림"은 발문 속 표(<table>)로 주어질 수 있어 그림 요구로 세지 않는다.
@@ -137,6 +165,7 @@ function buildPool(scope, catalog, common) {
       if (why) { stats.rejected[why] = (stats.rejected[why] || 0) + 1; continue; }
       const guard = textGuardHit(scope, q, rule);
       if (guard) { stats.textGuard[guard] = (stats.textGuard[guard] || 0) + 1; continue; }
+      if (figureFilesOf(q).some(f => isForeignFolder(file, f))) stats.foreignFolderFigures = (stats.foreignFolderFigures || 0) + 1;
       raw.push({
         file, q, rec, gi: index, l2: l2.l2,
         subj: q.questionType === '서술형',
