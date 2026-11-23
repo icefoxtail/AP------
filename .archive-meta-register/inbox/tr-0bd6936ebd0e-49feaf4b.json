@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-0bd6936ebd0e-49feaf4b",
+  "examUid": "21_매산고_1학기_기말_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+  "expectedSourceBlobSha1": "43e254fa96efacd3707cc6c21c21bc63e252d592",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0bd6936ebd0e-49feaf4b.type-ledger.json",
+        "sha256": "402c2c82475b22c7948d98b7de449b9d1709f467b362af9982ac4160b7610b39"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e8128f7246f7b06d4d2ed19774b85f08f1c8f5707c20a60c529852544441004e",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_EXTREMUM"
+      },
+      "rationale": "실수 조건으로 sin x∈[1/2,1]을 확보한 뒤 두 근호의 합을 최적화하면 최댓값 1과 최솟값 1/√2에서 비 √2를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "64bd41babd4388cfbd062048f19adf5c64795e94a44c41b7a27513632f6c3cab",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0bd6936ebd0e-49feaf4b.type-ledger.json",
+          "sha256": "402c2c82475b22c7948d98b7de449b9d1709f467b362af9982ac4160b7610b39"
+        }
+      ]
+    }
+  ]
+}

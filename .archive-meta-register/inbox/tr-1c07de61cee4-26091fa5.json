@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-1c07de61cee4-26091fa5",
+  "examUid": "21_신흥중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "8729956acdadfd7a7aa48b80e76b07549a13294e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-1c07de61cee4-26091fa5.type-ledger.json",
+        "sha256": "d5cd50401bd75412704947013d2acf719e0658bff1f291efe60a39c4976e0124"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c9f22efffa546eca559f324e2d425f91687db29c86d991e560fa506f7c977ba1",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+        "templateKey": "TT_FOLDING_REFLECTION"
+      },
+      "rationale": "접기대칭과평행선으로AB=BC,폭8과45도로AB=8√2를얻어넓이32√2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "bfc341ed082016c633abef56935622e7f534c517efcf1d4e4bad75e2d648f589",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-1c07de61cee4-26091fa5.type-ledger.json",
+          "sha256": "d5cd50401bd75412704947013d2acf719e0658bff1f291efe60a39c4976e0124"
+        }
+      ]
+    }
+  ]
+}

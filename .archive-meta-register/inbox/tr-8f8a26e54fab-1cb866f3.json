@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-8f8a26e54fab-1cb866f3",
+  "examUid": "19_매산여고_1학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "7a4df1d657ce2d528b4cea90f1d22bdf468aef11",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-1cb866f3.type-ledger.json",
+        "sha256": "e8af0da27c4aad768803c61268258b5f3d323ea9127748eb80023f46d1cf9a5d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a905b291e0904cdcdd4b65b582be5ac4568db23d80cf831a3ea5d1934eba212e",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT"
+      },
+      "rationale": "각 원소를 A·B모두/B만/둘다아님의3상태에 배정하여3⁵이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "ef64c22bcb403071c3392cd9b666be5cfe2915210e5bc6b87176b92bd03a484e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-1cb866f3.type-ledger.json",
+          "sha256": "e8af0da27c4aad768803c61268258b5f3d323ea9127748eb80023f46d1cf9a5d"
+        }
+      ]
+    }
+  ]
+}
