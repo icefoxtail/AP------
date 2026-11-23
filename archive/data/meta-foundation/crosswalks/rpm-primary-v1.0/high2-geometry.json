@@ -24,19 +24,19 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE validation"
   },
   "summary": {
-    "recordCount": 93,
-    "DIRECT_ACTIVE": 9,
+    "recordCount": 99,
+    "DIRECT_ACTIVE": 14,
     "FAMILY_ACTIVE": 0,
     "DIRECT_BINDING_GAP": 0,
     "FAMILY_BINDING_GAP": 0,
-    "RPM_ONLY": 84,
+    "RPM_ONLY": 85,
     "byCurriculum": {
       "2015": {
         "RPM_ONLY": 38
       },
       "2022": {
-        "DIRECT_ACTIVE": 9,
-        "RPM_ONLY": 46
+        "DIRECT_ACTIVE": 14,
+        "RPM_ONLY": 47
       }
     }
   },
@@ -1573,6 +1573,166 @@
         "ownerPack": "GEOMETRY"
       },
       "mappingReason": "유형 은행 반입용: 마플 시너지 유형 체계와 RPM 리프를 대조하여 같은 형태의 PT/TPL을 연결했다."
+    },
+    {
+      "id": "H2-GEO-RPM-094",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "이차곡선의 종합 활용",
+        "l4": "포물선·타원·쌍곡선 혼합"
+      },
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-GEO-RPM-095",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선의 접선",
+        "l3": "이차곡선과 직선의 위치 관계",
+        "l4": "판별식과 위치 관계"
+      },
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "problemTypeLabelKo": "이차곡선의 접선 문제",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "templateLabelKo": "접선 조건",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-02",
+        "subUnitKey": "H22-GE-02-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "mappingReason": "2026-11-23 사용자 결정(RPM L4 세부유형 확장): 마플 시너지 유형 체계 기준으로 새 L4를 만들고 같은 형태의 PT/TPL을 연결했다."
+    },
+    {
+      "id": "H2-GEO-RPM-096",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "도형의 방정식",
+        "l3": "벡터를 이용한 직선",
+        "l4": "법선벡터"
+      },
+      "standardUnitKey": "H22-GE-08",
+      "subUnitKey": "H22-GE-08-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "problemTypeLabelKo": "벡터를 이용한 직선·원의 방정식",
+      "templateKey": "TPL_GEO_VEC_LINE_NORMAL",
+      "templateLabelKo": "법선벡터로 직선의 방정식",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "mappingReason": "2026-11-23 사용자 결정(RPM L4 세부유형 확장): 마플 시너지 유형 체계 기준으로 새 L4를 만들고 같은 형태의 PT/TPL을 연결했다."
+    },
+    {
+      "id": "H2-GEO-RPM-097",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "도형의 방정식",
+        "l3": "거리와 위치 관계",
+        "l4": "평행·수직 조건"
+      },
+      "standardUnitKey": "H22-GE-08",
+      "subUnitKey": "H22-GE-08-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "problemTypeLabelKo": "벡터를 이용한 직선·원의 방정식",
+      "templateKey": "TPL_GEO_VEC_LINE_RELATION",
+      "templateLabelKo": "두 직선의 평행·수직·각",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "mappingReason": "2026-11-23 사용자 결정(RPM L4 세부유형 확장): 마플 시너지 유형 체계 기준으로 새 L4를 만들고 같은 형태의 PT/TPL을 연결했다."
+    },
+    {
+      "id": "H2-GEO-RPM-098",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "도형의 방정식",
+        "l3": "벡터를 이용한 원",
+        "l4": "중심·반지름형"
+      },
+      "standardUnitKey": "H22-GE-08",
+      "subUnitKey": "H22-GE-08-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "problemTypeLabelKo": "벡터를 이용한 직선·원의 방정식",
+      "templateKey": "TPL_GEO_VEC_CIRCLE",
+      "templateLabelKo": "벡터로 나타낸 원의 방정식",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "mappingReason": "2026-11-23 사용자 결정(RPM L4 세부유형 확장): 마플 시너지 유형 체계 기준으로 새 L4를 만들고 같은 형태의 PT/TPL을 연결했다."
+    },
+    {
+      "id": "H2-GEO-RPM-099",
+      "curriculum": "2022",
+      "scope": "기하",
+      "rpmPath": {
+        "majorUnit": "벡터",
+        "midUnit": "도형의 방정식",
+        "l3": "벡터를 이용한 원",
+        "l4": "지름의 양 끝점(내적)형"
+      },
+      "standardUnitKey": "H22-GE-08",
+      "subUnitKey": "H22-GE-08-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "기하",
+      "problemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "problemTypeLabelKo": "벡터를 이용한 직선·원의 방정식",
+      "templateKey": "TPL_GEO_VEC_CIRCLE",
+      "templateLabelKo": "벡터로 나타낸 원의 방정식",
+      "ownerPack": "GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "기하",
+        "standardUnitKey": "H22-GE-08",
+        "subUnitKey": "H22-GE-08-CORE",
+        "ownerPack": "GEOMETRY"
+      },
+      "mappingReason": "2026-11-23 사용자 결정(RPM L4 세부유형 확장): 마플 시너지 유형 체계 기준으로 새 L4를 만들고 같은 형태의 PT/TPL을 연결했다."
     }
   ]
 }

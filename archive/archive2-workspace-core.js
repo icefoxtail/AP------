@@ -776,7 +776,7 @@
     try {
       storedQpp = Number(localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4);
     } catch {}
-    const qpp = [4, 6, 8].includes(storedQpp) ? storedQpp : 4;
+    const qpp = [2, 4, 6, 8].includes(storedQpp) ? storedQpp : 4;
     return O.settings({
       header: {
         title: O.displayTitle(exam),

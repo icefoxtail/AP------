@@ -1337,8 +1337,8 @@ test("saved paper snapshot verification allows qpp 2 and rejects qpp 3 and 5", a
   const verified2 = await readAndVerifySavedSnapshot(await makeRow(2));
   assert.equal(verified2.meta.qpp, 2);
 
-  // qpp 4, 6, 8 도 계속 성공
-  for (const validQpp of [4, 6, 8]) {
+  // qpp 1, 4, 6, 8 도 성공
+  for (const validQpp of [1, 4, 6, 8]) {
     const v = await readAndVerifySavedSnapshot(await makeRow(validQpp));
     assert.equal(v.meta.qpp, validQpp);
   }

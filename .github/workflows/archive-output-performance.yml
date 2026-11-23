@@ -19,8 +19,14 @@ on:
       - 'archive/common-fast-runtime.js'
       - 'archive/mathjax_render_loop.js'
       - 'archive/render-diagnostics.js'
+      - 'archive/question-image-readiness.js'
+      - 'archive/equal-slot-engine.js'
       - 'tests/archive-render-one-item.test.js'
+      - 'tests/apmath-wrong-print-render-notice.test.js'
+      - 'apmath/wrong_print_engine.html'
       - 'archive/exams/test-fixtures/render-one-item-fault.js'
+      - 'tests/archive-render-image-fault.test.js'
+      - 'archive/exams/test-fixtures/render-image-fault.js'
       - 'archive/screen-runtime.js'
       - 'archive/screen-runtime-adapter.js'
       - 'archive/solution-render-executor.js'
@@ -133,12 +139,12 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
           ARCHIVE_CACHE_REPORT_DIR: ${{ runner.temp }}/archive-output-cache
         run: node tests/archive2-output-cache-browser.cjs
-      - name: Verify one broken formula never blocks the whole output (engine and mixed)
+      - name: Verify one broken formula or figure never blocks the whole output (engine, mixed, wrong-print)
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
           ARCHIVE_ONE_ITEM_REQUIRE_BROWSER: '1'
-        run: node --test tests/archive-render-one-item.test.js
+        run: node --test tests/archive-render-one-item.test.js tests/archive-render-image-fault.test.js tests/apmath-wrong-print-render-notice.test.js
       - name: Upload snapshot recovery evidence
         if: always()
         uses: actions/upload-artifact@v4
