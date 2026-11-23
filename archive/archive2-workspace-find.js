@@ -617,16 +617,16 @@
     multiPicked.length = 0;
     refreshMultiPick();
   }
-  function similarCellMarkup(exam, index, pairs, multi = false) {
+  function similarCellMarkup(exam, index, pairs, multi = false, mockSim = "") {
     const sets = pairs.setsFor(exam.file);
-    if (!sets.length) return '<div class="exam-row-sim none">유사문제 없음</div>';
+    if (!sets.length) return `<div class="exam-row-sim none">유사문제 없음${mockSim}</div>`;
     if (sets.length === 1) {
       const set = sets[0];
       const setIndex = examIndexOf(set);
       const setTitle = O.displayTitle(set);
-      return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong>${set.qCount ? ` <span>· ${esc(set.qCount)}문항</span>` : ""}</div><div class="exam-row-sim-actions" role="group" aria-label="${esc(setTitle)} 열기·출제">${multi ? multiPickButton(set, setIndex) : ""}${button("source-output-direct", "열기", `type="button" data-exam="${setIndex}" data-mode="exam" aria-label="${esc(setTitle)} 시험지 열기"`)}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}" aria-label="${esc(setTitle)} 반에 출제"`)}</div></div>`;
+      return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong>${set.qCount ? ` <span>· ${esc(set.qCount)}문항</span>` : ""}</div><div class="exam-row-sim-actions" role="group" aria-label="${esc(setTitle)} 열기·출제">${multi ? multiPickButton(set, setIndex) : ""}${button("source-output-direct", "열기", `type="button" data-exam="${setIndex}" data-mode="exam" aria-label="${esc(setTitle)} 시험지 열기"`)}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}" aria-label="${esc(setTitle)} 반에 출제"`)}${mockSim}</div></div>`;
     }
-    return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong> <span>${sets.length}세트</span></div><div class="exam-row-sim-actions">${button("similar-list", "보기", `type="button" data-exam="${index}" aria-label="${esc(O.displayTitle(exam))} 유사문제 ${sets.length}세트 보기"`)}</div></div>`;
+    return `<div class="exam-row-sim has"><div class="exam-row-sim-head"><strong>유사문제</strong> <span>${sets.length}세트</span></div><div class="exam-row-sim-actions">${button("similar-list", "보기", `type="button" data-exam="${index}" aria-label="${esc(O.displayTitle(exam))} 유사문제 ${sets.length}세트 보기"`)}${mockSim}</div></div>`;
   }
   // options: { at } relative-day label, { range } show the unit range, { more } 더보기 menu, { selected }.
   function examRowMarkup(exam, index, options = {}) {
@@ -659,6 +659,10 @@
     const direct = ([mode, label]) =>
       button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
     const titleButton = button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`);
+    // 학교 기출 시험지 한 줄에서 곧바로 기본/응용/심화 모의고사로(archive2-workspace-derive.js, 같은 선정 코드).
+    const mock = kind === "exam" && /^original\//.test(String(exam.file || ""))
+      ? (cls) => button("derive-mock-open", "모의고사", `type="button" class="mock-entry ${cls}" data-exam="${index}" aria-label="${esc(title)} 기본·응용·심화 모의고사 만들기" title="이 시험과 같은 유형으로 기본·응용·심화 모의고사 만들기"`) : () => "";
+    // 넓은 줄(920px 이상)은 오른쪽 유사문제 칸, 그보다 좁으면 행동 단추 줄 끝(CSS가 하나만 보인다). 새 줄을 만들지 않는다.
     const picked = options.multi && multiPicked.includes(exam.file);
     const more = options.more
       ? `<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", options.selected ? "선택됨" : "문항 선택", `data-exam="${index}" aria-pressed="${!!options.selected}" class="small"`)}</div></details>`
@@ -666,8 +670,8 @@
     return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${picked ? " multi-on" : ""}${options.multi ? " has-pick" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
       ${options.multi ? multiPickButton(exam, index, " lead") : ""}<div class="exam-row-spine"><span class="exam-row-year">${esc(book ? exam.grade || "–" : year || "–")}</span><span class="exam-row-grade">${esc(book ? "교과서" : exam.grade || "")}</span></div>
       <div class="exam-row-main">${book ? tag + titleButton : titleButton + tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
-      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${more}</div>
-      ${withSimilarCell ? similarCellMarkup(exam, index, pairs, options.multi) : ""}
+      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${mock("mock-in-actions")}${more}</div>
+      ${withSimilarCell ? similarCellMarkup(exam, index, pairs, options.multi, mock("mock-in-sim")) : ""}
     </article>`;
   }
   // Two or more similar sets: one dialog lists them with the same four buttons as the exam.

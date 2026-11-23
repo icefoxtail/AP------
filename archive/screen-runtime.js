@@ -177,7 +177,10 @@
                 await adapter.visible?.(ctx);
                 ctx.visibleReadyMs = Date.now() - ctx.createdAt;
                 observe('VISIBLE_READY', ctx);
-                return { ok: true, mode: snapshot.mode, pages: snapshot.pageCount, transactionId: ctx.transactionId, sessionId: currentSession.sessionId };
+                const readyOutcome = { ok: true, mode: snapshot.mode, pages: snapshot.pageCount, transactionId: ctx.transactionId, sessionId: currentSession.sessionId };
+                // 진단 한 객체(render-diagnostics.js publish가 commit에서 만든 window.apRenderReport)를 ready 값에도 싣는다. 진단 파일이 없는 화면은 필드가 없다.
+                if (typeof globalThis !== 'undefined' && globalThis.apRenderReport) readyOutcome.diagnostics = globalThis.apRenderReport;
+                return readyOutcome;
             } catch (error) {
                 if (ctx.committed) { observe('POST_COMMIT_OBSERVATION_FAILED', { ...ctx, error }); return { ok: true, mode: committedCandidate.mode, transactionId: ctx.transactionId }; }
                 ctx.state = !isLatest(ctx) ? 'DISCARDED_STALE' : 'FAILED';

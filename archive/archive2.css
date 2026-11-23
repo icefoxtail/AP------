@@ -4987,6 +4987,44 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .derive-compose-note p { margin: 4px 0 0; }
 .derive-compose-note ul { margin: 4px 0 0; padding-left: 18px; }
 .derive-dialog .derive-publisher[hidden] { display: none; }
+/* 학교 모의고사: 시험지 한 줄에서 기본 / 응용 / 심화 (2026-11-23) */
+/* 모의고사 단추는 줄 높이를 늘리지 않는다: 920px 미만은 행동 단추 줄 끝, 이상은 오른쪽 유사문제 칸 안. */
+/* 보관함의 "출제 전" 표시(만들어 두고 아직 출제하지 않은 저장본) */
+.badge.before-issue { background: var(--brand-soft); color: var(--brand-ink); font-weight: 700; }
+.badge.before-issue[hidden], .before-issue-summary[hidden], .saved-row[hidden] { display: none !important; }
+.before-issue-summary { margin: 8px 0; }
+.mock-entry { white-space: nowrap; border-color: var(--brand-ink); color: var(--brand-ink); }
+.mock-entry:hover { background: var(--brand-soft); }
+.exam-row-actions > .mock-entry { flex: 0 0 auto; }
+.mock-in-sim { display: none; }
+/* 휴대폰 폭에서 단추 6개가 한 줄에 들어가도록 이 줄만 조금 좁힌다(줄 높이 그대로) */
+@container exam-rows (max-width: 559.98px) {
+  .exam-row-actions:has(.mock-in-actions) { gap: 4px; }
+  .exam-row-actions:has(.mock-in-actions) > button { padding: 0 6px; font-size: 14px; white-space: nowrap; }
+  .exam-row-actions:has(.mock-in-actions) .finder-card-more > summary { padding: 0 6px; font-size: 14px; white-space: nowrap; }
+}
+.exam-row-sim.none .mock-in-sim { margin-left: auto; }
+@container exam-rows (min-width: 920px) {
+  .mock-in-actions { display: none; }
+  .mock-in-sim { display: inline-flex; }
+  .exam-row-sim.none { justify-content: space-between; }
+}
+.derive-mock .mock-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 12px 0; }
+.derive-mock .mock-level { display: grid; gap: 4px; justify-items: start; text-align: left; min-height: 64px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper, #fff); cursor: pointer; }
+.derive-mock .mock-level strong { font-size: 18px; }
+.derive-mock .mock-level span { color: var(--ink-2); font-size: 13px; line-height: 1.4; }
+.derive-mock .mock-level:hover, .derive-mock .mock-level:focus-visible { border-color: var(--ink); background: var(--selected); }
+.derive-mock .mock-tabs { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
+.derive-mock .mock-tab { min-height: 40px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper, #fff); cursor: pointer; font-weight: 600; }
+.derive-mock .mock-tab { color: var(--ink); }
+.derive-mock .mock-tab[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+.derive-mock .linklike { min-height: 0; padding: 0 2px; border: 0; background: none; color: var(--ink-2); text-decoration: underline; font-size: inherit; cursor: pointer; }
+.derive-mock .mock-saved ul { margin: 6px 0 0; padding-left: 0; list-style: none; display: grid; gap: 6px; }
+.derive-mock .mock-saved li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.derive-mock .mock-tweak { margin: 6px 0 0; font-size: 13px; }
+.derive-mock .mock-gap { margin: 6px 0; color: var(--warn); font-size: 13px; }
+.derive-mock .mock-slots { list-style: none; padding-left: 0; }
+.derive-mock .mock-unfilled { color: var(--warn); }
 
 /* ---- 여러 시험지 한꺼번에 출제 (2026-11-22) ------------------------------------------------------
    학교별 기출의 원본·유사 시험지 줄에 체크 칸(`.multi-pick`), 하나 이상 고르면 아래 띠(`.multi-assign-bar`).

@@ -146,7 +146,9 @@
         box.style.transformOrigin = 'top left';
     }
     async function ready(area) {
-        await area.ownerDocument.fonts?.ready;
+        // 글꼴 대기는 끝없이 두지 않는다(시간 예산, 초과는 알림으로 남기고 계속). APRenderLoop가 없는 화면은 예전처럼 기다린다.
+        if (root.APRenderLoop?.fontsReady) await root.APRenderLoop.fontsReady(area.ownerDocument);
+        else await area.ownerDocument.fonts?.ready;
         const images = list(area, 'img');
         if (root.APQuestionImageReadiness) {
             // 안 받아진 그림 한 장은 render-diagnostics의 빈 상자로 바꾸고 계속한다(진단 파일이 없는 화면은 예전처럼 던진다).
@@ -309,7 +311,11 @@
             await ready(area);
             pages = list(area, PAGE);
         }
+        // 한 단 전체·글자 10.8px로도 안 들어가 쪽을 넘치는 문항 하나가 시험지 전체(공통 게이트 S12·인쇄 사전 점검)를 막지 않게, 그 문항만 자리 표시로 바꾼다.
+        // 쪽이 넘치지 않으면 아무것도 하지 않는다. 진단 파일이 없는 화면(오답 엔진 옛 방식 등)은 예전 그대로 동작한다.
+        const guarded = root.APRenderDiagnostics?.guardOverflow?.(area) || [];
         const evidence = audit(area);
+        if (guarded.length) evidence.guarded = guarded.length;
         if (state) evidence.promoted = state.promoted.map(item => item.box.dataset.sourceRef || item.originalIndex);
         evidence.layoutOverflow = evidence.warnings.filter(w => w.code === 'LAYOUT_OVERFLOW');
         evidence.layoutOverflow.forEach(w => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체에도 글자 ' + MIN_EFFECTIVE_FONT_PX + 'px로는 들어가지 않는 문항(overflowReason은 fit 참고)', w));
