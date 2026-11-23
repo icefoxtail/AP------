@@ -21,8 +21,17 @@ export function loadTable(file=TABLE_PATH){
 const WRAPPERS=new Set(['COMPOSITE_PANEL_NOT_COMPOSED','STATIC_GRAPH_AUDIT_FAIL','PLANE_MARKS_AUDIT_FAIL','RENDERED_LAYOUT_FAIL','WORKER_ERROR_WRAPPER','LAYOUT_REPAIR_BINDING_FAIL']);
 const isWrapper=c=>WRAPPERS.has(c)||/_RENDERED_LAYOUT_FAIL$/.test(c)||/_AUDIT_FAIL$/.test(c)&&c!=='LAYOUT_REPAIR_AUDIT_FAIL'&&c!=='MEASURED_OWNER_LAYOUT_REPAIR_AUDIT_FAIL';
 
-export function classify(code,table=loadTable()){
+export function classify(code,table=loadTable(),reason){
   const bare=String(code).split(':')[0];
+  // PREFIX:REASON codes: the reason decides (listed reasons first, then the same rule as the bare reason code on desktop, else a block)
+  if(table.prefixed?.[bare]){
+    const spec=table.prefixed[bare],why=reason??String(code).split(':').slice(1).join(':').split(':')[0];
+    const listed=spec.reasons?.[why];
+    if(listed)return {source:'prefixed',code:bare,reason:why,track:listed,stage:listed==='INDETERMINATE'?'infra':'post-render',note:spec.about,...(listed==='DEDUCT'?{fixed:3}:{})};
+    const like=why?classify(why,table):null;
+    if(like&&like.source!=='default')return {...like,source:'prefixed',code:bare,reason:why,note:spec.about};
+    return {source:'prefixed',code:bare,reason:why,track:'BLOCK',stage:'post-render',note:spec.about+': unknown reason'};
+  }
   if(table.codes[bare])return {source:'code',code:bare,...table.codes[bare]};
   for(const f of table.families)if(f.re.test(bare))return {source:'family',code:bare,track:f.track,stage:f.stage,reason:f.reason};
   return {source:'default',code:bare,...table.default};
@@ -121,7 +130,7 @@ export function pointsFor(entry,degree,table=loadTable()){
 export function scoreFigure({findings,hasSvg=true},table=loadTable()){
   let points=0,block=null,indet=false,wait=false;const lines=[];
   for(const f of findings||[]){
-    const entry=classify(f.code,table);
+    const entry=classify(f.code,table,f.id);
     const line={code:entry.code,track:entry.track,stage:entry.stage,source:entry.source};
     if(f.id)line.id=f.id;
     if(entry.track==='BLOCK'){block??=entry.reason||entry.note||'block';line.points=100;line.reason=entry.reason||entry.note;}

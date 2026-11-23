@@ -103,5 +103,12 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   const lightTouch = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 47, 10, 40, 20)]));
   assert.strictEqual(score.scoreFigure({ findings: lightTouch.violations, hasSvg: true }).verdict, 'PASS');
 
+  // PREFIX:REASON codes (phone display check): the reason decides
+  const phone = r => score.classify('ARCHIVE_PHONE_DISPLAY_FAIL:' + r).track;
+  for (const r of ['IMAGE_LOAD_FAIL', 'TARGET_OUTSIDE_SCREEN', 'TARGET_HORIZONTAL_OVERFLOW', 'TEXT_CLIPPED', 'GEOMETRY_VIEWPORT_CLIPPING', 'UNLISTED_REASON']) assert.strictEqual(phone(r), 'BLOCK', r);
+  for (const r of ['LABEL_OVERLAP', 'LABEL_GEOMETRY_COLLISION']) assert.strictEqual(phone(r), 'DEDUCT', r);
+  assert.strictEqual(phone('PAGE_ERROR'), 'INDETERMINATE');
+  assert.strictEqual(score.scoreFigure({ findings: [{ code: 'ARCHIVE_PHONE_DISPLAY_FAIL', id: 'LABEL_OVERLAP' }], hasSvg: true }).verdict, 'PASS');
+
   console.log('svg-score-gate: ok');
 })().catch(e => { console.error(e); process.exit(1); });

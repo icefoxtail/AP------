@@ -684,6 +684,20 @@
    "note": "wrong value or a label that points at the wrong target (owner/mismatch errors)"
   }
  },
+ "prefixed": {
+  "ARCHIVE_PHONE_DISPLAY_FAIL": {
+   "about": "phone (390px) display check from the envelope branch: prefix + reason",
+   "reasons": {
+    "IMAGE_LOAD_FAIL": "BLOCK",
+    "TARGET_OUTSIDE_SCREEN": "BLOCK",
+    "TARGET_HORIZONTAL_OVERFLOW": "BLOCK",
+    "TEXT_CLIPPED": "BLOCK",
+    "GEOMETRY_VIEWPORT_CLIPPING": "BLOCK",
+    "PAGE_ERROR": "INDETERMINATE"
+   },
+   "reasonLike": "desktop"
+  }
+ },
  "families": [
   {
    "match": "^(ACTUAL_ARCHIVE_|ACTUAL_DISPLAY_|ACTUAL_FONT_BELOW|ARCHIVE_BANK_|ARCHIVE_INPUT_INVALID|ARCHIVE_POLICY_|DISPLAY_ENVELOPE|DISPLAY_PROFILE|ENVELOPE_TARGET|PRESENTATION_|LAYOUT_REPAIR_|MEASURED_OWNER_LAYOUT_|BROWSER_MEASUREMENT|FINAL_LABEL_|OBSERVER_INPUT|IMMUTABLE_PREFLIGHT|PROFILE_TOPOLOGY|INVALID_ENVELOPE)",
