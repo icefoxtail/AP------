@@ -61,6 +61,7 @@ PWA 버전은 `2026.11.11.4`이며 HTML, manifest, version JSON, service worker�
 - 플래너는 같은 모바일/PC 레이아웃 안의 크기 변화에서 입력 DOM을 유지한다. 768px 경계를 넘나들 때에도 작성 중인 빠른 추가 제목·과목을 보존한다. 높이 변화, PC 폭 변경, 모바일 왕복 뒤 정확한 제목·과목·날짜로 한 번만 저장되는지 실제 브라우저에서 확인한다.
 - 플래너의 공통 메뉴로 이동할 때 작성 중인 빠른 추가 제목이 있으면 저장하지 않고 이동할지 확인한다. 취소하면 기존 제목·과목과 현재 화면을 유지한다. 이 보호는 공통 메뉴 이동에 적용하며 브라우저 종료 뒤 초안 복원을 뜻하지 않는다.
 - Archive 원본/MIXED 복습·PDF·snapshot 복원 계약은 기존 엔진을 그대로 사용한다. 원문이 없는 시험은 파일이 없는 이유를 안내하고 임의 내용을 만들지 않는다.
+- 스스로 공부(2026-11-23): 제출했고 틀린 번호가 1개 이상인 시험 카드와 결과 화면에 "오답 다시 풀기" 한 단추. 틀린 번호는 서버가 `wrong_answers`에서 읽어 `wrong_ids`로 채운다(`exam_sessions`에는 그 열이 없다; 못 읽으면 `null`이라 "오답 없음"으로 보이지 않는다). 문항 카드 화면은 `apmath/student/self-study-view.js`가 `{title, questions:[{no, sourceLabel, content, choices, image, answer, solution}]}`만 받아 그린다(유사 문항 단계는 이 입력만 바꿔 쓴다). 정답·해설은 문항마다 학생이 누를 때 펼치며 잠금·순서 강제·기록·서버 쓰기가 없다. 렌더는 `archive/render-text.js`·`archive-asset-base.js`·`js/ap-table-engine.js`·`student-svg-refresh.js`와 vendored MathJax를 처음 열 때 불러 재사용한다(포털 첫 화면에는 싣지 않는다). 해설이 `[JS 기준 풀이]` 틀 문구이거나 비면 "해설 보기"를 숨긴다. 문항 하나의 그림·수식 실패는 그 카드에만 표시한다.
 
 ## 검증 방법
 
