@@ -33,6 +33,7 @@ function idleSuiteCommands() {
     'archive/tools/archive-source-reference-policy.test.mjs',
     'archive/tools/generated-meta/auto-register-source-rebind.test.mjs',
     'archive/tools/geometry-equation/ops/golden-gate/golden-gate.test.mjs',
+    'archive/tools/geometry-equation/ops/golden-gate/order-check.test.mjs',
     'archive/tools/geometry-equation/ops/semantic-golden/semantic-golden.test.mjs', // 의미 골든 표: 표 형식·변조 단위 시험은 python만 있으면, 관측기·생성기 대조는 sympy·mathjax가 없으면 skip
     'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide.test.mjs',
