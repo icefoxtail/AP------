@@ -94,7 +94,7 @@
         : `<span class="history-source">${esc(source.label)}</span>`;
       const day = /^\d{4}-(\d{2})-(\d{2})$/.exec(a.date);
       const spineDate = day ? [`${Number(day[1])}월`, String(Number(day[2]))] : ["", "–"];
-      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(pdfErrorText(a.pdfError))}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}${button("assignment-derive", "다시 만들기", `data-assignment="${esc(a.id)}" class="small" title="이 시험지로 다시 만들기" aria-label="${esc(a.title)} ${esc(a.className || "")} 이 시험지로 다시 만들기"`)}${a.isCancelled ? "" : button("assignment-cancel", "출제 취소", `data-assignment="${esc(a.id)}" class="small danger" aria-label="${esc(a.title)} ${esc(a.className || "")} 출제 취소"`)}</div></article>`;
+      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(shownTitle(a.title))}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(pdfErrorText(a.pdfError))}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}${button("assignment-derive", "다시 만들기", `data-assignment="${esc(a.id)}" class="small" title="이 시험지로 다시 만들기" aria-label="${esc(a.title)} ${esc(a.className || "")} 이 시험지로 다시 만들기"`)}${a.isCancelled ? "" : button("assignment-cancel", "출제 취소", `data-assignment="${esc(a.id)}" class="small danger" aria-label="${esc(a.title)} ${esc(a.className || "")} 출제 취소"`)}</div></article>`;
       }).join("")}</div>${cancelledToggle}`;
   }
   // 서버가 남긴 PDF 오류는 영어 원문일 수 있다. 교사에게는 무엇을 하면 되는지만 알린다.
@@ -110,7 +110,7 @@
     if (!row || row.isCancelled) return;
     const submitted = Number(row.submittedCount) > 0
       ? `<p>이미 제출한 학생 ${Number(row.submittedCount)}명의 기록은 지워지지 않습니다.</p>` : "";
-    showDialog("출제 취소", `<p><strong>${esc(row.title)}</strong>${row.className ? ` · ${esc(row.className)}` : ""}${row.date ? ` · ${esc(row.date)}` : ""}</p>
+    showDialog("출제 취소", `<p><strong>${esc(shownTitle(row.title))}</strong>${row.className ? ` · ${esc(row.className)}` : ""}${row.date ? ` · ${esc(row.date)}` : ""}</p>
       <p>취소하면 아직 풀지 않은 학생에게 더 이상 보이지 않고, 출제 내역에서도 숨겨집니다. 되돌릴 수 없습니다.</p>${submitted}
       <p id="assignment-cancel-error" class="error" role="alert" hidden></p>
       <div class="actions">${button("assignment-cancel-confirm", "출제 취소", `data-assignment="${esc(row.id)}" class="primary"`)}</div>`);
@@ -144,6 +144,11 @@
     }
   }
   // Where an assignment came from: a saved paper (link back to 보관함), a school exam, or 단원별 기출.
+  // 출제 내역에 보이는 시험 이름: 저장된 exam_title이 내부 키(파일 이름 등)면 한글 제목으로 푼다. 저장값은 그대로.
+  function shownTitle(value) {
+    const text = String(value ?? "");
+    return window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+  }
   function recentSourceOf(raw) {
     if (!raw) return null;
     const paperId = String(raw.saved_paper_id ?? "").trim();
@@ -390,7 +395,7 @@
     const studentRow = (student) => `<div class="recent-row"><span>${esc(student.name)}</span><span>${studentStatus(student)}</span><a href="${esc(studentPreviewUrl(student.student_id))}" target="_blank" rel="noopener">이 출제 확인</a></div>`;
     const pdfRetryPending = V.recentPdfRetryIds.has(assignmentId);
     showDialog(
-      a.exam_title,
+      shownTitle(a.exam_title),
       `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
   }
