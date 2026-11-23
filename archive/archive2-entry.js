@@ -6,7 +6,7 @@
     (requested || params.get("unitPastAssign") || requestedSavedPaper) &&
     params.get("archive2Embedded") === "1" && parent !== window;
   const O = window.Archive2Output;
-  const ORIGINAL_QPP_VALUES = [4, 6, 8];
+  const ORIGINAL_QPP_VALUES = [2, 4, 6, 8];
   let originalSettings = null,
     originalQuestions = null,
     originalIdentityTitle = "";
