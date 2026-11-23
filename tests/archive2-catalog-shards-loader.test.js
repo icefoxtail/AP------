@@ -163,6 +163,23 @@ test('a file that fails once is received again after a fresh index; a second fai
   });
   assert.equal(site.count(rel), 2, 'one retry, no loop');
   assert.ok(site.log.every((row) => row.rel !== null), 'nothing outside the shard folder was asked for: no silent whole-bundle fallback');
+  // (d) the connection fails every time (dropped, or an HTTP error): its own message, not "the data is being updated"
+  for (const mode of ['network', null]) {
+    site = fakeSite(files, { script: (path_) => (path_ === rel ? mode : undefined) });
+    loader = loaderFor(site);
+    await assert.rejects(loader.loadCatalog({ courses: [course.key] }), (error) => {
+      assert.equal(error.code, 'CATALOG_SHARD_NETWORK', String(mode));
+      assert.equal(error.retryable, true);
+      assert.equal(error.message, '문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.');
+      assert.equal(shards.isShardFailure(error), true);
+      return true;
+    });
+  }
+  // progress: asked for once with nothing done, then once per shard that arrives
+  const seen = [];
+  await loaderFor(fakeSite(files)).loadCatalog({ courses: [course.key] }, { onProgress: (row) => seen.push(`${row.done}/${row.total}`) });
+  assert.equal(seen[0], `0/${course.shards.length}`);
+  assert.equal(seen[seen.length - 1], `${course.shards.length}/${course.shards.length}`);
   // the same loader works when the network is back (a failed request is not remembered)
   const retrySite = fakeSite(files);
   loader = loaderFor(retrySite);
@@ -211,7 +228,13 @@ test('shards received in this document are not received again, and a course can 
   assert.equal(site.count('common.json'), 1);
   assert.equal(site.count('index.json'), 1);
   assert.equal(two.records.length, one.records.length + second.shards.reduce((sum, key) => sum + index.shards.find((shard) => shard.key === key).records, 0));
-  assert.deepEqual(two.exams.map((exam) => exam.file).slice(0, one.exams.length), one.exams.map((exam) => exam.file), 'the first course keeps its place');
+  // what is held is always in the whole catalog's order (exams, and each exam's questions), whichever shards were asked for first
+  const { catalog: whole } = await built();
+  const examPosition = new Map(whole.exams.map((exam, i) => [exam.file, i]));
+  const inCatalogOrder = (files) => files.every((file, i) => i === 0 || examPosition.get(files[i - 1]) <= examPosition.get(file));
+  assert.ok(inCatalogOrder(two.exams.map((exam) => exam.file)), 'the exams are in the whole catalog\'s order');
+  assert.ok(inCatalogOrder(two.records.map((record) => record.sourceFile)), 'the questions are in the whole catalog\'s order');
+  assert.ok(one.exams.every((exam) => two.exams.some((held) => held.file === exam.file)), 'the first course is still held');
   // the authority of the combined catalog covers both courses, and a question of a course never asked for is not covered
   const other = index.shards.find((shard) => ![...first.shards, ...second.shards].includes(shard.key));
   if (other) {
@@ -271,39 +294,72 @@ test('when the shards are not on the site the error says so and nothing else is 
   assert.equal(shards.isUnavailable(null), false);
 });
 
-test('the switch: off unless the address asks, ?shards=1 means the first course, ?shards=a,b names courses', async () => {
-  for (const search of ['', '?x=1', '?shards=', '?shards=0', '?shards=off', '?a=1&shardsx=1']) assert.equal(shards.switchFromSearch(search), null, search);
-  assert.deepEqual(shards.switchFromSearch('?shards=1'), { courses: [] });
-  assert.deepEqual(shards.switchFromSearch('?view=compose&shards=m1,high2-math1#x'), { courses: ['m1', 'high2-math1'] });
-  // off: no request at all
-  let asked = 0;
-  assert.equal(await shards.loadForSwitch('?view=compose', { base: BASE, fetch: async () => { asked += 1; return { ok: false, status: 404 }; } }), null);
-  assert.equal(asked, 0);
-  // on: the first course of the index
+test('a need names shards from the index alone: a grade is every shard with a question browsable under it; an empty need is the common tables only', async () => {
   const files = await release();
-  const { index } = await built();
-  const found = await shards.loadForSwitch('?shards=1', { base: BASE, fetch: fakeSite(files).fetch });
-  assert.deepEqual(found.courses, [index.courses[0].key]);
-  assert.deepEqual(found.catalog.shardKeys.sort(), [...index.courses[0].shards].sort());
+  const { catalog: full } = await built();
+  const site = fakeSite(files);
+  const loader = loaderFor(site);
+  const index = await loader.loadIndex();
+  const core = require(path.join(root, 'archive/archive2-core.js'));
+  const GRADES = ['중1', '중2', '중3', '고1', '고2', '고3'];
+  for (const grade of GRADES) {
+    const { keys } = loader.keysFor({ grades: [grade] });
+    assert.ok(keys.length > 0, 'a grade has shards: ' + grade);
+    const wanted = new Set(keys);
+    // every question the whole catalog lists under this grade is in one of those shards (and the shard says so, not a rule of the screen)
+    const inShards = new Set();
+    const loaded = await loader.loadShards(keys);
+    for (const doc of loaded) for (const record of doc.records) inShards.add(record.questionUid);
+    for (const record of full.records) {
+      if (core.browseGradeMatchesRecord(record, grade, full.projectionPolicy)) assert.ok(inShards.has(record.questionUid), 'browsable under ' + grade + ' but in a shard the grade does not name: ' + record.questionUid);
+    }
+    // the listing is not wider than needed: every named shard has at least one question browsable under the grade
+    for (const key of wanted) {
+      const doc = loaded.find((row) => row.key === key);
+      assert.ok(doc.records.some((record) => core.browseGradeMatchesRecord(record, grade, full.projectionPolicy)), key + ' holds nothing browsable under ' + grade);
+    }
+  }
+  assert.deepEqual(loader.keysFor({ all: true }).keys.sort(), index.shards.map((shard) => shard.key).sort());
+  assert.deepEqual(loader.keysFor({ exams: ['original/no/such.js'] }), { keys: [], unknownExams: ['original/no/such.js'] });
+  // nothing asked for: a catalog with the common tables and no question (a saved-paper revision names its exams when it opens)
+  const empty = loaderFor(fakeSite(files));
+  const bare = await empty.loadCatalog({});
+  assert.equal(bare.records.length, 0);
+  assert.equal(bare.complete, false);
+  assert.deepEqual(bare.shardKeys, []);
+  // complete only when every shard is in
+  const all = await loaderFor(fakeSite(files)).loadCatalog({ all: true });
+  assert.equal(all.complete, true);
+  assert.equal(all.records.length, full.records.length);
 });
 
-test('every screen is as it was unless the address asks for shards: the loader is not on any page, and the one screen with the switch loads it only then', () => {
-  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html'))) {
-    assert.equal(/archive2-catalog-shards\.js/.test(read(`archive/${file}`)), false, `${file} must not load the shard loader by itself`);
+test('the shard path is the default of 문제지 만들기 and ?shards=0 is the way back; no other page loads the loader', () => {
+  assert.equal(shards.shardsDisabled('?view=compose'), false);
+  for (const search of ['?shards=0', '?view=compose&shards=off', '?a=1&shards=false#x']) assert.equal(shards.shardsDisabled(search), true, search);
+  for (const search of ['?shards=1', '?shards=m1', '?shardsx=0']) assert.equal(shards.shardsDisabled(search), false, search);
+  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html') && name !== 'workspace.html')) {
+    assert.equal(/archive2-catalog-shards\.js/.test(read(`archive/${file}`)), false, `${file} must not load the shard loader`);
   }
+  const html = read('archive/workspace.html');
+  const scripts = [...html.matchAll(/<script[^>]*src="([^"?]+)/g)].map((match) => match[1]);
+  assert.ok(scripts.indexOf('archive2-catalog-shards.js') > scripts.indexOf('archive2-canonical.js'));
+  assert.ok(scripts.indexOf('archive2-catalog-shards.js') < scripts.indexOf('archive2-workspace-core.js'), 'the loader is there before the screen code runs');
   const workspace = read('archive/archive2-workspace.js');
-  assert.equal((workspace.match(/archive2-catalog-shards\.js/g) || []).length, 1, 'the loader file is named once, inside the switch');
-  assert.ok(/\/\[\?&\]shards=\/\.test\(location\.search\) \? shardCatalog\(\) : window\.applyArchiveMetaFoundationCatalog\(\)/.test(workspace), 'switch off = the same call as before');
-  // the whole-bundle fallback exists only for "shards are not on the site"
-  assert.ok(/if \(!Shards\.isUnavailable\(error\)\) throw error;/.test(workspace));
+  // the one place the whole-bundle path is still called: ?shards=0, or the shards are not on the site (shardCatalog returns null)
+  assert.ok(/const catalog = \(shardsOn\(\) && await shardCatalog\(\)\) \|\| await window\.applyArchiveMetaFoundationCatalog\(\);/.test(workspace));
+  assert.ok(/if \(!window\.Archive2CatalogShards\.isUnavailable\(error\)\)/.test(workspace), 'a prefetch failure that is not "not on the site" is only logged');
+  assert.ok(/shardsBroken = true/.test(workspace));
+  // a shard file that stays wrong after the loader's retry: the screen gives the shard path up (console warning) for the verified whole bundle
+  assert.ok(/function warnGiveUp\(error\)/.test(workspace) && /using the verified whole bundle instead/.test(workspace));
+  assert.ok(/const full = await window\.applyArchiveMetaFoundationCatalog\(\);\s*shardsBroken = true; shardSession = null;/.test(workspace), 'the shard session is dropped only after the whole bundle arrived: if it fails too the screen stays on shards');
+  // a loader without an index answers questions about it without throwing (the screen asks "is more needed?" on every render)
+  const bare = shards.createLoader({ base: BASE, fetch: async () => { throw new TypeError('Failed to fetch'); } });
+  assert.equal(bare.hasIndex(), false);
   // the screens that read the catalog do not know about shards
-  for (const file of ['archive/archive2-core.js', 'archive/archive2-canonical.js', 'archive/archive2-workspace-core.js', 'archive/archive2-workspace-compose.js', 'archive/meta-foundation-runtime.js']) assert.equal(/Archive2CatalogShards/.test(read(file)), false, file);
-  // shipped with the other archive modules
+  for (const file of ['archive/archive2-core.js', 'archive/archive2-canonical.js', 'archive/archive2-workspace-core.js', 'archive/archive2-workspace-compose.js', 'archive/meta-foundation-runtime.js', 'archive/archive2-output.js', 'archive/archive2-history.js', 'archive/mixer-selector.js', 'archive/archive2-output-contract.js']) assert.equal(/Archive2CatalogShards/.test(read(file)), false, file);
   const manifest = JSON.parse(read('tools/archive-pages-release-manifest.json'));
   assert.ok(manifest.archiveRootFiles.includes('archive2-catalog-shards.js'));
-  // the page that loads the screen script carries the same version string as the file that changed
-  const html = read('archive/workspace.html');
-  assert.ok(/archive2-workspace\.js\?v=([^"']+)/.test(html));
-  const loaderVersion = /archive2-catalog-shards\.js\?v=([^"']+)/.exec(workspace)[1];
-  assert.ok(loaderVersion.length > 4);
+  // boot: shards in use -> the page never starts the whole bundle by itself, for any address; ?shards=0 keeps the old rule
+  const boot = read('archive/archive2-boot.js');
+  assert.ok(/if \(!\/\[\?&\]shards=\(\?:0\|off\|false\)\(\?:\[&#\]\|\$\)\/\.test\(location\.search\)\) return true;/.test(boot));
 });

@@ -103,6 +103,15 @@
       for (const exam of doc.authority.exams) exams.push(exam);
       for (const entry of doc.authority.sourceHashes || []) sourceHashes.push(entry);
     }
+    // The whole catalog lists its exams in one order and each exam's questions together by number; examShard's keys are in that order.
+    // Shards hold exams in that relative order, but a catalog made of several shards would interleave them by shard: put it back, so a
+    // list built from some shards is in the same order as the list built from all of them (ties between questions of one year follow it).
+    const position = new Map(Object.keys(index.examShard || {}).map((file, i) => [file, i]));
+    const rank = (file) => (position.has(file) ? position.get(file) : 1e9);
+    if (docs.length > 1) {
+      records.sort((a, b) => rank(a.sourceFile) - rank(b.sourceFile));
+      exams.sort((a, b) => rank(a.file) - rank(b.file));
+    }
     return {
       ...common.catalog,
       indexVersion: index.indexVersion,
@@ -112,6 +121,8 @@
       sourceHashes,
       canonicalAuthority: authority,
       shardKeys: docs.map((doc) => doc.key),
+      // true when every shard of the release is in: a screen that needs the whole list can tell a partial catalog from a complete one
+      complete: docs.length === (index.shards || []).length,
     };
   }
 
@@ -132,7 +143,16 @@
   //    screen decides to use the whole bundle (see isUnavailable).
   const INDEX_SCHEMA = "archive2-catalog-shards-v1";
   const STALE_MESSAGE = "자료가 갱신되는 중입니다. 잠시 뒤 다시 시도해 주세요.";
+  const NETWORK_MESSAGE = "문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.";
   const UNAVAILABLE_MESSAGE = "문항 조각 자료를 사용할 수 없습니다.";
+  // a failure that came from the connection (no response, HTTP error), as opposed to bytes that arrived but do not match the index
+  const isNetworkFailure = (error) => {
+    for (let hop = 0, current = error; current && hop < 6; hop += 1, current = current.cause)
+      if (current.network === true || current.code === "CATALOG_SHARD_NETWORK") return true;
+    return false;
+  };
+  // every error this loader throws about files it could not get right (the screen may give up the shard path for these)
+  const isShardFailure = (error) => Boolean(error) && typeof error.code === "string" && /^CATALOG_SHARD/.test(error.code);
   const failure = (code, message, retryable, cause) => Object.assign(new Error(message), { code, retryable: Boolean(retryable), ...(cause ? { cause } : {}) });
   const isUnavailable = (error) => Boolean(error) && error.code === "CATALOG_SHARDS_UNAVAILABLE";
   const hex = (buffer) => Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
@@ -157,8 +177,8 @@
     async function getBytes(url, cache) {
       let response;
       try { response = await doFetch(url, { cache }); }
-      catch (error) { throw failure("CATALOG_SHARD_FETCH_FAILED", "network error: " + url, true, error); }
-      if (!response || !response.ok) throw failure("CATALOG_SHARD_FETCH_FAILED", "HTTP " + (response && response.status) + ": " + url, true);
+      catch (error) { throw Object.assign(failure("CATALOG_SHARD_FETCH_FAILED", "network error: " + url, true, error), { network: true }); }
+      if (!response || !response.ok) throw Object.assign(failure("CATALOG_SHARD_FETCH_FAILED", "HTTP " + (response && response.status) + ": " + url, true), { network: true });
       return new Uint8Array(await response.arrayBuffer());
     }
     function parseIndex(bytes) {
@@ -226,7 +246,9 @@
           await refreshIndex();
           return await verified(entryOf, "reload");
         } catch (second) {
-          // the file is gone from the new index, or fails again: the release is moving; the teacher is asked to try again shortly
+          // the connection failed (no answer, HTTP error): say so. Otherwise the file is gone from the new index or its bytes do not match:
+          // the release is moving, and the teacher is asked to try again shortly.
+          if (isNetworkFailure(second)) throw failure("CATALOG_SHARD_NETWORK", NETWORK_MESSAGE, true, second);
           throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true, second);
         }
       }
@@ -248,22 +270,40 @@
     function loadShards(keys) { return Promise.all([...new Set(keys)].map(loadShard)); }
     function loadCommon() { return loadIndex().then(() => memoized("common", (current) => current.common)); }
 
-    // The state.catalog for everything asked for so far plus `want`: { courses: [course keys], shards: [shard keys], exams: [exam files] }.
+    // The shard keys a need names, from the index alone: { all, grades: [browse grades], courses: [course keys], shards: [keys], exams: [exam files] }.
+    // A grade names every shard that has a question browsable under that grade (the index lists them per shard), so no screen has a rule of its
+    // own. An exam that is not in the index is returned in `unknownExams` (the caller decides; loadCatalog refuses it).
+    function keysFor(need = {}) {
+      const current = needIndex();
+      const keys = new Set();
+      if (need.all) for (const shard of current.shards) keys.add(shard.key);
+      for (const grade of need.grades || []) for (const shard of current.shards) if ((shard.browseGrades || []).includes(grade)) keys.add(shard.key);
+      for (const course of need.courses || []) for (const key of shardKeysOfCourse(course)) keys.add(key);
+      for (const key of need.shards || []) keys.add(key);
+      const unknownExams = [];
+      for (const file of need.exams || []) { const key = shardKeyOfExam(file); if (key) keys.add(key); else unknownExams.push(file); }
+      return { keys: [...keys], unknownExams };
+    }
+    // The state.catalog for everything asked for so far plus `want` (same fields as keysFor).
     // Calling it again with more adds to the same set (고1, then 고2).
-    async function loadCatalog(want = {}) {
+    // options.onProgress({ done, total }): called when the files of this call are asked for (done 0) and each time one arrives, for a screen
+    // that shows "n/N" while it waits (total = the shards held after this call).
+    async function loadCatalog(want = {}, options = {}) {
       await loadIndex();
-      for (const course of want.courses || []) for (const key of shardKeysOfCourse(course)) wanted.add(key);
-      for (const key of want.shards || []) wanted.add(key);
-      for (const file of want.exams || []) {
-        const key = shardKeyOfExam(file);
-        if (!key) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + file, false);
-        wanted.add(key);
-      }
-      if (!wanted.size) throw failure("CATALOG_SHARD_UNKNOWN", "no course, shard or exam was asked for", false);
+      const asked = keysFor(want);
+      if (asked.unknownExams.length) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + asked.unknownExams[0], false);
+      for (const key of asked.keys) wanted.add(key);
+      const progress = typeof options.onProgress === "function" ? options.onProgress : null;
       for (let attempt = 0; attempt < 2; attempt += 1) {
         const at = generation;
         const keys = [...wanted];
-        const [common, docs] = await Promise.all([loadCommon(), loadShards(keys)]);
+        let done = 0;
+        if (progress) progress({ done, total: keys.length });
+        const [common, docs] = await Promise.all([loadCommon(), Promise.all(keys.map((key) => loadShard(key).then((doc) => {
+          done += 1;
+          if (progress) progress({ done, total: keys.length });
+          return doc;
+        })))]);
         // a release change during the load: what was received is of two releases, so load it again from the current index
         if (at !== generation || !keys.every((key) => index.shards.some((shard) => shard.key === key))) continue;
         return assembleCatalog(index, common, docs);
@@ -271,37 +311,17 @@
       throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true);
     }
     return {
-      loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, loadShard, loadShards, loadCommon, loadCatalog,
+      loadIndex, hasIndex: () => index !== null, courses, shardKeysOfCourse, shardKeyOfExam, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
       // for tests and the screen's status line: what is held now
       held: () => ({ indexVersion: index && index.indexVersion, shards: [...wanted], generation }),
     };
   }
 
-  // ?shards=1 -> the first course of the index; ?shards=m1,high2-math1 -> those courses. Anything else (no parameter, shards=0|off) -> null.
-  function switchFromSearch(search) {
-    const match = /[?&]shards=([^&#]*)/.exec(String(search || ""));
-    if (!match) return null;
-    const value = decodeURIComponent(match[1]).trim();
-    if (!value || value === "0" || value === "off" || value === "false") return null;
-    return value === "1" || value === "on" || value === "true" ? { courses: [] } : { courses: value.split(",").map((part) => part.trim()).filter(Boolean) };
-  }
-
-  // The check switch of one screen (stage 2-2): the catalog made of the shards the address asks for. Returns null when the switch is off.
-  // Also sets the PT/TPL label tables the whole-bundle loader sets, when nobody has.
-  async function loadForSwitch(search, loaderOptions = {}) {
-    const asked = switchFromSearch(search);
-    if (!asked) return null;
-    const loader = createLoader(loaderOptions);
-    const index = await loader.loadIndex();
-    const course = asked.courses.length ? asked.courses : [index.courses[0].key];
-    const catalog = await loader.loadCatalog({ courses: course });
-    const labels = await loader.loadCommon().then((common) => common.labels).catch(() => null);
-    if (labels && typeof window !== "undefined" && !window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = labels;
-    return { catalog, loader, courses: course };
-  }
+  // The address says ?shards=0 (or off / false): this document uses the whole bundle, as before stage 2. The default (no parameter) is shards.
+  const shardsDisabled = (search) => /[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(String(search || ""));
 
   return {
-    SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, UNAVAILABLE_MESSAGE,
-    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, switchFromSearch, loadForSwitch,
+    SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
+    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
   };
 });

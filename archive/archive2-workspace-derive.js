@@ -11,12 +11,12 @@
   const Unified = window.Archive2UnifiedUnits;
   // names defined in other parts; WS.link() fills them in before the first call
   let
-    $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
+    $, api, applyUidRoute, button, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
     render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
     planRows, savePapers, discardDraftSilently, saveFailureMessage;
   WS.links.push(() => {
     ({
-      $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
+      $, api, applyUidRoute, button, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
       render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
       planRows, savePapers, discardDraftSilently, saveFailureMessage
     } = WS.api);
@@ -199,6 +199,12 @@
   const freshSeed = () => crypto.randomUUID().slice(0, 8);
   // items: identity items from a window message or an envelope. A paper that cannot be traced says so and stops there.
   function deriveStartFromItems(items, { title, note } = {}) {
+    // A catalog that holds only some shards (문제지 만들기 opened it for one grade) is completed first: the base paper may be of any grade.
+    if (state.catalog?.records && state.catalog.complete === false) {
+      status("문항 목록을 불러오는 중입니다.");
+      ensureShards({ all: true }).then(() => { status(""); deriveStartFromItems(items, { title, note }); }, (error) => status(teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error));
+      return;
+    }
     if (!state.catalog?.records) { status("자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다."); V.derive.pending = { items, title, note }; return; }
     const base = deriveResolveBase(items);
     if (!base.uids.length) {
@@ -282,6 +288,11 @@
   }
   function startMockForExam(exam) {
     if (!exam) return;
+    if (state.catalog?.records && state.catalog.complete === false) {
+      status("문항 목록을 불러오는 중입니다.");
+      ensureShards({ all: true }).then(() => { status(""); startMockForExam(exam); }, (error) => status(teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error));
+      return;
+    }
     if (!state.catalog?.records) { status("자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다."); V.derive.pendingMock = exam.file; return; }
     const uids = mockBaseUids(exam);
     if (!uids.length) { status("이 시험지의 문항을 자료에서 찾지 못했습니다.", true); return; }

@@ -340,6 +340,12 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     const shard = firstShardOf.get(bucket.key);
     if (shard) examShard[exam.file] = shard;
   }
+  // The keys of examShard are in the catalog's exam order (the order the whole catalog lists its exams and, inside it, its questions).
+  // A screen that holds several shards puts the questions back in that order (assembleCatalog), so a list built from some shards is in
+  // the same order as the list built from all of them (replacement candidates of one year come in that order).
+  const examShardInCatalogOrder = {};
+  for (const exam of catalog.exams) if (examShard[exam.file] !== undefined) examShardInCatalogOrder[exam.file] = examShard[exam.file];
+  for (const file of Object.keys(examShard)) if (!(file in examShardInCatalogOrder)) examShardInCatalogOrder[file] = examShard[file];
   // STAGE 2-1: when the catalog carries a canonicalAuthority, each shard file also holds the authority part of its own questions
   // (exams, source hashes, assignment rows), and one common file holds the tables that do not depend on a question. Measured on the
   // real catalog: the same bytes after gzip as a separate file per shard (7.44 MB against 7.44 MB) and one request fewer per shard,
@@ -356,6 +362,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     shards.push({
       key, course: bucket.key, label: bucket.label, path: rel, sha256: sha256Hex(content), bytes: content.length,
       records: lines.length, exams: part.files.length, ...(part.split ? { split: part.split } : {}),
+      // STAGE 2-4: the browse grades this shard has questions for (exactly Archive2Core.browseGradeMatchesRecord, so a 고2 screen knows which
+      // shards hold what it lists, including 고3 questions it shows through the subject projection). The screen reads this, not a rule of its own.
+      ...(extras.browseGradesOf ? { browseGrades: [...new Set(records.flatMap((record) => extras.browseGradesOf(record)))].sort() } : {}),
     });
     recordTotal += lines.length;
   }
@@ -383,7 +392,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     // how to use: a course's `shards` lists every piece of it; examShard names the one shard an exam's questions are in.
     courses,
     shards,
-    examShard,
+    examShard: examShardInCatalogOrder,
     ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
@@ -439,6 +448,7 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
 // Values the browser computes next to resolveCatalog (archive/meta-foundation-runtime.js), computed here once for the whole catalog:
 // the PT/TPL label tables of the foundation taxonomy, and the health block (strict-eligible count and per-reason tally, from the
 // same Archive2Core.basicEligibility the screens run).
+const BROWSE_GRADES = Object.freeze(['중1', '중2', '중3', '고1', '고2', '고3']);
 export function catalogExtras(root, catalog, bundle) {
   const require = createRequire(import.meta.url);
   const core = require(path.join(root, 'archive/archive2-core.js'));
@@ -454,7 +464,8 @@ export function catalogExtras(root, catalog, bundle) {
     for (const reason of result.reasons) exclusionReasons[reason] = (exclusionReasons[reason] || 0) + 1;
   }
   const built = catalog.health || {};
-  return { labels, health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
+  const browseGradesOf = (record) => BROWSE_GRADES.filter((grade) => core.browseGradeMatchesRecord(record, grade, catalog.projectionPolicy));
+  return { labels, browseGradesOf, health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
 }
 
 export const gzipBytes = (buffer) => zlib.gzipSync(buffer, { level: 6 }).length;

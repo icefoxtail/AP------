@@ -209,10 +209,10 @@
     if (!r) {
       if (state.derivationSource) return "";
       const info = V.composeLiveInfo;
-      const disabled = !info || info.disabled;
+      const disabled = !info || info.disabled || Boolean(state.shardBusy);
       // 좁은 화면에서 조건을 바꿔 문제지가 지워졌다면, 스크롤 없이 보이는 이 띠에도 되돌리기를 둔다(안내 줄 자리에). 띠는 넓은 화면에서 숨는다.
       const restorable = Boolean(clearedResult());
-      const note = (text) => restorable ? button("restore-cleared", "방금 문제지 되돌리기", 'class="cz-bar-restore"') : `<span class="cz-bar-note">${text}</span>`;
+      const note = (text) => state.shardBusy ? '<span class="cz-bar-note">문항 목록을 불러오는 중</span>' : restorable ? button("restore-cleared", "방금 문제지 되돌리기", 'class="cz-bar-restore"') : `<span class="cz-bar-note">${text}</span>`;
       return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows && info.overLimit
         ? `<strong class="cz-bar-count">최대 400문항</strong>${note(`지금 요청 ${info.requested}문항`)}`
         : info?.hasRows
