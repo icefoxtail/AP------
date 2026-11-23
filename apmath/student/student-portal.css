@@ -405,3 +405,53 @@ body[data-student-view="omr-list"] .student-shell { gap: 12px; }
   .preview-notice { padding: 10px 12px; font-size: 13px; }
   .preview-notice > span { font-size: 12px; }
 }
+
+/* 오답 다시 풀기 문항 카드 화면(self-study-view.js): 문항 세로 목록, 문항마다 정답·해설 펼침. 휴대폰(390px) 우선, 넓은 화면은 읽기 좋은 폭으로 제한. */
+.omr-actions .self-study-open, .omr-card-actions .self-study-open { grid-column: 1 / -1; order: -3; min-height: 48px; font-size: 14px; }
+.self-study { max-width: 760px; width: 100%; margin: 0 auto; gap: 16px; }
+.self-study > * { min-width: 0; }
+.ss-title { font-size: 19px; }
+.ss-list { display: grid; gap: 14px; }
+.ss-card { min-width: 0; padding: 18px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+.ss-card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.ss-no { font-size: 15px; font-weight: 700; color: var(--text); }
+.ss-source { font-size: 12px; color: var(--secondary); }
+.ss-card:not(.is-ready) .ss-q { opacity: 0; }
+.ss-q { min-width: 0; font-size: 16px; line-height: 1.8; color: var(--text); overflow-wrap: anywhere; word-break: keep-all; }
+.ss-q mjx-container[jax="CHTML"]:not([display="true"]) { max-width: 100%; }
+.ss-q mjx-container[display="true"], .ss-reveal mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.ss-q img, .ss-reveal img { max-width: 100%; height: auto; }
+.ss-figure { margin: 12px 0; text-align: center; }
+.ss-figure img { display: inline-block; max-width: 100%; max-height: 420px; object-fit: contain; }
+.ss-img-fail { display: block; padding: 14px 12px; border: 1px dashed var(--control-border); border-radius: 8px; background: var(--warning-soft); color: var(--warning); font-size: 13px; line-height: 1.6; text-align: center; }
+.ss-card.has-issue { border-color: var(--warning); }
+.ss-q .question-table-wrap, .ss-reveal .question-table-wrap { max-width: 100%; overflow-x: auto; margin: 8px 0; }
+.ss-q table.question-table, .ss-reveal table.question-table { border-collapse: collapse; width: auto; min-width: 60%; margin: 0; font-size: 14px; line-height: 1.5; text-align: center; }
+.ss-q table.question-table th, .ss-q table.question-table td, .ss-reveal table.question-table th, .ss-reveal table.question-table td { padding: 5px 9px; border: 1px solid var(--control-border); vertical-align: middle; }
+.ss-q table.question-table th, .ss-reveal table.question-table th { background: var(--surface-2); font-weight: 600; }
+.ss-q .choices { display: grid; gap: 8px; margin-top: 14px; }
+.ss-q .choices-compact { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.ss-q .choice-item { display: flex; align-items: flex-start; gap: 6px; min-width: 0; line-height: 1.7; }
+.ss-q .choice-no { flex: 0 0 auto; font-weight: 700; }
+.ss-q .choice-text { min-width: 0; overflow-wrap: anywhere; }
+.ss-q .view-box, .ss-q .question-note-box, .ss-q .question-view-box { margin: 8px 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); }
+.ss-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+.ss-actions .btn { flex: 1 1 130px; min-height: 44px; font-size: 14px; }
+.ss-toggle[aria-expanded="true"] { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+.ss-reveal { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: var(--surface-2); font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; min-width: 0; }
+.ss-reveal > strong { display: block; margin-bottom: 4px; font-size: 13px; color: var(--secondary); }
+.ss-answer > strong { display: inline; margin-right: 6px; }
+.ss-answer { background: var(--success-soft); }
+.ss-reveal .sol-sec-label { font-weight: 700; color: var(--text); }
+.ss-fail { padding: 18px 12px; text-align: center; color: var(--secondary); background: var(--surface-2); border-radius: 8px; }
+.ss-back-bottom { margin-top: 4px; }
+.ss-math-notice { font-size: 13px; }
+@media (min-width: 720px) {
+  .ss-card { padding: 24px 28px; }
+  .ss-q { font-size: 17px; }
+  .ss-title { font-size: 22px; }
+}
+.ss-q .choices-block, .ss-q .choices-boxed { grid-template-columns: minmax(0, 1fr); }
+.ss-q .choice-text { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.omr-card-actions:has(.self-study-open) .score-open { background: transparent; border-color: var(--control-border); color: var(--text); }
+.omr-card-actions:has(.self-study-open) .score-open:hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
