@@ -28,6 +28,8 @@ B 묶음(B1~B10)은 앞선 judgment-out 작업 중 **렌더에 실패했거나, 
 
 C 묶음(C1~C10, B10 다음에 한다)은 아직 운영에 없는 유사 시험지를 병합하려고 **문제 그림만** 새로 만드는 목록이다. side는 problem뿐이라 해설 그림 키가 없고, 해설 그림은 하지 않는다. 항목의 `need`가 이 문항에 그림이 필요한 이유다. `oldPlan`이 있으면(기존 유사 plan 중 도형 내용이 있는 것) 그 명령으로 읽고 이 문항의 값으로 바꿔 쓴다. `brief`가 "기존 plan 값만 바꿈"인 항목이 그렇다. `oldPlan`이 없으면 `originalImage`(원본 기출의 그림)를 보고 새로 설계한다. 원본 그림이 본문 안 img·svg 태그라서 `originalImage`가 비어 있으면 `original` JS의 그 문항을 읽는다. 나머지 절차와 규칙은 B와 같다.
 
+C11~C24는 C 묶음의 2차다. 원본에 문제 그림이 있는 문항 중 유사 발문이 글만으로 풀리는 것까지 모두 담았다(도형 문제에 그림이 없으면 안 된다는 결정). 모두 `originalImage`를 보고 새로 설계하고(oldPlan 없음), 나머지는 C1~C10과 같다. 순서는 C10 다음이다.
+
 1. `node archive/tools/geometry-equation/ops/antigravity/check-submission.mjs show <작업> <키>`
    문항·정답·해설·요구 사항을 읽는다. 원본 그림(`originalImage`)이 있으면 열어 본다. `oldPlan`이 있으면 그 명령으로 읽는다.
 2. 직접 푼 뒤 쓰는 곳에 `note.json`을, 상태가 `PLAN`이면 `plan.json`도 쓴다.
