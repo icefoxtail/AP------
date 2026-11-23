@@ -28,8 +28,10 @@ test('an equal-unit quadratic frame is as it was: equalUnits and no declaredScal
   }
 });
 
-// The python half of the bundle (framer and observer rules that need no browser).
-test('graph G bundle python tests pass',{skip:process.env.GEOMETRY_SKIP_PYTHON==='1'},()=>{
+// The python half of the bundle (framer and observer rules that need no browser). It needs the render dependencies (sympy, via PYTHONPATH),
+// like the Chrome renders below: where they are not installed (the CI test shards) it is skipped, as the renders are without a browser.
+const hasPythonDeps=(()=>{try{execFileSync(process.env.PYTHON||'python',['-c','import sympy'],{stdio:'ignore'});return true;}catch{return false;}})();
+test('graph G bundle python tests pass',{skip:process.env.GEOMETRY_SKIP_PYTHON==='1'||!hasPythonDeps},()=>{
   const here=path.dirname(fileURLToPath(import.meta.url));
   try{
     execFileSync(process.env.PYTHON||'python',['-m','unittest','test_graph_g_bundle'],{cwd:here,stdio:'pipe',encoding:'utf8'});
