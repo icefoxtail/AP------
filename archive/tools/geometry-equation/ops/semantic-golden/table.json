@@ -1,0 +1,103 @@
+{
+ "schema": "semantic-golden-table-v1",
+ "about": "의미 골든 표. 한 행 = 학생이 틀리게 읽은 그림 하나. generator는 plan에서 만든 결과를 expect(PASS 또는 REJECT:<코드>)와 맞춰 보고, observer는 정상 그림에 이름 붙은 변조(mutations)를 가해 관측기가 정확히 그 코드로 거절하는지 본다. 행 추가법과 필드: ops/golden-gate/README.md '의미 골든' 절.",
+ "rows": [
+  {
+   "id": "exp-factor-glued",
+   "defect": "3*2^(x+1)이 32^(x+1)로 붙어 읽힘: 계수와 밑 사이의 곱셈점이 빠진 지수 식 라벨",
+   "reuses": ["archive/tools/geometry-equation/tests/exp-formula-label.test.mjs", "archive/tools/geometry-equation/tests/test_wrong_output_guards.py"],
+   "plan": {"graphPlan": {"family": "exponential-affine", "base": "2", "shiftX": "-1", "coefficients": ["3", "1", "-2"]}},
+   "generator": {"kind": "exp-label-tex", "expectText": "y=3*2^(x+1)-2", "expectTex": "y=3\\cdot 2^{x+1}-2"},
+   "expect": "PASS",
+   "observer": {"kind": "exp-formula-glyphs"},
+   "mutations": [
+    {"name": "glue-exp-factor", "expect": "EXPONENTIAL_FORMULA_LABEL_MISMATCH"}
+   ]
+  },
+  {
+   "id": "degree-pi-text-label",
+   "defect": "4π°: 라디안 값(π가 든 값)에 도 기호를 붙인 글 라벨은 수식 직렬화에서 거절된다",
+   "reuses": ["archive/tools/geometry-equation/tests/test_math_expression.py", "archive/tools/geometry-equation/tests/plane-label-notation.test.mjs"],
+   "plan": {"text": "4pi°"},
+   "generator": {"kind": "math-label-serialize"},
+   "expect": "REJECT:DEGREE_OF_RADIAN_VALUE"
+  },
+  {
+   "id": "degree-pi-text-label-equation-ok",
+   "defect": "대조: 60°=pi/3처럼 °와 π가 등호 양쪽에 나뉜 식은 정당하므로 거절하지 않는다(거절 규칙이 넓어지지 않았는지)",
+   "reuses": ["archive/tools/geometry-equation/tests/test_math_expression.py"],
+   "plan": {"text": "60°=pi/3"},
+   "generator": {"kind": "math-label-serialize"},
+   "expect": "PASS"
+  },
+  {
+   "id": "degree-pi-angle-mark",
+   "defect": "각 표시 label 'pi/5'에 labelKind를 안 쓰면 도(°) 라벨이 되어 π/5°로 읽힌다",
+   "reuses": ["archive/tools/geometry-equation/tests/plane-wrong-notation.test.mjs"],
+   "plan": "plans/sector-pi.json",
+   "generator": {"kind": "construction-marks"},
+   "expect": "REJECT:ANGLE_DEGREE_LABEL_HAS_PI"
+  },
+  {
+   "id": "degree-pi-angle-mark-math-ok",
+   "defect": "대조: 같은 각 표시에 labelKind MATH를 쓰면 통과한다",
+   "reuses": ["archive/tools/geometry-equation/tests/plane-wrong-notation.test.mjs"],
+   "plan": "plans/sector-pi.json",
+   "planPatch": {"planeMarks.angles.0.labelKind": "MATH"},
+   "generator": {"kind": "construction-marks"},
+   "expect": "PASS"
+  },
+  {
+   "id": "degree-pi-drawn-angle",
+   "defect": "그려진 각 라벨 70°의 도 기호 앞에 π가 붙은 그림(4π°처럼 읽힘)을 관측기가 거절한다",
+   "reuses": ["archive/tools/geometry-equation/tests/test_plane_angle_leader.py"],
+   "plan": {"fixture": "archive/tools/geometry-equation/tests/test_plane_angle_leader.py", "angle": {"id": "aA", "value": 70, "label": "70"}},
+   "generator": {"kind": "angle-fixture"},
+   "expect": "PASS",
+   "observer": {"kind": "angle-label"},
+   "mutations": [
+    {"name": "degree-label-add-pi", "expect": "LABEL_DEGREE_OF_RADIAN_VALUE"}
+   ]
+  },
+  {
+   "id": "axis-title-z",
+   "defect": "x축·y축 이름이 plan과 다른 글자(Z)로 그려진 그림",
+   "reuses": ["archive/tools/geometry-equation/tests/test_graph_window_lattice.py"],
+   "plan": {"family": "polynomial", "coefficients": ["-1", "0", "1"], "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-3, 3], "viewport": [-3, 3, -2, 9],
+            "requiredPoints": [{"id": "A", "x": 1, "y": 0}], "axisTitles": {"x": "x", "y": "y"}},
+   "generator": {"kind": "axis-titles-model"},
+   "expect": "PASS",
+   "observer": {"kind": "axis-titles"},
+   "mutations": [
+    {"name": "rename-axis-title", "args": {"axis": "x", "to": "Z"}, "expect": "AXIS_TITLE_TEXT_MISMATCH"},
+    {"name": "rename-axis-title", "args": {"axis": "y", "to": "Z"}, "expect": "AXIS_TITLE_TEXT_MISMATCH"}
+   ]
+  },
+  {
+   "id": "area-label-beside-side",
+   "defect": "영역의 넓이 값이 변 바로 옆에 놓여 그 변의 길이로 읽히는 그림",
+   "reuses": ["archive/tools/geometry-equation/tests/test_plane_region_leader.py"],
+   "plan": {"fixture": "archive/tools/geometry-equation/tests/test_plane_region_leader.py", "region": {"id": "rABC", "label": "6", "labelPlacement": "LEADER"}},
+   "generator": {"kind": "region-fixture"},
+   "expect": "PASS",
+   "observer": {"kind": "region-label"},
+   "mutations": [
+    {"name": "area-label-onto-side", "args": {"text": "6"}, "expect": "REGION_LEADER_READS_AS_SIDE"},
+    {"name": "area-label-onto-side", "args": {"text": "6", "arc": true}, "expect": "REGION_LEADER_READS_AS_SIDE"}
+   ]
+  },
+  {
+   "id": "minus-pi-tick-reads-as-y",
+   "defect": "x축 위의 −π 눈금 값이 자기 눈금에서 떨어져 y값처럼 읽히는 그림",
+   "reuses": ["archive/tools/geometry-equation/tests/test_crowded_labels.py", "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs"],
+   "plan": {"at": [100, 216], "text": "-π", "size": [22, 16]},
+   "generator": {"kind": "axis-value-layout"},
+   "expect": "PASS",
+   "observer": {"kind": "layout-capture", "codePrefix": "AXIS_VALUE_LABEL"},
+   "mutations": [
+    {"name": "minus-pi-tick-as-y", "args": {"dy": 40}, "expect": "AXIS_VALUE_LABEL_NOT_ADJACENT"},
+    {"name": "minus-pi-tick-as-y", "args": {"dx": -30, "dy": 0}, "expect": "AXIS_VALUE_LABEL_NOT_ADJACENT"}
+   ]
+  }
+ ]
+}

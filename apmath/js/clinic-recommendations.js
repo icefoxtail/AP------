@@ -591,6 +591,95 @@
         return canonicalBucket(meta) != null && difficultyUsable({ ...record, ...meta }, archive2Core);
     }
 
+    // "틀린 유형 기준" 선정(공용): 틀린 문항(유형 정보가 있는 것)마다 유형 사다리로 같은 유형의 다른 문항을 한 개씩, 문항 수가
+    // 찰 때까지 돌아가며 고른다. 유형 정보가 없는 오답이 속한 개념 경로는 pathTargets로 돌려주어 기존 방식(개념 경로)이
+    // 모자란 만큼 채운다. build(학생별 추천)와 buildFollowUpCandidates(보충시험 후속 후보)가 이 한 함수를 쓴다.
+    // 호출부가 주는 것: typeLadder(archive2-derive 어댑터), config(정규화된 추천 옵션), targets(+ refUidsOf: 대상 한 칸의 틀린 UID 목록),
+    // itemTarget(대상 -> clinicItemForCandidate가 읽는 모양), recent(이미 본 UID), extraExclude(추가 제외 UID), used(이미 고른 UID,
+    // 여기서 늘어난다), availableItems(여기서 늘어난다), candidateFacts(UID -> 후보 사실표), seed.
+    function selectByWrongType(ctx) {
+        const { typeLadder, config, targets, refUidsOf, itemTarget, limit, includeSeenQuestionUids, recent, extraExclude, used, availableItems, exclusions, candidateFacts, seed } = ctx;
+        const difficultyMode = config.difficultyMode;
+        const wantedBuckets = difficultyMode === 'selected' ? config.selectedDifficultyBuckets : null;
+        const typedBases = [];
+        const seenBase = new Set();
+        const pathTargets = [];
+        let untypedBaseCount = 0;
+        for (const target of targets) {
+            let needsPath = false;
+            for (const baseUid of refUidsOf(target)) {
+                const info = baseUid ? typeLadder.baseInfo(baseUid) : null;
+                if (info && info.typed) {
+                    if (!seenBase.has(baseUid)) {
+                        seenBase.add(baseUid);
+                        typedBases.push({ uid: baseUid, target });
+                    }
+                } else {
+                    needsPath = true;
+                    untypedBaseCount++;
+                }
+            }
+            if (needsPath) pathTargets.push(target);
+        }
+        const summary = {
+            baseCount: typedBases.length,
+            untypedBaseCount,
+            typedPickCount: 0,
+            pathFilledCount: 0,
+            rungCounts: { template: 0, type: 0, concept: 0, subunit: 0, unit: 0, none: 0 },
+            hintOnlyCount: 0,
+            fallbackReason: typedBases.length ? '' : untypedBaseCount ? 'no_type_info' : 'no_wrong',
+        };
+        const baseUids = typedBases.map(base => base.uid);
+        const targetByBase = new Map(typedBases.map(base => [base.uid, base.target]));
+        const exclude = new Set(includeSeenQuestionUids ? [] : recent);
+        for (const uidValue of extraExclude) exclude.add(uidValue);
+        for (let round = 0; typedBases.length && round < limit && availableItems.length < limit; round++) {
+            const out = typeLadder.derive(baseUids, { exclude, buckets: wantedBuckets, seed });
+            let fresh = false;
+            // 한 바퀴 안에서는 유형이 더 가까운 단(세부 유형 → 유형 → 개념 → 단원)의 후보를 먼저 쓴다. 같은 단 안은 기준
+            // 문항(많이 틀린 개념) 순서 그대로. 시험 범위 안 다른 단원(none)은 같은 유형·같은 단원이 아니라 쓰지 않는다.
+            const ranked = (Array.isArray(out?.picks) ? out.picks : [])
+                .map((pick, order) => ({ pick, order, rank: (TYPE_RUNG_RANK[text(pick?.rung)] ?? 9) * 2 + (pick?.hintOnly === true ? 1 : 0) }))
+                .filter(row => row.rank < 9 * 2)
+                .sort((a, b) => a.rank - b.rank || a.order - b.order);
+            for (const { pick } of ranked) {
+                if (availableItems.length >= limit) break;
+                const pickedUid = text(pick?.pickedUid);
+                if (!pickedUid || used.has(pickedUid) || exclude.has(pickedUid)) continue;
+                fresh = true;
+                exclude.add(pickedUid);
+                const fact = candidateFacts.get(pickedUid);
+                if (!fact) {
+                    exclusions.typeLadderPickIneligible++;
+                    continue;
+                }
+                const target = targetByBase.get(text(pick.baseUid)) || typedBases[0].target;
+                used.add(pickedUid);
+                const itemBase = itemTarget(target);
+                const requestedBucket = difficultyMode === 'selected' ? fact.bucket : itemBase.difficultyBucket;
+                const item = clinicItemForCandidate(fact.record, fact.identity, itemBase, fact.meta, requestedBucket, difficultyMode);
+                item.recommendationReason = {
+                    ...item.recommendationReason,
+                    basis: 'wrong_type',
+                    baseQuestionUid: text(pick.baseUid),
+                    typeRung: text(pick.rung) || 'none',
+                    hintOnly: pick.hintOnly === true,
+                    wrongPath: { ...itemBase.path },
+                    path: { ...(canonicalPath(fact.meta)?.path || {}) },
+                };
+                availableItems.push(item);
+                summary.typedPickCount++;
+                if (Object.prototype.hasOwnProperty.call(summary.rungCounts, item.recommendationReason.typeRung)) {
+                    summary.rungCounts[item.recommendationReason.typeRung]++;
+                }
+                if (pick.hintOnly === true) summary.hintOnlyCount++;
+            }
+            if (!fresh) break;
+        }
+        return { pathTargets, summary };
+    }
+
     function build(input = {}) {
         const sessions = Array.isArray(input.sessions) ? input.sessions : [];
         const resultItems = Array.isArray(input.resultItems) ? input.resultItems : [];
@@ -902,89 +991,24 @@
             ? buildCandidateIndex(candidateRecords, archive2Core, input.canonicalAuthority || null, exclusions, targetGrade, candidateFacts)
             : new Map();
 
-        // 틀린 유형 기준: 이 학생이 틀린 문항(유형 정보가 있는 것)마다 사다리로 같은 유형의 다른 문항을 한 개씩, 문항 수가
-        // 찰 때까지 돌아가며 고른다. 유형 정보가 없는 오답(옛 응시·UID 없음)이 속한 개념 경로는 pathTargets로 돌려주어
-        // 기존 방식(개념 경로)이 모자란 만큼 채운다. 이미 본 UID는 사다리의 제외로 넘기고, 학년 가드는 후보 사실표가 한다.
-        function selectByWrongType(row, recent, used, availableItems) {
-            const difficultyMode = recommendationConfig.normalized.difficultyMode;
-            const wantedBuckets = difficultyMode === 'selected' ? recommendationConfig.normalized.selectedDifficultyBuckets : null;
-            const typedBases = [];
-            const seenBase = new Set();
-            const pathTargets = [];
-            let untypedBaseCount = 0;
-            for (const target of row.targets) {
-                let needsPath = false;
-                for (const ref of target.sourceOriginRefs) {
-                    const baseUid = text(ref.sourceQuestionUid);
-                    const info = baseUid ? typeLadder.baseInfo(baseUid) : null;
-                    if (info && info.typed) {
-                        if (!seenBase.has(baseUid)) {
-                            seenBase.add(baseUid);
-                            typedBases.push({ uid: baseUid, target });
-                        }
-                    } else {
-                        needsPath = true;
-                        untypedBaseCount++;
-                    }
-                }
-                if (needsPath) pathTargets.push(target);
-            }
-            const summary = {
-                baseCount: typedBases.length,
-                untypedBaseCount,
-                typedPickCount: 0,
-                pathFilledCount: 0,
-                rungCounts: { template: 0, type: 0, concept: 0, subunit: 0, unit: 0, none: 0 },
-                hintOnlyCount: 0,
-                fallbackReason: typedBases.length ? '' : untypedBaseCount ? 'no_type_info' : 'no_wrong',
-            };
-            const baseUids = typedBases.map(base => base.uid);
-            const targetByBase = new Map(typedBases.map(base => [base.uid, base.target]));
-            const exclude = new Set(includeSeenQuestionUids ? [] : recent);
-            for (const uidValue of used) exclude.add(uidValue);
-            for (let round = 0; typedBases.length && round < limit && availableItems.length < limit; round++) {
-                const out = typeLadder.derive(baseUids, { exclude, buckets: wantedBuckets, seed: `clinic:${row.studentId}` });
-                let fresh = false;
-                // 한 바퀴 안에서는 유형이 더 가까운 단(세부 유형 → 유형 → 개념 → 단원)의 후보를 먼저 쓴다. 같은 단 안은 기준
-                // 문항(많이 틀린 개념) 순서 그대로. 시험 범위 안 다른 단원(none)은 같은 유형·같은 단원이 아니라 쓰지 않는다.
-                const ranked = (Array.isArray(out?.picks) ? out.picks : [])
-                    .map((pick, order) => ({ pick, order, rank: (TYPE_RUNG_RANK[text(pick?.rung)] ?? 9) * 2 + (pick?.hintOnly === true ? 1 : 0) }))
-                    .filter(row => row.rank < 9 * 2)
-                    .sort((a, b) => a.rank - b.rank || a.order - b.order);
-                for (const { pick } of ranked) {
-                    if (availableItems.length >= limit) break;
-                    const pickedUid = text(pick?.pickedUid);
-                    if (!pickedUid || used.has(pickedUid) || exclude.has(pickedUid)) continue;
-                    fresh = true;
-                    exclude.add(pickedUid);
-                    const fact = candidateFacts.get(pickedUid);
-                    if (!fact) {
-                        exclusions.typeLadderPickIneligible++;
-                        continue;
-                    }
-                    const target = targetByBase.get(text(pick.baseUid)) || typedBases[0].target;
-                    used.add(pickedUid);
-                    const requestedBucket = difficultyMode === 'selected' ? fact.bucket : target.difficultyBucket;
-                    const item = clinicItemForCandidate(fact.record, fact.identity, target, fact.meta, requestedBucket, difficultyMode);
-                    item.recommendationReason = {
-                        ...item.recommendationReason,
-                        basis: 'wrong_type',
-                        baseQuestionUid: text(pick.baseUid),
-                        typeRung: text(pick.rung) || 'none',
-                        hintOnly: pick.hintOnly === true,
-                        wrongPath: { ...target.path },
-                        path: { ...(canonicalPath(fact.meta)?.path || {}) },
-                    };
-                    availableItems.push(item);
-                    summary.typedPickCount++;
-                    if (Object.prototype.hasOwnProperty.call(summary.rungCounts, item.recommendationReason.typeRung)) {
-                        summary.rungCounts[item.recommendationReason.typeRung]++;
-                    }
-                    if (pick.hintOnly === true) summary.hintOnlyCount++;
-                }
-                if (!fresh) break;
-            }
-            return { pathTargets, summary };
+        // 틀린 유형 기준 선정은 모듈 공용 함수(selectByWrongType)가 한다. 후속 후보(buildFollowUpCandidates)도 같은 함수를 쓴다.
+        function selectRowByWrongType(row, recent, used, availableItems) {
+            return selectByWrongType({
+                typeLadder,
+                config: recommendationConfig.normalized,
+                targets: row.targets,
+                refUidsOf: target => target.sourceOriginRefs.map(ref => text(ref.sourceQuestionUid)),
+                itemTarget: target => target,
+                limit,
+                includeSeenQuestionUids,
+                recent,
+                extraExclude: used,
+                used,
+                availableItems,
+                exclusions,
+                candidateFacts,
+                seed: `clinic:${row.studentId}`,
+            });
         }
 
         for (const row of evidence) {
@@ -1002,7 +1026,7 @@
             const used = new Set();
             const countedRecent = new Set();
             const availableItems = [];
-            const typeRun = typeLadder ? selectByWrongType(row, recent, used, availableItems) : null;
+            const typeRun = typeLadder ? selectRowByWrongType(row, recent, used, availableItems) : null;
             for (const target of typeRun ? typeRun.pathTargets : row.targets) {
                 if (availableItems.length >= limit) break;
                 const group = candidateIndex.get(`${target.pathDepth}|${target.pathKey}`);
@@ -1345,6 +1369,13 @@
         if (!['same_uid', 'similar_uid'].includes(mode)) {
             errors.push({ code: 'invalid_follow_up_mode', field: 'mode', message: 'mode must be same_uid or similar_uid.' });
         }
+        // 틀린 유형 기준(build와 같은 selectByWrongType): 다른 유사 문항(similar_uid)에만 쓴다. 같은 UID 재연습은 UID 그대로라 해당 없다.
+        const wrongTypeBasis = mode === 'similar_uid' && text(input.selectionBasis) === 'wrong_type';
+        const typeLadder = wrongTypeBasis && input.typeLadder && typeof input.typeLadder.derive === 'function'
+            && typeof input.typeLadder.baseInfo === 'function' ? input.typeLadder : null;
+        if (wrongTypeBasis && !typeLadder) {
+            errors.push({ code: 'type_ladder_unavailable', field: 'typeLadder', message: 'The type ladder is required for wrong_type selection.' });
+        }
         if (!studentId) errors.push({ code: 'invalid_follow_up_student', field: 'studentId', message: 'studentId is required.' });
         if (followUpContext.status !== 'result' || followUpContext.coverage?.attemptStatus !== 'result' ||
             followUpContext.coverage?.recommendationEligible !== true || recommendationInput.eligible !== true || !rawTargets.length) {
@@ -1556,13 +1587,16 @@
             candidateCurrentTargetUid: 0,
             sameUidCandidateMissing: 0,
             sameUidCandidateIdentityMismatch: 0,
+            ...(wrongTypeBasis ? { typeLadderPickIneligible: 0 } : {}),
         };
+        const candidateFacts = typeLadder ? new Map() : null;
         const candidateIndex = buildCandidateIndex(
             candidateRecords,
             archive2Core,
             input.canonicalAuthority || null,
             exclusions,
-            targetGrade
+            targetGrade,
+            candidateFacts
         );
         const factsByUid = new Map();
         for (const group of candidateIndex.values()) {
@@ -1607,6 +1641,7 @@
             used.add(identity.questionUid);
         };
 
+        let typeRun = null;
         if (mode === 'same_uid') {
             const refsByUid = new Map();
             for (const target of normalizedTargets) {
@@ -1640,7 +1675,39 @@
                 addCandidate(fact, target, fact.bucket, 'same_uid', refs);
             }
         } else {
-            for (const target of normalizedTargets) {
+            // 틀린 유형 기준이면 먼저 유형 사다리로 채우고, 유형 정보 없는 오답의 개념 경로만 아래 기존 방식이 보충한다.
+            if (typeLadder) {
+                typeRun = selectByWrongType({
+                    typeLadder,
+                    config: recommendationConfig.normalized,
+                    targets: normalizedTargets,
+                    refUidsOf: target => target.questionRefs.map(ref => ref.sourceQuestionUid),
+                    itemTarget: target => ({
+                        path: target.path,
+                        pathDepth: target.pathDepth,
+                        pathKey: target.pathKey,
+                        difficultyBucket: target.difficultyBucket,
+                        wrongCount: target.observedWrongCount,
+                        sessionCount: 1,
+                        sourceOriginRefs: [],
+                        outcomeSources: ['result_items'],
+                    }),
+                    limit: requestedLimit,
+                    includeSeenQuestionUids: true,
+                    recent: new Set(),
+                    extraExclude: targetUids,
+                    used,
+                    availableItems: items,
+                    exclusions,
+                    candidateFacts,
+                    seed: `follow_up:${studentId}`,
+                });
+                for (const item of items) {
+                    item.followUpMode = 'similar_uid';
+                    item.recommendationReason.recommendationMode = 'similar_uid';
+                }
+            }
+            for (const target of typeRun ? typeRun.pathTargets : normalizedTargets) {
                 if (items.length >= requestedLimit) break;
                 const group = candidateIndex.get(`${target.pathDepth}|${target.pathKey}`);
                 const buckets = filterMode === 'selected'
@@ -1675,12 +1742,14 @@
         }
 
         const returnedCount = items.length;
+        if (typeRun) typeRun.summary.pathFilledCount = returnedCount - typeRun.summary.typedPickCount;
         return {
             contractVersion: CONTRACT_VERSION,
             status: returnedCount ? 'ready' : mode === 'same_uid' ? 'no_candidates' : 'no_candidates',
             countBasis: 'latest_attempt_follow_up',
             recommendationMode: mode,
             recommendationOptions: recommendationConfig.normalized,
+            ...(wrongTypeBasis ? { selectionBasis: 'wrong_type' } : {}),
             coverage: {
                 scope: 'follow_up',
                 mode,
@@ -1691,6 +1760,8 @@
                 candidateRecordCount: candidateRecords.length,
                 requestedCount,
                 returnedCount,
+                // 후속 후보의 기준은 이번 완결 응시 한 건의 확정 오답이다(화면 안내문이 이 두 값을 읽는다).
+                ...(wrongTypeBasis ? { selectionBasis: 'wrong_type', evidenceSessionCount: 1, wrongAnswerCount: targetUids.size } : {}),
             },
             evidence: [{
                 studentId,
@@ -1711,6 +1782,10 @@
                 returnedCount,
                 shortfall: Math.max(0, requestedCount - returnedCount),
                 items,
+                ...(typeRun ? {
+                    selectionBasis: typeRun.summary.baseCount ? 'wrong_type' : 'concept_path',
+                    typeBasis: typeRun.summary,
+                } : {}),
             }],
             exclusions,
             errors: [],

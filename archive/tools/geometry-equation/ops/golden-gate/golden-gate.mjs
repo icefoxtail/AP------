@@ -14,6 +14,7 @@ import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {renderItems, pruneSnapshotRuns} from './lib/render.mjs';
 import {compareItem, parseExpected, applyExpected, summarize, evaluate, decide, testsFail, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
 import {listTests, selectTests, runTests, compareTests} from './lib/tests-run.mjs';
+import {orderCheck, formatTable, decideOrderCheck} from './lib/order-check.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../../../../..');
@@ -28,6 +29,7 @@ function parseArgs(argv) {
     else if (k === '--cache') a.cache = val(); else if (k === '--lock-dir') a.lockDir = val(); else if (k === '--deps') a.deps = val(); else if (k === '--out') a.out = val();
     else if (k === '--retries') a.retries = Number(val()); else if (k === '--repo') a.repo = val();
     else if (k === '--tests') { const n = argv[i + 1]; a.tests = n && !n.startsWith('--') ? (i++, n) : 'auto'; }
+    else if (k === '--order-check') { const n = argv[i + 1]; a.orderCheck = n && !n.startsWith('--') ? (i++, n) : 'default'; }
     else if (k === '--no-cache') a.noCache = true; else if (k === '--repeat-check') a.repeat = true; else if (k === '--list') a.list = true;
     else if (k === '--help' || k === '-h') a.help = true; else throw new Error(`unknown option ${k}`);
   }
@@ -35,7 +37,7 @@ function parseArgs(argv) {
 }
 
 const USAGE = `golden-gate --base <ref> [--head <ref|@worktree>] [--families auto|all|<kind,kind|item|FAM>] [--expected <file>] [--tests [auto|all]]
-  [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--list] [--out <report.json>] [--cache <dir>] [--repo <dir>] [--lock-dir <dir>] [--deps <dir>]
+  [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--order-check [solid,item..:other,item..]] [--list] [--out <report.json>] [--cache <dir>] [--repo <dir>] [--lock-dir <dir>] [--deps <dir>]
 kinds: ${KINDS.join(', ')}
 env: GOLDEN_GATE_CACHE (cache folder), RENDER_LOCK_DIR (render slot folder shared with other workers), RENDER_SLOTS, GOLDEN_GATE_DEPS, GEOMETRY_BROWSER_EXECUTABLE, GEOMETRY_PYTHON`;
 
@@ -48,7 +50,7 @@ const log = m => console.error(`[${new Date().toTimeString().slice(0, 8)}] ${m}`
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || !args.base) { console.log(USAGE); return args.help ? 0 : 2; }
+  if (args.help || (!args.base && !args.orderCheck)) { console.log(USAGE); return args.help ? 0 : 2; }
   const repo = path.resolve(args.repo || REPO);
   const cacheRoot = path.resolve(args.cache || process.env.GOLDEN_GATE_CACHE || path.join(REPO, '.tmp/golden-gate-cache'));
   const lockDir = path.resolve(args.lockDir || process.env.RENDER_LOCK_DIR || path.join(cacheRoot, 'render-locks'));
@@ -67,6 +69,7 @@ async function main() {
     try { expected = parseExpected(fs.readFileSync(args.expected, 'utf8')); } catch (e) { expected = {entries: [], errors: [`cannot read the expected file ${args.expected}: ${e.message}`]}; }
   }
 
+  if (args.orderCheck) return orderCheckMain({args, repo, cacheRoot, lockDir, depsDir});
   const baseT = resolveTarget(repo, args.base);
   const headT = resolveTarget(repo, args.head || '@worktree');
   const env = environmentFingerprint({depsDir});
@@ -172,6 +175,29 @@ async function main() {
   const word = outcome === 'PASS' ? 'GOLDEN GATE PASS' : outcome === 'UNAFFECTED' ? 'GOLDEN GATE UNAFFECTED (nothing compared)' : outcome === 'CANNOT_VOUCH' ? `GOLDEN GATE CANNOT VOUCH: ${decision.reason}` : 'GOLDEN GATE FAIL';
   say(`\n${word} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
   return exit;
+}
+
+// --order-check: a few golden plans in several orders and with the process reuse on and off, all compared with the reuse-off render (lib/order-check.mjs). No base is needed.
+//   --order-check                  the default sample (the solids and other items named in lib/order-check.mjs)
+//   --order-check s1,s2:o1,o2      your own list: solid items before the colon, other items after it
+async function orderCheckMain({args, repo, cacheRoot, lockDir, depsDir}) {
+  const headT = resolveTarget(repo, args.head || '@worktree');
+  const env = environmentFingerprint({depsDir});
+  log(`environment ${env.key}: chrome ${env.chrome}, node ${env.node}, ${env.python}, ${env.os}`);
+  const snap = ensureSnapshot({repo, target: headT, cacheRoot, depsDir, log});
+  pruneSnapshotRuns(snap.dir);
+  const custom = args.orderCheck !== 'default' ? args.orderCheck.split(':') : null;
+  const pick = s => s.split(',').filter(Boolean);
+  const t0 = Date.now();
+  const result = await orderCheck({snap, ...(custom ? {solids: pick(custom[0]), others: pick(custom[1] ?? '')} : {}), cacheRoot, depsDir, lockDir, slots: args.slots, log});
+  const d = decideOrderCheck(result);
+  const n = v => result.rows.filter(r => r.verdict === v).length;
+  say(`order check on ${headT.label} (snapshot ${snap.id}): scenarios ${result.scenarios.join(', ')}; ${result.rows.length} renders: ${n('SAME')} SAME, ${n('DIFF')} DIFF, ${n('NOT_RUN')} NOT_RUN (the reuse-off run is the reference)`);
+  for (const l of formatTable(result)) say(l);
+  for (const r of result.rows.filter(x => x.verdict === 'DIFF')) say(`DIFF ${r.scenario} ${r.item}: svg ${r.svgSha?.slice(0, 12)} vs reuse-off ${r.refSvgSha?.slice(0, 12)} (status ${r.status} ${r.code ?? ''})`);
+  headline = `order check ${d.outcome}${d.reason ? `: ${d.reason}` : ''} in ${fmtDuration(Date.now() - t0)}`;
+  if (args.out) writeJson(args.out, {head: headT.label, env: env.key, result, outcome: d.outcome, reason: d.reason});
+  return d.exit;
 }
 
 function timingTable(selected, plans, stats) {
