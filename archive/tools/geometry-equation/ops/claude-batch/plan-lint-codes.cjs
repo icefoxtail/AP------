@@ -87,8 +87,8 @@ rule(/^PLAN_(JSON_INVALID|NOT_OBJECT)$/, c => ({ reason: c.base === 'PLAN_JSON_I
 rule(/^MULTI_CURVE_COUNT_INVALID$/, c => { // graph_framing.py:4810-4811
   const n = (graphPlansOf(c.plan).find(g => Array.isArray(g.curves)) || {}).curves;
   const kinds = (n || []).map(x => x && (x.kind || (x.inverseOf ? '역함수' : '?'))).join(',');
-  return { reason: `multi-curve-figure-v1 은 곡선이 2~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
-    fix: '곡선이 하나면 multi-curve 를 쓰지 않는다: 직선·다항은 piecewise-polynomial-spike-v1, 지수는 exponential-affine-spike-v1, 로그는 logarithmic-affine-spike-v1(본보기 참조). 한 곡선의 일부 구간 강조(emphasis)·abs:true·regions 가 필요한 그림만 곡선 1개가 허용된다.' };
+  return { reason: `multi-curve-figure-v1 은 곡선이 1~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
+    fix: 'curves 를 1~6개로 맞춘다(곡선 0개이거나 6개를 넘으면 거절된다). 곡선 하나면 직선·지수·로그 단일 capability 도 쓸 수 있다.' };
 });
 rule(/^MULTI_CURVE_LABEL_INVALID$/, c => { // graph_framing.py:4539(패턴) 4584-4592 4618
   const cv = curveOf(c.plan, c.arg), label = cv && cv.label;
@@ -161,10 +161,14 @@ rule(/^KOREAN_WORD_NEEDS_TEXT_LABEL$/, c => ({ reason: `수식 라벨에 한글 
 rule(/^KOREAN_UNIT_NEEDS_TEXT_LABEL$/, () => ({ reason: '단위가 한글(초·분·개·원 …)이다. 수식 조판은 한글 단위를 못 그린다.', fix: '값과 단위를 합쳐 평문 라벨로 쓴다("labelKind":"TEXT", "label":"12초").' }));
 rule(/^NUMBER_JUXTAPOSITION_UNCLEAR$/, c => { // visual_engine/math_expression.py (Parser.expr)
   const body = { ...c.plan }; for (const k of ['caption', 'accessibilityDescription', 'sourceConditions', 'newVisualInformation']) delete body[k]; // 그림 안 글만 찾는다
-  const hit = findString(body, s => /\d\s+\d/.test(s) && s.length <= 60);
-  return { reason: `라벨 식에 수와 수가 공백으로만 이어져 있다${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 나열(-1 0 1)인지 곱(3 2^x)인지 글만으로는 알 수 없어서 엔진은 점을 찍거나 붙여 쓰지 않고 거절한다.`,
+  const hit = findString(body, s => /(?:\d|[A-Za-z)])\s+\d/.test(s) && s.length <= 60);
+  return { reason: `라벨 식에 수나 문자 뒤에 수가 공백으로만 이어져 있다${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 나열(-1 0 1)인지 곱(3 2^x)인지 글만으로는 알 수 없어서 엔진은 점을 찍거나 붙여 쓰지 않고 거절한다.`,
     fix: '곱이면 * 로 쓴다("3*2^(x)" → 3·2^x). 값을 나열하면 쉼표로 쓰고 괄호나 textLabels 로 묶는다("(-1,0,1)", 또는 라벨 하나에 한 값씩).' };
 });
+rule(/^LABEL_UNIT_WRITTEN_TWICE$/, () => ({ reason: '라벨 글이 이미 단위로 끝나는데 `unit` 필드도 있어 단위가 두 번 그려진다(6cm 와 unit cm 이면 6cm cm).', // visual_engine/math_expression.py _unit_written_twice
+  fix: '라벨 글에는 값만 쓰고("6") 단위는 `unit` 필드에만 준다.' }));
+rule(/^DISPLAY_POINTS_COINCIDE$/, c => ({ reason: `그려지는 두 점 ${q(c.arg)} 이(가) 정확히 같은 자리라 이름 둘이 점 하나에 찍힌다.`, // production/phase2.mjs specFor
+  fix: '한 점을 displayPoints 에서 빼거나, 이름 없는 보조점이면 hiddenPointNames 에 넣는다.' }));
 rule(/^DEGREE_LABEL_NEEDS_VALUE$/, () => ({ reason: '도(°) 라벨에 값 없이 각 이름만 있다(∠B, △ABC). 엔진이 °를 붙이면 ∠B° 가 되어 크기가 아닌 이름에 도 기호가 붙는다.',
   fix: '이름만 보이려면 labelKind "NAME"(angles[].label "B" → ∠B), 값을 보이려면 label 에 값을 쓴다("∠B=40" 은 ∠B=40°, 또는 숫자만 "40"). ∠ 와 °는 라벨에 직접 쓰지 않는 것이 기본이다.' }));
 rule(/^FIGURE_NAME_INVALID$/, c => ({ reason: `∠ △ □ 뒤에는 도형 이름(영문자 1~6자: ∠ABC, △ABC, □ABCD)이 와야 한다(${q(c.arg)}).`, fix: '기호 바로 뒤에 점 이름 글자를 이어 쓴다. 각 이름만 보이려면 labelKind "NAME" 도 된다("ABC" → ∠ABC).' }));

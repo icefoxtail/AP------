@@ -200,7 +200,7 @@ def dimension_label_parts(row):
     """(label, unit) of a dimension: a trailing thin-space unit written in the label ("24\\,cm") is the unit, as in the plan's own reading of it."""
     label,unit=row.get('label'),row.get('unit')
     if isinstance(label,str):
-        m=re.fullmatch(r'(.*?)\s*\\,\s*(cm|mm|m)',label)
+        m=re.fullmatch(r'(.*?)\s*\\,\s*(km/h|m/s|cm/s|m/min|(?:mm|cm|km|m)\^[23]|mm|cm|km|mg|kg|dL|mL|ha|min|m|g|s|h|L)',label)   # (P-C) this observer's own list of the units a dimension label may carry
         if m and m.group(1)!='' and unit in (None,m.group(2)):label,unit=m.group(1),m.group(2)
     return label,unit
 
@@ -584,6 +584,9 @@ def audit(p):
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
         vector_label_check(label_id,node,str(text))
+        # (P-B) This observer's own reading of the plan text: a digit written after a space that follows a letter or a closing bracket (x 3, (x+1) 2) is drawn glued to it, so the figure shows another
+        # number than the plan says it may mean; the engine refuses such a text (NUMBER_JUXTAPOSITION_UNCLEAR) and a drawing made from one fails here.
+        if re.search(r'[A-Za-z)]\s+[0-9]',str(text)):errors.append('LABEL_DIGIT_AFTER_SPACE:'+label_id)
         # (EXT-20261122) Two numbers written as a product (3*2^x) are drawn with a dot between them, never side by side as one number (32^x): this observer's own reading of the plan
         # text counts the products, and the glyphs drawn must carry at least as many dot operators (MathJax code 22C5).
         written_products=len(re.findall(r'\d\s*\*\s*\d',str(text)))     # a product is written with *; digits only separated by a space are refused by the engine (NUMBER_JUXTAPOSITION_UNCLEAR), never read as a product
@@ -593,7 +596,7 @@ def audit(p):
         # (2) a fraction times one letter or function, written (a/b)*f, is drawn stacked with f over b ((8/5)*sqrt(10) is 8 sqrt10 over 5, (1/2)*sqrt(3) is sqrt3 over 2), so the run reads
         #     a (left out when it is 1), the digits of f, then b. Anything else (a digit lost, numerator and denominator swapped, a coefficient other than 1 gone) is a mismatch.
         flat_text=re.sub(r'\s+','',str(text))
-        if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>]+",flat_text):
+        if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>≈]+",flat_text):
             unit_words={'mm','cm','m','km','mg','g','kg','mL','L','dL','s','min','h','ha'}
             def one_left_out(hit):
                 after=flat_text[hit.end():];word=re.match(r'[A-Za-z]+',after)
@@ -620,6 +623,10 @@ def audit(p):
             written_text=flat_text
             ones_gone=re.sub(r'\(-?1\)\*?(?=[A-Za-z])|(?<![0-9A-Za-z.)])1\*(?=[A-Za-z])',one_left_out,flat_text)
             if drawn_digits not in {digits_of(written_text),digits_of(ones_gone),stacked_run(written_text),stacked_run(ones_gone)}:errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+        if unit:
+            # (P-B) This observer's own reading: the plan text must not already end in a unit word (6cm with unit cm is drawn 6cm cm); a letter value like m or s stays a variable.
+            written=re.sub(r'\s+','',str(text));base=re.match(r'[A-Za-z]+',unit)
+            if re.search(r'[0-9.)](?:mm|cm|km|mg|kg|dL|mL|ha|min|m|g|s|h|L)$',written) or (base is not None and len(base.group(0))>=2 and re.search(r'(?:^|[^A-Za-z])'+base.group(0)+r'$',str(text).strip())):errors.append('LABEL_UNIT_WRITTEN_TWICE:'+label_id)
         if not unit:return
         # (EXT-20261122) A unit is letters (cm), a ratio of letters (km/h) or letters with a power (cm^2): the glyphs drawn are the letters and the slash, then the power digit.
         unit_hit=re.fullmatch(r'([A-Za-z]+(?:/[A-Za-z]+)?)(?:\^([23]))?',unit)
@@ -814,6 +821,14 @@ def audit(p):
             if earlier and abs(earlier[0][1]-drawn)>ANGLE_TOLERANCE:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+earlier[0][0]+'&'+oid+':'+color+':%.3f!=%.3f'%(earlier[0][1],drawn))
         observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
         if row.get('noLabel') is not True and row.get('label') is not None and row.get('labelKind','DEGREE')=='DEGREE' and not row.get('unit'):degree_label_check(oid+'-label',str(row['label']))
+        # (P-B) This observer's own reading: a MATH label that is exactly the letters of the angle's three points (every point under its own single capital, no display name) is the angle's name, so the
+        # angle sign (MathJax 2220) must be the first glyph drawn: ABC without it reads as a segment or a triangle, not an angle.
+        if row.get('noLabel') is not True and row.get('labelKind')=='MATH' and not row.get('unit') and isinstance(row.get('label'),str) and isinstance(row.get('refs'),list) and len(row['refs'])==3:
+            shown=p.get('pointNames') or {}
+            letters=[str(r) for r in row['refs']]
+            if all(re.fullmatch('[A-Z]',r) and r not in shown for r in letters) and row['label'].strip() in (''.join(letters),''.join(reversed(letters))):
+                name_codes=glyph_codes(elements[oid+'-label']) if elements.get(oid+'-label') is not None else []
+                if not name_codes or name_codes[0]!='2220':errors.append('ANGLE_NAME_SIGN_MISSING:'+oid)
         if row.get('noLabel') is not True and (row.get('label') is not None or row.get('value') is not None):
             box=label_clear(oid+'-label')
             if box is not None:

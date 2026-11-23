@@ -19,10 +19,13 @@ REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'tar
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
 FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refined to about a pixel (equalUnits on a rational or a square root)
-FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
+FIELDS|={'nearCurve','nearLine','nearEnd','nearAtFirst','nearPoint'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
 FIELDS|={'markerState'}   # a graph overlay point drawn as a hollow circle (markerState:'OPEN'); with `color` (POINT) a coloured dot
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 FIELDS|={'axisValue','axisAt'}   # (AXV) a label that names a value on an axis: axisValue 'x'|'y' and axisAt, its point on that axis (the label must read as that axis's tick)
+
+# (P-C) the units a plane mark label may carry; this file's own copy (the generator in plane-marks.mjs and the observers each keep theirs, a test feeds one table to all of them)
+PLANE_LABEL_UNITS={'cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3'}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -104,7 +107,7 @@ def validate(spec):
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
             if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
-            if obj['unit'] not in {'cm','m','mm','kg'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
+            if obj['unit'] not in PLANE_LABEL_UNITS:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
             if obj['kind']!='EQUATION_LABEL' and obj.get('labelText') is None:raise ValueError('MARK_UNIT_REQUIRES_LABEL:'+str(obj.get('id')))
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
         if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:

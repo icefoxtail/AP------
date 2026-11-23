@@ -302,6 +302,7 @@ REGION_INNER_POINT_PX=8.0       # least distance from the dot's edge to a drawn 
 REGION_INNER_GRID_PX=4.0
 REGION_INNER_SPACING_PX=12.0
 REGION_INNER_FIRST=30            # the roomiest spots tried first
+NEAR_POINT_STRETCH_PX=14.0     # a value label f(a)=b keeps to the stretch of its curve within this many px of the point (a,f(a))
 REGION_INNER_MORE=300            # further spots (same order, still 12 px apart) tried only when none of the first ones lets the leader out: a piece of a region cut by strokes has no spot among the roomiest
 
 REGION_CIRCLE_TOUCH_PX=1.5      # a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round IS that circle
@@ -330,6 +331,7 @@ def _value_names_its_quantity(obj):
     if not (obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and text):return False
     if text[-1:] in ('\u00b2','\u00b3'):return True                  # an area / volume unit says it is not a length
     if '=' not in text:return False
+    if re.search(r'[0-9π)]\s?(?:mm|cm|km|m)$',text):return False   # (P-D) S=6cm: a length unit says it is a length, whatever the name before it
     name=text.split('=',1)[0].strip()
     return re.fullmatch(r'[A-Z]{2}|[a-z]',name) is None            # AB=6\u03c0 (a segment or arc) and l=6 (a length letter) read as lengths; 부채꼴 AOB, \u25b3ABC, S do not
 
@@ -1483,7 +1485,13 @@ def prepare(spec):
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
     for label in region_labels:
         site=label['regionLeader']
-        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots);site.pop('inner',None)
+        if site.pop('graphRegion',False):
+            # A graph region's name (S_1) stands outside it on a leader that starts on a dot INSIDE the band, as every region value does (a leader from the band's boundary reads as a tick
+            # value or as the name of the curve it touches). The name of a region (it has a letter) may stand beside a boundary; a bare number may not.
+            site.pop('corners',None)
+            spots=_region_inner_points(site['polygons'],obstacles,mark_spots)
+            site['inner']=spots[:REGION_INNER_FIRST];site['innerMore']=spots[REGION_INNER_FIRST:]
+            site['sideExempt']=re.search('[A-Za-z]',str(label.get('sourceMath',''))) is not None
         else:
             # no dot and no inside value in a drawn circle that lies wholly inside the region (the incircle of a triangle): it would read as that circle's area, not the region's
             circles=_circles_inside_region(site['polygons'],obstacles)
@@ -1507,7 +1515,7 @@ def prepare(spec):
             for point in points[1:-1]:
                 if math.dist(point,kept[-1])>=4.0:kept.append(tuple(point))
             kept.append(tuple(points[-1]));return kept   # about one vertex per 4 px: enough to place a label, far fewer distances to measure
-        def owns(row_id,ident):return re.fullmatch(r'f-'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None
+        def owns(row_id,ident):return re.fullmatch(r'(?:(?:f|curve)-)?'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None   # f-<id> (multi-curve, name-only pair), curve-<id> (exp-log pair)
         def emphasis(row_id):return re.fullmatch(r'e-.+-\d+-branch-\d+',row_id) is not None
         for label in near_labels:
             if 'nearCurve' in label:
@@ -1516,6 +1524,15 @@ def prepare(spec):
                 own=[thin(row['points']) for row in curve_rows if owns(row['id'],ident)]
                 if not own:raise ValueError('NEAR_CURVE_NOT_DRAWN:'+label['id'])
                 others=[thin(row['points']) for row in curve_rows if not owns(row['id'],ident) and not emphasis(row['id'])]
+                if 'nearPoint' in label:
+                    # a value label f(a)=b belongs to the point (a,f(a)) of its curve, not to the whole curve: its own stroke is the short stretch of the curve around that point
+                    anchor=vp.screen(tuple(label.pop('nearPoint')))
+                    stretch=[]
+                    for pts in own:
+                        near_pts=[point for point in pts if math.dist(point,anchor)<=NEAR_POINT_STRETCH_PX]
+                        if len(near_pts)>=2:stretch.append(near_pts)
+                    if not stretch:stretch=[sorted(min(own,key=lambda pts:min(math.dist(point,anchor) for point in pts)),key=lambda point:math.dist(point,anchor))[:2]]
+                    own=stretch
                 label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END','id':ident}
             else:
                 ident=label['nearLine']

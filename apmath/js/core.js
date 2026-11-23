@@ -1286,6 +1286,12 @@ function apmsGetExamSessionsForStudent(studentId) {
     return (apmsGetDataIndexes().examSessionsByStudentId.get(String(studentId || '')) || []).slice();
 }
 
+// 학교 시험 성적으로 세는 응시만(유사 시험지로 출제된 응시 제외). 최근 평균·성적 추이·목표 달성률은 이 목록으로 계산한다.
+// 판정은 js/similar-exam.js 한 곳(출제 archive_file 경로가 similar/ 아래인지, 저장 안 함).
+function apmsGetScoreExamSessionsForStudent(studentId) {
+    return apmsGetExamSessionsForStudent(studentId).filter(row => !globalThis.ApSimilarExam?.isSimilarExamRow(row));
+}
+
 function apmsGetConsultationsForStudent(studentId) {
     return (apmsGetDataIndexes().consultationsByStudentId.get(String(studentId || '')) || []).slice();
 }
@@ -1322,7 +1328,7 @@ function computeStudentTargetProgress(studentId, limit = 3) {
         };
     }
 
-    const scores = (typeof apmsGetExamSessionsForStudent === 'function' ? apmsGetExamSessionsForStudent(studentId) : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(studentId)).sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || ''))))
+    const scores = (typeof apmsGetScoreExamSessionsForStudent === 'function' ? apmsGetScoreExamSessionsForStudent(studentId) : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(studentId) && !globalThis.ApSimilarExam?.isSimilarExamRow(e)).sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || ''))))
         .slice(0, limit)
         .map(e => Number(e.score))
         .filter(v => Number.isFinite(v));

@@ -163,6 +163,7 @@
                 policy.commit(ctx.buildState, ctx);
                 Object.assign(document.documentElement.dataset, ctx.diagnostics);
                 document.documentElement.dataset.apPrintReadiness = JSON.stringify(ctx.readinessTracker.snapshot());
+                root.APRenderDiagnostics?.publish(ctx.targetArea);
                 document.documentElement.dataset.apRenderReady = 'true';
                 root.__AP_RENDER_METRICS__ = ctx.metrics;
                 history.replaceState(history.state, '', ctx.input.url);
@@ -178,6 +179,7 @@
                 for (const item of journal.controls) { Object.assign(item.node, { value: item.value, checked: item.checked, className: item.className }); if (item.text !== null) item.node.textContent = item.text; }
                 for (const key of Object.keys(document.documentElement.dataset)) delete document.documentElement.dataset[key];
                 Object.assign(document.documentElement.dataset, journal.dataset);
+                root.APRenderDiagnostics?.publish(journal.area);
                 history.replaceState(journal.historyState, '', journal.url);
             },
             afterCommit(ctx) { policy.afterCommit?.(ctx); },

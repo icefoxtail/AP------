@@ -110,6 +110,9 @@
             limited: source.limited === true,
             sessionLimit: Number.isInteger(sessionLimit) && sessionLimit > 0 ? sessionLimit : null,
             ...(source.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {}),
+            // 후보 선정 방식("틀린 유형 기준")을 계보 표식(meta.clinicRecommendationAssessment.coverage)에 한 값으로 남긴다.
+            // 기본(개념 경로) 방식은 이 값을 쓰지 않아 기존 표식·서명이 그대로다.
+            ...(source.selectionBasis === 'wrong_type' ? { selectionBasis: 'wrong_type' } : {}),
         };
     }
 

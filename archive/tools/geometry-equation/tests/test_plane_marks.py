@@ -430,12 +430,40 @@ class LabelKindTests(unittest.TestCase):
     def test_unit_with_a_degree_name_or_text_label_is_refused(self):
         for kind in ('DEGREE','NAME','TEXT'):
             with self.assertRaises(ValueError,msg=kind):mark_label('l','t','AB' if kind=='NAME' else '3',kind,(0,0),{},'cm')
+    # (P-C) one table of units, typed here (not imported), fed to the semantic model, this file's observer reading of a dimension label and the region observer's label text
+    UNITS_ACCEPTED=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3']
+    UNITS_REFUSED=['','CM','cm^4','c m','초','inch','lb','sec','m^2/s','cm2']
+    def test_the_unit_table_in_the_semantic_model(self):
+        pts={'A':(0.0,0.0),'B':(6.0,0.0)}
+        def build_with(unit):
+            return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],'unit':unit}]))
+        for unit in self.UNITS_ACCEPTED:
+            with self.subTest(unit=unit):self.assertIsNotNone(build_with(unit))
+        for unit in self.UNITS_REFUSED:
+            with self.subTest(unit=unit),self.assertRaises(ValueError) as caught:build_with(unit)
+            self.assertTrue(str(caught.exception).startswith('MARK_UNIT_INVALID'),(unit,str(caught.exception)))
+    def test_the_unit_table_in_the_observers_reading_of_a_dimension_label(self):
+        for unit in self.UNITS_ACCEPTED:
+            with self.subTest(unit=unit):self.assertEqual(OBSERVER.dimension_label_parts({'label':r'24\,'+unit}),('24',unit))
+        for unit in ('inch','lb','CM','cm^4','x'):
+            with self.subTest(unit=unit):self.assertEqual(OBSERVER.dimension_label_parts({'label':r'24\,'+unit}),(r'24\,'+unit,None))
+    def test_the_unit_table_in_the_region_observers_label_text(self):
+        regions=importlib.util.spec_from_file_location('plane_regions_observer_units',PRODUCTION/'plane_regions_observer.py')
+        module=importlib.util.module_from_spec(regions);regions.loader.exec_module(module)
+        for unit in [u for u in self.UNITS_ACCEPTED if '/' not in u]:
+            with self.subTest(unit=unit):
+                text=module.region_label_text({'label':'6','unit':unit})
+                self.assertTrue(text.startswith('6'),(unit,text))
+                self.assertIn(unit.split('^')[0],text)
+        self.assertEqual(module.region_label_text({'label':'6','unit':'km^2'}),'6km²')
+        self.assertEqual(module.region_label_text({'label':'6','unit':'mL'}),'6mL')
+        self.assertIsNone(module.region_label_text({'label':'6','unit':'cm^4'}))
     def test_spec_refuses_unknown_unit_kind_and_misplaced_unit(self):
         pts={'A':(0.0,0.0),'B':(6.0,0.0)}
         def build_with(extra):
             return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],**extra}]))
         self.assertIsNotNone(build_with({'unit':'cm'}))
-        for extra,code in [({'unit':'km'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
+        for extra,code in [({'unit':'inch'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
             with self.assertRaises(ValueError,msg=code) as caught:build_with(extra)
             self.assertTrue(str(caught.exception).startswith(code),str(caught.exception))
         with self.assertRaises(ValueError) as caught:build(spec_of(pts,[{**seg('sAB',pts,'A','B'),'unit':'cm'}]))
