@@ -356,7 +356,7 @@ window.questionBank = [
     "id": 7,
     "questionNumber": 7,
     "questionType": "객관식",
-    "content": "7. 어느 학교의 학생들을 대상으로 학교생활에 대한 만족도를 조사하였더니 전체 학생 중에서 $80\\%$가 만족한다고 응답하였다. 이 학교 학생 400명을 임의로 택하였을 때, 학교생활에 만족한다고 응답한 학생이 312명 이상일 확률은? [3.6점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 le Z le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "7. 어느 학교의 학생들을 대상으로 학교생활에 대한 만족도를 조사하였더니 전체 학생 중에서 $80\\%$가 만족한다고 응답하였다. 이 학교 학생 400명을 임의로 택하였을 때, 학교생활에 만족한다고 응답한 학생이 312명 이상일 확률은? [3.6점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.3413$",
       "$0.4772$",

@@ -885,7 +885,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "②",
-    "solution": "$t=P(A\\cap B)$라 두면 $P(A\\mid B)=\\frac{t}{P}(B)=\\frac{2}{5}$이므로\n$P(B)=5t/2$이고, $P(B\\mid A)=\\frac{t}{P}(A)=\\frac{2}{3}$이므로\n$P(A)=3t/2$입니다.\n덧셈정리를 적용하면 $P(A\\cup B)=P(A)+P(B)-t=(\\frac{3}{2}+\\frac{5}{2}-1)t=3t$입니다.\n$3t=\\frac{3}{5}$에서 $t=\\frac{1}{5}$입니다.\n다른 보기 ①·③·④·⑤는 주어진 세 확률을 동시에 만족하지 않습니다. **정답 ②**.",
+    "solution": "$t=P(A\\cap B)$라 두면 $P(A\\mid B)=\\frac{t}{P(B)}=\\frac{2}{5}$이므로\n$P(B)=5t/2$이고, $P(B\\mid A)=\\frac{t}{P(A)}=\\frac{2}{3}$이므로\n$P(A)=3t/2$입니다.\n덧셈정리를 적용하면 $P(A\\cup B)=P(A)+P(B)-t=(\\frac{3}{2}+\\frac{5}{2}-1)t=3t$입니다.\n$3t=\\frac{3}{5}$에서 $t=\\frac{1}{5}$입니다.\n다른 보기 ①·③·④·⑤는 주어진 세 확률을 동시에 만족하지 않습니다. **정답 ②**.",
     "level": "중",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-04",
