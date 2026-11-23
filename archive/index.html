@@ -2535,6 +2535,7 @@ function buildCard(ex) {
             <div class="action-btn" data-action="sol">해설</div>
             <div class="action-btn" data-action="ans">정답</div>
             ${isUnitPastExamItem(ex) ? '' : '<div class="action-btn" data-action="assign">반에 출제</div>'}
+            ${isSheet && /^original\//.test(String(ex.file || '')) ? '<div class="action-btn" data-action="mock" title="이 시험과 같은 유형으로 기본·응용·심화 모의고사 만들기">모의고사</div>' : ''}
         </div>
     `;
 
@@ -2556,6 +2557,11 @@ function openEngine(file, action) {
     if (!item) return;
     if (action === 'assign') {
         void openAssignTargetPanel(item, 4);
+        return;
+    }
+    if (action === 'mock') {
+        // 학교 모의고사: 교사 작업공간이 이 시험지를 기준으로 기본·응용·심화 선택 창을 연다(archive2-workspace-derive.js).
+        location.href = 'workspace.html?view=find&mock=' + encodeURIComponent(item.file);
         return;
     }
     launchIndexExamOutput(item, action || 'exam', 4);

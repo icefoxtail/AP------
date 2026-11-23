@@ -659,13 +659,16 @@
     const direct = ([mode, label]) =>
       button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
     const titleButton = button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`);
+    // 학교 기출 시험지 한 줄에서 곧바로 기본/응용/심화 모의고사로(archive2-workspace-derive.js, 같은 선정 코드).
+    const mock = kind === "exam" && /^original\//.test(String(exam.file || ""))
+      ? `<div class="exam-row-mock">${button("derive-mock-open", "모의고사 만들기", `type="button" class="mock-entry" data-exam="${index}" aria-label="${esc(title)} 기본·응용·심화 모의고사 만들기" title="이 시험과 같은 유형으로 기본·응용·심화 모의고사 만들기"`)}</div>` : "";
     const picked = options.multi && multiPicked.includes(exam.file);
     const more = options.more
       ? `<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", options.selected ? "선택됨" : "문항 선택", `data-exam="${index}" aria-pressed="${!!options.selected}" class="small"`)}</div></details>`
       : "";
     return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${picked ? " multi-on" : ""}${options.multi ? " has-pick" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
       ${options.multi ? multiPickButton(exam, index, " lead") : ""}<div class="exam-row-spine"><span class="exam-row-year">${esc(book ? exam.grade || "–" : year || "–")}</span><span class="exam-row-grade">${esc(book ? "교과서" : exam.grade || "")}</span></div>
-      <div class="exam-row-main">${book ? tag + titleButton : titleButton + tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
+      <div class="exam-row-main">${book ? tag + titleButton : titleButton + tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}${mock}</div>
       <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${more}</div>
       ${withSimilarCell ? similarCellMarkup(exam, index, pairs, options.multi) : ""}
     </article>`;
