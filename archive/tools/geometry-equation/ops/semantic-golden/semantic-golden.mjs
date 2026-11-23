@@ -13,16 +13,17 @@ const repo = path.resolve(here, '../../../../..');
 export const DEFAULT_TABLE = path.join(here, 'table.json');
 
 // What the table may name. The python registry (semantic_golden.py) must list the same names: semantic-golden.test.mjs compares them.
-export const GENERATOR_KINDS = ['math-label-serialize', 'exp-label-tex', 'region-fixture', 'angle-fixture', 'axis-titles-model', 'axis-value-layout', 'construction-marks'];
+export const GENERATOR_KINDS = ['math-label-serialize', 'exp-label-tex', 'region-fixture', 'angle-fixture', 'axis-titles-model', 'axis-value-layout', 'construction-marks', 'label-room-leader'];
 export const OBSERVER_MUTATIONS = {
   'exp-formula-glyphs': ['glue-exp-factor'],
   'angle-label': ['degree-label-add-pi'],
   'region-label': ['area-label-onto-side'],
   'axis-titles': ['rename-axis-title'],
-  'layout-capture': ['minus-pi-tick-as-y'],
+  'layout-capture': ['leader-crosses-stroke', 'leader-label-onto-stroke', 'leader-label-onto-label', 'minus-pi-tick-as-y'],
 };
 const PYTHON_OBSERVERS = new Set(['exp-formula-glyphs', 'angle-label', 'region-label', 'axis-titles']);
 const CODE = /^[A-Z][A-Z0-9_]*$/;
+const NODE_GENERATORS = new Set(['construction-marks', 'label-room-leader']);   // run on the node side (the python registry has no entry for them)
 
 export const codeMatches = (actual, expected) => typeof actual === 'string' && (actual === expected || actual.startsWith(expected + ':'));
 
@@ -129,6 +130,16 @@ async function generatorOnNode(row, plan) {
     try { specFor(plan, response.result, identity.assetId); } catch (error) { return {verdict: 'REJECT', code: String(error.message), facts: {}}; }
     return {verdict: 'PASS', code: null, facts: {}};
   }
+  if (row.generator.kind === 'label-room-leader') {
+    // label-room.mjs places a label of this size on a leader that starts at its own segment (the generator the figures use); the figure it makes is what the observer is given
+    const {ringCandidates, placeWithLeader} = await import('../../production/label-room.mjs');
+    const {segment, label, strokes = [], boxes = [], bounds, around} = plan;
+    const target = {kind: 'segment', a: segment.a, b: segment.b};
+    const candidates = ringCandidates(around, label, {distances: [30, 40, 52, 66, 80]});
+    const picked = placeWithLeader(candidates, target, {bounds, boxes, obstacleSegments: strokes.map(s => ({a: s.a, b: s.b})), minLength: 8, maxLength: 90});
+    if (!picked) return {verdict: 'REJECT', code: 'ROOM_LEADER_NONE', facts: {}};
+    return {verdict: 'PASS', code: null, facts: {capture: 'leader', box: picked.box, leader: [picked.leader.a, picked.leader.b], segment, strokes, boxes}};
+  }
   throw new Error('no node generator ' + row.generator.kind);
 }
 
@@ -149,14 +160,14 @@ export async function runTable(table, {ids, neutralize = [], baseDir = here, roo
   }
 
   // generator phase
-  const pyGenRows = rows.filter(row => row.generator.kind !== 'construction-marks');
+  const pyGenRows = rows.filter(row => !NODE_GENERATORS.has(row.generator.kind));
   for (const row of pyGenRows) if (row.generator.kind === 'exp-label-tex') {
     const {expLogFormulaText} = await import('../../production/phase2.mjs');
     row.generatedText = expLogFormulaText({family: row.plan.graphPlan.family, base: row.plan.graphPlan.base, shiftX: row.plan.graphPlan.shiftX, coefficients: row.plan.graphPlan.coefficients});
   }
   const generated = new Map();
   for (const out of await pythonPhase('generator', pyGenRows, neutralize)) generated.set(out.id, out);
-  for (const row of rows.filter(r => r.generator.kind === 'construction-marks')) generated.set(row.id, await generatorOnNode(row, row.plan));
+  for (const row of rows.filter(r => NODE_GENERATORS.has(r.generator.kind))) generated.set(row.id, await generatorOnNode(row, row.plan));
   for (const row of rows) {
     const out = generated.get(row.id);
     const result = results.get(row.id);
@@ -175,7 +186,7 @@ export async function runTable(table, {ids, neutralize = [], baseDir = here, roo
   for (const out of await pythonPhase('observer', pyRows, neutralize)) observations.set(out.id, out);
   const layoutCapture = await import('./layout-capture.mjs');
   for (const row of observed.filter(r => r.observer.kind === 'layout-capture')) {
-    const box = row.facts.box, base = layoutCapture.axisValueCapture({box: {x: box.x, y: box.y, width: box.width, height: box.height}});
+    const box = row.facts.box, base = row.facts.capture === 'leader' ? layoutCapture.leaderCapture(row.facts) : layoutCapture.axisValueCapture({box: {x: box.x, y: box.y, width: box.width, height: box.height}});
     const prefix = row.observer.codePrefix;
     const entry = {normal: await layoutCapture.observeCapture(base, {codePrefix: prefix}), mutations: []};
     for (const m of row.mutations) {

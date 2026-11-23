@@ -60,7 +60,7 @@ test('the python registry lists exactly the names the table may use', {skip: !ha
   const run = spawnSync(python, ['-X', 'utf8', path.join(here, 'semantic_golden.py')], {input: JSON.stringify({phase: 'registry'}), encoding: 'utf8'});
   assert.equal(run.status, 0, run.stderr);
   const registry = JSON.parse(run.stdout);
-  assert.deepEqual([...registry.generators, 'construction-marks'].sort(), [...GENERATOR_KINDS].sort());   // construction-marks runs on the node side (specFor)
+  assert.deepEqual([...registry.generators, 'construction-marks', 'label-room-leader'].sort(), [...GENERATOR_KINDS].sort());   // construction-marks (specFor) and label-room-leader (label-room.mjs) run on the node side
   const js = Object.fromEntries(Object.entries(OBSERVER_MUTATIONS).filter(([kind]) => kind !== 'layout-capture'));
   assert.deepEqual(registry.observers, js);
   assert.deepEqual(Object.keys(MUTATIONS), OBSERVER_MUTATIONS['layout-capture']);
