@@ -25,6 +25,7 @@
     <script src="../archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="../archive/native_print.js?v=20261119.1"></script>
     <script src="../archive/archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+    <script src="../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
     <script src="../archive/data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="../archive/svg-accessibility.js?v=20261014.1"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -525,6 +526,8 @@ function getRenderHeaderTitle(type, fallbackTitle) {
     if ((type === 'ans' || type === 'sol') && state.payload?.mode === 'student' && fallbackTitle) {
         return fallbackTitle;
     }
+    // 학생별 시험지 머리글은 자동 기본 제목("반 학생별 오답 클리닉")이면 "이시온 오답"처럼 학생 이름 제목을 쓴다(선생님이 고친 제목은 그대로).
+    if (type === 'exam' && state.payload?.mode === 'student' && fallbackTitle && isAutoWrongHeaderTitle(opts.title, state.payload)) return fallbackTitle;
     if (shouldApplyPrintHeader(type) && opts.title) return opts.title;
     return fallbackTitle || state.payload?.printTitle || '오답 클리닉';
 }
@@ -1632,9 +1635,45 @@ function getQuestionSolution(q) {
     return q?.solution || q?.explanation || q?.commentary || q?.sol || '';
 }
 
+// 보이는 시험 이름: 저장된 시험 이름이 내부 키(파일 이름 등)면 한글 제목으로 푼다. 저장값은 그대로.
+function readableExamLabel(value) {
+    const text = String(value ?? '');
+    return window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+}
+
 function getStudentExamLabel(payload, student) {
-    const titles = [...new Set((student.wrongItems || []).map(item => item.examTitle).filter(Boolean))];
+    const titles = [...new Set((student.wrongItems || []).map(item => readableExamLabel(item.examTitle)).filter(Boolean))];
     return titles.length === 1 ? titles[0] : (payload.printTitle || '오답 클리닉');
+}
+
+// 탭 제목 = "인쇄 → PDF로 저장"의 기본 파일 이름: "이시온 오답", 여러 명이면 "반 이름 오답", 정답·해설은 꼬리를 붙인다.
+function getWrongDocumentTitle(payload, mode) {
+    const p = payload || {};
+    const opts = p.headerOptions || {};
+    const className = String(p.className || '').trim();
+    const auto = isAutoWrongHeaderTitle(opts.title, p);
+    let base;
+    if (opts.title && !auto) base = String(opts.title).trim();
+    else if (p.mode === 'student') {
+        const students = p.students || [];
+        if (students.length === 1) {
+            const exams = [...new Set((students[0].wrongItems || []).map(item => readableExamLabel(item.examTitle)).filter(Boolean))];
+            base = `${students[0].studentName || '학생'} 오답` + (exams.length === 1 ? ` · ${exams[0]}` : '');
+        } else base = `${className || '반'} 오답`;
+    } else base = String(p.printTitle || '').trim() || '오답 클리닉';
+    const suffix = mode === 'sol' ? ' 해설' : (mode === 'ans' ? ' 정답' : '');
+    return base + suffix;
+}
+
+function isAutoWrongHeaderTitle(title, payload) {
+    const t = String(title ?? '').trim();
+    if (!t) return true;
+    const className = String(payload?.className || '').trim() || '반';
+    return t === payload?.printTitle || t === `${className} 학생별 오답 클리닉` || t === `${className} 오답 클리닉`;
+}
+
+function syncWrongDocumentTitle() {
+    try { document.title = getWrongDocumentTitle(state.payload, state.mode); } catch (e) { /* 탭 제목은 출력과 무관하다 */ }
 }
 
 function getGradePrintLabel(payload) {
@@ -2114,7 +2153,7 @@ async function renderStudentPages(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
             _diagStudent: student.studentName || ''
         }));
         await renderMeasuredExamPages(area, items, {
@@ -2584,7 +2623,7 @@ async function renderSol(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
             _diagStudent: student.studentName || ''
         }));
         await placeSolutionItems(area, items, {
@@ -2794,7 +2833,7 @@ async function renderStudentReviewPacket(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
             _diagStudent: student.studentName || ''
         }));
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
@@ -2850,6 +2889,7 @@ async function render() {
         markClinicReadiness('MATH_READY', { source: window.__AP_MATHJAX_SOURCE__ || 'unknown' });
         const area = (buildContext?.targetArea || document.getElementById('print-area'));
         state.dualRunQuestions = [];
+        syncWrongDocumentTitle();
         area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
         await loadAllQuestionBanks(state.payload);
         area.innerHTML = '';
@@ -3367,6 +3407,7 @@ return { state,
     commitState(value, ctx) {
         for (const key of Object.keys(state)) delete state[key];
         Object.assign(state, value);
+        syncWrongDocumentTitle();
         if (ctx) clinicReadinessTracker = ctx.readinessTracker;
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.mode === state.mode));
     } };

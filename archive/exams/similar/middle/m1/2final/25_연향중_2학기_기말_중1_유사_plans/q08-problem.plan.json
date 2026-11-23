@@ -1,0 +1,297 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정사각형과 네 변을 지름으로 하는 반원으로 이루어진 도형",
+  "accessibilityDescription": "한 변의 길이가 6cm인 정사각형 내부에 네 변을 지름으로 하는 반원이 그려진 그림이다.",
+  "sourceQuote": "다음 그림과 같이 한 변의 길이가 $6\\rm",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "square ABCD with side 6cm",
+      "mappedTo": "segments AB, BC, CD, DA"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M3",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M4",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "c1",
+        "center": "M1",
+        "from": "A",
+        "to": "B",
+        "side": "CW"
+      },
+      {
+        "id": "arc2",
+        "circle": "c2",
+        "center": "M2",
+        "from": "B",
+        "to": "C",
+        "side": "CW"
+      },
+      {
+        "id": "arc3",
+        "circle": "c3",
+        "center": "M3",
+        "from": "C",
+        "to": "D",
+        "side": "CW"
+      },
+      {
+        "id": "arc4",
+        "circle": "c4",
+        "center": "M4",
+        "from": "D",
+        "to": "A",
+        "side": "CCW"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q08.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-result.json",
+    "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-state.json",
+    "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-solution.svg"
+  }
+}

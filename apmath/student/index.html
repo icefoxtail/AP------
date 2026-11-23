@@ -9,33 +9,34 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.23.2">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.2">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.2">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.2">
+  <link rel="manifest" href="./manifest.json?v=2026.11.23.3">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.3">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.3">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.3">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261111-student-navigation-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.23.2"></script>
-  <script src="../js/similar-exam.js?v=2026.11.23.2"></script>
-  <script src="./similar-link.js?v=2026.11.23.2"></script>
-  <script src="./self-study-view.js?v=2026.11.23.2"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.23.2"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.2">
-  <script src="../js/student-navigation.js?v=2026.11.23.2" data-student-navigation="manual"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.23.3"></script>
+  <script src="../js/similar-exam.js?v=2026.11.23.3"></script>
+  <script src="../../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
+  <script src="./similar-link.js?v=2026.11.23.3"></script>
+  <script src="./self-study-view.js?v=2026.11.23.3"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.23.3"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.3">
+  <script src="../js/student-navigation.js?v=2026.11.23.3" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.2">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.3">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.2" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.3" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -58,7 +59,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.23.2';
+    const STUDENT_APP_VERSION = '2026.11.23.3';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -108,6 +109,13 @@
     let initialStudentRouteConsumed = false;
 
     function $(id) { return document.getElementById(id); }
+    // 학생에게 보이는 시험 이름: 저장된 exam_title이 내부 키(파일 이름 등)면 한글 제목으로 푼다. 저장값은 바꾸지 않는다.
+    function studentExamTitle(exam, fallback) {
+      const raw = String(exam?.exam_title || '').trim();
+      const shown = raw ? (window.ExamDisplayTitle?.displayTitleOf?.(raw, { hint: '' }) || raw) : '';
+      return shown || fallback;
+    }
+
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
     }
@@ -542,7 +550,7 @@
         const href = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
-        link.download = `${String(exam.exam_title || '시험지').replace(/[\\/:*?"<>|]/g, '_')}.pdf`;
+        link.download = `${String(studentExamTitle(exam, '시험지')).replace(/[\\/:*?"<>|]/g, '_')}.pdf`;
         document.body.appendChild(link);
         link.click();
         link.remove();
@@ -1367,7 +1375,7 @@
         <section id="student-portal-omr-home-section" class="portal-recent" aria-labelledby="recent-learning-title">
           <div class="portal-recent-head"><h2 id="recent-learning-title" class="section-title">최근 시험지</h2><button type="button" class="btn back-btn" onclick="renderOmrExams()">전체 보기 <span aria-hidden="true">→</span></button></div>
           ${exam ? `<article class="portal-recent-item">
-            <div><span class="recent-status">${escapeHtml(statusText)}${exam.exam_date ? ' · ' + escapeHtml(exam.exam_date) : ''}</span><h3>${escapeHtml(exam.exam_title || '시험지')}</h3></div>
+            <div><span class="recent-status">${escapeHtml(statusText)}${exam.exam_date ? ' · ' + escapeHtml(exam.exam_date) : ''}</span><h3>${escapeHtml(studentExamTitle(exam, '시험지'))}</h3></div>
             <button type="button" class="btn" onclick="openRecentLearning('${escapeHtml(exam.assignment_id)}')">${actionText}</button>
           </article>` : '<p class="portal-recent-empty">선생님이 시험지를 배정하면 여기에 표시됩니다.</p>'}
         </section>
@@ -1991,7 +1999,7 @@
         <article class="omr-card compact" id="student-assignment-${escapeHtml(String(exam.assignment_id || ''))}" data-assignment-id="${escapeHtml(String(exam.assignment_id || ''))}">
           <div class="omr-top">
             <div class="omr-heading">
-              <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
+              <div class="omr-title">${escapeHtml(studentExamTitle(exam, '시험지'))}</div>
               <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
             </div>
             ${status ? `<span class="omr-status ${statusClass}">${escapeHtml(status)}</span>` : ''}
@@ -2081,7 +2089,7 @@
           <button class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
           <section class="card">
             <p class="eyebrow">OMR · 틀린 번호 체크</p>
-            <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
+            <h1 class="card-title">${escapeHtml(studentExamTitle(exam, 'OMR 입력'))}</h1>
             <p class="card-desc">${escapeHtml(meta)}</p>
             <div class="omr-instructions"><strong>채점한 뒤, 틀린 번호만 눌러주세요.</strong><p>선택한 번호는 오답으로 기록돼요. 다시 누르면 선택이 해제됩니다.</p></div>
             <div class="omr-draft-summary" id="omr-draft-summary" role="status" aria-live="polite"></div>
@@ -2133,7 +2141,7 @@
           <button type="button" class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
           <section class="card result-card">
             <p class="result-status">OMR 제출 완료</p>
-            <h1 class="card-title">${escapeHtml(exam.exam_title || '시험지')}</h1>
+            <h1 class="card-title">${escapeHtml(studentExamTitle(exam, '시험지'))}</h1>
             <div class="recorded-score"><span>기록 점수</span><strong>${hasScore ? escapeHtml(exam.score) : '확인 필요'}${hasScore ? '<small>점</small>' : ''}</strong></div>
             <p class="card-desc">${hasScore ? '제출한 결과가 저장되었습니다.' : '제출은 완료됐어요. 점수는 선생님께 확인해 주세요.'} 제출한 OMR은 다시 수정할 수 없습니다.</p>
             <div class="recorded-wrongs"><strong>${hasWrongRecord ? wrong.length ? `오답 ${wrong.length}개` : '기록된 오답 없음' : '오답 번호 확인 필요'}</strong><span>${hasWrongRecord ? wrong.length ? wrong.map(no => `${no}번`).join(' · ') : '정답과 해설로 풀이를 확인해 보세요.' : '이 기록에는 오답 번호가 제공되지 않았습니다. 선생님께 확인해 주세요.'}</span></div>

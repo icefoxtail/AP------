@@ -104,7 +104,7 @@ function renderStudentScreensWithExam(overrides = {}) {
   vm.runInContext([
     'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
     'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
-    'renderOmrPdfAction', 'renderSimilarEntry', 'normalizeOmrWrongIds', 'getSelfStudyWrongCount', 'renderSelfStudyWrongButton',
+    'studentExamTitle', 'renderOmrPdfAction', 'renderSimilarEntry', 'normalizeOmrWrongIds', 'getSelfStudyWrongCount', 'renderSelfStudyWrongButton',
     'renderOmrExamCard', 'renderOmrHomeSection',
     'isStudentPortalSelfStudy', 'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
     'renderStudentQuickActions', 'renderOmrExamBrowser'
