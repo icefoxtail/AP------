@@ -422,7 +422,11 @@ export function placeLabels(entries,layout,obstacles,roomOpts={}){   // roomOpts
     if(!best&&entry.role==='measure'&&!entry.requiresLeader&&(roomOpts.room==='LEADER'||roomOpts.room==='BEST')){
       // label-room LEADER: the measure stands in free space and a leader from the middle of its own segment leads to it (the exact value is written as it always was)
       const anchored={...entry,requiresLeader:true};
-      for(const delta of entry.leaderCandidates??[]){
+      // farther places than the near ones (the leader starts at the middle of its own segment): the same eight directions, 48..92 px out. Built here, not in the spec, so the spec (and its hash) is what it always was.
+      const seg=entry.ownerSegment,len=Math.hypot(seg.b[0]-seg.a[0],seg.b[1]-seg.a[1])||1,nx=-(seg.b[1]-seg.a[1])/len,ny=(seg.b[0]-seg.a[0])/len;
+      const farDirections=[[nx,ny],[nx,-ny],[-nx,ny],[-nx,-ny],[Math.SQRT1_2,Math.SQRT1_2],[Math.SQRT1_2,-Math.SQRT1_2],[-Math.SQRT1_2,Math.SQRT1_2],[-Math.SQRT1_2,-Math.SQRT1_2]];
+      const leaderCandidates=[];for(const distance of [48,56,66,78,92])for(const [dx,dy] of farDirections)leaderCandidates.push({dx:dx*distance,dy:dy*distance,distance});
+      for(const delta of leaderCandidates){
         const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
         if(blocked(box,anchored))continue;
         const leader=leaderFor(box,anchored);if(!leader)continue;
@@ -478,12 +482,9 @@ function segmentMeasureLabels(plan,model,layout,segmentLabelCounts){
     for(const [dx,dy] of directions)for(const distance of [10,14,18,22,26,30,36,42]){
       candidates.push({dx:dx*distance,dy:dy*distance,distance});
     }
-    // label-room LEADER: farther places (the leader starts at the middle of its own segment); used only for a measure that found none of the near ones
-    const leaderCandidates=[];
-    for(const [dx,dy] of directions)for(const distance of [48,56,66,78,92])leaderCandidates.push({dx:dx*distance,dy:dy*distance,distance});
     labels.push({key:`measure-${segment.id}`,role:'measure',segmentId:segment.id,text:segment.label,
       requiresLeader:segmentLabelCounts.get(segment.label)>1,ownerSegment:{a:va,b:vb},
-      pointX:mx,pointY:my,centerX:mx,centerY:my,candidates,leaderCandidates});
+      pointX:mx,pointY:my,centerX:mx,centerY:my,candidates});
   }
   return labels;
 }
