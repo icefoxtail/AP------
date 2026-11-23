@@ -44,7 +44,7 @@ import { isAuditPreservation } from "./native-audit-preservation.mjs";
 import { REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
-import { bindDifficulty5Source, isTextBoundDraft, registerDifficulty5 } from "./register-difficulty5.mjs";
+import { bindDifficulty5Source, isTextBoundDraft, registerDifficulty5, sourceTextUnchangedSinceRequest } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
@@ -397,7 +397,7 @@ function verifiedDifficultyRows(root, unit, consumer) {
       // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
       // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
       // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
-      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft && !sourceTextUnchangedSinceRequest({ root, request: unit.request, sourceBytes: fs.readFileSync(path.join(root, "archive/exams", unit.sourceFile)) }).ok) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
       proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
       proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
       proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||

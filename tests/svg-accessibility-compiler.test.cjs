@@ -80,7 +80,7 @@ test('manifest compiler validates current SVG hashes and emits the browser proje
   const files = fixture(t);
   const report = compileManifest(files);
   const sourceIndexSha256 = `sha256:${sha256(fs.readFileSync(files.sourceIndexPath))}`;
-  assert.deepEqual(report, { recordCount: 1, outputPath: files.outputPath, sourceIndexSha256 });
+  assert.deepEqual(report, { recordCount: 1, qualityAdvisory: [], outputPath: files.outputPath, sourceIndexSha256 });
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(files.outputPath, 'utf8'), context);
   assert.equal(context.window.APSvgAccessibilityIndex.records[0].assetRef, files.record.assetRef);
@@ -247,6 +247,22 @@ test('production compiler retains a byte-current managed problem clearance when 
   assert.equal(report.recordCount, 2);
   assert.equal(current.answerHintFree, true);
   assert.equal(current.semanticClearanceOrigin, 'MANAGED_VERIFIED_RECORD');
+});
+
+test('production compiler lists description-quality shortfalls as advisory and still blocks real SVG defects', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const newSvg = path.join(files.repoRoot, 'archive', 'assets', 'images', 'new.svg');
+  const write = (title, description, aria = 'svg-title svg-desc') => fs.writeFileSync(newSvg,
+    `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="${aria}"><title id="svg-title">${title}</title><desc id="svg-desc">${description}</desc><circle r="5"/></svg>\n`);
+  // 설명 문구 품질 미달: 게시(색인 생성)를 막지 않고 목록에 남는다.
+  write('도형의 관계', '문항의 핵심 관계를 표시한 도형');
+  const report = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  assert.equal(report.recordCount, 2);
+  assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'), JSON.stringify(report.qualityAdvisory));
+  // 실제 결함(참조 깨짐)은 계속 막는다.
+  write('직선과 점', '한 점을 지나고 기울기가 일정한 직선을 나타낸 그림', 'missing svg-desc');
+  assert.throws(() => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }), /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*ARIA_REFERENCE_INVALID/);
 });
 
 function productionFixture(t, sourceRoot = 'archive/exams') {
