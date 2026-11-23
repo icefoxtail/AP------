@@ -186,7 +186,7 @@
 
   // 가벼운 홈(archive2-boot.js catalogDeferred): 받기를 지금 시작하지 않고, 처음 applyArchiveMetaFoundationCatalog()를 부를 때 시작한다.
   // 시작하는 코드는 그대로이고 시작 시점만 늦춘다(받은 파일의 해시 확인·해석·결과도 같다). 다른 페이지는 지금처럼 로드 때 바로 시작한다.
-  const startRuntime = () => lookupSnapshot().then(async (found) => {
+  const runFrom = async (found) => {
     if (found && found.payload) {
       if (Boot && typeof Boot.bundleDone === "function") Boot.bundleDone();
       if (Boot && typeof Boot.begin === "function") Boot.begin("resolve");
@@ -320,7 +320,11 @@
     }
     return runtime;
       });
-  });
+  };
+  // Without the snapshot script the download starts in the same tick, as before.
+  const startRuntime = () => (Snapshot && typeof Snapshot.lookup === "function"
+    ? lookupSnapshot().then(runFrom)
+    : runFrom(null));
   let runtimeReadyPromise = null;
   const beginRuntime = () => {
     if (!runtimeReadyPromise) {
