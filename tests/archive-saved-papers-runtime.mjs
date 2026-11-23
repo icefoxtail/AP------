@@ -409,6 +409,14 @@ try {
   assert.equal(qpp2Detail.status, 200);
   assert.equal(Number(qpp2Detail.body.paper.snapshot.meta.qpp), 2, "qpp 2 snapshot retains qpp: 2");
 
+  // qpp 1 is on the screen's list too (archive2-output.js supportedQpp), so it saves and reads back as 1.
+  const qpp1Saved = await request("archive-saved-papers", "POST", saveInput(uuid(), directFilters, [
+    { part_index: 0, questions: [directQuestion], meta: { ...metaFor("qpp1 paper", [directQuestion], directFilters), qpp: 1 } },
+  ], catalog.indexVersion));
+  assert.equal(qpp1Saved.status, 200, "qpp 1 저장 성공");
+  const qpp1Detail = await request(`archive-saved-papers/${qpp1Saved.body.papers[0].id}`);
+  assert.equal(Number(qpp1Detail.body.paper.snapshot.meta.qpp), 1, "qpp 1 snapshot retains qpp: 1");
+
   const qpp3Saved = await request("archive-saved-papers", "POST", saveInput(uuid(), directFilters, [
     { part_index: 0, questions: [directQuestion], meta: { ...metaFor("qpp3 paper", [directQuestion], directFilters), qpp: 3 } },
   ], catalog.indexVersion));
@@ -449,6 +457,25 @@ try {
   assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM archive_saved_papers WHERE owner_teacher_id='admin'").first()).n), beforeFailedBatch, "D1 batch rollback leaves no first part");
   await db.prepare("DROP TRIGGER runtime_fail_second_saved_part").run();
 
+  // A rejected question is named by its place ("N권 M번 문항") in the Korean message; no server-internal text is shown.
+  const forgedSecond = { ...batchQuestions[1], sourceFingerprint: "forged-fingerprint" };
+  const forgedInSecondPaper = await request("archive-saved-papers", "POST", saveInput(uuid(), batchFilters, [
+    { part_index: 0, questions: [batchQuestions[0]], meta: metaFor("part 1", [batchQuestions[0]], batchFilters) },
+    { part_index: 1, questions: [forgedSecond], meta: metaFor("part 2", [forgedSecond], batchFilters) },
+  ], catalog.indexVersion));
+  assert.equal(forgedInSecondPaper.status, 409);
+  assert.equal(forgedInSecondPaper.body.error, "2권 1번 문항: 문항 내용 fingerprint가 일치하지 않습니다.");
+  const forgedInSamePaper = await request("archive-saved-papers", "POST", saveInput(uuid(), batchFilters, [
+    { part_index: 0, questions: [batchQuestions[0], forgedSecond], meta: metaFor("one paper", [batchQuestions[0], forgedSecond], batchFilters) },
+  ], catalog.indexVersion));
+  assert.equal(forgedInSamePaper.status, 409);
+  assert.equal(forgedInSamePaper.body.error, "1권 2번 문항: 문항 내용 fingerprint가 일치하지 않습니다.");
+  const dupSaved = await request("archive-saved-papers", "POST", saveInput(uuid(), batchFilters, [
+    { part_index: 0, questions: [batchQuestions[0], batchQuestions[0]], meta: metaFor("dup paper", [batchQuestions[0], batchQuestions[0]], batchFilters) },
+  ], catalog.indexVersion));
+  assert.equal(dupSaved.status, 409);
+  assert.equal(dupSaved.body.error, "1권 2번 문항이 시험지 묶음 안의 다른 문항과 겹칩니다.");
+
   const assignmentBatchId = uuid();
   const assignmentInput = {
     contract_version: "archive2-v1",
@@ -478,6 +505,20 @@ try {
   const savedPayload = JSON.parse(assignment.body.assignment.mixed_payload_json);
   assert.equal(savedPayload.questions[0].image, directDetail.body.paper.snapshot.questions[0].image, "assignment payload keeps the key; the screens resolve it to the public image address");
   assert.ok(!/data:image\//.test(assignment.body.assignment.mixed_payload_json));
+
+  // A paper saved with qpp 2 (or 1) is assigned with that qpp: the assignment copies the saved qpp, not the request's pdf_qpp.
+  for (const [qppPaper, qppValue] of [[qpp2Saved, 2], [qpp1Saved, 1]]) {
+    const qppAssignment = await request("class-exam-assignments", "POST", {
+      ...assignmentInput,
+      saved_paper_id: qppPaper.body.papers[0].id,
+      assignment_batch_id: uuid(),
+      class_id: "class-race",
+      student_ids: ["student-race"],
+      pdf_qpp: 8,
+    });
+    assert.equal(qppAssignment.body.saved, true, `qpp ${qppValue} assignment saved: ` + JSON.stringify(qppAssignment.body));
+    assert.equal(Number(qppAssignment.body.assignment.pdf_qpp), qppValue, `qpp ${qppValue} assignment keeps the saved qpp`);
+  }
 
   // A snapshot saved before this change (images embedded as data URLs, no assets list) is still read and assigned as before.
   {
