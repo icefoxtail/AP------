@@ -400,6 +400,18 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
 }
 
 // ---- the real inputs: the same loader and resolver the screens run --------------------------------------------------
+// loadInputBundle checks the sha256 of every input file concurrently (crypto.subtle.digest) and stores each parsed file in
+// `resources` when ITS check finishes, so the key order of `resources` is the completion order of those async digests. That order
+// differs from run to run, and resolveCatalog builds some lists (the 2022 taxonomy rows in catalog.taxonomy, so common.json and
+// the index's common digest) in that key order. The release identity and the site build each build the shards in their own
+// process, so the same registered snapshot gave two different common.json files and the seal refused the package. The browser
+// ignores the order (it never compares bytes); the build must not. Sorted keys give one order for one set of inputs.
+export function withOrderedResources(bundle) {
+  const resources = {};
+  for (const key of Object.keys(bundle.resources || {}).sort()) resources[key] = bundle.resources[key];
+  return { ...bundle, resources };
+}
+
 export async function loadResolvedCatalog(root) {
   const require = createRequire(import.meta.url);
   const canonical = require(path.join(root, CANONICAL_JS_PATH));
@@ -413,7 +425,7 @@ export async function loadResolvedCatalog(root) {
     try { bytes = fs.readFileSync(file); } catch { return { ok: false, status: 404 }; }
     return { ok: true, status: 200, text: async () => decoder.decode(bytes) };
   };
-  const bundle = await canonical.loadInputBundle(fetcher, 'https://shards.invalid/archive/workspace.html');
+  const bundle = withOrderedResources(await canonical.loadInputBundle(fetcher, 'https://shards.invalid/archive/workspace.html'));
   const catalog = canonical.resolveCatalog({ versionBundle: bundle });
   return { catalog, bundle, canonical };
 }
