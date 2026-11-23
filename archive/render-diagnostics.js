@@ -303,9 +303,19 @@
         const area = scope || root.document?.getElementById('print-area');
         if (!area?.querySelectorAll) return [];
         const pairs = [];
+        const seen = new Set();
         for (const node of Array.from(area.querySelectorAll(ALL_MARKS))) {
             const codes = codesOf(node);
-            (codes.length ? codes : [undefined]).forEach(code => pairs.push({ entry: describe(node, code), node }));
+            (codes.length ? codes : [undefined]).forEach(code => {
+                const entry = describe(node, code);
+                // 문항 단위 알림(배치·HTML)은 이어짐 상자(복제된 속성)까지 합쳐 문항당 한 번만 센다. 수식·그림 표식은 자리마다 센다.
+                if (/^(LAYOUT_|HTML_)/.test(entry.code)) {
+                    const key = [entry.student || '', entry.file, entry.questionNo, entry.code].join('|');
+                    if (seen.has(key)) return;
+                    seen.add(key);
+                }
+                pairs.push({ entry, node });
+            });
         }
         return pairs;
     }
@@ -482,6 +492,11 @@
             const doc = root.document;
             const area = scope || doc.getElementById('print-area');
             const pairs = collectPairs(area);
+            // 시간 예산을 넘겨 기다리지 않고 계속한 대기(mathjax_render_loop.js bounded)도 같은 객체에 알림으로 올린다. 문항을 특정할 수 없으므로 번호는 비운다.
+            for (const hit of Array.isArray(root.__AP_RENDER_BUDGET_HITS__) ? root.__AP_RENDER_BUDGET_HITS__ : []) {
+                const info = codeInfo('RENDER_TIME_BUDGET');
+                pairs.push({ node: area, entry: { file: String(root.AppState?.sourceArchiveFile || ''), questionNo: null, part: '', code: 'RENDER_TIME_BUDGET', stage: info.stage, severity: info.severity, message: info.message, excerpt: `${hit.label} ${hit.ms}ms` } });
+            }
             const entries = pairs.map(pair => pair.entry);
             const errors = entries.filter(isError);
             // 예전 모양: window.apRenderDiagnostics는 표식으로 바꾼 것(오류)만, 알림(칸 넘침·HTML 짝)은 apRenderReport에만 있다.
@@ -498,7 +513,48 @@
         }
     }
 
-    // ---- 자리 표시: 사다리 뒤에도 안 들어가는 문항 하나 ------------------------------------------------------------------------------
+    // ---- HTML 태그 짝 점검(알림만) --------------------------------------------------------------------------------------------------
+    // 브라우저는 안 닫힌 태그를 상자 끝에서 자동으로 닫고 짝 없는 닫는 태그는 버리므로 한 문항의 태그 오류가 이웃 문항으로 번지지는 않는다(문항 상자는 DOM 경계).
+    // 그래도 그 문항이 의도와 다르게 그려질 수 있어 "어느 문항인지"만 알린다. 수식($..$, \(..\), \[..\])·주석·svg 안의 글자는 보지 않고,
+    // 속성이 정상 모양인 알려진 HTML 태그만 센다(수식 없는 `a<b` 같은 부등호 글자를 태그로 오인하지 않기 위해). 자동으로 닫히는 태그(p·li·td 등)는 세지 않는다.
+    const VOID_TAGS = new Set(['br', 'hr', 'img', 'input', 'meta', 'link', 'col', 'wbr', 'source', 'area', 'base', 'embed', 'param', 'track']);
+    const OPTIONAL_CLOSE = new Set(['p', 'li', 'td', 'th', 'tr', 'dd', 'dt', 'option', 'thead', 'tbody', 'tfoot', 'colgroup']);
+    const KNOWN_TAGS = new Set('div span b i u s em strong sub sup table thead tbody tfoot tr td th p ul ol li center font small big mark code pre blockquote a h1 h2 h3 h4 h5 h6 label caption'.split(' '));
+    const TAG_RE = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)(?:\s+[a-zA-Z_:-]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'>]+))?)*\s*(\/?)>/g;
+    function htmlBalance(html) {
+        const text = String(html == null ? '' : html)
+            .replace(/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$|\\\([\s\S]+?\\\)|\\\[[\s\S]+?\\\]/g, ' ')
+            .replace(/<!--[\s\S]*?-->/g, ' ').replace(/<svg[\s\S]*?<\/svg>/gi, ' ');
+        const stack = [], unclosed = [], stray = [];
+        TAG_RE.lastIndex = 0;
+        for (let match; (match = TAG_RE.exec(text));) {
+            const name = match[2].toLowerCase();
+            if (!KNOWN_TAGS.has(name) || VOID_TAGS.has(name) || match[3] === '/') continue;
+            if (!match[1]) { stack.push(name); continue; }
+            const at = stack.lastIndexOf(name);
+            if (at < 0) { if (!OPTIONAL_CLOSE.has(name)) stray.push(name); continue; }
+            for (const skipped of stack.splice(at)) if (skipped !== name && !OPTIONAL_CLOSE.has(skipped)) unclosed.push(skipped);
+        }
+        for (const left of stack) if (!OPTIONAL_CLOSE.has(left)) unclosed.push(left);
+        return { ok: !unclosed.length && !stray.length, unclosed, stray };
+    }
+    // 문항 상자에 짝이 안 맞는 태그가 있으면 data-ap-html-warn(예: "div 안 닫힘, b 짝 없음")만 단다. 그림·글자는 바꾸지 않는다(출력 불변). 예외를 던지지 않는다.
+    function noteHtml(box, parts) {
+        try {
+            if (!box?.setAttribute) return false;
+            const notes = [];
+            for (const value of Array.isArray(parts) ? parts : [parts]) {
+                const found = htmlBalance(Array.isArray(value) ? value.join('\n') : value);
+                found.unclosed.forEach(name => notes.push(name + ' 안 닫힘'));
+                found.stray.forEach(name => notes.push(name + ' 닫는 태그만 있음'));
+            }
+            if (!notes.length) return false;
+            box.setAttribute('data-ap-html-warn', Array.from(new Set(notes)).slice(0, 4).join(', '));
+            return true;
+        } catch (error) { return false; }
+    }
+
+    // ---- 자리 표시: 사다리 뒤에도 안 들어가는 문항 하나------------------------------------------------------------------------------
     // box: .q-box / .sol-box. 번호(.q-num)만 남기고 본문을 "너무 길어 담지 못했습니다" 상자로 바꾼다. 칸·번호·순서는 그대로다.
     function replaceUnfit(box, info = {}) {
         try {
@@ -576,5 +632,5 @@
         return replaced;
     }
 
-    return Object.freeze({ sanitize, replaceImage, replaceUnfit, guardOverflow, pageOverflows, collect, report, reportText, publish, textWithoutMarks, leftoverCount, codeInfo, CODES, MARK, IMAGE_MARK });
+    return Object.freeze({ sanitize, replaceImage, replaceUnfit, guardOverflow, htmlBalance, noteHtml, pageOverflows, collect, report, reportText, publish, textWithoutMarks, leftoverCount, codeInfo, CODES, MARK, IMAGE_MARK });
 }));
