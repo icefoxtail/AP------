@@ -149,7 +149,8 @@
         await area.ownerDocument.fonts?.ready;
         const images = list(area, 'img');
         if (root.APQuestionImageReadiness) {
-            await root.APQuestionImageReadiness.waitForImages(images, { timeoutMs: 5000, throwOnFailure: true });
+            // 안 받아진 그림 한 장은 render-diagnostics의 빈 상자로 바꾸고 계속한다(진단 파일이 없는 화면은 예전처럼 던진다).
+            await root.APQuestionImageReadiness.waitForImages(images, { timeoutMs: 5000, throwOnFailure: true, onFailure: root.APRenderDiagnostics?.replaceImage });
         } else await Promise.all(images.map(image => new Promise((resolve, reject) => {
             let timer;
             const finish = () => {

@@ -183,10 +183,23 @@
         const results = await Promise.all(list.map(image => waitForImage(image, timeoutMs, options.signal)));
         checkAbort(options.signal);
         const summary = summarize(results);
-        if (options.throwOnFailure !== false && results.some(result => result?.status !== 'loaded')) {
+        let unhandled = results.some(result => result?.status !== 'loaded');
+        // onFailure(image, result) => true 이면 그 그림은 호출한 쪽이 대신 처리한 것(예: 빈 상자 표식으로 교체)이라 전체를 막지 않는다.
+        // 처리하지 못한(false·예외) 그림이 하나라도 남으면 예전처럼 던진다. 오류와 시간 초과를 같게 본다.
+        let recovered = 0;
+        if (unhandled && typeof options.onFailure === 'function') {
+            unhandled = false;
+            results.forEach((result, index) => {
+                if (result?.status === 'loaded') return;
+                let handled = false;
+                try { handled = options.onFailure(list[index], result) === true; } catch (error) { handled = false; }
+                if (handled) recovered += 1; else unhandled = true;
+            });
+        }
+        if (options.throwOnFailure !== false && unhandled) {
             throw createReadinessError(results, options.failureCodes);
         }
-        return Object.freeze({ summary, results: Object.freeze(results) });
+        return Object.freeze({ summary, results: Object.freeze(results), recovered });
     }
 
     function validateImages(images, options = {}) {
