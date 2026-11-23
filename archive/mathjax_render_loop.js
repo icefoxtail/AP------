@@ -59,6 +59,8 @@
         if (global.waitForEnclosedLatinMath) await global.waitForEnclosedLatinMath(elements);
         const startedAt = now();
         await global.MathJax.typesetPromise(elements);
+        // 한 문항의 수식 오류는 그 자리 표식으로 바꾸고 전체를 막지 않는다(render-diagnostics.js를 불러온 화면만). 조판 예외는 위에서 그대로 던진다.
+        global.APRenderDiagnostics?.sanitize?.(elements);
         const elapsedMs = Number((now() - startedAt).toFixed(1));
         if (metrics) {
             metrics.mathJaxCalls += 1;
@@ -69,7 +71,8 @@
     }
 
     function unrenderedMathCount(scope) {
-        const text = String(scope?.textContent || '');
+        // 표식으로 바뀐 글자(원문 $ 포함)는 "남은 $"로 세지 않는다. 표식이 없으면 기존과 같은 textContent.
+        const text = String(global.APRenderDiagnostics?.textWithoutMarks ? global.APRenderDiagnostics.textWithoutMarks(scope) : (scope?.textContent || ''));
         return (text.match(/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/g) || []).length;
     }
 

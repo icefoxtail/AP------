@@ -673,6 +673,8 @@ function createArchiveScreenRuntime() {
         Object.assign(document.documentElement.dataset, ctx.diagnostics);
         document.documentElement.dataset.apPrintReadiness = JSON.stringify(ctx.readinessTracker.snapshot());
         document.documentElement.dataset.apRenderMetrics = JSON.stringify(ctx.metrics);
+        // 문항 하나의 수식 오류는 표식으로 남아 있다: 진단 배열·알림 띠를 ready 전에 확정한다(예외 없음, 문서 안 DOM은 건드리지 않는다).
+        window.APRenderDiagnostics?.publish(ctx.targetArea);
         document.documentElement.dataset.apRenderReady = 'true';
         // No operation that may throw follows history. pushState is atomic on failure.
         const method = ctx.intentType === 'MODE_CHANGE' ? 'pushState' : 'replaceState';
@@ -701,6 +703,7 @@ function createArchiveScreenRuntime() {
         Object.assign(document.documentElement.dataset, journal.dataset);
         document.documentElement.classList.toggle('archive2-snapshot-output', journal.snapshotOutputClass);
         document.documentElement.style.setProperty('--screen-page-scale', journal.scale);
+        window.APRenderDiagnostics?.publish(journal.area);
         if (location.href !== journal.url) history.replaceState(journal.historyState, '', journal.url);
     }
     function afterCommit(ctx) {
