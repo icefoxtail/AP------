@@ -354,7 +354,8 @@ test("negative: metadata that differs from the catalog, or a stale list version,
   await tampered.ws.savePapers();
   const refusedMeta = tampered.wire.log.find((l) => l.method === "POST");
   assert.equal(refusedMeta.status, 409, "altered metadata must be refused");
-  assert.match(refusedMeta.error, /canonical metadata parity mismatch/, "refused for the metadata mismatch, not for another reason");
+  // The server no longer shows the internal English reason; it names the question and says its classification differs.
+  assert.match(refusedMeta.error, /\d+권 \d+번 문항의 분류 정보가 승인된 값과 다릅니다/,"refused for the metadata mismatch, not for another reason");
   assert.notEqual(tampered.ws.state.saveResultState, "SAVED");
   assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, before, "nothing was stored");
 

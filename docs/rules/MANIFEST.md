@@ -18,7 +18,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
 - 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 59213 bytes | sha256 f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md | 1839 bytes | sha256 3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332
-- 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 558996 bytes | sha256 c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c
+- 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 577088 bytes | sha256 c3a58efc27fba4a1330f2d6ef58c827187ab565eeda27eb0e23fe2bcb9778226
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95682 bytes | sha256 670645d73151fa69debc43b4bb1c6f6d0d84f58047c07f340f4cff1ec2a88833
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38634 bytes | sha256 3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638
