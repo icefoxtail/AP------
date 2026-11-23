@@ -1,0 +1,55 @@
+{
+ "version": 1,
+ "note": "시험 범위 맞춤 모의고사 정의. 한 줄 추가로 새 학교·범위를 만든다: scopes에 항목 하나를 더하고 `node archive/tools/assessment-mock/build-m1-2final-mock.cjs`로 자료 파일을 다시 조립한다. 문항은 카탈로그의 2022 중단원(단원별 기출 화면과 같은 판정)과 유형 키로 고르고, 발문을 읽어 범위를 판정하지 않는다. 범위 밖 문항이 하나라도 섞이는 것이 가장 나쁜 결과라서, 키로 가를 수 없는 문항은 넣지 않는다.",
+ "category": "26년 2학기 기말 모의고사",
+ "common": {"items":24,"subjective":4,"yearMax":2025,"estimatedMinutes":50,"bucketPlan":{"1":5,"2":9,"3":7,"4":3}},
+ "scopes": [
+  {
+   "id": "M1-S1",
+   "idKey": "S1",
+   "gradeKey": "m1",
+   "grade": "중1",
+   "school": "왕의중",
+   "titleTemplate": "{grade} {school} 2학기 기말 모의고사 {n}회",
+   "rounds": 3,
+   "sourceDirs": ["original/middle/m1/2final","original/middle/m1/2mid"],
+   "yearMin": 2022,
+   "scopeLabel": "작도와 합동, 원과 부채꼴, 입체도형(다면체·회전체, 겉넓이와 부피), 자료의 정리(대푯값·줄기와 잎·도수분포표까지)",
+   "unitLabel": "작도와 합동·원과 부채꼴·입체도형·자료의 정리(도수분포표까지)",
+   "excludedNote": "다각형, 히스토그램·도수분포다각형·상대도수는 시험 범위가 아니라 뺀다",
+   "excludeText": ["히스토그램","도수분포다각형","상대도수","%"],
+   "groups": [
+    {"label":"작도와 합동","weight":5,"match":[{"l2":"작도와 합동","keyAllow":{"problemTypeKey":["PT_M1_BASIC_CONSTRUCTION","PT_M1_CONGRUENCE_DATA_TRANSFER","PT_M1_CONGRUENCE_INVARIANTS","PT_M1_CONGRUENCE_UNIQUENESS","PT_RIGHT_TRIANGLE_CONGRUENCE","PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA","PT_M1_TRIANGLE_SIDE_FEASIBILITY","PT_M1_TRIANGLE_CONSTRUCTION_ORDER"]}}]},
+    {"label":"원과 부채꼴","weight":5,"match":[{"l2":"원과 부채꼴","keyAllow":{"problemTypeKey":["PT_CIRCLE_ANGLE_RELATIONS"]}}]},
+    {"label":"다면체와 회전체","weight":3,"match":[{"l2":"다면체와 회전체","keyAllow":{"problemTypeKey":["PT_M1_POLYHEDRON_COMPONENT_COUNT","PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","PT_M1_ROTATION_SOLID_PROPERTIES","PT_M1_ROTATION_SOLID_GENERATION"]}}]},
+    {"label":"입체도형의 겉넓이와 부피","weight":6,"match":[{"l2":"입체도형의 겉넓이와 부피","keyAllow":{"problemTypeKey":["PT_M1_SOLID_FIGURE_MEASURE"]}}]},
+    {"label":"대푯값","weight":4,"match":[{"l2":"대푯값","keyAllow":{"problemTypeKey":["PT_M1_CENTRAL_TENDENCY"]}}]},
+    {"label":"도수분포표(줄기와 잎 포함)","weight":1,"match":[{"l2":"도수분포표와 상대도수","keyAny":{"problemTypeKey":["PT_M1_FREQUENCY_DISTRIBUTION_READING","PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION"]},"keyNone":{"templateKey":["TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"]},"guardSolution":true},{"l2":"도수분포표와 상대도수","keyAny":{"metaHintL3":["도수분포표·다각형의 누적 해석","도수분포"]},"keyNone":{"templateKey":["TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"]},"textAny":["도수분포표","줄기와 잎","줄기와잎"],"noFigure":true,"guardSolution":true}]}
+   ]
+  },
+  {
+   "id": "M2-S1",
+   "idKey": "S1",
+   "gradeKey": "m2",
+   "grade": "중2",
+   "school": "왕운중",
+   "titleTemplate": "{grade} {school} 2학기 기말 모의고사 {n}회",
+   "rounds": 5,
+   "sourceDirs": ["original/middle/m2/2final","original/middle/m2/2mid"],
+   "yearMin": 2018,
+   "scopeLabel": "삼각형의 닮음 조건부터 닮음의 활용(직각삼각형의 닮음, 평행선과 선분의 길이의 비, 삼각형의 무게중심), 피타고라스 정리, 경우의 수, 확률",
+   "unitLabel": "삼각형의 닮음·닮음의 활용·피타고라스 정리·경우의 수·확률",
+   "excludedNote": "닮은 도형의 뜻과 성질, 넓이의 비·부피의 비와 그 앞 단원은 시험 범위가 아니라 뺀다",
+   "excludeText": ["부피의 비","부피의비","닮은 입체","닮은 두 입체","닮은 도형의 넓이","넓이의 비는 닮음비","닮음비의 제곱"],
+   "excludeRegex": ["(?:닮음비|닮은)[^.?]{0,24}(?:넓이|부피)의?\\s*비","(?:넓이|부피)의\\s*비[^.?]{0,24}(?:닮음비|닮은)"],
+   "groups": [
+    {"label":"삼각형의 닮음","weight":3,"match":[{"l2":"도형의 닮음","keyAny":{"problemTypeKey":["PT_TRIANGLE_SIMILARITY"],"subUnitKey":["M2-06-TRIANGLE_SIMILARITY"]},"keyNone":{"problemTypeKey":["PT_SIMILAR_FIGURES"]}}]},
+    {"label":"평행선 사이의 선분의 길이의 비","weight":4,"match":[{"l2":"평행선 사이의 선분의 길이의 비","keyAllow":{"problemTypeKey":["PT_PARALLEL_SEGMENT_RATIO"]}},{"l2":"도형의 닮음","keyAny":{"problemTypeKey":["PT_PARALLEL_SEGMENT_RATIO"]}}]},
+    {"label":"삼각형의 무게중심","weight":3,"match":[{"l2":"삼각형의 무게중심","keyAllow":{"problemTypeKey":["PT_COORD_CENTROID"]}}]},
+    {"label":"피타고라스 정리","weight":4,"match":[{"l2":"피타고라스 정리","keyAllow":{"problemTypeKey":["PT_M2_PYTHAGOREAN_RELATION"]}}]},
+    {"label":"경우의 수","weight":5,"match":[{"l2":"경우의 수","keyAllow":{"problemTypeKey":["PT_COUNTING_ARRANGEMENT","PT_M2_BASIC_COUNTING_CASE_SPLIT"]}}]},
+    {"label":"확률","weight":5,"match":[{"l2":"확률","keyAllow":{"problemTypeKey":["PT_PROBABILITY_PROPERTIES_APPLICATION"]}}]}
+   ]
+  }
+ ]
+}

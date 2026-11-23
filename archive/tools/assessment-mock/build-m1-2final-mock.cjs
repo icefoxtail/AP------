@@ -1,5 +1,6 @@
 'use strict';
-// 중1 2학기 기말 모의고사 1~5회 자료 파일 조립기.
+// 중1 2학기 기말 모의고사 1~5회 + 시험 범위 맞춤 모의고사(scoped-mock-scopes.json, build-scoped-mock.cjs) 자료 파일 조립기.
+// 새 학교·범위는 scoped-mock-scopes.json에 항목을 더하고 이 스크립트를 다시 돌린다(기본 5회는 앞에 그대로 있다).
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs            -> 자료 파일 쓰기
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs --check    -> 쓰지 않고 현재 파일과 같은지 검사
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs --tsv <경로> -> 선정 목록 TSV 출력
@@ -146,9 +147,23 @@ function renderFile(packs, summary) {
   return `window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = ${JSON.stringify(data, null, 1)};\n`;
 }
 
+// 기존 5회(선정 목록) 뒤에 시험 범위 맞춤 모의고사(scoped-mock-scopes.json)를 이어 붙인 전체 팩.
+// 기존 5회의 id·문항·순서는 그대로다. 맞춤 모의고사는 같은 자료 파일·같은 전역에 들어간다(mixed_engine.html이 이 파일 한 곳만 읽는다).
+function buildAllPacks() {
+  const base = buildPacks();
+  const scoped = require('./build-scoped-mock.cjs').buildScopedPacks({ KEEP_FIELDS, stripSubjectivePrefix, CATEGORY });
+  const packs = base.packs.concat(scoped.packs);
+  const summary = {
+    packCount: packs.length,
+    questionCount: packs.reduce((a, p) => a + p.questions.length, 0),
+    subjectiveCount: packs.reduce((a, p) => a + p.questions.filter((q) => q.questionType === '서술형').length, 0),
+  };
+  return { packs, rows: base.rows, summary, basePackCount: base.packs.length, scoped };
+}
+
 function main() {
   const args = process.argv.slice(2);
-  const { packs, rows, summary } = buildPacks();
+  const { packs, rows, summary } = buildAllPacks();
   const text = renderFile(packs, summary);
   const tsvIdx = args.indexOf('--tsv');
   if (tsvIdx >= 0) {
@@ -170,4 +185,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { buildPacks, renderFile, stripSubjectivePrefix, SELECTION_FILE, OUT_FILE, CATEGORY };
+module.exports = { buildPacks, buildAllPacks, renderFile, stripSubjectivePrefix, KEEP_FIELDS, SELECTION_FILE, OUT_FILE, CATEGORY };
