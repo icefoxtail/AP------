@@ -1,0 +1,108 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "-2",
+      "1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -11,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -9
+      }
+    ],
+    "exactCoordinates": {},
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "-9"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "hiddenPointNames": [
+    "V"
+  ],
+  "caption": "이차함수의 그래프와 삼각형 ABC",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차함수 y=x^2-2x-8의 그래프에서 꼭짓점 B(1,-9)와 x절편 A(-2,0), C(4,0)으로 이루어진 삼각형 ABC"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선과 삼각형 ABC의 배치"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-9",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -11,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -9
+      },
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "P_pad1",
+        "x": -3.8,
+        "y": 5.44
+      },
+      {
+        "id": "P_pad2",
+        "x": 3.8,
+        "y": 5.44
+      }
+    ],
+    "exactCoordinates": {},
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "-9"
+      ]
+    }
+  },
+  "hiddenPointNames": [
+    "V",
+    "A",
+    "B",
+    "P_pad1",
+    "P_pad2"
+  ],
+  "caption": "이차함수 y=x^2-9의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x축과의 교점 (-3,0), (3,0)과 y축과의 교점 (0,-9)를 지나는 포물선"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 x절편과 y절편"
+    }
+  ]
+}

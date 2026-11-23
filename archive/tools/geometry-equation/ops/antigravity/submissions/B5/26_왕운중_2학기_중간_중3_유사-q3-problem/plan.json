@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "반지름의 길이가 1인 사분원에서 각 55도에 대한 삼각비의 값을 나타낸다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xe",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "X"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ye",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Y"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOX",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Px",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lOX"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lX",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "X",
+          "lOX"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOP",
+          "lX"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "T",
+    "Px",
+    "X",
+    "Y",
+    "Xe",
+    "Ye"
+  ],
+  "hiddenPointNames": [
+    "P",
+    "T",
+    "Px",
+    "X",
+    "Y",
+    "Xe",
+    "Ye"
+  ],
+  "unmarkedPointNames": [
+    "Px",
+    "X",
+    "Y",
+    "Xe",
+    "Ye"
+  ],
+  "pointNames": {
+    "O": "O"
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOPx",
+      "refs": [
+        "O",
+        "Px"
+      ]
+    },
+    {
+      "id": "sPxX",
+      "refs": [
+        "Px",
+        "X"
+      ]
+    },
+    {
+      "id": "sXXe",
+      "refs": [
+        "X",
+        "Xe"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOYe",
+      "refs": [
+        "O",
+        "Ye"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sPPx",
+      "refs": [
+        "P",
+        "Px"
+      ]
+    },
+    {
+      "id": "sXT",
+      "refs": [
+        "X",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a55",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 55
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "circ",
+        "center": "O",
+        "from": "X",
+        "to": "Y",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tcos",
+        "ownerSegment": "sOPx",
+        "text": "0.57"
+      },
+      {
+        "id": "tr",
+        "ownerSegment": "sOP",
+        "text": "1"
+      },
+      {
+        "id": "tsin",
+        "ownerSegment": "sPPx",
+        "text": "0.82"
+      },
+      {
+        "id": "ttan",
+        "ownerSegment": "sXT",
+        "text": "1.43"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rPx",
+      "refs": [
+        "P",
+        "Px",
+        "O"
+      ]
+    },
+    {
+      "id": "rX",
+      "refs": [
+        "T",
+        "X",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 560
+  }
+}

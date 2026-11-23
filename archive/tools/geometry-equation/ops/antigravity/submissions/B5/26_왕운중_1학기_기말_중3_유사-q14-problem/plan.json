@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "3",
+      "-3/4"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -5,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {},
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Y_int",
+          "x": "0",
+          "y": "-3"
+        }
+      ]
+    }
+  },
+  "hiddenPointNames": [
+    "V",
+    "Y_int"
+  ],
+  "caption": "꼭짓점이 (2,0)이고 y절편이 (0,-3)인 이차함수 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ax^2를 x축 방향으로 평행이동하여 꼭짓점이 (2,0), y절편이 (0,-3)인 포물선"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 꼭짓점과 y절편 위치"
+    }
+  ]
+}

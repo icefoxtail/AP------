@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 9
+      }
+    ],
+    "exactCoordinates": {},
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1",
+          "style": "DASHED",
+          "label": "x=1"
+        },
+        {
+          "id": "x_m2",
+          "x": "-2",
+          "style": "DASHED",
+          "label": "-2"
+        }
+      ],
+      "points": [
+        {
+          "id": "P_m2",
+          "x": "-2",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "hiddenPointNames": [
+    "V",
+    "P_m2"
+  ],
+  "caption": "대칭축 x=1과 x절편 -2를 갖는 이차함수 y=ax^2+bx+c의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위로 볼록한 포물선, 대칭축 x=1, x절편 (-2,0)"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 대칭축과 x절편 위치 관계"
+    }
+  ]
+}
