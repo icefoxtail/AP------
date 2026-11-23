@@ -17,7 +17,8 @@ def validate_font_row(row, expected_sha):
             raise ValueError('explicit text-free font evidence missing')
         if any(type(e.get(k)) is not int or e[k]!=0 for k in ('textOrLabelElementCount','foreignObjectCount','embeddedImageCount')) or type(e.get('visibleGeometryPrimitiveCount')) is not int or e['visibleGeometryPrimitiveCount']<=0 or row.get('labels')!=[] or row.get('embedded')!=[]:
             raise ValueError('explicit text-free font evidence invalid')
-    elif row.get('fontApplicability')!='APPLICABLE' or row.get('explicitTextFree') is not None or type(minimum) not in (int,float) or not math.isfinite(minimum) or minimum<11:
+    elif row.get('fontApplicability')!='APPLICABLE' or row.get('explicitTextFree') is not None or type(minimum) not in (int,float) or not math.isfinite(minimum) or minimum<=0:
+        # 2026-11-23 (owner): a displayed font below 11 CSS px is no longer a failure (recorded as displayTextBelow11px by verify-publication-fonts.mjs); a missing or non-positive metric still is.
         raise ValueError('font verification failed')
 
 def main():

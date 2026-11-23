@@ -173,9 +173,8 @@ async function lintPlan(plan, ctx) {
         sizes.push({ width: spec.viewport.width, height: spec.viewport.height });
       }
       const size = M.comp.compositeStackSize(sizes, M.comp.compositeSharedRowCount(checked), M.comp.compositePanelLayout(checked, current), M.comp.COMPOSITE_CAPTION_ROW);
-      // 합성 그림 전체 크기가 화면 표시 한계를 넘으면 measure 단계에서 UNSUPPORTED_DISPLAY_ENVELOPE 가 난다(production/composite-candidate-svg-v1.mjs:43 주석, display-envelope.mjs:38).
-      // 표시 배율은 Chrome 측정이라 식으로 구하지 못한다. 2026-11-20 일괄 렌더에서 실패한 합성 그림의 가장 작은 크기(폭 828·높이 820)부터만 거른다(통과한 것은 폭 776·높이 768 이하).
-      if (ctx.deep && (size.width >= 828 || size.height >= 820)) throw new Refusal('UNSUPPORTED_DISPLAY_ENVELOPE', 'measure', { size });
+      // (2026-11-23 원장님 결정) 표시된 글자 크기 하한(11 CSS px)을 풀었다: 합성 그림 크기만으로는 measure 단계에서 UNSUPPORTED_DISPLAY_ENVELOPE 가 나지 않는다(display-envelope.mjs, 학생이 확대해 본다).
+      // 그래서 2026-11-20에 폭 828·높이 820부터 거르던 크기 추정 규칙을 없앴다. 쪽 높이 초과(COMPOSITE_TOO_TALL)는 별개 규칙으로 남아 있다.
       return { status: 'OK', size };
     }
     // ---- 그래프(graphPlan) / 작도(mathPlan)
