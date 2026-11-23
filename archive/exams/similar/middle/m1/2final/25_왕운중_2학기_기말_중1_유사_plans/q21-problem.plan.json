@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "연쇄 이등변삼각형에서 각 x의 크기 구하기",
+  "accessibilityDescription": "AB=AC=CD인 두 이등변삼각형 ABC와 ACD에서 각 ADC=70°일 때 외각 x를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB = AC = CD with angle ADC = 70"
+    }
+  ],
+  "newVisualInformation": [],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angD",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 70,
+        "label": "70"
+      },
+      {
+        "id": "angX",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 105,
+        "label": "x",
+        "labelKind": "MATH"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "AC",
+          "CD"
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "E"
+  ],
+  "assetPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-result.json",
+    "statePath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-state.json",
+    "svgPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q21-problem.svg"
+  },
+  "sourceQuote": "다음 그림에서 $\\angle x$의 "
+}

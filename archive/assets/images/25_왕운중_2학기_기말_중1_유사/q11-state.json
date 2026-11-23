@@ -1,0 +1,285 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2final/25_왕운중_2학기_기말_중1_유사.js",
+  "ordinal": 11,
+  "dir": "q11"
+ },
+ "identity": {
+  "questionUid": "25_왕운중_2학기_기말_중1_유사|11",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:8e3ba37146946a6158b1ac743901e062fa2ddd02d3d5e7d7296dfd2f13e67231",
+  "assetId": "va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf"
+ },
+ "plan": {
+  "capability": "composite-panels-v1",
+  "chain": "solid-figure-v1",
+  "panels": [
+   {
+    "caption": {
+     "text": "반구와 원기둥"
+    },
+    "plan": {
+     "capability": "solid-figure-v1",
+     "unit": "cm",
+     "solids": [
+      {
+       "id": "h1",
+       "kind": "HEMISPHERE",
+       "radius": 3
+      },
+      {
+       "id": "c1",
+       "kind": "CYLINDER",
+       "radius": 6,
+       "height": 6
+      }
+     ],
+     "solidCaption": {
+      "text": "반구와 원기둥"
+     }
+    }
+   }
+  ],
+  "caption": "원기둥 부피 18πr³ ÷ 반구 부피 (2/3)πr³ = 27개이다.",
+  "accessibilityDescription": "반지름 r인 반구와 밑면 반지름 3r, 높이 2r인 원기둥을 나란히 나타낸 그림이다.",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "hemisphere and cylinder with proportional dimensions"
+   }
+  ],
+  "newVisualInformation": [],
+  "sourceQuote": "반구 모양의 쇠를 여러 개 녹여 원기둥 모양의 쇠를 만든다"
+ },
+ "model": {
+  "panels": [
+   {
+    "schemaVersion": "SOLID_FIGURE_MODEL_v2",
+    "mode": "SOLIDS",
+    "unit": "cm",
+    "yawDeg": 28,
+    "pitchDeg": 20,
+    "solids": [
+     {
+      "id": "h1",
+      "kind": "HEMISPHERE",
+      "category": "SPHERE",
+      "radius": 3,
+      "topRadius": 3,
+      "r0": 3,
+      "r1": 3,
+      "orientation": "APEX_UP",
+      "height": 3,
+      "points": [
+       {
+        "name": null,
+        "id": "center",
+        "p": [
+         2.648843,
+         1.408415,
+         0
+        ]
+       }
+      ],
+      "inside": null,
+      "offset": 3
+     },
+     {
+      "id": "c1",
+      "kind": "CYLINDER",
+      "category": "REV",
+      "radius": 6,
+      "topRadius": 6,
+      "r0": 6,
+      "r1": 6,
+      "orientation": "APEX_UP",
+      "height": 6,
+      "points": [
+       {
+        "name": null,
+        "id": "center",
+        "p": [
+         13.773982,
+         7.323756,
+         0
+        ]
+       },
+       {
+        "name": null,
+        "id": "top",
+        "p": [
+         13.773982,
+         7.323756,
+         6
+        ]
+       }
+      ],
+      "inside": null,
+      "offset": 15.6
+     }
+    ],
+    "segments": [],
+    "highlights": [],
+    "section": null,
+    "marks": {
+     "rightAngles": [],
+     "equalLengths": [],
+     "angles": []
+    },
+    "dims": []
+   }
+  ]
+ },
+ "composed": {
+  "schemaVersion": "composite-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"337\" viewBox=\"0 0 480 337\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-composite=\"composite-panels-v1\"><title id=\"visual-title\">원기둥 부피 18πr³ ÷ 반구 부피 (2/3)πr³ = 27개이다.</title><desc id=\"visual-desc\">반지름 r인 반구와 밑면 반지름 3r, 높이 2r인 원기둥을 나란히 나타낸 그림이다.</desc><g id=\"p1-caption\" data-role=\"caption\" data-panel=\"1\" data-font-px=\"21.4\"><g id=\"p1-p1-caption-text\" transform=\"translate(178.582 38.5064)\" data-label-kind=\"CAPTION\" data-owner=\"panel-1\" data-fragment-sha=\"sha256:a8837baf028d1a48842fa1a77867524a60ac92e1f69553b1c6bef96322115d9a\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"122.836\" height=\"30.9872\" viewBox=\"0 0 122.836 30.9872\" data-outline-width=\"122.836\" data-outline-height=\"30.9872\" id=\"lb-cf0b2110508e5df181d2c8259709bea15c11c131cca48d635192fee5c6f05a5e\" data-owner=\"panel-1\" data-fact-role=\"GIVEN\"><path d=\"M15.00140 21.20740L15.00140 7.38300L15.70760 7.38300L15.70760 21.20740L15.00140 21.20740ZM15.40800 14.12400L15.40800 13.50340L18.78920 13.50340L18.78920 14.12400L15.40800 14.12400ZM4.38700 25.74420L4.38700 25.10220L16.73480 25.10220L16.73480 25.74420L4.38700 25.74420ZM4.38700 25.27340L4.38700 19.94480L5.07180 19.94480L5.07180 25.27340L4.38700 25.27340ZM2.28980 17.84760L2.28980 8.75260L2.97460 8.75260L2.97460 12.36920L10.01520 12.36920L10.01520 8.75260L10.67860 8.75260L10.67860 17.84760L2.28980 17.84760ZM10.01520 12.98980L2.97460 12.98980L2.97460 17.20560L10.01520 17.20560L10.01520 12.98980ZM23.28320 9.35180L23.28320 8.73120L35.05320 8.73120L35.05320 9.35180L23.28320 9.35180ZM20.95060 17.54800L20.95060 16.90600L38.00640 16.90600L38.00640 17.54800L20.95060 17.54800ZM29.14680 26.27920L29.14680 17.24840L29.83160 17.24840L29.83160 26.27920L29.14680 26.27920ZM34.81780 10.33620L34.81780 8.73120L35.50260 8.73120L35.50260 10.33620Q35.50260 11.27780 35.47050 12.32640Q35.43840 13.37500 35.29930 14.61620Q35.16020 15.85740 34.81780 17.37680L34.81780 17.37680L34.09020 17.22700Q34.64660 15.02280 34.73220 13.36430Q34.81780 11.70580 34.81780 10.33620L34.81780 10.33620ZM45.98860 21.40000L45.98860 16.86320L46.69480 16.86320L46.69480 21.40000L45.98860 21.40000ZM46.35240 8.70980L46.35240 8.70980Q47.78620 8.70980 48.87760 9.23410Q49.96900 9.75840 50.57890 10.71070Q51.18880 11.66300 51.18880 12.94700L51.18880 12.94700Q51.18880 14.20960 50.57890 15.16190Q49.96900 16.11420 48.87760 16.63850Q47.78620 17.16280 46.35240 17.16280L46.35240 17.16280Q44.91860 17.16280 43.81650 16.63850Q42.71440 16.11420 42.10450 15.16190Q41.49460 14.20960 41.49460 12.94700L41.49460 12.94700Q41.49460 11.66300 42.10450 10.71070Q42.71440 9.75840 43.81650 9.23410Q44.91860 8.70980 46.35240 8.70980ZM46.35240 9.33040L46.35240 9.33040Q45.13260 9.33040 44.19100 9.80120Q43.24940 10.27200 42.71440 11.09590Q42.17940 11.91980 42.17940 12.94700L42.17940 12.94700Q42.17940 13.97420 42.71440 14.78740Q43.24940 15.60060 44.19100 16.08210Q45.13260 16.56360 46.35240 16.56360L46.35240 16.56360Q47.57220 16.56360 48.50310 16.08210Q49.43400 15.60060 49.96900 14.78740Q50.50400 13.97420 50.50400 12.94700L50.50400 12.94700Q50.50400 11.91980 49.96900 11.09590Q49.43400 10.27200 48.50310 9.80120Q47.57220 9.33040 46.35240 9.33040ZM54.03500 26.25780L54.03500 7.36160L54.71980 7.36160L54.71980 26.25780L54.03500 26.25780ZM54.59140 16.17840L54.59140 15.55780L58.25080 15.55780L58.25080 16.17840L54.59140 16.17840ZM40.59580 21.82800L40.59580 21.82800L40.40320 21.16460Q42.17940 21.14320 44.26590 21.11110Q46.35240 21.07900 48.50310 20.93990Q50.65380 20.80080 52.62260 20.54400L52.62260 20.54400L52.68680 21.12180Q50.67520 21.42140 48.52450 21.58190Q46.37380 21.74240 44.34080 21.78520Q42.30780 21.82800 40.59580 21.82800ZM70.85540 20.95060L70.85540 16.69200L71.56160 16.69200L71.56160 20.95060L70.85540 20.95060ZM79.32980 21.80660L79.32980 7.38300L80.03600 7.38300L80.03600 21.80660L79.32980 21.80660ZM67.90220 25.74420L67.90220 25.10220L80.54960 25.10220L80.54960 25.74420L67.90220 25.74420ZM67.90220 25.29480L67.90220 20.35140L68.60840 20.35140L68.60840 25.29480L67.90220 25.29480ZM65.03460 17.16280L65.03460 17.16280L64.90620 16.49940Q66.68240 16.49940 68.76890 16.46730Q70.85540 16.43520 73.03820 16.31750Q75.22100 16.19980 77.25400 15.94300L77.25400 15.94300L77.33960 16.49940Q75.28520 16.82040 73.09170 16.95950Q70.89820 17.09860 68.83310 17.13070Q66.76800 17.16280 65.03460 17.16280ZM75.19960 19.36700L75.19960 18.72500L79.62940 18.72500L79.62940 19.36700L75.19960 19.36700ZM71.11220 8.26040L71.11220 8.26040Q72.50320 8.26040 73.53040 8.65630Q74.55760 9.05220 75.12470 9.76910Q75.69180 10.48600 75.69180 11.47040L75.69180 11.47040Q75.69180 12.45480 75.12470 13.18240Q74.55760 13.91000 73.53040 14.29520Q72.50320 14.68040 71.11220 14.68040L71.11220 14.68040Q69.74260 14.68040 68.70470 14.29520Q67.66680 13.91000 67.09970 13.18240Q66.53260 12.45480 66.53260 11.47040L66.53260 11.47040Q66.53260 10.48600 67.09970 9.76910Q67.66680 9.05220 68.70470 8.65630Q69.74260 8.26040 71.11220 8.26040ZM71.11220 8.83820L71.11220 8.83820Q69.37880 8.83820 68.28740 9.58720Q67.19600 10.33620 67.19600 11.47040L67.19600 11.47040Q67.19600 12.60460 68.28740 13.34290Q69.37880 14.08120 71.11220 14.08120L71.11220 14.08120Q72.82420 14.08120 73.91560 13.34290Q75.00700 12.60460 75.00700 11.47040L75.00700 11.47040Q75.00700 10.70000 74.51480 10.11150Q74.02260 9.52300 73.14520 9.18060Q72.26780 8.83820 71.11220 8.83820ZM99.27460 26.25780L99.27460 7.36160L99.95940 7.36160L99.95940 26.25780L99.27460 26.25780ZM93.77480 9.54440L93.77480 9.48020L94.45960 9.48020Q94.45960 11.40620 93.90320 13.24660Q93.34680 15.08700 92.22330 16.76690Q91.09980 18.44680 89.44130 19.86990Q87.78280 21.29300 85.55720 22.38440L85.55720 22.38440L85.15060 21.78520Q87.91120 20.45840 89.83720 18.54310Q91.76320 16.62780 92.76900 14.32730Q93.77480 12.02680 93.77480 9.54440L93.77480 9.54440ZM85.87820 10.12220L85.87820 9.48020L93.94600 9.48020L93.94600 10.12220L85.87820 10.12220ZM104.41060 17.14140L104.41060 16.52080L121.46640 16.52080L121.46640 17.14140L104.41060 17.14140ZM112.60680 19.94480L112.60680 16.77760L113.29160 16.77760L113.29160 19.94480L112.60680 19.94480ZM112.94920 19.53820L112.94920 19.53820Q115.94520 19.53820 117.63580 20.40490Q119.32640 21.27160 119.32640 22.85520L119.32640 22.85520Q119.32640 24.46020 117.63580 25.32690Q115.94520 26.19360 112.94920 26.19360L112.94920 26.19360Q109.97460 26.19360 108.27330 25.32690Q106.57200 24.46020 106.57200 22.85520L106.57200 22.85520Q106.57200 21.27160 108.27330 20.40490Q109.97460 19.53820 112.94920 19.53820ZM112.94920 20.15880L112.94920 20.15880Q111.25860 20.15880 109.97460 20.49050Q108.69060 20.82220 107.98440 21.42140Q107.27820 22.02060 107.27820 22.85520L107.27820 22.85520Q107.27820 23.68980 107.98440 24.29970Q108.69060 24.90960 109.97460 25.24130Q111.25860 25.57300 112.94920 25.57300L112.94920 25.57300Q114.66120 25.57300 115.93450 25.24130Q117.20780 24.90960 117.91400 24.29970Q118.62020 23.68980 118.62020 22.85520L118.62020 22.85520Q118.62020 22.02060 117.91400 21.42140Q117.20780 20.82220 115.93450 20.49050Q114.66120 20.15880 112.94920 20.15880ZM106.65760 14.27380L106.65760 13.63180L119.41200 13.63180L119.41200 14.27380L106.65760 14.27380ZM106.65760 13.95280L106.65760 8.28180L119.24080 8.28180L119.24080 8.90240L107.34240 8.90240L107.34240 13.95280L106.65760 13.95280Z\" fill=\"#111\"/></svg></g></g><image id=\"p1-panel\" data-panel=\"1\" data-panel-svg-sha=\"sha256:6d5b8e49888116633031b61fa6807f16cdbd5ecf68f795904b8077f8e902851b\" x=\"0\" y=\"76\" width=\"480\" height=\"261\" href=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODAgMjYxIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI2MSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCIgcm9sZT0iaW1nIiBkYXRhLXNvbGlkLWZpZ3VyZT0ic29saWQtZmlndXJlLXYxIiBkYXRhLW1vZGU9IlNPTElEUyIgZGF0YS1zY2FsZT0iMTYuNDgxNDgxIiBkYXRhLW9yaWdpbj0iNjIuMDAwMDA1IDE3Ni45NjI1NzgiIGRhdGEteWF3PSIyOCIgZGF0YS1waXRjaD0iMjAiIGRhdGEtdW5pdD0iY20iIGRhdGEtcHVibGljYXRpb24tcHJvZmlsZT0iZnJhZ21lbnQtcHVibGljYXRpb24tc3Bpa2UtdjEiIGRhdGEtc2FmZS1tYXJnaW49IjEwIiBzdHlsZT0ibWF4LXdpZHRoOjEwMCU7aGVpZ2h0OmF1dG87c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1saW5lY2FwOnJvdW5kIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI2MSIgZmlsbD0iI2ZmZiIvPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iaDEtb3V0bGluZS11cHBlciIgZGF0YS1yb2xlPSJzcGhlcmUtb3V0bGluZSIgZGF0YS1zb2xpZD0iaDEiIGRhdGEtcGFydD0iVVBQRVIiIGRhdGEtdmlzPSJzb2xpZCIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSAxNjAuODg4ODkxIDE3Ni45NjI1NzggQSA0OS40NDQ0NDMgNDkuNDQ0NDQzIDAgMSAwIDYyLjAwMDAwNSAxNzYuOTYyNTk1Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iaDEtYmFzZS1mcm9udCIgZGF0YS1yb2xlPSJlbGxpcHNlLWFyYyIgZGF0YS1zb2xpZD0iaDEiIGRhdGEtY2lyY2xlPSJib3R0b20iIGRhdGEtaGFsZj0iRlJPTlQiIGRhdGEtdmlzPSJzb2xpZCIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSA2Mi4wMDAwMDUgMTc2Ljk2MjU4NCBBIDQ5LjQ0NDQ0MyAxNi45MTA5OTUgMCAwIDAgMTYwLjg4ODg5MSAxNzYuOTYyNTgzIi8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iaDEtYmFzZS1iYWNrIiBkYXRhLXJvbGU9ImVsbGlwc2UtYXJjIiBkYXRhLXNvbGlkPSJoMSIgZGF0YS1jaXJjbGU9ImJvdHRvbSIgZGF0YS1oYWxmPSJCQUNLIiBkYXRhLXZpcz0iaGlkZGVuIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtZGFzaGFycmF5PSI1IDQiIGZpbGw9Im5vbmUiIGQ9Ik0gMTYwLjg4ODg5MSAxNzYuOTYyNTc4IEEgNDkuNDQ0NDQzIDE2LjkxMDk5NSAwIDEgMCA2Mi4wMDAwMDUgMTc2Ljk2MjU4NCIvPjwvZz48ZyBkYXRhLWxheWVyPSI0MCI+PHBhdGggaWQ9ImMxLWJhc2UtZnJvbnQiIGRhdGEtcm9sZT0iZWxsaXBzZS1hcmMiIGRhdGEtc29saWQ9ImMxIiBkYXRhLWNpcmNsZT0iYm90dG9tIiBkYXRhLWhhbGY9IkZST05UIiBkYXRhLXZpcz0ic29saWQiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGQ9Ik0gMjIwLjIyMjIyMyAxNzYuOTYyNTkgQSA5OC44ODg4ODYgMzMuODIxOTkxIDAgMCAwIDQxNy45OTk5OTUgMTc2Ljk2MjU4OCIvPjwvZz48ZyBkYXRhLWxheWVyPSI0MCI+PHBhdGggaWQ9ImMxLWJhc2UtYmFjayIgZGF0YS1yb2xlPSJlbGxpcHNlLWFyYyIgZGF0YS1zb2xpZD0iYzEiIGRhdGEtY2lyY2xlPSJib3R0b20iIGRhdGEtaGFsZj0iQkFDSyIgZGF0YS12aXM9ImhpZGRlbiIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0IiBmaWxsPSJub25lIiBkPSJNIDQxNy45OTk5OTUgMTc2Ljk2MjU3OCBBIDk4Ljg4ODg4NiAzMy44MjE5OTEgMCAxIDAgMjIwLjIyMjIyMyAxNzYuOTYyNTkiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxwYXRoIGlkPSJjMS10b3AtYmFjayIgZGF0YS1yb2xlPSJlbGxpcHNlLWFyYyIgZGF0YS1zb2xpZD0iYzEiIGRhdGEtY2lyY2xlPSJ0b3AiIGRhdGEtaGFsZj0iQkFDSyIgZGF0YS12aXM9InNvbGlkIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBkPSJNIDQxNy45OTk5OTUgODQuMDM3NDIyIEEgOTguODg4ODg2IDMzLjgyMTk5MSAwIDEgMCAyMjAuMjIyMjIzIDg0LjAzNzQzNCIvPjwvZz48ZyBkYXRhLWxheWVyPSI0MCI+PHBhdGggaWQ9ImMxLXRvcC1mcm9udCIgZGF0YS1yb2xlPSJlbGxpcHNlLWFyYyIgZGF0YS1zb2xpZD0iYzEiIGRhdGEtY2lyY2xlPSJ0b3AiIGRhdGEtaGFsZj0iRlJPTlQiIGRhdGEtdmlzPSJzb2xpZCIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSAyMjAuMjIyMjIzIDg0LjAzNzQzNCBBIDk4Ljg4ODg4NiAzMy44MjE5OTEgMCAwIDAgNDE3Ljk5OTk5NSA4NC4wMzc0MzIiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxsaW5lIGlkPSJjMS1zaWRlLWxlZnQiIGRhdGEtcm9sZT0ic2lsaG91ZXR0ZSIgZGF0YS1zb2xpZD0iYzEiIGRhdGEtdmlzPSJzb2xpZCIgZGF0YS1zaWRlPSJMRUZUIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS43IiBmaWxsPSJub25lIiB4MT0iMjIwLjIyMjIyMyIgeTE9IjE3Ni45NjI1NzgiIHgyPSIyMjAuMjIyMjIzIiB5Mj0iODQuMDM3NDIyIi8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48bGluZSBpZD0iYzEtc2lkZS1yaWdodCIgZGF0YS1yb2xlPSJzaWxob3VldHRlIiBkYXRhLXNvbGlkPSJjMSIgZGF0YS12aXM9InNvbGlkIiBkYXRhLXNpZGU9IlJJR0hUIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS43IiBmaWxsPSJub25lIiB4MT0iNDE3Ljk5OTk5NSIgeTE9IjE3Ni45NjI1NzgiIHgyPSI0MTcuOTk5OTk1IiB5Mj0iODQuMDM3NDIyIi8+PC9nPjwvc3ZnPg==\"/></svg>",
+  "lineage": {
+   "planSha256": "sha256:0b200c67492efa7703d92eed1e8b8595e69e3a55c9401b743774781e9ec4df52",
+   "modelSha256": "sha256:42be8a4e02c89ba52b465d4a5e8290a5f140847dfcc2087cd2115ff31d89cb48",
+   "typographyPolicySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+   "panelSpecSha256s": [
+    "sha256:582a1e1bfe27f1058c30708ff45aa190f7d94ef1d633768fcf90376075d71677"
+   ],
+   "panelSvgSha256s": [
+    "sha256:6d5b8e49888116633031b61fa6807f16cdbd5ecf68f795904b8077f8e902851b"
+   ],
+   "captionFragmentSha256s": [
+    [
+     "sha256:a8837baf028d1a48842fa1a77867524a60ac92e1f69553b1c6bef96322115d9a"
+    ]
+   ],
+   "sharedRowFragmentSha256s": [],
+   "svgSha256": "sha256:6adb59b39c010dd2d59c3df4c52a5f06bdb810e05f664c596af7257e59dc3382",
+   "renderedLayoutSha256": "sha256:0f3580d5a1b61546642f97f06d31cb3935cd252bc936931a2b970de1fd1eb579"
+  },
+  "panels": [
+   {
+    "index": 0,
+    "status": "COMPOSED",
+    "detail": null,
+    "lineage": {
+     "planSha256": "sha256:7548fa2c6f3fef8bc6be2fb4cbb392596ff0eff1a4220fd59cd5747ab9dc2df4",
+     "modelSha256": "sha256:21a88236ab6ecd230b87f8f80d2c7900a4daf3f2d87bab375794ce218e3b4a19",
+     "typographyPolicySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+     "specSha256": "sha256:582a1e1bfe27f1058c30708ff45aa190f7d94ef1d633768fcf90376075d71677",
+     "fragmentSha256s": {},
+     "svgSha256": "sha256:6d5b8e49888116633031b61fa6807f16cdbd5ecf68f795904b8077f8e902851b",
+     "staticAuditSha256": "sha256:06389413bdad9ddee9ff0e48cfdf70fb0ccb98d766e545f302ce1fd99af4fc0a",
+     "renderedLayoutSha256": "sha256:a2f56cbf3b08960bfc010f4f44b77c7b54f77f7d6b9cf38795bedf165b866fa0"
+    },
+    "layoutRepairs": [],
+    "staticAudit": {
+     "status": "PASS",
+     "errors": []
+    },
+    "renderedLayout": {
+     "status": "PASS",
+     "display": {
+      "width": 252.90625,
+      "height": 137.51777343749998
+     },
+     "errors": []
+    }
+   }
+  ],
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 177.56126302083334
+   },
+   "errors": []
+  },
+  "layout": {
+   "kind": "STACK",
+   "columns": 1,
+   "rows": 1
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:6adb59b39c010dd2d59c3df4c52a5f06bdb810e05f664c596af7257e59dc3382",
+   "policySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+   "candidateBankSha256": "sha256:527d1c27d5626cadef315199ec962ea8ce2aa0760378981103245ecb7303d4e4",
+   "assetPath": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/assets/images/25_왕운중_2학기_기말_중1_유사/q11-solution.svg",
+   "assetResponseSha256": "sha256:6adb59b39c010dd2d59c3df4c52a5f06bdb810e05f664c596af7257e59dc3382",
+   "archiveRowSha256": "sha256:6be6f939197b93fb3c6f09c856a5d321480d3a693c9ca3e0105ff43b4a81b690",
+   "screenshotSha256s": {
+    "image": "sha256:c982a119505dd3c1eb7d1e7a0ee6386aad6d224652085767fa829214e000f408",
+    "context": "sha256:98b8c3e1bfbb7f7651d5e6999e1d64e44c504ad85b643f5d21ad590cabf46135",
+    "page": "sha256:35df4a5138a283e6e6087da18e9782ea067aff14f8eed41f11f9192fd949f770"
+   },
+   "matrixSha256": "sha256:eb89e9abc989778ed7d6c774a58496b77dbf1ed06af29481204426e4fa298284",
+   "engineSha256": "sha256:fa0428b0adf3253aa8f01204c0509b4453ca7528ca230f11184111ea96b77ecc"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-59b60f80",
+   "asset": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/assets/images/25_왕운중_2학기_기말_중1_유사/q11-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/candidates/25_왕운중_2학기_기말_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf-sol-desktop-va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf.png",
+    "context": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf-sol-desktop-va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf-context.png",
+    "page": ".tmp/archive/pilot-capture-59b60f80/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-45c460478b7f0a0adeb014a1ead39b723a341a79f8d91969b457845ac5daeaaf-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2final/25_왕운중_2학기_기말_중1_유사.js",
+    "bytes": 71723,
+    "sha256": "sha256:935f5eac18e90637b86f753f3bc9d63ac000545c29af6108489907ff6345ed40"
+   },
+   "originalQuestionSha256": "sha256:7a82c414206b0a4c135f0dca7eb86bf66d54e33ef3738434da29f852ce36eaac",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 11
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.5268880208333333,
+  "expectedDisplayScale": 0.5268880208333333,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

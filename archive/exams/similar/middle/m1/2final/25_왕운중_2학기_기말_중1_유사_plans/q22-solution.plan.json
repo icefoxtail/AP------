@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "S1=S2이므로 12×BC = 36π에서 BC = 3π이다.",
+  "accessibilityDescription": "AB=12인 직사각형 ABCD와 중심 B, 반지름 12인 사분원이 겹쳐져 S1=S2인 상태를 나타낸 그림이다.",
+  "sourceQuote": "$S_1=S_2$이면 직사각형의 넓이와 사분원의 넓이가 같아진다.",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "rectangle ABCD and quadrant sector with S1=S2"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-result.json",
+    "statePath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-state.json",
+    "svgPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q22-solution.svg"
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "겹친 오각형의 내각 합 540°에서 각 x+y=150° 구하기",
+  "accessibilityDescription": "정팔각형과 정육각형의 일부가 겹쳐진 오각형에서 내각 135°, 135°, 120°와 각 x, y를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "overlap of regular octagon and hexagon"
+    }
+  ],
+  "newVisualInformation": [],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineCdir",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineEdir",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "lineCdir"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineED",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "lineEdir"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineCD",
+          "lineED"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "E",
+          "A",
+          "B"
+        ],
+        "value": 135,
+        "label": "135"
+      },
+      {
+        "id": "angB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 135,
+        "label": "135"
+      },
+      {
+        "id": "angC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 120,
+        "label": "120"
+      },
+      {
+        "id": "angD",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 80,
+        "label": "x",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "angE",
+        "refs": [
+          "D",
+          "E",
+          "A"
+        ],
+        "value": 70,
+        "label": "y",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-result.json",
+    "statePath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-state.json",
+    "svgPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q03-solution.svg"
+  },
+  "sourceQuote": "정다각형의 한 내각의 크기를 구하여 겹친 오각형의 내각의 합을 이용한다."
+}
