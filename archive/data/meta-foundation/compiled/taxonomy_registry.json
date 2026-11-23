@@ -60,7 +60,7 @@
     },
     {
       "packId": "GEOMETRY",
-      "version": "1.0.5"
+      "version": "1.0.6"
     },
     {
       "packId": "MIDDLE3",
@@ -71,8 +71,8 @@
       "version": "1.0.13"
     }
   ],
-  "problemTypeCount": 529,
-  "templateCount": 1489,
+  "problemTypeCount": 530,
+  "templateCount": 1499,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -14690,6 +14690,19 @@
             "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
           }
         }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "canonicalLabelKo": "벡터를 이용한 직선·원의 방정식",
+      "definition": "방향벡터·법선벡터와 위치벡터를 이용하여 평면 위 직선과 원의 방정식을 세우고, 직선의 평행·수직·교각 관계를 해석하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "H22-GE-08"
       ]
     },
     {
@@ -52791,6 +52804,126 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_GEO_VEC_LINE_DIRECTION",
+      "canonicalLabelKo": "방향벡터로 직선의 방정식",
+      "definition": "한 점과 방향벡터(또는 두 점)로 직선의 벡터방정식과 직선의 방정식을 세우는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "점·방향벡터 확인 → 매개변수 식 → 직선의 방정식 정리",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_VEC_LINE_NORMAL",
+      "canonicalLabelKo": "법선벡터로 직선의 방정식",
+      "definition": "한 점과 법선벡터의 내적 조건으로 직선의 방정식을 세우는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "법선벡터 확인 → 내적=0 조건 → 직선의 방정식",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_VEC_LINE_RELATION",
+      "canonicalLabelKo": "두 직선의 평행·수직·각",
+      "definition": "방향벡터와 법선벡터의 관계로 두 직선의 평행·수직 조건과 이루는 각을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "방향(법선)벡터 설정 → 내적·실수배 조건 → 각·조건 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_VEC_CIRCLE",
+      "canonicalLabelKo": "벡터로 나타낸 원의 방정식",
+      "definition": "위치벡터의 크기 또는 내적 조건 (p-a)·(p-b)=0 등으로 나타낸 원의 중심·반지름과 방정식을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "벡터 조건을 좌표로 전개 → 원의 표준형 → 중심·반지름",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_VECTOR_LINE_CIRCLE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+      "canonicalLabelKo": "두 점 사이의 거리",
+      "definition": "공간좌표 두 점 사이의 거리 공식으로 길이를 구하거나 같은 거리에 있는 점의 조건을 세우는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "좌표 차 계산 → 거리 공식 → 조건 방정식",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+      "canonicalLabelKo": "내분점·외분점·무게중심",
+      "definition": "선분의 내분점·외분점·중점과 삼각형의 무게중심 좌표를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "분점 비 확인 → 좌표 성분별 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_COORD_PROJECTION",
+      "canonicalLabelKo": "좌표평면·좌표축 위로의 정사영과 대칭",
+      "definition": "점의 좌표평면·좌표축 위로의 정사영과 대칭점의 좌표를 구하고 이를 도형 조건에 활용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "성분 소거·부호 변환 → 정사영·대칭점 좌표 → 길이·조건 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPHERE_EQUATION",
+      "canonicalLabelKo": "구의 방정식 결정",
+      "definition": "중심과 반지름 또는 좌표평면·좌표축에 접하는 조건으로 구의 방정식을 세우는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "중심·반지름 확인 → 접하는 조건 → 구의 방정식",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPHERE_SECTION_TANGENT",
+      "canonicalLabelKo": "구와 평면·직선의 단면·접촉",
+      "definition": "구를 평면으로 자른 단면의 원, 구와 평면·직선의 접촉 조건으로 길이·넓이를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "중심에서 평면까지 거리 → 단면 반지름 또는 접촉 조건 → 값 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPHERE_DISTANCE_EXTREMA",
+      "canonicalLabelKo": "구 위의 점까지 거리의 최대·최소",
+      "definition": "구 밖의 점과 구 위의 점 사이 거리의 최댓값·최솟값을 중심까지의 거리와 반지름으로 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "중심까지 거리 → ±반지름 → 최대·최소",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
     },
     {
       "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",

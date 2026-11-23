@@ -862,11 +862,12 @@
 - `PT_GEO_PARABOLA` 포물선 문제 (TPL 2)
 - `PT_GEO_PLANE_EQUATION` 평면의 방정식
 - `PT_GEO_PLANE_VECTOR` 평면벡터 문제 (TPL 8)
-- `PT_GEO_SPACE_COORDINATE` 공간좌표
+- `PT_GEO_SPACE_COORDINATE` 공간좌표 (TPL 3)
 - `PT_GEO_SPACE_FIGURE` 공간도형 문제 (TPL 11)
 - `PT_GEO_SPACE_LINE` 공간직선
-- `PT_GEO_SPHERE` 구
+- `PT_GEO_SPHERE` 구 (TPL 3)
 - `PT_GEO_VECTOR` 벡터
+- `PT_GEO_VECTOR_LINE_CIRCLE` 벡터를 이용한 직선·원의 방정식 (TPL 4)
 
 ### 수학I (H15_MATH1) · 고2 — 파일 `H15_MATH1.md`
 

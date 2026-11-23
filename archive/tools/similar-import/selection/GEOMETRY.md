@@ -13,7 +13,7 @@
 - `H15-GV-03` 쌍곡선 (소단원 0 · RPM 2 · 유형 0)
 - `H22-GE-03` 공간도형 (소단원 1 · RPM 8 · 유형 2)
 - `H15-GV-04` 이차곡선과 직선 (소단원 0 · RPM 8 · 유형 0)
-- `H22-GE-04` 공간좌표 (소단원 1 · RPM 6 · 유형 2)
+- `H22-GE-04` 공간좌표 (소단원 1 · RPM 12 · 유형 2)
 - `H15-GV-05` 벡터의 연산 (소단원 0 · RPM 6 · 유형 0)
 - `H22-GE-05` 벡터의 연산 (소단원 3 · RPM 6 · 유형 3)
 - `H15-GV-06` 평면벡터의 성분과 내적 (소단원 0 · RPM 6 · 유형 1)
@@ -21,7 +21,7 @@
 - `H15-GV-07` 직선과 원의 방정식 (소단원 0 · RPM 0 · 유형 0)
 - `H22-GE-07` 벡터의 내적 (소단원 3 · RPM 2 · 유형 2)
 - `H15-GV-08` 공간도형 (소단원 0 · RPM 6 · 유형 0)
-- `H22-GE-08` 도형의 방정식 (소단원 1 · RPM 6 · 유형 3)
+- `H22-GE-08` 도형의 방정식 (소단원 1 · RPM 8 · 유형 4)
 - `H15-GV-09` 공간좌표 (소단원 0 · RPM 6 · 유형 2)
 
 ## H15-GV-01 포물선
@@ -229,11 +229,23 @@
 - `H2-GEO-RPM-062` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-063` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-064` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-086` 공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 점의 좌표 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-087` 공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 두 점 사이 거리 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-088` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 내분점·외분점 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-089` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-090` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-091` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
 
 ## H15-GV-05 벡터의 연산
 
@@ -287,6 +299,9 @@
   - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
   - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_VECTOR` **벡터** — 평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.
 
 ## H15-GV-06 평면벡터의 성분과 내적
@@ -421,12 +436,22 @@
 - `H2-GEO-RPM-080` 벡터 > 도형의 방정식 > 벡터를 이용한 평면 > 평면의 방정식 · `H22-GE-08-CORE`
 - `H2-GEO-RPM-081` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 점과 직선·평면 거리 · `H22-GE-08-CORE`
 - `H2-GEO-RPM-082` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 교점·각 · `H22-GE-08-CORE`
+- `H2-GEO-RPM-092` 벡터 > 도형의 방정식 > 벡터를 이용한 직선 > 방향벡터 · `H22-GE-08-CORE`
+- `H2-GEO-RPM-093` 벡터 > 도형의 방정식 > 거리와 위치 관계 > 교점·각 · `H22-GE-08-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_PLANE_EQUATION` **평면의 방정식** — 한 점과 법선벡터의 내적 관계로 평면식을 세우거나 점에서 평면까지의 거리를 구한다.
 - `PT_GEO_SPACE_LINE` **공간직선** — 공간 직선을 매개변수로 나타내고 다른 직선 또는 평면의 식과 연립하여 교점을 구한다.
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
+- `PT_GEO_VECTOR_LINE_CIRCLE` **벡터를 이용한 직선·원의 방정식** — 방향벡터·법선벡터와 위치벡터를 이용하여 평면 위 직선과 원의 방정식을 세우고, 직선의 평행·수직·교각 관계를 해석하는 문제 유형.
+  - `TPL_GEO_VEC_CIRCLE` 벡터로 나타낸 원의 방정식
+  - `TPL_GEO_VEC_LINE_DIRECTION` 방향벡터로 직선의 방정식
+  - `TPL_GEO_VEC_LINE_NORMAL` 법선벡터로 직선의 방정식
+  - `TPL_GEO_VEC_LINE_RELATION` 두 직선의 평행·수직·각
 
 ## H15-GV-09 공간좌표
 
@@ -448,7 +473,13 @@
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
+  - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
+  - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
 
 ## 아래 학년 유형
 
