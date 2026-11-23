@@ -11,6 +11,9 @@ const AP_CLINIC_EXAM_PERIODS = [
 ];
 const clinicPrintExamPeriodFilters = new Map();
 const clinicPrintExamYearFilters = new Map();
+// 시험 결과 화면에서 "클리닉"으로 들어올 때 처음 한 번만 쓰는 선택(시험 한 개·학생 한 명). openClinicPrintCenter(options)가 채우고
+// 시험 목록·학생 목록의 첫 그리기가 읽은 뒤 비운다. 직접 연 클리닉은 이 값이 없어 기존 그대로다.
+let clinicPrintPendingPreselect = null;
 const clinicPrintGradeData = new Map();
 const clinicPrintClassClinicData = new Map();
 const clinicPrintArchive2ScriptPromises = new Map();
@@ -403,7 +406,9 @@ function clinicPrintTypeBasisNotes(result, classId) {
     const names = new Map(clinicPrintGetClassStudents(classId).map(row => [String(row.id), String(row.name || row.id)]));
     const nameOf = id => names.get(String(id)) || String(id);
     const notes = [];
-    notes.push(coverage.evidenceSessionCount == null
+    notes.push(coverage.scope === 'follow_up'
+        ? `이번 응시의 확정 오답 ${Number(coverage.wrongAnswerCount || 0)}개를 기준으로 했습니다.`
+        : coverage.evidenceSessionCount == null
         ? '시험을 고르지 않아 조회된 기록 전체의 오답을 기준으로 했습니다.'
         : `고른 시험의 응시 ${Number(coverage.evidenceSessionCount)}건에서 틀린 문항 ${Number(coverage.wrongAnswerCount || 0)}개를 기준으로 했습니다.`);
     const rungTotals = { template: 0, type: 0, concept: 0, unit: 0, none: 0 };
@@ -3145,17 +3150,35 @@ async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, st
             difficultyMode: 'match_wrong',
             selectedDifficultyBuckets: []
         };
+        // "틀린 유형 기준"(출력 센터 후보 고르는 기준)을 골랐으면 다른 유사 문항 후보도 같은 유형 사다리로 고른다(반복 회차 제외).
+        // 같은 UID 재연습은 UID 그대로라 해당 없다. 모듈은 이 경우에만 지연 로드한다.
+        const typeBasis = normalizedMode === 'similar_uid' && settings.selectionBasis === 'wrong_type' && !repeatOptions;
+        let typeExtras = {};
+        if (typeBasis) {
+            await clinicPrintWithTimeout(clinicPrintLoadTypeLadderModules(), 45000, '유형 기준 모듈을 불러오지 못했습니다.');
+            if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || contextKey !== state.contextKey) return;
+            typeExtras = {
+                selectionBasis: 'wrong_type',
+                typeLadder: clinicPrintBuildTypeLadder(
+                    catalog, clinicPrintGetClassGrade(classId),
+                    recommendationOptions.difficultyMode === 'selected' ? recommendationOptions.selectedDifficultyBuckets : null
+                )
+            };
+        }
         const result = window.ClinicRecommendations.buildFollowUpCandidates({
             studentId: action.studentId,
             followUpContext: action.followUpContext,
             questionResults: action.questionResults,
             mode: action.mode,
-            candidateRecords: clinicPrintPrepareArchive2CandidateRecords(catalog.records),
+            candidateRecords: typeBasis
+                ? clinicPrintGetPreparedCandidateRecords(catalog)
+                : clinicPrintPrepareArchive2CandidateRecords(catalog.records),
             archive2Core: window.Archive2Core,
             canonicalAuthority: catalog.catalog.canonicalAuthority,
             targetGrade: clinicPrintGetClassGrade(classId),
             recommendationOptions,
-            ...(action.targetScope ? { targetScope: action.targetScope } : {})
+            ...(action.targetScope ? { targetScope: action.targetScope } : {}),
+            ...typeExtras
         });
         if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || contextKey !== state.contextKey) return;
         state.result = result;
@@ -3361,7 +3384,7 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
     else if (followUpAction && state.status === 'error') message = `후속 후보를 불러오지 못했습니다: ${clinicPrintEscapeHtml(state.error || '조회 오류')}. ${typeBasisText ? '기준시험과 유형을 다시 선택하세요.' : '결과 행에서 다시 선택하세요.'}`;
     else if (followUpAction && state.status === 'stale') message = `${typeBasisText ? '선택한 기준시험의 최신 결과 또는 유형 근거가 바뀌었습니다.' : '후속 응시 결과의 문항 UID 또는 동결 Meta가 바뀌었습니다.'} 결과를 새로고침한 뒤 다시 선택하세요.`;
     else if (followUpAction && state.status === 'empty') message = `${typeBasisText ? `${clinicPrintEscapeHtml(typeBasisText)} · 선택 범위 오답 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개` : `이번 결과의 후속 대상 UID ${Number(followUpAction.targetUidCount || 0)}개`}에 대한 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID' : '다른 유사 UID')} 후보를 확인하지 못했습니다. 기존 결과는 유지됩니다.`;
-    else if (followUpAction && state.status === 'ready') message = `${typeBasisText ? `${clinicPrintEscapeHtml(typeBasisText)} · 선택 범위 오답 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개` : `이번 결과의 후속 대상 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개`}를 기준으로 만든 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사 UID 추천')} 후보입니다. 항목을 확인하고 체크한 뒤 아래 배정 절차를 사용하세요.`;
+    else if (followUpAction && state.status === 'ready') message = `${typeBasisText ? `${clinicPrintEscapeHtml(typeBasisText)} · 선택 범위 오답 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개` : `이번 결과의 후속 대상 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개`}를 기준으로 만든 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사 UID 추천')} 후보입니다. 항목을 확인하고 체크한 뒤 아래 배정 절차를 사용하세요.${state.result?.selectionBasis === 'wrong_type' ? ` 틀린 유형 기준 추천 · ${clinicPrintTypeBasisNotes(state.result, classId).map(clinicPrintEscapeHtml).join(' ')}` : ''}`;
     else if (mode !== 'student') message = '학생별 추천 문항을 미리보고 배정하려면 출제 기준에서 학생을 선택하세요.';
     else if (state.status === 'loading') message = `${scopeLabel}의 오답·동결 문항 정보를 확인하고 Archive 2.0 후보를 불러옵니다. 첫 조회에는 준비 시간이 걸릴 수 있습니다.`;
     else if (state.status === 'error') message = `추천을 불러오지 못했습니다: ${clinicPrintEscapeHtml(state.error || '조회 오류')}. 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
@@ -5796,8 +5819,15 @@ function clinicPrintUpdateStudentList(classId) {
         Array.from(root.querySelectorAll('input[name="clinic-print-student"]:not(:checked)')).map(el => el.value)
     );
 
+    // 시험 결과 화면에서 들어온 첫 그리기: 그 학생만 선택한다(그 학생이 목록에 없으면 평소처럼 전원).
+    const preselect = clinicPrintPendingPreselect;
+    const preselectStudentId = mode === 'student' && preselect && String(preselect.classId) === String(classId) && preselect.studentId
+        && poolItems.some(row => String(row.studentId) === String(preselect.studentId)) ? String(preselect.studentId) : '';
+    if (preselect && String(preselect.classId) === String(classId)) clinicPrintPendingPreselect = null;
     root.innerHTML = poolItems.map(row => {
-        const checked = previouslyUnchecked.has(String(row.studentId)) ? '' : 'checked';
+        const checked = preselectStudentId
+            ? (String(row.studentId) === preselectStudentId ? 'checked' : '')
+            : (previouslyUnchecked.has(String(row.studentId)) ? '' : 'checked');
         return `
         <label class="clinic-print-student-row">
             <span class="clinic-print-student-row__main">
@@ -5983,6 +6013,41 @@ function openClinicCenter(classId = '') {
     return false;
 }
 
+// 시험 결과 화면(원내평가) -> 그 학생·그 시험의 오답 클리닉. 새 화면 없이 기존 출력 센터를 시험 한 개·학생 한 명이 선택된 채로 연다.
+// exam: { sessionId, examDate, examTitle, archiveFile, questionCount } (시험 결과 화면이 가진 응시 한 건의 값).
+function openClinicForStudentExam(classId, studentId, exam = {}) {
+    if (!String(classId || '')) {
+        toast('반 정보를 찾을 수 없습니다.', 'warn');
+        return false;
+    }
+    return openClinicPrintCenter(classId, {
+        preselect: {
+            studentId: String(studentId || ''),
+            sessionId: String(exam.sessionId || ''),
+            examKey: clinicPrintMakeExamKey(exam.examDate, exam.examTitle, exam.archiveFile, exam.questionCount)
+        }
+    });
+}
+
+// openClinicPrintCenter(options.preselect)를 시험 목록의 실제 묶음 키로 바꾼다. 응시 id로 먼저 찾고(시험 결과 화면과 출력 센터가
+// 같은 응시를 가리킨다), 못 찾으면 만든 키가 목록에 있는지 본다. 둘 다 없거나 원문이 없는 시험이면 null(평소처럼 연다).
+// 시험 목록이 학기·연도 필터로 가려지지 않도록 그 시험의 학기·연도로 필터를 맞춘다(저장하지 않는 이번 화면만의 값).
+function clinicPrintResolvePreselect(classId, options = {}) {
+    const wanted = options && options.preselect;
+    if (!wanted) return null;
+    const groups = clinicPrintGetClassExamGroups(classId, 'class');
+    const sessionId = String(wanted.sessionId || '');
+    const group = (sessionId && groups.find(row => row.sessions.some(session => String(session.id) === sessionId)))
+        || groups.find(row => row.examKey === wanted.examKey);
+    if (!group || !group.printable) {
+        toast('이 시험은 원문과 연결되지 않아 시험 목록에서 직접 골라 주세요.', 'info');
+        return null;
+    }
+    clinicPrintExamPeriodFilters.set(String(classId), clinicPrintGetExamPeriod(group));
+    clinicPrintExamYearFilters.set(String(classId), clinicPrintGetExamYear(group));
+    return { classId: String(classId), examKey: group.examKey, studentId: String(wanted.studentId || '') };
+}
+
 // 옛 "클리닉 반 선택" 모달의 자리. 지금은 반 전환 탭이 있는 같은 작업 화면을 연다.
 function openClinicClassPicker() {
     return openClinicCenter('');
@@ -6126,8 +6191,11 @@ function clinicPrintRenderExamListHtml(classId, scope = 'class') {
     const initialSource = scope === 'grade' ? printableGroups : (currentClassPrintableGroups.length ? currentClassPrintableGroups : printableGroups);
     const groupKeys = new Set(groups.map(group => group.examKey));
     const currentChecked = new Set(clinicPrintGetCheckedValues('clinic-print-exam').filter(key => groupKeys.has(key)));
-    const initialKeys = currentChecked.size ? currentChecked : new Set(scope === 'grade'
-        ? initialSource.map(group => group.examKey) : (initialSource.length ? [initialSource[0].examKey] : []));
+    const preselect = clinicPrintPendingPreselect;
+    const preselectedKeys = scope === 'class' && preselect && String(preselect.classId) === String(classId) && groupKeys.has(preselect.examKey)
+        ? new Set([preselect.examKey]) : null;
+    const initialKeys = preselectedKeys || (currentChecked.size ? currentChecked : new Set(scope === 'grade'
+        ? initialSource.map(group => group.examKey) : (initialSource.length ? [initialSource[0].examKey] : [])));
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
     if (!groups.length) return '<div class="clinic-print-empty">선택한 기간의 시험이 없습니다. 다른 기간 또는 전체를 선택하세요.</div>';
@@ -6208,6 +6276,7 @@ async function openClinicPrintCenter(classId, options = {}) {
     }
     // 불러오는 동안 다른 반·탭으로 바꿨거나 닫았으면 이 응답으로 화면을 덮지 않는다.
     if (wsToken && !wsClinicIsCurrent(wsToken)) return;
+    clinicPrintPendingPreselect = clinicPrintResolvePreselect(classId, options);
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
     const examHtml = clinicPrintRenderExamListHtml(classId, 'class');
 
