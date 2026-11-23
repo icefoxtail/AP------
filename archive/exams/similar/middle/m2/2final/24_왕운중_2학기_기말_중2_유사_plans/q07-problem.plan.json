@@ -168,24 +168,31 @@
   "planeMarks": {
     "expressionLabels": [
       {
-        "id": "vAB",
-        "ownerSegment": "AB",
-        "text": "18",
-        "unit": "cm",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "vDB",
-        "ownerSegment": "DB",
-        "text": "6",
-        "unit": "cm",
-        "factRole": "GIVEN"
-      },
-      {
         "id": "vAE",
         "ownerSegment": "AE",
         "text": "10",
         "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dDB",
+        "from": "D",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "18",
+        "unit": "cm",
+        "side": "BELOW",
+        "offset": 2,
         "factRole": "GIVEN"
       }
     ]

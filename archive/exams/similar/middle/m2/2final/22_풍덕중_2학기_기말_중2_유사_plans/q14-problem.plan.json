@@ -1,84 +1,45 @@
 {
-  "capability": "set-diagram-figure-v1",
-  "diagram": {
-    "kind": "MAPPING",
-    "columns": [
-      {
-        "id": "A",
-        "name": "A",
-        "elements": [
-          "출발"
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 2
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        2,
+        1
+      ],
+      "B": [
+        3,
+        2
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        "P",
+        [
+          3,
+          1
         ]
-      },
-      {
-        "id": "B",
-        "name": "P",
-        "elements": [
-          "경유"
-        ]
-      },
-      {
-        "id": "C",
-        "name": "B",
-        "elements": [
-          "도착"
-        ]
-      }
-    ],
-    "arrows": [
-      {
-        "from": {
-          "column": 0,
-          "element": 0
-        },
-        "to": {
-          "column": 1,
-          "element": 0
-        }
-      },
-      {
-        "from": {
-          "column": 1,
-          "element": 0
-        },
-        "to": {
-          "column": 2,
-          "element": 0
-        }
-      }
+      ]
     ]
   },
-  "caption": "가로 3칸, 세로 2칸인 바둑판 모양 도로망에서 A 지점에서 P 지점을 거쳐 B 지점으로 가는 경유 관계를 나타낸 대응도이다. A에서 P까지는 가로 2칸, 세로 1칸이고 P에서 B까지는 가로 1칸, 세로 1칸이며 P에서 오른쪽으로 가는 도로는 공사 중이다.",
+  "caption": "가로 3칸, 세로 2칸인 바둑판 모양의 도로망이다. 왼쪽 아래 A에서 오른쪽 위 B까지 가는 길이고, 중간 지점 P에서 오른쪽으로 가는 도로는 공사 중이어서 점선으로 나타내었다.",
   "sourceConditions": [
     {
       "id": "source",
-      "condition": "가로 방향으로 $3$칸, 세로 방향으로 $2$칸인 바둑판 모양의 도로망이 있다. $A$지점에서 출발하여 중간 지점 $P$를 거쳐 $B$지점까지 최단 거리로 이동하려고 한다. $A$에서 $P$까지는 가로 $2$칸, 세로 $1$칸 떨어져 있고, $P$에서 $B$까지는 가로 $1$칸, 세로 $1$칸 떨어져 있다. 그런데 $P$지점에서 오른쪽으로 곧바로 가는 도로는 공사 중이어서 통행할 수 없다고 할 때, $A$지점에서 $P$지점을 거쳐 $B$지점까지 최단 거리로 가는 방법은 몇 가지인가? [4점]",
+      "condition": "가로 방향으로 3칸, 세로 방향으로 2칸인 바둑판 모양의 도로망에서 A에서 P를 거쳐 B까지 최단 거리로 이동한다. P에서 오른쪽으로 곧바로 가는 도로는 공사 중이다.",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
-    },
-    {
-      "id": "c1",
-      "condition": "가로 3칸, 세로 2칸의 바둑판 모양 도로망",
-      "mappedTo": "diagram"
-    },
-    {
-      "id": "c2",
-      "condition": "A에서 P까지는 가로 2칸, 세로 1칸",
-      "mappedTo": "diagram"
-    },
-    {
-      "id": "c3",
-      "condition": "P에서 B까지는 가로 1칸, 세로 1칸",
-      "mappedTo": "diagram"
-    },
-    {
-      "id": "c4",
-      "condition": "P에서 오른쪽으로 가는 도로는 공사 중",
-      "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
-    "A, P, B의 경유 관계",
-    "A에서 P까지 가로 2칸, 세로 1칸",
-    "P에서 B까지 가로 1칸, 세로 1칸"
+    "가로 3칸, 세로 2칸 도로망과 A, P, B의 위치, P에서 오른쪽 도로가 공사 중임"
   ]
 }

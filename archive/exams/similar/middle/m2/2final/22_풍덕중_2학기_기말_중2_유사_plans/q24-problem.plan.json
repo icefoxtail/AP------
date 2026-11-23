@@ -1,62 +1,164 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
-  "graphPlan": {
-    "family": "piecewise-polynomial",
-    "pieces": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
       {
-        "coefficients": [
-          "17/5",
-          "-1"
-        ]
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    ],
-    "breakpoints": [],
-    "sourceDomain": {
-      "kind": "INTERVAL",
-      "range": [
-        "0",
-        "17/5"
-      ],
-      "states": [
-        "CLOSED",
-        "CLOSED"
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "L",
+    "S"
+  ],
+  "hiddenPointNames": [
+    "H",
+    "L",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "HL",
+      "refs": [
+        "H",
+        "L"
       ]
     },
-    "domain": [
-      0,
-      4
-    ],
-    "viewport": [
-      -1,
-      4.5,
-      -1,
-      4.5
-    ],
-    "axisTickValues": {
-      "x": [],
-      "y": []
-    },
-    "overlays": {
-      "names": [
-        {
-          "id": "n1",
-          "text": "x+y=17/5",
-          "labelKind": "MATH",
-          "curveX": "1"
-        }
+    {
+      "id": "LS",
+      "refs": [
+        "L",
+        "S"
       ]
     }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dX",
+        "from": "H",
+        "to": "L",
+        "label": "x",
+        "unit": "km",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dY",
+        "from": "L",
+        "to": "S",
+        "label": "y",
+        "unit": "km",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dT",
+        "from": "H",
+        "to": "S",
+        "label": "3.4",
+        "unit": "km",
+        "side": "BELOW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tH",
+        "at": "H",
+        "text": "집",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tL",
+        "at": "L",
+        "text": "도서관",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tS",
+        "at": "S",
+        "text": "학교",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      }
+    ]
   },
-  "coordinatePlacement": "PANEL",
-  "caption": "집에서 도서관까지의 거리 x와 도서관에서 학교까지의 거리 y의 합이 3.4 km임을 직선으로 나타낸 것이다.",
-  "accessibilityDescription": "가로축 x와 세로축 y가 있고, 두 거리의 합이 3.4임을 나타내는 직선이 그려져 있다.",
+  "caption": "집에서 도서관을 거쳐 학교까지 가는 길을 나타낸 그림이다. 집에서 도서관까지의 거리는 x km, 도서관에서 학교까지의 거리는 y km이고, 집에서 학교까지의 전체 거리는 3.4 km이다.",
+  "accessibilityDescription": "한 직선 위에 집, 도서관, 학교가 차례로 있고 집에서 도서관까지는 x km, 도서관에서 학교까지는 y km, 전체는 3.4 km로 표시되어 있다.",
   "newVisualInformation": [
-    "두 거리 x, y의 합이 3.4 km임을 나타내는 직선"
+    "집, 도서관, 학교의 순서와 구간 거리 x, y, 전체 거리 3.4 km"
   ],
   "sourceConditions": [
     {
       "id": "source",
-      "condition": "[서술형 4] 집에서 도서관을 거쳐 학교까지의 총 거리는 $3.4\\text{ km}$이다. 민우가 집에서 도서관까지는 시속 $4\\text{ km}$로 걷고, 도서관에서 학교까지는 시속 $6\\text{ km}$로 뛰었더니 총 $45$분이 걸려서 학교에 도착하였다.  \n1) 집에서 도서관까지의 거리를 $x\\text{ km}$, 도서관에서 학교까지의 거리를 $y\\text{ km}$라고 할 때, 식을 세우기 위한 두 가지 조건(거리 조건, 시간 조건)을 찾아 연립방정식을 세우시오. (풀이과정 서술) [3점]  \n2) 민우가 집에서 도서관까지 이동한 거리와 도서관에서 학교까지 이동한 거리를 각각 구하시오. (풀이과정 서술) [3점]",
+      "condition": "집에서 도서관을 거쳐 학교까지의 총 거리는 3.4 km이다. 집에서 도서관까지의 거리를 x km, 도서관에서 학교까지의 거리를 y km라고 한다.",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]

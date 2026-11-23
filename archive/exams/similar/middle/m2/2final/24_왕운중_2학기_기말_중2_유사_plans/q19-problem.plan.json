@@ -1,13 +1,12 @@
 {
   "capability": "construction-spike-v1",
-  "caption": "정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유하고 있다. 점 P, Q가 각각 화살표 방향으로 움직이며, 두 점의 한 위치가 표시되어 있다.",
-  "accessibilityDescription": "한 변의 길이가 1인 정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유한 모습이다. 정삼각형의 변과 정사각형의 변에 시계 반대 방향을 나타내는 화살표가 있고, 점 P는 변 BC 위에, 점 Q는 정사각형의 변 DE 위에 표시되어 있다.",
+  "caption": "정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유하고 있다. 점 P는 꼭짓점 B에서, 점 Q는 꼭짓점 C에서 출발하며, 각 도형의 변 위에 시계 반대 방향 화살표가 있다.",
+  "accessibilityDescription": "한 변의 길이가 1인 정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유한 모습이다. 정삼각형의 변과 정사각형의 변에 시계 반대 방향을 나타내는 화살표가 있고, 점 P는 B에서, 점 Q는 C에서 출발한다고 표시되어 있다.",
   "newVisualInformation": [
     "정삼각형 ABC",
     "정사각형 BDEC",
     "공유하는 변 BC",
-    "정삼각형 위의 점 P",
-    "정사각형 위의 점 Q",
+    "P는 B에서, Q는 C에서 출발",
     "각 도형의 시계 반대 방향 화살표",
     "한 변의 길이 1"
   ],
@@ -131,46 +130,6 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
-      },
-      {
-        "id": "P",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
-        "args": {
-          "dx": {
-            "kind": "rational",
-            "numerator": "1",
-            "denominator": "3"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "Q",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
-        "args": {
-          "dx": {
-            "kind": "rational",
-            "numerator": "2",
-            "denominator": "3"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "-1"
-          }
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
       }
     ]
   },
@@ -179,9 +138,7 @@
     "C",
     "A",
     "D",
-    "E",
-    "P",
-    "Q"
+    "E"
   ],
   "displaySegments": [
     {
@@ -248,6 +205,22 @@
         "ownerSegment": "sBD",
         "text": "1",
         "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tP",
+        "at": "B",
+        "text": "P 출발",
+        "anchor": "SW",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tQ",
+        "at": "C",
+        "text": "Q 출발",
+        "anchor": "SE",
+        "labelWeight": "MATH"
       }
     ]
   },
