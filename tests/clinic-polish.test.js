@@ -36,10 +36,10 @@ test('꼬리표: 코드형 시험 이름은 한글 제목, "기출c"는 "기출"
   assert.equal(e.wrongNoteLabel({ examTitle: '자체 기출c 모음', questionNo: 6 }), '자체 기출 모음 · 원본 6번', '해석 못 하는 이름의 "기출c"도 "기출"로 보인다');
 });
 
-test('꼬리표: 해석할 수 없는 이름은 원문 그대로, 비어 있으면 "시험", 스크립트가 없어도 깨지지 않는다', () => {
+test('꼬리표: 사람이 쓴 이름은 원문 그대로, 비어 있으면 "시험", 스크립트가 없어도 깨지지 않는다', () => {
   const e = loadEngineLabels(ExamDisplayTitle);
   assert.equal(e.wrongNoteLabel({ examTitle: '3월 쪽지시험', questionNo: 3 }), '3월 쪽지시험 · 원본 3번');
-  assert.equal(e.wrongNoteLabel({ examTitle: 'custom-pack', questionNo: 3 }), 'custom-pack · 원본 3번');
+  assert.equal(e.wrongNoteLabel({ examTitle: 'custom-pack', questionNo: 3 }), '시험지 · 원본 3번', '내부 키처럼 생겼는데 못 푸는 이름은 main(#2702) displayTitleOf의 중립 제목');
   assert.equal(e.wrongNoteLabel({ examTitle: '', questionNo: 5 }), '시험 · 원본 5번');
   assert.equal(e.wrongNoteLabel({ questionNo: 5 }), '시험 · 원본 5번');
   const none = loadEngineLabels(undefined);

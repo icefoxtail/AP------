@@ -1638,7 +1638,9 @@ function getQuestionSolution(q) {
 // 보이는 시험 이름: 저장된 시험 이름이 내부 키(파일 이름 등)면 한글 제목으로 푼다. 저장값은 그대로.
 function readableExamLabel(value) {
     const text = String(value ?? '');
-    return window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    const readable = window.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    // 해석 못 한 이름의 "기출c"는 "기출"로 보인다(보이는 글자만).
+    return /기출[\s_]*(?:c|content)(?![A-Za-z0-9])/i.test(readable) ? (window.ExamDisplayTitle?.withoutContentMark?.(readable) || readable) : readable;
 }
 
 // 유사 추천 문항의 출처 이름 앞말(clinic-print.js가 붙인다). 뒤의 시험 이름만 한글 제목으로 푼다.
