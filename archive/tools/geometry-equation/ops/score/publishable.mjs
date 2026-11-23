@@ -1,14 +1,14 @@
 // The list of figures that may be published on a score (score gate, ops/score): render results that are ARCHIVE_BOUND and carry scoreGate SCORED_PASS
 // (render-plan --accept-scored 1). Each entry is the receipt: SCORED_PASS, score, passScore, tableVersion, deductions and the bound SVG.
 // A figure that passed without a score has no scoreGate and is not listed (it is published as before). The listing re-checks the receipt against the current table.
-//   node publishable.mjs --out <list.json> [--min <score>] <root> [<root> ...]     a root holds <exam>/out/<item>-result.json (batch folders) or <item>-result.json directly
+//   node publishable.mjs --out <list.json> [--min <score, can only raise the table pass line>] <root> [<root> ...]     a root holds <exam>/out/<item>-result.json (batch folders) or <item>-result.json directly
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadTable} from './score.mjs';
 
 export function listPublishable(roots,{min}={}){
-  const table=loadTable(),passScore=min??table.passScore,out=[];
+  const table=loadTable(),passScore=Math.max(table.passScore,min??0),out=[];
   const walk=dir=>{
     let entries;try{entries=fs.readdirSync(dir,{withFileTypes:true})}catch{return}
     for(const e of entries){
@@ -23,6 +23,7 @@ export function listPublishable(roots,{min}={}){
       if(gate.status!=='SCORED_PASS')problems.push('STATUS_NOT_SCORED_PASS');
       if(!(gate.score>=passScore))problems.push('SCORE_BELOW_PASS');
       if(!gate.tableVersion)problems.push('NO_TABLE_VERSION');
+      else if(gate.tableVersion!==table.version)problems.push('OLD_TABLE_RESCORE');
       if(!fs.existsSync(svg))problems.push('NO_BOUND_SVG');
       out.push({exam:path.basename(path.dirname(dir)),item,result:p,svg:fs.existsSync(svg)?svg:null,receipt:'SCORED_PASS',score:gate.score,passScore:gate.passScore,tableVersion:gate.tableVersion,stage:gate.stage,deductions:gate.deductions,publishable:problems.length===0,problems});
     }
