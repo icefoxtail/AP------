@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-f054f6105477-494c9bbf",
+  "sourceArchiveFile": "original/high/h2/1mid/21_효천고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7e5acc06303f89cffab28255a96e53ce7508db761d0fae025f2a426d1df68f98",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "step": "그림의 AP최단경로6에 PB경로10중 PRB경로2×3을 제외한4를 곱하여24이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c625fcb1cffe70a92a18c099fa7e76e81fd670456481575f400183bf64f5725",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "step": "각원소를 A와B모두/B만/둘다아님으로 배정하여3⁶=729이다.",
+      "note": "포함기호는 해설에 따라 등호허용으로 해석한다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-21e704e7dd26-0fa63c68",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "ac943413b2fb0d30a284fb3f30cf5ced35f3170a",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+        "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6d9757c340e3bd0f60f7728ce400c09e594b6818b24e9b8d4829d0940bd5658b",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION"
+      },
+      "rationale": "f(a)=2a+3=1을 세워 입력값 a=-1을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "444409cb3bbaaa25be30790e5dafc825d81fea065f9a3fa07ef2b0e2707ceed3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d13f71337cb7fb946060731137f6d0280b54bf776e6b974c964a0ba5dd5a687b",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_FORMULA"
+      },
+      "rationale": "y축 방향으로-2만큼 이동하면 모든 함숫값에서2를 빼므로 y=3x-2를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "8133b502726037230853d9ec1558ac65c8c7cef5e16a930314cc4ac9b9522b0f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6b327e7079d0f502a4afe22dcb1977fd0e11df95a11417aa6a85ec391dc74b2a",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "templateKey": "TPL_M2_LINEAR_EQUATION_POINT_SUBSTITUTION_POINT"
+      },
+      "rationale": "지나는점(-4,-2)을 x+ay+8=0에 대입하여4-2a=0에서 a=2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "7d079fb46f8a78576ac7d81956004bafdad11282edf1f84f8013a229b709979b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_17b89877ccd95cb53802037753270364a0c1c0a062f9b0ac773a88707d79111a",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT"
+      },
+      "rationale": "두 직선 교점(2,1)이 두 식의 공통해임을 이용해2a+2=4,2+b=-2를 풀고 a+b=-3을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "60ae797083dc4bc6a7429d930ddcb6f5dbf695cfdad0e0e151eec24ee09d2791",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5ec1b5a3db6a2f4d5e6d40acafa2428f88c48fe44e497475bbfe62bc2b6d05f8",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_COUNTING"
+      },
+      "rationale": "각 사람이12명과 악수하는13×12에서 각 악수를 두 번 센 중복을 나누어78을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "f885a2c0f678e73fe3627538e7e26246882e69f0da3ff4e979a8ae9a0ffebcaa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2f6781e99413d5250395e62484a047db4c00587eaa459c68bfe0add83d468c6c",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "서로다른 네 동전의16개 결과 중 뒷면 위치를 고르는4개가 앞면3개이므로 확률1/4를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "3842b2c6c0796a9cdb9ff8cee9625a4d5344e5aa8b8b45ac6775f6b8b679e7c4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_36672a96facba8b1cb6735a5388834302c91a6ec0d20896323c6c3ac118193aa",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "전체 두명선택21개 중 남자쌍6개와 여자쌍3개를 합한9개의 비를 취하여3/7을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "e4c1cd28cc435d03ff6f386fe579da3d638295ef9b31fa1632f1cb512f583628",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "독립 가정 아래 합이홀수인 짝홀과 홀짝 두 경우를 나누어1/2×1/3+1/2×2/3=1/2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "6efd990f13f1079318ebd80a8b77ec0e72f309b582fc6184d3aa07ce851b7317",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0b20ea9127511c9d3c915be2ee70919a94c70be8635298b16ddc7c2a6cebbe3b",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "승부 미결정인 같은눈6개를 전체36개에서 제외하여 승부결정확률30/36=5/6을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a0f8b13c22d1258644ee01f57612a92f02f37ddc92089cc2da11e373a732eeb4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0015dc69def320de7fa4e39bc81e7c8bbf7d53aa55fb05a7d5a96143cbdeff8b",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "모두뒷면과 적어도하나앞면은 서로 여사건이므로 두 확률의 합은1이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "342f30fd0119d3dc221f252f0b56d72b836dd216823d739e990adba67d557ca2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ff9040c2829edb3a2eb671bac7d239a6e35df2a84f571df44ca90438e5a7a575",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "각 문제를 독립적으로 임의선택할 때 모두틀림(2/3)³을1에서 빼 적어도하나정답확률19/27을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "1223c971782f202c9651f98329bafdee6ac71520a528c22af0f41cd362f794b8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "12칸주기의 이동에서6으로 가려면 눈의곱6·18·30이어야 한다. 순서쌍4+2+2=8개를 전체36개로나누어2/9를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "3a5d474f28c292bacb7168f1aebbe917958adae18ddb727b8343093765db952d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-21e704e7dd26-0fa63c68.type-ledger.json",
+          "sha256": "29a33a827d9e38761e1ef254f51494d18b559ac56f0283244d44464d1a4c3482"
+        }
+      ]
+    }
+  ]
+}

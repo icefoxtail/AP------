@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-10eef6db4c40-47640e9e",
+  "sourceArchiveFile": "original/high/h1/2mid/19_복성고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7c6331102cb79a49676febd593a05ac022186d0dac3f0fa05cb81f058f45804d",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_FUNCTION_RELATION",
+      "step": "같은 양 끝값과 비감소 조건으로 f가 상수 4임을 얻어 합성값을 검토한다.",
+      "note": "원문은 g의 정의역을 [0,1]로 제한하므로 g(4)는 정의되지 않음. 해설의 16은 g를 구간 밖까지 연장한 값; 상수함수 추론 골격만 판정.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

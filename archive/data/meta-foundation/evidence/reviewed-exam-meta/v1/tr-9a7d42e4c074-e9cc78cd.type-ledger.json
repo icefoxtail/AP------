@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-9a7d42e4c074-e9cc78cd",
+  "sourceArchiveFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_230039b5b0ea10146734affe31996ed9b96e7ce558f6a02f07b1076bb9e4a001",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "step": "내접원에 한 꼭짓점에서 그은 접선 길이가 같아 BE=8-3=5와 CF=6을 더한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33a7c24965a2e1c6cc381586254bcf9c77ae47556ef0c7490de1e888cd699677",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "step": "대각선이 각각 이등분되는 조건과 서로 다른 대각선 반쪽이 같은 조건을 구별해 후자는 충분하지 않음을 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ca36017950642a1a87aa6cc777af82bce21c9f25beb4bdf199465941a4e959d",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "두 직각삼각형에서 x제곱=12제곱+16제곱과 y제곱=15제곱-12제곱으로 x=20,y=9를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f31255f738adf570fbd46af8334c3af794e1b40e76c0bd39a145a8181f15b052",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "세 중선이 만드는 여섯 등넓이 삼각형 중 두 개의 합으로 전체90의1/3을 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_628aed5392a5d7b744d6776237dd0ae5026dcf1f5f302a950b17965d193bcdae",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "중점연결로 BE=2DF=18과 AC=4EF=20을 구하고 BG=2BE/3=12를 더한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d4cdaca8700004600c80cd728c21d51350ddee0bb48c2cc41667d76ea26194da",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "공통 밑변 중점M에서 두 무게중심이 중선의1/3 위치에 있어 GG'=AD/3=4를 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6e958cb172db7c68b9c038159544600ad77ddc2525a5dd4cae0a946a5dacf9c0",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "백의 자리0을 제외한3가지에 남은 십의 자리3과 일의 자리2를 곱한다.",
+      "note": " 새 PT 제안: 자릿수 조건을 가진 수 배열 세기. 첫자리0금지·홀짝·중복허용 조건에 따라 자리별 선택 수를 분류해 곱하고 합한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8fa880f988d841712d44356a69c2251e44e92cf35e0949189a7538116afd71ac",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "step": "피타고라스로 빗변17을 구한 뒤 내심에서 각 변까지 같은 거리r로 삼각형 넓이를 분할해60=20r을 푼다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

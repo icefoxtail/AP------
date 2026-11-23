@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-8306f147255d-dfb7c4f7",
+  "examUid": "21_제일고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/21_제일고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "27cba4a240fb85f331d4951b065021da872adb44",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8306f147255d-dfb7c4f7.type-ledger.json",
+        "sha256": "6918dd727bf8be95c683c44e63de76de8194451fc0abec738fca9237449e8f93"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e1830f32acd21cc81a589e705872a48381640c78ed41f636c3ab8b6183542f2f",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_AT_LEAST_ONE"
+      },
+      "rationale": "전체부분집합256에서 B원소를전혀포함않는{7,8}부분집합4를 빼252이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "8996999bc32fca1724d9d2c06eecc87c3c79b58029e3b0821351f2ef485f0c82",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8306f147255d-dfb7c4f7.type-ledger.json",
+          "sha256": "6918dd727bf8be95c683c44e63de76de8194451fc0abec738fca9237449e8f93"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b3cccc67a645072c626891bd3b20062c667f9afc3cf63414f72310bc3ce262b4",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION"
+      },
+      "rationale": "A,B모두배반인 C는 여합집합{3,4,6}의 부분집합으로8개이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "20941e6ec55611e3bdcd8859fcba6d695706bbd473f6ddcb722a0bb48bf18d57",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8306f147255d-dfb7c4f7.type-ledger.json",
+          "sha256": "6918dd727bf8be95c683c44e63de76de8194451fc0abec738fca9237449e8f93"
+        }
+      ]
+    }
+  ]
+}

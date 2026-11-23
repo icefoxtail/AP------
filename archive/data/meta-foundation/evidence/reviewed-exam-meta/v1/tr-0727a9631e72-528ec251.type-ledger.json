@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0727a9631e72-528ec251",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5122e7621c4603dad2582591cc0280d6befc4876c5bc968aa657fc6e5f1f6d6c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "중심에서 현에 내린 수선이 현을 이등분하므로 현 길이를 2√(10²−6²)=16으로 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_281a94e7a2179ea765cb7e013678a09d250e5dcdedf1d7a02152fba26492b781",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "반지름을 r로 놓고 반현 6과 중심거리 r−2에 피타고라스를 적용해 r²=(r−2)²+36을 푼다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db0d2d400cd5fc5597bb5a9a1bdb0b76ca32d16b9314aac09f79a7324d4c0676",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "접선과 반지름이 수직이고 PO=8+5=13이므로 접선 길이 √(13²−5²)=12를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_814c0b794d12bab5fc57c40340f16a58fdae01037bd66a41b8e86273fa790135",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "step": "같은 반지름과 같은 반현을 가진 두 직각삼각형의 RHS 합동으로 대응변 OM=ON을 증명한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    }
+  ]
+}

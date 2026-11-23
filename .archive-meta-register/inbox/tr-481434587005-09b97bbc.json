@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-481434587005-09b97bbc",
+  "examUid": "22_효천고_2학기_기말_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+  "expectedSourceBlobSha1": "70791f1645e22adda6e3a4bc9508b9ff5f291f0b",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-481434587005-09b97bbc.type-ledger.json",
+        "sha256": "4d279a6f6a1496c55332cda1e191ccf4b7e5b89234b89d2eaba87c82928d217a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_54fbd220644b6aec2675091f677525e63a18bdee1e07b48dcf4a86c5cc0f7859",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS"
+      },
+      "rationale": "적분함수의 도함수 f-g의 부호와 누적 넓이로 극값·최솟값 및 명제를 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "4265aca65b6d8d99801d585abfc05c626e6366c9d583bbd752fbdbb7ab5043f2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-481434587005-09b97bbc.type-ledger.json",
+          "sha256": "4d279a6f6a1496c55332cda1e191ccf4b7e5b89234b89d2eaba87c82928d217a"
+        }
+      ]
+    }
+  ]
+}

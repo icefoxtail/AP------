@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-b972d9cbc8f2-bd1f5a6e",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d65f174b9bea33f134a870877ad0351ffef843368d4825ec824f55ceb40f42c5",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+      "step": "꼭짓점 왼쪽에서 단조인 이차식의 양 끝값이 반대 부호가 되도록 매개변수를 제한한다.",
+      "note": "필요 TPL: 열린구간의 이차방정식 근 배치 — 양 끝 부호·꼭짓점·경계 제외로 구간 안의 근 개수를 제한한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e0e6a87d30f706f6e0a569b4430c94159ed75aacbc61dade6049a24b024ccd24",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "중근 제수의 근 1에서 나머지의 값과 도함수값을 원래 식과 같게 한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}
