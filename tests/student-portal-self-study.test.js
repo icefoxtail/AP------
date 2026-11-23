@@ -110,6 +110,22 @@ test('only plain exams/<name>.js paths on the same origin are downloaded and run
   assert.equal(called, 1);
 });
 
+test('a difficulty tag at the very start or end of the stem is hidden on the card; points, [보기] and inner brackets stay', () => {
+  for (const tag of ['하', '중', '상', '최상']) {
+    assert.equal(view.stripDifficultyTag(`[${tag}] 다음 값은?`), '다음 값은?', `leading [${tag}]`);
+    assert.equal(view.stripDifficultyTag(`다음 값은? [${tag}]`), '다음 값은?', `trailing [${tag}]`);
+    assert.doesNotMatch(view.renderCard({ id: 1, no: 1, content: `  [${tag}]  본문 $x$`, choices: [], answer: '1' }, deps), new RegExp(`\\[${tag}\\]`));
+  }
+  for (const keep of ['다음 값은? [3점]', '[4.4점] 값은?', '[보기] ㄱ. $x>0$', '구간 [중] 사이', '$x\\in[상]$ 일 때', '[서술형 1] 구하시오', '[상세] 설명', '$[하]$ 값은?']) {
+    assert.equal(view.stripDifficultyTag(keep), keep, `must keep: ${keep}`);
+  }
+  const rendered = view.renderCard({ id: 1, no: 1, content: '[중] 값은? [4.4점]', choices: [], answer: '1' }, deps);
+  assert.match(rendered, /값은\? \[4\.4점\]/);
+  const original = { id: 1, content: '[상] 원문' };
+  view.renderCard({ ...original, no: 1 }, deps);
+  assert.equal(original.content, '[상] 원문', 'source data is not changed');
+});
+
 function buttonHelpers() {
   const grab = name => html.match(new RegExp(`    function ${name}\\([^)]*\\) \\{[\\s\\S]*?\\n    \\}`))[0];
   const context = vm.createContext({

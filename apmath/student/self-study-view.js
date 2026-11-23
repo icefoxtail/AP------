@@ -82,6 +82,11 @@
       .replace(/^(?:<br\s*\/?>\s*)+/i, '').replace(/(?:<br\s*\/?>\s*)+$/i, '');
   }
 
+  /** Display only: a difficulty tag ([하] [중] [상] [최상]) at the very start or end of the stem is dropped. Points, [보기], inner brackets stay; the data is untouched. */
+  function stripDifficultyTag(text) {
+    return String(text ?? '').replace(/^\s*\[(?:최상|상|중|하)\]\s*/, '').replace(/\s*\[(?:최상|상|중|하)\]\s*$/, '');
+  }
+
   function decorateSolutionSections(html) {
     const lead = value => (value ? '<br>' : '');
     return String(html || '')
@@ -116,7 +121,7 @@
     try {
       if (!entry || entry.missing) return failedCardHtml(no, '');
       const T = deps.text;
-      const raw = stripInlineImages(entry.content ?? entry.question ?? '', Boolean(entry.image));
+      const raw = stripDifficultyTag(stripInlineImages(entry.content ?? entry.question ?? '', Boolean(entry.image)));
       let body = T.wrapLatex(raw);
       body = T.stripLeadingQuestionNumber(body, entry);
       body = T.normalizeQuestionContentBreaks(body, { subjective: /서(?:술|논술)형/.test(entry.questionType || '') });
@@ -408,6 +413,6 @@
 
   return {
     normalizeNumbers, buildWrongSet, buildTitle, hasRealSolution, hasAnswer, renderCard, failedCardHtml,
-    parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT
+    stripDifficultyTag, parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT
   };
 });
