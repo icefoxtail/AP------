@@ -18,6 +18,7 @@ const isRefusalError = error => error instanceof Error &&
 async function main() {
 const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
 const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
+const { judgeLockedMaster, RPM_MASTER_PATH } = await import("../archive/tools/meta-foundation/rpm-master-add-only.mjs");
 const { isUnambiguousLegacySourceUidAlias } = await import("../archive/tools/intelligence/question-identity-contract.mjs");
 const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
@@ -196,47 +197,8 @@ function assertNativeApproval(input, label) {
 // 원본은 영수증과 같은데 운영 검증기(nativeReviewReceipt)가 거절하는 문항(렌더러·UI 연속성 고정 등 운영 쪽 조건)은 Native 통과로 세지 않는다.
 // 대신 영수증 자체의 무결성만 여기서 직접 증명한다(렌더러·엔진 바이트는 보지 않는다): 영수증 형식·상태, 원본 지문, 증거 해시,
 // 적용 행·런타임 행·신원 행이 현재 값과 같음, 메타 개정 문자열. 하나라도 어긋나면 실패다.
-// LOCKED RPM master (add-only authority). The master only grows (new L3/L4 leaves are added; no name is changed or removed),
-// so a receipt that pinned an older master revision stays valid when (1) the pinned bytes are an immutable Git revision of
-// that same path and (2) every existing node of that revision is still present, unchanged and in order in the current file.
-// This is the same "historical bytes authenticate the old approval only" rule the issued-RPM-history verifier applies to the crosswalk.
-// Any other evidence file, and any master change that renames/removes/reorders a retained node, still fails as "evidence bytes drifted".
-const LOCKED_MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
-const masterHistoryCache = new Map();
-function retainedInOrder(old, current) {
-  if (Array.isArray(old)) {
-    if (!Array.isArray(current)) return false;
-    let at = 0;
-    for (const item of old) {
-      while (at < current.length && !retainedInOrder(item, current[at])) at += 1;
-      if (at >= current.length) return false;
-      at += 1;
-    }
-    return true;
-  }
-  if (old && typeof old === "object") {
-    return !!current && typeof current === "object" && !Array.isArray(current)
-      && Object.keys(old).every(key => Object.prototype.hasOwnProperty.call(current, key) && retainedInOrder(old[key], current[key]));
-  }
-  return old === current;
-}
-function lockedMasterGrewFrom(pinnedSha256) {
-  if (!masterHistoryCache.has(pinnedSha256)) {
-    let ok = false;
-    const commits = execFileSync("git", ["log", "--format=%H", "--", LOCKED_MASTER], { cwd: root, maxBuffer: 64 * 1024 * 1024 }).toString().split(/\s+/).filter(Boolean);
-    for (const commit of commits) {
-      let bytes;
-      try { bytes = execFileSync("git", ["show", commit + ":" + LOCKED_MASTER], { cwd: root, maxBuffer: 256 * 1024 * 1024 }); } catch { continue; }
-      if (sha256(bytes) !== pinnedSha256) continue;
-      const old = JSON.parse(bytes.toString("utf8")), current = JSON.parse(fs.readFileSync(path.join(root, LOCKED_MASTER), "utf8"));
-      ok = old.schemaVersion === current.schemaVersion && old.authorityStatus === "LOCKED" && current.authorityStatus === "LOCKED"
-        && retainedInOrder(old, current);
-      break;
-    }
-    masterHistoryCache.set(pinnedSha256, ok);
-  }
-  return masterHistoryCache.get(pinnedSha256);
-}
+// LOCKED RPM 마스터는 추가 전용이므로 영수증이 고정한 옛 판본(git 이력상 실제 판본)을 현재 마스터가 그대로 포함하면 인증한다.
+// 판정은 운영 검증기와 같은 한 벌(rpm-master-add-only.mjs)을 쓴다. 마스터 외 증거 파일은 여전히 바이트 일치만 허용한다.
 function assertReceiptIntegrity(input, label) {
   const { current, identity, source, ordinal } = input, { bytes, blobSha1, runtimeRecord } = input.nativeSource;
   const prefix = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
@@ -257,8 +219,8 @@ function assertReceiptIntegrity(input, label) {
   assert(Array.isArray(approval.evidenceRefs) && approval.evidenceRefs.length, label);
   for (const evidence of approval.evidenceRefs) {
     const currentSha = sha256(fs.readFileSync(path.join(input.nativeSource.root, evidence.path)));
-    if (currentSha !== evidence.sha256 && evidence.path === LOCKED_MASTER && input.nativeSource.root === root
-      && lockedMasterGrewFrom(evidence.sha256)) continue;
+    if (currentSha !== evidence.sha256 && evidence.path === RPM_MASTER_PATH && input.nativeSource.root === root
+      && judgeLockedMaster({ root, pinnedSha256: evidence.sha256 }).ok) continue;
     assert.strictEqual(currentSha, evidence.sha256, label + ": evidence bytes drifted");
   }
   const one = (rows, what) => { const hit = rows.filter(row => row.questionUid === current.questionUid); assert.strictEqual(hit.length, 1, label + ": " + what); return hit[0]; };
