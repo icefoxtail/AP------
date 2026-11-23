@@ -5,6 +5,7 @@
 //   node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out <outDir> [--packet-dir <dir>]
 //   node archive/tools/geometry-equation/production/render-plan.mjs --manifest <packetDir> --out <outDir> [--packet-dir <dir>]
 //     (<packetDir>.manifest.json lists items[{dir,sourcePath,ordinal,...}]; each plan is <packetDir>/<dir>/plan.json)
+//     --exam-batch N (or APMS_EXAM_BATCH=N, N >= 2): the figures of one exam, N at a time, share the Archive page for their measurements and captures (exam-batch.mjs); results are the same as one by one
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {fileURLToPath,pathToFileURL} from 'node:url';
 import {pythonWorker,closeWorkers} from './worker.mjs';
 import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
@@ -33,6 +34,7 @@ import {observeDisplayedPointNames,planNameExpectations} from './point-name-obse
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
 import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
+import {runExamBatch} from './exam-batch.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -531,7 +533,29 @@ async function runMain(argv){
   if(args.manifest){
     const manifest=JSON.parse(fs.readFileSync(args.manifest+'.manifest.json','utf8'));
     const results=[];
-    for(const meta of manifest.items){
+    const batchSize=Number(args['exam-batch']??process.env.APMS_EXAM_BATCH??0);
+    if(Number.isInteger(batchSize)&&batchSize>=2){
+      // Same exam, N at a time: one task per figure, run by exam-batch.mjs; the summary stays in manifest order.
+      const items=manifest.items,byExam=new Map(),groups=[];
+      items.forEach((meta,index)=>{const key=String(meta.sourcePath);if(!byExam.has(key))byExam.set(key,[]);byExam.get(key).push(index);});
+      for(const indexes of byExam.values())for(let at=0;at<indexes.length;at+=batchSize)groups.push(indexes.slice(at,at+batchSize));
+      const slots=new Array(items.length);
+      const stats={batches:0,batched:0,single:0},pageMs={};
+      for(const group of groups){
+        const settled=await runExamBatch(group.map(index=>async()=>{
+          const meta=items[index];
+          const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir']});
+          slots[index]={item:meta.dir,bucket:meta.bucket,fam:meta.fam,ordinal:meta.ordinal,...r};
+          console.log(line(r,meta.dir));
+          return r;
+        }));
+        if(settled.stats){for(const key of Object.keys(stats))stats[key]+=settled.stats[key];for(const [kind,ms] of Object.entries(settled.stats.pageMs))pageMs[kind]=(pageMs[kind]??0)+ms;}
+        const crashed=settled.find(entry=>entry.status==='rejected');
+        if(crashed)throw crashed.reason;
+      }
+      results.push(...slots);
+      console.error('exam batch: '+stats.batches+' shared measure/capture rounds covered '+stats.batched+' figure requests, '+stats.single+' went on alone; time in the shared pages: '+Object.entries(pageMs).map(([kind,ms])=>kind+' '+Math.round(ms/1000)+'s').join(', '));
+    }else for(const meta of manifest.items){
       const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir']});
       results.push({item:meta.dir,bucket:meta.bucket,fam:meta.fam,ordinal:meta.ordinal,...r});
       console.log(line(r,meta.dir));

@@ -86,7 +86,9 @@ const SHARED_PRODUCTION = [
   'plane-marks.mjs', 'plane-regions.mjs', 'plane-vectors.mjs', 'plane-callouts.mjs', 'plane_regions_observer.py', 'plane-marks-observer-worker.py', 'primitive-observer-worker.py',
   'graph_observer.py', 'graph-observer-worker.py', 'linked_exp_log_detail_observer.py', 'linear-text.mjs', 'polynomial-notation.mjs', 'cindy-observer.mjs',
   'layout-repair.mjs', 'layout-repair-audit.mjs', 'native-solution-overlay.mjs', 'fact-display-map-v1.mjs', 'repair-budget.mjs', 'source-policy.mjs',
-  'blinded-review.mjs', 'resolve-request.mjs', 'encoding-adjudication.mjs', 'archive-inverse-observation-v1.mjs'
+  'blinded-review.mjs', 'resolve-request.mjs', 'encoding-adjudication.mjs', 'archive-inverse-observation-v1.mjs',
+  // exam batch (the Archive page shared by the figures of one exam): imported by render-plan.mjs and construction-archive-capture-v1.mjs
+  'exam-batch.mjs'
 ];
 export const SHARED_FILES = new Set(SHARED_PRODUCTION.map(f => `${P}/${f}`));
 // Whole directories that are shared when the render reaches them: the python engine, pipeline core, page code, fonts, dependencies, measurement.

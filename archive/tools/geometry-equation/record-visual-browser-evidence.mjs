@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
@@ -68,7 +69,7 @@ function persistArchiveAbortEvidence(run,attempt,error,cleanup){
   error.code='ARCHIVE_CAPTURE_CANCELLED';error.cleanup=cleanup;error.abortEvidenceRef=path.relative(repoRoot,abortPath).replaceAll('\\','/');return error;
 }
 
-export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false}={}) {
+export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false,fullPageScreenshot=true}={}) {
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
   if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
   if(typeof blockExternalRequests!=='boolean')throw Error('ARCHIVE_NETWORK_POLICY_INVALID');
@@ -210,7 +211,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         }
         // Element screenshots first, the full-page one last (2026-11-23): a fullPage screenshot resizes the viewport, the page answers the resize and the font loading it causes with a full rebuild of #print-area (FONT_INVALIDATION), and an element screenshot taken then loses its element (Element is not attached to the DOM).
         if(item.mode==='sol')for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
-        await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
+        // fullPageScreenshot:false (the exam batch's shared measurement only) leaves out this one evidence picture of the whole exam page; the pictures of each figure's question box are still taken above.
+        if(fullPageScreenshot)await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
       }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
       await Promise.allSettled(responsePromises);
       checkCancelled();
@@ -283,6 +285,101 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
     throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({scope,archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors,...(rowEvidence.pageNotes?.length?{pageNotes:rowEvidence.pageNotes}:{})}));
   }
   return {status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json'))),archive,rowEvidence,observation,captureFolder};
+}
+// The envelope matrix of one measurement: the unmodified source (aliased when it only has window.examData), one row, one or more envelope targets. `run` is where the matrix and the
+// candidate copy are written (the candidate with flag wx: a second use of the same run directory fails).
+function writeEnvelopeMatrix({run,sourceRef,bank,sourceBytes,rowId,envelopeTargets,blockExternalRequests}){
+  const candidateName=path.basename(sourceRef.path),candidatePath=assertOutput(path.join(run,candidateName));
+  if(fs.existsSync(candidatePath))throw Error('IMMUTABLE_PREFLIGHT_CANDIDATE_EXISTS');
+  const aliasSuffix=bankAliasSuffix(sourceBytes.toString('utf8'));
+  fs.writeFileSync(candidatePath,aliasSuffix?Buffer.concat([sourceBytes,Buffer.from(aliasSuffix,'utf8')]):sourceBytes,{flag:'wx'});
+  const rawSha=ref=>ref.sha256.slice(7),candidateRef=fileRef(repoRoot,path.relative(repoRoot,candidatePath).replaceAll('\\','/'));
+  const sourceInfo={id:rowId,sourcePath:sourceRef.path,sourceSha256:rawSha(sourceRef),candidatePath:path.relative(repoRoot,candidatePath).replaceAll('\\','/'),candidateSha256:rawSha(candidateRef),questionCount:bank.length,assets:[]};
+  const row={...sourceInfo,mode:'sol',viewport:'desktop-envelope',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,'')),requireLocalResources:blockExternalRequests,requireQrRenderer:blockExternalRequests,envelopeTargets};
+  const matrix={schemaVersion:'GEOMETRY_ARCHIVE_DISPLAY_ENVELOPE_MATRIX_v1',synthetic:false,measurementOnly:true,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),sources:[sourceInfo],rows:[row]};
+  fs.writeFileSync(path.join(run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n');
+  return {candidateRef,candidateSha256:sourceInfo.candidateSha256,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
+}
+
+/**
+ * The display measurement of several figures of ONE exam from one open Archive page (2026-11-23).
+ * requests: [{run,sourceRef,sourceOrdinal,targetId,questionUid,intrinsicSvg,sizeClasses,sourceAuthorityStatus,solutionImageScale}]; blockExternalRequests applies to all of them.
+ * Returns one {ok:true,value} per request, where value is what measureArchiveDisplayEnvelope returns for that figure alone (its own run directory holds the matrix, the candidate copy,
+ * the row record and the context screenshot the single call would have written), or {ok:false} when the batch cannot vouch for that figure: the caller then runs the single call.
+ * A figure is answered only when its own envelope passed and nothing else on the page failed; a failure that belongs to no figure sends every figure to the single call.
+ */
+export async function measureArchiveDisplayEnvelopeBatch({requests,blockExternalRequests=false}){
+  const refuse=()=>requests.map(()=>({ok:false}));
+  const answers=refuse(),dirty=[];
+  if(typeof blockExternalRequests!=='boolean'||!requests.length)return answers;
+  let batchRoot=null;
+  try{
+    const first=requests[0].sourceRef;
+    const valid=[];
+    requests.forEach((request,index)=>{
+      const {run,sourceRef,sourceOrdinal,targetId,intrinsicSvg,sizeClasses=['full'],solutionImageScale}=request;
+      try{
+        if(solutionImageScale!==undefined&&!(Number.isFinite(solutionImageScale)&&solutionImageScale>=30&&solutionImageScale<=100))return;
+        assertOutput(run);
+        if(sourceRef?.path!==first.path||sourceRef?.sha256!==first.sha256)return;
+        if(!isArchiveExamSourcePath(sourceRef?.path)||!(Number.isSafeInteger(sourceOrdinal)&&sourceOrdinal>=1||typeof sourceOrdinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(sourceOrdinal))||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)return;
+        if(sizeClasses.some(v=>!['small','medium','large','full'].includes(v))||new Set(sizeClasses).size!==sizeClasses.length)return;
+        valid.push(index);
+      }catch{/* the single call raises the exact error */}
+    });
+    if(valid.length<2)return answers;
+    const sourceBytes=readBoundFile(repoRoot,first),bank=loadBank(sourceBytes.toString('utf8'));
+    const examUid=path.basename(first.path,'.js'),batchId='bm-'+crypto.randomUUID().slice(0,8);
+    batchRoot=path.join(repoRoot,'.tmp/archive',batchId);
+    const batchRun=assertOutput(path.join(batchRoot,examUid,'pre'));fs.mkdirSync(batchRun,{recursive:true});
+    const targets=[],used=new Set();
+    for(const index of valid){
+      const {sourceOrdinal,targetId,intrinsicSvg,sizeClasses=['full'],sourceAuthorityStatus='MEASUREMENT_ONLY',solutionImageScale}=requests[index];
+      const at=bank.findIndex(q=>q.id===sourceOrdinal);
+      if(at<0||used.has(targetId))continue;// not in the bank, or the same figure twice: the single call decides
+      used.add(targetId);
+      targets.push({index,envelope:{id:targetId,questionId:sourceOrdinal,displayOrdinal:at+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus,...(solutionImageScale!==undefined?{solutionImageScale}:{})}});
+    }
+    if(targets.length<2)return answers;
+    writeEnvelopeMatrix({run:batchRun,sourceRef:first,bank,sourceBytes,rowId:batchId,envelopeTargets:targets.map(t=>t.envelope),blockExternalRequests});
+    const archive=await recordArchiveEvidence({run:batchRun,attempt:'envelope-preflight',blockExternalRequests,fullPageScreenshot:false});
+    const folder=path.join(batchRun,'archive-render','envelope-preflight'),prefix=batchId+'-sol-desktop-envelope';
+    const rowEvidence=JSON.parse(fs.readFileSync(path.join(folder,prefix+'.json'),'utf8'));
+    const envelopes=rowEvidence.state?.displayEnvelopes||[];
+    // What is left of the row's errors once the envelope failures (each belongs to one figure) are taken out belongs to the page as a whole: it is every figure's failure.
+    const rest=[...(rowEvidence.errors||[])];
+    for(const envelope of envelopes)if(envelope.status!=='PASS')for(const error of envelope.errors?.length?envelope.errors:['DISPLAY_ENVELOPE_PROBE_FAIL']){const at=rest.indexOf(error);if(at>=0)rest.splice(at,1);}
+    if(rest.length||!rowEvidence.state?.pageCount)return answers;
+    for(const {index,envelope:asked} of targets){
+      const {run,sourceRef,targetId,questionUid=null,sourceAuthorityStatus='MEASUREMENT_ONLY'}=requests[index];
+      const raw=envelopes.find(v=>v.id===targetId);
+      if(!raw||raw.status!=='PASS')continue;
+      try{
+        // The figure's own run directory, written as the single call writes it.
+        dirty.push(run);
+        const written=writeEnvelopeMatrix({run:assertOutput(run),sourceRef,bank,sourceBytes,rowId:targetId,envelopeTargets:[asked],blockExternalRequests});
+        const own=assertOutput(path.join(run,'archive-render','envelope-preflight'));fs.mkdirSync(own,{recursive:true});
+        const ownPrefix=targetId+'-sol-desktop-envelope';
+        const notes=(rowEvidence.pageNotes||[]).filter(note=>note.scope!=='TARGET_BOX'||note.targetId===targetId);
+        const {pageNotes:_all,...rowRest}=rowEvidence;
+        const derived={...rowRest,id:ownPrefix,status:'PASS',...(notes.length?{pageNotes:notes}:{}),candidateSha256:written.candidateSha256,state:{...rowEvidence.state,displayEnvelopes:[raw]},errors:[]};
+        fs.writeFileSync(path.join(own,ownPrefix+'.json'),JSON.stringify(derived,null,2)+'\n');
+        const shot=path.join(folder,prefix+'-'+targetId+'-envelope-context.png');
+        if(fs.existsSync(shot))fs.copyFileSync(shot,path.join(own,ownPrefix+'-'+targetId+'-envelope-context.png'));
+        const observation={...raw,...(questionUid?{questionUid}:{}),synthetic:false,runtime:derived.runtime,browserVersion:derived.browserVersion,sourceRef,sourceAuthorityStatus};
+        answers[index]={ok:true,value:{status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef:written.candidateRef,matrixSha256:written.matrixSha256,archive:{status:'PASS',runtime:archive.runtime,synthetic:false,scope:archive.scope,rows:[{id:ownPrefix,status:'PASS',capture:derived.capture,errors:[]}],matrixSha256:written.matrixSha256},rowEvidence:derived,observation,captureFolder:own}};
+      }catch{
+        // leave the figure's run directory as the single call finds it: empty
+        try{fs.rmSync(run,{recursive:true,force:true});fs.mkdirSync(run,{recursive:true});}catch{/* the single call reports it */}
+      }
+    }
+    return answers;
+  }catch{
+    for(const run of dirty)try{fs.rmSync(run,{recursive:true,force:true});fs.mkdirSync(run,{recursive:true});}catch{/* the single call reports it */}
+    return refuse();
+  }finally{
+    if(batchRoot)try{fs.rmSync(batchRoot,{recursive:true,force:true});}catch{/* a later prune removes it */}
+  }
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=k=>process.argv[process.argv.indexOf(k)+1];const result=await recordArchiveEvidence({run:arg('--run'),attempt:process.argv.includes('--attempt')?arg('--attempt'):'attempt-01'});console.log(JSON.stringify(result));if(result.status!=='PASS')process.exitCode=1;
