@@ -264,7 +264,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "x=1에서 끊어지는 두 포물선 조각의 그래프이고, 왼쪽 조각은 아래로 볼록하며 오른쪽 조각은 위로 볼록하고, 높이 1에 점 R, P, Q가 표시되어 있다.",
+    "solutionImageCaption": "x=1에서 좌극한 -2, 우극한 2, f(1)=1이므로 |f(x)|→2이고 ㄱ은 참이다. x→2+에서 f(x)는 점 Q(2,1)에서 시작해 1보다 작은 값으로 가까워지므로 바깥 함수의 왼쪽 식으로 f(f(x))→1-2-1=-2이고 ㄴ은 참이다. 안쪽 함수가 1이 되는 x는 1-√3과 2(점 Q)이고 x=1에서도 끊어지므로 f(f(x))의 불연속점은 3개여서 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -533,7 +537,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "점 E에서 오른쪽 위로 가파르게 오르는 삼차곡선이 점 P에서 직선 l에 접하고, 그 위쪽에 더 가파른 삼차곡선 h가 P에서 만나며, 곡선 위에 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=1에서 아래 경계 직선 y=9x-9(l)와 위 경계 y=3x³-3(h)가 모두 0이므로 f(1)=0이다. f(x)-(9x-9)가 x=1에서 극솟값을 가지므로 f′(1)=9이다. 삼차함수 f(x)=x³+3x²-4가 되어 그림의 곡선은 P(1,0)에서 직선 l에 접하고 h와 만나며 두 경계 사이에 있다. f(2)=16이 점 Q(2,16)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

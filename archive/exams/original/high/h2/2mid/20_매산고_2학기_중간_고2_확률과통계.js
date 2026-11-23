@@ -88,7 +88,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQid": 2,
     "sourceProvenance": "ORIGINAL",
-    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc"
+    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A는 A∩B와 A∩(B의 여사건)으로 나뉘므로 P(A∩B)=0.4−0.2=0.2이다. 그림은 A만 0.2, 겹침 0.2, B만 0.6−0.2=0.4, 바깥 0.2이고 색칠한 B가 조건이다. 따라서 P(A|B)=0.2/0.6=1/3이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -804,7 +808,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "sourceQid": 18,
     "sourceProvenance": "ORIGINAL",
-    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc"
+    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 평균 12, 표준편차 2인 정규분포를 따르고 f(x)=P(X>x)이다. 8은 평균에서 4만큼 왼쪽이고 16은 평균에서 4만큼 오른쪽이어서 왼쪽 꼬리 P(X<8)와 오른쪽 꼬리 P(X>16)는 대칭으로 같다. 따라서 f(8)=1−P(X≤8)=1−f(16)이어서 f(8)+f(16)=1이고 a=16이다. 또 f(6)=P(X>6)=P(Z>−3)=P(Z<3)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

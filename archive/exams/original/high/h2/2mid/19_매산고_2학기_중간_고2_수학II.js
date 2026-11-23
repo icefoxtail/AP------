@@ -334,7 +334,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라 점 B에서 높이 1에 이르고 점 C 부근에서 내려가 가로축을 지나 점 D에서 가장 낮고 다시 올라 오른쪽 점 E에 이르는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "F(x)=x³-x²-2x+1의 정수에서의 값은 A(-2,-7), B(-1,1), C(0,1), D(1,-1), E(2,1)이다. 부호가 -에서 +로 바뀌는 (-2,-1), +에서 -로 바뀌는 (0,1), -에서 +로 바뀌는 (1,2)의 세 구간에서 곡선이 x축을 지난다. 정수가 아닌 근이 3개라고 했으므로 세 근이 이미 모두 채워져 (-1,0)에는 근이 없다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -530,7 +534,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "위로 볼록한 포물선과 곡선 위의 두 점 A, B가 있고, 두 점에서 접하는 직선 l1, l2가 포물선 위쪽의 점 C에서 만나며 A와 B를 잇는 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "접점의 x좌표 t가 점 C(3,6)을 지나는 조건 t²-6t+8=0에서 t=2, 4이다. 접점 A(2,7)에서의 접선은 l1: y=-x+9, 접점 B(4,1)에서의 접선은 l2: y=-5x+21이고 두 접선이 점 C에서 만난다. 삼각형 ABC의 밑변 AB=2√10, C에서 직선 AB까지의 거리 2/√10이라 넓이는 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -630,7 +638,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라 꼭대기 A에 이르러 내려가다 점 P 부근에서 가로축을 지나는 삼차곡선과 점 P에서 접하는 오르는 직선 l이 있고, 직선 위의 점 Q와 R, 곡선 위의 점 A를 잇는 두 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "P(1,0)에서의 접선 l은 y=x-1이고 y축과 만나는 점이 Q(0,-1)이며 곡선과 다시 만나는 점은 R(-2,-3)이다. 그림에서 A는 R과 P 사이의 곡선 위를 움직이는 점이고 삼각형 AQR의 밑변 QR은 직선 l 위에 있다. 넓이는 S(x)=x³-3x+2이고 S′(x)=3(x-1)(x+1)이라 x=-1에서 최대이다. 그림의 A(-1,2)에서 S=4이므로 최댓값은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -664,6 +676,10 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선과 원점을 지나는 직선이 점 A에서 만나고, A에서 포물선에 접하는 직선 l이 가로축과 점 B에서 만나며, 원점을 중심으로 l에 접하는 작은 원과 원점 O, A, B를 잇는 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "예: n=1일 때를 그린다. 곡선 y=x²과 직선 y=x가 만나는 점 A(1,1)에서의 접선 l은 y=2x-1이고 x절편은 B(1/2,0)이다. 원점 중심의 원 O1은 접선 l에 접하며 반지름은 원점에서 l까지의 거리 1/√5이다. 일반적으로 S_n=π/(5n²), 삼각형 OAB의 넓이 T_n=1/(4n²)이므로 S_n/T_{n+1}=(4π/5)(n+1)²/n²이다. n→∞에서 극한은 4π/5이다.",
+    "solutionImageSize": "full"
   }
 ];
