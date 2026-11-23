@@ -343,3 +343,75 @@ test('omr-submit behaves as before after the lookup was shared', async t => {
   assert.equal((await submit({ assignment_id: 'as-2', student_id: 's-b', student_token: token('s-b', '2222') })).status, 404, 'an excluded student');
   assert.equal((await submit({ student_token: 'bad' })).status, 401);
 });
+
+// ---- teacher-screen follow-up fields (additive): detail-data why_counts, exam-list self_study_students ----
+
+test('detail-data adds why_counts per set: only still-wrong items with a reason, no items, broken items_json skipped', async t => {
+  const { mf, db } = await startWorker();
+  t.after(() => mf.dispose());
+  await createSelfStudyTable(db);
+  await post(mf, { items: [
+    item('w:1', { src: 1, r: 'c', why: 'calc' }),            // right: its reason is not counted
+    item('w:2', { src: 2, r: 'w', why: 'calc' }),
+    item('w:3', { src: 3, r: 'u', why: 'calc' }),            // 모르겠어요 counts as wrong
+    item('w:4', { src: 4, r: 'w', why: 'misread' }),
+    item('w:5', { src: 5, r: 'w' }),                          // wrong without a reason: not counted
+    item('w:6', { src: 6 })                                   // unsolved
+  ] });
+  await post(mf, { items: [item('s:1:f.js:q1', { r: 'w', why: 'guess' })] }, { kind: 'similar' });
+  await post(mf, { items: [item('w:1', { r: 'w', why: 'concept' })] }, { assignment_id: 'as-2' });
+  await db.prepare("UPDATE student_self_study_sets SET items_json = '{not json' WHERE assignment_id = 'as-2'").run();
+
+  const detail = await call(mf, 'GET', 'students/s-a/detail-data', { headers: teacherHeaders('t1') });
+  assert.equal(detail.status, 200, JSON.stringify(detail.body));
+  assert.equal(detail.body.self_study_available, true);
+  assert.equal(detail.body.self_study.length, 3, 'the row with broken items_json is still listed');
+  assert.ok(detail.body.self_study.every(row => !('items' in row)), 'aggregates only');
+  const pick = (assignmentId, kind) => detail.body.self_study.find(row => row.assignment_id === assignmentId && row.kind === kind);
+  assert.deepEqual(pick('as-1', 'wrong').why_counts, { calc: 2, misread: 1, concept: 0, method: 0, guess: 0 });
+  assert.deepEqual(pick('as-1', 'similar').why_counts, { calc: 0, misread: 0, concept: 0, method: 0, guess: 1 });
+  assert.deepEqual(pick('as-2', 'wrong').why_counts, { calc: 0, misread: 0, concept: 0, method: 0, guess: 0 }, 'broken row: zeros, not an error');
+  assert.deepEqual([pick('as-2', 'wrong').total, pick('as-2', 'wrong').wrong], [1, 1], 'stored aggregate columns are untouched');
+  assert.equal((await call(mf, 'GET', 'students/s-a/detail-data', { headers: teacherHeaders('t2') })).status, 403);
+  // the by-class assignment read and the student's own read keep their old shape (no why_counts added there)
+  const byClass = await call(mf, 'GET', 'exam-sessions/by-class?class=class-a&assignment=as-1', { headers: teacherHeaders('t1') });
+  assert.ok(byClass.body.self_study.every(row => !('why_counts' in row) && Array.isArray(row.items)));
+  const own = await call(mf, 'GET', 'student-portal/self-study?student_id=s-a', { headers: { 'X-Student-Token': studentA.student_token } });
+  assert.ok(own.body.sets.every(set => !('why_counts' in set) && !('items' in set)));
+});
+
+test('exam list (by-class without assignment) adds self_study_students: one count per assignment, distinct students, own class only', async t => {
+  const { mf, db } = await startWorker();
+  t.after(() => mf.dispose());
+  await createSelfStudyTable(db);
+  await post(mf, { items: [item('w:1', { r: 'c' })] });                                              // s-a wrong
+  await post(mf, { items: [item('s:1:f.js:q1', { r: 'w', why: 'calc' })] }, { kind: 'similar' });   // s-a similar: same student
+  await post(mf, { items: [item('w:3', { r: 'w' })] }, { student_id: 's-b', student_token: token('s-b', '2222') });
+  await post(mf, { items: [item('w:1')] }, { assignment_id: 'as-2' });                               // opened only: nothing answered
+  await post(mf, { items: [item('w:1', { r: 'c' })] }, { student_id: 's-c', student_token: token('s-c', '3333'), assignment_id: 'as-x' });
+
+  const list = await call(mf, 'GET', 'exam-sessions/by-class?class=class-a', { headers: teacherHeaders('t1') });
+  assert.equal(list.status, 200, JSON.stringify(list.body));
+  const counts = Object.fromEntries(list.body.assignments.map(a => [a.id, a.self_study_students]));
+  assert.deepEqual(counts, { 'as-1': 2, 'as-2': 0 }, 'distinct students; an opened-only set and another class\'s paper do not count');
+  const first = list.body.assignments.find(a => a.id === 'as-1');
+  assert.equal(first.exam_title, '시험 1', 'existing assignment fields are unchanged');
+  assert.equal(first.question_count, 10);
+
+  const other = await call(mf, 'GET', 'exam-sessions/by-class?class=class-b', { headers: teacherHeaders('t2') });
+  assert.deepEqual(other.body.assignments.map(a => [a.id, a.self_study_students]), [['as-x', 1]]);
+  assert.equal((await call(mf, 'GET', 'exam-sessions/by-class?class=class-a', { headers: teacherHeaders('t2') })).status, 403, 'class permission unchanged');
+});
+
+test('exam list says nothing about self-study before the migration, and never creates the table', async t => {
+  const { mf, db } = await startWorker();
+  t.after(() => mf.dispose());
+  const list = await call(mf, 'GET', 'exam-sessions/by-class?class=class-a', { headers: teacherHeaders('t1') });
+  assert.equal(list.status, 200);
+  assert.equal(list.body.success, true);
+  assert.ok(list.body.assignments.length > 0);
+  assert.ok(list.body.assignments.every(a => !('self_study_students' in a)), 'field is omitted, not 0');
+  const detail = await call(mf, 'GET', 'students/s-a/detail-data', { headers: teacherHeaders('t1') });
+  assert.deepEqual(detail.body.self_study, []);
+  assert.equal(await db.prepare("SELECT name FROM sqlite_master WHERE name = 'student_self_study_sets'").first(), null);
+});

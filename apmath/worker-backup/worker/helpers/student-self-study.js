@@ -141,7 +141,19 @@ function parseStoredItems(json) {
   }
 }
 
-function shapeSet(row, includeItems) {
+// Counts the still-wrong items (r 'w' or 'u') per reason code. Items without a reason are not counted.
+// A broken items_json counts as no items, so one bad row never fails a whole response.
+export function whyCountsFromItems(items) {
+  const counts = Object.fromEntries(SELF_STUDY_WHY.map(code => [code, 0]));
+  for (const item of Array.isArray(items) ? items : []) {
+    if (!item || typeof item !== 'object') continue;
+    if (item.r !== 'w' && item.r !== 'u') continue;
+    if (SELF_STUDY_WHY.includes(item.why)) counts[item.why] += 1;
+  }
+  return counts;
+}
+
+function shapeSet(row, includeItems, includeWhyCounts = false) {
   const set = {
     student_id: row.student_id,
     assignment_id: row.assignment_id,
@@ -155,6 +167,7 @@ function shapeSet(row, includeItems) {
     completed_at: row.completed_at || null,
   };
   if (includeItems) set.items = parseStoredItems(row.items_json);
+  if (includeWhyCounts) set.why_counts = whyCountsFromItems(includeItems ? set.items : parseStoredItems(row.items_json));
   return set;
 }
 
@@ -198,7 +211,7 @@ export async function upsertSelfStudySet(env, { studentId, assignmentId, kind, c
 // One student's sets. Without an assignment id only the aggregates come back;
 // classScope (an array of class ids, or null for no restriction) limits what a
 // teacher preview may see.
-export async function listSelfStudySetsForStudent(env, studentId, { assignmentId = '', classScope = null } = {}) {
+export async function listSelfStudySetsForStudent(env, studentId, { assignmentId = '', classScope = null, withWhyCounts = false } = {}) {
   const where = ['student_id = ?'];
   const binds = [studentId];
   if (assignmentId) {
@@ -212,13 +225,13 @@ export async function listSelfStudySetsForStudent(env, studentId, { assignmentId
   }
   const includeItems = !!assignmentId;
   const result = await env.DB.prepare(`
-    SELECT ${SET_COLUMNS}${includeItems ? ', items_json' : ''}
+    SELECT ${SET_COLUMNS}${includeItems || withWhyCounts ? ', items_json' : ''}
     FROM ${SELF_STUDY_TABLE}
     WHERE ${where.join(' AND ')}
     ORDER BY updated_at DESC, assignment_id, kind
     LIMIT 500
   `).bind(...binds).all();
-  return (result.results || []).map(row => shapeSet(row, includeItems));
+  return (result.results || []).map(row => shapeSet(row, includeItems, withWhyCounts));
 }
 
 // Teacher reads. Both return { available, rows } and never throw: a missing or
@@ -241,8 +254,29 @@ export async function loadSelfStudyForAssignment(env, assignmentId, classId) {
 export async function loadSelfStudySummaryForStudent(env, studentId) {
   if (!(await selfStudyTableExists(env))) return { available: false, rows: [] };
   try {
-    return { available: true, rows: await listSelfStudySetsForStudent(env, studentId) };
+    // why_counts is the reason tally per set (the items themselves stay out of the aggregate list).
+    return { available: true, rows: await listSelfStudySetsForStudent(env, studentId, { withWhyCounts: true }) };
   } catch {
     return { available: false, rows: [] };
+  }
+}
+
+// Teacher exam list: how many students solved something, per assignment of one class, in a single query.
+// Returns { available, counts: { [assignmentId]: n } }. Never throws; a missing table is available:false.
+// A set that was only opened (correct + wrong = 0) does not count.
+export async function loadSelfStudyStudentCountsForClass(env, classId) {
+  if (!classId || !(await selfStudyTableExists(env))) return { available: false, counts: {} };
+  try {
+    const result = await env.DB.prepare(`
+      SELECT assignment_id, COUNT(DISTINCT student_id) AS students
+      FROM ${SELF_STUDY_TABLE}
+      WHERE class_id = ? AND (COALESCE(correct, 0) + COALESCE(wrong, 0)) > 0
+      GROUP BY assignment_id
+    `).bind(classId).all();
+    const counts = {};
+    for (const row of result.results || []) counts[String(row.assignment_id)] = Number(row.students || 0);
+    return { available: true, counts };
+  } catch {
+    return { available: false, counts: {} };
   }
 }
