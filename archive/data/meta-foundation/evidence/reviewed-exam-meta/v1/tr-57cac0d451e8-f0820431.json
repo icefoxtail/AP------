@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-57cac0d451e8-f0820431",
+  "requestSha256": "3e35d43cd8ef1220edee960f6d500a6f82733041225e6b29767e560db70bf2ee",
+  "examUid": "26_삼산중_1학기_중간_중3_유사",
+  "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+  "sourceBlobSha1": "0fab23f84e81836d9b10f63998efd54486b01c35",
+  "sourceRawSha256": "1362070f2ab2c5be1df4e0d47388e9519a996a74718fc023f8ae98e3e2d2cd31",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-57cac0d451e8-f0820431.type-ledger.json",
+        "sha256": "91f4d020eba254958e66009d6b35d1927494d278b6563154549ab4f6513bba1f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_55229f532dbb61c0b95b565306bd0637c141212b0ad57e4d1803109d1666c43a",
+      "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+      "sourceOrdinal": 24,
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-57cac0d451e8-f0820431",
+        "judge": "dots",
+        "rationale": "닮은 두 직사각형의 대응변 비 x:√6=√6:x/2에서 x=2√3을 구하고 사다리꼴 넓이를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중3-1",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "4cf4e3dc3e6471c13370acaedb95764de71c662888b639c70be1d0d66b85dfb5",
+        "judgedContentFingerprint": "1896fd17dc037834fcc1d905a33a8cad59b425de4d4fd837b0eee071543602b7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "45c6ad8bea76398c29d0ffce7fbd65b8a1d25cf58207c8858771d3aeffb7f92b",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-57cac0d451e8-f0820431.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+          "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+          "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

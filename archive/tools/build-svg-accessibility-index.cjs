@@ -96,7 +96,7 @@ function validateRecord(record, repoRoot, seen, options = {}) {
     fail('SVG_ACCESSIBILITY_ASSET_NOT_FOUND', assetRef);
   }
   const bytes = fs.readFileSync(assetPath);
-  assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef });
+  assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory });
   const svgText = svgAccessibilityText(bytes, assetRef);
   if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
     fail('SVG_ACCESSIBILITY_METADATA_MISMATCH', `${assetRef}:svg=${JSON.stringify(svgText)}:manifest=${JSON.stringify({ titleKo: record.titleKo.trim(), descriptionKo: record.descriptionKo.trim() })}`);
@@ -172,11 +172,13 @@ function sourceIndexForCoverage(manifest, sourceIndexPath) {
 }
 
 function productionRows(manifest, repoRoot, scopeOptions) {
+  // 문구 품질 미달(QUALITY_ONLY_CODES)은 막지 않고 여기에 모아 보고만 한다. 실제 결함은 assert가 계속 던진다.
+  const advisory = [];
   const live = collectSvgAccessibilitySourceIndex({ repoRoot });
   const scope = collectChangedSourceScope({ ...scopeOptions, repoRoot, currentIndex: live });
   for (const assetRef of scope.changedSvgRefs) {
     const bytes = fs.readFileSync(path.resolve(repoRoot, 'archive', assetRef));
-    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef });
+    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory });
   }
   const byKey = new Map();
   for (const row of manifest.records) byKey.set(manifestRecordKey(row), row);
@@ -205,7 +207,7 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         || roleUses[0];
       if (!representative) {
         if (managed) {
-          rows.push(validateRecord(managed, repoRoot, seen, { semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD' }));
+          rows.push(validateRecord(managed, repoRoot, seen, { semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory }));
         }
         continue;
       }
@@ -213,12 +215,12 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         use.sourceExamRef === managed.sourceExamRef && use.sourceQid === managed.sourceQid);
       if (managed && managedSourceStillBound) {
         const validated = validateRecord(managed, repoRoot, seen, {
-          semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD'
+          semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory
         });
         rows.push(validated);
       } else {
         const derived = recordFromCurrentSvg(representative, repoRoot);
-        rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin }));
+        rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin, advisory }));
       }
     }
   }
@@ -226,6 +228,7 @@ function productionRows(manifest, repoRoot, scopeOptions) {
   const rosterBytes = Buffer.from(JSON.stringify({ sourceRoots: live.sourceRoots, scopedUses }));
   return {
     rows,
+    advisory,
     scope: {
       scopeMode: scope.scopeMode,
       baseRef: scope.baseRef,
@@ -304,6 +307,7 @@ function compileManifest(options) {
   let sourceIndexBytes;
   let sourceIndexSha256;
   let buildScope;
+  let qualityAdvisory = [];
   if (sourceIndexPath) {
     const audit = sourceIndexForCoverage(manifest, sourceIndexPath);
     sourceIndexBytes = audit.sourceIndexBytes;
@@ -314,6 +318,7 @@ function compileManifest(options) {
   } else {
     const production = productionRows(manifest, repoRoot, config);
     records = production.rows;
+    qualityAdvisory = production.advisory;
     sourceIndexBytes = production.scope.sourceIndexBytes;
     const { sourceIndexBytes: _sourceIndexBytes, ...publicScope } = production.scope;
     buildScope = publicScope;
@@ -341,6 +346,7 @@ function compileManifest(options) {
   }
   return {
     recordCount: records.length,
+    qualityAdvisory,
     outputPath,
     sourceIndexSha256: `sha256:${sourceIndexSha256}`,
     ...(sourceIndexPath ? {} : {
@@ -355,18 +361,40 @@ function compileManifest(options) {
   };
 }
 
+// 수리 목록: 문구 품질 미달 그림은 게시를 막지 않고 건수와 목록(앞 50개)만 낸다.
+function reportQualityAdvisory(rows) {
+  if (!Array.isArray(rows) || !rows.length) return;
+  const refs = [...new Set(rows.map(row => row.assetRef))].sort();
+  process.stdout.write(`SVG_ACCESSIBILITY_QUALITY_ADVISORY svgs=${refs.length} findings=${rows.length} (not blocking; repair list)\n`);
+  for (const ref of refs.slice(0, 50)) {
+    const codes = [...new Set(rows.filter(row => row.assetRef === ref).map(row => row.code.replace(/^SVG_(ACCESSIBILITY_)?/, '') + (row.surface ? '@' + row.surface : '')))];
+    process.stdout.write(`  ${ref} ${codes.join(',')}\n`);
+  }
+  if (refs.length > 50) process.stdout.write(`  ... ${refs.length - 50} more\n`);
+  process.stdout.write('  (full list of every SVG in the repository: node archive/tools/build-svg-accessibility-index.cjs --quality-report <out.tsv|out.json>)\n');
+}
+
 if (require.main === module) {
   try {
     const args = process.argv.slice(2);
     const options = {};
+    let qualityReportPath = null;
     for (let i = 0; i < args.length; i++) {
-      if (args[i] === '--expected-source-index' && args[i + 1]) options.expectedSourceIndexPath = path.resolve(args[++i]);
+      if (args[i] === '--quality-report' && args[i + 1]) qualityReportPath = path.resolve(args[++i]);
+      else if (args[i] === '--expected-source-index' && args[i + 1]) options.expectedSourceIndexPath = path.resolve(args[++i]);
       else if (args[i] === '--base' && args[i + 1]) options.baseRef = args[++i];
       else if (args[i] === '--check') options.check = true;
       else fail('INVALID_SVG_ACCESSIBILITY_COMPILER_ARGUMENT', args[i]);
     }
-    const report = compileManifest(options);
-    process.stdout.write(`SVG_ACCESSIBILITY_INDEX_BUILT records=${report.recordCount} sourceIndexSha256=${report.sourceIndexSha256} scope=${report.scopeMode || 'UNKNOWN'} base=${report.baseRef || 'none'} output=${report.outputPath}\n`);
+    if (qualityReportPath) {
+      // 목록만 쓴다: 색인은 쓰지 않고, 차단하지 않고, 성공으로 끝난다.
+      const result = require('./svg-quality-report.cjs').writeQualityReport({ outPath: qualityReportPath });
+      process.stdout.write(`SVG_QUALITY_REPORT scanned=${result.scanned} flagged=${result.flagged} counts=${JSON.stringify(result.countsByCode)} elapsedMs=${result.elapsedMs} output=${result.outPath}\n`);
+    } else {
+      const report = compileManifest(options);
+      reportQualityAdvisory(report.qualityAdvisory);
+      process.stdout.write(`SVG_ACCESSIBILITY_INDEX_BUILT records=${report.recordCount} sourceIndexSha256=${report.sourceIndexSha256} scope=${report.scopeMode || 'UNKNOWN'} base=${report.baseRef || 'none'} output=${report.outputPath}\n`);
+    }
   } catch (error) {
     process.stderr.write(`${error && error.message ? error.message : error}\n`);
     process.exitCode = 1;

@@ -472,7 +472,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "sourceQuestionRef": "22_팔마고_1학기_기말_고2_확률과통계:q14",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED"
+    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "상위 4%의 경계는 오른쪽 꼬리가 0.04인 점수이다. P(0≤Z≤1.75)=0.46이므로 꼬리 0.5−0.46=0.04의 경계가 z=1.75이다. 점수는 60+10×1.75=77.5점이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -606,7 +610,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p5:q18",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "성공확률은 4/6=2/3이고 162회의 성공 횟수는 B(162, 2/3)이므로 평균 108, 표준편차 6이다. 정규근사에서 구하는 구간은 z=0.5부터 2까지이고 넓이는 표의 두 값의 차 0.4772−0.1915=0.2857이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -639,7 +647,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p5:q19",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표본평균은 평균 5, 표준편차 1.2/√n인 정규분포를 따른다. 구간 ±0.24가 ±1σ와 일치하려면 1.2/√n=0.24이고 √n=5, n=25이다. 그림은 이때 표본평균의 분포이며 4.76부터 5.24까지가 가운데 ±1σ 구간이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

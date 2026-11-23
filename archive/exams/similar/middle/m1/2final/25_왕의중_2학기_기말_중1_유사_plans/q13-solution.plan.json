@@ -1,0 +1,45 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 5,
+      "height": 30,
+      "stack": {
+        "count": 3,
+        "radius": 5
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "top"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "side": "RIGHT"
+    }
+  ],
+  "caption": "원기둥 높이 6r=30cm와 부피 750π로부터 r=5cm를 구하고 공 1개의 겉넓이 100π cm²를 구한다.",
+  "accessibilityDescription": "원기둥 높이가 6r임을 이용하여 반지름 5cm와 공의 겉넓이 100π를 계산하는 해설 그림이다.",
+  "sourceQuote": "공 3개가 세로로 쌓여 원기둥의 두 밑면에 접하므로",
+  "newVisualInformation": [
+    "높이 6r=30cm와 반지름 r=5cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "cylinder of volume 750pi with 3 inscribed spheres"
+    }
+  ],
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q13-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q13-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q13-solution.svg"
+  }
+}

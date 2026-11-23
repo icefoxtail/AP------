@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 외각 50°, 45°로부터 내각 130°, 135°를 구하고 내각합 720°에서 x=125°를 구한다.",
+  "accessibilityDescription": "육각형의 내각의 합 720도를 이용하여 각 x가 125도임을 나타낸 해설 그림이다.",
+  "sourceQuote": "육각형의 내각의 크기의 합은",
+  "newVisualInformation": [
+    "내각 130도와 135도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "hexagon with exterior angles 50 and 45 and interior angles 115, 110, 105, x"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "70"
+            },
+            {
+              "kind": "integer",
+              "value": "55"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "46"
+            },
+            {
+              "kind": "integer",
+              "value": "96"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "105"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-22"
+            },
+            {
+              "kind": "integer",
+              "value": "47"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "137"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "E2",
+    "E4"
+  ],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s56",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "s61",
+      "refs": [
+        "P6",
+        "P1"
+      ]
+    },
+    {
+      "id": "sExt2",
+      "refs": [
+        "P2",
+        "E2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sExt4",
+      "refs": [
+        "P4",
+        "E4"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "E2",
+    "E4"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "in1",
+        "refs": [
+          "P6",
+          "P1",
+          "P2"
+        ],
+        "value": 115,
+        "label": "115"
+      },
+      {
+        "id": "in2",
+        "refs": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "value": 130,
+        "label": "130"
+      },
+      {
+        "id": "in3",
+        "refs": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "value": 110,
+        "label": "110"
+      },
+      {
+        "id": "in4",
+        "refs": [
+          "P3",
+          "P4",
+          "P5"
+        ],
+        "value": 135,
+        "label": "135"
+      },
+      {
+        "id": "in5",
+        "refs": [
+          "P4",
+          "P5",
+          "P6"
+        ],
+        "value": 105,
+        "label": "105"
+      },
+      {
+        "id": "in6",
+        "refs": [
+          "P5",
+          "P6",
+          "P1"
+        ],
+        "value": 125,
+        "label": "125"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q02-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q02-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q02-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q02-solution.svg"
+  }
+}

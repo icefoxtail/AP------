@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "c1",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 14.142135623730951
+    }
+  ],
+  "dims": [
+    {
+      "solid": "c1",
+      "radius": "bottom"
+    },
+    {
+      "solid": "c1",
+      "slant": true
+    }
+  ],
+  "caption": "옆넓이 공식으로부터 밑면 반지름 r=5cm를 구하고 밑넓이 25π를 더해 겉넓이 100π cm²를 구한다.",
+  "accessibilityDescription": "원뿔의 밑면 반지름 5cm와 모선 15cm로부터 겉넓이 100π를 구하는 과정을 보여주는 해설 그림이다.",
+  "sourceQuote": "원뿔의 옆넓이는 $\\pi r l$이므로",
+  "newVisualInformation": [
+    "밑면 반지름 5cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "cone with slant height 15cm"
+    }
+  ],
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q12-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q12-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q12-solution.svg"
+  }
+}

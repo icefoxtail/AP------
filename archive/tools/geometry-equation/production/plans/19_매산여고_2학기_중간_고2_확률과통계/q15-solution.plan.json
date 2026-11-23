@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Y",
+        "mean": "21",
+        "sd": "4",
+        "label": "Y"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "21"
+      },
+      {
+        "x": "25"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "25",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.8413"
+      }
+    ]
+  },
+  "caption": "X는 N(10, 4)이므로 평균 10, 표준편차 2이다. Y=2X+1의 평균은 21, 표준편차는 4이다. 25는 z=(25−21)/4=1이다. 색칠한 왼쪽 전체의 넓이는 0.5+0.3413=0.8413이다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "25가 z=1이고 왼쪽 전체 넓이가 0.5에 0.3413을 더한 값임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 정규분포 $\\mathrm{N}(10, 4)$을 따른다. 확률변수 $Y=2X+1$일 때, 표준정규분포표를 이용하여 $P(Y \\le 25)$을 구하시오. [4.4점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| :---: | :---: |\n| $0.5$ | $0.1915$ |\n| $1.0$ | $0.3413$ |\n| $2.0$ | $0.4332$ |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

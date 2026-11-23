@@ -1,0 +1,59 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 두 포물선과 정삼각형 ABC의 배치를 보여준다."
+  },
+  "solution": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "0",
+            "0",
+            "1"
+          ]
+        }
+      ],
+      "breakpoints": [],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "formula": "x^2",
+      "referenceCurves": [
+        {
+          "id": "g",
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "3",
+            "-1/2"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          }
+        }
+      ],
+      "requiredPoints": [
+        {
+          "id": "A",
+          "x": -6,
+          "y": 36
+        },
+        {
+          "id": "B",
+          "x": -6,
+          "y": -36
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -6
+        ],
+        "y": []
+      }
+    },
+    "caption": "x=-6에서 두 포물선 위의 점 A(-6, 36), B(-6, -36)과 x축 위의 점 C가 정삼각형을 이룬다."
+  }
+}
