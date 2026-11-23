@@ -133,7 +133,9 @@ function wsxListHtml() {
         const active = exam.key === wsx.selKey;
         const meta = exam.isDraft
             ? `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 새 시험`
-            : `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 제출 ${exam.count}/${exam.targetCount}명 (${exam.pct}%)`;
+            : exam.similar
+                ? `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 유사 · 자습용 · 응시 ${exam.count}명`
+                : `${wsxEsc(exam.date)} · ${exam.qCount}문항 · 제출 ${exam.count}/${exam.targetCount}명 (${exam.pct}%)`;
         return `<button type="button" class="apms-workspace__item wsx-exam-item${active ? ' is-active' : ''}" aria-current="${active ? 'true' : 'false'}" onclick="wsxSelectExam(${idx})">
             <span class="wsx-exam-item__main">
                 <span class="wsx-exam-item__title">${wsxEsc(exam.displayTitle)}</span>
@@ -280,7 +282,7 @@ function wsxDetailHtml() {
     const detail = wsxDetail();
     if (!detail) return '<div class="wsx-empty">왼쪽에서 시험을 고르면 학생별 점수와 입력 칸이 여기에 나옵니다.</div>';
     const exam = detail.exam;
-    const meta = [exam.date, `${detail.qCount}문항`, `제출 ${detail.submittedCount}/${detail.total}명`, detail.avg === null ? '' : `평균 ${detail.avg}점`].filter(Boolean).join(' · ');
+    const meta = [exam.date, `${detail.qCount}문항`, exam.similar ? `유사 · 자습용 · 응시 ${detail.submittedCount}명` : `제출 ${detail.submittedCount}/${detail.total}명`, detail.avg === null ? '' : `평균 ${detail.avg}점`].filter(Boolean).join(' · ');
     const f = wsx.filter;
     const tab = (id, label, n) => `<button type="button" class="wsx-filter__btn${f === id ? ' is-active' : ''}" aria-pressed="${f === id}" onclick="wsxSetFilter('${id}')">${label} ${n}</button>`;
     return `<div class="wsx-detail__head">

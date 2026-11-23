@@ -2,12 +2,20 @@
  * AP Math OS 1.0 [js/report-center.js]
  * 리포트 센터 본체: 데이터/캐시·문항·난이도·AI 분석·문구 생성·스튜디오·모달 (report-text.js 이후 로드)
  */
+// 유사 시험지로 출제된 응시·시험인가(출제 archive_file 경로, 저장 안 함). 판정 본체는 js/similar-exam.js 한 곳.
+function reportCenterIsSimilarExam(row) {
+    return globalThis.ApSimilarExam?.isSimilarExamRow(row) === true;
+}
+
 /**
  * 학생의 최근 성적 평균 계산
+ * 기본은 학교 시험 성적으로 세는 응시만(유사 시험지로 출제된 응시 제외 — 판정은 js/similar-exam.js).
+ * 시험 목록처럼 유사까지 보여야 하는 곳만 { includeSimilar: true }를 쓴다.
  */
-function reportCenterGetSortedStudentExamSessions(studentId) {
+function reportCenterGetSortedStudentExamSessions(studentId, { includeSimilar = false } = {}) {
     return (state.db.exam_sessions || [])
         .filter(s => String(s.student_id) === String(studentId))
+        .filter(s => includeSimilar || !reportCenterIsSimilarExam(s))
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
 }
 
@@ -1441,6 +1449,7 @@ function reportCenterGetSchoolExamGroups() {
                 key,
                 archiveFile: key,
                 title: reportCenterResolveExamDisplayTitle(session) || key,
+                similar: reportCenterIsSimilarExam(session),
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 examDate: session.exam_date || '',
@@ -1567,7 +1576,7 @@ function reportCenterBuildCounselPreview(studentId) {
 
     const consultations = reportCenterGetRecentConsultations(studentId, 3);
     const exams = (state.db.exam_sessions || [])
-        .filter(e => String(e.student_id) === String(studentId))
+        .filter(e => String(e.student_id) === String(studentId) && !reportCenterIsSimilarExam(e))
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))
         .slice(0, 5);
     const examLine = exams.length
@@ -1976,6 +1985,7 @@ function reportCenterBuildExamHubList() {
                 key: archiveFile,
                 archiveFile,
                 title: reportCenterResolveExamDisplayTitle(session) || archiveFile,
+                similar: reportCenterIsSimilarExam(session),
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 takers: 0,
@@ -2053,7 +2063,7 @@ function reportCenterRenderExamHubCard(row, studentId) {
                 onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(row.archiveFile)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')"
                 style="display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; cursor:pointer;">
             <span style="min-width:0;">
-                <span style="display:block; font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">${reportCenterEscape(row.title || '시험지')}</span>
+                <span style="display:block; font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">${reportCenterEscape(row.title || '시험지')}${row.similar ? ' <span class="aprc-chip" title="유사 시험지 자습용 · 성적 평균·추이에서 제외">유사 · 자습용</span>' : ''}</span>
                 <span style="display:block; font-size:12px; font-weight:700; color:var(--secondary); margin-top:3px;" title="${reportCenterAttr(scopeTitle)}">${reportCenterEscape(meta || '-')}</span>
             </span>
             <span style="flex-shrink:0; font-size:18px; font-weight:900; color:var(--secondary);" aria-hidden="true">›</span>
@@ -2888,7 +2898,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
             <section class="aprc-section">
                 <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap;">
                     <div style="min-width:0;">
-                    <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(hub.title || '시험지')}</div>
+                    <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(hub.title || '시험지')}${hub.similar ? ' <span class="aprc-chip" title="유사 시험지 자습용 · 성적 평균·추이에서 제외">유사 · 자습용</span>' : ''}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)}</div>
                     </div>
                     <div style="display:flex; gap:6px; flex-wrap:wrap;">
@@ -3278,7 +3288,7 @@ function reportCenterGetStudentPrimaryClass(studentId) {
 function reportCenterBuildStudentStatusChips(studentId) {
     const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .filter(session => String(session.student_id) === String(studentId));
-    const latest = sessions.slice().sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))[0];
+    const latest = sessions.filter(session => !reportCenterIsSimilarExam(session)).sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))[0];
     const chips = [];
     if (latest && !reportCenterGetWrongIds(latest.id).length) chips.push('오답 미입력');
     const saved = (Array.isArray(state?.db?.student_reports) ? state.db.student_reports : [])
@@ -3634,10 +3644,10 @@ function reportCenterGetTargetProgressForReport(studentId) {
 
 function reportCenterGetExamReportData(studentId, sessionId = '') {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
-    const sessions = reportCenterGetSortedStudentExamSessions(studentId);
+    const sessions = reportCenterGetSortedStudentExamSessions(studentId, { includeSimilar: true });
     const session = sessionId
         ? sessions.find(e => String(e.id) === String(sessionId))
-        : sessions[0];
+        : (sessions.find(e => !reportCenterIsSimilarExam(e)) || sessions[0]);
 
     if (!student || !session) {
         return { student: student || null, session: session || null, sessions, stats: null, wrongSummary: [], classInfo: reportCenterGetStudentClass(studentId), targetProgress: null, archiveDetails: null };
