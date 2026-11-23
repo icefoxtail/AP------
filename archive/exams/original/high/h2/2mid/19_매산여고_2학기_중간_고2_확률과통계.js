@@ -630,7 +630,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "등교 시간 X는 N(25, 8의 제곱)이고 지각하지 않으려면 X≤37이다. 37은 z=(37−25)/8=1.5이다. 색칠한 왼쪽 전체의 넓이는 평균 왼쪽 0.5에 0부터 1.5까지의 0.4332를 더한 0.9332이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -682,7 +686,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(X≥m+3σ)=0.0013이면 대칭으로 P(X≤m−3σ)=0.0013이다. P(X≥k)=0.9987이면 P(X<k)=0.0013이므로 k는 왼쪽 꼬리의 경계 m−3σ이다. 평균 40, 표준편차 5이므로 k=40−15=25이다. 그림은 양쪽 꼬리 0.0013씩이며 오른쪽 꼬리의 경계는 55이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -735,7 +743,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "정규분포 확률",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "성공 횟수 X는 B(720, 1/6)이고 평균 120, 표준편차 10인 정규분포로 근사한다. 110은 z=−1, 125는 z=0.5이다. 평균을 경계로 −1부터 0까지는 대칭으로 0부터 1까지와 같아 0.3413이고 0부터 0.5까지는 0.1915이다. 합은 0.3413+0.1915=0.5328이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -787,7 +799,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(10, 4)이므로 평균 10, 표준편차 2이다. Y=2X+1의 평균은 21, 표준편차는 4이다. 25는 z=(25−21)/4=1이다. 색칠한 왼쪽 전체의 넓이는 0.5+0.3413=0.8413이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
