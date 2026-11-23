@@ -43,6 +43,7 @@
   const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
   let runtime = null;
   let inputBundle = null;
+  let bundledVersion = null;
   let finalCatalog = null;
   let finalByUid = new Map();
   let overlayByUid = new Map();
@@ -140,11 +141,10 @@
   }
 
   function applyCatalogOverlay(catalog) {
-    if (!inputBundle || !finalCatalog) throw new Error("Archive 2.0 canonical projection unavailable");
-    const bundledCatalog = inputBundle.resources["data/archive2-catalog.json"];
+    if (!bundledVersion || !finalCatalog) throw new Error("Archive 2.0 canonical projection unavailable");
     if (catalog && (
-      catalog.indexVersion !== bundledCatalog.indexVersion ||
-      catalog.identityDigest !== bundledCatalog.identityDigest
+      catalog.indexVersion !== bundledVersion.indexVersion ||
+      catalog.identityDigest !== bundledVersion.identityDigest
     ))
       throw new Error("CANONICAL_PROJECTION_REFRESH_REQUIRED: catalog/version bundle mismatch");
     return finalCatalog;
@@ -158,14 +158,50 @@
   const Boot = window.Archive2Boot;
   const rawFetcher = (url) => fetch(url, { cache: "no-cache" });
   const pause = () => (Boot && typeof Boot.yield === "function" ? Boot.yield() : undefined);
-  const runtimeReady = window.Archive2Canonical.loadInputBundle(
-    Boot && typeof Boot.fetcher === "function" ? Boot.fetcher(rawFetcher) : rawFetcher,
-    document.baseURI,
-  ).then(async (bundle) => {
+  const fetcher = Boot && typeof Boot.fetcher === "function" ? Boot.fetcher(rawFetcher) : rawFetcher;
+  // A snapshot of the last resolved result (archive2-snapshot.js, optional): same manifest and same code -> no download,
+  // no hashing, no resolve. Anything else loads and verifies the inputs below exactly as before.
+  const Snapshot = window.Archive2Snapshot;
+  const snapshotLookup = Snapshot && typeof Snapshot.lookup === "function"
+    ? Snapshot.lookup({ fetcher, baseUrl: document.baseURI, canonical: window.Archive2Canonical }).catch(() => null)
+    : Promise.resolve(null);
+
+  function applySnapshot(parts) {
+    runtime = parts.runtime;
+    window.ARCHIVE_META_FOUNDATION_LABELS = parts.labels;
+    window.ARCHIVE_META_FOUNDATION_RUNTIMES = parts.packs;
+    window.ARCHIVE_META_FOUNDATION_RUNTIME = runtime;
+    overlayByUid = new Map(runtime.records.map(record => [record.questionUid, record]));
+    overlayBySource = new Map(runtime.records.map(record => [
+      normalizeFile(record.sourceArchiveFile) + "#" + Number(record.sourceOrdinal),
+      record
+    ]));
+    finalCatalog = parts.finalCatalog;
+    finalByUid = new Map(finalCatalog.records.filter((record) => record.questionUid)
+      .map((record) => [record.questionUid, record]));
+    bundledVersion = parts.bundled;
+    window.ARCHIVE2_FINAL_CATALOG = finalCatalog;
+    return runtime;
+  }
+
+  const runtimeReady = snapshotLookup.then(async (found) => {
+    if (found && found.payload) {
+      if (Boot && typeof Boot.bundleDone === "function") Boot.bundleDone();
+      if (Boot && typeof Boot.begin === "function") Boot.begin("resolve");
+      if (Boot && typeof Boot.mark === "function") Boot.mark("snapshot-hit");
+      await pause();
+      const applied = applySnapshot(found.payload);
+      if (Boot && typeof Boot.end === "function") Boot.end("resolve");
+      return applied;
+    }
+    return window.Archive2Canonical.loadInputBundle(found ? found.fetcherFor(fetcher) : fetcher, document.baseURI)
+      .then(async (bundle) => {
     if (Boot && typeof Boot.bundleDone === "function") Boot.bundleDone();
     if (Boot && typeof Boot.begin === "function") Boot.begin("resolve");
     await pause();
     inputBundle = bundle;
+    const bundledCatalog = bundle.resources["data/archive2-catalog.json"];
+    bundledVersion = { indexVersion: bundledCatalog.indexVersion, identityDigest: bundledCatalog.identityDigest };
     const resources = bundle.resources;
     const runtimeUrls = [...new Set([...RUNTIME_URLS, ...(bundle.runtimeInputPaths || []).filter(path => !window.Archive2Canonical.RUNTIME_INPUT_PATHS.includes(path))])];
     const packs = runtimeUrls.map((runtimeUrl) => {
@@ -273,7 +309,15 @@
       .map((record) => [record.questionUid, record]));
     window.ARCHIVE2_FINAL_CATALOG = finalCatalog;
     if (Boot && typeof Boot.end === "function") Boot.end("resolve");
+    // Written later, when the page is ready and idle (it never delays this boot).
+    if (found && typeof found.save === "function") {
+      found.save({
+        finalCatalog, runtime, packs: window.ARCHIVE_META_FOUNDATION_RUNTIMES,
+        labels: window.ARCHIVE_META_FOUNDATION_LABELS, bundled: bundledVersion,
+      }).catch(() => {});
+    }
     return runtime;
+      });
   });
   window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReady;
 
