@@ -6,6 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {RENDER_PLAN, renderEnv, withRenderLock} from './render-env.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../../../../..');
@@ -18,7 +19,7 @@ function environmentProblem() {
   for (const file of ['node_modules/playwright', 'python', 'NotoSansKR.ttf']) {
     if (!fs.existsSync(path.join(REPO, '.tmp/apmath-visual-engine/dependencies', file))) return `렌더 의존성 없음: ${file}`;
   }
-  if (!fs.existsSync(path.join(REPO, '.tmp/work/render.mjs'))) return '렌더 도구 없음: .tmp/work/render.mjs';
+  if (!fs.existsSync(RENDER_PLAN)) return '렌더 도구 없음: production/render-plan.mjs';
   return '';
 }
 
@@ -77,8 +78,8 @@ for (const [index, exam] of todo.entries()) {
   const lost = environmentProblem();
   if (lost) { report(); stop(lost); }
   const dir = path.join(OUT, exam);
-  const run = spawnSync(process.execPath, [path.join(REPO, '.tmp/work/render.mjs'), '--manifest', path.join(dir, 'pk'), '--out', path.join(dir, 'out')],
-    {cwd: REPO, encoding: 'utf8', maxBuffer: 1 << 26, env: {...process.env, RENDER_SLOTS: '1'}});
+  const run = withRenderLock(() => spawnSync(process.execPath, [RENDER_PLAN, '--manifest', path.join(dir, 'pk'), '--out', path.join(dir, 'out')],
+    {cwd: REPO, encoding: 'utf8', maxBuffer: 1 << 26, env: renderEnv()}));
   const log = `${run.stdout || ''}${run.stderr || ''}`;
   fs.writeFileSync(path.join(dir, 'render.log'), log);
   const summary = path.join(dir, 'out/run-summary.json');

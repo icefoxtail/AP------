@@ -8,6 +8,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import {RENDER_PLAN, renderEnv, withRenderLock} from './render-env.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../../../../..');
@@ -176,8 +177,7 @@ function renderOne(task, item, out) {
     console.error([checked.status, item.key, ...checked.errors].join('\t') + '\n검사를 통과한 plan만 렌더한다.');
     return 1;
   }
-  const tool = path.join(REPO, '.tmp/work/render.mjs');
-  if (!fs.existsSync(tool)) { console.error('렌더 준비가 안 됐다(.tmp/work/render.mjs). 사용자에게 알린다.'); return 2; }
+  if (!fs.existsSync(RENDER_PLAN)) { console.error('렌더 도구가 없다(production/render-plan.mjs). 사용자에게 알린다.'); return 2; }
   const bankIndex = () => {
     const context = {window: {}};
     vm.runInNewContext(fs.readFileSync(path.join(REPO, item.exam), 'utf8'), context, {timeout: 10000});
@@ -189,7 +189,7 @@ function renderOne(task, item, out) {
   const itemFile = path.join(dir, 'item.json'), outDir = path.join(dir, 'out');
   fs.writeFileSync(itemFile, JSON.stringify({dir: 'figure', sourcePath: item.exam, ordinal: bankIndex()}));
   const planFile = path.join(out, task.id, item.key, 'plan.json');
-  const run = spawnSync(process.execPath, [tool, '--item', itemFile, '--plan', planFile, '--out', outDir], {cwd: REPO, encoding: 'utf8'});
+  const run = withRenderLock(() => spawnSync(process.execPath, [RENDER_PLAN, '--item', itemFile, '--plan', planFile, '--out', outDir], {cwd: REPO, encoding: 'utf8', env: renderEnv()}));
   const last = String(run.stdout).trim().split('\n').pop();
   let result = {};
   try { result = JSON.parse(last); } catch { /* reported as FAILED below */ }
@@ -206,6 +206,11 @@ function renderOne(task, item, out) {
 
 function main() {
   const [command, taskId, key] = process.argv.slice(2);
+  // 확인할 값(mustShow·mustNotShow)은 메인이 TASKS.json에 고정한다. 작업 폴더에서 고쳐 쓴 판본은 받지 않는다(메인 시험용: TASKS_UNLOCK=1).
+  if (!process.env.TASKS_UNLOCK && spawnSync('git', ['diff', '--quiet', 'HEAD', '--', path.join(HERE, 'TASKS.json')], {cwd: REPO}).status === 1) {
+    console.error('TASKS.json이 저장소 판본과 다르다. 이 파일은 메인만 고친다. 원래대로 되돌린 뒤 다시 돌린다.');
+    return 2;
+  }
   const config = JSON.parse(fs.readFileSync(path.join(HERE, 'TASKS.json'), 'utf8'));
   const task = config.tasks.find(row => row.id === taskId);
   if (!['show', 'check', 'render'].includes(command) || !task || (command === 'render' && !key)) {

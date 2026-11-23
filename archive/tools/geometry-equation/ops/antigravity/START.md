@@ -20,9 +20,11 @@
 - `멈춤:`이 나오면 환경을 고치거나 우회하지 말고 그 줄을 보고에 남긴 뒤 2로 간다.
 - 실패한 plan을 고치지 않는다.
 
-### 2. plan 작성: A1 → A2-1 → A2-2 → A2-3 → A2-4 → A2-5
+### 2. plan 작성: A1 → A2-1 → A2-2 → A2-3 → A2-4 → A2-5 → B1 → B2 → … → B10
 
 키마다 이 순서로 한다.
+
+B 묶음(B1~B10)은 앞선 judgment-out 작업 중 **렌더에 실패했거나, 다른 문항과 그림이 같거나, 결함이 확인된 것만** 다시 하는 목록이다. 항목의 `redo`가 다시 하는 이유다. `mustShow`·`mustNotShow`는 메인이 정해 TASKS.json에 고정했다. 이 파일을 고치면 `check`가 받지 않는다. 비어 있으면 myAnswer·이름 검사·눈 검수가 지킨다. 같은 묶음 안의 다른 문항, 또는 같은 문항의 문제·해설과 같은 그림이면 `check <작업>`이 FAIL을 낸다. `oldPlan`이 있으면 읽고 이 문항의 값으로 바꿔 쓴다. 없으면 `originalImage`를 보고 새로 설계한다. 렌더는 저장소의 production render-plan.mjs를 직접 부르므로 래퍼를 만들지 않는다.
 
 1. `node archive/tools/geometry-equation/ops/antigravity/check-submission.mjs show <작업> <키>`
    문항·정답·해설·요구 사항을 읽는다. 원본 그림(`originalImage`)이 있으면 열어 본다. `oldPlan`이 있으면 그 명령으로 읽는다.
