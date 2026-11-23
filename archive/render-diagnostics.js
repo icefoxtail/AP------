@@ -11,6 +11,10 @@
  *  - replaceImage(image, result): 그림 하나가 안 받아질 때(404·디코드 오류·시간 초과) 그 <img>를 같은 자리의 "그림을 불러오지 못했습니다" 빈 상자로 바꾼다
  *    (2026-11-23). APQuestionImageReadiness.waitForImages의 onFailure와 engine/mixed_engine의 waitForQuestionImage가 부른다. 상자는 `.q-image-wrap` 안에 들어가
  *    칸·문항 번호를 그대로 두고, 인쇄물에도 찍히며, 진단 배열·알림 띠에 수식 오류와 같은 객체·같은 띠로 합쳐진다. <img>가 사라지므로 뒤따르는 이미지 검사는 그 자리를 보지 않는다.
+ *  - guardOverflow(area): 글자·그림 줄이기와 한 단 전체 승격을 다 거치고도 쪽을 넘쳐 공통 게이트(S12)·인쇄 사전 점검을 실패시키는 문항 하나를 번호만 남긴
+ *    "자리 표시"(replaceUnfit)로 바꾼다(2026-11-23). 나머지 문항은 그대로 뜬다. 쪽이 넘치지 않는 정상 시험지에서는 아무것도 하지 않는다.
+ *  - report(): 진단 한 객체(window.apRenderReport) = {engine, mode, file, viewport, entries[{file, questionNo, part, code, stage, severity, message, excerpt}]}.
+ *    window.apRenderDiagnostics는 그 중 severity=error(표식으로 대체된 것)만 담은 예전 모양 그대로다. 띠의 "복사" 단추는 report를 글로 만들어 클립보드에 넣는다.
  *  - MathJax가 없거나 조판이 예외로 끝난 경우(진짜 전체 실패)는 여기서 다루지 않는다. data-ap-render-error는 그때만 남는다.
  */
 (function attachRenderDiagnostics(root, factory) {
@@ -22,7 +26,23 @@
 
     const MARK = '[data-ap-math-error]';
     const IMAGE_MARK = '[data-ap-image-error]';
-    const ALL_MARKS = MARK + ',' + IMAGE_MARK;
+    const UNFIT_MARK = '[data-ap-unfit]';
+    const HTML_MARK = '[data-ap-html-warn]';
+    const OVERFLOW_MARK = '[data-layout-overflow="1"]';
+    const ALL_MARKS = MARK + ',' + IMAGE_MARK + ',' + UNFIT_MARK + ',' + HTML_MARK + ',' + OVERFLOW_MARK;
+    const UNFIT_MESSAGE = '이 문항은 너무 길어 이 자리에 담지 못했습니다';
+    // 사유 코드 표 하나: 단계(stage)·심각도(error=표식으로 대체됨, warn=그대로 그렸고 알림만)·한 줄 설명.
+    const CODES = {
+        MATH_TYPESET_ERROR: { stage: '수식', severity: 'error', message: '수식 문법 오류로 그리지 못해 원문을 표시했습니다' },
+        MATH_UNRENDERED: { stage: '수식', severity: 'error', message: '수식 기호($)가 변환되지 않고 글자로 남았습니다' },
+        QUESTION_IMAGE_LOAD_FAILED: { stage: '그림', severity: 'error', message: '그림 파일을 받지 못해 빈 상자로 대체했습니다' },
+        QUESTION_IMAGE_READINESS_INCOMPLETE: { stage: '그림', severity: 'error', message: '그림이 시간 안에 오지 않아 빈 상자로 대체했습니다' },
+        LAYOUT_CANNOT_FIT: { stage: '배치', severity: 'error', message: '글자·그림을 줄이고 한 단 전체로 키워도 쪽에 들어가지 않아 자리 표시로 대체했습니다' },
+        LAYOUT_OVERFLOW: { stage: '배치', severity: 'warn', message: '한 단 전체·최소 글자 크기로도 칸을 조금 넘칩니다(내용은 그대로 그렸습니다)' },
+        HTML_UNBALANCED: { stage: '본문', severity: 'warn', message: 'HTML 태그 짝이 맞지 않습니다(브라우저가 자동으로 닫아 그렸습니다)' },
+        RENDER_TIME_BUDGET: { stage: '시간', severity: 'warn', message: '정해진 시간 안에 끝나지 않아 기다리지 않고 계속했습니다' }
+    };
+    const codeInfo = code => CODES[code] || { stage: '기타', severity: 'error', message: String(code || '') };
     const IMAGE_MESSAGE = '그림을 불러오지 못했습니다';
     const NOTICE_ID = 'ap-render-notice';
     const STYLE_ID = 'ap-render-diagnostics-style';
@@ -38,6 +58,10 @@
 .ap-math-error--flash{outline:3px solid #f59e0b;outline-offset:2px}
 .ap-image-missing{display:inline-block;box-sizing:border-box;min-width:28mm;max-width:100%;min-height:10mm;padding:3mm 2mm;border:1px dashed #c62828;border-radius:3px;background:#fff1f0;color:#8a1c1c;font:700 9pt/1.4 'Pretendard','Noto Sans KR',sans-serif;text-align:center;text-indent:0;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .ap-image-missing--figure{display:flex;align-items:center;justify-content:center;width:100%;min-height:28mm;margin:2mm auto}
+.ap-unfit{display:block;box-sizing:border-box;margin:3mm 0;padding:4mm 3mm;border:1.5px dashed #c62828;border-radius:3px;background:#fff1f0;color:#8a1c1c;font:700 9pt/1.5 'Pretendard','Noto Sans KR',sans-serif;text-align:center;text-indent:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.q-box[data-ap-unfit]{outline:2px dashed #c62828;outline-offset:-2px}
+.ap-render-notice__copy{margin:0 0 0 auto;padding:2px 12px;min-height:28px;border:1px solid #c9922c;border-radius:14px;background:#5c3b00;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.ap-render-notice__copy:hover,.ap-render-notice__copy:focus-visible{background:#7a5000}
 .ap-render-notice{position:sticky;top:54px;z-index:900;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:6px 16px;background:#fff4d6;color:#5c3b00;border-bottom:1px solid #e0b252;font:13px/1.5 'Pretendard','Noto Sans KR',sans-serif}
 .ap-render-notice[hidden]{display:none}
 .ap-render-notice__lead{font-weight:700}
@@ -234,17 +258,38 @@
     function isImageEntry(entry) {
         return /^QUESTION_IMAGE_/.test(String(entry?.code || ''));
     }
-    function describe(node) {
+    // 한 표식 노드가 만드는 항목들의 사유 코드. 수식·그림 표식은 코드를 속성에 적고, 배치 표식은 속성 이름 자체가 코드다.
+    function codesOf(node) {
+        const codes = [];
+        const math = node.getAttribute('data-ap-math-error');
+        const image = node.getAttribute('data-ap-image-error');
+        if (math) codes.push(math);
+        if (image) codes.push(image);
+        if (node.hasAttribute('data-ap-unfit')) codes.push('LAYOUT_CANNOT_FIT');
+        else if (node.getAttribute('data-layout-overflow') === '1') codes.push('LAYOUT_OVERFLOW');
+        if (node.hasAttribute('data-ap-html-warn')) codes.push('HTML_UNBALANCED');
+        return codes;
+    }
+    function describe(node, forcedCode) {
         const box = boxOf(node);
-        const isImage = node.hasAttribute('data-ap-image-error');
+        const code = forcedCode || codesOf(node)[0] || 'MATH_TYPESET_ERROR';
+        const isImage = /^QUESTION_IMAGE_/.test(code);
+        const isLayout = /^LAYOUT_/.test(code);
+        const isHtml = code === 'HTML_UNBALANCED';
         const ref = box?.getAttribute('data-source-ref') || node.closest('[data-source-ref]')?.getAttribute('data-source-ref') || '';
         const file = (ref.split('#')[0] || String(root.AppState?.sourceArchiveFile || ''));
+        const info = codeInfo(code);
         const entry = {
             file,
             questionNo: questionNoOf(box),
-            part: isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
-            code: node.getAttribute('data-ap-math-error') || node.getAttribute('data-ap-image-error') || 'MATH_TYPESET_ERROR',
-            excerpt: node.getAttribute('data-ap-math-excerpt') || node.getAttribute('data-ap-image-excerpt') || ''
+            part: isLayout ? '문항' : isHtml ? '본문' : isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
+            code,
+            stage: info.stage,
+            severity: info.severity,
+            message: info.message,
+            excerpt: isHtml ? (node.getAttribute('data-ap-html-warn') || '')
+                : code === 'LAYOUT_CANNOT_FIT' ? (node.getAttribute('data-ap-unfit-excerpt') || '')
+                : isLayout ? '' : (node.getAttribute('data-ap-math-excerpt') || node.getAttribute('data-ap-image-excerpt') || '')
         };
         // 여러 학생·여러 원본 시험이 섞이는 화면(오답 인쇄)만 상자에 적어 둔 학생·원본 문항 번호가 더 붙는다. 없으면 기존 모양 그대로.
         const student = box?.getAttribute?.('data-ap-diag-student');
@@ -253,11 +298,21 @@
         if (sourceNo) entry.sourceNo = /^\d+$/.test(sourceNo) ? Number(sourceNo) : sourceNo;
         return entry;
     }
-    function collect(scope) {
+    // [{entry, node}] — 한 노드가 여러 사유를 가지면(예: 칸 넘침 + HTML 짝) 항목을 사유마다 만든다.
+    function collectPairs(scope) {
         const area = scope || root.document?.getElementById('print-area');
         if (!area?.querySelectorAll) return [];
-        return Array.from(area.querySelectorAll(ALL_MARKS)).map(describe);
+        const pairs = [];
+        for (const node of Array.from(area.querySelectorAll(ALL_MARKS))) {
+            const codes = codesOf(node);
+            (codes.length ? codes : [undefined]).forEach(code => pairs.push({ entry: describe(node, code), node }));
+        }
+        return pairs;
     }
+    function collect(scope) {
+        return collectPairs(scope).map(pair => pair.entry);
+    }
+    const isError = entry => (entry.severity || 'error') !== 'warn';
 
     function noticeVisible(doc) {
         const bar = doc.getElementById('mode-ctrl');
@@ -282,9 +337,20 @@
         setTimeout(() => node.classList.remove('ap-math-error--flash'), 1800);
     }
 
-    function renderNotice(doc, area, entries) {
+    function entryLabel(entry) {
+        // 수식·그림 항목은 예전 문구 그대로, 배치·HTML 항목은 사유를 한 마디 붙인다.
+        const base = targetLabel(entry);
+        if (entry.code === 'LAYOUT_CANNOT_FIT') return base + ' (너무 길어 자리 표시로 바꿈)';
+        if (entry.code === 'LAYOUT_OVERFLOW') return base + ' (칸을 넘침)';
+        if (entry.code === 'HTML_UNBALANCED') return base + ' (HTML 태그 짝)';
+        if (entry.code === 'RENDER_TIME_BUDGET') return base + ' (시간 초과)';
+        return base;
+    }
+    const isLegacyCode = entry => isImageEntry(entry) || /^MATH_/.test(String(entry.code || ''));
+
+    function renderNotice(doc, area, pairs) {
         let bar = doc.getElementById(NOTICE_ID);
-        if (!entries.length || !noticeVisible(doc)) {
+        if (!pairs.length || !noticeVisible(doc)) {
             if (bar) { bar.hidden = true; bar.textContent = ''; }
             return;
         }
@@ -297,13 +363,14 @@
         }
         const anchor = doc.getElementById('print-area') || area;
         if (anchor?.parentNode && bar.nextSibling !== anchor) anchor.parentNode.insertBefore(bar, anchor);
-        // 문항 번호·위치별로 묶는다(같은 문항의 같은 위치에 둘 이상이면 "N개").
+        // 문항 번호·위치·사유별로 묶는다(같은 문항의 같은 위치에 둘 이상이면 "N개").
+        const entries = pairs.map(pair => pair.entry);
+        const legacyOnly = entries.every(isLegacyCode);
         const groups = [];
-        const nodes = Array.from(area.querySelectorAll(ALL_MARKS));
-        entries.forEach((entry, index) => {
-            const key = [entry.student || '', entry.file || '', entry.sourceNo ?? '', entry.questionNo, entry.part].join('|');
+        pairs.forEach(({ entry, node }) => {
+            const key = [entry.student || '', entry.file || '', entry.sourceNo ?? '', entry.questionNo, entry.part, legacyOnly ? '' : entry.code].join('|');
             let group = groups.find(item => item.key === key);
-            if (!group) { group = { key, entry, node: nodes[index], count: 0 }; groups.push(group); }
+            if (!group) { group = { key, entry, node, count: 0 }; groups.push(group); }
             group.count += 1;
         });
         bar.hidden = false;
@@ -319,7 +386,14 @@
         const allImages = entries.every(isImageEntry);
         const kindWord = allImages ? '그림' : entries.every(entry => /^MATH_/.test(entry.code)) ? '수식' : '내용';
         const failWord = allImages ? '불러오지 못했습니다' : '표시하지 못했습니다';
-        if (groups.length === 1) {
+        if (!legacyOnly) {
+            add('span', 'ap-render-notice__lead', `확인이 필요한 문항 ${groups.length}곳:`);
+            for (const group of groups) {
+                const button = add('button', 'ap-render-notice__item', `${entryLabel(group.entry)}${group.count > 1 ? ' ' + group.count + '개' : ''}`);
+                button.type = 'button';
+                button.addEventListener('click', () => group.node && flash(group.node));
+            }
+        } else if (groups.length === 1) {
             const only = groups[0];
             const text = isImageEntry(only.entry)
                 ? `${targetLabel(only.entry)} ${only.count}개를 불러오지 못했습니다 (눌러서 보기)`
@@ -335,6 +409,71 @@
                 button.addEventListener('click', () => group.node && flash(group.node));
             }
         }
+        const copy = add('button', 'ap-render-notice__copy', '복사');
+        copy.type = 'button';
+        copy.title = '진단 내용(파일·문항 번호·사유 코드·엔진 판본)을 클립보드에 복사합니다';
+        copy.addEventListener('click', () => copyReport(doc, copy));
+    }
+
+    // ---- 진단 한 객체 ----------------------------------------------------------------------------------------------------------------
+    function engineVersion() {
+        let diag = '';
+        try {
+            const tag = Array.from(root.document?.scripts || []).find(script => /render-diagnostics\.js/.test(script.src || ''));
+            diag = (String(tag?.src || '').match(/[?&]v=([^&#]+)/) || [])[1] || '';
+        } catch (error) { /* 판본을 못 읽어도 진단은 낸다 */ }
+        return 'render-diagnostics ' + (diag || '?') + ' / equal-slot ' + (root.APEqualSlotEngine?.VERSION || '-');
+    }
+    function modeOf() {
+        try { return String(root.AppState?.mode || new URLSearchParams(root.location?.search || '').get('mode') || ''); } catch (error) { return ''; }
+    }
+    function report(entries) {
+        const list = entries || collect();
+        let page = '';
+        try { page = String(root.location?.pathname || '').split('/').pop(); } catch (error) { /* ignore */ }
+        return {
+            engine: engineVersion(),
+            page,
+            mode: modeOf(),
+            file: String(root.AppState?.sourceArchiveFile || ''),
+            viewport: { width: Number(root.innerWidth) || 0, height: Number(root.innerHeight) || 0 },
+            errorCount: list.filter(isError).length,
+            warnCount: list.filter(entry => !isError(entry)).length,
+            entries: list
+        };
+    }
+    function reportText(rep) {
+        const data = rep || report();
+        const lines = [
+            '[아카이브 출력 진단]',
+            `파일: ${data.file || (data.entries[0]?.file || '-')}`,
+            `엔진: ${data.engine} (${data.page || '-'}, 모드 ${data.mode || '-'}, 화면 폭 ${data.viewport?.width || 0}px)`,
+            `오류 ${data.errorCount}건 · 알림 ${data.warnCount}건`
+        ];
+        data.entries.forEach(entry => {
+            const where = (entry.questionNo == null ? '번호 모름' : entry.questionNo + '번') + (entry.part ? ' ' + entry.part : '');
+            const who = (entry.student ? entry.student + ' ' : '') + (entry.file && entry.file !== data.file ? entry.file + ' ' : '');
+            lines.push(`- ${who}${where} | ${entry.code} (${entry.stage || '-'}, ${entry.severity === 'warn' ? '알림' : '오류'}) | ${entry.message || ''}${entry.excerpt ? ' | 원문: ' + entry.excerpt : ''}`);
+        });
+        return lines.join('\n');
+    }
+    function copyReport(doc, button) {
+        const text = reportText();
+        const done = label => { const before = button.textContent; button.textContent = label; setTimeout(() => { button.textContent = before; }, 1600); };
+        const fallback = () => {
+            try {
+                const area = doc.createElement('textarea');
+                area.value = text; area.setAttribute('readonly', ''); area.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+                doc.body.appendChild(area); area.select();
+                const ok = doc.execCommand?.('copy');
+                area.remove();
+                done(ok ? '복사됨' : '복사 실패');
+            } catch (error) { done('복사 실패'); }
+        };
+        try {
+            if (root.navigator?.clipboard?.writeText) root.navigator.clipboard.writeText(text).then(() => done('복사됨'), fallback);
+            else fallback();
+        } catch (error) { fallback(); }
     }
 
     // 렌더가 확정될 때(apRenderReady 직전) 부른다. 예외를 던지지 않는다.
@@ -342,16 +481,100 @@
         try {
             const doc = root.document;
             const area = scope || doc.getElementById('print-area');
-            const entries = collect(area);
-            root.apRenderDiagnostics = entries;
-            doc.documentElement.dataset.apRenderDiagnostics = String(entries.length);
-            renderNotice(doc, area, entries);
-            return entries;
+            const pairs = collectPairs(area);
+            const entries = pairs.map(pair => pair.entry);
+            const errors = entries.filter(isError);
+            // 예전 모양: window.apRenderDiagnostics는 표식으로 바꾼 것(오류)만, 알림(칸 넘침·HTML 짝)은 apRenderReport에만 있다.
+            root.apRenderDiagnostics = errors;
+            root.apRenderReport = report(entries);
+            root.apRenderReportText = () => reportText();
+            doc.documentElement.dataset.apRenderDiagnostics = String(errors.length);
+            doc.documentElement.dataset.apRenderWarnings = String(entries.length - errors.length);
+            renderNotice(doc, area, pairs);
+            return errors;
         } catch (error) {
             console.warn('[archive-render-diagnostics] publish failed', error);
             return [];
         }
     }
 
-    return Object.freeze({ sanitize, replaceImage, collect, publish, textWithoutMarks, leftoverCount, MARK, IMAGE_MARK });
+    // ---- 자리 표시: 사다리 뒤에도 안 들어가는 문항 하나 ------------------------------------------------------------------------------
+    // box: .q-box / .sol-box. 번호(.q-num)만 남기고 본문을 "너무 길어 담지 못했습니다" 상자로 바꾼다. 칸·번호·순서는 그대로다.
+    function replaceUnfit(box, info = {}) {
+        try {
+            if (!box?.querySelector || (box.hasAttribute('data-ap-unfit') && !info.force)) return false;
+            const doc = ownerDocument(box);
+            ensureStyle(doc);
+            const host = box.querySelector(':scope > .ap-slot-content') || box;
+            const note = doc.createElement('div');
+            note.className = 'ap-unfit tex2jax_ignore';
+            note.setAttribute('role', 'note');
+            note.textContent = UNFIT_MESSAGE + '. 원본 시험지에서 확인하세요.';
+            // info.target: 상자 전체가 아니라 그 부분(예: 해설지의 문제 다시보기)만 자리 표시로 바꾼다.
+            const part = info.target ? box.querySelector(info.target) : null;
+            const excerpt = clip((part || host).textContent, 80);
+            if (part) part.replaceWith(note);
+            else {
+                const number = host.querySelector(':scope > .q-num');
+                host.replaceChildren(...(number ? [number.cloneNode(true)] : []), note);
+            }
+            box.setAttribute('data-ap-unfit', String(info.reason || 'height'));
+            box.setAttribute('data-ap-unfit-excerpt', excerpt);
+            box.removeAttribute('data-layout-overflow');
+            if (host !== box) {
+                host.style.zoom = '1';
+                host.style.transform = 'none';
+                try {
+                    const fit = JSON.parse(host.getAttribute('data-equal-slot-fit') || 'null');
+                    if (fit) host.setAttribute('data-equal-slot-fit', JSON.stringify({ ...fit, scale: 1, offsetX: 0, offsetY: 0 }));
+                    host.setAttribute('data-equal-slot-scale', '1');
+                } catch (error) { /* 맞춤 기록이 없으면 건드리지 않는다 */ }
+            }
+            return true;
+        } catch (error) {
+            console.warn('[archive-render-diagnostics] replaceUnfit failed', error);
+            return false;
+        }
+    }
+
+    // 쪽이 공통 게이트(S12)·인쇄 사전 점검(archive2-pdf-readiness.assertLayoutReady)과 같은 기준으로 넘치는가.
+    function pageOverflows(page) {
+        const body = page.querySelector?.('.page-body');
+        if (page.scrollHeight > page.clientHeight + 3 || page.scrollWidth > page.clientWidth + 3) return true;
+        if (body && (body.scrollHeight > body.clientHeight + 2 || body.scrollWidth > body.clientWidth + 1)) return true;
+        const view = ownerDocument(page).defaultView || root;
+        const clips = value => value === 'hidden' || value === 'clip';
+        // readiness는 쪽 안 모든 요소를 보지만, 잘림은 칸·상자에서 생기므로 그 요소들만 본다(비용).
+        return Array.from(page.querySelectorAll('.grid-col,.grid-container,.page-body,.q-box,.sol-box,.ap-slot-content')).some(element => {
+            const tooTall = element.scrollHeight > element.clientHeight + 3, tooWide = element.scrollWidth > element.clientWidth + 3;
+            if (!tooTall && !tooWide) return false;
+            const style = view.getComputedStyle(element);
+            return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
+        });
+    }
+    // 넘치는 쪽의 범인(칸을 넘치게 만든 가장 큰 문항)을 골라 자리 표시로 바꾼다. 쪽당 상자 수만큼만 반복해 끝난다.
+    function guardOverflow(scope) {
+        const replaced = [];
+        try {
+            const area = scope || root.document?.getElementById('print-area');
+            if (!area?.querySelectorAll) return replaced;
+            for (const page of Array.from(area.querySelectorAll('.page'))) {
+                const limit = page.querySelectorAll('.q-box,.sol-box').length;
+                for (let step = 0; step < limit && pageOverflows(page); step += 1) {
+                    const candidates = Array.from(page.querySelectorAll('.q-box,.sol-box')).filter(box => !box.hasAttribute('data-ap-unfit') && !box.parentElement?.closest('.q-box,.sol-box'));
+                    const flagged = candidates.filter(box => box.getAttribute('data-layout-overflow') === '1');
+                    const pool = flagged.length ? flagged : candidates;
+                    const culprit = pool.sort((a, b) => b.getBoundingClientRect().height - a.getBoundingClientRect().height)[0];
+                    if (!culprit || !replaceUnfit(culprit, { reason: 'page-overflow' })) break;
+                    replaced.push(culprit);
+                }
+            }
+            if (replaced.length) console.warn('[archive-layout] LAYOUT_CANNOT_FIT: 쪽을 넘치게 하는 문항을 자리 표시로 바꿨습니다', replaced.map(box => (box.querySelector('.q-num')?.textContent || '').trim()));
+        } catch (error) {
+            console.warn('[archive-render-diagnostics] guardOverflow failed', error);
+        }
+        return replaced;
+    }
+
+    return Object.freeze({ sanitize, replaceImage, replaceUnfit, guardOverflow, pageOverflows, collect, report, reportText, publish, textWithoutMarks, leftoverCount, codeInfo, CODES, MARK, IMAGE_MARK });
 }));

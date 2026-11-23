@@ -309,7 +309,11 @@
             await ready(area);
             pages = list(area, PAGE);
         }
+        // 한 단 전체·글자 10.8px로도 안 들어가 쪽을 넘치는 문항 하나가 시험지 전체(공통 게이트 S12·인쇄 사전 점검)를 막지 않게, 그 문항만 자리 표시로 바꾼다.
+        // 쪽이 넘치지 않으면 아무것도 하지 않는다. 진단 파일이 없는 화면(오답 엔진 옛 방식 등)은 예전 그대로 동작한다.
+        const guarded = root.APRenderDiagnostics?.guardOverflow?.(area) || [];
         const evidence = audit(area);
+        if (guarded.length) evidence.guarded = guarded.length;
         if (state) evidence.promoted = state.promoted.map(item => item.box.dataset.sourceRef || item.originalIndex);
         evidence.layoutOverflow = evidence.warnings.filter(w => w.code === 'LAYOUT_OVERFLOW');
         evidence.layoutOverflow.forEach(w => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체에도 글자 ' + MIN_EFFECTIVE_FONT_PX + 'px로는 들어가지 않는 문항(overflowReason은 fit 참고)', w));

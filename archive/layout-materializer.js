@@ -178,6 +178,8 @@
             break;
         }
         overflow.forEach(entry => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체로도 잘리는 문항', entry));
+        // 한 단 전체로도 안 들어가 쪽을 넘치는 문항 하나가 시험지 전체(S12·인쇄 사전 점검)를 막지 않게, 그 문항만 자리 표시로 바꾼다(쪽이 넘치지 않으면 아무것도 안 함).
+        try { global.APRenderDiagnostics?.guardOverflow?.(area); } catch (error) { /* 진단 도우미 실패가 출력을 막지 않는다 */ }
         deps.onLayoutPlan?.({ mode: 'exam', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan, promotedBlocks: [...promoted].map(index => blocks[index].blockId), layoutOverflow: overflow });
         return area;
     }
@@ -325,8 +327,43 @@
                 }
                 hosts.forEach(host => host.remove());
             };
+            // 해설 한 문항의 머리(문제 다시보기 + 그림 + 정답)와 첫 풀이 조각이 한 칸에도 안 들어가면 계획기가 해설지 전체를 실패시켰다
+            // (MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE). 그 문항만 단계적으로 줄인다: ① 문제 다시보기를 자리 표시로 ② 그래도 안 되면 해설 전체를 자리 표시로.
+            // 나머지 문항은 그대로이고, 계획기가 던지지 않는 정상 해설지는 이 코드에 닿지 않는다.
+            const degradeUnfitSolution = record => {
+                const diagnostics = global.APRenderDiagnostics;
+                if (!diagnostics?.replaceUnfit || record.unfitLevel >= 2) return false;
+                const level = (record.unfitLevel || 0) + 1;
+                const head = level === 1 && record.box.querySelector(':scope > [data-semantic-content]');
+                const changed = diagnostics.replaceUnfit(record.box, head ? { reason: 'solution-problem', target: '[data-semantic-content]' } : { reason: 'solution', force: true });
+                if (!changed) return false;
+                record.unfitLevel = head ? 1 : 2;
+                if (!head) record.box.dataset.solutionHtml = '';
+                record.box.style.cssText = record.originalStyle;
+                const rawHeight = flowHeight(record.box, record.input.fullWidth);
+                record.input.rawHeight = rawHeight;
+                record.input.compressedHeight = rawHeight;
+                record.compressedStyle = record.box.style.cssText;
+                record.chunks = null;
+                record.input.chunkCount = head ? record.input.chunkCount : 1;
+                record.input.deferChunkCount = head ? record.input.deferChunkCount : false;
+                record.input.primaryHeights = undefined;
+                record.input.continuationHeights = {};
+                record.block.actualChunkCount = record.input.chunkCount;
+                record.measuredRangeCount = 0;
+                maximumQueries += record.input.chunkCount + 2;
+                return true;
+            };
             while (queryCount <= maximumQueries) {
-                plan = global.APLayoutAuthority.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: capacity, columns: 2, tolerance: 2 }, blocks: records.map(record => record.input) });
+                try {
+                    plan = global.APLayoutAuthority.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: capacity, columns: 2, tolerance: 2 }, blocks: records.map(record => record.input) });
+                } catch (error) {
+                    const failed = /^MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE:(.+):\d+$/.exec(String(error?.message || ''));
+                    const failedRecord = failed && byId.get(failed[1]);
+                    if (!failedRecord || !degradeUnfitSolution(failedRecord)) throw error;
+                    queryCount += 1;
+                    continue;
+                }
                 if (plan.status === 'READY') break;
                 const query = plan.measurementRequest, record = byId.get(query.blockId);
                 if (records.some(item => item.input.deferChunkCount)) await prepareDeferredChunks();
@@ -404,6 +441,8 @@
                 }
             }
             deps.onLayoutPlan?.({ mode: 'sol', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan });
+            // 계획대로 놓았는데도 쪽을 넘치는 해설 하나가 해설지 전체를 막지 않게 한다(쪽이 넘치지 않으면 아무것도 안 함).
+            try { global.APRenderDiagnostics?.guardOverflow?.(area); } catch (error) { /* 진단 도우미 실패가 출력을 막지 않는다 */ }
             succeeded = true;
             notifySolutionShrunk(shrunkNumbers);
             return { usableHeight: capacity, placements };

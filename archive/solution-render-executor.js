@@ -641,6 +641,9 @@
                     .map(item => Object.freeze({ ...item }))
             );
         }
+        // 해설 한 문항이 쪽을 넘치게 해(인쇄 사전 점검 "content clipped") 해설지 전체가 못 나오는 일을 막는다: 넘치는 쪽의 범인 문항만 자리 표시로 바꾼다.
+        // 쪽이 넘치지 않으면 아무것도 하지 않는다.
+        try { root?.APRenderDiagnostics?.guardOverflow?.(area); } catch (error) { /* 진단 도우미 실패가 출력을 막지 않는다 */ }
         return area;
     }
 
