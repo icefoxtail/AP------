@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-101cc77f3963-2918a3b5",
+  "requestSha256": "bc06454501abfb4f15931916da4fd7dc2fdca171b37b953ba8d0789807f2b197",
+  "examUid": "21_효천고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/21_효천고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "cc9884a558efc719a7956b1a760693936ff4468e",
+  "sourceRawSha256": "1b8869d3161176d3696083d5cf3e83e8de706f6c7e184781254b85c149f70ba5",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-101cc77f3963-2918a3b5.type-ledger.json",
+        "sha256": "18cd0e382eea3b911ae6904da7020d884efb0320f6b670c0100606f47209ab4c"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_0bdd536558bc110bd6fa0c7337d3107d358efc4a0ea20a247c19596fa1a89f10",
+      "sourceArchiveFile": "original/high/h2/2mid/21_효천고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-101cc77f3963-2918a3b5",
+        "judge": "dots",
+        "rationale": "a=4x-x²가 열린구간에서 엄격히 증가하므로 양 끝값을 제외한 a의 범위를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request",
+          "rowCourse": "수학II",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "fe01caecb30a3772db1036c4b66b4a5443a0915fcf70338eb190da5e61a79b45",
+        "judgedContentFingerprint": "cbec08d621235fbe7e2eed614811251adae06fbe34cf8eeec31defce72baaf01",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "83a17db9728221d5947e4c2a9a02bca0e5a26b4582881d578ec0dc837b25e850",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-101cc77f3963-2918a3b5.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+          "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+          "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-803968aa90ae-84ca70cc",
+  "requestSha256": "915c1462a347db91e698667a211813aa581a7f34ce88df38d0c662016ede01c8",
+  "examUid": "26_효천고_1학기_중간_고2_대수_유사",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js",
+  "sourceBlobSha1": "c65f6eff3f9649d006ecd5659f1a4c51b5266bc0",
+  "sourceRawSha256": "27d4c14a8cd61d0086d0eb96ca8d271be2013555ecd26a867c92f1d100a2e88b",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-803968aa90ae-84ca70cc.type-ledger.json",
+        "sha256": "34af1d03f77a8a13049cbad0a5dd5ff9d2e92ae8a09b59e54927c368c788ee74"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e35c6509837b87e9aaf2f82b9d4e53cc1eaaf497a41f07e3746cc19cbc07d27b",
+      "sourceArchiveFile": "similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-803968aa90ae-84ca70cc",
+        "judge": "dots",
+        "rationale": "일대일대응을 위해 두 조각의 치역이 맞닿는 조건으로 경계 k를 제한한 뒤 정수 a별 허용 b를 센다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "5e3a03e13605d55cf29089b1c7d0c0fa89d807ad0c95cdeea13fa15c0f6f5924",
+        "judgedContentFingerprint": "ee765ed2d86eafdb81df2626723872bd1b467bf87e9970db0e9983f2bff37408",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "c06458c72b74bfcebd88deba0cf2fa16f4f876b4db85fabe75b4beda2d28134f",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-803968aa90ae-84ca70cc.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}
