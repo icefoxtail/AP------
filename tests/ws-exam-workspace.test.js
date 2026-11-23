@@ -375,3 +375,42 @@ test('표로 한 번에 입력: 작업 화면을 닫고 openOmrInput을 열며, 
     assert.match(home, /goHome\(\)/, '돌아갈 반이 없으면 옛 동작(홈) 그대로');
     assert.match(wsCss, /\.wsx \.wsx-bar__omr \{[^}]*margin-left: auto/);
 });
+
+test('시험 결과 화면: 틀린 문항이 있는 제출 학생에만 "오답 클리닉" 단추가 있고, 누르면 그 학생·그 시험으로 클리닉을 연다', async () => {
+    const { ctx, log } = makeApp();
+    const opened = [];
+    ctx.openClinicForStudentExam = (classId, studentId, exam) => { opened.push({ classId, studentId, exam: JSON.parse(JSON.stringify(exam)) }); return true; };
+    await ctx.openExamWorkspace('c1');
+    const html = lastHtml(log);
+    // s1만 제출·오답 있음. 미제출(s2~s5)에는 단추가 없다.
+    assert.equal((html.match(/data-wsx-clinic="/g) || []).length, 1);
+    assert.match(html, /data-wsx-clinic="s1"[^>]*onclick="wsxOpenClinic\(&quot;s1&quot;\)"[^>]*>오답 클리닉<\/button>/);
+    ctx.wsxOpenClinic('s1');
+    assert.equal(opened.length, 1);
+    assert.equal(opened[0].classId, 'c1');
+    assert.equal(opened[0].studentId, 's1');
+    assert.equal(opened[0].exam.sessionId, 'sess-1');
+    assert.equal(opened[0].exam.examTitle, '단원평가');
+    assert.equal(opened[0].exam.examDate, '2026-10-30');
+    assert.equal(opened[0].exam.questionCount, 20);
+    // 클리닉 화면 함수가 없으면(옛 번들) 단추를 달지 않는다
+    const bare = makeApp();
+    await bare.ctx.openExamWorkspace('c1');
+    assert.doesNotMatch(lastHtml(bare.log), /data-wsx-clinic/);
+});
+
+test('시험 결과 화면: 입력한 내용이 저장되지 않았으면 클리닉으로 가기 전에 한 번 묻는다', async () => {
+    const { ctx, log } = makeApp();
+    const opened = [];
+    ctx.openClinicForStudentExam = (...args) => { opened.push(args); return true; };
+    await ctx.openExamWorkspace('c1');
+    await ctx.wsxOpenPanel('s2');
+    ctx.wsxToggleQ({ checked: true, value: '4' });
+    ctx.confirmAnswer = false;
+    ctx.wsxOpenClinic('s1');
+    assert.equal(opened.length, 0, '취소하면 가지 않는다');
+    assert.equal(log.confirms.length, 1);
+    ctx.confirmAnswer = true;
+    ctx.wsxOpenClinic('s1');
+    assert.equal(opened.length, 1);
+});
