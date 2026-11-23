@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-154/5",
+          "141/5",
+          "-38/5",
+          "3/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "11/3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "(38-5*sqrt(7))/9",
+        "y": "(-500+350*sqrt(7))/243"
+      },
+      {
+        "id": "F",
+        "x": "(38+5*sqrt(7))/9",
+        "y": "(-500-350*sqrt(7))/243"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "0"
+      ],
+      "C": [
+        "11/3",
+        "0"
+      ],
+      "B": [
+        "7",
+        "0"
+      ]
+    }
+  },
+  "caption": "예: f(2)=f(7)=0이고 f′(2)=5, f′(7)=10을 만족하는 삼차함수 f(x)=(3/5)(x-2)(x-7)(x-11/3)를 그렸다. A(2,0)에서 기울기가 양수이므로 x=2의 오른쪽에서 f>0이고, B(7,0)에서 기울기가 양수이므로 x=7의 왼쪽에서 f<0이다. 그래서 구간 (2,7)에서 부호가 바뀌어 중간값 정리에 의해 그림의 C(11/3,0)처럼 근이 적어도 하나 있다. 양 끝 A, B를 더하면 근은 적어도 3개이므로 n=3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4(서술형 2)] 7점<br>다항함수 $f(x)$에 대하여 $\\lim_{x\\to2}\\dfrac{f(x)}{x-2}=5$, $\\lim_{x\\to7}\\dfrac{f(x)}{x-7}=10$이고, 닫힌구간 $[2,7]$에서 방정식 $f(x)=0$이 적어도 $n$개의 실근을 가질 때, $n$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=2의 오른쪽에서 양, x=7의 왼쪽에서 음이어서 (2,7)에 근 C가 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f(2)=f(7)=0에서 x=2의 오른쪽은 양, x=7의 왼쪽은 음이라 구간 (2,7)에 근 C가 있는 예를 보인다."
+  ],
+  "accessibilityDescription": "가로축을 세 점 A, C, B에서 지나는 삼차곡선이 그려져 있고, 점 A와 점 B에서 곡선이 오른쪽 위로 향하며 가로축을 지난다."
+}

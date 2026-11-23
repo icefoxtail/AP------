@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-9",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -26,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "9"
+      },
+      {
+        "id": "N",
+        "x": "3",
+        "y": "-23"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "9"
+      ],
+      "N": [
+        "3",
+        "-23"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f′(x)=3(x+1)(x-3)이므로 a=-3, b=-9이고 f(3)=-23에서 c=4이다. 그림은 f(x)=x³-3x²-9x+4의 그래프로 x=-1에서 극대인 점 M(-1,9), x=3에서 극소인 점 N(3,-23)이 있다. 따라서 극댓값은 9이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+ax^2+bx+c$가 $x=3$에서 극솟값 $-23$을 갖고 $x=-1$에서 극댓값을 가질 때, $f(x)$의 극댓값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(-1,9)과 극소점 N(3,-23)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 M(-1,9), 극소점 N(3,-23)이다."
+  ],
+  "accessibilityDescription": "삼차함수의 그래프에 극대점 M과 극소점 N이 표시되어 있고 두 점의 좌표가 쓰여 있다."
+}

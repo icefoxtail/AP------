@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -2
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "0",
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "requiredPoints": [],
+    "limitArrows": [
+      {
+        "at": "-2",
+        "side": "RIGHT",
+        "toY": "1"
+      },
+      {
+        "at": "0",
+        "side": "LEFT",
+        "toY": "1"
+      },
+      {
+        "at": "-1",
+        "side": "LEFT",
+        "toY": "0"
+      },
+      {
+        "at": "-1",
+        "side": "RIGHT",
+        "toY": "0"
+      }
+    ]
+  },
+  "caption": "원본 q1.png를 정적 대조해 왼쪽 직선이 (-2,0)에 닫혀 있고, (-2,1)에서 열린 V자 선분이 (-1,0)을 지나 (0,1)에서 열리는 구성, (0,0)의 별도 채운 점, (0,-1)에서 열린 오른쪽 직선과 (1,1)에서 열린 우상향 곡선을 반영했다. 우측 곡률은 식 미제공에 따른 근사이다. x=-2의 우극한 1, x=0의 좌극한 1, x=-1에서 극한 0이므로 합은 2, 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같을 때, $\\displaystyle\\lim_{x\\to-2+}f(x)+\\lim_{x\\to0-}f(x)+\\lim_{x\\to-1}f(x)$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본에서 (-2,0)의 닫힌 점과 (-2,1)의 빈 점, (-1,0)의 V자 꼭짓점, (0,1)의 빈 점, (0,0)의 채운 점, (0,-1)의 빈 점, (1,0)의 채운 점과 (1,1)의 빈 점을 구별해 세 극한을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 있는 서로 다른 열린 점과 채운 점을 위치별로 구분한다. x→-2+에서 1, x→0-에서 1, x→-1에서 0으로 접근한다."
+  ],
+  "accessibilityDescription": "왼쪽 내림 직선은 (-2,0)에서 채운 점으로 끝나고 V자형 선분은 (-2,1) 빈 점부터 (-1,0)을 거쳐 (0,1) 빈 점까지 이어진다. (0,0)에 별도 채운 점이 있고, (0,-1) 빈 점에서 (1,0) 채운 점까지 직선, (1,1) 빈 점 위로 우상향 곡선이 있다."
+}

@@ -1,0 +1,179 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -3,
+      4
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "4",
+              "3"
+            ],
+            "domain": [
+              -2,
+              -1
+            ],
+            "end": "CLOSED"
+          },
+          {
+            "coefficients": [
+              "0",
+              "-1"
+            ],
+            "domain": [
+              -1,
+              1
+            ],
+            "start": "OPEN",
+            "end": "CLOSED"
+          },
+          {
+            "coefficients": [
+              "0",
+              "1"
+            ],
+            "domain": [
+              1,
+              3
+            ],
+            "start": "OPEN"
+          }
+        ],
+        "jumpValues": [],
+        "axisTickValues": {
+          "x": [
+            "-1",
+            "0",
+            "1"
+          ],
+          "y": [
+            "1",
+            "-1"
+          ]
+        }
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "0",
+        "side": "LEFT",
+        "toY": "0"
+      },
+      {
+        "curve": "f",
+        "at": "0",
+        "side": "RIGHT",
+        "toY": "-1"
+      },
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "-1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "1"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0",
+        "1"
+      ],
+      "y": [
+        "1",
+        "-1"
+      ]
+    }
+  },
+  "caption": "원본 q16.png를 정적 대조하여 위쪽 f의 x=-1 골짜기와 x=0·1 점프, 아래쪽 g의 x=-1 봉우리와 x=1 점프를 반영했다. x=0에서 f의 좌극한 0, 우극한 -1이고 g는 양쪽 0이므로 h=fg의 극한은 0(ㄱ 참)이다. 근방에서 왼쪽 h=-x², 오른쪽 h=-x²+x여서 좌미분계수 0, 우미분계수 1이 달라 ㄴ도 참이다. x=1에서 h의 좌극한 0, 우극한 1, h(1)=0이므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y=f(x),y=g(x)$의 그래프가 그림과 같다. 함수 $h(x)=f(x)g(x)$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은? [4.1점]<br><div class=\"question-note-box\"><div class=\"note-title\">&lt;보기&gt;</div>ㄱ. $\\displaystyle\\lim_{x\\to0}h(x)=0$<br>ㄴ. 함수 $h(x)$는 $x=0$에서 미분 불가능하다.<br>ㄷ. $\\displaystyle\\lim_{x\\to1-}h(x)+\\lim_{x\\to1+}h(x)+h(1)=0$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본에 그려진 f의 x=-1 V자형 골짜기와 x=0,1 점프, g의 x=-1 봉우리와 x=1 점프를 각각 보존해 h=fg의 좌우값을 구한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f는 x=-1에서 V자형으로 연결되고 x=0에서 0에서 -1로, g는 x=-1에서 봉우리로 연결되고 x=1에서 -1에서 1로 뛴다. 그 결과 h=fg의 x=0 좌우 미분계수가 0과 1이 된다."
+  ],
+  "accessibilityDescription": "위쪽 f는 x=-1의 V자 골짜기, (0,0) 열린 점과 (0,-1) 채운 점, (1,0) 채운 점과 (1,1) 열린 점이 있는 직선 조각이다. 아래쪽 g는 (-1,1)의 뾰족한 봉우리, (1,-1)의 채운 점, (1,1)의 열린 점이 있는 직선 조각이다."
+}

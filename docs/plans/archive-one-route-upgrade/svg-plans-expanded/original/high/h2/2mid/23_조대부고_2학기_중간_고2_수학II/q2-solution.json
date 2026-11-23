@@ -1,0 +1,135 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          0,
+          30
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "240",
+          "-4"
+        ],
+        "domain": [
+          30,
+          60
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          60,
+          90
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-330",
+          "11/3"
+        ],
+        "domain": [
+          90,
+          120
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "550",
+          "-11/3"
+        ],
+        "domain": [
+          120,
+          150
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "30",
+        "120"
+      ],
+      "y": [
+        "100"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "30",
+        "y": "120"
+      },
+      {
+        "id": "B",
+        "x": "120",
+        "y": "110"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "25",
+          "y": "100"
+        },
+        {
+          "id": "P2",
+          "x": "35",
+          "y": "100"
+        },
+        {
+          "id": "P3",
+          "x": "1290/11",
+          "y": "100"
+        },
+        {
+          "id": "P4",
+          "x": "1350/11",
+          "y": "100"
+        }
+      ],
+      "lines": [
+        {
+          "id": "v",
+          "slope": "0",
+          "intercept": "100",
+          "label": "y=100"
+        }
+      ]
+    }
+  },
+  "caption": "예: 가로축은 출발 후 시간(분), 세로축은 속도(km/h)로 그린 예시 속도 그래프이다. 속도는 시간에 따라 연속으로 변하므로 0에서 120(점 A)으로 오를 때, 120에서 0으로 내릴 때, 휴게소 뒤 0에서 110(점 B)으로 오를 때, 110에서 0으로 내려 집에 도착할 때 각각 수평선 시속 100과 만나는 점 P1, P2, P3, P4가 생긴다. 따라서 적어도 4번이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지난 주말 철수는 승용차를 타고 드라이브를 나갔다. 철수가 출발한 지 30분 뒤에 승용차의 계기판을 보니 시속 120km였다. 이후 휴게소에서 한 번 쉬었다가 다시 출발 후 계기판을 보니 시속 110km였다. 철수가 드라이브를 마치고 집에 도착할 때까지 승용차의 속도가 시속 100km가 되는 경우는 적어도 몇 번인지 구하면? [3.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "속도 그래프가 수평선 시속 100과 네 번 만나는 점 P1~P4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "속도가 0에서 120, 120에서 0, 0에서 110, 110에서 0으로 바뀌며 시속 100과 4번 만난다."
+  ],
+  "accessibilityDescription": "속도가 두 번 올라갔다 내려오는 그래프에 시속 100을 나타내는 수평선이 그려져 있고 수평선과 만나는 네 점 P1, P2, P3, P4가 표시되어 있다."
+}

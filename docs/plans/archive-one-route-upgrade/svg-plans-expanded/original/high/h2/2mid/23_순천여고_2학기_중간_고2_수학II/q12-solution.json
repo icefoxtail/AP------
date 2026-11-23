@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "limitArrows": [
+      {
+        "at": "-1",
+        "side": "LEFT",
+        "toY": "-1"
+      }
+    ]
+  },
+  "caption": "f는 x=1에서 좌극한, 우극한, 함숫값이 모두 1(점 C)이라 연속이고 x=-1에서는 좌극한 -1, 함숫값과 우극한 1(점 B)이라 불연속이므로 ㄱ은 참이다. {f(x)}²은 x=-1에서 좌극한 (-1)²=1, 함숫값 1이 같아 연속이어서 ㄴ도 참이다. (x-1)f(x)는 x=-1에서 좌극한 (-2)(-1)=2, 우극한 (-2)(1)=-2로 달라 불연속이므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}x^2&(|x|\\le1)\\\\x&(|x|>1)\\end{cases}$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은? [4.1점]\n\n<보기>\nㄱ. 함수 $f(x)$의 불연속인 점은 $1$개이다.\nㄴ. 함수 $\\{f(x)\\}^2$은 실수 전체의 집합에서 연속이다.\nㄷ. 함수 $g(x)=(x-1)f(x)$는 실수 전체의 집합에서 연속이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1의 점프(점 A, B)와 x=1의 연속(점 C)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f는 x=-1에서 -1에서 1로 뛰고 x=1에서는 연속이다."
+  ],
+  "accessibilityDescription": "x=-1에서 끊어지고 x=1에서 이어지는 직선과 포물선 조각의 그래프이며 x=-1의 두 점 A, B와 x=1의 점 C가 표시되어 있다."
+}

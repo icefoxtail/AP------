@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      10,
+      -1,
+      13
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "4"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "10"
+        ],
+        "label": "y=4-3/x",
+        "color": "BLUE"
+      },
+      {
+        "id": "T",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "10"
+        ],
+        "label": "y=4",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "모든 양수 x에서 f(x)는 아래 곡선 y=4-3/x와 위 곡선 y=4+3/x+5/x² 사이에 있다(그림에는 아래 곡선 y=4-3/x와 그 한계선 y=4만 그렸다). x가 커질수록 아래 곡선은 y=4에 가까워지고 위 곡선도 4+3/x+5/x²이 4로 가까워져 두 극한이 모두 4이다. 따라서 그 사이에 낀 f(x)의 극한도 4이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 모든 양의 실수 $x$에 대하여 $\\dfrac{4x-3}{x}\\lt f(x)\\lt\\dfrac{4x^2+3x+5}{x^2}$을 만족시킬 때, 극한값 $\\lim_{x\\to\\infty}f(x)$는? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "아래 곡선이 x→∞에서 y=4로 가까워지는 것을 보인다(위 곡선은 caption에 식으로 쓴다).",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "아래 곡선 y=4-3/x가 x→∞에서 수평선 y=4로 가까워진다."
+  ],
+  "accessibilityDescription": "x가 커질수록 아래쪽에서 y=4에 가까워지는 곡선과 수평선 y=4가 그려진 그래프이다."
+}

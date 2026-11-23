@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1",
+          "15",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -12,
+      2
+    ],
+    "viewport": [
+      -12,
+      2,
+      -50,
+      560
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "-5+2*sqrt(57)/3",
+        "y": "258-304*sqrt(57)/9"
+      },
+      {
+        "id": "F",
+        "x": "-5-2*sqrt(57)/3",
+        "y": "258+304*sqrt(57)/9"
+      },
+      {
+        "id": "A",
+        "x": "-5+sqrt(23)",
+        "y": "258-53*sqrt(23)"
+      },
+      {
+        "id": "B",
+        "x": "-5-sqrt(23)",
+        "y": "258+53*sqrt(23)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 32,
+      "y": 1
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-7",
+          "intercept": "223-46*sqrt(23)",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "-7",
+          "intercept": "223+46*sqrt(23)",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "f′(x)=3x²+2ax-1이고 두 점 A, B의 x좌표 α, β에서 f′(α)=f′(β)이면 3(α+β)+2a=0이므로 a=15이다. α, β는 x²+10x+2=0의 두 근(-5±√23)이므로 m=3α²+30α-1=-7이다. 그림은 y=x³+15x²-x+3에서 기울기가 같은 -7인 두 접선 l, m이 A, B에서 접하는 모습이다. 따라서 a+m=15-7=8이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3+ax^2-x+3$ 위의 서로 다른 두 점 $A$, $B$에서의 접선이 서로 평행하다. 두 점 $A$, $B$의 $x$좌표의 합과 곱은 각각 $-10$, $2$이고, 점 $A$에서의 접선의 기울기는 $m$이다. $a+m$의 값은? (단, $a$, $m$은 상수이다.) [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=15일 때 기울기 -7인 평행한 두 접선이 접점 A, B에서 곡선에 접함을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=15인 삼차곡선에서 기울기 -7로 평행한 두 접선 l, m의 접점 A, B와 극점 E, F를 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 위에서 시작해 두 번 방향을 바꾸는 삼차곡선과, 서로 평행한 두 접선 l, m이 각각 점 A, B에서 접하는 그래프이다."
+}

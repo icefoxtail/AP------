@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -6,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "M1",
+        "x": "(2-sqrt(13))/3",
+        "y": "(-38-26*sqrt(13))/27"
+      },
+      {
+        "id": "M2",
+        "x": "(2+sqrt(13))/3",
+        "y": "(-38+26*sqrt(13))/27"
+      }
+    ],
+    "exactCoordinates": {},
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "M1",
+        "M2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "4/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "-4",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "3",
+          "intercept": "-76/27",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "구간 [0,2]의 평균변화율은 (f(2)-f(0))/2=(2-(-4))/2=3이고 그림의 할선 l은 A(0,-4), B(2,2)를 지난다. f′(a)=3, 즉 -3a²+4a=0에서 a=0 또는 4/3이고 a=4/3인 점 T에서 접선 m이 l과 평행하다. 양수인 a는 4/3이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-x^3+2x^2+3x-4$에 대하여 $x$의 값이 $0$에서 $2$로 변할 때 평균변화율이 $f'(a)$의 값과 같게 하는 양수 $a$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 l과 평행한 접선 m의 접점 T(x=4/3)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "할선 l(기울기 3)과 평행한 접선 m이 x=4/3인 점 T에서 접한다."
+  ],
+  "accessibilityDescription": "삼차곡선 위의 두 점 A, B를 잇는 할선 l과 그 할선에 평행하며 점 T에서 접하는 접선 m을 나타낸 그래프이다."
+}

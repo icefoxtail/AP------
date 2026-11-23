@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -2,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "5",
+          "-5",
+          "5/4"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          4,
+          7
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "4",
+        "y": "3"
+      }
+    ],
+    "limitArrows": [
+      {
+        "at": "1",
+        "side": "LEFT",
+        "toY": "2"
+      }
+    ]
+  },
+  "caption": "원본 q1.png를 직접 대조했다. 왼쪽 상승선은 열린 점 (1,2)로 끝나고, 별도의 닫힌 점 (1,1)에서 시작한 U자 곡선은 (2,0)의 최솟점과 열린 점 (4,5)를 지나며, x=4의 닫힌 점 B(4,3)에서 오른쪽 하강선으로 바뀐다. 실제 곡선식은 없어 이차 조각으로 개형을 근사했다. x→1-에서는 2, x→4+에서는 3이므로 합은 5, 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 아래와 같을 때, $\\displaystyle\\lim_{x\\to1-}f(x)+\\lim_{x\\to4+}f(x)$의 값은? [3.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 왼쪽에서 점 A의 높이 2, x=4의 오른쪽에서 점 B의 높이 3을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 x=1 열린 높이 2·닫힌 높이 1, x=2 최솟점 (2,0), x=4 열린 높이 5·닫힌 높이 3과 오른쪽 하강선을 이차 개형으로 보인다."
+  ],
+  "accessibilityDescription": "x=1의 높이 2 열린 점으로 향하는 왼쪽 상승 직선, x=1의 높이 1 닫힌 점에서 x=2의 원점 높이 최솟점까지 내려갔다 x=4의 높이 5 열린 점으로 올라가는 곡선, x=4의 높이 3 닫힌 점에서 오른쪽 아래로 내려가는 직선을 나타낸다."
+}

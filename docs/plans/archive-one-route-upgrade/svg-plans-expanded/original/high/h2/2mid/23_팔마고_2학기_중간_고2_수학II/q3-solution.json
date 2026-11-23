@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.8,
+      1.8
+    ],
+    "viewport": [
+      -1.8,
+      1.8,
+      -1,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(3)",
+        "y": "2"
+      },
+      {
+        "id": "M",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "N",
+        "x": "sqrt(2)",
+        "y": "1"
+      },
+      {
+        "id": "K",
+        "x": "-sqrt(2)",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "2"
+      ],
+      "B": [
+        "sqrt(3)",
+        "2"
+      ],
+      "M": [
+        "0",
+        "5"
+      ],
+      "N": [
+        "sqrt(2)",
+        "1"
+      ],
+      "K": [
+        "-sqrt(2)",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "2",
+        "intersectionX": [
+          "-sqrt(3)",
+          "-1",
+          "1",
+          "sqrt(3)"
+        ]
+      }
+    ]
+  },
+  "caption": "f(-1)=f(√3)=2이므로 수평선 y=2가 구간 양 끝 A(-1,2), B(√3,2)를 지나 롤의 정리를 쓸 수 있다. f′(x)=4x(x²-2)=0의 근은 0, ±√2이고 그림의 M(0,5), N(√2,1), K(-√2,1)이 접선이 수평인 점이다. 이 중 열린구간 (-1,√3)에 속하는 것은 x=0과 x=√2뿐이고 -√2는 -1보다 작아 구간 밖이다. 합은 0+√2=√2이므로 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^4-4x^2+5$에 대하여 닫힌구간 $[-1,\\sqrt3]$에서 롤의 정리를 만족하는 실수 $c$가 될 수 있는 모든 값의 합은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝 A, B가 같은 높이이고 접선이 수평인 점 M, N이 구간 안에 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝 A(-1,2), B(√3,2)와 수평선 y=2, 접선이 수평인 점 M(0,5), N(√2,1), K(-√2,1)를 보인다."
+  ],
+  "accessibilityDescription": "가운데가 솟은 W 모양의 사차곡선과 높이 2의 수평선이 그려져 있고, 수평선이 곡선과 만나는 두 끝 점 A, B와 접선이 수평이 되는 세 점 M, N, K가 표시되어 있다."
+}

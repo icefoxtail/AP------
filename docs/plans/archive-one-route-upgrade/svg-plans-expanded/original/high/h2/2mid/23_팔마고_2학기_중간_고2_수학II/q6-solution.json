@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -3,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "1/4",
+        "y": "7/8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "curveX": "-1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "-1",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "-5",
+          "intercept": "-1",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "접점을 (t, 2t²-t+1)이라 하면 접선의 기울기는 4t-1이고 점 P(0,-1)을 지나려면 2t²=2에서 t=±1이다. 그림의 두 접선은 T(1,2)에서의 l(기울기 3)과 U(-1,4)에서의 m(기울기 -5)이며 둘 다 P(0,-1)을 지난다. 두 기울기의 곱은 3×(-5)=-15이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(0,-1)$에서 곡선 $y=2x^2-x+1$에 그은 두 접선의 기울기의 곱은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 P(0,-1)에서 그은 두 접선 l, m과 접점 T(1,2), U(-1,4)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P(0,-1)에서 그은 두 접선 l(기울기 3), m(기울기 -5)과 접점 T(1,2), U(-1,4)를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 포물선 바깥의 점 P에서 그은 두 접선 l, m이 서로 다른 두 접점 T, U에서 접하는 그래프이다."
+}

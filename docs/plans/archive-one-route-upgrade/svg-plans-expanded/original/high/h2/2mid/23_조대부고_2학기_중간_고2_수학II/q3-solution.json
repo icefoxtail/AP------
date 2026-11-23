@@ -1,0 +1,126 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "2"
+        ],
+        "domain": [
+          -4,
+          -3
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -3,
+          -2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-3",
+          "-2"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-7",
+          "2"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "예: f(-x)=-f(x), f(1)f(2)<0, f(3)f(4)<0을 만족하는 연속함수의 예이다. f(1)=1, f(2)=-1이므로 구간 (1,2)에서 x축을 지나고, f(3)=-1, f(4)=1이므로 구간 (3,4)에서도 x축을 지난다. 원점 대칭이라 (-2,-1)과 (-4,-3)에서도 x축을 지나고 f(0)=0인 원점 O도 근이다. 따라서 근은 적어도 5개이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $f(x)$에 대하여 $f(-x)=-f(x)$, $f(1)f(2)\\lt0$, $f(3)f(4)\\lt0$이 성립할 때, 방정식 $f(x)=0$의 실근은 적어도 몇 개인지 구하면? [3.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점 대칭 연속함수가 x축과 만나는 다섯 점 Z1, Z2, O, Z3, Z4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 대칭인 연속함수가 (-4,-3), (-2,-1), 0, (1,2), (3,4)에서 x축과 만나 근이 5개이다."
+  ],
+  "accessibilityDescription": "원점에 대해 대칭인 꺾은선 그래프로 x축과 다섯 점 Z1, Z2, O, Z3, Z4에서 만나는 모습을 나타낸 그림이다."
+}

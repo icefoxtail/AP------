@@ -1,0 +1,145 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7/4",
+          "9/2",
+          "-3/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-43",
+          "12",
+          "-3/4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "x": "5",
+        "y": "2"
+      },
+      {
+        "x": "8",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "5"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "C",
+        "x": "5",
+        "y": "2"
+      },
+      {
+        "id": "D",
+        "x": "8",
+        "y": "5"
+      },
+      {
+        "id": "E",
+        "x": "10",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "2"
+      ],
+      "B": [
+        "3",
+        "5"
+      ],
+      "C": [
+        "5",
+        "2"
+      ],
+      "D": [
+        "8",
+        "5"
+      ],
+      "E": [
+        "10",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x=3에서 연속이므로 b=5이고 주기 5로 x=0과 x=5가 이어져야 하므로 f(5)=4a+5=f(0)=2에서 a=-3/4이다. 그림은 [0,5]의 한 주기와 그 반복(주기 5)이며 점 A, C, E의 높이가 모두 2로 이어진다. f(14)=f(4)=17/4(점 Q), f(12)=f(2)=4(점 P)이므로 차는 1/4이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌 구간 $[0,5]$에서 $f(x)=\\begin{cases}x+2&(0\\le x\\le3)\\\\a(x-3)^2+b&(3\\lt x\\le5)\\end{cases}$로 정의되고, 모든 실수 $x$에 대하여 $f(x)=f(x+5)$를 만족시키는 함수 $f(x)$가 실수 전체의 집합에서 연속일 때, $f(14)-f(12)$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=-3/4, b=5일 때 주기 5로 반복되는 연속 그래프와 f(2)=4, f(4)=17/4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-3/4, b=5일 때 그래프가 주기 5로 이어지며 f(2)=4, f(4)=17/4이다."
+  ],
+  "accessibilityDescription": "직선 조각과 위로 볼록한 포물선 조각이 주기 5로 두 번 반복되며 모두 이어진 그래프이며 꺾임점과 이음점 A, B, C, D, E 및 점 P, Q가 표시되어 있다."
+}

@@ -1,0 +1,98 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "18",
+          "2"
+        ],
+        "domain": [
+          -12,
+          -9
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-18",
+          "-2"
+        ],
+        "domain": [
+          -9,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "18",
+          "-12",
+          "1"
+        ],
+        "domain": [
+          0,
+          10
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-9",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "18"
+      },
+      {
+        "id": "V",
+        "x": "6",
+        "y": "-18"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "-18",
+          "label": "y=-18"
+        }
+      ]
+    },
+    "limitArrows": [
+      {
+        "at": "0",
+        "side": "LEFT",
+        "toY": "-18"
+      }
+    ]
+  },
+  "caption": "예: a=-12, b=18일 때의 그림이다. x<0에서 -|2x+18|은 A(-9,0)을 꼭대기로 하는 V자 모양이고 x=0의 왼쪽에서 점 (0,-18)로 다가가며, x≥0에서는 C(0,18)에서 시작해 꼭짓점 V(6,-18)을 지나는 포물선이다. 수평선 y=-18은 V에서 접하고 그보다 조금 위에서는 오른쪽 포물선과 2점에서 만나 해가 모두 4개이며, 조금 아래에서는 V자 모양과만 1점에서 만난다. 따라서 a+b=6이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}-|2x+18|&(x<0)\\\\x^2+ax+b&(x\\ge0)\\end{cases}$가 다음을 만족할 때, $a+b$의 값은? [4.7점]\n(단, $a,b$는 상수이다.)\n\n(가) $y=|f(x)|$는 실수 전체에서 연속이다.\n(나) 실수 $t$에 대하여 $g(t)$를 $f(x)=t$인 $x$의 개수라 할 때, $\\displaystyle\\lim_{t\\to-18-}g(t)=1$, $\\displaystyle\\lim_{t\\to-18+}g(t)=4$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "V자 왼쪽 가지, 오른쪽 포물선의 꼭짓점 V(6,-18)과 수평선 y=-18을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 포물선의 최솟값이 -18이고 수평선 y=-18이 V(6,-18)에 접한다."
+  ],
+  "accessibilityDescription": "왼쪽의 위로 볼록한 V자 모양과 x=0에서 끊어진 오른쪽 아래로 볼록한 포물선, 수평선 y=-18을 나타낸 그래프이며 꼭짓점들이 표시되어 있다."
+}
