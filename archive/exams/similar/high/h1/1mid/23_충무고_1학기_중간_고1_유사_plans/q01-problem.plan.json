@@ -1,0 +1,92 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 두 포물선의 꼭짓점을 비교한다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "2",
+            "-6",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -7,
+            1
+          ],
+          "viewport": [
+            -7,
+            1,
+            -2,
+            13
+          ],
+          "requiredPoints": [
+            {
+              "id": "M",
+              "x": -3,
+              "y": 11
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              -3
+            ],
+            "y": [
+              11
+            ]
+          }
+        },
+        "caption": "y=-(x+3)^2+11의 최댓값은 M=11"
+      },
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "-3",
+            "-4",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -2,
+            6,
+            -9,
+            5
+          ],
+          "requiredPoints": [
+            {
+              "id": "m",
+              "x": 2,
+              "y": -7
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              2
+            ],
+            "y": [
+              -7
+            ]
+          }
+        },
+        "caption": "y=(x-2)^2-7의 최솟값은 m=-7"
+      }
+    ],
+    "caption": "두 이차함수의 꼭짓점에서 M=11, m=-7을 구한다."
+  }
+}

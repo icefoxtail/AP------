@@ -1,0 +1,58 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 y=f(x)+4가 x축에 접할 때의 y=f(x) 그래프를 보여준다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "6",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -7,
+        1
+      ],
+      "viewport": [
+        -7,
+        1,
+        -5,
+        6
+      ],
+      "requiredPoints": [
+        {
+          "id": "A",
+          "x": -5,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": -1,
+          "y": 0
+        },
+        {
+          "id": "V",
+          "x": -3,
+          "y": -4
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -5,
+          -3,
+          -1
+        ],
+        "y": [
+          -4
+        ]
+      }
+    },
+    "caption": "y=f(x)+4가 x축에 접하므로 k=5이고, f(x)=x^2+6x+5는 x=-5, -1에서 x축과 만난다."
+  }
+}
