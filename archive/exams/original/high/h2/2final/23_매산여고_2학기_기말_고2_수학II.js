@@ -428,7 +428,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "최고차항의 계수가 양수인 이차함수 $f(x)$에 대하여 $\\displaystyle\\int_0^2f(x)dx=-8$, $\\displaystyle\\int_2^4f(x)dx=40$이고, $\\displaystyle\\int_0^2|f(x)|dx=40$, $\\displaystyle\\int_2^4|f(x)|dx=56$일 때, $a\\lt b$인 두 실수 $a,b$에 대하여 $\\displaystyle\\int_a^bf(x)dx$의 최솟값을 구하면? [4.3점]",
+    "content": "최고차항의 계수가 양수인 이차함수 $f(x)$에 대하여 $\\displaystyle\\int_0^2f(x)dx=16$, $\\displaystyle\\int_2^4f(x)dx=16$이고, $\\displaystyle\\int_0^2|f(x)|dx=48$, $\\displaystyle\\int_2^4|f(x)|dx=48$일 때, $a\\lt b$인 두 실수 $a,b$에 대하여 $\\displaystyle\\int_a^bf(x)dx$의 최솟값을 구하면? [4.3점]",
     "choices": [
       "$-32$",
       "$-28$",
@@ -437,15 +437,11 @@ window.questionBank = [
       "$-16$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각 구간에서 양의 넓이와 음의 넓이의 크기를 연립하여 구한다.\n$[0,2]$에서 양의 넓이를 $P_1$, 음의 부분의 넓이의 크기를 $N_1$이라 하면 $P_1-N_1=-8$, $P_1+N_1=40$이므로 $P_1=16$, $N_1=24$이다.\n$[2,4]$에서는 $P_2-N_2=40$, $P_2+N_2=56$이므로 $P_2=48$, $N_2=8$이다.\n최고차항의 계수가 양수인 이차함수는 두 근 사이에서 음수이고 그 밖에서 양수이다. 주어진 두 구간에 음의 부분이 모두 존재하므로 두 근을 $a\\lt b$라 할 때 음의 구간 $(a,b)$가 $x=2$를 가로지른다.\n따라서 $\\displaystyle\\int_a^bf(x)dx=-(N_1+N_2)=-(24+8)=-32$이며, 음수인 부분 전체를 적분했을 때가 가능한 최솟값이다. 정답은 ①이다.",
+    "solution": "[키포인트] 각 구간에서 양의 넓이와 음의 넓이의 크기를 연립하여 구한다.\n$[0,2]$에서 양의 넓이를 $P_1$, 음의 부분의 넓이의 크기를 $N_1$이라 하면 $P_1-N_1=16$, $P_1+N_1=48$이므로 $P_1=32$, $N_1=16$이다.\n$[2,4]$에서도 $P_2-N_2=16$, $P_2+N_2=48$이므로 $P_2=32$, $N_2=16$이다.\n최고차항의 계수가 양수인 이차함수는 두 근 사이에서 음수이고 그 밖에서 양수이다. 주어진 두 구간에 음의 부분이 모두 존재하므로 두 근을 $a\\lt b$라 할 때 음의 구간 $(a,b)$가 $x=2$를 가로지른다.\n따라서 $\\displaystyle\\int_a^bf(x)dx=-(N_1+N_2)=-(16+16)=-32$이며, 음수인 부분 전체를 적분했을 때가 가능한 최솟값이다. (실제로 $f(x)=24(x-1)(x-3)$이 조건을 모두 만족한다.) 정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 0, a, 2, b, 4의 순서만 표시하며 점 사이 간격은 비례하지 않는다.",
-    "solutionImageCaption": "두 근이 2를 사이에 둔 순서를 이용해 양·음의 넓이를 합친다. 정답은 −32이다.",
-    "solutionImageSize": "full"
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
