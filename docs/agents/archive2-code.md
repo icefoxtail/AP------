@@ -552,6 +552,18 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **크기·시간(이 PC):** 조각 11개, 합계 원본 76.9MB·압축 6.5MB(문항 30,152, 시험지 1,248), 가장 큰 조각 `m3`(원본 13.5MB·압축 1.12MB), 사이트 +약 77MB. 빌드 4~5초, 최대 메모리 약 1GB.
 - **2단계 전제(설계 메모, 코드 없음):** ① 조각은 레코드만 담는다. 목록의 대부분인 **검수 근거 묶음(reviewed-exam-meta)·런타임 팩은 레코드가 아니라 `canonicalAuthority`(`validateBasicAssignment`·`advancedEligible`가 `assignmentsByUid`·`identityByUid` 등으로 쓴다, 메모리 41MB)를 만드는 입력**이라, 화면이 조각만 받으려면 이 권한 데이터를 조각별 슬라이스+공통 한 덩어리로 같이 실어야 한다. ② 서버(Worker)는 `loadCanonicalCatalog`로 사이트의 큰 파일을 직접 받아 자기 카탈로그를 만들고 `index_version`이 같은지 본다(`apmath/worker-backup/worker/helpers/archive2-questions.js`). 그래서 화면이 조각으로 바뀌어도 Worker는 바꿀 필요가 없지만, **옛 큰 파일을 사이트에서 뺄 수는 없다**(Worker가 읽는다). ③ 조각이 서버 대조(META_FIELDS 값)를 통과하는 것은 위 테스트가 지킨다.
 
+## 문항 목록 조각 2단계 2-1: 권한 데이터는 조각마다 슬라이스 + 공통 한 덩어리 (2026-11-24, 화면 불변·빌드만)
+
+- **왜:** 레코드만으로는 문항을 "써도 되는지" 판정할 수 없다. `Archive2Core.basicEligibility`·`advancedEligible`은 `canonicalAuthority`(`resolveCatalog`가 검수 근거 묶음·런타임 팩 전체에서 만드는 표, 메모리 41MB)를 읽는다. 화면이 조각만 받으려면 이 표를 조각 단위로 나눠 같이 실어야 한다.
+- **실측한 읽기:** 판정 함수가 읽는 것은 ① 문항별: `identityByUid[uid]`·`assignmentsByUid[uid]`·`advancedAssignmentsByUid[uid]`, 시험지별 `examGradeByFile[파일]`, ② 공통: `taxonomyVersion`·`gradeCourses`·`canonicalParents`·`canonicalAdvancedPaths`·`projectionPolicy`·`problemTypeKeys`·`templatesByKey`(status·parentProblemTypeKey만)·`bindingKeys`. 화면 코드가 이 표를 직접 읽는 곳은 `archive2-source.js`(한 uid의 identity)와 `archive2-workspace-core.js`(한 uid의 배정 행 개수)뿐이고 테스트가 이 목록을 지킨다.
+- **조각 파일(`shard-<키>.json`, 스키마 v2):** `records` 뒤에 `authority` 부분이 붙는다: 그 조각 시험지의 `exams`(상태 전체), `sourceHashes`, 그 조각 문항의 배정 행 `assignments`(판정이 읽는 키만 `AUTHORITY_ASSIGNMENT_FIELDS`로 남김; 한 행이 3KB에서 줄어든다), `advancedSame`(고급 배정이 기본 배정과 같은 행인 uid, 지금 전부), `advancedOwn`, `identityOverrides`. **identity 표는 싣지 않는다:** `validateBasicAssignment`가 비교하는 값이 레코드 자신의 `questionUid`·`sourceFile`·`sourceOrdinal`·`identityStatus`라서 레코드에서 만든다(`archive/archive2-catalog-shards.js` `identityOfRecord`; 지금 이 표가 압축 후 1.38MB였다). 빌더는 모든 레코드에서 만든 값이 실제 값과 같은지 보고 다른 것만 `identityOverrides`에 싣는다(지금 0개).
+- **공통 파일(`common.json`):** 판정 표 공통분 + 화면이 읽는 카탈로그 목록(`taxonomy`·`basicTaxonomy`·`basicScopeGroups`·`coreMetaFilterOptions`·`projectionPolicy`·`health`) + PT/TPL 이름표(`labels`). `health`는 브라우저가 `resolveCatalog` 뒤에 계산하는 값(`automatic`·`exclusionReasons`)을 빌더가 전체에 한 번 계산해 싣는다. `basicScopeLinks`(1.35MB, 압축 355KB)는 `[]`로 싣는다: 읽는 곳이 `basicScopeParent`에 그대로 넘기는 한 곳뿐이고 그 함수가 인자를 쓰지 않는다(테스트가 둘 다 지킨다). 목록에 없는 새 카탈로그 값은 공통에 그대로 실린다.
+- **조각 파일에 합친 이유:** 같은 내용을 조각마다 옆 파일로 둔 것과 압축 후 합계를 쟀다(7.44MB 대 7.44MB, 0.04% 차이). 크기가 같아 요청이 조각마다 하나 적은 쪽(합친 쪽)을 골랐고, 한 파일이라 해시도 하나라 로더가 "한쪽만 받은" 상태를 다루지 않는다.
+- **조립은 한 파일:** `archive/archive2-catalog-shards.js`(빌드와 브라우저가 같이 씀)의 `assembleAuthority`·`assembleCatalog`만 조각을 `canonicalAuthority`·`state.catalog` 모양으로 되돌린다. 조각 밖 문항은 `authority.shardCoverage.has(uid)`가 false이고 판정은 실패한다(조용히 통과하지 않음).
+- **동등성 검사 `tests/archive2-catalog-shards-authority.test.js`(실제 입력, 개수 고정 없음):** 조각 하나만으로·전부로·두 조각으로 만든 권한이 전체 권한과 모든 레코드에서 `validateBasicAssignment`·`validateAdvancedAssignment`·`basicEligibility`(ok·reasons)·`advancedEligible` 결과가 같다(둘 다 통과·탈락이 실제로 나오는지 확인해 이빨이 있다). 조각 밖 문항은 거부된다. 판정 함수가 새 키를 읽거나 화면이 권한 표를 새로 읽으면 실패한다.
+- **크기(이 PC):** 조각 11개 합계 원본 84.9MB·압축 7.44MB(1단계 6.52MB에서 +0.92MB), `common.json` 2.17MB·압축 182KB, `index.json` 압축 10KB. 한 학년·과목에 처음 들어올 때 받는 양(압축): 중1 약 0.91MB, 중3 약 1.57MB, 고2 수학I/대수 약 0.91MB, 고1 공통(조각 3개) 약 2.6MB. 요청은 index + common + 조각 수.
+- **건너뛰기 동작은 그대로:** 아직 어느 화면도 읽지 않으므로 조각 빌드 실패는 배포를 막지 않는다.
+
 ## 학생 화면에서 그림 눌러서 크게 보기 (2026-11-24 원장님 결정)
 
 - 문제·해설 그림은 2단 시험지 배치에 맞춰 단 폭의 일부로 줄여 그리므로 휴대폰·패드에서 그림 속 글자가 작다. 그래서 그림 속 글자 크기를 렌더에서 더 키우지 않고, 학생이 그림을 눌러 크게 본다(원장님: "애들이 패드나 핸드폰에서 그림을 확대할 수 있으니까").

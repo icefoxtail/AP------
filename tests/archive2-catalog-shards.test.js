@@ -39,7 +39,7 @@ test('two builds write the same bytes, and the written folder matches its index'
   for (const entry of first.entries) fs.writeFileSync(path.join(dir, path.basename(entry.path)), entry.content);
   const index = JSON.parse(fs.readFileSync(path.join(dir, 'index.json'), 'utf8'));
   const onDisk = fs.readdirSync(dir).filter((name) => name !== 'index.json').sort();
-  assert.deepEqual(onDisk, index.shards.map((shard) => shard.path).sort(), 'every shard in the index exists and nothing else is there');
+  assert.deepEqual(onDisk, [...index.shards.map((shard) => shard.path), index.common.path].sort(), 'every shard and the common file in the index exist and nothing else is there');
   for (const shard of index.shards) {
     const bytes = fs.readFileSync(path.join(dir, shard.path));
     assert.equal(bytes.length, shard.bytes, `bytes: ${shard.key}`);
@@ -73,7 +73,7 @@ test('every question is in exactly one shard, with the same values in every colu
   let total = 0;
   for (const shard of index.shards) {
     const doc = JSON.parse(files.get(shard.path).toString('utf8'));
-    assert.equal(doc.schemaVersion, 'archive2-catalog-shard-v1');
+    assert.equal(doc.schemaVersion, 'archive2-catalog-shard-v2');
     assert.equal(doc.key, shard.key);
     assert.equal(doc.indexVersion, index.indexVersion);
     assert.equal(doc.records.length, shard.records);
