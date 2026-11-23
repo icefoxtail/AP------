@@ -82,5 +82,21 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   const tick = score.findingsFromResult({ status: 'FAILED', code: 'TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL', detail: JSON.stringify({ status: 'RENDERED_LAYOUT_FAIL', detail: { errors: ['TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--1-label', 'TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--1-label'] } }) });
   assert.deepStrictEqual(tick.map(f => f.code).sort(), ['TICK_LABEL_ALONG_AXIS_MISALIGNMENT', 'TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL']);
 
+  // observer output: violations carry the measured degree, only on failure (a passing layout has no such field)
+  const layoutMod = await import(pathToFileURL(path.resolve(__dirname, '..', 'archive/tools/geometry-equation/verify-rendered-layout.mjs')).href);
+  const lab = (id, x, y, w, h) => ({ id, kind: 'POINT_NAME', priority: 3, client: { x, y, width: w, height: h }, bbox: { width: w, height: h }, effectiveFontPx: 14, baseFontPx: 14, font: 'x', missingGlyphCount: 0, owner: null, annotation: null, axisValue: null });
+  const cap = labels => ({ synthetic: false, runtime: 'playwright-chromium', svg: { x: 0, y: 0, width: 200, height: 100 }, viewBox: { width: 200, height: 100 }, safeMargin: 0, coordinateScale: 1, labels, geometry: [], publicationProfile: 'x', fontStatus: 'loaded' });
+  const clean = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 100, 12, 40, 20)]));
+  assert.strictEqual(clean.status, 'PASS');
+  assert.ok(!('violations' in clean));
+  const bad = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 30, 12, 40, 20)]));
+  assert.deepStrictEqual(bad.violations.map(v => v.code), ['LABEL_OVERLAP']);
+  assert.strictEqual(bad.violations[0].degree.kind, 'overlap');
+  assert.ok(bad.violations[0].degree.d > 0.4 && bad.violations[0].degree.d < 0.5);
+  const clipped = layoutMod.analyzeRenderedLayout(cap([lab('c', 190, 50, 40, 20)]));
+  assert.strictEqual(score.scoreFigure({ findings: clipped.violations, hasSvg: true }).verdict, 'BLOCK');
+  const lightTouch = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 47, 10, 40, 20)]));
+  assert.strictEqual(score.scoreFigure({ findings: lightTouch.violations, hasSvg: true }).verdict, 'PASS');
+
   console.log('svg-score-gate: ok');
 })().catch(e => { console.error(e); process.exit(1); });

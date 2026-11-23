@@ -48,9 +48,10 @@
 - 원장님 결정 원문: "겹침 같은 걸 다 실패로 처리하지 말고, 학생이 봤을 때 최소한 읽히면 통과. 100점짜리가 아니라 90점짜리 SVG."
 - **관측은 그대로, 게시 관문만 점수로 판단한다.** 관측기(검사)는 지금처럼 모든 결함을 찾아 기록하고 약화·삭제하지 않는다. 점수는 "찾은 결함이 게시를 막는가"만 정한다.
 - 기준표는 한 곳이다: `archive/tools/geometry-equation/ops/score/score-table.json`(코드 → 막음/감점/엔진 대기/판정 불능, 정도→감점 함수)과 `score.mjs`(채점)·`rescore.mjs`(저장된 결과를 다시 렌더 없이 채점). 합격선은 90점이고 같은 코드가 여러 번이면 상한 없이 누적한다.
-- 코드는 네 갈래다. 감점(품질 판정: 겹침·근접·멂·촘촘함), 엔진 대기(자리를 못 찾아 그림이 없는 `*_NO_ROOM`·`*_NO_PLACE`·`*LABEL_TOO_LARGE`: 엔진이 차선 자리에 놓아야 풀림), 판정 불능(`LAYOUT_INVENTORY_INCOMPLETE`·`WORKER_TIMEOUT`·`*PREFLIGHT_FAIL`·`*DISPLAY_ENVELOPE*`: 점수로 덮지 않는다), 막음.
+- 코드는 네 갈래다. 감점(품질 판정: 겹침·근접·멂·촘촘함), 엔진 대기(자리를 못 찾아 그림이 없는 `*_NO_ROOM`·`*_NO_PLACE`·`*LABEL_TOO_LARGE`·`LAYOUT_INVENTORY_INCOMPLETE`: 엔진이 차선 자리에 놓아야 풀림), 판정 불능(`WORKER_TIMEOUT`·`*PREFLIGHT_FAIL`·`*DISPLAY_ENVELOPE*`: 점수로 덮지 않는다), 막음.
 - **막음(0점, 총점과 무관):** 틀린 값, 문제 그림에 정답 노출, 필수 값 누락, 깨짐·빈 그림, 라벨이 엉뚱한 대상을 가리킴(소속 오류), viewBox 밖 잘림, 라벨이 다른 라벨·도형에 절반 이상 가림, 값 숫자를 못 읽을 만큼 겹침. 표에 없는 코드는 막음으로 본다.
 - 기준표는 `version`(영수증에 `tableVersion`으로 적는다)을 갖고, 필드·코드는 추가만 한다. 기준을 낮추려면 버전을 올리고 이유를 적는다.
+- **2단계(2026-11-23):** 렌더 뒤 관측기가 그림을 실패시켜도 후보 SVG와 위반 목록 전체를 남긴다. 실패 결과 옆에 `<name>-candidate.svg`, 결과 JSON에 `violations`(코드·라벨 id·정도)와 `scoreGate`(`status` SCORED_PASS|FAIL_SCORE|BLOCK…, `score`, `deductions`, `tableVersion`)가 붙는다. 통과하는 그림의 SVG·결과는 그대로다(성공 결과에는 새 필드가 없다). `status`는 FAILED로 둔다: SCORED_PASS는 게시 관문이 받아 주는 후보라는 표시이고, 후보를 아카이브 캡처에 묶어 게시하는 단계는 다음 일이다. 정도 숫자는 관측기가 이미 계산하던 값을 위반 항목에 싣기만 한다(검사 로직 불변). 배치 단계에서 멈추는 코드(`STAT_*` 배치, `*_NO_ROOM` 등)는 후보가 없다(생성기가 차선 자리에 놓아야 풀린다).
 - 표본 PNG는 아카이브 실제 표시 크기로 본다: A4 쪽 단 폭 316px(`archive/figure-size.css`의 `--ap-col-w`)에서 문제 그림 75%(`--ap-fig-q`)·해설 그림 80%(`--ap-fig-sol`), 휴대폰은 390px 폭. 값은 이 파일에서 직접 읽는다.
 - 이유: 모든 겹침·근접을 실패로 두면 학생이 읽는 데 지장이 없는 그림까지 게시가 막혀 그림이 쌓인다(실패 213건 중 SVG가 남은 것은 0건).
 
