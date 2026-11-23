@@ -215,7 +215,7 @@
     }
 
     /**
-     * 학생 상세 성적 탭: 시험(assignment) 한 건의 자습 한 줄. detail-data는 집계 숫자만 오므로 이유는 없다.
+     * 학생 상세 성적 탭: 시험(assignment) 한 건의 자습 한 줄. detail-data는 집계 숫자만 오고, 틀린 이유는 세트별 why_counts로 온다(없으면 생략).
      * sets: detail-data의 self_study 전체. 해당 시험의 기록이 없으면 null.
      */
     function studentExamLine(sets, assignmentId) {
@@ -232,7 +232,49 @@
         if (!parts.length) return null;
         mine.forEach(set => { if (text(set.updated_at) > latest) latest = text(set.updated_at); });
         const day = kstMonthDay(latest);
-        return `${day ? `${day} ` : ''}자습 · ${parts.join(' · ')}`;
+        const top = topWhy(mine);
+        return `${day ? `${day} ` : ''}자습 · ${parts.join(' · ')}${top ? ` · 주로 ${top}` : ''}`;
+    }
+
+    /**
+     * 서버가 세트마다 실어 주는 why_counts({calc, ...})를 합쳐 가장 많은 이유 하나(동률이면 둘까지)의 문구.
+     * why_counts가 하나도 없거나(옛 서버) 틀린 이유가 0건이면 ''.
+     */
+    function topWhy(sets) {
+        const total = {};
+        sets.forEach(set => {
+            const counts = set && set.why_counts;
+            if (!counts || typeof counts !== 'object') return;
+            WHY_ORDER.forEach(code => { total[code] = (total[code] || 0) + num(counts[code]); });
+        });
+        const max = Math.max(0, ...WHY_ORDER.map(code => total[code] || 0));
+        if (max <= 0) return '';
+        return WHY_ORDER.filter(code => (total[code] || 0) === max).slice(0, 2).map(code => WHY_LABELS[code]).join('·');
+    }
+
+    /** 시험 목록 항목의 작은 표시 글. 값이 없거나(옛 서버) 0이면 ''. */
+    function examListBadgeText(count) {
+        const n = Number(count);
+        return Number.isFinite(n) && n > 0 ? `자습 ${Math.floor(n)}명` : '';
+    }
+
+    /** 목록 응답(assignments)이 알려 주는 그 시험의 자습 인원: 숫자면 그 값, 필드가 없으면 null(모름). */
+    function listCount(assignments, assignmentId) {
+        const id = text(assignmentId);
+        const row = (Array.isArray(assignments) ? assignments : []).find(a => a && text(a.id) === id);
+        const n = row ? row.self_study_students : undefined;
+        return typeof n === 'number' && Number.isFinite(n) && n >= 0 ? Math.floor(n) : null;
+    }
+
+    /**
+     * 시험을 열 때 assignment 조회가 필요한 id와, 목록이 이미 "0명"이라고 알려 추가 호출 없이 빈 기록으로 둘 id를 나눈다.
+     * 필드를 모르는 id(옛 서버·목록에 없는 id)는 지금처럼 조회한다. 0명이어도 "자습 기록 없음" 한 줄은 오답 있는 학생이 있으면 그려진다.
+     */
+    function planLoad(ids, assignments) {
+        const fetch = [];
+        const empty = [];
+        (Array.isArray(ids) ? ids : []).forEach(id => { (listCount(assignments, id) === 0 ? empty : fetch).push(id); });
+        return { fetch, empty };
     }
 
     function renderStudentLineHtml(sets, assignmentId, { esc = defaultEsc } = {}) {
@@ -240,5 +282,5 @@
         return line ? `<span class="ap-ss-line__text">${esc(line)}</span>` : '';
     }
 
-    return { WHY_LABELS, KIND_LABELS, setStats, sourceNo, summarizeClass, summaryLine, renderClassHtml, renderBadgeHtml, studentExamLine, renderStudentLineHtml };
+    return { WHY_LABELS, KIND_LABELS, setStats, sourceNo, summarizeClass, summaryLine, renderClassHtml, renderBadgeHtml, studentExamLine, renderStudentLineHtml, topWhy, examListBadgeText, listCount, planLoad };
 });

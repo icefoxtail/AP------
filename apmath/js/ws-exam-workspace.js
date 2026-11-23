@@ -139,7 +139,7 @@ function wsxListHtml() {
         return `<button type="button" class="apms-workspace__item wsx-exam-item${active ? ' is-active' : ''}" aria-current="${active ? 'true' : 'false'}" onclick="wsxSelectExam(${idx})">
             <span class="wsx-exam-item__main">
                 <span class="wsx-exam-item__title">${wsxEsc(exam.displayTitle)}</span>
-                <span class="wsx-exam-item__meta">${meta}</span>
+                <span class="wsx-exam-item__meta">${meta}${wsxSelfStudyListBadge(exam)}</span>
             </span>
             <span class="wsx-exam-item__avg" aria-label="평균 ${exam.avg === null ? '없음' : exam.avg + '점'}"><b>${exam.avg === null ? '-' : exam.avg}</b><span>평균</span></span>
         </button>`;
@@ -356,6 +356,13 @@ function wsxSelfStudyBadge(summary, sid) {
     return summary ? globalThis.WsSelfStudy.renderBadgeHtml(summary, sid, { esc: wsxEsc }) : '';
 }
 
+/** 시험 목록 항목 끝의 작은 "자습 N명". 목록 응답의 self_study_students가 없거나 0이면(옛 서버 포함) 그리지 않는다. */
+function wsxSelfStudyListBadge(exam) {
+    if (!exam || exam.isDraft || !globalThis.WsSelfStudy) return '';
+    const text = globalThis.WsSelfStudy.examListBadgeText(exam.assignment && exam.assignment.self_study_students);
+    return text ? ` <span class="wsx-exam-item__ss">${wsxEsc(text)}</span>` : '';
+}
+
 function wsxSelfStudyToggle(el) {
     if (wsx && el) wsx.selfOpen = !!el.open;
 }
@@ -365,8 +372,19 @@ async function wsxLoadSelfStudy() {
     if (!wsx || !globalThis.WsSelfStudy) return;
     const req = wsx.reqId;
     const classId = wsx.classId;
-    const ids = wsxSelfStudyAssignmentIds(wsxDetail()).filter(id => !wsx.selfStudy[id]);
-    if (!ids.length) return;
+    const wanted = wsxSelfStudyAssignmentIds(wsxDetail()).filter(id => !wsx.selfStudy[id]);
+    if (!wanted.length) return;
+    // 목록 응답이 이미 "0명"이라고 알려 준 시험은 추가 호출 없이 빈 기록으로 둔다(오답 있는 학생이 있으면 "자습 기록 없음" 한 줄이 그려진다).
+    const plan = globalThis.WsSelfStudy.planLoad(wanted, wsx.source && wsx.source.assignments);
+    plan.empty.forEach(id => { wsx.selfStudy[id] = { available: true, rows: [] }; });
+    const ids = plan.fetch;
+    if (!ids.length) {
+        if (!wsxStale(req) && !wsx.newForm) {
+            if (wsx.panel) wsxSet('wsx-selfstudy', wsxSelfStudyHtml(wsxDetail()));
+            else wsxPaint(['detail']);
+        }
+        return;
+    }
     ids.forEach(id => { wsx.selfStudy[id] = { loading: true, available: false, rows: [] }; });
     await Promise.all(ids.map(async id => {
         try {
