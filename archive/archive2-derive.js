@@ -199,7 +199,7 @@
     // pairExclusive: 한 벌 안에 같은 번호의 원본 문항과 그 유사 문항(같은 stem+번호)을 함께 넣지 않는다.
     // excludeBaseFamily: 기준 시험지와 같은 stem(그 시험의 유사·유형 문항)은 후보에서 뺀다. 둘 다 기본은 꺼짐(학교 모의고사가 켠다).
     return { typeMode, level, sources: opts.sources, includeBlank: opts.includeBlank === true, pairExclusive: opts.pairExclusive === true,
-      excludeBaseFamily: opts.excludeBaseFamily === true, preferSchool: opts.preferSchool === true, exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
+      excludeBaseFamily: opts.excludeBaseFamily === true, preferSchool: opts.preferSchool === true, softExclude: new Set(list(opts.softExclude)), exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
   }
   const uidOfItem = (item) => (typeof item === "string" ? text(item) : text(item && (item.questionUid || item.uid)));
 
@@ -283,6 +283,8 @@
       if (rung !== "subunit" && rung !== "unit" && rung !== "none" && cand.sub !== base.sub) s += 5;
       s += (fileCount.get(cand.file) || 0) * 15;
       // 같은 칸이면 학교 기출을 먼저(난이도 한 단계 차이보다는 약하게): 유사 +15, 교재 +25.
+      // softExclude: 다른 회차가 이미 고른 문항. 빼지 않고 크게 감점한다(같은 조건의 다른 문항이 있으면 그것, 없으면 겹쳐서라도 채운다).
+      if (opts.softExclude.size && opts.softExclude.has(cand.uid)) s += 500;
       if (opts.preferSchool && cand.srcKind !== "school") s += cand.srcKind === "similar" ? 15 : 25;
       s -= (overlap(cand.cc, base.cc) + overlap(cand.cond, base.cond)) * 4;
       s += unit01(opts.seed, cand.uid) * 3;
@@ -386,6 +388,7 @@
     let hintOnly = 0;
     let relaxed = 0;
     let filled = 0;
+    let overlap = 0;
     let templateMatch = 0;
     let templateFormalMatch = 0;
     let templateDen = 0;
@@ -406,6 +409,7 @@
       }
       if (!base || !found) return;
       filled += 1;
+      if (opts.softExclude && opts.softExclude.has(found.cand.uid)) overlap += 1;
       counts[found.rung] += 1;
       if (found.hintOnly) hintOnly += 1;
       if (found.relaxed && opts.typeMode === "different") relaxed += 1;
@@ -458,8 +462,10 @@
     if (counts.subunit + counts.unit) headParts.push(`${counts.subunit + counts.unit}문항 같은 단원`);
     if (counts.none) headParts.push(`${counts.none}문항 범위 안 다른 단원`);
     if (baseCount - filled > 0) headParts.push(`${baseCount - filled}문항 못 채움`);
+    if (overlap) headParts.push(`다른 회차와 겹침 ${overlap}문항`);
     return {
       headline: headParts.join(", "),
+      overlap,
       sameType,
       unfilledSlots,
       typeMode: opts.typeMode,

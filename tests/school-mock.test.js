@@ -95,8 +95,9 @@ test('preferSchool: 같은 칸이면 학교 기출을 유사·교재보다 먼�
 
 // ---- 작업 화면 흐름(실카탈로그) ----
 const catalogBase = withTestAssignments(structuredClone(catalog));
-function harness(extra = {}) {
-  const storage = new Map(), nodes = new Map(), opened = [];
+function harness(extra = {}, options = {}) {
+  const storage = new Map(options.session ? [['APMATH_SESSION', JSON.stringify({ id: 'teacher-test', session_token: 'test-token' })]] : []);
+  const nodes = new Map(), opened = [];
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, { innerHTML: '', textContent: '', dataset: {}, setAttribute() {}, addEventListener() {}, querySelectorAll: () => [], classList: { toggle() {}, add() {}, remove() {} }, close() {}, showModal() {}, focus() {} });
     return nodes.get(id);
@@ -169,7 +170,7 @@ test('시험지 한 줄 -> 기본/응용/심화 선택 창 -> 결과: 같은 시
   assert.deepEqual(again.V.derive.dlg.result.items.map(r => r.questionUid), H.V.derive.dlg.sets.same.items.map(r => r.questionUid), '같은 seed면 같은 결과');
 });
 
-test('세 벌 한꺼번에: 서로 다른 문항, 세 벌 모두 열기, 문제지 만들기로 이어가면 모의고사 제목과 안내', async () => {
+test('세 벌 한꺼번에: 심화→응용→기본 순으로 뽑고 겹침은 요약에 알린다, 세 벌 모두 열기, 문제지 만들기로 이어가면 모의고사 제목과 안내', async () => {
   const { exam } = pickBaseExam();
   const H = harness();
   H.api.startMockForExam(exam);
@@ -177,21 +178,29 @@ test('세 벌 한꺼번에: 서로 다른 문항, 세 벌 모두 열기, 문제�
   const sets = H.V.derive.dlg.sets;
   assert.deepEqual(Object.keys(sets).sort(), ['same', 'up-one', 'up-some']);
   const all = Object.values(sets).flatMap(set => set.items.map(r => r.questionUid));
-  assert.equal(new Set(all).size, all.length, '세 벌은 서로 겹치지 않는다');
+  // 못 채운 자리는 다른 벌과 겹쳐서 채우고, 요약의 겹침 수가 실제 겹침과 같다. 한 벌 안의 중복은 없다.
+  for (const set of Object.values(sets)) assert.equal(new Set(set.items.map(r => r.questionUid)).size, set.items.length, '한 벌 안의 중복 0');
+  const seen = new Set();
+  let dup = 0;
+  for (const level of ['up-one', 'up-some', 'same']) for (const r of sets[level].items) { if (seen.has(r.questionUid)) dup += 1; seen.add(r.questionUid); }
+  assert.equal(['up-one', 'up-some', 'same'].reduce((n, level) => n + (sets[level].summary.overlap || 0), 0), dup);
+  assert.equal(sets['up-one'].summary.overlap, 0, '가장 먼저 뽑는 심화는 겹침 없음');
+  if (dup) assert.match(H.body(), /다른 회차와 겹침 \d+문항/);
   assert.match(H.body(), /derive-mock-open-all/);
   H.api.deriveAction('derive-mock-open-all', {});
   assert.equal(H.opened.length, 3, '창 셋을 한 번 눌러 연다');
   await H.api.deriveAction('derive-compose', {});
-  assert.match(H.w.state.title, /기본 모의고사/);
+  assert.match(H.w.state.title, /모의고사 \(기본\)$/);
+  assert.doesNotMatch(H.w.state.title, /다시 ?만들기/);
   assert.deepEqual(new Set(plain(H.w.state.selected).map(r => r.questionUid)), new Set(sets.same.items.map(r => r.questionUid)));
   assert.match(H.api.deriveNoteMarkup(), /모의고사/);
   assert.match(H.api.deriveNoteMarkup(), /data-action="derive-mock-switch"[^>]*data-level="up-some"/, '다른 난이도로 새로 만들기 단추');
   // 같은 시험의 다른 난이도로 이어가기: 지금 문제지 문항은 새 세트에서 빠진다
   const firstPaper = new Set(plain(H.w.state.selected).map(r => r.questionUid));
   await H.api.deriveAction('derive-mock-switch', { dataset: { level: 'up-some' } });
-  assert.match(H.w.state.title, /응용 모의고사/);
+  assert.match(H.w.state.title, /모의고사 \(응용\)$/);
   const secondPaper = plain(H.w.state.selected).map(r => r.questionUid);
-  assert.ok(secondPaper.length > 0 && secondPaper.every(uid => !firstPaper.has(uid)), '다른 난이도 세트는 앞 세트와 겹치지 않는다');
+  assert.ok(secondPaper.length > 0, '다른 난이도 세트도 채운다');
   // 저장 요청은 서버가 아는 키만 쓴다(다시 만들기 길과 같음)
   const req = H.w.request(true);
   assert.ok(req.filters.grade && req.filters.scopeQuestionUids.length >= H.w.state.selected.length);
@@ -210,3 +219,27 @@ test('입구: 학교 기출 시험지 줄에만 모의고사 단추가 있고, �
   H.api.openDeriveFromUrl();
   assert.match(H.body(), /derive-mock-all/);
 });
+
+// 온전성만 본다: 세 벌을 한꺼번에 뽑아도 못 채운 자리가 한 벌만 뽑을 때보다 나빠지지 않는다.
+for (const [label, re] of [['왕의중 중2', /^original\/middle\/m2\/.*왕의중.*\.js$/], ['중1', /^original\/middle\/m1\/.*왕운중.*\.js$/]]) {
+  test(`세 벌 온전성: ${label} - 못 채움은 한 벌만 뽑을 때보다 나쁘지 않다`, async () => {
+    const counts = new Map();
+    for (const r of catalogBase.records) if (re.test(r.sourceFile)) counts.set(r.sourceFile, (counts.get(r.sourceFile) || 0) + 1);
+    const file = [...counts.entries()].filter(([, n]) => n >= 10).sort((a, b) => b[0].localeCompare(a[0]))[0]?.[0];
+    assert.ok(file, `${label} 시험지가 카탈로그에 있다`);
+    const exam = catalogBase.exams.find(e => e.file === file);
+    const H = harness();
+    H.api.startMockForExam(exam);
+    await H.api.deriveAction('derive-mock-all', {});
+    const sets = H.V.derive.dlg.sets;
+    for (const level of ['same', 'up-some', 'up-one']) {
+      const solo = harness();
+      solo.api.startMockForExam(exam);
+      await solo.api.deriveAction('derive-mock-level', { dataset: { level } });
+      const alone = solo.V.derive.dlg.result;
+      assert.ok(sets[level].items.length >= alone.items.length, `${level}: 못 채움이 한 벌만 뽑을 때보다 나쁘지 않다 (${sets[level].items.length} >= ${alone.items.length})`);
+      const uids = sets[level].items.map(r => r.questionUid);
+      assert.equal(new Set(uids).size, uids.length, `${level}: 한 벌 안의 중복 0`);
+    }
+  });
+}

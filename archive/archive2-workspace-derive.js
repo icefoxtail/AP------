@@ -12,11 +12,13 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
-    render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility;
+    render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
+    planRows, savePapers, discardDraftSilently;
   WS.links.push(() => {
     ({
       $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
-      render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility
+      render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
+      planRows, savePapers, discardDraftSilently
     } = WS.api);
   });
   const Derive = () => window.Archive2Derive;
@@ -157,7 +159,19 @@
     return [kind, src.publisher].filter(Boolean).join(" ");
   }
   // 옛 출제 행의 시험 이름이 내부 키여도 새 문제지 제목에는 한글 제목이 들어간다(저장되는 제목이기 때문).
-  const baseTitleOf = (dlg) => (window.ExamDisplayTitle?.displayTitleOf?.(dlg.baseTitle || "") || dlg.baseTitle) || "기준 시험지";
+  // 파생본(…다시 만들기) · 모의고사 저장본(… 모의고사 N회 (기본))에서 다시 들어와도 접미가 쌓이지 않게 끝의 접미를 모두 떼고 원래 시험 이름만 남긴다.
+  // 새 제목에 접미를 붙이는 곳은 paperTitleOf / mockPlan 두 군데뿐이다.
+  function cleanBaseTitle(value) {
+    const original = text(value);
+    let title = original;
+    for (let i = 0; i < 12; i++) {
+      const next = title.replace(/\s*다시\s*만들기\s*$/, "").replace(/\s*모의고사\s*(?:\d+\s*회)?\s*(?:\([^)]*\))?\s*$/, "").trim();
+      if (next === title) break;
+      title = next;
+    }
+    return title || original;
+  }
+  const baseTitleOf = (dlg) => cleanBaseTitle(window.ExamDisplayTitle?.displayTitleOf?.(dlg.baseTitle || "") || dlg.baseTitle) || "기준 시험지";
 
   // ---- 진입 ----
   function openDialog(dlg) {
@@ -166,7 +180,8 @@
   }
   const isMock = (dlg) => dlg?.source === "mock";
   // 새 문제지 제목: 학교 모의고사는 "<시험> 기본 모의고사", 그 밖은 "<기준> 다시 만들기".
-  const paperTitleOf = (dlg, level = dlg.level) => (isMock(dlg) ? `${baseTitleOf(dlg)} ${LEVEL_NAME[level] || ""} 모의고사` : `${baseTitleOf(dlg)} 다시 만들기`);
+  // 모의고사 제목은 mockPlan()이 정한다(회차가 들어간다). 여기는 다시 만들기 제목만: 접미는 한 번.
+  const paperTitleOf = (dlg) => `${baseTitleOf(dlg)} 다시 만들기`;
   function newDialog({ baseUids, baseTitle, note, preset }) {
     return {
       sets: {}, choose: false,
@@ -272,7 +287,10 @@
     if (!deriveIndex()) { status("문항 목록을 준비하지 못했습니다. 새로고침한 뒤 다시 시도해 주세요.", true); return; }
     const dlg = newDialog({ baseUids: uids, baseTitle: O.displayTitle(exam), preset: { typeMode: "same", level: "same", source: "mock" } });
     dlg.choose = true;
+    dlg.baseFile = exam.file;
+    dlg.baseName = mockBaseName(exam);
     openDialog(dlg);
+    refreshMockSaved(dlg);
   }
   // ?mock=<시험지 원본 파일> (옛 홈의 시험지 카드, 즐겨찾기 주소). 카탈로그가 올 때까지 기다렸다가 연다.
   function openMockFromUrl() {
@@ -305,8 +323,11 @@
     if (!dlg || V.derive.busy) return;
     dlg.choose = false;
     dlg.error = "";
+    dlg.allMade = true;
     try {
-      for (const level of MOCK_LEVELS) computeMockSet(dlg, level);
+      // 어려운 문항이 드문 쪽이 먼저 고르게 심화 → 응용 → 기본 순으로 뽑는다. 앞서 고른 문항은 빼지 않고 감점만 하므로
+      // 후보가 모자란 자리는 겹쳐서라도 채워지고, 요약에 "다른 회차와 겹침 n문항"으로 알린다.
+      for (const level of [...MOCK_LEVELS].reverse()) computeMockSet(dlg, level);
       dlg.level = "same";
       dlg.result = dlg.sets.same;
     } catch (error) {
@@ -341,6 +362,190 @@
     try { dlg.result = computeDerive(dlg); } catch (error) { status(teacherErrorMessage(error, "문항을 고르지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error); return; }
     if (!dlg.result.items.length) { status("이 난이도로는 뽑을 문항을 찾지 못했습니다.", true); return; }
     await toCompose();
+  }
+
+  // ---- 학교 모의고사: 보관함에 바로 저장 (2026-11-23) ----
+  // 새 저장 길은 없다: 문제지 만들기가 쓰는 savePapers()(같은 요청 본문 payloadFor, 같은 검증·실패 문구·save_batch_id 멱등)를 그대로 부른다.
+  // 문제지 만들기와 같은 상태(고른 문항 UID 범위 + 행)를 화면 없이 만들어 두고 한 번 부른 뒤 비운다. 세 벌은 한 요청의 papers 세 권이다.
+  // 제목 = "25 순천고 고1 2학기 기말 모의고사 1회 (기본)": 회차는 같은 기준 시험지로 이미 저장된 모의고사의 가장 큰 회차 + 1(지운 번호는 메우지 않는다).
+  const reEscape = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  function mockBaseName(exam) {
+    const year = String(exam?.year || "").slice(-2);
+    const period = exam?.examType === "mid" ? "중간" : exam?.examType === "final" ? "기말" : "";
+    const course = /^고[23]$/.test(text(exam?.grade)) ? text(exam?.primaryStandardCourse) : "";
+    return [year, text(exam?.school), text(exam?.grade), exam?.semester ? `${exam.semester}학기` : "", period, course].filter(Boolean).join(" ");
+  }
+  // 보관함(활성·보관·휴지통)에서 같은 기준 시험지의 모의고사 저장본을 세어 가장 큰 회차를 구한다.
+  async function mockRounds(baseName) {
+    const prefix = `${baseName} 모의고사`;
+    const re = new RegExp(`^${reEscape(prefix)} (\\d+)회`);
+    let max = 0, active = 0;
+    for (const library of ["ACTIVE", "ARCHIVED", "TRASHED"]) {
+      let cursor = "";
+      for (let page = 0; page < 6; page++) {
+        const data = await api(`/archive-saved-papers?limit=50&status=${library}&q=${encodeURIComponent(prefix)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`);
+        for (const paper of data?.papers || []) {
+          const match = re.exec(text(paper.title)) || re.exec(text(paper.library_display_name));
+          if (!match) continue;
+          max = Math.max(max, Number(match[1]));
+          if (library !== "TRASHED") active += 1;
+        }
+        cursor = data?.next_cursor || "";
+        if (!cursor) break;
+      }
+    }
+    return { prefix, max, active };
+  }
+  function hasSession() {
+    try { return Boolean(JSON.parse(localStorage.getItem("APMATH_SESSION") || "null")?.session_token); } catch { return false; }
+  }
+  const mockMemoKey = (sets) => sets.map((set) => `${set.level}:${set.result.items.map((record) => record.questionUid).join(",")}`).join("|");
+  // 한 묶음(1~3권)의 제목을 정한다: "<시험> 모의고사 N회 (기본)". 시험지 머리글·저장 제목·identityTitle이 모두 이 값이다.
+  // 이미 저장한 결과는 저장 때의 제목을 그대로 쓴다. strict: 회차를 알아야 하는 저장 — 조회에 실패하면 오류를 그대로 올린다(번호 없이 저장하지 않는다).
+  // strict가 아니면(시험지 열기·문제지 만들기 제목) 로그인하지 않았거나 조회가 안 되면 번호 없이 "<시험> 모의고사 (기본)".
+  async function mockPlan(dlg, sets, strict) {
+    const key = mockMemoKey(sets);
+    if (dlg.saved?.[key]) return { key, max: null, titles: dlg.saved[key].titles };
+    dlg.plans ||= {};
+    if (dlg.plans[key]) return dlg.plans[key];
+    const base = dlg.baseName || baseTitleOf(dlg);
+    let max = null;
+    if (strict || hasSession()) {
+      try { max = (await mockRounds(base)).max; } catch (error) { if (strict) throw error; }
+    }
+    const plan = { key, max, titles: sets.map((set, i) => `${base} 모의고사${max === null ? "" : ` ${max + 1 + i}회`} (${LEVEL_NAME[set.level]})`) };
+    if (max !== null) dlg.plans[key] = plan;
+    return plan;
+  }
+  // 창을 열 때 "저장된 모의고사 N개" 한 줄을 위한 조회: 로그인하지 않았거나 실패하면 조용히 넘어간다(저장하기 눌렀을 때 문구가 나온다).
+  async function refreshMockSaved(dlg) {
+    try {
+      const info = await mockRounds(dlg.baseName);
+      if (V.derive.dlg !== dlg) return;
+      dlg.savedCount = info.active;
+      if (!V.derive.busy && (dlg.choose || dlg.result)) renderDialog();
+    } catch { /* 로그인 전 등: 알리지 않는다 */ }
+  }
+  // auto: 시험지를 열어 본 순간의 자동 저장. 실패해도 열기는 그대로이고 창에 "저장 안 됨 · 다시 시도"만 남긴다.
+  async function saveMock(all, auto = false) {
+    const dlg = V.derive.dlg;
+    if (!dlg || !isMock(dlg) || V.derive.busy || state.saveBusy) return;
+    const levels = all ? MOCK_LEVELS : [dlg.level];
+    const sets = levels.map((level) => ({ level, result: dlg.sets?.[level] || (level === dlg.level ? dlg.result : null) })).filter((set) => set.result?.items.length);
+    if (!sets.length || (all && sets.length !== MOCK_LEVELS.length)) { setError("저장할 모의고사가 아직 없습니다. 난이도를 만든 뒤 저장해 주세요."); return; }
+    const memoKey = mockMemoKey(sets);
+    dlg.saved ||= {};
+    if (dlg.saved[memoKey]) { dlg.lastSaved = dlg.saved[memoKey]; renderDialog(); return; }
+    V.derive.busy = true;
+    dlg.error = "";
+    dlg.autoFailed = false;
+    renderDialog();
+    try {
+      const plan = await mockPlan(dlg, sets, true);
+      // 서버는 한 요청 안의 권끼리 같은 문항이 겹치는 것을 거절한다. 세 벌이 겹치면(후보가 모자라 겹쳐서 채운 경우) 권마다 따로 저장한다.
+      const seen = new Set();
+      let overlap = false;
+      for (const set of sets) for (const record of set.result.items) { if (seen.has(record.questionUid)) overlap = true; seen.add(record.questionUid); }
+      const groups = overlap ? sets.map((_, i) => [i]) : [sets.map((_, i) => i)];
+      const total = { ids: [], titles: [], levels: [] };
+      let failed = false;
+      for (const group of groups) {
+        const sub = group.map((i) => sets[i]);
+        const subKey = mockMemoKey(sub);
+        let info = dlg.saved[subKey];
+        if (!info) info = await saveGroup(dlg, sub, group.map((i) => plan.titles[i]), subKey);
+        if (!info) { failed = true; break; }
+        total.ids.push(...info.ids); total.titles.push(...info.titles); total.levels.push(...info.levels);
+      }
+      if (total.ids.length) {
+        dlg.lastSaved = total;
+        if (!failed) dlg.saved[memoKey] = total;
+        else dlg.error = `${dlg.error} 일부(${total.ids.length}개)는 저장했습니다. 다시 누르면 남은 것만 저장합니다.`;
+      }
+    } catch (error) {
+      dlg.error = teacherErrorMessage(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+      console.warn("[archive2] mock save failed:", error);
+    } finally {
+      dlg.autoFailed = auto && Boolean(dlg.error);
+      V.derive.busy = false;
+      renderDialog();
+    }
+  }
+  // 한 요청으로 저장한다(문제지 만들기와 같은 savePapers). 성공하면 저장 정보, 실패하면 dlg.error를 채우고 null.
+  async function saveGroup(dlg, sets, titles, memoKey) {
+    const pending = V.derive.pendingSave;
+    const retry = Boolean(pending && pending.memoKey === memoKey && state.saveResultState === "RESULT_UNKNOWN");
+    let draftId = pending?.draftId || "";
+    try {
+      let papers;
+      if (retry) papers = pending.papers;
+      else {
+        const plan = { titles };
+        await Promise.all(sets.map((set) => restoreForPaper(set.result.items)));
+        const ordered = sets.map((set) => paperOrder(set.result.items));
+        const records = ordered.flat();
+        if (records.some((record) => !V.derive.restored.get(record.questionUid))) throw new Error("원본 문항을 불러오지 못했습니다. 다시 뽑아 주세요.");
+        // 만들던 문제지가 있으면 초안에 남기고 빈 작업에서 시작한다(문제지 만들기로 넘기는 길과 같다).
+        if (state.selected.length) save();
+        rememberCurrentHistoryEntry();
+        resetWorkingDraft();
+        draftId = state.draftId;
+        const view = state.view;
+        state.view = "compose";
+        state.urlUids = records.map((record) => record.questionUid);
+        try { applyUidRoute(); } finally { state.view = view; }
+        if (state.uidRoute?.error) throw new Error(state.uidRoute.error);
+        state.rows = planRows();
+        if (state.rows.length !== 1) throw new Error("문제지 범위를 만들지 못했습니다.");
+        const rowId = state.rows[0].id;
+        state.selected = records.map((record) => ({ ...record, rowId }));
+        state.indexVersion = state.catalog.indexVersion;
+        state.ackWarnings = true;
+        const { grade, subject } = gradeSubjectOf(records);
+        papers = sets.map((set, i) => {
+          // 머리글·저장 제목·identityTitle이 모두 같은 값이다.
+          const title = plan.titles[i];
+          const questions = ordered[i].map((record) => V.derive.restored.get(record.questionUid));
+          return {
+            key: `archive2-${state.draftId}-mock-${i}`, index: i, questions,
+            meta: {
+              title, customTitle: title, identityTitle: title, count: questions.length, grade: grade || state.filters.grade, subject,
+              questionUids: ordered[i].map((record) => record.questionUid),
+              printHeaderOptions: { title, subtitle: "", metaRight: "AP수학", showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
+              includeQr: false, qpp: 4, sourceType: "mixed", seriesId: state.draftId, roundNo: state.round,
+              outputContractVersion: C.VERSION, indexVersion: state.catalog.indexVersion,
+            },
+          };
+        });
+        V.derive.pendingSave = { memoKey, papers, draftId };
+      }
+      await savePapers({ papers });
+      if (state.saveResultState === "SAVED") {
+        const info = { ids: [...state.savedPaperIds], titles: papers.map((paper) => paper.meta.title), levels: sets.map((set) => set.level) };
+        dlg.saved[memoKey] = info;
+        dlg.lastSaved = info;
+        dlg.savedCount = (dlg.savedCount || 0) + info.ids.length;
+        V.derive.pendingSave = null;
+        discardDraftSilently(draftId);
+        resetWorkingDraft();
+        status(`${info.ids.length === 1 ? "모의고사 1개" : `모의고사 ${info.ids.length}개`}를 보관함에 저장했습니다(출제 전). 필요 없으면 보관함에서 지울 수 있습니다.`);
+        return info;
+      }
+      // 실패해도 만든 결과는 창에 남아 다시 누를 수 있다. 결과를 모르는 경우(RESULT_UNKNOWN)만 같은 요청을 이어서 확인한다.
+      dlg.error = state.saveError || "저장하지 못했습니다. 잠시 뒤 다시 눌러 주세요.";
+      if (state.saveResultState !== "RESULT_UNKNOWN") { V.derive.pendingSave = null; discardDraftSilently(draftId); resetWorkingDraft(); }
+      return null;
+    } catch (error) {
+      dlg.error = teacherErrorMessage(error, "모의고사를 저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+      console.warn("[archive2] mock save failed:", error);
+      return null;
+    }
+  }
+  function mockSavedMarkup(dlg) {
+    const info = dlg.lastSaved;
+    if (!info) return "";
+    const rows = info.ids.map((id, i) => `<li><strong>${esc(info.titles[i] || "")}</strong> · <a href="workspace.html?view=saved&amp;paper_id=${encodeURIComponent(id)}" target="_blank" rel="noopener">보관함에서 보기</a> ${button("saved-paper-issue", "출제하기", `type="button" class="primary small" data-paper-id="${esc(id)}"`)}</li>`).join("");
+    return `<div class="callout mock-saved" role="status" data-mock-saved><strong>저장됨</strong> · 아직 학생에게 출제되지는 않았습니다.<ul>${rows}</ul></div>`;
   }
 
   // ---- 화면 ----
@@ -409,14 +614,24 @@
     }).join("");
     const gaps = unfilled.size
       ? `<p class="warn mock-gap" role="status" data-mock-gap>못 채운 자리: ${[...unfilled].map((slot) => `${slot}번`).join(", ")}. 문제지 만들기에서 직접 골라 채울 수 있습니다.</p>` : "";
-    const all = MOCK_LEVELS.every((level) => dlg.sets[level]?.items.length) ? button("derive-mock-open-all", "세 벌 모두 열기") : "";
+    const three = MOCK_LEVELS.every((level) => dlg.sets[level]?.items.length);
+    const all = three ? button("derive-mock-open-all", "세 벌 모두 열기") : "";
+    const saveButton = three && dlg.allMade
+      ? button("derive-mock-save-all", "세 벌 모두 저장", 'class="primary"')
+      : button("derive-mock-save", "보관함에 저장", 'class="primary"');
+    const savedLine = dlg.savedCount ? `<p class="muted mock-saved-count" data-mock-saved-count>저장된 모의고사 ${dlg.savedCount}개 · <a href="workspace.html?view=saved" target="_blank" rel="noopener">보관함에서 보기</a></p>` : "";
+    const autoLine = !hasSession()
+      ? '<p class="muted mock-autosave-note" data-mock-login-note>로그인하면 시험지를 열 때 보관함에 자동 저장됩니다.</p>'
+      : dlg.autoFailed ? `<p class="warn mock-autosave-failed" role="status" data-mock-autosave-failed>저장 안 됨 · ${button(three && dlg.allMade ? "derive-mock-save-all" : "derive-mock-save", "다시 시도", 'type="button" class="small"')}</p>` : "";
     return `${head}
       <p class="derive-total" data-derive-summary><strong>${esc(summary.headline || `${count}문항`)}</strong></p>
       <p class="derive-level" data-derive-level>${esc(summary.levelText)}</p>
       ${gaps}${noteList(dlg)}
       <details class="derive-list"><summary>뽑힌 문항 ${count}개 보기</summary><ol class="mock-slots">${rows}</ol></details>
       <p id="derive-error" class="error" role="alert"${dlg.error ? "" : " hidden"}>${esc(dlg.error)}</p>
-      <div class="actions derive-actions">${button("derive-popup", "시험지 열기", 'class="primary"')}${button("derive-compose", "문제지 만들기에서 이어서")}${all}${button("derive-again", "다시 뽑기")}${button("derive-edit", "조건 바꾸기")}</div>`;
+      ${mockSavedMarkup(dlg)}${savedLine}${autoLine}
+      <div class="actions derive-actions">${saveButton}${button("derive-popup", "시험지 열기")}${all}${button("derive-again", "다시 뽑기")}${button("derive-edit", "조건 바꾸기")}</div>
+      <p class="muted mock-tweak">고쳐서 쓰려면 ${button("derive-compose", "문항 바꾸기", 'type="button" class="linklike"')}</p>`;
   }
   function noteList(dlg) {
     const notes = [...(dlg.result?.notes || [])];
@@ -462,7 +677,7 @@
     // Picking reads the catalog only: no source exam file is requested here (the originals are read when the paper is opened).
     const out = D.deriveFromPaper(dlg.baseUids, {
       typeMode: dlg.typeMode, level: dlg.level, sources: sourceSpec(dlg), seed: dlg.seed,
-      exclude: [...dlg.exclude, ...others], includeBlank: true,
+      exclude: [...dlg.exclude], softExclude: others, includeBlank: true,
       ...(mock ? { pairExclusive: true, excludeBaseFamily: true, preferSchool: true } : {}),
     }, index);
     // The screen tells only what the teacher can act on: the "정식/참고용 유형" split stays an internal measure.
@@ -541,15 +756,21 @@
     const popups = papers.map(() => window.open("about:blank", "_blank"));
     if (!popups[0]) { popups.forEach((popup) => popup?.close()); setError("새 창을 열 수 없습니다. 팝업 설정을 확인하세요."); return; }
     const blocked = popups.filter((popup) => !popup).length;
+    // 학교 모의고사: 머리글 제목은 보관함 저장 제목과 같은 값(회차 포함)이다. 묶음 전체의 제목을 한 번에 정해 창마다 나눠 준다.
+    const mock = isMock(dlg);
+    const sets = mock ? papers.map((paper) => ({ level: paper.level, result: paper.result })) : [];
+    const planned = mock ? mockPlan(dlg, sets, false) : null;
     papers.forEach((paper, n) => {
       const popup = popups[n];
       if (!popup) return;
       popup.document.body.textContent = "시험지를 준비하고 있습니다.";
-      openPaperIn(dlg, paper.result, paper.level, popup);
+      openPaperIn(dlg, paper.result, paper.level, popup, planned ? planned.then((plan) => plan.titles[n]) : null);
     });
     if (blocked) setError(`새 창 ${blocked}개를 열 수 없어 나머지만 열었습니다. 팝업 설정을 확인하고 다시 눌러 주세요.`);
+    // 열어 본 순간 보관함에 저장한다(원장님 확정 2026-11-23): 다시 뽑기로 버린 결과·열지 않은 결과는 저장하지 않는다. 로그인 전이면 시도하지 않는다.
+    if (mock && hasSession() && !blocked) saveMock(papers.length === MOCK_LEVELS.length, true);
   }
-  function openPaperIn(dlg, result, level, popup) {
+  function openPaperIn(dlg, result, level, popup, titlePromise = null) {
     (async () => {
       try {
         // The only place the originals are read for a window: the questions of the paper being opened.
@@ -559,7 +780,7 @@
         if (questions.some((q) => !q)) throw new Error("원본 문항을 불러오지 못했습니다. 다시 뽑아 주세요.");
         const questionUids = records.map((record) => record.questionUid);
         const { grade, subject } = gradeSubjectOf(records);
-        const title = paperTitleOf(dlg, level).slice(0, 70);
+        const title = (titlePromise ? await titlePromise : paperTitleOf(dlg)).slice(0, 70);
         const meta = {
           title, customTitle: title, identityTitle: title, count: records.length, grade, subject, questionUids,
           printHeaderOptions: { title, subtitle: "", metaRight: "AP수학", showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
@@ -612,7 +833,7 @@
     applyUidRoute();
     if (state.uidRoute?.error) { renderDialog(); setError(state.uidRoute.error); return; }
     state.derive = info;
-    state.title = paperTitleOf(dlg).slice(0, 80);
+    state.title = (isMock(dlg) ? (await mockPlan(dlg, [{ level: dlg.level, result: dlg.result }], false)).titles[0] : paperTitleOf(dlg)).slice(0, 80);
     state.header = { ...state.header, title: state.title };
     if ($("modal")?.open) $("modal").close();
     history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
@@ -652,6 +873,8 @@
     if (name === "derive-mock-all") return mockAll();
     if (name === "derive-mock-switch") return mockSwitch(element?.dataset?.level);
     if (name === "derive-mock-open-all") return openAllPapers();
+    if (name === "derive-mock-save") return saveMock(false);
+    if (name === "derive-mock-save-all") return saveMock(true);
     if (name === "derive-popup") return openPopup();
     if (name === "derive-compose") return toCompose();
     if (name === "derive-compose-again") return startFromCompose();
