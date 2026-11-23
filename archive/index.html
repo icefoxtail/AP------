@@ -1566,6 +1566,7 @@
             <option value="기출" id="contentTypeOriginalOption">기출</option>
             <option value="단원별 기출" id="contentTypeUnitPastOption">단원별 기출</option>
             <option value="유형">유형</option>
+            <option value="시험대비">시험 대비</option>
             <option value="단원평가">단원평가</option>
             <option value="쪽지">쪽지</option>
         </select>
@@ -1676,6 +1677,10 @@ function normalizeExamMeta(ex) {
     normalized.semester = normalizeSemester(ex?.semester);
     normalized.examType = normalizeExamType(ex?.examType);
     normalized.contentType = normalizeContentType(ex?.contentType);
+    // 시험 대비 세트: 유형 자료 가운데 파일명·제목에 "시험대비"가 들어간 것을 따로 모아 보여 준다.
+    if (normalized.contentType === '유형' && compactText(`${normalized.file} ${normalized.topic}`).includes('시험대비')) {
+        normalized.contentType = '시험대비';
+    }
     return normalized;
 }
 
@@ -2467,7 +2472,7 @@ function buildCard(ex) {
     const examName = examTypeLabel(ex.examType);
     const isSheet = (ex.contentType || '기출') === '기출';
     const cardTypeClass = isSheet ? 'type-sheet' : 'type-study';
-    const contentTypeLabel = ex.contentType || '기출';
+    const contentTypeLabel = ex.contentType === '시험대비' ? '시험 대비' : (ex.contentType || '기출');
 
     card.className = `exam-card ${cardTypeClass}`;
 
