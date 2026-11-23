@@ -71,7 +71,7 @@ it is `ARCHIVE_MEASURED`; `objectSha(policy) === policySha256`; the composed res
 (`EVIDENCE_SOURCE_CHANGED`) of now, and is for this `identity.assetId` and LOCAL_ONLY; the observation hash is that of the row
 (`OBSERVATION_SHA_DIFFERS`); the policy is exactly what `requestedProfileTypographyPolicy` derives from the row
 (`POLICY_NOT_DERIVED_FROM_EVIDENCE`); and the SVG intrinsic size is the measured one (`INTRINSIC_SVG_DIFFERS_FROM_MEASURED`).
-The row holds all four size classes, so a real policy of another class is derivable from the same row and is accepted; a hand-edited one is not.
+Since 2026-11-23 the row holds only the requested class (the page no longer reads a size class, so measuring four classes told nothing more); a hand-edited policy is not accepted.
 
 Then, under `.tmp/archive/<runId>/<examUid>/`:
 
@@ -82,8 +82,8 @@ Then, under `.tmp/archive/<runId>/<examUid>/`:
   about the bank this module wrote; the `bankResponse` check below makes it true of the bank the Archive received. A `solutionImage*` field
   that the original target question already has is left out of the comparison (as in `runPhase2`).
 - `visual-engine/production/archive-capture/`: the matrix (`synthetic:false`, `requireLocalResources`, `requireQrRenderer`; the asset carries no
-  `sizeClass`, so the row reports the class of the rendered wrapper instead of echoing the request) and `archive-render/attempt-01/`, the raw row and
-  three screenshots. `onProgress` receives the existing capture events and one more, `ARCHIVE_CANDIDATE_READY`, just before the capture.
+  `sizeClass`, so the row reports the class of the rendered wrapper instead of echoing the request; two rows: `desktop` 1440x1000 and `phone` 390x844) and `archive-render/attempt-01/`, the raw rows and
+  screenshots (`...-sol-desktop*` and `...-sol-phone*`). `onProgress` receives the existing capture events and one more, `ARCHIVE_CANDIDATE_READY`, just before the capture.
 
 The capture runs once. An exception becomes `ARCHIVE_CAPTURE_ERROR` (original message in `detail.message`, for example `STALE_ASSET_MATRIX`),
 a non-PASS summary becomes `ARCHIVE_CAPTURE_FAIL` (`detail.rows`, `detail.errors`). On a PASS the raw row is read again and `checks` is computed
@@ -93,21 +93,29 @@ a non-PASS summary becomes `ARCHIVE_CAPTURE_FAIL` (`detail.rows`, `detail.errors
 | --- | --- |
 | `network`: policy `LOCAL_ONLY`, no external request | `ARCHIVE_NETWORK_NOT_LOCAL` |
 | `assetResponse`: exactly one response for the asset path, status 200, its SHA = `lineage.svgSha256` | `ARCHIVE_ASSET_RESPONSE_MISMATCH` |
-| `bankResponse`: exactly one response for the exam JS path (`/<sourcePath>`), status 200, its SHA = `lineage.candidateBankSha256` | `ARCHIVE_BANK_RESPONSE_MISMATCH` |
+| `bankResponse`: exactly one response for the exam JS path (`/<sourcePath>`), status 200, its SHA = `lineage.candidateBankSha256` (one leading UTF-8 BOM is ignored: Chrome hands the page the script without it; `bankResponseMatches`) | `ARCHIVE_BANK_RESPONSE_MISMATCH` |
 | `naturalSize`: loaded, natural size = SVG intrinsic size | `ARCHIVE_ASSET_RESPONSE_MISMATCH` (`detail.check`) |
-| `sizeClass`: class of the rendered wrapper = requested | `ARCHIVE_SIZE_CLASS_MISMATCH` |
 | `displayScale`: `min(rect.w/w, rect.h/h)` vs `policy.displayScale`, difference x larger side <= 1 CSS px plus 1e-9 for float noise (exactly 1 px is accepted, more is refused; `displayScaleDifference`) | `ARCHIVE_DISPLAY_SCALE_MISMATCH` |
 | `layout`: the Archive row's isolated replay at the real rect (`layout.source` `ARCHIVE_ROW_ISOLATED_REPLAY`), or, if the row has no record of the asset, the same SVG replayed at the rect (`MODULE_REPLAY_AT_ACTUAL_RECT`) | `ARCHIVE_LAYOUT_FAIL` |
 
 With the existing capture as it is, `layout` is a second line of defence: a real layout defect already makes the capture summary FAIL, so the call ends
 as `ARCHIVE_CAPTURE_FAIL` with the layout errors kept in `detail.errors`. `ARCHIVE_LAYOUT_FAIL` and the module's own replay are reached only when that does
 not happen; the repository test does not reach them. They were confirmed only by the BUILDER's mutation runs on a copy of the module, which are kept
-outside the repository (in the R1-a evidence directory). The same holds for `network`, `sizeClass` and `ARCHIVE_ASSET_WRITE_MISMATCH`.
+outside the repository (in the R1-a evidence directory). The same holds for `network` and `ARCHIVE_ASSET_WRITE_MISMATCH`.
 
-`ARCHIVE_BOUND` is returned only when every check passes. A requested class other than the policy's is not refused up front: it is caught by
-`displayScale` because that is what the Archive actually displays. The result keeps whatever was computed, also on a refusal: `lineage`
+After those, the same exam page is judged on a phone (the `phone` row, 390 px wide, which makes the page use its <= 640 px layout, archive2-preview-mobile.css):
+the figure must load, stay inside its question box and the screen (`TARGET_HORIZONTAL_OVERFLOW:<id>`, `TARGET_OUTSIDE_SCREEN:<id>`) and keep its labels whole (cut-offs and failed measurements block; spacing observers such as tick-label leader ends or label overlap are only recorded in `phone.notes`, they were judged on the desktop) at
+the size the phone really gives it (the same isolated replay as on desktop). Any of these is `ARCHIVE_PHONE_DISPLAY_FAIL:<REASON>` (`detail`: the `phone` record; REASON is the first of `phone.reasons`, blocking ones first: `IMAGE_LOAD_FAIL`, `TARGET_OUTSIDE_SCREEN`, `TARGET_HORIZONTAL_OVERFLOW`, `TEXT_CLIPPED`, `GEOMETRY_VIEWPORT_CLIPPING`, then the rest such as `LABEL_OVERLAP`, `LABEL_GEOMETRY_COLLISION`, `PAGE_ERROR`); the result
+always carries `phone` (`status`, `imageRect`, `displayScale`, `outsideScreenPx`, `errors`). There is no size-class check any more (`ARCHIVE_SIZE_CLASS_MISMATCH` is gone):
+the page ignores the class, so what counts is the size the Archive really displays, caught by `displayScale`.
+
+The desktop and phone rows are judged on the TARGET question (2026-11-23): a figure fails for its own load, its question box's horizontal overflow, its
+labels. A failure elsewhere on the exam page (another question's picture that did not load, a wide formula, a question count) does not fail the figure;
+it travels as `pageNotes` (`scope: EXAM`, or `TARGET_BOX` for a missing picture inside the target's own box) in the raw row and in the result.
+
+`ARCHIVE_BOUND` is returned only when every check passes. The result keeps whatever was computed, also on a refusal: `lineage`
 (`l1SvgSha256`, `policySha256`, `candidateBankSha256`, `assetPath`, `assetResponseSha256`, `archiveRowSha256`, `screenshotSha256s`, `matrixSha256`,
-`engineSha256`), `paths`, `sizeClass` (observed), `observedDisplayScale`, `expectedDisplayScale`, `displayScaleDeltaCssPx`, `layout`, `checks`.
+`engineSha256`), `paths`, `sizeClass` (observed), `observedDisplayScale`, `expectedDisplayScale`, `displayScaleDeltaCssPx`, `layout`, `checks`, `phone`, `pageNotes` (only when there are some).
 On `ARCHIVE_BANK_RESPONSE_MISMATCH`, `detail.responses` holds what the Archive received for the exam JS.
 
 ## Not done (NOT_RUN) and limits

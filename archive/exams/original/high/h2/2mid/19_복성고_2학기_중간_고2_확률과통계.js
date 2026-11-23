@@ -988,7 +988,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "f(12)>f(20)과 f(6)<f(22)에서 14<m<16이므로 m=15이다. 그림은 평균 15, 표준편차 4인 정규분포 곡선이다. 평균 15의 오른쪽 넓이는 1/2이다(ㄱ 참). 15에서 같은 거리 4만큼 떨어진 11과 19의 바깥 꼬리는 서로 같아 P(X≤11)=P(X≥19)이다(ㄴ 참, 색칠). 6과 24도 평균에서 9씩 떨어져 P(X≤6)=P(X≥24)이다(ㄹ 참). 12는 평균에서 3, 22는 7 떨어져 f(12)>f(22)이므로 ㄷ은 거짓이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

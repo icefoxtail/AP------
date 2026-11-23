@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-5bd5fe9653bf-6a0f10c5",
+  "requestSha256": "ba02bbbb9fa07fad5803cb720929e41cb710756f96a5ea94d6d377f808be4d8d",
+  "examUid": "20_금당고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/20_금당고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "956538752826c81dd8b02c15d2c3bd37a0232138",
+  "sourceRawSha256": "97005b8f69d7be735b4a72944a41798522fe1dd30b6bbdfd9c059006ace02495",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5bd5fe9653bf-6a0f10c5.type-ledger.json",
+        "sha256": "eaec2791cb86d4e46e807a7881c435362d12cdd5df951190765717f4111d3f56"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_53a6438d0fe419833a075d023d2edee806ea7d216d6be88f9987434f057dffca",
+      "sourceArchiveFile": "original/high/h2/2mid/20_금당고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-5bd5fe9653bf-6a0f10c5",
+        "judge": "dots",
+        "rationale": "포물선의 끝점 부호와 꼭짓점·열린 경계를 비교해 구간 안에 정확히 한 근이 드는 정수를 고른다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request",
+          "rowCourse": "수학II",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "1e23e786d631866c08df7faa15a340b1f9eaa7b1779e4351392c61e45bf89c8d",
+        "judgedContentFingerprint": "a3da0f5481df901ec68585a379afc8267f4fcd96e74a4d9377090d40598fc541",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2bcbf668bbaa99535bd7c465ad1b8069c1c12c2f8afcb18376a9fb7a77a276b6",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5bd5fe9653bf-6a0f10c5.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+          "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+          "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

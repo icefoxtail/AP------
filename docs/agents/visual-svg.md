@@ -57,6 +57,8 @@
 - **기준표 v2 (원장님 2026-11-23: "최대한 많이 통과시키고 추후 다시 작업하든지 써 보든지"):** 정도 숫자가 없는 감점 코드의 고정 감점을 6에서 3으로 낮췄다(가벼운 흠 3건까지 90점 통과). 합격선·막음 규칙은 그대로다. 영수증의 `tableVersion`으로 어느 기준표로 채점했는지 알 수 있어, 나중에 낮은 점수(v1 점수·경계)부터 다시 렌더·재채점할 수 있다.
 - 기준표는 `version`(영수증에 `tableVersion`으로 적는다)을 갖고, 필드·코드는 추가만 한다. 기준을 낮추려면 버전을 올리고 이유를 적는다.
 - **2단계(2026-11-23):** 렌더 뒤 관측기가 그림을 실패시켜도 후보 SVG와 위반 목록 전체를 남긴다. 실패 결과 옆에 `<name>-candidate.svg`, 결과 JSON에 `violations`(코드·라벨 id·정도)와 `scoreGate`(`status` SCORED_PASS|FAIL_SCORE|BLOCK…, `score`, `deductions`, `tableVersion`)가 붙는다. 통과하는 그림의 SVG·결과는 그대로다(성공 결과에는 새 필드가 없다). `status`는 FAILED로 둔다: SCORED_PASS는 게시 관문이 받아 주는 후보라는 표시이고, 후보를 아카이브 캡처에 묶어 게시하는 단계는 다음 일이다. 정도 숫자는 관측기가 이미 계산하던 값을 위반 항목에 싣기만 한다(검사 로직 불변). 배치 단계에서 멈추는 코드(`STAT_*` 배치, `*_NO_ROOM` 등)는 후보가 없다(생성기가 차선 자리에 놓아야 풀린다).
+- **기준표 v3·3단계(2026-11-23):** `LABEL_GEOMETRY_COLLISION`에 가림 비율을 싣는다(실패일 때만; 관측기 판정·문턱·오류 문구는 그대로). `degree.d`는 그 도형이 라벨 상자를 가린 비율, `degree.labelHidden`은 그 라벨에서 부딪친 모든 도형이 함께 가린 비율이고, 둘 중 하나가 0.5 이상이면 막음이다(`overlap` blockAt). 선·점·원둘레는 획 두께만큼, 노크아웃·조건 상자는 넓이로 센다. 이유: 라벨이 도형에 절반 넘게 가려져도 고정 3점으로 통과하던 구멍.
+- **점수 통과분 게시 연결:** `render-plan.mjs --accept-scored 1`(또는 `APMS_ACCEPT_SCORED=1`)이면 후보가 SCORED_PASS인 실패를 한 번 더 렌더해, 점수 90 이상인 겹침·근접은 통과시키고 아카이브 캡처까지 묶는다. 결과는 보통 PASS와 같은 `ARCHIVE_BOUND`(+ `figure-solution.svg`)이고 `scoreGate`(status SCORED_PASS, score, passScore, tableVersion, stage, stages, deductions)와 `violations`가 붙는다. 기본은 꺼짐(켜지 않으면 모든 결과가 그대로). 막음·점수 미달·다른 검사 실패면 처음 실패 결과가 그대로 남는다. 게시는 기존 도구가 받는다: `ops/svg-m1/publish-exam.py`가 `scoreGate`를 검증(SCORED_PASS·점수≥합격선·tableVersion)해 게시 행에 영수증으로 싣고, `ops/tools/publish-figures.mjs` 보고에도 점수가 남는다. 게시 가능 목록은 `ops/score/publishable.mjs <렌더 폴더...>`로 뽑는다(`receipt`: SCORED_PASS, score, deductions, tableVersion). 점수 통과분도 눈 검수(PNG)는 그대로 거친다.
 - 표본 PNG는 아카이브 실제 표시 크기로 본다: A4 쪽 단 폭 316px(`archive/figure-size.css`의 `--ap-col-w`)에서 문제 그림 75%(`--ap-fig-q`)·해설 그림 80%(`--ap-fig-sol`), 휴대폰은 390px 폭. 값은 이 파일에서 직접 읽는다.
 - 이유: 모든 겹침·근접을 실패로 두면 학생이 읽는 데 지장이 없는 그림까지 게시가 막혀 그림이 쌓인다(실패 213건 중 SVG가 남은 것은 0건).
 
@@ -99,6 +101,10 @@
 - **확률분포표·분할표 같은 표**는 SVG로 그리지 않고, 해설 글 안에 AP Table Engine(HTML 표, [table-engine.md](table-engine.md))으로 넣는다.
 - 이미 게시한 확통 그림은 이 절 때문에 되돌리거나 지우지 않는다. 새로 판정하고 만드는 문항에만 적용한다.
 - 이유: 단순 계산 문항에도 해설 식과 같은 내용의 그림을 억지로 넣은 경우가 있었다. 다른 과목은 그래프·단위원·도형이 실제로 필요해서 이 문제가 확통에만 있다.
+
+## 설명 문구 품질 미달은 등록·게시를 막지 않는다 (2026-11-24, 사용자 결정: "수정프로토콜에 걸림 있는 건 다 없애버리는 게 맞다")
+
+등록기 studentIndexes 레인(`build-svg-accessibility-index.cjs --base`)에서 `--base` 이후 바뀐·새로 연결된 SVG가 `SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE`(설명이 구체적이지 않음)·`KOREAN_MEANING_REQUIRED`·`ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW`·`MATH_MARKUP_ACCESSIBILITY_REQUIRES_REVIEW`에 걸려도 색인은 만들어지고, 빌더가 `SVG_ACCESSIBILITY_QUALITY_ADVISORY svgs=N findings=M` 줄과 그림 목록(앞 50개)을 출력한다. 이 목록이 수리 목록이다. 루트 없음·title/desc 없음·id 중복·aria 참조 깨짐·내부 문구·축척 안내 같은 실제 결함은 전과 같이 막는다(`svg-language-contract.cjs`의 `QUALITY_ONLY_CODES`, 호출 쪽이 `advisory` 배열을 줄 때만 적용). 그림을 만드는 작업(엔진·`assertSvgStudentLanguage` 직접 호출)과 `--expected-source-index` 감사 모드는 그대로 엄격하다. 전체 목록(저장소 모든 SVG, 시험지·문항 번호·현재 title/desc 포함, ENGLISH·MATH 코드 먼저)은 `node archive/tools/build-svg-accessibility-index.cjs --quality-report <out.tsv|out.json>`로 뽑는다(색인은 쓰지 않고 차단하지 않음, `svg-quality-report.cjs`). 이유: 저장소에 같은 판정에 걸리는 옛 그림이 2,600개 넘게 있어, 그 그림이 든 시험지를 고치거나 새 유사 세트를 올리는 것만으로 필수 레인이 멈춰 학생 사이트 게시가 막혔다(run 45170490117·45171814773).
 
 ## 해설 그림 정보 우선 (2026-11-17, 사용자 결정)
 
@@ -172,3 +178,7 @@ Claude·GPT·Codex 어느 라인이든 기출·생성문항의 문제·해설 �
 
 보고: 시험지·문항별 상태(ARCHIVE_BOUND / FAILED / UNSUPPORTED)와 렌더 수, 확인한 PNG 경로, CONTENT, 엔진 공백, 사용자 결정이 필요한 것.
 ```
+
+## 옛 그림의 접근성 표기 누락도 등록·게시를 막지 않는다 (2026-11-24, 사용자 결정)
+
+등록기 studentIndexes 레인에서 옛 그림(엔진 표지 `data-engine-version`이 루트 태그에 없는 그림)의 `TITLE_DESC_REQUIRED`·`ROLE_IMG_REQUIRED`·`ARIA_REFERENCE_INVALID`·`TITLE_DESC_ID_INVALID`는 막지 않고 목록(advisory, `--quality-report`의 `legacy-a11y`)으로만 남긴다. title/desc가 없는 그림의 색인 행에는 시험지·문항·역할로만 만든 기계 대체 문구(예: "<시험지 이름> 3번 해설 그림")를 넣고 행에 `textSource: "MACHINE_SUBSTITUTE"`를 둔다(내용을 추측하지 않는다). 화면 쪽 `svg-accessibility.js`는 이 행을 그림 이름으로 쓰지 않아 시험지의 기존 이름과 호출한 쪽 기본값이 그대로 쓰인다. 새 엔진 그림은 엔진이 title·desc·role·aria를 항상 넣으므로 빠지면 엔진 회귀이니 계속 막는다(엔진 표지가 있으면 대체 문구도 받지 않는다). 엔진 표지(루트 태그)는 두 종류다. ① 확정 표지(있으면 언제나 엔진 그림): `data-engine-version`, `data-stat-chart`, `data-set-diagram`, `data-number-line`, `data-text-free`, `data-publication-profile="geometry-publication-v1"` — 저장소 SVG 16,548개 가운데 이 표지가 있는 7,579개 전부에 role·title·desc·aria가 있어(오판 0) 기존 그림이 새로 막히지 않는다. ② 신규 경로 표지(`--base`에 없던 새 파일일 때만 엔진 그림): `data-composite`(1,734개 중 382개 누락), `data-conic`, `data-ellipse-figure`, `data-lattice-path`, `data-solid-figure`, `data-container-fill`, `data-publication-profile`(그 밖의 값) — 옛 엔진이 표기 없이 낸 그림이 이미 있어 표지만으로는 막지 않는다. 새 엔진 생성기를 만들면 접근성 블록을 항상 쓰고, 오판이 0인 표지를 ①에 추가한다(`svg-language-contract.cjs`의 `CONFIRMED_ENGINE_MARKERS`). 계속 막는 것: `SCALE_GUIDANCE_FORBIDDEN`·`INTERNAL_STUDENT_TEXT_FORBIDDEN`(학생 눈에 보이는 글), 루트 없음, `DUPLICATE_ID`, 파일 없음, 해시 불일치, `--expected-source-index` 감사 모드 전체. 이유: 옛 그림 2,600여 개가 표기가 없어, 그 그림 바이트를 바꾸거나 시험지에 새로 연결하는 수정이 필수 레인을 멈추게 했다. 표기를 채우는 일은 `--quality-report`의 `legacy-a11y` 목록으로 따로 한다.

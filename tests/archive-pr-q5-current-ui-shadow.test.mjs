@@ -138,6 +138,8 @@ const STAGED = [...PROFILE.currentRefs, ...PROFILE.extraServed];
 const LIVE = [PROFILE.approvedRequest, ...PROFILE.priorRefs, ...STAGED, PROFILE.sourceRef, PROFILE.engineRef];
 // Render engine files may change after the capture: the captured Git bytes are used, not HEAD or the working tree.
 const RENDER = new Set(['archive/engine.html', 'archive/archive2-output-bar.css', 'archive/exam-display-title.js', 'archive/archive2-tokens.css']);
+// The original exam is a living working file (minimal-fix protocol edits it any time), so its pinned bytes are read from the capture commit like the render engine files, not from HEAD.
+const FROM_CAPTURE_COMMIT = new Set([...RENDER, PROFILE.sourceRef.path]);
 const NON_RENDER_STAGED = STAGED.filter(ref => !RENDER.has(ref.path));
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const blob = bytes => crypto.createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
@@ -153,11 +155,11 @@ const publicHead = str(ROOT, 'rev-parse', 'HEAD');
 const publicStatus = git(ROOT, 'status', '--porcelain=v1', '-z');
 const publicHashes = fileHashes(ROOT);
 const immutableBytes = new Map(LIVE.map(ref => {
-  const b = git(ROOT, 'show', (RENDER.has(ref.path) ? ref.commit : publicHead) + ':' + ref.path);
+  const b = git(ROOT, 'show', (FROM_CAPTURE_COMMIT.has(ref.path) ? ref.commit : publicHead) + ':' + ref.path);
   assert.equal(b.length, ref.bytes, ref.path);
   assert.equal(sha(b), ref.sha256, ref.path);
   assert.equal(blob(b), ref.gitBlobSha1, ref.path);
-  if (!RENDER.has(ref.path)) assert.equal(sha(fs.readFileSync(path.join(ROOT, ref.path))), ref.sha256, ref.path);
+  if (!FROM_CAPTURE_COMMIT.has(ref.path)) assert.equal(sha(fs.readFileSync(path.join(ROOT, ref.path))), ref.sha256, ref.path);
   return [ref.path, b];
 }));
 const approvedRequest = JSON.parse(immutableBytes.get(PROFILE.approvedRequest.path));

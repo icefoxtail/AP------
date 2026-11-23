@@ -1,0 +1,46 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 2
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        2,
+        1
+      ],
+      "B": [
+        3,
+        2
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        "P",
+        [
+          3,
+          1
+        ]
+      ]
+    ]
+  },
+  "caption": "가로 3칸, 세로 2칸인 바둑판 모양의 도로망이다. 왼쪽 아래 A에서 오른쪽 위 B까지 가는 길이고, 중간 지점 P에서 오른쪽으로 가는 도로는 공사 중이어서 점선으로 나타내었다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로 방향으로 3칸, 세로 방향으로 2칸인 바둑판 모양의 도로망에서 A에서 P를 거쳐 B까지 최단 거리로 이동한다. P에서 오른쪽으로 곧바로 가는 도로는 공사 중이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "가로 3칸, 세로 2칸 도로망과 A, P, B의 위치, P에서 오른쪽 도로가 공사 중임"
+  ],
+  "accessibilityDescription": "가로 3칸, 세로 2칸인 바둑판 모양의 도로망에서 왼쪽 아래 지점 A, 중간 지점 P, 오른쪽 위 지점 B의 위치가 표시되어 있고, P에서 오른쪽으로 가는 도로는 점선으로 끊겨 있다."
+}

@@ -330,8 +330,9 @@ export async function composeNumberLinePanel({plan,model,identity,typographyPoli
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
-    if(layout.status!=='PASS')noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS')throw new Stop('NUMBER_LINE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
+    const scoredAccepted=layout.status!=='PASS'&&noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted)throw new Stop('NUMBER_LINE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');
   }catch(error){

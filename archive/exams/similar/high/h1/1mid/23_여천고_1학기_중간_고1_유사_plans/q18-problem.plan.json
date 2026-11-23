@@ -1,0 +1,54 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 두 포물선의 위치 관계 예시를 보여준다."
+  },
+  "solution": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "4",
+            "-4",
+            "1"
+          ]
+        }
+      ],
+      "breakpoints": [],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "formula": "x^2-4x+4",
+      "referenceCurves": [
+        {
+          "id": "g",
+          "family": "polynomial",
+          "coefficients": [
+            "10",
+            "0",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          }
+        }
+      ],
+      "requiredPoints": [
+        {
+          "id": "P",
+          "x": 2,
+          "y": 0
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          2
+        ],
+        "y": []
+      }
+    },
+    "caption": "예: f(x)=(x-2)^2, g(x)=-x^2+10일 때 x축에 접하고 제1, 2사분면에서 만난다."
+  }
+}

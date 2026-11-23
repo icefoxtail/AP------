@@ -1,0 +1,828 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/22_팔마고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "cc0aafc8a74c69264f0bd2a655993a6f02a01fc9",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-21"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분과 허수부분이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$, $y$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "복소수가 서로 같을 조건에 의하여",
+            "evidenceType": "IMPLIED",
+            "justification": "복소수의 상등 성질을 이용해 실수부분과 허수부분을 각각 비교함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $A=x^3-2x+1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "만족시키는 다항식 $X$"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "X=2A-B$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "X에 대해 정리한 뒤 차수별 동류항의 계수를 합산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "삼차다항식 $f(x)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "인수정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "주어진 항등식의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "a_1+a_3+a_5"
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "양변에 $x=1$과 $x=-1$을 각각 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "항등식에 x=1, -1을 대입한 두 식을 빼서 홀수차 계수 합을 분리함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $x$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "좌변을 전개하여 정리하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $ax^2+2(a+3)x+a=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$5$ 이하의 정수 $a$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D\\ge 0$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "실근을 갖도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수의 계산 과정을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "등식이 성립하지"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{-2}=\\sqrt{2}i$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱근을 i로 표현해 1/i=-i 및 i^2=-1 부호 오류를 검증함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-2x+6=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $(x^2+3x+4)(x^2+5x+4)-8x^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수인 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "x^2+4=t$로 치환하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 $R(x)$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=3x^2-2x+a-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D \\ge 0$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $p$, $q$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$k$에 대한 항등식이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "k에 대해 정리한 항등식의 일차항과 상수항을 각각 0으로 두어 p, q를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "$k$의 값에 관계없이 성립하는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "(x-1)(x-2)$의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$3$ 이상의 자연수 $x$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-1)(x+1)(x^2+9)",
+            "evidenceType": "IMPLIED",
+            "justification": "보기차식을 인수분해해 x-1을 약분하고 x-2로 나눈 나머지가 39임을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "D_1 = a^2-4b = 0",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $3$이 되도록"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "아래로 볼록하고 축이 $x=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=2가 구간 [0, a] 안에 있는지 여부로 경우를 나누어 최솟값을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 $R(x)$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "양변에서 $x-1$을 약분하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x^15-1 인수분해 항등식으로 x-1을 약분한 뒤 x=1을 대입해 a를 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "함수 $g(p)$의 최솟값이 $-1$"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "대칭축은 $x=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=2를 기준으로 함숫값 크기, 볼록성, 이동 구간 최댓값을 판별함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "네 항의 합은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$, $b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "연속한 네 항의 합은 항상 $0$",
+            "evidenceType": "IMPLIED",
+            "justification": "i^4=1 주기성을 이용해 4항씩 묶어 0으로 소거함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "모든 실수 $x$에 대한 항등식이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "f(x+1)-f(x)=4x 항등식의 계수를 비교해 이차함수를 확정함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $3x^2-ax+b=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$, $b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "그 켤레복소수 $1+2i$도"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 세 변"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "c(a+b)(a^2+b^2-c^2) &= 0",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 c와 (a+b)로 묶어 인수분해하여 c^2=a^2+b^2를 도출함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+2mx-7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

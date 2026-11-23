@@ -175,7 +175,7 @@
         ? '<button type="button" class="btn btn-primary ss-main" data-ss-act="grade" disabled>채점하기</button>'
         : '<button type="button" class="btn btn-primary ss-main" data-ss-act="done">다 풀었어요</button>';
       const chips = Rec.WHY_CODES.map(code => `<button type="button" class="ss-chip" data-ss-why="${code}" aria-pressed="false">${escapeHtml(Rec.WHY_LABELS[code])}</button>`).join('');
-      return `<article class="ss-card" id="ss-q-${escapeHtml(no)}" data-no="${escapeHtml(no)}" data-key="${escapeHtml(entry.ssKey ?? '')}" data-mode="${mode}" data-state="open">
+      return `<article class="ss-card" id="ss-q-${escapeHtml(no)}" data-no="${escapeHtml(no)}" data-key="${escapeHtml(entry.ssKey ?? '')}" data-uid="${escapeHtml(entry.ssUid ?? '')}" data-mode="${mode}" data-state="open">
         <header class="ss-card-head"><span class="ss-no">${escapeHtml(no)}번</span>${entry.sourceLabel ? `<span class="ss-source">${escapeHtml(entry.sourceLabel)}</span>` : ''}</header>
         <div class="ss-q">
           <div class="ss-stem">${body}</div>

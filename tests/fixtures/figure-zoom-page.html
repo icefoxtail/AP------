@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>figure zoom fixture</title>
+<link rel="stylesheet" href="../../archive/figure-zoom.css">
+<script src="../../archive/figure-zoom.js"></script>
+<style>
+  body { margin: 0; font: 14px sans-serif; }
+  .page { width: 320px; margin: 0 auto 40px; padding: 8px; }
+  .q-box { margin-bottom: 20px; }
+  .q-image-wrap img, .sol-image-wrap img { display: block; width: 200px; height: 140px; margin: 8px auto; }
+  .q-content svg.inline-fig { display: block; width: 180px; height: 120px; }
+  .choices img { width: 90px; height: 60px; }
+  #staging { position: absolute; top: -9999px; left: 0; visibility: hidden; width: 83mm; }
+  .spacer { height: 1400px; }
+</style>
+</head>
+<body>
+<div id="print-area">
+  <div class="page">
+    <div class="q-box" data-source-ref="exams/fixture/a.js#legacy:exams/fixture/a.js#ordinal:3">
+      <div class="q-num">3.</div>
+      <div class="q-content">그림을 보고 답하시오.
+        <svg class="inline-fig" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" aria-label="인라인 그림"><rect x="2" y="2" width="176" height="116" fill="#e0f2fe" stroke="#0369a1"/><text x="20" y="64" font-size="20">A(1,2)</text></svg>
+        <mjx-container><svg viewBox="0 0 200 40" width="200" height="40"><rect width="200" height="40" fill="#fee"/></svg></mjx-container>
+      </div>
+      <div class="q-image-wrap"><img id="fig-q" alt="문제 그림" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 140'%3E%3Crect width='200' height='140' fill='%23fef9c3' stroke='%23a16207'/%3E%3Ctext x='30' y='80' font-size='24'%3EP(2,3)%3C/text%3E%3C/svg%3E"></div>
+      <div class="choices"><div class="choice-item"><img id="fig-c" alt="보기 그림" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Crect width='90' height='60' fill='%23dcfce7'/%3E%3C/svg%3E"></div></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="q-box sol-box" data-source-ref="exams/fixture/a.js#question-uid-7">
+      <div class="q-num">7.</div>
+      <div class="sol-meta"><span class="sol-image-wrap"><img id="fig-s" alt="해설 그림" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 140'%3E%3Crect width='200' height='140' fill='%23fae8ff'/%3E%3C/svg%3E"></span><div class="sol-exp">해설 본문</div></div>
+    </div>
+  </div>
+</div>
+<div id="staging"><div class="q-box"><div class="q-image-wrap"><img id="fig-hidden" alt="측정용" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 140'%3E%3Crect width='200' height='140'/%3E%3C/svg%3E"></div></div></div>
+<button id="after-open" type="button">다른 단추</button>
+</body>
+</html>

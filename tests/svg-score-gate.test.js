@@ -31,7 +31,7 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
 
   const one = c => score.scoreFigure({ findings: [{ code: c }], hasSvg: true });
   // v2: a finding without a degree costs 3: three light flaws pass (91), four do not (88); repeats of one code add up with no cap
-  assert.strictEqual(table.version, 'score-table-v2');
+  assert.strictEqual(table.version, 'score-table-v3');
   const mild = one('STAT_LABELS_TOO_CLOSE');
   assert.strictEqual(mild.verdict, 'PASS');
   assert.strictEqual(mild.score, 97);
@@ -102,6 +102,77 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   assert.strictEqual(score.scoreFigure({ findings: clipped.violations, hasSvg: true }).verdict, 'BLOCK');
   const lightTouch = layoutMod.analyzeRenderedLayout(cap([lab('a', 10, 10, 40, 20), lab('b', 47, 10, 40, 20)]));
   assert.strictEqual(score.scoreFigure({ findings: lightTouch.violations, hasSvg: true }).verdict, 'PASS');
+
+  // v3: a label crossed by a thin line keeps the light deduction; a label mostly hidden by shapes (one wide stroke, or several strokes together) is a block; a clean figure has no such field
+  const line = (id, x1, y1, x2, y2, w) => ({ id, kind: 'line', points: [[x1, y1], [x2, y2]], client: { x: Math.min(x1, x2), y: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) }, strokeWidthPx: w });
+  const capG = (labels, geometry) => ({ ...cap(labels), geometry });
+  const thin = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 30, 5, 30, 60, 1.5)]));
+  assert.deepStrictEqual(thin.violations.map(v => v.code), ['LABEL_GEOMETRY_COLLISION']);
+  assert.ok(thin.violations[0].degree.d > 0.02 && thin.violations[0].degree.d < 0.15, 'thin line hides a little: ' + thin.violations[0].degree.d);
+  assert.strictEqual(score.scoreFigure({ findings: thin.violations, hasSvg: true }).verdict, 'PASS');
+  const wide = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 5, 20, 150, 20, 16)]));
+  assert.ok(wide.violations[0].degree.d > 0.6);
+  assert.strictEqual(score.scoreFigure({ findings: wide.violations, hasSvg: true }).verdict, 'BLOCK');
+  // three strokes each cover about a third of the label: no single one is a block, together they hide it
+  const trio = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 18, 5, 18, 60, 9), line('s2', 30, 5, 30, 60, 9), line('s3', 42, 5, 42, 60, 9)]));
+  assert.ok(trio.violations.every(v => v.degree.d < 0.5 && v.degree.labelHidden >= 0.5), JSON.stringify(trio.violations.map(v => v.degree)));
+  assert.strictEqual(score.scoreFigure({ findings: trio.violations, hasSvg: true }).verdict, 'BLOCK');
+  const free = layoutMod.analyzeRenderedLayout(capG([lab('a', 10, 10, 40, 20)], [line('s1', 120, 5, 120, 60, 1.5)]));
+  assert.strictEqual(free.status, 'PASS');
+  assert.ok(!('violations' in free));
+
+  // scored acceptance (render-plan --accept-scored): off by default, then a failing compose site is never let through; on, light flaws are accepted until the total passes 90 and a block never is
+  const cand = await import(pathToFileURL(path.resolve(__dirname, '..', 'archive/tools/geometry-equation/production/score-candidate.mjs')).href);
+  const light1 = id => [{ code: 'LEADER_CROSSING', id }];
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), false);
+  assert.strictEqual(cand.takeScoredAcceptance(), null);
+  cand.enableScoredAcceptance(true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('b') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('c') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('d') }), false, 'a fourth light flaw (88 points) is not accepted');
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: [{ code: 'OVERLAY_LINE_MISMATCH' }] }), false, 'a block is never accepted');
+  assert.strictEqual(cand.acceptArchiveViolations(light1('z')), true, 'the archive stage is scored on its own');
+  const taken = cand.takeScoredAcceptance();
+  assert.strictEqual(taken.scoreGate.status, 'SCORED_PASS');
+  assert.strictEqual(taken.scoreGate.score, 91);
+  assert.strictEqual(taken.scoreGate.tableVersion, table.version);
+  assert.deepStrictEqual(taken.scoreGate.stages, { compose: 91, archive: 97 });
+  assert.strictEqual(taken.scoreGate.stage, 'compose');
+  assert.strictEqual(taken.violations.length, 4);
+  cand.resetCandidate();
+  assert.strictEqual(cand.takeScoredAcceptance(), null, 'a new render starts with nothing accepted');
+  cand.enableScoredAcceptance(false);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), false);
+
+  // exam batch: renders running at once in one process keep their own candidate and acceptance (withScoreState)
+  const scoreTick = () => new Promise(r => setTimeout(r, 5));
+  const render = async (accept, id) => cand.withScoreState(async () => {
+    cand.resetCandidate();
+    if (accept) cand.enableScoredAcceptance(true);
+    await scoreTick();
+    const noted = cand.noteCandidate({ svg: '<svg id="' + id + '"/>', violations: light1(id) });
+    await scoreTick();
+    return { noted, svg: cand.takeCandidate().svg, taken: cand.takeScoredAcceptance(), on: cand.scoredAcceptanceEnabled() };
+  });
+  const [ra, rb] = await Promise.all([render(true, 'p'), render(false, 'q')]);
+  assert.deepStrictEqual([ra.noted, ra.on, ra.svg, ra.taken !== null], [true, true, '<svg id="p"/>', true]);
+  assert.deepStrictEqual([rb.noted, rb.on, rb.svg, rb.taken], [false, false, '<svg id="q"/>', null]);
+  assert.strictEqual(cand.scoredAcceptanceEnabled(), false, 'a render in withScoreState leaves the shared state alone');
+
+  // the publishable list: only ARCHIVE_BOUND results that carry a SCORED_PASS receipt; a normal pass (no scoreGate) is not listed
+  const fs = require('fs'), os = require('os');
+  const pub = await import(pathToFileURL(path.join(dir, 'publishable.mjs')).href);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'scored-'));
+  const put = (name, result, withSvg = true) => { fs.mkdirSync(path.join(tmp, 'x', 'out'), { recursive: true }); fs.writeFileSync(path.join(tmp, 'x', 'out', name + '-result.json'), JSON.stringify(result)); if (withSvg) fs.writeFileSync(path.join(tmp, 'x', 'out', name + '-solution.svg'), '<svg/>'); };
+  put('q1', { status: 'ARCHIVE_BOUND' });
+  put('q2', { status: 'ARCHIVE_BOUND', scoreGate: { status: 'SCORED_PASS', score: 94, passScore: 90, tableVersion: table.version, deductions: [] } });
+  put('q3', { status: 'ARCHIVE_BOUND', scoreGate: { status: 'SCORED_PASS', score: 80, passScore: 90, tableVersion: table.version, deductions: [] } });
+  put('q4', { status: 'FAILED', scoreGate: { status: 'SCORED_PASS', score: 94, passScore: 90, tableVersion: table.version } });
+  const listed = pub.listPublishable([tmp]);
+  assert.deepStrictEqual(listed.map(x => [x.item, x.publishable]), [['q2', true], ['q3', false]]);
+  assert.strictEqual(listed[0].receipt, 'SCORED_PASS');
+  fs.rmSync(tmp, { recursive: true, force: true });
 
   // PREFIX:REASON codes (phone display check): the reason decides
   const phone = r => score.classify('ARCHIVE_PHONE_DISPLAY_FAIL:' + r).track;

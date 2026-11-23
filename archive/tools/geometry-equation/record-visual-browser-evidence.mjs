@@ -1,13 +1,47 @@
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {repoRoot,assertOutput,launchBrowser,sameOriginExamImageUrl,captureTimeoutMs} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
+import {acceptArchiveViolations} from './production/score-candidate.mjs';// score gate: answers true only in a scored re-render (render-plan --accept-scored), else false
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
+
+// Slack for sub-pixel layout when judging a target box (the page-wide check allowed 2 px too).
+export const BOX_OVERFLOW_TOLERANCE_PX=2;
+
+// What the page state says about a row. A row that names targets (a figure under test, or an envelope probe) is judged on those targets (2026-11-23): what the
+// student sees of THIS figure. What is wrong elsewhere in the same exam page (another question's missing picture, a wide formula, a question count) is the exam's,
+// not this figure's: it is returned as a pageNote (scope EXAM) and does not fail the row. A row with no target keeps judging the whole page, as before.
+// One target (a figure id, or an envelope probe id) on its own: its question box overflowing (figure rows only) is an error, a picture of its own question that did not load is a
+// TARGET_BOX note carrying the target id. Pure: takes the page state, the matrix row item and the target id, so a run over several targets of one exam judges each one separately.
+export function judgeArchiveTarget(state,item,targetId){
+  const errors=[],pageNotes=[];
+  const figure=(state.targets||[]).find(target=>target.id===targetId);
+  if(figure?.boxOverflow&&(figure.boxOverflow.scrollOverflowPx>BOX_OVERFLOW_TOLERANCE_PX||figure.boxOverflow.imageOutsidePx>BOX_OVERFLOW_TOLERANCE_PX))errors.push('TARGET_HORIZONTAL_OVERFLOW:'+targetId);
+  const own=(state.failedImages||[]).filter(v=>(v.targetIds||(v.inTargetBox?[targetId]:[])).includes(targetId));
+  if(own.length)pageNotes.push({scope:'TARGET_BOX',targetId,code:'ARCHIVE_IMAGE_LOAD_FAIL',images:own.map(v=>v.src)});
+  return {errors,pageNotes};
+}
+
+// What the page state says about a row: the exam-page level (see above) plus each target through judgeArchiveTarget.
+export function judgeArchivePage(state,item){
+  const errors=[],pageNotes=[];
+  const targetIds=[...new Set([...(state.targets||[]).map(target=>target.id),...(item.assets||[]).map(asset=>asset.id),...(item.envelopeTargets||[]).map(target=>target.id)])];
+  const scoped=(item.assets?.length||0)+(item.envelopeTargets?.length||0)>0;
+  const pageLevel=(code,detail)=>{if(scoped)pageNotes.push({scope:'EXAM',code,...detail});else errors.push(code);};
+  if(state.questionBlocks!==item.questionCount)pageLevel('ARCHIVE_QCOUNT_FAIL',{questionBlocks:state.questionBlocks,expected:item.questionCount});
+  if(!state.pageCount||!state.mathJaxReady)errors.push('ARCHIVE_RENDER_NOT_READY');// nothing to measure on a page that did not render
+  else if(state.errorText)pageLevel('ARCHIVE_RENDER_NOT_READY',{errorText:String(state.errorText).slice(0,200)});
+  if(state.horizontalOverflow)pageLevel('ARCHIVE_HORIZONTAL_OVERFLOW',{});
+  if(!state.allImagesLoaded)pageLevel('ARCHIVE_IMAGE_LOAD_FAIL',{images:(state.failedImages||[]).filter(v=>!v.inTargetBox).map(v=>v.src)});
+  if(scoped)for(const id of targetIds){const verdict=judgeArchiveTarget(state,item,id);errors.push(...verdict.errors);pageNotes.push(...verdict.pageNotes);}
+  return {errors,pageNotes};
+}
 
 export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
@@ -36,7 +70,7 @@ function persistArchiveAbortEvidence(run,attempt,error,cleanup){
   error.code='ARCHIVE_CAPTURE_CANCELLED';error.cleanup=cleanup;error.abortEvidenceRef=path.relative(repoRoot,abortPath).replaceAll('\\','/');return error;
 }
 
-export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false}={}) {
+export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress,blockExternalRequests=false,fullPageScreenshot=true}={}) {
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
   if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
   if(typeof blockExternalRequests!=='boolean')throw Error('ARCHIVE_NETWORK_POLICY_INVALID');
@@ -83,7 +117,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       }
       page.on('pageerror',error=>consoleErrors.push(String(error)));
       page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
-      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];
+      const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];const pageNotes=[];let state={};const layouts=[];
       try {
         await page.goto(sameOriginExamImageUrl(base+item.urlPath),{waitUntil:'domcontentloaded',timeout:captureTimeoutMs(60000)});checkCancelled();
         const readiness=page.waitForFunction(({mode,count})=>{
@@ -109,12 +143,20 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           const rect=b=>b?{x:b.x,y:b.y,width:b.width,height:b.height}:null;
           const styleRecord=e=>{const s=getComputedStyle(e);return{width:s.width,height:s.height,maxWidth:s.maxWidth,maxHeight:s.maxHeight,objectFit:s.objectFit,transform:s.transform,paddingLeft:s.paddingLeft,paddingRight:s.paddingRight,borderLeftWidth:s.borderLeftWidth,borderRightWidth:s.borderRightWidth};};
           const contentWidth=e=>{if(!e)return null;const r=e.getBoundingClientRect(),s=getComputedStyle(e),px=v=>parseFloat(v)||0;return r.width-px(s.paddingLeft)-px(s.paddingRight)-px(s.borderLeftWidth)-px(s.borderRightWidth);};
+          const boxOverflowOf=(box,imageRect)=>{if(!box)return null;const r=box.getBoundingClientRect();return{scrollOverflowPx:Math.max(0,box.scrollWidth-box.clientWidth),imageOutsidePx:imageRect?Math.max(0,r.x-imageRect.x,imageRect.x+imageRect.width-(r.x+r.width)):0};};
+          const targetBoxes=new Map();// target id -> the question box it sits in
           const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{
             const expected=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
             const image=images.find(i=>{try{return decodeURIComponent(new URL(i.src).pathname)===expected;}catch{return false;}}),wrapper=image?.closest('.sol-image-wrap'),meta=image?.closest('.sol-meta'),box=image?.closest('.q-box');
-            const b=image?.getBoundingClientRect();
-            return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:rect(b),sizeClass:asset.sizeClass||wrapper?.className?.match(/image-(small|medium|large|full)/)?.[1]||null,naturalWidth:image?.naturalWidth||null,naturalHeight:image?.naturalHeight||null,computedStyle:image?styleRecord(image):null,wrapperRect:rect(wrapper?.getBoundingClientRect()),solutionMetaRect:rect(meta?.getBoundingClientRect()),solutionMetaContentWidth:contentWidth(meta),qBoxRect:rect(box?.getBoundingClientRect()),sourceRef:box?.dataset.sourceRef||null};
+            const b=image?.getBoundingClientRect();if(box)targetBoxes.set(asset.id,box);
+            // Overflow of the target question's own box (2026-11-23): its content wider than the box, or the figure poking out of it. This, not the whole page, is what the student sees of this figure.
+            return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:rect(b),sizeClass:asset.sizeClass||wrapper?.className?.match(/image-(small|medium|large|full)/)?.[1]||null,naturalWidth:image?.naturalWidth||null,naturalHeight:image?.naturalHeight||null,computedStyle:image?styleRecord(image):null,wrapperRect:rect(wrapper?.getBoundingClientRect()),solutionMetaRect:rect(meta?.getBoundingClientRect()),solutionMetaContentWidth:contentWidth(meta),qBoxRect:rect(box?.getBoundingClientRect()),sourceRef:box?.dataset.sourceRef||null,boxOverflow:boxOverflowOf(box,b)};
           });
+          // Images that did not load, split by where they sit: inside a target question's box (a target box is one a target figure or envelope probe sits in) or elsewhere in the exam.
+          for(const target of envelopeTargets||[]){const number=Number(target.displayOrdinal||target.questionId);const box=[...root.querySelectorAll('.q-box')].find(candidate=>Number(candidate.querySelector('.q-num')?.textContent.match(/^\s*(\d+)/)?.[1])===number);if(box)targetBoxes.set(target.id,box);}
+          const excerpt=src=>{try{return decodeURIComponent(new URL(src).pathname).split('/').filter(Boolean).slice(-3).join('/');}catch{return String(src||'').slice(-80);}};
+          const failedImages=images.filter(i=>!(i.complete&&i.naturalWidth>0)).map(i=>{const targetIds=[...targetBoxes].filter(([,b])=>b.contains(i)).map(([id])=>id);return{src:excerpt(i.src),inTargetBox:targetIds.length>0,targetIds};});
+          const targetBoxOverflows=[...targetBoxes].map(([id,b])=>({id,...boxOverflowOf(b,null)}));
           const displayEnvelopes=[];
           for(const target of envelopeTargets||[]){
             const number=Number(target.displayOrdinal||target.questionId);
@@ -146,12 +188,9 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
             displayEnvelopes.push({status:errors.length||profiles.some(p=>p.status!=='PASS')?'FAIL':'PASS',id:target.id,...(Number.isFinite(target.solutionImageScale)?{solutionImageScale:target.solutionImageScale}:{}),questionId:target.questionId,displayOrdinal:number,sourceRef:box?.dataset.sourceRef||null,sourceAuthorityStatus:target.sourceAuthorityStatus||'MEASUREMENT_ONLY',qBoxRect,solutionMetaRect,solutionMetaContentWidth,existingSolutionImage:meta?.querySelector('.sol-image-wrap img')?(()=>{const img=meta.querySelector('.sol-image-wrap img');return{src:img.src,rect:rect(img.getBoundingClientRect()),computedStyle:styleRecord(img)};})():null,intrinsicSvg:target.intrinsicSvg,profiles,errors});
           }
           const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2;
-          return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,displayEnvelopes,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,mathJaxSource:window.__AP_MATHJAX_SOURCE__||null,mathJaxCdnFallback:window.__AP_MATHJAX_SOURCE__==='cdn-fallback',qrRendererAvailable:typeof window.QRious==='function',allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length};
+          return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,displayEnvelopes,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,mathJaxSource:window.__AP_MATHJAX_SOURCE__||null,mathJaxCdnFallback:window.__AP_MATHJAX_SOURCE__==='cdn-fallback',qrRendererAvailable:typeof window.QRious==='function',allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length,failedImages,targetBoxOverflows,viewportWidth:innerWidth};
         },{mode:item.mode,assets:item.assets,envelopeTargets:item.envelopeTargets||[]});
-        if(state.questionBlocks!==item.questionCount)errors.push('ARCHIVE_QCOUNT_FAIL');
-        if(!state.pageCount||!state.mathJaxReady||state.errorText)errors.push('ARCHIVE_RENDER_NOT_READY');
-        if(state.horizontalOverflow)errors.push('ARCHIVE_HORIZONTAL_OVERFLOW');
-        if(!state.allImagesLoaded)errors.push('ARCHIVE_IMAGE_LOAD_FAIL');
+        {const verdict=judgeArchivePage(state,item);errors.push(...verdict.errors);pageNotes.push(...verdict.pageNotes);}
         if(item.requireQrRenderer&&!state.qrRendererAvailable)errors.push('ARCHIVE_QR_RENDERER_NOT_LOADED');
         if(item.requireLocalResources&&(externalRequests.length||state.mathJaxCdnFallback))errors.push('ARCHIVE_EXTERNAL_RUNTIME_REQUEST_DETECTED');
         for(const envelope of state.displayEnvelopes||[])if(envelope.status!=='PASS')errors.push(...(envelope.errors||['DISPLAY_ENVELOPE_PROBE_FAIL']));
@@ -159,8 +198,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           if(!target.loaded){errors.push('TARGET_SVG_LOAD_FAIL:'+target.id);continue;}
           const asset=item.assets.find(v=>v.id===target.id);
           const inspector=await browser.newPage({viewport:{width:Math.max(1,Math.ceil(target.rect.width)),height:Math.max(1,Math.ceil(target.rect.height))}});
-          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});capture.svgSha256=archiveAssetSha256(asset.sha256);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
-          await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
+          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});capture.svgSha256=archiveAssetSha256(asset.sha256);const result=analyzeRenderedLayout(capture);const scoredAccepted=result.status!=='PASS'&&acceptArchiveViolations(result.violations);layouts.push({id:target.id,...result,...(scoredAccepted?{scoredAccepted:true}:{}),svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
+          await inspector.close();if(result.status!=='PASS'&&!scoredAccepted)errors.push(...result.errors.map(v=>target.id+':'+v));
           const expectedImagePath=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
           const imageNodes=page.locator('#print-area .sol-image-wrap img');
           const matchingIndex=await imageNodes.evaluateAll((nodes,expected)=>nodes.findIndex(node=>{try{return decodeURIComponent(new URL(node.src).pathname)===expected;}catch{return false;}}),expectedImagePath);
@@ -173,13 +212,14 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
         }
         // Element screenshots first, the full-page one last (2026-11-23): a fullPage screenshot resizes the viewport, the page answers the resize and the font loading it causes with a full rebuild of #print-area (FONT_INVALIDATION), and an element screenshot taken then loses its element (Element is not attached to the DOM).
         if(item.mode==='sol')for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
-        await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
+        // fullPageScreenshot:false (the exam batch's shared measurement only) leaves out this one evidence picture of the whole exam page; the pictures of each figure's question box are still taken above.
+        if(fullPageScreenshot)await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
       }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
       await Promise.allSettled(responsePromises);
       checkCancelled();
         if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!asset||!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===archiveAssetSha256(asset.sha256)))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
-      const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
+      const row={id:prefix,status:errors.length?'FAIL':'PASS',...(pageNotes.length?{pageNotes}:{}),mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),observedLabelCollisionCount:layouts.reduce((s,v)=>s+(v.observedLabelCollisionCount??v.labelCollisionCount),0),observedCriticalCollisionCount:layouts.reduce((s,v)=>s+(v.observedCriticalCollisionCount??v.criticalCollisionCount),0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,observedLabelCollisionCount:null,observedCriticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();checkCancelled();
     }
@@ -213,7 +253,7 @@ export function isArchiveExamSourcePath(relative,root=repoRoot){
   }catch{return false;}
 }
 
-export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['small','medium','large','full'],sourceAuthorityStatus='MEASUREMENT_ONLY',signal,onProgress,blockExternalRequests=false,solutionImageScale}){
+export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['full'],sourceAuthorityStatus='MEASUREMENT_ONLY',signal,onProgress,blockExternalRequests=false,solutionImageScale}){
   if(solutionImageScale!==undefined&&!(Number.isFinite(solutionImageScale)&&solutionImageScale>=30&&solutionImageScale<=100))throw Error('DISPLAY_ENVELOPE_SOLUTION_IMAGE_SCALE_INVALID');
   run=assertOutput(run);
   if(typeof blockExternalRequests!=='boolean')throw Error('ARCHIVE_NETWORK_POLICY_INVALID');
@@ -240,8 +280,107 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
   const rowEvidence=JSON.parse(fs.readFileSync(rowPath,'utf8'));
   const rawObservation=rowEvidence.state?.displayEnvelopes?.find(v=>v.id===targetId);
   const observation=rawObservation?{...rawObservation,...(questionUid?{questionUid}:{}),synthetic:false,runtime:rowEvidence.runtime,browserVersion:rowEvidence.browserVersion,sourceRef,sourceAuthorityStatus}:null;
-  if(archive.status!=='PASS'||rowEvidence.status!=='PASS'||observation?.status!=='PASS')throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors}));
+  if(archive.status!=='PASS'||rowEvidence.status!=='PASS'||observation?.status!=='PASS'){
+    // scope: EXAM_PAGE when the only thing wrong is that the exam page itself did not render (another question's content stopped it: nothing of this figure can be measured, retry or leave to the exam), TARGET otherwise.
+    const failures=rowEvidence.errors||[],scope=failures.length&&failures.every(item=>String(item).includes('ARCHIVE_PAGE_RENDER_ERROR:'))?'EXAM_PAGE':'TARGET';
+    throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({scope,archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors,...(rowEvidence.pageNotes?.length?{pageNotes:rowEvidence.pageNotes}:{})}));
+  }
   return {status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json'))),archive,rowEvidence,observation,captureFolder};
+}
+// The envelope matrix of one measurement: the unmodified source (aliased when it only has window.examData), one row, one or more envelope targets. `run` is where the matrix and the
+// candidate copy are written (the candidate with flag wx: a second use of the same run directory fails).
+function writeEnvelopeMatrix({run,sourceRef,bank,sourceBytes,rowId,envelopeTargets,blockExternalRequests}){
+  const candidateName=path.basename(sourceRef.path),candidatePath=assertOutput(path.join(run,candidateName));
+  if(fs.existsSync(candidatePath))throw Error('IMMUTABLE_PREFLIGHT_CANDIDATE_EXISTS');
+  const aliasSuffix=bankAliasSuffix(sourceBytes.toString('utf8'));
+  fs.writeFileSync(candidatePath,aliasSuffix?Buffer.concat([sourceBytes,Buffer.from(aliasSuffix,'utf8')]):sourceBytes,{flag:'wx'});
+  const rawSha=ref=>ref.sha256.slice(7),candidateRef=fileRef(repoRoot,path.relative(repoRoot,candidatePath).replaceAll('\\','/'));
+  const sourceInfo={id:rowId,sourcePath:sourceRef.path,sourceSha256:rawSha(sourceRef),candidatePath:path.relative(repoRoot,candidatePath).replaceAll('\\','/'),candidateSha256:rawSha(candidateRef),questionCount:bank.length,assets:[]};
+  const row={...sourceInfo,mode:'sol',viewport:'desktop-envelope',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,'')),requireLocalResources:blockExternalRequests,requireQrRenderer:blockExternalRequests,envelopeTargets};
+  const matrix={schemaVersion:'GEOMETRY_ARCHIVE_DISPLAY_ENVELOPE_MATRIX_v1',synthetic:false,measurementOnly:true,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),sources:[sourceInfo],rows:[row]};
+  fs.writeFileSync(path.join(run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n');
+  return {candidateRef,candidateSha256:sourceInfo.candidateSha256,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
+}
+
+/**
+ * The display measurement of several figures of ONE exam from one open Archive page (2026-11-23).
+ * requests: [{run,sourceRef,sourceOrdinal,targetId,questionUid,intrinsicSvg,sizeClasses,sourceAuthorityStatus,solutionImageScale}]; blockExternalRequests applies to all of them.
+ * Returns one {ok:true,value} per request, where value is what measureArchiveDisplayEnvelope returns for that figure alone (its own run directory holds the matrix, the candidate copy,
+ * the row record and the context screenshot the single call would have written), or {ok:false} when the batch cannot vouch for that figure: the caller then runs the single call.
+ * A figure is answered only when its own envelope passed and nothing else on the page failed; a failure that belongs to no figure sends every figure to the single call.
+ */
+export async function measureArchiveDisplayEnvelopeBatch({requests,blockExternalRequests=false}){
+  const refuse=()=>requests.map(()=>({ok:false}));
+  const answers=refuse(),dirty=[];
+  if(typeof blockExternalRequests!=='boolean'||!requests.length)return answers;
+  let batchRoot=null;
+  try{
+    const first=requests[0].sourceRef;
+    const valid=[];
+    requests.forEach((request,index)=>{
+      const {run,sourceRef,sourceOrdinal,targetId,intrinsicSvg,sizeClasses=['full'],solutionImageScale}=request;
+      try{
+        if(solutionImageScale!==undefined&&!(Number.isFinite(solutionImageScale)&&solutionImageScale>=30&&solutionImageScale<=100))return;
+        assertOutput(run);
+        if(sourceRef?.path!==first.path||sourceRef?.sha256!==first.sha256)return;
+        if(!isArchiveExamSourcePath(sourceRef?.path)||!(Number.isSafeInteger(sourceOrdinal)&&sourceOrdinal>=1||typeof sourceOrdinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(sourceOrdinal))||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)return;
+        if(sizeClasses.some(v=>!['small','medium','large','full'].includes(v))||new Set(sizeClasses).size!==sizeClasses.length)return;
+        valid.push(index);
+      }catch{/* the single call raises the exact error */}
+    });
+    if(valid.length<2)return answers;
+    const sourceBytes=readBoundFile(repoRoot,first),bank=loadBank(sourceBytes.toString('utf8'));
+    const examUid=path.basename(first.path,'.js'),batchId='bm-'+crypto.randomUUID().slice(0,8);
+    batchRoot=path.join(repoRoot,'.tmp/archive',batchId);
+    const batchRun=assertOutput(path.join(batchRoot,examUid,'pre'));fs.mkdirSync(batchRun,{recursive:true});
+    const targets=[],used=new Set();
+    for(const index of valid){
+      const {sourceOrdinal,targetId,intrinsicSvg,sizeClasses=['full'],sourceAuthorityStatus='MEASUREMENT_ONLY',solutionImageScale}=requests[index];
+      const at=bank.findIndex(q=>q.id===sourceOrdinal);
+      if(at<0||used.has(targetId))continue;// not in the bank, or the same figure twice: the single call decides
+      used.add(targetId);
+      targets.push({index,envelope:{id:targetId,questionId:sourceOrdinal,displayOrdinal:at+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus,...(solutionImageScale!==undefined?{solutionImageScale}:{})}});
+    }
+    if(targets.length<2)return answers;
+    writeEnvelopeMatrix({run:batchRun,sourceRef:first,bank,sourceBytes,rowId:batchId,envelopeTargets:targets.map(t=>t.envelope),blockExternalRequests});
+    const archive=await recordArchiveEvidence({run:batchRun,attempt:'envelope-preflight',blockExternalRequests,fullPageScreenshot:false});
+    const folder=path.join(batchRun,'archive-render','envelope-preflight'),prefix=batchId+'-sol-desktop-envelope';
+    const rowEvidence=JSON.parse(fs.readFileSync(path.join(folder,prefix+'.json'),'utf8'));
+    const envelopes=rowEvidence.state?.displayEnvelopes||[];
+    // What is left of the row's errors once the envelope failures (each belongs to one figure) are taken out belongs to the page as a whole: it is every figure's failure.
+    const rest=[...(rowEvidence.errors||[])];
+    for(const envelope of envelopes)if(envelope.status!=='PASS')for(const error of envelope.errors?.length?envelope.errors:['DISPLAY_ENVELOPE_PROBE_FAIL']){const at=rest.indexOf(error);if(at>=0)rest.splice(at,1);}
+    if(rest.length||!rowEvidence.state?.pageCount)return answers;
+    for(const {index,envelope:asked} of targets){
+      const {run,sourceRef,targetId,questionUid=null,sourceAuthorityStatus='MEASUREMENT_ONLY'}=requests[index];
+      const raw=envelopes.find(v=>v.id===targetId);
+      if(!raw||raw.status!=='PASS')continue;
+      try{
+        // The figure's own run directory, written as the single call writes it.
+        dirty.push(run);
+        const written=writeEnvelopeMatrix({run:assertOutput(run),sourceRef,bank,sourceBytes,rowId:targetId,envelopeTargets:[asked],blockExternalRequests});
+        const own=assertOutput(path.join(run,'archive-render','envelope-preflight'));fs.mkdirSync(own,{recursive:true});
+        const ownPrefix=targetId+'-sol-desktop-envelope';
+        const notes=(rowEvidence.pageNotes||[]).filter(note=>note.scope!=='TARGET_BOX'||note.targetId===targetId);
+        const {pageNotes:_all,...rowRest}=rowEvidence;
+        const derived={...rowRest,id:ownPrefix,status:'PASS',...(notes.length?{pageNotes:notes}:{}),candidateSha256:written.candidateSha256,state:{...rowEvidence.state,displayEnvelopes:[raw]},errors:[]};
+        fs.writeFileSync(path.join(own,ownPrefix+'.json'),JSON.stringify(derived,null,2)+'\n');
+        const shot=path.join(folder,prefix+'-'+targetId+'-envelope-context.png');
+        if(fs.existsSync(shot))fs.copyFileSync(shot,path.join(own,ownPrefix+'-'+targetId+'-envelope-context.png'));
+        const observation={...raw,...(questionUid?{questionUid}:{}),synthetic:false,runtime:derived.runtime,browserVersion:derived.browserVersion,sourceRef,sourceAuthorityStatus};
+        answers[index]={ok:true,value:{status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef:written.candidateRef,matrixSha256:written.matrixSha256,archive:{status:'PASS',runtime:archive.runtime,synthetic:false,scope:archive.scope,rows:[{id:ownPrefix,status:'PASS',capture:derived.capture,errors:[]}],matrixSha256:written.matrixSha256},rowEvidence:derived,observation,captureFolder:own}};
+      }catch{
+        // leave the figure's run directory as the single call finds it: empty
+        try{fs.rmSync(run,{recursive:true,force:true});fs.mkdirSync(run,{recursive:true});}catch{/* the single call reports it */}
+      }
+    }
+    return answers;
+  }catch{
+    for(const run of dirty)try{fs.rmSync(run,{recursive:true,force:true});fs.mkdirSync(run,{recursive:true});}catch{/* the single call reports it */}
+    return refuse();
+  }finally{
+    if(batchRoot)try{fs.rmSync(batchRoot,{recursive:true,force:true});}catch{/* a later prune removes it */}
+  }
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=k=>process.argv[process.argv.indexOf(k)+1];const result=await recordArchiveEvidence({run:arg('--run'),attempt:process.argv.includes('--attempt')?arg('--attempt'):'attempt-01'});console.log(JSON.stringify(result));if(result.status!=='PASS')process.exitCode=1;

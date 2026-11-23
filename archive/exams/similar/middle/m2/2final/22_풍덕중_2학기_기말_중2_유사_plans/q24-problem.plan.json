@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "L",
+    "S"
+  ],
+  "hiddenPointNames": [
+    "H",
+    "L",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "HL",
+      "refs": [
+        "H",
+        "L"
+      ]
+    },
+    {
+      "id": "LS",
+      "refs": [
+        "L",
+        "S"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dX",
+        "from": "H",
+        "to": "L",
+        "label": "x",
+        "unit": "km",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dY",
+        "from": "L",
+        "to": "S",
+        "label": "y",
+        "unit": "km",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dT",
+        "from": "H",
+        "to": "S",
+        "label": "3.4",
+        "unit": "km",
+        "side": "BELOW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tH",
+        "at": "H",
+        "text": "집",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tL",
+        "at": "L",
+        "text": "도서관",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tS",
+        "at": "S",
+        "text": "학교",
+        "anchor": "N",
+        "labelWeight": "MATH"
+      }
+    ]
+  },
+  "caption": "집에서 도서관을 거쳐 학교까지 가는 길을 나타낸 그림이다. 집에서 도서관까지의 거리는 x km, 도서관에서 학교까지의 거리는 y km이고, 집에서 학교까지의 전체 거리는 3.4 km이다.",
+  "accessibilityDescription": "한 직선 위에 집, 도서관, 학교가 차례로 있고 집에서 도서관까지는 x km, 도서관에서 학교까지는 y km, 전체는 3.4 km로 표시되어 있다.",
+  "newVisualInformation": [
+    "집, 도서관, 학교의 순서와 구간 거리 x, y, 전체 거리 3.4 km"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 도서관을 거쳐 학교까지의 총 거리는 3.4 km이다. 집에서 도서관까지의 거리를 x km, 도서관에서 학교까지의 거리를 y km라고 한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

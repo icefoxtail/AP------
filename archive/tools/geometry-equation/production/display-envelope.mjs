@@ -8,16 +8,17 @@ const same=(a,b)=>canonicalJson(a)===canonicalJson(b);
 const validRef=ref=>ref&&typeof ref.path==='string'&&Number.isSafeInteger(ref.bytes)&&ref.bytes>=0&&HASH_PATTERN.test(ref.sha256);
 const pngSignature=Buffer.from([137,80,78,71,13,10,26,10]);
 
-function measuredProfiles(observation,intrinsicSvg,candidateLabelInventory){
+// 2026-11-23: the page no longer reads a size class (figure-size.css), so only the requested class is measured, planned and qualified: no four-class inventory, no escalation to a larger class.
+function measuredProfiles(observation,intrinsicSvg,candidateLabelInventory,requestedSizeClass){
   const byClass=new Map(observation.profiles.map(profile=>[profile.sizeClass,profile]));
-  if(DISPLAY_SIZE_CLASSES.some(sizeClass=>!byClass.has(sizeClass)))throw Error('DISPLAY_ENVELOPE_PROFILE_INVENTORY_INCOMPLETE');
+  if(!byClass.has(requestedSizeClass))throw Error('DISPLAY_ENVELOPE_PROFILE_MEASUREMENT_INVALID:'+requestedSizeClass);
   const labelIds=new Set();
   for(const label of candidateLabelInventory){
     if(typeof label?.id!=='string'||!label.id||!Number.isFinite(label.fontPx)||label.fontPx<11||labelIds.has(label.id))throw Error('DISPLAY_ENVELOPE_LABEL_INVENTORY_INVALID');
     labelIds.add(label.id);
   }
   if(!candidateLabelInventory.length)throw Error('DISPLAY_ENVELOPE_LABEL_INVENTORY_REQUIRED');
-  return DISPLAY_SIZE_CLASSES.map(sizeClass=>{
+  return [requestedSizeClass].map(sizeClass=>{
     const profile=byClass.get(sizeClass);
     if(profile.status!=='PASS'||!finiteRect(profile.imageRect)||profile.naturalWidth!==intrinsicSvg.width||profile.naturalHeight!==intrinsicSvg.height||!profile.computedStyle||!['maxWidth','maxHeight','objectFit','transform'].every(key=>typeof profile.computedStyle[key]==='string'))throw Error('DISPLAY_ENVELOPE_PROFILE_MEASUREMENT_INVALID:'+sizeClass);
     const scaleX=profile.imageRect.width/intrinsicSvg.width,scaleY=profile.imageRect.height/intrinsicSvg.height,displayScale=Math.min(scaleX,scaleY);
@@ -212,18 +213,17 @@ export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium
   if(!root)throw Error('DISPLAY_ENVELOPE_ROOT_REQUIRED');
   const preflight=verifyActualArchivePreflight(root,preflightEvidence,{questionUid,sourceRef,archiveEngineSha256});
   if(!same(preflight.observation.profiles,observation.profiles)||!same(preflight.observation.qBoxRect,observation.qBoxRect)||!same(preflight.observation.solutionMetaRect,observation.solutionMetaRect)||preflight.observation.solutionMetaContentWidth!==observation.solutionMetaContentWidth)throw Error('ACTUAL_ARCHIVE_PREFLIGHT_OBSERVATION_NOT_BOUND');
-  const profiles=measuredProfiles(observation,intrinsicSvg,candidateLabelInventory),start=DISPLAY_SIZE_CLASSES.indexOf(requestedSizeClass);
+  const profiles=measuredProfiles(observation,intrinsicSvg,candidateLabelInventory,requestedSizeClass);
   if(typographyPolicy){
     const requested=profiles.find(profile=>profile.sizeClass===requestedSizeClass);
     if(typographyPolicy.schemaVersion!=='REQUESTED_PROFILE_TYPOGRAPHY_v1'||typographyPolicy.requestedSizeClass!==requestedSizeClass||!near(typographyPolicy.displayScale,requested.displayScale,1e-9)||typographyPolicy.fontFloorCssPx!==fontFloorCssPx||candidateLabelInventory.some(label=>label.fontPx!==typographyPolicy.baseFontPx)||(typographyPolicy.baseFontPx*requested.displayScale<typographyPolicy.cssTargetFontPx-1e-7&&!(typographyPolicy.displayTextBelow11px===true&&typographyPolicy.baseFontPx===typographyPolicy.maximumBaseFontPx))||typographyPolicy.cssTargetFontPx<fontFloorCssPx||typographyPolicy.baseFontPx<typographyPolicy.minimumBaseFontPx||typographyPolicy.baseFontPx>typographyPolicy.maximumBaseFontPx)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID');
   }
   // 2026-11-23 (owner): the displayed font floor no longer moves a figure to a larger size class (students zoom in); the requested class is the plan. A displayed font below the floor is only recorded.
-  const provisional=profiles[start];
+  const provisional=profiles[0];
   const displayTextBelow11px=provisional.provisionalMinimumCssFontPx<fontFloorCssPx-1e-7;
   return {
     schemaVersion:'DISPLAY_ENVELOPE_v1',status:'PLANNED',questionUid,occurrence:0,
     requestedSizeClass,plannedSizeClass:provisional.sizeClass,
-    policyChange:null,
     intrinsicSvg:{...intrinsicSvg},candidateLabelInventory:candidateLabelInventory.map(v=>({id:v.id,fontPx:v.fontPx})),fontFloorCssPx,typographyPolicy,
     provisionalMinimumCssFontPx:provisional.provisionalMinimumCssFontPx,
     ...(displayTextBelow11px?{displayTextBelow11px:true}:{}),
@@ -249,17 +249,13 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
   if(bytesSha(svgBytes)!==candidateSvgRef.sha256||!candidateIntrinsic)throw Error('DISPLAY_ENVELOPE_CANDIDATE_SVG_INVALID');
   if(candidateIntrinsic.width!==plannedEnvelope.intrinsicSvg.width||candidateIntrinsic.height!==plannedEnvelope.intrinsicSvg.height)throw Error('DISPLAY_ENVELOPE_CANDIDATE_INTRINSIC_MISMATCH');
   const byClass=new Map(profileAudits.map(audit=>[audit.sizeClass,audit]));
-  if(byClass.size!==profileAudits.length||DISPLAY_SIZE_CLASSES.some(sizeClass=>!byClass.has(sizeClass)))throw Error('DISPLAY_ENVELOPE_FINAL_PROFILE_AUDITS_INCOMPLETE');
-  const measurementPaths=new Set(),screenshotPaths=new Set();
+  if(byClass.size!==profileAudits.length||plannedEnvelope.profiles.some(profile=>!byClass.has(profile.sizeClass)))throw Error('DISPLAY_ENVELOPE_FINAL_PROFILE_AUDITS_INCOMPLETE');
   const expectedIds=plannedEnvelope.candidateLabelInventory.map(v=>v.id).sort();
   const profiles=plannedEnvelope.profiles.map(plannedProfile=>{
     const audit=byClass.get(plannedProfile.sizeClass),errors=[];
     let evidence=null;
     try{
       evidence=profileEvidence(root,audit.measurementRef,plannedProfile.sizeClass);
-      if(measurementPaths.has(audit.measurementRef.path))errors.push('PROFILE_MEASUREMENT_REF_REUSED');
-      if(screenshotPaths.has(evidence.screenshotRef.path))errors.push('PROFILE_SCREENSHOT_REF_REUSED');
-      measurementPaths.add(audit.measurementRef.path);screenshotPaths.add(evidence.screenshotRef.path);
     }catch(error){errors.push(error.message||'PROFILE_RAW_EVIDENCE_INVALID');}
     const measurement=evidence?.measurement;
     if(measurement)errors.push(...profileAuditErrors({audit,measurement,screenshotRef:evidence.screenshotRef,plannedProfile,plannedEnvelope,candidateSvgRef,candidateIntrinsic,identity}));
@@ -293,11 +289,9 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
       finalAudit:{runtime:measurement?.runtime||null,synthetic:measurement?.synthetic??null,browserVersion:measurement?.browserVersion||null,layoutStatus:measurement?.layoutStatus||'NOT_RUN',minimumCssFontPx,...(displayTextBelow11px?{displayTextBelow11px:true,belowFloorLabelCount:fonts.filter(value=>value<plannedEnvelope.fontFloorCssPx-1e-7).length}:{}),minimumCssFontLabelId:labels?.find(v=>v?.finalViewportCssFontPx===minimumCssFontPx)?.id||null,labelMeasurements:labels||[],graphRequired:!!measurement?.graphRequired,graphStatus:measurement?.graphStatus||'NOT_APPLICABLE',graphEvidenceRef:measurement?.graphEvidenceRef||null,topologyRequired:!!measurement?.topologyRequired,topologyStatus:measurement?.topologyStatus||'NOT_APPLICABLE',topologyEvidenceRef:measurement?.topologyEvidenceRef||null,strokeStatus:measurement?.strokeStatus||'NOT_RUN',strokeMeasurements:measurement?.strokeMeasurements||[],measurementRef:audit.measurementRef||null,screenshotRef:evidence?.screenshotRef||null,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plannedEnvelope.inputIdentitySha256,errors:auditErrors}
     };
   });
-  const start=DISPLAY_SIZE_CLASSES.indexOf(plannedEnvelope.requestedSizeClass),selected=profiles.slice(start).find(profile=>profile.supportStatus==='PASS');
-  const policyChange=selected&&selected.sizeClass!==plannedEnvelope.requestedSizeClass?{from:plannedEnvelope.requestedSizeClass,to:selected.sizeClass,reason:'REQUESTED_PROFILE_FAILED_FINAL_CANDIDATE_AUDIT'}:null;
+  const selected=profiles.find(profile=>profile.supportStatus==='PASS');
   return {
     ...plannedEnvelope,status:selected?'PASS':'UNSUPPORTED_DISPLAY_ENVELOPE',sizeClass:selected?.sizeClass||null,
-    policyChange:policyChange||plannedEnvelope.policyChange,
     expectedMinimumScale:selected?.displayScale??null,expectedMinimumCssFontPx:selected?.finalAudit.minimumCssFontPx??null,
     ...(selected?.finalAudit.displayTextBelow11px?{displayTextBelow11px:true}:{}),
     candidateSvgRef,selectedProfile:selected||null,profiles,
@@ -343,7 +337,6 @@ export function compareActualDisplayEnvelope(envelope,{root,actualRef}={}, {tole
       }catch{errors.push('ACTUAL_DISPLAY_ARCHIVE_ROW_REF_INVALID');}
     }
   }
-  if(actual?.sizeClass!==envelope.sizeClass)errors.push('ACTUAL_DISPLAY_SIZE_CLASS_MISMATCH');
   if(!finiteRect(actual?.imageRect)||!finiteRect(actual?.solutionMetaRect)||!finiteRect(actual?.qBoxRect))errors.push('ACTUAL_DISPLAY_GEOMETRY_MISSING');
   if(finiteRect(actual?.imageRect)&&!near(actual.imageRect.width,envelope.selectedProfile?.imageRect.width,toleranceCssPx))errors.push('ACTUAL_DISPLAY_WIDTH_DIFFERS_FROM_PREFLIGHT');
   if(finiteRect(actual?.imageRect)&&!near(actual.imageRect.height,envelope.selectedProfile?.imageRect.height,toleranceCssPx))errors.push('ACTUAL_DISPLAY_HEIGHT_DIFFERS_FROM_PREFLIGHT');

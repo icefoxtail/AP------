@@ -22,7 +22,10 @@
         for (const key of params.keys()) if (!LIGHT_FIND_KEYS.has(key)) return false;
         return true;
       }
-      for (const [key, value] of params) if (!(key === "perf" || key === "warm" || (key === "view" && value === "home"))) return false;
+      // 조각 경로(2단계 2-4)가 기본이다: 어느 주소든 전체 받기를 로드 때 시작하지 않고 화면 코드가 필요한 만큼(고른 학년의 조각 등)만 받는다.
+      // 주소에 ?shards=0 이 있으면 예전 규칙 그대로(평범한 홈·학교별 기출만 늦게, 나머지는 바로 전체 받기).
+      if (!/[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(location.search)) return true;
+      for (const [key, value] of params) if (!(key === "perf" || key === "warm" || key === "shards" || (key === "view" && value === "home"))) return false;
       return true;
     } catch { return false; }
   })();

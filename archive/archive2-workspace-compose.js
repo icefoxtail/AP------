@@ -1553,8 +1553,10 @@
         line += `<p class="cz-feasible-note" data-cz-feasible-short>모자라도 막지 않고 있는 만큼만 넣습니다. ${shortages.slice(0, 3).map((item) =>
           `${esc(composeStepLabel(item.row))}: 요청 ${item.row.count} · 가능 ${item.available}`).join(" / ")}${shortages.length > 3 ? ` 외 ${shortages.length - 3}곳` : ""}</p>`;
     }
-    const disabled = !rows.length || state.sealed || state.busy || !countValid || !possible || overLimit;
+    // while shards of other exams are being fetched for this screen, the button says so instead of looking ready
+    const disabled = !rows.length || state.sealed || state.busy || state.shardBusy || !countValid || !possible || overLimit;
     V.composeLiveInfo = { requested, possible, disabled, hasRows: rows.length > 0, overLimit };
+    if (state.shardBusy) line += `<p class="cz-feasible-note" data-cz-shard-busy role="status">문항 목록을 불러오는 중입니다.</p>`;
     return `<div class="cz-live" data-cz-live>${line}${button(
       "generate",
       regenerate ? "같은 조건으로 다시 뽑기" : "문제지 만들기",

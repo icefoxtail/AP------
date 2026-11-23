@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -5,
+        "marker": "NONE"
+      },
+      {
+        "id": "P1",
+        "x": -2,
+        "y": 7,
+        "marker": "NONE"
+      },
+      {
+        "id": "P2",
+        "x": 2,
+        "y": 7,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-5"
+      ]
+    }
+  },
+  "caption": "이차함수 y=3x^2-5의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차함수 y=3x^2의 그래프를 y축 방향으로 평행이동하여 꼭짓점이 (0,-5)인 포물선"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선의 꼭짓점 y좌표가 -5이다."
+    }
+  ]
+}

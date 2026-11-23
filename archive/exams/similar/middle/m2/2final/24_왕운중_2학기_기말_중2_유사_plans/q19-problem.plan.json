@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유하고 있다. 점 P는 꼭짓점 B에서, 점 Q는 꼭짓점 C에서 출발하며, 각 도형의 변 위에 시계 반대 방향 화살표가 있다.",
+  "accessibilityDescription": "한 변의 길이가 1인 정삼각형 ABC와 정사각형 BDEC가 변 BC를 공유한 모습이다. 정삼각형의 변과 정사각형의 변에 시계 반대 방향을 나타내는 화살표가 있고, 점 P는 B에서, 점 Q는 C에서 출발한다고 표시되어 있다.",
+  "newVisualInformation": [
+    "정삼각형 ABC",
+    "정사각형 BDEC",
+    "공유하는 변 BC",
+    "P는 B에서, Q는 C에서 출발",
+    "각 도형의 시계 반대 방향 화살표",
+    "한 변의 길이 1"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eAB",
+        "ownerSegment": "sAB",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eBD",
+        "ownerSegment": "sBD",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tP",
+        "at": "B",
+        "text": "P 출발",
+        "anchor": "SW",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "tQ",
+        "at": "C",
+        "text": "Q 출발",
+        "anchor": "SE",
+        "labelWeight": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $1$인 정삼각형 $ABC$와 한 변의 길이가 $1$인 정사각형 $BDEC$가 변 $BC$를 공유하고 있다. 서로 다른 $2$개의 주사위를 동시에 던져 나온 두 눈의 수의 합만큼 두 점 $P, Q$가 각각 움직인다. 점 $P$는 꼭짓점 $B$에서 출발하여 시계 반대 방향($B     o C     o A     o B$)으로 정삼각형의 변 위를 움직이고, 점 $Q$는 꼭짓점 $C$에서 출발하여 시계 반대 방향($C     o B     o D     o E     o C$)으로 정사각형의 변 위를 움직인다. 두 점 $P, Q$가 같은 꼭짓점에서 만나게 될 확률은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

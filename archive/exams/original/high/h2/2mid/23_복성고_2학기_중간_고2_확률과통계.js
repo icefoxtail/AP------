@@ -432,7 +432,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "850g의 표준점수는 (850−750)/100=1이다. 최상품은 무게가 850g 이상이므로 표준정규분포 곡선에서 z=1의 오른쪽 꼬리이다. 표에서 P(0≤Z≤1)=0.3413이므로 꼬리의 넓이는 0.5−0.3413=0.1587이고 백분율은 15.87%이다. 정수로 근사하면 a=16이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -468,7 +472,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "64와 56이 평균에서 같은 거리에 있으므로 m=60이다. E(X²)=σ²+m²=3616에서 σ²=16, σ=4이다. 68=60+2σ이므로 z=2이다. P(X≤68)은 왼쪽 절반 0.5와 0부터 2까지 0.4772의 합 0.9772이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -636,7 +644,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "주어진 합은 이항분포 B(400, 9/10)의 구간확률 P(351≤X≤369)이다. 평균 360, 분산 36, 표준편차 6이므로 N(360, 6²)으로 근사한다. 351과 369의 표준점수는 −1.5와 1.5이다. 표에서 P(0≤Z≤1.5)=0.4332이므로 가운데 부분은 2×0.4332=0.8664이다. 따라서 답은 0.8664이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

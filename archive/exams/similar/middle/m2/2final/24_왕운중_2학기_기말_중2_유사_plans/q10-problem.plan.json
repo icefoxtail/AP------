@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC의 꼭짓점 A에서 빗변 BC에 내린 수선의 발 D를 나타낸 그림이다. AD의 길이는 6, CD의 길이는 4이고 BD의 길이는 x로 표시되어 있다.",
+  "accessibilityDescription": "각 A가 직각인 삼각형 ABC에서 빗변 BC 위에 수선의 발 D가 있고, AD와 BC가 수직으로 표시되어 있다. AD 옆에 6, CD 옆에 4, BD 옆에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC",
+    "빗변 BC 위의 수선의 발 D",
+    "AD=6",
+    "CD=4",
+    "BD=x"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "a",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "d",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "DC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle BAC = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $\\overline{BC}$에 내린 수선의 발을 $D$라 하자. $\\overline{AD}=6 m\\,cm$, $\\overline{CD}=4 m\\,cm$일 때, 선분 $\\overline{BD}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

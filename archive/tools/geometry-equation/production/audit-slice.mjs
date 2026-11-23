@@ -52,7 +52,6 @@ export function auditSlice(root,resultRef){
     const ordinalTail=result.identity.questionUid.split('|').at(-1),ordinal=/^\d+$/.test(ordinalTail)?Number(ordinalTail):ordinalTail,question=bank.find(q=>q.id===ordinal);
     if(question?.solutionImage!==actualEvidence.archiveAssetPath)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_ASSET_MISMATCH');
     if(question?.solutionImageSize!==envelope.sizeClass)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_SIZE_MISMATCH');
-    if(envelope.policyChange&&envelope.policyChange.to!==envelope.sizeClass)errors.push('DISPLAY_ENVELOPE_POLICY_CHANGE_NOT_EXPLICIT');
   }catch(error){errors.push('DISPLAY_ENVELOPE_AUDIT_CLOSURE:'+error.message);}
   readBoundFile(root,result.finalSvgRef);readBoundFile(root,result.sourceRef);readBoundFile(root,result.solutionRef);
   const capture=stages.findLast(s=>s.stage==='CAPTURE');

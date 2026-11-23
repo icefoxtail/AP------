@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC에서 변 AC의 중점 E와 중선 BE 위의 무게중심 G를 나타낸 그림이다. 선분 BG의 길이는 8, 선분 GE의 길이는 x로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC가 있고, 변 AC의 중점 E와 꼭짓점 B를 잇는 중선 위에 무게중심 G가 있다. 선분 BG 옆에 8, 선분 GE 옆에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC",
+    "변 AC의 중점 E",
+    "중선 BE 위의 무게중심 G",
+    "BG=8",
+    "GE=x"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "E",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "bg",
+        "ownerSegment": "BG",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ge",
+        "ownerSegment": "GE",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 변 $AC$의 중점을 $E$라 하고, 중선 $BE$ 위의 점 $G$가 $\\triangle ABC$의 무게중심이다. $\\overline{BG}=8 m\\,cm$일 때, 선분 $\\overline{GE}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

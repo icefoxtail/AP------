@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f69576685b10-588c1219",
+  "requestSha256": "e47648a4e85b8af71a2cca460ab92f53e605bb0fbb1490c74d213c52f8903b74",
+  "examUid": "23_강남여고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/23_강남여고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "e644d625ccebaf904f0e414385deaf629cf333dd",
+  "sourceRawSha256": "507eaa9b383f21aa9690e1668ce13e2e606788d0f08083aac2f28e4e0810b6fa",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f69576685b10-588c1219.type-ledger.json",
+        "sha256": "9b647b38ee34e5c19de41def4b79c45fa414a0b944e23e922f57849152a60f2f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_13b45d1ece06283102916e9d404b43931c977799c2a3996466b8c6df9b243843",
+      "sourceArchiveFile": "original/high/h2/2mid/23_강남여고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f69576685b10-588c1219",
+        "judge": "dots",
+        "rationale": "몫과 일차 나머지를 갖는 나눗셈 항등식을 쓰고 유한 극한의 소거 조건으로 나머지를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request",
+          "rowCourse": "수학II",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "0ef7f3e28770868aa8f100c9eb02ab7246f8f24dd3e8d10372aefdfaed4d596f",
+        "judgedContentFingerprint": "d8531243bac6e1af18e9ddf36006dbac41c5dbb9bc3f2c32238f8c6caeb0b262",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "af6a3c941b79b6b958c380c9f045e4140a08db0105d7f5e3f1a699f842e8d343",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f69576685b10-588c1219.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+          "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+          "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

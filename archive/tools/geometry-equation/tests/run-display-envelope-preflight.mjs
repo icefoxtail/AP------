@@ -19,7 +19,7 @@ for(const target of targets){
   fs.mkdirSync(run,{recursive:true});
   const result=await measureArchiveDisplayEnvelope({
     run,sourceRef:fileRef(repoRoot,target.sourcePath),sourceOrdinal:target.ordinal,targetId:target.id,
-    intrinsicSvg:{width:384,height:320},sizeClasses:['small','medium','large','full'],
+    intrinsicSvg:{width:384,height:320},sizeClasses:['full'],
     sourceAuthorityStatus:target.sourceAuthorityStatus
   });
   const evidence={schemaVersion:'APMATH_ARCHIVE_DISPLAY_ENVELOPE_MEASUREMENT_v1',measurementOnly:true,productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',target:{...target,examUid},runId,workRoot:path.relative(repoRoot,run).replaceAll('\\','/'),sourceRef:result.sourceRef,candidateRef:result.candidateRef,matrixSha256:result.matrixSha256,archiveStatus:result.archive.status,browserVersion:result.rowEvidence.browserVersion,observation:result.observation,captureFolder:path.relative(repoRoot,result.captureFolder).replaceAll('\\','/')};

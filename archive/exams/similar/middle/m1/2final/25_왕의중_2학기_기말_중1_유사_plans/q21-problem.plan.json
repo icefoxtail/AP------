@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "중심각 60도, 안쪽 반지름 6cm, 바깥쪽 반지름 9cm인 색칠한 부채꼴 고리",
+  "accessibilityDescription": "중심각 60도, 안쪽 반지름 6cm, 바깥쪽 반지름 9cm인 색칠한 부채꼴 둘레를 나타낸 그림이다.",
+  "sourceQuote": "다음 그림의 부채꼴에서 색칠한 부분의 둘레의 길이",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "annular sector with inner radius 6, outer radius 9, central angle 60"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ2",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ1",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      },
+      {
+        "id": "arcCD",
+        "circle": "circ2",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ],
+    "regions": [
+      {
+        "id": "fill",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "C"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "central",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOB",
+        "from": "O",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "3",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q21-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q21-result.json",
+    "statePath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q21-state.json",
+    "svgPath": "archive/assets/images/25_왕의중_2학기_기말_중1_유사/q21-problem.svg"
+  }
+}

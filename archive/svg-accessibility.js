@@ -96,6 +96,8 @@
                 ? indexed.get(`${key}\u0000solution`) || indexed.get(`${key}\u0000problem`)
                 : indexed.get(`${key}\u0000problem`);
             if (!record || record.provenanceStatus !== 'SOURCE_BOUND') return '';
+            // 기계 대체 문구 행(옛 그림에 title/desc가 없어 시험지·문항·역할로 만든 이름)은 화면 이름으로 쓰지 않는다: 시험지의 기존 이름과 호출한 쪽의 기본값이 그대로 쓰인다.
+            if (record.textSource === 'MACHINE_SUBSTITUTE') return '';
             if (role === 'problem' && (record.visualRole !== 'problem' || record.answerHintFree !== true)) return '';
             if (role === 'solution' && record.visualRole === 'problem' && record.answerHintFree !== true) return '';
             return combineAccessibleText(record, existingAlt);

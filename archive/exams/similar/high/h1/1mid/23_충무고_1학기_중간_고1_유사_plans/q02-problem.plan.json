@@ -1,0 +1,50 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 x절편을 지나는 포물선을 제시한다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "-8",
+        "-2",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -4,
+        6
+      ],
+      "viewport": [
+        -4,
+        6,
+        -10,
+        6
+      ],
+      "requiredPoints": [
+        {
+          "id": "A",
+          "x": -2,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": 4,
+          "y": 0
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -2,
+          4
+        ],
+        "y": []
+      }
+    },
+    "caption": "x축과 (-2, 0), (4, 0)에서 만나는 포물선 y=x^2-2x-8"
+  }
+}

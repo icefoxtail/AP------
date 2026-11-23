@@ -985,8 +985,10 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
-    if(layout.status!=='PASS'&&!degrade)noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS'){if(degrade){degrade.observed('rendered-layout',layout.errors);return outcome('BEST_EFFORT',{degrees:degrade.items});}return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
+    // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
+    // A best-effort pass (R1-2 degrade) never reaches noteCandidate: its figure is already a deliberate second best.
+    const scoredAccepted=layout.status!=='PASS'&&!degrade&&noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted){if(degrade){degrade.observed('rendered-layout',layout.errors);return outcome('BEST_EFFORT',{degrees:degrade.items});}return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');
     };
     const first=await pass(false);

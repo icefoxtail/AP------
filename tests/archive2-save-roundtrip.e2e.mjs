@@ -9,7 +9,9 @@
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import { after, before, test } from "node:test";
-import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
+import { pathToFileURL } from "node:url";
+import { readFileSync } from "node:fs";
+import { MAX_SAVED_PAPER_BYTES, catalog, root, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
 // 고3 is not sampled: its general-use pool has too few questions per unit for a 20-question, two-unit paper.
 const GRADES = ["중1", "중2", "중3", "고1", "고2"];
@@ -399,4 +401,199 @@ test("a picture the server cannot read does not stop the save: the paper is save
   const [paperId] = ws.state.savedPaperIds;
   const { paper } = await (await api("/archive-saved-papers/" + paperId)).json();
   assert.deepEqual(paper.snapshot.assets.filter((asset) => asset.missing).map((asset) => asset.path), ["assets/images/" + lostKey], "only that picture is marked");
+});
+
+// ---- 문제지 만들기 from the catalog shards of the chosen grade (stage 2-4) -------------------------------------------------------------
+// The screen builds its list from the shards of the grade (not the whole bundle). A paper made that way must save exactly like one made from the
+// whole catalog (same index_version, same question values the Worker compares), and a saved paper of ANOTHER grade must open as a revision:
+// the screen fetches the shards of the exams the paper names before it checks the paper.
+let shardFilesOnce = null;
+async function shardFiles() {
+  if (!shardFilesOnce) {
+    const { buildCatalogShards } = await import(pathToFileURL(root + "/tools/lib/build-archive2-catalog-shards.mjs").href);
+    const built = await buildCatalogShards(root);
+    const files = new Map(built.files);
+    files.set("index.json", built.entries[0].content);
+    shardFilesOnce = files;
+  }
+  return shardFilesOnce;
+}
+for (const grade of ["중1", "고1", "고2"]) {
+  test(`${grade}: a paper made from the shards of the grade saves, reads back, and a paper of another grade opens as a revision`, async () => {
+    const files = await shardFiles();
+    const sample = await sampleFor(grade);
+    const { ws, wire, seedMode } = createWorkspace(server, { shardFiles: files });
+    ws.state.filters = { grade };
+    const first = await ws.bootFromShards();
+    assert.equal(first.complete, false, "the screen holds the shards of the grade only");
+    assert.equal(first.indexVersion, catalog.indexVersion, "the version string the server compares");
+    configureSample(ws, seedMode, grade, sample.keys, PER_UNIT);
+    const sentUids = ws.state.selected.map((r) => r.questionUid);
+    assert.ok(sentUids.length >= 2, `${grade}: generate() built an empty paper from the shards`);
+    await ws.savePapers();
+    assert.equal(ws.state.saveResultState, "SAVED", sendFailure(ws, grade + " (from shards)"));
+    assert.equal(wire.log.filter((l) => l.route === "/archive-saved-papers" && l.method === "POST").every((l) => l.status === 200), true);
+    const [paperId] = ws.state.savedPaperIds;
+    const { paper } = await (await api("/archive-saved-papers/" + paperId)).json();
+    assert.deepEqual(paper.snapshot.questions.map((q) => q.questionUid), sentUids);
+    assert.equal(paper.snapshot.meta.indexVersion ?? catalog.indexVersion, catalog.indexVersion);
+
+    // a revision of a paper of ANOTHER grade, opened by a screen that holds only this grade's shards
+    const otherGrade = grade === "중1" ? "고2" : "중1";
+    const otherSample = await sampleFor(otherGrade);
+    const maker = createWorkspace(server);
+    configureSample(maker.ws, maker.seedMode, otherGrade, otherSample.keys, PER_UNIT);
+    await maker.ws.savePapers();
+    assert.equal(maker.ws.state.saveResultState, "SAVED", sendFailure(maker.ws, otherGrade + " (maker)"));
+    const [otherPaperId] = maker.ws.state.savedPaperIds;
+    const otherUids = maker.ws.state.selected.map((r) => r.questionUid);
+    const opener = createWorkspace(server, { shardFiles: files });
+    opener.ws.state.filters = { grade };
+    const held = await opener.ws.bootFromShards();
+    assert.ok(otherUids.every((uid) => !held.records.some((r) => r.questionUid === uid)) || held.complete, "the other grade's questions are not held yet");
+    await opener.ws.openSavedPaperRevision(otherPaperId);
+    assert.deepEqual(opener.ws.state.selected.map((r) => r.questionUid), otherUids, "the revision restores the other grade's paper");
+    assert.ok(otherUids.every((uid) => opener.ws.state.byUid.has(uid)), "the screen fetched the shards of the paper's exams");
+    assert.equal(opener.ws.state.derivationSource?.parentId, otherPaperId);
+    await opener.ws.savePapers();
+    assert.equal(opener.ws.state.saveResultState, "SAVED", sendFailure(opener.ws, otherGrade + " revision opened from " + grade + " shards"));
+  });
+}
+
+// A draft keeps only {questionUid, rowId, sourceFingerprint} per question (no exam file) and the grade of its filters. Restoring it ("이전 작업 복원"),
+// or importing a work file, on a screen that holds the shards of ANOTHER grade must find the questions: the grade hint first, then every shard;
+// "현재 아카이브에 없는 문항" is only said after all shards are in.
+for (const grade of ["중1", "고1"]) {
+  test(`${grade} screen: a draft made in another grade is restored (grade hint, and every shard when the hint is missing); a missing question is refused only after all shards`, async () => {
+    const files = await shardFiles();
+    const otherGrade = grade === "중1" ? "고2" : "중1";
+    const otherSample = await sampleFor(otherGrade);
+    const maker = createWorkspace(server);
+    configureSample(maker.ws, maker.seedMode, otherGrade, otherSample.keys, PER_UNIT);
+    const made = JSON.parse(JSON.stringify(maker.ws.draft()));
+    const wanted = made.selected.map((row) => row.questionUid);
+    assert.ok(wanted.length >= 2, "the maker built a paper");
+    assert.ok(made.selected.every((row) => !row.sourceFile && !row.sourceArchiveFile), "a draft row names no exam file: only the uid");
+    assert.equal(made.filters.grade, otherGrade);
+    const open = async () => {
+      const screen = createWorkspace(server, { shardFiles: files });
+      screen.ws.state.filters = { grade };
+      const held = await screen.ws.bootFromShards();
+      assert.equal(held.complete, false);
+      assert.ok(wanted.every((uid) => !screen.ws.state.byUid.has(uid)), "the other grade's questions are not held before the restore");
+      return screen.ws;
+    };
+    // (a) restore with the grade the draft was made in
+    let ws = await open();
+    await ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] });
+    ws.applyDraft(made);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    assert.equal(ws.state.catalog.complete, false, "only the shards of the draft's grade were added, not every shard");
+    // (b) an imported work file without a usable grade: every shard is fetched before the questions are judged
+    ws = await open();
+    const noGrade = { ...made, filters: { ...made.filters, grade: "" } };
+    await ws.shardGlue.ensureShardFiles(noGrade.selected, noGrade.sources, { grades: [noGrade.filters.grade] });
+    ws.applyDraft(noGrade);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    // (c) a grade hint that is wrong for the questions: still found, by the fallback to every shard
+    ws = await open();
+    const wrong = { ...made, filters: { ...made.filters, grade: grade } };
+    await ws.shardGlue.ensureShardFiles(wrong.selected, wrong.sources, { grades: [wrong.filters.grade] });
+    ws.applyDraft(wrong);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    assert.equal(ws.state.catalog.complete, true, "the hint did not hold the questions, so every shard was received");
+    // (d) a question that is in no shard: refused as "not in the archive", after all shards were received
+    ws = await open();
+    const ghost = { ...made, selected: [...made.selected, { ...made.selected[0], questionUid: "qid_v1_" + "0".repeat(64) }] };
+    await ws.shardGlue.ensureShardFiles(ghost.selected, ghost.sources, { grades: [ghost.filters.grade] });
+    assert.equal(ws.state.catalog.complete, true);
+    assert.throws(() => ws.applyDraft(ghost), /현재 아카이브에 없는 문항/);
+  });
+}
+
+// The connection fails, or the shard files are wrong while the whole bundle is not there either: whatever the combination, nothing is left
+// half done (the catalog, the loader and the screen's busy flag), no query throws, and the same action works when things are back.
+const NETWORK_MESSAGE = "문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.";
+test("offline: a grade change and a draft restore fail with the connection message, leave the screen as it was, and work again when the connection is back", async () => {
+  const files = await shardFiles();
+  const net = { offline: false };
+  const otherSample = await sampleFor("중1");
+  const maker = createWorkspace(server);
+  configureSample(maker.ws, maker.seedMode, "중1", otherSample.keys, PER_UNIT);
+  const made = JSON.parse(JSON.stringify(maker.ws.draft()));
+  const wanted = made.selected.map((row) => row.questionUid);
+  const { ws } = createWorkspace(server, { shardFiles: files, net });
+  // a screen with no index yet answers "needed", it does not throw
+  assert.equal(ws.shardGlue.shardMissing({ grades: ["고1"] }), true);
+  ws.state.filters = { grade: "고1" };
+  const held = await ws.bootFromShards();
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  const heldKeys = [...held.shardKeys];
+  net.offline = true;
+  // (1) the teacher clicks another grade
+  ws.state.filters = { grade: "중1" };
+  assert.equal(ws.shardGlue.shardNeedsLoading(), true);
+  await assert.rejects(ws.shardGlue.ensureShards(ws.shardGlue.shardNeed()), (error) => {
+    assert.equal(error.code, "CATALOG_SHARD_NETWORK");
+    assert.equal(error.message, NETWORK_MESSAGE);
+    return true;
+  });
+  assert.equal(net.wholeBundleCalls || 0, 0, "a failed connection does not start the 20MB whole bundle");
+  assert.equal(ws.state.catalog, held, "the catalog is exactly what it was");
+  assert.doesNotThrow(() => ws.shardGlue.shardNeedsLoading());
+  assert.equal(ws.shardGlue.shardNeedsLoading(), true, "still waiting for the grade, and asking says so without throwing");
+  // (e) the grade that is open can be worked in again: it needs nothing more
+  ws.state.filters = { grade: "고1" };
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  // (2) the restore of a draft of another grade, offline: refused with the same message, the busy flag is released
+  await assert.rejects(ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] }), (error) => error.code === "CATALOG_SHARD_NETWORK");
+  assert.equal(ws.state.shardBusy, false, "the buttons are enabled again");
+  assert.deepEqual([...ws.state.catalog.shardKeys], heldKeys);
+  // back online: the same two actions work, with the choices kept
+  net.offline = false;
+  ws.state.filters = { grade: "중1" };
+  await ws.shardGlue.ensureShards(ws.shardGlue.shardNeed());
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+  assert.ok(ws.state.catalog.shardKeys.includes("m1"));
+  ws.state.filters = { grade: "고1" };
+  await ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] });
+  ws.applyDraft(made);
+  assert.deepEqual(ws.state.selected.map((row) => row.questionUid), wanted);
+  assert.equal(ws.state.shardBusy, false);
+});
+
+test("the shard files are wrong and the whole bundle is not there either: the screen stays on its shards, says why, and recovers when the files are right", async () => {
+  const files = await shardFiles();
+  const net = { offline: false, corrupt: new Set() };
+  const { ws } = createWorkspace(server, { shardFiles: files, net });
+  ws.state.filters = { grade: "고1" };
+  const held = await ws.bootFromShards();
+  net.corrupt.add("shard-m1.json");
+  ws.state.filters = { grade: "중1" };
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    await assert.rejects(ws.shardGlue.ensureShards(ws.shardGlue.shardNeed()), (error) => {
+      assert.equal(error.code, "CATALOG_SHARD_STALE");
+      assert.equal(error.message, "자료가 갱신되는 중입니다. 잠시 뒤 다시 시도해 주세요.");
+      return true;
+    });
+    assert.equal(net.wholeBundleCalls, attempt, "the whole bundle was tried (and is not there)");
+    assert.equal(ws.state.catalog, held, "nothing changed");
+    assert.doesNotThrow(() => ws.shardGlue.shardNeedsLoading());
+    assert.equal(ws.shardGlue.shardNeedsLoading(), true);
+  }
+  net.corrupt.clear();
+  await ws.shardGlue.ensureShards(ws.shardGlue.shardNeed());
+  assert.ok(ws.state.catalog.shardKeys.includes("m1"), "recovered by asking again");
+  assert.equal(ws.shardGlue.shardNeedsLoading(), false);
+});
+
+// the screen code that decides between the message and the whole bundle
+test("shard failure policy in the screen: connection = message and retry, release/bytes = verified whole bundle, nothing changes until it arrives", () => {
+  const source = readFileSync(root + "/archive/archive2-workspace.js", "utf8");
+  assert.match(source, /if \(isNetworkFailure\(error\)\) throw shardNetworkError\(error\);\s*if \(!isShardFailure\(error\)\) throw error;\s*await swapToWholeBundle\(error\);/);
+  assert.match(source, /const full = await window\.applyArchiveMetaFoundationCatalog\(\);\s*shardsBroken = true; shardSession = null;/, "the session is dropped only after the whole bundle arrived");
+  assert.match(source, /function shardMissing\(need\) \{\s*try \{/, "a lookup never throws");
+  assert.match(source, /ensureShardFiles\(restoring\?\.selected, restoring\?\.sources, \{ grades: \[restoring\?\.filters\?\.grade\] \}\);\s*\$\("modal"\)\.close\(\);/, "the dialog closes after the shards came");
+  assert.match(source, /ensureShardFiles\(imported\?\.selected, imported\?\.sources, \{ grades: \[imported\?\.filters\?\.grade\] \}\)/);
+  assert.match(source, /a === "shard-back"/);
 });

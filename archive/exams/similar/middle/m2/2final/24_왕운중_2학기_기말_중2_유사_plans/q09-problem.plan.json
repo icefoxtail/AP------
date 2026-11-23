@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "B",
+    "A",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vBE",
+        "ownerSegment": "BE",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEC",
+        "ownerSegment": "EC",
+        "text": "7",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "DC",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 변 BC 위의 점 E와 변 AC 위의 점 D를 잇는 선분 DE가 그려져 있고, 각 B와 각 CDE의 크기가 같다. BE, EC, CD의 길이가 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 BC 위에 점 E, 변 AC 위에 점 D가 있고 선분 DE가 그려져 있다. 각 B와 각 CDE에 같은 각 표시가 되어 있으며 BE는 5 cm, EC는 7 cm, CD는 6 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 B와 각 CDE의 크기가 같음을 보여 주는 각 표시가 있다.",
+    "BE 5 cm, EC 7 cm, CD 6 cm가 주어진 값으로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 변 $BC$ 위의 점 $E$, 변 $AC$ 위의 점 $D$에 대하여 $\\angle B = \\angle CDE$이다. $\\overline{BE}=5 m\\,cm$, $\\overline{EC}=7 m\\,cm$, $\\overline{CD}=6 m\\,cm$일 때, 선분 $\\overline{AD}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
