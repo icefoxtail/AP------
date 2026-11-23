@@ -236,6 +236,10 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
           sourceLinksUpdated = true;
         }
       }
+      // A frozen review that left the type EMPTY (explicit NO_VERIFIED_PT_TPL_BINDING debt) must not undo a type registered later by the
+      // direct-judgment lane (fieldStatus approved_direct_judgment + typeApproval): the review is the record of what was reviewed then, the
+      // registration is newer. A review that names a type still wins, as before. (2026-11-23, 25_제일고 유사 #12.)
+      const keepRegisteredType = !row.problemTypeKey && meta.problemTypeKey && meta.fieldStatus?.problemType === 'approved_direct_judgment' && meta.typeApproval;
       const patch = {
         ...canonicalSelection,
         sourceFingerprint,
@@ -251,8 +255,8 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
         rpmSemanticReason: row.rpmL4 ? '' : 'Reviewed source has no equivalent canonical RPM L4',
         rpmEvidenceDebtFields: row.metaDebt,
         rpmProjectionRevision: 'archive-registration-target-source-rpm-projection-v1',
-        problemTypeKey: row.problemTypeKey || '',
-        templateKey: row.templateKey || '',
+        problemTypeKey: keepRegisteredType ? meta.problemTypeKey : row.problemTypeKey || '',
+        templateKey: keepRegisteredType ? meta.templateKey ?? '' : row.templateKey || '',
         crossConceptKeys: row.crossConceptKeys || [],
         conditionKeys: row.conditionKeys || [],
         integrationPattern: row.integrationPattern || '',
@@ -267,8 +271,8 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
           ...meta.fieldStatus,
           standardUnit: 'approved_reviewed',
           subUnit: 'approved_reviewed',
-          problemType: row.problemTypeKey ? 'approved_reviewed' : 'manual_review_pending',
-          template: row.templateKey ? 'approved_reviewed' : 'manual_review_pending',
+          problemType: keepRegisteredType ? meta.fieldStatus.problemType : row.problemTypeKey ? 'approved_reviewed' : 'manual_review_pending',
+          template: keepRegisteredType && meta.fieldStatus?.template === 'approved_direct_judgment' ? meta.fieldStatus.template : row.templateKey ? 'approved_reviewed' : 'manual_review_pending',
           difficulty: 'approved_reviewed',
         },
         approvalEvidence: [...new Set([...(meta.approvalEvidence || []), 'archive/data/legacy-similar-reviewed/' + name, ...(visualRebind ? [visualRebind] : [])])],
