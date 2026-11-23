@@ -2354,6 +2354,23 @@ function openStudentReportOutputFromDetail(sid, sessionId = '') {
     reportCenterOpenStudentDrilldown(key, sessionId || sessions[0].id || '');
 }
 
+// 학생 상세(성적 탭)의 시험 한 건 -> 그 학생·그 시험의 오답 클리닉. 원내평가 결과 화면과 같은 기존 함수(openClinicForStudentExam)를 쓴다.
+function openStudentExamClinicFromDetail(sid, sessionId) {
+    const session = getStudentAcademyExamSessionsForDetail(sid).find(row => String(row.id) === String(sessionId));
+    const classId = String(session?.class_id || getApStudentCurrentClass(sid)?.id || '');
+    if (!session || !classId || typeof openClinicForStudentExam !== 'function') {
+        toast('클리닉 화면을 불러오지 못했습니다. 새로고침 후 다시 시도하세요.', 'warn');
+        return;
+    }
+    openClinicForStudentExam(classId, sid, {
+        sessionId: session.id,
+        examDate: session.exam_date,
+        examTitle: session.exam_title,
+        archiveFile: session.archive_file || '',
+        questionCount: session.question_count
+    });
+}
+
 function renderStudentSchoolLatestCard(sid, records) {
     const latest = (records || [])[0];
     if (!latest) return '';
@@ -2463,12 +2480,13 @@ function renderStudentAcademyGradeTab(sid) {
 
     const historyRows = exs.map(e => {
         const timetableWrongRows = state.ui?.timetableStudentDetails?.[String(sid)]?.wrong_answers;
-        const wrs = (Array.isArray(timetableWrongRows)
+        const wrongRows = (Array.isArray(timetableWrongRows)
             ? timetableWrongRows.filter(w => String(w.session_id) === String(e.id))
             : typeof apmsGetWrongAnswersForSession === 'function'
             ? apmsGetWrongAnswersForSession(e.id)
             : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(e.id))
-        )
+        );
+        const wrs = wrongRows
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
             .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; margin: 2px; color: var(--text-soft); font-weight: 500;">Q${w.question_id}</span>`)
             .join('');
@@ -2484,6 +2502,7 @@ function renderStudentAcademyGradeTab(sid) {
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 500;">오답 없음</span>'}</div>
                 <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
+                    ${canEdit && wrongRows.length && typeof openClinicForStudentExam === 'function' ? `<button class="btn apms-button apms-button--quiet" data-student-exam-clinic="${apmsStudentDetailEsc(e.id)}" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: var(--primary); border: 1px solid rgba(26,92,255,0.18); background: rgba(26,92,255,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="openStudentExamClinicFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(e.id)})">오답 클리닉</button>` : ''}
                     ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: var(--primary); border: 1px solid rgba(26,92,255,0.18); background: rgba(26,92,255,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(e.id)})">리포트 출력</button>` : ''}
                     ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: #D97706; border: 1px solid rgba(217,118,6,0.25); background: rgba(217,118,6,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
                     <button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(232,65,79,0.22); background: rgba(232,65,79,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>` : ''}

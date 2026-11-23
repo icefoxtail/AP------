@@ -86,10 +86,41 @@
     if (!popup) root.alert?.("새 창을 허용한 뒤 다시 열어 주세요.");
   }
 
+  // 쪽당 문항 수(2·4)는 원본 기출을 연 engine.html에서만 나온다. 보이는 조건(qppSwitchEligible)과 바꾸는 동작(chooseArchiveQpp)은
+  // engine.html 것을 그대로 쓰므로, 그 함수가 없는 화면(mixed_engine 등)에서는 항목이 나타나지 않는다. 해설·정답 탭에서도 쪽당 값은 쓰이지 않아 숨긴다.
+  function qppItemsAvailable() {
+    if (typeof root.qppSwitchEligible !== "function" || typeof root.chooseArchiveQpp !== "function") return false;
+    try {
+      if (!root.qppSwitchEligible()) return false;
+    } catch { return false; }
+    const select = document.getElementById("archive2-reader-mode");
+    return (select ? select.value : selectedMode()) === "exam";
+  }
+
+  function syncQpp() {
+    const group = document.getElementById("archive2-reader-qpp");
+    if (!group) return;
+    group.hidden = !qppItemsAvailable();
+    // AppState는 engine.html의 const라 window 속성이 아니다. 이름으로 직접 읽는다.
+    const current = Number(typeof AppState !== "undefined" ? AppState.qpp : root.AppState?.qpp);
+    for (const item of group.querySelectorAll("[data-qpp]")) {
+      const on = Number(item.dataset.qpp) === current;
+      item.setAttribute("aria-checked", String(on));
+      item.classList.toggle("is-active", on);
+    }
+  }
+
+  async function chooseQpp(value) {
+    setMenu(false);
+    if (!qppItemsAvailable()) return;
+    try { await root.chooseArchiveQpp(Number(value)); } finally { syncQpp(); }
+  }
+
   function setMenu(open) {
     const button = document.getElementById("archive2-reader-more");
     const menu = document.getElementById("archive2-reader-menu");
     if (!button || !menu) return;
+    if (open) syncQpp();
     menu.hidden = !open;
     button.setAttribute("aria-expanded", String(open));
   }
@@ -180,6 +211,10 @@
       <div id="archive2-reader-menu" class="archive2-reader-menu" role="menu" aria-label="출력 도구" hidden>
         <button id="archive2-reader-print" type="button" role="menuitem">인쇄 / PDF 저장</button>
         <button id="archive2-reader-open" type="button" role="menuitem">새 창 열기</button>
+        <div id="archive2-reader-qpp" class="archive2-reader-qpp" role="group" aria-label="쪽당 문항 수" hidden>
+          <button type="button" role="menuitemradio" aria-checked="false" data-qpp="2">쪽당 2문항</button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-qpp="4">쪽당 4문항</button>
+        </div>
         <button id="archive2-reader-derive" type="button" role="menuitem" hidden>이 시험지로 다시 만들기</button>
       </div>`;
     toolbar.appendChild(controls);
@@ -191,6 +226,10 @@
     });
     controls.querySelector("#archive2-reader-print").addEventListener("click", printCurrentMode);
     controls.querySelector("#archive2-reader-open").addEventListener("click", openCurrentOutput);
+    controls.querySelector("#archive2-reader-qpp").addEventListener("click", (event) => {
+      const item = event.target.closest?.("[data-qpp]");
+      if (item) chooseQpp(item.dataset.qpp);
+    });
     // The output window of the teacher workspace (archive2-derive-entry.js is loaded there) offers a re-make of the paper.
     const deriveItem = controls.querySelector("#archive2-reader-derive");
     if (root.Archive2DeriveEntry?.available?.()) {
@@ -207,7 +246,7 @@
     setReady(false);
   }
 
-  root.Archive2ReaderControls = { init, setReady, syncMode };
+  root.Archive2ReaderControls = { init, setReady, syncMode, syncQpp };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })(typeof window !== "undefined" ? window : globalThis);

@@ -162,6 +162,18 @@
     outline-offset: -3px;
   }
 
+  /* 쪽당 문항 수(원본 기출 화면에서만 나온다): 지금 값에는 ✓를 붙인다. */
+  html.archive2-mobile-reader-enabled .archive2-reader-qpp {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1.5px solid var(--control-line);
+  }
+  html.archive2-mobile-reader-enabled .archive2-reader-qpp[hidden] { display: none !important; }
+  html.archive2-mobile-reader-enabled .archive2-reader-qpp button[aria-checked="true"]::after {
+    content: "✓";
+    float: right;
+  }
+
   html.archive2-mobile-reader-enabled body { padding-top: 52px !important; }
   html.archive2-mobile-reader-enabled body.screen-fit-mode #mode-ctrl { justify-content: stretch !important; }
 }
