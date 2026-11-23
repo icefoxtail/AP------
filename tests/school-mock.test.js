@@ -201,9 +201,9 @@ test('입구: 학교 기출 시험지 줄에만 모의고사 단추가 있고, �
   const find = readWorkspace();
   assert.match(find, /derive-mock-open/);
   assert.match(find, /\^original\\\//, '학교 기출(original/)만');
-  const index = read('index.html');
-  assert.match(index, /data-action="mock"/);
-  assert.match(index, /workspace\.html\?view=find&mock=/);
+  assert.match(find, /mock-in-actions/);
+  assert.match(find, /mock-in-sim/);
+  assert.doesNotMatch(read('index.html'), /data-action="mock"/, '옛 홈 카드는 main과 같은 높이를 지킨다(입구는 학교별 기출 줄)');
   const { exam } = pickBaseExam();
   // ?mock=<파일> 주소: 자료가 오면 같은 선택 창이 열린다(주소는 파일을 불러올 때 붙잡아 둔다)
   const H = harness({ location: new URL('https://archive.test/archive/workspace.html?view=find&mock=' + encodeURIComponent(exam.file)) });

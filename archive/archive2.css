@@ -4988,9 +4988,23 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .derive-compose-note ul { margin: 4px 0 0; padding-left: 18px; }
 .derive-dialog .derive-publisher[hidden] { display: none; }
 /* 학교 모의고사: 시험지 한 줄에서 기본 / 응용 / 심화 (2026-11-23) */
-.exam-row-mock { padding-bottom: 8px; }
-.exam-row-mock .mock-entry { min-height: 40px; padding: 0 14px; border-color: var(--brand-ink); background: var(--surface); color: var(--brand-ink); font-size: 14px; font-weight: 700; white-space: nowrap; }
-.exam-row-mock .mock-entry:hover { background: var(--brand-soft); }
+/* 모의고사 단추는 줄 높이를 늘리지 않는다: 920px 미만은 행동 단추 줄 끝, 이상은 오른쪽 유사문제 칸 안. */
+.mock-entry { white-space: nowrap; border-color: var(--brand-ink); color: var(--brand-ink); }
+.mock-entry:hover { background: var(--brand-soft); }
+.exam-row-actions > .mock-entry { flex: 0 0 auto; }
+.mock-in-sim { display: none; }
+/* 휴대폰 폭에서 단추 6개가 한 줄에 들어가도록 이 줄만 조금 좁힌다(줄 높이 그대로) */
+@container exam-rows (max-width: 559.98px) {
+  .exam-row-actions:has(.mock-in-actions) { gap: 4px; }
+  .exam-row-actions:has(.mock-in-actions) > button { padding: 0 6px; font-size: 14px; white-space: nowrap; }
+  .exam-row-actions:has(.mock-in-actions) .finder-card-more > summary { padding: 0 6px; font-size: 14px; white-space: nowrap; }
+}
+.exam-row-sim.none .mock-in-sim { margin-left: auto; }
+@container exam-rows (min-width: 920px) {
+  .mock-in-actions { display: none; }
+  .mock-in-sim { display: inline-flex; }
+  .exam-row-sim.none { justify-content: space-between; }
+}
 .derive-mock .mock-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 12px 0; }
 .derive-mock .mock-level { display: grid; gap: 4px; justify-items: start; text-align: left; min-height: 64px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper, #fff); cursor: pointer; }
 .derive-mock .mock-level strong { font-size: 18px; }
