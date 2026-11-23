@@ -806,6 +806,10 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "구입을 나타내는 y절편 24(만 원)인 직선과 원점에서 시작하는 더 가파른 대여 직선이 x=80인 점 P에서 만나고 그 뒤에는 대여 직선이 구입 직선 위에 있다.",
+    "solutionImageCaption": "그림에서 파란 직선은 구입, 주황 직선은 대여를 나타내며 세로축은 만 원 단위이다(720000원 = 72만 원). 사용 기간을 x개월이라 하면 구입 비용은 240000+6000x원, 대여 비용은 9000x원이다. 구입이 더 저렴하려면 240000+6000x<9000x에서 x>80이어야 한다. 두 그래프는 x=80, y=720000인 점 P에서 만나고 80개월을 지나면 구입 그래프가 대여 그래프보다 아래에 있다. 따라서 80개월을 초과하면, 월 단위로는 81개월부터 구입이 더 저렴하다.",
+    "solutionImageSize": "full"
   }
 ];

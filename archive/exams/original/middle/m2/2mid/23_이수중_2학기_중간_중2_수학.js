@@ -227,7 +227,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 각 BIC 114°, 꼭짓점 A의 각 48°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
+    "solutionImageCaption": "예: ∠B=70°, ∠C=62°인 삼각형으로 그렸다. 내심 I는 각의 이등분선의 교점이므로 ∠IBC=β, ∠ICB=γ이고 ∠BIC=180°−(β+γ)=114°에서 β+γ=66°이다. 따라서 ∠B+∠C=132°이고 ∠A=180°−132°=48°이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -769,7 +773,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "크기가 다른 두 삼각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 기둥은 높이 5, 오른쪽 기둥은 높이 10이 표시되어 있다.",
+    "solutionImageCaption": "예: 닮음비 2:1을 지키는 두 삼각기둥이다(밑면의 변의 길이는 모양만 나타낸다). 큰 기둥 밑면과 작은 기둥 밑면의 넓이비는 2²:1²=4:1이므로 △ABC의 넓이는 6×4=24cm²이다. 큰 삼각기둥의 높이가 10cm이므로 부피는 24×10=240cm³이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

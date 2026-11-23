@@ -352,7 +352,11 @@ window.questionBank = [
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "밑면이 직각삼각형인 삼각기둥이고 밑면이 색칠되어 있으며 밑면의 두 직각변과 높이에 길이 문자가 적혀 있다.",
+    "solutionImageCaption": "예: 밑면(색칠)이 밑변 3x, 높이 2y/3인 직각삼각형이고 높이가 h, 부피가 60x²y인 삼각기둥이다(길이의 비율은 모양만 나타낸 것이다). 밑넓이는 (1/2)×3x×(2y/3)=xy이다. 부피 xy×h=60x²y에서 h=60x이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
