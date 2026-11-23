@@ -1,0 +1,41 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 두 일차부등식 해의 공통 범위를 수직선으로 보여준다."
+  },
+  "solution": {
+    "capability": "number-line-figure-v1",
+    "numberLine": {
+      "rows": [
+        {
+          "kind": "SET",
+          "pieces": [
+            {
+              "lo": {
+                "value": "6",
+                "state": "OPEN"
+              },
+              "hi": null
+            }
+          ]
+        },
+        {
+          "kind": "SET",
+          "pieces": [
+            {
+              "lo": null,
+              "hi": {
+                "value": "9",
+                "state": "CLOSED"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "RESULT"
+        }
+      ]
+    },
+    "caption": "x>6과 x<=9의 공통 범위는 6<x<=9이다."
+  }
+}
