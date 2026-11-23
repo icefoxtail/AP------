@@ -1,0 +1,59 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 포물선과 직선 위의 꼭짓점을 보여준다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "1",
+        "-4",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -1,
+        5
+      ],
+      "viewport": [
+        -1,
+        5,
+        -4,
+        6
+      ],
+      "referenceLines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "-7"
+        }
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 2,
+          "y": -3
+        },
+        {
+          "id": "P",
+          "x": 3,
+          "y": -2
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          2,
+          3
+        ],
+        "y": [
+          -3
+        ]
+      }
+    },
+    "caption": "대칭축 x=2 위의 꼭짓점 (2, -3)이 직선 y=2x-7 위에 있다."
+  }
+}

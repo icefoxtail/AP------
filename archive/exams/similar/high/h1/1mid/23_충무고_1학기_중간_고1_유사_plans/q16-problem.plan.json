@@ -1,0 +1,51 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 축이 구간 왼쪽에 있을 때의 그래프를 예시로 제시한다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "-1",
+        "-1"
+      ],
+      "sourceDomain": {
+        "kind": "CLOSED_INTERVAL",
+        "range": [
+          0,
+          1
+        ]
+      },
+      "domain": [
+        0,
+        1
+      ],
+      "viewport": [
+        -1,
+        2,
+        2,
+        6
+      ],
+      "requiredPoints": [
+        {
+          "id": "M",
+          "x": 0,
+          "y": 5
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          0,
+          1
+        ],
+        "y": [
+          5
+        ]
+      }
+    },
+    "caption": "예: a=-1/2, b=21/4일 때 구간 [0, 1]에서 x=0일 때 최댓값 5를 갖는다."
+  }
+}

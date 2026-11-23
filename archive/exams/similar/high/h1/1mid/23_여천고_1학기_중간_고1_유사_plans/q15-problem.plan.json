@@ -1,0 +1,58 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 제한 구간의 포물선을 제시한다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "-2",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "CLOSED_INTERVAL",
+        "range": [
+          -2,
+          3
+        ]
+      },
+      "domain": [
+        -2,
+        3
+      ],
+      "viewport": [
+        -3,
+        4,
+        2,
+        15
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 1,
+          "y": 4
+        },
+        {
+          "id": "M",
+          "x": -2,
+          "y": 13
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -2,
+          1,
+          3
+        ],
+        "y": [
+          4,
+          13
+        ]
+      }
+    },
+    "caption": "구간 [-2, 3]에서 x=1일 때 최솟값 4, x=-2일 때 최댓값 13을 갖는다."
+  }
+}

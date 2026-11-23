@@ -1,0 +1,46 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 포물선의 꼭짓점을 보여준다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "-8",
+        "2"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -1,
+        5
+      ],
+      "viewport": [
+        -1,
+        5,
+        -5,
+        10
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 2,
+          "y": -3
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          2
+        ],
+        "y": [
+          -3
+        ]
+      }
+    },
+    "caption": "y=2(x-2)^2-3은 꼭짓점 (2, -3)에서 최솟값 -3을 갖는다."
+  }
+}
