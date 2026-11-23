@@ -47,6 +47,38 @@ test('two builds write the same bytes, and the written folder matches its index'
   }
 });
 
+// The release identity and the site build each build the shards in their own process and must get the same bytes. loadInputBundle
+// stores each input file in `resources` when its async sha256 check finishes, so the key order of `resources` (and the order of the
+// taxonomy rows resolveCatalog builds from it) followed the completion order of those digests: the same snapshot gave two different
+// common.json files and the seal refused the package (releases 45271820186, 45273455821, 45274216004).
+test('the shard bytes do not depend on the order in which the input digests finish', async () => {
+  const { buildCatalogShards, withOrderedResources } = await lib();
+  const bundle = { manifest: {}, resources: { 'b.json': 2, 'a.json': 1, 'c.json': 3 } };
+  assert.deepEqual(Object.keys(withOrderedResources(bundle).resources), ['a.json', 'b.json', 'c.json'], 'resources are put in sorted key order');
+  assert.deepEqual(Object.keys(bundle.resources), ['b.json', 'a.json', 'c.json'], 'the loaded bundle itself is left untouched');
+  const subtle = globalThis.crypto.subtle;
+  const original = subtle.digest.bind(subtle);
+  const build = async (seed) => {
+    let state = seed;
+    const random = () => { state = (state * 1664525 + 1013904223) % 4294967296; return state / 4294967296; };
+    Object.defineProperty(subtle, 'digest', {
+      configurable: true,
+      value: async (...args) => { const result = await original(...args); await new Promise((resolve) => setTimeout(resolve, Math.floor(random() * 8))); return result; },
+    });
+    try { return await buildCatalogShards(root); }
+    finally { delete subtle.digest; } // back to the prototype's own digest
+  };
+  const reference = await built();
+  for (const seed of [1, 2]) {
+    const jittered = await build(seed);
+    assert.equal(jittered.entries.length, reference.entries.length);
+    for (let i = 0; i < reference.entries.length; i += 1) {
+      assert.equal(jittered.entries[i].path, reference.entries[i].path);
+      assert.equal(sha256(jittered.entries[i].content), sha256(reference.entries[i].content), `same bytes when digests finish in another order (seed ${seed}): ${reference.entries[i].path}`);
+    }
+  }
+});
+
 test('the index names the inputs: its version is the one the screens send to the server', async () => {
   const { index, catalog } = await built();
   const canonical = require(path.join(root, 'archive/archive2-canonical.js'));
