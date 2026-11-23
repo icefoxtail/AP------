@@ -114,7 +114,7 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
   };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord()};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord(),bestEffort:row.bestEffort,roomTrace:row.roomTrace};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -156,7 +156,7 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
     };
     // Standalone figure kinds (set diagram, stat chart, container fill, lattice path, ellipse): one table row each (standalone-kinds.mjs), one shared runner.
     {const standalone=standaloneKindFor(authored.capability);
-    if(standalone){await runStandaloneKind(standalone,{authored,identity,meta,tag,row,setStage:s=>{stage=s;},bind,clip});return finish();}}
+    if(standalone){await runStandaloneKind(standalone,{authored,identity,meta,tag,row,setStage:s=>{stage=s;},bind,clip,write,name});return finish();}}
     if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
@@ -406,6 +406,12 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
       if(last&&last.composed.status==='COMPOSED'){(row.fallback??=[]).push({from:clip(composed.detail),to:'LAYOUT_LAST_RESORT'});({size,measured,composed}=last);}
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
+    if(composed.status!=='COMPOSED'&&composed.bestEffort){
+      // label-room: the layout could not place every label. The candidate it drew (those labels missing) is kept beside the failure with what is missing and how much; the failure is reported as it always was.
+      const be=composed.bestEffort,missing=[...be.unresolved,...be.suppressed],file=`${name}-besteffort.svg`;
+      write(file,be.svg);
+      row.bestEffort={kind:'construction',failure:{code:composed.status,detail:clip(composed.detail)},step:'INCOMPLETE_CANDIDATE',svgFile:file,degrees:[{code:'LAYOUT_INVENTORY_INCOMPLETE',unplaced:missing,unplacedCount:missing.length,labelCount:be.labelCount,ratio:Math.round(missing.length/Math.max(1,be.labelCount)*100)/100}]};
+    }
     if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
     // The names the final SVG shows must be the plan's display names (read back from the glyphs, independent of the producer).
     stage='point-names';

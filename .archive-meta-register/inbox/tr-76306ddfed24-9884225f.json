@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-76306ddfed24-9884225f",
+  "examUid": "20_매산고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "f86d60cb639ca9494bd74587026fe81dc9e4e3a5",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-76306ddfed24-9884225f.type-ledger.json",
+        "sha256": "b4aa4259a73d1ca4f50dc6cfdb4ec19a7e46b23e726c8cf561462bc243a34957"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_df7fddc8d076c7aeb1c75b0e97eb73c4c75cd63fb388fd9111c292f65db0ebb6",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL"
+      },
+      "rationale": "완전제곱식의 꼭짓점과 닫힌구간 두 끝점의 값을 비교한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "be690f68644971363f67ab4cfcc495eac516f4f4cf6a6b02cd10481129dbcb56",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-76306ddfed24-9884225f.type-ledger.json",
+          "sha256": "b4aa4259a73d1ca4f50dc6cfdb4ec19a7e46b23e726c8cf561462bc243a34957"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c4d311e057c95b312c32f7620244571308e1adb0a5cac4d6cb9db8a6c70c4e08",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM"
+      },
+      "after": {
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT"
+      },
+      "rationale": "수직 점근선과 무한대 극한의 수평 점근선을 계수 관계로 바꾸고 통과점 조건을 결합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "9753969f7064ec95391a09656364175ed57eb611bc77b50dd30d37783bd6b403",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-76306ddfed24-9884225f.type-ledger.json",
+          "sha256": "b4aa4259a73d1ca4f50dc6cfdb4ec19a7e46b23e726c8cf561462bc243a34957"
+        }
+      ]
+    }
+  ]
+}

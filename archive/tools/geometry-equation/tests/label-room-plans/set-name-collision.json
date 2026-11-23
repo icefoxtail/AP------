@@ -1,0 +1,49 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "3/10",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3/10",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "2/5",
+        "in": []
+      }
+    ],
+    "shade": "A^c∩B",
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A와 B의 여사건이 배반이므로 A는 B 안에 포함된다. P(B)=2×3/10=3/5이다. 그림은 A가 3/10, B에서 A 밖의 부분이 3/5−3/10=3/10, B 밖이 2/5이고 색칠한 부분이 A의 여사건과 B의 겹침이다. 따라서 P(A의 여사건∩B)=3/10이고 p=10, q=3이므로 p+q=13이며 답은 ②이다.",
+  "newVisualInformation": [
+    "A⊂B에서 B 안에서 A 밖의 부분이 3/10으로 보여 P(B)−P(A)의 근거가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A$와 $B$에 대하여 $A, B^c$는 서로 배반이고, $P(B)=2P(A)$, $P(A)=\\frac{3}{10}$일 때, $P(A^c \\cap B)=\\frac{q}{p}$이다. $p+q$의 값을 구하면? (단, $p, q$는 서로소인 자연수) [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

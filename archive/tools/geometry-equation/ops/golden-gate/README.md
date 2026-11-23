@@ -85,7 +85,7 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 | `defect` | 학생이 무엇을 틀리게 읽는가(한 줄) |
 | `reuses` | 이 행이 기대는 저장소의 기존 테스트·관측기 파일 경로(1개 이상, 존재해야 함). 같은 검사를 두 벌 만들지 않기 위한 표시 |
 | `plan` | 작은 인라인 plan 객체, 또는 이 폴더 기준 plan 파일 경로(`plans/…json`). `planPatch`(`{"점.찍은.경로": 값}`)로 일부만 바꿀 수 있다 |
-| `generator.kind` | plan을 무엇으로 돌리나: `exp-label-tex`(지수 식 글자·TeX), `math-label-serialize`(공용 수식 직렬화), `construction-marks`(작도 plan의 plane marks, specFor), `angle-fixture`·`region-fixture`(엔진이 만든 그림을 기존 테스트의 fixture로 관측기에 넣음), `axis-titles-model`(그래프 plan의 축 이름), `axis-value-layout`(축 값 라벨 배치) |
+| `generator.kind` | plan을 무엇으로 돌리나: `exp-label-tex`(지수 식 글자·TeX), `math-label-serialize`(공용 수식 직렬화), `construction-marks`(작도 plan의 plane marks, specFor), `angle-fixture`·`region-fixture`(엔진이 만든 그림을 기존 테스트의 fixture로 관측기에 넣음), `axis-titles-model`(그래프 plan의 축 이름), `axis-value-layout`(축 값 라벨 배치), `label-room-leader`(node쪽: label-room.mjs가 지시선 라벨 자리를 잡음; 관측기 변조 `leader-crosses-stroke`·`leader-label-onto-stroke`·`leader-label-onto-label`) |
 | `expect` | 생성기 판정: `PASS` 또는 `REJECT:<코드>`(코드나 `코드:세부`와 일치) |
 | `observer.kind` | (선택) 정상 그림을 읽는 관측기: `exp-formula-glyphs`, `angle-label`, `region-label`, `axis-titles`, `layout-capture`(`codePrefix`로 이 규칙의 코드만 본다) |
 | `mutations[]` | (observer가 있으면 필수) `{name, args?, expect, knownGap?}`. 정상 그림에 이름 붙은 변조를 가해 관측기에 넣었을 때 `expect` 코드가 나와야 한다. 정상 그림은 관측기가 오류 없이 받아들여야 한다 |
@@ -110,3 +110,21 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 4. **안내 한 쪽**: `production/AUTHOR_GUIDE.md`(생성 소스는 `build-author-guide.mjs`)에 그 종류의 plan 필드 절을 쓴다.
 
 바꾼 뒤에는 `golden-gate.mjs --base origin/main --tests auto`로 기존 골든이 바이트 그대로인지 증명한다(render-plan·standalone-kinds는 공용이라 209개 전체).
+
+## 자리가 모자랄 때: label-room (R1-2)
+
+라벨이 실제 글꼴에서 자리를 못 찾으면 종류마다 제각각 실패하던 것(`SET_ELEMENT_NO_ROOM`, `STAT_LABEL_OUT_OF_BOUNDS`, `ELLIPSE_LABEL_NO_ROOM` ...)을 생성기 공통 층 `production/label-room.mjs` 하나가 같은 순서로 구제한다. 원장님 기본값은 "붐비거나 모호한 라벨은 지시선으로 끌어내지, 버리지 않는다"이다. 이 층은 생성기 쪽에만 있다(관측기와 코드·상수를 공유하지 않는다).
+
+- **순서(유한·고정):** ① STAGGER(엇갈림) → ② WRAP(줄바꿈) → ③ LEADER(자기 대상에서 출발하는 지시선) → ④ MARGIN(여백·틀 확대, 마지막). `orderSteps()`가 순서를 강제하고, 모르는 이름·중복은 던진다.
+- **언제 도나:** 그림이 이미 방 부족 코드로 **실패한 뒤에만**(`runStandaloneKind`가 `kind.room.codes`와 대조). 통과하는 그림은 이 층을 지나지 않으므로 바이트가 바뀌지 않는다. 어느 단계도 통과하지 못하면 **원래 실패 코드 그대로** 실패한다(새 코드 없음).
+- **기록:** 구제한 단계는 `row.fallback`에 `{kind, from, to:'ROOM_<STEP>', target?}`로 남는다(`ELLIPSE_FRAME_WIDEN` 등 기존 폴백과 같은 자리·모양). 관측기는 이 기록을 보고 기준을 낮추지 않는다: 지시선 라벨도 겹침·거리·소속의 일반 규칙으로 따로 검증한다.
+- **차선 자리(best place):** 단계를 다 써도 완벽한 자리가 없으면 그림을 가장 나은 자리에 **그려서 결과 옆에 둔다**(`<항목>-besteffort.svg`). 결과 `row.bestEffort`는 `{kind, failure:{code,detail}, step, degrees[], svgFile}`이고 위반마다 코드와 정도 숫자가 든다: 뷰박스 안쪽 여백을 넘은 px(`overflowPx`), 라벨 높이 대비 비율(`ratio`), 뷰박스 밖으로 잘렸는지(`cutOff`, `cutOffPx`), 겹친 넓이(`overlapAreaPx2`)와 작은 라벨 넓이 대비 비율, 관측기가 낸 코드(`OBSERVER_ERRORS`). 이 그림은 **묶이지 않는다**(실패는 그대로, 합격 점수는 게시 관문 점수표가 이 기록을 읽어 계산한다). 작도·그래프의 `LAYOUT_INVENTORY_INCOMPLETE`는 레이아웃이 그린 후보(자리를 못 찾은 라벨이 빠진 그림)를 같은 이름으로 두고 `unplaced`(라벨 id·종류)와 `labelCount`·`ratio`를 적는다.
+
+| 종류 | 시작 코드(요약) | 단계 | 어떻게 |
+|---|---|---|---|
+| stat | `STAT_LABEL_OUT_OF_BOUNDS` `STAT_LABELS_TOO_CLOSE` `STAT_*_NO_ROOM` | LEADER, MARGIN | LEADER: 정규분포 넓이 글자를 영역 밖 + 영역 안 점에서 시작하는 지시선. MARGIN: 눈금·z 줄을 라벨 실제 높이로(쌓은 분수), 수형도는 위아래 여백 12·28px |
+| set | `SET_*_NO_ROOM` `SET_LABELS_TOO_CLOSE` `SET_DIAGRAM_RENDERED_LAYOUT_FAIL` | LEADER (WRAP은 원소 라벨의 자체 시도 `setDiagramAttempts`) | 집합 이름을 모든 원 선에서 4px 떨어뜨리고, 자리가 없으면 원 밖 빈 곳 + 자기 원에서 시작하는 지시선 |
+| ellipse | `ELLIPSE_LABEL_NO_ROOM` `ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL` | LEADER (MARGIN은 `ELLIPSE_FRAME_WIDEN`, 기존) | 선분 길이 글자(`6√3`)를 선분 가운데에서 시작하는 지시선으로 빈 곳에. 지시선은 축 화살촉을 가로지르지 않는다. plan에 `coordinateLeader:["P"]` |
+| container, lattice | 없음 | 없음 | 자체 틀 확대 사다리(`GRAPH_GROWTH`)가 이미 있고 현행 코퍼스에 방 부족 실패가 없다. 다음 묶음 후보 |
+
+할 수 없는 경우(다른 선을 가로지를 수밖에 없는 지시선 등)는 몰래 caption으로 보내지 않고 지금처럼 정해진 코드로 거절한다. 새 종류가 단계를 가지려면 표 행에 `room: {codes, steps, apply, best?}`를 쓴다(`standalone-kinds.mjs` 머리말). 테스트: `tests/label-room.test.mjs`(순수), `tests/label-room-render.test.mjs`(Chrome).

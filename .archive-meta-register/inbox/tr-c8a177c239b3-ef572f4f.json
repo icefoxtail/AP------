@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-c8a177c239b3-ef572f4f",
+  "examUid": "22_복성고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/22_복성고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "f2034e7a587932f4d823b43a31cccd00f196bdb0",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-ef572f4f.type-ledger.json",
+        "sha256": "1c53d0e57698fca1dfa23913d22aea14c7bb63123b5ba21746200d904c602228"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7b88933306ff84e72176b0aebfb2e29401c0f9be0eba3bbcec7966a48a9c75f8",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "templateKey": "TPL_STRUCTURAL_FUNCTION_DETERMINE"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR"
+      },
+      "rationale": "중복인수 (x-2)²로 나누어떨어지므로 함수값과 도함숫값이 모두 0이어야 한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "955f12b6f1fb11fbee525ba457e4b4e5c0b07a465f2c272cdd4e58c9e34e8087",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-ef572f4f.type-ledger.json",
+          "sha256": "1c53d0e57698fca1dfa23913d22aea14c7bb63123b5ba21746200d904c602228"
+        }
+      ]
+    }
+  ]
+}

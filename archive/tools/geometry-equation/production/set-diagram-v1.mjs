@@ -950,7 +950,10 @@ function resolveVenn(spec,placed){
     if(placeElementRows())return;
     occupied.length=mark;
     elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
-    if(!spec.elementLeaders||!placeLeaderElements())bad('SET_ELEMENT_NO_ROOM');
+    if(!spec.elementLeaders||!placeLeaderElements()){
+      if(spec.degrade){occupied.length=mark;elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});spec.degrade.unplaced('SET_ELEMENT_NO_ROOM','elements');return;}   // label-room best place: the elements stay where they were first put
+      bad('SET_ELEMENT_NO_ROOM');
+    }
   };
   // Last resort (only when composing asked for it, after every in-region layout failed): an element whose label has no room in its region stands in the free space outside every circle, and a
   // leader line ends in a dot inside the region it belongs to (the way a normal-curve area value is led out). The labels that do fit stay inside their regions.
@@ -1058,7 +1061,7 @@ function resolveVenn(spec,placed){
       const edge=o=>Math.abs(Math.hypot(mx-o.cx,my-o.cy)-o.r);
       if(edge(c)>Math.min(...others.map(edge))+4)chosen=null;
     }
-    if(!chosen&&counted){
+    if(!chosen&&(counted||spec.nameLeaders)){
       // No room beside the circle: the group goes to the nearest free place outside every circle, and a short leader from its nearest edge ends on this circle.
       let best=null;
       for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
@@ -1083,7 +1086,10 @@ function resolveVenn(spec,placed){
       }
       if(best){chosen={x:best.x,y:best.y};leader=best.leader;}
     }
-    if(!chosen)bad(counted?'SET_COUNT_LABEL_NO_ROOM':'SET_LABEL_NO_ROOM');
+    if(!chosen){
+      if(spec.degrade){spec.degrade.unplaced(counted?'SET_COUNT_LABEL_NO_ROOM':'SET_LABEL_NO_ROOM',item.label.id);continue;}   // label-room best place: the name stays at its first place
+      bad(counted?'SET_COUNT_LABEL_NO_ROOM':'SET_LABEL_NO_ROOM');
+    }
     const nameBox=nameAt(chosen.x,chosen.y);
     item.box={x:r6(nameBox.x),y:r6(nameBox.y),width:nameBox.width,height:nameBox.height};
     item.label.anchor={x:r6(nameBox.x),y:r6(nameBox.y),ax:'start',ay:'top'};
@@ -1201,7 +1207,7 @@ function printPrim(p){
 // null when the text has too few words to break.
 const wrapElementFragment=(typeset,label,identity,fontPx,lines)=>wrapTextFragment(typeset,label,identity,fontPx,lines,{panelId:'set-diagram',factRole:'GIVEN'});
 // Everything composing does before it writes the SVG: the spec, every label typeset, the labels placed, the bounds and overlap checks (also what the unit tests run, without a browser).
-export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false}){
+export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false,nameRoom=false,degrade=null}){
     let spec,placed;
     try{spec=setDiagramSpec(plan,model,{compact,variant,...(compact?{}:{fontPx:font})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
@@ -1211,6 +1217,9 @@ export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false
     }
     const specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
     if(elementLeaders)spec.elementLeaders=true;   // set after the hash: a panel's spec is hashed (and re-derived by the composite's observation) without it
+    // label-room LEADER: a set name keeps clear of every circle's line (labelGap) and, with no such place, stands in free space on a leader to its own circle; degrade: the best place is drawn and the shortfall recorded
+    if(nameRoom){spec.labelGap=spec.labelGap??4;spec.nameLeaders=true;}
+    if(degrade)spec.degrade=degrade;
     placed=[];
     for(const label of spec.labels){
       let fragment;
@@ -1234,9 +1243,15 @@ export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false
     const {width,height}=spec.size;
     for(const item of placed){
       const b=item.box;
+      if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6){if(degrade){degrade.outOfBounds('SET_LABEL_OUT_OF_BOUNDS',item.label.id,b,{width,height},6);continue;}}
       if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6)throw new Stop(/^(set-count|universal-count)$/.test(item.label.role)||item.label.counted?'SET_COUNT_LABEL_NO_ROOM':item.label.placement==='set'?'SET_LABEL_NO_ROOM':'SET_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
     }
-    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop(placed[i].label.role==='element'||other.label.role==='element'?'SET_ELEMENT_NO_ROOM':'SET_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
+    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1)){
+      if(!overlaps(placed[i].box,other.box))continue;
+      const code=placed[i].label.role==='element'||other.label.role==='element'?'SET_ELEMENT_NO_ROOM':'SET_LABELS_TOO_CLOSE';
+      if(degrade){degrade.touching(code,placed[i].label.id,other.label.id,placed[i].box,other.box);continue;}   // label-room best place: recorded, not refused
+      throw new Stop(code,{labels:[placed[i].label.id,other.label.id]});
+    }
     return {spec,placed,specSha256};
 }
 /** The ways a Venn figure is laid out, in the order they are tried: as first drawn; then the labels wrapped onto 2 to 4 lines, each with the circles and rectangle redrawn larger or farther apart
@@ -1247,22 +1262,24 @@ export function setDiagramAttempts(model,compact=false){
   for(const elementLeaders of [false,true])for(let variant=0;variant<variants;variant++)for(const wrap of [0,2,3,4])out.push({wrap,variant,elementLeaders});
   return out;
 }
-export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
+// room 'LEADER' / degrade (label-room.mjs): a figure that already failed with a room code is laid out again with its set names clear of every circle's line (and led out when there is no such place);
+// degrade (a collector) draws the best place there is and records what is still wrong (status BEST_EFFORT, never bound).
+export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false,room,degrade=null}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
+  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'||status==='BEST_EFFORT'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
   let ownBrowser=null;
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec,placed;const typeset=typesetter(),font=typographyPolicy.baseFontPx;
     const attempt=({wrap,variant,elementLeaders})=>{
-      const out=layoutSetDiagram({plan,model,identity,typeset,font,compact,wrap,variant,elementLeaders});
+      const out=layoutSetDiagram({plan,model,identity,typeset,font,compact,wrap,variant,elementLeaders,...(room==='LEADER'||room==='BEST'?{nameRoom:true}:{}),...(degrade?{degrade}:{})});
       ({spec,placed}=out);lineage.specSha256=out.specSha256;
     };
     // A Venn figure whose element labels have no room is laid out again in the next way of setDiagramAttempts; a figure that already fits is not touched.
     const retryable=error=>(error instanceof Stop?error.status:error?.message)==='SET_ELEMENT_NO_ROOM';
-    const attempts=setDiagramAttempts(model,compact);
+    const attempts=degrade?setDiagramAttempts(model,compact).slice(-1):setDiagramAttempts(model,compact);   // best place: the most capable way (wrapped, with leaders), once
     for(const [k,way] of attempts.entries()){
       try{attempt(way);break;}
       catch(error){if(k===attempts.length-1||!retryable(error))throw error;}
@@ -1285,7 +1302,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     const errors=[...(audit.errors??[])];
     if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)errors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
     state.staticAudit={status:audit.status==='PASS'&&!errors.length?'PASS':'FAIL',errors};
-    if(state.staticAudit.status!=='PASS')throw new Stop('SET_DIAGRAM_STATIC_AUDIT_FAIL',{errors});
+    if(state.staticAudit.status!=='PASS'){if(degrade)degrade.observed('static-audit',errors);else throw new Stop('SET_DIAGRAM_STATIC_AUDIT_FAIL',{errors});}
     const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
     const page=await (browser??(ownBrowser=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
     let layout;
@@ -1293,10 +1310,11 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
-    const scoredAccepted=layout.status!=='PASS'&&noteCandidate({site:'figure',svg:svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS'&&!scoredAccepted)throw new Stop('SET_DIAGRAM_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    // A best-effort pass (R1-2 degrade) never reaches noteCandidate: its figure is already a deliberate second best.
+    const scoredAccepted=layout.status!=='PASS'&&!degrade&&noteCandidate({site:'figure',svg:svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted){if(degrade)degrade.observed('rendered-layout',layout.errors);else throw new Stop('SET_DIAGRAM_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     state.svg=svg;
-    return outcome('COMPOSED');
+    return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');
   }catch(error){
     if(!(error instanceof Stop))throw error;
     return outcome(error.status,error.detail);

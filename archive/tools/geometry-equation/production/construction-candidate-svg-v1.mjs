@@ -127,7 +127,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
   // Opt-in failure evidence only. These bytes never enter an acceptance decision or replace a final asset.
   const diagnostic=process.env.APMS_LAYOUT_DIAGNOSTICS_DIR?{plan,identity,typographyPolicy}:null;
   let ownBrowser=null;
-  const outcome=(status,detail=null)=>({schemaVersion:CANDIDATE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:status==='COMPOSED'?state.layoutRepairs:[],typographyPolicyProvenance:'CALLER_SUPPLIED_UNVERIFIED',sizeSelection:'NOT_RUN',actualArchive:'NOT_RUN',independentVisualReview:'NOT_RUN',productionAuthorized:false,qualification:'NOT_RUN'});
+  const outcome=(status,detail=null)=>({schemaVersion:CANDIDATE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:status==='COMPOSED'?state.layoutRepairs:[],typographyPolicyProvenance:'CALLER_SUPPLIED_UNVERIFIED',sizeSelection:'NOT_RUN',actualArchive:'NOT_RUN',independentVisualReview:'NOT_RUN',productionAuthorized:false,qualification:'NOT_RUN',...(status==='LAYOUT_INVENTORY_INCOMPLETE'&&state.bestEffort?{bestEffort:state.bestEffort}:{})});
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
     const graph=GRAPH_CAPABILITIES.has(plan?.capability)&&!!plan.graphPlan&&!plan.mathPlan;
@@ -223,7 +223,12 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // (AXV) a label that names a value on an axis (an interval end such as -4π/3) found no place that reads as that axis's tick of its own value: its own code. It is never moved far from the axis or onto a leader (it would read as a y value or as another line's label); the plan (viewport, the other labels or lines near that x) has to change.
     const axisValueIds=new Set((bridged.spec.objects??[]).filter(row=>row?.axisValue).map(row=>row.id)),axisStuck=[...unresolved,...suppressed].map(id=>String(id?.id??id)).filter(id=>axisValueIds.has(id));
     if(axisStuck.length)throw new Stop('AXIS_VALUE_LABEL_NO_PLACE',{labelIds:axisStuck,unresolved,suppressed});
-    if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
+    if(unresolved.length||suppressed.length){
+      // label-room best place: the candidate as the layout drew it (the labels it could not place are missing) is kept for the caller to put beside the failure; the failure itself is unchanged
+      const labelKind=id=>{const label=prepared.labels.find(row=>row.id===id);return label?{id,kind:label.kind,...(typeof label.text==='string'&&label.text.length<=24?{text:label.text}:{})}:{id};};
+      state.bestEffort={svg,labelCount:prepared.labels.length,unresolved:unresolved.map(id=>labelKind(String(id?.id??id))),suppressed:suppressed.map(id=>labelKind(String(id?.id??id)))};
+      throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
+    }
     // Binding a repair needs Archive profile/policy refs: without repairContext never accept one silently.
     if(repairs.length&&!repairContext)throw new Stop('LAYOUT_REPAIR_NOT_BOUND',{repairs});
     if(repairs.length){

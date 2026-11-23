@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-101cc77f3963-2918a3b5",
+  "examUid": "21_효천고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/21_효천고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "cc9884a558efc719a7956b1a760693936ff4468e",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-101cc77f3963-2918a3b5.type-ledger.json",
+        "sha256": "18cd0e382eea3b911ae6904da7020d884efb0320f6b670c0100606f47209ab4c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0bdd536558bc110bd6fa0c7337d3107d358efc4a0ea20a247c19596fa1a89f10",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+        "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT"
+      },
+      "rationale": "a=4x-x²가 열린구간에서 엄격히 증가하므로 양 끝값을 제외한 a의 범위를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "83a17db9728221d5947e4c2a9a02bca0e5a26b4582881d578ec0dc837b25e850",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-101cc77f3963-2918a3b5.type-ledger.json",
+          "sha256": "18cd0e382eea3b911ae6904da7020d884efb0320f6b670c0100606f47209ab4c"
+        }
+      ]
+    }
+  ]
+}

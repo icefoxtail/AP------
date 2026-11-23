@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-21e704e7dd26-0fa63c68",
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6d9757c340e3bd0f60f7728ce400c09e594b6818b24e9b8d4829d0940bd5658b",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+      "templateKey": null,
+      "step": "f(a)=2a+3=1을 세워 입력값 a=-1을 구한다.",
+      "note": " 새 PT 제안: 일차함수의 함숫값과 입력값 결정. 일차함수 식에 입력을 대입해 함숫값을 구하거나 주어진 함숫값으로 일차방정식을 풀어 입력값을 결정한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d13f71337cb7fb946060731137f6d0280b54bf776e6b974c964a0ba5dd5a687b",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_FORMULA",
+      "step": "y축 방향으로-2만큼 이동하면 모든 함숫값에서2를 빼므로 y=3x-2를 얻는다.",
+      "note": " 새 TPL 제안: 평행이동한 일차함수 결정의 직접 풀이. 정의: y축 방향으로-2만큼 이동하면 모든 함숫값에서2를 빼므로 y=3x-2를 얻는다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b327e7079d0f502a4afe22dcb1977fd0e11df95a11417aa6a85ec391dc74b2a",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+      "templateKey": "TPL_M2_LINEAR_EQUATION_POINT_SUBSTITUTION_POINT",
+      "step": "지나는점(-4,-2)을 x+ay+8=0에 대입하여4-2a=0에서 a=2를 구한다.",
+      "note": " 새 TPL 제안: 그래프 위의 점을 이용한 미지수 결정의 직접 풀이. 정의: 지나는점(-4,-2)을 x+ay+8=0에 대입하여4-2a=0에서 a=2를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_17b89877ccd95cb53802037753270364a0c1c0a062f9b0ac773a88707d79111a",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT",
+      "step": "두 직선 교점(2,1)이 두 식의 공통해임을 이용해2a+2=4,2+b=-2를 풀고 a+b=-3을 구한다.",
+      "note": " 새 TPL 제안: 연립방정식의 해와 그래프 교점의 직접 풀이. 정의: 두 직선 교점(2,1)이 두 식의 공통해임을 이용해2a+2=4,2+b=-2를 풀고 a+b=-3을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5ec1b5a3db6a2f4d5e6d40acafa2428f88c48fe44e497475bbfe62bc2b6d05f8",
+      "sourceOrdinal": 13,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "각 사람이12명과 악수하는13×12에서 각 악수를 두 번 센 중복을 나누어78을 구한다.",
+      "note": " 새 PT 제안: 순서 없는 조합 선택. 여러 대상 중 정해진 수를 순서 없이 고르는 경우에서 순서로 인한 중복을 제거한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f6781e99413d5250395e62484a047db4c00587eaa459c68bfe0add83d468c6c",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "서로다른 네 동전의16개 결과 중 뒷면 위치를 고르는4개가 앞면3개이므로 확률1/4를 구한다.",
+      "note": " 새 PT 제안: 등가능한 표본공간에서 확률 계산. 동전·주사위 등 등가능한 결과를 빠짐없이 세어 사건에 속하는 결과 수를 전체 결과 수로 나눈다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_36672a96facba8b1cb6735a5388834302c91a6ec0d20896323c6c3ac118193aa",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "전체 두명선택21개 중 남자쌍6개와 여자쌍3개를 합한9개의 비를 취하여3/7을 구한다.",
+      "note": " 새 PT 제안: 등가능한 표본공간에서 확률 계산. 동전·주사위 등 등가능한 결과를 빠짐없이 세어 사건에 속하는 결과 수를 전체 결과 수로 나눈다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "독립 가정 아래 합이홀수인 짝홀과 홀짝 두 경우를 나누어1/2×1/3+1/2×2/3=1/2를 구한다.",
+      "note": "원문의심: 두 자연수의 홀짝 사건이 독립이라는 조건이 발문에 없다. 주변확률만 주어서는 합의 홀수확률을 확정할 수 없다. 새 PT 제안: 독립 시행의 확률 곱과 합. 독립인 시행에서 요구된 성공·실패 조합의 확률을 곱하고 배반인 경우를 더한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0b20ea9127511c9d3c915be2ee70919a94c70be8635298b16ddc7c2a6cebbe3b",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "승부 미결정인 같은눈6개를 전체36개에서 제외하여 승부결정확률30/36=5/6을 구한다.",
+      "note": " 새 PT 제안: 여사건을 이용한 확률 계산. 요구한 사건 대신 여사건의 결과를 세고 전체확률1에서 빼 목표 확률을 구한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0015dc69def320de7fa4e39bc81e7c8bbf7d53aa55fb05a7d5a96143cbdeff8b",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "모두뒷면과 적어도하나앞면은 서로 여사건이므로 두 확률의 합은1이다.",
+      "note": " 새 PT 제안: 여사건을 이용한 확률 계산. 요구한 사건 대신 여사건의 결과를 세고 전체확률1에서 빼 목표 확률을 구한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff9040c2829edb3a2eb671bac7d239a6e35df2a84f571df44ca90438e5a7a575",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "각 문제를 독립적으로 임의선택할 때 모두틀림(2/3)³을1에서 빼 적어도하나정답확률19/27을 구한다.",
+      "note": " 새 PT 제안: 여사건을 이용한 확률 계산. 요구한 사건 대신 여사건의 결과를 세고 전체확률1에서 빼 목표 확률을 구한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "12칸주기의 이동에서6으로 가려면 눈의곱6·18·30이어야 한다. 순서쌍4+2+2=8개를 전체36개로나누어2/9를 구한다.",
+      "note": " 새 PT 제안: 등가능한 표본공간에서 확률 계산. 동전·주사위 등 등가능한 결과를 빠짐없이 세어 사건에 속하는 결과 수를 전체 결과 수로 나눈다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

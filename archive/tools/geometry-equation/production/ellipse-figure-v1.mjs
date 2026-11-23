@@ -38,7 +38,7 @@ const px2=value=>String(Math.round(value*100)/100);
 const POINT_ID=/^[A-Z][0-9']?$/;
 const ELLIPSE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 
-const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription'];
+const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription','coordinateLeader'];
 const ELLIPSE_KEYS=['center','semiAxisSquared','majorAxis'];
 const PAIR_ELLIPSE_KEYS=[...ELLIPSE_KEYS,'id'];
 const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label','ellipseId','coordinates'];
@@ -169,6 +169,11 @@ export function validateEllipseFigurePlan(plan){
       if(!pair||!ellipseIds.has(point.ellipseId))bad('ELLIPSE_POINT_ELLIPSE_ID_INVALID');
     }else if(pair&&['FOCUS','VERTEX','ON_ELLIPSE'].includes(point.kind))bad('ELLIPSE_POINT_ELLIPSE_ID_REQUIRED');
   }
+  // coordinateLeader (the field graph plans use): the coordinates of these points stand in free space on a leader that starts at the point
+  if(plan.coordinateLeader!==undefined){
+    if(!Array.isArray(plan.coordinateLeader)||plan.coordinateLeader.length>points.length||new Set(plan.coordinateLeader).size!==plan.coordinateLeader.length)bad('ELLIPSE_COORDINATE_LEADER_INVALID');
+    for(const id of plan.coordinateLeader)if(!points.some(point=>point.id===id&&point.coordinates===true))bad('ELLIPSE_COORDINATE_LEADER_INVALID');
+  }
   for(const segment of plan.segments??[]){
     onlyKeys(segment,SEGMENT_KEYS,'ELLIPSE_SEGMENT_INVALID');
     if(!ids.has(segment.from)||!ids.has(segment.to)||segment.from===segment.to)bad('ELLIPSE_SEGMENT_INVALID');
@@ -280,7 +285,7 @@ function labelCandidates(point,cx,cy,wide=false){
   return rows;
 }
 
-export function placeLabels(entries,layout,obstacles){
+export function placeLabels(entries,layout,obstacles,roomOpts={}){   // roomOpts.room: label-room 'LEADER' (a measure with no near place goes on a leader) / 'BEST' (the roomiest place, recorded in roomOpts.degrade)
   // entries: {key,width,height,anchorX,anchorY,pointX,pointY,role,...}; returns boxes in place.
   const placed=[];
   const placedBoxes=[];const placedPoints=[];const placedLeaders=[];
@@ -415,6 +420,38 @@ export function placeLabels(entries,layout,obstacles){
         if(!best||score>best.score)best={box,score,leader,anchored};
       }
     }
+    if(!best&&entry.role==='measure'&&!entry.requiresLeader&&(roomOpts.room==='LEADER'||roomOpts.room==='BEST')){
+      // label-room LEADER: the measure stands in free space and a leader from the middle of its own segment leads to it (the exact value is written as it always was)
+      const anchored={...entry,requiresLeader:true};
+      // farther places than the near ones (the leader starts at the middle of its own segment): the same eight directions, 48..92 px out. Built here, not in the spec, so the spec (and its hash) is what it always was.
+      const seg=entry.ownerSegment,len=Math.hypot(seg.b[0]-seg.a[0],seg.b[1]-seg.a[1])||1,nx=-(seg.b[1]-seg.a[1])/len,ny=(seg.b[0]-seg.a[0])/len;
+      const farDirections=[[nx,ny],[nx,-ny],[-nx,ny],[-nx,-ny],[Math.SQRT1_2,Math.SQRT1_2],[Math.SQRT1_2,-Math.SQRT1_2],[-Math.SQRT1_2,Math.SQRT1_2],[-Math.SQRT1_2,-Math.SQRT1_2]];
+      const leaderCandidates=[];for(const distance of [48,56,66,78,92])for(const [dx,dy] of farDirections)leaderCandidates.push({dx:dx*distance,dy:dy*distance,distance});
+      for(const delta of leaderCandidates){
+        const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+        if(blocked(box,anchored))continue;
+        const leader=leaderFor(box,anchored);if(!leader)continue;
+        const score=-delta.distance;
+        if(!best||score>best.score)best={box,score,leader,anchored};
+      }
+    }
+    if(!best&&roomOpts.room==='BEST'&&roomOpts.degrade){
+      // label-room best place: the candidate that touches the least (blocked boxes counted by area), kept with the shortfall recorded
+      let pick=null;
+      for(const delta of [...entry.candidates,...(entry.farCandidates??[])]){
+        const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+        const edge=entry.coordinates||layout.arch?12:4;
+        if(box.x<edge||box.y<edge||box.x+box.width>layout.size.width-edge||box.y+box.height>layout.size.height-edge)continue;
+        const over=placedBoxes.reduce((sum,other)=>sum+Math.max(0,Math.min(box.x+box.width,other.x+other.width)-Math.max(box.x,other.x))*Math.max(0,Math.min(box.y+box.height,other.y+other.height)-Math.max(box.y,other.y)),0);
+        const ink=obstacles.curve.filter(sample=>pointInBox(sample[0],sample[1],box,1.5)).length+obstacles.segments.filter(segment=>pointInBox((segment.a[0]+segment.b[0])/2,(segment.a[1]+segment.b[1])/2,box,3.5)).length;
+        const cost=over*10+ink+delta.distance*0.05;
+        if(!pick||cost<pick.cost)pick={box,cost,over,ink,distance:delta.distance};
+      }
+      if(pick){
+        roomOpts.degrade.unplaced('ELLIPSE_LABEL_NO_ROOM',entry.key,{overlapAreaPx2:Math.round(pick.over*100)/100,strokeSamplesInBox:pick.ink,distanceFromTargetPx:Math.round(pick.distance*100)/100,labelHeightPx:Math.round(entry.height*100)/100});
+        best={box:pick.box,score:-pick.cost,leader:null};
+      }
+    }
     if(!best)throw new Stop('ELLIPSE_LABEL_NO_ROOM',{label:entry.key});
     const chosen=best.anchored??entry;
     placed.push({...chosen,box:best.box,leader:best.leader??null});
@@ -531,7 +568,7 @@ export function ellipseFigureSpec(plan,model){
     // coordinates:true on a point writes ID(x,y) beside it (the exact values of the point the model derived; the independent observer reads both numbers back)
     const withCoordinates=point.coordinates===true;
     labels.push({key:`point-${point.id}`,role:'point',pointId:point.id,text:withCoordinates?`${point.id}(${exactTex(point.x.exact)},${exactTex(point.y.exact)})`:point.id,
-      pointX:px,pointY:py,centerX:px,centerY:py,...(withCoordinates?{coordinates:true}:{}),candidates:labelCandidates({x:px,y:py},lc.x,lc.y,withCoordinates)});
+      pointX:px,pointY:py,centerX:px,centerY:py,...(withCoordinates?{coordinates:true}:{}),...(withCoordinates&&plan.coordinateLeader?.includes(point.id)?{requiresLeader:true}:{}),candidates:labelCandidates({x:px,y:py},lc.x,lc.y,withCoordinates)});
   }
   labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
@@ -830,7 +867,7 @@ export function stopCurveLeaderShort(leader,stop=CURVE_LEADER_STOP){
   return {...leader,b:[leader.b[0]-dx/length*stop,leader.b[1]-dy/length*stop]};
 }
 
-export async function renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders=false}){
+export async function renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders=false,room,degrade}){
   if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
   const spec=ellipseFigureSpec(plan,model);
   const font=typographyPolicy.baseFontPx,typeset=typesetter(),prepared=[];
@@ -841,7 +878,7 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
     catch(error){if(!isDomainCode(error))throw error;throw new Stop('ELLIPSE_TYPESET_ERROR',{labelId:label.key,code:error.message});}
     prepared.push({...label,width:fragment.intrinsic.width,height:fragment.intrinsic.height,fragment});
   }
-  const placed=placeLabels(prepared,layoutOf(model),ellipseLabelObstacles(spec));
+  const placed=placeLabels(prepared,layoutOf(model),ellipseLabelObstacles(spec,room),{room,degrade});
   const {width,height}=spec.size;
   let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
   const accessible=plan.accessibilityDescription!==undefined;
@@ -883,7 +920,7 @@ export async function auditEllipseSvg({plan,svg}){
 
 // Every drawn stroke a point name must stay clear of: the curve, the axes, the segments, the tangent
 // lines and the polygon edges (the Archive rendered-layout audit reads each of them as geometry).
-export function ellipseLabelObstacles(spec){
+export function ellipseLabelObstacles(spec,room){
   const curve=[];
   for(const prim of spec.prims.filter(prim=>prim.role==='ellipse')){
     curve.push(...ellipseSamples(prim.cx,prim.cy,prim.rx,prim.ry));
@@ -899,6 +936,9 @@ export function ellipseLabelObstacles(spec){
       const [x0,y0]=run[index-1],[x1,y1]=run[index],steps=Math.ceil(Math.hypot(x1-x0,y1-y0)/1.5);
       for(let step=1;step<steps;step++)curve.push([x0+(x1-x0)*step/steps,y0+(y1-y0)*step/steps]);
     }
+    if(room&&prim.role==='axis-head')prim.points.forEach((start,index)=>{   // label-room: a leader must not cross an axis arrow head either (the rendered check refuses it)
+      const end=prim.points[(index+1)%prim.points.length];segments.push({a:start,b:end});
+    });
     if(prim.role==='polygon')prim.points.forEach((start,index)=>{
       const end=prim.points[(index+1)%prim.points.length];segments.push({a:start,b:end});
     });
@@ -910,31 +950,33 @@ export function ellipseLabelObstacles(spec){
   };
 }
 
-export async function composeEllipseFigure({plan,model,identity,typographyPolicy,browser}){
+// room 'LEADER' / degrade (label-room.mjs): see the set and stat composers.
+export async function composeEllipseFigure({plan,model,identity,typographyPolicy,browser,room,degrade}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,
     svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
   const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,
-    status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,
+    status,detail,svg:status==='COMPOSED'||status==='BEST_EFFORT'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,
     renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
   let ownBrowser=null;
   try{
     // One pass renders, audits and measures the figure.  A browser LEADER_CROSSING on a curve-name leader is a grazing end on a corner of the sampled path, so the figure is
     // composed once more with its curve leaders ended short of the stroke (stopCurveLeaders); every other outcome, and a figure that passes the first time, is as before.
     const pass=async stopCurveLeaders=>{
-    const rendered=await renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders});
+    const rendered=await renderEllipseSvg({plan,model,identity,typographyPolicy,stopCurveLeaders,room,degrade});
     Object.assign(lineage,rendered.lineage);state.svg=rendered.svg;
     let audit;
     try{audit=await auditEllipseSvg({plan,svg:rendered.svg});}
     catch(error){
       if(!(error instanceof Stop))throw error;
+      if(degrade){degrade.observed('static-audit',[error.status]);return outcome('BEST_EFFORT',{degrees:degrade.items});}
       return outcome('ELLIPSE_FIGURE_STATIC_AUDIT_FAIL',{code:error.status,detail:error.detail});
     }
     lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
     if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)errors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
     state.staticAudit={status:audit.status==='PASS'&&!errors.length?'PASS':'FAIL',errors};
-    if(state.staticAudit.status!=='PASS')return outcome('ELLIPSE_FIGURE_STATIC_AUDIT_FAIL',{errors});
+    if(state.staticAudit.status!=='PASS'){if(degrade){degrade.observed('static-audit',errors);return outcome('BEST_EFFORT',{degrees:degrade.items});}return outcome('ELLIPSE_FIGURE_STATIC_AUDIT_FAIL',{errors});}
     const {width,height}=rendered.spec.size;
     const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
     const page=await (browser??(ownBrowser??=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
@@ -944,9 +986,10 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
-    const scoredAccepted=layout.status!=='PASS'&&noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS'&&!scoredAccepted)return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
-    return outcome('COMPOSED');
+    // A best-effort pass (R1-2 degrade) never reaches noteCandidate: its figure is already a deliberate second best.
+    const scoredAccepted=layout.status!=='PASS'&&!degrade&&noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted){if(degrade){degrade.observed('rendered-layout',layout.errors);return outcome('BEST_EFFORT',{degrees:degrade.items});}return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
+    return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');
     };
     const first=await pass(false);
     if(first.status==='ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL'&&first.detail.errors.some(code=>/^LEADER_CROSSING:leader-curve-/.test(code)))return await pass(true);

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-d2c597a4d74f-d787a87d",
+  "sourceArchiveFile": "original/high/h2/1final/22_순천고_1학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_69047a8c852178c6ab2c87c30b2fafebfae90f81e1984fd6a853c6322788be2d",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+      "step": "배반조건 두개를 C⊆B-A={2,14}로 바꾸어 부분집합4개를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b07f048389c5d44ab07896888a616166040200ed8b9ea77623e6635ea7ae238a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "step": "배반 집합의 크기1≤|A|≤|B|를 |A|1,2,3별로 나누어186+165+20=371이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-0727a9631e72-528ec251",
+  "examUid": "25_금당중_2학기_중간_중3_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "expectedSourceBlobSha1": "20c1933b0a8ee229ea7cb739b6c97ec6c2676dad",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0727a9631e72-528ec251.type-ledger.json",
+        "sha256": "1f75874b43aabfdf955d4d3b8e93eac9ef6472141ad183f4f6723434ca4df651"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_5122e7621c4603dad2582591cc0280d6befc4876c5bc968aa657fc6e5f1f6d6c",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "중심에서 현에 내린 수선이 현을 이등분하므로 현 길이를 2√(10²−6²)=16으로 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "3f6eeb0f66bde1496815ed43af6dd2e8a3a0e4e1ad119e1869a6f372eb12876d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0727a9631e72-528ec251.type-ledger.json",
+          "sha256": "1f75874b43aabfdf955d4d3b8e93eac9ef6472141ad183f4f6723434ca4df651"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_281a94e7a2179ea765cb7e013678a09d250e5dcdedf1d7a02152fba26492b781",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_DIVISION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "반지름을 r로 놓고 반현 6과 중심거리 r−2에 피타고라스를 적용해 r²=(r−2)²+36을 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "84f7256f9bbb04ba7ee756d7448f90dcf7e3643694a6b3ce8807b976e7f0ef8e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0727a9631e72-528ec251.type-ledger.json",
+          "sha256": "1f75874b43aabfdf955d4d3b8e93eac9ef6472141ad183f4f6723434ca4df651"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_db0d2d400cd5fc5597bb5a9a1bdb0b76ca32d16b9314aac09f79a7324d4c0676",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "접선과 반지름이 수직이고 PO=8+5=13이므로 접선 길이 √(13²−5²)=12를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "be87c0f756086f5eb131b53c412f6b420fa30f9f2ab4a33244a0cd7994e70536",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0727a9631e72-528ec251.type-ledger.json",
+          "sha256": "1f75874b43aabfdf955d4d3b8e93eac9ef6472141ad183f4f6723434ca4df651"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_814c0b794d12bab5fc57c40340f16a58fdae01037bd66a41b8e86273fa790135",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+      },
+      "after": {
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+      },
+      "rationale": "같은 반지름과 같은 반현을 가진 두 직각삼각형의 RHS 합동으로 대응변 OM=ON을 증명한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "ef5e8c1e86b5138c5f03fe3ba4542b5c4279d25d2c67e9a229cd1023b9c75bdf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0727a9631e72-528ec251.type-ledger.json",
+          "sha256": "1f75874b43aabfdf955d4d3b8e93eac9ef6472141ad183f4f6723434ca4df651"
+        }
+      ]
+    }
+  ]
+}
