@@ -9,6 +9,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 import { projectQuestionMetadata, QUESTION_METADATA_BROWSER_PATH } from "../lib/build-question-metadata-browser.mjs";
+import { CATALOG_SHARDS_DIR } from "../lib/build-archive2-catalog-shards.mjs";
 import { questionMetadataBytesAt, META_FILE as METADATA_FILE, SHARD_DIR } from "../../archive/tools/meta-foundation/question-metadata-format.mjs";
 
 export const RELEASE_SCHEMA = "ARCHIVE_PAGES_RELEASE_V1";
@@ -142,13 +143,14 @@ function temporaryShardReferences({ sourceRoot, manifest, registeredPaths }) {
 export async function computeReleaseIdentity({ sourceRoot = process.cwd(), registeredMainSHA,
   manifestPath = path.join(sourceRoot, "tools/archive-pages-release-manifest.json"), manifest = null } = {}) {
   assertRegisteredSnapshot({ sourceRoot, registeredMainSHA });
-  const { planPagesSite } = await import("../build-archive-pages-site.mjs");
+  const { planPagesSiteWithShards } = await import("../build-archive-pages-site.mjs");
   const tree = gitTreeEntries({ sourceRoot });
   const registeredPaths = new Set(tree.map(entry => entry.path));
   if (!manifest && !registeredPaths.has(path.relative(sourceRoot, path.resolve(manifestPath)).split(path.sep).join("/")))
     throw new Error("Pages package manifest is not in the registered snapshot");
   const packageManifest = manifest || JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-  const plan = planPagesSite({ sourceRoot, manifestPath, manifest: packageManifest });
+  // Same function the site build uses: a shard build that fails is skipped here exactly as it is skipped there (stage 1: no screen reads the shards).
+  const plan = await planPagesSiteWithShards({ sourceRoot, manifestPath, manifest: packageManifest });
   if (plan.totalBytes >= plan.maxBytes) throw new Error(`student package exceeds the existing ${plan.maxBytes}-byte limit`);
   const temporary = temporaryShardReferences({ sourceRoot, manifest: packageManifest, registeredPaths });
   for (const entry of plan.buildOnly) if (!registeredPaths.has(entry.path))
@@ -172,6 +174,10 @@ export async function computeReleaseIdentity({ sourceRoot = process.cwd(), regis
       const expected = projectQuestionMetadata(questionMetadataBytesAt(sourceRoot, registeredMainSHA).toString("utf8"));
       if (item.bytes !== expected.length || item.sha256 !== sha256(expected))
         throw new Error("question-metadata browser copy does not equal the projection of the registered snapshot's metadata shards");
+    } else if (entry.path.startsWith(`${CATALOG_SHARDS_DIR}/`) && packageManifest.catalogShards === true) {
+      // Resolved from the registered catalog + canonical input manifest + course aliases (every other input is bound by sha256 in that manifest); its bytes are in packageDigest.
+      if (!entry.catalogShardInputs?.length || !entry.catalogShardInputs.every(input => registeredPaths.has(input)))
+        throw new Error("catalog shard has an input outside the registered snapshot");
     } else if (entry.path === METADATA_FILE && tree.some(row => row.path.startsWith(`${SHARD_DIR}/`))) {
       // Git holds the question metadata as per-exam shards; the packaged one file is their assembly. It is accepted only
       // when its bytes equal the assembly of the registered commit's own shards (built from git objects, not the working tree).
