@@ -121,6 +121,44 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   assert.strictEqual(free.status, 'PASS');
   assert.ok(!('violations' in free));
 
+  // scored acceptance (render-plan --accept-scored): off by default, then a failing compose site is never let through; on, light flaws are accepted until the total passes 90 and a block never is
+  const cand = await import(pathToFileURL(path.resolve(__dirname, '..', 'archive/tools/geometry-equation/production/score-candidate.mjs')).href);
+  const light1 = id => [{ code: 'LEADER_CROSSING', id }];
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), false);
+  assert.strictEqual(cand.takeScoredAcceptance(), null);
+  cand.enableScoredAcceptance(true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('b') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('c') }), true);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('d') }), false, 'a fourth light flaw (88 points) is not accepted');
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: [{ code: 'OVERLAY_LINE_MISMATCH' }] }), false, 'a block is never accepted');
+  assert.strictEqual(cand.acceptArchiveViolations(light1('z')), true, 'the archive stage is scored on its own');
+  const taken = cand.takeScoredAcceptance();
+  assert.strictEqual(taken.scoreGate.status, 'SCORED_PASS');
+  assert.strictEqual(taken.scoreGate.score, 91);
+  assert.strictEqual(taken.scoreGate.tableVersion, table.version);
+  assert.deepStrictEqual(taken.scoreGate.stages, { compose: 91, archive: 97 });
+  assert.strictEqual(taken.scoreGate.stage, 'compose');
+  assert.strictEqual(taken.violations.length, 4);
+  cand.resetCandidate();
+  assert.strictEqual(cand.takeScoredAcceptance(), null, 'a new render starts with nothing accepted');
+  cand.enableScoredAcceptance(false);
+  assert.strictEqual(cand.noteCandidate({ svg: '<svg/>', violations: light1('a') }), false);
+
+  // the publishable list: only ARCHIVE_BOUND results that carry a SCORED_PASS receipt; a normal pass (no scoreGate) is not listed
+  const fs = require('fs'), os = require('os');
+  const pub = await import(pathToFileURL(path.join(dir, 'publishable.mjs')).href);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'scored-'));
+  const put = (name, result, withSvg = true) => { fs.mkdirSync(path.join(tmp, 'x', 'out'), { recursive: true }); fs.writeFileSync(path.join(tmp, 'x', 'out', name + '-result.json'), JSON.stringify(result)); if (withSvg) fs.writeFileSync(path.join(tmp, 'x', 'out', name + '-solution.svg'), '<svg/>'); };
+  put('q1', { status: 'ARCHIVE_BOUND' });
+  put('q2', { status: 'ARCHIVE_BOUND', scoreGate: { status: 'SCORED_PASS', score: 94, passScore: 90, tableVersion: table.version, deductions: [] } });
+  put('q3', { status: 'ARCHIVE_BOUND', scoreGate: { status: 'SCORED_PASS', score: 80, passScore: 90, tableVersion: table.version, deductions: [] } });
+  put('q4', { status: 'FAILED', scoreGate: { status: 'SCORED_PASS', score: 94, passScore: 90, tableVersion: table.version } });
+  const listed = pub.listPublishable([tmp]);
+  assert.deepStrictEqual(listed.map(x => [x.item, x.publishable]), [['q2', true], ['q3', false]]);
+  assert.strictEqual(listed[0].receipt, 'SCORED_PASS');
+  fs.rmSync(tmp, { recursive: true, force: true });
+
   // PREFIX:REASON codes (phone display check): the reason decides
   const phone = r => score.classify('ARCHIVE_PHONE_DISPLAY_FAIL:' + r).track;
   for (const r of ['IMAGE_LOAD_FAIL', 'TARGET_OUTSIDE_SCREEN', 'TARGET_HORIZONTAL_OVERFLOW', 'TEXT_CLIPPED', 'GEOMETRY_VIEWPORT_CLIPPING', 'UNLISTED_REASON']) assert.strictEqual(phone(r), 'BLOCK', r);

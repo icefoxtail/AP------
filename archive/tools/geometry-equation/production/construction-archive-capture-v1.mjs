@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,canonicalJson,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {compositePanelBytes} from './composite-candidate-svg-v1.mjs';
+import {acceptArchiveViolations} from './score-candidate.mjs';
 import {parseQuestionUidV2,SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath,archiveAssetSha256,isArchiveExamSourcePath} from '../record-visual-browser-evidence.mjs';
@@ -386,13 +387,13 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     }
     let layout;
     const recorded=row.layouts?.find(item=>item.id===assetId);
-    if(recorded)layout={source:'ARCHIVE_ROW_ISOLATED_REPLAY',status:recorded.status,errors:recorded.errors??[]};
+    if(recorded)layout={source:'ARCHIVE_ROW_ISOLATED_REPLAY',status:recorded.status,errors:recorded.errors??[],...(recorded.scoredAccepted===true?{scoredAccepted:true}:{})};
     else if(finite){// the row has no analysis of this asset: replay the same bytes at the real image rect
       const browser=await launchBrowser();
       try{
         const page=await browser.newPage({viewport:{width:Math.ceil(rect.width),height:Math.ceil(rect.height)}});
         const analysis=analyzeRenderedLayout(await captureAtDisplaySize(page,composed.svg,rect,{publicationViewport:PUBLICATION_VIEWPORT}));
-        layout={source:'MODULE_REPLAY_AT_ACTUAL_RECT',status:analysis.status,errors:analysis.errors};
+        layout={source:'MODULE_REPLAY_AT_ACTUAL_RECT',status:analysis.status,errors:analysis.errors,...(analysis.status!=='PASS'&&acceptArchiveViolations(analysis.violations)?{scoredAccepted:true}:{})};
       }finally{await browser.close();}
     }else layout={source:'NONE',status:'FAIL',errors:['NO_TARGET_RECT']};
     state.layout=layout;
@@ -404,7 +405,7 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
       naturalSize:pass(target?.loaded===true&&target.naturalWidth===intrinsic.width&&target.naturalHeight===intrinsic.height),
       sizeClass:pass(target?.sizeClass===requestedSizeClass),
       displayScale:pass(finite&&difference.withinTolerance),
-      layout:pass(layout.status==='PASS')
+      layout:pass(layout.status==='PASS'||layout.scoredAccepted===true)
     };
     const detail={
       network:{policy:row.network?.policy??null,externalRequests:row.network?.externalRequests??null},

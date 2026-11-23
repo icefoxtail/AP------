@@ -31,7 +31,7 @@ import {observeDisplayedPointNames,planNameExpectations} from './point-name-obse
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
 import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
-import {resetCandidate,takeCandidate} from './score-candidate.mjs';
+import {resetCandidate,takeCandidate,enableScoredAcceptance,takeScoredAcceptance} from './score-candidate.mjs';
 import {scoreFigure} from '../ops/score/score.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -56,7 +56,23 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
-export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
+// acceptScored (CLI --accept-scored 1, or APMS_ACCEPT_SCORED=1): a figure whose candidate scored SCORED_PASS (score gate, ops/score) is rendered a second time with scored acceptance on,
+// so it goes through the archive capture and comes back ARCHIVE_BOUND with scoreGate on the result (status SCORED_PASS, score, deductions, tableVersion). Off by default: nothing else changes.
+export async function renderPlan(args){
+  const first=await renderPlanOnce(args);
+  if(!(args.acceptScored??process.env.APMS_ACCEPT_SCORED==='1'))return first;
+  if(first.status!=='FAILED'||first.scoreGate?.status!=='SCORED_PASS')return first;
+  enableScoredAcceptance(true);
+  let second;
+  try{second=await renderPlanOnce(args);}finally{enableScoredAcceptance(false);}
+  if(second.status==='ARCHIVE_BOUND'&&second.scoreGate?.status==='SCORED_PASS')return second;
+  // still not bound (another check failed): the first failure stays as the result, with its candidate and score
+  const name=String(args.item?.dir??args.item?.tag??'figure');
+  fs.writeFileSync(path.join(args.outDir,`${name}-result.json`),JSON.stringify(first,null,1)+String.fromCharCode(10));
+  return first;
+}
+
+async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeClass}){
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
   const name=String(meta.dir??meta.tag??'figure');
@@ -86,9 +102,15 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     const status=scored.verdict==='PASS'?'SCORED_PASS':scored.verdict;
     return {candidate:{file,svgSha256:'sha256:'+crypto.createHash('sha256').update(cand.svg).digest('hex')},violations:cand.violations,scoreGate:{status,score:scored.score,passScore:scored.passScore,tableVersion:scored.tableVersion,deductions:scored.findings,...(scored.blockReason?{blockReason:scored.blockReason}:{})}};
   };
+  // A figure that got through the archive capture only on a score (scored acceptance): the receipt fields. A normally passing figure never has them.
+  const acceptedRecord=()=>{
+    if(row.status!=='ARCHIVE_BOUND')return {};
+    const accepted=takeScoredAcceptance();
+    return accepted?{violations:accepted.violations,scoreGate:accepted.scoreGate}:{};
+  };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord()};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord()};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -424,7 +446,7 @@ async function runMain(argv){
     const manifest=JSON.parse(fs.readFileSync(args.manifest+'.manifest.json','utf8'));
     const results=[];
     for(const meta of manifest.items){
-      const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir']});
+      const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir'],acceptScored:args['accept-scored']===undefined?undefined:args['accept-scored']==='1'});
       results.push({item:meta.dir,bucket:meta.bucket,fam:meta.fam,ordinal:meta.ordinal,...r});
       console.log(line(r,meta.dir));
     }
@@ -432,7 +454,7 @@ async function runMain(argv){
     return results.some(r=>r.status==='FAILED')?1:0;
   }
   const item=JSON.parse(fs.readFileSync(args.item,'utf8'));
-  const r=await renderPlan({item,plan:args.plan,outDir:args.out,packetDir:args['packet-dir']});
+  const r=await renderPlan({item,plan:args.plan,outDir:args.out,packetDir:args['packet-dir'],acceptScored:args['accept-scored']===undefined?undefined:args['accept-scored']==='1'});
   console.log(JSON.stringify(stdoutView(r)));
   return r.status==='FAILED'?1:0;
 }

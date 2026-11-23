@@ -303,9 +303,10 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout','OUTPUT_NOT_CANONICAL');
     // displayTextBelow11px* exist only when a label displays under 11 CSS px (information since 2026-11-23, not a failure)
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
-    if(layout.status!=='PASS'||softStop)noteCandidate({site:'figure',svg:svg,violations:[...softViolations,...(layout.violations??[])],errors:[...softViolations.map(v=>v.code+(v.id?':'+v.id:'')),...(layout.errors??[])]});
-    if(softStop)throw softStop;
-    if(layout.status!=='PASS')throw new Stop('RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
+    const scoredAccepted=(layout.status!=='PASS'||!!softStop)&&noteCandidate({site:'figure',svg:svg,violations:[...softViolations,...(layout.violations??[])],errors:[...softViolations.map(v=>v.code+(v.id?':'+v.id:'')),...(layout.errors??[])]});
+    if(softStop&&!scoredAccepted)throw softStop;
+    if(layout.status!=='PASS'&&!scoredAccepted)throw new Stop('RENDERED_LAYOUT_FAIL',{errors:layout.errors});
 
     state.svg=svg;
     return outcome('COMPOSED');

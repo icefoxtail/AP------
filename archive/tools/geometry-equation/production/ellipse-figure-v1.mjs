@@ -943,8 +943,9 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
-    if(layout.status!=='PASS')noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS')return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
+    const scoredAccepted=layout.status!=='PASS'&&noteCandidate({site:'figure',svg:rendered.svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted)return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     return outcome('COMPOSED');
     };
     const first=await pass(false);

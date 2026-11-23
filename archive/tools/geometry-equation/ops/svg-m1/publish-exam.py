@@ -78,12 +78,16 @@ def main():
         scale=result.get('solutionImageScale')
         if scale is not None and (isinstance(scale,bool) or not isinstance(scale,(int,float)) or not 30<=scale<=100): raise ValueError(f'q{o}: invalid solutionImageScale in render result')
         if pj.get('scale') is not None and pj.get('scale')!=scale: raise ValueError(f'q{o}: publish scale differs from validated render scale')
+        gate=result.get('scoreGate')
+        if gate is not None and (gate.get('status')!='SCORED_PASS' or isinstance(gate.get('score'),bool) or not isinstance(gate.get('score'),(int,float)) or gate['score']<gate.get('passScore',90) or not gate.get('tableVersion')): raise ValueError(f'q{o}: scoreGate on the render result is not a SCORED_PASS receipt')
         state_path=d/'out/figure-state.json'
         if state_path.exists():
             lineage=read(state_path).get('capture',{}).get('lineage',{}).get('l1SvgSha256')
             if lineage is not None: require_hash(staged,lineage)
         obj={'src':src,'ord':o,'svg':str(staged),'sha256':digest,'reviewPng':str(png),'pngSha256':a['pngSha256'],'reviewPublish':str(publish_path),'publishSha256':publish_digest,'reviewReplacement':is_replace,'key':f'{fam.lower()}-{o}','fam':fam,'alt':alt if alt.startswith('해설 그림') else '해설 그림: '+alt,'caption':caption,'size':size}
         if scale is not None: obj['scale']=scale
+        # score gate receipt (ops/score): a figure that went through the archive capture on a score (render-plan --accept-scored) carries SCORED_PASS, its score, deductions and the table version into the rows
+        if gate is not None: obj['scoreGate']={k:gate[k] for k in ('status','score','passScore','tableVersion','stage','stages','deductions') if k in gate}
         if is_replace:
             k=2
             while (adir/asset_name(o,f'-v{k}')).exists(): k+=1

@@ -447,8 +447,9 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout');
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
-    if(layout.status!=='PASS')noteCandidate({site:'composite',svg:svg,violations:layout.violations,errors:layout.errors});
-    if(layout.status!=='PASS')throw new Stop('COMPOSITE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    // Score gate acceptance (off unless a scored re-render turned it on): noteCandidate() answers true when the violations score PASS, and the figure then goes on to the archive capture.
+    const scoredAccepted=layout.status!=='PASS'&&noteCandidate({site:'composite',svg:svg,violations:layout.violations,errors:layout.errors});
+    if(layout.status!=='PASS'&&!scoredAccepted)throw new Stop('COMPOSITE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');
   }catch(error){
