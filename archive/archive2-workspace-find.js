@@ -642,7 +642,7 @@
       ? book.unit || title
       : exam.school && period && exam.semester && kind === "exam"
         ? `${exam.school} ${exam.semester}학기 ${period}` : title;
-    const subject = exam.primaryStandardCourse || unique((exam.courseRanges || []).map((range) => range.standardCourse)).join(" · ") || exam.subject;
+    const subject = exam.primaryStandardCourse || unique((exam.courseRanges || []).map((range) => range.standardCourse)).join(" · ") || (globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(exam) ?? exam.subject);
     const meta = [book ? "" : subject, exam.qCount ? `${exam.qCount}문항` : "", options.at ? relativeDayLabel(options.at) : ""]
       .filter(Boolean).join(" · ");
     const badges = `${kind !== "exam" && exam.contentType ? badge(exam.contentType) : ""}${exam.gradeConflict ? badge("학년 충돌", "warn") : ""}`;
@@ -677,7 +677,7 @@
     const rows = sets.map((set) => {
       const setIndex = examIndexOf(set);
       const setTitle = O.displayTitle(set);
-      const detail = [set.primaryStandardCourse || set.subject, set.qCount ? `${set.qCount}문항` : ""].filter(Boolean).join(" · ");
+      const detail = [set.primaryStandardCourse || globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(set) || set.subject, set.qCount ? `${set.qCount}문항` : ""].filter(Boolean).join(" · ");
       const direct = ([mode, label]) =>
         button("source-output-direct", label, `type="button" data-exam="${setIndex}" data-mode="${mode}"`);
       return `<article class="similar-set"><div class="similar-set-main"><strong>${esc(setTitle)}</strong><div class="muted">${esc(detail)}</div></div><div class="similar-set-actions" role="group" aria-label="${esc(setTitle)} 시험지·해설·정답·출제">${multiPickButton(set, setIndex)}${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${setIndex}" aria-label="${esc(setTitle)} 반에 출제"`)}</div></article>`;

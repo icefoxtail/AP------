@@ -180,6 +180,7 @@ body.archive2-assessment .stat strong {
     </div>
   </main>
 
+  <script src="../exam-display-title.js?v=20261123-gichul-c-1"></script>
   <script src="assessment-packs-1sem.generated.js"></script>
   <script src="assessment-question-index-1sem.generated.js"></script>
   <script>
@@ -277,7 +278,8 @@ body.archive2-assessment .stat strong {
 
     // "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js" -> "22 신흥중 1학기 기말 중3 기출c"
     function sourceFileLabel(file) {
-      const name = String(file || '').split('/').pop().replace(/\.js$/i, '').replace(/_/g, ' ').trim();
+      const base = String(file || '').split('/').pop().replace(/\.js$/i, '').replace(/_/g, ' ').trim();
+      const name = window.ExamDisplayTitle?.withoutContentMark?.(base) ?? base; // 끝의 "c"(content) 표시는 보이지 않게
       return name || String(file || '');
     }
 

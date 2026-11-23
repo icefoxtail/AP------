@@ -76,7 +76,7 @@
           ? `시험지는 ${a.contentGrade}` : "";
         const metadata = [a.className, ...progress,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
-          a.subjectLabel, otherGrade].filter(Boolean);
+          globalThis.ExamDisplayTitle?.displaySubjectOf?.(a.subjectLabel) ?? a.subjectLabel, otherGrade].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
         a.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
@@ -193,7 +193,8 @@
       const [label] = recentSubjectTerms(selected);
       values.set(selected, { value: selected, label: label || selected });
     }
-    return [...values.values()];
+    // 보이는 이름만 정리한다(value는 그대로): 파일 이름에서 온 "기출c" 같은 값은 "기출"로 보인다.
+    return [...values.values()].map((option) => ({ ...option, label: globalThis.ExamDisplayTitle?.displaySubjectOf?.(option.label) ?? option.label }));
   }
   function rememberRecentSubjectOptions(rows) {
     for (const row of rows || []) {
