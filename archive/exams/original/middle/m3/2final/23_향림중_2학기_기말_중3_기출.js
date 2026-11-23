@@ -74,7 +74,7 @@ window.questionBank = [
       "$6\\sqrt5$"
     ],
     "answer": "④",
-    "solution": "$OM\\perp AR$이므로\n원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n따라서\n$AM=MR$이다.\n직각삼각형 $OAM$에서\n$OA=6$, $OM=3$이므로\n피타고라스 정리에 의해\n$AM=\\sqrt{OA^2-OM^2}$\n$=\\sqrt{6^2-3^2}$\n$=\\sqrt{27}$\n$=3\\sqrt3$이다.\n그러므로\n$AR=2AM=6\\sqrt3$이다.\n정답은 ④이다.",
+    "solution": "$OM\\perp AB$이므로\n원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n따라서\n$AM=MB$이다.\n직각삼각형 $OAM$에서\n$OA=6$, $OM=3$이므로\n피타고라스 정리에 의해\n$AM=\\sqrt{OA^2-OM^2}$\n$=\\sqrt{6^2-3^2}$\n$=\\sqrt{27}$\n$=3\\sqrt3$이다.\n그러므로\n$AB=2AM=6\\sqrt3$이다.\n정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
