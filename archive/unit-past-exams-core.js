@@ -1973,51 +1973,72 @@
       .sort((a, b) => a.unitIndex - b.unitIndex || STEP_TOKENS.indexOf(a.step) - STEP_TOKENS.indexOf(b.step) ||
         (a.childKey ? childRankOf(a.unitKey, a.childKey) : -1) - (b.childKey ? childRankOf(b.unitKey, b.childKey) : -1));
 
-    const taken = new Set();
-    const picked = [];
-    const unitIndexOf = new Map();
-    const scopeOfRecord = new Map();
-    const cellReports = [];
-    for (const cell of cells) {
-      const unit = unitByKey.get(cell.unitKey).unit;
-      const scopeKey = scopeKeyOf(cell.unitKey, cell.childKey);
-      const pool = (Array.isArray(unit.selectableRecords) ? unit.selectableRecords : []).filter(record =>
-        getStepToken(record) === cell.step &&
-        (!cell.childKey || childOf(record, unit) === cell.childKey) &&
-        (!poolKeep || poolKeep(record)));
-      // 학교별로 한 권씩이면 "칸마다 N문항"은 학교마다 N문항이다(한 학교가 칸을 차지하지 않게).
-      let ordered;
-      let wanted = perCell;
-      if (perCell && groupBySchool) {
-        const bySchool = new Map();
-        for (const record of pool) { const school = schoolOf(record); if (!bySchool.has(school)) bySchool.set(school, []); bySchool.get(school).push(record); }
-        ordered = [...bySchool.entries()].sort((a, b) => compareText(getSchoolLabel(a[1][0]), getSchoolLabel(b[1][0])) || compareText(a[0], b[0]))
-          .flatMap(([school, items]) => sortForSelection(items, `${seed}|${scopeKey}|${cell.step}|${school}`));
-        wanted = perCell * bySchool.size;
-      } else ordered = perCell ? sortForSelection(pool, `${seed}|${scopeKey}|${cell.step}`) : pool;
-      let got = 0;
-      const gotBySchool = new Map();
-      for (const record of ordered) {
-        if (perCell) {
-          if (groupBySchool) { if ((gotBySchool.get(schoolOf(record)) || 0) >= perCell) continue; }
-          else if (got >= perCell) break;
+    // 이미 준 문항(givenUids: 이 학생·반에게 준 문항 UID 집합): 칸마다 N문항이면 새 문항으로 먼저 채우고 모자랄 때만 이미 준 문항으로
+    // 채운다(빈 자리보다 겹침이 낫다). N을 정하지 않은 "있는 만큼 전부"는 이미 준 문항을 뺀다.
+    // 옵션이 없거나 비어 있으면 아래 코드는 이전과 같은 결과를 낸다.
+    const givenSet = options.givenUids instanceof Set && options.givenUids.size ? options.givenUids : null;
+    const isGiven = givenSet ? record => { const uid = getQuestionUid(record); return Boolean(uid) && givenSet.has(uid); } : null;
+    const newFirst = isGiven ? list => [...list.filter(record => !isGiven(record)), ...list.filter(isGiven)] : list => list;
+    let taken, picked, unitIndexOf, scopeOfRecord, cellReports, givenSeen;
+    const runPicking = dropGiven => {
+      taken = new Set();
+      picked = [];
+      unitIndexOf = new Map();
+      scopeOfRecord = new Map();
+      cellReports = [];
+      givenSeen = new Set(); // 고른 칸 후보 중 이미 준 문항(칸이 겹쳐도 한 번만 센다)
+      for (const cell of cells) {
+        const unit = unitByKey.get(cell.unitKey).unit;
+        const scopeKey = scopeKeyOf(cell.unitKey, cell.childKey);
+        const pool = (Array.isArray(unit.selectableRecords) ? unit.selectableRecords : []).filter(record =>
+          getStepToken(record) === cell.step &&
+          (!cell.childKey || childOf(record, unit) === cell.childKey) &&
+          (!poolKeep || poolKeep(record)));
+        if (isGiven) for (const record of pool) if (isGiven(record)) givenSeen.add(getRecordIdentity(record));
+        // 학교별로 한 권씩이면 "칸마다 N문항"은 학교마다 N문항이다(한 학교가 칸을 차지하지 않게).
+        let ordered;
+        let wanted = perCell;
+        if (perCell && groupBySchool) {
+          const bySchool = new Map();
+          for (const record of pool) { const school = schoolOf(record); if (!bySchool.has(school)) bySchool.set(school, []); bySchool.get(school).push(record); }
+          ordered = [...bySchool.entries()].sort((a, b) => compareText(getSchoolLabel(a[1][0]), getSchoolLabel(b[1][0])) || compareText(a[0], b[0]))
+            .flatMap(([school, items]) => newFirst(sortForSelection(items, `${seed}|${scopeKey}|${cell.step}|${school}`)));
+          wanted = perCell * bySchool.size;
+        } else ordered = perCell ? newFirst(sortForSelection(pool, `${seed}|${scopeKey}|${cell.step}`)) : pool;
+        let got = 0;
+        const gotBySchool = new Map();
+        for (const record of ordered) {
+          if (perCell) {
+            if (groupBySchool) { if ((gotBySchool.get(schoolOf(record)) || 0) >= perCell) continue; }
+            else if (got >= perCell) break;
+          }
+          if (dropGiven && isGiven(record)) continue;
+          const identity = getRecordIdentity(record);
+          if (taken.has(identity)) continue;
+          taken.add(identity);
+          picked.push(record);
+          unitIndexOf.set(record, cell.unitIndex);
+          scopeOfRecord.set(record, scopeKey);
+          got += 1;
+          if (groupBySchool) gotBySchool.set(schoolOf(record), (gotBySchool.get(schoolOf(record)) || 0) + 1);
         }
-        const identity = getRecordIdentity(record);
-        if (taken.has(identity)) continue;
-        taken.add(identity);
-        picked.push(record);
-        unitIndexOf.set(record, cell.unitIndex);
-        scopeOfRecord.set(record, scopeKey);
-        got += 1;
-        if (groupBySchool) gotBySchool.set(schoolOf(record), (gotBySchool.get(schoolOf(record)) || 0) + 1);
+        cellReports.push({ unitKey: cell.unitKey, childKey: cell.childKey, scopeKey, step: cell.step, available: pool.length, wanted, got });
       }
-      cellReports.push({ unitKey: cell.unitKey, childKey: cell.childKey, scopeKey, step: cell.step, available: pool.length, wanted, got });
-    }
+    };
+    runPicking(Boolean(isGiven) && !perCell);
+    // 있는 만큼 전부인데 고른 범위가 전부 이미 준 문항이면 빈 문제지 대신 그 문항을 그대로 넣는다.
+    let allGivenFallback = false;
+    if (isGiven && !perCell && !picked.length && givenSeen.size) { allGivenFallback = true; runPicking(false); }
     const shortages = perCell
       ? cellReports.filter(cell => cell.got < cell.wanted).map(cell => ({ unitKey: cell.unitKey, childKey: cell.childKey, scopeKey: cell.scopeKey, step: cell.step, wanted: cell.wanted, got: cell.got }))
       : [];
 
     const base = { order, perCell, cells: cellReports, shortages, total: picked.length, papers: [], unitKeys: [], seed, excludedTypeKeys, scopes: [], groupBy: 'mixed', sourceKey: '', sourceLabel: '', schools: [] };
+    if (givenSet) {
+      // excluded = 고른 칸 후보 중 이미 준 문항인데 결과에서 빠진 수, overlap = 모자라서 이미 준 문항으로 채운 수.
+      const overlap = picked.filter(isGiven).length;
+      base.given = { active: true, candidates: givenSeen.size, excluded: givenSeen.size - overlap, overlap, allGiven: allGivenFallback };
+    }
     if (!picked.length) return base;
 
     const usedCells = cellReports.filter(cell => cell.got > 0);
@@ -2124,6 +2145,7 @@
         gridId: `grid-${index + 1}`,
         title: book.bookTotal === 1 ? fullTitle : `${fullTitle} · ${book.bookIndex}권/${book.bookTotal}권`,
         count: records.length,
+        ...(givenSet ? { givenCount: records.filter(isGiven).length } : {}),
         sourceCount: new Set(records.map(record => record.sourceFile)).size,
         records,
         stepGrouped: true,

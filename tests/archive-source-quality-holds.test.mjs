@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
-import { SOURCE_QUALITY_HOLD_LEDGER, loadSourceQualityHolds, applySourceQualityHold,
+import { SOURCE_QUALITY_HOLD_LEDGER, SOURCE_QUALITY_HOLD_RESOLUTIONS, loadSourceQualityHolds, applySourceQualityHold,
   assertSourceQualityHoldCoverage, sourceQualityHoldDependencyPaths } from '../archive/tools/source-quality-holds.mjs';
 const require = createRequire(import.meta.url), Core = require('../archive/archive2-core.js'), PB = require('../archive/problem-bank-meta.js');
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -120,4 +120,43 @@ test('VERIFIED profile rejects an otherwise complete source-bound row while DIRE
   const held = PB.projectOriginal({ ...row, sourceIssueHold: true });
   assert.equal(held.verifiedEligible, false); assert.equal(PB.query([held], {}, { profile: 'VERIFIED' }).length, 0);
   assert.equal(PB.query([held], {}, { profile: 'DIRECT' }).length, 1); assert.equal(held.difficultyBucket, 4);
+});
+
+// Owner-decision resolutions (append-only). A resolved hold is not bound to any source edition.
+const resolution = row => ({ holdId: row.holdId, resolutionKind: 'OWNER_DECISION_MINIMAL_FIX', decidedAt: '2026-11-23',
+  decisionQuote: 'fixture owner decision', basis: 'fixture minimal fix', changedOrdinals: [1] });
+const resolutions = records => ({ schemaVersion: 'archive-source-quality-hold-resolutions-v1', records });
+test('resolved hold accepts any new source edition and leaves the row as an ordinary row', t => {
+  const f = fixture(t), source = path.join(f.root, 'archive/exams/' + f.row.sourceArchiveFile);
+  f.write(SOURCE_QUALITY_HOLD_RESOLUTIONS, resolutions([resolution(f.row)]));
+  fs.appendFileSync(source, '/* any later edit */\n');
+  const state = loadSourceQualityHolds(f); assertSourceQualityHoldCoverage(state);
+  const record = structuredClone(f.record); applySourceQualityHold(record, state);
+  assert.equal(record.sourceIssueHold, undefined); assert.equal(record.sourceQualityHold, undefined);
+  assert(state.manifestPaths.includes(SOURCE_QUALITY_HOLD_RESOLUTIONS.slice('archive/'.length)));
+  assert(sourceQualityHoldDependencyPaths(f.root).includes(SOURCE_QUALITY_HOLD_RESOLUTIONS));
+});
+test('new source edition without a resolution is still rejected', t => {
+  const f = fixture(t); fs.appendFileSync(path.join(f.root, 'archive/exams/' + f.row.sourceArchiveFile), '\n');
+  assert.throws(() => loadSourceQualityHolds(f), /SOURCE_EDITION/);
+});
+test('resolution does not allow an implicit release of the ledger record', t => {
+  const f = fixture(t); f.row.status = 'RELEASED'; f.write(SOURCE_QUALITY_HOLD_LEDGER, f.ledger);
+  f.write(SOURCE_QUALITY_HOLD_RESOLUTIONS, resolutions([resolution(f.row)]));
+  assert.throws(() => loadSourceQualityHolds(f), /HOLD_DECLARATION/);
+});
+for (const [name, mutate] of [
+  ['wrong holdId', r => { r.holdId = 'some-other-hold-id'; }],
+  ['empty decisionQuote', r => { r.decisionQuote = '  '; }],
+  ['empty decidedAt', r => { r.decidedAt = ''; }],
+  ['empty changedOrdinals', r => { r.changedOrdinals = []; }],
+  ['extra key', r => { r.sourceBlobSha1 = 'x'; }],
+]) test('rejects a resolution record with ' + name, t => {
+  const f = fixture(t), r = resolution(f.row); mutate(r);
+  f.write(SOURCE_QUALITY_HOLD_RESOLUTIONS, resolutions([r]));
+  assert.throws(() => loadSourceQualityHolds(f), /SOURCE_QUALITY_HOLD:(RESOLUTION|SCHEMA_KEYS)/);
+});
+test('rejects a duplicate resolution for the same hold', t => {
+  const f = fixture(t); f.write(SOURCE_QUALITY_HOLD_RESOLUTIONS, resolutions([resolution(f.row), resolution(f.row)]));
+  assert.throws(() => loadSourceQualityHolds(f), /RESOLUTION_DUPLICATE/);
 });

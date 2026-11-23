@@ -274,7 +274,9 @@
     const parts = Number(paper.part_count) > 1 ? `${Number(paper.part_count)}권 중 ${Number(paper.part_index) + 1}권` : "";
     const meta = [globalThis.ExamDisplayTitle?.displaySubjectOf?.(paper.subject) ?? paper.subject, dayLabel(paper.created_at) ? `${dayLabel(paper.created_at)} 저장` : "", parts]
       .filter(Boolean).map((value) => `<span>${esc(value)}</span>`).join('<span aria-hidden="true">·</span>');
-    const stateBadge = status === "ARCHIVED" ? '<span class="badge">보관</span>' : trashed ? '<span class="badge">휴지통</span>' : "";
+    // "출제 전": 출제 이력이 불러와진 뒤(paintHistory) 최근 90일 안에 저장했고 출제 기록이 없는 저장본에만 켠다. 출제하면 다음 이력에서 사라진다.
+    const stateBadge = status === "ARCHIVED" ? '<span class="badge">보관</span>' : trashed ? '<span class="badge">휴지통</span>'
+      : '<span class="badge before-issue" data-before-issue hidden>출제 전</span>';
     const count = Number.isFinite(Number(paper.question_count)) ? String(Number(paper.question_count)) : "–";
     const actions = trashed
       ? `<div class="exam-row-actions" role="group" aria-label="${esc(title)} 휴지통 메뉴">${statusAction}</div>`
@@ -311,6 +313,7 @@
       ${message ? `<p class="callout" role="status" aria-live="polite">${esc(message)}</p>` : ""}
       <div class="actions" role="tablist" aria-label="보관함 상태">${tabs.map(([value, label]) => `<button type="button" data-library-action="status" data-status="${value}" class="${statusFilter === value ? "active" : ""}">${label}</button>`).join("")}</div>
       ${note}
+      ${HISTORY_STATUSES.includes(statusFilter) ? '<p class="callout before-issue-summary" data-before-issue-summary role="status" hidden></p>' : ""}
       <section class="saved-paper-list exam-rows" aria-label="저장한 문제지 목록">${cards || `<div class="empty">${emptyCopy}</div>`}</section>
       ${cursor ? '<div class="actions saved-library-more"><button type="button" data-library-action="more">더 불러오기</button></div>' : ""}</div>`;
   }
@@ -329,6 +332,38 @@
       slot.hidden = !body;
     });
     host.querySelectorAll("[data-history-note]").forEach((note) => { note.innerHTML = historyNoteMarkup(history); });
+    paintBeforeIssue(host, viewState);
+  }
+  // 출제 전 저장본: 90일 이력 창 안에서 저장했고 취소되지 않은 출제가 하나도 없는 것. 맨 위 한 줄(개수 + "출제 전만 보기")과 줄 배지. 팝업·소리 없음.
+  function unissuedIds(viewState) {
+    const history = viewState.history;
+    if (!history || history.state !== "ready") return null;
+    const from = historyFromDate();
+    const ids = new Set();
+    for (const paper of viewState.papers || []) {
+      if ((paper.library_status || "ACTIVE") !== "ACTIVE") continue;
+      if (String(paper.created_at || "").slice(0, 10) < from) continue;
+      const issues = history.byPaper.get(String(paper.id)) || [];
+      if (!issues.some((issue) => !issue.cancelled)) ids.add(String(paper.id));
+    }
+    return ids;
+  }
+  function paintBeforeIssue(host, viewState) {
+    if (typeof host.querySelectorAll !== "function") return;
+    const ids = unissuedIds(viewState);
+    if (!ids) return;
+    host.querySelectorAll("[data-before-issue]").forEach((badge) => {
+      const id = badge.closest?.("[data-paper-id]")?.dataset?.paperId;
+      badge.hidden = !ids.has(String(id));
+    });
+    host.querySelectorAll("[data-before-issue-summary]").forEach((line) => {
+      line.hidden = ids.size === 0;
+      const toggle = viewState.onlyBeforeIssue ? "전체 보기" : "출제 전만 보기";
+      line.innerHTML = `<strong>출제 전 ${ids.size}개</strong> · 만들어 두고 아직 학생에게 출제하지 않은 시험지입니다. <button type="button" class="small" data-library-action="before-issue-only">${toggle}</button>`;
+    });
+    host.querySelectorAll(".saved-row").forEach((row) => {
+      row.hidden = Boolean(viewState.onlyBeforeIssue) && !ids.has(String(row.dataset?.paperId));
+    });
   }
 
   let historyRequestSeq = 0;
@@ -623,6 +658,9 @@
           if (typeof window.Archive2WorkspaceOpenAssignmentStatus !== "function")
             throw new Error("학생별 확인 화면을 열 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
           await window.Archive2WorkspaceOpenAssignmentStatus(button.dataset.assignmentId);
+        } else if (action === "before-issue-only") {
+          viewState.onlyBeforeIssue = !viewState.onlyBeforeIssue;
+          paintBeforeIssue(host, viewState);
         } else if (action === "history-retry") {
           if (activeListState === viewState) await loadHistory(host, viewState);
         } else if (action === "more") {

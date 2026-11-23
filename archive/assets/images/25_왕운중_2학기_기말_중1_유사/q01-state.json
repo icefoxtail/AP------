@@ -1,0 +1,846 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2final/25_왕운중_2학기_기말_중1_유사.js",
+  "ordinal": 1,
+  "dir": "q01"
+ },
+ "identity": {
+  "questionUid": "25_왕운중_2학기_기말_중1_유사|1",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:d3d0e7b7073447692347189aac4e7611ec153347f2b77d2bd579d996ed59383c",
+  "assetId": "va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "두 삼각형 ABC와 CED에서 각 x의 크기 구하기",
+  "accessibilityDescription": "세 점 A, E, C가 한 직선 위에 있고 세 점 B, C, D가 한 직선 위에 있는 두 삼각형 ABC와 CED를 나타낸 그림이다.",
+  "sourceQuote": "다음 그림에서 $\\angle x$의 크기를 구하면?",
+  "newVisualInformation": [],
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "A, E, C are collinear and B, C, D are collinear",
+    "mappedTo": "segments AC and BD"
+   }
+  ],
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "10"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-15"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "Edir",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "C",
+      "D"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "10"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "70"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "lineCE",
+     "op": "LINE_THROUGH",
+     "inputs": [
+      "C",
+      "Edir"
+     ],
+     "args": {},
+     "outputType": "LINE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "Ddir",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "D",
+      "C"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "10"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "60"
+      },
+      "turn": "CW"
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "lineDE",
+     "op": "LINE_THROUGH",
+     "inputs": [
+      "D",
+      "Ddir"
+     ],
+     "args": {},
+     "outputType": "LINE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "E",
+     "op": "LINE_INTERSECTION",
+     "inputs": [
+      "lineCE",
+      "lineDE"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "Bdir",
+     "op": "POLAR_POINT",
+     "inputs": [
+      "B",
+      "C"
+     ],
+     "args": {
+      "length": {
+       "kind": "integer",
+       "value": "20"
+      },
+      "angleDeg": {
+       "kind": "integer",
+       "value": "40"
+      },
+      "turn": "CCW"
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "lineBA",
+     "op": "LINE_THROUGH",
+     "inputs": [
+      "B",
+      "Bdir"
+     ],
+     "args": {},
+     "outputType": "LINE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "A",
+     "op": "LINE_INTERSECTION",
+     "inputs": [
+      "lineCE",
+      "lineBA"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E"
+  ],
+  "displaySegments": [
+   {
+    "id": "BD",
+    "refs": [
+     "B",
+     "D"
+    ]
+   },
+   {
+    "id": "CA",
+    "refs": [
+     "C",
+     "A"
+    ]
+   },
+   {
+    "id": "BA",
+    "refs": [
+     "B",
+     "A"
+    ]
+   },
+   {
+    "id": "DE",
+    "refs": [
+     "D",
+     "E"
+    ]
+   }
+  ],
+  "coordinateCanvas": {
+   "width": 560,
+   "height": 420
+  },
+  "planeMarks": {
+   "angles": [
+    {
+     "id": "angB",
+     "refs": [
+      "C",
+      "B",
+      "A"
+     ],
+     "value": 40,
+     "label": "40"
+    },
+    {
+     "id": "angA",
+     "refs": [
+      "B",
+      "A",
+      "C"
+     ],
+     "value": 30,
+     "label": "x",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "angAED",
+     "refs": [
+      "A",
+      "E",
+      "D"
+     ],
+     "value": 130,
+     "label": "130"
+    },
+    {
+     "id": "angD",
+     "refs": [
+      "E",
+      "D",
+      "C"
+     ],
+     "value": 60,
+     "label": "60"
+    }
+   ]
+  }
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-15"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     -15,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "10"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     10,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "Bdir": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "0.3208888623795607040480000000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "12.85575219373078652645200000000000"
+     }
+    ],
+    "approximation": [
+     0.3208888623795607,
+     12.855752193730787
+    ],
+    "precisionDigits": 17
+   },
+   "Ddir": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "5"
+     },
+     {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "5"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "approximation": [
+     5,
+     8.660254037844387
+    ],
+    "precisionDigits": 17
+   },
+   "Edir": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "3.420201433256687330441000000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "9.396926207859083840541000000000000"
+     }
+    ],
+    "approximation": [
+     3.4202014332566875,
+     9.396926207859083
+    ],
+    "precisionDigits": 17
+   },
+   "A": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "6.595389311788625760811011247444878"
+     },
+     {
+      "kind": "decimal",
+      "value": "18.12068320665161069711541729118657"
+     }
+    ],
+    "approximation": [
+     6.595389311788626,
+     18.12068320665161
+    ],
+    "precisionDigits": 17
+   },
+   "E": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "3.866592015471612670941767044363499"
+     },
+     {
+      "kind": "decimal",
+      "value": "10.62337425275179332204202540861675"
+     }
+    ],
+    "approximation": [
+     3.8665920154716127,
+     10.623374252751793
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {
+   "lineBA": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "-12.85575219373078652645200000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "15.32088886237956070404800000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "-192.8362829059617978967800000000000"
+     }
+    ],
+    "approximation": [
+     -12.855752193730787,
+     15.32088886237956,
+     -192.8362829059618
+    ]
+   },
+   "lineCE": {
+    "exact": [
+     {
+      "kind": "decimal",
+      "value": "-9.396926207859083840541000000000000"
+     },
+     {
+      "kind": "decimal",
+      "value": "3.420201433256687330441000000000000"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     -9.396926207859083,
+     3.4202014332566875,
+     0
+    ]
+   },
+   "lineDE": {
+    "exact": [
+     {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "-5"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "integer",
+      "value": "-5"
+     },
+     {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "50"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "3"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "approximation": [
+     -8.660254037844387,
+     -5,
+     86.60254037844386
+    ]
+   }
+  },
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "Bdir",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "nodeId": "Ddir",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "nodeId": "Edir",
+    "op": "POLAR_POINT",
+    "dependencies": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "nodeId": "lineBA",
+    "op": "LINE_THROUGH",
+    "dependencies": [
+     "B",
+     "Bdir"
+    ]
+   },
+   {
+    "nodeId": "lineCE",
+    "op": "LINE_THROUGH",
+    "dependencies": [
+     "C",
+     "Edir"
+    ]
+   },
+   {
+    "nodeId": "lineDE",
+    "op": "LINE_THROUGH",
+    "dependencies": [
+     "D",
+     "Ddir"
+    ]
+   },
+   {
+    "nodeId": "A",
+    "op": "LINE_INTERSECTION",
+    "dependencies": [
+     "lineBA",
+     "lineCE"
+    ]
+   },
+   {
+    "nodeId": "E",
+    "op": "LINE_INTERSECTION",
+    "dependencies": [
+     "lineCE",
+     "lineDE"
+    ]
+   }
+  ],
+  "order": [
+   "B",
+   "C",
+   "D",
+   "Bdir",
+   "Ddir",
+   "Edir",
+   "lineBA",
+   "lineCE",
+   "lineDE",
+   "A",
+   "E"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 420\" width=\"560\" height=\"420\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">두 삼각형 ABC와 CED에서 각 x의 크기 구하기</title><desc id=\"visual-desc\">세 점 A, E, C가 한 직선 위에 있고 세 점 B, C, D가 한 직선 위에 있는 두 삼각형 ABC와 CED를 나타낸 그림이다.</desc><rect width=\"560\" height=\"420\" fill=\"#fff\"/><g data-layer=\"12\"><polygon id=\"angB-sector\" data-role=\"angleSector\" stroke=\"none\" stroke-width=\"1.6\" fill=\"#d9d9d9\" data-owner-points=\"C B A\" data-mark=\"angle\" data-mark-id=\"angB\" data-mark-index=\"0\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"69.30605812,362.716726974 97.30605812,362.716726974 97.279408325,361.495384128 97.199509667,360.276366178 97.066514239,359.061993592 96.880675205,357.854578 96.64234632,356.656417784 96.351981256,355.469793712 96.010132741,354.296964588 95.617451502,353.140162961 95.174685031,352.001590868 94.682676157,350.883415646 94.142361449,349.787765804 93.554769426,348.716726974 92.921018603,347.672337941 92.24231536,346.656586757 91.519951649,345.671406962 90.755302528,344.718673903\"/></g><g data-layer=\"12\"><polygon id=\"angA-sector\" data-role=\"angleSector\" stroke=\"none\" stroke-width=\"1.6\" fill=\"#d9d9d9\" data-owner-points=\"B A C\" data-mark=\"angle\" data-mark-id=\"angA\" data-mark-index=\"0\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"433.307474162,57.283273026 411.858229755,75.281326097 412.458593738,75.973489318 413.081283225,76.645638587 413.725631423,77.297054151 414.390948349,77.927038456 415.076521565,78.5349169 415.781616941,79.120038552 416.505479445,79.681776848 417.247333945,80.219530266 418.006386045,80.732722964 418.781822934,81.220805404 419.572814254,81.683254935 420.378512992,82.119576355 421.198056385,82.529302438 422.030566846,82.911994441 422.875152902,83.267242567 423.730910149,83.594666408\"/></g><g data-layer=\"12\"><polygon id=\"angAED-sector\" data-role=\"angleSector\" stroke=\"none\" stroke-width=\"1.6\" fill=\"#d9d9d9\" data-owner-points=\"A E D\" data-mark=\"angle\" data-mark-id=\"angAED\" data-mark-index=\"0\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"387.312189446,183.654279184 396.888753459,157.342885802 398.673751963,158.062974076 400.405062058,158.903992585 402.074502539,159.861967146 403.674184561,160.932370905 405.196548919,162.110145731 406.634401768,163.389726118 407.980948617,164.76506548 409.229826436,166.229664733 410.375133726,167.776602996 411.411458404,169.398570303 412.333903375,171.087902139 413.138109681,172.836615665 413.820277091,174.636447436 414.377182061,176.478892451 414.80619297,178.355244342 415.105282551,180.256636517 415.273037473,182.174084056 415.308665021,184.098526172 415.211996839,186.020869024 414.983489726,187.932028693 414.624223479,189.822974102 414.135895791,191.6847697 413.520814226,193.508617679 412.781885316,195.285899549 411.922600828,197.008216867 410.94702126,198.667430924 409.859756657,200.255701198 408.665944826,201.76552241 407.371227056,203.189759986 405.981721461,204.521683775 404.503994069,205.754999848 402.945027795,206.883880239 401.312189446,207.90299049\"/></g><g data-layer=\"12\"><polygon id=\"angD-sector\" data-role=\"angleSector\" stroke=\"none\" stroke-width=\"1.6\" fill=\"#d9d9d9\" data-owner-points=\"E D C\" data-mark=\"angle\" data-mark-id=\"angD\" data-mark-index=\"0\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"490.69394188,362.716726974 476.69394188,338.468015668 475.137975355,339.43557783 473.648621867,340.502833446 472.232259057,341.665212365 470.894952006,342.917737101 469.64242727,344.255044152 468.480048351,345.671406962 467.412792735,347.16076045 466.445230574,348.716726974 465.581505117,350.332643648 464.825314969,352.001590868 464.179898254,353.716421946 463.648018744,355.469793712 463.231954028,357.254197958 462.933485761,359.061993592 462.753892029,360.885439356 462.69394188,362.716726974\"/></g><g data-layer=\"30\"><line id=\"BD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"69.30605812\" y1=\"362.716726974\" x2=\"490.69394188\" y2=\"362.716726974\"/></g><g data-layer=\"40\"><line id=\"lineCE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"312.93642957\" y1=\"388\" x2=\"442.509832969\" y2=\"32\"/></g><g data-layer=\"40\"><line id=\"lineDE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"299.754550535\" y1=\"32\" x2=\"505.291246367\" y2=\"388\"/></g><g data-layer=\"40\"><line id=\"lineBA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"44.022785095\" y1=\"383.931912045\" x2=\"463.438905623\" y2=\"32\"/></g><g data-layer=\"45\"><line id=\"CA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" x1=\"322.138788376\" y1=\"362.716726974\" x2=\"433.307474162\" y2=\"57.283273026\"/></g><g data-layer=\"45\"><line id=\"BA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" x1=\"69.30605812\" y1=\"362.716726974\" x2=\"433.307474162\" y2=\"57.283273026\"/></g><g data-layer=\"45\"><line id=\"DE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" x1=\"490.69394188\" y1=\"362.716726974\" x2=\"387.312189446\" y2=\"183.654279184\"/></g><g data-layer=\"60\"><polyline id=\"angB-arc-1\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" data-owner-points=\"C B A\" data-mark=\"angle\" data-mark-id=\"angB\" data-mark-index=\"1\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"97.30605812,362.716726974 97.279408325,361.495384128 97.199509667,360.276366178 97.066514239,359.061993592 96.880675205,357.854578 96.64234632,356.656417784 96.351981256,355.469793712 96.010132741,354.296964588 95.617451502,353.140162961 95.174685031,352.001590868 94.682676157,350.883415646 94.142361449,349.787765804 93.554769426,348.716726974 92.921018603,347.672337941 92.24231536,346.656586757 91.519951649,345.671406962 90.755302528,344.718673903\"/></g><g data-layer=\"60\"><polyline id=\"angA-arc-1\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" data-owner-points=\"B A C\" data-mark=\"angle\" data-mark-id=\"angA\" data-mark-index=\"1\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"411.858229755,75.281326097 412.458593738,75.973489318 413.081283225,76.645638587 413.725631423,77.297054151 414.390948349,77.927038456 415.076521565,78.5349169 415.781616941,79.120038552 416.505479445,79.681776848 417.247333945,80.219530266 418.006386045,80.732722964 418.781822934,81.220805404 419.572814254,81.683254935 420.378512992,82.119576355 421.198056385,82.529302438 422.030566846,82.911994441 422.875152902,83.267242567 423.730910149,83.594666408\"/></g><g data-layer=\"60\"><polyline id=\"angAED-arc-1\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" data-owner-points=\"A E D\" data-mark=\"angle\" data-mark-id=\"angAED\" data-mark-index=\"1\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"396.888753459,157.342885802 398.673751963,158.062974076 400.405062058,158.903992585 402.074502539,159.861967146 403.674184561,160.932370905 405.196548919,162.110145731 406.634401768,163.389726118 407.980948617,164.76506548 409.229826436,166.229664733 410.375133726,167.776602996 411.411458404,169.398570303 412.333903375,171.087902139 413.138109681,172.836615665 413.820277091,174.636447436 414.377182061,176.478892451 414.80619297,178.355244342 415.105282551,180.256636517 415.273037473,182.174084056 415.308665021,184.098526172 415.211996839,186.020869024 414.983489726,187.932028693 414.624223479,189.822974102 414.135895791,191.6847697 413.520814226,193.508617679 412.781885316,195.285899549 411.922600828,197.008216867 410.94702126,198.667430924 409.859756657,200.255701198 408.665944826,201.76552241 407.371227056,203.189759986 405.981721461,204.521683775 404.503994069,205.754999848 402.945027795,206.883880239 401.312189446,207.90299049\"/></g><g data-layer=\"60\"><polyline id=\"angD-arc-1\" data-role=\"indicator\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" data-owner-points=\"E D C\" data-mark=\"angle\" data-mark-id=\"angD\" data-mark-index=\"1\" data-mark-count=\"1\" data-mark-side=\"INNER\" points=\"476.69394188,338.468015668 475.137975355,339.43557783 473.648621867,340.502833446 472.232259057,341.665212365 470.894952006,342.917737101 469.64242727,344.255044152 468.480048351,345.671406962 467.412792735,347.16076045 466.445230574,348.716726974 465.581505117,350.332643648 464.825314969,352.001590868 464.179898254,353.716421946 463.648018744,355.469793712 463.231954028,357.254197958 462.933485761,359.061993592 462.753892029,360.885439356 462.69394188,362.716726974\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"433.307474162\" cy=\"57.283273026\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"69.30605812\" cy=\"362.716726974\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"322.138788376\" cy=\"362.716726974\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"D\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"490.69394188\" cy=\"362.716726974\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"E\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"387.312189446\" cy=\"183.654279184\" r=\"3.2\"/></g><g data-layer=\"85\"><line id=\"E-name-owner-leader\" data-role=\"leader\" data-owner-label=\"E-name\" data-owner=\"E\" x1=\"387.312189446\" y1=\"183.654279184\" x2=\"367.312189446\" y2=\"183.654279184\" stroke=\"#666\" stroke-width=\"0.8\" fill=\"none\"/></g><g data-layer=\"90\"><g id=\"angA-label\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"angA\" data-fragment-sha=\"sha256:9a40941582c80070a8e12fe3105f87895278f570f54a7c659313caca94046a97\" transform=\"translate(387.154276491 107.323112037)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14.3\" height=\"11.325\" viewBox=\"0 0 14.3 11.325\" data-outline-width=\"14.3\" data-outline-height=\"11.325\" id=\"lb-e4c131d18b456b60fef817751b757d365189063aae9dd89eb8d0ff2d486e90e4\" data-owner=\"angA\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 11.05) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D465\" d=\"M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"angAED-label\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"angAED\" data-fragment-sha=\"sha256:8b2ce28c5846712b96be733e22f8e8d39008706b3a54c241718bc6122f006648\" transform=\"translate(419.531960242 199.927920419)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48.415\" height=\"18.225\" viewBox=\"0 0 48.415 18.225\" data-outline-width=\"48.415\" data-outline-height=\"18.225\" id=\"lb-1a05ab71b750e649ba8d62a309b724781c54099a11732eb734bb5c7b678f1a43\" data-owner=\"angAED\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.675) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"msup\"><g data-mml-node=\"mn\"><path data-c=\"31\" d=\"M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z\"></path><path data-c=\"33\" d=\"M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z\" transform=\"translate(500,0)\"></path><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\" transform=\"translate(1000,0)\"></path></g><g data-mml-node=\"TeXAtom\" transform=\"translate(1533,393.1) scale(0.707)\" data-mjx-texclass=\"ORD\"><g data-mml-node=\"mo\"><path data-c=\"2218\" d=\"M55 251Q55 328 112 386T249 444T386 388T444 249Q444 171 388 113T250 55Q170 55 113 112T55 251ZM245 403Q188 403 142 361T96 250Q96 183 141 140T250 96Q284 96 313 109T354 135T375 160Q403 197 403 250Q403 313 360 358T245 403Z\"></path></g></g></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"angB-label\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"angB\" data-fragment-sha=\"sha256:62fab293e9fb77ef61fbde51e88de8e52f564eb9791e54d277991ca3d9cd6df7\" transform=\"translate(126.523967783 326.105115508)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"35.915\" height=\"18.5\" viewBox=\"0 0 35.915 18.5\" data-outline-width=\"35.915\" data-outline-height=\"18.5\" id=\"lb-a3ed440fd641729d19c7e7877fdc8e75d1472089e9225effae53c0e691bfa91f\" data-owner=\"angB\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.95) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"msup\"><g data-mml-node=\"mn\"><path data-c=\"34\" d=\"M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z\"></path><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\" transform=\"translate(500,0)\"></path></g><g data-mml-node=\"TeXAtom\" transform=\"translate(1033,404.1) scale(0.707)\" data-mjx-texclass=\"ORD\"><g data-mml-node=\"mo\"><path data-c=\"2218\" d=\"M55 251Q55 328 112 386T249 444T386 388T444 249Q444 171 388 113T250 55Q170 55 113 112T55 251ZM245 403Q188 403 142 361T96 250Q96 183 141 140T250 96Q284 96 313 109T354 135T375 160Q403 197 403 250Q403 313 360 358T245 403Z\"></path></g></g></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"angD-label\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"angD\" data-fragment-sha=\"sha256:9c474f08428c92914c56f734bd4b47637c2d0aea5b0ddaaa1584542327b8e855\" transform=\"translate(422.50696846 324.604226974)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"35.915\" height=\"18.225\" viewBox=\"0 0 35.915 18.225\" data-outline-width=\"35.915\" data-outline-height=\"18.225\" id=\"lb-1d35ee1c11a50fbe456f24b5a755e7fb858a791f535bc76f579c25982066d4be\" data-owner=\"angD\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.675) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"msup\"><g data-mml-node=\"mn\"><path data-c=\"36\" d=\"M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z\"></path><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\" transform=\"translate(500,0)\"></path></g><g data-mml-node=\"TeXAtom\" transform=\"translate(1033,393.1) scale(0.707)\" data-mjx-texclass=\"ORD\"><g data-mml-node=\"mo\"><path data-c=\"2218\" d=\"M55 251Q55 328 112 386T249 444T386 388T444 249Q444 171 388 113T250 55Q170 55 113 112T55 251ZM245 403Q188 403 142 361T96 250Q96 183 141 140T250 96Q284 96 313 109T354 135T375 160Q403 197 403 250Q403 313 360 358T245 403Z\"></path></g></g></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"25\" data-owner=\"A\" data-fragment-sha=\"sha256:402fe3f1e23b5aae28cc1091057e9037d82cb920335b252021a626382ba61b89\" transform=\"translate(445.307474162 69.283273026)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.75\" height=\"17.9\" viewBox=\"0 0 18.75 17.9\" data-outline-width=\"18.75\" data-outline-height=\"17.9\" id=\"lb-a4c55809ae20dacd597dc8795ac1445e57d74fcbf7839d3788df370535ce2fe6\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.9) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"25\" data-owner=\"B\" data-fragment-sha=\"sha256:c26c40609d6d9273503e2d2128f27b89aeb2ac0afd68230ef84beaa23f1a16d9\" transform=\"translate(81.30605812 374.716726974)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.975\" height=\"17.075\" viewBox=\"0 0 18.975 17.075\" data-outline-width=\"18.975\" data-outline-height=\"17.075\" id=\"lb-6ba9b24a4c8575d4c2b3e1486a1e356fc721630544244ed891e83864b8bd5c78\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.075) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"25\" data-owner=\"C\" data-fragment-sha=\"sha256:030bdf18c90646d655bfdfd474b37fb09eeb436166f0dec63ebe5d0b6b58cd05\" transform=\"translate(334.138788376 374.716726974)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"19\" height=\"18.175\" viewBox=\"0 0 19 18.175\" data-outline-width=\"19\" data-outline-height=\"18.175\" id=\"lb-85963bd7aa3aa46198b3f5c919c4fc6fb02f6f2f5b5dd71b42ff36c4a0233d07\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.625) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"D-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"25\" data-owner=\"D\" data-fragment-sha=\"sha256:da5129d72944981fab0f204ecf9bfb9cc5390cfe19d1d51033533132f9c33b69\" transform=\"translate(502.69394188 333.641726974)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20.7\" height=\"17.075\" viewBox=\"0 0 20.7 17.075\" data-outline-width=\"20.7\" data-outline-height=\"17.075\" id=\"lb-e795f8b3f026b43bfade47407ac12d7600cd8f8d4bbe64ec2ec57f316e23f16a\" data-owner=\"D\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.075) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D437\" d=\"M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"E-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"25\" data-owner=\"E\" data-fragment-sha=\"sha256:9cf730e133a46fb9429d54c62fb2f5e5f59f731188673fd00ea44042d8b774fa\" transform=\"translate(348.212189446 175.154279184)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"19.1\" height=\"17\" viewBox=\"0 0 19.1 17\" data-outline-width=\"19.1\" data-outline-height=\"17\" id=\"lb-b437c11852fd814c16ca71fbe47c3a43e4c4aa5518060459d08bd58299672917\" data-owner=\"E\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D438\" d=\"M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:50586d2557ad180264e50fbeb0ce89c7586a4e7d3c26198c4db8e79568d6343b",
+   "modelSha256": "sha256:61b91f35817171e503374c5222e7288d1beb4929ecd5c7e874e6f5b532de6bdb",
+   "typographyPolicySha256": "sha256:fc52976b50aa54fd690b491f38300a54f4b584fbdfae17c6162f99f1b66527df",
+   "specSha256": "sha256:b1525b9e9a3226c19a6191fd778af87e7d13c58f2c05ede1e28968c86660fd11",
+   "fragmentSha256s": {
+    "A-name": "sha256:402fe3f1e23b5aae28cc1091057e9037d82cb920335b252021a626382ba61b89",
+    "B-name": "sha256:c26c40609d6d9273503e2d2128f27b89aeb2ac0afd68230ef84beaa23f1a16d9",
+    "C-name": "sha256:030bdf18c90646d655bfdfd474b37fb09eeb436166f0dec63ebe5d0b6b58cd05",
+    "D-name": "sha256:da5129d72944981fab0f204ecf9bfb9cc5390cfe19d1d51033533132f9c33b69",
+    "E-name": "sha256:9cf730e133a46fb9429d54c62fb2f5e5f59f731188673fd00ea44042d8b774fa",
+    "angB-label": "sha256:62fab293e9fb77ef61fbde51e88de8e52f564eb9791e54d277991ca3d9cd6df7",
+    "angA-label": "sha256:9a40941582c80070a8e12fe3105f87895278f570f54a7c659313caca94046a97",
+    "angAED-label": "sha256:8b2ce28c5846712b96be733e22f8e8d39008706b3a54c241718bc6122f006648",
+    "angD-label": "sha256:9c474f08428c92914c56f734bd4b47637c2d0aea5b0ddaaa1584542327b8e855"
+   },
+   "measurementsSha256": "sha256:6fc23348d168071ba5e704537ef6ebb44f5623231e7fa5f9962540fbddd82abd",
+   "svgSha256": "sha256:1f8d62908f33a304672d721f618be4a890449ac23d26de63755ca15276669fb8",
+   "witnessSha256": "sha256:d5913876fcbd1709b52033c6c9d11fa426f4f7040f4bc5d42ba59429ff3f09a6",
+   "staticAuditSha256": "sha256:0e791732df620c14ef22f09d0eca3779186d64f656d662e6e892471f49468c37",
+   "renderedLayoutSha256": "sha256:97438c90613c9a2926ccf87dfe361dc95990e60682038231a2fffbc40f752f14"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": [],
+   "planeMarks": {
+    "status": "PASS",
+    "errors": [],
+    "observations": [
+     {
+      "id": "angB-sector",
+      "type": "ANGLE_SECTOR",
+      "drawnDegrees": 39.99999999906444,
+      "radius": 1.6611773308566031,
+      "atVertex": true
+     },
+     {
+      "id": "angB",
+      "type": "ANGLE",
+      "drawnDegrees": 39.99999999906444,
+      "pointsDegrees": 39.99999999999999,
+      "arcs": 1,
+      "style": "SECTOR"
+     },
+     {
+      "id": "angA-sector",
+      "type": "ANGLE_SECTOR",
+      "drawnDegrees": 29.999999999485652,
+      "radius": 1.6611773308593782,
+      "atVertex": true
+     },
+     {
+      "id": "angA",
+      "type": "ANGLE",
+      "drawnDegrees": 29.999999999485652,
+      "pointsDegrees": 30.000000000000018,
+      "arcs": 1,
+      "style": "SECTOR"
+     },
+     {
+      "id": "angAED-sector",
+      "type": "ANGLE_SECTOR",
+      "drawnDegrees": 130.00000000128867,
+      "radius": 1.6611773308591866,
+      "atVertex": true
+     },
+     {
+      "id": "angAED",
+      "type": "ANGLE",
+      "drawnDegrees": 130.00000000128867,
+      "pointsDegrees": 130,
+      "arcs": 1,
+      "style": "SECTOR"
+     },
+     {
+      "id": "angD-sector",
+      "type": "ANGLE_SECTOR",
+      "drawnDegrees": 60.00000000026341,
+      "radius": 1.6611773308633022,
+      "atVertex": true
+     },
+     {
+      "id": "angD",
+      "type": "ANGLE",
+      "drawnDegrees": 60.00000000026341,
+      "pointsDegrees": 59.999999999999986,
+      "arcs": 1,
+      "style": "SECTOR"
+     }
+    ]
+   }
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 189.6796875
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:1f8d62908f33a304672d721f618be4a890449ac23d26de63755ca15276669fb8",
+   "policySha256": "sha256:fc52976b50aa54fd690b491f38300a54f4b584fbdfae17c6162f99f1b66527df",
+   "candidateBankSha256": "sha256:8e63cc618efef7d456827546c0b6f77d2d078b0b1db2b6d71413bd671d5f5540",
+   "assetPath": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/assets/images/25_왕운중_2학기_기말_중1_유사/q01-solution.svg",
+   "assetResponseSha256": "sha256:1f8d62908f33a304672d721f618be4a890449ac23d26de63755ca15276669fb8",
+   "archiveRowSha256": "sha256:2ffcac66fea80afc687b50f2754027b3b378a9f44cfdc8efe557baa7be240123",
+   "screenshotSha256s": {
+    "image": "sha256:ec50e4f625fa4219b8517522b1247ad7477f1b6e466c361a17d5cafa65980473",
+    "context": "sha256:e49e543f009ef00667078f59eada17d5af781bf5bb890cf22e264ff2996f06d2",
+    "page": "sha256:3bfb802460b8cbe6dc757b3defe96639868fea7e805a8b7510e284ddbad33b65"
+   },
+   "matrixSha256": "sha256:210f9da2bae5dd5ed970890ea2e90ee5b8848036e7dfad0e9933afd7db756bd5",
+   "engineSha256": "sha256:fa0428b0adf3253aa8f01204c0509b4453ca7528ca230f11184111ea96b77ecc"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-3d7e3a09",
+   "asset": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/assets/images/25_왕운중_2학기_기말_중1_유사/q01-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/candidates/25_왕운중_2학기_기말_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516-sol-desktop-va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516.png",
+    "context": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516-sol-desktop-va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516-context.png",
+    "page": ".tmp/archive/pilot-capture-3d7e3a09/25_왕운중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d77a175c8079f84e64c3d54de3df0e116442a24078201e2c93c45551dfd95516-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2final/25_왕운중_2학기_기말_중1_유사.js",
+    "bytes": 71723,
+    "sha256": "sha256:935f5eac18e90637b86f753f3bc9d63ac000545c29af6108489907ff6345ed40"
+   },
+   "originalQuestionSha256": "sha256:864db15b3f299e68eb1bc6e8c9b4c7759ab8e0044928cb38077810288e5de1bb",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 1
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.45161830357142857,
+  "expectedDisplayScale": 0.45161830357142857,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

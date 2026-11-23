@@ -11,6 +11,12 @@ import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
 import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
 import {unmarkedPointIds,isPlaneFigure} from './plane-marks.mjs';
 import {calloutPointIds} from './plane-callouts.mjs';
+import {noteCandidate} from './score-candidate.mjs';
+import {classify as scoreClassify} from '../ops/score/score.mjs';
+// Score gate: an observer failure whose every finding is a quality finding (a deduction in ops/score/score-table.json) does not end the compose here: the other observers still run so the candidate and all violations are kept.
+// The failure that is finally thrown is the same one, first, as before; only the extra record (score-candidate.mjs) is new.
+const softAudit=errors=>errors.length>0&&errors.every(text=>scoreClassify(String(text)).track==='DEDUCT');
+const auditViolations=(errors,degrees)=>errors.map(text=>{const parts=String(text).split(':');return{code:parts[0],...(parts.length>1?{id:parts.slice(1).join(':')}:{}),...(degrees&&degrees[text]?{degree:degrees[text]}:{})};});
 
 export const CANDIDATE_SVG_VERSION='construction-candidate-svg-v1';
 const CAPABILITY='construction-spike-v1';
@@ -269,6 +275,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
     const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},hiddenPointNames:plan.hiddenPointNames||[],pointNames:plan.pointNames||{},unmarkedPoints:unmarkedPointIds(plan),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,...(Array.isArray(spec.displayFacts.axisBounds)?{axisBounds:spec.displayFacts.axisBounds}:{})},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
+    let softStop=null;const softViolations=[];
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.
     if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)auditErrors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
@@ -278,9 +285,18 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
       const planeErrors=Array.isArray(planeAudit.errors)?[...planeAudit.errors]:[];
       if(planeAudit.finalSvgSha256!==lineage.svgSha256)planeErrors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
       state.staticAudit={...state.staticAudit,planeMarks:{status:planeAudit.status==='PASS'&&!planeErrors.length?'PASS':'FAIL',errors:planeErrors,observations:planeAudit.observations}};
-      if(state.staticAudit.planeMarks.status!=='PASS')throw new Stop('PLANE_MARKS_AUDIT_FAIL',{errors:planeErrors});
+      if(state.staticAudit.planeMarks.status!=='PASS'){
+        const stop=new Stop('PLANE_MARKS_AUDIT_FAIL',{errors:planeErrors});
+        if(!softAudit(planeErrors))throw stop;
+        softStop??=stop;softViolations.push(...auditViolations(planeErrors,planeAudit.violationDegrees));
+      }
     }
-    if(graphAudit&&graphAudit.status!=='PASS'){state.staticAudit={status:'FAIL',errors:graphAudit.errors??[]};throw new Stop('STATIC_GRAPH_AUDIT_FAIL',{errors:graphAudit.errors??null});}
+    if(graphAudit&&graphAudit.status!=='PASS'){
+      state.staticAudit={status:'FAIL',errors:graphAudit.errors??[]};
+      const stop=new Stop('STATIC_GRAPH_AUDIT_FAIL',{errors:graphAudit.errors??null});
+      if(!softAudit(graphAudit.errors??[]))throw stop;
+      softStop??=stop;softViolations.push(...auditViolations(graphAudit.errors,graphAudit.violationDegrees));
+    }
 
     // Same SVG string, policy display size; see display-profile-audit.mjs 12-15 (not an Archive mode=sol capture).
     const display={width:spec.viewport.width*typographyPolicy.displayScale,height:spec.viewport.height*typographyPolicy.displayScale};
@@ -292,6 +308,8 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout','OUTPUT_NOT_CANONICAL');
     // displayTextBelow11px* exist only when a label displays under 11 CSS px (information since 2026-11-23, not a failure)
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
+    if(layout.status!=='PASS'||softStop)noteCandidate({site:'figure',svg:svg,violations:[...softViolations,...(layout.violations??[])],errors:[...softViolations.map(v=>v.code+(v.id?':'+v.id:'')),...(layout.errors??[])]});
+    if(softStop)throw softStop;
     if(layout.status!=='PASS')throw new Stop('RENDERED_LAYOUT_FAIL',{errors:layout.errors});
 
     state.svg=svg;

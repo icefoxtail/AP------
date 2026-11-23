@@ -78,6 +78,8 @@ const SHARED_PRODUCTION = [
   'coordinate-frame.mjs', 'polynomial-text.mjs',
   // added with the panels bundle (same rule)
   'number-line-run-together.mjs', 'composite-expand-fields.mjs', 'conic_label_value.py',
+  // added with the score gate: render-plan.mjs records a candidate SVG on every observed failure (same rule)
+  'score-candidate.mjs',
   // added with S1 (same rule)
   'accessibility-description.mjs', 'wrap-text.mjs', 'accessible_name_observer.py',
   'render-plan.mjs', 'standalone-kinds.mjs', 'label-room.mjs', 'worker.mjs', 'worker.py', 'worker_host.py', 'phase2.mjs', 'contracts.mjs', 'dependencies.mjs', 'dependency-lock.json', 'typography.mjs', 'palette.mjs',
@@ -98,7 +100,8 @@ export const SHARED_PREFIXES = [
 export const SHARED_EXACT = new Set([
   `${GE}/visual-browser-runtime.mjs`, `${GE}/build-visual-render-matrix.mjs`, `${GE}/record-visual-browser-evidence.mjs`, `${GE}/verify-rendered-layout.mjs`,
   `${GE}/verify-svg-coordinate-parity.mjs`, `${GE}/verify-visual-engine-static.mjs`, `${GE}/verify-visual-extra-primitives.mjs`, `${GE}/legacy_independent_builder.py`,
-  `${GE}/audit_publication.py`, 'archive/tools/svg-language-contract.cjs', 'archive/tools/past-exam-pipeline/completion-contract.json', 'archive/data/svg-accessibility-index.js', 'archive/data/master_tables/js_archive_tag_master.json'
+  `${GE}/audit_publication.py`, 'archive/tools/svg-language-contract.cjs', 'archive/tools/past-exam-pipeline/completion-contract.json', 'archive/data/svg-accessibility-index.js', 'archive/data/master_tables/js_archive_tag_master.json',
+  `${GE}/ops/score/score.mjs` // render-plan.mjs scores every failed candidate
 ]);
 
 // Files in production/ that render-plan.mjs cannot reach (verified by the test). Changing them does not change a render.

@@ -404,7 +404,7 @@
   .ug-paper-actions .ug-btn { flex: 1 1 0; padding: 0 6px; }
   .ug-paper-actions .ug-assign { flex: 1 1 100%; }
   .ug-paper-actions .ug-compose { flex: 1 1 100%; }
-  .ug-papers-head .ug-assign-all { flex: 1 1 100%; margin-left: 0; }
+  .ug-papers-head .ug-assign-all, .ug-papers-head .ug-pick-next { flex: 1 1 100%; margin-left: 0; }
   .ug-bar { padding-inline: 16px; }
 }
 
@@ -457,6 +457,17 @@
 .ug-filter-note { align-self: center; margin-right: auto; color: var(--brand-ink); font-size: 14px; font-weight: 700; }
 .ug-types .ug-types-body { padding: 4px 0 8px; }
 .ug-types-help { margin: 0 0 8px; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+/* 대상(반·학생)과 "이미 준 문항 빼기" */
+.ug-target .ug-target-body { display: flex; flex-direction: column; gap: 10px; padding: 4px 0 8px; }
+.ug-target-field { display: flex; flex-direction: column; gap: 4px; }
+.ug-target-field > span { color: var(--ink-2); font-weight: 700; font-size: 14px; }
+.ug-target-field select { width: 100%; min-height: 44px; padding: 0 12px; border: 1.5px solid var(--control-line); border-radius: var(--radius-field); background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; }
+.ug-target-check { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 700; cursor: pointer; }
+.ug-target-check input { flex: 0 0 auto; width: 22px; height: 22px; accent-color: var(--ink); }
+.ug-target-body .ug-types-help { margin: 0; }
+.ug-given-note { margin-top: 0; }
+.ug-papers-head .ug-pick-next { min-height: 48px; margin-left: auto; padding: 0 20px; white-space: nowrap; }
+.ug-papers-head .ug-pick-next + .ug-assign-all { margin-left: 0; }
 .ug-type-list { display: flex; flex-direction: column; max-height: 260px; margin: 0; padding: 0 14px 0 0; overflow: auto; list-style: none; }
 .ug-type { display: flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; }
 .ug-type input { flex: 0 0 auto; width: 22px; height: 22px; accent-color: var(--ink); }

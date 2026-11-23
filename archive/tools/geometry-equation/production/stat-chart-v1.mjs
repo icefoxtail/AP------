@@ -8,6 +8,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
 import {readAccessibilityDescription} from './accessibility-description.mjs';
 import {wrapTextFragment} from './wrap-text.mjs';
+import {noteCandidate} from './score-candidate.mjs';
 
 // A standalone statistics / probability figure (stat-chart-figure-v1): histogram, frequency polygon (also over a histogram), relative-frequency graph,
 // stem-and-leaf plot, box plot, scatter plot, the 6x6 table of two dice and a probability tree. The author gives the data exactly (class boundaries and
@@ -2064,6 +2065,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
+    if(layout.status!=='PASS'&&!degrade)noteCandidate({site:'figure',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS'){if(degrade)degrade.observed('rendered-layout',layout.errors);else throw new Stop('STAT_CHART_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     state.svg=svg;state.rowScale=usedScale;
     return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');

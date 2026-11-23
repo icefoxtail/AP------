@@ -86,6 +86,8 @@ async function instrument(context, options = {}) {
     }
     if (endpoint === 'student-portal/wrong-clinics') return state.clinicError ? json({ success:false, message:'QA 클리닉 조회 실패' }, 503) : json({ success:true, packets: data.packets });
     if (endpoint === 'student-portal/learning-history') return json(data.learning);
+    // 자습 기록(오답 다시 풀기·유사 풀기): 이 검사에서는 기능이 꺼진 서버와 같은 응답을 준다(HTTP 200 + FEATURE_UNAVAILABLE).
+    if (endpoint === 'student-portal/self-study') return json({ success: false, code: 'FEATURE_UNAVAILABLE', sets: [] });
     if (endpoint === 'student-portal/omr-submit') {
       if (state.delaySubmit) await new Promise(resolve => setTimeout(resolve, state.delaySubmit));
       if (state.rejectSubmit) return json({ success:false, message:'QA 제출 실패: 다시 시도하세요.' }, 503);

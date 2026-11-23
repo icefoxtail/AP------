@@ -45,6 +45,9 @@
   const WORKBOOK_PUBLISHERS = Object.freeze(["백발백중"]);
 
   const text = (value) => (value == null ? "" : String(value)).trim();
+  // 시험 한 벌의 "집안"(stem): 원본 시험지와 그 유사본(`_유사`·`_유사2`)이 같은 stem이다. 카탈로그에는 원본-유사 짝 링크가 없어
+  // 파일 이름에서 알아낸다. 짝 키 = stem + 번호(sourceOrdinal): 같은 번호의 원본 문항과 그 유사 문항이다.
+  const stemOf = (file) => text(file).replace(/\\/g, "/").replace(/^\/?(?:archive\/)?(?:exams\/)?[^/]+\//, "").replace(/\.js$/i, "").replace(/_유사\d*$/, "");
   const list = (value) => (Array.isArray(value) ? value.map(text).filter(Boolean) : []);
 
   // ---- 시드 난수: 문자열 해시 → [0, 1). 후보마다 (seed, uid)로만 정해져 입력 순서와 무관하다 ----
@@ -134,6 +137,8 @@
         uid,
         record,
         file: text(record.sourceFile),
+        stem: stemOf(record.sourceFile),
+        pair: `${stemOf(record.sourceFile)}#${text(record.sourceOrdinal)}`,
         // 묶음 키 = (학년, 통합 과목). 교육과정(originalCurriculum)은 키가 아니다(보고용으로만 cand.curr에 둔다).
         ck: entry ? `${text(entry.grade)}|${text(entry.subject)}` : "",
         curr: entry ? text(entry.originalCurriculum) : "",
@@ -191,7 +196,10 @@
     const level = LEVEL_MODES.includes(opts.level) ? opts.level : "same";
     const exclude = new Set();
     for (const uid of opts.exclude instanceof Set ? opts.exclude : list(opts.exclude)) exclude.add(text(uid));
-    return { typeMode, level, sources: opts.sources, includeBlank: opts.includeBlank === true, exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
+    // pairExclusive: 한 벌 안에 같은 번호의 원본 문항과 그 유사 문항(같은 stem+번호)을 함께 넣지 않는다.
+    // excludeBaseFamily: 기준 시험지와 같은 stem(그 시험의 유사·유형 문항)은 후보에서 뺀다. 둘 다 기본은 꺼짐(학교 모의고사가 켠다).
+    return { typeMode, level, sources: opts.sources, includeBlank: opts.includeBlank === true, pairExclusive: opts.pairExclusive === true,
+      excludeBaseFamily: opts.excludeBaseFamily === true, preferSchool: opts.preferSchool === true, softExclude: new Set(list(opts.softExclude)), exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
   }
   const uidOfItem = (item) => (typeof item === "string" ? text(item) : text(item && (item.questionUid || item.uid)));
 
@@ -235,6 +243,11 @@
     }
 
     const used = new Set();
+    const usedPairs = new Set();
+    // 기준 시험지의 stem: 기준 문항들이 놓인 시험 파일(원본·유사·유형 모두 같은 이름 뿌리를 쓴다).
+    const baseStems = new Set(resolved.map((base) => base.stem).filter(Boolean));
+    const familyBlocked = (cand) =>
+      (opts.excludeBaseFamily && baseStems.has(cand.stem)) || (opts.pairExclusive && usedPairs.has(cand.pair));
     const fileCount = new Map();
     const poolFor = (base, rung) => {
       const pool = index.pools.get(base.ck);
@@ -269,6 +282,10 @@
       if (cand.unit !== base.unit) s += 20;
       if (rung !== "subunit" && rung !== "unit" && rung !== "none" && cand.sub !== base.sub) s += 5;
       s += (fileCount.get(cand.file) || 0) * 15;
+      // 같은 칸이면 학교 기출을 먼저(난이도 한 단계 차이보다는 약하게): 유사 +15, 교재 +25.
+      // softExclude: 다른 회차가 이미 고른 문항. 빼지 않고 크게 감점한다(같은 조건의 다른 문항이 있으면 그것, 없으면 겹쳐서라도 채운다).
+      if (opts.softExclude.size && opts.softExclude.has(cand.uid)) s += 500;
+      if (opts.preferSchool && cand.srcKind !== "school") s += cand.srcKind === "similar" ? 15 : 25;
       s -= (overlap(cand.cc, base.cc) + overlap(cand.cond, base.cond)) * 4;
       s += unit01(opts.seed, cand.uid) * 3;
       return s;
@@ -277,7 +294,7 @@
       let best = null;
       let bestScore = Infinity;
       for (const cand of pool) {
-        if (used.has(cand.uid) || blocked.has(cand.uid) || !accept(cand)) continue;
+        if (used.has(cand.uid) || blocked.has(cand.uid) || familyBlocked(cand) || !accept(cand)) continue;
         const s = score(cand, base, target, dev, rung);
         if (s < bestScore || (s === bestScore && best && cand.uid < best.uid)) { best = cand; bestScore = s; }
       }
@@ -315,10 +332,13 @@
     };
 
     // 후보가 적은 기준 문항부터 처리한다(희귀한 칸을 먼저 확보). 같으면 기준 순서.
+    // 후보 수는 실제로 뽑을 수 있는 문항만 센다(기준 문항 자신·제외·경계 밖·출처 밖은 뺀다). 자기 자신뿐인 칸을 "희귀"로 오해해
+    // 먼저 처리하면, 그 자리가 가장 넓은 단(범위 안 다른 단원)에서 다른 자리가 쓸 같은 유형 후보를 가져가 버린다.
+    const countable = (cand) => !blocked.has(cand.uid) && !familyBlocked(cand) && inBoundary(cand) && allowSource(cand) && (opts.includeBlank || !cand.blank);
     const order = bases.map((base, i) => i).filter((i) => bases[i]).sort((a, b) => {
       const size = (i) => {
         for (const rung of different ? ["subunit", "unit"] : LADDER) {
-          const n = poolFor(bases[i], rung).length;
+          const n = poolFor(bases[i], rung).filter(countable).length;
           if (n) return n;
         }
         return 1e9;
@@ -332,6 +352,7 @@
       if (!found) continue;
       picks[i] = found;
       used.add(found.cand.uid);
+      usedPairs.add(found.cand.pair);
       fileCount.set(found.cand.file, (fileCount.get(found.cand.file) || 0) + 1);
       if (targets[i] !== null) dev += found.cand.bucket - targets[i];
     }
@@ -367,6 +388,7 @@
     let hintOnly = 0;
     let relaxed = 0;
     let filled = 0;
+    let overlap = 0;
     let templateMatch = 0;
     let templateFormalMatch = 0;
     let templateDen = 0;
@@ -387,6 +409,7 @@
       }
       if (!base || !found) return;
       filled += 1;
+      if (opts.softExclude && opts.softExclude.has(found.cand.uid)) overlap += 1;
       counts[found.rung] += 1;
       if (found.hintOnly) hintOnly += 1;
       if (found.relaxed && opts.typeMode === "different") relaxed += 1;
@@ -430,7 +453,21 @@
     if (hintOnly) notes.push(`${hintOnly}문항은 유형 정보가 확정 전(참고용)인 것으로 골랐습니다.`);
     const textParts = rungRows.filter((row) => row.count > 0).map((row) => `${row.label} ${row.count}`);
     const levelText = `기준보다 쉬움 ${difficulty.easier} · 같음 ${difficulty.same} · 어려움 ${difficulty.harder}`;
+    // 못 채운 자리(기준 시험지의 몇 번째 자리인지, 1부터)와 한 줄 요약("24문항 중 21문항 같은 유형, 3문항 같은 단원").
+    const unfilledSlots = [];
+    bases.forEach((base, i) => { if (base && !picks[i]) unfilledSlots.push(i + 1); });
+    const sameType = counts.template + counts.type;
+    const headParts = [`${baseCount}문항 중 ${sameType}문항 같은 유형`];
+    if (counts.concept) headParts.push(`${counts.concept}문항 같은 개념`);
+    if (counts.subunit + counts.unit) headParts.push(`${counts.subunit + counts.unit}문항 같은 단원`);
+    if (counts.none) headParts.push(`${counts.none}문항 범위 안 다른 단원`);
+    if (baseCount - filled > 0) headParts.push(`${baseCount - filled}문항 못 채움`);
+    if (overlap) headParts.push(`다른 회차와 겹침 ${overlap}문항`);
     return {
+      headline: headParts.join(", "),
+      overlap,
+      sameType,
+      unfilledSlots,
       typeMode: opts.typeMode,
       level: opts.level,
       seed: opts.seed,
