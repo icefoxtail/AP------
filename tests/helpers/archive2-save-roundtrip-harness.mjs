@@ -137,7 +137,9 @@ function seededUuids() {
   return { next, seedMode: (on) => { seedMode = on; if (on) seedCounter = 0; } };
 }
 
-export function createWorkspace(workerHandle) {
+// options.shardFiles: a Map(relative path -> Buffer) of the built catalog shards; with it the page has the shard loader and answers
+// ".../data/archive2-catalog-shards-v1/<file>" from the map (the screen then builds its catalog from shards, as a browser does).
+export function createWorkspace(workerHandle, options = {}) {
   const nodes = new Map(), storage = new Map();
   const node = (id) => {
     if (!nodes.has(id)) nodes.set(id, {
@@ -195,12 +197,19 @@ export function createWorkspace(workerHandle) {
         wire.log.push({ route, method: init.method || "GET", status: res.status, error });
         return { ok: res.ok, status: res.status, json: async () => JSON.parse(text) };
       }
+      if (options.shardFiles && u.startsWith(BASE + "data/archive2-catalog-shards-v1/")) {
+        const bytes = options.shardFiles.get(new URL(u).pathname.split("/").pop());
+        if (!bytes) return { ok: false, status: 404, arrayBuffer: async () => new ArrayBuffer(0) };
+        const copy = Buffer.from(bytes);
+        return { ok: true, status: 200, arrayBuffer: async () => copy.buffer.slice(copy.byteOffset, copy.byteOffset + copy.length) };
+      }
       if (u.startsWith(BASE)) {
         const r = localFile(path.join(root, "archive"), decodeURIComponent(new URL(u).pathname.replace(/^\/archive\//, "")));
         return { ok: r.ok, status: r.status, text: async () => r.text(), json: async () => r.json() };
       }
       throw new Error("unexpected network request: " + u);
     },
+    ...(options.shardFiles ? { Archive2CatalogShards: require("../../archive/archive2-catalog-shards.js") } : {}),
     Archive2Core: core, ProblemBankMeta: require("../../archive/problem-bank-meta.js"), Archive2Canonical: core.Canonical,
     Archive2Output: require("../../archive/archive2-output.js"), Archive2Papers: require("../../archive/archive2-papers.js"),
     Archive2History: require("../../archive/archive2-history.js"), Archive2Source: sourceForScreen,
@@ -213,9 +222,20 @@ export function createWorkspace(workerHandle) {
   storage.set("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   loadWorkspace(ctx, `
     render = () => {};
-    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision };
+    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision, shardGlue: { shardCatalog, installCatalogDerived, ensureShards, ensureShardFiles, shardNeed } };
   `);
   const ws = ctx.ws;
+  if (options.shardFiles) {
+    // the screen's own first load from shards (grade of state.filters), installed the way loadCatalog installs it
+    Object.assign(ws.state, { view: "compose", useMode: "general", ackWarnings: true });
+    ws.bootFromShards = async () => {
+      const first = await ws.shardGlue.shardCatalog();
+      ws.shardGlue.installCatalogDerived(first);
+      ws.state.catalog = first;
+      return first;
+    };
+    return { ws, wire, seedMode: uuids.seedMode, click: async () => {}, change: async () => {} };
+  }
   Object.assign(ws.state, {
     catalog, byUid: new Map(catalog.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r])),
     finderIndex: core.buildFinderIndex(catalog), metaIndex: [], metaIndexSource: null, useMode: "general", indexVersion: catalog.indexVersion, ackWarnings: true,

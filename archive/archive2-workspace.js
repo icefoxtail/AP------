@@ -260,6 +260,7 @@
       if (state.view !== "home" && Boot?.catalogDeferred && !lightPending) ensureCatalog();
       return;
     }
+    if (shardGate()) return;
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
     const detail = document.querySelector(".compose-detail");
@@ -438,9 +439,14 @@
     rememberCurrentHistoryEntry();
     history.pushState({ archive2ScrollY: 0 }, "", url.href);
     readUrl();
-    syncUidRoute();
-    render();
-    window.scrollTo(0, 0);
+    // A route that names questions by uid is resolved against the whole list: with a partial catalog the rest is fetched first.
+    const proceed = () => { syncUidRoute(); render(); window.scrollTo(0, 0); };
+    if (state.urlUids?.length && state.catalog && state.catalog.complete === false) {
+      render(); // shows the loading notice
+      ensureShards({ all: true }).then(proceed, () => render());
+      return true;
+    }
+    proceed();
     return true;
   }
   // A home opened on the small exam list starts the catalog when the teacher reaches for something that reads it (the school
@@ -449,7 +455,10 @@
   const CATALOG_INTENT = '#archive-home-query, [data-action="home-search"], [data-action="home-school"], [data-action="home-all-schools"], [data-view]:not([data-view="home"]):not([data-view="saved"]), [data-action="home-product"]:not([data-route-owner="generated-consumer"])';
   function startCatalogOnIntent(event) {
     if (!Boot?.catalogDeferred || catalogLoad || state.catalog || state.view !== "home") return;
-    if (event.target instanceof Element && event.target.closest(CATALOG_INTENT)) ensureCatalog();
+    if (!(event.target instanceof Element && event.target.closest(CATALOG_INTENT))) return;
+    // 조각 경로: 무엇이 필요한지는 누른 화면이 정한다. 지금은 색인과 공통 표만 미리 받아 둔다.
+    if (shardsOn()) { prefetchShards().then((ok) => { if (!ok) ensureCatalog(); }); return; }
+    ensureCatalog();
   }
   document.addEventListener("pointerover", startCatalogOnIntent, { passive: true });
   document.addEventListener("focusin", startCatalogOnIntent, { passive: true });
@@ -485,6 +494,7 @@
       }
       const a = b.dataset.action;
       if (a === "boot-retry") { location.reload(); return; }
+      if (a === "shard-retry") { state.shardError = ""; render(); return; }
       if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a) && !(state.light && LIGHT_FIND_ACTIONS.has(a))) {
         deferUntilCatalog(b);
         return;
@@ -1052,7 +1062,9 @@
       } else if (a === "import") $("import-file").click();
       else if (a === "restore") {
         $("modal").close();
-        applyDraft(drafts()[Number(b.dataset.draft)]);
+        const restoring = drafts()[Number(b.dataset.draft)];
+        await ensureShardFiles(restoring?.selected, restoring?.sources);
+        applyDraft(restoring);
       } else if (a === "delete-draft") askDeleteDraft(b.dataset.draftId);
       else if (a === "delete-draft-confirm") deleteDraft(b.dataset.draftId);
       else if (a === "new-draft") newDraft();
@@ -1227,7 +1239,9 @@
       } else if (el.id === "import-file" && el.files[0]) {
         if (el.files[0].size > 1000000)
           throw new Error("작업 파일이 너무 큽니다.");
-        applyDraft(JSON.parse(await el.files[0].text()));
+        const imported = JSON.parse(await el.files[0].text());
+        await ensureShardFiles(imported?.selected, imported?.sources);
+        applyDraft(imported);
         save();
         el.value = "";
       }
@@ -1757,6 +1771,11 @@
     UID_ROUTE_MAX,
     UID_ROUTE_REASONS,
     viewNeedsUnifiedIndex,
+    ensureShardFiles,
+    shardCatalog,
+    installCatalogDerived,
+    shardNeed,
+    ensureShards,
   });
   WS.link(); // again: the constants exported by this file are now visible to the other parts
   // The catalog (download, hash check, resolve) is started once, by whoever needs it first: the boot below, or, for a
@@ -1826,6 +1845,7 @@
         if (catalogLoad || state.catalog || state.view !== "home") return;
         const again = Boot.warmBlocked?.();
         if (again) { Boot.mark?.("warm-skip-" + again); if (again === "hidden") scheduleWarm(); return; }
+        if (shardsOn()) { prefetchShards().then((ok) => { if (ok) return; Boot.warmBegin(); ensureCatalog("warm"); }); return; }
         Boot.warmBegin();
         ensureCatalog("warm");
       }, 5000);
@@ -1870,6 +1890,135 @@
       return true;
     } catch { return false; }
   }
+  // ---- 문항 목록 조각 경로 (2단계 2-4): 문제지 만들기는 고른 학년의 조각만, 나머지 화면은 조각 전부(전체 묶음보다 작다) ----
+  // 주소에 ?shards=0 이 있으면 예전 전체 묶음 경로 그대로. 조각이 사이트에 없으면(CATALOG_SHARDS_UNAVAILABLE) 전체 묶음으로 간다.
+  // 조각 판정은 archive/archive2-catalog-shards.js(조립·검증)와 색인(browseGrades·examShard)만 본다. 이 파일은 "무엇이 필요한가"만 정한다.
+  const SHARDS_OFF = window.Archive2CatalogShards?.shardsDisabled?.(location.search) === true;
+  const SHARD_NOTICE = "문항 목록을 불러오는 중입니다.";
+  let shardSession = null; // { loader } once this document builds its catalog from shards
+  let shardsBroken = false; // the shards are not on the site: this document uses the whole bundle
+  let shardLoading = { sig: "", promise: null };
+  const shardsOn = () => !SHARDS_OFF && !shardsBroken && Boolean(window.Archive2CatalogShards);
+  function shardLoader() {
+    if (!shardSession) shardSession = { loader: window.Archive2CatalogShards.createLoader({ base: new URL("data/archive2-catalog-shards-v1/", document.baseURI).href, fetch: (url, init) => window.fetch(url, init) }) };
+    return shardSession.loader;
+  }
+  // The index and the common tables only (a few hundred KB): enough to make the next click fast. false = no shards on this site.
+  async function prefetchShards() {
+    if (!shardsOn()) return false;
+    try { const loader = shardLoader(); await loader.loadIndex(); await loader.loadCommon(); return true; }
+    catch (error) {
+      if (!window.Archive2CatalogShards.isUnavailable(error)) { console.warn("[archive2] shard prefetch failed:", error); return true; }
+      shardsBroken = true; shardSession = null;
+      console.warn("[archive2] catalog shards are not available; using the whole bundle:", error);
+      return false;
+    }
+  }
+  // What the screen the teacher is on needs of the catalog, as a need for the loader (grades / exams / all).
+  // 문제지 만들기: the chosen grade (every shard with a question browsable under it) plus the exams it already refers to (sources, selected
+  // questions, a ?source= route). Every other screen reads the whole list (exam search, units of all grades, 출제 내역 titles): all shards.
+  // A saved-paper revision names its own exams when it is opened, so it asks for nothing up front.
+  function shardNeed() {
+    const need = { grades: [], exams: [], all: false };
+    const search = new URLSearchParams(location.search);
+    const composeOnly = state.view === "compose" && !state.urlUids?.length && !search.has("derive") && !V.derive?.pendingMock;
+    if (!composeOnly) { need.all = true; return need; }
+    if (state.editSavedPaperId) return need;
+    const grade = state.filters?.grade;
+    if (grade) need.grades.push(grade); else need.all = true;
+    const files = [...(state.sources || []), ...(state.urlSources || []), ...(state.selected || []).map((record) => record?.sourceFile)]
+      .map((file) => String(file || "").trim()).filter(Boolean);
+    need.exams = [...new Set(files)];
+    return need;
+  }
+  // The same thing the whole-bundle path does after resolveCatalog, in one place, so a catalog that grows by a shard is built the same way.
+  function installCatalogDerived(catalog) {
+    state.useMode = "general";
+    state.indexVersion = catalog.indexVersion;
+    state.byUid = new Map(
+      catalog.records
+        .filter((r) => r.questionUid)
+        .map((r) => [r.questionUid, r]),
+    );
+    state.finderIndex = C.buildFinderIndex(catalog);
+    // The recorded-meta index and the 자료 점검 counts are built when a screen needs them (or when idle).
+    state.metaIndex = [];
+    state.metaIndexSource = null;
+    state.healthUnified = null;
+    state.healthComposeScope = null;
+    composeMetaQueryCache.clear();
+  }
+  function shardMissing(need) {
+    const { keys, unknownExams } = shardLoader().keysFor(need);
+    const have = new Set(state.catalog?.shardKeys || []);
+    return unknownExams.length > 0 || keys.some((key) => !have.has(key));
+  }
+  // The first catalog of this document from shards (after the index is known). null = the shards are not on this site.
+  async function shardCatalog() {
+    if (!(await prefetchShards())) return null;
+    const loader = shardLoader();
+    let need = shardNeed();
+    if (loader.keysFor(need).unknownExams.length) need = { all: true };
+    const catalog = await loader.loadCatalog(need);
+    const common = await loader.loadCommon();
+    if (!window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = common.labels;
+    return catalog;
+  }
+  // Brings the catalog up to a need (more shards), keeping everything chosen. Resolves when state.catalog has them.
+  async function ensureShards(need) {
+    if (!shardSession || !state.catalog || state.catalog.complete !== false) return;
+    if (!shardMissing(need)) return;
+    const loader = shardLoader();
+    const asked = loader.keysFor(need).unknownExams.length ? { all: true } : need;
+    const next = await loader.loadCatalog(asked);
+    installCatalogDerived(next);
+    state.catalog = next;
+  }
+  // Saved papers, drafts and imports name their questions by exam file: ask for those exams' shards.
+  async function ensureShardFiles(rows, extraFiles = []) {
+    if (!shardSession || !state.catalog || state.catalog.complete !== false) return;
+    const files = [...extraFiles, ...(Array.isArray(rows) ? rows : []).map((row) => row?.sourceArchiveFile || row?.sourceFile || row?._sourceFile)]
+      .map((file) => String(file || "").trim()).filter(Boolean);
+    await ensureShards({ exams: [...new Set(files)] });
+  }
+  const shardNeedsLoading = () => {
+    if (!shardSession || !state.catalog || state.catalog.complete !== false || state.view === "saved") return false;
+    return shardMissing(shardNeed());
+  }
+  function shardLoadingMarkup() {
+    const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || { find: "학교별 기출", compose: "문제지 만들기", health: "자료 점검", home: "홈", recent: "출제 내역" }[state.view] || "아카이브";
+    if (state.shardError)
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.shardError)}</p><p>${button("shard-retry", "다시 시도", 'class="primary"')}</p></section>`;
+    return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1><p class="boot-wait-text">${SHARD_NOTICE}</p><p class="muted">고른 조건은 그대로 두었습니다. 불러오면 이 화면이 저절로 열립니다.</p></section>`;
+  }
+  // Called by renderContent: when the screen needs shards the catalog does not hold yet, it shows the notice and starts the load.
+  function shardGate() {
+    if (!shardNeedsLoading()) return false;
+    syncViewNavigation();
+    if (state.shardError) { $("content").innerHTML = shardLoadingMarkup(); return true; }
+    const need = shardNeed();
+    const sig = JSON.stringify(need);
+    $("content").innerHTML = shardLoadingMarkup();
+    status(SHARD_NOTICE);
+    if (shardLoading.sig !== sig || !shardLoading.promise) {
+      shardLoading.sig = sig;
+      const promise = ensureShards(need).then(() => {
+        if (shardLoading.promise !== promise) return;
+        shardLoading = { sig: "", promise: null };
+        if ($("status")?.textContent === SHARD_NOTICE) status("");
+        render();
+      }).catch((error) => {
+        if (shardLoading.promise !== promise) return;
+        shardLoading = { sig: "", promise: null };
+        console.error("[archive2] shard load failed:", error?.code || "", error);
+        state.shardError = teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+        status("");
+        render();
+      });
+      shardLoading.promise = promise;
+    }
+    return true;
+  }
   (async () => {
     readUrl();
     if (isQuickAssessmentView()) quickLoadGroups();
@@ -1897,50 +2046,17 @@
     }
     ensureCatalog();
   })();
-  // 조각 로더는 스위치가 켜졌을 때만 받는다. 조각이 사이트에 없으면(빌드가 건너뜀·로컬) 전체 묶음으로 간다(그 밖의 실패는 그대로 오류).
-  async function shardCatalog() {
-    if (!window.Archive2CatalogShards)
-      await new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = "archive2-catalog-shards.js?v=20261124-shards-1";
-        script.onload = resolve;
-        script.onerror = () => reject(new Error("문항 조각 로더를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요."));
-        document.head.appendChild(script);
-      });
-    const Shards = window.Archive2CatalogShards;
-    try {
-      const found = await Shards.loadForSwitch(location.search);
-      if (found) return found.catalog;
-    } catch (error) {
-      if (!Shards.isUnavailable(error)) throw error;
-      console.warn("[archive2] catalog shards are not available; using the whole bundle:", error);
-    }
-    return window.applyArchiveMetaFoundationCatalog();
-  }
   async function loadCatalog() {
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
-      // 확인용 스위치(2단계 2-2): 주소에 ?shards=1 (또는 ?shards=과목키,...)이 있을 때만 전체 묶음 대신 조각으로 목록을 만든다. 없으면 이 줄은 그대로 전체 묶음이다.
-      const catalog = await (/[?&]shards=/.test(location.search) ? shardCatalog() : window.applyArchiveMetaFoundationCatalog());
+      // 조각 경로가 기본이다(2단계 2-4). ?shards=0 이면 예전 전체 묶음, 조각이 사이트에 없으면 shardCatalog()가 null이라 전체 묶음으로 간다.
+      const catalog = (shardsOn() && await shardCatalog()) || await window.applyArchiveMetaFoundationCatalog();
       if (!ProblemBankMeta) throw Object.assign(new Error("문항 분류 자료를 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "PROBLEM_BANK_META_UNAVAILABLE" });
       Boot?.begin?.("index");
       Boot?.setStage?.("index");
       await Boot?.quiet?.();
-      state.useMode = "general";
-      state.indexVersion = catalog.indexVersion;
-      state.byUid = new Map(
-        catalog.records
-          .filter((r) => r.questionUid)
-          .map((r) => [r.questionUid, r]),
-      );
-      state.finderIndex = C.buildFinderIndex(catalog);
-      // The recorded-meta index and the 자료 점검 counts are built when a screen needs them (or when idle).
-      state.metaIndex = [];
-      state.metaIndexSource = null;
-      state.healthUnified = null;
-      state.healthComposeScope = null;
-      composeMetaQueryCache.clear();
+      installCatalogDerived(catalog);
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )

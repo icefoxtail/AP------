@@ -11,7 +11,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
-    clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
+    clearUidRoute, composeSubjectLabel, ensureShardFiles, esc, finalGate, frozenPaperCache, originalSettingsForExam,
     ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
     rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
     review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
@@ -20,7 +20,7 @@
   WS.links.push(() => {
     ({
       $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
-      clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
+      clearUidRoute, composeSubjectLabel, ensureShardFiles, esc, finalGate, frozenPaperCache, originalSettingsForExam,
       ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
       rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
       review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
@@ -730,6 +730,8 @@
   }
   async function openSavedPaperRevision(id) {
     const data = await api("/archive-saved-papers/" + encodeURIComponent(id));
+    // 조각 경로: 저장본의 문항이 속한 시험지의 조각을 더 받는다(다른 학년이 섞여 있어도). 전체 목록이면 아무것도 하지 않는다.
+    await ensureShardFiles(data.paper?.snapshot?.questions);
     applySavedPaperRevision(data.paper);
     state.editSavedPaperId = "";
     history.replaceState(null, "", `workspace.html?view=compose${state.assignLegacy ? "&assign=legacy" : ""}`);

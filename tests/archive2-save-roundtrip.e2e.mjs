@@ -9,7 +9,8 @@
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import { after, before, test } from "node:test";
-import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
+import { pathToFileURL } from "node:url";
+import { MAX_SAVED_PAPER_BYTES, catalog, root, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
 // 고3 is not sampled: its general-use pool has too few questions per unit for a 20-question, two-unit paper.
 const GRADES = ["중1", "중2", "중3", "고1", "고2"];
@@ -400,3 +401,60 @@ test("a picture the server cannot read does not stop the save: the paper is save
   const { paper } = await (await api("/archive-saved-papers/" + paperId)).json();
   assert.deepEqual(paper.snapshot.assets.filter((asset) => asset.missing).map((asset) => asset.path), ["assets/images/" + lostKey], "only that picture is marked");
 });
+
+// ---- 문제지 만들기 from the catalog shards of the chosen grade (stage 2-4) -------------------------------------------------------------
+// The screen builds its list from the shards of the grade (not the whole bundle). A paper made that way must save exactly like one made from the
+// whole catalog (same index_version, same question values the Worker compares), and a saved paper of ANOTHER grade must open as a revision:
+// the screen fetches the shards of the exams the paper names before it checks the paper.
+let shardFilesOnce = null;
+async function shardFiles() {
+  if (!shardFilesOnce) {
+    const { buildCatalogShards } = await import(pathToFileURL(root + "/tools/lib/build-archive2-catalog-shards.mjs").href);
+    const built = await buildCatalogShards(root);
+    const files = new Map(built.files);
+    files.set("index.json", built.entries[0].content);
+    shardFilesOnce = files;
+  }
+  return shardFilesOnce;
+}
+for (const grade of ["중1", "고1", "고2"]) {
+  test(`${grade}: a paper made from the shards of the grade saves, reads back, and a paper of another grade opens as a revision`, async () => {
+    const files = await shardFiles();
+    const sample = await sampleFor(grade);
+    const { ws, wire, seedMode } = createWorkspace(server, { shardFiles: files });
+    ws.state.filters = { grade };
+    const first = await ws.bootFromShards();
+    assert.equal(first.complete, false, "the screen holds the shards of the grade only");
+    assert.equal(first.indexVersion, catalog.indexVersion, "the version string the server compares");
+    configureSample(ws, seedMode, grade, sample.keys, PER_UNIT);
+    const sentUids = ws.state.selected.map((r) => r.questionUid);
+    assert.ok(sentUids.length >= 2, `${grade}: generate() built an empty paper from the shards`);
+    await ws.savePapers();
+    assert.equal(ws.state.saveResultState, "SAVED", sendFailure(ws, grade + " (from shards)"));
+    assert.equal(wire.log.filter((l) => l.route === "/archive-saved-papers" && l.method === "POST").every((l) => l.status === 200), true);
+    const [paperId] = ws.state.savedPaperIds;
+    const { paper } = await (await api("/archive-saved-papers/" + paperId)).json();
+    assert.deepEqual(paper.snapshot.questions.map((q) => q.questionUid), sentUids);
+    assert.equal(paper.snapshot.meta.indexVersion ?? catalog.indexVersion, catalog.indexVersion);
+
+    // a revision of a paper of ANOTHER grade, opened by a screen that holds only this grade's shards
+    const otherGrade = grade === "중1" ? "고2" : "중1";
+    const otherSample = await sampleFor(otherGrade);
+    const maker = createWorkspace(server);
+    configureSample(maker.ws, maker.seedMode, otherGrade, otherSample.keys, PER_UNIT);
+    await maker.ws.savePapers();
+    assert.equal(maker.ws.state.saveResultState, "SAVED", sendFailure(maker.ws, otherGrade + " (maker)"));
+    const [otherPaperId] = maker.ws.state.savedPaperIds;
+    const otherUids = maker.ws.state.selected.map((r) => r.questionUid);
+    const opener = createWorkspace(server, { shardFiles: files });
+    opener.ws.state.filters = { grade };
+    const held = await opener.ws.bootFromShards();
+    assert.ok(otherUids.every((uid) => !held.records.some((r) => r.questionUid === uid)) || held.complete, "the other grade's questions are not held yet");
+    await opener.ws.openSavedPaperRevision(otherPaperId);
+    assert.deepEqual(opener.ws.state.selected.map((r) => r.questionUid), otherUids, "the revision restores the other grade's paper");
+    assert.ok(otherUids.every((uid) => opener.ws.state.byUid.has(uid)), "the screen fetched the shards of the paper's exams");
+    assert.equal(opener.ws.state.derivationSource?.parentId, otherPaperId);
+    await opener.ws.savePapers();
+    assert.equal(opener.ws.state.saveResultState, "SAVED", sendFailure(opener.ws, otherGrade + " revision opened from " + grade + " shards"));
+  });
+}

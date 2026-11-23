@@ -129,7 +129,9 @@ test('the assembled catalog has the same lists as the whole catalog, for every k
     if (excluded.has(key)) continue;
     assert.deepEqual(assembled[key], catalog[key], `catalog.${key}`);
   }
-  assert.deepEqual(assembled.records.map((r) => r.questionUid), [...index.shards.flatMap((s) => docOf(files, s).records)].map((r) => r.questionUid));
+  // all shards assembled give the whole catalog's lists in the whole catalog's order (a list built from some shards is in that order too)
+  assert.deepEqual(assembled.records.map((r) => r.questionUid), catalog.records.map((r) => r.questionUid));
+  assert.deepEqual(assembled.exams.map((e) => e.file), catalog.exams.map((e) => e.file));
   assert.equal(assembled.records.length, catalog.records.length);
   assert.equal(new Set(assembled.records.map((r) => r.questionUid)).size, catalog.records.length);
   const byFile = (rows, key) => JSON.stringify([...rows].sort((a, b) => (key(a) < key(b) ? -1 : 1)));

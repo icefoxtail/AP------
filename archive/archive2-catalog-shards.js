@@ -103,6 +103,15 @@
       for (const exam of doc.authority.exams) exams.push(exam);
       for (const entry of doc.authority.sourceHashes || []) sourceHashes.push(entry);
     }
+    // The whole catalog lists its exams in one order and each exam's questions together by number; examShard's keys are in that order.
+    // Shards hold exams in that relative order, but a catalog made of several shards would interleave them by shard: put it back, so a
+    // list built from some shards is in the same order as the list built from all of them (ties between questions of one year follow it).
+    const position = new Map(Object.keys(index.examShard || {}).map((file, i) => [file, i]));
+    const rank = (file) => (position.has(file) ? position.get(file) : 1e9);
+    if (docs.length > 1) {
+      records.sort((a, b) => rank(a.sourceFile) - rank(b.sourceFile));
+      exams.sort((a, b) => rank(a.file) - rank(b.file));
+    }
     return {
       ...common.catalog,
       indexVersion: index.indexVersion,
@@ -112,6 +121,8 @@
       sourceHashes,
       canonicalAuthority: authority,
       shardKeys: docs.map((doc) => doc.key),
+      // true when every shard of the release is in: a screen that needs the whole list can tell a partial catalog from a complete one
+      complete: docs.length === (index.shards || []).length,
     };
   }
 
@@ -248,18 +259,27 @@
     function loadShards(keys) { return Promise.all([...new Set(keys)].map(loadShard)); }
     function loadCommon() { return loadIndex().then(() => memoized("common", (current) => current.common)); }
 
-    // The state.catalog for everything asked for so far plus `want`: { courses: [course keys], shards: [shard keys], exams: [exam files] }.
+    // The shard keys a need names, from the index alone: { all, grades: [browse grades], courses: [course keys], shards: [keys], exams: [exam files] }.
+    // A grade names every shard that has a question browsable under that grade (the index lists them per shard), so no screen has a rule of its
+    // own. An exam that is not in the index is returned in `unknownExams` (the caller decides; loadCatalog refuses it).
+    function keysFor(need = {}) {
+      const current = needIndex();
+      const keys = new Set();
+      if (need.all) for (const shard of current.shards) keys.add(shard.key);
+      for (const grade of need.grades || []) for (const shard of current.shards) if ((shard.browseGrades || []).includes(grade)) keys.add(shard.key);
+      for (const course of need.courses || []) for (const key of shardKeysOfCourse(course)) keys.add(key);
+      for (const key of need.shards || []) keys.add(key);
+      const unknownExams = [];
+      for (const file of need.exams || []) { const key = shardKeyOfExam(file); if (key) keys.add(key); else unknownExams.push(file); }
+      return { keys: [...keys], unknownExams };
+    }
+    // The state.catalog for everything asked for so far plus `want` (same fields as keysFor).
     // Calling it again with more adds to the same set (고1, then 고2).
     async function loadCatalog(want = {}) {
       await loadIndex();
-      for (const course of want.courses || []) for (const key of shardKeysOfCourse(course)) wanted.add(key);
-      for (const key of want.shards || []) wanted.add(key);
-      for (const file of want.exams || []) {
-        const key = shardKeyOfExam(file);
-        if (!key) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + file, false);
-        wanted.add(key);
-      }
-      if (!wanted.size) throw failure("CATALOG_SHARD_UNKNOWN", "no course, shard or exam was asked for", false);
+      const asked = keysFor(want);
+      if (asked.unknownExams.length) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + asked.unknownExams[0], false);
+      for (const key of asked.keys) wanted.add(key);
       for (let attempt = 0; attempt < 2; attempt += 1) {
         const at = generation;
         const keys = [...wanted];
@@ -271,37 +291,17 @@
       throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true);
     }
     return {
-      loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, loadShard, loadShards, loadCommon, loadCatalog,
+      loadIndex, courses, shardKeysOfCourse, shardKeyOfExam, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
       // for tests and the screen's status line: what is held now
       held: () => ({ indexVersion: index && index.indexVersion, shards: [...wanted], generation }),
     };
   }
 
-  // ?shards=1 -> the first course of the index; ?shards=m1,high2-math1 -> those courses. Anything else (no parameter, shards=0|off) -> null.
-  function switchFromSearch(search) {
-    const match = /[?&]shards=([^&#]*)/.exec(String(search || ""));
-    if (!match) return null;
-    const value = decodeURIComponent(match[1]).trim();
-    if (!value || value === "0" || value === "off" || value === "false") return null;
-    return value === "1" || value === "on" || value === "true" ? { courses: [] } : { courses: value.split(",").map((part) => part.trim()).filter(Boolean) };
-  }
-
-  // The check switch of one screen (stage 2-2): the catalog made of the shards the address asks for. Returns null when the switch is off.
-  // Also sets the PT/TPL label tables the whole-bundle loader sets, when nobody has.
-  async function loadForSwitch(search, loaderOptions = {}) {
-    const asked = switchFromSearch(search);
-    if (!asked) return null;
-    const loader = createLoader(loaderOptions);
-    const index = await loader.loadIndex();
-    const course = asked.courses.length ? asked.courses : [index.courses[0].key];
-    const catalog = await loader.loadCatalog({ courses: course });
-    const labels = await loader.loadCommon().then((common) => common.labels).catch(() => null);
-    if (labels && typeof window !== "undefined" && !window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = labels;
-    return { catalog, loader, courses: course };
-  }
+  // The address says ?shards=0 (or off / false): this document uses the whole bundle, as before stage 2. The default (no parameter) is shards.
+  const shardsDisabled = (search) => /[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(String(search || ""));
 
   return {
     SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, UNAVAILABLE_MESSAGE,
-    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, switchFromSearch, loadForSwitch,
+    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, shardsDisabled,
   };
 });
