@@ -21,6 +21,7 @@ import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from '.
 import { replayE015IssuedSourceContinuation, assertE015IssuedSourceContinuationLeaf } from './native-e015-source-cc-continuity.mjs';
 import { replayM2Problem21CurrentUiContinuation, assertM2Problem21CurrentUiLeaf } from './m2-problem21-current-ui-continuity.mjs';
 import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { RPM_MASTER_PATH, lockedMasterEvidenceBytes } from './rpm-master-add-only.mjs';
 import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
@@ -226,6 +227,11 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
     if(!full.startsWith(base+path.sep))throw Error('NATIVE_EVIDENCE_PATH_ESCAPE');
     return fs.readFileSync(full);
   };
+  // The LOCKED RPM master is add-only: a receipt may pin an older Git revision that the current master still contains.
+  const boundEvidence=ref=>{
+    const bytes=boundRead(ref.path);
+    return ref.path===RPM_MASTER_PATH?lockedMasterEvidenceBytes({root,pinnedSha256:ref.sha256,currentBytes:bytes}):bytes;
+  };
   for(const receiptPath of Array.isArray(current.approvalEvidence)?current.approvalEvidence:[]) {
     if(typeof receiptPath!=='string'||!receiptPath.startsWith(NATIVE_RECEIPTS))continue;
     const requestId=receiptPath.slice(NATIVE_RECEIPTS.length).replace(/\.json$/,'');
@@ -246,7 +252,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       if(solutionRpmHistory)assertIssuedSolutionRpmHistoricalLeaf({context:solutionRpmHistory,receipt,nativeSource,current,identity,ordinal,previous});
       if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(solutionRpmHistory
         ?readIssuedSolutionRpmHistoricalEvidence(solutionRpmHistory,receipt,ref):rpmHistory
-          ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundRead(ref.path))===ref.sha256))continue;
+          ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundEvidence(ref))===ref.sha256))continue;
       const record=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
       const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
       const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
