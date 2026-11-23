@@ -297,10 +297,12 @@
     };
     return assessmentRecipeCache.uids;
   }
+  // 선정 옵션. familyRecords는 원본-유사 짝 계산용 전체 카탈로그다(고른 단원 밖에 있는 원본 때문에 유사 둘이 함께 뽑히지 않게).
   function assessmentSelectionOptions() {
-    if (!isAssessmentRecipeMode() || !AssessmentRecipes?.representativeGroup) return {};
+    const familyRecords = state.catalog?.records;
+    if (!isAssessmentRecipeMode() || !AssessmentRecipes?.representativeGroup) return { familyRecords };
     const byUid = new Map((ensureMetaIndex() || []).map(row => [row.questionUid || row.uid, row]));
-    return { representativeGroupFor: record =>
+    return { familyRecords, representativeGroupFor: record =>
       AssessmentRecipes.representativeGroup(byUid.get(record.questionUid)) };
   }
 
