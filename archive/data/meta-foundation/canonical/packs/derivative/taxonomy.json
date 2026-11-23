@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 13,
-  "templateCount": 29,
+  "problemTypeCount": 15,
+  "templateCount": 40,
   "foundationPack": "DERIVATIVE",
   "ownerPack": "DERIVATIVE",
   "problemTypes": [
@@ -532,6 +532,34 @@
       ],
       "internalDescription": "도함수 그래프의 부호·영점·넓이·상호 위치를 읽어 원함수의 증감·극값·함수값·실근 또는 파생함수 성질을 판정하는 문제유형.",
       "sourceUnit": "MATH2_DERIVATIVE"
+    },
+    {
+      "problemTypeKey": "PT_CALCULUS_CONCAVITY_INFLECTION",
+      "canonicalLabelKo": "곡선의 오목·볼록과 변곡점",
+      "definition": "이계도함수의 부호로 곡선의 오목·볼록 구간을 판정하거나 변곡점의 위치·존재 조건과 그에 따른 미정계수를 결정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "DERIVATIVE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "H22-M2-06",
+        "H15-CALC-06"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_CALCULUS_GRAPH_SKETCH",
+      "canonicalLabelKo": "함수의 그래프 개형",
+      "definition": "도함수·이계도함수의 부호, 극값, 점근선, 대칭성을 종합하여 함수의 그래프 개형을 파악하고 그 성질을 판단하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "DERIVATIVE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "H22-M2-06",
+        "H15-CALC-06"
+      ]
     }
   ],
   "templates": [
@@ -1395,6 +1423,138 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_EXP_LOG",
+      "canonicalLabelKo": "지수·로그함수의 미분",
+      "definition": "지수함수·로그함수와 그 합성함수, 로그미분법으로 도함수와 미분계수를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "함수 꼴 판별 → 지수·로그 미분 공식 또는 로그미분 → 값 대입",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_TRIG",
+      "canonicalLabelKo": "삼각함수의 미분",
+      "definition": "sin·cos·tan과 그 합성함수의 도함수와 미분계수를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "함수 꼴 판별 → 삼각함수 미분 공식 → 값 대입",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_QUOTIENT_COMPOSITE",
+      "canonicalLabelKo": "몫·합성함수의 미분",
+      "definition": "몫의 미분법과 합성함수의 미분법(연쇄법칙)으로 도함수와 미분계수를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "함수 구조 분해 → 몫 또는 연쇄법칙 적용 → 값 계산",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_IMPLICIT_PARAMETRIC",
+      "canonicalLabelKo": "음함수·매개변수 미분",
+      "definition": "음함수 미분법 또는 매개변수로 나타낸 함수의 dy/dx를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "dy/dx 관계 설정 → 매개변수 소거 없이 미분 → 값 계산",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_INVERSE_FUNCTION",
+      "canonicalLabelKo": "역함수의 미분",
+      "definition": "역함수의 미분법으로 역함수의 도함수와 미분계수를 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "f(a)=b 확인 → (f^-1)'(b)=1/f'(a) 적용",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_DERIVATIVE_SECOND_ORDER",
+      "canonicalLabelKo": "이계도함수",
+      "definition": "이계도함수를 구하거나 이계도함수와 관계식으로 미정계수·함숫값을 결정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "도함수 두 번 계산 → 관계식 대입 → 값 결정",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_MOTION_PLANE_VELOCITY",
+      "canonicalLabelKo": "평면 위 운동의 속도·가속도",
+      "definition": "좌표평면 위를 움직이는 점의 속도·가속도와 속력을 구하거나 운동 조건을 판정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "위치 (x(t), y(t)) → 속도벡터·속력 → 조건 판정",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_DERIVATIVE_MOTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_CONCAVITY_INTERVAL",
+      "canonicalLabelKo": "오목·볼록 구간 판정",
+      "definition": "이계도함수의 부호로 곡선이 위로 볼록·아래로 볼록한 구간을 구하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "f''(x) 계산 → 부호 조사 → 구간 결정",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_CALCULUS_CONCAVITY_INFLECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_INFLECTION_CONDITION",
+      "canonicalLabelKo": "변곡점 조건",
+      "definition": "변곡점이 존재하거나 주어진 위치에 있을 조건으로 미정계수를 결정하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "f''(x)=0과 부호 변화 → 조건 적용 → 미정계수 결정",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_CALCULUS_CONCAVITY_INFLECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_GRAPH_SKETCH_BY_DERIVATIVE",
+      "canonicalLabelKo": "증감·점근선으로 그래프 개형",
+      "definition": "증감·극값·오목 볼록·점근선을 조사하여 그래프 개형을 그리고 성질을 판단하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "정의역·점근선 → 증감표 → 개형 완성 → 성질 판단",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_CALCULUS_GRAPH_SKETCH",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_CALCULUS_GRAPH_SKETCH_STANDARD_FORM",
+      "canonicalLabelKo": "표준 함수의 그래프 개형",
+      "definition": "x·e^(-x), (ln x)/x 등 표준 꼴 함수의 그래프 개형을 이용하여 문제를 해결하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "표준 개형 인지 → 극값·점근선 활용 → 조건 해결",
+      "ownerPack": "DERIVATIVE",
+      "parentProblemTypeKey": "PT_CALCULUS_GRAPH_SKETCH",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
     }
   ]
 }

@@ -52,6 +52,7 @@
   - `TPL_LIMIT_ASYMPTOTIC_RELATION` 두 함수의 관계를 이용한 무한대 극한
   - `TPL_LIMIT_DIRECT_SUBSTITUTION` 직접 대입으로 극한값 구하기
   - `TPL_LIMIT_DIRECTIONAL_APPROACH` 접근 방향을 고려한 극한
+  - `TPL_LIMIT_EXP_LOG_STANDARD` 지수·로그함수의 극한
   - `TPL_LIMIT_FACTOR_CANCEL` 인수분해와 약분으로 극한 계산
   - `TPL_LIMIT_GEOMETRY_PARAMETERIZATION` 도형의 조건을 식으로 나타내어 극한 구하기
   - `TPL_LIMIT_GRAPH_DIRECTION_READ` 그래프에서 좌극한·우극한 구하기
@@ -60,8 +61,12 @@
   - `TPL_LIMIT_OPERATION_LAWS` 극한의 사칙연산
   - `TPL_LIMIT_RATIONALIZATION` 유리화로 극한 계산
   - `TPL_LIMIT_SQUEEZE` 함수의 대소 관계를 이용한 극한값 계산
+  - `TPL_LIMIT_TRIG_GEOMETRIC_FIGURE` 도형에서 만든 삼각함수의 극한
+  - `TPL_LIMIT_TRIG_STANDARD` 삼각함수의 극한
   - `TPL_LIMIT_VALUE_CALC_CONVERGENCE` 역수식 수렴과 발산
+  - `TPL_LIMIT_VALUE_CALC_DOMINANCE` 지배항
   - `TPL_LIMIT_VALUE_CALC_MULTI` 극한 종합 계산
+  - `TPL_LIMIT_VALUE_CALC_STANDARD` 기본 극한
 
 ## H15-M2-02 함수의 연속
 
@@ -168,7 +173,13 @@
   - `TPL_AVERAGE_RATE_DERIVATIVE_LINK` 평균변화율과 미분계수 연결
   - `TPL_DERIVATIVE_RATE_RELATION_SLOPE_COMPARE` 할선 접선 기울기 비교
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
 - `PT_DIFFERENTIABILITY_CONDITION` **미분가능 조건** — 조각함수, 절댓값, 제거가능 인자 등의 경계에서 연속성과 좌우 미분계수를 분석하여 미분가능 조건 또는 미분불가능점 구조를 판정하는 문제유형.
   - `TPL_DIFFERENTIABILITY_POINT_CONDITION` 한 점의 미분가능 조건
   - `TPL_NONDIFFERENTIABILITY_STRUCTURE` 미분불가능 구조 판정
@@ -210,7 +221,13 @@
   - `TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS` 도함수 그래프의 정성 해석
   - `TPL_DERIVATIVE_GRAPH_QUANTITATIVE_RECOVERY` 도함수 그래프의 정량 복원
 - `PT_DERIVATIVE_RULE_EVALUATION` **도함수 계산** — 다항함수와 곱함수의 미분법 또는 다항식 나눗셈 관계의 미분을 이용하여 도함수값·계수를 직접 계산하는 문제유형.
+  - `TPL_DERIVATIVE_EXP_LOG` 지수·로그함수의 미분
+  - `TPL_DERIVATIVE_IMPLICIT_PARAMETRIC` 음함수·매개변수 미분
+  - `TPL_DERIVATIVE_INVERSE_FUNCTION` 역함수의 미분
+  - `TPL_DERIVATIVE_QUOTIENT_COMPOSITE` 몫·합성함수의 미분
   - `TPL_DERIVATIVE_RULE_CALCULATION` 도함수 계산과 값 평가
+  - `TPL_DERIVATIVE_SECOND_ORDER` 이계도함수
+  - `TPL_DERIVATIVE_TRIG` 삼각함수의 미분
 - `PT_DIFFERENTIABILITY_CONDITION` **미분가능 조건** — 조각함수, 절댓값, 제거가능 인자 등의 경계에서 연속성과 좌우 미분계수를 분석하여 미분가능 조건 또는 미분불가능점 구조를 판정하는 문제유형.
   - `TPL_DIFFERENTIABILITY_POINT_CONDITION` 한 점의 미분가능 조건
   - `TPL_NONDIFFERENTIABILITY_STRUCTURE` 미분불가능 구조 판정
@@ -303,6 +320,7 @@
   - `TPL_DERIVATIVE_MOTION_GEOMETRIC_RATE` 도형 변화율
   - `TPL_MOTION_COMPOSITE_MODEL` 복합 운동 모델의 매개변수 최적화
   - `TPL_MOTION_EVENT_ANALYSIS` 운동의 사건 시각·상태 분석
+  - `TPL_MOTION_PLANE_VELOCITY` 평면 위 운동의 속도·가속도
 - `PT_DERIVATIVE_RATE_RELATION` **평균변화율과 미분계수** — 구간의 평균변화율을 계산·비교하거나 한 점의 미분계수와 연결하여 값·범위·매개변수를 결정하는 문제유형.
   - `TPL_AVERAGE_RATE_ANALYSIS` 평균변화율 계산과 조건 해석
   - `TPL_AVERAGE_RATE_DERIVATIVE_LINK` 평균변화율과 미분계수 연결
@@ -414,6 +432,7 @@
   - `TPL_INTERSECTION_SIGN_AREA` 교점과 부호를 이용한 넓이
 - `PT_MOTION_BY_INTEGRAL` **속도와 거리** — 속도를 적분하여 위치·변위·이동거리를 구하거나 두 점의 운동 조건에서 만나는 시각과 매개변수를 결정하는 문제 유형.
   - `TPL_MOTION_CONDITION_PARAMETER` 운동 조건으로 만남·매개변수 결정
+  - `TPL_MOTION_PLANE_DISTANCE` 평면 위 운동의 이동거리
   - `TPL_VELOCITY_TO_POSITION_DISTANCE` 속도에서 위치·변위·이동거리 구하기
 
 ## 아래 학년 유형
@@ -427,7 +446,7 @@
 - `PT_BOUNDED_PRIME_COUNT` 범위 안의 소수 개수 (TPL 1)
 - `PT_CIRCLE_ANGLE_RELATIONS` 원주각·중심각과 원의 각 관계 (TPL 11)
 - `PT_CONSTRAINED_FACTOR_PAIR` 조건을 만족하는 인수쌍 (TPL 1)
-- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 3)
+- `PT_COORDINATE_POINT_READING` 좌표평면의 점·관계 해석 (TPL 5)
 - `PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION` 정비례·반비례 관계 판별 (TPL 1)
 - `PT_DIVISOR_COUNT` 약수의 개수 조건 (TPL 2)
 - `PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY` 절댓값이 같은 두 수의 차 (TPL 2)
@@ -436,6 +455,7 @@
 - `PT_FUNCTION_GRAPH_PROPERTIES` 함수 그래프의 성질 (TPL 4)
 - `PT_FUNCTION_GRAPH_QUADRANT` 함수 그래프와 사분면 (TPL 3)
 - `PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE` 수위 그래프와 용기 모양 대응 (TPL 2)
+- `PT_H1_POLY_IDENTITY_COEFFICIENT` 항등식과 미정계수 (TPL 2)
 - `PT_INTEGER_MEMBERSHIP_COUNT` 정수에 해당하는 값의 개수 (TPL 2)
 - `PT_LCM_APPLICATION` 최소공배수의 상황 적용 (TPL 7)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
@@ -443,14 +463,14 @@
 - `PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION` 문장과 식의 대응·표기 검사 (TPL 8)
 - `PT_M1_BASIC_CONSTRUCTION` 기본 작도 도구와 절차 (TPL 3)
 - `PT_M1_BASIC_GEOMETRY_JUDGMENT` 기본도형의 용어·관계 진술 판단 (TPL 3)
-- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 9)
+- `PT_M1_CENTRAL_TENDENCY` 대푯값의 해석과 조건 복원 (TPL 10)
 - `PT_M1_CIRCLE_MEASURE` 원과 부채꼴
 - `PT_M1_COMMON_DIVISIBILITY_FILTER` 공약수·공배수 조건 검사 (TPL 4)
 - `PT_M1_CONGRUENCE_DATA_TRANSFER` 합동인 삼각형의 대응 관계 적용 (TPL 10)
 - `PT_M1_CONGRUENCE_INVARIANTS` 합동에서 보존되는 성질 (TPL 1)
 - `PT_M1_CONGRUENCE_UNIQUENESS` 삼각형 합동·작도 유일조건 (TPL 2)
 - `PT_M1_CONTEXT_GRAPH_INTERPRETATION` 상황을 그래프의 변화로 해석 (TPL 7)
-- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 2)
+- `PT_M1_COORD_TRIANGLE_AREA` 좌표를 이용한 삼각형의 넓이 (TPL 3)
 - `PT_M1_COORDINATE_AXIS_DISTANCE` 좌표와 축까지의 거리 (TPL 1)
 - `PT_M1_COORDINATE_COMPOSITE_AREA` 좌표·함수와 도형 넓이 결합 (TPL 3)
 - `PT_M1_COORDINATE_POINT_CONSTRAINT` 좌표 성분과 점의 위치조건 (TPL 3)
@@ -463,7 +483,7 @@
 - `PT_M1_DIVISOR` 약수
 - `PT_M1_DIVISOR_MULTIPLE_EXPONENT` 소인수 지수로 약수·배수 판별 (TPL 3)
 - `PT_M1_EQUAL_SUM` 같은 합
-- `PT_M1_EQUATION` 등식과 방정식
+- `PT_M1_EQUATION` 등식과 방정식 (TPL 2)
 - `PT_M1_FACTOR_PAIR` 인수쌍
 - `PT_M1_FINITE_LIST_PRIME_COUNT` 유한 목록의 소수 개수 (TPL 1)
 - `PT_M1_FREQUENCY` 도수분포
@@ -472,7 +492,7 @@
 - `PT_M1_GCD_LCM` 최대공약수와 최소공배수
 - `PT_M1_GCD_LCM_EXPONENT_CONSTRAINT` 최대공약수·최소공배수의 소인수 지수 조건 (TPL 6)
 - `PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT` 점에서 결정되는 직선·반직선·선분 개수 (TPL 2)
-- `PT_M1_IDENTITY` 항등식
+- `PT_M1_IDENTITY` 항등식 (TPL 2)
 - `PT_M1_INEQUALITY` 부등식
 - `PT_M1_INTERSECTING_ANGLE_RELATIONS` 교차선·맞꼭지각의 계산 (TPL 5)
 - `PT_M1_INVERSE` 반비례
@@ -540,6 +560,7 @@
 - `PT_M1_TRIANGLE_AREA` 삼각형 넓이
 - `PT_M1_TRIANGLE_CONSTRUCTION_ORDER` 삼각형의 작도 순서와 선행조건 (TPL 2)
 - `PT_M1_TRIANGLE_SIDE_FEASIBILITY` 삼각형 성립조건과 가능한 변 세기 (TPL 4)
+- `PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION` 잘못 더한 다항식의 바른 계산 복원 (TPL 2)
 - `PT_MAGIC_SQUARE_ENTRY_RECOVERY` 마방진의 빠진 값 (TPL 1)
 - `PT_MINIMUM_COMMON_MULTIPLIER_FOR_RATIONALS` 유리수의 최소 공통 배수 인자 (TPL 1)
 - `PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE` 완전제곱수가 되는 최소 인자 (TPL 3)
@@ -548,6 +569,7 @@
 - `PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE` 입체 모서리의 수선의 발 (TPL 1)
 - `PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT` 연속된 수의 곱에서 소인수 지수 (TPL 1)
 - `PT_QUADRILATERAL_PROPERTIES` 사각형의 성질과 판정 (TPL 4)
+- `PT_RATIONAL_EXPRESSION` 유리식의 계산 (TPL 5)
 - `PT_RATIONAL_EXPRESSION_BOUNDED_INTEGER_SUM` 유리수식과 범위 정수의 합 (TPL 1)
 - `PT_RIGHT_TRIANGLE_CONGRUENCE` 직각삼각형의 합동 (TPL 3)
 - `PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS` 유리수 곱·차 조건에서 부호 추론 (TPL 1)
@@ -558,6 +580,7 @@
 - `PT_CIRCLE_LINE_RELATION` 원과 직선 (TPL 8)
 - `PT_COORD_CENTROID` 삼각형의 무게중심 (TPL 6)
 - `PT_COUNTING_ARRANGEMENT` 순열 (TPL 6)
+- `PT_COUNTING_SELECTION_DISTRIBUTION` 조합·중복조합 (TPL 7)
 - `PT_FUNCTION_GRAPH_GEOMETRY` 함수 그래프와 도형 (TPL 9)
 - `PT_FUNCTION_GRAPH_INTERSECTION` 함수 그래프의 교점 (TPL 7)
 - `PT_FUNCTION_GRAPH_PROPERTIES` 함수 그래프의 성질 (TPL 4)
@@ -567,7 +590,7 @@
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
 - `PT_H1_SYSTEM_EQUATION` 연립방정식과 공통근 (TPL 2)
 - `PT_ISOSCELES_TRIANGLE` 이등변삼각형의 성질 (TPL 5)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
 - `PT_M1_LINEAR_EQUATION_MODELING` 상황을 일차방정식으로 나타내기 (TPL 2)
@@ -615,7 +638,7 @@
 - `PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA` 다항식 넓이에서 삼각형 높이 계산 (TPL 1)
 - `PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA` 접힌 삼각형의 넓이 계산 (TPL 1)
 - `PT_M2_PROBABILITY` 확률
-- `PT_M2_PYTHAGOREAN_RELATION` 피타고라스 정리·역 및 도형 활용 (TPL 8)
+- `PT_M2_PYTHAGOREAN_RELATION` 피타고라스 정리·역 및 도형 활용 (TPL 9)
 - `PT_M2_RATIO_DISTRIBUTION` 비와 비례배분
 - `PT_M2_REPEATING_DECIMAL` 순환소수
 - `PT_M2_SYSTEM_INEQUALITY` 연립부등식
@@ -631,6 +654,7 @@
 - `PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME` 가위바위보 계단 문제 (TPL 2)
 - `PT_M2_TRIANGLE_ANGLE` 삼각형의 각
 - `PT_M2_TRIANGLE_CONGRUENCE` 삼각형의 합동
+- `PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE` 삼각형 성질의 참·거짓 판별
 - `PT_M2_TWO_VARIABLE_LINEAR_EQUATION` 미지수가 두 개인 일차방정식
 - `PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION` 평행선 조건으로 넓이가 같은 삼각형 찾기 (TPL 1)
 - `PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT` 평행사변형의 각 이등분선이 만드는 선분 계산 (TPL 2)
@@ -710,6 +734,7 @@
 - `PT_M3_REAL_NUMBER_COMPARISON` 실수의 대소와 범위 판단 (TPL 9)
 - `PT_M3_REAL_NUMBER_LINE` 수직선 위 실수의 위치 결정 (TPL 3)
 - `PT_M3_REAL_NUMBERS` 실수
+- `PT_M3_REGULAR_POLYGON` 정다각형
 - `PT_M3_REPRESENTATIVE` 대푯값
 - `PT_M3_ROOT_COEFFICIENT` 근과 계수의 관계
 - `PT_M3_ROOT_FORMULA` 근의 공식
@@ -720,6 +745,7 @@
 - `PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE` 편차·분산·표준편차 개념 판정 (TPL 5)
 - `PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS` 꺾은선그래프로 대푯값 비교 (TPL 1)
 - `PT_M3_VARIANCE` 분산과 표준편차
+- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 2)
 - `PT_TRIANGLE_ANGLE_BISECTOR` 삼각형의 각의 이등분선 (TPL 2)
 - `PT_TRIANGLE_CENTERS` 삼각형의 외심·내심 (TPL 5)
 - `PT_TRIANGLE_SIMILARITY` 삼각형의 닮음 (TPL 2)
@@ -828,7 +854,7 @@
 - `PT_H1_COMPLEX_OPERATION` 복소수의 연산과 상등 (TPL 4)
 - `PT_H1_COMPLEX_POWER_ROOT` 복소수의 거듭제곱과 단위근 (TPL 2)
 - `PT_H1_EQUATION_APPLICATION` 방정식의 활용 (TPL 2)
-- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 5)
+- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 6)
 - `PT_H1_HIGHER_DEGREE_EQUATION` 고차방정식의 풀이 (TPL 4)
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
 - `PT_H1_POLY_DIVISION` 다항식의 나눗셈 (TPL 4)
@@ -847,7 +873,7 @@
 - `PT_INTERCEPT_OPTIMIZATION` 절편을 이용한 최댓값·최솟값 (TPL 2)
 - `PT_LINE_ANGLE_BISECTOR` 두 직선이 이루는 각의 이등분선 (TPL 2)
 - `PT_LINE_DISTANCE_EXTREMUM` 점과 직선 사이의 거리의 최댓값·최솟값 (TPL 2)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_FAMILY_COMMON_POINT` 정점을 지나는 직선 (TPL 1)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
@@ -856,7 +882,7 @@
 - `PT_MOVE_COMPOSITE` 여러 번의 도형의 이동 (TPL 6)
 - `PT_MOVE_EQUATION_TRANSFORM` 방정식으로 나타낸 도형의 이동 (TPL 3)
 - `PT_MOVE_FOLDING_REFLECTION` 접기와 대칭이동 (TPL 3)
-- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 1)
+- `PT_MOVE_GRAPH_REFLECTION` 그래프의 대칭이동 (TPL 2)
 - `PT_MOVE_GRAPH_TRANSLATION` 그래프의 평행이동 (TPL 1)
 - `PT_MOVE_LINE_REFLECTION` 직선의 대칭이동 (TPL 1)
 - `PT_MOVE_LINE_TRANSLATION` 직선의 평행이동 (TPL 4)
@@ -881,7 +907,7 @@
 - `PT_H1_COUNTING_PRINCIPLE_GENERAL` 경우의 수의 합·곱 법칙 (TPL 4)
 - `PT_H1_DIVISOR` 약수
 - `PT_H1_EQUATION_APPLICATION` 방정식의 활용 (TPL 2)
-- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 5)
+- `PT_H1_FACTOR_THEOREM` 인수정리 (TPL 6)
 - `PT_H1_HIGHER_DEGREE_EQUATION` 고차방정식의 풀이 (TPL 4)
 - `PT_H1_INEQUALITY_APPLICATION` 부등식의 활용 (TPL 3)
 - `PT_H1_LINEAR_SYSTEM_INEQUALITY` 일차·연립부등식 (TPL 5)
@@ -945,7 +971,7 @@
 - `PT_INVERSE_VALUE` 역함수 구하기와 함수값 (TPL 4)
 - `PT_ITERATED_COMPOSITION` 반복합성 (TPL 5)
 - `PT_LINE_DISTANCE_EXTREMUM` 점과 직선 사이의 거리의 최댓값·최솟값 (TPL 2)
-- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 8)
+- `PT_LINE_EQUATION` 직선의 방정식 구하기 (TPL 9)
 - `PT_LINE_INTERSECTION_CONDITION` 직선의 교점과 위치 조건 (TPL 6)
 - `PT_LINE_RELATION` 두 직선의 위치 관계 (TPL 5)
 - `PT_LOGIC_CHAIN` 논리 관계와 추론 (TPL 2)
@@ -996,11 +1022,12 @@
 - `PT_GEO_PARABOLA` 포물선 문제 (TPL 2)
 - `PT_GEO_PLANE_EQUATION` 평면의 방정식
 - `PT_GEO_PLANE_VECTOR` 평면벡터 문제 (TPL 8)
-- `PT_GEO_SPACE_COORDINATE` 공간좌표
+- `PT_GEO_SPACE_COORDINATE` 공간좌표 (TPL 3)
 - `PT_GEO_SPACE_FIGURE` 공간도형 문제 (TPL 11)
 - `PT_GEO_SPACE_LINE` 공간직선
-- `PT_GEO_SPHERE` 구
+- `PT_GEO_SPHERE` 구 (TPL 3)
 - `PT_GEO_VECTOR` 벡터
+- `PT_GEO_VECTOR_LINE_CIRCLE` 벡터를 이용한 직선·원의 방정식 (TPL 4)
 
 ### 수학I (H15_MATH1) · 고2 — 파일 `H15_MATH1.md`
 
@@ -1088,13 +1115,13 @@
 - `PT_DERIVATIVE_DEFINITION` 미분계수의 정의와 극한 (TPL 2)
 - `PT_DERIVATIVE_EXTREMA` 극대·극소 (TPL 2)
 - `PT_DERIVATIVE_FUNCTION_DETERMINATION` 도함수 조건을 이용한 함수 결정 (TPL 4)
-- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 1)
+- `PT_DERIVATIVE_RULE_EVALUATION` 도함수 계산 (TPL 7)
 - `PT_DIFFERENTIABILITY_CONDITION` 미분가능 조건 (TPL 2)
 - `PT_FUNCTIONAL_EQUATION` 함수방정식 (TPL 4)
 - `PT_INTERMEDIATE_VALUE_APPLICATION` 사잇값 정리의 활용 (TPL 2)
 - `PT_LIMIT_EXISTENCE` 극한의 존재 판정 (TPL 1)
 - `PT_LIMIT_PARAMETER_DETERMINATION` 극한 조건으로 함수·계수 결정 (TPL 4)
-- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 13)
+- `PT_LIMIT_VALUE_CALC` 함수의 극한값 계산 (TPL 18)
 - `PT_TANGENT_DERIVATIVE` 접선과 미분 (TPL 2)
 
 ### 확률과 통계 (PROBABILITY_STATISTICS) · 고2 — 파일 `PROBABILITY_STATISTICS.md`
