@@ -1,5 +1,5 @@
 /* 인쇄 머리글 "표 머리글": [학원명 | 제목 | 이름 | 점수] 한 줄 표 (engine.html · mixed_engine.html 공용)
-   - 선만 쓴다(색 면 없음): 바깥 1pt, 칸막이 0.6pt, 학원명 칸 오른쪽 1.75pt. 주홍 막대는 학원명 밑 장식일 뿐이라 흑백 인쇄에서도 읽힌다.
+   - 선만 쓴다(색 면 없음): 바깥 1pt, 칸막이 0.6pt, 학원명 칸 오른쪽 1.75pt. 학원명 밑 장식 막대는 없다.
    - 학원명이 비면 그 칸이 사라져 [제목 | 이름 | 점수]. 이름·점수 칸은 칸 자체가 쓰는 자리라 밑줄이 없다.
    - 높이는 제목 길이와 무관하게 43.77px(칸) 일정. 제목 글자 크기·줄 수는 print-header-table.js 가 맞춘다.
    - 화면 폭 640px 이하(휴대폰)는 archive2-preview-mobile.css 의 기존 쌓기 배치를 그대로 쓴다. */
@@ -71,21 +71,13 @@
     padding: 0 14px;
     border-right: 1.75pt solid #111;
   }
-  .page-header-academy::after {
-    content: "";
-    position: absolute;
-    left: 14px; right: 14px; bottom: 6px;
-    height: 2px;
-    background: #cf3518;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+  /* 학원명 밑 장식 막대는 없앴다(원장님 2026-11-23: 채운 학원명 아래 밑줄처럼 보임). */
   .page-header-academy-text {
     display: block;
     flex: 0 1 auto;
     min-width: 0;
     max-width: 100%;
-    margin-bottom: 4px;
+    margin-bottom: 0;
     font-size: 12pt;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -150,6 +142,5 @@
     display: flex; align-items: center;
   }
   .page-header:not(.page-header--exam) .page-header-academy { min-height: 0; padding: 5px 12px 4.25px; }
-  .page-header:not(.page-header--exam) .page-header-academy::after { left: 12px; right: 12px; bottom: 2px; }
   .page-header:not(.page-header--exam) .page-header-academy-text { font-size: 10.5pt; margin-bottom: 0; }
 }
