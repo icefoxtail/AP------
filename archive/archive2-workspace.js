@@ -1063,7 +1063,7 @@
       else if (a === "restore") {
         $("modal").close();
         const restoring = drafts()[Number(b.dataset.draft)];
-        await ensureShardFiles(restoring?.selected, restoring?.sources);
+        await ensureShardFiles(restoring?.selected, restoring?.sources, { grades: [restoring?.filters?.grade] });
         applyDraft(restoring);
       } else if (a === "delete-draft") askDeleteDraft(b.dataset.draftId);
       else if (a === "delete-draft-confirm") deleteDraft(b.dataset.draftId);
@@ -1240,7 +1240,7 @@
         if (el.files[0].size > 1000000)
           throw new Error("작업 파일이 너무 큽니다.");
         const imported = JSON.parse(await el.files[0].text());
-        await ensureShardFiles(imported?.selected, imported?.sources);
+        await ensureShardFiles(imported?.selected, imported?.sources, { grades: [imported?.filters?.grade] });
         applyDraft(imported);
         save();
         el.value = "";
@@ -1954,32 +1954,106 @@
     return unknownExams.length > 0 || keys.some((key) => !have.has(key));
   }
   // The first catalog of this document from shards (after the index is known). null = the shards are not on this site.
+  // A shard file or the common file that stays wrong after the loader's one retry (bytes that do not match the index, a release that moves,
+  // a connection that fails): this document gives the shard path up and uses the whole bundle, whose own integrity checks run as always. The
+  // teacher does not need to know ?shards=0. Nothing is accepted unverified: either the shard files verified, or the verified whole bundle.
+  const isShardFailure = (error) => Boolean(window.Archive2CatalogShards?.isShardFailure?.(error));
+  function giveUpShards(error) {
+    console.warn("[archive2] catalog shards failed after a retry; using the verified whole bundle instead:", error?.code || "", error);
+    shardsBroken = true; shardSession = null;
+  }
   async function shardCatalog() {
     if (!(await prefetchShards())) return null;
-    const loader = shardLoader();
-    let need = shardNeed();
-    if (loader.keysFor(need).unknownExams.length) need = { all: true };
-    const catalog = await loader.loadCatalog(need);
-    const common = await loader.loadCommon();
-    if (!window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = common.labels;
-    return catalog;
+    try {
+      const loader = shardLoader();
+      let need = shardNeed();
+      if (loader.keysFor(need).unknownExams.length) need = { all: true };
+      const catalog = await loader.loadCatalog(need);
+      const common = await loader.loadCommon();
+      if (!window.ARCHIVE_META_FOUNDATION_LABELS) window.ARCHIVE_META_FOUNDATION_LABELS = common.labels;
+      return catalog;
+    } catch (error) {
+      if (!isShardFailure(error)) throw error;
+      giveUpShards(error);
+      return null; // loadCatalog() takes the whole bundle
+    }
+  }
+  // The whole bundle in place of a partial shard catalog (the shard path failed in the middle of the session). If that fails too, the shard
+  // error is the one the teacher reads (it says whether the connection or the release is the problem).
+  let wholeBundleSwap = null;
+  function swapToWholeBundle(shardError) {
+    if (!wholeBundleSwap) {
+      giveUpShards(shardError);
+      wholeBundleSwap = (async () => {
+        let full;
+        // the whole bundle did not come either: the screen stays on the shards it has (and will ask again), not on a half-switched state
+        Boot?.demand?.(); // the page holds the big files back until something asks for them: the teacher is waiting for them now
+        try { full = await window.applyArchiveMetaFoundationCatalog(); } catch (error) { shardsBroken = false; shardLoader(); throw error; }
+        installCatalogDerived(full);
+        state.catalog = full;
+      })().finally(() => { wholeBundleSwap = null; });
+    }
+    return wholeBundleSwap.catch(() => { throw shardError; });
   }
   // Brings the catalog up to a need (more shards), keeping everything chosen. Resolves when state.catalog has them.
   async function ensureShards(need) {
+    if (wholeBundleSwap) { await wholeBundleSwap.catch(() => {}); return; }
     if (!shardSession || !state.catalog || state.catalog.complete !== false) return;
     if (!shardMissing(need)) return;
     const loader = shardLoader();
     const asked = loader.keysFor(need).unknownExams.length ? { all: true } : need;
-    const next = await loader.loadCatalog(asked);
+    let next;
+    try {
+      next = await loader.loadCatalog(asked, { onProgress: showShardProgress });
+    } catch (error) {
+      if (!isShardFailure(error)) throw error;
+      await swapToWholeBundle(error);
+      return;
+    }
+    if (!shardSession || !state.catalog || state.catalog.complete !== false) return; // the whole bundle came in meanwhile
+    const held = new Set(state.catalog.shardKeys || []);
+    if (next.shardKeys.every((key) => held.has(key))) return; // a call that started earlier finished later: nothing to add
     installCatalogDerived(next);
     state.catalog = next;
   }
+  // "n/N" on the waiting screen (updates the text in place: no re-render while files arrive).
+  function showShardProgress({ done, total }) {
+    state.shardProgress = { done, total };
+    const element = document.querySelector?.("[data-shard-progress]");
+    if (element) element.textContent = total > 1 ? `문항 목록 ${done}/${total}` : "";
+  }
+  // While the screen stays up and shards are fetched for it (restoring a draft, opening a saved paper): the 문제지 만들기 buttons are
+  // disabled and say why, instead of looking ready and doing nothing.
+  let shardBusyCount = 0;
+  async function withShardBusy(task) {
+    shardBusyCount += 1;
+    state.shardBusy = true;
+    if (shardBusyCount === 1) { try { render(); } catch {} }
+    try { return await task(); }
+    finally {
+      shardBusyCount -= 1;
+      if (shardBusyCount === 0) { state.shardBusy = false; try { render(); } catch {} }
+    }
+  }
   // Saved papers, drafts and imports name their questions by exam file: ask for those exams' shards.
-  async function ensureShardFiles(rows, extraFiles = []) {
+  // The rows may carry only a uid (a draft keeps {questionUid, rowId, sourceFingerprint}); `hints.grades` is the grade the draft was made in.
+  // Order: the exams the rows name, then the hinted grades, and only if a uid is STILL not held, every shard. "Not in the archive" is only
+  // ever decided by the caller after this, so a uid that is simply in a shard not received yet is never reported as missing.
+  async function ensureShardFiles(rows, extraFiles = [], hints = {}) {
     if (!shardSession || !state.catalog || state.catalog.complete !== false) return;
-    const files = [...extraFiles, ...(Array.isArray(rows) ? rows : []).map((row) => row?.sourceArchiveFile || row?.sourceFile || row?._sourceFile)]
+    const list = Array.isArray(rows) ? rows : [];
+    const uids = [...new Set(list.map((row) => String(row?.questionUid || "").trim()).filter(Boolean))];
+    const missingUid = () => uids.some((uid) => !state.byUid.has(uid));
+    if (uids.length && !missingUid()) return;
+    const files = [...(Array.isArray(extraFiles) ? extraFiles : []), ...list.map((row) => row?.sourceArchiveFile || row?.sourceFile || row?._sourceFile)]
       .map((file) => String(file || "").trim()).filter(Boolean);
-    await ensureShards({ exams: [...new Set(files)] });
+    const grades = (hints.grades || []).map((grade) => String(grade || "").trim()).filter(Boolean);
+    const first = { exams: [...new Set(files)], grades: [...new Set(grades)] };
+    if (!uids.length && !shardMissing(first)) return;
+    await withShardBusy(async () => {
+      if (files.length || grades.length) await ensureShards(first);
+      if (uids.length && missingUid()) await ensureShards({ all: true });
+    });
   }
   const shardNeedsLoading = () => {
     if (!shardSession || !state.catalog || state.catalog.complete !== false || state.view === "saved") return false;
@@ -1989,7 +2063,7 @@
     const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || { find: "학교별 기출", compose: "문제지 만들기", health: "자료 점검", home: "홈", recent: "출제 내역" }[state.view] || "아카이브";
     if (state.shardError)
       return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.shardError)}</p><p>${button("shard-retry", "다시 시도", 'class="primary"')}</p></section>`;
-    return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1><p class="boot-wait-text">${SHARD_NOTICE}</p><p class="muted">고른 조건은 그대로 두었습니다. 불러오면 이 화면이 저절로 열립니다.</p></section>`;
+    return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1><p class="boot-wait-text">${SHARD_NOTICE}</p><p class="boot-wait-text" data-shard-progress role="status"></p><p class="muted">고른 조건은 그대로 두었습니다. 불러오면 이 화면이 저절로 열립니다.</p></section>`;
   }
   // Called by renderContent: when the screen needs shards the catalog does not hold yet, it shows the notice and starts the load.
   function shardGate() {

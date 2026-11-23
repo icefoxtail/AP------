@@ -143,7 +143,12 @@
   //    screen decides to use the whole bundle (see isUnavailable).
   const INDEX_SCHEMA = "archive2-catalog-shards-v1";
   const STALE_MESSAGE = "자료가 갱신되는 중입니다. 잠시 뒤 다시 시도해 주세요.";
+  const NETWORK_MESSAGE = "문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.";
   const UNAVAILABLE_MESSAGE = "문항 조각 자료를 사용할 수 없습니다.";
+  // a failure that came from the connection (no response, HTTP error), as opposed to bytes that arrived but do not match the index
+  const isNetworkFailure = (error) => Boolean(error) && (error.network === true || Boolean(error.cause && error.cause.network === true));
+  // every error this loader throws about files it could not get right (the screen may give up the shard path for these)
+  const isShardFailure = (error) => Boolean(error) && typeof error.code === "string" && /^CATALOG_SHARD/.test(error.code);
   const failure = (code, message, retryable, cause) => Object.assign(new Error(message), { code, retryable: Boolean(retryable), ...(cause ? { cause } : {}) });
   const isUnavailable = (error) => Boolean(error) && error.code === "CATALOG_SHARDS_UNAVAILABLE";
   const hex = (buffer) => Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
@@ -168,8 +173,8 @@
     async function getBytes(url, cache) {
       let response;
       try { response = await doFetch(url, { cache }); }
-      catch (error) { throw failure("CATALOG_SHARD_FETCH_FAILED", "network error: " + url, true, error); }
-      if (!response || !response.ok) throw failure("CATALOG_SHARD_FETCH_FAILED", "HTTP " + (response && response.status) + ": " + url, true);
+      catch (error) { throw Object.assign(failure("CATALOG_SHARD_FETCH_FAILED", "network error: " + url, true, error), { network: true }); }
+      if (!response || !response.ok) throw Object.assign(failure("CATALOG_SHARD_FETCH_FAILED", "HTTP " + (response && response.status) + ": " + url, true), { network: true });
       return new Uint8Array(await response.arrayBuffer());
     }
     function parseIndex(bytes) {
@@ -237,7 +242,9 @@
           await refreshIndex();
           return await verified(entryOf, "reload");
         } catch (second) {
-          // the file is gone from the new index, or fails again: the release is moving; the teacher is asked to try again shortly
+          // the connection failed (no answer, HTTP error): say so. Otherwise the file is gone from the new index or its bytes do not match:
+          // the release is moving, and the teacher is asked to try again shortly.
+          if (isNetworkFailure(second)) throw failure("CATALOG_SHARD_NETWORK", NETWORK_MESSAGE, true, second);
           throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true, second);
         }
       }
@@ -275,15 +282,24 @@
     }
     // The state.catalog for everything asked for so far plus `want` (same fields as keysFor).
     // Calling it again with more adds to the same set (고1, then 고2).
-    async function loadCatalog(want = {}) {
+    // options.onProgress({ done, total }): called when the files of this call are asked for (done 0) and each time one arrives, for a screen
+    // that shows "n/N" while it waits (total = the shards held after this call).
+    async function loadCatalog(want = {}, options = {}) {
       await loadIndex();
       const asked = keysFor(want);
       if (asked.unknownExams.length) throw failure("CATALOG_SHARD_UNKNOWN", "no shard for exam: " + asked.unknownExams[0], false);
       for (const key of asked.keys) wanted.add(key);
+      const progress = typeof options.onProgress === "function" ? options.onProgress : null;
       for (let attempt = 0; attempt < 2; attempt += 1) {
         const at = generation;
         const keys = [...wanted];
-        const [common, docs] = await Promise.all([loadCommon(), loadShards(keys)]);
+        let done = 0;
+        if (progress) progress({ done, total: keys.length });
+        const [common, docs] = await Promise.all([loadCommon(), Promise.all(keys.map((key) => loadShard(key).then((doc) => {
+          done += 1;
+          if (progress) progress({ done, total: keys.length });
+          return doc;
+        })))]);
         // a release change during the load: what was received is of two releases, so load it again from the current index
         if (at !== generation || !keys.every((key) => index.shards.some((shard) => shard.key === key))) continue;
         return assembleCatalog(index, common, docs);
@@ -301,7 +317,7 @@
   const shardsDisabled = (search) => /[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(String(search || ""));
 
   return {
-    SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, UNAVAILABLE_MESSAGE,
-    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, shardsDisabled,
+    SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
+    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, shardsDisabled,
   };
 });

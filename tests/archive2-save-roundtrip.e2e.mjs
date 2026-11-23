@@ -10,6 +10,7 @@ import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import { after, before, test } from "node:test";
 import { pathToFileURL } from "node:url";
+import { readFileSync } from "node:fs";
 import { MAX_SAVED_PAPER_BYTES, catalog, root, chooseSample, configureSample, core, createWorker, createWorkspace, estimateSnapshotBytes, imageRefs, workerFilterKeys } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
 // 고3 is not sampled: its general-use pool has too few questions per unit for a 20-question, two-unit paper.
@@ -458,3 +459,64 @@ for (const grade of ["중1", "고1", "고2"]) {
     assert.equal(opener.ws.state.saveResultState, "SAVED", sendFailure(opener.ws, otherGrade + " revision opened from " + grade + " shards"));
   });
 }
+
+// A draft keeps only {questionUid, rowId, sourceFingerprint} per question (no exam file) and the grade of its filters. Restoring it ("이전 작업 복원"),
+// or importing a work file, on a screen that holds the shards of ANOTHER grade must find the questions: the grade hint first, then every shard;
+// "현재 아카이브에 없는 문항" is only said after all shards are in.
+for (const grade of ["중1", "고1"]) {
+  test(`${grade} screen: a draft made in another grade is restored (grade hint, and every shard when the hint is missing); a missing question is refused only after all shards`, async () => {
+    const files = await shardFiles();
+    const otherGrade = grade === "중1" ? "고2" : "중1";
+    const otherSample = await sampleFor(otherGrade);
+    const maker = createWorkspace(server);
+    configureSample(maker.ws, maker.seedMode, otherGrade, otherSample.keys, PER_UNIT);
+    const made = JSON.parse(JSON.stringify(maker.ws.draft()));
+    const wanted = made.selected.map((row) => row.questionUid);
+    assert.ok(wanted.length >= 2, "the maker built a paper");
+    assert.ok(made.selected.every((row) => !row.sourceFile && !row.sourceArchiveFile), "a draft row names no exam file: only the uid");
+    assert.equal(made.filters.grade, otherGrade);
+    const open = async () => {
+      const screen = createWorkspace(server, { shardFiles: files });
+      screen.ws.state.filters = { grade };
+      const held = await screen.ws.bootFromShards();
+      assert.equal(held.complete, false);
+      assert.ok(wanted.every((uid) => !screen.ws.state.byUid.has(uid)), "the other grade's questions are not held before the restore");
+      return screen.ws;
+    };
+    // (a) restore with the grade the draft was made in
+    let ws = await open();
+    await ws.shardGlue.ensureShardFiles(made.selected, made.sources, { grades: [made.filters.grade] });
+    ws.applyDraft(made);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    assert.equal(ws.state.catalog.complete, false, "only the shards of the draft's grade were added, not every shard");
+    // (b) an imported work file without a usable grade: every shard is fetched before the questions are judged
+    ws = await open();
+    const noGrade = { ...made, filters: { ...made.filters, grade: "" } };
+    await ws.shardGlue.ensureShardFiles(noGrade.selected, noGrade.sources, { grades: [noGrade.filters.grade] });
+    ws.applyDraft(noGrade);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    // (c) a grade hint that is wrong for the questions: still found, by the fallback to every shard
+    ws = await open();
+    const wrong = { ...made, filters: { ...made.filters, grade: grade } };
+    await ws.shardGlue.ensureShardFiles(wrong.selected, wrong.sources, { grades: [wrong.filters.grade] });
+    ws.applyDraft(wrong);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    assert.equal(ws.state.catalog.complete, true, "the hint did not hold the questions, so every shard was received");
+    // (d) a question that is in no shard: refused as "not in the archive", after all shards were received
+    ws = await open();
+    const ghost = { ...made, selected: [...made.selected, { ...made.selected[0], questionUid: "qid_v1_" + "0".repeat(64) }] };
+    await ws.shardGlue.ensureShardFiles(ghost.selected, ghost.sources, { grades: [ghost.filters.grade] });
+    assert.equal(ws.state.catalog.complete, true);
+    assert.throws(() => ws.applyDraft(ghost), /현재 아카이브에 없는 문항/);
+  });
+}
+
+// the shard path is given up for the verified whole bundle when a file stays wrong, and the waiting screen shows what it is doing
+test("shard failures: the message tells the connection from the release, and the screen falls back to the whole bundle once", () => {
+  const source = readFileSync(root + "/archive/archive2-workspace.js", "utf8");
+  assert.match(source, /function giveUpShards\(error\)/);
+  assert.match(source, /catch \(error\) \{\s*if \(!isShardFailure\(error\)\) throw error;\s*giveUpShards\(error\);\s*return null;/);
+  assert.match(source, /await swapToWholeBundle\(error\)/);
+  assert.match(source, /ensureShardFiles\(restoring\?\.selected, restoring\?\.sources, \{ grades: \[restoring\?\.filters\?\.grade\] \}\)/);
+  assert.match(source, /ensureShardFiles\(imported\?\.selected, imported\?\.sources, \{ grades: \[imported\?\.filters\?\.grade\] \}\)/);
+});

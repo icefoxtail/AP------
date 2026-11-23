@@ -747,6 +747,8 @@
         throw new Error("수정본의 원본 시험지 정보가 맞지 않습니다. 새로고침한 뒤 다시 시도해 주세요.");
       if (!Array.isArray(paper.snapshot?.questions) || !paper.snapshot.questions.length)
         throw new Error("수정본의 원본 시험지 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
+      // saving the revision compares these questions with the catalog records: on a partial catalog the shards of their exams come first
+      await ensureShardFiles(paper.snapshot.questions);
       return structuredClone(paper.snapshot.questions);
     })();
     try {

@@ -163,6 +163,23 @@ test('a file that fails once is received again after a fresh index; a second fai
   });
   assert.equal(site.count(rel), 2, 'one retry, no loop');
   assert.ok(site.log.every((row) => row.rel !== null), 'nothing outside the shard folder was asked for: no silent whole-bundle fallback');
+  // (d) the connection fails every time (dropped, or an HTTP error): its own message, not "the data is being updated"
+  for (const mode of ['network', null]) {
+    site = fakeSite(files, { script: (path_) => (path_ === rel ? mode : undefined) });
+    loader = loaderFor(site);
+    await assert.rejects(loader.loadCatalog({ courses: [course.key] }), (error) => {
+      assert.equal(error.code, 'CATALOG_SHARD_NETWORK', String(mode));
+      assert.equal(error.retryable, true);
+      assert.equal(error.message, '문항 목록을 받지 못했습니다. 연결을 확인하고 다시 시도해 주세요.');
+      assert.equal(shards.isShardFailure(error), true);
+      return true;
+    });
+  }
+  // progress: asked for once with nothing done, then once per shard that arrives
+  const seen = [];
+  await loaderFor(fakeSite(files)).loadCatalog({ courses: [course.key] }, { onProgress: (row) => seen.push(`${row.done}/${row.total}`) });
+  assert.equal(seen[0], `0/${course.shards.length}`);
+  assert.equal(seen[seen.length - 1], `${course.shards.length}/${course.shards.length}`);
   // the same loader works when the network is back (a failed request is not remembered)
   const retrySite = fakeSite(files);
   loader = loaderFor(retrySite);
@@ -330,8 +347,11 @@ test('the shard path is the default of 문제지 만들기 and ?shards=0 is the 
   const workspace = read('archive/archive2-workspace.js');
   // the one place the whole-bundle path is still called: ?shards=0, or the shards are not on the site (shardCatalog returns null)
   assert.ok(/const catalog = \(shardsOn\(\) && await shardCatalog\(\)\) \|\| await window\.applyArchiveMetaFoundationCatalog\(\);/.test(workspace));
-  assert.ok(/if \(!window\.Archive2CatalogShards\.isUnavailable\(error\)\)/.test(workspace), 'only "not on the site" falls back; other failures are errors');
+  assert.ok(/if \(!window\.Archive2CatalogShards\.isUnavailable\(error\)\)/.test(workspace), 'a prefetch failure that is not "not on the site" is only logged');
   assert.ok(/shardsBroken = true/.test(workspace));
+  // a shard file that stays wrong after the loader's retry: the screen gives the shard path up (console warning) for the verified whole bundle
+  assert.ok(/function giveUpShards\(error\)/.test(workspace) && /using the verified whole bundle instead/.test(workspace));
+  assert.ok(/applyArchiveMetaFoundationCatalog\(\);\s*\} catch \(error\) \{ shardsBroken = false/.test(workspace), 'if the whole bundle fails too the screen stays on shards and shows the shard error');
   // the screens that read the catalog do not know about shards
   for (const file of ['archive/archive2-core.js', 'archive/archive2-canonical.js', 'archive/archive2-workspace-core.js', 'archive/archive2-workspace-compose.js', 'archive/meta-foundation-runtime.js', 'archive/archive2-output.js', 'archive/archive2-history.js', 'archive/mixer-selector.js', 'archive/archive2-output-contract.js']) assert.equal(/Archive2CatalogShards/.test(read(file)), false, file);
   const manifest = JSON.parse(read('tools/archive-pages-release-manifest.json'));
