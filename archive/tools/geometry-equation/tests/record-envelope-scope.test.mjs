@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {recordArchiveEvidence,judgeArchivePage} from '../record-visual-browser-evidence.mjs';
+import {recordArchiveEvidence,judgeArchivePage,judgeArchiveTarget} from '../record-visual-browser-evidence.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
 
@@ -90,4 +90,14 @@ test('real Chrome: the page reports the target box overflow numbers and a figure
   assert.ok(target.boxOverflow.imageOutsidePx<=2);
   assert.equal(row.errors.some(code=>String(code).startsWith('TARGET_HORIZONTAL_OVERFLOW')),false,JSON.stringify(row.errors));
   assert.ok(Array.isArray(row.state.failedImages)&&Array.isArray(row.state.targetBoxOverflows));
+});
+
+test('judgeArchiveTarget: each target of one exam is judged on its own',()=>{
+  const state=okState({allImagesLoaded:false,failedImages:[{src:'q/a.png',inTargetBox:true,targetIds:['a']}],targets:[{id:'a',boxOverflow:{scrollOverflowPx:0,imageOutsidePx:0}},{id:'b',boxOverflow:{scrollOverflowPx:30,imageOutsidePx:0}}]});
+  const item={questionCount:4,assets:[{id:'a'},{id:'b'}],envelopeTargets:[]};
+  assert.deepEqual(judgeArchiveTarget(state,item,'a').errors,[]);
+  assert.deepEqual(judgeArchiveTarget(state,item,'a').pageNotes.map(note=>[note.targetId,note.images]),[['a',['q/a.png']]]);
+  assert.deepEqual(judgeArchiveTarget(state,item,'b').errors,['TARGET_HORIZONTAL_OVERFLOW:b']);
+  assert.deepEqual(judgeArchiveTarget(state,item,'b').pageNotes,[]);
+  assert.deepEqual(judgeArchivePage(state,item).errors,['TARGET_HORIZONTAL_OVERFLOW:b']);
 });
