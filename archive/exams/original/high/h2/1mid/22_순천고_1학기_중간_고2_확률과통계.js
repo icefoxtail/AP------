@@ -393,7 +393,7 @@ window.questionBank = [
       "⑤ 90"
     ],
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
-    "sourceQuestionTextExact": "오른쪽 그림과 같은 도로망이 있다. $\\mathrm{A}$에서 출발하여 $\\mathrm{P}$를 거쳐 $\\mathrm{B}$로 가는 최단 경로의 수는?<br><br><img src=\"archive/assets/images/22_순천고_1학기_중간_고2_확률과통계/q04.png\" alt=\"q04\">",
+    "sourceQuestionTextExact": "오른쪽 그림과 같은 도로망이 있다. $\\mathrm{A}$에서 출발하여 $\\mathrm{P}$를 거쳐 $\\mathrm{B}$로 가는 최단 경로의 수는?<br><br><img src=\"assets/images/22_순천고_1학기_중간_고2_확률과통계/q04.png\" alt=\"q04\">",
     "category": "최단 경로의 수",
     "originalCategory": "최단 경로의 수",
     "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q4-solution.svg",
@@ -492,7 +492,7 @@ window.questionBank = [
       "⑤ 48"
     ],
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
-    "sourceQuestionTextExact": "3쌍의 부부가 정삼각형 모양의 탁자에 둘러앉을 때, 부부끼리는 같은 변에 앉는 방법의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br><img src=\"archive/assets/images/22_순천고_1학기_중간_고2_확률과통계/q05.png\" alt=\"q05\">",
+    "sourceQuestionTextExact": "3쌍의 부부가 정삼각형 모양의 탁자에 둘러앉을 때, 부부끼리는 같은 변에 앉는 방법의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br><img src=\"assets/images/22_순천고_1학기_중간_고2_확률과통계/q05.png\" alt=\"q05\">",
     "category": "원순열",
     "originalCategory": "원순열",
     "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q5-solution.svg",
@@ -1713,7 +1713,7 @@ window.questionBank = [
       "⑤ 196"
     ],
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
-    "sourceQuestionTextExact": "A학급 학생 2명, B학급 학생 3명, C학급 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br>ㄱ. 같은 학급 학생끼리는 서로 이웃하여 앉지 않는다.<br>ㄴ. 같은 학급 학생끼리는 서로 마주보고 앉지 않는다.<br><br><img src=\"archive/assets/images/22_순천고_1학기_중간_고2_확률과통계/q17.png\" alt=\"q17\">",
+    "sourceQuestionTextExact": "A학급 학생 2명, B학급 학생 3명, C학급 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br>ㄱ. 같은 학급 학생끼리는 서로 이웃하여 앉지 않는다.<br>ㄴ. 같은 학급 학생끼리는 서로 마주보고 앉지 않는다.<br><br><img src=\"assets/images/22_순천고_1학기_중간_고2_확률과통계/q17.png\" alt=\"q17\">",
     "category": "조건을 만족시키는 원순열",
     "originalCategory": "조건을 만족시키는 원순열"
   },

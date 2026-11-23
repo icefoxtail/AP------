@@ -79,7 +79,7 @@ window.questionBank = [
       "호의길이"
     ],
     "wide": false,
-    "content": "다음 그림의 원 $O$에서 부채꼴의 호의 길이와 중심각의 크기 사이의 관계를 이용하여 $x+y$의 값을 구하면? (단, $x$는 호의 길이, $y$는 각도이다.) [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q02-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림의 원 $O$에서 부채꼴의 호의 길이와 중심각의 크기 사이의 관계를 이용하여 $x+y$의 값을 구하면? (단, $x$는 호의 길이, $y$는 각도이다.) [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q02-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$88$",
       "$93$",
@@ -89,7 +89,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "한 원에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다.\n\n중심각이 $30^\\circ$일 때 호의 길이가 $2\\rm\\,cm$이므로\n$1\\rm\\,cm$당 중심각은 $\\dfrac{30^\\circ}{2} = 15^\\circ$이다.\n\n중심각이 $120^\\circ$인 부채꼴의 호의 길이 $x$는\n$\\dfrac{30}{120} = \\dfrac{2}{x} \\implies x = 8\\rm\\,cm$이다.\n\n호의 길이가 $6\\rm\\,cm$인 부채꼴의 중심각 $y$는\n$\\dfrac{30}{y} = \\dfrac{2}{6} \\implies y = 90^\\circ$이다.\n\n따라서\n$x+y = 8 + 90 = 98$이다.\n\n정답은 ③이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q02-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q02-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
@@ -136,7 +136,7 @@ window.questionBank = [
       "둘레"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $9\\rm\\,cm$인 두 원 $O$와 $O'$이 서로의 중심을 지나고 있다. 선분 $AB$가 원 $O$의 지름일 때, 색칠한 부분의 둘레의 길이를 구하면? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 반지름의 길이가 $9\\rm\\,cm$인 두 원 $O$와 $O'$이 서로의 중심을 지나고 있다. 선분 $AB$가 원 $O$의 지름일 때, 색칠한 부분의 둘레의 길이를 구하면? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$(3\\pi + 9)\\rm\\,cm$",
       "$(3\\pi + 18)\\rm\\,cm$",
@@ -146,7 +146,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "두 원 $O$와 $O'$의 반지름이 모두 $9\\rm\\,cm$이고 서로의 중심을 지나므로\n선분 $OO' = 9\\rm\\,cm$이다.\n\n두 원의 교점을 $P$라 하면 $OP = O'P = OO' = 9\\rm\\,cm$이므로\n$\\triangle OPO'$는 한 변의 길이가 $9\\rm\\,cm$인 정삼각형이다.\n따라서 $\\angle POO' = 60^\\circ$이다.\n\n색칠한 영역의 둘레는 중심각이 $60^\\circ$인 호의 길이와 지름 $AB$의 길이의 합이다.\n호의 길이: $2\\pi \\times 9 \\times \\dfrac{60}{360} = 3\\pi\\rm\\,cm$\n지름 $AB$: $2 \\times 9 = 18\\rm\\,cm$\n\n따라서 색칠한 부분의 둘레의 길이는 $(3\\pi + 18)\\rm\\,cm$이다.\n\n정답은 ②이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
@@ -306,7 +306,7 @@ window.questionBank = [
       "겉넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 반원기둥의 겉넓이를 구하면? (단, 밑면인 반원의 지름의 길이는 $8\\rm\\,cm$이고, 높이는 $10\\rm\\,cm$이다.) [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q06-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같은 반원기둥의 겉넓이를 구하면? (단, 밑면인 반원의 지름의 길이는 $8\\rm\\,cm$이고, 높이는 $10\\rm\\,cm$이다.) [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q06-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$(32\\pi + 80)\\rm\\,cm^2$",
       "$(40\\pi + 80)\\rm\\,cm^2$",
@@ -316,7 +316,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "반원기둥의 겉넓이는 (밑면인 반원 $2$개의 넓이) + (곡면인 옆넓이) + (직사각형 면의 넓이)의 합이다.\n\n밑면 반원의 반지름은 $r = 4\\rm\\,cm$이므로\n밑면 $2$개의 넓이의 합: $2 \\times \\left(\\dfrac{1}{2}\\pi \\times 4^2\\right) = 16\\pi\\rm\\,cm^2$\n\n곡면 옆넓이: (반원의 호의 길이) $\\times$ (높이) $= (\\pi \\times 4) \\times 10 = 40\\pi\\rm\\,cm^2$\n\n직사각형 면의 넓이: (지름) $\\times$ (높이) $= 8 \\times 10 = 80\\rm\\,cm^2$\n\n따라서 반원기둥의 겉넓이는\n$16\\pi + 40\\pi + 80 = (56\\pi + 80)\\rm\\,cm^2$이다.\n\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q06-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q06-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
@@ -363,7 +363,7 @@ window.questionBank = [
       "부피"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 사각기둥의 부피를 구하면? (단, 밑면인 사각형 $ABCD$는 대각선 $BD$에 의해 두 삼각형으로 나누어지고, 대각선 $BD$의 길이는 $6\\rm\\,cm$, 꼭짓점 $A, C$에서 $BD$에 내린 수선의 발까지의 거리는 각각 $4\\rm\\,cm, 5\\rm\\,cm$이다. 사각기둥의 높이는 $8\\rm\\,cm$이다.) [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q07-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같은 사각기둥의 부피를 구하면? (단, 밑면인 사각형 $ABCD$는 대각선 $BD$에 의해 두 삼각형으로 나누어지고, 대각선 $BD$의 길이는 $6\\rm\\,cm$, 꼭짓점 $A, C$에서 $BD$에 내린 수선의 발까지의 거리는 각각 $4\\rm\\,cm, 5\\rm\\,cm$이다. 사각기둥의 높이는 $8\\rm\\,cm$이다.) [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q07-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$168\\rm\\,cm^3$",
       "$180\\rm\\,cm^3$",
@@ -373,7 +373,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "사각기둥의 부피는 $($밑넓이$) \\times ($높이$)$이다.\n\n밑면인 사각형 $ABCD$의 넓이는 대각선 $BD$에 의해 나뉜 두 삼각형 $\\triangle ABD$와 $\\triangle CBD$의 넓이의 합이다.\n$\\triangle ABD = \\dfrac{1}{2} \\times 6 \\times 4 = 12\\rm\\,cm^2$\n$\\triangle CBD = \\dfrac{1}{2} \\times 6 \\times 5 = 15\\rm\\,cm^2$\n밑넓이 $S = 12 + 15 = 27\\rm\\,cm^2$\n\n사각기둥의 높이가 $h = 8\\rm\\,cm$이므로 부피는\n$V = 27 \\times 8 = 216\\rm\\,cm^3$이다.\n\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q07-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q07-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
@@ -421,7 +421,7 @@ window.questionBank = [
       "부피"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 한 모서리의 길이가 $x\\rm\\,cm$인 정육면체에서 한 꼭짓점을 포함하는 삼각뿔을 잘라내었더니, 잘라낸 삼각뿔의 부피가 $36\\rm\\,cm^3$이었다. 잘라낸 삼각뿔의 세 모서리의 길이가 모두 $x\\rm\\,cm$일 때, $x$의 값은? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q08-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 한 모서리의 길이가 $x\\rm\\,cm$인 정육면체에서 한 꼭짓점을 포함하는 삼각뿔을 잘라내었더니, 잘라낸 삼각뿔의 부피가 $36\\rm\\,cm^3$이었다. 잘라낸 삼각뿔의 세 모서리의 길이가 모두 $x\\rm\\,cm$일 때, $x$의 값은? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q08-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$6\\rm\\,cm$",
       "$7\\rm\\,cm$",
@@ -431,7 +431,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "한 꼭짓점에서 만나는 세 모서리가 서로 수직이고 길이가 모두 $x\\rm\\,cm$인 삼각뿔의 부피는 다음과 같다.\n\n밑면인 직각삼각형의 넓이: $\\dfrac{1}{2} \\times x \\times x = \\dfrac{1}{2}x^2$\n높이: $x\\rm\\,cm$\n\n따라서 삼각뿔의 부피는\n$V = \\dfrac{1}{3} \\times \\left(\\dfrac{1}{2}x^2\\right) \\times x = \\dfrac{1}{6}x^3$\n\n삼각뿔의 부피가 $36\\rm\\,cm^3$이므로\n$\\dfrac{1}{6}x^3 = 36 \\implies x^3 = 216 = 6^3$\n$x > 0$이므로 $x = 6\\rm\\,cm$이다.\n\n정답은 ①이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q08-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q08-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
@@ -479,7 +479,7 @@ window.questionBank = [
       "부피"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 원기둥의 양 끝에 반지름의 길이가 같은 반구가 각각 하나씩 붙어 있는 입체도형이 있다. 반구의 반지름의 길이가 $3\\rm\\,cm$이고 원기둥의 높이가 $7\\rm\\,cm$일 때, 이 입체도형의 부피는? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 원기둥의 양 끝에 반지름의 길이가 같은 반구가 각각 하나씩 붙어 있는 입체도형이 있다. 반구의 반지름의 길이가 $3\\rm\\,cm$이고 원기둥의 높이가 $7\\rm\\,cm$일 때, 이 입체도형의 부피는? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$72\\pi\\rm\\,cm^3$",
       "$81\\pi\\rm\\,cm^3$",
@@ -489,7 +489,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "이 입체도형의 부피는 (양 끝의 반구 $2$개의 부피의 합) + (가운데 원기둥의 부피)이다.\n\n반지름이 $3\\rm\\,cm$인 반구 $2$개의 부피의 합은 반지름이 $3\\rm\\,cm$인 온전한 구 $1$개의 부피와 같으므로\n$V_{\\text{구}} = \\dfrac{4}{3}\\pi \\times 3^3 = 36\\pi\\rm\\,cm^3$이다.\n\n가운데 원기둥의 밑면의 반지름은 $3\\rm\\,cm$, 높이는 $7\\rm\\,cm$이므로\n$V_{\\text{원기둥}} = (\\pi \\times 3^2) \\times 7 = 9\\pi \\times 7 = 63\\pi\\rm\\,cm^3$이다.\n\n따라서 입체도형의 전체 부피는\n$36\\pi + 63\\pi = 99\\pi\\rm\\,cm^3$이다.\n\n정답은 ④이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
@@ -536,7 +536,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 지름의 길이가 $24\\rm\\,cm$인 반원에서 지름 $AB$를 밑변으로 하는 이등변삼각형 $ABC$($\\overline{AC}=\\overline{BC}$)를 그렸을 때, 변 $AC, BC$가 반원과 만나는 점을 각각 $D, E$라 하자. $\\angle C = 40^\\circ$일 때, 부채꼴 $DOE$의 넓이를 구하면? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q10-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 지름의 길이가 $24\\rm\\,cm$인 반원에서 지름 $AB$를 밑변으로 하는 이등변삼각형 $ABC$($\\overline{AC}=\\overline{BC}$)를 그렸을 때, 변 $AC, BC$가 반원과 만나는 점을 각각 $D, E$라 하자. $\\angle C = 40^\\circ$일 때, 부채꼴 $DOE$의 넓이를 구하면? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q10-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$40\\pi\\rm\\,cm^2$",
       "$44\\pi\\rm\\,cm^2$",
@@ -546,7 +546,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "이등변삼각형 $ABC$에서 $\\angle C = 40^\\circ$, $\\overline{AC}=\\overline{BC}$이므로\n밑각의 크기는 $\\angle A = \\angle B = \\dfrac{180^\\circ - 40^\\circ}{2} = 70^\\circ$이다.\n\n반원의 중심을 $O$라 하면 $\\overline{OA}=\\overline{OD}$ (반지름)이므로 $\\triangle AOD$는 이등변삼각형이다.\n따라서 $\\angle ADO = \\angle A = 70^\\circ$이고,\n$\\angle AOD = 180^\\circ - (70^\\circ + 70^\\circ) = 40^\\circ$이다.\n\n마찬가지로 $\\overline{OB}=\\overline{OE}$이므로 $\\triangle BOE$에서\n$\\angle BEO = \\angle B = 70^\\circ$이고,\n$\\angle EOB = 180^\\circ - (70^\\circ + 70^\\circ) = 40^\\circ$이다.\n\n지름 $AB$가 이루는 평각은 $180^\\circ$이므로 부채꼴 $DOE$의 중심각은\n$\\angle DOE = 180^\\circ - (\\angle AOD + \\angle EOB) = 180^\\circ - (40^\\circ + 40^\\circ) = 100^\\circ$이다.\n\n반원의 반지름은 $r = 12\\rm\\,cm$이므로 부채꼴 $DOE$의 넓이는\n$S = \\pi \\times 12^2 \\times \\dfrac{100}{360} = 144\\pi \\times \\dfrac{5}{18} = 40\\pi\\rm\\,cm^2$이다.\n\n정답은 ①이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q10-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q10-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
@@ -593,7 +593,7 @@ window.questionBank = [
       "겉넓이"
     ],
     "wide": false,
-    "content": "다음 그림은 한 변의 길이가 $4\\rm\\,cm$인 정사각형 $ABCD$에서 반지름의 길이가 $4\\rm\\,cm$인 부채꼴을 잘라내고 남은 도형이다. 이 도형을 변 $CD$를 회전축으로 하여 $1$회전 시킬 때 생기는 회전체의 겉넓이를 구하면? [5점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 한 변의 길이가 $4\\rm\\,cm$인 정사각형 $ABCD$에서 반지름의 길이가 $4\\rm\\,cm$인 부채꼴을 잘라내고 남은 도형이다. 이 도형을 변 $CD$를 회전축으로 하여 $1$회전 시킬 때 생기는 회전체의 겉넓이를 구하면? [5점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$48\\pi\\rm\\,cm^2$",
       "$56\\pi\\rm\\,cm^2$",
@@ -603,7 +603,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "변 $CD$를 축으로 회전시키면 바깥쪽 원기둥 모양의 옆면, 아래쪽 밑면, 그리고 안쪽에 파인 반구 모양의 곡면으로 이루어진 회전체가 생긴다.\n정사각형의 한 변이 $4\\rm\\,cm$이므로 회전체의 밑면 반지름과 높이는 모두 $4\\rm\\,cm$이다.\n\n1) 바깥 원기둥의 옆넓이:\n$2\\pi \\times 4 \\times 4 = 32\\pi\\rm\\,cm^2$\n\n2) 아래쪽 원형 밑면의 넓이:\n$\\pi \\times 4^2 = 16\\pi\\rm\\,cm^2$\n\n3) 잘라낸 사분원의 호가 회전하며 만드는 안쪽 반구의 곡면 넓이:\n반지름 $4\\rm\\,cm$인 반구의 곡면넓이 $= 2\\pi \\times 4^2 = 32\\pi\\rm\\,cm^2$\n\n따라서 회전체의 전체 겉넓이는\n$32\\pi + 16\\pi + 32\\pi = 80\\pi\\rm\\,cm^2$이다.\n\n정답은 ⑤이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
@@ -766,7 +766,7 @@ window.questionBank = [
       "자료해석"
     ],
     "wide": false,
-    "content": "다음 그림은 어느 반 학생들의 줄넘기 횟수를 조사하여 나타낸 줄기와 잎 그림이다. 이에 대한 설명으로 옳지 않은 것은? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q14-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 어느 반 학생들의 줄넘기 횟수를 조사하여 나타낸 줄기와 잎 그림이다. 이에 대한 설명으로 옳지 않은 것은? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q14-problem.svg\" alt=\"\"><br>",
     "choices": [
       "전체 학생 수는 $22$명이다.",
       "줄기가 $2$인 잎의 개수는 $5$개이다.",
@@ -776,7 +776,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "줄기와 잎 그림을 분석한다.\n\n① 잎의 전체 개수는 $2 + 5 + 6 + 6 + 3 = 22$명이므로 전체 학생 수는 $22$명이다. (옳음)\n② 줄기가 $2$인 잎은 $1, 3, 5, 6, 7, 8$의 $6$개이다. $5$개가 아니므로 옳지 않다. (옳지 않음)\n③ 기록이 $30$회 이상인 학생은 줄기가 $3, 4$인 잎으로 각각 $6$개, $3$개이므로 총 $9$명이다. (옳음)\n④ 가장 높은 기록은 줄기 $4$의 가장 큰 잎인 $43$회이다. (옳음)\n⑤ 가장 낮은 기록은 줄기 $0$의 가장 작은 잎인 $8$회이다. (옳음)\n\n따라서 옳지 않은 것은 ②이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q14-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q14-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
@@ -880,7 +880,7 @@ window.questionBank = [
       "찢어진히스토그램"
     ],
     "wide": false,
-    "content": "다음 히스토그램은 어느 학급 학생 $30$명의 공 던지기 기록을 조사하여 나타낸 것인데 일부가 찢어져 보이지 않는다. 이에 대한 설명으로 옳지 않은 것은? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q16-problem.svg\" alt=\"\"><br>",
+    "content": "다음 히스토그램은 어느 학급 학생 $30$명의 공 던지기 기록을 조사하여 나타낸 것인데 일부가 찢어져 보이지 않는다. 이에 대한 설명으로 옳지 않은 것은? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q16-problem.svg\" alt=\"\"><br>",
     "choices": [
       "계급의 크기는 $5\\rm\\,m$이다.",
       "전체 계급의 개수는 $5$개이다.",
@@ -890,7 +890,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "히스토그램에서 계급의 크기는 $35 - 30 = 5\\rm\\,m$이고, 계급은 총 $5$개이다.\n\n보이는 계급의 도수는 다음과 같다.\n- $30\\rm\\,m$ 이상 $35\\rm\\,m$ 미만: $4$명\n- $35\\rm\\,m$ 이상 $40\\rm\\,m$ 미만: $7$명\n- $45\\rm\\,m$ 이상 $50\\rm\\,m$ 미만: $6$명\n- $50\\rm\\,m$ 이상 $55\\rm\\,m$ 미만: $3$명\n\n전체 학생 수가 $30$명이므로 찢어진 계급 '$40\\rm\\,m$ 이상 $45\\rm\\,m$ 미만'의 도수는\n$30 - (4 + 7 + 6 + 3) = 30 - 20 = 10$명이다.\n\n따라서 해당 계급의 학생 수는 $10$명이므로 $8$명이라고 한 ④는 옳지 않다.\n\n정답은 ④이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q16-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q16-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
@@ -937,7 +937,7 @@ window.questionBank = [
       "두집단비교"
     ],
     "wide": false,
-    "content": "다음 도수분포다각형은 어느 동아리의 남학생과 여학생의 $2$분 동안 윗몸일으키기 횟수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것은? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q17-problem.svg\" alt=\"\"><br>",
+    "content": "다음 도수분포다각형은 어느 동아리의 남학생과 여학생의 $2$분 동안 윗몸일으키기 횟수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것은? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q17-problem.svg\" alt=\"\"><br>",
     "choices": [
       "남학생의 전체 학생 수는 여학생의 전체 학생 수보다 많다.",
       "여학생 중 윗몸일으키기 횟수가 $50$회 미만인 학생은 없다.",
@@ -947,7 +947,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "도수분포다각형에서 남학생과 여학생의 계급별 도수를 구한다.\n\n남학생: $1, 4, 8, 5, 2$명 $\\implies$ 총도수: $20$명\n여학생: $2, 6, 7, 3, 0$명 $\\implies$ 총도수: $18$명\n\n① 남학생 총인원($20$명)이 여학생 총인원($18$명)보다 많으므로 옳다. (옳음)\n② 여학생 중 $40$회 이상 $50$회 미만 계급에 $2$명이 있으므로 $50$회 미만 학생이 있다. (옳지 않음)\n③ 남학생의 도수가 가장 큰 계급은 $60\\sim 70$회로 계급값은 $65$회이다. (옳지 않음)\n④ 남학생의 그래프가 여학생의 그래프보다 전체적으로 오른쪽으로 치우쳐 있으므로 남학생의 기록이 더 우수하다. (옳지 않음)\n⑤ 각 계급별로 남학생과 여학생의 도수를 비교하면 ($1$과 $2$, $4$와 $6$, $8$과 $7$, $5$과 $3$, $2$와 $0$) 도수가 서로 같은 계급은 없다. (옳지 않음)\n\n따라서 옳은 것은 ①이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q17-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q17-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
@@ -1051,7 +1051,7 @@ window.questionBank = [
       "지워진자료"
     ],
     "wide": false,
-    "content": "다음 그림은 어느 학급 학생들의 일주일간 스마트폰 이용 시간을 조사하여 나타낸 도수분포다각형인데 일부가 지워졌다. 이용 시간이 $10$시간 미만인 학생이 전체의 $30\\%$일 때, 이용 시간이 $10$시간 이상 $12$시간 미만인 학생 수는? [4점]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q19-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림은 어느 학급 학생들의 일주일간 스마트폰 이용 시간을 조사하여 나타낸 도수분포다각형인데 일부가 지워졌다. 이용 시간이 $10$시간 미만인 학생이 전체의 $30\\%$일 때, 이용 시간이 $10$시간 이상 $12$시간 미만인 학생 수는? [4점]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q19-problem.svg\" alt=\"\"><br>",
     "choices": [
       "$12$명",
       "$14$명",
@@ -1061,7 +1061,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "이용 시간이 $10$시간 미만인 세 계급의 도수는 그래프에서\n$2 + 4 + 6 = 12$명이다.\n\n이 $12$명이 전체 학생 수의 $30\\%$이므로 전체 학생 수를 $N$이라 하면\n$0.30 N = 12 \\implies N = 40$명이다.\n\n그래프에서 지워진 계급 '$10$시간 이상 $12$시간 미만'을 제외하고 보이는 다른 계급들의 도수의 합은\n$12$명 $+ 7$명($12\\sim 14$시간) $+ 5$명($14\\sim 16$시간) $= 24$명이다.\n\n따라서 지워진 계급의 학생 수는\n$40 - 24 = 16$명이다.\n\n정답은 ③이다.",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q19-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q19-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
@@ -1166,11 +1166,11 @@ window.questionBank = [
       "단면"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 윗변의 길이가 $3\\rm\\,cm$, 아랫변의 길이가 $6\\rm\\,cm$, 높이가 $5\\rm\\,cm$인 사다리꼴 $ABCD$를 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체에 대해, 다음 물음에 답하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q21-problem.svg\" alt=\"\"><br>\n(1) 회전체의 전개도를 그리시오.\n(2) 회전축을 포함하는 평면으로 자른 단면의 넓이를 구하시오.",
+    "content": "다음 그림과 같이 윗변의 길이가 $3\\rm\\,cm$, 아랫변의 길이가 $6\\rm\\,cm$, 높이가 $5\\rm\\,cm$인 사다리꼴 $ABCD$를 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체에 대해, 다음 물음에 답하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q21-problem.svg\" alt=\"\"><br>\n(1) 회전체의 전개도를 그리시오.\n(2) 회전축을 포함하는 평면으로 자른 단면의 넓이를 구하시오.",
     "choices": [],
     "answer": "① 원뿔대의 전개도, ② $45\\rm\\,cm^2$",
     "solution": "직각사다리꼴을 한 변을 축으로 회전시키면 원뿔대가 된다.\n\n(1) 회전체는 원뿔대이므로 전개도는 옆면인 부채꼴 띠(도넛 모양의 일부)와 반지름이 각각 $3\\rm\\,cm$, $6\\rm\\,cm$인 두 원형 밑면으로 이루어진다.\n\n(2) 회전축을 포함하는 평면으로 자른 단면은 회전축에 대해 선대칭인 사다리꼴이 된다.\n- 윗변의 길이는 지름이므로 $3 \\times 2 = 6\\rm\\,cm$\n- 아랫변의 길이는 지름이므로 $6 \\times 2 = 12\\rm\\,cm$\n- 높이는 사다리꼴의 높이와 같으므로 $5\\rm\\,cm$\n\n따라서 단면의 넓이는\n$\\dfrac{6 + 12}{2} \\times 5 = \\dfrac{18}{2} \\times 5 = 9 \\times 5 = 45\\rm\\,cm^2$이다.\n\n답: ① 원뿔대의 전개도, ② $45\\rm\\,cm^2$",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q21-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q21-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
     "templateKey": "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION",
@@ -1218,11 +1218,11 @@ window.questionBank = [
       "절단"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $4\\rm\\,cm$인 구에 대해, 구의 중심을 지나도록 서로 수직으로 $3$번 잘랐을 때 나누어지는 조각들의 겉넓이의 합을 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q22-problem.svg\" alt=\"\"><br>",
+    "content": "다음 그림과 같이 반지름의 길이가 $4\\rm\\,cm$인 구에 대해, 구의 중심을 지나도록 서로 수직으로 $3$번 잘랐을 때 나누어지는 조각들의 겉넓이의 합을 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q22-problem.svg\" alt=\"\"><br>",
     "choices": [],
     "answer": "$160\\pi\\rm\\,cm^2$",
     "solution": "잘린 모든 조각들의 겉넓이의 합은 (원래 구의 겉넓이) + (새로 생긴 평평한 절단면들의 넓이의 합)이다.\n\n1) 반지름이 $4\\rm\\,cm$인 구의 원래 겉넓이:\n$4\\pi \\times 4^2 = 64\\pi\\rm\\,cm^2$\n\n2) 중심을 지나도록 한 번 자를 때마다 반지름이 $4\\rm\\,cm$인 원형 단면이 양쪽 조각에 하나씩 총 $2$개 생긴다.\n원판 $1$개의 넓이는 $\\pi \\times 4^2 = 16\\pi\\rm\\,cm^2$이므로,\n한 번 자를 때 늘어나는 넓이는 $2 \\times 16\\pi = 32\\pi\\rm\\,cm^2$이다.\n\n3) 서로 수직으로 $3$번 잘랐으므로 새로 생기는 원판 단면의 넓이의 합은\n$3 \\times 32\\pi = 96\\pi\\rm\\,cm^2$이다.\n\n따라서 나누어진 조각들의 겉넓이의 총합은\n$64\\pi + 96\\pi = 160\\pi\\rm\\,cm^2$이다.\n\n답: $160\\pi\\rm\\,cm^2$",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q22-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q22-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_SPHERE",
@@ -1322,11 +1322,11 @@ window.questionBank = [
       "상위백분율"
     ],
     "wide": false,
-    "content": "다음 도수분포다각형은 어느 학교 A, B 두 학급의 수학 성적을 조사하여 나타낸 것이다. A반에서 성적이 상위 $20\\%$ 이내에 드는 학생의 성적은 B반에서 최소 상위 몇 $\\%$ 이내에 드는지 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"archive/assets/images/25_팔마중_2학기_기말_중1_유사/q24-problem.svg\" alt=\"\"><br>",
+    "content": "다음 도수분포다각형은 어느 학교 A, B 두 학급의 수학 성적을 조사하여 나타낸 것이다. A반에서 성적이 상위 $20\\%$ 이내에 드는 학생의 성적은 B반에서 최소 상위 몇 $\\%$ 이내에 드는지 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]<br><img src=\"assets/images/25_팔마중_2학기_기말_중1_유사/q24-problem.svg\" alt=\"\"><br>",
     "choices": [],
     "answer": "$40\\%$",
     "solution": "도수분포다각형에서 A반과 B반의 전체 학생 수와 계급별 도수를 구한다.\n\n1) A반의 전체 학생 수:\n$3 + 7 + 10 + 4 + 1 = 25$명\nA반 상위 $20\\%$에 해당하는 학생 수는\n$25 \\times 0.20 = 5$명이다.\n높은 점수 쪽부터 도수를 누적하면 '$90$점 이상 $100$점 미만'에 $1$명, '$80$점 이상 $90$점 미만'에 $4$명이므로 $5$번째 학생의 점수는 $80$점 이상이다.\n따라서 A반 상위 $20\\%$의 기준 점수는 $80$점 이상이다.\n\n2) B반의 전체 학생 수:\n$2 + 5 + 8 + 7 + 3 = 25$명\nB반에서 $80$점 이상인 학생 수는 '$80\\sim 90$점' $7$명과 '$90\\sim 100$점' $3$명의 합이므로\n$7 + 3 = 10$명이다.\n\n3) 따라서 B반에서 $80$점 이상인 학생의 백분율은\n$\\dfrac{10}{25} \\times 100 = 40\\%$이다.\n\n답: $40\\%$",
-    "image": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q24-problem.svg",
+    "image": "assets/images/25_팔마중_2학기_기말_중1_유사/q24-problem.svg",
     "solutionImage": null,
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_TOP_CUTOFF_GROUP_COMPARISON",
