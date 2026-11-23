@@ -376,8 +376,11 @@
       return text(exam.topic || exam.subject || "교과서", 80);
     }
     const variant = /유사\s*(\d+)/.exec(exam.file || "");
+    // 유사 시험지 이름은 "… · 유사"(세트 하나) / "… · 유사2"(번호 있는 세트) 한 규칙이다(2026-11-23 원장님 결정).
+    // archive/exam-display-title.js의 readableExamTitle이 파일 이름에서 만드는 꼬리와 같다. 이 파일은 Worker 번들이라 그 모듈을 끌어오지 않고 규칙만 맞춘다.
+    const similarTail = " · 유사" + (variant ? variant[1] : "");
     if (kind === "unit") {
-      return [exam.grade, exam.semester ? exam.semester + "학기" : "", exam.topic || exam.subject, "단원평가", variant ? "유사 " + variant[1] : ""].filter(Boolean).join(" ");
+      return [exam.grade, exam.semester ? exam.semester + "학기" : "", exam.topic || exam.subject, "단원평가"].filter(Boolean).join(" ") + (variant ? similarTail : "");
     }
     const year = String(exam.year || "").replace(/^(\d{2})$/, "20$1");
     const period =
@@ -386,18 +389,11 @@
         : exam.examType === "final"
           ? "기말고사"
           : "";
-    return (
-      [
-        year,
-        exam.school,
-        exam.grade,
-        exam.semester ? exam.semester + "학기" : "",
-        period,
-        kind === "similar" ? "유사문제" + (variant ? " " + variant[1] : "") : "",
-      ]
+    const base =
+      [year, exam.school, exam.grade, exam.semester ? exam.semester + "학기" : "", period]
         .filter(Boolean)
-        .join(" ") || text(exam.topic || exam.subject || "수학 시험지", 80)
-    );
+        .join(" ") || text(exam.topic || exam.subject || "수학 시험지", 80);
+    return kind === "similar" ? base + similarTail : base;
   }
   // Browse labels only: source contentType and canonical metadata are unchanged.
   function materialKind(exam = {}) {

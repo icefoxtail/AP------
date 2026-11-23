@@ -99,8 +99,8 @@ test('엔진 연결: 원본(engine)·화면 실행기·문제지(mixed)는 탭 �
   assert.match(mixed, /function syncMixedDocumentTitle\(\)/);
   assert.match(mixed, /exam-display-title\.js/, 'mixed_engine이 공용 제목 함수를 불러온다');
   assert.doesNotMatch(mixed, /document\.getElementById\('ctrl-title'\)\.textContent = getIdentityTitle\(\)/, '머리글·제어줄은 식별값이 아니라 보이는 제목을 쓴다');
-  // 식별값은 그대로: 저장·출제 요청이 쓰는 값은 getIdentityTitle이다.
-  assert.match(mixed, /const examTitle = getIdentityTitle\(\);/);
+  // 식별값(getIdentityTitle)은 그대로 두고 저장 요청의 시험 이름만 표시 제목을 쓴다(아래 "새로 저장되는 시험 이름" 참고).
+  assert.match(mixed, /function getIdentityTitle\(\)/);
 });
 
 test('apmath 목록·상태·OMR·클리닉: 파일 이름 키 대신 한글 제목을 보인다(공용 함수가 있을 때)', () => {
@@ -163,4 +163,65 @@ test('학생 포털·출제 내역: 저장된 exam_title이 내부 키여도 한
   const recent = read('archive/archive2-workspace-recent.js');
   assert.match(recent, /esc\(shownTitle\(a\.title\)\)/);
   assert.match(read('apmath/index.html'), /exam-display-title\.js/, '선생님 앱이 공용 제목 함수를 불러온다');
+});
+
+// ---- 후속(Worker 번들): 유사 이름 규칙 통일, 서버 PDF 파일 이름 ----
+test('유사 시험지 이름은 "… · 유사"/"… · 유사2" 한 규칙이다: 카탈로그 displayTitle과 파일 이름 읽기가 같은 꼬리를 만든다', () => {
+  const output = require('../archive/archive2-output.js');
+  const base = { year: '25', school: '강남여고', grade: '고1', semester: '1', examType: 'final', contentType: '기출유사' };
+  const numbered = output.displayTitle({ ...base, file: 'similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사2.js' });
+  const single = output.displayTitle({ ...base, file: 'similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사.js' });
+  assert.equal(numbered, '2025 강남여고 고1 1학기 기말고사 · 유사2');
+  assert.equal(single, '2025 강남여고 고1 1학기 기말고사 · 유사');
+  for (const title of [numbered, single]) assert.doesNotMatch(title, /유사문제|유사 \d/);
+  // 원본 기출은 꼬리가 없다.
+  assert.equal(output.displayTitle({ ...base, contentType: '기출', file: 'original/high/h1/1final/25_강남여고_1학기_기말_고1_기출.js' }), '2025 강남여고 고1 1학기 기말고사');
+  // 단원평가 유사 세트도 같은 꼬리
+  assert.match(output.displayTitle({ contentType: '단원평가', grade: '고1', semester: '1', topic: '함수', file: 'x/함수_유사1.js' }), /단원평가 · 유사1$/);
+  // 파일 이름 쪽 규칙(readableExamTitle)과 꼬리가 같다
+  assert.match(displayTitleOf('exams/similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사2.js'), / · 유사2$/);
+  assert.match(displayTitleOf('exams/similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사.js'), / · 유사$/);
+});
+
+test('서버 PDF 파일 이름: 저장된 exam_title이 키면 한글 제목으로 풀고, 쓸 수 없는 문자는 바꾸며, filename*는 한글·특수문자를 RFC 5987로 인코딩한다', () => {
+  const source = read('apmath/worker-backup/worker/routes/exam-pdf.js');
+  const fns = loadFunctions(source, ['cleanText', 'readableDownloadTitle', 'encodeContentDispositionName', 'safeDownloadName'], { examDisplayTitle: require('../archive/exam-display-title.js') });
+  const name = row => fns.safeDownloadName(row);
+  assert.equal(name({ exam_title: '25_연향중_1학기_기말_중3_수학', exam_date: '2026-11-23' }), '2026-11-23_2025 연향중 중3 1학기 기말 · 수학.pdf');
+  assert.equal(name({ exam_title: '25_wangji_h1_2mid_math1', exam_date: '2026-11-23' }), '2026-11-23_2025 고1 2학기 중간.pdf');
+  assert.equal(name({ exam_title: 'unitpast_h1-through-2final-v2_H22-C2-01_13074d02', archive_file: 'MIXED:unitpast_h1-through-2final-v2_H22-C2-01_13074d02' }), '단원별 기출.pdf');
+  // 키를 못 풀면 archive_file에서 읽을 수 있는 이름
+  assert.equal(name({ exam_title: 'foo_bar', archive_file: 'exams/similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사2.js' }), '2025 강남여고 고1 1학기 기말 · 유사2.pdf');
+  assert.equal(name({ exam_title: '', archive_file: 'exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js' }), '2025 강남여고 고1 1학기 중간.pdf');
+  // 사람이 읽는 제목은 그대로, 파일 이름에 못 쓰는 문자는 _로
+  assert.equal(name({ exam_title: '중간 대비: 1회/2회?', exam_date: '2026-11-23' }), '2026-11-23_중간 대비_ 1회_2회_.pdf');
+  assert.equal(name({}), '시험지.pdf');
+  for (const row of [{ exam_title: '25_연향중_1학기_기말_중3_수학' }, { exam_title: 'foo_bar' }]) assert.doesNotMatch(name(row), /[A-Za-z]+_[A-Za-z0-9]+|\.js/);
+  const encoded = fns.encodeContentDispositionName("2026-11-23_이시온 (오답)'s *1회.pdf");
+  assert.doesNotMatch(encoded, /['()*]/);
+  assert.equal(decodeURIComponent(encoded), "2026-11-23_이시온 (오답)'s *1회.pdf");
+  assert.match(source, /filename\*=UTF-8''\$\{encodeContentDispositionName\(filename\)\}/);
+  assert.match(source, /import examDisplayTitle from '\.\.\/\.\.\/\.\.\/\.\.\/archive\/exam-display-title\.js'/, 'Worker 번들에 공용 제목 함수를 쓴다');
+  assert.ok(read('tools/ci/apms-worker-bundle-paths.txt').split('\n').includes('archive/exam-display-title.js'), '번들 경로 목록에 올라 있다');
+});
+
+test('보이는 제목이 저장·비교 값에 들어가지 않는다: Worker는 displayTitle을 부르지 않고, 저장된 snapshot은 저장된 제목으로 검증한다', () => {
+  const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => entry.isDirectory()
+    ? (entry.name === 'node_modules' ? [] : walk(path.join(dir, entry.name)))
+    : (entry.name.endsWith('.js') ? [path.join(dir, entry.name)] : []));
+  const users = walk(path.join(root, 'apmath/worker-backup/worker')).filter(file => /\bdisplayTitle\b/.test(fs.readFileSync(file, 'utf8')));
+  assert.deepEqual(users.map(file => path.relative(root, file).split(path.sep).join('/')), []);
+  const saved = read('apmath/worker-backup/worker/helpers/archive-saved-papers.js');
+  assert.match(saved, /String\(snapshot\.meta\.title \|\| ""\) !== String\(row\.title \|\| ""\)/, '검증은 저장된 행의 제목과 snapshot의 제목을 비교한다');
+});
+
+test('새로 저장되는 시험 이름: 출제 경로마다 한글 표시 제목을 쓴다(키 저장 경로 없음)', () => {
+  const engine = read('archive/engine.html');
+  const mixed = read('archive/mixed_engine.html');
+  assert.match(engine, /const examTitle = getDisplayTitle\(AppState\) \|\| '시험지';/);
+  assert.match(mixed, /const examTitle = getDisplayTitle\(\);/);
+  assert.doesNotMatch(engine + mixed, /exam_title: getIdentityTitle/);
+  const assign = read('archive/archive2-assign.js');
+  assert.match(assign, /exam_title: settings\.header\.title,/, '유사·원본 출제: 머리글 제목(= 카탈로그 한글 제목)');
+  assert.match(assign, /exam_title: paper\.identityTitle \|\| paper\.title,/, '단원별 기출: 권 제목(한글)');
 });

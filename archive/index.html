@@ -2724,7 +2724,7 @@ function printIndexPendingGeneralExam() {
 function getIndexExamTitle(item) {
     if (item?.savedPaperId) return String(item.title || item.identityTitle || '저장한 시험지').trim();
     if (isUnitPastExamItem(item) && (item?.identityTitle || item?.title)) return String(item.identityTitle || item.title).trim();
-    const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
+    const baseTitle = item.school || item.topic || (window.ExamDisplayTitle?.displayTitleOf?.(String(item.file || '')) || String(item.file || '').replace('.js', ''));
     return `${baseTitle} ${(window.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? (item.subject || ''))}`.trim();
 }
 
@@ -3818,7 +3818,7 @@ window.onload = function () {
 <script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
 <script src="archive2-source.js?v=20261119-verified-rename-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-<script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
+<script src="archive2-output.js?v=20261123-similar-title-1"></script>
 <script src="archive2-entry.js?v=20261123-gichul-c-1"></script>
 </body>
 </html>

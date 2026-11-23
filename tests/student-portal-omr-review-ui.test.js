@@ -67,6 +67,7 @@ assert(pdfActionHelper, 'PDF action renderer should exist');
 const actionContext = {
   String,
   escapeHtml: value => String(value),
+  studentExamTitle: (exam, fallback) => exam.exam_title || fallback,
   isOmrReviewAvailable: () => true,
   buildOmrReviewUrl: (_exam, mode) => `/review?mode=${mode}`,
 };
