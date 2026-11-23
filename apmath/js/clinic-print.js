@@ -4065,11 +4065,12 @@ function clinicPrintGetArchiveDisplayTitle(file) {
     if (!raw) return '';
     const compact = raw.replace(/^MIXED:/i, '');
     const leaf = compact.split(/[\\/]/).pop() || compact;
-    return leaf
+    const name = leaf
         .replace(/\.js(?:\?.*)?$/i, '')
         .replace(/^exams\//i, '')
         .replace(/^archive\//i, '')
         .trim();
+    return globalThis.ExamDisplayTitle?.displayTitleOf?.(name) || name; // 보이는 제목은 한글 제목
 }
 
 function clinicPrintGetExamGroupDisplayTitle(group = {}) {
