@@ -6,6 +6,8 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
+import {wrapTextFragment} from './wrap-text.mjs';
 
 // A standalone statistics / probability figure (stat-chart-figure-v1): histogram, frequency polygon (also over a histogram), relative-frequency graph,
 // stem-and-leaf plot, box plot, scatter plot, the 6x6 table of two dice and a probability tree. The author gives the data exactly (class boundaries and
@@ -26,7 +28,7 @@ const ACCESSIBLE_NAMES={
   DOT_PLOT:['점도표','자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.'],
   NORMAL_CURVE:['정규분포 곡선','정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.']
 };
-const accessibleNames=kind=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${desc}</desc>`;};
+const accessibleNames=(kind,custom)=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${custom===undefined?desc:esc(custom)}</desc>`;};   // custom: the plan's own accessibilityDescription
 export const MODEL_VERSION='STAT_CHART_MODEL_v1',SPEC_VERSION='STAT_CHART_SPEC_v1',SVG_VERSION='stat-chart-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('stat-chart-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -761,6 +763,9 @@ function solveNormal(c){
     if(raw.sdScale!==undefined){scaleQ=tryQ(raw.sdScale);if(scaleQ===null||qcmp(scaleQ,ZERO)<=0)bad('STAT_NORMAL_CURVE_INVALID');}
     return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1,scaleQ,scaled:raw.sdScale!==undefined};
   });
+  // The name Z is the standard normal variable: a curve called Z with another mean or sd (a letter one included) makes the student read the figure as N(0,1) while its axis shows the real numbers.
+  const isStandard=k=>k.meanQ!==null&&k.sdQ!==null&&qcmp(k.meanQ,ZERO)===0&&qcmp(k.sdQ,ONE)===0;
+  if(curves.some(k=>k.label!==null&&STD_NORMAL_NAME.test(k.label.replace(/\s+/g,''))&&!isStandard(k)))bad('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD');
   const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
   // several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
   if(framed&&curves.length>1&&!curves.every((k,i)=>k.sdQ===null&&k.meanText===curves[0].meanText&&k.sdText===curves[0].sdText&&k.scaled===(i>0)))bad('STAT_NORMAL_SYMBOLIC_MULTI');
@@ -856,6 +861,8 @@ function solveNormal(c){
   if(c.zAxis!==undefined&&typeof c.zAxis!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   if(c.zAxis===true){if(curves.length>1)bad('STAT_NORMAL_Z_AXIS_AMBIGUOUS');if(!ticks.some(t=>!t.hideZ))bad('STAT_NORMAL_Z_AXIS_EMPTY');}
   if(c.xLabel!==undefined&&(typeof c.xLabel!=='string'||!/^[A-Za-z]$/.test(c.xLabel)))bad('STAT_NORMAL_LABEL_INVALID');
+  // an axis named z (Z) is the axis of the standard normal variable: with a curve that is not N(0, 1) drawn in real units (a letter curve drawn in sigma units, with z ticks, may call its axis z)
+  if(!framed&&(c.xLabel==='z'||c.xLabel==='Z')&&!curves.every(isStandard))bad('STAT_NORMAL_XLABEL_Z_NOT_STANDARD');
   return {schemaVersion:MODEL_VERSION,kind:'NORMAL_CURVE',framed,span:qstr(span),window:{lo:qstr(lo),hi:qstr(hi)},xLabel:c.xLabel??'x',zAxis:c.zAxis===true,
     curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine,...(k.scaled?{sdScale:qstr(k.scaleQ)}:{})})),
     ticks:ticks.map((t,i)=>({index:i,pos:qstr(t.u),z:framed||c.zAxis===true?qstr(t.z):null,text:t.text,tex:t.tex,curve:t.curve,hideZ:t.hideZ})),
@@ -1000,7 +1007,7 @@ function solveTree(c){
   if(c.leafLayout!==undefined&&c.leafLayout!=='COMPACT')bad('STAT_TREE_COMPACT_INVALID');
   onlyKeys(c.root,['label','children'],'STAT_TREE_INVALID');
   const nodes=[];
-  const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>6||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
+  const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>14||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
   const walk=(raw,id,parent,depth,p)=>{
     if(depth>3)bad('STAT_TREE_TOO_DEEP');
     const node={id,parent,depth,label:parent===null?(raw.label===undefined?null:lab(raw.label)):lab(raw.label),p:p===null?null:p,children:[]};
@@ -1057,7 +1064,7 @@ const DEFAULT_FONT_PX=20,MEASURE_IDENTITY={visualAssetKey:'sha256:stat-chart-mea
 function labelSize(label,fontPx){
   try{
     measureTypeset??=typesetter();
-    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},MEASURE_IDENTITY).intrinsic;
+    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},MEASURE_IDENTITY).intrinsic;
   }catch(error){return {width:0,height:0};}   // a label that cannot be typeset is refused by composing with its own code
 }
 const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
@@ -1427,18 +1434,52 @@ function slotsSpec(m,ctx){
   return {size:{width,height},prims,labels};
 }
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
+// A node name of up to 6 characters is one line as it always was. A longer name (up to 14 characters) is one line when it is no wider than 6 em, else two lines broken at a space, each no wider than
+// 6 em; anything wider is refused (STAT_TREE_LABEL_TOO_WIDE). A tree with such a longer name also spaces its columns and rows by the measured label sizes; every other tree keeps the constants above.
+const TREE_LABEL_MAX_EM=6,TREE_SHORT_NAME=6,TREE_BRANCH_ROOM=72;
+const nodeWeight=m=>m.labelWeight==='MATH'?{weight:'MATH'}:{};
+function nodeFragment(typeset,identity,label,fontPx){
+  const base={id:label.id,owner:label.owner,factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})};
+  const one=typeset(base,identity);
+  if(label.text.length<=TREE_SHORT_NAME||one.intrinsic.width<=TREE_LABEL_MAX_EM*fontPx+1e-6)return one;
+  const wrapped=wrapTextFragment(typeset,{id:label.id,owner:label.owner,text:label.text},identity,fontPx,2,{panelId:'stat-chart',factRole:'DERIVED_INTERMEDIATE',typesetExtra:label.weight==='MATH'?{weight:'MATH'}:{}});
+  if(!wrapped||wrapped.intrinsic.width>TREE_LABEL_MAX_EM*fontPx+1e-6)throw new Stop('STAT_TREE_LABEL_TOO_WIDE',{labelId:label.id});
+  return wrapped;
+}
+/** The drawn size of every named node of a tree at the policy font ({width,height}; a node without a name is a dot). */
+function treeNodeSizes(m,fontPx){
+  const sizes=new Map();
+  for(const n of m.nodes){
+    if(n.label===null){sizes.set(n.id,{width:8,height:8});continue;}
+    if(/^[A-Za-z0-9]{1,3}$/.test(n.label)){const s=labelSize({kind:'MATH',tex:n.label},fontPx);sizes.set(n.id,{width:s.width,height:s.height});continue;}
+    measureTypeset??=typesetter();
+    try{const f=nodeFragment(measureTypeset,MEASURE_IDENTITY,{id:'measure',owner:'measure',text:n.label,...nodeWeight(m)},fontPx);sizes.set(n.id,{width:f.intrinsic.width,height:f.intrinsic.height});}
+    catch(error){const s=labelSize({kind:'TEXT',text:n.label,...nodeWeight(m)},fontPx);sizes.set(n.id,{width:s.width,height:s.height});}   // refused later by composing with its own code
+  }
+  return sizes;
+}
+const treeHasLongName=m=>m.nodes.some(n=>n.label!==null&&n.label.length>TREE_SHORT_NAME);
+/** Column pitch and the least row pitch of a tree: the constants, unless the tree has a name longer than 6 characters. */
+function treePitch(m,fontPx){
+  if(!treeHasLongName(m))return {colw:TREE_COLW,rowMin:0};
+  const sizes=treeNodeSizes(m,fontPx),wide=[],tall=[];
+  for(const n of m.nodes){const s=sizes.get(n.id);wide[n.depth]=Math.max(wide[n.depth]??0,s.width);tall.push(s.height);}
+  let colw=TREE_COLW;
+  for(let d=0;d+1<wide.length;d++)colw=Math.max(colw,Math.ceil((wide[d]+wide[d+1])/2+TREE_BRANCH_ROOM));
+  return {colw,rowMin:Math.ceil(Math.max(...tall)+14)};
+}
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
-const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*treeRowBase(m,fontPx));
+const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*Math.max(treeRowBase(m,fontPx),treePitch(m,fontPx).rowMin));
 const treeRowBase=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
-function treeCenters(m,rowH=TREE_ROW){
+function treeCenters(m,rowH=TREE_ROW,colw=TREE_COLW){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
   const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
   place('n0');
-  return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*TREE_COLW),y:r6(pos.get(n.id))}]));
+  return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*colw),y:r6(pos.get(n.id))}]));
 }
 function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
-  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
+  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),c=treeCenters(m,rowH,colw),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*colw+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
   const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
   for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
@@ -1446,11 +1487,14 @@ function treeSpec(m,ctx){
   const pathTex=n=>{const chain=[];for(let id=n.id;id;id=byIdNode.get(id).parent)chain.unshift(byIdNode.get(id));return DISPLAY+chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ')+'='+qfrac(P(n.path));};
   // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
   let need=0;
+  // a name wider than the standard frame's right end (a large policy font, a long name) grows the frame to hold it: a tree whose names fit keeps its frame
+  const nodeSizes=treeNodeSizes(m,fontPx);
+  for(const n of m.nodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeSizes.get(n.id).width/2+SAFE);
   if(m.showPathProbability){
-    const leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
+    const longTree=treeHasLongName(m),leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:longTree?nodeSizes.get(n.id).width:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
     const pathWidth=n=>labelSize({kind:'MATH',tex:pathTex(n)},fontPx).width;
-    if(m.pathColumn)need=Math.max(...leafNodes.map(n=>TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE;
-    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
+    if(m.pathColumn)need=Math.max(need,Math.max(...leafNodes.map(n=>TREE_X0+n.depth*colw+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE);
+    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
   }
   const width=Math.max(width0,Math.ceil(need));
   for(const n of m.nodes){
@@ -1523,7 +1567,7 @@ function dotSpec(m,ctx){
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
 // runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
 // with a leader line that ends in a dot inside the area.
-const DOT_ROOM=4.3,MIN_ROOM=1.5;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
+const DOT_ROOM=4.3,MIN_ROOM=1.5,FINE_ROOM=1.05;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
 const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a polygon, negative outside it
   let best=Infinity,inside=false;
   for(let i=0;i<ring.length;i++){
@@ -1534,21 +1578,38 @@ const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a 
   return inside?best:-best;
 };
 const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
-const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_XR_NARROW=482,NORM_TIP_NARROW=500,NORM_PEAK=140,NORM_PEAK_TALL=260,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+// A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
+// draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
+const STD_NORMAL_NAME=/^(?:[Zz](?:\(0,1\))?|N\(0,1\))$/;   // the ways a curve is named as the standard normal variable (spaces removed)
+const NORM_THIN_TAIL=1.7,NORM_TICK_APART=5;   // tick numbers nearer than this (px) to each other stand in two rows: nearer than that they read as one number (65 and 67.6 as 6567.6); further apart they stay in one row as they always were
+function normalPeakOf(m){
+  const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
+  for(const s of m.shades){
+    if(s.label===null||(s.from!==null&&s.to!==null))continue;
+    const c=byId.get(s.curve),u=N(s.from===null?s.to:s.from),z=(u-meanOf(c))/sdOf(c);
+    if(NORM_PEAK*sdMin/sdOf(c)*Math.exp(-z*z/2)<NORM_THIN_TAIL)return NORM_PEAK_TALL;
+  }
+  return NORM_PEAK;
+}
 function normalSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
-  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,PEAK=normalPeakOf(m),BASE=NORM_TOP+PEAK;
+  // The axis runs to NORM_XR (arrow tip NORM_TIP) as it always did. Only when the axis name (and the z of a z row) would not fit between the tip and the safe margin at this font does it stop
+  // 8 and 12 units sooner (NORM_XR_NARROW, NORM_TIP_NARROW): a figure whose name fits is drawn exactly as before.
+  const titleW=Math.max(labelSize({kind:'MATH',tex:m.xLabel},fontPx).width,m.zAxis?labelSize({kind:'MATH',tex:'z'},fontPx).width:0);
+  const narrow=NORM_TIP+8+titleW>W-SAFE,NORM_XR_=narrow?NORM_XR_NARROW:NORM_XR,NORM_TIP_=narrow?NORM_TIP_NARROW:NORM_TIP;
+  const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR_-NORM_XL)/(hi-lo);
   const px=u=>r6(NORM_XL+(u-lo)*scale);
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
-  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
+  const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>PEAK*sdMin/sdOf(c);
   const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
   const prims=[],labels=[];
-  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP});
+  arrows(prims,{xStartPx:NORM_XL-20,yAxisPx:null,base:BASE,tipX:NORM_TIP_});
   // the curves
   const pts=new Map();
   for(const c of m.curves){
-    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR-NORM_XL)/dx),list=[];
-    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
+    const dx=Math.min(NORM_STEP_MAX,Math.max(NORM_STEP_MIN,sdOf(c)*scale/10)),n=Math.ceil((NORM_XR_-NORM_XL)/dx),list=[];
+    for(let k=0;k<=n;k++){const x=r6(NORM_XL+(NORM_XR_-NORM_XL)*k/n);list.push([x,yOf(c,lo+(x-NORM_XL)/scale)]);}
     pts.set(c.id,list);
   }
   const topOf=(id,x)=>{ // the curve's height at pixel x by its own vertices
@@ -1560,7 +1621,7 @@ function normalSpec(m,ctx){
   const regions=[];
   for(const [j,s] of m.shades.entries()){
     const c=byId.get(s.curve),ua=s.from===null?null:N(s.from),ub=s.to===null?null:N(s.to);
-    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR:px(ub);
+    const xa=ua===null?NORM_XL:px(ua),xb=ub===null?NORM_XR_:px(ub);
     const ya=ua===null?null:yOf(c,ua),yb=ub===null?null:yOf(c,ub);
     const inner=pts.get(c.id).filter(([x])=>x>xa&&x<xb),top=[];
     if(ua===null)top.push(...pts.get(c.id).filter(([x])=>x<=xa));else top.push([xa,ya]);
@@ -1582,22 +1643,30 @@ function normalSpec(m,ctx){
   }
   for(const [i,c] of m.curves.entries())prims.push({t:'polyline',id:`curve-${c.id}`,role:'curve',cls:`ncurve${i}`,points:pts.get(c.id),data:{curve:c.id,mean:c.mean,sd:c.sd},layer:45});
   // ticks and their labels (and the z row)
-  const rowH=Math.ceil(fontPx*NORM_Z_ROW),zy=BASE+TICK+4+rowH;
+  // Ticks so close that their numbers would touch (marks one unit apart on a window of 16 units, two-digit numbers at the Archive font) take two rows: every second label, in the order along the axis,
+  // stands one row lower under its own tick. Only a figure whose labels are nearer than NORM_TICK_APART in one row does this, and the decision follows the font, like the size.
+  const rowH=Math.ceil(fontPx*NORM_Z_ROW);
+  const byPos=m.ticks.map(t=>{const size=labelSize({kind:'MATH',tex:t.tex},fontPx);return {t,x:px(N(t.pos)),w:size.width,h:size.height};}).sort((a,b)=>a.x-b.x);
+  // a number stands in the first row when it is NORM_TICK_APART or more clear of the last number of that row, otherwise one row lower (so a narrow number between two wide ones, 0 between -0.3 and 0.3, does not leave its neighbours touching)
+  const lowerRow=new Set();let right0=-Infinity;
+  for(const e of byPos){const left=e.x-e.w/2,right=e.x+e.w/2;if(left-right0>=NORM_TICK_APART){right0=right;}else{lowerRow.add(e.t.index);}}
+  const stagger=lowerRow.size>0;
+  const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,zy=BASE+TICK+4+(stagger?lowerStep:0)+rowH;
   for(const t of m.ticks){
     const x=px(N(t.pos));
     prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
-    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4,{value:t.text}));
+    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4+(lowerRow.has(t.index)?lowerStep:0),{value:t.text}));
     if(m.zAxis&&!t.hideZ)labels.push(math(`z-tick-${t.index}-label`,'z-tick',`x-tick-${t.index}`,DISPLAY+qtex(P(t.z)),t.z,'center','top',x,zy,{value:t.z}));
   }
-  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP+8,BASE,{value:m.xLabel}));
-  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP+8,zy,{value:'z'}));
+  labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP_+8,BASE,{value:m.xLabel}));
+  if(m.zAxis)labels.push(math('z-label','axis-title','z-row','z','z','start','top',NORM_TIP_+8,zy,{value:'z'}));
   // labels placed after typesetting
   for(const c of m.curves)if(c.label!==null){
     const hangul=/[가-힣]/.test(c.label);
     labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
   }
   for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'?{leader:true}:{})});
-  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+rowH+SAFE);
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
@@ -1725,9 +1794,18 @@ function resolveNormal(spec,placed){
     const roomy=scan.filter(([,r])=>r>=DOT_ROOM).sort((a,b)=>Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref)),thin=scan.filter(([,r])=>r>=MIN_ROOM).sort((a,b)=>b[1]-a[1]||Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref));
     const firstThin=spots.length;
     spots.push(...spread(roomy.length?roomy:thin));
+    // A tail so thin that the middle of its height holds no dot (G19 tails beyond 3 sd) is searched again with the dot nearer the axis, where a wedge is roomiest: the observer asks the dot for 1 px of room.
+    // Only a figure that had no place at all gets here, so a figure that was placed before is drawn exactly as it was.
+    const dotY=new Map();
+    if(!spots.length){
+      const fine=[];
+      for(let x=Math.ceil(region.xa)+1;x<region.xb-1;x++){let top=null;for(const lift of [0.8,1,1.2,1.5,1.8,2.2,2.6]){const y=BASE-lift,r=polygonRoom([x,y],ring);if(r>=FINE_ROOM&&(top===null||r>top.r))top={x,y,r};}if(top)fine.push(top);}
+      fine.sort((a,b)=>b.r-a.r||Math.abs(a.x-region.pref)-Math.abs(b.x-region.pref));
+      for(const p of fine)if(spots.every(o=>Math.abs(o-p.x)>=5)&&spots.length<8){spots.push(p.x);dotY.set(p.x,p.y);}
+    }
     let found=null,ax=0,ay=0;
     for(const spot of spots){
-      ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
+      ax=r6(spot);ay=dotY.has(spot)?r6(dotY.get(spot)):r6((topAt(region.top,ax)+BASE)/2);
       const accept=(box,sx,sy)=>{
         if(clearance(box,obs,LABEL_APART)<CLEAR)return false;
         if(done.some(o=>segHitsRect([sx,sy],[ax,ay],{x:o.x-2,y:o.y-2,width:o.width+4,height:o.height+4})))return false;
@@ -1786,10 +1864,11 @@ function resolveNormal(spec,placed){
   }
 }
 // --- composing ----------------------------------------------------------------------------------------------------------------------------
-const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation'];
+const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation','accessibilityDescription'];
 export function checkStatChartPlan(plan){
   onlyKeys(plan,PLAIN_KEYS,'STAT_CHART_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('STAT_CHART_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveStatChart(plan.chart);
 }
 const fmt=n=>String(r6(n));
@@ -1933,7 +2012,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       const typeset=typesetter();placed=[];
       for(const label of spec.labels){
         let fragment;
-        try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
+        try{fragment=label.role==='node'&&label.kind==='TEXT'?nodeFragment(typeset,identity,{id:label.id,owner:label.owner,text:label.text,weight:label.weight},font):typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
         catch(error){if(!isDomainCode(error))throw error;throw new Stop('STAT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
         const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
         placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
@@ -1958,13 +2037,13 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
     for(const {label,fragment,box} of placed){
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}"${isPaletteName(label.extra?.color)?` color="${PALETTE[label.extra.color].line}"`:''} transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}"${fragment.lines?` data-lines="${fragment.lines.map(l=>`${l.x},${l.y},${l.width},${l.height}`).join(';')}"`:''} data-box="${box.x},${box.y},${box.width},${box.height}"${isPaletteName(label.extra?.color)?` color="${PALETTE[label.extra.color].line}"`:''} transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-stat-chart="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-stat-chart="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind,readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-stat-chart-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{}),...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

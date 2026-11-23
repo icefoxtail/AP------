@@ -61,6 +61,13 @@
                 new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('ENCLOSED_LATIN_FONT_TIMEOUT')), 5000); })
             ]).finally(() => clearTimeout(timer)).then(() => {
                 const startup = window.MathJax.startup;
+                // 2026-11-23: MathJax 4 기본값인 의미 분석(enrichment)·화면 낭독 문장(speech)·점자·탐색기는 수식마다 SRE 작업자(worker)를
+                // 불러 수식 하나에 10ms 넘게 걸렸다(해설 8문항 조판 2.2초 -> 0.13초, 쪽 모양·글자 배치는 그대로). 시험지·해설 화면에서
+                // 쓰지 않는 기능이라 끈다. window.MathJax.options에 써도 확장이 덮어써서, 문서가 만들어진 뒤 이 자리에서 끈다.
+                // 되돌리려면 이 for 문을 지운다(수식에 tabindex·data-semantic-*·aria-label이 다시 붙는다).
+                for (const key of ['enableEnrichment', 'enableSpeech', 'enableBraille', 'enableExplorer', 'enableComplexity']) {
+                    if (startup.document?.options && key in startup.document.options) startup.document.options[key] = false;
+                }
                 const output = startup.document?.outputJax;
                 const unknownText = output?.unknownText;
                 if (typeof unknownText !== 'function') throw new Error('ENCLOSED_LATIN_MATHJAX_OUTPUT_UNAVAILABLE');
@@ -137,7 +144,7 @@
     <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20261122-sol-fit-1"></script>
+    <script src="layout-materializer.js?v=20261123-open-speed-1"></script>
     <script src="solution-render-executor.js?v=20261122-sol-fit-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
@@ -520,7 +527,7 @@
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
     <link rel="stylesheet" href="print-header-table.css?v=20261122-ph-1">
-    <script src="print-header-table.js?v=20261122-ph-1"></script>
+    <script src="print-header-table.js?v=20261123-ph-3"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>

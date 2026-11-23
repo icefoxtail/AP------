@@ -99,7 +99,7 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
     const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress,requireOriginal:true});// measureArchiveDisplayEnvelope takes any .js under archive/exams/ (original, similar, textbooks, other folders; no path escape or link out of it)
     if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'INTRINSIC_SVG'});
     createRun(input.runRoot,runId);
-    // One real-Archive measurement of the target at the given solutionImageScale (undefined = the default 60% rule); the evidence it leaves is what the policy is derived from.
+    // One real-Archive measurement of the target at the given solutionImageScale (undefined = the page's default rule: 80% of the column since 2026-11-21, 60% before); the evidence it leaves is what the policy is derived from.
     const measureAt=async scale=>{
       const preflightRun=path.join(input.productionDir,scale===undefined?'display-envelope-preflight':'display-envelope-preflight-scale'+scale);fs.mkdirSync(preflightRun,{recursive:true});
       state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
@@ -112,12 +112,24 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
       state.evidence={observationSha256:objectSha(measured.observation),matrixSha256:bytesSha(fs.readFileSync(path.join(preflightRun,'archive-render-matrix.json'))),archiveRow:fileRef(root,rel(path.join(measured.captureFolder,rowName))),screenshot:fileRef(root,rel(path.join(measured.captureFolder,shotName))),engineSha256:'sha256:'+measured.rowEvidence.engineSha256};
       return measured;
     };
-    // The default 60% display is always the binding side (it is smaller than the phone's), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
+    // The default A4 display (80% of the column = 253 css px) is always the binding side (the phone shows a canvas at that same 253 px at most, with a lower font floor), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
     const derive=(measured,scale)=>requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation:measured.observation,fontFloorCssPx:11,...(scale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(intrinsicSvg.width)}:{})});
-    let measured=await measureAt(undefined),policy=null,refusal=null;
-    try{policy=derive(measured,undefined);}
-    catch(error){if(!isDomainCode(error))throw error;refusal=error;}
-    // 2026-11-19: A4 shows a solution figure at 60% of the column (figure-size.css), so a wide canvas (> about 540 px) would need a base font above the cap.
+    // A question that already carries a valid solutionImageScale (a figure published under the 60% rule with 85 or 90) is displayed at that scale by the page, and a republished figure keeps the field
+    // (the patch only ever adds it), so the capture would show it at that scale while a default measurement assumed the 80% default: ARCHIVE_DISPLAY_SCALE_MISMATCH. Such a question is measured at
+    // its own scale first; when that scale cannot carry the figure the default path below runs as before (the capture's candidate then writes the scale it chose).
+    const carried=carriedSolutionImageScale(input.bank.find(question=>question.id===ordinal));
+    let measured=null,policy=null,refusal=null;
+    if(carried!==undefined){
+      measured=await measureAt(carried);
+      try{policy=derive(measured,carried);state.solutionImageScale=carried;}
+      catch(error){if(!isDomainCode(error))throw error;policy=null;}
+    }
+    if(!policy){
+      measured=await measureAt(undefined);
+      try{policy=derive(measured,undefined);}
+      catch(error){if(!isDomainCode(error))throw error;refusal=error;}
+    }
+    // 2026-11-19 (60% then, 80% since 2026-11-21: figure-size.css --ap-fig-sol): A4 shows a solution figure at a fixed share of the column, so a wide canvas (> about 720 px at 80%) would need a base font above the cap. The default is always the page's own, measured, never assumed.
     // Instead of refusing, the question carries solutionImageScale (% of the column, the same per-figure override the page reads): the figure is measured again
     // at that scale in the real Archive, and the scale is handed to the capture and to publication. Phone layouts ignore it (they size by natural width), so their labels only get larger.
     if(!policy&&refusal.message==='UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE'){
@@ -140,6 +152,8 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
 // (phone layouts ignore the scale and show the figure at 90% of the column, viewport - 94 px: measured at 360/375/390 px), and the base label font the scale aims at
 // (the policy allows 20-32 SVG units; the middle of the range keeps labels in the proportion the standard 384-wide canvases have).
 export const A4_FIGURE_COLUMN_CSS_PX=316.2;
+/** The valid per-figure A4 scale (30-100, % of the column) a bank question already carries, else undefined. */
+export const carriedSolutionImageScale=question=>Number.isFinite(question?.[SCALE_FIELD])&&question[SCALE_FIELD]>=30&&question[SCALE_FIELD]<=100?question[SCALE_FIELD]:undefined;
 export const PHONE_FIGURE_WIDTH_CSS_PX=253;
 export const PHONE_FONT_FLOOR_CSS_PX=10;// below the A4 floor (11): a phone shows a 600+ px canvas at about 250 px whatever the base font, and a base font above ~25 leaves labels no room on the canvas
 export const SOLUTION_SCALE_TARGET_BASE_FONT_PX=24;
@@ -151,6 +165,22 @@ export function phoneMinimumBaseFontPx(canvasWidth,{minimumBaseFontPx=20,maximum
 }
 /** Scales (% of the column, multiples of 5, at most 100) to try when the default display cannot reach the font floor: the smallest that aims at the target base font, then one or two bigger, never more than the column can show. */
 export function solutionImageScaleCandidates({intrinsicSvg,observation,fontFloorCssPx=11,comfortCssPx=.25,targetBaseFontPx=SOLUTION_SCALE_TARGET_BASE_FONT_PX}){
+  const first=widthScaleCandidates({intrinsicSvg,observation,fontFloorCssPx,comfortCssPx,targetBaseFontPx});
+  // (P-A) What the width-only list above cannot reach is appended AFTER it, so a figure that a listed scale already carried keeps choosing the same scale (same bytes): (1) a figure the
+  // HEIGHT limits (a tall stack: the page's override box is a square of scale% of the column, so 410x788 is limited by its 788) and (2) the largest whole percent the column allows, which
+  // is not always a multiple of 5 (a 828-wide grid needs 92% of a 298 px column; 90 is the last multiple of 5). Each extra scale must still be able to show the labels at the font floor:
+  // the page shows the figure at most min(column, scale% of the column) wide and scale% of the column high, so the base font that floor needs may not pass the policy cap (32).
+  // The Archive measurement that follows each candidate stays the judge; this only decides which scales are worth measuring.
+  const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
+  const {width,height}=intrinsicSvg;
+  const needed=value=>{const box=A4_FIGURE_COLUMN_CSS_PX*value/100;return (fontFloorCssPx+comfortCssPx)/Math.min(Math.min(column,box)/width,box/height);};
+  const largestWhole=Math.min(100,Math.floor(column/A4_FIGURE_COLUMN_CSS_PX*100+1e-9));
+  const extra=[];
+  for(let value=Math.max(30,Math.max(0,...first)+SOLUTION_SCALE_STEP);value<=largestWhole&&extra.length<2;value+=SOLUTION_SCALE_STEP)if(needed(value)<=32&&!first.includes(value))extra.push(value);
+  if(largestWhole>=30&&needed(largestWhole)<=32&&!first.includes(largestWhole)&&!extra.includes(largestWhole))extra.push(largestWhole);
+  return [...first,...extra];
+}
+function widthScaleCandidates({intrinsicSvg,observation,fontFloorCssPx,comfortCssPx,targetBaseFontPx}){
   const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
   const baseWanted=Math.min(32,Math.max(targetBaseFontPx,phoneMinimumBaseFontPx(intrinsicSvg.width)));
   const wantedWidth=(fontFloorCssPx+comfortCssPx)/baseWanted*intrinsicSvg.width;
@@ -220,7 +250,7 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
   try{derived=requestedProfileTypographyPolicy({requestedSizeClass:measuredPolicy.policy.requestedSizeClass,intrinsicSvg:envelope.intrinsicSvg,observation,fontFloorCssPx:measuredPolicy.policy.fontFloorCssPx,...(envelope.solutionImageScale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(envelope.intrinsicSvg.width)}:{})});}
   catch(error){bad('POLICY_NOT_DERIVED_FROM_EVIDENCE',{code:errorText(error)});}
   if(!same(derived,measuredPolicy.policy))bad('POLICY_NOT_DERIVED_FROM_EVIDENCE');
-  // The display scale the policy was measured at must be the one the row recorded (none = the default 60% rule): a different scale would display differently from what the policy assumed.
+  // The display scale the policy was measured at must be the one the row recorded (none = the default rule of the page): a different scale would display differently from what the policy assumed.
   if(measuredPolicy.solutionImageScale!==envelope.solutionImageScale)bad('SOLUTION_IMAGE_SCALE_NOT_IN_EVIDENCE',{claimed:measuredPolicy.solutionImageScale??null,measured:envelope.solutionImageScale??null});
   if(!same(envelope.intrinsicSvg,intrinsic))bad('INTRINSIC_SVG_DIFFERS_FROM_MEASURED',{measured:envelope.intrinsicSvg,svg:intrinsic});
   // L1 relocates an owner label only under this measured policy and this source (its repairContext): re-check every such binding here.

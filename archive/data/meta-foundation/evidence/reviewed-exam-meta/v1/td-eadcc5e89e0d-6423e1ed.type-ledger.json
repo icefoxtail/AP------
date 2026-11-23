@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-eadcc5e89e0d-6423e1ed",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_정수와유리수의덧셈과뺄셈.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cb5d2245dbd3334e7536a50d45d7be3a616ebaa1bf02324f9d5a33cd5085b938",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+      "templateKey": null,
+      "step": "완성된 대각선의 합을 기준 합으로 삼아 가로·세로 줄의 합이 같다는 식으로 빈칸을 역산한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 3×3 표에서 줄의 합이 같다는 조건으로 빈 칸을 구하는 마방진 유형이다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e96fab5689c378c8af1fa533c5623d708bd86a1ce97933fc0452e33b16c8ab1",
+      "sourceOrdinal": 34,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_RATIONAL_CLASS",
+      "templateKey": null,
+      "step": "상수 첫항-1/2에서1/4 증가하려면 첫부호+,뒤 두 부호는 서로 반대이다.",
+      "note": "제안: 유리수 부호·통분 덧뺄셈. 정의: 음수 뺄셈의 부호와 통분을 이용하여 유리수 합·차를 직접 계산하거나 문장의 증감을 수식으로 옮긴다. 원문 의심: 제시 정답 또는 해설이 실제 계산·그림과 불일치; 직접 계산값 기록. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

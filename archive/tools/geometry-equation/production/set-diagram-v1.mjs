@@ -2,10 +2,12 @@ import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
+import {wrapTextFragment} from './wrap-text.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
 
 // A standalone set figure (set-diagram-figure-v1): a Venn diagram of 1-3 sets with the elements the author places and a shaded
 // region given as a set expression, and a finite mapping diagram of 2-4 columns with the declared arrows. The author gives only
@@ -21,7 +23,7 @@ const ACCESSIBLE_NAMES={
   MAPPING:['대응 그림','두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.'],
   MEMBERSHIP_TABLE:['집합의 원소 표','각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.']
 };
-const accessibleNames=kind=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${desc}</desc>`;};
+const accessibleNames=(kind,custom)=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${custom===undefined?desc:esc(custom)}</desc>`;};   // custom: the plan's own accessibilityDescription
 export const MODEL_VERSION='SET_DIAGRAM_MODEL_v1',SPEC_VERSION='SET_DIAGRAM_SPEC_v1',SVG_VERSION='set-diagram-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('set-diagram-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -399,6 +401,8 @@ const VENN_LAYOUTS={
 // COMPACT_WIDTH so two of them and the gap fit the 848-unit width the Archive solution column allows (the panel width cap is 420).
 const COUNT_ROOM={top:52,side:34},COMPACT_WIDTH=410,GROUP_GAP=5;
 const hasCounts=model=>model.sets.some(set=>set.count!==undefined)||model.universe!==undefined;
+export const VENN_FILL_VARIANTS=[['fit',1],['fit',0.6],['fit',0.8],[1.1,0.6],[1.1,0.8],[1,1],[0.9,0.6],[0.8,0.6],[0.8,0.8]];
+export const setDiagramVariantCount=(model,opts={})=>model.kind==='VENN'&&!opts.compact&&!hasCounts(model)&&!model.universeLabelOutside?1+VENN_FILL_VARIANTS.length:1;
 function vennLayout(model,opts={}){
   const base=VENN_LAYOUTS[model.sets.length];
   let rect={...base.rect},circles=base.circles.map(c=>({...c})),size={...base.size};
@@ -431,22 +435,47 @@ function vennLayout(model,opts={}){
     const dx=(COMPACT_WIDTH-size.width)/2;
     rect={...rect,x:rect.x+dx};circles=circles.map(c=>({...c,cx:c.cx+dx}));size={...size,width:COMPACT_WIDTH};
   }
+  if(opts.variant>0&&VENN_FILL_VARIANTS[opts.variant-1]!==undefined&&!opts.compact&&!hasCounts(model)&&!model.universeLabelOutside){
+    // Fill variants: only tried after the figure as first drawn left an element no room. The universal rectangle takes the whole frame (FILL_MARGIN from each edge) and the circles grow with it
+    // (the factor named by the variant, 1 = their own size, 'fit' = as much as the frame allows), so the same label has more free space around and between the circles.
+    const FILL_MARGIN=14,nx=FILL_MARGIN,ny=FILL_MARGIN,nw=size.width-2*FILL_MARGIN,nh=size.height-2*FILL_MARGIN;
+    const [factor,spread]=VENN_FILL_VARIANTS[opts.variant-1],fit=Math.min(nw/rect.w,nh/rect.h),k=factor==='fit'?fit:Math.min(fit,factor);
+    const ocx=rect.x+rect.w/2,ocy=rect.y+rect.h/2,ncx=nx+nw/2,ncy=ny+nh/2;
+    circles=circles.map(c=>({cx:r6(ncx+(c.cx-ocx)*k*spread),cy:r6(ncy+(c.cy-ocy)*k*spread),r:r6(c.r*k)}));
+    rect={x:nx,y:ny,w:nw,h:nh};
+  }
   return {size,rect,circles};
 }
 const MAPPING_ROW=34,MAPPING_PAD=22,MAPPING_TOP=50,MAPPING_RX=72;
 // A two-column mapping panel of a composite (compact) is COMPACT_WIDTH wide like a Venn panel, so two of them and the gap fit the 848-unit width the Archive solution column allows;
 // a three-column mapping keeps its own width (it only stands in a one-column composite), and a standalone mapping is never compact.
+// The row pitch of a column with two or more elements follows the policy font: element labels taller than the 34 px of the base pitch would touch each other (SET_ELEMENT_NO_ROOM). With no font given,
+// or when the labels fit the base pitch, the pitch is the base one, so every figure that fits today is laid out exactly as before.
+let rowMeasure=null;
+const ROW_MEASURE_IDENTITY={visualAssetKey:'sha256:set-diagram-row-measure'};
+function mappingRowPitch(model,fontPx){
+  if(!(fontPx>0)||Math.max(...model.columns.map(c=>c.elements.length))<2)return MAPPING_ROW;
+  rowMeasure??=typesetter();
+  let tallest=0;
+  for(const column of model.columns)for(const element of column.elements){
+    try{
+      const fragment=rowMeasure({id:'measure',owner:'measure',factRole:'GIVEN',fontPx,panelId:'set-diagram',...(element.math?{kind:'MATH',tex:setDiagramTypesetTex(element.tex??element.text)}:{kind:'TEXT',text:element.text})},ROW_MEASURE_IDENTITY);
+      tallest=Math.max(tallest,fragment.intrinsic.height);
+    }catch(error){/* a label that cannot be typeset is refused by composing with its own code */}
+  }
+  return Math.max(MAPPING_ROW,Math.ceil(tallest));
+}
 function mappingLayout(model,opts={}){
-  const rows=model.columns.map(c=>c.elements.length),rowMax=Math.max(...rows);
+  const rows=model.columns.map(c=>c.elements.length),rowMax=Math.max(...rows),pitch=mappingRowPitch(model,opts.fontPx);
   const narrow=opts.compact&&model.columns.length===2;
   const four=model.columns.length===4;// X to Y to Z to W (three functions f, g, h): narrower ovals so the figure stays inside the 848-unit width
   const width=narrow?COMPACT_WIDTH:four?816:model.columns.length===2?460:660;
   const centers=narrow?[105,width-105]:four?[84,300,516,732]:model.columns.length===2?[120,width-120]:[110,width/2,width-110];
-  const ovalH=rowMax*MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
-  return {size:{width,height},top,ovalH,rowMax,
+  const ovalH=(rowMax-1)*pitch+MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
+  return {size:{width,height},top,ovalH,rowMax,rowPitch:pitch,
     // G17: every oval has the height of the longest column; a shorter column's elements keep the row spacing and sit centred vertically in their oval
     columns:model.columns.map((column,index)=>({cx:centers[index],cy:top+ovalH/2,ry:ovalH/2,rx:MAPPING_RX,
-      nameY:MAPPING_TOP-18,elementY:top+ovalH/2-(rows[index]-1)*MAPPING_ROW/2}))};
+      nameY:MAPPING_TOP-18,elementY:top+ovalH/2-(rows[index]-1)*pitch/2}))};
 }
 const TABLE_MARGIN=18,TABLE_HEADER=42,TABLE_ROW=40,TABLE_ELEMENT_COL=96,TABLE_SET_COL=56;
 function tableLayout(model){
@@ -753,7 +782,7 @@ function mappingSpec(model,layout){
     const g=columns[index];
     column.elements.forEach((element,k)=>{
       const id=`element-${index}-${element.index}`;
-      labels.push({...elementLabel(id,'element',`oval-${column.id}`,element,'center','middle',g.cx,g.elementY+k*MAPPING_ROW,
+      labels.push({...elementLabel(id,'element',`oval-${column.id}`,element,'center','middle',g.cx,g.elementY+k*layout.rowPitch,
         {column:index,element:element.index}),columnIndex:index,elementIndex:element.index});
     });
     const name=labelMath(column.name)
@@ -917,7 +946,68 @@ function resolveVenn(spec,placed){
     if(placedFirst&&elementItems.every(item=>observerMargin(item.box,item.label.cellMask,circles)>=ELEMENT_LINE_MARGIN+0.05))return;
     occupied.length=mark;
     elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
-    if(!placeElementRows())bad('SET_ELEMENT_NO_ROOM');
+    if(placeElementRows())return;
+    occupied.length=mark;
+    elementItems.forEach((item,k)=>{item.box={...original[k].box};item.label.anchor={...original[k].anchor};});
+    if(!spec.elementLeaders||!placeLeaderElements())bad('SET_ELEMENT_NO_ROOM');
+  };
+  // Last resort (only when composing asked for it, after every in-region layout failed): an element whose label has no room in its region stands in the free space outside every circle, and a
+  // leader line ends in a dot inside the region it belongs to (the way a normal-curve area value is led out). The labels that do fit stay inside their regions.
+  const placeLeaderElements=()=>{
+    const inCellMargin=ELEMENT_LINE_MARGIN+0.05,DOT_CLEAR=4.3,LABEL_CLEAR=3.5,pad=b=>({x:b.x-4,y:b.y-4,width:b.width+8,height:b.height+8});
+    const leaders=[];
+    const order=[...elementItems].sort((a,b)=>b.box.width*b.box.height-a.box.width*a.box.height);
+    for(const item of order){
+      const {width,height}=item.box,cell=item.label.cellMask;
+      // 1. a place inside its own region, as before
+      let best=null;
+      for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
+        const box={x,y,width,height};
+        if(!boxInCell(box,cell,circles,U,4)||box.y<labelBand||observerMargin(box,cell,circles)<inCellMargin||occupied.some(other=>overlaps(pad(box),other))||leaders.some(l=>segmentHitsBox(l.start,l.end,{x:box.x-1,y:box.y-1,width:box.width+2,height:box.height+2})))continue;
+        const score=Math.min(cellClearance(box,cell,circles,U),30);
+        if(!best||score>best.score+1e-9)best={x,y,score};
+      }
+      if(best){item.box={x:best.x,y:best.y,width,height};item.label.anchor={x:r6(best.x),y:r6(best.y),ax:'start',ay:'top'};occupied.push(pad(item.box));continue;}
+      if(cell===0)return false;   // an outside element has no region to lead into: it must fit where it is
+      // 2. the dot: a place well inside the region (clear of every line and of every label placed so far)
+      const dots=[];
+      for(let y=U.y+6;y<=U.y+U.h-6;y+=3)for(let x=U.x+6;x<=U.x+U.w-6;x+=3){
+        let ok=true,clear=Infinity;
+        for(let i=0;i<circles.length&&ok;i++){const c=circles[i],inside=norm2(x,y,c)<1;if(inside!==(((cell>>i)&1)===1))ok=false;else clear=Math.min(clear,circleMargin(x,y,c));}
+        if(!ok||clear<DOT_CLEAR||occupied.some(other=>x>other.x-1&&x<other.x+other.width+1&&y>other.y-1&&y<other.y+other.height+1))continue;
+        dots.push({x,y,clear});
+      }
+      if(!dots.length)return false;
+      // 3. the label: wholly outside every circle, then the shortest leader to a dot that crosses no placed label and no other leader
+      let pick=null;
+      for(let y=U.y+4;y+height<=U.y+U.h-4;y+=4)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=4){
+        const box={x,y,width,height};
+        if(box.y<labelBand||observerMargin(box,0,circles)<LABEL_CLEAR||occupied.some(other=>overlaps(pad(box),other))||leaders.some(l=>segmentHitsBox(l.start,l.end,{x:box.x-1,y:box.y-1,width:box.width+2,height:box.height+2})))continue;
+        for(const dot of dots){
+          // the nearest point of the text itself: a wrapped label's lines are shorter than its box, so its corner can be empty
+          let nx=0,ny=0,dx=0,dy=0,len=Infinity;
+          for(const part of item.fragment.lines?item.fragment.lines.map(l=>({x:box.x+l.x,y:box.y+l.y,width:l.width,height:l.height})):[box]){
+            const px=Math.max(part.x,Math.min(dot.x,part.x+part.width)),py=Math.max(part.y,Math.min(dot.y,part.y+part.height)),d=Math.hypot(dot.x-px,dot.y-py);
+            if(d<len){len=d;nx=px;ny=py;dx=dot.x-px;dy=dot.y-py;}
+          }
+          if(len<10||len>150)continue;
+          const score=len-2.5*Math.min(dot.clear,16);
+          if(pick&&score>=pick.score)continue;
+          const start=[r6(nx+dx/len*2),r6(ny+dy/len*2)],end=[dot.x,dot.y];
+          if(occupied.some(other=>segmentHitsBox(start,end,{x:other.x+3,y:other.y+3,width:other.width-6,height:other.height-6})))continue;
+          if(leaders.some(l=>segmentsCross(start,end,l.start,l.end)))continue;
+          pick={box,start,end,score};
+        }
+      }
+      if(!pick)return false;
+      item.box={x:r6(pick.box.x),y:r6(pick.box.y),width,height};
+      item.label.anchor={x:item.box.x,y:item.box.y,ax:'start',ay:'top'};
+      occupied.push(pad(item.box));leaders.push({start:pick.start,end:pick.end});
+      const index=item.label.extra.element;
+      spec.prims.push({t:'line',id:`element-${index}-leader`,role:'element-leader',cls:'leader',x1:pick.start[0],y1:pick.start[1],x2:pick.end[0],y2:pick.end[1],data:{element:index},layer:42},
+        {t:'circle',id:`element-${index}-dot`,role:'element-dot',cls:'mark',cx:pick.end[0],cy:pick.end[1],r:2.4,data:{element:index},layer:43});
+    }
+    return true;
   };
   const setItems=placed.filter(item=>item.label.placement==='set');
   const placeSetLabels=()=>{for(const item of setItems){
@@ -1028,7 +1118,10 @@ function resolveMapping(spec,placed){
   }
   for(const item of placed)if(item.label.role==='column-name'||item.label.role==='arrow-group-name'){
     const g=spec.layout.columns[item.label.extra.column];
-    if(item.box.y+item.box.height>spec.layout.top+2)bad('MAPPING_COLUMN_NAME_OVERLAPS_OVAL');
+    // A name taller than the 40 px the frame leaves above the ovals (a large policy font) slides up until it clears them; it is refused only when that would leave the safe margin.
+    const over=item.box.y+item.box.height-(spec.layout.top+2);
+    if(over>0)item.box={...item.box,y:r6(item.box.y-over)};
+    if(item.box.y+item.box.height>spec.layout.top+2||item.box.y<6)bad('MAPPING_COLUMN_NAME_OVERLAPS_OVAL');
   }
   for(const prim of spec.prims.filter(p=>p.t==='rect'&&p.role==='element-highlight')){
     const item=bySpot.get(`${prim.data.column}:${prim.data.element}`);
@@ -1060,6 +1153,10 @@ function resolveMapping(spec,placed){
     void allLabelBoxes;
   }
 }
+function segmentsCross(a,b,c,d){
+  const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+  return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0;
+}
 function segmentHitsBox(a,b,box){
   const dx=b[0]-a[0],dy=b[1]-a[1];
   if(Math.abs(dx)<1e-9){
@@ -1077,10 +1174,11 @@ function segmentHitsBox(a,b,box){
 }
 
 // --- composing ------------------------------------------------------------------------------------------------------------------------------
-const PLAIN_KEYS=['capability','diagram','caption','sourceConditions','newVisualInformation'];
+const PLAIN_KEYS=['capability','diagram','caption','sourceConditions','newVisualInformation','accessibilityDescription'];
 export function checkSetDiagramPlan(plan){
   onlyKeys(plan,PLAIN_KEYS,'SET_DIAGRAM_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('SET_DIAGRAM_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveDiagram(plan.diagram);
 }
 function printPrim(p){
@@ -1098,29 +1196,28 @@ function printPrim(p){
   }
   return `<g data-layer="${p.layer}">${tag}</g>`;
 }
-export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
-  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
-  const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
-  let ownBrowser=null;
-  try{
-    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
-    lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
-    let spec;
-    try{spec=setDiagramSpec(plan,model,{compact});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
+// Element text with spaces, set on `lines` lines (the break chosen so that the longest line is shortest), as one fragment: the lines centred on one another, the label's box the whole block.
+// null when the text has too few words to break.
+const wrapElementFragment=(typeset,label,identity,fontPx,lines)=>wrapTextFragment(typeset,label,identity,fontPx,lines,{panelId:'set-diagram',factRole:'GIVEN'});
+// Everything composing does before it writes the SVG: the spec, every label typeset, the labels placed, the bounds and overlap checks (also what the unit tests run, without a browser).
+export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false}){
+    let spec,placed;
+    try{spec=setDiagramSpec(plan,model,{compact,variant,...(compact?{}:{fontPx:font})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
     if(model.kind==='VENN'&&model.shade){
       const anyShade=spec.prims.some(p=>p.role==='shade');
       if(!anyShade)throw new Stop('SET_SPEC_ERROR',{code:'SET_SHADE_EMPTY'});
     }
-    lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
-    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
+    const specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
+    if(elementLeaders)spec.elementLeaders=true;   // set after the hash: a panel's spec is hashed (and re-derived by the composite's observation) without it
+    placed=[];
     for(const label of spec.labels){
       let fragment;
       try{fragment=typeset({id:label.id,owner:label.owner,factRole:label.role==='element'?'GIVEN':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'set-diagram',...(label.kind==='MATH'?{kind:'MATH',tex:setDiagramTypesetTex(label.tex)}:{kind:'TEXT',text:label.text})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:error.message});}
       // a math label MathJax could not outline (a symbol outside its math fonts) leaves a <text> glyph: say which label it is instead of letting the rendered check report a nameless overlap
       if(label.kind==='MATH'&&/<text[\s>]/.test(fragment.svg))throw new Stop('SET_TYPESET_ERROR',{labelId:label.id,code:'MATH_GLYPH_NOT_OUTLINED',tex:label.tex});
+      if(wrap&&label.role==='element'&&label.kind==='TEXT'){const wrapped=wrapElementFragment(typeset,label,identity,font,wrap);if(wrapped)fragment=wrapped;}
       const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
       placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
     }
@@ -1139,18 +1236,49 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
       if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6)throw new Stop(/^(set-count|universal-count)$/.test(item.label.role)||item.label.counted?'SET_COUNT_LABEL_NO_ROOM':item.label.placement==='set'?'SET_LABEL_NO_ROOM':'SET_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
     }
     for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop(placed[i].label.role==='element'||other.label.role==='element'?'SET_ELEMENT_NO_ROOM':'SET_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
+    return {spec,placed,specSha256};
+}
+/** The ways a Venn figure is laid out, in the order they are tried: as first drawn; then the labels wrapped onto 2 to 4 lines, each with the circles and rectangle redrawn larger or farther apart
+ * (VENN_FILL_VARIANTS); last, the same again with an element that has no room in its region led out (a label in the free space and a leader to a dot in the region). The first that fits is drawn. */
+export function setDiagramAttempts(model,compact=false){
+  if(model.kind!=='VENN')return [{wrap:0,variant:0,elementLeaders:false}];
+  const variants=setDiagramVariantCount(model,{compact}),out=[];
+  for(const elementLeaders of [false,true])for(let variant=0;variant<variants;variant++)for(const wrap of [0,2,3,4])out.push({wrap,variant,elementLeaders});
+  return out;
+}
+export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
+  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
+  const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
+  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
+  let ownBrowser=null;
+  try{
+    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
+    lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
+    let spec,placed;const typeset=typesetter(),font=typographyPolicy.baseFontPx;
+    const attempt=({wrap,variant,elementLeaders})=>{
+      const out=layoutSetDiagram({plan,model,identity,typeset,font,compact,wrap,variant,elementLeaders});
+      ({spec,placed}=out);lineage.specSha256=out.specSha256;
+    };
+    // A Venn figure whose element labels have no room is laid out again in the next way of setDiagramAttempts; a figure that already fits is not touched.
+    const retryable=error=>(error instanceof Stop?error.status:error?.message)==='SET_ELEMENT_NO_ROOM';
+    const attempts=setDiagramAttempts(model,compact);
+    for(const [k,way] of attempts.entries()){
+      try{attempt(way);break;}
+      catch(error){if(k===attempts.length-1||!retryable(error))throw error;}
+    }
+    const {width,height}=spec.size;
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
     for(const {label,fragment,box} of placed){
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}"${fragment.lines?` data-lines="${fragment.lines.map(l=>`${l.x},${l.y},${l.width},${l.height}`).join(';')}"`:''} data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind,readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-set-diagram-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({diagram:plan.diagram,svg},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({diagram:plan.diagram,svg,...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

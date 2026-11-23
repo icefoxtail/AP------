@@ -69,14 +69,20 @@ assert(
   'student metric hover details should use the custom hover panel instead of the browser title tooltip'
 );
 
-const shortcutMatch = dashboardAdmin.match(/ap-admin-shortcuts[\s\S]*?ap-surface-toolbar--four([\s\S]*?)`;/);
-assert(shortcutMatch, 'admin shortcut row should exist and use the four-column toolbar');
+const shortcutMatch = dashboardAdmin.match(/ap-admin-shortcuts[\s\S]*?ap-surface-toolbar--five([\s\S]*?)`;/);
+assert(shortcutMatch, 'admin shortcut row should exist and use the five-column toolbar');
 const shortcutBody = shortcutMatch[1];
 assert(
   shortcutBody.includes('아카이브') &&
     shortcutBody.includes('openDashboardArchiveWindow(event)') &&
     shortcutBody.includes('../archive/index'),
   'archive should be a top action button in the owner shortcut row'
+);
+assert(
+  shortcutBody.includes('진단평가') &&
+    shortcutBody.includes('openDashboardDiagnosticWindow(event)') &&
+    /function\s+openDashboardDiagnosticWindow[\s\S]*?\.\.\/archive\/workspace\.html\?view=diagnostic/.test(dashboardCombined),
+  '진단평가 should be a top action button in the owner shortcut row and open the quick-eval 진단평가 view'
 );
 assert(
   !overviewBody.includes('시험지 보관함') && !overviewBody.includes('renderAdminAssessmentArchiveMetric'),

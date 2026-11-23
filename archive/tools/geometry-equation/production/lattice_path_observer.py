@@ -11,6 +11,7 @@ import hashlib
 import math
 import re
 import xml.etree.ElementTree as ET
+from accessible_name_observer import audit_accessible_name
 
 from container_fill_observer import seg_hits_rect, circle_hits_rect, grow, box_of, num, points_of
 
@@ -158,7 +159,7 @@ def recover_lattice(root, plan, errors):
     return u, cx[0], cy[-1]    # unit, x of column 0, y of row 0 (rows grow upward = y decreases)
 
 
-def audit(lat, svg, surface=None):
+def audit(lat, svg, surface=None, accessibility_description=None):
     plan = Plan(lat)
     # a problem figure never shows the final count (it is the answer), whatever the plan says (the engine forces the same)
     if surface == 'PROBLEM_VISUAL': plan.hide_target = True
@@ -166,6 +167,7 @@ def audit(lat, svg, surface=None):
     if plan.start is not None and plan.total == 0: fail('LP_NO_VALID_PATH')
     errors = []
     root = ET.fromstring(svg)
+    errors.extend(audit_accessible_name(root, accessibility_description, forbid_when_absent=True))
     if root.get('data-lattice-path') != CAPABILITY: errors.append('LP_SVG_NOT_A_LATTICE_PATH')
     if root.get('data-cols') != str(plan.cols) or root.get('data-rows') != str(plan.rows): errors.append('LP_GRID_SIZE')
     geo = recover_lattice(root, plan, errors)
@@ -268,6 +270,7 @@ def audit(lat, svg, surface=None):
                 if hit:
                     errors.append('LP_LABEL_ON_LINE:%s:%s' % (g.get('id'), pid)); break
     for group in root:
+        if group.tag in (NS + 'title', NS + 'desc') and accessibility_description is not None: continue   # the name the plan asked for (checked above)
         if not (group.tag == NS + 'rect' or group.tag == NS + 'g' and group.get('data-layer') is not None): errors.append('LP_ROOT_CHILD_UNEXPECTED:' + str(group.get('id')))
         if group.tag != NS + 'g' or group.get('data-layer') is None: continue
         for child in group:

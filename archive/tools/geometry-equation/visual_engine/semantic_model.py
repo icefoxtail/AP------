@@ -13,15 +13,19 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRC
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL','QUADRANT'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'curveWeight','curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset','color','fillColor','windowClosed'}
+FIELDS={'curveWeight','curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset','color','fillColor','windowClosed','asymptote'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
 FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refined to about a pixel (equalUnits on a rational or a square root)
-FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
+FIELDS|={'nearCurve','nearLine','nearEnd','nearAtFirst','nearPoint'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
 FIELDS|={'markerState'}   # a graph overlay point drawn as a hollow circle (markerState:'OPEN'); with `color` (POINT) a coloured dot
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
+FIELDS|={'axisValue','axisAt'}   # (AXV) a label that names a value on an axis: axisValue 'x'|'y' and axisAt, its point on that axis (the label must read as that axis's tick)
+
+# (P-C) the units a plane mark label may carry; this file's own copy (the generator in plane-marks.mjs and the observers each keep theirs, a test feeds one table to all of them)
+PLANE_LABEL_UNITS={'cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3'}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -103,7 +107,7 @@ def validate(spec):
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
             if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
-            if obj['unit'] not in {'cm','m','mm','kg'}:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
+            if obj['unit'] not in PLANE_LABEL_UNITS:raise ValueError('MARK_UNIT_INVALID:'+str(obj.get('id')))
             if obj['kind']!='EQUATION_LABEL' and obj.get('labelText') is None:raise ValueError('MARK_UNIT_REQUIRES_LABEL:'+str(obj.get('id')))
             if obj.get('labelKind','DEGREE' if obj['kind']=='CIRCULAR_ARC' else 'MATH')!='MATH':raise ValueError('MARK_UNIT_REQUIRES_MATH_LABEL:'+str(obj.get('id')))
         if 'labelKind' in obj and obj['kind'] in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:
@@ -120,6 +124,8 @@ def validate(spec):
             if obj['kind']!='EQUATION_LABEL' or obj.get('lineOwned') is not True or isinstance(wanted,bool) or not (wanted in {'START','END'} or (isinstance(wanted,(int,float)) and 0<=wanted<=1)):raise ValueError('INVALID_LINE_LABEL_AT:'+str(obj.get('id')))
         # dash on a LINE (E31, a dashed overlay line) is a flag; on a SEGMENT it keeps its own meaning.
         if 'dash' in obj and obj['kind']=='LINE' and obj['dash'] is not True:raise ValueError('INVALID_LINE_DASH:'+str(obj.get('id')))
+        # asymptote on a LINE: a line drawn as an asymptote (thin and dashed like the engine's own asymptote lines); only a dashed line, never with a colour
+        if 'asymptote' in obj and (obj['kind']!='LINE' or obj['asymptote'] is not True or obj.get('dash') is not True or 'color' in obj):raise ValueError('INVALID_LINE_ASYMPTOTE:'+str(obj.get('id')))
         if 'dash' in obj and obj['kind']=='CIRCULAR_ARC' and (obj['dash'] is not True or obj.get('highlight') is not True):raise ValueError('INVALID_ARC_DASH:'+str(obj.get('id')))
         # quadrant (E31): the coordinate quadrant 1..4 a QUADRANT object tints and names.
         if 'quadrant' in obj and (obj['kind']!='QUADRANT' or isinstance(obj['quadrant'],bool) or obj['quadrant'] not in {1,2,3,4}):raise ValueError('INVALID_QUADRANT:'+str(obj.get('id')))

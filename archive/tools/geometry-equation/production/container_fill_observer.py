@@ -10,6 +10,7 @@ import hashlib
 import math
 import re
 import xml.etree.ElementTree as ET
+from accessible_name_observer import audit_accessible_name
 from fractions import Fraction
 
 NS = '{http://www.w3.org/2000/svg}'
@@ -424,7 +425,7 @@ def audit_pair(doc, p, pd, model, n_pairs):
     return {'scale': sv, 'x_end': x_end}
 
 
-def audit(container, svg):
+def audit(container, svg, accessibility_description=None):
     if not isinstance(container, dict) or not isinstance(container.get('pairs'), list) or not 1 <= len(container['pairs']) <= 3: fail('CF_PLAN_INVALID')
     model = {'guides': container.get('guides') is True, 'origin': container.get('origin') is not False,
              'xTitle': container.get('xTitle', '시간'), 'yTitle': container.get('yTitle', '높이')}
@@ -432,7 +433,9 @@ def audit(container, svg):
     doc = Doc(svg, len(pairs))
     observed = [audit_pair(doc, p, pd, model, len(pairs)) for p, pd in enumerate(pairs)]
     # nothing else may be drawn: every drawn primitive has a known role and every label is one the plan asked for
+    for code in audit_accessible_name(doc.root, accessibility_description, forbid_when_absent=True): doc.err(code)
     for group in doc.root:
+        if group.tag in (NS + 'title', NS + 'desc') and accessibility_description is not None: continue   # the name the plan asked for (checked above)
         if not (group.tag == NS + 'rect' or group.tag == NS + 'g' and group.get('data-layer') is not None): doc.err('CF_ROOT_CHILD_UNEXPECTED:' + str(group.get('id')))
         if group.tag != NS + 'g' or group.get('data-layer') is None: continue
         for child in group:

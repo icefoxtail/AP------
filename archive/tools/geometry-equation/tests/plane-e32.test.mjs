@@ -59,7 +59,14 @@ test('E32 regions: the area of a region cut into cells is written outside it on 
   assert.deepEqual((await run(composed.svg)).errors,[]);
   assert.ok(codes(await run(composed.svg.replace(leader,''))).includes('REGION_LABEL_LEADER_MISSING'));
   const off=composed.svg.replace(leader,leader.replace(/\sx1="[^"]*"/,' x1="'+(Number(attr(leader,'x1'))+40).toFixed(3)+'"'));
-  assert.ok(codes(await run(off)).includes('MARK_LEADER_NOT_ON_OWNER'));
+  // the leader starts on a dot INSIDE the region (a leader from its boundary would read as the length of the side it touches)
+  const dotOf=svg=>new RegExp('<circle\\s[^>]*data-role="leader-dot"[^>]*data-owner-label="rABC-label"[^>]*/>').exec(svg)?.[0];
+  assert.ok(dotOf(composed.svg),'a dot marks where the leader starts');
+  assert.equal(Number(attr(dotOf(composed.svg),'cx')),Number(attr(leader,'x1')));
+  assert.ok(codes(await run(composed.svg.replace(dotOf(composed.svg),''))).includes('REGION_LEADER_DOT_MISSING'));
+  assert.ok(codes(await run(off)).includes('REGION_LEADER_DOT_MISSING'),'a leader moved off its dot');
+  const outside=composed.svg.replace(leader,leader.replace(/\sx1="[^"]*"/,' x1="'+(Number(attr(leader,'x1'))+400).toFixed(3)+'"')).replace(dotOf(composed.svg),dotOf(composed.svg).replace(/\scx="[^"]*"/,' cx="'+(Number(attr(leader,'x1'))+400).toFixed(3)+'"'));
+  assert.ok(codes(await run(outside)).includes('REGION_LEADER_NOT_FROM_INSIDE'),'a leader that does not start inside its region');
   assert.ok(codes(await run(composed.svg.replace(label,label.replace(/data-text="[^"]*"/,'data-text="△ABC=3cm²"')))).includes('LABEL_TEXT_MISMATCH'));
 });
 

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-8caa4d6a72a4-19775d4f",
+  "requestSha256": "2ae4d610c1eda33233fdb60b0f7be35389992d87c1eceaa77d53179eac39fabe",
+  "examUid": "중1_1학기_일차방정식의풀이",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
+  "sourceBlobSha1": "9f4a55f93a679dfebbf6af78d3bd06f2f92442a6",
+  "sourceRawSha256": "8363e305b8a310a508ac20b46e922f6cc10f28ee650b3a8adf88d3fcf14a6a8c",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8caa4d6a72a4-19775d4f.type-ledger.json",
+        "sha256": "64aefff12810ef76d2c44dd50c7749871c35086ee2b717fbfa82673ff8d26de8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 3,
+  "registryChanges": [],
+  "typeApprovals": 3,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 3
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c3f4bf047eb0bc3423976b17a6e7f557cf37ff3840bf6a70c2b0b9eec20ea0fb",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8caa4d6a72a4-19775d4f",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "한 방정식의 해 x=-3을 구해 다른 식 x+1=a에 대입해 상수 a를 정한다",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "0428b04e0a8ac6c3436e1b88b273e920b6738e75a432342dc8e8bc81209386f9",
+        "judgedContentFingerprint": "44076d9e79be017bfc4ce9ab737f6b78d107790c4b568ed8130ab9ca9a9f5c8d",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "42a5af672303f675a699b40a848449eaf4669635fe8a01e0be57e90e8bcc1469",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8caa4d6a72a4-19775d4f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_33c9b9f55bd201f77099e23b54e1f0a6d2fdc0de757ee3cbf4e04d74542c4ed1",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
+      "sourceOrdinal": 26,
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8caa4d6a72a4-19775d4f",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "첫 방정식의 해 x=24를 구해 ax=5-a에 대입해 a를 정한다",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9328c498a3830e3f8237de8bf6400968dcb2c72b728ad0183c522bf90c5644ea",
+        "judgedContentFingerprint": "3cf7698015a10f22150fdfff8df157d7d2850e813b3f6d01c59ded245cbc7daa",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "b34889b05ad738003f0c881e8f476c2b4e754ec62975bbc5ce225be9c65f9760",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8caa4d6a72a4-19775d4f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_791b4289db843f67b097b8efe40e4126e1eaed83cc226bf356d3bd039ba09237",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
+      "sourceOrdinal": 29,
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8caa4d6a72a4-19775d4f",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "2x-3=5의 해 4를 구해 다른 식에 대입해 a를 정한다",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f52e5f175c65eb4ec33e32199b83f91dd209db64efee217e3c88bde1d893fa84",
+        "judgedContentFingerprint": "3d0636d33ee2e02ebdff25642f3e1dc987f6b9261941e4293cd4e571d2133805",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "3aa394b3442c984893ec2103ff1e675e77409cd06edea31869ac26ff8b07bcb8",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8caa4d6a72a4-19775d4f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 3,
+  "expectedQuestionCount": 59
+}

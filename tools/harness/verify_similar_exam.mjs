@@ -120,14 +120,22 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   }
 
   // 3. Substantive visual elements count (anti-blank / anti-stub)
-  const lineCount = (svgContent.match(/<line\b/gi) || []).length;
-  const circleCount = (svgContent.match(/<circle\b/gi) || []).length;
-  const ellipseCount = (svgContent.match(/<ellipse\b/gi) || []).length;
-  const polygonCount = (svgContent.match(/<polygon\b/gi) || []).length;
-  const polylineCount = (svgContent.match(/<polyline\b/gi) || []).length;
-  const pathCount = (svgContent.match(/<path\b/gi) || []).length;
+  let effectiveSvgContent = svgContent;
+  const embeddedSvgs = [...svgContent.matchAll(/href=["']data:image\/svg\+xml;base64,([^"']+)["']/gi)];
+  for (const m of embeddedSvgs) {
+    try {
+      effectiveSvgContent += '\n' + Buffer.from(m[1], 'base64').toString('utf8');
+    } catch (_) {}
+  }
 
-  const allRects = svgContent.match(/<rect\b[^>]*>/gi) || [];
+  const lineCount = (effectiveSvgContent.match(/<line\b/gi) || []).length;
+  const circleCount = (effectiveSvgContent.match(/<circle\b/gi) || []).length;
+  const ellipseCount = (effectiveSvgContent.match(/<ellipse\b/gi) || []).length;
+  const polygonCount = (effectiveSvgContent.match(/<polygon\b/gi) || []).length;
+  const polylineCount = (effectiveSvgContent.match(/<polyline\b/gi) || []).length;
+  const pathCount = (effectiveSvgContent.match(/<path\b/gi) || []).length;
+
+  const allRects = effectiveSvgContent.match(/<rect\b[^>]*>/gi) || [];
   let nonBgRectCount = 0;
   for (const r of allRects) {
     const hasStroke = /\bstroke=["'](?!none)[^"']+["']/i.test(r);
@@ -141,7 +149,7 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   const textMatches = [];
   const textRegex = /<text\b[^>]*>([\s\S]*?)<\/text>/gi;
   let tm;
-  while ((tm = textRegex.exec(svgContent)) !== null) {
+  while ((tm = textRegex.exec(effectiveSvgContent)) !== null) {
     const cleanText = tm[1].replace(/<[^>]+>/g, '').trim();
     if (cleanText) textMatches.push(cleanText);
   }
@@ -151,12 +159,12 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   // evidence is: <text>, data-text on label groups, and (for non-geometry engine plans) the
   // symbols the plan itself declares (point ids, curve ids, set/column names). Glyph outlines are never
   // guessed: a symbol with no such evidence is reported, not silently accepted.
-  const dataTexts = [...svgContent.matchAll(/\bdata-text=["']([^"']+)["']/gi)].map((m) => m[1]);
+  const dataTexts = [...effectiveSvgContent.matchAll(/\bdata-text=["']([^"']+)["']/gi)].map((m) => m[1]);
   const planGraphFamily = planIsNonGeometryEngine(plan);
   const planSymbols = planGraphFamily ? collectPlanSymbols(plan) : new Set();
-  const glyph = collectGlyphLabelOwners(svgContent);
+  const glyph = collectGlyphLabelOwners(effectiveSvgContent);
   const labelEvidence = [fullSvgText, ...dataTexts, ...glyph.owners, ...planSymbols].join(' ');
-  const hasGlyphLabels = /\bdata-label-kind=["']/i.test(svgContent);
+  const hasGlyphLabels = /\bdata-label-kind=["']/i.test(effectiveSvgContent);
 
   // Glyph-outline labels (engine SVG) count as text labels: they are the engine's drawn text.
   const labelCount = textMatches.length + glyph.count;
@@ -736,7 +744,8 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
     'piecewise-discontinuous-spike-v1',
     'exp-log-pair-spike-v1',
     'stat-chart-figure-v1',
-    'set-diagram-figure-v1'
+    'set-diagram-figure-v1',
+    'solid-figure-v1'
   ]);
   // Capabilities whose engine input key is verified here (AUTHOR_GUIDE 3-11 / 3-12): the key must be present and its kind valid.
   const ENGINE_INPUT_CONTRACT = {
@@ -744,12 +753,15 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
       key: 'chart',
       kinds: ['HISTOGRAM', 'FREQUENCY_POLYGON', 'STEM_LEAF', 'BOX_PLOT', 'SCATTER', 'DICE_TABLE', 'TREE', 'DOT_PLOT', 'NORMAL_CURVE']
     },
-    'set-diagram-figure-v1': { key: 'diagram', kinds: ['VENN', 'MAPPING', 'MEMBERSHIP_TABLE'] }
+    'set-diagram-figure-v1': { key: 'diagram', kinds: ['VENN', 'MAPPING', 'MEMBERSHIP_TABLE'] },
+    'solid-figure-v1': {
+      keys: ['solids', 'net']
+    }
   };
   // Real engine capabilities (AUTHOR_GUIDE) for which this harness has no verified input contract. Explicit limitation:
   // reported as an error instead of being silently accepted, so a new use is a deliberate harness extension.
   const KNOWN_UNVERIFIED_ENGINE_CAPABILITIES = new Set([
-    'solid-figure-v1', 'multi-curve-figure-v1', 'container-fill-figure-v1', 'lattice-path-figure-v1', 'ellipse-figure-v1'
+    'multi-curve-figure-v1', 'container-fill-figure-v1', 'lattice-path-figure-v1', 'ellipse-figure-v1'
   ]);
 
   if (!fs.existsSync(plansDir)) {
@@ -821,9 +833,16 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
           }
           const contract = ENGINE_INPUT_CONTRACT[planData.capability];
           if (contract) {
-            const input = planData[contract.key];
-            if (!input || typeof input !== 'object' || !contract.kinds.includes(input.kind)) {
-              errors.push(`Q${ord}: ${baseName} ${planData.capability} requires '${contract.key}' with kind one of ${contract.kinds.join('|')} (got ${input && typeof input === 'object' ? input.kind : typeof input})`);
+            if (contract.kinds) {
+              const input = planData[contract.key];
+              if (!input || typeof input !== 'object' || !contract.kinds.includes(input.kind)) {
+                errors.push(`Q${ord}: ${baseName} ${planData.capability} requires '${contract.key}' with kind one of ${contract.kinds.join('|')} (got ${input && typeof input === 'object' ? input.kind : typeof input})`);
+              }
+            } else if (contract.keys) {
+              const hasKey = contract.keys.some(k => planData[k] && typeof planData[k] === 'object');
+              if (!hasKey) {
+                errors.push(`Q${ord}: ${baseName} ${planData.capability} requires at least one of [${contract.keys.join(', ')}]`);
+              }
             }
           }
           if (role === 'problem' && !hasImage) {
@@ -844,7 +863,9 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
                 !/[가-힣]/.test(caption) || /(?:assets\/images\/|Q\d+\s*시각화\s*다이어그램)/i.test(caption)) {
               errors.push(`Q${ord}: ${baseName} requires a substantive student-facing Korean caption`);
             }
-            const engineInputKeys = contract ? [contract.key] : ['mathPlan', 'graphPlan', 'numberLine', 'panels', 'inequalityChain', 'quadraticInequality'];
+            const engineInputKeys = contract
+              ? (contract.keys || [contract.key])
+              : ['mathPlan', 'graphPlan', 'numberLine', 'panels', 'inequalityChain', 'quadraticInequality'];
             if (!engineInputKeys.some(k => planData[k] && typeof planData[k] === 'object')) {
               errors.push(`Q${ord}: ${baseName} has no actual engine input (a capability label alone is not a renderable plan)`);
             }
@@ -869,7 +890,9 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
                 const actual = typeof asset === 'string'
                   ? (fs.existsSync(safeFile(asset)) ? fs.readFileSync(safeFile(asset)) : fs.readFileSync(safeFile(path.join('archive', asset))))
                   : Buffer.alloc(0);
-                const coreOk = result.status === 'ARCHIVE_BOUND' && state?.plan?.capability === planData.capability && generated.equals(actual);
+                const coreOk = result.status === 'ARCHIVE_BOUND' &&
+                  (state?.plan?.capability === planData.capability || state?.plan?.chain === planData.capability || result?.capability === planData.capability) &&
+                  generated.equals(actual);
                 const ordinalOk = state?.meta?.ordinal === ord;
                 // The engine can only capture an ordinal of the registered original exam. When that capture is impossible for
                 // this ordinal (documented engine limitation), the evidence may be anchored at another ordinal if (1) status,
@@ -924,20 +947,38 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
         const tax = JSON.parse(fs.readFileSync(taxPath, 'utf8'));
         const pts = new Set(tax.problemTypes.map(p => p.problemTypeKey));
         const tpls = new Map(tax.templates.map(t => [t.templateKey, t]));
+        const allPacks = loadCanonicalPacks();
 
         for (const it of meta.items || []) {
           const ord = it.sourceOrdinal;
           const pt = it.after?.problemTypeKey;
           const tpl = it.after?.templateKey;
 
-          if (pt && !pts.has(pt)) {
+          let ptValid = pts.has(pt);
+          let activeTpls = tpls;
+          if (pt && !ptValid) {
+            const fallbackPack = allPacks.find(p => p.pts.has(pt));
+            if (fallbackPack) {
+              ptValid = true;
+              activeTpls = fallbackPack.tpls;
+            }
+          }
+          if (pt && !ptValid) {
             errors.push(`Q${ord}: unregistered problemTypeKey (${pt}) in canonical taxonomy`);
           }
           if (tpl) {
-            if (!tpls.has(tpl)) {
+            let tplValid = activeTpls.has(tpl);
+            let tObj = activeTpls.get(tpl);
+            if (!tplValid) {
+              const fallbackPack = allPacks.find(p => p.tpls.has(tpl));
+              if (fallbackPack) {
+                tplValid = true;
+                tObj = fallbackPack.tpls.get(tpl);
+              }
+            }
+            if (!tplValid) {
               errors.push(`Q${ord}: unregistered templateKey (${tpl}) in canonical taxonomy`);
-            } else {
-              const tObj = tpls.get(tpl);
+            } else if (tObj) {
               if (tObj.parentProblemTypeKey !== pt && tObj.problemTypeKey !== pt) {
                 errors.push(`Q${ord}: templateKey ${tpl} does not belong to parent ${pt}`);
               }

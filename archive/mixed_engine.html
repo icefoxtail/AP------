@@ -46,7 +46,20 @@
                 linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
             },
             options: { enableMenu: false },
-            startup: { typeset: false }
+            startup: {
+                typeset: false,
+                // 2026-11-23: engine.html과 같다. MathJax 4 기본값인 의미 분석(enrichment)·화면 낭독(speech)·점자·탐색기는
+                // 시험지 화면·인쇄에서 쓰지 않고, 수식마다 SRE 작업자를 불러 조판을 늦춘다. 게다가 이 속성들의 부착 시점이 조판과
+                // 따로 움직여서, 같은 수식(mjx-mspace)의 style 속성 앞/뒤 순서가 CI에서 가끔 달라졌다(PDF 인쇄 전후 mathMarkupHash
+                // 불일치, 속성 순서만 다르고 화면은 같음). 문서가 만들어진 뒤 이 자리에서 끈다(options에 써도 확장이 덮어쓴다).
+                pageReady() {
+                    const startup = window.MathJax.startup;
+                    for (const key of ['enableEnrichment', 'enableSpeech', 'enableBraille', 'enableExplorer', 'enableComplexity']) {
+                        if (startup.document?.options && key in startup.document.options) startup.document.options[key] = false;
+                    }
+                    return startup.defaultPageReady();
+                }
+            }
         };
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
@@ -443,7 +456,7 @@
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
     <link rel="stylesheet" href="print-header-table.css?v=20261122-ph-1">
-    <script src="print-header-table.js?v=20261122-ph-1"></script>
+    <script src="print-header-table.js?v=20261123-ph-3"></script>
     <script defer src="archive2-derive-entry.js?v=20261120-derive-ui-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">

@@ -4,6 +4,8 @@ import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import {presentFields} from './composite-expand-fields.mjs';
+import {runTogether,dropMiddleIntegers} from './number-line-run-together.mjs';
 import * as figure from './number-line-v1.mjs';
 
 // A quadratic inequality solution drawn as a fixed chain (one author plan, quadratic-inequality-chain-v1): the quadratic graph in the solution's own
@@ -188,7 +190,7 @@ export function expandInequalityChain(plan){
   return {capability:'composite-panels-v1',chain:CHAIN_CAPABILITY,
     panels:[{caption:caption(plan.graphCaption,{text:'이차함수의 그래프'}),plan:{capability:'polynomial-spike-v1',graphPlan}},
       {caption:caption(plan.numberLineCaption,{text:'해의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:inequality}}],
-    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
+    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),...presentFields(plan)};
 }
 
 // --- the number-line panel -------------------------------------------------------------------------------------------------------------------
@@ -288,8 +290,10 @@ export async function composeNumberLinePanel({plan,model,identity,typographyPoli
       const box={x:r6(align==='right'?x:x-width/2),y:r6(align==='below'?y:align==='above'?y-height:y-height/2),width,height};
       placed.push({label,fragment,box});
     }
+    // Integer labels that run together on the real font ("−3" "−2" read as "−3−2") fall back to the two ends, as the estimate of the spec does for a plainly dense axis.
+    if(spec.integerLabels==='ALL'&&dropMiddleIntegers(placed))spec.integerLabels='ENDS';
     // Labels of one row never touch: integer labels need room between neighbours, end labels need room between the ends.
-    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)){
+    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)||runTogether(placed[i],other)){
       const roles=[placed[i].label.role,other.label.role];
       throw new Stop(roles.every(role=>role==='integer')?'NUMBER_LINE_INTEGER_POINTS_TOO_DENSE':'NUMBER_LINE_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
     }

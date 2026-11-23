@@ -45,7 +45,8 @@ class Framing(unittest.TestCase):
     def test_one_curve_is_a_figure_when_it_carries_an_emphasis(self):
         graph={'family':'multi-curve','curves':[{'id':'p','kind':'Y_OF_X','coefficients':['0','-4','1'],'domain':['-1','6'],'emphasis':[{'from':'4','fromState':'CLOSED'}]}],'axisTickValues':{'x':['2'],'y':[]}}
         self.assertEqual([row['emphasis'][0]['to'] for row in framed(graph)['multiCurveFeatures']['curves']],['6'])
-        graph['curves'][0].pop('emphasis');self.assertEqual(refused(graph),'MULTI_CURVE_COUNT_INVALID')
+        graph['curves'][0].pop('emphasis');self.assertIsNone(refused(graph))   # one plain curve is a figure too (G bundle 2a-N02); no curve at all is not
+        graph['curves']=[];self.assertEqual(refused(graph),'MULTI_CURVE_COUNT_INVALID')
 
     def test_refusals(self):
         self.assertEqual(refused(with_curve(0,emphasis=[{'from':'-5','to':'2'}])),'MULTI_CURVE_EMPHASIS_INVALID:f')   # outside the curve's own interval

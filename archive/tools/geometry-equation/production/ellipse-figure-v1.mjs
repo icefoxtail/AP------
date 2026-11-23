@@ -40,7 +40,7 @@ const ELLIPSE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription'];
 const ELLIPSE_KEYS=['center','semiAxisSquared','majorAxis'];
 const PAIR_ELLIPSE_KEYS=[...ELLIPSE_KEYS,'id'];
-const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label','ellipseId'];
+const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label','ellipseId','coordinates'];
 const SEGMENT_KEYS=['id','from','to','label','dashed'];
 const POLYGON_KEYS=['id','points','fill'];
 const LINE_KEYS=['id','slope','intercept','label','tangent','ellipseId'];
@@ -159,6 +159,7 @@ export function validateEllipseFigurePlan(plan){
   const ids=new Set();
   for(const point of points){
     onlyKeys(point,POINT_KEYS,'ELLIPSE_POINT_INVALID');
+    if(point.coordinates!==undefined&&typeof point.coordinates!=='boolean')bad('ELLIPSE_POINT_INVALID');
     if(typeof point.id!=='string'||!POINT_ID.test(point.id))bad('ELLIPSE_POINT_ID_INVALID');
     if(ids.has(point.id))bad('ELLIPSE_POINT_ID_DUPLICATE');
     ids.add(point.id);
@@ -200,12 +201,12 @@ export async function solveEllipseFigure(plan){
 
 // --- layout: one uniform scale on both axes, taken from the exact model ---------------------------------------------------------------
 function layoutOf(model){
-  const bbox=model.bbox;
+  const bbox=model.bbox,roomPx=roomExtra.get(model)??0;
   const unitsW=(bbox.maxX-bbox.minX)+2*PAD_UNITS,unitsH=(bbox.maxY-bbox.minY)+2*PAD_UNITS;
   const scale=Math.min(MAX_SCALE,MAX_PLOT_W/unitsW,MAX_PLOT_H/unitsH);
   if(!(scale>=MIN_SCALE))bad('ELLIPSE_FIGURE_TOO_LARGE');
   // a figure with coordinate labels gets a wider frame so the labels have free room beside the strokes
-  const wide=(model.points??[]).some(point=>point.coordinates===true),MX=wide?COORD_MARGIN_X:MARGIN_PX,MY=wide?COORD_MARGIN_Y:MARGIN_PX;
+  const wide=(model.points??[]).some(point=>point.coordinates===true),MX=(wide?COORD_MARGIN_X:MARGIN_PX)+roomPx,MY=(wide?COORD_MARGIN_Y:MARGIN_PX)+roomPx;
   const belowGroundRoom=model.arch?20:0;
   const width=Math.ceil(unitsW*scale)+2*MX,height=Math.ceil(unitsH*scale)+2*MY+belowGroundRoom;
   const baseX=bbox.minX-PAD_UNITS,baseY=bbox.minY-PAD_UNITS;
@@ -213,6 +214,12 @@ function layoutOf(model){
   return {size:{width,height},scale,baseX,baseY,unitsW,unitsH,px,py,...(model.arch?{arch:true}:{}),
     rect:{x0:px(baseX),y0:py(baseY+unitsH),x1:px(baseX+unitsW),y1:py(baseY)}};
 }
+
+// When the labels find no room beside the strokes (ELLIPSE_LABEL_NO_ROOM at the font the figure is really composed at), the caller widens the frame on every side by the next of ELLIPSE_FRAME_STEPS px,
+// asks the size again, measures the typography for it and composes again (render-plan). The first attempt is always the frame the figure has always had, so a figure that fits keeps its bytes.
+export const ELLIPSE_FRAME_STEPS=Object.freeze([0,24,48,80,120]);
+const roomExtra=new WeakMap();
+export const setEllipseFrameExtra=(model,extra)=>{if(!ELLIPSE_FRAME_STEPS.includes(extra))throw Error('ELLIPSE_FRAME_EXTRA_INVALID');roomExtra.set(model,extra);};
 
 export function ellipseFigureSize(model){
   const {size}=layoutOf(model);
@@ -520,8 +527,10 @@ export function ellipseFigureSpec(plan,model){
     obstacles.points.push({key:point.id,x:px,y:py});
     if(!point.labels)continue;
     const lc=centerOfPoint(point);
-    labels.push({key:`point-${point.id}`,role:'point',pointId:point.id,text:point.id,
-      pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},lc.x,lc.y)});
+    // coordinates:true on a point writes ID(x,y) beside it (the exact values of the point the model derived; the independent observer reads both numbers back)
+    const withCoordinates=point.coordinates===true;
+    labels.push({key:`point-${point.id}`,role:'point',pointId:point.id,text:withCoordinates?`${point.id}(${exactTex(point.x.exact)},${exactTex(point.y.exact)})`:point.id,
+      pointX:px,pointY:py,centerX:px,centerY:py,...(withCoordinates?{coordinates:true}:{}),candidates:labelCandidates({x:px,y:py},lc.x,lc.y,withCoordinates)});
   }
   labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{

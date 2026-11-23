@@ -10,6 +10,7 @@ import math
 import re
 import xml.etree.ElementTree as ET
 from fractions import Fraction
+from accessible_name_observer import audit_accessible_name
 
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.02
@@ -1460,6 +1461,16 @@ def audit_tree(chart, doc):
         if label is None or label.get('data-label-role') != 'node': doc.err('SC_NODE_MISSING:' + n['id']); continue
         text = label.get('data-text') or label.get('data-tex')
         if text != n['label']: doc.err('SC_NODE_LABEL:' + n['id'])
+        # a name of more than 6 characters is one line no wider than 6 em or two lines (data-lines, inside the box) each no wider than 6 em; a short name is never wrapped (this observer's own copy of the rule)
+        if label.get('data-box'):
+            nb, em, raw_lines = box_of(label), float(label.get('data-font-px') or 0), label.get('data-lines')
+            if len(n['label']) > 6 and em > 0:
+                if raw_lines:
+                    try: rects = [tuple(float(v) for v in part.split(',')) for part in raw_lines.split(';')]
+                    except ValueError: rects = []
+                    if len(rects) != 2 or any(len(r) != 4 or r[2] > 6 * em + 0.5 or r[0] < -0.01 or r[1] < -0.01 or r[0] + r[2] > nb[2] + 0.01 or r[1] + r[3] > nb[3] + 0.01 for r in rects): doc.err('SC_NODE_LINES:' + n['id'])
+                elif nb[2] > 6 * em + 0.5: doc.err('SC_NODE_LABEL_TOO_WIDE:' + n['id'])
+            elif raw_lines: doc.err('SC_NODE_LINES:' + n['id'])
         c = centre(label)
         if abs(c[0] - float(label.get('data-cx'))) > LABEL_TOL or abs(c[1] - float(label.get('data-cy'))) > LABEL_TOL: doc.err('SC_NODE_CENTRE:' + n['id'])
         centres[n['id']] = c
@@ -1790,6 +1801,7 @@ def audit_dot(chart, doc):
 # This observer's own copies of the drawing rules: the tallest curve (the one with the smallest sd) is NORM_PEAK high, the others in the ratio of their sds; a tick is NORM_TICK long; a shade of
 # tone 1 / 2 is #111 at 0.16 / 0.34 opacity. The scale of the x axis is the window of the plan against the two ends of each polyline (never anything the producer states about its own scale).
 NORM_PEAK, NORM_TICK, NORM_STEP_MAX = 140.0, 5.0, 2.05
+NORM_PEAKS = (140.0, 260.0)   # the heights the tallest curve may have: the usual one, and the taller one a figure with a labelled thin tail (beyond about 3 sd) takes so that the tail can hold its dot
 NORM_OPACITY = {1: 0.16, 2: 0.34}
 NORM_SHADE_COLORS = {'BLUE': ('#7fa6e8', 0.32), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}   # this observer's own copy of the C1 palette tints (a shade may take one instead of a grey tone, G20)
 NORM_SYMBOL = re.compile('^[A-Za-zμσ]$')
@@ -1862,6 +1874,9 @@ def normal_plan(chart):
             if scale is None or scale <= 0: fail('STAT_NORMAL_CURVE_INVALID')
         curves.append({'id': raw['id'], 'mean': mean, 'sd': sd, 'mean_text': mean_text, 'sd_text': raw['sd'] if sd is None else (decimal_of(sd) or str(sd)), 'label': label,
                        'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1, 'scale': scale, 'scaled': 'sdScale' in raw})
+    # the name Z is the standard normal variable: only the curve N(0, 1) may carry it (this observer's own copy of the rule)
+    is_standard = lambda c: c['mean'] is not None and c['sd'] is not None and c['mean'] == 0 and c['sd'] == 1
+    if any(c['label'] is not None and re.fullmatch(r'(?:[Zz](?:\(0,1\))?|N\(0,1\))', re.sub(r'\s+', '', c['label'])) and not is_standard(c) for c in curves): fail('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD')
     framed = any(c['mean'] is None or c['sd'] is None for c in curves)
     # several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
     if framed and len(curves) > 1 and not all(c['sd'] is None and c['mean_text'] == curves[0]['mean_text'] and c['sd_text'] == curves[0]['sd_text'] and c['scaled'] == (i > 0) for i, c in enumerate(curves)): fail('STAT_NORMAL_SYMBOLIC_MULTI')
@@ -1979,6 +1994,7 @@ def normal_plan(chart):
     if z_axis and all(t['hide_z'] for t in ticks): fail('STAT_NORMAL_Z_AXIS_EMPTY')
     x_label = chart.get('xLabel', 'x')
     if not isinstance(x_label, str) or not re.fullmatch(r'[A-Za-z]', x_label): fail('STAT_NORMAL_LABEL_INVALID')
+    if not framed and x_label in ('z', 'Z') and not all(is_standard(c) for c in curves): fail('STAT_NORMAL_XLABEL_Z_NOT_STANDARD')
     for c in curves:
         if c['mean_line'] and not any(t['u'] == (0 if framed else c['mean']) for t in ticks): fail('STAT_NORMAL_MEAN_NOT_TICKED')
     return {'framed': framed, 'curves': curves, 'lo': lo, 'hi': hi, 'span': span, 'ticks': ticks, 'shades': shades, 'symmetry': symmetry, 'z_axis': z_axis, 'x_label': x_label}
@@ -2062,11 +2078,18 @@ def audit_normal(chart, doc):
     first_pts = points_of(first)
     if len(first_pts) < 50: fail('SC_NORMAL_CURVE_SPARSE')
     xl, xr = first_pts[0][0], first_pts[-1][0]
+    # the axis runs to one of two lengths (the usual one, or the shorter one a figure takes when its axis name would not fit): the curve ends, the axis line and the arrow tell which, and they must agree
+    tip_of = {490.0: 512.0, 482.0: 500.0}
+    x_end = next((k for k in tip_of if abs(xr - k) <= 0.05), None)
+    if x_end is None or abs(xl - 44.0) > 0.05 or abs(num(x_axis, 'x1') - 24.0) > 0.05 or abs(num(x_axis, 'x2') - (tip_of[x_end] - 8)) > 0.05: doc.err('SC_NORMAL_AXIS_GEOMETRY')
     slope = (xr - xl) / float(hi - lo)
     if slope <= 0: fail('SC_AXIS_DIRECTION:x')
     px = lambda u: xl + (float(u) - float(lo)) * slope
     ux = lambda x: float(lo) + (x - xl) / slope
-    height = lambda c: NORM_PEAK * sd_min / sd_of(c)
+    # the tallest curve's height is one of the allowed heights, whichever the first curve's drawn peak matches (never any other number)
+    first_top = min(p[1] for p in first_pts)
+    peak = next((p for p in NORM_PEAKS if abs(p * sd_min / sd_of(curves[0]) - (base - first_top)) <= 0.3), NORM_PEAK)
+    height = lambda c: peak * sd_min / sd_of(c)
     ycurve = lambda c, x: base - height(c) * math.exp(-(((ux(x) - mean_of(c)) / sd_of(c)) ** 2) / 2)
     # the curves
     polylines = list(doc.root.iter(NS + 'polyline'))
@@ -2118,6 +2141,11 @@ def audit_normal(chart, doc):
         if cx is not None:
             if abs(bx + bw / 2 - cx) > LABEL_TOL: doc.err('SC_NORMAL_LABEL_NOT_CENTRED:' + lid)
             if lid.startswith('x-tick') and by < base + NORM_TICK: doc.err('SC_NORMAL_TICK_LABEL_ABOVE_AXIS:' + lid)
+    # the numbers under the axis must be told apart: two of them standing in one row (their boxes share some height) are at least 5 px apart, or they read as one number
+    tick_boxes = sorted((box_of(l) for lid_, l in got.items() if lid_.startswith('x-tick-')), key=lambda b: b[0])
+    for ia, a_box in enumerate(tick_boxes):
+      for b_box in tick_boxes[ia + 1:]:
+        if min(a_box[1] + a_box[3], b_box[1] + b_box[3]) > max(a_box[1], b_box[1]) and b_box[0] - (a_box[0] + a_box[2]) < 5.0: doc.err('SC_NORMAL_TICK_NUMBERS_CLOSE')
     for i, t in enumerate(ticks):
         xlab, zlab = got.get('x-tick-%d-label' % i), got.get('z-tick-%d-label' % i)
         if xlab is not None and zlab is not None and box_of(zlab)[1] < box_of(xlab)[1] + box_of(xlab)[3]: doc.err('SC_NORMAL_Z_ROW_OVERLAP:%d' % i)
@@ -2305,7 +2333,7 @@ def audit_slots(chart, doc):
 AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'SLOTS': audit_slots, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
-def audit(chart, svg, compact=False):
+def audit(chart, svg, compact=False, accessibility_description=None):
     kind = chart.get('kind') if isinstance(chart, dict) else None
     if kind not in AUDITS: fail('STAT_KIND_UNSUPPORTED')
     if compact and kind not in ('DOT_PLOT', 'SCATTER'): fail('STAT_PANEL_KIND_UNSUPPORTED')
@@ -2314,5 +2342,6 @@ def audit(chart, svg, compact=False):
         root = doc.root
         if abs(float(root.get('width') or 0) - PANEL_W) > TOL: doc.err('SC_PANEL_WIDTH')
     observed = AUDITS[kind](chart, doc)
+    for code in audit_accessible_name(doc.root, accessibility_description): doc.err(code)
     raw = svg.encode('utf-8')
     return {'status': 'FAIL' if doc.errors else 'PASS', 'errors': doc.errors, 'finalSvgSha256': 'sha256:' + hashlib.sha256(raw).hexdigest(), 'observed': observed}

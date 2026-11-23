@@ -28,6 +28,8 @@ NS='{http://www.w3.org/2000/svg}'
 PIXEL_TOLERANCE=0.9
 UNIT_TOLERANCE=0.03
 LABEL_DISTANCE=72.0
+POINT_LEADER_MAX=120.0   # this observer's own copy: a coordinate label may stand farther from its dot than a name (up to this) only when a leader joins it to the dot
+LEADER_AT_LABEL_PX,LEADER_DOT_NEAR_PX,LEADER_DOT_FAR_PX=2.5,3.5,8.0   # a leader starts on the label box (<= 2.5 px off its boundary) and stops 3.5..8 px short of the dot
 LIGHT_FILL='#eeeeee'
 MEDIUM_FILL='#d8d8d8'
 POINT_ID=re.compile(r"^[A-Z][0-9']?$")
@@ -82,15 +84,15 @@ def resolve(shape,raw):
     kind=raw.get('kind')
     cx,cy,A,B,c=shape['cx'],shape['cy'],shape['A'],shape['B'],shape['c']
     if kind=='ORIGIN':
-        if set(raw)-{'id','kind','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','ellipseId','coordinates'}: raise Refuse('ELLIPSE_POINT_INVALID')
         return S.Integer(0),S.Integer(0)
     if kind=='FOCUS':
-        if set(raw)-{'id','kind','side','label','ellipseId'} or raw.get('side') not in (1,-1):
+        if set(raw)-{'id','kind','side','label','ellipseId','coordinates'} or raw.get('side') not in (1,-1):
             raise Refuse('ELLIPSE_POINT_INVALID')
         side=raw['side']
         return (cx+side*c,cy) if shape['orientation']=='X' else (cx,cy+side*c)
     if kind=='VERTEX':
-        extra=set(raw)-{'id','kind','end','label','ellipseId'}
+        extra=set(raw)-{'id','kind','end','label','ellipseId','coordinates'}
         if extra: raise Refuse('ELLIPSE_POINT_INVALID')
         end=raw.get('end')
         table={'MAJOR_POS':(A,0) if shape['orientation']=='X' else (0,A),
@@ -101,7 +103,7 @@ def resolve(shape,raw):
         dx,dy=table[end]
         return cx+dx,cy+dy
     if kind=='ON_ELLIPSE':
-        if set(raw)-{'id','kind','x','y','branch','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','x','y','branch','label','ellipseId','coordinates'}: raise Refuse('ELLIPSE_POINT_INVALID')
         branch=raw.get('branch','POS')
         if branch not in ('POS','NEG'): raise Refuse('ELLIPSE_POINT_INVALID')
         sign=1 if branch=='POS' else -1
@@ -117,7 +119,7 @@ def resolve(shape,raw):
         if rest.is_negative: raise Refuse('ELLIPSE_POINT_NOT_ON_ELLIPSE')
         return cx+sign*shape['ax']*S.sqrt(rest),y
     if kind=='POINT':
-        if set(raw)-{'id','kind','x','y','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
+        if set(raw)-{'id','kind','x','y','label','ellipseId','coordinates'}: raise Refuse('ELLIPSE_POINT_INVALID')
         if 'x' not in raw or 'y' not in raw: raise Refuse('ELLIPSE_POINT_INVALID')
         return exact_scalar(raw['x']),exact_scalar(raw['y'])
     raise Refuse('ELLIPSE_POINT_INVALID')
@@ -186,7 +188,7 @@ def derive_all(plan):
         if not pending: break
         remaining=[]
         for raw in pending:
-            if set(raw)-{'id','kind','of','label','ellipseId'}: raise Refuse('ELLIPSE_POINT_INVALID')
+            if set(raw)-{'id','kind','of','label','ellipseId','coordinates'}: raise Refuse('ELLIPSE_POINT_INVALID')
             target=raw.get('of')
             if target not in points:
                 remaining.append(raw);continue
@@ -259,6 +261,23 @@ def _box_distance(x,y,box):
     dx=max(box['x']-x,0.0,x-(box['x']+box['width']))
     dy=max(box['y']-y,0.0,y-(box['y']+box['height']))
     return math.hypot(dx,dy)
+
+
+def point_leader_joins(elements,box,ex,ey):
+    """True when a leader line of the figure, measured by its coordinates (not by its data attributes), starts on `box` and stops just short of the dot at (ex,ey)."""
+    for element in elements:
+        if element.tag!=NS+'line' or element.get('data-role')!='leader': continue
+        try: x1,y1,x2,y2=[float(element.get(name)) for name in ('x1','y1','x2','y2')]
+        except (TypeError,ValueError): continue
+        if _box_boundary_distance((x1,y1),box)<=LEADER_AT_LABEL_PX and LEADER_DOT_NEAR_PX<=math.hypot(x2-ex,y2-ey)<=LEADER_DOT_FAR_PX: return True
+    return False
+
+
+def label_too_far(pid,coordinate_ids,elements,box,ex,ey):
+    """A name stands within LABEL_DISTANCE of its dot; a coordinate label may stand up to POINT_LEADER_MAX away when a leader from its own dot reaches its box."""
+    reach=_box_distance(ex,ey,box)
+    if reach<=LABEL_DISTANCE: return False
+    return not (pid in coordinate_ids and reach<=POINT_LEADER_MAX and point_leader_joins(elements,box,ex,ey))
 
 
 def _point_segment_distance(point,a,b):
@@ -561,6 +580,7 @@ def audit(plan,svg):
         if not any(raw.get('id')==lid for raw in lines): errors.append('LINE_UNDECLARED:%s'%lid)
 
     # neutral names: present, inside the canvas, next to their own point, never over another point
+    coordinate_ids={raw.get('id') for raw in (plan.get('points') or []) if isinstance(raw,dict) and raw.get('coordinates') is True}
     label_elements={}
     for element in elements:
         if element.get('data-label-role')=='point' and element.get('data-point'):
@@ -572,7 +592,11 @@ def audit(plan,svg):
             errors.append('LABEL_MISSING:%s'%pid);continue
         shown=element.get('data-tex')
         if shown is None: shown=element.get('data-text')
-        if shown!=pid: errors.append('LABEL_TEXT_MISMATCH:%s:%s'%(pid,shown))
+        # a point the plan asks to be written with its coordinates (coordinates:true) shows ID(x,y); both numbers are read back and compared with the point derived here
+        if coordinate_ids and pid in coordinate_ids:
+            from conic_figure_observer import _coordinate_label_matches
+            if not _coordinate_label_matches(shown,pid,points[pid]): errors.append('LABEL_TEXT_MISMATCH:%s:%s'%(pid,shown))
+        elif shown!=pid: errors.append('LABEL_TEXT_MISMATCH:%s:%s'%(pid,shown))
         box=_box_of(element)
         if box is None:
             errors.append('LABEL_BOX_MISSING:%s'%pid);continue
@@ -580,7 +604,7 @@ def audit(plan,svg):
                 box['y']+box['height']>canvas['height']):
             errors.append('LABEL_OUT_OF_CANVAS:%s'%pid)
         ex,ey=pixel(*points[pid])
-        if _box_distance(ex,ey,box)>LABEL_DISTANCE:
+        if label_too_far(pid,coordinate_ids,elements,box,ex,ey):
             errors.append('LABEL_TOO_FAR:%s'%pid)
         for other,(oxp,oyp) in points.items():
             if other==pid: continue
@@ -607,7 +631,7 @@ def audit(plan,svg):
             errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
         else:
             leaders_by_label[key]=element
-    expected_leader_keys={'measure-'+sid for sid in required_leaders}
+    expected_leader_keys={'measure-'+sid for sid in required_leaders}|{'point-'+pid for pid in coordinate_ids}
     for key in leaders_by_label:
         if key not in expected_leader_keys:
             errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
@@ -661,6 +685,9 @@ def audit(plan,svg):
             errors.append('MEASURE_LABEL_MISSING:%s'%raw.get('id'));continue
         shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
         if shown!=raw['label']: errors.append('MEASURE_LABEL_TEXT_MISMATCH:%s'%raw.get('id'))
+        # B04: a label that states a number is the length of its segment (a name or a word states nothing and is not checked)
+        from conic_label_value import segment_label_mismatch
+        if segment_label_mismatch(raw['label'],points[raw['from']],points[raw['to']]): errors.append('ELLIPSE_SEGMENT_LABEL_VALUE_MISMATCH:%s'%raw.get('id'))
         box=_box_of(element)
         if box is None: continue
         (ax,ay),(bx,by)=points[raw['from']],points[raw['to']]
@@ -690,6 +717,18 @@ def audit(plan,svg):
             leader_clear(leader_key,leader,box)
         elif leader_key in leaders_by_label:
             errors.append('MEASURE_LEADER_UNEXPECTED:%s'%sid)
+
+    # a coordinate label's leader meets its own label and dot and crosses nothing (as the conic observer asks)
+    for pid in sorted(coordinate_ids):
+        key='point-'+pid;leader=leaders_by_label.get(key);element=label_elements.get(pid)
+        if leader is None or element is None or pid not in points: continue
+        box=_box_of(element)
+        if box is None: continue
+        x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+        ex,ey=pixel(*points[pid])
+        if _box_boundary_distance((x1,y1),box)>2.5: errors.append('MEASURE_LEADER_NOT_AT_LABEL_BOX:%s'%key)
+        if not 3.5<=math.hypot(x2-ex,y2-ey)<=8.0: errors.append('MEASURE_LEADER_NOT_AT_OWNER:%s'%key)
+        leader_clear(key,leader,box)
 
     returns={'status':'PASS' if not errors else 'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
     return returns

@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 18,
+      "stack": {
+        "count": 3,
+        "radius": 3
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "top"
+    }
+  ],
+  "caption": "밑면의 반지름 3cm인 원기둥 안에 꼭 맞게 들어 있는 세 구",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 반지름 3cm인 원기둥에 구 3개가 꼭 맞게 들어 있다",
+      "mappedTo": [
+        "solids",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [],
+  "assetPath": "assets/images/25_신흥중_2학기_기말_중1_유사/q12.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q12-result.json",
+    "statePath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q12-state.json",
+    "svgPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q12-solution.svg"
+  },
+  "sourceQuote": "원기둥에 구 $3$개가 꼭 맞게 들어 있다"
+}

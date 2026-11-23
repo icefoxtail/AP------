@@ -86,7 +86,7 @@ const homeContext = {
   escapeHtml: value => String(value ?? '')
 };
 vm.createContext(homeContext);
-vm.runInContext(['getStudentPortalRecordedSubmission', 'getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);
+vm.runInContext(['getStudentPortalRecordedSubmission', 'getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'isStudentPortalSelfStudy', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);
 const homeMarkup = homeContext.renderOmrHomeSection();
 assert.strictEqual((homeMarkup.match(/class="portal-recent-item"/g) || []).length, 1, 'home should keep one compact recent item');
 assert(homeMarkup.includes("openRecentLearning('issued-1')"), 'the recent item resolves the first canonical assignment for tied dates');

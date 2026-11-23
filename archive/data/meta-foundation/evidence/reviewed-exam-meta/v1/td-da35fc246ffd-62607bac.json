@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-da35fc246ffd-62607bac",
+  "requestSha256": "dc0ad2b0fe6da50af3863c9f9db51a6df710f93ed2b09ee24f2d802a4b77e914",
+  "examUid": "여러가지방정식과부등식_고1_유형_모의고사",
+  "sourceArchiveFile": "types/high/h1/여러가지방정식과부등식_고1_유형_모의고사.js",
+  "sourceBlobSha1": "5467d8ca609050cdd87b7f22cc89b5d33d831480",
+  "sourceRawSha256": "4a837e7575d2c5a264cb04032c53a0e6a66ccbf41a1ccbeb35e36fed1f3d7e5a",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-da35fc246ffd-62607bac.type-ledger.json",
+        "sha256": "2f72a059a9a7341d9153b7d79563d0b3275e23c437e56bfcc82eb8e402b9d6c0"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_9f378e223023f7d6867cec8e5c2d611a23a7eb90de4d1e8289c37822c977a669",
+      "sourceArchiveFile": "types/high/h1/여러가지방정식과부등식_고1_유형_모의고사.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-da35fc246ffd-62607bac",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "연립 이차부등식을 각각 모든 실수에서 성립하도록 판별식 ≤0으로 a의 범위를 구함",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "0ec4226688e3ce93533216a079305c77269af6957c2127aadf3c7dcb0aae7a7e",
+        "judgedContentFingerprint": "cc69870bdf4822fd8f75c903a0701a0a5db0106580063b8ac071254d1c843f7f",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "b8e2646a52f7b8bff2841c8019390b9baa14bf86f5f262c61e41edab819e92c7",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-da35fc246ffd-62607bac.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 27
+}

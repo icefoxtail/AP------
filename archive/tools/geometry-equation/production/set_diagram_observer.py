@@ -9,6 +9,7 @@ import hashlib
 import math
 import re
 import xml.etree.ElementTree as ET
+from accessible_name_observer import audit_accessible_name
 
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.75
@@ -353,6 +354,65 @@ def boundary_distance(point, ellipse):
 
 
 # --- Venn -----------------------------------------------------------------------------------------------------------------------------------
+def segments_cross(a, b, c, d):
+    def orient(p, q, r):
+        return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    return orient(a, b, c) * orient(a, b, d) < 0 and orient(c, d, a) * orient(c, d, b) < 0
+
+
+def label_lines(label, box, doc, index):
+    """The text lines of a wrapped label (data-lines, relative to its box), as absolute rectangles; the label's whole box when it has none. Every line lies inside the box."""
+    raw = label.get('data-lines')
+    if not raw:
+        return [box]
+    try:
+        rects = [tuple(float(v) for v in part.split(',')) for part in raw.split(';')]
+        rects = [(box[0] + x, box[1] + y, w, h) for x, y, w, h in rects]
+    except ValueError:
+        doc.err('SD_ELEMENT_LINES:%d' % index)
+        return [box]
+    if any(r[0] < box[0] - 0.01 or r[1] < box[1] - 0.01 or r[0] + r[2] > box[0] + box[2] + 0.01 or r[1] + r[3] > box[1] + box[3] + 0.01 for r in rects):
+        doc.err('SD_ELEMENT_LINES:%d' % index)
+    return rects
+
+
+def audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders, label=None):
+    """An element led out (its label has no room inside its region): the label is wholly outside every circle (and 2.5 px clear of each line), a dot of radius 2 to 3 stands inside the declared
+    region 4 px clear of every line, and the leader runs from 2 px outside the label's box to the dot's centre, crosses no other label and no other leader."""
+    code = 'SD_ELEMENT_LEADER:%d' % index
+    if leader is None or dot is None:
+        doc.err(code)
+        return
+    want = [i for i, set_id in enumerate(sets) if set_id in (element.get('in') or [])]
+    if not want:
+        doc.err('SD_ELEMENT_LEADER_UNNEEDED:%d' % index)   # an outside element has no region to lead into
+        return
+    bits = box_membership(box, ordered, doc, 'SD_ELEMENT_LEADER_LABEL:%d' % index)
+    if bits is not None and bits != 0:
+        doc.err('SD_ELEMENT_LEADER_LABEL:%d' % index)
+    centre = (num(dot, 'cx'), num(dot, 'cy'))
+    if not 2.0 <= num(dot, 'r') <= 3.0 or not box_inside_rect((centre[0] - 3, centre[1] - 3, 6, 6), rect, 1.0):
+        doc.err('SD_ELEMENT_DOT:%d' % index)
+    for i, ellipse in enumerate(ordered):
+        inside = norm2(centre[0], centre[1], ellipse) < 1
+        if inside != (i in want) or abs(math.hypot(centre[0] - ellipse['cx'], centre[1] - ellipse['cy']) - ellipse['rx']) < 4.0:
+            doc.err('SD_ELEMENT_DOT_REGION:%d' % index)
+            break
+    ends = [(num(leader, 'x1'), num(leader, 'y1')), (num(leader, 'x2'), num(leader, 'y2'))]
+    length = math.hypot(ends[1][0] - centre[0], ends[1][1] - centre[1])
+    if length > 0.05 or abs(min(box_distance(ends[0], part) for part in (label_lines(label, box, doc, index) if label is not None else [box])) - 2.0) > 0.1 or not 10.0 <= math.hypot(ends[0][0] - ends[1][0], ends[0][1] - ends[1][1]) <= 160.0:
+        doc.err('SD_ELEMENT_LEADER_SHAPE:%d' % index)
+    for other_index, other_box in element_boxes.items():
+        if other_index == str(index):
+            continue
+        inflated = (other_box[0] - 0.5, other_box[1] - 0.5, other_box[2] + 1.0, other_box[3] + 1.0)
+        if segment_hits_box(ends[0], ends[1], inflated):
+            doc.err('SD_ELEMENT_LEADER_CROSSES_LABEL:%d:%s' % (index, other_index))
+    for other_index, other in element_leaders.items():
+        if other_index != str(index) and other is not leader and segments_cross(ends[0], ends[1], (num(other, 'x1'), num(other, 'y1')), (num(other, 'x2'), num(other, 'y2'))):
+            doc.err('SD_ELEMENT_LEADERS_CROSS:%d:%s' % (index, other_index))
+
+
 def audit_venn(plan, doc):
     sets = [raw['id'] for raw in plan['sets']]
     names = {raw['id']: raw.get('name', raw['id']) for raw in plan['sets']}
@@ -541,6 +601,12 @@ def audit_venn(plan, doc):
                 doc.err('SD_SET_COUNT_AMBIGUOUS:' + set_id)
     # element labels: each inside exactly the declared cell
     element_labels = {l.get('data-element'): l for l in doc.label_role('element')}
+    element_leaders = {e.get('data-element'): e for e in doc.role('line', 'element-leader')}
+    element_dots = {e.get('data-element'): e for e in doc.role('circle', 'element-dot')}
+    if len(element_leaders) != len(doc.role('line', 'element-leader')) or len(element_dots) != len(doc.role('circle', 'element-dot')) \
+            or not set(element_leaders) | set(element_dots) <= set(element_labels):
+        doc.err('SD_ELEMENT_LEADER_SET')
+    element_boxes = {k: doc.label_box(l) for k, l in element_labels.items()}
     if len(element_labels) != len(plan.get('elements') or []) or set(element_labels) != {str(i) for i in range(len(plan.get('elements') or []))}:
         doc.err('SD_ELEMENT_LABEL_SET')
     for index, element in enumerate(plan.get('elements') or []):
@@ -552,6 +618,11 @@ def audit_venn(plan, doc):
         box = doc.label_box(label)
         if not box_inside_rect(box, rect, 1.0):
             doc.err('SD_ELEMENT_OUTSIDE_UNIVERSAL:%d' % index)
+        # An element with no room in its region may be led out: its label stands wholly outside every circle and a leader ends in a dot inside the region it belongs to.
+        leader, dot = element_leaders.get(str(index)), element_dots.get(str(index))
+        if leader is not None or dot is not None:
+            audit_element_leader(index, element, box, leader, dot, ordered, sets, rect, doc, element_boxes, element_leaders, label)
+            continue
         bits = box_membership(box, ordered, doc, 'SD_ELEMENT_REGION:%d' % index)
         if bits is None:
             continue
@@ -981,7 +1052,7 @@ def audit_table(plan, doc):
     return {'sets': len(sets), 'elements': len(elements), 'marks': len(marks)}
 
 
-def audit(diagram, svg):
+def audit(diagram, svg, accessibility_description=None):
     kind = diagram.get('kind') if isinstance(diagram, dict) else None
     if kind not in ('VENN', 'MAPPING', 'MEMBERSHIP_TABLE'):
         fail('SET_KIND_UNSUPPORTED')
@@ -999,6 +1070,7 @@ def audit(diagram, svg):
             if overlap(boxes[i], boxes[j]):
                 doc.err('SD_LABEL_OVERLAP')
                 break
+    for code in audit_accessible_name(doc.root, accessibility_description): doc.err(code)
     raw = svg.encode('utf-8')
     return {'status': 'FAIL' if doc.errors else 'PASS', 'errors': doc.errors,
             'finalSvgSha256': 'sha256:' + hashlib.sha256(raw).hexdigest(), 'observed': observed}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a0bef215f6f1-f6626991",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d053678e59981bc668c7e4ff77f0b9cf61174a4e09e3941847853e18d46c8950",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_077",
+      "step": "대사량비200^(3/4)의 상용로그1.725를 구해 수치를 반올림한다.",
+      "note": "해설의10^0.725≈5.3은 주어진 log2,log5만으로 직접 표값을 얻은 것이 아니며 수치추정 도구가 필요하나 값은53으로 성립한다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

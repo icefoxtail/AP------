@@ -5,6 +5,9 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
+const accessibleNamesFor=description=>description===undefined?'':`<title id="visual-title">물 채우기 그릇과 높이 그래프</title><desc id="visual-desc">${esc(description)}</desc>`;
+const labelledBy=description=>description===undefined?'':' aria-labelledby="visual-title visual-desc"';
 
 // A standalone "vessel filled with water" figure (container-fill-figure-v1): one to three rows, each a vessel (a stack of cylinders and cone frusta on one
 // vertical axis, drawn as its cross-section) beside the graph of the water height against time when water is poured in at a constant rate. The author gives
@@ -141,6 +144,28 @@ export function solveContainerFill(container){
 // --- geometry shared by every row --------------------------------------------------------------------------------------------------------------
 const W=548,SAFE=12,VCX=96,VMAXW=156,GX=214,GW=206,ARROW_TIP=436,TITLE_X=444,TICK=5,ROW_GAP=6,LABEL_ROW=30,TIP_ABOVE=38,TOP_ABOVE=18;
 const PLOT_H={1:200,2:150,3:105};
+// The room above a graph's y axis (its title), beside the x axis end (its title) and in a label row (tick numbers, names) follows the policy font: when the base constants hold the labels
+// they stay exactly as they were (a figure that fits today is laid out unchanged); a figure whose labels are larger than the base room grows by the difference.
+// The base frame is built for labels up to a policy font of about 22 px; a plan whose own labels are too long for it is refused at those fonts as it always was, and above that font the frame follows the font.
+const BASE_FONT_PX=22;
+let growMeasure=null;
+const GROW_IDENTITY={visualAssetKey:'sha256:container-fill-grow-measure'};
+const measureLabel=(label,fontPx)=>{
+  try{growMeasure??=typesetter();return growMeasure({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'container-fill',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},GROW_IDENTITY).intrinsic;}
+  catch(error){return {width:0,height:0};}   // a label that cannot be typeset is refused by composing with its own code
+};
+function frameFor(model,ctx){
+  const fontPx=ctx?.fontPx;
+  const extra=ctx?.extra??0,plotAdd=ctx?.plotAdd??0,base={width:W+extra,tipAbove:TIP_ABOVE,labelRow:LABEL_ROW,extra,plotAdd};
+  if(!(fontPx>BASE_FONT_PX))return base;
+  const yTitle=measureLabel({kind:'TEXT',text:model.yTitle},fontPx),xTitle=measureLabel({kind:'TEXT',text:model.xTitle},fontPx);
+  let row=0;
+  for(const pr of model.pairs){
+    for(const text of [pr.name,pr.graphName])if(text)row=Math.max(row,measureLabel({kind:'TEXT',text},fontPx).height);
+    for(const t of [...pr.xTicks,...pr.yTicks])row=Math.max(row,measureLabel({kind:'MATH',tex:DISPLAY+qtex(P(t))},fontPx).height);
+  }
+  return {width:Math.max(W+extra,Math.ceil(TITLE_X+extra+xTitle.width+SAFE)),tipAbove:Math.max(TIP_ABOVE,Math.ceil(yTitle.height)+4),labelRow:Math.max(LABEL_ROW,Math.ceil(row)),extra,plotAdd};
+}
 const MIN_PIECE_PX=12,MIN_WALL_PX=6,MIN_BREAK_PX=8,CHORD_PX=0.1,GUIDE_GAP=5,NOTE_REACH=40;
 const STYLE={
   axis:'stroke="#111" stroke-width="1.2" fill="none"',tick:'stroke="#111" stroke-width="1.2" fill="none"',arrow:'fill="#111" stroke="none"',
@@ -181,15 +206,16 @@ function curveVertices(pr,px,py){
 }
 
 /** One row: the vessel section, its graph, the guides and every label with a fixed anchor. y0 is the top of the row. */
-function layoutPair(m,pr,p,y0,count){
-  const H=N(pr.height),maxR=N(pr.maxRadius),sv=Math.min(PLOT_H[count]/H,VMAXW/(2*maxR)),ph=H*sv;
+function layoutPair(m,pr,p,y0,count,frame){
+  const GWe=GW+frame.extra,TIPe=ARROW_TIP+frame.extra,TXe=TITLE_X+frame.extra;   // the graph, its arrow tip and the x title end move right by what the graph grew
+  const H=N(pr.height),maxR=N(pr.maxRadius),sv=Math.min((PLOT_H[count]+frame.plotAdd)/H,VMAXW/(2*maxR)),ph=H*sv;
   const z=pr.z.map(N),vol=pr.vol.map(N),total=N(pr.volume),n=pr.pieces.length;
   // proportions that cannot be drawn legibly: a slab thinner than 12 px, a wall pair narrower than 6 px, two kinks closer than 8 px
   const positive=pr.pieces.flatMap(pc=>[N(pc.r0),N(pc.r1)]).filter(r=>r>0);
-  if(pr.pieces.some((pc,k)=>(z[k+1]-z[k])*sv<MIN_PIECE_PX)||2*Math.min(...positive)*sv<MIN_WALL_PX||vol.slice(1).some((v,k)=>(v-vol[k])/total*GW<MIN_BREAK_PX))bad('CONTAINER_PROPORTION_UNSUPPORTED');
+  if(pr.pieces.some((pc,k)=>(z[k+1]-z[k])*sv<MIN_PIECE_PX)||2*Math.min(...positive)*sv<MIN_WALL_PX||vol.slice(1).some((v,k)=>(v-vol[k])/total*GWe<MIN_BREAK_PX))bad('CONTAINER_PROPORTION_UNSUPPORTED');
   const hasX=pr.xTicks.length>0,named=!!(pr.name||pr.graphName);
-  const tipY=y0+TIP_ABOVE,top=tipY+TOP_ABOVE,base=top+ph;
-  const py=h=>r6(base-h*sv),pxv=v=>r6(GX+v/total*GW);
+  const tipY=y0+frame.tipAbove,top=tipY+TOP_ABOVE,base=top+ph;
+  const py=h=>r6(base-h*sv),pxv=v=>r6(GX+v/total*GWe);
   const prims=[],labels=[],id=s=>`${s}-${p}`;
   // vessel section: filled silhouette (closed), wall (open at the top), a thin line at every inner piece boundary
   const right=[];
@@ -205,13 +231,13 @@ function layoutPair(m,pr,p,y0,count){
     prims.push(L(`vessel-sep-${p}-${i}`,'vessel-sep','sep',VCX-w,py(z[i]),VCX+w,py(z[i]),{pair:p,boundary:i},25));
   }
   // graph axes
-  prims.push(L(id('x-axis'),'axis','axis',GX,base,ARROW_TIP-8,base,{axis:'x',pair:p}));
-  prims.push({t:'polygon',id:id('x-axis-arrow'),role:'arrow',cls:'arrow',points:[[ARROW_TIP,base],[ARROW_TIP-9,base-4],[ARROW_TIP-9,base+4]],data:{pair:p},layer:30});
+  prims.push(L(id('x-axis'),'axis','axis',GX,base,TIPe-8,base,{axis:'x',pair:p}));
+  prims.push({t:'polygon',id:id('x-axis-arrow'),role:'arrow',cls:'arrow',points:[[TIPe,base],[TIPe-9,base-4],[TIPe-9,base+4]],data:{pair:p},layer:30});
   prims.push(L(id('y-axis'),'axis','axis',GX,base,GX,tipY+8,{axis:'y',pair:p}));
   prims.push({t:'polygon',id:id('y-axis-arrow'),role:'arrow',cls:'arrow',points:[[GX,tipY],[GX-4,tipY+9],[GX+4,tipY+9]],data:{pair:p},layer:30});
   // numeric ticks only where the author gave a value
   pr.xTicks.forEach((t,k)=>{
-    const x=r6(GX+N(t)*N(pr.flowPi)/total*GW);
+    const x=r6(GX+N(t)*N(pr.flowPi)/total*GWe);
     prims.push(L(`x-tick-${p}-${k}`,'x-tick','tick',x,base,x,base+TICK,{axis:'x',value:t,pair:p}));
     labels.push(math(`x-tick-${p}-${k}-label`,'x-tick',`x-tick-${p}-${k}`,DISPLAY+qtex(P(t)),t,'center','top',x,base+TICK+4,{value:t,pair:p}));
   });
@@ -233,13 +259,13 @@ function layoutPair(m,pr,p,y0,count){
   }
   // labels
   labels.push(textLabel(id('y-title'),'axis-title',id('y-axis'),m.yTitle,'center','bottom',GX,tipY-4,{pair:p}));
-  labels.push(textLabel(id('x-title'),'axis-title',id('x-axis'),m.xTitle,'start','middle',TITLE_X,base,{pair:p}));
+  labels.push(textLabel(id('x-title'),'axis-title',id('x-axis'),m.xTitle,'start','middle',TXe,base,{pair:p}));
   if(m.origin)labels.push(math(id('origin'),'origin',id('x-axis'),'O','O','end','top',GX-6,base+4,{pair:p}));
   const nameY=base+TICK+4;
   if(pr.name)labels.push(textLabel(id('vessel-name'),'vessel-name',id('vessel-wall'),pr.name,'center','top',VCX,nameY,{pair:p}));
-  if(pr.graphName)labels.push(textLabel(id('graph-name'),'graph-name',id('curve'),pr.graphName,'center','top',GX+GW/2,nameY+(hasX?LABEL_ROW:0),{pair:p}));
+  if(pr.graphName)labels.push(textLabel(id('graph-name'),'graph-name',id('curve'),pr.graphName,'center','top',GX+GWe/2,nameY+(hasX?frame.labelRow:0),{pair:p}));
   for(const note of pr.notes)labels.push({id:`segment-note-${p}-${note.segment}`,role:'segment-note',owner:id('curve'),kind:'TEXT',text:note.text,plain:note.text,anchor:{x:0,y:0,ax:'start',ay:'middle'},extra:{pair:p,segment:note.segment},placement:'note'});
-  const bottom=base+TICK+4+Math.max((hasX?LABEL_ROW:0)+(named?LABEL_ROW:0),20)+2;
+  const bottom=base+TICK+4+Math.max((hasX?frame.labelRow:0)+(named?frame.labelRow:0),20)+2;
   // the polyline of piece k runs from the last vertex of the piece below it (its own first vertex) to its own last one
   const segments=pr.pieces.map((_,k)=>{const own=verts.filter(v=>v.seg===k).map(v=>[v.x,v.y]),below=k?verts.filter(v=>v.seg===k-1).at(-1):null;return below?[[below.x,below.y],...own]:own;});
   const mids=pr.pieces.map((pc,k)=>{ // the curve point at the middle height of each piece
@@ -250,28 +276,28 @@ function layoutPair(m,pr,p,y0,count){
 }
 
 // --- the figure: spec = ordered primitives + labels at anchors (note positions need the label widths and are fixed when the labels are typeset) --------------------------
-export function containerFillSpec(plan,model){
+export function containerFillSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.container))bad('CONTAINER_PLAN_INVALID');
   if(objectSha(solveContainerFill(plan.container))!==objectSha(model))bad('CONTAINER_MODEL_MISMATCH');
-  return {schemaVersion:SPEC_VERSION,...buildSpec(model)};
+  return {schemaVersion:SPEC_VERSION,...buildSpec(model,ctx)};
 }
-function buildSpec(model){
-  const prims=[],labels=[],pairs=[];
+function buildSpec(model,ctx){
+  const prims=[],labels=[],pairs=[],frame=frameFor(model,ctx);
   let y0=SAFE;
   model.pairs.forEach((pr,p)=>{
-    const row=layoutPair(model,pr,p,y0,model.pairs.length);
+    const row=layoutPair(model,pr,p,y0,model.pairs.length,frame);
     prims.push(...row.prims);labels.push(...row.labels);pairs.push(row.geom);
     y0=row.bottom+ROW_GAP;
   });
-  return {size:{width:W,height:Math.ceil(y0-ROW_GAP+SAFE)},prims,labels,pairs};
+  return {size:{width:frame.width,height:Math.ceil(y0-ROW_GAP+SAFE)},prims,labels,pairs};
 }
-export const containerFillSize=model=>({...buildSpec(model).size});
 
 // --- composing ---------------------------------------------------------------------------------------------------------------------------------
-const PLAIN_KEYS=['capability','container','caption','sourceConditions','newVisualInformation'];
+const PLAIN_KEYS=['capability','container','caption','sourceConditions','newVisualInformation','accessibilityDescription'];
 export function checkContainerFillPlan(plan){
   onlyKeys(plan,PLAIN_KEYS,'CONTAINER_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('CONTAINER_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveContainerFill(plan.container);
 }
 const fmt=n=>String(r6(n));
@@ -361,6 +387,51 @@ function cutGuides(spec,placed){
   }
   spec.prims=out;
 }
+// The labels of one layout: typeset, inside the figure, notes beside their pieces, guides cut around labels, no two labels touching, none on a line. Throws the Stop the compose reports.
+function placeLabels(model,font,level,typeset,identity){
+  let spec;
+  try{spec=buildSpec(model,{fontPx:font,...level});}catch(error){if(!isDomainCode(error))throw error;throw new Stop('CONTAINER_SPEC_ERROR',{code:error.message});}
+  const placed=[];
+  for(const label of spec.labels){
+    let fragment;
+    try{fragment=typeset({id:label.id,owner:label.owner,factRole:'DERIVED_INTERMEDIATE',fontPx:font,panelId:'container-fill',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+    catch(error){if(!isDomainCode(error))throw error;throw new Stop('CONTAINER_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+    const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
+    placed.push({label,fragment,box:label.placement==='note'?null:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
+  }
+  const {width,height}=spec.size;
+  // the fixed labels must be inside the figure before notes look for room beside them
+  for(const item of placed.filter(it=>it.box)){
+    const b=item.box;
+    if(b.x<SAFE||b.y<SAFE||b.x+b.width>width-SAFE||b.y+b.height>height-SAFE)throw new Stop('CONTAINER_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
+  }
+  resolveNotes(spec,placed);
+  cutGuides(spec,placed);
+  for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop('CONTAINER_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
+  for(const item of placed){
+    const hit=primitiveHit(grow(item.box,1.5),spec.prims);
+    if(hit!==null)throw new Stop('CONTAINER_LABEL_ON_LINE',{labelId:item.label.id,primitive:hit});
+  }
+  return {spec,placed};
+}
+// The graph is as wide as the base layout (206 px) whenever that holds every label; when a note or a label finds no room at the policy font the graph grows step by step. The first layout that holds is used,
+// so a figure that fits the base layout is drawn exactly as before.
+const GRAPH_GROWTH=[{extra:0,plotAdd:0},{extra:40,plotAdd:0},{extra:80,plotAdd:0},{extra:120,plotAdd:0},{extra:40,plotAdd:30},{extra:80,plotAdd:30},{extra:80,plotAdd:60},{extra:120,plotAdd:60},{extra:160,plotAdd:90}];
+function settleLayout(model,font,typeset,identity){
+  let first=null;
+  for(const level of font>BASE_FONT_PX?GRAPH_GROWTH:GRAPH_GROWTH.slice(0,1)){
+    try{return {level,...placeLabels(model,font,level,typeset,identity)};}catch(error){if(!(error instanceof Stop))throw error;first??=error;}
+  }
+  throw first;
+}
+/** The size a container figure needs at the policy font (the base size when no font is given or the base layout holds). */
+export const containerFillSize=(model,ctx)=>{
+  if(!(ctx?.fontPx>BASE_FONT_PX))return {...buildSpec(model).size};
+  growMeasure??=typesetter();
+  let level={extra:0,plotAdd:0};
+  try{level=settleLayout(model,ctx.fontPx,growMeasure,GROW_IDENTITY).level;}catch(error){if(!(error instanceof Stop))throw error;}
+  return {...buildSpec(model,{fontPx:ctx.fontPx,...level}).size};
+};
 /** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
 export async function composeContainerFillFigure({plan,model,identity,typographyPolicy,browser}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
@@ -370,30 +441,12 @@ export async function composeContainerFillFigure({plan,model,identity,typography
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
-    let spec;
-    try{spec=containerFillSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='CONTAINER_MODEL_MISMATCH'?error.message:'CONTAINER_SPEC_ERROR',{code:error.message});}
-    lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
-    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
-    for(const label of spec.labels){
-      let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:'DERIVED_INTERMEDIATE',fontPx:font,panelId:'container-fill',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
-      catch(error){if(!isDomainCode(error))throw error;throw new Stop('CONTAINER_TYPESET_ERROR',{labelId:label.id,code:error.message});}
-      const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
-      placed.push({label,fragment,box:label.placement==='note'?null:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
-    }
+    // the plan and its model must agree (the same check the spec has always made)
+    try{containerFillSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='CONTAINER_MODEL_MISMATCH'?error.message:'CONTAINER_SPEC_ERROR',{code:error.message});}
+    const typeset=typesetter(),font=typographyPolicy.baseFontPx;
+    const {level,spec,placed}=settleLayout(model,font,typeset,identity);
+    lineage.specSha256=objectSha(JSON.parse(JSON.stringify(buildSpec(model,{fontPx:font,...level}))));
     const {width,height}=spec.size;
-    // the fixed labels must be inside the figure before notes look for room beside them
-    for(const item of placed.filter(it=>it.box)){
-      const b=item.box;
-      if(b.x<SAFE||b.y<SAFE||b.x+b.width>width-SAFE||b.y+b.height>height-SAFE)throw new Stop('CONTAINER_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
-    }
-    resolveNotes(spec,placed);
-    cutGuides(spec,placed);
-    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop('CONTAINER_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
-    for(const item of placed){
-      const hit=primitiveHit(grow(item.box,1.5),spec.prims);
-      if(hit!==null)throw new Stop('CONTAINER_LABEL_ON_LINE',{labelId:item.label.id,primitive:hit});
-    }
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
@@ -401,11 +454,11 @@ export async function composeContainerFillFigure({plan,model,identity,typography
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-container-fill="${FIGURE_CAPABILITY}" data-pairs="${model.pairs.length}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${labelledBy(readAccessibilityDescription(plan))} data-container-fill="${FIGURE_CAPABILITY}" data-pairs="${model.pairs.length}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNamesFor(readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-container-fill-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({container:plan.container,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'containerFillAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({container:plan.container,svg,...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'containerFillAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'containerFillAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

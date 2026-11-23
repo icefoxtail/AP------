@@ -1317,6 +1317,65 @@ def _audit_id_marker(root,element_id,point,policy,transform):
     if 2*radius*transform['displayScale']<policy['minimumReferenceMarkerDiameterCssPx']:errors.append('GRAPH_REFERENCE_MARKER_BELOW_PROFILE_FLOOR:'+element_id)
     return errors,observed
 
+def _glyph_digits(value):
+    return [format(ord(ch), 'X') for ch in str(abs(int(value)))]
+
+def _glyph_fraction(value):
+    """The glyphs of a non-negative exact number: its digits, or the numerator then the denominator of a stacked fraction."""
+    value = Fraction(abs(value))
+    return _glyph_digits(value.numerator) + (_glyph_digits(value.denominator) if value.denominator != 1 else [])
+
+def _exp_formula_glyphs(a, k, c, base, shift):
+    """(Worked out from the exact numbers, not from the engine's label text.) The glyph codes, in reading order, that the printed formula y=a*b^(k*(x-p))+c must show.
+    A factor and an integer base never touch (their digits would read as one number), so a multiplication dot stands between them; a bracketed fraction or root base,
+    or e, follows its factor directly; the exponent is a superscript without brackets (x+1, 2x, 2(x+1), x/2, -x)."""
+    X, PLUS, MINUS, DOT, OPEN, CLOSE = '1D465', '2B', '2212', '22C5', '28', '29'
+    out = ['1D466', '3D']
+    if a == -1:
+        out.append(MINUS)
+    elif a != 1:
+        out += ([MINUS] if a < 0 else []) + _glyph_fraction(a)
+    kind = base['kind']
+    if a not in (1, -1) and kind == 'INTEGER':
+        out.append(DOT)
+    if kind == 'NATURAL':
+        out.append('1D452')
+    elif kind == 'INTEGER':
+        out += _glyph_digits(base['exact'])
+    elif kind == 'RATIONAL':
+        ratio = Fraction(base['text'])
+        out += [OPEN] + _glyph_digits(ratio.numerator) + _glyph_digits(ratio.denominator) + [CLOSE]
+    else:
+        out += [OPEN] + _glyph_digits(int(base['text'][5:-1])) + ['221A', CLOSE]
+    inner = [X] if shift == 0 else [X, (PLUS if shift < 0 else MINUS)] + _glyph_fraction(shift)
+    bracketed = [OPEN] + inner + [CLOSE] if shift != 0 else inner
+    if k == 1:
+        exponent = inner
+    elif k == -1:
+        exponent = [MINUS] + bracketed
+    else:
+        magnitude = abs(k)
+        sign = [MINUS] if k < 0 else []
+        if magnitude.denominator == 1:
+            exponent = sign + _glyph_digits(magnitude.numerator) + bracketed
+        elif magnitude.numerator == 1 and k > 0:
+            exponent = inner + _glyph_digits(magnitude.denominator)
+        else:
+            exponent = sign + ([] if magnitude.numerator == 1 else _glyph_digits(magnitude.numerator)) + bracketed + _glyph_digits(magnitude.denominator)
+    out += exponent
+    if c != 0:
+        out += [PLUS if c > 0 else MINUS] + _glyph_fraction(c)
+    return out
+
+def _exp_formula_label_errors(root, label_id, a, k, c, base, shift):
+    """The drawn formula label of an exponential curve against the glyphs worked out from its exact numbers (EXPONENTIAL_FORMULA_LABEL_MISMATCH).
+    A label that is not drawn (hidden, or a name only) is not an error here."""
+    nodes = [node for node in root.iter() if node.get('id') == label_id and node.tag.split('}')[-1] == 'g']
+    if len(nodes) != 1:
+        return []
+    want = _exp_formula_glyphs(Fraction(a), Fraction(k), Fraction(c), base, Fraction(shift))
+    return [] if _ov_glyph_codes(nodes[0]) == want else ['EXPONENTIAL_FORMULA_LABEL_MISMATCH:' + label_id]
+
 def exponential_base_overview_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
@@ -1333,7 +1392,7 @@ def exponential_base_overview_audit(plan,svg,transform):
         if plan.get('overviewPolicy')!='EXPONENTIAL_BASE_OVERVIEW_v1':errors.append('EXPONENTIAL_OVERVIEW_POLICY_REQUIRED')
         if not xmin<float(shift)<xmax:errors.append('EXPONENTIAL_REFERENCE_OUTSIDE_VIEWPORT')
         if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-        root=ET.fromstring(svg);points,point_errors=_observed_svg_points(root,transform);errors.extend(point_errors)
+        root=ET.fromstring(svg);points,point_errors=_observed_svg_points(root,transform);errors.extend(point_errors);errors.extend(_exp_formula_label_errors(root,'formula',a,k,c,base,shift))
         if points:
             points=sorted(points,key=lambda point:point[0]);scale=transform['sy']*transform['displayScale'];xscale=transform['sx']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
             if abs(points[0][0]-lo)>x_tol or abs(points[-1][0]-hi)>x_tol:errors.append('EXPONENTIAL_DRAW_DOMAIN_COVERAGE_FAIL')
@@ -1521,6 +1580,8 @@ def exp_log_pair_overview_audit(plan,svg,transform,model=False):
         if set(branches)!={'REF_'+row['id'] for row in expected_rows}:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_INVENTORY_MISMATCH')
         xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale']
         for row in expected_rows:
+            if row['family']=='exponential-affine' and not any(isinstance(item,dict) and item.get('id')==row['id'] and item.get('formulaLabel')=='NAME' for item in plan.get('curves',[])):
+                errors.extend(_exp_formula_label_errors(root,'formula-'+str(row['id']),row['_coefficients'][0],row['_coefficients'][1],row['_coefficients'][2],row['_base'],row['_shift']))
             curves=branches.get('REF_'+row['id'],[])
             if len(curves)!=1:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_MISSING_OR_DUPLICATED:'+str(row['id']));continue
             points=sorted(curves[0],key=lambda point:point[0]);lo,hi=row['domain'];x_tol=.35/max(1e-12,xscale);y_tol=.35/max(1e-12,yscale)
@@ -1956,6 +2017,8 @@ def _region_label_box(elements,label_id):
 
 GRAPH_REGION_LEADER_TOLERANCE_PX=2.5
 GRAPH_REGION_LEADER_PROBE_PX=3.0
+GRAPH_REGION_DOT_CLEAR_PX=8.0       # the observer's own limits for the dot a leader starts on (not read from the engine)
+GRAPH_REGION_DOT_STROKE_PX=6.0
 
 def _grl_dist(point,a,b):
     dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
@@ -1971,8 +2034,9 @@ def _grl_cross(a,b,c,d):
 
 def _graph_region_leader_labels(entries,polygons,transform,root):
     """A graph-region label that stands outside its band (the band is too thin or crowded to hold it) must be tied to that band by a drawn leader (data-role=leader,
-    data-owner-label): the leader starts on the band's own boundary and runs away from it, the label box lies outside every band, the leader ends on the label box,
-    never enters a band after its start and never properly crosses a drawn stroke. A label outside its band with no such leader stays an error (GRAPH_REGION_LABEL_OUTSIDE)."""
+    data-owner-label) that starts on a dot INSIDE the band (data-role=leader-dot): clear of the band's boundary and of every stroke, in no other band. The label box lies outside every
+    band, the leader ends on the label box, leaves the band once and never enters a band again, and crosses a drawn stroke only where that stroke is the band's own boundary.
+    A label outside its band with no such leader stays an error (GRAPH_REGION_LABEL_OUTSIDE)."""
     errors=[]
     if not entries:return errors
     px=lambda point:(transform['originX']+transform['sx']*point[0],transform['originY']-transform['sy']*point[1])
@@ -1997,20 +2061,39 @@ def _graph_region_leader_labels(entries,polygons,transform,root):
         if any(_region_inside(poly,p) for poly in areas.values() for p in probes):errors.append('GRAPH_REGION_LABEL_NOT_OUTSIDE:'+region_id)
         edges=[((x,y),(x+w,y)),((x+w,y),(x+w,y+h)),((x+w,y+h),(x,y+h)),((x,y+h),(x,y))]
         if min(_grl_dist(b,c,d) for c,d in edges)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_LABEL:'+region_id)
-        if min(_grl_dist(a,c,d) for c,d in zip(own,own[1:]+own[:1]))>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_REGION:'+region_id)
         length=math.dist(a,b)
         if length<=1e-9:errors.append('GRAPH_REGION_LEADER_EMPTY:'+region_id);continue
+        # The leader starts on a dot INSIDE its own band (never on the boundary, where it reads as a tick value or as the name of the curve it touches): the dot is drawn at the start,
+        # lies in no other band, clear of the band's boundary and of every stroke; the leader leaves the band once and never enters a band again.
+        dot=next((n for n in root.iter() if n.tag.split('}')[-1]=='circle' and n.get('data-role')=='leader-dot' and n.get('data-owner-label')=='region-'+region_id+'-label'),None)
+        try:dot_at=(float(dot.get('cx')),float(dot.get('cy'))) if dot is not None else None
+        except (TypeError,ValueError):dot_at=None
+        if dot_at is None or math.dist(dot_at,a)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_DOT_MISSING:'+region_id);continue
+        if not _region_inside(own,a):errors.append('GRAPH_REGION_LEADER_NOT_FROM_INSIDE:'+region_id)
+        if min(_grl_dist(a,c,d) for c,d in zip(own,own[1:]+own[:1]))<GRAPH_REGION_DOT_CLEAR_PX:errors.append('GRAPH_REGION_LEADER_START_NEAR_BOUNDARY:'+region_id)
+        if any(_region_inside(poly,a) for other_id,poly in areas.items() if other_id!=region_id):errors.append('GRAPH_REGION_LEADER_START_IN_OTHER_REGION:'+region_id)
+        if any(_grl_dist(a,c,d)<GRAPH_REGION_DOT_STROKE_PX for stroke_id,points in strokes for c,d in zip(points,points[1:])):errors.append('GRAPH_REGION_LEADER_START_NEAR_STROKE:'+region_id)
         unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
-        if _region_inside(own,(a[0]+unit[0]*GRAPH_REGION_LEADER_PROBE_PX,a[1]+unit[1]*GRAPH_REGION_LEADER_PROBE_PX)):errors.append('GRAPH_REGION_LEADER_ENTERS_REGION:'+region_id)
-        steps=max(2,int(length//4))
+        steps=max(2,int(length//4));left=False;came_back=False
         for k in range(steps+1):
             d=length*k/steps
-            if d<GRAPH_REGION_LEADER_PROBE_PX:continue
             point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
-            if any(_region_inside(poly,point) for poly in areas.values()):errors.append('GRAPH_REGION_LEADER_IN_REGION:'+region_id);break
+            if any(_region_inside(poly,point) for other_id,poly in areas.items() if other_id!=region_id):errors.append('GRAPH_REGION_LEADER_IN_REGION:'+region_id);break
+            if _region_inside(own,point):
+                if left:came_back=True
+            elif d>=GRAPH_REGION_LEADER_PROBE_PX:left=True
+        if not left:errors.append('GRAPH_REGION_LEADER_NOT_LEAVING:'+region_id)
+        if came_back:errors.append('GRAPH_REGION_LEADER_ENTERS_REGION:'+region_id)
+        own_edges=list(zip(own,own[1:]+own[:1]))
         for stroke_id,points in strokes:
-            # the stroke the leader starts on (the band's own boundary curve) is touched only at the start
-            if any(_grl_cross(a,b,c,d) and _grl_dist(a,c,d)>GRAPH_REGION_LEADER_TOLERANCE_PX for c,d in zip(points,points[1:])):errors.append('GRAPH_REGION_LEADER_CROSSES:'+region_id+':'+str(stroke_id));break
+            # a stroke is crossed only where it is the band's own boundary (the leader leaves through it once)
+            for c,d in zip(points,points[1:]):
+                if not _grl_cross(a,b,c,d):continue
+                det=(b[0]-a[0])*(d[1]-c[1])-(b[1]-a[1])*(d[0]-c[0]);t_at=((c[0]-a[0])*(d[1]-c[1])-(c[1]-a[1])*(d[0]-c[0]))/det
+                hit=(a[0]+(b[0]-a[0])*t_at,a[1]+(b[1]-a[1])*t_at)
+                if min(_grl_dist(hit,p,q) for p,q in own_edges)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_CROSSES:'+region_id+':'+str(stroke_id));break
+            else:continue
+            break
     return errors
 
 def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
@@ -2701,7 +2784,14 @@ def _pd_audit_curve(plan,svg,transform,prefix='',shared_mode=False):
                 if _pd_defines(piece,value):return _pd_value(piece,value)
             return None
         for point in required:
-            at=_pp_coeff(str(point['x']));near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
+            # A required point's x is a float in the framed plan (1/2 -> 0.5); its exact text is the plan's exactCoordinates entry (the framer checked it against the float), and the observer
+            # reads that exact value and checks the float against it, so a fraction or a root is compared exactly and never through a decimal.
+            pair=(plan.get('exactCoordinates') or {}).get(point.get('id'))
+            if isinstance(pair,list) and len(pair)==2:
+                at=_pp_coeff(str(pair[0]))
+                if abs(float(at)-point['x'])>1e-9*max(1,abs(point['x'])):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_X_MISMATCH:'+str(point.get('id')))
+            else:at=_pp_coeff(str(point['x']))
+            near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
             value=defined_value(at)
             if not ((value is not None and near(value)) or any(_pp_same(at,at_value) and near(declared) for at_value,declared in jumps)):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
         for at,value,_ in extrema:
@@ -2988,7 +3078,21 @@ def _ov_label_codes(text):
     """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a free equation text: letters are themselves or their italic math code, - is the minus
     sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own. (EXT-20261109-c) A Greek letter is its italic code and
     the root sign draws its radicand first and the radical glyph U+221A after it (the brackets of sqrt(...) are not drawn)."""
-    return _ov_codes_of(_ov_drop_fraction_brackets(text.replace(' ','')))
+    return _ov_codes_of(_ov_drop_exponent_brackets(_ov_drop_fraction_brackets(text.replace(' ',''))))
+
+def _ov_drop_exponent_brackets(text):
+    """A bracketed exponent is a superscript and its brackets are not drawn (2^(x+1) is 2 with x+1 raised; e^(-x)), except a bracketed bare number (x^(2), x^(-1)),
+    which keeps them."""
+    drop=set()
+    for at,ch in enumerate(text):
+        if ch!='^' or at+1>=len(text) or text[at+1]!='(':continue
+        depth=0;close=None
+        for index in range(at+1,len(text)):
+            depth+=(text[index]=='(')-(text[index]==')')
+            if depth==0:close=index;break
+        if close is None:continue
+        if not re.fullmatch(r'[-+−]?[0-9]+(?:[.][0-9]+)?',text[at+2:close]):drop|={at+1,close}
+    return ''.join(ch for index,ch in enumerate(text) if index not in drop)
 
 def _ov_codes_of(text):
     out=[];index=0
@@ -3316,12 +3420,76 @@ def _ov_angle_marks(plan,raw,points,by_line):
         if any(not _ov_zero(members[0][0]*other[1]-other[0]*members[0][1]) for other in members[1:]):raise ValueError('GRAPH_EQUAL_ANGLES_MISMATCH')
     return rows
 
+def _ov_asymptote_values(plan):
+    """(Independent of the framing code.) The exact asymptotes, not an axis, of the exponential, logarithmic and rational curves of a plan: [('h',y)|('v',x)]."""
+    family=plan.get('family');rows=[]
+    if family in ('exponential-affine','logarithmic-affine','rational'):rows.append((family,plan))
+    elif family=='exp-log-pair':
+        rows+=[(curve.get('family'),curve) for curve in plan.get('curves') or [] if isinstance(curve,dict)]
+    elif family=='multi-curve':
+        names={'EXPONENTIAL':'exponential-affine','LOGARITHMIC':'logarithmic-affine','RATIONAL':'rational'}
+        rows+=[(names.get(curve.get('kind')),curve) for curve in plan.get('curves') or [] if isinstance(curve,dict)]
+    out=[]
+    for name,row in rows:
+        try:
+            exact=lambda items:[S.Rational(Fraction(str(value))) for value in (items or [])]
+            fold=(lambda value:abs(value)) if row.get('abs') is True else (lambda value:value)   # y=|f(x)| approaches |C|
+            if name=='exponential-affine':
+                c=exact(row.get('coefficients'))
+                if len(c)==3:out.append(('h',fold(c[2])))
+            elif name=='logarithmic-affine':
+                c=exact(row.get('coefficients'))
+                if len(c)==4 and c[1]!=0:out.append(('v',-c[2]/c[1]))
+            elif name=='rational':
+                n=exact(row.get('numerator'));d=exact(row.get('denominator'))
+                if len(d)==2 and d[1]!=0:
+                    out.append(('v',-d[0]/d[1]))
+                    if len(n)==2:out.append(('h',fold(n[1]/d[1])))
+        except (ValueError,TypeError,ZeroDivisionError):continue
+    return [item for item in out if item[1]!=0]
+
+def _ov_asymptote_twin(line,groups,own_label_id):
+    """True when a label other than the overlay line's own reads exactly the asymptote's value (x=p, y=q: the text the line itself would carry), i.e. the curve's family writes it already."""
+    if line['kind']=='VERTICAL':text='x='+str(line['x'])
+    else:text='y='+str(line['intercept'])
+    if isinstance(line.get('label'),str):text=line['label']
+    want=_ov_label_codes(text)
+    for ident,node in groups.items():
+        if ident==own_label_id:continue
+        got=_ov_glyph_codes(node)
+        if got and len(got)==len(want) and all(code in allowed for code,allowed in zip(got,want)):return True
+    return False
+
+def _ov_mark_asymptote_lines(plan,lines):
+    """An overlay line with no style and no colour that lies on an asymptote of a drawn curve is read as an asymptote line: dashed, and thinner than an axis."""
+    wanted=_ov_asymptote_values(plan)
+    for line in lines:
+        if 'style' in line or 'color' in line:continue
+        if line['kind']=='VERTICAL':hit=any(axis=='v' and value==line['x'] for axis,value in wanted)
+        else:hit=line['slope']==0 and any(axis=='h' and value==line['intercept'] for axis,value in wanted)
+        if hit:line['style']='DASHED';line['asymptote']=True
+
+def _ov_open_endpoints(plan):
+    """(Independent of the framing code.) [(x,y)]: the ends of the source interval the plan declares OPEN, with the curve's limit there."""
+    domain=plan.get('sourceDomain')
+    if not isinstance(domain,dict) or domain.get('kind')!='INTERVAL':return []
+    bounds=domain.get('range');states=domain.get('states')
+    if not (isinstance(bounds,list) and len(bounds)==2 and isinstance(states,list) and len(states)==2):return []
+    closed={**plan,'sourceDomain':{**domain,'states':['CLOSED','CLOSED']}};out=[]
+    for value,state in zip(bounds,states):
+        if state!='OPEN':continue
+        try:
+            x=_ov_reader(value);out.append((x,_ov_curve_value(closed,x)))
+        except (ValueError,TypeError,KeyError):continue
+    return out
+
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
     raw=plan.get('overlays')
     if raw is None:return None
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
+    _ov_mark_asymptote_lines(plan,lines)
     by_line={line['id']:line for line in lines}
     circles={};circle_fills={}
     for entry in raw.get('circles',[]) or []:
@@ -3377,6 +3545,7 @@ def _ov_expected(plan):
             ring=circles.get(entry['onCircle'])
             if ring is None or abs(float(S.N((x-ring[0])**2+(y-ring[1])**2-ring[2],40)))>1e-12:raise ValueError('OVERLAY_POINT_NOT_ON_CIRCLE')
         points[ident]=(x,y)
+        if 'marker' not in entry and any(x==end[0] and y==end[1] for end in _ov_open_endpoints(plan)):point_looks[ident]['open']=True
         if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
             if not (_ov_surd_form(x) and _ov_surd_form(y)):raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
@@ -3492,13 +3661,13 @@ def _ov_surd_terms(value):
     return ([(a,None)] if a else [])+[(int(q*d),int(radicand))],int(d)
 
 def _ov_surd_form(value):
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))   # an exact curve value such as (-3-sqrt(5))**2+6*(-3-sqrt(5))+4 is the rational 0 only once expanded
     return value.is_Rational or _ov_surd_terms(value) is not None
 
 def _ov_coordinate_codes(value):
     """(G5b) Glyph codes of a coordinate written as an integer, a fraction or p+q*sqrt(r) over a denominator: terms in reading order (+ is U+002B, - is U+2212), the radicand
     digits before the radical U+221A (MathJax draws the radicand first), then the denominator digits (a stacked fraction reads numerator first)."""
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))
     if value.is_Rational:return _ov_int_codes(value)
     rows=_ov_surd_terms(value)
     if rows is None:raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
@@ -3546,6 +3715,8 @@ def _ov_final_window(viewport,plan=None):
     if plan is not None and isinstance(plan.get('axisFold'),dict):return list(viewport)   # a folded figure does not hold the origin: the window is the plan's own
     unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
     if plan is not None and 'axisScale' in plan:unit_points=((0.0,0.0),)   # (G18c) a declared axisScale frame is never widened for the unit points
+    # A squeezed frame (the plan records axisRatio other than 1: a tall figure drawn at a smaller y scale) is not widened either: widening each axis by its own span would break the recorded ratio.
+    if plan is not None and isinstance(plan.get('axisRatio'),(int,float)) and not isinstance(plan.get('axisRatio'),bool) and plan['axisRatio']!=1:unit_points=((0.0,0.0),)
     if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points):return list(viewport)
     xs=[xmin,xmax]+[x for x,_ in unit_points];ys=[ymin,ymax]+[y for _,y in unit_points]
     lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
@@ -3738,6 +3909,11 @@ def overlays_audit(plan,svg,transform):
                 # style (E31): a DASHED overlay line carries a stroke-dasharray, a SOLID one (the default) none
                 if (lines[obj_id].get('stroke-dasharray') is not None)!=(line.get('style')=='DASHED'):errors.append('OVERLAY_LINE_STYLE_MISMATCH:'+str(line['id']))
                 errors+=_ov_color_errors(lines[obj_id],line.get('color'),'OVERLAY_COLOR_MISMATCH:'+str(line['id']))
+                if line.get('asymptote'):
+                    # an asymptote line is thinner than an axis (1.2): it must not read as one
+                    try:weight=float(lines[obj_id].get('stroke-width'))
+                    except (TypeError,ValueError):weight=None
+                    if weight is None or weight>1.0+1e-9:errors.append('OVERLAY_ASYMPTOTE_LINE_TOO_HEAVY:'+str(line['id']))
         for ident,(x,y) in expected['points'].items():
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
@@ -3926,6 +4102,10 @@ def overlays_audit(plan,svg,transform):
             for line in expected['lines']:
                 label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
                 node=groups.get(label_id)
+                if line.get('asymptote') and _ov_asymptote_twin(line,groups,label_id):
+                    # the curve's own label already writes this asymptote's value beside the dashed line: the overlay line must not write it a second time
+                    if node is not None:errors.append('OVERLAY_ASYMPTOTE_LABEL_DUPLICATE:'+str(line['id']))
+                    continue
                 if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
                 elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
                 elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
@@ -5403,7 +5583,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else 2
+        minimum=1   # the observer's own reading of the rule: one to six curves (not shared with the framer's constant)
         if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
         normalized=[]
         for entry in raw:
@@ -6386,6 +6566,14 @@ def multi_curve_label_audit(plan,svg,transform):
     groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
     source={entry['id']:entry for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)}
     ids=list(source)
+    for entry in source.values():
+        # An exponential curve without its own label wears the engine's formula: read it against the glyphs its exact numbers need.
+        if entry.get('kind')!='EXPONENTIAL' or entry.get('label') is not None or entry.get('abs') or not isinstance(entry.get('coefficients'),list) or len(entry['coefficients'])!=3:continue
+        try:
+            a,k,c=(_piecewise_rational(value,'INVALID_EXPONENTIAL_COEFFICIENT') for value in entry['coefficients'])
+            exp_base=_exp_log_observer_base(entry.get('base'),'EXPONENTIAL');shift=_piecewise_rational(entry.get('shiftX','0'),'INVALID_EXPONENTIAL_SHIFT')
+        except (ValueError,TypeError,KeyError):continue
+        errors.extend(_exp_formula_label_errors(root,'curve-'+entry['id']+'-equation',a,k,c,exp_base,shift))
     inventory=plan.get('multiCurveFeatures')
     rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
           if isinstance(row,dict) and isinstance(row.get('id'),str)]
@@ -6624,11 +6812,75 @@ def axis_fold_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_FOLD_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+OV_CL_OWN_MAX_PX=24.0           # (2c) the label of a curve of a single-curve family stands within this many px of its own stroke ...
+OV_CL_OTHER_MARGIN_PX=2.0        # ... and every other curve of the figure is farther from it than its own, by at least this much
+OV_CL_NO_ROOM_MAX_PX=64.0        # a label the engine marked data-near-room=NONE (no free spot beside its stroke) is judged by this wider reach
+
+def curve_label_owner_audit(plan,svg,transform):
+    """(2c, 2026-11-23) A curve's name or value must stand beside ITS curve: a piecewise-affine branch equation by its own branch, an exponential or logarithmic formula and reference
+    value by the curve, each curve formula of an exp-log pair by its own curve. The observer reads the owner of each label from the plan (not from the engine) and measures the
+    label box against the drawn strokes of the final SVG: within OV_CL_OWN_MAX_PX of its own stroke and not nearer to another curve, or tied to its own curve by a leader that starts
+    on that stroke and ends on the label box. Violations: LABEL_NEAREST_CURVE_MISMATCH:<label>."""
+    family=plan.get('family')
+    if family not in ('piecewise-affine','exponential-affine','logarithmic-affine','exp-log-pair') or 'data-label-kind' not in svg:return None
+    try:
+        root=ET.fromstring(svg)
+        if family=='piecewise-affine':owners=[('left-branch-equation','left',('f-left-branch-',)),('right-branch-equation','right',('f-right-branch-',))]
+        elif family=='exp-log-pair':
+            ids=[row.get('id') for row in plan.get('curves',[]) if isinstance(row,dict) and isinstance(row.get('id'),str)]
+            owners=[('formula-'+ident,ident,('curve-'+ident+'-branch-','f-'+ident+'-branch-')) for ident in ids]
+        else:owners=[('formula','f',('f-branch-',)),('reference-value','f',('f-branch-',))]
+        groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id') and node.get('data-label-kind')}
+        leaders={}
+        strokes={}
+        for node in root.iter():
+            tag=node.tag.split('}')[-1]
+            if tag=='line' and node.get('data-role')=='leader' and node.get('data-owner-label'):leaders.setdefault(node.get('data-owner-label'),[]).append(node)
+            elif tag=='polyline' and node.get('data-role')=='curve' and node.get('points') and node.get('id'):
+                nums=[float(value) for value in re.split(r'[\s,]+',node.get('points').strip()) if value]
+                points=list(zip(nums[0::2],nums[1::2]));strokes[node.get('id')]=list(zip(points,points[1:]))
+        errors=[]
+        def distance(box,segments):
+            return min((_ov_box_segment_distance(box,a,b) for a,b in segments),default=math.inf)
+        for label_id,ident,prefixes in owners:
+            group=groups.get(label_id)
+            if group is None:continue
+            box=_region_label_box(groups,label_id)
+            if box is None:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+            if label_id=='reference-value' and family in ('exponential-affine','logarithmic-affine') and not leaders.get(label_id):
+                # a value label f(a)=b belongs to the point (a,f(a)) (the reference marker the family audit checks), not to the curve as a whole: within reach of that dot, and no other dot nearer
+                # (a label the engine marked data-near-room=NONE had no free place beside the dot and keeps its ordinary place)
+                if group.get('data-near-room')=='NONE':continue
+                dots={node.get('id'):(float(node.get('cx')),float(node.get('cy'))) for node in root.iter() if node.tag.split('}')[-1]=='circle' and node.get('data-role') in ('exponential-reference','logarithmic-reference','point') and node.get('cx') and node.get('cy')}
+                mine=[point for ident_,point in dots.items() if ident_ in ('exponential-reference-point','logarithmic-reference-point')]
+                if not mine:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+                near_dot=min(_ov_box_segment_distance(box,mine[0],mine[0]),math.inf)
+                others_d=[_ov_box_segment_distance(box,point,point) for ident_,point in dots.items() if ident_ not in ('exponential-reference-point','logarithmic-reference-point') and math.dist(point,mine[0])>1.0]
+                if near_dot>OV_CL_OWN_MAX_PX or any(other<near_dot+OV_CL_OTHER_MARGIN_PX for other in others_d):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+                continue
+            own=[seg for sid,segs in strokes.items() if sid.startswith(prefixes) for seg in segs]
+            others=[seg for sid,segs in strokes.items() if not sid.startswith(prefixes) for seg in segs]
+            attached=leaders.get(label_id)
+            if attached:
+                node=attached[0]
+                try:start=(float(node.get('x1')),float(node.get('y1')));end=(float(node.get('x2')),float(node.get('y2')))
+                except (TypeError,ValueError):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+                edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                on_own=min((_ov_point_segment_distance(start,a,b) for a,b in own),default=math.inf)<=OV_LEADER_TOLERANCE_PX
+                on_label=min(_ov_point_segment_distance(end,a,b) for a,b in edges)<=OV_LEADER_TOLERANCE_PX
+                if len(attached)!=1 or node.get('data-owner')!=ident or not on_own or not on_label:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+                continue
+            reach=OV_CL_NO_ROOM_MAX_PX if group.get('data-near-room')=='NONE' else OV_CL_OWN_MAX_PX
+            near=distance(box,own)
+            if near>reach or distance(box,others)<near+OV_CL_OTHER_MARGIN_PX:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['CURVE_LABEL_OWNER_UNREADABLE']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform,model=model)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform),curve_label_owner_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

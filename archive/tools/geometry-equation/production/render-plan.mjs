@@ -10,12 +10,13 @@ import {pythonWorker,closeWorkers} from './worker.mjs';
 import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
-import {isPlaneFigure} from './plane-marks.mjs';
+import {isPlaneFigure,inferNestedAngleOver,defaultHangulLabelKinds} from './plane-marks.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
+import {ensureCoordinateFrame} from './coordinate-frame.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import {expandPlaneVectors} from './plane-vectors.mjs';
@@ -95,11 +96,15 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    // (P-C) a Hangul label that does not say MATH is a plain-text label (it used to be refused); rows that were refused before are the only ones that change.
+    if(authored.capability==='construction-spike-v1')authored=defaultHangulLabelKinds(authored);
+    // A source-coordinate construction without its frame nodes (origin, unit axis) gets them added, so the plan does not fail for bookkeeping it need not carry.
+    if(authored.capability==='construction-spike-v1')authored=ensureCoordinateFrame(authored);
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
       stage='packet';
-      // A figure too wide for the default 60% display is bound at solutionImageScale (% of the column): the publisher writes it to the question beside solutionImageSize.
+      // A figure too wide for the default A4 display (80% of the column) is bound at solutionImageScale (% of the column): the publisher writes it to the question beside solutionImageSize.
       if(capture?.solutionImageScale!==undefined)row.solutionImageScale=capture.solutionImageScale;
       let packet;
       if(packetDir)packet=await obs.prepareInverseObservationPacket({capture,packetDir:path.join(packetDir,`packet-${name}-${tag}`)});
@@ -109,10 +114,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===sdg.FIGURE_CAPABILITY){
       // A standalone set diagram: the exact regions and shading derived once, composed, read back by its own observer, then the same Archive capture.
       stage='set-diagram';
-      const model=sdg.checkSetDiagramPlan(authored),size=sdg.setDiagramSize(model);
+      const model=sdg.checkSetDiagramPlan(authored);let size=sdg.setDiagramSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // A mapping whose element rows follow the policy font (setDiagramSize with fontPx) is taller than its base size when the font is large: measure again at that size until the size the font gives is the size measured.
+      for(let again=1;again<=6;again++){
+        const exact=sdg.setDiagramSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width===size.width&&exact.height===size.height)break;
+        size=exact;
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
       const composed=await sdg.composeSetDiagramFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
@@ -161,10 +174,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===cfv.FIGURE_CAPABILITY){
       // A standalone vessel-and-water-height figure: the exact volumes derived once, composed, read back by its own observer, then the same Archive capture.
       stage='container-fill';
-      const model=cfv.checkContainerFillPlan(authored),size=cfv.containerFillSize(model);
+      const model=cfv.checkContainerFillPlan(authored);let size=cfv.containerFillSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // The room the labels need (title above the axis, title beside it, label rows) follows the policy font: measure again at the size that font gives until it is the size measured.
+      for(let again=1;again<=6;again++){
+        const exact=cfv.containerFillSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width===size.width&&exact.height===size.height)break;
+        size=exact;
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
       const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
@@ -195,12 +216,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===ell.FIGURE_CAPABILITY){
       // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
       stage='ellipse';
-      const model=await ell.solveEllipseFigure(authored),size=ell.ellipseFigureSize(model);
-      stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      const composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      const model=await ell.solveEllipseFigure(authored);
+      // No room for a label at the real font: the frame is widened (24, 48, 80, 120 px each side), measured and composed again. The first attempt is the frame the figure has always had.
+      let measured,composed;
+      for(const [attempt,extra] of ell.ELLIPSE_FRAME_STEPS.entries()){
+        ell.setEllipseFrameExtra(model,extra);
+        stage='measure';
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:ell.ellipseFigureSize(model),runId:`pilot-measure-${tag}${attempt?`-frame${attempt}`:''}`});
+        // a widened frame the display profile cannot hold (its font would pass the largest allowed) ends the attempts: the figure fails as it failed before, with the no-room refusal
+        if(measured.status!=='MEASURED'&&attempt>0){stage='compose';ell.setEllipseFrameExtra(model,0);break;}
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        stage='compose';
+        composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+        if(composed.status!=='ELLIPSE_LABEL_NO_ROOM'||attempt===ell.ELLIPSE_FRAME_STEPS.length-1)break;
+        (row.fallback??=[]).push({from:clip(composed.detail),to:'ELLIPSE_FRAME_WIDEN',extra:ell.ELLIPSE_FRAME_STEPS[attempt+1]});
+      }
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
@@ -433,6 +463,20 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
             }else{plan=prevPlan;model=prevModel;}
           }
         }catch{/* the original failure stays */}
+      }
+    }
+    // (NEST) A plane figure whose angle label found no place while two of its angles nest at one vertex (a whole angle and a part of it, no `over`/`ring` written, so both arcs
+    // share one radius from their common ray): the enclosing angles get `over` and the arcs stand one ring apart. Kept only when it composes; otherwise the failure stays as it was.
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&plan.mathPlan&&!plan.graphPlan&&Array.isArray(plan.planeMarks?.angles)&&(composed.detail?.unresolved||[]).some(id=>/-label$/.test(String(id))&&plan.planeMarks.angles.some(row=>row?.id===String(id).slice(0,-6)))){
+      const at=id=>{const p=model.points?.[id]?.approximation;if(!Array.isArray(p))throw Error('NEST_POINT_UNKNOWN');return p;};
+      let nested=null;try{nested=inferNestedAngleOver(plan.planeMarks.angles,at);}catch{nested=null;}
+      if(nested&&nested!==plan.planeMarks.angles){
+        const nestPlan={...plan,planeMarks:{...plan.planeMarks,angles:nested}};
+        let tried=null;try{tried=await attempt(nestPlan,'-nest');}catch{tried=null;}
+        if(tried&&tried.composed.status!=='LAYOUT_INVENTORY_INCOMPLETE'){
+          (row.fallback??=[]).push({from:clip(composed.detail),to:'ANGLE_NEST_RINGS',angles:nested.filter((r,i)=>r!==plan.planeMarks.angles[i]).map(r=>r.id)});
+          plan=nestPlan;({size,measured,composed}=tried);
+        }else if(tried){plan=nestPlan;({size,measured,composed}=tried);}   // still incomplete: the last resort below works on the nested rings
       }
     }
     // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a

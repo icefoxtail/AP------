@@ -6,7 +6,7 @@ from set_diagram_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['diagram'],payload['svg'])
+    result=audit(payload['diagram'],payload['svg'],payload.get('accessibilityDescription'))
     status='OK'
 except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError) as error:
     result,status={'code':str(error)},'ERROR'

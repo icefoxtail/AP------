@@ -115,6 +115,7 @@ async function lintPlan(plan, ctx) {
     }
     if (authored.capability === 'piecewise-discontinuous-spike-v1' && authored.graphPlan?.referenceCurves !== undefined) authored = M.pair.expandDiscontinuousPair(authored);
     if (authored.capability === 'construction-spike-v1') authored = M.vec.expandPlaneVectors(authored);
+    if (authored.capability === 'construction-spike-v1' && M.plane.defaultHangulLabelKinds) authored = M.plane.defaultHangulLabelKinds(authored); // 한글 낱말이 든 라벨은 TEXT (render-plan 과 같은 규칙, 엔진에 있을 때만)
 
     const cap = authored.capability;
     // ---- 독립 도형(검증 함수가 곧 거절 조건)
@@ -282,7 +283,8 @@ function labelOf(file) {
   return base.replace(/\.json$/, '');
 }
 const one = r => r.status === 'SKIP' ? `SKIP ${r.code}: ${r.reason}` : `${r.code}: ${r.reason}${r.fix ? ' → ' + r.fix : ''}`;
-const lineOf = r => r.status === 'OK' ? 'OK' : r.problems ? r.problems.map((p, i) => (i ? '    └ 그 필드를 지운 뒤 다음에 걸리는 것: ' : '') + one(p)).join('\n') : one(r);
+const notesOf = r => (r.notes && r.notes.length ? r.notes.map(n => '\n    안내: ' + n).join('') : '');
+const lineOf = r => (r.status === 'OK' ? 'OK' : r.problems ? r.problems.map((p, i) => (i ? '    └ 그 필드를 지운 뒤 다음에 걸리는 것: ' : '') + one(p)).join('\n') : one(r)) + notesOf(r);
 
 // 허용 밖 필드로 거절되면 그 필드를 지운 사본을 다시 검사해 다음 단계 오류까지 한 번에 알려 준다(고친 뒤 새 오류가 연달아 나오는 것을 줄인다).
 const stripPath = (plan, pth, keys) => {
@@ -291,7 +293,29 @@ const stripPath = (plan, pth, keys) => {
   if (node && typeof node === 'object') for (const k of keys) delete node[k];
   return c;
 };
+// 거절은 아니지만 작성자가 한 번 확인할 곳(plan 은 그대로 렌더된다). 지금은 하나: 도(°) 라벨이 괄호 없는 합·차일 때.
+// 엔진은 "x+20" 을 x+20° 로 그린다(x 가 각의 크기, 예 x=30° 이면 맞는 표기). x 가 단순한 수라면 (x+20)° 라야 해서 plan 에 "(x+20)" 로 써야 한다. 어느 쪽인지는 문항이 정하므로 엔진은 바꾸지 않는다.
+const topLevelSum = text => { let depth = 0; for (let i = 0; i < text.length; i++) { const ch = text[i]; if (ch === '(') depth++; else if (ch === ')') depth--; else if (depth === 0 && i > 0 && (ch === '+' || ch === '-') && !/[(+\-*/^=<>]/.test(text[i - 1])) return true; } return false; };
+const noteIsObj = v => v !== null && typeof v === "object" && !Array.isArray(v), noteQuote = s => "\"" + String(s) + "\"";
+function planNotes(plan) {
+  const notes = [];
+  const walk = (node, key) => {
+    if (Array.isArray(node)) { for (const x of node) walk(x, key); return; }
+    if (!noteIsObj(node)) return;
+    if ((key === 'angles' || key === 'arcs') && typeof node.label === 'string' && (node.labelKind === undefined || node.labelKind === 'DEGREE') && node.unit === undefined && !/[()°]/.test(node.label) && topLevelSum(node.label.replace(/\s+/g, ''))) {
+      const text = node.label.replace(/\s+/g, '');
+      notes.push(`${key}[${node.id}] label ${noteQuote(node.label)} 는 ${text}° 로 그려진다(합·차의 끝에만 °). 문항이 x 를 각의 크기(x=30° 꼴)로 쓰면 이대로 맞고, x 가 단순한 수면 "(${text})" 로 써서 (${text})° 로 그린다. 문항 표기대로 정한다.`);
+    }
+    for (const k of Object.keys(node)) walk(node[k], k);
+  };
+  walk(plan, '');
+  return notes;
+}
 async function lintPlanAll(plan, ctx) {
+  const result = await lintPlanAllCore(plan, ctx), notes = planNotes(plan);
+  return notes.length ? { ...result, notes } : result;
+}
+async function lintPlanAllCore(plan, ctx) {
   const problems = []; let cur = plan, ok = { status: 'OK' };
   for (let round = 0; round < 5; round++) {
     const r = await lintPlan(cur, ctx);
@@ -342,7 +366,7 @@ async function main() {
   for (const r of results) {
     if (r.status === 'FAIL') bad++;
     if (o.json) { const { M, ...rest } = r; console.log(JSON.stringify(rest)); continue; }
-    if (r.status === 'OK' && o.quiet) continue;
+    if (r.status === 'OK' && o.quiet && !(r.notes && r.notes.length)) continue;
     console.log(`${r.label}: ${lineOf(r)}`);
   }
   if (!o.json) console.error(`plan-lint: ${results.length}개 중 FAIL ${bad}, SKIP ${results.filter(r => r.status === 'SKIP').length}, OK ${results.filter(r => r.status === 'OK').length}`);
@@ -357,5 +381,5 @@ async function createLinter(opts = {}) {
   return { lint: plan => lintPlanAll(plan, ctx), close: () => host.close() };
 }
 
-module.exports = { createLinter, lintFiles, lintPlan, collectPlanFiles, labelOf, _internal: { makeEngine, loadMods, Host, reserveCurveBranches } };
+module.exports = { createLinter, lintFiles, lintPlan, planNotes, collectPlanFiles, labelOf, _internal: { makeEngine, loadMods, Host, reserveCurveBranches } };
 if (require.main === module) main().catch(e => { console.error(e); process.exit(2); });

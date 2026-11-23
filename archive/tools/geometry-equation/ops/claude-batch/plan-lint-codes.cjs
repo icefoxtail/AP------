@@ -87,8 +87,8 @@ rule(/^PLAN_(JSON_INVALID|NOT_OBJECT)$/, c => ({ reason: c.base === 'PLAN_JSON_I
 rule(/^MULTI_CURVE_COUNT_INVALID$/, c => { // graph_framing.py:4810-4811
   const n = (graphPlansOf(c.plan).find(g => Array.isArray(g.curves)) || {}).curves;
   const kinds = (n || []).map(x => x && (x.kind || (x.inverseOf ? '역함수' : '?'))).join(',');
-  return { reason: `multi-curve-figure-v1 은 곡선이 2~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
-    fix: '곡선이 하나면 multi-curve 를 쓰지 않는다: 직선·다항은 piecewise-polynomial-spike-v1, 지수는 exponential-affine-spike-v1, 로그는 logarithmic-affine-spike-v1(본보기 참조). 한 곡선의 일부 구간 강조(emphasis)·abs:true·regions 가 필요한 그림만 곡선 1개가 허용된다.' };
+  return { reason: `multi-curve-figure-v1 은 곡선이 1~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
+    fix: 'curves 를 1~6개로 맞춘다(곡선 0개이거나 6개를 넘으면 거절된다). 곡선 하나면 직선·지수·로그 단일 capability 도 쓸 수 있다.' };
 });
 rule(/^MULTI_CURVE_LABEL_INVALID$/, c => { // graph_framing.py:4539(패턴) 4584-4592 4618
   const cv = curveOf(c.plan, c.arg), label = cv && cv.label;
@@ -151,10 +151,27 @@ rule(/^UNSUPPORTED_MATH_TOKEN$/, c => { // visual_engine/math_expression.py:29 (
   const first = c.arg ? [...c.arg][0] : null;
   const body = { ...c.plan }; for (const k of ['caption', 'accessibilityDescription', 'sourceConditions', 'newVisualInformation']) delete body[k]; // 그림 안 글만 찾는다
   const hit = c.arg ? findString(body, s => s.includes(c.arg.slice(0, 6)) || (first && s.includes(first))) : null;
-  const angle = first === '∠';
-  return { reason: `라벨·식 글에 엔진이 읽지 못하는 글자가 있다: ${q(c.arg || '?')}${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 허용: 숫자·영문·그리스 문자·+ * / ^ _ - = < > ( ) , ° √ π. ∠·한글·≤ 등은 안 된다.`,
-    fix: angle ? 'planeMarks.angles[].label 에서 ∠ 와 °를 뺀다("∠A=40°" → "A=40", "40°" → "40"). 도(°)는 엔진이 숫자 각도 라벨 뒤에 붙인다.' : '라벨에서 그 글자를 빼고 한글 설명은 caption 에 쓴다.' };
+  return { reason: `라벨·식 글에 엔진이 읽지 못하는 글자가 있다: ${q(c.arg || '?')}${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 허용: 숫자·영문·그리스 문자·+ - * / ^ _ = < > ( ) , ° √ π 와 ≈ ≅ ∽ ≡ ⊥ ∥ ≤ ≥ ≠ ± × ÷ : % ² ³ ∠ △ □.`,
+    fix: '목록에 없는 글자는 라벨에서 빼고 설명은 caption 에 쓴다. 한글은 수식 라벨로 못 쓰니 평문 라벨("labelKind":"TEXT")로 쓴다.' };
 });
+rule(/^DEGREE_OF_RADIAN_VALUE$/, () => ({ reason: 'π 가 든 값 뒤에 도(°)가 붙는다(pi/3°, 4pi°). 라디안·호의 길이를 도로 읽게 되는 오답 표기다.', // visual_engine/math_expression.py serialize
+  fix: '라디안·길이는 labelKind "MATH" 로 °가 안 붙게 쓴다("pi/3", "4pi"). 도 값은 π 없이 "60" 으로 쓴다. 두 값을 함께 보이려면 따로 쓴다("60°=pi/3" 처럼 °와 π 가 등호 양쪽에 나뉘면 된다).' }));
+rule(/^KOREAN_WORD_NEEDS_TEXT_LABEL$/, c => ({ reason: `수식 라벨에 한글 낱말 ${q(c.arg)} 이(가) 있다. 수식 조판(MathJax)은 한글 글자를 못 그려서 수식 라벨로는 쓸 수 없다.`,
+  fix: '그 라벨을 평문으로 쓴다: expressionLabels·arcs·dimensions 등에 "labelKind":"TEXT", 자유 글은 textLabels(한글이 있으면 자동 TEXT), 공통변은 commonSides.' }));
+rule(/^KOREAN_UNIT_NEEDS_TEXT_LABEL$/, () => ({ reason: '단위가 한글(초·분·개·원 …)이다. 수식 조판은 한글 단위를 못 그린다.', fix: '값과 단위를 합쳐 평문 라벨로 쓴다("labelKind":"TEXT", "label":"12초").' }));
+rule(/^NUMBER_JUXTAPOSITION_UNCLEAR$/, c => { // visual_engine/math_expression.py (Parser.expr)
+  const body = { ...c.plan }; for (const k of ['caption', 'accessibilityDescription', 'sourceConditions', 'newVisualInformation']) delete body[k]; // 그림 안 글만 찾는다
+  const hit = findString(body, s => /(?:\d|[A-Za-z)])\s+\d/.test(s) && s.length <= 60);
+  return { reason: `라벨 식에 수나 문자 뒤에 수가 공백으로만 이어져 있다${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 나열(-1 0 1)인지 곱(3 2^x)인지 글만으로는 알 수 없어서 엔진은 점을 찍거나 붙여 쓰지 않고 거절한다.`,
+    fix: '곱이면 * 로 쓴다("3*2^(x)" → 3·2^x). 값을 나열하면 쉼표로 쓰고 괄호나 textLabels 로 묶는다("(-1,0,1)", 또는 라벨 하나에 한 값씩).' };
+});
+rule(/^LABEL_UNIT_WRITTEN_TWICE$/, () => ({ reason: '라벨 글이 이미 단위로 끝나는데 `unit` 필드도 있어 단위가 두 번 그려진다(6cm 와 unit cm 이면 6cm cm).', // visual_engine/math_expression.py _unit_written_twice
+  fix: '라벨 글에는 값만 쓰고("6") 단위는 `unit` 필드에만 준다.' }));
+rule(/^DISPLAY_POINTS_COINCIDE$/, c => ({ reason: `그려지는 두 점 ${q(c.arg)} 이(가) 정확히 같은 자리라 이름 둘이 점 하나에 찍힌다.`, // production/phase2.mjs specFor
+  fix: '한 점을 displayPoints 에서 빼거나, 이름 없는 보조점이면 hiddenPointNames 에 넣는다.' }));
+rule(/^DEGREE_LABEL_NEEDS_VALUE$/, () => ({ reason: '도(°) 라벨에 값 없이 각 이름만 있다(∠B, △ABC). 엔진이 °를 붙이면 ∠B° 가 되어 크기가 아닌 이름에 도 기호가 붙는다.',
+  fix: '이름만 보이려면 labelKind "NAME"(angles[].label "B" → ∠B), 값을 보이려면 label 에 값을 쓴다("∠B=40" 은 ∠B=40°, 또는 숫자만 "40"). ∠ 와 °는 라벨에 직접 쓰지 않는 것이 기본이다.' }));
+rule(/^FIGURE_NAME_INVALID$/, c => ({ reason: `∠ △ □ 뒤에는 도형 이름(영문자 1~6자: ∠ABC, △ABC, □ABCD)이 와야 한다(${q(c.arg)}).`, fix: '기호 바로 뒤에 점 이름 글자를 이어 쓴다. 각 이름만 보이려면 labelKind "NAME" 도 된다("ABC" → ∠ABC).' }));
 rule(/^MATHJAX_TYPESET_ERROR$/, c => {
   const t = c.extra && c.extra.labelText ? String(c.extra.labelText) : '';
   const deg = /\^\{\\circ\}\^\{\\circ\}/.test(t);
@@ -169,19 +186,21 @@ rule(/^(INVALID_ACCESSIBILITY_DESCRIPTION)$/, () => ({ reason: 'accessibilityDes
 rule(/^PLAN_CAPTION_REQUIRED$/, () => ({ reason: '최상위 caption 문자열이 없다.', fix: 'caption 에 풀이 요약을 쓴다.' }));
 
 // --- 수직선·입체·평면 도형(number-line-v1.mjs, solid-figure-v1.mjs, plane-marks.mjs)
-rule(/^NUMBER_LINE_ROW_LABEL_INVALID$/, c => { // number-line-v1.mjs (행 label: 한 줄 6자 이내)
+// number-line-v1.mjs rowLabelPx: 6자 이하는 글자당 22px, 더 길면 한글 22px·공백 7px·그 밖 14px. SAFE 12 + 폭 + 간격 10 이 240 을 넘으면 거절(= 폭 218 초과)이라 한글 없는 라벨은 15자까지.
+const rowLabelRoomPx = l => { const cs = [...l]; return cs.length <= 6 ? 22 * cs.length : cs.reduce((s, ch) => s + (ch === ' ' ? 7 : ch.codePointAt(0) >= 0x1100 ? 22 : 14), 0); };
+rule(/^NUMBER_LINE_ROW_LABEL_INVALID$/, c => { // number-line-v1.mjs (행 label: 한 줄 16자 이내, 차지하는 폭 상한)
   const rows = ((c.plan.numberLine || {}).rows) || [];
-  const bad = rows.map((r, i) => ({ i, l: r && r.label })).filter(x => typeof x.l === 'string' && (x.l.length > 6 || /[<>&"\\$\u0000-\u001f]/.test(x.l)));
-  return { reason: `수직선 행 label 은 6자 이내 한 줄이고 < > & " \\ $ 와 제어 문자가 없어야 한다${bad.length ? '. 걸린 label: ' + bad.map(x => `rows[${x.i}] ${q(x.l)}`).join(', ') : ''}.`,
-    fix: '행 label 에는 변수나 짧은 말만 쓴다("m", "범위"). 부등식·문장은 caption 에 쓰고 행에는 hideSetLabel 과 짧은 label 을 쓴다.' };
+  const bad = rows.map((r, i) => ({ i, l: r && r.label })).filter(x => typeof x.l === 'string' && ([...x.l].length > 16 || /[&"\\$<>\u0000-\u001f]/.test(x.l) || / {2}/.test(x.l) || [...x.l].filter(ch => ch.codePointAt(0) >= 0x1100).length > 9 || rowLabelRoomPx(x.l) > 218));
+  return { reason: `수직선 행 label 은 16자 이내 한 줄이고 & " \\ $ 와 제어 문자·연속 공백이 없어야 하며, 한글은 9자까지이고 한글 없는 영문·기호는 폭 상한 때문에 15자까지이며, < > 는 쓸 수 없다(< 가 든 부등식은 SET 행이 자동으로 쓴다; 한글 없이 ≤ ≥ = 가 든 라벨은 수식 글꼴로 조판된다)${bad.length ? '. 걸린 label: ' + bad.map(x => `rows[${x.i}] ${q(x.l)}`).join(', ') : ''}.`,
+    fix: '행 label 에는 변수나 짧은 말("m", "범위", "x=−2")만 쓴다. < 가 든 부등식은 SET 행이 수식 글꼴로 자동으로 쓰므로 행 label 에 쓰지 않는다. 긴 문장은 caption 에 쓰고 행에는 hideSetLabel 과 짧은 label 을 쓴다.' };
 });
 rule(/^NUMBER_LINE_POINTS_INVALID$/, c => {
   const rows = ((c.plan.numberLine || {}).rows) || [];
   const pr = rows.filter(r => r && r.kind === 'POINTS');
   const ids = pr.flatMap(r => (r.points || []).map(p => p && p.id));
   const n = pr.map(r => (r.points || []).length);
-  return { reason: `POINTS 행은 점 2~4개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호) 여야 한다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
-    fix: 'id 를 A·B·C 처럼 대문자 한 글자로 바꾸고(P0·소문자 불가), 점이 4개를 넘으면 행을 나누거나 핵심 점만 둔다. 점 이름을 안 보이게 하려면 hideName 을 쓴다.' };
+  return { reason: `POINTS 행은 점 1~16개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호)여야 한다. 이름을 그리지 않는 점(hideName:true)만 P0·m1 처럼 영문자로 시작하는 6자 이내 id 를 쓸 수 있다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
+    fix: '이름을 그릴 점은 id 를 A·B·C 처럼 대문자 한 글자로 바꾸고, 이름이 필요 없는 점은 hideName:true 와 함께 P0·P1 같은 id 를 쓴다. 점이 16개를 넘으면 행을 나눈다.' };
 });
 rule(/^NUMBER_LINE_(ROWS_INVALID|PIECE_INVALID)$/, c => hintOnly(c, `수직선 rows 형식 오류(${c.base}).`));
 rule(/^SOLID_MARK_RAY_NOT_DRAWN$/, c => ({ reason: `입체 marks ${c.arg} 가 가리키는 각의 두 변이 그려진 모서리·segments 가 아니다.`, fix: '직각·각 표시의 두 변을 입체의 모서리(edge)로 두거나 segments 에 그 선분을 추가한다.' })); // solid-figure-v1.mjs:1539,1596
@@ -190,13 +209,15 @@ rule(/^MARK_TARGET_UNKNOWN$/, c => ({ reason: `planeMarks 가 가리키는 ${q(c
 rule(/^ANGLE_MARK_FACT_MISMATCH$/, c => { const m = /declared=([^:]+):drawn=([\d.]+)/.exec(String(c.arg || '') + ':' + String(c.rest || '')) || /declared=([^:]+):drawn=([\d.]+)/.exec(c.code); // plane-marks.mjs
   return { reason: `각 ${c.arg} 의 value${m ? `(${m[1]}°)` : ''} 가 실제로 그려지는 각${m ? `(${Number(m[2]).toFixed(1)}°)` : ''}과 다르다(오차 0.5° 이내여야 한다).`, fix: 'value 를 그려지는 각으로 고치거나, 작도(POLAR_POINT 의 angleDeg·방향)를 value 에 맞게 고친다. 숫자만 바꾸지 말고 점 위치를 확인한다.' }; });
 rule(/^(ANGLE_MARK_DEGENERATE|ANGLE_RING_INVALID|MARK_FIELD_INVALID|REGION_BOUNDARY_UNKNOWN|POINT_DISPLAY_NAME_INVALID|INVALID_HIDDEN_POINT_NAMES|INVALID_LABEL_DIRECTIONS|REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED|DUPLICATE_NODE|INVALID_EXACT_INTEGER|INVALID_POLAR_ANGLE|FUNCTION_CALL_REQUIRED|UNSUPPORTED_RATIONAL_NUMERATOR_GRAMMAR)$/, c => hintOnly(c, `평면도형·작도 plan 형식 오류(${c.base}${c.arg ? ':' + c.arg : ''}).`));
-rule(/^ELLIPSE_LABEL_NO_ROOM$/, c => ({ reason: `타원 그림의 라벨 ${c.extra && c.extra.labelId ? q(c.extra.labelId) + ' 가' : '하나가'} 놓일 자리가 없다(가장 작은 글자 크기로 배치해도 점·선·곡선과 겹친다).`, fix: '라벨 수를 줄인다: 좌표(coordinates:true)를 보이는 점·길이 라벨·직선 식 라벨 중 풀이에 꼭 필요한 것만 남기고 값은 caption 에 쓴다. 점이 많으면 장면을 둘로 나눈다(composite-panels-v1).' })); // ellipse-figure-v1.mjs:410
+rule(/^ELLIPSE_LABEL_NO_ROOM$/, c => ({ reason: `타원 그림의 라벨 ${c.extra && c.extra.labelId ? q(c.extra.labelId) + ' 가' : '하나가'} 놓일 자리가 없다(가장 작은 글자 크기로 배치해도 점·선·곡선과 겹친다).`, fix: '라벨 수를 줄인다: 좌표(coordinates:true)를 보이는 점·길이 라벨·직선 식 라벨 중 풀이에 꼭 필요한 것만 남기고 값은 caption 에 쓴다. 점이 많으면 장면을 둘로 나눈다(composite-panels-v1). 라벨 자리가 없으면 그림틀은 이미 자동으로 네 단계(24·48·80·120px)까지 넓혀 다시 시도한 뒤의 결과다.' })); // ellipse-figure-v1.mjs:410
 rule(/^(ELLIPSE_POINT_INVALID|ELLIPSE_LINE_INVALID)$/, c => ({ reason: `ellipse-figure-v1 의 ${c.base === 'ELLIPSE_POINT_INVALID' ? '점' : '직선'} 정의가 엔진 형식에 맞지 않는다(종류별 필수 필드·정확값 문법·타원 위의 점 여부).`, fix: '본보기 plan(ellipse)의 점 kind 별 필드(VERTEX end, ON_ELLIPSE x+branch, POINT x,y …)를 그대로 따르고 x·y 는 정수·분수·p+q*sqrt(r) 로 쓴다. ON_ELLIPSE 의 x 는 실제 타원 위의 값이어야 한다.' }));
 
 // --- 복합·통계·집합·격자 (stat-chart-v1.mjs, set-diagram-v1.mjs, lattice-path-v1.mjs)
 rule(/^UNSUPPORTED_DISPLAY_ENVELOPE$/, c => ({ reason: `합성 그림의 전체 크기(${c.extra && c.extra.size ? c.extra.size.width + 'x' + c.extra.size.height : '?'})가 화면 표시 한계를 넘는다. 렌더에서 폭 828 이상·높이 820 이상은 모두 거절됐다(폭 776·높이 768 이하는 통과). 이 줄은 크기만 보는 추정이다.`, fix: '패널 수를 줄이거나(위아래로 쌓이는 높이의 합), 패널 안 그래프의 viewport·축 범위를 줄여 그림 한 장의 높이를 770 이하·폭을 780 이하로 한다. 한 패널로 줄이고 나머지는 caption 에 쓴다.' })); // composite-candidate-svg-v1.mjs:43
 rule(/^COMPOSITE_PLAN_INVALID$/, () => ({ reason: 'composite-panels-v1 의 최상위·패널 구조가 형식에 맞지 않는다(패널 수·허용 필드·패널 안 plan 의 caption 금지 등).', fix: '패널 2~6개, 각 패널은 {caption:{text|math},plan:{...}}. 패널 안 plan 에는 caption·sourceConditions·newVisualInformation 을 쓰지 않는다.' }));
 rule(/^STAT_NORMAL_TICK_TEXT_MISMATCH$/, () => ({ reason: '정규분포 눈금의 text 가 숫자인데 그 눈금의 위치 x 와 다르다(예 {x:"-2",text:"430"}: -2 자리에 430 이라고 적을 수 없다).', fix: '곡선을 실제 단위로 둔다: curves[].mean·sd 를 실제 평균·표준편차(예 "450","10")로 하고 ticks 는 {x:"430"} 처럼 실제 값으로 쓴다. 표준화(z) 눈금은 {z:"-2"}.' })); // stat-chart-v1.mjs:798
+rule(/^STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD$/, () => ({ reason: '정규분포 곡선 이름이 Z인데 평균 0·표준편차 1인 표준정규분포가 아니다(평균·σ가 실제 값이나 문자인 곡선을 Z라 부르면 학생이 표준정규분포로 읽는다).', fix: '곡선 이름(label)을 문제의 변수(X, H, Y 등)로 바꾼다. z 눈금 줄이 필요하면 zAxis:true 를 쓴다(z 표기는 그대로). 평균 0·σ 1인 표준정규분포만 Z 라고 쓴다.' })); // stat-chart-v1.mjs normal curves
+rule(/^STAT_NORMAL_XLABEL_Z_NOT_STANDARD$/, () => ({ reason: '정규분포 x축 이름(xLabel)이 z(Z)인데 곡선이 평균 0·표준편차 1이 아니고 눈금이 실제 값이다(z축은 표준화한 변수의 축이다).', fix: 'xLabel 을 문제의 변수(기본 x, 또는 X, h 등)로 바꾸거나 쓰지 않는다. z 눈금 줄이 필요하면 zAxis:true 를 쓴다. 표준정규분포(평균 0, σ 1) 곡선이면 xLabel:"z" 를 쓴다.' }));
 rule(/^STAT_NORMAL_BOUNDARY_NOT_TICKED$/, () => ({ reason: 'shades 의 from/to 경계가 ticks 에 없는 위치다(경계는 눈금으로 표시된 곳이어야 한다).', fix: 'shades 의 from/to 를 ticks 의 x(또는 text) 와 같게 하고, 색칠 경계가 되는 값은 모두 ticks 에 넣는다.' })); // stat-chart-v1.mjs:809
 rule(/^STAT_NORMAL_(TICK_TEXT_INVALID|AREA_LABEL_INVALID|AREA_LABEL_MISMATCH|WINDOW_TOO_WIDE)$/, c => hintOnly(c, `정규분포 plan 의 ${c.base === 'STAT_NORMAL_WINDOW_TOO_WIDE' ? '곡선들이 한 창에 안 들어간다(평균 차이가 표준편차의 6배 이내여야 한다)' : '눈금·넓이 글 형식이 맞지 않는다'}(${c.base}).`));
 rule(/^STAT_TREE_LABEL_INVALID$/, () => ({ reason: '수형도 가지 label 이 6자를 넘거나 < > & " \\ 가 있다(label 은 1~6자).', fix: 'label 을 6자 이내 짧은 말로("A 1", "그 외")하고 설명은 caption 에 쓴다.' })); // stat-chart-v1.mjs:1003

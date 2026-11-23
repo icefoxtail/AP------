@@ -8458,6 +8458,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2final/25_동산중_2학기_기말_중1_유사.js",
+      "school": "동산중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "similar/middle/m1/2mid/25_동산중_2학기_중간_중1_유사.js",
       "school": "동산중",
       "topic": "",
@@ -8484,6 +8515,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M1-02",
           "rangeEndUnit": "정수와 유리수",
           "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사.js",
+      "school": "신흥중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "M1-06",
+      "rangeStartUnit": "평면도형의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M1-08",
+      "rangeEndUnit": "자료의 정리와 해석",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-06",
+          "rangeStartUnit": "평면도형의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "중1 수학"

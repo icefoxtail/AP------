@@ -22,6 +22,12 @@
   var maxScore = '100';
   var generation = 0;
   var retryCount = 0;
+  // 맞춤·편집 표시를 마친 요소는 DOM 속성이 아니라 여기에 기억한다.
+  // 이유: 출력 스냅숏(common-fast-runtime canReuse)은 준비 완료 때 찍은 innerHTML과 인쇄 직전 innerHTML이 같아야 쓴다.
+  // 준비된 뒤에 머리글 속성이 한 글자라도 바뀌면 스냅숏 재사용·인쇄 사전 점검이 깨진다(2026-11-22 CI 빨강).
+  // 그래서 (1) 맞춤은 요소가 DOM에 들어가는 즉시(준비 완료 전) 동기로 끝내고, (2) 같은 결과면 DOM을 다시 쓰지 않는다.
+  var fitState = new WeakMap();
+  var decorated = new WeakSet();
 
   function getAcademy() {
     try {
@@ -65,12 +71,24 @@
     if (!profile || !el.isConnected) return true;
     if (!tableLayoutActive()) {
       // 휴대폰 폭(640px 이하)은 기존 쌓기 배치를 그대로 쓴다: 맞춤 흔적을 지운다.
-      if (el.dataset.phDone) { el.style.whiteSpace = ''; el.style.fontSize = ''; delete el.dataset.phDone; delete el.dataset.phLines; delete el.dataset.phSize; }
+      if (fitState.has(el) || el.dataset.phSize !== undefined) {
+        fitState.delete(el);
+        el.style.whiteSpace = ''; el.style.fontSize = '';
+        if (!el.getAttribute('style')) el.removeAttribute('style');
+        delete el.dataset.phLines; delete el.dataset.phSize;
+      }
       return true;
     }
-    var sig = el.textContent + '|' + generation;
-    if (el.dataset.phDone === sig) return true;
-    if (!el.clientWidth) return false;
+    var text = el.textContent;
+    var state = fitState.get(el);
+    if (state && state.text === text && state.gen === generation) return true;
+    var width = el.clientWidth;
+    if (!width) return false;
+    var fonts = document.fonts ? document.fonts.status : '';
+    // 글자·칸 폭·글꼴 상태가 그대로면 다시 재지 않는다(재측정 중 쓰기가 스냅숏 DOM을 건드리지 않게).
+    if (state && state.text === text && state.width === width && state.fonts === fonts) { state.gen = generation; return true; }
+    var prevStyle = el.getAttribute('style');
+    var prevLines = el.dataset.phLines, prevSize = el.dataset.phSize;
     var s = el.style;
     s.whiteSpace = 'nowrap';
     s.fontSize = profile.max + 'pt';
@@ -94,9 +112,15 @@
         }
       }
     }
-    el.dataset.phLines = String(lines);
-    el.dataset.phSize = String(size);
-    el.dataset.phDone = sig;
+    var nextLines = String(lines), nextSize = String(size);
+    if (prevLines === nextLines && prevSize === nextSize && prevStyle !== null) {
+      // 결과가 이전과 같다: 재측정으로 흔들린 style 속성을 원래 문자열 그대로 되돌린다(DOM을 다시 쓰지 않은 것과 같다).
+      if (el.getAttribute('style') !== prevStyle) el.setAttribute('style', prevStyle);
+    } else {
+      el.dataset.phLines = nextLines;
+      el.dataset.phSize = nextSize;
+    }
+    fitState.set(el, { text: text, gen: generation, width: width, fonts: fonts });
     return true;
   }
 
@@ -105,19 +129,22 @@
     try { return window.matchMedia('(min-width: 641px)').matches && typeof window.setPrintHeaderOptions === 'function'; } catch (e) { return false; }
   }
 
+  function decorateOne(el, allow) {
+    if (decorated.has(el)) return;
+    decorated.add(el);
+    if (allow === undefined) allow = canEdit();
+    if (!allow) return;
+    try { el.contentEditable = 'plaintext-only'; } catch (e) { /* 아래에서 보정 */ }
+    if (el.contentEditable !== 'plaintext-only') el.contentEditable = 'true';
+    el.spellcheck = false;
+    el.setAttribute('role', 'textbox');
+    el.setAttribute('title', '눌러서 고치기 (Enter 확정, Esc 취소)');
+  }
+
   function decorate(root) {
     var allow = canEdit();
-    var nodes = (root || document).querySelectorAll('[data-ph-edit]:not([data-ph-ready])');
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      el.dataset.phReady = '1';
-      if (!allow) continue;
-      try { el.contentEditable = 'plaintext-only'; } catch (e) { /* 아래에서 보정 */ }
-      if (el.contentEditable !== 'plaintext-only') el.contentEditable = 'true';
-      el.spellcheck = false;
-      el.setAttribute('role', 'textbox');
-      el.setAttribute('title', '눌러서 고치기 (Enter 확정, Esc 취소)');
-    }
+    var nodes = (root || document).querySelectorAll('[data-ph-edit]');
+    for (var i = 0; i < nodes.length; i++) decorateOne(nodes[i], allow);
   }
 
   function fitAll(force) {
@@ -137,6 +164,37 @@
     if (scheduled) return;
     scheduled = true;
     window.requestAnimationFrame(function () { scheduled = false; fitAll(false); });
+  }
+
+  // DOM에 새로 들어온 머리글을 그 자리에서(MutationObserver 마이크로태스크 = 렌더 파이프라인이 준비 완료·스냅숏 고정으로 넘어가기 전)
+  // 동기로 꾸미고 맞춘다. 맞춤을 다음 프레임(rAF)에 하면 준비 스냅숏을 찍은 뒤 머리글이 바뀌어 스냅숏 재사용·인쇄 사전 점검이 깨진다.
+  function handleAdded(records) {
+    var touched = false, seen = [];
+    function take(el) { if (seen.indexOf(el) < 0) seen.push(el); }
+    for (var r = 0; r < records.length; r++) {
+      var added = records[r].addedNodes;
+      for (var a = 0; a < added.length; a++) {
+        var node = added[a];
+        if (node.nodeType !== 1) {
+          // 글자 노드만 들어온 경우(제목 글자 교체): 그 글자가 머리글 칸 안일 때만 그 칸을 다시 본다.
+          var host = node.parentElement, hostOwn = host && host.closest ? host.closest('[data-ph-fit],[data-ph-edit]') : null;
+          if (hostOwn) take(hostOwn);
+          continue;
+        }
+        var own = node.closest('[data-ph-fit],[data-ph-edit]');
+        if (own) take(own);
+        var inner = node.querySelectorAll('[data-ph-fit],[data-ph-edit]');
+        for (var k = 0; k < inner.length; k++) take(inner[k]);
+      }
+    }
+    for (var i = 0; i < seen.length; i++) {
+      var el = seen[i];
+      if (!el.isConnected) continue;
+      touched = true;
+      if (el.hasAttribute('data-ph-edit')) decorateOne(el);
+      if (el.hasAttribute('data-ph-fit') && el.closest('.page-header')) fitElement(el); // 폭 0이면 다음 프레임 fitAll이 다시 시도한다
+    }
+    return touched;
   }
 
   function applyMaxScore(text) {
@@ -198,9 +256,28 @@
     PROFILES: PROFILES
   };
 
+  // 머리글이 생기거나 머리글 안이 바뀐 때만 맞춤을 예약한다(2026-11-23).
+  // 전에는 문서 어디든 노드가 하나 바뀌면 다음 프레임에 문서 전체를 두 번 훑었다. 해설·시험지를 그리는 동안
+  // 수식 조판과 높이 측정이 노드를 수없이 넣고 빼서, 매 프레임마다 문서 전체 훑기와 화면 갱신이 걸려 열기가 몇 초씩 느려졌다.
+  function touchesHeader(records) {
+    for (var i = 0; i < records.length; i++) {
+      var record = records[i];
+      var target = record.target;
+      var host = target && target.nodeType === 1 ? target : (target && target.parentElement);
+      if (host && host.closest && host.closest('.page-header')) return true;
+      var added = record.addedNodes;
+      for (var j = 0; j < added.length; j++) {
+        var node = added[j];
+        if (node.nodeType !== 1) continue;
+        if (node.matches('.page, .page-header') || node.querySelector('.page-header')) return true;
+      }
+    }
+    return false;
+  }
+
   function start() {
     if (document.body && typeof MutationObserver === 'function') {
-      new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+      new MutationObserver(function (records) { if (touchesHeader(records)) { handleAdded(records); schedule(); } }).observe(document.body, { childList: true, subtree: true });
     }
     schedule();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitAll(true); });

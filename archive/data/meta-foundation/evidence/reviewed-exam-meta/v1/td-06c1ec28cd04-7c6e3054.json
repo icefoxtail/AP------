@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-06c1ec28cd04-7c6e3054",
+  "requestSha256": "e114908b8694e203a4634eff9fe8f28f2746a7868b95d6dae4076e90320f5e6d",
+  "examUid": "중1_1학기_식의값",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+  "sourceBlobSha1": "55d283e5ec045bd00ede12e965e999444d6d02b6",
+  "sourceRawSha256": "9458b0357734aa8fd0eb4280288dbb1e781e6e09d6f1595494b5505c1bd5bef8",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.type-ledger.json",
+        "sha256": "87b540dcf00fb37af458227fbd2d415c28237a1b297194bfb382cada6ee54e30"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 6,
+  "registryChanges": [],
+  "typeApprovals": 6,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 3,
+    "content": 0,
+    "stale": 3
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_bc708d74dc69d58b6918034d93661590dd575050d2a8a7f9f1589684082facf3",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_M1_POLYNOMIAL",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "각 식의 항을 읽어 최고 차수의 항으로 몇 차식인지 판단한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "91415ba457ae4371812b2ee7682ead034ec23dcb556e1e157f693d0f9c848b0b",
+        "judgedContentFingerprint": "386372798136155c6bab49db20665a689662bcd161169f7c8fef6deb71f14d31",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "360a2b80e981b568a1c16477e6ca72fce943d3628fc9b684280801f6a02b2ae4",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bc8d32309e0d9cb63fbff9572842a552e3db80fcd75e2640a8b97b9ab67efe81",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 38,
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_EVALUATION_NUMERIC_EXISTING",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x,y,z 값을 식에 대입하고 거듭제곱·곱셈·부호 순서로 계산한다",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1740c845b1d13474ac09fd8875966a61a8f21313c601264b359d08f551c33ae8",
+        "judgedContentFingerprint": "07498ff2ccbcf23a5be7acc306d1482271a59863693c7a83cd31f079544cd47f",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "bff4a0d92ecfa00e7309eaf7e94924ad6ff89645ecd14e1d9b7dc33e17873e81",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7d807bc7728090b003292d390731bba4a9abb542584f22644b965ba5cb14f0c1",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 43,
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_NESTED_FRACTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "227/44를 정수부분과 분수로 나누고 역수를 취하는 과정을 반복해 중첩 분수를 풀어 m,n을 정한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ff5c7ff214d0bf1a144bc1c26583b27809ce1bf03a15558296f5c7b75070219f",
+        "judgedContentFingerprint": "eb6541283a0281597647e1fc32306f2d26d64b3ba27a4665e9775cb1403e9f96",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "59ae1eab8ef082efe68bfff6fb12014c97eac2c74675f4e6d8033d7b2d50bc60",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_51783c4d4a44f7ff9f6a29caf25be242e664d401bfdbf618c2d54264da2507ae",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 47,
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "분모에 y-x=xy/4를 대입하면 (5/4)xy, 약분하여32/5.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "cc9d292d1d0678b5a1fcf7581a77911084098f7bd821c367b7a6e6f4cd770e7f",
+        "judgedContentFingerprint": "f47d687e437db8664dc68cae5a6f139fabd6179e3241eebe4b5730e4eef48a26",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9fda1e4eeb29298886faf7a0f366cfb3758299d2d318a0f80ecd2424df34fbcb",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7c137dc45126085f56a8b8d533aded3e904f97f118e79cba52cfa5285add6e3e",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 49,
+      "problemTypeKey": "PT_M1_LITERAL_VALUE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "주어진 수를 식에 대입하고 연산 순서와 통분으로 식의 값을 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d8fb2f0138960fac29c50eda50f9405fd3eb53343a07984151e717dc7bdf09f6",
+        "judgedContentFingerprint": "b32262e595f998eeb96a19d145a4fd7673a7723c4798fcbc364a2ba3396ffb9d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ac737684f66551518968d89454d0002c0c2ad2cad2e6fa37426b95773767b473",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1e07464007c95cf32a4ab5c4a93aeb366439d233f5f3241968944b51ed3eaea0",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+      "sourceOrdinal": 54,
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-06c1ec28cd04-7c6e3054",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "통분하면 (a+b)/(ab)=(2/3)/(-2)=-1/3.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "0238e67dad50ec50da0cf48d7492cff75600a78f074f9d9b2155eeb49d315046",
+        "judgedContentFingerprint": "c140fc36970ce49a24e4ef7edf6b99485cf9bb50cb8944798554044b896177de",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d91879d19d0373b678c538e12a1fe6f7002aeacd5abccfbbb47eb7e9db30e66e",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-06c1ec28cd04-7c6e3054.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 6,
+  "expectedQuestionCount": 58
+}

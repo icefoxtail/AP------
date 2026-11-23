@@ -430,12 +430,40 @@ class LabelKindTests(unittest.TestCase):
     def test_unit_with_a_degree_name_or_text_label_is_refused(self):
         for kind in ('DEGREE','NAME','TEXT'):
             with self.assertRaises(ValueError,msg=kind):mark_label('l','t','AB' if kind=='NAME' else '3',kind,(0,0),{},'cm')
+    # (P-C) one table of units, typed here (not imported), fed to the semantic model, this file's observer reading of a dimension label and the region observer's label text
+    UNITS_ACCEPTED=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3']
+    UNITS_REFUSED=['','CM','cm^4','c m','초','inch','lb','sec','m^2/s','cm2']
+    def test_the_unit_table_in_the_semantic_model(self):
+        pts={'A':(0.0,0.0),'B':(6.0,0.0)}
+        def build_with(unit):
+            return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],'unit':unit}]))
+        for unit in self.UNITS_ACCEPTED:
+            with self.subTest(unit=unit):self.assertIsNotNone(build_with(unit))
+        for unit in self.UNITS_REFUSED:
+            with self.subTest(unit=unit),self.assertRaises(ValueError) as caught:build_with(unit)
+            self.assertTrue(str(caught.exception).startswith('MARK_UNIT_INVALID'),(unit,str(caught.exception)))
+    def test_the_unit_table_in_the_observers_reading_of_a_dimension_label(self):
+        for unit in self.UNITS_ACCEPTED:
+            with self.subTest(unit=unit):self.assertEqual(OBSERVER.dimension_label_parts({'label':r'24\,'+unit}),('24',unit))
+        for unit in ('inch','lb','CM','cm^4','x'):
+            with self.subTest(unit=unit):self.assertEqual(OBSERVER.dimension_label_parts({'label':r'24\,'+unit}),(r'24\,'+unit,None))
+    def test_the_unit_table_in_the_region_observers_label_text(self):
+        regions=importlib.util.spec_from_file_location('plane_regions_observer_units',PRODUCTION/'plane_regions_observer.py')
+        module=importlib.util.module_from_spec(regions);regions.loader.exec_module(module)
+        for unit in [u for u in self.UNITS_ACCEPTED if '/' not in u]:
+            with self.subTest(unit=unit):
+                text=module.region_label_text({'label':'6','unit':unit})
+                self.assertTrue(text.startswith('6'),(unit,text))
+                self.assertIn(unit.split('^')[0],text)
+        self.assertEqual(module.region_label_text({'label':'6','unit':'km^2'}),'6km²')
+        self.assertEqual(module.region_label_text({'label':'6','unit':'mL'}),'6mL')
+        self.assertIsNone(module.region_label_text({'label':'6','unit':'cm^4'}))
     def test_spec_refuses_unknown_unit_kind_and_misplaced_unit(self):
         pts={'A':(0.0,0.0),'B':(6.0,0.0)}
         def build_with(extra):
             return build(spec_of(pts,[seg('sAB',pts,'A','B'),{'id':'e1','kind':'EQUATION_LABEL','text':'6','at':[3.0,0.0],**extra}]))
         self.assertIsNotNone(build_with({'unit':'cm'}))
-        for extra,code in [({'unit':'km'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
+        for extra,code in [({'unit':'inch'},'MARK_UNIT_INVALID'),({'unit':'cm','labelKind':'TEXT'},'MARK_UNIT_REQUIRES_MATH_LABEL'),({'labelKind':'SYMBOL'},'MARK_LABEL_KIND_INVALID')]:
             with self.assertRaises(ValueError,msg=code) as caught:build_with(extra)
             self.assertTrue(str(caught.exception).startswith(code),str(caught.exception))
         with self.assertRaises(ValueError) as caught:build(spec_of(pts,[{**seg('sAB',pts,'A','B'),'unit':'cm'}]))
@@ -606,14 +634,14 @@ class AngleLabelOwnershipTests(unittest.TestCase):
     def on_circle(self,degrees,radius=None):
         radius=self.radius if radius is None else radius;a=math.radians(degrees)
         return (self.vertex[0]+radius*math.cos(a),self.vertex[1]-radius*math.sin(a))      # math degrees: the wedge of aD runs from 0 to 70
-    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True):
+    def with_label(self,center,leader_from=None,size=(30.0,18.0),leader=True,crossing=False):
         x,y=center[0]-size[0]/2,center[1]-size[1]/2
         group='<g id="aD-label" data-fragment-sha="sha256:test" transform="translate(%.6f,%.6f)"><svg xmlns="http://www.w3.org/2000/svg" width="%.3f" height="%.3f"></svg></g>'%(x,y,size[0],size[1])
         if leader_from is not None:
             # the leader ends on the label box edge nearest to its start
             ex=min(max(leader_from[0],x),x+size[0]);ey=min(max(leader_from[1],y),y+size[1])
             if x<leader_from[0]<x+size[0] and y<leader_from[1]<y+size[1]:ex=x
-            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD" x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
+            group+='<line id="aD-label-owner-leader" data-role="leader" data-owner-label="aD-label" data-owner="aD"'+(' data-leader-crossing="1"' if crossing else '')+' x1="%.6f" y1="%.6f" x2="%.6f" y2="%.6f" stroke="#666" stroke-width="0.8" fill="none"/>'%(leader_from[0],leader_from[1],ex,ey)
         return self.svg.replace('</svg>',group+'</svg>')
     def codes(self,svg,marks=None):
         report=OBSERVER.audit({'svg':svg,'points':{k:list(v) for k,v in self.points.items()},'marks':marks or self.marks,'segments':SEGMENTS,'transform':self.transform})
@@ -638,6 +666,13 @@ class AngleLabelOwnershipTests(unittest.TestCase):
         # from the middle of the arc across the ray DA (70 degrees) to a label outside the angle
         label=self.on_circle(95,90)
         self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(label,leader_from=self.on_circle(35))))
+    def test_a_last_resort_leader_may_cross_a_side_but_never_the_angles_own_ray(self):
+        # (FC) the engine's last resort (data-leader-crossing): a leader from the arc to a label beyond the far side sBC is allowed; the unmarked one is refused, and the marked one still may not cross the own ray DA
+        far=self.on_circle(20,400)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sBC',self.codes(self.with_label(far,leader_from=self.on_circle(35))))
+        self.assertEqual(self.only(self.codes(self.with_label(far,leader_from=self.on_circle(35),crossing=True)),'ANGLE_LABEL_LEADER_CROSSES'),[])
+        over_ray=self.on_circle(95,90)
+        self.assertIn('ANGLE_LABEL_LEADER_CROSSES:aD:sDA',self.codes(self.with_label(over_ray,leader_from=self.on_circle(35),crossing=True)))
     def test_a_label_without_a_leader_far_from_its_vertex_is_refused(self):
         errors=self.codes(self.with_label(self.on_circle(35,170)))
         self.assertIn('ANGLE_LABEL_TOO_FAR:aD',errors)

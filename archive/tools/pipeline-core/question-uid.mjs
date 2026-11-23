@@ -5,7 +5,8 @@ export const SOURCE_EXAM_ID_REGISTRY_VERSION = 'SOURCE_EXAM_ID_REGISTRY_v1';
 export const UID_MIGRATION_EVIDENCE_VERSION = 'UID_MIGRATION_EVIDENCE_v1';
 
 // A source question is named by its 1-based integer id, or, for banks whose ids are strings ("q01", "s01"), by that id exactly as the bank writes it.
-export const SOURCE_QUESTION_ID_PATTERN = /^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
+// A bank question id: a letter then up to 31 of [A-Za-z0-9_-] ("q01", "s01"), or the textbook bank's content-hash id "qid_v1_" + 64 lowercase hex (71 characters). Nothing else is widened.
+export const SOURCE_QUESTION_ID_PATTERN = /^(?:[A-Za-z][A-Za-z0-9_-]{0,31}|qid_v1_[0-9a-f]{64})$/;
 function requirePositiveOrdinal(value) {
   if (typeof value === 'string' && SOURCE_QUESTION_ID_PATTERN.test(value)) return value;
   if (!Number.isSafeInteger(value) || value < 1) throw new Error('QUESTION_ORDINAL_INVALID');

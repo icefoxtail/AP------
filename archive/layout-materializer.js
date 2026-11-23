@@ -218,6 +218,17 @@
         const records = [];
         let succeeded = false;
         const shrunkNumbers = [];
+        // 측정 한 번마다 화면 프레임을 기다리지 않는다(2026-11-23). 높이를 읽는 getBoundingClientRect가 그 자리에서 배치를 계산하므로 프레임이
+        // 없어도 잰 값은 같고, 수식·글꼴·그림은 이 단계 전에 이미 끝나 있다. 긴 해설 하나에 측정이 수백 번 이어져 프레임 대기(칸마다 16~32ms
+        // 비어 있는 시간)만 몇 초가 됐다. 진행 표시·취소(deps.raf가 취소를 확인)를 위해 일정 시간마다 한 번만 프레임을 넘긴다.
+        const MEASURE_YIELD_BUDGET_MS = 50;
+        const clockNow = () => global.performance?.now?.() ?? Date.now();
+        let lastMeasureYield = clockNow();
+        const yieldMeasure = async () => {
+            if (clockNow() - lastMeasureYield < MEASURE_YIELD_BUDGET_MS) return;
+            await deps.raf();
+            lastMeasureYield = clockNow();
+        };
         // 전폭 칸에서도 넘치는 해설 하나가 해설지 전체를 막지 않게 한다(2026-11-22): 그 상자만 늘임표 공백 가두기 -> 줄바꿈·글자 단계 -> 축소로 맞추고,
         // 그래도 남으면 경고만 남기고 그린다(감지는 그대로 두고 처리만 바꿈). 줄였으면 true(높이를 다시 잰다).
         const fitFullWidthBox = (box, column, block) => {
@@ -230,7 +241,9 @@
         };
         const flowHeight = (node, wide = false) => {
             const host = wide ? wideCol : cols[0];
-            host.replaceChildren(node, marker);
+            // 같은 상자를 이어서 잴 때(이어짐 조각을 하나씩 붙여 가며 재는 반복)는 이미 칸 안에 있으므로 다시 끼우지 않는다.
+            // 다시 끼우면 상자 전체의 스타일·배치를 처음부터 다시 계산한다. 칸 안 구성(상자, 표식)이 같으면 잰 값은 같다.
+            if (host.childNodes.length !== 2 || host.firstChild !== node || host.lastChild !== marker) host.replaceChildren(node, marker);
             return Math.max(1, marker.getBoundingClientRect().top - host.getBoundingClientRect().top);
         };
         try {
@@ -349,7 +362,7 @@
                     record.block.actualChunkCount = record.input.chunkCount;
                     record.block.solutionImageMovedToTail = true;
                     maximumQueries += 1;
-                    await deps.raf();
+                    await yieldMeasure();
                     queryCount += 1;
                     continue;
                 }
@@ -357,7 +370,7 @@
                 else record.input.continuationHeights[query.start] = heights;
                 record.measuredRangeCount += heights.length;
                 record.block.measuredRangeCount = record.measuredRangeCount;
-                await deps.raf();
+                await yieldMeasure();
                 queryCount += 1;
             }
             if (plan.status !== 'READY') throw new Error('SOLUTION_MEASUREMENT_DID_NOT_CONVERGE');

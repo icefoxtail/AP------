@@ -10,6 +10,24 @@
   const FIELDS = Object.freeze(['rpmL1', 'rpmL2', 'rpmL3', 'rpmL4',
     'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern',
     'problemTypeKey', 'templateKey', 'difficultyBucket', 'nativeCurriculum', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4']);
+  // project() runs once per question (about 30,000 on every workspace entry). What depends only on the field name is computed here once.
+  const GROUP_BY_FIELD = Object.freeze({
+    standardCourse: 'standardUnit', standardUnitKey: 'standardUnit', standardUnit: 'standardUnit',
+    subUnitKey: 'subUnit', subUnit: 'subUnit', difficultyBucket: 'difficulty',
+    problemTypeKey: 'problemType', templateKey: 'template', crossConceptKeys: 'crossConcept', conditionKeys: 'condition',
+    integrationPattern: 'integrationPattern', secondaryConceptKeys: 'secondaryConcept',
+  });
+  const FIELD_INFO = Object.freeze(FIELDS.map(field => {
+    const isRpm = /^rpmL[1-4]$/.test(field);
+    return Object.freeze({
+      field,
+      alias: isRpm ? field.slice(3) : field,
+      isKeys: field.endsWith('Keys'),
+      pendingGroup: isRpm ? 'rpm' : GROUP_BY_FIELD[field],
+      debtLevel: /^rpmL([1-4])$/.exec(field)?.[1],
+    });
+  }));
+  const STATUS_PASSTHROUGH = new Set(['STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD']);
   const GENERATED_FIELDS = Object.freeze(FIELDS.filter(field =>
     !['nativeCurriculum', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4'].includes(field)));
   const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
@@ -329,15 +347,15 @@
     view.rpmSemanticReason = m.rpmSemanticReason ?? rpmMeta.rpmSemanticReason ?? record.rpmSemanticReason ?? q.rpmSemanticReason ?? null;
     view.rpmEvidenceDebtFields = m.rpmEvidenceDebtFields ?? rpmMeta.rpmEvidenceDebtFields ?? record.rpmEvidenceDebtFields ?? null;
     const evidence = m.evidenceByField || record.metaFieldEvidence || {};
-    for (const field of FIELDS) {
-      const alias = /^rpmL[1-4]$/.test(field) ? field.slice(3) : field;
+    for (const info of FIELD_INFO) {
+      const { field, alias } = info;
       let value;
       if (generated) value = own(m, field) ? m[field] : own(q, field) ? q[field] : record[field];
       else if (staleNativeSourceProjection) value = null;
       else value = own(m, field) ? m[field] : (!nativeOriginalProjection && own(m, alias)) ? m[alias] :
         own(rpmMeta, field) ? rpmMeta[field] : own(record, field) ? record[field] : (!nativeOriginalProjection ? record[alias] : undefined);
       if (field === 'difficultyBucket') value = bucket(value);
-      else if (field.endsWith('Keys')) {
+      else if (info.isKeys) {
         if (!Array.isArray(value) || value.some(v => typeof v !== 'string' || !v.trim()) ||
             new Set(value).size !== value.length) value = null;
       } else if (typeof value !== 'string' || !value.trim()) value = null;
@@ -347,19 +365,12 @@
         ? (known(record[alias]) ? record[alias] : known(m[alias]) ? m[alias] : value)
         : value;
       const status = evidence[field]?.status;
-      const groupByField = {
-        standardCourse: 'standardUnit', standardUnitKey: 'standardUnit', standardUnit: 'standardUnit',
-        subUnitKey: 'subUnit', subUnit: 'subUnit', difficultyBucket: 'difficulty',
-        problemTypeKey: 'problemType', templateKey: 'template', crossConceptKeys: 'crossConcept', conditionKeys: 'condition',
-        integrationPattern: 'integrationPattern', secondaryConceptKeys: 'secondaryConcept',
-      };
-      const pendingGroup = /^rpmL[1-4]$/.test(field) ? 'rpm' : groupByField[field];
+      const { pendingGroup, debtLevel } = info;
       const registrationPending = pendingGroup && record.metadataAssignmentEvidence?.fieldStatus?.[pendingGroup] === 'manual_review_pending';
-      const debtLevel = /^rpmL([1-4])$/.exec(field)?.[1];
       const hasExplicitDebtLevels = Array.isArray(view.rpmEvidenceDebtFields);
       const sourceDebt = Boolean(debtLevel && hasExplicitDebtLevels && view.rpmEvidenceDebtFields.includes(`L${debtLevel}`)) ||
         Boolean(debtLevel && !hasExplicitDebtLevels && view.rpmSemanticStatus === 'EVIDENCE_DEBT' && !known(value));
-      view.metaStatus[field] = staleNativeSourceProjection ? 'STALE' : ['STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD'].includes(status) ? status : sourceDebt ? 'EVIDENCE_DEBT' : registrationPending ? 'PENDING' : !known(value) ? 'UNKNOWN' :
+      view.metaStatus[field] = staleNativeSourceProjection ? 'STALE' : STATUS_PASSTHROUGH.has(status) ? status : sourceDebt ? 'EVIDENCE_DEBT' : registrationPending ? 'PENDING' : !known(value) ? 'UNKNOWN' :
         status === 'CONFIRMED' ? 'CONFIRMED' :
         Array.isArray(value) && value.length === 0 || value === 'NONE' ? 'RECORDED_NOT_APPLICABLE' : 'RECORDED';
     }

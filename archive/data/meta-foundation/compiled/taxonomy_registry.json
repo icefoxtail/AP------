@@ -4,7 +4,7 @@
   "sourcePacks": [
     {
       "packId": "GEOMETRY_EQUATIONS",
-      "version": "1.0.5"
+      "version": "1.0.6"
     },
     {
       "packId": "SETS_PROPOSITIONS",
@@ -12,7 +12,7 @@
     },
     {
       "packId": "FUNCTIONS_GRAPHS",
-      "version": "1.0.13"
+      "version": "1.0.14"
     },
     {
       "packId": "LIMIT_CONTINUITY",
@@ -28,19 +28,19 @@
     },
     {
       "packId": "PROBABILITY_STATISTICS",
-      "version": "1.0.7"
+      "version": "1.0.8"
     },
     {
       "packId": "MIDDLE_GEOMETRY",
-      "version": "1.0.15"
+      "version": "1.0.16"
     },
     {
       "packId": "MIDDLE1",
-      "version": "1.0.15"
+      "version": "1.0.16"
     },
     {
       "packId": "H1_FOUNDATION",
-      "version": "1.0.12"
+      "version": "1.0.13"
     },
     {
       "packId": "H1_ORIGINAL_SOURCE",
@@ -68,11 +68,11 @@
     },
     {
       "packId": "MIDDLE2",
-      "version": "1.0.12"
+      "version": "1.0.13"
     }
   ],
-  "problemTypeCount": 518,
-  "templateCount": 1443,
+  "problemTypeCount": 520,
+  "templateCount": 1444,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -7136,6 +7136,33 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M3_REGULAR_POLYGON",
+      "canonicalLabelKo": "정다각형",
+      "definition": "정다각형을 중심각에 따른 합동삼각형으로 분할하여 변·대각선·넓이·외접반지름을 연결한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0a538d6074e18b5563b3d375ced6d4b118f54f8b3d45777eedd342cc27eafe5b",
+        "qid_v1_d039ee0f6e0429ef22c4300beac56b2c44631ab40d880f2080ce4b7626551849"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_REGULAR_POLYGON",
+          "bundleTable": {
+            "branch": "data/type-judgment-w-20261122",
+            "commit": "4111b9298564d9e7095216194d47737640427bfe",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
       "canonicalLabelKo": "절댓값 조건에서 가능한 극값",
       "definition": "절댓값만 주어진 여러 수의 가능한 부호에 따라 식의 최댓값과 최솟값을 구한다.",
@@ -11325,6 +11352,32 @@
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_SURFACE_PATH",
+      "canonicalLabelKo": "입체도형의 표면 경로",
+      "definition": "입체도형의 표면을 따라가는 경로를 선분으로 나누어 각 길이를 합한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_2fb3f3eb901350e0048eb493d58d8891753f94428de59e6f08ce5215f91a84a9"
+      ],
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_SURFACE_PATH",
+          "bundleTable": {
+            "branch": "data/type-judgment-w-20261122",
+            "commit": "4111b9298564d9e7095216194d47737640427bfe",
             "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
           }
         }
@@ -23317,6 +23370,31 @@
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_GRAPH_REFLECTION_X_REFLECT",
+      "parentProblemTypeKey": "PT_MOVE_GRAPH_REFLECTION",
+      "canonicalLabelKo": "x축 대칭 그래프 식",
+      "definition": "x축 대칭에서 함숫값 부호가 반전됨을 이용해 그래프의 식을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7f1b0f7e91a2883375a564df01644531850097590cba54de46c8e540644c8ea3"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_GRAPH_REFLECTION_X_REFLECT",
+          "bundleTable": {
+            "branch": "data/type-judgment-w-20261122",
+            "commit": "4111b9298564d9e7095216194d47737640427bfe",
             "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
           }
         }
