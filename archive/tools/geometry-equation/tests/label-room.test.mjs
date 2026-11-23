@@ -1,6 +1,7 @@
 // label-room.mjs (R1-2): the fixed order of the room steps, the ladder that starts only for a figure that failed with a room code, the self-target leader geometry, the stagger and margin helpers
 // and the best-place record. Pure: no browser, no python. The renders of the example plans are in label-room-render.test.mjs (Chrome).
 import test from 'node:test';
+import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {ROOM_STEPS, orderSteps, runRoomLadder, selfLeader, ringCandidates, placeWithLeader, staggerRows, marginNeeded, degradeCollector, bestEffortRecord, overlapArea, boxesTouch} from '../production/label-room.mjs';
 import {STANDALONE_KINDS} from '../production/standalone-kinds.mjs';
@@ -148,4 +149,19 @@ test('ellipse: a segment length (6√3) with no near place goes on a leader that
   assert.ok(box.y + box.height < 126, 'the label stands outside the ring, and its leader goes through the gap');
   assert.ok(placed.leader.a[0] > 194 && placed.leader.a[0] < 206 && Math.abs(placed.leader.b[0] - 200) < 1e-6);
   assert.equal(placed.text, '6√3', 'the exact value is written as it always was');
+});
+
+test('a tree gets roomPad px more at the top and at the bottom (the MARGIN step), nothing else changes', () => {
+  const model = solveStatChart(JSON.parse(fs.readFileSync(new URL('./label-room-plans/stat-tree-branch-fraction.json', import.meta.url), 'utf8')).chart);
+  const plain = statChartSize(model, {fontPx: 21});
+  assert.equal(statChartSize(model, {fontPx: 21, roomPad: 12}).height, plain.height + 24);
+  assert.equal(statChartSize(model, {fontPx: 21, roomPad: 12}).width, plain.width);
+});
+
+test('roomGrow: any stat chart gets that many px more frame at the right and bottom, and the same chart without it is sized exactly as before', () => {
+  const model = solveStatChart(JSON.parse(fs.readFileSync(new URL('./label-room-plans/stat-normal-z-fraction.json', import.meta.url), 'utf8')).chart);
+  const plain = statChartSize(model, {fontPx: 21});
+  assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: undefined}), plain);
+  assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: {right: 0, bottom: 6}}), {width: plain.width, height: plain.height + 6});
+  assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: {right: 9, bottom: 0}}), {width: plain.width + 9, height: plain.height});
 });

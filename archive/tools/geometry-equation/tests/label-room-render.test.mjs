@@ -49,7 +49,7 @@ test('an x tick row of fractions over the z row (x-tick-0-label touches z-tick-0
   } finally { await browser.close(); }
 });
 
-test('end to end through the kind table: the tree whose branch fraction left the frame, and the set name on a circle line, are bound and the rescue is recorded in fallback', {timeout: 900000}, async () => {
+test('end to end through the kind table: the tree binds without any rescue, and the set name on a circle line is rescued and recorded in fallback', {timeout: 900000}, async () => {
   const run = async (file, exam, ordinal, name) => {
     const out = fs.mkdtempSync(path.join(os.tmpdir(), 'label-room-'));
     const result = await renderPlan({item: {sourcePath: exam, ordinal, dir: name}, plan: fileURLToPath(new URL(`./label-room-plans/${file}.json`, import.meta.url)), outDir: out});
@@ -57,8 +57,8 @@ test('end to end through the kind table: the tree whose branch fraction left the
   };
   const tree = await run('stat-tree-branch-fraction', 'archive/exams/original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', 22, 'tree');
   assert.equal(tree.result.status, 'ARCHIVE_BOUND', JSON.stringify(tree.result).slice(0, 500));
-  assert.deepEqual(tree.result.fallback.map(f => f.to), ['ROOM_MARGIN']);
-  assert.equal(tree.result.fallback[0].kind, 'stat');
+  // since main released the font floor (#2742) this tree fits as written (before: ROOM_MARGIN at pad 12); it stays as the example of a figure the ladder must not disturb
+  assert.equal(tree.result.fallback, undefined);
   const set = await run('set-name-collision', 'archive/exams/original/high/h2/1final/20_제일고_1학기_기말_고2_확률과통계.js', 7, 'set');
   assert.equal(set.result.status, 'ARCHIVE_BOUND', JSON.stringify(set.result).slice(0, 500));
   assert.deepEqual(set.result.fallback.map(f => f.to), ['ROOM_LEADER']);
