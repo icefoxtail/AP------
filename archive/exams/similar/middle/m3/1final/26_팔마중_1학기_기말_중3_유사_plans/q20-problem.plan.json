@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 9,
+        "marker": "NONE"
+      },
+      {
+        "id": "P1",
+        "x": -2,
+        "y": -7,
+        "marker": "NONE"
+      },
+      {
+        "id": "P2",
+        "x": 6,
+        "y": -7,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "0",
+          "coordinates": true,
+          "labelDirection": "NE"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "9"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "hiddenPointNames": [
+    "V",
+    "P1",
+    "P2"
+  ],
+  "caption": "이차함수 y=-x^2+ax+b의 그래프와 삼각형 ABC",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차함수 y=-x^2+ax+b의 그래프와 x축의 교점 A(-1,0), B(5,0), y절편 (0,5), 꼭짓점 C(2,9)"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선과 삼각형 ABC의 배치 및 교점 B(5,0)과 y절편 5"
+    }
+  ]
+}

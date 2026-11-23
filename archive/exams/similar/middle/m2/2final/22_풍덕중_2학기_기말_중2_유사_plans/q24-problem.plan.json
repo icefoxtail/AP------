@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "17/5",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "17/5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      4.5,
+      -1,
+      4.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "n1",
+          "text": "x+y=17/5",
+          "labelKind": "MATH",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "집에서 도서관까지의 거리 x와 도서관에서 학교까지의 거리 y의 합이 3.4 km임을 직선으로 나타낸 것이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있고, 두 거리의 합이 3.4임을 나타내는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "두 거리 x, y의 합이 3.4 km임을 나타내는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 집에서 도서관을 거쳐 학교까지의 총 거리는 $3.4\\text{ km}$이다. 민우가 집에서 도서관까지는 시속 $4\\text{ km}$로 걷고, 도서관에서 학교까지는 시속 $6\\text{ km}$로 뛰었더니 총 $45$분이 걸려서 학교에 도착하였다.  \n1) 집에서 도서관까지의 거리를 $x\\text{ km}$, 도서관에서 학교까지의 거리를 $y\\text{ km}$라고 할 때, 식을 세우기 위한 두 가지 조건(거리 조건, 시간 조건)을 찾아 연립방정식을 세우시오. (풀이과정 서술) [3점]  \n2) 민우가 집에서 도서관까지 이동한 거리와 도서관에서 학교까지 이동한 거리를 각각 구하시오. (풀이과정 서술) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

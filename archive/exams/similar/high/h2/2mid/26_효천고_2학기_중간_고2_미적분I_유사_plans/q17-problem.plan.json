@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "xWindow": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -2.5,
+      2.5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": []
+  },
+  "caption": "네 개의 선분 조각으로 이루어진 함수 y=f(x)의 그래프이다. 각 조각의 끝은 빈 점 또는 채운 점으로 표시되어 있다.",
+  "accessibilityDescription": "가로축과 세로축 위에 네 개의 선분 조각으로 이루어진 함수의 그래프가 그려져 있다. 왼쪽부터 (-2, -2)에서 (-1, -1)로 가는 조각, (-1, 0)에서 (0, 1)로 가는 조각, (0, 0)에서 (1, -1)로 가는 조각, (1, 2)에서 (2, 1)로 가는 조각이 있고, 각 조각의 끝은 빈 점이나 채운 점으로 표시되어 있다. 가로축에는 -2, -1, 1, 2, 세로축에는 -2, -1, 1, 2의 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "네 개의 선분 조각으로 이루어진 함수 y=f(x)의 그래프",
+    "각 조각의 끝을 나타내는 빈 점과 채운 점",
+    "가로축 눈금 -2, -1, 1, 2와 세로축 눈금 -2, -1, 1, 2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-2<x<2$에서 정의된 함수 $y=f(x)$의 그래프가 그림과 같을 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $f^{-1}(x)$는 함수 $f(x)$의 역함수이다.) ㄱ. $\\lim_{x\\to 1^-}f(x)=-1$ ㄴ. $\\lim_{x\\to 1^+}f^{-1}(x)=1$ ㄷ. $\\lim_{x\\to a^-}f^{-1}(x)+\\lim_{x\\to a^+}f^{-1}(x)=\\dfrac{1}{2}$을 만족시키는 실수 $a$는 존재하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
