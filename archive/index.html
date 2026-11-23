@@ -2483,13 +2483,13 @@ function buildCard(ex) {
             ex.year ? `${ex.year}년` : '',
             semester,
             examName,
-            ex.subject || '',
+            (window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || '')),
             contentTypeLabel
         ].filter(Boolean).join(' · ');
 
         metaHTML = [
             buildMetaBadge(ex.grade || ''),
-            buildMetaBadge(ex.subject || '', 'primary'),
+            buildMetaBadge((window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || '')), 'primary'),
             buildMetaBadge(`${semester} ${examName}`.trim() || '', 'primary')
         ].filter(Boolean).join('');
     } else {
@@ -2497,7 +2497,7 @@ function buildCard(ex) {
         subtitle = [
             ex.grade || '',
             contentTypeLabel,
-            ex.subject || ''
+            (window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || ''))
         ].filter(Boolean).join(' · ');
 
         if (!subtitle) subtitle = contentTypeLabel;
@@ -2505,7 +2505,7 @@ function buildCard(ex) {
         metaHTML = [
             buildMetaBadge(ex.grade || ''),
             buildMetaBadge(contentTypeLabel, 'green'),
-            buildMetaBadge(ex.subject || ''),
+            buildMetaBadge((window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || ''))),
             (ex.school && ex.school !== 'AP수학') ? buildMetaBadge(ex.school) : ''
         ].filter(Boolean).join('');
     }
@@ -2722,7 +2722,7 @@ function getIndexExamTitle(item) {
     if (item?.savedPaperId) return String(item.title || item.identityTitle || '저장한 시험지').trim();
     if (isUnitPastExamItem(item) && (item?.identityTitle || item?.title)) return String(item.identityTitle || item.title).trim();
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
-    return `${baseTitle} ${item.subject || ''}`.trim();
+    return `${baseTitle} ${(window.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? (item.subject || ''))}`.trim();
 }
 
 function isUnitPastExamItem(item) {
@@ -3608,7 +3608,7 @@ function rememberArchiveEngineLaunch(url) {
 
 function goEngine(item, action, qpp, options = {}) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
-    const title = `${baseTitle} ${item.subject || ''}`.trim();
+    const title = `${baseTitle} ${(window.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? (item.subject || ''))}`.trim();
 
     const url = new URL('engine.html', window.location.href);
     url.searchParams.set('mode', action);
@@ -3816,6 +3816,6 @@ window.onload = function () {
 <script src="archive2-source.js?v=20261119-verified-rename-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
-<script src="archive2-entry.js?v=20261110-review-a-1"></script>
+<script src="archive2-entry.js?v=20261123-gichul-c-1"></script>
 </body>
 </html>

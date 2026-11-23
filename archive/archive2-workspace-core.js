@@ -780,7 +780,7 @@
     return O.settings({
       header: {
         title: O.displayTitle(exam),
-        subtitle: exam.subject || exam.primaryStandardCourse,
+        subtitle: globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(exam) ?? (exam.subject || exam.primaryStandardCourse),
       },
       qpp,
     });
