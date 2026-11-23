@@ -127,6 +127,30 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
   },publicationViewport);
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
+// degree helpers for the score gate (ops/score): overlapped area over the smaller box; fraction of the box outside a frame and the shortfall inside a safe rectangle in box heights
+const boxOverlapRatio=(a,b)=>{const w=Math.min(right(a),right(b))-Math.max(a.x,b.x),h=Math.min(bottom(a),bottom(b))-Math.max(a.y,b.y);if(w<=0||h<=0)return 0;const small=Math.min(a.width*a.height,b.width*b.height);return small>0?w*h/small:0;};
+const boxOutside=(box,frame,safeRect)=>{const w=Math.max(0,Math.min(right(box),right(frame))-Math.max(box.x,frame.x)),h=Math.max(0,Math.min(bottom(box),bottom(frame))-Math.max(box.y,frame.y));const total=box.width*box.height;const shortfall=Math.max(0,safeRect.x-box.x,safeRect.y-box.y,right(box)-right(safeRect),bottom(box)-bottom(safeRect));return{kind:'outside',clippedFraction:total>0?1-w*h/total:1,d:shortfall/Math.max(1,box.height)};};
+// Score gate (ops/score), failure path only: how much of a label box the stroke / dot / knockout of one geometry primitive hides (sampled grid over the box, 0..1), and how much all of them hide together.
+const coverSegmentDistance=(x,y,a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],len=dx*dx+dy*dy,t=len>0?Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/len)):0;return Math.hypot(x-(a[0]+t*dx),y-(a[1]+t*dy));};
+const geometryCovers=(g,pad,box)=>{
+  if(g.kind==='tickLabelKnockout'||g.kind==='conditionBox'){const e=expand(g.client,pad);return (x,y)=>x>=e.x&&x<=e.x+e.width&&y>=e.y&&y<=e.y+e.height;}
+  if(g.kind==='point'||g.kind==='circle'){const [cx,cy]=g.at;return g.kind==='point'?(x,y)=>Math.hypot(x-cx,y-cy)<=g.radius+pad:(x,y)=>Math.abs(Math.hypot(x-cx,y-cy)-g.radius)<=pad;}
+  // only the segments that come near the label box matter (a region outline can hold thousands)
+  const near=expand(box,pad),segs=[];
+  (g.points||[]).forEach((p,j,all)=>{if(j>0){const q=all[j-1];if(Math.max(p[0],q[0])>=near.x&&Math.min(p[0],q[0])<=near.x+near.width&&Math.max(p[1],q[1])>=near.y&&Math.min(p[1],q[1])<=near.y+near.height)segs.push([q,p]);}});
+  return (x,y)=>segs.some(([a,b])=>coverSegmentDistance(x,y,a,b)<=pad);
+};
+// a sample every half CSS px (at most 96 per side), so a 1.5 px stroke is never stepped over
+function labelCoverage(box,hits){
+  const nx=Math.min(96,Math.max(8,Math.ceil(box.width/.5))),ny=Math.min(96,Math.max(8,Math.ceil(box.height/.5)));
+  const tests=hits.map(h=>geometryCovers(h.g,h.pad,box)),each=hits.map(()=>0);let any=0;
+  for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){
+    const x=box.x+box.width*(i+.5)/nx,y=box.y+box.height*(j+.5)/ny;let hit=false;
+    tests.forEach((t,k)=>{if(t(x,y)){each[k]++;hit=true;}});
+    if(hit)any++;
+  }
+  const n=nx*ny;return {each:each.map(c=>c/n),union:any/n};
+}
 const expand=(b,p)=>({x:b.x-p,y:b.y-p,width:b.width+2*p,height:b.height+2*p});
 const overlap=(a,b)=>a.x<right(b)-.1&&b.x<right(a)-.1&&a.y<bottom(b)-.1&&b.y<bottom(a)-.1;
 const contains=(a,b)=>a.x-.1<=b.x&&right(b)<=right(a)+.1&&a.y-.1<=b.y&&bottom(b)<=bottom(a)+.1;
@@ -302,6 +326,8 @@ function isOwnRegionExit(leader,other,geometry) {
 export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree===true}={}) {
   if(capture.synthetic!==false||capture.runtime!=='playwright-chromium')throw Error('ACTUAL_BROWSER_CAPTURE_REQUIRED');
   const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,observedLabelCollisionCount=0,observedCriticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
+  // Score gate (ops/score): the measured degree of a finding, keyed by the exact error string. Output only; no check reads it.
+  const degrees=new Map();const labelH=b=>Math.max(1,b?.height??1);
   const scale=Number.isFinite(capture.coordinateScale)?capture.coordinateScale:capture.svg.width/capture.viewBox.width;const pad=capture.safeMargin*scale;
   const safe={x:capture.svg.x+pad,y:capture.svg.y+pad,width:capture.svg.width-2*pad,height:capture.svg.height-2*pad};
   const tickLabels=capture.labels.filter(v=>v.kind==='TICK_LABEL'||v.visualRole==='tick-label'),tickEvidence=[];
@@ -370,12 +396,12 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
         startDelta=point?Math.hypot(leader.points[0][0]-point[0],leader.points[0][1]-point[1]):null;
         endAtLabelEdge=!!label.client&&pointOnBoxEdge(leader.points[1],label.client,1.5);
         clearanceEvidence=point?ownerLeaderClearance(label,leader,capture.geometry,point,scale):{status:'FAIL',errors:['TICK_LABEL_OWNER_LEADER_TICK_POINT_MISSING']};
-        if(!Number.isFinite(leaderLength)||leaderLength>48*scale+.25)leaderFail('TICK_LABEL_OWNER_LEADER_TOO_LONG');
+        if(!Number.isFinite(leaderLength)||leaderLength>48*scale+.25){leaderFail('TICK_LABEL_OWNER_LEADER_TOO_LONG');if(Number.isFinite(leaderLength))degrees.set('TICK_LABEL_OWNER_LEADER_TOO_LONG:'+label.id,{kind:'distance',d:(leaderLength-48*scale)/labelH(label.client)});}
         if(startDelta===null||startDelta>1*scale+.25)leaderFail('TICK_LABEL_OWNER_LEADER_START_MISMATCH');
         if(!endAtLabelEdge)leaderFail('TICK_LABEL_OWNER_LEADER_END_MISMATCH');
         if(!Number.isFinite(leader.strokeWidthPx)||leader.strokeWidthPx>.8*scale+.25||!['rgb(102, 102, 102)','#666','#666666'].includes(String(leader.strokeColor||'').trim().toLowerCase()))leaderFail('TICK_LABEL_OWNER_LEADER_STYLE_INVALID');
         if(leader.markerStart&&leader.markerStart!=='none'||leader.markerEnd&&leader.markerEnd!=='none')leaderFail('TICK_LABEL_OWNER_LEADER_ARROW_FORBIDDEN');
-        if(clearanceEvidence.status!=='PASS')leaderFail('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL');
+        if(clearanceEvidence.status!=='PASS'){leaderFail('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL');const shortfalls=(clearanceEvidence.checks||[]).filter(r=>Number.isFinite(r.requiredClearanceCssPx)&&Number.isFinite(r.minClearanceCssPx)&&r.minClearanceCssPx<=r.requiredClearanceCssPx).map(r=>r.requiredClearanceCssPx-r.minClearanceCssPx);if(shortfalls.length)degrees.set('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:'+label.id,{kind:'distance',d:Math.max(...shortfalls)/labelH(label.client)});}
         if(!visibleGeometry(leader).ok)leaderFail('TICK_LABEL_OWNER_LEADER_NOT_VISIBLE');
       }else leaderFail('TICK_LABEL_OWNER_LEADER_GEOMETRY_INVALID');
       ownerLeaderPass=leaderErrors.length===0;
@@ -391,8 +417,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
         alignmentDelta=Math.abs(label.client.y+label.client.height/2-point[1]);
         const gaps=[point[0]-right(label.client),label.client.x-point[0]].filter(v=>v>=-.1);edgeGap=gaps.length?Math.min(...gaps):null;
       }
-      if(!ownerLeaderPass&& (alignmentDelta===null||alignmentDelta>4*scale+.25))fail('TICK_LABEL_ALONG_AXIS_MISALIGNMENT');
-      if(!ownerLeaderPass&& (edgeGap===null||edgeGap>16*scale+.25))fail('TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE');
+      if(!ownerLeaderPass&& (alignmentDelta===null||alignmentDelta>4*scale+.25)){fail('TICK_LABEL_ALONG_AXIS_MISALIGNMENT');if(alignmentDelta!==null)degrees.set('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:'+label.id,{kind:'distance',d:(alignmentDelta-4*scale)/labelH(label.client)});}
+      if(!ownerLeaderPass&& (edgeGap===null||edgeGap>16*scale+.25)){fail('TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE');if(edgeGap!==null)degrees.set('TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE:'+label.id,{kind:'distance',d:(edgeGap-16*scale)/labelH(label.client)});}
       if(!Array.isArray(label.tickSource)||label.tickSource.length!==2||!label.tickSource.every(Number.isFinite)||!Array.isArray(label.tickSourceClient))fail('TICK_LABEL_SOURCE_POSITION_MISSING');
       else {sourceDelta=Math.hypot(label.tickSourceClient[0]-point[0],label.tickSourceClient[1]-point[1]);if(sourceDelta>1*scale+.25)fail('TICK_LABEL_SOURCE_POSITION_PARITY');}
     }
@@ -415,7 +441,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     const box=label.client,onX=axis==='x';
     const delta=onX?Math.abs(box.x+box.width/2-source[0]):Math.abs(box.y+box.height/2-source[1]);
     const sides=(onX?[source[1]-bottom(box),box.y-source[1]]:[source[0]-right(box),box.x-source[0]]).filter(v=>v>=-.1),gap=sides.length?Math.min(...sides):Infinity;
-    if(delta>4*scale+.25||!(gap<=16*scale+.25)){fail('AXIS_VALUE_LABEL_NOT_ADJACENT');continue;}
+    if(delta>4*scale+.25||!(gap<=16*scale+.25)){fail('AXIS_VALUE_LABEL_NOT_ADJACENT');degrees.set('AXIS_VALUE_LABEL_NOT_ADJACENT:'+label.id,{kind:'distance',d:Math.max((delta-4*scale)/labelH(box),Number.isFinite(gap)?(gap-16*scale)/labelH(box):2)});continue;}
     const near=onX?(source[1]-bottom(box)>=-.1&&source[1]-bottom(box)===gap?bottom(box):box.y):(source[0]-right(box)>=-.1&&source[0]-right(box)===gap?right(box):box.x);
     const start=near>(onX?source[1]:source[0])?1.5*scale:-1.5*scale,probe=onX?[[source[0],source[1]+start],[source[0],near]]:[[source[0]+start,source[1]],[near,source[1]]];
     for(const other of capture.geometry){
@@ -425,8 +451,9 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   }
   for(let i=0;i<capture.labels.length;i++) {
     const label=capture.labels[i],box=label.client;
-    if(!contains(safe,box)){clippedTextCount++;errors.push('TEXT_CLIPPED:'+label.id);}
-    for(const other of capture.labels.slice(i+1))if(overlap(box,other.client)){labelCollisionCount++;if(Math.min(label.priority,other.priority)<=2)criticalCollisionCount++;errors.push('LABEL_OVERLAP:'+label.id+':'+other.id);}
+    if(!contains(safe,box)){clippedTextCount++;errors.push('TEXT_CLIPPED:'+label.id);degrees.set('TEXT_CLIPPED:'+label.id,boxOutside(box,capture.svg,safe));}
+    for(const other of capture.labels.slice(i+1))if(overlap(box,other.client)){labelCollisionCount++;if(Math.min(label.priority,other.priority)<=2)criticalCollisionCount++;errors.push('LABEL_OVERLAP:'+label.id+':'+other.id);degrees.set('LABEL_OVERLAP:'+label.id+':'+other.id,{kind:'overlap',d:boxOverlapRatio(box,other.client)});}
+    const coverHits=[];
     for(const g of capture.geometry) {
       let hit=false;
       const strokePad=(g.strokeWidthPx??0)/2;
@@ -437,7 +464,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
         hit=overlap(box,expand(g.client,strokePad));
       } else
       if(g.kind==='conditionBox'){
-        if(g.id===label.id+'-box'){if(!contains(g.client,box)){overflowCount++;errors.push('CONDITION_BOX_OVERFLOW:'+label.id);}continue;}
+        if(g.id===label.id+'-box'){if(!contains(g.client,box)){overflowCount++;errors.push('CONDITION_BOX_OVERFLOW:'+label.id);degrees.set('CONDITION_BOX_OVERFLOW:'+label.id,boxOutside(box,g.client,g.client));}continue;}
         hit=overlap(box,expand(g.client,strokePad));
       } else if(g.kind==='point'||g.kind==='circle'){
         const [x,y]=g.at;const near=Math.hypot(Math.max(box.x-x,0,x-right(box)),Math.max(box.y-y,0,y-bottom(box)));
@@ -447,9 +474,11 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       if(hit){
         const legacyLineMask=tickKnockouts.some(mask=>validLegacyLineMaskIds.has(mask.id)&&mask.ownerLabelId===label.id&&mask.occludedPrimitiveIds.includes(g.id)&&label.id==='tick-x--1-label'&&g.id==='segmentAB'&&g.kind==='line');
         observedLabelCollisionCount++;if(label.priority<=2)observedCriticalCollisionCount++;
-        if(!legacyLineMask){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
+        if(!legacyLineMask){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);coverHits.push({g,pad:Math.max(strokePad,.5)});}
       }
     }
+    // Score gate: the share of this label each colliding shape hides (d) and all of them together (labelHidden); output only, the errors above are unchanged.
+    if(coverHits.length){const cover=labelCoverage(box,coverHits);coverHits.forEach((h,k)=>degrees.set('LABEL_GEOMETRY_COLLISION:'+label.id+':'+h.g.id,{kind:'overlap',d:cover.each[k],labelHidden:cover.union}));}
   }
   const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);
   const displayTextBelow11px=[];
@@ -465,7 +494,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
         const authored=label.baseFontPx,authoredKnown=Number.isFinite(authored)&&authored>0,displayedBelow=Number.isFinite(label.effectiveFontPx)&&label.effectiveFontPx<11-1e-7;
         // cross-check: data-font-px may say 20 while a nested viewport shrank the outline; effectiveFontPx / root display scale is the font in SVG units that was really drawn, and that stays under the authored floor
         const rootScale=capture.coordinateScale,drawn=Number.isFinite(rootScale)&&rootScale>0?label.effectiveFontPx/rootScale:null;
-        if(!Number.isFinite(label.effectiveFontPx)||(authoredKnown?(authored<11-1e-7||(drawn!==null&&drawn<11-1e-3)):displayedBelow))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
+        if(!Number.isFinite(label.effectiveFontPx)||(authoredKnown?(authored<11-1e-7||(drawn!==null&&drawn<11-1e-3)):displayedBelow)){errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);if(Number.isFinite(label.effectiveFontPx))degrees.set('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id,{kind:'fontShortfall',d:Math.max(0,(11-label.effectiveFontPx)/11),fontPx:label.effectiveFontPx});}
         else if(displayedBelow)displayTextBelow11px.push({id:label.id,effectiveFontPx:label.effectiveFontPx});
       }
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
@@ -490,7 +519,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
-  return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,tickLabelEvidence:tickEvidence,tickKnockoutEvidence,
+  const violations=errors.length?errors.map(text=>{const parts=text.split(':');return{code:parts[0],...(parts.length>1?{id:parts.slice(1).join(':')}:{}),...(degrees.has(text)?{degree:degrees.get(text)}:{})};}):undefined;
+  return{status:errors.length?'FAIL':'PASS',...(violations?{violations}:{}),HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,tickLabelEvidence:tickEvidence,tickKnockoutEvidence,
     labelCollisionCount,criticalCollisionCount,observedLabelCollisionCount,observedCriticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,
     // present only when a label displays below 11 CSS px (information, not a failure; 2026-11-23): keeps every other analysis, and its hash, unchanged
     ...(displayTextBelow11px.length?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:displayTextBelow11px.length,displayTextBelow11pxLabels:displayTextBelow11px}:{}),

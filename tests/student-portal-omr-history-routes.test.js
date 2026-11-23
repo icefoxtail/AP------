@@ -83,7 +83,8 @@ const homeContext = {
   exactOmrAssignmentId: '',
   isTeacherPreview: false,
   getStudentPortalHomeIndex: () => { throw new Error('canonical server list must take precedence over home fallback'); },
-  escapeHtml: value => String(value ?? '')
+  escapeHtml: value => String(value ?? ''),
+  studentExamTitle: (exam, fallback) => exam.exam_title || fallback
 };
 vm.createContext(homeContext);
 vm.runInContext(['getStudentPortalRecordedSubmission', 'getStudentPortalAssignments', 'getOmrExams', 'getVisibleOmrExams', 'findOmrExam', 'isStudentPortalSelfStudy', 'studentExamTitle', 'renderOmrHomeSection'].map(helper).join('\n'), homeContext);

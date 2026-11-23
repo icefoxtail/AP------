@@ -1,7 +1,10 @@
-/* Student portal: self-study question cards.
-   Input is only a set: { title, questions: [{ no, sourceLabel?, content, choices, image, answer, solution, ... }] }.
-   Each question becomes one card (stem, choices, figure) with "정답 보기" / "해설 보기" that open for THAT question only,
-   whenever the student wants. Nothing is locked, ordered, recorded or sent anywhere.
+/* Student portal: self-study question cards ("풀고 나서 해설").
+   Input is only a set: { title, questions: [{ no, ssKey, sourceLabel?, content, choices, image, answer, solution, ... }] }.
+   Each question becomes one card (stem, choices, figure). The answer and explanation stay closed until the student has
+   answered: a pick-one question is graded ("채점하기"), a typed-answer question is opened with "다 풀었어요" and judged by the
+   student, and "모르겠어요" records a wrong ("모름") and opens the explanation at once - nobody is ever stuck.
+   A wrong/unknown card then asks "왜 틀렸나요?" (optional). Results are kept by a recorder (self-study-record.js):
+   local first, then the server; reopening continues where the student stopped.
 
    Step 1 ("오답 다시 풀기") builds the set with buildWrongSet(): the exam's questions filtered by the wrong numbers.
    Step 2 (similar problems) only has to build another set and call show() - the card screen does not know where the questions came from.
@@ -29,6 +32,9 @@
   const PLACEHOLDER_SOLUTION = /^\s*\[JS 기준 풀이\]/;
   const FAIL_CARD_TEXT = '이 문항을 불러오지 못했습니다.';
 
+  const Rec = root.StudentSelfStudyRecord || (typeof require === 'function' ? require('./self-study-record.js') : null);
+  const CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩';
+  const RECORD_NOTE = '푼 기록은 저장되고 선생님도 볼 수 있어요.';
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 
   /* ---------- pure helpers (unit-tested in node) ---------- */
@@ -49,11 +55,16 @@
   /** Step 1: the exam's questions at the wrong positions, as a card-screen input set. A position without a question stays as a failed card. */
   function buildWrongSet({ title = '', questions = [], wrongIds = [] } = {}) {
     const list = questionList(questions);
+    const numbers = normalizeNumbers(wrongIds);
+    // Record key per card: the question's UID when the data has one, else "w:<past-exam number>".
+    const keys = Rec.uniqueKeys(numbers.map(no => Rec.wrongKey(no, list[no - 1])));
     return {
       title: String(title || ''),
-      questions: normalizeNumbers(wrongIds).map(no => {
+      questions: numbers.map((no, index) => {
         const question = list[no - 1];
-        return question && typeof question === 'object' ? { ...question, no, sourceLabel: '' } : { no, missing: true };
+        return question && typeof question === 'object'
+          ? { ...question, no, sourceLabel: '', ssKey: keys[index], ssUid: Rec.uidOf(question), ssSrc: no }
+          : { no, missing: true };
       })
     };
   }
@@ -136,6 +147,20 @@
         choices = choices.replace(/class="choices choices-\w+"(?: style="[^"]*")?/, 'class="choices choices-block"');
       }
       choices = deps.resolveHtml(choices);
+      // A pick-one question: each choice becomes a tap target (44px+ in the CSS); choices drawn inside the figure get ①..⑤ chips.
+      const mode = Rec.questionMode(entry);
+      if (mode === 'mc') {
+        if (choices) {
+          let index = 0;
+          choices = choices.replace(/<div class="choice-item">/g, () => {
+            index += 1;
+            return `<div class="choice-item" role="button" tabindex="0" aria-pressed="false" data-choice="${index}">`;
+          });
+        } else {
+          choices = `<div class="choices choices-compact ss-picker" role="group" aria-label="보기 고르기">${Array.from({ length: 5 }, (_, i) =>
+            `<div class="choice-item" role="button" tabindex="0" aria-pressed="false" data-choice="${i + 1}"><span class="choice-no">${CIRCLED[i]}</span></div>`).join('')}</div>`;
+        }
+      }
 
       const answer = hasAnswer(entry);
       const solution = hasRealSolution(entry);
@@ -145,19 +170,26 @@
             <div class="ss-reveal-body">${deps.resolveHtml(formatSolution(entry.solution, T))}</div>
             ${figureHtml(entry.solutionImage, entry.solutionImageAlt || '해설 그림', 'ss-figure ss-solution-figure', deps)}</div>`
         : '';
-      const buttons = [
-        answer ? `<button type="button" class="btn ss-toggle" data-ss-toggle="answer" data-ss-no="${escapeHtml(no)}" aria-expanded="false" aria-controls="ss-a-${escapeHtml(no)}" data-open-label="정답 숨기기">정답 보기</button>` : '',
-        solution ? `<button type="button" class="btn ss-toggle" data-ss-toggle="solution" data-ss-no="${escapeHtml(no)}" aria-expanded="false" aria-controls="ss-s-${escapeHtml(no)}" data-open-label="해설 숨기기">해설 보기</button>` : ''
-      ].join('');
-      return `<article class="ss-card" id="ss-q-${escapeHtml(no)}" data-no="${escapeHtml(no)}">
+      const lockText = answer && solution ? '풀고 나면 정답·해설이 열려요.' : answer ? '풀고 나면 정답이 열려요.' : solution ? '풀고 나면 해설이 열려요.' : '';
+      const mainButton = mode === 'mc'
+        ? '<button type="button" class="btn btn-primary ss-main" data-ss-act="grade" disabled>채점하기</button>'
+        : '<button type="button" class="btn btn-primary ss-main" data-ss-act="done">다 풀었어요</button>';
+      const chips = Rec.WHY_CODES.map(code => `<button type="button" class="ss-chip" data-ss-why="${code}" aria-pressed="false">${escapeHtml(Rec.WHY_LABELS[code])}</button>`).join('');
+      return `<article class="ss-card" id="ss-q-${escapeHtml(no)}" data-no="${escapeHtml(no)}" data-key="${escapeHtml(entry.ssKey ?? '')}" data-mode="${mode}" data-state="open">
         <header class="ss-card-head"><span class="ss-no">${escapeHtml(no)}번</span>${entry.sourceLabel ? `<span class="ss-source">${escapeHtml(entry.sourceLabel)}</span>` : ''}</header>
         <div class="ss-q">
           <div class="ss-stem">${body}</div>
           ${figureHtml(entry.image, entry.imageAlt || '문제 그림', 'ss-figure', deps)}
           ${choices}
         </div>
-        ${buttons ? `<div class="ss-actions">${buttons}</div>` : ''}
+        <div class="ss-actions ss-ask">${mainButton}<button type="button" class="btn ss-unknown" data-ss-act="unknown">모르겠어요</button></div>
+        ${lockText ? `<p class="ss-lock">${lockText}</p>` : ''}
+        <div class="ss-judge" hidden><p class="ss-judge-ask">${answer ? '정답을 보고 내 풀이를 골라 주세요.' : '내 풀이를 골라 주세요.'}</p>
+          <div class="ss-actions"><button type="button" class="btn ss-right" data-ss-act="judge-c">맞았어요</button><button type="button" class="btn ss-miss" data-ss-act="judge-w">틀렸어요</button></div></div>
+        <div class="ss-result" role="status" hidden></div>
         ${answerHtml}${solutionHtml}
+        <div class="ss-why" hidden><p class="ss-why-title">왜 틀렸나요? <small>안 골라도 돼요</small></p><div class="ss-chips" role="group" aria-label="틀린 이유">${chips}</div></div>
+        <div class="ss-retry" hidden><button type="button" class="btn" data-ss-act="retry">다시 풀기</button></div>
       </article>`;
     } catch (error) {
       return failedCardHtml(no, '');
@@ -327,24 +359,82 @@
     card.replaceWith(holder.firstElementChild);
   }
 
+  /* ---------- per-card state (browser side) ---------- */
+
+  const RESULT_TEXT = { c: '맞았어요', w: '틀렸어요', u: '모르겠어요로 표시했어요' };
+
+  /**
+   * Shows one card in the state its record says: no result yet ('open', or 'review' = typed answer opened, not judged),
+   * or c / w / u. Everything is derived from the record item, so a card redrawn from a saved record looks the same as one just answered.
+   */
+  function applyCard(card, entry, item) {
+    const r = item?.r || '';
+    const state = r || (card.dataset.state === 'review' ? 'review' : 'open');
+    card.dataset.state = state;
+    const answered = Boolean(r);
+    const toggle = (selector, on) => card.querySelectorAll(selector).forEach(element => { element.hidden = !on; });
+    toggle('.ss-ask, .ss-lock', state === 'open');
+    toggle('.ss-judge', state === 'review');
+    toggle('.ss-result', answered);
+    toggle('.ss-answer, .ss-solution', answered || state === 'review');
+    toggle('.ss-why', r === 'w' || r === 'u');
+    toggle('.ss-retry', answered);
+
+    const result = card.querySelector('.ss-result');
+    if (result) {
+      result.className = `ss-result${r ? ` is-${r}` : ''}`;
+      const answerNo = Rec.answerIndex(entry?.answer, Rec.choiceCountOf(entry || {}));
+      result.textContent = r === 'w' && card.dataset.mode === 'mc' && Number.isFinite(answerNo)
+        ? `${RESULT_TEXT.w} · 정답은 ${CIRCLED[answerNo - 1]}` : (RESULT_TEXT[r] || '');
+    }
+    card.querySelectorAll('[data-ss-why]').forEach(chip => chip.setAttribute('aria-pressed', item?.why && chip.dataset.ssWhy === item.why ? 'true' : 'false'));
+
+    const answerNo = card.dataset.mode === 'mc' ? Rec.answerIndex(entry?.answer, Rec.choiceCountOf(entry || {})) : NaN;
+    const picked = state === 'open' ? Number(card.dataset.pick) || 0 : Number(item?.p) || 0;
+    card.querySelectorAll('.choice-item[data-choice]').forEach(choice => {
+      const no = Number(choice.dataset.choice);
+      choice.classList.toggle('is-picked', picked === no);
+      choice.classList.toggle('is-correct', state !== 'open' && no === answerNo);
+      choice.classList.toggle('is-wrong', r === 'w' && picked === no && no !== answerNo);
+      choice.setAttribute('aria-pressed', picked === no ? 'true' : 'false');
+      choice.setAttribute('aria-disabled', state === 'open' ? 'false' : 'true');
+    });
+    const grade = card.querySelector('[data-ss-act="grade"]');
+    if (grade) grade.disabled = !picked;
+  }
+
   /**
    * Draws the card screen into options.container.
-   * options: { container, onBack(), headerHtml?, document?, baseUrl? }. set: { title, questions }.
+   * options: { container, onBack(), headerHtml?, document?, baseUrl?, bottomAction?, recorder?, recordNote? }. set: { title, questions }.
+   * recorder (self-study-record.js createRecorder) keeps the student's results; without one the screen works in memory only.
    * Returns once the cards are on screen; formulas are typeset card by card afterwards (first card first).
    */
   async function show(set, options = {}) {
     const container = options.container;
     const doc = options.document || container.ownerDocument;
-    const questions = Array.isArray(set?.questions) ? set.questions : [];
+    // A set built without keys still gets one stable-per-screen key per card.
+    const questions = (Array.isArray(set?.questions) ? set.questions : []).map(entry =>
+      (entry && !entry.missing && entry.ssKey === undefined ? { ...entry, ssKey: `n:${entry.no}` } : entry));
+    const answerable = questions.filter(entry => entry && !entry.missing);
+    const recorder = options.recorder || Rec.createRecorder({
+      entries: answerable.map(entry => ({ key: entry.ssKey, uid: entry.ssUid || null, src: entry.ssSrc ?? entry.no }))
+    });
+    const entryByNo = new Map(answerable.map(entry => [String(entry.no), entry]));
     const token = Symbol('self-study');
     container.__selfStudyToken = token;
     const isCurrent = () => container.isConnected && container.__selfStudyToken === token && Boolean(container.querySelector('.self-study'));
+    const leave = handler => () => {
+      recorder.stop?.();
+      handler?.();
+    };
+    const note = options.recordNote || RECORD_NOTE;
     const shell = body => `<div class="student-shell self-study">${options.headerHtml || ''}
       <button type="button" class="btn back-btn" data-ss-back>← 돌아가기</button>
       <section class="ss-head"><h1 class="card-title ss-title">${escapeHtml(set?.title || '')}</h1>
-        <p class="card-desc">풀어 보다가 모르겠으면 문항마다 정답·해설을 바로 열어 보세요. 기록되지 않아요.</p></section>${body}</div>`;
+        <p class="card-desc">풀고 나면 정답·해설이 열려요. 모르면 &lsquo;모르겠어요&rsquo;를 눌러도 돼요.</p>
+        <p class="ss-note">${escapeHtml(note)}</p></section>${body}</div>`;
     container.innerHTML = shell('<div class="empty" role="status">문항을 불러오는 중입니다.</div>');
-    const bind = () => container.querySelector('[data-ss-back]')?.addEventListener('click', () => options.onBack?.());
+    const bind = () => container.querySelector('[data-ss-back]')?.addEventListener('click', leave(options.onBack));
     bind();
     let assets;
     try {
@@ -360,11 +450,14 @@
     const cards = questions.map(entry => renderCard(entry, deps)).join('');
     container.innerHTML = shell(`
       ${assets.mathReady ? '' : '<p class="notice ss-math-notice" role="status">수식 표시를 불러오지 못해 일부 수식이 기호 그대로 보일 수 있어요.</p>'}
+      ${cards && answerable.length ? `<div class="ss-progress"><p class="ss-progress-text" data-ss-progress-text role="status" aria-live="polite"></p>
+        <button type="button" class="btn ss-retry-wrong" data-ss-retry-wrong hidden>틀린 것만 다시 풀기</button></div>` : ''}
       ${cards ? `<div class="ss-list">${cards}</div>` : `<div class="empty">${escapeHtml(set?.emptyText || '표시할 문항이 없습니다.')}</div>`}
       ${cards && options.bottomAction ? `<button type="button" class="btn btn-primary ss-next" data-ss-next>${escapeHtml(options.bottomAction.label)}</button>` : ''}
       <button type="button" class="btn back-btn ss-back-bottom" data-ss-back>← 돌아가기</button>`);
-    container.querySelector('[data-ss-next]')?.addEventListener('click', () => options.bottomAction?.onClick?.());
-    container.querySelectorAll('[data-ss-back]').forEach(button => button.addEventListener('click', () => options.onBack?.()));
+    container.querySelector('[data-ss-next]')?.addEventListener('click', leave(() => options.bottomAction?.onClick?.()));
+    container.querySelectorAll('[data-ss-back]').forEach(button => button.addEventListener('click', leave(options.onBack)));
+    recorder.start?.(doc, root);
 
     // Listeners live on this screen's own root (rebuilt on every open), not on the shared container.
     const screen = container.querySelector('.self-study');
@@ -379,24 +472,111 @@
       figure.closest('.ss-card')?.classList.add('has-issue');
     }, true);
 
-    // Per-question reveal, typeset on first open (a hidden element has no width to break lines against).
-    screen.addEventListener('click', async event => {
-      const button = event.target.closest?.('[data-ss-toggle]');
-      if (!button || !screen.contains(button)) return;
-      const panel = screen.querySelector(`#${button.getAttribute('aria-controls')}`);
-      if (!panel) return;
-      const open = panel.hidden;
-      panel.hidden = !open;
-      if (!button.dataset.closedLabel) button.dataset.closedLabel = button.textContent;
-      button.textContent = open ? button.dataset.openLabel : button.dataset.closedLabel;
-      button.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open && !panel.dataset.typeset) {
+    const cardByKey = key => Array.from(screen.querySelectorAll('.ss-card[data-key]')).find(card => card.dataset.key === key) || null;
+    const updateProgress = () => {
+      const text = screen.querySelector('[data-ss-progress-text]');
+      if (!text) return;
+      const summary = recorder.summary();
+      text.textContent = Rec.progressSentence(summary);
+      text.classList.toggle('is-done', summary.total > 0 && summary.correct >= summary.total);
+      const retry = screen.querySelector('[data-ss-retry-wrong]');
+      if (retry) retry.hidden = summary.retryable === 0;
+    };
+
+    // Answer and explanation are typeset when they first open (a hidden element has no width to break lines against).
+    async function typesetOpened(card) {
+      for (const panel of Array.from(card.querySelectorAll('.ss-reveal:not([hidden])'))) {
+        if (panel.dataset.typeset) continue;
         panel.dataset.typeset = '1';
         try { await typeset(panel, assets); } catch (error) {
           panel.querySelector('.ss-reveal-body')?.insertAdjacentHTML('beforeend', '<p class="ss-img-fail">수식을 표시하지 못했습니다.</p>');
         }
       }
+    }
+    function redraw(card) {
+      const entry = entryByNo.get(card.dataset.no);
+      applyCard(card, entry, recorder.get(card.dataset.key));
+      updateProgress();
+      typesetOpened(card);
+    }
+    // First answer of an attempt: n is at least 1. why is cleared because it belongs to the previous result.
+    function commit(card, patch) {
+      const item = recorder.get(card.dataset.key);
+      recorder.record(card.dataset.key, { ...patch, why: null, n: Math.max(item?.n || 0, 1) });
+      card.dataset.pick = '';
+      redraw(card);
+      card.querySelector('.ss-result')?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' });
+    }
+    function retry(card) {
+      const item = recorder.get(card.dataset.key);
+      recorder.record(card.dataset.key, { r: null, why: null, p: null, n: (item?.n || 1) + 1 });
+      card.dataset.state = 'open';
+      card.dataset.pick = '';
+      redraw(card);
+    }
+
+    screen.addEventListener('click', event => {
+      const target = event.target;
+      if (!target?.closest) return;
+      if (target.closest('[data-ss-retry-wrong]')) {
+        const again = Array.from(screen.querySelectorAll('.ss-card[data-key]')).filter(card => ['w', 'u'].includes(card.dataset.state));
+        again.forEach(retry);
+        again[0]?.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
+        return;
+      }
+      const card = target.closest('.ss-card[data-key]');
+      if (!card || !screen.contains(card) || !card.dataset.key) return;
+      const entry = entryByNo.get(card.dataset.no);
+      const choice = target.closest('.choice-item[data-choice]');
+      if (choice) {
+        if (card.dataset.state !== 'open') return;
+        card.dataset.pick = choice.dataset.choice;
+        applyCard(card, entry, recorder.get(card.dataset.key));
+        return;
+      }
+      const chip = target.closest('[data-ss-why]');
+      if (chip) {
+        const item = recorder.get(card.dataset.key);
+        if (!item?.r || item.r === 'c') return;
+        recorder.record(card.dataset.key, { why: item.why === chip.dataset.ssWhy ? null : chip.dataset.ssWhy });
+        applyCard(card, entry, recorder.get(card.dataset.key));
+        return;
+      }
+      const action = target.closest('[data-ss-act]')?.dataset.ssAct;
+      if (action === 'grade') {
+        const pick = Number(card.dataset.pick) || 0;
+        const result = Rec.judge(entry, pick);
+        if (result) commit(card, { r: result, p: pick });
+      } else if (action === 'unknown') commit(card, { r: 'u', p: null });
+      else if (action === 'judge-c') commit(card, { r: 'c', p: null });
+      else if (action === 'judge-w') commit(card, { r: 'w', p: null });
+      else if (action === 'retry') retry(card);
+      else if (action === 'done') {
+        card.dataset.state = 'review';
+        redraw(card);
+      }
     });
+    // A choice is a div role="button": Enter / Space pick it like a tap.
+    screen.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const choice = event.target?.closest?.('.choice-item[data-choice]');
+      if (!choice) return;
+      event.preventDefault();
+      choice.click();
+    });
+
+    // Saved results first (synchronously), then the server's answer in the background.
+    for (const card of Array.from(screen.querySelectorAll('.ss-card[data-key]'))) {
+      if (card.dataset.key) applyCard(card, entryByNo.get(card.dataset.no), recorder.get(card.dataset.key));
+    }
+    updateProgress();
+    recorder.load?.().then(({ changed }) => {
+      if (!isCurrent() || !changed?.length) return;
+      for (const key of changed) {
+        const card = cardByKey(key);
+        if (card) { card.dataset.state = 'open'; redraw(card); }
+      }
+    }).catch(() => {});
 
     for (const card of Array.from(screen.querySelectorAll('.ss-card'))) {
       if (!isCurrent() || !card.isConnected) break;
@@ -405,6 +585,7 @@
           markFailed(card, card.dataset.no);
           continue;
         }
+        await typesetOpened(card);
       }
       card.classList.add('is-ready');
     }
@@ -412,7 +593,7 @@
   }
 
   return {
-    normalizeNumbers, buildWrongSet, buildTitle, hasRealSolution, hasAnswer, renderCard, failedCardHtml,
-    stripDifficultyTag, parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT
+    normalizeNumbers, buildWrongSet, buildTitle, hasRealSolution, hasAnswer, renderCard, failedCardHtml, applyCard,
+    stripDifficultyTag, parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT, RECORD_NOTE
   };
 });

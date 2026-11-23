@@ -4,6 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,canonicalJson,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {compositePanelBytes} from './composite-candidate-svg-v1.mjs';
+import {acceptArchiveViolations,scoredAcceptanceEnabled} from './score-candidate.mjs';
 import {parseQuestionUidV2,SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence,measureArchiveDisplayEnvelope,measureArchiveDisplayEnvelopeBatch,normalizeArchiveImageUrlPath,archiveAssetSha256,isArchiveExamSourcePath} from '../record-visual-browser-evidence.mjs';
@@ -183,7 +184,8 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
 // anything the batch cannot vouch for (and every figure outside a batch) is measured by measureArchiveDisplayEnvelope alone, as it always was.
 function measureEnvelope(args){
   const single=()=>measureArchiveDisplayEnvelope(args);
-  const session=args.signal===undefined&&args.onProgress===undefined?currentBatchSession():null;
+  // A scored re-render (render-plan --accept-scored) is captured alone, as outside a batch: its layout violations are scored per figure, which one shared page cannot do.
+  const session=args.signal===undefined&&args.onProgress===undefined&&!scoredAcceptanceEnabled()?currentBatchSession():null;
   if(!session)return single();
   const {run,sourceRef,sourceOrdinal,targetId,questionUid,intrinsicSvg,sizeClasses,solutionImageScale}=args;
   return session.submit({kind:'measure',group:sourceRef.path+'|'+args.blockExternalRequests,dupKey:targetId,payload:{run,sourceRef,sourceOrdinal,targetId,questionUid,intrinsicSvg,sizeClasses,solutionImageScale},
@@ -449,13 +451,13 @@ async function captureCore({composed,identity,sourcePath,ordinal,requestedSizeCl
     }
     let layout;
     const recorded=row.layouts?.find(item=>item.id===assetId);
-    if(recorded)layout={source:'ARCHIVE_ROW_ISOLATED_REPLAY',status:recorded.status,errors:recorded.errors??[]};
+    if(recorded)layout={source:'ARCHIVE_ROW_ISOLATED_REPLAY',status:recorded.status,errors:recorded.errors??[],...(recorded.scoredAccepted===true?{scoredAccepted:true}:{})};
     else if(finite){// the row has no analysis of this asset: replay the same bytes at the real image rect
       const browser=await launchBrowser();
       try{
         const page=await browser.newPage({viewport:{width:Math.ceil(rect.width),height:Math.ceil(rect.height)}});
         const analysis=analyzeRenderedLayout(await captureAtDisplaySize(page,composed.svg,rect,{publicationViewport:PUBLICATION_VIEWPORT}));
-        layout={source:'MODULE_REPLAY_AT_ACTUAL_RECT',status:analysis.status,errors:analysis.errors};
+        layout={source:'MODULE_REPLAY_AT_ACTUAL_RECT',status:analysis.status,errors:analysis.errors,...(analysis.status!=='PASS'&&acceptArchiveViolations(analysis.violations)?{scoredAccepted:true}:{})};
       }finally{await browser.close();}
     }else layout={source:'NONE',status:'FAIL',errors:['NO_TARGET_RECT']};
     state.layout=layout;
@@ -466,7 +468,7 @@ async function captureCore({composed,identity,sourcePath,ordinal,requestedSizeCl
       bankResponse:pass(bankResponses.length===1&&bankResponses[0].status===200&&bankResponseMatches(responseSha(bankResponses),candidateBytes)),
       naturalSize:pass(target?.loaded===true&&target.naturalWidth===intrinsic.width&&target.naturalHeight===intrinsic.height),
       displayScale:pass(finite&&difference.withinTolerance),
-      layout:pass(layout.status==='PASS')
+      layout:pass(layout.status==='PASS'||layout.scoredAccepted===true)
     };
     const detail={
       network:{policy:row.network?.policy??null,externalRequests:row.network?.externalRequests??null},

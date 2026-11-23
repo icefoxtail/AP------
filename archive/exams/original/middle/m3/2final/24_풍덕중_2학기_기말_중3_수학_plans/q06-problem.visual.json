@@ -1,0 +1,280 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+  "questionId": 6,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11831008",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "11831008",
+                  "denominator": "1000000"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "11831008",
+                  "denominator": "1000000"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "130"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "11831008",
+                  "denominator": "1000000"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "130"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sOD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          },
+          {
+            "id": "sOF",
+            "refs": [
+              "O",
+              "F"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 520,
+          "height": 480
+        },
+        "caption": "원 O에 내접하는 삼각형 ABC와 중심에서 두 현에 내린 수선",
+        "accessibilityDescription": "원 O 안의 삼각형 ABC에서 중심 O에서 변 AB, AC에 내린 수선의 발 D, F까지 길이가 각각 5cm이고, ∠B=65°, ∠A=x이다.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a65",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 65,
+              "label": "65",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ax",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "label": "x",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "eOD",
+              "ownerSegment": "sOD",
+              "text": "5",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            },
+            {
+              "id": "eOF",
+              "ownerSegment": "sOF",
+              "text": "5",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rDAO",
+            "refs": [
+              "A",
+              "D",
+              "O"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "rFAO",
+            "refs": [
+              "A",
+              "F",
+              "O"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "71"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "71"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-3071553",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "X",
+          "A",
+          "B",
+          "P"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "sPB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "sXA",
+            "refs": [
+              "X",
+              "A"
+            ]
+          },
+          {
+            "id": "sXB",
+            "refs": [
+              "X",
+              "B"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 320
+        },
+        "caption": "원 밖의 점 P에서 그은 두 접선과 원 위의 점",
+        "accessibilityDescription": "원 O 밖의 점 P에서 그은 두 접선의 접점 A, B와, 원 위의 점에서 A, B에 그은 두 현을 나타낸 그림. ∠APB=38°이고 두 현이 이루는 각이 x이다.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a38",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 38,
+              "label": "38",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ax",
+              "refs": [
+                "A",
+                "X",
+                "B"
+              ],
+              "label": "x",
+              "factRole": "GIVEN"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "X"
+              ]
+            },
+            {
+              "kind": "TANGENT_PERPENDICULAR",
+              "center": "O",
+              "contact": "A",
+              "tangent": "sPA"
+            },
+            {
+              "kind": "TANGENT_PERPENDICULAR",
+              "center": "O",
+              "contact": "B",
+              "tangent": "sPB"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "X"
+        ],
+        "hiddenPointStyle": "DOT"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

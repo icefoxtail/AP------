@@ -42,10 +42,10 @@ test('material browse labels distinguish variants without changing canonical pro
   assert.equal(output.matchesMaterial({file:'original/high/example.js',contentType:'기출'},'nonexam'),false);
   assert.equal(output.matchesMaterial({...source,contentType:'단원평가'},'nonexam'),true);
   assert.equal(output.matchesMaterial({contentType:'쪽지'},'nonexam'),true);
-  assert.match(output.displayTitle(source),/유사문제 2$/);
+  assert.match(output.displayTitle(source),/ · 유사2$/);
   assert.equal(JSON.stringify(source),before);
   assert.equal(output.materialKind({...source,contentType:'단원평가'}),'unit');
-  assert.match(output.displayTitle({...source,contentType:'단원평가',topic:'중간평가'}),/단원평가 유사 2/);
+  assert.match(output.displayTitle({...source,contentType:'단원평가',topic:'중간평가'}),/단원평가 · 유사2$/);
 });
 
 test('render-only review retains QR choice while assignment writes remain disabled', () => {

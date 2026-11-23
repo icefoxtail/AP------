@@ -452,4 +452,73 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.ok(!/localStorage|sessionStorage/.test(js.replace(/\/\/.*$/gm, '')), '저장소를 쓰지 않는다');
 }
 
+// 14. 예상 위치(문항 난이도 → 예상 평균·표준편차 → 정규분포 상위 비율). 손계산 값과 맞춘다.
+{
+  const { computeExpectedPosition, normalCdf, EXPECTED_ASSUMPTIONS } = Data;
+  const near = (a, b, eps, msg) => assert.ok(Math.abs(a - b) <= eps, `${msg}: ${a} vs ${b}`);
+  near(normalCdf(0), 0.5, 1e-9, 'Φ(0)');
+  near(normalCdf(1.96), 0.975, 1e-4, 'Φ(1.96)');
+  near(normalCdf(-1), 0.158655, 1e-5, 'Φ(-1)');
+  // 가정 상수 표(조정 가능한 한 곳)
+  assert.deepStrictEqual({ ...EXPECTED_ASSUMPTIONS.pByLevel }, { 1: 0.90, 2: 0.78, 3: 0.62, 4: 0.42, 5: 0.25 });
+  assert.strictEqual(EXPECTED_ASSUMPTIONS.noLevel, 0.60);
+  assert.strictEqual(EXPECTED_ASSUMPTIONS.abilitySpread, 0.18);
+
+  // (a) 전 문항 난이도 3, 20문항, 12개 정답 → μ=12.4, σ=√(20·0.62·0.38 + 3.6²), 평균 근처
+  const lv3 = Array(20).fill(3);
+  const a = computeExpectedPosition(lv3, 12, 0);
+  near(a.mean, 12.4, 1e-9, 'a 평균');
+  near(a.sd, Math.sqrt(20 * 0.62 * 0.38 + 3.6 ** 2), 1e-9, 'a 표준편차');
+  assert.strictEqual(a.label, '상위 약 54%'); // z=-0.095 → 53.8%
+  assert.strictEqual(a.percentileTop, 54);
+  assert.strictEqual(a.edge, null);
+  // (b) 만점은 1% 단위로(z=1.81 → 3.5%), 끝(1% 이하·99% 이상)만 닫아 표현
+  const b = computeExpectedPosition(lv3, 20, 0);
+  assert.strictEqual(b.label, '상위 약 4%');
+  assert.strictEqual(b.edge, null);
+  const top = computeExpectedPosition(Array(20).fill(5), 20, 0);
+  assert.strictEqual(top.label, '상위 1% 이내');
+  assert.strictEqual(top.edge, 'top');
+  const c = computeExpectedPosition(lv3, 0, 0);
+  assert.strictEqual(c.label, '하위 1% 이내');
+  assert.strictEqual(c.edge, 'bottom');
+  // (d) 미응답이 하나라도 있거나 5문항 미만이면 값 없음
+  assert.strictEqual(computeExpectedPosition(lv3, 12, 1), null);
+  assert.strictEqual(computeExpectedPosition(Array(4).fill(3), 2, 0), null);
+  assert.ok(computeExpectedPosition(Array(5).fill(3), 3, 0));
+  // (e) 난이도 섞인 평가지(1단계 5·2단계 5·3단계 10·4단계 3·5단계 1): μ=16.11, Σp(1−p)=4.5823, (0.18·24)²=18.6624
+  const mixed = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, ...Array(10).fill(3), 4, 4, 4, 5];
+  const e = computeExpectedPosition(mixed, 16, 0);
+  near(e.mean, 16.11, 1e-9, 'e 평균');
+  near(e.sd, Math.sqrt(4.5823 + 18.6624), 1e-9, 'e 표준편차');
+  near(e.z, (16 - 16.11) / Math.sqrt(23.2447), 1e-9, 'e z');
+  assert.strictEqual(e.percentileTop, 51); // z=-0.023 → 상위 50.9% → 51
+  // 난이도 없는 문항은 p=0.60으로 센다(건수는 따로 싣는다)
+  const withNone = computeExpectedPosition([null, null, 3, 3, 3, 3], 3, 0);
+  near(withNone.mean, 0.6 * 2 + 0.62 * 4, 1e-9, '난이도 없음 평균');
+  assert.strictEqual(withNone.unratedCount, 2);
+  // 점수가 오를수록 상위 비율은 같거나 작아진다(단조), 값은 1% 단위로 1~99 안
+  let prev = 101;
+  for (let x = 0; x <= 20; x++) {
+    const r = computeExpectedPosition(lv3, x, 0);
+    assert.ok(r.percentileTop <= prev && r.percentileTop >= 1 && r.percentileTop <= 99 && Number.isInteger(r.percentileTop), `단조·1% 단위 x=${x}`);
+    prev = r.percentileTop;
+  }
+  // 보고서 한 덩어리: 전체 응답이면 report.expected, 미응답이 있으면 null. 기존 합계 검사는 그대로 통과.
+  const qs = mockQuestions();
+  const full = computeDiagnosticReport({ questions: qs, responses: Object.fromEntries(qs.map((q) => [q.no, q.no <= 12 ? 'O' : 'X'])) });
+  assert.ok(full.consistency.ok && full.expected && full.expected.questions === 24 && full.expected.score === 12);
+  near(full.expected.mean, 16.11, 1e-9, 'report 평균');
+  const gap = computeDiagnosticReport({ questions: qs, responses: { 1: 'O', 2: 'X' } });
+  assert.strictEqual(gap.expected, null);
+  // 화면: "예상"과 "실제 석차가 아닙니다"가 함께, 값이 없으면 줄이 없다.
+  const out = View.render(full);
+  assert.ok(out.expect.includes('예상 위치') && out.expect.includes(full.expected.label) && out.expect.includes('예상 평균 16.1 / 24문항') && out.expect.includes('실제 석차가 아닙니다'), out.expect);
+  assert.ok(!/undefined|NaN|null/.test(out.expect));
+  assert.strictEqual(View.render(gap).expect, '');
+  const dir = path.join(root, 'archive', 'assessment');
+  assert.ok(/id="expect"/.test(fs.readFileSync(path.join(dir, 'diagnostic-report.html'), 'utf8')));
+  assert.ok(/\$\("expect"\)\.hidden = !out\.expect/.test(fs.readFileSync(path.join(dir, 'diagnostic-report.js'), 'utf8')));
+}
+
 console.log('diagnostic-report-data tests passed');

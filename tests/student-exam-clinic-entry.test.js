@@ -67,7 +67,7 @@ test('단추는 편집 권한이 있고 틀린 문항이 있는 시험에만 붙
 });
 
 test('고친 student.js의 ?v=는 apmath/index.html에서 새 값이다', () => {
-  assert.match(indexHtml, /js\/student\.js\?v=20261123-exam-clinic-pick-2/);
+  assert.match(indexHtml, /js\/student\.js\?v=20261123-self-study-2/);
 });
 
 // ---------- 시험 여러 개 선택 -> 오답 클리닉 한 번에 ----------

@@ -861,6 +861,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "읽기 점수와 듣기 점수가 모두 $8$점 이상인 사람을 합격시킨다고 할 때, 합격자는 몇 명인가? (4점)",
+    "image": "assets/images/24_연향중_2학기_기말_중3_기출/q18.png",
     "choices": [
       "$1$명",
       "$2$명",

@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "서로의 중심을 지나는 두 원 O, O'과 호의 길이",
+  "accessibilityDescription": "반지름 6인 두 원 O, O'이 서로의 중심을 지나고 두 교점 A, B가 있을 때 호 AOB와 호 AO'B를 나타낸 그림이다.",
+  "sourceQuote": "다음 그림은 반지름의 길이가 같은 두",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "two circles passing through each other's center"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Op",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Op"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "Op"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "Op"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Op",
+    "A",
+    "B"
+  ],
+  "pointNames": {
+    "Op": "O'"
+  },
+  "displayCircles": [
+    "circ1",
+    "circ2"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "assetPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-result.json",
+    "statePath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-state.json",
+    "svgPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q04-problem.svg"
+  }
+}

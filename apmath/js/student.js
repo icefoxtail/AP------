@@ -334,7 +334,9 @@ function getStudentDetailLazyState(studentId) {
             error: '',
             inFlight: null,
             student_status_history: [],
-            class_transfer_history: []
+            class_transfer_history: [],
+            self_study: [],
+            self_study_available: false
         };
     }
     return store[key];
@@ -409,8 +411,12 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
             if (res?.success) {
                 entry.student_status_history = Array.isArray(res.student_status_history) ? res.student_status_history : entry.student_status_history;
                 entry.class_transfer_history = Array.isArray(res.class_transfer_history) ? res.class_transfer_history : entry.class_transfer_history;
+                // 학생 자습 기록(집계만 온다). 기능이 꺼졌거나 옛 응답이면 비워 두고 성적 탭은 아무것도 그리지 않는다.
+                entry.self_study_available = res.self_study_available === true && Array.isArray(res.self_study);
+                entry.self_study = entry.self_study_available ? res.self_study : [];
                 entry.loadedAt = new Date().toISOString();
                 entry.error = '';
+                paintStudentSelfStudyLines(key);
             } else {
                 entry.error = String(res?.message || res?.error || 'student detail lazy load failed');
             }
@@ -2328,6 +2334,26 @@ function openStudentSchoolLedgerFromDetail() {
     openSchoolExamLedger();
 }
 
+/**
+ * 성적 탭의 시험 한 건 아래 "자습" 한 줄(학생이 포털에서 오답 다시 풀기·유사 문항을 푼 기록).
+ * detail-data가 아직 안 왔거나 기능이 꺼져 있으면(self_study_available가 true가 아님) 빈 문자열 → 아무것도 그리지 않는다.
+ */
+function studentSelfStudyLineHtml(sid, assignmentId) {
+    const lazy = getStudentDetailLazyState(sid);
+    if (!lazy || lazy.self_study_available !== true || !globalThis.WsSelfStudy) return '';
+    return globalThis.WsSelfStudy.renderStudentLineHtml(lazy.self_study, assignmentId, { esc: apmsStudentDetailEsc });
+}
+
+/** detail-data가 성적 탭을 그린 뒤에 도착하면, 탭을 다시 그리지 않고(체크한 오답 클리닉 선택이 지워진다) 자습 줄 자리만 채운다. */
+function paintStudentSelfStudyLines(sid) {
+    if (typeof document === 'undefined' || !document.querySelectorAll) return;
+    const key = String(sid || '');
+    if (!state.ui || String(state.ui.currentStudentDetailId || '') !== key) return;
+    document.querySelectorAll('[data-ss-assignment]').forEach(el => {
+        el.innerHTML = studentSelfStudyLineHtml(key, el.getAttribute('data-ss-assignment'));
+    });
+}
+
 function getStudentAcademyExamSessionsForDetail(sid) {
     const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.exam_sessions;
     return (Array.isArray(timetableRows)
@@ -2569,6 +2595,7 @@ function renderStudentAcademyGradeTab(sid) {
                     <div style="min-width: 0; flex: 1 1 auto;">
                         <div style="font-size: 13px; font-weight:600; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}${globalThis.ApSimilarExam?.isSimilarExamRow(e) ? ' <span style="font-size: 11px; padding: 2px 7px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; color: var(--secondary); font-weight: 600; white-space: nowrap;" title="유사 시험지 자습용 · 성적 그래프·평균에서 제외">유사 · 자습용</span>' : ''}</div>
                         <div style="font-size: 12px; color: var(--secondary); font-weight: 500; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
+                        ${e.assignment_id ? `<div class="ap-ss-line" data-ss-assignment="${apmsStudentDetailEsc(e.assignment_id)}">${studentSelfStudyLineHtml(sid, e.assignment_id)}</div>` : ''}
                     </div>
                     <div style="font-size: 18px; font-weight:700; color: #334155; line-height: 1.2;">${e.score}점</div>
                 </div>

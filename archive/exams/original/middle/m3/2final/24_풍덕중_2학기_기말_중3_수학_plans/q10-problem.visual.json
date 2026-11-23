@@ -1,0 +1,261 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "K",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "W1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "26"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "W2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "26"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "K",
+          "W1",
+          "W2",
+          "O",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "sWall1",
+            "refs": [
+              "K",
+              "W1"
+            ]
+          },
+          {
+            "id": "sWall2",
+            "refs": [
+              "K",
+              "W2"
+            ]
+          },
+          {
+            "id": "sOU",
+            "refs": [
+              "O",
+              "U"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 400
+        },
+        "caption": "직각으로 만나는 두 벽과 반지름 10cm인 원형 청소기",
+        "accessibilityDescription": "직각으로 만나는 두 벽의 구석에 반지름 10cm인 원이 두 벽에 모두 닿아 있는 그림. 두 벽과 원 사이의 구석 부분이 칠해져 있다.",
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "r10",
+              "ownerSegment": "sOU",
+              "text": "10",
+              "factRole": "GIVEN",
+              "unit": "cm"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rg",
+              "fill": "MEDIUM",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "K",
+                    "steps": [
+                      {
+                        "to": "U"
+                      },
+                      {
+                        "to": "V",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "K"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "K",
+          "W1",
+          "W2",
+          "U",
+          "V"
+        ],
+        "hiddenPointStyle": "NONE",
+        "rightAngles": [
+          {
+            "id": "rKW1W2",
+            "refs": [
+              "W1",
+              "K",
+              "W2"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

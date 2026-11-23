@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {repoRoot,assertOutput,launchBrowser,sameOriginExamImageUrl,captureTimeoutMs} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
+import {acceptArchiveViolations} from './production/score-candidate.mjs';// score gate: answers true only in a scored re-render (render-plan --accept-scored), else false
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from './build-visual-render-matrix.mjs';
@@ -197,8 +198,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           if(!target.loaded){errors.push('TARGET_SVG_LOAD_FAIL:'+target.id);continue;}
           const asset=item.assets.find(v=>v.id===target.id);
           const inspector=await browser.newPage({viewport:{width:Math.max(1,Math.ceil(target.rect.width)),height:Math.max(1,Math.ceil(target.rect.height))}});
-          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});capture.svgSha256=archiveAssetSha256(asset.sha256);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
-          await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
+          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});capture.svgSha256=archiveAssetSha256(asset.sha256);const result=analyzeRenderedLayout(capture);const scoredAccepted=result.status!=='PASS'&&acceptArchiveViolations(result.violations);layouts.push({id:target.id,...result,...(scoredAccepted?{scoredAccepted:true}:{}),svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
+          await inspector.close();if(result.status!=='PASS'&&!scoredAccepted)errors.push(...result.errors.map(v=>target.id+':'+v));
           const expectedImagePath=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
           const imageNodes=page.locator('#print-area .sol-image-wrap img');
           const matchingIndex=await imageNodes.evaluateAll((nodes,expected)=>nodes.findIndex(node=>{try{return decodeURIComponent(new URL(node.src).pathname)===expected;}catch{return false;}}),expectedImagePath);

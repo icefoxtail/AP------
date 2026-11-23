@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O에서 각 AOB = 각 BOC 일 때의 호와 현",
+  "accessibilityDescription": "원 O에서 중심각 AOB와 BOC가 같을 때의 호 AB, BC와 현 AC를 나타낸 그림이다.",
+  "sourceQuote": "다음 원 $O$에서 $\\angle AOB=\\angle ",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "angle AOB = angle BOC on circle O"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angAOB",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 50,
+        "arcs": 1
+      },
+      {
+        "id": "angBOC",
+        "refs": [
+          "C",
+          "O",
+          "B"
+        ],
+        "value": 50,
+        "arcs": 1
+      }
+    ]
+  },
+  "assetPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-result.json",
+    "statePath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-state.json",
+    "svgPath": "archive/assets/images/25_왕운중_2학기_기말_중1_유사/q06-problem.svg"
+  }
+}

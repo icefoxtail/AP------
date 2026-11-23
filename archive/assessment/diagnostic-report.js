@@ -244,6 +244,8 @@
     $("donutSub").textContent = out.donutSub;
     $("summary").innerHTML = out.summary;
     $("facts").innerHTML = out.facts;
+    $("expect").innerHTML = out.expect;
+    $("expect").hidden = !out.expect;
     $("levels").style.setProperty("--cols", out.levelsCols);
     $("levels").innerHTML = out.levels;
     $("line").innerHTML = out.line;

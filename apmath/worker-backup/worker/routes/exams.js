@@ -1,6 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { loadSelfStudyForAssignment, loadSelfStudyStudentCountsForClass } from '../helpers/student-self-study.js';
 import { extractArchiveQuestionsFromText, resolveArchiveQuestionNo } from '../helpers/archive-question-bank.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
@@ -2717,6 +2718,7 @@ export async function handleExams(request, env, teacher, path, url) {
             : { results: [] };
         const identityData = await loadClinicQuestionIdentityData(env, sessions.results || [], [assignment.id]);
         const exclusions = await loadClassAssignmentExclusions(env, [assignment.id]);
+        const selfStudy = await loadSelfStudyForAssignment(env, assignment.id, classId);
         return jsonResponse({
           success: true,
           students: students.results || [],
@@ -2726,6 +2728,8 @@ export async function handleExams(request, env, teacher, path, url) {
           ...identityData,
           assignments: [assignment],
           exclusions,
+          self_study: selfStudy.rows,
+          self_study_available: selfStudy.available,
           coverage: {
             complete: canQueryAssignmentSessions && recipientCoverage,
             scope: 'assignment',
@@ -2772,6 +2776,11 @@ export async function handleExams(request, env, teacher, path, url) {
       const dedupedAssignments = dedupeClassExamAssignments(assignments.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, dedupedAssignments.map(a => a.id));
       const identityData = await loadClinicQuestionIdentityData(env, sessions.results || []);
+      // 시험 목록의 "자습 N명" 표시용. 반 하나를 한 번에 센다(시험마다 조회하지 않는다). 테이블이 없으면 필드를 싣지 않는다.
+      const selfStudyCounts = await loadSelfStudyStudentCountsForClass(env, classId);
+      const listedAssignments = selfStudyCounts.available
+        ? dedupedAssignments.map(a => ({ ...a, self_study_students: selfStudyCounts.counts[String(a.id)] || 0 }))
+        : dedupedAssignments;
 
       return jsonResponse({
         success: true,
@@ -2780,7 +2789,7 @@ export async function handleExams(request, env, teacher, path, url) {
         wrong_answers: wrongs.results,
         blueprints: blueprints.results,
         ...identityData,
-        assignments: dedupedAssignments,
+        assignments: listedAssignments,
         exclusions
       });
     }

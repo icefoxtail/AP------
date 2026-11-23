@@ -27,14 +27,14 @@ import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
-import * as ell from './ellipse-figure-v1.mjs';
-import * as cfv from './container-fill-v1.mjs';
-import * as lpf from './lattice-path-v1.mjs';
+import {standaloneKindFor,runStandaloneKind} from './standalone-kinds.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
 import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
 import {runExamBatch} from './exam-batch.mjs';
+import {resetCandidate,takeCandidate,enableScoredAcceptance,takeScoredAcceptance,withScoreState} from './score-candidate.mjs';
+import {scoreFigure} from '../ops/score/score.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -58,7 +58,25 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
-export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
+// acceptScored (CLI --accept-scored 1, or APMS_ACCEPT_SCORED=1): a figure whose candidate scored SCORED_PASS (score gate, ops/score) is rendered a second time with scored acceptance on,
+// so it goes through the archive capture and comes back ARCHIVE_BOUND with scoreGate on the result (status SCORED_PASS, score, deductions, tableVersion). Off by default: nothing else changes.
+// The score state (candidate, scored acceptance) belongs to one render: inside an exam batch several renders run at once in this process, so each gets its own (score-candidate.mjs withScoreState).
+export function renderPlan(args){return withScoreState(()=>renderPlanScored(args));}
+async function renderPlanScored(args){
+  const first=await renderPlanOnce(args);
+  if(!(args.acceptScored??process.env.APMS_ACCEPT_SCORED==='1'))return first;
+  if(first.status!=='FAILED'||first.scoreGate?.status!=='SCORED_PASS')return first;
+  enableScoredAcceptance(true);
+  let second;
+  try{second=await renderPlanOnce(args);}finally{enableScoredAcceptance(false);}
+  if(second.status==='ARCHIVE_BOUND'&&second.scoreGate?.status==='SCORED_PASS')return second;
+  // still not bound (another check failed): the first failure stays as the result, with its candidate and score
+  const name=String(args.item?.dir??args.item?.tag??'figure');
+  fs.writeFileSync(path.join(args.outDir,`${name}-result.json`),JSON.stringify(first,null,1)+String.fromCharCode(10));
+  return first;
+}
+
+async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeClass}){
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
   const name=String(meta.dir??meta.tag??'figure');
@@ -71,9 +89,32 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   const startedAt=Date.now(),log=createAttemptLog({outDir,item:name,invocation:tag,planSha256:planDigest(planInput)});
   const attemptVariant=suffix=>suffix?String(suffix).replace(/^-/,''):(row.fallback?.length?row.fallback[row.fallback.length-1].to:'initial');
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
+  resetCandidate();
+  // Score gate (ops/score): a failure that left a composed candidate SVG gets the candidate file, every violation the observers measured and a score.
+  // Only a failure carries these fields, so a figure that passes is written exactly as before. scoreGate.status SCORED_PASS (>= passScore, no block) marks a candidate the gate accepts; the status above stays FAILED.
+  const PANEL_FLOWS=new Set(['composite-panels-v1',chain.CHAIN_CAPABILITY,nlf.FIGURE_CAPABILITY,sol.SOLID_CAPABILITY]);
+  const candidateRecord=()=>{
+    if(row.status!=='FAILED')return {};
+    const cand=takeCandidate();
+    if(!cand||!cand.violations?.length)return {};
+    // one-capability figures take the figure-level candidate; panel flows (composite, chain, number line, solid) only the composite's own
+    if(PANEL_FLOWS.has(row.capability)?cand.site!=='composite':cand.site==='composite')return {};
+    // the candidate must be the one of THIS failure: its first violation is named in the failure detail
+    const first=cand.errors[0];if(first&&!String(row.detailFull??row.detail??'').includes(String(first).split(':')[0]))return {};
+    const file=`${name}-candidate.svg`;write(file,cand.svg);
+    const scored=scoreFigure({findings:cand.violations.map(v=>({code:v.code,id:v.id,degree:v.degree})),hasSvg:true});
+    const status=scored.verdict==='PASS'?'SCORED_PASS':scored.verdict;
+    return {candidate:{file,svgSha256:'sha256:'+crypto.createHash('sha256').update(cand.svg).digest('hex')},violations:cand.violations,scoreGate:{status,score:scored.score,passScore:scored.passScore,tableVersion:scored.tableVersion,deductions:scored.findings,...(scored.blockReason?{blockReason:scored.blockReason}:{})}};
+  };
+  // A figure that got through the archive capture only on a score (scored acceptance): the receipt fields. A normally passing figure never has them.
+  const acceptedRecord=()=>{
+    if(row.status!=='ARCHIVE_BOUND')return {};
+    const accepted=takeScoredAcceptance();
+    return accepted?{violations:accepted.violations,scoreGate:accepted.scoreGate}:{};
+  };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord()};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -113,134 +154,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
       write(`${name}-solution.svg`,composed.svg);
     };
-    if(authored.capability===sdg.FIGURE_CAPABILITY){
-      // A standalone set diagram: the exact regions and shading derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='set-diagram';
-      const model=sdg.checkSetDiagramPlan(authored);let size=sdg.setDiagramSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // A mapping whose element rows follow the policy font (setDiagramSize with fontPx) is taller than its base size when the font is large: measure again at that size until the size the font gives is the size measured.
-      for(let again=1;again<=6;again++){
-        const exact=sdg.setDiagramSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width===size.width&&exact.height===size.height)break;
-        size=exact;
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      const composed=await sdg.composeSetDiagramFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===scf.FIGURE_CAPABILITY){
-      // A standalone statistics / probability figure: solved exactly, composed once, read back by its own observer, then the same Archive capture.
-      stage='stat-chart';
-      const model=scf.checkStatChartPlan(authored);let size=scf.statChartSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // A frame that grows to fit its labels (a long legend, a long x title, tree path probabilities) depends on the font size the measurement gives, and the font on the size: measure again at the
-      // larger size until the font that size gives needs no more room (sizes only grow; the figure is then composed at exactly the measured size).
-      for(let again=1;again<=6;again++){
-        const exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width<=size.width&&exact.height<=size.height)break;
-        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      // A tree whose branch labels found no room at the first leaf pitch is composed at a wider pitch (composed.rowScale): measure again at that size and compose at it.
-      let composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
-      for(let wider=1;wider<=3&&composed.status==='COMPOSED'&&composed.rowScale>1&&!(composed.rowScale===(composed.settledScale??1));wider++){
-        const rowScale=composed.rowScale,exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx,rowScale});
-        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-s${wider}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-        composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size,rowScale});
-        composed.settledScale=rowScale;
-      }
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===cfv.FIGURE_CAPABILITY){
-      // A standalone vessel-and-water-height figure: the exact volumes derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='container-fill';
-      const model=cfv.checkContainerFillPlan(authored);let size=cfv.containerFillSize(model);
-      stage='measure';
-      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      // The room the labels need (title above the axis, title beside it, label rows) follows the policy font: measure again at the size that font gives until it is the size measured.
-      for(let again=1;again<=6;again++){
-        const exact=cfv.containerFillSize(model,{fontPx:measured.policy.baseFontPx});
-        if(exact.width===size.width&&exact.height===size.height)break;
-        size=exact;
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      }
-      stage='compose';
-      const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===lpf.FIGURE_CAPABILITY){
-      // A standalone road-network / lattice shortest-path figure: the exact path counts derived once, composed, read back by its own brute-force observer, then the same Archive capture.
-      stage='lattice-path';
-      const model=lpf.checkLatticePathPlan(authored),size=lpf.latticePathSize(model);
-      stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      const composed=await lpf.composeLatticePathFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
-    if(authored.capability===ell.FIGURE_CAPABILITY){
-      // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
-      stage='ellipse';
-      const model=await ell.solveEllipseFigure(authored);
-      // No room for a label at the real font: the frame is widened (24, 48, 80, 120 px each side), measured and composed again. The first attempt is the frame the figure has always had.
-      let measured,composed;
-      for(const [attempt,extra] of ell.ELLIPSE_FRAME_STEPS.entries()){
-        ell.setEllipseFrameExtra(model,extra);
-        stage='measure';
-        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:ell.ellipseFigureSize(model),runId:`pilot-measure-${tag}${attempt?`-frame${attempt}`:''}`});
-        // a widened frame the display profile cannot hold (its font would pass the largest allowed) ends the attempts: the figure fails as it failed before, with the no-room refusal
-        if(measured.status!=='MEASURED'&&attempt>0){stage='compose';ell.setEllipseFrameExtra(model,0);break;}
-        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-        stage='compose';
-        composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
-        if(composed.status!=='ELLIPSE_LABEL_NO_ROOM'||attempt===ell.ELLIPSE_FRAME_STEPS.length-1)break;
-        (row.fallback??=[]).push({from:clip(composed.detail),to:'ELLIPSE_FRAME_WIDEN',extra:ell.ELLIPSE_FRAME_STEPS[attempt+1]});
-      }
-      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
-      stage='capture';
-      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
-      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
-      await bind({plan:authored,model,composed,capture});
-      row.status='ARCHIVE_BOUND';row.sizeClass='full';
-      return finish();
-    }
+    // Standalone figure kinds (set diagram, stat chart, container fill, lattice path, ellipse): one table row each (standalone-kinds.mjs), one shared runner.
+    {const standalone=standaloneKindFor(authored.capability);
+    if(standalone){await runStandaloneKind(standalone,{authored,identity,meta,tag,row,setStage:s=>{stage=s;},bind,clip});return finish();}}
     if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
@@ -533,6 +449,7 @@ async function runMain(argv){
   if(args.manifest){
     const manifest=JSON.parse(fs.readFileSync(args.manifest+'.manifest.json','utf8'));
     const results=[];
+    const acceptScoredArg=args['accept-scored']===undefined?undefined:args['accept-scored']==='1';
     const batchSize=Number(args['exam-batch']??process.env.APMS_EXAM_BATCH??0);
     if(Number.isInteger(batchSize)&&batchSize>=2){
       // Same exam, N at a time: one task per figure, run by exam-batch.mjs; the summary stays in manifest order.
@@ -544,7 +461,7 @@ async function runMain(argv){
       for(const group of groups){
         const settled=await runExamBatch(group.map(index=>async()=>{
           const meta=items[index];
-          const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir']});
+          const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir'],acceptScored:acceptScoredArg});
           slots[index]={item:meta.dir,bucket:meta.bucket,fam:meta.fam,ordinal:meta.ordinal,...r};
           console.log(line(r,meta.dir));
           return r;
@@ -556,7 +473,7 @@ async function runMain(argv){
       results.push(...slots);
       console.error('exam batch: '+stats.batches+' shared measure/capture rounds covered '+stats.batched+' figure requests, '+stats.single+' went on alone; time in the shared pages: '+Object.entries(pageMs).map(([kind,ms])=>kind+' '+Math.round(ms/1000)+'s').join(', '));
     }else for(const meta of manifest.items){
-      const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir']});
+      const r=await renderPlan({item:meta,plan:path.join(args.manifest,meta.dir,'plan.json'),outDir:args.out,packetDir:args['packet-dir'],acceptScored:acceptScoredArg});
       results.push({item:meta.dir,bucket:meta.bucket,fam:meta.fam,ordinal:meta.ordinal,...r});
       console.log(line(r,meta.dir));
     }
@@ -564,7 +481,7 @@ async function runMain(argv){
     return results.some(r=>r.status==='FAILED')?1:0;
   }
   const item=JSON.parse(fs.readFileSync(args.item,'utf8'));
-  const r=await renderPlan({item,plan:args.plan,outDir:args.out,packetDir:args['packet-dir']});
+  const r=await renderPlan({item,plan:args.plan,outDir:args.out,packetDir:args['packet-dir'],acceptScored:args['accept-scored']===undefined?undefined:args['accept-scored']==='1'});
   console.log(JSON.stringify(stdoutView(r)));
   return r.status==='FAILED'?1:0;
 }

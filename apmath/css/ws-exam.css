@@ -276,6 +276,31 @@
 .wsx .wsx-weak__sub { color: var(--secondary); font-size: 12px; }
 .wsx .wsx-weak__count { flex: 0 0 auto; color: var(--error); font-weight: 600; white-space: nowrap; }
 
+/* 학생 자습 기록(포털 오답 다시 풀기·유사 문항): 시험 머리말 아래 접이식 한 줄 + 학생 줄의 작은 표시 (js/ws-self-study.js).
+   자습은 숙제가 아니라 자발 활동이라 빨간 경고색을 쓰지 않는다(다시 틀린 문항 인원만 기존 오답 칩과 같은 색). */
+.wsx .wsx-ss { margin: 0 0 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.wsx .wsx-ss--empty { padding: 8px 12px; border-style: dashed; color: var(--secondary); font-size: 12px; background: transparent; }
+.wsx .wsx-ss__summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px; cursor: pointer; list-style: none; }
+.wsx .wsx-ss__summary::-webkit-details-marker { display: none; }
+.wsx .wsx-ss__summary::after { content: '›'; margin-left: auto; color: var(--secondary); font-size: 16px; transition: transform 0.15s; }
+.wsx .wsx-ss[open] > .wsx-ss__summary::after { transform: rotate(90deg); }
+.wsx .wsx-ss__summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 10px; }
+.wsx .wsx-ss__tag { flex: 0 0 auto; padding: 1px 8px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 600; }
+.wsx .wsx-ss__line { min-width: 0; font-size: 13px; font-weight: 500; overflow-wrap: anywhere; }
+.wsx .wsx-ss__body { display: flex; flex-direction: column; gap: 4px; padding: 0 12px 12px; border-top: 1px solid var(--border); }
+.wsx .wsx-ss__sec { padding-top: 10px; }
+.wsx .wsx-ss__h { margin-bottom: 6px; font-size: 13px; font-weight: 600; }
+.wsx .wsx-ss__sub { color: var(--secondary); font-size: 12px; font-weight: 400; }
+.wsx .wsx-ss__names, .wsx .wsx-ss__whys { display: flex; flex-wrap: wrap; gap: 4px; }
+.wsx .wsx-ss__name, .wsx .wsx-ss__why { padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); font-size: 12px; line-height: 1.5; }
+.wsx .wsx-ss__why b { font-weight: 600; }
+.wsx .wsx-ss__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 36px; padding: 4px 10px; margin-bottom: 4px; border: 1px solid var(--border); border-radius: var(--ap-ui-radius-panel, 8px); background: var(--surface); font-size: 13px; }
+.wsx .wsx-ss__rowlabel { min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
+.wsx .wsx-ss__rowcount { flex: 0 0 auto; color: var(--error); font-weight: 600; white-space: nowrap; }
+.wsx .wsx-ss__ok { color: var(--secondary); font-size: 12px; }
+.wsx .wsx-exam-item__ss { display: inline-block; margin-left: 4px; padding: 0 7px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
+.wsx .wsx-ss-badge { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; vertical-align: 1px; }
+
 /* 하단 액션줄: 공통 부품이 sticky로 맨 아래에 붙인다. 버튼 수는 상태마다 1~3개. */
 .wsx .wsx-actions > button { white-space: nowrap; }
 
