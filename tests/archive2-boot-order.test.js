@@ -78,9 +78,9 @@ test('the gate opens by itself when the screen code never reports a paint (no en
   assert.equal(done, true);
 });
 
-test('reviewed-exam-meta named by a runtime pack is requested right away, at most 6 at a time, and each only once', async () => {
+test('reviewed-exam-meta named by a runtime pack is requested right away, at most 64 at a time (HTTP/2 multiplexes them), and each only once', async () => {
   const { Boot } = loadBoot();
-  const names = Array.from({ length: 14 }, (_, i) => `r${i}`);
+  const names = Array.from({ length: 150 }, (_, i) => `r${i}`);
   const requested = [];
   let inFlight = 0, peak = 0;
   const release = [];
@@ -99,13 +99,13 @@ test('reviewed-exam-meta named by a runtime pack is requested right away, at mos
   const pack = await fetcher(PACK);
   await pack.text();
   await tick();
-  assert.equal(requested.filter((url) => url.includes('/reviewed-exam-meta/')).length, 6, 'only the pool size is in flight');
-  assert.equal(peak, 6);
+  assert.equal(requested.filter((url) => url.includes('/reviewed-exam-meta/')).length, 64, 'only the pool size is in flight');
+  assert.equal(peak, 64);
   while (requested.filter((url) => url.includes('/reviewed-exam-meta/')).length < names.length || release.length) {
     release.splice(0).forEach((fn) => fn());
     await tick(2);
   }
-  assert.equal(peak, 6);
+  assert.equal(peak, 64);
   // canonical asks for them later: it gets the early copies, nothing is downloaded twice
   const before = requested.length;
   for (const name of names) {

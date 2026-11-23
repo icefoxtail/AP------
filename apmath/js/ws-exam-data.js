@@ -116,7 +116,9 @@ function wsExamBuildExams(source) {
         const excludedCount = exam.assignment?.id ? (exclusionCountByAssignmentId.get(wsExamIdText(exam.assignment.id))?.size || 0) : 0;
         const targetCount = Math.max(0, activeCountForAssignment - excludedCount);
         const pct = targetCount ? Math.round((cnt / targetCount) * 100) : 0;
-        return { ...exam, key, displayTitle, count: cnt, qCount, avg, targetCount, pct, isDraft: false };
+        // 유사 시험지로 출제된 시험은 독촉하지 않는 자습용이다(제출률 대신 응시 인원만, js/similar-exam.js).
+        const similar = globalThis.ApSimilarExam?.isSimilarExamFile(exam.archiveFile || exam.assignment?.archive_file) === true;
+        return { ...exam, key, displayTitle, count: cnt, qCount, avg, targetCount, pct, similar, isDraft: false };
     }).sort((a, b) => String(b.date).localeCompare(String(a.date)) || String(b.title).localeCompare(String(a.title)));
 }
 

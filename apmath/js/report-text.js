@@ -461,10 +461,11 @@ function buildReportContext(sid, options = {}) {
     const attendance = state.db.attendance.find(a => String(a.student_id) === safeSid && a.date === today)?.status || '미기록';
     const homework = state.db.homework.find(h => String(h.student_id) === safeSid && h.date === today)?.status || '미기록';
 
-    const exams = typeof apmsGetExamSessionsForStudent === 'function'
-        ? apmsGetExamSessionsForStudent(safeSid)
+    // 유사 시험지로 출제된 응시는 학교 시험 성적 흐름에 섞지 않는다(자습용, js/similar-exam.js).
+    const exams = typeof apmsGetScoreExamSessionsForStudent === 'function'
+        ? apmsGetScoreExamSessionsForStudent(safeSid)
         : (state.db.exam_sessions || [])
-            .filter(e => String(e.student_id) === safeSid)
+            .filter(e => String(e.student_id) === safeSid && !globalThis.ApSimilarExam?.isSimilarExamRow(e))
             .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
 
     const todayExam = exams.find(e => e.exam_date === today) || null;
