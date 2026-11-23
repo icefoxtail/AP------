@@ -451,6 +451,8 @@
             escalate.forEach((step, item) => forcedWide.set(item, step));
             builtPages.forEach(page => page.remove());
         }
+        // 사다리(세로로 길게 → 한 줄 전체 → 쪽 전체)를 다 거치고도 쪽을 넘치는 문항 하나 때문에 시험지 전체가 못 나오지 않게, 그 문항만 자리 표시로 바꾼다(쪽이 넘치지 않으면 아무것도 하지 않음).
+        try { root.APRenderDiagnostics?.guardOverflow?.(area); } catch (error) { /* 진단 도우미 실패가 출력을 막지 않는다 */ }
         return area;
     }
 
