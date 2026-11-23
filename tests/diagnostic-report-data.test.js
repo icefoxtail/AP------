@@ -433,7 +433,11 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.strictEqual(inputStatus({ questions: qs, responses: pendingOk.responses, confirmed: true }).wrong, 3);
   assert.ok(Object.values(fresh).every((v) => v === 'O'), '받은 응답 객체는 그대로');
   // 잘못된 글 + 확정 → 확정 안 됨(오류 문구, 응답 그대로)
-  const pendingBad = confirmInput({ questions: qs, responses: fresh, pendingText: '3 99' });
+  // 글을 적은 뒤 단추로 누른 X(15번)는 확정 때 사라지지 않는다.
+  const keptX = confirmInput({ questions: qs, responses: Object.assign({}, fresh, { 15: 'X' }), pendingText: '3 7' });
+  assert.strictEqual(keptX.ok, true);
+  assert.deepStrictEqual(Object.keys(keptX.responses).filter((no) => keptX.responses[no] === 'X').map(Number).sort((a, b) => a - b), [3, 7, 15]);
+  const pendingBad =confirmInput({ questions: qs, responses: fresh, pendingText: '3 99' });
   assert.deepStrictEqual([pendingBad.ok, pendingBad.confirmed], [false, false]);
   assert.ok(pendingBad.error.includes('99'));
   // 글이 없으면 현재 입력 그대로 확정, 빈 칸이 있으면 확정 안 됨

@@ -396,7 +396,10 @@
     if (String(options.pendingText == null ? "" : options.pendingText).trim() !== "") {
       const applied = applyWrongNumbers(options.questions, options.pendingText);
       if (!applied.ok) return { ok: false, error: applied.error, responses, confirmed: false };
-      responses = applied.responses;
+      // 글을 적은 뒤 단추로 직접 X를 누른 문항도 잃지 않는다: 이미 X인 문항은 X로 남긴다(오답을 조용히 정답으로 바꾸지 않게).
+      const kept = options.responses || {};
+      responses = Object.assign({}, applied.responses);
+      for (const no of Object.keys(kept)) if (kept[no] === "X" && no in responses) responses[no] = "X";
     }
     const status = inputStatus({ questions: options.questions, responses });
     if (status.unanswered) return { ok: false, error: `비어 있는 문항이 ${status.unanswered}개 있습니다.`, responses, confirmed: false };
