@@ -8,6 +8,7 @@ import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
 import { buildSimilarLinks } from './lib/build-similar-links.mjs';
 import { buildExamList } from './lib/build-exam-list.mjs';
 import { buildQuestionMetadataBrowser } from './lib/build-question-metadata-browser.mjs';
+import { buildCatalogShards } from './lib/build-archive2-catalog-shards.mjs';
 import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
 import { stampHtmlVersions, textDigest } from './lib/stamp-html-versions.mjs';
 import { PUBLIC_ASSETS } from './ci/student-portal-public-release.mjs';
@@ -722,6 +723,50 @@ export function planPagesSite({
   };
 }
 
+// Catalog shards (manifest "catalogShards": true): the resolved question catalog cut into per-grade / per-subject pieces
+// (tools/lib/build-archive2-catalog-shards.mjs). They need the async canonical loader, so they are added to a finished plan
+// here, not inside the synchronous planPagesSite; the release identity calls this same function, so the identity and the
+// staged site always agree on the package.
+//
+// A shard failure NEVER stops the release: no screen reads the shards yet (stage 1), so a student-site deploy must not wait
+// for them. The failure is printed as a workflow warning and the site is packaged without them. (The question-metadata
+// browser copy above does stop the build, because a screen already reads that file. Change this the day a screen reads the
+// shards.) Returns a new plan; `catalogShards` says what happened.
+export async function addCatalogShards(plan, { manifest, log = (line) => console.warn(line) } = {}) {
+  if (manifest?.catalogShards !== true) return { ...plan, catalogShards: { status: 'OFF' } };
+  const skipped = (reason) => {
+    log(`::warning title=Catalog shards skipped::${String(reason).replace(/\s+/g, ' ').slice(0, 300)} (the site is released without catalog shards; no screen reads them yet)`);
+    return { ...plan, catalogShards: { status: 'SKIPPED', reason: String(reason).slice(0, 300) } };
+  };
+  let built;
+  try { built = await buildCatalogShards(plan.root); }
+  catch (error) { return skipped(error?.message || error); }
+  const taken = new Set(plan.entries.map((entry) => entry.path));
+  const conflict = built.entries.find((entry) => taken.has(entry.path));
+  if (conflict) return skipped(`catalog shard path conflicts with a packaged file: ${conflict.path}`);
+  const entries = [...plan.entries, ...built.entries];
+  const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
+  if (totalBytes >= plan.maxBytes) return skipped(`catalog shards would take the site to ${totalBytes} bytes (limit ${plan.maxBytes})`);
+  return {
+    ...plan,
+    entries,
+    totalBytes,
+    sizeSummary: summarizePackageSize(entries, plan.maxBytes),
+    catalogShards: {
+      status: 'BUILT',
+      indexVersion: built.index.indexVersion,
+      shardCount: built.index.shards.length,
+      recordCount: built.index.recordCount,
+      bytes: built.entries.reduce((sum, entry) => sum + entry.bytes, 0),
+    },
+  };
+}
+
+export async function planPagesSiteWithShards({ manifest: suppliedManifest = null, manifestPath = DEFAULT_MANIFEST, ...options } = {}) {
+  const manifest = suppliedManifest || JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  return addCatalogShards(planPagesSite({ ...options, manifestPath, manifest }), { manifest });
+}
+
 export async function buildPagesSite({
   sourceRoot = DEFAULT_ROOT,
   outputDir = path.join(sourceRoot, '_site'),
@@ -743,7 +788,7 @@ export async function buildPagesSite({
     if (error.code !== 'ENOENT') throw error;
   }
   if (reportPath && isInside(output, path.resolve(reportPath))) fail('package report must be outside _site');
-  const { entries, totalBytes, maxBytes, buildOnly, sizeSummary, versionStamp } = planPagesSite({
+  const { entries, totalBytes, maxBytes, buildOnly, sizeSummary, versionStamp, catalogShards } = await planPagesSiteWithShards({
     sourceRoot: root, manifestPath, manifest: suppliedManifest,
   });
   if (totalBytes >= maxBytes) {
@@ -770,6 +815,7 @@ export async function buildPagesSite({
         : entry.similarLinkInputs ? { transform: 'similar-links' }
         : entry.examListInputs ? { transform: 'exam-list' }
         : entry.questionMetadataBrowserInputs ? { transform: 'question-metadata-browser' }
+        : entry.catalogShardInputs ? { transform: 'catalog-shards' }
         : entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
   }
@@ -783,6 +829,7 @@ export async function buildPagesSite({
     maxBytes,
     buildOnlyInputs: buildOnly,
     versionStamp,
+    catalogShards,
     minifiedFileCount: inventory.filter((item) => item.transform === 'minify-json').length,
     minifiedSavedBytes: inventory.reduce((sum, item) => sum + (item.transform === 'minify-json' ? item.sourceBytes - item.bytes : 0), 0),
     headroomBytes: sizeSummary.headroomBytes,
@@ -817,6 +864,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(formatPackageSummary(result));
     if (result.buildOnlyInputs.length)
       console.log(`Digest-verified but not shipped (no page fetches them): ${result.buildOnlyInputs.length} files, ${(result.buildOnlyInputs.reduce((sum, item) => sum + item.bytes, 0) / 1_000_000).toFixed(1)} MB.`);
+    if (result.catalogShards?.status === 'BUILT')
+      console.log(`Catalog shards: ${result.catalogShards.shardCount} shards, ${result.catalogShards.recordCount} records, ${(result.catalogShards.bytes / 1_000_000).toFixed(1)} MB (no screen reads them yet).`);
     if (result.versionStamp?.pages)
       console.log(`Cache versions stamped: ${result.versionStamp.references} local script/style references in ${result.versionStamp.pages} pages (${result.versionStamp.skippedBound} byte-bound pages left as written).`);
     if (result.minifiedFileCount)
