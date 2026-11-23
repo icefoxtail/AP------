@@ -7,7 +7,7 @@ name: SVG Engine Tests
 # ("SVG engine tests") through a thin always-running wrapper, never the paths-filtered shards.
 on:
   push:
-    branches: [main, 'svg-engine/r1-3-ci-20261123']  # second branch: one-time evidence run for the PR that adds this file
+    branches: [main]
     paths:
       - 'archive/tools/geometry-equation/**'
       - 'archive/tools/pipeline-core/**'
