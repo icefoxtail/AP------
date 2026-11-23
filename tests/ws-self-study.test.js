@@ -182,6 +182,54 @@ test('학생 상세 성적 탭 한 줄: 시험(assignment)별, 날짜는 한국 
     assert.match(S.renderStudentLineHtml(sets, 'a1'), /^<span class="ap-ss-line__text">11\/24 자습/);
 });
 
+test('학생 성적 탭 줄 끝 "주로 ..." : why_counts를 합쳐 가장 많은 이유 하나, 동률이면 둘까지, 없으면 생략', () => {
+    const base = { student_id: 's1', assignment_id: 'a1', total: 4, correct: 1, wrong: 3, updated_at: '2026-11-23T05:00:00.000Z' };
+    const zero = { calc: 0, misread: 0, concept: 0, method: 0, guess: 0 };
+    const one = [{ ...base, kind: 'wrong', why_counts: { ...zero, concept: 2, calc: 1 } }];
+    assert.match(S.studentExamLine(one, 'a1'), / · 주로 개념을 모름$/);
+    // 세트(오답·유사)의 건수를 합친다: 계산 1+2=3 > 개념 2
+    const merged = [...one, { ...base, kind: 'similar', why_counts: { ...zero, calc: 2 } }];
+    assert.match(S.studentExamLine(merged, 'a1'), / · 주로 계산 실수$/);
+    // 동률 둘
+    const tie = [{ ...base, kind: 'wrong', why_counts: { ...zero, misread: 2, method: 2 } }];
+    assert.match(S.studentExamLine(tie, 'a1'), / · 주로 문제를 잘못 읽음·풀이 방법이 안 떠오름$/);
+    // 동률 셋 이상이어도 둘까지
+    const three = [{ ...base, kind: 'wrong', why_counts: { calc: 1, misread: 1, concept: 1, method: 0, guess: 0 } }];
+    assert.match(S.studentExamLine(three, 'a1'), / · 주로 계산 실수·문제를 잘못 읽음$/);
+    // why_counts 없음(옛 서버)·전부 0·이상한 값: 생략, 나머지 줄은 그대로
+    for (const counts of [undefined, null, zero, 'x', { calc: 'a', misread: -2 }]) {
+        const line = S.studentExamLine([{ ...base, kind: 'wrong', why_counts: counts }], 'a1');
+        assert.equal(line, '11/23 자습 · 오답 다시 풀기 4문항 중 1개 맞음', String(counts));
+    }
+    assert.equal(S.topWhy([]), '');
+    assert.equal(S.topWhy([null, {}]), '');
+});
+
+test('시험 목록 표시: 자습 N명은 1명 이상일 때만, 값이 없거나 0이면 표시 없음', () => {
+    assert.equal(S.examListBadgeText(6), '자습 6명');
+    assert.equal(S.examListBadgeText(1), '자습 1명');
+    for (const value of [0, undefined, null, '', 'x', -1, NaN]) assert.equal(S.examListBadgeText(value), '', String(value));
+});
+
+test('시험을 열 때 조회 계획: 목록이 0명이라고 한 id만 호출을 생략하고, 필드를 모르면 지금처럼 조회한다', () => {
+    const assignments = [{ id: 'a1', self_study_students: 0 }, { id: 'a2', self_study_students: 3 }, { id: 'a3' }, { id: 'a4', self_study_students: 'x' }];
+    assert.equal(S.listCount(assignments, 'a1'), 0);
+    assert.equal(S.listCount(assignments, 'a2'), 3);
+    assert.equal(S.listCount(assignments, 'a3'), null);
+    assert.equal(S.listCount(assignments, 'a4'), null);
+    assert.equal(S.listCount(assignments, 'zzz'), null);
+    assert.equal(S.listCount(undefined, 'a1'), null);
+    assert.deepEqual(S.planLoad(['a1'], assignments), { fetch: [], empty: ['a1'] });
+    assert.deepEqual(S.planLoad(['a1', 'a2', 'a3', 'zzz'], assignments), { fetch: ['a2', 'a3', 'zzz'], empty: ['a1'] });
+    // 옛 서버(필드 없음): 전부 조회
+    assert.deepEqual(S.planLoad(['a1', 'a2'], [{ id: 'a1' }, { id: 'a2' }]), { fetch: ['a1', 'a2'], empty: [] });
+    assert.deepEqual(S.planLoad(undefined, undefined), { fetch: [], empty: [] });
+    // 0명으로 건너뛴 시험도 오답 있는 학생이 있으면 "자습 기록 없음" 한 줄은 그려진다
+    const rows = [{ sid: 's1', name: '가영', pending: false, wrongs: ['3'] }];
+    const summary = S.summarizeClass({ rows, available: true, selfStudy: [] });
+    assert.match(S.renderClassHtml(summary), /자습 기록 없음/);
+});
+
 test('학생 화면과 같은 틀린 이유 문구를 쓴다', () => {
     const record = fs.readFileSync(path.join(root, 'apmath/student/self-study-record.js'), 'utf8');
     assert.deepEqual(Object.keys(S.WHY_LABELS), ['calc', 'misread', 'concept', 'method', 'guess']);
