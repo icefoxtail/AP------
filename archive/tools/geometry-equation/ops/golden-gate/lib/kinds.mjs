@@ -62,6 +62,7 @@ export const KIND_FILES = {
 // Files that import a kind file although they are not part of its kind (or its dispatchers). Each says why the kind assignment still holds.
 export const DISPATCHERS = new Set([
   `${P}/render-plan.mjs`, // picks the figure module by plan capability, inside the capability's own branch
+  `${P}/standalone-kinds.mjs`, // the table of the five standalone kinds: render-plan.mjs hands them over by capability, each row runs only for its own kind
   `${P}/archive-inverse-observation-v1.mjs`, // only when --packet-dir is given; the gate renders without one
   `${P}/worker.py` // lazy python imports inside the request kind's handler
 ]);
@@ -79,7 +80,7 @@ const SHARED_PRODUCTION = [
   'number-line-run-together.mjs', 'composite-expand-fields.mjs', 'conic_label_value.py',
   // added with S1 (same rule)
   'accessibility-description.mjs', 'wrap-text.mjs', 'accessible_name_observer.py',
-  'render-plan.mjs', 'worker.mjs', 'worker.py', 'worker_host.py', 'phase2.mjs', 'contracts.mjs', 'dependencies.mjs', 'dependency-lock.json', 'typography.mjs', 'palette.mjs',
+  'render-plan.mjs', 'standalone-kinds.mjs', 'worker.mjs', 'worker.py', 'worker_host.py', 'phase2.mjs', 'contracts.mjs', 'dependencies.mjs', 'dependency-lock.json', 'typography.mjs', 'palette.mjs',
   'store.mjs', 'fingerprint.mjs', 'attempt-log.mjs', 'error-guidance.mjs', 'hidden-curve-label.mjs', 'duplicate-key-point.mjs', 'point-name-observer.mjs',
   'point-names.mjs', 'display-envelope.mjs', 'display-profile-audit.mjs', 'construction-archive-capture-v1.mjs', 'construction-candidate-svg-v1.mjs',
   'quadratic-inequality-chain-v1.mjs', // imported by every standalone kind as a frame helper

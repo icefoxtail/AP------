@@ -99,3 +99,14 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 5. 관측기가 실제로는 그 변조를 못 잡으면 관측기를 고치지 않는다(R0 범위 밖). 그 변조 줄에 `knownGap`(이유 10자 이상)을 적는다. 실행기는 `KNOWN_GAP`으로 따로 나열하고 통과로 세지 않는다. 나중에 관측기가 그것을 잡게 되면 그 행이 FAIL로 바뀌어 `knownGap`을 지우라고 알려 준다.
 
 원칙: 기존 관측기·생성기 규칙·거절 코드·테스트 기대값은 바꾸지 않고, 표는 그것을 부르기만 한다. 엔진 코드를 바꿔야 할 것 같으면 표에 맞추지 말고 멈추고 보고한다.
+
+## 새 종류를 표에 더하는 법 (R1-1, 독립 도형 등록표)
+
+독립 도형(set·stat·container·lattice·ellipse)은 `production/standalone-kinds.mjs`의 표 한 줄과 공통 실행기 하나로 돈다(render-plan은 capability로 행을 찾아 실행기에 넘기기만 한다). 새 종류를 더할 때 순서:
+
+1. **표에 한 줄**: `STANDALONE_KINDS`에 `{name, capability, stage, check, compose, settle}`를 더한다. `stage`는 검사·크기 단계에서 실패가 보고하는 이름, `check`는 plan -> 정확 모델(거절은 throw), `compose`는 합성 함수, `settle`은 측정·합성 정책이다. 정책은 종류마다 다르므로 억지로 합치지 않는다. 크기가 폰트에 따라 바뀌면 `sameSizePolicy(크기함수)`, 고정 크기면 `onceSizePolicy`, 그 밖에는 새 정책 함수를 같은 파일에 쓴다(`measure`/`compose` 호출만 쓰면 runId·stage 규칙이 자동으로 지켜진다).
+2. **kinds.mjs 등록**: `lib/kinds.mjs`의 `CAPABILITY_KIND`(capability -> 종류), `KIND_FILES`(그 종류만 쓰는 모듈·관측기), 새 production 모듈이면 SHARED 또는 KIND_FILES 중 하나에 적는다. `standalone-kinds.mjs` 자체는 이미 SHARED + DISPATCHERS다. `golden-gate.test.mjs`가 빠진 등록을 잡는다.
+3. **예제 plan**: `ops/golden/`에 골든 plan 한 개와 `golden.manifest.json` 항목을 더한다(그 종류를 도는 골든이 없으면 `golden set` 테스트가 실패한다).
+4. **안내 한 쪽**: `production/AUTHOR_GUIDE.md`(생성 소스는 `build-author-guide.mjs`)에 그 종류의 plan 필드 절을 쓴다.
+
+바꾼 뒤에는 `golden-gate.mjs --base origin/main --tests auto`로 기존 골든이 바이트 그대로인지 증명한다(render-plan·standalone-kinds는 공용이라 209개 전체).

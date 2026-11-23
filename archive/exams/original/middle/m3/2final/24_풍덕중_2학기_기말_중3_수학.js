@@ -322,7 +322,7 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "②",
-    "solution": "② 한 외부점 P에서 같은 원에 그은 두 접선의 길이는 같다. 그림에서 PB=11, PA=x+3이므로 x+3=11이다. 따라서 x=8, 정답 ②.",
+    "solution": "한 외부점에서 같은 원에 그은 두 접선의 길이는 같다.\n점 $P$에서 그은 두 접선이므로 $\\overline{PB}=\\overline{PA}=3$이다. $\\overline{PQ}=11$이므로 $\\overline{BQ}=11-3=8$이다.\n점 $Q$에서 그은 두 접선의 길이도 같으므로 $x=\\overline{BQ}=8$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q07-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
