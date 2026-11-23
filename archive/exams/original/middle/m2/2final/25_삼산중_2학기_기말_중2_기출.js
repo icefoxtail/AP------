@@ -71,7 +71,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "$\\triangle ABC\\sim\\triangle DEF$일 때 $\\overline{AB}=x\\rm\\,cm$, $\\angle E=y^\\circ$에 대해 $x+y$의 값은? [4점]",
+    "content": "$\\triangle ABC\\sim\\triangle DEF$이고 $\\angle B=55^\\circ$일 때 $\\overline{AB}=x\\rm\\,cm$, $\\angle E=y^\\circ$에 대해 $x+y$의 값은? [4점]",
     "choices": [
       "$65$",
       "$66$",
