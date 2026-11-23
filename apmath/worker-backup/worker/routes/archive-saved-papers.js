@@ -9,6 +9,7 @@ import {
   SAVED_PAPER_LIBRARY_STATES,
   computeSavedPaperRequestHash,
   computeSavedPaperCopyRequestHash,
+  missingImagesFromRows,
   prepareSavedPaperBatch,
   readAndVerifySavedSnapshot,
   resolveSavedPaperLibraryStatus,
@@ -134,7 +135,7 @@ async function handleCreate(request, env, teacher, metadataAuthority = null) {
       row.schema_version === SAVED_PAPER_SCHEMA);
   if (prior.length) {
     if (!matchPrior()) fail("save_batch_id was already used for different paper content", 409);
-    return privateJson({ success: true, saved: true, idempotent: true, papers: prior.map(listRow) });
+    return privateJson({ success: true, saved: true, idempotent: true, missing_images: missingImagesFromRows(prior), papers: prior.map(listRow) });
   }
   const derivations = [];
   for (const paper of input.papers) {
@@ -219,13 +220,14 @@ async function handleCreate(request, env, teacher, metadataAuthority = null) {
     if (raced.length === input.papers.length && raced.every((row, index) =>
       Number(row.part_index) === index && Number(row.part_count) === input.papers.length &&
       row.save_request_hash === requestHash && row.schema_version === SAVED_PAPER_SCHEMA)) {
-      return privateJson({ success: true, saved: true, idempotent: true, papers: raced.map(listRow) });
+      return privateJson({ success: true, saved: true, idempotent: true, missing_images: missingImagesFromRows(raced), papers: raced.map(listRow) });
     }
     throw error;
   }
   const rows = await loadSavedPapersByBatch(env, teacher.id, input.save_batch_id);
   if (rows.length !== input.papers.length) fail("시험지 저장 결과를 확인하지 못했습니다.", 500);
-  return privateJson({ success: true, saved: true, idempotent: false, papers: rows.map(listRow) });
+  // Images the server could not read at save time are saved as "not verified"; the answer names them (count + 1-based place).
+  return privateJson({ success: true, saved: true, idempotent: false, missing_images: prepared.missingImages, papers: rows.map(listRow) });
 }
 
 async function handleCopy(id, request, env, teacher) {

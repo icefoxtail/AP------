@@ -2059,7 +2059,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS'){if(degrade)degrade.observed('rendered-layout',layout.errors);else throw new Stop('STAT_CHART_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     state.svg=svg;state.rowScale=usedScale;
     return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');

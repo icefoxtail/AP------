@@ -1038,6 +1038,13 @@
       state.saveMessage = state.savedPaperIds.length > 1
         ? "시험지 " + state.savedPaperIds.length + "권을 저장했습니다."
         : "시험지 1개를 저장했습니다.";
+      // 서버가 저장 때 읽지 못한 그림은 저장을 막지 않는다. 그 그림만 "확인 못 함"으로 저장되고 응답이 위치를 알려 준다(옛 서버는 이 필드가 없다).
+      const missing = data?.missing_images;
+      if (Number(missing?.count) > 0 && Array.isArray(missing.items)) {
+        const places = [...new Set(missing.items.map((item) => String(item?.place || "")).filter(Boolean))];
+        state.saveMessage += " 그림 " + Number(missing.count) + "개를 확인하지 못했습니다(" +
+          places.slice(0, 3).join(", ") + (places.length > 3 ? " 외 " + (places.length - 3) + "곳" : "") + ").";
+      }
       state.saveError = "";
       state.saveResultState = "SAVED";
       state.saveResultSignature = workSignature || state.saveResultSignature;

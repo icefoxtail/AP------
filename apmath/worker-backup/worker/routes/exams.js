@@ -1,6 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { loadSelfStudyForAssignment } from '../helpers/student-self-study.js';
 import { extractArchiveQuestionsFromText, resolveArchiveQuestionNo } from '../helpers/archive-question-bank.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
@@ -2717,6 +2718,7 @@ export async function handleExams(request, env, teacher, path, url) {
             : { results: [] };
         const identityData = await loadClinicQuestionIdentityData(env, sessions.results || [], [assignment.id]);
         const exclusions = await loadClassAssignmentExclusions(env, [assignment.id]);
+        const selfStudy = await loadSelfStudyForAssignment(env, assignment.id, classId);
         return jsonResponse({
           success: true,
           students: students.results || [],
@@ -2726,6 +2728,8 @@ export async function handleExams(request, env, teacher, path, url) {
           ...identityData,
           assignments: [assignment],
           exclusions,
+          self_study: selfStudy.rows,
+          self_study_available: selfStudy.available,
           coverage: {
             complete: canQueryAssignmentSessions && recipientCoverage,
             scope: 'assignment',

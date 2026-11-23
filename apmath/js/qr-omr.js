@@ -45,16 +45,19 @@ function getOmrArchiveDisplayTitle(raw = '') {
     if (!s) return '';
     const compact = s.replace(/^MIXED:/, '');
     const leaf = compact.split(/[\\/]/).pop() || compact;
-    return leaf
+    const name = leaf
         .replace(/\.js(?:\?.*)?$/i, '')
         .replace(/^exams\//, '')
         .replace(/^archive\//, '')
         .trim();
+    // 보이는 제목은 한글 제목(공용 archive/exam-display-title.js)
+    return globalThis.ExamDisplayTitle?.displayTitleOf?.(name) || name;
 }
 
 function getOmrExamDisplayTitle(item = {}) {
+    const given = String(item.examTitle || item.exam_title || item.title || '').trim();
     return getOmrArchiveDisplayTitle(item.archiveFile || item.archive_file || '') ||
-        String(item.examTitle || item.exam_title || item.title || '').trim();
+        (given && (globalThis.ExamDisplayTitle?.displayTitleOf?.(given) || given)) || '';
 }
 
 function getQrClassStudentIds(classId) {

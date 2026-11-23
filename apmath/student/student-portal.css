@@ -405,3 +405,99 @@ body[data-student-view="omr-list"] .student-shell { gap: 12px; }
   .preview-notice { padding: 10px 12px; font-size: 13px; }
   .preview-notice > span { font-size: 12px; }
 }
+
+/* 오답 다시 풀기 문항 카드 화면(self-study-view.js): 문항 세로 목록, 문항마다 정답·해설 펼침. 휴대폰(390px) 우선, 넓은 화면은 읽기 좋은 폭으로 제한. */
+.omr-actions .self-study-open, .omr-card-actions .self-study-open { grid-column: 1 / -1; order: -3; min-height: 48px; font-size: 14px; }
+.self-study { max-width: 760px; width: 100%; margin: 0 auto; gap: 16px; }
+.self-study > * { min-width: 0; }
+.ss-title { font-size: 19px; }
+.ss-list { display: grid; gap: 14px; }
+.ss-card { min-width: 0; padding: 18px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+.ss-card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.ss-no { font-size: 15px; font-weight: 700; color: var(--text); }
+.ss-source { font-size: 12px; color: var(--secondary); }
+.ss-card:not(.is-ready) .ss-q { opacity: 0; }
+.ss-q { min-width: 0; font-size: 16px; line-height: 1.8; color: var(--text); overflow-wrap: anywhere; word-break: keep-all; }
+.ss-q mjx-container[jax="CHTML"]:not([display="true"]) { max-width: 100%; }
+.ss-q mjx-container[display="true"], .ss-reveal mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.ss-q img, .ss-reveal img { max-width: 100%; height: auto; }
+.ss-figure { margin: 12px 0; text-align: center; }
+.ss-figure img { display: inline-block; max-width: 100%; max-height: 420px; object-fit: contain; }
+.ss-img-fail { display: block; padding: 14px 12px; border: 1px dashed var(--control-border); border-radius: 8px; background: var(--warning-soft); color: var(--warning); font-size: 13px; line-height: 1.6; text-align: center; }
+.ss-card.has-issue { border-color: var(--warning); }
+.ss-q .question-table-wrap, .ss-reveal .question-table-wrap { max-width: 100%; overflow-x: auto; margin: 8px 0; }
+.ss-q table.question-table, .ss-reveal table.question-table { border-collapse: collapse; width: auto; min-width: 60%; margin: 0; font-size: 14px; line-height: 1.5; text-align: center; }
+.ss-q table.question-table th, .ss-q table.question-table td, .ss-reveal table.question-table th, .ss-reveal table.question-table td { padding: 5px 9px; border: 1px solid var(--control-border); vertical-align: middle; }
+.ss-q table.question-table th, .ss-reveal table.question-table th { background: var(--surface-2); font-weight: 600; }
+.ss-q .choices { display: grid; gap: 8px; margin-top: 14px; }
+.ss-q .choices-compact { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.ss-q .choice-item { display: flex; align-items: flex-start; gap: 6px; min-width: 0; line-height: 1.7; }
+.ss-q .choice-no { flex: 0 0 auto; font-weight: 700; }
+.ss-q .choice-text { min-width: 0; overflow-wrap: anywhere; }
+.ss-q .view-box, .ss-q .question-note-box, .ss-q .question-view-box { margin: 8px 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); }
+.ss-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+.ss-actions .btn { flex: 1 1 130px; min-height: 44px; font-size: 14px; }
+.ss-reveal { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: var(--surface-2); font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; min-width: 0; }
+.ss-reveal > strong { display: block; margin-bottom: 4px; font-size: 13px; color: var(--secondary); }
+.ss-answer > strong { display: inline; margin-right: 6px; }
+.ss-answer { background: var(--success-soft); }
+.ss-reveal .sol-sec-label { font-weight: 700; color: var(--text); }
+.ss-fail { padding: 18px 12px; text-align: center; color: var(--secondary); background: var(--surface-2); border-radius: 8px; }
+.ss-back-bottom { margin-top: 4px; }
+.ss-math-notice { font-size: 13px; }
+@media (min-width: 720px) {
+  .ss-card { padding: 24px 28px; }
+  .ss-q { font-size: 17px; }
+  .ss-title { font-size: 22px; }
+}
+.ss-q .choices-block, .ss-q .choices-boxed { grid-template-columns: minmax(0, 1fr); }
+.ss-q .choice-text { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.omr-card-actions:has(.self-study-open) .score-open { background: transparent; border-color: var(--control-border); color: var(--text); }
+.omr-card-actions:has(.self-study-open) .score-open:hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
+.self-study-row { grid-column: 1 / -1; order: -3; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.self-study-row.has-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.self-study-row .self-study-open { grid-column: auto; order: 0; min-width: 0; padding-inline: 8px; white-space: normal; line-height: 1.3; }
+.ss-next { min-height: 48px; font-size: 15px; }
+.similar-all { margin-top: 6px; border-top: 1px solid var(--border-soft); }
+.similar-all > summary { min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--secondary); list-style: none; }
+.similar-all > summary::-webkit-details-marker { display: none; }
+.similar-all .similar-entry { margin-top: 0; border-top: 0; padding-top: 0; }
+/* 풀고 나서 해설: 답을 내기 전에는 정답·해설이 닫혀 있고, 결과에 따라 열린다. 모르겠어요 = 오답(모름) + 해설 바로 열림. */
+.self-study [hidden] { display: none !important; }
+.ss-note { margin: 4px 0 0; font-size: 13px; color: var(--secondary); line-height: 1.6; }
+.ss-progress { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.ss-progress-text { margin: 0; font-size: 15px; font-weight: 600; color: var(--text); }
+.ss-progress-text.is-done { color: var(--success); }
+.ss-retry-wrong { flex: 0 0 auto; border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
+.ss-card[data-state="c"] { border-left: 4px solid var(--success); }
+.ss-card[data-state="w"], .ss-card[data-state="u"] { border-left: 4px solid var(--error); }
+.ss-card[data-mode="mc"] .choice-item { min-height: 44px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); align-items: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ss-card[data-mode="mc"] .choice-item:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ss-card[data-mode="mc"] .choice-item.is-picked { border-color: var(--primary); background: var(--primary-soft); box-shadow: inset 0 0 0 1px var(--primary); }
+.ss-card[data-mode="mc"] .choice-item[aria-disabled="true"] { cursor: default; }
+.ss-card[data-mode="mc"] .choice-item.is-correct { border-color: var(--success); background: var(--success-soft); box-shadow: inset 0 0 0 1px var(--success); }
+.ss-card[data-mode="mc"] .choice-item.is-wrong { border-color: var(--error); background: var(--error-soft); box-shadow: inset 0 0 0 1px var(--error); }
+.ss-picker { margin-top: 12px; }
+.ss-picker .choice-item { justify-content: center; }
+.ss-ask .ss-main { flex: 2 1 150px; }
+.ss-ask .ss-unknown { flex: 1 1 110px; }
+.ss-lock { margin: 8px 0 0; font-size: 13px; color: var(--secondary); }
+.ss-judge { margin-top: 12px; }
+.ss-judge-ask { margin: 0 0 4px; font-size: 14px; color: var(--text-soft); }
+.ss-judge .ss-actions { margin-top: 6px; padding-top: 0; border-top: 0; }
+.ss-judge .ss-right { border-color: var(--success); color: var(--success); background: var(--success-soft); }
+.ss-judge .ss-miss { border-color: var(--error); color: var(--error); background: var(--error-soft); }
+.ss-result { margin-top: 12px; padding: 10px 14px; border-radius: 10px; font-size: 16px; font-weight: 700; background: var(--surface-2); }
+.ss-result.is-c { background: var(--success-soft); color: var(--success); }
+.ss-result.is-w, .ss-result.is-u { background: var(--error-soft); color: var(--error); }
+.ss-why { margin-top: 12px; }
+.ss-why-title { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: var(--text); }
+.ss-why-title small { font-weight: 400; color: var(--secondary); margin-left: 4px; }
+.ss-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ss-chip { min-height: 44px; padding: 8px 14px; border: 1px solid var(--control-border); border-radius: 22px; background: var(--surface); color: var(--text-soft); font-size: 14px; }
+.ss-chip[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); font-weight: 600; }
+.ss-retry { margin-top: 12px; }
+.ss-retry .btn { width: 100%; }
+.self-study-open { flex-direction: column; gap: 2px; }
+.self-study-open .button-meta { display: block; }
+.self-study-open .button-meta:empty { display: none; }

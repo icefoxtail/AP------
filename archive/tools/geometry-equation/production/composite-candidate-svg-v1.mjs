@@ -40,7 +40,8 @@ const GRID_CAPTION_PAD=8;
 // An all-plane stack is a grid: two or five option figures are the real cases (five options, two sub-items). The grid is never wider than
 // two columns: the Archive displays the solution image in an about 298 CSS px column, and the 11 CSS px label floor inside the 32 px base
 // font cap means the measured intrinsic width may not exceed about 848 SVG units. A panel is at least 384 units wide, so a three-column
-// row (3*384+2*8 = 1168) is refused at measure with UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE; two columns (776) pass.
+// row (3*384+2*8 = 1168) was refused at measure with UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE; two columns (776) passed.
+// (2026-11-23: the displayed font floor is released, so no width is refused for it any more; the measured policy records displayTextBelow11px instead.)
 // Graph stacks never take this path.
 export const COMPOSITE_MAX_PLANE_PANELS=5;
 // A grid with a solid panel is at most six panels (three rows of the two-column grid): a solid panel is up to 400 units high, and what the page keeps (COMPOSITE_MAX_DISPLAY_HEIGHT_PX,
@@ -444,7 +445,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout');
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS')throw new Stop('COMPOSITE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');

@@ -983,7 +983,7 @@ export async function composeEllipseFigure({plan,model,identity,typographyPolicy
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,rendered.svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}
     finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS'){if(degrade){degrade.observed('rendered-layout',layout.errors);return outcome('BEST_EFFORT',{degrees:degrade.items});}return outcome('ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');
     };

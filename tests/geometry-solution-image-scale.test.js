@@ -38,16 +38,51 @@ test('phone minimum base font grows with the canvas and stops at the policy cap'
   assert.equal(phoneMinimumBaseFontPx(900), 32);
 });
 
-test('scaled display passes the policy where the default 60% display is refused', async () => {
+test('scaled display reaches the floor where the default 60% display only records displayTextBelow11px (the refusal was released 2026-11-23)', async () => {
   const { requestedProfileTypographyPolicy } = await envelope();
   const { phoneMinimumBaseFontPx } = await capture();
   const intrinsic = { width: 610, height: 320 };
   const profile = (width, sizeClass) => ({ status: 'PASS', sizeClass, imageRect: { x: 0, y: 0, width, height: width * 320 / 610 }, naturalWidth: 610, naturalHeight: 320 });
   const observation = width => ({ status: 'PASS', synthetic: false, runtime: 'playwright-chromium', profiles: ['small', 'medium', 'large', 'full'].map(sizeClass => profile(width, sizeClass)) });
-  assert.throws(() => requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(189.7) }), /REQUESTED_PROFILE_FONT_SCALE/);
+  // before 2026-11-23 the default (60%) display was refused with REQUESTED_PROFILE_FONT_SCALE; now the base font stays at the cap (32) and the policy records displayTextBelow11px
+  const refusedBefore = requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(189.7) });
+  assert.equal(refusedBefore.baseFontPx, 32);
+  assert.equal(refusedBefore.displayTextBelow11px, true);
+  assert.ok(refusedBefore.displayedFontPx < 11.25);
   const policy = requestedProfileTypographyPolicy({ requestedSizeClass: 'medium', intrinsicSvg: intrinsic, observation: observation(284.6), minimumBaseFontPx: phoneMinimumBaseFontPx(610) });
   assert.ok(policy.baseFontPx >= phoneMinimumBaseFontPx(610) && policy.baseFontPx <= 32);
   assert.ok(policy.baseFontPx * policy.displayScale >= 11.25 - 1e-6, 'A4 labels reach the floor');
+  assert.equal('displayTextBelow11px' in policy, false);
+});
+
+// 2026-11-23 (owner: the displayed font floor is released, never a refusal; the owner wants figures not rejected, not smaller):
+// the scale search stays, triggered by policy.displayTextBelow11px instead of a refusal.
+test('scale search: the first candidate whose labels reach the floor is taken, else the largest; never a refusal', async () => {
+  const { selectSolutionImageScale, solutionImageScaleCandidatesWithMaximum } = await capture();
+  const below = (scale, displayScale) => ({ displayScale, baseFontPx: 32, displayTextBelow11px: true, scale });
+  const ok = (scale, displayScale) => ({ displayScale, baseFontPx: 28, scale });
+  const defaultPolicy = below(80, 0.6);
+  // 1) the first satisfying candidate wins; later candidates are not even measured
+  const tried = [];
+  const first = await selectSolutionImageScale({ defaultPolicy, scales: [85, 90, 95], derivePolicy: async scale => { tried.push(scale); return scale >= 90 ? ok(scale, scale / 100) : below(scale, scale / 100 * 0.6); } });
+  assert.equal(first.scale, 90); assert.equal(first.policy.displayTextBelow11px, undefined); assert.deepEqual(tried, [85, 90]);
+  // 2) no candidate reaches the floor: the largest one is used and the information flag stays
+  const none = await selectSolutionImageScale({ defaultPolicy, scales: [85, 90, 95], derivePolicy: async scale => below(scale, scale / 100 * 0.7) });
+  assert.equal(none.scale, 95); assert.equal(none.policy.displayTextBelow11px, true); assert.equal(none.refusal, null);
+  // 3) a candidate that is not larger than the default never replaces it (no smaller display)
+  const smaller = await selectSolutionImageScale({ defaultPolicy, scales: [70], derivePolicy: async scale => below(scale, 0.4) });
+  assert.equal(smaller.policy, defaultPolicy); assert.equal(smaller.scale, undefined);
+  // 4) candidate derivation failures are skipped; with a default the default is kept, without one the policy is null and the refusal is reported
+  const boom = new Error('X');
+  const kept = await selectSolutionImageScale({ defaultPolicy, scales: [85], derivePolicy: async () => { throw boom; } });
+  assert.equal(kept.policy, defaultPolicy); assert.equal(kept.refusal, boom);
+  const lost = await selectSolutionImageScale({ defaultPolicy: null, scales: [85], derivePolicy: async () => { throw boom; } });
+  assert.equal(lost.policy, null); assert.equal(lost.refusal, boom);
+  // a non-domain error (a defect) still propagates
+  await assert.rejects(selectSolutionImageScale({ defaultPolicy, scales: [85], derivePolicy: async () => { throw new TypeError('bug'); }, isDomainCode: e => e.constructor === Error }), TypeError);
+  // a figure too wide for every listed candidate still gets the largest whole percent the column allows
+  const wide = solutionImageScaleCandidatesWithMaximum({ intrinsicSvg: { width: 1168, height: 400 }, observation: column });
+  assert.ok(wide.length > 0 && wide.at(-1) === 94 && wide.every((v, i) => i === 0 || v > wide[i - 1]), JSON.stringify(wide));
 });
 
 function publishFixture() {

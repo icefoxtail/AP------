@@ -242,7 +242,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);
       if(measured.status!=='MEASURED'&&multiCurve&&size==='full'&&forceSizeClass===undefined){size='medium';measured=await measure(size,'-medium');}
-      // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
+      // A wide family graph (520-610 px) could not reach the requested profile font scale at medium; the same figure was retried once at full.
+      // (2026-11-23: the displayed font floor is released, so the measurement no longer refuses for this reason and this retry does not run; kept for an invalid display scale.)
       if(measured.status!=='MEASURED'&&size==='medium'&&JSON.stringify(measured.detail??'').includes('REQUESTED_PROFILE_FONT_SCALE')){size='full';measured=await measure(size,'-full');}
       watch.lap('measure');
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};

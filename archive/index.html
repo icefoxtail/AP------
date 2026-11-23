@@ -1834,10 +1834,12 @@ function getArchiveBoardTeacherName(row) {
 }
 
 function getArchiveBoardAssignmentTitle(row) {
+    // 보이는 제목은 한글 제목(공용 exam-display-title.js): 내부 키(파일 이름·스냅샷 키)는 제목 자리에 나오지 않는다.
+    const readable = value => (typeof window !== 'undefined' && window.ExamDisplayTitle?.displayTitleOf?.(value)) || value;
     const explicitTitle = String(row?.exam_title || row?.title || row?.archive_title || '').trim();
-    if (explicitTitle) return explicitTitle;
+    if (explicitTitle) return readable(explicitTitle);
     const fileTitle = formatArchiveDisplayName(row?.archive_file || row?.file_name || row?.source_file || '');
-    if (fileTitle) return fileTitle;
+    if (fileTitle) return readable(fileTitle);
     return '시험지';
 }
 
@@ -2484,13 +2486,13 @@ function buildCard(ex) {
             ex.year ? `${ex.year}년` : '',
             semester,
             examName,
-            ex.subject || '',
+            (window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || '')),
             contentTypeLabel
         ].filter(Boolean).join(' · ');
 
         metaHTML = [
             buildMetaBadge(ex.grade || ''),
-            buildMetaBadge(ex.subject || '', 'primary'),
+            buildMetaBadge((window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || '')), 'primary'),
             buildMetaBadge(`${semester} ${examName}`.trim() || '', 'primary')
         ].filter(Boolean).join('');
     } else {
@@ -2498,7 +2500,7 @@ function buildCard(ex) {
         subtitle = [
             ex.grade || '',
             contentTypeLabel,
-            ex.subject || ''
+            (window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || ''))
         ].filter(Boolean).join(' · ');
 
         if (!subtitle) subtitle = contentTypeLabel;
@@ -2506,7 +2508,7 @@ function buildCard(ex) {
         metaHTML = [
             buildMetaBadge(ex.grade || ''),
             buildMetaBadge(contentTypeLabel, 'green'),
-            buildMetaBadge(ex.subject || ''),
+            buildMetaBadge((window.ExamDisplayTitle?.displaySubjectOfExam?.(ex) ?? (ex.subject || ''))),
             (ex.school && ex.school !== 'AP수학') ? buildMetaBadge(ex.school) : ''
         ].filter(Boolean).join('');
     }
@@ -2722,8 +2724,8 @@ function printIndexPendingGeneralExam() {
 function getIndexExamTitle(item) {
     if (item?.savedPaperId) return String(item.title || item.identityTitle || '저장한 시험지').trim();
     if (isUnitPastExamItem(item) && (item?.identityTitle || item?.title)) return String(item.identityTitle || item.title).trim();
-    const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
-    return `${baseTitle} ${item.subject || ''}`.trim();
+    const baseTitle = item.school || item.topic || (window.ExamDisplayTitle?.displayTitleOf?.(String(item.file || '')) || String(item.file || '').replace('.js', ''));
+    return `${baseTitle} ${(window.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? (item.subject || ''))}`.trim();
 }
 
 function isUnitPastExamItem(item) {
@@ -3609,7 +3611,7 @@ function rememberArchiveEngineLaunch(url) {
 
 function goEngine(item, action, qpp, options = {}) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
-    const title = `${baseTitle} ${item.subject || ''}`.trim();
+    const title = `${baseTitle} ${(window.ExamDisplayTitle?.displaySubjectOfExam?.(item) ?? (item.subject || ''))}`.trim();
 
     const url = new URL('engine.html', window.location.href);
     url.searchParams.set('mode', action);
@@ -3812,11 +3814,11 @@ window.onload = function () {
 <script src="archive2-core.js?v=20261123-family-catalog-1"></script>
 <script src="archive2-history.js?v=20261110-teacher-copy-1"></script>
 <script src="exam-source-reader.js?v=20261118-body-1"></script>
-<script src="exam-display-title.js?v=20261116-polish-1"></script>
+<script src="exam-display-title.js?v=20261123-korean-titles-1"></script>
 <script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
 <script src="archive2-source.js?v=20261119-verified-rename-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-<script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
-<script src="archive2-entry.js?v=20261110-review-a-1"></script>
+<script src="archive2-output.js?v=20261123-similar-title-1"></script>
+<script src="archive2-entry.js?v=20261123-gichul-c-1"></script>
 </body>
 </html>

@@ -23,6 +23,12 @@
   let recentPdfMutationVersions = new Map();
   V.recentPdfRetryIds = new Set();
   let recentRefetchTimer = null;
+  // 줄 제목에 보이는 글자만 정리한다("기출c" -> "기출", 기존 exam-display-title.js 함수). 저장값·서버 요청·검색 원문은 그대로.
+  const shownTitle = (title) => {
+    const text = String(title ?? "");
+    const readable = globalThis.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    return globalThis.ExamDisplayTitle?.withoutContentMark?.(readable) || readable;
+  };
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
     return V.classRows
@@ -50,9 +56,17 @@
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
     if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>${errorDetailMarkup(state.recentError)}`;
-    const rows = History.filterAssignments(state.recentRows, {
-      ...state.recentFilters, classId: state.recentClassId,
-    });
+    // 과목은 합쳐진 줄의 모든 값으로 거른다(History.filterAssignments는 값 하나만 받으므로 과목만 여기서 따로 거른다).
+    const subjectGroup = recentSubjectGroupKeys(state.recentFilters.subject);
+    const listFilters = {
+      ...state.recentFilters, classId: state.recentClassId, subject: subjectGroup.length > 1 ? "" : state.recentFilters.subject,
+    };
+    // 제목 검색은 저장된 원문과 화면에 보이는 이름(기출c -> 기출) 둘 다에 걸린다.
+    const byShown = state.recentFilters.query
+      ? new Set(History.filterAssignments(state.recentRows.map((row) => ({ ...row, title: shownTitle(row.title), source: row })), listFilters).map((row) => row.source))
+      : null;
+    const byRaw = History.filterAssignments(state.recentRows, listFilters);
+    const rows = (byShown ? state.recentRows.filter((row) => byShown.has(row) || byRaw.includes(row)) : byRaw).filter((row) => subjectGroup.length < 2 || row.subjectKeys.some((key) => subjectGroup.includes(key)));
     // One row per assignment, newest date first. The raw list keeps saved_paper_id / archive_file, which the
     // normalized rows drop (archive2-history.js stays untouched so the Worker is not redeployed).
     const rawById = new Map((state.recentAssignments || []).map((raw) => [String(raw?.id ?? "").trim(), raw]));
@@ -76,7 +90,7 @@
           ? `시험지는 ${a.contentGrade}` : "";
         const metadata = [a.className, ...progress,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
-          a.subjectLabel, otherGrade].filter(Boolean);
+          globalThis.ExamDisplayTitle?.displaySubjectOf?.(a.subjectLabel) ?? a.subjectLabel, otherGrade].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
         a.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
@@ -94,7 +108,7 @@
         : `<span class="history-source">${esc(source.label)}</span>`;
       const day = /^\d{4}-(\d{2})-(\d{2})$/.exec(a.date);
       const spineDate = day ? [`${Number(day[1])}월`, String(Number(day[2]))] : ["", "–"];
-      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(a.title)}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(pdfErrorText(a.pdfError))}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}${button("assignment-derive", "다시 만들기", `data-assignment="${esc(a.id)}" class="small" title="이 시험지로 다시 만들기" aria-label="${esc(a.title)} ${esc(a.className || "")} 이 시험지로 다시 만들기"`)}${a.isCancelled ? "" : button("assignment-cancel", "출제 취소", `data-assignment="${esc(a.id)}" class="small danger" aria-label="${esc(a.title)} ${esc(a.className || "")} 출제 취소"`)}</div></article>`;
+      return `<article class="history-card exam-row no-sim ${gradeClass(a.targetGrade || a.contentGrade)}" data-assignment-id="${esc(a.id)}" title="출제 번호 ${esc(a.id)}"><div class="exam-row-spine"${a.date ? ` title="${esc(a.date)}"` : ""}><span class="exam-row-grade">${esc(spineDate[0])}</span><span class="exam-row-year">${esc(spineDate[1])}</span><span class="exam-row-unit">${esc(a.targetGrade || a.contentGrade || "")}</span></div><div class="exam-row-main"><h3 class="history-title">${esc(shownTitle(a.title))}</h3>${sourceLine}<div class="history-card-meta exam-row-meta">${metadata.map((value, index) => `${index ? '<span aria-hidden="true">·</span>' : ""}<span${index === 0 && value === a.className ? ' class="history-class"' : ""}>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}${pdfLabel ? `<div class="history-pdf-actions"><span class="history-pdf">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(pdfErrorText(a.pdfError))}</span>` : ""}${pdfRetry}</div>` : ""}</div><div class="exam-row-actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답·학생별 확인">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}${button("assignment-derive", "다시 만들기", `data-assignment="${esc(a.id)}" class="small" title="이 시험지로 다시 만들기" aria-label="${esc(shownTitle(a.title))} ${esc(a.className || "")} 이 시험지로 다시 만들기"`)}${a.isCancelled ? "" : button("assignment-cancel", "출제 취소", `data-assignment="${esc(a.id)}" class="small danger" aria-label="${esc(shownTitle(a.title))} ${esc(a.className || "")} 출제 취소"`)}</div></article>`;
       }).join("")}</div>${cancelledToggle}`;
   }
   // 서버가 남긴 PDF 오류는 영어 원문일 수 있다. 교사에게는 무엇을 하면 되는지만 알린다.
@@ -110,7 +124,7 @@
     if (!row || row.isCancelled) return;
     const submitted = Number(row.submittedCount) > 0
       ? `<p>이미 제출한 학생 ${Number(row.submittedCount)}명의 기록은 지워지지 않습니다.</p>` : "";
-    showDialog("출제 취소", `<p><strong>${esc(row.title)}</strong>${row.className ? ` · ${esc(row.className)}` : ""}${row.date ? ` · ${esc(row.date)}` : ""}</p>
+    showDialog("출제 취소", `<p><strong>${esc(shownTitle(row.title))}</strong>${row.className ? ` · ${esc(row.className)}` : ""}${row.date ? ` · ${esc(row.date)}` : ""}</p>
       <p>취소하면 아직 풀지 않은 학생에게 더 이상 보이지 않고, 출제 내역에서도 숨겨집니다. 되돌릴 수 없습니다.</p>${submitted}
       <p id="assignment-cancel-error" class="error" role="alert" hidden></p>
       <div class="actions">${button("assignment-cancel-confirm", "출제 취소", `data-assignment="${esc(row.id)}" class="primary"`)}</div>`);
@@ -171,7 +185,40 @@
     if (shared) return [...new Set([shared.label, ...(shared.courseKeys || [])])];
     return [key];
   }
-  function recentSubjectOptions({ preserveSelected = true } = {}) {
+  // 보이는 이름이 같은 과목 칸(예: raw:기출c와 raw:기출)은 한 줄로 합친다. 저장된 값·주소 값은 그대로 두고,
+  // 합쳐진 줄을 고르면 두 값의 내역이 모두 걸린다(요청에는 두 값의 과목어를 함께 싣는다).
+  function recentSubjectGroupKeys(subjectKey) {
+    const key = String(subjectKey || "").trim();
+    if (!key) return [];
+    const all = recentSubjectRawOptions();
+    const mine = all.find((option) => option.value === key);
+    const keys = [key];
+    if (mine) for (const option of all) if (option.label === mine.label && !keys.includes(option.value)) keys.push(option.value);
+    // 아직 불러온 내역에 없는 짝도 보이는 이름으로 알 수 있다: raw:기출c를 고르면 raw:기출도 같은 줄이다.
+    if (key.startsWith("raw:")) {
+      const plain = "raw:" + (globalThis.ExamDisplayTitle?.displaySubjectOf?.(key.slice(4)) ?? key.slice(4));
+      if (!keys.includes(plain)) keys.push(plain);
+    }
+    return keys;
+  }
+  function recentSubjectGroupTerms(subjectKey) {
+    return [...new Set(recentSubjectGroupKeys(subjectKey).flatMap(recentSubjectTerms))];
+  }
+  function recentSubjectOptions(opts) {
+    const selected = state.recentFilters.subject;
+    const merged = new Map();
+    for (const option of recentSubjectRawOptions(opts)) {
+      const group = merged.get(option.label);
+      if (!group) merged.set(option.label, { ...option, keys: [option.value] });
+      else {
+        group.keys.push(option.value);
+        // 이미 고른 값(주소·저장소의 raw:기출c 포함)이 이 묶음에 있으면 그 값으로 선택된 줄이 보인다.
+        if (option.value === selected) group.value = selected;
+      }
+    }
+    return [...merged.values()];
+  }
+  function recentSubjectRawOptions({ preserveSelected = true } = {}) {
     const grade = state.recentFilters.grade;
     const values = new Map();
     for (const option of C.subjectProjectionOptions(grade) || [])
@@ -188,7 +235,8 @@
       const [label] = recentSubjectTerms(selected);
       values.set(selected, { value: selected, label: label || selected });
     }
-    return [...values.values()];
+    // 보이는 이름만 정리한다(value는 그대로): 파일 이름에서 온 "기출c" 같은 값은 "기출"로 보인다.
+    return [...values.values()].map((option) => ({ ...option, label: globalThis.ExamDisplayTitle?.displaySubjectOf?.(option.label) ?? option.label }));
   }
   function rememberRecentSubjectOptions(rows) {
     for (const row of rows || []) {
@@ -214,7 +262,7 @@
     state.recentFilters[key] = el.value;
     if (key === "grade") {
       const subjects = recentSubjectOptions({ preserveSelected: false });
-      if (!subjects.some((item) => item.value === state.recentFilters.subject))
+      if (!subjects.some((item) => item.value === state.recentFilters.subject || item.keys?.includes(state.recentFilters.subject)))
         state.recentFilters.subject = "";
       const classes = recentClassOptions();
       if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
@@ -331,7 +379,7 @@
       if (state.recentClassId) params.set("class", state.recentClassId);
       if (state.recentFilters.subject) {
         params.set("subject", state.recentFilters.subject);
-        for (const term of recentSubjectTerms(state.recentFilters.subject))
+        for (const term of recentSubjectGroupTerms(state.recentFilters.subject))
           params.append("subject_term", term);
       }
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
@@ -389,7 +437,7 @@
     const studentRow = (student) => `<div class="recent-row"><span>${esc(student.name)}</span><span>${studentStatus(student)}</span><a href="${esc(studentPreviewUrl(student.student_id))}" target="_blank" rel="noopener">이 출제 확인</a></div>`;
     const pdfRetryPending = V.recentPdfRetryIds.has(assignmentId);
     showDialog(
-      a.exam_title,
+      shownTitle(a.exam_title),
       `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="출제 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="출제 ${esc(a.id)} 시험지·해설·정답">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
   }
@@ -524,6 +572,7 @@
     updateRecentResults,
     recentSubjectTerms,
     recentSubjectOptions,
+    recentSubjectGroupKeys,
     rememberRecentSubjectOptions,
     updateRecentFilterOptions,
     changeRecentFilter,
