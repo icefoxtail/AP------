@@ -186,10 +186,11 @@
             #staging { display: none; }
         }
     </style>
-    <script src="../archive/mathjax_render_loop.js?v=20260912.1"></script>
+    <script src="../archive/render-diagnostics.js?v=20261123-wrong-notice-1"></script>
+    <script src="../archive/mathjax_render_loop.js?v=20261123-one-item-1"></script>
     <script src="../archive/render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="../archive/screen-runtime.js?v=20260913.1"></script>
-    <script src="../archive/common-fast-runtime.js?v=20261106-solution-loading-1"></script>
+    <script src="../archive/common-fast-runtime.js?v=20261123-one-item-1"></script>
     <script src="../archive/equal-slot-engine.js?v=20261121-raster-page"></script>
     <link rel="stylesheet" href="../archive/equal-slot-engine.css?v=20261118-auto-promote-2">
     <script src="../archive/exam-render-executor.js?v=20261118-auto-promote-1"></script>
@@ -1711,6 +1712,7 @@ function cloneQuestionForRender(item) {
     const q = JSON.parse(JSON.stringify(original));
     q._wrongNote = item._wrongNote || '';
     q._examLabel = item.examTitle || '';
+    if (item._diagStudent) q._diagStudent = item._diagStudent;
     q._sourceNo = item.questionNo;
     q._archiveFile = file;
     q._sourceArchiveFile = file;
@@ -1814,6 +1816,16 @@ function makePage(area, type, title, metaLeft, metaRight, pageNumber, extra = {}
     }
     area.appendChild(page);
     return { page, body };
+}
+
+// 수식 오류가 난 문항을 알릴 때 "어느 학생의 몇 번(원본 몇 번)"인지 말할 수 있도록 상자에 번호를 적어 둔다(render-diagnostics.js가 읽는다).
+// 학생마다 번호를 1부터 다시 매기고 시험이 섞이므로 .q-num·source-ref만으로는 식별되지 않는다. 화면·인쇄 모양은 바뀌지 않는다.
+function stampMathDiagnostics(box, q, displayNo) {
+    if (!box?.dataset) return box;
+    box.dataset.apDiagNo = String(displayNo);
+    if (q?._sourceNo != null && q._sourceNo !== '') box.dataset.apDiagSrcNo = String(q._sourceNo);
+    if (q?._diagStudent) box.dataset.apDiagStudent = String(q._diagStudent);
+    return box;
 }
 
 function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
@@ -1978,14 +1990,14 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
     staging.innerHTML = '';
 
     const stagedItems = items.map((q, idx) => {
-        const box = htmlToElement(buildQuestionBoxHTML(q, idx + 1, pageMeta.showWrongNote !== false));
+        const box = stampMathDiagnostics(htmlToElement(buildQuestionBoxHTML(q, idx + 1, pageMeta.showWrongNote !== false)), q, idx + 1);
         staging.appendChild(box);
         return { q, box };
     });
 
     await applyAutoImageSizeClasses(staging);
     if (window.MathJax?.typesetPromise) {
-        try { await MathJax.typesetPromise([staging]); } catch (e) { console.warn(e); }
+        try { await MathJax.typesetPromise([staging]); window.APRenderDiagnostics?.sanitize([staging]); } catch (e) { console.warn(e); }
     }
     await raf();
 
@@ -2113,7 +2125,7 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
         }
 
         if (window.MathJax?.typesetPromise) {
-            try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
+            try { await MathJax.typesetPromise([page.page]); window.APRenderDiagnostics?.sanitize([page.page]); } catch (e) { console.warn(e); }
         }
         await raf();
 
@@ -2124,7 +2136,7 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
             boxes.forEach(box => autoCompress(box));
             await raf();
             if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
+                try { await MathJax.typesetPromise([page.page]); window.APRenderDiagnostics?.sanitize([page.page]); } catch (e) { console.warn(e); }
             }
         }
 
@@ -2141,7 +2153,8 @@ async function renderStudentPages(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _diagStudent: student.studentName || ''
         }));
         await renderMeasuredExamPages(area, items, {
             title: `${student.studentName} 오답`,
@@ -2478,6 +2491,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
         box.dataset.sourceRef = getClinicQuestionSourceRef(q);
+        stampMathDiagnostics(box, q, idx + 1);
         box.dataset.solutionHtml = solutionHtml;
         box.innerHTML = `<div class="q-num">${idx + 1}.</div>
             ${q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : ''}
@@ -2503,7 +2517,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
             chunk.innerHTML = chunkHtml;
             exp.appendChild(chunk);
             if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+                try { await MathJax.typesetPromise([targetCol]); window.APRenderDiagnostics?.sanitize([targetCol]); } catch (e) { console.warn(e); }
             }
             await raf();
             if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
@@ -2517,7 +2531,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
                 targetCol.appendChild(shell);
                 exp.appendChild(chunk);
                 if (window.MathJax?.typesetPromise) {
-                    try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+                    try { await MathJax.typesetPromise([targetCol]); window.APRenderDiagnostics?.sanitize([targetCol]); } catch (e) { console.warn(e); }
                 }
                 await raf();
             }
@@ -2534,7 +2548,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
             targetCol.appendChild(box);
             await applyAutoImageSizeClasses(targetCol);
             if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+                try { await MathJax.typesetPromise([targetCol]); window.APRenderDiagnostics?.sanitize([targetCol]); } catch (e) { console.warn(e); }
             }
             await raf();
             if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
@@ -2542,7 +2556,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
             autoCompress(box);
             await raf();
             if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+                try { await MathJax.typesetPromise([targetCol]); window.APRenderDiagnostics?.sanitize([targetCol]); } catch (e) { console.warn(e); }
             }
             await raf();
             if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
@@ -2609,7 +2623,8 @@ async function renderSol(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _diagStudent: student.studentName || ''
         }));
         await placeSolutionItems(area, items, {
             title: `${student.studentName} 해설지`,
@@ -2818,7 +2833,8 @@ async function renderStudentReviewPacket(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`
+            _wrongNote: `${readableExamLabel(item.examTitle) || '시험'} · 원본 ${item.questionNo}번`,
+            _diagStudent: student.studentName || ''
         }));
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
         const metaRight = payload.createdDate || '';
@@ -2904,7 +2920,7 @@ async function render() {
         }
 
         if (window.MathJax?.typesetPromise) {
-            try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
+            try { await MathJax.typesetPromise([area]); window.APRenderDiagnostics?.sanitize([area]); } catch (e) { console.warn(e); }
         }
         await raf();
         const imageReadiness = await waitForClinicPrintImages(area);
@@ -2913,6 +2929,8 @@ async function render() {
         recordClinicCompositionPromotionGate(area);
         markClinicReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: state.mode });
         markClinicReadiness('RENDER_READY', { mode: state.mode, pages: area.querySelectorAll('.page').length });
+        // 옛 방식(runtime=legacy) 경로도 한 문항의 수식 오류를 표식·진단 배열·알림 띠로 남긴다(빠른 경로는 common-fast-runtime commit이 한다).
+        window.APRenderDiagnostics?.publish(area);
         settleRender({ ok: true, mode: state.mode, pages: area.querySelectorAll('.page').length });
         enableHeaderInlineEdit();
         updateScreenFitScale();
@@ -3162,7 +3180,7 @@ function useSharedExecutor() { return new URLSearchParams(buildContext.input.url
 function wrongExamDeps(meta) {
     const header = { nameLabel: meta.nameLabel || '이름', nameValue: meta.nameValue || '', dateText: meta.dateText || '', subtitleFallback: meta.subtitleFallback || '', recipientId: meta.recipientId || '', sectionId: meta.sectionId || '' };
     return { document, staging: buildContext.stagingHost, qpp: CLINIC_QPP, SE_OVERHEAD_COL, SE_OVERHEAD_GRID, SE_PAGE_TOLERANCE, SE_BLOCK_GAP,
-        buildBox: (q, index) => htmlToElement(buildQuestionBoxHTML(q, index + 1, meta.showWrongNote !== false)),
+        buildBox: (q, index) => stampMathDiagnostics(htmlToElement(buildQuestionBoxHTML(q, index + 1, meta.showWrongNote !== false)), q, index + 1),
         makePage: (area, no) => makePage(area, 'exam', getGroupTitle(meta.title), meta.metaLeft || '', meta.metaRight || '', no, { ...header, headerMode: no <= 1 ? 'full' : 'running' }),
         decorateBody(page, last) { if (last && meta.homeworkCheckHTML) page.body.insertAdjacentHTML('beforeend', meta.homeworkCheckHTML); },
         afterPage(page, last) { if (last && state.mode === 'exam' && !isQrSolutionMode() && meta.solutionQrPayload) injectSolutionQrToPage(page.page, meta.solutionQrPayload); },
@@ -3181,6 +3199,7 @@ function wrongSolutionDeps(meta) {
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
         box.dataset.sourceRef = getClinicQuestionSourceRef(q);
+        stampMathDiagnostics(box, q, idx + 1);
         box.dataset.solutionHtml = solutionHtml;
         box.innerHTML = `<div class="q-num">${idx + 1}.</div>
             ${q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : ''}
