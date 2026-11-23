@@ -67,6 +67,9 @@ export function isTextBoundDraft(request) {
 // 이유: 시험지 수정 프로토콜(최소 수정)로 운영 시험지가 고쳐질 때마다 등록 전 요청이 헛거절되었다. 등록기·PR 미리 검증·소비자 게이트가 같이 쓴다.
 export function sourceTextUnchangedSinceRequest({ root, request, sourceBytes }) {
   const g = request?.gemini;
+  // A reviewed correction carries evidence made on one exact source edition, so it keeps the whole-file blob binding
+  // (same as isTextBoundDraft, which also excludes it). All three callers (registrar, PR preview, consumer gate) go through here.
+  if (request?.reviewedCorrection) return { ok: false, reason: "reviewed correction keeps the exact blob binding" };
   if (!g || !Array.isArray(g.items) || !g.items.length) return { ok: false, reason: "no items" };
   const ordinals = g.items.map(item => item.ordinal);
   return reviewedSourceTextUnchanged({ root, expectedBlobSha1: g.latestBlobSha, currentBytes: sourceBytes, ordinals });

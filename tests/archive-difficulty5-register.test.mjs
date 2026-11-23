@@ -217,6 +217,28 @@ test("a source edited after the request was made is accepted when the stem and c
   assert.equal(sourceTextUnchangedSinceRequest({ root, request: { gemini: { ...request.gemini, latestBlobSha: "0".repeat(40) } }, sourceBytes }).ok, false);
 });
 
+test("registrar end to end: an exam solution edited after the request is accepted, a stem edit and a reviewed correction keep the blob refusal", t => {
+  const x = make(t);
+  const git = (...args) => execFileSync("git", args, { cwd: x.root, encoding: "utf8" });
+  const examFile = path.join(x.root, "archive/exams", SOURCE);
+  const original = sourceBytes.toString("utf8").replace(/\r\n/g, "\n");
+  fs.writeFileSync(examFile, original);
+  git("init", "-q"); git("config", "user.email", "t@example.invalid"); git("config", "user.name", "t");
+  git("add", "-A"); git("commit", "-qm", "request time");
+  const g = structuredClone(gemini); g.latestBlobSha = git("rev-parse", "HEAD:archive/exams/" + SOURCE).trim();
+  assert.equal(registerDifficulty5({ root: x.root, request: x.req(g) }).summary.APPLY, 23, "unchanged source");
+  // solution-only edit after the request: stem and choices unchanged, so the request still applies
+  fs.writeFileSync(examFile, original.replace(/("solution": ")/, "$1(수정) "));
+  assert.equal(registerDifficulty5({ root: x.root, request: x.req(g) }).summary.APPLY, 23, "solution edit accepted");
+  // stem edit of a requested question: the grade belongs to another problem
+  fs.writeFileSync(examFile, original.replace(/("content": ")/, "$1(조건 추가) "));
+  assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g) }), /blob drift/);
+  // a reviewed correction keeps the exact whole-file blob binding even for a solution-only edit
+  fs.writeFileSync(examFile, original.replace(/("solution": ")/, "$1(수정) "));
+  const bytes = fs.readFileSync(examFile);
+  assert.equal(sourceTextUnchangedSinceRequest({ root: x.root, request: { ...x.req(g), reviewedCorrection: {} }, sourceBytes: bytes }).ok, false);
+});
+
 test("examData.questions is accepted as the source bank without relaxing identity guards", t => {
   const nestedSource = Buffer.from("window.examData = { questions: new Array(23) };\n", "utf8");
   const blobSha = crypto.createHash("sha1").update("blob " + nestedSource.length + "\0").update(nestedSource).digest("hex");

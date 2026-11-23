@@ -389,15 +389,21 @@ function findMetaPipelineRuntime(consumer, unit, row, resolved) {
 // The official registrar owns normalization and reviewed-correction authority. A D5
 // Consumer claim first replays that exact read-only kernel against current canonical
 // metadata/identity/source. No source tag or semantic approval is changed here.
+// The whole-file blob differs from the one the request was made on AND neither exception explains it:
+// - a text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+//   whole-file blob is not a mismatch (the registrar's own per-item fingerprint check already ran);
+// - otherwise the requested questions' stem+choices (text-v1) may be unchanged since the request's blob (sourceTextUnchangedSinceRequest).
+function sourceBlobDriftUnexplained(root, unit, proof) {
+  if (proof.sourceBlobSha === unit.expectedBlob || unit.textBoundDraft) return false;
+  const sourceBytes = fs.readFileSync(path.join(root, "archive/exams", unit.sourceFile));
+  return !sourceTextUnchangedSinceRequest({ root, request: unit.request, sourceBytes }).ok;
+}
+
 function verifiedDifficultyRows(root, unit, consumer) {
   const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
   if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
       proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
-      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
-      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
-      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
-      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
-      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft && !sourceTextUnchangedSinceRequest({ root, request: unit.request, sourceBytes: fs.readFileSync(path.join(root, "archive/exams", unit.sourceFile)) }).ok) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      sourceBlobDriftUnexplained(root, unit, proof) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
       proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
       proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
       proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||

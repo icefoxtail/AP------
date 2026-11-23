@@ -371,21 +371,30 @@ function reportQualityAdvisory(rows) {
     process.stdout.write(`  ${ref} ${codes.join(',')}\n`);
   }
   if (refs.length > 50) process.stdout.write(`  ... ${refs.length - 50} more\n`);
+  process.stdout.write('  (full list of every SVG in the repository: node archive/tools/build-svg-accessibility-index.cjs --quality-report <out.tsv|out.json>)\n');
 }
 
 if (require.main === module) {
   try {
     const args = process.argv.slice(2);
     const options = {};
+    let qualityReportPath = null;
     for (let i = 0; i < args.length; i++) {
-      if (args[i] === '--expected-source-index' && args[i + 1]) options.expectedSourceIndexPath = path.resolve(args[++i]);
+      if (args[i] === '--quality-report' && args[i + 1]) qualityReportPath = path.resolve(args[++i]);
+      else if (args[i] === '--expected-source-index' && args[i + 1]) options.expectedSourceIndexPath = path.resolve(args[++i]);
       else if (args[i] === '--base' && args[i + 1]) options.baseRef = args[++i];
       else if (args[i] === '--check') options.check = true;
       else fail('INVALID_SVG_ACCESSIBILITY_COMPILER_ARGUMENT', args[i]);
     }
-    const report = compileManifest(options);
-    reportQualityAdvisory(report.qualityAdvisory);
-    process.stdout.write(`SVG_ACCESSIBILITY_INDEX_BUILT records=${report.recordCount} sourceIndexSha256=${report.sourceIndexSha256} scope=${report.scopeMode || 'UNKNOWN'} base=${report.baseRef || 'none'} output=${report.outputPath}\n`);
+    if (qualityReportPath) {
+      // 목록만 쓴다: 색인은 쓰지 않고, 차단하지 않고, 성공으로 끝난다.
+      const result = require('./svg-quality-report.cjs').writeQualityReport({ outPath: qualityReportPath });
+      process.stdout.write(`SVG_QUALITY_REPORT scanned=${result.scanned} flagged=${result.flagged} counts=${JSON.stringify(result.countsByCode)} elapsedMs=${result.elapsedMs} output=${result.outPath}\n`);
+    } else {
+      const report = compileManifest(options);
+      reportQualityAdvisory(report.qualityAdvisory);
+      process.stdout.write(`SVG_ACCESSIBILITY_INDEX_BUILT records=${report.recordCount} sourceIndexSha256=${report.sourceIndexSha256} scope=${report.scopeMode || 'UNKNOWN'} base=${report.baseRef || 'none'} output=${report.outputPath}\n`);
+    }
   } catch (error) {
     process.stderr.write(`${error && error.message ? error.message : error}\n`);
     process.exitCode = 1;
