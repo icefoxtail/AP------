@@ -147,7 +147,8 @@
     }
     return [kind, src.publisher].filter(Boolean).join(" ");
   }
-  const baseTitleOf = (dlg) => dlg.baseTitle || "기준 시험지";
+  // 옛 출제 행의 시험 이름이 내부 키여도 새 문제지 제목에는 한글 제목이 들어간다(저장되는 제목이기 때문).
+  const baseTitleOf = (dlg) => (window.ExamDisplayTitle?.displayTitleOf?.(dlg.baseTitle || "") || dlg.baseTitle) || "기준 시험지";
 
   // ---- 진입 ----
   function openDialog(dlg) {

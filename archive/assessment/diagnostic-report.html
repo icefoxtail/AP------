@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap">
-  <link rel="stylesheet" href="diagnostic-report.css?v=20261122-ui-quick-4">
+  <link rel="stylesheet" href="diagnostic-report.css?v=20261123-diag-default-ok-3">
   <!-- 이 파일의 주소(src·href)는 모두 이 파일(assessment/) 위치 기준이다. 자료 읽기 길(data/…)은 document.baseURI를 archive/ 기준으로 읽으므로
        base 태그 대신 그 주소만 한 칸 위(archive/)로 맞춘다. 다른 스크립트보다 먼저 실행돼야 한다. -->
   <script>Object.defineProperty(document, "baseURI", { value: new URL("../", location.href).href });</script>
@@ -24,14 +24,14 @@
   <script defer src="../archive2-key-resolver.js"></script>
   <script defer src="../archive2-snapshot.js?v=20261123-snapshot-1"></script>
   <script defer src="../meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
-  <script defer src="diagnostic-report-data.js?v=20261120-diag-report-4"></script>
+  <script defer src="diagnostic-report-data.js?v=20261123-diag-default-ok-3"></script>
   <script defer src="diagnostic-report-view.js?v=20261122-ui-quick-4"></script>
-  <script defer src="diagnostic-report.js?v=20261122-ui-quick-4"></script>
+  <script defer src="diagnostic-report.js?v=20261123-diag-default-ok-3"></script>
 </head>
 <body>
   <header class="topbar screen-only">
     <div>
-      <div><strong>진단평가 결과표</strong> <span class="hint">O/X를 모두 입력하면 A4 2쪽 결과지가 만들어집니다. 입력한 값은 저장되지 않고, 새로고침하면 사라집니다.</span></div>
+      <div><strong>진단평가 결과표</strong> <span class="hint">처음에는 모두 정답(O)입니다. 틀린 문항만 X로 바꾸고 ‘결과표 만들기’를 누르면 A4 2쪽 결과지가 만들어집니다. 입력한 값은 저장되지 않고, 새로고침하면 사라집니다.</span></div>
       <button class="btn" type="button" id="printBtn" disabled>인쇄</button>
     </div>
   </header>
@@ -47,10 +47,19 @@
       </div>
       <div>
         <h2>문항별 정오</h2>
-        <p class="sub">번호가 클수록 어려운 문항입니다. 맞으면 O, 틀리면 X를 누르세요.</p>
+        <p class="sub">번호가 클수록 어려운 문항입니다. 처음에는 모두 정답(O)이니, 틀린 문항만 X를 누르세요. 다시 누르면 O로 돌아갑니다.</p>
       </div>
       <p class="progress" id="progress" role="status" aria-live="polite"></p>
-      <div class="actions"><button class="btn line" type="button" id="clearBtn" disabled>정오 모두 지우기</button></div>
+      <div class="wrongline">
+        <label for="inWrong">틀린 번호로 한 번에 입력</label>
+        <div class="row"><input id="inWrong" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="예: 3 7 12 15"><button class="btn line" type="button" id="wrongBtn">적용</button></div>
+        <p class="sub" id="wrongMsg" role="status" aria-live="polite">적으면 그 번호만 X, 나머지는 모두 O가 됩니다.</p>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="confirmBtn" disabled>결과표 만들기</button>
+        <button class="btn line" type="button" id="allOkBtn">모두 정답으로</button>
+        <button class="btn line" type="button" id="clearBtn" disabled>정오 모두 지우기 (미입력으로)</button>
+      </div>
       <div class="qlist" id="qlist"></div>
     </aside>
 

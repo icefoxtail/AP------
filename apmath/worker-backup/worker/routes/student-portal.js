@@ -16,6 +16,16 @@ import { saveAssessmentResultItems } from '../helpers/assessment-result-items.js
 import { buildStudentClinicLineage, unavailableClinicLineage } from '../helpers/clinic-provenance.js';
 import { loadStudentLearningHistory } from '../helpers/student-learning-history.js';
 
+import {
+  SELF_STUDY_KINDS,
+  SELF_STUDY_MAX_BODY_BYTES,
+  listSelfStudySetsForStudent,
+  normalizeSelfStudyItems,
+  selfStudyTableExists,
+  selfStudyUnavailableBody,
+  upsertSelfStudySet,
+} from '../helpers/student-self-study.js';
+
 const columnCacheByEnv = new WeakMap();
 
 function sleep(ms) {
@@ -100,6 +110,37 @@ async function verifyTeacherPreviewAssignmentClassAccess(env, teacher, accessMod
 async function teacherPreviewAllowedClassIds(env, teacher, accessMode) {
   if (accessMode !== 'teacher_preview') return null;
   return await getAllowedClassIds(env, teacher);
+}
+
+// The assignment row only when it is this student's own: a recipient (or class
+// member before the recipient snapshot existed), not excluded, not cancelled.
+// Shared by omr-submit and self-study so both accept exactly the same papers.
+async function findStudentOwnAssignment(env, studentId, assignmentId) {
+  const hasExclusions = await hasClassExamAssignmentExclusions(env);
+  const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+  const cancellationFilter = await hasClassExamAssignmentCancellationAt(env)
+    ? 'AND cea.cancelled_at IS NULL'
+    : '';
+  const exclusionFilter = hasExclusions
+    ? `AND NOT EXISTS (
+        SELECT 1
+        FROM class_exam_assignment_exclusions ex
+        WHERE ex.assignment_id = cea.id
+          AND ex.student_id = ?
+      )`
+    : '';
+  return await env.DB.prepare(`
+    SELECT cea.*, c.name AS class_name
+    FROM class_exam_assignments cea
+    ${recipientSnapshotExists
+      ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id AND ar.student_id = ?'
+      : 'JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?'}
+    LEFT JOIN classes c ON c.id = cea.class_id
+    WHERE cea.id = ?
+      ${exclusionFilter}
+      ${cancellationFilter}
+    LIMIT 1
+  `).bind(...(hasExclusions ? [studentId, assignmentId, studentId] : [studentId, assignmentId])).first();
 }
 
 async function getTableColumnSet(env, tableName) {
@@ -235,7 +276,19 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     ...(classScope || []),
     ...(exactAssignmentId ? [] : [safeLimit])
   ];
-  const [assignments, sessions] = await Promise.all([
+  // exam_sessions has no wrong_ids column: the wrong numbers live in wrong_answers (one row per wrong position, written by omr-submit).
+  // One read-only join for this student's sessions (both ids must be the student), never one query per exam. A failed read is
+  // reported as "unknown" (wrong_ids: null) instead of "no wrong answers".
+  const wrongRowsPromise = env.DB.prepare(`
+    SELECT wa.session_id AS session_id, wa.question_id AS question_id
+    FROM wrong_answers wa
+    JOIN exam_sessions es ON es.id = wa.session_id
+    WHERE es.student_id = ?
+      AND wa.student_id = ?
+      ${exactAssignmentId ? 'AND es.assignment_id = ?' : ''}
+  `).bind(...(exactAssignmentId ? [studentId, studentId, exactAssignmentId] : [studentId, studentId])).all()
+    .then(result => result.results || [], () => null);
+  const [assignments, sessions, wrongRows] = await Promise.all([
     env.DB.prepare(`
       WITH scoped_assignments AS (
         SELECT
@@ -271,8 +324,15 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
         ${exactAssignmentId ? 'AND assignment_id = ?' : ''}
       ORDER BY exam_date DESC, updated_at DESC
       ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT 300'}
-    `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all()
+    `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all(),
+    wrongRowsPromise
   ]);
+  const wrongBySession = new Map();
+  (wrongRows || []).forEach(row => {
+    const key = String(row.session_id || '');
+    if (!wrongBySession.has(key)) wrongBySession.set(key, []);
+    wrongBySession.get(key).push(row.question_id);
+  });
 
   const sessionByAssignment = new Map();
   const sessionByExam = new Map();
@@ -338,7 +398,9 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
       session_id: session?.id || null,
       score: session?.score ?? null,
       submitted_at: session?.updated_at || session?.created_at || null,
-      wrong_ids: normalizeWrongIds(session?.wrong_ids || [], Number(row.question_count || session?.question_count || 0))
+      wrong_ids: wrongRows === null && session
+        ? null
+        : normalizeWrongIds(session ? wrongBySession.get(String(session.id || '')) || [] : [], Number(row.question_count || session?.question_count || 0))
     };
   });
 }
@@ -625,6 +687,71 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     return jsonResponse({ success: true, packet });
   }
 
+  // 자습 기록: 학생이 스스로 푼 "오답 다시 풀기"/"유사 문항" 결과. 원 시험 기록은 건드리지 않는다.
+  if (method === 'POST' && id === 'self-study') {
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).length > SELF_STUDY_MAX_BODY_BYTES) {
+      return jsonResponse({ ok: false, success: false, message: '요청이 너무 큽니다.' }, 400);
+    }
+    let d = null;
+    try { d = JSON.parse(raw); } catch { d = null; }
+    if (!d || typeof d !== 'object' || Array.isArray(d)) {
+      return jsonResponse({ ok: false, success: false, message: '요청 형식이 올바르지 않습니다.' }, 400);
+    }
+    const verified = await verifyStudentPortalSession(
+      env, String(d.student_id || '').trim(), String(d.student_token || '').trim(),
+    );
+    if (verified.error) return verified.error;
+
+    const assignmentId = String(d.assignment_id || '').trim();
+    const kind = String(d.kind || '');
+    if (!assignmentId) return jsonResponse({ ok: false, success: false, message: 'assignment_id required' }, 400);
+    if (!SELF_STUDY_KINDS.includes(kind)) {
+      return jsonResponse({ ok: false, success: false, message: 'kind는 wrong 또는 similar 이어야 합니다.' }, 400);
+    }
+    const normalized = normalizeSelfStudyItems(d.items, new Date().toISOString());
+    if (normalized.error) return jsonResponse({ ok: false, success: false, message: normalized.error }, 400);
+
+    if (!(await selfStudyTableExists(env))) return jsonResponse(selfStudyUnavailableBody());
+
+    const assignment = await findStudentOwnAssignment(env, verified.student.id, assignmentId);
+    if (!assignment) return jsonResponse({ ok: false, success: false, message: '시험지를 찾을 수 없습니다.' }, 404);
+
+    const saved = await upsertSelfStudySet(env, {
+      studentId: verified.student.id,
+      assignmentId,
+      kind,
+      classId: String(assignment.class_id || '') || null,
+      items: normalized.items,
+    });
+    if (saved.error) return jsonResponse({ ok: false, success: false, message: saved.error }, 400);
+    return jsonResponse({ ok: true, success: true, set: saved.set });
+  }
+
+  if (method === 'GET' && id === 'self-study') {
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+    const studentToken = pickStudentPortalToken(url, request);
+    const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken);
+    if (verified.error) return verified.error;
+
+    const assignmentId = String(url.searchParams.get('assignment_id') || '').trim();
+    const classAccess = await verifyTeacherPreviewAssignmentClassAccess(
+      env, teacher, verified.accessMode, assignmentId,
+    );
+    if (classAccess?.error) return classAccess.error;
+    if (!(await selfStudyTableExists(env))) return jsonResponse(selfStudyUnavailableBody());
+
+    const classScope = await teacherPreviewAllowedClassIds(env, teacher, verified.accessMode);
+    const sets = await listSelfStudySetsForStudent(env, verified.student.id, { assignmentId, classScope });
+    return jsonResponse({
+      ok: true,
+      success: true,
+      access_mode: verified.accessMode,
+      read_only: verified.readOnly,
+      sets,
+    });
+  }
+
   if (method === 'POST' && id === 'omr-submit') {
     const d = await request.json();
     const studentId = String(d.student_id || '').trim();
@@ -637,31 +764,7 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       return jsonResponse({ success: false, message: 'assignment_id required' }, 400);
     }
 
-    const hasExclusions = await hasClassExamAssignmentExclusions(env);
-    const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
-    const cancellationFilter = await hasClassExamAssignmentCancellationAt(env)
-      ? 'AND cea.cancelled_at IS NULL'
-      : '';
-    const exclusionFilter = hasExclusions
-      ? `AND NOT EXISTS (
-          SELECT 1
-          FROM class_exam_assignment_exclusions ex
-          WHERE ex.assignment_id = cea.id
-            AND ex.student_id = ?
-        )`
-      : '';
-    const assignment = await env.DB.prepare(`
-      SELECT cea.*, c.name AS class_name
-      FROM class_exam_assignments cea
-      ${recipientSnapshotExists
-        ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id AND ar.student_id = ?'
-        : 'JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?'}
-      LEFT JOIN classes c ON c.id = cea.class_id
-      WHERE cea.id = ?
-        ${exclusionFilter}
-        ${cancellationFilter}
-      LIMIT 1
-    `).bind(...(hasExclusions ? [verified.student.id, assignmentId, verified.student.id] : [verified.student.id, assignmentId])).first();
+    const assignment = await findStudentOwnAssignment(env, verified.student.id, assignmentId);
 
     if (!assignment) {
       return jsonResponse({ success: false, message: '시험지를 찾을 수 없습니다.' }, 404);

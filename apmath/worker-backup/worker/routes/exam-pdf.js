@@ -1,5 +1,6 @@
 import puppeteer from '@cloudflare/puppeteer';
 import outputContract from '../../../../archive/archive2-output-contract.js';
+import examDisplayTitle from '../../../../archive/exam-display-title.js';
 
 const PDF_RENDER_REVISION = 'exam-pdf-question-number-dedupe-v1-20261120';
 const DEFAULT_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive';
@@ -280,8 +281,21 @@ export async function ensureAssignmentPdf(env, assignment, options = {}) {
     .bind(assignment.id).first();
 }
 
+// 파일 이름은 보이는 한글 제목이다: 저장된 exam_title이 내부 키(영문 snake_case, 파일 이름 잎, unitpast_ 키)면 풀어 쓴다.
+// 저장된 값(exam_title)은 바꾸지 않는다. 사람이 읽는 제목은 그대로 쓴다.
+function readableDownloadTitle(assignment) {
+  const archive = String(assignment?.archive_file || '').trim();
+  const fromArchive = archive && !/^MIXED:/i.test(archive) ? examDisplayTitle.displayTitleOf(archive) : '';
+  return examDisplayTitle.displayTitleOf(assignment?.exam_title || '', { hint: fromArchive, fallback: fromArchive || '시험지' }) || '시험지';
+}
+
+// RFC 5987 filename*: encodeURIComponent가 남기는 ' ( ) * 도 인코딩한다.
+function encodeContentDispositionName(filename) {
+  return encodeURIComponent(filename).replace(/['()*]/g, ch => '%' + ch.charCodeAt(0).toString(16).toUpperCase());
+}
+
 function safeDownloadName(assignment) {
-  const title = cleanText(assignment?.exam_title || '시험지', 100)
+  const title = cleanText(readableDownloadTitle(assignment), 100)
     .replace(/[\\/:*?"<>|\u0000-\u001f]/g, '_')
     .replace(/\s+/g, ' ')
     .trim() || '시험지';
@@ -303,7 +317,7 @@ export async function createAssignmentPdfDownloadResponse(env, assignment) {
   const headers = new Headers();
   object.writeHttpMetadata(headers);
   headers.set('Content-Type', 'application/pdf');
-  headers.set('Content-Disposition', `attachment; filename="exam.pdf"; filename*=UTF-8''${encodeURIComponent(filename)}`);
+  headers.set('Content-Disposition', `attachment; filename="exam.pdf"; filename*=UTF-8''${encodeContentDispositionName(filename)}`);
   headers.set('Cache-Control', 'private, max-age=60');
   headers.set('ETag', object.httpEtag);
   headers.set('X-Content-Type-Options', 'nosniff');

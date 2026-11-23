@@ -140,7 +140,7 @@ window.questionBank = [
     "id": 4,
     "questionNumber": 4,
     "questionType": "객관식",
-    "content": "4. 모집단이 정규분포를 따를 때, 표본평균 $\\overline{X}$가 가지는 값은 $1, 2, 3, 4, 5$이고, $\\overline{X}$의 확률분포표는 다음과 같다.<br><br><table class=\"exam-table\"><tr><td colspan=\"7\">&lt;$\\overline{X}$의 확률분포표&gt;</td></tr><tr><td>$\\overline{X}$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>합계</td></tr><tr><td>$P(\\overline{X}=\\overline{x})$</td><td>$\\dfrac{1}{9}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{3}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{9}$</td><td>$1$</td></tr></table><br>이때, 모집단의 평균 $m$과 분산 $\\mathrm{V}(\\overline{X})$를 구하여 곱하면? [4.1점]",
+    "content": "4. 어떤 모집단에서 임의추출한 표본의 표본평균 $\\overline{X}$가 가지는 값은 $1, 2, 3, 4, 5$이고, $\\overline{X}$의 확률분포표는 다음과 같다.<br><br><table class=\"exam-table\"><tr><td colspan=\"7\">&lt;$\\overline{X}$의 확률분포표&gt;</td></tr><tr><td>$\\overline{X}$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>합계</td></tr><tr><td>$P(\\overline{X}=\\overline{x})$</td><td>$\\dfrac{1}{9}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{3}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{9}$</td><td>$1$</td></tr></table><br>이때, 모집단의 평균 $m$과 분산 $\\mathrm{V}(\\overline{X})$를 구하여 곱하면? [4.1점]",
     "choices": [
       "$8$",
       "$7$",
@@ -283,7 +283,7 @@ window.questionBank = [
     "id": 7,
     "questionNumber": 7,
     "questionType": "객관식",
-    "content": "7. 어느 과수원에서 생산된 유자의 무게는 모평균이 $m\\,\\mathrm{g}$, 모표준편차가 $16\\,\\mathrm{g}$인 정규분포를 따른다고 한다. 이 과수원에서 생산된 유자 $n$개를 임의추출하여 신뢰도 $99\\%$로 추정한 모평균 $m$의 신뢰구간이 $165.5\\,\\mathrm{g}$ 이상 $171.5\\,\\mathrm{g}$ 이하 일 때, 다음 표준정규분포표의 값을 이용하여 $n$의 값을 구하면? [4.3점]<br><br><table class=\"exam-table\"><tr><td>$z$</td><td>$1.0$</td><td>$1.5$</td><td>$2.0$</td><td>$2.5$</td><td>$3.0$</td></tr><tr><td>$P(0 \\le Z \\le z)$</td><td>$0.340$</td><td>$0.430$</td><td>$0.475$</td><td>$0.490$</td><td>$0.495$</td></tr></table>",
+    "content": "7. 어느 과수원에서 생산된 유자의 무게는 모평균이 $m\\,\\mathrm{g}$, 모표준편차가 $16\\,\\mathrm{g}$인 정규분포를 따른다고 한다. 이 과수원에서 생산된 유자 $n$개를 임의추출하여 신뢰도 $99\\%$로 추정한 모평균 $m$의 신뢰구간이 $165.5\\,\\mathrm{g}$ 이상 $171.5\\,\\mathrm{g}$ 이하 일 때, 다음 표의 값으로 계산하여 $n$의 값을 구하면? [4.3점]<br><br><table class=\"exam-table\"><tr><td>$z$</td><td>$1.0$</td><td>$1.5$</td><td>$2.0$</td><td>$2.5$</td><td>$3.0$</td></tr><tr><td>$P(0 \\le Z \\le z)$</td><td>$0.340$</td><td>$0.430$</td><td>$0.475$</td><td>$0.490$</td><td>$0.495$</td></tr></table>",
     "choices": [
       "$16$",
       "$64$",

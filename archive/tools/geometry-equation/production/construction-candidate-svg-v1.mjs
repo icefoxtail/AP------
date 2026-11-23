@@ -71,7 +71,7 @@ function checkPolicy(policy){
   if(![baseFontPx,displayScale,fontFloorCssPx].every(finite))bad('NON_FINITE');
   // The typesetter rejects fonts below 11 and a non-positive scale has no display size.
   if(displayScale<=0||baseFontPx<11||fontFloorCssPx<11)bad('RANGE');
-  if(baseFontPx*displayScale<fontFloorCssPx)bad('FONT_BELOW_FLOOR');
+  // 2026-11-23 (owner): the DISPLAYED font (baseFontPx*displayScale) is no longer required to reach fontFloorCssPx ("students zoom in"); the authored font above (>= 11) is. The rendered layout lists such labels as displayTextBelow11px.
 }
 
 // The identity must be exactly what contracts.mjs assetIdentity() derives from its own questionUid, surface and visualRole.
@@ -301,7 +301,8 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     finally{await renderPage.close();}
     // The record binds the analysis to the bytes it analysed.
     lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout','OUTPUT_NOT_CANONICAL');
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    // displayTextBelow11px* exist only when a label displays under 11 CSS px (information since 2026-11-23, not a failure)
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS'||softStop)noteCandidate({site:'figure',svg:svg,violations:[...softViolations,...(layout.violations??[])],errors:[...softViolations.map(v=>v.code+(v.id?':'+v.id:'')),...(layout.errors??[])]});
     if(softStop)throw softStop;
     if(layout.status!=='PASS')throw new Stop('RENDERED_LAYOUT_FAIL',{errors:layout.errors});

@@ -1291,7 +1291,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS')noteCandidate({site:'figure',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS')throw new Stop('SET_DIAGRAM_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;

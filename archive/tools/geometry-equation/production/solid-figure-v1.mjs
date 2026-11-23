@@ -3439,7 +3439,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}),{textFreeFigure:spec.labels.length===0});}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
-    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    state.renderedLayout={status:layout.status,display,errors:layout.errors,...(layout.displayTextBelow11px?{displayTextBelow11px:true,displayTextBelow11pxLabelCount:layout.displayTextBelow11pxLabelCount}:{})};
     if(layout.status!=='PASS')noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS')throw new Stop('SOLID_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
