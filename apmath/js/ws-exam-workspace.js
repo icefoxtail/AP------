@@ -155,6 +155,15 @@ function wsxWrongChip(session, qid) {
     return `<span class="wsx-chip">Q${wsxEsc(qid)}${unit ? ` · ${wsxEsc(unit)}` : ''}</span>`;
 }
 
+// 학부모 상담용 한 장(archive/assessment/counsel-report.html)으로 가는 링크. 제출한 학생의 출제(assignment_id)가 있을 때만 단다.
+// 주소에는 내부 id만 둔다(학생 이름은 두지 않는다). 교사 로그인은 같은 사이트의 세션을 보관함이 읽는다.
+function wsxCounselLink(row) {
+    const assignmentId = row && row.session ? String(row.session.assignment_id || '') : '';
+    if (!assignmentId || !wsx || !wsx.classId) return '';
+    const query = `class=${encodeURIComponent(wsx.classId)}&assignment=${encodeURIComponent(assignmentId)}&student=${encodeURIComponent(row.sid)}`;
+    return `<a class="wsx-counsel-link" href="../archive/assessment/counsel-report.html?${query}" target="_blank" rel="noopener">상담지</a>`;
+}
+
 function wsxWeakUnitsHtml(detail) {
     const items = wsExamWeakUnits(wsx.source, detail);
     if (!items.length) return '<div class="wsx-weak__empty">오답 단원 데이터 없음</div>';
@@ -229,7 +238,7 @@ function wsxStudentsHtml(detail) {
         const sess = r.session;
         const chips = r.pending ? '' : (r.wrongs.length
             ? r.wrongs.map(qid => wsxWrongChip(sess, qid)).join('')
-            : '<span class="wsx-student__none">오답 없음</span>');
+            : '<span class="wsx-student__none">오답 없음</span>') + wsxCounselLink(r);
         return `<div class="wsx-student${open ? ' is-open' : ''}" data-sid="${wsxEsc(r.sid)}" data-pending="${r.pending ? 1 : 0}">
             <div class="wsx-student__row">
                 <span class="wsx-student__name">${wsxEsc(r.name)}</span>

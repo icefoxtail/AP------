@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>시험 결과 상담지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+  <link rel="stylesheet" href="counsel-report.css?v=20261123-counsel-r1">
+  <!-- 로그인(교사 세션)은 보관함이 공유하는 읽기 전용 세션을 쓴다. 유형 이름표(키 해석기)는 진단평가 결과표와 같은 것이다.
+       학생 이름·결과는 어디에도 저장하지 않는다(title·주소·localStorage 모두). -->
+  <script src="../archive-session.js"></script>
+  <script defer src="../archive2-session.js?v=20261119-small-fixes-1"></script>
+  <script defer src="../archive2-key-resolver.js"></script>
+  <script defer src="diagnostic-report-data.js?v=20261120-diag-report-4"></script>
+  <script defer src="diagnostic-report-view.js?v=20261122-ui-quick-4"></script>
+  <script defer src="counsel-report-data.js?v=20261123-counsel-r1"></script>
+  <script defer src="counsel-report-view.js?v=20261123-counsel-r1"></script>
+  <script defer src="counsel-report.js?v=20261123-counsel-r1"></script>
+</head>
+<body>
+  <header class="topbar screen-only">
+    <div>
+      <strong>시험 결과 상담지</strong>
+      <button class="btn" type="button" id="printBtn" disabled>인쇄</button>
+    </div>
+  </header>
+  <main class="page">
+    <p class="state screen-only" id="state" role="status" aria-live="polite">불러오는 중입니다.</p>
+    <div class="sheetbox" id="sheetbox" hidden>
+      <article class="sheet" id="sheet" aria-label="시험 결과 상담지"></article>
+    </div>
+  </main>
+</body>
+</html>
