@@ -455,3 +455,11 @@ body[data-student-view="omr-list"] .student-shell { gap: 12px; }
 .ss-q .choice-text { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .omr-card-actions:has(.self-study-open) .score-open { background: transparent; border-color: var(--control-border); color: var(--text); }
 .omr-card-actions:has(.self-study-open) .score-open:hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
+.self-study-row { grid-column: 1 / -1; order: -3; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.self-study-row.has-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.self-study-row .self-study-open { grid-column: auto; order: 0; min-width: 0; padding-inline: 8px; white-space: normal; line-height: 1.3; }
+.ss-next { min-height: 48px; font-size: 15px; }
+.similar-all { margin-top: 6px; border-top: 1px solid var(--border-soft); }
+.similar-all > summary { min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--secondary); list-style: none; }
+.similar-all > summary::-webkit-details-marker { display: none; }
+.similar-all .similar-entry { margin-top: 0; border-top: 0; padding-top: 0; }
