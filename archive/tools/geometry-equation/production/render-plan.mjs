@@ -31,6 +31,8 @@ import {observeDisplayedPointNames,planNameExpectations} from './point-name-obse
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
 import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
+import {resetCandidate,takeCandidate} from './score-candidate.mjs';
+import {scoreFigure} from '../ops/score/score.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -67,9 +69,26 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   const startedAt=Date.now(),log=createAttemptLog({outDir,item:name,invocation:tag,planSha256:planDigest(planInput)});
   const attemptVariant=suffix=>suffix?String(suffix).replace(/^-/,''):(row.fallback?.length?row.fallback[row.fallback.length-1].to:'initial');
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
+  resetCandidate();
+  // Score gate (ops/score): a failure that left a composed candidate SVG gets the candidate file, every violation the observers measured and a score.
+  // Only a failure carries these fields, so a figure that passes is written exactly as before. scoreGate.status SCORED_PASS (>= passScore, no block) marks a candidate the gate accepts; the status above stays FAILED.
+  const PANEL_FLOWS=new Set(['composite-panels-v1',chain.CHAIN_CAPABILITY,nlf.FIGURE_CAPABILITY,sol.SOLID_CAPABILITY]);
+  const candidateRecord=()=>{
+    if(row.status!=='FAILED')return {};
+    const cand=takeCandidate();
+    if(!cand||!cand.violations?.length)return {};
+    // one-capability figures take the figure-level candidate; panel flows (composite, chain, number line, solid) only the composite's own
+    if(PANEL_FLOWS.has(row.capability)?cand.site!=='composite':cand.site==='composite')return {};
+    // the candidate must be the one of THIS failure: its first violation is named in the failure detail
+    const first=cand.errors[0];if(first&&!String(row.detailFull??row.detail??'').includes(String(first).split(':')[0]))return {};
+    const file=`${name}-candidate.svg`;write(file,cand.svg);
+    const scored=scoreFigure({findings:cand.violations.map(v=>({code:v.code,id:v.id,degree:v.degree})),hasSvg:true});
+    const status=scored.verdict==='PASS'?'SCORED_PASS':scored.verdict;
+    return {candidate:{file,svgSha256:'sha256:'+crypto.createHash('sha256').update(cand.svg).digest('hex')},violations:cand.violations,scoreGate:{status,score:scored.score,passScore:scored.passScore,tableVersion:scored.tableVersion,deductions:scored.findings,...(scored.blockReason?{blockReason:scored.blockReason}:{})}};
+  };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord()};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;

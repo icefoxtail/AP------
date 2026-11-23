@@ -429,6 +429,7 @@ def expand_callouts(p,elements,inverse,errors,observations):
 
 def audit(p):
     root=ET.fromstring(p['svg']);errors=[];observations=[]
+    violation_degrees={}   # score gate: how far past its limit a finding was (output only; no check reads it)
     model=p['transform'];ox,oy,sx,sy=[model[k] for k in ('originX','originY','sx','sy')]
     if not all(math.isfinite(v) for v in (ox,oy,sx,sy)) or min(sx,sy)<=0:raise ValueError('INVALID_FRAME')
     if abs(sx-sy)>1e-9:errors.append('UNEQUAL_GEOMETRY_UNITS')
@@ -879,7 +880,9 @@ def audit(p):
                 elif inside and not has_leader and norm(sub(centre_model,v))*sx<=max(radii)*sx-1:errors.append('ANGLE_LABEL_INSIDE_ARC:'+oid)
                 elif inside and not has_leader:
                     vx,vy=forward(v)   # the vertex in svg px; the distance to the label box's nearest point
-                    if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('ANGLE_LABEL_TOO_FAR:'+oid)
+                    far=math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))
+                    if far>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:
+                        errors.append('ANGLE_LABEL_TOO_FAR:'+oid);violation_degrees['ANGLE_LABEL_TOO_FAR:'+oid]={'kind':'distance','d':(far-ANGLE_LABEL_MAX_DISTANCE_PX)/max(1.0,box[3]),'distancePx':far,'limitPx':ANGLE_LABEL_MAX_DISTANCE_PX}
     # angles[].over (E32): the whole angle encloses each listed angle at the same vertex (rays inside its wedge, a smaller angle) and its outermost arc lies outside theirs
     over_of={row['id']:set(row.get('over') or ()) for row in marks.get('angles',[]) if isinstance(row,dict) and row.get('over')}
     for row in marks.get('angles',[]):
@@ -1102,7 +1105,9 @@ def audit(p):
         elif not inside:errors.append('RIGHT_ANGLE_LABEL_NOT_IN_ANGLE:'+oid)
         else:
             vx,vy=forward(v)
-            if math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:errors.append('RIGHT_ANGLE_LABEL_TOO_FAR:'+oid)
+            far=math.hypot(max(box[0]-vx,0,vx-(box[0]+box[2])),max(box[1]-vy,0,vy-(box[1]+box[3])))
+            if far>ANGLE_LABEL_MAX_DISTANCE_PX+0.5:
+                errors.append('RIGHT_ANGLE_LABEL_TOO_FAR:'+oid);violation_degrees['RIGHT_ANGLE_LABEL_TOO_FAR:'+oid]={'kind':'distance','d':(far-ANGLE_LABEL_MAX_DISTANCE_PX)/max(1.0,box[3]),'distancePx':far,'limitPx':ANGLE_LABEL_MAX_DISTANCE_PX}
         observations.append({'id':oid,'type':'RIGHT_ANGLE_LABEL','label':row['label']})
 
     # ---- free text labels (E30): a plain Korean or math label at a stated source coordinate, or beside a point on a stated side
@@ -1732,7 +1737,7 @@ def audit(p):
                 if not math.isfinite(t) or abs(t-k)>0.01 or abs((P[0]-A[0])*d[1]-(P[1]-A[1])*d[0])/norm(d)*sx>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
                 result=drawn_arrow(oid)
                 if result is None or px_gap(result[0],A)>VECTOR_POINT_PX or px_gap(result[1],P)>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
-    return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(p['svg'].encode('utf-8')).hexdigest(),'strategy':'FINAL_XML_PLANE_MARKS_FROM_PEER_POINTS'}
+    return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(p['svg'].encode('utf-8')).hexdigest(),'strategy':'FINAL_XML_PLANE_MARKS_FROM_PEER_POINTS',**({'violationDegrees':violation_degrees} if errors and violation_degrees else {})}
 
 if __name__=='__main__':
     input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
