@@ -77,7 +77,21 @@ function keyIn(record, field, values) {
 }
 // match 규칙 하나: l2 이름이 같고, keyAny가 있으면 그 중 하나라도 맞고, keyNone이 있으면 하나도 맞지 않아야 한다.
 // keyAllow: 그 칸에 값이 있으면 목록 안에 있어야 한다(값이 비어 있으면 통과). 중단원은 맞는데 유형 키가 다른 단원을 가리키는 문항을 거른다.
+// allowlist: 문항 UID 허용 목록 파일(archive/tools/assessment-mock/allowlists/, 줄마다 UID<TAB>출처<TAB>근거). 키로 범위가 갈리지 않는 곳에서 사람이 직접 읽어 정한 문항만 들인다.
+// 허용 목록 규칙은 중단원·유형 키를 보지 않고 UID만 본다(규칙에 l2가 있으면 그것도 맞아야 한다).
+const allowCache = new Map();
+function allowlistSet(name) {
+  if (!allowCache.has(name)) {
+    const text = fs.readFileSync(path.join(__dirname, 'allowlists', name), 'utf8');
+    allowCache.set(name, new Set(text.split('\n').filter((l) => l.trim() && !l.startsWith('#')).map((l) => l.split('\t')[0].trim())));
+  }
+  return allowCache.get(name);
+}
 function ruleMatches(rule, record, l2Name) {
+  if (rule.allowlist) {
+    if (!allowlistSet(rule.allowlist).has(String(record.questionUid || ''))) return false;
+    return !rule.l2 || rule.l2 === l2Name;
+  }
   if (rule.l2 && rule.l2 !== l2Name) return false;
   if (rule.keyAllow) {
     for (const [field, values] of Object.entries(rule.keyAllow)) {
@@ -97,14 +111,15 @@ function ruleMatches(rule, record, l2Name) {
 }
 // 범위 정의(scope)에서 문항이 속한 묶음 번호. 어느 묶음에도 안 들어가면 -1.
 function groupIndexOf(scope, record) {
-  const l2 = middleL2Of(record, scope.gradeKey);
-  if (!l2) return { index: -1, l2: null, rule: null };
+  const found = middleL2Of(record, scope.gradeKey);
   let rule = null;
   const index = scope.groups.findIndex((group) => {
-    rule = group.match.find((r) => ruleMatches(r, record, l2.l2)) || null;
+    rule = group.match.find((r) => ruleMatches(r, record, found ? found.l2 : null)) || null;
     return Boolean(rule);
   });
-  return { index, l2, rule: index < 0 ? null : rule };
+  if (index < 0) return { index: -1, l2: found, rule: null };
+  // 허용 목록으로 들어온 문항은 중단원 판정이 없을 수 있다(그때는 중단원 이름 자리에 '(허용 목록)').
+  return { index, l2: found || { l1: '', l2: '(허용 목록)', unitKey: '', reason: 'allowlist', via: 'allowlist' }, rule };
 }
 
 module.exports = { CATALOG_FILE, loadCatalogRecords, middleL2Of, groupIndexOf, ruleMatches };

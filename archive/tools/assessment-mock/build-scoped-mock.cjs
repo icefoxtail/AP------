@@ -48,7 +48,10 @@ function rejectReason(q, rec) {
   for (const f of figureFilesOf(q)) if (!fileExists(f)) return '그림 파일 없음';
   const text = String(q.content ?? '') + ' ' + (q.choices || []).join(' ');
   const hasFigure = Boolean(q.image) || /<img\b|<svg\b/i.test(text);
-  if (!hasFigure && /그림/.test(plain(q.content))) return '그림이 필요한데 없음';
+  // "줄기와 잎 그림"은 발문 속 표(<table>)로 주어질 수 있어 그림 요구로 세지 않는다.
+  const stemWords = plain(q.content).replace(/줄기와\s*잎\s*그림/g, '');
+  if (!hasFigure && /그림/.test(stemWords)) return '그림이 필요한데 없음';
+  if (!hasFigure && /줄기와\s*잎\s*그림/.test(plain(q.content)) && !/<table\b/i.test(text)) return '그림이 필요한데 없음';
   if (!hasFigure && !/<table\b/i.test(text) && /(?:다음|아래|위)\s*표|표와\s*같/.test(plain(q.content))) return '표가 필요한데 없음';
   if (rec.sourceIssueHold || rec.sourceQualityHold || rec.sourceDefectCandidate) return '원본 품질 보류';
   if (q.l3Disposition === 'HOLD' || q.l4Disposition === 'HOLD' || q.itemHold) return '메타 보류';
@@ -178,6 +181,11 @@ function selectPacks(scope, pool, common) {
     // 서술형을 줄 묶음: 서술형 후보가 있는 묶음 중 회차마다 돌려 가며 common.subjective개
     const subjEligible = scope.groups.map((_, gi) => gi).filter((gi) => byGroup[gi].some((c) => c.subj) && scope.groups[gi].weight >= 3);
     const subjGroups = new Set();
+    // subjectivePrefer: 매 회차 서술형을 꼭 내고 싶은 묶음(예: 도수분포표 표 완성형). 서술형 후보가 있을 때만.
+    for (const label of scope.subjectivePrefer || []) {
+      const gi = scope.groups.findIndex((g) => g.label === label);
+      if (gi >= 0 && byGroup[gi].some((c) => c.subj)) subjGroups.add(gi);
+    }
     for (let i = 0; subjGroups.size < Math.min(common.subjective, subjEligible.length) && i < subjEligible.length * 2; i += 1) {
       subjGroups.add(subjEligible[(p * common.subjective + i) % subjEligible.length]);
     }

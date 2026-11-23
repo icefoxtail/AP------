@@ -95,7 +95,7 @@ for (const scope of config.scopes) {
       assert(Number(q._sourceYear) + 2000 >= scope.yearMin && Number(q._sourceYear) + 2000 <= config.common.yearMax, `${where}: 쓸 수 없는 연도입니다: ${q._sourceYear}`);
       assert(q.l3Disposition !== 'HOLD' && q.l4Disposition !== 'HOLD' && !q.itemHold, `${where}: 보류 표시가 있는 문항입니다.`);
       assert(!/^\s*(?:<p[^>]*>\s*)?(\[[^\]]*(서술|논술|서답)[^\]]*\]|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
-      assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(String(q.content).replace(/\$[^$]*\$/g, ' ')), `${where}: 발문에 배점 표기가 남았습니다.`);
+      assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(String(q.content).replace(/\$[^$]*\$/g, ' ').replace(/\([^()]*\|[^()]*\)/g, ' ')), `${where}: 발문에 배점 표기가 남았습니다.`);
       if (q.questionType === '객관식') {
         const choicesInFigure = Array.isArray(q.choices) && q.choices.length === 0 && (q.image || /<img\b/i.test(String(q.content))) && /^\s*[①-⑤](?:\s*[,，、]?\s*[①-⑤])*\s*$/.test(String(q.answer));
         assert(choicesInFigure || (Array.isArray(q.choices) && q.choices.length >= 4), `${where}: 객관식 보기가 부족합니다.`);
