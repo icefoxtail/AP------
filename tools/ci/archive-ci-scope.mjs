@@ -43,7 +43,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
   ]),
   output: Object.freeze([
     'archive/engine.html', 'archive/mixed_engine.html', 'archive/mathjax_render_loop.js',
-    'archive/equal-slot-engine.js', 'archive/equal-slot-engine.css', 'archive/question-image-readiness.js', 'archive/figure-size.js', 'archive/figure-size.css',
+    'archive/equal-slot-engine.js', 'archive/equal-slot-engine.css', 'archive/question-image-readiness.js', 'archive/figure-size.js', 'archive/figure-size.css', 'archive/figure-zoom.js', 'archive/figure-zoom.css',
     'archive/solution-render-executor.js', 'archive/exam-render-executor.js', 'archive/exam-display-title.js', 'archive/exam-source-reader.js', 'archive/answer-render-executor.js',
     'archive/layout-materializer.js', 'archive/layout-authority.js', 'archive/render-authority.js',
     'archive/render-authority.css', 'archive/render-state-normalizer.js', 'archive/render-text.js', 'archive/render-feedback.js',
