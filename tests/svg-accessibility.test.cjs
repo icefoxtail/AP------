@@ -107,3 +107,14 @@ test('SVG accessibility resolver permits source-bound solution descriptions with
   assert.equal(resolve('assets/generated-lite/circle-solution.svg', 'solution', undefined, ''), '원과 두 접선. 계산을 마쳐 얻은 값 8을 나타낸 해설 그림');
   assert.equal(resolve('assets/generated-lite/circle-solution.svg', 'problem', undefined, ''), '');
 });
+
+test('a machine-substitute index row (legacy SVG without title/desc) is never used as the on-screen name', () => {
+  const { createResolver } = loadAccessibilityHelper();
+  const substitute = {
+    assetRef: 'assets/images/legacy/q3-solution.svg', visualRole: 'solution', titleKo: '시험 3번 해설 그림', descriptionKo: '시험 3번 해설 그림',
+    sourceExamRef: 'archive/exams/sample.js', sourceQid: '3', provenanceStatus: 'SOURCE_BOUND', answerHintFree: false, textSource: 'MACHINE_SUBSTITUTE'
+  };
+  const resolve = createResolver([substitute], { baseUrl: 'https://example.test/AP------/archive/engine.html' });
+  assert.equal(resolve('assets/images/legacy/q3-solution.svg', 'solution', undefined, ''), '');
+  assert.equal(resolve('assets/images/legacy/q3-solution.svg', 'solution', undefined, '이미 있는 이름'), '');
+});
