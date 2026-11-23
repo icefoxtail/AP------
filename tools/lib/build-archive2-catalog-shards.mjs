@@ -30,7 +30,7 @@ import { fileURLToPath } from 'node:url';
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
 export const CATALOG_SHARDS_INDEX_SCHEMA = 'archive2-catalog-shards-v1';
-export const CATALOG_SHARD_FILE_SCHEMA = 'archive2-catalog-shard-v1';
+export const CATALOG_SHARD_FILE_SCHEMA = 'archive2-catalog-shard-v2'; // v2 (stage 2-1): an optional `authority` part after `records`
 // Registered files the shards are derived from (the release identity checks they are in the registered snapshot). The other
 // ~675 inputs are bound by sha256 through the canonical input manifest, which loadInputBundle verifies file by file.
 export const CATALOG_SHARDS_INPUTS = Object.freeze([
@@ -87,6 +87,113 @@ export function slimRecord(record) {
     out[key] = Object.hasOwn(PROJECTED_RECORD_FIELDS, key) ? project(record[key], PROJECTED_RECORD_FIELDS[key]) : record[key];
   }
   return out;
+}
+
+// ---- the authority: what a screen needs to judge a record without the whole bundle -----------------------------------------
+// STAGE 2-1. Whether a record may be used (Archive2Core.basicEligibility -> Archive2Canonical.validateBasicAssignment,
+// Archive2Core.advancedEligible -> validateAdvancedAssignment) is decided against `canonicalAuthority`, which resolveCatalog
+// builds from the whole bundle (about 42 MB in memory, 595 reviewed-exam-meta proofs and every runtime pack). The shards carry it in
+// two parts so a screen that holds only some shards still gets the same answer for every record it holds:
+//   - per shard, the `authority` part of the shard file: the exams of the shard, their source hashes, and the assignment rows of the
+//     shard's questions, cut to the keys the validators read (an assignment row is about 3 KB with proof material; the validators
+//     read about 20 keys). The identity table is NOT stored: validateBasicAssignment compares identityByUid[uid] with the record's own
+//     questionUid / sourceFile / sourceOrdinal / identityStatus, so it is derived from the record (the builder checks, for every
+//     record, that the derived entry equals the real one and lists the few that differ).
+//   - once, `common.json`: the tables that do not depend on the question (grade/course allowlist, canonical parents and advanced
+//     paths, problem type and binding keys, template parents, projection policy) and the catalog-level lists the screens read
+//     (taxonomy, basic scope groups, filter options, health, PT/TPL labels). `basicScopeLinks` (1.35 MB, 355 KB gzip) is left out:
+//     its only reader passes it to Archive2Core.basicScopeParent, which does not use it (a test keeps that true).
+// The assembly (archive/archive2-catalog-shards.js, one file for the build and the browser) is the only code that turns these
+// back into a canonicalAuthority; tests/archive2-catalog-shards-authority.test.js proves, on the real inputs, that every record
+// gets the same basicEligibility and advancedEligible result as with the full authority.
+export const CATALOG_COMMON_PATH = 'common.json';
+export const CATALOG_COMMON_SCHEMA = 'archive2-catalog-common-v1';
+export const CATALOG_AUTHORITY_SCHEMA = 'archive2-catalog-shard-authority-v1';
+export const AUTHORITY_UNUSED_CATALOG_KEYS = Object.freeze(['basicScopeLinks']); // shipped as [] (see the comment above)
+// Keys of an assignment row the validators and screens read (validateBasicAssignment, validateAdvancedAssignment,
+// assignmentEvidencePasses). The union of the basic and the advanced reads is kept for every row, so a row that is the same object
+// in both tables is stored once. tests/archive2-catalog-shards-authority.test.js scans archive2-canonical.js for a read of
+// another key.
+export const AUTHORITY_ASSIGNMENT_FIELDS = Object.freeze([
+  'questionUid', 'sourceFile', 'sourceOrdinal', 'grade', 'curriculumKey', 'courseKey', 'L1', 'L2',
+  'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey', 'l4Disposition',
+  'sourceFingerprint', 'assignmentFingerprint', 'approvalStatus', 'taxonomyVersion', 'store', 'reviewEvidence',
+]);
+export const AUTHORITY_REVIEW_EVIDENCE_FIELDS = Object.freeze(['status', 'reference', 'sha256', 'runtimeEvidenceReference', 'runtimeEvidenceSha']);
+export const AUTHORITY_TEMPLATE_FIELDS = Object.freeze(['status', 'parentProblemTypeKey']);
+// Catalog-level values of resolveCatalog that are NOT common: the records and exams are per shard, the source hashes follow the
+// exams, the authority is rebuilt, and the encoded column dictionary (columns, strings, encoding) is leftover of decodeCatalog
+// that no screen reads. Anything else the catalog gains is common by default.
+export const COMMON_CATALOG_EXCLUDED_KEYS = Object.freeze([
+  'records', 'exams', 'sourceHashes', 'sourceRawHashes', 'canonicalAuthority', 'columns', 'strings', 'encoding',
+]);
+
+const pick = (value, keys) => {
+  const out = {};
+  for (const key of keys) if (value && Object.hasOwn(value, key)) out[key] = value[key];
+  return out;
+};
+export function projectAssignmentRow(row) {
+  const out = pick(row, AUTHORITY_ASSIGNMENT_FIELDS);
+  if (out.reviewEvidence && typeof out.reviewEvidence === 'object') out.reviewEvidence = pick(out.reviewEvidence, AUTHORITY_REVIEW_EVIDENCE_FIELDS);
+  return out;
+}
+const sortedUnique = (values) => [...new Set(values)].sort();
+const sortedKeys = (object) => Object.fromEntries(Object.entries(object).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)));
+// What the validators read from the identity table: derived from the record itself (the same four values resolveCatalog writes).
+// (the one definition is in archive/archive2-catalog-shards.js, which the browser runs too)
+const { identityOfRecord } = createRequire(import.meta.url)('../../archive/archive2-catalog-shards.js');
+export { identityOfRecord };
+
+// The tables that do not depend on a question. `extras` = { labels, health } (computed from the bundle by buildCatalogShards).
+export function projectCommon(catalog, extras = {}) {
+  const authority = catalog.canonicalAuthority;
+  const common = {
+    schemaVersion: CATALOG_COMMON_SCHEMA,
+    indexVersion: String(catalog.indexVersion || catalog.canonicalProjectionVersion || ''),
+    identityDigest: catalog.identityDigest,
+    authority: {
+      taxonomyVersion: authority.taxonomyVersion,
+      gradeCourses: authority.gradeCourses,
+      canonicalParents: authority.canonicalParents,
+      canonicalAdvancedPaths: authority.canonicalAdvancedPaths,
+      projectionPolicy: authority.projectionPolicy,
+      problemTypeKeys: sortedUnique(authority.problemTypeKeys || []),
+      templatesByKey: Object.fromEntries(Object.entries(authority.templatesByKey || {}).map(([key, row]) => [key, pick(row, AUTHORITY_TEMPLATE_FIELDS)])),
+      bindingKeys: sortedUnique(authority.bindingKeys || []),
+    },
+    catalog: {},
+    labels: extras.labels || { problemTypes: {}, templates: {} },
+  };
+  const excluded = new Set(COMMON_CATALOG_EXCLUDED_KEYS);
+  const unused = new Set(AUTHORITY_UNUSED_CATALOG_KEYS);
+  for (const key of Object.keys(catalog)) if (!excluded.has(key)) common.catalog[key] = unused.has(key) ? [] : catalog[key];
+  if (extras.health) common.catalog.health = extras.health;
+  return common;
+}
+
+// The authority part of one shard file. recordsOfShard = the shard's catalog records (full, not slim); examsOfShard = its exams.
+export function projectShardAuthority(catalog, indexVersion, recordsOfShard, examsOfShard) {
+  const authority = catalog.canonicalAuthority;
+  const fileSet = new Set(examsOfShard.map((exam) => exam.file));
+  const sourceHashes = (catalog.sourceHashes || []).filter((entry) => fileSet.has(entry[0]));
+  const assignments = {}; const advancedSame = []; const advancedOwn = {}; const identityOverrides = {};
+  for (const record of recordsOfShard) {
+    const uid = record.questionUid;
+    const identity = authority.identityByUid?.[uid];
+    if (identity && JSON.stringify(identity) !== JSON.stringify(identityOfRecord(record))) identityOverrides[uid] = identity;
+    const rows = authority.assignmentsByUid?.[uid];
+    const advanced = authority.advancedAssignmentsByUid?.[uid];
+    if (Array.isArray(rows)) assignments[uid] = rows.map(projectAssignmentRow);
+    if (Array.isArray(advanced)) {
+      if (Array.isArray(rows) && advanced.length === rows.length && advanced.every((row, i) => row === rows[i] || JSON.stringify(row) === JSON.stringify(rows[i]))) advancedSame.push(uid);
+      else advancedOwn[uid] = advanced.map(projectAssignmentRow);
+    }
+  }
+  return {
+    schemaVersion: CATALOG_AUTHORITY_SCHEMA,
+    exams: examsOfShard, sourceHashes, assignments, advancedSame, advancedOwn, identityOverrides,
+  };
 }
 
 // ---- which shard an exam belongs to ----------------------------------------------------------------------------------
@@ -175,13 +282,13 @@ export function splitBucketFiles(groups, limit = SHARD_RAW_LIMIT_BYTES) {
   return out;
 }
 
-const shardFileText = (key, indexVersion, lines) =>
-  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]}\n`;
+const shardFileText = (key, indexVersion, lines, authority) =>
+  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]${authority ? `,"authority":${JSON.stringify(authority)}` : ''}}\n`;
 const sha256Hex = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 
 // catalog: the object resolveCatalog returns (or any object with .records, .exams, .indexVersion, .identityDigest).
 // Pure: the same catalog and alias document give the same bytes.
-export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMIT_BYTES } = {}) {
+export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMIT_BYTES, extras = {} } = {}) {
   if (!Array.isArray(catalog?.records) || !catalog.records.length) throw new Error('catalog has no records');
   if (!Array.isArray(catalog.exams) || !catalog.exams.length) throw new Error('catalog has no exams');
   const indexVersion = String(catalog.indexVersion || catalog.canonicalProjectionVersion || '');
@@ -199,31 +306,29 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     let entry = bucketGroups.get(bucket.key);
     if (!entry) { entry = { bucket, groups: new Map(), firstRank: rank }; bucketGroups.set(bucket.key, entry); }
     let group = entry.groups.get(file);
-    if (!group) { group = { exam, lines: [], bytes: 0 }; entry.groups.set(file, group); }
+    if (!group) { group = { exam, lines: [], records: [], bytes: 0 }; entry.groups.set(file, group); }
     const line = JSON.stringify(slimRecord(record));
     group.lines.push(line);
+    group.records.push(record);
     group.bytes += byteLength(line) + 2;
   });
   const entries = [...bucketGroups.values()].sort((a, b) => a.firstRank - b.firstRank);
   const files = new Map(); // relative path inside the shard dir -> Buffer
   const shards = []; const courses = []; const examShard = {};
+  const pending = []; // shards in order: { key, bucket, part, lines, records }
   let recordTotal = 0;
   for (const { bucket, groups } of entries) {
     const course = { key: bucket.key, label: bucket.label, kind: bucket.kind, ...(bucket.grade ? { grade: bucket.grade } : {}), shards: [] };
     for (const part of splitBucketFiles(groups, limit)) {
       const key = `${bucket.key}${part.suffix}`;
       if (!SHARD_KEY_PATTERN.test(key)) throw new Error(`shard key is not a plain file name: ${key}`);
-      const lines = part.files.flatMap((file) => groups.get(file).lines);
-      const content = Buffer.from(shardFileText(key, indexVersion, lines), 'utf8');
-      const rel = `shard-${key}.json`;
-      files.set(rel, content);
-      for (const file of part.files) examShard[file] = key;
-      shards.push({
-        key, course: bucket.key, label: bucket.label, path: rel, sha256: sha256Hex(content), bytes: content.length,
-        records: lines.length, exams: part.files.length, ...(part.split ? { split: part.split } : {}),
+      pending.push({
+        key, bucket, part,
+        lines: part.files.flatMap((file) => groups.get(file).lines),
+        records: part.files.flatMap((file) => groups.get(file).records),
       });
+      for (const file of part.files) examShard[file] = key;
       course.shards.push(key);
-      recordTotal += lines.length;
     }
     courses.push(course);
   }
@@ -234,6 +339,36 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     const bucket = bucketOfExam(exam, buckets, highCommon);
     const shard = firstShardOf.get(bucket.key);
     if (shard) examShard[exam.file] = shard;
+  }
+  // STAGE 2-1: when the catalog carries a canonicalAuthority, each shard file also holds the authority part of its own questions
+  // (exams, source hashes, assignment rows), and one common file holds the tables that do not depend on a question. Measured on the
+  // real catalog: the same bytes after gzip as a separate file per shard (7.44 MB against 7.44 MB) and one request fewer per shard,
+  // so the part is inside the shard file.
+  const withAuthority = Boolean(catalog.canonicalAuthority);
+  if (withAuthority) for (const exam of catalog.exams) if (!examShard[exam.file]) throw new Error(`exam has no shard: ${exam.file}`);
+  for (const { key, bucket, part, lines, records } of pending) {
+    const authority = withAuthority
+      ? projectShardAuthority(catalog, indexVersion, records, catalog.exams.filter((exam) => examShard[exam.file] === key))
+      : null;
+    const content = Buffer.from(shardFileText(key, indexVersion, lines, authority), 'utf8');
+    const rel = `shard-${key}.json`;
+    files.set(rel, content);
+    shards.push({
+      key, course: bucket.key, label: bucket.label, path: rel, sha256: sha256Hex(content), bytes: content.length,
+      records: lines.length, exams: part.files.length, ...(part.split ? { split: part.split } : {}),
+    });
+    recordTotal += lines.length;
+  }
+  let commonInfo = null;
+  if (withAuthority) {
+    const common = projectCommon(catalog, extras);
+    // source hashes of files that belong to no exam of the catalog stay common (none today), so no entry is lost
+    const examFiles = new Set(catalog.exams.map((exam) => exam.file));
+    const loose = (catalog.sourceHashes || []).filter((entry) => !examFiles.has(entry[0]));
+    if (loose.length) common.catalog.sourceHashes = loose;
+    const content = Buffer.from(`${JSON.stringify(common)}\n`, 'utf8');
+    files.set(CATALOG_COMMON_PATH, content);
+    commonInfo = { path: CATALOG_COMMON_PATH, sha256: sha256Hex(content), bytes: content.length };
   }
   const index = {
     schemaVersion: CATALOG_SHARDS_INDEX_SCHEMA,
@@ -249,6 +384,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     courses,
     shards,
     examShard,
+    ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -281,19 +417,44 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const input of CATALOG_SHARDS_INPUTS) {
     if (!fs.statSync(path.join(root, input), { throwIfNoEntry: false })?.isFile()) throw new Error(`catalog shards input is missing: ${input}`);
   }
-  const { catalog } = await loadResolvedCatalog(root);
-  const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit });
+  const { catalog, bundle } = await loadResolvedCatalog(root);
+  const extras = catalogExtras(root, catalog, bundle);
+  const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
     reasons: ['catalog shard index (derived from the registered catalog and canonical input manifest)'], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
   }];
   for (const [rel, content] of [...projection.files.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
+    const reason = rel === CATALOG_COMMON_PATH
+      ? 'catalog common tables (authority tables and catalog-level lists that do not depend on a question)'
+      : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
     entries.push({
       path: `${CATALOG_SHARDS_DIR}/${rel}`, content, bytes: content.length, sourceBytes: 0,
-      reasons: ['catalog shard (resolved question records of one grade or subject, without screen-unused columns)'], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
+      reasons: [reason], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
     });
   }
   return { entries, index: projection.index, files: projection.files, catalog };
+}
+
+// Values the browser computes next to resolveCatalog (archive/meta-foundation-runtime.js), computed here once for the whole catalog:
+// the PT/TPL label tables of the foundation taxonomy, and the health block (strict-eligible count and per-reason tally, from the
+// same Archive2Core.basicEligibility the screens run).
+export function catalogExtras(root, catalog, bundle) {
+  const require = createRequire(import.meta.url);
+  const core = require(path.join(root, 'archive/archive2-core.js'));
+  const taxonomy = bundle?.resources?.['data/meta-foundation/compiled/taxonomy_registry.json'] || {};
+  const labels = {
+    problemTypes: Object.fromEntries((taxonomy.problemTypes || []).filter((row) => row.status === 'ACTIVE').map((row) => [row.problemTypeKey, row.canonicalLabelKo])),
+    templates: Object.fromEntries((taxonomy.templates || []).filter((row) => row.status === 'ACTIVE').map((row) => [row.templateKey, { label: row.canonicalLabelKo, parentProblemTypeKey: row.parentProblemTypeKey }])),
+  };
+  let automatic = 0; const exclusionReasons = {};
+  for (const record of catalog.records) {
+    const result = core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority });
+    if (result.ok) automatic += 1;
+    for (const reason of result.reasons) exclusionReasons[reason] = (exclusionReasons[reason] || 0) + 1;
+  }
+  const built = catalog.health || {};
+  return { labels, health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
 }
 
 export const gzipBytes = (buffer) => zlib.gzipSync(buffer, { level: 6 }).length;
@@ -316,5 +477,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(shard.key.padEnd(34), String(shard.records).padStart(8), String(shard.exams).padStart(6), String(shard.bytes).padStart(11), String(gz).padStart(10));
   }
   console.log('total'.padEnd(34), String(built.index.recordCount).padStart(8), String(built.index.examCount).padStart(6), String(rawTotal).padStart(11), String(gzTotal).padStart(10));
+  const commonFile = built.index.common && built.files.get(built.index.common.path);
+  if (commonFile) console.log(`${built.index.common.path} ${commonFile.length} bytes (gzip ${gzipBytes(commonFile)}): the tables every shard needs, fetched once per page`);
   console.log(`index.json ${built.entries[0].bytes} bytes (gzip ${gzipBytes(built.entries[0].content)}); built in ${((Date.now() - started) / 1000).toFixed(1)} s -> ${target}`);
 }
