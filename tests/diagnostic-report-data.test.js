@@ -382,4 +382,74 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.ok(localRefs >= 12, '로컬 스크립트·스타일 12개 이상');
 }
 
+// 입력 규칙: 기본 전부 정답, 확인 전에는 집계 제외, 일부 입력은 자동 채움 없음, 지우면 미입력
+{
+  const qs = mockQuestions();
+  const { allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus } = Data;
+  // 새 입력: 전부 O지만 확인 전이라 집계에 쓰이지 않는다(draft, counted=false)
+  const fresh = allCorrectResponses(qs);
+  assert.strictEqual(Object.keys(fresh).length, 24);
+  assert.ok(Object.values(fresh).every((v) => v === "O"));
+  let st = inputStatus({ questions: qs, responses: fresh, confirmed: false });
+  assert.deepStrictEqual([st.phase, st.correct, st.wrong, st.counted], ["draft", 24, 0, false]);
+  // 확인하면 입력 완료·집계
+  st = inputStatus({ questions: qs, responses: fresh, confirmed: true });
+  assert.deepStrictEqual([st.phase, st.counted], ["confirmed", true]);
+  // 열어 본 적 없는 학생(응답 없음)은 미입력, 집계 제외
+  st = inputStatus({ questions: qs, responses: {}, confirmed: false });
+  assert.deepStrictEqual([st.phase, st.answered, st.counted], ["empty", 0, false]);
+  // 확인 표시가 있어도 응답이 비어 있으면(모두 지우기 뒤) 집계하지 않는다
+  assert.strictEqual(inputStatus({ questions: qs, responses: {}, confirmed: true }).counted, false);
+  // 기존 일부 입력 기록: 자동으로 O를 채우지 않는다. 입력 안 한 문항은 그대로 미입력
+  const partial = { 1: "O", 2: "X", 5: "O" };
+  const before = JSON.stringify(partial);
+  st = inputStatus({ questions: qs, responses: partial, confirmed: false });
+  assert.deepStrictEqual([st.phase, st.answered, st.unanswered, st.counted], ["partial", 3, 21, false]);
+  assert.strictEqual(JSON.stringify(partial), before, "입력 함수가 기존 응답 객체를 바꾸지 않는다");
+  // 남은 문항 모두 정답으로: 입력된 X/O는 그대로, 빈 칸만 O
+  const filled = fillRemainingCorrect(qs, partial);
+  assert.strictEqual(filled[2], "X");
+  assert.strictEqual(filled[1], "O");
+  assert.strictEqual(filled[24], "O");
+  assert.strictEqual(inputStatus({ questions: qs, responses: filled }).phase, "draft");
+  assert.strictEqual(JSON.stringify(partial), before);
+  // 틀린 번호 한 줄
+  const r = applyWrongNumbers(qs, "3 7, 12  15 7");
+  assert.deepStrictEqual([r.ok, r.wrongNos], [true, [3, 7, 12, 15]]);
+  assert.strictEqual(inputStatus({ questions: qs, responses: r.responses }).correct, 20);
+  assert.strictEqual(applyWrongNumbers(qs, "").ok, true);
+  assert.strictEqual(inputStatus({ questions: qs, responses: applyWrongNumbers(qs, "").responses }).wrong, 0);
+  for (const bad of ["0", "25", "3 a", "-1", "1.5x"]) assert.strictEqual(applyWrongNumbers(qs, bad).ok, false, bad);
+  assert.strictEqual(applyWrongNumbers(qs, "99").responses, null, "오류면 아무 응답도 만들지 않는다");
+  // 확인된 입력은 기존 집계와 같은 결과를 낸다
+  const rep = computeDiagnosticReport({ questions: qs, responses: r.responses });
+  assert.strictEqual(rep.totals.wrong, 4);
+  assert.strictEqual(rep.totals.unchecked, 0);
+  // 적용 안 한 글 + 결과표 만들기 → 그 번호가 X로 반영된 채 확정
+  const { confirmInput } = Data;
+  const pendingOk = confirmInput({ questions: qs, responses: fresh, pendingText: '3 7 12' });
+  assert.deepStrictEqual([pendingOk.ok, pendingOk.confirmed], [true, true]);
+  assert.deepStrictEqual(['3', '7', '12'].map((n) => pendingOk.responses[n]), ['X', 'X', 'X']);
+  assert.strictEqual(inputStatus({ questions: qs, responses: pendingOk.responses, confirmed: true }).wrong, 3);
+  assert.ok(Object.values(fresh).every((v) => v === 'O'), '받은 응답 객체는 그대로');
+  // 잘못된 글 + 확정 → 확정 안 됨(오류 문구, 응답 그대로)
+  // 글을 적은 뒤 단추로 누른 X(15번)는 확정 때 사라지지 않는다.
+  const keptX = confirmInput({ questions: qs, responses: Object.assign({}, fresh, { 15: 'X' }), pendingText: '3 7' });
+  assert.strictEqual(keptX.ok, true);
+  assert.deepStrictEqual(Object.keys(keptX.responses).filter((no) => keptX.responses[no] === 'X').map(Number).sort((a, b) => a - b), [3, 7, 15]);
+  const pendingBad =confirmInput({ questions: qs, responses: fresh, pendingText: '3 99' });
+  assert.deepStrictEqual([pendingBad.ok, pendingBad.confirmed], [false, false]);
+  assert.ok(pendingBad.error.includes('99'));
+  // 글이 없으면 현재 입력 그대로 확정, 빈 칸이 있으면 확정 안 됨
+  assert.strictEqual(confirmInput({ questions: qs, responses: fresh, pendingText: '  ' }).ok, true);
+  assert.strictEqual(confirmInput({ questions: qs, responses: partial, pendingText: '' }).ok, false);
+  // 전각 숫자·쉼표
+  assert.deepStrictEqual(applyWrongNumbers(qs, '３，７ １２').wrongNos, [3, 7, 12]);
+  // 화면 파일: 확인 전 결과표 숨김·기본 O·지우기 문구가 들어 있다
+  const js = fs.readFileSync(path.join(root, "archive", "assessment", "diagnostic-report.js"), "utf8");
+  assert.ok(js.includes('Data.allCorrectResponses(state.questions)') && js.includes('state.confirmed = false'));
+  assert.ok(js.includes('if (s.phase !== "confirmed")'), '확인 전에는 결과표를 만들지 않는다');
+  assert.ok(!/localStorage|sessionStorage/.test(js.replace(/\/\/.*$/gm, '')), '저장소를 쓰지 않는다');
+}
+
 console.log('diagnostic-report-data tests passed');

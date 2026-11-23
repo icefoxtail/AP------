@@ -750,7 +750,7 @@ window.questionBank = [
       "삼각형의 좌표와 무게중심"
     ],
     "answer": "③",
-    "solution": "$0<a<6$이므로 점 $A(a,5)$는 꼭짓점이 $O(0,0)$, $U(0,5)$, $V(6,5)$, $W(6,0)$인 직사각형의 위쪽 변에 있고, $B(6,2)$는 오른쪽 변에 있다. 이 직사각형의 넓이는 $6\\cdot5=30$이다.\n\n직사각형에서 삼각형 $OAB$를 뺀 나머지는 세 삼각형으로 나뉜다.\n$\\triangle OUA$의 넓이는 $\\dfrac12\\cdot5\\cdot a=\\dfrac{5a}{2}$,\n$\\triangle AVB$의 넓이는 $\\dfrac12\\cdot(6-a)\\cdot(5-2)=\\dfrac{3(6-a)}2$,\n$\\triangle OWB$의 넓이는 $\\dfrac12\\cdot6\\cdot2=6$이다.\n따라서\n$\\triangle OAB$의 넓이는\n$30-\\left(\\dfrac{5a}{2}+\\dfrac{3(6-a)}2+6\\right)$\n$=30-\\left(\\dfrac{5a}{2}+\\dfrac{18-3a}{2}+6\\right)$\n$=30-\\left(\\dfrac{5a}{2}+9-\\dfrac{3a}{2}+6\\right)$\n$=30-(a+15)$\n$=15-a$이다.\n\n넓이가 $12$이므로 $15-a=12$, 따라서 $a=3$이다. 정답은 ③이다.",
+    "solution": "세 점 $O(0,0)$, $A(a,5)$, $B(6,2)$를 꼭짓점으로 하는 삼각형의 넓이는\n$$[OAB]=\\frac12|a\\cdot2-5\\cdot6|=\\frac12|2a-30|$$\n이다.\n$0<a<6$이므로 $2a-30<0$이고, 따라서 $[OAB]=15-a$이다.\n넓이가 $12$이므로 $15-a=12$에서 $a=3$이다.\n$0<3<6$을 만족한다.\n따라서 정답은 ③이다.",
     "sourceQid": "q11",
     "sourceExamUid": "21_효천고_1학기_기말_고1_기출",
     "sourceIntakeBatch": "h1-fast-lane-b-20261013",

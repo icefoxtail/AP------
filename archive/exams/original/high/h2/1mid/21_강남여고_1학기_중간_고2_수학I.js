@@ -1799,7 +1799,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "①",
-    "solution": "$5+4.8\\sin\\frac{\\pi x}{6}\\ge7.4$에서 $\\sin\\frac{\\pi x}{6}\\ge\\frac12$이다.\n사인값이 한 주기에서 $\\frac12$ 이상인 구간은 각도 기준 $\\frac\\pi6$부터 $\\frac{5\\pi}6$까지이며, 이를 시간으로 바꾸면 길이는 4시간이다?\n한 주기의 시간은 12시간이고, 경계각 차는 $\\frac{4\\pi}{6}=\\frac{2\\pi}{3}$이므로 시간 길이는 $12\\cdot\\frac{1}{3}=4$시간이다.\n하루 24시간에는 주기가 2번 있으므로 가능한 시간은 $4\\cdot2=8$시간이다. 정답은 ①이다.",
+    "solution": "$h(x)\\ge 7.4$인 시각을 구하자.\n$5+4.8\\sin\\frac{\\pi x}{6}\\ge 7.4$에서 $\\sin\\frac{\\pi x}{6}\\ge\\frac12$이다.\n$t=\\frac{\\pi x}{6}$로 놓으면 $0\\le x<24$에서 $0\\le t<4\\pi$이다.\n$\\sin t\\ge\\frac12$인 한 주기 $0\\le t<2\\pi$의 구간은 $\\left[\\frac\\pi6,\\frac{5\\pi}6\\right]$이고, 그 폭은 $\\frac{2\\pi}{3}$이다.\n이를 시간으로 환산하면 $\\frac{6}{\\pi}\\cdot\\frac{2\\pi}{3}=4$시간이다.\n하루 24시간에는 12시간 주기가 두 번 반복되므로 접안 가능한 시간의 총길이는 $4\\times2=8$시간이다.\n따라서 정답은 ①이다.",
     "category": "삼각방정식과 삼각부등식",
     "originalCategory": "삼각방정식과 삼각부등식",
     "standardCourse": "수학I",

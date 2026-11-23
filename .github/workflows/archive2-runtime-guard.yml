@@ -153,6 +153,15 @@ jobs:
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs
+      - name: Workspace preview and print window show the same pages in actual Chrome
+        id: preview_print_parity
+        if: ${{ !cancelled() && steps.scope.outputs.solution_browser == 'true' }}
+        timeout-minutes: 4
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_PARITY_REPORT_DIR: ${{ runner.temp }}/archive-preview-print-parity
+        run: node tests/archive2-preview-print-parity.e2e.cjs
       - name: Load and print the changed original sources in actual Chrome
         id: content_browser
         if: ${{ !cancelled() && steps.scope.outputs.mode == 'archive-content' }}
@@ -261,6 +270,7 @@ jobs:
           O_UI_SIX_CASES: ${{ steps.ui_six_cases.outcome }}
           O_SOLUTION_TESTS: ${{ steps.solution_tests.outcome }}
           O_SOLUTION_50: ${{ steps.solution_50.outcome }}
+          O_PREVIEW_PRINT_PARITY: ${{ steps.preview_print_parity.outcome }}
           O_CONTENT_BROWSER: ${{ steps.content_browser.outcome }}
           O_SCOPED_CHECKER: ${{ steps.scoped_checker.outcome }}
         run: |
@@ -285,6 +295,7 @@ jobs:
           row 'Three reviewed problems, desktop and mobile (reviewed problem UI)' "$O_UI_SIX_CASES"
           row 'Image deadline and render feedback regressions (50-question solution Chrome)' "$O_SOLUTION_TESTS"
           row '50 real solutions and asset failures in Chrome (50-question solution Chrome)' "$O_SOLUTION_50"
+          row 'Workspace preview and print window show the same pages (50-question solution Chrome)' "$O_PREVIEW_PRINT_PARITY"
           row 'Changed original sources load and print in Chrome (50-question solution Chrome)' "$O_CONTENT_BROWSER"
           row 'Changed scoped browser checker on one original (50-question solution Chrome)' "$O_SCOPED_CHECKER"
           echo 'An outcome of skipped means the scope decision did not select that check for this change; it is not a pass for the excluded area.' >> "$GITHUB_STEP_SUMMARY"

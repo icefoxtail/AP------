@@ -76,7 +76,7 @@
   }
   const paperMetaLabel = (paper) => [
     paper.grade,
-    paper.subject,
+    globalThis.ExamDisplayTitle?.displaySubjectOf?.(paper.subject) ?? paper.subject,
     `${Number(paper.question_count)}문항`,
     `${dateLabel(paper.created_at)} 저장`,
   ].filter(Boolean).join(" · ");
@@ -138,7 +138,8 @@
   }
 
   function detailMarkup(paper, envelope, mode = "exam") {
-    const title = paper.library_display_name || paper.title || paper.snapshot.meta.title || "저장한 시험지";
+    const shown = (text) => globalThis.ExamDisplayTitle?.withoutContentMark?.(text) ?? text; // 보이는 글자만(저장 이름은 그대로)
+    const title = shown(paper.library_display_name || paper.title || paper.snapshot.meta.title || "저장한 시험지");
     const status = paper.library_status || "ACTIVE";
     if (status === "TRASHED") {
       const restore = paper.legacy_tombstone
@@ -259,7 +260,8 @@
 
   function paperRowMarkup(paper, history) {
     const status = paper.library_status || "ACTIVE";
-    const title = paper.library_display_name || paper.title || "저장한 시험지";
+    const shown = (text) => globalThis.ExamDisplayTitle?.withoutContentMark?.(text) ?? text; // 보이는 글자만(저장 이름은 그대로)
+    const title = shown(paper.library_display_name || paper.title || "저장한 시험지");
     const id = esc(paper.id);
     const statusAction = status === "ACTIVE"
       ? `<button type="button" data-library-action="library-status" data-paper-id="${id}" data-status="ARCHIVED">보관</button>`
@@ -270,7 +272,7 @@
           : `<button type="button" data-library-action="library-status" data-paper-id="${id}" data-status="ACTIVE">복원</button>`;
     const trashed = status === "TRASHED";
     const parts = Number(paper.part_count) > 1 ? `${Number(paper.part_count)}권 중 ${Number(paper.part_index) + 1}권` : "";
-    const meta = [paper.subject, dayLabel(paper.created_at) ? `${dayLabel(paper.created_at)} 저장` : "", parts]
+    const meta = [globalThis.ExamDisplayTitle?.displaySubjectOf?.(paper.subject) ?? paper.subject, dayLabel(paper.created_at) ? `${dayLabel(paper.created_at)} 저장` : "", parts]
       .filter(Boolean).map((value) => `<span>${esc(value)}</span>`).join('<span aria-hidden="true">·</span>');
     const stateBadge = status === "ARCHIVED" ? '<span class="badge">보관</span>' : trashed ? '<span class="badge">휴지통</span>' : "";
     const count = Number.isFinite(Number(paper.question_count)) ? String(Number(paper.question_count)) : "–";

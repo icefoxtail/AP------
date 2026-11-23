@@ -356,7 +356,7 @@ window.questionBank = [
     "id": 7,
     "questionNumber": 7,
     "questionType": "객관식",
-    "content": "7. 어느 학교의 학생들을 대상으로 학교생활에 대한 만족도를 조사하였더니 전체 학생 중에서 $80\\%$가 만족한다고 응답하였다. 이 학교 학생 400명을 임의로 택하였을 때, 학교생활에 만족한다고 응답한 학생이 312명 이상일 확률은? [3.6점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "7. 어느 학교의 학생들을 대상으로 학교생활에 대한 만족도를 조사하였더니 전체 학생 중에서 $80\\%$가 만족한다고 응답하였다. 이 학교 학생 400명을 임의로 택하였을 때, 학교생활에 만족한다고 응답한 학생이 312명 이상일 확률은? [3.6점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 le Z le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.3413$",
       "$0.4772$",
@@ -481,7 +481,7 @@ window.questionBank = [
     "id": 9,
     "questionNumber": 9,
     "questionType": "객관식",
-    "content": "9. 확률변수 $X$가 정규분포 $N(8, 4^2)$을 따를 때, $P(4 \\le X \\le 16)$의 값을 구하면? [3.7점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "9. 확률변수 $X$가 정규분포 $N(8, 4^2)$을 따를 때, $P(4 \\le X \\le 16)$의 값을 구하면? [3.7점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.3413$",
       "$0.4938$",
@@ -491,7 +491,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "④",
-    "solution": "$X\\sim N(8,4^2)$이므로 평균은 8, 표준편차는 4이다. $Z=\\frac{X-8}{4}$로 표준화한다.\n$X=4$일 때 $Z=-1$, $X=16$일 때 $Z=2$이므로\n$P(4\\le X\\le16)=P(-1\\le Z\\le2)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le2)$\n$=0.3413+0.4772=0.8185$이다.\n따라서 정답은 ④이다. ①은 한쪽 $0\\sim1$ 구간만, ②는 $0\\sim2.5$ 구간만 계산하며, ③과 ⑤는 두 구간의 올바른 합이 아니다.\n\n오답 선택지 확인:\n① $0.3413$은 $-1\\le Z\\le0$만 계산한 값이다.\n② $0.4938$은 $0\\le Z\\le2.5$만 계산한 값이다.\n③ $0.7745$는 $0.3413+0.4332$로 위쪽 경계를 $2$가 아닌 $1.5$로 읽은 값이다.\n⑤ $0.8413$은 $Z\\ge-1$의 확률로 위쪽 경계 $2$를 반영하지 않는다.",
+    "solution": "$X\\sim N(8,4^2)$이므로 평균은 8, 표준편차는 4이다. $Z=\\frac{X-8}{4}$로 표준화한다.\n표에서 $P(0\\le Z\\le1)=0.3413$, $P(0\\le Z\\le2)=0.4772$임을 읽는다.\n$X=4$일 때 $Z=-1$, $X=16$일 때 $Z=2$이므로\n$P(4\\le X\\le16)=P(-1\\le Z\\le2)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le2)$\n$=0.3413+0.4772=0.8185$이다.\n따라서 정답은 ④이다. ①은 한쪽 $0\\sim1$ 구간만, ②는 $0\\sim2.5$ 구간만 계산하며, ③과 ⑤는 두 구간의 올바른 합이 아니다.\n\n오답 선택지 확인:\n① $0.3413$은 $-1\\le Z\\le0$만 계산한 값이다.\n② $0.4938$은 $0\\le Z\\le2.5$만 계산한 값이다.\n③ $0.7745$는 $0.3413+0.4332$로 위쪽 경계를 $2$가 아닌 $1.5$로 읽은 값이다.\n⑤ $0.8413$은 $Z\\ge-1$의 확률로 위쪽 경계 $2$를 반영하지 않는다.",
     "standardCourse": "확률과 통계",
     "curriculum": "2015",
     "standardUnitKey": "H15-PS-05",
@@ -543,7 +543,7 @@ window.questionBank = [
     "id": 10,
     "questionNumber": 10,
     "questionType": "객관식",
-    "content": "10. 감귤 나무 10000그루를 재배하는 어느 과수원의 나무 1그루당 감귤의 수확량은 평균이 $30\\mathrm{kg}$, 표준편차가 $1.2\\,\\mathrm{kg}$인 정규분포를 따른다고 한다. 이 과수원의 감귤 나무 중에서 감귤의 수확량이 $32.4\\mathrm{kg}$ 이상인 나무는 몇 그루인지 구하면? [3.7점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td><td>3.0</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td><td>0.4987</td></tr></table>",
+    "content": "10. 감귤 나무 10000그루를 재배하는 어느 과수원의 나무 1그루당 감귤의 수확량은 평균이 $30\\mathrm{kg}$, 표준편차가 $1.2\\,\\mathrm{kg}$인 정규분포를 따른다고 한다. 이 과수원의 감귤 나무 중에서 감귤의 수확량이 $32.4\\mathrm{kg}$ 이상인 나무는 몇 그루인지 구하면? [3.7점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td><td>3.0</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td><td>0.4987</td></tr></table>",
     "choices": [
       "$13$",
       "$62$",
@@ -725,7 +725,7 @@ window.questionBank = [
     "id": 13,
     "questionNumber": 13,
     "questionType": "객관식",
-    "content": "13. 1부터 10까지의 자연수가 하나씩 적혀 있는 카드가 10장 들어 있는 상자에서 임의로 1장의 카드를 뽑아 숫자를 확인한 후 다시 카드를 상자에 넣는 시행을 600번 반복할 때, 카드에 적혀 있는 수가 소수인 횟수를 확률변수 $X$라 하자. $P(228 \\le X \\le 264)$의 값을 아래 표를 이용하여 구한 것은? [3.9점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "13. 1부터 10까지의 자연수가 하나씩 적혀 있는 카드가 10장 들어 있는 상자에서 임의로 1장의 카드를 뽑아 숫자를 확인한 후 다시 카드를 상자에 넣는 시행을 600번 반복할 때, 카드에 적혀 있는 수가 소수인 횟수를 확률변수 $X$라 하자. $P(228 \\le X \\le 264)$의 값을 아래 표를 이용하여 구한 것은? [3.9점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.8185$",
       "$0.7745$",
@@ -853,7 +853,7 @@ window.questionBank = [
     "id": 15,
     "questionNumber": 15,
     "questionType": "객관식",
-    "content": "15. 어느 회사에서 생산된 건전지 1개의 수명은 모평균이 85시간, 모표준편차가 1시간인 정규분포를 따른다고 한다. 이 건전지 중에서 16개를 임의추출할 때, 배터리 16개의 수명의 총합이 1368시간 이상일 확률을 구하면? [4.1점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "15. 어느 회사에서 생산된 건전지 1개의 수명은 모평균이 85시간, 모표준편차가 1시간인 정규분포를 따른다고 한다. 이 건전지 중에서 16개를 임의추출할 때, 배터리 16개의 수명의 총합이 1368시간 이상일 확률을 구하면? [4.1점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.0228$",
       "$0.1587$",
@@ -976,7 +976,7 @@ window.questionBank = [
     "id": 17,
     "questionNumber": 17,
     "questionType": "객관식",
-    "content": "17. 동전 1개를 던져서 앞면이 나오면 5점을 얻고, 뒷면이 나오면 3점을 잃는 게임을 하였다. 동전 1개를 100번 던진 후, 최종 점수가 180점 이상이 될 확률을 구하면? [4.0점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>3.0</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4987</td></tr></table>",
+    "content": "17. 동전 1개를 던져서 앞면이 나오면 5점을 얻고, 뒷면이 나오면 3점을 잃는 게임을 하였다. 동전 1개를 100번 던진 후, 최종 점수가 180점 이상이 될 확률을 구하면? [4.0점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>3.0</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4987</td></tr></table>",
     "choices": [
       "$0.0013$",
       "$0.0228$",
@@ -1038,7 +1038,7 @@ window.questionBank = [
     "id": 18,
     "questionNumber": 18,
     "questionType": "객관식",
-    "content": "18. 모평균이 30, 모표준편차가 4인 정규분포를 따르는 모집단에서 크기가 4인 표본을 임의추출하여 구한 표본평균을 $\\overline{X}$, 모평균이 75, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 9인 표본을 임의추출하여 구한 표본평균을 $\\overline{Y}$라고 하자. $P(\\overline{X} \\le 33) + P(\\overline{Y} \\le 69) = 1$일 때, $P(\\overline{Y} \\le 79)$를 아래 표준정규분포표를 이용하여 구하면? [4.4점]<br><table class=\"question-table\"><tr><th>$P(0 \\le Z \\le z)$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$z$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
+    "content": "18. 모평균이 30, 모표준편차가 4인 정규분포를 따르는 모집단에서 크기가 4인 표본을 임의추출하여 구한 표본평균을 $\\overline{X}$, 모평균이 75, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 9인 표본을 임의추출하여 구한 표본평균을 $\\overline{Y}$라고 하자. $P(\\overline{X} \\le 33) + P(\\overline{Y} \\le 69) = 1$일 때, $P(\\overline{Y} \\le 79)$를 아래 표준정규분포표를 이용하여 구하면? [4.4점]<br><table class=\"question-table\"><tr><th>$z$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr><tr><th>$P(0 \\le Z \\le z)$</th><td>0.3413</td><td>0.4332</td><td>0.4772</td><td>0.4938</td></tr></table>",
     "choices": [
       "$0.9772$",
       "$0.7745$",
