@@ -18,7 +18,7 @@
 
   // 기본값 규칙: 열면 모든 문항이 정답(O)으로 채워진 "입력 중(draft)"이다. 선생님이 ‘결과표 만들기’를 눌러 confirmed가 된 뒤에야
   // 결과표가 나온다. 확인 전의 O는 결과가 아니다(안 열어 본 학생이 만점 결과지가 되지 않게). 규칙 계산은 DiagnosticReportData.inputStatus.
-  const state = { questions: [], responses: Object.create(null), confirmed: false, labelOf: null, labelNote: "", grade: "", unitCount: 0, report: null };
+  const state = { questions: [], responses: Object.create(null), confirmed: false, wrongDirty: false, labelOf: null, labelNote: "", grade: "", unitCount: 0, report: null };
 
   function setState(text, error) {
     const el = $("state");
@@ -195,6 +195,10 @@
   function wrongNosText() {
     return state.questions.filter((q) => state.responses[q.no] === "X").map((q) => q.no).join(" ");
   }
+  // 칸에 적고 아직 적용하지 않은 글(없으면 빈 문자열).
+  function pendingWrongText() {
+    return state.wrongDirty ? $("inWrong").value.trim() : "";
+  }
   function statusLine(s) {
     const pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
     const score = `${s.total}문항 중 ${s.correct}개 정답 · ${s.wrong}개 오답 (${pct}%)`;
@@ -210,9 +214,12 @@
     $("clearBtn").disabled = s.answered === 0;
     $("allOkBtn").textContent = s.answered === 0 ? "모두 정답으로" : "남은 문항 모두 정답으로";
     $("allOkBtn").disabled = s.unanswered === 0;
-    $("confirmBtn").disabled = s.phase !== "draft";
+    const pending = pendingWrongText() !== "";
+    $("confirmBtn").disabled = !(s.phase === "draft" || (s.phase !== "confirmed" && pending));
     $("confirmBtn").hidden = s.phase === "confirmed";
-    if ($("inWrong") !== document.activeElement) $("inWrong").value = wrongNosText();
+    // 적용하지 않은 글은 포커스가 나가도 지우지 않는다. 글이 없을 때만 현재 틀린 번호로 맞춰 둔다.
+    if (!state.wrongDirty) $("inWrong").value = wrongNosText();
+    else if (pending) setWrongMessage(`‘${$("inWrong").value.trim()}’은(는) 아직 적용하지 않았습니다. ‘적용’을 누르거나 ‘결과표 만들기’를 누르면 이 글이 먼저 적용됩니다.`, true);
     syncButtons();
     if (s.phase !== "confirmed") {
       state.report = null;
@@ -268,6 +275,7 @@
     if (!result.ok) { setWrongMessage(result.error, true); return; }
     state.responses = result.responses;
     $("inWrong").value = result.wrongNos.join(" ");
+    state.wrongDirty = false;
     setWrongMessage(result.wrongNos.length ? `${result.wrongNos.join(", ")}번을 X로, 나머지는 O로 맞췄습니다.` : "틀린 번호가 없어 모두 O로 맞췄습니다.", false);
     recompute();
   }
@@ -284,17 +292,27 @@
     $("clearBtn").addEventListener("click", () => {
       state.responses = Object.create(null);
       state.confirmed = false;
+      state.wrongDirty = false;
       setWrongMessage("적으면 그 번호만 X, 나머지는 모두 O가 됩니다.", false);
       recompute();
     });
     $("confirmBtn").addEventListener("click", () => {
-      if (Data.inputStatus({ questions: state.questions, responses: state.responses }).unanswered) return;
+      // 틀린 번호 칸에 적고 ‘적용’을 안 누른 글이 있으면 그 글을 먼저 적용한 뒤 확정한다. 잘못된 글이면 확정하지 않고 오류만 안내한다.
+      const result = Data.confirmInput({ questions: state.questions, responses: state.responses, pendingText: pendingWrongText() });
+      if (!result.ok) { setWrongMessage(result.error, true); return; }
+      state.responses = result.responses;
       state.confirmed = true;
+      state.wrongDirty = false;
+      setWrongMessage("적으면 그 번호만 X, 나머지는 모두 O가 됩니다.", false);
       recompute();
       // 좁은 화면에서는 결과표가 입력 칸 아래에 있어, 만든 직후 그 자리로 옮겨 준다.
       if (window.innerWidth <= 1160 && !$("sheets").hidden) $("sheets").scrollIntoView({ block: "start" });
     });
     $("wrongBtn").addEventListener("click", applyWrongLine);
+    $("inWrong").addEventListener("input", () => {
+      state.wrongDirty = true;
+      recompute();
+    });
     $("inWrong").addEventListener("keydown", (event) => {
       if (event.key === "Enter") { event.preventDefault(); applyWrongLine(); }
     });

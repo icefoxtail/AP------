@@ -425,6 +425,22 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   const rep = computeDiagnosticReport({ questions: qs, responses: r.responses });
   assert.strictEqual(rep.totals.wrong, 4);
   assert.strictEqual(rep.totals.unchecked, 0);
+  // 적용 안 한 글 + 결과표 만들기 → 그 번호가 X로 반영된 채 확정
+  const { confirmInput } = Data;
+  const pendingOk = confirmInput({ questions: qs, responses: fresh, pendingText: '3 7 12' });
+  assert.deepStrictEqual([pendingOk.ok, pendingOk.confirmed], [true, true]);
+  assert.deepStrictEqual(['3', '7', '12'].map((n) => pendingOk.responses[n]), ['X', 'X', 'X']);
+  assert.strictEqual(inputStatus({ questions: qs, responses: pendingOk.responses, confirmed: true }).wrong, 3);
+  assert.ok(Object.values(fresh).every((v) => v === 'O'), '받은 응답 객체는 그대로');
+  // 잘못된 글 + 확정 → 확정 안 됨(오류 문구, 응답 그대로)
+  const pendingBad = confirmInput({ questions: qs, responses: fresh, pendingText: '3 99' });
+  assert.deepStrictEqual([pendingBad.ok, pendingBad.confirmed], [false, false]);
+  assert.ok(pendingBad.error.includes('99'));
+  // 글이 없으면 현재 입력 그대로 확정, 빈 칸이 있으면 확정 안 됨
+  assert.strictEqual(confirmInput({ questions: qs, responses: fresh, pendingText: '  ' }).ok, true);
+  assert.strictEqual(confirmInput({ questions: qs, responses: partial, pendingText: '' }).ok, false);
+  // 전각 숫자·쉼표
+  assert.deepStrictEqual(applyWrongNumbers(qs, '３，７ １２').wrongNos, [3, 7, 12]);
   // 화면 파일: 확인 전 결과표 숨김·기본 O·지우기 문구가 들어 있다
   const js = fs.readFileSync(path.join(root, "archive", "assessment", "diagnostic-report.js"), "utf8");
   assert.ok(js.includes('Data.allCorrectResponses(state.questions)') && js.includes('state.confirmed = false'));

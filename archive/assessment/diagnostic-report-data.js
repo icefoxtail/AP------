@@ -376,7 +376,8 @@
   function applyWrongNumbers(questions, textInput) {
     const nos = questionNos(questions);
     const known = new Set(nos);
-    const tokens = String(textInput == null ? "" : textInput).split(/[\s,.;/]+/).filter(Boolean);
+    // 전각 숫자·쉼표(３，７)도 받도록 NFKC로 먼저 바꾼다.
+    const tokens = String(textInput == null ? "" : textInput).normalize("NFKC").split(/[\s,.;/]+/).filter(Boolean);
     const wrong = [];
     for (const token of tokens) {
       if (!/^\d+$/.test(token) || !known.has(String(Number(token)))) return { ok: false, error: `‘${token}’은(는) 1~${nos.length}번 안의 번호가 아닙니다.`, responses: null, wrongNos: [] };
@@ -386,6 +387,20 @@
     const responses = allCorrectResponses(questions);
     for (const no of wrong) responses[no] = "X";
     return { ok: true, error: "", responses, wrongNos: wrong.map(Number).sort((a, b) => a - b) };
+  }
+  // 결과표 만들기(확정). 틀린 번호 칸에 적고 아직 적용하지 않은 글(pendingText)이 있으면 그 글을 먼저 적용한 뒤 확정한다.
+  // 그 글이 잘못되었거나 비어 있는 문항이 있으면 확정하지 않고(ok=false) 오류 문구만 돌려준다. 받은 responses 객체는 바꾸지 않는다.
+  function confirmInput(input) {
+    const options = input && typeof input === "object" ? input : {};
+    let responses = options.responses || {};
+    if (String(options.pendingText == null ? "" : options.pendingText).trim() !== "") {
+      const applied = applyWrongNumbers(options.questions, options.pendingText);
+      if (!applied.ok) return { ok: false, error: applied.error, responses, confirmed: false };
+      responses = applied.responses;
+    }
+    const status = inputStatus({ questions: options.questions, responses });
+    if (status.unanswered) return { ok: false, error: `비어 있는 문항이 ${status.unanswered}개 있습니다.`, responses, confirmed: false };
+    return { ok: true, error: "", responses, confirmed: true };
   }
   function inputStatus(input) {
     const options = input && typeof input === "object" ? input : {};
@@ -401,5 +416,5 @@
     return { phase, total, answered, correct, wrong, unanswered: total - answered, counted: phase === "confirmed" };
   }
 
-  return Object.freeze({ LEVELS, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus, allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus });
+  return Object.freeze({ LEVELS, computeDiagnosticReport, checkConsistency, createLabelOf, toStatus, allCorrectResponses, fillRemainingCorrect, applyWrongNumbers, inputStatus, confirmInput });
 });
