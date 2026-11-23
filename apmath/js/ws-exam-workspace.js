@@ -304,6 +304,7 @@ function wsxPanelHtml(row) {
 function wsxStudentsHtml(detail) {
     const filter = wsx.filter;
     const rows = detail.rows.filter(r => filter === 'pending' ? r.pending : filter === 'done' ? !r.pending : true);
+    const selfStudy = wsxSelfStudySummary(detail);
     if (!rows.length) return `<div class="wsx-empty">${filter === 'pending' ? '미제출 학생이 없습니다.' : filter === 'done' ? '제출한 학생이 없습니다.' : '재원생이 없습니다.'}</div>`;
     return rows.map(r => {
         const open = wsx.panel && wsx.panel.sid === r.sid;
@@ -313,7 +314,7 @@ function wsxStudentsHtml(detail) {
             : '<span class="wsx-student__none">오답 없음</span>') + wsxClinicButton(r) + wsxCounselLink(r);
         return `<div class="wsx-student${open ? ' is-open' : ''}" data-sid="${wsxEsc(r.sid)}" data-pending="${r.pending ? 1 : 0}">
             <div class="wsx-student__row">
-                <span class="wsx-student__name">${wsxEsc(r.name)}</span>
+                <span class="wsx-student__name">${wsxEsc(r.name)}${wsxSelfStudyBadge(selfStudy, r.sid)}</span>
                 <span class="wsx-student__score${r.pending ? ' is-pending' : ''}">${r.pending ? '미제출' : `${wsxEsc(r.score)}점`}</span>
                 <button type="button" class="btn wsx-btn wsx-row-input${r.pending ? ' wsx-btn--primary' : ''}" aria-expanded="${open ? 'true' : 'false'}" onclick="wsxOpenPanel(${apJsArg(r.sid)})">${r.pending ? '입력' : '수정'}</button>
                 ${chips ? `<span class="wsx-student__wrongs">${chips}</span>` : ''}
@@ -321,6 +322,68 @@ function wsxStudentsHtml(detail) {
             ${open ? wsxPanelHtml(r) : ''}
         </div>`;
     }).join('');
+}
+
+// ───────────── 학생 자습 기록(포털 오답 다시 풀기·유사 문항) ─────────────
+// 서버의 새 API 없이, 시험 하나를 고를 때 기존 반 단위 시험 조회(by-class의 assignment 분기)를 한 번 더 불러 self_study를 읽는다.
+// 기능이 꺼져 있거나(self_study_available가 true가 아님) 응답에 필드가 없으면 아무것도 그리지 않는다. 계산·마크업은 ws-self-study.js.
+
+function wsxSelfStudyAssignmentIds(detail) {
+    if (!detail || !detail.exam || detail.exam.isDraft) return [];
+    const ids = [detail.matchedAssignment && detail.matchedAssignment.id, ...(detail.sessions || []).map(s => s && s.assignment_id)]
+        .map(id => String(id || '')).filter(Boolean);
+    return [...new Set(ids)];
+}
+
+/** 이 시험의 자습 요약(그릴 것이 없으면 null). 불러오기 전·기능 꺼짐·필드 없음은 모두 null이다. */
+function wsxSelfStudySummary(detail) {
+    if (!detail || !wsx || !globalThis.WsSelfStudy) return null;
+    const loaded = wsxSelfStudyAssignmentIds(detail).map(id => wsx.selfStudy[id]).filter(entry => entry && entry.available === true);
+    if (!loaded.length) return null;
+    return globalThis.WsSelfStudy.summarizeClass({
+        rows: detail.rows,
+        selfStudy: loaded.reduce((all, entry) => all.concat(entry.rows), []),
+        available: true
+    });
+}
+
+function wsxSelfStudyHtml(detail) {
+    const summary = wsxSelfStudySummary(detail);
+    return summary ? globalThis.WsSelfStudy.renderClassHtml(summary, { esc: wsxEsc, open: !!wsx.selfOpen }) : '';
+}
+
+function wsxSelfStudyBadge(summary, sid) {
+    return summary ? globalThis.WsSelfStudy.renderBadgeHtml(summary, sid, { esc: wsxEsc }) : '';
+}
+
+function wsxSelfStudyToggle(el) {
+    if (wsx && el) wsx.selfOpen = !!el.open;
+}
+window.wsxSelfStudyToggle = wsxSelfStudyToggle;
+
+async function wsxLoadSelfStudy() {
+    if (!wsx || !globalThis.WsSelfStudy) return;
+    const req = wsx.reqId;
+    const classId = wsx.classId;
+    const ids = wsxSelfStudyAssignmentIds(wsxDetail()).filter(id => !wsx.selfStudy[id]);
+    if (!ids.length) return;
+    ids.forEach(id => { wsx.selfStudy[id] = { loading: true, available: false, rows: [] }; });
+    await Promise.all(ids.map(async id => {
+        try {
+            const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}&assignment=${encodeURIComponent(id)}`);
+            const ok = !!res && res.self_study_available === true && Array.isArray(res.self_study);
+            if (wsx && wsx.reqId === req) wsx.selfStudy[id] = { available: ok, rows: ok ? res.self_study : [] };
+        } catch (e) {
+            // 일시 실패는 기억하지 않는다(다음에 같은 시험을 고르면 다시 시도).
+            if (wsx && wsx.reqId === req) delete wsx.selfStudy[id];
+        }
+    }));
+    if (wsxStale(req) || wsx.newForm) return;
+    const now = wsxDetail();
+    if (!now || !wsxSelfStudyAssignmentIds(now).some(id => ids.includes(id))) return; // 그 사이 다른 시험을 골랐다.
+    // 입력 칸이 펼쳐져 있으면 그 칸을 건드리지 않도록 자습 칸만 바꾼다(학생 줄 표시는 다음에 그릴 때 붙는다).
+    if (wsx.panel) wsxSet('wsx-selfstudy', wsxSelfStudyHtml(now));
+    else wsxPaint(['detail']);
 }
 
 function wsxNewFormHtml() {
@@ -363,6 +426,7 @@ function wsxDetailHtml() {
                 ${exam.isDraft ? '' : '<button type="button" class="btn wsx-btn wsx-btn--danger" onclick="wsxDeleteExam()">시험 기록 전체 삭제</button>'}
             </div>
             ${wsxClassClinicHtml(detail)}
+            <div id="wsx-selfstudy">${wsxSelfStudyHtml(detail)}</div>
         </div>
         <div class="wsx-filter" role="group" aria-label="학생 보기">${tab('all', '전체', detail.total)}${tab('pending', '미제출', detail.pendingCount)}${tab('done', '제출', detail.submittedCount)}</div>
         <div class="wsx-students" id="wsx-students">${wsxStudentsHtml(detail)}</div>
@@ -439,7 +503,8 @@ function wsxIsPhone() {
 function wsxFreshState(classId) {
     return {
         classId: String(classId), reqId: wsx ? wsx.reqId + 1 : 1, panelReq: 0, reloadSeq: 0, source: null, exams: [], drafts: [], draftSeq: 0,
-        selKey: '', filter: 'all', panel: null, dirty: false, newForm: null, newTouched: false, loading: true, busy: false, focusSid: ''
+        selKey: '', filter: 'all', panel: null, dirty: false, newForm: null, newTouched: false, loading: true, busy: false, focusSid: '',
+        selfStudy: {}, selfOpen: false
     };
 }
 
@@ -525,6 +590,7 @@ function wsxApplyOpenOptions(opts) {
 /** 시험을 고른 뒤: 오답 칩에 단원 이름이 붙도록 원문 청사진을 받는다(없어도 화면은 먼저 보인다). */
 async function wsxAfterSelect() {
     const req = wsx.reqId;
+    void wsxLoadSelfStudy();
     const detail = wsxDetail();
     if (!detail || typeof ensureBlueprintsForSessions !== 'function') return;
     const targets = detail.sessions.filter(s => s.archive_file);
