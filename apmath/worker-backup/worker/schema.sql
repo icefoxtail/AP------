@@ -1380,7 +1380,8 @@ CREATE TABLE IF NOT EXISTS figure_reports (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_figure_reports_once
-  ON figure_reports (limit_key, question_uid, archive_file, question_no, figure_path, role, reason_code);
+  ON figure_reports (limit_key, question_uid, archive_file, question_no, figure_path, role, reason_code)
+  WHERE limit_key <> '';
 
 CREATE INDEX IF NOT EXISTS idx_figure_reports_day
   ON figure_reports (report_day);

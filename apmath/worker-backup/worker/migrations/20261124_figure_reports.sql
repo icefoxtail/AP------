@@ -4,7 +4,8 @@
 -- it must never CREATE this table per request. Apply by hand, e.g.:
 --   wrangler d1 execute ap-math-os --remote --file apmath/worker-backup/worker/migrations/20261124_figure_reports.sql
 -- 저장하지 않는 것: 학생 이름·학생 id·자유 글·IP·기기 식별자.
--- limit_key = sha256(학생 로그인 토큰 + ':figure-report:' + report_day) 앞 24자. 날짜마다 바뀌고 학생 id로 되돌릴 수 없다.
+-- limit_key = HMAC-SHA256(서버 비밀값, 'figure-report:' + 학생 id + ':' + 날짜) 앞 24자. 서버 비밀값 없이는 학생 id로 되돌릴 수 없고 날짜마다 바뀐다.
+-- 서버 비밀값이 없으면 빈 값('')으로 저장하며 학생별 중복 무시·상한은 건너뛴다(그래서 유일 인덱스는 limit_key <> '' 일 때만 건다).
 -- report_day는 한국 날짜(YYYY-MM-DD), created_at은 UTC 분 단위(YYYY-MM-DDTHH:MMZ).
 
 CREATE TABLE IF NOT EXISTS figure_reports (
@@ -23,7 +24,8 @@ CREATE TABLE IF NOT EXISTS figure_reports (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_figure_reports_once
-ON figure_reports (limit_key, question_uid, archive_file, question_no, figure_path, role, reason_code);
+ON figure_reports (limit_key, question_uid, archive_file, question_no, figure_path, role, reason_code)
+WHERE limit_key <> '';
 
 CREATE INDEX IF NOT EXISTS idx_figure_reports_day
 ON figure_reports (report_day);

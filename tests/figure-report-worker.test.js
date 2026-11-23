@@ -41,16 +41,18 @@ async function load() {
   return mod;
 }
 
-function newEnv({ withTable = true } = {}) {
+function newEnv({ withTable = true, extraEnv = {} } = {}) {
   const db = new DatabaseSync(':memory:');
   if (withTable) for (const sql of statements(migration)) db.exec(sql);
-  return { db, env: { DB: createD1(db) } };
+  return { db, env: { DB: createD1(db), D1_BACKUP_API_TOKEN: SECRET, ...extraEnv } };
 }
 
+const SECRET = 'test-secret-A';
+const U = n => `qid_v1_${Number(n).toString(16).padStart(64, '0')}`;
 const NOW = new Date('2026-11-24T05:03:40.000Z');
 const NEXT_DAY = new Date('2026-11-25T05:03:40.000Z');
 const good = (extra = {}) => ({
-  question_uid: 'uid-100', archive_file: 'exams/original/high/h1/2mid/a.js', question_no: 3,
+  question_uid: U(100), archive_file: 'exams/original/high/h1/2mid/a.js', question_no: 3,
   figure_path: 'assets/images/a/q3.svg', role: 'problem', reason_code: 'missing_parts', screen: 'exam', width_bucket: 'xs', ...extra,
 });
 // 학생 확인은 student-portal.js의 verifyStudentPortalSession이 한다. 여기서는 같은 모양의 결과를 돌려주는 대역을 쓴다.
@@ -98,10 +100,19 @@ test('검증: 허용 목록 밖의 값·나쁜 그림 경로·긴 값을 거절�
     { role: 'x' }, { reason_code: 'free' }, { screen: 'portal' }, { width_bucket: 'huge' },
     { figure_path: 'https://evil.example/a.svg' }, { figure_path: '../secret.svg' }, { figure_path: 'assets/images/../x.svg' },
     { figure_path: 'assets/images/a/b.html' }, { figure_path: '/assets/images/a.svg' }, { figure_path: `assets/images/${'a'.repeat(300)}.svg` },
-    { question_uid: 'x'.repeat(201) }, { question_uid: '<script>' }, { question_uid: 'a\nb' }, { archive_file: 'a;b' },
     { question_no: 1.5 }, { question_no: -1 }, { question_no: 5000 }, { question_no: '3' },
-    { question_uid: '', question_no: 0 }, { question_uid: '', archive_file: '' },
+    { question_uid: '', archive_file: '', figure_path: '' }, { question_uid: 'free text', archive_file: '', figure_path: '' },
   ]) assert.ok(normalizeFigureReport(good(bad)).error, `거절: ${JSON.stringify(bad)}`);
+  // 문항 식별 칸은 실제 형식이 아니면 그 칸만 비우고 신고는 받는다(학생이 글을 넣을 자리가 없다).
+  for (const free of ['x'.repeat(201), '<script>', 'a\nb', '안녕하세요 이 그림 이상해요', 'qid_v1_' + 'z'.repeat(64), 'uid-100']) {
+    assert.equal(normalizeFigureReport(good({ question_uid: free })).report.questionUid, '', `uid 비움: ${free.slice(0, 20)}`);
+  }
+  for (const free of ['a;b', '이 그림 이상해요', 'x'.repeat(200) + '.js', '../a.js', 'exams/a.png', 'http://evil.example/a.js']) {
+    assert.equal(normalizeFigureReport(good({ archive_file: free })).report.archiveFile, '', `파일 비움: ${free.slice(0, 20)}`);
+  }
+  assert.equal(normalizeFigureReport(good({ question_uid: U(7) })).report.questionUid, U(7));
+  assert.equal(normalizeFigureReport(good({ archive_file: 'exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js' })).report.archiveFile, 'exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js');
+  assert.equal(normalizeFigureReport(good({ question_uid: 'free', archive_file: '', figure_path: 'assets/images/a/q3.svg' })).report.figurePath, 'assets/images/a/q3.svg', '그림 경로가 있으면 문항 칸이 비어도 받는다');
   assert.ok(normalizeFigureReport(null).error && normalizeFigureReport([]).error);
 });
 
@@ -130,20 +141,64 @@ test('저장: 학생 id·이름·토큰·자유 글은 어디에도 남지 않�
   assert.equal(keys.size, 2, '학생마다 키가 하나(같은 날)');
 });
 
+test('하루 상한 키: 서버 비밀값 HMAC. 토큰·PIN 대입으로는 재현되지 않고, 비밀값이 다르면 키가 다르다', async () => {
+  const crypto = require('node:crypto');
+  const { figureReportLimitKey, figureReportSecret } = await load();
+  const key = await figureReportLimitKey(SECRET, 's-1', '2026-11-24');
+  assert.equal(key, crypto.createHmac('sha256', SECRET).update('figure-report:s-1:2026-11-24').digest('hex').slice(0, 24));
+  assert.notEqual(await figureReportLimitKey('test-secret-B', 's-1', '2026-11-24'), key, '같은 입력·다른 비밀값 -> 다른 키');
+  assert.notEqual(await figureReportLimitKey(SECRET, 's-2', '2026-11-24'), key);
+  // DB를 읽는 사람이 아는 값(학생 id, 로그인 토큰, PIN 0000~9999 대입)만으로는 같은 키를 만들 수 없다.
+  const token = pin => crypto.createHash('sha256').update(`s-1:${pin}:student-portal:v1`).digest('hex');
+  const reproducible = new Set();
+  for (let pin = 0; pin < 10000; pin += 1) {
+    const p = String(pin).padStart(4, '0');
+    for (const material of [`${token(p)}:figure-report:2026-11-24`, `figure-report:s-1:2026-11-24:${p}`, `s-1:${p}:figure-report:2026-11-24`])
+      reproducible.add(crypto.createHash('sha256').update(material).digest('hex').slice(0, 24));
+  }
+  assert.ok(!reproducible.has(key), '비밀값 없이 만든 어떤 해시와도 다르다');
+  assert.equal(await figureReportLimitKey('', 's-1', '2026-11-24'), '', '비밀값이 없으면 키 없음');
+  assert.equal(figureReportSecret({ D1_BACKUP_API_TOKEN: ' a ', REPORT_AI_PROXY_SECRET: 'b' }), 'a');
+  assert.equal(figureReportSecret({ REPORT_AI_PROXY_SECRET: 'b' }), 'b');
+  assert.equal(figureReportSecret({}), '');
+  const { env, db } = newEnv();
+  await post(env, body('s-1'));
+  assert.equal(rows(db)[0].limit_key, key, '저장되는 키가 HMAC 값');
+  assert.ok(!JSON.stringify(rows(db)).includes('s-1'));
+});
+
+test('서버 비밀값이 없으면 키를 비워 저장하고 학생별 상한·중복 무시는 건너뛰며, 전체 하루 상한은 지킨다', async () => {
+  const { FIGURE_REPORT_DAILY_TOTAL } = await load();
+  const { env, db } = newEnv({ extraEnv: { D1_BACKUP_API_TOKEN: '' } });
+  for (let n = 0; n < 22; n += 1) assert.equal((await post(env, body('s-1', { question_uid: U(n + 1) }))).status, 200, '학생별 20건 상한 없음');
+  assert.equal((await post(env, body('s-1', { question_uid: U(1) }))).json.duplicate, false, '중복 무시 없음');
+  assert.ok(rows(db).length >= 23 && rows(db).every(row => row.limit_key === ''), '키 없이 저장');
+  const full = newEnv({ extraEnv: { D1_BACKUP_API_TOKEN: '' } });
+  const insert = full.db.prepare("INSERT INTO figure_reports (created_at, report_day, role, reason_code, screen, width_bucket, limit_key) VALUES ('2026-11-24T00:00Z','2026-11-24','problem','other','exam','xs','')");
+  full.db.exec('BEGIN');
+  for (let n = 0; n < FIGURE_REPORT_DAILY_TOTAL; n += 1) insert.run();
+  full.db.exec('COMMIT');
+  assert.equal((await post(full.env, body('s-1'))).status, 429, '전체 하루 상한은 유지');
+  // REPORT_AI_PROXY_SECRET만 있어도 키가 생긴다.
+  const other = newEnv({ extraEnv: { D1_BACKUP_API_TOKEN: '', REPORT_AI_PROXY_SECRET: 'proxy-secret' } });
+  await post(other.env, body('s-1'));
+  assert.match(rows(other.db)[0].limit_key, /^[0-9a-f]{24}$/);
+});
+
 test('하루 상한: 학생당 20건, 전체 2,000건. 날짜가 바뀌면 키가 달라 다시 보낼 수 있다', async () => {
   const { env, db } = newEnv();
   const { FIGURE_REPORT_DAILY_PER_STUDENT, FIGURE_REPORT_DAILY_TOTAL, figureReportLimitKey } = await load();
   assert.equal(FIGURE_REPORT_DAILY_PER_STUDENT, 20);
   assert.equal(FIGURE_REPORT_DAILY_TOTAL, 2000);
-  for (let n = 1; n <= 20; n += 1) assert.equal((await post(env, body('s-1', { question_no: n, question_uid: `u-${n}` }))).status, 200);
-  const over = await post(env, body('s-1', { question_no: 21, question_uid: 'u-21' }));
+  for (let n = 1; n <= 20; n += 1) assert.equal((await post(env, body('s-1', { question_no: n, question_uid: U(n) }))).status, 200);
+  const over = await post(env, body('s-1', { question_no: 21, question_uid: U(21) }));
   assert.equal(over.status, 429);
   assert.equal(over.json.code, 'DAILY_LIMIT');
   assert.equal(rows(db).length, 20);
-  assert.equal((await post(env, body('s-1', { question_no: 5, question_uid: 'u-5' }))).status, 200, '이미 보낸 것은 상한에 걸리지 않고 중복으로 답한다');
+  assert.equal((await post(env, body('s-1', { question_no: 5, question_uid: U(5) }))).status, 200, '이미 보낸 것은 상한에 걸리지 않고 중복으로 답한다');
   assert.equal((await post(env, body('s-2'))).status, 200, '다른 학생은 영향 없음');
-  assert.equal((await post(env, body('s-1', { question_uid: 'u-next' }), NEXT_DAY)).status, 200, '다음 날은 다시 가능');
-  assert.notEqual(await figureReportLimitKey('tok-s-1', '2026-11-24'), await figureReportLimitKey('tok-s-1', '2026-11-25'));
+  assert.equal((await post(env, body('s-1', { question_uid: U(999) }), NEXT_DAY)).status, 200, '다음 날은 다시 가능');
+  assert.notEqual(await figureReportLimitKey(SECRET, 's-1', '2026-11-24'), await figureReportLimitKey(SECRET, 's-1', '2026-11-25'));
 
   const full = newEnv();
   const insert = full.db.prepare("INSERT INTO figure_reports (created_at, report_day, role, reason_code, screen, width_bucket, limit_key, question_uid) VALUES ('2026-11-24T00:00Z','2026-11-24','problem','other','exam','xs',?,?)");
@@ -184,8 +239,8 @@ test('집계 GET: 로그인한 교사·관리자만, 학생 식별 정보 없이
   await post(env, body('s-1'));
   await post(env, body('s-2'));
   await post(env, body('s-3', { reason_code: 'not_visible' }));
-  await post(env, body('s-1', { question_uid: 'uid-200', figure_path: 'assets/images/a/q9.svg', role: 'solution' }));
-  await post(env, body('s-1', { question_uid: 'uid-300', figure_path: '' }), NEXT_DAY);
+  await post(env, body('s-1', { question_uid: U(200), figure_path: 'assets/images/a/q9.svg', role: 'solution' }));
+  await post(env, body('s-1', { question_uid: U(300), figure_path: '' }), NEXT_DAY);
 
   assert.equal((await get(env, null)).status, 401);
   assert.equal((await get(env, { id: 'p1', role: 'parent' })).status, 403);
@@ -193,15 +248,15 @@ test('집계 GET: 로그인한 교사·관리자만, 학생 식별 정보 없이
   const all = JSON.parse((await get(env, { id: 't1', role: 'teacher' })).text);
   assert.equal(all.ok, true);
   const top = all.rows[0];
-  assert.deepEqual([top.question_uid, top.figure_path, top.reason_code, top.reports, top.last_day], ['uid-100', 'assets/images/a/q3.svg', 'missing_parts', 2, '2026-11-24']);
+  assert.deepEqual([top.question_uid, top.figure_path, top.reason_code, top.reports, top.last_day], [U(100), 'assets/images/a/q3.svg', 'missing_parts', 2, '2026-11-24']);
   assert.equal(all.rows.length, 4);
   const dump = JSON.stringify(all);
   for (const secret of ['s-1', 's-2', 's-3', 'tok-', 'limit_key', 'student']) assert.ok(!dump.includes(secret), `응답에 ${secret} 없음`);
 
   const day2 = JSON.parse((await get(env, { id: 'a', role: 'admin' }, '?from=2026-11-25')).text);
-  assert.deepEqual(day2.rows.map(row => row.question_uid), ['uid-300']);
+  assert.deepEqual(day2.rows.map(row => row.question_uid), [U(300)]);
   const day1 = JSON.parse((await get(env, { id: 'a', role: 'admin' }, '?from=2026-11-24&to=2026-11-24&reason=not_visible')).text);
-  assert.deepEqual(day1.rows.map(row => [row.question_uid, row.reports]), [['uid-100', 1]]);
+  assert.deepEqual(day1.rows.map(row => [row.question_uid, row.reports]), [[U(100), 1]]);
   assert.equal((await get(env, { id: 'a', role: 'admin' }, '?reason=nope')).status, 400);
   const limited = JSON.parse((await get(env, { id: 'a', role: 'admin' }, '?limit=1')).text);
   assert.equal(limited.rows.length, 1);
