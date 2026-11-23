@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O에서 중심각의 크기가 각각 90도와 30도인 두 부채꼴",
+  "accessibilityDescription": "원 O 위의 네 점 A, B, C, D와 중심각 AOB 90도, COD 30도를 나타낸 그림이다.",
+  "sourceQuote": "원 $O$에서 $\\angle AOB=90^\\circ$",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "A,B,C,D lie on circle O",
+      "mappedTo": "circle circ and four radii"
+    },
+    {
+      "id": "central-angles",
+      "condition": "angle AOB=90, angle COD=30",
+      "mappedTo": "two angle marks"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 500
+  },
+  "displayCircles": [
+    "circ"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "AOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "arcs": 1
+      },
+      {
+        "id": "COD",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "assetPath": "assets/images/25_신흥중_2학기_기말_중1_유사/q02.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q02-result.json",
+    "statePath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q02-state.json",
+    "svgPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q02-solution.svg"
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "outputType": "POINT",
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "outputType": "POINT",
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "CIRCLE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "outputType": "CIRCLE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "outside1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "outside2",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "inside1",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "inside2",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 630,
+    "height": 420
+  },
+  "caption": "중심각 60도이고 두 반지름이 각각 3cm, 9cm인 색칠한 부채꼴 고리",
+  "accessibilityDescription": "중심각 60도, 안쪽 반지름 3cm, 바깥쪽 반지름 9cm인 색칠한 고리 모양 부채꼴을 나타낸 그림이다.",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "inner",
+        "circle": "k1",
+        "center": "O",
+        "to": "B",
+        "side": "MINOR",
+        "from": "A"
+      },
+      {
+        "id": "outer",
+        "circle": "k2",
+        "center": "O",
+        "to": "D",
+        "side": "MINOR",
+        "from": "C"
+      }
+    ],
+    "regions": [
+      {
+        "id": "fill",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "C"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "central",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "short",
+        "from": "O",
+        "to": "A",
+        "label": "3",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "cm",
+        "value": 3
+      },
+      {
+        "id": "long",
+        "from": "O",
+        "to": "D",
+        "label": "9",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "cm",
+        "value": 9
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "부채꼴에서 색칠한 부분의 둘레의 길이",
+  "assetPath": "assets/images/25_신흥중_2학기_기말_중1_유사/q04.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q04-result.json",
+    "statePath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q04-state.json",
+    "svgPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q04-solution.svg"
+  }
+}
