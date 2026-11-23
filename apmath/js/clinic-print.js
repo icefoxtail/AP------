@@ -20,7 +20,8 @@ let clinicPrintRecommendationSettings = {
     countPerStudent: '5',
     difficultyMode: 'match_wrong',
     selectedDifficultyBuckets: [],
-    includeSeenQuestionUids: false
+    includeSeenQuestionUids: false,
+    selectionBasis: 'concept_path'
 };
 let clinicPrintAssessmentClient = null;
 let clinicPrintAssessmentFormValues = { classId: '', title: '', examDate: '' };
@@ -210,6 +211,7 @@ function clinicPrintGetRecommendationContextKey(classId, scope = clinicPrintReco
         settings.difficultyMode,
         settings.selectedDifficultyBuckets,
         settings.includeSeenQuestionUids === true,
+        settings.selectionBasis,
         clinicPrintRecommendationState.followUpAction ? [
             String(clinicPrintRecommendationState.followUpAction.classId || ''),
             String(clinicPrintRecommendationState.followUpAction.assignmentId || ''),
@@ -236,6 +238,9 @@ function clinicPrintReadRecommendationSettings() {
         .map(input => Number(input.value)).filter(bucket => Number.isInteger(bucket) && bucket >= 1 && bucket <= 5).sort((a, b) => a - b);
     const includeSeenQuestionUids = document.getElementById('clinic-print-recommendation-include-seen')?.checked === true ||
         (!document.getElementById('clinic-print-recommendation-include-seen') && clinicPrintRecommendationSettings.includeSeenQuestionUids === true);
+    const basisChoice = document.querySelector('input[name="clinic-print-recommendation-basis"]:checked')?.value
+        || clinicPrintRecommendationSettings.selectionBasis;
+    const selectionBasis = basisChoice === 'wrong_type' ? 'wrong_type' : 'concept_path';
     const count = Number(countPerStudentRaw);
     const errors = [];
     if (!/^\d+$/.test(countPerStudentRaw) || !Number.isInteger(count) || count < 1 || count > 400) {
@@ -249,6 +254,7 @@ function clinicPrintReadRecommendationSettings() {
         difficultyMode,
         selectedDifficultyBuckets,
         includeSeenQuestionUids,
+        selectionBasis,
         errors,
         recommendationOptions: errors.length ? null : {
             countPerStudent: count,
@@ -267,7 +273,20 @@ function clinicPrintRenderRecommendationOptions(classId) {
             <input type="checkbox" name="clinic-print-recommendation-bucket" value="${bucket}" ${checkedBuckets.has(bucket) ? 'checked' : ''} ${mode !== 'selected' ? 'disabled' : ''} onchange="clinicPrintOnRecommendationOptionsChange('${clinicPrintEscapeJsString(classId)}')">
             ${bucket}
         </label>`).join('');
-    return `<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0 10px;">
+    const basis = settings.selectionBasis === 'wrong_type' ? 'wrong_type' : 'concept_path';
+    const safeClassId = clinicPrintEscapeJsString(classId);
+    return `<div style="font-size:12px;font-weight:700;margin:8px 0 5px;">후보 고르는 기준</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;">
+        <label style="display:flex;gap:6px;align-items:flex-start;font-size:12px;">
+            <input type="radio" name="clinic-print-recommendation-basis" value="concept_path" ${basis === 'concept_path' ? 'checked' : ''} onchange="clinicPrintOnRecommendationOptionsChange('${safeClassId}')">
+            <span>개념 경로 기준<span style="display:block;font-size:10px;color:var(--secondary);margin-top:2px;">틀린 문항과 같은 단원·개념 경로에서 고릅니다. 위 시험 선택과 무관하게 조회된 기록 전체의 오답을 씁니다.</span></span>
+        </label>
+        <label style="display:flex;gap:6px;align-items:flex-start;font-size:12px;">
+            <input type="radio" name="clinic-print-recommendation-basis" value="wrong_type" ${basis === 'wrong_type' ? 'checked' : ''} onchange="clinicPrintOnRecommendationOptionsChange('${safeClassId}')">
+            <span>틀린 유형 기준<span style="display:block;font-size:10px;color:var(--secondary);margin-top:2px;">학생이 틀린 문항과 같은 유형(세부 유형, 없으면 유형·개념·단원 순)의 다른 문항을 고릅니다. 위 시험 목록에서 고른 시험의 오답만 씁니다.</span></span>
+        </label>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0 10px;">
         <label style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;">학생별 문항 수
             <input id="clinic-print-recommendation-count" type="number" min="1" max="400" step="1" value="${clinicPrintEscapeAttr(settings.countPerStudent || '5')}" aria-label="학생별 추천 문항 수" style="width:76px;" oninput="clinicPrintOnRecommendationOptionsChange('${clinicPrintEscapeJsString(classId)}')">
         </label>
@@ -311,6 +330,9 @@ function clinicPrintOnRecommendationOptionsChange(classId) {
         });
         const includeSeenInput = document.getElementById('clinic-print-recommendation-include-seen');
         if (includeSeenInput) includeSeenInput.checked = previous.includeSeenQuestionUids === true;
+        document.querySelectorAll('input[name="clinic-print-recommendation-basis"]').forEach(input => {
+            input.checked = input.value === (previous.selectionBasis === 'wrong_type' ? 'wrong_type' : 'concept_path');
+        });
         clinicPrintRenderRecommendationAssessmentPanel(classId);
         toast('시험 배정 확인 중에는 추천 조건을 바꿀 수 없습니다.', 'warn');
         return;
@@ -320,7 +342,8 @@ function clinicPrintOnRecommendationOptionsChange(classId) {
         countPerStudent: settings.countPerStudentRaw,
         difficultyMode: settings.difficultyMode,
         selectedDifficultyBuckets: settings.selectedDifficultyBuckets,
-        includeSeenQuestionUids: settings.includeSeenQuestionUids === true
+        includeSeenQuestionUids: settings.includeSeenQuestionUids === true,
+        selectionBasis: settings.selectionBasis
     };
     document.querySelectorAll('input[name="clinic-print-recommendation-bucket"]').forEach(input => {
         input.disabled = settings.difficultyMode !== 'selected';
@@ -368,9 +391,45 @@ function clinicPrintRecommendationPathLabel(item = {}) {
     return ['L1', 'L2', 'L3', 'L4'].map(key => String(path?.[key] || '').trim()).filter(Boolean).join(' › ');
 }
 
+// 유형 사다리에서 어느 칸(단)에서 찾았는지 교사 말로. 내부 키는 내지 않는다(archive2-derive RUNG_LABEL과 같은 말).
+const CLINIC_PRINT_TYPE_RUNG_LABEL = Object.freeze({
+    template: '같은 세부 유형', type: '같은 유형', concept: '같은 개념', subunit: '같은 단원', unit: '같은 단원', none: '시험 범위 안 다른 단원'
+});
+
+// 틀린 유형 기준 결과 위에 한 번 보여 줄 안내 문장들.
+function clinicPrintTypeBasisNotes(result, classId) {
+    const coverage = result?.coverage || {};
+    const groups = Array.isArray(result?.candidates) ? result.candidates : [];
+    const names = new Map(clinicPrintGetClassStudents(classId).map(row => [String(row.id), String(row.name || row.id)]));
+    const nameOf = id => names.get(String(id)) || String(id);
+    const notes = [];
+    notes.push(coverage.evidenceSessionCount == null
+        ? '시험을 고르지 않아 조회된 기록 전체의 오답을 기준으로 했습니다.'
+        : `고른 시험의 응시 ${Number(coverage.evidenceSessionCount)}건에서 틀린 문항 ${Number(coverage.wrongAnswerCount || 0)}개를 기준으로 했습니다.`);
+    const rungTotals = { template: 0, type: 0, concept: 0, unit: 0, none: 0 };
+    groups.forEach(group => {
+        const counts = group.typeBasis?.rungCounts || {};
+        Object.keys(counts).forEach(key => {
+            const bucket = key === 'subunit' ? 'unit' : key;
+            if (bucket in rungTotals) rungTotals[bucket] += Number(counts[key] || 0);
+        });
+    });
+    const rungText = ['template', 'type', 'concept', 'unit', 'none']
+        .filter(key => rungTotals[key] > 0).map(key => `${CLINIC_PRINT_TYPE_RUNG_LABEL[key]} ${rungTotals[key]}`).join(' · ');
+    if (rungText) notes.push(`고른 단계: ${rungText}.`);
+    const fallback = groups.filter(group => group.typeBasis?.fallbackReason === 'no_type_info').map(group => nameOf(group.studentId));
+    if (fallback.length) notes.push(`유형 정보가 없어 개념 경로 기준으로 뽑았습니다 (${fallback.join(', ')}).`);
+    const partial = groups.filter(group => group.typeBasis?.baseCount > 0 && group.typeBasis?.untypedBaseCount > 0).map(group => nameOf(group.studentId));
+    if (partial.length) notes.push(`일부 오답은 유형 정보가 없어 그 부분만 개념 경로 기준으로 보충했습니다 (${partial.join(', ')}).`);
+    return notes;
+}
+
 function clinicPrintRecommendationReasonLabel(item = {}) {
     const reason = item.recommendationReason;
     if (!reason || typeof reason !== 'object') return String(reason || '기존 오답의 정본 Meta 경로와 연결');
+    if (reason.basis === 'wrong_type') {
+        return `틀린 문항과 같은 유형에서 고름 · ${CLINIC_PRINT_TYPE_RUNG_LABEL[reason.typeRung] || '같은 유형'}${reason.hintOnly ? ' (유형 정보 확정 전, 참고용)' : ''}`;
+    }
     if (reason.basis === 'follow_up_same_uid') return '이번 완결 응시에서 확정 오답으로 확인된 UID';
     if (reason.basis === 'follow_up_similar_uid') return '이번 완결 응시의 동결 정본 유형 경로와 연결';
     const wrongCount = Number(reason.wrongCount || 0);
@@ -387,7 +446,8 @@ function clinicPrintRecommendationErrorLabel(error = {}) {
         invalid_difficulty_mode: '난이도 선택을 다시 확인해 주세요.',
         selected_difficulty_buckets_required: '난이도를 직접 고를 때는 1~5 중 하나 이상 선택하세요.',
         invalid_selected_difficulty_bucket: '난이도는 1~5 중에서 선택해 주세요.',
-        invalid_selected_difficulty_buckets: '난이도 선택을 다시 확인해 주세요.'
+        invalid_selected_difficulty_buckets: '난이도 선택을 다시 확인해 주세요.',
+        type_ladder_unavailable: '유형 기준 모듈을 불러오지 못했습니다. 개념 경로 기준으로 다시 시도하세요.'
     };
     return labels[code] || '추천 조건을 확인해 주세요.';
 }
@@ -3149,6 +3209,91 @@ function clinicPrintPrepareArchive2CandidateRecords(records = []) {
     });
 }
 
+// ---- "틀린 유형 기준" 후보 선정 어댑터 ----
+// 유형 사다리(archive/archive2-derive.js, 순수 함수)를 클리닉 추천(ClinicRecommendations.build)에 연결한다.
+// 선택했을 때만 모듈을 지연 로드하고(첫 화면·기본 추천은 영향 없음), 색인은 (카탈로그, 반 학년, 난이도 칸)별로 한 번만 만든다.
+// 후보 자격은 기본 방식의 앞 검사와 같은 ClinicRecommendations.typeLadderEligible이다.
+const clinicPrintTypeLadderCache = { records: null, prepared: null, unified: null, indexes: new Map() };
+
+async function clinicPrintLoadTypeLadderModules() {
+    await clinicPrintLoadArchive2Script('rpm-middle-toc', '../archive/rpm-middle-toc.js?v=20261115-m1-dongsan-current-1', 'ArchiveRpmMiddleToc');
+    await clinicPrintLoadArchive2Script('unit-past-exams-core', '../archive/unit-past-exams-core.js?v=20261117-middle-parent-1', 'UnitPastExamsCore');
+    await clinicPrintLoadArchive2Script('archive2-unified-units', '../archive/archive2-unified-units.js?v=20261122-unit-hint-2', 'Archive2UnifiedUnits');
+    await clinicPrintLoadArchive2Script('archive2-derive', '../archive/archive2-derive.js?v=20261120-derive-ui-1', 'Archive2Derive');
+    if (typeof window.Archive2Derive?.deriveFromPaper !== 'function' || typeof window.Archive2UnifiedUnits?.buildIndex !== 'function') {
+        throw new Error('유형 기준 모듈을 초기화하지 못했습니다.');
+    }
+}
+
+function clinicPrintGetTypeLadderCacheFor(catalog) {
+    const cache = clinicPrintTypeLadderCache;
+    if (cache.records !== catalog.records) {
+        cache.records = catalog.records;
+        cache.prepared = clinicPrintPrepareArchive2CandidateRecords(catalog.records);
+        cache.unified = null;
+        cache.indexes = new Map();
+    }
+    return cache;
+}
+
+function clinicPrintGetPreparedCandidateRecords(catalog) {
+    return clinicPrintGetTypeLadderCacheFor(catalog).prepared;
+}
+
+function clinicPrintBuildTypeLadder(catalog, targetGrade, buckets) {
+    const Derive = window.Archive2Derive;
+    const Unified = window.Archive2UnifiedUnits;
+    const core = window.Archive2Core;
+    const recs = window.ClinicRecommendations;
+    if (!Derive || !Unified || !recs || typeof recs.typeLadderEligible !== 'function') {
+        throw new Error('유형 기준 모듈을 불러오지 못했습니다.');
+    }
+    const cache = clinicPrintGetTypeLadderCacheFor(catalog);
+    const projectionPolicy = catalog.catalog?.projectionPolicy;
+    if (!cache.unified) cache.unified = Unified.buildIndex(cache.prepared, { projectionPolicy });
+    const bucketList = Array.isArray(buckets) && buckets.length ? [...buckets].map(Number).sort((a, b) => a - b) : null;
+    const key = JSON.stringify([String(targetGrade || ''), bucketList]);
+    let index = cache.indexes.get(key);
+    if (!index) {
+        index = Derive.buildDeriveIndex(cache.prepared, {
+            unified: cache.unified,
+            projectionPolicy,
+            eligible: record => recs.typeLadderEligible(record, core, targetGrade) &&
+                (!bucketList || bucketList.includes(record.difficultyBucket))
+        });
+        cache.indexes.set(key, index);
+    }
+    return {
+        // 기준(틀린) 문항이 사다리에 있는지, 세부 유형·유형 정보가 있는지(힌트 포함). 없으면 null.
+        baseInfo(uid) {
+            const cand = index.byUid.get(String(uid || ''));
+            return cand && cand.ck ? { typed: Boolean(cand.tpl || cand.pt) } : null;
+        },
+        // 같은 유형·같은 난이도(기준 문항의 단계)로 기준 문항마다 한 개씩. 정답·해설 빈 문항은 가리지 않는다(작업 화면의 다시 만들기와 같다).
+        derive(baseUids, options = {}) {
+            const result = Derive.deriveFromPaper(baseUids, {
+                typeMode: 'same', level: 'same', sources: 'all', includeBlank: true,
+                seed: options.seed, exclude: options.exclude
+            }, index);
+            return { picks: (result.perItem || []).filter(row => row.pickedUid), summary: result.summary };
+        }
+    };
+}
+
+// 시험 단위 시작: 위 시험 목록에서 고른 시험의 응시 세션 id. 고른 시험이 없으면 null(조회된 기록 전체).
+function clinicPrintGetTypeEvidenceSessionIds(classId, scope = 'class') {
+    const keys = clinicPrintGetCheckedValues('clinic-print-exam').map(String);
+    if (!keys.length) return null;
+    const ids = new Set();
+    keys.forEach(key => {
+        const rows = scope === 'grade'
+            ? clinicPrintGetGradeSessionsForExamGroup(classId, key)
+            : clinicPrintGetSessionsForExamGroup(classId, key);
+        rows.forEach(row => { if (row && row.id != null) ids.add(String(row.id)); });
+    });
+    return [...ids];
+}
+
 function clinicPrintRecommendationCoverageLabel(scope, coverage = {}, classId = '') {
     const sessions = Number(coverage.sessionCount || 0);
     if (scope === 'grade') {
@@ -3226,7 +3371,7 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
         const coverage = state.result?.coverage || {};
         const notes = clinicPrintRecommendationCoverageNotes(coverage);
         const seenPolicyNote = coverage.includeSeenQuestionUids === true ? ' · 이미 푼 문항 포함 (현재 조회 범위에서 확인된 응시 UID 기준)' : '';
-        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${noEvidence ? '정본 Meta 경로를 확인한 오답 근거가 없습니다.' : '연결되는 정본 추천 후보가 없습니다.'}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}${seenPolicyNote} 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${noEvidence ? '정본 Meta 경로를 확인한 오답 근거가 없습니다.' : '연결되는 정본 추천 후보가 없습니다.'}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}${seenPolicyNote}${state.result?.selectionBasis === 'wrong_type' ? ' 틀린 유형 기준은 위 시험 목록에서 고른 시험의 오답을 씁니다. 시험 선택과 학생 선택을 확인하세요.' : ''} 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
     } else if (state.status === 'invalid_options') {
         const errors = Array.isArray(state.result?.errors) ? state.result.errors : [];
         const guidance = [...new Set(errors.map(clinicPrintRecommendationErrorLabel))].join(' ');
@@ -3238,7 +3383,8 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
             ? `난이도 ${optionSettings.selectedDifficultyBuckets.join(', ')}단계`
             : '오답 난이도에 맞춤';
         const seenPolicyNote = coverage.includeSeenQuestionUids === true ? ' · 이미 푼 문항 포함 (현재 조회 범위에서 확인된 응시 UID 기준)' : '';
-        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · 오답 빈도 기반 추천 · ${optionSettings.countPerStudentRaw}개씩 · ${difficultyLabel}${seenPolicyNote}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}.`;
+        const typeNotes = state.result?.selectionBasis === 'wrong_type' ? clinicPrintTypeBasisNotes(state.result, classId) : null;
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${typeNotes ? '틀린 유형 기준 추천' : '오답 빈도 기반 추천'} · ${optionSettings.countPerStudentRaw}개씩 · ${difficultyLabel}${seenPolicyNote}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}.${typeNotes?.length ? ` ${typeNotes.map(clinicPrintEscapeHtml).join(' ')}` : ''}`;
     }
     if (followUpAction) message += ' 후속 후보에는 “이미 푼 문항도 후보에 포함” 설정을 적용하지 않습니다.';
 
@@ -3374,7 +3520,8 @@ async function clinicPrintLoadRecommendations(classId) {
         countPerStudent: settings.countPerStudentRaw,
         difficultyMode: settings.difficultyMode,
         selectedDifficultyBuckets: settings.selectedDifficultyBuckets,
-        includeSeenQuestionUids: settings.includeSeenQuestionUids === true
+        includeSeenQuestionUids: settings.includeSeenQuestionUids === true,
+        selectionBasis: settings.selectionBasis
     };
     if (!settings.recommendationOptions) {
         clinicPrintResetRecommendationState(clinicPrintRecommendationState.scope || 'class', classId);
@@ -3419,13 +3566,30 @@ async function clinicPrintLoadRecommendations(classId) {
             throw new Error('클리닉 추천 모듈을 불러오지 못했습니다.');
         }
         const archive2Core = window.Archive2Core;
+        // 틀린 유형 기준을 골랐을 때만 유형 사다리(archive2-derive 등)를 불러 쓴다. 기본 방식은 이 길을 타지 않는다.
+        const typeBasis = settings.selectionBasis === 'wrong_type';
+        let typeExtras = {};
+        if (typeBasis) {
+            await clinicPrintWithTimeout(clinicPrintLoadTypeLadderModules(), 45000, '유형 기준 모듈을 불러오지 못했습니다.');
+            if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
+            typeExtras = {
+                selectionBasis: 'wrong_type',
+                typeLadder: clinicPrintBuildTypeLadder(
+                    candidateCatalog, clinicPrintGetClassGrade(classId),
+                    settings.difficultyMode === 'selected' ? settings.selectedDifficultyBuckets : null
+                ),
+                evidenceSessionIds: clinicPrintGetTypeEvidenceSessionIds(classId, scope)
+            };
+        }
         const result = window.ClinicRecommendations.build({
             sessions: history.sessions,
             resultItems: history.resultItems,
             assignmentQuestions: history.assignmentQuestions,
             wrongAnswers: history.wrongAnswers,
             studentIds: selectedStudentIds,
-            candidateRecords: clinicPrintPrepareArchive2CandidateRecords(candidateCatalog.records),
+            candidateRecords: typeBasis
+                ? clinicPrintGetPreparedCandidateRecords(candidateCatalog)
+                : clinicPrintPrepareArchive2CandidateRecords(candidateCatalog.records),
             archive2Core,
             canonicalAuthority: candidateCatalog.catalog.canonicalAuthority,
             targetGrade: clinicPrintGetClassGrade(classId),
@@ -3439,7 +3603,8 @@ async function clinicPrintLoadRecommendations(classId) {
             asOf: new Date().toISOString(),
             countPerStudent: settings.recommendationOptions.countPerStudent,
             recommendationOptions: settings.recommendationOptions,
-            ...(settings.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {})
+            ...(settings.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {}),
+            ...typeExtras
         });
         if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
 
