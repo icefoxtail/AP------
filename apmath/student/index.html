@@ -9,35 +9,36 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.23.4">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.4">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.4">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.4">
+  <link rel="manifest" href="./manifest.json?v=2026.11.23.5">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.23.5">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.23.5">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.23.5">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261123-similar-title-1"></script>
   <script src="./archive-review-output.js?v=20261111-student-navigation-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.23.4"></script>
-  <script src="../js/similar-exam.js?v=2026.11.23.4"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.23.5"></script>
+  <script src="../js/similar-exam.js?v=2026.11.23.5"></script>
   <script src="../../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
-  <script src="./similar-link.js?v=2026.11.23.4"></script>
-  <script src="./self-study-view.js?v=2026.11.23.4"></script>
-  <script src="./self-study-similar.js?v=2026.11.23.4"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.23.4"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.4">
-  <script src="../js/student-navigation.js?v=2026.11.23.4" data-student-navigation="manual"></script>
+  <script src="./similar-link.js?v=2026.11.23.5"></script>
+  <script src="./self-study-record.js?v=2026.11.23.5"></script>
+  <script src="./self-study-view.js?v=2026.11.23.5"></script>
+  <script src="./self-study-similar.js?v=2026.11.23.5"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.23.5"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.23.5">
+  <script src="../js/student-navigation.js?v=2026.11.23.5" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.4">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.23.5">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.4" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.23.5" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -60,7 +61,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.23.4';
+    const STUDENT_APP_VERSION = '2026.11.23.5';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -87,6 +88,11 @@
     let omrResultAssignmentId = '';
     let selfStudyAssignmentId = '';
     let selfStudyKind = 'wrong';
+    let selfStudyRecorder = null; // record of the self-study screen that is open (flushed when another opens / on logout)
+    let selfStudyRemoteOff = false; // the server answered "not available" once: no more calls this session, the local record carries on
+    let selfStudyAggregate = null; // "assignment|kind" -> progress note, from one GET when the exam list opens
+    let selfStudyAggregatePromise = null;
+    let selfStudyAggregateTriedAt = 0;
     let omrListFilter = 'all';
     let materialWrongData = null;
     let wrongClinicData = null;
@@ -474,6 +480,12 @@
       } catch (e) {}
     }
     function clearSession() {
+      try { selfStudyRecorder?.stop?.(); } catch (e) {}
+      selfStudyRecorder = null;
+      selfStudyRemoteOff = false;
+      selfStudyAggregate = null;
+      selfStudyAggregatePromise = null;
+      selfStudyAggregateTriedAt = 0;
       studentRequestGeneration += 1;
       window.StudentPortalNavigation?.clearContext();
       disposeClinicLearningView();
@@ -1906,14 +1918,99 @@
     function canOfferSelfStudySimilar(exam) {
       return getSelfStudyWrongCount(exam) > 0 && Boolean(globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink));
     }
+    // 자습 기록: 풀이 결과는 먼저 이 기기(localStorage)에, 이어서 서버에 저장한다. 서버가 꺼져 있거나 아직 없으면(FEATURE_UNAVAILABLE·404) 오류 표시 없이 로컬 기록만으로 동작한다.
+    // 교사 미리보기에서는 읽지도 저장하지도 않는다.
+    function selfStudyStorage() {
+      if (isTeacherPreview) return null;
+      try { return window.localStorage; } catch (e) { return null; }
+    }
+    async function selfStudyFetch(method, path, ctx, body) {
+      const headers = { 'Content-Type': 'application/json' };
+      const init = { method, headers };
+      if (method === 'GET') headers['X-Student-Token'] = ctx.studentToken;
+      else {
+        init.body = JSON.stringify({ student_id: ctx.studentId, student_token: ctx.studentToken, ...body });
+        init.keepalive = true; // 화면을 닫는 순간의 마지막 저장도 나가도록
+      }
+      const response = await fetch(`${API_BASE}/${path}`, init);
+      const data = await response.json().catch(() => ({}));
+      // 꺼짐: HTTP 200 + code FEATURE_UNAVAILABLE, 배포 전: 코드 없는 404 -> 이번 접속 동안 더 부르지 않는다.
+      // 코드가 붙은 404(이 학생의 배정이 아님·취소된 배정)는 그 화면만 로컬 기록으로 두고 서버는 계속 쓴다.
+      if (data?.code === 'FEATURE_UNAVAILABLE' || (response.status === 404 && !data?.code)) {
+        selfStudyRemoteOff = true;
+        return { unavailable: true };
+      }
+      if (response.status === 404) return { unavailable: true };
+      if (!response.ok || data?.ok === false || data?.success === false) return { error: true };
+      return { ok: true, data };
+    }
+    function makeSelfStudyRemote() {
+      const ctx = captureStudentAuthContext();
+      const record = globalThis.StudentSelfStudyRecord;
+      const usable = () => Boolean(record) && !isTeacherPreview && !selfStudyRemoteOff && Boolean(ctx.studentId && ctx.studentToken) && isStudentAuthContextCurrent(ctx);
+      const query = assignmentId => `student-portal/self-study?student_id=${encodeURIComponent(ctx.studentId)}${assignmentId ? `&assignment_id=${encodeURIComponent(assignmentId)}` : ''}`;
+      return {
+        enabled: usable,
+        async post(payload) {
+          if (!usable()) return selfStudyRemoteOff ? { unavailable: true } : { error: true };
+          const answer = await selfStudyFetch('POST', 'student-portal/self-study', ctx, payload);
+          return answer.ok ? { ok: true } : answer;
+        },
+        async get(assignmentId, kind) {
+          if (!usable()) return selfStudyRemoteOff ? { unavailable: true } : { error: true };
+          const answer = await selfStudyFetch('GET', query(assignmentId), ctx);
+          if (!answer.ok) return answer;
+          const wanted = record.extractSets(answer.data).filter(set => (!set.kind || set.kind === kind) && (!set.assignmentId || set.assignmentId === String(assignmentId)));
+          return { ok: true, items: wanted.flatMap(set => set.items) };
+        },
+        async getAll() {
+          if (!usable()) return selfStudyRemoteOff ? { unavailable: true } : { error: true };
+          const answer = await selfStudyFetch('GET', query(''), ctx);
+          return answer.ok ? { ok: true, map: record.parseAggregate(answer.data) } : answer;
+        }
+      };
+    }
+    function selfStudyProgressText(exam, kind) {
+      const record = globalThis.StudentSelfStudyRecord;
+      if (!record || isTeacherPreview || !session?.student_id) return '';
+      const assignmentId = String(exam?.assignment_id || '');
+      const server = selfStudyAggregate?.get(`${assignmentId}|${kind}`) || null;
+      const local = record.readLocalSummary(selfStudyStorage(), session.student_id, assignmentId, kind);
+      const best = record.pickProgress(server, local);
+      return best ? record.progressText(kind, best) : '';
+    }
+    function refreshSelfStudyProgressLabels() {
+      document.querySelectorAll('[data-ss-prog]').forEach(label => {
+        const [assignmentId, kind] = String(label.dataset.ssProg || '').split('|');
+        const exam = findOmrExam(assignmentId);
+        if (exam) label.textContent = selfStudyProgressText(exam, kind) || label.dataset.ssFallback || '';
+      });
+    }
+    // 시험 목록·결과 화면이 열릴 때 서버 집계를 한 번 받아 단추 옆 진행 문구를 채운다. 실패·꺼짐이면 로컬 기록, 그것도 없으면 기존 문구 그대로.
+    function ensureSelfStudyAggregate() {
+      if (!globalThis.StudentSelfStudyRecord || isTeacherPreview || selfStudyRemoteOff || selfStudyAggregate) return Promise.resolve();
+      if (selfStudyAggregatePromise) return selfStudyAggregatePromise;
+      if (Date.now() - selfStudyAggregateTriedAt < 60000) return Promise.resolve();
+      const remote = makeSelfStudyRemote();
+      if (!remote.enabled()) return Promise.resolve();
+      selfStudyAggregateTriedAt = Date.now();
+      selfStudyAggregatePromise = remote.getAll().then(answer => {
+        if (answer?.ok) {
+          selfStudyAggregate = answer.map;
+          refreshSelfStudyProgressLabels();
+        }
+      }).catch(() => {}).then(() => { selfStudyAggregatePromise = null; });
+      return selfStudyAggregatePromise;
+    }
     function renderSelfStudyWrongButton(exam, from) {
       const count = getSelfStudyWrongCount(exam);
       if (!count || !globalThis.StudentSelfStudyView) return '';
-      return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudyWrong('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">오답 다시 풀기 <span class="button-meta">${count}문항</span></button>`;
+      const fallback = `${count}문항`;
+      return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudyWrong('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">오답 다시 풀기 <span class="button-meta" data-ss-prog="${escapeHtml(exam.assignment_id)}|wrong" data-ss-fallback="${fallback}">${escapeHtml(selfStudyProgressText(exam, 'wrong') || fallback)}</span></button>`;
     }
     function renderSelfStudySimilarButton(exam, from) {
       if (!globalThis.StudentSelfStudyView || !canOfferSelfStudySimilar(exam)) return '';
-      return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudySimilar('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">유사 문항 풀어보기</button>`;
+      return `<button type="button" class="btn btn-primary self-study-open" onclick="openSelfStudySimilar('${escapeHtml(exam.assignment_id)}', '${from === 'result' ? 'result' : 'list'}')">유사 문항 풀어보기 <span class="button-meta" data-ss-prog="${escapeHtml(exam.assignment_id)}|similar" data-ss-fallback="">${escapeHtml(selfStudyProgressText(exam, 'similar'))}</span></button>`;
     }
     function renderSelfStudyActions(exam, from) {
       const wrong = renderSelfStudyWrongButton(exam, from);
@@ -1957,7 +2054,19 @@
           set = selfStudy.buildWrongSet({ title: titleFor(wrongIds.length), questions, wrongIds });
           if (canOfferSelfStudySimilar(exam)) other = { label: '유사 문항 풀어보기', onClick: () => openSelfStudy('similar', exam.assignment_id, from) };
         }
-        await selfStudy.show(set, { container: app, onBack: back, headerHtml: renderPreviewNotice(), bottomAction: other });
+        // 이 화면의 기록: 문항 키는 세트가 만든다(UID 또는 대체 키). 이전 화면의 저장 대기분은 먼저 내보낸다.
+        try { selfStudyRecorder?.stop?.(); } catch (e) {}
+        const recorder = globalThis.StudentSelfStudyRecord.createRecorder({
+          studentId: session?.student_id, assignmentId: exam.assignment_id, kind: selfStudyKind,
+          entries: set.questions.filter(question => question && !question.missing && question.ssKey).map(question => ({ key: question.ssKey, uid: question.ssUid || null, src: question.ssSrc ?? question.no })),
+          storage: selfStudyStorage(),
+          remote: isTeacherPreview ? null : makeSelfStudyRemote()
+        });
+        selfStudyRecorder = recorder;
+        await selfStudy.show(set, {
+          container: app, onBack: back, headerHtml: renderPreviewNotice(), bottomAction: other, recorder,
+          recordNote: isTeacherPreview ? '선생님 미리보기에서는 푼 기록이 저장되지 않아요.' : undefined
+        });
       } catch (error) {
         if (!isStudentViewCurrent(view, 'omr-self-study')) return;
         app.innerHTML = shell(titleFor(0), `<div class="empty" role="alert"><strong>${similar ? '유사' : '틀린'} 문항을 불러오지 못했어요.</strong><p>연결을 확인한 뒤 다시 시도해 주세요.</p><button type="button" class="btn" onclick="openSelfStudy('${similar ? 'similar' : 'wrong'}', '${escapeHtml(selfStudyAssignmentId)}', '${from === 'result' ? 'result' : 'list'}')">다시 불러오기</button></div>`);
@@ -1991,6 +2100,7 @@
         </div>
       `;
       try {
+        ensureSelfStudyAggregate();
         await Promise.all([loadOmrExams(true), loadSimilarLinks()]);
         if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         const exams = getVisibleOmrExams();
@@ -2187,6 +2297,7 @@
           </section>
         </div>
       `;
+      ensureSelfStudyAggregate();
     }
     async function submitOmr() {
       if (isLoading || !omrDraft) return;

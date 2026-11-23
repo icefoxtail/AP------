@@ -95,7 +95,7 @@ test('the portal offers the similar button only with wrong numbers and a count-m
     escapeHtml: value => String(value),
     isOmrReviewAvailable: item => Boolean(item.archive_file)
   });
-  vm.runInContext(['normalizeOmrWrongIds', 'getStudentPortalRecordedSubmission', 'getSelfStudyWrongCount', 'canOfferSelfStudySimilar', 'renderSelfStudyWrongButton', 'renderSelfStudySimilarButton', 'renderSelfStudyActions'].map(grab).join('\n'), context);
+  vm.runInContext(['normalizeOmrWrongIds', 'getStudentPortalRecordedSubmission', 'getSelfStudyWrongCount', 'canOfferSelfStudySimilar', 'selfStudyProgressText', 'renderSelfStudyWrongButton', 'renderSelfStudySimilarButton', 'renderSelfStudyActions'].map(grab).join('\n'), context);
   const both = context.renderSelfStudyActions(exam, 'list');
   assert.match(both, /has-two/);
   assert.match(both, /openSelfStudyWrong\('a1', 'list'\)/);
