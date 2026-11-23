@@ -1007,7 +1007,14 @@
     // Pins count as used (the teacher chose them), but two pins of one family both stay.
     const typeCounts = new Map();
     const usedFamilies = new Set();
-    const familyOf = familyResolver(records);
+    // The family is a property of the exams, not of this pool: `records` is only the units/filters the
+    // teacher picked, so a similar set whose original question sits in another unit (or is filtered out)
+    // would look unlinked, and two similar variants of one original would both slip in. The caller may
+    // pass the whole catalog as `options.familyRecords` for the link computation; selection still only
+    // ever draws from `records`.
+    const familyOf = familyResolver(
+      Array.isArray(options.familyRecords) && options.familyRecords.length ? options.familyRecords : records,
+    );
     const noteType = (record) => {
       const type = selectionTypeKey(record);
       if (type) typeCounts.set(type, (typeCounts.get(type) || 0) + 1);
