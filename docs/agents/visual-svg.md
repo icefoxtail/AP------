@@ -176,3 +176,7 @@ Claude·GPT·Codex 어느 라인이든 기출·생성문항의 문제·해설 �
 
 보고: 시험지·문항별 상태(ARCHIVE_BOUND / FAILED / UNSUPPORTED)와 렌더 수, 확인한 PNG 경로, CONTENT, 엔진 공백, 사용자 결정이 필요한 것.
 ```
+
+## 옛 그림의 접근성 표기 누락도 등록·게시를 막지 않는다 (2026-11-24, 사용자 결정)
+
+등록기 studentIndexes 레인에서 옛 그림(엔진 표지 `data-engine-version`이 루트 태그에 없는 그림)의 `TITLE_DESC_REQUIRED`·`ROLE_IMG_REQUIRED`·`ARIA_REFERENCE_INVALID`·`TITLE_DESC_ID_INVALID`는 막지 않고 목록(advisory, `--quality-report`의 `legacy-a11y`)으로만 남긴다. title/desc가 없는 그림의 색인 행에는 시험지·문항·역할로만 만든 기계 대체 문구(예: "<시험지 이름> 3번 해설 그림")를 넣고 행에 `textSource: "MACHINE_SUBSTITUTE"`를 둔다(내용을 추측하지 않는다). 화면 쪽 `svg-accessibility.js`는 이 행을 그림 이름으로 쓰지 않아 시험지의 기존 이름과 호출한 쪽 기본값이 그대로 쓰인다. 새 엔진 그림은 엔진이 title·desc·role·aria를 항상 넣으므로 빠지면 엔진 회귀이니 계속 막는다(엔진 표지가 있으면 대체 문구도 받지 않는다). 판별 근거: 저장소 SVG 16,548개 가운데 `data-engine-version`이 있는 6,661개 전부에 role·title·desc·aria가 있었고(오판 0), 엔진 `svg_composer.py`가 이 표지를 항상 쓴다. 계속 막는 것: `SCALE_GUIDANCE_FORBIDDEN`·`INTERNAL_STUDENT_TEXT_FORBIDDEN`(학생 눈에 보이는 글), 루트 없음, `DUPLICATE_ID`, 파일 없음, 해시 불일치, `--expected-source-index` 감사 모드 전체. 이유: 옛 그림 2,600여 개가 표기가 없어, 그 그림 바이트를 바꾸거나 시험지에 새로 연결하는 수정이 필수 레인을 멈추게 했다. 표기를 채우는 일은 `--quality-report`의 `legacy-a11y` 목록으로 따로 한다.

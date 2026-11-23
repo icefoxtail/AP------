@@ -105,8 +105,16 @@ test('advisory mode lists description-quality findings without blocking, and sti
   const result = assertSvgStudentLanguage(generic, { assetRef: 'a.svg', advisory });
   assert.equal(result.status, 'PASS');
   assert.ok(advisory.some(row => row.assetRef === 'a.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'));
-  // 실제 결함(참조 깨짐, 루트 없음)은 advisory 모드에서도 막는다.
+  // 옛 그림의 접근성 표기 누락(참조 깨짐)은 막지 않고 목록으로만 남긴다. 새 엔진 그림(data-engine-version)은 계속 막는다.
   const broken = svg('', '두 원의 교점', '그림입니다.', 'role="img" aria-labelledby="missing desc"');
-  assert.throws(() => assertSvgStudentLanguage(broken, { assetRef: 'b.svg', advisory: [] }), /ARIA_REFERENCE_INVALID/);
+  const legacyList = [];
+  assert.equal(assertSvgStudentLanguage(broken, { assetRef: 'b.svg', advisory: legacyList }).status, 'PASS');
+  assert.ok(legacyList.some(row => row.code === 'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID'));
+  const engineBroken = svg('', '두 원의 교점', '그림입니다.', 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="missing desc"');
+  assert.throws(() => assertSvgStudentLanguage(engineBroken, { assetRef: 'b.svg', advisory: [] }), /ARIA_REFERENCE_INVALID/);
+  assert.throws(() => assertSvgStudentLanguage('<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"/>', { advisory: [] }), /TITLE_DESC_REQUIRED/);
+  // 학생 눈에 보이는 결함, 중복 id, 루트 없음은 옛 그림도 막는다.
+  assert.throws(() => assertSvgStudentLanguage(svg('<text>축척: x,y 동일 단위</text>'), { assetRef: 'd.svg', advisory: [] }), /SCALE_GUIDANCE_FORBIDDEN/);
+  assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
   assert.throws(() => assertSvgStudentLanguage('<g/>', { assetRef: 'c.svg', advisory: [] }), /SVG_ROOT_MISSING/);
 });

@@ -1,7 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
-const { assertSvgStudentLanguage } = require('./svg-language-contract.cjs');
+const { assertSvgStudentLanguage, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
+// 옛 그림에 title/desc가 없어 시험지·문항·역할로 만든 기계 대체 문구를 넣은 행의 표시(textSource). 내용을 추측한 문구가 아니다.
+const TEXT_SOURCE_SUBSTITUTE = 'MACHINE_SUBSTITUTE';
 const { collectSvgAccessibilitySourceIndex, collectChangedSourceScope } = require('./collect-svg-accessibility-source-index.cjs');
 
 const SCHEMA_VERSION = 'SVG_STUDENT_ACCESSIBILITY_V1';
@@ -97,9 +99,15 @@ function validateRecord(record, repoRoot, seen, options = {}) {
   }
   const bytes = fs.readFileSync(assetPath);
   assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory });
-  const svgText = svgAccessibilityText(bytes, assetRef);
-  if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
-    fail('SVG_ACCESSIBILITY_METADATA_MISMATCH', `${assetRef}:svg=${JSON.stringify(svgText)}:manifest=${JSON.stringify({ titleKo: record.titleKo.trim(), descriptionKo: record.descriptionKo.trim() })}`);
+  const substitute = record.textSource === TEXT_SOURCE_SUBSTITUTE;
+  if (record.textSource !== undefined && !substitute) fail('INVALID_SVG_ACCESSIBILITY_TEXT_SOURCE', assetRef);
+  // 대체 문구 행은 그림에 쓰인 글이 없다는 뜻이다. 새 엔진 그림(엔진 표지가 있는 그림)은 대체 문구를 받지 않는다.
+  if (substitute && isEngineSvg(bytes.toString('utf8'))) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
+  if (!substitute) {
+    const svgText = svgAccessibilityText(bytes, assetRef);
+    if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
+      fail('SVG_ACCESSIBILITY_METADATA_MISMATCH', `${assetRef}:svg=${JSON.stringify(svgText)}:manifest=${JSON.stringify({ titleKo: record.titleKo.trim(), descriptionKo: record.descriptionKo.trim() })}`);
+    }
   }
   const actualSha256 = crypto.createHash('sha256').update(bytes).digest('hex');
   const actualGitBlobSha = gitBlobSha(bytes);
@@ -118,6 +126,7 @@ function validateRecord(record, repoRoot, seen, options = {}) {
     sourceQid: record.sourceQid,
     provenanceStatus: record.provenanceStatus,
     answerHintFree: record.answerHintFree,
+    ...(substitute ? { textSource: TEXT_SOURCE_SUBSTITUTE } : {}),
     ...(options.semanticClearanceOrigin ? { semanticClearanceOrigin: options.semanticClearanceOrigin } : {})
   };
 }
@@ -130,7 +139,15 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
   const assetRoot = path.resolve(repoRoot, 'archive', 'assets');
   if (!assetPath.startsWith(assetRoot + path.sep) || !fs.existsSync(assetPath)) fail('SVG_ACCESSIBILITY_ASSET_NOT_FOUND', assetRef);
   const bytes = fs.readFileSync(assetPath);
-  const text = svgAccessibilityText(bytes, assetRef);
+  let text;
+  try { text = svgAccessibilityText(bytes, assetRef); }
+  catch (error) {
+    // 옛 그림에 title/desc가 없으면 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남는다). 엔진 그림은 계속 막는다.
+    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8')) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
+    const substitute = substituteAccessibilityText(use);
+    text = { titleKo: substitute, descriptionKo: substitute, textSource: TEXT_SOURCE_SUBSTITUTE };
+    options.advisory.push({ assetRef, code: 'SVG_ACCESSIBILITY_LEGACY_TEXT_SUBSTITUTED', surface: '' });
+  }
   let answerHintFree = false;
   let semanticClearanceOrigin = 'SOLUTION_SURFACE';
   if (use.visualRole === 'problem') {
@@ -219,7 +236,7 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         });
         rows.push(validated);
       } else {
-        const derived = recordFromCurrentSvg(representative, repoRoot);
+        const derived = recordFromCurrentSvg(representative, repoRoot, { advisory });
         rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin, advisory }));
       }
     }
@@ -228,7 +245,7 @@ function productionRows(manifest, repoRoot, scopeOptions) {
   const rosterBytes = Buffer.from(JSON.stringify({ sourceRoots: live.sourceRoots, scopedUses }));
   return {
     rows,
-    advisory,
+    advisory: [...new Map(advisory.map(row => [`${row.assetRef}\u0000${row.code}\u0000${row.surface}`, row])).values()],
     scope: {
       scopeMode: scope.scopeMode,
       baseRef: scope.baseRef,

@@ -4,7 +4,7 @@
 // 이유: 등록 실행의 advisory 출력은 바뀐 그림만, 앞 50개까지다. 수리 대상 전체(수천 개)를 일괄 수리에 넣을 수 있게 전체 목록을 따로 뽑는다.
 const fs = require('node:fs');
 const path = require('node:path');
-const { validateSvgStudentLanguage, QUALITY_ONLY_CODES } = require('./svg-language-contract.cjs');
+const { validateSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
 const { collectSvgAccessibilitySourceIndex } = require('./collect-svg-accessibility-source-index.cjs');
 
 // 학생 눈에 보이는 글자 문제일 수 있는 코드를 맨 앞에 둔다.
@@ -49,18 +49,22 @@ function collectQualityRows({ repoRoot, uses } = {}) {
     const result = validateSvgStudentLanguage(source, { assetRef });
     if (result.status === 'PASS') continue;
     const codes = [...new Set(result.errors.map(error => error.code))];
-    const quality = codes.filter(code => QUALITY_ONLY_CODES.has(code));
-    if (!quality.length && !codes.length) continue;
+    // 등록기가 막는 것(defect)과 목록으로만 남기는 것(quality, legacy-a11y)을 같은 기준으로 가른다.
+    const engine = isEngineSvg(source);
+    const blocking = codes.filter(code => !QUALITY_ONLY_CODES.has(code) && !(!engine && LEGACY_ACCESSIBILITY_CODES.has(code)));
     const found = usesByAsset.get(assetRef) || [];
     rows.push({
       assetRef,
-      kind: codes.every(code => QUALITY_ONLY_CODES.has(code)) ? 'quality' : 'defect',
+      kind: blocking.length ? 'defect' : codes.some(code => LEGACY_ACCESSIBILITY_CODES.has(code)) ? 'legacy-a11y' : 'quality',
+      engine,
       codes,
       exams: [...new Set(found.map(use => use.sourceExamRef))].sort(),
       questions: [...new Set(found.map(use => `${use.sourceExamRef}#${use.sourceQid}`))].sort(),
       roles: [...new Set(found.map(use => use.visualRole))].sort(),
       title: tagText(source, 'title'),
-      desc: tagText(source, 'desc')
+      desc: tagText(source, 'desc'),
+      // title/desc가 없는 옛 그림에 색인이 넣을 기계 대체 문구(시험지·문항·역할만 씀)
+      substituteText: !engine && codes.includes('SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED') && found.length ? found.map(substituteAccessibilityText).join(' | ') : ''
     });
   }
   rows.sort((a, b) => rank(a.codes) - rank(b.codes) || (a.assetRef < b.assetRef ? -1 : a.assetRef > b.assetRef ? 1 : 0));
@@ -77,9 +81,9 @@ function writeQualityReport({ repoRoot, outPath, uses } = {}) {
     fs.writeFileSync(outPath, JSON.stringify({ scanned, flagged: rows.length, countsByCode: counts, rows }, null, 2) + '\n');
   } else {
     const cell = value => String(value ?? '').replace(/[\t\r\n]+/g, ' ');
-    const header = ['assetRef', 'kind', 'codes', 'role', 'exams', 'questions', 'title', 'desc'];
+    const header = ['assetRef', 'kind', 'codes', 'role', 'exams', 'questions', 'title', 'desc', 'substituteText'];
     const lines = [header.join('\t'), ...rows.map(row => [row.assetRef, row.kind, row.codes.join(','), row.roles.join(','),
-      row.exams.join(';'), row.questions.join(';'), row.title, row.desc].map(cell).join('\t'))];
+      row.exams.join(';'), row.questions.join(';'), row.title, row.desc, row.substituteText].map(cell).join('\t'))];
     fs.writeFileSync(outPath, lines.join('\n') + '\n');
   }
   return { scanned, flagged: rows.length, countsByCode: counts, elapsedMs: Date.now() - started, outPath };
