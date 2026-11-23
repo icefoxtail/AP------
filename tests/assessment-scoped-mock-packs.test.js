@@ -92,9 +92,11 @@ for (const scope of config.scopes) {
       dups.add(dup);
       assert(String(q.answer ?? '').trim() !== '' && String(q.solution ?? '').trim() !== '' && String(q.content ?? '').trim() !== '', `${where}: 정답·해설·발문이 비어 있습니다.`);
       assert(Number.isInteger(q.difficultyBucket) && q.difficultyBucket >= 1 && q.difficultyBucket <= 5, `${where}: 난이도가 1~5 정수가 아닙니다: ${q.difficultyBucket}`);
+      // level(하·중·상)은 카드 칩 표시용 파생값: difficultyBucket 1 하, 2 중, 3~5 상
+      assert(q.level === (q.difficultyBucket <= 1 ? '하' : q.difficultyBucket === 2 ? '중' : '상'), `${where}: level이 difficultyBucket에서 파생된 값이 아닙니다: ${q.level}`);
       assert(Number(q._sourceYear) + 2000 >= scope.yearMin && Number(q._sourceYear) + 2000 <= config.common.yearMax, `${where}: 쓸 수 없는 연도입니다: ${q._sourceYear}`);
       assert(q.l3Disposition !== 'HOLD' && q.l4Disposition !== 'HOLD' && !q.itemHold, `${where}: 보류 표시가 있는 문항입니다.`);
-      assert(!/^\s*(?:<p[^>]*>\s*)?(\[[^\]]*(서술|논술|서답)[^\]]*\]|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
+      assert(!/^\s*(?:<p[^>]*>\s*)?(\[[^\]]*(서술|논술|서답)[^\]]*\]|(?:&lt;|<)[^&<>]*(서술|논술|서답)[^&<>]*(?:&gt;|>)|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
       assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(String(q.content).replace(/\$[^$]*\$/g, ' ').replace(/\([^()]*\|[^()]*\)/g, ' ')), `${where}: 발문에 배점 표기가 남았습니다.`);
       if (q.questionType === '객관식') {
         const choicesInFigure = Array.isArray(q.choices) && q.choices.length === 0 && (q.image || /<img\b/i.test(String(q.content))) && /^\s*[①-⑤](?:\s*[,，、]?\s*[①-⑤])*\s*$/.test(String(q.answer));
@@ -123,5 +125,16 @@ for (const scope of config.scopes) {
   });
 }
 assert(scopedPackCount >= 1, '시험 범위 맞춤 모의고사가 없습니다.');
+
+// 카드 난이도 칩이 모든 문항을 센다(하·중·상 합 = 문항 수)
+for (const pack of data.packs.filter((p) => p.questions.some((q) => q._scopeId))) {
+  assert(Object.values(pack.difficultyMix).reduce((a, b) => a + b, 0) === pack.questions.length, `${pack.id}: 난이도 칩(difficultyMix) 합이 문항 수와 다릅니다.`);
+}
+
+// 도구로 다시 조립한 결과(기본 5회 + 맞춤 팩 + sourceSummary)가 커밋된 자료와 JSON으로 같아야 한다. 카탈로그가 바뀌어 달라지면 다시 조립한다.
+const rebuilt = require(path.join(toolsDir, 'build-m1-2final-mock.cjs')).buildAllPacks();
+const REBUILD_MSG = '자료 파일이 도구로 다시 조립한 결과와 다릅니다. node archive/tools/assessment-mock/build-m1-2final-mock.cjs 로 다시 조립하세요.';
+assert(JSON.stringify(rebuilt.packs) === JSON.stringify(data.packs), `맞춤 팩: ${REBUILD_MSG}`);
+assert(JSON.stringify(rebuilt.summary) === JSON.stringify(data.sourceSummary), `sourceSummary: ${REBUILD_MSG}`);
 
 console.log(`assessment-scoped-mock-packs.test.js: OK (범위 ${config.scopes.length}개, 팩 ${scopedPackCount}개, 문항 ${scopedQuestionCount}개)`);

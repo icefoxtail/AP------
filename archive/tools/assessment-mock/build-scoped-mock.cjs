@@ -272,6 +272,11 @@ function assemblePack(scope, common, selectedCandidates, roundNo, helpers) {
     const score = stripScoreLabels(clone.content);
     clone.content = score.content;
     if (score.removed.length) clone._sourceScoreLabels = score.removed.join(' ');
+    // 난이도 정본은 정수 difficultyBucket(1~5)이다. level(하·중·상)은 카드의 난이도 칩 표시용 파생값이다(원본 level에 "2"·"중하"·"최상" 등이 섞여 칩 합이 24가 안 됨).
+    // 대응은 기본 5회 팩에서 가장 많이 나타난 값을 따른다: 1 하, 2 중, 3~5 상.
+    // 문항 사본이 가진 difficultyBucket(원본 시험지 값)에서 만든다. 없거나 정수가 아니면 카탈로그 값을 쓴다.
+    if (!Number.isInteger(clone.difficultyBucket) || clone.difficultyBucket < 1 || clone.difficultyBucket > 5) clone.difficultyBucket = c.bucket;
+    clone.level = clone.difficultyBucket <= 1 ? '하' : clone.difficultyBucket === 2 ? '중' : '상';
     const meta = parseSource(c.file);
     const group = scope.groups[c.gi];
     Object.assign(clone, {

@@ -5894,9 +5894,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중1 2학기 기말·중간 기출 원본(2022~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 7,
-    "중": 11,
-    "상": 6
+    "하": 6,
+    "중": 10,
+    "상": 8
    },
    "difficultyBucketMix": {
     "1": 6,
@@ -6142,7 +6142,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 4,
-     "level": "중",
+     "level": "하",
      "category": "평면도형의 성질",
      "originalCategory": "평면도형의 성질",
      "standardCourse": "중1 수학",
@@ -6192,7 +6192,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 1,
-     "level": "하",
+     "level": "중",
      "category": "평면도형의 성질",
      "originalCategory": "평면도형의 성질",
      "standardCourse": "중1 수학",
@@ -6488,7 +6488,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "하",
+     "level": "중",
      "category": "입체도형의 성질",
      "originalCategory": "입체도형의 성질",
      "standardCourse": "중1 수학",
@@ -6592,7 +6592,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 13,
-     "level": "상",
+     "level": "중",
      "category": "입체도형의 성질",
      "originalCategory": "입체도형의 성질",
      "standardCourse": "중1 수학",
@@ -6791,7 +6791,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 10,
-     "level": "중",
+     "level": "상",
      "category": "통계",
      "originalCategory": "통계",
      "standardCourse": "중1 수학",
@@ -6931,7 +6931,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": "중",
+     "level": "상",
      "category": "기본도형",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -7073,7 +7073,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 22,
-     "level": "중",
+     "level": "상",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -7132,9 +7132,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중1 2학기 기말·중간 기출 원본(2022~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 6,
-    "중": 15,
-    "상": 3
+    "하": 7,
+    "중": 8,
+    "상": 9
    },
    "difficultyBucketMix": {
     "1": 7,
@@ -7273,7 +7273,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 19,
-     "level": "중",
+     "level": "상",
      "category": "삼각형의 작도",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -7321,7 +7321,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 5,
-     "level": "중",
+     "level": "상",
      "category": "기본도형",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -7424,7 +7424,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 2,
-     "level": "중",
+     "level": "하",
      "category": "평면도형의 성질",
      "originalCategory": "평면도형의 성질",
      "standardCourse": "중1 수학",
@@ -7475,7 +7475,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 2,
-     "level": "중",
+     "level": "상",
      "category": "평면도형의 성질",
      "originalCategory": "평면도형의 성질",
      "standardCourse": "중1 수학",
@@ -7626,7 +7626,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 11,
-     "level": "하",
+     "level": "중",
      "category": "입체도형의 성질",
      "originalCategory": "입체도형의 성질",
      "standardCourse": "중1 수학",
@@ -7927,7 +7927,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 14,
-     "level": "중",
+     "level": "상",
      "category": "입체도형의 성질",
      "originalCategory": "입체도형의 성질",
      "standardCourse": "중1 수학",
@@ -8071,7 +8071,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "하",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -8121,7 +8121,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 14,
-     "level": "중",
+     "level": "상",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -8315,7 +8315,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": "중",
+     "level": "상",
      "category": "통계",
      "originalCategory": "통계",
      "standardCourse": "중1 수학",
@@ -8373,9 +8373,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중1 2학기 기말·중간 기출 원본(2022~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 4,
-    "중": 18,
-    "상": 2
+    "하": 6,
+    "중": 10,
+    "상": 8
    },
    "difficultyBucketMix": {
     "1": 6,
@@ -8404,7 +8404,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "questions": [
     {
      "id": 12,
-     "level": "중",
+     "level": "하",
      "category": "삼각형의 작도",
      "originalCategory": "삼각형의 작도",
      "standardCourse": "중1 수학",
@@ -8510,7 +8510,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "상",
      "category": "삼각형의 성립 조건",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -8554,7 +8554,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "상",
      "category": "기본도형",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -8705,7 +8705,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 4,
-     "level": "중",
+     "level": "상",
      "category": "평면도형의 성질",
      "originalCategory": "평면도형의 성질",
      "standardCourse": "중1 수학",
@@ -8855,7 +8855,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 1,
-     "level": "중",
+     "level": "하",
      "category": "입체도형의 구성 요소",
      "originalCategory": "입체도형",
      "standardCourse": "중1 수학",
@@ -8910,7 +8910,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 8,
-     "level": "중",
+     "level": "상",
      "category": "입체도형",
      "originalCategory": "입체도형",
      "standardCourse": "중1 수학",
@@ -9210,7 +9210,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 15,
-     "level": "중",
+     "level": "하",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -9256,7 +9256,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 12,
-     "level": "중",
+     "level": "상",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -9352,7 +9352,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "상",
      "category": "자료의 정리와 해석",
      "originalCategory": "자료의 정리와 해석",
      "standardCourse": "중1 수학",
@@ -9399,7 +9399,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": "하",
+     "level": "중",
      "category": "기본도형",
      "originalCategory": "기본도형",
      "standardCourse": "중1 수학",
@@ -9604,9 +9604,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중2 2학기 기말·중간 기출 원본(2018~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 4,
-    "중": 14,
-    "상": 4
+    "하": 5,
+    "중": 11,
+    "상": 8
    },
    "difficultyBucketMix": {
     "1": 5,
@@ -9687,7 +9687,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 9,
-     "level": 3,
+     "level": "상",
      "category": "피타고라스 정리와 닮음의 활용",
      "originalCategory": "피타고라스 정리와 닮음의 활용",
      "standardCourse": "중2 수학",
@@ -9788,7 +9788,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 16,
-     "level": "하",
+     "level": "중",
      "category": "직사각형, 중점, 둘레, 도형",
      "originalCategory": "직사각형, 중점, 둘레, 도형",
      "standardCourse": "중2 수학",
@@ -9894,7 +9894,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 6,
-     "level": "중",
+     "level": "하",
      "category": "삼각형의 무게중심",
      "originalCategory": "도형의 성질",
      "standardCourse": "중2 수학",
@@ -9945,7 +9945,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 6,
-     "level": 2,
+     "level": "중",
      "category": "삼각형의 무게중심",
      "originalCategory": "삼각형의 무게중심",
      "standardCourse": "중2 수학",
@@ -10288,7 +10288,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 16,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -10332,7 +10332,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 15,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -10378,7 +10378,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 17,
-     "level": "중",
+     "level": "하",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -10748,7 +10748,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 24,
-     "level": "중",
+     "level": "상",
      "category": "피타고라스 정리",
      "originalCategory": "히포크라테스의 원의 넓이",
      "standardCourse": "중2-2",
@@ -10809,8 +10809,8 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "sourceScope": "중2 2학기 기말·중간 기출 원본(2018~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
     "하": 5,
-    "중": 13,
-    "상": 4
+    "중": 12,
+    "상": 7
    },
    "difficultyBucketMix": {
     "1": 5,
@@ -11201,7 +11201,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 5,
-     "level": 3,
+     "level": "상",
      "category": "삼각형의 무게중심",
      "originalCategory": "삼각형의 무게중심",
      "standardCourse": "중2 수학",
@@ -11349,7 +11349,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 10,
-     "level": "중",
+     "level": "상",
      "category": "피타고라스 정리",
      "originalCategory": "피타고라스 정리",
      "standardCourse": "중2 수학",
@@ -11549,7 +11549,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 15,
-     "level": "하",
+     "level": "중",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -11597,7 +11597,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 15,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "경우의 수",
      "standardCourse": "중2 수학",
@@ -11690,7 +11690,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "하",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -11831,7 +11831,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 21,
-     "level": 3,
+     "level": "중",
      "category": "삼각형의 평행선과 닮음 증명",
      "originalCategory": "삼각형의 평행선과 닮음 증명",
      "standardCourse": "중2 수학",
@@ -11988,7 +11988,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
       "서술형"
      ],
      "wide": false,
-     "content": "&lt;서술형 3&gt; 한 개의 주사위를 두 번 던져 처음에 나오는 눈의 수를 $a$, 나중에 나오는 눈의 수를 $b$라고 할 때, 연립방정식 $\\begin{cases} 2x+ay=6 \\\\ bx+3y=2 \\end{cases}$의 그래프가 한 점에서 만날 때 확률을 구하시오.\n(1) 모든 경우의 수를 구하시오. (단답형)\n(2) 그래프가 한 점에서 만날 조건을 구하시오. (서술형)\n(3) 그래프가 한 점에서 만날 확률을 구하시오. (서술형)",
+     "content": "한 개의 주사위를 두 번 던져 처음에 나오는 눈의 수를 $a$, 나중에 나오는 눈의 수를 $b$라고 할 때, 연립방정식 $\\begin{cases} 2x+ay=6 \\\\ bx+3y=2 \\end{cases}$의 그래프가 한 점에서 만날 때 확률을 구하시오.\n(1) 모든 경우의 수를 구하시오. (단답형)\n(2) 그래프가 한 점에서 만날 조건을 구하시오. (서술형)\n(3) 그래프가 한 점에서 만날 확률을 구하시오. (서술형)",
      "choices": [],
      "answer": "8/9",
      "solution": "(1) 처음 눈 $a$는 $6$가지, 나중 눈 $b$도 $6$가지이다.\n\n전체 경우의 수는\n$6\\times6=36$\n\n(2) 두 직선을 $y$에 대하여 정리하면\n$y=-\\dfrac2a x+\\dfrac6a$\n$y=-\\dfrac b3 x+\\dfrac23$\n이다.\n\n두 직선이 한 점에서 만나려면 기울기가 달라야 한다.\n\n$-\\dfrac2a\\ne-\\dfrac b3$\n$\\dfrac2a\\ne\\dfrac b3$\n$ab\\ne6$\n\n(3) $ab=6$인 순서쌍은\n$(1,6),(2,3),(3,2),(6,1)$의 $4$가지이다.\n\n따라서 한 점에서 만나는 경우는\n$36-4=32$가지이다.\n\n구하는 확률은\n$\\dfrac{32}{36}=\\dfrac89$이다.",
@@ -12009,7 +12009,8 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
      "_assessmentDomain": "확률",
      "_scopeId": "M2-S1",
      "_scopeGroup": "확률",
-     "_scopeL2": "확률"
+     "_scopeL2": "확률",
+     "_sourceStemLabel": "&lt;서술형 3&gt;"
     }
    ]
   },
@@ -12029,9 +12030,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중2 2학기 기말·중간 기출 원본(2018~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 3,
-    "중": 16,
-    "상": 4
+    "하": 4,
+    "중": 9,
+    "상": 11
    },
    "difficultyBucketMix": {
     "1": 4,
@@ -12113,7 +12114,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -12219,7 +12220,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 5,
-     "level": "중",
+     "level": "하",
      "category": "평행선 사이의 선분의 길이의 비",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -12308,7 +12309,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 4,
-     "level": 3,
+     "level": "상",
      "category": "삼각형의 내각의 이등분선",
      "originalCategory": "삼각형의 내각의 이등분선",
      "standardCourse": "중2 수학",
@@ -12361,7 +12362,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 15,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -12469,7 +12470,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 8,
-     "level": "중",
+     "level": "상",
      "category": "도형의 성질",
      "originalCategory": "도형의 성질",
      "standardCourse": "중2 수학",
@@ -12525,7 +12526,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 8,
-     "level": "중",
+     "level": "하",
      "category": "피타고라스 정리",
      "originalCategory": "피타고라스 정리",
      "standardCourse": "중2 수학",
@@ -12809,7 +12810,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 20,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -12901,7 +12902,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 14,
-     "level": "하",
+     "level": "중",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -12945,7 +12946,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 14,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -13183,7 +13184,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 21,
-     "level": "중",
+     "level": "상",
      "category": "유리수와 순환소수",
      "originalCategory": "유리수와 순환소수",
      "standardCourse": "중2 수학",
@@ -13245,9 +13246,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중2 2학기 기말·중간 기출 원본(2018~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 3,
-    "중": 14,
-    "상": 5
+    "하": 4,
+    "중": 9,
+    "상": 11
    },
    "difficultyBucketMix": {
     "1": 4,
@@ -13328,7 +13329,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 9,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -13382,7 +13383,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 11,
-     "level": "중하",
+     "level": "하",
      "category": "도형의 닮음",
      "originalCategory": "삼각형의 중점연결정리와 둘레",
      "standardCourse": "중2-2",
@@ -13483,7 +13484,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 12,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -13536,7 +13537,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 7,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -13588,7 +13589,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 9,
-     "level": "중",
+     "level": "상",
      "category": "삼각형의 무게중심",
      "originalCategory": "삼각형의 무게중심",
      "standardCourse": "중2 수학",
@@ -13739,7 +13740,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 7,
-     "level": "중",
+     "level": "상",
      "category": "피타고라스 정리",
      "originalCategory": "피타고라스 정리",
      "standardCourse": "중2 수학",
@@ -13987,7 +13988,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 18,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -14181,7 +14182,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 19,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -14279,7 +14280,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": "상",
+     "level": "중",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -14327,7 +14328,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 24,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -14376,7 +14377,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": "상",
+     "level": "중",
      "category": "무게중심",
      "originalCategory": "무게중심",
      "standardCourse": "중2 수학",
@@ -14424,7 +14425,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 23,
-     "level": 3,
+     "level": "중",
      "category": "직각삼각형이 되기 위한 조건",
      "originalCategory": "직각삼각형이 되기 위한 조건",
      "standardCourse": "중2 수학",
@@ -14489,9 +14490,9 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
    "hasImage": true,
    "sourceScope": "중2 2학기 기말·중간 기출 원본(2018~2025년) 중 시험 범위 문항, 카탈로그 중단원·유형 키로만 고름, 한 모의고사 안 같은 문항·같은 발문 없음",
    "difficultyMix": {
-    "하": 3,
-    "중": 14,
-    "상": 5
+    "하": 4,
+    "중": 10,
+    "상": 10
    },
    "difficultyBucketMix": {
     "1": 4,
@@ -14573,7 +14574,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 4,
-     "level": "중",
+     "level": "상",
      "category": "도형의 닮음",
      "originalCategory": "도형의 닮음",
      "standardCourse": "중2 수학",
@@ -14625,7 +14626,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 2,
-     "level": 2,
+     "level": "하",
      "category": "삼각형의 두 변의 중점을 연결한 선분",
      "originalCategory": "삼각형의 두 변의 중점을 연결한 선분",
      "standardCourse": "중2 수학",
@@ -15045,7 +15046,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 8,
-     "level": "중",
+     "level": "상",
      "category": "피타고라스 정리",
      "originalCategory": "직사각형 접기에서의 피타고라스 정리",
      "standardCourse": "중2-2",
@@ -15093,7 +15094,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 10,
-     "level": "중",
+     "level": "상",
      "category": "피타고라스 정리",
      "originalCategory": "피타고라스 정리",
      "standardCourse": "중2 수학",
@@ -15607,7 +15608,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 24,
-     "level": "중",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2 수학",
@@ -15648,7 +15649,7 @@ window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL = {
     },
     {
      "id": 24,
-     "level": "최상",
+     "level": "상",
      "category": "확률",
      "originalCategory": "확률",
      "standardCourse": "중2",
