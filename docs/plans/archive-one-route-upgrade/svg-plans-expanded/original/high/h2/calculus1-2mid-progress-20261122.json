@@ -457,11 +457,70 @@
       { "exam": "24_조대부고_2학기_중간_고2_수학II", "no": 5, "why": "원본 좌측 비정량적 곡선의 이차식 근사, 실제 기울기·굴곡 미확정" }
     ]
   },
+  "nextChronologicalBatch2025": {
+    "year": 2025,
+    "exams": [
+      "25_매산고_2학기_중간_고2_수학II",
+      "25_매산여고_2학기_중간_고2_수학II",
+      "25_제일고_2학기_중간_고2_수학II"
+    ],
+    "questions": 65,
+    "problemImageRefs": 7,
+    "problemImageCountingRule": "문항의 image 필드뿐 아니라 content 본문에 포함된 img src 경로도 포함",
+    "solutionImageRefs": 14,
+    "inspection": "세 학교 원본 문제 PNG 7개와 참조된 해설 SVG 14개 및 이들의 기존 v2/v3 변형을 정적 PNG 접촉 시트로 확인. 각 문항의 기존 플랜 JSON, 문제 원문과 해설 논리 비교. 신규 플랜 공식 렌더·브라우저·A4 검증은 하지 않음",
+    "completedPlanReview": [
+      {
+        "exam": "25_매산고_2학기_중간_고2_수학II",
+        "planCount": 9,
+        "shallowPlanLint": "PASS_9_OF_9",
+        "corrected": [
+          { "no": 8, "problemPng": "q8.png", "issue": "초안 예시 f=x²-3x/2는 0<x<p 일부에서 x축 아래로 내려가지만 원본 및 기존 SVG에서는 O에서 곡선이 양의 높이로 증가", "fix": "f=x²/4로 바꾸고 P(2,1), A(1,1/4), B(3,9/4)의 위치·기울기·롤의 정리 예시를 수정" }
+        ],
+        "keptOriginalAssets": ["q9.png 및 기존 q9 해설 SVG", "q13.png 및 기존 q13 해설 SVG"],
+        "holds": ["q8: 원본 f의 정확한 방정식은 없으므로 x축과 직선의 상대 위치를 맞춘 포물선 개형 예시"]
+      },
+      {
+        "exam": "25_매산여고_2학기_중간_고2_수학II",
+        "planCount": 4,
+        "shallowPlanLint": "PASS_4_OF_4",
+        "corrected": [
+          { "no": 2, "problemPng": "q2.png", "issue": "원본의 f(0)=2인 채운 점을 기존 플랜에 f(0)=0으로 오기", "fix": "고립값 (0,2)로 수정하고 x=0의 두 열린 점 및 x=1의 열린·채운 점과 좌우극한을 보존" }
+        ],
+        "holds": ["q2: 원본 곡선의 실제 식 미제공; 이차식 조각 개형 근사", "q13: 무리수 계수 유리함수의 정확한 곡선은 기존 UNSUPPORTED 결정 유지, 원본 PNG와 기존 SVG 보존"]
+      },
+      {
+        "exam": "25_제일고_2학기_중간_고2_수학II",
+        "planCount": 5,
+        "shallowPlanLint": "PASS_5_OF_5",
+        "corrected": [
+          { "no": 9, "problemPng": "q9.png", "issue": "기존 플랜은 f+g의 합성 그래프 한 개만 있어 원본 f,g의 두 패널 및 곱·합성 극한 판정이 불가능", "fix": "f의 수평·대각선·수평선과 g의 아래로 열린 포물선·수평선을 STACKED로 복원하고 x=-1·1의 열린·채운 점 보존" },
+          { "no": 8, "issue": "기존 결정은 UNSUPPORTED인데도 폭이 지나치게 좁아 구조 검사에 실패하는 오래된 q8 계단형 플랜이 잔존", "fix": "원본 요금표의 계산 해설을 유지하고 미지원 q8-solution.json을 제외하여 결정과 파일을 동기화" }
+        ],
+        "keptOriginalAssets": ["q20.png 및 기존 원 접선·중심 설명 해설 SVG"],
+        "holds": ["q8: 가로 0~62km와 세로 1000~1800원 범위의 이종 단위 계단함수는 현 piecewise-discontinuous 한 배율 계약으로 표현 불가", "q20: 원과 직선의 접촉 기하 구성은 기존 원본 PNG·정적 SVG 유지"]
+      }
+    ],
+    "reviewRequired": [
+      { "exam": "25_매산고_2학기_중간_고2_수학II", "no": 8, "why": "f의 실제 방정식 미제공, 상대적 위치만 맞춘 포물선 근사" },
+      { "exam": "25_매산여고_2학기_중간_고2_수학II", "no": 13, "why": "무리수 계수 유리함수 그래프 기능 확장 전까지 원본 이미지 사용" },
+      { "exam": "25_제일고_2학기_중간_고2_수학II", "no": 8, "why": "요금 계단함수는 단위 차이 때문에 한 배율 엔진이 수평 폭을 충분히 할당하지 못함" }
+    ]
+  },
+  "mathematicsII2midScopeCompleted": {
+    "exams": 35,
+    "questions": 791,
+    "years": "2019-2025",
+    "planCount": 397,
+    "allChronologicalExamsReviewed": true,
+    "sourceEvidence": "archive/exams/original/high/h2/2mid의 _수학II.js 35개를 직접 열어 questionBank 문항 791개 확인",
+    "boundary": "SVG 플랜 JSON 작성 및 정적 PNG/SVG 대조·shallow lint까지만 완료. 공식 SVG 생성·실제 화면 시각검증은 별도 작업"
+  },
   "gate": {
-    "reviewedExamsShallowPlanLint": "PASS_379_OF_379",
+    "reviewedExamsShallowPlanLint": "PASS_397_OF_397",
     "officialSvgGeneration": "NOT_RUN",
     "browserPcMobileA4VisualValidation": "NOT_RUN",
     "publication": "NOT_RUN"
   },
-  "nextInOrder": "2mid 2019년 7종·2020년 4종·2021년 4종·2022년 6종·2023년 9종·2024년 2종, 총 32종 726문항의 1차 원본 그림 대조와 379개 플랜 구조 검사 완료. 다음은 2025년 2학기 중간고사 수학II 3종(매산고·매산여고·제일고); 공식 SVG 렌더·PC/모바일/A4 시각검증은 별도 게이트"
+  "nextInOrder": "수학II 2학기 중간고사 2019~2025년 35종 791문항, 플랜 JSON 397개 1차 정적 원본 검토 및 구조 검사 완료. 다음은 미적분I/수학II 다른 시험 구분 중 미완료 범위를 확인하고 연대순으로 진행; 공식 SVG 렌더·PC/모바일/A4 검증은 별도 게이트"
 }

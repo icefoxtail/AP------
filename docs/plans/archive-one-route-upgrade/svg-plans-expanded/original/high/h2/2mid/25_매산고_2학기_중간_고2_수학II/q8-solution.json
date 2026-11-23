@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "1/4"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "9/4"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "1"
+      ],
+      "A": [
+        "1",
+        "1/4"
+      ],
+      "B": [
+        "3",
+        "9/4"
+      ],
+      "O": [
+        "0",
+        "0"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1/2",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "원본 q8.png와 기존 해설 SVG를 대조해 원점에서 아래로 내려가지 않고 위로 오르는 곡선의 개형을 복원했다. 함수식이 없어 f(x)=x²/4를 예로 그리면 직선 y=x/2와 O(0,0), P(2,1)에서 만나고 0<a=1<p=2<b=3이다. A(1,1/4)는 직선 아래, B(3,9/4)는 위에 있어 ㄴ은 거짓이고, f′(2)=1>1/2이므로 ㄱ 참이다. h=f-x/2는 h(0)=h(2)=0이라 롤의 정리에 따라 구간 (0,2)에서 f′(α)=1/2가 성립하므로 ㄷ도 참이다. 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미분가능한 함수 $f(x)$의 그래프와 직선 $y=\\dfrac12x$가 다음 그림과 같이 점 $P$에서 만난다. 함수 $y=f(x)$의 그래프 위의 두 점 $A,B$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, $0\\lt a\\lt p\\lt b$) [4.6점]<br><img src=\"assets/images/25_매산고_2학기_중간_고2_수학II/q8.png\" style=\"display:block;max-width:100%;height:auto;margin:8px auto;\"><div class=\"note-box\">ㄱ. $f'(p)\\gt \\dfrac12$<br>ㄴ. $f(a)-f(b)\\gt \\dfrac12(a-b)$<br>ㄷ. $f'(\\alpha)=\\dfrac12$인 $\\alpha$가 적어도 하나 존재한다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본의 f는 O에서 오른쪽 위로 증가하며 0<x<p에서 직선 y=x/2 아래, x>p에서는 위에 있다. 원본과 달리 음수로 내려간 기존 초안 대신 f=x²/4의 양의 개형 예시를 사용한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f=x²/4 예시곡선은 원본처럼 원점과 P(2,1)에서 y=x/2와 만나고, 구간 (0,2)에서는 직선 아래이며 x>2에서 직선 위로 상승한다. A(1,1/4), B(3,9/4)를 표시한다."
+  ],
+  "accessibilityDescription": "원점 O에서 위로 볼록하게 증가하는 포물선 예시 y=x²/4와 직선 y=x/2가 P(2,1)에서 다시 만난다. A(1,1/4)는 x축 위이면서 직선 아래이고, B(3,9/4)는 직선 위에 있다. 실제 원본의 곡률·좌표는 명시되지 않아 개형 근사이다."
+}
