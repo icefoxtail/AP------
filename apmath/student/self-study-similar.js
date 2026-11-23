@@ -19,6 +19,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
 
+  const Rec = root.StudentSelfStudyRecord || (typeof require === 'function' ? require('./self-study-record.js') : null);
   const MAX_PER_QUESTION = 2;
   const digitsOf = value => {
     const match = /\d+/.exec(String(value ?? ''));
@@ -77,13 +78,19 @@
       const original = originalQuestions[n - 1];
       // The snapshot the student was graded on must be the same question as the file's, or the pairing is not trusted.
       if (!original || (Array.isArray(issuedQuestions) && issuedQuestions[n - 1] && !sameText(issuedQuestions[n - 1].content ?? issuedQuestions[n - 1].question, original.content ?? original.question))) continue;
-      const found = sets.map(set => matchQuestion(originalQuestions, set.questions, n)).filter(question => question && hasAnswer(question));
-      found.slice(0, MAX_PER_QUESTION).forEach((question, index, list) => questions.push({
-        ...question,
+      const found = sets.map(set => ({ question: matchQuestion(originalQuestions, set.questions, n), file: set.file })).filter(row => row.question && hasAnswer(row.question));
+      found.slice(0, MAX_PER_QUESTION).forEach((row, index, list) => questions.push({
+        ...row.question,
         no: questions.length + 1,
-        sourceLabel: `원본 ${n}번의 유사${list.length > 1 ? ` ${index + 1}` : ''}`
+        sourceLabel: `원본 ${n}번의 유사${list.length > 1 ? ` ${index + 1}` : ''}`,
+        // Record key: the question's UID when it has one, else "s:<source number>:<similar file>:<question id>".
+        ssKey: Rec.similarKey(n, row.file, row.question),
+        ssUid: Rec.uidOf(row.question),
+        ssSrc: n
       }));
     }
+    const keys = Rec.uniqueKeys(questions.map(question => question.ssKey));
+    questions.forEach((question, index) => { question.ssKey = keys[index]; });
     return { title: String(title || ''), questions, emptyText: emptyText || '이 시험의 유사 문항을 찾지 못했어요.' };
   }
 

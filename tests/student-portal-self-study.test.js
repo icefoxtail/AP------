@@ -43,25 +43,48 @@ test('title keeps the portal exam title and the purpose with the question count'
   assert.equal(view.buildTitle({ examTitle: '', purpose: '오답 다시 풀기', count: 0 }), '오답 다시 풀기');
 });
 
-test('a card opens answer and explanation per question; a stock explanation hides only the explanation button', () => {
+test('a card keeps answer and explanation closed until answered; a stock explanation hides only the explanation', () => {
   const full = view.renderCard({ ...bank[0], no: 1 }, deps);
-  assert.match(full, /data-ss-toggle="answer"/);
-  assert.match(full, /data-ss-toggle="solution"/);
+  assert.match(full, /data-mode="mc"/);
+  assert.match(full, /data-ss-act="grade"[^>]*disabled/, 'a pick-one question is graded, and the grade button waits for a pick');
+  assert.match(full, /data-choice="1"[\s\S]*data-choice="5"/, 'every choice is a tap target');
+  assert.match(full, /data-ss-act="unknown"/, '"모르겠어요" is always there');
   assert.match(full, /id="ss-a-1"[^>]*hidden/);
   assert.match(full, /id="ss-s-1"[^>]*hidden/);
+  assert.match(full, /풀고 나면 정답·해설이 열려요/);
+  assert.doesNotMatch(full, /data-ss-toggle/, 'no button opens the answer before it is answered');
   assert.doesNotMatch(full, /<div class="ss-stem">1\. /, 'the leading "1." is stripped like the engine does');
-  for (const index of [1, 2]) {
-    const card = view.renderCard({ ...bank[index], no: index + 1 }, deps);
-    assert.match(card, /data-ss-toggle="answer"/, 'answer stays available');
-    assert.doesNotMatch(card, /data-ss-toggle="solution"/, 'stock or empty explanation is not offered');
-    assert.doesNotMatch(card, /기준 풀이/);
-  }
+  for (const code of ['calc', 'misread', 'concept', 'method', 'guess']) assert.match(full, new RegExp('data-ss-why="' + code + '"'));
+  const typed = view.renderCard({ ...bank[1], no: 2 }, deps);
+  assert.match(typed, /data-mode="sub"/);
+  assert.match(typed, /data-ss-act="done"/, 'a typed-answer question opens its answer with "다 풀었어요"');
+  assert.match(typed, /data-ss-act="judge-c"[\s\S]*data-ss-act="judge-w"/);
+  assert.match(typed, /id="ss-a-2"/);
+  assert.doesNotMatch(typed, /id="ss-s-2"/, 'stock explanation: only the answer exists');
+  assert.match(typed, /풀고 나면 정답이 열려요/);
+  assert.doesNotMatch(view.renderCard({ ...bank[2], no: 3 }, deps), /id="ss-s-3"/, 'empty explanation: no explanation panel');
+  assert.doesNotMatch(typed, /기준 풀이/);
   assert.equal(view.hasRealSolution({ solution: '[JS 기준 풀이] x' }), false);
   assert.equal(view.hasRealSolution({ solution: ' ' }), false);
   assert.equal(view.hasRealSolution({ solution: '실제 풀이' }), true);
   const figure = view.renderCard({ ...bank[3], no: 4 }, deps);
   assert.match(figure, /<img src="https:\/\/img\.test\/assets\/images\/x\/4\.png"/);
-  assert.doesNotMatch(view.renderCard({ id: 9, no: 9, content: '답 없음', choices: [] }, deps), /ss-toggle/, 'no answer and no explanation: no buttons');
+  const bare = view.renderCard({ id: 9, no: 9, content: '답 없음', choices: [] }, deps);
+  assert.doesNotMatch(bare, /ss-lock/, 'no answer and no explanation: nothing to unlock');
+  assert.match(bare, /data-ss-act="done"/, 'still judgeable by the student');
+  const embedded = view.renderCard({ id: 8, no: 8, content: '그림 보기', choices: [], choicesEmbeddedInImage: true, answer: '④', solution: '풀이' }, deps);
+  assert.match(embedded, /data-mode="mc"/);
+  assert.equal((embedded.match(/data-choice="/g) || []).length, 5, 'choices drawn inside the figure get 5 number chips');
+});
+
+test('cards carry their record key; the wrong set uses the question UID, else w:<number>', () => {
+  const withUid = [{ ...bank[0], questionUid: 'qid_v1_aaa' }, bank[1], { ...bank[2], source_question_uid: 'qid_v1_ccc' }];
+  const set = view.buildWrongSet({ title: 't', questions: withUid, wrongIds: [1, 2, 3, 9] });
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssKey), ['qid_v1_aaa', 'w:2', 'qid_v1_ccc']);
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssUid), ['qid_v1_aaa', null, 'qid_v1_ccc']);
+  assert.deepEqual(set.questions.slice(0, 3).map(q => q.ssSrc), [1, 2, 3]);
+  assert.equal(set.questions[3].ssKey, undefined, 'a number with no question has no record');
+  assert.match(view.renderCard(set.questions[0], deps), /data-key="qid_v1_aaa"/);
 });
 
 test('one question that cannot be drawn becomes a failed card and never throws into the others', () => {
@@ -133,7 +156,7 @@ function buttonHelpers() {
     escapeHtml: value => String(value),
     isOmrReviewAvailable: exam => Boolean(exam.archive_file)
   });
-  vm.runInContext([grab('normalizeOmrWrongIds'), grab('getStudentPortalRecordedSubmission'), grab('getSelfStudyWrongCount'), grab('renderSelfStudyWrongButton')].join('\n'), context);
+  vm.runInContext([grab('normalizeOmrWrongIds'), grab('getStudentPortalRecordedSubmission'), grab('getSelfStudyWrongCount'), grab('selfStudyProgressText'), grab('renderSelfStudyWrongButton')].join('\n'), context);
   return context;
 }
 
@@ -150,13 +173,14 @@ test('the exam card offers the button only for a submitted exam with at least on
 });
 
 test('the portal wires the button on the list card and the result screen and loads the view lazily', () => {
+  assert.match(html, /<script src="\.\/self-study-record\.js\?v=[^"]+"><\/script>/);
   assert.match(html, /<script src="\.\/self-study-view\.js\?v=[^"]+"><\/script>/);
   assert.match(html, /\$\{renderSelfStudyActions\(exam, 'list'\)\}/);
   assert.match(html, /\$\{renderSelfStudyActions\(exam, 'result'\)\}/);
   assert.match(html, /'omr-self-study':'exams'/);
   assert.match(html, /view === 'omr-self-study'/);
   const source = fs.readFileSync(path.join(root, 'apmath/student/self-study-view.js'), 'utf8');
-  assert.doesNotMatch(source, /method:\s*['"](?:POST|PUT|PATCH|DELETE)|apiPost|XMLHttpRequest|localStorage\.setItem/, 'the card screen records and sends nothing');
+  assert.doesNotMatch(source, /method:\s*['"](?:POST|PUT|PATCH|DELETE)|apiPost|XMLHttpRequest|localStorage\.setItem|fetch\(/, 'the card screen itself neither stores nor sends: the recorder it is given does');
   for (const lazy of ['render-text.js', 'archive-asset-base.js', 'tex-mml-chtml-mathjax-tex.js']) {
     assert.doesNotMatch(html, new RegExp(lazy), `${lazy} must not load at portal start`);
   }
