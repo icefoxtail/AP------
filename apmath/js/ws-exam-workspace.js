@@ -166,6 +166,30 @@ function wsxCounselLink(row) {
     return `<a class="wsx-counsel-link" href="../archive/assessment/counsel-report.html?${query}" target="_blank" rel="noopener">상담지</a>`;
 }
 
+// 그 학생·그 시험의 오답 클리닉(기존 출력 센터, 시험 한 개·학생 한 명 선택된 채)으로 가는 단추. 틀린 문항이 있는 제출 학생에게만 단다.
+function wsxClinicButton(row) {
+    if (!row || row.pending || !row.session || !row.wrongs.length || typeof openClinicForStudentExam !== 'function') return '';
+    return `<button type="button" class="wsx-clinic-link" data-wsx-clinic="${wsxEsc(row.sid)}" onclick="wsxOpenClinic(${apJsArg(row.sid)})" aria-label="${wsxEsc(row.name)} 학생 이 시험 오답 클리닉">오답 클리닉</button>`;
+}
+
+function wsxOpenClinic(sid) {
+    const detail = wsxDetail();
+    const row = detail && detail.rows.find(r => String(r.sid) === String(sid));
+    const session = row && row.session;
+    if (!session || typeof openClinicForStudentExam !== 'function') {
+        toast('클리닉 화면을 불러오지 못했습니다. 새로고침 후 다시 시도하세요.', 'warn');
+        return;
+    }
+    if (!wsxConfirmLeave()) return;
+    openClinicForStudentExam(wsx.classId, row.sid, {
+        sessionId: session.id,
+        examDate: session.exam_date || detail.exam.date,
+        examTitle: session.exam_title || detail.exam.title,
+        archiveFile: session.archive_file || detail.exam.archiveFile || '',
+        questionCount: session.question_count || detail.qCount
+    });
+}
+
 function wsxWeakUnitsHtml(detail) {
     const items = wsExamWeakUnits(wsx.source, detail);
     if (!items.length) return '<div class="wsx-weak__empty">오답 단원 데이터 없음</div>';
@@ -240,7 +264,7 @@ function wsxStudentsHtml(detail) {
         const sess = r.session;
         const chips = r.pending ? '' : (r.wrongs.length
             ? r.wrongs.map(qid => wsxWrongChip(sess, qid)).join('')
-            : '<span class="wsx-student__none">오답 없음</span>') + wsxCounselLink(r);
+            : '<span class="wsx-student__none">오답 없음</span>') + wsxClinicButton(r) + wsxCounselLink(r);
         return `<div class="wsx-student${open ? ' is-open' : ''}" data-sid="${wsxEsc(r.sid)}" data-pending="${r.pending ? 1 : 0}">
             <div class="wsx-student__row">
                 <span class="wsx-student__name">${wsxEsc(r.name)}</span>
