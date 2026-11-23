@@ -139,7 +139,7 @@
     // 문항이 이보다 적으면 값을 내지 않는다.
     minQuestions: 5,
     // 표시값은 이 단위(%)로 반올림하고 [step, 100−step]로 자른다.
-    stepPercent: 5,
+    stepPercent: 1,
   });
 
   // 표준정규 누적분포. erf는 Abramowitz-Stegun 7.1.26 근사(오차 1.5e-7 이하). 외부 라이브러리를 쓰지 않는다.
@@ -174,7 +174,7 @@
     const topRaw = (1 - normalCdf(z)) * 100;
     const step = A.stepPercent;
     const topPercent = Math.min(100 - step, Math.max(step, Math.round(topRaw / step) * step));
-    // 학부모가 읽기 쉽게 "상위 N%" 한 방향으로 통일한다. 끝만 닫는다: 상위 5% 이내 / 하위 5% 이내.
+    // 학부모가 읽기 쉽게 "상위 N%" 한 방향으로 통일한다. 끝만 닫는다: 상위 1% 이내 / 하위 1% 이내.
     const edge = topPercent <= step ? "top" : topPercent >= 100 - step ? "bottom" : null;
     const label = edge === "top" ? `상위 ${step}% 이내` : edge === "bottom" ? `하위 ${step}% 이내` : `상위 약 ${topPercent}%`;
     return {

@@ -469,15 +469,18 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   const a = computeExpectedPosition(lv3, 12, 0);
   near(a.mean, 12.4, 1e-9, 'a 평균');
   near(a.sd, Math.sqrt(20 * 0.62 * 0.38 + 3.6 ** 2), 1e-9, 'a 표준편차');
-  assert.strictEqual(a.label, '상위 약 55%');
-  assert.strictEqual(a.percentileTop, 55);
+  assert.strictEqual(a.label, '상위 약 54%'); // z=-0.095 → 53.8%
+  assert.strictEqual(a.percentileTop, 54);
   assert.strictEqual(a.edge, null);
-  // (b) 만점, (c) 0점은 끝을 닫아 표현
+  // (b) 만점은 1% 단위로(z=1.81 → 3.5%), 끝(1% 이하·99% 이상)만 닫아 표현
   const b = computeExpectedPosition(lv3, 20, 0);
-  assert.strictEqual(b.label, '상위 5% 이내');
-  assert.strictEqual(b.edge, 'top');
+  assert.strictEqual(b.label, '상위 약 4%');
+  assert.strictEqual(b.edge, null);
+  const top = computeExpectedPosition(Array(20).fill(5), 20, 0);
+  assert.strictEqual(top.label, '상위 1% 이내');
+  assert.strictEqual(top.edge, 'top');
   const c = computeExpectedPosition(lv3, 0, 0);
-  assert.strictEqual(c.label, '하위 5% 이내');
+  assert.strictEqual(c.label, '하위 1% 이내');
   assert.strictEqual(c.edge, 'bottom');
   // (d) 미응답이 하나라도 있거나 5문항 미만이면 값 없음
   assert.strictEqual(computeExpectedPosition(lv3, 12, 1), null);
@@ -489,16 +492,16 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   near(e.mean, 16.11, 1e-9, 'e 평균');
   near(e.sd, Math.sqrt(4.5823 + 18.6624), 1e-9, 'e 표준편차');
   near(e.z, (16 - 16.11) / Math.sqrt(23.2447), 1e-9, 'e z');
-  assert.strictEqual(e.percentileTop, 50); // z=-0.023 → 상위 50.9% → 50
+  assert.strictEqual(e.percentileTop, 51); // z=-0.023 → 상위 50.9% → 51
   // 난이도 없는 문항은 p=0.60으로 센다(건수는 따로 싣는다)
   const withNone = computeExpectedPosition([null, null, 3, 3, 3, 3], 3, 0);
   near(withNone.mean, 0.6 * 2 + 0.62 * 4, 1e-9, '난이도 없음 평균');
   assert.strictEqual(withNone.unratedCount, 2);
-  // 점수가 오를수록 상위 비율은 같거나 작아진다(단조), 값은 5% 단위로 5~95 안
+  // 점수가 오를수록 상위 비율은 같거나 작아진다(단조), 값은 1% 단위로 1~99 안
   let prev = 101;
   for (let x = 0; x <= 20; x++) {
     const r = computeExpectedPosition(lv3, x, 0);
-    assert.ok(r.percentileTop <= prev && r.percentileTop >= 5 && r.percentileTop <= 95 && r.percentileTop % 5 === 0, `단조·5% 단위 x=${x}`);
+    assert.ok(r.percentileTop <= prev && r.percentileTop >= 1 && r.percentileTop <= 99 && Number.isInteger(r.percentileTop), `단조·1% 단위 x=${x}`);
     prev = r.percentileTop;
   }
   // 보고서 한 덩어리: 전체 응답이면 report.expected, 미응답이 있으면 null. 기존 합계 검사는 그대로 통과.
