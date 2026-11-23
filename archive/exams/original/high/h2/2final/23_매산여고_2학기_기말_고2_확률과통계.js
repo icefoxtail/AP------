@@ -140,7 +140,7 @@ window.questionBank = [
     "id": 4,
     "questionNumber": 4,
     "questionType": "객관식",
-    "content": "4. 모집단이 정규분포를 따를 때, 표본평균 $\\overline{X}$가 가지는 값은 $1, 2, 3, 4, 5$이고, $\\overline{X}$의 확률분포표는 다음과 같다.<br><br><table class=\"exam-table\"><tr><td colspan=\"7\">&lt;$\\overline{X}$의 확률분포표&gt;</td></tr><tr><td>$\\overline{X}$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>합계</td></tr><tr><td>$P(\\overline{X}=\\overline{x})$</td><td>$\\dfrac{1}{9}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{3}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{9}$</td><td>$1$</td></tr></table><br>이때, 모집단의 평균 $m$과 분산 $\\mathrm{V}(\\overline{X})$를 구하여 곱하면? [4.1점]",
+    "content": "4. 어떤 모집단에서 임의추출한 표본의 표본평균 $\\overline{X}$가 가지는 값은 $1, 2, 3, 4, 5$이고, $\\overline{X}$의 확률분포표는 다음과 같다.<br><br><table class=\"exam-table\"><tr><td colspan=\"7\">&lt;$\\overline{X}$의 확률분포표&gt;</td></tr><tr><td>$\\overline{X}$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>합계</td></tr><tr><td>$P(\\overline{X}=\\overline{x})$</td><td>$\\dfrac{1}{9}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{3}$</td><td>$\\dfrac{2}{9}$</td><td>$\\dfrac{1}{9}$</td><td>$1$</td></tr></table><br>이때, 모집단의 평균 $m$과 분산 $\\mathrm{V}(\\overline{X})$를 구하여 곱하면? [4.1점]",
     "choices": [
       "$8$",
       "$7$",

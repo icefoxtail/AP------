@@ -516,7 +516,7 @@ window.questionBank = [
     "id": 17,
     "questionNumber": 17,
     "questionType": "서술형",
-    "content": "서술형 3. 확률변수 $X$는 정규분포 $N(m, \\sigma^2)$을 따르고 확률변수 $Z$는 표준정규분포 $N(0, 1^2)$을 따른다. 두 확률변수 $X, Z$와 확률변수 $X$의 확률밀도함수 $f(x)$가<br>(가) $f(11-x)=f(x+11)$<br>(나) $P(13 \\le X \\le 17)=0.2417$일 때,<br>$Z=aX+b$를 만족시키는 상수 $a, b$의 값을 구하라. (단, $a>0$이다.) [6.0점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></table>",
+    "content": "서술형 3. 확률변수 $X$는 정규분포 $N(m, \\sigma^2)$을 따르고 확률변수 $Z$는 표준정규분포 $N(0, 1^2)$을 따른다. 두 확률변수 $X, Z$와 확률변수 $X$의 확률밀도함수 $f(x)$가<br>(가) $f(11-x)=f(x+11)$<br>(나) $P(13 \\le X \\le 17)=0.2417$일 때,<br>$Z=aX+b$를 만족시키는 상수 $a, b$의 값을 구하라. (단, $a>0$이고 $sigma$는 자연수이다.) [6.0점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></table>",
     "choices": [],
     "images": [],
     "answer": "a=\\frac14,\\ b=-\\frac{11}{4}",
