@@ -941,6 +941,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "similar/high/h2/2mid/26_매산고_2학기_중간_고2_미적분I_유사.js",
+      "school": "매산고",
+      "topic": "미적분I",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "유형",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
+    },
+    {
       "file": "similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js",
       "school": "순천고",
       "topic": "대수",
@@ -1063,6 +1094,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "similar/high/h2/2mid/26_효천고_2학기_중간_고2_미적분I_유사.js",
+      "school": "효천고",
+      "topic": "미적분I",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
     },
     {
       "file": "similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js",
@@ -2547,6 +2609,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M3-06",
           "rangeEndUnit": "원의 성질",
           "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "similar/middle/m3/1final/26_팔마중_1학기_기말_중3_유사.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-03",
+      "rangeStartUnit": "이차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M3-04",
+      "rangeEndUnit": "이차함수와 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-03",
+          "rangeStartUnit": "이차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M3-04",
+          "rangeEndUnit": "이차함수와 그래프",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -11941,6 +12034,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m2/2final/24_왕운중_2학기_기말_중2_유사.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중2 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-01",
+      "rangeEndUnit": "수와 식",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-01",
+          "rangeEndUnit": "수와 식",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
       "school": "매산중",
       "topic": "",
@@ -20850,6 +20974,37 @@ window.mainDB = {
       "rangeEndUnitOrder": 999,
       "courseRanges": [],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "similar/middle/m2/2final/22_풍덕중_2학기_기말_중2_유사.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2022,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중2 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-03",
+      "rangeStartUnit": "연립일차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-03",
+          "rangeStartUnit": "연립일차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
     },
     {
       "file": "original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js",
