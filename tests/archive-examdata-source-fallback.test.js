@@ -13,7 +13,7 @@ const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8'
 
 // 어댑터의 실제 선택 코드를 그대로 잘라 실행한다(복사본이 아니라 현행 소스를 검사).
 const START = 'const bank = window.questionBank || window.examData;';
-const END = "displayTitle = window.examDisplayTitle || window.ExamDisplayTitle?.readableExamTitle?.(title) || title;";
+const END = "displayTitle = window.examDisplayTitle || window.ExamDisplayTitle?.displayTitleOf?.(title, { hint: input.title }) || title;";
 const startAt = adapter.indexOf(START);
 const endAt = adapter.indexOf(END);
 assert(startAt > 0 && endAt > startAt, 'adapter source selection block should be present');
@@ -48,7 +48,7 @@ test('questionBank가 있으면 examData가 있어도 questionBank와 examTitle�
 });
 
 test('표시 제목은 examDisplayTitle > 읽기 쉬운 이름 > 원문 순서이고 식별 제목(title)은 그대로다', () => {
-  const readable = { readableExamTitle: value => value === '22_강남여고_1학기_중간_고1_기출' ? '2022 강남여고 고1 1학기 중간' : value };
+  const readable = { displayTitleOf: value => value === '22_강남여고_1학기_중간_고1_기출' ? '2022 강남여고 고1 1학기 중간' : value };
   const base = { questionBank: [{ id: 1 }], examTitle: '22_강남여고_1학기_중간_고1_기출' };
   const resolved = resolveSource({ ...base, ExamDisplayTitle: readable }, {});
   assert.equal(resolved.title, '22_강남여고_1학기_중간_고1_기출');

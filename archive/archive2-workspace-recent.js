@@ -24,7 +24,11 @@
   V.recentPdfRetryIds = new Set();
   let recentRefetchTimer = null;
   // 줄 제목에 보이는 글자만 정리한다("기출c" -> "기출", 기존 exam-display-title.js 함수). 저장값·서버 요청·검색 원문은 그대로.
-  const shownTitle = (title) => globalThis.ExamDisplayTitle?.withoutContentMark?.(title) ?? title;
+  const shownTitle = (title) => {
+    const text = String(title ?? "");
+    const readable = globalThis.ExamDisplayTitle?.displayTitleOf?.(text, { fallback: text }) || text;
+    return globalThis.ExamDisplayTitle?.withoutContentMark?.(readable) || readable;
+  };
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
     return V.classRows

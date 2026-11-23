@@ -4167,11 +4167,12 @@ function clinicPrintGetArchiveDisplayTitle(file) {
     if (!raw) return '';
     const compact = raw.replace(/^MIXED:/i, '');
     const leaf = compact.split(/[\\/]/).pop() || compact;
-    return leaf
+    const name = leaf
         .replace(/\.js(?:\?.*)?$/i, '')
         .replace(/^exams\//i, '')
         .replace(/^archive\//i, '')
         .trim();
+    return globalThis.ExamDisplayTitle?.displayTitleOf?.(name) || name; // 보이는 제목은 한글 제목
 }
 
 // 시험 목록·삭제 확인에 보이는 글자만 한글 제목으로 바꾼다("24_매산고_1학기_중간_고1_기출" -> "2024 매산고 고1 1학기 중간").
