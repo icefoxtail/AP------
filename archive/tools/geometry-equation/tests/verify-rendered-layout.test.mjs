@@ -19,10 +19,9 @@ test('font measurement includes nested MathJax viewport scaling; new generation 
     assert.equal(analyzeRenderedLayout(old).status,'PASS');
     const compact=await captureAtDisplaySize(page,wrap(legacy(4.5)),{width:300,height:200});
     assert.ok(Math.abs(compact.labels[0].effectiveFontPx-9)<1e-4);
-    // 2026-11-23 (owner): a label authored at 20 that displays at 9 CSS px (the SVG is shrunk) is recorded, not a failure
-    const compactLayout=analyzeRenderedLayout(compact);
-    assert.ok(!compactLayout.errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:number'));
-    assert.equal(compactLayout.displayTextBelow11px,true);assert.equal(compactLayout.displayTextBelow11pxLabels[0].id,'number');
+    // 2026-11-23: still a failure: the outline INSIDE the svg was shrunk (nested viewport), so the font really drawn in SVG units (effective / root display scale) is under 11 even if data-font-px says 20.
+    // Only a shrink of the WHOLE figure on the page (root display scale) is released.
+    assert.ok(analyzeRenderedLayout(compact).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:number'));
     // New fragments do not shrink their ink when a box is narrowed.
     const narrowed=fragment.svg.replace(/width="[^"]+"/,'width="4.5"').replace(/viewBox="0 0 [^ ]+ /,'viewBox="0 0 4.5 ');
     const frozen=await captureAtDisplaySize(page,wrap(narrowed),{width:300,height:200});

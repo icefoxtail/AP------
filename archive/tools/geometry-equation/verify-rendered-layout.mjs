@@ -463,7 +463,9 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
       // no longer fails ("students zoom in"); it is listed in displayTextBelow11px. A label with no known authored font (legacy outlines) keeps the old displayed-size rule.
       if(desktopPublication){
         const authored=label.baseFontPx,authoredKnown=Number.isFinite(authored)&&authored>0,displayedBelow=Number.isFinite(label.effectiveFontPx)&&label.effectiveFontPx<11-1e-7;
-        if(!Number.isFinite(label.effectiveFontPx)||(authoredKnown?authored<11-1e-7:displayedBelow))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
+        // cross-check: data-font-px may say 20 while a nested viewport shrank the outline; effectiveFontPx / root display scale is the font in SVG units that was really drawn, and that stays under the authored floor
+        const rootScale=capture.coordinateScale,drawn=Number.isFinite(rootScale)&&rootScale>0?label.effectiveFontPx/rootScale:null;
+        if(!Number.isFinite(label.effectiveFontPx)||(authoredKnown?(authored<11-1e-7||(drawn!==null&&drawn<11-1e-3)):displayedBelow))errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
         else if(displayedBelow)displayTextBelow11px.push({id:label.id,effectiveFontPx:label.effectiveFontPx});
       }
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
