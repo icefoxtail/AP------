@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "9" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "25" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "16" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "25" },
+            { "kind": "integer", "value": "9" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-4" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "29" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "E",
+    "B",
+    "C",
+    "lL",
+    "lR"
+  ],
+  "hiddenPointNames": [
+    "lL",
+    "lR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "lL",
+        "lR"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "A",
+        "E",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "ra3",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "el1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dDE",
+        "from": "D",
+        "to": "E",
+        "label": "25",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dEC",
+        "from": "E",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": "AUTO"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sl",
+        "text": "l",
+        "labelAt": "END"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "직각이등변삼각형 ABC의 꼭짓점 B, C에서 직선 l에 내린 수선의 발 D, E와 길이 DE=25 cm, EC=9 cm",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC는 각 A=90°, AB=AC인 직각이등변삼각형",
+      "mappedTo": "ra3, el1"
+    },
+    {
+      "id": "c2",
+      "condition": "두 꼭짓점 B, C에서 직선 l 위에 내린 수선의 발 D, E",
+      "mappedTo": "ra1, ra2"
+    },
+    {
+      "id": "c3",
+      "condition": "DE = 25 cm",
+      "mappedTo": "dDE"
+    },
+    {
+      "id": "c4",
+      "condition": "EC = 9 cm",
+      "mappedTo": "dEC"
+    }
+  ],
+  "newVisualInformation": "직각 표시 3곳(A, D, E), 직선 l, 치수선 DE=25 cm, EC=9 cm, 같은 변 표시 AB=AC"
+}

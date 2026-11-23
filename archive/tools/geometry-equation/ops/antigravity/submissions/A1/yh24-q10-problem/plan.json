@@ -1,0 +1,338 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "248" },
+            { "kind": "integer", "value": "204" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "140" },
+            { "kind": "integer", "value": "60" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "230" },
+            { "kind": "integer", "value": "60" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "194" },
+            { "kind": "integer", "value": "132" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "302" },
+            { "kind": "integer", "value": "276" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "338" },
+            { "kind": "integer", "value": "204" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "40" },
+            { "kind": "integer", "value": "60" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "400" },
+            { "kind": "integer", "value": "60" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tBot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "113" },
+            { "kind": "integer", "value": "24" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tTop",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "329" },
+            { "kind": "integer", "value": "312" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "100" },
+            { "kind": "integer", "value": "204" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "400" },
+            { "kind": "integer", "value": "204" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "lL",
+    "lR",
+    "tBot",
+    "tTop",
+    "pL",
+    "pR"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "lL",
+    "lR",
+    "tBot",
+    "tTop",
+    "pL",
+    "pR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "lL",
+        "lR"
+      ]
+    },
+    {
+      "id": "sTrans",
+      "refs": [
+        "tBot",
+        "tTop"
+      ]
+    },
+    {
+      "id": "sPar",
+      "refs": [
+        "pL",
+        "pR"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "traces": [
+      {
+        "id": "t_b",
+        "center": "O",
+        "radius": {
+          "point": "A"
+        },
+        "through": [
+          "A",
+          "B"
+        ],
+        "span": "JOIN",
+        "label": "㉡",
+        "labelKind": "TEXT",
+        "labelAt": "MID"
+      },
+      {
+        "id": "t_c",
+        "center": "P",
+        "radius": {
+          "point": "C"
+        },
+        "through": [
+          "C",
+          "D"
+        ],
+        "span": "JOIN",
+        "label": "㉢",
+        "labelKind": "TEXT",
+        "labelAt": "MID"
+      },
+      {
+        "id": "t_d",
+        "center": "A",
+        "radius": {
+          "point": "B"
+        },
+        "through": [
+          "B"
+        ],
+        "label": "㉣",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t_e",
+        "center": "C",
+        "radius": {
+          "point": "D"
+        },
+        "through": [
+          "D"
+        ],
+        "label": "㉤",
+        "labelKind": "TEXT"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl_step1",
+        "ownerSegment": "sTrans",
+        "text": "㉠",
+        "labelKind": "TEXT",
+        "labelAt": "END"
+      },
+      {
+        "id": "lbl_step6",
+        "ownerSegment": "sPar",
+        "text": "㉥",
+        "labelKind": "TEXT",
+        "labelAt": "END"
+      },
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sl",
+        "text": "l",
+        "labelAt": "END"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "직선 l 밖의 한 점 P를 지나고 직선 l에 평행한 직선의 작도 과정",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 P를 지나 직선 l과 만나는 직선 ㉠",
+      "mappedTo": "lbl_step1"
+    },
+    {
+      "id": "c2",
+      "condition": "교점을 중심으로 원을 그려 두 직선과의 교점을 잡음 ㉡",
+      "mappedTo": "t_b"
+    },
+    {
+      "id": "c3",
+      "condition": "점 P를 중심으로 반지름이 같은 원을 그림 ㉢",
+      "mappedTo": "t_c"
+    },
+    {
+      "id": "c4",
+      "condition": "컴퍼스로 벌어진 거리를 잼 ㉣",
+      "mappedTo": "t_d"
+    },
+    {
+      "id": "c5",
+      "condition": "같은 거리의 호를 그려 교점을 잡음 ㉤",
+      "mappedTo": "t_e"
+    },
+    {
+      "id": "c6",
+      "condition": "점 P와 그 교점을 지나는 평행선 ㉥",
+      "mappedTo": "lbl_step6"
+    }
+  ],
+  "newVisualInformation": "평행선 작도 순서 표시 ㉠, ㉡, ㉢, ㉣, ㉤, ㉥과 직선 l, 점 P"
+}

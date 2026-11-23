@@ -1,0 +1,383 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "278" },
+            { "kind": "integer", "value": "292" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "138" },
+            { "kind": "integer", "value": "194" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "108" },
+            { "kind": "integer", "value": "92" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "200" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "292" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "292" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "194" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "194" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "92" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "92" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "P",
+    "Q",
+    "B",
+    "lL",
+    "lR",
+    "mL",
+    "mR",
+    "pL",
+    "pR",
+    "qL",
+    "qR"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "P",
+    "Q",
+    "B",
+    "lL",
+    "lR",
+    "mL",
+    "mR",
+    "pL",
+    "pR",
+    "qL",
+    "qR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "lL",
+        "lR"
+      ]
+    },
+    {
+      "id": "sm",
+      "refs": [
+        "mL",
+        "mR"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "sp",
+      "refs": [
+        "pL",
+        "pR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sq",
+      "refs": [
+        "qL",
+        "qR"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "par1",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a35",
+        "refs": [
+          "lL",
+          "A",
+          "P"
+        ],
+        "value": 35,
+        "label": "35°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "A",
+          "P",
+          "Q"
+        ],
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "P",
+          "Q",
+          "B"
+        ],
+        "label": "y",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "a45",
+        "refs": [
+          "mL",
+          "B",
+          "Q"
+        ],
+        "value": 45,
+        "label": "45°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_p_upper",
+        "refs": [
+          "A",
+          "P",
+          "pR"
+        ],
+        "value": 35,
+        "label": "35°",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a_q_lower",
+        "refs": [
+          "B",
+          "Q",
+          "qR"
+        ],
+        "value": 45,
+        "label": "45°",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sl",
+        "text": "l",
+        "labelAt": "START"
+      },
+      {
+        "id": "lbl_m",
+        "ownerSegment": "sm",
+        "text": "m",
+        "labelAt": "START"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "보조 평행선과 엇각 35°, 45°를 이용한 해설 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선 l과 m은 서로 평행",
+      "mappedTo": "par1"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 l과 꺾인 선 사이의 각의 크기가 35°",
+      "mappedTo": "a35"
+    },
+    {
+      "id": "c3",
+      "condition": "꺾인 점에서의 각 x",
+      "mappedTo": "ax"
+    },
+    {
+      "id": "c4",
+      "condition": "다른 꺾인 점에서의 각 y",
+      "mappedTo": "ay"
+    },
+    {
+      "id": "c5",
+      "condition": "직선 m과 꺾인 선 사이의 각의 크기가 45°",
+      "mappedTo": "a45"
+    },
+    {
+      "id": "c6",
+      "condition": "보조 평행선을 통한 엇각 관계",
+      "mappedTo": "a_p_upper, a_q_lower"
+    }
+  ],
+  "newVisualInformation": "보조 평행선 2개, 엇각 35°, 45° 표시"
+}
