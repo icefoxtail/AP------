@@ -56,6 +56,8 @@ const bandRowPitch=texts=>texts.some(text=>String(text).includes('/'))?56:34;
 // A refusal that also carries repair data for the author's result file (error-guidance.mjs turns it into result.fix). The Error (message, class) is unchanged and
 // hintData is not enumerable, so nothing that prints or compares the error sees it. hintData holds only numbers and ids the engine itself computed.
 const withHint=(error,hintData)=>Object.defineProperty(error,'hintData',{value:hintData,enumerable:false,configurable:true});
+// label-room MARGIN of a plane figure: the frame padding (as a share of the figure span) the rescue ladder tries after the tight .06 frame left a label without room (see label-room.mjs).
+export const ROOM_PADS=Object.freeze([.14,.24,.36]);
 export const CANVAS_RANGE={width:[384,720],height:[320,600]};   // coordinateCanvas bounds (CSS px of the intrinsic frame)
 const graphBandIds=(panelLabels,required)=>panelLabels.map(labelId=>{const m=/^required-point-(\d+)-coordinate-panel$/.exec(labelId);return m?required?.[Number(m[1])-1]?.id:undefined;}).filter(id=>typeof id==='string');
 const bandRowCenters=(pitches,firstCenter)=>{let top=firstCenter-17;return pitches.map(pitch=>{const center=top+pitch/2;top+=pitch;return center;});};
@@ -1036,7 +1038,7 @@ function specForFamily(plan,model,id){
   for(const q of calloutExtentPoints(callouts)){xs.push(q[0]);ys.push(q[1]);}
   if(mainFrame&&callouts.length){xs.push(mainFrame.xMin,mainFrame.xMax);ys.push(mainFrame.yMin,mainFrame.yMax);}
   // A plane figure (no axes) is fitted tightly: the engine's own margin already leaves room for the point names.
-  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)||(mainFrame&&callouts.length)?.06:.35);
+  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)||(mainFrame&&callouts.length)?(isPlaneFigure(plan)&&ROOM_PADS.includes(plan.roomPad)?plan.roomPad:.06):.35);   // plan.roomPad (label-room MARGIN, set only by the render rescue ladder, never by an author): more empty frame round a plane figure so the labels outside it have room
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a GIVEN/CONCLUSION point. (E31) A hidden point may also be listed in coordinateLabels: its name stays
   // unwritten and only its coordinates (1,-1) stand beside it (an unnamed intersection or intercept of the source figure).
   // A plane figure (axis-free PLANE_FIGURE_v1) or a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1) may also list a SOURCE_POINT (a point the

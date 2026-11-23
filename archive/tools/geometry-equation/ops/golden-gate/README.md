@@ -125,6 +125,7 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 | stat | `STAT_LABEL_OUT_OF_BOUNDS` `STAT_LABELS_TOO_CLOSE` `STAT_*_NO_ROOM` | LEADER, MARGIN | LEADER: 정규분포 넓이 글자를 영역 밖 + 영역 안 점에서 시작하는 지시선. MARGIN: 눈금·z 줄을 라벨 실제 높이로(쌓은 분수), 수형도는 위아래 여백 12·28px |
 | set | `SET_*_NO_ROOM` `SET_LABELS_TOO_CLOSE` `SET_DIAGRAM_RENDERED_LAYOUT_FAIL` | LEADER (WRAP은 원소 라벨의 자체 시도 `setDiagramAttempts`) | 집합 이름을 모든 원 선에서 4px 떨어뜨리고, 자리가 없으면 원 밖 빈 곳 + 자기 원에서 시작하는 지시선 |
 | ellipse | `ELLIPSE_LABEL_NO_ROOM` `ELLIPSE_FIGURE_RENDERED_LAYOUT_FAIL` | LEADER (MARGIN은 `ELLIPSE_FRAME_WIDEN`, 기존) | 선분 길이 글자(`6√3`)를 선분 가운데에서 시작하는 지시선으로 빈 곳에. 지시선은 축 화살촉을 가로지르지 않는다. plan에 `coordinateLeader:["P"]` |
+| construction (평면 도형) | `LAYOUT_INVENTORY_INCOMPLETE` | LEADER, MARGIN | render-plan이 기존 폴백(좌표 띠·캔버스·마지막 수단)을 다 쓴 뒤에만 `runRoomLadder`를 부른다(2026-11-24). LEADER: 자리를 못 찾은 영역 값(AUTO→AUTO_LEADER)·각 값·호 길이를 자기 표식으로 잇는 지시선으로(`constructionLeaderPlan`). MARGIN: 치수선을 점에서 40·60px로 내보내고(`constructionDimensionPlan`), 그래도 안 되면 도형 둘레 빈 틀 `roomPad` 0.14·0.24·0.36(`constructionMarginPlan`, 캔버스 크기 그대로); 각 시도는 LEADER로 고친 plan에도, LEADER·치수선 시도는 마지막 수단(`lastResort`)으로도 한다. 관측기는 그대로 통과해야 한다 |
 | container, lattice | 없음 | 없음 | 자체 틀 확대 사다리(`GRAPH_GROWTH`)가 이미 있고 현행 코퍼스에 방 부족 실패가 없다. 다음 묶음 후보 |
 
 할 수 없는 경우(다른 선을 가로지를 수밖에 없는 지시선 등)는 몰래 caption으로 보내지 않고 지금처럼 정해진 코드로 거절한다. 새 종류가 단계를 가지려면 표 행에 `room: {codes, steps, apply, best?}`를 쓴다(`standalone-kinds.mjs` 머리말). 테스트: `tests/label-room.test.mjs`(순수), `tests/label-room-render.test.mjs`(Chrome).

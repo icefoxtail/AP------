@@ -424,6 +424,11 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - **벡터 그림의 정답 노출** (G3): 합벡터의 라벨은 `vec(AB)+vec(AF)`처럼 **식으로만** 달고 `=AO` 같은 등식은 그림·`alt`·`caption`에 쓰지 않는다(그것이 답이면). 합벡터의 끝이 문제의 다른 점(정육각형의 중심 O)과 겹쳐도 점 이름 O는 문제에 있는 이름이라 그대로 둔다. 라벨 자리가 없으면 라벨을 지우지 말고 `coordinateCanvas`를 키우거나 `labelAt`·`side`를 바꾼다(좁은 평행사변형 안에서 긴 식 라벨은 작은 캔버스에서 자리를 못 찾는다).
 **한계.** 한 점 둘레에 각이 많이 몰리거나 캔버스가 너무 작으면 지시선 자리도 없어 `LAYOUT_INVENTORY_INCOMPLETE`가 될 수 있다: `coordinateCanvas`를 키우거나 한 쌍의 두 번째 각을 `noLabel`로 하거나 표식을 줄인다. 길이 라벨의 숫자와 그려진 길이의 비례는 관측하지 않는다(눈금과 평행·각만 관측). **좁은 꼭짓점·붐비는 선분의 라벨·치수선이 막히면 `planeMarks.callouts`로 그 선분·각을 끌어내 따로 그리는 것이 첫 번째 방법이다(위 E37).**
 
+**자리가 모자랄 때 (평면도형, label-room 2026-11-24).** 라벨이 자리를 못 찾아 `LAYOUT_INVENTORY_INCOMPLETE`가 될 평면 도형(`PLANE_FIGURE_v1`)은 엔진이 plan을 쓴 사람이 직접 고칠 수 있는 방식으로만 다시 그린다. 순서와 기록(`row.fallback`의 `ROOM_LEADER`·`ROOM_MARGIN`)은 같다:
+- `ROOM_LEADER`: 자리를 못 찾은 라벨이 영역 값(`regions[]`, 쓰지 않았으면 `AUTO` → `AUTO_LEADER`)·각 값(`angles[]` → `LEADER`)·호 길이(`arcs[]` → `LEADER`)이면 그 표식 자신에게 지시선으로 잇는다(안에 들어가면 안에 둔다). `labelPlacement`를 이미 정한 행은 건드리지 않는다.
+- `ROOM_MARGIN`: 치수선이 점에서 24px보다 더 멀리(40px, 60px) 서서 점 이름·라벨이 도형과 치수선 사이에 자리를 얻고, 그래도 안 되면 도형 둘레 빈 틀이 커진다(`roomPad` 0.14·0.24·0.36, 캔버스 크기는 그대로). 각 시도는 `LEADER`로 고친 plan에도 한다.
+- 처음부터 통과하는 그림은 이 단계에 오지 않아 바이트가 그대로다. 단계가 다 실패하면 처음 실패(`LAYOUT_INVENTORY_INCOMPLETE`)가 그대로 나온다. 고쳐지지 않는 것(좁은 꼭짓점의 점 이름, 작은 영역 안의 긴 값 라벨, 표처럼 늘어놓은 `textLabels`)은 위 `callouts`로 끌어내거나 `textLabels`를 줄인다.
+
 ### 3-9. 영역 색칠: 다각형·부채꼴·활꼴·차집합 (`planeMarks.regions`)
 
 문제 그림에서 **이미 그린 선·호로 둘러싸인 영역을 회색으로 칠하고** 그 넓이를 영역 안에 적어야 할 때 쓴다(넓이 분할, 부채꼴, 띠, 활꼴, 합동 삼각형 강조). `PLANE_FIGURE_v1` plan의 `planeMarks.regions`에 쓴다. 칠하는 영역은 **도형에서 구멍을 뺀 것**으로 쓴다. 도형끼리는 겹칠 수 없고(겹쳐야 하면 구멍으로 뺀다) 구멍은 반드시 어떤 도형 안에 있어야 한다. 색은 `LIGHT`(기본) 또는 `MEDIUM`(회색)이고, 같은 것끼리 색으로 묶으려면 `BLUE`·`WARM`·`GREEN`·`ROSE`·`VIOLET`도 쓴다(3-9-색절: `equalAreas`, 각·선분 색 묶음). 칠은 모든 획·라벨 **아래**에 깔린다.

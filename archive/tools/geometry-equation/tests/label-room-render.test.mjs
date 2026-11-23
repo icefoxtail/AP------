@@ -97,3 +97,27 @@ test('best place: a figure the steps do not rescue is still drawn, never bound, 
     assert.ok(degradeSet.items.some(item => item.code === 'OBSERVER_ERRORS' && item.errors.some(code => /LABEL_GEOMETRY_COLLISION/.test(code))), JSON.stringify(degradeSet.items));
   } finally { await browser.close(); }
 });
+
+// ---- the plane construction figure (R2): the ladder of render-plan after every older fallback, end to end (Chrome + python observers) ----------------------------------------------------
+// Each plan below failed with LAYOUT_INVENTORY_INCOMPLETE as DeepSeek wrote it (a label without a place); the render rescues it, records the step in row.fallback, and the observers still pass (ARCHIVE_BOUND).
+test('construction: a region value that does not fit inside its region goes out on a leader; a dimension line moves out for a label between it and the figure; the frame grows when nothing else helps', {timeout: 1800000}, async () => {
+  const run = async (file, name) => {
+    const out = fs.mkdtempSync(path.join(os.tmpdir(), 'label-room-'));
+    const result = await renderPlan({item: {sourcePath: 'archive/exams/original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', ordinal: 22, dir: name}, plan: fileURLToPath(new URL(`./label-room-plans/${file}.json`, import.meta.url)), outDir: out});
+    return result;
+  };
+  const roomStep = result => (result.fallback ?? []).find(f => /^ROOM_/.test(f.to));
+  const region = await run('construction-region-leader', 'region');
+  assert.equal(region.status, 'ARCHIVE_BOUND', JSON.stringify(region).slice(0, 600));
+  assert.equal(roomStep(region)?.to, 'ROOM_LEADER');
+  assert.match(roomStep(region).from, /rABC-label/, 'the label that had no place is recorded');
+  assert.deepEqual(roomStep(region).target.labels, ['rABC']);
+  const dim = await run('construction-dimension-offset', 'dim');
+  assert.equal(dim.status, 'ARCHIVE_BOUND', JSON.stringify(dim).slice(0, 600));
+  assert.equal(roomStep(dim)?.to, 'ROOM_MARGIN');
+  assert.ok(roomStep(dim).target.dimensionOffsetPx >= 40);
+  const pad = await run('construction-frame-pad', 'pad');
+  assert.equal(pad.status, 'ARCHIVE_BOUND', JSON.stringify(pad).slice(0, 600));
+  assert.equal(roomStep(pad)?.to, 'ROOM_MARGIN');
+  assert.ok(roomStep(pad).target.pad > 0 || roomStep(pad).target.dimensionOffsetPx > 0);
+});
