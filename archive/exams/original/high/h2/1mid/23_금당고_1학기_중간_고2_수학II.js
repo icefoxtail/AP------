@@ -359,7 +359,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "구간 2에서 4까지 오른쪽 위로 오르는 제곱근 곡선 f와 쌍곡선의 한 가지 g가 한 좌표평면에 그려져 있고, f 위의 점 B와 g 위의 점 C가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=√(2x-4)는 [2,4]에서 증가하므로 최댓값은 점 B(4,2)에서 M=2이다. g(x)=(3x-3)/(x+1)의 도함수 6/(x+1)²이 양수이므로 g도 [2,4]에서 증가하고 최솟값은 점 C(2,1)에서 m=1이다. 따라서 M+m=3이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 9,

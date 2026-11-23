@@ -143,7 +143,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "삼각함수",
-    "originalCategory": "삼각함수"
+    "originalCategory": "삼각함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위 제3사분면에 점 P가 있고 원점에서 P로 향하는 동경과 P에서 x축으로 내린 점선이 직각삼각형을 이룬다. 각 θ와 두 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "tanθ+1/tanθ=2에서 (tanθ−1)²=0이므로 tanθ=1이다. θ는 제3사분면의 각이므로 동경은 기준각 π/4의 방향(225°)이고 사인과 코사인이 모두 음수이다. 단위원 위의 점 P의 좌표는 (−√2/2, −√2/2)이다. 따라서 sinθ+cosθ=−√2이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -368,7 +372,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "지수함수와 로그함수",
-    "originalCategory": "지수함수와 로그함수"
+    "originalCategory": "지수함수와 로그함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "오른쪽 위로 올라가는 파란 직선과 오른쪽 아래로 내려가는 주황 선분 두 개가 있다. 주황 선분은 1/2에서 끊기고 파란 직선과 세 점 P0, P1, P2에서 만난다. 각 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "u=log x=1+t(0≤t<1)로 놓으면 log x의 소수부분은 t이고 log(1/x²)=−2−2t의 소수부분은 −2t의 소수부분이다. −2t의 소수부분은 0<t<1/2에서 1−2t, 1/2<t<1에서 2−2t이다(t=1/2이면 0). 직선 y=t와 만나는 점은 P0(0, 0), P1(1/3, 1/3), P2(2/3, 2/3)이므로 log x는 1, 4/3, 5/3이다. 곱은 10의 (1+4/3+5/3)=4제곱이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -494,7 +502,11 @@ window.questionBank = [
       "서술형"
     ],
     "category": "지수함수와 로그함수",
-    "originalCategory": "지수함수와 로그함수"
+    "originalCategory": "지수함수와 로그함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "t가 0보다 큰 구간에서 아래로 볼록한 곡선 두 개가 두 그림으로 나뉘어 있다. 왼쪽은 원점에서 시작해 올라가고, 오른쪽은 가로축 아래에서 시작해 올라간다.",
+    "solutionImageCaption": "t=2ˣ>0으로 놓으면 h(t)=a·t(t+2)+(−a²+2a+3)이다. a>0이면 t→0에서 h→−a²+2a+3이므로 이 상수항이 0 이상이어야 한다. 그림 왼쪽은 경계 a=3일 때 h=3t²+6t로 t>0에서 항상 양수이고, 오른쪽은 a=4일 때 상수항이 −5라서 t가 0에 가까우면 h가 음수이다. −1≤a≤3과 a>0, 그리고 a=0까지 합하면 a=0, 1, 2, 3이므로 개수는 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

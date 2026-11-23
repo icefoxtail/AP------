@@ -443,7 +443,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위 제2사분면에 점 P가 있고 원점에서 P로 향하는 동경이 있다. 각 θ와 한 바퀴 더 돈 각 4θ가 같은 동경에서 끝나도록 표시되어 있다.",
+    "solutionImageCaption": "두 동경이 일치하면 4θ−θ=2nπ이므로 θ=2nπ/3이고, π/2<θ<π에서 n=1이어서 θ=2π/3(120°)이다. 이때 4θ=8π/3(480°)는 한 바퀴(360°)를 더 돈 뒤 같은 동경 OP로 온다. θ=(2/3)π이므로 p=3, q=2이고 p−q=1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

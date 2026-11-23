@@ -113,7 +113,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "3에서 5까지 오른쪽으로 내려가는 지수 곡선 f가 있고, 왼쪽 끝 점 A와 오른쪽 끝 점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=(1/3)ˣ⁻⁵+3의 그래프를 3≤x≤5에서 본 것이다. 밑이 1/3이어서 f는 감소하므로 왼쪽 끝 A(3, 12)에서 최댓값 M=12, 오른쪽 끝 B(5, 4)에서 최솟값 m=4를 갖는다. 따라서 M−m=8이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -701,7 +705,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "0에서 4까지 연달아 이어진 사인 봉우리 모양의 곡선과 원점에서 올라가는 직선이 있다. 첫 봉우리에서는 원점 말고 한 번, 나머지 세 봉우리에서는 두 번씩 곡선과 직선이 만난다.",
+    "solutionImageCaption": "y=|sin πx|의 그래프와 직선 y=x/4의 교점이 근이다. x≥0이어야 하고 x=4에서 직선은 1이어서 해가 없으므로 0≤x<4만 본다. x=0에서 1개, 0<x<1에서 1개, 그리고 봉우리 [1, 2], [2, 3], [3, 4]에서 각각 2개씩 만나 모두 1+1+2×3=8개이다. 따라서 답은 8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

@@ -344,7 +344,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_매산여고_1학기_중간_고2_확률과통계",
       "sourceSha256": "d27f81d2fd5848c661f9338ca484b5b20cbc023c405260e199cf65b22ff39a7f"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "표본공간 S={1, 2, 3, 4, 5, 6, 7, 8}에서 A={1, 3, 5, 7}, B={4, 8}이다. 그림처럼 A와 B가 겹치지 않아 A∩B가 공집합이므로 두 사건은 배반사건이다(지은 참). B의 여사건은 B 밖의 {1, 2, 3, 5, 6, 7}이므로 서진의 {1, 2, 3, 4, 5, 6, 7}은 틀렸다. A∩B의 여사건은 S 전체이므로 상윤의 {2, 6}도 틀렸다. 따라서 지은만 옳고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

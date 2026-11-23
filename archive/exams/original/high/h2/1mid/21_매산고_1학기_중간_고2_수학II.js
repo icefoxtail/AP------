@@ -233,7 +233,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "미분계수와 도함수",
-    "originalCategory": "미분계수와 도함수"
+    "originalCategory": "미분계수와 도함수",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선 위의 두 점 A, B를 잇는 내려가는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "구간 [-1,4]의 양 끝점 A(-1,7), B(4,-8)를 잇는 할선 l의 기울기는 -15/5=-3이다. f′(a)=2a-6=-3에서 a=3/2이고, 접점 T(3/2,-27/4)에서의 접선 m이 할선 l과 평행하다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -404,7 +408,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "미분계수와 도함수",
-    "originalCategory": "미분계수와 도함수"
+    "originalCategory": "미분계수와 도함수",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "위로 볼록한 포물선이 가로축의 두 점 A, B를 지나고 가운데에 꼭짓점 V가 있으며, 오른쪽 점 B에서 내려가는 접선 t가 그려진 그래프이다.",
+    "solutionImageCaption": "f(2)=0, f′(2)=4이고 x=5/2에서 최댓값을 가지므로 f(x)=-4(x-2)(x-3)이다. 그림에서 포물선은 A(2,0), B(3,0)을 지나고 꼭짓점 V(5/2,1)을 가진다. x→2이면 2x-1→3이므로 f(3)=0을 이용해 극한은 2f′(3)이다. 직선 t는 B에서의 접선이고 기울기가 f′(3)=-4이므로 극한은 -8이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

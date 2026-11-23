@@ -134,7 +134,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "지수함수의 기본형 $y=(\\frac{1}{3})^{x-1}$은 항상 양수이고, 그래프를 위로 $1$만큼 평행이동한 것이 $y=(\\frac{1}{3})^{x-1}+1$입니다.<br>따라서 수평점근선은 $y=1$이므로 $k=1$입니다.<br>밑 $\\frac{1}{3}$은 $0$과 $1$ 사이이므로 $x$가 커질수록 $(\\frac{1}{3})^{x-1}$은 작아집니다. 상수 $1$을 더해도 감소 성질은 변하지 않습니다.<br>그러므로 $-2\\le x\\le1$에서 최솟값은 가장 오른쪽인 $x=1$에서 얻습니다.<br>$m=(\\frac{1}{3})^{1-1}+1=(\\frac{1}{3})^0+1=1+1=2$입니다.<br>따라서 $k+m=1+2=3$이므로 정답은 ③입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "오른쪽으로 갈수록 내려가는 지수 곡선과 가로 점근선 y=1이 있다. 곡선 위의 오른쪽 끝 점 M의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=(1/3)ˣ⁻¹+1은 (1/3)ˣ⁻¹의 그래프를 위로 1만큼 옮긴 것이므로 점근선은 y=1이고 k=1이다. 밑이 1/3이어서 감소하므로 −2≤x≤1에서 최솟값은 오른쪽 끝 M(1, 2)에서 나타나 m=2이다(왼쪽 끝 x=−2에서는 28). 따라서 k+m=3이고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -149,7 +153,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "먼저 두 로그함수의 식을 같은 형태로 고칩니다.<br>$y_1=\\log_3(9x)=\\log_3x+2$<br>$y_2=\\log_3(\\frac{x}{3})=\\log_3x-1$<br>따라서 같은 $x$에서 두 그래프의 높이 차는 항상<br>$y_1-y_2=(\\log_3x+2)-(\\log_3x-1)=3$입니다.<br>두 그래프와 수직선 $AC$, $BD$ 사이의 영역은 곡선으로 둘러싸여 있지만, 어느 $x$에서 잘라도 세로 길이가 정확히 $3$으로 같습니다.<br>직선 $y=k$ 위의 $A,B$는 같은 높이에 있으므로 $AB=7$은 두 수직선 사이의 가로 길이입니다.<br>따라서 가로 길이 $7$인 구간에서 높이 $3$인 띠의 넓이는<br>$S=7\\times3=21$입니다.<br>구하는 넓이는 $21$이므로 정답은 ②입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "오른쪽 위로 완만하게 올라가는 두 로그 곡선이 위아래로 평행하게 놓여 있다. 두 개의 세로선과 x=1에서 두 곡선을 잇는 세로 선분의 양 끝 점 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: log₃(9x)=log₃x+2와 log₃(x/3)=log₃x−1은 같은 x에서 높이 차가 항상 3이다. 그림의 x=1에서 두 곡선 위의 점 C(1, 2), D(1, −1)을 잇는 세로 선분 길이가 3이다. 어느 x에서 잘라도 세로 길이가 3으로 같으므로 가로 길이 7인 두 세로선(그림의 x=1과 x=8 같은 위치) 사이의 도형은 넓이가 7×3=21이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -265,7 +273,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "주어진 식의 두 코사인값을 먼저 정확히 계산해 $\\sin\\theta$만 남깁니다.<br>$\\cos(\\pi/2+\\pi/6)=\\cos(2\\pi/3)=-\\dfrac12$이고<br>$\\cos(\\pi/2-\\pi/3)=\\cos(\\pi/6)=\\dfrac{\\sqrt3}{2}$입니다.<br>이를 대입하면 $\\sin\\theta-\\dfrac12+\\dfrac{\\sqrt3}{2}=-\\dfrac12$이므로, 양변에 $\\frac{1}{2}$를 더해 $\\sin\\theta+\\dfrac{\\sqrt3}{2}=0$을 얻습니다.<br>따라서 $\\sin\\theta=-\\dfrac{\\sqrt3}{2}$입니다.<br>사인값이 음수인 곳은 제3·제4사분면이고, 기준각은 $\\pi/3$입니다. $0\\le\\theta\\le2\\pi$에서 가능한 각은<br>$\\theta=\\pi+\\pi/3=4\\pi/3$, $\\theta=2\\pi-\\pi/3=5\\pi/3$입니다.<br>두 각의 합은 $\\dfrac{4\\pi}{3}+\\dfrac{5\\pi}{3}=\\dfrac{9\\pi}{3}=3\\pi$이므로 정답은 ⑤입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "0에서 2π까지 한 주기의 사인 곡선과 가로선이 아래쪽 골짜기 부분에서 두 점에서 만난다. 가로축에 4π/3, 5π/3, 2π 눈금이 표시되어 있다.",
+    "solutionImageCaption": "cos(π/2+π/6)=cos(2π/3)=−1/2, cos(π/2−π/3)=cos(π/6)=√3/2이므로 식은 sinθ+√3/2=0, 곧 sinθ=−√3/2이다. 사인 곡선과 가로선 y=−√3/2는 0≤θ≤2π에서 두 점에서 만나고 그 x좌표는 4π/3과 5π/3이다. 합은 4π/3+5π/3=3π이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

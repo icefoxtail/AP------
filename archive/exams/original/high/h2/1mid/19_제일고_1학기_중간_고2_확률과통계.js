@@ -812,7 +812,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "EVIDENCE_DEBT: 표본공간·근원사건 식별은 active broad probability PT와 연결되나 exact active repeated-solution template가 없어 임의 지정하지 않음."
+    "metaDebtReason": "EVIDENCE_DEBT: 표본공간·근원사건 식별은 active broad probability PT와 연결되나 exact active repeated-solution template가 없어 임의 지정하지 않음.",
+    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "앞면을 H, 뒷면을 T라 하고 동전을 두 번 던지는 모든 결과를 나열한 수형도이다(첫째 가지는 첫 번째 던짐, 둘째 가지는 두 번째 던짐). 네 경로는 HH, HT, TH, TT이므로 표본공간은 S={HH, HT, TH, TT}이다. 근원사건은 원소가 하나인 사건 {HH}, {HT}, {TH}, {TT}이고 각 경로의 확률은 1/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
