@@ -1059,6 +1059,16 @@ function specForFamily(plan,model,id){
   const unmarked=new Set(unmarkedPointIds(plan));
   const pointNames=pointNameModel(plan,Object.keys(points));
   for(const entry of pointNames.entries())if(hiddenNames.has(entry.id))throw Error('POINT_NAME_TARGET_HIDDEN:'+entry.id);
+  // (P-B) Two drawn points at exactly one place (the exact model puts them on each other) are two names on one dot: the student cannot tell which point is which. A hidden point is a bare dot without a name, so it is not counted.
+  if(markFigure){
+    const placed=new Map();
+    for(const id of Object.keys(points)){
+      if(hiddenNames.has(id))continue;
+      const key=points[id].approximation.map(value=>Math.round(value*1e9)).join(',');
+      if(placed.has(key))throw Error('DISPLAY_POINTS_COINCIDE:'+placed.get(key)+','+id);
+      placed.set(key,id);
+    }
+  }
   // (G3) a point that ends a vector arrow and starts none keeps its name but draws no dot (marker NO_DOT): the dot would cover the arrow head
   const noDot=new Set(vectorTipIds(plan));
   const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null,...(unmarked.has(name)?{marker:'NONE'}:{})}:{...(pointNames.has(name)?{name:pointNames.tex(name)}:{}),...(noDot.has(name)?{marker:'NO_DOT'}:{})})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;

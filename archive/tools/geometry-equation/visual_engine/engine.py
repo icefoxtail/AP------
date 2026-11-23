@@ -330,6 +330,7 @@ def _value_names_its_quantity(obj):
     if not (obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and text):return False
     if text[-1:] in ('\u00b2','\u00b3'):return True                  # an area / volume unit says it is not a length
     if '=' not in text:return False
+    if re.search(r'[0-9π)]\s?(?:mm|cm|km|m)$',text):return False   # (P-D) S=6cm: a length unit says it is a length, whatever the name before it
     name=text.split('=',1)[0].strip()
     return re.fullmatch(r'[A-Z]{2}|[a-z]',name) is None            # AB=6\u03c0 (a segment or arc) and l=6 (a length letter) read as lengths; 부채꼴 AOB, \u25b3ABC, S do not
 

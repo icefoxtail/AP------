@@ -234,6 +234,52 @@ class ObserverTests(unittest.TestCase):
         label=label_group('rABC-label',inside,'6')
         self.assertIn('REGION_VALUE_IN_INNER_CIRCLE',fx.codes(svg=bare.replace('</svg>',ring(o[0],o[1],25.0)+label+'</svg>')))
         self.assertNotIn('REGION_VALUE_IN_INNER_CIRCLE',fx.codes(svg=bare.replace('</svg>',ring(o[0]+90.0,o[1],25.0)+label+'</svg>')))
+    # ---- (P-D) a bare value beside a point name, S=6cm, the whole-circle test ----
+    def named_box(self,box,gap,below=0.0):
+        return {'x':box['x']+box['width']+gap,'y':box['y']+below,'width':14.0,'height':14.0}
+    def with_name(self,box,namebox,marks):
+        svg=self.fixture.svg(box=box,text='6').replace('</svg>',label_group('B-name',namebox,'B')+'</svg>')
+        return self.fixture.codes(svg=svg,marks=marks)
+    def test_a_bare_value_on_one_line_with_a_point_name_reads_as_one_token_and_is_refused(self):
+        box=dict(self.fixture.row['box']);marks=self.value_marks()
+        # 36 B: the name stands 12 px from the value on the same line
+        self.assertIn('REGION_VALUE_BESIDE_NAME',self.with_name(box,self.named_box(box,12.0),marks))
+        # not level but on the same line (the case of the figure that was published: 10 px lower, the boxes overlap by a third)
+        self.assertIn('REGION_VALUE_BESIDE_NAME',self.with_name(box,self.named_box(box,12.0,below=box['height']*0.7),marks))
+        # far enough, or on another line: fine
+        self.assertNotIn('REGION_VALUE_BESIDE_NAME',self.with_name(box,self.named_box(box,60.0),marks))
+        self.assertNotIn('REGION_VALUE_BESIDE_NAME',self.with_name(box,self.named_box(box,12.0,below=box['height']+20.0),marks))
+        # a value that says what it is (name and unit) is not read as a name's neighbour
+        self.assertNotIn('REGION_VALUE_BESIDE_NAME',self.with_name(box,self.named_box(box,12.0),marks_of()))
+    def test_the_generator_keeps_a_bare_value_off_a_point_names_line(self):
+        from visual_engine import label_layout
+        from visual_engine.label_layout import Box
+        name=Box(100.0,50.0,14.0,14.0)
+        occupied=[{'id':'B-name','kind':'label','geometry':name},{'id':'rABC-label','kind':'label','geometry':Box(0,0,5,5)}]
+        self.assertTrue(label_layout.beside_point_name(Box(70.0,52.0,20.0,14.0),occupied))      # 10 px to its left, one line
+        self.assertTrue(label_layout.beside_point_name(Box(120.0,56.0,20.0,14.0),occupied))     # 6 px to its right, 8 px lower (a third of the lines overlap)
+        self.assertFalse(label_layout.beside_point_name(Box(40.0,52.0,20.0,14.0),occupied))     # 40 px away
+        self.assertFalse(label_layout.beside_point_name(Box(100.0,90.0,20.0,14.0),occupied))    # another line
+        self.assertFalse(label_layout.beside_point_name(Box(70.0,52.0,20.0,14.0),[{'id':'sAB','kind':'label','geometry':name}]))   # not a name
+    def test_a_name_does_not_make_a_length_unit_the_regions_value(self):
+        from visual_engine.engine import _value_names_its_quantity as names_quantity
+        row=lambda text:{'labelText':text,'labelKind':'TEXT','labelWeight':'MATH'}
+        for text,expected in (('S=6cm\u00b2',True),('△ABC=6cm\u00b2',True),('S=6cm',False),('△ABC=6cm',False),('S=6 m',False),('S=16\u03c0',True),('AB=6cm\u00b2',True),('l=6',False)):
+            with self.subTest(text=text):self.assertEqual(names_quantity(row(text)),expected,text)
+        # the observer reads the same rule from the plan
+        length=self.value_marks(labelName='S',unit='cm');area=self.value_marks(labelName='S',unit='cm^2')
+        self.assertEqual(region_text(length),'S=6cm');self.assertEqual(region_text(area),'S=6cm\u00b2')
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text='S=6cm'),marks=length))
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text='S=6cm\u00b2'),marks=area))
+    def test_a_circle_that_is_only_part_of_the_boundary_is_not_a_whole_circle(self):
+        centre=(200.0,200.0);r=100.0
+        ring=[(centre[0]+r*math.cos(k*math.pi/36),centre[1]-r*math.sin(k*math.pi/36)) for k in range(73)]
+        sector=[[centre]+[(centre[0]+r*math.cos(math.radians(a)),centre[1]-r*math.sin(math.radians(a))) for a in range(20,161,2)]]
+        disk=[[ring[k] for k in range(72)]]
+        self.assertFalse(regions.closed_whole(ring,sector),'a sector owns a stretch of the circle, not all of it')
+        self.assertTrue(regions.closed_whole(ring,disk))
+        half=[[centre]+[(centre[0]+r*math.cos(math.radians(a)),centre[1]-r*math.sin(math.radians(a))) for a in range(0,181,2)]]
+        self.assertFalse(regions.closed_whole(ring,half))
     def test_the_observer_measures_only_the_regions_stretch_of_a_drawn_circle(self):
         centre=(200.0,200.0);r=100.0
         ring=[(centre[0]+r*math.cos(k*math.pi/36),centre[1]-r*math.sin(k*math.pi/36)) for k in range(73)]
@@ -313,6 +359,23 @@ class DiskTests(unittest.TestCase):
         for degrees in (8.0,-8.0,90.0):
             self.assertIn('REGION_LEADER_READS_AS_SIDE',fx.codes(self.tamper_beside_the_circle(fx,degrees),fx.marks()),degrees)
         self.assertNotIn('REGION_LEADER_READS_AS_SIDE',fx.codes(fx.with_label_at(fx.row['box']),fx.marks()))   # the genuine figure is not refused
+    def as_path(self,svg,fx):
+        """The same figure with its circle drawn as one <path> of two arcs instead of a <circle>."""
+        cx,cy,r=fx.circle
+        tag=re.search(r'<circle\s[^>]*data-role="circle"[^>]*/>',svg).group(0)
+        ident=re.search(r'\sid="([^"]+)"',tag).group(1)
+        path='<path id="%s" data-role="circle" fill="none" stroke="#111" d="M%.4f %.4f A%.4f %.4f 0 1 1 %.4f %.4f A%.4f %.4f 0 1 1 %.4f %.4f Z"/>'%(ident,cx+r,cy,r,r,cx-r,cy,r,r,cx+r,cy)
+        return svg.replace(tag,path)
+    def test_a_circle_drawn_as_a_path_is_the_same_boundary_as_a_circle_element(self):
+        fx=DiskFixture('16pi');cx,cy,r=fx.circle
+        points=regions.path_arc_points('M%.4f %.4f A%.4f %.4f 0 1 1 %.4f %.4f A%.4f %.4f 0 1 1 %.4f %.4f Z'%(cx+r,cy,r,r,cx-r,cy,r,r,cx+r,cy))
+        self.assertTrue(all(abs(math.dist(p,(cx,cy))-r)<1e-3 for p in points),'every sampled point is on the circle')
+        self.assertLess(math.dist(points[0],points[-1]),1e-3,'the loop closes')
+        self.assertTrue(regions.closed_whole(points,[[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(72)]]))
+        for degrees in (8.0,-8.0,90.0):
+            moved=self.as_path(self.tamper_beside_the_circle(fx,degrees),fx);self.assertIn('<path',moved);self.assertNotIn('data-role="circle" cx',moved)
+            self.assertIn('REGION_LEADER_READS_AS_SIDE',fx.codes(moved,fx.marks()),degrees)
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',fx.codes(self.as_path(fx.with_label_at(fx.row['box']),fx),fx.marks()))
     def test_observer_exempts_a_name_that_is_not_a_length_and_refuses_AB_and_l(self):
         for name,text,exempt in (('\ubd80\ucc44\uaf34 AOB','\ubd80\ucc44\uaf34 AOB=16\u03c0',True),('S','S=16\u03c0',True),('AB','AB=16\u03c0',False),('l','l=16\u03c0',False)):
             fx=DiskFixture(text,'TEXT','MATH',(120.0,22.0));marks=fx.marks(labelName=name,label='16pi')
