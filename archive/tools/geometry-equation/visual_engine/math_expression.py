@@ -15,6 +15,7 @@ VECTOR_NAME=re.compile(r'[a-z]|[A-Z]{2}')
 # A Korean word is a token of its own: it is read (so the refusal can say what to do), but it cannot be typeset as math (see serialize, KOREAN_WORD_NEEDS_TEXT_LABEL).
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|[\uac00-\ud7a3]+|<=|>=|!=|[+*/^_\-=<>()\x27,°√≈≅∽≡⊥∥±×÷:∠△□%])')
 RELATIONS={'=','<','>','<=','>=','!=','≈','≅','∽','≡','⊥','∥'}
+LEADING_RELATIONS={'≈','=','<','>','<=','>=','!='}   # (P-C) the relations that may open a label with nothing on their left
 ASCII_FORMS=str.maketrans({'−':'-','′':"'",'≤':'<=','≥':'>=','≠':'!=','²':'^2','³':'^3','·':'*'})
 FIGURE_PREFIXES={'∠':r'\angle ','△':r'\triangle ','□':r'\square '}
 KOREAN_WORD=re.compile(r'[\uac00-\ud7a3]+')
@@ -32,12 +33,12 @@ class Parser:
         if not isinstance(source,str) or not source.strip() or len(source)>2048 or '\\' in source:
             raise ValueError('UNRESOLVED_EXPRESSION')
         source=source.strip().translate(ASCII_FORMS)   # U+2212 is the minus, U+2032 the prime; ≤ ≥ ≠ ² ³ · are their ASCII forms
-        self.tokens=[];end=0
+        self.tokens=[];self.gaps=[];end=0   # gaps[i]: whitespace stood before token i (a digit written after a space is not an exponent or a digit of the number before it)
         while end<len(source):
             hit=TOKEN.match(source,end)
             if not hit:raise ValueError('UNSUPPORTED_MATH_TOKEN:'+source[end:end+12])
-            self.tokens.append(hit[1]);end=hit.end()
-        self.tokens.append('EOF');self.i=0;self.nodes=0
+            self.tokens.append(hit[1]);self.gaps.append(hit.start(1)>end);end=hit.end()
+        self.tokens.append('EOF');self.gaps.append(False);self.i=0;self.nodes=0
 
     def peek(self):return self.tokens[self.i]
     def take(self):v=self.peek();self.i+=1;return v
@@ -50,8 +51,12 @@ class Parser:
 
     def expr(self,bp=0,depth=0):
         if depth>32:raise ValueError('EXPRESSION_DEPTH_LIMIT')
+        first=self.i==0
         token=self.take()
-        if token in ('+','-','±'):left=self.node('unary',token,(self.expr(25,depth+1),))
+        if first and depth==0 and bp==0 and token in LEADING_RELATIONS:
+            # (P-C) a label that only states a relation to a value (≈0.84, <5, =3): the left side is the thing the label stands beside, so the relation leads
+            left=self.node('relprefix',token,(self.expr(6,depth+1),))
+        elif token in ('+','-','±'):left=self.node('unary',token,(self.expr(25,depth+1),))
         elif token=='(':
             rows=[self.expr(0,depth+1)]
             while self.peek()==',':self.take();rows.append(self.expr(0,depth+1))
@@ -109,6 +114,9 @@ class Parser:
             implicit=op=='(' or op=='√' or (op!='EOF' and (op[0].isdigit() or op.isalpha()))
             priority=20 if implicit else powers.get(op,-1)
             if priority<bp:break
+            if implicit and op[0].isdigit() and self.gaps[self.i]:
+                # (P-B) a digit written after a space that follows anything (x 3, (x+1) 2, 2x 3, AB 5) is drawn glued to it (x3, (x+1)2): nothing here may guess whether it is a power, a product or a name's digit
+                raise ValueError('NUMBER_JUXTAPOSITION_UNCLEAR')
             if implicit and op[0].isdigit() and _number_end(left):
                 # "2 3", "x=-1 0 1": digits are one token, so a number that follows a number can only be written after a space. It may be a list or a product: nothing here may guess (and draw a dot or run the digits together)
                 raise ValueError('NUMBER_JUXTAPOSITION_UNCLEAR')
@@ -167,6 +175,15 @@ def _ends_with_degree(node):
 def _sums_a_value(node,unit):
     """A sum or difference (4+x, 12-t) that a unit is written after: the unit belongs to the whole sum, so it is bracketed (4+x) cm, even when a variable of the sum is spelled like the unit (s+1 with unit s)."""
     return node.kind=='binary' and node.value in {'+','-','±'}
+
+def _unit_written_twice(node,name):
+    """(P-B) The label already ends in the unit it is asked to carry: 6cm with unit cm would be drawn 6cm cm. True when the last factor of the value is the unit's own letters (cm, two or more letters)
+    or, behind a number, any unit word (6cm with unit m is 6cm m). A lone letter after a letter (x with unit x, m with unit m) may be a variable, so it is not judged."""
+    while node.kind=='binary' and node.args:
+        left,right=node.args
+        if node.value in {'implicit','*'} and right.kind=='symbol' and ((right.value==name and len(name)>=2) or (right.value in UNIT_WORDS and _number_end(left))):return True
+        node=right
+    return node.kind=='symbol' and node.value==name and len(name)>=2
 
 def _unit_tail(unit,mode,escape):
     """A unit as it is written after a value: upright letters, a ratio (km/h) as written, a power (cm^2) raised."""
@@ -245,10 +262,15 @@ def _render(node,mode):
     def escape(v):return html.escape(v) if mode=='svg' else v
     k=node.kind; a=node.args
     if k=='number':return node.value
+    if k=='relprefix':
+        if len(a)!=1:raise ValueError('NOTATION_ARITY')
+        sign={'≈':r'\approx ','<=':r'\le ','>=':r'\ge ','!=':r'\ne '}.get(node.value,node.value) if mode=='tex' else {'<=':'≤','>=':'≥','!=':'≠'}.get(node.value,node.value)
+        return escape(sign)+s(a[0])
     if k=='quantity':
         # A plane-mark label with a unit (cm, m, mm): the unit follows the value; after a number it is attached (3cm), after a letter one space apart (x cm).
         if len(a)!=1:raise ValueError('NOTATION_ARITY')
         tail=_unit_tail(node.value,mode,escape)
+        if _unit_written_twice(a[0],UNIT_NOTATION.fullmatch(node.value).group(1)):raise ValueError('LABEL_UNIT_WRITTEN_TWICE')
         if _sums_a_value(a[0],node.value):return '('+s(a[0])+')'+(r'\,' if mode=='tex' else ' ')+tail
         spaced=_render(a[0],'plain')[-1:].isalpha()
         return s(a[0])+((r'\,' if spaced else '')+tail if mode=='tex' else (' ' if spaced else '')+tail)
@@ -265,6 +287,7 @@ def _render(node,mode):
         if len(a)!=1:raise ValueError('NOTATION_ARITY')
         if k=='degree':return s(a[0]) if _ends_with_degree(a[0]) else s(a[0])+(r'^{\circ}' if mode=='tex' else '°')
         tail=_unit_tail(node.value,mode,escape)
+        if _unit_written_twice(a[0],UNIT_NOTATION.fullmatch(node.value).group(1)):raise ValueError('LABEL_UNIT_WRITTEN_TWICE')
         return (('('+s(a[0])+')') if _sums_a_value(a[0],node.value) else s(a[0]))+(r'\,'+tail if mode=='tex' else ' '+tail)
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
@@ -357,7 +380,9 @@ def _render(node,mode):
         if op=='*' and rt and not rt[0].isdigit() and rt[0] not in '.-−':
             # Implicit product (3x, 2√5, 3(x+1)): no multiplication dot after a number, a group, or (tex only) a stacked fraction.
             if left.kind in {'number','group'} or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number') or (mode=='tex' and left.kind=='binary' and left.value=='/'):return operand(left)+rt
-        return operand(left)+escape(mapped.get(op,op))+rt
+        lead=operand(left)
+        if op=='implicit' and mode=='tex' and re.search(r'\\[A-Za-z]+$',lead) and rt[:1].isalpha():lead+=' '   # a TeX control word (the pi of pi r) ends at the next non-letter: write "pi r" with a space, never "pir"
+        return lead+escape(mapped.get(op,op))+rt
     raise ValueError('UNKNOWN_AST_NODE')
 
 def evaluate(node,values=None):

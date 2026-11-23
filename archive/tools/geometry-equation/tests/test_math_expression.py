@@ -117,13 +117,13 @@ class LabelNotationTests(unittest.TestCase):
         self.assertEqual(serialize(Expr('unit','cm',(parse('4+x'),)),'tex'),r'(4+x)\,\mathrm{cm}')
     def test_numbers_joined_only_by_a_space_are_refused_not_guessed(self):
         # "x=-1 0 1" is a list of values and "3 2^x" a product: nothing tells them apart, so neither a dot nor a run-together number is drawn
-        for source in ('2 3','2 3 4','x=-1 0 1','y=2 (x=-1 0 1)','y=3 2^(x)','-2 3','x+2 3','2^3 4','1/2 3'):
+        for source in ('2 3','2 3 4','x=-1 0 1','y=2 (x=-1 0 1)','y=3 2^(x)','-2 3','x+2 3','2^3 4','1/2 3','x 2','2x 3'):    # (P-B) a digit after a space that follows a letter is refused too: it was drawn x2 / 2x3
             with self.subTest(source=source),self.assertRaises(ValueError) as caught:parse(source)
             self.assertEqual(str(caught.exception),'NUMBER_JUXTAPOSITION_UNCLEAR')
         # written as a product (*) or as a list (commas), or with a letter / bracket between, they read as written
         self.assertEqual(serialize(parse('y=3*2^(x)'),'tex'),r'y=3\cdot 2^{x}')
         self.assertEqual(serialize(parse('x=(-1,0,1)'),'plain'),'x=(−1,0,1)')
-        for source in ('A5','S1','r2','3x','2(x+1)','3e^(x)','2sqrt(3)','(2)3','x 2','2x 3','32','3.5'):
+        for source in ('A5','S1','r2','3x','2(x+1)','3e^(x)','2sqrt(3)','(2)3','32','3.5'):
             with self.subTest(source=source):
                 self.assertNotIn('cdot',serialize(parse(source),'tex'))
     def test_a_label_naming_an_angle_without_a_value_is_not_a_degree_value(self):
@@ -242,6 +242,38 @@ class LabelNotationTests(unittest.TestCase):
         self.assertIn('baseline-shift="super"',serialize(self.quantity('6','cm^2'),'svg'))
         for unit,code in (('초','KOREAN_UNIT_NEEDS_TEXT_LABEL'),('시간','KOREAN_UNIT_NEEDS_TEXT_LABEL'),('c m','INVALID_UNIT_NOTATION'),('cm^4','INVALID_UNIT_NOTATION'),('','INVALID_UNIT_NOTATION')):
             with self.subTest(unit=unit):self.assertEqual(self.refused(self.quantity('3',unit)),code)
+
+    def test_a_label_that_already_ends_in_its_unit_is_refused_not_drawn_twice(self):
+        # (P-B) 6cm with unit cm is drawn 6cm cm: refused. The values below are what a student would read, written here, not derived from the code under test.
+        for text,unit in (('6cm','cm'),('6cm','m'),('6 m','cm'),('x cm','cm'),('x km','km'),('2.5mm','mm'),('3*cm','cm')):
+            with self.subTest(text=text,unit=unit):self.assertEqual(self.refused(self.quantity(text,unit)),'LABEL_UNIT_WRITTEN_TWICE')
+        # the neighbours stay as they were: a number or letter with its unit, a letter that is only spelled like a unit, a sum, a name
+        for text,unit,tex in (('6','cm',r'6\mathrm{cm}'),('x','cm',r'x\,\mathrm{cm}'),('m','cm',r'm\,\mathrm{cm}'),('s','s',r's\,\mathrm{s}'),('4+x','cm',r'(4+x)\,\mathrm{cm}'),('AB','cm',r'AB\,\mathrm{cm}')):
+            with self.subTest(text=text,unit=unit):self.assertEqual(serialize(self.quantity(text,unit),'tex'),tex)
+
+    def test_a_digit_written_after_a_space_is_never_glued_to_what_precedes_it(self):
+        # (P-B) these were drawn x3, (x+1)2, AB5: refused now. A number before a letter, a space around an operator and a space before a letter keep their reading.
+        for source in ('x 3','(x+1) 2','2x 3','AB 5','x 2y','3 x 2','f(x) 3','a=-3 4'):
+            with self.subTest(source=source),self.assertRaises(ValueError) as caught:parse(source)
+            self.assertEqual(str(caught.exception),'NUMBER_JUXTAPOSITION_UNCLEAR',source)
+        for source,tex in (('2 x','2x'),('2x','2x'),('x y','xy'),('x+ 1','x+1'),('x +1','x+1'),('x ^2','x^{2}'),('3 : 2','3:2'),('2(x+1)','2(x+1)'),('x(x+1)','x(x+1)'),('x2','x2'),('5 cm','5cm'),('1 / 2',r'{\displaystyle\frac{1}{2}}')):
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source)),tex)
+    def test_a_greek_letter_before_a_letter_keeps_a_space_so_the_tex_control_word_ends(self):
+        self.assertEqual(serialize(parse('pi r')),r'\pi r')
+        self.assertEqual(serialize(parse('2 pi r')),r'2\pi r')
+        self.assertEqual(serialize(parse('pi')),r'\pi')
+        self.assertEqual(serialize(parse('2 pi')),r'2\pi')
+        self.assertEqual(serialize(parse('pi*r')),r'\pi\cdot r')
+
+    def test_a_label_that_only_states_a_relation_to_a_value_leads_with_the_relation(self):
+        # (P-C) written here, not derived: what a student reads
+        for source,tex,plain in (('≈0.84',r'\approx 0.84','≈0.84'),('≈ 0.84',r'\approx 0.84','≈0.84'),('<5','<5','<5'),('>=3',r'\ge 3','≥3'),('=3','=3','=3'),('!=2',r'\ne 2','≠2'),('≈1/2',r'\approx {\displaystyle\frac{1}{2}}','≈1/2')):
+            with self.subTest(source=source):
+                self.assertEqual(serialize(parse(source),'tex'),tex);self.assertEqual(serialize(parse(source),'plain'),plain)
+        for source in ('≈','< <3','x ≈≈ 3','(≈3)','≅3','⊥3','∥3'):
+            with self.subTest(source=source),self.assertRaises(ValueError):parse(source)
+        self.assertEqual(serialize(parse('x≈0.84'),'tex'),r'x\approx 0.84')           # a relation with something on its left is what it always was
+        self.assertEqual(serialize(self.quantity('≈0.84','cm'),'tex'),r'\approx 0.84\mathrm{cm}')
 
     def test_unknown_characters_are_still_refused(self):
         for source in ('x@2','x$2','x;2','x~2','x#','x&y','x|y','x?','x{2}','x[1]','x\\2','x"y"'):

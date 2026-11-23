@@ -115,6 +115,7 @@ async function lintPlan(plan, ctx) {
     }
     if (authored.capability === 'piecewise-discontinuous-spike-v1' && authored.graphPlan?.referenceCurves !== undefined) authored = M.pair.expandDiscontinuousPair(authored);
     if (authored.capability === 'construction-spike-v1') authored = M.vec.expandPlaneVectors(authored);
+    if (authored.capability === 'construction-spike-v1' && M.plane.defaultHangulLabelKinds) authored = M.plane.defaultHangulLabelKinds(authored); // 한글 낱말이 든 라벨은 TEXT (render-plan 과 같은 규칙, 엔진에 있을 때만)
 
     const cap = authored.capability;
     // ---- 독립 도형(검증 함수가 곧 거절 조건)

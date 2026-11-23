@@ -1059,7 +1059,28 @@ def region_inner_leader_ok(start,end,exit_point,unit,own,all_regions,strokes,dis
         if segment_hits_box(start,end,box.expand(3.0)):return False
     return True
 
+REGION_VALUE_NAME_GAP_PX=28.0          # a region's bare value (36) this near a point name (B) on one text line reads as one token (36 B) and may be taken for a length or a name
+REGION_VALUE_NAME_ROW_FRACTION=0.15    # 'one text line': the two boxes overlap vertically by at least this fraction of the shorter one (their lines need not be level)
+
+def beside_point_name(box,occupied):
+    """True when the box stands on one text line with a point name (a label whose id ends in -name) closer than REGION_VALUE_NAME_GAP_PX."""
+    for o in occupied:
+        if o.get('kind')!='label' or not str(o.get('id','')).endswith('-name'):continue
+        g=o['geometry']
+        if min(box.bottom,g.bottom)-max(box.y,g.y)<REGION_VALUE_NAME_ROW_FRACTION*min(box.height,g.height):continue
+        if max(g.x-box.right,box.x-g.right)<REGION_VALUE_NAME_GAP_PX:return True
+    return False
+
 def region_leader_placement(label,w,h,occupied,acceptable):
+    """(box, leader start, leader end, direction) for a region label standing outside its region on a leader, or None. A bare value (no name=, no unit sign) first keeps clear of the point names;
+    when no place does, the old places are used as before (the observer then decides)."""
+    if '=' not in str(label.get('text','')):
+        guarded=lambda box,owner_check=True:acceptable(box,owner_check=owner_check) and not beside_point_name(box,occupied)
+        found=_region_leader_placement(label,w,h,occupied,guarded)
+        if found is not None:return found
+    return _region_leader_placement(label,w,h,occupied,acceptable)
+
+def _region_leader_placement(label,w,h,occupied,acceptable):
     """(box, leader start, leader end, direction) for a region label standing outside its region on a leader from the region's boundary, or None."""
     if label['regionLeader'].get('inner') is not None:return region_inner_leader_placement(label,w,h,occupied,acceptable)
     site=label['regionLeader'];own=site['polygons']

@@ -1,0 +1,95 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "......"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "#t0",
+        "refs": [
+          "#t1",
+          "#t2"
+        ]
+      }
+    ]
+  },
+  "caption": "두 직각변이 6 cm와 8 cm인 직각삼각형을 밑면으로 하는 높이 5 cm의 삼각기둥",
+  "dims": [
+    {
+      "edge": [
+        "#t0",
+        "#t1"
+      ]
+    },
+    {
+      "edge": [
+        "#t0",
+        "#t2"
+      ],
+      "side": "LEFT",
+      "line": 1
+    },
+    {
+      "edge": [
+        "#t1",
+        "#t2"
+      ],
+      "side": "RIGHT",
+      "line": 1
+    },
+    {
+      "edge": [
+        "#b1",
+        "#t1"
+      ],
+      "side": "RIGHT",
+      "line": 2
+    }
+  ],
+  "unit": "cm",
+  "view": {
+    "yawDeg": 38
+  },
+  "accessibilityDescription": "밑면이 직각삼각형(변의 길이 6cm, 8cm, 10cm)이고 높이가 5cm인 삼각기둥을 나타낸 그림이다.",
+  "sourceQuote": "다음 그림과 같은 삼각기둥의 겉넓이는?",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 직각변 6cm, 8cm, 빗변 10cm인 직각삼각형, 높이 5cm 삼각기둥",
+      "mappedTo": [
+        "solids",
+        "dims"
+      ]
+    }
+  ],
+  "assetPath": "assets/images/25_신흥중_2학기_기말_중1_유사/q09.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q09-result.json",
+    "statePath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q09-state.json",
+    "svgPath": "archive/assets/images/25_신흥중_2학기_기말_중1_유사/q09-solution.svg"
+  }
+}
