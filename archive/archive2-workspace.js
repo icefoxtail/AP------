@@ -21,7 +21,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-    UNKNOWN_RESULT_ALLOWED_ACTIONS, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+    UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
     applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
     askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
     changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -45,7 +45,7 @@
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-      UNKNOWN_RESULT_ALLOWED_ACTIONS, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+      UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
       applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
       askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
       changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -247,6 +247,8 @@
         : state.view === "recent" ? renderRecent()
           : preparingMarkup();
       Boot?.refresh?.();
+      // The home opened on the small exam list without the catalog; leaving it for a screen that needs the catalog starts it now.
+      if (state.view !== "home" && Boot?.catalogDeferred) ensureCatalog();
       return;
     }
     const questionList = $("question-list");
@@ -382,6 +384,8 @@
     "recent-toggle-cancelled", "assignment-cancel", "assignment-cancel-confirm",
     "assignment-status", "assignment-output-direct", "assignment-output", "assignment-pdf", "library-reload",
     "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
+    // The rows of the home exam list: opening an original reads the exam list only (never the catalog).
+    "source-output-direct", "similar-list",
   ]);
   let deferredClick = null;
   const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
@@ -390,6 +394,7 @@
     if (state.bootError) { status(state.bootError, true); return; }
     deferredClick = { dataset: { ...b.dataset }, view: state.view };
     status(DEFERRED_NOTICE);
+    ensureCatalog();
   }
   // Leaving the screen cancels the pending press: it must not fire later when the teacher comes back to
   // that screen, and its notice must not stay on the screen they moved to.
@@ -424,6 +429,16 @@
     window.scrollTo(0, 0);
     return true;
   }
+  // A home opened on the small exam list starts the catalog when the teacher reaches for something that reads it (the school
+  // search, a school chip, a menu button), a moment before the click, so the screen they are heading to is ready sooner.
+  // Pointing or focusing is enough; nothing else (the exam rows, the drafts, the quick-assessment links) starts it.
+  const CATALOG_INTENT = '#archive-home-query, [data-action="home-search"], [data-action="home-school"], [data-action="home-all-schools"], [data-view]:not([data-view="home"]):not([data-view="saved"]), [data-action="home-product"]:not([data-route-owner="generated-consumer"])';
+  function startCatalogOnIntent(event) {
+    if (!Boot?.catalogDeferred || catalogLoad || state.catalog || state.view !== "home") return;
+    if (event.target instanceof Element && event.target.closest(CATALOG_INTENT)) ensureCatalog();
+  }
+  document.addEventListener("pointerover", startCatalogOnIntent, { passive: true });
+  document.addEventListener("focusin", startCatalogOnIntent, { passive: true });
   document.addEventListener("click", async (event) => {
     if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details, .cz-more"))
       document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open], .cz-more[open]")
@@ -784,7 +799,7 @@
         render();
         document.querySelector(`[data-action="finder-publisher"][data-publisher="${publisher}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "similar-list") {
-        openSimilarList(state.catalog.exams[Number(b.dataset.exam)]);
+        openSimilarList(catalogExams()[Number(b.dataset.exam)]);
       } else if (a === "finder-reset") {
         for (const key of [
           "curriculumKey",
@@ -838,8 +853,8 @@
       } else if (a === "multi-assign") {
         openOriginalAssignMany(multiPickedExams());
       } else if (a === "source-output-direct") {
-        rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
-        await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
+        rememberRecentExam(recentTarget(catalogExams()[Number(b.dataset.exam)]));
+        await openFinderOutput(catalogExams()[Number(b.dataset.exam)], b.dataset.mode || "exam");
       } else if (a === "original-print") {
         await originalPrint();
       } else if (a === "original-review" || a === "original-targets") {
@@ -1729,6 +1744,27 @@
     viewNeedsUnifiedIndex,
   });
   WS.link(); // again: the constants exported by this file are now visible to the other parts
+  // The catalog (download, hash check, resolve) is started once, by whoever needs it first: the boot below, or, for a
+  // home that opened on the small exam list, the first screen or button that reads the catalog.
+  let catalogLoad = null;
+  function ensureCatalog() {
+    if (!catalogLoad) catalogLoad = loadCatalog();
+    return catalogLoad;
+  }
+  // The small exam list (archive/data/exam-list-v1.json, built with the release, about 30 KB compressed) lets the home
+  // draw its school chips and exam rows without the catalog. Absent (local checkout) or unusable: the catalog loads as before.
+  async function loadLightExamList() {
+    try {
+      const response = await fetch("data/exam-list-v1.json", { cache: "no-cache" });
+      if (!response.ok) return false;
+      const doc = await response.json();
+      if (doc?.schemaVersion !== "archive2-exam-list-v1" || !Array.isArray(doc.exams) || !doc.exams.length ||
+          !/^[0-9a-f]{64}$/.test(String(doc.catalogIdentityDigest || ""))) return false;
+      if (!state.catalog) state.light = { exams: doc.exams, identityDigest: doc.catalogIdentityDigest };
+      Boot?.mark?.("exam-list");
+      return true;
+    } catch { return false; }
+  }
   (async () => {
     readUrl();
     if (isQuickAssessmentView()) quickLoadGroups();
@@ -1738,6 +1774,15 @@
     render();
     Boot?.firstPaint?.();
     if (state.view === "recent") loadRecentOnBoot();
+    // 1b) A plain home opens on the exam list alone: no catalog download until a screen or button needs it.
+    if (Boot?.catalogDeferred && state.view === "home" && await loadLightExamList()) {
+      if (state.view === "home") fillHomeFromCatalog();
+      if (!catalogLoad) Boot?.standby?.();
+      return;
+    }
+    ensureCatalog();
+  })();
+  async function loadCatalog() {
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw Object.assign(new Error("단원·분류 기준을 불러오지 못했습니다. 새로고침해 다시 시도하고, 계속되면 관리자에게 알려 주세요."), { code: "CANONICAL_AUTHORITY_UNAVAILABLE" });
@@ -1766,6 +1811,10 @@
         .catch(() => null);
       // The catalog becomes visible to every handler only now, with its derived maps already in place.
       state.catalog = catalog;
+      // A button pressed on the home's exam list keeps its row number; the catalog lists the same exams in the same
+      // order unless the list belongs to another release, in which case the pending press is dropped.
+      if (state.light && state.light.identityDigest !== catalog.identityDigest) deferredClick = null;
+      state.light = null;
       await settleIndexesForView();
       readUrl();
       applySourceRoute();
@@ -1811,4 +1860,5 @@
         $("content").innerHTML = preparingMarkup();
       if (state.view === "recent") status(startupMessage, true);
     }
-  })();})();
+  }
+})();

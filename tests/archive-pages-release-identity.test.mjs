@@ -128,6 +128,33 @@ test("student similar-link map is derived from registered catalog bytes, shipped
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/similar-links-v1.json")), false, "the generated map is never written into the source tree");
 });
 
+test("teacher home exam list is derived from the registered catalog's exam rows, shipped, and changes the package identity", async t => {
+  const f = fixture(t);
+  f.manifest.examList = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const exam = (file, extra) => ({ file, school: "S", grade: "G1", year: 2025, semester: "2", examType: "mid", subject: "math", qCount: 5, ...extra });
+  const digest = "a".repeat(64);
+  const catalog = qCount => JSON.stringify({ identityDigest: digest, exams: [exam("original/a/x.js", { contentType: "기출", qCount }), exam("original/a/y.js", { contentType: "기출" })], records: [] });
+  f.put("archive/data/archive2-catalog.json", catalog(5));
+  f.commit();
+  const before = await f.identity();
+  f.put("archive/data/archive2-catalog.json", catalog(6)); f.commit();
+  const after = await f.identity();
+  assert.notEqual(after.packageDigest, before.packageDigest, "a changed exam row must be published");
+  const report = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  const built = report.inventory.find(entry => entry.path === "archive/data/exam-list-v1.json");
+  assert.equal(built.transform, "exam-list");
+  const written = JSON.parse(fs.readFileSync(path.join(f.root, "_site/archive/data/exam-list-v1.json"), "utf8"));
+  assert.equal(written.schemaVersion, "archive2-exam-list-v1");
+  assert.equal(written.catalogIdentityDigest, digest);
+  assert.deepEqual(written.exams, JSON.parse(catalog(6)).exams, "the rows are the catalog's rows, in order");
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/exam-list-v1.json")), false, "the generated list is never written into the source tree");
+  // Without the flag nothing is shipped (a checkout that opts out keeps working on the catalog alone).
+  f.manifest.examList = false;
+  const without = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  assert.equal(without.inventory.some(entry => entry.path === "archive/data/exam-list-v1.json"), false);
+});
+
 test("same-path R2 image replacement and Worker changes invalidate external dependency proof", async t => {
   const f = fixture(t), before = await f.identity();
   f.put("archive/assets/images/a.png", "image-after!"); f.commit();

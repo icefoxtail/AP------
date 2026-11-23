@@ -3675,9 +3675,12 @@ def _overlay_fail(code,ident=None):
 def _overlay_coordinate_text(value,ident):
     """(G5b) The text a coordinate label writes for an exact coordinate: an integer or a fraction ('3/2'), or one p+q*sqrt(r) over a common denominator
     ('1+sqrt(2)', '2*sqrt(3)', '(1+sqrt(2))/2'; one radical, r squarefree). A nested radical or a second radical is COORDINATE_SURD_FORM_UNSUPPORTED."""
+    # An exact curve value such as 7-10x+2x^2 at x=(5-sqrt(11))/2 is the rational 0 only once expanded: normalise first, so the unexpanded form never reaches the radical branch (it wrote 0*sqrt(None)).
+    value=_pp_norm(value)
     if value.is_Rational:return str(int(value)) if value.is_Integer else str(int(value.p))+'/'+str(int(value.q))
     try:p,q,r=pp_surd_split(value,'x')
     except ValueError:_overlay_fail('COORDINATE_SURD_FORM_UNSUPPORTED',ident)
+    if r is None:_overlay_fail('COORDINATE_SURD_FORM_UNSUPPORTED',ident)
     d=S.ilcm(p.q,q.q);a,b=p*d,q*d
     magnitude=abs(b);body=('' if magnitude==1 else str(int(magnitude))+'*')+'sqrt('+str(r)+')'
     text=('' if a==0 else str(int(a)))+('-' if b<0 else '+' if a!=0 else '')+body
@@ -4589,7 +4592,7 @@ MULTI_CURVE_STYLES=('SOLID','DASHED')
 _MC_EXACT=r'-?\d+(?:/\d+)?'
 
 MULTI_CURVE_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
-MULTI_CURVE_MIN_CURVES=2   # G18a: two curves are enough once a curve can be a rational, a square root or a line (a pair, an inverse pair)
+MULTI_CURVE_MIN_CURVES=1   # one curve is a figure (a line, an exponential or a logarithm with its points, labels and axis names); G18a: two curves once suited a pair, an inverse pair
 MULTI_CURVE_MAX_CURVES=6
 MULTI_CURVE_OVERVIEW_POLICY='MULTI_CURVE_OVERVIEW_v1'
 MULTI_CURVE_BRANCHES=('BOTH','POSITIVE','NEGATIVE')
@@ -4859,7 +4862,7 @@ def multi_curve_source(plan):
     unknown=set(plan)-MULTI_CURVE_FIELDS
     if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
     raw=plan.get('curves')
-    minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
+    minimum=MULTI_CURVE_MIN_CURVES
     if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
     normalized=[]
     for entry in raw:

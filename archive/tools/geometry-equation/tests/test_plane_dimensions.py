@@ -134,7 +134,7 @@ class RefusalTests(unittest.TestCase):
             self.assertEqual(self.error([row]),code,extra)
         self.assertEqual(self.error([{**dim('d','A','A','ABOVE')}]),'DIMENSION_POINT_REFS_REQUIRED:d')
         self.assertEqual(self.error([{**dim('d','A','sAB','ABOVE')},seg('sAB',LINE,'A','B')]),'DIMENSION_POINT_REFS_REQUIRED:d')
-        with self.assertRaises(ValueError):build(spec_of(LINE,[{**dim('d','A','M','ABOVE'),'unit':'km'}]))
+        with self.assertRaises(ValueError):build(spec_of(LINE,[{**dim('d','A','M','ABOVE'),'unit':'inch'}]))
         self.assertEqual(self.error([{k:v for k,v in dim('d','A','M','ABOVE',labelKind='DEGREE').items() if k!='unit'}]),'MARK_LABEL_KIND_INVALID:d')
         self.assertEqual(self.error([{**dim('d','A','M','ABOVE'),'labelKind':'TEXT'}]),'MARK_UNIT_REQUIRES_MATH_LABEL:d')
 

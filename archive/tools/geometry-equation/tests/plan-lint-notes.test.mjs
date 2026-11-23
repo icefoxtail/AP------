@@ -37,3 +37,18 @@ test('a plan without plane marks has no notes',()=>{
   assert.deepEqual(planNotes({capability:'polynomial-spike-v1',graphPlan:{}}),[]);
   assert.deepEqual(planNotes(null),[]);
 });
+
+// plan-lint-codes: the two refusals the plane labels now raise carry an author-facing hint (not the generic fallback).
+const {explain}=require('../ops/claude-batch/plan-lint-codes.cjs');
+test('LABEL_UNIT_WRITTEN_TWICE and DISPLAY_POINTS_COINCIDE have their own hint',()=>{
+  const twice=explain('LABEL_UNIT_WRITTEN_TWICE',{plan:{}});
+  assert.match(JSON.stringify(twice),/unit/);
+  assert.match(JSON.stringify(twice),/6cm/);
+  const same=explain('DISPLAY_POINTS_COINCIDE:M,O',{plan:{}});
+  assert.match(JSON.stringify(same),/M,O/);
+  assert.match(JSON.stringify(same),/hiddenPointNames/);
+});
+test('a digit after a letter and a space is found in the plan by the juxtaposition hint',()=>{
+  const hint=explain('NUMBER_JUXTAPOSITION_UNCLEAR',{plan:{planeMarks:{expressionLabels:[{id:'e',label:'x 2'}]}}});
+  assert.match(JSON.stringify(hint),/x 2/);
+});

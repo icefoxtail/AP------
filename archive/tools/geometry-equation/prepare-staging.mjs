@@ -42,6 +42,7 @@ const requiredFiles = new Set([
   'native_print.js',
   'print_image_optimizer.js',
   'mathjax_render_loop.js',
+  'render-diagnostics.js',
   'concept_map.js',
   'question-meta.js',
   'question-identity.js',

@@ -8,6 +8,17 @@
   //  - 첫 화면이 그려지기 전에는 큰 자료를 canonical에 넘기지 않아(내려받기는 계속) 해시·해석이 첫 그리기를 막지 않는다.
   // 이 파일은 자료를 해석하거나 검증하지 않는다. canonical.loadInputBundle이 받는 fetcher만 바꿔 끼운다.
   const NS = "archive2:boot:";
+  // 가벼운 홈 (2026-11-23): 페이지가 `data-lazy-catalog`로 알리고 주소가 평범한 홈이면, 전체 카탈로그 받기를 시작하지 않고
+  // (meta-foundation-runtime.js가 이 값을 본다) 시험지 목록만으로 홈을 먼저 그린다. 카탈로그는 필요한 화면·버튼이 처음 누를 때 시작한다.
+  // 주소에 다른 값(view=find, uid, source 등)이 있으면 항상 지금처럼 바로 받는다.
+  const lazyCatalogPage = (() => {
+    try {
+      if (!document.currentScript || !document.currentScript.hasAttribute("data-lazy-catalog")) return false;
+      const params = new URLSearchParams(location.search);
+      for (const [key, value] of params) if (!(key === "perf" || (key === "view" && value === "home"))) return false;
+      return true;
+    } catch { return false; }
+  })();
   const perf = typeof performance === "object" && performance ? performance : null;
   let verbose = false;
   try { verbose = new URLSearchParams(location.search).get("perf") === "1"; } catch { verbose = false; }
@@ -42,7 +53,7 @@
     ready: { from: 1, to: 1, label: "" },
     failed: { from: 0, to: 0, label: "" },
   };
-  const progress = { stage: "fetch", done: 0, total: 0, fraction: 0, label: STAGES.fetch.label, finished: false, failed: false };
+  const progress = { stage: "fetch", done: 0, total: 0, fraction: 0, label: STAGES.fetch.label, finished: false, failed: false, waiting: false };
   const listeners = new Set();
   function publish() {
     for (const listener of listeners) {
@@ -52,6 +63,7 @@
   function setStage(stage, patch = {}) {
     if (progress.finished || !STAGES[stage]) return;
     const def = STAGES[stage];
+    progress.waiting = false;
     progress.stage = stage;
     Object.assign(progress, patch);
     let fraction = def.from;
@@ -70,6 +82,12 @@
     flushSpans();
     if (failed) mark("failed"); else mark("ready");
     if (verbose) report();
+  }
+  // 가벼운 홈이 시험지 목록만으로 그려졌고 카탈로그는 아직 시작하지 않았다: 진행 줄을 숨긴다(받기가 시작되면 다시 나타난다).
+  function standby() {
+    if (progress.finished || progress.waiting) return;
+    progress.waiting = true;
+    publish();
   }
   function onProgress(listener) {
     listeners.add(listener);
@@ -263,7 +281,7 @@
   function mountProgress(root) {
     if (!root || typeof document !== "object") return () => {};
     return onProgress((state) => {
-      if (state.finished) { root.hidden = true; return; }
+      if (state.finished || state.waiting) { root.hidden = true; return; }
       root.hidden = false;
       const pct = Math.round(state.fraction * 100) + "%";
       const countText = state.stage === "fetch" && state.total ? `(${state.done}/${state.total})` : "";
@@ -289,7 +307,7 @@
   mark("start");
   window.Archive2Boot = Object.freeze({
     mark, begin, end, span, finish, report,
-    setStage, onProgress, progress, mountProgress,
+    setStage, standby, onProgress, progress, mountProgress, catalogDeferred: lazyCatalogPage,
     firstPaint, whenPainted, nextPaint, yield: yieldToMain, idle, refresh: () => publish(),
     fetcher: makeFetcher, bundleDone,
   });

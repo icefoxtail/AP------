@@ -162,9 +162,9 @@
   // A snapshot of the last resolved result (archive2-snapshot.js, optional): same manifest and same code -> no download,
   // no hashing, no resolve. Anything else loads and verifies the inputs below exactly as before.
   const Snapshot = window.Archive2Snapshot;
-  const snapshotLookup = Snapshot && typeof Snapshot.lookup === "function"
+  const lookupSnapshot = () => (Snapshot && typeof Snapshot.lookup === "function"
     ? Snapshot.lookup({ fetcher, baseUrl: document.baseURI, canonical: window.Archive2Canonical }).catch(() => null)
-    : Promise.resolve(null);
+    : Promise.resolve(null));
 
   function applySnapshot(parts) {
     runtime = parts.runtime;
@@ -184,7 +184,9 @@
     return runtime;
   }
 
-  const runtimeReady = snapshotLookup.then(async (found) => {
+  // 가벼운 홈(archive2-boot.js catalogDeferred): 받기를 지금 시작하지 않고, 처음 applyArchiveMetaFoundationCatalog()를 부를 때 시작한다.
+  // 시작하는 코드는 그대로이고 시작 시점만 늦춘다(받은 파일의 해시 확인·해석·결과도 같다). 다른 페이지는 지금처럼 로드 때 바로 시작한다.
+  const startRuntime = () => lookupSnapshot().then(async (found) => {
     if (found && found.payload) {
       if (Boot && typeof Boot.bundleDone === "function") Boot.bundleDone();
       if (Boot && typeof Boot.begin === "function") Boot.begin("resolve");
@@ -319,10 +321,19 @@
     return runtime;
       });
   });
-  window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReady;
+  let runtimeReadyPromise = null;
+  const beginRuntime = () => {
+    if (!runtimeReadyPromise) {
+      runtimeReadyPromise = startRuntime();
+      window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReadyPromise;
+    }
+    return runtimeReadyPromise;
+  };
+  const deferStart = Boolean(Boot && Boot.catalogDeferred === true) && !(baseReady && typeof baseReady.then === "function");
+  const runtimeReady = deferStart ? null : beginRuntime();
 
   if (baseReady && typeof baseReady.then === "function") {
-    window.__ARCHIVE_METADATA_READY__ = Promise.all([baseReady, runtimeReady])
+    window.__ARCHIVE_METADATA_READY__ = Promise.all([baseReady, runtimeReady || beginRuntime()])
       .then(([baseData]) => installMetadataBridge(baseData, baseGet, baseMerge))
       .catch(error => {
         console.error("[meta-foundation] runtime bridge failed:", error);
@@ -331,7 +342,7 @@
   }
 
   window.applyArchiveMetaFoundationCatalog = async function (catalog) {
-    await runtimeReady;
+    await beginRuntime();
     return applyCatalogOverlay(catalog);
   };
 })();

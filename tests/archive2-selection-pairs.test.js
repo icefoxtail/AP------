@@ -20,17 +20,17 @@ let counter = 0;
 const PATH = { curriculumKey: '2015', courseKey: '수학(상)', L1: '다항식', L2: '인수분해' };
 
 // One exam file with `count` questions; types[i] is the recorded problem type of question i+1.
-function exam({ file, school = '가고', year = 2025, axis = '1-mid', subject = '대수', contentType = '기출', types, difficulty = 3 }) {
+function exam({ file, school = '가고', year = 2025, axis = '1-mid', subject = '대수', contentType = '기출', types, difficulty = 3, path = PATH }) {
   return types.map((type, index) => ({
     questionUid: uidFor(++counter), identityStatus: 'VERIFIED', sourceIntegrityStatus: 'VERIFIED', sourceStatus: 'VERIFIED',
     sourceFile: file, sourceOrdinal: index + 1, sourceQuestionNo: String(index + 1), sourceFingerprint: 'f'.repeat(64),
     school, year, subject, contentType, examAxis: axis, sourceGrade: '고1', effectiveBrowseGrade: '고1',
-    difficultyBucket: difficulty, ...PATH,
+    difficultyBucket: difficulty, ...path,
     ...(type ? { metaBinding: 'text', metaHintPT: type, metaHintStatus: '-P-' } : {}),
   }));
 }
 const original = (opts) => exam({ file: `original/high/h1/1mid/${opts.school || '가고'}_${opts.year || 2025}_기출.js`, ...opts });
-const similarOf = (opts) => exam({ file: `similar/high/h1/1mid/${opts.school || '가고'}_${opts.year || 2025}_기출_유사.js`, contentType: '유형', ...opts });
+const similarOf = (opts) => exam({ file: `similar/high/h1/1mid/${opts.school || '가고'}_${opts.year || 2025}_기출_유사${opts.suffix || ''}.js`, contentType: '유형', ...opts });
 
 function requestFor(records, count, extra = {}) {
   const uids = records.map((r) => r.questionUid);
@@ -221,6 +221,48 @@ test('the assessment-recipe group path also keeps pairs out and meets the count'
   }
 });
 
+test('options.familyRecords links families through originals that are outside the picked pool', () => {
+  // The teacher picks one unit. The original exam's questions belong to ANOTHER unit, so the pool only holds the
+  // two similar sets (variants of the same original questions) and one more exam of the picked unit.
+  const OTHER = { curriculumKey: '2015', courseKey: '수학(상)', L1: '다항식', L2: '다항식의 연산' };
+  const types = Array.from({ length: 6 }, (_, i) => 'T' + (i % 2));
+  const orig = original({ types, path: OTHER });
+  const sim1 = similarOf({ types, suffix: '1' });
+  const sim2 = similarOf({ types, suffix: '2' });
+  const filler = exam({ file: 'original/high/h1/1mid/다고_2024_기출.js', school: '다고', year: 2024, types });
+  const everything = [...orig, ...sim1, ...sim2, ...filler];
+  const pool = [...sim1, ...sim2, ...filler];
+  const options = { familyRecords: everything };
+  const family = core.familyResolver(everything);
+  const duplicateFamilies = (selected) => duplicates(selected.map((r) => family(r)).filter(Boolean));
+  // the pool alone cannot see the original, the whole catalog can
+  assert.ok(sim1.every((r) => core.familyResolver(pool)(r) === ''), 'pool alone: the similar sets look unlinked');
+  assert.ok(sim1.every((r, i) => family(r) === family(sim2[i]) && family(r) !== ''), 'whole catalog: both variants of question n share a family');
+  let withoutOption = 0;
+  for (const seed of SEEDS) {
+    const request = requestFor(pool, 8, { seed });
+    const result = core.selectBlueprint(pool, request, {}, options);
+    assert.equal(result.ok, true);
+    assert.equal(result.selected.length, 8, 'the requested count is met');
+    assert.deepEqual(duplicateFamilies(result.selected), [], 'no family twice, seed ' + seed);
+    assert.ok(result.selected.every((r) => pool.some((p) => p.questionUid === r.questionUid)), 'only pool questions are drawn');
+    assert.ok(result.selected.every((r) => core.matches(r, request.filters, request)), 'unit conditions hold');
+    withoutOption += duplicateFamilies(core.selectBlueprint(pool, request).selected).length;
+  }
+  assert.ok(withoutOption > 0, 'without the option the same two variants can still be drawn together (this is what the option fixes)');
+  // a pool that cannot fill the count without a family repeat still meets it, and a missing/empty option changes nothing
+  const small = [...sim1, ...sim2];
+  const full = core.selectBlueprint(small, requestFor(small, 12), {}, options);
+  assert.equal(full.selected.length, 12);
+  const same = core.selectBlueprint(pool, requestFor(pool, 8, { seed: 'k' }), {}, { familyRecords: [] });
+  assert.deepEqual(same.selected.map((r) => r.questionUid), core.selectBlueprint(pool, requestFor(pool, 8, { seed: 'k' })).selected.map((r) => r.questionUid));
+  // pins are never undone by the wider family view
+  const pinned = { ...requestFor(pool, 6, { seed: 'p' }), pins: [{ questionUid: sim1[2].questionUid, rowId: 'unit' }, { questionUid: sim2[2].questionUid, rowId: 'unit' }] };
+  const kept = core.selectBlueprint(pool, pinned, {}, options);
+  assert.ok([sim1[2], sim2[2]].every((p) => kept.selected.some((r) => r.questionUid === p.questionUid)), 'both pinned variants stay');
+  assert.equal(kept.selected.length, 6);
+});
+
 test('without the similar-problem module nothing throws and the count is met', () => {
   const types = ['T1', 'T2', 'T3', 'T4'];
   const records = [...original({ types }), ...similarOf({ types })];
@@ -269,5 +311,72 @@ test('real catalog: families equal archive2-similar pairs, and automatic papers 
       if (distinctFamilies >= result.selected.length)
         assert.deepEqual(duplicates(familyKeys(scoped, result.selected)), [], `pair in ${unit} seed ${seed}`);
     }
+  }
+});
+
+// The screen passes the whole catalog as the family view: a unit whose originals sit in another unit still keeps
+// the two similar variants of one original question off one automatic paper (real catalog, real generate()).
+test('real screen: generate() keeps similar variants of one original apart even when the original is in another unit', () => {
+  const vm = require('node:vm');
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const Unified = require('../archive/archive2-unified-units.js');
+  const Tree = require('../archive/archive2-unit-tree.js');
+  const Quick = require('../archive/archive2-quick-pools.js');
+  const archiveSource = require('../archive/archive2-source.js');
+  const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
+  const { loadWorkspace } = require('./helpers/archive2-workspace-source.cjs');
+  Tree.setGroups(JSON.parse(fs.readFileSync(path.join(__dirname, '../archive/data/archive2-subunit-groups.json'), 'utf8')));
+  const data = withTestAssignments(structuredClone(catalog));
+  const pairs = Similar.pairSimilarSets(data.exams);
+  const prefix = new Map();
+  for (const e of data.exams) {
+    if (Similar.isOriginalExam(e)) prefix.set(e.file, e.file);
+    else if (pairs.originalFileFor(e.file)) prefix.set(e.file, pairs.originalFileFor(e.file));
+  }
+  const familyOfRecord = (r) => (prefix.has(r.sourceFile) ? `${prefix.get(r.sourceFile)}#${r.sourceOrdinal}` : '');
+  let nextSeed = 'x';
+  const fakeCrypto = { ...crypto, randomUUID: () => nextSeed };
+  const nodes = new Map();
+  const node = (id) => {
+    if (!nodes.has(id)) nodes.set(id, { innerHTML: '', textContent: '', dataset: {}, setAttribute() {}, addEventListener() {}, querySelectorAll: () => [], classList: { toggle() {}, add() {}, remove() {} }, close() {}, showModal() {} });
+    return nodes.get(id);
+  };
+  const ctx = vm.createContext({
+    console: { ...console, log() {} }, crypto: fakeCrypto, URL, URLSearchParams, structuredClone, queueMicrotask: () => {},
+    location: new URL('https://archive.test/archive/workspace.html'), history: { pushState() {}, replaceState() {} }, scrollY: 0, scrollTo() {},
+    setTimeout: () => 0, clearTimeout() {}, matchMedia: () => ({ matches: false }),
+    localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+    document: { baseURI: 'https://archive.test/archive/workspace.html', getElementById: node, querySelector: () => null, querySelectorAll: () => [], body: { dataset: {} }, addEventListener() {} },
+    addEventListener() {}, fetch: async () => { throw new Error('no network'); },
+    Archive2Core: core, Archive2UnifiedUnits: Unified, Archive2QuickPools: Quick, Archive2UnitTree: Tree, Archive2Similar: Similar,
+    ProblemBankMeta: require('../archive/problem-bank-meta.js'), Archive2Canonical: core.Canonical,
+    Archive2Output: require('../archive/archive2-output.js'), Archive2Papers: require('../archive/archive2-papers.js'),
+    Archive2History: require('../archive/archive2-history.js'), Archive2Source: archiveSource,
+  });
+  ctx.window = ctx;
+  loadWorkspace(ctx, 'render = () => {}; save = () => {}; globalThis.workspaceTest = { state, scopeOptions, planRows, pool, generate };');
+  const w = ctx.workspaceTest;
+  w.state.catalog = data;
+  w.state.byUid = new Map(data.records.map((r) => [r.questionUid, r]));
+  w.state.finderIndex = core.buildFinderIndex(data);
+  w.state.indexVersion = data.indexVersion;
+  w.state.filters = { grade: '고1' };
+  // the unit with the most original/similar family members inside its own pool (measured, not named)
+  const scopes = w.scopeOptions().filter((s) => !s.unclassified && s.count > 0);
+  const pairExtra = (scope) => {
+    w.state.scopes = [scope.key]; w.state.distribution = 'pool'; w.state.count = 20;
+    const pool = w.pool().filter((r) => core.generalUseEligibility(r).ok);
+    return { scope, extra: pool.length - new Set(pool.map((r) => familyOfRecord(r) || r.questionUid)).size };
+  };
+  const best = scopes.map(pairExtra).sort((a, b) => b.extra - a.extra)[0];
+  assert.ok(best.extra > 0, 'the catalog has a unit whose pool holds variants of one original question');
+  for (const seed of ['s1', 's2', 's3', 's4', 's5']) {
+    nextSeed = seed;
+    w.state.scopes = [best.scope.key]; w.state.distribution = 'pool'; w.state.count = 20;
+    w.state.selected = []; w.state.rows = w.planRows();
+    w.generate();
+    assert.equal(w.state.selected.length, 20, 'the requested count is met');
+    assert.deepEqual(duplicates(w.state.selected.map(familyOfRecord).filter(Boolean)), [], 'no original/similar family twice, seed ' + seed);
   }
 });

@@ -6,6 +6,8 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
+import {defaultHangulLabelKinds,dimensionLabelParts} from '../production/plane-marks.mjs';
+import {regionLabelText} from '../production/plane-regions.mjs';
 import {reconstruct} from '../production/cindy-observer.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {requestedProfileTypographyPolicy} from '../production/display-envelope.mjs';
@@ -144,4 +146,128 @@ test('a fraction times a letter or function is read by its stacked order, and th
     assert.equal(digitsOf(call.drawn.svg),'',text);
     assert.deepEqual((await observe(call.drawn.svg,call.plan)).errors,[],text);
   }
+});
+
+// ---- (P-B) a label that already ends in its unit, an angle named by its own letters, two names on one point -------------------------------------------------------------------------
+
+test('a label that already ends in its unit is refused before drawing, and the observer fails one that was drawn twice',async()=>{
+  for(const [text,unit] of [['6cm','cm'],['6cm','m'],['x cm','cm']]){
+    const twice=JSON.parse(JSON.stringify(marks));twice.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text,unit};
+    let refused='';
+    try{const prepared=await pythonWorker({action:'prepare',spec:specFor(planOf(twice),model,identity.assetId)});refused=prepared.status+':'+JSON.stringify(prepared.result);}catch(error){refused=String(error?.message??error);}
+    assert.match(refused,/LABEL_UNIT_WRITTEN_TWICE/,text+' '+unit);
+    // the observer reads the plan text by its own rule: the drawing of a label that was not doubled is judged against a doubled plan text
+    assert.ok(codes(await observe(composed.svg,twice)).includes('LABEL_UNIT_WRITTEN_TWICE'),text+' '+unit);
+  }
+  // not doubled: a number with its unit, a variable spelled like a unit letter, a sum
+  const fine=JSON.parse(JSON.stringify(marks));fine.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit:'cm'};fine.expressionLabels[2]={id:'nAO',ownerSegment:'sAO',text:'m',unit:'cm'};
+  assert.ok(!codes(await observe(composed.svg,fine)).includes('LABEL_UNIT_WRITTEN_TWICE'));
+});
+
+test('a MATH angle label that is exactly the letters of its three points is drawn with the angle sign, and the observer fails a drawing that lost it',async()=>{
+  const named=JSON.parse(JSON.stringify(marks));named.angles[0]={id:'aBOC',refs:['B','O','C'],value:130,label:'BOC',labelKind:'MATH',arcs:1};
+  const drawn=await composeConstructionCandidate({plan:planOf(named),model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.equal(glyphs(drawn.svg,'aBOC-label')[0],'2220','the angle sign leads: the angle BOC, not the three points');
+  assert.deepEqual((await observe(drawn.svg,named)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'aBOC-label',text=>text.replace('data-c="2220"','data-c="2E"')),named)).includes('ANGLE_NAME_SIGN_MISSING'));
+  // the reversed spelling is the same angle
+  const reversed=JSON.parse(JSON.stringify(named));reversed.angles[0].label='COB';
+  const back=await composeConstructionCandidate({plan:planOf(reversed),model,identity,typographyPolicy:policy,browser});
+  assert.equal(glyphs(back.svg,'aBOC-label')[0],'2220');
+  // anything else under MATH is left as written: a symbol, an expression, letters that are not these three points
+  for(const label of ['x','2x','AOB']){
+    const other=JSON.parse(JSON.stringify(named));other.angles[0].label=label;
+    const kept=await composeConstructionCandidate({plan:planOf(other),model,identity,typographyPolicy:policy,browser});
+    assert.equal(kept.status,'COMPOSED',label+JSON.stringify(kept.detail));
+    assert.ok(!glyphs(kept.svg,'aBOC-label').includes('2220'),label+' stays without an angle sign');
+    assert.deepEqual((await observe(kept.svg,other)).errors,[],label);
+  }
+});
+
+test('two drawn points at one place are refused, a hidden point there is not',async()=>{
+  const twin={schemaVersion:'construction-spike-v1',realization:graph.realization,nodes:[...graph.nodes,{...node('M','MIDPOINT',['A','B'],'POINT',{}),factRole:'DERIVED_INTERMEDIATE'}]};
+  const response=await pythonWorker({action:'construction',graph:twin},{timeoutMs:90000});assert.equal(response.status,'OK',JSON.stringify(response.result));
+  const shown={...planOf(marks),mathPlan:twin,displayPoints:['A','O','B','C','M']};
+  assert.throws(()=>specFor(shown,response.result,identity.assetId),/DISPLAY_POINTS_COINCIDE:O,M|DISPLAY_POINTS_COINCIDE:M,O/);
+  assert.doesNotThrow(()=>specFor({...shown,hiddenPointNames:['M']},response.result,identity.assetId));
+  // a point drawn at its own place is untouched
+  assert.doesNotThrow(()=>specFor(planOf(marks),model,identity.assetId));
+});
+
+test('a digit written after a space is refused before drawing, and the observer fails a drawing made from such a text',async()=>{
+  for(const text of ['x 3','(x+1) 2','2x 3']){
+    const spaced=JSON.parse(JSON.stringify(marks));spaced.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text};
+    let refused='';
+    try{const prepared=await pythonWorker({action:'prepare',spec:specFor(planOf(spaced),model,identity.assetId)});refused=prepared.status+':'+JSON.stringify(prepared.result);}catch(error){refused=String(error?.message??error);}
+    assert.match(refused,/NUMBER_JUXTAPOSITION_UNCLEAR/,text);
+    assert.ok(codes(await observe(composed.svg,spaced)).includes('LABEL_DIGIT_AFTER_SPACE'),text);
+  }
+  // spaces that are not between a letter or bracket and a digit change nothing
+  const fine=JSON.parse(JSON.stringify(marks));fine.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'x + 3'};
+  assert.ok(!codes(await observe(composed.svg,fine)).includes('LABEL_DIGIT_AFTER_SPACE'));
+});
+
+// ---- (P-C) the units a plane label may carry: one table, typed here, fed to the generator and (through prepare) the semantic model; the observers get the same table in test_plane_marks.py ----
+const UNITS_ACCEPTED=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3'];
+const UNITS_REFUSED=['','CM','cm^4','c m','초','inch','lb','sec','m^2/s','cm2'];
+test('every unit of the shared table is carried by an expression label, and a unit outside it is refused with the old code',async()=>{
+  for(const unit of UNITS_ACCEPTED){
+    const withUnit=JSON.parse(JSON.stringify(marks));withUnit.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit};
+    const spec=specFor(planOf(withUnit),model,identity.assetId);
+    const prepared=await pythonWorker({action:'prepare',spec});
+    assert.equal(prepared.status,'OK',unit+' '+JSON.stringify(prepared.result));
+  }
+  for(const unit of UNITS_REFUSED){
+    const withUnit=JSON.parse(JSON.stringify(marks));withUnit.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit};
+    let message='';try{specFor(planOf(withUnit),model,identity.assetId);message='accepted';}catch(error){message=String(error?.message??error);}
+    assert.match(message,/^MARK_UNIT_INVALID:expressionLabels:nOC$/,JSON.stringify(unit));
+  }
+});
+
+test('a km or area unit is drawn after the value and the observer reads it back from the glyphs',async()=>{
+  const km=JSON.parse(JSON.stringify(marks));km.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit:'km'};km.expressionLabels[2]={id:'nAO',ownerSegment:'sAO',text:'12',unit:'cm^2'};
+  const drawn=await composeConstructionCandidate({plan:planOf(km),model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.deepEqual(glyphs(drawn.svg,'nOC'),['36','6B','6D'],'6 k m');
+  assert.deepEqual((await observe(drawn.svg,km)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOC',text=>text.replace('data-c="6B"','data-c="63"')),km)).includes('LABEL_UNIT_MISMATCH'));
+});
+
+test('a label that only states a relation to a value (the approximate 0.84) is drawn, and the observer reads its digits',async()=>{
+  const approx=JSON.parse(JSON.stringify(marks));approx.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'≈0.84'};
+  const drawn=await composeConstructionCandidate({plan:planOf(approx),model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.ok(glyphs(drawn.svg,'nOB').includes('2248'),'the approximate sign is drawn');
+  assert.deepEqual((await observe(drawn.svg,approx)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="38"','data-c="39"')),approx)).includes('LABEL_TEXT_MISMATCH'));
+});
+
+test('a Hangul label that does not say MATH is a plain-text label, and one that says MATH is still refused',async()=>{
+  const kor=JSON.parse(JSON.stringify(marks));kor.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'공통'};
+  const plan=defaultHangulLabelKinds(planOf(kor));
+  assert.equal(plan.planeMarks.expressionLabels[0].labelKind,'TEXT');
+  const drawn=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.deepEqual((await observe(drawn.svg,plan.planeMarks)).errors,[]);
+  // the rows that were never refused do not change: no Hangul, an explicit kind, a unit
+  const same=planOf(marks);assert.equal(defaultHangulLabelKinds(same),same,'the same object comes back when nothing changes');
+  const explicit=JSON.parse(JSON.stringify(marks));explicit.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'공통',labelKind:'MATH'};
+  const stillMath=planOf(explicit);assert.equal(defaultHangulLabelKinds(stillMath),stillMath);
+  let message='';try{specFor(stillMath,model,identity.assetId);const prepared=await pythonWorker({action:'prepare',spec:specFor(stillMath,model,identity.assetId)});message=JSON.stringify(prepared.result);}catch(error){message=String(error?.message??error);}
+  assert.match(message,/KOREAN_WORD_NEEDS_TEXT_LABEL/);
+});
+
+test('a dimension label written with its thin-space unit reads every unit of the table, and only those',()=>{
+  const thin=String.raw`\,`;
+  for(const unit of UNITS_ACCEPTED)assert.deepEqual(dimensionLabelParts({label:'24'+thin+unit}),{label:'24',unit},unit);
+  for(const unit of ['inch','lb','CM','cm^4','x'])assert.deepEqual(dimensionLabelParts({label:'24'+thin+unit}),{label:'24'+thin+unit,unit:undefined},unit);
+  assert.equal(dimensionLabelParts({label:'24'+thin+'km',unit:'cm'}).conflict,true);
+});
+
+test('the region label units are the table minus the ratios, and a region label draws them as the observer reads them',()=>{
+  const regionUnits=UNITS_ACCEPTED.filter(unit=>!unit.includes('/'));
+  for(const unit of regionUnits)assert.equal(regionLabelText({label:'6',unit}).startsWith('6'+unit.split('^')[0]),true,unit);
+  assert.equal(regionLabelText({label:'6',unit:'km^2'}),'6km\u00B2');
+  assert.equal(regionLabelText({label:'6',unit:'mL'}),'6mL');
 });
