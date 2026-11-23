@@ -1,4 +1,4 @@
-window.examTitle = "중1_2학기_기말대비_시험대비_실생활_입체도형";
+window.examTitle = "중1_2학기_기말_시험대비_실생활_입체도형";
 
 window.questionBank = [
   {
@@ -22,7 +22,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -66,7 +66,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -105,7 +105,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -149,7 +149,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -194,7 +194,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -238,7 +238,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -282,7 +282,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
@@ -326,7 +326,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "examId": "중1_2학기_기말대비_시험대비_실생활_입체도형",
+    "examId": "중1_2학기_기말_시험대비_실생활_입체도형",
     "tags": [
       "시험대비",
       "실생활 입체도형",
