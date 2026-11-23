@@ -29,7 +29,8 @@
     const UNFIT_MARK = '[data-ap-unfit]';
     const HTML_MARK = '[data-ap-html-warn]';
     const OVERFLOW_MARK = '[data-layout-overflow="1"]';
-    const ALL_MARKS = MARK + ',' + IMAGE_MARK + ',' + UNFIT_MARK + ',' + HTML_MARK + ',' + OVERFLOW_MARK;
+    const PAGE_MARK = '[data-ap-page-overflow]';
+    const ALL_MARKS = MARK + ',' + IMAGE_MARK + ',' + UNFIT_MARK + ',' + HTML_MARK + ',' + OVERFLOW_MARK + ',' + PAGE_MARK;
     const UNFIT_MESSAGE = '이 문항은 너무 길어 이 자리에 담지 못했습니다';
     // 사유 코드 표 하나: 단계(stage)·심각도(error=표식으로 대체됨, warn=그대로 그렸고 알림만)·한 줄 설명.
     const CODES = {
@@ -40,6 +41,7 @@
         LAYOUT_CANNOT_FIT: { stage: '배치', severity: 'error', message: '글자·그림을 줄이고 한 단 전체로 키워도 쪽에 들어가지 않아 자리 표시로 대체했습니다' },
         LAYOUT_OVERFLOW: { stage: '배치', severity: 'warn', message: '한 단 전체·최소 글자 크기로도 칸을 조금 넘칩니다(내용은 그대로 그렸습니다)' },
         HTML_UNBALANCED: { stage: '본문', severity: 'warn', message: 'HTML 태그 짝이 맞지 않습니다(브라우저가 자동으로 닫아 그렸습니다)' },
+        PAGE_OVERFLOW_NOT_QUESTION: { stage: '배치', severity: 'warn', message: '쪽이 넘치지만 문항을 바꿔도 줄지 않아 문항 탓이 아닙니다(머리글·QR 등 문항 밖 요소 확인). 문항은 그대로 두었습니다' },
         RENDER_TIME_BUDGET: { stage: '시간', severity: 'warn', message: '정해진 시간 안에 끝나지 않아 기다리지 않고 계속했습니다' }
     };
     const codeInfo = code => CODES[code] || { stage: '기타', severity: 'error', message: String(code || '') };
@@ -268,6 +270,7 @@
         if (node.hasAttribute('data-ap-unfit')) codes.push('LAYOUT_CANNOT_FIT');
         else if (node.getAttribute('data-layout-overflow') === '1') codes.push('LAYOUT_OVERFLOW');
         if (node.hasAttribute('data-ap-html-warn')) codes.push('HTML_UNBALANCED');
+        if (node.hasAttribute('data-ap-page-overflow')) codes.push('PAGE_OVERFLOW_NOT_QUESTION');
         return codes;
     }
     function describe(node, forcedCode) {
@@ -276,18 +279,19 @@
         const isImage = /^QUESTION_IMAGE_/.test(code);
         const isLayout = /^LAYOUT_/.test(code);
         const isHtml = code === 'HTML_UNBALANCED';
+        const isPage = code === 'PAGE_OVERFLOW_NOT_QUESTION';
         const ref = box?.getAttribute('data-source-ref') || node.closest('[data-source-ref]')?.getAttribute('data-source-ref') || '';
         const file = (ref.split('#')[0] || String(root.AppState?.sourceArchiveFile || ''));
         const info = codeInfo(code);
         const entry = {
             file,
             questionNo: questionNoOf(box),
-            part: isLayout ? '문항' : isHtml ? '본문' : isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
+            part: isPage ? (node.getAttribute('data-ap-page-overflow') + '쪽') : isLayout ? '문항' : isHtml ? '본문' : isImage ? imagePartOf(node) : (node === box ? '' : partOf(node)),
             code,
             stage: info.stage,
             severity: info.severity,
             message: info.message,
-            excerpt: isHtml ? (node.getAttribute('data-ap-html-warn') || '')
+            excerpt: isPage ? '' : isHtml ? (node.getAttribute('data-ap-html-warn') || '')
                 : code === 'LAYOUT_CANNOT_FIT' ? (node.getAttribute('data-ap-unfit-excerpt') || '')
                 : isLayout ? '' : (node.getAttribute('data-ap-math-excerpt') || node.getAttribute('data-ap-image-excerpt') || '')
         };
@@ -349,6 +353,7 @@
 
     function entryLabel(entry) {
         // 수식·그림 항목은 예전 문구 그대로, 배치·HTML 항목은 사유를 한 마디 붙인다.
+        if (entry.code === 'PAGE_OVERFLOW_NOT_QUESTION') return entry.part + ' 넘침 (문항 탓 아님)';
         const base = targetLabel(entry);
         if (entry.code === 'LAYOUT_CANNOT_FIT') return base + ' (너무 길어 자리 표시로 바꿈)';
         if (entry.code === 'LAYOUT_OVERFLOW') return base + ' (칸을 넘침)';
@@ -556,6 +561,13 @@
 
     // ---- 자리 표시: 사다리 뒤에도 안 들어가는 문항 하나------------------------------------------------------------------------------
     // box: .q-box / .sol-box. 번호(.q-num)만 남기고 본문을 "너무 길어 담지 못했습니다" 상자로 바꾼다. 칸·번호·순서는 그대로다.
+    const unfitUndo = new WeakMap();
+    function restoreUnfit(box) {
+        const undo = unfitUndo.get(box);
+        if (!undo) return false;
+        unfitUndo.delete(box);
+        try { undo(); return true; } catch (error) { return false; }
+    }
     function replaceUnfit(box, info = {}) {
         try {
             if (!box?.querySelector || (box.hasAttribute('data-ap-unfit') && !info.force)) return false;
@@ -569,6 +581,21 @@
             // info.target: 상자 전체가 아니라 그 부분(예: 해설지의 문제 다시보기)만 자리 표시로 바꾼다.
             const part = info.target ? box.querySelector(info.target) : null;
             const excerpt = clip((part || host).textContent, 80);
+            // 쪽 넘침이 이 문항 탓이 아니었을 때 되돌릴 수 있게 바꾸기 전 상태를 보관한다(restoreUnfit).
+            const before = { children: part ? null : Array.from(host.childNodes), part, hostStyle: host !== box ? { zoom: host.style.zoom, transform: host.style.transform, fit: host.getAttribute('data-equal-slot-fit'), scale: host.getAttribute('data-equal-slot-scale') } : null,
+                unfit: box.getAttribute('data-ap-unfit'), unfitExcerpt: box.getAttribute('data-ap-unfit-excerpt'), overflow: box.getAttribute('data-layout-overflow') };
+            unfitUndo.set(box, () => {
+                if (before.part) note.replaceWith(before.part); else host.replaceChildren(...before.children);
+                for (const [name, value] of [['data-ap-unfit', before.unfit], ['data-ap-unfit-excerpt', before.unfitExcerpt], ['data-layout-overflow', before.overflow]]) {
+                    if (value == null) box.removeAttribute(name); else box.setAttribute(name, value);
+                }
+                if (before.hostStyle) {
+                    host.style.zoom = before.hostStyle.zoom; host.style.transform = before.hostStyle.transform;
+                    for (const [name, value] of [['data-equal-slot-fit', before.hostStyle.fit], ['data-equal-slot-scale', before.hostStyle.scale]]) {
+                        if (value == null) host.removeAttribute(name); else host.setAttribute(name, value);
+                    }
+                }
+            });
             if (part) part.replaceWith(note);
             else {
                 const number = host.querySelector(':scope > .q-num');
@@ -593,38 +620,54 @@
         }
     }
 
-    // 쪽이 공통 게이트(S12)·인쇄 사전 점검(archive2-pdf-readiness.assertLayoutReady)과 같은 기준으로 넘치는가.
-    function pageOverflows(page) {
+    // 쪽이 얼마나 넘치는가(0이면 안 넘침). 기준은 두 게이트의 합집합이다: 공통 게이트 S12(snapshot-contract: body 세로 +2, 가로 +1)와 인쇄 사전 점검
+    // (archive2-pdf-readiness.assertLayoutReady: 쪽 +3, 잘림 요소 +3). S12가 더 엄격해서 둘 중 하나라도 걸리면 넘침으로 본다(둘 다 통과해야 출력이 막히지 않는다).
+    // 반환값은 허용 오차를 뺀 가장 큰 넘침(px)이라 "바꾼 뒤 줄었는가"를 비교하는 데도 쓴다.
+    function pageExcess(page) {
         const body = page.querySelector?.('.page-body');
-        if (page.scrollHeight > page.clientHeight + 3 || page.scrollWidth > page.clientWidth + 3) return true;
-        if (body && (body.scrollHeight > body.clientHeight + 2 || body.scrollWidth > body.clientWidth + 1)) return true;
+        let excess = Math.max(page.scrollHeight - page.clientHeight - 3, page.scrollWidth - page.clientWidth - 3);
+        if (body) excess = Math.max(excess, body.scrollHeight - body.clientHeight - 2, body.scrollWidth - body.clientWidth - 1);
         const view = ownerDocument(page).defaultView || root;
         const clips = value => value === 'hidden' || value === 'clip';
         // readiness는 쪽 안 모든 요소를 보지만, 잘림은 칸·상자에서 생기므로 그 요소들만 본다(비용).
-        return Array.from(page.querySelectorAll('.grid-col,.grid-container,.page-body,.q-box,.sol-box,.ap-slot-content')).some(element => {
-            const tooTall = element.scrollHeight > element.clientHeight + 3, tooWide = element.scrollWidth > element.clientWidth + 3;
-            if (!tooTall && !tooWide) return false;
+        for (const element of Array.from(page.querySelectorAll('.grid-col,.grid-container,.page-body,.q-box,.sol-box,.ap-slot-content'))) {
+            const tall = element.scrollHeight - element.clientHeight - 3, wide = element.scrollWidth - element.clientWidth - 3;
+            if (tall <= 0 && wide <= 0) continue;
             const style = view.getComputedStyle(element);
-            return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
-        });
+            if (wide > 0 && clips(style.overflowX)) excess = Math.max(excess, wide);
+            if (tall > 0 && clips(style.overflowY)) excess = Math.max(excess, tall);
+        }
+        return Math.max(0, excess);
     }
+    const pageOverflows = page => pageExcess(page) > 0;
     // 넘치는 쪽의 범인(칸을 넘치게 만든 가장 큰 문항)을 골라 자리 표시로 바꾼다. 쪽당 상자 수만큼만 반복해 끝난다.
+    // 바꾼 뒤에도 넘침이 줄지 않으면 그 문항 탓이 아니다(머리글·QR 등 문항 밖 요소): 되돌리고 거기서 멈춰, 문항을 더 지우지 않고 쪽 넘침만 진단으로 남긴다.
     function guardOverflow(scope) {
         const replaced = [];
         try {
             const area = scope || root.document?.getElementById('print-area');
             if (!area?.querySelectorAll) return replaced;
-            for (const page of Array.from(area.querySelectorAll('.page'))) {
+            const pages = Array.from(area.querySelectorAll('.page'));
+            pages.forEach((page, pageIndex) => {
                 const limit = page.querySelectorAll('.q-box,.sol-box').length;
-                for (let step = 0; step < limit && pageOverflows(page); step += 1) {
+                let before = pageExcess(page);
+                for (let step = 0; step < limit && before > 0; step += 1) {
                     const candidates = Array.from(page.querySelectorAll('.q-box,.sol-box')).filter(box => !box.hasAttribute('data-ap-unfit') && !box.parentElement?.closest('.q-box,.sol-box'));
                     const flagged = candidates.filter(box => box.getAttribute('data-layout-overflow') === '1');
                     const pool = flagged.length ? flagged : candidates;
                     const culprit = pool.sort((a, b) => b.getBoundingClientRect().height - a.getBoundingClientRect().height)[0];
                     if (!culprit || !replaceUnfit(culprit, { reason: 'page-overflow' })) break;
+                    const after = pageExcess(page);
+                    if (after >= before) {
+                        restoreUnfit(culprit);
+                        page.setAttribute('data-ap-page-overflow', String(pageIndex + 1));
+                        console.warn('[archive-layout] PAGE_OVERFLOW_NOT_QUESTION: 문항을 바꿔도 쪽 넘침이 줄지 않아 되돌렸습니다', { page: pageIndex + 1, excessPx: before });
+                        break;
+                    }
                     replaced.push(culprit);
+                    before = after;
                 }
-            }
+            });
             if (replaced.length) console.warn('[archive-layout] LAYOUT_CANNOT_FIT: 쪽을 넘치게 하는 문항을 자리 표시로 바꿨습니다', replaced.map(box => (box.querySelector('.q-num')?.textContent || '').trim()));
         } catch (error) {
             console.warn('[archive-render-diagnostics] guardOverflow failed', error);
@@ -632,5 +675,5 @@
         return replaced;
     }
 
-    return Object.freeze({ sanitize, replaceImage, replaceUnfit, guardOverflow, htmlBalance, noteHtml, pageOverflows, collect, report, reportText, publish, textWithoutMarks, leftoverCount, codeInfo, CODES, MARK, IMAGE_MARK });
+    return Object.freeze({ sanitize, replaceImage, replaceUnfit, restoreUnfit, guardOverflow, htmlBalance, noteHtml, pageOverflows, pageExcess, collect, report, reportText, publish, textWithoutMarks, leftoverCount, codeInfo, CODES, MARK, IMAGE_MARK });
 }));

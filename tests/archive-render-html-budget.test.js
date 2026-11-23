@@ -42,6 +42,26 @@ test('APRenderLoop.bounded: 제때 끝나면 true, 시간을 넘기면 false(기
   delete globalThis.__AP_RENDER_BUDGET_HITS__;
 });
 
+test('조판이 예산을 넘겨 멈춘 뒤에도 다음 렌더(start)는 처음부터 다시 조판한다 (기록은 유지)', async () => {
+  delete globalThis.__AP_RENDER_BUDGET_HITS__;
+  let hang = true, calls = 0;
+  globalThis.MathJax = { typesetPromise: () => { calls += 1; return hang ? new Promise(() => {}) : Promise.resolve(); } };
+  globalThis.__AP_TYPESET_BUDGET_MS__ = 30;
+  try {
+    const metrics = loop.start({ mode: 'exam', publish: false });
+    assert.equal(await loop.typeset('first', [], metrics), false, '예산을 넘기면 기다리지 않고 false');
+    assert.equal(await loop.typeset('while-stalled', [], metrics), false, '멈춘 동안의 조판은 다시 기다리지 않는다');
+    assert.equal(calls, 1, 'MathJax는 한 번만 불렀다');
+    hang = false;
+    const next = loop.start({ mode: 'exam', publish: false });
+    assert.equal(await loop.typeset('next-render', [], next), true, '새 렌더는 멈춤 상태를 이어받지 않는다');
+    assert.equal(calls, 2);
+    assert.equal(globalThis.__AP_RENDER_BUDGET_HITS__.length, 1, '시간 초과 기록은 진단이라 남는다');
+  } finally {
+    delete globalThis.MathJax; delete globalThis.__AP_TYPESET_BUDGET_MS__; delete globalThis.__AP_RENDER_BUDGET_HITS__;
+  }
+});
+
 test('두 출력 화면이 같은 파일을 같은 ?v=로 불러온다', () => {
   const pick = (html, name) => (new RegExp(`<script src="(?:\\.\\./archive/)?${name.replace('.', '\\.')}\\?v=([^"]+)"`).exec(read(html)) || [])[1];
   for (const name of ['render-diagnostics.js', 'mathjax_render_loop.js', 'equal-slot-engine.js', 'exam-render-executor.js', 'solution-render-executor.js']) {
@@ -150,14 +170,15 @@ test('MathJax가 끝없이 멈춰도 예산 뒤 ready가 나고 시간 초과 �
       const { context, page } = await openPage(browser, origin);
       await page.addInitScript(() => {
         window.__AP_TYPESET_BUDGET_MS__ = 1500;
-        // MathJax가 읽히면 조판 호출을 끝나지 않는 약속으로 바꾼다(시험용 고장 주입).
-        const timer = setInterval(() => {
-          if (window.MathJax?.typesetPromise && !window.MathJax.__hung) {
-            window.MathJax.__hung = true;
-            window.MathJax.typesetPromise = () => new Promise(() => {});
-            clearInterval(timer);
-          }
-        }, 5);
+        // MathJax 객체가 대입되는 순간 typesetPromise를 가로채 끝나지 않는 약속으로 바꾼다(시험용 고장 주입). 대입을 가로채므로 첫 조판 호출 전에 걸린다.
+        let current;
+        const hook = target => {
+          if (!target || typeof target !== 'object' || target.__apHung) return;
+          Object.defineProperty(target, '__apHung', { value: true });
+          let impl;
+          Object.defineProperty(target, 'typesetPromise', { configurable: true, enumerable: true, get: () => (impl ? () => new Promise(() => {}) : undefined), set: value => { impl = value; } });
+        };
+        Object.defineProperty(window, 'MathJax', { configurable: true, get: () => current, set: value => { current = value; hook(value); } });
       });
       if (engine === 'M') await seedMixed(page, origin, OK);
       await page.goto(urlFor(origin, engine, OK, 'exam'));
@@ -169,5 +190,34 @@ test('MathJax가 끝없이 멈춰도 예산 뒤 ready가 나고 시간 초과 �
       assert.ok(budget.length >= 1 && budget[0].severity === 'warn' && /typeset/.test(budget[0].excerpt), engine + ': ' + JSON.stringify(view.report.entries));
       await context.close();
     }
+  });
+});
+
+test('쪽이 문항 밖 요소 때문에 넘치면 문항을 자리 표시로 바꾸지 않고 쪽 넘침만 진단으로 남긴다 (M 시험지)', async t => {
+  await withBrowser(t, async (browser, origin) => {
+    const { context, page } = await openPage(browser, origin);
+    // 문항이 아닌 요소(머리글·QR 같은 것)가 쪽 본문을 넘치게 하는 상황을 흉내 낸다: 쪽 본문 아래로 삐져나오는 큰 빈 블록(배치에는 영향 없이 스크롤 넘침만 만든다).
+    await page.addInitScript(() => {
+      const style = document.createElement('style');
+      style.textContent = '.page-body{position:relative}.page-body::after{content:"";position:absolute;left:0;top:100%;width:10px;height:3000px}';
+      document.addEventListener('DOMContentLoaded', () => document.head.appendChild(style));
+    });
+    await seedMixed(page, origin, OK);
+    await page.goto(urlFor(origin, 'M', OK, 'exam'));
+    const view = await snapshot(page);
+    assert.equal(view.error, null);
+    assert.equal(view.ready, 'true');
+    assert.deepEqual(view.numbers, ALL, '문항은 하나도 사라지지 않는다');
+    const unfit = await page.evaluate(() => document.querySelectorAll('[data-ap-unfit]').length);
+    assert.equal(unfit, 0, '문항 탓이 아니므로 자리 표시는 0개');
+    assert.deepEqual(view.diagnostics, [], '오류가 아니라 알림이다');
+    const notes = view.report.entries.filter(entry => entry.code === 'PAGE_OVERFLOW_NOT_QUESTION');
+    assert.ok(notes.length >= 1 && notes[0].severity === 'warn' && /쪽$/.test(notes[0].part), JSON.stringify(view.report.entries));
+    assert.equal(view.report.entries.filter(entry => entry.code === 'LAYOUT_CANNOT_FIT').length, 0);
+    assert.ok(view.noticeVisible && /넘침 \(문항 탓 아님\)/.test(view.noticeText), view.noticeText);
+    // 되돌렸으므로 문항 내용(본문·보기)이 그대로 있다
+    const intact = await page.evaluate(() => [...document.querySelectorAll('#print-area .q-box')].filter(box => box.querySelector('.q-content') && box.querySelector('.choices')).length);
+    assert.equal(intact, ALL.length);
+    await context.close();
   });
 });
