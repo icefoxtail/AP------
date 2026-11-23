@@ -50,9 +50,11 @@
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
     if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>${errorDetailMarkup(state.recentError)}`;
+    // 과목은 합쳐진 줄의 모든 값으로 거른다(History.filterAssignments는 값 하나만 받으므로 과목만 여기서 따로 거른다).
+    const subjectGroup = recentSubjectGroupKeys(state.recentFilters.subject);
     const rows = History.filterAssignments(state.recentRows, {
-      ...state.recentFilters, classId: state.recentClassId,
-    });
+      ...state.recentFilters, classId: state.recentClassId, subject: subjectGroup.length > 1 ? "" : state.recentFilters.subject,
+    }).filter((row) => subjectGroup.length < 2 || row.subjectKeys.some((key) => subjectGroup.includes(key)));
     // One row per assignment, newest date first. The raw list keeps saved_paper_id / archive_file, which the
     // normalized rows drop (archive2-history.js stays untouched so the Worker is not redeployed).
     const rawById = new Map((state.recentAssignments || []).map((raw) => [String(raw?.id ?? "").trim(), raw]));
@@ -171,7 +173,40 @@
     if (shared) return [...new Set([shared.label, ...(shared.courseKeys || [])])];
     return [key];
   }
-  function recentSubjectOptions({ preserveSelected = true } = {}) {
+  // 보이는 이름이 같은 과목 칸(예: raw:기출c와 raw:기출)은 한 줄로 합친다. 저장된 값·주소 값은 그대로 두고,
+  // 합쳐진 줄을 고르면 두 값의 내역이 모두 걸린다(요청에는 두 값의 과목어를 함께 싣는다).
+  function recentSubjectGroupKeys(subjectKey) {
+    const key = String(subjectKey || "").trim();
+    if (!key) return [];
+    const all = recentSubjectRawOptions();
+    const mine = all.find((option) => option.value === key);
+    const keys = [key];
+    if (mine) for (const option of all) if (option.label === mine.label && !keys.includes(option.value)) keys.push(option.value);
+    // 아직 불러온 내역에 없는 짝도 보이는 이름으로 알 수 있다: raw:기출c를 고르면 raw:기출도 같은 줄이다.
+    if (key.startsWith("raw:")) {
+      const plain = "raw:" + (globalThis.ExamDisplayTitle?.displaySubjectOf?.(key.slice(4)) ?? key.slice(4));
+      if (!keys.includes(plain)) keys.push(plain);
+    }
+    return keys;
+  }
+  function recentSubjectGroupTerms(subjectKey) {
+    return [...new Set(recentSubjectGroupKeys(subjectKey).flatMap(recentSubjectTerms))];
+  }
+  function recentSubjectOptions(opts) {
+    const selected = state.recentFilters.subject;
+    const merged = new Map();
+    for (const option of recentSubjectRawOptions(opts)) {
+      const group = merged.get(option.label);
+      if (!group) merged.set(option.label, { ...option, keys: [option.value] });
+      else {
+        group.keys.push(option.value);
+        // 이미 고른 값(주소·저장소의 raw:기출c 포함)이 이 묶음에 있으면 그 값으로 선택된 줄이 보인다.
+        if (option.value === selected) group.value = selected;
+      }
+    }
+    return [...merged.values()];
+  }
+  function recentSubjectRawOptions({ preserveSelected = true } = {}) {
     const grade = state.recentFilters.grade;
     const values = new Map();
     for (const option of C.subjectProjectionOptions(grade) || [])
@@ -215,7 +250,7 @@
     state.recentFilters[key] = el.value;
     if (key === "grade") {
       const subjects = recentSubjectOptions({ preserveSelected: false });
-      if (!subjects.some((item) => item.value === state.recentFilters.subject))
+      if (!subjects.some((item) => item.value === state.recentFilters.subject || item.keys?.includes(state.recentFilters.subject)))
         state.recentFilters.subject = "";
       const classes = recentClassOptions();
       if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
@@ -332,7 +367,7 @@
       if (state.recentClassId) params.set("class", state.recentClassId);
       if (state.recentFilters.subject) {
         params.set("subject", state.recentFilters.subject);
-        for (const term of recentSubjectTerms(state.recentFilters.subject))
+        for (const term of recentSubjectGroupTerms(state.recentFilters.subject))
           params.append("subject_term", term);
       }
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
@@ -525,6 +560,7 @@
     updateRecentResults,
     recentSubjectTerms,
     recentSubjectOptions,
+    recentSubjectGroupKeys,
     rememberRecentSubjectOptions,
     updateRecentFilterOptions,
     changeRecentFilter,
