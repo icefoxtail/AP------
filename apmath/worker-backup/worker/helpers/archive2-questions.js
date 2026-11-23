@@ -22,6 +22,14 @@ export function fail(message, status = 400) {
   error.status = status;
   throw error;
 }
+// Same as fail(), plus the 0-based position of the question that was rejected (error.questionIndex). The message text is
+// unchanged; the saved-paper batch uses the position to tell the teacher which question to look at.
+function failAt(questionIndex, message, status = 400) {
+  const error = new Error(message);
+  error.status = status;
+  error.questionIndex = questionIndex;
+  throw error;
+}
 export function checkTargetClassGrade(classRow) {
   const grade = history.classGrade(classRow);
   if (!core.gradeRank(grade))
@@ -551,7 +559,7 @@ export async function validateApprovedMixedQuestions(
     data.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r]),
   );
   const sourceGrades = new Set();
-  for (const q of questions || []) {
+  for (const [questionIndex, q] of (questions || []).entries()) {
     const record = byUid.get(q.questionUid);
     const sourceFile = norm(
       q.sourceArchiveFile || q._sourceFile || q.sourceFile || q.source_archive_file,
@@ -572,18 +580,18 @@ export async function validateApprovedMixedQuestions(
         projectionPolicy: data.projectionPolicy,
       })
     )
-      fail("승인된 문항·출제 범위와 일치하지 않습니다.", 409);
+      failAt(questionIndex, "승인된 문항·출제 범위와 일치하지 않습니다.", 409);
     if (!core.gradeRank(record.sourceGrade))
-      fail("canonical source grade를 확인할 수 없습니다.", 409);
+      failAt(questionIndex, "canonical source grade를 확인할 수 없습니다.", 409);
     sourceGrades.add(record.sourceGrade);
     let assignmentFingerprint;
     try {
       assignmentFingerprint = await canonical.assignmentFingerprint(q);
     } catch {
-      fail("문항 분류 fingerprint를 확인할 수 없습니다.", 409);
+      failAt(questionIndex, "문항 분류 fingerprint를 확인할 수 없습니다.", 409);
     }
     if (!record.assignmentFingerprint || assignmentFingerprint !== record.assignmentFingerprint)
-      fail("승인된 분류 assignment fingerprint가 일치하지 않습니다.", 409);
+      failAt(questionIndex, "승인된 분류 assignment fingerprint가 일치하지 않습니다.", 409);
     const fingerprint = await sha256hex(
       JSON.stringify({
         content: q.content ?? null,
@@ -597,13 +605,13 @@ export async function validateApprovedMixedQuestions(
       fingerprint !== record.sourceFingerprint ||
       q.sourceFingerprint !== fingerprint
     )
-      fail("문항 내용 fingerprint가 일치하지 않습니다.", 409);
+      failAt(questionIndex, "문항 내용 fingerprint가 일치하지 않습니다.", 409);
     for (const field of core.META_FIELDS)
       if (
         q[field] !== undefined && record[field] !== undefined &&
         JSON.stringify(q[field]) !== JSON.stringify(record[field])
       )
-        fail("canonical metadata parity mismatch: " + field, 409);
+        failAt(questionIndex, "canonical metadata parity mismatch: " + field, 409);
     for (const field of core.META_FIELDS) delete q[field];
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];

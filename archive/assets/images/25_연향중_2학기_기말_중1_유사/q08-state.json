@@ -1,0 +1,794 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2final/25_연향중_2학기_기말_중1_유사.js",
+  "ordinal": 8,
+  "dir": "q08"
+ },
+ "identity": {
+  "questionUid": "25_연향중_2학기_기말_중1_유사|8",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:f0cf1690a1462527a4e13680bf31b2c3999d8a553a8afb51d0509262b143d052",
+  "assetId": "va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "정사각형과 네 변을 지름으로 하는 반원으로 이루어진 도형",
+  "accessibilityDescription": "한 변의 길이가 6cm인 정사각형 내부에 네 변을 지름으로 하는 반원이 그려진 그림이다.",
+  "sourceQuote": "다음 그림과 같이 한 변의 길이가 $6\\rm",
+  "newVisualInformation": [],
+  "sourceConditions": [
+   {
+    "id": "square",
+    "condition": "square ABCD with side 6cm",
+    "mappedTo": "segments AB, BC, CD, DA"
+   }
+  ],
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-3"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-3"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "M1",
+     "op": "MIDPOINT",
+     "inputs": [
+      "A",
+      "B"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M2",
+     "op": "MIDPOINT",
+     "inputs": [
+      "B",
+      "C"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M3",
+     "op": "MIDPOINT",
+     "inputs": [
+      "C",
+      "D"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M4",
+     "op": "MIDPOINT",
+     "inputs": [
+      "D",
+      "A"
+     ],
+     "args": {},
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "c1",
+     "op": "CIRCLE_CENTER_RADIUS",
+     "inputs": [
+      "M1"
+     ],
+     "args": {
+      "radius": {
+       "kind": "integer",
+       "value": "3"
+      }
+     },
+     "outputType": "CIRCLE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "c2",
+     "op": "CIRCLE_CENTER_RADIUS",
+     "inputs": [
+      "M2"
+     ],
+     "args": {
+      "radius": {
+       "kind": "integer",
+       "value": "3"
+      }
+     },
+     "outputType": "CIRCLE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "c3",
+     "op": "CIRCLE_CENTER_RADIUS",
+     "inputs": [
+      "M3"
+     ],
+     "args": {
+      "radius": {
+       "kind": "integer",
+       "value": "3"
+      }
+     },
+     "outputType": "CIRCLE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "c4",
+     "op": "CIRCLE_CENTER_RADIUS",
+     "inputs": [
+      "M4"
+     ],
+     "args": {
+      "radius": {
+       "kind": "integer",
+       "value": "3"
+      }
+     },
+     "outputType": "CIRCLE",
+     "factRole": "DERIVED_INTERMEDIATE"
+    }
+   ]
+  },
+  "displayPoints": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "M1",
+   "M2",
+   "M3",
+   "M4"
+  ],
+  "displaySegments": [
+   {
+    "id": "AB",
+    "refs": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "BC",
+    "refs": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "id": "CD",
+    "refs": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "id": "DA",
+    "refs": [
+     "D",
+     "A"
+    ]
+   }
+  ],
+  "coordinateCanvas": {
+   "width": 720,
+   "height": 600
+  },
+  "planeMarks": {
+   "arcs": [
+    {
+     "id": "arc1",
+     "circle": "c1",
+     "center": "M1",
+     "from": "A",
+     "to": "B",
+     "side": "CW"
+    },
+    {
+     "id": "arc2",
+     "circle": "c2",
+     "center": "M2",
+     "from": "B",
+     "to": "C",
+     "side": "CW"
+    },
+    {
+     "id": "arc3",
+     "circle": "c3",
+     "center": "M3",
+     "from": "C",
+     "to": "D",
+     "side": "CW"
+    },
+    {
+     "id": "arc4",
+     "circle": "c4",
+     "center": "M4",
+     "from": "D",
+     "to": "A",
+     "side": "CCW"
+    }
+   ]
+  },
+  "hiddenPointNames": [
+   "M1",
+   "M2",
+   "M3",
+   "M4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q08.svg",
+  "engineEvidence": {
+   "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-result.json",
+   "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-state.json",
+   "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q08-solution.svg"
+  }
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-3"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     -3,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     3,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     3,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-3"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -3,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "M1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     0,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "M2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     3,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "M3": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     0,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "M4": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-3"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     -3,
+     0
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {
+   "c1": {
+    "centerExact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "radiusExact": {
+     "kind": "integer",
+     "value": "3"
+    },
+    "approximation": [
+     0,
+     3,
+     3
+    ]
+   },
+   "c2": {
+    "centerExact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "radiusExact": {
+     "kind": "integer",
+     "value": "3"
+    },
+    "approximation": [
+     3,
+     0,
+     3
+    ]
+   },
+   "c3": {
+    "centerExact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "radiusExact": {
+     "kind": "integer",
+     "value": "3"
+    },
+    "approximation": [
+     0,
+     -3,
+     3
+    ]
+   },
+   "c4": {
+    "centerExact": [
+     {
+      "kind": "integer",
+      "value": "-3"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "radiusExact": {
+     "kind": "integer",
+     "value": "3"
+    },
+    "approximation": [
+     -3,
+     0,
+     3
+    ]
+   }
+  },
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "M1",
+    "op": "MIDPOINT",
+    "dependencies": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "nodeId": "M2",
+    "op": "MIDPOINT",
+    "dependencies": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "nodeId": "M3",
+    "op": "MIDPOINT",
+    "dependencies": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "nodeId": "M4",
+    "op": "MIDPOINT",
+    "dependencies": [
+     "A",
+     "D"
+    ]
+   },
+   {
+    "nodeId": "c1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "dependencies": [
+     "M1"
+    ]
+   },
+   {
+    "nodeId": "c2",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "dependencies": [
+     "M2"
+    ]
+   },
+   {
+    "nodeId": "c3",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "dependencies": [
+     "M3"
+    ]
+   },
+   {
+    "nodeId": "c4",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "dependencies": [
+     "M4"
+    ]
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "M1",
+   "M2",
+   "M3",
+   "M4",
+   "c1",
+   "c2",
+   "c3",
+   "c4"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 720 600\" width=\"720\" height=\"600\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">정사각형과 네 변을 지름으로 하는 반원으로 이루어진 도형</title><desc id=\"visual-desc\">한 변의 길이가 6cm인 정사각형 내부에 네 변을 지름으로 하는 반원이 그려진 그림이다.</desc><rect width=\"720\" height=\"600\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"AB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"244.482758621\" y1=\"184.482758621\" x2=\"475.517241379\" y2=\"184.482758621\"/></g><g data-layer=\"30\"><line id=\"BC\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"475.517241379\" y1=\"184.482758621\" x2=\"475.517241379\" y2=\"415.517241379\"/></g><g data-layer=\"30\"><line id=\"CD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"475.517241379\" y1=\"415.517241379\" x2=\"244.482758621\" y2=\"415.517241379\"/></g><g data-layer=\"30\"><line id=\"DA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"244.482758621\" y1=\"415.517241379\" x2=\"244.482758621\" y2=\"184.482758621\"/></g><g data-layer=\"40\"><circle id=\"c1\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"360\" cy=\"184.482758621\" r=\"115.517241379\"/></g><g data-layer=\"40\"><circle id=\"c2\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"475.517241379\" cy=\"300\" r=\"115.517241379\"/></g><g data-layer=\"40\"><circle id=\"c3\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"360\" cy=\"415.517241379\" r=\"115.517241379\"/></g><g data-layer=\"40\"><circle id=\"c4\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"244.482758621\" cy=\"300\" r=\"115.517241379\"/></g><g data-layer=\"46\"><polyline id=\"arc1\" data-role=\"circularArc\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" data-owner-points=\"A B\" data-center-point=\"M1\" data-owner-radius=\"3.0\" data-sweep=\"CW\" data-mark=\"arc\" data-mark-id=\"arc1\" points=\"244.482758621,184.482758621 244.621904197,178.814596241 245.039005712,173.160088962 245.733058332,167.532858985 246.702390022,161.946462802 247.944665579,156.414358528 249.456892252,150.94987349 251.235426953,145.566172108 253.275985037,140.276224192 255.573650622,135.09277369 258.122888429,130.028307987 260.917557121,125.095027826 263.950924096,120.30481791 267.215681708,115.669218274 270.70396487,111.199396485 274.407370002,106.906120733 278.316975277,102.799733897 282.423362112,98.890128623 286.716637864,95.186723491 291.186459653,91.698440329 295.822059289,88.433682717 300.612269205,85.400315741 305.545549367,82.605647049 310.610015069,80.056409243 315.793465572,77.758743658 321.083413487,75.718185574 326.467114869,73.939650872 331.931599908,72.4274242 337.463704181,71.185148643 343.050100365,70.215816952 348.677330341,69.521764333 354.331837621,69.104662818 360,68.965517241 365.668162379,69.104662818 371.322669659,69.521764333 376.949899635,70.215816952 382.536295819,71.185148643 388.068400092,72.4274242 393.532885131,73.939650872 398.916586513,75.718185574 404.206534428,77.758743658 409.389984931,80.056409243 414.454450633,82.605647049 419.387730795,85.400315741 424.177940711,88.433682717 428.813540347,91.698440329 433.283362136,95.186723491 437.576637888,98.890128623 441.683024723,102.799733897 445.592629998,106.906120733 449.29603513,111.199396485 452.784318292,115.669218274 456.049075904,120.30481791 459.082442879,125.095027826 461.877111571,130.028307987 464.426349378,135.09277369 466.724014963,140.276224192 468.764573047,145.566172108 470.543107748,150.94987349 472.055334421,156.414358528 473.297609978,161.946462802 474.266941668,167.532858985 474.960994288,173.160088962 475.378095803,178.814596241 475.517241379,184.482758621\"/></g><g data-layer=\"46\"><polyline id=\"arc2\" data-role=\"circularArc\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" data-owner-points=\"B C\" data-center-point=\"M2\" data-owner-radius=\"3.0\" data-sweep=\"CW\" data-mark=\"arc\" data-mark-id=\"arc2\" points=\"475.517241379,184.482758621 481.185403759,184.621904197 486.839911038,185.039005712 492.467141015,185.733058332 498.053537198,186.702390022 503.585641472,187.944665579 509.05012651,189.456892252 514.433827892,191.235426953 519.723775808,193.275985037 524.90722631,195.573650622 529.971692013,198.122888429 534.904972174,200.917557121 539.69518209,203.950924096 544.330781726,207.215681708 548.800603515,210.70396487 553.093879267,214.407370002 557.200266103,218.316975277 561.109871377,222.423362112 564.813276509,226.716637864 568.301559671,231.186459653 571.566317283,235.822059289 574.599684259,240.612269205 577.394352951,245.545549367 579.943590757,250.610015069 582.241256342,255.793465572 584.281814426,261.083413487 586.060349128,266.467114869 587.5725758,271.931599908 588.814851357,277.463704181 589.784183048,283.050100365 590.478235667,288.677330341 590.895337182,294.331837621 591.034482759,300 590.895337182,305.668162379 590.478235667,311.322669659 589.784183048,316.949899635 588.814851357,322.536295819 587.5725758,328.068400092 586.060349128,333.532885131 584.281814426,338.916586513 582.241256342,344.206534428 579.943590757,349.389984931 577.394352951,354.454450633 574.599684259,359.387730795 571.566317283,364.177940711 568.301559671,368.813540347 564.813276509,373.283362136 561.109871377,377.576637888 557.200266103,381.683024723 553.093879267,385.592629998 548.800603515,389.29603513 544.330781726,392.784318292 539.69518209,396.049075904 534.904972174,399.082442879 529.971692013,401.877111571 524.90722631,404.426349378 519.723775808,406.724014963 514.433827892,408.764573047 509.05012651,410.543107748 503.585641472,412.055334421 498.053537198,413.297609978 492.467141015,414.266941668 486.839911038,414.960994288 481.185403759,415.378095803 475.517241379,415.517241379\"/></g><g data-layer=\"46\"><polyline id=\"arc3\" data-role=\"circularArc\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" data-owner-points=\"C D\" data-center-point=\"M3\" data-owner-radius=\"3.0\" data-sweep=\"CW\" data-mark=\"arc\" data-mark-id=\"arc3\" points=\"475.517241379,415.517241379 475.378095803,421.185403759 474.960994288,426.839911038 474.266941668,432.467141015 473.297609978,438.053537198 472.055334421,443.585641472 470.543107748,449.05012651 468.764573047,454.433827892 466.724014963,459.723775808 464.426349378,464.90722631 461.877111571,469.971692013 459.082442879,474.904972174 456.049075904,479.69518209 452.784318292,484.330781726 449.29603513,488.800603515 445.592629998,493.093879267 441.683024723,497.200266103 437.576637888,501.109871377 433.283362136,504.813276509 428.813540347,508.301559671 424.177940711,511.566317283 419.387730795,514.599684259 414.454450633,517.394352951 409.389984931,519.943590757 404.206534428,522.241256342 398.916586513,524.281814426 393.532885131,526.060349128 388.068400092,527.5725758 382.536295819,528.814851357 376.949899635,529.784183048 371.322669659,530.478235667 365.668162379,530.895337182 360,531.034482759 354.331837621,530.895337182 348.677330341,530.478235667 343.050100365,529.784183048 337.463704181,528.814851357 331.931599908,527.5725758 326.467114869,526.060349128 321.083413487,524.281814426 315.793465572,522.241256342 310.610015069,519.943590757 305.545549367,517.394352951 300.612269205,514.599684259 295.822059289,511.566317283 291.186459653,508.301559671 286.716637864,504.813276509 282.423362112,501.109871377 278.316975277,497.200266103 274.407370002,493.093879267 270.70396487,488.800603515 267.215681708,484.330781726 263.950924096,479.69518209 260.917557121,474.904972174 258.122888429,469.971692013 255.573650622,464.90722631 253.275985037,459.723775808 251.235426953,454.433827892 249.456892252,449.05012651 247.944665579,443.585641472 246.702390022,438.053537198 245.733058332,432.467141015 245.039005712,426.839911038 244.621904197,421.185403759 244.482758621,415.517241379\"/></g><g data-layer=\"46\"><polyline id=\"arc4\" data-role=\"circularArc\" stroke=\"#111\" stroke-width=\"3.2\" fill=\"none\" data-owner-points=\"D A\" data-center-point=\"M4\" data-owner-radius=\"3.0\" data-sweep=\"CCW\" data-mark=\"arc\" data-mark-id=\"arc4\" points=\"244.482758621,415.517241379 250.150921,415.378095803 255.805428279,414.960994288 261.432658256,414.266941668 267.01905444,413.297609978 272.551158713,412.055334421 278.015643752,410.543107748 283.399345133,408.764573047 288.689293049,406.724014963 293.872743551,404.426349378 298.937209254,401.877111571 303.870489415,399.082442879 308.660699332,396.049075904 313.296298967,392.784318292 317.766120757,389.29603513 322.059396508,385.592629998 326.165783344,381.683024723 330.075388619,377.576637888 333.778793751,373.283362136 337.267076912,368.813540347 340.531834525,364.177940711 343.5652015,359.387730795 346.359870192,354.454450633 348.909107999,349.389984931 351.206773583,344.206534428 353.247331668,338.916586513 355.025866369,333.532885131 356.538093041,328.068400092 357.780368598,322.536295819 358.749700289,316.949899635 359.443752909,311.322669659 359.860854424,305.668162379 360,300 359.860854424,294.331837621 359.443752909,288.677330341 358.749700289,283.050100365 357.780368598,277.463704181 356.538093041,271.931599908 355.025866369,266.467114869 353.247331668,261.083413487 351.206773583,255.793465572 348.909107999,250.610015069 346.359870192,245.545549367 343.5652015,240.612269205 340.531834525,235.822059289 337.267076912,231.186459653 333.778793751,226.716637864 330.075388619,222.423362112 326.165783344,218.316975277 322.059396508,214.407370002 317.766120757,210.70396487 313.296298967,207.215681708 308.660699332,203.950924096 303.870489415,200.917557121 298.937209254,198.122888429 293.872743551,195.573650622 288.689293049,193.275985037 283.399345133,191.235426953 278.015643752,189.456892252 272.551158713,187.944665579 267.01905444,186.702390022 261.432658256,185.733058332 255.805428279,185.039005712 250.150921,184.621904197 244.482758621,184.482758621\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"244.482758621\" cy=\"184.482758621\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"475.517241379\" cy=\"184.482758621\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"475.517241379\" cy=\"415.517241379\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"D\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"244.482758621\" cy=\"415.517241379\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"28.5\" data-owner=\"A\" data-fragment-sha=\"sha256:0973674e3e9d58c55bdcc9aaf1dda2f90c9b74e4be40f87c657bafd9a397cce9\" transform=\"translate(211.107758621 152.076758621)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21.375\" height=\"20.406\" viewBox=\"0 0 21.375 20.406\" data-outline-width=\"21.375\" data-outline-height=\"20.406\" id=\"lb-95e4008d7a3dce210b8110c9e5e58f5785427b08fa5ac3a5a07757b7f1f5d144\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 20.406) scale(0.0285)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"28.5\" data-owner=\"B\" data-fragment-sha=\"sha256:d37eaa4d65c8ad62ef3f7faa4fd01a88d8afad1917042185dcff749a25ce12ea\" transform=\"translate(487.517241379 153.017258621)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21.6315\" height=\"19.4655\" viewBox=\"0 0 21.6315 19.4655\" data-outline-width=\"21.6315\" data-outline-height=\"19.4655\" id=\"lb-e5d98e651c0fdb70648de1bfffb1831e3420968b5603e133529944fb1b174b1c\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 19.4655) scale(0.0285)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"28.5\" data-owner=\"C\" data-fragment-sha=\"sha256:32da2be8aba8ec6663ec776146d610ac0aaafd645b8150e4deb8973c0f5f0dd2\" transform=\"translate(487.517241379 427.517241379)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21.66\" height=\"20.7195\" viewBox=\"0 0 21.66 20.7195\" data-outline-width=\"21.66\" data-outline-height=\"20.7195\" id=\"lb-b513e55a129240fbf867271e86de570b2328dd252c397954c51ffb2ac09ab56b\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 20.0925) scale(0.0285)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"D-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"28.5\" data-owner=\"D\" data-fragment-sha=\"sha256:d93c74d82436d72f6f628ef9021e0dd700b6fd6f37742e7162b174a1f323eb14\" transform=\"translate(208.884758621 427.517241379)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"23.598\" height=\"19.4655\" viewBox=\"0 0 23.598 19.4655\" data-outline-width=\"23.598\" data-outline-height=\"19.4655\" id=\"lb-e49b81ec4d27673152dc108a5160b6cfd96351c1610331a2e7176eeed62da54b\" data-owner=\"D\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 19.4655) scale(0.0285)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D437\" d=\"M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:d4294e4e20f0afeaed2c47418a7a4e49ca6dda37a0f1456e51b048f1e6466706",
+   "modelSha256": "sha256:b8090382275e71a60abf75b861adcbbf8b19fbd86e8b61a9c42deb6dfd516655",
+   "typographyPolicySha256": "sha256:fbe516b44c58297e2b228d6494fb2efd8d41432b34e3f8ee2b834927f6cb0dd9",
+   "specSha256": "sha256:7a7937ee9478f6549e290714597b8f1477b8e03b964721a44201386b49c0816f",
+   "fragmentSha256s": {
+    "A-name": "sha256:0973674e3e9d58c55bdcc9aaf1dda2f90c9b74e4be40f87c657bafd9a397cce9",
+    "B-name": "sha256:d37eaa4d65c8ad62ef3f7faa4fd01a88d8afad1917042185dcff749a25ce12ea",
+    "C-name": "sha256:32da2be8aba8ec6663ec776146d610ac0aaafd645b8150e4deb8973c0f5f0dd2",
+    "D-name": "sha256:d93c74d82436d72f6f628ef9021e0dd700b6fd6f37742e7162b174a1f323eb14"
+   },
+   "measurementsSha256": "sha256:3a2babde835350c4f79eb6be41b6c9a0b957ef9958ed36b0e0b4b487a1575a6a",
+   "svgSha256": "sha256:24955b3f5330f8aa9e6b771814baa7fb54631d8dc2e8c3bc547bde275a12da59",
+   "witnessSha256": "sha256:9f6eadf43c9bf4d75b7245f312b30f8751135c7090dc59196b1d3f340d9717e4",
+   "staticAuditSha256": "sha256:465b7416c8c70037704aada99a56770579a566a484c01ba0a1f7910b5aa16701",
+   "renderedLayoutSha256": "sha256:f9fca61638db814359534a602319aaa0f5697509a6adf09945ab5a1fcd2b4c97"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": [],
+   "planeMarks": {
+    "status": "PASS",
+    "errors": [],
+    "observations": [
+     {
+      "id": "arc1",
+      "type": "ARC",
+      "drawnDegrees": 180.00000000030786,
+      "radius": 3
+     },
+     {
+      "id": "arc2",
+      "type": "ARC",
+      "drawnDegrees": 180.0000000003079,
+      "radius": 3
+     },
+     {
+      "id": "arc3",
+      "type": "ARC",
+      "drawnDegrees": 180.00000000030786,
+      "radius": 3
+     },
+     {
+      "id": "arc4",
+      "type": "ARC",
+      "drawnDegrees": 179.99999999969216,
+      "radius": 3
+     }
+    ]
+   }
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 284.53125,
+    "height": 237.109375
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:24955b3f5330f8aa9e6b771814baa7fb54631d8dc2e8c3bc547bde275a12da59",
+   "policySha256": "sha256:fbe516b44c58297e2b228d6494fb2efd8d41432b34e3f8ee2b834927f6cb0dd9",
+   "candidateBankSha256": "sha256:d73a5852a2505147e959b94098d7854c4468e94c36e6992756f27aad9c8d56f7",
+   "assetPath": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/assets/images/25_연향중_2학기_기말_중1_유사/q08-solution.svg",
+   "assetResponseSha256": "sha256:24955b3f5330f8aa9e6b771814baa7fb54631d8dc2e8c3bc547bde275a12da59",
+   "archiveRowSha256": "sha256:25e3d8820b2ab85510e0a161972bbe8b80e7b49f19ee509ad480e6ec760e2e35",
+   "screenshotSha256s": {
+    "image": "sha256:f4d8b1f9b70ea4be7ac5bf8e42de0f3674f5720da478ded9d4535e562c53a1cb",
+    "context": "sha256:f23234b28d90300b5a6a6234869ad03e047b49ba01b998b521e04912fd041dde",
+    "page": "sha256:488570c1dff588ad8cd3ec88397e8e8fe8badf7a3301f6d65482e40a21a635b4"
+   },
+   "matrixSha256": "sha256:189c78b573876313c4dec9c59b2192237d67775bb1701210b5231fd1df22fbc4",
+   "engineSha256": "sha256:38cb137538b2681ac0fff52919a5e20577fd0b04737a2f27a17799354c82ae89"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-2e8f4c19",
+   "asset": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/assets/images/25_연향중_2학기_기말_중1_유사/q08-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/candidates/25_연향중_2학기_기말_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6-sol-desktop-va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6.png",
+    "context": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6-sol-desktop-va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6-context.png",
+    "page": ".tmp/archive/pilot-capture-2e8f4c19/25_연향중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4e8670b28c32b21d2756fad53c2fb6ffc85e0bed4882c2b54f733fcc673e04e6-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2final/25_연향중_2학기_기말_중1_유사.js",
+    "bytes": 68149,
+    "sha256": "sha256:b1892897e26a54b00aae777299ab6d26ba267cfdcc7ffd18575c3387de6977e3"
+   },
+   "originalQuestionSha256": "sha256:25cdc7c0cf77f289cd1f6b3d94bf569441b1e42517f7c243a7fbd8dde488cb85",
+   "questionCount": 23,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt",
+    "solutionImageScale"
+   ],
+   "targetOrdinal": 8
+  },
+  "solutionImageScale": 90,
+  "sizeClass": "full",
+  "observedDisplayScale": 0.3951822916666667,
+  "expectedDisplayScale": 0.3951822916666667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

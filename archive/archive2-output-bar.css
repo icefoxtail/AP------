@@ -57,6 +57,26 @@
 
   .ctrl-right { display: flex; align-items: center; gap: 10px; }
   #qpp-display { color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
+  /* 쪽당 문항 수 선택(engine.html 원본 직접 열기): 2·4는 바로 보이고, 6·8은 작고 옅게 같은 줄 안에 둔다.
+     해설·정답 탭에서는 쪽당 값이 배치에 쓰이지 않으므로 숨긴다. 선택이 보이면 같은 값을 말하는 "쪽당 N문항" 글자는 접는다. */
+  .qpp-switch {
+    box-sizing: border-box; display: inline-flex; align-items: center; gap: 2px; padding: 3px;
+    background: var(--chip); border: 1px solid var(--line); border-radius: var(--radius-pill);
+  }
+  .qpp-switch[hidden] { display: none; }
+  .qpp-switch-label { padding: 0 6px 0 10px; color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
+  .qpp-switch .qpp-opt {
+    box-sizing: border-box; min-width: 36px; min-height: 36px; padding: 0 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink-2);
+    font: 700 14px/1 var(--font-body); cursor: pointer;
+  }
+  .qpp-switch .qpp-opt:hover { background: var(--surface); color: var(--ink); }
+  .qpp-switch .qpp-opt--minor { min-width: 30px; padding: 0 6px; color: var(--muted); font-size: 12px; font-weight: 500; }
+  .qpp-switch .qpp-opt.is-active { background: var(--ink); color: var(--surface); }
+  .qpp-switch.is-busy .qpp-opt { pointer-events: none; opacity: 0.6; }
+  .qpp-switch:not([hidden]) + #qpp-display { display: none; }
+  #mode-ctrl:has(#btn-sol.active, #btn-ans.active) #qpp-switch { display: none; }
   .qpp-selector { display: flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
 
   /* 보조 버튼 = 검정 1.5px 테두리 알약, 주 버튼 = 검정 바탕 알약 */
@@ -135,9 +155,10 @@
   /* ── 미리보기(preview=1): 모드 탭만 남긴다 ── */
   body.preview-mode { padding-top: 52px; }
   body.preview-mode #mode-ctrl { height: 52px; padding: 0 12px; justify-content: center; gap: 8px; }
-  body.preview-mode :is(#ctrl-title, #btn-print, #btn-print-gdi, #qpp-display, .qr-output-wrap, .print-header-editor-wrap) { display: none; }
+  body.preview-mode :is(#ctrl-title, #btn-print, #btn-print-gdi, #qpp-display, #qpp-switch, .qr-output-wrap, .print-header-editor-wrap) { display: none; }
   /* 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
   body.screen-fit-mode .qr-output-wrap { display: none !important; }
+  body.screen-fit-mode #qpp-switch { display: none !important; }
 
   /* 태블릿·작은 PC(1280 이하): 버튼 안쪽 여백을 줄여 제목(시험지 이름)이 더 많이 보이게 한다. 1060 이하에서는 "쪽당 N문항"을 접는다. */
   @media (max-width: 1280px) {
@@ -147,7 +168,7 @@
     .ctrl-right { gap: 8px; }
   }
   @media (max-width: 1060px) {
-    #qpp-display { display: none; }
+    #qpp-display, .qpp-switch-label { display: none; }
   }
 
   /* ── 좁은 화면: 조작줄이 가로로 넘치지 않게 한 줄 안에서 줄이고, 말풍선은 화면 가장자리에 붙인다 ── */
@@ -159,7 +180,7 @@
 
   @media (max-width: 640px) {
     #mode-ctrl { height: 52px; padding: 0 8px; gap: 8px; justify-content: flex-start; }
-    #ctrl-title, #qpp-display { display: none; }
+    #ctrl-title, #qpp-display, #qpp-switch { display: none; }
     .ctrl-btn, .mode-tabs .mode-tab, #qppSelect { min-height: 44px; }
     .mode-tabs .mode-tab { padding: 0 14px; font-size: 14px; }
     .ctrl-btn { padding: 0 14px; }

@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 직선 AB와 CD의 교각과 맞꼭지각",
+  "accessibilityDescription": "점 O에서 교차하는 두 직선 AB, CD와 맞꼭지각을 나타낸 그림이다.",
+  "sourceQuote": "다음 그림에서 두 직선 $AB$와 $CD$가",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "lines",
+      "condition": "AB and CD intersect at O",
+      "mappedTo": "segments AB and CD"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "C",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "AOC",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 70,
+        "label": "3x-20",
+        "arcs": 1
+      },
+      {
+        "id": "BOD",
+        "refs": [
+          "B",
+          "O",
+          "D"
+        ],
+        "value": 70,
+        "label": "x+40",
+        "arcs": 1
+      }
+    ]
+  },
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q02.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q02-result.json",
+    "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q02-state.json",
+    "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q02-solution.svg"
+  }
+}

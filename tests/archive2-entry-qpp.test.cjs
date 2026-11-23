@@ -6,7 +6,8 @@ const { test } = require("node:test");
 const output = require("../archive/archive2-output.js");
 const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
-test("original QPP 8 stays identical from preview URL through assignment snapshot and PDF identity", async () => {
+// 2는 풀이 자리가 넓어 원장님이 쓰는 배치이고 8은 기존 값이다: 둘 다 같은 경로로 끝까지 가야 한다.
+for (const QPP of [2, 8]) test(`original QPP ${QPP} stays identical from preview URL through assignment snapshot and PDF identity`, async () => {
   const entry = fs.readFileSync(path.join(__dirname, "../archive/archive2-entry.js"), "utf8");
   const workspace = readWorkspace();
   const projectionVersion = "archive2-canonical-v1:current-catalog-version";
@@ -29,9 +30,9 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
     addEventListener() {},
   };
   const location = {
-    search: `?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=8`,
+    search: `?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=${QPP}`,
     origin: "https://example.test",
-    href: `https://example.test/archive/index.html?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=8`,
+    href: `https://example.test/archive/index.html?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=${QPP}`,
     pathname: "/archive/index.html",
   };
   const catalog = { exams: [exam], sourceHashes: [[exam.file, "source-qpp8-hash"]] };
@@ -52,16 +53,16 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
 
   vm.runInNewContext(entry, sandbox, { filename: "archive2-entry.js" });
   assert.equal(await window.openArchive2OriginalIssue(), true);
-  assert.equal(assignmentTarget.qpp, 8, "URL QPP 8 must not be reset to four");
-  window.setArchive2OriginalQpp(8);
+  assert.equal(assignmentTarget.qpp, QPP, `URL QPP ${QPP} must not be reset to four`);
+  window.setArchive2OriginalQpp(QPP);
   const assignmentBody = await window.prepareArchive2OriginalAssignment(
     { id: "class-qpp8" },
     exam,
     { studentIds: ["student-qpp8"] },
   );
 
-  assert.equal(assignmentBody.pdf_qpp, 8);
-  assert.equal(assignmentBody.original_payload_json.meta.qpp, 8);
+  assert.equal(assignmentBody.pdf_qpp, QPP);
+  assert.equal(assignmentBody.original_payload_json.meta.qpp, QPP);
   assert.equal(assignmentBody.index_version, projectionVersion);
   assert.equal(Object.hasOwn(assignmentBody, "session_token"), false);
   assert.equal(Object.hasOwn(assignmentBody, "teacher_id"), false);
@@ -76,8 +77,8 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
     question_count: assignmentBody.original_payload_json.questions.length,
     mixed_payload_json: JSON.stringify(assignmentBody.original_payload_json),
   });
-  assert.equal(pdfIdentity.qpp, 8);
-  assert.equal(pdfIdentity.outputEnvelope.meta.qpp, 8);
+  assert.equal(pdfIdentity.qpp, QPP);
+  assert.equal(pdfIdentity.outputEnvelope.meta.qpp, QPP);
 });
 
 test("original assignment iframe carries the loaded catalog projection version", () => {
@@ -112,4 +113,19 @@ test("original assignment iframe carries the loaded catalog projection version",
   assert.equal(url.searchParams.get("index_version"), projectionVersion);
   assert.equal(url.searchParams.has("session_token"), false);
   assert.equal(url.searchParams.has("teacher_id"), false);
+});
+
+test("원본 기출의 쪽당 문항 선택지는 한 집합이다: 출제 패널·열기 진입·기억값이 모두 2·4·6·8이고 서버가 받는 집합 안에 있다", () => {
+  const read = (...parts) => fs.readFileSync(path.join(__dirname, "..", ...parts), "utf8");
+  const list = (source, re) => JSON.parse(source.match(re)[1]);
+  const fromAssign = list(read("archive", "archive2-assign.js"), /const QPP_VALUES = (\[[\d, ]+\]);/);
+  const fromEntry = list(read("archive", "archive2-entry.js"), /const ORIGINAL_QPP_VALUES = (\[[\d, ]+\]);/);
+  const fromCore = list(read("archive", "archive2-workspace-core.js"), /const qpp = (\[[\d, ]+\])\.includes\(storedQpp\)/);
+  assert.deepEqual(fromAssign, [2, 4, 6, 8]);
+  assert.deepEqual(fromEntry, fromAssign);
+  assert.deepEqual(fromCore, fromAssign);
+  for (const n of fromAssign) assert.equal(output.settings({ qpp: n }).qpp, n, `Archive2Output이 ${n}를 그대로 받는다`);
+  for (const file of ["exams.js", "archive2.js", "exam-pdf.js"]) {
+    assert.match(read("apmath", "worker-backup", "worker", "routes", file), /\[1, 2, 4, 6, 8\]\.includes/, `${file}가 2를 받는다`);
+  }
 });

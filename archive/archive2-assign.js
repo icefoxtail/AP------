@@ -42,7 +42,7 @@
   const HISTORY_DAYS = 90;
   const HISTORY_LIMIT = 1000;
   const HISTORY_TTL_MS = 60000;
-  const QPP_VALUES = [4, 6, 8];
+  const QPP_VALUES = [2, 4, 6, 8];
   const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3"];
   const GRADE_CLASS = { 중1: "grade-m1", 중2: "grade-m2", 중3: "grade-m3", 고1: "grade-h1", 고2: "grade-h2", 고3: "grade-h3" };
   const HANGUL = /[가-힣]/;
@@ -476,7 +476,7 @@
       // 원본 출제 전용: 최근 출제 목록(같은 파일·반·날 확인)과 쪽당 문항 수.
       historyState: usesRecent ? "loading" : "idle", // idle | loading | ready | error
       historyTruncated: false,
-      qpp: 4, // 원본 패널은 항상 4문항으로 시작한다(`바꾸기`로만 6·8)
+      qpp: 4, // 원본 패널은 항상 4문항으로 시작한다(`바꾸기`로만 2·6·8)
       qppOpen: false,
       excluded: new Set(),
       jobs: [],
