@@ -5,6 +5,8 @@ name: Archive2 save round trip
 # Miniflare with a local D1). Then it reads the paper back, saves it again, opens it as a revision, and assigns it to a class.
 # A separate job on purpose: when this goes red it means "a teacher cannot save a paper", and it must not be lost among the
 # other red checks of the full `test` job. It is NOT listed in tools/run-tests.js (no double run): this file is its one place.
+# The second step (tests/archive-saved-papers-many-images.test.mjs, about 20 s) saves image-heavy 20- and 50-question papers and a paper with
+# one unreadable picture against the same Worker code: "a paper with many pictures cannot be saved" and "one picture blocks the whole save" land here.
 #
 # Runs when the screen code, the data it reads, the Worker, or this check itself changes. Exam registration PRs that only add
 # archive/exams files do not start it. No production request is made: the Pages copy, the R2 image host and the API are
@@ -24,6 +26,7 @@ on:
       - 'archive/unit-past-exams-core.js'
       - 'apmath/worker-backup/**'
       - 'tests/archive2-save-roundtrip.e2e.mjs'
+      - 'tests/archive-saved-papers-many-images.test.mjs'
       - 'tests/helpers/archive2-save-roundtrip-harness.mjs'
       - 'tests/helpers/archive2-scope-harness.cjs'
       - '.github/workflows/archive2-save-roundtrip.yml'
@@ -40,6 +43,7 @@ on:
       - 'archive/unit-past-exams-core.js'
       - 'apmath/worker-backup/**'
       - 'tests/archive2-save-roundtrip.e2e.mjs'
+      - 'tests/archive-saved-papers-many-images.test.mjs'
       - 'tests/helpers/archive2-save-roundtrip-harness.mjs'
       - 'tests/helpers/archive2-scope-harness.cjs'
       - '.github/workflows/archive2-save-roundtrip.yml'
@@ -87,3 +91,5 @@ jobs:
         run: node archive/tools/build-archive2-catalog.mjs --package-only
       - name: Save a paper, read it back, save again, open as revision, assign
         run: node --test tests/archive2-save-roundtrip.e2e.mjs
+      - name: Save image-heavy papers (20 and 50 questions) and a paper with one unreadable picture
+        run: node --test tests/archive-saved-papers-many-images.test.mjs
