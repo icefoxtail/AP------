@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0.0",
+  "examUid": "25_팔마중_2학기_기말_중1_유사",
+  "candidateJsPath": "archive/exams/similar/middle/m1/2final/25_팔마중_2학기_기말_중1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/middle/m1/2final/25_팔마중_2학기_기말_중1_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "d97f8b7faf94733ad422d9f1f9a5d8d42d50a135",
+  "reviewTimestamp": "2026-11-24T08:15:00.000Z",
+  "reviewerRole": "MIDDLE_SIMILAR_REVIEWER_MERGER",
+  "reviewRound": "R2_FINAL_SIGN_OFF",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_REPAIRS",
+  "blindFirstPass": {
+    "totalSolved": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "method": "생성자 정답 및 해설을 일절 보지 않고 지문과 SVG 그림만을 토대로 독립적 수학/기하 블라인드 풀이를 완결한 뒤 정답 대조 및 결함 수리를 완결함."
+  },
+  "defects": [
+    {
+      "qid": 14,
+      "kind": "CHOICE_SOLUTION_MISMATCH",
+      "description": "선지 3번 문항의 30회 이상 인원 수가 그림(9명)과 달리 6명으로 잘못 표기되어 복수 오답 선지가 형성될 수 있던 결함을 9명으로 수정하고 해설을 보강함.",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 17,
+      "kind": "AMBIGUOUS_CHOICE",
+      "description": "선지 5번의 표현이 이중 참으로 해석될 여지가 있어 '남학생과 여학생의 도수가 같은 계급이 있다'로 수정하여 명확한 단일 정답 구조로 수리함.",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 0,
+      "kind": "PLAN_TAXONOMY_ALIGNMENT",
+      "description": "24문항 전수의 미등록 PT/TPL 키를 2015 정본 분류 체계로 전면 매핑하고 15개 활성 문제 플랜에 sourceQuote, assetPath, engineEvidence를 결속함.",
+      "status": "VERIFIED_REPAIRED"
+    }
+  ],
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "육각기둥의 밑면은 육각형이므로 n = 6이다. 모서리의 개수는 3n = 18개이므로 a = 18이고, 꼭짓점의 개수는 2n = 12개이므로 b = 12이다. 따라서 a + b = 18 + 12 = 30이므로 정답은 ③이다."
+    },
+    {
+      "qid": 2,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "원 O에서 부채꼴의 호의 길이는 중심각의 크기에 정비례한다. 중심각 30도일 때 호의 길이가 2이므로 비례상수는 30/2 = 15도/cm이다. 중심각 120도에 대응하는 호의 길이는 x = 120/15 = 8이고, 호의 길이 6에 대응하는 중심각은 y = 6 * 15 = 90도이다. 따라서 x + y = 8 + 90 = 98이므로 정답은 ③이다."
+    },
+    {
+      "qid": 3,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "원 O의 중심 O와 원 O'의 중심 O' 및 두 원의 교점 P를 잇는 삼각형 OOP는 모든 변의 길이가 반지름 9cm로 같으므로 정삼각형이다. 따라서 중심각 BOP는 60도이다. 색칠한 부채꼴 BOP의 둘레는 반지름 OB(9cm), OP(9cm)와 호 BP의 합이다. 호 BP의 길이는 2 * pi * 9 * (60/360) = 3pi cm이다. 따라서 둘레는 3pi + 9 + 9 = (3pi + 18) cm이므로 정답은 ②이다."
+    },
+    {
+      "qid": 4,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "모든 면이 합동인 정삼각형인 정다면체는 정사면체, 정팔면체, 정이십면체이다. 이 중 한 꼭짓점에 모인 면의 개수가 4개인 정다면체는 정팔면체이므로 정답은 ①이다."
+    },
+    {
+      "qid": 5,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "구를 회전축을 포함하는 평면으로 자른 단면은 항상 원이다. 구의 어떤 단면도 직사각형이 될 수 없으므로 옳지 않은 설명은 ②이다."
+    },
+    {
+      "qid": 6,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "반원기둥의 밑면은 반지름 4cm인 반원 2개이므로 밑넓이의 합은 pi * 4^2 = 16pi cm^2이다. 옆면은 호에 대응하는 곡면(호의 길이 4pi * 높이 10 = 40pi cm^2)과 직사각형 단면(지름 8 * 높이 10 = 80 cm^2)으로 이루어진다. 따라서 겉넓이는 16pi + 40pi + 80 = (56pi + 80) cm^2이므로 정답은 ⑤이다."
+    },
+    {
+      "qid": 7,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "밑면 사각형 ABCD는 대각선 BD(6cm)에 의해 두 삼각형으로 분할되며, 각 꼭짓점에서의 높이가 4cm, 5cm이므로 밑넓이는 1/2 * 6 * (4 + 5) = 27 cm^2이다. 사각기둥의 높이가 8cm이므로 부피는 27 * 8 = 216 cm^3이다. 정답은 ⑤이다."
+    },
+    {
+      "qid": 8,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "정육면체의 한 꼭짓점을 포함하며 세 모서리의 길이가 모두 x cm인 삼각뿔의 부피는 1/3 * (1/2 * x^2) * x = 1/6 * x^3이다. 이 부피가 36 cm^3이므로 x^3 = 216에서 x = 6 cm이다. 정답은 ①이다."
+    },
+    {
+      "qid": 9,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "양 끝의 두 반구를 합치면 반지름 3cm인 완전한 구 1개가 되므로 부피는 4/3 * pi * 3^3 = 36pi cm^3이다. 원기둥 부분은 밑면 반지름 3cm, 높이 7cm이므로 부피는 pi * 3^2 * 7 = 63pi cm^3이다. 전체 부피는 36pi + 63pi = 99pi cm^3이므로 정답은 ④이다."
+    },
+    {
+      "qid": 10,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "반원의 지름 AB = 24cm에서 반지름은 12cm이다. 이등변삼각형 ABC에서 꼭지각 C = 40도이므로 밑각 A = B = 70도이다. 삼각형 OAD와 OBE는 각각 OA=OD, OB=OE인 이등변삼각형이므로 각 AOD = 180 - 140 = 40도, 각 BOE = 40도이다. 따라서 부채꼴 DOE의 중심각은 180 - (40 + 40) = 100도이다. 부채꼴의 넓이는 pi * 12^2 * (100/360) = 40pi cm^2이므로 정답은 ①이다."
+    },
+    {
+      "qid": 11,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "변 CD를 회전축으로 1회전 시킬 때, 선분 AD는 반지름 4cm의 원판(밑면 넓이 16pi)을 형성하고, 선분 AB는 반지름 4cm, 높이 4cm의 원기둥 옆면(넓이 2*pi*4*4 = 32pi)을 형성하며, 사분원 호 BD는 반지름 4cm의 오목한 반구면(넓이 2*pi*4^2 = 32pi)을 형성한다. 전체 겉넓이는 16pi + 32pi + 32pi = 80pi cm^2이므로 정답은 ⑤이다."
+    },
+    {
+      "qid": 12,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "주어진 5개의 변량 4, 7, 12, 15, 9를 작은 값부터 크기순으로 나열하면 4, 7, 9, 12, 15이다. 변량의 개수가 5개이므로 중앙값은 3번째 값인 9이다. 정답은 ③이다."
+    },
+    {
+      "qid": 13,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ. 짝수 개의 변량에서 중앙값은 가운데 두 값의 평균이다(참). ㄴ. 가장 빈도가 높은 값이 여럿이면 최빈값은 둘 이상일 수 있다(참). ㄷ. 평균은 극단적인 값의 영향을 가장 크게 받는다(거짓). ㄹ. 최빈값은 선호도나 혈액형 등 질적 자료의 대푯값으로 쓰일 수 있다(참). 따라서 옳은 것은 ㄱ, ㄴ, ㄹ이므로 정답은 ④이다."
+    },
+    {
+      "qid": 14,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "줄기와 잎 그림에서 잎의 총 개수는 2 + 5 + 6 + 6 + 3 = 22개이므로 전체 학생 수는 22명이다. 줄기가 2인 잎은 1, 3, 5, 6, 7, 8로 6개이다(②는 5개라 하였으므로 옳지 않음). 기록이 30회 이상인 학생은 30대 6명과 40대 3명으로 총 9명이다. 따라서 옳지 않은 설명은 ②이다."
+    },
+    {
+      "qid": 15,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "전체 40명 중 165cm 이상인 학생이 25%이므로 165cm 이상인 학생 수는 40 * 0.25 = 10명이다. 175cm 이상 185cm 미만이 2명이므로 165cm 이상 175cm 미만인 학생 수 A = 10 - 2 = 8명이다. 정답은 ④이다."
+    },
+    {
+      "qid": 16,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "찢어진 40m 이상 45m 미만 계급의 도수는 전체 30명에서 나머지 계급의 합(4 + 7 + 6 + 3 = 20)을 뺀 10명이다. 선지 ④는 8명이라 하였으므로 옳지 않다. 정답은 ④이다."
+    },
+    {
+      "qid": 17,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "남학생의 전체 학생 수는 1+4+8+5+2 = 20명이고 여학생의 전체 학생 수는 2+6+7+3+0 = 18명이므로 남학생의 총인원이 여학생보다 많다(① 참). 각 계급별 남녀 도수를 비교하면 같은 계급은 존재하지 않는다. 따라서 옳은 설명은 ①이다."
+    },
+    {
+      "qid": 18,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "상대도수의 총합은 1.00이므로 A = 1.00 - (0.10 + 0.24 + 0.30 + 0.16) = 0.20이다. 전체 학생 수 50명이므로 40분 이상 60분 미만인 학생 수는 50 * 0.20 = 10명이다. 정답은 ②이다."
+    },
+    {
+      "qid": 19,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "10시간 미만인 계급의 학생 수는 2 + 4 + 6 = 12명이고 이 학생이 전체의 30%이므로 전체 학생 수는 12 / 0.3 = 40명이다. 10시간 이상 12시간 미만의 학생 수는 전체 40명에서 나머지 학생(12 + 7 + 5 = 24명)을 뺀 40 - 24 = 16명이다. 정답은 ③이다."
+    },
+    {
+      "qid": 20,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "두 집단 A, B의 총도수를 각각 4a, 3a라 하고, 특정 계급의 도수를 각각 5b, 6b라 하면 상대도수는 A가 5b/(4a), B가 6b/(3a) = 2b/a이다. 상대도수의 비는 (5/4) : 2 = 5 : 8이다. 정답은 ⑤이다."
+    },
+    {
+      "qid": 21,
+      "blindFrozenAnswer": "① 원뿔대의 전개도, ② $45\\rm\\,cm^2$",
+      "candidateAnswer": "① 원뿔대의 전개도, ② $45\\rm\\,cm^2$",
+      "blindMatch": true,
+      "blindDerivation": "사다리꼴을 직선 l을 축으로 1회전 시키면 원뿔대가 형성된다. (1) 전개도는 크기가 다른 두 원과 사분원환(원환의 일부 부채꼴)으로 된 옆면으로 구성된다. (2) 회전축을 포함하는 평면으로 자른 단면은 윗변 6cm, 아랫변 12cm, 높이 5cm인 등변사다리꼴이므로 단면의 넓이는 1/2 * (6 + 12) * 5 = 45 cm^2이다."
+    },
+    {
+      "qid": 22,
+      "blindFrozenAnswer": "$160\\pi\\rm\\,cm^2$",
+      "candidateAnswer": "$160\\pi\\rm\\,cm^2$",
+      "blindMatch": true,
+      "blindDerivation": "반지름 4cm인 구의 중심을 지나도록 서로 수직으로 3번 자르면 합동인 8개의 조각(1/8 구)으로 분할된다. 원래 구의 겉넓이는 4 * pi * 4^2 = 64pi cm^2이고, 3번의 절단에 의해 중심을 지나는 원단면이 각각 2개씩 총 6개의 원단면(넓이 6 * pi * 4^2 = 96pi cm^2)이 새로 노출된다. 따라서 분할된 조각들의 겉넓이의 총합은 64pi + 96pi = 160pi cm^2이다."
+    },
+    {
+      "qid": 23,
+      "blindFrozenAnswer": "$15.5$",
+      "candidateAnswer": "$15.5$",
+      "blindMatch": true,
+      "blindDerivation": "8개 자료의 평균이 10이므로 총합은 8 * 10 = 80이다. 주어진 7개 수의 합은 4+7+12+7+15+7+18 = 70이므로 x = 80 - 70 = 10이다. 8개의 자료를 정렬하면 4, 7, 7, 7, 10, 12, 15, 18이다. 중앙값은 4번째와 5번째 자료의 평균인 (7 + 10)/2 = 8.5이고, 최빈값은 3회 나타난 7이다. 따라서 중앙값과 최빈값의 합은 8.5 + 7 = 15.5이다."
+    },
+    {
+      "qid": 24,
+      "blindFrozenAnswer": "$40\\%$",
+      "candidateAnswer": "$40\\%$",
+      "blindMatch": true,
+      "blindDerivation": "A반 전체 학생 수는 3+7+10+4+1 = 25명이고 상위 20%는 25 * 0.2 = 5명이다. 최고점 계급부터 누적하면 90~100점 1명, 80~90점 4명으로 정확히 5명이므로 커트라인 성적은 80점 이상이다. B반 전체 학생 수는 2+5+8+7+3 = 25명이며, B반에서 80점 이상인 학생 수는 90~100점 3명, 80~90점 7명으로 총 10명이다. 따라서 10/25 * 100% = 40%이므로 B반에서 최소 상위 40% 이내에 든다."
+    }
+  ]
+}

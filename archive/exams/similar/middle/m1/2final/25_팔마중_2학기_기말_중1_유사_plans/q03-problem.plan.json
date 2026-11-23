@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "서로의 중심을 지나는 두 원 O, O'과 지름 AB",
+  "accessibilityDescription": "반지름 9cm인 두 원 O, O'이 서로의 중심을 지나고 지름 AB와 색칠된 영역을 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "two circles O and O' pass through each other's centers with diameter AB"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 교점과 지름 AB"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "P"
+  ],
+  "pointNames": {
+    "B": "O'"
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "displayCircles": [
+    "circ1",
+    "circ2"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angPOB",
+        "refs": [
+          "P",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1
+      }
+    ],
+    "regions": [
+      {
+        "id": "shaded",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "B",
+              "to": "P",
+              "side": "CCW"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가",
+  "assetPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-result.json",
+    "statePath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-state.json",
+    "svgPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q03-problem.svg"
+  }
+}

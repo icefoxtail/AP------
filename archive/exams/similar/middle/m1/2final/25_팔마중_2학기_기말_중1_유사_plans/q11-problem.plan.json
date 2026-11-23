@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정사각형에서 사분원을 잘라낸 평면도형과 회전축 CD",
+  "accessibilityDescription": "한 변이 4cm인 정사각형에서 부채꼴을 잘라내고 남은 도형과 회전축 CD를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "square ABCD of side 4 with quarter circle cut out rotated about CD"
+    }
+  ],
+  "newVisualInformation": [
+    "회전축 CD와 잘라낸 사분원"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 500
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcBD",
+        "circle": "circ",
+        "center": "C",
+        "from": "B",
+        "to": "D",
+        "side": "CW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "remaining",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                {
+                  "to": "A"
+                },
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "C",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimDA",
+        "from": "D",
+        "to": "A",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "dimAB",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림은 한 변의 길이가",
+  "assetPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-result.json",
+    "statePath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-state.json",
+    "svgPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q11-problem.svg"
+  }
+}

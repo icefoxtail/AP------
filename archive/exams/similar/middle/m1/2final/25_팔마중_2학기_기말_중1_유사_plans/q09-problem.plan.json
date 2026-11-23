@@ -1,0 +1,53 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "lower",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "orientation": "APEX_DOWN"
+    },
+    {
+      "id": "tube",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 7,
+      "on": "lower"
+    },
+    {
+      "id": "upper",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "on": "tube"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "tube",
+      "height": true
+    },
+    {
+      "solid": "tube",
+      "radius": "bottom"
+    }
+  ],
+  "caption": "반지름 3cm인 두 반구와 높이 7cm인 원기둥을 붙인 입체도형",
+  "accessibilityDescription": "위아래에 반지름 3cm인 반구와 가운데 높이 7cm인 원기둥을 결합한 입체도형을 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "two hemispheres of radius 3cm and cylinder of height 7cm"
+    }
+  ],
+  "newVisualInformation": [
+    "결합된 입체도형"
+  ],
+  "sourceQuote": "다음 그림과 같이 원기둥의 양 끝에 반지름의 길이가 같",
+  "assetPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-result.json",
+    "statePath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-state.json",
+    "svgPath": "archive/assets/images/25_팔마중_2학기_기말_중1_유사/q09-problem.svg"
+  }
+}

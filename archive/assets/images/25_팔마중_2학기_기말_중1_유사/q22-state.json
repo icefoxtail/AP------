@@ -1,0 +1,449 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2final/25_팔마중_2학기_기말_중1_유사.js",
+  "ordinal": 22,
+  "dir": "q22"
+ },
+ "identity": {
+  "questionUid": "25_팔마중_2학기_기말_중1_유사|22",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:311795cc824fa05509d0f4fee90b880f7d68587ee33edc5d4fa5a95c841929d3",
+  "assetId": "va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd"
+ },
+ "plan": {
+  "capability": "composite-panels-v1",
+  "chain": "solid-figure-v1",
+  "panels": [
+   {
+    "caption": {
+     "text": "입체도형"
+    },
+    "plan": {
+     "capability": "solid-figure-v1",
+     "unit": "cm",
+     "solids": [
+      {
+       "id": "s1",
+       "kind": "SPHERE",
+       "radius": 4,
+       "cut": {
+        "kind": "SEVEN_EIGHTHS",
+        "facing": "CUT"
+       }
+      }
+     ],
+     "dims": [
+      {
+       "solid": "s1",
+       "radius": "center"
+      }
+     ]
+    }
+   }
+  ],
+  "caption": "반지름 4cm인 구를 수직으로 잘라낸 입체도형",
+  "accessibilityDescription": "반지름 4cm인 구를 중심을 지나도록 수직으로 잘라 단면들이 드러난 입체도형을 나타낸 그림이다.",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "sphere with radius 4cm cut by perpendicular planes"
+   }
+  ],
+  "newVisualInformation": [
+   "절단된 구의 단면"
+  ]
+ },
+ "model": {
+  "panels": [
+   {
+    "schemaVersion": "SOLID_FIGURE_MODEL_v2",
+    "mode": "SOLIDS",
+    "unit": "cm",
+    "yawDeg": 28,
+    "pitchDeg": 20,
+    "solids": [
+     {
+      "id": "s1",
+      "kind": "SPHERE",
+      "category": "SPHERE",
+      "radius": 4,
+      "topRadius": 4,
+      "r0": 4,
+      "r1": 4,
+      "orientation": "APEX_UP",
+      "height": 8,
+      "points": [
+       {
+        "name": null,
+        "id": "center",
+        "p": [
+         3.53179,
+         1.877886,
+         4
+        ]
+       }
+      ],
+      "inside": null,
+      "cut": {
+       "kind": "SEVEN_EIGHTHS",
+       "facing": "CUT",
+       "axis": "Z",
+       "mask": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "faces": [
+        {
+         "id": "X-+",
+         "plane": "X",
+         "quad": "-+",
+         "outward": [
+          1,
+          0,
+          0
+         ],
+         "visible": true
+        },
+        {
+         "id": "Y++",
+         "plane": "Y",
+         "quad": "++",
+         "outward": [
+          0,
+          -1,
+          0
+         ],
+         "visible": true
+        },
+        {
+         "id": "Z+-",
+         "plane": "Z",
+         "quad": "+-",
+         "outward": [
+          0,
+          0,
+          1
+         ],
+         "visible": true
+        }
+       ],
+       "arcs": [
+        {
+         "id": "X-+",
+         "plane": "X",
+         "quad": "-+",
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        },
+        {
+         "id": "Y++",
+         "plane": "Y",
+         "quad": "++",
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        },
+        {
+         "id": "Z+-",
+         "plane": "Z",
+         "quad": "+-",
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        }
+       ],
+       "creases": [
+        {
+         "id": "+X",
+         "axis": 0,
+         "sign": 1,
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        },
+        {
+         "id": "-Y",
+         "axis": 1,
+         "sign": -1,
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        },
+        {
+         "id": "+Z",
+         "axis": 2,
+         "sign": 1,
+         "runs": [
+          {
+           "t0": 0,
+           "t1": 1,
+           "hidden": false
+          }
+         ]
+        }
+       ],
+       "limb": [
+        {
+         "phi0": 0,
+         "phi1": 1.390907,
+         "octant": "+++"
+        },
+        {
+         "phi0": 1.390907,
+         "phi1": 2.142409,
+         "octant": "-++"
+        },
+        {
+         "phi0": 2.142409,
+         "phi1": 3.141593,
+         "octant": "--+"
+        },
+        {
+         "phi0": 3.141593,
+         "phi1": 4.5325,
+         "octant": "---"
+        },
+        {
+         "phi0": 4.5325,
+         "phi1": 5.284002,
+         "octant": "+--"
+        },
+        {
+         "phi0": 5.284002,
+         "phi1": 6.283185,
+         "octant": "++-"
+        }
+       ],
+       "radiusAxis": {
+        "axis": 0,
+        "sign": 1
+       },
+       "seenAxes": [
+        {
+         "axis": 0,
+         "sign": 1
+        },
+        {
+         "axis": 1,
+         "sign": -1
+        },
+        {
+         "axis": 2,
+         "sign": 1
+        }
+       ]
+      },
+      "offset": 4
+     }
+    ],
+    "segments": [],
+    "highlights": [],
+    "section": null,
+    "marks": {
+     "rightAngles": [],
+     "equalLengths": [],
+     "angles": []
+    },
+    "dims": [
+     {
+      "id": "dim-1",
+      "type": "RADIUS",
+      "solid": "s1",
+      "which": "center",
+      "z": 4,
+      "r": 4,
+      "axis": {
+       "axis": 0,
+       "sign": 1
+      },
+      "tex": "4\\,\\mathrm{cm}",
+      "text": "4",
+      "numeric": true,
+      "value": 4
+     }
+    ]
+   }
+  ]
+ },
+ "composed": {
+  "schemaVersion": "composite-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"476\" viewBox=\"0 0 480 476\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-composite=\"composite-panels-v1\"><title id=\"visual-title\">반지름 4cm인 구를 수직으로 잘라낸 입체도형</title><desc id=\"visual-desc\">반지름 4cm인 구를 중심을 지나도록 수직으로 잘라 단면들이 드러난 입체도형을 나타낸 그림이다.</desc><g id=\"p1-caption\" data-role=\"caption\" data-panel=\"1\" data-font-px=\"21.4\"><g id=\"p1-p1-caption-text\" transform=\"translate(200.624 38.5064)\" data-label-kind=\"CAPTION\" data-owner=\"panel-1\" data-fragment-sha=\"sha256:e8d9839f9fa745d65f2511d8bc1ce8003c67a1be6921f8ecd3f658c4c4f63927\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78.752\" height=\"30.9872\" viewBox=\"0 0 78.752 30.9872\" data-outline-width=\"78.752\" data-outline-height=\"30.9872\" id=\"lb-0edd603ddd954133a6f9d0057aa36e1669ff20a9a2507acee11540ef836d1908\" data-owner=\"panel-1\" data-fact-role=\"GIVEN\"><path d=\"M15.81460 17.48380L15.81460 7.36160L16.52080 7.36160L16.52080 17.48380L15.81460 17.48380ZM4.77220 25.95820L4.77220 18.55380L5.45700 18.55380L5.45700 21.40000L15.83600 21.40000L15.83600 18.55380L16.52080 18.55380L16.52080 25.95820L4.77220 25.95820ZM15.83600 22.04200L5.45700 22.04200L5.45700 25.33760L15.83600 25.33760L15.83600 22.04200ZM6.54840 8.38880L6.54840 8.38880Q7.93940 8.38880 8.99870 8.91310Q10.05800 9.43740 10.65720 10.38970Q11.25640 11.34200 11.25640 12.62600L11.25640 12.62600Q11.25640 13.88860 10.65720 14.85160Q10.05800 15.81460 8.99870 16.33890Q7.93940 16.86320 6.54840 16.86320L6.54840 16.86320Q5.17880 16.86320 4.10880 16.33890Q3.03880 15.81460 2.43960 14.85160Q1.84040 13.88860 1.84040 12.62600L1.84040 12.62600Q1.84040 11.34200 2.43960 10.38970Q3.03880 9.43740 4.10880 8.91310Q5.17880 8.38880 6.54840 8.38880ZM6.54840 9.00940L6.54840 9.00940Q5.39280 9.00940 4.48330 9.48020Q3.57380 9.95100 3.04950 10.77490Q2.52520 11.59880 2.52520 12.62600L2.52520 12.62600Q2.52520 13.63180 3.04950 14.45570Q3.57380 15.27960 4.48330 15.76110Q5.39280 16.24260 6.54840 16.24260L6.54840 16.24260Q7.72540 16.24260 8.63490 15.76110Q9.54440 15.27960 10.06870 14.45570Q10.59300 13.63180 10.59300 12.62600L10.59300 12.62600Q10.59300 11.59880 10.06870 10.77490Q9.54440 9.95100 8.63490 9.48020Q7.72540 9.00940 6.54840 9.00940ZM28.67600 15.77180L28.67600 15.12980L32.82760 15.12980L32.82760 15.77180L28.67600 15.77180ZM25.40180 13.26800L25.40180 11.77000L26.00100 11.77000L26.00100 13.26800Q26.00100 14.61620 25.64790 15.92160Q25.29480 17.22700 24.67420 18.40400Q24.05360 19.58100 23.24040 20.52260Q22.42720 21.46420 21.48560 22.06340L21.48560 22.06340L20.99340 21.50700Q21.89220 20.97200 22.69470 20.09460Q23.49720 19.21720 24.10710 18.09370Q24.71700 16.97020 25.05940 15.73970Q25.40180 14.50920 25.40180 13.26800L25.40180 13.26800ZM25.48740 13.26800L25.48740 11.77000L26.08660 11.77000L26.08660 13.26800Q26.08660 14.44500 26.43970 15.63270Q26.79280 16.82040 27.41340 17.87970Q28.03400 18.93900 28.83650 19.77360Q29.63900 20.60820 30.53780 21.12180L30.53780 21.12180L30.06700 21.67820Q28.82580 20.92920 27.78790 19.60240Q26.75000 18.27560 26.11870 16.62780Q25.48740 14.98000 25.48740 13.26800L25.48740 13.26800ZM21.31440 11.81280L21.31440 11.17080L30.15260 11.17080L30.15260 11.81280L21.31440 11.81280ZM25.40180 11.55600L25.40180 8.08920L26.10800 8.08920L26.10800 11.55600L25.40180 11.55600ZM36.08040 26.25780L36.08040 7.36160L36.78660 7.36160L36.78660 26.25780L36.08040 26.25780ZM32.33540 25.16640L32.33540 7.93940L33.02020 7.93940L33.02020 25.16640L32.33540 25.16640ZM42.99260 17.22700L42.99260 16.60640L55.64000 16.60640L55.64000 17.22700L42.99260 17.22700ZM40.63860 23.62560L40.63860 22.98360L57.78000 22.98360L57.78000 23.62560L40.63860 23.62560ZM48.81340 23.41160L48.81340 16.82040L49.49820 16.82040L49.49820 23.41160L48.81340 23.41160ZM42.99260 16.90600L42.99260 9.09500L55.40460 9.09500L55.40460 9.73700L43.69880 9.73700L43.69880 16.90600L42.99260 16.90600ZM70.89820 12.94700L70.89820 12.30500L75.15680 12.30500L75.15680 12.94700L70.89820 12.94700ZM70.89820 16.52080L70.89820 15.87880L75.15680 15.87880L75.15680 16.52080L70.89820 16.52080ZM60.32660 10.46460L60.32660 9.84400L71.13360 9.84400L71.13360 10.46460L60.32660 10.46460ZM65.71940 11.77000L65.71940 11.77000Q66.96060 11.77000 67.88080 12.19800Q68.80100 12.62600 69.31460 13.39640Q69.82820 14.16680 69.82820 15.23680L69.82820 15.23680Q69.82820 16.28540 69.31460 17.06650Q68.80100 17.84760 67.88080 18.27560Q66.96060 18.70360 65.71940 18.70360L65.71940 18.70360Q64.49960 18.70360 63.56870 18.27560Q62.63780 17.84760 62.12420 17.06650Q61.61060 16.28540 61.61060 15.23680L61.61060 15.23680Q61.61060 14.16680 62.12420 13.39640Q62.63780 12.62600 63.56870 12.19800Q64.49960 11.77000 65.71940 11.77000ZM65.71940 12.39060L65.71940 12.39060Q64.17860 12.39060 63.23700 13.19310Q62.29540 13.99560 62.29540 15.23680L62.29540 15.23680Q62.29540 16.47800 63.23700 17.29120Q64.17860 18.10440 65.71940 18.10440L65.71940 18.10440Q67.26020 18.10440 68.21250 17.29120Q69.16480 16.47800 69.16480 15.23680L69.16480 15.23680Q69.16480 13.99560 68.21250 13.19310Q67.26020 12.39060 65.71940 12.39060ZM65.39840 10.27200L65.39840 7.19040L66.08320 7.19040L66.08320 10.27200L65.39840 10.27200ZM74.87860 19.73080L74.87860 7.36160L75.58480 7.36160L75.58480 19.73080L74.87860 19.73080ZM69.61420 19.90200L69.61420 19.90200Q71.54020 19.90200 72.89910 20.26580Q74.25800 20.62960 74.98560 21.33580Q75.71320 22.04200 75.71320 23.04780L75.71320 23.04780Q75.71320 24.03220 74.98560 24.73840Q74.25800 25.44460 72.89910 25.80840Q71.54020 26.17220 69.61420 26.17220L69.61420 26.17220Q67.68820 26.17220 66.31860 25.80840Q64.94900 25.44460 64.22140 24.73840Q63.49380 24.03220 63.49380 23.04780L63.49380 23.04780Q63.49380 22.04200 64.22140 21.33580Q64.94900 20.62960 66.31860 20.26580Q67.68820 19.90200 69.61420 19.90200ZM69.61420 20.52260L69.61420 20.52260Q67.15320 20.52260 65.66590 21.19670Q64.17860 21.87080 64.17860 23.04780L64.17860 23.04780Q64.17860 24.20340 65.66590 24.88820Q67.15320 25.57300 69.61420 25.57300L69.61420 25.57300Q72.05380 25.57300 73.54110 24.88820Q75.02840 24.20340 75.02840 23.04780L75.02840 23.04780Q75.02840 21.87080 73.54110 21.19670Q72.05380 20.52260 69.61420 20.52260Z\" fill=\"#111\"/></svg></g></g><image id=\"p1-panel\" data-panel=\"1\" data-panel-svg-sha=\"sha256:7cd7d5b3c750592052423d509d6397594f4db0439540c049fca9d7019f3648b4\" x=\"0\" y=\"76\" width=\"480\" height=\"400\" href=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODAgNDAwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCIgcm9sZT0iaW1nIiBkYXRhLXNvbGlkLWZpZ3VyZT0ic29saWQtZmlndXJlLXYxIiBkYXRhLW1vZGU9IlNPTElEUyIgZGF0YS1zY2FsZT0iMzcuNSIgZGF0YS1vcmlnaW49IjkwIDM0MC45NTM4OTMiIGRhdGEteWF3PSIyOCIgZGF0YS1waXRjaD0iMjAiIGRhdGEtdW5pdD0iY20iIGRhdGEtcHVibGljYXRpb24tcHJvZmlsZT0iZnJhZ21lbnQtcHVibGljYXRpb24tc3Bpa2UtdjEiIGRhdGEtc2FmZS1tYXJnaW49IjEwIiBzdHlsZT0ibWF4LXdpZHRoOjEwMCU7aGVpZ2h0OmF1dG87c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1saW5lY2FwOnJvdW5kIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2ZmZiIvPjxnIGRhdGEtbGF5ZXI9IjIwIj48cGF0aCBpZD0iY3V0LWZhY2UtczEtWC0rIiBkYXRhLXJvbGU9ImN1dC1mYWNlIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1mYWNlcz0iWC0rIiBmaWxsPSIjN2ZhNmU4IiBmaWxsLW9wYWNpdHk9IjAuMzIiIHN0cm9rZT0ibm9uZSIgZD0iTSAxNjkuNTc5MjY2IDI0NS4yOTc4NzkgTCAxNjkuNzMwMDQyIDIzNS45ODIwNjcgTCAxNzAuMTgxNzI1IDIyNi41MTIxNzUgTCAxNzAuOTMyMzggMjE2LjkyODc1MyBMIDE3MS45Nzg3OTQgMjA3LjI3MjgzOSBMIDE3My4zMTY0ODUgMTk3LjU4NTc4MyBMIDE3NC45Mzk3MjUgMTg3LjkwOTA2NCBMIDE3Ni44NDE1NjMgMTc4LjI4NDEyIEwgMTc5LjAxMzg1NSAxNjguNzUyMTY4IEwgMTgxLjQ0NzI5OSAxNTkuMzU0MDIzIEwgMTg0LjEzMTQ3NSAxNTAuMTI5OTMgTCAxODcuMDU0ODg5IDE0MS4xMTkzODkgTCAxOTAuMjA1MDIxIDEzMi4zNjA5ODQgTCAxOTMuNTY4MzgzIDEyMy44OTIyMTkgTCAxOTcuMTMwNTczIDExNS43NDkzNiBMIDIwMC44NzYzMzYgMTA3Ljk2NzI3NCBMIDIwNC43ODk2MzMgMTAwLjU3OTI4NyBMIDIwOC44NTM3MDYgOTMuNjE3MDM1IEwgMjEzLjA1MTE1MiA4Ny4xMTAzMzEgTCAyMTcuMzYzOTk3IDgxLjA4NzAzOCBMIDIyMS43NzM3NzMgNzUuNTcyOTQ4IEwgMjI2LjI2MTU5NiA3MC41OTE2NzQgTCAyMzAuODA4MjUgNjYuMTY0NTQ3IEwgMjM1LjM5NDI2NCA2Mi4zMTA1MjMgTCAyNDAgNTkuMDQ2MTA3IEwgMjQwIDIwMCBaIi8+PC9nPjxnIGRhdGEtbGF5ZXI9IjIwIj48cGF0aCBpZD0iY3V0LWZhY2UtczEtWSsrIiBkYXRhLXJvbGU9ImN1dC1mYWNlIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1mYWNlcz0iWSsrIiBmaWxsPSIjN2ZhNmU4IiBmaWxsLW9wYWNpdHk9IjAuMzIiIHN0cm9rZT0ibm9uZSIgZD0iTSAyNDAgNTkuMDQ2MTA3IEwgMjQ4LjY2MjEzIDYwLjkyMzE1NCBMIDI1Ny4yODcxNjggNjMuMzk1NzUxIEwgMjY1LjgzODE4IDY2LjQ1MzMwNyBMIDI3NC4yNzg1NDggNzAuMDgyNzMxIEwgMjgyLjU3MjEzIDc0LjI2ODQ4MSBMIDI5MC42ODM0MTIgNzguOTkyNjMyIEwgMjk4LjU3NzY2IDg0LjIzNDk1NSBMIDMwNi4yMjEwNjkgODkuOTczMDAzIEwgMzEzLjU4MDkxIDk2LjE4MjIwMiBMIDMyMC42MjU2NjYgMTAyLjgzNTk2NSBMIDMyNy4zMjUxNyAxMDkuOTA1OCBMIDMzMy42NTA3MzUgMTE3LjM2MTQzMiBMIDMzOS41NzUyNzIgMTI1LjE3MDkzNSBMIDM0NS4wNzM0MTMgMTMzLjMwMDg2NyBMIDM1MC4xMjE2MTQgMTQxLjcxNjQxNiBMIDM1NC42OTgyNTcgMTUwLjM4MTU0MyBMIDM1OC43ODM3NDQgMTU5LjI1OTE0NSBMIDM2Mi4zNjA1ODEgMTY4LjMxMTIwNSBMIDM2NS40MTM0NTIgMTc3LjQ5ODk2MSBMIDM2Ny45MjkyODIgMTg2Ljc4MzA3MSBMIDM2OS44OTczIDE5Ni4xMjM3NzcgTCAzNzEuMzA5MDc4IDIwNS40ODEwODEgTCAzNzIuMTU4NTcgMjE0LjgxNDkxNSBMIDM3Mi40NDIxMzkgMjI0LjA4NTMxIEwgMjQwIDIwMCBaIi8+PC9nPjxnIGRhdGEtbGF5ZXI9IjIwIj48cGF0aCBpZD0iY3V0LWZhY2UtczEtWistIiBkYXRhLXJvbGU9ImN1dC1mYWNlIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1mYWNlcz0iWistIiBmaWxsPSIjN2ZhNmU4IiBmaWxsLW9wYWNpdHk9IjAuMzIiIHN0cm9rZT0ibm9uZSIgZD0iTSAzNzIuNDQyMTM5IDIyNC4wODUzMSBMIDM2Ny41NTI4MzQgMjI2Ljk5NjM2NCBMIDM2Mi4xMTczMjggMjI5Ljc5MTgxNiBMIDM1Ni4xNTg4OTcgMjMyLjQ1OTY5NSBMIDM0OS43MDMwNTUgMjM0Ljk4ODU3NiBMIDM0Mi43Nzc0NDkgMjM3LjM2NzYzMSBMIDMzNS40MTE3MzMgMjM5LjU4NjY3MiBMIDMyNy42Mzc0NSAyNDEuNjM2MTk3IEwgMzE5LjQ4Nzg5IDI0My41MDc0MyBMIDMxMC45OTc5NSAyNDUuMTkyMzU2IEwgMzAyLjIwMzk4NiAyNDYuNjgzNzYzIEwgMjkzLjE0MzY1NiAyNDcuOTc1MjYyIEwgMjgzLjg1NTc1NiAyNDkuMDYxMzIzIEwgMjc0LjM4MDA1OSAyNDkuOTM3Mjk3IEwgMjY0Ljc1NzE0MSAyNTAuNTk5NDMxIEwgMjU1LjAyODIwOSAyNTEuMDQ0ODkxIEwgMjQ1LjIzNDkyNSAyNTEuMjcxNzY5IEwgMjM1LjQxOTIyMyAyNTEuMjc5MDkzIEwgMjI1LjYyMzEzNyAyNTEuMDY2ODMyIEwgMjE1Ljg4ODYxNSAyNTAuNjM1ODk2IEwgMjA2LjI1NzM0MiAyNDkuOTg4MTI4IEwgMTk2Ljc3MDU2IDI0OS4xMjYzMDQgTCAxODcuNDY4ODkzIDI0OC4wNTQxMTMgTCAxNzguMzkyMTcyIDI0Ni43NzYxNDggTCAxNjkuNTc5MjY2IDI0NS4yOTc4NzkgTCAyNDAgMjAwIFoiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxwYXRoIGlkPSJzMS1saW1iLTEiIGRhdGEtcm9sZT0ic3BoZXJlLWxpbWIiIGRhdGEtc29saWQ9InMxIiBkYXRhLXBhcnQ9IkxJTUIiIGRhdGEtdmlzPSJzb2xpZCIgZGF0YS1vY3RhbnQ9IisrKyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSAzOTAgMjAwIEEgMTUwIDE1MCAwIDAgMCAyNjYuODM4MTAzIDUyLjQyMDQ3NSIvPjwvZz48ZyBkYXRhLWxheWVyPSI0MCI+PHBhdGggaWQ9InMxLWxpbWItMiIgZGF0YS1yb2xlPSJzcGhlcmUtbGltYiIgZGF0YS1zb2xpZD0iczEiIGRhdGEtcGFydD0iTElNQiIgZGF0YS12aXM9InNvbGlkIiBkYXRhLW9jdGFudD0iLSsrIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBkPSJNIDI2Ni44MzgxMDMgNTIuNDIwNDc1IEEgMTUwIDE1MCAwIDAgMCAxNTguODUxNjQxIDczLjg0NTU1NSIvPjwvZz48ZyBkYXRhLWxheWVyPSI0MCI+PHBhdGggaWQ9InMxLWxpbWItMyIgZGF0YS1yb2xlPSJzcGhlcmUtbGltYiIgZGF0YS1zb2xpZD0iczEiIGRhdGEtcGFydD0iTElNQiIgZGF0YS12aXM9InNvbGlkIiBkYXRhLW9jdGFudD0iLS0rIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBkPSJNIDE1OC44NTE2NDEgNzMuODQ1NTU1IEEgMTUwIDE1MCAwIDAgMCA5MCAyMDAuMDAwMDUyIi8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iczEtbGltYi00IiBkYXRhLXJvbGU9InNwaGVyZS1saW1iIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1wYXJ0PSJMSU1CIiBkYXRhLXZpcz0ic29saWQiIGRhdGEtb2N0YW50PSItLS0iIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGQ9Ik0gOTAgMjAwLjAwMDA1MiBBIDE1MCAxNTAgMCAwIDAgMjEzLjE2MTk0OCAzNDcuNTc5NTM0Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iczEtbGltYi01IiBkYXRhLXJvbGU9InNwaGVyZS1saW1iIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1wYXJ0PSJMSU1CIiBkYXRhLXZpcz0ic29saWQiIGRhdGEtb2N0YW50PSIrLS0iIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGQ9Ik0gMjEzLjE2MTk0OCAzNDcuNTc5NTM0IEEgMTUwIDE1MCAwIDAgMCAzMjEuMTQ4NDAyIDMyNi4xNTQ0MTYiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxwYXRoIGlkPSJzMS1saW1iLTYiIGRhdGEtcm9sZT0ic3BoZXJlLWxpbWIiIGRhdGEtc29saWQ9InMxIiBkYXRhLXBhcnQ9IkxJTUIiIGRhdGEtdmlzPSJzb2xpZCIgZGF0YS1vY3RhbnQ9IisrLSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSAzMjEuMTQ4NDAyIDMyNi4xNTQ0MTYgQSAxNTAgMTUwIDAgMCAwIDM5MCAyMDAuMDAwMDQ2Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iczEtcmltLVgtKy0xIiBkYXRhLXJvbGU9ImN1dC1hcmMiIGRhdGEtc29saWQ9InMxIiBkYXRhLWFyYz0iWC0rIiBkYXRhLXQwPSIwIiBkYXRhLXQxPSIxIiBkYXRhLXZpcz0ic29saWQiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGQ9Ik0gMTY5LjU3OTI2NiAyNDUuMjk3ODc5IEEgMTUwIDY2LjE3Mzg0NCAtNzkuNjkzMDkzIDAgMSAyNDAgNTkuMDQ2MTA3Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48cGF0aCBpZD0iczEtcmltLVkrKy0xIiBkYXRhLXJvbGU9ImN1dC1hcmMiIGRhdGEtc29saWQ9InMxIiBkYXRhLWFyYz0iWSsrIiBkYXRhLXQwPSIwIiBkYXRhLXQxPSIxIiBkYXRhLXZpcz0ic29saWQiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGQ9Ik0gMzcyLjQ0MjEzOSAyMjQuMDg1MzEgQSAxNTAgMTI0LjQ1NDkwMSA1Ny4yNDg5OTggMCAwIDI0MCA1OS4wNDYxMDciLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxwYXRoIGlkPSJzMS1yaW0tWistLTEiIGRhdGEtcm9sZT0iY3V0LWFyYyIgZGF0YS1zb2xpZD0iczEiIGRhdGEtYXJjPSJaKy0iIGRhdGEtdDA9IjAiIGRhdGEtdDE9IjEiIGRhdGEtdmlzPSJzb2xpZCIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZD0iTSAzNzIuNDQyMTM5IDIyNC4wODUzMSBBIDE1MCA1MS4zMDMwMjEgMCAwIDEgMTY5LjU3OTI2NiAyNDUuMjk3ODc5Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48bGluZSBpZD0iczEtY3JlYXNlLStYLTEiIGRhdGEtcm9sZT0iY3V0LWNyZWFzZSIgZGF0YS1zb2xpZD0iczEiIGRhdGEtZWRnZT0iK1giIGRhdGEtdmlzPSJzb2xpZCIgZGF0YS10MD0iMCIgZGF0YS10MT0iMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgeDE9IjI0MCIgeTE9IjIwMCIgeDI9IjM3Mi40NDIxMzkiIHkyPSIyMjQuMDg1MzEiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxsaW5lIGlkPSJzMS1jcmVhc2UtLVktMSIgZGF0YS1yb2xlPSJjdXQtY3JlYXNlIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1lZGdlPSItWSIgZGF0YS12aXM9InNvbGlkIiBkYXRhLXQwPSIwIiBkYXRhLXQxPSIxIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiB4MT0iMjQwIiB5MT0iMjAwIiB4Mj0iMTY5LjU3OTI2NiIgeTI9IjI0NS4yOTc4NzkiLz48L2c+PGcgZGF0YS1sYXllcj0iNDAiPjxsaW5lIGlkPSJzMS1jcmVhc2UtK1otMSIgZGF0YS1yb2xlPSJjdXQtY3JlYXNlIiBkYXRhLXNvbGlkPSJzMSIgZGF0YS1lZGdlPSIrWiIgZGF0YS12aXM9InNvbGlkIiBkYXRhLXQwPSIwIiBkYXRhLXQxPSIxIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiB4MT0iMjQwIiB5MT0iMjAwIiB4Mj0iMjQwIiB5Mj0iNTkuMDQ2MTA3Ii8+PC9nPjxnIGRhdGEtbGF5ZXI9IjQwIj48bGluZSBpZD0iZGltLTEtbGluZSIgZGF0YS1yb2xlPSJkaW0tbGluZSIgZGF0YS1zb2xpZD0iczEiIGRhdGEtdmlzPSJzb2xpZCIgZGF0YS1kaW09ImRpbS0xIiBkYXRhLWtpbmQ9IlJBRElVUyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjEuMSIgZmlsbD0ibm9uZSIgeDE9IjI0MCIgeTE9IjIwMCIgeDI9IjM3Mi40NDIxMzkiIHkyPSIyMjQuMDg1MzEiLz48L2c+PGcgZGF0YS1sYXllcj0iOTAiPjxnIGlkPSJkaW0tMS1sYWJlbCIgZGF0YS1sYWJlbC1raW5kPSJFUVVBVElPTl9MQUJFTCIgZGF0YS1sYWJlbC1yb2xlPSJkaW0iIGRhdGEtcHJpb3JpdHk9IjAiIGRhdGEtZm9udC1weD0iMjEuNCIgZGF0YS1vd25lcj0iZGltLTEiIGRhdGEtdmFsdWU9IjQiIGRhdGEtbnVtZXJpYz0iMSIgZGF0YS1kaW09ImRpbS0xIiBkYXRhLXNlZ21lbnQ9InJhZGl1cyIgZGF0YS10ZXg9IjRcLFxtYXRocm17Y219IiBkYXRhLWZyYWdtZW50LXNoYT0ic2hhMjU2OjU5Njk5YWM5ODI2MDRmMDFjNTgxNTUyZDI5OTgxM2Y2MjE1MjRjMTM2YTJmOTAyN2JkOTViOTFjMDZjNWI2MTAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4Mi45MjE3MjkgMjE4LjQyMDIyMikiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNDEuNjAxNiIgaGVpZ2h0PSIxNC43MjMxOTk5OTk5OTk5OTkiIHZpZXdCb3g9IjAgMCA0MS42MDE2IDE0LjcyMzE5OTk5OTk5OTk5OSIgZGF0YS1vdXRsaW5lLXdpZHRoPSI0MS42MDE2IiBkYXRhLW91dGxpbmUtaGVpZ2h0PSIxNC43MjMxOTk5OTk5OTk5OTkiIGlkPSJsYi05NTk5MGU0NDMyZDNlMTE4NDE0MmMyZjg0YTA0YWU5NGYwZjJiMDRmYWY1NjNmYWIyYWQ3ZTk5Y2U4Mzk5ZmRkIiBkYXRhLW93bmVyPSJkaW0tMSIgZGF0YS1mYWN0LXJvbGU9IkNPTkNMVVNJT04iPjxnIGRhdGEtb3V0bGluZS11bml0cy1wZXItZW09IjEwMDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMTQuNDg3OCkgc2NhbGUoMC4wMjE0KSI+PGcgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGZpbGw9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIzMCIgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PGcgZGF0YS1tbWwtbm9kZT0ibWF0aCI+PGcgZGF0YS1tbWwtbm9kZT0ibW4iPjxwYXRoIGRhdGEtYz0iMzQiIGQ9Ik00NjIgMFE0NDQgMyAzMzMgM1EyMTcgMyAxOTkgMEgxOTBWNDZIMjIxUTI0MSA0NiAyNDggNDZUMjY1IDQ4VDI3OSA1M1QyODYgNjFRMjg3IDYzIDI4NyAxMTVWMTY1SDI4VjIxMUwxNzkgNDQyUTMzMiA2NzQgMzM0IDY3NVEzMzYgNjc3IDM1NSA2NzdIMzczTDM3OSA2NzFWMjExSDQ3MVYxNjVIMzc5VjExNFEzNzkgNzMgMzc5IDY2VDM4NSA1NFEzOTMgNDcgNDQyIDQ2SDQ3MVYwSDQ2MlpNMjkzIDIxMVY1NDVMNzQgMjEyTDE4MyAyMTFIMjkzWiI+PC9wYXRoPjwvZz48ZyBkYXRhLW1tbC1ub2RlPSJtc3R5bGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwMCwwKSI+PGcgZGF0YS1tbWwtbm9kZT0ibXNwYWNlIj48L2c+PC9nPjxnIGRhdGEtbW1sLW5vZGU9IlRlWEF0b20iIGRhdGEtbWp4LXRleGNsYXNzPSJPUkQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY2NywwKSI+PGcgZGF0YS1tbWwtbm9kZT0ibWkiPjxwYXRoIGRhdGEtYz0iNjMiIGQ9Ik0zNzAgMzA1VDM0OSAzMDVUMzEzIDMyMFQyOTcgMzU4UTI5NyAzODEgMzEyIDM5NlEzMTcgNDAxIDMxNyA0MDJUMzA3IDQwNFEyODEgNDA4IDI1OCA0MDhRMjA5IDQwOCAxNzggMzc2UTEzMSAzMjkgMTMxIDIxOVExMzEgMTM3IDE2MiA5MFEyMDMgMjkgMjcyIDI5UTMxMyAyOSAzMzggNTVUMzc0IDExN1EzNzYgMTI1IDM3OSAxMjdUMzk1IDEyOUg0MDlRNDE1IDEyMyA0MTUgMTIwUTQxNSAxMTYgNDExIDEwNFQzOTUgNzFUMzY2IDMzVDMxOCAyVDI0OSAtMTFRMTYzIC0xMSA5OSA1M1QzNCAyMTRRMzQgMzE4IDk5IDM4M1QyNTAgNDQ4VDM3MCA0MjFUNDA0IDM1N1E0MDQgMzM0IDM4NyAzMjBaIj48L3BhdGg+PHBhdGggZGF0YS1jPSI2RCIgZD0iTTQxIDQ2SDU1UTk0IDQ2IDEwMiA2MFY2OFExMDIgNzcgMTAyIDkxVDEwMiAxMjJUMTAzIDE2MVQxMDMgMjAzUTEwMyAyMzQgMTAzIDI2OVQxMDIgMzI4VjM1MVE5OSAzNzAgODggMzc2VDQzIDM4NUgyNVY0MDhRMjUgNDMxIDI3IDQzMUwzNyA0MzJRNDcgNDMzIDY1IDQzNFQxMDIgNDM2UTExOSA0MzcgMTM4IDQzOFQxNjcgNDQxVDE3OCA0NDJIMTgxVjQwMlExODEgMzY0IDE4MiAzNjRUMTg3IDM2OVQxOTkgMzg0VDIxOCA0MDJUMjQ3IDQyMVQyODUgNDM3UTMwNSA0NDIgMzM2IDQ0MlEzNTEgNDQyIDM2NCA0NDBUMzg3IDQzNFQ0MDYgNDI2VDQyMSA0MTdUNDMyIDQwNlQ0NDEgMzk1VDQ0OCAzODRUNDUyIDM3NFQ0NTUgMzY2TDQ1NyAzNjFMNDYwIDM2NVE0NjMgMzY5IDQ2NiAzNzNUNDc1IDM4NFQ0ODggMzk3VDUwMyA0MTBUNTIzIDQyMlQ1NDYgNDMyVDU3MiA0MzlUNjAzIDQ0MlE3MjkgNDQyIDc0MCAzMjlRNzQxIDMyMiA3NDEgMTkwVjEwNFE3NDEgNjYgNzQzIDU5VDc1NCA0OVE3NzUgNDYgODAzIDQ2SDgxOVYwSDgxMUw3ODggMVE3NjQgMiA3MzcgMlQ2OTkgM1E1OTYgMyA1ODcgMEg1NzlWNDZINTk1UTY1NiA0NiA2NTYgNjJRNjU3IDY0IDY1NyAyMDBRNjU2IDMzNSA2NTUgMzQzUTY0OSAzNzEgNjM1IDM4NVQ2MTEgNDAyVDU4NSA0MDRRNTQwIDQwNCA1MDYgMzcwUTQ3OSAzNDMgNDcyIDMxNVQ0NjQgMjMyVjE2OFYxMDhRNDY0IDc4IDQ2NSA2OFQ0NjggNTVUNDc3IDQ5UTQ5OCA0NiA1MjYgNDZINTQyVjBINTM0TDUxMCAxUTQ4NyAyIDQ2MCAyVDQyMiAzUTMxOSAzIDMxMCAwSDMwMlY0NkgzMThRMzc5IDQ2IDM3OSA2MlEzODAgNjQgMzgwIDIwMFEzNzkgMzM1IDM3OCAzNDNRMzcyIDM3MSAzNTggMzg1VDMzNCA0MDJUMzA4IDQwNFEyNjMgNDA0IDIyOSAzNzBRMjAyIDM0MyAxOTUgMzE1VDE4NyAyMzJWMTY4VjEwOFExODcgNzggMTg4IDY4VDE5MSA1NVQyMDAgNDlRMjIxIDQ2IDI0OSA0NkgyNjVWMEgyNTdMMjM0IDFRMjEwIDIgMTgzIDJUMTQ1IDNRNDIgMyAzMyAwSDI1VjQ2SDQxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQ0LDApIj48L3BhdGg+PC9nPjwvZz48L2c+PC9nPjwvZz48L3N2Zz48L2c+PC9nPjwvc3ZnPg==\"/></svg>",
+  "lineage": {
+   "planSha256": "sha256:74a2094b704486b8c90e9f9616994fd38e0bee813d0690dd4511793abd616f5e",
+   "modelSha256": "sha256:7412ffa2f9ace9d96d10541c46b6d016df3f592f958c04e16b0525ff31752c47",
+   "typographyPolicySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+   "panelSpecSha256s": [
+    "sha256:f37c39a1135f5dc8623086afcfb059150b72903d74ab747f8598c7d6706f580a"
+   ],
+   "panelSvgSha256s": [
+    "sha256:7cd7d5b3c750592052423d509d6397594f4db0439540c049fca9d7019f3648b4"
+   ],
+   "captionFragmentSha256s": [
+    [
+     "sha256:e8d9839f9fa745d65f2511d8bc1ce8003c67a1be6921f8ecd3f658c4c4f63927"
+    ]
+   ],
+   "sharedRowFragmentSha256s": [],
+   "svgSha256": "sha256:86107c333d7978114848fdc0afd8bcb758a544a9ed22eba806ad42e0b4575b2d",
+   "renderedLayoutSha256": "sha256:c2152d6650cdb9733b7fd769a6355a5f611f39047ddef2eb1587c57e483ccf2b"
+  },
+  "panels": [
+   {
+    "index": 0,
+    "status": "COMPOSED",
+    "detail": null,
+    "lineage": {
+     "planSha256": "sha256:fe268f288c09c5368abaf4bf664a7024c87cdca41977dd2193888f26b063e859",
+     "modelSha256": "sha256:68069110168dbbcb912447dba52ca1ecab8fc7c5ba2529dc000d0c8703f15ea7",
+     "typographyPolicySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+     "specSha256": "sha256:f37c39a1135f5dc8623086afcfb059150b72903d74ab747f8598c7d6706f580a",
+     "fragmentSha256s": {
+      "dim-1-label": "sha256:59699ac982604f01c581552d299813f621524c136a2f9027bd95b91c06c5b610"
+     },
+     "svgSha256": "sha256:7cd7d5b3c750592052423d509d6397594f4db0439540c049fca9d7019f3648b4",
+     "staticAuditSha256": "sha256:ff33117be3055c180f8b2af8317f6d6fbb8302681a5b1265281613b6c3bf936e",
+     "renderedLayoutSha256": "sha256:eb47cedc67fd30277187d2b9a06ba648f7218123a2e971aecf3905bb974b187b"
+    },
+    "layoutRepairs": [],
+    "staticAudit": {
+     "status": "PASS",
+     "errors": []
+    },
+    "renderedLayout": {
+     "status": "PASS",
+     "display": {
+      "width": 252.90625,
+      "height": 210.75520833333331
+     },
+     "errors": []
+    }
+   }
+  ],
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 250.79869791666664
+   },
+   "errors": []
+  },
+  "layout": {
+   "kind": "STACK",
+   "columns": 1,
+   "rows": 1
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:86107c333d7978114848fdc0afd8bcb758a544a9ed22eba806ad42e0b4575b2d",
+   "policySha256": "sha256:3f75831fc500df3ddb61ccc041e86ca1369c30598acd563ffcc3aecc612e39ae",
+   "candidateBankSha256": "sha256:2d74ed97d6b847d4a0653dbcd70d7c37e7debba173a2e273c92484bb8197034b",
+   "assetPath": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/assets/images/25_팔마중_2학기_기말_중1_유사/q22-solution.svg",
+   "assetResponseSha256": "sha256:86107c333d7978114848fdc0afd8bcb758a544a9ed22eba806ad42e0b4575b2d",
+   "archiveRowSha256": "sha256:9db37b4fb432fdb429ab3c7af97fb6c732f9862de406b25eba59a9e1c9a05711",
+   "screenshotSha256s": {
+    "image": "sha256:1b882539782775e4621977f5ff602589896e388c1fad497817660923ff371719",
+    "context": "sha256:e6e65c107968e030ad27e18ad3512b722213cdac6e945885a8211b3d5b55c74a",
+    "page": "sha256:07122260770d7ca092451767397830176b96a876e3e2310ee362279912f6f939"
+   },
+   "matrixSha256": "sha256:b1dd60cf48f74099276dc3c9383f2511c791c7bab5ecdd0e6a49736c813a554b",
+   "engineSha256": "sha256:19b96f9530d02a1ad0ef3d251c1c7e89b7925cfcaa3060494b9e4795b34c2b49"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-9f67a706",
+   "asset": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/assets/images/25_팔마중_2학기_기말_중1_유사/q22-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/candidates/25_팔마중_2학기_기말_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd-sol-desktop-va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd.png",
+    "context": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd-sol-desktop-va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd-context.png",
+    "page": ".tmp/archive/pilot-capture-9f67a706/25_팔마중_2학기_기말_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-aa649a2c44e748288e0fb86a4042cd43733f188c0f6357a22fcda76312d474dd-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2final/25_팔마중_2학기_기말_중1_유사.js",
+    "bytes": 68694,
+    "sha256": "sha256:e2943954b0062bb70e08fd08c38b47b98cd9594e316f4385445b242706d1e617"
+   },
+   "originalQuestionSha256": "sha256:a017470fe7439ad5c1af458fc0586a5e91c8c15d9c0e3d57455c789c9ed491fd",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 22
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.5268880208333333,
+  "expectedDisplayScale": 0.5268880208333333,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}
