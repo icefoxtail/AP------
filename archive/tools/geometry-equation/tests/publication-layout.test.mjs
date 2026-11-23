@@ -18,11 +18,20 @@ test('render result preserves per-label final CSS font evidence',()=>{
   assert.equal(result.labelMeasurements[0].finalViewportCssFontPx,13);
   assert.equal(result.labelMeasurements[0].id,'A-name');
 });
-test('publication explanatory text obeys the reference font floor',()=>{
-  const c=sample();c.labels.push({...c.labels[0],id:'note',kind:'GRAPH_ANNOTATION',effectiveFontPx:8,client:{x:110,y:70,width:20,height:10}});
+test('publication explanatory text obeys the reference font floor as AUTHORED (an authored font below 11 still fails)',()=>{
+  const c=sample();c.labels.push({...c.labels[0],id:'note',kind:'GRAPH_ANNOTATION',baseFontPx:8,effectiveFontPx:8,client:{x:110,y:70,width:20,height:10}});
   assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:note'));
 });
-test('publication text needs an actual effective CSS font floor',()=>{const c=sample();assert.equal(analyzeRenderedLayout(c).status,'PASS');c.labels[0].effectiveFontPx=10.99;assert.ok(analyzeRenderedLayout(c).errors.some(e=>e.startsWith('PUBLICATION_FONT_BELOW')));});
+test('publication displayed font below 11 CSS px is recorded, not a failure (2026-11-23 owner decision: students zoom in)',()=>{
+  const c=sample();assert.equal(analyzeRenderedLayout(c).status,'PASS');assert.equal('displayTextBelow11px' in analyzeRenderedLayout(c),false);   // met the floor: no new key
+  c.labels[0].effectiveFontPx=10.99;   // authored at 16, displayed at 10.99
+  const r=analyzeRenderedLayout(c);
+  assert.equal(r.status,'PASS');assert.ok(!r.errors.some(e=>e.startsWith('PUBLICATION_FONT_BELOW')));
+  assert.equal(r.displayTextBelow11px,true);assert.equal(r.displayTextBelow11pxLabelCount,1);assert.deepEqual(r.displayTextBelow11pxLabels,[{id:'A-name',effectiveFontPx:10.99}]);
+  // a missing displayed metric still fails, and a label with no known authored font keeps the old displayed-size rule
+  c.labels[0].effectiveFontPx=NaN;assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:A-name'));
+  c.labels[0].effectiveFontPx=10.99;c.labels[0].baseFontPx=0;assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:A-name'));
+});
 test('publication mixed point/numeric base sizes fail',()=>{const c=sample();c.labels.push({...c.labels[0],id:'length',kind:'LENGTH_LABEL',baseFontPx:14,client:{x:100,y:100,width:12,height:16}});assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_BASE_FONT_INCONSISTENT'));});
 test('publication empty/skeleton labels cannot pass',()=>{const c=sample();c.labels=[];assert.equal(analyzeRenderedLayout(c).status,'FAIL');});
 test('publication unready fonts cannot pass',()=>{const c=sample();c.fontStatus='loading';assert.equal(analyzeRenderedLayout(c).status,'FAIL');});

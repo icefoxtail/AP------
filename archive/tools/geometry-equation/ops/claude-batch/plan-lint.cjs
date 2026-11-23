@@ -21,8 +21,6 @@
 const fs = require('fs'), path = require('path'), cp = require('child_process');
 const { pathToFileURL } = require('url');
 const codes = require('./plan-lint-codes.cjs');
-// 합성 그림 한 변의 표시 한계(CSS px = SVG 단위): 297px(해설 칸 안쪽 298의 94%) / 0.3516(11.25px 글자 / 기본 글자 상한 32). 아래 deep 검사의 주석 참고.
-const DISPLAY_LIMIT_PX = 845;
 
 const HERE = __dirname;
 // 저장소 루트: 이 파일이 <저장소>/archive/tools/geometry-equation/ops/claude-batch/ 에 있거나 restore.sh 로 <저장소>/.tmp/work/ 에 펼쳐져 있어도 찾는다.
@@ -175,11 +173,8 @@ async function lintPlan(plan, ctx) {
         sizes.push({ width: spec.viewport.width, height: spec.viewport.height });
       }
       const size = M.comp.compositeStackSize(sizes, M.comp.compositeSharedRowCount(checked), M.comp.compositePanelLayout(checked, current), M.comp.COMPOSITE_CAPTION_ROW);
-      // 합성 그림 전체 크기가 화면 표시 한계를 넘으면 measure 단계에서 UNSUPPORTED_DISPLAY_ENVELOPE 가 난다(production/composite-candidate-svg-v1.mjs:43 주석, display-envelope.mjs:38).
-      // 2026-11-23 재산정: 옛 문턱(폭 828·높이 820, 2026-11-20 일괄 렌더)은 해설 그림 배율을 단 폭 94%까지 올리는 후보(solutionImageScaleCandidates의 largestWhole)가 생기기 전 값이라 지금은 828x820도 통과한다.
-      // 지금 한계는 식으로 나온다: 해설 칸 안쪽 폭 298px(대상 문항 상자 측정값)의 94% = 297px 안에 그림이 들어가고, 기본 글자 크기 상한 32가 11.25px(하한 11 + 여유 .25)를 만들려면 표시 배율이 11.25/32 = 0.3516 이상이어야 한다.
-      // 그래서 폭·높이가 297/0.3516 = 845 이하면 후보가 있고(실제 측정이 최종 판정), 846 이상이면 어떤 배율로도 불가능하다. 글자 하한 자체를 푸는 작업(claude/svg-display-text-floor-off)이 들어가면 이 줄은 필요 없어진다.
-      if (ctx.deep && (size.width > DISPLAY_LIMIT_PX || size.height > DISPLAY_LIMIT_PX)) throw new Refusal('UNSUPPORTED_DISPLAY_ENVELOPE', 'measure', { size });
+      // (2026-11-23 원장님 결정) 표시된 글자 크기 하한(11 CSS px)을 풀었다: 합성 그림 크기만으로는 measure 단계에서 UNSUPPORTED_DISPLAY_ENVELOPE 가 나지 않는다(display-envelope.mjs, 학생이 확대해 본다).
+      // 그래서 2026-11-20에 폭 828·높이 820부터 거르던 크기 추정 규칙을 없앴다. 쪽 높이 초과(COMPOSITE_TOO_TALL)는 별개 규칙으로 남아 있다.
       return { status: 'OK', size };
     }
     // ---- 그래프(graphPlan) / 작도(mathPlan)

@@ -308,7 +308,7 @@
   // O.settings(archive2-output.js)와 같은 모양. 항목이 settings를 주지 않으면 같은 기본값을 쓴다.
   function defaultOriginalSettings(title, subject) {
     return {
-      header: { title, subtitle: text(subject), metaRight: "", showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
+      header: { title, subtitle: globalThis.ExamDisplayTitle?.displaySubjectOf?.(text(subject)) ?? text(subject), metaRight: "", showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
       qpp: 4, includeQr: false,
     };
   }

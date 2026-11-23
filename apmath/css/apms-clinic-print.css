@@ -1041,3 +1041,24 @@
         border-top: 1px solid var(--border);
     }
 }
+
+/* 유사 다시 채우기: 목표 문항을 골라 연 센터에서만 보이는 한 줄(자동 안내 아래) */
+.clinic-print-refill {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: -4px 0 4px;
+}
+
+.clinic-print-refill .clinic-print-mini-btn {
+    min-height: 44px;
+}
+
+.clinic-print-refill__hint {
+    flex: 1 1 160px;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--secondary);
+    line-height: 1.5;
+}

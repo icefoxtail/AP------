@@ -106,6 +106,17 @@ test('issued RPM history authenticates one old FINAL_QA approval while retaining
     nativeSource: { root: f.root, bytes: f.oldBytes, blobSha1: f.prior.sourceBlobSha1, bank: f.oldBank, runtimeRecord: f.runtimeRecord } });
 });
 
+test('issued RPM history accepts an add-only grown LOCKED master and returns the pinned master bytes', t => {
+  const f = fixture(t), grown = f.read(MASTER);
+  grown.records[0].concepts.push({ concept: 'added concept', problemTypes: [{ problemType: 'added method' }] });
+  grown.records.push({ curriculum: '2022', scope: 'M2-1', majorUnit: 'added unit', midUnit: 'added sub', concepts: [] });
+  f.write(MASTER, grown);
+  const context = loadIssuedRpmHistory(f.input()), ref = f.prior.rpmPrimaryBindings[0].masterRef;
+  assert.notEqual(sha(fs.readFileSync(path.join(f.root, MASTER))), ref.sha256);
+  assert.equal(sha(readIssuedRpmHistoricalEvidence(context, f.prior, ref)), ref.sha256);
+  assert.equal(context.descriptor.masterRef.sha256, ref.sha256);
+});
+
 test('ordinary requests and fabricated context tokens cannot acquire historical authority', t => {
   const f = fixture(t), request = structuredClone(f.request); delete request.approval.sourceRebind.historicalRpmEvidence;
   assert.equal(hasIssuedRpmHistory(request), false);
@@ -121,6 +132,9 @@ test('issued RPM history rejects changed canonical rows, master and original evi
     ['duplicate old RPM ID', f => { const d = f.read(CROSS); d.records.push(d.records[0]); f.write(CROSS, d); }, /duplicate or invalid RPM/],
     ['canonical authority property', f => { const d = f.read(CROSS); d.status = 'PENDING'; f.write(CROSS, d); }, /authority changed/],
     ['LOCKED master bytes', f => { const d = f.read(MASTER); d.extra = 'changed'; f.write(MASTER, d); }, /non-RPM current evidence|master bytes/],
+    ['LOCKED master node renamed', f => { const d = f.read(MASTER); d.records[0].concepts[0].concept = 'renamed'; f.write(MASTER, d); }, /non-RPM current evidence|master bytes/],
+    ['LOCKED master node removed', f => { const d = f.read(MASTER); d.records[0].concepts[0].problemTypes = []; f.write(MASTER, d); }, /non-RPM current evidence|master bytes/],
+    ['LOCKED master status changed', f => { const d = f.read(MASTER); d.authorityStatus = 'DRAFT'; f.write(MASTER, d); }, /non-RPM current evidence|master bytes/],
     ['non-RPM evidence bytes', f => f.write(f.proofPath, { role: 'changed' }), /non-RPM current evidence/],
     ['predecessor receipt bytes', f => { const d = f.read(f.priorPath); d.approval.approvedBy = 'other'; f.write(f.priorPath, d); }, /receipt digest/],
     ['truthful replacement predecessor hash', f => { const d = f.read(f.priorPath); d.approval.approvedBy = 'other'; f.write(f.priorPath, d); const ref = { path: f.priorPath, sha256: sha(json(d)) }; f.request.approval.sourceRebind.priorReceiptRef = ref; f.request.approval.evidenceRefs = [ref]; f.request.items[0].evidenceRefs = [ref]; }, /receipt digest/]

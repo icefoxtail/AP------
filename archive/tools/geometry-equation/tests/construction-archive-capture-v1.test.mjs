@@ -366,10 +366,12 @@ test('B the 1 CSS px display-scale tolerance holds at exactly 1 px despite float
   assert.equal(api.displayScaleDifference({observed,expected:175/384,intrinsic:INTRINSIC,toleranceCssPx:0.5}).withinTolerance,false);
 });
 
-test('E8 the small class measures like any other (the page ignores the class): the policy is built from the measured row',async()=>{
+test('E8 the small class is measured and its policy is kept: a displayed font below the floor is recorded (displayTextBelow11px), never a refusal (2026-11-23)',async()=>{
   const c=await context(),runId=runIdOf('e8'),result=await measure(c,{requestedSizeClass:'small',runId});
   console.log('R1A_E8='+JSON.stringify({status:result.status,detail:result.detail}));
-  assert.equal(result.status,'MEASURED');assert.equal(result.policy.requestedSizeClass,'small');assert.equal(result.provenance,'ARCHIVE_MEASURED');assertFlags(result);
+  // before 2026-11-23 a displayed font that could not reach 11.25 CSS px was refused as ARCHIVE_POLICY_UNSUPPORTED (UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE)
+  assert.equal(result.status,'MEASURED');assert.equal(result.detail,null);
+  assert.ok(result.policy&&Number.isFinite(result.policy.baseFontPx));assert.match(result.policySha256,HASH);assertFlags(result);
   assert.match(result.evidence.archiveRow.sha256,HASH);assert.equal(bytesSha(read(result.evidence.archiveRow.path)),result.evidence.archiveRow.sha256);
 });
 
