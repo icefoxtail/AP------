@@ -29,6 +29,8 @@
     // 학생 화면인지. archive-asset-base.js의 isStudentPage와 같은 두 신호다.
     function isStudentContext(location) {
         if (!location) return false;
+        // 끄는 스위치: 주소에 figureZoom=0. 승인된 문제 렌더를 화면 그대로 찍어 검증하는 CI 검사(문제 영역에 다른 요소가 찍히면 안 된다)가 쓴다.
+        try { if (new URLSearchParams(location.search || '').get('figureZoom') === '0') return false; } catch (error) { return false; }
         if (/\/apmath\/student\//i.test(String(location.pathname || ''))) return true;
         try { return new URLSearchParams(location.search || '').get('studentReview') === '1'; } catch (error) { return false; }
     }
