@@ -567,7 +567,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "다음 그림에서 $x+y$의 값을 구하면? [4점]",
+    "content": "다음 그림에서 $x+y$의 값을 구하면? (단, 위쪽 직각삼각형에서 $x\\text{ cm}$가 아닌 직각변의 길이는 $5\\text{ cm}$이다.) [4점]",
     "choices": [
       "20",
       "21",
