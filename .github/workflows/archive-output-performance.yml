@@ -17,6 +17,10 @@ on:
     branches: [main]
     paths:
       - 'archive/common-fast-runtime.js'
+      - 'archive/mathjax_render_loop.js'
+      - 'archive/render-diagnostics.js'
+      - 'tests/archive-render-one-item.test.js'
+      - 'archive/exams/test-fixtures/render-one-item-fault.js'
       - 'archive/screen-runtime.js'
       - 'archive/screen-runtime-adapter.js'
       - 'archive/solution-render-executor.js'
@@ -129,6 +133,12 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
           ARCHIVE_CACHE_REPORT_DIR: ${{ runner.temp }}/archive-output-cache
         run: node tests/archive2-output-cache-browser.cjs
+      - name: Verify one broken formula never blocks the whole output (engine and mixed)
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
+          ARCHIVE_ONE_ITEM_REQUIRE_BROWSER: '1'
+        run: node --test tests/archive-render-one-item.test.js
       - name: Upload snapshot recovery evidence
         if: always()
         uses: actions/upload-artifact@v4

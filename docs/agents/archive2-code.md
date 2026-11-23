@@ -73,6 +73,17 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)의 풀이 조각 하나가 기존 `autoCompress`(글자 축소) 뒤에도 칸을 3px 넘게 잘라 먹으면(readiness 기준), 그 조각을 "{번호}. (이어짐)" 라벨이 붙은 다음 칸 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이어짐 라벨은 이 구제 경로로 만든 상자(와 그 뒤 이어지는 상자)에만 붙이고, 기존 경로로 잘 나오던 해설은 main과 DOM·높이가 그대로다. 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았고, 처음 구현이 모든 이어짐 상자에 라벨을 달고 구제 전 축소 없이 쪼개 50문항 해설 parity(bodyHash·블록 높이)를 깼다. `mixed_engine.html`의 "상자 안 상자는 한 테두리" CSS도 기존 해설 블록 높이를 23~24px 줄여 같은 parity를 깨므로 이 변경에서 뺐다(필요하면 parity 기준 정정과 함께 따로 한다).
 - 같은 흐름의 `renderComposed`(반 합성·클리닉 출력)와 권위 배치(`layout-authority`)는 이 폴백이 없다. 같은 증상이 나오면 같은 방식으로 옮긴다.
 
+## 문항 하나의 수식 오류가 출력 전체를 막지 않는다 (2026-11-23, 사용자 원칙 "한 문항 때문에 인쇄가 실패되는 경우는 없어야 … 어떤 문항 때문인지만 핀포인트로")
+
+- 사고: 해설 수식 하나(`\boxed{k&=-4}`, 상자 안 `&`)의 TeX 오류로 고1 2학기 기말 해설지 4개가 0쪽이 되고 "시험지 데이터를 불러올 수 없습니다"만 떴다(`MATH_TYPESET_ERROR`). 감지(`mjx-merror`, 남은 `$` 검사)는 두고 **결과만** "전체 중단"에서 "그 자리 표식 + 알림 띠 + 진단 배열"로 바꿨다(`archive/render-diagnostics.js`, `APRenderLoop.typeset`가 MathJax 조판 직후 부른다). `engine.html`·`mixed_engine.html`만 불러온다(오답 엔진은 그대로).
+- 오류 수식은 그 자리에서 `span.ap-math-error`(붉은 점선 + "수식 오류" 꼬리표 + **원문 TeX 글자**)로 바뀐다. 괄호 짝이 안 맞아 MathJax가 건드리지 않은 `$...$`는 글자 그대로 `수식 변환 안 됨` 표식으로 감싼다. 표식은 쪽 나누기·측정 **전에** DOM에 들어가므로 준비 스냅숏·인쇄 사전 점검·`canReuse`·인쇄가 표식 붙은 상태 그대로 진행된다. 준비 뒤에 DOM을 다시 쓰지 않는다(#2671과 같은 함정).
+- `unrenderedMathCount`는 표식 안의 글자를 세지 않는다. 노드 경계를 넘는 남은 `$`는 그 문항 상자(`.q-box[data-ap-math-error]`)에 표시하고, 상자를 못 찾으면 예전처럼 전체 실패다.
+- **진짜 전체 실패는 그대로다**: MathJax가 없거나 `typesetPromise`가 예외로 끝나면(시간 초과 포함) `data-ap-render-error`·"다시 시도"가 남는다(`typeset-failure-and-retry` 검사의 의도).
+- 기계가 읽는 결과: `window.apRenderDiagnostics = [{file, questionNo, part(본문|보기|해설), code(MATH_TYPESET_ERROR|MATH_UNRENDERED), excerpt}]`(오류 없으면 `[]`), `html[data-ap-render-diagnostics]=개수`. 렌더 확정(commit) 직전에 만들고 ready 신호는 실패가 있어도 낸다.
+- 알림 띠 `#ap-render-notice`는 교사용 조작줄(`#mode-ctrl`)이 보이는 화면에서만 `#print-area` 앞에 그려지고(학생 `fit=screen`에는 없음) 인쇄되지 않는다. 항목을 누르면 그 표식으로 이동·강조한다. 문항 안 표식은 인쇄된다(모르고 풀게 두지 않기 위해).
+- 아직 이 방식이 아닌 것: **그림 404**(`QUESTION_IMAGE_LOAD_FAILED`)는 여전히 전체 실패다. 같은 방식은 `APQuestionImageReadiness.waitForImages` 한 곳에서 `status==='error'`(404·디코드 오류, 시간 초과 제외)만 빈 상자로 바꾸면 되지만, 일부러 만든 "그림 실패는 봉인하지 않는다" 검사와 부딪혀 따로 정한다. 클리닉 합성(`solution-render-executor.js` `batchTypeset`)의 `MATH_TYPESET_INCOMPLETE`·`print_guard.js`·오답 엔진도 아직이다.
+- 회귀 테스트: `tests/archive-render-one-item.test.js`(Chrome이 있을 때만 실행, 없으면 NOT_RUN으로 건너뜀. CI는 "Archive Output Performance"의 cache-regressions 작업이 Chrome으로 돌린다).
+
 ## 해설·정답 열람은 잠그지 않는다 (2026-11-10 사용자 결정)
 
 - `engine.html`의 `qr=1`·`mode=`는 화면 구성용 값이며 열람 제한 장치가 아니다. 학생이 주소를 바꾸면 해설·정답이 열리지만, 이를 막는 잠금을 추가하지 않는다. 이유: 공부용으로 시험지를 받은 학생이 몇 문제 풀고 바로 확인하는 경우가 있어서다.
