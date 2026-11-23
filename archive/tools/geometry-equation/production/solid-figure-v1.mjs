@@ -9,6 +9,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
 import {orthogonalSquarePrismBoundary} from './orthogonal-square-prism-union.mjs';
+import {noteCandidate} from './score-candidate.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -3439,6 +3440,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}),{textFreeFigure:spec.labels.length===0});}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    if(layout.status!=='PASS')noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS')throw new Stop('SOLID_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');

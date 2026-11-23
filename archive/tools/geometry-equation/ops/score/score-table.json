@@ -69,7 +69,7 @@
    "stage": "post-render",
    "degreeKind": "overlap",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "verify-rendered-layout returns every label client box (labelMeasurements) so label-label overlap area is computable; label-vs-shape boxes are not returned"
   },
   "LABEL_GEOMETRY_COLLISION": {
@@ -269,7 +269,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "RIGHT_ANGLE_LABEL_TOO_FAR": {
@@ -277,7 +277,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL": {
@@ -285,7 +285,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "TICK_LABEL_OWNER_LEADER_TOO_LONG": {
@@ -293,7 +293,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "TICK_LABEL_ALONG_AXIS_MISALIGNMENT": {
@@ -301,7 +301,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE": {
@@ -309,7 +309,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "AXIS_VALUE_LABEL_NOT_ADJACENT": {
@@ -317,7 +317,7 @@
    "stage": "post-render",
    "degreeKind": "distance",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "the observer compares a measured distance with a limit but returns only the code and label id"
   },
   "AXIS_VALUE_LABEL_BEHIND_STROKE": {
@@ -443,7 +443,7 @@
    "stage": "post-render",
    "degreeKind": "outside",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
   },
   "CONDITION_BOX_OVERFLOW": {
@@ -451,7 +451,7 @@
    "stage": "post-render",
    "degreeKind": "outside",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "TEXT_CLIPPED = label box leaves the safe rectangle; box is in labelMeasurements"
   },
   "PUBLICATION_FONT_BELOW_11_CSS_PX": {
@@ -459,7 +459,7 @@
    "stage": "post-render",
    "degreeKind": "fontShortfall",
    "fixed": 6,
-   "degree": "observer-internal",
+   "degree": "output",
    "note": "effectiveFontPx is in labelMeasurements"
   },
   "SOLID_LABELS_NO_ROOM": {
@@ -558,18 +558,18 @@
    "degreeKind": "oversize",
    "degree": "none"
   },
+  "LAYOUT_INVENTORY_INCOMPLETE": {
+   "track": "WAIT_ENGINE",
+   "stage": "placement",
+   "degreeKind": "oversize",
+   "degree": "none"
+  },
   "NUMBER_LINE_LABEL_TOO_LARGE": {
    "track": "WAIT_ENGINE",
    "stage": "placement",
    "degreeKind": "oversize",
    "degree": "output",
    "note": "detail carries height and rowHeight: degree = height/rowHeight-1"
-  },
-  "LAYOUT_INVENTORY_INCOMPLETE": {
-   "track": "INDETERMINATE",
-   "stage": "placement",
-   "degree": "none",
-   "note": "the layout could not place every label (labels listed in engineResult). Listed under 판정 불능 as agreed, but it behaves like NO_ROOM (hint tells the author to pull labels out); the engine line may move it to WAIT_ENGINE"
   },
   "WORKER_TIMEOUT": {
    "track": "INDETERMINATE",

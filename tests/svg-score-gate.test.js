@@ -25,8 +25,8 @@ const dir = path.resolve(__dirname, '..', 'archive/tools/geometry-equation/ops/s
   }
   // the agreed three lanes plus the block list keep their members (a code may be added, never dropped)
   for (const c of ['STAT_LABELS_TOO_CLOSE', 'ANGLE_LABEL_TOO_FAR', 'LABEL_GEOMETRY_COLLISION', 'LABEL_NEAREST_CURVE_MISMATCH', 'TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL', 'STAT_LABEL_OUT_OF_BOUNDS']) assert.strictEqual(score.classify(c).track, 'DEDUCT', c);
-  for (const c of ['SET_ELEMENT_NO_ROOM', 'SOLID_LABELS_NO_ROOM', 'AXIS_VALUE_LABEL_NO_PLACE', 'NUMBER_LINE_LABEL_TOO_LARGE']) assert.strictEqual(score.classify(c).track, 'WAIT_ENGINE', c);
-  for (const c of ['LAYOUT_INVENTORY_INCOMPLETE', 'WORKER_TIMEOUT', 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', 'UNSUPPORTED_DISPLAY_ENVELOPE']) assert.strictEqual(score.classify(c).track, 'INDETERMINATE', c);
+  for (const c of ['LAYOUT_INVENTORY_INCOMPLETE', 'SET_ELEMENT_NO_ROOM', 'SOLID_LABELS_NO_ROOM', 'AXIS_VALUE_LABEL_NO_PLACE', 'NUMBER_LINE_LABEL_TOO_LARGE']) assert.strictEqual(score.classify(c).track, 'WAIT_ENGINE', c);
+  for (const c of ['WORKER_TIMEOUT', 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', 'UNSUPPORTED_DISPLAY_ENVELOPE']) assert.strictEqual(score.classify(c).track, 'INDETERMINATE', c);
   for (const c of ['PUBLICATION_TEXT_NOT_READY', 'GEOMETRY_VIEWPORT_CLIPPING', 'OVERLAY_LINE_MISMATCH', 'SOME_UNLISTED_CODE_X']) assert.strictEqual(score.classify(c).track, 'BLOCK', c);
 
   const one = c => score.scoreFigure({ findings: [{ code: c }], hasSvg: true });

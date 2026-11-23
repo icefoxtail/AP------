@@ -7,6 +7,7 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {presentFields} from './composite-expand-fields.mjs';
 import {runTogether,dropMiddleIntegers} from './number-line-run-together.mjs';
 import * as figure from './number-line-v1.mjs';
+import {noteCandidate} from './score-candidate.mjs';
 
 // A quadratic inequality solution drawn as a fixed chain (one author plan, quadratic-inequality-chain-v1): the quadratic graph in the solution's own
 // variable, then a number line of the solution set (number-line-v1 panel: the interval as a header row, the set on the axis, optional integer points).
@@ -329,6 +330,7 @@ export async function composeNumberLinePanel({plan,model,identity,typographyPoli
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    if(layout.status!=='PASS')noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS')throw new Stop('NUMBER_LINE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');

@@ -9,6 +9,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,valueText,valueTex,checkVariable,NUMBER_LINE_CAPABILITY,NUMBER_LINE_SVG_VERSION,Stop,isDomainCode,esc,overlaps,real,sqrtRat,cmp,approx,floorOf} from './quadratic-inequality-chain-v1.mjs';
+import {noteCandidate} from './score-candidate.mjs';
 
 // A standalone number-line figure (number-line-figure-v1): rows of solution sets on one shared axis scale, optionally the common part of the rows
 // drawn as a last row, integer points over a row, and a row of marked points with an internal division point. Endpoints are exact rationals or an
@@ -1066,6 +1067,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    if(layout.status!=='PASS')noteCandidate({site:'panel',svg:svg,violations:layout.violations,errors:layout.errors});
     if(layout.status!=='PASS')throw new Stop('NUMBER_LINE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
     state.svg=svg;
     return outcome('COMPOSED');
