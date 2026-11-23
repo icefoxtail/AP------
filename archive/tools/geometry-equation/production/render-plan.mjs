@@ -89,7 +89,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),bestEffort:row.bestEffort,roomTrace:row.roomTrace};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,ignoredAuthoredFields:row.ignoredAuthoredFields,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),bestEffort:row.bestEffort,roomTrace:row.roomTrace};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -106,8 +106,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       authored=JSON.parse(fs.readFileSync(authored,'utf8'));
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
-    // roomPad is the frame padding only the label-room rescue below sets (phase2 ROOM_PADS); a plan that carries it from its author would change the frame of the first try
-    if(authored.roomPad!==undefined)throw new Error('ROOM_PAD_NOT_AUTHORABLE: roomPad is set only by the engine label-room rescue; delete it from the plan');
+    // roomPad is the frame padding only the label-room rescue below sets (phase2 ROOM_PADS) and the bound plan of a rescued figure keeps it. A plan that carries it (a rescued figure rendered again, or an author's) is not refused: the first try starts without it
+    // (so its frame is the written one) and the ladder puts it back when the figure fails again, so the same figure comes out. The result row says it was ignored.
+    if(authored.roomPad!==undefined){const {roomPad:_ignored,...rest}=authored;authored=rest;(row.ignoredAuthoredFields??=[]).push('roomPad');}
     where.authored=where.plan=authored;
     // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
     {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
