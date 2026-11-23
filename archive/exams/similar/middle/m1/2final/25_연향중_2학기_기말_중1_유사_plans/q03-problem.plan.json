@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "별 모양 다각형의 꼭짓점 각",
+  "accessibilityDescription": "다섯 꼭짓점의 각이 주어진 별 모양 다각형을 나타낸 그림이다.",
+  "sourceQuote": "다음 별 모양의 도형에서 $\\angle x$",
+  "newVisualInformation": [],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "star polygon with 5 vertices",
+      "mappedTo": "segments connecting vertices"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "162"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "234"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "306"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 36,
+        "label": "30",
+        "arcs": 1
+      },
+      {
+        "id": "angB",
+        "refs": [
+          "E",
+          "B",
+          "D"
+        ],
+        "value": 36,
+        "label": "40",
+        "arcs": 1
+      },
+      {
+        "id": "angC",
+        "refs": [
+          "A",
+          "C",
+          "E"
+        ],
+        "value": 36,
+        "label": "35",
+        "arcs": 1
+      },
+      {
+        "id": "angD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 36,
+        "label": "45",
+        "arcs": 1
+      },
+      {
+        "id": "angE",
+        "refs": [
+          "C",
+          "E",
+          "B"
+        ],
+        "value": 36,
+        "label": "x",
+        "arcs": 1
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "assetPath": "assets/images/25_연향중_2학기_기말_중1_유사/q03.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q03-result.json",
+    "statePath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q03-state.json",
+    "svgPath": "archive/assets/images/25_연향중_2학기_기말_중1_유사/q03-solution.svg"
+  }
+}
