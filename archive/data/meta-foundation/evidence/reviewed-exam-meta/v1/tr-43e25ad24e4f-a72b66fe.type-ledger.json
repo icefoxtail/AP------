@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-43e25ad24e4f-a72b66fe",
+  "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_870c319dcfb9dd422614d4e0eae0cb6e605a4040b6e22d4a2ee71c0112b35083",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_COPY_PROPERTIES",
+      "step": "동일 원호의 반지름 OP=OQ와 옮긴 현 PQ=CD를 확인하되 반지름 AC와 현 CD의 같음은 보장되지 않는다.",
+      "note": "새 TPL 제안: 각 복사 작도의 길이·각 관계: 같은 반지름과 복사한 현으로 보장되는 길이와 각을 판별하고 반지름과 현의 등길이 혼동을 배제한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음. 원문 의심: 직접 본 SVG는 C가 반직선 AB 위, D가 새 반직선 위에 있다. 따라서 보기 ㄹ의 ∠CAB는 0도이며 복사한 각은 ∠DAB로 보인다. 정답·해설은 ㄹ을 참으로 처리한다. 원문 수정하지 않음.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

@@ -18,7 +18,9 @@ vm.createContext(context);
 vm.runInContext(fs.readFileSync(packsPath, 'utf8'), context, { filename: packsPath });
 const data = context.window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL;
 assert(data && Array.isArray(data.packs), '모의고사 자료 객체가 없습니다.');
-assert(data.packs.length === 5, `모의고사는 5회여야 합니다: ${data.packs.length}`);
+// 이 검사는 선정 목록(selection-m1-2final-mock.json)의 기본 5회만 본다. 시험 범위 맞춤 모의고사(MOCK_..._S1_NN)는 tests/assessment-scoped-mock-packs.test.js가 본다.
+const basePacks = data.packs.filter((pack) => /^MOCK_2026_2SEM_FINAL_M1_\d\d$/.test(pack.id));
+assert(basePacks.length > 0 && data.packs.slice(0, basePacks.length).every((pack, i) => pack === basePacks[i]), `기본 모의고사는 자료의 앞부분에 있어야 합니다: ${basePacks.length}`);
 assert(JSON.stringify(data.categoryOrder) === JSON.stringify(['26년 2학기 기말 모의고사']), '탭 이름이 다릅니다.');
 
 const allowedUnits = new Set(['M1-06', 'M1-07', 'M1-08']);
@@ -40,7 +42,7 @@ function assertFile(rel, label) {
   assert(fs.existsSync(path.join(archiveRoot, rel)), `${label}: 그림 파일이 없습니다: ${rel}`);
 }
 
-data.packs.forEach((pack, index) => {
+basePacks.forEach((pack, index) => {
   const tag = pack.id;
   assert(pack.id === `MOCK_2026_2SEM_FINAL_M1_${String(index + 1).padStart(2, '0')}`, `팩 id 이상: ${pack.id}`);
   assert(pack.title === `중1 2학기 기말 모의고사 ${index + 1}회`, `${tag}: 제목 이상: ${pack.title}`);
@@ -74,7 +76,7 @@ data.packs.forEach((pack, index) => {
     assert(Number(q._sourceYear) >= 22 && Number(q._sourceYear) <= 25, `${where}: 쓸 수 없는 연도입니다: ${q._sourceYear}`);
     assert(q.l3Disposition !== 'HOLD' && q.l4Disposition !== 'HOLD' && !q.itemHold, `${where}: 보류 표시가 있는 문항입니다.`);
     assert(['하', '중', '상'].includes(q.level), `${where}: level 이상`);
-    assert(!/^\s*(\[[^\]]*(서술|논술|서답)[^\]]*\]|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
+    assert(!/^\s*(\[[^\]]*(서술|논술|서답)[^\]]*\]|(?:&lt;|<)[^&<>]*(서술|논술|서답)[^&<>]*(?:&gt;|>)|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
     // 배점 표기 0: 발문 속 [3점], (5점), [4.5점], [5점, 부분점수 있음], (과정: 2점, ...) 같은 원 시험지 배점. 발문 속 "60점 이상" 같은 점수 말은 허용한다.
     const maskedStem = String(q.content).replace(/\$[^$]*\$/g, ' ');
     assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(maskedStem), `${where}: 발문에 배점 표기가 남았습니다.`);
@@ -106,9 +108,9 @@ data.packs.forEach((pack, index) => {
 
 // 선정 목록과 자료 파일 일치
 const selection = JSON.parse(fs.readFileSync(selectionPath, 'utf8'));
-assert(selection.sets.length === 5, '선정 목록이 5회가 아닙니다.');
+assert(selection.sets.length === basePacks.length, `선정 목록 회차(${selection.sets.length})와 기본 모의고사(${basePacks.length})가 다릅니다.`);
 selection.sets.forEach((setDef, i) => {
-  const pack = data.packs[i];
+  const pack = basePacks[i];
   assert(setDef.items.length === pack.questions.length, `선정 목록 ${i + 1}회 문항 수가 자료와 다릅니다.`);
   setDef.items.forEach((item, k) => {
     const q = pack.questions[k];
@@ -118,9 +120,10 @@ selection.sets.forEach((setDef, i) => {
 });
 
 // 자료 파일은 생성기로 다시 만들 수 있어야 하고, 원본 문항과 같아야 한다(서술형 앞머리 번호 제거 제외).
-const { buildPacks, renderFile } = require(path.join(archiveRoot, 'tools', 'assessment-mock', 'build-m1-2final-mock.cjs'));
+// 자료 파일 앞 5회는 선정 목록에서 다시 만든 결과와 같아야 한다(뒤의 시험 범위 맞춤 모의고사는 카탈로그에 달려 있어 여기서 다시 만들지 않는다).
+const { buildPacks } = require(path.join(archiveRoot, 'tools', 'assessment-mock', 'build-m1-2final-mock.cjs'));
 const rebuilt = buildPacks();
-assert(renderFile(rebuilt.packs, rebuilt.summary) === fs.readFileSync(packsPath, 'utf8'),
-  '자료 파일이 생성기 결과와 다릅니다. node archive/tools/assessment-mock/build-m1-2final-mock.cjs 로 다시 만드세요.');
+assert(JSON.stringify(rebuilt.packs) === JSON.stringify(basePacks),
+  '기본 5회가 선정 목록·원본과 다릅니다. node archive/tools/assessment-mock/build-m1-2final-mock.cjs 로 다시 만드세요.');
 
-console.log('assessment-mock-2sem-final-packs.test.js: OK (5회 x 24문항, 객관식 20 + 서술형 4)');
+console.log('assessment-mock-2sem-final-packs.test.js: OK (기본 모의고사 x 24문항, 객관식 20 + 서술형 4)');

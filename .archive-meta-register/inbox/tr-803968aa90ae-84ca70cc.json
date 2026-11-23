@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-803968aa90ae-84ca70cc",
+  "examUid": "26_효천고_1학기_중간_고2_대수_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js",
+  "expectedSourceBlobSha1": "c65f6eff3f9649d006ecd5659f1a4c51b5266bc0",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-803968aa90ae-84ca70cc.type-ledger.json",
+        "sha256": "34af1d03f77a8a13049cbad0a5dd5ff9d2e92ae8a09b59e54927c368c788ee74"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e35c6509837b87e9aaf2f82b9d4e53cc1eaaf497a41f07e3746cc19cbc07d27b",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION"
+      },
+      "rationale": "일대일대응을 위해 두 조각의 치역이 맞닿는 조건으로 경계 k를 제한한 뒤 정수 a별 허용 b를 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "c06458c72b74bfcebd88deba0cf2fa16f4f876b4db85fabe75b4beda2d28134f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-803968aa90ae-84ca70cc.type-ledger.json",
+          "sha256": "34af1d03f77a8a13049cbad0a5dd5ff9d2e92ae8a09b59e54927c368c788ee74"
+        }
+      ]
+    }
+  ]
+}

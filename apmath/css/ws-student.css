@@ -233,3 +233,8 @@ body.ap-modal-open .ap-student-detail-shell > .ap-student-profile-head {
 @media (max-width: 600px) {
     .ws-exam-clinic-bar__open { flex: 1 1 100%; }
 }
+
+/* ---- 학생 상세 · 성적 탭: 시험별 자습 한 줄 (student.js, js/ws-self-study.js). 기록이 없으면 칸이 비어 보이지 않는다. ---- */
+.ap-ss-line:empty { display: none; }
+.ap-ss-line { margin-top: 3px; }
+.ap-ss-line__text { color: var(--primary); font-size: 12px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }

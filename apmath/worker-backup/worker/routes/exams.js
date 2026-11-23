@@ -1,7 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
-import { loadSelfStudyForAssignment } from '../helpers/student-self-study.js';
+import { loadSelfStudyForAssignment, loadSelfStudyStudentCountsForClass } from '../helpers/student-self-study.js';
 import { extractArchiveQuestionsFromText, resolveArchiveQuestionNo } from '../helpers/archive-question-bank.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
@@ -10,7 +10,9 @@ import {
   buildBlueprintMetadataSnapshot,
   loadBlueprintCanonicalMetadata,
   loadBlueprintSourceVerification,
+  requireStudentAccess,
 } from '../helpers/archive2-questions.js';
+import { loadGivenQuestionUids } from '../helpers/given-question-uids.js';
 import { handleArchiveSavedPapers } from './archive-saved-papers.js';
 import {
   assignmentLifecycleError,
@@ -2069,6 +2071,37 @@ export async function handleExams(request, env, teacher, path, url) {
       return jsonResponse({ success: true, class_id: classId, students });
     }
 
+    // 이 학생(들) 또는 이 반에 이미 준 문항 UID 목록(읽기 전용). 단원별 기출이 "이미 준 문항 빼고 뽑기"에 쓴다.
+    // 쿼리: student_ids=a,b,c (최대 200) 또는 class_id=…, 선택 from=YYYY-MM-DD(그 출제일부터).
+    if (method === 'GET' && id === 'given-questions') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+      const classId = normalizeOptionalText(url.searchParams.get('class_id'));
+      const studentIds = [...new Set(String(url.searchParams.get('student_ids') || '')
+        .split(',').map(value => value.trim()).filter(Boolean))];
+      if (!classId === !studentIds.length) {
+        return jsonResponse({ success: false, error: 'class_id or student_ids required (one of them)' }, 400);
+      }
+      if (studentIds.length > 200) {
+        return jsonResponse({ success: false, error: 'too many students (max 200)' }, 400);
+      }
+      try {
+        if (classId) {
+          if (!(await canAccessClass(currentTeacher, classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+        } else {
+          await requireStudentAccess(currentTeacher, studentIds, env);
+        }
+        const from = normalizeBoardDate(url.searchParams.get('from')) || '';
+        return jsonResponse({
+          success: true,
+          ...(await loadGivenQuestionUids(env, { studentIds, classId: classId || '', from })),
+        });
+      } catch (error) {
+        return jsonResponse({ success: false, error: error.message || 'given questions lookup failed' }, error.status || 500);
+      }
+    }
+
     if (method === 'GET' && id === 'board') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -2776,6 +2809,11 @@ export async function handleExams(request, env, teacher, path, url) {
       const dedupedAssignments = dedupeClassExamAssignments(assignments.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, dedupedAssignments.map(a => a.id));
       const identityData = await loadClinicQuestionIdentityData(env, sessions.results || []);
+      // 시험 목록의 "자습 N명" 표시용. 반 하나를 한 번에 센다(시험마다 조회하지 않는다). 테이블이 없으면 필드를 싣지 않는다.
+      const selfStudyCounts = await loadSelfStudyStudentCountsForClass(env, classId);
+      const listedAssignments = selfStudyCounts.available
+        ? dedupedAssignments.map(a => ({ ...a, self_study_students: selfStudyCounts.counts[String(a.id)] || 0 }))
+        : dedupedAssignments;
 
       return jsonResponse({
         success: true,
@@ -2784,7 +2822,7 @@ export async function handleExams(request, env, teacher, path, url) {
         wrong_answers: wrongs.results,
         blueprints: blueprints.results,
         ...identityData,
-        assignments: dedupedAssignments,
+        assignments: listedAssignments,
         exclusions
       });
     }

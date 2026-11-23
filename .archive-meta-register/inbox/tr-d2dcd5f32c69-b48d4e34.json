@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-d2dcd5f32c69-b48d4e34",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+  "expectedSourceBlobSha1": "40b939b5959c532f0bf59a10728298765cc43b2f",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-d2dcd5f32c69-b48d4e34.type-ledger.json",
+        "sha256": "4e80fad4aa2899380781b9dd2855e0d23b1e1ac80391a1b3f855b971e0f7327a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_accc49ec5702f68c413d32cc8f5878a6b40854ca96986f9ba10caf8e36d08baf",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "rationale": "동일 외부점 접선PA=PB=6을 얻고 끼인각60도로 넓이를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "92056969d826c8762c5cdf07123290fa794fb86662724cc7d2b1013c32816c71",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-d2dcd5f32c69-b48d4e34.type-ledger.json",
+          "sha256": "4e80fad4aa2899380781b9dd2855e0d23b1e1ac80391a1b3f855b971e0f7327a"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-57cac0d451e8-f0820431",
+  "examUid": "26_삼산중_1학기_중간_중3_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+  "expectedSourceBlobSha1": "0fab23f84e81836d9b10f63998efd54486b01c35",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-57cac0d451e8-f0820431.type-ledger.json",
+        "sha256": "91f4d020eba254958e66009d6b35d1927494d278b6563154549ab4f6513bba1f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_55229f532dbb61c0b95b565306bd0637c141212b0ad57e4d1803109d1666c43a",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+      },
+      "rationale": "닮은 두 직사각형의 대응변 비 x:√6=√6:x/2에서 x=2√3을 구하고 사다리꼴 넓이를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "45c6ad8bea76398c29d0ffce7fbd65b8a1d25cf58207c8858771d3aeffb7f92b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-57cac0d451e8-f0820431.type-ledger.json",
+          "sha256": "91f4d020eba254958e66009d6b35d1927494d278b6563154549ab4f6513bba1f"
+        }
+      ]
+    }
+  ]
+}

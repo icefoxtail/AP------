@@ -577,6 +577,8 @@
       let { outputEnvelope } = await preparePaper(unitKey, paperIndex, button);
       if (mode === 'sol' || mode === 'ans') outputEnvelope = await window.Archive2Output.publishOutputEnvelopeMode(outputEnvelope, mode);
       popup.location.href = appendSessionHash(outputEnvelopeUrl(outputEnvelope).href);
+      // 출제로 등록하지 않고 인쇄만 해도 이번 접속에서는 "이미 준 문항"으로 기억한다(대상을 골랐을 때만).
+      try { gridNoteGiven(getPaper(unitKey, paperIndex)?.records); } catch (error) { /* 기억하지 못해도 인쇄는 그대로 */ }
     }
     catch (error) { popup.close(); console.error(error); setStatus(error.message || '문제지 준비에 실패했습니다.', true); alert(error.message || '문제지 준비에 실패했습니다.'); }
   }
@@ -1169,7 +1171,10 @@
     profileId: '', course: '', cells: new Set(), checked: new Set(), open: new Set(), typeOff: new Set(), tree: null, entry: null, typeRows: [],
     amount: 'all', perCell: 10, order: 'recent',
     src: gridDefaultSrc(), sourceFilter: null, schoolQuery: '', schoolEdit: false, schoolRows: [], schoolLabels: new Map(), condOpen: false,
-    view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false, editing: '', editPushed: false
+    view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false, editing: '', editPushed: false,
+    // 대상(반·학생)과 "이미 준 문항 빼기": 대상을 안 고르면 전부 비어 있고 뽑기는 이전과 같다.
+    target: null, exclude: true, given: { status: 'idle', key: '', uids: new Set(), assignments: 0, unresolved: 0, truncated: false, reason: '' }, givenToken: 0,
+    givenVersion: 0, resultVersion: 0, givenStale: false, picking: false, sessionGiven: null, classes: { state: 'idle', rows: [] }, roster: { classId: '', state: 'idle', rows: [] }
   };
 
   const treeApi = () => window.Archive2UnitTree || null;
@@ -1380,12 +1385,15 @@
     }
     if (G.typeOff.size) options.excludedTypeKeys = [...G.typeOff];
     if (G.sourceFilter && G.sourceFilter.active) options.sourceFilter = G.sourceFilter;
+    const given = gridGivenSet();
+    if (given) options.givenUids = given;
     return options;
   }
   function gridRecompute() {
     try {
       G.result = core.buildSelectionPapers([...G.cells].map(gridParseKey), gridSelectionOptions());
     } catch (error) { console.error(error); G.result = null; }
+    G.resultVersion = G.givenVersion;
     if (!gridHasPapers()) G.view = 'grid';
     gridWriteStore();
   }
@@ -1451,6 +1459,7 @@
     return stored && core.PROFILES[stored.profileId] ? stored.profileId : '';
   }
   function gridInit() {
+    gridTargetRestore();
     const stored = gridReadStore();
     gridApplyStoredOptions(stored);
     const params = new URLSearchParams(window.location.search);
@@ -1625,13 +1634,14 @@
   function gridSummaryHtml() {
     const result = G.result;
     if (!gridHasPapers()) return '<h2 class="ug-sum-title">고른 칸이 없습니다</h2><p class="ug-sum-empty">표에서 단원과 단계가 만나는 칸을 누르세요. 단원을 여러 개 체크한 뒤 단계 버튼을 누르면 한 번에 고를 수 있습니다.</p>';
-    const note = result.shortages.length ? `<p class="ug-note">모자란 칸 ${result.shortages.length}곳은 있는 만큼만 넣었습니다. ${escapeHtml(gridShortText(result.shortages))}.</p>` : '';
+    const note = (result.shortages.length ? `<p class="ug-note">모자란 칸 ${result.shortages.length}곳은 있는 만큼만 넣었습니다. ${escapeHtml(gridShortText(result.shortages))}.</p>` : '') + gridGivenNoteHtml(result);
     return `<div class="ug-sum-block"><h2 class="ug-sum-title">${escapeHtml(gridResultTitle(result))}</h2><div class="ug-sum-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong></div>${gridSumSchoolsHtml(result)}${note}${gridMiniTableHtml(result)}</div>`;
   }
   function gridBarHtml() {
     const result = G.result;
     if (!gridHasPapers()) return '<div class="ug-bar-text"><strong class="ug-bar-count">고른 칸이 없습니다</strong><span class="ug-bar-note">단원 칸을 눌러 고르세요</span></div><button type="button" class="ug-primary" disabled>문제지 보기</button>';
-    const note = result.shortages.length ? `모자란 칸 ${result.shortages.length}곳은 있는 만큼만` : gridResultTitle(result);
+    const note = result.given && result.given.active && G.exclude && G.target ? gridGivenNoteText(result)
+      : result.shortages.length ? `모자란 칸 ${result.shortages.length}곳은 있는 만큼만` : gridResultTitle(result);
     return `<div class="ug-bar-text"><strong class="ug-bar-count">${result.total.toLocaleString()}문항 · ${result.papers.length}권</strong><span class="ug-bar-note">${escapeHtml(note)}</span></div><button type="button" class="ug-primary" onclick="UnitPastExams.gridShowPapers()">문제지 보기</button>`;
   }
   function gridOrdersHtml() {
@@ -1702,6 +1712,240 @@
     if (G.typeOff.size) parts.push(`유형 ${G.typeOff.size}종을 뺀 문항 수입니다.`);
     return parts.join(' ');
   }
+  // ---- 대상 · 이미 준 문항 빼기 (2026-11-23) ----
+  // 같은 학생에게 같은 단원으로 다시 뽑아 줄 때 앞서 준 문항이 아닌 다른 문항이 나오게 한다. 대상(반 → 학생 또는 반 전체)을 고르면
+  // 서버 출제 기록에서 그 대상에게 이미 준 문항 UID를 받아(archive2-given-questions.js) 뽑기에서 뺀다(core의 givenUids).
+  // 대상을 안 고르면 이 기능은 없는 것과 같고, 조회가 실패해도 뽑기는 그대로 진행한다. 후보가 모자라면 빈 자리 대신 이미 준 문항으로 채운다.
+  // 출제로 등록하지 않고 인쇄만 한 문제지는 서버에 기록이 없으므로, 이 화면에서 인쇄했거나 "다시 뽑기"를 누른 문항은 이번 접속 동안 따로 기억해 뺀다.
+  const GQ = () => window.Archive2GivenQuestions || null;
+  const TARGET_STORAGE_KEY = 'archive2.unitGiven.target.v1';
+  function gridSession() {
+    if (!G.sessionGiven && GQ()) {
+      let storage = null;
+      try { storage = window.sessionStorage; } catch (error) { storage = null; }
+      G.sessionGiven = GQ().createSessionMemory(storage);
+    }
+    return G.sessionGiven;
+  }
+  function gridTargetKey() { return GQ() ? GQ().targetKey(G.target) : ''; }
+  // 지금 뽑기에서 뺄 문항 UID(서버 기록 + 이번 접속에서 이미 뽑은 것). 대상이 없거나 체크가 꺼져 있거나 비어 있으면 null.
+  function gridGivenSet() {
+    const key = gridTargetKey();
+    if (!key || !G.exclude || !GQ()) return null;
+    const set = GQ().union(G.given.key === key && G.given.status === 'ready' ? G.given.uids : null, gridSession().get(key));
+    return set.size ? set : null;
+  }
+  function gridTargetIsClass() { return Boolean(G.target && G.target.kind === 'class'); }
+  function gridTargetName() {
+    if (!G.target) return '';
+    return G.target.kind === 'student' ? `${G.target.className ? `${G.target.className} · ` : ''}${G.target.studentName || '학생'}` : (G.target.className || '반');
+  }
+  function gridTargetSave() {
+    // id만 저장한다(반·학생 이름은 저장하지 않고, 복원 때 반 목록·명단에서 채운다).
+    const saved = G.target ? { kind: G.target.kind, classId: G.target.classId, studentId: G.target.studentId, exclude: G.exclude } : null;
+    try { window.sessionStorage.setItem(TARGET_STORAGE_KEY, JSON.stringify(saved)); } catch (error) { /* 저장소가 막혀 있어도 화면은 동작한다 */ }
+  }
+  // 복원된 대상의 이름을 반 목록·명단이 도착한 뒤 채운다.
+  function gridTargetFillNames() {
+    if (!G.target) return;
+    if (!G.target.className) { const row = G.classes.rows.find(item => item.id === G.target.classId); if (row) G.target.className = row.name; }
+    if (G.target.kind === 'student' && !G.target.studentName && G.roster.classId === G.target.classId) {
+      const row = G.roster.rows.find(item => item.id === G.target.studentId);
+      if (row) G.target.studentName = row.name;
+    }
+  }
+  function gridTargetRestore() {
+    if (G.target || !GQ()) return;
+    try {
+      const saved = JSON.parse(window.sessionStorage.getItem(TARGET_STORAGE_KEY) || 'null');
+      if (!saved || !GQ().targetKey(saved)) return;
+      G.target = { kind: saved.kind, classId: String(saved.classId || ''), className: '', studentId: String(saved.studentId || ''), studentName: '' };
+      G.exclude = saved.exclude !== false;
+      G.givenVersion += 1;
+    } catch (error) { /* 깨진 값은 무시한다 */ }
+  }
+  function gridGivenReset() { G.givenToken += 1; G.given = { status: 'idle', key: '', uids: new Set(), assignments: 0, unresolved: 0, truncated: false, reason: '' }; }
+  // 서버 출제 기록 조회. 던지지 않고(실패는 reason으로), 끝나면 표를 다시 센다.
+  async function gridLoadGiven() {
+    const key = gridTargetKey();
+    const token = ++G.givenToken;
+    if (!key) { gridGivenReset(); gridTargetPatch(); return; }
+    // 같은 대상을 다시 확인할 때(권 목록을 보고 온 뒤)는 앞서 받은 기록을 그대로 쓰면서 새로 받는다(깜빡이지 않게).
+    const previous = G.given.key === key && G.given.status === 'ready';
+    if (!previous) {
+      G.given = { status: 'loading', key, uids: new Set(), assignments: 0, unresolved: 0, truncated: false, reason: '' };
+      gridTargetPatch();
+    }
+    const result = await GQ().fetchGiven(assignRequest, G.target);
+    if (token !== G.givenToken) return;
+    if (!result.ok && previous) return; // 다시 확인이 실패하면 앞서 받은 기록을 그대로 둔다
+    G.given ={ status: result.ok ? 'ready' : 'failed', key, uids: result.uids, assignments: result.assignments, unresolved: result.unresolved, truncated: result.truncated, reason: result.reason };
+    G.givenVersion += 1;
+    gridGivenApplied();
+  }
+  // 새 기록이 들어오면: 표 화면이면 바로 다시 뽑고, 권 목록을 보고 있으면 그 화면은 그대로 두고 표로 돌아갈 때 다시 뽑는다.
+  function gridGivenApplied() {
+    if (G.view === 'grid' && G.profileId && document.getElementById('ug-sum')) gridRefresh(); else gridTargetPatch();
+  }
+  function gridTargetClasses() {
+    if (G.classes.state === 'loading' || G.classes.state === 'ready') return Promise.resolve();
+    G.classes = { state: 'loading', rows: [] };
+    gridTargetPatch();
+    return assignRequest('/qr-classes', { method: 'GET' }).then(data => {
+      const rows = Array.isArray(data && data.classes) ? data.classes : Array.isArray(data && data.data) ? data.data : [];
+      G.classes = { state: 'ready', rows: GQ().classOptions(rows, getProfile().grade) };
+    }).catch(error => {
+      G.classes = { state: Number(error && error.status) === 401 ? 'login' : 'error', rows: [] };
+    }).then(() => { gridTargetPatch(); if (G.target && G.target.classId) gridTargetRoster(G.target.classId); });
+  }
+  function gridTargetRoster(classId) {
+    if (!classId || (G.roster.classId === classId && (G.roster.state === 'loading' || G.roster.state === 'ready'))) return Promise.resolve();
+    G.roster = { classId, state: 'loading', rows: [] };
+    gridTargetPatch();
+    return assignRequest(`/class-exam-assignments/roster?class_id=${encodeURIComponent(classId)}`, { method: 'GET' }).then(data => {
+      if (G.roster.classId !== classId) return;
+      G.roster = { classId, state: 'ready', rows: GQ().rosterOptions(data && data.students) };
+    }).catch(() => {
+      if (G.roster.classId === classId) G.roster = { classId, state: 'error', rows: [] };
+    }).then(() => { if (G.roster.classId === classId) gridTargetPatch(); });
+  }
+  function gridTargetSet(target) {
+    G.target = target;
+    G.givenVersion += 1;
+    gridTargetSave();
+    gridLoadGiven();
+    gridGivenApplied();
+  }
+  function gridTargetClass(classId) {
+    classId = String(classId || '');
+    if (!classId) { gridTargetSet(null); return; }
+    const row = G.classes.rows.find(item => item.id === classId);
+    gridTargetRoster(classId);
+    gridTargetSet({ kind: 'class', classId, className: row ? row.name : (G.target && G.target.classId === classId ? G.target.className : ''), studentId: '', studentName: '' });
+  }
+  function gridTargetStudent(studentId) {
+    studentId = String(studentId || '');
+    if (!G.target) return;
+    const row = G.roster.rows.find(item => item.id === studentId);
+    if (!studentId || !row) { gridTargetSet({ kind: 'class', classId: G.target.classId, className: G.target.className, studentId: '', studentName: '' }); return; }
+    gridTargetSet({ kind: 'student', classId: G.target.classId, className: G.target.className, studentId, studentName: row.name });
+  }
+  function gridTargetExclude(checked) {
+    G.exclude = Boolean(checked);
+    G.givenVersion += 1;
+    gridTargetSave();
+    gridGivenApplied();
+  }
+  function gridTargetRetry() { G.classes = { state: 'idle', rows: [] }; gridTargetClasses(); if (G.target) gridLoadGiven(); }
+  function gridTargetOpened(details) {
+    if (details && details.open) { gridTargetClasses(); if (G.target && !G.given.key) gridLoadGiven(); }
+  }
+  // 이번 접속에서 이미 뽑은(인쇄·다시 뽑기) 문항을 대상별로 기억한다. 대상이 없으면 아무것도 하지 않는다.
+  function gridNoteGiven(records) {
+    const key = gridTargetKey();
+    if (!key || !GQ()) return 0;
+    const added = gridSession().add(key, (records || []).map(record => core.getQuestionUid(record)).filter(Boolean));
+    if (added) G.givenVersion += 1;
+    return added;
+  }
+  function gridTargetForget() {
+    const key = gridTargetKey();
+    if (!key) return;
+    gridSession().clear(key);
+    G.givenVersion += 1;
+    gridGivenApplied();
+  }
+  // 권 목록의 "다시 뽑기": 지금 보이는 문제지의 문항을 이미 뽑은 것으로 치고 같은 선택으로 다시 뽑는다(인쇄·출제 등록 전이어도).
+  async function gridPickNext() {
+    if (!G.target || !G.exclude || !gridHasPapers() || G.picking) return;
+    G.picking = true;
+    const added = gridNoteGiven(G.result.papers.flatMap(paper => paper.records));
+    // 그 사이 출제로 등록한 문제지도 빼도록 서버 기록을 다시 받는다(실패해도 그대로 진행).
+    setStatus('이미 준 문항을 확인하고 다시 뽑는 중입니다.');
+    try { await gridLoadGiven(); } finally { G.picking = false; }
+    if (G.view !== 'papers') return;
+    gridRecompute();
+    if (!gridHasPapers()) G.view = 'grid';
+    renderGrid();
+    setStatus(added ? '지금 문제지의 문항은 이미 뽑은 것으로 보고 다시 뽑았습니다.' : '이미 뽑은 문항을 뺀 같은 선택으로 다시 뽑았습니다.');
+  }
+  // 결과 줄(요약·막대·권 목록 머리): 제외 건수와 겹침. 조회 실패는 제외 없이 뽑았다는 안내로 바꾼다.
+  function gridGivenNoteText(result) {
+    if (!G.target || !G.exclude || !GQ()) return '';
+    if (G.given.status === 'failed' && !gridGivenSet()) return GQ().failureMessage(G.given.reason);
+    const given = result && result.given;
+    if (!given || !given.active) return '';
+    if (given.allGiven) return `고른 범위가 모두 이미 준 문항이라 ${given.overlap}개를 그대로 넣었습니다.`;
+    const parts = [`이미 준 문항 ${given.excluded.toLocaleString()}개 제외`];
+    if (given.overlap) parts.push(`후보가 모자라 이미 준 문항 ${given.overlap.toLocaleString()}개 포함`);
+    return parts.join(' · ');
+  }
+  function gridGivenNoteHtml(result) {
+    const text = gridGivenNoteText(result);
+    return text ? `<p class="ug-note ug-given-note">${escapeHtml(text)}</p>` : '';
+  }
+  function gridTargetNowText() { return G.target ? gridTargetName() : '대상 없음'; }
+  function gridTargetStatHtml() {
+    if (!G.target) return '<p class="ug-types-help">반이나 학생을 고르면 그 대상에게 이미 준 문항을 빼고 뽑습니다. 고르지 않아도 지금처럼 뽑을 수 있습니다.</p>';
+    const lines = [];
+    const key = gridTargetKey();
+    // 이번 접속에서 이미 뽑은 문항 중 서버 기록에 아직 없는 것(인쇄만 했거나 방금 뽑은 것)만 따로 센다.
+    const mineAll = key ? gridSession().get(key) : new Set();
+    const mine = [...mineAll].filter(uid => !(G.given.key === key && G.given.uids.has(uid))).length;
+    if (!G.exclude) lines.push('빼기를 끄고 뽑는 중입니다.');
+    else if (G.given.status === 'loading') lines.push('출제 기록에서 이미 준 문항을 확인하는 중…');
+    else if (G.given.status === 'failed') lines.push(GQ().failureMessage(G.given.reason));
+    else if (G.given.status === 'ready') {
+      const found = G.given.uids.size;
+      lines.push(found ? `출제 기록 ${G.given.assignments.toLocaleString()}건에서 이미 준 문항 ${found.toLocaleString()}개를 찾았습니다.` : `${gridTargetIsClass() ? '이 반' : '이 학생'}에게 출제로 등록한 문항이 없습니다.`);
+      if (G.given.unresolved) lines.push(`문항을 알 수 없는 출제 ${G.given.unresolved.toLocaleString()}건은 뺄 수 없습니다.`);
+      if (G.given.truncated) lines.push('출제 기록이 많아 최근 건만 확인했습니다.');
+    }
+    if (G.exclude && mine) lines.push(`이번 접속에서 이미 뽑은 문항 ${mine.toLocaleString()}개도 뺍니다.`);
+    const resultNote = G.exclude ? gridGivenNoteText(G.result) : '';
+    if (resultNote && G.given.status !== 'failed') lines.push(resultNote);
+    const forget = G.exclude && mine ? '<button type="button" class="ug-link-btn" data-focus="g:forget" onclick="UnitPastExams.gridTargetForget()">이번 접속 기록 지우기</button>' : '';
+    return `<p class="ug-types-help" role="status">${escapeHtml(lines.join(' '))}</p>${forget}`;
+  }
+  function gridTargetBodyHtml() {
+    if (!GQ()) return '';
+    const help = '<p class="ug-types-help">출제로 등록한 문제지만 제외됩니다. 등록 없이 인쇄만 한 문제지는 이 화면에서 인쇄하거나 ‘다시 뽑기’를 누른 것만 이번 접속 동안 제외됩니다.</p>';
+    if (G.classes.state === 'idle' || G.classes.state === 'loading') return `${help}<p class="ug-types-help">반 목록을 불러오는 중…</p>`;
+    if (G.classes.state === 'login') return `${help}<p class="ug-types-help">선생님 로그인이 필요합니다. 로그인하지 않아도 지금처럼 뽑을 수 있습니다.</p>`;
+    if (G.classes.state === 'error') return `${help}<p class="ug-types-help">반 목록을 불러오지 못했습니다. 대상 없이 뽑을 수 있습니다.</p><button type="button" class="ug-link-btn" data-focus="g:retry" onclick="UnitPastExams.gridTargetRetry()">다시 시도</button>`;
+    const grade = getProfile().grade;
+    const option = item => `<option value="${escapeHtml(item.id)}"${G.target && G.target.classId === item.id ? ' selected' : ''}>${escapeHtml(item.name)}</option>`;
+    const same = G.classes.rows.filter(item => item.grade === grade);
+    const others = G.classes.rows.filter(item => item.grade !== grade);
+    const known = G.target && G.target.classId && G.classes.rows.some(item => item.id === G.target.classId);
+    const classOptions = `<option value="">대상 없음</option>${G.target && G.target.classId && !known ? option({ id: G.target.classId, name: G.target.className || '반' }) : ''}${same.length ? `<optgroup label="${escapeHtml(grade)}">${same.map(option).join('')}</optgroup>` : ''}${others.length ? `<optgroup label="${same.length ? '다른 학년' : '반'}">${others.map(option).join('')}</optgroup>` : ''}`;
+    const classId = G.target ? G.target.classId : '';
+    let students = '';
+    if (classId) {
+      if (G.roster.classId === classId && G.roster.state === 'ready') {
+        students = `<label class="ug-target-field"><span>학생</span><select id="ug-target-student" data-focus="g:student" onchange="UnitPastExams.gridTargetStudent(this.value)"><option value="">반 전체</option>${G.roster.rows.map(item => `<option value="${escapeHtml(item.id)}"${G.target.studentId === item.id ? ' selected' : ''}>${escapeHtml(item.name)}</option>`).join('')}</select></label>`;
+      } else students = `<p class="ug-types-help">${G.roster.state === 'error' ? '명단을 불러오지 못했습니다. 반 전체로 뽑습니다.' : '명단을 불러오는 중…'}</p>`;
+    }
+    const check = G.target ? `<label class="ug-target-check"><input type="checkbox" data-focus="g:exclude"${G.exclude ? ' checked' : ''} onchange="UnitPastExams.gridTargetExclude(this.checked)"><span>${gridTargetIsClass() ? '이 반에 이미 준 문항 빼기' : '이 학생에게 이미 준 문항 빼기'}</span></label>` : '';
+    return `<label class="ug-target-field"><span>반</span><select id="ug-target-class" data-focus="g:class" onchange="UnitPastExams.gridTargetClass(this.value)">${classOptions}</select></label>${students}${check}${gridTargetIsClass() ? '<p class="ug-types-help">이 반의 어느 출제에든 실린 문항을 뺍니다(일부 학생에게만 준 것 포함).</p>' : ''}<div id="ug-target-stat">${gridTargetStatHtml()}</div>${help}`;
+  }
+  function gridTargetHtml(open) {
+    if (!GQ()) return '';
+    return `<details class="ug-options ug-target" id="ug-target"${open || G.target ? ' open' : ''} ontoggle="UnitPastExams.gridTargetOpened(this)"><summary><span class="ug-options-title">대상 (선택)</span><span class="ug-options-now" id="ug-target-now">${escapeHtml(gridTargetNowText())}</span></summary><div class="ug-target-body" id="ug-target-body">${gridTargetBodyHtml()}</div></details>`;
+  }
+  // 선택 목록은 바뀐 부분만 다시 그린다(열려 있는 목록을 닫지 않게): 본문 전체는 대상·목록이 바뀔 때, 건수 줄은 표를 다시 셀 때마다.
+  function gridTargetPatch() {
+    gridTargetFillNames();
+    gridPatch('ug-target-body', gridTargetBodyHtml());
+    const now = document.getElementById('ug-target-now');
+    if (now) now.textContent = gridTargetNowText();
+  }
+  function gridTargetStatPatch() {
+    const stat = document.getElementById('ug-target-stat');
+    if (stat) stat.innerHTML = gridTargetStatHtml();
+    const now = document.getElementById('ug-target-now');
+    if (now) now.textContent = gridTargetNowText();
+  }
   function gridPatch(id, html) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1729,6 +1973,7 @@
     if (filterNote) filterNote.textContent = gridFilterNoteHtml();
     const all = document.getElementById('ug-all-count');
     if (all) all.textContent = gridSelectedTotal() ? `(${gridSelectedTotal().toLocaleString()}문항)` : '';
+    gridTargetStatPatch();
     const go = document.getElementById('ug-go');
     if (go) go.disabled = !gridHasPapers();
     const clear = document.getElementById('ug-clear');
@@ -1969,13 +2214,20 @@
       return;
     }
     const wide = typeof window.matchMedia === 'function' && window.matchMedia('(min-width: 1360px)').matches;
-    const amount = `<fieldset class="ug-amount"><legend>문항 수</legend><label class="ug-radio"><input type="radio" name="ug-amount" value="all"${G.amount === 'all' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('all')"><span>있는 만큼 전부 <span class="ug-all-count" id="ug-all-count">${gridSelectedTotal() ? `(${gridSelectedTotal().toLocaleString()}문항)` : ''}</span></span></label><label class="ug-radio ug-radio-each"><input type="radio" name="ug-amount" value="each"${G.amount === 'each' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('each')"><span>칸마다</span><span class="ug-stepper"><button type="button" class="ug-step-btn is-minus" aria-label="한 문항 줄이기" onclick="UnitPastExams.gridStepPer(-1)"></button><input id="ug-per" class="ug-per" type="number" inputmode="numeric" min="1" max="${GRID_PER_CELL_MAX}" value="${G.perCell}" aria-label="칸마다 뽑을 문항 수" oninput="UnitPastExams.gridSetPer(this.value)" onfocus="UnitPastExams.gridSetAmount('each', true)"><button type="button" class="ug-step-btn is-plus" aria-label="한 문항 늘리기" onclick="UnitPastExams.gridStepPer(1)"></button></span><span>문항씩</span></label><p class="ug-amount-help">모자란 칸은 막지 않고 있는 만큼만 넣습니다.</p></fieldset>`;
+    // 권 목록에서 인쇄·다시 뽑기·기록 갱신으로 이미 준 문항이 바뀌었으면 표로 돌아올 때 같은 선택을 다시 뽑는다.
+    if (G.resultVersion !== G.givenVersion) gridRecompute();
+    const amount =`<fieldset class="ug-amount"><legend>문항 수</legend><label class="ug-radio"><input type="radio" name="ug-amount" value="all"${G.amount === 'all' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('all')"><span>있는 만큼 전부 <span class="ug-all-count" id="ug-all-count">${gridSelectedTotal() ? `(${gridSelectedTotal().toLocaleString()}문항)` : ''}</span></span></label><label class="ug-radio ug-radio-each"><input type="radio" name="ug-amount" value="each"${G.amount === 'each' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('each')"><span>칸마다</span><span class="ug-stepper"><button type="button" class="ug-step-btn is-minus" aria-label="한 문항 줄이기" onclick="UnitPastExams.gridStepPer(-1)"></button><input id="ug-per" class="ug-per" type="number" inputmode="numeric" min="1" max="${GRID_PER_CELL_MAX}" value="${G.perCell}" aria-label="칸마다 뽑을 문항 수" oninput="UnitPastExams.gridSetPer(this.value)" onfocus="UnitPastExams.gridSetAmount('each', true)"><button type="button" class="ug-step-btn is-plus" aria-label="한 문항 늘리기" onclick="UnitPastExams.gridStepPer(1)"></button></span><span>문항씩</span></label><p class="ug-amount-help">모자란 칸은 막지 않고 있는 만큼만 넣습니다.</p></fieldset>`;
     const options = `<details class="ug-options" id="ug-opts"${wide || (G.src.mode === 'school' && G.src.schools.length >= 2) ? ' open' : ''}><summary><span class="ug-options-title">문항 수 · 정리 순서</span><span class="ug-options-now" id="ug-opt-now">${escapeHtml(gridOptionsNow())}</span></summary>${amount}<div class="ug-order"><span class="ug-order-title" id="ug-order-title">정리 순서</span><div class="ug-orders" id="ug-orders" role="group" aria-labelledby="ug-order-title">${gridOrdersHtml()}</div></div><div id="ug-group">${gridGroupHtml(false)}</div></details>`;
     const hasChildren = (state.catalog?.units || []).some(unit => gridChildren(unit.key).length);
     const childHelp = hasChildren ? ` 단원 이름 옆 화살표를 누르면 ${gridUnitKindName()}이 펼쳐져 ${gridUnitKindName()}만 골라 만들 수도 있습니다.` : '';
     const types = `<details class="ug-options ug-types" id="ug-types"><summary><span class="ug-options-title">유형</span><span class="ug-options-now" id="ug-types-now">${escapeHtml(gridTypesNowText())}</span></summary><div class="ug-types-body" id="ug-types-body">${gridTypesBodyHtml()}</div></details>`;
-    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<section class="ug-cond" id="ug-cond" aria-label="기출 조건">${gridCondHtml()}</section><p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다.${childHelp} 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><span class="ug-filter-note" id="ug-filter-note">${escapeHtml(gridFilterNoteHtml())}</span><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다. 점선 칸은 펼친 줄 일부만 고른 단원입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${options}${types}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
+    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<section class="ug-cond" id="ug-cond" aria-label="기출 조건">${gridCondHtml()}</section><p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다.${childHelp} 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><span class="ug-filter-note" id="ug-filter-note">${escapeHtml(gridFilterNoteHtml())}</span><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다. 점선 칸은 펼친 줄 일부만 고른 단원입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${gridTargetHtml(false)}${options}${types}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
     setStatusKeepSummary();
+    // 대상 선택은 열려 있을 때만 반 목록을 받는다(열지 않는 교사에게는 요청이 늘지 않는다). 복원된 대상은 기록을 다시 확인한다.
+    const targetBox = document.getElementById('ug-target');
+    if (targetBox && targetBox.open) gridTargetOpened(targetBox);
+    if (G.givenStale && G.target) { G.givenStale = false; gridLoadGiven(); }
+    G.givenStale = false;
   }
   // 학년을 고른 뒤에는 상태 줄에 집계 요약(renderSummary)이 남아 있어야 하므로 안내 문구만 지운다.
   function setStatusKeepSummary() { if (state.catalog && !state.busyKey) renderSummary(); }
@@ -1987,12 +2239,17 @@
   }
   function renderGridPapers(root) {
     const result = G.result;
-    const note = result.shortages.length ? `<p class="ug-note">모자란 칸 ${result.shortages.length}곳은 있는 만큼만 넣었습니다. ${escapeHtml(gridShortText(result.shortages, 6))}.</p>` : '';
+    G.givenStale = true; // 권 목록을 보는 동안 출제할 수 있으므로, 표로 돌아가면 이미 준 문항을 다시 확인한다
+
+    const note = (result.shortages.length ? `<p class="ug-note">모자란 칸 ${result.shortages.length}곳은 있는 만큼만 넣었습니다. ${escapeHtml(gridShortText(result.shortages, 6))}.</p>` : '') + gridGivenNoteHtml(result);
+    // 대상을 고르고 이미 준 문항 빼기가 켜져 있으면: 지금 문제지를 이미 뽑은 것으로 치고 다른 문항으로 다시 뽑는다.
+    const pickNext = G.target && G.exclude && GQ() ? '<button type="button" class="ug-btn ug-pick-next" title="지금 문제지의 문항은 이미 뽑은 것으로 보고, 같은 선택으로 다른 문항을 뽑습니다" onclick="UnitPastExams.gridPickNext()">다시 뽑기</button>' : '';
     const orderLabel = (GRID_ORDERS.find(([id]) => id === result.order) || GRID_ORDERS[0])[1];
     const cards = result.papers.map(paper => {
       const composition = describeStepComposition(paper.stepSummary);
       const label = gridPaperLabel(paper, result.order, result);
       const facts = [`${paper.count}문항`, `원본 시험지 ${paper.sourceCount}개${gridPaperSourceText(paper, result)}`];
+      if (paper.givenCount) facts.push(`이미 준 문항 ${paper.givenCount}개 포함`);
       if (result.order !== 'recent') facts.push(gridYearText(paper));
       const paperScopes = paper.scopeNames && paper.scopeNames.length ? paper.scopeNames : paper.unitNames;
       const units = ((result.scopes || []).length > 1 || result.unitKeys.length > 1) && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paperScopes.join(' · '))}</p>` : '';
@@ -2003,7 +2260,7 @@
     // 2권 이상이면 한 번에 모두 출제하는 버튼을 더한다(화면 안 출제 패널일 때만: 옛 iframe 방식은 한 번에 한 권뿐이다).
     const assignAll = result.papers.length > 1 && assignPanelAvailable()
       ? `<button type="button" class="ug-primary ug-assign-all" onclick="UnitPastExams.assignAllPapers(this)">전체 출제 (${result.papers.length}권)</button>` : '';
-    root.innerHTML = `<section class="ug ug-papers"><div class="ug-papers-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridBack()">표로 돌아가기</button><div><h2>${escapeHtml(gridResultTitle(result))}</h2><p class="ug-papers-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong><span class="ug-papers-order">${escapeHtml(result.groupBy === 'school' ? `학교별로 한 권씩 · ${orderLabel}` : orderLabel)}</span></p></div>${assignAll}</div>${note}<p class="ug-help">한 권은 약 50문항(최대 80문항)으로 나눕니다. 출력이 오래 걸리지 않게 하고, 같은 시험의 문항은 되도록 한 권에 모았습니다.</p><ol class="ug-paper-list" aria-label="문제지 목록">${cards}</ol></section>`;
+    root.innerHTML = `<section class="ug ug-papers"><div class="ug-papers-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridBack()">표로 돌아가기</button><div><h2>${escapeHtml(gridResultTitle(result))}</h2><p class="ug-papers-count"><span class="ug-big">${result.total.toLocaleString()}문항</span><strong>문제지 ${result.papers.length}권</strong><span class="ug-papers-order">${escapeHtml(result.groupBy === 'school' ? `학교별로 한 권씩 · ${orderLabel}` : orderLabel)}</span></p></div>${pickNext}${assignAll}</div>${note}<p class="ug-help">한 권은 약 50문항(최대 80문항)으로 나눕니다. 출력이 오래 걸리지 않게 하고, 같은 시험의 문항은 되도록 한 권에 모았습니다.</p><ol class="ug-paper-list" aria-label="문제지 목록">${cards}</ol></section>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -2234,6 +2491,6 @@
     if (window.Archive2Assign && typeof window.Archive2Assign.handlePopState === 'function' && window.Archive2Assign.handlePopState()) return;
     if (state.ready) gridRestoreFromUrl();
   });
-  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridSchoolEdit, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers, openPaperInCompose, composeEntryUrl };
+  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridSchoolEdit, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, gridTargetClass, gridTargetStudent, gridTargetExclude, gridTargetRetry, gridTargetOpened, gridTargetForget, gridPickNext, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers, openPaperInCompose, composeEntryUrl };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

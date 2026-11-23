@@ -290,7 +290,9 @@ function createArchiveScreenRuntime() {
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
-        await document.fonts.ready;
+        // 글꼴 대기에 시간 예산(초과는 알림으로 남기고 계속, 이후 S07 게이트가 판정). APRenderLoop가 없으면 예전처럼 기다린다.
+        if (window.APRenderLoop?.fontsReady) await window.APRenderLoop.fontsReady(document);
+        else await document.fonts.ready;
         await raf();
     }
 

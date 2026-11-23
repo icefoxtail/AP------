@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-c150812032b8-a70a2201",
+  "examUid": "21_강남여고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/21_강남여고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "1073fec4a5dd2ef6996e3b9607b4cad7c355bbd2",
+  "expectedQuestionCount": 30,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c150812032b8-a70a2201.type-ledger.json",
+        "sha256": "6f4187b104564ef9a46aea2d8b26ef1146cf75478f6dfc14576efda07ba2ade0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_47bcdba453f98aa9a97d4b146c57c3a220bb8930c2fb9b8158e6bc5c72e2227d",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR"
+      },
+      "rationale": "중복인수 x-1에 대해 원다항식과 나머지의 함수값 및 도함숫값을 일치시킨다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "3ffdc73a6257f4ffd7c2837aab551c62dcf3a82f149a86678031c03335b7f403",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c150812032b8-a70a2201.type-ledger.json",
+          "sha256": "6f4187b104564ef9a46aea2d8b26ef1146cf75478f6dfc14576efda07ba2ade0"
+        }
+      ]
+    }
+  ]
+}

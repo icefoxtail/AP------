@@ -98,6 +98,39 @@
     {"name": "minus-pi-tick-as-y", "args": {"dy": 40}, "expect": "AXIS_VALUE_LABEL_NOT_ADJACENT"},
     {"name": "minus-pi-tick-as-y", "args": {"dx": -30, "dy": 0}, "expect": "AXIS_VALUE_LABEL_NOT_ADJACENT"}
    ]
+  },
+  {
+   "id": "leader-label-room-crosses-other-stroke",
+   "defect": "자리가 없어 지시선으로 끌어낸 라벨의 지시선이 다른 선을 가로질러, 어느 선의 라벨인지 헷갈리는 그림",
+   "reuses": ["archive/tools/geometry-equation/verify-rendered-layout.mjs", "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs"],
+   "plan": {"segment": {"a": [100, 300], "b": [300, 300]}, "label": {"width": 30, "height": 18}, "strokes": [{"id": "wall", "a": [400, 100], "b": [500, 300]}], "boxes": [], "bounds": {"x": 20, "y": 20, "width": 580, "height": 460}, "around": [200, 300]},
+   "generator": {"kind": "label-room-leader"},
+   "expect": "PASS",
+   "observer": {"kind": "layout-capture", "codePrefix": "LEADER_"},
+   "mutations": [
+    {"name": "leader-crosses-stroke", "expect": "LEADER_CROSSING"}
+   ]
+  },
+  {
+   "id": "leader-label-room-sits-on-stroke-or-label",
+   "defect": "지시선으로 끌어낸 라벨이 다른 선이나 다른 라벨 위에 놓여 글자가 가려지거나 겹쳐 읽히는 그림",
+   "reuses": ["archive/tools/geometry-equation/verify-rendered-layout.mjs", "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs"],
+   "plan": {"segment": {"a": [100, 300], "b": [300, 300]}, "label": {"width": 30, "height": 18}, "strokes": [{"id": "wall", "a": [400, 100], "b": [500, 300]}], "boxes": [{"x": 330, "y": 200, "width": 30, "height": 18}], "bounds": {"x": 20, "y": 20, "width": 580, "height": 460}, "around": [200, 300]},
+   "generator": {"kind": "label-room-leader"},
+   "expect": "PASS",
+   "observer": {"kind": "layout-capture", "codePrefix": "LABEL_"},
+   "mutations": [
+    {"name": "leader-label-onto-stroke", "expect": "LABEL_GEOMETRY_COLLISION"},
+    {"name": "leader-label-onto-label", "expect": "LABEL_OVERLAP"}
+   ]
+  },
+  {
+   "id": "leader-label-room-refuses-crossing-leader",
+   "defect": "지시선이 다른 선을 가로지를 수밖에 없는 자리는 몰래 쓰지 않고 거절해야 한다(caption으로 밀지 않는다)",
+   "reuses": ["archive/tools/geometry-equation/verify-rendered-layout.mjs", "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs"],
+   "plan": {"segment": {"a": [100, 300], "b": [300, 300]}, "label": {"width": 30, "height": 18}, "strokes": [{"id": "wall-above", "a": [60, 292], "b": [340, 292]}, {"id": "wall-below", "a": [60, 308], "b": [340, 308]}], "boxes": [], "bounds": {"x": 70, "y": 250, "width": 260, "height": 100}, "around": [200, 300]},
+   "generator": {"kind": "label-room-leader"},
+   "expect": "REJECT:ROOM_LEADER_NONE"
   }
  ]
 }

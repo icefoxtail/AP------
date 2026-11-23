@@ -265,6 +265,6 @@ test('휴대폰 폭 미리보기: 쪽 상자 가운데를 화면 가운데로 �
 
 test('고친 파일의 ?v=는 apmath/index.html에서 새 값이다', () => {
   assert.match(indexHtml, /js\/clinic-print\.js\?v=20261123-clinic-polish-1/);
-  assert.match(indexHtml, /js\/ws-exam-workspace\.js\?v=20261123-class-clinic-1/);
-  assert.match(indexHtml, /css\/ws-exam\.css\?v=20261123-class-clinic-1/);
+  assert.match(indexHtml, /js\/ws-exam-workspace\.js\?v=20261123-self-study-2/);
+  assert.match(indexHtml, /css\/ws-exam\.css\?v=20261123-self-study-2/);
 });

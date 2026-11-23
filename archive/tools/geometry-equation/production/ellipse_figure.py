@@ -34,7 +34,7 @@ POINT_ID=re.compile(r"^[A-Z][0-9']?$")
 ELLIPSE_ID=re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,7}$")
 VALUE_CHARS=re.compile(r"^[0-9+\-*/(). a-z]+$")
 TOP_KEYS={'capability','ellipse','ellipses','points','segments','polygons','lines','caption',
-          'sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription'}
+          'sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription','coordinateLeader'}
 ELLIPSE_KEYS={'center','semiAxisSquared','majorAxis'}
 PAIR_ELLIPSE_KEYS=ELLIPSE_KEYS|{'id'}
 AXIS_KEYS={'major','minor'}
