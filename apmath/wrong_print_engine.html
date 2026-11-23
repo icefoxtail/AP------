@@ -25,6 +25,7 @@
     <script src="../archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="../archive/native_print.js?v=20261119.1"></script>
     <script src="../archive/archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+    <script src="../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
     <script src="../archive/data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="../archive/svg-accessibility.js?v=20261014.1"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -1632,8 +1633,38 @@ function getQuestionSolution(q) {
     return q?.solution || q?.explanation || q?.commentary || q?.sol || '';
 }
 
+// 보이는 시험 이름: 저장된 시험 이름이 코드형(파일 이름 등)이면 한글 제목으로 푼다("24_강남여고_1학기_중간_고1_기출" -> "2024 강남여고 고1 1학기 중간").
+// 해석할 수 없는 이름은 원문 그대로, "기출c"는 "기출"로 보인다. 저장값·요청 값은 바꾸지 않고 보이는 글자만 만든다.
+function readableExamLabel(value) {
+    const text = String(value ?? '');
+    try {
+        const titles = window.ExamDisplayTitle;
+        let out = (titles && typeof titles.displayTitleOf === 'function' ? titles.displayTitleOf(text, { fallback: text }) : '')
+            || (titles && typeof titles.readableExamTitle === 'function' ? titles.readableExamTitle(text) : '')
+            || text;
+        if (out === text && titles && typeof titles.withoutContentMark === 'function' && /기출[\s_]*(?:c|content)(?![A-Za-z0-9])/i.test(text)) out = titles.withoutContentMark(text) || text;
+        return out;
+    } catch (error) {
+        return text;
+    }
+}
+
+// 유사 추천 문항의 출처 이름 앞말(clinic-print.js가 붙인다). 뒤의 시험 이름만 한글 제목으로 푼다.
+const SIMILAR_EXAM_TITLE_PREFIX = /^(유사 추천|다른 유사문항|같은 UID 재연습) · ([\s\S]+)$/;
+
+// 문항 한 개의 출처 꼬리표: "2024 강남여고 고1 1학기 중간 · 원본 1번". 유사 추천 문항은 어느 오답의 유사인지 알면
+// "2024 강남여고 고1 1학기 중간 3번의 유사"로, 모르면 "유사 추천 · <시험 제목> · 원본 N번"으로 쓴다.
+function wrongNoteLabel(item) {
+    const similarOf = item && item.similarOf;
+    if (similarOf && similarOf.questionNo) return `${readableExamLabel(similarOf.examTitle) || '시험'} ${similarOf.questionNo}번의 유사`;
+    const raw = String(item?.examTitle || '');
+    const match = SIMILAR_EXAM_TITLE_PREFIX.exec(raw);
+    if (match) return `${match[1]} · ${readableExamLabel(match[2])} · 원본 ${item.questionNo}번`;
+    return `${readableExamLabel(raw) || '시험'} · 원본 ${item.questionNo}번`;
+}
+
 function getStudentExamLabel(payload, student) {
-    const titles = [...new Set((student.wrongItems || []).map(item => item.examTitle).filter(Boolean))];
+    const titles = [...new Set((student.wrongItems || []).map(item => readableExamLabel(item.examTitle)).filter(Boolean))];
     return titles.length === 1 ? titles[0] : (payload.printTitle || '오답 클리닉');
 }
 
@@ -2114,7 +2145,7 @@ async function renderStudentPages(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         await renderMeasuredExamPages(area, items, {
@@ -2584,7 +2615,7 @@ async function renderSol(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         await placeSolutionItems(area, items, {
@@ -2794,7 +2825,7 @@ async function renderStudentReviewPacket(area, payload) {
         const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`,
+            _wrongNote: wrongNoteLabel(item),
             _diagStudent: student.studentName || ''
         }));
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
@@ -3308,6 +3339,8 @@ return { state,
     formatCorrectRateLabel,
     getQuestionSolution,
     getStudentExamLabel,
+    readableExamLabel,
+    wrongNoteLabel,
     getGradePrintLabel,
     cloneQuestionForRender,
     getClinicQuestionSourceRef,

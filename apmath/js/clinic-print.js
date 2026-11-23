@@ -3879,7 +3879,18 @@ function clinicPrintGetSelectedRecommendationItems(studentId) {
     ));
 }
 
-function clinicPrintBuildRecommendationPrintItem(studentId, candidate) {
+// 유사 추천 문항이 어느 틀린 문항의 유사인지(틀린 유형 기준 추천의 기준 문항 UID가 그 학생의 틀린 문항 중 하나일 때)를 인쇄 꼬리표용으로 찾는다.
+// 못 찾으면 null(꼬리표는 "유사 추천 · 시험 제목 · 원본 N번"으로 나온다). 시험 이름은 원문 그대로 담고 한글 제목은 인쇄 엔진이 푼다.
+function clinicPrintFindSimilarBase(candidate, baseItems = []) {
+    const baseUid = String(candidate?.recommendationReason?.baseQuestionUid || '');
+    if (!baseUid) return null;
+    const base = (Array.isArray(baseItems) ? baseItems : []).find(item => String(item?.sourceQuestionUid || '') === baseUid);
+    const questionNo = base ? Number(base.questionNo) : 0;
+    if (!base || !(questionNo > 0)) return null;
+    return { examTitle: String(base.examTitle || ''), questionNo };
+}
+
+function clinicPrintBuildRecommendationPrintItem(studentId, candidate, baseItems = []) {
     const key = clinicPrintRecommendationKey(studentId, candidate?.sourceQuestionUid);
     const verification = clinicPrintRecommendationState.verifiedByKey?.get(key);
     const record = verification?.record;
@@ -3893,8 +3904,10 @@ function clinicPrintBuildRecommendationPrintItem(studentId, candidate) {
         ? candidate.canonicalMetaFields
         : [...new Set([...(window.Archive2Core?.META_FIELDS || []), ...(window.Archive2Core?.OPTIONAL_METADATA_FIELDS || [])])];
     const title = clinicPrintGetArchiveDisplayTitle(sourceFile) || 'Archive 2.0 문항';
+    const similarOf = clinicPrintFindSimilarBase(candidate, baseItems);
     return {
         examKey: `recommendation|${sourceUid}`,
+        ...(similarOf ? { similarOf } : {}),
         examTitle: candidate.followUpMode === 'same_uid' ? `같은 UID 재연습 · ${title}`
             : candidate.followUpMode === 'similar_uid' ? `다른 유사문항 · ${title}` : `유사 추천 · ${title}`,
         examDate: '',
@@ -3952,7 +3965,7 @@ function clinicPrintApplySelectedRecommendations(payload, classId) {
         const existing = new Set((student.wrongItems || []).map(item => String(item.sourceQuestionUid || '')).filter(Boolean));
         const additions = clinicPrintGetSelectedRecommendationItems(studentId)
             .filter(item => !existing.has(String(item.sourceQuestionUid || '')))
-            .map(item => clinicPrintBuildRecommendationPrintItem(studentId, item))
+            .map(item => clinicPrintBuildRecommendationPrintItem(studentId, item, student.wrongItems))
             .filter(Boolean);
         if (!additions.length) return;
         student.wrongItems = [...(student.wrongItems || []), ...additions];
@@ -5299,6 +5312,7 @@ function clinicPrintGetCheckedValues(name) {
 
 function clinicPrintOnRecipientChange(classId) {
     clinicPrintInvalidateRecommendations(classId);
+    clinicPrintNoteAutoFillStale(classId);
     clinicPrintRefreshHeaderDefault(classId);
     clinicPrintSchedulePreviewPush(classId);
 }
@@ -5461,6 +5475,7 @@ function clinicPrintGetDeliveryScope(mode) {
 // 시험 선택이 바뀌면 유형 모드는 문항 미리보기를, 그 외 모드는 학생 목록을 갱신해야 한다.
 function clinicPrintOnExamChange(classId) {
     clinicPrintInvalidateRecommendations(classId);
+    clinicPrintNoteAutoFillStale(classId);
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
     if (mode === 'type') clinicPrintRenderTypePanel(classId);
     clinicPrintUpdateStudentList(classId);
@@ -5617,7 +5632,7 @@ function clinicPrintRenderTypePanel(classId) {
         return `
             <div class="clinic-print-preview-row">
                 <span class="clinic-print-preview-row__main">
-                    <span class="clinic-print-preview-row__title">${clinicPrintEscapeHtml(item.examTitle || '시험')} · ${item.questionNo}번</span>
+                    <span class="clinic-print-preview-row__title">${clinicPrintEscapeHtml(clinicPrintReadableExamTitle(item.examTitle) || '시험')} · ${item.questionNo}번</span>
                     <span class="clinic-print-preview-row__meta">${clinicPrintEscapeHtml(unitText)}</span>
                 </span>
                 <span class="clinic-print-preview-row__stat">
@@ -6429,6 +6444,8 @@ async function openClinicPrintCenter(classId, options = {}) {
     const classBatch = options.recommendation?.classBatch === true;
     const autoTargetCount = clinicPrintPendingPreselect && (clinicPrintPendingPreselect.studentId || classBatch) && Number(options.recommendation?.targetCount) >= 1
         ? Math.floor(Number(options.recommendation.targetCount)) : 0;
+    clinicPrintAutoFill = autoTargetCount ? { classId: String(classId), targetCount: autoTargetCount, classBatch } : null;
+    clinicPrintAutoFillBusy = false;
     clinicPrintStudentTitleHint = clinicPrintPendingPreselect?.studentId && (clinicPrintPendingPreselect.examKeys || []).length
         ? { classId: String(classId), studentId: String(clinicPrintPendingPreselect.studentId), examCount: clinicPrintPendingPreselect.examKeys.length } : null;
     // 학생 상세에서 목표 문항 수를 골랐으면 추천 입력(학생별 문항 수·틀린 유형 기준)만 미리 맞춘다. 후보 찾기·선택은 화면에서 그대로 한다.
@@ -6454,6 +6471,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-summary" class="clinic-print-summary-card__meta">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
             </div>
             <div id="clinic-print-auto-note" class="clinic-print-note" aria-live="polite" hidden></div>
+            ${autoTargetCount ? `<div class="clinic-print-refill"><button id="clinic-print-refill-btn" type="button" class="clinic-print-mini-btn" onclick="clinicPrintRefillSimilar('${safeClassIdForJs}')">유사 다시 채우기</button><span class="clinic-print-refill__hint">시험·학생을 바꾼 뒤 누르면 목표 ${autoTargetCount}문항에 맞춰 다시 채웁니다.</span></div>` : ''}
 
             <section class="clinic-print-section">
                 <div class="clinic-print-section-title">출제 기준</div>
@@ -6646,6 +6664,49 @@ async function openClinicPrintCenter(classId, options = {}) {
     setTimeout(() => clinicPrintSwitchMode(classId), 0);
     // 학생 상세에서 목표 문항(20/30)을 골라 연 경우에만: 첫 그리기가 끝난 뒤 유사 추천을 자동으로 불러와 고른다.
     if (autoTargetCount && (!wsToken || wsClinicIsCurrent(wsToken))) setTimeout(() => clinicPrintAutoRecommendForTarget(classId, autoTargetCount, classBatch), 0);
+}
+
+// 목표 문항(20·30)을 골라 연 센터가 기억하는 자동 채우기 설정. 목표 없이 연 센터에서는 null이라 "유사 다시 채우기" 단추도 없다.
+let clinicPrintAutoFill = null;
+let clinicPrintAutoFillBusy = false;
+
+// 센터에서 시험·학생 선택을 바꾸면 기존 유사 추천은 비워진다(clinicPrintInvalidateRecommendations). 목표를 골라 연 센터면 다시 채우라고 알린다.
+function clinicPrintNoteAutoFillStale(classId) {
+    if (!clinicPrintAutoFill || clinicPrintAutoFillBusy || String(clinicPrintAutoFill.classId) !== String(classId)) return;
+    clinicPrintSetAutoNote('시험·학생 선택이 바뀌어 유사 문항을 비웠습니다. "유사 다시 채우기"를 누르면 지금 선택으로 다시 채웁니다.');
+}
+
+// "유사 다시 채우기": 센터를 연 목표 문항·반 전체 여부 그대로 지금 선택된 시험·학생 기준으로 자동 추천을 한 번 더 돈다(새 선정 로직 없음).
+async function clinicPrintRefillSimilar(classId) {
+    const config = clinicPrintAutoFill;
+    if (!config || String(config.classId) !== String(classId) || String(clinicPrintActiveClassId) !== String(classId)) return;
+    if (clinicPrintAutoFillBusy) return;
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    if (mode !== 'student') {
+        clinicPrintSetAutoNote('출제 기준을 "학생"으로 바꾼 뒤 눌러 주세요.');
+        return;
+    }
+    const studentIds = clinicPrintGetCheckedValues('clinic-print-student').map(String);
+    if (!studentIds.length || (!config.classBatch && studentIds.length !== 1)) {
+        clinicPrintSetAutoNote(config.classBatch ? '학생을 한 명 이상 선택해 주세요.' : '학생을 한 명만 선택해 주세요.');
+        return;
+    }
+    if (!clinicPrintGetCheckedValues('clinic-print-exam').length) {
+        clinicPrintSetAutoNote('시험을 하나 이상 선택해 주세요.');
+        return;
+    }
+    clinicPrintAutoFillBusy = true;
+    const button = document.getElementById('clinic-print-refill-btn');
+    if (button) button.disabled = true;
+    try {
+        clinicPrintResetRecommendationState('class', classId);
+        clinicPrintRenderRecommendationPanel(classId);
+        await clinicPrintAutoRecommendForTarget(classId, config.targetCount, config.classBatch);
+    } finally {
+        clinicPrintAutoFillBusy = false;
+        const after = document.getElementById('clinic-print-refill-btn');
+        if (after) after.disabled = false;
+    }
 }
 
 function clinicPrintSetAutoNote(text) {
