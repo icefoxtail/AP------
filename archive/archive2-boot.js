@@ -12,7 +12,7 @@
   // 로드 때 시작하지 않고(meta-foundation-runtime.js가 이 값을 본다) 시험지 목록만으로 먼저 그린다. 카탈로그는 workspace 코드가
   // 목록을 그린 뒤(학교별 기출) 또는 필요한 화면·버튼이 처음 누를 때(홈) 시작한다.
   // 학교별 기출 주소에 교육과정·과목·계열(레코드에서 판정하는 값)이나 다른 값(uid, source 등)이 있으면 항상 지금처럼 바로 받는다.
-  const LIGHT_FIND_KEYS = new Set(["perf", "view", "page", "grade", "school", "yearFrom", "yearTo", "axis", "query", "material", "file", "similarOnly"]);
+  const LIGHT_FIND_KEYS = new Set(["perf", "warm", "view", "page", "grade", "school", "yearFrom", "yearTo", "axis", "query", "material", "file", "similarOnly"]);
   const lazyCatalogPage = (() => {
     try {
       if (!document.currentScript || !document.currentScript.hasAttribute("data-lazy-catalog")) return false;
@@ -22,11 +22,14 @@
         for (const key of params.keys()) if (!LIGHT_FIND_KEYS.has(key)) return false;
         return true;
       }
-      for (const [key, value] of params) if (!(key === "perf" || (key === "view" && value === "home"))) return false;
+      for (const [key, value] of params) if (!(key === "perf" || key === "warm" || (key === "view" && value === "home"))) return false;
       return true;
     } catch { return false; }
   })();
   const perf = typeof performance === "object" && performance ? performance : null;
+  // ?warm=off turns the background warm-up of the catalog off (read when the page loads: the screen rewrites the address later).
+  let warmParamOff = false;
+  try { warmParamOff = new URLSearchParams(location.search).get("warm") === "off"; } catch { warmParamOff = false; }
   let verbose = false;
   try { verbose = new URLSearchParams(location.search).get("perf") === "1"; } catch { verbose = false; }
 
@@ -60,6 +63,7 @@
     ready: { from: 1, to: 1, label: "" },
     failed: { from: 0, to: 0, label: "" },
   };
+  let silent = false;
   const progress = { stage: "fetch", done: 0, total: 0, fraction: 0, label: STAGES.fetch.label, finished: false, failed: false, waiting: false };
   const listeners = new Set();
   function publish() {
@@ -70,7 +74,7 @@
   function setStage(stage, patch = {}) {
     if (progress.finished || !STAGES[stage]) return;
     const def = STAGES[stage];
-    progress.waiting = false;
+    progress.waiting = silent; // a warm-up in the background keeps the top line hidden until somebody actually waits for it
     progress.stage = stage;
     Object.assign(progress, patch);
     let fraction = def.from;
@@ -88,6 +92,7 @@
     publish();
     flushSpans();
     if (failed) mark("failed"); else mark("ready");
+    if (warmActive) mark(failed ? "warm-failed" : "warm-done");
     if (verbose) report();
   }
   // 가벼운 홈이 시험지 목록만으로 그려졌고 카탈로그는 아직 시작하지 않았다: 진행 줄을 숨긴다(받기가 시작되면 다시 나타난다).
@@ -142,10 +147,89 @@
     }
     return new Promise((resolve) => setTimeout(resolve, 0));
   }
-  function idle(callback, timeout = 3000) {
-    if (typeof requestIdleCallback === "function") return requestIdleCallback(callback, { timeout });
-    return setTimeout(() => callback({ didTimeout: true, timeRemaining: () => 0 }), 200);
+  // ---- 홈에서 한가할 때 카탈로그 미리 준비 (2026-11-23) ----
+  // 홈이 그려진 뒤 한가할 때 카탈로그 준비(받기 -> 검증 -> 해석 -> 보관본 저장)를 미리 끝내 두면, 처음 누른 문제지 만들기·학교별 기출 검색이
+  // 보관본 적중(또는 준비 끝난 상태)으로 바로 열린다. 새 경로가 아니라 평소 준비를 시작하는 시점만 앞당긴 것이다.
+  // 준비 도중의 긴 메인 스레드 구간(검증·해석·색인·보관본 쓰기)이 홈의 스크롤·입력과 겹치지 않게, 미리 준비하는 동안에는 그 구간 앞에서
+  // 사용자의 입력이 잠잠해질 때까지 기다린다(quiet). 누군가 실제로 기다리게 되면(demand: 화면 이동, 버튼, 누르기 직전 의도) 기다림을 모두 풀고
+  // 진행 줄도 보인다.
+  // 2026-11-23 실측(입력이 450ms 간격으로 계속될 때): 300ms는 입력 사이 틈에서 긴 계산이 시작해 다음 입력이 그 안에 걸렸다. 1초로 늘렸다.
+  const QUIET_MS = 1000;
+  // A moving pointer counts too: somebody heading for a button is about to click, and a click that lands inside a long step waits for it.
+  const INPUT_EVENTS = ["keydown", "input", "wheel", "touchstart", "touchmove", "pointerdown", "pointermove", "scroll"];
+  let warmActive = false; // 미리 준비 중이고 아직 아무도 기다리지 않는다
+  let lastInputAt = -Infinity;
+  const quietWaiters = new Set();
+  let quietTimer = null;
+  const nowMs = () => (perf ? perf.now() : Date.now());
+  const onInput = () => { lastInputAt = nowMs(); };
+  function listenInput(on) {
+    if (typeof document !== "object" || !document) return;
+    for (const name of INPUT_EVENTS) {
+      if (on && typeof document.addEventListener === "function") document.addEventListener(name, onInput, { passive: true, capture: true });
+      else if (!on && typeof document.removeEventListener === "function") document.removeEventListener(name, onInput, { capture: true });
+    }
   }
+  function releaseQuiet() {
+    clearTimeout(quietTimer);
+    quietTimer = null;
+    const waiters = [...quietWaiters];
+    quietWaiters.clear();
+    for (const resolve of waiters) resolve();
+  }
+  function pollQuiet() {
+    if (quietTimer !== null || !quietWaiters.size) return;
+    const wait = QUIET_MS - (nowMs() - lastInputAt);
+    quietTimer = setTimeout(() => {
+      quietTimer = null;
+      if (!warmActive || nowMs() - lastInputAt >= QUIET_MS) releaseQuiet(); else pollQuiet();
+    }, Math.max(20, wait));
+  }
+  // 미리 준비하는 동안만 기다린다. 그 밖에는(누군가 기다리는 중 포함) 곧바로 풀린다.
+  function quiet() {
+    if (!warmActive || nowMs() - lastInputAt >= QUIET_MS) return Promise.resolve();
+    return new Promise((resolve) => { quietWaiters.add(resolve); pollQuiet(); });
+  }
+  // 미리 준비하지 않는 이유(없으면 ""). hidden만 나중에 다시 볼 수 있다.
+  function warmBlocked() {
+    try {
+      if (warmParamOff) return "off";
+      const connection = typeof navigator === "object" && navigator ? (navigator.connection || navigator.mozConnection || navigator.webkitConnection) : null;
+      if (connection && connection.saveData === true) return "save-data";
+      if (connection && /^(slow-)?2g$/.test(String(connection.effectiveType || ""))) return "slow-network";
+      // A ready catalog is about 14 MB of download and 330 MB of script memory: not worth it on a phone or a small-memory device.
+      const device = typeof navigator === "object" && navigator ? navigator : null;
+      if (device && (device.userAgentData?.mobile === true || /Android|iPhone|iPad|iPod|Mobi/i.test(String(device.userAgent || "")))) return "mobile";
+      if (device && typeof device.deviceMemory === "number" && device.deviceMemory < 4) return "low-memory";
+      if (typeof document === "object" && document && document.visibilityState === "hidden") return "hidden";
+    } catch { return "unknown"; /* 판단할 수 없으면 미리 준비하지 않는 쪽이 안전하다 */ }
+    return "";
+  }
+  function warmBegin() {
+    if (warmActive || progress.finished) return;
+    warmActive = true;
+    silent = true;
+    listenInput(true);
+    mark("warm-start");
+  }
+  // 누군가 카탈로그를 기다리기 시작했다: 기다림을 풀고 진행 줄을 보인다. 미리 준비 중이 아니면 아무 일도 하지 않는다.
+  function demand() {
+    if (!warmActive) return;
+    warmActive = false;
+    silent = false;
+    listenInput(false);
+    releaseQuiet();
+    mark("warm-demanded");
+    if (!progress.finished) { progress.waiting = false; publish(); }
+  }
+  function idle(callback, timeout = 3000) {
+    // 미리 준비하는 동안의 한가한 때 작업(색인 예열, 보관본 쓰기)도 입력이 잠잠할 때만 한다.
+    const run = (deadline) => quiet().then(() => callback(deadline));
+    if (typeof requestIdleCallback === "function") return requestIdleCallback(run, { timeout });
+    return setTimeout(() => run({ didTimeout: true, timeRemaining: () => 0 }), 200);
+  }
+  // 숨을 한 번 돌려 입력을 처리하게 하고, 미리 준비 중이면 입력이 잠잠할 때까지 기다린다: 긴 계산 앞에서 쓴다.
+  const pause = () => yieldToMain().then(quiet);
 
   // ---- canonical.loadInputBundle에 끼우는 fetcher ------------------------------------------------
   const MANIFEST_RE = /data\/archive2-canonical-input-manifest\.json$/;
@@ -170,7 +254,7 @@
     let manifestEnd = null;
     let base = null;
 
-    const gated = (value) => paintGate.then(() => value);
+    const gated = (value) => paintGate.then(quiet).then(() => value);
     const noteStart = () => { progress.total += 1; setStage("fetch"); };
     // 요청한 파일을 모두 받았으면 남은 일은 해시 확인과 해석이다.
     const noteDone = () => { progress.done += 1; setStage(progress.done >= progress.total ? "verify" : "fetch"); };
@@ -316,6 +400,7 @@
     mark, begin, end, span, finish, report,
     setStage, standby, onProgress, progress, mountProgress, catalogDeferred: lazyCatalogPage,
     firstPaint, whenPainted, nextPaint, yield: yieldToMain, idle, refresh: () => publish(),
+    pause, quiet, warmBlocked, warmBegin, demand,
     fetcher: makeFetcher, bundleDone,
   });
 })();

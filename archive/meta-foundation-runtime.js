@@ -157,7 +157,9 @@
   // the big files back until the first screen is painted. Hashes are still verified by canonical.loadInputBundle.
   const Boot = window.Archive2Boot;
   const rawFetcher = (url) => fetch(url, { cache: "no-cache" });
-  const pause = () => (Boot && typeof Boot.yield === "function" ? Boot.yield() : undefined);
+  // Between the long steps: a breath for input and, while the home warms the catalog up in the background, a wait until
+  // the teacher's input is quiet (archive2-boot.js quiet; no wait in any other case).
+  const pause = () => (Boot && typeof Boot.pause === "function" ? Boot.pause() : Boot && typeof Boot.yield === "function" ? Boot.yield() : undefined);
   const fetcher = Boot && typeof Boot.fetcher === "function" ? Boot.fetcher(rawFetcher) : rawFetcher;
   // A snapshot of the last resolved result (archive2-snapshot.js, optional): same manifest and same code -> no download,
   // no hashing, no resolve. Anything else loads and verifies the inputs below exactly as before.
