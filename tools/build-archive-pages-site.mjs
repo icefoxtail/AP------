@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
 import { buildSimilarLinks } from './lib/build-similar-links.mjs';
+import { buildExamList } from './lib/build-exam-list.mjs';
 import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
 import { stampHtmlVersions, textDigest } from './lib/stamp-html-versions.mjs';
 import { PUBLIC_ASSETS } from './ci/student-portal-public-release.mjs';
@@ -686,6 +687,14 @@ export function planPagesSite({
     }
     entries.push(projection);
   }
+  if (manifest.examList === true) {
+    const projection = buildExamList(root);
+    if (selectedPaths.has(projection.path)) fail('exam-list projection conflicts with a packaged file');
+    for (const input of projection.examListInputs) {
+      assertNoSymlinkComponents(root, resolveInside(root, input), 'exam-list projection input');
+    }
+    entries.push(projection);
+  }
   const stamp = stampPackageEntries(entries, manifest);
   const unusedTarget = targets.find((item) => !item.used);
   if (unusedTarget) fail(`minifyJson entry matches no packaged JSON file: ${unusedTarget.path}${unusedTarget.tree ? '/' : ''}`);
@@ -750,6 +759,7 @@ export async function buildPagesSite({
       ...(entry.studentSvgInputs ? { transform: 'student-svg-refresh' }
         : entry.transform === 'stamp-html-version' ? { transform: 'stamp-html-version', sourceBytes: entry.sourceBytes, stampedReferences: entry.stampedReferences }
         : entry.similarLinkInputs ? { transform: 'similar-links' }
+        : entry.examListInputs ? { transform: 'exam-list' }
         : entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
   }

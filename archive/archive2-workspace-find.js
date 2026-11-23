@@ -10,13 +10,13 @@
   const Unified = window.Archive2UnifiedUnits;
   // names defined in other parts; WS.link() fills them in before the first call
   let
-    $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, drafts, esc, finderIdentityMatch,
+    $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
     finderSchoolValues, gradeClass, isQuickAssessmentView, options, reconcileFinderSchool, render,
     replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
     workspaceScopeParent;
   WS.links.push(() => {
     ({
-      $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, drafts, esc, finderIdentityMatch,
+      $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
       finderSchoolValues, gradeClass, isQuickAssessmentView, options, reconcileFinderSchool, render,
       replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
       workspaceScopeParent
@@ -441,7 +441,7 @@
   // Schools with the most original exams, computed from the loaded catalog (never a fixed list).
   function homeSchoolChips(limit = 8) {
     const counts = new Map();
-    for (const exam of state.catalog?.exams || []) {
+    for (const exam of catalogExams()) {
       if (!exam.school || !O.matchesMaterial(exam, "exam")) continue;
       counts.set(exam.school, (counts.get(exam.school) || 0) + 1);
     }
@@ -466,7 +466,7 @@
   }
   // Recently opened exams that still exist in the catalog; with no record yet, the newest exams.
   function homeExamList(limit = 5) {
-    const exams = state.catalog?.exams || [];
+    const exams = catalogExams();
     const indexByFile = new Map(exams.map((exam, index) => [exam.file, index]));
     const opened = [];
     for (const row of readRecentExams()) {
@@ -490,13 +490,13 @@
     stats: Object.freeze({ sets: 0, linked: 0, unlinked: 0, originalsWithSimilar: 0, byRule: {} }),
   });
   function similarPairs() {
-    return Similar?.pairsFor?.(state.catalog) || NO_SIMILAR;
+    return Similar?.pairsFor?.({ exams: catalogExams() }) || NO_SIMILAR;
   }
   // The "유사문제 있는 시험만" check only means something for original exams.
   const findSimilarFilterApplies = (filters) => !filters.material || filters.material === "exam";
   let examIndexCache = null;
   function examIndexOf(exam) {
-    const exams = state.catalog?.exams || [];
+    const exams = catalogExams();
     if (!examIndexCache || examIndexCache.exams !== exams)
       examIndexCache = { exams, byFile: new Map(exams.map((item, index) => [item.file, index])) };
     return examIndexCache.byFile.get(exam?.file) ?? -1;
@@ -505,7 +505,7 @@
   function recentTarget(exam) {
     const originalFile = similarPairs().originalFileFor(exam?.file);
     const index = originalFile ? examIndexOf({ file: originalFile }) : -1;
-    return index >= 0 ? state.catalog.exams[index] : exam;
+    return index >= 0 ? catalogExams()[index] : exam;
   }
   // ---- 교과서 칸 (2026-11-22) ----
   // 카탈로그의 교과서 줄: school=출판사, primaryStandardCourse=과목, topic="출판사 과목 단원 …"(출판사·과목은 줄임말·로마숫자일 수 있음).
@@ -623,7 +623,7 @@
       .filter(Boolean).join(" · ");
     const badges = `${kind !== "exam" && exam.contentType ? badge(exam.contentType) : ""}${exam.gradeConflict ? badge("학년 충돌", "warn") : ""}`;
     const originalFile = kind === "similar" ? pairs.originalFileFor(exam.file) : null;
-    const original = originalFile ? state.catalog.exams[examIndexOf({ file: originalFile })] : null;
+    const original = originalFile ? catalogExams()[examIndexOf({ file: originalFile })] : null;
     const tag = original
       ? `<div class="exam-row-tag">${esc(O.displayTitle(original))} 기출의 유사문제</div>`
       : book
@@ -667,17 +667,19 @@
   // (school chips, recent exam rows) start as placeholders of the final height and are filled in place.
   const HOME_CHIP_PLACEHOLDERS = 8; // homeSchoolChips() returns at most 8
   const bootWaitText = '<p class="boot-wait-text"><span data-boot-label>자료 준비 중</span> <span data-boot-count aria-hidden="true"></span></p><div class="boot-progress-track" aria-hidden="true"><span class="boot-progress-bar" data-boot-bar></span></div>';
+  // The home needs only the exam list: the small list it opened on (state.light) or the full catalog.
+  const hasExamList = () => Boolean(state.catalog || state.light);
   function homeChipsMarkup() {
-    if (!state.catalog)
+    if (!hasExamList())
       return state.bootError ? "" : '<span class="home-chip is-pending" aria-hidden="true"></span>'.repeat(HOME_CHIP_PLACEHOLDERS);
     return homeSchoolChips().map(({ school }) => button("home-school", esc(school), `type="button" class="home-chip" data-school="${esc(school)}"`)).join("");
   }
   function homeRecentTitle() {
-    if (!state.catalog) return readRecentExams().length ? "최근 연 기출" : "최근 연도 기출";
+    if (!hasExamList()) return readRecentExams().length ? "최근 연 기출" : "최근 연도 기출";
     return homeExamList().kind === "opened" ? "최근 연 기출" : "최근 연도 기출";
   }
   function homeRecentBodyMarkup() {
-    if (!state.catalog) {
+    if (!hasExamList()) {
       if (state.bootError)
         return `<p class="callout danger" role="alert">${esc(state.bootError)} ${button("boot-retry", "다시 시도", 'class="small"')}</p>`;
       return `<div class="home-recent-pending" data-boot-wait="loading" aria-busy="true"><div class="home-recent-skeleton" aria-hidden="true"><span></span><span></span><span></span></div><div class="home-recent-status">${bootWaitText}</div></div>`;
@@ -687,7 +689,7 @@
       ? `<div class="exam-rows">${examList.rows.map(homeExamRowMarkup).join("")}</div>`
       : '<p class="muted">기출 목록을 불러오면 이곳에 표시됩니다.</p>';
   }
-  // Called when the catalog arrives (or fails): replaces only the two placeholder hosts, so text typed in
+  // Called when the exam list or the catalog arrives (or fails): replaces only the two placeholder hosts, so text typed in
   // the search box and keyboard focus stay where they are.
   function fillHomeFromCatalog() {
     if (state.view !== "home") return;
