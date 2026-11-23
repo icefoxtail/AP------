@@ -113,6 +113,15 @@ test('advisory mode lists description-quality findings without blocking, and sti
   const engineBroken = svg('', '두 원의 교점', '그림입니다.', 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="missing desc"');
   assert.throws(() => assertSvgStudentLanguage(engineBroken, { assetRef: 'b.svg', advisory: [] }), /ARIA_REFERENCE_INVALID/);
   assert.throws(() => assertSvgStudentLanguage('<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"/>', { advisory: [] }), /TITLE_DESC_REQUIRED/);
+  // 엔진 표지: 확정 표지(stat-chart 등)는 언제나, 신규 경로 표지(composite 등)는 새 파일(options.newPath)일 때만 엔진 산출물로 본다.
+  const noMarkup = marker => `<svg xmlns="http://www.w3.org/2000/svg" ${marker}><circle r="5"/></svg>`;
+  for (const marker of ['data-stat-chart="stat-chart-figure-v1"', 'data-set-diagram="set-diagram-figure-v1"', 'data-publication-profile="geometry-publication-v1"']) {
+    assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'm.svg', advisory: [] }), /TITLE_DESC_REQUIRED/, marker);
+  }
+  for (const marker of ['data-composite="composite-panels-v1"', 'data-ellipse-figure="ellipse-figure-v1"', 'data-lattice-path="lattice-path-figure-v1"', 'data-publication-profile="fragment-publication-spike-v1"']) {
+    assert.equal(assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'old.svg', advisory: [] }).status, 'PASS', marker + ' on an existing path is a legacy figure');
+    assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'new.svg', advisory: [], newPath: true }), /TITLE_DESC_REQUIRED/, marker + ' on a new file');
+  }
   // 학생 눈에 보이는 결함, 중복 id, 루트 없음은 옛 그림도 막는다.
   assert.throws(() => assertSvgStudentLanguage(svg('<text>축척: x,y 동일 단위</text>'), { assetRef: 'd.svg', advisory: [] }), /SCALE_GUIDANCE_FORBIDDEN/);
   assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);

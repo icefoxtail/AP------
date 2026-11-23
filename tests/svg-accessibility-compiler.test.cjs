@@ -294,6 +294,11 @@ test('production compiler lets a legacy SVG without accessibility markup through
   // new engine output (engine marker) missing its markup is an engine regression: blocked
   fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"><circle r="5"/></svg>\n');
   assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
+  // other engine generators: stat-chart (confirmed marker) and composite (new-path marker; new.svg is a new file at the base) are blocked too
+  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-stat-chart="stat-chart-figure-v1" data-publication-profile="fragment-publication-spike-v1"><circle r="5"/></svg>\n');
+  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
+  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-composite="composite-panels-v1"><circle r="5"/></svg>\n');
+  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
   // visible defects, duplicate ids and a missing root keep blocking even for legacy figures
   const legacyHead = '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">';
   const body = '<title id="t">직선과 점</title><desc id="d">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc>';

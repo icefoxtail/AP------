@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const crypto = require('node:crypto');
 const { assertSvgStudentLanguage, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
 // 옛 그림에 title/desc가 없어 시험지·문항·역할로 만든 기계 대체 문구를 넣은 행의 표시(textSource). 내용을 추측한 문구가 아니다.
@@ -98,11 +99,12 @@ function validateRecord(record, repoRoot, seen, options = {}) {
     fail('SVG_ACCESSIBILITY_ASSET_NOT_FOUND', assetRef);
   }
   const bytes = fs.readFileSync(assetPath);
-  assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory });
+  const newPath = options.isNewPath ? options.isNewPath(assetRef) : false;
+  assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory, newPath });
   const substitute = record.textSource === TEXT_SOURCE_SUBSTITUTE;
   if (record.textSource !== undefined && !substitute) fail('INVALID_SVG_ACCESSIBILITY_TEXT_SOURCE', assetRef);
   // 대체 문구 행은 그림에 쓰인 글이 없다는 뜻이다. 새 엔진 그림(엔진 표지가 있는 그림)은 대체 문구를 받지 않는다.
-  if (substitute && isEngineSvg(bytes.toString('utf8'))) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
+  if (substitute && isEngineSvg(bytes.toString('utf8'), { newPath })) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
   if (!substitute) {
     const svgText = svgAccessibilityText(bytes, assetRef);
     if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
@@ -143,7 +145,7 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
   try { text = svgAccessibilityText(bytes, assetRef); }
   catch (error) {
     // 옛 그림에 title/desc가 없으면 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남는다). 엔진 그림은 계속 막는다.
-    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8')) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
+    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8'), { newPath: options.isNewPath ? options.isNewPath(assetRef) : false }) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
     const substitute = substituteAccessibilityText(use);
     text = { titleKo: substitute, descriptionKo: substitute, textSource: TEXT_SOURCE_SUBSTITUTE };
     options.advisory.push({ assetRef, code: 'SVG_ACCESSIBILITY_LEGACY_TEXT_SUBSTITUTED', surface: '' });
@@ -193,9 +195,14 @@ function productionRows(manifest, repoRoot, scopeOptions) {
   const advisory = [];
   const live = collectSvgAccessibilitySourceIndex({ repoRoot });
   const scope = collectChangedSourceScope({ ...scopeOptions, repoRoot, currentIndex: live });
+  // --base에 없던 경로(새 파일)인가. 옛 엔진이 표기 없이 낸 그림이 있는 신규 경로 표지는 새 파일일 때만 엔진 산출물로 본다.
+  const isNewPath = assetRef => {
+    try { execFileSync('git', ['-C', repoRoot, 'cat-file', '-e', `${scope.baseRef}:archive/${assetRef}`], { stdio: 'ignore' }); return false; }
+    catch { return true; }
+  };
   for (const assetRef of scope.changedSvgRefs) {
     const bytes = fs.readFileSync(path.resolve(repoRoot, 'archive', assetRef));
-    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory });
+    assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory, newPath: isNewPath(assetRef) });
   }
   const byKey = new Map();
   for (const row of manifest.records) byKey.set(manifestRecordKey(row), row);
@@ -224,7 +231,7 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         || roleUses[0];
       if (!representative) {
         if (managed) {
-          rows.push(validateRecord(managed, repoRoot, seen, { semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory }));
+          rows.push(validateRecord(managed, repoRoot, seen, { semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory, isNewPath }));
         }
         continue;
       }
@@ -232,12 +239,12 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         use.sourceExamRef === managed.sourceExamRef && use.sourceQid === managed.sourceQid);
       if (managed && managedSourceStillBound) {
         const validated = validateRecord(managed, repoRoot, seen, {
-          semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory
+          semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory, isNewPath
         });
         rows.push(validated);
       } else {
-        const derived = recordFromCurrentSvg(representative, repoRoot, { advisory });
-        rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin, advisory }));
+        const derived = recordFromCurrentSvg(representative, repoRoot, { advisory, isNewPath });
+        rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin, advisory, isNewPath }));
       }
     }
   }

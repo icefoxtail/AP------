@@ -192,9 +192,25 @@ const LEGACY_ACCESSIBILITY_CODES = new Set([
   'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID',
   'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID'
 ]);
-function isEngineSvg(svg) {
+// 엔진 표지는 두 종류다(저장소 archive/assets SVG 전수 조사, 표지가 있는 그림 수 / 그중 표기 누락 수):
+// - 확정 표지: 있으면 언제나 엔진 산출물로 본다. data-engine-version 6,661/0, data-stat-chart 591/0, data-set-diagram 320/0,
+//   data-publication-profile="geometry-publication-v1" 107/0, data-text-free 18/0, data-number-line 7/0. 이미 저장소에 있는 그림이 새로 막히지 않는다.
+// - 신규 경로 표지: composite 1,734/382, conic 113/20, ellipse-figure 126/21, lattice-path 34/3, solid-figure 30/1, container-fill 3/3,
+//   data-publication-profile(fragment-publication-spike-v1) 7,666/28. 옛 엔진이 표기 없이 낸 그림이 이미 있어, 이 표지만으로는 막지 않고
+//   `--base`에 없던 경로(새 파일)일 때만 엔진 산출물로 본다(options.newPath).
+const CONFIRMED_ENGINE_MARKERS = [
+  /\sdata-engine-version\s*=/, /\sdata-stat-chart\s*=/, /\sdata-set-diagram\s*=/, /\sdata-number-line\s*=/, /\sdata-text-free\s*=/,
+  /\sdata-publication-profile\s*=\s*["']geometry-publication-v1["']/
+];
+const NEW_PATH_ENGINE_MARKERS = [
+  /\sdata-composite\s*=/, /\sdata-conic\s*=/, /\sdata-ellipse-figure\s*=/, /\sdata-lattice-path\s*=/, /\sdata-solid-figure\s*=/,
+  /\sdata-container-fill\s*=/, /\sdata-publication-profile\s*=/
+];
+function isEngineSvg(svg, options = {}) {
   const root = String(svg ?? '').match(/<(?:[a-z_][\w.-]*:)?svg\b[^>]*>/i);
-  return Boolean(root && /\sdata-engine-version\s*=/.test(root[0]));
+  if (!root) return false;
+  if (CONFIRMED_ENGINE_MARKERS.some(pattern => pattern.test(root[0]))) return true;
+  return options.newPath === true && NEW_PATH_ENGINE_MARKERS.some(pattern => pattern.test(root[0]));
 }
 // 시험지·문항·역할에서 만들 수 있는 것만 쓰는 기계 대체 문구(그림 내용을 추측하지 않는다).
 function substituteAccessibilityText(use = {}) {
@@ -207,7 +223,7 @@ function substituteAccessibilityText(use = {}) {
 function assertSvgStudentLanguage(svg, options = {}) {
   const result = validateSvgStudentLanguage(svg, options);
   if (result.status !== 'PASS' && Array.isArray(options.advisory)) {
-    const legacyAllowed = !isEngineSvg(svg);
+    const legacyAllowed = !isEngineSvg(svg, { newPath: options.newPath });
     const advisoryCode = code => QUALITY_ONLY_CODES.has(code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(code));
     const blocking = result.errors.filter(error => !advisoryCode(error.code));
     for (const error of result.errors) {
