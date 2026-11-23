@@ -1471,15 +1471,15 @@ function treePitch(m,fontPx){
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
 const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*Math.max(treeRowBase(m,fontPx),treePitch(m,fontPx).rowMin));
 const treeRowBase=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
-function treeCenters(m,rowH=TREE_ROW,colw=TREE_COLW){
+function treeCenters(m,rowH=TREE_ROW,colw=TREE_COLW,top=TREE_TOP){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
-  const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
+  const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,top+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
   place('n0');
   return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*colw),y:r6(pos.get(n.id))}]));
 }
 function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
-  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),c=treeCenters(m,rowH,colw),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*colw+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
+  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),top=TREE_TOP+(ctx?.roomPad??0),c=treeCenters(m,rowH,colw,top),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*colw+(m.showPathProbability?190:80),height=top*2+(leaves-1)*rowH;   // roomPad: the label-room MARGIN step (label-room.mjs); absent for a figure that fits
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
   const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
   for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
@@ -1646,12 +1646,13 @@ function normalSpec(m,ctx){
   // Ticks so close that their numbers would touch (marks one unit apart on a window of 16 units, two-digit numbers at the Archive font) take two rows: every second label, in the order along the axis,
   // stands one row lower under its own tick. Only a figure whose labels are nearer than NORM_TICK_APART in one row does this, and the decision follows the font, like the size.
   const rowH=Math.ceil(fontPx*NORM_Z_ROW);
+  const roomOn=ctx?.room==="MARGIN"||ctx?.room==="BEST";   // label-room MARGIN step: the rows below the axis follow the real height of their labels (a stacked fraction is taller than one text row)
   const byPos=m.ticks.map(t=>{const size=labelSize({kind:'MATH',tex:t.tex},fontPx);return {t,x:px(N(t.pos)),w:size.width,h:size.height};}).sort((a,b)=>a.x-b.x);
   // a number stands in the first row when it is NORM_TICK_APART or more clear of the last number of that row, otherwise one row lower (so a narrow number between two wide ones, 0 between -0.3 and 0.3, does not leave its neighbours touching)
   const lowerRow=new Set();let right0=-Infinity;
   for(const e of byPos){const left=e.x-e.w/2,right=e.x+e.w/2;if(left-right0>=NORM_TICK_APART){right0=right;}else{lowerRow.add(e.t.index);}}
   const stagger=lowerRow.size>0;
-  const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,zy=BASE+TICK+4+(stagger?lowerStep:0)+rowH;
+  const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,xRowH=roomOn?Math.max(rowH,Math.ceil(Math.max(...byPos.map(e=>e.h)))+4):rowH,zy=BASE+TICK+4+(stagger?lowerStep:0)+xRowH;
   for(const t of m.ticks){
     const x=px(N(t.pos));
     prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
@@ -1665,8 +1666,9 @@ function normalSpec(m,ctx){
     const hangul=/[가-힣]/.test(c.label);
     labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
   }
-  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'?{leader:true}:{})});
-  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+rowH+SAFE);
+  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'||ctx?.room==='LEADER'?{leader:true}:{})});
+  const zRowH=roomOn&&m.zAxis?Math.max(rowH,...m.ticks.filter(t=>!t.hideZ).map(t=>Math.ceil(labelSize({kind:"MATH",tex:DISPLAY+qtex(P(t.z))},fontPx).height)+2)):rowH;
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+(m.zAxis?zRowH:xRowH)+SAFE+(ctx?.roomPad??0));
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
@@ -1994,10 +1996,12 @@ function slideBranchLabels(spec,placed,branchItems,lines){
   branchItems.forEach((item,i)=>{item.box=chosen[i].box;});
 }
 /** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
-export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize,rowScale:startScale=1}={}){
+// room / roomPad / degrade (label-room.mjs): only a figure that already failed with a room code is composed again with them. room 'LEADER' leads the normal-curve area labels out, room 'MARGIN' sizes the rows below the
+// axis by the real label heights and roomPad (px) widens the margins; degrade (a collector) turns the final geometry checks into a record and the audits into notes, so the best place is drawn (status BEST_EFFORT, never bound).
+export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize,rowScale:startScale=1,room,roomPad,degrade}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,rowScale:state.rowScale??startScale,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
+  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,rowScale:state.rowScale??startScale,svg:status==='COMPOSED'||status==='BEST_EFFORT'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
   let ownBrowser=null;
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
@@ -2006,7 +2010,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     let usedScale=startScale;
     for(const rowScale of TREE_ROW_SCALES.filter(scale=>scale>=startScale)){
       usedScale=rowScale;
-      try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx,rowScale});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+      try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx,rowScale,...(room?{room}:{}),...(roomPad?{roomPad}:{})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
       if(minSize)spec.size={width:Math.max(spec.size.width,minSize.width),height:Math.max(spec.size.height,minSize.height)};   // the size the Archive measured (never smaller than the labels need)
       lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
       const typeset=typesetter();placed=[];
@@ -2019,19 +2023,19 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       }
       if(spec.tree){
         // a tree whose branch labels find no free place at this leaf pitch is spaced wider (the labels of the branches fanning out of one node get more room) and composed again
-        try{resolveTree(spec,placed);}catch(error){if(error instanceof Stop&&error.status==='STAT_BRANCH_LABEL_NO_ROOM'&&rowScale!==TREE_ROW_SCALES[TREE_ROW_SCALES.length-1])continue;throw error;}
+        try{resolveTree(spec,placed);}catch(error){if(error instanceof Stop&&error.status==='STAT_BRANCH_LABEL_NO_ROOM'&&rowScale!==TREE_ROW_SCALES[TREE_ROW_SCALES.length-1])continue;if(degrade&&error instanceof Stop&&error.status==='STAT_BRANCH_LABEL_NO_ROOM')degrade.unplaced(error.status,error.detail?.label??null);else throw error;}
       }
       break;
     }
     if(spec.normal)resolveNormal(spec,placed);
-    resolveValueLabels(spec,placed);
+    if(degrade){try{resolveValueLabels(spec,placed);}catch(error){if(error instanceof Stop&&/_NO_ROOM$/.test(error.status))degrade.unplaced(error.status,error.detail?.labelId??null);else throw error;}}else resolveValueLabels(spec,placed);
     cutGrid(spec,placed);
     const {width,height}=spec.size;
     for(const item of placed){
       const b=item.box;
-      if(b.x<SAFE||b.y<SAFE||b.x+b.width>width-SAFE||b.y+b.height>height-SAFE)throw new Stop('STAT_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
+      if(b.x<SAFE||b.y<SAFE||b.x+b.width>width-SAFE||b.y+b.height>height-SAFE){if(degrade){degrade.outOfBounds('STAT_LABEL_OUT_OF_BOUNDS',item.label.id,b,{width,height},SAFE);continue;}throw new Stop('STAT_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});}
     }
-    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop('STAT_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
+    for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)){if(degrade){degrade.touching('STAT_LABELS_TOO_CLOSE',placed[i].label.id,other.label.id,placed[i].box,other.box);continue;}throw new Stop('STAT_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});}
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
@@ -2049,16 +2053,16 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     const errors=[...(audit.errors??[])];
     if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)errors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
     state.staticAudit={status:audit.status==='PASS'&&!errors.length?'PASS':'FAIL',errors};
-    if(state.staticAudit.status!=='PASS')throw new Stop('STAT_CHART_STATIC_AUDIT_FAIL',{errors});
+    if(state.staticAudit.status!=='PASS'){if(degrade)degrade.observed('static-audit',errors);else throw new Stop('STAT_CHART_STATIC_AUDIT_FAIL',{errors});}
     const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
     const page=await (browser??(ownBrowser=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
     let layout;
     try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
-    if(layout.status!=='PASS')throw new Stop('STAT_CHART_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    if(layout.status!=='PASS'){if(degrade)degrade.observed('rendered-layout',layout.errors);else throw new Stop('STAT_CHART_RENDERED_LAYOUT_FAIL',{errors:layout.errors});}
     state.svg=svg;state.rowScale=usedScale;
-    return outcome('COMPOSED');
+    return degrade?outcome('BEST_EFFORT',{degrees:degrade.items}):outcome('COMPOSED');
   }catch(error){
     if(!(error instanceof Stop))throw error;
     return outcome(error.status,error.detail);
