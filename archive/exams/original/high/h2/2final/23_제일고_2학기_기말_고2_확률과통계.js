@@ -315,7 +315,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "두 사건 $A$, $B$가 서로 독립일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $A\\ne\\varnothing$, $B\\ne\\varnothing$) (4.1점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $P(A\\cup B)=P(A)+P(B)$</td></tr><tr><td>ㄴ. $P(A\\cap B^c)=P(A)P(B^c)$</td></tr><tr><td>ㄷ. $P(A^c\\mid B)=1-P(A)$</td></tr><tr><td>ㄹ. $P(A\\mid B)=P(B\\mid A)$</td></tr></tbody></table></div>",
+    "content": "두 사건 $A$, $B$가 서로 독립일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $P(A)>0$, $P(B)>0$) (4.1점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $P(A\\cup B)=P(A)+P(B)$</td></tr><tr><td>ㄴ. $P(A\\cap B^c)=P(A)P(B^c)$</td></tr><tr><td>ㄷ. $P(A^c\\mid B)=1-P(A)$</td></tr><tr><td>ㄹ. $P(A\\mid B)=P(B\\mid A)$</td></tr></tbody></table></div>",
     "choices": [
       "ㄱ, ㄹ",
       "ㄴ, ㄹ",
@@ -324,7 +324,7 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "④",
-    "solution": "[키포인트] 독립인 두 사건에서는 여사건과의 독립도 함께 성립한다.\\n조건 정리: $A$와 $B$가 독립이면 $P(A\\cap B)=P(A)P(B)$이고, $A$와 $B^c$도 독립이다.\\n정석 풀이: ㄱ은 일반적으로 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$이므로 항상 참이 아니다. ㄴ은 $A$와 $B^c$가 독립이므로 $P(A\\cap B^c)=P(A)P(B^c)$가 되어 참이다. ㄷ은 독립성에 의해 $P(A^c\\mid B)=P(A^c)=1-P(A)$이므로 참이다. ㄹ은 $P(A\\mid B)=P(A)$, $P(B\\mid A)=P(B)$인데 두 값이 항상 같지는 않으므로 거짓이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 독립인 두 사건에서는 여사건과의 독립도 함께 성립한다.\\n조건 정리: $P(A)>0$, $P(B)>0$이므로 조건부확률이 정의되고, $A$와 $B$가 독립이면 $P(A\\cap B)=P(A)P(B)$이며 $A$와 $B^c$도 독립이다.\\n정석 풀이: ㄱ은 일반적으로 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$이므로 항상 참이 아니다. ㄴ은 $A$와 $B^c$가 독립이므로 $P(A\\cap B^c)=P(A)P(B^c)$가 되어 참이다. ㄷ은 독립성에 의해 $P(A^c\\mid B)=P(A^c)=1-P(A)$이므로 참이다. ㄹ은 $P(A\\mid B)=P(A)$, $P(B\\mid A)=P(B)$인데 두 값이 항상 같지는 않으므로 거짓이다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-INDEPENDENCE",
     "subUnit": "독립사건과 독립시행",
     "subUnitConfidence": "category_or_cue_inferred",
