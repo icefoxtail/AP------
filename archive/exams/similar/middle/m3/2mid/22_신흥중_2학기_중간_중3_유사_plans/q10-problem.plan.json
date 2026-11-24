@@ -1,86 +1,223 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 6,
-        "y": 0
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 9.464,
-        "y": 0
-      }
-    },
-    {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 6,
-        "y": 6
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBD",
+      "refs": [
         "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCA",
+      "refs": [
         "C",
         "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
       ]
     }
   ],
   "planeMarks": {
-    "angleArcs": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A",
-        "label": "45°"
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1,
+        "factRole": "GIVEN"
       },
       {
-        "vertex": "C",
-        "ray1": "A",
-        "ray2": "B",
-        "label": "60°"
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
       }
     ],
-    "segmentLabels": [
+    "expressionLabels": [
       {
-        "from": "A",
-        "to": "B",
-        "label": "6√2 cm"
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6*sqrt(2)",
+        "unit": "cm",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "AB=6√2 cm, 각 B=45도, 각 C=60도인 삼각형 ABC"
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "각 B가 45도, 각 C가 60도이고 변 AB의 길이가 6루트2 센티미터인 삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선 AD를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 A에서 밑변 BC에 내린 수선의 발이 D이다. 각 B는 45도, 각 C는 60도이고, 각 ADC는 직각이다. 변 AB의 길이는 6루트2 센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "점 D는 꼭짓점 A에서 밑변 BC에 내린 수선의 발이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{\\mathrm{AC}}$의 길이는? (단, $\\overline{\\mathrm{AB}} = 6\\sqrt{2}\\text{ cm}$, $\\angle B = 45^\\circ$, $\\angle C = 60^\\circ$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

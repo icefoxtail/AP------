@@ -409,6 +409,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/22_신흥중_2학기_중간_중3_유사/q10-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

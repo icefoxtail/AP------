@@ -1,76 +1,159 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 1,
-        "y": 0
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 2
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAC",
+      "refs": [
         "A",
-        "B"
-      ]
-    },
-    {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
-        "B",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCB",
+      "refs": [
         "C",
-        "A"
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "A",
+        "C",
+        "B"
       ]
     }
   ],
   "planeMarks": {
-    "rightAngles": [
+    "angles": [
       {
-        "vertex": "C",
-        "ray1": "A",
-        "ray2": "B"
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "arcs": 1,
+        "noLabel": true
       }
     ],
-    "segmentLabels": [
+    "dimensions": [
       {
-        "from": "A",
-        "to": "B",
-        "label": "√5"
-      },
-      {
+        "id": "dAC",
         "from": "A",
         "to": "C",
-        "label": "1"
+        "label": "1",
+        "side": "BELOW",
+        "style": "BRACE"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "sqrt(5)",
+        "side": "ABOVE",
+        "style": "BRACE"
       }
     ]
   },
-  "caption": "각 C=90도, 빗변 AB=√5, AC=1인 직각삼각형 ABC"
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "caption": "각 C가 직각이고 빗변 AB의 길이가 루트 5이며 밑변 AC의 길이가 1인 직각삼각형 ABC이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 C에 직각 표시가 되어 있고 각 A에 각 호 표시가 되어 있다. 변 AC의 길이는 1, 빗변 AB의 길이는 루트 5로 표시되어 있다.",
+  "newVisualInformation": [
+    "빗변 AB의 길이는 루트 5이다.",
+    "변 AC의 길이는 1이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = \\sqrt{5}$, $\\overline{\\mathrm{AC}} = 1$일 때, $\\tan A$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,0 +1,83 @@
+{
+  "status": "READY",
+  "pattern": "piecewise-polynomial-spike-v1",
+  "viewBox": "0 0 420 320",
+  "axes": {
+    "xRange": [
+      -1,
+      15
+    ],
+    "yRange": [
+      -6,
+      7
+    ],
+    "origin": [
+      6,
+      0
+    ]
+  },
+  "elements": [
+    {
+      "type": "curve",
+      "id": "parabola_g",
+      "expr": "0.25*(x-6)**2 - 4.5",
+      "domain": [
+        0.5,
+        13.5
+      ],
+      "label": "$y=g(x)$"
+    },
+    {
+      "type": "line",
+      "id": "line_f",
+      "expr": "0.75*(x-6)",
+      "domain": [
+        0,
+        14
+      ],
+      "label": "$y=f(x)$"
+    },
+    {
+      "type": "dashed_line",
+      "id": "axis_x6",
+      "points": [
+        [
+          6,
+          -5.5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "label": "$x=6$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        3,
+        -2.25
+      ],
+      "label": "$3$",
+      "projX": true
+    },
+    {
+      "type": "point",
+      "coords": [
+        6,
+        0
+      ],
+      "label": "$6$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        12,
+        4.5
+      ],
+      "label": "$12$",
+      "projX": true
+    }
+  ],
+  "note": "x=6을 축으로 하는 아래로 볼록 이차함수 g(x)=(1/4)(x-6)^2-9/2와 (6,0)을 지나는 증가 직선 f(x)=(3/4)(x-6)의 교점 x=3, 12를 표시"
+}

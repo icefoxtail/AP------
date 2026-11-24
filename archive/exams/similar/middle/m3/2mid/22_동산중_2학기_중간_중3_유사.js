@@ -787,6 +787,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/22_동산중_2학기_중간_중3_유사/q18-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -834,6 +835,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/22_동산중_2학기_중간_중3_유사/q19-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

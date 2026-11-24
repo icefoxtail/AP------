@@ -1,144 +1,241 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "78"
+            },
+            {
+              "kind": "integer",
+              "value": "45"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "156"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "104"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "312"
+            },
+            {
+              "kind": "integer",
+              "value": "90"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "468"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "F",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 5.196,
-        "y": 0
-      }
-    },
-    {
-      "id": "E",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 15.588,
-        "y": 0
-      }
-    },
-    {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 2.598,
-        "y": 1.5
-      }
-    },
-    {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 10.392,
-        "y": 3
-      }
-    },
-    {
-      "id": "AC_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
-        "A",
-        "C"
-      ]
-    },
-    {
-      "id": "BD_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
-        "B",
-        "D"
-      ]
-    },
-    {
-      "id": "F",
-      "op": "INTERSECTION",
-      "inputs": [
-        "AC_line",
-        "BD_line"
-      ]
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "AC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
         "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
         "C"
       ]
     },
     {
-      "id": "CD",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
         "C",
         "D"
       ]
     },
     {
-      "id": "DE",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sDE",
+      "refs": [
         "D",
         "E"
-      ]
-    },
-    {
-      "id": "CE",
-      "op": "SEGMENT",
-      "inputs": [
-        "C",
-        "E"
-      ]
-    },
-    {
-      "id": "BD",
-      "op": "SEGMENT",
-      "inputs": [
-        "B",
-        "D"
       ]
     }
   ],
   "planeMarks": {
-    "angleArcs": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A",
-        "label": "30°"
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1
       }
     ],
-    "segmentLabels": [
+    "expressionLabels": [
       {
-        "from": "A",
-        "to": "B",
-        "label": "6"
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6"
       }
     ]
   },
-  "caption": "닮음비가 1:2인 두 이등변삼각형 ABC와 DCE, 그리고 AC와 BD의 교점 F"
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "caption": "닮음비가 1 대 2인 두 이등변삼각형 ABC와 DCE에서 선분 AC와 BD의 교점이 F인 도형이다.",
+  "accessibilityDescription": "한 직선 위에 세 점 B, C, E가 있고 이등변삼각형 ABC와 DCE가 놓여 있다. 각 ABC는 30도이고 선분 AB의 길이는 6으로 표시되어 있으며 선분 AC와 선분 BD의 교점 F가 표시되어 있다.",
+  "newVisualInformation": [
+    "각 ABC는 30도이다.",
+    "선분 AB의 길이는 6이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 4】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 4-①】** (4점) 직각삼각형 $\\mathrm{ABC}$에서 $\\angle B = 90^\\circ$, $\\overline{\\mathrm{AC}} = 18\\text{ cm}$, $\\angle A = 30^\\circ$이다. 점 $\\mathrm{D}$는 선분 $\\mathrm{BC}$ 위에 있고 $\\overline{\\mathrm{CD}} = 5\\text{ cm}$일 때, 삼각형 $\\mathrm{ABD}$의 넓이를 구하시오.\n\n**【수준별 4-②】** (5점) 다음 그림과 같이 닮음비가 $1 : 2$인 두 이등변삼각형 $\\mathrm{ABC}$, $\\mathrm{DCE}$에서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$이고 $\\angle\\mathrm{ABC} = 30^\\circ$, $\\overline{\\mathrm{AB}} = 6$이다. $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점을 $\\mathrm{F}$라 할 때, $\\triangle\\mathrm{FCD}$의 넓이를 구하시오. (단, 세 점 $\\mathrm{B, C, E}$는 한 직선 위의 점이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      -2,
+      18
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -1,
+          6
+        ],
+        "coefficients": [
+          "5",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "3",
+        "intercept": "0",
+        "label": "y=3x+n"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "3",
+        "label": "x=1"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "15",
+        "label": "x=5"
+      }
+    ]
+  },
+  "caption": "이차함수 y=x^2+mx+5와 직선 y=3x+n의 두 교점 (x=1, x=5)"
+}

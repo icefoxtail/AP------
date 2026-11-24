@@ -1,41 +1,319 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
     {
-      "type": "circle",
-      "center": "O"
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
     },
     {
-      "type": "triangle",
-      "vertices": [
-        "A",
+      "id": "BC",
+      "refs": [
         "B",
         "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "A"
       ],
-      "inscribedIn": "O"
+      "factRole": "GIVEN"
     },
     {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "AB",
-      "foot": "D"
+      "id": "rE",
+      "refs": [
+        "O",
+        "E",
+        "C"
+      ],
+      "factRole": "GIVEN"
     },
     {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "BC",
-      "foot": "E"
-    },
+      "id": "rF",
+      "refs": [
+        "O",
+        "F",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eO",
+        "count": 2,
+        "segments": [
+          "OD",
+          "OE",
+          "OF"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "elAB",
+        "ownerSegment": "AB",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "원 O에 내접하는 삼각형 ABC에서 중심 O로부터 세 변에 내린 수선 OD, OE, OF의 길이가 같은 모습을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O 안에 삼각형 ABC가 있고 중심 O에서 세 변 AB, BC, AC에 내린 수선의 발이 각각 D, E, F이다. 세 선분 OD, OE, OF에는 서로 길이가 같다는 표시가 있고 변 AB의 길이는 12 cm이다.",
+  "newVisualInformation": [
+    "세 선분 OD, OE, OF의 길이가 서로 같다.",
+    "선분 AB의 길이는 12 cm이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "AC",
-      "foot": "F"
-    },
-    {
-      "type": "label",
-      "target": "AB",
-      "text": "12 cm"
+      "id": "source",
+      "condition": "다음 그림의 원 $\\text{O}$에서 $\\overline{\\text{AB}} \\perp \\overline{\\text{OD}}$, $\\overline{\\text{BC}} \\perp \\overline{\\text{OE}}$, $\\overline{\\text{AC}} \\perp \\overline{\\text{OF}}$이고 $\\overline{\\text{OD}}=\\overline{\\text{OE}}=\\overline{\\text{OF}}$이다. $\\overline{\\text{AB}}=12\\text{ cm}$일 때, 원 $\\text{O}$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
