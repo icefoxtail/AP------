@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "25600",
+      "1600",
+      "-200"
+    ],
+    "domain": [
+      -8,
+      16
+    ],
+    "viewport": [
+      -8,
+      16,
+      0,
+      30000
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -8,
+        16
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 28800
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        5,
+        10,
+        15
+      ],
+      "y": [
+        10000,
+        20000,
+        30000
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "가격을 100원씩 올리는 횟수 x가 4일 때 하루 이익이 28800원으로 최대가 된다.",
+  "accessibilityDescription": "아래로 열린 이차함수 I(x)=-200x²+1600x+25600의 꼭짓점은 (4, 28800)이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "하루 이익은 I(x)=(800+100x)(32-2x)=-200(x-4)²+28800이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가격을 올리는 횟수와 하루 전체 이익의 관계를 포물선으로 보이며 꼭짓점에서 최대를 얻음을 보여 준다."
+  ],
+  "sourceQuote": "I(x)=(800+100x)(32-2x)"
+}

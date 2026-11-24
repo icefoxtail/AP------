@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-10",
+      "12",
+      "-2"
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -11,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 교점의 가로좌표가 1, 5일 때 h(x)의 꼭짓점은 (3, 8)이다.",
+  "accessibilityDescription": "아래로 열린 포물선 h(x)가 x축과 1, 5에서 만나고 꼭짓점은 (3, 8)이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "h(x)=-2(x-1)(x-5)=-2(x-3)²+8이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점의 x좌표 평균 3과 간격 4가 꼭짓점의 가로좌표 및 최댓값과 연결됨을 보여 준다."
+  ],
+  "sourceQuote": "h(x)=-2(x-1)(x-5)"
+}
