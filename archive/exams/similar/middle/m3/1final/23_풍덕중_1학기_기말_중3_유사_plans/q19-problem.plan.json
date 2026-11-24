@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      7,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "b",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=b"
+      },
+      {
+        "id": "ac",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=ax+c"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 직선 y=b와 y=ax+c의 그래프가 좌표평면에 그려져 있다.",
+  "accessibilityDescription": "x축 아래에 수평선 y=b가 있고, y절편이 양수이며 오른쪽으로 갈수록 내려가는 직선 y=ax+c가 있다.",
+  "newVisualInformation": [
+    "x축 아래의 수평선 y=b와 y절편이 양수인 감소하는 직선 y=ax+c"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $y=b$, $y=ax+c$의 그래프가 아래 그림과 같을 때, 이차함수 $y=ax^2+bx+c$의 그래프의 개형으로 적절한 설명을 고르시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

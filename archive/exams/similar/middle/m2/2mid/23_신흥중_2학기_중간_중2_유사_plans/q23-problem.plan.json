@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 116.565,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 116.565,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 63.435,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2,
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 63.435,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2,
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "사각형 ABCD에서 변 BA를 점 A 너머로 연장한 위에 점 E가 있고, 마주 보는 각 A와 C, B와 D에 각각 같은 크기임을 나타내는 호 표시가 있다.",
+  "accessibilityDescription": "점 A, B, C, D로 이루어진 사각형과 변 BA의 연장선 위의 점 E가 보이고, 각 A와 C에는 한 겹의 호, 각 B와 D에는 두 겹의 호가 표시되어 있다.",
+  "newVisualInformation": [
+    "마주 보는 각 A와 C에 같은 표시",
+    "마주 보는 각 B와 D에 같은 표시",
+    "변 BA를 점 A 너머로 연장한 점 E"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 5] 다음은 $\\square ABCD$에서 두 쌍의 대각의 크기가 각각 같으면 평행사변형임을 설명하는 과정이다. 빈칸 (가)~(사)에 알맞은 것을 차례로 쓰시오. [6점]\n\n$\\angle A=$ (가), $\\angle B=$ (나) $\\angle A+\\angle B+\\angle C+\\angle D=$ (다)$^\\circ$이므로 $\\angle A+\\angle B=$ (라)$^\\circ$ $\\cdots$ ㉠ $\\overline{BA}$의 연장선 위에 한 점 $E$를 잡으면 $\\angle A+\\angle DAE=$ (마)$^\\circ$ $\\cdots$ ㉡ ㉠, ㉡에서 $\\angle B=$ (바) 즉, 동위각의 크기가 같으므로 $\\overline{AD}\\parallel$ (사) $\\cdots$ ㉢ 같은 방법으로 $\\overline{AB}\\parallel\\overline{DC}$ $\\cdots$ ㉣ ㉢, ㉣에서 두 쌍의 대변이 각각 평행하므로 $\\square ABCD$는 평행사변형이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 27,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "ring": 1
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 27,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "ring": 1
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sCE"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "삼각형 ABC에서 각 A의 이등분선 AD가 변 BC와 만나고, 점 C를 지나 AD에 평행한 직선이 BA의 연장선과 점 E에서 만나는 그림이다.",
+  "accessibilityDescription": "삼각형 ABC와 꼭짓점 A에서 변 BC로 내려간 선분 AD가 보인다. 점 B에서 A를 지나 E까지 이어진 선과 점 C에서 E로 이어진 선분이 있으며, 각 BAD와 각 DAC에 같은 모양의 호가 표시되고 AD와 CE에 평행 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 각 A의 이등분선 AD",
+    "BA의 연장선 위의 점 E",
+    "AD와 평행한 선분 EC",
+    "각 BAD와 각 DAC의 같음 표시",
+    "AD와 EC의 평행 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 $\\triangle ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, $\\overline{AB}:\\overline{AC}=\\overline{BD}:\\overline{CD}$임을 설명하는 과정이다. ①~⑤에 들어갈 것으로 알맞지 **않은** 것은? [4점]\n\n점 $C$를 지나고 $\\overline{AD}$에 평행한 직선이 $\\overline{BA}$의 연장선과 만나는 점을 $E$라 하자. $\\overline{AD}$가 $\\angle A$의 이등분선이므로 $\\angle BAD=$ (①)이고, $\\overline{AD}\\parallel\\overline{EC}$이므로 동위각으로 $\\angle BAD=$ (②), 엇각으로 $\\angle CAD=$ (③)이다. 따라서 $\\angle AEC=\\angle ACE$이므로 $\\overline{AE}=$ (④)이다. 또 $\\triangle BCE$에서 $\\overline{AD}\\parallel\\overline{EC}$이므로 $\\overline{BA}:\\overline{AE}=$ (⑤)이고, $\\overline{AE}=\\overline{AC}$이므로 $\\overline{AB}:\\overline{AC}=\\overline{BD}:\\overline{CD}$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

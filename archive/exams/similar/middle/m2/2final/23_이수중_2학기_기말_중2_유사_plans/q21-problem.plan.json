@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "height": true,
+      "side": "LEFT",
+      "label": "h"
+    },
+    {
+      "solid": "cone",
+      "slant": true
+    }
+  ],
+  "caption": "직각삼각형 ABC를 변 AC를 회전축으로 1회전시켜 생기는 원뿔이다. 밑면의 반지름은 5 cm, 모선은 13 cm, 높이는 h cm로 제시되어 있다.",
+  "accessibilityDescription": "밑면의 반지름이 5 cm, 모선이 13 cm, 높이가 h cm로 표시된 원뿔이 있다.",
+  "newVisualInformation": [
+    "원뿔의 밑면 반지름 5 cm",
+    "모선 13 cm",
+    "높이 h cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 직각삼각형 $ABC$ ($\\angle C = 90^\\circ$)에서 빗변의 길이가 $\\overline{AB} = 13\\text{ cm}$이고 밑변의 길이가 $\\overline{BC} = 5\\text{ cm}$이다. 이 직각삼각형을 변 $AC$를 회전축으로 하여 $1$회전시킬 때 생기는 입체도형의 부피를 구하시오. [6점]  \n조건 1) 생기는 입체도형의 높이를 $h\\text{ cm}$라 하고 풀이과정에 적으시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

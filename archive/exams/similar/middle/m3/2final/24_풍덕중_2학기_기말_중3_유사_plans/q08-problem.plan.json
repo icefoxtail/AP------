@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "TP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOT",
+        "ownerSegment": "OT",
+        "text": "5000",
+        "unit": "km"
+      },
+      {
+        "id": "lTP",
+        "ownerSegment": "TP",
+        "text": "12000",
+        "unit": "km"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "DOT",
+  "coordinateCanvas": {
+    "width": 416,
+    "height": 400
+  },
+  "caption": "행성과 지평선의 접점 T, 인공위성 P의 위치를 나타낸 그림이다. 행성의 반지름은 5000 km, 접선 PT의 길이는 12000 km이다.",
+  "accessibilityDescription": "행성을 나타내는 원과 원 위의 접점 T, 원 밖의 인공위성 P가 그려져 있다. 중심에서 T까지의 반지름은 5000 km, T에서 P까지의 접선은 12000 km로 표시되어 있고, T에서 수직 표시가 있다.",
+  "newVisualInformation": [
+    "행성, 지평선의 접점 T, 인공위성 P와 반지름 및 접선의 길이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어떤 행성의 반지름의 길이가 $5{,}000\\rm,km$이고, 인공위성 $P$에서 행성의 지평선(접점 $T$)까지의 거리가 $12{,}000\\rm,km$이다. 이 인공위성이 행성의 지표면으로부터 떨어진 높이는 몇 $\\rm km$인가? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

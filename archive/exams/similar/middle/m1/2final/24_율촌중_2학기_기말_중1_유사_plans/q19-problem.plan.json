@@ -1,0 +1,436 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cCone",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "B1",
+    "C1",
+    "A2",
+    "B2",
+    "C2",
+    "T",
+    "L",
+    "R",
+    "O2",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1B1",
+      "refs": [
+        "A1",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB1C1",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1A1",
+      "refs": [
+        "C1",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2A2",
+      "refs": [
+        "C2",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sTL",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sO2T",
+      "refs": [
+        "O2",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sO2Q",
+      "refs": [
+        "O2",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcCone",
+        "circle": "cCone",
+        "center": "O2",
+        "from": "L",
+        "to": "R",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sA1B1",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sC1A1",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sB1C1",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lPrismH",
+        "ownerSegment": "sA1A2",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lConeH",
+        "ownerSegment": "sO2T",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lConeR",
+        "ownerSegment": "sO2Q",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "A1",
+    "B1",
+    "C1",
+    "A2",
+    "B2",
+    "C2",
+    "T",
+    "L",
+    "R",
+    "O2",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "왼쪽에는 밑면이 직각삼각형인 삼각기둥, 오른쪽에는 원뿔이 있는 그림이다. 삼각기둥의 밑면 두 변과 빗변, 높이와 원뿔의 반지름, 높이가 표시되어 있다.",
+  "accessibilityDescription": "직각삼각형을 밑면으로 하는 삼각기둥과 원뿔이 나란히 보인다. 삼각기둥에는 5센티미터, 12센티미터, 13센티미터, 높이 8센티미터가, 원뿔에는 반지름 4센티미터와 높이 6센티미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각기둥의 밑면 변 5센티미터, 12센티미터와 빗변 13센티미터가 보인다.",
+    "삼각기둥의 높이 8센티미터와 원뿔의 반지름 4센티미터, 높이 6센티미터가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 다음 물음에 답하시오. [7점] (1) 밑면이 두 변의 길이가 각각 $5\\text{ cm}, 12\\text{ cm}$인 직각삼각형이고 높이가 $8\\text{ cm}$인 삼각기둥의 겉넓이를 구하시오. (단, 밑면 직각삼각형의 빗변의 길이는 $13\\text{ cm}$이다.) [4점] (2) 밑면의 반지름의 길이가 $4\\text{ cm}$이고 높이가 $6\\text{ cm}$인 원뿔의 부피를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "hideSetLabel": true,
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "y",
+        "hideSetLabel": true,
+        "color": "GREEN",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "가로와 세로 방향의 값의 범위"
+  },
+  "caption": "네 직선 x=1, x=5, y=3, y=7로 둘러싸인 직사각형에서 x 값의 범위와 y 값의 범위를 수직선에 각각 나타낸 것이다.",
+  "accessibilityDescription": "수직선 위에 x 값의 범위 1 이상 5 이하가 파란색으로, y 값의 범위 3 이상 7 이하가 초록색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 직선 $x=1$, $x=5$, $y=3$, $y=7$에 의해 둘러싸인 직사각형 모양의 도형이 있다. 일차함수 $y=ax-1$ ($a\\ne0$)의 그래프가 이 직사각형 모양의 도형과 만날 때, 보기에서 옳은 것을 모두 고른 것은? [5점]\n\n$$  \n\\begin{aligned}  \n&\\text{ㄱ. 직사각형 모양의 도형의 넓이는 } 16\\text{이다.} \\\\  \n&\\text{ㄴ. } a\\text{의 최댓값을 } m\\text{, 최솟값을 } n\\text{이라 하면 } m = 10n\\text{이다.} \\\\  \n&\\text{ㄷ. } a=2\\text{일 때 } y=ax-1\\text{의 그래프는 직사각형 모양의 도형의 넓이를 이등분한다.}  \n\\end{aligned}  \n$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x=1, x=5, y=3, y=7",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형을 정하는 x 값과 y 값의 범위를 수직선에 각각 표시한다"
+  ]
+}

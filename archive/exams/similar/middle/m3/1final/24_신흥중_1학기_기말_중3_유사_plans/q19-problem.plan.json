@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vx",
+        "x": "-2",
+        "y": "-3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-2",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "아래로 볼록한 이차함수의 그래프가 꼭짓점 (-2,-3)을 지나고 y축과 (0,5)에서 만난다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선이 있고, 꼭짓점은 (-2,-3), y축과 만나는 점은 (0,5)로 표시되어 있다.",
+  "newVisualInformation": [
+    "이차함수 그래프의 꼭짓점 (-2,-3)과 y절편 (0,5)이 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $abc$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

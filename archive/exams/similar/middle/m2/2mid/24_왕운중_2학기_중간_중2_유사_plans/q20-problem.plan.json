@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 직선 위에 점 B, A, D와 점 B, C, E와 점 A, D, F가 차례로 놓인 도형이다. 각 EDF의 크기를 71로 표시하고 구하는 각 ABC를 x로 나타내었다. 길이가 같은 선분들에는 같은 표시를 하였다.",
+  "accessibilityDescription": "점 B에서 A를 지나 D로 이어지는 직선, 점 B에서 C를 지나 E로 이어지는 직선, 점 A에서 D를 지나 F로 이어지는 직선이 보인다. 점 D에서 각 EDF가 71로 표시되어 있고, 길이가 같은 선분들에 같은 눈금 표시가 있으며 각 ABC에 x 표시가 있다.",
+  "newVisualInformation": [
+    "세 점 B, A, D가 한 직선 위에 있음",
+    "세 점 B, C, E가 한 직선 위에 있음",
+    "세 점 A, D, F가 한 직선 위에 있음",
+    "각 EDF의 크기 71",
+    "같은 길이 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2552172",
+              "denominator": "885481"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1276086",
+              "denominator": "885481"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5157360",
+              "denominator": "885481"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5459772",
+              "denominator": "885481"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8432040",
+              "denominator": "885481"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8367372",
+              "denominator": "885481"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "D",
+    "C",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given71",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "value": 71,
+        "label": "71",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "asked",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC",
+          "sCD",
+          "sCE"
+        ]
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sDE",
+          "sEF"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB}=\\overline{AC}=\\overline{CD}=\\overline{CE}$, $\\overline{DE}=\\overline{FE}$이고 세 점 $B$, $A$, $D$와 세 점 $B$, $C$, $E$, 세 점 $A$, $D$, $F$가 각각 한 직선 위에 차례로 놓여 있다. $\\angle EDF=71^\\circ$일 때, $\\angle ABC$의 크기는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

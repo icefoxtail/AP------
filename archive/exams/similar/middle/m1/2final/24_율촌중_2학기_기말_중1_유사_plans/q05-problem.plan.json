@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "94",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "94",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ct",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "47",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "47",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Rt",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "62",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cTop",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Ct"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBot",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Cb"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "Ct",
+    "Cb",
+    "Rt"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cTop",
+    "cBot"
+  ],
+  "displaySegments": [
+    {
+      "id": "sR1R2",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "sR2R3",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "sR3R4",
+      "refs": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "id": "sR4R1",
+      "refs": [
+        "R4",
+        "R1"
+      ]
+    },
+    {
+      "id": "sRadT",
+      "refs": [
+        "Ct",
+        "Rt"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lW",
+        "ownerSegment": "sR1R2",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lH",
+        "ownerSegment": "sR4R1",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lR",
+        "ownerSegment": "sRadT",
+        "text": "3",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "Ct",
+    "Cb",
+    "Rt"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원기둥의 전개도로, 가운데 직사각형의 위아래에 밑면인 원이 붙어 있다. 밑면의 반지름과 직사각형의 세로가 주어져 있고 가로는 구해야 하는 길이이다.",
+  "accessibilityDescription": "반지름 3센티미터인 원 두 개와, 세로 8센티미터인 직사각형이 위아래로 붙은 전개도가 보인다. 직사각형의 가로에는 x가 적혀 있다.",
+  "newVisualInformation": [
+    "밑면 원의 반지름 3센티미터가 표시되어 있다.",
+    "옆면 직사각형의 세로 8센티미터와 가로 x가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $3\\text{ cm}$이고 높이가 $8\\text{ cm}$인 원기둥의 전개도에서, 두 밑면의 반지름과 옆면 직사각형의 가로와 세로의 길이를 나타낸 세 수의 합은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

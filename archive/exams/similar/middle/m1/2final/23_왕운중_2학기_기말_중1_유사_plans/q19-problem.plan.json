@@ -1,0 +1,57 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 통"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 4,
+            "height": 24
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 공 3개"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "SPHERE",
+            "radius": 4
+          },
+          {
+            "kind": "SPHERE",
+            "radius": 4
+          },
+          {
+            "kind": "SPHERE",
+            "radius": 4
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "왼쪽에는 원기둥 모양의 통이, 오른쪽에는 이 통에 꼭 맞게 들어가는 같은 크기의 공 3개가 그려져 있다. 통의 부피는 주어져 있고 공의 크기는 구하는 값이므로 표시하지 않았다.",
+  "accessibilityDescription": "왼쪽 패널에는 길쭉한 원기둥 모양의 통이 있고, 오른쪽 패널에는 같은 크기의 공 세 개가 위에서 아래로 맞닿아 있다.",
+  "newVisualInformation": [
+    "원기둥 모양의 통",
+    "통에 꼭 맞게 들어가는 공 3개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "구 모양의 공 $3$개가 꼭 맞게 들어가는 원기둥 모양의 통이 있다. 이 통의 부피가 $384\\pi,\\mathrm{cm}^3$일 때, 공 한 개의 부피는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
