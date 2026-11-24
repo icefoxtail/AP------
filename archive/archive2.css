@@ -5006,7 +5006,8 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .exam-row-sim.none .mock-in-sim { margin-left: auto; }
 @container exam-rows (min-width: 920px) {
   .mock-in-actions { display: none; }
-  .mock-in-sim { display: inline-flex; }
+  /* inline-flex는 글자를 위로 붙인다: 다른 단추처럼 가운데에 둔다. */
+  .mock-in-sim { display: inline-flex; align-items: center; justify-content: center; }
   .exam-row-sim.none { justify-content: space-between; }
 }
 .derive-mock .mock-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 12px 0; }
