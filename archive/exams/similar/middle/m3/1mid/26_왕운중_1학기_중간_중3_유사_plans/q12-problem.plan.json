@@ -1,0 +1,415 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "181",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "181",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sIJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "sJK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "sKL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "sLI",
+      "refs": [
+        "L",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lA4",
+        "ownerSegment": "sAB",
+        "text": "A4"
+      },
+      {
+        "id": "lA3",
+        "ownerSegment": "sEF",
+        "text": "A3"
+      },
+      {
+        "id": "lB4",
+        "ownerSegment": "sIJ",
+        "text": "B4"
+      },
+      {
+        "id": "aA4",
+        "ownerSegment": "sCD",
+        "text": "S"
+      },
+      {
+        "id": "aA3",
+        "ownerSegment": "sGH",
+        "text": "2S"
+      },
+      {
+        "id": "aB4",
+        "ownerSegment": "sKL",
+        "text": "3S/2"
+      }
+    ],
+    "dimensions": []
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "닮음인 세 용지 A4, A3, B4를 나란히 그린 그림이다. A4의 넓이를 S라 할 때 A3의 넓이는 2S, B4의 넓이는 3S/2로 주어져 있다.",
+  "accessibilityDescription": "왼쪽부터 A4, A3, B4 용지 모양의 직사각형 세 개가 나란히 있고, 각 직사각형의 아래 변에 용지 이름이, 위 변에 넓이 S, 2S, 3S/2가 적혀 있다.",
+  "newVisualInformation": [
+    "세 용지가 서로 닮은 직사각형임을 보여 준다.",
+    "A4의 넓이를 S로 둘 때 A3는 2S, B4는 3S/2임을 보여 준다.",
+    "구해야 하는 확대 비율 x는 그림에 쓰지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 대화를 읽고 영철의 마지막 대답에서 $x$의 값으로 가장 적절한 것은? (단, $\\sqrt{2}=1.414$, $\\sqrt{3}=1.732$로 계산하고, 소수점 아래 둘째 자리에서 반올림한다.) [5점]\n\n현숙: 동아리 부원 모집 포스터를 A4 용지에 작성했더니 너무 작아서 잘 안 보여. 영철: 넓이가 A4 용지의 $2$배인 A3 용지에 확대 복사하면 되잖아. 현숙: A4 용지를 A3 용지로 확대하도록 복사기 설정을 바꾸니까 약 $141.4%$ 확대되는 것으로 나오네. 영철: 맞아. 닮은 도형에서 넓이의 비가 $1:2$이면 길이의 비는 $1:\\sqrt{2}$이니까 복사기 확대 비율은 약 $141.4%$가 되는 거지. 현숙: 그런데 B4 용지의 넓이는 A4 용지의 $1.5$배이잖아. 영철: 맞아. A3 용지와 B4 용지도 서로 닮음인 관계야. 그러면 B4 용지를 A3 용지로 확대 복사할 때는 약 $x%$로 확대되는 것으로 나와.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

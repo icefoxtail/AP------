@@ -1,0 +1,48 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "y, A, B",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "9",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "5",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 끝점의 세로 좌표"
+  },
+  "caption": "수직선 위에 두 점 A(2, 9), B(4, 5)의 y좌표 9와 5를 나타낸 것이다.",
+  "accessibilityDescription": "수직선 위에 y좌표가 9인 점 A와 y좌표가 5인 점 B가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $A(2, 9), B(4, 5)$를 양 끝점으로 하는 선분 $AB$와 일차함수 $y = ax + 1$의 그래프가 만날 때, 이를 만족하는 정수 $a$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A(2, 9), B(4, 5)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 점 A, B의 y좌표 9와 5를 수직선에 표시한다"
+  ]
+}

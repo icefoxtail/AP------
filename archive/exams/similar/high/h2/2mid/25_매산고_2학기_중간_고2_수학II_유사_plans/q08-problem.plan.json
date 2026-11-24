@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-8/3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1/3",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "1"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-5/3"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "16/3"
+      },
+      {
+        "id": "V",
+        "x": "4/3",
+        "y": "-16/9",
+        "marker": "NONE"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "1"
+      ],
+      "A": [
+        "1",
+        "-5/3"
+      ],
+      "B": [
+        "4",
+        "16/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "미분가능한 함수 y=f(x)의 그래프와 직선 y=x/3이 원점과 점 P에서 만나고, 곡선 위에 두 점 A, B가 있는 그림이다.",
+  "accessibilityDescription": "곡선 y=f(x)가 원점과 점 P에서 직선 y=x/3과 만난다. 곡선 위의 점 A는 직선 아래쪽에, 점 B는 직선 위쪽에 표시되어 있다.",
+  "newVisualInformation": [
+    "곡선 y=f(x)와 직선 y=x/3의 두 교점, 곡선 위의 점 A와 B를 보여 준다.",
+    "f'(p)와 관련된 값이나 보기의 정오는 라벨에 쓰지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미분가능한 함수 $f(x)$의 그래프와 직선 $y=\\dfrac{1}{3}x$가 다음 그림과 같이 원점과 점 $P\\left(p,\\ \\dfrac{1}{3}p\\right)$에서 만난다. 함수 $y=f(x)$의 그래프 위의 두 점 $A(a,\\ f(a))$, $B(b,\\ f(b))$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, $0 < a < p < b$)\n\nㄱ. $f'(p) > \\dfrac{1}{3}$ ㄴ. $f(a)-f(b) > \\dfrac{1}{3}(a-b)$ ㄷ. $f'(\\alpha) = \\dfrac{1}{3}$인 $\\alpha$가 열린구간 $(0,\\ p)$에 적어도 하나 존재한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

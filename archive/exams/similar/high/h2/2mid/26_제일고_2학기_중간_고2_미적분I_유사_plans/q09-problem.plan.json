@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -1,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "pa",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "pb",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "pa",
+          "text": "a",
+          "direction": "S",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cb",
+          "point": "pb",
+          "text": "b",
+          "direction": "SE",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "아래로 볼록한 곡선 y=f(x)와 직선 y=x가 원점과 b에 대응하는 점에서 만난다. x축에 a와 b가 표시되어 있고, x=a에서 곡선은 직선보다 아래쪽에 있다.",
+  "accessibilityDescription": "원점을 지나 아래로 볼록한 곡선과 기울기 1인 직선이 그려져 있다. 곡선은 x=a에서 직선보다 아래에 있고, x=b에서 직선과 만난다.",
+  "newVisualInformation": [
+    "원점을 지나는 아래로 볼록한 곡선",
+    "직선 y=x와의 교점",
+    "x축 위의 a, b 위치 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 실수 전체의 집합에서 미분가능하고 아래로 볼록인 함수 $y=f(x)$와 직선 $y=x$의 그래프이다. $0<a<b$이고 $f(a)<a$, $f(b)=b$일 때, 다음 중 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

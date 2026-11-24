@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "589",
+              "denominator": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1363",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1076",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 70,
+        "label": "70",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aICB",
+        "refs": [
+          "I",
+          "C",
+          "B"
+        ],
+        "value": 23,
+        "label": "23",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aIBD",
+        "refs": [
+          "I",
+          "B",
+          "D"
+        ],
+        "value": 32,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lID",
+        "ownerSegment": "sID",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 400
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "I"
+      ]
+    }
+  ],
+  "caption": "삼각형 ABC의 내심 I와 꼭짓점 B, C를 잇는 선분, 그리고 I에서 변 BC에 내린 수선의 발 D가 표시되어 있다. 각 A는 70도, 각 ICB는 23도이고, ID의 길이는 5 cm이다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 내심 I가 있고, I에서 B와 C로 선분이 이어진다. I에서 변 BC에 내린 수선의 발 D에 직각 표시가 있으며, 꼭짓점 A의 각에는 70, C에서 CI와 CB 사이의 각에는 23, B에서 BI와 BD 사이의 각에는 x가 적혀 있다. 선분 ID에는 5 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 내심 I",
+    "변 BC에 내린 수선의 발 D와 직각 표시",
+    "각 A=70, 각 ICB=23, 각 IBD=x, ID=5 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $I$가 $\\triangle ABC$의 내심이고 $\\angle A = 70^\\circ$, $\\angle ICB = 23^\\circ$이다. 점 $I$에서 변 $BC$에 내린 수선의 발을 $D$라 할 때 $\\overline{ID} = 5\\text{ cm}$이다. $\\angle IBD$의 크기와 점 $I$에서 변 $AB$에 이르는 거리를 바르게 짝지은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

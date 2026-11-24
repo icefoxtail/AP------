@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "9"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "viewport": [
+      -9,
+      9,
+      -9,
+      22
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -3,
+        "y": 18
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "9"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "C"
+      ]
+    }
+  },
+  "caption": "좌표평면에 y=f(x)의 그래프가 그려져 있다. x축의 왼쪽 부분은 위로 볼록한 조각이 (-3,18)에서 꼭짓점을 이루고, x축의 오른쪽 부분은 아래로 볼록한 조각이 (3,0)에서 꼭짓점을 이루며, 두 조각은 y축 위의 한 점에서 이어진다.",
+  "accessibilityDescription": "좌표평면에 y=f(x)라고 이름 붙은 하나의 곡선이 있고, 왼쪽 조각은 x=-3에서 최고점 18을 지나 y축과 만나며, 오른쪽 조각은 그 y축 위의 점에서 내려가 x=3에서 최저점 0을 이룬 뒤 다시 상승한다. y축에는 9의 눈금이, 두 꼭짓점에는 M과 N의 이름이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 이차함수 조각의 꼭짓점 M, N과 두 조각이 만나는 y축 위의 점을 표시하였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 3] (단답) 함수 $f(x)=\\begin{cases}(x-3)^2&(x\\ge 0)\\-(x+3)^2+18&(x<0)\\end{cases}$과 정수 $k$에 대하여 $g(x)=\\begin{cases}f(x)&(x\\ge k)\\-f(x)&(x<k)\\end{cases}$라 하자. 실수 $t$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=t$가 만나는 점의 개수를 $h(t)$라 할 때, 다음 조건을 만족시키는 정수 $k$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $Mm$의 값을 구하시오. <조건> $\\left|h(a)-\\lim_{t\\to -a^-}h(t)\\right|=4$를 만족시키는 실수 $a$가 존재한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

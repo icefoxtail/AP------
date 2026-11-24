@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      8,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "10",
+        "coefficients": [
+          "1",
+          "1",
+          "-34771/10000",
+          "0"
+        ],
+        "domain": [
+          "38/10",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "10",
+        "shiftX": "-1",
+        "coefficients": [
+          "1",
+          "1",
+          "44771/10000"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "69542/10000",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "8"
+        ],
+        "color": "GREEN",
+        "label": "y=-x+2k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "64771/10000",
+          "y": "4771/10000"
+        },
+        {
+          "id": "B",
+          "x": "-5229/10000",
+          "y": "74771/10000"
+        }
+      ]
+    }
+  },
+  "caption": "로그함수 y=log(x-k)의 그래프와 y=10의 x+1제곱에 k+1을 더한 함수의 그래프, 그리고 직선 y=-x+2k가 그려져 있다. 직선이 두 곡선과 만나는 점을 각각 A, B라 한다.",
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선이 오른쪽의 로그곡선과 A에서, 왼쪽 위의 지수곡선과 B에서 만나며 두 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=-x+2k가 두 곡선과 만나는 점이 A, B로 표시되어 있다.",
+    "두 곡선은 서로 다른 사분면 쪽에 놓여 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "상수 $k$ ($k > 0$)에 대하여 직선 $y = -x + 2k$가 두 함수 $f(x) = \\log(x - k)$, $g(x) = 10^{x + 1} + k + 1$의 그래프와 만나는 점을 각각 $A, B$라 하자. $\\overline{AB} = 7\\sqrt{2}$일 때, $k$의 값은? (단, $\\log 3 = 0.4771$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

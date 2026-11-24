@@ -1,0 +1,182 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "평행사변형 ABCD와 두 대각선 AC, BD의 교점 O를 나타낸 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD에 두 대각선 AC와 BD가 그려져 있고, 그 교점 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD",
+    "두 대각선 AC, BD",
+    "교점 O"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 평행사변형 $ABCD$의 두 대각선 $AC$, $BD$의 교점을 $O$라 할 때, 두 대각선이 서로 다른 것을 이등분함을 증명하는 과정이다. (가), (나), (다)에 들어갈 것으로 알맞게 짝지어진 것은? $\\triangle OAD$와 $\\triangle OCB$에서 $\\overline{AD} \\parallel \\overline{BC}$이므로 $\\angle OAD = \\angle OCB\\ \\cdots\\cdots\\text{㉠}$, $\\angle ODA = \\text{(가)}\\ \\cdots\\cdots\\text{㉡}$. 평행사변형에서 대변의 길이는 같으므로 $\\overline{AD} = \\text{(나)}\\ \\cdots\\cdots\\text{㉢}$. ㉠, ㉡, ㉢에 의하여 $\\triangle OAD \\equiv \\text{(다)}$ ($\\text{ASA}$ 합동)이므로 $\\overline{OA} = \\overline{OC}$, $\\overline{OB} = \\overline{OD}$.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

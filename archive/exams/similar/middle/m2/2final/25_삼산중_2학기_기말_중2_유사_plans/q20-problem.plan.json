@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC의 두 변 BC, AC를 각각 한 변으로 하는 직각이등변삼각형 DBC와 ACE를 바깥쪽에 그린 그림이다.",
+  "accessibilityDescription": "C가 직각인 삼각형 ABC에서 BC를 한 변으로 하는 직각이등변삼각형 DBC와 AC를 한 변으로 하는 직각이등변삼각형 ACE가 그려져 있고, BC는 a, AC는 b, AB는 c로 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC",
+    "BC를 한 변으로 하는 직각이등변삼각형 DBC",
+    "AC를 한 변으로 하는 직각이등변삼각형 ACE",
+    "a, b, c 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sCD"
+        ]
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sAC",
+          "sCE"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "c",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rBCD",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rACE",
+      "refs": [
+        "A",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "rACB",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $ABC$ ($\\angle C = 90^\\circ$, $\\overline{BC}=a, \\overline{AC}=b, \\overline{AB}=c$)의 두 변 $\\overline{BC}, \\overline{AC}$를 각각 빗변이 아닌 한 변으로 하는 두 직각이등변삼각형 $\\triangle DBC$ ($\\angle BCD=90^\\circ, \\overline{BC}=\\overline{DC}=a$), $\\triangle ACE$ ($\\angle ECA=90^\\circ, \\overline{AC}=\\overline{EC}=b$)를 바깥쪽에 그린다. 사각형 $DBEA$의 넓이를 두 가지 방법으로 구하여 피타고라스 정리를 증명하는 과정이다. (가), (나), (다)에 알맞은 것을 바르게 짝지은 것은? [5점]\n\n[방법 1]\n사각형 $DBEA$의 넓이는 두 직각이등변삼각형 $\\triangle DBC$와 $\\triangle ACE$의 넓이의 합과 같으므로 $\\square DBEA = \\triangle DBC + \\triangle ACE = (\\text{가})$\n\n[방법 2]\n$\\triangle ABC$와 $\\triangle EDC$에서 $\\overline{AC} = \\overline{EC} = b$, $\\overline{BC} = \\overline{DC} = a$, $\\angle ACB = \\angle ECD = 90^\\circ$이므로 $\\triangle ABC \\cong \\triangle EDC$ ( (나) 합동 ) 따라서 $\\overline{DE} = \\overline{AB} = c$이고, $\\overline{AB} \\perp \\overline{DE}$이다. $\\overline{AB}$의 연장선과 $\\overline{DE}$의 교점을 $H$라 하면 $\\square DBEA = \\triangle DBE - \\triangle AED = \\dfrac{1}{2}\\overline{DE}\\cdot\\overline{BH} - \\dfrac{1}{2}\\overline{DE}\\cdot\\overline{AH} = \\dfrac{1}{2}\\overline{DE}(\\overline{BH}-\\overline{AH}) = (\\text{다})$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

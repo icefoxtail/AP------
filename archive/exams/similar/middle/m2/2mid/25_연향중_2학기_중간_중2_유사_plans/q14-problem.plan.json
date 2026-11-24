@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1116490",
+              "denominator": "1273453"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2289144",
+              "denominator": "1273453"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2389943",
+              "denominator": "1273453"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2289144",
+              "denominator": "1273453"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bD",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bD",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 116,
+        "label": "116",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD1",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 32,
+        "noLabel": true,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD2",
+        "refs": [
+          "E",
+          "D",
+          "C"
+        ],
+        "value": 32,
+        "noLabel": true,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rAED",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "caption": "평행사변형 ABCD에서 각 D의 이등분선이 변 BC와 만나는 점을 E라 하고, 점 A에서 선분 DE에 내린 수선의 발이 E인 그림이다. 각 C는 116도로 주어져 있다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변과 각 D의 이등분선 DE, 선분 AE가 그려져 있다. 점 E는 변 BC 위에 있고 각 AED에 직각 표시가 있으며 각 C 옆에 116이 적혀 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD와 각 D의 이등분선 DE, 변 BC 위의 점 E, 수선 AE가 보인다.",
+    "각 C가 116도로 주어지고 각 AED가 직각으로 표시된다."
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\angle D$의 이등분선이 변 $BC$와 만나는 점을 $E$라 하고, 꼭짓점 $A$에서 선분 $DE$에 내린 수선의 발이 $E$가 되어 $\\overline{AE} \\perp \\overline{DE}$일 때, $\\angle C = 116^\\circ$이면 $\\angle DAE$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

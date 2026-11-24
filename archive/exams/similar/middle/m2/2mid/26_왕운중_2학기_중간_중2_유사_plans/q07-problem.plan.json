@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5534",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6146",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7555",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3364",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3145",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3493",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5338",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2376",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 102,
+        "label": "102",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 105,
+        "label": "105",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aI",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 129,
+        "noLabel": true,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "삼각형 ABC의 내심 I와, BI의 연장선이 AC와 만나는 점 D, CI의 연장선이 AB와 만나는 점 E를 나타낸 것이다. 각 BDC는 102도, 각 BEC는 105도이다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고, B와 D를 잇는 선분과 C와 E를 잇는 선분이 I에서 만난다. D는 AC 위, E는 AB 위에 있으며, 각 BDC에 102, 각 BEC에 105가 표시되어 있다. 각 BIC에는 값 없는 호 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형의 내심 I와 두 각의 이등분선이 변과 만나는 점 D, E, 그리고 각 BDC 102도와 각 BEC 105도를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $I$는 $\\triangle ABC$의 내심이다. $\\overline{BI}$의 연장선과 변 $AC$의 교점을 $D$, $\\overline{CI}$의 연장선과 변 $AB$의 교점을 $E$라고 하자. $\\angle BDC = 102^\\circ$, $\\angle BEC = 105^\\circ$일 때, $\\angle BIC$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

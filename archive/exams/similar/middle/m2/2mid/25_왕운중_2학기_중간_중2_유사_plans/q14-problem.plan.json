@@ -1,0 +1,187 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3755772",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7063581",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8244228",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7063581",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 118,
+        "label": "118",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 62,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "평행사변형 ABCD에서 변 AB의 길이는 x, 변 CD의 길이는 12 cm로 표시되어 있고 각 B는 118도, 각 A는 y로 표시되어 있다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변이 그려져 있고, 변 AB 옆에 x, 변 CD 옆에 12 cm가 적혀 있다. 꼭짓점 B의 각 옆에 118, 꼭짓점 A의 각 옆에 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD가 보인다.",
+    "AB=x, CD=12cm, 각 B=118도, 각 A=y가 표시되어 있다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\overline{AB} = x\\text{ cm}$, $\\overline{CD} = 12\\text{ cm}$이고 $\\angle A = y^\\circ$, $\\angle B = 118^\\circ$일 때, $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
