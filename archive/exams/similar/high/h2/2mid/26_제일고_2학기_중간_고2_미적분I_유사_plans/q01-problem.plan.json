@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [
+      -5,
+      6
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -5,
+          -2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          1,
+          5
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "2",
+        "4"
+      ]
+    }
+  },
+  "caption": "함수 y=f(x)의 그래프로, x=-2와 x=0, x=1에서 함숫값이 끊어져 있다.",
+  "accessibilityDescription": "왼쪽 수평선이 x=-2의 열린 점에서 끝나고 아래쪽 채운 점에서 오른쪽 위로 향하는 선분이 시작된다. x=0의 왼쪽 선분은 열린 점으로 끝나고 위쪽 채운 점에서 다시 선분이 시작되며, x=1에서는 오른쪽으로 수평인 선이 이어진다.",
+  "newVisualInformation": [
+    "x=-2에서 오른쪽 극한은 1이다.",
+    "x=0에서 왼쪽 극한은 -1이다.",
+    "x=1에서 함숫값은 오른쪽 수평 부분의 높이와 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 그림과 같을 때, $\\lim_{x\\to 0^-}f(x)+f(1)+\\lim_{x\\to -2^+}f(x)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

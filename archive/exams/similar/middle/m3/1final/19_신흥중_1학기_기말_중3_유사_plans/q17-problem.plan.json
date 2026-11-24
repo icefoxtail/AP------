@@ -1,0 +1,49 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2",
+          "-1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "위로 볼록한 이차함수의 그래프로, 꼭짓점 A의 좌표는 (-3, 4)이고 y절편 B의 좌표는 (0, 1)이다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점 A의 좌표 (-3, 4)와 y축과 만나는 점 B의 좌표 (0, 1)가 표시되어 있다.",
+  "newVisualInformation": [
+    "좌표축과 위로 볼록한 포물선",
+    "꼭짓점 A의 좌표 (-3, 4)",
+    "y절편 B의 좌표 (0, 1)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, $a + b + c$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

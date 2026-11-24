@@ -1,0 +1,49 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 3
+    },
+    {
+      "id": "s2",
+      "kind": "SPHERE",
+      "radius": 4.5
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center",
+      "label": "2r"
+    },
+    {
+      "solid": "s2",
+      "radius": "center",
+      "label": "3r"
+    }
+  ],
+  "caption": "닮음비가 2 : 3인 두 쇠구슬 A, B의 반지름을 각각 2r, 3r로 나타내었다.",
+  "accessibilityDescription": "왼쪽의 작은 구 A에는 중심에서 반지름 2r이, 오른쪽의 큰 구 B에는 중심에서 반지름 3r이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "구 모양인 두 쇠구슬 $A, B$는 닮음비가 $2 : 3$인 닮은 도형이다. 큰 쇠구슬 $B$의 부피가 $216\\text{ cm}^3$일 때, 작은 쇠구슬 $A$의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "두 쇠구슬 A, B는 닮음비가 2 : 3인 닮은 도형이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 구의 반지름을 2r과 3r로 표시하여 닮음비 2 : 3을 보인다."
+  ]
+}

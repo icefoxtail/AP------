@@ -157,7 +157,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 −2부터 2까지 정의된 위로 볼록한 포물선이 좌표평면에 그려져 있다. 곡선의 꼭짓점 V와 양 끝점 L, R, 그리고 원점이 표시되어 있다.",
+    "solutionImageCaption": "정적분의 구간을 이어 붙이면 −2부터 2까지 f를 적분한 값이 된다. f(x)=−3x²+5x에서 5x는 홀함수이므로 대칭 구간에서의 적분은 0이고, 남은 −3x²의 적분은 −16이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,

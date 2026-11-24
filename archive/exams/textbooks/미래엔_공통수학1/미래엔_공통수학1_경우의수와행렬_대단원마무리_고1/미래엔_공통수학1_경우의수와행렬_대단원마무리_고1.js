@@ -31,8 +31,8 @@ window.questionBank = [
       "8",
       "9"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "서로 다른 주사위 두 개의 눈의 수를 $(a,\\ b)$라 하자. 눈의 수의 합 $a+b$는 $2$ 이상 $12$ 이하이므로 $5$의 배수인 경우는 합이 $5$ 또는 $10$이다.\n(i) 합이 $5$인 경우: $(1,\\ 4),\\ (2,\\ 3),\\ (3,\\ 2),\\ (4,\\ 1)$의 $4$가지\n(ii) 합이 $10$인 경우: $(4,\\ 6),\\ (5,\\ 5),\\ (6,\\ 4)$의 $3$가지\n(i), (ii)는 동시에 일어날 수 없으므로 합의 법칙에 의하여 $4+3=7$\n따라서 구하는 경우의 수는 $7$이므로 ③이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -59,8 +59,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $(a+b+c+d)(x+y)$를 전개할 때 생기는 항의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$8$",
+    "solution": "$(a+b+c+d)(x+y)$를 전개하면 $(a+b+c+d)$의 각 항과 $(x+y)$의 각 항을 곱한 항이 생긴다.\n$(a+b+c+d)$의 항은 $4$개, $(x+y)$의 항은 $2$개이고 곱해진 항은 모두 서로 다른 문자의 곱이어서 동류항이 없으므로 곱의 법칙에 의하여\n$$4\\times 2=8$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -93,8 +93,8 @@ window.questionBank = [
       "12",
       "13"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "$225$를 소인수분해하면 $225=3^2\\times 5^2$이다.\n약수의 개수는 각 소인수의 지수에 $1$을 더하여 곱하면 되므로\n$$(2+1)(2+1)=9$$\n따라서 ①이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -121,8 +121,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 어느 공원의 산책로를 나타낸 것이다. 입구에서 출구로 가는 경우의 수를 구하시오. (단, 같은 지점을 다시 가지 않는다.)\n<img src=\"q04.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$10$",
+    "solution": "그림에서 입구에서 출구로 가는 길은 다음과 같다.\n입구와 출구를 직접 잇는 길: $4$가지\n입구와 매점을 잇는 길: $3$가지, 매점과 출구를 잇는 길: $2$가지\n(i) 매점을 거치지 않고 출구로 가는 경우: $4$가지\n(ii) 매점을 거쳐 출구로 가는 경우: 곱의 법칙에 의하여 $3\\times 2=6$가지\n같은 지점을 다시 가지 않으므로 이 두 경우가 전부이고 동시에 일어날 수 없다. 합의 법칙에 의하여\n$$4+6=10$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -149,8 +149,8 @@ window.questionBank = [
     "wide": false,
     "content": "서울역과 강릉역 사이를 운행하는 고속 철도에는 정차역이 11개 있다. 고속 철도의 출발역과 도착역이 표기된 승차권을 발행하는 경우의 수를 구하시오. (단, 출발역과 도착역은 서로 다르다.)",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$110$",
+    "solution": "정차역 $11$개 중에서 출발역과 도착역을 서로 다르게 순서를 정하여 택하는 경우의 수이므로 $11$개에서 $2$개를 택하는 순열의 수이다.\n$$_{11}\\mathrm{P}_2=11\\times 10=110$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -177,8 +177,8 @@ window.questionBank = [
     "wide": false,
     "content": "다섯 개의 숫자 0, 1, 2, 3, 4에서 서로 다른 숫자 3개를 사용하여 만들 수 있는 세 자리 자연수 중에서 짝수의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$30$",
+    "solution": "세 자리 자연수가 짝수이려면 일의 자리의 수가 $0,\\ 2,\\ 4$ 중 하나이고, 백의 자리에는 $0$이 올 수 없다.\n(i) 일의 자리가 $0$인 경우: 나머지 $1,\\ 2,\\ 3,\\ 4$ 중에서 $2$개를 택하여 백의 자리, 십의 자리에 나열하므로\n$$_{4}\\mathrm{P}_2=4\\times 3=12$$\n(ii) 일의 자리가 $2$ 또는 $4$인 경우: 일의 자리를 정하는 경우가 $2$가지이고, 백의 자리에는 $0$과 일의 자리의 수를 뺀 $3$가지, 십의 자리에는 백의 자리와 일의 자리의 수를 뺀 $3$가지가 올 수 있으므로\n$$2\\times 3\\times 3=18$$\n(i), (ii)는 동시에 일어날 수 없으므로 $12+18=30$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -205,8 +205,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 ${}_{n}\\mathrm{C}_{3}=3\\cdot{}_{n}\\mathrm{C}_{2}$를 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$11$",
+    "solution": "$_{n}\\mathrm{C}_{3}=\\frac{n(n-1)(n-2)}{6}$, $_{n}\\mathrm{C}_{2}=\\frac{n(n-1)}{2}$이므로 $n\\ge 3$이고\n$$\\frac{n(n-1)(n-2)}{6}=3\\times\\frac{n(n-1)}{2}$$\n양변을 $\\frac{n(n-1)}{2}$로 나누면 ($n\\ge 3$이므로 $\\frac{n(n-1)}{2}\\neq 0$)\n$$\\frac{n-2}{3}=3$$\n$n-2=9$이므로 $n=11$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -233,8 +233,8 @@ window.questionBank = [
     "wide": false,
     "content": "남자 선수 6명과 여자 선수 4명으로 이루어진 테니스 팀에서 남자 선수 2명과 여자 선수 2명을 뽑는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$90$",
+    "solution": "남자 선수 $6$명 중에서 $2$명을 뽑는 경우의 수는 $_{6}\\mathrm{C}_2=\\frac{6\\times 5}{2}=15$\n여자 선수 $4$명 중에서 $2$명을 뽑는 경우의 수는 $_{4}\\mathrm{C}_2=\\frac{4\\times 3}{2}=6$\n두 일이 연달아 일어나므로 곱의 법칙에 의하여\n$$15\\times 6=90$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -261,8 +261,8 @@ window.questionBank = [
     "wide": false,
     "content": "사과, 배, 바나나를 포함한 과일 8종류 중에서 4종류를 택할 때, 바나나는 포함하지 않고 사과와 배는 모두 포함하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$10$",
+    "solution": "사과와 배는 반드시 포함하고 바나나는 포함하지 않으므로, 사과와 배를 먼저 택한 뒤 남은 $2$종류를 사과, 배, 바나나를 제외한 나머지 $8-3=5$종류 중에서 택한다.\n$$_{5}\\mathrm{C}_2=\\frac{5\\times 4}{2}=10$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -289,8 +289,8 @@ window.questionBank = [
     "wide": false,
     "content": "희주와 은비를 포함한 육상 선수 6명 중에서 4명을 선발하여 계주 순서를 정하려고 한다. 희주와 은비 중에서 한 사람만 선발하여 계주 순서를 정하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$192$",
+    "solution": "희주와 은비 중에서 한 사람만 선발하는 경우는\n(i) 희주와 은비 중 선발되는 사람을 정하는 경우: $2$가지\n(ii) 나머지 $4$명 중에서 $3$명을 선발하는 경우: $_{4}\\mathrm{C}_3=4$가지\n이므로 선발하는 경우의 수는 $2\\times 4=8$\n선발한 $4$명을 계주 순서대로 나열하는 경우의 수는 $4!=24$\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$8\\times 24=192$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -317,8 +317,8 @@ window.questionBank = [
     "wide": false,
     "content": "5개의 숫자 0, 2, 4, 6, 8 중에서 서로 다른 4개를 택하여 만든 네 자리 자연수를 작은 것부터 순서대로 나열할 때, 35째 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$4280$",
+    "solution": "네 자리 자연수이므로 천의 자리에는 $0$이 올 수 없다.\n천의 자리가 $2$인 수: 나머지 $0,\\ 4,\\ 6,\\ 8$ 중에서 $3$개를 택하여 나열하므로 $_{4}\\mathrm{P}_3=24$개\n따라서 $2\\bigcirc\\bigcirc\\bigcirc$ 꼴이 가장 작은 $24$개이고, $35$째 수는 천의 자리가 $4$인 수 중 $35-24=11$째 수이다.\n천의 자리가 $4$인 수를 작은 것부터 나열하면 (나머지 숫자는 $0,\\ 2,\\ 6,\\ 8$)\n백의 자리가 $0$인 수: $4026,\\ 4028,\\ 4062,\\ 4068,\\ 4082,\\ 4086$ ($6$개, $1\\sim 6$째)\n백의 자리가 $2$인 수: $4206,\\ 4208,\\ 4260,\\ 4268,\\ 4280,\\ 4286$ ($7\\sim 12$째)\n$11$째 수는 $4280$이므로 구하는 $35$째 수는 $4280$이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -345,8 +345,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$3x^2-{}_{n}\\mathrm{C}_{r}x-3\\cdot{}_{n}\\mathrm{P}_{r}=0$$\n의 두 근이 $-2$와 3일 때, $n+r$의 값을 구하시오. (단, $n$과 $r$은 자연수)",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$5$",
+    "solution": "이차방정식 $3x^2-{}_{n}\\mathrm{C}_{r}x-3\\cdot{}_{n}\\mathrm{P}_{r}=0$의 두 근이 $-2,\\ 3$이므로 근과 계수의 관계에 의하여\n두 근의 합: $-2+3=\\frac{{}_{n}\\mathrm{C}_{r}}{3}$이므로 $_{n}\\mathrm{C}_{r}=3$\n두 근의 곱: $-2\\times 3=\\frac{-3\\cdot{}_{n}\\mathrm{P}_{r}}{3}=-{}_{n}\\mathrm{P}_{r}$이므로 $_{n}\\mathrm{P}_{r}=6$\n$_{n}\\mathrm{P}_{r}=r!\\times{}_{n}\\mathrm{C}_{r}$이므로 $6=r!\\times 3$, 즉 $r!=2$에서 $r=2$\n$_{n}\\mathrm{C}_{2}=\\frac{n(n-1)}{2}=3$이므로 $n(n-1)=6$에서 $n=3$ ($n$은 자연수)\n따라서 $n+r=3+2=5$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -379,8 +379,8 @@ window.questionBank = [
       "23",
       "24"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "$a_{ij}=2i-j+4$이므로 각 성분을 구하면\n$a_{11}=2-1+4=5$, $a_{12}=2-2+4=4$\n$a_{21}=4-1+4=7$, $a_{22}=4-2+4=6$\n따라서 $A=\\begin{pmatrix} 5 & 4 \\\\ 7 & 6 \\end{pmatrix}$이고 모든 성분의 합은\n$$5+4+7+6=22$$\n따라서 ③이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -407,8 +407,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\begin{pmatrix} 2a-1 & 2 \\\\ -6 & 2b \\end{pmatrix} = \\begin{pmatrix} b+2 & 2 \\\\ -6 & 5a+2 \\end{pmatrix}$가 성립할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$-27$",
+    "solution": "두 행렬이 서로 같으므로 대응하는 성분이 각각 같다.\n$2a-1=b+2$에서 $b=2a-3\\qquad\\cdots\\ ①$\n$2b=5a+2\\qquad\\cdots\\ ②$\n①을 ②에 대입하면 $2(2a-3)=5a+2$, 즉 $4a-6=5a+2$이므로 $a=-8$\n①에서 $b=2\\times(-8)-3=-19$\n(확인: $2a-1=-17=b+2$, $2b=-38=5a+2$)\n따라서 $a+b=-8+(-19)=-27$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -435,8 +435,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix}$과 $B=\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix}$에 대하여 $2(A-B)-\\dfrac{1}{2}(A+2B)$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$",
+    "solution": "먼저 식을 정리하면\n$$2(A-B)-\\frac{1}{2}(A+2B)=2A-2B-\\frac{1}{2}A-B=\\frac{3}{2}A-3B$$\n$\\frac{3}{2}A=\\frac{3}{2}\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix}=\\begin{pmatrix} -3 & 6 \\\\ 9 & 0 \\end{pmatrix}$\n$3B=3\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix}=\\begin{pmatrix} 3 & -15 \\\\ 6 & -12 \\end{pmatrix}$\n따라서\n$$\\frac{3}{2}A-3B=\\begin{pmatrix} -3-3 & 6-(-15) \\\\ 9-6 & 0-(-12) \\end{pmatrix}=\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -463,8 +463,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 4 & -1 \\end{pmatrix}$과 $B=\\begin{pmatrix} -3 & 1 \\\\ 1 & 2 \\end{pmatrix}$에 대하여\n$$kA+lB=\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$$\n를 만족시키는 실수 $k$와 $l$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$k=2,\\ l=-1$",
+    "solution": "$$kA+lB=\\begin{pmatrix} k-3l & 2k+l \\\\ 4k+l & -k+2l \\end{pmatrix}=\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$$\n두 행렬이 같으므로 대응하는 성분이 같다.\n$k-3l=5\\qquad\\cdots\\ ①$\n$2k+l=3\\qquad\\cdots\\ ②$\n$4k+l=7\\qquad\\cdots\\ ③$\n$-k+2l=-4\\qquad\\cdots\\ ④$\n③$-$②를 하면 $2k=4$이므로 $k=2$\n②에 대입하면 $4+l=3$이므로 $l=-1$\n(확인: ①에서 $2+3=5$, ④에서 $-2-2=-4$로 성립한다.)",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -491,8 +491,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$와 $B=\\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}$에 대하여 $AB=O$일 때, $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=-2,\\ b=1$",
+    "solution": "$AB$를 계산하면\n$$AB=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}\\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}=\\begin{pmatrix} 2a+4 & -a-2 \\\\ 4-4b & -2+2b \\end{pmatrix}$$\n$AB=O$이므로 모든 성분이 $0$이다.\n$2a+4=0$, $-a-2=0$에서 $a=-2$\n$4-4b=0$, $-2+2b=0$에서 $b=1$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -553,8 +553,8 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "$AB$와 $BA$를 각각 계산하면\n$$AB=\\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix}\\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix}=\\begin{pmatrix} 3a & 4+3b \\\\ 8a & 5+8b \\end{pmatrix}$$\n$$BA=\\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix}\\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix}=\\begin{pmatrix} 5 & 8 \\\\ 4a+5b & 3a+8b \\end{pmatrix}$$\n$AB=BA$이므로 대응하는 성분이 같다.\n$3a=5$에서 $a=\\frac{5}{3}$\n$4+3b=8$에서 $b=\\frac{4}{3}$\n(확인: $8a=\\frac{40}{3}$, $4a+5b=\\frac{20}{3}+\\frac{20}{3}=\\frac{40}{3}$이고, $5+8b=3a+8b$에서 $3a=5$로 성립한다.)\n따라서 $a+b=\\frac{5}{3}+\\frac{4}{3}=3$이므로 ③이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -581,8 +581,8 @@ window.questionBank = [
     "wide": false,
     "content": "성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에서 빵과 우유를 사려고 한다. [표 1]은 두 편의점의 빵과 우유의 가격을 나타낸 것이고, [표 2]는 성훈이와 미주가 사려고 하는 빵과 우유의 개수를 나타낸 것이다. 다음에 답하시오.\n<img src=\"q20.png\" />\n⑴ 성훈이와 미주가 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에 지불해야 할 금액을 행렬로 나타내시오.\n⑵ 성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$ 중 어디에서 사야 비용이 더 적게 드는지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑴ $\\begin{pmatrix} 13800 & 12000 \\\\ 14500 & 12000 \\end{pmatrix}$ (행: P, Q / 열: 성훈, 미주)\n⑵ 편의점 P",
+    "solution": "⑴ [표 1]을 행렬 $A=\\begin{pmatrix} 3000 & 1200 \\\\ 3500 & 1000 \\end{pmatrix}$ (행: P, Q / 열: 빵, 우유), [표 2]를 행렬 $B=\\begin{pmatrix} 3 & 2 \\\\ 4 & 5 \\end{pmatrix}$ (행: 빵, 우유 / 열: 성훈, 미주)이라 하면 지불해야 할 금액은 $AB$이다.\n$$AB=\\begin{pmatrix} 3000\\times 3+1200\\times 4 & 3000\\times 2+1200\\times 5 \\\\ 3500\\times 3+1000\\times 4 & 3500\\times 2+1000\\times 5 \\end{pmatrix}=\\begin{pmatrix} 13800 & 12000 \\\\ 14500 & 12000 \\end{pmatrix}$$\n첫째 행은 편의점 P, 둘째 행은 편의점 Q이고, 첫째 열은 성훈, 둘째 열은 미주의 금액이다.\n⑵ 두 사람이 함께 사는 경우 P는 $13800+12000=25800$(원), Q는 $14500+12000=26500$(원)이므로 편의점 P에서 사는 것이 비용이 더 적게 든다.\n(성훈은 P가 $13800$원으로 Q의 $14500$원보다 싸고, 미주는 두 편의점에서 $12000$원으로 같다.)",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -609,8 +609,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 행렬\n$$A=\\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix},\\quad B=\\begin{pmatrix} -b & 2 \\\\ -2 & 4 \\end{pmatrix},\\quad C=\\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}$$\n에 대하여 $A=2B+C$일 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$22$",
+    "solution": "$A=2B+C$에서\n$$2B+C=\\begin{pmatrix} -2b & 4 \\\\ -4 & 8 \\end{pmatrix}+\\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}=\\begin{pmatrix} -2b-8 & 1 \\\\ ab-4 & 1 \\end{pmatrix}$$\n이것이 $A=\\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix}$와 같으므로\n$2a=-2b-8$에서 $a+b=-4\\qquad\\cdots\\ ①$\n$ab-4=-7$에서 $ab=-3\\qquad\\cdots\\ ②$\n$$a^2+b^2=(a+b)^2-2ab=(-4)^2-2\\times(-3)=16+6=22$$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {
@@ -637,8 +637,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$에 대하여 $A^n=\\begin{pmatrix} 1 & 30 \\\\ 0 & 1 \\end{pmatrix}$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$15$",
+    "solution": "$A^2=\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}$\n$A^3=A^2A=\\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 6 \\\\ 0 & 1 \\end{pmatrix}$\n규칙에 의하여 $A^n=\\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$이다.\n$2n=30$이므로 $n=15$",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   }
 ];

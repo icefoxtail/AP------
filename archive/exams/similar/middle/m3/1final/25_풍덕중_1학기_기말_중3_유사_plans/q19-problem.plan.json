@@ -1,0 +1,126 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      7,
+      -10,
+      10
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=ax^2"
+      },
+      {
+        "id": "down",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-2x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-6",
+          "y": "9",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "9",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "-8",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "x": "-2",
+          "y": "-8",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "trap",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cA",
+          "point": "A",
+          "text": "A",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cB",
+          "point": "B",
+          "text": "B",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cC",
+          "point": "C",
+          "text": "C",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cD",
+          "point": "D",
+          "text": "D",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "두 이차함수의 그래프 위에 각각 두 점 A, B와 C, D를 잡아 만든 사다리꼴 ABCD를 나타낸 그림이다.",
+  "accessibilityDescription": "위쪽 포물선 위에 A, B가 있고, 아래쪽 포물선 위에 C, D가 있다. 네 점을 이은 사다리꼴 ABCD가 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 이차함수 그래프와 사다리꼴 ABCD의 꼭짓점 A, B, C, D가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y=ax^2\\ (a>0)$의 그래프 위에 선분 $\\text{AB}$가 $x$축과 평행하도록 두 점 $\\text{A}$, $\\text{B}$를 잡고, 이차함수 $y=-2x^2$의 그래프 위에 사각형 $\\text{ABCD}$가 사다리꼴이 되도록 두 점 $\\text{C}$, $\\text{D}$를 잡으면 점 $\\text{C}$의 좌표는 $(2, -8)$이고, $\\overline{\\text{AB}}=3\\overline{\\text{CD}}$이다. 사다리꼴 $\\text{ABCD}$의 넓이가 $136$일 때, 수 $a$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pAB",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      },
+      {
+        "id": "pAD",
+        "count": 2,
+        "segments": [
+          "DA",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "caption": "평행사변형 ABCD와 대각선 AC가 그려져 있다. 두 쌍의 대변에는 서로 평행함을 나타내는 표시가 있다.",
+  "accessibilityDescription": "네 꼭짓점 A, B, C, D를 차례로 이은 평행사변형과 꼭짓점 A와 C를 잇는 대각선이 보인다. 두 쌍의 대변에 서로 다른 개수의 평행 표시가 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD",
+    "대각선 AC",
+    "두 쌍의 대변에 평행 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 평행사변형 $ABCD$의 두 쌍의 대변의 길이는 각각 같고, 두 쌍의 대각의 크기는 각각 같음을 설명하는 과정이다. 괄호 ①~⑤에 들어갈 기호로 적절하지 않은 것은? 평행사변형 $ABCD$에 대각선 $AC$를 긋자. $\\triangle ABC$와 $\\triangle CDA$에서 ($\\boxed{\\text{①}}$)이므로 $\\angle BAC = \\angle DCA$ (엇각) $\\cdots\\cdots\\text{㉠}$ $\\overline{AD} \\parallel \\overline{BC}$이므로 ($\\boxed{\\text{②}}$) (엇각) $\\cdots\\cdots\\text{㉡}$ $\\overline{AC}$는 공통 $\\cdots\\cdots\\text{㉢}$ ㉠, ㉡, ㉢에 의하여 ($\\boxed{\\text{③}}$) ($\\text{ASA}$ 합동)이다. 따라서 $\\overline{AB} = \\overline{DC}$, $\\overline{AD} = \\overline{BC}$, $\\angle B = \\angle D$이다. 또 ㉠, ㉡에 의하여 $\\angle A = (\\boxed{\\text{④}}) = \\angle DCA + \\angle ACB = (\\boxed{\\text{⑤}})$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

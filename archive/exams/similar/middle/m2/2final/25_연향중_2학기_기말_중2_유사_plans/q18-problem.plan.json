@@ -1,0 +1,642 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P01",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P02",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P03",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P04",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "105"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P05",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P06",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "165"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P07",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "195"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P08",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P09",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "255"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P10",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "285"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P11",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P12",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "345"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "X",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "O",
+        "P01"
+      ]
+    },
+    {
+      "id": "s02",
+      "refs": [
+        "O",
+        "P02"
+      ]
+    },
+    {
+      "id": "s03",
+      "refs": [
+        "O",
+        "P03"
+      ]
+    },
+    {
+      "id": "s04",
+      "refs": [
+        "O",
+        "P04"
+      ]
+    },
+    {
+      "id": "s05",
+      "refs": [
+        "O",
+        "P05"
+      ]
+    },
+    {
+      "id": "s06",
+      "refs": [
+        "O",
+        "P06"
+      ]
+    },
+    {
+      "id": "s07",
+      "refs": [
+        "O",
+        "P07"
+      ]
+    },
+    {
+      "id": "s08",
+      "refs": [
+        "O",
+        "P08"
+      ]
+    },
+    {
+      "id": "s09",
+      "refs": [
+        "O",
+        "P09"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "O",
+        "P10"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "O",
+        "P11"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "O",
+        "P12"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "sec01",
+        "fill": "LIGHT",
+        "label": "1",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P01",
+              "to": "P02"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec02",
+        "fill": "LIGHT",
+        "label": "2",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P02",
+              "to": "P03"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec03",
+        "fill": "LIGHT",
+        "label": "3",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P03",
+              "to": "P04"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec04",
+        "fill": "LIGHT",
+        "label": "4",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P04",
+              "to": "P05"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec05",
+        "fill": "LIGHT",
+        "label": "5",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P05",
+              "to": "P06"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec06",
+        "fill": "LIGHT",
+        "label": "6",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P06",
+              "to": "P07"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec07",
+        "fill": "LIGHT",
+        "label": "7",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P07",
+              "to": "P08"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec08",
+        "fill": "LIGHT",
+        "label": "8",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P08",
+              "to": "P09"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec09",
+        "fill": "LIGHT",
+        "label": "9",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P09",
+              "to": "P10"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec10",
+        "fill": "LIGHT",
+        "label": "10",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P10",
+              "to": "P11"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec11",
+        "fill": "LIGHT",
+        "label": "11",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P11",
+              "to": "P12"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sec12",
+        "fill": "LIGHT",
+        "label": "12",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "P12",
+              "to": "P01"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "1부터 12까지의 자연수가 하나씩 적힌 12등분된 원판을 나타낸 그림이다.",
+  "accessibilityDescription": "원이 크기가 같은 부채꼴 12개로 나뉘어 있고, 각 부채꼴 안에 1부터 12까지의 자연수가 하나씩 적혀 있다.",
+  "newVisualInformation": [
+    "원판이 12개의 같은 부채꼴로 나뉘어 있다.",
+    "각 부채꼴에 1부터 12까지의 수가 하나씩 적혀 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$부터 $12$까지의 자연수가 각각 하나씩 적힌 $12$등분된 정규 원판이 있다. 이 원판에 다트를 한 번 던질 때, $3$의 배수 또는 $5$의 배수가 적힌 부분을 맞힐 확률은? (단, 다트가 경계선에 꽂히거나 원판을 빗나가는 경우는 없다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

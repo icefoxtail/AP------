@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "지면에 수직으로 세운 막대와 그 그림자, 그리고 밑면이 정사각형인 피라미드의 단면과 그림자를 나타낸 그림이다. 막대의 높이 1.5 m, 막대 그림자의 길이 2 m, 피라미드 밑면의 한 변 240 m, 밑면 가장자리에서 그림자 끝까지 80 m가 주어져 있다.",
+  "accessibilityDescription": "왼쪽에 수직으로 세운 막대와 오른쪽으로 뻗은 그림자가 있고, 오른쪽에 삼각형 모양의 피라미드 단면과 밑면 오른쪽 가장자리에서 이어지는 그림자가 있다. 막대의 높이는 1.5 m, 막대 그림자의 길이는 2 m, 피라미드 밑면의 한 변은 240 m, 밑면 가장자리에서 그림자 끝까지는 80 m로 표시되어 있다.",
+  "newVisualInformation": [
+    "수직으로 세운 막대",
+    "막대의 높이 1.5 m",
+    "막대 그림자의 길이 2 m",
+    "피라미드의 단면",
+    "피라미드 밑면의 한 변 240 m",
+    "밑면 가장자리에서 그림자 끝까지 80 m"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-50"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-40"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "56"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G1",
+    "G2",
+    "S0",
+    "S1",
+    "S2",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sGround",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "sStick",
+      "refs": [
+        "S0",
+        "S1"
+      ]
+    },
+    {
+      "id": "sStickShadow",
+      "refs": [
+        "S0",
+        "S2"
+      ]
+    },
+    {
+      "id": "sBase",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sPL",
+      "refs": [
+        "P1",
+        "P3"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sPyrShadow",
+      "refs": [
+        "P2",
+        "P4"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dStick",
+        "from": "S0",
+        "to": "S1",
+        "label": "1.5",
+        "unit": "m",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dStickShadow",
+        "from": "S0",
+        "to": "S2",
+        "label": "2",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBase",
+        "from": "P1",
+        "to": "P2",
+        "label": "240",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dShadow",
+        "from": "P2",
+        "to": "P4",
+        "label": "80",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "G1",
+    "G2",
+    "S0",
+    "S1",
+    "S2",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지면에 수직으로 세운 길이 $1.5 m\\,m$인 막대의 그림자의 길이가 $2 m\\,m$일 때, 밑면이 한 변의 길이가 $240 m\\,m$인 정사각형 모양의 피라미드의 그림자의 길이가 밑면의 가장자리로부터 $80 m\\,m$였다. 이 피라미드의 높이는? (단, 피라미드의 꼭짓점은 밑면 정사각형의 두 대각선의 교점 바로 위에 수직으로 위치한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

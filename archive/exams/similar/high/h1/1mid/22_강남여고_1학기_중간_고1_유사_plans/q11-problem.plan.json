@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -3,
+      6,
+      0,
+      24
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -3,
+          6
+        ],
+        "coefficients": [
+          "5",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "3",
+        "intercept": "9",
+        "label": "y=3x+9"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P1",
+        "x": "-1",
+        "y": "6",
+        "label": "(-1, 6)"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "21",
+        "label": "(4, 21)"
+      }
+    ]
+  },
+  "caption": "이차함수 y=x^2+5의 그래프와 직선 y=3x+9가 x=-1, x=4에서 만나는 교점"
+}

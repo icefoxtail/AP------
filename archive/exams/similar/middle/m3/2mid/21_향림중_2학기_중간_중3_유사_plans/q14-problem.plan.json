@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "O",
+      "radius": 1
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "O",
+        "B",
+        "A"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "O",
+        "D",
+        "C"
+      ],
+      "rightAngle": "D"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "1.28"
+    },
+    {
+      "type": "label",
+      "target": "OB",
+      "text": "0.62"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "D",
+        "C"
+      ],
+      "text": "52°"
+    }
+  ]
+}

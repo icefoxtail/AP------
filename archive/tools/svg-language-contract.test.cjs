@@ -105,22 +105,27 @@ test('advisory mode lists description-quality findings without blocking, and sti
   const result = assertSvgStudentLanguage(generic, { assetRef: 'a.svg', advisory });
   assert.equal(result.status, 'PASS');
   assert.ok(advisory.some(row => row.assetRef === 'a.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'));
-  // 옛 그림의 접근성 표기 누락(참조 깨짐)은 막지 않고 목록으로만 남긴다. 새 엔진 그림(data-engine-version)은 계속 막는다.
+  // 보이지 않는 접근성 표기 누락(참조 깨짐)은 옛 그림이든 엔진 그림이든 막지 않고 목록으로만 남긴다(2026-11-24, 등록 실행 45334205571).
   const broken = svg('', '두 원의 교점', '그림입니다.', 'role="img" aria-labelledby="missing desc"');
   const legacyList = [];
   assert.equal(assertSvgStudentLanguage(broken, { assetRef: 'b.svg', advisory: legacyList }).status, 'PASS');
   assert.ok(legacyList.some(row => row.code === 'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID'));
   const engineBroken = svg('', '두 원의 교점', '그림입니다.', 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="missing desc"');
-  assert.throws(() => assertSvgStudentLanguage(engineBroken, { assetRef: 'b.svg', advisory: [] }), /ARIA_REFERENCE_INVALID/);
-  assert.throws(() => assertSvgStudentLanguage('<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"/>', { advisory: [] }), /TITLE_DESC_REQUIRED/);
-  // 엔진 표지: 확정 표지(stat-chart 등)는 언제나, 신규 경로 표지(composite 등)는 새 파일(options.newPath)일 때만 엔진 산출물로 본다.
+  const engineList = [];
+  assert.equal(assertSvgStudentLanguage(engineBroken, { assetRef: 'b.svg', advisory: engineList }).status, 'PASS');
+  assert.ok(engineList.some(row => row.code === 'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID'));
+  const engineNoTitle = [];
+  assert.equal(assertSvgStudentLanguage('<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"/>', { assetRef: 't.svg', advisory: engineNoTitle }).status, 'PASS');
+  assert.ok(engineNoTitle.some(row => row.code === 'SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED'));
+  // 엔진 표지는 이제 표기 누락 판정에는 쓰이지 않는다(축척 안내 등 보이는 글의 차단에만 쓰인다). 엔진 표지 그림도 표기 누락은 목록으로 통과한다.
   const noMarkup = marker => `<svg xmlns="http://www.w3.org/2000/svg" ${marker}><circle r="5"/></svg>`;
   for (const marker of ['data-stat-chart="stat-chart-figure-v1"', 'data-set-diagram="set-diagram-figure-v1"', 'data-publication-profile="geometry-publication-v1"']) {
-    assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'm.svg', advisory: [] }), /TITLE_DESC_REQUIRED/, marker);
+    assert.equal(assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'm.svg', advisory: [] }).status, 'PASS', marker);
+    assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'm.svg' }), /TITLE_DESC_REQUIRED/, marker + ' (direct call stays strict)');
   }
   for (const marker of ['data-composite="composite-panels-v1"', 'data-ellipse-figure="ellipse-figure-v1"', 'data-lattice-path="lattice-path-figure-v1"', 'data-publication-profile="fragment-publication-spike-v1"']) {
     assert.equal(assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'old.svg', advisory: [] }).status, 'PASS', marker + ' on an existing path is a legacy figure');
-    assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'new.svg', advisory: [], newPath: true }), /TITLE_DESC_REQUIRED/, marker + ' on a new file');
+    assert.equal(assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'new.svg', advisory: [], newPath: true }).status, 'PASS', marker + ' on a new file');
   }
   // "축척" 안내 문구: 옛 그림은 목록으로만, 엔진 표지가 있는 새 그림은 막는다. 영어 문구는 영어 코드로도 목록에 남는다.
   const scaleList = [];
@@ -140,11 +145,14 @@ test('advisory mode lists description-quality findings without blocking, and sti
   const unreferenced = assertSvgStudentLanguage(svg('<circle id="point-A"/><circle id="point-A"/>'), { assetRef: 'e.svg', advisory: decorationIds });
   assert.equal(unreferenced.status, 'PASS');
   assert.deepEqual(decorationIds.map(row => row.code), ['SVG_ACCESSIBILITY_DUPLICATE_ID_UNREFERENCED']);
-  // 엔진 그림도 가리키는 이가 없는 이름표 id 중복은 목록으로만 남지만, title/desc·aria가 가리키는 id의 중복은 계속 막는다.
+  // 엔진 그림도 가리키는 이가 없는 이름표 id 중복은 목록으로만 남지만, title/desc·aria가 가리키는 id의 중복도 이제 목록으로만 남는다(직접 호출은 엄격).
   const engineRoot = 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="title desc"';
   const engineSvg = body => svg(body, undefined, undefined, engineRoot);
   assert.equal(assertSvgStudentLanguage(engineSvg('<circle id="point-A"/><circle id="point-A"/>'), { assetRef: 'e.svg', advisory: [] }).status, 'PASS');
-  assert.throws(() => assertSvgStudentLanguage(engineSvg('<g id="desc"/>'), { assetRef: 'e.svg', advisory: [] }), /TITLE_DESC_ID_INVALID/);
+  const engineIdList = [];
+  assert.equal(assertSvgStudentLanguage(engineSvg('<g id="desc"/>'), { assetRef: 'e.svg', advisory: engineIdList }).status, 'PASS');
+  assert.ok(engineIdList.some(row => row.code === 'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID'));
+  assert.throws(() => assertSvgStudentLanguage(engineSvg('<g id="desc"/>'), { assetRef: 'e.svg' }), /TITLE_DESC_ID_INVALID/);
   // 직접 호출(advisory 없음: 엔진·감사 모드)은 전과 같이 엄격하다.
   assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg' }), /DUPLICATE_ID/);
   assert.throws(() => assertSvgStudentLanguage('<g/>', { assetRef: 'c.svg', advisory: [] }), /SVG_ROOT_MISSING/);

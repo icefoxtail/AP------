@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "2",
+      "1"
+    ],
+    "domain": [
+      -6,
+      4
+    ],
+    "viewport": [
+      -6,
+      4,
+      -11,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -4,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "아래로 볼록한 이차함수 y=x²+2x+a의 그래프가 x축과 두 점 A, B에서 만나고, 두 점 사이의 거리는 6이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 x축과 왼쪽의 점 A와 오른쪽의 점 B에서 만나며, 꼭짓점은 두 교점 사이 아래쪽에 있다.",
+  "newVisualInformation": [
+    "x축과 두 점 A, B에서 만나는 아래로 볼록한 포물선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = x^2 + 2x + a$의 그래프에서 $x$축과의 두 교점을 $\\text{A}$, $\\text{B}$라 하자. $\\overline{\\text{AB}} = 6$일 때, 이 이차함수의 최솟값은? (5.0점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

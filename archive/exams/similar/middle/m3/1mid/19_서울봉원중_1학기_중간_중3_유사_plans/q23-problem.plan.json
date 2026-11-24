@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "열쇠 모양 그림의 자루 부분에 공개 키 4891이 적혀 있다.",
+  "accessibilityDescription": "원형 손잡이와 곧은 자루, 자루 아래쪽에 두 개의 이빨이 있는 열쇠 모양 도형이 있고, 자루 위에 4891이라는 수가 적혀 있다.",
+  "newVisualInformation": [
+    "공개 키 4891이 적힌 열쇠 그림"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cHead",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "S",
+    "E",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cHead"
+  ],
+  "displaySegments": [
+    {
+      "id": "sShaft",
+      "refs": [
+        "S",
+        "E"
+      ]
+    },
+    {
+      "id": "sTooth1",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sTooth2",
+      "refs": [
+        "T3",
+        "T4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lKey",
+        "ownerSegment": "sShaft",
+        "text": "4891"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "O",
+    "S",
+    "E",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 와이파이 비밀번호는 다음과 같은 규칙으로 정해진다.\n\n> '공개 키로 주어진 네 자리 자연수는 어떤 두 소수의 곱이다. 두 소수를 찾아 작은 소수부터 큰 소수 순서대로 나열하여 쓰면 비밀번호가 된다.'\n\n주어진 공개 키가 $4891$일 때, 비밀번호를 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

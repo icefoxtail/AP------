@@ -1,0 +1,192 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q"
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAP",
+        "from": "A",
+        "to": "P",
+        "label": "6",
+        "side": "LEFT",
+        "style": "ARROW",
+        "unit": "km",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBQ",
+        "from": "B",
+        "to": "Q",
+        "label": "3",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "unit": "km",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dPQ",
+        "from": "P",
+        "to": "Q",
+        "label": "12",
+        "side": "BELOW",
+        "style": "ARROW",
+        "unit": "km",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "직선 도로의 같은 쪽에 있는 두 마을 A, B와 각 마을에서 도로에 내린 수선의 발, 그리고 두 수선의 발 사이의 거리를 나타낸 그림이다.",
+  "accessibilityDescription": "수평인 직선 도로가 있고 그 위의 두 점에서 각각 A 마을까지 6 km, B 마을까지 3 km가 수직으로 표시되어 있으며, 두 수선의 발 사이의 거리는 12 km로 표시되어 있다. 두 수선의 발과 도로, 두 마을을 잇는 선분이 그려져 있다.",
+  "newVisualInformation": [
+    "두 마을 A, B가 도로의 같은 쪽에 있음을 보이고, 도로까지의 거리 6 km와 3 km, 두 수선의 발 사이의 거리 12 km를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 직선 도로의 같은 쪽에서 도로로부터 각각 $6\\text{ km}$, $3\\text{ km}$ 떨어진 지점에 $\\text{A}$ 마을과 $\\text{B}$ 마을이 있고, 두 마을에서 도로에 내린 수선의 발 사이의 거리는 $12\\text{ km}$이다. $\\text{A}$ 마을에서 도로변의 도서관을 거쳐 $\\text{B}$ 마을로 가는 최단 거리를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "OL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Xp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cLeft",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "OL"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "25"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "34"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "730",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "730",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-120",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cRight",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "OL",
+    "U",
+    "V",
+    "W",
+    "Xp",
+    "F1",
+    "F2",
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cLeft",
+    "cRight"
+  ],
+  "displaySegments": [
+    {
+      "id": "sU",
+      "refs": [
+        "F1",
+        "U"
+      ]
+    },
+    {
+      "id": "sV",
+      "refs": [
+        "F1",
+        "V"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "W",
+        "Xp"
+      ]
+    },
+    {
+      "id": "d1",
+      "refs": [
+        "OL",
+        "F1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "d2",
+      "refs": [
+        "OL",
+        "F2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "d1",
+          "d2"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l7",
+        "ownerSegment": "sU",
+        "text": "7",
+        "unit": "cm"
+      },
+      {
+        "id": "lx",
+        "ownerSegment": "s2",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "sOA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "l12",
+        "ownerSegment": "sPA",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "ly",
+        "ownerSegment": "sOP",
+        "text": "y",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rF1",
+      "refs": [
+        "OL",
+        "F1",
+        "U"
+      ]
+    },
+    {
+      "id": "rF2",
+      "refs": [
+        "OL",
+        "F2",
+        "W"
+      ]
+    },
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "OL",
+    "U",
+    "V",
+    "W",
+    "Xp",
+    "F1",
+    "F2"
+  ],
+  "caption": "왼쪽 원에는 중심에서 같은 거리에 있는 두 현이 있고, 한 현의 반쪽은 7 cm, 다른 한 현은 x cm로 표시되어 있다. 오른쪽 원에는 점 P에서 그은 두 접선 PA, PB와 반지름 OA가 있으며 PA는 12 cm, OA는 5 cm, PO는 y cm로 표시되어 있다.",
+  "accessibilityDescription": "두 원이 나란히 있다. 왼쪽 원에는 서로 수직인 두 현과 중심에서 각 현에 내린 같은 길이의 수선이 점선으로 그려져 있고, 한 현의 반쪽 길이 7과 다른 현의 길이 x가 적혀 있다. 오른쪽 원에는 바깥의 점 P에서 원에 그은 두 접선과 중심 O, 반지름 OA가 그려져 있고 12, 5, y가 적혀 있다.",
+  "newVisualInformation": [
+    "왼쪽 원에서 중심에서 두 현까지의 거리가 같다는 표시",
+    "한 현의 반쪽 길이 7과 다른 현의 길이 x",
+    "오른쪽 원의 두 접선 PA, PB와 반지름 OA, PO의 길이 y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 그림에서 $x + y$의 값은? (단, 왼쪽 원에서 중심에서 두 현까지의 거리는 같고, 오른쪽 원에서 $\\overline{\\text{PA}}, \\overline{\\text{PB}}$는 접선이다.) (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -1,
+      6
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -1,
+          "1/2"
+        ],
+        "coefficients": [
+          "3",
+          "3"
+        ]
+      },
+      {
+        "domain": [
+          "1/2",
+          5
+        ],
+        "coefficients": [
+          "5",
+          "-1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "I",
+        "x": "1/2",
+        "y": "9/2",
+        "label": "(1/2, 9/2)"
+      },
+      {
+        "id": "X1",
+        "x": "-1",
+        "y": "0",
+        "label": "(-1, 0)"
+      },
+      {
+        "id": "X2",
+        "x": "5",
+        "y": "0",
+        "label": "(5, 0)"
+      }
+    ]
+  },
+  "caption": "두 직선 y=3x+3, y=5-x와 x축으로 둘러싸인 삼각형 영역"
+}

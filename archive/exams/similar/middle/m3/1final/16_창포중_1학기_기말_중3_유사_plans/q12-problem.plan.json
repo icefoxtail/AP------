@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2.2,
+      2.2,
+      -2,
+      4.6
+    ],
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-1/2x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3/2",
+          "y": "9/4"
+        },
+        {
+          "id": "B",
+          "x": "-3/2",
+          "y": "9/4"
+        },
+        {
+          "id": "C",
+          "x": "3/2",
+          "y": "-9/8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 두 이차함수 y=x²과 y=-1/2x²의 그래프가 있고, 위쪽 그래프 위에 y축에 대하여 서로 대칭인 두 점 A, B가 있다. 점 A에서 y축에 평행한 선을 그어 아래쪽 그래프와 만나는 점이 C이다.",
+  "accessibilityDescription": "위로 열린 두 포물선이 그려져 있고, 위쪽 포물선에 y축을 사이에 두고 마주 보는 두 점 A, B가 있다. A의 바로 아래 같은 x좌표에 점 C가 있으며 선분 AB와 선분 AC가 이어져 있다.",
+  "newVisualInformation": [
+    "포물선 y=x²과 y=-1/2x²",
+    "y축에 대칭인 두 점 A, B",
+    "선분 AB와 선분 AC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $\\text{A}, \\text{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\text{A}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{1}{2}x^2$의 그래프와 만나는 점을 $\\text{C}$라고 하자. $\\overline{\\text{AB}} : \\overline{\\text{AC}} = 4 : 1$일 때, 점 $\\text{A}$의 좌표를 구하면? (단, 점 $\\text{A}$는 제 $1$사분면 위에 있다.) (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

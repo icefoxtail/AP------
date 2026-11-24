@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC의 꼭짓점 A에서 빗변 BC에 내린 수선 AD가 보이고, AB=8, AC=6, BD=a, CD=b, AD=c가 표시되어 있다.",
+  "accessibilityDescription": "직각삼각형 ABC와 꼭짓점 A에서 빗변 BC에 내린 수선 AD가 보인다. 선분 AB 옆에 8, AC 옆에 6, BD 옆에 a, CD 옆에 b, AD 옆에 c가 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC와 빗변에 내린 수선 AD",
+    "AB=8, AC=6, BD=a, CD=b, AD=c 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "sCA",
+        "text": "6"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "sBD",
+        "text": "a"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "sDC",
+        "text": "b"
+      },
+      {
+        "id": "vAD",
+        "ownerSegment": "sAD",
+        "text": "c"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle BAC = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $\\overline{BC}$에 내린 수선의 발을 $D$라 하자. $\\overline{AB}=8 m\\,cm$, $\\overline{AC}=6 m\\,cm$이고, $\\overline{BD}=a m\\,cm$, $\\overline{CD}=b m\\,cm$, $\\overline{AD}=c m\\,cm$일 때, $a - b + c$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

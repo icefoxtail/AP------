@@ -32,8 +32,8 @@ window.questionBank = [
       "18",
       "20"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "$\\alpha^2\\beta+\\beta^2\\alpha=\\alpha\\beta(\\alpha+\\beta)$이다.\n$\\alpha+\\beta=(2-i)+(2+i)=4$, $\\alpha\\beta=(2-i)(2+i)=4-i^2=5$이므로\n$$\\alpha\\beta(\\alpha+\\beta)=5\\times 4=20$$\n따라서 ⑤이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2-2kx-4x+k^2+1=0$이 중근을 갖도록 하는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{3}{4}$",
+    "solution": "$x^2-2kx-4x+k^2+1=0$을 정리하면 $x^2-(2k+4)x+k^2+1=0$이다. 중근을 가지려면 판별식 $D=0$이다.\n$$\\frac{D}{4}=(k+2)^2-(k^2+1)=k^2+4k+4-k^2-1=4k+3=0$$\n따라서 $k=-\\frac{3}{4}$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-5kx+2k=0$의 두 근의 비가 $2:3$일 때, 실수 $k$의 값을 구하시오. (단, $k\\ne0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{3}$",
+    "solution": "두 근의 비가 $2:3$이므로 두 근을 $2m,\\ 3m$ ($m\\ne 0$)이라 하면 근과 계수의 관계에서\n두 근의 합: $2m+3m=5m=5k$이므로 $m=k$\n두 근의 곱: $2m\\times 3m=6m^2=2k$\n$m=k$를 대입하면 $6k^2=2k$이므로 $k(3k-1)=0$에서 $k=0$ 또는 $k=\\frac{1}{3}$\n$k\\ne 0$이므로 $k=\\frac{1}{3}$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+ax+b=0$의 한 근이 $-1+\\sqrt{3}i$일 때, $\\dfrac{1}{a}$, $\\dfrac{1}{b}$을 두 근으로 하고 $x^2$의 계수가 1인 이차방정식을 구하시오. (단, $a$, $b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2-\\frac{3}{4}x+\\frac{1}{8}=0$",
+    "solution": "계수가 실수인 이차방정식의 한 근이 $-1+\\sqrt{3}i$이면 켤레복소수 $-1-\\sqrt{3}i$도 근이다.\n근과 계수의 관계에 의하여\n두 근의 합: $(-1+\\sqrt{3}i)+(-1-\\sqrt{3}i)=-2=-a$이므로 $a=2$\n두 근의 곱: $(-1+\\sqrt{3}i)(-1-\\sqrt{3}i)=1+3=4=b$이므로 $b=4$\n$\\frac{1}{a}=\\frac{1}{2}$, $\\frac{1}{b}=\\frac{1}{4}$을 두 근으로 하는 이차방정식은\n합: $\\frac{1}{2}+\\frac{1}{4}=\\frac{3}{4}$, 곱: $\\frac{1}{2}\\times\\frac{1}{4}=\\frac{1}{8}$이므로\n$$x^2-\\frac{3}{4}x+\\frac{1}{8}=0$$"
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차식 $x^2+(k-1)x+a(k-3)$이 완전제곱식이 되도록 하는 실수 $k$의 값이 오직 한 개뿐일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "$x^2+(k-1)x+a(k-3)$이 완전제곱식이 되려면 이차방정식 $x^2+(k-1)x+a(k-3)=0$이 중근을 가져야 하므로 판별식 $D=0$이다.\n$$D=(k-1)^2-4a(k-3)=k^2-(4a+2)k+12a+1=0$$\n이 $k$에 대한 이차방정식을 만족시키는 $k$의 값이 오직 한 개뿐이려면 이 방정식이 중근을 가져야 한다.\n$$\\frac{D'}{4}=(2a+1)^2-(12a+1)=4a^2+4a+1-12a-1=4a^2-8a=4a(a-2)=0$$\n$a>0$이므로 $a=2$"
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 1, 5이다. $h(x)=f(x)-g(x)$라고 하면 $0\\le x\\le4$에서 이차함수 $y=h(x)$의 최솟값이 $-8$일 때, 최댓값을 구하시오.\n<img src=\"q06.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "$f(x)$와 $g(x)$의 그래프가 $x=1,\\ 5$에서 만나므로 $h(x)=f(x)-g(x)=0$의 두 근이 $1,\\ 5$이다. $y=f(x)$는 아래로 볼록한 이차함수이고 $g(x)$는 일차함수이므로 $h(x)$의 $x^2$의 계수는 $f(x)$의 $x^2$의 계수와 같은 양수 $c$이다.\n$$h(x)=c(x-1)(x-5)=c(x-3)^2-4c$$\n$0\\le x\\le 4$에서 꼭짓점 $x=3$이 포함되므로 최솟값은 $-4c=-8$이고 $c=2$이다.\n$h(x)=2(x-3)^2-8$이고 양 끝에서의 값은 $h(0)=18-8=10$, $h(4)=2-8=-6$이므로 최댓값은 $10$이다."
   },
   {
     "id": 7,
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차함수 $y=2x^2-4kx+2k^2+k$의 그래프와 직선 $y=x+1$의 두 교점의 $x$좌표를 각각 $\\alpha$, $\\beta$라고 하자. $0\\le k\\le1$일 때, $(2\\alpha-1)(2\\beta-1)$의 최댓값과 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값 $0$, 최솟값 $-\\frac{9}{4}$",
+    "solution": "이차함수의 그래프와 직선의 교점의 $x$좌표는 $2x^2-4kx+2k^2+k=x+1$, 즉\n$$2x^2-(4k+1)x+2k^2+k-1=0$$\n의 두 근이다. 근과 계수의 관계에서 $\\alpha+\\beta=\\frac{4k+1}{2}$, $\\alpha\\beta=\\frac{2k^2+k-1}{2}$\n$$(2\\alpha-1)(2\\beta-1)=4\\alpha\\beta-2(\\alpha+\\beta)+1=2(2k^2+k-1)-(4k+1)+1=4k^2-2k-2$$\n$$=4\\left(k-\\frac{1}{4}\\right)^2-\\frac{9}{4}$$\n$0\\le k\\le 1$에서 꼭짓점의 $k$좌표 $\\frac{1}{4}$이 포함되므로 $k=\\frac{1}{4}$일 때 최솟값 $-\\frac{9}{4}$이다.\n양 끝에서의 값은 $k=0$일 때 $-2$, $k=1$일 때 $0$이므로 $k=1$일 때 최댓값 $0$이다.\n(판별식 $D=(4k+1)^2-8(2k^2+k-1)=9>0$이므로 항상 서로 다른 두 교점이 있다.)"
   },
   {
     "id": 8,
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "직각을 낀 두 변의 길이가 16, 20인 직각삼각형을 밑면으로 하고 높이가 24인 삼각기둥을 오른쪽 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하시오.\n<img src=\"q08.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1920$",
+    "solution": "직육면체의 밑면은 직각삼각형의 직각 꼭짓점을 한 꼭짓점으로 하고 직각을 낀 두 변 위에 놓이는 직사각형이다. 직사각형의 가로를 $a$ (길이 $16$인 변 위), 세로를 $b$ (길이 $20$인 변 위)라 하면 직사각형의 꼭짓점이 빗변 위에 있으므로 닮음비에 의하여\n$$\\frac{a}{16}+\\frac{b}{20}=1\\quad\\text{에서}\\quad a=16\\left(1-\\frac{b}{20}\\right)=16-\\frac{4}{5}b$$\n밑면의 넓이는\n$$ab=\\left(16-\\frac{4}{5}b\\right)b=-\\frac{4}{5}b^2+16b=-\\frac{4}{5}(b-10)^2+80$$\n$0<b<20$에서 $b=10$일 때 최대 $80$이다. ($a=8$)\n직육면체의 높이는 삼각기둥의 높이 $24$이므로 부피의 최댓값은 $80\\times 24=1920$"
   },
   {
     "id": 9,
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3-2(k+2)x+4k=0$의 서로 다른 실근이 2개가 되도록 하는 실수 $k$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k=-\\frac{1}{2},\\ 4$",
+    "solution": "$x=2$를 대입하면 $8-4(k+2)+4k=0$이므로 $x=2$는 항상 근이다. 조립제법으로 나누면\n$$x^3-2(k+2)x+4k=(x-2)(x^2+2x-2k)$$\n서로 다른 실근이 $2$개인 경우는 다음 두 가지이다.\n(i) $x^2+2x-2k=0$이 $2$가 아닌 중근을 갖는 경우: $\\frac{D}{4}=1+2k=0$에서 $k=-\\frac{1}{2}$이고 중근은 $x=-1$로 $2$가 아니다. 서로 다른 실근은 $2,\\ -1$로 $2$개이다.\n(ii) $x^2+2x-2k=0$이 서로 다른 두 실근을 갖고 그중 하나가 $2$인 경우: $x=2$를 대입하면 $4+4-2k=0$이므로 $k=4$이다. 이때 $x^2+2x-8=(x-2)(x+4)$이므로 근은 $2,\\ -4$이고 서로 다른 실근은 $2,\\ -4$로 $2$개이다.\n따라서 $k=-\\frac{1}{2}$ 또는 $k=4$"
   },
   {
     "id": 10,
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "사차방정식 $(x-1)(x-2)(x+3)(x+4)=50$의 근 중에서 두 허근을 $\\alpha$, $\\beta$라고 할 때, $\\alpha^3+\\beta^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "네 일차식을 짝지으면 $(x-1)(x+3)=x^2+2x-3$, $(x-2)(x+4)=x^2+2x-8$이다. $x^2+2x=X$로 놓으면\n$$(X-3)(X-8)=50,\\quad X^2-11X+24-50=0,\\quad X^2-11X-26=0$$\n$(X-13)(X+2)=0$이므로 $X=13$ 또는 $X=-2$\n$x^2+2x=13$, 즉 $x^2+2x-13=0$은 $\\frac{D}{4}=1+13=14>0$이므로 실근을 갖는다.\n$x^2+2x=-2$, 즉 $x^2+2x+2=0$은 $\\frac{D}{4}=1-2<0$이므로 두 허근 $x=-1\\pm i$를 갖는다.\n따라서 $\\alpha+\\beta=-2,\\ \\alpha\\beta=2$이고\n$$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=(-2)^3-3\\times 2\\times(-2)=-8+12=4$$"
   },
   {
     "id": 11,
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{A}=\\angle\\mathrm{C}=90^\\circ$이다. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, 사각형 $\\mathrm{ABCD}$의 둘레의 길이를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$24$",
+    "solution": "대각선 $\\mathrm{BD}$를 그으면 삼각형 $\\mathrm{ABD}$는 $\\angle\\mathrm{A}=90^\\circ$, 삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이다.\n$\\overline{\\mathrm{AD}}=x,\\ \\overline{\\mathrm{CD}}=y$라 하자.\n넓이: $\\frac{1}{2}\\times 2\\times x+\\frac{1}{2}\\times 6\\times y=30$에서 $x+3y=30\\qquad\\cdots\\ ①$\n$\\overline{\\mathrm{BD}}$가 공통이므로 피타고라스 정리에 의하여 $2^2+x^2=6^2+y^2$에서 $x^2-y^2=32\\qquad\\cdots\\ ②$\n①에서 $x=30-3y$를 ②에 대입하면\n$$(30-3y)^2-y^2=32,\\quad 8y^2-180y+868=0,\\quad 2y^2-45y+217=0$$\n$(2y-31)(y-7)=0$에서 $y=\\frac{31}{2}$ 또는 $y=7$\n$y=\\frac{31}{2}$이면 $x=30-\\frac{93}{2}<0$이므로 불가능하다. 따라서 $y=7,\\ x=9$이다.\n사각형 $\\mathrm{ABCD}$의 둘레의 길이는 $2+6+7+9=24$"
   },
   {
     "id": 12,
@@ -340,8 +340,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1\\le x\\le4$인 모든 실수 $x$에 대하여 $|3x-a|\\le5$가 성립하도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7\\le a\\le 8$",
+    "solution": "$|3x-a|\\le 5$에서 $-5\\le 3x-a\\le 5$이므로\n$$\\frac{a-5}{3}\\le x\\le\\frac{a+5}{3}$$\n$1\\le x\\le 4$인 모든 실수 $x$가 이 범위에 포함되어야 하므로\n$\\frac{a-5}{3}\\le 1$에서 $a\\le 8$\n$\\frac{a+5}{3}\\ge 4$에서 $a\\ge 7$\n따라서 $7\\le a\\le 8$"
   },
   {
     "id": 13,
@@ -368,8 +368,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$, $b$, $c$에 대하여 이차부등식 $ax^2+bx+c>0$의 해가 $-1<x<3$일 때, 이차부등식 $bx^2-ax-c<0$의 해를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{3}{2}<x<1$",
+    "solution": "$ax^2+bx+c>0$의 해가 $-1<x<3$이므로 $a<0$이고\n$$ax^2+bx+c=a(x+1)(x-3)=ax^2-2ax-3a$$\n이므로 $b=-2a,\\ c=-3a$이다.\n$bx^2-ax-c<0$에 대입하면\n$$-2ax^2-ax+3a<0$$\n$a<0$이므로 양변을 $a$로 나누면 부등호의 방향이 바뀌어 $-2x^2-x+3>0$이다.\n$2x^2+x-3<0$이므로 $(2x+3)(x-1)<0$에서 $-\\frac{3}{2}<x<1$"
   },
   {
     "id": 14,
@@ -396,7 +396,7 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $\\begin{cases} x^2-3x+2>0 \\\\ 2x-a\\le2 \\end{cases}$를 만족시키는 자연수 $x$가 1개가 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\le a<6$",
+    "solution": "$x^2-3x+2>0$에서 $(x-1)(x-2)>0$이므로 $x<1$ 또는 $x>2$\n$2x-a\\le 2$에서 $x\\le\\frac{a+2}{2}$\n자연수 $x$ 중 $x<1$을 만족시키는 것은 없으므로 연립부등식을 만족시키는 자연수는 $x>2$, 즉 $3,\\ 4,\\ 5,\\ \\cdots$ 중에서 $x\\le\\frac{a+2}{2}$인 것이다.\n자연수가 $1$개이려면 $x=3$만 만족해야 하므로\n$$3\\le\\frac{a+2}{2}<4$$\n$6\\le a+2<8$이므로 $4\\le a<6$"
   }
 ];

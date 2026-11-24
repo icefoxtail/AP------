@@ -188,6 +188,35 @@ test('an ignored dependency prevents reuse until it is removed',async t=>{
   for(let i=0;i<2;i++){const r=await f.run();assert.equal(r.status,'GENERATED');assert.equal(r.checkpointSaved,false);assert.equal(r.cacheUnavailableCode,'CACHE_IGNORED_DEPENDENCY');}
   assert.equal(f.builds,2);
 });
+// The CI step "Assemble question metadata" rebuilds archive/data/question_metadata.json from tracked shards and git ignores it. Before this
+// it counted as an unbound ignored dependency, so no build was ever reused in CI (every build event said CACHE_IGNORED_DEPENDENCY).
+function ignoreAssembledMetadata(f) {
+  f.put('.gitignore','archive/data/question_metadata.json\n');f.git('rm','--cached','-q','archive/data/question_metadata.json');
+  f.git('add','-A');f.git('commit','-qm','assembled metadata is ignored');
+  assert.equal(f.git('check-ignore','archive/data/question_metadata.json'),'archive/data/question_metadata.json');
+}
+test('the assembled, git-ignored question metadata is bound by its raw bytes: unchanged bytes reuse generation, changed bytes do not',async t=>{
+  const f=fixture(t);ignoreAssembledMetadata(f);
+  const a=await f.run();assert.equal(a.status,'GENERATED');assert.equal(a.checkpointSaved,true);assert.equal(a.cacheUnavailableCode,null);
+  const b=await f.run();assert.equal(b.status,'GENERATION_REUSED');assert.equal(f.builds,1);
+  assert.equal(b.freshValidationCommands.length,4,'validation commands still run on every reuse');
+  f.put('archive/data/question_metadata.json','{"records":[{"edited":true}]}\n');
+  const c=await f.run();assert.equal(c.status,'GENERATED');assert.equal(f.builds,2,'an edit to the ignored input is a cache miss');
+});
+test('every other ignored dependency still refuses reuse even when the assembled metadata is ignored too',async t=>{
+  const f=fixture(t);ignoreAssembledMetadata(f);
+  f.put('.gitignore','archive/data/question_metadata.json\narchive/data/ignored.json\n');f.git('add','-A');f.git('commit','-qm','ignore two');
+  f.put('archive/data/ignored.json','{}\n');
+  const r=await f.run();assert.equal(r.checkpointSaved,false);assert.equal(r.cacheUnavailableCode,'CACHE_IGNORED_DEPENDENCY');
+});
+test('variables a shell sets by itself do not defeat reuse between different calling scripts, any other variable still does',async t=>{
+  const f=fixture(t);
+  await f.run({env:{...f.env,_:'/usr/bin/node',SHLVL:'2',OLDPWD:'/a'}});
+  const same=await f.run({env:{...f.env,_:'/usr/bin/bash',SHLVL:'3',OLDPWD:'/b'}});
+  assert.equal(same.status,'GENERATION_REUSED');assert.equal(f.builds,1);
+  const other=await f.run({env:{...f.env,SYNTHETIC_BUILD_SWITCH:'1'}});
+  assert.equal(other.status,'GENERATED');assert.equal(f.builds,2);
+});
 test('symlink inputs are uncertain and force actual generation',async t=>{
   const f=fixture(t);fs.symlinkSync('synthetic.js',path.join(f.root,'archive/exams/alias.js'));
   const r=await f.run();assert.equal(r.status,'GENERATED');assert.equal(r.checkpointSaved,false);assert.equal(r.cacheUnavailableCode,'CACHE_UNSUPPORTED_FILE_MODE');

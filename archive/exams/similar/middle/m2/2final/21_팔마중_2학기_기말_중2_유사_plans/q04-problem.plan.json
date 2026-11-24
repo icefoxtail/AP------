@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "105",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72607",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 52.2,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 52.2,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sAC",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDC",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "20",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "삼각형 ABC에서 꼭짓점 A의 각을 이등분하는 선분 AD를 변 BC 위의 점 D까지 그린 그림이다. AB는 15 cm, AC는 10 cm, BC는 20 cm이고 DC의 길이는 x cm로 두었다.",
+  "accessibilityDescription": "삼각형 ABC에서 A에서 변 BC 위의 점 D로 선분 AD가 내려가고, A의 각이 같은 크기의 두 각으로 나뉜 것이 같은 호로 표시되어 있다. AB 옆에 15 cm, AC 옆에 10 cm, BC 아래에 20 cm, DC 옆에 x cm가 적혀 있다.",
+  "newVisualInformation": [
+    "각 A의 이등분선 AD와 AB=15 cm, AC=10 cm, BC=20 cm, DC=x cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 선분 $AD$는 $ ngle A$의 이등분선이다. $\\overline{AB} = 15 ext{ cm}, \\overline{AC} = 10 ext{ cm}, \\overline{BC} = 20 ext{ cm}$이다. 선분 $DC$의 길이를 $x ext{ cm}$, $ riangle ABD :  riangle ACD = y : z$ ($y, z$는 서로소인 자연수)라 할 때, $x + y + z$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

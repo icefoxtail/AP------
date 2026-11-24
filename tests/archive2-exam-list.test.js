@@ -326,3 +326,48 @@ test('with only some shards held, the finder and the home keep the list (same ro
   home.state.view = 'find';
   assert.equal(home.catalogExams().length, 1, 'a complete catalog is the list');
 });
+
+// ---- 출제 내역·보관함·빠른 평가는 조각 전부를 미리 받지 않는다 (조각 5단계) ----
+test('출제 내역·보관함 open without the question shards, and 빠른 평가 needs only the grade it is on', async () => {
+  const main = readWorkspacePart('main');
+  // the catalog is not started for 출제 내역 on the shard path; the exam list fills the exam lookup; the exam list failing sends it back to the catalog
+  assert.match(main, /if \(state\.view === "recent" && lightFirstScreens\(\)\) startRecentLight\(\);\s*else if \(state\.view !== "home" && Boot\?\.catalogDeferred && !lightPending\) ensureCatalog\(\);/);
+  assert.match(main, /const lightFirstScreens = \(\) => Boolean\(Boot\?\.catalogDeferred\) && shardsOn\(\);/);
+  assert.match(main, /loadLightExamList\(\)\.then\(\(ok\) => \{\s*if \(!ok\) \{ ensureCatalog\(\); return; \}/);
+  // boot: 출제 내역·보관함 take the index and common tables only; no shards on the site -> the whole bundle as before
+  assert.match(main, /\(state\.view === "recent" \|\| state\.view === "saved"\) && lightFirstScreens\(\)\) \{\s*Boot\?\.standby\?\.\(\);\s*prefetchShards\(\)\.then\(\(ok\) => \{ if \(!ok\) ensureCatalog\(\); else prefetchComposeShards\(\); \}\);\s*return;/);
+  // the likely next step (문제지 만들기) is fetched into the loader only (never into state.catalog), and not on save-data / slow / phone / small memory
+  const prefetch = main.slice(main.indexOf('function prefetchComposeShards()'), main.indexOf('async function loadCatalog()'));
+  assert.match(prefetch, /Boot\?\.warmBlocked\?\.\(\)/);
+  assert.match(prefetch, /loader\.loadShards\(/);
+  assert.doesNotMatch(prefetch, /loadCatalog|ensureCatalog|state\.catalog =/);
+  // pressing (any device) or hovering with a mouse (only where the idle prefetch is allowed) on 문제지 만들기 starts the same fetch a moment early
+  assert.match(prefetch, /function startComposeOnIntent\(event\) \{[\s\S]*?event\.type === "pointerover" && \(event\.pointerType !== "mouse" \|\| Boot\?\.warmBlocked\?\.\(\)\)\) return;\s*fetchComposeShards\(\);/);
+  assert.match(prefetch, /addEventListener\("pointerdown", startComposeOnIntent/);
+  // 빠른 평가: the grade is quickState.grade; none chosen yet = nothing needed (it used to be everything)
+  assert.match(main, /const composeOnly = \(state\.view === "compose" \|\| isQuickAssessmentView\(\)\)/);
+  assert.match(main, /const grade = quick \? quickState\.grade : state\.filters\?\.grade;\s*if \(grade\) need\.grades\.push\(grade\); else if \(!quick\) need\.all = true;/);
+  // the recent rows take their grade and subject from the exam list rows: the same rows give the same answer as the catalog's exams
+  // (a catalog held only in part, for one button, has only some exams: then the list is the lookup)
+  assert.match(readWorkspacePart('recent'), /state\.catalog && state\.catalog\.complete !== false \? state\.catalog\.exams : state\.light\?\.exams \|\| state\.catalog\?\.exams/);
+  assert.match(main, /const recentExamLookup = \(\) => \(state\.catalog && state\.catalog\.complete !== false \? state\.catalog\.exams : state\.light\?\.exams \|\| state\.catalog\?\.exams \|\| \[\]\);/);
+  // buttons of 출제 내역 take only what they need (same list mode as the home): 새 문제지 = the compose grade (not all pieces), 작업 파일 불러오기 opens the chooser at once
+  assert.match(main, /const listRowsApply = \(\) => Boolean\(state\.light\) && \(state\.view === "find" \|\| state\.view === "home" \|\| state\.view === "recent"\) && shardsOn\(\);/);
+  assert.match(readWorkspacePart('core'), /state\.catalog\.complete === false && \(state\.view === "find" \|\| state\.view === "home" \|\| state\.view === "recent"\)/);
+  assert.match(main, /case "new-draft": return \{ grades: \[state\.filters\?\.grade \|\| "고1"\], exams: \[\] \};/);
+  assert.match(main, /const CATALOG_FREE_ACTIONS = new Set\(\[[^\]]*"import",\s*\]\)/);
+  assert.match(main, /event\.target\.closest\('\[data-view="compose"\], \[data-action="new-draft"\]'\)/);
+  assert.match(main, /await ensureCatalogForButton\(imported\?\.filters\?\.grade \? \{ grades: \[imported\.filters\.grade\], exams: \[\] \} : \{ all: true \}\);\s*await ensureShardFiles\(/);
+  // a failed first load does not stick: the next press of the same button asks again (it used to show the same error until a reload)
+  assert.match(main, /if \(state\.bootError && !state\.catalog && !listButtonLoading\) \{ state\.bootError = ""; catalogLoad = null; \}/);
+  const History = require(path.join(root, 'archive/archive2-history.js'));
+  const core = require(path.join(root, 'archive/archive2-core.js'));
+  const file = path.join(root, 'archive/data/archive2-catalog.json');
+  if (!fs.existsSync(file)) return; // the catalog is built in the release; a checkout without it has nothing to compare
+  const catalog = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const { buildExamList } = await import(pathToFileURL(path.join(root, 'tools/lib/build-exam-list.mjs')).href);
+  const list = JSON.parse(buildExamList(root).content.toString('utf8')).exams;
+  const assignments = catalog.exams.map((exam, i) => ({ id: `a${i}`, archive_file: exam.file, exam_title: exam.file, exam_date: '2026-11-10', class_id: 'c1', class_name: '반', question_count: 20 }));
+  const classes = [{ id: 'c1', name: '반', grade: '고1' }];
+  assert.deepEqual(History.normalizeAssignments(assignments, classes, list, core), History.normalizeAssignments(assignments, classes, catalog.exams, core));
+});

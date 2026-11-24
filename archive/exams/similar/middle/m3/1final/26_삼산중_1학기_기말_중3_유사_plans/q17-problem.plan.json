@@ -1,0 +1,378 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "unmarkedPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s67",
+      "refs": [
+        "P6",
+        "P7"
+      ]
+    },
+    {
+      "id": "s78",
+      "refs": [
+        "P7",
+        "P8"
+      ]
+    },
+    {
+      "id": "s03",
+      "refs": [
+        "P0",
+        "P3"
+      ]
+    },
+    {
+      "id": "s36",
+      "refs": [
+        "P3",
+        "P6"
+      ]
+    },
+    {
+      "id": "s14",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "id": "s47",
+      "refs": [
+        "P4",
+        "P7"
+      ]
+    },
+    {
+      "id": "s25",
+      "refs": [
+        "P2",
+        "P5"
+      ]
+    },
+    {
+      "id": "s58",
+      "refs": [
+        "P5",
+        "P8"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx1",
+        "ownerSegment": "s01",
+        "text": "x"
+      },
+      {
+        "id": "l61",
+        "ownerSegment": "s12",
+        "text": "6"
+      },
+      {
+        "id": "lx2",
+        "ownerSegment": "s03",
+        "text": "x"
+      },
+      {
+        "id": "l62",
+        "ownerSegment": "s36",
+        "text": "6"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t_sq",
+        "text": "x²",
+        "labelKind": "TEXT",
+        "at": [
+          2.5,
+          2.5
+        ]
+      },
+      {
+        "id": "t_r1",
+        "text": "6x",
+        "labelKind": "TEXT",
+        "at": [
+          6.5,
+          2.5
+        ]
+      },
+      {
+        "id": "t_r2",
+        "text": "6x",
+        "labelKind": "TEXT",
+        "at": [
+          2.5,
+          6.5
+        ]
+      },
+      {
+        "id": "t_box",
+        "text": "㉠",
+        "labelKind": "TEXT",
+        "at": [
+          6.5,
+          6.5
+        ]
+      }
+    ]
+  },
+  "caption": "알콰리즈미의 도형을 이용한 완전제곱식 만들기",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변이 x인 정사각형과 넓이 6x인 직사각형 2개, 넓이 ㉠인 작은 정사각형을 붙인 큰 정사각형"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "정사각형 분할 배치"
+    }
+  ]
+}

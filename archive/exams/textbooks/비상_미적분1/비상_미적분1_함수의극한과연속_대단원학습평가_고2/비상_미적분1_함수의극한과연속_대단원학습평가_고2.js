@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$에 대하여\n$\\lim_{x \\to 2} f(x)=3, \\lim_{x \\to 2} g(x)=\\alpha$\n이고 $\\lim_{x \\to 2} f(x)g(x)=-6$일 때, 극한값 $\\lim_{x \\to 2} \\{3f(x)+2g(x)\\}$를 구하시오. (단, $\\alpha$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n극한의 성질 $\\lim f(x)g(x)=\\lim f(x)\\times\\lim g(x)$를 이용하여 $\\alpha$를 구한다.\n[단계별 풀이]\n$\\lim_{x\\to2}f(x)g(x)=3\\times\\alpha=-6$이므로 $\\alpha=-2$이다.\n$\\lim_{x\\to2}\\{3f(x)+2g(x)\\}=3\\times3+2\\times(-2)=9-4=5$이다.\n[결론]\n$5$"
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
       "④ $\\lim_{x \\to \\infty} \\frac{2x^2-5x+7}{x^2+1}=2$",
       "⑤ $\\lim_{x \\to \\infty} (\\sqrt{x^2-2x}-x)=1$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n각 극한을 계산한다. ③, ⑤는 근호가 있으므로 분자 또는 분모를 유리화한다.\n[단계별 풀이]\n① $\\lim_{x\\to1}(x^2-4x+1)=1-4+1=-2$ (옳다)\n② $\\frac{3x^2-2x-1}{x-1}=\\frac{(3x+1)(x-1)}{x-1}=3x+1\\to4$ (옳다)\n③ $\\frac{1-\\sqrt{1-x}}{x}=\\frac{1-(1-x)}{x(1+\\sqrt{1-x})}=\\frac{1}{1+\\sqrt{1-x}}\\to\\frac{1}{2}$ (옳다)\n④ $\\frac{2x^2-5x+7}{x^2+1}=\\frac{2-\\frac{5}{x}+\\frac{7}{x^2}}{1+\\frac{1}{x^2}}\\to2$ (옳다)\n⑤ $\\sqrt{x^2-2x}-x=\\frac{(x^2-2x)-x^2}{\\sqrt{x^2-2x}+x}=\\frac{-2x}{\\sqrt{x^2-2x}+x}=\\frac{-2}{\\sqrt{1-\\frac{2}{x}}+1}\\to\\frac{-2}{2}=-1$이므로 $1$이라는 것은 옳지 않다.\n[결론]\n⑤"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=ax+b$가\n$\\lim_{x \\to 1} \\frac{(x^2+1)f(x)}{x^4-1}=2$\n를 만족시킬 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4,\\ b=-4$",
+    "solution": "[풀이 전략]\n분모가 $0$으로 가는데 극한값이 존재하므로 분자도 $0$으로 가야 한다.\n[단계별 풀이]\n$x^4-1=(x^2+1)(x+1)(x-1)$이므로 $\\frac{(x^2+1)f(x)}{x^4-1}=\\frac{f(x)}{(x+1)(x-1)}$이다.\n$x\\to1$일 때 분모가 $0$으로 가므로 $f(1)=a+b=0$이다. $b=-a$이므로 $f(x)=a(x-1)$이다.\n$\\frac{a(x-1)}{(x+1)(x-1)}=\\frac{a}{x+1}\\to\\frac{a}{2}=2$이므로 $a=4$이고 $b=-4$이다.\n[결론]\n$a=4,\\ b=-4$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $a$에 대하여 원 $x^2+(y-a)^2=a^2$이 곡선 $y=-x^2+a$와 만나는 점 중 제1사분면 위의 점을 $\\mathrm{P}$라고 하자. 점 $\\mathrm{P}$에서 $y$축에 내린 수선의 발을 $\\mathrm{Q}$라 하고, 원의 중심을 $\\mathrm{C}$라고 할 때, 극한값 $\\lim_{a \\to 0+} \\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}$를 구하시오.\n<img src=\"q04.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n점 $\\mathrm{P}$의 $y$좌표를 $a$로 나타내어 $\\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}$를 구한 뒤 극한을 취한다.\n[단계별 풀이]\n$\\mathrm{P}(x,y)$는 원과 곡선의 교점이므로 $x^2=a-y$를 원의 식에 대입하면 $(a-y)+(y-a)^2=a^2$이다.\n$u=a-y$라 하면 $u+u^2=a^2$이므로 $u^2+u-a^2=0$, $u=\\frac{-1+\\sqrt{1+4a^2}}{2}$이다.\n$\\overline{\\mathrm{OQ}}=y=a-u$, $\\overline{\\mathrm{OC}}=a$이므로 $\\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}=1-\\frac{u}{a}$이다.\n$u=\\frac{4a^2}{2(1+\\sqrt{1+4a^2})}=\\frac{2a^2}{1+\\sqrt{1+4a^2}}$이므로 $\\frac{u}{a}=\\frac{2a}{1+\\sqrt{1+4a^2}}\\to0$ ($a\\to0+$)이다.\n$\\lim_{a\\to0+}\\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}=1-0=1$이다.\n[결론]\n$1$"
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 모든 실수 $x$에 대하여\n$-3x^2+2x \\le f(x) \\le x^2+2x$\n를 만족시킬 때, 극한값 $\\lim_{x \\to 0+} \\frac{\\{f(x)\\}^2}{3x^2-xf(x)}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n주어진 부등식의 양변을 $x$로 나누어 $\\lim_{x\\to0+}\\frac{f(x)}{x}$를 구한다. (수열의 극한의 대소 관계)\n[단계별 풀이]\n$x>0$이므로 $-3x+2\\le\\frac{f(x)}{x}\\le x+2$이다.\n$x\\to0+$일 때 좌변, 우변이 모두 $2$로 수렴하므로 $\\lim_{x\\to0+}\\frac{f(x)}{x}=2$이다.\n$\\frac{\\{f(x)\\}^2}{3x^2-xf(x)}=\\frac{\\left\\{\\frac{f(x)}{x}\\right\\}^2}{3-\\frac{f(x)}{x}}$이다. (분자와 분모를 $x^2$으로 나눔)\n극한값은 $\\frac{2^2}{3-2}=4$이다.\n[결론]\n$4$"
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 $x=0$에서 연속인 함수를 모두 고르시오.\n[보기]\nㄱ. $f(x)=|x|$\nㄴ. $f(x)=\\frac{x}{x^2-x}$\nㄷ. $f(x)=\\begin{cases} \\frac{1}{x} & (x \\ne 0) \\\\ 1 & (x=0) \\end{cases}$\nㄹ. $f(x)=\\begin{cases} 2x & (x \\ge 0) \\\\ \\sqrt{-x} & (x < 0) \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄹ",
+    "solution": "[풀이 전략]\n$x=0$에서 연속이려면 $f(0)$이 정의되고 $\\lim_{x\\to0}f(x)=f(0)$이어야 한다.\n[단계별 풀이]\nㄱ. $f(x)=|x|$는 $x=0$에서 $\\lim_{x\\to0}|x|=0=f(0)$이므로 연속이다.\nㄴ. $f(x)=\\frac{x}{x^2-x}$는 $x=0$에서 정의되지 않으므로 연속이 아니다.\nㄷ. $x\\to0+$일 때 $\\frac{1}{x}\\to\\infty$이므로 극한이 존재하지 않아 연속이 아니다.\nㄹ. $f(0)=0$, $\\lim_{x\\to0+}2x=0$, $\\lim_{x\\to0-}\\sqrt{-x}=0$이므로 연속이다.\n[결론]\nㄱ, ㄹ"
   },
   {
     "id": 7,
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가\n$(x^2-1)f(x)=ax^3+bx^2-ax-b$\n를 만족시키고 $f(-1)=1, f(1)=2$일 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=\\frac{1}{2},\\ b=\\frac{3}{2}$",
+    "solution": "[풀이 전략]\n우변을 인수분해하여 $f(x)$를 구하고 $x=\\pm1$에서 연속임을 이용한다.\n[단계별 풀이]\n$ax^3+bx^2-ax-b=ax(x^2-1)+b(x^2-1)=(x^2-1)(ax+b)$이다.\n$x\\ne\\pm1$일 때 $f(x)=ax+b$이다.\n$f(x)$가 모든 실수에서 연속이므로 $f(-1)=\\lim_{x\\to-1}f(x)=-a+b=1$, $f(1)=\\lim_{x\\to1}f(x)=a+b=2$이다.\n두 식을 연립하면 $b=\\frac{3}{2}$, $a=\\frac{1}{2}$이다.\n[결론]\n$a=\\frac{1}{2},\\ b=\\frac{3}{2}$"
   },
   {
     "id": 8,
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\frac{3x-2}{x+2}$에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n[보기]\nㄱ. $f(x)$는 닫힌구간 $[-4, 0]$에서 최댓값을 갖지 않는다.\nㄴ. $f(x)$는 닫힌구간 $[-2, 0]$에서 최솟값을 갖는다.\nㄷ. $f(x)$는 닫힌구간 $[0, 2]$에서 최솟값을 갖는다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "[풀이 전략]\n$f(x)=3-\\frac{8}{x+2}$로 정리하여 정의되지 않는 점 $x=-2$를 포함하는 구간과 연속인 구간을 구분한다. 닫힌구간에서 연속이면 최대, 최솟값이 존재한다.\n[단계별 풀이]\n$f(x)=\\frac{3x-2}{x+2}=3-\\frac{8}{x+2}$이고 $x=-2$에서 정의되지 않는다.\nㄱ. $[-4,0]$은 $x=-2$를 포함하는데 $x\\to-2-$일 때 $f(x)\\to\\infty$이므로 최댓값이 없다. (옳다)\nㄴ. $[-2,0]$에서 $f(-2)$가 정의되지 않고 $x\\to-2+$일 때 $f(x)\\to-\\infty$이므로 최솟값이 없다. (옳지 않다)\nㄷ. $[0,2]$에서 $f(x)$는 연속이므로 최솟값을 갖는다. ($f(x)$는 증가하므로 최솟값 $f(0)=-1$) (옳다)\n[결론]\nㄱ, ㄷ"
   },
   {
     "id": 9,
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$가\n$\\lim_{x \\to 1} \\frac{f(x)}{x-1}=2, \\lim_{x \\to \\infty} \\frac{f(x)-3x^2}{2x-1}=k$\n를 만족시킬 때, 다음 물음에 답하시오. (단, $k$는 실수)\n⑴ 함수 $f(x)$를 구하시오.\n⑵ 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $f(x)=3x^2-4x+1$  ⑵ $k=-2$",
+    "solution": "[풀이 전략]\n첫째 극한에서 $f(1)=0$, $f'(1)=2$를 얻고, 둘째 극한에서 $f(x)-3x^2$의 차수가 $1$ 이하임을 얻는다.\n[단계별 풀이]\n⑴ $\\lim_{x\\to1}\\frac{f(x)}{x-1}=2$이므로 분모가 $0$으로 가므로 $f(1)=0$이고 $f'(1)=2$이다.\n$\\lim_{x\\to\\infty}\\frac{f(x)-3x^2}{2x-1}=k$ (실수)이므로 $f(x)-3x^2$은 일차 이하의 다항식이다. $f(x)=3x^2+px+q$로 놓는다.\n$f(1)=3+p+q=0$, $f'(x)=6x+p$이므로 $f'(1)=6+p=2$이다. $p=-4$, $q=1$이다.\n$f(x)=3x^2-4x+1$이다. (확인: $f(x)=(3x-1)(x-1)$)\n⑵ $\\frac{f(x)-3x^2}{2x-1}=\\frac{-4x+1}{2x-1}\\to\\frac{-4}{2}=-2$이므로 $k=-2$이다.\n[결론]\n⑴ $f(x)=3x^2-4x+1$, ⑵ $k=-2$"
   },
   {
     "id": 10,
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가\n$\\lim_{x \\to \\infty} f(x)=\\infty$\n$\\lim_{x \\to \\infty} \\{4f(x)-2g(x)\\}=1$\n을 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} \\frac{3g(x)-f(x)}{5f(x)}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$4f(x)-2g(x)=h(x)$로 놓으면 $h(x)\\to1$이다. $g(x)$를 $f(x)$와 $h(x)$로 나타낸다.\n[단계별 풀이]\n$h(x)=4f(x)-2g(x)$라 하면 $\\lim_{x\\to\\infty}h(x)=1$이고 $g(x)=\\frac{4f(x)-h(x)}{2}$이다.\n$\\frac{3g(x)-f(x)}{5f(x)}=\\frac{\\frac{3(4f(x)-h(x))}{2}-f(x)}{5f(x)}=\\frac{10f(x)-3h(x)}{10f(x)}=1-\\frac{3h(x)}{10f(x)}$이다.\n$f(x)\\to\\infty$이고 $h(x)\\to1$이므로 $\\frac{h(x)}{f(x)}\\to0$이다.\n극한값은 $1-0=1$이다.\n[결론]\n$1$"
   },
   {
     "id": 11,
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수\n$f(x)=3x-8, g(x)=x^2+ax+9$\n에 대하여 함수 $\\frac{f(x)}{g(x)}$가 모든 실수 $x$에서 연속일 때, 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-6<a<6$",
+    "solution": "[풀이 전략]\n분수함수 $\\frac{f(x)}{g(x)}$가 모든 실수에서 연속이려면 모든 실수 $x$에서 $g(x)\\ne0$이어야 한다.\n[단계별 풀이]\n$g(x)=x^2+ax+9=0$이 실근을 갖지 않아야 한다.\n판별식 $D=a^2-36<0$이므로 $(a+6)(a-6)<0$이다.\n$-6<a<6$이다.\n[결론]\n$-6<a<6$"
   },
   {
     "id": 12,
@@ -340,8 +340,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같다. 모든 실수 $x$에서 함수\n$g(x)=(x-a)f(x)$\n가 연속일 때, 실수 $a$의 값을 구하시오.\n<img src=\"q12.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$g(x)=(x-a)f(x)$는 $f(x)$가 불연속인 점 $x=1$에서만 연속성이 문제된다. $x=1$에서 좌극한, 우극한, 함숫값이 같도록 한다.\n[단계별 풀이]\n그래프에서 $x=1$에서 $\\lim_{x\\to1-}f(x)=2$, $\\lim_{x\\to1+}f(x)=1$, $f(1)=2$이다.\n$g(x)$가 $x=1$에서 연속이려면 $\\lim_{x\\to1-}g(x)=\\lim_{x\\to1+}g(x)=g(1)$이어야 한다.\n$\\lim_{x\\to1-}g(x)=(1-a)\\times2$, $\\lim_{x\\to1+}g(x)=(1-a)\\times1$, $g(1)=(1-a)\\times2$이다.\n$2(1-a)=1-a$이므로 $1-a=0$, $a=1$이다.\n[결론]\n$1$"
   },
   {
     "id": 13,
@@ -368,7 +368,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가\n$f(-1)=a, f(1)=a-4$\n를 만족시킨다. 방정식 $f(x)=x^3$이 열린구간 $(-1, 1)$에서 반드시 실근을 갖도록 하는 정수 $a$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n$h(x)=f(x)-x^3$으로 놓으면 연속함수이므로 중간값 정리에 의해 $h(-1)h(1)<0$이면 열린구간 $(-1,1)$에서 $h(x)=0$이 반드시 실근을 가진다.\n[단계별 풀이]\n$h(-1)=f(-1)-(-1)^3=a+1$, $h(1)=f(1)-1=a-4-1=a-5$이다.\n$h(-1)h(1)<0$이면 $(a+1)(a-5)<0$이므로 $-1<a<5$이다.\n정수 $a$는 $0,1,2,3,4$이므로 $5$개이다.\n[결론]\n$5$"
   }
 ];

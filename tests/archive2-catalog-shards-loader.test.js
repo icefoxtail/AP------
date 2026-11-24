@@ -347,6 +347,7 @@ test('the shard path is the default of 문제지 만들기 and 단원별 기출 
   assert.ok(/if\(Archive2CatalogShards\.shardsDisabled\(location\.search\)\)\{await loadWholeBundle\(\);return;\}/.test(bankHtml), '?shards=0 is the whole bundle');
   assert.ok(/if\(Archive2CatalogShards\.isUnavailable\(e\)\)\{console\.warn\('catalog shards are not available; using the whole bundle'\);await loadWholeBundle\(\);return;\}/.test(bankHtml), 'no shards on the site: the whole bundle');
   assert.ok(/isShardFailure\(e\)&&!Archive2CatalogShards\.isNetworkFailure\(e\)\)\{\s*console\.warn\('catalog shards do not match; using the whole bundle'/.test(bankHtml), 'files that do not match the index: the whole bundle; a lost connection: message and retry');
+  assert.ok(/el\('scope'\)\.onchange=\(\)=>\{clearFilters\(\);reflectScope\(el\('scope'\)\.value\);/.test(bankHtml) && /searchParams\.set\('scope',value\)/.test(bankHtml) && /history\.replaceState\(/.test(bankHtml), 'the chosen scope goes into the address (only the scope box, which exists only on the shard path)');
   assert.ok(/id="scopeRetry"/.test(bankHtml) && /courseOfGenerated\(courses,row\)===key/.test(bankHtml));
   // 단원별 기출 (stage 2-3) loads it before its own script, after the canonical core it reads records with
   const unitHtml = read('archive/unit-past-exams.html');

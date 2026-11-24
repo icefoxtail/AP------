@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 일반항이\n$$a_n=(7^n\\text{을 } 10\\text{으로 나눈 나머지})$$\n일 때, $a_{50}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "$7^n$의 일의 자리의 수를 구하면\n$7^1=7,\\ 7^2=49\\to 9,\\ 7^3=343\\to 3,\\ 7^4=2401\\to 1,\\ 7^5\\to 7,\\ \\cdots$\n이므로 $a_n$은 $7,\\ 9,\\ 3,\\ 1$이 이 순서대로 반복된다. 주기는 $4$이다.\n$50=4\\times 12+2$이므로 $a_{50}=a_2=9$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "제$3$항이 $8$이고 제$10$항이 $29$인 등차수열의 제$30$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$89$",
+    "solution": "첫째항을 $a$, 공차를 $d$라 하면 $a_3=a+2d=8$, $a_{10}=a+9d=29$이다. 두 식을 빼면 $7d=21$이므로 $d=3$, $a=2$이다.\n$$a_{30}=2+29\\times 3=89$$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "첫째항이 $\\sqrt{5}$, 공비가 $\\sqrt{5}$인 등비수열 $\\{a_n\\}$에서 $a_8$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$625$",
+    "solution": "$a_n=\\sqrt{5}\\times(\\sqrt{5})^{n-1}=(\\sqrt{5})^n$이므로\n$$a_8=(\\sqrt{5})^8=5^4=625$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$100$ 이하의 자연수 중에서 $3$의 배수의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1683$",
+    "solution": "$100$ 이하의 $3$의 배수는 $3,\\ 6,\\ 9,\\ \\cdots,\\ 99$이고 $99=3\\times 33$이므로 첫째항 $3$, 끝항 $99$, 항수 $33$인 등차수열이다.\n$$\\frac{33(3+99)}{2}=\\frac{33\\times 102}{2}=1683$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에서 제$4$항과 제$10$항은 절댓값이 같고 부호가 반대이며 제$6$항은 $-8$일 때, 제$15$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$64$",
+    "solution": "제$4$항과 제$10$항은 절댓값이 같고 부호가 반대이므로 $a_4+a_{10}=0$이다. 등차수열에서 $a_4+a_{10}=2a_7$이므로 $a_7=0$이다.\n$a_6=-8$, $a_7=0$이므로 공차는 $d=8$이다.\n$$a_{15}=a_7+8d=0+64=64$$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 평행하지 않은 두 직선 $l,\\; m$ 사이에 직선 $m$에 수직인 선분 $12$개를 일정한 간격으로 긋고 그 길이를 차례로 $a_1,\\; a_2,\\; \\dots,\\; a_{12}$라고 하자. $a_1=12,\\; a_{12}=6$일 때, $a_3+a_4+a_5+\\dots+a_{10}$의 값을 구하시오.\n<img src=\"q06.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$72$",
+    "solution": "수직인 선분을 일정한 간격으로 그었으므로 선분의 길이 $a_1,\\ a_2,\\ \\cdots,\\ a_{12}$는 등차수열을 이룬다.\n등차수열에서 항의 번호의 합이 같으면 항의 합도 같으므로 $a_3+a_{10}=a_1+a_{12}=12+6=18$이다.\n$a_3,\\ a_4,\\ \\cdots,\\ a_{10}$은 $8$개의 항이므로\n$$a_3+a_4+\\cdots+a_{10}=\\frac{8(a_3+a_{10})}{2}=\\frac{8\\times 18}{2}=72$$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=3n^2-4n$일 때, $a_n < 50$을 만족시키는 자연수 $n$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "$n=1$일 때 $a_1=S_1=3-4=-1$\n$n\\ge 2$일 때 $a_n=S_n-S_{n-1}=3n^2-4n-\\{3(n-1)^2-4(n-1)\\}=6n-7$\n$n=1$일 때 $6\\times 1-7=-1$로 $a_1$과 같으므로 모든 자연수 $n$에 대하여 $a_n=6n-7$이다.\n$6n-7<50$에서 $n<\\frac{57}{6}=9.5$이므로 자연수 $n$은 $1,\\ 2,\\ \\cdots,\\ 9$로 $9$개이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 모서리의 길이의 합이 $156$, 겉넓이가 $702$인 직육면체의 가로의 길이, 세로의 길이, 높이가 이 순서대로 등비수열을 이룰 때, 이 직육면체의 부피를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$729$",
+    "solution": "가로, 세로, 높이를 $\\frac{a}{r},\\ a,\\ ar$라 하자.\n모든 모서리의 길이의 합은 $4\\left(\\frac{a}{r}+a+ar\\right)=156$이므로 $a\\left(\\frac{1}{r}+1+r\\right)=39\\qquad\\cdots\\ ①$\n겉넓이는\n$$2\\left(\\frac{a}{r}\\times a+a\\times ar+\\frac{a}{r}\\times ar\\right)=2a^2\\left(\\frac{1}{r}+r+1\\right)=702$$\n이므로 $a^2\\left(\\frac{1}{r}+1+r\\right)=351\\qquad\\cdots\\ ②$\n② $\\div$ ①을 하면 $a=\\frac{351}{39}=9$\n부피는 $\\frac{a}{r}\\times a\\times ar=a^3=9^3=729$\n(이때 ①에서 $r+\\frac{1}{r}=\\frac{10}{3}$이므로 $r=3$ 또는 $\\frac{1}{3}$로 조건에 맞는 직육면체가 존재한다.)"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "등비수열 $\\{a_n\\}$에 대하여 수열 $\\{5a_n-a_{n+1}\\}$은 첫째항이 $6$, 공비가 $2$인 등비수열일 때, $a_7$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$128$",
+    "solution": "등비수열 $\\{a_n\\}$의 첫째항을 $a$, 공비를 $r$라 하면 $a_n=ar^{n-1}$이므로\n$$5a_n-a_{n+1}=ar^{n-1}(5-r)$$\n이는 첫째항이 $a(5-r)$, 공비가 $r$인 등비수열이다. 공비가 $2$이므로 $r=2$이고, 첫째항이 $6$이므로 $a(5-2)=6$에서 $a=2$이다.\n$$a_7=2\\times 2^6=128$$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "공비가 $-2$, 제$n$항이 $240$인 등비수열에 대하여 첫째항부터 제$n$항까지의 합이 $165$일 때, 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "첫째항을 $a$라 하면 $a_n=240$이고 공비가 $-2$이므로\n$$S_n=\\frac{a_nr-a}{r-1}=\\frac{240\\times(-2)-a}{-2-1}=\\frac{480+a}{3}=165$$\n에서 $a=15$이다.\n$a_n=15\\times(-2)^{n-1}=240$에서 $(-2)^{n-1}=16$이므로 $n-1=4$, $n=5$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "정사각형을 규칙에 따라 색칠하려고 한다. 첫 번째 시행에서 오른쪽 그림과 같이 정사각형을 $9$등분 하여 가운데 정사각형을 색칠한다. 두 번째 시행에서는 남은 $8$개의 정사각형을 각각 $9$등분 하여 가운데 정사각형을 색칠한다. 이와 같은 시행을 반복할 때, $10$번째 시행 후 색칠한 정사각형의 총개수를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{8^{10}-1}{7}$",
+    "solution": "$k$번째 시행에서 새로 색칠하는 정사각형의 개수를 $a_k$라 하자.\n첫 번째 시행: $a_1=1$이고 남은 정사각형은 $8$개이다.\n두 번째 시행: 남은 $8$개를 각각 $9$등분 하여 가운데를 색칠하므로 $a_2=8$이고 남은 정사각형은 $8\\times 8=8^2$개이다.\n같은 방법으로 $a_k=8^{k-1}$이다.\n$10$번째 시행 후 색칠한 정사각형의 총개수는 첫째항 $1$, 공비 $8$인 등비수열의 첫째항부터 제$10$항까지의 합이므로\n$$\\frac{8^{10}-1}{8-1}=\\frac{8^{10}-1}{7}=153391689$$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$200$ 이하의 자연수 중에서 서로 다른 네 수를 택하여 나열할 때, 공비가 자연수인 등비수열을 이루도록 나열하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$36$",
+    "solution": "첫째항을 $a$, 공비를 $r$ ($r\\ge 2$인 자연수)라 하면 네 수는 $a,\\ ar,\\ ar^2,\\ ar^3$이고 $ar^3\\le 200$이어야 한다. 공비가 자연수이면 수열은 증가하므로 네 수를 택하면 나열하는 방법은 하나로 정해진다.\n$r=2$: $8a\\le 200$에서 $a\\le 25$이므로 $25$가지\n$r=3$: $27a\\le 200$에서 $a\\le 7$이므로 $7$가지\n$r=4$: $64a\\le 200$에서 $a\\le 3$이므로 $3$가지\n$r=5$: $125a\\le 200$에서 $a=1$이므로 $1$가지\n$r\\ge 6$: $r^3\\ge 216>200$이므로 없다.\n따라서 경우의 수는 $25+7+3+1=36$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$에 대하여 $S_n=S_{n+3}$이고 $a_{n+4}=5$일 때, $a_{n+6}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "$S_{n+3}-S_n=a_{n+1}+a_{n+2}+a_{n+3}=0$이다. 등차수열에서 $a_{n+1}+a_{n+3}=2a_{n+2}$이므로 $3a_{n+2}=0$에서 $a_{n+2}=0$이다.\n$a_{n+4}=a_{n+2}+2d=5$에서 $d=\\frac{5}{2}$\n$$a_{n+6}=a_{n+4}+2d=5+5=10$$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2^5\\times 3^4$의 모든 양의 약수의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7623$",
+    "solution": "$2^5\\times 3^4$의 모든 양의 약수의 합은 $(1+2+2^2+2^3+2^4+2^5)(1+3+3^2+3^3+3^4)$이다.\n$$1+2+4+8+16+32=63,\\quad 1+3+9+27+81=121$$\n이므로 $63\\times 121=7623$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{n} (4k-6)=48$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "$$\\sum_{k=1}^{n}(4k-6)=4\\times\\frac{n(n+1)}{2}-6n=2n^2+2n-6n=2n^2-4n$$\n$2n^2-4n=48$에서 $n^2-2n-24=(n-6)(n+4)=0$이므로 자연수 $n=6$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=4}^{8} k^2(k+1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1450$",
+    "solution": "$k^2(k+1)=k^3+k^2$이므로 $k=4,\\ 5,\\ 6,\\ 7,\\ 8$에서 각각\n$80,\\ 150,\\ 252,\\ 392,\\ 576$이다.\n$$80+150+252+392+576=1450$$\n(다른 방법) $\\sum_{k=1}^{8}-\\sum_{k=1}^{3}$으로 구하면 $\\left(1296+204\\right)-\\left(36+14\\right)=1500-50=1450$"
   },
   {
     "id": 17,
@@ -480,8 +480,8 @@ window.questionBank = [
       "$2^{24}-4$",
       "$2^{25}-8$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "$3\\times 2^{2n+1}=3\\times 2\\times 4^n=6\\times 4^n$이므로 첫째항 $24$, 공비 $4$인 등비수열의 첫째항부터 제$10$항까지의 합이다.\n$$\\sum_{n=1}^{10}6\\times 4^n=\\frac{24(4^{10}-1)}{4-1}=8(4^{10}-1)=8\\times 2^{20}-8=2^{23}-8$$\n따라서 ③이다."
   },
   {
     "id": 18,
@@ -508,8 +508,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 귀납적 정의가\n$$a_1=1,\\; a_{n+1}=2a_n+1\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n일 때, 제$4$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "$a_2=2a_1+1=3$, $a_3=2a_2+1=7$, $a_4=2a_3+1=15$\n따라서 제$4$항은 $15$이다."
   },
   {
     "id": 19,
@@ -536,8 +536,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{2n} (a_{k+1}-a_k)=(2n+1)^2+4(2n+1)-a_1$일 때, $a_7$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$77$",
+    "solution": "$$\\sum_{k=1}^{2n}(a_{k+1}-a_k)=a_{2n+1}-a_1$$\n이므로 주어진 식에서 $a_{2n+1}=(2n+1)^2+4(2n+1)$이다.\n$2n+1=7$, 즉 $n=3$을 대입하면\n$$a_7=7^2+4\\times 7=49+28=77$$"
   },
   {
     "id": 20,
@@ -564,8 +564,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에서 $a_2=50,\\; a_4=34$일 때, $\\sum_{k=1}^{10} |a_k|$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$260$",
+    "solution": "공차는 $d=\\frac{a_4-a_2}{2}=\\frac{34-50}{2}=-8$이고 $a_1=a_2-d=58$이다. 따라서 $a_n=58-8(n-1)=66-8n$이다.\n$a_8=2>0$, $a_9=-6<0$이므로 $k\\le 8$일 때 $a_k>0$, $k\\ge 9$일 때 $a_k<0$이다.\n$$\\sum_{k=1}^{10}|a_k|=(a_1+\\cdots+a_8)-a_9-a_{10}=\\frac{8(58+2)}{2}+6+14=240+20=260$$"
   },
   {
     "id": 21,
@@ -592,8 +592,8 @@ window.questionBank = [
     "wide": false,
     "content": "첫째항이 $4$이고 공차가 $3$인 등차수열 $\\{a_n\\}$에 대하여 $\\sum_{k=1}^{7} \\frac{3}{\\sqrt{a_{k+1}}+\\sqrt{a_k}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$a_n=4+3(n-1)=3n+1$이고 $a_{k+1}-a_k=3$이다. 분모를 유리화하면\n$$\\frac{3}{\\sqrt{a_{k+1}}+\\sqrt{a_k}}=\\frac{3(\\sqrt{a_{k+1}}-\\sqrt{a_k})}{a_{k+1}-a_k}=\\sqrt{a_{k+1}}-\\sqrt{a_k}$$\n$$\\sum_{k=1}^{7}(\\sqrt{a_{k+1}}-\\sqrt{a_k})=\\sqrt{a_8}-\\sqrt{a_1}=\\sqrt{25}-\\sqrt{4}=5-2=3$$"
   },
   {
     "id": 22,
@@ -620,8 +620,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\frac{1}{4\\times 1^2-1}+\\frac{1}{4\\times 2^2-1}+\\dots+\\frac{1}{4\\times 10^2-1}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{10}{21}$",
+    "solution": "$\\frac{1}{4k^2-1}=\\frac{1}{(2k-1)(2k+1)}=\\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)$이므로\n$$\\sum_{k=1}^{10}\\frac{1}{4k^2-1}=\\frac{1}{2}\\left\\{\\left(1-\\frac{1}{3}\\right)+\\left(\\frac{1}{3}-\\frac{1}{5}\\right)+\\cdots+\\left(\\frac{1}{19}-\\frac{1}{21}\\right)\\right\\}=\\frac{1}{2}\\left(1-\\frac{1}{21}\\right)=\\frac{10}{21}$$"
   },
   {
     "id": 23,
@@ -648,8 +648,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 귀납적 정의가\n$$a_1=2,\\; a_{n+1}=\\frac{\\sqrt{n+1}}{\\sqrt{n+2}}a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n일 때, $a_k=1$을 만족시키는 자연수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "$a_{n+1}=\\frac{\\sqrt{n+1}}{\\sqrt{n+2}}a_n$이므로\n$$a_n=a_1\\times\\frac{\\sqrt{2}}{\\sqrt{3}}\\times\\frac{\\sqrt{3}}{\\sqrt{4}}\\times\\cdots\\times\\frac{\\sqrt{n}}{\\sqrt{n+1}}=2\\times\\frac{\\sqrt{2}}{\\sqrt{n+1}}=\\frac{2\\sqrt{2}}{\\sqrt{n+1}}$$\n$a_k=1$에서 $\\sqrt{k+1}=2\\sqrt{2}$, $k+1=8$이므로 $k=7$"
   },
   {
     "id": 24,
@@ -676,8 +676,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항이 $-10$이고, $x$에 대한 이차방정식 $x^2-a_n x+a_{n+1}=0$의 두 근 $\\alpha_n,\\; \\beta_n$이 $(\\alpha_n+1)(\\beta_n+1)=-3$을 만족시킬 때, $a_{25}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "이차방정식 $x^2-a_nx+a_{n+1}=0$의 두 근이 $\\alpha_n,\\ \\beta_n$이므로 근과 계수의 관계에서 $\\alpha_n+\\beta_n=a_n$, $\\alpha_n\\beta_n=a_{n+1}$이다.\n$$(\\alpha_n+1)(\\beta_n+1)=\\alpha_n\\beta_n+\\alpha_n+\\beta_n+1=a_{n+1}+a_n+1=-3$$\n에서 $a_{n+1}=-a_n-4$이다.\n$a_1=-10$, $a_2=10-4=6$, $a_3=-6-4=-10$이므로 $a_n$은 $-10,\\ 6$이 반복된다. $25$는 홀수이므로 $a_{25}=-10$"
   },
   {
     "id": 25,
@@ -732,8 +732,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 가로의 길이가 $1$, 세로의 길이가 $2$인 직사각형 모양의 타일과 한 변의 길이가 $2$인 정사각형 모양의 타일이 있다. 이 타일을 사용하여 가로의 길이가 $n$, 세로의 길이가 $2$인 직사각형 모양의 바닥을 겹치거나 빠진 부분 없이 덮는 방법의 수를 $a_n$이라고 하면 $a_1=1,\\; a_2=3$이다. $a_n,\\; a_{n+1},\\; a_{n+2}$ 사이의 관계식을 구하시오. (단, $n$은 자연수이고, 두 종류의 타일은 충분히 많이 있다.)\n<img src=\"q26.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a_{n+2}=a_{n+1}+2a_n$",
+    "solution": "타일은 돌려서 놓을 수 있으므로 가로 $1$, 세로 $2$인 타일(세로로 세운 것), 가로 $2$, 세로 $1$인 타일(눕힌 것), 한 변이 $2$인 정사각형 타일을 쓴다. ($a_2=3$은 세운 타일 $2$개, 눕힌 타일 $2$개, 정사각형 $1$개로 덮는 $3$가지이다.)\n가로 $n+2$, 세로 $2$인 바닥의 맨 오른쪽 끝을 덮는 방법은 다음과 같다.\n(i) 세운 타일 $1$개로 덮는다. 나머지는 가로 $n+1$이므로 $a_{n+1}$가지\n(ii) 정사각형 타일 $1$개로 덮는다. 나머지는 가로 $n$이므로 $a_n$가지\n(iii) 눕힌 타일 $2$개를 위아래로 쌓아 덮는다. 나머지는 가로 $n$이므로 $a_n$가지\n따라서\n$$a_{n+2}=a_{n+1}+2a_n$$\n(확인: $a_3=a_2+2a_1=5$로 직접 세어도 $5$가지이다.)"
   },
   {
     "id": 27,
@@ -760,7 +760,7 @@ window.questionBank = [
     "wide": false,
     "content": "$n \\ge 2$인 모든 자연수 $n$에 대하여 부등식\n$$\\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{3}}+\\frac{1}{\\sqrt{4}}+\\dots+\\frac{1}{\\sqrt{n}} < 2\\sqrt{n}-2$$\n가 성립함을 수학적 귀납법으로 증명하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "주어진 부등식을 $(\\ast)$라 하자.\n(i) $n=2$일 때 (좌변)$=\\frac{1}{\\sqrt{2}}=\\frac{\\sqrt{2}}{2}\\approx 0.707$, (우변)$=2\\sqrt{2}-2\\approx 0.828$이므로 $(\\ast)$이 성립한다.\n(ii) $n=k$ ($k\\ge 2$)일 때 $(\\ast)$이 성립한다고 가정하면\n$$\\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{3}}+\\cdots+\\frac{1}{\\sqrt{k}}<2\\sqrt{k}-2$$\n양변에 $\\frac{1}{\\sqrt{k+1}}$을 더하면\n$$\\frac{1}{\\sqrt{2}}+\\cdots+\\frac{1}{\\sqrt{k}}+\\frac{1}{\\sqrt{k+1}}<2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}}$$\n이때 $\\sqrt{k+1}+\\sqrt{k}<2\\sqrt{k+1}$이므로\n$$2(\\sqrt{k+1}-\\sqrt{k})=\\frac{2}{\\sqrt{k+1}+\\sqrt{k}}>\\frac{2}{2\\sqrt{k+1}}=\\frac{1}{\\sqrt{k+1}}$$\n따라서 $2\\sqrt{k}+\\frac{1}{\\sqrt{k+1}}<2\\sqrt{k+1}$이고\n$$2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}}<2\\sqrt{k+1}-2$$\n이므로 $n=k+1$일 때도 $(\\ast)$이 성립한다.\n(i), (ii)에 의하여 $n\\ge 2$인 모든 자연수 $n$에 대하여 주어진 부등식이 성립한다."
   }
 ];

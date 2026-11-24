@@ -1,0 +1,419 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "67",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "49",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ipl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "26",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ipn",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ipm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3055",
+              "denominator": "599"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800",
+              "denominator": "599"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "N1",
+    "N2",
+    "M1",
+    "M2",
+    "L1",
+    "L2",
+    "P1",
+    "P2",
+    "Q1",
+    "Q2",
+    "Ipl",
+    "Ipn",
+    "Ipm"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "segN",
+      "refs": [
+        "N1",
+        "N2"
+      ]
+    },
+    {
+      "id": "segM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "segL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "segP",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "segQ",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPl",
+        "refs": [
+          "L1",
+          "Ipl",
+          "P1"
+        ],
+        "value": 88,
+        "label": "88",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPn",
+        "refs": [
+          "N2",
+          "Ipn",
+          "P2"
+        ],
+        "value": 88,
+        "label": "88",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPm",
+        "refs": [
+          "M1",
+          "Ipm",
+          "P1"
+        ],
+        "value": 85,
+        "label": "85",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ll",
+        "ownerSegment": "segL",
+        "text": "l"
+      },
+      {
+        "id": "lm",
+        "ownerSegment": "segM",
+        "text": "m"
+      },
+      {
+        "id": "ln",
+        "ownerSegment": "segN",
+        "text": "n"
+      },
+      {
+        "id": "lp",
+        "ownerSegment": "segP",
+        "text": "p"
+      },
+      {
+        "id": "lq",
+        "ownerSegment": "segQ",
+        "text": "q"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "N1",
+    "N2",
+    "M1",
+    "M2",
+    "L1",
+    "L2",
+    "P1",
+    "P2",
+    "Q1",
+    "Q2",
+    "Ipl",
+    "Ipn",
+    "Ipm"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세 직선 l, m, n을 두 직선 p, q가 가로지르는 그림이다. 직선 p와 l의 교점에서 왼쪽 아래 각과 p와 n의 교점에서 오른쪽 위 각은 각각 88이고, p와 m의 교점 각은 85로 표시되어 있다.",
+  "accessibilityDescription": "가로로 놓인 세 직선 l, m, n을 두 직선 p, q가 비스듬히 가로지르고 있다. p와 l의 교점 왼쪽 아래에 88, p와 n의 교점 오른쪽 위에 88, p와 m의 교점에 85가 표시되어 있다. 오른쪽 끝에 l, m, n, 아래쪽에 p, q의 이름이 붙어 있다.",
+  "newVisualInformation": [
+    "세 직선 l, m, n과 두 직선 p, q",
+    "교각 88, 88, 85"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

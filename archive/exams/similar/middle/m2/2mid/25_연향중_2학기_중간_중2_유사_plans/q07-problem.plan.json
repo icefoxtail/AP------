@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 XOY의 이등분선 OP 위의 점 P에서 두 변 OX, OY에 내린 수선의 발 A, B를 나타낸 그림이다. 두 각 POA와 POB의 크기가 같게 표시되어 있고 A, B에 직각 표시가 있다.",
+  "accessibilityDescription": "점 O에서 서로 다른 방향으로 뻗은 두 반직선 OX, OY와 그 사이를 지나는 직선 OP가 보인다. OP 위의 점 P에서 OX에 내린 수선의 발 A와 OY에 내린 수선의 발 B가 있고, A와 B에 직각 표시, O 근처의 두 각에 같은 크기 표시가 있다.",
+  "newVisualInformation": [
+    "각 XOY의 이등분선 OP",
+    "P에서 OX, OY에 내린 수선의 발 A, B",
+    "같은 크기의 각 POA, POB",
+    "A, B의 직각 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPOA",
+        "refs": [
+          "P",
+          "O",
+          "A"
+        ],
+        "value": 36.87,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPOB",
+        "refs": [
+          "P",
+          "O",
+          "B"
+        ],
+        "value": 36.87,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 440
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 각의 이등분선 위의 점에서 각의 두 변에 이르는 거리가 같음을 증명하는 과정이다. 빈칸 (가)~(마)에 들어갈 내용으로 옳지 않은 것은? $\\angle XOY$의 이등분선 위의 한 점 $P$에서 $\\overrightarrow{OX}$, $\\overrightarrow{OY}$에 내린 수선의 발을 각각 $A$, $B$라 하면 $\\triangle POA$와 $\\triangle POB$에서 $\\angle POA = \\boxed{\\text{(가)}}\\ \\cdots\\cdots\\text{㉠}$ $\\boxed{\\text{(나)}}$는 공통 $\\cdots\\cdots\\text{㉡}$ $\\boxed{\\text{(다)}} = \\angle OBP = 90^\\circ\\ \\cdots\\cdots\\text{㉢}$ ㉠, ㉡, ㉢에 의하여 $\\triangle POA \\equiv \\triangle POB$ ($\\boxed{\\text{(라)}}$ 합동) 따라서 $\\boxed{\\text{(마)}} = \\overline{PB}$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

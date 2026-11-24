@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Pprime",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "Pprime"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOPp",
+      "refs": [
+        "O",
+        "Pprime"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "X",
+    "Pprime"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aXOP",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 53.13,
+        "label": "α",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "좌표평면의 원점 O에서 x축의 양의 방향으로 시초선 OX를 잡고, y축에 대하여 대칭인 두 동경 OP와 OP′을 나타낸 그림이다. 제1사분면의 동경 OP와 시초선이 이루는 각은 α이다.",
+  "accessibilityDescription": "원점 O에 x축과 y축이 그어져 있고 단위원 위에 y축을 사이에 두고 좌우로 나란한 두 점이 놓여 두 동경이 그어져 있다. 오른쪽 동경과 양의 x축 사이의 각이 α로 표시되어 있다.",
+  "newVisualInformation": [
+    "y축에 대하여 대칭인 두 동경 OP, OP′이 그려져 있다.",
+    "동경 OP와 시초선 OX가 이루는 기준각 α가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 좌표평면의 원점 $\\mathrm{O}$에서 $x$축의 양의 방향으로 시초선 $\\mathrm{OX}$를 잡을 때, $y$축에 대하여 대칭인 두 동경이 나타내는 일반각의 합을 구하는 과정이다.\n\n$y$축에 대하여 대칭인 두 동경을 각각 $\\mathrm{OP}, \\mathrm{OP}'$이라 하고, 동경 $\\mathrm{OP}$가 제$1$사분면에 있을 때의 기준각을 $\\alpha^\\circ$ ($0 < \\alpha < 90$)라 하면 두 동경이 나타내는 일반각은 각각  \n$\\angle\\mathrm{XOP} = 360^\\circ \\times l + (\\text{가})\\ (l\\text{은 정수})$  \n$\\angle\\mathrm{XOP}' = 360^\\circ \\times m + (\\text{나})\\ (m\\text{은 정수})$  \n이므로 두 일반각의 합은  \n$\\angle\\mathrm{XOP} + \\angle\\mathrm{XOP}' = 360^\\circ \\times (\\text{다}) + 180^\\circ$  \n이다.\n\n(가), (나), (다)에 알맞은 것을 순서대로 나열한 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

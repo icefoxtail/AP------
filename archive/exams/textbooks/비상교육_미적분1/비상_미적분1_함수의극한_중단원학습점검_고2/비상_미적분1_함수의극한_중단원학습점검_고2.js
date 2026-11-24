@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 조사하시오.\n⑴ $\\lim_{x \\to \\infty} \\left( 1+\\frac{2}{x} \\right)$\n⑵ $\\lim_{x \\to -1} \\frac{3}{(x+1)^2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1$\n⑵ $\\infty$ (양의 무한대로 발산)",
+    "solution": "⑴ $x\\to\\infty$일 때 $\\frac{2}{x}\\to 0$이므로 $\\lim_{x\\to\\infty}\\left(1+\\frac{2}{x}\\right)=1$\n⑵ $x\\to -1$일 때 $(x+1)^2$은 양수이면서 $0$에 한없이 가까워지므로 $\\frac{3}{(x+1)^2}$은 양의 값으로 한없이 커진다. 따라서 $\\lim_{x\\to -1}\\frac{3}{(x+1)^2}=\\infty$ (극한값은 없고 양의 무한대로 발산한다.)"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} x^2+1 & (x \\ge 2) \\\\ -x^2+2 & (x < 2) \\end{cases}$에서 다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 2+} f(x)$\n⑵ $\\lim_{x \\to 2-} f(x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $5$\n⑵ $-2$",
+    "solution": "⑴ $x\\to 2+$일 때 $x\\ge 2$이므로 $f(x)=x^2+1$이다. $\\lim_{x\\to 2+}f(x)=2^2+1=5$\n⑵ $x\\to 2-$일 때 $x<2$이므로 $f(x)=-x^2+2$이다. $\\lim_{x\\to 2-}f(x)=-2^2+2=-2$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가\n$\\lim_{x \\to 1} f(x)=2, \\lim_{x \\to 1} g(x)=3$\n을 만족시킬 때, 다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 1} \\{3f(x)+g(x)\\}$\n⑵ $\\lim_{x \\to 1} \\{f(x)-2g(x)\\}$\n⑶ $\\lim_{x \\to 1} 2f(x)g(x)$\n⑷ $\\lim_{x \\to 1} \\frac{f(x)}{g(x)}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $9$\n⑵ $-4$\n⑶ $12$\n⑷ $\\frac{2}{3}$",
+    "solution": "극한의 성질을 이용한다.\n⑴ $\\lim\\{3f(x)+g(x)\\}=3\\times 2+3=9$\n⑵ $\\lim\\{f(x)-2g(x)\\}=2-2\\times 3=-4$\n⑶ $\\lim 2f(x)g(x)=2\\times 2\\times 3=12$\n⑷ $\\lim\\frac{f(x)}{g(x)}=\\frac{2}{3}$ ($\\lim g(x)=3\\ne 0$)"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to 2} \\frac{x^2-5x+6}{|x-2|}$을 조사하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "극한값이 존재하지 않는다. (좌극한 $1$, 우극한 $-1$)",
+    "solution": "$x^2-5x+6=(x-2)(x-3)$이므로 $\\frac{x^2-5x+6}{|x-2|}=\\frac{(x-2)(x-3)}{|x-2|}$이다.\n$x\\to 2+$일 때 $x-2>0$이므로 $|x-2|=x-2$이고\n$$\\lim_{x\\to 2+}\\frac{(x-2)(x-3)}{x-2}=\\lim_{x\\to 2+}(x-3)=-1$$\n$x\\to 2-$일 때 $x-2<0$이므로 $|x-2|=-(x-2)$이고\n$$\\lim_{x\\to 2-}\\frac{(x-2)(x-3)}{-(x-2)}=\\lim_{x\\to 2-}\\{-(x-3)\\}=1$$\n우극한과 좌극한이 서로 다르므로 극한값이 존재하지 않는다."
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} -x^2+4 & (x \\ge 1) \\\\ 2x+a & (x < 1) \\end{cases}$에서 극한값 $\\lim_{x \\to 1} f(x)$가 존재할 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$\\lim_{x\\to 1}f(x)$가 존재하려면 우극한과 좌극한이 같아야 한다.\n$\\lim_{x\\to 1+}f(x)=-1+4=3$\n$\\lim_{x\\to 1-}f(x)=2+a$\n$3=2+a$이므로 $a=1$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $y=f(x), y=g(x)$의 그래프가 다음 그림과 같을 때, 보기 중 극한값이 존재하는 것을 모두 고르시오.\n<img src=\"q06.png\" />\n[보기]\nㄱ. $\\lim_{x \\to 2} \\{f(x)+g(x)\\}$\nㄴ. $\\lim_{x \\to 2} \\{f(x)-g(x)\\}$\nㄷ. $\\lim_{x \\to 2} f(x)g(x)$\nㄹ. $\\lim_{x \\to 2} \\frac{f(x)}{g(x)}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄷ, ㄹ",
+    "solution": "그래프에서 $x\\to 2$일 때\n$f(x)$: 좌극한과 우극한이 모두 $0$이므로 $\\lim_{x\\to 2}f(x)=0$이다. ($f(2)$의 값은 정의되지 않아도 극한값은 존재한다.)\n$g(x)$: 좌극한은 $1$, 우극한은 $2$로 서로 다르므로 $\\lim_{x\\to 2}g(x)$는 존재하지 않는다.\nㄱ. $f(x)+g(x)$: 좌극한 $0+1=1$, 우극한 $0+2=2$로 다르므로 극한값이 존재하지 않는다.\nㄴ. $f(x)-g(x)$: 좌극한 $0-1=-1$, 우극한 $0-2=-2$로 다르므로 극한값이 존재하지 않는다.\nㄷ. $f(x)g(x)$: 좌극한 $0\\times 1=0$, 우극한 $0\\times 2=0$으로 같으므로 극한값이 존재한다. ($0$)\nㄹ. $\\frac{f(x)}{g(x)}$: $g(x)$는 $x=2$ 근처에서 $0$이 아니므로 좌극한 $\\frac{0}{1}=0$, 우극한 $\\frac{0}{2}=0$으로 같으므로 극한값이 존재한다. ($0$)\n따라서 극한값이 존재하는 것은 ㄷ, ㄹ이다."
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 2} \\frac{x-2}{x^2-x-2}$\n⑵ $\\lim_{x \\to 9} \\frac{x-9}{\\sqrt{x}-3}$\n⑶ $\\lim_{x \\to -2} (x+2)\\left( 1-\\frac{3}{x+2} \\right)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{1}{3}$\n⑵ $6$\n⑶ $-3$",
+    "solution": "⑴ $x^2-x-2=(x-2)(x+1)$이므로\n$$\\lim_{x\\to 2}\\frac{x-2}{(x-2)(x+1)}=\\lim_{x\\to 2}\\frac{1}{x+1}=\\frac{1}{3}$$\n⑵ $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$이므로\n$$\\lim_{x\\to 9}\\frac{x-9}{\\sqrt{x}-3}=\\lim_{x\\to 9}(\\sqrt{x}+3)=3+3=6$$\n⑶ $(x+2)\\left(1-\\frac{3}{x+2}\\right)=(x+2)-3=x-1$이므로\n$$\\lim_{x\\to -2}(x-1)=-3$$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to -\\infty} \\frac{x-1}{|x|+3}$\n⑵ $\\lim_{x \\to \\infty} \\frac{3x+1}{\\sqrt{x^2+1}-2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-1$\n⑵ $3$",
+    "solution": "⑴ $x\\to-\\infty$이면 $x<0$이므로 $|x|=-x$이다.\n$$\\lim_{x\\to-\\infty}\\frac{x-1}{-x+3}$$\n분모, 분자를 $x$로 나누면\n$$=\\lim_{x\\to-\\infty}\\frac{1-\\frac{1}{x}}{-1+\\frac{3}{x}}=\\frac{1}{-1}=-1$$\n⑵ $x\\to\\infty$이면 $x>0$이므로 분모, 분자를 $x$로 나누면 $\\frac{\\sqrt{x^2+1}}{x}=\\sqrt{1+\\frac{1}{x^2}}$이므로\n$$\\lim_{x\\to\\infty}\\frac{3+\\frac{1}{x}}{\\sqrt{1+\\frac{1}{x^2}}-\\frac{2}{x}}=\\frac{3}{1}=3$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to \\infty} (\\sqrt{x^2+ax+4}-\\sqrt{x^2+x+2})=5$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "분자를 유리화하면\n$$\\sqrt{x^2+ax+4}-\\sqrt{x^2+x+2}=\\frac{(x^2+ax+4)-(x^2+x+2)}{\\sqrt{x^2+ax+4}+\\sqrt{x^2+x+2}}=\\frac{(a-1)x+2}{\\sqrt{x^2+ax+4}+\\sqrt{x^2+x+2}}$$\n분모, 분자를 $x$로 나누면 ($x\\to\\infty$이므로 $x>0$)\n$$\\lim_{x\\to\\infty}\\frac{(a-1)+\\frac{2}{x}}{\\sqrt{1+\\frac{a}{x}+\\frac{4}{x^2}}+\\sqrt{1+\\frac{1}{x}+\\frac{2}{x^2}}}=\\frac{a-1}{2}$$\n$\\frac{a-1}{2}=5$이므로 $a=11$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$에 대하여 $\\lim_{x \\to \\infty} \\frac{f(x)}{x}$의 값이 존재할 때, 극한값 $\\lim_{x \\to \\infty} \\frac{3x^2+2f(x)}{x^2-f(x)}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$\\lim_{x\\to\\infty}\\frac{f(x)}{x}=L$ ($L$은 실수)이라 하면\n$$\\lim_{x\\to\\infty}\\frac{f(x)}{x^2}=\\lim_{x\\to\\infty}\\left\\{\\frac{f(x)}{x}\\times\\frac{1}{x}\\right\\}=L\\times 0=0$$\n분모, 분자를 $x^2$으로 나누면\n$$\\lim_{x\\to\\infty}\\frac{3x^2+2f(x)}{x^2-f(x)}=\\lim_{x\\to\\infty}\\frac{3+2\\times\\frac{f(x)}{x^2}}{1-\\frac{f(x)}{x^2}}=\\frac{3+0}{1-0}=3$$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 성립하도록 하는 실수 $a, b$의 값을 구하시오.\n⑴ $\\lim_{x \\to 1} \\frac{ax^2+bx-1}{x-1}=2$\n⑵ $\\lim_{x \\to 4} \\frac{ax+b}{\\sqrt{x+1}-\\sqrt{5}}=\\sqrt{5}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=1,\\ b=0$\n⑵ $a=\\frac{1}{2},\\ b=-2$",
+    "solution": "⑴ $x\\to 1$일 때 (분모)$\\to 0$이고 극한값이 존재하므로 (분자)$\\to 0$이어야 한다. $a+b-1=0$에서 $b=1-a$이다.\n$$ax^2+bx-1=ax^2+(1-a)x-1=(x-1)(ax+1)$$\n$$\\lim_{x\\to 1}\\frac{(x-1)(ax+1)}{x-1}=\\lim_{x\\to 1}(ax+1)=a+1=2$$\n이므로 $a=1$, $b=0$\n⑵ $x\\to 4$일 때 (분모)$\\to\\sqrt{5}-\\sqrt{5}=0$이므로 (분자)$\\to 0$이어야 한다. $4a+b=0$에서 $b=-4a$이다.\n$$\\frac{ax-4a}{\\sqrt{x+1}-\\sqrt{5}}=\\frac{a(x-4)(\\sqrt{x+1}+\\sqrt{5})}{(x+1)-5}=a(\\sqrt{x+1}+\\sqrt{5})$$\n$$\\lim_{x\\to 4}a(\\sqrt{x+1}+\\sqrt{5})=2\\sqrt{5}a=\\sqrt{5}$$\n이므로 $a=\\frac{1}{2}$, $b=-2$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 모든 양의 실수 $x$에 대하여\n$2x^2-x < (x+1)f(x) < 2x^2+x$\n를 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} \\frac{\\{f(x)\\}^2}{2x^2-x+1}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "$x>0$에서 $x+1>0$이므로 각 변을 $x+1$로 나누면\n$$\\frac{2x^2-x}{x+1}<f(x)<\\frac{2x^2+x}{x+1}$$\n각 변을 $x$로 나누고 $x\\to\\infty$로 보내면\n$$\\lim_{x\\to\\infty}\\frac{2x-1}{x+1}=2,\\qquad \\lim_{x\\to\\infty}\\frac{2x+1}{x+1}=2$$\n이므로 함수의 극한의 대소 관계(샌드위치 정리)에 의하여 $\\lim_{x\\to\\infty}\\frac{f(x)}{x}=2$이다. ($x$가 충분히 크면 $f(x)>0$이다.)\n$$\\lim_{x\\to\\infty}\\frac{\\{f(x)\\}^2}{2x^2-x+1}=\\lim_{x\\to\\infty}\\frac{\\left\\{\\frac{f(x)}{x}\\right\\}^2}{2-\\frac{1}{x}+\\frac{1}{x^2}}=\\frac{2^2}{2}=2$$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 두 점 $\\mathrm{A}(0, t)\\,(t > 0)$, $\\mathrm{B}(-1, 0)$을 지나는 직선과 원 $x^2+y^2=1$의 교점 중에서 $\\mathrm{B}$가 아닌 점을 $\\mathrm{P}$라고 하자. 점 $\\mathrm{P}$에서 $x$축에 내린 수선의 발을 $\\mathrm{H}$라고 할 때, 극한값 $\\lim_{t \\to \\infty} (\\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{PH}})$를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "직선 $\\mathrm{AB}$는 $\\mathrm{B}(-1,\\ 0)$과 $\\mathrm{A}(0,\\ t)$를 지나므로 $y=t(x+1)$이다.\n이를 원 $x^2+y^2=1$에 대입하면 $x^2+t^2(x+1)^2=1$이므로\n$$(x+1)(x-1)+t^2(x+1)^2=(x+1)\\{(x-1)+t^2(x+1)\\}=0$$\n$\\mathrm{B}$가 아닌 교점 $\\mathrm{P}$는 $x\\ne -1$이므로 $(1+t^2)x=1-t^2$에서\n$$x_{\\mathrm{P}}=\\frac{1-t^2}{1+t^2},\\qquad y_{\\mathrm{P}}=t(x_{\\mathrm{P}}+1)=\\frac{2t}{1+t^2}$$\n$\\overline{\\mathrm{OA}}=t$, $\\overline{\\mathrm{PH}}=y_{\\mathrm{P}}=\\frac{2t}{1+t^2}$이므로\n$$\\lim_{t\\to\\infty}\\left(t\\times\\frac{2t}{1+t^2}\\right)=\\lim_{t\\to\\infty}\\frac{2t^2}{1+t^2}=\\lim_{t\\to\\infty}\\frac{2}{\\frac{1}{t^2}+1}=2$$"
   },
   {
     "id": 14,
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $g(x)$에 대하여 $\\lim_{x \\to 2} \\frac{g(x)-x^2}{x-2}$의 값이 존재하고, 다항함수 $f(x)$가\n$f(x)+(x-2)^2=(x-2)g(x)$\n를 만족시킬 때, 극한값 $\\lim_{x \\to 2} \\frac{f(x)g(x)}{x^2-4}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "$\\lim_{x\\to 2}\\frac{g(x)-x^2}{x-2}$의 값이 존재하고 분모가 $0$으로 가므로 분자도 $0$으로 가야 한다. $g$는 다항함수이므로 연속이어서 $g(2)-4=0$, 즉 $g(2)=4$이다.\n$f(x)+(x-2)^2=(x-2)g(x)$에서\n$$f(x)=(x-2)g(x)-(x-2)^2=(x-2)\\{g(x)-x+2\\}$$\n$x^2-4=(x-2)(x+2)$이므로\n$$\\lim_{x\\to 2}\\frac{f(x)g(x)}{x^2-4}=\\lim_{x\\to 2}\\frac{(x-2)\\{g(x)-x+2\\}g(x)}{(x-2)(x+2)}=\\lim_{x\\to 2}\\frac{\\{g(x)-x+2\\}g(x)}{x+2}$$\n$$=\\frac{(4-2+2)\\times 4}{4}=4$$"
   }
 ];

@@ -645,10 +645,10 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
   | 화면 | 진입 | 12초 뒤 | 가장 큰 파일 3개 / 비고 |
   | --- | --- | --- | --- |
-  | 홈 `workspace.html?view=home` | 1.8초 | 60개·7.9MB | 조각 `m3` 1.32·`high1-common-s2` 1.00·`-s1` 0.98MB (홈 워밍업이 한가할 때 조각 전부를 미리 받는다, 의도된 동작) |
-  | 학교별 기출 `view=find` | 1.8초 | 60개·7.9MB | 같음 (워밍업) |
+  | 홈 `workspace.html?view=home`·학교별 기출 `view=find` | 0.5초 | 48개·0.74MB | 색인·공통 `common.json` 0.22·시험지 목록 0.05MB (이 표의 첫 판은 이 PC에 시험지 목록 `exam-list-v1.json`이 없는 상태로 재서 조각 전부 7.9MB로 잘못 적었다: 목록은 릴리스 빌드가 만들고 로컬은 `node tools/lib/build-exam-list.mjs --write`로 만든다. 5단계에서 바로잡음) |
   | 문제지 만들기 `view=compose` | 1.2초, 52개·3.0MB | 같음 | 고1 조각 3개, 학년을 바꾸면 모자란 것만 더 받는다 |
-  | 출제 내역 `view=recent`·자료 점검 `view=health`·보관함 `view=saved`·빠른 평가 `view=five-minute` | 화면은 즉시(45개·0.04MB) | 59~60개·7.9MB | 조각 전부 (이 화면들은 모든 학년의 목록을 읽는다, 2-4) |
+  | 출제 내역·보관함·빠른 평가 | (5단계 전) 화면은 즉시, 12초 안에 조각 전부 59~60개·8.6MB | 5단계 절 참고 | |
+  | 자료 점검 `view=health` | 화면은 즉시 | 59개·8.6MB | 조각 전부 (전 학년 문항을 세는 점검 화면, 아래 5단계에서도 그대로) |
   | 단원별 기출 `unit-past-exams.html` | 24개·0.25MB | 학년 단추를 누르면 +1.2~2.7MB | 2-3 |
   | **문제은행 검색 (전)** | 4.1초, 636개·20.2MB | 641개·21.3MB | `archive2-catalog.json` 7.66·`runtime/middle-geometry-v1.json` 0.99·`compiled/taxonomy_registry.json` 0.84MB |
   | **문제은행 검색 (후)** | 0.1초, 16개·0.15MB | 범위를 고르면 아래 | 중1 0.5초 19개·1.3MB(12초 뒤 24개·2.5MB), 고1 공통 0.8초 21개·3.0MB(26개·4.2MB), 전체 1.6초 29개·7.9MB(34개·9.0MB). 폰 390: 0.1 / 0.5 / 0.7 / 1.6초로 같은 수준 |
@@ -661,8 +661,56 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
   | `progress.html`·`note-sheet.html` | 2~10개·0.02MB | | |
 
   Slow 4G(PC·폰 같음): 문제은행 검색 첫 결과 전 115초 → 입구 1.6초, 중1 10초, 고1 공통 19초, 전체 45초. 원자료·스크립트: `D:\AI_WS\tmp\shards-bank-search\`(커밋하지 않음).
-- **원본 열기가 75MB를 기다리나(조사만, 고치지 않음):** 일반 열기(`mode=exam|sol|ans`)는 기다리지 않는다. `engine.html`의 `engine-metadata-gate`가 `submitQr=1`·`osqr=1`(반 출제 등록 주소: 출제 흐름이 자동으로 붙인다)일 때만 `question-meta.js`를 불러 승인 메타 사본을 받고(`question-metadata-browser-v1.json`, 압축 약 4MB; 없으면 `question_metadata.json` 75~90MB 전체) 첫 문항을 그리기 전에 그것을 기다린다. 그때 읽는 것은 문항마다 `standardUnitKey`·`standardUnit`·`standardCourse` 셋뿐이다(`registerBlueprintToOS`가 서버에 보내는 `items`, 그리고 `screen-runtime-adapter.js`의 `businessData` 투영 `['id','standardUnitKey','standardUnit','standardCourse']`). **설계(후속):** 조각 레코드는 이 값이 비어 있거나 사본과 다르고(카탈로그 값은 약 5,000문항에서 다르다) `unit` 부분에도 `standardCourse`가 없으니, 값은 사본의 같은 행에서 가져와야 같은 등록이 된다. 그래서 빌더가 사본에서 그 셋만 **시험지 하나 단위**(문항 20~30개 × 3열 ≈ 수 KB)로 떼어 `exam-meta/<sha256(시험 파일)>.json`으로 싣고(옛 `archive/tools/build-archive2-shards.mjs`가 같은 목적의 조각을 이미 만드는 1단계 도구이고 아직 아무 화면도 안 읽는다: 재사용 후보), 엔진은 등록 주소에서 `question-meta.js` 대신 그 한 파일을 받아 `mergeArchiveQuestionMetadata`와 같은 규칙(원본 값이 비었을 때만 채움)으로 합친다. 등록 주소가 아니면 지금처럼 아무것도 받지 않는다. 엔진 파일은 다른 작업과 겹쳐 이번엔 손대지 않았다.
+- **원본 열기(반 출제 등록 주소)가 받던 승인 메타 사본은 시험지 하나 분량으로 줄였다:** 아래 "원본 열기" 절.
 - **새 화면을 넣을 때:** 전체 묶음을 받는 옛 화면이 남은 것은 `mixer.html` 하나다(위). 새 화면은 이 단계들처럼 ① 색인만 받고 ② 필요한 범위의 조각만(`createLoader`·`assembleCatalog`), ③ `?shards=0`·조각 없음·STALE이면 전체 묶음, ④ 결과 동일을 같은 실행에서 양쪽을 계산해 비교하는 테스트로 지킨다.
+
+## 문항 목록 조각 5단계: 출제 내역·보관함·빠른 평가는 조각 전부를 미리 받지 않는다 (2026-11-24)
+
+- **무엇을:** 이 세 화면은 화면이 즉시 뜬 뒤 12초 안에 조각 전부(59~60개·8.6MB)를 백그라운드로 받았다(boot 끝의 `ensureCatalog()`와 `renderContent`의 "카탈로그가 없는 화면" 줄). 홈·학교별 기출은 이미 시험지 목록만으로 열린다(0.74MB): 앞 표의 첫 판이 이 PC에 시험지 목록(`exam-list-v1.json`, 릴리스 빌드가 만들고 로컬은 `node tools/lib/build-exam-list.mjs --write`)이 없는 상태로 재서 홈 워밍업이 7.9MB를 받는 것처럼 보였다. 홈 워밍업은 색인·공통(0.22MB)만 받고, 데이터 절약·느린 망·휴대폰·작은 메모리·숨은 탭에서는 그것도 안 한다(`Boot.warmBlocked`).
+- **출제 내역:** 학년·과목 표시에 쓰는 시험 조회를 카탈로그가 아니라 시험지 목록(`state.light.exams` = 카탈로그 `exams`와 같은 행)으로 한다(`startRecentLight`, `loadRecent`·`refreshRecentRowsFromCatalog`의 `state.catalog?.exams || state.light?.exams`). 목록을 못 받으면 예전처럼 카탈로그를 시작한다. 이 화면의 단추는 `CATALOG_FREE_ACTIONS`(상태·출력·PDF·저장본 열기 등)가 아니면 `deferUntilCatalog`로 눌렀을 때 받는다.
+- **보관함:** `archive2-library.js`가 "카탈로그를 일부러 안 쓰는" 화면이라 boot가 아무것도 시작하지 않는다(저장본 보기·출제·출력은 `CATALOG_FREE_ACTIONS`). 조각이 사이트에 없으면(`prefetchShards()`가 거짓) 예전처럼 전체 묶음.
+- **빠른 평가(5분 테스트·소단원·단원·월말·진단):** `shardNeed`가 문제지 만들기와 같은 "고른 학년의 조각만" 규칙을 쓰되 학년은 `quickState.grade`다. 고르기 전에는 필요한 것이 없다(예전엔 전부). 학년 단추를 누르면 그 학년 조각만 더 받는다.
+- **다음 걸음 미리 받기:** 출제 내역·보관함이 열린 뒤 `Boot.warmBlocked()`가 아니면(Wi-Fi PC) 2초 뒤 문제지 만들기 기본 학년(고1)의 조각 파일만 로더에 받아 둔다(`prefetchComposeShards`: 카탈로그·화면은 건드리지 않아 부분 카탈로그로 다른 단추가 막히는 일이 없다). 휴대폰·데이터 절약·느린 망은 누를 때 받는다. 끄려면 `.then(... else prefetchComposeShards())`의 호출을 뺀다.
+- **끄는 법·실패:** `?shards=0`이면 전과 같이 전체 묶음(이 변경은 `shardsOn()`일 때만). 조각 색인이 없으면 전체 묶음, 시험지 목록이 없으면 출제 내역이 카탈로그를 시작, 조각 연결 실패는 빠른 평가·문제지 만들기의 기존 안내 + "다시 시도"(Chrome에서 세 갈래 모두 확인).
+- **전후 (이 PC, 로컬 정적 서버·gzip·캐시 끔·첫 방문, 화면이 뜬 뒤 12초까지 요청·전송):**
+
+  | 화면 | 전 | 후 PC(Wi-Fi) | 후 폰·데이터 절약 |
+  | --- | --- | --- | --- |
+  | 출제 내역 | 59개·8.6MB | 53개·3.35MB (고1 조각 미리) | 48개·0.74MB |
+  | 보관함 | 59개·8.6MB | 52개·3.3MB (고1 조각 미리) | 47개·0.69MB |
+  | 빠른 평가(5분 테스트 등) | 첫 조작 2.6초, 60개·8.6MB | 0.5초, 49개·0.71MB (학년을 누르면 그 학년만) | 같음 |
+  | 자료 점검 | 59개·8.6MB | 변화 없음 | 전 학년 문항을 세는 점검 화면이라 조각 전부가 필요 |
+
+- **클릭 뒤 기다림 (화면이 뜬 3초 뒤에 누름, 전 → 후):** 아래는 "다음 화면이 쓸 수 있을 때까지".
+
+  | 흐름 | PC 빠른 망 | 폰 빠른 망 | PC Slow 4G | 폰 Slow 4G |
+  | --- | --- | --- | --- | --- |
+  | 출제 내역 → 문제지 만들기 | 0.04 → 0.55초 | 0.02 → 0.9초 | 42 → 15초 | 42 → 15초 |
+  | 보관함 → 문제지 만들기 | 0.04 → 0.46초 | 0.04 → 1.1초 | 42 → 15초 | 42 → 15초 |
+  | 빠른 평가에서 고1 누르기 | 0.03 → 0.7초 | 0.04 → 0.8초 | 0.03 → 14초 | 0.04 → 15초 |
+  | (빠른 평가가 쓸 수 있게 되는 때) | 2.6 → 0.5초 | 2.7 → 0.5초 | 50 → 6.8초 | 49 → 6.2초 |
+
+  "전"의 짧은 값은 그 8.6MB를 이미 다 받은 뒤라서이고, 받는 중에 누르면(Slow 4G) 42초를 기다렸다. 후는 눌러야 하는 고1 조각(2.6MB)만 받는다. 빠른 망에서 눌렀을 때 0.5~1초가 새로 생긴 것이 이 변경의 값이다(Wi-Fi PC는 미리 받아 둬서 네트워크 없이 이 시간이다). 원자료·스크립트: `D:\AI_WS\tmp\shards-bank-search\`(flow.mjs·light.mjs·fail2.mjs).
+- **결과 동일:** 출제 내역: 시험지 1,284개마다 출제 한 건을 만든 가짜 응답(Chrome에서 Fetch로 로컬 응답, 운영 요청 없음)에 대해 `recentRows`(id·제목·학년·과목 키·과목 라벨·대상 학년·반)가 `?shards=0`과 1,284개 모두 같다. 빠른 평가: 4개 화면(5분 테스트·소단원·단원·월말) × 6개 학년의 화면 본문(단원 목록·문항 수 문구)이 `?shards=0`과 24쪽 모두 같다. 테스트: `tests/archive2-exam-list.test.js`(시험지 목록 행과 카탈로그 행이 같은 `normalizeAssignments` 결과, 위 구조 단언).
+- **하지 않은 것(후속 후보):** 자료 점검(관리자 점검), 출제 내역의 파생·다시 출제 단추(눌렀을 때 조각 전부, 대상 시험지의 조각만으로 줄일 수 있음), 원본 열기의 `exam-meta` 한 파일 설계(앞 4단계 절).
+
+## 원본 열기(반 출제 등록 주소)는 시험지 하나의 승인 메타만 받는다 (2026-11-24, 4MB → 13KB)
+
+- **왜:** `engine.html?data=exams/<파일>&mode=…&submitQr=1`(출제 흐름이 자동으로 붙이는 반 출제 등록 주소, `osqr=1` 포함)은 `question-meta.js`로 승인 메타 사본(`question-metadata-browser-v1.json`, 압축 약 4.2MB; 사본이 없으면 `question_metadata.json` 75~90MB)을 통째로 받고 첫 문항을 그리기 전에 기다렸다. 그 창이 읽는 것은 문항마다 `standardUnitKey`·`standardUnit`·`standardCourse` 셋(`registerBlueprintToOS`가 서버에 보내는 값)뿐이다. 학생 주소(`submitQr=0`)와 일반 열기는 처음부터 아무것도 받지 않는다(측정: 요청 0건).
+- **무엇:** 빌더(`tools/lib/build-archive2-catalog-shards.mjs` → `tools/lib/build-archive2-exam-meta-part.mjs`)가 사이드카에서 **시험지 하나의 레코드**를 `archive/data/archive2-catalog-shards-v1/exam-meta/<키>.json`으로 싣는다(1,285개, 압축 중앙 2.6KB·최대 7.6KB, 사이트 +28.5MB 원본/+3.5MB 압축). 키는 `sha256(question-meta.js의 sourceFile()로 정규화한 시험 파일 이름).hex.slice(0,32)`라 브라우저가 목록 없이 계산한다. 파일 내용은 화면용 사본의 그 시험지 레코드와 같은 필드·값·순서(`BROWSER_RECORD_FIELDS`)이고, `indexVersion`(색인의 릴리스 식별)·`sourceArchiveFile`을 달고 있다. 카탈로그의 모든 시험지가 파일을 갖는다(메타가 없으면 빈 레코드 = "없음"도 답이다). 로컬에 사이드카가 없으면 만들지 않는다.
+- **읽는 쪽:** `engine.html`의 `engine-metadata-gate`가 등록 주소에서만 `window.__ARCHIVE_METADATA_EXAM__`에 `data` 값을 넣고, `question-meta.js`가 그 시험지의 파일과 `index.json`을 함께 받아(색인은 `no-cache`) 릴리스·시험지가 맞으면 그 레코드로 같은 조회표를 만든다. 병합 규칙(원본 값이 비었을 때만 채움)은 손대지 않았다. **파일이 없거나(404)·색인이 `examMeta`를 안 알리거나·릴리스가 다르거나·시험지가 다르거나·`crypto.subtle`이 없거나·8초 안에 안 오면 조용히 예전 사본 길(사본 → 전체 사이드카)로 대체한다.** 훅이 없는 화면(단원별 기출·mixer·혼합 출력)은 그대로다.
+- **끄기·확인:** 등록 주소에서 `window.__ARCHIVE_METADATA_EXAM__`을 안 넣으면(게이트 한 줄) 예전 동작이다. `question-meta.js`는 생성 파일이라 `build-approved-question-metadata-v1.mjs`의 같은 부분이 같이 바뀌었다(테스트가 비교). `?v=`는 `engine.html`·`mixer.html`·`unit-past-exams.html`의 `question-meta.js?v=archive-metadata-v1-exam-meta-1`로 올렸다(`output-metadata-loader.js`·`unit-past-exams.js` 안의 상수는 예전 값 그대로: 그 화면들은 훅이 없어 달라지는 것이 없다).
+- **효과(`19_금당고_1학기_중간_고1_기출`, 헤드리스 Chrome·캐시 끔, 첫 문항 본문이 화면에 그려진 시각 중앙값):**
+
+  | 환경 | 전(사본 4.18MB) | 후(시험지 파일 2.6KB + 색인 10.7KB) |
+  | --- | --- | --- |
+  | PC 빠른 망(3회) | 1.70초 | 1.44초 |
+  | 폰 390 + Slow 4G(2회) | 46.7초 | 25.6초 |
+  | 메타 전송 | 4,196KB | 28KB(질문 메타 스크립트 포함) |
+
+  Slow 4G에 남은 25초는 창 자체(MathJax·글꼴·엔진, 약 4.4MB)이고 학생 주소·일반 열기도 같다(25.3초·27.1초, 메타 요청 0건). 같은 시험지·대체 길 5가지(사본만/파일 404/릴리스 불일치/8초 멈춤)에서 실제 `exam-blueprints` POST 본문의 `items`(standard_unit_key·standard_unit·standard_course)가 전과 문항별로 같음을 Chrome에서 확인했다(고1 일반 22문항, 고2 확통 20문항 20/20 단원 키 채워짐, 중등 24문항 0/24 전부 동일). 파일이 멈추는 경우만 8초를 기다린 뒤 사본 길로 간다.
+- **같음을 지키는 테스트:** `tests/question-metadata-browser.test.js`가 같은 실행에서 모든 시험지에 대해 ① 시험지 파일의 레코드 = 사본의 그 시험지 레코드, ② 두 길로 만든 `mergeArchiveQuestionMetadata` 결과가 모든 순번(+1)·빈 문항/값이 이미 있는 문항 모두 같음을 비교하고, 대체 조건 7가지와 "훅이 없으면 사본만 읽음"을 본다(기대값 고정 없음). `tests/archive-engine-original-metadata-on-demand.test.js`는 게이트가 등록 주소에서만 훅을 세우는지, `tests/archive2-catalog-shards.test.js`는 `exam-meta/` 폴더가 색인이 알린 개수와 같은지 본다.
+- **죽은 도구:** 옛 1단계 도구 `archive/tools/build-archive2-shards.mjs`(자기 테스트 `tests/archive2-shards-builder.test.mjs`와 문서에서만 쓰임)의 시험지 메타 조각은 쓰이지 않는다. 이번 파일은 새 빌더 한 곳에서 만든다. 정리 후보이며 이번엔 두었다.
 
 ## 학생 화면에서 그림 눌러서 크게 보기 (2026-11-24 원장님 결정)
 

@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-2x-8",
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2"
+      ],
+      "y": [
+        "-4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "C",
+        "x": 1,
+        "y": -9
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-8"
+        }
+      ]
+    }
+  },
+  "caption": "아래로 볼록한 이차함수 그래프가 x축의 양의 부분과 만나는 점 A, y축과 만나는 점 B, 꼭짓점 C를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선이 그려져 있고, 꼭짓점 C는 제4사분면에, 점 A는 x축의 양의 부분에, 점 B는 y축의 음의 부분에 표시되어 있다.",
+  "newVisualInformation": [
+    "x축의 양의 부분과 만나는 점 A",
+    "y축과 만나는 점 B",
+    "제4사분면의 꼭짓점 C"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 이차함수 $y = x^2 - 2x - 8$의 그래프이다. 이 그래프의 꼭짓점을 $\\text{C}$, 포물선이 $x$축의 양의 부분과 만나는 점을 $\\text{A}$라 하고 $y$축과 만나는 점을 $\\text{B}$라 할 때 $\\triangle\\text{ABC}$의 넓이를 구하면? (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

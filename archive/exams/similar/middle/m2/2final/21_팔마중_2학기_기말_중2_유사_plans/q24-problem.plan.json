@@ -1,0 +1,131 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      7
+    ],
+    "viewport": [
+      -3,
+      8,
+      -8,
+      8
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "6"
+      ],
+      "y": [
+        "1",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "X",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SE"
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-2"
+        },
+        {
+          "id": "K1",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "K2",
+          "x": "6",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "K3",
+          "x": "6",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "K4",
+          "x": "1",
+          "y": "6",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "names": [
+        {
+          "id": "nl",
+          "text": "l",
+          "labelKind": "MATH",
+          "curveX": "5"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cP",
+          "point": "P",
+          "text": "(x, y)",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면에 x절편이 3이고 y절편이 -6인 직선 l이 그려져 있고, 그 위에 점 (x, y)가 표시되어 있다. 주사위 눈의 범위 1 이상 6 이하를 나타내는 사각형도 함께 그려져 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 두 점 (3, 0)과 (0, -6)을 지나는 직선 l이 있고, 직선 위의 한 점에 (x, y)라는 이름이 붙어 있다. x와 y가 1 이상 6 이하인 범위를 나타내는 사각형이 옅게 칠해져 있다.",
+  "newVisualInformation": [
+    "x절편 3, y절편 -6인 직선 l",
+    "직선 위의 점 (x, y)",
+    "주사위 눈의 범위 1 이상 6 이하를 나타내는 사각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 $x$절편이 $3$이고 $y$절편이 $-6$인 직선 $l$이 있다. 한 개의 주사위를 두 번 던져서 첫 번째 나온 눈의 수를 $x$, 두 번째 나온 눈의 수를 $y$라 할 때, 다음 물음에 답하시오. [6점]  \n(1) 직선 $l$의 방정식을 구하는 풀이 과정과 답을 쓰시오. [2점]  \n(2) 점 $(x, y)$가 직선 $l$ 위에 있는 순서쌍 $(x, y)$를 모두 구하시오. [2점]  \n(3) 점 $(x, y)$가 직선 $l$ 위에 있을 확률을 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

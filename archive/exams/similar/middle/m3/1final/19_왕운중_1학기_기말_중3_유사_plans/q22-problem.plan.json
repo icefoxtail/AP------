@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x",
+    "domain": [
+      -1,
+      10
+    ],
+    "viewport": [
+      -1,
+      10,
+      -1,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "8",
+          "y": "16",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "5",
+          "y": "10"
+        },
+        {
+          "id": "C",
+          "x": "8",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "8",
+          "y": "10"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R"
+        }
+      ],
+      "lines": [
+        {
+          "id": "xa",
+          "slope": "0",
+          "intercept": "0",
+          "label": "x",
+          "labelAt": "END"
+        },
+        {
+          "id": "ya",
+          "x": "0",
+          "label": "y",
+          "labelAt": "END"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "P": "P",
+    "C": "C",
+    "Q": "Q",
+    "R": "R"
+  },
+  "caption": "오른쪽 그림과 같이 일차함수 y=2x의 그래프 위에 두 점 A, P가 있다. 두 점 A, P에서 x축에 내린 수선의 발을 각각 C, Q라 하고, 점 P에서 선분 AC에 내린 수선의 발을 R라 하며, 점 A의 좌표는 (8, 16)이고 삼각형 APR의 넓이는 9이다.",
+  "accessibilityDescription": "좌표평면에 원점을 지나 오른쪽 위로 뻗는 직선 y=2x가 그려져 있다. 직선 위의 점 A(8, 16)와 점 P, x축 위의 두 점 C, Q, 선분 AC 위의 점 R, 그리고 선분 AC, PQ, PR이 보인다.",
+  "newVisualInformation": [
+    "일차함수 y=2x의 그래프와 그 위의 두 점 A, P",
+    "점 A의 좌표 (8, 16)",
+    "x축 위의 수선의 발 C, Q와 선분 AC 위의 점 R",
+    "선분 AC, PQ, PR"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y = 2x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라 하자. 점 $\\mathrm{A}$의 좌표가 $(8, 16)$일 때, 다음 물음에 답하시오. [총 6점]\n\n(1) $\\triangle\\mathrm{APR}$의 넓이가 $9$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]\n\n(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

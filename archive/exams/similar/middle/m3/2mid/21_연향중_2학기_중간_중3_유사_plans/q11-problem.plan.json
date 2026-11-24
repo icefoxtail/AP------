@@ -1,0 +1,192 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "T",
+    "O",
+    "O2"
+  ],
+  "hiddenPointNames": [
+    "O2"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "BOTH"
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 520
+  },
+  "caption": "두 원 O, O′가 점 T에서 외접하고, 직선 AB는 두 원의 공통인 접선이며 두 점 A, B는 접점이다. 점 P는 직선 AB 위의 점으로 두 원의 접점 T와 선분 PT로 이어져 있다.",
+  "accessibilityDescription": "같은 크기의 두 원이 한 점 T에서 만나고, 두 원 위쪽에 공통 접선인 직선 AB가 그어져 접점 A, B가 표시되어 있다. 직선 AB 위의 점 P에서 접점 T까지 선분이 내려와 있다.",
+  "newVisualInformation": [
+    "외접하는 두 원 O, O′와 접점 T",
+    "공통 접선 위의 접점 A, B와 직선 AB 위의 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\overleftrightarrow{\\text{AB}}$와 $\\overline{\\text{PT}}$는 외접하는 두 원 $\\text{O}$, $\\text{O}'$의 공통인 접선이고, 세 점 $\\text{A}$, $\\text{B}$, $\\text{T}$는 접점(단, $\\text{P}$는 $\\overleftrightarrow{\\text{AB}}$와 $\\overline{\\text{PT}}$의 교점)이다. <보기> 중 옳은 것을 모두 고른 것은?\n\n**<보기>** ㉠ $\\overline{\\text{PA}} = \\overline{\\text{PB}} = \\overline{\\text{PT}}$ ㉡ $\\angle\\text{ATB} = 85^\\circ$ ㉢ $\\angle\\text{PBT} = \\angle\\text{PTB}$ ㉣ $\\angle\\text{OTP} = \\angle\\text{OAP}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

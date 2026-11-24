@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      9
+    ],
+    "viewport": [
+      -3,
+      9,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 점 (0, 3)과 (6, 0)을 지나는 일차함수의 그래프를 좌표평면에 나타낸 것이다.",
+  "accessibilityDescription": "좌표평면에 점 (0, 3)에서 y축과 만나고 점 (6, 0)에서 x축과 만나는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선이 두 점 (0, 3), (6, 0)을 지난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(0, 3)$과 $(6, 0)$을 지나는 일차함수의 그래프에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

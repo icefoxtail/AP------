@@ -71,8 +71,22 @@ node tools/ci/archive-registration-build-db.mjs > "$work/build-before.log" 2>&1
 stage auto-register-write
 node archive/tools/meta-foundation/auto-register-merged-source.mjs --write --report "$report" "${retry_args[@]}"
 # Existing build can reach its manifest fixed point on the second pass.
-stage build-db-after
-node tools/ci/archive-registration-build-db.mjs > "$work/build-after.log" 2>&1
+# When nothing was registered, the write step changed only state.json (not a build input) and the first build left every other
+# file as it was, a second build would see exactly the same inputs and write exactly the same bytes: skip it (about 6 minutes).
+# Anything else (a registered UID, any other changed or new file) takes the second build as before.
+skip_second_build=$(node --input-type=module -e "
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';
+const report=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));
+const lines=(...a)=>execFileSync('git',a,{encoding:'utf8',maxBuffer:1<<28}).split('\n').filter(Boolean);
+const state='.archive-meta-register/auto/state.json';
+const changed=[...lines('diff','--name-only'),...lines('ls-files','--others','--exclude-standard')];
+process.stdout.write(String(report.applied===0&&Array.isArray(report.plannedPaths)&&report.plannedPaths.every(p=>p===state)&&changed.every(p=>p===state)));" "$report") || skip_second_build=false  # 판정이 실패하면 생략하지 않는다(예전 동작)
+if [[ "$skip_second_build" == true ]]; then
+  echo 'SECOND_BUILD_SKIPPED: nothing was registered and the first build changed no file; a second build would write the same bytes.' | tee "$work/build-after.log"
+else
+  stage build-db-after
+  node tools/ci/archive-registration-build-db.mjs > "$work/build-after.log" 2>&1
+fi
 stage verify
 if ! node archive/tools/meta-foundation/auto-register-merged-source.mjs --verify --report "$report" > "$work/verify.json" 2> "$work/verify-error.log"; then
   stage_rc=1

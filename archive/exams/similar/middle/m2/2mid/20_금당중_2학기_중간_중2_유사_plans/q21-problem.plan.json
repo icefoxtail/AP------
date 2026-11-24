@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ic",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "ic"
+  ],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "IE",
+          "IF",
+          "ID"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "17",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "15",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vID",
+        "ownerSegment": "ID",
+        "text": "r",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC의 내심 I를 중심으로 하는 내접원과, 내접원이 세 변 AB, BC, CA와 만나는 점 D, E, F를 나타내었다. 세 변은 17 cm, 15 cm, 8 cm이고 내접원의 반지름은 r로 표시되어 있다.",
+  "accessibilityDescription": "각 C가 직각인 삼각형 ABC 안에 내접원이 있고 중심은 I이다. 내접원이 변 AB, BC, CA와 만나는 점은 각각 D, E, F이며 AB는 17 cm, BC는 15 cm, CA는 8 cm, 반지름 ID는 r로 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 세 변 17 cm, 15 cm, 8 cm, 접점 D, E, F, 내접원의 반지름 r을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $\\angle C = 90^\\circ$, $\\overline{AC} = 8\\text{ cm}$, $\\overline{BC} = 15\\text{ cm}$, $\\overline{AB} = 17\\text{ cm}$인 직각삼각형 $ABC$의 내접원 $I$가 세 변 $AB, BC, CA$와 만나는 접점을 각각 $D, E, F$라 하자. 다음은 내접원의 반지름의 길이를 구하는 과정이다. 빈칸 (1)~(5)에 알맞은 기호와 수식을 쓰시오. [6점]\n\n내접원의 반지름의 길이를 $r\\text{ cm}$라고 하자.  \n$\\overline{EC} = \\overline{FC} = r\\text{ cm}$이므로  \n$\\overline{AF} = 8 - r\\text{ cm}$, $\\overline{BE} = (\\text{ (1) })\\text{ cm}$  \n한편, $\\overline{ID} = \\overline{IE} = \\overline{IF}$이므로 $\\overline{IA}$와 $\\overline{IB}$를 각각 그으면  \n$\\triangle IBE \\equiv \\triangle IBD$ ($\\text{RHS}$ 합동), $\\triangle IAD \\equiv \\triangle IAF$ ($(\\text{ (2) })$ 합동)  \n따라서 $\\overline{AD} = 8 - r\\text{ cm}$, $\\overline{BD} = (\\text{ (3) })\\text{ cm}$이다.  \n$\\overline{AB} = \\overline{AD} + \\overline{BD}$를 $r$를 이용한 식으로 나타내면  \n$(\\text{ (4) })$와 같이 나타낼 수 있다.  \n이를 풀면 $r = (\\text{ (5) })\\text{ cm}$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

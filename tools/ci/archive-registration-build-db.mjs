@@ -18,6 +18,10 @@ export const VALIDATION_COMMANDS = [
   ['node','archive/tools/build-archive2-catalog.mjs','--check'],
   ['node','archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs','--check']
 ];
+// Variables a shell sets on its own (last command, nesting depth, previous directory): they differ between the bash scripts that
+// call this wrapper and never change what the build writes.
+const SHELL_VOLATILE_ENV = new Set(['_', 'SHLVL', 'OLDPWD']);
+export const BYTE_BOUND_IGNORED_INPUTS = ['archive/data/question_metadata.json'];
 const CACHE_FILE = 'build-db-checkpoint.json';
 const EVENTS_FILE = 'build-db-events.jsonl';
 const STATE = '.archive-meta-register/auto/writer-state.json';
@@ -98,8 +102,13 @@ export async function buildSnapshot({root, env=process.env, policyProvider=produ
   const writerOutputs=[...new Set(lanes.flatMap(l=>l.outputs)),STATE];
   const dependencies=[...new Set([...shared.inputs,...shared.outputs])];
   const ignored=splitZ(git(root,baseEnv,['ls-files','--others','--ignored','--exclude-standard','-z']));
-  assert(!ignored.some(p=>matches(p,dependencies)), 'CACHE_IGNORED_DEPENDENCY');
-  const names=[...new Set([...indexRows.map(r=>r.path),...splitZ(git(root,baseEnv,['ls-files','--others','--exclude-standard','-z']))])];
+  // An ignored file the build reads cannot be bound by Git. The one exception is the assembled question metadata: the CI step
+  // "Assemble question metadata" rebuilds it from tracked shards, and it is bound here by its raw bytes like any untracked
+  // input (it is hashed into every snapshot below, so any change to it invalidates a checkpoint). Every other ignored dependency still refuses.
+  const unboundIgnored=ignored.filter(p=>matches(p,dependencies)&&!BYTE_BOUND_IGNORED_INPUTS.includes(p));
+  assert(unboundIgnored.length===0, 'CACHE_IGNORED_DEPENDENCY');
+  const boundIgnored=ignored.filter(p=>BYTE_BOUND_IGNORED_INPUTS.includes(p)&&matches(p,dependencies));
+  const names=[...new Set([...indexRows.map(r=>r.path),...splitZ(git(root,baseEnv,['ls-files','--others','--exclude-standard','-z'])),...boundIgnored])];
   const rows=names.map(p=>worktreeRow(root,p)).filter(Boolean);
   assert(sha(git(root,baseEnv,['ls-files','--stage','-z']))===sha(indexBytes),'CACHE_INDEX_CHANGED_DURING_SNAPSHOT');
   assert(text(root,baseEnv,'rev-parse','HEAD')===head, 'CACHE_HEAD_CHANGED_DURING_SNAPSHOT');
@@ -119,7 +128,7 @@ export async function buildSnapshot({root, env=process.env, policyProvider=produ
     trackedDependencyPathsSha256:digest(indexRows.filter(r=>matches(r.path,dependencies)).map(r=>[r.path,r.mode])),
     gitReferencesSha256:sha(git(root,baseEnv,['for-each-ref','--format=%(refname)%00%(objectname)'])),
     gitConfigurationSha256:sha(git(root,baseEnv,['config','--null','--list','--show-origin'])),
-    environmentSha256:digest(env),
+    environmentSha256:digest(Object.fromEntries(Object.entries(env).filter(([k])=>!SHELL_VOLATILE_ENV.has(k)))),
     nodeExecutable:process.execPath,nodeVersion:process.version,nodeExecutableStat:executableStat(process.execPath),
     python,pythonExecutableStat:executableStat(python.executable),wrapperSha256:sha(fs.readFileSync(SELF)),
     files:rows.length

@@ -32,8 +32,8 @@ window.questionBank = [
       "$2$",
       "$4$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "선분 $\\mathrm{AB}$를 $m:n$으로 내분하는 점의 좌표는 $\\left(\\frac{mx_2+nx_1}{m+n},\\ \\frac{my_2+ny_1}{m+n}\\right)$이다.\n$\\mathrm{A}(-1,\\ 4)$, $\\mathrm{B}(a,\\ b)$에 대하여 $4:1$로 내분하는 점은\n$$\\left(\\frac{4a-1}{5},\\ \\frac{4b+4}{5}\\right)$$\n이 점이 $x$축 위에 있으므로 $y$좌표가 $0$이다. $4b+4=0$에서 $b=-1$\n$1:3$으로 내분하는 점은\n$$\\left(\\frac{a+3\\times(-1)}{4},\\ \\frac{b+3\\times 4}{4}\\right)=\\left(\\frac{a-3}{4},\\ \\frac{b+12}{4}\\right)$$\n이 점이 $y$축 위에 있으므로 $x$좌표가 $0$이다. $a-3=0$에서 $a=3$\n따라서 $a+b=3+(-1)=2$이므로 ④이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $3x-y-8=0$과 평행하고 점 $(3, -3)$을 지나는 직선이 점 $\\left(\\dfrac{2}{3}, k\\right)$를 지날 때, $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "직선 $3x-y-8=0$, 즉 $y=3x-8$의 기울기는 $3$이다.\n평행한 직선의 기울기도 $3$이므로 점 $(3,\\ -3)$을 지나는 직선은\n$$y-(-3)=3(x-3),\\quad\\text{즉}\\quad y=3x-12$$\n이 직선이 점 $\\left(\\frac{2}{3},\\ k\\right)$를 지나므로\n$$k=3\\times\\frac{2}{3}-12=2-12=-10$$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $2x-y+6=0$이 직선 $2x+ay-3=0$과 수직이고 직선 $(2-b)x+3y+1=0$과 평행할 때, 상수 $a$와 $b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$32$",
+    "solution": "직선 $2x-y+6=0$, 즉 $y=2x+6$의 기울기는 $2$이다.\n직선 $2x+ay-3=0$의 기울기는 $-\\frac{2}{a}$이고 두 직선이 수직이므로 기울기의 곱이 $-1$이다.\n$$2\\times\\left(-\\frac{2}{a}\\right)=-1$$\n이므로 $a=4$\n직선 $(2-b)x+3y+1=0$의 기울기는 $-\\frac{2-b}{3}$이고 $y=2x+6$과 평행하므로 기울기가 $2$이다.\n$$-\\frac{2-b}{3}=2$$\n에서 $2-b=-6$이므로 $b=8$\n따라서 $ab=4\\times 8=32$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $\\mathrm{A}(-2, -4)$와 $\\mathrm{B}(4, 8)$에 대하여 원점과 선분 $\\mathrm{AB}$의 수직이등분선 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{5}$",
+    "solution": "선분 $\\mathrm{AB}$의 중점은 $\\left(\\frac{-2+4}{2},\\ \\frac{-4+8}{2}\\right)=(1,\\ 2)$\n직선 $\\mathrm{AB}$의 기울기는 $\\frac{8-(-4)}{4-(-2)}=2$이므로 수직이등분선의 기울기는 $-\\frac{1}{2}$이다.\n수직이등분선은 중점 $(1,\\ 2)$를 지나므로\n$$y-2=-\\frac{1}{2}(x-1),\\quad\\text{즉}\\quad x+2y-5=0$$\n원점과 이 직선 사이의 거리는\n$$\\frac{|-5|}{\\sqrt{1^2+2^2}}=\\frac{5}{\\sqrt{5}}=\\sqrt{5}$$"
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 직선 $3x+y-2=0$과 $x-3y+6=0$이 이루는 각을 이등분하는 직선 중에서 기울기가 음수인 직선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x+2y-4=0$",
+    "solution": "두 직선이 이루는 각의 이등분선 위의 점 $(x,\\ y)$는 두 직선까지의 거리가 같다.\n$$\\frac{|3x+y-2|}{\\sqrt{3^2+1^2}}=\\frac{|x-3y+6|}{\\sqrt{1^2+(-3)^2}}$$\n분모가 $\\sqrt{10}$으로 같으므로 $|3x+y-2|=|x-3y+6|$에서\n$3x+y-2=x-3y+6$ 또는 $3x+y-2=-(x-3y+6)$\n(i) $3x+y-2=x-3y+6$이면 $2x+4y-8=0$, 즉 $x+2y-4=0$이고 기울기는 $-\\frac{1}{2}$\n(ii) $3x+y-2=-x+3y-6$이면 $4x-2y+4=0$, 즉 $y=2x+2$이고 기울기는 $2$\n기울기가 음수인 직선은 (i)이므로 $x+2y-4=0$이다."
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $(4, 5)$와 $(-2, -1)$을 지나고 중심이 $y$축 위에 있는 원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2+(y-3)^2=20$",
+    "solution": "중심이 $y$축 위에 있으므로 중심을 $(0,\\ t)$라 하자. 원이 두 점 $(4,\\ 5),\\ (-2,\\ -1)$을 지나므로 중심에서 두 점까지의 거리가 같다.\n$$4^2+(5-t)^2=(-2)^2+(-1-t)^2$$\n$16+25-10t+t^2=4+1+2t+t^2$이므로 $41-10t=5+2t$, $12t=36$에서 $t=3$\n반지름의 제곱은 $r^2=4^2+(5-3)^2=16+4=20$\n따라서 구하는 원의 방정식은 $x^2+(y-3)^2=20$"
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
       "$8$",
       "$10$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "원의 방정식을 $x^2+y^2+Ax+By+C=0$이라 하자.\n$(0,\\ 0)$을 지나므로 $C=0$\n$(4,\\ 0)$을 지나므로 $16+4A=0$에서 $A=-4$\n$(-2,\\ 6)$을 지나므로 $4+36-2A+6B=0$, $40+8+6B=0$에서 $B=-8$\n$x^2+y^2-4x-8y=0$, 즉 $(x-2)^2+(y-4)^2=20$이므로 중심은 $(2,\\ 4)$이다.\n따라서 $p+q=2+4=6$이므로 ③이다."
   },
   {
     "id": 8,
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $x^2+y^2+6x-4y+k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k<12$",
+    "solution": "$x^2+y^2+6x-4y+k+1=0$을 완전제곱식으로 고치면\n$$(x+3)^2+(y-2)^2=9+4-(k+1)=12-k$$\n원이 되려면 (반지름의 제곱) $=12-k>0$이어야 하므로 $k<12$"
   },
   {
     "id": 9,
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $2x+y-3=0$에 평행하고 원 $x^2+y^2=25$에 접하는 직선이 점 $(-\\sqrt{5}, a)$를 지날 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7\\sqrt{5}$",
+    "solution": "직선 $2x+y-3=0$과 평행한 직선은 $2x+y+c=0$ 꼴이다.\n이 직선이 원 $x^2+y^2=25$ (중심 $(0,\\ 0)$, 반지름 $5$)에 접하므로 원의 중심과 직선 사이의 거리가 반지름과 같다.\n$$\\frac{|c|}{\\sqrt{2^2+1^2}}=\\frac{|c|}{\\sqrt{5}}=5$$\n이므로 $c=\\pm 5\\sqrt{5}$\n이 직선이 점 $(-\\sqrt{5},\\ a)$를 지나므로 $-2\\sqrt{5}+a+c=0$에서 $a=2\\sqrt{5}-c$\n$c=5\\sqrt{5}$이면 $a=-3\\sqrt{5}$, $c=-5\\sqrt{5}$이면 $a=7\\sqrt{5}$\n$a$가 양수이므로 $a=7\\sqrt{5}$"
   },
   {
     "id": 10,
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "원 $x^2+y^2=r^2$ 위의 점 $(a, 4)$에서의 접선의 방정식이 $x-\\dfrac{4}{3}y+b=0$일 때, $a+3b+r$의 값을 구하시오. (단, $r>0$이고 $b$는 상수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$27$",
+    "solution": "원 $x^2+y^2=r^2$ 위의 점 $(a,\\ 4)$에서의 접선의 방정식은 $ax+4y=r^2$이고 $a^2+16=r^2$이다.\n이 접선이 $x-\\frac{4}{3}y+b=0$, 즉 양변에 $3$을 곱한 $3x-4y+3b=0$과 같으므로 $ax+4y-r^2=0$이 $3x-4y+3b=0$에 $-1$을 곱한 $-3x+4y-3b=0$과 같다.\n$a=-3$, $-r^2=-3b$이므로 $r^2=3b$\n$a^2+16=9+16=25=r^2$이므로 $r=5$ ($r>0$)\n$3b=25$에서 $b=\\frac{25}{3}$\n따라서 $a+3b+r=-3+25+5=27$"
   },
   {
     "id": 11,
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $2x+y-4=0$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동하면 직선 $2x+y-3=0$과 일치한다. 이때 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "직선 $2x+y-4=0$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동하려면 $x$ 대신 $x-2$, $y$ 대신 $y-a$를 대입한다.\n$$2(x-2)+(y-a)-4=0,\\quad\\text{즉}\\quad 2x+y-8-a=0$$\n이 직선이 $2x+y-3=0$과 일치하므로 $-8-a=-3$\n따라서 $a=-5$"
   },
   {
     "id": 12,
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "원 $(x+a)^2+(y-4)^2=4$를 $x$축의 방향으로 $-6$만큼 평행이동한 원이 $y$축에 접할 때, 상수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-4,\\ -8$",
+    "solution": "원 $(x+a)^2+(y-4)^2=4$의 중심은 $(-a,\\ 4)$, 반지름의 길이는 $2$이다.\n$x$축의 방향으로 $-6$만큼 평행이동하면 중심은 $(-a-6,\\ 4)$이다.\n이 원이 $y$축에 접하려면 중심의 $x$좌표의 절댓값이 반지름과 같아야 한다.\n$$|-a-6|=2$$\n$a+6=2$ 또는 $a+6=-2$이므로 $a=-4$ 또는 $a=-8$"
   },
   {
     "id": 13,
@@ -380,8 +380,8 @@ window.questionBank = [
       "$1$",
       "$2$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "점 $(3,\\ a)$를 직선 $y=x$에 대하여 대칭이동하면 $x$좌표와 $y$좌표가 서로 바뀌어 $(a,\\ 3)$이다.\n이 점을 $x$축에 대하여 대칭이동하면 $y$좌표의 부호가 바뀌어 $(a,\\ -3)$이다.\n$(a,\\ -3)=(2,\\ b)$이므로 $a=2,\\ b=-3$\n따라서 $a+b=2+(-3)=-1$이므로 ②이다."
   },
   {
     "id": 14,
@@ -408,8 +408,8 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $x+y-4=0$을 원점에 대하여 대칭이동한 직선이 원 $x^2+y^2+ax-4y-6=0$의 넓이를 이등분할 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "직선 $x+y-4=0$을 원점에 대하여 대칭이동하면 $x$ 대신 $-x$, $y$ 대신 $-y$를 대입하여 $-x-y-4=0$, 즉 $x+y+4=0$이다.\n이 직선이 원의 넓이를 이등분하려면 원의 중심을 지나야 한다.\n원 $x^2+y^2+ax-4y-6=0$을 정리하면\n$$\\left(x+\\frac{a}{2}\\right)^2+(y-2)^2=\\frac{a^2}{4}+10$$\n이므로 중심은 $\\left(-\\frac{a}{2},\\ 2\\right)$이다.\n중심을 $x+y+4=0$에 대입하면 $-\\frac{a}{2}+2+4=0$이므로 $a=12$"
   },
   {
     "id": 15,
@@ -436,8 +436,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 직선으로 뻗은 도로변에 $4\\,\\mathrm{km}$ 떨어진 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$로부터 각각 수직으로 $2\\,\\mathrm{km}$와 $1\\,\\mathrm{km}$ 떨어진 지점에 두 건물 $\\mathrm{C}$와 $\\mathrm{D}$가 있다. 도로변에 버스 정류장을 만들려고 할 때, 두 건물에서 버스 정류장까지의 거리의 합의 최솟값을 구하시오.\n<img src=\"q15.png\">",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5\\text{ km}$",
+    "solution": "도로를 $x$축, 점 $\\mathrm{A}$를 원점으로 하는 좌표평면을 잡으면 $\\mathrm{A}(0,\\ 0)$, $\\mathrm{B}(4,\\ 0)$, $\\mathrm{C}(0,\\ 2)$, $\\mathrm{D}(4,\\ 1)$이다.\n버스 정류장을 $\\mathrm{P}(t,\\ 0)$이라 하면 $\\overline{\\mathrm{CP}}+\\overline{\\mathrm{PD}}$의 최솟값을 구하는 문제이다.\n점 $\\mathrm{C}$를 $x$축에 대하여 대칭이동한 점을 $\\mathrm{C}'(0,\\ -2)$라 하면 $\\overline{\\mathrm{CP}}=\\overline{\\mathrm{C}'\\mathrm{P}}$이므로\n$$\\overline{\\mathrm{CP}}+\\overline{\\mathrm{PD}}=\\overline{\\mathrm{C}'\\mathrm{P}}+\\overline{\\mathrm{PD}}\\ge\\overline{\\mathrm{C}'\\mathrm{D}}$$\n(세 점 $\\mathrm{C}',\\ \\mathrm{P},\\ \\mathrm{D}$가 일직선 위에 있을 때 등호가 성립한다.)\n$$\\overline{\\mathrm{C}'\\mathrm{D}}=\\sqrt{4^2+(1-(-2))^2}=\\sqrt{16+9}=5$$\n따라서 거리의 합의 최솟값은 $5\\text{ km}$이다."
   },
   {
     "id": 16,
@@ -464,8 +464,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$의 좌표가 $(5, -2)$이고 변 $\\mathrm{BC}$의 중점의 좌표가 $(-4, -5)$일 때, 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(-1,\\ -4)$",
+    "solution": "삼각형의 무게중심은 중선을 꼭짓점으로부터 $2:1$로 나누는 점이다.\n꼭짓점 $\\mathrm{A}(5,\\ -2)$와 변 $\\mathrm{BC}$의 중점 $\\mathrm{M}(-4,\\ -5)$에 대하여 무게중심 $\\mathrm{G}$는 선분 $\\mathrm{AM}$을 $2:1$로 내분하는 점이므로\n$$\\mathrm{G}\\left(\\frac{2\\times(-4)+1\\times 5}{3},\\ \\frac{2\\times(-5)+1\\times(-2)}{3}\\right)=\\left(\\frac{-3}{3},\\ \\frac{-12}{3}\\right)=(-1,\\ -4)$$"
   },
   {
     "id": 17,
@@ -492,8 +492,8 @@ window.questionBank = [
     "wide": false,
     "content": "원 $x^2+y^2+9x-6y-2=0$과 직선 $2x-y+2=0$의 두 교점을 지름의 양 끝 점으로 하는 원의 중심의 좌표를 $(a, b)$라 할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "두 교점을 지름의 양 끝 점으로 하는 원의 중심은 두 교점을 이은 선분의 중점이다.\n직선 $y=2x+2$를 원의 방정식에 대입하면\n$$x^2+(2x+2)^2+9x-6(2x+2)-2=0$$\n$$x^2+4x^2+8x+4+9x-12x-12-2=5x^2+5x-10=0$$\n$x^2+x-2=0$이므로 $(x+2)(x-1)=0$에서 $x=-2$ 또는 $x=1$\n$x=-2$일 때 $y=-2$, $x=1$일 때 $y=4$이므로 두 교점은 $(-2,\\ -2),\\ (1,\\ 4)$이다.\n중점은 $\\left(\\frac{-2+1}{2},\\ \\frac{-2+4}{2}\\right)=\\left(-\\frac{1}{2},\\ 1\\right)$이므로 $a=-\\frac{1}{2},\\ b=1$\n따라서 $a+b=\\frac{1}{2}$"
   },
   {
     "id": 18,
@@ -520,7 +520,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 두 점 $\\mathrm{A}(4, 3)$과 $\\mathrm{B}(2, -4)$에 대하여 서로 다른 두 점 $\\mathrm{C}$와 $\\mathrm{D}$가 각각 $y$축과 직선 $y=x$ 위에 있을 때, $\\overline{\\mathrm{AD}}+\\overline{\\mathrm{DC}}+\\overline{\\mathrm{CB}}$의 최솟값을 구하시오.\n<img src=\"q18.png\">",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{89}$",
+    "solution": "점 $\\mathrm{A}$를 직선 $y=x$에 대하여 대칭이동한 점을 $\\mathrm{A}'(3,\\ 4)$, 점 $\\mathrm{B}$를 $y$축에 대하여 대칭이동한 점을 $\\mathrm{B}'(-2,\\ -4)$라 하자.\n$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{A}'\\mathrm{D}}$, $\\overline{\\mathrm{CB}}=\\overline{\\mathrm{CB}'}$이므로\n$$\\overline{\\mathrm{AD}}+\\overline{\\mathrm{DC}}+\\overline{\\mathrm{CB}}=\\overline{\\mathrm{A}'\\mathrm{D}}+\\overline{\\mathrm{DC}}+\\overline{\\mathrm{CB}'}\\ge\\overline{\\mathrm{A}'\\mathrm{B}'}$$\n(네 점 $\\mathrm{A}',\\ \\mathrm{D},\\ \\mathrm{C},\\ \\mathrm{B}'$가 이 순서로 일직선 위에 있을 때 등호가 성립한다.)\n직선 $\\mathrm{A}'\\mathrm{B}'$의 기울기는 $\\frac{4-(-4)}{3-(-2)}=\\frac{8}{5}$이고 이 직선은 직선 $y=x$와 점 $\\left(\\frac{4}{3},\\ \\frac{4}{3}\\right)$에서, $y$축과 점 $\\left(0,\\ -\\frac{4}{5}\\right)$에서 만나므로 점 $\\mathrm{D},\\ \\mathrm{C}$가 존재한다.\n$$\\overline{\\mathrm{A}'\\mathrm{B}'}=\\sqrt{(3-(-2))^2+(4-(-4))^2}=\\sqrt{25+64}=\\sqrt{89}$$\n따라서 최솟값은 $\\sqrt{89}$이다."
   }
 ];

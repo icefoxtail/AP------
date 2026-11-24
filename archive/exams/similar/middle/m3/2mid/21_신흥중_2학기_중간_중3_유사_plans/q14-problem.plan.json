@@ -1,0 +1,41 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "inscribedIn": "O"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AC",
+      "foot": "M",
+      "label": "3"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "BC",
+      "foot": "N",
+      "label": "3"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "68°"
+    }
+  ]
+}

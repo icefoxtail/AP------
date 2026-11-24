@@ -410,6 +410,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/23_매산여고_2학기_기말_고1_유사/q10-problem.svg",
     "category": "경우의 수의 기본 원리",
     "standardCourse": "수학(하)",
     "curriculum": "2015",

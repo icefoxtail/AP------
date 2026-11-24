@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -7,
+      5
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3/4",
+          "-3/2",
+          "3/4"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=3/4(x-1)^2"
+      },
+      {
+        "id": "g2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-17/4",
+          "-3/2",
+          "3/4"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=3/4(x-1)^2-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "-2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "두 이차함수의 그래프와, 두 그래프 위에서 x좌표가 같은 두 점 A, B를 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 두 포물선이 위아래로 나란히 있고, 위쪽 포물선 위의 점 A와 아래쪽 포물선 위의 점 B를 잇는 세로 선분이 보인다.",
+  "newVisualInformation": [
+    "두 이차함수의 그래프와 같은 x좌표를 갖는 두 점 A, B, 선분 AB를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=\\frac{3}{4}(x-1)^2$과 $y=\\frac{3}{4}(x-1)^2-5$의 그래프가 다음 그림과 같고 점 $\\text{A}$와 $\\text{B}$는 각각 두 이차함수의 그래프 위의 점일 때, $\\overline{\\text{AB}}$의 길이는? (단, $\\overline{\\text{AB}}$는 $y$축에 평행하다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

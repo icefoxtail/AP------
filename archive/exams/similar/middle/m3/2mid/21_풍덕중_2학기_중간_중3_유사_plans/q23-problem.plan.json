@@ -1,0 +1,36 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "semicircle",
+      "diameter": "AB",
+      "center": "O",
+      "radius": "6 cm"
+    },
+    {
+      "type": "point",
+      "id": "C",
+      "on": "arc"
+    },
+    {
+      "type": "chord",
+      "endpoints": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "C"
+      ],
+      "text": "30°"
+    },
+    {
+      "type": "shade",
+      "region": "segment_BC"
+    }
+  ]
+}

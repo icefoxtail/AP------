@@ -1,0 +1,236 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "두 이차함수의 그래프와 평행이동에 따른 색칠한 직사각형 영역의 넓이 비교",
+  "accessibilityDescription": "그림 (1)과 그림 (2)에서 두 포물선과 꼭짓점을 지나는 직사각형의 영역을 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(1,4), Q(5,4)가 꼭짓점인 두 포물선과, x축으로 p만큼 평행이동한 꼭짓점 R(13,4)인 포물선"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "그림 (1)의 색칠한 부분(P와 Q를 꼭짓점으로 하는 직사각형)과 그림 (2)의 색칠한 부분(P와 R을 꼭짓점으로 하는 직사각형)"
+    }
+  ],
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R"
+  },
+  "panels": [
+    {
+      "caption": {
+        "text": "그림 (1)"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "3",
+                "2",
+                "-1"
+              ],
+              "domain": [
+                "-3/2",
+                "7/2"
+              ]
+            },
+            {
+              "id": "g",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "-21",
+                "10",
+                "-1"
+              ],
+              "domain": [
+                "5/2",
+                "15/2"
+              ]
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "P",
+                "x": "1",
+                "y": "4"
+              },
+              {
+                "id": "Q",
+                "x": "5",
+                "y": "4"
+              },
+              {
+                "id": "P0",
+                "x": "1",
+                "y": "0",
+                "unnamed": true
+              },
+              {
+                "id": "Q0",
+                "x": "5",
+                "y": "0",
+                "unnamed": true
+              },
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              }
+            ],
+            "segments": [
+              {
+                "id": "sPQ",
+                "from": "P",
+                "to": "Q",
+                "dashed": true
+              },
+              {
+                "id": "sPP0",
+                "from": "P",
+                "to": "P0",
+                "dashed": true
+              },
+              {
+                "id": "sQQ0",
+                "from": "Q",
+                "to": "Q0",
+                "dashed": true
+              }
+            ],
+            "polygons": [
+              {
+                "id": "poly1",
+                "points": [
+                  "P",
+                  "Q",
+                  "Q0",
+                  "P0"
+                ],
+                "fill": "LIGHT"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "그림 (2)"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "3",
+                "2",
+                "-1"
+              ],
+              "domain": [
+                "-3/2",
+                "7/2"
+              ]
+            },
+            {
+              "id": "h",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "-165",
+                "26",
+                "-1"
+              ],
+              "domain": [
+                "21/2",
+                "31/2"
+              ]
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "P",
+                "x": "1",
+                "y": "4"
+              },
+              {
+                "id": "R",
+                "x": "13",
+                "y": "4"
+              },
+              {
+                "id": "P0",
+                "x": "1",
+                "y": "0",
+                "unnamed": true
+              },
+              {
+                "id": "R0",
+                "x": "13",
+                "y": "0",
+                "unnamed": true
+              },
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              }
+            ],
+            "segments": [
+              {
+                "id": "sPR",
+                "from": "P",
+                "to": "R",
+                "dashed": true
+              },
+              {
+                "id": "sPP0",
+                "from": "P",
+                "to": "P0",
+                "dashed": true
+              },
+              {
+                "id": "sRR0",
+                "from": "R",
+                "to": "R0",
+                "dashed": true
+              }
+            ],
+            "polygons": [
+              {
+                "id": "poly2",
+                "points": [
+                  "P",
+                  "R",
+                  "R0",
+                  "P0"
+                ],
+                "fill": "LIGHT"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

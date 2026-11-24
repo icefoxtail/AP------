@@ -1,0 +1,119 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      0,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "s1"
+        }
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "s2"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": [
+        "1",
+        "5"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "q1",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "q2",
+          "x": "5",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "q3",
+          "x": "5",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "q4",
+          "x": "1",
+          "y": "5",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "v1",
+          "from": "q1",
+          "to": "q4",
+          "color": "BLUE"
+        },
+        {
+          "id": "v2",
+          "from": "q2",
+          "to": "q3",
+          "color": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 네 점 (1, 1), (5, 1), (5, 5), (1, 5)를 꼭짓점으로 하는 정사각형이 있다.",
+  "accessibilityDescription": "가로축과 세로축 위에 네 변이 축에 나란한 정사각형이 있다.",
+  "newVisualInformation": [
+    "정사각형",
+    "가로축 눈금 1, 5와 세로축 눈금 1, 5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 네 점 $(1, 1)$, $(5, 1)$, $(5, 5)$, $(1, 5)$를 꼭짓점으로 하는 정사각형의 넓이를 이등분하는 직선의 방정식이 아닌 것을 고르면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

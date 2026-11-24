@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "displaySegments": [
+    {
+      "id": "sab",
+      "refs": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "id": "sbc",
+      "refs": [
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "scd",
+      "refs": [
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sda",
+      "refs": [
+        "d",
+        "a"
+      ]
+    },
+    {
+      "id": "sac",
+      "refs": [
+        "a",
+        "c"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "a",
+        "to": "b",
+        "label": "120",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "d2",
+        "from": "b",
+        "to": "c",
+        "label": "90",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": "AUTO"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sab"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sbc"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sac"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로의 길이가 120 cm, 세로의 길이가 90 cm인 직사각형 모양의 게시판과 그 대각선을 그린 그림이다.",
+  "accessibilityDescription": "가로로 긴 직사각형이 있고, 아래쪽 가로변에 120, 오른쪽 세로변에 90이 적혀 있다. 한 꼭짓점에서 마주 보는 꼭짓점으로 대각선이 그려져 있다.",
+  "newVisualInformation": [
+    "직사각형의 가로 길이는 120 cm이다.",
+    "직사각형의 세로 길이는 90 cm이다.",
+    "직사각형의 대각선이 그려져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 $120\\text{ cm}$, 세로의 길이가 $90\\text{ cm}$인 직사각형 모양의 게시판이 있다. 이 게시판의 대각선의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

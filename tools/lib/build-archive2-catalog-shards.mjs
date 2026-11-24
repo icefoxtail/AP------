@@ -27,6 +27,7 @@ import zlib from 'node:zlib';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { UNIT_PAST_SCHEMA, unitPastExtras } from './build-archive2-unit-past-part.mjs';
+import { examMetaExtras, projectExamMeta } from './build-archive2-exam-meta-part.mjs';
 
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
@@ -408,6 +409,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     files.set(CATALOG_COMMON_PATH, content);
     commonInfo = { path: CATALOG_COMMON_PATH, sha256: sha256Hex(content), bytes: content.length };
   }
+  // the approved metadata of each exam (original-exam window, class registration): one small file per exam, see build-archive2-exam-meta-part.mjs
+  const examMetaPart = extras.examMeta ? projectExamMeta(extras.examMeta, indexVersion) : null;
+  if (examMetaPart) for (const [rel, content] of examMetaPart.files) files.set(rel, content);
   const index = {
     schemaVersion: CATALOG_SHARDS_INDEX_SCHEMA,
     recordSchema: CATALOG_SHARD_FILE_SCHEMA,
@@ -424,6 +428,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     examShard: examShardInCatalogOrder,
     ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
     ...(extras.unitPast ? { unitPastSchema: UNIT_PAST_SCHEMA } : {}),
+    ...(examMetaPart ? { examMeta: examMetaPart.index } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -473,6 +478,8 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   // STAGE 2-3: what 단원별 기출 needs next to the records (null when the assembled metadata sidecar is not there: that screen then keeps the whole bundle)
   const unitPast = await unitPastExtras(root, { catalog, bundle, canonical, core: createRequire(import.meta.url)(path.join(root, 'archive/archive2-core.js')) });
   if (unitPast) extras.unitPast = unitPast;
+  const examMeta = examMetaExtras(root, catalog);
+  if (examMeta) extras.examMeta = examMeta;
   const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
@@ -481,7 +488,9 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const [rel, content] of [...projection.files.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     const reason = rel === CATALOG_COMMON_PATH
       ? 'catalog common tables (authority tables and catalog-level lists that do not depend on a question)'
-      : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
+      : rel.startsWith('exam-meta/')
+        ? 'approved question metadata of one exam (original-exam window, class registration), the records of the browser copy for that exam'
+        : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
     entries.push({
       path: `${CATALOG_SHARDS_DIR}/${rel}`, content, bytes: content.length, sourceBytes: 0,
       reasons: [reason], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
@@ -574,7 +583,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const built = await buildCatalogShards(root);
   fs.rmSync(target, { recursive: true, force: true });
   fs.mkdirSync(target, { recursive: true });
-  for (const entry of built.entries) fs.writeFileSync(path.join(target, path.basename(entry.path)), entry.content);
+  for (const entry of built.entries) {
+    const out = path.join(target, path.relative(CATALOG_SHARDS_DIR, entry.path)); // exam-meta/<key>.json sits in a folder of its own
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, entry.content);
+  }
   let rawTotal = 0; let gzTotal = 0;
   console.log('shard'.padEnd(34), 'records'.padStart(8), 'exams'.padStart(6), 'raw'.padStart(11), 'gzip'.padStart(10));
   for (const shard of built.index.shards) {
