@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식을 만족시키는 두 실수 $x, y$의 값을 각각 구하시오.\n⑴ $(x-1)+yi=0$\n⑵ $x-yi=2+i$\n⑶ $(x+y+1)-(x+2y)i=5i$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=1,\\ y=0$\n⑵ $x=2,\\ y=-1$\n⑶ $x=3,\\ y=-4$",
+    "solution": "복소수가 서로 같을 조건: $a+bi=c+di$이면 $a=c,\\ b=d$ ($a,\\ b,\\ c,\\ d$는 실수)\n⑴ $(x-1)+yi=0$에서 실수부분 $x-1=0$, 허수부분 $y=0$이므로 $x=1,\\ y=0$\n⑵ $x-yi=2+i$에서 실수부분 $x=2$, 허수부분 $-y=1$이므로 $x=2,\\ y=-1$\n⑶ $(x+y+1)-(x+2y)i=5i$에서\n실수부분: $x+y+1=0\\qquad\\cdots\\ ①$\n허수부분: $-(x+2y)=5$, 즉 $x+2y=-5\\qquad\\cdots\\ ②$\n②$-$①을 하면 $y-1=-5$이므로 $y=-4$\n①에 대입하면 $x-4+1=0$이므로 $x=3$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 복소수의 켤레복소수를 구하시오.\n⑴ $2+3i$\n⑵ $-5-i$\n⑶ $-7$\n⑷ $2i$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2-3i$\n⑵ $-5+i$\n⑶ $-7$\n⑷ $-2i$",
+    "solution": "복소수 $a+bi$의 켤레복소수는 허수부분의 부호만 바꾼 $a-bi$이다.\n⑴ $2+3i$의 켤레복소수는 $2-3i$\n⑵ $-5-i$의 켤레복소수는 $-5+i$\n⑶ $-7=-7+0i$이므로 켤레복소수는 $-7$\n⑷ $2i=0+2i$이므로 켤레복소수는 $0-2i=-2i$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x=1+2i$, $y=2-3i$일 때, 다음을 계산하여 $a+bi$ 꼴로 나타내시오. (단, $a, b$는 실수이다.)\n⑴ $x+y$\n⑵ $x-y$\n⑶ $xy$\n⑷ $\\frac{x}{y}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $3-i$\n⑵ $-1+5i$\n⑶ $8+i$\n⑷ $-\\frac{4}{13}+\\frac{7}{13}i$",
+    "solution": "⑴ $x+y=(1+2i)+(2-3i)=(1+2)+(2-3)i=3-i$\n⑵ $x-y=(1+2i)-(2-3i)=(1-2)+(2+3)i=-1+5i$\n⑶ $xy=(1+2i)(2-3i)=2-3i+4i-6i^2=2+i+6=8+i$\n⑷ 분모의 켤레복소수 $2+3i$를 분모와 분자에 곱하면\n$$\\frac{x}{y}=\\frac{1+2i}{2-3i}=\\frac{(1+2i)(2+3i)}{(2-3i)(2+3i)}=\\frac{2+3i+4i+6i^2}{4+9}=\\frac{-4+7i}{13}=-\\frac{4}{13}+\\frac{7}{13}i$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 계산하여 $a+bi$ 꼴로 나타내시오. (단, $a, b$는 실수이다.)\n$$\\sqrt{-2}\\sqrt{-8}+\\frac{\\sqrt{-27}}{\\sqrt{-3}}-\\frac{\\sqrt{18}}{\\sqrt{-6}}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1+\\sqrt{3}i$",
+    "solution": "음수의 제곱근을 $i$로 나타내어 각 항을 계산한다.\n$$\\sqrt{-2}\\sqrt{-8}=\\sqrt{2}i\\times 2\\sqrt{2}i=4i^2=-4$$\n$$\\frac{\\sqrt{-27}}{\\sqrt{-3}}=\\frac{3\\sqrt{3}i}{\\sqrt{3}i}=3$$\n$$\\frac{\\sqrt{18}}{\\sqrt{-6}}=\\frac{3\\sqrt{2}}{\\sqrt{6}i}=\\frac{\\sqrt{3}}{i}=\\frac{\\sqrt{3}\\,i}{i^2}=-\\sqrt{3}i$$\n따라서\n$$-4+3-(-\\sqrt{3}i)=-1+\\sqrt{3}i$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 복소수 $z=1+x(i-1)$에 대하여 $z^2$이 음의 실수일 때, $z^4$의 값을 구하시오. (단, $x$는 실수이다.)\n\n[단계1] $z^2$이 음의 실수일 때, $z$를 구하시오.\n[단계2] $z^4$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $z=i$\n[단계2] $1$",
+    "solution": "[단계1] $z=1+x(i-1)=(1-x)+xi$이므로\n$$z^2=(1-x)^2+2(1-x)xi+x^2i^2=(1-2x)+2x(1-x)i$$\n$z^2$이 음의 실수이려면 허수부분이 $0$이고 실수부분이 음수이어야 한다.\n허수부분: $2x(1-x)=0$이므로 $x=0$ 또는 $x=1$\n실수부분: $1-2x<0$이므로 $x>\\frac{1}{2}$\n따라서 $x=1$이고 $z=(1-1)+1\\times i=i$\n\n[단계2] $z=i$이므로 $z^2=-1$이고\n$$z^4=(z^2)^2=(-1)^2=1$$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "[연결] 교류 회로에서 임피던스는 복소수 $a+bi$ ($a, b$는 실수) 꼴로 나타낸다. 오른쪽 그림과 같이 임피던스의 값이 각각 $Z_1$, $Z_2$인 저항을 병렬로 연결한 교류 회로에서 임피던스 $Z$는\n$$\\frac{1}{Z}=\\frac{1}{Z_1}+\\frac{1}{Z_2}$$\n로 주어진다. $Z_1=1-i$, $Z_2=2+i$일 때, 이 회로의 임피던스 $Z$를 구하시오.\n<img src=\"q06.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$Z=1-\\frac{1}{3}i$",
+    "solution": "주어진 식에 $Z_1=1-i$, $Z_2=2+i$를 대입하면\n$$\\frac{1}{Z}=\\frac{1}{1-i}+\\frac{1}{2+i}$$\n각 항의 분모를 실수화하면\n$$\\frac{1}{1-i}=\\frac{1+i}{(1-i)(1+i)}=\\frac{1+i}{2},\\qquad \\frac{1}{2+i}=\\frac{2-i}{(2+i)(2-i)}=\\frac{2-i}{5}$$\n통분하여 더하면\n$$\\frac{1}{Z}=\\frac{5(1+i)+2(2-i)}{10}=\\frac{9+3i}{10}$$\n따라서\n$$Z=\\frac{10}{9+3i}=\\frac{10(9-3i)}{(9+3i)(9-3i)}=\\frac{10(9-3i)}{90}=\\frac{9-3i}{9}=1-\\frac{1}{3}i$$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식을 풀고, 그 근이 실근인지 허근인지 말하시오.\n⑴ $x^2-15x+36=0$\n⑵ $5x^2-3x+2=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=3$ 또는 $x=12$, 실근\n⑵ $x=\\frac{3\\pm\\sqrt{31}i}{10}$, 허근",
+    "solution": "⑴ $x^2-15x+36=(x-3)(x-12)=0$이므로 $x=3$ 또는 $x=12$이다. 두 근 모두 실수이므로 실근이다.\n⑵ 근의 공식에 의하여\n$$x=\\frac{3\\pm\\sqrt{(-3)^2-4\\times 5\\times 2}}{2\\times 5}=\\frac{3\\pm\\sqrt{-31}}{10}=\\frac{3\\pm\\sqrt{31}i}{10}$$\n실수가 아닌 복소수이므로 허근이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식의 근을 판별하시오.\n⑴ $x^2+3x-12=0$\n⑵ $-3x^2+2x-1=0$\n⑶ $x^2-8x+16=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 서로 다른 두 실근\n⑵ 서로 다른 두 허근\n⑶ 중근(실근)",
+    "solution": "이차방정식의 판별식 $D$의 부호로 판별한다. $D>0$이면 서로 다른 두 실근, $D=0$이면 중근, $D<0$이면 서로 다른 두 허근이다.\n⑴ $D=3^2-4\\times 1\\times(-12)=9+48=57>0$이므로 서로 다른 두 실근\n⑵ $D=2^2-4\\times(-3)\\times(-1)=4-12=-8<0$이므로 서로 다른 두 허근\n⑶ $D=(-8)^2-4\\times 1\\times 16=64-64=0$이므로 중근(실근)"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2-2kx+k^2-3=0$의 근을 판별하시오. (단, $k$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "서로 다른 두 실근",
+    "solution": "판별식을 $D$라 하면\n$$\\frac{D}{4}=(-k)^2-(k^2-3)=k^2-k^2+3=3>0$$\n$k$의 값에 관계없이 $D>0$이므로 서로 다른 두 실근을 갖는다."
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-6x+1-5k=0$이 실근을 가질 때, 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k\\ge -\\frac{8}{5}$",
+    "solution": "이차방정식이 실근을 가지려면 판별식 $D\\ge 0$이어야 한다.\n$$\\frac{D}{4}=(-3)^2-(1-5k)=9-1+5k=8+5k\\ge 0$$\n따라서 $k\\ge -\\frac{8}{5}$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] $x$에 대한 이차방정식\n$$x^2+(2k+6)x+k^2-ak+9=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-6$",
+    "solution": "이차방정식이 중근을 가지려면 판별식이 $0$이어야 한다.\n$$\\frac{D}{4}=(k+3)^2-(k^2-ak+9)=k^2+6k+9-k^2+ak-9=(a+6)k$$\n이 값이 $k$의 값에 관계없이 항상 $0$이려면 $k$에 대한 항등식이므로 $k$의 계수가 $0$이어야 한다.\n$a+6=0$이므로 $a=-6$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "[문제해결] 이차방정식 $x^2+ax+b=0$은 중근을 갖고, 이차방정식 $x^2+4x+a=0$은 서로 다른 두 실근을 가질 때, 두 자연수 $a, b$의 값을 각각 구하시오.\n\n[단계1] 이차방정식 $x^2+ax+b=0$이 중근을 가질 때, $a, b$ 사이의 관계식을 구하시오.\n[단계2] 이차방정식 $x^2+4x+a=0$이 서로 다른 두 실근을 가질 때, 자연수 $a$의 값을 모두 구하시오.\n[단계3] 두 자연수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $a^2=4b$\n[단계2] $a=1,\\ 2,\\ 3$\n[단계3] $a=2,\\ b=1$",
+    "solution": "[단계1] $x^2+ax+b=0$이 중근을 가지므로 판별식이 $0$이다.\n$$D_1=a^2-4b=0\\quad\\text{에서}\\quad b=\\frac{a^2}{4}\\ (\\text{즉 } a^2=4b)$$\n\n[단계2] $x^2+4x+a=0$이 서로 다른 두 실근을 가지므로\n$$\\frac{D_2}{4}=2^2-a=4-a>0\\quad\\text{에서}\\quad a<4$$\n$a$가 자연수이므로 $a=1,\\ 2,\\ 3$\n\n[단계3] $b=\\frac{a^2}{4}$가 자연수이어야 한다.\n$a=1$이면 $b=\\frac{1}{4}$, $a=3$이면 $b=\\frac{9}{4}$로 자연수가 아니다.\n$a=2$이면 $b=1$로 자연수이다.\n따라서 $a=2,\\ b=1$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식의 두 근의 합과 곱을 각각 구하시오.\n⑴ $x^2+5x-3=0$\n⑵ $4x^2+5=0$\n⑶ $6x^2-7x=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 합: $-5$, 곱: $-3$\n⑵ 합: $0$, 곱: $\\frac{5}{4}$\n⑶ 합: $\\frac{7}{6}$, 곱: $0$",
+    "solution": "이차방정식 $ax^2+bx+c=0$의 두 근의 합은 $-\\frac{b}{a}$, 곱은 $\\frac{c}{a}$이다.\n⑴ 합 $-\\frac{5}{1}=-5$, 곱 $\\frac{-3}{1}=-3$\n⑵ $4x^2+0x+5=0$이므로 합 $-\\frac{0}{4}=0$, 곱 $\\frac{5}{4}$\n⑶ $6x^2-7x+0=0$이므로 합 $-\\frac{-7}{6}=\\frac{7}{6}$, 곱 $\\frac{0}{6}=0$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 수 $1+\\sqrt{2}i$, $1-\\sqrt{2}i$를 근으로 하고 $x^2$의 계수가 $1$인 이차방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2-2x+3=0$",
+    "solution": "두 근의 합과 곱을 구한다.\n합: $(1+\\sqrt{2}i)+(1-\\sqrt{2}i)=2$\n곱: $(1+\\sqrt{2}i)(1-\\sqrt{2}i)=1-2i^2=1+2=3$\n두 수 $\\alpha,\\ \\beta$를 근으로 하고 $x^2$의 계수가 $1$인 이차방정식은 $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$이므로\n$$x^2-2x+3=0$$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $3x^2-2x+6=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, 다음 식의 값을 구하시오.\n⑴ $\\alpha^2\\beta+\\alpha\\beta^2$\n⑵ $\\alpha^3+\\beta^3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{4}{3}$\n⑵ $-\\frac{100}{27}$",
+    "solution": "근과 계수의 관계에 의하여\n$$\\alpha+\\beta=\\frac{2}{3},\\qquad \\alpha\\beta=\\frac{6}{3}=2$$\n⑴ $$\\alpha^2\\beta+\\alpha\\beta^2=\\alpha\\beta(\\alpha+\\beta)=2\\times\\frac{2}{3}=\\frac{4}{3}$$\n⑵ $$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=\\left(\\frac{2}{3}\\right)^3-3\\times 2\\times\\frac{2}{3}=\\frac{8}{27}-4=-\\frac{100}{27}$$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $4x^2-x-1=0$의 두 근을 $\\alpha, \\beta$라고 할 때, $\\alpha+\\beta$, $\\alpha\\beta$를 두 근으로 하고 $x^2$의 계수가 $1$인 이차방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2-\\frac{1}{16}=0$",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=\\frac{1}{4},\\ \\alpha\\beta=-\\frac{1}{4}$이다.\n구하는 이차방정식의 두 근은 $\\frac{1}{4},\\ -\\frac{1}{4}$이므로\n합: $\\frac{1}{4}+\\left(-\\frac{1}{4}\\right)=0$\n곱: $\\frac{1}{4}\\times\\left(-\\frac{1}{4}\\right)=-\\frac{1}{16}$\n$x^2-(\\text{합})x+(\\text{곱})=0$이므로\n$$x^2-\\frac{1}{16}=0$$"
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "[문제해결] 다항식 $P(x)=x^2-5x-7$에 대하여 $P(a)=0$, $P(b)=0$일 때, $P(ab)$의 값을 구하시오. (단, $a, b$는 서로 다른 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$77$",
+    "solution": "$P(a)=0,\\ P(b)=0$이고 $a,\\ b$가 서로 다른 실수이므로 $a,\\ b$는 이차방정식 $x^2-5x-7=0$의 두 근이다.\n근과 계수의 관계에서 $ab=-7$\n$$P(ab)=P(-7)=(-7)^2-5\\times(-7)-7=49+35-7=77$$"
   },
   {
     "id": 18,
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 이차방정식 $x^2+(11-k)x+k=0$의 두 근의 차가 $4$일 때, 실수 $k$의 값을 모두 구하시오.\n\n[단계1] 이차방정식의 근과 계수의 관계를 이용하여 두 근의 합과 곱을 $k$에 대한 식으로 나타내시오.\n[단계2] 실수 $k$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] 합: $k-11$, 곱: $k$\n[단계2] $k=5,\\ 21$",
+    "solution": "[단계1] 두 근을 $\\alpha,\\ \\beta$라 하면 근과 계수의 관계에 의하여\n$$\\alpha+\\beta=-(11-k)=k-11,\\qquad \\alpha\\beta=k$$\n\n[단계2] 두 근의 차가 $4$이므로 $(\\alpha-\\beta)^2=16$이다.\n$$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=(k-11)^2-4k=k^2-26k+121=16$$\n$k^2-26k+105=0$이므로 $(k-5)(k-21)=0$에서 $k=5$ 또는 $k=21$\n(확인: $k=5$이면 $x^2+6x+5=0$의 근이 $-1,\\ -5$로 차가 $4$, $k=21$이면 $x^2-10x+21=0$의 근이 $3,\\ 7$로 차가 $4$이다.)"
   }
 ];

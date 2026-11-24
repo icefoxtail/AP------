@@ -32,8 +32,8 @@ window.questionBank = [
       "$\\frac{29}{6}\\pi$",
       "$1230^\\circ$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "각을 $0^\\circ\\le\\alpha<360^\\circ$ 범위로 고쳐서 비교한다.\n① $-210^\\circ=-360^\\circ+150^\\circ$이므로 $150^\\circ$와 같은 동경\n② $\\frac{5}{6}\\pi=150^\\circ$\n③ $480^\\circ=360^\\circ+120^\\circ$이므로 $120^\\circ$와 같은 동경\n④ $\\frac{29}{6}\\pi=4\\pi+\\frac{5}{6}\\pi$이므로 $150^\\circ$와 같은 동경\n⑤ $1230^\\circ=3\\times 360^\\circ+150^\\circ$이므로 $150^\\circ$와 같은 동경\n따라서 나머지 넷과 다른 하나는 ③이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "중심각의 크기가 $2$이고 둘레의 길이가 $32$인 부채꼴의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$64$",
+    "solution": "부채꼴의 반지름의 길이를 $r$라 하면 중심각의 크기가 $2$이므로 호의 길이는 $r\\times 2=2r$이다.\n둘레의 길이가 $32$이므로 $2r+2r=32$에서 $r=8$\n부채꼴의 넓이는\n$$\\frac{1}{2}r^2\\theta=\\frac{1}{2}\\times 8^2\\times 2=64$$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제3사분면의 각이고\n$$\\frac{(1-\\cos\\theta)\\cos\\theta}{\\sin\\theta} + \\frac{\\sin\\theta\\cos\\theta}{1-\\cos\\theta} = 1$$\n일 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{\\sqrt{5}}{5}$",
+    "solution": "$\\cos\\theta=c$라 하자. $\\frac{\\sin\\theta}{1-\\cos\\theta}=\\frac{\\sin\\theta(1+\\cos\\theta)}{1-\\cos^2\\theta}=\\frac{1+\\cos\\theta}{\\sin\\theta}$이므로\n$$\\frac{(1-c)c}{\\sin\\theta}+\\frac{(1+c)c}{\\sin\\theta}=\\frac{c\\{(1-c)+(1+c)\\}}{\\sin\\theta}=\\frac{2c}{\\sin\\theta}=1$$\n이므로 $\\sin\\theta=2\\cos\\theta$이다. $\\sin^2\\theta+\\cos^2\\theta=1$에 대입하면 $5\\cos^2\\theta=1$이므로 $\\cos\\theta=\\pm\\frac{1}{\\sqrt{5}}$\n$\\theta$가 제3사분면의 각이므로 $\\cos\\theta<0$이다. 따라서\n$$\\cos\\theta=-\\frac{1}{\\sqrt{5}}=-\\frac{\\sqrt{5}}{5}$$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\sin\\left(-\\frac{5}{6}\\pi\\right) + \\cos\\frac{8}{3}\\pi - \\tan\\frac{7}{4}\\pi$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$\\sin\\left(-\\frac{5}{6}\\pi\\right)=-\\sin\\frac{5}{6}\\pi=-\\sin\\frac{\\pi}{6}=-\\frac{1}{2}$\n$\\cos\\frac{8}{3}\\pi=\\cos\\left(2\\pi+\\frac{2}{3}\\pi\\right)=\\cos\\frac{2}{3}\\pi=-\\frac{1}{2}$\n$\\tan\\frac{7}{4}\\pi=\\tan\\left(2\\pi-\\frac{\\pi}{4}\\right)=-\\tan\\frac{\\pi}{4}=-1$\n$$-\\frac{1}{2}+\\left(-\\frac{1}{2}\\right)-(-1)=0$$"
   },
   {
     "id": 5,
@@ -150,8 +150,8 @@ window.questionBank = [
       "$f(x)=\\tan 2x$",
       "$f(x)=\\left|\\cos\\frac{x}{2}\\right|$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "① $\\tan\\frac{x}{2}$의 주기는 $\\frac{\\pi}{\\frac{1}{2}}=2\\pi$\n② $\\cos 2x$의 주기는 $\\frac{2\\pi}{2}=\\pi$\n③ $|\\sin 2x|$의 주기는 $\\sin 2x$의 주기 $\\pi$의 절반인 $\\frac{\\pi}{2}$\n④ $\\tan 2x$의 주기는 $\\frac{\\pi}{2}$\n⑤ $\\left|\\cos\\frac{x}{2}\\right|$의 주기는 $\\cos\\frac{x}{2}$의 주기 $4\\pi$의 절반인 $2\\pi$\n따라서 주기가 $\\pi$인 것은 ②이다."
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 옳은 것을 모두 고르시오.\n\n[보기]\nㄱ. $\\sin 1^\\circ + \\sin 2^\\circ + \\sin 3^\\circ + \\cdots + \\sin 359^\\circ + \\sin 360^\\circ = 0$\nㄴ. $\\cos 1^\\circ + \\cos 2^\\circ + \\cos 3^\\circ + \\cdots + \\cos 179^\\circ + \\cos 180^\\circ = -1$\nㄷ. $\\sin^2 1^\\circ + \\sin^2 2^\\circ + \\sin^2 3^\\circ + \\cdots + \\sin^2 89^\\circ + \\sin^2 90^\\circ = 45$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "ㄱ. $\\sin(360^\\circ-k^\\circ)=-\\sin k^\\circ$이므로 $\\sin 1^\\circ+\\sin 359^\\circ=0$ 등 $k=1,\\ 2,\\ \\cdots,\\ 179$와 $360-k$가 짝을 이루어 $0$이 된다. 남은 $\\sin 180^\\circ=0$, $\\sin 360^\\circ=0$이므로 합은 $0$이다. (참)\nㄴ. $\\cos(180^\\circ-k^\\circ)=-\\cos k^\\circ$이므로 $\\cos 1^\\circ+\\cos 179^\\circ=0$ 등 $k=1,\\ \\cdots,\\ 89$와 $180-k$가 짝을 이루어 $0$이 된다. 남은 $\\cos 90^\\circ=0$, $\\cos 180^\\circ=-1$이므로 합은 $-1$이다. (참)\nㄷ. $\\sin^2(90^\\circ-k^\\circ)=\\cos^2 k^\\circ$이므로 $\\sin^2 k^\\circ+\\sin^2(90^\\circ-k^\\circ)=1$이다. $k=1,\\ \\cdots,\\ 44$가 $44$쌍을 이루어 $44$이고, 남은 $\\sin^2 45^\\circ=\\frac{1}{2}$, $\\sin^2 90^\\circ=1$이므로 합은 $44+\\frac{1}{2}+1=\\frac{91}{2}$이다. $45$가 아니므로 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이다."
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 < x < 2\\pi$일 때, 방정식 $\\cos\\left(\\frac{\\pi}{2} - x\\right) - \\sin 4x = 0$의 서로 다른 실근의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "$\\cos\\left(\\frac{\\pi}{2}-x\\right)=\\sin x$이므로 방정식은 $\\sin x=\\sin 4x$, 즉 $\\sin 4x-\\sin x=0$이다.\n$$\\sin 4x-\\sin x=2\\cos\\frac{5x}{2}\\sin\\frac{3x}{2}=0$$\n(i) $\\sin\\frac{3x}{2}=0$: $0<\\frac{3x}{2}<3\\pi$이므로 $\\frac{3x}{2}=\\pi,\\ 2\\pi$에서 $x=\\frac{2\\pi}{3},\\ \\frac{4\\pi}{3}$ ($2$개)\n(ii) $\\cos\\frac{5x}{2}=0$: $0<\\frac{5x}{2}<5\\pi$이므로 $\\frac{5x}{2}=\\frac{\\pi}{2},\\ \\frac{3\\pi}{2},\\ \\frac{5\\pi}{2},\\ \\frac{7\\pi}{2},\\ \\frac{9\\pi}{2}$에서 $x=\\frac{\\pi}{5},\\ \\frac{3\\pi}{5},\\ \\pi,\\ \\frac{7\\pi}{5},\\ \\frac{9\\pi}{5}$ ($5$개)\n(i), (ii)에 겹치는 값이 없으므로 서로 다른 실근은 $2+5=7$개이다."
   },
   {
     "id": 8,
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 세 지점 $\\mathrm{A, B, C}$에서 같은 거리에 있는 지점 $\\mathrm{P}$에 물류 창고를 지으려고 한다. $\\overline{\\mathrm{AB}}=8\\text{ km}, \\angle\\mathrm{CAB}=35^\\circ, \\angle\\mathrm{ABC}=100^\\circ$일 때, 지점 $\\mathrm{A}$에서 지점 $\\mathrm{P}$까지의 거리를 구하시오. (단, 네 지점 $\\mathrm{A, B, C, P}$는 한 평면 위에 있다.)\n<img src=\"q09.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\sqrt{2}\\text{ km}$",
+    "solution": "$\\mathrm{PA}=\\mathrm{PB}=\\mathrm{PC}$이므로 점 $\\mathrm{P}$는 삼각형 $\\mathrm{ABC}$의 외심이고, $\\overline{\\mathrm{AP}}$는 외접원의 반지름의 길이 $R$이다.\n$\\angle\\mathrm{C}=180^\\circ-35^\\circ-100^\\circ=45^\\circ$\n사인법칙에 의하여\n$$\\frac{\\overline{\\mathrm{AB}}}{\\sin C}=2R,\\quad\\frac{8}{\\sin 45^\\circ}=\\frac{8}{\\frac{\\sqrt{2}}{2}}=8\\sqrt{2}=2R$$\n따라서 $R=4\\sqrt{2}$이므로 지점 $\\mathrm{A}$에서 지점 $\\mathrm{P}$까지의 거리는 $4\\sqrt{2}\\text{ km}$이다."
   },
   {
     "id": 10,
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $a:b:c=1:\\sqrt{2}:2$이고, 외접원의 넓이가 $7\\pi$일 때, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{2}$",
+    "solution": "외접원의 넓이가 $7\\pi$이므로 외접원의 반지름의 길이를 $R$라 하면 $\\pi R^2=7\\pi$에서 $R=\\sqrt{7}$이다.\n$a=k,\\ b=\\sqrt{2}k,\\ c=2k$ ($k>0$)로 놓으면 코사인법칙에 의하여\n$$\\cos C=\\frac{a^2+b^2-c^2}{2ab}=\\frac{k^2+2k^2-4k^2}{2\\sqrt{2}k^2}=-\\frac{1}{2\\sqrt{2}}$$\n$$\\sin C=\\sqrt{1-\\frac{1}{8}}=\\sqrt{\\frac{7}{8}}$$\n사인법칙 $\\frac{c}{\\sin C}=2R$에서\n$$2k=2\\sqrt{7}\\times\\sqrt{\\frac{7}{8}}=\\frac{14}{2\\sqrt{2}}=\\frac{7}{\\sqrt{2}}$$\n이므로 $k=\\frac{7}{2\\sqrt{2}}$이고\n$$b=\\sqrt{2}k=\\frac{7}{2}$$"
   },
   {
     "id": 11,
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=6, \\overline{\\mathrm{AC}}=3$인 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$를 한 변으로 하는 정사각형 $\\mathrm{BDEC}$를 만들었다. 이때 삼각형 $\\mathrm{AEC}$의 넓이를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{29}{4}$",
+    "solution": "삼각형 $\\mathrm{AEC}$에서 $\\overline{\\mathrm{AC}}=3$, $\\overline{\\mathrm{CE}}=\\overline{\\mathrm{BC}}=6$이고 $\\angle\\mathrm{ACE}=\\angle\\mathrm{ACB}+90^\\circ$이다.\n삼각형 $\\mathrm{ABC}$에서 코사인법칙에 의하여\n$$\\cos(\\angle\\mathrm{ACB})=\\frac{\\overline{\\mathrm{AC}}^2+\\overline{\\mathrm{BC}}^2-\\overline{\\mathrm{AB}}^2}{2\\times\\overline{\\mathrm{AC}}\\times\\overline{\\mathrm{BC}}}=\\frac{9+36-16}{2\\times 3\\times 6}=\\frac{29}{36}$$\n$\\sin(\\angle\\mathrm{ACB}+90^\\circ)=\\cos(\\angle\\mathrm{ACB})$이므로 삼각형 $\\mathrm{AEC}$의 넓이는\n$$\\frac{1}{2}\\times 3\\times 6\\times\\sin(\\angle\\mathrm{ACB}+90^\\circ)=9\\times\\frac{29}{36}=\\frac{29}{4}$$"
   },
   {
     "id": 12,
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제2사분면의 각일 때, 각 $\\frac{\\theta}{3}$를 나타내는 동경이 존재할 수 있는 사분면을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제1사분면, 제2사분면, 제4사분면",
+    "solution": "$\\theta$가 제2사분면의 각이므로 $n$이 정수일 때\n$$90^\\circ+360^\\circ\\times n<\\theta<180^\\circ+360^\\circ\\times n$$\n각 변을 $3$으로 나누면\n$$30^\\circ+120^\\circ\\times n<\\frac{\\theta}{3}<60^\\circ+120^\\circ\\times n$$\n$n=3k$ ($k$는 정수)일 때: $30^\\circ+360^\\circ k<\\frac{\\theta}{3}<60^\\circ+360^\\circ k$이므로 제1사분면\n$n=3k+1$일 때: $150^\\circ+360^\\circ k<\\frac{\\theta}{3}<180^\\circ+360^\\circ k$이므로 제2사분면\n$n=3k+2$일 때: $270^\\circ+360^\\circ k<\\frac{\\theta}{3}<300^\\circ+360^\\circ k$이므로 제4사분면\n따라서 제1사분면, 제2사분면, 제4사분면이다."
   },
   {
     "id": 13,
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=a\\cos bx + c$의 최댓값이 $7$, 최솟값이 $3$, 주기가 $\\frac{\\pi}{2}$일 때, 실수 $a, b, c$에 대하여 $a + b + c$의 값을 구하시오. (단, $a>0, b>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "$a>0$이므로 최댓값은 $a+c=7$, 최솟값은 $-a+c=3$이다. 두 식을 더하면 $2c=10$에서 $c=5$, 빼면 $2a=4$에서 $a=2$이다.\n주기가 $\\frac{2\\pi}{b}=\\frac{\\pi}{2}$에서 $b=4$이다.\n따라서 $a+b+c=2+4+5=11$"
   },
   {
     "id": 14,
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 중심각의 크기가 $\\frac{\\pi}{6}$인 부채꼴 $\\mathrm{OAB}$가 있다. 선분 $\\mathrm{OA}$를 $2:1$로 내분하는 점을 $\\mathrm{P}$, 선분 $\\mathrm{OB}$를 $1:2$로 내분하는 점을 $\\mathrm{Q}$라고 하자. 삼각형 $\\mathrm{OPQ}$의 넓이가 $2$일 때, 다음 물음에 답하시오.\n⑴ 반지름 $\\mathrm{OA}$의 길이를 구하시오.\n⑵ 호 $\\mathrm{AB}$의 길이를 구하시오.\n<img src=\"q14.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $6$\n⑵ $\\pi$",
+    "solution": "⑴ 반지름 $\\mathrm{OA}=\\mathrm{OB}=r$라 하자. 점 $\\mathrm{P}$는 $\\mathrm{OA}$를 $2:1$로 내분하므로 $\\overline{\\mathrm{OP}}=\\frac{2}{3}r$, 점 $\\mathrm{Q}$는 $\\mathrm{OB}$를 $1:2$로 내분하므로 $\\overline{\\mathrm{OQ}}=\\frac{1}{3}r$이다.\n삼각형 $\\mathrm{OPQ}$의 넓이는\n$$\\frac{1}{2}\\times\\frac{2}{3}r\\times\\frac{1}{3}r\\times\\sin\\frac{\\pi}{6}=\\frac{1}{2}\\times\\frac{2}{9}r^2\\times\\frac{1}{2}=\\frac{r^2}{18}=2$$\n이므로 $r^2=36$, $r=6$\n⑵ 호 $\\mathrm{AB}$의 길이는 $r\\theta=6\\times\\frac{\\pi}{6}=\\pi$"
   },
   {
     "id": 15,
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 길이가 $8$인 선분 $\\mathrm{AB}$를 지름으로 하는 원 $\\mathrm{O}$ 위에 한 점 $\\mathrm{P}$가 있다. $\\overline{\\mathrm{BP}}=6$이고 $\\angle\\mathrm{PBA}=\\theta$라고 할 때, $\\cos 2\\theta$의 값을 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{8}$",
+    "solution": "선분 $\\mathrm{AB}$는 원의 지름이므로 $\\angle\\mathrm{APB}=90^\\circ$이다. 직각삼각형 $\\mathrm{APB}$에서\n$$\\cos\\theta=\\frac{\\overline{\\mathrm{BP}}}{\\overline{\\mathrm{AB}}}=\\frac{6}{8}=\\frac{3}{4}$$\n$$\\cos 2\\theta=2\\cos^2\\theta-1=2\\times\\frac{9}{16}-1=\\frac{1}{8}$$"
   },
   {
     "id": 16,
@@ -458,7 +458,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=60^\\circ$이고 $b:c=1:3$이다. 외접원의 반지름의 길이가 $7$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{63\\sqrt{3}}{4}$",
+    "solution": "$b=k,\\ c=3k$ ($k>0$)라 하자. 사인법칙에 의하여 $a=2R\\sin A=2\\times 7\\times\\sin 60^\\circ=7\\sqrt{3}$\n코사인법칙에 의하여 $a^2=b^2+c^2-2bc\\cos 60^\\circ$이므로\n$$147=k^2+9k^2-2\\times k\\times 3k\\times\\frac{1}{2}=7k^2$$\n에서 $k^2=21$\n삼각형 $\\mathrm{ABC}$의 넓이는\n$$\\frac{1}{2}bc\\sin A=\\frac{1}{2}\\times 3k^2\\times\\frac{\\sqrt{3}}{2}=\\frac{3\\sqrt{3}}{4}\\times 21=\\frac{63\\sqrt{3}}{4}$$"
   }
 ];

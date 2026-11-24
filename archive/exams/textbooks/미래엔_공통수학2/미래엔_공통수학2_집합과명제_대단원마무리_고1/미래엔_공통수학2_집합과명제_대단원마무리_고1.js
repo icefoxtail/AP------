@@ -32,8 +32,8 @@ window.questionBank = [
       "성능이 우수한 컴퓨터의 모임",
       "키가 큰 식물의 모임"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "집합은 대상을 분명하게 정할 수 있는 모임이다.\n① 그림을 잘 그리는 사람, ② 예쁜 꽃, ④ 성능이 우수한 컴퓨터, ⑤ 키가 큰 식물은 모두 기준이 사람마다 달라 대상이 분명하지 않으므로 집합이 아니다.\n③ 우리 학교 $1$학년 학생은 분명하게 정해지므로 집합이다.\n따라서 집합인 것은 ③이다."
   },
   {
     "id": 2,
@@ -66,8 +66,8 @@ window.questionBank = [
       "$\\{15\\} \\subset A$",
       "$A=\\{1, 3, 5\\}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "$15$의 약수는 $1,\\ 3,\\ 5,\\ 15$이므로 $A=\\{1,\\ 3,\\ 5,\\ 15\\}$이다.\n① $9$는 $A$의 원소가 아니므로 $9\\in A$는 옳지 않다.\n② $7$은 $A$의 원소가 아니므로 $\\{3,\\ 5,\\ 7\\}\\subset A$는 옳지 않다.\n③ $\\{3,\\ 5\\}$는 $A$의 원소가 아니라 부분집합이므로 $\\{3,\\ 5\\}\\subset A$로 써야 한다. $\\{3,\\ 5\\}\\in A$는 옳지 않다.\n④ $15$가 $A$의 원소이므로 $\\{15\\}\\subset A$는 옳다.\n⑤ $A=\\{1,\\ 3,\\ 5,\\ 15\\}$이므로 $A=\\{1,\\ 3,\\ 5\\}$는 옳지 않다.\n따라서 옳은 것은 ④이다."
   },
   {
     "id": 3,
@@ -94,8 +94,8 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $a$와 $b$에 대하여 두 집합\n$A=\\{2, a^2-2a\\}$, $B=\\{-1, b^2-b\\}$\n가 서로 같을 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$A=B$이므로 두 집합의 원소가 같다. $A=\\{2,\\ a^2-2a\\}$, $B=\\{-1,\\ b^2-b\\}$에서 $2$는 $-1$과 다르므로 $2=b^2-b$이고 $a^2-2a=-1$이다.\n$a^2-2a=-1$에서 $a^2-2a+1=(a-1)^2=0$이므로 $a=1$\n$b^2-b=2$에서 $b^2-b-2=(b-2)(b+1)=0$이므로 $b=2$ 또는 $b=-1$이고, $b$가 자연수이므로 $b=2$\n따라서 $a+b=1+2=3$"
   },
   {
     "id": 4,
@@ -122,8 +122,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 집합\n$A=\\{x \\mid x^2-8x+15=0\\}$,\n$B=\\{x \\mid x\\text{는 } 9\\text{ 이하의 홀수}\\}$\n에 대하여 $A \\subset X \\subset B$를 만족시키는 집합 $X$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "$A$: $x^2-8x+15=(x-3)(x-5)=0$에서 $A=\\{3,\\ 5\\}$\n$B$는 $9$ 이하의 홀수의 집합이므로 $B=\\{1,\\ 3,\\ 5,\\ 7,\\ 9\\}$\n$A\\subset X\\subset B$이면 $X$는 $3,\\ 5$를 반드시 포함하고, $B$의 나머지 원소 $1,\\ 7,\\ 9$는 포함해도 되고 안 해도 된다.\n따라서 $X$의 개수는 $2^3=8$"
   },
   {
     "id": 5,
@@ -150,8 +150,8 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$에 대하여\n$A_n = \\{x \\mid x\\text{는 } \\sqrt{4n}\\text{ 이하의 홀수}\\}$\n일 때, $A_n \\subset A_{100}$을 만족시키는 $n$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$110$",
+    "solution": "$A_n$은 $\\sqrt{4n}=2\\sqrt{n}$ 이하의 홀수의 집합이다.\n$A_{100}$은 $\\sqrt{400}=20$ 이하의 홀수의 집합이므로 $A_{100}=\\{1,\\ 3,\\ 5,\\ \\cdots,\\ 19\\}$이다.\n$A_n\\subset A_{100}$이려면 $A_n$이 $21$ 이상의 홀수를 원소로 갖지 않아야 하므로 $2\\sqrt{n}<21$이어야 한다.\n$\\sqrt{n}<\\frac{21}{2}$이므로 $n<\\frac{441}{4}=110.25$\n자연수 $n$의 최댓값은 $110$이다.\n(확인: $n=110$일 때 $2\\sqrt{110}\\approx 20.98<21$이므로 $A_{110}=A_{100}$)"
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
     "wide": false,
     "content": "전체집합 $U=\\{1, 2, 3, \\cdots, 10\\}$의 세 부분집합 $A$, $B$, $C$에 대하여\n$A \\cup B=\\{x \\mid x\\text{는 } 3\\text{의 배수}\\}$,\n$A \\cup C=\\{x \\mid x\\text{는 } 9\\text{의 약수}\\}$\n일 때, $A \\cup (B \\cap C)$의 모든 원소의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "$A\\cup B=\\{3,\\ 6,\\ 9\\}$, $A\\cup C$는 $9$의 약수의 집합이므로 $A\\cup C=\\{1,\\ 3,\\ 9\\}$이다.\n분배법칙에 의하여\n$$A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)=\\{3,\\ 6,\\ 9\\}\\cap\\{1,\\ 3,\\ 9\\}=\\{3,\\ 9\\}$$\n따라서 모든 원소의 합은 $3+9=12$"
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "전체집합 $U$의 두 부분집합 $A$와 $B$에 대하여\n$n(A^c \\cap B)=7$, $n(A \\cap B)=4$, $n(A \\cup B)=20$\n일 때, $n(A-B)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "$n(A^c\\cap B)=n(B-A)=n(B)-n(A\\cap B)=7$이고 $n(A\\cap B)=4$이므로 $n(B)=11$\n$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$이므로\n$$20=n(A)+11-4$$\n에서 $n(A)=13$\n따라서\n$$n(A-B)=n(A)-n(A\\cap B)=13-4=9$$"
   },
   {
     "id": 8,
@@ -240,8 +240,8 @@ window.questionBank = [
       "$P \\ne U$이면 ‘모든 $x$에 대하여 $p$이다.’는 거짓이다.",
       "$P \\ne \\varnothing$이면 ‘어떤 $x$에 대하여 $p$이다.’는 참이다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "① 조건 $\\sim p$의 진리집합은 $P$의 여집합 $P^c$이다. (옳다.)\n② $p\\longrightarrow q$가 참이면 $P\\subset Q$이므로 $Q^c\\subset P^c$이다. (옳다.)\n③ $p\\longrightarrow q$가 참이려면 $P\\subset Q$이어야 한다. $Q\\subset P$이면 명제 $p\\longrightarrow q$가 참이라고 할 수 없다. (옳지 않다.)\n④ '모든 $x$에 대하여 $p$이다'가 참이려면 $P=U$이어야 하므로 $P\\ne U$이면 거짓이다. (옳다.)\n⑤ '어떤 $x$에 대하여 $p$이다'가 참이려면 $P\\ne\\varnothing$이어야 한다. (옳다.)\n따라서 옳지 않은 것은 ③이다."
   },
   {
     "id": 9,
@@ -268,8 +268,8 @@ window.questionBank = [
     "wide": false,
     "content": "명제 ‘모든 양수 $x$에 대하여 $x-a+5>0$이다.’가 참이 되도록 하는 자연수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1,\\ 2,\\ 3,\\ 4,\\ 5$",
+    "solution": "모든 양수 $x$에 대하여 $x-a+5>0$, 즉 $x>a-5$가 성립해야 한다.\n양수 $x$는 $0$보다 큰 모든 수이므로 $a-5\\le 0$이어야 한다. ($a-5>0$이면 $0<x\\le a-5$인 양수 $x$에서 성립하지 않는다.)\n따라서 $a\\le 5$이고 자연수 $a$는 $1,\\ 2,\\ 3,\\ 4,\\ 5$이다."
   },
   {
     "id": 10,
@@ -302,8 +302,8 @@ window.questionBank = [
       "$\\sim p \\longrightarrow \\sim q$",
       "$q \\longrightarrow p$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "명제 $\\sim p\\longrightarrow q$의 역은 $q\\longrightarrow\\sim p$이고 이것이 참이다.\n참인 명제의 대우도 참이므로 $q\\longrightarrow\\sim p$의 대우인 $p\\longrightarrow\\sim q$가 참이다.\n따라서 항상 참인 것은 ②이다."
   },
   {
     "id": 11,
@@ -330,8 +330,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $(x-a+6)(x+2a-16)=0$,\n$q$: $x(x-2a) \\le 0$\n일 때, $p$가 $q$이기 위한 충분조건이 되도록 하는 모든 정수 $a$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$21$",
+    "solution": "$p$의 진리집합: $(x-a+6)(x+2a-16)=0$에서 $P=\\{a-6,\\ 16-2a\\}$\n$q$의 진리집합: $x(x-2a)\\le 0$이므로 $a>0$이면 $Q=\\{x\\mid 0\\le x\\le 2a\\}$, $a=0$이면 $Q=\\{0\\}$, $a<0$이면 $Q=\\{x\\mid 2a\\le x\\le 0\\}$\n$p$가 $q$이기 위한 충분조건이려면 $P\\subset Q$이어야 한다.\n(i) $a>0$일 때: $0\\le a-6\\le 2a$에서 $a\\ge 6$이다. 또 $0\\le 16-2a\\le 2a$에서 $a\\le 8$이고 $a\\ge 4$이므로 $4\\le a\\le 8$이다. 공통부분은 $6\\le a\\le 8$\n(ii) $a=0$일 때: $P=\\{-6,\\ 16\\}$이고 $Q=\\{0\\}$이므로 $P\\subset Q$가 아니다.\n(iii) $a<0$일 때: $16-2a>0$이므로 $16-2a\\in[2a,\\ 0]$이 될 수 없다.\n따라서 정수 $a$는 $6,\\ 7,\\ 8$이고 합은 $21$이다."
   },
   {
     "id": 12,
@@ -392,8 +392,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$와 $b$에 대하여 세 조건 $p$, $q$, $r$이\n$p$: $|a|+|b|=0$,\n$q$: $|a+b|=|a-b|$,\n$r$: $ab=0$\n일 때, 옳은 것을 보기에서 모두 고르시오.\n<보기>\nㄱ. $p$는 $q$이기 위한 충분조건이다.\nㄴ. $\\sim p$는 $\\sim r$이기 위한 필요조건이다.\nㄷ. $\\sim q$는 $\\sim r$이기 위한 필요충분조건이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄷ",
+    "solution": "$p$: $|a|+|b|=0$이면 $a=0$이고 $b=0$이다.\n$q$: $|a+b|=|a-b|$의 양변을 제곱하면 $a^2+2ab+b^2=a^2-2ab+b^2$에서 $4ab=0$이므로 $ab=0$이다. 따라서 $q$와 $r$은 같은 조건이다.\nㄱ. $a=0,\\ b=0$이면 $ab=0$이므로 $p\\Rightarrow q$이다. $p$는 $q$이기 위한 충분조건이다. (참)\nㄴ. $\\sim p$가 $\\sim r$이기 위한 필요조건이려면 $\\sim r\\Rightarrow\\sim p$이어야 하고 이는 그 대우 $p\\Rightarrow r$과 같다. $p\\Rightarrow r$은 참이다. (참)\nㄷ. $q$와 $r$이 같은 조건이므로 $\\sim q$와 $\\sim r$도 같은 조건이다. $\\sim q$는 $\\sim r$이기 위한 필요충분조건이다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다."
   },
   {
     "id": 14,
@@ -420,8 +420,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x>0$이고 $y>0$일 때, $\\left(4x+\\dfrac{1}{y}\\right)\\left(\\dfrac{1}{x}+16y\\right)$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$36$",
+    "solution": "식을 전개하면\n$$\\left(4x+\\frac{1}{y}\\right)\\left(\\frac{1}{x}+16y\\right)=4+64xy+\\frac{1}{xy}+16=20+64xy+\\frac{1}{xy}$$\n$x>0,\\ y>0$이므로 $64xy>0,\\ \\frac{1}{xy}>0$이고 산술평균과 기하평균의 관계에 의하여\n$$64xy+\\frac{1}{xy}\\ge 2\\sqrt{64xy\\times\\frac{1}{xy}}=2\\times 8=16$$\n(등호는 $64xy=\\frac{1}{xy}$, 즉 $xy=\\frac{1}{8}$일 때 성립)\n따라서 최솟값은 $20+16=36$"
   },
   {
     "id": 15,
@@ -448,8 +448,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 동아리 $\\mathrm{A}$ 또는 $\\mathrm{B}$에 가입한 남학생 $28$명과 여학생 $22$명을 조사한 결과가 다음과 같다.\n(가) 동아리 $\\mathrm{A}$에 가입한 학생 수와 동아리 $\\mathrm{B}$에 가입한 학생 수의 합은 $60$이다.\n(나) 두 동아리 $\\mathrm{A}$와 $\\mathrm{B}$ 중에서 한 동아리에만 가입한 남학생 수와 여학생 수는 같다.\n이때 두 동아리 $\\mathrm{A}$와 $\\mathrm{B}$에 모두 가입한 여학생 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "동아리 $\\mathrm{A}$ 또는 $\\mathrm{B}$에 가입한 학생은 모두 $28+22=50$명이다. 동아리 $\\mathrm{A}$에 가입한 학생의 집합을 $A$, $\\mathrm{B}$에 가입한 학생의 집합을 $B$라 하면 $n(A\\cup B)=50$이다.\n(가)에서 $n(A)+n(B)=60$이므로\n$$n(A\\cap B)=n(A)+n(B)-n(A\\cup B)=60-50=10$$\n즉 두 동아리에 모두 가입한 학생은 $10$명이다.\n두 동아리에 모두 가입한 남학생 수를 $x$, 여학생 수를 $y$라 하면 $x+y=10\\qquad\\cdots\\ ①$\n한 동아리에만 가입한 남학생 수는 $28-x$, 여학생 수는 $22-y$이고 (나)에서 이 둘이 같으므로\n$$28-x=22-y\\quad\\text{에서}\\quad x-y=6\\qquad\\cdots\\ ②$$\n①$+$②를 하면 $2x=16$이므로 $x=8$, $y=2$\n따라서 두 동아리에 모두 가입한 여학생 수는 $2$이다."
   },
   {
     "id": 16,
@@ -476,8 +476,8 @@ window.questionBank = [
     "wide": false,
     "content": "귀류법을 이용하여 다음 명제가 참임을 증명하시오.\n‘$\\sqrt{3}$은 유리수가 아니다.’",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조 (귀류법)",
+    "solution": "$\\sqrt{3}$이 유리수라고 가정하자. 그러면 서로소인 두 자연수 $m,\\ n$에 대하여\n$$\\sqrt{3}=\\frac{m}{n}$$\n으로 나타낼 수 있다. 양변에 $n$을 곱하고 제곱하면\n$$3n^2=m^2\\qquad\\cdots\\ ①$$\n①에서 $m^2$이 $3$의 배수이므로 $m$도 $3$의 배수이다. ($m$이 $3$의 배수가 아니면 $m^2$도 $3$의 배수가 아니기 때문이다.)\n$m=3k$ ($k$는 자연수)로 놓고 ①에 대입하면\n$$3n^2=9k^2\\quad\\text{에서}\\quad n^2=3k^2$$\n따라서 $n^2$이 $3$의 배수이므로 $n$도 $3$의 배수이다.\n그러면 $m,\\ n$이 모두 $3$의 배수가 되어 $m,\\ n$이 서로소라는 가정에 모순이다.\n따라서 $\\sqrt{3}$은 유리수가 아니다. (증명 끝)"
   },
   {
     "id": 17,
@@ -504,7 +504,7 @@ window.questionBank = [
     "wide": false,
     "content": "$a>0$이고 $b>0$일 때, 다음 부등식이 성립함을 증명하시오.\n$a^3+b^3 \\ge ab(a+b)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "$a^3+b^3-ab(a+b)$를 계산하여 $0$ 이상임을 보인다.\n$$a^3+b^3-ab(a+b)=(a+b)(a^2-ab+b^2)-ab(a+b)$$\n$$=(a+b)(a^2-ab+b^2-ab)=(a+b)(a-b)^2$$\n$a>0,\\ b>0$이므로 $a+b>0$이고 $(a-b)^2\\ge 0$이다. 따라서\n$$(a+b)(a-b)^2\\ge 0$$\n이므로 $a^3+b^3\\ge ab(a+b)$가 성립한다. (등호는 $a=b$일 때 성립) (증명 끝)"
   }
 ];

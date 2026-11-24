@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $x-xi-1+3xi+yi=\\overline{4i}$를 만족시키는 두 실수 $x, y$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=1,\\ y=-6$",
+    "solution": "$\\overline{4i}=-4i$이므로 주어진 등식의 좌변을 실수부분과 허수부분으로 나누어 정리하면\n$$x-xi-1+3xi+yi=(x-1)+(2x+y)i=-4i$$\n복소수가 서로 같을 조건에 의하여\n실수부분: $x-1=0$이므로 $x=1$\n허수부분: $2x+y=-4$이므로 $2+y=-4$, 즉 $y=-6$\n따라서 $x=1,\\ y=-6$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-2x+k=0$이 다음과 같은 근을 가질 때, 실수 $k$의 값 또는 그 범위를 구하시오.\n⑴ 서로 다른 두 실근\n⑵ 중근(실근)\n⑶ 서로 다른 두 허근\n⑷ 실근",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $k<1$\n⑵ $k=1$\n⑶ $k>1$\n⑷ $k\\le 1$",
+    "solution": "이차방정식 $x^2-2x+k=0$의 판별식을 $D$라 하면\n$$\\frac{D}{4}=(-1)^2-k=1-k$$\n⑴ 서로 다른 두 실근을 가지려면 $D>0$이므로 $1-k>0$, 즉 $k<1$\n⑵ 중근을 가지려면 $D=0$이므로 $1-k=0$, 즉 $k=1$\n⑶ 서로 다른 두 허근을 가지려면 $D<0$이므로 $1-k<0$, 즉 $k>1$\n⑷ 실근을 가지려면 $D\\ge 0$이므로 $1-k\\ge 0$, 즉 $k\\le 1$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+3x-5=0$의 두 근을 $\\alpha, \\beta$라고 할 때, 다음 식의 값을 구하시오.\n⑴ $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$\n⑵ $\\alpha^2+\\beta^2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{3}{5}$\n⑵ $19$",
+    "solution": "근과 계수의 관계에 의하여\n$$\\alpha+\\beta=-3,\\qquad \\alpha\\beta=-5$$\n⑴ $$\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}=\\frac{-3}{-5}=\\frac{3}{5}$$\n⑵ $$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=(-3)^2-2\\times(-5)=9+10=19$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $iz+3(1-\\overline{z})=0$을 만족시키는 복소수 $z$를 구하시오. (단, $\\overline{z}$는 $z$의 켤레복소수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$z=\\frac{9}{8}-\\frac{3}{8}i$",
+    "solution": "$z=a+bi$ ($a,\\ b$는 실수)라 하면 $\\overline{z}=a-bi$이므로\n$$iz+3(1-\\overline{z})=i(a+bi)+3(1-a+bi)$$\n$$=ai-b+3-3a+3bi=(-3a-b+3)+(a+3b)i=0$$\n복소수가 $0$이 될 조건에 의하여\n$-3a-b+3=0\\qquad\\cdots\\ ①$\n$a+3b=0\\qquad\\cdots\\ ②$\n②에서 $a=-3b$를 ①에 대입하면 $9b-b+3=0$이므로 $8b=-3$, 즉 $b=-\\frac{3}{8}$\n$a=-3b=\\frac{9}{8}$\n따라서 $z=\\frac{9}{8}-\\frac{3}{8}i$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$$\\sqrt{-2}\\sqrt{-4}+\\sqrt{-3}\\sqrt{3}+\\frac{\\sqrt{125}}{\\sqrt{-5}}+\\frac{\\sqrt{-72}}{\\sqrt{-4}}=a+bi$$\n일 때, 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=\\sqrt{2},\\ b=-2$",
+    "solution": "음수의 제곱근을 $i$를 이용하여 나타내어 각 항을 계산한다.\n$$\\sqrt{-2}\\sqrt{-4}=\\sqrt{2}i\\times 2i=2\\sqrt{2}i^2=-2\\sqrt{2}$$\n$$\\sqrt{-3}\\sqrt{3}=\\sqrt{3}i\\times\\sqrt{3}=3i$$\n$$\\frac{\\sqrt{125}}{\\sqrt{-5}}=\\frac{5\\sqrt{5}}{\\sqrt{5}i}=\\frac{5}{i}=\\frac{5i}{i^2}=-5i$$\n$$\\frac{\\sqrt{-72}}{\\sqrt{-4}}=\\frac{6\\sqrt{2}i}{2i}=3\\sqrt{2}$$\n모두 더하면\n$$-2\\sqrt{2}+3i-5i+3\\sqrt{2}=\\sqrt{2}-2i$$\n따라서 $a=\\sqrt{2},\\ b=-2$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "복소수 $z$가 $z=\\frac{1-i}{\\sqrt{2}}$일 때,\n$$z^2+z^4+z^6+z^8+z^{10}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-i$",
+    "solution": "$z=\\frac{1-i}{\\sqrt{2}}$이므로\n$$z^2=\\frac{(1-i)^2}{2}=\\frac{1-2i+i^2}{2}=\\frac{-2i}{2}=-i$$\n$z^4=(z^2)^2=(-i)^2=-1$\n$z^6=z^4\\times z^2=(-1)(-i)=i$\n$z^8=(z^4)^2=1$\n$z^{10}=z^8\\times z^2=-i$\n따라서\n$$z^2+z^4+z^6+z^8+z^{10}=-i+(-1)+i+1+(-i)=-i$$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2+2kx+k^2-k+5=0$이 실근을 갖도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k\\ge 5$",
+    "solution": "이차방정식 $x^2+2kx+k^2-k+5=0$이 실근을 가지려면 판별식 $D\\ge 0$이어야 한다.\n$$\\frac{D}{4}=k^2-(k^2-k+5)=k-5\\ge 0$$\n따라서 $k\\ge 5$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $(a+c)x^2+2bx+(a-c)=0$이 중근을 가질 때, $a, b, c$를 세 변의 길이로 하는 삼각형은 어떤 삼각형인지 구하시오. (단, $a, b, c$는 양수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "빗변의 길이가 $a$인 직각삼각형",
+    "solution": "$a>0,\\ c>0$이므로 $a+c\\neq 0$이고 주어진 방정식은 이차방정식이다.\n중근을 가지려면 판별식 $D=0$이어야 한다.\n$$\\frac{D}{4}=b^2-(a+c)(a-c)=b^2-a^2+c^2=0$$\n따라서 $a^2=b^2+c^2$이다.\n이는 피타고라스 정리의 역에 의하여 $a$가 빗변의 길이인 직각삼각형이다."
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+ax+3=0$의 두 근을 $\\alpha, \\beta$라고 할 때, 이차방정식 $x^2+bx+15=0$의 두 근은 $\\alpha+\\beta$, $\\alpha\\beta$이다. 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-5,\\ b=-8$",
+    "solution": "$x^2+ax+3=0$의 두 근이 $\\alpha,\\ \\beta$이므로 근과 계수의 관계에 의하여\n$$\\alpha+\\beta=-a,\\qquad \\alpha\\beta=3$$\n$x^2+bx+15=0$의 두 근이 $\\alpha+\\beta,\\ \\alpha\\beta$이므로\n두 근의 합: $(\\alpha+\\beta)+\\alpha\\beta=-b$, 즉 $-a+3=-b\\qquad\\cdots\\ ①$\n두 근의 곱: $(\\alpha+\\beta)\\alpha\\beta=15$, 즉 $-a\\times 3=15\\qquad\\cdots\\ ②$\n②에서 $a=-5$\n①에 대입하면 $5+3=-b$이므로 $b=-8$\n(확인: $x^2-5x+3=0$은 판별식 $25-12>0$으로 실근을 갖고, $x^2-8x+15=(x-3)(x-5)$의 두 근 $3,\\ 5$는 $\\alpha+\\beta=5,\\ \\alpha\\beta=3$과 일치한다.)"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수가 아닌 두 복소수 $z, w$에 대하여 $z+\\overline{w}=0$일 때, 보기에서 항상 실수인 것만을 있는 대로 고르시오. (단, $\\overline{z}, \\overline{w}$는 각각 $z, w$의 켤레복소수이다.)\n\n<보기>\nㄱ. $w+\\overline{z}$\nㄴ. $\\overline{z}-w$\nㄷ. $\\frac{w}{z}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ",
+    "solution": "$z+\\overline{w}=0$이므로 $z=-\\overline{w}$이고, 양변의 켤레복소수를 취하면 $\\overline{z}=-w$이다.\nㄱ. $w+\\overline{z}=w+(-w)=0$이므로 실수이다. (참)\nㄴ. $\\overline{z}-w=-w-w=-2w$이다. $w$는 실수가 아니므로 $-2w$도 실수가 아니다. (거짓)\nㄷ. $\\frac{w}{z}=\\frac{w}{-\\overline{w}}=-\\frac{w}{\\overline{w}}$이다. 예를 들어 $w=1+i$이면 $-\\frac{1+i}{1-i}=-\\frac{(1+i)^2}{2}=-i$로 실수가 아니다. (거짓)\n따라서 항상 실수인 것은 ㄱ뿐이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$x^2-2(m+k)x+(k^2+4k-n)=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 두 실수 $m, n$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$m=2,\\ n=-4$",
+    "solution": "이차방정식이 중근을 가지려면 판별식 $D=0$이어야 한다.\n$$\\frac{D}{4}=(m+k)^2-(k^2+4k-n)=m^2+2mk+k^2-k^2-4k+n=(2m-4)k+m^2+n$$\n이 값이 실수 $k$의 값에 관계없이 항상 $0$이어야 하므로 $k$에 대한 항등식이다.\n$k$의 계수: $2m-4=0$이므로 $m=2$\n상수항: $m^2+n=0$이므로 $n=-4$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-kx+2k+6=0$의 두 근의 차가 $3$이 되도록 하는 모든 실수 $k$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "두 근을 $\\alpha,\\ \\beta$라 하면 근과 계수의 관계에서\n$$\\alpha+\\beta=k,\\qquad \\alpha\\beta=2k+6$$\n두 근의 차가 $3$이므로 $(\\alpha-\\beta)^2=9$이다.\n$$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=k^2-4(2k+6)=k^2-8k-24=9$$\n$k^2-8k-33=0$이므로 $(k-11)(k+3)=0$에서 $k=11$ 또는 $k=-3$\n이때 $D=k^2-8k-24=9>0$이므로 두 근은 실수이다.\n따라서 모든 실수 $k$의 값의 합은 $11+(-3)=8$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 복소수 $z, w$에 대하여 $z=\\frac{5}{1+2i}$이고 $zw=5$일 때, $z^3-w^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4i$",
+    "solution": "$$z=\\frac{5}{1+2i}=\\frac{5(1-2i)}{(1+2i)(1-2i)}=\\frac{5(1-2i)}{5}=1-2i$$\n$zw=5$이므로\n$$w=\\frac{5}{z}=\\frac{5}{1-2i}=\\frac{5(1+2i)}{(1-2i)(1+2i)}=1+2i$$\n$z-w=-4i$이고 $zw=5$이므로\n$$z^3-w^3=(z-w)^3+3zw(z-w)=(-4i)^3+3\\times 5\\times(-4i)$$\n$(-4i)^3=-64i^3=64i$이므로\n$$z^3-w^3=64i-60i=4i$$\n(확인: $(1-2i)^3=-11+2i$, $(1+2i)^3=-11-2i$이므로 차는 $4i$)"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$x^2-4ax+4b^2+4b+2=0$$\n이 중근을 가질 때, 이차방정식 $bx^2+2ax+b+1=0$의 근을 판별하시오. (단, $a, b$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "서로 다른 두 실근",
+    "solution": "$x^2-4ax+4b^2+4b+2=0$이 중근을 가지므로 판별식이 $0$이다.\n$$\\frac{D}{4}=(2a)^2-(4b^2+4b+2)=4a^2-4b^2-4b-2=0$$\n따라서 $a^2=b^2+b+\\frac{1}{2}\\qquad\\cdots\\ ①$\n이차방정식 $bx^2+2ax+b+1=0$의 판별식을 $D'$이라 하면 $b\\neq 0$이고\n$$\\frac{D'}{4}=a^2-b(b+1)=a^2-b^2-b$$\n①을 대입하면\n$$\\frac{D'}{4}=\\left(b^2+b+\\frac{1}{2}\\right)-b^2-b=\\frac{1}{2}>0$$\n따라서 $D'>0$이므로 이차방정식 $bx^2+2ax+b+1=0$은 서로 다른 두 실근을 갖는다."
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+2x+3=0$의 서로 다른 두 근을 $\\alpha, \\beta$라고 할 때,\n$$\\frac{1}{\\alpha^2+3\\alpha+3}+\\frac{1}{\\beta^2+3\\beta+3}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2}{3}$",
+    "solution": "$\\alpha,\\ \\beta$가 $x^2+2x+3=0$의 근이므로\n$$\\alpha^2+2\\alpha+3=0,\\qquad \\beta^2+2\\beta+3=0$$\n따라서\n$$\\alpha^2+3\\alpha+3=(\\alpha^2+2\\alpha+3)+\\alpha=\\alpha,\\qquad \\beta^2+3\\beta+3=\\beta$$\n이므로\n$$\\frac{1}{\\alpha^2+3\\alpha+3}+\\frac{1}{\\beta^2+3\\beta+3}=\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}$$\n근과 계수의 관계에서 $\\alpha+\\beta=-2,\\ \\alpha\\beta=3$이므로\n$$\\frac{\\alpha+\\beta}{\\alpha\\beta}=-\\frac{2}{3}$$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=-2x^2+ax+4$의 그래프가 $x$축과 두 점 $\\mathrm{A, B}$에서 만난다. 두 점 $\\mathrm{A, B}$의 $x$좌표의 합이 $5$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "두 점 $\\mathrm{A,\\ B}$의 $x$좌표는 이차방정식 $-2x^2+ax+4=0$, 즉 $2x^2-ax-4=0$의 두 실근이다.\n근과 계수의 관계에서 두 근의 합은 $\\frac{a}{2}$이다.\n$$\\frac{a}{2}=5$$\n이므로 $a=10$\n이때 $2x^2-10x-4=0$의 판별식은 $100+32>0$이므로 서로 다른 두 실근을 갖는다."
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=x^2+x+4$의 그래프와 직선 $y=x+k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k>4$",
+    "solution": "이차함수의 그래프와 직선이 서로 다른 두 점에서 만나려면 방정식 $x^2+x+4=x+k$가 서로 다른 두 실근을 가져야 한다.\n정리하면 $x^2+4-k=0$\n판별식 $D=0^2-4(4-k)=4k-16>0$이어야 하므로 $k>4$"
   },
   {
     "id": 18,
@@ -502,8 +502,8 @@ window.questionBank = [
     "wide": false,
     "content": "$-1\\le x\\le 3$에서 이차함수 $y=(x-2)^2+1$의 최댓값과 최솟값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값 $10$, 최솟값 $1$",
+    "solution": "$y=(x-2)^2+1$의 그래프는 꼭짓점이 $(2,\\ 1)$이고 아래로 볼록하다.\n$-1\\le x\\le 3$에서 $x=2$가 범위에 포함되므로 $x=2$일 때 최솟값 $1$을 갖는다.\n범위의 양 끝에서의 값은\n$x=-1$일 때 $y=(-3)^2+1=10$\n$x=3$일 때 $y=1^2+1=2$\n이므로 $x=-1$일 때 최댓값 $10$을 갖는다."
   },
   {
     "id": 19,
@@ -530,8 +530,8 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$에 대하여 이차함수 $y=x^2-2x-1+n$의 그래프와 $x$축이 만나는 점의 개수를 $f(n)$이라고 할 때,\n$$f(1)+f(2)+f(3)+f(4)$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$y=x^2-2x-1+n$의 그래프와 $x$축이 만나는 점의 개수는 방정식 $x^2-2x+(n-1)=0$의 서로 다른 실근의 개수와 같다.\n$$\\frac{D}{4}=1-(n-1)=2-n$$\n$n=1$일 때 $\\frac{D}{4}=1>0$이므로 $f(1)=2$\n$n=2$일 때 $\\frac{D}{4}=0$이므로 $f(2)=1$\n$n=3$일 때 $\\frac{D}{4}=-1<0$이므로 $f(3)=0$\n$n=4$일 때 $\\frac{D}{4}=-2<0$이므로 $f(4)=0$\n따라서 $f(1)+f(2)+f(3)+f(4)=2+1+0+0=3$"
   },
   {
     "id": 20,
@@ -558,8 +558,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=x^2-7x+a$의 그래프와 직선 $y=x+k$가 두 점 $\\mathrm{A}(x_1, y_1)$, $\\mathrm{B}(x_2, y_2)$에서 만난다. $x_2-x_1=4$일 때, 두 실수 $a, k$에 대하여 $a-k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "두 점 $\\mathrm{A,\\ B}$의 $x$좌표 $x_1,\\ x_2$는 방정식 $x^2-7x+a=x+k$, 즉 $x^2-8x+(a-k)=0$의 두 근이다.\n근과 계수의 관계에서\n$$x_1+x_2=8,\\qquad x_1x_2=a-k$$\n$x_2-x_1=4$이므로 $(x_2-x_1)^2=16$이다.\n$$(x_2-x_1)^2=(x_1+x_2)^2-4x_1x_2=64-4(a-k)=16$$\n$4(a-k)=48$이므로 $a-k=12$"
   },
   {
     "id": 21,
@@ -586,8 +586,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=x^2-3x$의 그래프와 직선 $y=-x+k$가 서로 다른 두 점에서 만날 때, 두 교점의 $x$좌표의 합을 $f(k)$, 곱을 $g(k)$라고 하자. $\\{g(k)\\}^2=f(1)\\times f(4)$를 만족시키는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "$x^2-3x=-x+k$를 정리하면 $x^2-2x-k=0$\n서로 다른 두 점에서 만나려면 $\\frac{D}{4}=1+k>0$, 즉 $k>-1$이어야 한다.\n근과 계수의 관계에서 $f(k)=2,\\ g(k)=-k$\n$f(1)=2,\\ f(4)=2$이므로 $f(1)\\times f(4)=4$\n$\\{g(k)\\}^2=k^2=4$이므로 $k=2$ 또는 $k=-2$\n$k>-1$이어야 하므로 $k=2$"
   },
   {
     "id": 22,
@@ -614,8 +614,8 @@ window.questionBank = [
     "wide": false,
     "content": "$-2\\le x\\le 2$에서 이차함수 $y=-3x^2-6x+a$의 최솟값이 $6$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "$y=-3x^2-6x+a=-3(x+1)^2+3+a$이므로 그래프는 위로 볼록하고 꼭짓점의 $x$좌표는 $-1$이다.\n$-2\\le x\\le 2$에서 꼭짓점에서 더 먼 쪽인 $x=2$에서 최솟값을 갖는다.\n$$y=-3\\times 4-6\\times 2+a=a-24$$\n최솟값이 $6$이므로 $a-24=6$, 즉 $a=30$"
   },
   {
     "id": 23,
@@ -642,8 +642,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1\\le x\\le 3$일 때, 이차함수 $y=x^2+2x+k$의 최댓값과 최솟값의 차를 구하시오. (단, $k$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "$y=x^2+2x+k=(x+1)^2+k-1$이므로 꼭짓점의 $x$좌표는 $-1$이고, $1\\le x\\le 3$에서는 $x$가 증가하면 $y$도 증가한다.\n$x=1$일 때 최솟값 $1+2+k=k+3$\n$x=3$일 때 최댓값 $9+6+k=k+15$\n따라서 (최댓값)$-$(최솟값)$=(k+15)-(k+3)=12$"
   },
   {
     "id": 24,
@@ -670,8 +670,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차함수 $y=x^2-4ax+3a^2-4a$의 최솟값을 $f(a)$라고 할 때, $0\\le a\\le 3$에서 함수 $f(a)$의 최댓값과 최솟값의 합을 구하시오. (단, $a$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-21$",
+    "solution": "$y=x^2-4ax+3a^2-4a=(x-2a)^2-a^2-4a$이므로 최솟값은 $f(a)=-a^2-4a$이다.\n$$f(a)=-(a+2)^2+4$$\n이므로 그래프는 위로 볼록하고 꼭짓점의 $a$좌표는 $-2$이다. $0\\le a\\le 3$에서 $f(a)$는 감소한다.\n$a=0$일 때 최댓값 $f(0)=0$\n$a=3$일 때 최솟값 $f(3)=-9-12=-21$\n따라서 최댓값과 최솟값의 합은 $0+(-21)=-21$"
   },
   {
     "id": 25,
@@ -698,8 +698,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차함수\n$$y=x^2-2(2a-k)x+k^2+3k+b$$\n의 그래프가 실수 $k$의 값에 관계없이 항상 $x$축에 접할 때, 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-\\frac{3}{4},\\ b=\\frac{9}{4}$",
+    "solution": "그래프가 항상 $x$축에 접하려면 $x^2-2(2a-k)x+k^2+3k+b=0$의 판별식이 항상 $0$이어야 한다.\n$$\\frac{D}{4}=(2a-k)^2-(k^2+3k+b)=4a^2-4ak+k^2-k^2-3k-b=(-4a-3)k+4a^2-b$$\n이 값이 $k$의 값에 관계없이 $0$이어야 하므로 $k$에 대한 항등식이다.\n$k$의 계수: $-4a-3=0$이므로 $a=-\\frac{3}{4}$\n상수항: $4a^2-b=0$이므로 $b=4a^2=4\\times\\frac{9}{16}=\\frac{9}{4}$"
   },
   {
     "id": 26,
@@ -726,8 +726,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0\\le x\\le a$에서 이차함수 $y=x^2-4x+3$의 최댓값과 최솟값의 합이 $4$가 되도록 하는 모든 양수 $a$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4-\\sqrt{2}+\\sqrt{6}$",
+    "solution": "$y=x^2-4x+3=(x-2)^2-1$이므로 꼭짓점은 $(2,\\ -1)$이고 $f(0)=3$이다. $f(4)=3$이므로 $x=0$과 $x=4$에서 값이 같다. $a$의 범위를 나누어 본다.\n(i) $0<a<2$: 구간에서 감소하므로 최댓값 $f(0)=3$, 최솟값 $f(a)=a^2-4a+3$\n합이 $4$이므로 $3+a^2-4a+3=4$에서 $a^2-4a+2=0$, $a=2\\pm\\sqrt{2}$\n$0<a<2$이므로 $a=2-\\sqrt{2}$\n(ii) $2\\le a\\le 4$: 최솟값 $-1$, 최댓값 $3$이므로 합은 $2$이다. 조건에 맞지 않는다.\n(iii) $a>4$: 최솟값 $-1$, 최댓값 $f(a)=a^2-4a+3$\n합이 $4$이므로 $a^2-4a+2=4$에서 $a^2-4a-2=0$, $a=2\\pm\\sqrt{6}$\n$a>4$이므로 $a=2+\\sqrt{6}$ (약 $4.45$)\n따라서 모든 양수 $a$의 값의 합은\n$$(2-\\sqrt{2})+(2+\\sqrt{6})=4-\\sqrt{2}+\\sqrt{6}$$"
   },
   {
     "id": 27,
@@ -754,8 +754,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 벽면을 활용하여 길이가 $28\\text{ m}$인 철망으로 ㄷ자 모양의 울타리를 만들려고 한다. 울타리 안쪽 직사각형 모양 땅의 가로의 길이와 세로의 길이가 모두 $4\\text{ m}$ 이상이 되도록 만들 때, 울타리 안쪽 땅의 넓이의 최댓값과 최솟값을 각각 구하시오. (단, 철망의 두께는 생각하지 않는다.)\n<img src=\"q27.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값 $98\\text{ m}^2$, 최솟값 $48\\text{ m}^2$",
+    "solution": "벽면과 수직인 두 변의 길이를 각각 $x\\text{ m}$라 하면 벽면과 평행한 변의 길이는 $28-2x\\text{ m}$이다.\n가로와 세로가 모두 $4\\text{ m}$ 이상이어야 하므로\n$$x\\ge 4,\\qquad 28-2x\\ge 4\\ \\text{에서}\\ x\\le 12$$\n즉 $4\\le x\\le 12$이다.\n땅의 넓이를 $S$라 하면\n$$S=x(28-2x)=-2x^2+28x=-2(x-7)^2+98$$\n꼭짓점의 $x$좌표 $7$이 범위에 포함되므로 $x=7$일 때 최댓값 $98$이다.\n양 끝에서의 값은 $x=4$일 때 $S=4\\times 20=80$, $x=12$일 때 $S=12\\times 4=48$이므로 $x=12$일 때 최솟값 $48$이다.\n따라서 넓이의 최댓값은 $98\\text{ m}^2$, 최솟값은 $48\\text{ m}^2$이다."
   },
   {
     "id": 28,
@@ -782,8 +782,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x^2$의 계수가 $1$인 이차함수 $y=f(x)$가 다음 조건을 만족시킨다. 이차함수 $y=f(x)$의 그래프와 $x$축이 만나는 서로 다른 두 점의 $x$좌표를 각각 $\\alpha, \\beta$라고 할 때, $\\alpha^2+\\beta^2$의 값을 구하시오.\n\n(가) 이차함수 $y=f(x)$의 그래프와 직선 $y=-4$는 한 점에서 만난다.\n(나) 이차함수 $y=f(x)$의 그래프와 직선 $y=2x$가 만나는 서로 다른 두 점의 $x$좌표의 합은 $2$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "$f(x)=x^2+bx+c$라 하자.\n(가) $y=f(x)$의 그래프와 직선 $y=-4$가 한 점에서 만나므로 $f(x)=-4$, 즉 $x^2+bx+c+4=0$이 중근을 가진다.\n$$b^2-4(c+4)=0\\qquad\\cdots\\ ①$$\n(나) $f(x)=2x$, 즉 $x^2+(b-2)x+c=0$의 두 근의 합이 $2$이므로 근과 계수의 관계에서\n$$-(b-2)=2\\ \\text{에서}\\ b=0$$\n①에 $b=0$을 대입하면 $-4(c+4)=0$이므로 $c=-4$\n따라서 $f(x)=x^2-4$이다. (이때 $x^2-2x-4=0$은 판별식 $4+16>0$으로 서로 다른 두 근을 가진다.)\n$y=f(x)$와 $x$축이 만나는 점의 $x$좌표는 $x^2-4=0$의 두 근 $\\alpha,\\ \\beta$이므로 $\\alpha+\\beta=0,\\ \\alpha\\beta=-4$\n$$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=0+8=8$$"
   },
   {
     "id": 29,
@@ -810,8 +810,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0\\le x\\le 4$에서 이차함수 $y=x^2-2ax$의 최댓값과 최솟값의 합이 $7$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$y=x^2-2ax=(x-a)^2-a^2$이므로 꼭짓점의 $x$좌표는 $a$이다. $a$의 범위에 따라 나누어 구한다. ($f(0)=0,\\ f(4)=16-8a$)\n(i) $a<0$: $0\\le x\\le 4$에서 증가하므로 최솟값 $f(0)=0$, 최댓값 $f(4)=16-8a$\n합이 $7$이면 $16-8a=7$에서 $a=\\frac{9}{8}$인데 $a<0$에 모순이다.\n(ii) $0\\le a<2$: 최솟값 $-a^2$, 최댓값은 꼭짓점에서 더 먼 $x=4$에서 $16-8a$\n합이 $7$이면 $16-8a-a^2=7$에서 $a^2+8a-9=0$, $(a+9)(a-1)=0$이므로 $a=1$ ($0\\le a<2$를 만족)\n(iii) $a=2$: 최솟값 $-4$, 최댓값 $0$이므로 합은 $-4$이다. 조건에 맞지 않는다.\n(iv) $2<a\\le 4$: 최솟값 $-a^2$, 최댓값 $f(0)=0$이므로 합이 $-a^2=7$은 불가능하다.\n(v) $a>4$: 감소하므로 최댓값 $f(0)=0$, 최솟값 $f(4)=16-8a$\n합이 $7$이면 $a=\\frac{9}{8}$인데 $a>4$에 모순이다.\n따라서 $a=1$"
   },
   {
     "id": 30,
@@ -838,8 +838,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2\\le a\\le 3$일 때, $x$에 대한 이차방정식\n$$x^2-2ax+2a^2-5a+4=0$$\n이 서로 다른 두 실근 $\\alpha, \\beta$를 갖는다. $(2-\\alpha)(2-\\beta)$의 최댓값과 최솟값을 각각 구하시오. (단, $a$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값 $-1$, 최솟값 $-\\frac{17}{8}$",
+    "solution": "$x^2-2ax+2a^2-5a+4=0$의 두 근이 $\\alpha,\\ \\beta$이므로 근과 계수의 관계에서\n$$\\alpha+\\beta=2a,\\qquad \\alpha\\beta=2a^2-5a+4$$\n(서로 다른 두 실근을 갖는 조건: $\\frac{D}{4}=a^2-(2a^2-5a+4)=-a^2+5a-4=-(a-1)(a-4)>0$에서 $1<a<4$이므로 $2\\le a\\le 3$에서 항상 성립한다.)\n$$(2-\\alpha)(2-\\beta)=4-2(\\alpha+\\beta)+\\alpha\\beta=4-4a+2a^2-5a+4=2a^2-9a+8$$\n$f(a)=2a^2-9a+8=2\\left(a-\\frac{9}{4}\\right)^2-\\frac{17}{8}$이다. 꼭짓점의 $a$좌표 $\\frac{9}{4}$는 $2\\le a\\le 3$에 포함된다.\n$a=\\frac{9}{4}$일 때 최솟값 $-\\frac{17}{8}$\n양 끝에서 $f(2)=8-18+8=-2$, $f(3)=18-27+8=-1$이므로 $a=3$일 때 최댓값 $-1$"
   },
   {
     "id": 31,
@@ -866,8 +866,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $x^3-27=0$\n⑵ $x^4+x^2-2=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=3$ 또는 $x=\\frac{-3\\pm 3\\sqrt{3}i}{2}$\n⑵ $x=\\pm 1$ 또는 $x=\\pm\\sqrt{2}i$",
+    "solution": "⑴ $x^3-27=(x-3)(x^2+3x+9)=0$\n$x-3=0$에서 $x=3$\n$x^2+3x+9=0$에서 근의 공식으로 $x=\\frac{-3\\pm\\sqrt{9-36}}{2}=\\frac{-3\\pm 3\\sqrt{3}i}{2}$\n⑵ $x^2=X$로 놓으면 $X^2+X-2=(X+2)(X-1)=0$이므로 $X=-2$ 또는 $X=1$\n$x^2=-2$에서 $x=\\pm\\sqrt{2}i$\n$x^2=1$에서 $x=\\pm 1$"
   },
   {
     "id": 32,
@@ -894,8 +894,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} x+2y=0 \\\\ x^2-xy-2y^2=4 \\end{cases}$\n⑵ $\\begin{cases} 2x-y=2 \\\\ 3x^2-2x-y^2=4 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{cases} x=-2 \\\\ y=1 \\end{cases}$ 또는 $\\begin{cases} x=2 \\\\ y=-1 \\end{cases}$\n⑵ $\\begin{cases} x=2 \\\\ y=2 \\end{cases}$ 또는 $\\begin{cases} x=4 \\\\ y=6 \\end{cases}$",
+    "solution": "⑴ $x+2y=0$에서 $x=-2y$를 $x^2-xy-2y^2=4$에 대입하면\n$$4y^2+2y^2-2y^2=4y^2=4$$\n$y^2=1$이므로 $y=\\pm 1$\n$y=1$일 때 $x=-2$, $y=-1$일 때 $x=2$\n⑵ $2x-y=2$에서 $y=2x-2$를 $3x^2-2x-y^2=4$에 대입하면\n$$3x^2-2x-(2x-2)^2=3x^2-2x-4x^2+8x-4=-x^2+6x-4=4$$\n$x^2-6x+8=0$이므로 $(x-2)(x-4)=0$에서 $x=2$ 또는 $x=4$\n$x=2$일 때 $y=2$, $x=4$일 때 $y=6$"
   },
   {
     "id": 33,
@@ -922,8 +922,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} 3x-1<5x+3 \\\\ x+2\\le 4x-1 \\end{cases}$\n⑵ $\\begin{cases} x-1<4x+5 \\\\ 3x+7<-2x-3 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x\\ge 1$\n⑵ 해가 없다.",
+    "solution": "⑴ $3x-1<5x+3$에서 $-2x<4$이므로 $x>-2$\n$x+2\\le 4x-1$에서 $3\\le 3x$이므로 $x\\ge 1$\n두 부등식의 해의 공통부분은 $x\\ge 1$\n⑵ $x-1<4x+5$에서 $-3x<6$이므로 $x>-2$\n$3x+7<-2x-3$에서 $5x<-10$이므로 $x<-2$\n$x>-2$이면서 $x<-2$인 $x$는 없으므로 해가 없다."
   },
   {
     "id": 34,
@@ -950,8 +950,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차부등식을 푸시오.\n⑴ $x^2-x-12<0$\n⑵ $-4x^2+20x-25\\ge 0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-3<x<4$\n⑵ $x=\\frac{5}{2}$",
+    "solution": "⑴ $x^2-x-12=(x-4)(x+3)<0$이므로 $-3<x<4$\n⑵ 양변에 $-1$을 곱하면 부등호의 방향이 바뀌어 $4x^2-20x+25\\le 0$\n$4x^2-20x+25=(2x-5)^2\\le 0$이므로 $2x-5=0$일 때만 성립한다.\n따라서 해는 $x=\\frac{5}{2}$"
   },
   {
     "id": 35,
@@ -978,8 +978,8 @@ window.questionBank = [
     "wide": false,
     "content": "사차방정식 $x^4-x^3+x^2-6x=0$의 두 허근을 $\\alpha, \\beta$라고 할 때, $\\frac{\\beta}{\\alpha}+\\frac{\\alpha}{\\beta}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{5}{3}$",
+    "solution": "좌변을 인수분해하면\n$$x^4-x^3+x^2-6x=x(x^3-x^2+x-6)=x(x-2)(x^2+x+3)=0$$\n($x=2$를 $x^3-x^2+x-6$에 대입하면 $8-4+2-6=0$이므로 $x-2$를 인수로 가진다.)\n실근은 $x=0,\\ 2$이고, 두 허근은 $x^2+x+3=0$의 두 근이다. (판별식 $1-12<0$)\n근과 계수의 관계에서 $\\alpha+\\beta=-1,\\ \\alpha\\beta=3$이므로\n$$\\frac{\\beta}{\\alpha}+\\frac{\\alpha}{\\beta}=\\frac{\\alpha^2+\\beta^2}{\\alpha\\beta}=\\frac{(\\alpha+\\beta)^2-2\\alpha\\beta}{\\alpha\\beta}=\\frac{1-6}{3}=-\\frac{5}{3}$$"
   },
   {
     "id": 36,
@@ -1006,8 +1006,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 2x^2-3xy+y^2=0 \\\\ 3x^2-xy+2y^2=36 \\end{cases}$의 해가 $x=\\alpha$, $y=\\beta$일 때, $\\alpha+\\beta$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "$2x^2-3xy+y^2=(2x-y)(x-y)=0$이므로 $y=2x$ 또는 $y=x$\n(i) $y=x$일 때: $3x^2-x^2+2x^2=4x^2=36$이므로 $x=\\pm 3$\n$(x,\\ y)=(3,\\ 3),\\ (-3,\\ -3)$이므로 $\\alpha+\\beta=6$ 또는 $-6$\n(ii) $y=2x$일 때: $3x^2-2x^2+8x^2=9x^2=36$이므로 $x=\\pm 2$\n$(x,\\ y)=(2,\\ 4),\\ (-2,\\ -4)$이므로 $\\alpha+\\beta=6$ 또는 $-6$\n따라서 $\\alpha+\\beta$의 최댓값은 $6$이다."
   },
   {
     "id": 37,
@@ -1034,8 +1034,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $1<|x-2|\\le 3$을 만족시키는 모든 정수 $x$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "$1<|x-2|\\le 3$은 $|x-2|>1$이고 $|x-2|\\le 3$인 경우이다.\n$|x-2|>1$에서 $x-2<-1$ 또는 $x-2>1$이므로 $x<1$ 또는 $x>3$\n$|x-2|\\le 3$에서 $-3\\le x-2\\le 3$이므로 $-1\\le x\\le 5$\n공통부분은 $-1\\le x<1$ 또는 $3<x\\le 5$이다.\n정수 $x$는 $-1,\\ 0,\\ 4,\\ 5$이므로 합은\n$$-1+0+4+5=8$$"
   },
   {
     "id": 38,
@@ -1062,8 +1062,8 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $|3x-2|\\le x+2$를 만족시키는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$|3x-2|\\le x+2$이려면 $x+2\\ge 0$이어야 하고\n$$-(x+2)\\le 3x-2\\le x+2$$\n오른쪽: $3x-2\\le x+2$에서 $2x\\le 4$이므로 $x\\le 2$\n왼쪽: $-x-2\\le 3x-2$에서 $0\\le 4x$이므로 $x\\ge 0$\n따라서 $0\\le x\\le 2$이고 ($x+2\\ge 0$도 만족) 정수 $x$는 $0,\\ 1,\\ 2$의 $3$개이다."
   },
   {
     "id": 39,
@@ -1090,8 +1090,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $\\begin{cases} x^2+ax-2<0 \\\\ x^2-6x+b\\le 0 \\end{cases}$의 해가 $1\\le x<2$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1,\\ b=5$",
+    "solution": "연립부등식의 해가 $1\\le x<2$이므로\n첫째 부등식 $x^2+ax-2<0$은 $x=2$가 끝점인 (등호 없는) 부등식이므로 $x=2$를 해로 가진다.\n$$4+2a-2=0\\ \\text{에서}\\ a=-1$$\n이때 $x^2-x-2=(x-2)(x+1)<0$이므로 해는 $-1<x<2$\n둘째 부등식 $x^2-6x+b\\le 0$은 $x=1$이 끝점이므로\n$$1-6+b=0\\ \\text{에서}\\ b=5$$\n이때 $x^2-6x+5=(x-1)(x-5)\\le 0$이므로 해는 $1\\le x\\le 5$\n두 해의 공통부분이 $1\\le x<2$이므로 조건에 맞는다.\n따라서 $a=-1,\\ b=5$"
   },
   {
     "id": 40,
@@ -1118,8 +1118,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라고 할 때,\n$$1+\\omega+\\omega^2+\\cdots+\\omega^{50}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$x^3=1$에서 $x^3-1=(x-1)(x^2+x+1)=0$이므로 허근 $\\omega$는 $x^2+x+1=0$의 근이다.\n따라서 $\\omega^2+\\omega+1=0,\\ \\omega^3=1$\n$1+\\omega+\\omega^2+\\cdots+\\omega^{50}$은 $51$개의 항의 합이므로 세 항씩 묶으면\n$$(1+\\omega+\\omega^2)+\\omega^3(1+\\omega+\\omega^2)+\\cdots+\\omega^{48}(1+\\omega+\\omega^2)$$\n$17$묶음이고 각 묶음의 값은 $0$이므로 합은 $0$이다."
   },
   {
     "id": 41,
@@ -1146,8 +1146,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $\\begin{cases} 2x+5>1 \\\\ 3x+4<n+3 \\end{cases}$을 만족시키는 모든 정수 $x$의 값의 합이 $5$가 되도록 하는 자연수 $n$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$13$",
+    "solution": "$2x+5>1$에서 $2x>-4$이므로 $x>-2$\n$3x+4<n+3$에서 $x<\\frac{n-1}{3}$\n연립부등식의 해는 $-2<x<\\frac{n-1}{3}$이다.\n정수 $x$는 $-1,\\ 0,\\ 1,\\ \\cdots$이고 합이 $5$이다.\n$-1+0+1+2+3=5$이므로 정수 $x$는 $-1,\\ 0,\\ 1,\\ 2,\\ 3$이어야 한다. (3에서 멈추지 않고 $4$까지 포함하면 합이 $9$가 된다.)\n따라서 $3<\\frac{n-1}{3}\\le 4$이다. 각 변에 $3$을 곱하면 $9<n-1\\le 12$이므로 $10<n\\le 13$\n자연수 $n$은 $11,\\ 12,\\ 13$이고 최댓값은 $13$이다."
   },
   {
     "id": 42,
@@ -1174,8 +1174,8 @@ window.questionBank = [
     "wide": false,
     "content": "길이가 $16\\text{ m}$인 철사를 구부려 직사각형을 만들려고 한다. 다음 조건을 만족시키는 직사각형의 긴 변의 길이를 $a\\text{ m}$라고 할 때, $a$의 값의 범위를 구하시오. (단, 철사의 굵기는 생각하지 않는다.)\n<img src=\"q42.png\" />\n\n(가) 긴 변의 길이와 짧은 변의 길이의 차가 $2\\text{ m}$ 이상이다.\n(나) 넓이가 $7\\text{ m}^2$ 이상이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5\\le a\\le 7$",
+    "solution": "철사의 길이가 $16\\text{ m}$이므로 긴 변의 길이가 $a$일 때 짧은 변의 길이는 $8-a$이다. (긴 변이 짧은 변보다 길거나 같으므로 $a\\ge 4$이고, $8-a>0$에서 $a<8$)\n(가) 긴 변과 짧은 변의 길이의 차가 $2$ 이상이므로\n$$a-(8-a)\\ge 2\\ \\text{에서}\\ 2a\\ge 10,\\ a\\ge 5$$\n(나) 넓이가 $7$ 이상이므로\n$$a(8-a)\\ge 7\\ \\text{에서}\\ a^2-8a+7\\le 0$$\n$(a-1)(a-7)\\le 0$이므로 $1\\le a\\le 7$\n(가), (나)를 모두 만족시키는 $a$의 값의 범위는 $5\\le a\\le 7$"
   },
   {
     "id": 43,
@@ -1202,8 +1202,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 회사에서는 환경을 위해 사원들에게 대중교통으로 출퇴근할 것을 권장하고 있다. 이 회사에서 5월 한 달 동안 매일 대중교통으로 출퇴근한 사원이 $n$명일 때, 1명당 교통비 지원금을 $1000(n+10)$원 지급하기로 하였다. 이 회사에서 5월에 지급한 교통비 지원금이 $200\\text{만 원}$ 이상일 때, $n$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$40$",
+    "solution": "$5$월에 지급한 교통비 지원금은 $n\\times 1000(n+10)$원이고, 이것이 $200$만 원 $=2000000$원 이상이다.\n$$1000n(n+10)\\ge 2000000$$\n양변을 $1000$으로 나누면 $n(n+10)\\ge 2000$\n$n^2+10n-2000\\ge 0$이므로 $(n+50)(n-40)\\ge 0$\n$n>0$이므로 $n\\ge 40$\n따라서 $n$의 최솟값은 $40$이다. (확인: $n=40$일 때 $40\\times 50\\times 1000=2000000$)"
   },
   {
     "id": 44,
@@ -1230,8 +1230,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3+(2a-1)x^2+2ax-4a=0$의 서로 다른 실근의 개수가 $2$가 되도록 하는 실수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-\\frac{1}{6},\\ 0,\\ 4$",
+    "solution": "$P(x)=x^3+(2a-1)x^2+2ax-4a$라 하면 $P(1)=1+2a-1+2a-4a=0$이므로 $x-1$을 인수로 갖는다.\n조립제법으로 나누면\n$$P(x)=(x-1)(x^2+2ax+4a)$$\n서로 다른 실근이 $2$개가 되는 경우는 다음 두 가지이다.\n(i) $x^2+2ax+4a=0$이 $1$이 아닌 중근을 갖는 경우\n$$\\frac{D}{4}=a^2-4a=0\\ \\text{에서}\\ a=0\\ \\text{또는}\\ a=4$$\n$a=0$이면 중근 $x=0$, $a=4$이면 중근 $x=-4$로 모두 $1$이 아니므로 서로 다른 실근은 $1$과 중근, 모두 $2$개이다.\n(ii) $x^2+2ax+4a=0$이 서로 다른 두 실근을 갖고 그중 하나가 $1$인 경우\n$x=1$을 대입하면 $1+2a+4a=0$이므로 $a=-\\frac{1}{6}$\n이때 $x^2-\\frac{1}{3}x-\\frac{2}{3}=(x-1)\\left(x+\\frac{2}{3}\\right)$이므로 두 근은 $1,\\ -\\frac{2}{3}$이고 서로 다른 실근은 $1,\\ -\\frac{2}{3}$로 $2$개이다.\n따라서 $a=-\\frac{1}{6},\\ 0,\\ 4$"
   },
   {
     "id": 45,
@@ -1258,7 +1258,7 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $2|x+1|-|x-2|\\le a$의 해가 $-12\\le x\\le b$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=8,\\ b=4$",
+    "solution": "$g(x)=2|x+1|-|x-2|$를 구간별로 나타내면\n$x<-1$일 때: $g(x)=-2(x+1)+(x-2)=-x-4$\n$-1\\le x<2$일 때: $g(x)=2(x+1)+(x-2)=3x$\n$x\\ge 2$일 때: $g(x)=2(x+1)-(x-2)=x+4$\n(단 $-1\\le x<2$에서 $|x-2|=2-x$이므로 $g(x)=2(x+1)-(2-x)=3x$이다.)\n부등식 $g(x)\\le a$의 해가 $-12\\le x\\le b$이므로 왼쪽 끝 $x=-12$는 $x<-1$인 구간에 있고 $g(-12)=a$이다.\n$$a=-(-12)-4=8$$\n오른쪽 끝은 $g(x)=8$인 $x$이다. $-1\\le x<2$에서 $3x<6<8$이므로 $x\\ge 2$이다.\n$x+4=8$에서 $x=4$이므로 $b=4$\n(확인: $-12\\le x\\le 4$에서 $g(x)\\le 8$이다.)"
   }
 ];
