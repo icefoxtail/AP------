@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6"
+  ],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "s56",
+      "refs": [
+        "A5",
+        "A6"
+      ]
+    },
+    {
+      "id": "s61",
+      "refs": [
+        "A6",
+        "A1"
+      ]
+    },
+    {
+      "id": "sO1",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "sO2",
+      "refs": [
+        "O",
+        "A2"
+      ]
+    },
+    {
+      "id": "sO3",
+      "refs": [
+        "O",
+        "A3"
+      ]
+    },
+    {
+      "id": "sO4",
+      "refs": [
+        "O",
+        "A4"
+      ]
+    },
+    {
+      "id": "sO5",
+      "refs": [
+        "O",
+        "A5"
+      ]
+    },
+    {
+      "id": "sO6",
+      "refs": [
+        "O",
+        "A6"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A1",
+              "A2"
+            ]
+          }
+        ],
+        "label": "3x-2y"
+      },
+      {
+        "id": "r2",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A2",
+              "A3"
+            ]
+          }
+        ],
+        "label": "7x-8y"
+      },
+      {
+        "id": "r3",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A3",
+              "A4"
+            ]
+          }
+        ],
+        "label": "2x+7y"
+      },
+      {
+        "id": "r4",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A4",
+              "A5"
+            ]
+          }
+        ],
+        "label": "-x+4y"
+      },
+      {
+        "id": "r5",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A5",
+              "A6"
+            ]
+          }
+        ],
+        "label": "x-6y"
+      },
+      {
+        "id": "r6",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A6",
+              "A1"
+            ]
+          }
+        ],
+        "label": "-2x+5y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "O",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "정육각형 모양의 과녁판이 중심에서 여섯 개의 삼각형 칸으로 나뉘어 있고, 각 칸에 서로 다른 다항식이 하나씩 적혀 있다.",
+  "accessibilityDescription": "정육각형이 중심에서 갈라진 여섯 개의 삼각형 칸으로 나뉘어 있고, 각 칸 안에 다항식이 하나씩 보인다. 사람이나 화살을 나타내는 표시는 없다.",
+  "newVisualInformation": [
+    "과녁판은 중심에서 갈라진 여섯 개의 삼각형 칸으로 이루어져 있다.",
+    "각 칸에 3x-2y, 7x-8y, 2x+7y, -x+4y, x-6y, -2x+5y가 하나씩 적혀 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 다항식이 적혀 있는 과녁판에 다항식 $3x-2y$, $7x-8y$, $2x+7y$, $-x+4y$, $x-6y$, $-2x+5y$가 각각 한 칸씩 적혀 있다. 민준이와 서연이가 각각 과녁판에 화살을 던져 민준이는 $3x-2y$가 적힌 칸을 맞혔다. 다음 물음에 답하시오.   (1) 두 사람이 맞힌 칸에 적힌 다항식의 합이 $5x+5y$일 때, 서연이가 맞힌 칸에 적힌 다항식을 구하시오. [2점]   (2) 두 사람이 맞힌 칸에 적힌 다항식의 차가 $4x-6y$일 때, 서연이가 맞힌 칸에 적힌 다항식이 될 수 있는 것을 모두 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
