@@ -269,10 +269,16 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(placed['placement'],'OWNER_BOUND_TICK_LEADER')
         self.assertEqual(result['leaders'][0]['from'],[100,160])           # the leader names its own tick
         self.assertGreaterEqual(abs(box.y+box.height/2-160)-box.height/2,6,'the number clears the segment')
-        # the same crossing by a CURVE is still refused (a curve is never a tick's own ground): the number is not laid over it
+        # the same crossing by a graph CURVE (f-/g- piece or branch): since PN6 (2026-11-24, edc478d18c) a curve crossing the axis exactly at the tick is the tick's ground too, with or without a dot
+        # (the tick of a root, or of the value a constant function takes; verify-rendered-layout.mjs ownerLeaderClearance already allows it). The old rule refused it and dropped the number, which a
+        # student reads as a missing tick value. The number still never lies over the curve: it stands clear of it on the same owner leader.
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(20,160),(180,160)]}
-        refused=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
-        self.assertEqual(refused['unresolved'],[item['id']])
+        crossed=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
+        self.assertEqual(crossed['unresolved'],[])
+        self.assertEqual(crossed['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        crossed_box=Box(**crossed['labels'][0]['box'])
+        self.assertFalse(collision(crossed_box,curve,0),'the number is not laid over the curve')
+        self.assertGreaterEqual(abs(crossed_box.y+crossed_box.height/2-160)-crossed_box.height/2,6)
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}
@@ -288,11 +294,15 @@ class LayoutTests(unittest.TestCase):
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
         item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=False)
         result=layout([item],[tick,axis,curve],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
-        self.assertEqual(result['status'],'POLISH_REQUIRED')
+        # (PN6, 2026-11-24, edc478d18c) the curve runs through the tick (a root): it is the tick's ground, so the number stands on an owner leader beside it instead of being dropped.
+        # What this test guards stays true: the number is never kept by masking the curve under it (no tickLabelKnockout), never suppressed, and never laid over the curve.
+        self.assertEqual(result['status'],'PASS')
         self.assertEqual(result['suppressed'],[])
-        self.assertEqual(result['unresolved'],[item['id']])
+        self.assertEqual(result['unresolved'],[])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertFalse(collision(Box(**result['labels'][0]['box']),curve,0))
         self.assertFalse(any('tickLabelKnockout' in row for row in result['labels']+result['trace']))
-    def test_tick_with_curve_and_point_obstacles_remains_unresolved_without_mask(self):
+    def test_tick_with_curve_and_point_obstacles_is_placed_on_an_owner_leader_without_mask(self):
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
@@ -300,10 +310,17 @@ class LayoutTests(unittest.TestCase):
                 {'id':'protected-feature-south','kind':'point','geometry':(100,118,2)}]
         item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=True)
         result=layout([item],[tick,axis,curve,*points],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
-        self.assertEqual(result['status'],'POLISH_REQUIRED')
-        self.assertEqual(result['unresolved'],[item['id']])
+        # (PN6, 2026-11-24, edc478d18c) the curve through the tick is the tick's ground, so the number is no longer dropped: it takes an owner leader to a free place between the two protected points'
+        # side, clear of the curve and of both dots. What this test guards stays true: no mask over the curve, no suppression, no repair, and the label never touches the curve or a protected point.
+        self.assertEqual(result['status'],'PASS')
+        self.assertEqual(result['unresolved'],[])
         self.assertEqual(result['suppressed'],[])
         self.assertEqual(result['repairs'],[])
+        placed=Box(**result['labels'][0]['box'])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertFalse(collision(placed,curve,0))
+        self.assertFalse(any(collision(placed,point,0) for point in points))
+        self.assertFalse(any('tickLabelKnockout' in row for row in result['labels']+result['trace']))
     def test_tick_label_requires_exact_axis_and_value_binding(self):
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':2,'geometry':(100,96,100,104)}
