@@ -1,0 +1,165 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "9"
+    ],
+    "p": "-1/4",
+    "axis": "Y"
+  },
+  "arch": {
+    "ground": "ground",
+    "laser": "laser"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "-3"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "3"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "5",
+      "y": "0"
+    },
+    {
+      "id": "T",
+      "kind": "TANGENT_FROM",
+      "from": "C",
+      "which": 1,
+      "label": false
+    },
+    {
+      "id": "D",
+      "kind": "FOOT",
+      "from": "T",
+      "onto": "base",
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "label": false
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "x": "4",
+      "y": "9",
+      "label": false
+    },
+    {
+      "id": "G",
+      "kind": "POINT",
+      "x": "4",
+      "y": "0",
+      "label": false
+    },
+    {
+      "id": "L",
+      "kind": "POINT",
+      "x": "-4",
+      "y": "0",
+      "label": false
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "7",
+      "y": "0",
+      "label": false
+    }
+  ],
+  "segments": [
+    {
+      "id": "ground",
+      "from": "A",
+      "to": "B",
+      "label": "6\\mathrm{m}"
+    },
+    {
+      "id": "left",
+      "from": "L",
+      "to": "A"
+    },
+    {
+      "id": "gap",
+      "from": "B",
+      "to": "C",
+      "label": "2\\mathrm{m}"
+    },
+    {
+      "id": "right",
+      "from": "C",
+      "to": "R"
+    },
+    {
+      "id": "laser",
+      "from": "T",
+      "to": "C"
+    },
+    {
+      "id": "target",
+      "from": "T",
+      "to": "D",
+      "dashed": true,
+      "label": "h"
+    },
+    {
+      "id": "level",
+      "from": "V",
+      "to": "E",
+      "dashed": true
+    },
+    {
+      "id": "height",
+      "from": "G",
+      "to": "E",
+      "dashed": true,
+      "label": "9\\mathrm{m}"
+    }
+  ],
+  "lines": [
+    {
+      "id": "base",
+      "y": "0",
+      "hidden": true
+    },
+    {
+      "id": "beam",
+      "at": "T",
+      "tangent": true,
+      "hidden": true
+    }
+  ],
+  "caption": "폭 6미터, 높이 9미터인 포물선 모양 조형물과 지면, 조형물이 지면과 만나는 두 점 A, B, 그리고 B의 오른쪽 2미터 지점 C에서 조형물에 접하도록 쏘아 올린 레이저를 나타낸 그림",
+  "accessibilityDescription": "포물선 조형물의 두 끝 A와 B가 지면에 닿아 있다. 지면 위 B의 오른쪽 2미터 지점 C에서 출발한 레이저가 조형물에 한 점에서 접하고, 그 접점에서 지면까지 내린 수선의 길이가 h로 표시되어 있다. 조형물의 폭 6미터와 높이 9미터도 함께 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 폭이 $6\\text{m}$이고 높이가 $9\\text{m}$인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고, $B$로부터 $2\\text{m}$ 떨어진 지면 위의 지점 $C$에서 조형물에 레이저를 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$는? (단, 단위는 $\\text{m}$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "조형물의 폭과 높이는 각각 6미터, 9미터이고 지면의 점 C는 B에서 2미터 떨어져 있다.",
+      "mappedTo": [
+        "ground",
+        "gap",
+        "height",
+        "laser"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "폭 6미터와 높이 9미터, B에서 C까지 2미터, 접점에서 지면까지의 높이 h를 표시한다."
+  ]
+}

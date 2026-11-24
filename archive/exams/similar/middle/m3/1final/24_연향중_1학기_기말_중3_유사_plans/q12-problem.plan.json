@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-14/3",
+          "7/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vx",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "7",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "7",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cP",
+          "point": "P",
+          "text": "k",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점이 (3,0)인 이차함수의 그래프가 점 (6,k)를 지나는 모습이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선의 꼭짓점이 (3,0)에 있고, 오른쪽의 그래프 위 점 (6,k)가 표시되어 있다.",
+  "newVisualInformation": [
+    "이차함수 그래프의 꼭짓점 (3,0)과 그래프 위의 점 (6,k)가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 이차함수 $y=ax^2$의 그래프를 평행이동한 것이다. 이 그래프가 점 $(6, k)$를 지날 때, $k$의 값은? (단, $a$는 상수) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
