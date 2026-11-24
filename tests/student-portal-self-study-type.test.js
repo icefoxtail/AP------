@@ -285,3 +285,138 @@ test('portal wiring: the type script loads after the similar one, the button als
   const source = fs.readFileSync(path.join(root, 'apmath/student/self-study-type.js'), 'utf8');
   assert.doesNotMatch(source, /method:\s*['"](?:POST|PUT|PATCH|DELETE)|apiPost|archive2-catalog\.json|question-index|question_metadata/);
 });
+
+// ---- 통신 오류는 "소진"이 아니다 (2026-11-24 검수 지적) ----
+// 시험지 JS 요청만 골라 실패시키는 가짜 세계: fail(n) -> 'net'(끊김) | 'timeout'(응답 없음) | '503' | '404' | undefined.
+function brokenWorld(fail) {
+  const world = fakeWorld();
+  const base = world.fetchImpl;
+  const fetchImpl = async (url) => {
+    const m = /\/archive\/exams\/.*f(\d+)\.js$/.exec(decodeURIComponent(new URL(url).pathname));
+    const mode = m && fail(Number(m[1]));
+    if (mode === 'net') throw new TypeError('Failed to fetch');
+    if (mode === 'timeout') return new Promise(() => {});
+    if (mode === '503') return { ok: false, status: 503 };
+    if (mode === '404') return { ok: false, status: 404 };
+    return base(url);
+  };
+  return { ...world, fetchImpl };
+}
+const roundCtx = (world, exam, storage, extra) => ({ exam, wrongNumbers: [1], exams: [exam], index: world.index, studentId: 's1', storage, view: View, fetchImpl: world.fetchImpl, baseUrl: BASE_URL, refresher: null, ...extra });
+
+test('loadRound: every picked exam file fails to download (network / 5xx) -> "could not load", not "none left"; nothing is remembered; trying again works', async () => {
+  for (const mode of ['net', '503']) {
+    let down = true;
+    const world = brokenWorld((n) => (down && n !== 1 ? mode : undefined));
+    const exam = mixedExam({ assignment_id: `a-down-${mode}` });
+    const storage = memStorage();
+    for (const round of ['current', 'next']) {
+      const failedRound = await Type.loadRound(roundCtx(world, exam, storage, { mode: round }));
+      assert.equal(failedRound.failed, true, `${mode}/${round}: an error state`);
+      assert.equal(failedRound.exhausted, false, `${mode}/${round}: not "none left"`);
+      assert.deepEqual(failedRound.questions, []);
+    }
+    assert.deepEqual(Type.readRounds(storage, 's1', exam.assignment_id).rounds, [], 'a round that could not be read is not remembered as shown');
+    down = false; // the connection is back: the same press now gives questions
+    const again = await Type.loadRound(roundCtx(world, exam, storage, { mode: 'next' }));
+    assert.equal(again.failed, false);
+    assert.equal(again.exhausted, false);
+    assert.equal(again.questions.length, 2);
+  }
+});
+
+test('loadRound: a file that never answers times out and is an error state (not "none left"); the time limit is one constant', async () => {
+  const Net = require('../apmath/student/student-fetch.js');
+  assert.ok(Number.isFinite(Net.TIMEOUT_MS) && Net.TIMEOUT_MS >= 5000 && Net.TIMEOUT_MS <= 60000);
+  const world = brokenWorld((n) => (n !== 1 ? 'timeout' : undefined));
+  const exam = mixedExam({ assignment_id: 'a-slow' });
+  const slow = await Type.loadRound(roundCtx(world, exam, memStorage(), { mode: 'current', timeoutMs: 30 }));
+  assert.equal(slow.failed, true);
+  assert.equal(slow.exhausted, false);
+  assert.deepEqual(slow.questions, []);
+  // index / shard requests have the limit too: a hanging lookup is "not available", never a hang
+  const hang = () => new Promise(() => {});
+  const started = Date.now();
+  await assert.rejects(Net.request(hang, 'https://x.test/a.json', { read: 'json', timeoutMs: 30 }), (e) => e.code === 'REQUEST_TIMEOUT' && e.transient === true);
+  assert.ok(Date.now() - started < 2000);
+  const shardHang = await Type.loadRound(roundCtx(world, exam, memStorage(), { mode: 'current', timeoutMs: 30, fetchImpl: async (url) => (/h1-math\.json$/.test(url) ? hang() : world.fetchImpl(url)) }));
+  assert.equal(shardHang.failed, true);
+});
+
+test('loadRound: one file that is really gone (404) is skipped for the next candidate; a file lost to the network only costs that question', async () => {
+  const gone = brokenWorld((n) => (n === 2 ? '404' : undefined));
+  const exam = mixedExam({ assignment_id: 'a-404' });
+  const round = await Type.loadRound(roundCtx(gone, exam, memStorage(), { mode: 'current' }));
+  assert.equal(round.failed, false);
+  assert.equal(round.questions.length, 2, 'the missing file is replaced by another candidate');
+  assert.ok(round.questions.every((q) => q.ssKey !== uid(2)));
+  // a network failure of ONE file while others work: the round is filled from the rest, and that file is not recorded as shown
+  const storage = memStorage();
+  const flaky = brokenWorld((n) => (n === 2 ? 'net' : undefined));
+  const exam2 = mixedExam({ assignment_id: 'a-flaky' });
+  const partial = await Type.loadRound(roundCtx(flaky, exam2, storage, { mode: 'current' }));
+  assert.equal(partial.failed, false);
+  assert.equal(partial.questions.length, 2);
+  const recorded = Type.readRounds(storage, 's1', exam2.assignment_id).rounds.flatMap((r) => r.picks.map((p) => p.uid));
+  assert.ok(!recorded.includes(hex(2)), 'a question that could not be downloaded is not in the shown list');
+  // all candidates 404 (really nothing usable): still "none left" for "more", not an error
+  const allGone = brokenWorld((n) => (n !== 1 ? '404' : undefined));
+  const dry = await Type.loadRound(roundCtx(allGone, mixedExam({ assignment_id: 'a-all404' }), memStorage(), { mode: 'next' }));
+  assert.equal(dry.failed, false);
+  assert.equal(dry.exhausted, true);
+});
+
+test('loadRound: reopening a remembered round whose files cannot be downloaded is an error state, then the round comes back', async () => {
+  let down = false;
+  const world = brokenWorld(() => (down ? 'net' : undefined));
+  const exam = mixedExam({ assignment_id: 'a-reopen' });
+  const storage = memStorage();
+  const first = await Type.loadRound(roundCtx(world, exam, storage, { mode: 'current' }));
+  assert.equal(first.questions.length, 2);
+  down = true;
+  const offline = await Type.loadRound(roundCtx(world, exam, storage, { mode: 'current' }));
+  assert.equal(offline.failed, true);
+  down = false;
+  const back = await Type.loadRound(roundCtx(world, exam, storage, { mode: 'current' }));
+  assert.deepEqual(back.questions.map((q) => q.ssKey), first.questions.map((q) => q.ssKey));
+});
+
+test('the same-number similar path shares the helper: all similar papers lost to the network is an error, a missing one is just dropped; the link map stays optional', async () => {
+  const Similar = require('../apmath/student/self-study-similar.js');
+  const Link = require('../apmath/student/similar-link.js');
+  const map = Link.normalizeMap({ version: 1, map: { 'original/high/h1/1mid/a.js': [['similar/high/h1/1mid/a_유사1.js', 2]] } });
+  const exam = { archive_file: 'exams/original/high/h1/1mid/a.js', question_count: 2 };
+  const body = `window.questionBank = ${JSON.stringify([{ id: 1, answer: '1', content: 'a' }, { id: 2, answer: '1', content: 'b' }])};`;
+  const make = (similarStatus) => async (url) => {
+    if (/similar\//.test(decodeURIComponent(url))) {
+      if (similarStatus === 'throw') throw new TypeError('offline');
+      return { ok: false, status: similarStatus };
+    }
+    return { ok: true, text: async () => body };
+  };
+  const opts = (fetchImpl) => ({ view: View, link: Link, fetchImpl, baseUrl: BASE_URL });
+  await assert.rejects(Similar.loadSimilarSets(exam, map, opts(make('throw'))), (e) => e.transient === true);
+  await assert.rejects(Similar.loadSimilarSets(exam, map, opts(make(503))), (e) => e.transient === true);
+  const missing = await Similar.loadSimilarSets(exam, map, opts(make(404)));
+  assert.deepEqual(missing.similarSets, [], 'a similar paper that is really gone is dropped, as before');
+  // the list's link map: a failed download is an empty map, never a throw
+  assert.deepEqual(Object.keys(await Link.load(async () => { throw new Error('offline'); }, BASE_URL)), []);
+  assert.deepEqual(Object.keys(await Link.load(async () => ({ ok: false, status: 503 }), BASE_URL)), []);
+});
+
+test('error screen: the view draws "could not load" with a retry button that keeps "more"; the portal uses it for a failed round and loads the helper first', () => {
+  const screen = View.loadFailureHtml('유사 문항', "openSelfStudy('similar', 'a1', 'list', { more: true })");
+  assert.match(screen, /role="alert"/);
+  assert.match(screen, /유사 문항을 불러오지 못했어요/);
+  assert.match(screen, /연결을 확인하고 다시 시도해 주세요/);
+  assert.match(screen, /<button[^>]*data-ss-retry-load[^>]*>다시 불러오기<\/button>/);
+  assert.match(screen, /onclick="openSelfStudy\(&#39;similar&#39;, &#39;a1&#39;, &#39;list&#39;, \{ more: true \}\)"/);
+  assert.doesNotMatch(screen, /소진|더 풀 유사 문항이 없어요|찾지 못했어요/);
+  assert.match(html, /<script src="\.\/student-fetch\.js\?v=[^"]+"><\/script>\s*<script src="\.\/similar-link\.js/);
+  assert.match(html, /if \(round\.failed && !linked\.questions\.length\) throw new Error\('STUDENT_TYPE_FAILED'\)/);
+  assert.match(html, /selfStudy\.loadFailureHtml\(/);
+  assert.match(html, /const retryOpts = similar && opts\.more \? ', \{ more: true \}' : ''/);
+  const exhaustedAt = html.indexOf('if (opts.more && round.exhausted)');
+  const failedAt = html.indexOf('if (round.failed && !linked.questions.length)');
+  assert.ok(exhaustedAt > 0 && exhaustedAt < failedAt, 'only an exhausted round (never a failed one) becomes "none left"');
+});

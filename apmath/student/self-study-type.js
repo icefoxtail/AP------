@@ -25,6 +25,7 @@
   'use strict';
 
   const Rec = root.StudentSelfStudyRecord || (typeof require === 'function' ? require('./self-study-record.js') : null);
+  const Net = root.StudentFetch || (typeof require === 'function' ? require('./student-fetch.js') : null);
   const INDEX_PATH = '../../archive/data/archive2-catalog-shards-v1/student-type/index.json';
   const SCHEMA = 'archive2-student-type-v1';
   const PER_WRONG = 2;
@@ -263,17 +264,27 @@
     return !(Number.isFinite(a) && Number.isFinite(b) && a !== b);
   }
 
-  /** pick: { n, file, ordinal, uid } -> the card question, or null. lists: Map<file, Promise<question[] | null>> shared by one call. */
-  async function readPick(pick, { view, lists, fetchImpl, baseUrl, row }) {
-    if (!lists.has(pick.file)) lists.set(pick.file, view.fetchQuestionList(`exams/${pick.file}`, { fetchImpl, baseUrl }).catch(() => null));
-    const list = await lists.get(pick.file);
-    const question = list && list[pick.ordinal - 1];
-    if (!usable(question, row || { no: '' }, view)) return null;
+  /**
+   * pick: { n, file, ordinal, uid } -> { question, transient }. question is the card question, or null.
+   * transient = the file could not be downloaded because of the connection (not a missing file): that pick is neither "used" nor "unusable".
+   * lists: Map<file, Promise<{ list, transient }>> shared by one call.
+   */
+  async function readPick(pick, { view, lists, fetchImpl, baseUrl, row, timeoutMs }) {
+    if (!lists.has(pick.file)) {
+      lists.set(pick.file, view.fetchQuestionList(`exams/${pick.file}`, { fetchImpl, baseUrl, timeoutMs })
+        .then(list => ({ list, transient: false }), error => ({ list: null, transient: Net.isTransient(error) })));
+    }
+    const got = await lists.get(pick.file);
+    const question = got.list && got.list[pick.ordinal - 1];
+    if (!usable(question, row || { no: '' }, view)) return { question: null, transient: got.transient };
     return {
-      ...question,
-      questionUid: fullUid(pick.uid), sourceArchiveFile: pick.file, sourceOrdinal: pick.ordinal,
-      sourceLabel: `${pick.n}번과 같은 유형`,
-      ssKey: fullUid(pick.uid), ssUid: fullUid(pick.uid), ssSrc: pick.n
+      transient: false,
+      question: {
+        ...question,
+        questionUid: fullUid(pick.uid), sourceArchiveFile: pick.file, sourceOrdinal: pick.ordinal,
+        sourceLabel: `${pick.n}번과 같은 유형`,
+        ssKey: fullUid(pick.uid), ssUid: fullUid(pick.uid), ssSrc: pick.n
+      }
     };
   }
 
@@ -282,7 +293,11 @@
    * ctx: { exam, wrongNumbers, exams, index, studentId, storage, view, mode: 'current' | 'next', skipNumbers (wrong numbers that already have a
    *        same-number similar question, first round only), withLinked (the first round is shown together with those similar questions),
    *        extraShown (uids already on screen from elsewhere), fetchImpl, baseUrl, refresher }.
-   * Resolves { questions, exhausted, withLinked, failed }. Never throws: failed = the lookup files could not be read.
+   *        timeoutMs (test hook; default = the time limit in student-fetch.js).
+   * Resolves { questions, exhausted, withLinked, failed }. Never throws.
+   * failed = a lookup file or a picked exam file could not be downloaded (connection error, 5xx, time out) and no question could be offered:
+   * this is NOT "none left" (exhausted stays false) and nothing is remembered, so the next try picks the same candidates again.
+   * A file that is really missing (404) or unusable only skips that question for the next candidate.
    */
   async function loadRound(ctx) {
     const view = ctx.view || root.StudentSelfStudyView;
@@ -297,7 +312,7 @@
         if (!shardCache.has(number)) {
           const row = ctx.index.shards[number];
           const url = new URL(`${INDEX_PATH.replace(/index\.json$/, '')}${row.path}`, ctx.baseUrl || root.location.href).href;
-          shardCache.set(number, fetchImpl(url).then(response => { if (!response?.ok) throw new Error('STUDENT_TYPE_SHARD_FAILED'); return response.json(); })
+          shardCache.set(number, Net.request(fetchImpl, url, { read: 'json', timeoutMs: ctx.timeoutMs })
             .then(doc => { const shard = decodeShard(doc); if (!shard) throw new Error('STUDENT_TYPE_SHARD_INVALID'); return shard; })
             .catch(error => { shardCache.delete(number); throw error; }));
         }
@@ -312,7 +327,8 @@
       }).filter(Boolean);
       const lists = new Map();
       const rowOf = pick => { for (const shard of loaded.values()) { const row = shard.byUid.get(pick.uid); if (row) return row; } return null; };
-      const read = picks => Promise.all(picks.map(pick => readPick(pick, { view, lists, fetchImpl, baseUrl: ctx.baseUrl, row: rowOf(pick) }).then(question => ({ pick, question }))));
+      const read = picks => Promise.all(picks.map(pick => readPick(pick, { view, lists, fetchImpl, baseUrl: ctx.baseUrl, row: rowOf(pick), timeoutMs: ctx.timeoutMs })
+        .then(({ question, transient }) => ({ pick, question, transient }))));
       const finish = async rows => {
       // The same figures the engine shows students (a no-op unless a refreshed figure exists).
         let questions = rows.map(row => row.question);
@@ -332,7 +348,10 @@
 
       if (ctx.mode !== 'next' && state.rounds.length) {
         const last = state.rounds[state.rounds.length - 1];
-        const rows = (await read(last.picks)).filter(row => row.question);
+        const all = await read(last.picks);
+        const rows = all.filter(row => row.question);
+        // Nothing of the remembered round could be downloaded because of the connection: an error to retry, not an empty round.
+        if (!rows.length && all.some(row => row.transient)) { result.failed = true; return result; }
         result.questions = await finish(rows);
         result.withLinked = state.rounds.length === 1 && last.withLinked;
         return result;
@@ -344,16 +363,23 @@
       const usedWrongs = wrongs.filter(item => !skip.has(item.n));
       const bad = new Set();
       let rows = [];
+      let sawTransient = false;
       for (let pass = 0; pass < MAX_PASSES; pass += 1) {
         const picks = pickRound({ wrongs: usedWrongs, exclusions, shown, bad, seed: seedFor(state.rounds.length + 1) })
           .map(({ n, row }) => ({ n, file: row.file, ordinal: row.ordinal, uid: row.uid }));
         rows = await read(picks);
         const failed = rows.filter(row => !row.question);
-        failed.forEach(row => bad.add(row.pick.uid));
+        // Only for the rest of this call: a candidate that could not be read is replaced now, but it is never written as "shown".
+        failed.forEach(row => { bad.add(row.pick.uid); if (row.transient) sawTransient = true; });
         if (!failed.length) break;
       }
       rows = rows.filter(row => row.question);
-      if (!rows.length) { result.exhausted = !first; return result; }
+      if (!rows.length) {
+        // A download failed on the way and nothing else could fill the round: say "could not load", never "none left"; remember nothing.
+        if (sawTransient) result.failed = true;
+        else result.exhausted = !first;
+        return result;
+      }
       writeRounds(ctx.storage, ctx.studentId, assignmentId, {
         rounds: [...state.rounds, { withLinked: first && Boolean(ctx.withLinked), picks: rows.map(row => row.pick) }]
       });
@@ -369,9 +395,7 @@
   /** index.json (small) for the portal: never throws, null when absent or malformed. */
   async function loadIndex(fetchImpl, baseUrl) {
     try {
-      const response = await fetchImpl(new URL(INDEX_PATH, baseUrl).href);
-      if (!response || !response.ok) return null;
-      return parseIndex(await response.json());
+      return parseIndex(await Net.request(fetchImpl, new URL(INDEX_PATH, baseUrl).href, { read: 'json' }));
     } catch (error) { return null; }
   }
 

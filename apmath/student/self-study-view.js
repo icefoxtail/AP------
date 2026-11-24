@@ -33,6 +33,7 @@
   const FAIL_CARD_TEXT = '이 문항을 불러오지 못했습니다.';
 
   const Rec = root.StudentSelfStudyRecord || (typeof require === 'function' ? require('./self-study-record.js') : null);
+  const Net = root.StudentFetch || (typeof require === 'function' ? require('./student-fetch.js') : null);
   const CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩';
   const RECORD_NOTE = '푼 기록은 저장되고 선생님도 볼 수 있어요.';
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -221,7 +222,7 @@
   }
 
   /** One exam JS file (path relative to archive/, e.g. "exams/similar/..js") -> its question list. Nothing else is ever downloaded and run. */
-  async function fetchQuestionList(relativePath, { fetchImpl, baseUrl } = {}) {
+  async function fetchQuestionList(relativePath, { fetchImpl, baseUrl, timeoutMs } = {}) {
     const fetcher = fetchImpl || (typeof fetch === 'function' ? fetch.bind(root) : null);
     const safe = safeExamPath(relativePath);
     if (!safe) throw new Error('EXAM_PATH_REJECTED');
@@ -229,9 +230,18 @@
     const archive = new URL('../../archive/', here);
     const url = new URL(safe, archive);
     if (url.origin !== here.origin || !url.pathname.startsWith(`${archive.pathname}exams/`) || !url.pathname.endsWith('.js')) throw new Error('EXAM_PATH_REJECTED');
-    const response = await fetcher(url.href);
-    if (!response || !response.ok) throw new Error('EXAM_FETCH_FAILED');
-    return parseExamSource(await response.text());
+    // A failed or slow download rejects with error.transient (student-fetch.js): the caller tells "try again" from "the file is not there".
+    let source;
+    try { source = await Net.request(fetcher, url.href, { read: 'text', timeoutMs }); } catch (error) {
+      error.message = 'EXAM_FETCH_FAILED'; // the name callers already know; error.code / error.transient say which kind
+      throw error;
+    }
+    return parseExamSource(source);
+  }
+
+  /** The "could not load" screen body (for a failed download, never for "no questions left"): message, then a button that runs retryCode. */
+  function loadFailureHtml(what, retryCode) {
+    return `<div class="empty" role="alert"><strong>${escapeHtml(what)}을 불러오지 못했어요.</strong><p>연결을 확인하고 다시 시도해 주세요.</p><button type="button" class="btn" data-ss-retry-load onclick="${escapeHtml(retryCode)}">다시 불러오기</button></div>`;
   }
 
   /** The exam's own file questions (never the frozen snapshot); only for an exam that is one plain past-exam file. */
@@ -603,6 +613,6 @@
 
   return {
     normalizeNumbers, buildWrongSet, buildTitle, hasRealSolution, hasAnswer, renderCard, failedCardHtml, applyCard,
-    stripDifficultyTag, parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT, RECORD_NOTE
+    stripDifficultyTag, loadFailureHtml, parseExamSource, safeExamPath, fetchQuestionList, loadExamFile, loadExamQuestions, ensureAssets, show, FAIL_CARD_TEXT, RECORD_NOTE
   };
 });
