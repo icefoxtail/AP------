@@ -1667,10 +1667,13 @@
     }
     // 유사문제 연결 표(빌드가 만든 작은 JSON). 실패해도 목록은 그대로 나오고 유사 입구만 빠진다.
     async function loadSimilarLinks() {
-      if (similarLinksMap) return similarLinksMap;
+      // 같은 유형 색인도 같이 받는다(둘 다 작은 빌드 산출물, 목록과 함께 한 번).
+      const typeIndexLoad = loadTypeIndex();
+      if (similarLinksMap) { await typeIndexLoad; return similarLinksMap; }
       similarLinksMap = window.StudentSimilarLink
         ? await window.StudentSimilarLink.load(window.fetch.bind(window), window.location.href)
         : {};
+      await typeIndexLoad;
       return similarLinksMap;
     }
     // 같은 유형 조회 색인(약 3KB): 유사 시험지가 없는 시험(선생님이 만든 모의고사 등)에서도 틀린 문항과 같은 유형의 문항을 내려 주기 위한 것. 실패해도 목록은 그대로다.
@@ -1936,12 +1939,11 @@
       if (getStudentPortalRecordedSubmission(exam) !== 'submitted' || !isOmrReviewAvailable(exam)) return 0;
       return normalizeOmrWrongIds(exam?.wrong_ids).length;
     }
-    function canOfferSelfStudyLinked(exam) {
-      return getSelfStudyWrongCount(exam) > 0 && Boolean(globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink));
-    }
     // 제출했고 틀린 문항이 있으면: 유사 시험지가 연결된 시험은 같은 번호 유사 문항, 그 밖(선생님이 만든 모의고사 등)은 틀린 문항과 같은 유형의 문항.
     function canOfferSelfStudySimilar(exam) {
-      return getSelfStudyWrongCount(exam) > 0 && (canOfferSelfStudyLinked(exam) || canOfferSelfStudyType(exam));
+      if (getSelfStudyWrongCount(exam) < 1) return false;
+      if (globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink)) return true;
+      return typeof canOfferSelfStudyType === 'function' && canOfferSelfStudyType(exam);
     }
     // 자습 기록: 풀이 결과는 먼저 이 기기(localStorage)에, 이어서 서버에 저장한다. 서버가 꺼져 있거나 아직 없으면(FEATURE_UNAVAILABLE·404) 오류 표시 없이 로컬 기록만으로 동작한다.
     // 교사 미리보기에서는 읽지도 저장하지도 않는다.
@@ -2075,7 +2077,7 @@
           const typeOk = canOfferSelfStudyType(exam);
           // 1) 유사 시험지가 연결된 시험의 같은 번호 유사 문항(지금 방식 그대로). 처음 판에서만 쓴다.
           let linked = { questions: [], emptyText: '' };
-          if (canOfferSelfStudyLinked(exam) && !opts.more) {
+          if (supply.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink) && !opts.more) {
             try {
               const loaded = await supply.loadSimilarSets(exam, similarLinksMap, { view: selfStudy, link: globalThis.StudentSimilarLink });
               if (!isStudentViewCurrent(view, 'omr-self-study')) return;
@@ -2159,7 +2161,7 @@
       `;
       try {
         ensureSelfStudyAggregate();
-        await Promise.all([loadOmrExams(true), loadSimilarLinks(), loadTypeIndex()]);
+        await Promise.all([loadOmrExams(true), loadSimilarLinks()]);
         if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         const exams = getVisibleOmrExams();
         const root = document.querySelector('.omr-browser');

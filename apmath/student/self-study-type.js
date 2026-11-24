@@ -230,8 +230,12 @@
   function readRounds(storage, studentId, assignmentId) {
     const key = storeKey(studentId, assignmentId);
     let value = null;
-    try { value = JSON.parse(storage?.getItem(key) || 'null'); } catch (error) { value = null; }
-    if (!value && memoryStore.has(key)) value = memoryStore.get(key);
+    let stored = false;
+    if (storage) {
+      try { value = JSON.parse(storage.getItem(key) || 'null'); stored = true; } catch (error) { value = null; }
+    }
+    // The in-page copy is only for a page without usable storage (teacher preview, private window).
+    if (!stored && memoryStore.has(key)) value = memoryStore.get(key);
     const rounds = Array.isArray(value?.rounds) ? value.rounds.map(round => ({
       withLinked: Boolean(round?.withLinked),
       picks: (Array.isArray(round?.picks) ? round.picks : []).filter(pick => pick && Number.isInteger(pick.n) && pick.file && Number.isInteger(pick.ordinal) && /^[a-f0-9]{64}$/.test(String(pick.uid)))
@@ -241,8 +245,11 @@
   }
   function writeRounds(storage, studentId, assignmentId, state) {
     const key = storeKey(studentId, assignmentId);
-    memoryStore.set(key, state);
-    try { storage?.setItem(key, JSON.stringify({ v: 1, rounds: state.rounds })); } catch (error) { /* memory copy only */ }
+    try {
+      if (!storage) throw new Error('no storage');
+      storage.setItem(key, JSON.stringify({ v: 1, rounds: state.rounds }));
+      memoryStore.delete(key);
+    } catch (error) { memoryStore.set(key, state); }
   }
 
   /* ---------- reading the picked questions ---------- */
