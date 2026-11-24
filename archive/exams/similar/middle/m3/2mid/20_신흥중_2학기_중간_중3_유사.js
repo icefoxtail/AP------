@@ -579,6 +579,7 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "image": "assets/images/20_신흥중_2학기_중간_중3_유사/q14-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "중3",
     "curriculum": "2015",
