@@ -293,10 +293,13 @@ async function openExamGradeView(classId) {
 
 async function downloadClassExamPdf(assignmentId, examTitle = '', examDate = '') {
     if (!assignmentId) return toast('출제 정보를 찾을 수 없습니다.', 'warn');
+    // 출제 뒤 시험지 문항이 고쳐졌으면 서버가 고쳐진 내용으로 PDF를 새로 만들어 주느라 몇 초 더 걸린다. 오래 걸릴 때만 이유를 알린다.
+    const slowNotice = setTimeout(() => toast('고쳐진 문항을 반영해 PDF를 준비하고 있습니다.', 'info'), 4000);
     try {
         const response = await fetch(`${CONFIG.API_BASE}/class-exam-assignments/${encodeURIComponent(assignmentId)}/pdf`, {
             headers: { ...getAuthHeader() }
         });
+        clearTimeout(slowNotice);
         if (!response.ok) {
             const data = await response.json().catch(() => ({}));
             throw new Error(data.error || 'PDF 다운로드 실패');
@@ -313,6 +316,7 @@ async function downloadClassExamPdf(assignmentId, examTitle = '', examDate = '')
         link.remove();
         setTimeout(() => URL.revokeObjectURL(href), 1000);
     } catch (e) {
+        clearTimeout(slowNotice);
         console.warn('[class exam pdf] download failed:', e);
         toast(e.message || 'PDF 다운로드에 실패했습니다.', 'warn');
     }

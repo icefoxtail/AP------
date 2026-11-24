@@ -3,7 +3,7 @@ import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isSt
 import { jsonResponse } from '../helpers/response.js';
 import { loadSelfStudyForAssignment, loadSelfStudyStudentCountsForClass } from '../helpers/student-self-study.js';
 import { extractArchiveQuestionsFromText, resolveArchiveQuestionNo } from '../helpers/archive-question-bank.js';
-import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
+import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf, refreshAssignmentPdfIfStale } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
 import {
   targetClassGradeSql,
@@ -1860,7 +1860,8 @@ export async function handleExams(request, env, teacher, path, url) {
         const refreshed = await ensureAssignmentPdf(env, assignment, { force: true });
         return jsonResponse({ success: true, assignment: refreshed });
       }
-      return createAssignmentPdfDownloadResponse(env, assignment);
+      // 출제 뒤 시험지 문항이 고쳐졌으면 고쳐진 내용으로 새로 만들어 준다(못 만들면 저장된 PDF 그대로).
+      return createAssignmentPdfDownloadResponse(env, await refreshAssignmentPdfIfStale(env, assignment));
     }
 
     if (method === 'POST' && id === 'exclude-student') {
