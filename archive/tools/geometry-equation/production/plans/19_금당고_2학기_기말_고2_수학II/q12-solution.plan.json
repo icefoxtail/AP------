@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "4",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "4"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "4"
+      }
+    ]
+  },
+  "caption": "f가 짝함수이므로 왼쪽 절반의 적분값 4를 두 배 하면 전체 적분값은 8이다. 4x³+2x는 홀함수이므로 대칭구간에서 그 적분값은 0이고, 남는 값은 8이다. 그림은 f(x)=4인 예를 나타낸 것이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "좌표평면에 x축과 나란한 직선 y=4가 −1부터 1까지 그려져 있고, x축과 이 직선 사이의 왼쪽 영역과 오른쪽 영역에 각각 4가 적혀 있다.",
+  "newVisualInformation": [
+    "짝함수 f의 그래프가 y축에 대하여 대칭인 모습",
+    "왼쪽 영역과 오른쪽 영역의 넓이가 각각 4로 같아 전체가 8이 되는 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 다음 두 조건을 만족할 때, 정적분 $\\displaystyle\\int_{-1}^1(4x^3+2x+1)f(x),dx$의 값은?\n(가) 모든 실수 $x$에 대하여 $f(-x)=f(x)$\n(나) $\\displaystyle\\int_{-1}^0 f(x),dx=4$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

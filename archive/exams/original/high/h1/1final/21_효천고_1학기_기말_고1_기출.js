@@ -583,7 +583,11 @@ window.questionBank = [
     "sourceArchiveFile": "archive/exams/original/high/h1/1final/21_효천고_1학기_기말_고1_기출.js",
     "sourceOrdinal": 8,
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_효천고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 조각으로 이루어진 꺾은선 그래프와 수평선 y=5가 그려져 있고, 두 그래프가 x=−2와 x=3에서 만난다.",
+    "solutionImageCaption": "절댓값 안의 부호가 바뀌는 x=−1, 2를 기준으로 세 구간으로 나누면 왼쪽 구간에서 −2x+1≤5, 가운데 구간에서 3≤5, 오른쪽 구간에서 2x−1≤5이다. 이를 각 구간과 함께 풀면 −2≤x≤3이고, 정수해는 −2, −1, 0, 1, 2, 3의 6개이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

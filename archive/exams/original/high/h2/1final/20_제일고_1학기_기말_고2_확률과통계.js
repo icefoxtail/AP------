@@ -46,7 +46,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 눈의 차가 3인 칸을 칠했다. (1, 4), (2, 5), (3, 6), (4, 1), (5, 2), (6, 3)의 6칸이고 전체는 36칸이다. 따라서 확률은 6/36=1/6이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -140,7 +144,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "꺼낸 공을 다시 넣지 않으므로 두 번째 분모가 9로 줄어든다. 주아가 파란 공을 꺼낼 확률은 4/10=2/5이고, 그때 남은 공은 빨강 6개, 파랑 3개이므로 진희가 빨간 공을 꺼낼 확률은 6/9=2/3이다. 파란색으로 표시한 경로의 확률은 2/5×2/3=4/15이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

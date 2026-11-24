@@ -578,7 +578,11 @@ window.questionBank = [
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 긴 직사각형 안에 넓이 식이 쓰여 있고 왼쪽 세로변에 3xy가 표시되어 있으며 아래에 가로의 길이가 적혀 있다.",
+    "solutionImageCaption": "가로의 길이는 넓이를 세로의 길이 3xy로 나누어 구한다. 27x³y를 3xy로 나누면 9x²이고, 3x²y³을 3xy로 나누면 xy²이다. 따라서 가로의 길이는 9x²+xy²이므로 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -686,7 +690,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 4보다 작은 수 전체가 왼쪽으로 뻗은 구간이 있고 4에는 속이 빈 점이 있다.",
+    "solutionImageCaption": "5−2x>−3에서 −2x>−8이고 양변을 음수 −2로 나누면 부등호의 방향이 바뀌어 x<4이다. 수직선에서 해는 4보다 작은 모든 수이고 4는 열린 점이어서 해에 포함되지 않는다. 따라서 참이 되게 하는 값이 아닌 것은 4이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -821,7 +829,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 1/3보다 큰 수 전체가 오른쪽으로 뻗은 구간이 있고 1/3에는 속이 빈 점이 있다.",
+    "solutionImageCaption": "−2(x−5a)≤7a+3에서 −2x≤−3a+3이고 양변을 −2로 나누면 x≥(3a−3)/2이다. 음의 정수가 존재하지 않으려면 해의 가장 작은 값 (3a−3)/2가 −1보다 커야 한다. (3a−3)/2>−1에서 3a>1이므로 a>1/3이다. 수직선은 a의 범위를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

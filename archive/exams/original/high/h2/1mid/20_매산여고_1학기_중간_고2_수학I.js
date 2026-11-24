@@ -817,7 +817,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "b=−1, 3^(3+a)=1에서 a=−3이고 a+b=−4."
+    "decisiveStep": "b=−1, 3^(3+a)=1에서 a=−3이고 a+b=−4.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑이 3인 지수곡선이 오른쪽 위로 증가하고, 수평점근선 y=-1과 x축 위의 점 (3, 0)이 보인다.",
+    "solutionImageCaption": "수평점근선이 y=-1이므로 b=-1이다. 그래프가 x축과 만나는 점의 x좌표가 3이므로 3의 3+a제곱=1에서 a=-3이다. 따라서 a+b=-4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -1068,7 +1072,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "제2사분면이므로 sin=3/5, cos=−4/5, 요구값은 −2."
+    "decisiveStep": "제2사분면이므로 sin=3/5, cos=−4/5, 요구값은 −2.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 단위원 위 제2사분면에 점이 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 3/5, 원점에서 수선의 발까지의 가로 길이는 4/5로 표시되어 있다.",
+    "solutionImageCaption": "tanθ=-3/4이고 sinθ×tanθ<0이므로 sinθ와 cosθ는 부호가 반대이고 cosθ<0이다. 따라서 θ는 제2사분면의 각이고, 빗변이 1인 직각삼각형에서 sinθ=3/5, cosθ=-4/5이다. 그러므로 10(sinθ+cosθ)=10(3/5-4/5)=-2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

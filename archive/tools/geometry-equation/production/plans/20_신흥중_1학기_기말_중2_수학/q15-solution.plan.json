@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "해"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "정수",
+        "points": [
+          {
+            "id": "A",
+            "value": "-6",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-5",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "-3",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "2x+2>x−3에서 x>−5이다. −5는 포함되지 않으므로 해 안의 가장 작은 정수는 −4이다. 수직선에서 −6과 −5는 해가 아니어서 ×로, −4와 −3은 해 안의 점으로 표시된다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "해집합 x>−5에서 −5는 제외되고 가장 작은 정수는 −4"
+  ],
+  "accessibilityDescription": "수직선에 −5를 포함하지 않고 오른쪽으로 뻗는 해집합이 칠해져 있고 −6과 −5는 바깥의 ×로, −4와 −3은 해 안의 점으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 일차부등식 $2x+2 > x-3$을 만족시키는 $x$의 값 중에서 가장 작은 정수를 구하면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

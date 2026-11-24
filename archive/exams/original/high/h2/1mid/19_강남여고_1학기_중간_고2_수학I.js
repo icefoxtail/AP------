@@ -467,7 +467,11 @@ window.questionBank = [
       "crossConceptReason": "현재 풀이의 결정 단계가 주 unit 안에서 닫히며 추가 canonical CrossConcept를 요구하지 않는다.",
       "conditionReason": "별도 조건축을 추가하지 않아도 source의 수학 구조가 완전히 분류된다."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑이 1/2인 감소하는 로그곡선과 세로선 x=1/3, x=3, 가로선 y=-1이 보인다.",
+    "solutionImageCaption": "밑이 1/2인 로그함수는 감소하고, a는 x=3에서의 함숫값이므로 y=-1보다 작다. b는 x=1/3에서의 함숫값이므로 y=1보다 크고, c=-1이다. 따라서 a<c<b이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
       {
     "id": 7,

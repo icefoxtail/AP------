@@ -417,7 +417,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면에서 원점을 시작점으로 하는 무리함수 그래프가 있고, 그래프 위의 점 P에서 x축에 수선을 내린 발 Q까지 선분 OP, OQ, PQ가 그려져 있다.",
+    "solutionImageCaption": "점 P의 좌표는 (x, √(2x))이고, OQ=x, OP=√(x²+2x)이다. 따라서 OP−OQ=2/(√(1+2/x)+1)이고 x가 한없이 커지면 값은 1에 가까워진다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,

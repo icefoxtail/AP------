@@ -384,7 +384,11 @@ window.questionBank = [
       "qid": 7,
       "curriculum": "2015",
       "scope": "CURRENT"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: y축 가까이에서 위로 뻗는 두 조각과 x=−1에서 위아래로 끊어진 조각, x=1에서 빈 점과 채운 점이 있는 좌표평면 위의 곡선이다.",
+    "solutionImageCaption": "x=−1에서 왼쪽 극한은 −1, 오른쪽 극한은 1로 서로 달라 극한이 없다. x=0은 y축이 점근선이어서 그래프가 발산하므로 유한한 극한이 없다. x=1에서는 양쪽에서 높이 2에 가까워지고 f(1)=1이어도 극한은 2이며, x=2에서는 곡선이 같은 높이로 이어져 극한이 존재한다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -889,7 +893,12 @@ window.questionBank = [
       "qid": 16,
       "curriculum": "2015",
       "scope": "CURRENT"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 패널에는 한 점에 구멍이 있고 그 아래에 홀로 찍힌 점이 있는 직선이, 아래쪽 패널에는 0을 기준으로 왼쪽 -1과 오른쪽 1로 뛰는 계단 모양이 보인다.",
+    "solutionImageCaption": "위쪽 그래프 f₁은 x=1에서 극한 2와 함수값 1이 달라 불연속이고, 아래쪽 그래프 f₂는 x=0에서 좌우 극한이 -1과 1로 달라 불연속이다. f₃=1/x²은 x=0에서 정의되지 않고, f₄=(x²-x-2)/(x²+1)은 분모가 0이 되지 않아 모든 실수에서 연속이다. 따라서 연속인 함수는 f₄ 하나이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 17,

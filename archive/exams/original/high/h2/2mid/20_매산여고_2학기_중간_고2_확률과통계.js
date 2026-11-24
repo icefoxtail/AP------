@@ -812,7 +812,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 16,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6x6 표에서 b/a가 2/3 또는 1/2인 칸을 칠했다. 근 2/3은 (a, b)가 (3, 2), (6, 4)의 2칸이고 근 1/2은 (2, 1), (4, 2), (6, 3)의 3칸이며 서로 겹치지 않는다. 모두 5칸이므로 한 번에 성공할 확률은 5/36이고 X는 이항분포 B(36, 5/36)을 따른다. V(X)=36×5/36×31/36=155/36이고 V(6X+1)=36×V(X)=155이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

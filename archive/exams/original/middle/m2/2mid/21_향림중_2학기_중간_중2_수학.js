@@ -956,7 +956,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심의 등거리·각이등분 성질 진위 판정",
-    "decisiveStep": "내심에서 세 변까지의 수선거리와 각이등분 성질을 비교하고 서로 다른 꼭짓점의 직각삼각형 합동이 보장되는지 구별한다."
+    "decisiveStep": "내심에서 세 변까지의 수선거리와 각이등분 성질을 비교하고 서로 다른 꼭짓점의 직각삼각형 합동이 보장되는지 구별한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 세 변 AB, BC, AC에 내린 수선의 발 D, E, F가 표시되어 있다. ID, IE, IF에 같은 길이 표시와 D, E, F의 직각 표시가 있고, AI, BI, CI가 그려져 있다.",
+    "solutionImageCaption": "I가 내심이므로 ID, IE, IF는 각각 세 변에 수직이고 그 길이가 모두 같다. 또한 AI, BI, CI는 각 꼭짓점의 각을 이등분하므로 각 IAD=각 IAF, 각 ICE=각 ICF가 성립한다. 그러나 삼각형 IDA와 삼각형 IDB는 ID가 공통이고 각 IDA=각 IDB=90°이지만 AD와 BD가 같다는 보장이 없으므로 항상 합동은 아니다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

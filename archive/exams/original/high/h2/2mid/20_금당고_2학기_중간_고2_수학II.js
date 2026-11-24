@@ -1165,7 +1165,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 2의 수평선이 내려가는 곡선으로 이어졌다가 x=1에서 위쪽 닫힌 점으로 점프하고 다시 수평선과 곡선이 반복되는 그래프이다.",
+    "solutionImageCaption": "예: a=2일 때 f의 그래프이다. 주기 2로 [-1,1)의 모양이 반복되어 x=1에서 왼쪽은 열린 점 (1,1)로, f(1)=a=2인 닫힌 점은 위에 있다. x=0에서는 양쪽이 모두 2로 이어진다. |f+c|가 연속이려면 x=0에서 |a+c|=|2+c|, x=1에서 |1+c|=|a+c|이어야 하고 c=-3/2, a=1 또는 2이다. a-c는 5/2 또는 7/2이므로 합은 6이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1220,7 +1224,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "OWNER_INCOMPLETE",
-    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY"
+    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=√(2x) 위의 점 A(8,4), x축 위의 점 B(8,0), 원점 O가 표시되어 있다. A와 B는 같은 x좌표 8 위에 있다.",
+    "solutionImageCaption": "곡선 y=√(2x) 위의 점 A에서 x축에 내린 수선의 발이 B이고, O를 중심으로 B를 지나는 원의 반지름은 OB, A를 지나는 원의 반지름은 OA이다. 예: a=8일 때 A(8,4), B(8,0)이고 OA−OB=4√5−8이다. b²=2a를 쓰면 f(a)=√(a²+2a)−a=2a/(√(a²+2a)+a)이므로 a가 무한히 커질 때 f(a)는 1에 가까워진다. 따라서 답은 3/2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

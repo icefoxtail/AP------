@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "f",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "-1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "23/3",
+          "20/3"
+        ],
+        "domain": [
+          "-1",
+          "-1/10"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "22/3",
+          "-16/3"
+        ],
+        "domain": [
+          "1/10",
+          "1"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-2",
+        "y": "-2"
+      },
+      {
+        "id": "N",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "viewport": [
+      -4,
+      4,
+      -4,
+      8
+    ]
+  },
+  "caption": "x=−1에서 왼쪽 극한은 −1, 오른쪽 극한은 1로 서로 달라 극한이 없다. x=0은 y축이 점근선이어서 그래프가 발산하므로 유한한 극한이 없다. x=1에서는 양쪽에서 높이 2에 가까워지고 f(1)=1이어도 극한은 2이며, x=2에서는 곡선이 같은 높이로 이어져 극한이 존재한다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "y축 가까이에서 위로 뻗는 두 조각과 x=−1에서 위아래로 끊어진 조각, x=1에서 빈 점과 채운 점이 있는 좌표평면 위의 곡선이다.",
+  "newVisualInformation": [
+    "x=−1의 왼쪽 극한 −1과 오른쪽 극한 1",
+    "x=0의 y축 점근선",
+    "x=1의 구멍 높이 2와 함숫값 1",
+    "x=2에서 이어지는 곡선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 보기 중 극한값이 존재하는 것을 모두 골라라. (단, $y$축은 점근선이다.) [3.7점]\n<img src=\"assets/images/20_제일고_2학기_중간_고2_수학II/q07.png\" alt=\"20_제일고_2학기_중간_고2_수학II Q07\" />\n\n<보기>\nㄱ. $\\lim_{x \\to -1} f(x)$\nㄴ. $\\lim_{x \\to 0} f(x)$\nㄷ. $\\lim_{x \\to 1} f(x)$\nㄹ. $\\lim_{x \\to 2} f(x)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -974,7 +974,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "균등한 원판에서 소수 칸의 확률",
-    "decisiveStep": "1부터10의 소수4개칸을 전체10칸과 비교한다."
+    "decisiveStep": "1부터10의 소수4개칸을 전체10칸과 비교한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 크기가 같은 10개의 부채꼴로 나뉜 원판에서 네 부채꼴이 색칠되어 있고 색칠된 칸에 2, 3, 5, 7이 적혀 있다.",
+    "solutionImageCaption": "원판은 크기가 같은 10개의 칸으로 나뉘어 있고 1부터 10까지의 수 중 소수인 칸 2, 3, 5, 7을 색칠했다. 소수는 4개이므로 바늘이 소수를 가리킬 확률은 4/10=2/5이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1297,7 +1301,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "교점 유일성 조건으로 주사위쌍 선별",
-    "decisiveStep": "서로다른 기울기 조건을 ab≠6으로 바꾸고 제외되는 네순서쌍을 전체36에서 뺀다."
+    "decisiveStep": "서로다른 기울기 조건을 ab≠6으로 바꾸고 제외되는 네순서쌍을 전체36에서 뺀다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "처음 눈 a와 나중 눈 b의 순서쌍은 6×6=36가지이다. 두 직선이 한 점에서 만나려면 기울기가 달라야 하므로 ab≠6이다. 색칠한 칸이 ab=6인 (1,6), (2,3), (3,2), (6,1)의 4가지이고 나머지 36−4=32가지가 조건을 만족한다. 따라서 확률은 32/36=8/9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

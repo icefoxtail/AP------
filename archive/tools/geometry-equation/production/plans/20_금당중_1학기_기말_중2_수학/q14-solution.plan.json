@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBox",
+        "from": "A",
+        "to": "B",
+        "label": "30x",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dMan",
+        "from": "B",
+        "to": "C",
+        "label": "70",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dLoad",
+        "from": "A",
+        "to": "C",
+        "label": "30x+70",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dCap",
+        "from": "A",
+        "to": "D",
+        "label": "500",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": 2
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "상자 x개의 무게는 30x이고 배달원의 무게는 70이므로 승강기에 실리는 전체 무게는 30x+70이다. 승강기는 500까지 운반할 수 있으므로 30x+70≤500이어야 한다. 그림에서 상자와 배달원의 무게를 합한 길이를 한도 500과 비교할 수 있다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로로 놓인 막대가 상자 무게 30x와 배달원 무게 70의 두 구간으로 나뉘고, 그 위와 아래에 합 30x+70과 한도 500의 치수가 나란히 표시되어 있다.",
+  "newVisualInformation": [
+    "상자 무게 30x 구간",
+    "배달원 무게 70 구간",
+    "합 30x+70과 한도 500의 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 한번에 $500\\text{kg}$까지 운반할 수 있는 승강기가 있다. 몸무게가 $70\\text{kg}$인 배달원이 이 승강기를 타고 하나의 무게가 $30\\text{kg}$인 상자를 운반하려고 할 때, 한 번에 최대 $x$상자를 운반할 수 있다고 한다. $x$를 구하는 식으로 알맞은 것은? (4점)</p><p><img src=\"assets/images/20_금당중_1학기_기말_중2_수학/q14.png\" alt=\"문항의 원본 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
