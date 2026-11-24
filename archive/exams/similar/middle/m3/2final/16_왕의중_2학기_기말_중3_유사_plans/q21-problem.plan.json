@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBP",
+        "ownerSegment": "sBP",
+        "text": "16",
+        "unit": "m"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "24",
+        "unit": "m",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "두 지점 A, B와 깃발 P의 위치를 나타낸 삼각형 ABP이다. AB와 BP의 길이, 각 PBA의 크기가 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABP에서 변 AB는 24미터, 변 BP는 16미터이고, 꼭짓점 B의 각은 60도로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 다음 그림과 같이 두 지점 $A, B$에 깃발이 꽂혀 있다. $\\overline{AB} = 24\\text{ m}$, $\\overline{BP} = 16\\text{ m}$이고 $\\angle PBA = 60^\\circ$일 때, 두 지점 $A, P$ 사이의 거리를 구하는 풀이 과정과 답을 자세히 써라. (단, 두 점 사이의 거리를 구할 때 삼각비를 사용할 것.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "AB는 24미터, BP는 16미터, 각 PBA는 60도이다.",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 A, B, P의 위치와 변 AB, BP의 길이, 각 PBA의 크기를 보여 준다."
+  ]
+}

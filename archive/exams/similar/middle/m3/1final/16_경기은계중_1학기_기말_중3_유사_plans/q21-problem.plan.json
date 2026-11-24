@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      8,
+      -2,
+      20
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "9",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "lev",
+        "kind": "LINE",
+        "coefficients": [
+          "16",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "y=16"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "Q1",
+          "x": "-1",
+          "y": "16",
+          "unnamed": true
+        },
+        {
+          "id": "Q2",
+          "x": "7",
+          "y": "16",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점이 (3, 0)이고 y축과 점 (0, 9)에서 만나는 이차함수의 그래프와, 이 그래프가 두 점에서 만나는 수평선 y=16을 나타낸 그림이다. 그래프와 수평선이 만나는 두 점에는 이름 없이 점만 표시되어 있다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 꼭짓점 (3, 0)을 지나고 y축과 점 (0, 9)에서 만난다. 수평선 y=16이 포물선과 두 점에서 만나고, 그 두 교점에 이름 없는 점이 찍혀 있다.",
+  "newVisualInformation": [
+    "꼭짓점 (3, 0)과 y절편 (0, 9)을 지나는 포물선",
+    "직선 y=16과 포물선의 두 교점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 꼭짓점이 $(3, 0)$이고 $y$축과 점 $(0, 9)$에서 만나는 이차함수의 그래프가 점 $(k, 16)$을 지난다고 할 때, 두 $k$ 값의 차를 구하시오. [7.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

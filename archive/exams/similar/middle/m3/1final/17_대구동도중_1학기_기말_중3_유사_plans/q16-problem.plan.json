@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      2,
+      -3,
+      6
+    ],
+    "curves": [
+      {
+        "id": "fL",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "-1"
+        ],
+        "color": "BLUE",
+        "label": "y"
+      },
+      {
+        "id": "fR",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-1",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cV",
+          "point": "V",
+          "text": "(-1,4)",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cB",
+          "point": "B",
+          "text": "(0,2)",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 위로 볼록한 이차함수의 그래프가 있고, 꼭짓점 (-1, 4)와 y축과 만나는 점 (0, 2)가 표시되어 있다.",
+  "accessibilityDescription": "x축과 y축이 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점의 좌표 (-1, 4)와 y축과 만나는 점의 좌표 (0, 2)가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점이 (-1, 4)이다.",
+    "포물선이 y축과 점 (0, 2)에서 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같이 꼭짓점이 $(-1, 4)$이고 $y$축과 점 $(0, 2)$에서 만날 때, $abc$의 값은? (단, $a, b, c$는 상수) [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB1",
+      "refs": [
+        "A",
+        "V1"
+      ]
+    },
+    {
+      "id": "sAB2",
+      "refs": [
+        "V3",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "H2"
+      ]
+    },
+    {
+      "id": "sBC2",
+      "refs": [
+        "H4",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD1",
+      "refs": [
+        "C",
+        "V4"
+      ]
+    },
+    {
+      "id": "sCD2",
+      "refs": [
+        "V2",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA1",
+      "refs": [
+        "D",
+        "H3"
+      ]
+    },
+    {
+      "id": "sDA2",
+      "refs": [
+        "H1",
+        "A"
+      ]
+    },
+    {
+      "id": "sH1a",
+      "refs": [
+        "H1",
+        "I1"
+      ]
+    },
+    {
+      "id": "sH1b",
+      "refs": [
+        "I2",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2a",
+      "refs": [
+        "H3",
+        "I3"
+      ]
+    },
+    {
+      "id": "sH2b",
+      "refs": [
+        "I4",
+        "H4"
+      ]
+    },
+    {
+      "id": "sV1a",
+      "refs": [
+        "V1",
+        "I1"
+      ]
+    },
+    {
+      "id": "sV1b",
+      "refs": [
+        "I3",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2a",
+      "refs": [
+        "V3",
+        "I2"
+      ]
+    },
+    {
+      "id": "sV2b",
+      "refs": [
+        "I4",
+        "V4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d0",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "d1",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "d2",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "V2",
+        "to": "V4",
+        "label": "x",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로 20 cm, 세로 12 cm인 직사각형 모양의 종이에서 폭이 x cm인 가로 띠와 세로 띠를 십자 모양으로 오려낸 그림이다. 남은 네 모서리 조각이 보인다.",
+  "accessibilityDescription": "직사각형 종이에서 가로 띠와 세로 띠가 십자 모양으로 오려져 네 모서리 조각이 남아 있다. 가로변에 20 cm, 세로변에 12 cm가 표시되고, 오려낸 띠의 폭에 x cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "종이의 가로 길이는 20 cm, 세로 길이는 12 cm이다.",
+    "폭이 x cm인 가로 띠와 세로 띠가 십자 모양으로 오려져 있다.",
+    "남은 종이는 네 모서리 조각으로 나뉜다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로와 세로의 길이가 각각 $20\\text{ cm}$, $12\\text{ cm}$인 직사각형 모양의 종이를 오른쪽 그림과 같이 일정한 폭으로 오려내었더니 나머지 네 조각의 넓이의 합이 $153\\text{ cm}^2$가 되었다. 오려낸 부분의 폭은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "P",
+    "T",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "sLP",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lLT",
+        "ownerSegment": "sLT",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lLP",
+        "ownerSegment": "sLP",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lPT",
+        "ownerSegment": "sPT",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lTR",
+        "ownerSegment": "sTR",
+        "text": "y",
+        "unit": "cm"
+      },
+      {
+        "id": "lRP",
+        "ownerSegment": "sRP",
+        "text": "17",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "L",
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "P",
+        "T",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "L",
+    "P",
+    "T",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 직각삼각형이 길이가 x인 한 변을 공유하고 있다. 왼쪽 삼각형의 빗변과 한 직각변, 오른쪽 삼각형의 빗변과 다른 직각변의 길이가 주어져 있다.",
+  "accessibilityDescription": "왼쪽 직각삼각형은 빗변 10 cm, 한 직각변 6 cm, 공유하는 직각변 x를 갖는다. 오른쪽 직각삼각형은 빗변 17 cm와 다른 직각변 y를 가지며, 두 삼각형의 직각이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직각삼각형이 길이 x인 변을 공유한다.",
+    "각 삼각형의 빗변과 한 직각변의 길이가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직각삼각형이 한 변 $x$를 공유하고 있다. 첫 번째 직각삼각형의 빗변의 길이가 $10\\text{ cm}$, 한 직각변의 길이가 $6\\text{ cm}$, 다른 직각변의 길이가 $x\\text{ cm}$이다. 두 번째 직각삼각형은 변 $x$를 한 직각변으로 하고, 빗변의 길이가 $17\\text{ cm}$, 다른 직각변의 길이가 $y\\text{ cm}$이다. 이때 $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

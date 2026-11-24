@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "y=2x+8",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "y=2x",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      5,
+      0,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "v4",
+          "x": "4",
+          "label": "x=4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "16"
+        }
+      ],
+      "segments": [
+        {
+          "id": "sAB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "sBC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "sCA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=2x+8과 y축의 교점이 A이고, 두 직선 y=2x, y=2x+8이 직선 x=4와 만나는 점이 각각 B, C인 삼각형 ABC를 나타낸 그림이다.",
+  "accessibilityDescription": "두 평행한 직선 y=2x와 y=2x+8, 그리고 세로 직선 x=4가 그려져 있다. y축 위의 점 A, 직선 x=4 위의 두 점 B와 C가 삼각형 ABC를 이룬다.",
+  "newVisualInformation": [
+    "두 직선 y=2x, y=2x+8과 직선 x=4, 그리고 삼각형 ABC를 보여 준다.",
+    "점 C의 좌표 값 16은 라벨에 쓰지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 직선 $y=2x+8$과 $y$축의 교점을 $A$라 하고, 두 직선 $y=2x$, $y=2x+8$이 직선 $x=4$와 만나는 점을 각각 $B$, $C$라 할 때, 삼각형 $ABC$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

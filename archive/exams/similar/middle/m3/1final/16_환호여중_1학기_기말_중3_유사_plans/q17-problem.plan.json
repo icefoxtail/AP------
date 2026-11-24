@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -1,
+      19
+    ],
+    "curves": [
+      {
+        "id": "p1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "p2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "9"
+        ],
+        "domain": [
+          "-4/3",
+          "4/3"
+        ],
+        "label": "y=ax^2"
+      },
+      {
+        "id": "L",
+        "kind": "LINE",
+        "coefficients": [
+          "16",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=16"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "16"
+        },
+        {
+          "id": "B",
+          "x": "-4/3",
+          "y": "16"
+        },
+        {
+          "id": "C",
+          "x": "4/3",
+          "y": "16"
+        },
+        {
+          "id": "D",
+          "x": "4",
+          "y": "16"
+        }
+      ]
+    }
+  },
+  "caption": "수평선 y=16이 두 이차함수 y=x², y=ax²의 그래프와 만나는 네 점을 왼쪽부터 A, B, C, D라 한 그림이다.",
+  "accessibilityDescription": "위로 열린 넓은 포물선과 그 안쪽의 좁은 포물선이 있고, 두 포물선을 가로지르는 수평선 y=16 위에 왼쪽부터 네 점 A, B, C, D가 같은 간격으로 놓여 있다.",
+  "newVisualInformation": [
+    "두 포물선 y=x²과 y=ax²",
+    "수평선 y=16",
+    "직선 위의 네 점 A, B, C, D"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 직선 $y = 16$이 두 이차함수 $y = x^2$, $y = ax^2$의 그래프와 만나는 네 점을 각각 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$라 할 때, $\\overline{\\text{AB}} = \\overline{\\text{BC}} = \\overline{\\text{CD}}$이기 위한 상수 $a$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

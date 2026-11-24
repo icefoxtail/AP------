@@ -1,0 +1,33 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "BC",
+      "foot": "D"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "6√2"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "D"
+      ],
+      "text": "60°"
+    }
+  ]
+}

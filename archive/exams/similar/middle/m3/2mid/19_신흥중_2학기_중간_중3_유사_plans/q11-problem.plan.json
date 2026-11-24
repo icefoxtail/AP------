@@ -1,0 +1,506 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Btm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cCirc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cTop",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBot",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Btm"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cLeft",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cRight",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cCirc"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "T",
+    "Btm",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aTop",
+        "circle": "cTop",
+        "center": "T",
+        "from": "A",
+        "to": "D",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "aBot",
+        "circle": "cBot",
+        "center": "Btm",
+        "from": "B",
+        "to": "C",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "aLeft",
+        "circle": "cLeft",
+        "center": "L",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "aRight",
+        "circle": "cRight",
+        "center": "R",
+        "from": "D",
+        "to": "C",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "8"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4"
+      }
+    ],
+    "regions": [
+      {
+        "id": "luTop",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "T",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "luRight",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "R",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "luBottom",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "Btm",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "luLeft",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "L",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "Btm",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직사각형 ABCD의 각 변을 지름으로 하는 반원과 네 꼭짓점 A, B, C, D를 지나는 원이 그려져 있다. 직사각형의 가로 8과 세로 4가 표시되어 있고, 네 초승달 모양이 색칠되어 있다.",
+  "accessibilityDescription": "큰 원이 직사각형의 네 꼭짓점 A, B, C, D를 지나고, 직사각형의 각 변 바깥쪽에 반원이 있다. 반원과 큰 원 사이의 네 초승달 모양이 색칠되어 있으며, 가로변 옆에 8, 세로변 옆에 4가 적혀 있다.",
+  "newVisualInformation": [
+    "직사각형의 각 변에 그린 반원과 외접원 사이의 초승달 모양 네 개가 색칠된 그림"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 가로, 세로의 길이가 각각 $4$, $8$인 직사각형 $\\text{ABCD}$의 각 변을 지름으로 하는 반원을 그린 후, 네 꼭짓점 $\\text{A}$, $\\text{B}$, $\\text{C}$, $\\text{D}$를 지나는 원을 그린 것이다. 이때 원의 내부에서 직사각형의 바깥쪽 반원 부분(히포크라테스의 초승달 모양 $4$개)의 넓이의 합을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

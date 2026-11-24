@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -1,
+      5
+    ],
+    "curves": [
+      {
+        "id": "AB",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-4"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "BC",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "CA",
+        "kind": "LINE",
+        "coefficients": [
+          "14/3",
+          "-2/3"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "color": "GREEN",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "모눈 한 칸의 길이가 1인 모눈종이 위에 세 꼭짓점 A(1, 4), B(2, 0), C(4, 2)인 삼각형을 나타내었다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 세 꼭짓점의 위치와 변을 보여 준다."
+  ],
+  "accessibilityDescription": "모눈 한 칸의 길이가 1인 모눈종이 위에 세 꼭짓점 A(1, 4), B(2, 0), C(4, 2)인 삼각형을 나타내었다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모눈 한 칸의 길이가 $1$인 모눈종이 위에 세 꼭짓점이 $\\text{A}(1, 4)$, $\\text{B}(2, 0)$, $\\text{C}(4, 2)$인 $\\triangle\\text{ABC}$가 그려져 있을 때, $\\triangle\\text{ABC}$의 넓이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3/2"
+        },
+        {
+          "id": "Q",
+          "x": "3/2",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "3/2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QO",
+          "from": "Q",
+          "to": "O"
+        },
+        {
+          "id": "OR",
+          "from": "O",
+          "to": "R"
+        },
+        {
+          "id": "RP",
+          "from": "R",
+          "to": "P"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "PQOR",
+          "points": [
+            "P",
+            "Q",
+            "O",
+            "R"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "제1사분면에서 일차함수 y=-3x+6의 그래프 위에 점 P가 있고, P와 x좌표가 같은 x축 위의 점 Q, P와 y좌표가 같은 y축 위의 점 R, 원점 O로 직사각형 PQOR을 만든 그림이다.",
+  "accessibilityDescription": "오른쪽 아래로 내려가는 직선이 x축과 y축을 지나고, 그 직선 위의 점 P에서 x축에 수선을 내린 점 Q, y축에 수선을 내린 점 R, 원점 O를 꼭짓점으로 하는 직사각형이 옅게 칠해져 있다.",
+  "newVisualInformation": [
+    "직선 y=-3x+6",
+    "직선 위의 점 P",
+    "x축 위의 점 Q와 y축 위의 점 R",
+    "직사각형 PQOR"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 점 $\\text{P}$는 제 $1$사분면 위의 일차함수 $y = -3x + 6$의 그래프 위의 점이고, $\\text{P}$와 $\\text{Q}$의 $x$좌표는 같고 $\\text{Q}$는 $x$축 위의 점이며 $\\text{P}$와 $\\text{R}$의 $y$좌표는 같고 $\\text{R}$은 $y$축 위의 점이다. 직사각형 $\\text{PQOR}$의 넓이가 최대일 때 직사각형 $\\text{PQOR}$의 둘레의 길이를 구하면? (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

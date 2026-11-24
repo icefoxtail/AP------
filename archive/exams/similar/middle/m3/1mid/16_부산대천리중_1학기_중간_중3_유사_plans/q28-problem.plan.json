@@ -1,0 +1,439 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sB",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sR1",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sR2",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sR3",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "sR4",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "sTop",
+      "refs": [
+        "P6",
+        "P10"
+      ]
+    },
+    {
+      "id": "sL1",
+      "refs": [
+        "P10",
+        "P9"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "P9",
+        "P8"
+      ]
+    },
+    {
+      "id": "sL3",
+      "refs": [
+        "P8",
+        "P7"
+      ]
+    },
+    {
+      "id": "sL4",
+      "refs": [
+        "P7",
+        "P1"
+      ]
+    },
+    {
+      "id": "sM1",
+      "refs": [
+        "P3",
+        "P7"
+      ]
+    },
+    {
+      "id": "sM2",
+      "refs": [
+        "P4",
+        "P8"
+      ]
+    },
+    {
+      "id": "sM3",
+      "refs": [
+        "P5",
+        "P9"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r0",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P3",
+              "P7"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r1",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "P7",
+              "P3",
+              "P4",
+              "P8"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "GREEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P8",
+              "P4",
+              "P5",
+              "P9"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P9",
+              "P5",
+              "P6",
+              "P10"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "P1",
+        "to": "P2",
+        "label": "x",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "P2",
+        "to": "P3",
+        "label": "x",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sR2",
+        "text": "1"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sR2",
+          "sR3",
+          "sR4"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 변의 길이가 x인 정사각형 하나와, 가로의 길이가 x이고 세로의 길이가 1인 직사각형 세 개를 세로로 이어 붙인 그림이다.",
+  "accessibilityDescription": "왼쪽 아래에 한 변이 x인 정사각형이 있고 그 위로 세로의 길이가 1인 직사각형 세 개가 차례로 붙어 있다. 아래변과 정사각형의 오른쪽 변에 x가, 각 직사각형의 세로 변에 1이 표시되어 있다.",
+  "newVisualInformation": [
+    "한 변이 x인 정사각형 1개",
+    "가로 x, 세로 1인 직사각형 3개",
+    "길이 x와 1의 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 이어 붙인 네 직사각형을 이용하여 어떤 식을 인수분해하였다. 다음 중 어떤 식으로 옳은 것은? [2.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 6
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 8
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "3"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "6"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "8"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 A / 오른쪽 B"
+  },
+  "caption": "서로 닮은 두 원기둥 A, B가 나란히 있고, A의 밑면의 반지름은 3 cm, 높이는 6 cm이며 B의 높이는 8 cm이다.",
+  "accessibilityDescription": "왼쪽 원기둥 A에는 밑면의 반지름 3과 높이 6이 표시되어 있고, 오른쪽 원기둥 B에는 높이 8만 표시되어 있다.",
+  "newVisualInformation": [
+    "원기둥 A의 밑면 반지름 3과 높이 6",
+    "원기둥 B의 높이 8",
+    "두 원기둥 A, B의 크기 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원기둥 $A, B$에서 원기둥 $A$의 밑면의 반지름의 길이가 $3\\text{ cm}$, 높이가 $6\\text{ cm}$이고, 원기둥 $B$의 높이가 $8\\text{ cm}$일 때, 원기둥 $B$의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

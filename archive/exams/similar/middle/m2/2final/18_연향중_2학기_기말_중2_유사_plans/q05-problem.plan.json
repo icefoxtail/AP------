@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sED"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "4",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": 1
+      },
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ra1",
+      "refs": [
+        "D",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 360
+  },
+  "caption": "각 B와 각 C가 직각인 사다리꼴 ABCD에서 변 BC 위의 점 E가 AE와 DE의 길이가 같고 각 AED가 직각이 되게 잡힌 그림이다.",
+  "accessibilityDescription": "사다리꼴 ABCD의 변 BC 위에 E가 있고, AE와 DE에 같은 길이 표시, 각 AED에 직각 표시가 있다. AB는 4센티미터, CD는 6센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "AE와 DE의 같은 길이, 각 AED의 직각, AB와 CD의 길이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle B = \\angle C = 90^\\circ$인 사다리꼴 $ABCD$의 변 $BC$ 위의 점 $E$에 대하여 $\\overline{AE} = \\overline{DE}$, $\\angle AED = 90^\\circ$이다. $\\overline{AB} = 4\\text{ cm}, \\overline{CD} = 6\\text{ cm}$일 때, $\\triangle AED$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
