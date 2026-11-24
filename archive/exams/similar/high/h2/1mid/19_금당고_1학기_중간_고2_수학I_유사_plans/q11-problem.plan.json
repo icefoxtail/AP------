@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      5,
+      -2,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/24",
+          "4"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-9/4",
+          "4"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1/16",
+          "y": "4",
+          "coordinates": false
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "4",
+          "coordinates": false
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "4",
+          "label": "y=b"
+        }
+      ]
+    }
+  },
+  "caption": "밑이 1/2인 로그함수의 그래프와 그 역함수의 그래프가 직선 y = x와 함께 그려져 있다. 로그함수 위의 점 P(a, b)와 역함수 위의 점 Q(-2, b)는 같은 높이의 수평선 위에 있다.",
+  "accessibilityDescription": "감소하는 두 곡선과 점선인 직선 y = x가 같은 좌표축에 있고, 두 곡선 위의 점 P와 Q가 수평선으로 이어져 있다.",
+  "newVisualInformation": [
+    "두 곡선 위의 점 P, Q와 수평선 y=b가 표시된다",
+    "직선 y=x가 점선으로 표시된다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $\\mathrm{P}(a, b)$, $\\mathrm{Q}(-2, b)$는 각각 함수 $y = \\log_{\\frac{1}{2}} x$와 그 역함수 $y = f(x)$의 그래프 위의 점일 때, $\\frac{a}{b}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

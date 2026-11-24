@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=(k/3)x-2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (0, -4), (2, 0)을 지나는 직선과 일차함수 y=(k/3)x-2의 그래프가 평행한 모양을 나타낸 것이다.",
+  "accessibilityDescription": "좌표평면에 두 점 (0, -4)와 (2, 0)을 지나는 파란 직선과, y절편이 -2인 주황색 평행 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "두 점 (0, -4), (2, 0)을 지나는 직선",
+    "일차함수 y=(k/3)x-2의 그래프",
+    "두 직선은 서로 평행"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = \\dfrac{k}{3}x - 2$의 그래프가 두 점 $(0, -4), (2, 0)$을 지나는 직선과 평행할 때, $k$의 값은? (단, $k$는 수이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

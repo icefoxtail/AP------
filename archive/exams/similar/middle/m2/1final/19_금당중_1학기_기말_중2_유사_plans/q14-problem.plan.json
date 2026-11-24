@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-6",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -7,
+      3,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "직선이 x축과 x=-4에서, y축과 y=3에서 만나는 모양을 나타낸 그래프이다.",
+  "accessibilityDescription": "좌표평면의 한 직선이 x축 위의 점 (-4, 0)과 y축 위의 점 (0, 3)을 지난다.",
+  "newVisualInformation": [
+    "직선의 x절편 -4와 y절편 3을 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$절편이 $-4$이고 $y$절편이 $3$인 직선을 그래프로 하는 일차함수의 식은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

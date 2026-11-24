@@ -1,0 +1,98 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "domain": [
+      "1",
+      "7"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "viewport": [
+      -1,
+      9,
+      -1,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "7",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "7",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "6"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면 위에 네 점 A(1, 2), B(7, 2), C(7, 6), D(1, 6)을 꼭짓점으로 하는 직사각형 ABCD가 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 직사각형 ABCD가 있고, 네 꼭짓점 A, B, C, D에 이름이 붙어 있다. A와 C에는 각각의 좌표가 적혀 있다.",
+  "newVisualInformation": [
+    "직사각형 ABCD의 네 꼭짓점 이름과 일부 좌표, 두 좌표축을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 네 점 $\\mathrm{A}(1, 2)$, $\\mathrm{B}(7, 2)$, $\\mathrm{C}(7, 6)$, $\\mathrm{D}(1, 6)$을 꼭짓점으로 하는 직사각형 $\\mathrm{ABCD}$의 넓이를 이등분하는 직선의 방정식을 $5$개 구하시오. [각 2점, 총 10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
