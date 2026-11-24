@@ -1,0 +1,374 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CB",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "AB",
+    "AC",
+    "BB",
+    "BC",
+    "CA",
+    "CB"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cA",
+    "cB",
+    "cC"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "AB",
+        "BB"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "BC",
+        "CB"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "CA",
+        "AC"
+      ]
+    },
+    {
+      "id": "sRad",
+      "refs": [
+        "A",
+        "AB"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lR",
+        "ownerSegment": "sRad",
+        "text": "4",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcA",
+        "circle": "cA",
+        "center": "A",
+        "from": "AC",
+        "to": "AB",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcB",
+        "circle": "cB",
+        "center": "B",
+        "from": "BB",
+        "to": "BC",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcC",
+        "circle": "cC",
+        "center": "C",
+        "from": "CB",
+        "to": "CA",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "AB",
+    "AC",
+    "BB",
+    "BC",
+    "CA",
+    "CB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "반지름이 4 cm인 원기둥 모양의 캔 세 개를 서로 맞닿게 놓고, 그 둘레를 한 바퀴 감은 테이프의 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "같은 크기의 원 세 개가 정삼각형 모양으로 서로 맞닿아 있고, 세 원의 바깥을 감싸는 테이프가 원호 세 개와 직선 세 개로 이루어진 윤곽을 이룬다. 한 원의 중심에서 원둘레까지 점선이 그어져 있고 그 옆에 4 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "반지름 4 cm인 세 원",
+    "세 원을 감싼 테이프의 직선 부분과 곡선 부분"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 각각 $4,\\mathrm{cm}$인 원기둥 모양의 캔 $3$개를 묶으려고 할 때, 필요한 테이프의 최소 길이는 $(a\\pi+b),\\mathrm{cm}$이다. 자연수 $a, b$에 대하여 $a+b$의 값은? (단, 캔의 두께와 겹치는 부분은 무시한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "S1",
+    "S2",
+    "S3",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "b1",
+    "b2",
+    "b3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sC0C1",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2C3",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3C0",
+      "refs": [
+        "C3",
+        "C0"
+      ]
+    },
+    {
+      "id": "sS1R",
+      "refs": [
+        "S1",
+        "R"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lR",
+        "ownerSegment": "sS1R",
+        "text": "2",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "S1",
+    "S2",
+    "S3",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름이 같은 쇠공 세 개가 원기둥 모양의 통에 위아래로 꼭 맞게 들어 있는 그림이다. 쇠공의 반지름이 표시되어 있다.",
+  "accessibilityDescription": "원기둥 모양의 통 안에 같은 크기의 쇠공 세 개가 세로로 차례로 들어 있고, 쇠공의 반지름 2센티미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "원기둥 통 안에 쇠공 세 개가 위아래로 꼭 맞게 들어 있다.",
+    "쇠공의 반지름 2센티미터가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 그림과 같이 반지름의 길이가 $2\\text{ cm}$인 쇠공 3개가 원기둥 모양의 통에 꼭 맞게 들어 있다. 이 통 속의 빈 공간의 부피를 구하시오. (단, 통의 두께는 생각하지 않는다.) [7점] (원기둥과 쇠공의 부피를 구하는 과정: 4점, 빈 공간의 부피: 3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

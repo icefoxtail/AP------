@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "E",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AB",
+          "EA"
+        ]
+      }
+    ]
+  },
+  "caption": "두 직각삼각형 ABC와 DEF에서 변 AC와 변 DF가 일치하도록 붙이고, 점 B와 점 E가 직선 AC의 서로 반대쪽에 놓이도록 하여 삼각형 ABE를 만들었다. 변 AB와 변 AE의 길이가 같다.",
+  "accessibilityDescription": "점 A, B, C, E와 선분 AB, BC, CE, EA, AC가 보이고, 각 ACB와 각 ACE에 직각 표시가 있으며, AB와 AE에 같은 길이 표시가 있다.",
+  "newVisualInformation": [
+    "직선 AC를 기준으로 양쪽에 놓인 두 직각삼각형을 합쳐 만든 삼각형 ABE를 보여 준다.",
+    "각 ACB와 각 ACE의 직각 표시, AB와 AE의 같은 길이 표시를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 '빗변의 길이와 다른 한 변의 길이가 각각 같은 두 직각삼각형은 합동이다.'를 증명하는 과정이다. $\\angle C=\\angle F=90^\\circ$, $\\overline{AB}=\\overline{DE}$, $\\overline{AC}=\\overline{DF}$인 두 직각삼각형 $ABC$와 $DEF$에서 변 $AC$와 변 $DF$가 일치하도록 붙이고 점 $B$와 점 $E$가 직선 $AC$에 대하여 서로 반대쪽에 놓이도록 배치한 삼각형을 $\\triangle ABE$라 할 때, (가)~(다)에 알맞은 것을 차례로 나열한 것은? [4점]\n\n- $\\angle ACB + \\angle ACE = \\text{(가)}$이므로 세 점 $B$, $C$, $E$는 한 직선 위에 있다.  \n- $\\overline{AB}=\\overline{AE}$이므로 $\\triangle ABE$는 이등변삼각형이고 $\\angle B = \\text{(나)}$이다.  \n- 따라서 두 직각삼각형 $ABC$와 $DEF$는 빗변의 길이와 한 예각의 크기가 각각 같으므로 $\\text{(다)}$ 합동이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

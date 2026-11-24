@@ -1,0 +1,92 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            7,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "plane": "XY"
+      },
+      "height": 6,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "7"
+    },
+    {
+      "from": "D",
+      "to": "C",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "4"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "5"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "B",
+          "D"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "밑면이 윗변 4 cm, 아랫변 7 cm, 높이 4 cm, 빗변 5 cm인 직각사다리꼴이고 기둥의 높이가 6 cm인 사각기둥이다.",
+  "accessibilityDescription": "직각사다리꼴을 밑면으로 하는 사각기둥이 보인다. 밑면의 윗변은 4, 아랫변은 7, 높이는 4, 빗변은 5로 표시되어 있고, 기둥의 높이는 6으로 표시되어 있다.",
+  "newVisualInformation": [
+    "직각사다리꼴 밑면의 네 변 4, 7, 4, 5를 표시하였다.",
+    "사각기둥의 높이 6을 표시하였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면은 윗변 $4,\\mathrm{cm}$, 높이 $4,\\mathrm{cm}$, 아랫변 $7,\\mathrm{cm}$, 빗변 $5,\\mathrm{cm}$인 직각사다리꼴이고 기둥의 높이가 $6,\\mathrm{cm}$인 사각기둥의 겉넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

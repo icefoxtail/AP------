@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15177",
+              "denominator": "2500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40281",
+              "denominator": "5000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "L",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BL",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "apexExterior",
+        "refs": [
+          "E",
+          "A",
+          "C"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "leftExterior",
+        "refs": [
+          "L",
+          "B",
+          "A"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "label": "x+10",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightInterior",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 64,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "64",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "L",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 570,
+    "height": 470
+  },
+  "caption": "삼각형의 꼭대기 꼭짓점과 왼쪽 아래 꼭짓점의 외각, 오른쪽 아래 꼭짓점의 내각을 표시한 그림이다.",
+  "accessibilityDescription": "삼각형과 두 변의 연장선이 보이고, 꼭대기 외각에 x, 왼쪽 아래 외각에 x+10, 오른쪽 아래 내각에 64가 표시되어 있다.",
+  "newVisualInformation": [
+    "꼭대기 외각에 x, 왼쪽 아래 외각에 x+10, 오른쪽 아래 내각에 64가 각각의 호와 함께 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 아래 그림에서 삼각형의 꼭대기 꼭짓점의 외각의 크기가 $x$, 왼쪽 아래 꼭짓점의 외각의 크기가 $x + 10^\\circ$이고, 오른쪽 아래 꼭짓점의 내각의 크기가 $64^\\circ$일 때, $\\angle x$의 크기를 구하시오. [4점] ($\\angle x$의 크기를 구하는 과정: 2점, $\\angle x$의 크기: 2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

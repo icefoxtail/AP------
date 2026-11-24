@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vx",
+        "x": "4",
+        "y": "9"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "9",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "7",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cA",
+          "point": "A",
+          "text": "A",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cB",
+          "point": "B",
+          "text": "B",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cC",
+          "point": "C",
+          "text": "C",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "9"
+      ]
+    }
+  },
+  "caption": "위로 볼록한 이차함수의 그래프에서 꼭짓점 A와 x축과의 교점 B, C를 잇는 삼각형 ABC를 색칠했다.",
+  "accessibilityDescription": "위로 볼록한 포물선이 x축과 두 점 B, C에서 만나고, 꼭짓점 A가 그 위쪽에 있다. 삼각형 ABC가 색칠되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 A와 x축과의 교점 B, C가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 이차함수 $y=-x^2+8x+k$의 그래프에서 꼭짓점을 $\\text{A}$라 하고, $x$축과의 두 교점을 각각 $\\text{B}, \\text{C}$라 하자. $\\overline{\\text{BC}}=6$일 때, $\\triangle\\text{ABC}$의 넓이는? (단, $k$는 상수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

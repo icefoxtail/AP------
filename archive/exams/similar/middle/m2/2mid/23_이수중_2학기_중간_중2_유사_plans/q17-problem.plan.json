@@ -1,0 +1,78 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "height": 2.6666666666666665,
+      "names": "A′B′C′..."
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            12
+          ]
+        ]
+      },
+      "height": 8,
+      "names": "ABC..."
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s2#b0",
+        "s2#t0"
+      ],
+      "label": "8"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 작은 기둥 / 오른쪽 큰 기둥"
+  },
+  "caption": "닮음비가 3 대 1인 두 삼각기둥이 있고, 큰 삼각기둥의 밑면 ABC에 대응하는 작은 삼각기둥의 밑면이 A'B'C'이다. 작은 삼각기둥의 밑면의 넓이는 4 제곱센티미터이고 큰 삼각기둥의 높이는 8 cm이다.",
+  "accessibilityDescription": "왼쪽 작은 삼각기둥의 밑면에는 A′, B′, C′가, 오른쪽 큰 삼각기둥의 밑면에는 A, B, C가 표시되어 있으며, 오른쪽 기둥의 높이 8이 표시되어 있다.",
+  "newVisualInformation": [
+    "큰 삼각기둥의 밑면 ABC와 작은 삼각기둥의 밑면 A′B′C′",
+    "작은 삼각기둥의 밑넓이 4 제곱센티미터",
+    "큰 삼각기둥의 높이 8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 삼각기둥에서 큰 삼각기둥의 밑면 $\\triangle ABC$에 대응하는 작은 삼각기둥의 밑면이 $\\triangle A'B'C'$이고, 닮음비가 $3:1$이다. $\\triangle A'B'C'$의 넓이가 $4\\text{ cm}^2$이고 큰 삼각기둥의 높이가 $8\\text{ cm}$일 때, 큰 삼각기둥의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

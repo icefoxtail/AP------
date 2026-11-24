@@ -1,0 +1,54 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 물통"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 9,
+            "height": 12
+          }
+        ],
+        "dims": [
+          {
+            "radius": "top"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 쇠구슬 지름 6cm"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "SPHERE",
+            "radius": 3
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "왼쪽에는 밑면의 반지름이 9센티미터인 원기둥 모양의 물통이, 오른쪽에는 지름이 6센티미터인 쇠구슬이 그려져 있다. 쇠구슬을 모두 꺼낸 뒤 줄어드는 물의 높이는 표시하지 않았다.",
+  "accessibilityDescription": "왼쪽 패널에는 밑면의 반지름 9센티미터가 표시된 원기둥 모양 물통이 있고, 오른쪽 패널에는 지름 6센티미터인 쇠구슬 하나가 있다.",
+  "newVisualInformation": [
+    "물통 밑면의 반지름 9센티미터",
+    "지름 6센티미터인 쇠구슬"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $9,\\mathrm{cm}$인 원기둥 모양의 물통에 물을 채운 후 지름의 길이가 $6,\\mathrm{cm}$인 쇠구슬 $6$개를 넣었다가 모두 꺼내면 물의 높이는 몇 $\\mathrm{cm}$ 줄어드는지 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

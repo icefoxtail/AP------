@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "L2",
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sR1R2",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "sR2R3",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "sR3R4",
+      "refs": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "id": "sR4R1",
+      "refs": [
+        "R4",
+        "R1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tL",
+        "ownerSegment": "sL",
+        "text": "l"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dGap",
+        "from": "L1",
+        "to": "R1",
+        "label": "2",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dWidth",
+        "from": "R4",
+        "to": "R3",
+        "label": "2",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dHeight",
+        "from": "R2",
+        "to": "R3",
+        "label": "6",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세로로 그린 회전축 l의 오른쪽에 직사각형이 놓여 있다. 축에서 직사각형의 가까운 변까지의 거리가 2cm, 직사각형의 가로가 2cm, 세로가 6cm로 표시되어 있다.",
+  "accessibilityDescription": "점선으로 그린 세로 직선 l이 있고 그 오른쪽에 직사각형이 축과 떨어져 자리한다. 아래쪽에 축과 직사각형 사이의 거리 2cm, 위쪽에 직사각형의 가로 2cm, 오른쪽에 세로 6cm가 치수선과 함께 적혀 있다.",
+  "newVisualInformation": [
+    "회전축 l과 그 오른쪽의 직사각형 배치",
+    "축에서 가까운 변까지의 거리 2cm, 가로 2cm, 세로 6cm 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 직사각형을 직선 $l$을 축으로 하여 1회전 시킬 때 생기는 회전체의 겉넓이와 부피를 순서대로 나열한 것은? [4점] (단, 회전축 $l$에서 직사각형의 안쪽 변까지의 거리는 $2\\text{ cm}$, 직사각형의 가로는 $2\\text{ cm}$, 세로는 $6\\text{ cm}$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
