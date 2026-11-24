@@ -1,23 +1,83 @@
 {
-  "kind": "coordinate",
-  "elements": [
-    {
-      "type": "parabola",
-      "equation": "-(x+2)*(x-4)",
-      "xIntercepts": [
-        [
-          -2,
-          0
-        ],
-        [
-          4,
-          0
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "2",
+          "-1"
         ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "9",
+        "marker": "NONE"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "0"
       ],
-      "yIntercept": [
-        0,
-        8
+      "B": [
+        "4",
+        "0"
+      ],
+      "C": [
+        "0",
+        "8"
       ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "이차함수의 그래프가 x축과 두 점 (-2, 0), (4, 0)에서 만나고 y축과 점 (0, 8)에서 만난다.",
+  "newVisualInformation": [
+    "포물선의 x축 교점 두 개와 y축 교점"
+  ],
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 있고, x축과 (-2, 0), (4, 0)에서, y축과 (0, 8)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프가 $x$축과 두 점 $(-2, 0)$, $(4, 0)$에서 만나고 $y$축과 점 $(0, 8)$에서 만날 때, 이 이차함수의 최댓값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
