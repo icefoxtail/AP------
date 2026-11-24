@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "$-216$의 세제곱근 중에서 실수인 것의 개수를 $a$, $625$의 네제곱근 중에서 실수인 것의 개수를 $b$라고 할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n$n$이 홀수이면 실수 $a$의 $n$제곱근 중 실수인 것은 $1$개이다. $n$이 짝수이고 $a>0$이면 실수인 것은 $2$개이다.\n[단계별 풀이]\n$-216$의 세제곱근 중 실수인 것은 $-6$ 하나이므로 $a=1$이다.\n$625$의 네제곱근 중 실수인 것은 $5$, $-5$이므로 $b=2$이다.\n$a+b=3$이다.\n[결론]\n$3$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt[4]{(-5)^4}+\\{(-7)^2\\}^{\\frac{3}{2}}-\\frac{\\sqrt[4]{48}}{\\sqrt[4]{3}}$을 간단히 하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$346$",
+    "solution": "[풀이 전략]\n$\\sqrt[n]{a^n}$, $(a^m)^{\\frac{p}{q}}$를 지수가 유리수인 거듭제곱으로 바꾸어 계산한다.\n[단계별 풀이]\n$\\sqrt[4]{(-5)^4}=\\sqrt[4]{625}=5$이다.\n$\\{(-7)^2\\}^{\\frac{3}{2}}=49^{\\frac{3}{2}}=(7^2)^{\\frac{3}{2}}=7^3=343$이다.\n$\\frac{\\sqrt[4]{48}}{\\sqrt[4]{3}}=\\sqrt[4]{16}=2$이다.\n$5+343-2=346$이다.\n[결론]\n$346$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_6 \\frac{1}{3} - \\log_6 27 + 2\\log_6 \\frac{3}{2}$을 간단히 하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-2$",
+    "solution": "[풀이 전략]\n로그의 합과 차를 하나의 로그로 묶는다.\n[단계별 풀이]\n$2\\log_6\\frac{3}{2}=\\log_6\\frac{9}{4}$이다.\n$\\log_6\\frac{1}{3}-\\log_627+\\log_6\\frac{9}{4}=\\log_6\\left(\\frac{1}{3}\\times\\frac{1}{27}\\times\\frac{9}{4}\\right)=\\log_6\\frac{1}{36}=-2$이다.\n[결론]\n$-2$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log 2.52=0.4014$일 때, $\\log 252=a$, $\\log b=-0.5986$이다. 이때 $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2.6534$",
+    "solution": "[풀이 전략]\n상용로그의 성질 $\\log(10^n\\times a)=n+\\log a$를 이용한다.\n[단계별 풀이]\n$\\log252=\\log(2.52\\times10^2)=2+0.4014=2.4014$이므로 $a=2.4014$이다.\n$\\log b=-0.5986=-1+0.4014=\\log10^{-1}+\\log2.52=\\log(2.52\\times10^{-1})$이므로 $b=0.252$이다.\n$a+b=2.4014+0.252=2.6534$이다.\n[결론]\n$2.6534$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a>1$일 때, 다음을 만족시키는 자연수 $k$의 값을 구하시오.\n$$\\sqrt{\\frac{\\sqrt[5]{a}}{\\sqrt[4]{a}}}\\times\\sqrt[4]{\\frac{\\sqrt[k]{a}}{\\sqrt[10]{a}}} = \\sqrt[40]{\\frac{1}{a}}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n모든 근호를 $a$의 유리수 지수 거듭제곱으로 바꾸고 지수를 비교한다.\n[단계별 풀이]\n첫째 인수: $\\sqrt{\\frac{a^{\\frac{1}{5}}}{a^{\\frac{1}{4}}}}=\\left(a^{\\frac{1}{5}-\\frac{1}{4}}\\right)^{\\frac{1}{2}}=a^{-\\frac{1}{40}}$이다.\n둘째 인수: $\\sqrt[4]{\\frac{a^{\\frac{1}{k}}}{a^{\\frac{1}{10}}}}=a^{\\frac{1}{4}\\left(\\frac{1}{k}-\\frac{1}{10}\\right)}$이다.\n우변: $\\sqrt[40]{\\frac{1}{a}}=a^{-\\frac{1}{40}}$이다.\n$a>1$이므로 지수가 같다. $-\\frac{1}{40}+\\frac{1}{4}\\left(\\frac{1}{k}-\\frac{1}{10}\\right)=-\\frac{1}{40}$에서 $\\frac{1}{k}=\\frac{1}{10}$이므로 $k=10$이다.\n[결론]\n$10$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x=\\sqrt[3]{3}+\\frac{1}{\\sqrt[3]{3}}$일 때, $3x^3-9x-9$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$t=\\sqrt[3]{3}$이라 하면 $x=t+\\frac{1}{t}$이다. 곱셈 공식 $(p+q)^3=p^3+q^3+3pq(p+q)$에서 $x^3$을 $x$로 나타낸다.\n[단계별 풀이]\n$t=3^{\\frac{1}{3}}$이면 $t^3=3$, $t\\times\\frac{1}{t}=1$이다.\n$x^3=t^3+\\frac{1}{t^3}+3\\times1\\times x=3+\\frac{1}{3}+3x$이다.\n양변에 $3$을 곱하면 $3x^3=9+1+9x$이므로 $3x^3-9x=10$이다.\n$3x^3-9x-9=10-9=1$이다.\n[결론]\n$1$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x, y$에 대하여 $(\\sqrt{5})^x=100^y=2$일 때, $\\frac{2}{x}-\\frac{1}{2y}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n$(\\sqrt{5})^x=2$, $100^y=2$를 로그로 바꾸어 $\\frac{2}{x}$, $\\frac{1}{2y}$를 구한다.\n[단계별 풀이]\n$(\\sqrt{5})^x=5^{\\frac{x}{2}}=2$이므로 $\\frac{x}{2}=\\log_52$이고 $\\frac{2}{x}=\\frac{1}{\\log_52}=\\log_25$이다.\n$100^y=10^{2y}=2$이므로 $2y=\\log2$이고 $\\frac{1}{2y}=\\frac{1}{\\log2}=\\log_210$이다.\n$\\frac{2}{x}-\\frac{1}{2y}=\\log_25-\\log_210=\\log_2\\frac{5}{10}=\\log_2\\frac{1}{2}=-1$이다.\n[결론]\n$-1$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{2^x-2^{-x}}{2^x+2^{-x}}=\\frac{2}{3}$일 때, $2^{3x}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5\\sqrt{5}$",
+    "solution": "[풀이 전략]\n$2^x=t$ ($t>0$)로 치환하여 $t$를 구하고 $2^{3x}=t^3$을 계산한다.\n[단계별 풀이]\n$2^x=t$라 하면 $2^{-x}=\\frac{1}{t}$이므로 $\\frac{t-\\frac{1}{t}}{t+\\frac{1}{t}}=\\frac{t^2-1}{t^2+1}=\\frac{2}{3}$이다.\n$3t^2-3=2t^2+2$이므로 $t^2=5$이다. $t>0$이므로 $t=\\sqrt{5}$이다.\n$2^{3x}=t^3=(\\sqrt{5})^3=5\\sqrt{5}$이다.\n[결론]\n$5\\sqrt{5}$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 $\\log_{(p-1)}(x^2-2px+2p)$가 정의되기 위한 실수 $p$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1<p<2$",
+    "solution": "[풀이 전략]\n로그가 정의되려면 밑이 $1$이 아닌 양수이고, 모든 실수 $x$에 대하여 진수가 양수이어야 한다.\n[단계별 풀이]\n밑: $p-1>0$, $p-1\\ne1$이므로 $p>1$, $p\\ne2$이다.\n진수: 모든 실수 $x$에 대하여 $x^2-2px+2p>0$이려면 판별식 $\\frac{D}{4}=p^2-2p<0$이어야 한다. $p(p-2)<0$이므로 $0<p<2$이다.\n공통 범위는 $1<p<2$이다. ($p\\ne2$는 이 범위에 포함된다.)\n[결론]\n$1<p<2$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $a, b$가 $2^a=3$, $5^b=2$를 만족시킬 때, $\\log_3 \\frac{4}{25}$를 $a, b$에 대한 식으로 나타내시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2(b-1)}{ab}$",
+    "solution": "[풀이 전략]\n$a=\\log_23$, $b=\\log_52$를 이용하여 $\\log_32$, $\\log_35$를 $a$, $b$로 나타낸다.\n[단계별 풀이]\n$\\log_3\\frac{4}{25}=2\\log_32-2\\log_35$이다.\n$2^a=3$에서 $a=\\log_23$이므로 $\\log_32=\\frac{1}{a}$이다.\n$5^b=2$에서 $b=\\log_52$이므로 $\\log_25=\\frac{1}{b}$이다. $\\log_35=\\log_32\\times\\log_25=\\frac{1}{a}\\times\\frac{1}{b}=\\frac{1}{ab}$이다.\n$\\log_3\\frac{4}{25}=\\frac{2}{a}-\\frac{2}{ab}=\\frac{2b-2}{ab}=\\frac{2(b-1)}{ab}$이다.\n[결론]\n$\\frac{2(b-1)}{ab}$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\log_2(\\log_3 4) + \\log_2(\\log_4 33) + \\log_2(\\log_{33} 81)$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n로그의 합은 진수의 곱이므로 하나의 로그로 묶고, 밑 변환 공식으로 진수의 곱을 줄인다.\n[단계별 풀이]\n$\\log_2(\\log_34)+\\log_2(\\log_433)+\\log_2(\\log_{33}81)=\\log_2(\\log_34\\times\\log_433\\times\\log_{33}81)$이다.\n$\\log_34\\times\\log_433\\times\\log_{33}81=\\log_381=4$이다.\n$\\log_24=2$이다.\n[결론]\n$2$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$10<x<100$이고 $\\log x^3$과 $\\log x^5$의 차가 정수일 때, $\\log x$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{3}{2}$",
+    "solution": "[풀이 전략]\n$10<x<100$이면 $1<\\log x<2$이다. $\\log x^5-\\log x^3=2\\log x$가 정수라는 조건을 쓴다.\n[단계별 풀이]\n$\\log x^3$과 $\\log x^5$의 차는 $5\\log x-3\\log x=2\\log x$이다.\n$1<\\log x<2$이므로 $2<2\\log x<4$이다. 정수이므로 $2\\log x=3$이다.\n$\\log x=\\frac{3}{2}$이다.\n[결론]\n$\\frac{3}{2}$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 집합\n$$A=\\{2, 3, 4\\},\\quad B=\\{-2, -1, 0, 1, 2\\}$$\n에 대하여 집합 $S$를\n$$S=\\{(a, b)\\mid \\sqrt[a]{b}\\text{는 실수},\\ a\\in A,\\ b\\in B\\}$$\n와 같이 정의하자. 다음 보기 중 옳은 것을 모두 고르시오.\n\nㄱ. $(3, -2)\\in S$\nㄴ. $b\\ne 0$일 때, $(a, b)\\in S$, $(a, -b)\\in S$를 만족시키는 $a$의 개수는 $2$이다.\nㄷ. $n(S)=11$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "[풀이 전략]\n$\\sqrt[a]{b}$가 실수이려면 $a$가 홀수이면 모든 실수 $b$, $a$가 짝수이면 $b\\ge0$이어야 한다. 집합 $S$의 원소를 모두 센다.\n[단계별 풀이]\n$a=2$ 또는 $a=4$일 때 $b\\ge0$이어야 하므로 $b=0,1,2$의 $3$개씩이다.\n$a=3$일 때 모든 $b$가 가능하므로 $b=-2,-1,0,1,2$의 $5$개이다.\nㄱ. $(3,-2)$: 세제곱근 $\\sqrt[3]{-2}$는 실수이다. (참)\nㄴ. $b\\ne0$이고 $(a,b)$, $(a,-b)$가 모두 $S$에 속하려면 $b$와 $-b$ 중 하나는 음수이므로 $a$가 홀수, 즉 $a=3$뿐이다. $a$의 개수는 $1$이다. (거짓)\nㄷ. $n(S)=3+5+3=11$이다. (참)\n[결론]\nㄱ, ㄷ"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$10$ 이하의 두 자연수 $m, n$에 대하여 $2\\log_3 m - \\log_3 n$이 자연수가 되도록 하는 순서쌍 $(m, n)$을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(3,1),\\ (3,3),\\ (6,4),\\ (9,1),\\ (9,3),\\ (9,9)$",
+    "solution": "[풀이 전략]\n$2\\log_3m-\\log_3n=\\log_3\\frac{m^2}{n}$이 자연수이므로 $\\frac{m^2}{n}=3^j$ ($j$는 자연수)이다. $m^2=3^jn$을 만족하는 $10$ 이하의 자연수 $m,n$을 찾는다.\n[단계별 풀이]\n$m^2=3^jn$에서 $m$은 $3$의 배수이어야 하므로 $m=3,6,9$이다.\n$m=3$: $9=3^jn$이므로 $(j,n)=(1,3),(2,1)$이다. $\\to(3,3),(3,1)$\n$m=6$: $36=3^jn$이므로 $j=1$이면 $n=12>10$, $j=2$이면 $n=4$이다. $\\to(6,4)$\n$m=9$: $81=3^jn$이므로 $j=1$이면 $n=27>10$, $j=2$이면 $n=9$, $j=3$이면 $n=3$, $j=4$이면 $n=1$이다. $\\to(9,9),(9,3),(9,1)$\n[결론]\n$(3,1),\\ (3,3),\\ (6,4),\\ (9,1),\\ (9,3),\\ (9,9)$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 원자재의 수요량 $D$와 판매 가격 $P$ 사이에는\n$$\\log D = k - \\frac{1}{3}\\log P\\quad (k\\text{는 실수})$$\n인 관계가 성립한다고 한다. 이 원자재의 판매 가격이 처음 판매 가격에 비하여 $8$배로 폭등한다고 할 때, 원자재의 수요량은 처음의 몇 배가 되는지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$배",
+    "solution": "[풀이 전략]\n처음 가격을 $P$, 수요량을 $D$라 하고 가격이 $8P$일 때의 수요량 $D'$를 관계식에 넣어 비교한다.\n[단계별 풀이]\n처음: $\\log D=k-\\frac{1}{3}\\log P$이다.\n$8$배 폭등 후: $\\log D'=k-\\frac{1}{3}\\log8P=k-\\frac{1}{3}\\log P-\\frac{1}{3}\\log8=\\log D-\\frac{1}{3}\\times3\\log2=\\log D-\\log2$이다.\n$\\log D'=\\log\\frac{D}{2}$이므로 $D'=\\frac{1}{2}D$이다.\n[결론]\n$\\frac{1}{2}$배"
   },
   {
     "id": 16,
@@ -452,8 +452,8 @@ window.questionBank = [
       "점근선은 직선 $y=2$이다.",
       "함수 $y=3^x$의 그래프를 $y$축에 대하여 대칭이동한 후 $y$축의 방향으로 $2$만큼 평행이동한 그래프와 같다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n$y=3^{-x}+2=\\left(\\frac{1}{3}\\right)^x+2$이다. 밑이 $1$보다 작은 지수함수이므로 감소함수이다.\n[단계별 풀이]\n① $x=0$이면 $y=1+2=3$이므로 점 $(0,3)$을 지난다. (옳다)\n② 정의역은 실수 전체이다. (옳다)\n③ 밑이 $\\frac{1}{3}$이므로 $x$가 증가하면 $y$는 감소한다. (옳지 않다)\n④ $x$가 한없이 커지면 $y\\to2$이므로 점근선은 $y=2$이다. (옳다)\n⑤ $y=3^x$를 $y$축 대칭하면 $y=3^{-x}$이고 $y$축 방향으로 $2$만큼 평행이동하면 $y=3^{-x}+2$이다. (옳다)\n[결론]\n③"
   },
   {
     "id": 17,
@@ -480,8 +480,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 세 수의 대소를 비교하시오.\n$$\\log_{\\frac{1}{2}}\\frac{1}{2},\\ \\log_{\\frac{1}{2}} 2,\\ \\log_{\\frac{1}{2}} 4$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\log_{\\frac{1}{2}}4<\\log_{\\frac{1}{2}}2<\\log_{\\frac{1}{2}}\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n각 로그의 값을 구하여 비교한다. 밑이 $1$보다 작으면 진수가 클수록 로그의 값이 작다.\n[단계별 풀이]\n$\\log_{\\frac{1}{2}}\\frac{1}{2}=1$이다.\n$\\log_{\\frac{1}{2}}2=\\log_{\\frac{1}{2}}\\left(\\frac{1}{2}\\right)^{-1}=-1$이다.\n$\\log_{\\frac{1}{2}}4=\\log_{\\frac{1}{2}}\\left(\\frac{1}{2}\\right)^{-2}=-2$이다.\n$-2<-1<1$이다.\n[결론]\n$\\log_{\\frac{1}{2}}4<\\log_{\\frac{1}{2}}2<\\log_{\\frac{1}{2}}\\frac{1}{2}$"
   },
   {
     "id": 18,
@@ -508,8 +508,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $4^x=\\frac{1}{32}$의 해를 $x=a$라 하고 부등식 $\\log_3(1-x)\\ge 2$의 해를 $x\\le b$라고 할 때, 실수 $a, b$에 대하여 $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{21}{2}$",
+    "solution": "[풀이 전략]\n방정식은 밑을 같게 하여 지수를 비교하고, 부등식은 밑 $3>1$이므로 진수의 부등호 방향이 그대로이다. 진수 조건도 확인한다.\n[단계별 풀이]\n$4^x=2^{2x}=\\frac{1}{32}=2^{-5}$이므로 $2x=-5$, $x=-\\frac{5}{2}$이다. $a=-\\frac{5}{2}$이다.\n$\\log_3(1-x)\\ge2=\\log_39$에서 진수 $1-x>0$이고 $1-x\\ge9$이므로 $x\\le-8$이다. $b=-8$이다.\n$a+b=-\\frac{5}{2}-8=-\\frac{21}{2}$이다.\n[결론]\n$-\\frac{21}{2}$"
   },
   {
     "id": 19,
@@ -536,8 +536,8 @@ window.questionBank = [
     "wide": false,
     "content": "정의역이 $\\{x \\mid a\\le x\\le 4\\}$인 함수 $y=\\left(\\frac{1}{2}\\right)^{x+b}-1$의 최댓값이 $7$, 최솟값이 $1$일 때, 실수 $a, b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "[풀이 전략]\n밑이 $\\frac{1}{2}$인 지수함수는 감소하므로 구간의 왼쪽 끝 $x=a$에서 최댓값, 오른쪽 끝 $x=4$에서 최솟값을 갖는다.\n[단계별 풀이]\n최솟값: $x=4$에서 $\\left(\\frac{1}{2}\\right)^{4+b}-1=1$이므로 $\\left(\\frac{1}{2}\\right)^{4+b}=2=\\left(\\frac{1}{2}\\right)^{-1}$이다. $4+b=-1$, $b=-5$이다.\n최댓값: $x=a$에서 $\\left(\\frac{1}{2}\\right)^{a+b}-1=7$이므로 $\\left(\\frac{1}{2}\\right)^{a+b}=8=\\left(\\frac{1}{2}\\right)^{-3}$이다. $a+b=-3$이므로 $a=2$이다.\n$a=2\\le4$이므로 구간이 성립한다. $ab=2\\times(-5)=-10$이다.\n[결론]\n$-10$"
   },
   {
     "id": 20,
@@ -564,8 +564,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $a^{2x}-5a^x+3=0$의 두 근의 합이 $2$일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{3}$",
+    "solution": "[풀이 전략]\n$a^x=t$ ($t>0$)로 치환하면 두 근 $x_1,x_2$에 대응하는 $t_1=a^{x_1}$, $t_2=a^{x_2}$이고 근과 계수의 관계에서 $t_1t_2=3$이다.\n[단계별 풀이]\n$a^x=t$라 하면 $t^2-5t+3=0$이다. 판별식 $25-12>0$이므로 서로 다른 두 양의 실근 $t_1,t_2$가 있다. ($t_1+t_2=5>0$, $t_1t_2=3>0$)\n$t_1t_2=a^{x_1}\\times a^{x_2}=a^{x_1+x_2}=a^2=3$이다.\n$a>0$이므로 $a=\\sqrt{3}$이다.\n[결론]\n$\\sqrt{3}$"
   },
   {
     "id": 21,
@@ -592,8 +592,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=f(x)$와 직선 $y=g(x)$가 오른쪽 그림과 같을 때, 부등식 $\\left(\\frac{1}{2}\\right)^{f(x)} < \\left(\\frac{1}{2}\\right)^{g(x)}$을 만족시키는 실수 $x$의 값의 범위를 구하시오.\n<img src=\"q21.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x<-2$ 또는 $x>3$",
+    "solution": "[풀이 전략]\n밑이 $\\frac{1}{2}$인 지수함수는 감소하므로 $\\left(\\frac{1}{2}\\right)^{f(x)}<\\left(\\frac{1}{2}\\right)^{g(x)}$은 $f(x)>g(x)$와 같다. 그래프에서 곡선이 직선보다 위에 있는 범위를 읽는다.\n[단계별 풀이]\n부등식은 $f(x)>g(x)$와 같다.\n그림에서 곡선 $y=f(x)$와 직선 $y=g(x)$는 $x=-2$와 $x=3$에서 만난다.\n$x<-2$ 또는 $x>3$일 때 곡선이 직선보다 위에 있으므로 $f(x)>g(x)$이다.\n[결론]\n$x<-2$ 또는 $x>3$"
   },
   {
     "id": 22,
@@ -626,8 +626,8 @@ window.questionBank = [
       "$y=\\log_2 \\sqrt{x}$",
       "$y=\\log_{\\frac{1}{2}}(x-2)$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n지수함수·로그함수의 그래프는 밑이 같거나 서로 역수이면 대칭이동, 평행이동으로 포갤 수 있다. 각 함수를 $y=a^x$ 또는 $y=\\log_ax$ 꼴로 정리하고 밑을 비교한다.\n[단계별 풀이]\n① $y=2^x$는 $y=\\left(\\frac{1}{2}\\right)^x$을 $y$축에 대하여 대칭이동한 것이다.\n② $y=\\left(\\frac{1}{2}\\right)^x-3$은 $y$축 방향으로 $-3$만큼 평행이동한 것이다.\n③ $y=\\log_2\\frac{1}{x}=\\log_{\\frac{1}{2}}x$는 $y=\\left(\\frac{1}{2}\\right)^x$의 역함수이므로 $y=x$에 대하여 대칭이동한 것이다.\n④ $y=\\log_2\\sqrt{x}=\\frac{1}{2}\\log_2x=\\log_4x$이다. 밑이 $4$이다. $y=\\left(\\frac{1}{2}\\right)^x$을 평행이동, $x$축·$y$축·$y=x$에 대한 대칭이동하면 밑이 $2$ 또는 $\\frac{1}{2}$인 지수함수·로그함수만 얻어지므로 밑이 $4$인 $y=\\log_4x$와는 포갤 수 없다.\n⑤ $y=\\log_{\\frac{1}{2}}(x-2)$는 $\\log_{\\frac{1}{2}}x$를 $x$축 방향으로 $2$만큼 평행이동한 것이므로 $y=\\left(\\frac{1}{2}\\right)^x$을 $y=x$에 대하여 대칭이동한 뒤 평행이동하면 된다.\n[결론]\n④"
   },
   {
     "id": 23,
@@ -654,8 +654,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $y=\\log_3 x$, $y=\\log_3 \\frac{x}{27}$의 그래프와 두 직선 $x=1$, $x=5$로 둘러싸인 도형의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n$\\log_3\\frac{x}{27}=\\log_3x-3$이므로 두 곡선은 $y$축 방향으로 평행이동한 관계이다. 두 곡선 사이의 세로 길이가 일정하다.\n[단계별 풀이]\n$y=\\log_3\\frac{x}{27}=\\log_3x-3$이므로 두 곡선의 $y$좌표의 차는 항상 $3$이다.\n두 곡선과 $x=1$, $x=5$로 둘러싸인 도형은 가로 $5-1=4$, 세로 $3$인 직사각형과 넓이가 같다.\n넓이는 $4\\times3=12$이다.\n[결론]\n$12$"
   },
   {
     "id": 24,
@@ -682,8 +682,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\log_2(x-3)+\\log_2(11-x)$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n로그의 합을 하나의 로그로 묶고 진수의 최댓값을 구한다. 정의역은 $x-3>0$, $11-x>0$에서 $3<x<11$이다.\n[단계별 풀이]\n$y=\\log_2\\{(x-3)(11-x)\\}$이다. 진수는 $-x^2+14x-33=-(x-7)^2+16$이다.\n$3<x<11$에서 $x=7$일 때 진수가 최대 $16$이다.\n밑 $2>1$이므로 최댓값은 $\\log_216=4$이다.\n[결론]\n$4$"
   },
   {
     "id": 25,
@@ -710,8 +710,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 두 점 $\\mathrm{A}(a, 0)$, $\\mathrm{B}(b, 0)$을 지나고 $x$축에 수직인 두 직선이 함수 $y=\\log x$의 그래프와 만나는 점을 각각 $\\mathrm{C}$, $\\mathrm{D}$라고 하자. 사각형 $\\mathrm{ACBD}$가 평행사변형일 때, 양수 $a, b$에 대하여 $ab$의 값을 구하시오.\n<img src=\"q25.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n사각형 $\\mathrm{ACBD}$가 평행사변형이면 두 대각선 $\\mathrm{AB}$, $\\mathrm{CD}$가 서로 다른 것을 이등분한다. 중점이 같다.\n[단계별 풀이]\n$\\mathrm{C}(a,\\log a)$, $\\mathrm{D}(b,\\log b)$이다.\n대각선 $\\mathrm{AB}$의 중점은 $\\left(\\frac{a+b}{2},0\\right)$, 대각선 $\\mathrm{CD}$의 중점은 $\\left(\\frac{a+b}{2},\\frac{\\log a+\\log b}{2}\\right)$이다.\n두 중점이 같으므로 $\\log a+\\log b=0$이다. $\\log ab=0$이므로 $ab=1$이다.\n[결론]\n$1$"
   },
   {
     "id": 26,
@@ -738,8 +738,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $(\\log_3 x)^2+k\\log_3 x-8=0$의 두 근의 곱이 $9$일 때, 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k=-2$",
+    "solution": "[풀이 전략]\n$\\log_3x=t$로 치환하면 $t$에 대한 이차방정식이다. 두 근 $x_1,x_2$의 곱이 $9$이면 $t_1+t_2=\\log_3x_1+\\log_3x_2=\\log_3x_1x_2=\\log_39=2$이다.\n[단계별 풀이]\n$t=\\log_3x$라 하면 $t^2+kt-8=0$이다. 판별식 $k^2+32>0$이므로 항상 서로 다른 두 실근이다.\n두 근을 $t_1,t_2$라 하면 $t_1+t_2=-k$이다.\n$t_1+t_2=\\log_3x_1+\\log_3x_2=\\log_3x_1x_2=\\log_39=2$이다.\n$-k=2$이므로 $k=-2$이다.\n[결론]\n$-2$"
   },
   {
     "id": 27,
@@ -766,8 +766,8 @@ window.questionBank = [
     "wide": false,
     "content": "배양기에 들어 있는 어느 미생물을 관찰하기 시작한 지 $x$시간 후의 미생물의 수를 $f(x)$라고 하면 $f(x)=k\\times 3^{\\frac{x}{a}}$ ($a, k$는 실수)인 관계가 성립한다고 한다. 미생물의 수가 $9$배로 증가하는 데 $4$시간이 걸린다고 할 때, 미생물의 수가 $81$배로 증가하는 데 걸리는 시간을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$시간",
+    "solution": "[풀이 전략]\n$9$배, $81$배로 증가하는 시간을 $f(x+h)=9f(x)$ 꼴의 식으로 나타내어 $a$를 구한다.\n[단계별 풀이]\n$f(x+4)=9f(x)$이므로 $\\frac{f(x+4)}{f(x)}=3^{\\frac{4}{a}}=9=3^2$이다. $\\frac{4}{a}=2$이므로 $a=2$이다.\n$81$배가 되는 데 걸리는 시간을 $h$라 하면 $3^{\\frac{h}{2}}=81=3^4$이다. $\\frac{h}{2}=4$이므로 $h=8$이다.\n[결론]\n$8$시간"
   },
   {
     "id": 28,
@@ -794,8 +794,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 제$2$사분면에서 함수 $y=4^{-x}$의 그래프 위의 점 $\\mathrm{A}$를 지나고 $x$축과 평행한 선분을 그어 함수 $y=2^{-x}$의 그래프와 만나는 점을 $\\mathrm{B}$라고 하자. 점 $\\mathrm{B}$를 지나고 $y$축과 평행한 선분을 그어 함수 $y=4^{-x}$의 그래프와 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{C}$를 지나고 $x$축과 평행한 선분을 그어 함수 $y=2^{-x}$의 그래프와 만나는 점을 $\\mathrm{D}$라고 할 때, $\\frac{\\overline{\\mathrm{CD}}}{\\overline{\\mathrm{AB}}}$의 값을 구하시오.\n<img src=\"q28.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n점 $\\mathrm{A}$의 $x$좌표를 $-s$ ($s>0$)로 놓고 $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$의 좌표를 차례로 구한다.\n[단계별 풀이]\n$\\mathrm{A}(-s,4^s)$라 하자. 점 $\\mathrm{B}$는 $y=2^{-x}$ 위에서 $y$좌표가 $4^s=2^{2s}$이므로 $x=-2s$이다. $\\mathrm{B}(-2s,4^s)$이고 $\\overline{\\mathrm{AB}}=-s-(-2s)=s$이다.\n점 $\\mathrm{C}$는 $x=-2s$에서 $y=4^{-x}$ 위의 점이므로 $\\mathrm{C}(-2s,4^{2s})=(-2s,2^{4s})$이다.\n점 $\\mathrm{D}$는 $y=2^{-x}$ 위에서 $y$좌표가 $2^{4s}$이므로 $x=-4s$이다. $\\mathrm{D}(-4s,2^{4s})$이고 $\\overline{\\mathrm{CD}}=-2s-(-4s)=2s$이다.\n$\\frac{\\overline{\\mathrm{CD}}}{\\overline{\\mathrm{AB}}}=\\frac{2s}{s}=2$이다.\n[결론]\n$2$"
   },
   {
     "id": 29,
@@ -822,7 +822,7 @@ window.questionBank = [
     "wide": false,
     "content": "정수 전체의 집합의 두 부분집합\n$$A=\\{x \\mid \\log_2(x+3)\\le k\\}$$\n$$B=\\left\\{x \\ \\middle|\\ \\left(\\frac{3}{4}\\right)^{2x^2-3x} \\le \\left(\\frac{4}{3}\\right)^{x-12}\\right\\}$$\n에 대하여 $n(A\\cap B)=4$를 만족시키는 자연수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n두 집합 $A$, $B$를 부등식으로 구한 뒤 정수인 원소의 개수가 $4$가 되는 $k$를 찾는다.\n[단계별 풀이]\n$A$: 진수 $x+3>0$이므로 $x>-3$이고 $\\log_2(x+3)\\le k$에서 $x+3\\le2^k$이다. 정수 $x$는 $-2\\le x\\le2^k-3$이다.\n$B$: $\\left(\\frac{4}{3}\\right)^{x-12}=\\left(\\frac{3}{4}\\right)^{12-x}$이므로 $\\left(\\frac{3}{4}\\right)^{2x^2-3x}\\le\\left(\\frac{3}{4}\\right)^{12-x}$이다. 밑이 $1$보다 작으므로 $2x^2-3x\\ge12-x$이다.\n$2x^2-2x-12\\ge0$이므로 $x^2-x-6=(x-3)(x+2)\\ge0$이다. $x\\le-2$ 또는 $x\\ge3$이다.\n$A\\cap B$의 정수 원소는 $x=-2$와 $3\\le x\\le2^k-3$인 정수이다.\n$n(A\\cap B)=1+(2^k-3-3+1)=2^k-4=4$이므로 $2^k=8$, $k=3$이다.\n(검산: $k=3$이면 $A$의 원소는 $-2,\\cdots,5$이고 $A\\cap B=\\{-2,3,4,5\\}$로 $4$개이다.)\n[결론]\n$3$"
   }
 ];

@@ -32,8 +32,8 @@ window.questionBank = [
       "$\\frac{\\pi}{3}$",
       "$\\frac{\\pi}{2}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n호의 길이 $l=r\\theta$이므로 $\\theta=\\frac{l}{r}$이다.\n[단계별 풀이]\n$\\theta=\\frac{2\\pi}{8}=\\frac{\\pi}{4}$이다.\n[결론]\n③ $\\frac{\\pi}{4}$"
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제4사분면의 각이고 $\\sin\\theta = -\\frac{5}{13}$일 때, $\\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{5}{12}$",
+    "solution": "[풀이 전략]\n$\\sin^2\\theta+\\cos^2\\theta=1$로 $\\cos\\theta$를 구하고 사분면에 따라 부호를 정한다.\n[단계별 풀이]\n$\\cos^2\\theta=1-\\frac{25}{169}=\\frac{144}{169}$이다.\n제$4$사분면에서 $\\cos\\theta>0$이므로 $\\cos\\theta=\\frac{12}{13}$이다.\n$\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=-\\frac{5}{13}\\times\\frac{13}{12}=-\\frac{5}{12}$이다.\n[결론]\n$-\\frac{5}{12}$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n$$\\sin\\left(\\frac{\\pi}{2} + \\theta\\right) + \\sin(\\pi + \\theta) + \\cos\\left(\\frac{\\pi}{2} - \\theta\\right) + \\cos(\\pi - \\theta)$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "[풀이 전략]\n$\\frac{\\pi}{2}\\pm\\theta$, $\\pi\\pm\\theta$의 삼각함수 변환 공식을 각 항에 적용한다.\n[단계별 풀이]\n$\\sin\\left(\\frac{\\pi}{2}+\\theta\\right)=\\cos\\theta$, $\\sin(\\pi+\\theta)=-\\sin\\theta$이다.\n$\\cos\\left(\\frac{\\pi}{2}-\\theta\\right)=\\sin\\theta$, $\\cos(\\pi-\\theta)=-\\cos\\theta$이다.\n합은 $\\cos\\theta-\\sin\\theta+\\sin\\theta-\\cos\\theta=0$이다.\n[결론]\n$0$"
   },
   {
     "id": 4,
@@ -122,8 +122,8 @@ window.questionBank = [
       "$y = 2\\sin x$",
       "$y = \\tan\\frac{x}{2}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n각 함수의 주기를 구한다. $\\sin x$, $\\cos x$는 $2\\pi$, $\\tan x$는 $\\pi$, $a\\sin x$는 $2\\pi$, $\\tan\\frac{x}{b}$는 $b\\pi$이다.\n[단계별 풀이]\n① $\\sin x$: $2\\pi$\n② $\\cos x$: $2\\pi$\n③ $\\tan x$: $\\pi$\n④ $2\\sin x$: $2\\pi$\n⑤ $\\tan\\frac{x}{2}$: $\\frac{\\pi}{1/2}=2\\pi$\n$\\tan x$만 주기가 $\\pi$로 다르다.\n[결론]\n③"
   },
   {
     "id": 5,
@@ -150,8 +150,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$와 각 $5\\theta$를 나타내는 동경이 $y$축에 대하여 대칭일 때, 각 $\\theta$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{5}{6}\\pi$",
+    "solution": "[풀이 전략]\n두 동경이 $y$축에 대하여 대칭이면 두 각의 합이 $\\pi$의 홀수배, 즉 $\\pi+2n\\pi$이다.\n[단계별 풀이]\n$\\theta+5\\theta=\\pi+2n\\pi$ ($n$은 정수)이므로 $\\theta=\\frac{\\pi}{6}+\\frac{n\\pi}{3}$이다.\n$\\frac{\\pi}{2}<\\theta<\\pi$를 만족하는 $n$을 찾는다. $n=1$이면 $\\frac{\\pi}{2}$로 범위 밖, $n=2$이면 $\\frac{\\pi}{6}+\\frac{2\\pi}{3}=\\frac{5}{6}\\pi$로 범위 안, $n=3$이면 $\\frac{7}{6}\\pi$로 범위 밖이다.\n$\\theta=\\frac{5}{6}\\pi$이다.\n[결론]\n$\\frac{5}{6}\\pi$"
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $3x^2 - 2x - k = 0$의 두 근이 $\\sin\\theta, \\cos\\theta$일 때, 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{5}{6}$",
+    "solution": "[풀이 전략]\n근과 계수의 관계로 $\\sin\\theta+\\cos\\theta$와 $\\sin\\theta\\cos\\theta$를 구하고 $\\sin^2\\theta+\\cos^2\\theta=1$을 이용한다.\n[단계별 풀이]\n$\\sin\\theta+\\cos\\theta=\\frac{2}{3}$, $\\sin\\theta\\cos\\theta=-\\frac{k}{3}$이다.\n$(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta$이므로 $\\frac{4}{9}=1-\\frac{2k}{3}$이다.\n$\\frac{2k}{3}=\\frac{5}{9}$이므로 $k=\\frac{5}{6}$이다.\n(검산: $3x^2-2x-\\frac{5}{6}=0$의 판별식 $\\frac{D}{4}=1+\\frac{5}{2}>0$으로 실근이다.)\n[결론]\n$\\frac{5}{6}$"
   },
   {
     "id": 7,
@@ -212,8 +212,8 @@ window.questionBank = [
       "$\\sin 1^\\circ$",
       "$\\cos 1^\\circ$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n$1$ 라디안은 약 $57.3^\\circ$이다. $\\frac{\\pi}{4}<1<\\frac{\\pi}{2}$이므로 $\\tan1>1$이고 $\\sin$, $\\cos$의 값은 $1$ 이하이다.\n[단계별 풀이]\n$\\frac{\\pi}{4}\\approx0.785<1<\\frac{\\pi}{2}$이므로 $1$ 라디안은 $45^\\circ$와 $90^\\circ$ 사이의 각이다. $\\tan1>\\tan\\frac{\\pi}{4}=1$이다.\n$\\sin1$, $\\cos1$, $\\sin1^\\circ$, $\\cos1^\\circ$는 모두 $1$보다 작다.\n따라서 가장 큰 값은 $\\tan1$이다.\n[결론]\n③ $\\tan 1$"
   },
   {
     "id": 8,
@@ -240,8 +240,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = 2\\sin\\frac{\\pi}{4}x \\;(0 \\le x \\le 4)$의 그래프와 직선 $y = \\sqrt{2}$가 만나는 두 점의 $x$좌표를 각각 $a, b$라고 할 때, $a + b$의 값을 구하시오. (단, $a < b$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n$2\\sin\\frac{\\pi}{4}x=\\sqrt{2}$를 풀어 $0\\le x\\le4$에서의 해를 구한다.\n[단계별 풀이]\n$\\sin\\frac{\\pi}{4}x=\\frac{\\sqrt{2}}{2}$이다. $0\\le x\\le4$이면 $0\\le\\frac{\\pi}{4}x\\le\\pi$이다.\n$\\frac{\\pi}{4}x=\\frac{\\pi}{4}$ 또는 $\\frac{3}{4}\\pi$이므로 $x=1$ 또는 $x=3$이다.\n$a=1$, $b=3$이므로 $a+b=4$이다.\n(그래프는 $x=2$에 대하여 대칭이므로 $a+b=2\\times2=4$이다.)\n[결론]\n$4$"
   },
   {
     "id": 9,
@@ -268,8 +268,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = a\\sin(bx - c) + d$의 그래프가 다음 그림과 같을 때, 실수 $a, b, c, d$의 값을 구하시오. (단, $a>0, b>0, \\frac{\\pi}{2} < c < \\frac{3}{2}\\pi$)\n<img src=\"q09.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2,\\ b=2,\\ c=\\pi,\\ d=1$",
+    "solution": "[풀이 전략]\n그래프에서 최댓값 $3$, 최솟값 $-1$, 주기를 읽어 $a,b,d$를 구하고, 최대가 되는 점으로 $c$를 구한다.\n[단계별 풀이]\n최댓값이 $3$, 최솟값이 $-1$이므로 $a=\\frac{3-(-1)}{2}=2$, $d=\\frac{3+(-1)}{2}=1$이다.\n그래프에서 최대가 되는 점이 $x=\\frac{3}{4}\\pi$, $\\frac{7}{4}\\pi$이므로 주기는 $\\frac{7}{4}\\pi-\\frac{3}{4}\\pi=\\pi$이다. $\\frac{2\\pi}{b}=\\pi$이므로 $b=2$이다.\n$x=\\frac{3}{4}\\pi$에서 최대이므로 $2\\times\\frac{3}{4}\\pi-c=\\frac{\\pi}{2}+2n\\pi$, 즉 $c=\\pi-2n\\pi$이다. $\\frac{\\pi}{2}<c<\\frac{3}{2}\\pi$이므로 $c=\\pi$이다.\n(검산: $x=0$에서 $y=2\\sin(-\\pi)+1=1$이고 그래프는 $x=0$에서 감소하며 지나므로 맞다.)\n[결론]\n$a=2,\\ b=2,\\ c=\\pi,\\ d=1$"
   },
   {
     "id": 10,
@@ -296,8 +296,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = 2\\cos^2 x + \\sin x - 3$의 최댓값을 $M$, 최솟값을 $m$이라고 할 때, $Mm$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{2}$",
+    "solution": "[풀이 전략]\n$\\cos^2x=1-\\sin^2x$로 바꾸어 $\\sin x=t$ ($-1\\le t\\le1$)에 대한 이차함수의 최대·최소를 구한다.\n[단계별 풀이]\n$y=2(1-\\sin^2x)+\\sin x-3=-2\\sin^2x+\\sin x-1$이다.\n$\\sin x=t$라 하면 $y=-2t^2+t-1=-2\\left(t-\\frac{1}{4}\\right)^2-\\frac{7}{8}$ ($-1\\le t\\le1$)이다.\n$t=\\frac{1}{4}$일 때 최댓값 $M=-\\frac{7}{8}$이다.\n$t=-1$일 때 $y=-2-1-1=-4$, $t=1$일 때 $y=-2$이므로 최솟값 $m=-4$이다.\n$Mm=-\\frac{7}{8}\\times(-4)=\\frac{7}{2}$이다.\n[결론]\n$\\frac{7}{2}$"
   },
   {
     "id": 11,
@@ -324,8 +324,8 @@ window.questionBank = [
     "wide": false,
     "content": "세페이드 변광성은 밝기가 시간에 따라 주기적으로 변하는 별이다. 이 중 가장 쉽게 볼 수 있는 델타 세페이드의 $x$일 후의 밝기를 $f(x)$등급이라고 하면\n$$f(x) = 4.0 + 0.35\\sin\\frac{\\pi}{2.7}x$$\n라고 한다. 델타 세페이드의 밝기가 $4.175$등급 이상이 되는 $x$의 값의 범위를 구하시오. (단, $0 \\le x \\le 5.4$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0.45\\le x\\le2.25$",
+    "solution": "[풀이 전략]\n$f(x)\\ge4.175$를 $\\sin\\frac{\\pi}{2.7}x\\ge\\frac{1}{2}$로 바꾸고 $0\\le x\\le5.4$에서 푼다.\n[단계별 풀이]\n$4.0+0.35\\sin\\frac{\\pi}{2.7}x\\ge4.175$이므로 $\\sin\\frac{\\pi}{2.7}x\\ge\\frac{0.175}{0.35}=\\frac{1}{2}$이다.\n$0\\le x\\le5.4$이면 $0\\le\\frac{\\pi}{2.7}x\\le2\\pi$이다.\n이 범위에서 $\\sin t\\ge\\frac{1}{2}$인 $t$는 $\\frac{\\pi}{6}\\le t\\le\\frac{5}{6}\\pi$이다.\n$\\frac{\\pi}{6}\\le\\frac{\\pi}{2.7}x\\le\\frac{5}{6}\\pi$이므로 $\\frac{2.7}{6}\\le x\\le\\frac{5\\times2.7}{6}$, 즉 $0.45\\le x\\le2.25$이다.\n[결론]\n$0.45\\le x\\le2.25$"
   },
   {
     "id": 12,
@@ -352,8 +352,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 중심이 $\\mathrm{O}$, 반지름의 길이가 $1$인 반원의 호 $\\mathrm{AB}$를 $10$등분 하는 점을 차례로 $\\mathrm{P}_1, \\mathrm{P}_2, \\cdots, \\mathrm{P}_9$라고 하자. 점 $\\mathrm{P}_1, \\mathrm{P}_2, \\cdots, \\mathrm{P}_9$에서 선분 $\\mathrm{AB}$에 내린 수선의 발을 각각 $\\mathrm{Q}_1, \\mathrm{Q}_2, \\cdots, \\mathrm{Q}_9$라고 할 때,\n$$\\overline{\\mathrm{P}_1\\mathrm{Q}_1}^2 + \\overline{\\mathrm{P}_2\\mathrm{Q}_2}^2 + \\overline{\\mathrm{P}_3\\mathrm{Q}_3}^2 + \\cdots + \\overline{\\mathrm{P}_9\\mathrm{Q}_9}^2$$\n의 값을 구하시오.\n<img src=\"q12.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n$\\angle\\mathrm{P}_k\\mathrm{OB}=\\frac{k\\pi}{10}$이므로 $\\overline{\\mathrm{P}_k\\mathrm{Q}_k}=\\sin\\frac{k\\pi}{10}$이다. $\\sin^2\\theta+\\cos^2\\theta=1$이 되도록 짝지어 더한다.\n[단계별 풀이]\n반지름이 $1$이므로 $\\overline{\\mathrm{P}_k\\mathrm{Q}_k}^2=\\sin^2\\frac{k\\pi}{10}$이다.\n$\\sin\\frac{(5-k)\\pi}{10}=\\sin\\left(\\frac{\\pi}{2}-\\frac{k\\pi}{10}\\right)=\\cos\\frac{k\\pi}{10}$이므로 $\\sin^2\\frac{k\\pi}{10}+\\sin^2\\frac{(5-k)\\pi}{10}=1$이다.\n$k=1,2,3,4$일 때 $\\sin^2\\frac{\\pi}{10}+\\sin^2\\frac{4\\pi}{10}=1$, $\\sin^2\\frac{2\\pi}{10}+\\sin^2\\frac{3\\pi}{10}=1$이므로 $k=1\\sim4$의 합은 $2$이다.\n$k=6\\sim9$일 때 $\\sin\\frac{k\\pi}{10}=\\sin\\left(\\pi-\\frac{k\\pi}{10}\\right)=\\sin\\frac{(10-k)\\pi}{10}$이므로 $k=4\\sim1$의 값과 같다. 합은 $2$이다.\n$k=5$일 때 $\\sin^2\\frac{\\pi}{2}=1$이다.\n전체 합은 $2+2+1=5$이다.\n[결론]\n$5$"
   },
   {
     "id": 13,
@@ -380,8 +380,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 방정식 $-3\\sin\\frac{\\pi}{2}x = mx$에 대한 설명으로 옳은 것을 모두 고르시오. (단, $m$은 실수)\n\n[보기]\nㄱ. $m$의 값에 관계없이 해는 항상 존재한다.\nㄴ. $m = -\\frac{3}{8}$일 때, 서로 다른 $9$개의 실근을 갖는다.\nㄷ. $\\frac{1}{2} < m < 1$일 때, 서로 다른 $5$개의 실근의 합은 $0$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "[풀이 전략]\n$y=-3\\sin\\frac{\\pi}{2}x$는 원점에 대하여 대칭이고 주기가 $4$이다. 이 곡선과 원점을 지나는 직선 $y=mx$의 교점의 개수로 각 보기를 판단한다.\n[단계별 풀이]\nㄱ. $x=0$이면 좌변과 우변이 모두 $0$이므로 $m$의 값에 관계없이 해가 존재한다. (참)\nㄴ. $m=-\\frac{3}{8}$이면 $-3\\sin\\frac{\\pi}{2}x=-\\frac{3}{8}x$, 즉 $\\sin\\frac{\\pi}{2}x=\\frac{x}{8}$이다. $|x|\\le8$이어야 하고 $x>0$에서 교점은 $(1,2)$에서 $1$개, $(4,5)$와 $(5,6)$에서 $2$개로 $3$개이다. 대칭이므로 $x<0$에서도 $3$개이고 $x=0$까지 합하면 $7$개이다. $9$개가 아니다. (거짓)\nㄷ. $\\frac{1}{2}<m<1$이면 $\\sin\\frac{\\pi}{2}x=-\\frac{m}{3}x$이고 기울기 $-\\frac{m}{3}$는 $-\\frac{1}{3}$과 $-\\frac{1}{6}$ 사이이다. $x>0$에서 교점은 $(2,3)$과 $(3,4)$에 각각 $1$개씩 $2$개이고 $x<0$에서도 $2$개이므로 모두 $5$개이다. 그래프가 원점에 대하여 대칭이므로 교점의 $x$좌표의 합은 $0$이다. (참)\n[결론]\nㄱ, ㄷ"
   },
   {
     "id": 14,
@@ -408,8 +408,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 < x < 2\\pi$일 때, 두 부등식\n$$\\sin^2 x - \\cos^2 x - \\cos x < 0, \\quad \\sin x < \\cos x$$\n를 동시에 만족시키는 $x$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0<x<\\frac{\\pi}{4}$ 또는 $\\frac{5}{3}\\pi<x<2\\pi$",
+    "solution": "[풀이 전략]\n첫째 부등식은 $\\sin^2x=1-\\cos^2x$로 바꾸어 $\\cos x$에 대한 이차부등식으로 푼다. 둘째 부등식은 단위원 또는 그래프에서 푼다.\n[단계별 풀이]\n$\\sin^2x-\\cos^2x-\\cos x=1-2\\cos^2x-\\cos x<0$이므로 $2\\cos^2x+\\cos x-1>0$이다.\n$(2\\cos x-1)(\\cos x+1)>0$이다. $\\cos x+1\\ge0$이고 $\\cos x=-1$일 때는 $0$이므로, 부등식이 성립하려면 $\\cos x+1>0$이고 $2\\cos x-1>0$이어야 한다. 즉 $\\cos x>\\frac{1}{2}$이다.\n$0<x<2\\pi$에서 $\\cos x>\\frac{1}{2}$이면 $0<x<\\frac{\\pi}{3}$ 또는 $\\frac{5}{3}\\pi<x<2\\pi$이다.\n$\\sin x<\\cos x$이면 $0<x<2\\pi$에서 $0<x<\\frac{\\pi}{4}$ 또는 $\\frac{5}{4}\\pi<x<2\\pi$이다.\n두 범위의 공통부분은 $0<x<\\frac{\\pi}{4}$ 또는 $\\frac{5}{3}\\pi<x<2\\pi$이다.\n[결론]\n$0<x<\\frac{\\pi}{4}$ 또는 $\\frac{5}{3}\\pi<x<2\\pi$"
   },
   {
     "id": 15,
@@ -442,8 +442,8 @@ window.questionBank = [
       "$4\\sqrt{3}$",
       "$5\\sqrt{3}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n삼각형의 내각의 합으로 $\\angle\\mathrm{B}$를 구하고 사인법칙 $\\frac{b}{\\sin B}=2R$를 쓴다.\n[단계별 풀이]\n$\\angle\\mathrm{B}=180^\\circ-40^\\circ-80^\\circ=60^\\circ$이다.\n$b=2R\\sin B=2\\times4\\times\\sin60^\\circ=8\\times\\frac{\\sqrt{3}}{2}=4\\sqrt{3}$이다.\n[결론]\n④ $4\\sqrt{3}$"
   },
   {
     "id": 16,
@@ -476,8 +476,8 @@ window.questionBank = [
       "$13$",
       "$14$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n코사인법칙 $c^2=a^2+b^2-2ab\\cos C$를 이용한다.\n[단계별 풀이]\n$c^2=49+64-2\\times7\\times8\\times\\left(-\\frac{1}{2}\\right)=113+56=169$이다.\n$c>0$이므로 $c=13$이다.\n[결론]\n④ $13$"
   },
   {
     "id": 17,
@@ -510,8 +510,8 @@ window.questionBank = [
       "$\\frac{1}{3}$",
       "$\\frac{1}{2}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n삼각형의 넓이 $S=\\frac{1}{2}ac\\sin B$를 이용한다.\n[단계별 풀이]\n$\\frac{1}{2}\\times6\\times4\\times\\sin B=12\\sin B=6$이다.\n$\\sin B=\\frac{1}{2}$이다.\n[결론]\n⑤ $\\frac{1}{2}$"
   },
   {
     "id": 18,
@@ -538,8 +538,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=6, \\angle\\mathrm{ABC}=120^\\circ$일 때, 이 평행사변형의 넓이를 구하시오.\n<img src=\"q18.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12\\sqrt{3}$",
+    "solution": "[풀이 전략]\n평행사변형의 넓이는 이웃한 두 변의 길이와 그 끼인각의 사인의 곱이다.\n[단계별 풀이]\n넓이 $=\\overline{\\mathrm{AB}}\\times\\overline{\\mathrm{BC}}\\times\\sin120^\\circ=4\\times6\\times\\frac{\\sqrt{3}}{2}=12\\sqrt{3}$이다.\n[결론]\n$12\\sqrt{3}$"
   },
   {
     "id": 19,
@@ -566,8 +566,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 삼각형 $\\mathrm{ABC}$에서 $a=4, c=5, \\angle\\mathrm{B}=60^\\circ$일 때, 이 삼각형의 외접원의 넓이를 구하시오.\n<img src=\"q19.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7\\pi$",
+    "solution": "[풀이 전략]\n코사인법칙으로 $b$를 구하고 사인법칙 $\\frac{b}{\\sin B}=2R$로 외접원의 반지름을 구한다.\n[단계별 풀이]\n$b^2=a^2+c^2-2ac\\cos B=16+25-2\\times4\\times5\\times\\frac{1}{2}=21$이므로 $b=\\sqrt{21}$이다.\n$2R=\\frac{b}{\\sin60^\\circ}=\\frac{\\sqrt{21}}{\\frac{\\sqrt{3}}{2}}=2\\sqrt{7}$이므로 $R=\\sqrt{7}$이다.\n외접원의 넓이는 $\\pi R^2=7\\pi$이다.\n[결론]\n$7\\pi$"
   },
   {
     "id": 20,
@@ -594,8 +594,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\sqrt{3}, \\angle\\mathrm{ABC}=\\angle\\mathrm{BAC}=30^\\circ$이고, 삼각형 $\\mathrm{ACD}$에서 $\\overline{\\mathrm{AD}}=2\\sqrt{3}, \\angle\\mathrm{DAC}=30^\\circ$일 때, 선분 $\\mathrm{CD}$의 길이를 구하시오.\n<img src=\"q20.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{7}$",
+    "solution": "[풀이 전략]\n삼각형 $\\mathrm{ABC}$에서 사인법칙으로 $\\overline{\\mathrm{AC}}$를 구한 뒤, 삼각형 $\\mathrm{ACD}$에서 코사인법칙으로 $\\overline{\\mathrm{CD}}$를 구한다.\n[단계별 풀이]\n삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{C}=180^\\circ-30^\\circ-30^\\circ=120^\\circ$이다.\n$\\frac{\\overline{\\mathrm{AC}}}{\\sin30^\\circ}=\\frac{8\\sqrt{3}}{\\sin120^\\circ}$이므로 $\\overline{\\mathrm{AC}}=8\\sqrt{3}\\times\\frac{1/2}{\\sqrt{3}/2}=8$이다.\n삼각형 $\\mathrm{ACD}$에서 $\\overline{\\mathrm{CD}}^2=8^2+(2\\sqrt{3})^2-2\\times8\\times2\\sqrt{3}\\times\\cos30^\\circ=64+12-2\\times8\\times2\\sqrt{3}\\times\\frac{\\sqrt{3}}{2}=76-48=28$이다.\n$\\overline{\\mathrm{CD}}=2\\sqrt{7}$이다.\n[결론]\n$2\\sqrt{7}$"
   },
   {
     "id": 21,
@@ -622,8 +622,8 @@ window.questionBank = [
     "wide": false,
     "content": "넓이가 $36$인 삼각형 $\\mathrm{ABC}$에서 $a=9, \\cos B = \\frac{\\sqrt{5}}{3}$일 때, $c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n$\\sin^2B+\\cos^2B=1$로 $\\sin B$를 구하고 넓이 공식 $S=\\frac{1}{2}ac\\sin B$를 쓴다.\n[단계별 풀이]\n$\\sin^2B=1-\\frac{5}{9}=\\frac{4}{9}$이고 $\\sin B>0$이므로 $\\sin B=\\frac{2}{3}$이다.\n$S=\\frac{1}{2}\\times9\\times c\\times\\frac{2}{3}=3c=36$이다.\n$c=12$이다.\n[결론]\n$12$"
   },
   {
     "id": 22,
@@ -650,8 +650,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 중심각의 크기가 $\\frac{2}{3}\\pi$인 부채꼴 $\\mathrm{OAB}$의 호의 길이가 $2\\pi$일 때, 삼각형 $\\mathrm{OAB}$의 넓이를 구하시오.\n<img src=\"q22.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{9\\sqrt{3}}{4}$",
+    "solution": "[풀이 전략]\n호의 길이 $l=r\\theta$로 반지름을 구하고, 두 변과 끼인각으로 삼각형의 넓이를 구한다.\n[단계별 풀이]\n$r\\times\\frac{2}{3}\\pi=2\\pi$이므로 $r=3$이다.\n삼각형 $\\mathrm{OAB}$의 넓이는 $\\frac{1}{2}\\times3\\times3\\times\\sin\\frac{2}{3}\\pi=\\frac{9}{2}\\times\\frac{\\sqrt{3}}{2}=\\frac{9\\sqrt{3}}{4}$이다.\n[결론]\n$\\frac{9\\sqrt{3}}{4}$"
   },
   {
     "id": 23,
@@ -678,8 +678,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $2$인 원 위의 세 점 $\\mathrm{A, B, C}$가 $\\overparen{\\mathrm{AB}}:\\overparen{\\mathrm{BC}}:\\overparen{\\mathrm{CA}}=2:5:5$를 만족시킬 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2+\\sqrt{3}$",
+    "solution": "[풀이 전략]\n호의 길이의 비는 중심각의 크기의 비와 같다. 세 중심각을 구하여 삼각형을 중심 O와 이은 세 삼각형으로 나누어 넓이의 합을 구한다.\n[단계별 풀이]\n중심각의 크기는 각각 $2\\pi\\times\\frac{2}{12}=\\frac{\\pi}{3}$, $2\\pi\\times\\frac{5}{12}=\\frac{5}{6}\\pi$, $\\frac{5}{6}\\pi$이다. 모두 $\\pi$보다 작으므로 중심 $\\mathrm{O}$는 삼각형 내부에 있다.\n삼각형 $\\mathrm{ABC}$의 넓이는 세 삼각형 $\\mathrm{OAB}$, $\\mathrm{OBC}$, $\\mathrm{OCA}$의 넓이의 합이다.\n$\\frac{1}{2}\\times2^2\\left(\\sin\\frac{\\pi}{3}+\\sin\\frac{5}{6}\\pi+\\sin\\frac{5}{6}\\pi\\right)=2\\left(\\frac{\\sqrt{3}}{2}+\\frac{1}{2}+\\frac{1}{2}\\right)=\\sqrt{3}+2$이다.\n[결론]\n$2+\\sqrt{3}$"
   },
   {
     "id": 24,
@@ -706,8 +706,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서\n$$\\frac{2}{\\sin A} = \\frac{3}{\\sin B} = \\frac{4}{\\sin C}$$\n일 때, 다음 보기 중 옳은 것을 모두 고르시오.\n\n[보기]\nㄱ. $a:b:c=2:3:4$\nㄴ. $\\cos C = -\\frac{1}{4}$\nㄷ. 삼각형 $\\mathrm{ABC}$가 반지름의 길이가 $2$인 원에 내접하면 삼각형 $\\mathrm{ABC}$의 넓이는 $3$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "[풀이 전략]\n$\\frac{2}{\\sin A}=\\frac{3}{\\sin B}=\\frac{4}{\\sin C}=k$라 하면 $\\sin A=\\frac{2}{k}$, $\\sin B=\\frac{3}{k}$, $\\sin C=\\frac{4}{k}$이다. 사인법칙에서 $a:b:c=\\sin A:\\sin B:\\sin C$이다.\n[단계별 풀이]\nㄱ. $a:b:c=\\sin A:\\sin B:\\sin C=2:3:4$이다. (참)\nㄴ. $a=2t$, $b=3t$, $c=4t$라 하면 $\\cos C=\\frac{4t^2+9t^2-16t^2}{2\\times2t\\times3t}=\\frac{-3t^2}{12t^2}=-\\frac{1}{4}$이다. (참)\nㄷ. $\\cos C=-\\frac{1}{4}$이므로 $\\sin C=\\frac{\\sqrt{15}}{4}$이다. 외접원의 반지름이 $2$이면 $\\frac{c}{\\sin C}=4$에서 $c=\\sqrt{15}$, $t=\\frac{\\sqrt{15}}{4}$이다. 넓이는 $\\frac{1}{2}ab\\sin C=\\frac{1}{2}\\times2t\\times3t\\times\\frac{\\sqrt{15}}{4}=\\frac{3\\sqrt{15}}{4}\\times\\frac{15}{16}=\\frac{45\\sqrt{15}}{64}$이다. $3$이 아니다. (거짓)\n[결론]\nㄱ, ㄴ"
   },
   {
     "id": 25,
@@ -734,8 +734,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=8, \\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}=3, \\overline{\\mathrm{AD}}=5, \\angle\\mathrm{ABC}=60^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이를 구하시오.\n<img src=\"q25.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{39\\sqrt{3}}{4}$",
+    "solution": "[풀이 전략]\n대각선 $\\mathrm{AC}$로 사각형을 두 삼각형으로 나누어 넓이를 구한다. 삼각형 $\\mathrm{ABC}$에서 코사인법칙으로 $\\overline{\\mathrm{AC}}$를 구한다.\n[단계별 풀이]\n$\\overline{\\mathrm{AC}}^2=8^2+3^2-2\\times8\\times3\\times\\cos60^\\circ=73-24=49$이므로 $\\overline{\\mathrm{AC}}=7$이다.\n삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2}\\times8\\times3\\times\\sin60^\\circ=6\\sqrt{3}$이다.\n삼각형 $\\mathrm{ACD}$에서 $\\cos D=\\frac{3^2+5^2-7^2}{2\\times3\\times5}=\\frac{-15}{30}=-\\frac{1}{2}$이므로 $\\angle\\mathrm{D}=120^\\circ$이다.\n삼각형 $\\mathrm{ACD}$의 넓이는 $\\frac{1}{2}\\times3\\times5\\times\\sin120^\\circ=\\frac{15\\sqrt{3}}{4}$이다.\n사각형의 넓이는 $6\\sqrt{3}+\\frac{15\\sqrt{3}}{4}=\\frac{39\\sqrt{3}}{4}$이다.\n[결론]\n$\\frac{39\\sqrt{3}}{4}$"
   },
   {
     "id": 26,
@@ -762,8 +762,8 @@ window.questionBank = [
     "wide": false,
     "content": "정삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$를 $1:3$으로 내분하는 점을 $\\mathrm{P}$, $3:1$로 내분하는 점을 $\\mathrm{Q}$라고 하자. $\\angle\\mathrm{PAQ}=\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{11}{13}$",
+    "solution": "[풀이 전략]\n한 변의 길이를 $4$로 놓고 코사인법칙으로 $\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{AQ}}$를 구한 뒤, 삼각형 $\\mathrm{APQ}$에서 다시 코사인법칙으로 $\\cos\\theta$를 구한다. 정삼각형의 한 변의 길이에 관계없이 같은 값이다.\n[단계별 풀이]\n한 변의 길이를 $4$라 하자. $\\overline{\\mathrm{BP}}=1$, $\\overline{\\mathrm{PC}}=3$, $\\overline{\\mathrm{BQ}}=3$, $\\overline{\\mathrm{QC}}=1$이므로 $\\overline{\\mathrm{PQ}}=2$이다.\n삼각형 $\\mathrm{ABP}$에서 $\\overline{\\mathrm{AP}}^2=4^2+1^2-2\\times4\\times1\\times\\cos60^\\circ=17-4=13$이다.\n삼각형 $\\mathrm{ACQ}$에서 $\\overline{\\mathrm{AQ}}^2=4^2+1^2-2\\times4\\times1\\times\\cos60^\\circ=13$이다.\n삼각형 $\\mathrm{APQ}$에서 $\\cos\\theta=\\frac{\\overline{\\mathrm{AP}}^2+\\overline{\\mathrm{AQ}}^2-\\overline{\\mathrm{PQ}}^2}{2\\times\\overline{\\mathrm{AP}}\\times\\overline{\\mathrm{AQ}}}=\\frac{13+13-4}{2\\times13}=\\frac{22}{26}=\\frac{11}{13}$이다.\n[결론]\n$\\frac{11}{13}$"
   },
   {
     "id": 27,
@@ -790,8 +790,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 모선 $\\mathrm{OA}$의 길이가 $8$이고, 밑면의 지름 $\\mathrm{AB}$의 길이가 $4$인 원뿔이다. 모선 $\\mathrm{OB}$ 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{OP}}=4\\sqrt{2}$일 때, 점 $\\mathrm{A}$에서 원뿔의 옆면을 따라 점 $\\mathrm{P}$까지 가는 최단 거리를 구하시오.\n<img src=\"q27.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\sqrt{2}$",
+    "solution": "[풀이 전략]\n원뿔의 옆면을 펼치면 부채꼴이다. 펼친 부채꼴에서 점 $\\mathrm{A}$와 점 $\\mathrm{P}$를 잇는 선분의 길이가 최단 거리이다.\n[단계별 풀이]\n부채꼴의 반지름은 모선의 길이 $8$이고 호의 길이는 밑면의 둘레 $2\\pi\\times2=4\\pi$이다. 중심각은 $\\frac{4\\pi}{8}=\\frac{\\pi}{2}$이다.\n점 $\\mathrm{A}$와 점 $\\mathrm{B}$는 밑면의 둘레를 반으로 나누는 점이므로 펼친 부채꼴에서 $\\angle\\mathrm{AOB}=\\frac{\\pi}{4}$이다. 따라서 $\\angle\\mathrm{AOP}=\\frac{\\pi}{4}$이다.\n$\\overline{\\mathrm{AP}}^2=8^2+(4\\sqrt{2})^2-2\\times8\\times4\\sqrt{2}\\times\\cos\\frac{\\pi}{4}=64+32-64=32$이다.\n$\\overline{\\mathrm{AP}}=4\\sqrt{2}$이다.\n[결론]\n$4\\sqrt{2}$"
   },
   {
     "id": 28,
@@ -818,7 +818,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{AC}}=6, \\angle\\mathrm{A}=60^\\circ$인 삼각형 $\\mathrm{ABC}$에서 두 점 $\\mathrm{P, Q}$가 각각 두 선분 $\\mathrm{AB, AC}$ 위를 움직인다. 선분 $\\mathrm{PQ}$가 삼각형 $\\mathrm{ABC}$의 넓이를 이등분할 때, 선분 $\\mathrm{PQ}$의 길이의 최솟값을 구하시오.\n<img src=\"q28.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{3}$",
+    "solution": "[풀이 전략]\n$\\overline{\\mathrm{AP}}=x$, $\\overline{\\mathrm{AQ}}=y$라 하고 넓이 조건으로 $xy$를 구한 뒤 코사인법칙과 산술평균·기하평균의 관계로 $\\overline{\\mathrm{PQ}}$의 최솟값을 구한다.\n[단계별 풀이]\n삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2}\\times4\\times6\\times\\sin60^\\circ=6\\sqrt{3}$이다.\n삼각형 $\\mathrm{APQ}$의 넓이가 그 절반 $3\\sqrt{3}$이므로 $\\frac{1}{2}xy\\sin60^\\circ=3\\sqrt{3}$이고 $xy=12$이다.\n$\\overline{\\mathrm{PQ}}^2=x^2+y^2-2xy\\cos60^\\circ=x^2+y^2-12$이다.\n$x^2+y^2\\ge2xy=24$이므로 $\\overline{\\mathrm{PQ}}^2\\ge12$이다. 등호는 $x=y=2\\sqrt{3}$일 때 성립하고, $2\\sqrt{3}\\le4$, $2\\sqrt{3}\\le6$이므로 점 $\\mathrm{P}$, $\\mathrm{Q}$가 각 변 위에 있다.\n$\\overline{\\mathrm{PQ}}$의 최솟값은 $2\\sqrt{3}$이다.\n[결론]\n$2\\sqrt{3}$"
   }
 ];

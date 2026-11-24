@@ -32,8 +32,8 @@ window.questionBank = [
       "$14$",
       "$16$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n두 주사위의 눈을 순서쌍 $(a,b)$로 놓고 눈의 수의 차가 $2$인 경우와 $4$인 경우로 나누어 센다. 두 사건은 동시에 일어나지 않으므로 합의 법칙을 쓴다.\n[단계별 풀이]\n눈의 수의 차가 $2$인 순서쌍: 작은 눈이 $1,2,3,4$일 때 큰 눈이 $3,4,5,6$이므로 $4$쌍이고, 두 주사위가 서로 다르므로 순서를 바꾼 것까지 $4\\times2=8$이다.\n눈의 수의 차가 $4$인 순서쌍: $(1,5),(2,6)$의 $2$쌍이고 순서를 바꾼 것까지 $2\\times2=4$이다.\n합의 법칙에 의하여 $8+4=12$이다.\n[결론]\n③ $12$"
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 영화관에서는 팝콘 $3$종류, 음료수 $4$종류, 핫도그 $3$종류를 판매하고 있다. 팝콘, 음료수, 핫도그를 각각 $1$종류씩 고르는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$36$",
+    "solution": "[풀이 전략]\n팝콘, 음료수, 핫도그를 각각 하나씩 고르는 경우는 곱의 법칙으로 구한다.\n[단계별 풀이]\n팝콘은 $3$가지, 음료수는 $4$가지, 핫도그는 $3$가지이다.\n$3\\times4\\times3=36$이다.\n[결론]\n$36$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같은 도로망이 있다. 지점 A에서 지점 C까지 가는 방법의 수를 구하시오. (단, 같은 지점은 두 번 이상 지나지 않는다.)\n<img src=\"q03.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "[풀이 전략]\n그림에서 두 지점을 잇는 길의 수를 먼저 센다. 같은 지점을 두 번 지나지 않으므로 A에서 C까지 가는 경로를 지나는 지점의 순서에 따라 나누어 곱의 법칙과 합의 법칙을 쓴다.\n[단계별 풀이]\n그림에서 길의 수는 A-B $2$개, A-D $3$개, B-D $2$개, B-C $1$개, D-C $1$개이다.\nA→B→C: $2\\times1=2$\nA→D→C: $3\\times1=3$\nA→B→D→C: $2\\times2\\times1=4$\nA→D→B→C: $3\\times2\\times1=6$\n합의 법칙에 의하여 $2+3+4+6=15$이다.\n[결론]\n$15$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "모둠 A의 학생 $6$명과 모둠 B의 학생 $5$명으로 이루어진 학생 단체 $11$명 중에서 $3$명의 학생을 뽑을 때, $3$명이 모두 같은 모둠 학생인 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "[풀이 전략]\n$3$명이 모두 모둠 A이거나 모두 모둠 B인 경우로 나누어 조합으로 센다.\n[단계별 풀이]\n모둠 A의 $6$명 중 $3$명을 뽑는 경우: ${}_6\\mathrm{C}_3=20$이다.\n모둠 B의 $5$명 중 $3$명을 뽑는 경우: ${}_5\\mathrm{C}_3=10$이다.\n합의 법칙에 의하여 $20+10=30$이다.\n[결론]\n$30$"
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "서로 다른 역사 소설 $n$권, 서로 다른 여행 서적 $3$권을 책꽂이에 일렬로 꽂을 때, 여행 서적끼리 이웃하게 꽂는 방법의 수는 $720$이다. 이때 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n이웃하는 여행 서적 $3$권을 한 묶음으로 보고, 묶음 안에서 순서를 바꾸는 경우를 곱한다.\n[단계별 풀이]\n여행 서적 $3$권을 한 묶음으로 보면 $(n+1)$개를 일렬로 꽂는 경우가 $(n+1)!$이다.\n묶음 안에서 여행 서적끼리 자리를 바꾸는 경우가 $3!=6$이다.\n$(n+1)!\\times6=720$이므로 $(n+1)!=120=5!$이다.\n따라서 $n+1=5$, $n=4$이다.\n[결론]\n$4$"
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
       "$540$",
       "$560$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "①",
+    "solution": "[풀이 전략]\n모음이 이웃하지 않으려면 자음을 먼저 나열하고 그 사이사이와 양 끝의 자리에 모음을 넣는다.\n[단계별 풀이]\n모음은 A, E의 $2$개이고 자음은 C, H, N, G의 $4$개이다.\n자음 $4$개를 일렬로 나열하는 경우: $4!=24$이다.\n자음의 양 끝과 사이의 $5$개 자리 중에서 $2$곳을 골라 모음 A, E를 배열하는 경우: ${}_5\\mathrm{P}_2=20$이다.\n곱의 법칙에 의하여 $24\\times20=480$이다.\n[결론]\n① $480$"
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1$부터 $9$까지의 자연수 중에서 서로 다른 세 수를 동시에 선택할 때, 선택된 세 수의 곱이 짝수가 되는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$74$",
+    "solution": "[풀이 전략]\n(곱이 짝수인 경우) $=$ (전체 경우) $-$ (곱이 홀수인 경우)로 구한다. 세 수의 곱이 홀수이려면 세 수가 모두 홀수이어야 한다.\n[단계별 풀이]\n$1$부터 $9$까지의 수 중 서로 다른 세 수를 선택하는 전체 경우: ${}_9\\mathrm{C}_3=84$이다.\n홀수는 $1,3,5,7,9$의 $5$개이고 세 수가 모두 홀수인 경우: ${}_5\\mathrm{C}_3=10$이다.\n곱이 짝수인 경우: $84-10=74$이다.\n[결론]\n$74$"
   },
   {
     "id": 8,
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $_{n+2}\\mathrm{C}_3 - 2 \\times {}_n\\mathrm{C}_2 = {}_{n+1}\\mathrm{C}_{n-1}$을 만족시키는 자연수 $n$의 값을 구하시오. (단, $n>2$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n조합의 정의로 식을 $n$에 대한 방정식으로 바꾼다. ${}_{n+1}\\mathrm{C}_{n-1}={}_{n+1}\\mathrm{C}_{2}$이다.\n[단계별 풀이]\n${}_{n+2}\\mathrm{C}_3=\\frac{(n+2)(n+1)n}{6}$, ${}_n\\mathrm{C}_2=\\frac{n(n-1)}{2}$, ${}_{n+1}\\mathrm{C}_{n-1}={}_{n+1}\\mathrm{C}_2=\\frac{(n+1)n}{2}$이다.\n$\\frac{(n+2)(n+1)n}{6}-n(n-1)=\\frac{(n+1)n}{2}$이다.\n$n>2$이므로 양변을 $n$으로 나누고 $6$을 곱하면 $(n+2)(n+1)-6(n-1)=3(n+1)$이다.\n$n^2+3n+2-6n+6=3n+3$이므로 $n^2-6n+5=0$, $(n-1)(n-5)=0$이다.\n$n>2$이므로 $n=5$이다.\n(검산: ${}_7\\mathrm{C}_3-2\\times{}_5\\mathrm{C}_2=35-20=15={}_6\\mathrm{C}_4$)\n[결론]\n$5$"
   },
   {
     "id": 9,
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "다섯 개의 문자 $a$, $b$, $c$, $d$, $e$를 한 번씩 모두 사용하여 만든 문자열을 사전식으로 배열할 때, $105$번째의 문자열을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$ebcad$",
+    "solution": "[풀이 전략]\n사전식 배열에서 첫 글자가 같은 문자열은 각각 $4!=24$개이다. $105$번째가 어느 글자로 시작하는지부터 차례로 정한다.\n[단계별 풀이]\n$a$로 시작: $1\\sim24$번째, $b$: $25\\sim48$번째, $c$: $49\\sim72$번째, $d$: $73\\sim96$번째이다.\n$97$번째부터는 $e$로 시작하므로 $e$로 시작하는 문자열의 $105-96=9$번째를 찾는다.\n$e$ 다음 글자가 같은 문자열은 $3!=6$개씩이다. $ea\\cdots$: $1\\sim6$번째, $eb\\cdots$: $7\\sim12$번째이므로 $9$번째는 $eb\\cdots$의 $3$번째이다.\n$eb$ 다음 글자가 같은 문자열은 $2!=2$개씩이다. $eba\\cdots$: $1,2$번째, $ebc\\cdots$: $3,4$번째이므로 $3$번째는 $ebc\\cdots$의 첫 번째이다.\n남은 글자 $a$, $d$를 사전식으로 놓으면 $ebcad$이다.\n(검산: $103$번째 $ebacd$, $104$번째 $ebadc$, $105$번째 $ebcad$)\n[결론]\n$ebcad$"
   },
   {
     "id": 10,
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 식품 회사에서는 빵 $6$종류와 과자 $5$종류의 시험 제품을 만들었다. 이 시험 제품 중에서 적어도 빵 $1$종류와 과자 $1$종류를 포함하여 $3$종류를 출시하는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$135$",
+    "solution": "[풀이 전략]\n(적어도 빵 $1$종류와 과자 $1$종류를 포함) $=$ (전체) $-$ (빵만 고른 경우) $-$ (과자만 고른 경우)로 구한다.\n[단계별 풀이]\n제품은 모두 $6+5=11$종류이므로 $3$종류를 고르는 전체 경우는 ${}_{11}\\mathrm{C}_3=165$이다.\n빵만 $3$종류 고르는 경우: ${}_6\\mathrm{C}_3=20$이다.\n과자만 $3$종류 고르는 경우: ${}_5\\mathrm{C}_3=10$이다.\n$165-20-10=135$이다.\n[결론]\n$135$"
   },
   {
     "id": 11,
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같은 $7$인승 자동차에 운전을 할 수 있는 A, B와 운전을 할 수 없는 C, D, E, F, G가 함께 타고 여행을 가려고 한다. 운전석에는 A 또는 B만 앉을 수 있고, C, D는 3열에 앉는다고 할 때, $7$명이 이 자동차에 앉는 방법의 수를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$288$",
+    "solution": "[풀이 전략]\n그림에서 $3$열은 $3$개의 좌석이다. 운전석, $3$열 좌석, 나머지 좌석 순서로 사람을 정한다.\n[단계별 풀이]\n운전석에는 A 또는 B가 앉으므로 $2$가지이다.\nC, D는 $3$열의 $3$개 좌석 중 $2$개에 앉으므로 ${}_3\\mathrm{P}_2=6$가지이다.\n남은 $4$명(운전하지 않은 A 또는 B와 E, F, G)이 남은 $4$개의 좌석에 앉는 방법은 $4!=24$가지이다.\n곱의 법칙에 의하여 $2\\times6\\times24=288$이다.\n[결론]\n$288$"
   },
   {
     "id": 12,
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "$10000$원짜리 지폐 $1$장, $5000$원짜리 지폐 $3$장, $1000$원짜리 지폐 $4$장의 일부 또는 전부를 사용하여 지불하려고 한다. 지불할 수 있는 금액의 수를 구하시오. (단, $0$원을 지불하는 것은 생각하지 않는다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$29$",
+    "solution": "[풀이 전략]\n$10000$원 지폐 $1$장은 $5000$원 지폐 $2$장과 금액이 같다. 따라서 $10000$원 $1$장을 $5000$원 $2$장으로 바꿔 $5000$원 $5$장, $1000$원 $4$장으로 지불하는 금액의 수를 센다.\n[단계별 풀이]\n$5000$원 지폐를 사용하는 방법은 $0$장부터 $5$장까지 $6$가지이다.\n$1000$원 지폐를 사용하는 방법은 $0$장부터 $4$장까지 $5$가지이다.\n$0$원인 경우를 제외하면 $6\\times5-1=29$이다.\n(서로 다른 방법의 금액이 모두 다르다: $1000$원 지폐가 $4$장 이하이므로 $5000a+1000b$의 값이 겹치지 않는다.)\n[결론]\n$29$"
   },
   {
     "id": 13,
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 학교 학생회에서는 학생회에 속한 $1$학년 학생 $9$명을 $3$개의 조로 나누어 교내 축제 진행을 도우려고 한다. 이때 학생들을 $2$명, $3$명, $4$명으로 나누는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1260$",
+    "solution": "[풀이 전략]\n조를 인원수 $2$명, $3$명, $4$명으로 서로 다르게 정해 놓고 순서대로 뽑는다.\n[단계별 풀이]\n$9$명 중 $2$명을 뽑는 방법: ${}_9\\mathrm{C}_2=36$이다.\n남은 $7$명 중 $3$명을 뽑는 방법: ${}_7\\mathrm{C}_3=35$이다.\n남은 $4$명이 한 조가 되는 방법: ${}_4\\mathrm{C}_4=1$이다.\n인원수가 모두 다르므로 조를 구별할 수 있다. 곱의 법칙에 의하여 $36\\times35\\times1=1260$이다.\n[결론]\n$1260$"
   },
   {
     "id": 14,
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "아래 그림과 같이 크기가 동일한 정사각형 타일 $16$장을 사용하여 벽면을 꾸미려고 한다.\n<img src=\"q14.png\" />\n다음 세 조건을 모두 만족시키도록 벽면을 꾸미는 방법의 수를 구하시오.\n• 초록색 타일 $5$장, 흰색 타일 $11$장을 모두 사용한다.\n• 어느 가로줄에도 이웃한 칸에 초록색 타일을 붙이지 않는다.\n• 모든 세로줄에는 적어도 한 칸 이상 초록색 타일을 붙인다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$360$",
+    "solution": "[풀이 전략]\n가로줄은 $4$칸이므로 한 가로줄에 이웃하지 않게 놓을 수 있는 초록색 타일은 많아야 $2$장이다. 가로줄별 초록색 타일 수로 경우를 나누어 센다.\n[단계별 풀이]\n한 가로줄($4$칸)에서 이웃하지 않게 초록색 타일 $2$장을 놓는 방법은 $\\{1,3\\},\\{1,4\\},\\{2,4\\}$번째 칸의 $3$가지이다. $3$장 이상은 불가능하다.\n가로줄 $4$개에 초록색 타일이 모두 $5$장이므로 가로줄별 장수는 $(2,1,1,1)$ 또는 $(2,2,1,0)$이다.\n[경우 1] $(2,1,1,1)$: 두 장 놓는 가로줄을 정하는 방법 $4$가지.\n두 장의 위치가 $\\{1,3\\}$이면 세로줄 $2,4$를 채우기 위해 나머지 세 가로줄의 한 장씩의 열이 $2$와 $4$를 모두 포함해야 한다. $4^3-3^3-3^3+2^3=18$가지이다.\n$\\{1,4\\}$이면 세로줄 $2,3$, $\\{2,4\\}$이면 세로줄 $1,3$이 비어 있으므로 각각 $18$가지이다.\n$4\\times(18+18+18)=216$이다.\n[경우 2] $(2,2,1,0)$: 두 장씩 놓는 가로줄 $2$개를 고르는 방법은 ${}_4\\mathrm{C}_2=6$가지, 남은 두 가로줄 중 한 장 놓는 줄을 고르는 방법은 $2$가지이므로 줄의 역할을 정하는 방법은 $6\\times2=12$가지이다.\n두 장 놓는 두 줄의 위치를 위쪽 줄부터 순서대로 $(p,q)$라 하고, 한 장의 위치까지 정할 때 세로줄이 모두 채워지는 경우를 센다.\n$\\{1,3\\}$과 $\\{2,4\\}$(순서 $2$가지): 이미 모든 세로줄이 채워지므로 한 장은 $4$곳 어디든 가능하여 $2\\times4=8$가지이다.\n$\\{1,3\\}$과 $\\{1,4\\}$(순서 $2$가지): 세로줄 $2$가 비므로 한 장은 $2$번째 칸 $1$곳이어서 $2$가지이다.\n$\\{2,4\\}$와 $\\{1,4\\}$(순서 $2$가지): 세로줄 $3$이 비므로 한 장은 $3$번째 칸 $1$곳이어서 $2$가지이다.\n그 밖의 쌍은 두 세로줄 이상이 비어 불가능하다. 따라서 $8+2+2=12$가지이다.\n[경우 2]는 $12\\times12=144$이다.\n합의 법칙에 의하여 $216+144=360$이다.\n[결론]\n$360$"
   },
   {
     "id": 15,
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2\\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\n$$a_{ij} = \\begin{cases} i^2 & (i > j) \\\\ -i+j & (i \\le j) \\end{cases}$$\n일 때, 행렬 $A$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A=\\begin{pmatrix} 0 & 1 \\\\ 4 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n$(i,j)$ 성분마다 $i$와 $j$의 크기를 비교하여 알맞은 식에 대입한다.\n[단계별 풀이]\n$a_{11}$: $i=j$이므로 $i\\le j$인 경우이다. $-1+1=0$이다.\n$a_{12}$: $1<2$이므로 $-1+2=1$이다.\n$a_{21}$: $2>1$이므로 $i^2=4$이다.\n$a_{22}$: $i=j$이므로 $-2+2=0$이다.\n[결론]\n$A=\\begin{pmatrix} 0 & 1 \\\\ 4 & 0 \\end{pmatrix}$"
   },
   {
     "id": 16,
@@ -458,8 +458,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\begin{pmatrix} 2 & 4 \\\\ 6 & a \\end{pmatrix} = \\begin{pmatrix} a+b & a-b \\\\ 6 & a \\end{pmatrix}$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3,\\ b=-1$",
+    "solution": "[풀이 전략]\n두 행렬이 같으려면 대응하는 성분이 각각 같아야 한다.\n[단계별 풀이]\n$a+b=2$ ㉠, $a-b=4$ ㉡이다. ($(2,1)$, $(2,2)$ 성분은 서로 같다.)\n㉠$+$㉡을 하면 $2a=6$이므로 $a=3$이다. ㉠에서 $b=-1$이다.\n[결론]\n$a=3,\\ b=-1$"
   },
   {
     "id": 17,
@@ -486,8 +486,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 행렬 $A=\\begin{pmatrix} 3 & -1 \\\\ a & 5 \\end{pmatrix}$, $B=\\begin{pmatrix} 9 & 7 \\\\ -2 & b \\end{pmatrix}$, $C=\\begin{pmatrix} -1 & c \\\\ 4 & 0 \\end{pmatrix}$에 대하여 등식 $2A-B=3C$를 만족시키는 실수 $a$, $b$, $c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=5,\\ b=10,\\ c=-3$",
+    "solution": "[풀이 전략]\n행렬의 실수배와 덧셈, 뺄셈을 성분별로 계산하여 대응하는 성분을 비교한다.\n[단계별 풀이]\n$2A-B=\\begin{pmatrix} 6-9 & -2-7 \\\\ 2a+2 & 10-b \\end{pmatrix}=\\begin{pmatrix} -3 & -9 \\\\ 2a+2 & 10-b \\end{pmatrix}$이다.\n$3C=\\begin{pmatrix} -3 & 3c \\\\ 12 & 0 \\end{pmatrix}$이다.\n$(1,2)$ 성분: $3c=-9$이므로 $c=-3$이다.\n$(2,1)$ 성분: $2a+2=12$이므로 $a=5$이다.\n$(2,2)$ 성분: $10-b=0$이므로 $b=10$이다.\n[결론]\n$a=5,\\ b=10,\\ c=-3$"
   },
   {
     "id": 18,
@@ -514,8 +514,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & 3 \\\\ 1 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 2 \\\\ 2 & 3 \\end{pmatrix}$에 대하여 등식 $2(A+3X)-B=5B+4X$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$X=\\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬도 실수와 같은 방법으로 등식을 변형하여 $X$를 $A$, $B$로 나타낸다.\n[단계별 풀이]\n$2A+6X-B=5B+4X$이다.\n$2X=6B-2A$이므로 $X=3B-A$이다.\n$3B=\\begin{pmatrix} -3 & 6 \\\\ 6 & 9 \\end{pmatrix}$이므로 $X=\\begin{pmatrix} -3-2 & 6-3 \\\\ 6-1 & 9+2 \\end{pmatrix}=\\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$이다.\n[결론]\n$X=\\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$"
   },
   {
     "id": 19,
@@ -542,8 +542,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A$, $B$가 $A+B=\\begin{pmatrix} 5 & 0 \\\\ 1 & 3 \\end{pmatrix}$, $A-B=\\begin{pmatrix} -1 & 2 \\\\ -1 & 3 \\end{pmatrix}$을 만족시킬 때, 행렬 $A$, $B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A=\\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix},\\ B=\\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n두 식을 변끼리 더하고 빼서 $A$, $B$를 각각 구한다.\n[단계별 풀이]\n두 식을 더하면 $2A=\\begin{pmatrix} 4 & 2 \\\\ 0 & 6 \\end{pmatrix}$이므로 $A=\\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$이다.\n첫째 식에서 둘째 식을 빼면 $2B=\\begin{pmatrix} 6 & -2 \\\\ 2 & 0 \\end{pmatrix}$이므로 $B=\\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$이다.\n[결론]\n$A=\\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix},\\ B=\\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$"
   },
   {
     "id": 20,
@@ -570,8 +570,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+ax+b=0$의 두 실근을 $\\alpha$, $\\beta$라고 할 때, 등식 $\\alpha \\begin{pmatrix} \\alpha & 2 \\\\ 0 & \\beta \\end{pmatrix} + \\beta \\begin{pmatrix} \\beta & 2 \\\\ 0 & \\alpha \\end{pmatrix} = \\begin{pmatrix} 10 & 4 \\\\ 0 & 2\\alpha\\beta \\end{pmatrix}$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-2,\\ b=-3$",
+    "solution": "[풀이 전략]\n좌변을 성분별로 계산하여 $\\alpha+\\beta$와 $\\alpha\\beta$를 구한 뒤 근과 계수의 관계를 이용한다.\n[단계별 풀이]\n좌변 $=\\begin{pmatrix} \\alpha^2+\\beta^2 & 2\\alpha+2\\beta \\\\ 0 & \\alpha\\beta+\\beta\\alpha \\end{pmatrix}$이다.\n$(1,2)$ 성분: $2(\\alpha+\\beta)=4$이므로 $\\alpha+\\beta=2$이다.\n$(1,1)$ 성분: $\\alpha^2+\\beta^2=10$이다. $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=4-2\\alpha\\beta=10$이므로 $\\alpha\\beta=-3$이다.\n$(2,2)$ 성분: $2\\alpha\\beta=2\\alpha\\beta$로 항상 성립한다.\n근과 계수의 관계에서 $\\alpha+\\beta=-a=2$, $\\alpha\\beta=b=-3$이므로 $a=-2$, $b=-3$이다.\n(검산: $x^2-2x-3=(x-3)(x+1)$이므로 두 실근 $3,-1$이고 $9+1=10$이다.)\n[결론]\n$a=-2,\\ b=-3$"
   },
   {
     "id": 21,
@@ -598,8 +598,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차정사각행렬 $A$에 대하여 $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} -1 \\\\ 3 \\end{pmatrix}$, $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$가 성립할 때, $A\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n$\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}=2\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}-\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$로 나타내어 분배법칙을 이용한다.\n[단계별 풀이]\n$A\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}=2A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}-A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$이다.\n$=2\\begin{pmatrix} -1 \\\\ 3 \\end{pmatrix}-\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}=\\begin{pmatrix} -2-3 \\\\ 6+2 \\end{pmatrix}=\\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$이다.\n[결론]\n$\\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$"
   },
   {
     "id": 22,
@@ -626,8 +626,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -1 \\\\ 0 & 4 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 0 \\\\ 3 & 2 \\end{pmatrix}$에 대하여 행렬 $A^2-B^2$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n$A^2$, $B^2$을 각각 행렬의 곱으로 구한 뒤 뺀다.\n[단계별 풀이]\n$A^2=\\begin{pmatrix} 1\\cdot1+(-1)\\cdot0 & 1\\cdot(-1)+(-1)\\cdot4 \\\\ 0 & 0+16 \\end{pmatrix}=\\begin{pmatrix} 1 & -5 \\\\ 0 & 16 \\end{pmatrix}$이다.\n$B^2=\\begin{pmatrix} 1+0 & 0 \\\\ -3+6 & 0+4 \\end{pmatrix}=\\begin{pmatrix} 1 & 0 \\\\ 3 & 4 \\end{pmatrix}$이다.\n$A^2-B^2=\\begin{pmatrix} 0 & -5 \\\\ -3 & 12 \\end{pmatrix}$이다.\n모든 성분의 합은 $0-5-3+12=4$이다.\n[결론]\n$4$"
   },
   {
     "id": 23,
@@ -654,8 +654,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}$, $B=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$에 대하여 등식 $AB=O$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4,\\ b=-\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n$AB$를 성분별로 계산하여 영행렬 $O$와 비교한다.\n[단계별 풀이]\n$AB=\\begin{pmatrix} a-4 & -1-2b \\\\ 2a-8 & -2-4b \\end{pmatrix}$이다.\n$AB=O$이므로 $a-4=0$, $-1-2b=0$이다. 따라서 $a=4$, $b=-\\frac{1}{2}$이다.\n(검산: $2a-8=0$, $-2-4b=-2+2=0$으로 모든 성분이 $0$이다.)\n[결론]\n$a=4,\\ b=-\\frac{1}{2}$"
   },
   {
     "id": 24,
@@ -688,8 +688,8 @@ window.questionBank = [
       "$3^{29}$",
       "$3^{30}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n$A^2$, $A^3$을 구하여 $A^n$의 규칙을 찾는다.\n[단계별 풀이]\n$A^2=\\begin{pmatrix} 1 & -6 \\\\ 0 & 1 \\end{pmatrix}$, $A^3=A^2A=\\begin{pmatrix} 1 & -9 \\\\ 0 & 1 \\end{pmatrix}$이므로 $A^n=\\begin{pmatrix} 1 & -3n \\\\ 0 & 1 \\end{pmatrix}$으로 추측할 수 있다.\n$A^{n+1}=A^nA=\\begin{pmatrix} 1 & -3-3n \\\\ 0 & 1 \\end{pmatrix}$이므로 규칙이 성립한다.\n$A^{30}$의 $(1,2)$ 성분은 $-90$이고 $A^{31}$의 $(1,2)$ 성분은 $-93$이다.\n$A^{30}-A^{31}$의 $(1,2)$ 성분은 $-90-(-93)=3$이다.\n[결론]\n③ $3$"
   },
   {
     "id": 25,
@@ -722,8 +722,8 @@ window.questionBank = [
       "$AB=O$이면 $A=O$이거나 $B=O$이다.",
       "$A-B=O$이면 $B-A=O$이다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n각 보기를 정의와 반례로 확인한다.\n[단계별 풀이]\n① $kA$는 모든 성분에 $k$를 곱하므로 $kA=\\begin{pmatrix} ka_{11} & ka_{12} \\\\ ka_{21} & ka_{22} \\end{pmatrix}$이다. (거짓)\n② 행렬의 곱은 성분끼리의 곱이 아니라 (행)$\\times$(열)의 합이다. (거짓)\n③ 일반적으로 $AB\\ne BA$이다. (거짓)\n④ $A=\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$, $B=\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$이면 $AB=O$이지만 $A\\ne O$, $B\\ne O$이다. (거짓)\n⑤ $A-B=O$이면 $A=B$이므로 $B-A=O$이다. (참)\n[결론]\n⑤"
   },
   {
     "id": 26,
@@ -750,8 +750,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix}$에 대하여 $2A^5-4A^2+A$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n케일리-해밀턴 정리 대신 $A^2$을 직접 구하여 $A^2+A+E=O$를 확인하고 거듭제곱을 낮춘다.\n[단계별 풀이]\n$A^2=\\begin{pmatrix} 1-3 & 3-6 \\\\ -1+2 & -3+4 \\end{pmatrix}=\\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix}$이다.\n$A^2+A+E=\\begin{pmatrix} -2+1+1 & -3+3+0 \\\\ 1-1+0 & 1-2+1 \\end{pmatrix}=O$이므로 $A^2=-A-E$이다.\n$A^3=A\\cdot A^2=-A^2-A=(A+E)-A=E$이다. 따라서 $A^5=A^3A^2=A^2$이다.\n$2A^5-4A^2+A=-2A^2+A=2(A+E)+A=3A+2E$이다.\n$3A+2E=\\begin{pmatrix} 3+2 & 9 \\\\ -3 & -6+2 \\end{pmatrix}=\\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$이다.\n[결론]\n$\\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$"
   },
   {
     "id": 27,
@@ -784,7 +784,7 @@ window.questionBank = [
       "$d-b$",
       "$d-a$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n$PQ$의 각 성분이 무엇을 뜻하는지 곱의 구조로 해석한다. 제조 원가와 판매가를 판매량에 곱한 것이 총 원가와 총 판매액이다.\n[단계별 풀이]\n$P$의 $1$행은 제조 원가, $2$행은 판매가이고, $Q$의 $1$열은 상반기, $2$열은 하반기 판매량이다.\n$a$: 상반기 총 제조 원가, $b$: 하반기 총 제조 원가, $c$: 상반기 총 판매액, $d$: 하반기 총 판매액이다.\n하반기 판매 이익금의 합은 (하반기 총 판매액) $-$ (하반기 총 제조 원가) $=d-b$이다.\n[결론]\n④ $d-b$"
   }
 ];

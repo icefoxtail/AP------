@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 거듭제곱근 중에서 실수인 것을 구하시오.\n⑴ $-64$의 세제곱근\n⑵ $\\frac{1}{256}$의 네제곱근",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-4$  ⑵ $\\frac{1}{4}$, $-\\frac{1}{4}$",
+    "solution": "[풀이 전략]\n$n$이 홀수이면 실수 $a$의 $n$제곱근 중 실수인 것은 하나, $n$이 짝수이고 $a>0$이면 실수인 것은 $\\pm$ 두 개이다.\n[단계별 풀이]\n⑴ $-64$의 세제곱근 중 실수인 것은 $\\sqrt[3]{-64}=-4$이다. ($(-4)^3=-64$)\n⑵ $\\frac{1}{256}$의 네제곱근 중 실수인 것은 $\\pm\\sqrt[4]{\\frac{1}{256}}=\\pm\\frac{1}{4}$이다. ($\\left(\\frac{1}{4}\\right)^4=\\frac{1}{256}$)\n[결론]\n⑴ $-4$, ⑵ $\\frac{1}{4}$, $-\\frac{1}{4}$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $\\sqrt[5]{2}\\times\\sqrt[5]{16}$\n⑵ $\\frac{\\sqrt[3]{7^4}}{\\sqrt[3]{7}}$\n⑶ $(25^{0.25})^2$\n⑷ $\\sqrt[5]{3^{\\sqrt{2}}\\times\\sqrt[3]{27^{4\\sqrt{2}}}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2$  ⑵ $7$  ⑶ $5$  ⑷ $3^{\\sqrt{2}}$",
+    "solution": "[풀이 전략]\n거듭제곱근을 지수가 유리수인 거듭제곱으로 바꾸고 지수법칙을 이용한다.\n[단계별 풀이]\n⑴ $2^{\\frac{1}{5}}\\times2^{\\frac{4}{5}}=2^{\\frac{1}{5}+\\frac{4}{5}}=2$이다.\n⑵ $\\frac{7^{\\frac{4}{3}}}{7^{\\frac{1}{3}}}=7^{\\frac{4}{3}-\\frac{1}{3}}=7$이다.\n⑶ $(25^{0.25})^2=25^{0.5}=25^{\\frac{1}{2}}=5$이다.\n⑷ $\\sqrt[3]{27^{4\\sqrt{2}}}=(3^{3\\times4\\sqrt{2}})^{\\frac{1}{3}}=3^{4\\sqrt{2}}$이다. $3^{\\sqrt{2}}\\times3^{4\\sqrt{2}}=3^{5\\sqrt{2}}$이고 $\\sqrt[5]{3^{5\\sqrt{2}}}=3^{\\sqrt{2}}$이다.\n[결론]\n⑴ $2$, ⑵ $7$, ⑶ $5$, ⑷ $3^{\\sqrt{2}}$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식을 만족시키는 $x$의 값을 구하시오.\n⑴ $\\log_3 x = 3$\n⑵ $\\log_x \\frac{1}{25} = -2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $27$  ⑵ $5$",
+    "solution": "[풀이 전략]\n$\\log_ax=b\\iff x=a^b$ ($a>0$, $a\\ne1$, $x>0$)를 이용한다.\n[단계별 풀이]\n⑴ $x=3^3=27$이다.\n⑵ $x^{-2}=\\frac{1}{25}$이므로 $x^2=25$이다. 밑의 조건 $x>0$, $x\\ne1$에서 $x=5$이다.\n[결론]\n⑴ $27$, ⑵ $5$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $\\log_4 (\\log_2 16)$\n⑵ $\\log \\frac{100}{7} + 2\\log\\sqrt{7}$\n⑶ $\\log_{\\sqrt{5}} \\frac{1}{25}$\n⑷ $\\log_3 12 + \\log_3 9 - \\frac{1}{\\log_4 3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1$  ⑵ $2$  ⑶ $-4$  ⑷ $3$",
+    "solution": "[풀이 전략]\n로그의 성질 $\\log_ax+\\log_ay=\\log_axy$, $\\log_ax^n=n\\log_ax$, 밑 변환 공식 $\\frac{1}{\\log_ba}=\\log_ab$를 이용한다.\n[단계별 풀이]\n⑴ $\\log_216=4$이므로 $\\log_44=1$이다.\n⑵ $2\\log\\sqrt{7}=\\log7$이므로 $\\log\\frac{100}{7}+\\log7=\\log100=2$이다.\n⑶ $\\log_{\\sqrt{5}}\\frac{1}{25}=\\log_{5^{\\frac{1}{2}}}5^{-2}=\\frac{-2}{\\frac{1}{2}}=-4$이다.\n⑷ $\\frac{1}{\\log_43}=\\log_34$이므로 $\\log_312+\\log_39-\\log_34=\\log_3\\frac{12\\times9}{4}=\\log_327=3$이다.\n[결론]\n⑴ $1$, ⑵ $2$, ⑶ $-4$, ⑷ $3$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a>0$, $b>0$일 때, 다음 식을 간단히 하시오.\n⑴ $(a^2b)^{\\frac{2}{3}} \\times \\sqrt[3]{ab^{-2}}$\n⑵ $\\sqrt{\\sqrt{a}} \\div \\sqrt[4]{a^9}$\n⑶ $(a^{\\frac{3}{2}}-b^{\\frac{3}{2}})(a^{\\frac{3}{2}}+b^{\\frac{3}{2}})(a^3+b^3)$\n⑷ $(a+a^{-1}) \\div (a^{\\frac{1}{3}}+a^{-\\frac{1}{3}})$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a^{\\frac{5}{3}}$  ⑵ $a^{-2}$  ⑶ $a^6-b^6$  ⑷ $a^{\\frac{2}{3}}-1+a^{-\\frac{2}{3}}$",
+    "solution": "[풀이 전략]\n지수법칙으로 계산한다. ⑶은 곱셈 공식 $(A-B)(A+B)=A^2-B^2$을, ⑷는 세제곱의 합 인수분해 $X^3+Y^3=(X+Y)(X^2-XY+Y^2)$를 이용한다.\n[단계별 풀이]\n⑴ $a^{\\frac{4}{3}}b^{\\frac{2}{3}}\\times a^{\\frac{1}{3}}b^{-\\frac{2}{3}}=a^{\\frac{5}{3}}b^0=a^{\\frac{5}{3}}$이다.\n⑵ $\\sqrt{\\sqrt{a}}=a^{\\frac{1}{4}}$, $\\sqrt[4]{a^9}=a^{\\frac{9}{4}}$이므로 $a^{\\frac{1}{4}-\\frac{9}{4}}=a^{-2}$이다.\n⑶ $\\left(a^{\\frac{3}{2}}-b^{\\frac{3}{2}}\\right)\\left(a^{\\frac{3}{2}}+b^{\\frac{3}{2}}\\right)=a^3-b^3$이고 $(a^3-b^3)(a^3+b^3)=a^6-b^6$이다.\n⑷ $a+a^{-1}=\\left(a^{\\frac{1}{3}}\\right)^3+\\left(a^{-\\frac{1}{3}}\\right)^3=\\left(a^{\\frac{1}{3}}+a^{-\\frac{1}{3}}\\right)\\left(a^{\\frac{2}{3}}-1+a^{-\\frac{2}{3}}\\right)$이므로 몫은 $a^{\\frac{2}{3}}-1+a^{-\\frac{2}{3}}$이다.\n[결론]\n⑴ $a^{\\frac{5}{3}}$, ⑵ $a^{-2}$, ⑶ $a^6-b^6$, ⑷ $a^{\\frac{2}{3}}-1+a^{-\\frac{2}{3}}$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "부피가 $48\\pi$인 구의 반지름의 길이가 $\\sqrt[n]{6^m}$일 때, 서로소인 두 자연수 $m, n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$m=2,\\ n=3$",
+    "solution": "[풀이 전략]\n구의 부피 공식 $V=\\frac{4}{3}\\pi r^3$으로 반지름 $r$을 구하고 $\\sqrt[n]{6^m}=6^{\\frac{m}{n}}$ 꼴로 나타낸다.\n[단계별 풀이]\n$\\frac{4}{3}\\pi r^3=48\\pi$이므로 $r^3=36=6^2$이다.\n$r=6^{\\frac{2}{3}}=\\sqrt[3]{6^2}$이므로 $m=2$, $n=3$이다. ($2$와 $3$은 서로소)\n[결론]\n$m=2,\\ n=3$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a>1$일 때, 다음을 만족시키는 자연수 $k$의 값을 구하시오.\n$$\\sqrt{a\\times\\sqrt[3]{a^5}} = \\sqrt[3]{a\\times\\sqrt{a^k}}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n양변을 $a$의 거듭제곱 꼴로 바꾸고 지수를 비교한다.\n[단계별 풀이]\n좌변 $=\\left(a\\times a^{\\frac{5}{3}}\\right)^{\\frac{1}{2}}=a^{\\frac{8}{3}\\times\\frac{1}{2}}=a^{\\frac{4}{3}}$이다.\n우변 $=\\left(a\\times a^{\\frac{k}{2}}\\right)^{\\frac{1}{3}}=a^{\\frac{1}{3}\\left(1+\\frac{k}{2}\\right)}$이다.\n$a>1$이므로 지수가 같다. $\\frac{4}{3}=\\frac{1}{3}\\left(1+\\frac{k}{2}\\right)$에서 $1+\\frac{k}{2}=4$이므로 $k=6$이다.\n[결론]\n$6$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x>0$이고 $x^{\\frac{1}{2}}+x^{-\\frac{1}{2}}=3$일 때, 다음 식의 값을 구하시오.\n⑴ $x+\\frac{1}{x}$\n⑵ $x^{\\frac{3}{2}}+x^{-\\frac{3}{2}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $7$  ⑵ $18$",
+    "solution": "[풀이 전략]\n$x^{\\frac{1}{2}}+x^{-\\frac{1}{2}}=3$의 양변을 제곱, 세제곱하여 구한다. 곱셈 공식 $(p+q)^3=p^3+q^3+3pq(p+q)$를 이용한다.\n[단계별 풀이]\n⑴ 양변을 제곱하면 $x+2+x^{-1}=9$이므로 $x+\\frac{1}{x}=7$이다.\n⑵ $p=x^{\\frac{1}{2}}$, $q=x^{-\\frac{1}{2}}$라 하면 $pq=1$, $p+q=3$이다.\n$(p+q)^3=p^3+q^3+3pq(p+q)$에서 $27=x^{\\frac{3}{2}}+x^{-\\frac{3}{2}}+3\\times1\\times3$이다.\n$x^{\\frac{3}{2}}+x^{-\\frac{3}{2}}=27-9=18$이다.\n[결론]\n⑴ $7$, ⑵ $18$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$3^{2x}=4$일 때, $\\frac{3^{3x}+3^{-3x}}{3^x+3^{-x}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{13}{4}$",
+    "solution": "[풀이 전략]\n$3^x=t$라 하고 분자를 $a^3+b^3=(a+b)(a^2-ab+b^2)$으로 인수분해하여 약분한다.\n[단계별 풀이]\n$3^{2x}=4$이고 $3^x>0$이므로 $3^x=2$, $3^{-x}=\\frac{1}{2}$이다.\n$\\frac{3^{3x}+3^{-3x}}{3^x+3^{-x}}=\\frac{(3^x+3^{-x})(3^{2x}-1+3^{-2x})}{3^x+3^{-x}}=3^{2x}-1+3^{-2x}$이다.\n$=4-1+\\frac{1}{4}=\\frac{13}{4}$이다.\n[결론]\n$\\frac{13}{4}$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $\\log_2 3 + \\log_2 \\sqrt{2} - 2\\log_2 \\sqrt{6}$\n⑵ $\\frac{1}{\\log_2 3} + \\frac{1}{\\log_6 3} - \\frac{1}{\\log_4 3}$\n⑶ $\\log_2 3 \\times \\log_3 5 \\times \\log_5 32$\n⑷ $3^{\\log_3 5 \\times \\log_5 7}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-\\frac{1}{2}$  ⑵ $1$  ⑶ $5$  ⑷ $7$",
+    "solution": "[풀이 전략]\n로그의 성질과 밑 변환 공식을 이용한다.\n[단계별 풀이]\n⑴ $2\\log_2\\sqrt{6}=\\log_26$이고 $\\log_2\\sqrt{2}=\\frac{1}{2}$이다. $\\log_23+\\frac{1}{2}-\\log_26=\\frac{1}{2}+\\log_2\\frac{3}{6}=\\frac{1}{2}-1=-\\frac{1}{2}$이다.\n⑵ $\\frac{1}{\\log_23}=\\log_32$, $\\frac{1}{\\log_63}=\\log_36$, $\\frac{1}{\\log_43}=\\log_34$이다. $\\log_32+\\log_36-\\log_34=\\log_3\\frac{2\\times6}{4}=\\log_33=1$이다.\n⑶ $\\log_23\\times\\log_35\\times\\log_532=\\log_232=5$이다. (밑 변환 공식으로 소거된다.)\n⑷ $\\log_35\\times\\log_57=\\log_37$이므로 $3^{\\log_37}=7$이다.\n[결론]\n⑴ $-\\frac{1}{2}$, ⑵ $1$, ⑶ $5$, ⑷ $7$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 로그가 정의되기 위한 실수 $x$의 값의 범위를 구하시오.\n⑴ $\\log_3 (x^2-2x-3)$\n⑵ $\\log_{(x-1)} (4-x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x<-1$ 또는 $x>3$  ⑵ $1<x<2$ 또는 $2<x<4$",
+    "solution": "[풀이 전략]\n$\\log_ab$가 정의되려면 진수 $b>0$이고 밑 $a>0$, $a\\ne1$이어야 한다.\n[단계별 풀이]\n⑴ 진수 $x^2-2x-3>0$이므로 $(x+1)(x-3)>0$이다. $x<-1$ 또는 $x>3$이다.\n⑵ 밑 $x-1>0$, $x-1\\ne1$이므로 $x>1$, $x\\ne2$이다. 진수 $4-x>0$이므로 $x<4$이다.\n공통 범위는 $1<x<2$ 또는 $2<x<4$이다.\n[결론]\n⑴ $x<-1$ 또는 $x>3$, ⑵ $1<x<2$ 또는 $2<x<4$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_2 3=a$, $\\log_2 5=b$일 때, 다음을 $a, b$에 대한 식으로 나타내시오.\n⑴ $\\log_2 90$\n⑵ $\\log_5 \\frac{6}{5}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1+2a+b$  ⑵ $\\frac{1+a}{b}-1$",
+    "solution": "[풀이 전략]\n$90=2\\times3^2\\times5$로 소인수분해하여 로그의 성질을 이용한다. ⑵는 밑 변환 공식으로 밑을 $2$로 바꾼다.\n[단계별 풀이]\n⑴ $\\log_290=\\log_2(2\\times3^2\\times5)=1+2\\log_23+\\log_25=1+2a+b$이다.\n⑵ $\\log_5\\frac{6}{5}=\\log_56-1=\\frac{\\log_26}{\\log_25}-1=\\frac{\\log_22+\\log_23}{\\log_25}-1=\\frac{1+a}{b}-1$이다.\n[결론]\n⑴ $1+2a+b$, ⑵ $\\frac{1+a}{b}-1$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1$이 아닌 양수 $a, b$가 $\\log_3 a \\times \\log_b 27 = 1$을 만족시킬 때, $\\log_a b + \\log_b a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{10}{3}$",
+    "solution": "[풀이 전략]\n밑을 $3$으로 통일하여 $a$와 $b$의 관계를 구한다.\n[단계별 풀이]\n$\\log_b27=\\frac{\\log_327}{\\log_3b}=\\frac{3}{\\log_3b}$이다.\n$\\log_3a\\times\\frac{3}{\\log_3b}=1$이므로 $\\log_3b=3\\log_3a$이고 $\\log_ab=\\frac{\\log_3b}{\\log_3a}=3$이다.\n$\\log_ba=\\frac{1}{3}$이므로 $\\log_ab+\\log_ba=3+\\frac{1}{3}=\\frac{10}{3}$이다.\n[결론]\n$\\frac{10}{3}$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log 3.14 = 0.4969$임을 이용하여 다음 등식을 만족시키는 $M, N$의 값을 구하시오.\n⑴ $\\log 314 = M$\n⑵ $\\log N = 5.4969$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $M=2.4969$  ⑵ $N=314000$",
+    "solution": "[풀이 전략]\n상용로그의 성질 $\\log(10^n\\times a)=n+\\log a$를 이용한다.\n[단계별 풀이]\n⑴ $\\log314=\\log(3.14\\times10^2)=2+\\log3.14=2+0.4969=2.4969$이다.\n⑵ $\\log N=5.4969=5+0.4969=\\log10^5+\\log3.14=\\log(3.14\\times10^5)$이므로 $N=314000$이다.\n[결론]\n⑴ $M=2.4969$, ⑵ $N=314000$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 회사에서는 생산량을 전년도에 비해 $a\\,\\%$씩 해마다 늘리려는 계획을 내년부터 시행하려고 한다. 이 계획대로 진행될 때, $10$년 후의 생산량이 올해 생산량의 $4$배가 되도록 하는 실수 $a$의 값을 구하시오. (단, $\\log 2=0.30$, $\\log 1.15=0.06$으로 계산한다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=15$",
+    "solution": "[풀이 전략]\n매년 $a\\%$씩 늘면 $10$년 후는 올해의 $\\left(1+\\frac{a}{100}\\right)^{10}$배이다. 양변에 상용로그를 취한다.\n[단계별 풀이]\n$\\left(1+\\frac{a}{100}\\right)^{10}=4$이다.\n양변에 상용로그를 취하면 $10\\log\\left(1+\\frac{a}{100}\\right)=\\log4=2\\log2=0.60$이다.\n$\\log\\left(1+\\frac{a}{100}\\right)=0.06=\\log1.15$이므로 $1+\\frac{a}{100}=1.15$이다.\n$a=15$이다.\n[결론]\n$15$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{\\frac{n}{3}}$, $\\sqrt[3]{\\frac{n}{2}}$이 모두 자연수가 되도록 하는 자연수 $n$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$432$",
+    "solution": "[풀이 전략]\n$n$을 소인수분해하여 $\\frac{n}{3}$이 제곱수, $\\frac{n}{2}$가 세제곱수가 되는 소인수의 지수 조건을 구한다.\n[단계별 풀이]\n$n=2^p\\times3^q\\times\\cdots$라 하자. $\\frac{n}{3}$이 제곱수이려면 $2$의 지수 $p$는 짝수, $3$의 지수 $q-1$은 짝수(즉 $q$는 홀수)이어야 한다.\n$\\frac{n}{2}$가 세제곱수이려면 $p-1$이 $3$의 배수, $q$가 $3$의 배수이어야 한다.\n$p$는 짝수이고 $p\\equiv1\\pmod3$인 가장 작은 값은 $p=4$이다. $q$는 홀수이고 $3$의 배수인 가장 작은 값은 $q=3$이다.\n다른 소인수는 없어야 하므로 $n=2^4\\times3^3=16\\times27=432$이다.\n(검산: $\\frac{432}{3}=144=12^2$, $\\frac{432}{2}=216=6^3$)\n[결론]\n$432$"
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "음이 아닌 두 정수 $m, n$에 대하여\n$$\\frac{1}{2} \\log N = m\\log 2 + n\\log 3$$\n을 만족시키는 모든 자연수 $N$의 값의 합을 구하시오. (단, $1\\le N\\le 36$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$66$",
+    "solution": "[풀이 전략]\n양변을 로그의 성질로 정리하여 $N=4^m\\times9^n$ 꼴로 나타내고 $1\\le N\\le36$인 경우를 모두 찾는다.\n[단계별 풀이]\n$\\frac{1}{2}\\log N=\\log2^m+\\log3^n=\\log(2^m3^n)$이므로 $\\log\\sqrt{N}=\\log(2^m3^n)$이다.\n$\\sqrt{N}=2^m3^n$이므로 $N=4^m\\times9^n$이다.\n$m,n$은 음이 아닌 정수이고 $1\\le N\\le36$인 경우: $(m,n)=(0,0)$일 때 $1$, $(1,0)$일 때 $4$, $(2,0)$일 때 $16$, $(0,1)$일 때 $9$, $(1,1)$일 때 $36$이다. ($(3,0)$은 $64$, $(0,2)$는 $81$ 등으로 $36$을 넘는다.)\n모든 $N$의 합은 $1+4+16+9+36=66$이다.\n[결론]\n$66$"
   },
   {
     "id": 18,
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "사람의 기억은 시간이 흐르면서 점차 흐려진다. 망각의 법칙에 따르면 학습한 처음 기억 상태를 $P_0$, $t$개월 후의 기억 상태를 $P_t$라고 할 때,\n$$\\log P_0 - \\log P_t = c\\log(t+1)$$\n인 관계가 성립한다고 한다. 이때 $c$는 학습 내용에 따라 정해지는 상수이다. 어느 학습에 대하여 $7$개월 후의 기억 상태가 $1$개월 후의 기억 상태의 $\\frac{1}{2}$이라고 할 때, 이 학습에 대한 상수 $c$의 값을 구하시오.\n[참고 자료: Jaap M. J. Murre 외, “Power laws from individual differences in learning and forgetting: mathematical analyses”]",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$c=\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n관계식을 $P_t$에 대하여 정리하고 $t=1$, $t=7$을 대입하여 $c$를 구한다.\n[단계별 풀이]\n$\\log P_0-\\log P_t=c\\log(t+1)$에서 $\\log\\frac{P_0}{P_t}=\\log(t+1)^c$이므로 $P_t=\\frac{P_0}{(t+1)^c}$이다.\n$P_1=\\frac{P_0}{2^c}$, $P_7=\\frac{P_0}{8^c}$이다.\n$P_7=\\frac{1}{2}P_1$이므로 $\\frac{1}{8^c}=\\frac{1}{2}\\times\\frac{1}{2^c}=\\frac{1}{2^{c+1}}$이다.\n$2^{3c}=2^{c+1}$이므로 $3c=c+1$, $c=\\frac{1}{2}$이다.\n[결론]\n$\\frac{1}{2}$"
   }
 ];
