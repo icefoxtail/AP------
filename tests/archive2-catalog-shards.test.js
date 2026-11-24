@@ -47,6 +47,9 @@ test('two builds write the same bytes, and the written folder matches its index'
   const examMetaDir = path.join(dir, 'exam-meta');
   assert.equal(fs.existsSync(examMetaDir), Boolean(index.examMeta), 'the exam-meta folder is there exactly when the index announces it');
   if (index.examMeta) assert.equal(fs.readdirSync(examMetaDir).length, index.examMeta.count, 'every announced exam file is there and nothing else');
+  const svgAltDir = path.join(dir, 'svg-alt');
+  assert.equal(fs.existsSync(svgAltDir), Boolean(index.svgAlt), 'the svg-alt folder is there exactly when the index announces it');
+  if (index.svgAlt) assert.equal(fs.readdirSync(svgAltDir).length, index.svgAlt.count, 'every announced figure-name file is there and nothing else');
   assert.deepEqual(onDisk, [...index.shards.map((shard) => shard.path), index.common.path].sort(), 'every shard and the common file in the index exist and nothing else is there');
   for (const shard of index.shards) {
     const bytes = fs.readFileSync(path.join(dir, shard.path));
