@@ -1,0 +1,42 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "tangentPair",
+      "from": "P",
+      "touches": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "type": "tangent",
+      "from": "C",
+      "to": "E",
+      "touch": "D",
+      "onRays": [
+        "PA",
+        "PB"
+      ]
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "4"
+    },
+    {
+      "type": "label",
+      "target": "CE",
+      "text": "10"
+    },
+    {
+      "type": "label",
+      "target": "PC",
+      "text": "12"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 합성형 일차함수와 역함수의 넓이 문항이다."
+  },
+  "solution": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "domain": [
+            -1,
+            5
+          ],
+          "coefficients": [
+            "2",
+            "-1/2"
+          ]
+        }
+      ],
+      "overlays": {
+        "points": [
+          {
+            "id": "O",
+            "x": "0",
+            "y": "0",
+            "label": "O"
+          },
+          {
+            "id": "A",
+            "x": "4",
+            "y": "0",
+            "label": "A"
+          },
+          {
+            "id": "B",
+            "x": "0",
+            "y": "2",
+            "label": "B"
+          }
+        ],
+        "polygons": [
+          {
+            "id": "tri",
+            "points": [
+              "O",
+              "A",
+              "B"
+            ]
+          }
+        ]
+      },
+      "domain": [
+        -1,
+        5
+      ],
+      "viewport": [
+        -1,
+        5,
+        -1,
+        3
+      ]
+    },
+    "caption": "역함수 y=-x/2+2의 그래프와 x축, y축으로 둘러싸인 직각삼각형 OAB의 넓이가 4이다."
+  }
+}

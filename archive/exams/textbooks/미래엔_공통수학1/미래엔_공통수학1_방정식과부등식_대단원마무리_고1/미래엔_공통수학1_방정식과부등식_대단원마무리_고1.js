@@ -32,8 +32,8 @@ window.questionBank = [
       "$1$",
       "$2$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "좌변을 실수부분과 허수부분으로 나누어 정리하면\n$$(5+3i)x-(1-4i)y=(5x-y)+(3x+4y)i=-6+i$$\n$x,\\ y$가 실수이므로 실수부분과 허수부분이 각각 같다.\n$5x-y=-6\\qquad\\cdots\\ ①$\n$3x+4y=1\\qquad\\cdots\\ ②$\n①에서 $y=5x+6$을 ②에 대입하면 $3x+20x+24=1$이므로 $x=-1$, $y=1$\n따라서 $x+y=0$이므로 ③이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "복소수 $z=3-i$에 대하여 $\\left(\\dfrac{1}{z}-\\dfrac{1}{\\overline{z}}\\right)^2$의 값을 구하시오. (단, $\\overline{z}$는 $z$의 켤레복소수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{25}$",
+    "solution": "$z=3-i$이면 $\\overline{z}=3+i$이므로\n$$\\frac{1}{z}-\\frac{1}{\\overline{z}}=\\frac{\\overline{z}-z}{z\\overline{z}}=\\frac{(3+i)-(3-i)}{(3-i)(3+i)}=\\frac{2i}{10}=\\frac{i}{5}$$\n따라서\n$$\\left(\\frac{1}{z}-\\frac{1}{\\overline{z}}\\right)^2=\\left(\\frac{i}{5}\\right)^2=\\frac{i^2}{25}=-\\frac{1}{25}$$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "복소수 $z=(a^2-3a+2)+(a^2-2a)i$에 대하여 $z^2$이 음의 실수일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$z^2$이 음의 실수이려면 $z$가 순허수(실수부분이 $0$이고 허수부분이 $0$이 아닌 수)이어야 한다.\n실수부분: $a^2-3a+2=0$이므로 $(a-1)(a-2)=0$에서 $a=1$ 또는 $a=2$\n허수부분이 $0$이 아니어야 하므로 $a^2-2a\\ne 0$\n$a=1$이면 $a^2-2a=-1\\ne 0$이므로 가능하다.\n$a=2$이면 $a^2-2a=0$이므로 $z=0$이 되어 불가능하다.\n따라서 $a=1$이고, 이때 $z=-i$, $z^2=-1$이다."
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2+2(k-2)x+k^2-24=0$이 서로 다른 두 실근을 갖도록 하는 자연수 $k$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "서로 다른 두 실근을 가지려면 판별식 $D>0$이어야 한다.\n$$\\frac{D}{4}=(k-2)^2-(k^2-24)=k^2-4k+4-k^2+24=28-4k>0$$\n이므로 $k<7$\n자연수 $k$는 $1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6$이므로 $6$개이다."
   },
   {
     "id": 5,
@@ -150,8 +150,8 @@ window.questionBank = [
       "$-2$",
       "$-1$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=-2,\\ \\alpha\\beta=k$\n$$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=4-2k=12$$\n이므로 $k=-4$이다. 따라서 ④이다."
   },
   {
     "id": 6,
@@ -184,8 +184,8 @@ window.questionBank = [
       "$\\dfrac{5}{7}$",
       "$\\dfrac{7}{5}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "$ax^2+bx+c=0$의 두 근이 $1,\\ -\\frac{2}{7}$이므로 근과 계수의 관계에 의하여\n$$-\\frac{b}{a}=1-\\frac{2}{7}=\\frac{5}{7},\\qquad \\frac{c}{a}=-\\frac{2}{7}$$\n$cx^2+bx+a=0$의 두 근이 $\\alpha,\\ \\beta$이므로\n$$\\alpha+\\beta=-\\frac{b}{c},\\qquad \\alpha\\beta=\\frac{a}{c}$$\n따라서\n$$\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}=\\frac{-b/c}{a/c}=-\\frac{b}{a}=\\frac{5}{7}$$\n이므로 ④이다."
   },
   {
     "id": 7,
@@ -218,8 +218,8 @@ window.questionBank = [
       "$\\dfrac{1}{2}$",
       "$\\dfrac{5}{8}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "그래프와 직선이 만나려면 $-2x^2+5x=3x+k$, 즉 $2x^2-2x+k=0$이 실근을 가져야 하므로 판별식 $D\\ge 0$이다.\n$$\\frac{D}{4}=1-2k\\ge 0$$\n이므로 $k\\le\\frac{1}{2}$\n따라서 $k$의 최댓값은 $\\frac{1}{2}$이므로 ④이다."
   },
   {
     "id": 8,
@@ -246,8 +246,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $f(x)=x^2+ax+b$의 그래프가 직선 $x=2$에 대하여 대칭이다. $0\\le x\\le 3$에서 함수 $f(x)$의 최댓값이 $8$일 때, $a+b$의 값을 구하시오. (단, $a$와 $b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "그래프가 직선 $x=2$에 대하여 대칭이므로 꼭짓점의 $x$좌표가 $2$이고 $x^2$의 계수가 $1$이므로\n$$f(x)=(x-2)^2+c=x^2-4x+4+c$$\n로 놓을 수 있다. 따라서 $a=-4,\\ b=4+c$\n$0\\le x\\le 3$에서 꼭짓점 $x=2$에서 더 먼 $x=0$에서 최댓값을 가지므로 $f(0)=4+c=8$이다.\n따라서 $b=8$이고 $a+b=-4+8=4$\n(확인: $f(3)=1+c=5<8$)"
   },
   {
     "id": 9,
@@ -274,8 +274,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때,\n$$1+\\omega+\\omega^2+\\omega^3+\\cdots+\\omega^{102}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$x^3=1$에서 $(x-1)(x^2+x+1)=0$이므로 허근 $\\omega$는 $x^2+x+1=0$의 근이다.\n따라서 $\\omega^2+\\omega+1=0,\\ \\omega^3=1$\n$1+\\omega+\\omega^2+\\cdots+\\omega^{102}$는 $103$개의 항의 합이다. 앞의 $102$개 항($1,\\ \\omega,\\ \\cdots,\\ \\omega^{101}$)을 세 항씩 묶으면 $34$묶음이고 각 묶음은\n$$\\omega^{3k}(1+\\omega+\\omega^2)=0$$\n이다. 남은 항은 $\\omega^{102}=(\\omega^3)^{34}=1$이므로 합은 $1$이다."
   },
   {
     "id": 10,
@@ -302,8 +302,8 @@ window.questionBank = [
     "wide": false,
     "content": "사차방정식 $x^4+2x^2+81=0$의 네 근을 $x_1$, $x_2$, $x_3$, $x_4$라 할 때, $\\dfrac{1}{x_1}+\\dfrac{1}{x_2}+\\dfrac{1}{x_3}+\\dfrac{1}{x_4}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$x^4+2x^2+81=0$은 $x$에 대한 사차방정식으로 $x^3$의 계수와 $x$의 계수가 모두 $0$이다.\n근과 계수의 관계에 의하여 $x_1x_2x_3x_4=81$, 세 근의 곱의 합 $x_1x_2x_3+x_1x_2x_4+x_1x_3x_4+x_2x_3x_4=-(x\\text{의 계수})=0$\n$$\\frac{1}{x_1}+\\frac{1}{x_2}+\\frac{1}{x_3}+\\frac{1}{x_4}=\\frac{x_2x_3x_4+x_1x_3x_4+x_1x_2x_4+x_1x_2x_3}{x_1x_2x_3x_4}=\\frac{0}{81}=0$$"
   },
   {
     "id": 11,
@@ -330,8 +330,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 2x+y=1 \\\\ x^2-ky=-6 \\end{cases}$이 오직 한 쌍의 해를 갖도록 하는 양수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "$2x+y=1$에서 $y=1-2x$를 $x^2-ky=-6$에 대입하면\n$$x^2-k(1-2x)=-6$$\n$x^2+2kx-k+6=0$\n연립방정식이 오직 한 쌍의 해를 가지려면 이 이차방정식이 중근을 가져야 하므로 판별식이 $0$이다.\n$$\\frac{D}{4}=k^2-(-k+6)=k^2+k-6=(k+3)(k-2)=0$$\n$k=-3$ 또는 $k=2$이고 $k>0$이므로 $k=2$"
   },
   {
     "id": 12,
@@ -364,8 +364,8 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "$2(5-2x)\\le 3x-4<-2(x-8)$은 두 부등식의 연립이다.\n$2(5-2x)\\le 3x-4$에서 $10-4x\\le 3x-4$이므로 $14\\le 7x$, $x\\ge 2$\n$3x-4<-2(x-8)$에서 $3x-4<-2x+16$이므로 $5x<20$, $x<4$\n공통부분은 $2\\le x<4$이고 정수 $x$는 $2,\\ 3$의 $2$개이므로 ②이다."
   },
   {
     "id": 13,
@@ -398,8 +398,8 @@ window.questionBank = [
       "ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "$ax^2+bx+c\\ge 0$의 해가 $x=2$ 하나뿐이려면 $y=ax^2+bx+c$의 그래프가 위로 볼록하고 $x=2$에서 $x$축에 접해야 한다.\nㄱ. 그래프가 위로 볼록하므로 $a<0$이다. (참)\nㄴ. $x$축에 접하므로 판별식 $b^2-4ac=0$이다. (참)\nㄷ. $a(x-2)^2\\ge 0$ 꼴에서 $x=2$ 이외에는 $y<0$이므로 $f(1)=a+b+c<0$이다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이므로 ⑤이다."
   },
   {
     "id": 14,
@@ -426,8 +426,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $\\begin{cases} |x-1|\\le 3 \\\\ x^2-8x+15>0 \\end{cases}$의 해가 $a\\le x<b$일 때, $b-a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "$|x-1|\\le 3$에서 $-3\\le x-1\\le 3$이므로 $-2\\le x\\le 4$\n$x^2-8x+15>0$에서 $(x-3)(x-5)>0$이므로 $x<3$ 또는 $x>5$\n공통부분은 $-2\\le x<3$이므로 $a=-2,\\ b=3$\n따라서 $b-a=3-(-2)=5$"
   },
   {
     "id": 15,
@@ -454,8 +454,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$x^2-2(k-1)x+k^2-ak+b-3=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 실수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2,\\ b=4$",
+    "solution": "이차방정식이 중근을 가지려면 판별식이 $0$이어야 한다.\n$$\\frac{D}{4}=(k-1)^2-(k^2-ak+b-3)=k^2-2k+1-k^2+ak-b+3=(a-2)k+(4-b)$$\n이 값이 실수 $k$의 값에 관계없이 항상 $0$이므로 $k$에 대한 항등식이다.\n$k$의 계수: $a-2=0$이므로 $a=2$\n상수항: $4-b=0$이므로 $b=4$"
   },
   {
     "id": 16,
@@ -482,8 +482,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1\\le x\\le 3$일 때, 이차함수 $y=ax^2-8ax-b$의 최댓값이 $2$이고 최솟값이 $-6$이다. 실수 $a$와 $b$에 대하여 $b-a$의 값을 구하시오. (단, $a<0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$14$",
+    "solution": "$y=ax^2-8ax-b=a(x-4)^2-16a-b$이고 $a<0$이므로 그래프는 위로 볼록하고 꼭짓점의 $x$좌표는 $4$이다.\n$1\\le x\\le 3$에서는 $x$가 증가하면 $y$도 증가하므로\n$x=3$일 때 최댓값 $9a-24a-b=-15a-b=2\\qquad\\cdots\\ ①$\n$x=1$일 때 최솟값 $a-8a-b=-7a-b=-6\\qquad\\cdots\\ ②$\n①$-$②를 하면 $-8a=8$이므로 $a=-1$\n②에 대입하면 $7-b=-6$이므로 $b=13$\n따라서 $b-a=13-(-1)=14$"
   },
   {
     "id": 17,
@@ -510,7 +510,7 @@ window.questionBank = [
     "wide": false,
     "content": "계수가 실수인 삼차방정식 $x^3-ax^2+3x+2=0$의 세 근이 $1$, $\\alpha$, $\\beta$일 때, 다음에 답하시오.\n⑴ $a$의 값을 구하시오.\n⑵ $\\alpha^2+\\beta^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=6$\n⑵ $29$",
+    "solution": "⑴ 삼차방정식의 한 근이 $1$이므로 대입하면\n$$1-a+3+2=0$$\n이므로 $a=6$\n⑵ $a=6$이면 $x^3-6x^2+3x+2=0$이다. 조립제법으로 $x-1$로 나누면 몫이 $x^2-5x-2$이므로\n$$(x-1)(x^2-5x-2)=0$$\n$\\alpha,\\ \\beta$는 $x^2-5x-2=0$의 두 근이므로 근과 계수의 관계에서 $\\alpha+\\beta=5,\\ \\alpha\\beta=-2$\n$$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=25+4=29$$"
   }
 ];

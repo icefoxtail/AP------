@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          },
+          {
+            "id": "Q",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "toName": "B"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "3"
+          },
+          {
+            "id": "P",
+            "value": "3+sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "3-sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "caption": "모눈종이 위 수직선에 점 A를 중심으로 반지름이 선분 AB인 원을 그려, 수직선과 만나는 두 점 P, Q를 나타낸 그림이다.",
+  "newVisualInformation": [
+    "점 A는 수직선의 3에 있다.",
+    "점 B는 A에서 오른쪽으로 1칸, 위로 3칸 떨어진 모눈점이다.",
+    "A를 중심으로 한 원호가 수직선과 만나는 점은 P와 Q이다."
+  ],
+  "accessibilityDescription": "모눈종이 위 수직선에 점 A를 중심으로 반지름이 선분 AB인 원을 그려, 수직선과 만나는 두 점 P, Q를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 눈금의 길이가 $1$인 모눈종이 위의 수직선에서, 두 점 $A(3, 0)$, $B(4, 3)$을 잇는 선분 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그렸다. 점 $A$를 중심으로 반지름이 $\\overline{AB}$인 원을 그려 수직선과 만나는 두 점을 각각 $P$(오른쪽), $Q$(왼쪽)라 할 때, 다음 설명으로 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

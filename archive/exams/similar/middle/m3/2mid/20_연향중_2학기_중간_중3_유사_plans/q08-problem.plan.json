@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18471",
+              "denominator": "2000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "591",
+              "denominator": "50"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 52,
+        "label": "52",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBA",
+        "ownerSegment": "sBA",
+        "text": "15",
+        "unit": "m"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "x",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "건물 벽에 기대어 놓은 사다리를 옆에서 본 모습으로, 사다리와 지면이 이루는 각과 사다리의 길이가 표시된 그림이다.",
+  "accessibilityDescription": "지면과 건물 벽이 직각을 이루는 곳에 길이 15 m의 사다리가 비스듬히 놓여 있다. 사다리와 지면이 이루는 각은 52로 표시되어 있고, 벽을 따라 지면에서 사다리 꼭대기까지의 높이는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "사다리와 지면이 이루는 각 52와 사다리 길이 15 m, 그리고 구해야 할 벽 높이의 자리 x를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $15\\text{ m}$ 길이의 사다리를 건물 벽에 기대어 놓았더니 사다리와 지면이 이루는 각의 크기가 $52^\\circ$이었다. 지면으로부터 사다리 꼭대기까지의 높이 $\\overline{\\text{AC}}$의 길이를 구하면? (단, $\\sin 52^\\circ = 0.7880$, $\\cos 52^\\circ = 0.6157$, $\\tan 52^\\circ = 1.2799$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

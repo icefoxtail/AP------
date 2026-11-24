@@ -1,0 +1,44 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "A"
+    },
+    {
+      "type": "point",
+      "id": "D",
+      "on": "AB"
+    },
+    {
+      "type": "perpendicular",
+      "from": "D",
+      "to": "BC",
+      "foot": "E"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "8"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "15"
+    },
+    {
+      "type": "angle",
+      "at": "D",
+      "arms": [
+        "B",
+        "E"
+      ],
+      "text": "x"
+    }
+  ]
+}

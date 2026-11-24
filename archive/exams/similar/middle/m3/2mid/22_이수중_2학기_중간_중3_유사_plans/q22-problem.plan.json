@@ -1,0 +1,117 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "P",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "Q",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 4
+      }
+    },
+    {
+      "id": "R",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 7.464
+      }
+    },
+    {
+      "id": "S",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 0
+      }
+    },
+    {
+      "id": "T",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "PT",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "RS",
+      "op": "SEGMENT",
+      "inputs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "PQ",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "PR",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "PS",
+      "op": "SEGMENT",
+      "inputs": [
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "Q",
+        "ray1": "R",
+        "ray2": "P"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "P",
+        "ray1": "Q",
+        "ray2": "R",
+        "label": "30°"
+      },
+      {
+        "vertex": "P",
+        "ray1": "S",
+        "ray2": "Q",
+        "label": "45°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "T",
+        "to": "S",
+        "label": "12 m"
+      }
+    ]
+  },
+  "caption": "12m 떨어진 두 건물 사이에서 올려다본 각 30도와 내려다본 각 45도"
+}

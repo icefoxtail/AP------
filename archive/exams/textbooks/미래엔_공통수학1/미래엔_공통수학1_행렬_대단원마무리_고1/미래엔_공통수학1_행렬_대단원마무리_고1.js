@@ -31,8 +31,8 @@ window.questionBank = [
       "23",
       "24"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "$a_{ij}=2i-j+4$이므로 각 성분을 구하면\n$a_{11}=2-1+4=5$, $a_{12}=2-2+4=4$\n$a_{21}=4-1+4=7$, $a_{22}=4-2+4=6$\n따라서 $A=\\begin{pmatrix} 5 & 4 \\\\ 7 & 6 \\end{pmatrix}$이고 모든 성분의 합은\n$$5+4+7+6=22$$\n따라서 ③이다.",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -59,8 +59,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\begin{pmatrix} 2a-1 & 2 \\\\ -6 & 2b \\end{pmatrix} = \\begin{pmatrix} b+2 & 2 \\\\ -6 & 5a+2 \\end{pmatrix}$가 성립할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$-27$",
+    "solution": "두 행렬이 서로 같으므로 대응하는 성분이 각각 같다.\n$2a-1=b+2$에서 $b=2a-3\\qquad\\cdots\\ ①$\n$2b=5a+2\\qquad\\cdots\\ ②$\n①을 ②에 대입하면 $2(2a-3)=5a+2$, 즉 $4a-6=5a+2$이므로 $a=-8$\n①에서 $b=2\\times(-8)-3=-19$\n(확인: $2a-1=-17=b+2$, $2b=-38=5a+2$)\n따라서 $a+b=-8+(-19)=-27$",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -87,8 +87,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix}$과 $B=\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix}$에 대하여 $2(A-B)-\\dfrac{1}{2}(A+2B)$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$",
+    "solution": "먼저 식을 정리하면\n$$2(A-B)-\\frac{1}{2}(A+2B)=2A-2B-\\frac{1}{2}A-B=\\frac{3}{2}A-3B$$\n$\\frac{3}{2}A=\\frac{3}{2}\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix}=\\begin{pmatrix} -3 & 6 \\\\ 9 & 0 \\end{pmatrix}$\n$3B=3\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix}=\\begin{pmatrix} 3 & -15 \\\\ 6 & -12 \\end{pmatrix}$\n따라서\n$$\\frac{3}{2}A-3B=\\begin{pmatrix} -3-3 & 6-(-15) \\\\ 9-6 & 0-(-12) \\end{pmatrix}=\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -115,8 +115,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 4 & -1 \\end{pmatrix}$과 $B=\\begin{pmatrix} -3 & 1 \\\\ 1 & 2 \\end{pmatrix}$에 대하여\n$$kA+lB=\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$$\n를 만족시키는 실수 $k$와 $l$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$k=2,\\ l=-1$",
+    "solution": "$$kA+lB=\\begin{pmatrix} k-3l & 2k+l \\\\ 4k+l & -k+2l \\end{pmatrix}=\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$$\n두 행렬이 같으므로 대응하는 성분이 같다.\n$k-3l=5\\qquad\\cdots\\ ①$\n$2k+l=3\\qquad\\cdots\\ ②$\n$4k+l=7\\qquad\\cdots\\ ③$\n$-k+2l=-4\\qquad\\cdots\\ ④$\n③$-$②를 하면 $2k=4$이므로 $k=2$\n②에 대입하면 $4+l=3$이므로 $l=-1$\n(확인: ①에서 $2+3=5$, ④에서 $-2-2=-4$로 성립한다.)",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -143,8 +143,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$와 $B=\\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}$에 대하여 $AB=O$일 때, $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=-2,\\ b=1$",
+    "solution": "$AB$를 계산하면\n$$AB=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}\\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}=\\begin{pmatrix} 2a+4 & -a-2 \\\\ 4-4b & -2+2b \\end{pmatrix}$$\n$AB=O$이므로 모든 성분이 $0$이다.\n$2a+4=0$, $-a-2=0$에서 $a=-2$\n$4-4b=0$, $-2+2b=0$에서 $b=1$",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -205,8 +205,8 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "$AB$와 $BA$를 각각 계산하면\n$$AB=\\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix}\\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix}=\\begin{pmatrix} 3a & 4+3b \\\\ 8a & 5+8b \\end{pmatrix}$$\n$$BA=\\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix}\\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix}=\\begin{pmatrix} 5 & 8 \\\\ 4a+5b & 3a+8b \\end{pmatrix}$$\n$AB=BA$이므로 대응하는 성분이 같다.\n$3a=5$에서 $a=\\frac{5}{3}$\n$4+3b=8$에서 $b=\\frac{4}{3}$\n(확인: $8a=\\frac{40}{3}$, $4a+5b=\\frac{20}{3}+\\frac{20}{3}=\\frac{40}{3}$이고, $5+8b=3a+8b$에서 $3a=5$로 성립한다.)\n따라서 $a+b=\\frac{5}{3}+\\frac{4}{3}=3$이므로 ③이다.",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -233,8 +233,8 @@ window.questionBank = [
     "wide": false,
     "content": "성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에서 빵과 우유를 사려고 한다. [표 1]은 두 편의점의 빵과 우유의 가격을 나타낸 것이고, [표 2]는 성훈이와 미주가 사려고 하는 빵과 우유의 개수를 나타낸 것이다. 다음에 답하시오.\n<img src=\"q08.png\" />\n⑴ 성훈이와 미주가 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에 지불해야 할 금액을 행렬로 나타내시오.\n⑵ 성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$ 중 어디에서 사야 비용이 더 적게 드는지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑴ $\\begin{pmatrix} 13800 & 12000 \\\\ 14500 & 12000 \\end{pmatrix}$ (행: P, Q / 열: 성훈, 미주)\n⑵ 편의점 P",
+    "solution": "⑴ [표 1]을 행렬 $A=\\begin{pmatrix} 3000 & 1200 \\\\ 3500 & 1000 \\end{pmatrix}$ (행: P, Q / 열: 빵, 우유), [표 2]를 행렬 $B=\\begin{pmatrix} 3 & 2 \\\\ 4 & 5 \\end{pmatrix}$ (행: 빵, 우유 / 열: 성훈, 미주)이라 하면 지불해야 할 금액은 $AB$이다.\n$$AB=\\begin{pmatrix} 3000\\times 3+1200\\times 4 & 3000\\times 2+1200\\times 5 \\\\ 3500\\times 3+1000\\times 4 & 3500\\times 2+1000\\times 5 \\end{pmatrix}=\\begin{pmatrix} 13800 & 12000 \\\\ 14500 & 12000 \\end{pmatrix}$$\n첫째 행은 편의점 P, 둘째 행은 편의점 Q이고, 첫째 열은 성훈, 둘째 열은 미주의 금액이다.\n⑵ 두 사람이 함께 사는 경우 P는 $13800+12000=25800$(원), Q는 $14500+12000=26500$(원)이므로 편의점 P에서 사는 것이 비용이 더 적게 든다.\n(성훈은 P가 $13800$원으로 Q의 $14500$원보다 싸고, 미주는 두 편의점에서 $12000$원으로 같다.)",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -261,8 +261,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 행렬\n$$A=\\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix},\\quad B=\\begin{pmatrix} -b & 2 \\\\ -2 & 4 \\end{pmatrix},\\quad C=\\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}$$\n에 대하여 $A=2B+C$일 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$22$",
+    "solution": "$A=2B+C$에서\n$$2B+C=\\begin{pmatrix} -2b & 4 \\\\ -4 & 8 \\end{pmatrix}+\\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}=\\begin{pmatrix} -2b-8 & 1 \\\\ ab-4 & 1 \\end{pmatrix}$$\n이것이 $A=\\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix}$와 같으므로\n$2a=-2b-8$에서 $a+b=-4\\qquad\\cdots\\ ①$\n$ab-4=-7$에서 $ab=-3\\qquad\\cdots\\ ②$\n$$a^2+b^2=(a+b)^2-2ab=(-4)^2-2\\times(-3)=16+6=22$$",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   },
   {
@@ -289,8 +289,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$에 대하여 $A^n=\\begin{pmatrix} 1 & 30 \\\\ 0 & 1 \\end{pmatrix}$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$15$",
+    "solution": "$A^2=\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}$\n$A^3=A^2A=\\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 6 \\\\ 0 & 1 \\end{pmatrix}$\n규칙에 의하여 $A^n=\\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$이다.\n$2n=30$이므로 $n=15$",
     "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
   }
 ];

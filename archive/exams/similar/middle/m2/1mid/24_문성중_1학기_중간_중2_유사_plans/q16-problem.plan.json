@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "52"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "52"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "s41",
+      "refs": [
+        "p4",
+        "p1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          26,
+          6
+        ],
+        "text": "3x-2y+4-A=7x-5y-1",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 320
+  },
+  "caption": "어떤 식 A를 더해야 할 것을 잘못하여 뺀 계산의 결과가 상자 안에 적혀 있는 그림이다.",
+  "accessibilityDescription": "가로로 긴 직사각형 상자 하나가 있고, 그 안쪽 가운데에 3x 빼기 2y 더하기 4에서 A를 빼면 7x 빼기 5y 빼기 1이 된다는 식이 한 줄로 적혀 있다.",
+  "newVisualInformation": [
+    "잘못 계산한 결과가 7x-5y-1이라는 조건"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$3x-2y+4$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 $7x-5y-1$이 되었다. 바르게 계산한 답은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

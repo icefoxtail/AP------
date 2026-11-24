@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "36",
+        "unit": "cm"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "39",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 360
+  },
+  "caption": "계단 밑의 직각삼각형 모양 공간을 보여 준다. 높이는 15 cm, 밑변은 36 cm, 빗변은 39 cm이다.",
+  "accessibilityDescription": "직각삼각형 모양의 공간이 있고 세 변의 길이가 15 cm, 36 cm, 39 cm로 표시되어 있다. 직각 표시가 있다.",
+  "newVisualInformation": [
+    "계단 밑 공간을 나타내는 직각삼각형의 세 변 길이 15 cm, 36 cm, 39 cm가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "계단 밑에 높이가 $15\\text{ cm}$, 밑변의 길이가 $36\\text{ cm}$, 빗변의 길이가 $39\\text{ cm}$인 직각삼각형 모양의 공간이 있다. 다음 다섯 개의 공 중에서 이 계단 밑 공간에 들어가지 **않는** 공은? [5점]\n\n- 축구공: 반지름 $5\\text{ cm}$  \n- 배구공: 반지름 $6.5\\text{ cm}$  \n- 핸드볼공: 반지름 $4.5\\text{ cm}$  \n- 볼링공: 반지름 $6\\text{ cm}$  \n- 야구공: 반지름 $3.5\\text{ cm}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -42,12 +42,13 @@ export function indexAssignments(doc) {
 
 // 카탈로그 기록 하나에 지정표를 적용할지 정한다. 본문(발문·보기·그림) 지문이 판정 당시와 같을 때만 쓴다.
 // 반환: { key } 적용, { stale: true } 지문이 달라 무시, null 지정표에 없음/키가 정본이 아님.
-export function applyAssignment(assignment, record, toc) {
+export function applyAssignment(assignment, record, toc, { textBound = false } = {}) {
   if (!assignment) return null;
   const parent = toc.parent(assignment.parentKey);
   const gradeKey = toc.gradeKey(record.effectiveBrowseGrade || record.sourceGrade);
   if (!parent || !gradeKey || parent.gradeKey !== gradeKey) return null;
-  if (!record.assignmentFingerprint || assignment.assignmentFingerprint !== record.assignmentFingerprint) return { stale: true };
+  // textBound: 호출자가 재결속 기록으로 "지정표 지문이 가리키던 발문·보기가 지금과 같다"를 확인했다(지문의 그림·표기만 달라진 경우).
+  if (!record.assignmentFingerprint || (assignment.assignmentFingerprint !== record.assignmentFingerprint && !textBound)) return { stale: true };
   return { key: assignment.parentKey };
 }
 

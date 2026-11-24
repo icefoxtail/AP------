@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 3.6,
+      "height": 4.8
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "slant": "top",
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "slant": "bottom",
+      "label": "2"
+    }
+  ],
+  "section": {
+    "kind": "LEVEL",
+    "at": "1/3"
+  },
+  "caption": "원뿔을 밑면에 평행한 평면으로 잘라 위쪽의 작은 원뿔 A와 아래쪽의 원뿔대 B를 만들었고, 원뿔 A의 모선은 4 cm, 원뿔대 B의 모선은 2 cm이다.",
+  "accessibilityDescription": "원뿔이 밑면에 평행한 평면으로 잘려 있으며, 위쪽 작은 원뿔 A의 모선 4와 아래쪽 원뿔대 B의 모선 2가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 원뿔을 밑면에 평행한 평면으로 잘라 위쪽의 작은 원뿔 $A$와 아래쪽의 원뿔대 $B$를 만들었다. 원뿔 $A$의 모선의 길이가 $4\\text{ cm}$, 원뿔대 $B$의 모선의 길이가 $2\\text{ cm}$일 때, 다음 물음에 답하시오. [5점]\n\n(1) 원뿔 $A$와 원뿔대 $B$의 밑면의 넓이의 비를 풀이과정과 함께 구하시오. [2점]  \n(2) 원뿔대 $B$의 부피가 $38\\pi\\text{ cm}^3$일 때, 원뿔 $A$의 부피를 풀이과정과 함께 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원뿔을 밑면에 평행한 평면으로 잘라 만든 작은 원뿔 A의 모선은 4 cm, 원뿔대 B의 모선은 2 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "section",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑면에 평행한 절단면과 위쪽 원뿔 A의 모선 4, 아래쪽 원뿔대 B의 모선 2를 표시한다."
+  ]
+}

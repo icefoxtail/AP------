@@ -1,10 +1,690 @@
 {
-  "question": {
-    "status": "UNSUPPORTED",
-    "reason": "등산로 입구-폭포-정상 경로 도식은 SVG 엔진 지원 대상이 아니다."
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "55"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "42"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "42"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "54"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "54"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "47"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "47"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "47"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "47"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "solution": {
-    "status": "EXEMPT",
-    "reason": "합의 법칙과 곱의 법칙을 구분해 더하는 문항이다."
-  }
+  "displayPoints": [
+    "E",
+    "W",
+    "S",
+    "L1a",
+    "L1b",
+    "L2a",
+    "L2b",
+    "L3a",
+    "L3b",
+    "L4a",
+    "L4b",
+    "L5a",
+    "L5b",
+    "R1a",
+    "R1b",
+    "R2a",
+    "R2b",
+    "R3a",
+    "R3b",
+    "R4a",
+    "R4b"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sEL1a",
+      "refs": [
+        "E",
+        "L1a"
+      ]
+    },
+    {
+      "id": "sL1aL1b",
+      "refs": [
+        "L1a",
+        "L1b"
+      ]
+    },
+    {
+      "id": "sL1bW",
+      "refs": [
+        "L1b",
+        "W"
+      ]
+    },
+    {
+      "id": "sEL2a",
+      "refs": [
+        "E",
+        "L2a"
+      ]
+    },
+    {
+      "id": "sL2aL2b",
+      "refs": [
+        "L2a",
+        "L2b"
+      ]
+    },
+    {
+      "id": "sL2bW",
+      "refs": [
+        "L2b",
+        "W"
+      ]
+    },
+    {
+      "id": "sEL3a",
+      "refs": [
+        "E",
+        "L3a"
+      ]
+    },
+    {
+      "id": "sL3aL3b",
+      "refs": [
+        "L3a",
+        "L3b"
+      ]
+    },
+    {
+      "id": "sL3bW",
+      "refs": [
+        "L3b",
+        "W"
+      ]
+    },
+    {
+      "id": "sEL4a",
+      "refs": [
+        "E",
+        "L4a"
+      ]
+    },
+    {
+      "id": "sL4aL4b",
+      "refs": [
+        "L4a",
+        "L4b"
+      ]
+    },
+    {
+      "id": "sL4bW",
+      "refs": [
+        "L4b",
+        "W"
+      ]
+    },
+    {
+      "id": "sEL5a",
+      "refs": [
+        "E",
+        "L5a"
+      ]
+    },
+    {
+      "id": "sL5aL5b",
+      "refs": [
+        "L5a",
+        "L5b"
+      ]
+    },
+    {
+      "id": "sL5bW",
+      "refs": [
+        "L5b",
+        "W"
+      ]
+    },
+    {
+      "id": "sWR1a",
+      "refs": [
+        "W",
+        "R1a"
+      ]
+    },
+    {
+      "id": "sR1aR1b",
+      "refs": [
+        "R1a",
+        "R1b"
+      ]
+    },
+    {
+      "id": "sR1bS",
+      "refs": [
+        "R1b",
+        "S"
+      ]
+    },
+    {
+      "id": "sWR2a",
+      "refs": [
+        "W",
+        "R2a"
+      ]
+    },
+    {
+      "id": "sR2aR2b",
+      "refs": [
+        "R2a",
+        "R2b"
+      ]
+    },
+    {
+      "id": "sR2bS",
+      "refs": [
+        "R2b",
+        "S"
+      ]
+    },
+    {
+      "id": "sWR3a",
+      "refs": [
+        "W",
+        "R3a"
+      ]
+    },
+    {
+      "id": "sR3aR3b",
+      "refs": [
+        "R3a",
+        "R3b"
+      ]
+    },
+    {
+      "id": "sR3bS",
+      "refs": [
+        "R3b",
+        "S"
+      ]
+    },
+    {
+      "id": "sWR4a",
+      "refs": [
+        "W",
+        "R4a"
+      ]
+    },
+    {
+      "id": "sR4aR4b",
+      "refs": [
+        "R4a",
+        "R4b"
+      ]
+    },
+    {
+      "id": "sR4bS",
+      "refs": [
+        "R4b",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbE",
+        "ownerSegment": "sEL1a",
+        "text": "입구",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "lbW",
+        "ownerSegment": "sL3bW",
+        "text": "폭포",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "lbS",
+        "ownerSegment": "sR1bS",
+        "text": "정상",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "hiddenPointNames": [
+    "E",
+    "W",
+    "S",
+    "L1a",
+    "L1b",
+    "L2a",
+    "L2b",
+    "L3a",
+    "L3b",
+    "L4a",
+    "L4b",
+    "L5a",
+    "L5b",
+    "R1a",
+    "R1b",
+    "R2a",
+    "R2b",
+    "R3a",
+    "R3b",
+    "R4a",
+    "R4b"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "입구에서 폭포로 다섯 갈래의 등산로가, 폭포에서 정상으로 네 갈래의 등산로가 이어져 있는 모습을 보여 주는 그림이다.",
+  "accessibilityDescription": "아래쪽 입구에서 가운데 폭포까지 다섯 갈래의 길이 넓게 펼쳐져 이어져 있고, 폭포에서 위쪽 정상까지 네 갈래의 길이 넓게 펼쳐져 이어져 있다. 각 길은 서로 겹치지 않게 배치되어 있으며, 주요 지점에 각각 입구, 폭포, 정상이라는 글자가 표시되어 있다.",
+  "newVisualInformation": [
+    "입구에서 폭포로 가는 길은 5가지이고, 폭포에서 정상으로 가는 길은 4가지이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 등산로가 있다. 등산로 입구에서 폭포까지 가는 길은 $5$가지, 폭포에서 산의 정상까지 가는 길은 $4$가지일 때, 아래 조건의 $P + Q$의 값을 구하면? (단, 같은 지점은 두 번 지나지 않는다.) [3.7점]\n\n> 가. 등산로 입구에서 출발하여 폭포를 거쳐 산의 정상까지 가는 모든 방법의 수는 $P$이다. 나. 등산로 입구에서 폭포까지 또는 폭포에서 정상까지 가는 모든 방법의 수는 $Q$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      1
+    ],
+    "viewport": [
+      -4,
+      1,
+      -1,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "1",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Vt",
+          "x": "-2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Pt",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수의 그래프의 꼭짓점의 좌표가 (-2, 1)이고, 점 (0, 5)를 지나는 모습을 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선의 꼭짓점이 (-2, 1)에 있고, y축과 만나는 점이 (0, 5)에 표시되어 있다. 두 점의 좌표가 함께 보인다.",
+  "newVisualInformation": [
+    "꼭짓점의 좌표 (-2, 1)",
+    "점 (0, 5)를 지나는 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y=ax^2+bx+c$의 그래프의 꼭짓점의 좌표가 $(-2, 1)$이고 점 $(0, 5)$를 지날 때, 이 이차함수의 식은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 8
+      },
+      "height": 10,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 9,
+        "depth": 12
+      },
+      "height": 15,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b1"
+      ],
+      "label": "6"
+    },
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b3"
+      ],
+      "label": "x"
+    },
+    {
+      "edge": [
+        "s1#b0",
+        "s1#t0"
+      ],
+      "label": "10"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "9"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b3"
+      ],
+      "label": "12"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#t0"
+      ],
+      "label": "y"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 A / 오른쪽 B"
+  },
+  "caption": "서로 닮은 두 직육면체 A, B가 있고, A의 가로, 세로, 높이는 6 cm, x cm, 10 cm이며 B는 대응하는 순서대로 9 cm, 12 cm, y cm이다.",
+  "accessibilityDescription": "왼쪽 직육면체 A에는 6, x, 10이, 오른쪽 직육면체 B에는 9, 12, y가 표시되어 있다.",
+  "newVisualInformation": [
+    "직육면체 A의 세 모서리 6, x, 10",
+    "직육면체 B의 대응하는 세 모서리 9, 12, y",
+    "두 직육면체의 닮음 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 직육면체 $A$, $B$에서 가로, 세로, 높이의 길이가 $A$는 각각 $6\\text{ cm}$, $x\\text{ cm}$, $10\\text{ cm}$이고 $B$는 대응하는 순서대로 각각 $9\\text{ cm}$, $12\\text{ cm}$, $y\\text{ cm}$일 때, $x+y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

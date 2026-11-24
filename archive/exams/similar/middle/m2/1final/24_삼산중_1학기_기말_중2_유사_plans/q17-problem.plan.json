@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -4,
+      6
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "ax+y=5"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "bx-ay=4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 일차방정식 ax+y=5와 bx-ay=4의 그래프가 점 (2, 1)에서 만난다.",
+  "accessibilityDescription": "좌표평면에 두 직선이 한 점 (2, 1)에서 만나고, 두 직선 옆에 ax+y=5와 bx-ay=4가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직선과 교점 (2, 1)을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $ax+y=5$와 $bx-ay=4$의 그래프가 만나는 교점을 $(2, 1)$이라 하자. 이때, 두 수 $a$, $b$에 대하여 $a-b$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

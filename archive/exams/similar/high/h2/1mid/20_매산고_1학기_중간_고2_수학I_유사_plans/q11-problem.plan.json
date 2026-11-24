@@ -1,0 +1,57 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "3",
+      "0"
+    ],
+    "phasePi": "1",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "4/3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4.2
+    ],
+    "viewport": [
+      -0.4,
+      4.6,
+      -4,
+      4
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/3",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "3",
+        "-3"
+      ]
+    }
+  },
+  "caption": "최댓값 3과 최솟값 -3을 오가는 코사인 그래프가 0부터 4π/3까지 그려져 있고, 연속한 두 최댓값이 π/3과 π에서 나타난다.",
+  "accessibilityDescription": "위아래 높이가 3과 -3인 코사인 곡선이 그려져 있고, x축을 따라 π 간격의 눈금이 있다. 두 개의 최고점과 그 사이의 최저점이 보인다.",
+  "newVisualInformation": [
+    "최댓값 3과 최솟값 -3의 높이",
+    "π/3과 π에서의 연속한 두 최댓값",
+    "x축의 π 단위 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = a\\cos(bx + c)$ ($a > 0, b > 0, 0 < c \\le \\pi$)의 그래프는 최댓값이 $3$, 최솟값이 $-3$이고, 연속한 두 최댓값을 갖는 $x$의 값이 $\\frac{\\pi}{3}$, $\\pi$이며 $x = 0$에서 최솟값을 갖는다. 상수 $a, b, c$에 대하여 $abc$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

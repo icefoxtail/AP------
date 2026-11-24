@@ -1,0 +1,44 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A 3의 배수"
+      },
+      {
+        "id": "B",
+        "name": "B 4의 배수"
+      }
+    ],
+    "universe": {
+      "name": "U",
+      "count": "20",
+      "countUnit": "개"
+    }
+  },
+  "caption": "전체집합 U는 1부터 20까지의 자연수 20개로 이루어지고, 사건 A는 3의 배수, 사건 B는 4의 배수인 경우를 나타낸 벤다이어그램이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$부터 $20$까지의 자연수가 각각 하나씩 적힌 구슬 $20$개가 들어 있는 상자에서 구슬 한 개를 임의로 꺼낼 때, $3$의 배수 또는 $4$의 배수가 적힌 구슬이 나올 경우의 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "1부터 20까지의 자연수가 각각 하나씩 적힌 구슬 20개",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "구슬 1개를 임의로 꺼냄",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 20개",
+    "사건 A는 3의 배수",
+    "사건 B는 4의 배수"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": -4
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "0"
+      ],
+      "P": [
+        "0",
+        "-4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "위로 볼록한 포물선이 꼭짓점 (2, 0)에서 x축에 접하고 y축과 점 (0, -4)에서 만난다.",
+  "accessibilityDescription": "좌표축 위에 위로 볼록한 포물선이 그려져 있으며, x축에 접하는 꼭짓점 (2, 0)과 y축과의 교점 (0, -4)이 표시되어 있다.",
+  "newVisualInformation": [
+    "꼭짓점이자 x축 접점 (2, 0)",
+    "y축 교점 (0, -4)",
+    "위로 볼록한 포물선의 개형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그래프의 식이 $y=a(x+p)^2$일 때, $a-p$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC에서 각 B와 각 C가 같고, 각 A의 이등분선이 변 BC와 만나는 점을 D로 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC의 꼭짓점 A에서 변 BC로 선분 AD가 그어져 있고, 점 D는 변 BC 위에 있다. 각 B와 각 C에는 같은 각 표시가 있고, 점 A의 두 각에도 같은 각 표시가 있다.",
+  "newVisualInformation": [
+    "각 B와 각 C에 같은 각 표시가 있다.",
+    "각 A가 선분 AD에 의해 두 개의 같은 각으로 나뉘어 표시되어 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "143",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 50,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 40,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 두 내각의 크기가 같은 삼각형 $ABC$ ($\\angle B=\\angle C$)가 이등변삼각형임을 설명하는 과정이다. $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라 할 때, ㉠~㉤에 들어갈 것으로 알맞지 않은 것은? (정답 2개) [4점]\n\n$\\triangle ABD$와 $\\triangle ACD$에서 $\\angle B=\\angle C$, $\\angle BAD=$ (㉠), $\\angle ADB=180^\\circ-\\angle B-\\angle BAD=180^\\circ-\\angle C-\\angle CAD=$ (㉡)이다. 또한 (㉢)은 공통이므로 $\\triangle ABD \\equiv \\triangle ACD$ ((㉣) 합동)이다. 따라서 $\\overline{AB}=$ (㉤)이므로 $\\triangle ABC$는 이등변삼각형이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

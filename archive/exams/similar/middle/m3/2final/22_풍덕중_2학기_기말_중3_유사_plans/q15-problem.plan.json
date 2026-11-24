@@ -1,0 +1,86 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": true,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "자료 (가)",
+        "points": [
+          {
+            "id": "P1",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "P3",
+            "value": "9",
+            "hideName": true
+          },
+          {
+            "id": "P4",
+            "value": "12",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "자료 (나)",
+        "points": [
+          {
+            "id": "Q1",
+            "value": "9",
+            "hideName": true
+          },
+          {
+            "id": "Q2",
+            "value": "13",
+            "hideName": true
+          },
+          {
+            "id": "Q3",
+            "value": "17",
+            "hideName": true
+          },
+          {
+            "id": "Q4",
+            "value": "18",
+            "hideName": true
+          },
+          {
+            "id": "Q5",
+            "value": "25",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 집단의 자료를 수직선 위에 나타낸 그림이다. 자료 (가)는 4, 5, 9, 12와 값이 정해지지 않은 a로, 자료 (나)는 9, 13, 17, 18, 25와 a로 이루어져 있다.",
+  "accessibilityDescription": "수직선 위쪽 줄에는 4, 5, 9, 12가 차례로, 아래쪽 줄에는 9, 13, 17, 18, 25가 차례로 점으로 표시되어 있다. 각 줄에는 값이 정해지지 않은 자료 a가 하나씩 더 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집단의 자료에 대하여 다음 두 조건이 모두 성립할 때, 상수 $a$의 값의 범위는?\n\n$$\\begin{array}{l}\\text{(가) } 5\\text{개의 자료 } 4,\\ 5,\\ 9,\\ 12,\\ a\\text{의 중앙값은 } 9\\text{이다.}\\\\text{(나) } 6\\text{개의 자료 } 9,\\ 13,\\ 17,\\ 18,\\ 25,\\ a\\text{의 중앙값은 } 15\\text{이다.}\\end{array}$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "자료 (가) 4, 5, 9, 12, a의 중앙값은 9이고 자료 (나) 9, 13, 17, 18, 25, a의 중앙값은 15이다.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 집단의 자료값을 한눈에 비교할 수 있도록 수직선 위에 점으로 표시한다."
+  ]
+}

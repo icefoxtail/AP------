@@ -1,0 +1,62 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 무리함수와 직선의 제1사분면 교점 조건 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "9",
+            "-1"
+          ],
+          "amplitude": "1",
+          "sign": -1,
+          "offset": "4",
+          "domain": [
+            "-2",
+            "9"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "l1",
+            "slope": "-1",
+            "intercept": "1"
+          },
+          {
+            "id": "l2",
+            "slope": "-1",
+            "intercept": "13"
+          }
+        ],
+        "points": [
+          {
+            "id": "E",
+            "x": "9",
+            "y": "4",
+            "label": "(9,4)"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "0",
+          "9"
+        ],
+        "y": [
+          "1",
+          "4"
+        ]
+      }
+    },
+    "caption": "제1사분면 구간 0<x≤9에서 y=-x+k가 곡선과 만나려면 1<k≤13이어야 한다."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      10,
+      -1,
+      8
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ],
+        "color": "GREEN",
+        "label": "y=6"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "x+y-4=0"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "2/3"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "2x-3y+2=0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "-2",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "8",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s1",
+          "from": "P1",
+          "to": "P2"
+        },
+        {
+          "id": "s2",
+          "from": "P2",
+          "to": "P3"
+        },
+        {
+          "id": "s3",
+          "from": "P3",
+          "to": "P1"
+        }
+      ]
+    }
+  },
+  "caption": "점 (-2, 6)을 지나고 x축에 평행한 직선과 두 직선 x+y-4=0, 2x-3y+2=0이 만드는 삼각형을 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 세 직선이 그려져 있고, 가운데에 세 직선의 교점을 꼭짓점으로 하는 삼각형이 보인다.",
+  "newVisualInformation": [
+    "세 직선과 그 교점으로 이루어진 삼각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(-2, 6)$을 지나고 $x$축에 평행한 직선과 두 직선 $x+y-4=0$, $2x-3y+2=0$이 이루는 도형의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

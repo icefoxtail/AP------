@@ -1,0 +1,458 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "173205",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173205",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173205",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "W0",
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOV0",
+      "refs": [
+        "O",
+        "V0"
+      ]
+    },
+    {
+      "id": "sV0W0",
+      "refs": [
+        "V0",
+        "W0"
+      ]
+    },
+    {
+      "id": "sW0V1",
+      "refs": [
+        "W0",
+        "V1"
+      ]
+    },
+    {
+      "id": "sOV1",
+      "refs": [
+        "O",
+        "V1"
+      ]
+    },
+    {
+      "id": "sV1W1",
+      "refs": [
+        "V1",
+        "W1"
+      ]
+    },
+    {
+      "id": "sW1V2",
+      "refs": [
+        "W1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sOV2",
+      "refs": [
+        "O",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2W2",
+      "refs": [
+        "V2",
+        "W2"
+      ]
+    },
+    {
+      "id": "sW2V3",
+      "refs": [
+        "W2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sOV3",
+      "refs": [
+        "O",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3W3",
+      "refs": [
+        "V3",
+        "W3"
+      ]
+    },
+    {
+      "id": "sW3V4",
+      "refs": [
+        "W3",
+        "V4"
+      ]
+    },
+    {
+      "id": "sOV4",
+      "refs": [
+        "O",
+        "V4"
+      ]
+    },
+    {
+      "id": "sV4W4",
+      "refs": [
+        "V4",
+        "W4"
+      ]
+    },
+    {
+      "id": "sW4V5",
+      "refs": [
+        "W4",
+        "V5"
+      ]
+    },
+    {
+      "id": "sOV5",
+      "refs": [
+        "O",
+        "V5"
+      ]
+    },
+    {
+      "id": "sV5W5",
+      "refs": [
+        "V5",
+        "W5"
+      ]
+    },
+    {
+      "id": "sW5V0",
+      "refs": [
+        "W5",
+        "V0"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "W0",
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l10",
+        "ownerSegment": "sV2W2",
+        "text": "10",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "한 점을 중심으로 여섯 개의 합동인 마름모가 빈틈없이 둘러싸여 만들어진 도형이다. 마름모의 한 변의 길이는 10 cm로 표시되어 있다.",
+  "accessibilityDescription": "중심점에서 여섯 방향으로 같은 모양의 마름모가 이어져 있고, 바깥쪽 한 변에 10 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "마름모의 한 변의 길이 10 cm",
+    "여섯 개의 합동인 마름모가 한 점을 둘러싼 배치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 점을 중심으로 $6$개의 합동인 마름모가 빈틈없이 둘러싸여 이루어진 도형이 있다. 마름모의 한 변의 길이가 $10\\text{ cm}$일 때, 이 도형의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

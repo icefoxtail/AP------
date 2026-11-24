@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 거듭제곱근 중에서 실수인 것을 모두 구하시오.\n⑴ $-27$의 세제곱근\n⑵ $1$의 네제곱근",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-3$\n⑵ $1,\\ -1$",
+    "solution": "⑴ $-27$의 세제곱근은 $x^3=-27$의 근이다. $x^3+27=(x+3)(x^2-3x+9)=0$에서 실근은 $x=-3$뿐이다. (나머지 두 근은 허수) 따라서 실수인 것은 $-3$\n⑵ $1$의 네제곱근은 $x^4=1$의 근이다. $x^4-1=(x^2-1)(x^2+1)=0$에서 $x=\\pm 1$ 또는 $x=\\pm i$이므로 실수인 것은 $1,\\ -1$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\sqrt[4]{2} \\times \\sqrt[4]{8}$\n⑵ $\\frac{\\sqrt[3]{625}}{\\sqrt[3]{5}}$\n⑶ $(\\sqrt[6]{27})^2$\n⑷ $\\sqrt{\\sqrt[3]{729}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2$\n⑵ $5$\n⑶ $3$\n⑷ $3$",
+    "solution": "⑴ $\\sqrt[4]{2}\\times\\sqrt[4]{8}=\\sqrt[4]{2\\times 8}=\\sqrt[4]{16}=2$\n⑵ $\\frac{\\sqrt[3]{625}}{\\sqrt[3]{5}}=\\sqrt[3]{\\frac{625}{5}}=\\sqrt[3]{125}=5$\n⑶ $(\\sqrt[6]{27})^2=(27^{\\frac{1}{6}})^2=27^{\\frac{1}{3}}=\\sqrt[3]{27}=3$\n⑷ $729=3^6$이므로 $\\sqrt{\\sqrt[3]{729}}=\\sqrt[6]{3^6}=3$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $2^{\\frac{1}{5}} \\times 2^{0.3}$\n⑵ $5^{-\\frac{3}{2}} \\div 5^{-\\frac{5}{2}}$\n⑶ $(16^{\\sqrt{3}})^{\\frac{\\sqrt{3}}{6}}$\n⑷ $(2^{\\sqrt{3}} \\times 4)^{\\sqrt{3}-2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sqrt{2}$\n⑵ $5$\n⑶ $4$\n⑷ $\\frac{1}{2}$",
+    "solution": "⑴ $2^{\\frac{1}{5}}\\times 2^{0.3}=2^{\\frac{1}{5}+\\frac{3}{10}}=2^{\\frac{1}{2}}=\\sqrt{2}$\n⑵ $5^{-\\frac{3}{2}}\\div 5^{-\\frac{5}{2}}=5^{-\\frac{3}{2}+\\frac{5}{2}}=5^1=5$\n⑶ $(16^{\\sqrt{3}})^{\\frac{\\sqrt{3}}{6}}=16^{\\sqrt{3}\\times\\frac{\\sqrt{3}}{6}}=16^{\\frac{1}{2}}=4$\n⑷ $2^{\\sqrt{3}}\\times 4=2^{\\sqrt{3}}\\times 2^2=2^{\\sqrt{3}+2}$이므로\n$$(2^{\\sqrt{3}+2})^{\\sqrt{3}-2}=2^{(\\sqrt{3}+2)(\\sqrt{3}-2)}=2^{3-4}=2^{-1}=\\frac{1}{2}$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\log_{15} 3 + \\log_{15} 5$\n⑵ $\\log_3 54 - \\log_3 6$\n⑶ $\\log_{\\sqrt{5}} 5\\sqrt{5}$\n⑷ $\\log_6 3\\sqrt{2} - \\log_6 \\sqrt{3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1$\n⑵ $2$\n⑶ $3$\n⑷ $\\frac{1}{2}$",
+    "solution": "⑴ $\\log_{15}3+\\log_{15}5=\\log_{15}(3\\times 5)=\\log_{15}15=1$\n⑵ $\\log_3 54-\\log_3 6=\\log_3\\frac{54}{6}=\\log_3 9=2$\n⑶ $5\\sqrt{5}=5^{\\frac{3}{2}}$이고 $\\sqrt{5}=5^{\\frac{1}{2}}$이므로 $\\log_{\\sqrt{5}}5\\sqrt{5}=\\log_{5^{\\frac{1}{2}}}5^{\\frac{3}{2}}=\\frac{\\frac{3}{2}}{\\frac{1}{2}}=3$\n⑷ $\\log_6 3\\sqrt{2}-\\log_6\\sqrt{3}=\\log_6\\frac{3\\sqrt{2}}{\\sqrt{3}}=\\log_6\\sqrt{6}=\\frac{1}{2}$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "상용로그표를 이용하여 다음 값을 구하시오.\n⑴ $\\log 236$\n⑵ $\\log 0.236$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2.3729$\n⑵ $-0.6271$ (즉 $-1+0.3729$)",
+    "solution": "상용로그표에서 $\\log 2.36=0.3729$이다.\n⑴ $236=2.36\\times 10^2$이므로\n$$\\log 236=\\log 2.36+\\log 10^2=0.3729+2=2.3729$$\n⑵ $0.236=2.36\\times 10^{-1}$이므로\n$$\\log 0.236=0.3729-1=-0.6271$$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $\\sqrt[3]{189} + \\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}}$\n⑵ $\\sqrt[3]{48} - \\sqrt[4]{(-2)^4} \\times \\sqrt{\\sqrt[3]{36}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $4\\sqrt[3]{7}$\n⑵ $0$",
+    "solution": "⑴ $\\sqrt[3]{189}=\\sqrt[3]{27\\times 7}=3\\sqrt[3]{7}$, $\\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}}=\\sqrt[3]{7}$이므로\n$$3\\sqrt[3]{7}+\\sqrt[3]{7}=4\\sqrt[3]{7}$$\n⑵ $\\sqrt[3]{48}=\\sqrt[3]{8\\times 6}=2\\sqrt[3]{6}$\n$\\sqrt[4]{(-2)^4}=\\sqrt[4]{16}=2$\n$\\sqrt{\\sqrt[3]{36}}=\\sqrt[6]{36}=\\sqrt[6]{6^2}=\\sqrt[3]{6}$\n따라서 $2\\sqrt[3]{6}-2\\times\\sqrt[3]{6}=0$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{2} \\times \\sqrt[3]{2} \\times (\\sqrt[3]{2})^{-\\frac{9}{2}} = 2^k$을 만족시키는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2}{3}$",
+    "solution": "각 수를 $2$의 거듭제곱으로 나타내면\n$$\\sqrt{2}\\times\\sqrt[3]{2}\\times(\\sqrt[3]{2})^{-\\frac{9}{2}}=2^{\\frac{1}{2}}\\times 2^{\\frac{1}{3}}\\times\\left(2^{\\frac{1}{3}}\\right)^{-\\frac{9}{2}}=2^{\\frac{1}{2}+\\frac{1}{3}-\\frac{3}{2}}$$\n지수를 계산하면 $\\frac{1}{2}+\\frac{1}{3}-\\frac{3}{2}=\\frac{3+2-9}{6}=-\\frac{2}{3}$이므로 $k=-\\frac{2}{3}$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $x$에 대하여 $x^{\\frac{1}{2}} + x^{-\\frac{1}{2}} = 3$일 때, $x^2 + x^{-2}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$47$",
+    "solution": "$x^{\\frac{1}{2}}+x^{-\\frac{1}{2}}=3$의 양변을 제곱하면\n$$x+2+x^{-1}=9\\quad\\text{에서}\\quad x+x^{-1}=7$$\n다시 양변을 제곱하면\n$$x^2+2+x^{-2}=49\\quad\\text{에서}\\quad x^2+x^{-2}=47$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$에 대하여 $\\frac{2^a - 2^{-a}}{2^a + 2^{-a}} = \\frac{1}{2}$일 때, $4^a + 4^{-a}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{10}{3}$",
+    "solution": "$\\frac{2^a-2^{-a}}{2^a+2^{-a}}=\\frac{1}{2}$에서 $2(2^a-2^{-a})=2^a+2^{-a}$이므로 $2^a=3\\times 2^{-a}$\n양변에 $2^a$을 곱하면 $2^{2a}=3$, 즉 $4^a=3$\n따라서 $4^{-a}=\\frac{1}{3}$이고\n$$4^a+4^{-a}=3+\\frac{1}{3}=\\frac{10}{3}$$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_{x-1} (-x^2 + 6x - 5)$가 정의되도록 하는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "$\\log_{x-1}(-x^2+6x-5)$가 정의되려면 밑의 조건과 진수의 조건을 모두 만족해야 한다.\n밑의 조건: $x-1>0$이고 $x-1\\ne 1$이므로 $x>1,\\ x\\ne 2$\n진수의 조건: $-x^2+6x-5>0$에서 $x^2-6x+5<0$이므로 $(x-1)(x-5)<0$, 즉 $1<x<5$\n공통부분은 $1<x<5,\\ x\\ne 2$이므로 정수 $x$는 $3,\\ 4$이다. 따라서 $2$개이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n다음을 모두 만족시키는 두 양수 $a$와 $b$에 대하여 $a^2+b^2$의 값을 구하는 풀이 과정과 답을 쓰시오.\n㈎ $\\log_2 a + \\log_2 b = 1$\n㈏ $\\log_2 \\left(1 + \\frac{1}{a}\\right) + \\log_2 \\left(1 + \\frac{1}{b}\\right) = 3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$165$",
+    "solution": "(가)에서 $\\log_2 a+\\log_2 b=\\log_2 ab=1$이므로 $ab=2$\n(나)에서 $\\log_2\\left(1+\\frac{1}{a}\\right)+\\log_2\\left(1+\\frac{1}{b}\\right)=\\log_2\\left(1+\\frac{1}{a}\\right)\\left(1+\\frac{1}{b}\\right)=3$이므로\n$$\\left(1+\\frac{1}{a}\\right)\\left(1+\\frac{1}{b}\\right)=8$$\n전개하면 $1+\\frac{1}{a}+\\frac{1}{b}+\\frac{1}{ab}=1+\\frac{a+b}{ab}+\\frac{1}{ab}=8$\n$ab=2$를 대입하면 $1+\\frac{a+b}{2}+\\frac{1}{2}=8$이므로 $a+b=13$\n$$a^2+b^2=(a+b)^2-2ab=169-4=165$$\n(확인: $t^2-13t+2=0$은 서로 다른 두 양의 실근을 가지므로 $a,\\ b$가 존재한다.)"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\log_2 \\frac{2\\sqrt{3}}{9} + \\frac{1}{2}\\log_2 12 - \\log_2 \\frac{4}{3}$\n⑵ $\\log_2 9 \\times \\log_3 125 \\times \\log_5 1024$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $0$\n⑵ $60$",
+    "solution": "⑴ $\\frac{1}{2}\\log_2 12=\\log_2\\sqrt{12}=\\log_2 2\\sqrt{3}$이므로\n$$\\log_2\\frac{2\\sqrt{3}}{9}+\\log_2 2\\sqrt{3}-\\log_2\\frac{4}{3}=\\log_2\\left(\\frac{2\\sqrt{3}}{9}\\times 2\\sqrt{3}\\times\\frac{3}{4}\\right)=\\log_2\\left(\\frac{12}{9}\\times\\frac{3}{4}\\right)=\\log_2 1=0$$\n⑵ $\\log_2 9=2\\log_2 3$, $\\log_3 125=3\\log_3 5$, $\\log_5 1024=\\log_5 2^{10}=10\\log_5 2$이므로\n$$\\log_2 9\\times\\log_3 125\\times\\log_5 1024=60\\times\\log_2 3\\times\\log_3 5\\times\\log_5 2$$\n밑의 변환 공식에 의하여 $\\log_2 3\\times\\log_3 5\\times\\log_5 2=\\frac{\\log 3}{\\log 2}\\times\\frac{\\log 5}{\\log 3}\\times\\frac{\\log 2}{\\log 5}=1$이므로 값은 $60$이다."
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_5 2=a$이고 $\\log_5 3=b$일 때, 다음을 $a$와 $b$로 나타내시오.\n⑴ $\\log_5 36$\n⑵ $\\log_4 90$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2a+2b$\n⑵ $\\frac{a+2b+1}{2a}$",
+    "solution": "⑴ $\\log_5 36=\\log_5(2^2\\times 3^2)=2\\log_5 2+2\\log_5 3=2a+2b$\n⑵ 밑을 $5$로 바꾸면 $\\log_4 90=\\frac{\\log_5 90}{\\log_5 4}$\n$\\log_5 90=\\log_5(2\\times 3^2\\times 5)=\\log_5 2+2\\log_5 3+1=a+2b+1$\n$\\log_5 4=2\\log_5 2=2a$\n따라서 $\\log_4 90=\\frac{a+2b+1}{2a}$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 용액의 수소 이온 농도가 $[\\mathrm{H}^+]\\ \\mathrm{mol/L}$일 때, 용액의 산성도를 나타내는 $\\mathrm{pH}$는\n$$\\mathrm{pH} = \\log \\frac{1}{[\\mathrm{H}^+]}$$\n이라고 한다. 수소 이온 농도가 $10^{-3.5}\\ \\mathrm{mol/L}$인 음료의 $\\mathrm{pH}$는 수소 이온 농도가 $10^{-5.0}\\ \\mathrm{mol/L}$인 음료의 $\\mathrm{pH}$의 몇 배인지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0.7$배",
+    "solution": "$\\mathrm{pH}=\\log\\frac{1}{[\\mathrm{H}^+]}=-\\log[\\mathrm{H}^+]$이다.\n수소 이온 농도가 $10^{-3.5}\\ \\mathrm{mol/L}$일 때 $\\mathrm{pH}=-\\log 10^{-3.5}=3.5$\n수소 이온 농도가 $10^{-5.0}\\ \\mathrm{mol/L}$일 때 $\\mathrm{pH}=-\\log 10^{-5.0}=5$\n따라서 앞의 $\\mathrm{pH}$는 뒤의 $\\mathrm{pH}$의 $\\frac{3.5}{5}=0.7$배이다."
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 $x$의 세제곱근 중에서 실수인 것의 개수를 $f(x)$, $x$의 네제곱근 중에서 실수인 것의 개수를 $g(x)$라 하자.\n$|a| \\le 5$와 $|b| \\le 5$를 만족시키는 두 정수 $a$와 $b$에 대하여 $f(a)g(b)=2$를 만족시키는 순서쌍 $(a, b)$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$55$",
+    "solution": "$x$의 세제곱근 중 실수인 것은 $x$의 부호에 관계없이 항상 $1$개이므로 $f(x)=1$이다.\n$x$의 네제곱근 중 실수인 것의 개수는 $x>0$이면 $2$개, $x=0$이면 $1$개, $x<0$이면 $0$개이므로 $g(x)=2\\ (x>0),\\ 1\\ (x=0),\\ 0\\ (x<0)$\n$f(a)g(b)=g(b)=2$이어야 하므로 $b>0$이다.\n$|b|\\le 5$인 정수 $b$ 중 양수는 $1,\\ 2,\\ 3,\\ 4,\\ 5$의 $5$개이고, $f(a)=1$이므로 $a$는 $|a|\\le 5$인 정수 $-5,\\ \\cdots,\\ 5$의 $11$개 모두 가능하다.\n따라서 순서쌍의 개수는 $11\\times 5=55$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 양수 $a, b, c$에 대하여\n$$ab=bc+ca,\\quad 5^a=7^b=k^c$$\n이 성립할 때, 양수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$35$",
+    "solution": "$ab=bc+ca$의 양변을 $abc$로 나누면\n$$\\frac{1}{c}=\\frac{1}{a}+\\frac{1}{b}\\qquad\\cdots\\ ①$$\n$5^a=7^b=k^c=t$ ($t>1$)라 하고 각 변에 상용로그를 취하면 $a\\log 5=b\\log 7=c\\log k=\\log t$이다. 따라서\n$$\\frac{1}{a}=\\frac{\\log 5}{\\log t},\\quad \\frac{1}{b}=\\frac{\\log 7}{\\log t},\\quad \\frac{1}{c}=\\frac{\\log k}{\\log t}$$\n①에 대입하면 $\\log k=\\log 5+\\log 7=\\log 35$이므로 $k=35$"
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q17.png\" />\n오른쪽 그림과 같은 $5$개의 칸에 $5$개의 수 $\\log_a 2$, $\\log_a 4$, $\\log_a 8$, $\\log_a 32$, $\\log_a 128$을 한 칸에 $1$개씩 적는다. 가로로 나열된 $3$개의 칸에 적힌 세 수의 합과 세로로 나열된 $3$개의 칸에 적힌 세 수의 합이 $15$로 서로 같을 때, $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2^{\\frac{2}{3}}$ (즉 $\\sqrt[3]{4}$)",
+    "solution": "그림은 가로로 $3$칸, 가운데 칸 아래로 세로 $3$칸이 이어진 모양이고 가운데 윗칸이 가로와 세로에 모두 포함된다.\n$\\log_a 2=t$라 하면 다섯 수는 $\\log_a 2=t,\\ \\log_a 4=2t,\\ \\log_a 8=3t,\\ \\log_a 32=5t,\\ \\log_a 128=7t$이고 합은 $18t$이다.\n공통 칸에 적힌 수를 $kt$라 하면 가로의 합과 세로의 합이 각각 $15$이므로 두 합을 더하면 (공통 칸은 두 번 더해진다)\n$$30=18t+kt\\quad\\text{에서}\\quad t=\\frac{30}{18+k}$$\n가로에서 공통 칸을 뺀 두 수의 합 $=$ 세로에서 공통 칸을 뺀 두 수의 합이므로 공통 칸을 뺀 네 수를 합이 같은 두 쌍으로 나눌 수 있어야 한다. 네 수의 계수의 합 $18-k$가 짝수이어야 하고 각 쌍의 계수의 합은 $\\frac{18-k}{2}$이다.\n$k=1$: $\\{2,3,5,7\\}$의 합 $17$은 홀수이므로 불가능\n$k=2$: $\\{1,3,5,7\\}$의 합 $16$, 쌍의 합 $8$: $\\{1,7\\},\\ \\{3,5\\}$로 가능\n$k=3$: $\\{1,2,5,7\\}$의 합 $15$는 홀수이므로 불가능\n$k=5$: $\\{1,2,3,7\\}$의 합 $13$은 홀수이므로 불가능\n$k=7$: $\\{1,2,3,5\\}$의 합 $11$은 홀수이므로 불가능\n따라서 $k=2$이고 $t=\\frac{30}{20}=\\frac{3}{2}$이다. $\\log_a 2=\\frac{3}{2}$에서 $a^{\\frac{3}{2}}=2$이므로\n$$a=2^{\\frac{2}{3}}=\\sqrt[3]{4}$$\n(확인: 공통 칸 $\\log_a 4=3$, 가로의 나머지 $\\log_a 2+\\log_a 128=1.5+10.5=12$, 세로의 나머지 $\\log_a 8+\\log_a 32=4.5+7.5=12$이므로 합은 모두 $15$)"
   },
   {
     "id": 18,
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n$1$보다 큰 두 실수 $a$와 $b$에 대하여\n$$\\log_{\\sqrt{2}} a = \\log_4 ab$$\n가 성립할 때, $\\log_a b$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$\\log_{\\sqrt{2}}a=\\log_{2^{\\frac{1}{2}}}a=2\\log_2 a$\n$\\log_4 ab=\\frac{1}{2}\\log_2 ab=\\frac{1}{2}(\\log_2 a+\\log_2 b)$\n주어진 식에 대입하면\n$$2\\log_2 a=\\frac{1}{2}(\\log_2 a+\\log_2 b)$$\n양변에 $2$를 곱하면 $4\\log_2 a=\\log_2 a+\\log_2 b$이므로 $\\log_2 b=3\\log_2 a$\n$a>1$이므로 $\\log_2 a\\ne 0$이고\n$$\\log_a b=\\frac{\\log_2 b}{\\log_2 a}=3$$"
   }
 ];

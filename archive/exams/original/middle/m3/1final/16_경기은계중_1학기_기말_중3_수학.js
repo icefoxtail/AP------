@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $x(2x^2 - 3) = -4x^2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>각 식을 $ax^2+bx+c=0$ ($a\\ne0$) 꼴로 정리한다.<br>① $2x-3=0$은 일차방정식이다.<br>② $x^2-x=x^2+2$에서 $-x-2=0$이므로 일차방정식이다.<br>③ $-5x+7=x^2$에서 $x^2+5x-7=0$이므로 이차방정식이다.<br>④ 등식이 아니므로 방정식이 아니다.<br>⑤ $2x^3-3x=-4x^2$에서 $2x^3+4x^2-3x=0$이므로 삼차방정식이다.</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q1-solution.svg",
@@ -40,8 +40,8 @@ window.questionBank = [
       "⑤ -8"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>해가 $-4$, $2$이므로 $x^2+ax+b=(x+4)(x-2)$이다.<br>$(x+4)(x-2)=x^2+2x-8$이므로 $a=2$, $b=-8$이다.<br>$a-b=2-(-8)=10$</p>",
     "score": 4,
     "image": ""
   },
@@ -60,8 +60,8 @@ window.questionBank = [
       "⑤ -2"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$f(-1)=-(-1)^2+5\\times(-1)+2=-1-5+2=-4$<br>$f(0)=2$<br>$f(-1)+3f(0)=-4+3\\times2=2$</p>",
     "score": 4.2,
     "image": ""
   },
@@ -80,8 +80,8 @@ window.questionBank = [
       "⑤ $x = -\\frac{2}{3}$ 또는 $x = 2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$3x^2-4x-4=0$을 인수분해하면 $(3x+2)(x-2)=0$이다.<br>$x=-\\frac{2}{3}$ 또는 $x=2$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -100,8 +100,8 @@ window.questionBank = [
       "⑤ $\\frac{5}{4}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x^2-x-1+k=0$이 중근을 가지려면 판별식 $D=0$이어야 한다.<br>$D=(-1)^2-4\\times1\\times(k-1)=1-4k+4=5-4k=0$<br>$k=\\frac{5}{4}$</p>",
     "score": 4.4,
     "image": ""
   },
@@ -120,8 +120,8 @@ window.questionBank = [
       "⑤ 3"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>양변을 $3$으로 나누면 $x^2-3x-2=0$이다.<br>$x^2-3x=2$의 양변에 $\\left(\\frac{3}{2}\\right)^2=\\frac{9}{4}$를 더하면 $x^2-3x+\\frac{9}{4}=2+\\frac{9}{4}$이다.<br>$\\left(x-\\frac{3}{2}\\right)^2=\\frac{17}{4}$이므로 $a=-\\frac{3}{2}$, $b=\\frac{17}{4}$이다.<br>$a+b=-\\frac{6}{4}+\\frac{17}{4}=\\frac{11}{4}$</p>",
     "score": 4.4,
     "image": ""
   },
@@ -140,8 +140,8 @@ window.questionBank = [
       "⑤ 4"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$y=3(x-1)^2-5$는 $y=3x^2$을 $x$축 방향으로 $1$, $y$축 방향으로 $-5$만큼 평행이동한 것이므로 $n=1$, $m=-5$이다.<br>$n+m=1+(-5)=-4$</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q7-solution.svg",
@@ -164,8 +164,8 @@ window.questionBank = [
       "⑤ 10"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$3(x-5)^2=18$에서 $(x-5)^2=6$이다.<br>$x-5=\\pm\\sqrt{6}$이므로 $x=5\\pm\\sqrt{6}$이다.<br>$\\alpha+\\beta=(5+\\sqrt{6})+(5-\\sqrt{6})=10$</p>",
     "score": 4.2,
     "image": ""
   },
@@ -184,8 +184,8 @@ window.questionBank = [
       "⑤ 12"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>근의 공식으로 $3x^2-4x-a=0$의 해를 구한다.<br>$x=\\frac{4\\pm\\sqrt{16+12a}}{6}=\\frac{2\\pm\\sqrt{4+3a}}{3}$<br>$\\frac{b\\pm\\sqrt{13}}{3}$과 비교하면 $b=2$, $4+3a=13$이므로 $a=3$이다.<br>$ab=3\\times2=6$</p>",
     "score": 4.4,
     "image": ""
   },
@@ -206,8 +206,8 @@ window.questionBank = [
       "⑤ $y = -\\frac{4}{3}x^2$"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>빗금 친 부분은 $y=-x^2$의 그래프보다 위에 있고 $y=3x^2$의 그래프보다 아래에 있는 부분이다.<br>$y=ax^2$의 그래프가 이 부분에 있으려면 $-1<a<3$이어야 한다.<br>① $a=4$, ② $a=\\frac{2}{3}$, ③ $a=-\\frac{3}{2}$, ④ $a=-2$, ⑤ $a=-\\frac{4}{3}$ 중 $-1<a<3$인 것은 ②이다.</p>",
     "score": 4.2,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"
   },
@@ -226,8 +226,8 @@ window.questionBank = [
       "⑤ 이차함수 $y = -4(x - 2)^2 + 3$의 그래프와 $x$축에 서로 대칭이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=4(x-2)^2-3$의 꼭짓점은 $(2,-3)$이고 아래로 볼록하며 축은 $x=2$이다.<br>① 아래로 볼록하다. (옳다)<br>② 축은 $x=2$이다. (옳다)<br>③ 꼭짓점은 $(2,-3)$이다. (옳다)<br>④ 아래로 볼록하므로 $x<2$에서 $x$가 증가하면 $y$는 감소한다. (옳지 않다)<br>⑤ $y=-4(x-2)^2+3$은 $y$ 전체의 부호를 바꾼 식이므로 $x$축에 대하여 대칭이다. (옳다)</p>",
     "score": 4.4,
     "image": "",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q11-solution.svg",
@@ -252,8 +252,8 @@ window.questionBank = [
       "⑤ $y = \\frac{5}{2}x^2 + \\frac{4}{3}x - 4$"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>그래프가 $x$축과 $-6$, $2$에서 만나므로 $y=a(x+6)(x-2)$로 놓는다.<br>$y$절편이 $-4$이므로 $x=0$을 대입하면 $a\\times6\\times(-2)=-4$, $a=\\frac{1}{3}$이다.<br>$y=\\frac{1}{3}(x^2+4x-12)=\\frac{1}{3}x^2+\\frac{4}{3}x-4$</p>",
     "score": 4.6,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"
   },
@@ -269,8 +269,8 @@ window.questionBank = [
     "content": "13. &lt;보기&gt;는 일차함수 $y = ax + b$의 그래프를 나타낸 것이다. 이 때, 이차함수 $y = -bx^2 + a$의 그래프는? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><div class=\"exam-box\"><div class=\"exam-box-title\">&lt;보 기&gt;</div><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.\" style=\"display:block;width:min(100%,406px);height:auto;margin:0 auto;\"></div>",
     "choices": ["① <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-1-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","② <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-2-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","③ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-3-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 원점에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","④ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-4-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","⑤ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-5-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">"],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_1.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_2.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_3.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_4.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_5.png"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>일차함수 $y=ax+b$의 그래프가 오른쪽 위로 향하므로 $a>0$이고 $y$절편이 양수이므로 $b>0$이다.<br>$y=-bx^2+a$에서 $x^2$의 계수 $-b<0$이므로 위로 볼록하다.<br>꼭짓점은 $(0,a)$이고 $a>0$이므로 $y$축 위에서 원점보다 위에 있다.<br>위로 볼록하고 꼭짓점이 $y$축의 양의 부분에 있는 그래프는 ②이다.</p>",
     "score": 4.6,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"
   },
@@ -291,8 +291,8 @@ window.questionBank = [
       "⑤ $16.225\\mathrm{m}$"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$h=-4.9t^2+4.9t+15=-4.9\\left(t^2-t\\right)+15=-4.9\\left(t-\\frac{1}{2}\\right)^2+4.9\\times\\frac{1}{4}+15$<br>$=-4.9\\left(t-\\frac{1}{2}\\right)^2+1.225+15=-4.9\\left(t-\\frac{1}{2}\\right)^2+16.225$<br>$t=\\frac{1}{2}$일 때 최고 높이 $16.225\\,\\text{m}$이다.</p>",
     "score": 4.8,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"
   },
@@ -313,8 +313,8 @@ window.questionBank = [
       "⑤ 2초 후"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$t$초 후 가로는 $(4+2t)\\,\\text{cm}$, 세로는 $(6-t)\\,\\text{cm}$이다.<br>처음 넓이는 $4\\times6=24\\,(\\text{cm}^2)$이므로 $(4+2t)(6-t)=24$이다.<br>$24+8t-2t^2=24$이므로 $2t^2-8t=0$, $2t(t-4)=0$이다.<br>$t>0$이므로 $t=4$, 즉 $4$초 후이다.</p>",
     "score": 4.8,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-solution.svg",
@@ -339,8 +339,8 @@ window.questionBank = [
       "⑤ -5"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$y=x^2+x+a=0$의 두 근을 $\\alpha,\\beta$라 하면 $\\alpha+\\beta=-1$, $\\alpha\\beta=a$이다.<br>$\\overline{\\mathrm{AB}}=|\\alpha-\\beta|=7$이므로 $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=1-4a=49$이다.<br>$a=-12$이다.<br>$y=x^2+x-12=\\left(x+\\frac{1}{2}\\right)^2-\\frac{1}{4}-12=\\left(x+\\frac{1}{2}\\right)^2-\\frac{49}{4}$<br>최솟값은 $-\\frac{49}{4}$이다.</p>",
     "score": 5,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-solution.svg",
@@ -365,8 +365,8 @@ window.questionBank = [
       "⑤ (-3, 9)"
     ],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>점 $\\mathrm{B}$의 $x$좌표를 $t$ ($t>0$)라 하면 $\\mathrm{B}(t,t^2)$, $\\mathrm{A}(-t,t^2)$, $\\mathrm{C}\\left(t,-\\frac{2}{3}t^2\\right)$이다.<br>$\\overline{\\mathrm{AB}}=2t$, $\\overline{\\mathrm{BC}}=t^2+\\frac{2}{3}t^2=\\frac{5}{3}t^2$이다.<br>$\\overline{\\mathrm{AB}}:\\overline{\\mathrm{BC}}=2:1$이므로 $2t=2\\times\\frac{5}{3}t^2$, $t=\\frac{3}{5}$이다.<br>$\\mathrm{A}\\left(-\\frac{3}{5},\\ \\frac{9}{25}\\right)$</p>",
     "score": 5,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-solution.svg",
@@ -383,8 +383,8 @@ window.questionBank = [
     "content": "18. [서술형 1] 근의 공식을 이용하여 이차방정식 $2x^2 + 5x + 1 = 0$의 해를 구하시오. (풀이과정을 서술하시오.) [6.0점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$x=\\frac{-5\\pm\\sqrt{17}}{4}$",
+    "solution": "<p>$2x^2+5x+1=0$에서 $a=2$, $b=5$, $c=1$이다.<br>근의 공식 $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$에 대입한다.<br>$x=\\frac{-5\\pm\\sqrt{25-8}}{4}=\\frac{-5\\pm\\sqrt{17}}{4}$</p>",
     "score": 6,
     "image": ""
   },
@@ -397,8 +397,8 @@ window.questionBank = [
     "content": "19. [서술형 2] 이차함수 $y = ax^2$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동한 그래프가 점 $(2, 0)$을 지날 때, 상수 $a$의 값을 구하시오.<br>(풀이과정을 서술하시오.) [6.0점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=\\frac{1}{2}$",
+    "solution": "<p>$y=ax^2$을 $y$축 방향으로 $-2$만큼 평행이동하면 $y=ax^2-2$이다.<br>이 그래프가 점 $(2,0)$을 지나므로 $0=4a-2$이다.<br>$4a=2$이므로 $a=\\frac{1}{2}$이다.</p>",
     "score": 6,
     "image": ""
   },
@@ -411,8 +411,8 @@ window.questionBank = [
     "content": "20. [서술형 3] 이차함수 $y = -x^2 - 2mx + 3$의 최댓값이 $7$이고, 이 그래프의 꼭짓점이 제 1사분면 위에 있을 때, 상수 $m$의 값을 구하시오.<br>(풀이과정을 서술하시오.) [6.0점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$m=-2$",
+    "solution": "<p>$y=-x^2-2mx+3=-(x+m)^2+m^2+3$이므로 꼭짓점은 $(-m,\\ m^2+3)$이다.<br>최댓값이 $7$이므로 $m^2+3=7$, $m^2=4$, $m=\\pm2$이다.<br>꼭짓점이 제1사분면 위에 있으려면 $-m>0$, 즉 $m<0$이므로 $m=-2$이다.</p>",
     "score": 6,
     "image": ""
   },
@@ -427,8 +427,8 @@ window.questionBank = [
     "content": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [],
     "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "$2\\sqrt{10}$",
+    "solution": "<p>그래프의 꼭짓점이 $(2,0)$이므로 $y=a(x-2)^2$으로 놓는다.<br>$y$절편이 $4$이므로 $x=0$을 대입하면 $4a=4$, $a=1$이다. 따라서 $y=(x-2)^2$이다.<br>점 $(k,10)$을 지나므로 $(k-2)^2=10$이다.<br>$k-2=\\pm\\sqrt{10}$이므로 $k=2+\\sqrt{10}$ 또는 $k=2-\\sqrt{10}$이다.<br>두 $k$값의 차는 $(2+\\sqrt{10})-(2-\\sqrt{10})=2\\sqrt{10}$이다.</p>",
     "score": 7,
     "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg",
     "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-solution.svg",

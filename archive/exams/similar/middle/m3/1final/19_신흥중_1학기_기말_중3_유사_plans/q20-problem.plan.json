@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-240",
+          "16",
+          "-1/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "20",
+        "60"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "40",
+        "y": "80"
+      },
+      {
+        "id": "P",
+        "x": "30",
+        "y": "60"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "20",
+        "60"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "공이 점 O에서 20 cm, 60 cm 떨어진 지점에서 다시 튀어 오르고, 30 cm 떨어진 지점에서 높이가 60 cm인 포물선 궤적을 나타낸 그래프이다.",
+  "accessibilityDescription": "가로축이 거리(cm), 세로축이 높이(cm)인 좌표평면에 위로 볼록한 포물선이 그려져 있다. x축의 20과 60 지점에서 높이가 0이고 30 지점에서 높이가 60이며, 원점에 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "거리(cm) 축과 높이(cm) 축",
+    "x축 눈금 20, 60",
+    "점 (30, 60)",
+    "원점 O"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 아래 방향으로 던진 공이 포물선을 그리며 튀어 오르는 모양을 그래프로 나타낸 것이다. 공은 점 $\\mathrm{O}$로부터 각각 $20\\text{ cm}$, $60\\text{ cm}$ 떨어진 점에서 다시 튀어 올랐다. 공이 점 $\\mathrm{O}$로부터 $30\\text{ cm}$ 떨어졌을 때 공의 높이가 $60\\text{ cm}$이었다. 튀어 오른 공의 최고 높이를 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

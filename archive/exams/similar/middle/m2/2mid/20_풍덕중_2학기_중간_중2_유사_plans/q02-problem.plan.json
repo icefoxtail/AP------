@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1a",
+    "p1b",
+    "p2a",
+    "p2b",
+    "p3a",
+    "p3b",
+    "p4a",
+    "p4b"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1a",
+        "p1b"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p2a",
+        "p2b"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p3a",
+        "p3b"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p4a",
+        "p4b"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eq1",
+        "ownerSegment": "s1",
+        "text": "2x-y=3"
+      },
+      {
+        "id": "eq2",
+        "ownerSegment": "s2",
+        "text": "x+3y=-1"
+      },
+      {
+        "id": "eq3",
+        "ownerSegment": "s3",
+        "text": "-2x+y=-5"
+      },
+      {
+        "id": "eq4",
+        "ownerSegment": "s4",
+        "text": "3x-2=y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "p1a",
+    "p1b",
+    "p2a",
+    "p2b",
+    "p3a",
+    "p3b",
+    "p4a",
+    "p4b"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "네 학생이 말한 일차방정식을 네 자리에 나누어 나타낸 그림이다. 왼쪽 위, 오른쪽 위, 왼쪽 아래, 오른쪽 아래에 민서, 현우, 수아, 도윤이 말한 식이 차례로 놓여 있다.",
+  "accessibilityDescription": "왼쪽 위에 2x-y=3, 오른쪽 위에 x+3y=-1, 왼쪽 아래에 -2x+y=-5, 오른쪽 아래에 3x-2=y가 적혀 있다. 각 식 아래에 밑줄이 그어져 있다.",
+  "newVisualInformation": [
+    "민서, 현우, 수아, 도윤이 말한 네 개의 일차방정식이 각각 제시된다.",
+    "네 식이 2행 2열로 배치되어 서로 비교하기 쉽게 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 순서쌍 $(2, -1)$이 해가 되는 일차방정식을 말한 학생을 모두 찾으면? [4점]  \n- 민서: $2x - y = 3$  \n- 현우: $x + 3y = -1$  \n- 수아: $-2x + y = -5$  \n- 도윤: $3x - 2 = y$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

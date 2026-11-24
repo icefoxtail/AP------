@@ -1,0 +1,40 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "O",
+      "radius": 1,
+      "arcPoints": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "OD",
+      "foot": "B"
+    },
+    {
+      "type": "perpendicular",
+      "from": "C",
+      "to": "OD",
+      "foot": "D"
+    },
+    {
+      "type": "label",
+      "target": "OB",
+      "text": "0.77"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "x"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            1.5,
+            2
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "ABCDEF"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ]
+      },
+      "height": 10,
+      "names": "GHIJKL"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "from": "E",
+      "to": "F",
+      "label": "3"
+    },
+    {
+      "solid": "s2",
+      "from": "K",
+      "to": "L",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 작은 삼각기둥 / 오른쪽 큰 삼각기둥"
+  },
+  "caption": "닮음비가 1 대 2인 두 삼각기둥 ABC-DEF와 GHI-JKL에서 모서리 EF는 3 cm, 모서리 KL은 6 cm이고 작은 삼각기둥의 부피는 15 세제곱센티미터이다.",
+  "accessibilityDescription": "왼쪽 작은 삼각기둥에는 꼭짓점 A부터 F까지와 모서리 EF의 길이 3이, 오른쪽 큰 삼각기둥에는 꼭짓점 G부터 L까지와 모서리 KL의 길이 6이 표시되어 있다.",
+  "newVisualInformation": [
+    "작은 삼각기둥 ABC-DEF와 큰 삼각기둥 GHI-JKL",
+    "모서리 EF 3과 대응하는 모서리 KL 6",
+    "작은 삼각기둥의 부피 15 세제곱센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 삼각기둥 $ABC\\text{-}DEF$와 $GHI\\text{-}JKL$은 서로 닮은 도형이고, 모서리 $EF$에 대응하는 모서리가 $KL$이다. $\\overline{EF} = 3\\text{ cm}$, $\\overline{KL} = 6\\text{ cm}$이고 작은 삼각기둥의 부피가 $15\\text{ cm}^3$일 때, 큰 삼각기둥의 부피는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

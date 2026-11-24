@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "275"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-262"
+            },
+            {
+              "kind": "integer",
+              "value": "85"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-162"
+            },
+            {
+              "kind": "integer",
+              "value": "-223"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "162"
+            },
+            {
+              "kind": "integer",
+              "value": "-223"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "262"
+            },
+            {
+              "kind": "integer",
+              "value": "85"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5130",
+              "denominator": "83"
+            },
+            {
+              "kind": "integer",
+              "value": "85"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAP",
+        "ownerSegment": "sAP",
+        "text": "2"
+      },
+      {
+        "id": "tPC",
+        "ownerSegment": "sPC",
+        "text": "x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "caption": "정오각형의 다섯 꼭짓점과 두 대각선이 점 P에서 만나는 모습을 보여 준다. 한 대각선 위에서 점 P가 나눈 두 선분의 길이는 각각 2와 x로 표시되어 있다.",
+  "accessibilityDescription": "다섯 꼭짓점에 A, B, C, D, E가 적힌 정오각형이 있고, 두 대각선이 점 P에서 교차한다. 한 대각선 위의 두 선분 옆에 각각 2와 x가 적혀 있다.",
+  "newVisualInformation": [
+    "정오각형과 두 대각선의 교점 P",
+    "한 대각선 위 두 선분의 길이 2와 x 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주어진 정오각형 $\\text{ABCDE}$의 대각선 $\\text{AC}$와 $\\text{BE}$의 교점 $\\text{P}$에 대하여 선분 $\\text{AP}$와 $\\text{CP}$의 길이를 각각 $2$, $x$라고 할 때, $x$의 값으로 적절한 것은? [5점] (힌트: $\\triangle\\text{ABC} \\sim \\triangle\\text{APB}$ (AA 닮음), $\\overline{\\text{CP}}=\\overline{\\text{BC}}$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "CM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eM",
+        "count": 1,
+        "segments": [
+          "AM",
+          "MB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAM",
+        "ownerSegment": "AM",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCM",
+        "ownerSegment": "CM",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "caption": "원의 일부분인 호 AB와 현 AB, 현의 중점 M에서 호 위의 점 C까지 그은 수선 CM을 나타낸 그림이다. 선분 AM의 길이는 12, 선분 CM의 길이는 6으로 주어져 있다.",
+  "accessibilityDescription": "위로 볼록한 호 AB와 그 아래의 현 AB가 있고, 현의 중점 M에 같은 길이 표시가 두 개 있다. M에서 호 위의 점 C까지 수선이 그어져 있고 직각 표시가 있으며, AM 옆에 12, CM 옆에 6이 적혀 있다.",
+  "newVisualInformation": [
+    "호 AB와 현 AB",
+    "현의 중점 M의 같은 길이 표시",
+    "수선 CM과 직각 표시",
+    "길이 12와 6"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림에서 $\\stackrel{\\frown}{\\mathrm{AB}}$는 원의 일부분이다. 점 $\\mathrm{M}$은 $\\overline{\\mathrm{AB}}$의 중점이고 $\\overline{\\mathrm{CM}} \\perp \\overline{\\mathrm{AB}}$이다. $\\overline{\\mathrm{AM}} = 12$, $\\overline{\\mathrm{CM}} = 6$일 때, 이 원의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

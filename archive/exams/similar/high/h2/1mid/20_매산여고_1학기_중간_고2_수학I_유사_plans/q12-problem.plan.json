@@ -1,0 +1,68 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1/6",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      1,
+      18
+    ],
+    "viewport": [
+      -1,
+      18,
+      -3,
+      3
+    ],
+    "hideLabels": [
+      "formula",
+      "reference",
+      "boundary"
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "12",
+          "coordinates": false
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "로그함수 곡선이 가로축 위의 점 A(6, 0)과 점 B를 지난다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 증가하는 로그 곡선이 그려져 있고 점 A(6, 0)과 점 B가 곡선 위에 표시되어 있다.",
+  "newVisualInformation": [
+    "점 A의 좌표 (6, 0)이 표시된다",
+    "점 B는 y좌표가 1인 곡선 위에 표시된다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = \\log_2(ax)$의 그래프가 두 점 $(6, 0)$과 $(k, 1)$을 지날 때, 상수 $a$와 실수 $k$에 대하여 $12a + k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

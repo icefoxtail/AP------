@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cOuter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "33",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cInner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "L",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cOuter",
+    "cInner"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sOL",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "sRH",
+      "refs": [
+        "R",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOuter",
+        "ownerSegment": "sOR",
+        "text": "16.5",
+        "unit": "cm"
+      },
+      {
+        "id": "lInner",
+        "ownerSegment": "sOL",
+        "text": "13.5",
+        "unit": "cm"
+      },
+      {
+        "id": "lH",
+        "ownerSegment": "sRH",
+        "text": "10",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "O",
+    "R",
+    "L",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가운데가 뚫린 원기둥을 위에서 본 모양으로, 바깥 원의 반지름은 16.5 cm, 안쪽 원의 반지름은 13.5 cm이다. 오른쪽의 점선 선분은 원기둥의 높이 10 cm를 나타낸다.",
+  "accessibilityDescription": "두 개의 동심원이 있고, 중심에서 바깥 원과 안쪽 원까지 그은 두 반지름 및 오른쪽 세로 점선이 보인다. 반지름과 높이의 길이가 각각 16.5 cm, 13.5 cm, 10 cm로 적혀 있다.",
+  "newVisualInformation": [
+    "바깥 원의 반지름 16.5 cm",
+    "안쪽 원의 반지름 13.5 cm",
+    "높이 10 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 바깥쪽 원의 반지름의 길이가 $16.5\\text{ cm}$, 안쪽 원의 반지름의 길이가 $13.5\\text{ cm}$, 높이가 $10\\text{ cm}$인 가운데가 뚫린 원기둥 모양의 도형의 부피를 인수분해 공식을 이용하여 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

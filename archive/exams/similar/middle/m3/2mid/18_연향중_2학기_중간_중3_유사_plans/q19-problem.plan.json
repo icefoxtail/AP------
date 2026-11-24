@@ -1,0 +1,77 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 12,
+        "depth": 12
+      },
+      "height": 12,
+      "names": "G...CD.B",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "C",
+              "G"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO"
+    },
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "G",
+        "C"
+      ],
+      "label": "12"
+    }
+  ],
+  "caption": "한 모서리의 길이가 12인 정육면체에서 모서리 CG와 CD의 중점을 각각 M, N이라 하고 삼각형 BMN을 나타낸 그림",
+  "accessibilityDescription": "정육면체의 앞면 왼쪽 세로 모서리 위에 중점 M, 윗면 앞쪽 모서리 위에 중점 N이 있고, 꼭짓점 B에서 M과 N을 이은 삼각형이 보인다. 세로 모서리 옆에 12가 표시되어 있다.",
+  "newVisualInformation": [
+    "모서리 길이 12, 중점 M과 N, 삼각형 BMN"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $12,\\mathrm{cm}$인 정육면체에서 모서리 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점을 각각 $\\mathrm{M, N}$이라고 할 때, $\\triangle\\mathrm{BMN}$의 넓이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -2,
+      3,
+      -5,
+      3
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "x"
+        },
+        {
+          "id": "gQ",
+          "from": "Q",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 두 점 (-1, -4), (2, 2)를 지나는 직선 y=ax+b가 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 향하는 직선이 그려져 있고, 이 직선 위의 두 점의 좌표 (-1, -4)와 (2, 2)가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=ax+b",
+    "직선 위의 두 점 (-1, -4), (2, 2)",
+    "각 점에서 x축에 내린 안내선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 일차함수 $y=ax+b$의 그래프가 두 점 $(-1,-4)$, $(2,2)$를 지날 때, 두 수 $a,b$에 대하여 $\\dfrac{b}{a}$의 값은? (단, $a,b$는 상수이고 $a\\ne 0$) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

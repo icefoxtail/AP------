@@ -1,0 +1,75 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 3
+      },
+      "height": 5,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 9
+      },
+      "height": 15,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b1"
+      ],
+      "label": "2"
+    },
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b3"
+      ],
+      "label": "3"
+    },
+    {
+      "edge": [
+        "s1#b0",
+        "s1#t0"
+      ],
+      "label": "5"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 (가) / 오른쪽 (나)"
+  },
+  "caption": "왼쪽 사각기둥 (가)의 가로, 세로, 높이는 각각 2 cm, 3 cm, 5 cm이고, 오른쪽 사각기둥 (나)의 가로는 6 cm이다.",
+  "accessibilityDescription": "두 직육면체 모양의 사각기둥이 나란히 있고, 왼쪽 (가)에는 2, 3, 5가, 오른쪽 (나)에는 6이 표시되어 있다.",
+  "newVisualInformation": [
+    "사각기둥 (가)의 가로 2, 세로 3, 높이 5",
+    "사각기둥 (나)의 가로 6",
+    "두 사각기둥의 대응하는 모서리"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직육면체 모양의 사각기둥 (가)와 (나)는 서로 닮은 도형이다. (가)의 가로, 세로, 높이가 각각 $2\\text{ cm}, 3\\text{ cm}, 5\\text{ cm}$이고 (가)의 가로에 대응하는 (나)의 모서리의 길이가 $6\\text{ cm}$일 때, 다음 중 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

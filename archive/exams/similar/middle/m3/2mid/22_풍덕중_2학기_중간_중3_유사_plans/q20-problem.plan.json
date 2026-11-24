@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "54"
+            },
+            {
+              "kind": "rational",
+              "numerator": "311769",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "rational",
+              "numerator": "311769",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "311769",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "P1",
+    "P2",
+    "P3",
+    "W1",
+    "W2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sWater",
+      "refs": [
+        "W1",
+        "W2"
+      ]
+    },
+    {
+      "id": "sSight1",
+      "refs": [
+        "P1",
+        "B"
+      ]
+    },
+    {
+      "id": "sSight2",
+      "refs": [
+        "P2",
+        "B"
+      ]
+    },
+    {
+      "id": "sFlight",
+      "refs": [
+        "P1",
+        "P3"
+      ],
+      "dashed": true,
+      "arrow": "END"
+    },
+    {
+      "id": "sVert",
+      "refs": [
+        "P3",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "P2",
+          "P1",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "P3",
+          "P2",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lh",
+        "ownerSegment": "sVert",
+        "text": "h",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dPath",
+        "from": "P1",
+        "to": "P2",
+        "label": "72 km/h, 3분",
+        "labelKind": "TEXT",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "B",
+    "P1",
+    "P2",
+    "P3",
+    "W1",
+    "W2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "수면 위 같은 높이를 유지하며 배를 향해 수평으로 이동하는 헬기를 두 지점에서 관측한 장면으로, 배를 내려다본 각이 각각 30도와 60도이다.",
+  "accessibilityDescription": "수면을 나타내는 가로선과 그 위의 배 지점, 배의 위쪽으로 그은 수직선과 높이 h, 같은 높이의 두 관측 지점에서 배로 향한 두 직선, 두 관측 지점을 지나는 수평 점선, 30도와 60도의 각 표시, 이동 구간에 적힌 시속 72 km와 3분이 보인다.",
+  "newVisualInformation": [
+    "헬기의 두 관측 지점에서 배를 내려다본 각 30도와 60도",
+    "수면 위 같은 높이 h",
+    "이동 구간의 속력 72 km/h와 이동 시간 3분"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한밤중에 파도에 휩쓸려 좌초된 배를 구조하기 위하여 헬리콥터가 출동하였다. 헬리콥터가 좌초된 배에서 나오는 불빛을 처음 관측하였을 때, 배를 내려다본 각의 크기는 $30^\\circ$이었다. 불빛을 처음 관측한 후 수면으로부터 일정한 높이와 시속 $72\\text{ km}$를 유지하면서 불빛을 관측한 쪽으로 직선 경로를 따라가 $3$분 후 다시 불빛을 관측하였고, 이때 배를 내려다본 각의 크기가 $60^\\circ$이었다. 헬리콥터가 좌초된 지점의 상공에 도착하기 위해서는 두 번째로 불빛을 관측한 지점으로부터 몇 초 더 이동해야 하는지 구하면? (단, 배는 좌초된 지점에서 이동하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

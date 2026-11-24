@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "소 1마리의 가격을 x냥, 양 1마리의 가격을 y냥이라 할 때 주어진 두 조건을 두 줄의 식으로 나타낸 자료이다. 위 줄에는 소 4마리와 양 3마리의 가격, 아래 줄에는 소 3마리와 양 4마리의 가격이 적혀 있다.",
+  "accessibilityDescription": "흰 바탕에 가로로 놓인 두 개의 긴 선이 위아래로 나란히 있고, 위쪽 선의 가운데 위에는 4x+3y=12라는 식이, 아래쪽 선의 가운데 위에는 3x+4y=10이라는 식이 각각 적혀 있다. 두 식은 소와 양의 가격을 x와 y로 두었을 때의 합계 금액을 나타내며, 다른 도형이나 눈금은 없다.",
+  "newVisualInformation": [
+    "소 4마리와 양 3마리의 가격이 12냥임을 나타내는 식이 있다.",
+    "소 3마리와 양 4마리의 가격이 10냥임을 나타내는 식이 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "4x+3y=12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sCD",
+        "text": "3x+4y=10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중국의 옛 수학책 『구장산술(九章算術)』의 문제를 변형하여, 소 $4$마리와 양 $3$마리를 합친 가격이 $12$냥이고 소 $3$마리와 양 $4$마리를 합친 가격이 $10$냥이라 하자. 소 $1$마리와 양 $2$마리를 구입하여 지불한 금액을 $k$냥이라 할 때, $7k$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

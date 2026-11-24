@@ -32,8 +32,8 @@ window.questionBank = [
       "④ $\\lim_{x \\to -\\infty} (3-x)=-\\infty$",
       "⑤ $\\lim_{x \\to \\infty} \\frac{6}{x-3}=0$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "① $\\lim_{x\\to 1}(3x+5)=3+5=8$ (옳다.)\n② $\\lim_{x\\to-2}\\left(4-\\frac{2}{x+1}\\right)=4-\\frac{2}{-1}=6$ (옳다.)\n③ $x\\to\\infty$일 때 $x^2-10\\to\\infty$이므로 $\\lim_{x\\to\\infty}(x^2-10)=\\infty$ (옳다.)\n④ $x\\to-\\infty$일 때 $-x\\to\\infty$이므로 $3-x\\to\\infty$, 즉 $\\lim_{x\\to-\\infty}(3-x)=\\infty$이다. $-\\infty$가 아니므로 옳지 않다.\n⑤ $\\lim_{x\\to\\infty}\\frac{6}{x-3}=0$ (옳다.)\n따라서 옳지 않은 것은 ④이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같을 때, $\\lim_{x \\to 1+} f(x)+\\lim_{x \\to 2-} f(x)$의 값을 구하시오.\n<img src=\"q02.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "그림에서 $1<x<2$일 때 $f(x)=2$이다.\n$x\\to 1+$일 때 $f(x)\\to 2$이므로 $\\lim_{x\\to 1+}f(x)=2$\n$x\\to 2-$일 때 $f(x)\\to 2$이므로 $\\lim_{x\\to 2-}f(x)=2$ ($x=2$에서의 값은 $1$이지만 좌극한과는 관계가 없다.)\n따라서 $2+2=4$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 모든 양의 실수 $x$에 대하여\n$3-\\frac{5}{x} < f(x) < 3+\\frac{10}{x}$\n을 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} f(x)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$x>0$일 때 $3-\\frac{5}{x}<f(x)<3+\\frac{10}{x}$이다.\n$\\lim_{x\\to\\infty}\\left(3-\\frac{5}{x}\\right)=3$, $\\lim_{x\\to\\infty}\\left(3+\\frac{10}{x}\\right)=3$이므로 함수의 극한의 대소 관계에 의하여\n$$\\lim_{x\\to\\infty}f(x)=3$$"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$에 대하여 다음 보기 중 옳은 것을 고르시오. (단, $a$는 실수)\n[보기]\nㄱ. $\\lim_{x \\to a} f(x)$와 $\\lim_{x \\to a} g(x)$의 값이 존재하면 $\\lim_{x \\to a} \\frac{f(x)}{g(x)}$의 값도 존재한다.\nㄴ. $\\lim_{x \\to a} f(x)$와 $\\lim_{x \\to a} \\frac{g(x)}{f(x)}$의 값이 존재하면 $\\lim_{x \\to a} g(x)$의 값도 존재한다.\nㄷ. $\\lim_{x \\to a} f(x)$와 $\\lim_{x \\to a} f(x)g(x)$의 값이 존재하면 $\\lim_{x \\to a} g(x)$의 값도 존재한다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄴ",
+    "solution": "ㄱ. $\\lim f(x)$와 $\\lim g(x)$가 존재해도 $\\lim g(x)=0$이면 $\\lim\\frac{f(x)}{g(x)}$는 존재하지 않을 수 있다. 예를 들어 $a=0,\\ f(x)=1,\\ g(x)=x$이면 $\\lim_{x\\to 0}\\frac{1}{x}$는 존재하지 않는다. (거짓)\nㄴ. $g(x)=\\frac{g(x)}{f(x)}\\times f(x)$이고 $\\lim f(x)$와 $\\lim\\frac{g(x)}{f(x)}$가 모두 존재하므로 두 극한값의 곱으로 $\\lim g(x)$도 존재한다. (참)\nㄷ. $a=0,\\ f(x)=x,\\ g(x)=\\frac{1}{x}$이면 $\\lim f(x)=0$, $\\lim f(x)g(x)=\\lim 1=1$로 존재하지만 $\\lim_{x\\to 0}\\frac{1}{x}$는 존재하지 않는다. (거짓)\n따라서 옳은 것은 ㄴ이다."
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$에 대하여 $\\lim_{x \\to 4} f(x)=3$일 때, 극한값 $\\lim_{x \\to 4} \\frac{(x-4)f(x)}{\\sqrt{x}-2}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "$x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$이므로\n$$\\lim_{x\\to 4}\\frac{(x-4)f(x)}{\\sqrt{x}-2}=\\lim_{x\\to 4}(\\sqrt{x}+2)f(x)=(2+2)\\times 3=12$$"
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "극한값 $\\lim_{x \\to -\\infty} (\\sqrt{4x^2-2x}+2x)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "$x\\to-\\infty$일 때 $\\sqrt{4x^2-2x}+2x$는 $\\infty-\\infty$ 꼴이므로 유리화한다.\n$$\\sqrt{4x^2-2x}+2x=\\frac{(4x^2-2x)-4x^2}{\\sqrt{4x^2-2x}-2x}=\\frac{-2x}{\\sqrt{4x^2-2x}-2x}$$\n$x<0$이므로 $\\sqrt{4x^2-2x}=\\sqrt{x^2\\left(4-\\frac{2}{x}\\right)}=-x\\sqrt{4-\\frac{2}{x}}$이다. 분모, 분자를 $-x$ ($>0$)로 나누면\n$$\\frac{-2x}{-x\\sqrt{4-\\frac{2}{x}}-2x}=\\frac{2}{\\sqrt{4-\\frac{2}{x}}+2}$$\n이고 $x\\to-\\infty$에서 $\\frac{2}{x}\\to 0$이므로\n$$\\lim_{x\\to-\\infty}\\frac{2}{\\sqrt{4-\\frac{2}{x}}+2}=\\frac{2}{2+2}=\\frac{1}{2}$$\n(확인: $x=-s$ ($s\\to\\infty$)로 놓으면 $\\sqrt{4s^2+2s}-2s=\\frac{2s}{\\sqrt{4s^2+2s}+2s}\\to\\frac{2s}{4s}=\\frac{1}{2}$)"
   },
   {
     "id": 7,
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가\n$\\lim_{x \\to 0} \\frac{f(x)}{x^2}=2, \\lim_{x \\to 0} \\frac{g(x)}{x}=-3$\n을 만족시킬 때, 극한값 $\\lim_{x \\to 0} \\frac{f(x)-x}{g(x)+x}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "$\\lim_{x\\to 0}\\frac{f(x)}{x^2}=2$이므로 $\\lim_{x\\to 0}\\frac{f(x)}{x}=\\lim_{x\\to 0}\\left\\{\\frac{f(x)}{x^2}\\times x\\right\\}=2\\times 0=0$이다.\n분모, 분자를 $x$로 나누면\n$$\\lim_{x\\to 0}\\frac{f(x)-x}{g(x)+x}=\\lim_{x\\to 0}\\frac{\\frac{f(x)}{x}-1}{\\frac{g(x)}{x}+1}=\\frac{0-1}{-3+1}=\\frac{1}{2}$$"
   },
   {
     "id": 8,
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to 2} \\frac{\\sqrt{x-a}+b}{x-2}=\\frac{1}{4}$일 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-2,\\ b=-2$",
+    "solution": "$x\\to 2$일 때 (분모)$\\to 0$이고 극한값이 존재하므로 (분자)$\\to 0$이어야 한다.\n$\\sqrt{2-a}+b=0$에서 $b=-\\sqrt{2-a}$이다.\n분자를 유리화하면\n$$\\frac{\\sqrt{x-a}-\\sqrt{2-a}}{x-2}=\\frac{(x-a)-(2-a)}{(x-2)(\\sqrt{x-a}+\\sqrt{2-a})}=\\frac{1}{\\sqrt{x-a}+\\sqrt{2-a}}$$\n$$\\lim_{x\\to 2}\\frac{1}{\\sqrt{x-a}+\\sqrt{2-a}}=\\frac{1}{2\\sqrt{2-a}}=\\frac{1}{4}$$\n이므로 $\\sqrt{2-a}=2$에서 $a=-2$이고 $b=-2$"
   },
   {
     "id": 9,
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to 1} \\frac{x^2+(2a-1)x-2a}{x+a}=b$일 때, 실수 $a, b$의 값을 구하시오. (단, $b \\ne 0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1,\\ b=-1$",
+    "solution": "분자를 인수분해하면 $x^2+(2a-1)x-2a=(x-1)(x+2a)$이다.\n$$\\lim_{x\\to 1}\\frac{(x-1)(x+2a)}{x+a}=b\\neq 0$$\n$a\\ne -1$이면 분모 $x+a$가 $x\\to 1$일 때 $1+a\\ne 0$이므로 극한값은 $\\frac{0\\times(1+2a)}{1+a}=0$이 되어 $b\\neq 0$에 모순이다.\n따라서 $a=-1$이다. 이때\n$$\\lim_{x\\to 1}\\frac{(x-1)(x-2)}{x-1}=\\lim_{x\\to 1}(x-2)=-1$$\n이므로 $b=-1$ ($b\\ne 0$을 만족시킨다.)"
   },
   {
     "id": 10,
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같을 때, $\\lim_{x \\to 1-} f(f(x))+\\lim_{x \\to 1+} f(f(x))$의 값을 구하시오.\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "그림에서 $0<x<1$일 때 $f(x)=x$, $1\\le x<3$일 때 $f(x)$는 점 $(1,\\ 3)$에서 점 $(3,\\ 1)$(열린 점)까지의 직선이다.\n(i) $x\\to 1-$일 때 $f(x)\\to 1$이고 $f(x)<1$이다. $t=f(x)$로 놓으면 $x\\to 1-$일 때 $t\\to 1-$이다.\n$$\\lim_{x\\to 1-}f(f(x))=\\lim_{t\\to 1-}f(t)=1$$\n(ii) $x\\to 1+$일 때 $f(x)\\to 3$이고 $f(x)<3$이다 ($f(1)=3$에서 시작하여 감소). $t=f(x)$로 놓으면 $x\\to 1+$일 때 $t\\to 3-$이다.\n$$\\lim_{x\\to 1+}f(f(x))=\\lim_{t\\to 3-}f(t)=1$$\n따라서 구하는 값은 $1+1=2$"
   },
   {
     "id": 11,
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 직선 $y=x+1$ 위의 두 점 $\\mathrm{A}(-1, 0)$, $\\mathrm{P}(t, t+1)$이 있다. 점 $\\mathrm{P}$를 지나고 직선 $y=x+1$에 수직인 직선이 $y$축과 만나는 점을 $\\mathrm{Q}$라고 할 때, 극한값 $\\lim_{t \\to \\infty} \\frac{\\overline{\\mathrm{AP}}^2}{\\overline{\\mathrm{AQ}}^2}$을 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "$\\mathrm{A}(-1,\\ 0)$, $\\mathrm{P}(t,\\ t+1)$이므로\n$$\\overline{\\mathrm{AP}}^2=(t+1)^2+(t+1)^2=2(t+1)^2$$\n점 $\\mathrm{P}$를 지나고 직선 $y=x+1$에 수직인 직선은 기울기가 $-1$이므로\n$$y-(t+1)=-(x-t),\\quad\\text{즉}\\quad y=-x+2t+1$$\n$y$축과 만나는 점은 $\\mathrm{Q}(0,\\ 2t+1)$이고\n$$\\overline{\\mathrm{AQ}}^2=1^2+(2t+1)^2=4t^2+4t+2$$\n$$\\lim_{t\\to\\infty}\\frac{\\overline{\\mathrm{AP}}^2}{\\overline{\\mathrm{AQ}}^2}=\\lim_{t\\to\\infty}\\frac{2t^2+4t+2}{4t^2+4t+2}=\\frac{2}{4}=\\frac{1}{2}$$"
   },
   {
     "id": 12,
@@ -340,8 +340,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 $x=2$에서 연속인 함수를 모두 고르시오.\n[보기]\nㄱ. $f(x)=2x+5$\nㄴ. $f(x)=(x+1)(x-2)$\nㄷ. $f(x)=\\frac{1}{x-2}$\nㄹ. $f(x)=|x-2|$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄹ",
+    "solution": "함수가 $x=2$에서 연속이려면 $f(2)$가 정의되고 $\\lim_{x\\to 2}f(x)=f(2)$이어야 한다.\nㄱ, ㄴ은 다항함수이므로 모든 실수에서 연속이다. (연속)\nㄷ. $f(x)=\\frac{1}{x-2}$은 $x=2$에서 정의되지 않으므로 불연속이다.\nㄹ. $f(x)=|x-2|$는 $\\lim_{x\\to 2}|x-2|=0=f(2)$이므로 $x=2$에서 연속이다.\n따라서 연속인 것은 ㄱ, ㄴ, ㄹ이다."
   },
   {
     "id": 13,
@@ -368,8 +368,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수가 연속인 구간을 구하시오.\n⑴ $f(x)=5x^2-2x+1$\n⑵ $f(x)=1+\\frac{2}{x-3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 실수 전체의 구간 $(-\\infty,\\ \\infty)$\n⑵ $(-\\infty,\\ 3),\\ (3,\\ \\infty)$",
+    "solution": "⑴ 다항함수는 모든 실수에서 연속이므로 연속인 구간은 $(-\\infty,\\ \\infty)$이다.\n⑵ 분모가 $0$이 되는 $x=3$에서는 정의되지 않으므로 불연속이고, 그 밖에서는 연속이다. 연속인 구간은 $(-\\infty,\\ 3)$과 $(3,\\ \\infty)$이다."
   },
   {
     "id": 14,
@@ -396,8 +396,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 구간에서 함수의 최댓값과 최솟값을 구하시오.\n⑴ $f(x)=x^2-4x-1 \\quad [-1, 5]$\n⑵ $f(x)=-\\sqrt{x+1} \\quad [0, 3]$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 최댓값 $4$, 최솟값 $-5$\n⑵ 최댓값 $-1$, 최솟값 $-2$",
+    "solution": "⑴ $f(x)=x^2-4x-1=(x-2)^2-5$이고 꼭짓점의 $x$좌표 $2$가 $[-1,\\ 5]$에 포함되므로 $x=2$에서 최솟값 $-5$이다.\n양 끝에서의 값은 $f(-1)=1+4-1=4$, $f(5)=25-20-1=4$이므로 최댓값은 $4$이다.\n⑵ $f(x)=-\\sqrt{x+1}$은 $[0,\\ 3]$에서 감소하므로 $x=0$에서 최댓값 $f(0)=-1$, $x=3$에서 최솟값 $f(3)=-2$이다."
   },
   {
     "id": 15,
@@ -424,8 +424,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수\n$f(x)=\\begin{cases} -1 & (|x| \\ge 1) \\\\ 1 & (|x| < 1) \\end{cases}$\n$g(x)=\\begin{cases} 1 & (|x| \\ge 1) \\\\ -x & (|x| < 1) \\end{cases}$\n에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n[보기]\nㄱ. $\\lim_{x \\to -1} f(x)g(x)=1$\nㄴ. 함수 $f(x)+g(x)$는 $x=-1$에서 불연속이다.\nㄷ. 함수 $f(x)g(x)$는 $x=1$에서 연속이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄴ, ㄷ",
+    "solution": "ㄱ. $x\\to-1-$ ($|x|>1$)일 때 $f(x)g(x)=(-1)\\times 1=-1$이고, $x\\to-1+$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to 1$이다. 좌극한과 우극한이 다르므로 $\\lim_{x\\to-1}f(x)g(x)$는 존재하지 않는다. (거짓)\nㄴ. $x\\to-1-$일 때 $f(x)+g(x)=-1+1=0$, $x\\to-1+$일 때 $f(x)+g(x)=1+(-x)\\to 2$이므로 $x=-1$에서 극한값이 없어 불연속이다. (참)\nㄷ. $x\\to 1-$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to-1$, $x\\to 1+$일 때 $f(x)g(x)=(-1)\\times 1=-1$이고 $f(1)g(1)=(-1)\\times 1=-1$이므로 $x=1$에서 연속이다. (참)\n따라서 옳은 것은 ㄴ, ㄷ이다."
   },
   {
     "id": 16,
@@ -452,8 +452,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$에 대하여 원 $x^2+y^2=4$와 직선 $y=x+a$의 교점의 개수를 $f(a)$라고 하자. 함수 $f(a)$가 불연속인 모든 $a$의 값의 곱을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-8$",
+    "solution": "원 $x^2+y^2=4$ (중심 $(0,\\ 0)$, 반지름 $2$)와 직선 $x-y+a=0$ 사이의 거리는 $\\frac{|a|}{\\sqrt{2}}$이다.\n$\\frac{|a|}{\\sqrt{2}}<2$, 즉 $|a|<2\\sqrt{2}$이면 교점이 $2$개이므로 $f(a)=2$\n$|a|=2\\sqrt{2}$이면 접하여 교점이 $1$개이므로 $f(a)=1$\n$|a|>2\\sqrt{2}$이면 교점이 없으므로 $f(a)=0$\n따라서 $f(a)$는 $a=-2\\sqrt{2}$와 $a=2\\sqrt{2}$에서 불연속이고, 모든 $a$의 값의 곱은 $(-2\\sqrt{2})\\times 2\\sqrt{2}=-8$"
   },
   {
     "id": 17,
@@ -480,8 +480,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가\n$(x-2)f(x)=2x^2+ax-b$\n를 만족시키고 $f(1)=3$일 때, $f(2)$의 값을 구하시오. (단, $a, b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "$(x-2)f(x)=2x^2+ax-b$이고 $f(x)$가 $x=2$에서 연속이어서 $x=2$를 대입해도 성립한다. $x=2$를 대입하면 $0=8+2a-b$이므로 $b=2a+8\\qquad\\cdots\\ ①$\n$f(1)=3$이므로 $x=1$을 대입하면 $(1-2)\\times 3=2+a-b$에서 $b=a+5$\n①과 연립하면 $2a+8=a+5$이므로 $a=-3$, $b=2$\n$2x^2-3x-2=(x-2)(2x+1)$이므로 $x\\ne 2$에서 $f(x)=2x+1$이다.\n$f(x)$가 $x=2$에서 연속이므로 $f(2)=\\lim_{x\\to 2}(2x+1)=5$"
   },
   {
     "id": 18,
@@ -508,8 +508,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} \\frac{x^3+ax-b}{(x+1)^2} & (x \\ne -1) \\\\ c & (x=-1) \\end{cases}$가 모든 실수 $x$에서 연속일 때, 실수 $a, b, c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-3,\\ b=2,\\ c=-3$",
+    "solution": "$f(x)$가 $x=-1$에서 연속이려면 $\\lim_{x\\to-1}\\frac{x^3+ax-b}{(x+1)^2}=c$이어야 한다. 분모가 $0$으로 가고 극한값이 존재하므로 분자 $x^3+ax-b$가 $(x+1)^2$을 인수로 가져야 한다.\n$$x^3+ax-b=(x+1)^2(x+m)=x^3+(m+2)x^2+(2m+1)x+m$$\n$x^2$의 계수: $m+2=0$이므로 $m=-2$\n$x$의 계수: $a=2m+1=-3$\n상수항: $-b=m=-2$이므로 $b=2$\n이때 $x\\ne -1$에서 $f(x)=x-2$이므로 $c=\\lim_{x\\to-1}(x-2)=-3$"
   },
   {
     "id": 19,
@@ -536,8 +536,8 @@ window.questionBank = [
     "wide": false,
     "content": "닫힌구간 $[-2, 5]$에서 정의된 함수 $f(x)$가\n$f(x)=\\lim_{t \\to -\\infty} \\frac{1+tx}{1+t}(x-4)$\n일 때, 함수 $f(x)$의 최댓값과 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값 $12$, 최솟값 $-4$",
+    "solution": "$t\\to-\\infty$일 때 $\\frac{1+tx}{1+t}=\\frac{\\frac{1}{t}+x}{\\frac{1}{t}+1}\\to x$이므로\n$$f(x)=x(x-4)=x^2-4x=(x-2)^2-4$$\n$[-2,\\ 5]$에서 꼭짓점의 $x$좌표 $2$가 포함되므로 $x=2$일 때 최솟값 $-4$이다.\n양 끝에서 $f(-2)=4+8=12$, $f(5)=25-20=5$이므로 최댓값은 $12$이다."
   },
   {
     "id": 20,
@@ -564,8 +564,8 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 비행기의 이륙 후의 고도가 다음과 같았다. 9시부터 9시 10분까지 이 비행기의 고도가 $8500\\,\\mathrm{m}$였던 순간이 적어도 몇 번 있었는지 구하시오.\n\n| 시각 | 9:00 | 9:02 | 9:04 | 9:06 | 9:08 | 9:10 |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n| 고도($\\mathrm{m}$) | 8503 | 8498 | 8496 | 8504 | 8499 | 8495 |",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$번",
+    "solution": "고도는 시간에 따라 연속적으로 변하므로 사잇값 정리를 이용한다. 고도가 $8500\\,\\mathrm{m}$보다 높은 값에서 낮은 값으로(또는 반대로) 바뀌는 구간에는 $8500\\,\\mathrm{m}$인 순간이 적어도 한 번 있다.\n$9{:}00\\ (8503)\\to 9{:}02\\ (8498)$: $8503>8500>8498$이므로 $1$번 이상\n$9{:}02\\ (8498)\\to 9{:}04\\ (8496)$: 모두 $8500$ 미만이므로 보장 안 됨\n$9{:}04\\ (8496)\\to 9{:}06\\ (8504)$: $8496<8500<8504$이므로 $1$번 이상\n$9{:}06\\ (8504)\\to 9{:}08\\ (8499)$: $8504>8500>8499$이므로 $1$번 이상\n$9{:}08\\ (8499)\\to 9{:}10\\ (8495)$: 모두 $8500$ 미만이므로 보장 안 됨\n세 구간이 서로 겹치지 않으므로 적어도 $3$번 있었다."
   },
   {
     "id": 21,
@@ -592,8 +592,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 전체의 집합에서 정의된 함수 $y=f(x)$의 그래프가 다음 그림과 같다. 함수\n$g(x)=x^3+ax^2+bx+2$\n에 대하여 합성함수 $g(f(x))$가 모든 실수 $x$에서 연속일 때, 실수 $a, b$의 값을 구하시오.\n<img src=\"q21.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=0,\\ b=-4$",
+    "solution": "그림에서 $f(x)$는 $x<2$일 때 $f(x)=-x$로 $x\\to 2-$이면 $f(x)\\to-2$, $f(2)=0$, $x\\to 2+$이면 $f(x)\\to 2$이다. $x=2$ 이외에서는 연속이다.\n$g(f(x))$가 $x=2$에서 연속이려면 $\\lim_{x\\to 2-}g(f(x))=\\lim_{x\\to 2+}g(f(x))=g(f(2))$이어야 한다.\n$g$는 다항함수(연속)이므로\n$$g(-2)=g(2)=g(0)$$\n이어야 한다. $g(0)=2$이므로 $g(2)=2$, $g(-2)=2$이다.\n$g(2)=8+4a+2b+2=2$에서 $4a+2b=-8$, 즉 $2a+b=-4\\qquad\\cdots\\ ①$\n$g(-2)=-8+4a-2b+2=2$에서 $4a-2b=8$, 즉 $2a-b=4\\qquad\\cdots\\ ②$\n①$+$②를 하면 $4a=0$이므로 $a=0$, ①에서 $b=-4$"
   },
   {
     "id": 22,
@@ -620,7 +620,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가 모든 실수 $x$에 대하여 $f(x)=f(-x)$를 만족시키고\n$f(1)f(3) < 0, f(-3)f(-5) < 0$\n일 때, 방정식 $f(x)=0$은 적어도 몇 개의 실근을 갖는지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "$f(x)=f(-x)$이므로 $f(-3)=f(3)$, $f(-5)=f(5)$이다.\n$f(-3)f(-5)<0$에서 $f(3)f(5)<0$이다.\n$f(x)$가 모든 실수에서 연속이므로 사잇값 정리에 의하여\n$f(1)f(3)<0$이면 열린구간 $(1,\\ 3)$에서 $f(x)=0$인 실근이 적어도 하나 있다.\n$f(3)f(5)<0$이면 열린구간 $(3,\\ 5)$에서 $f(x)=0$인 실근이 적어도 하나 있다.\n$f(x)$가 우함수이므로 $x$가 근이면 $-x$도 근이어서 $(-3,\\ -1)$, $(-5,\\ -3)$에도 각각 실근이 하나씩 있다.\n네 구간 $(1,\\ 3),\\ (3,\\ 5),\\ (-3,\\ -1),\\ (-5,\\ -3)$은 서로 겹치지 않으므로 방정식 $f(x)=0$은 적어도 $4$개의 실근을 갖는다."
   }
 ];

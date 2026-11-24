@@ -25,8 +25,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 2 & 4 & 8 \\\\ 1 & 3 & -6 \\end{pmatrix}$에 대하여 다음을 구하시오.\n⑴ $(1, 2)$ 성분\n⑵ $(2, 3)$ 성분",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑴ $4$\n⑵ $-6$",
+    "solution": "$(i,\\ j)$ 성분은 제 $i$행, 제 $j$열에 있는 성분이다.\n⑴ $(1,\\ 2)$ 성분은 제$1$행 제$2$열의 성분이므로 $4$\n⑵ $(2,\\ 3)$ 성분은 제$2$행 제$3$열의 성분이므로 $-6$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -53,8 +53,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 성립하도록 하는 $a$, $b$, $c$의 값을 구하시오.\n$$\\begin{pmatrix} 1-a & 2b-1 \\\\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & 5 \\\\ 3 & c+3 \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=0,\\ b=3,\\ c=1$",
+    "solution": "두 행렬이 서로 같으므로 대응하는 성분이 각각 같다.\n$(1,\\ 1)$ 성분: $1-a=1$이므로 $a=0$\n$(1,\\ 2)$ 성분: $2b-1=5$이므로 $b=3$\n$(2,\\ 2)$ 성분: $4=c+3$이므로 $c=1$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -81,8 +81,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & -3 \\\\ -1 & 5 \\end{pmatrix}$와 $B=\\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix}$에 대하여 다음을 계산하시오.\n⑴ $A+B$\n⑵ $B-A$\n⑶ $-2B$\n⑷ $3A-B$",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑴ $\\begin{pmatrix} 1 & -1 \\\\ 2 & 3 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} -3 & 5 \\\\ 4 & -7 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 2 & -4 \\\\ -6 & 4 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 7 & -11 \\\\ -6 & 17 \\end{pmatrix}$",
+    "solution": "같은 위치의 성분끼리 계산한다.\n⑴ $A+B=\\begin{pmatrix} 2+(-1) & -3+2 \\\\ -1+3 & 5+(-2) \\end{pmatrix}=\\begin{pmatrix} 1 & -1 \\\\ 2 & 3 \\end{pmatrix}$\n⑵ $B-A=\\begin{pmatrix} -1-2 & 2-(-3) \\\\ 3-(-1) & -2-5 \\end{pmatrix}=\\begin{pmatrix} -3 & 5 \\\\ 4 & -7 \\end{pmatrix}$\n⑶ $-2B=\\begin{pmatrix} 2 & -4 \\\\ -6 & 4 \\end{pmatrix}$\n⑷ $3A=\\begin{pmatrix} 6 & -9 \\\\ -3 & 15 \\end{pmatrix}$이므로\n$$3A-B=\\begin{pmatrix} 6-(-1) & -9-2 \\\\ -3-3 & 15-(-2) \\end{pmatrix}=\\begin{pmatrix} 7 & -11 \\\\ -6 & 17 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -109,8 +109,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 계산하시오.\n⑴ $\\begin{pmatrix} 3 & 5 \\end{pmatrix}\\begin{pmatrix} -7 \\\\ 6 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 2 & -5 \\end{pmatrix}\\begin{pmatrix} -1 & 3 \\\\ -2 & 1 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 3 & -2 \\\\ 1 & 6 \\end{pmatrix}\\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 6 & -2 \\\\ 3 & 0 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑴ $\\begin{pmatrix} 9 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 8 & 1 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 8 \\\\ 16 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 6 & -4 \\\\ 3 & 0 \\end{pmatrix}$",
+    "solution": "앞 행렬의 행과 뒤 행렬의 열의 성분을 차례로 곱하여 더한다.\n⑴ $3\\times(-7)+5\\times 6=-21+30=9$이므로 $\\begin{pmatrix} 9 \\end{pmatrix}$\n⑵ $(1,\\ 1)$ 성분: $2\\times(-1)+(-5)\\times(-2)=-2+10=8$\n$(1,\\ 2)$ 성분: $2\\times 3+(-5)\\times 1=6-5=1$\n따라서 $\\begin{pmatrix} 8 & 1 \\end{pmatrix}$\n⑶ $(1,\\ 1)$ 성분: $3\\times 4+(-2)\\times 2=12-4=8$\n$(2,\\ 1)$ 성분: $1\\times 4+6\\times 2=4+12=16$\n따라서 $\\begin{pmatrix} 8 \\\\ 16 \\end{pmatrix}$\n⑷ $(1,\\ 1)$: $6\\times 1+(-2)\\times 0=6$, $(1,\\ 2)$: $6\\times 0+(-2)\\times 2=-4$\n$(2,\\ 1)$: $3\\times 1+0\\times 0=3$, $(2,\\ 2)$: $3\\times 0+0\\times 2=0$\n따라서 $\\begin{pmatrix} 6 & -4 \\\\ 3 & 0 \\end{pmatrix}$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -137,8 +137,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} -2 & 5 & 7 \\\\ 4 & -1 & 6 \\\\ 8 & 8 & 3 \\end{pmatrix}$에 대하여 옳은 것을 보기에서 모두 고르시오.\n[보기]\nㄱ. 제2행은 $\\begin{pmatrix} 4 & -1 & 6 \\end{pmatrix}$이다.\nㄴ. 행렬 $A$의 $(4, 3)$ 성분은 없다.\nㄷ. 제3열의 성분의 합은 16이다.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "ㄱ, ㄴ, ㄷ",
+    "solution": "행렬 $A$는 $3\\times 3$ 행렬이다.\nㄱ. 제$2$행은 $\\begin{pmatrix} 4 & -1 & 6 \\end{pmatrix}$이다. (참)\nㄴ. $A$는 $3\\times 3$ 행렬이므로 행이 $3$개뿐이어서 $(4,\\ 3)$ 성분은 없다. (참)\nㄷ. 제$3$열의 성분은 $7,\\ 6,\\ 3$이므로 합은 $7+6+3=16$이다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -165,8 +165,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} a-b & 0 \\\\ 6 & 4 \\end{pmatrix}$와 $B=\\begin{pmatrix} -1 & 0 \\\\ 6 & 2ab \\end{pmatrix}$에 대하여 $A=B$일 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$5$",
+    "solution": "$A=B$이므로 대응하는 성분이 같다.\n$a-b=-1$\n$4=2ab$에서 $ab=2$\n따라서\n$$a^2+b^2=(a-b)^2+2ab=(-1)^2+2\\times 2=5$$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -193,8 +193,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A$와 $B$에 대하여 $B=\\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}$이고 $A+B=\\begin{pmatrix} 4 & -2 \\\\ 3 & 0 \\end{pmatrix}$일 때, $2A-B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\begin{pmatrix} 2 & 1 \\\\ 15 & -15 \\end{pmatrix}$",
+    "solution": "$A=(A+B)-B$이므로\n$$A=\\begin{pmatrix} 4 & -2 \\\\ 3 & 0 \\end{pmatrix}-\\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}=\\begin{pmatrix} 2 & -1 \\\\ 6 & -5 \\end{pmatrix}$$\n따라서\n$$2A-B=\\begin{pmatrix} 4 & -2 \\\\ 12 & -10 \\end{pmatrix}-\\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}=\\begin{pmatrix} 2 & -1 \\\\ 15 & -15 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -221,8 +221,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2\\times 3$ 행렬 $A$와 $B$에 대하여 $A$의 $(i, j)$ 성분은 $2i-j+1$이고 $A+2B$의 $(i, j)$ 성분은 $i+2j$일 때, 행렬 $B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$B=\\begin{pmatrix} \\frac{1}{2} & 2 & \\frac{7}{2} \\\\ 0 & \\frac{3}{2} & 3 \\end{pmatrix}$",
+    "solution": "$A$의 $(i,\\ j)$ 성분이 $2i-j+1$이므로\n$$A=\\begin{pmatrix} 2-1+1 & 2-2+1 & 2-3+1 \\\\ 4-1+1 & 4-2+1 & 4-3+1 \\end{pmatrix}=\\begin{pmatrix} 2 & 1 & 0 \\\\ 4 & 3 & 2 \\end{pmatrix}$$\n$A+2B$의 $(i,\\ j)$ 성분이 $i+2j$이므로\n$$A+2B=\\begin{pmatrix} 3 & 5 & 7 \\\\ 4 & 6 & 8 \\end{pmatrix}$$\n따라서\n$$2B=(A+2B)-A=\\begin{pmatrix} 1 & 4 & 7 \\\\ 0 & 3 & 6 \\end{pmatrix}$$\n이므로\n$$B=\\begin{pmatrix} \\frac{1}{2} & 2 & \\frac{7}{2} \\\\ 0 & \\frac{3}{2} & 3 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -249,8 +249,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}$에 대하여 $A^2$의 모든 성분의 합이 0이 되도록 하는 모든 실수 $k$의 값의 합을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$3$",
+    "solution": "$A^2=AA$를 계산하면\n$$A^2=\\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}\\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}=\\begin{pmatrix} k^2+2 & -k-1 \\\\ -2k-2 & 3 \\end{pmatrix}$$\n모든 성분의 합이 $0$이므로\n$$(k^2+2)+(-k-1)+(-2k-2)+3=k^2-3k+2=0$$\n$(k-1)(k-2)=0$이므로 $k=1$ 또는 $k=2$\n따라서 모든 실수 $k$의 값의 합은 $1+2=3$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -277,8 +277,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 지하철 노선도의 일부를 나타낸 것이다. 이 지하철 노선도를 나타내는 $4\\times 4$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$를 다음과 같이 정하려고 한다.\n$$a_{ij}=\\begin{cases} 1 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 있을 때}) \\\\ 0 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 없을 때}) \\end{cases}$$\n행렬 $A$의 제2행의 모든 성분의 합을 구하시오. (단, $i$와 $j$는 역의 번호를 나타내며, $i=j$이면 $a_{ij}=0$)\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$2$",
+    "solution": "그림에서 역의 번호는 여의도 $1$, 신길 $2$, 대방 $3$, 샛강 $4$이고 노선이 직접 이어진 두 역은 한 번에 이동할 수 있다.\n연결된 역은 여의도$-$신길, 여의도$-$샛강, 신길$-$대방, 샛강$-$대방이다.\n제$2$행은 신길($2$)에서 각 역으로 한 번에 갈 수 있는지를 나타낸다.\n$a_{21}=1$ (신길$\\to$여의도), $a_{22}=0$ ($i=j$), $a_{23}=1$ (신길$\\to$대방), $a_{24}=0$ (신길에서 샛강으로는 한 번에 갈 수 없다)\n제$2$행은 $\\begin{pmatrix} 1 & 0 & 1 & 0 \\end{pmatrix}$이므로 모든 성분의 합은 $2$이다.",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   },
   {
@@ -305,8 +305,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차 정사각행렬 $A$에 대하여 $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$이고 $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} -3 \\\\ 4 \\end{pmatrix}$일 때, $A\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\begin{pmatrix} 0 \\\\ 10 \\end{pmatrix}$",
+    "solution": "이차 정사각행렬 $A$를 $A=\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$라 하면\n$$A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} a \\\\ c \\end{pmatrix}=\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix},\\qquad A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} b \\\\ d \\end{pmatrix}=\\begin{pmatrix} -3 \\\\ 4 \\end{pmatrix}$$\n이므로 $a=1,\\ c=2,\\ b=-3,\\ d=4$이고 $A=\\begin{pmatrix} 1 & -3 \\\\ 2 & 4 \\end{pmatrix}$이다.\n$$A\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 1\\times 3+(-3)\\times 1 \\\\ 2\\times 3+4\\times 1 \\end{pmatrix}=\\begin{pmatrix} 0 \\\\ 10 \\end{pmatrix}$$",
     "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
   }
 ];

@@ -348,7 +348,18 @@ test('출제 내역·보관함 open without the question shards, and 빠른 평�
   assert.match(main, /const composeOnly = \(state\.view === "compose" \|\| isQuickAssessmentView\(\)\)/);
   assert.match(main, /const grade = quick \? quickState\.grade : state\.filters\?\.grade;\s*if \(grade\) need\.grades\.push\(grade\); else if \(!quick\) need\.all = true;/);
   // the recent rows take their grade and subject from the exam list rows: the same rows give the same answer as the catalog's exams
-  assert.match(readWorkspacePart('recent'), /state\.catalog\?\.exams \|\| state\.light\?\.exams \|\| \[\]/);
+  // (a catalog held only in part, for one button, has only some exams: then the list is the lookup)
+  assert.match(readWorkspacePart('recent'), /state\.catalog && state\.catalog\.complete !== false \? state\.catalog\.exams : state\.light\?\.exams \|\| state\.catalog\?\.exams/);
+  assert.match(main, /const recentExamLookup = \(\) => \(state\.catalog && state\.catalog\.complete !== false \? state\.catalog\.exams : state\.light\?\.exams \|\| state\.catalog\?\.exams \|\| \[\]\);/);
+  // buttons of 출제 내역 take only what they need (same list mode as the home): 새 문제지 = the compose grade (not all pieces), 작업 파일 불러오기 opens the chooser at once
+  assert.match(main, /const listRowsApply = \(\) => Boolean\(state\.light\) && \(state\.view === "find" \|\| state\.view === "home" \|\| state\.view === "recent"\) && shardsOn\(\);/);
+  assert.match(readWorkspacePart('core'), /state\.catalog\.complete === false && \(state\.view === "find" \|\| state\.view === "home" \|\| state\.view === "recent"\)/);
+  assert.match(main, /case "new-draft": return \{ grades: \[state\.filters\?\.grade \|\| "고1"\], exams: \[\] \};/);
+  assert.match(main, /const CATALOG_FREE_ACTIONS = new Set\(\[[^\]]*"import",\s*\]\)/);
+  assert.match(main, /event\.target\.closest\('\[data-view="compose"\], \[data-action="new-draft"\]'\)/);
+  assert.match(main, /await ensureCatalogForButton\(imported\?\.filters\?\.grade \? \{ grades: \[imported\.filters\.grade\], exams: \[\] \} : \{ all: true \}\);\s*await ensureShardFiles\(/);
+  // a failed first load does not stick: the next press of the same button asks again (it used to show the same error until a reload)
+  assert.match(main, /if \(state\.bootError && !state\.catalog && !listButtonLoading\) \{ state\.bootError = ""; catalogLoad = null; \}/);
   const History = require(path.join(root, 'archive/archive2-history.js'));
   const core = require(path.join(root, 'archive/archive2-core.js'));
   const file = path.join(root, 'archive/data/archive2-catalog.json');

@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Ga1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ga2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Na1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Na2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Da1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Da2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Ga1",
+    "Ga2",
+    "Na1",
+    "Na2",
+    "Da1",
+    "Da2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sGa",
+      "refs": [
+        "Ga1",
+        "Ga2"
+      ]
+    },
+    {
+      "id": "sNa",
+      "refs": [
+        "Na1",
+        "Na2"
+      ]
+    },
+    {
+      "id": "sDa",
+      "refs": [
+        "Da1",
+        "Da2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tGa",
+        "ownerSegment": "sGa",
+        "text": "(가)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tNa",
+        "ownerSegment": "sNa",
+        "text": "(나)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tDa",
+        "ownerSegment": "sDa",
+        "text": "(다)",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "Ga1",
+    "Ga2",
+    "Na1",
+    "Na2",
+    "Da1",
+    "Da2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세 직선 (가), (나), (다)가 한 평면에 그려져 있고, 각 직선 곁에 기호가 붙어 있다.",
+  "accessibilityDescription": "서로 다른 방향으로 놓인 세 직선이 보이고, 각 직선 옆에 (가), (나), (다)가 적혀 있다. (가)와 (다)는 서로 나란하고 (나)는 두 직선과 다른 기울기로 놓여 있다.",
+  "newVisualInformation": [
+    "세 직선 (가), (나), (다)의 위치 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 세 직선 (가), (나), (다)가 각각 다음과 같은 두 점을 지날 때, 물음에 답하여라.  \n- 직선 (가): $(-2, -1)$, $(0, 3)$  \n- 직선 (나): $(0, -3)$, $(2, 3)$  \n- 직선 (다): $(1, -3)$, $(3, 1)$  \n1. 세 직선 (가), (나), (다)의 방정식을 각각 구하여라.  \n2. 세 직선의 위치 관계를 다음과 같이 분류하여 서술하여라.  \n(1) 한 점에서 만나는 두 직선을 각각 찾아 기호로 쓰고, 그 교점의 좌표를 구하여라.  \n(2) 서로 만나지 않는 두 직선을 찾아 기호로 쓰고, 그 이유를 서술하여라.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

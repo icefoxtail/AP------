@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-4",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "-6",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": []
+    },
+    "sampleNote": "a=1/2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-1",
+          "intercept": "-2",
+          "label": "y=-2ax-2",
+          "labelValues": {
+            "a": "1/2"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "curveX": "4",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "이차함수 y=f(x)의 그래프와 직선 y=-2ax-2가 x좌표가 2와 4인 두 점에서 만나는 모양을 a=1/2인 경우로 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선과 기울기가 -1인 직선이 두 점에서 만나고, 그 두 교점이 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선 y=f(x)와 직선 y=-2ax-2의 두 교점",
+    "교점의 x좌표 2와 4를 나타내는 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)$가 다음 조건을 만족시킬 때, $a$의 값은?\n\n(가) 최고차항의 계수 $a$는 양수이다. (나) 함수 $y=f(x)$의 그래프와 직선 $y=-2ax-2$가 만나는 두 점의 $x$좌표는 $2$와 $4$이다. (다) $2\\le x\\le 6$에서 $f(x)$의 최솟값은 $-26$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

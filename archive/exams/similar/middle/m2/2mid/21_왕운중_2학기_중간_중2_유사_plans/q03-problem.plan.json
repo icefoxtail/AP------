@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 23,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 23,
+        "noLabel": true,
+        "equalGroup": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "이등변삼각형 ABC에서 꼭짓각 A의 이등분선 AD를 그린 그림이다. 변 AB와 AC에 같은 길이 표시가, 각 A의 두 부분에 같은 각 표시가 있다.",
+  "accessibilityDescription": "밑변 BC와 꼭짓점 A로 이루어진 이등변삼각형 ABC가 있고, A에서 밑변의 점 D까지 점선 AD가 그려져 있다. 변 AB와 AC에 같은 길이 눈금, 각 A의 두 부분에 같은 각 호가 표시되어 있다.",
+  "newVisualInformation": [
+    "이등변삼각형 ABC와 꼭짓각의 이등분선 AD",
+    "변 AB와 AC의 같은 길이 표시",
+    "각 A의 두 부분에 같은 각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 꼭짓각 $\\angle A$의 이등분선이 밑변 $BC$와 만나는 점을 $D$라 할 때, 선분 $AD$가 밑변 $BC$를 수직이등분함을 설명하는 과정이다. (ㄱ)~(ㅁ) 중 틀리게 설명한 부분은? [3점]\n\n$\\triangle ABD$와 $\\triangle ACD$에서 $\\overline{AB}=\\text{(ㄱ)}$, $\\angle BAD=\\angle CAD$, $\\text{(ㄴ)}$는 공통이므로 $\\triangle ABD \\equiv \\triangle ACD$ ($\\text{(ㄷ)}$ 합동)이다. 따라서 $\\overline{BD}=\\overline{CD}$이고, $\\angle ADB=\\angle ADC=\\text{(ㄹ)}$이므로 $\\text{(ㅁ)}$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

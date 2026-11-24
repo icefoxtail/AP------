@@ -1,0 +1,111 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -2,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula"
+        ]
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "16",
+          "-2"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "color": "WARM",
+        "hideLabels": [
+          "formula"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "V",
+          "x": "3",
+          "y": "9",
+          "unnamed": true
+        },
+        {
+          "id": "T",
+          "x": "4",
+          "y": "8",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "A",
+          "text": "α",
+          "direction": "SW",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cb",
+          "point": "B",
+          "text": "β",
+          "direction": "SE",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "대칭축이 x=3인 이차함수의 그래프가 x축과 만나는 두 점을 α, β로 표시하고, 주어진 직선과 한 점에서 접하는 모습을 나타낸 그림이다.",
+  "accessibilityDescription": "위로 볼록한 포물선이 x축과 두 점 α, β에서 만나고, 오른쪽에서 내려오는 직선이 포물선과 한 점에서 접한다. 꼭짓점은 대칭축 위에 있다.",
+  "newVisualInformation": [
+    "x축 교점 α, β",
+    "대칭축 x=3",
+    "직선과의 접점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 때, 함수 $y=f(x)$의 그래프와 $x$축의 교점의 좌표를 각각 $(\\alpha, 0)$, $(\\beta, 0)$이라 하자. 이때 $\\alpha-\\beta$의 값을 구하시오. (단, $\\alpha>\\beta$) (가) 모든 실수 $x$에 대하여 $f(3-x)=f(3+x)$이다. (나) $x$의 값의 범위가 $0\\le x\\le 5$일 때, 함수 $f(x)$의 최댓값은 $9$, 최솟값은 $0$이다. (다) 이차함수 $y=f(x)$의 그래프와 직선 $y=-2x+16$은 접한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

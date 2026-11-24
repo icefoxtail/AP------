@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "names": [
+        {
+          "id": "nl",
+          "text": "y=ax+b",
+          "labelKind": "MATH",
+          "curveX": "0"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "오른쪽 아래로 향하고 y축의 양의 부분과 만나는 일차함수 y=ax+b의 그래프를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 직선 하나가 왼쪽 위에서 오른쪽 아래로 내려가며 y축을 원점 위에서 지난다.",
+  "newVisualInformation": [
+    "기울기가 음수이고 y절편이 양수인 일차함수 y=ax+b의 그래프를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프가 오른쪽 아래로 향하는 직선이고 $y$축과 양의 부분에서 만날 때, 이차함수 $y=(x-a)^2+b$의 그래프로 알맞은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

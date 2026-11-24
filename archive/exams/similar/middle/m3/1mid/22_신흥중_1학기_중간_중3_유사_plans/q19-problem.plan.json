@@ -1,0 +1,388 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "b0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866",
+              "denominator": "125"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2165",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2165",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "b0",
+    "b1",
+    "b2",
+    "b3",
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "displaySegments": [
+    {
+      "id": "sB0",
+      "refs": [
+        "b0",
+        "b1"
+      ]
+    },
+    {
+      "id": "sB1",
+      "refs": [
+        "b1",
+        "b2"
+      ]
+    },
+    {
+      "id": "sB2",
+      "refs": [
+        "b2",
+        "b3"
+      ]
+    },
+    {
+      "id": "sV0",
+      "refs": [
+        "b0",
+        "t0"
+      ]
+    },
+    {
+      "id": "sT1",
+      "refs": [
+        "t0",
+        "t1"
+      ]
+    },
+    {
+      "id": "sV1",
+      "refs": [
+        "b1",
+        "t2"
+      ]
+    },
+    {
+      "id": "sT2",
+      "refs": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "id": "sV2",
+      "refs": [
+        "b2",
+        "t4"
+      ]
+    },
+    {
+      "id": "sT3",
+      "refs": [
+        "t4",
+        "t5"
+      ]
+    },
+    {
+      "id": "sV3",
+      "refs": [
+        "b3",
+        "t5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "b0",
+              "b1",
+              "t1",
+              "t0"
+            ]
+          }
+        ],
+        "label": "3",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "b1",
+              "b2",
+              "t3",
+              "t2"
+            ]
+          }
+        ],
+        "label": "27",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "b2",
+              "b3",
+              "t5",
+              "t4"
+            ]
+          }
+        ],
+        "label": "75",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "b0",
+    "b1",
+    "b2",
+    "b3",
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "caption": "넓이가 각각 3 제곱센티미터, 27 제곱센티미터, 75 제곱센티미터인 세 정사각형을 아래쪽 변이 일직선이 되도록 왼쪽부터 차례로 이어 붙인 도형이다. 세 정사각형의 높이는 서로 다르고 오른쪽으로 갈수록 높아진다.",
+  "accessibilityDescription": "바닥이 하나의 직선을 이루도록 세 정사각형이 왼쪽부터 나란히 붙어 있고, 왼쪽 정사각형에는 3 제곱센티미터, 가운데 정사각형에는 27 제곱센티미터, 오른쪽 정사각형에는 75 제곱센티미터가 적혀 있다. 세 정사각형의 높이는 왼쪽이 가장 낮고 오른쪽이 가장 높다.",
+  "newVisualInformation": [
+    "아래쪽 변이 일직선인 세 정사각형",
+    "넓이 3, 27, 75 제곱센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "넓이가 각각 $3\\text{ cm}^2$, $27\\text{ cm}^2$, $75\\text{ cm}^2$인 세 정사각형을 아래쪽 변이 일직선이 되도록 왼쪽부터 차례로 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

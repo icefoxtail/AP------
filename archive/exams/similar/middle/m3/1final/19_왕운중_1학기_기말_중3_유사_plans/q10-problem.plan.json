@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P6",
+    "P9"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sIn",
+      "refs": [
+        "O",
+        "P6"
+      ]
+    },
+    {
+      "id": "sGap",
+      "refs": [
+        "P6",
+        "P9"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lIn",
+        "ownerSegment": "sIn",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lGap",
+        "ownerSegment": "sGap",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "ann",
+        "fill": "MEDIUM",
+        "label": "45π",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P9",
+              "steps": [
+                {
+                  "to": "P9",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "P6",
+              "steps": [
+                {
+                  "to": "P6",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "P6",
+    "P9"
+  ],
+  "hiddenPointStyle": "DOT",
+  "caption": "반지름의 길이가 6인 원의 반지름을 x만큼 늘여 만든 두 동심원에서, 늘어난 고리 모양 부분이 색칠되어 있다.",
+  "accessibilityDescription": "중심이 같은 두 원이 있고, 안쪽 원의 반지름은 6, 바깥쪽으로 늘어난 폭은 x로 표시되어 있다. 두 원 사이의 고리 모양 영역이 색칠되어 있고 그 넓이는 45π로 표시되어 있다.",
+  "newVisualInformation": [
+    "안쪽 원의 반지름이 6임을 보여 준다.",
+    "반지름이 x만큼 늘어났음을 보여 준다.",
+    "늘어난 고리 모양 부분의 넓이가 45π임을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $6,\\text{cm}$인 원에서 반지름의 길이를 $x,\\text{cm}$만큼 늘였더니 넓이가 $45\\pi,\\text{cm}^2$만큼 더 늘었다. 이때 $x$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

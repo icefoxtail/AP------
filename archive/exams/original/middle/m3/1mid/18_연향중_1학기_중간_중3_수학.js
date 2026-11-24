@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $-10$의 제곱근은 $\\pm \\sqrt{10}$이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>① $0$의 제곱근은 $0$ 하나뿐이다. (옳지 않다)<br>② 제곱근 $(-3)^2$은 $\\sqrt{(-3)^2}=\\sqrt{9}=3$이다. (옳다)<br>③ $15$의 제곱근은 $\\pm\\sqrt{15}$이다. (옳지 않다)<br>④ $0$의 제곱근은 $1$개이고 음의 정수의 제곱근은 없다. (옳지 않다)<br>⑤ 음수의 제곱근은 없다. (옳지 않다)</p>",
     "score": 3.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변이 3인 정사각형이 가로와 세로로 각각 3등분되어 9개의 작은 정사각형으로 나뉘어 있다. 아래쪽 변에는 길이 3을 나타내는 치수선이 있다.",
@@ -38,8 +38,8 @@ window.questionBank = [
       "⑤ 5개"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>각 수를 간단히 한다.<br>$\\sqrt{9}-2=3-2=1$: 유리수<br>$-\\sqrt{102}$: 무리수<br>$0.5\\dot{2}\\dot{1}$: 순환소수이므로 유리수<br>$2-\\pi$: 무리수<br>$\\sqrt{10}-3$: 무리수<br>$\\sqrt{\\left(-\\frac{2}{3}\\right)^2}=\\frac{2}{3}$: 유리수<br>무리수는 $-\\sqrt{102},\\ 2-\\pi,\\ \\sqrt{10}-3$의 $3$개이다.</p>",
     "score": 3.0
   },
   {
@@ -57,8 +57,8 @@ window.questionBank = [
       "⑤ 모든 무리수는 각각 수직선위의 한점에 대응시킬 수 있다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>① 서로 다른 두 유리수 사이에는 유리수가 무수히 많이 있으므로 옳지 않다.<br>② 수직선은 유리수와 무리수, 즉 실수로 완전히 메워진다. (옳다)<br>③ 서로 다른 두 실수 사이에는 무리수가 무수히 많다. (옳다)<br>④ $\\sqrt{5}$와 $\\sqrt{6}$ 사이에도 무리수가 무수히 많다. (옳다)<br>⑤ 모든 무리수는 수직선 위의 한 점에 대응한다. (옳다)</p>",
     "score": 4.0
   },
   {
@@ -76,8 +76,8 @@ window.questionBank = [
       "⑤ $\\sqrt{3}+\\sqrt{5} > 2+\\sqrt{5}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>① $\\sqrt{5}\\approx2.24>2$이므로 옳지 않다.<br>② $\\sqrt{\\frac{1}{3}}\\approx0.577>\\frac{1}{3}$이므로 옳지 않다.<br>③ $1+\\sqrt{5}\\approx3.24>3$이므로 옳지 않다.<br>④ 양변에서 $-\\sqrt{7}$이 같으므로 $\\sqrt{2}<\\sqrt{3}$에 의해 $\\sqrt{2}-\\sqrt{7}<\\sqrt{3}-\\sqrt{7}$이다. (옳다)<br>⑤ 양변에서 $\\sqrt{5}$를 빼면 $\\sqrt{3}>2$인데 $\\sqrt{3}<2$이므로 옳지 않다.</p>",
     "score": 4.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 세로로 네 개의 가로 막대가 놓여 있고, 위의 두 막대는 0에서 오른쪽으로, 아래의 두 막대는 0에서 왼쪽으로 뻗는다. 각 막대 위에 √2, √3, √2-√7, √3-√7이 적혀 있다.",
@@ -99,8 +99,8 @@ window.questionBank = [
       "⑤ $\\frac{\\sqrt{2}}{5\\sqrt{3}} = \\frac{\\sqrt{6}}{15}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>① $\\frac{1}{\\sqrt{3}}=\\frac{\\sqrt{3}}{3}$ (옳다)<br>② $\\frac{4}{\\sqrt{2}}=\\frac{4\\sqrt{2}}{2}=2\\sqrt{2}$ (옳다)<br>③ $\\frac{6}{\\sqrt{24}}=\\frac{6}{2\\sqrt{6}}=\\frac{3}{\\sqrt{6}}=\\frac{3\\sqrt{6}}{6}=\\frac{\\sqrt{6}}{2}$ 이므로 $\\frac{1}{2}$이 아니다. (옳지 않다)<br>④ $\\frac{3}{\\sqrt{8}}=\\frac{3}{2\\sqrt{2}}=\\frac{3\\sqrt{2}}{4}$ (옳다)<br>⑤ $\\frac{\\sqrt{2}}{5\\sqrt{3}}=\\frac{\\sqrt{6}}{15}$ (옳다)</p>",
     "score": 3.0
   },
   {
@@ -118,8 +118,8 @@ window.questionBank = [
       "⑤ $-4\\sqrt{3}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>괄호를 먼저 푼다.<br>$-12\\left(\\frac{\\sqrt{3}}{2}-\\frac{1}{\\sqrt{3}}\\right)=-6\\sqrt{3}+\\frac{12}{\\sqrt{3}}=-6\\sqrt{3}+4\\sqrt{3}=-2\\sqrt{3}$<br>$\\frac{18}{\\sqrt{3}}=6\\sqrt{3}$이므로 전체는 다음과 같다.<br>$-2\\sqrt{3}+4\\sqrt{3}-6\\sqrt{3}=-4\\sqrt{3}$</p>",
     "score": 4.0
   },
   {
@@ -137,8 +137,8 @@ window.questionBank = [
       "⑤ $2-\\sqrt{3}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$1<\\sqrt{3}<2$이므로 $-2<-\\sqrt{3}<-1$이고 $4<6-\\sqrt{3}<5$이다.<br>정수 부분은 $x=4$이고, 소수 부분은 $y=(6-\\sqrt{3})-4=2-\\sqrt{3}$이다.<br>$x-y-2=4-(2-\\sqrt{3})-2=\\sqrt{3}$</p>",
     "score": 4.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
@@ -163,8 +163,8 @@ window.questionBank = [
       "⑤ $2\\sqrt{2}$"
     ],
     "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q8-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\square\\mathrm{ABFD}$는 한 변의 길이가 $1$인 정사각형이므로 $\\overline{\\mathrm{BD}}=\\sqrt{1^2+1^2}=\\sqrt{2}$이다.<br>$\\overline{\\mathrm{BP}}=\\overline{\\mathrm{BD}}=\\sqrt{2}$이고 점 $\\mathrm{B}$가 $1$에 대응하므로 점 $\\mathrm{P}$는 왼쪽에 있다. $p=1-\\sqrt{2}$<br>$\\overline{\\mathrm{BE}}=\\sqrt{2}$이므로 $\\overline{\\mathrm{BQ}}=\\sqrt{2}$이고 점 $\\mathrm{Q}$는 오른쪽에 있다. $q=1+\\sqrt{2}$<br>$\\frac{1}{p}=\\frac{1}{1-\\sqrt{2}}=\\frac{1+\\sqrt{2}}{(1-\\sqrt{2})(1+\\sqrt{2})}=\\frac{1+\\sqrt{2}}{-1}=-1-\\sqrt{2}$<br>$\\frac{1}{q}=\\frac{1}{1+\\sqrt{2}}=\\frac{\\sqrt{2}-1}{(1+\\sqrt{2})(\\sqrt{2}-1)}=\\sqrt{2}-1$<br>$\\frac{1}{p}-\\frac{1}{q}=(-1-\\sqrt{2})-(\\sqrt{2}-1)=-2\\sqrt{2}$</p>",
     "score": 4.0
   },
   {
@@ -182,8 +182,8 @@ window.questionBank = [
       "⑤ $\\sqrt{500}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$\\sqrt{5}$와 $\\sqrt{50}$의 값을 이용할 수 있는지 각각 확인한다.<br>① $\\sqrt{0.2}=\\sqrt{\\frac{20}{100}}$ 이고 $\\sqrt{0.2}=\\frac{\\sqrt{5}}{5}$ (가능)<br>② $\\sqrt{0.5}=\\sqrt{\\frac{50}{100}}=\\frac{\\sqrt{50}}{10}$ (가능)<br>③ $\\sqrt{1.25}=\\sqrt{\\frac{125}{100}}=\\frac{5\\sqrt{5}}{10}$ (가능)<br>④ $\\sqrt{75}=5\\sqrt{3}$으로 $\\sqrt{3}$의 값이 필요하다. (불가능)<br>⑤ $\\sqrt{500}=\\sqrt{5\\times100}=10\\sqrt{5}$ (가능)</p>",
     "score": 4.0
   },
   {
@@ -201,8 +201,8 @@ window.questionBank = [
       "⑤ $0.005x$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$\\sqrt{0.005}=\\sqrt{\\frac{50}{10000}}=\\frac{\\sqrt{50}}{100}=\\frac{5\\sqrt{2}}{100}=0.05\\sqrt{2}=0.05x$</p>",
     "score": 4.0
   },
   {
@@ -223,8 +223,8 @@ window.questionBank = [
       "⑤ $2\\sqrt{2}-\\sqrt{3}$"
     ],
     "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q11-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>큰 정사각형의 넓이가 작은 정사각형의 넓이의 $3$배이므로 변의 길이의 비는 $\\sqrt{3}:1$이다.<br>즉 이웃한 정사각형의 변의 길이는 앞의 것의 $\\sqrt{3}$배이다.<br>(가)의 한 변이 $2$이므로 네 정사각형의 한 변은 차례로 다음과 같다.<br>$2,\\quad 2\\sqrt{3},\\quad 2\\sqrt{3}\\times\\sqrt{3}=6,\\quad 6\\sqrt{3}$<br>$\\overline{\\mathrm{PQ}}$는 네 정사각형의 가로 변의 합이다.<br>$\\overline{\\mathrm{PQ}}=2+2\\sqrt{3}+6+6\\sqrt{3}=8+8\\sqrt{3}$</p>",
     "score": 5.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 윗변을 맞춘 네 정사각형의 넓이가 세 배씩 커지면 변의 길이는 루트 삼 배씩 커진다. 위쪽 네 변을 차례로 더한다.",
@@ -246,8 +246,8 @@ window.questionBank = [
       "⑤ $-4$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$2xy+1-x^2-y^2=1-(x^2-2xy+y^2)=1-(x-y)^2$이다.<br>$x-y=(\\sqrt{2}+1)-(\\sqrt{2}-1)=2$<br>$1-(x-y)^2=1-2^2=-3$</p>",
     "score": 4.0
   },
   {
@@ -265,8 +265,8 @@ window.questionBank = [
       "⑤ $a^2x$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$a^2x-b^2x=x(a^2-b^2)=x(a+b)(a-b)$이다.<br>인수는 $x,\\ a+b,\\ a-b$와 이들의 곱인 $(a+b)(a-b)$ 등이다.<br>$a^2x$는 $a^2x-b^2x$를 나누어떨어뜨리지 않으므로 인수가 아니다.</p>",
     "score": 4.0
   },
   {
@@ -284,8 +284,8 @@ window.questionBank = [
       "⑤ ㄱ, ㄷ, ㄹ"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>ㄱ. $(1-a)-a(1-a)=(1-a)(1-a)=(1-a)^2$ (옳다)<br>ㄴ. $a^2-b^2=(a+b)(a-b)$ (옳지 않다)<br>ㄷ. $x^2-x+\\frac{1}{4}=\\left(x-\\frac{1}{2}\\right)^2$ (옳지 않다)<br>ㄹ. $(2a+7b)(a-b)=2a^2-2ab+7ab-7b^2=2a^2+5ab-7b^2$ (옳다)<br>옳은 것은 ㄱ, ㄹ이다.</p>",
     "score": 4.0
   },
   {
@@ -303,8 +303,8 @@ window.questionBank = [
       "⑤ $-10$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$x^2+2x-8=(x+4)(x-2)$<br>$3x^2-11x+10=(3x-5)(x-2)$<br>공통인 일차식 인수는 $x-2$이다.<br>$5x^2+ax+4$가 $x-2$를 인수로 가지므로 $x=2$를 대입하면 $0$이다.<br>$5\\times4+2a+4=0$이므로 $24+2a=0$, $a=-12$이다.</p>",
     "score": 4.0
   },
   {
@@ -322,8 +322,8 @@ window.questionBank = [
       "⑤ 560"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$2^{128}-1$을 곱셈 공식 $A^2-B^2=(A+B)(A-B)$로 계속 인수분해한다.<br>$2^{128}-1=(2^{64}+1)(2^{32}+1)(2^{16}+1)(2^{8}+1)(2^{8}-1)$<br>$2^{8}+1=257$, $2^{8}-1=255$이다.<br>$200$과 $300$ 사이에 있는 두 수는 $255,\\ 257$이다.<br>합은 $255+257=512$이다.</p>",
     "score": 5.0
   },
   {
@@ -341,8 +341,8 @@ window.questionBank = [
       "⑤ $3x+2y$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>잔디밭의 가로의 길이를 $L$이라 하면 직사각형의 넓이는 $L(x+y)$이고 연못의 넓이는 $x^2$이다.<br>$L(x+y)-x^2=x^2+3xy+y^2$이므로 $L(x+y)=2x^2+3xy+y^2$이다.<br>$2x^2+3xy+y^2=(2x+y)(x+y)$이므로 $L=2x+y$이다.</p>",
     "score": 5.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q17-solution.svg",
     "solutionImageAlt": "해설 그림: x=2, y=1의 배치 예시이다. 중앙 연못의 넓이를 남은 잔디밭 넓이에 더해 전체 직사각형 넓이를 복원한 뒤 세로 길이로 나눈다.",
@@ -364,8 +364,8 @@ window.questionBank = [
       "⑤ $-3$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$0<x<3$에서 $x>0$이므로 $\\sqrt{x^2}=x$이다.<br>$\\sqrt{x^2-6x+9}=\\sqrt{(x-3)^2}=|x-3|$이고 $x-3<0$이므로 $|x-3|=3-x$이다.<br>$x+(3-x)=3$</p>",
     "score": 4.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 가로선 위의 세 점 O, X, Y가 선분을 두 구간으로 나누고 있다. 왼쪽 구간에는 x, 오른쪽 구간에는 3−x, 전체 구간에는 3이라는 길이 표시가 있다.",
@@ -387,8 +387,8 @@ window.questionBank = [
       "⑤ $\\frac{5}{3}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$ax^2+12x+9=(\\sqrt{a}\\,x+3)^2$이어야 하므로 $2\\times\\sqrt{a}\\times3=12$, $\\sqrt{a}=2$, $a=4$이다.<br>$\\frac{1}{16}x^2-bx+\\frac{1}{9}=\\left(\\frac{1}{4}x-\\frac{1}{3}\\right)^2$이어야 하므로 $b=2\\times\\frac{1}{4}\\times\\frac{1}{3}=\\frac{1}{6}$이다.<br>$ab=4\\times\\frac{1}{6}=\\frac{2}{3}$</p>",
     "score": 4.0
   },
   {
@@ -406,8 +406,8 @@ window.questionBank = [
       "⑤ $4$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$(2x-y)(3x+By)=6x^2+(2B-3)xy-By^2$이다.<br>$xy$의 계수를 비교하면 $2B-3=-7$이므로 $B=-2$이다.<br>$y^2$의 계수를 비교하면 $A=-B=2$이다.<br>$AB=2\\times(-2)=-4$</p>",
     "score": 4.0
   },
   {
@@ -419,8 +419,8 @@ window.questionBank = [
     "content": "[서술형 1] $a=\\sqrt{5}$일 때, $a+\\frac{1}{a}$은 $a$의 값의 몇 배인지 구하여라.(6점) [6점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\frac{6}{5}$배",
+    "solution": "<p>$a+\\frac{1}{a}=\\sqrt{5}+\\frac{1}{\\sqrt{5}}=\\sqrt{5}+\\frac{\\sqrt{5}}{5}=\\frac{6\\sqrt{5}}{5}$<br>$a=\\sqrt{5}$이므로 몇 배인지는 $\\frac{a+\\frac{1}{a}}{a}$이다.<br>$\\frac{6\\sqrt{5}}{5}\\div\\sqrt{5}=\\frac{6\\sqrt{5}}{5}\\times\\frac{1}{\\sqrt{5}}=\\frac{6}{5}$<br>따라서 $\\frac{6}{5}$배이다.</p>",
     "score": 6.0
   },
   {
@@ -435,8 +435,8 @@ window.questionBank = [
     "content": "[서술형 2] 오른쪽 그림은 하나의 직사각형을 두 개의 정사각형 $\\mathrm{A, C}$와 직사각형 $\\mathrm{B}$로 나눈 것이다. 두 정사각형 $\\mathrm{A, C}$ 넓이가 각각 $\\frac{18}{5}x$, $14-x$이고, 변의 길이가 모두 자연수일 때, 직사각형 $\\mathrm{B}$의 넓이를 구하여라. (단, $x$는 자연수)(7점) [7점]",
     "choices": [],
     "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q22-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "$8$",
+    "solution": "<p>정사각형 $\\mathrm{A}$의 넓이 $\\frac{18}{5}x$가 자연수의 제곱이어야 한다. $\\frac{18}{5}x$가 자연수이려면 $x$는 $5$의 배수이고, $14-x>0$이므로 $x=5$ 또는 $x=10$이다.<br>$x=5$이면 $\\frac{18}{5}\\times5=18$이 제곱수가 아니므로 안 된다.<br>$x=10$이면 $\\frac{18}{5}\\times10=36=6^2$, $14-10=4=2^2$으로 두 변의 길이가 모두 자연수이다.<br>따라서 $\\mathrm{A}$의 한 변은 $6$, $\\mathrm{C}$의 한 변은 $2$이다.<br>직사각형 $\\mathrm{B}$의 가로는 $\\mathrm{C}$의 한 변과 같은 $2$이고, 세로는 $6-2=4$이다.<br>$\\mathrm{B}$의 넓이는 $2\\times4=8$이다.</p>",
     "score": 7.0,
     "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
@@ -452,8 +452,8 @@ window.questionBank = [
     "content": "[서술형 3] 넓이가 $x^2+2xy+y^2-2x-2y-15$인 직사각형이 있다. 이 직사각형의 가로, 세로의 길이가 각각 $x$, $y$의 계수가 자연수인 일차식일 때, 이 직사각형의 둘레의 길이를 $x$, $y$에 대한 식으로 나타내어라.(7점) [7점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$4x+4y-4$",
+    "solution": "<p>$x^2+2xy+y^2-2x-2y-15$에서 $x+y=A$로 놓으면 다음과 같다.<br>$A^2-2A-15=(A-5)(A+3)$<br>따라서 $(x+y-5)(x+y+3)$이고, 가로, 세로의 길이는 $x+y-5$, $x+y+3$이다. (계수가 모두 자연수)<br>둘레의 길이는 $2\\{(x+y-5)+(x+y+3)\\}=2(2x+2y-2)=4x+4y-4$이다.</p>",
     "score": 7.0
   }
 ];

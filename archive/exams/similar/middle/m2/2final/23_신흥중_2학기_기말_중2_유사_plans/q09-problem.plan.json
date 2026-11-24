@@ -1,0 +1,419 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 평행선 l, m, n과 두 직선이 만나며, 한 직선에서 l과 m 사이는 12, m과 n 사이는 8이고 다른 직선에서 l과 n 사이 전체는 x, m과 n 사이는 6이다.",
+  "accessibilityDescription": "가로로 놓인 세 평행선 l, m, n을 두 직선이 지나고, 왼쪽 직선에는 12와 8이, 오른쪽 세로 직선에는 x와 6이 적혀 있다.",
+  "newVisualInformation": [
+    "세 평행선과 두 직선 사이의 길이 12, 8, x, 6"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L0",
+    "L1",
+    "M0",
+    "M1",
+    "N0",
+    "N1",
+    "A0",
+    "A1",
+    "A2",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L0",
+        "L1"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M0",
+        "M1"
+      ]
+    },
+    {
+      "id": "sN",
+      "refs": [
+        "N0",
+        "N1"
+      ]
+    },
+    {
+      "id": "sA0A1",
+      "refs": [
+        "A0",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sB",
+      "refs": [
+        "B0",
+        "B2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v12",
+        "ownerSegment": "sA0A1",
+        "text": "12"
+      },
+      {
+        "id": "v8",
+        "ownerSegment": "sA1A2",
+        "text": "8"
+      },
+      {
+        "id": "vx",
+        "ownerSegment": "sB",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d6",
+        "from": "B1",
+        "to": "B2",
+        "label": "6",
+        "value": 6,
+        "side": "RIGHT"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tl",
+        "at": [
+          -1,
+          0.6
+        ],
+        "text": "l"
+      },
+      {
+        "id": "tm",
+        "at": [
+          -1,
+          -8.4
+        ],
+        "text": "m"
+      },
+      {
+        "id": "tn",
+        "at": [
+          -1,
+          -14.4
+        ],
+        "text": "n"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "L0",
+    "L1",
+    "M0",
+    "M1",
+    "N0",
+    "N1",
+    "A0",
+    "A1",
+    "A2",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 평행선 $l \\parallel m \\parallel n$이 두 직선과 만난다. 한 직선 위에서 $l$과 $m$ 사이의 거리가 $12$, $m$과 $n$ 사이의 거리가 $8$이다. 다른 직선 위에서 $l$과 $n$ 사이의 전체 거리가 $x$이고, $m$과 $n$ 사이의 거리가 $6$일 때, $x$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

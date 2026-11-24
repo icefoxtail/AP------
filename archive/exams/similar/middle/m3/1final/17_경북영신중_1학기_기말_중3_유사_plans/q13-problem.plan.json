@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -2,
+      15
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "g2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=x^2+5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "6"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선 y=x²과 y=x²+5가 같은 좌표평면에 그려져 있고, y축에 평행한 선분 AB의 양 끝 A, B가 각각 두 포물선 위에 있다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선이 위아래로 나란히 있고, 오른쪽 부분에서 y축에 평행한 선분 AB가 두 포물선을 잇고 있다.",
+  "newVisualInformation": [
+    "두 포물선 y=x², y=x²+5",
+    "y축에 평행한 선분 AB",
+    "점 A는 위쪽 포물선 위",
+    "점 B는 아래쪽 포물선 위"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 두 이차함수 $y = x^2$, $y = x^2 + 5$의 그래프를 나타낸 것이다. 이때, $y$축에 평행한 선분 $\\mathrm{AB}$의 길이는? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

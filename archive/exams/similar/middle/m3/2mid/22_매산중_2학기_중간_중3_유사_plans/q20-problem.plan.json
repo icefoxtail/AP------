@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5.5,
+      2.5,
+      -10,
+      18
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-7",
+          "-8",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "0"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "9"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선이 서로의 꼭짓점을 지나고, 한 포물선의 꼭짓점 A에서 가로축에 평행한 선을 그어 다른 포물선과 만난 점이 B이다. 선분 AB의 길이는 6이다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선과 아래로 볼록한 포물선이 서로의 꼭짓점을 지나도록 그려져 있다. 왼쪽 위의 점 A에서 오른쪽의 점 B까지 가로로 수평인 선분이 그려져 있다.",
+  "newVisualInformation": [
+    "서로의 꼭짓점을 지나는 두 포물선과, 꼭짓점 A에서 그은 가로 선분의 끝점 B를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 두 이차함수 $y = (x+1)^2$, $y = a(x-p)^2 + q$의 그래프가 서로의 꼭짓점을 지난다. $y = a(x-p)^2 + q$의 그래프의 꼭짓점을 $\\mathrm{A}$, 점 $\\mathrm{A}$에서 $x$축과 평행한 직선을 그어 $y = (x+1)^2$의 그래프와 만나는 점을 $\\mathrm{B}$라 할 때, $\\overline{\\mathrm{AB}} = 6$이다. 상수 $a, p, q$에 대하여 $a + p + q$의 값은? (단, $p < -1$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

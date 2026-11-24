@@ -736,7 +736,7 @@
   function listMode() {
     if (!state.light) return false;
     if (!state.catalog) return true;
-    return state.catalog.complete === false && (state.view === "find" || state.view === "home");
+    return state.catalog.complete === false && (state.view === "find" || state.view === "home" || state.view === "recent");
   }
   function catalogExams() {
     if (listMode()) return state.light.exams;

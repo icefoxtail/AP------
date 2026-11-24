@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      "7/2"
+    ],
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "nl",
+          "text": "y=ax+b",
+          "labelKind": "MATH",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "caption": "오른쪽 위로 향하고 y축과 음의 부분에서 만나는 직선 y=ax+b의 그래프이다.",
+  "accessibilityDescription": "좌표평면에서 오른쪽 위로 올라가며 y축을 원점 아래에서 지나는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선이 오른쪽 위로 향한다.",
+    "직선의 y절편이 음수이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 그림과 같을 때, 이차함수 $y = (x - a)^2 + b$의 그래프의 개형으로 옳은 것을 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

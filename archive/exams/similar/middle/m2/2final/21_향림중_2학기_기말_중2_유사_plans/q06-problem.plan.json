@@ -1,0 +1,459 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "612835",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "514230",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "271925",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "77135",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "E2",
+    "F2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2A2",
+      "refs": [
+        "C2",
+        "A2"
+      ]
+    },
+    {
+      "id": "sD2E2",
+      "refs": [
+        "D2",
+        "E2"
+      ]
+    },
+    {
+      "id": "sE2F2",
+      "refs": [
+        "E2",
+        "F2"
+      ]
+    },
+    {
+      "id": "sF2D2",
+      "refs": [
+        "F2",
+        "D2"
+      ]
+    },
+    {
+      "id": "sA2D2",
+      "refs": [
+        "A2",
+        "D2"
+      ]
+    },
+    {
+      "id": "sB2E2",
+      "refs": [
+        "B2",
+        "E2"
+      ]
+    },
+    {
+      "id": "sC2F2",
+      "refs": [
+        "C2",
+        "F2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA2",
+        "refs": [
+          "B2",
+          "A2",
+          "C2"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lA2D2",
+        "ownerSegment": "sA2D2",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "lA2C2",
+        "ownerSegment": "sC2A2",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "E2",
+    "F2"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "caption": "서로 닮음인 두 삼각기둥이 나란히 그려져 있다. 왼쪽 기둥에는 세로 모서리 6 cm와 밑면의 한 모서리 4 cm가, 오른쪽 기둥에는 세로 모서리 9 cm와 밑면의 한 모서리 12 cm 및 밑면의 한 각 40도가 표시되어 있다.",
+  "accessibilityDescription": "왼쪽과 오른쪽에 삼각기둥이 하나씩 놓여 있고, 왼쪽 기둥에는 6 cm와 4 cm가, 오른쪽 기둥에는 9 cm, 12 cm, 40도가 적혀 있다. 왼쪽 기둥의 밑면 꼭짓점 두 곳에만 이름이 붙어 있고 오른쪽 기둥의 꼭짓점에는 이름이 없다.",
+  "newVisualInformation": [
+    "닮은 두 삼각기둥",
+    "왼쪽 기둥의 세로 모서리 6 cm",
+    "왼쪽 기둥 밑면 모서리 4 cm",
+    "오른쪽 기둥의 세로 모서리 9 cm",
+    "오른쪽 기둥 밑면 모서리 12 cm",
+    "오른쪽 기둥 밑면의 각 40도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮음인 두 삼각기둥 $ABC-DEF$와 $A'B'C'-D'E'F'$에서 모서리 $AB$에 대응하는 모서리가 $A'B'$이다. $\\overline{AD} = 6\\text{ cm}$, $\\overline{DE} = 4\\text{ cm}$, $\\overline{A'D'} = 9\\text{ cm}$, $\\overline{A'C'} = 12\\text{ cm}$, $ ngle B'A'C' = 40^\\circ$일 때, 다음 중 옳지 않은 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

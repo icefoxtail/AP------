@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "D"
+      ],
+      "rightAngle": "D"
+    },
+    {
+      "type": "point",
+      "id": "C",
+      "on": "BD"
+    },
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "80 m"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "D"
+      ],
+      "text": "45°"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "D"
+      ],
+      "text": "60°"
+    }
+  ]
+}

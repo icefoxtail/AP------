@@ -13,8 +13,8 @@ window.examData = {
         "ㄷ, ㄹ",
         "ㄴ, ㄷ, ㄹ"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>함수는 $x$의 값이 하나 정해질 때 $y$의 값이 하나로 정해지는 대응이다.<br>ㄱ. $x=6$의 약수는 $1,2,3,6$으로 $y$가 여러 개이므로 함수가 아니다.<br>ㄴ. $x$를 $3$으로 나눈 나머지는 하나로 정해지므로 함수이다.<br>ㄷ. 둘레의 길이가 같아도 삼각형의 넓이는 여러 가지이므로 함수가 아니다.<br>ㄹ. $y=2x$이므로 함수이다.<br>함수인 것은 ㄴ, ㄹ이다.</p>"
     },
     {
       "id": 2,
@@ -27,8 +27,8 @@ window.examData = {
         "11",
         "13"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$f(x)=-x+3$이므로 $f(-2)=2+3=5$, $f(1)=-1+3=2$이다.<br>$f(-2)+3f(1)=5+3\\times2=11$</p>"
     },
     {
       "id": 3,
@@ -41,8 +41,8 @@ window.examData = {
         "$y = x^2 + 1$",
         "$y = (2x + 1)x$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>$y=ax+b$ ($a\\ne0$) 꼴인 것을 찾는다.<br>① $y=\\frac{1}{x}$은 일차함수가 아니다.<br>② $y=2-2x=-2x+2$는 일차함수이다.<br>③ $y=-3$은 상수함수이다.<br>④ $y=x^2+1$은 이차함수이다.<br>⑤ $y=(2x+1)x=2x^2+x$는 이차함수이다.</p>"
     },
     {
       "id": 4,
@@ -55,8 +55,8 @@ window.examData = {
         "4",
         "5"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>$x$절편이 $\\frac{5}{2}$이므로 점 $\\left(\\frac{5}{2},0\\right)$을 지난다.<br>$0=-2\\times\\frac{5}{2}+b=-5+b$이므로 $b=5$이다.<br>$y$절편은 $b=5$이다.</p>"
     },
     {
       "id": 5,
@@ -69,8 +69,8 @@ window.examData = {
         "$\\dfrac{1}{3}$",
         "$3$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>그림의 직선은 $y$절편이 $3$이고 $x$절편이 $1$이므로 두 점 $(0,3)$, $(1,0)$을 지난다.<br>기울기는 $\\frac{0-3}{1-0}=-3$이다.<br>$y=ax-1$의 기울기 $a$가 이와 같으므로 $a=-3$이다.</p>"
     },
     {
       "id": 6,
@@ -83,8 +83,8 @@ window.examData = {
         "$y = \\dfrac{2}{3}x - 3$",
         "$y = \\dfrac{1}{4}x - 3$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$y=-\\frac{1}{2}x+1$의 $x$절편은 $y=0$일 때 $x=2$이므로 점 $(2,0)$을 지난다.<br>$y=2x-3$의 $y$절편은 $-3$이므로 점 $(0,-3)$을 지난다.<br>두 점 $(2,0)$, $(0,-3)$을 지나는 직선의 기울기는 $\\frac{0-(-3)}{2-0}=\\frac{3}{2}$이고 $y$절편이 $-3$이므로 $y=\\frac{3}{2}x-3$이다.</p>"
     },
     {
       "id": 7,
@@ -97,8 +97,8 @@ window.examData = {
         "$a < 0, b < 0$",
         "$a < 0, b = 0$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>그래프가 오른쪽 아래로 향하므로 기울기 $a<0$이다.<br>그래프가 $y$축과 원점보다 아래에서 만나므로 $y$절편 $-b<0$, 즉 $b>0$이다.</p>"
     },
     {
       "id": 8,
@@ -111,8 +111,8 @@ window.examData = {
         "$y = 3x - 1$",
         "$y = -3x - 1$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>기울기는 $\\frac{-2-1}{4-1}=-1$이다.<br>$y=-x+b$에 점 $(1,1)$을 대입하면 $1=-1+b$이므로 $b=2$이다.<br>$y=-x+2$</p>"
     },
     {
       "id": 9,
@@ -125,8 +125,8 @@ window.examData = {
         "110곡",
         "112곡"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>한 달에 내려받은 곡 수를 $x$곡이라 하면 $100$곡을 초과한 곡 수는 $(x-100)$곡이다.<br>요금은 $7000+500(x-100)$이다.<br>$7000+500(x-100)=11000$이므로 $500(x-100)=4000$, $x-100=8$이다.<br>$x=108$ (곡)</p>"
     },
     {
       "id": 10,
@@ -139,8 +139,8 @@ window.examData = {
         "5",
         "$\\dfrac{5}{2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>세 직선의 교점을 구한다.<br>$y=-x-3$과 $x=0$의 교점은 $(0,-3)$이다.<br>$y=\\frac{1}{4}x+2$와 $x=0$의 교점은 $(0,2)$이다.<br>$-x-3=\\frac{1}{4}x+2$에서 $-\\frac{5}{4}x=5$이므로 $x=-4$, $y=1$이므로 교점은 $(-4,1)$이다.<br>$y$축 위의 변의 길이는 $2-(-3)=5$이고 높이는 $|-4|=4$이다.<br>넓이는 $\\frac{1}{2}\\times5\\times4=10$이다.</p>"
     },
     {
       "id": 11,
@@ -153,8 +153,8 @@ window.examData = {
         "ㄹ, ㅁ",
         "ㄷ, ㅂ"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>해가 무수히 많으려면 두 방정식이 같은 직선을 나타내야 한다.<br>ㄱ. 기울기가 다르므로 해가 한 개이다.<br>ㄴ. $4x-2y=-2$와 $4x-2y=5$이므로 평행하여 해가 없다.<br>ㄷ. $6x+2y=14$는 $3x+y=7$의 양변에 $2$를 곱한 식이므로 해가 무수히 많다.<br>ㄹ. 평행하므로 해가 없다.<br>ㅁ. 기울기가 다르므로 해가 한 개이다.<br>ㅂ. $8x+4y-12=0$은 $2x+y-3=0$의 양변에 $4$를 곱한 식이므로 해가 무수히 많다.<br>해가 무수히 많은 것은 ㄷ, ㅂ이다.</p>"
     },
     {
       "id": 12,
@@ -167,8 +167,8 @@ window.examData = {
         "1",
         "2"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>$x=3$을 둘째 방정식 $x-2y=5$에 대입하면 $3-2y=5$이므로 $y=-1$이다.<br>교점 $(3,-1)$이 첫째 방정식 $x+ay=1$ 위에 있으므로 $3+a\\times(-1)=1$이다.<br>$3-a=1$이므로 $a=2$이다.</p>"
     },
     {
       "id": 13,
@@ -181,8 +181,8 @@ window.examData = {
         "$y = 1$",
         "$y = -1$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>연립방정식 $\\begin{cases}2x-y-3=0\\\\x-3y+1=0\\end{cases}$의 해가 교점이다.<br>첫째 식에서 $y=2x-3$이다. 둘째 식에 대입하면 $x-3(2x-3)+1=0$, $-5x+10=0$이므로 $x=2$이고 $y=1$이다.<br>교점은 $(2,1)$이다. $x$축에 평행한 직선은 $y=$(상수) 꼴이므로 $y=1$이다.</p>"
     },
     {
       "id": 14,
@@ -209,8 +209,8 @@ window.examData = {
         "$48^\\circ$",
         "$52^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$\\angle\\mathrm{ABD}=22^\\circ$이고 $\\mathrm{BD}$가 $\\angle\\mathrm{B}$의 이등분선이므로 $\\angle\\mathrm{B}=44^\\circ$이다.<br>$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이므로 $\\angle\\mathrm{C}=\\angle\\mathrm{B}=44^\\circ$이다.<br>$\\angle\\mathrm{C}$의 외각은 $180^\\circ-44^\\circ=136^\\circ$이고 그 이등분선이 만드는 각은 $68^\\circ$이다.<br>$\\triangle\\mathrm{DBC}$에서 $\\angle\\mathrm{DBC}=22^\\circ$, $\\angle\\mathrm{BCD}=44^\\circ+68^\\circ=112^\\circ$이다.<br>$\\angle\\mathrm{BDC}=180^\\circ-22^\\circ-112^\\circ=46^\\circ$</p>"
     },
     {
       "id": 16,
@@ -223,8 +223,8 @@ window.examData = {
         "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_4.png\" />",
         "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_5.png\" />"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>기준 삼각형은 빗변의 길이가 $10\\,\\text{cm}$이고 한 예각이 $40^\\circ$인 직각삼각형이다.<br>직각삼각형은 빗변의 길이와 한 예각의 크기가 각각 같으면 합동(RHA 합동)이다.<br>⑤는 직각삼각형이고 빗변이 $10\\,\\text{cm}$이며 한 예각이 $50^\\circ$이므로 다른 예각은 $90^\\circ-50^\\circ=40^\\circ$이다. 따라서 합동이다.<br>① 한 변이 $6\\,\\text{cm}$이고 빗변이 $10\\,\\text{cm}$, ② 한 변이 $5\\,\\text{cm}$인 직각삼각형, ③, ④는 $10\\,\\text{cm}$인 변이 빗변이 아니므로 합동이 아니다.</p>"
     },
     {
       "id": 17,
@@ -237,8 +237,8 @@ window.examData = {
         "$\\overline{\\text{CD}} = \\overline{\\text{MD}}$",
         "$\\angle\\text{BDM} = \\angle\\text{ADC}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$이고 $\\overline{\\mathrm{DM}}\\perp\\overline{\\mathrm{AB}}$이므로 $\\mathrm{DM}$은 $\\overline{\\mathrm{AB}}$의 수직이등분선이다. 따라서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BD}}$이다. (①)<br>$\\triangle\\mathrm{ACD}\\equiv\\triangle\\mathrm{AMD}$ (RHA 합동, 빗변 $\\mathrm{AD}$ 공통, $\\angle\\mathrm{CAD}=\\angle\\mathrm{MAD}$)이므로 $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{MD}}$ (④), $\\angle\\mathrm{ADC}=\\angle\\mathrm{ADM}$이다.<br>$\\triangle\\mathrm{AMD}\\equiv\\triangle\\mathrm{BMD}$이므로 $\\angle\\mathrm{DAB}=\\angle\\mathrm{B}$이고 $\\angle\\mathrm{CAD}=\\angle\\mathrm{DAB}=\\angle\\mathrm{B}$이다.<br>$\\angle\\mathrm{A}+\\angle\\mathrm{B}=90^\\circ$에서 $3\\angle\\mathrm{B}=90^\\circ$이므로 $\\angle\\mathrm{B}=30^\\circ$이다. (③ $45^\\circ$는 옳지 않다.)<br>$30^\\circ$인 각의 대변인 $\\overline{\\mathrm{AC}}$는 빗변 $\\overline{\\mathrm{AB}}$의 절반이므로 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{BM}}$이다. (②)<br>$\\angle\\mathrm{BDM}=\\angle\\mathrm{ADM}=\\angle\\mathrm{ADC}$이다. (⑤)</p>"
     },
     {
       "id": 18,
@@ -251,8 +251,8 @@ window.examData = {
         "$98\\text{ cm}^2$",
         "$100\\text{ cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$\\triangle\\mathrm{ABC}$는 직각이등변삼각형이므로 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=10\\,\\text{cm}$이다.<br>$\\angle\\mathrm{DAB}+\\angle\\mathrm{ABD}=90^\\circ$이고 $\\angle\\mathrm{ABD}+\\angle\\mathrm{CBE}=90^\\circ$이므로 $\\angle\\mathrm{DAB}=\\angle\\mathrm{EBC}$이다.<br>$\\triangle\\mathrm{ADB}\\equiv\\triangle\\mathrm{BEC}$ (RHA 합동)이다.<br>$\\overline{\\mathrm{BE}}=\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{DB}}=\\overline{\\mathrm{EC}}=8$이므로 $\\overline{\\mathrm{DE}}=8+6=14$이다.<br>사각형 $\\mathrm{ADEC}$는 사다리꼴이므로 넓이는 $\\frac{1}{2}(6+8)\\times14=98\\,(\\text{cm}^2)$이다.</p>"
     },
     {
       "id": 19,
@@ -265,8 +265,8 @@ window.examData = {
         "$58^\\circ$",
         "$60^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>점 $\\mathrm{O}$가 외심이므로 $\\angle\\mathrm{BAC}$는 호 $\\mathrm{BC}$의 원주각이고 $\\angle\\mathrm{BOC}$는 같은 호의 중심각이다.<br>$\\angle\\mathrm{BAC}=\\frac{1}{2}\\angle\\mathrm{BOC}=\\frac{1}{2}\\times110^\\circ=55^\\circ$<br>(확인: $\\angle\\mathrm{OAC}=\\angle\\mathrm{OCA}=20^\\circ$이므로 $\\angle\\mathrm{AOC}=140^\\circ$, $\\angle\\mathrm{AOB}=360^\\circ-110^\\circ-140^\\circ=110^\\circ$이고 $\\angle\\mathrm{OAB}=35^\\circ$이므로 $\\angle\\mathrm{BAC}=35^\\circ+20^\\circ=55^\\circ$)</p>"
     },
     {
       "id": 20,
@@ -279,8 +279,8 @@ window.examData = {
         "$\\angle\\text{ICE} = \\angle\\text{ICF}$",
         "$\\triangle\\text{IDA} \\equiv \\triangle\\text{IDB}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>점 $\\mathrm{I}$는 내심이므로 세 변까지의 거리가 같고 각의 이등분선 위에 있다.<br>① $\\overline{\\mathrm{ID}}=\\overline{\\mathrm{IE}}=\\overline{\\mathrm{IF}}$ (옳다)<br>② $\\mathrm{ID}$는 접점으로의 반지름이므로 $\\mathrm{AB}$에 수직이고, $\\angle\\mathrm{IDA}=\\angle\\mathrm{IDB}=90^\\circ$ (옳다)<br>③ $\\mathrm{AI}$는 $\\angle\\mathrm{A}$의 이등분선이므로 $\\angle\\mathrm{IAD}=\\angle\\mathrm{IAF}$ (옳다)<br>④ $\\mathrm{CI}$는 $\\angle\\mathrm{C}$의 이등분선이므로 $\\angle\\mathrm{ICE}=\\angle\\mathrm{ICF}$ (옳다)<br>⑤ $\\triangle\\mathrm{IDA}$와 $\\triangle\\mathrm{IDB}$는 $\\overline{\\mathrm{IA}}=\\overline{\\mathrm{IB}}$일 때만 합동인데 일반적으로 $\\overline{\\mathrm{IA}}\\ne\\overline{\\mathrm{IB}}$이므로 합동이 아니다. (옳지 않다)</p>"
     },
     {
       "id": 21,
@@ -293,8 +293,8 @@ window.examData = {
         "둔각삼각형의 내심은 삼각형의 외부에 있다.",
         "직각삼각형의 외심은 빗변의 중점과 같다."
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>① 이등변삼각형의 두 밑각의 크기는 같다. (옳다)<br>② 이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다. (옳다)<br>③ 빗변의 길이와 다른 한 변의 길이가 각각 같은 두 직각삼각형은 RHS 합동이다. (옳다)<br>④ 내심은 항상 삼각형의 내부에 있다. 외부에 있을 수 있는 것은 외심이다. (옳지 않다)<br>⑤ 직각삼각형의 외심은 빗변의 중점이다. (옳다)</p>"
     },
     {
       "id": 22,
@@ -307,40 +307,40 @@ window.examData = {
         "$\\dfrac{125}{2}$",
         "63"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>외접원의 둘레가 $17\\pi$이므로 반지름은 $\\frac{17}{2}$이고, 직각삼각형의 빗변이 지름이므로 $\\overline{\\mathrm{BC}}=17$이다.<br>내접원의 둘레가 $6\\pi$이므로 반지름은 $r=3$이다.<br>$\\overline{\\mathrm{AB}}=c$, $\\overline{\\mathrm{AC}}=b$라 하면 직각삼각형의 내접원의 반지름은 $r=\\frac{b+c-17}{2}$이다.<br>$3=\\frac{b+c-17}{2}$이므로 $b+c=23$이다.<br>삼각형의 둘레는 $17+23=40$이고 넓이는 $\\frac{1}{2}\\times r\\times(\\text{둘레})=\\frac{1}{2}\\times3\\times40=60$이다.<br>(확인: $b^2+c^2=289$, $(b+c)^2=529$에서 $2bc=240$, $\\frac{1}{2}bc=60$)</p>"
     },
     {
       "id": 23,
       "score": 4.0,
       "question": "<p>서술형 1. 일차함수 $y = ax$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 점 $(2, 5)$를 지날 때, 상수 $a$의 값을 구하시오. [4점]</p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$a=1$",
+      "solution": "<p>$y=ax$를 $y$축 방향으로 $3$만큼 평행이동하면 $y=ax+3$이다.<br>점 $(2,5)$를 지나므로 $5=2a+3$이다.<br>$2a=2$이므로 $a=1$이다.</p>"
     },
     {
       "id": 24,
       "score": 5.0,
       "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$-6\\le b\\le1$",
+      "solution": "<p>일차함수 $y=3x+b$는 기울기가 $3$으로 일정하고 $b$가 커질수록 위로 평행이동한다.<br>점 $\\mathrm{A}(1,4)$를 지날 때: $4=3\\times1+b$이므로 $b=1$<br>점 $\\mathrm{B}(3,3)$을 지날 때: $3=3\\times3+b$이므로 $b=-6$<br>$b=-6$이면 점 $\\mathrm{B}$를 지나고 $b=1$이면 점 $\\mathrm{A}$를 지나므로 선분 $\\mathrm{AB}$와 만나려면 $-6\\le b\\le1$이다.</p>"
     },
     {
       "id": 25,
       "score": 6.0,
       "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$40$분 후",
+      "solution": "<p>물의 높이는 시간에 따라 일정하게 증가하므로 $y=ax+b$ 꼴이다.<br>$x=5$일 때 $y=20$, $x=15$일 때 $y=40$이므로 기울기는 $\\frac{40-20}{15-5}=2$이다.<br>$y=2x+b$에 $(5,20)$을 대입하면 $20=10+b$이므로 $b=10$이다. 따라서 $y=2x+10$이다.<br>$y=90$이면 $90=2x+10$, $2x=80$이므로 $x=40$이다.</p>"
     },
     {
       "id": 26,
       "score": 5.0,
       "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$8\\pi\\ \\text{cm}$",
+      "solution": "<p>$\\mathrm{O}$가 외심이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$이다.<br>$\\angle\\mathrm{OAB}=48^\\circ$이므로 $\\angle\\mathrm{OBA}=48^\\circ$이고 $\\angle\\mathrm{AOB}=180^\\circ-96^\\circ=84^\\circ$이다.<br>$\\angle\\mathrm{OCA}=32^\\circ$이므로 $\\angle\\mathrm{OAC}=32^\\circ$이고 $\\angle\\mathrm{AOC}=180^\\circ-64^\\circ=116^\\circ$이다.<br>$\\angle\\mathrm{BOC}=360^\\circ-84^\\circ-116^\\circ=160^\\circ$이다. (확인: $\\angle\\mathrm{A}=48^\\circ+32^\\circ=80^\\circ$이고 $\\angle\\mathrm{BOC}=2\\angle\\mathrm{A}=160^\\circ$)<br>부채꼴 $\\mathrm{BOC}$의 반지름은 $9\\,\\text{cm}$이므로 호의 길이는 $2\\pi\\times9\\times\\frac{160}{360}=8\\pi\\,(\\text{cm})$이다.</p>"
     }
   ]
 };
@@ -359,8 +359,8 @@ window.questionBank = [
       "ㄷ, ㄹ",
       "ㄴ, ㄷ, ㄹ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>함수는 $x$의 값이 하나 정해질 때 $y$의 값이 하나로 정해지는 대응이다.<br>ㄱ. $x=6$의 약수는 $1,2,3,6$으로 $y$가 여러 개이므로 함수가 아니다.<br>ㄴ. $x$를 $3$으로 나눈 나머지는 하나로 정해지므로 함수이다.<br>ㄷ. 둘레의 길이가 같아도 삼각형의 넓이는 여러 가지이므로 함수가 아니다.<br>ㄹ. $y=2x$이므로 함수이다.<br>함수인 것은 ㄴ, ㄹ이다.</p>",
     "content": "<div>1. 다음 보기에서 $y$가 $x$의 함수인 것을 모두 고른 것은? [3점]</div><div>ㄱ. 자연수 $x$의 약수는 $y$이다.<br/>ㄴ. 자연수 $x$를 3으로 나누었을 때의 나머지 $y$<br/>ㄷ. 둘레의 길이가 $x\\text{ cm}$인 삼각형의 넓이 $y\\text{ cm}^2$<br/>ㄹ. 시속 $x\\text{ km}$로 2시간 동안 달린 거리는 $y\\text{ km}$이다.</div>",
     "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
     "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
@@ -390,8 +390,8 @@ window.questionBank = [
       "11",
       "13"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$f(x)=-x+3$이므로 $f(-2)=2+3=5$, $f(1)=-1+3=2$이다.<br>$f(-2)+3f(1)=5+3\\times2=11$</p>",
     "content": "<div>2. 함수 $f(x) = -x + 3$에 대하여 $f(-2) + 3f(1)$의 값을 구하면? [3점]</div>",
     "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
     "problemTypeKey": "PT_FUNCTION_VALUE",
@@ -421,8 +421,8 @@ window.questionBank = [
       "$y = x^2 + 1$",
       "$y = (2x + 1)x$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$y=ax+b$ ($a\\ne0$) 꼴인 것을 찾는다.<br>① $y=\\frac{1}{x}$은 일차함수가 아니다.<br>② $y=2-2x=-2x+2$는 일차함수이다.<br>③ $y=-3$은 상수함수이다.<br>④ $y=x^2+1$은 이차함수이다.<br>⑤ $y=(2x+1)x=2x^2+x$는 이차함수이다.</p>",
     "content": "<div>3. 다음 중 $y$가 $x$에 대한 일차함수인 것은? [3점]</div>",
     "templateKey": "",
     "problemTypeKey": "",
@@ -452,8 +452,8 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x$절편이 $\\frac{5}{2}$이므로 점 $\\left(\\frac{5}{2},0\\right)$을 지난다.<br>$0=-2\\times\\frac{5}{2}+b=-5+b$이므로 $b=5$이다.<br>$y$절편은 $b=5$이다.</p>",
     "content": "<div>4. 일차함수 $y = -2x + b$의 그래프에서 $x$절편이 $\\dfrac{5}{2}$일 때, $y$절편을 구하면? (단, $b$는 상수) [3점]</div>",
     "templateKey": "TPL_LINE_POINT_SLOPE",
     "problemTypeKey": "PT_LINE_EQUATION",
@@ -483,8 +483,8 @@ window.questionBank = [
       "$\\dfrac{1}{3}$",
       "$3$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>그림의 직선은 $y$절편이 $3$이고 $x$절편이 $1$이므로 두 점 $(0,3)$, $(1,0)$을 지난다.<br>기울기는 $\\frac{0-3}{1-0}=-3$이다.<br>$y=ax-1$의 기울기 $a$가 이와 같으므로 $a=-3$이다.</p>",
     "content": "<div>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"검은 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
@@ -514,8 +514,8 @@ window.questionBank = [
       "$y = \\dfrac{2}{3}x - 3$",
       "$y = \\dfrac{1}{4}x - 3$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$y=-\\frac{1}{2}x+1$의 $x$절편은 $y=0$일 때 $x=2$이므로 점 $(2,0)$을 지난다.<br>$y=2x-3$의 $y$절편은 $-3$이므로 점 $(0,-3)$을 지난다.<br>두 점 $(2,0)$, $(0,-3)$을 지나는 직선의 기울기는 $\\frac{0-(-3)}{2-0}=\\frac{3}{2}$이고 $y$절편이 $-3$이므로 $y=\\frac{3}{2}x-3$이다.</p>",
     "content": "<div>6. 일차함수 $y = -\\dfrac{1}{2}x + 1$의 그래프와 $x$축에서 만나고, 일차함수 $y = 2x - 3$의 그래프와 $y$축에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</div>",
     "templateKey": "TPL_LINE_MULTI_CONDITION",
     "problemTypeKey": "PT_LINE_EQUATION",
@@ -545,8 +545,8 @@ window.questionBank = [
       "$a < 0, b < 0$",
       "$a < 0, b = 0$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>그래프가 오른쪽 아래로 향하므로 기울기 $a<0$이다.<br>그래프가 $y$축과 원점보다 아래에서 만나므로 $y$절편 $-b<0$, 즉 $b>0$이다.</p>",
     "content": "<div>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"검은 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
@@ -576,8 +576,8 @@ window.questionBank = [
       "$y = 3x - 1$",
       "$y = -3x - 1$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>기울기는 $\\frac{-2-1}{4-1}=-1$이다.<br>$y=-x+b$에 점 $(1,1)$을 대입하면 $1=-1+b$이므로 $b=2$이다.<br>$y=-x+2$</p>",
     "content": "<div>8. 두 점 $(1, 1)$, $(4, -2)$를 지나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</div>",
     "templateKey": "TPL_LINE_TWO_POINTS",
     "problemTypeKey": "PT_LINE_EQUATION",
@@ -607,8 +607,8 @@ window.questionBank = [
       "110곡",
       "112곡"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>한 달에 내려받은 곡 수를 $x$곡이라 하면 $100$곡을 초과한 곡 수는 $(x-100)$곡이다.<br>요금은 $7000+500(x-100)$이다.<br>$7000+500(x-100)=11000$이므로 $500(x-100)=4000$, $x-100=8$이다.<br>$x=108$ (곡)</p>",
     "content": "<div>9. 음악 파일을 내려받을 수 있는 어떤 인터넷 사이트에서는 기본요금 7000원을 내면 한 달 동안 100곡까지 무료로 내려받을 수 있고, 100곡을 초과하는 경우 1곡당 500원씩 지불해야 한다. 이 사이트에서 한 달 요금으로 11000원을 지불했을 때, 한 달 동안 내려받은 음악 파일은 몇 곡인지 구하면? [4점]</div>",
     "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
     "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
@@ -638,8 +638,8 @@ window.questionBank = [
       "5",
       "$\\dfrac{5}{2}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>세 직선의 교점을 구한다.<br>$y=-x-3$과 $x=0$의 교점은 $(0,-3)$이다.<br>$y=\\frac{1}{4}x+2$와 $x=0$의 교점은 $(0,2)$이다.<br>$-x-3=\\frac{1}{4}x+2$에서 $-\\frac{5}{4}x=5$이므로 $x=-4$, $y=1$이므로 교점은 $(-4,1)$이다.<br>$y$축 위의 변의 길이는 $2-(-3)=5$이고 높이는 $|-4|=4$이다.<br>넓이는 $\\frac{1}{2}\\times5\\times4=10$이다.</p>",
     "content": "<div>10. 세 직선 $y = -x - 3$, $y = \\dfrac{1}{4}x + 2$, $x = 0$으로 둘러싸인 도형의 넓이를 구하면? [4점]</div>",
     "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
@@ -669,8 +669,8 @@ window.questionBank = [
       "ㄹ, ㅁ",
       "ㄷ, ㅂ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>해가 무수히 많으려면 두 방정식이 같은 직선을 나타내야 한다.<br>ㄱ. 기울기가 다르므로 해가 한 개이다.<br>ㄴ. $4x-2y=-2$와 $4x-2y=5$이므로 평행하여 해가 없다.<br>ㄷ. $6x+2y=14$는 $3x+y=7$의 양변에 $2$를 곱한 식이므로 해가 무수히 많다.<br>ㄹ. 평행하므로 해가 없다.<br>ㅁ. 기울기가 다르므로 해가 한 개이다.<br>ㅂ. $8x+4y-12=0$은 $2x+y-3=0$의 양변에 $4$를 곱한 식이므로 해가 무수히 많다.<br>해가 무수히 많은 것은 ㄷ, ㅂ이다.</p>",
     "content": "<div>11. 다음 연립방정식에 대하여 해가 무수히 많은 것을 모두 고르면? [4점]</div><div>ㄱ. $\\begin{cases} x - y + 2 = 0 \\\\ 3x - y - 1 = 0 \\end{cases}$<br/>ㄴ. $\\begin{cases} 2x - y = -1 \\\\ 4x - 2y = 5 \\end{cases}$<br/>ㄷ. $\\begin{cases} 3x + y = 7 \\\\ 6x + 2y = 14 \\end{cases}$<br/>ㄹ. $\\begin{cases} 3x - y + 2 = 0 \\\\ 3x - y - 2 = 0 \\end{cases}$<br/>ㅁ. $\\begin{cases} x + 2y - 5 = 0 \\\\ 2x + y + 5 = 0 \\end{cases}$<br/>ㅂ. $\\begin{cases} 8x + 4y - 12 = 0 \\\\ 2x + y - 3 = 0 \\end{cases}$</div>",
     "templateKey": "",
     "problemTypeKey": "",
@@ -700,8 +700,8 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x=3$을 둘째 방정식 $x-2y=5$에 대입하면 $3-2y=5$이므로 $y=-1$이다.<br>교점 $(3,-1)$이 첫째 방정식 $x+ay=1$ 위에 있으므로 $3+a\\times(-1)=1$이다.<br>$3-a=1$이므로 $a=2$이다.</p>",
     "content": "<div>12. 연립방정식 $\\begin{cases} x + ay = 1 \\\\ x - 2y = 5 \\end{cases}$에서 각 방정식의 그래프의 교점의 $x$좌표가 3일 때, 상수 $a$의 값을 구하면? [4점]</div>",
     "templateKey": "",
     "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
@@ -731,8 +731,8 @@ window.questionBank = [
       "$y = 1$",
       "$y = -1$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>연립방정식 $\\begin{cases}2x-y-3=0\\\\x-3y+1=0\\end{cases}$의 해가 교점이다.<br>첫째 식에서 $y=2x-3$이다. 둘째 식에 대입하면 $x-3(2x-3)+1=0$, $-5x+10=0$이므로 $x=2$이고 $y=1$이다.<br>교점은 $(2,1)$이다. $x$축에 평행한 직선은 $y=$(상수) 꼴이므로 $y=1$이다.</p>",
     "content": "<div>13. 두 직선 $2x - y - 3 = 0$, $x - 3y + 1 = 0$의 교점을 지나고, $x$축에 평행한 직선의 방정식은? [4점]</div>",
     "templateKey": "TPL_LINE_MULTI_CONDITION",
     "problemTypeKey": "PT_LINE_EQUATION",
@@ -783,8 +783,8 @@ window.questionBank = [
       "$48^\\circ$",
       "$52^\\circ$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$\\angle\\mathrm{ABD}=22^\\circ$이고 $\\mathrm{BD}$가 $\\angle\\mathrm{B}$의 이등분선이므로 $\\angle\\mathrm{B}=44^\\circ$이다.<br>$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이므로 $\\angle\\mathrm{C}=\\angle\\mathrm{B}=44^\\circ$이다.<br>$\\angle\\mathrm{C}$의 외각은 $180^\\circ-44^\\circ=136^\\circ$이고 그 이등분선이 만드는 각은 $68^\\circ$이다.<br>$\\triangle\\mathrm{DBC}$에서 $\\angle\\mathrm{DBC}=22^\\circ$, $\\angle\\mathrm{BCD}=44^\\circ+68^\\circ=112^\\circ$이다.<br>$\\angle\\mathrm{BDC}=180^\\circ-22^\\circ-112^\\circ=46^\\circ$</p>",
     "content": "<div>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB와 AC는 같은 길이이다. B의 각을 이등분한 BD와 C의 외각을 이등분한 CD가 D에서 만난다. 각 ABD는 22°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
@@ -816,8 +816,8 @@ window.questionBank = [
       "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_4.png\" />",
       "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_5.png\" />"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>기준 삼각형은 빗변의 길이가 $10\\,\\text{cm}$이고 한 예각이 $40^\\circ$인 직각삼각형이다.<br>직각삼각형은 빗변의 길이와 한 예각의 크기가 각각 같으면 합동(RHA 합동)이다.<br>⑤는 직각삼각형이고 빗변이 $10\\,\\text{cm}$이며 한 예각이 $50^\\circ$이므로 다른 예각은 $90^\\circ-50^\\circ=40^\\circ$이다. 따라서 합동이다.<br>① 한 변이 $6\\,\\text{cm}$이고 빗변이 $10\\,\\text{cm}$, ② 한 변이 $5\\,\\text{cm}$인 직각삼각형, ③, ④는 $10\\,\\text{cm}$인 변이 빗변이 아니므로 합동이 아니다.</p>",
     "content": "<div>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"맨 위의 빗변 길이는 10 cm이다. 오른쪽 위의 각은 40°이고 아래 꼭짓점은 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
@@ -847,8 +847,8 @@ window.questionBank = [
       "$\\overline{\\text{CD}} = \\overline{\\text{MD}}$",
       "$\\angle\\text{BDM} = \\angle\\text{ADC}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$이고 $\\overline{\\mathrm{DM}}\\perp\\overline{\\mathrm{AB}}$이므로 $\\mathrm{DM}$은 $\\overline{\\mathrm{AB}}$의 수직이등분선이다. 따라서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BD}}$이다. (①)<br>$\\triangle\\mathrm{ACD}\\equiv\\triangle\\mathrm{AMD}$ (RHA 합동, 빗변 $\\mathrm{AD}$ 공통, $\\angle\\mathrm{CAD}=\\angle\\mathrm{MAD}$)이므로 $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{MD}}$ (④), $\\angle\\mathrm{ADC}=\\angle\\mathrm{ADM}$이다.<br>$\\triangle\\mathrm{AMD}\\equiv\\triangle\\mathrm{BMD}$이므로 $\\angle\\mathrm{DAB}=\\angle\\mathrm{B}$이고 $\\angle\\mathrm{CAD}=\\angle\\mathrm{DAB}=\\angle\\mathrm{B}$이다.<br>$\\angle\\mathrm{A}+\\angle\\mathrm{B}=90^\\circ$에서 $3\\angle\\mathrm{B}=90^\\circ$이므로 $\\angle\\mathrm{B}=30^\\circ$이다. (③ $45^\\circ$는 옳지 않다.)<br>$30^\\circ$인 각의 대변인 $\\overline{\\mathrm{AC}}$는 빗변 $\\overline{\\mathrm{AB}}$의 절반이므로 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{BM}}$이다. (②)<br>$\\angle\\mathrm{BDM}=\\angle\\mathrm{ADM}=\\angle\\mathrm{ADC}$이다. (⑤)</p>",
     "content": "<div>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"C는 직각이다. A의 각을 이등분한 AD와, D에서 AB의 중점 M에 내린 수선 DM을 표시했다. AM과 BM은 같은 길이이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
@@ -880,8 +880,8 @@ window.questionBank = [
       "$98\\text{ cm}^2$",
       "$100\\text{ cm}^2$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$\\triangle\\mathrm{ABC}$는 직각이등변삼각형이므로 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=10\\,\\text{cm}$이다.<br>$\\angle\\mathrm{DAB}+\\angle\\mathrm{ABD}=90^\\circ$이고 $\\angle\\mathrm{ABD}+\\angle\\mathrm{CBE}=90^\\circ$이므로 $\\angle\\mathrm{DAB}=\\angle\\mathrm{EBC}$이다.<br>$\\triangle\\mathrm{ADB}\\equiv\\triangle\\mathrm{BEC}$ (RHA 합동)이다.<br>$\\overline{\\mathrm{BE}}=\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{DB}}=\\overline{\\mathrm{EC}}=8$이므로 $\\overline{\\mathrm{DE}}=8+6=14$이다.<br>사각형 $\\mathrm{ADEC}$는 사다리꼴이므로 넓이는 $\\frac{1}{2}(6+8)\\times14=98\\,(\\text{cm}^2)$이다.</p>",
     "content": "<div>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"직각이등변삼각형 ABC에서 B는 직각이다. A에서 D까지 6 cm, C에서 E까지 8 cm이고, AB는 10 cm이다. D와 E를 지나는 직선은 l이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
@@ -911,8 +911,8 @@ window.questionBank = [
       "$58^\\circ$",
       "$60^\\circ$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>점 $\\mathrm{O}$가 외심이므로 $\\angle\\mathrm{BAC}$는 호 $\\mathrm{BC}$의 원주각이고 $\\angle\\mathrm{BOC}$는 같은 호의 중심각이다.<br>$\\angle\\mathrm{BAC}=\\frac{1}{2}\\angle\\mathrm{BOC}=\\frac{1}{2}\\times110^\\circ=55^\\circ$<br>(확인: $\\angle\\mathrm{OAC}=\\angle\\mathrm{OCA}=20^\\circ$이므로 $\\angle\\mathrm{AOC}=140^\\circ$, $\\angle\\mathrm{AOB}=360^\\circ-110^\\circ-140^\\circ=110^\\circ$이고 $\\angle\\mathrm{OAB}=35^\\circ$이므로 $\\angle\\mathrm{BAC}=35^\\circ+20^\\circ=55^\\circ$)</p>",
     "content": "<div>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"외심 O를 세 꼭짓점과 이었다. 각 BOC는 110°이고 C의 각 OCA가 20°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
@@ -942,8 +942,8 @@ window.questionBank = [
       "$\\angle\\text{ICE} = \\angle\\text{ICF}$",
       "$\\triangle\\text{IDA} \\equiv \\triangle\\text{IDB}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>점 $\\mathrm{I}$는 내심이므로 세 변까지의 거리가 같고 각의 이등분선 위에 있다.<br>① $\\overline{\\mathrm{ID}}=\\overline{\\mathrm{IE}}=\\overline{\\mathrm{IF}}$ (옳다)<br>② $\\mathrm{ID}$는 접점으로의 반지름이므로 $\\mathrm{AB}$에 수직이고, $\\angle\\mathrm{IDA}=\\angle\\mathrm{IDB}=90^\\circ$ (옳다)<br>③ $\\mathrm{AI}$는 $\\angle\\mathrm{A}$의 이등분선이므로 $\\angle\\mathrm{IAD}=\\angle\\mathrm{IAF}$ (옳다)<br>④ $\\mathrm{CI}$는 $\\angle\\mathrm{C}$의 이등분선이므로 $\\angle\\mathrm{ICE}=\\angle\\mathrm{ICF}$ (옳다)<br>⑤ $\\triangle\\mathrm{IDA}$와 $\\triangle\\mathrm{IDB}$는 $\\overline{\\mathrm{IA}}=\\overline{\\mathrm{IB}}$일 때만 합동인데 일반적으로 $\\overline{\\mathrm{IA}}\\ne\\overline{\\mathrm{IB}}$이므로 합동이 아니다. (옳지 않다)</p>",
     "content": "<div>20. 오른쪽 그림에서 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심일 때, 다음 중 옳지 않은 것은? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q20-restored-20261105.png\" /></div>",
     "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
@@ -977,8 +977,8 @@ window.questionBank = [
       "둔각삼각형의 내심은 삼각형의 외부에 있다.",
       "직각삼각형의 외심은 빗변의 중점과 같다."
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>① 이등변삼각형의 두 밑각의 크기는 같다. (옳다)<br>② 이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다. (옳다)<br>③ 빗변의 길이와 다른 한 변의 길이가 각각 같은 두 직각삼각형은 RHS 합동이다. (옳다)<br>④ 내심은 항상 삼각형의 내부에 있다. 외부에 있을 수 있는 것은 외심이다. (옳지 않다)<br>⑤ 직각삼각형의 외심은 빗변의 중점이다. (옳다)</p>",
     "content": "<div>21. 삼각형에 대한 설명으로 옳지 않은 것은? [4점]</div>",
     "curriculum": "2015",
     "standardCourse": "중2 수학",
@@ -1020,8 +1020,8 @@ window.questionBank = [
       "$\\dfrac{125}{2}$",
       "63"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>외접원의 둘레가 $17\\pi$이므로 반지름은 $\\frac{17}{2}$이고, 직각삼각형의 빗변이 지름이므로 $\\overline{\\mathrm{BC}}=17$이다.<br>내접원의 둘레가 $6\\pi$이므로 반지름은 $r=3$이다.<br>$\\overline{\\mathrm{AB}}=c$, $\\overline{\\mathrm{AC}}=b$라 하면 직각삼각형의 내접원의 반지름은 $r=\\frac{b+c-17}{2}$이다.<br>$3=\\frac{b+c-17}{2}$이므로 $b+c=23$이다.<br>삼각형의 둘레는 $17+23=40$이고 넓이는 $\\frac{1}{2}\\times r\\times(\\text{둘레})=\\frac{1}{2}\\times3\\times40=60$이다.<br>(확인: $b^2+c^2=289$, $(b+c)^2=529$에서 $2bc=240$, $\\frac{1}{2}bc=60$)</p>",
     "content": "<div>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></div>",
     "curriculum": "2015",
     "standardCourse": "중2 수학",
@@ -1059,8 +1059,8 @@ window.questionBank = [
     "score": 4,
     "question": "<p>서술형 1. 일차함수 $y = ax$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 점 $(2, 5)$를 지날 때, 상수 $a$의 값을 구하시오. [4점]</p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=1$",
+    "solution": "<p>$y=ax$를 $y$축 방향으로 $3$만큼 평행이동하면 $y=ax+3$이다.<br>점 $(2,5)$를 지나므로 $5=2a+3$이다.<br>$2a=2$이므로 $a=1$이다.</p>",
     "content": "<div>서술형 1. 일차함수 $y = ax$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 점 $(2, 5)$를 지날 때, 상수 $a$의 값을 구하시오. [4점]</div>",
     "templateKey": "TT_LINE_TRANSLATION_EQUATION",
     "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
@@ -1084,8 +1084,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$-6\\le b\\le1$",
+    "solution": "<p>일차함수 $y=3x+b$는 기울기가 $3$으로 일정하고 $b$가 커질수록 위로 평행이동한다.<br>점 $\\mathrm{A}(1,4)$를 지날 때: $4=3\\times1+b$이므로 $b=1$<br>점 $\\mathrm{B}(3,3)$을 지날 때: $3=3\\times3+b$이므로 $b=-6$<br>$b=-6$이면 점 $\\mathrm{B}$를 지나고 $b=1$이면 점 $\\mathrm{A}$를 지나므로 선분 $\\mathrm{AB}$와 만나려면 $-6\\le b\\le1$이다.</p>",
     "content": "<div>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
     "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
@@ -1109,8 +1109,8 @@ window.questionBank = [
     "score": 6,
     "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$40$분 후",
+    "solution": "<p>물의 높이는 시간에 따라 일정하게 증가하므로 $y=ax+b$ 꼴이다.<br>$x=5$일 때 $y=20$, $x=15$일 때 $y=40$이므로 기울기는 $\\frac{40-20}{15-5}=2$이다.<br>$y=2x+b$에 $(5,20)$을 대입하면 $20=10+b$이므로 $b=10$이다. 따라서 $y=2x+10$이다.<br>$y=90$이면 $90=2x+10$, $2x=80$이므로 $x=40$이다.</p>",
     "content": "<div>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "",
     "problemTypeKey": "PT_LINE_EQUATION",
@@ -1134,8 +1134,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$8\\pi\\ \\text{cm}$",
+    "solution": "<p>$\\mathrm{O}$가 외심이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$이다.<br>$\\angle\\mathrm{OAB}=48^\\circ$이므로 $\\angle\\mathrm{OBA}=48^\\circ$이고 $\\angle\\mathrm{AOB}=180^\\circ-96^\\circ=84^\\circ$이다.<br>$\\angle\\mathrm{OCA}=32^\\circ$이므로 $\\angle\\mathrm{OAC}=32^\\circ$이고 $\\angle\\mathrm{AOC}=180^\\circ-64^\\circ=116^\\circ$이다.<br>$\\angle\\mathrm{BOC}=360^\\circ-84^\\circ-116^\\circ=160^\\circ$이다. (확인: $\\angle\\mathrm{A}=48^\\circ+32^\\circ=80^\\circ$이고 $\\angle\\mathrm{BOC}=2\\angle\\mathrm{A}=160^\\circ$)<br>부채꼴 $\\mathrm{BOC}$의 반지름은 $9\\,\\text{cm}$이므로 호의 길이는 $2\\pi\\times9\\times\\frac{160}{360}=8\\pi\\,(\\text{cm})$이다.</p>",
     "content": "<div>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
