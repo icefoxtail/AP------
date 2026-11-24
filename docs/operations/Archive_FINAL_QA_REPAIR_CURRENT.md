@@ -8,7 +8,7 @@
 
 1. Notion [GPT 작업 전 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd) → [Archive 시작](https://app.notion.com/p/3e10e68bd69f81898cc8fb85cb4b1398) → [작업 생명주기](https://app.notion.com/p/3e10e68bd69f81fdb161ffc3f6227b6e) → **위 공통 CURRENT Skill 본문**을 읽고, 최신 Git `main`·시험지 JS/sidecar·실제 정본을 확인한다.
 2. `{examUid}`의 **실제 학생 표시 QID N/N**을 해설 품질·메타 의미·수학 핵심·시각과 함께 전부 점검. 기존 적합한 R1/R2/R3 증거를 재사용하고 **전 문항 독립답 재동결은 반복하지 않는다**. 고난도·의심·불일치 QID만 정밀 재풀이.
-3. QID별 `KEEP` / `FIX` / `EVIDENCE_DEBT` 기록. 문제가 확인된 해설·메타·도형·자산/발문만 **직접 최소 수리**. 정상 문항·원본·유효 SVG 보존, 다른 시험지·공통 시스템 변경 금지.
+3. QID별 `KEEP` / `FIX` / `EVIDENCE_DEBT` 기록(원본 확인을 못 했다는 이유로 EVIDENCE_DEBT·확인 대기로 남기지 않는다. 최소 수정하면 FIX, 결함이 아니면 KEEP: docs/agents/common.md 맨 위 절, 2026-11-24). 문제가 확인된 해설·메타·도형·자산/발문만 **직접 최소 수리**. 정상 문항·원본·유효 SVG 보존, 다른 시험지·공통 시스템 변경 금지.
 4. 변경 QID와 직접 의존만 표적 재검. 미실행 `NOT_RUN`을 PASS로 만들지 않는다.
 5. 수정분만 시험지 단위 최소 커밋/PR/**Git main 실제 운영병합** 후 원격 main commit+blob SHA readback. **무수정이면 빈 커밋 없이** `NO_CHANGE/MAIN_ALREADY_PRESENT` 확인. 해당 시험지 Notion 행에 문항별 판정·변경 이력·미해결·실제 완료 체크 기록.
 6. **시험지 1건을 중간보고 없이 가능한 끝까지 마감**하고, 수정 QID, 미해결, 최종 main SHA와 필요한 차단 근거만 간단히 보고. GitHub가 병합을 거절하면 우회하지 않고 그 시험지만 정확한 BLOCKED 상태로 기록한다.

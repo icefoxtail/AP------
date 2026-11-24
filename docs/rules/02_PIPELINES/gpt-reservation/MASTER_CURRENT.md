@@ -30,6 +30,7 @@ MASTER가 CREATE→R1→R2→R3를 대신 수행하거나 모든 시험지의 �
 ## 3. 기존 미해결 문제 담당: 스스로 해결하고 자기 근거 저장
 
 - 최신 stage의 ledger에서 아직 열린 **개별 qid**와 직접 의존만 선별하고, 유효한 R1 blind freeze/R2 해설 개선·정상 qid를 동결한다. 다른 stage/worker가 잡은 동일 qid는 건드리지 않는다. 한 회차 최대 1시험지의 개별 qid 수리, qid 개수 CAP 없음.
+- 2026-11-24 원장님 결정: 이미 들어온 시험지의 수정에서 원본 대조는 참고 근거다(순서: 수정 프로토콜 → 작업자 재량 → 원본 대조). 원본을 보지 못했다고 qid를 확인 대기·판단 불가·NOT_REVIEWABLE로 남기거나 사용자에게 원본 확인을 부탁하지 않고 "수정함/오탐"으로만 분류한다. 원본 대조가 필수인 것은 CREATE·첫 반입뿐이다 → docs/agents/common.md 맨 위 절.
 - 발문·원본·선지/정답 이상은 Google Drive Evidence Vault 실제 PDF/이미지 + Git source identity/원본과 직접 대조. 가능한 것은 `MINIMAL_REPAIR` (원본 발문·보기·이미지 수학 사실 보존). 원문 확인 불가/복원이 비결정적일 때 적용 허용된 Repair/ALIVE 문서에 따라 실수정·새 문항 대체를 사용하되 `ORIGINAL / AUDITED_REPAIR / ALIVE_REPLACEMENT` provenance를 엄격히 구분, 학교 기출을 임의 대체 후 '원문'이라 주장 금지. 학년 내 유일정답·학생 작은칠판 풀이·정확한 보기 및 필요한 문제/해설 SVG/PNG 검증.
 - Meta defect면 원문+최종 solution → primaryMethod/decisiveStep, current RPM L3/L4 + 허용 lower-only prerequisite → crosswalk → GLOBAL ACTIVE ownerPack PT/TPL alias → exact curriculum binding, Condition/CrossConcept/Integration과 1~5 난이도(difficultyBucket만; 새 문항에 level 하/중/상은 쓰지 않음) 실조회하고 `META_LOOKUP_EVIDENCE`에 qid별 판단 근거와 실제 authority SHA, 변경 전후를 저장. 기존 ACTIVE key 있는 null은 직접 CORRECT; 키 새 발명·미등록 Generated 전용 extension의 기출 사용 금지.
 - Golden/Negative/validator/Chrome 검사는 실제 이 변경에 필요한 범위에서 실행 가능 여부와 증거를 기록; 할 수 없으면 실패 이유/`NOT_RUN`과 다음 executor를 명시. 기존 정상 전 문항을 calibration 핑계로 전수 재풀이 금지.
