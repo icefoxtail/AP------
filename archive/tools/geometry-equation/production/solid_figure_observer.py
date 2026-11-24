@@ -145,7 +145,20 @@ def build_solid(spec):
             if spec.get('count') is not None: raise ValueError('SOLID_COUNT_UNSUPPORTED:CUT')
             verts, faces, aliases = apply_cuts(verts, faces, aliases, spec['cuts'], kind)
             return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases, 'cut': True}
-        return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases}
+        bore = None
+        if spec.get('bore') is not None:
+            # bore:{radius} through a PRISM over a RECT or an even REGULAR base (this observer's own copy of the rules)
+            raw, base = spec['bore'], spec['base']
+            if kind != 'PRISM' or plane != 'XY' or spec.get('cuts') is not None: raise ValueError('SOLID_BORE_UNSUPPORTED:' + kind)
+            if not isinstance(raw, dict) or set(raw) - {'radius'} or not isinstance(raw.get('radius'), (int, float)) or isinstance(raw.get('radius'), bool): raise ValueError('SOLID_BORE_INVALID')
+            if base.get('kind') == 'RECT': inner = min(float(base['width']), float(base['depth'])) / 2
+            elif base.get('kind') == 'REGULAR' and int(base['n']) % 2 == 0: inner = float(base['side']) / (2 * math.tan(math.pi / int(base['n'])))
+            else: raise ValueError('SOLID_BORE_UNSUPPORTED:BASE')
+            bore = {'radius': float(raw['radius']), 'cx': cx, 'cy': cy}
+            if not (0 < bore['radius'] < inner - 1e-9): raise ValueError('SOLID_BORE_TOO_WIDE')
+            outer = max(math.hypot(p[0] - cx, p[1] - cy) for p in pts)
+            if h * math.cos(PITCH) / math.sin(PITCH) < outer + bore['radius']: raise ValueError('SOLID_BORE_HOST_TOO_LOW')
+        return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h, 'aliases': aliases, **({'bore': bore} if bore else {})}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
         r = float(spec['radius'])
         cone = kind in ('CONE', 'CONE_FRUSTUM')
@@ -197,6 +210,15 @@ def build_solid(spec):
             if face not in ('BOTTOM', 'TOP') or not (r0 if face == 'BOTTOM' else r1) > 0: raise ValueError('SOLID_BASE_FILL_INVALID')
             if opts.get('label') is not None and (not isinstance(opts['label'], str) or not TEXT_LABEL.fullmatch(opts['label']) or opts['label'].strip() != opts['label']): raise ValueError('SOLID_LABEL_TEXT_INVALID')
             base_fill = {'face': face, 'fill': fill, 'label': opts.get('label')}
+        # bore:{radius}: a hole through a cylinder along its axis (this observer's own copy of the rules)
+        bore = None
+        if spec.get('bore') is not None:
+            raw = spec['bore']
+            if kind != 'CYLINDER': raise ValueError('SOLID_BORE_UNSUPPORTED:' + kind)
+            if spec.get('inside') is not None or spec.get('on') is not None or spec.get('axis') is not None or spec.get('baseFill') is not None: raise ValueError('SOLID_BORE_UNSUPPORTED:COMBINATION')
+            if not isinstance(raw, dict) or set(raw) - {'radius'} or not isinstance(raw.get('radius'), (int, float)) or isinstance(raw.get('radius'), bool): raise ValueError('SOLID_BORE_INVALID')
+            bore = float(raw['radius'])
+            if not (0 < bore < r): raise ValueError('SOLID_BORE_INVALID')
         axis = spec.get('axis')
         if axis is not None:
             # a hemisphere carries an axis only when it stands on another solid (a stack's axis may be written on its top member)
@@ -204,7 +226,7 @@ def build_solid(spec):
             axis = {'label': axis.get('label') if isinstance(axis, dict) else None}
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
                 'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
-                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy, 'base_fill': base_fill, 'level_names': level_names,
+                'inside': spec.get('inside'), 'cut': spec.get('cut'), 'bore': bore, 'axis': axis, 'on': spec.get('on'), 'lift': 0.0, 'covered': False, 'at': at, 'hx': hx, 'hy': hy, 'base_fill': base_fill, 'level_names': level_names,
                 'cz': (float(spec['centerZ']) if spec.get('centerZ') is not None else r) if kind == 'SPHERE' else (r if (kind == 'HEMISPHERE' and down) else 0.0)}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
@@ -630,6 +652,40 @@ def edge_skip(solid, a, b):
     return skip
 
 
+def _disk_interval(px, py, V, rad):
+    """the stretch of s where the point (px, py) + s (V_x, V_y) is inside the disk of radius rad about the axis (None when the ray misses it)"""
+    a = V[0] ** 2 + V[1] ** 2
+    b = 2 * (px * V[0] + py * V[1])
+    c = px * px + py * py - rad * rad
+    if a < 1e-12: return (-math.inf, math.inf) if c < 0 else None
+    disc = b * b - 4 * a * c
+    if disc <= 0: return None
+    root = math.sqrt(disc)
+    return ((-b - root) / (2 * a), (-b + root) / (2 * a))
+
+
+def _hits_bored(solid, P):
+    """a cylinder with a bore: the ray from P toward the viewer passes through material (inside the outer disk, outside the bore disk, between z = 0 and z = height) after s = 0"""
+    V = VIEW
+    r, rb, h = solid['r0'], solid['bore'], solid['height']
+    outer = _disk_interval(P[0], P[1], V, r)
+    if outer is None: return False
+    lo, hi = max(outer[0], -P[2] / V[2]), min(outer[1], (h - P[2]) / V[2])
+    if hi - lo <= 1e-9: return False
+    pieces = [(lo, hi)]
+    hole = _disk_interval(P[0], P[1], V, rb)
+    if hole is not None:
+        kept = []
+        for a, b in pieces:
+            if hole[1] <= a or hole[0] >= b:
+                kept.append((a, b))
+                continue
+            if hole[0] > a: kept.append((a, hole[0]))
+            if hole[1] < b: kept.append((hole[1], b))
+        pieces = kept
+    return any(b - max(a, 1e-6) > 1e-7 for a, b in pieces)
+
+
 def hits_round(solid, P):
     """True when the ray from P toward the viewer enters the solid of revolution / sphere (a point on its surface that the body hides)."""
     V = VIEW
@@ -647,6 +703,7 @@ def hits_round(solid, P):
             if solid['orientation'] == 'APEX_DOWN': hi = min(hi, (solid['height'] - P[2]) / V[2])
             else: lo = max(lo, -P[2] / V[2])
         return hi - lo > 1e-6
+    if solid.get('bore'): return _hits_bored(solid, P)
     slope = (r1 - r0) / h
     # |P_xy + s V_xy|^2 = (r0 + slope (P_z + s V_z))^2
     px, py, pz = P
@@ -992,6 +1049,7 @@ def audit_solids(plan, ctx):
                 else:
                     for key in vertex_keys(solid, i): named[key] = (sid, px(p), p)
             check_poly_edges(solid, root, px, scale, errors)
+            if solid.get('bore'): check_poly_bore(solid, root, px, scale, errors, ctx['segments'])
             audit_aux_points((specs_by_id.get(sid) or {}).get('points'), solid, named, px, root, errors)
             audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
             counted.add(sid)
@@ -2100,6 +2158,63 @@ def check_face_highlights(highlights, solids, frames, scale, root, errors):
         if (el.get('data-fill') or 'LIGHT') != fill: errors.append('SOLID_HIGHLIGHT_FILL_MISMATCH:' + face)
 
 
+def check_poly_bore(solid, root, px, scale, errors, segments):
+    """the hole through a prism: its rim on the top face is a whole ellipse, its rim on the bottom face is seen only where the line of sight to it leaves the top face inside the hole (decided here
+    from the geometry, not from the producer), and its two generators at the screen's extreme sides are dashed"""
+    sid, h = solid['id'], solid['height']
+    rb, cx0, cy0 = solid['bore']['radius'], solid['bore']['cx'], solid['bore']['cy']
+    sinp = math.sin(PITCH)
+    arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid and e.get('data-role') == 'ellipse-arc']
+    spans = {}
+    halves = {'boreTop': []}
+    for e, (x0, y0, rx, ry, large, sweep, x1, y1) in arcs:
+        cname = e.get('data-circle')
+        if cname not in ('boreTop', 'boreBottom'):
+            errors.append('SOLID_ELLIPSE_ROLE_UNKNOWN:' + str(cname))
+            continue
+        z = h if cname == 'boreTop' else 0.0
+        cx, cy = px((cx0, cy0, z))
+        if abs(rx - scale * rb) > POS_TOL or abs(ry - scale * rb * sinp) > POS_TOL: errors.append('SOLID_ELLIPSE_AXES_MISMATCH:%s:%s' % (sid, cname))
+        for (x, y) in ((x0, y0), (x1, y1)):
+            f = ((x - cx) / (scale * rb)) ** 2 + ((y - cy) / (scale * rb * sinp)) ** 2
+            if abs(f - 1) > 0.02: errors.append('SOLID_ELLIPSE_ENDPOINT_OFF:%s:%s' % (sid, cname))
+        u0 = math.atan2(-(y0 - cy) / (scale * rb * sinp), (x0 - cx) / (scale * rb))
+        u1 = math.atan2(-(y1 - cy) / (scale * rb * sinp), (x1 - cx) / (scale * rb))
+        span = (u1 - u0) % (2 * math.pi)
+        if sweep != 0: span = -((u0 - u1) % (2 * math.pi))
+        if abs(abs(span) - math.pi) > 1e-3 and (abs(span) > math.pi) != bool(large): errors.append('SOLID_ARC_FLAGS_INCONSISTENT:' + e.get('id'))
+        for k in range(24):
+            segments.append(((cx + scale * rb * math.cos(u0 + span * k / 24), cy - scale * rb * sinp * math.sin(u0 + span * k / 24)), (cx + scale * rb * math.cos(u0 + span * (k + 1) / 24), cy - scale * rb * sinp * math.sin(u0 + span * (k + 1) / 24))))
+        spans[cname] = spans.get(cname, 0.0) + abs(span)
+        votes = 0
+        for k in range(7):
+            u = u0 + span * (k + 0.5) / 7
+            t = u + YAW
+            if cname == 'boreTop': continue
+            # the bottom rim point P is seen when the ray toward the viewer leaves the top plane inside the hole's disk
+            P = (cx0 + rb * math.cos(t), cy0 + rb * math.sin(t))
+            s = h / VIEW[2]
+            if math.hypot(P[0] + VIEW[0] * s - cx0, P[1] + VIEW[1] * s - cy0) >= rb: votes += 1   # hidden
+        _stroke_ok(e, votes >= 4, errors, e.get('id'))
+        if votes not in (0, 7): errors.append('SOLID_ARC_STRADDLES_VISIBILITY:' + e.get('id'))
+        if cname == 'boreTop': halves['boreTop'].append(e.get('data-half'))
+    for cname in ('boreTop', 'boreBottom'):
+        if abs(spans.get(cname, 0.0) - 2 * math.pi) > 0.02: errors.append('SOLID_BORE_RIM_INCOMPLETE:%s:%s' % (sid, cname))
+    if sorted(halves['boreTop']) != ['BACK', 'FRONT']: errors.append('SOLID_BORE_RIM_INCOMPLETE:%s:boreTop' % sid)
+    edges = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'bore-edge']
+    if len(edges) != 2: errors.append('SOLID_BORE_EDGE_COUNT:' + sid)
+    (bx, by), (tx, ty) = px((cx0, cy0, 0.0)), px((cx0, cy0, h))
+    for sgn in (-1.0, 1.0):
+        want = ((bx + sgn * scale * rb, by), (tx + sgn * scale * rb, ty))
+        found = False
+        for e in edges:
+            got = ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
+            if all(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) <= POS_TOL for i in (0, 1)) or all(math.hypot(got[i][0] - want[1 - i][0], got[i][1] - want[1 - i][1]) <= POS_TOL for i in (0, 1)):
+                found = True
+                _stroke_ok(e, True, errors, e.get('id'))
+        if not found: errors.append('SOLID_BORE_EDGE_MISSING:%s:%s' % (sid, 'LEFT' if sgn < 0 else 'RIGHT'))
+
+
 def check_poly_edges(solid, root, px, scale, errors):
     sid = solid['id']
     pieces = {}
@@ -2214,8 +2329,11 @@ def check_round(solid, root, px, scale, errors, segments, section=None, chain=No
         if name == 'level': return px((0.0, 0.0, level[0])), level[1]
         if name == 'bottom': return px((0.0, 0.0, lift)), r0
         if name == 'top': return px((0.0, 0.0, lift + h)), r1
+        if name == 'boreTop': return px((0.0, 0.0, lift + h)), solid['bore']
+        if name == 'boreBottom': return px((0.0, 0.0, lift)), solid['bore']
         return px((solid['hx'], solid['hy'], lift + solid['cz'])), r0   # sphere equator
     pts_by_circle = {}
+    spans = {}
     for e, (x0, y0, rx, ry, large, sweep, x1, y1) in arcs:
         role = e.get('data-role')
         if role == 'sphere-outline':
@@ -2232,7 +2350,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None, chain=No
             _stroke_ok(e, False, errors, e.get('id'))
             continue
         cname = e.get('data-circle')
-        if cname not in ('bottom', 'top', 'level', 'equator'):
+        if cname not in ('bottom', 'top', 'level', 'equator', 'boreTop', 'boreBottom') or (cname in ('boreTop', 'boreBottom') and not solid.get('bore')):
             errors.append('SOLID_ELLIPSE_ROLE_UNKNOWN:' + str(cname))
             continue
         (cx, cy), rad = circle(cname)
@@ -2255,7 +2373,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None, chain=No
             pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
             continue
         votes = 0
-        z = lift + (h if cname == 'top' else (level[0] if cname == 'level' else (solid['cz'] if cname == 'equator' else 0.0)))
+        z = lift + (h if cname in ('top', 'boreTop') else (level[0] if cname == 'level' else (solid['cz'] if cname == 'equator' else 0.0)))
         for k in range(7):
             u = u0 + span * (k + 0.5) / 7
             # screen param u -> world circle point: sx = r cos u, sy = r sin(pitch) sin u + z cos(pitch); the circle point with that screen image
@@ -2265,6 +2383,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None, chain=No
         _stroke_ok(e, votes >= 4, errors, e.get('id'))
         if votes not in (0, 7): errors.append('SOLID_ARC_STRADDLES_VISIBILITY:' + e.get('id'))
         pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
+        spans[cname] = spans.get(cname, 0.0) + abs(span)
     if solid['cat'] == 'SPHERE':
         if solid['kind'] == 'HEMISPHERE':
             flat = 'top' if solid['orientation'] == 'APEX_DOWN' else 'bottom'
@@ -2275,8 +2394,26 @@ def check_round(solid, root, px, scale, errors, segments, section=None, chain=No
     # silhouette lines: tangent to the circles they end on, through the (virtual) apex of the cone
     family = {name for name in ('bottom', 'top') if circle(name)[1] > 0}
     if len(lines) != 2: errors.append('SOLID_SILHOUETTE_COUNT:' + sid)
-    names = family | ({'level'} if level else set())
+    names = family | ({'level'} if level else set()) | ({'boreTop', 'boreBottom'} if solid.get('bore') else set())
     if set(pts_by_circle) != names: errors.append('SOLID_ELLIPSE_SET_MISMATCH:' + sid)
+    if solid.get('bore'):
+        # the hole: both rims are whole circles (their stretches add up to a full turn), and its two generators at the screen's extreme sides run from rim to rim, dashed
+        for cname in ('boreTop', 'boreBottom'):
+            if abs(spans.get(cname, 0.0) - 2 * math.pi) > 0.02: errors.append('SOLID_BORE_RIM_INCOMPLETE:%s:%s' % (sid, cname))
+        if sorted(e.get('data-half') for e, _ in arcs if e.get('data-circle') == 'boreTop') != ['BACK', 'FRONT']: errors.append('SOLID_BORE_RIM_INCOMPLETE:%s:boreTop' % sid)
+        edges = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'bore-edge']
+        if len(edges) != 2: errors.append('SOLID_BORE_EDGE_COUNT:' + sid)
+        (bx, by), brad = circle('boreBottom')
+        (tx, ty), _ = circle('boreTop')
+        for sgn in (-1.0, 1.0):
+            want = ((bx + sgn * scale * brad, by), (tx + sgn * scale * brad, ty))
+            found = False
+            for e in edges:
+                got = ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))
+                if all(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) <= POS_TOL for i in (0, 1)) or all(math.hypot(got[i][0] - want[1 - i][0], got[i][1] - want[1 - i][1]) <= POS_TOL for i in (0, 1)):
+                    found = True
+                    _stroke_ok(e, True, errors, e.get('id'))
+            if not found: errors.append('SOLID_BORE_EDGE_MISSING:%s:%s' % (sid, 'LEFT' if sgn < 0 else 'RIGHT'))
     apex_z = 0.0 if (solid['kind'] == 'CONE' and solid['orientation'] == 'APEX_DOWN') else h
     apex = px((0.0, 0.0, lift + apex_z))
     for e in lines:
@@ -2892,6 +3029,14 @@ def check_dim_lines(plan, ctx):
                 # a dimension with no solid belongs to the first rotation solid (a radius: the first rotation solid or ball), as the plan's grammar says
                 sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV' or (kind == 'RADIUS' and x['cat'] == 'SPHERE')), None)
         solid = solids.get(sid)
+        if solid is not None and solid['cat'] == 'POLY' and kind == 'RADIUS' and d.get('radius') == 'bore' and solid.get('bore') and sid in frames:
+            # the radius of a prism's hole runs from the axis to the rim on the top face, level with it, to the screen's right
+            Tx, Ty = frames[sid]
+            cs = project((solid['bore']['cx'], solid['bore']['cy'], solid['height']))
+            want = ((Tx + scale * cs[0], Ty - scale * cs[1]), (Tx + scale * (cs[0] + solid['bore']['radius']), Ty - scale * cs[1]))
+            got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
+            if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':RADIUS')
+            continue
         if solid is None or solid['cat'] == 'POLY' or sid not in frames or solid.get('cut'):
             continue
         Tx, Ty = frames[sid]
@@ -2941,10 +3086,10 @@ def check_dim_lines(plan, ctx):
                     if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
                 if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
         else:
-            if d.get('radius') in ('center', 'bottom', 'top'):
+            if d.get('radius') in ('center', 'bottom', 'top', 'bore'):
                 # a radius runs from the axis to the rim of its circle, level with that circle
                 which = d['radius']
-                zr, rr = (solid['cz'], solid['r0']) if which == 'center' else ((0.0, solid['r0']) if which == 'bottom' else (solid['height'], solid['r1']))
+                zr, rr = (solid['cz'], solid['r0']) if which == 'center' else ((0.0, solid['r0']) if which == 'bottom' else (solid['height'], solid['bore']) if which == 'bore' else (solid['height'], solid['r1']))
                 cs = project((solid['hx'], solid['hy'], lift + zr)) if which == 'center' else project((0.0, 0.0, lift + zr))   # the centre of the circle on the screen (a ball off the axis: its own)
                 want = ((Tx + scale * (cs[0] - (rr if d.get('diameterDim') else 0.0)), Ty - scale * cs[1]), (Tx + scale * (cs[0] + rr), Ty - scale * cs[1]))
                 if d.get('diameterDim') and d.get('side') in ('TOP', 'BOTTOM'):
@@ -3876,7 +4021,7 @@ def expected_dim_values(plan, ctx):
                 if solid is None:
                     for s in solids:
                         if d.get('level') is not None and s['cat'] == 'REV': solid = s; break
-                        if d.get('radius') is not None and s['cat'] in ('REV', 'SPHERE'): solid = s; break
+                        if d.get('radius') is not None and (s['cat'] in ('REV', 'SPHERE') or (d.get('radius') == 'bore' and s.get('bore'))): solid = s; break
                         if d.get('slant') is not None and s['kind'] in ('CONE', 'CONE_FRUSTUM'): solid = s; break
                         if d.get('height') is not None and (s['cat'] == 'REV' or s['kind'] in ('PYRAMID', 'FRUSTUM')): solid = s; break
                 dim_solid[ident] = solid['id']
@@ -3888,6 +4033,7 @@ def expected_dim_values(plan, ctx):
                         f = int(m.group(1)) / int(m.group(2))
                         val = solid['r0'] + (solid['r1'] - solid['r0']) * f
                     elif which == 'bottom': val = solid['r0']
+                    elif which == 'bore': val = solid['bore']['radius'] if isinstance(solid['bore'], dict) else solid['bore']
                     else: val = solid['r1']
                     out[ident] = (val * 2 if d.get('diameterDim') else val, None, symbolic)
                 elif d.get('level') is not None:

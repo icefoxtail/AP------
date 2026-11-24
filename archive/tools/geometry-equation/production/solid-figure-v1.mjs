@@ -139,7 +139,7 @@ function buildPolyhedron(spec){
   const kind=spec.kind;
   if(kind==='REGULAR_POLYHEDRON')return buildRegular(spec);
   if(kind==='BIPYRAMID')return buildBipyramid(spec);
-  const allowed={PRISM:['id','kind','base','height','names','count','cuts'],PYRAMID:['id','kind','base','height','apex','names','count','cuts'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count','cuts']}[kind];
+  const allowed={PRISM:['id','kind','base','height','names','count','cuts','bore'],PYRAMID:['id','kind','base','height','apex','names','count','cuts'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count','cuts']}[kind];
   onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
   const {points,plane}=basePolygon(spec.base);
   const n=points.length,height=pos(spec.height,'SOLID_PARAM_INVALID');
@@ -212,7 +212,25 @@ function buildPolyhedron(spec){
     return {id:spec.id,kind,category:'POLY',vertices:cut.vertices,faces:cut.faces,edges:edgesOfFaces(cut.faces),height,cuts:cut.record};
   }
   const count=parseCount(spec.count,vertices,edges);
-  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height,...(count?{count}:{})};
+  // bore:{radius} (PRISM over a RECT or an even REGULAR base): a hole of that radius bored through the middle of the two bases, along the prism's axis. It lies in the base's centre, so it must be
+  // narrower than the inscribed circle, and the prism must be tall enough that no outer edge is seen through the opening of the top face (an edge of the base is at most R from the axis and
+  // is seen through the hole only when the line of sight leaves the top face within the hole: height / tan(pitch) < R + radius).
+  let bore;
+  if(spec.bore!==undefined){
+    if(kind!=='PRISM'||plane!=='XY')bad('SOLID_BORE_UNSUPPORTED:'+kind);
+    if(spec.cuts!==undefined)bad('SOLID_BORE_UNSUPPORTED:COMBINATION');
+    if(!isPlain(spec.bore))bad('SOLID_BORE_INVALID');
+    onlyKeys(spec.bore,['radius'],'SOLID_BORE_INVALID');
+    const b=spec.base;
+    if(!(b.kind==='RECT'||(b.kind==='REGULAR'&&b.n%2===0)))bad('SOLID_BORE_UNSUPPORTED:BASE');
+    const inR=b.kind==='RECT'?Math.min(b.width,b.depth)/2:b.side/(2*Math.tan(Math.PI/b.n));
+    const mx=points.reduce((s,q)=>s+q[0],0)/n,my=points.reduce((s,q)=>s+q[1],0)/n;
+    const outR=Math.max(...points.map(p=>Math.hypot(p[0]-mx,p[1]-my)));
+    bore={radius:pos(spec.bore.radius,'SOLID_BORE_INVALID')};
+    if(!(bore.radius<inR-1e-9))bad('SOLID_BORE_TOO_WIDE');
+    if(height*cP/sP<outR+bore.radius)bad('SOLID_BORE_HOST_TOO_LOW');
+  }
+  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height,...(count?{count}:{}),...(bore?{bore}:{})};
 }
 
 // --- regular polyhedra and bipyramids (E29) ---------------------------------------------------------------------------------------------------------
@@ -523,7 +541,17 @@ function parseBaseFill(raw,r0,rt){
 function buildRound(spec){
   const kind=spec.kind;
   const baseKeys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
-  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at','baseFill'],'SOLID_PARAM_INVALID');
+  onlyKeys(spec,[...baseKeys,'orientation','inside','count','cuts','cut','axis','centerZ','on','at','baseFill','bore'],'SOLID_PARAM_INVALID');
+  // bore:{radius}: a hole of that radius bored through a CYLINDER along its axis (a pipe, a drum with a hole); see BORE in the guide
+  let bore;
+  if(spec.bore!==undefined){
+    if(kind!=='CYLINDER')bad('SOLID_BORE_UNSUPPORTED:'+kind);
+    if(spec.inside!==undefined||spec.on!==undefined||spec.axis!==undefined||spec.baseFill!==undefined)bad('SOLID_BORE_UNSUPPORTED:COMBINATION');
+    if(!isPlain(spec.bore))bad('SOLID_BORE_INVALID');
+    onlyKeys(spec.bore,['radius'],'SOLID_BORE_INVALID');
+    bore={radius:pos(spec.bore.radius,'SOLID_BORE_INVALID')};
+    if(!(bore.radius<pos(spec.radius,'SOLID_PARAM_INVALID')))bad('SOLID_BORE_TOO_WIDE');
+  }
   if(spec.baseFill!==undefined&&kind!=='CYLINDER'&&kind!=='CONE'&&kind!=='CONE_FRUSTUM')bad('SOLID_BASE_FILL_UNSUPPORTED:'+kind);
   if(spec.count!==undefined)bad('SOLID_COUNT_UNSUPPORTED:'+kind);
   if(spec.cuts!==undefined)bad('SOLID_CUT_UNSUPPORTED:'+kind);
@@ -575,7 +603,7 @@ function buildRound(spec){
   }
   if(spec.inside!==undefined&&(typeof spec.inside!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(spec.inside)))bad('SOLID_NEST_INVALID');
   const axis=spec.axis!==undefined?parseAxis(spec.axis,kind,spec.inside!==undefined,spec.on!==undefined):undefined;
-  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,...(spec.on!==undefined?{on:spec.on}:{}),
+  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,r0,r1:rt,orientation,height,points,inside:spec.inside??null,...(spec.on!==undefined?{on:spec.on}:{}),...(bore?{bore}:{}),
     ...(spec.cut!==undefined?{cut:sphereCutModel(r,spec.cut,CUT_FRAME)}:{}),...(axis!==undefined?{axis}:{}),...(centerZ!==null?{centerZ}:{}),...(at?{at}:{}),
     ...(spec.baseFill!==undefined?{baseFill:parseBaseFill(spec.baseFill,r0,rt)}:{}),...(Object.keys(levelNames).length?{levelNames}:{})};
 }
@@ -1271,7 +1299,7 @@ function resolveStacks(solids){
     if(!host||host===g)bad('SOLID_STACK_UNKNOWN:'+String(g.on).slice(0,8));
     for(const s of [g,host]){
       if(s.category==='POLY'||s.kind==='SPHERE')bad('SOLID_STACK_UNSUPPORTED:'+s.kind);
-      if(s.inside||s.cut)bad('SOLID_STACK_UNSUPPORTED:NESTED');
+      if(s.inside||s.cut||s.bore)bad('SOLID_STACK_UNSUPPORTED:NESTED');
     }
     if(guestOf.has(host.id))bad('SOLID_STACK_BRANCH:'+host.id);
     guestOf.set(host.id,g);
@@ -1418,7 +1446,7 @@ function solveSolids(plan){
     const host=solids.find(s=>s.id===solid.inside);
     if(!host||host===solid)bad('SOLID_NEST_UNKNOWN:'+solid.inside);
     if(host.inside)bad('SOLID_NEST_CHAIN');
-    if(host.kind!=='CYLINDER')bad('SOLID_NEST_UNSUPPORTED:'+host.kind);
+    if(host.kind!=='CYLINDER'||host.bore)bad('SOLID_NEST_UNSUPPORTED:'+host.kind);
     if(solid.kind==='SPHERE'){const cz=solid.centerZ??solid.radius,away=solid.at?Math.hypot(solid.at.x,solid.at.y):0;if(cz-solid.radius<-1e-9||cz+solid.radius>host.height+1e-9||away+solid.radius>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else if(solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM'){if(solid.height>host.height+1e-9||Math.max(solid.r0,solid.r1)>host.radius+1e-9)bad('SOLID_NEST_DOES_NOT_FIT:'+solid.id);}
     else bad('SOLID_NEST_UNSUPPORTED:'+solid.kind);
@@ -1637,6 +1665,7 @@ function solveSolids(plan){
     const solid=solids.find(s=>s.id===target);
     if(!solid||(solid.category!=='REV'&&!sphereOk(solid)))bad('SOLID_SECTION_UNSUPPORTED');
     if(solid.on!==undefined||solids.some(x=>x.on===solid.id))bad('SOLID_STACK_UNSUPPORTED:SECTION');
+    if(solid.bore)bad('SOLID_SECTION_UNSUPPORTED');
     if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined||plan.section.fill!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
     else{
       // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
@@ -1703,9 +1732,10 @@ function solveSolids(plan){
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
         if(d.radius!==undefined){
-          if(solid.category==='POLY')bad('SOLID_DIMS_INVALID');
+          if(solid.category==='POLY'&&!(d.radius==='bore'&&solid.bore))bad('SOLID_DIMS_INVALID');
           const which=d.radius;
-          if(!['bottom','top','center','level'].includes(which))bad('SOLID_DIMS_INVALID');
+          if(!['bottom','top','center','level','bore'].includes(which))bad('SOLID_DIMS_INVALID');
+          if(which==='bore'&&!solid.bore)bad('SOLID_DIMS_INVALID');
           if(which==='center'){if(solid.category!=='SPHERE')bad('SOLID_DIMS_INVALID');}
           else if(solid.category==='SPHERE')bad('SOLID_DIMS_INVALID');
           let z,rimR;
@@ -1719,7 +1749,7 @@ function solveSolids(plan){
           }else{
             if(which==='bottom'&&!(solid.r0>0))bad('SOLID_DIMS_INVALID');
             if(which==='top'&&!(solid.r1>0))bad('SOLID_DIMS_INVALID');
-            z=which==='top'?solid.height:0;rimR=which==='top'?solid.r1:solid.r0;
+            z=which==='top'||which==='bore'?solid.height:0;rimR=which==='bore'?solid.bore.radius:which==='top'?solid.r1:solid.r0;
           }
           // a cut sphere's radius lies along one of its seen half axes (sphere-parts.mjs picks the most horizontal one unless `half` names it), not along the screen's horizontal
           if(solid.cut&&!solid.cut.radiusAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN');
@@ -2392,6 +2422,7 @@ function spec3d(plan,model,ctx){
   for(const solid of model.solids){
     const sid=solid.id;
     if(solid.category==='POLY'){
+      if(solid.bore)specBore(solid,ctx,arcPrim);
       for(const {a,b,runs} of solid.runs){
         const va=solid.vertices[a],vb=solid.vertices[b];
         const nm=(v,i)=>v.name??('v'+i);
@@ -2860,6 +2891,7 @@ function specRev(solid,ctx,arcPrim){
     arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,solid.covered?'hidden':'solid',{solid:sid,circle:'top',half:'BACK'});
     arcPrim(sid+'-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
     for(const sgn of [-1,1])line(`${sid}-side-${sgn<0?'left':'right'}`,'silhouette',pt([bot.cx+sgn*bot.a,bot.cy]),pt([top.cx+sgn*top.a,top.cy]),{solid:sid,side:sgn<0?'LEFT':'RIGHT',vis:'solid'});
+    if(solid.bore)specBore(solid,ctx,arcPrim);
     return;
   }
   const apex=apexOf(solid);
@@ -2899,6 +2931,29 @@ function specRev(solid,ctx,arcPrim){
     line(`${sid}-side-left`,'silhouette',pt(bl),pt(tl),{solid:sid,side:'LEFT',vis:'solid'});
     line(`${sid}-side-right`,'silhouette',pt(br),pt(tr),{solid:sid,side:'RIGHT',vis:'solid'});
   }
+}
+/**
+ * The hole bored through a cylinder (bore:{radius}). Seen from the fixed view: the rim of the hole on the top face is a whole ellipse; the rim on the bottom face is seen only where the
+ * line of sight to it passes through the opening in the top face. A bottom-rim point at world angle t is seen when |P + V_xy h / V_z| < rb, i.e. cos(t - psi) < -|w| / (2 rb) with
+ * w = V_xy h / V_z; for this view psi + pi is the far point of the rim (screen parameter u = pi/2), so the seen stretch is centred there with half-width acos(|w| / (2 rb)) and is empty
+ * when |w| >= 2 rb (a narrow hole in a tall body). The rest of the bottom rim and the two generators of the hole at the screen's extreme sides are behind the body: dashed.
+ */
+function specBore(solid,ctx,arcPrim){
+  const {S,pt,line}=ctx,sid=solid.id,rb=solid.bore.radius,h=solid.height;
+  const top=ellipseOf(S,solid,rb,h),bot=ellipseOf(S,solid,rb,0);
+  arcPrim(sid+'-bore-top-back','ellipse-arc',top,0,Math.PI,'solid',{solid:sid,circle:'boreTop',half:'BACK'});
+  arcPrim(sid+'-bore-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'boreTop',half:'FRONT'});
+  const c=h*cP/sP/(2*rb);
+  if(c<1-1e-9){
+    const alpha=Math.acos(c),a=Math.PI/2-alpha,b=Math.PI/2+alpha,mid=b+(a+2*Math.PI-b)/2;
+    arcPrim(sid+'-bore-bottom-seen','ellipse-arc',bot,a,b,'solid',{solid:sid,circle:'boreBottom',half:'BACK'});
+    arcPrim(sid+'-bore-bottom-hidden-1','ellipse-arc',bot,b,mid,'hidden',{solid:sid,circle:'boreBottom',half:'HIDDEN'});
+    arcPrim(sid+'-bore-bottom-hidden-2','ellipse-arc',bot,mid,a+2*Math.PI,'hidden',{solid:sid,circle:'boreBottom',half:'HIDDEN'});
+  }else{
+    arcPrim(sid+'-bore-bottom-back','ellipse-arc',bot,0,Math.PI,'hidden',{solid:sid,circle:'boreBottom',half:'BACK'});
+    arcPrim(sid+'-bore-bottom-front','ellipse-arc',bot,Math.PI,2*Math.PI,'hidden',{solid:sid,circle:'boreBottom',half:'FRONT'});
+  }
+  for(const sgn of [-1,1])line(`${sid}-bore-side-${sgn<0?'left':'right'}`,'bore-edge',pt([bot.cx+sgn*bot.a,bot.cy]),pt([top.cx+sgn*top.a,top.cy]),{solid:sid,side:sgn<0?'LEFT':'RIGHT',vis:'hidden'});
 }
 function specSphere(solid,ctx,arcPrim){
   const {S,X,Y,prims}=ctx;
