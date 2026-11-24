@@ -1,9 +1,34 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
     {
-      "type": "octahedron",
-      "edge": "12 cm"
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 12,
+      "names": "......"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#v0",
+        "#v1"
+      ],
+      "label": "12"
+    }
+  ],
+  "caption": "한 모서리의 길이가 12 cm인 정팔면체이다.",
+  "accessibilityDescription": "모든 모서리의 길이가 같은 정팔면체가 그려져 있고 한 모서리에 12 cm 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "한 모서리의 길이가 12 cm인 정팔면체"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 모서리의 길이가 $12\\text{ cm}$인 정팔면체의 부피를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

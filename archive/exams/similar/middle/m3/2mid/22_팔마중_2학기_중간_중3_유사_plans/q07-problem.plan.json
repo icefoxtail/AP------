@@ -1,40 +1,72 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "solid-figure-v1",
+  "solids": [
     {
-      "type": "cube",
-      "verticesTop": [
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "verticesBottom": [
-        "E",
-        "F",
-        "G",
-        "H"
-      ],
-      "edge": "6"
-    },
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": {
+        "base": [
+          "F",
+          "G",
+          "H",
+          "E"
+        ],
+        "top": [
+          "B",
+          "C",
+          "D",
+          "A"
+        ]
+      }
+    }
+  ],
+  "segments": [
     {
-      "type": "segment",
       "from": "C",
-      "to": "E"
+      "to": "E",
+      "style": "DASHED"
     },
     {
-      "type": "segment",
       "from": "E",
-      "to": "G"
-    },
+      "to": "G",
+      "style": "DASHED"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "C",
+          "E",
+          "G"
+        ],
+        "label": "x"
+      }
+    ]
+  },
+  "dims": [
     {
-      "type": "angle",
-      "at": "E",
-      "arms": [
-        "C",
-        "G"
-      ],
-      "text": "x°"
+      "edge": "FG",
+      "label": "6"
+    }
+  ],
+  "caption": "한 모서리의 길이가 6인 정육면체 ABCD-EFGH에서 직각삼각형 CEG와 각 CEG의 크기 x를 나타낸 그림이다.",
+  "accessibilityDescription": "정육면체 내부를 지나는 대각선 CE와 밑면 대각선 EG가 점선으로 연결되어 삼각형 CEG를 이루고 각 CEG의 위치에 각도 x가 표시되어 있으며 모서리 FG의 길이가 6으로 표시되어 있다.",
+  "newVisualInformation": [
+    "정육면체 내부의 삼각형 CEG와 각 CEG의 크기 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 모서리의 길이가 $6$인 정육면체에서 $\\angle\\text{CEG}=x^\\circ$라 할 때, $\\sin x^\\circ \\div \\cos x^\\circ$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

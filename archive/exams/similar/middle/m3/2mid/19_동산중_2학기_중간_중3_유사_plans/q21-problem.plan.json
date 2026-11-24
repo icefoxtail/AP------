@@ -1,11 +1,37 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
     {
-      "type": "cylinder",
-      "radius": "4 cm",
-      "height": "15π cm",
-      "helixTurns": 1
+      "id": "c1",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 47.12388980384689
+    }
+  ],
+  "dims": [
+    {
+      "solid": "c1",
+      "height": true,
+      "side": "LEFT",
+      "label": "15\\pi"
+    },
+    {
+      "solid": "c1",
+      "radius": "top",
+      "label": "4"
+    }
+  ],
+  "caption": "밑면의 반지름이 4이고 높이가 15파이인 원기둥",
+  "accessibilityDescription": "밑면의 반지름의 길이가 4, 높이가 15파이로 표시된 원기둥이 그려져 있다.",
+  "newVisualInformation": [
+    "밑면 반지름 4와 높이 15파이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $4\\text{ cm}$, 높이가 $15\\pi\\text{ cm}$인 원기둥에서 점 $\\text{A}$는 아래쪽 원둘레 위의 점이고, 점 $\\text{B}$는 $\\text{A}$와 같은 모선 위의 위쪽 원둘레 위의 점이다. 원기둥의 옆면을 따라 원둘레 방향으로 정확히 한 바퀴 감아 $\\text{A}$에서 $\\text{B}$에 이르는 최단 거리는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

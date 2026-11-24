@@ -334,6 +334,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/21_연향중_2학기_중간_중3_유사/q08-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

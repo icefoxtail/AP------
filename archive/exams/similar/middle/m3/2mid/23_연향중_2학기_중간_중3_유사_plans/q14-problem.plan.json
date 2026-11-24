@@ -1,89 +1,104 @@
 {
-  "kind": "geometry",
-  "caption": "밑면 한 변 6cm, ∠OAH=60°인 정사각뿔 O-ABCD",
-  "viewBox": [
-    0,
-    0,
-    240,
-    220
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 7.3484692283495345,
+      "names": {
+        "base": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "apex": "O"
+      },
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
   ],
-  "vertices": {
-    "O": [
-      120,
-      30
+  "segments": [
+    {
+      "from": "O",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "style": "DASHED"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "D",
+      "style": "DASHED"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "O",
+          "A",
+          "H"
+        ],
+        "label": "60"
+      }
     ],
-    "A": [
-      45,
-      175
-    ],
-    "B": [
-      145,
-      175
-    ],
-    "C": [
-      195,
-      130
-    ],
-    "D": [
-      95,
-      130
-    ],
-    "H": [
-      120,
-      152.5
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
     ]
   },
-  "segments": [
-    [
-      "O",
-      "A"
-    ],
-    [
-      "O",
-      "B"
-    ],
-    [
-      "O",
-      "C"
-    ],
-    [
-      "O",
-      "D"
-    ],
-    [
-      "A",
-      "B"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "C",
-      "D"
-    ],
-    [
-      "D",
-      "A"
-    ],
-    [
-      "O",
-      "H"
-    ],
-    [
-      "A",
-      "H"
-    ]
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "BC",
+      "label": "6"
+    }
   ],
-  "rightAngles": [
-    [
-      "O",
-      "H",
-      "A"
-    ]
+  "caption": "밑면의 한 변의 길이가 6 cm인 정사각형 ABCD이고 각 OAH가 60도인 정사각뿔 O-ABCD이다.",
+  "accessibilityDescription": "정사각뿔 O-ABCD에서 밑면 대각선 AC와 BD의 교점 H로 꼭짓점 O에서 점선 수선 OH가 내려져 있고 각 OAH의 크기가 60도로 표시되어 있으며 밑면 모서리 AB와 BC의 길이가 각각 6 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "꼭짓점 O에서 밑면에 내린 수선의 발 H와 각 OAH의 크기 60도"
   ],
-  "labels": {
-    "AB": "6cm",
-    "A": "60°"
-  }
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 밑면이 한 변의 길이가 $6,\\mathrm{cm}$인 정사각형 $ABCD$이고 $\\angle OAH=60^\\circ$인 정사각뿔 $O-ABCD$의 부피는? (단, $H$는 꼭짓점 $O$에서 밑면에 내린 수선의 발이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

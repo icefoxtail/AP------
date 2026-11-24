@@ -1,4 +1,97 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "포물선의 꼭짓점·x절편·y절편으로 이루어진 삼각형 넓이 도형은 발문의 식과 좌표만으로 완결된다."
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -2,
+      11
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "9",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "2"
+        },
+        {
+          "id": "B",
+          "curveX": "5"
+        },
+        {
+          "id": "C",
+          "curveX": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "bc",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "ca",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면에 이차함수의 그래프와 세 점 A, B, C를 꼭짓점으로 하는 삼각형 ABC가 나타나 있다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있고, 포물선의 꼭짓점 A, x축과의 교점 B, y축과의 교점 C가 선분으로 연결되어 삼각형 ABC를 이룬다. 원점 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 A, x축의 양의 부분과의 교점 B, y축과의 교점 C를 연결한 삼각형 ABC가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=-x^2+4x+5$의 그래프의 꼭짓점을 $A$라 하고, 이 그래프가 $x$축의 양의 부분과 만나는 점을 $B$, $y$축과 만나는 점을 $C$라고 하자. 점 $B$의 좌표가 $(5, 0)$일 때, 삼각형 $ABC$의 넓이를 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

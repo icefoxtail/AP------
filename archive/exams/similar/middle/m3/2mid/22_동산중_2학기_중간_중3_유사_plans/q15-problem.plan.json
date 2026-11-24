@@ -1,156 +1,311 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "O",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 4,
-        "y": 0
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "38"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineOD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineOP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineDT",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineOP",
+          "lineDT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "D",
+    "E",
+    "P",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "B",
+    "D",
+    "E",
+    "P",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "E",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 4
-      }
-    },
-    {
-      "id": "A",
-      "op": "POLAR_POINT",
-      "inputs": [
-        "O"
-      ],
-      "args": {
-        "r": 4,
-        "deg": 38
-      }
-    },
-    {
-      "id": "OD_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
+      "id": "sOB",
+      "refs": [
         "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
         "D"
       ]
     },
     {
-      "id": "B",
-      "op": "PERPENDICULAR_FOOT",
-      "inputs": [
-        "A",
-        "OD_line"
-      ]
-    },
-    {
-      "id": "C",
-      "op": "POLAR_POINT",
-      "inputs": [
-        "O"
-      ],
-      "args": {
-        "r": 5.076,
-        "deg": 38
-      }
-    },
-    {
-      "id": "OA",
-      "op": "SEGMENT",
-      "inputs": [
-        "O",
-        "C"
-      ]
-    },
-    {
-      "id": "OD",
-      "op": "SEGMENT",
-      "inputs": [
-        "O",
-        "D"
-      ]
-    },
-    {
-      "id": "OE",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sOE",
+      "refs": [
         "O",
         "E"
       ]
     },
     {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
-        "A",
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
         "B"
       ]
     },
     {
-      "id": "CD",
-      "op": "SEGMENT",
-      "inputs": [
-        "C",
-        "D"
+      "id": "sDT",
+      "refs": [
+        "D",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "T",
+        "D",
+        "O"
       ]
     }
   ],
   "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "D",
+          "O",
+          "P"
+        ],
+        "value": 38,
+        "label": "38",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
     "arcs": [
       {
+        "id": "arcDE",
+        "circle": "circ",
         "center": "O",
-        "radius": 4,
-        "startDeg": 0,
-        "endDeg": 90
+        "from": "D",
+        "to": "E",
+        "side": "MINOR"
       }
     ],
-    "rightAngles": [
+    "expressionLabels": [
       {
-        "vertex": "B",
-        "ray1": "A",
-        "ray2": "O"
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "0.7880"
       },
       {
-        "vertex": "D",
-        "ray1": "C",
-        "ray2": "O"
-      }
-    ],
-    "angleArcs": [
-      {
-        "vertex": "O",
-        "ray1": "D",
-        "ray2": "A",
-        "label": "38°"
-      }
-    ],
-    "segmentLabels": [
-      {
-        "from": "A",
-        "to": "B",
-        "label": "0.6157"
+        "id": "lPB",
+        "ownerSegment": "sPB",
+        "text": "0.6157"
       },
       {
-        "from": "O",
-        "to": "B",
-        "label": "0.7880"
+        "id": "lDT",
+        "ownerSegment": "sDT",
+        "text": "0.7813"
       },
       {
-        "from": "C",
-        "to": "D",
-        "label": "0.7813"
+        "id": "lOP",
+        "ownerSegment": "sOP",
+        "text": "1"
       }
     ]
   },
-  "caption": "반지름이 1인 사분원에서 중심각 38도에 대한 선분 길이"
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "반지름의 길이가 1인 사분원에서 중심각 38도에 대한 직각삼각형들과 선분의 길이",
+  "accessibilityDescription": "중심이 O이고 반지름이 1인 사분원에서 중심각이 38도인 동경이 원호와 만나는 점에서 밑변에 내린 수선은 길이가 0.6157이고 밑변의 밑선분은 0.7880이며 밑변 끝점에서의 접선은 길이가 0.7813으로 표시되어 있다.",
+  "newVisualInformation": [
+    "각도 38도, 선분 길이 0.7880, 0.6157, 0.7813과 반지름 1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\sin 38^\\circ = 0.6157$, $\\cos 38^\\circ = 0.7880$, $\\tan 38^\\circ = 0.7813$일 때, 다음 중 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
