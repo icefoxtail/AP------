@@ -28,9 +28,31 @@ const read = (root, rel, fallback) => fs.existsSync(path.join(root, rel)) ? JSON
 const specs = (root, rel) => fs.readFileSync(path.join(root, rel), 'utf8').split(/\r?\n/).map(s=>s.trim()).filter(s=>s&&!s.startsWith('#'));
 
 // Existing path lists use literal paths, directory prefixes and Git's non-glob-mode `*` (including '/').
-export function matches(file, patterns) {
+// The pattern list is compiled once (a Set for literals, prefixes, one RegExp per wildcard) instead of building a RegExp per
+// pattern per file: assessing the six lanes over the ~60k tracked paths took 40 s of pure CPU, several times per run.
+// matchesReference below keeps the original one-line definition; a test proves both agree on the real index.
+export function compilePatterns(patterns) {
+  const prefixes=[],literals=new Set(),wild=[];
+  for(const pattern of patterns) {
+    if(pattern.endsWith('/'))prefixes.push(pattern);
+    else if(!pattern.includes('*'))literals.add(pattern);
+    else wild.push(new RegExp('^' + pattern.split('*').map(s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('.*') + '$'));
+  }
+  return file => literals.has(file) || prefixes.some(p=>file.startsWith(p)) || wild.some(re=>re.test(file));
+}
+export function matchesReference(file, patterns) {
   return patterns.some(pattern => pattern.endsWith('/') ? file.startsWith(pattern)
     : new RegExp('^' + pattern.split('*').map(s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('.*') + '$').test(file));
+}
+const compiledByList=new WeakMap();
+export function matches(file, patterns) {
+  let hit=compiledByList.get(patterns);
+  // A list edited in place after compiling (same array, other content) must not reuse the old matcher.
+  if(!hit||hit.length!==patterns.length||hit.first!==patterns[0]||hit.last!==patterns[patterns.length-1]) {
+    hit={length:patterns.length,first:patterns[0],last:patterns[patterns.length-1],test:compilePatterns(patterns)};
+    compiledByList.set(patterns,hit);
+  }
+  return hit.test(file);
 }
 
 export function indexRows(root) {
@@ -41,7 +63,8 @@ export function indexRows(root) {
   });
 }
 export function fingerprint(rows, patterns) {
-  return sha(rows.filter(r=>r.path!==STATE&&matches(r.path,patterns)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
+  const hit=compilePatterns(patterns);
+  return sha(rows.filter(r=>r.path!==STATE&&hit(r.path)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
     .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join(''));
 }
 const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs)}));
