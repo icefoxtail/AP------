@@ -44,8 +44,9 @@
 | 작업 | 먼저 읽을 문서 |
 | --- | --- |
 | 현행 규칙 한 권 (우선 적용) | [docs/rules/RULEBOOK_CURRENT.md](docs/rules/RULEBOOK_CURRENT.md) |
-| 작업 지시서 작성·방법 검토 (모든 작업자 공통) | [공통 판단 계약](docs/agents/outcome-method-review.md) |
-| 시험지 제작·검수 (CREATE·R1·R2·R3, Codex·ROOT) | [docs/agents/exam-pipeline.md](docs/agents/exam-pipeline.md) |
+| 문항 JS 한 흐름 (발문→게시) | [정본](docs/agents/question-js-flow.md) |
+| 작업 지시서·방법 검토 (공통) | [공통 판단 계약](docs/agents/outcome-method-review.md) |
+| 시험지 제작·검수 (CREATE·R1~R3) | [docs/agents/exam-pipeline.md](docs/agents/exam-pipeline.md) |
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
@@ -53,13 +54,13 @@
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
-| 문제·해설 그림 (Visual·SVG), SVG 엔진 | [docs/agents/visual-svg.md](docs/agents/visual-svg.md) |
+| 문제·해설 그림 (SVG 엔진) | [docs/agents/visual-svg.md](docs/agents/visual-svg.md) |
 | Google AI Studio 유사 생성·반입 | [docs/agents/aistudio-similar.md](docs/agents/aistudio-similar.md) |
 | 시험지 표 (AP Table Engine) | [docs/agents/table-engine.md](docs/agents/table-engine.md) |
 | Archive 2.0 화면·엔진 코드 | [docs/agents/archive2-code.md](docs/agents/archive2-code.md) |
-| Git 저장 범위, Drive 증거, 이력 정리 | [docs/agents/git-evidence.md](docs/agents/git-evidence.md) |
+| Git·Drive 증거·이력 정리 | [docs/agents/git-evidence.md](docs/agents/git-evidence.md) |
 | 범위 판단, 수정 책임(OWN_AND_FIX) 원문 | [docs/agents/common.md](docs/agents/common.md) |
-| 도메인 이전 (wangjiedu.com) | [docs/operations/WangjiEdu_Domain_Migration_Plan_v1.md](docs/operations/WangjiEdu_Domain_Migration_Plan_v1.md) |
+| 도메인 이전 | [docs/operations/WangjiEdu_Domain_Migration_Plan_v1.md](docs/operations/WangjiEdu_Domain_Migration_Plan_v1.md) |
 | 토큰 효율 상세 | [docs/agents/token-efficiency.md](docs/agents/token-efficiency.md) |
 
 ## 이 파일 관리

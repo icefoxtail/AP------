@@ -53,6 +53,7 @@
 ## 4. 해설과 그림
 
 - 학생용 해설은 해당 연도·학년·과목 교육과정 안에서 논리적으로 완결되게 쓰고, 학생 관점에서 따라갈 수 있게 한다. 이유: 교육과정 밖 공식으로 쓴 해설은 학생이 따라갈 수 없다. → [exam-pipeline.md](../agents/exam-pipeline.md)
+- **해설은 작은 칠판 판서 수준으로, 조건에서 답으로 가는 순서로 쓴다.** 한 줄에 한 단계, 중간 계산을 건너뛰지 않는다. 답을 먼저 놓고 거꾸로 확인하는 해설은 결함이다(2026-11-24). 이유: 학생은 답을 모르는 상태에서 푼다(25 순천고 고1 2학기 기말 19번). → [question-js-flow.md](../agents/question-js-flow.md)
 - 학생에게 보이는 설명은 한국어 교육과정 용어로 쓰고, 그림에 raw TeX·caret·영어 제작 메모·debug 문구가 보이지 않게 한다. 이유: 제작 흔적이 그대로 학생 화면에 나갔다. → [exam-pipeline.md](../agents/exam-pipeline.md)
 - **해설 그림은 풀이 과정의 값을 넣고, 정답이 그림에 보여도 반려하지 않는다. 정답·새 보조선을 숨기는 규칙은 문제 그림에만 적용한다**(2026-11-17). 이유: 학생 화면은 정답을 해설 그림보다 먼저 보여 주므로 숨겨도 막는 것이 없고 그림만 빈약해진다. → [visual-svg.md](../agents/visual-svg.md)
 - 그림은 저장소의 SVG 엔진으로 만들고 손으로 SVG를 쓰지 않는다. 작성 규칙은 AUTHOR_GUIDE가 정본이다. 이유: 엔진 출력만 관측기가 식·라벨·눈금을 다시 대조한다. → [AUTHOR_GUIDE](../../archive/tools/geometry-equation/production/AUTHOR_GUIDE.md), [visual-svg.md](../agents/visual-svg.md)
@@ -112,6 +113,7 @@
 | 하려는 일 | 이 책 + 읽을 문서 |
 | --- | --- |
 | 모든 작업 시작 | 0·1장 + [AGENTS.md](../../AGENTS.md), [outcome-method-review.md](../agents/outcome-method-review.md) |
+| 문항 JS 만들기·고치기(기출·유사·교재 공통, 발문→게시 순서) | 2·3·4·6장 + [question-js-flow.md](../agents/question-js-flow.md) |
 | 시험지 제작·검수 | 2·3·4·6장 + [exam-pipeline.md](../agents/exam-pipeline.md) |
 | 시험지 출고, main 병합 | 7장 + [exam-release.md](../agents/exam-release.md), [common.md](../agents/common.md) |
 | 문항 메타 | 3장 + [metadata.md](../agents/metadata.md), [Meta OS](../architecture/JS_Archive_Meta_OS_CURRENT.md) |
