@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAC",
+        "ownerSegment": "CA",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "EC",
+        "text": "9",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "두 선분 AE와 AD에서 점 C는 AE 위의 점이고 점 B는 AD 위의 점이다. AC, CE, AB, BD, BC에 각각 3 cm, 9 cm, 4 cm, 5 cm, 5 cm가 표시되어 있다.",
+  "accessibilityDescription": "점 A에서 뻗은 두 선분 AE와 AD가 있고, AE 위에 C, AD 위에 B가 있다. AC에 3 cm, CE에 9 cm, AB에 4 cm, BD에 5 cm, BC에 5 cm가 보인다.",
+  "newVisualInformation": [
+    "AE 위의 점 C와 AD 위의 점 B",
+    "AC=3 cm, CE=9 cm, AB=4 cm, BD=5 cm, BC=5 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 선분 $AE$와 $AD$에서 점 $C$는 변 $AE$ 위의 점($\\overline{AC} = 3\\text{ cm}$, $\\overline{CE} = 9\\text{ cm}$), 점 $B$는 변 $AD$ 위의 점($\\overline{AB} = 4\\text{ cm}$, $\\overline{BD} = 5\\text{ cm}$)이다. $\\overline{BC} = 5\\text{ cm}$일 때, $\\overline{DE}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

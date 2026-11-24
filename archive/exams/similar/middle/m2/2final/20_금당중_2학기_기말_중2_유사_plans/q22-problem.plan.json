@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "34",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "70",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "E",
+    "D",
+    "F",
+    "C",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sED"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "e1",
+        "count": 2,
+        "segments": [
+          "sDF",
+          "sFC"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "36",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "pointNames": {
+    "H": "G'"
+  },
+  "caption": "삼각형 ABC의 변 BC 위에 점 D가 있고, E와 F는 각각 BD와 DC의 중점이다. G와 G'은 삼각형 ABD와 ADC의 무게중심이며 BC의 길이는 36 cm이다.",
+  "accessibilityDescription": "삼각형 ABC에서 A와 D를 잇는 선분, A와 E, A와 F를 잇는 선분이 보인다. BD와 DC에는 각각 같은 길이 표시가 있고, 두 무게중심 G와 G'을 잇는 선분이 있다.",
+  "newVisualInformation": [
+    "BD와 DC가 각각 같은 길이로 나뉘어 있음이 표시되어 있다.",
+    "두 무게중심 G와 G'을 잇는 선분과 BC의 길이 36 cm가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$의 변 $BC$ 위의 한 점 $D$에 대하여 두 점 $G, G'$은 각각 삼각형 $ABD$와 삼각형 $ADC$의 무게중심이다. 중선 $AE$와 $AF$가 각각 변 $BD, DC$와 만나는 점을 $E, F$라 하자. $\\overline{BC} = 36\\text{ cm}$일 때, 다음 물음에 답하시오. [7점]   (1) 선분 $EF$의 길이를 구하시오. [1점]   (2) $\\triangle AGG'$와 서로 닮음인 삼각형을 찾아 닮음 기호를 사용하여 나타내고, 그 닮음 조건을 쓰시오. [4점]   (3) 닮음비를 이용하여 선분 $GG'$의 길이를 구하는 풀이 과정과 답을 쓰시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

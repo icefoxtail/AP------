@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "111",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lED",
+        "ownerSegment": "sED",
+        "text": "9",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 520
+  },
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "E",
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "caption": "정사각형 ABCD의 변 AD 위쪽에 점 E가 있고, E에서 BC에 내린 수선이 AD와 만나는 점을 F, BC와 만나는 점을 G로 나타낸 그림이다.",
+  "accessibilityDescription": "정사각형 ABCD, 점 E, 수선 EG, 교점 F가 보이고, AB의 길이 15와 ED의 길이 9가 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD와 그 위쪽의 점 E",
+    "수선 EG와 AD의 교점 F, BC의 교점 G",
+    "AB의 길이 15, ED의 길이 9"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\square\\text{ABCD}$는 정사각형이고 $\\angle\\text{AED}=90^\\circ$, $\\overline{\\text{EG}}\\perp\\overline{\\text{BC}}$(점 $\\text{F}$는 $\\overline{\\text{EG}}$와 $\\overline{\\text{AD}}$의 교점), $\\overline{\\text{AB}}=15$, $\\overline{\\text{ED}}=9$일 때, $\\overline{\\text{AF}}$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

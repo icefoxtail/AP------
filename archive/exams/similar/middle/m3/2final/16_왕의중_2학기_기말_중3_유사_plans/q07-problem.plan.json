@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 15,
+        "label": "15",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sDA"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDC",
+        "ownerSegment": "sCD",
+        "text": "5",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "B, C, D, A가 있고 C에서 직각 표시가 있으며 선분 BC, CD, DA, BD, BA가 그려져 있다. 각 ABD는 15도, 각 DBC는 30도, DC는 5m로 적혀 있다.",
+  "accessibilityDescription": "B, C, D, A가 있고 C에서 직각 표시가 있으며 선분 BC, CD, DA, BD, BA가 그려져 있다. 각 ABD는 15도, 각 DBC는 30도, DC는 5m로 적혀 있다.",
+  "newVisualInformation": [
+    "밑변을 공유하는 두 직각삼각형에서 주어진 각과 길이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 건물에 설치된 현수막의 위끝과 아래끝을 올려다본 각도를 나타낸 것이다. $\\angle ACB = 90^\\circ$, $\\angle ABD = 15^\\circ$, $\\angle DBC = 30^\\circ$, $\\overline{DC} = 5\\text{ m}$일 때, $\\overline{AD}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

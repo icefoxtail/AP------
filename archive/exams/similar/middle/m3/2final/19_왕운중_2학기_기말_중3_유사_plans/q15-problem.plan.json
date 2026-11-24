@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "27"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "aBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "label": "12pi",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aAC",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "label": "x",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "원 O에서 선분 AB가 지름이고, 원 위의 점 P에서 두 점 B, C를 이은 각 BPC가 40도이다. 호 BC의 길이가 12πcm이고 호 AC의 길이가 x로 표시되어 있다.",
+  "accessibilityDescription": "중심 O가 표시된 원과 지름 AB가 있고, 원 위에 점 C와 P가 있다. 점 P에서 B와 C로 그은 두 선분이 이루는 각에 40이 적혀 있으며, 호 BC 옆에 12πcm, 호 AC 옆에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "지름 AB",
+    "각 BPC=40도",
+    "호 BC의 길이 12πcm",
+    "호 AC의 길이 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle BPC = 40^\\circ$, $\\overgroup{BC} = 12\\pi\\text{ cm}$일 때, $\\overgroup{AC}$의 길이 $x$는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

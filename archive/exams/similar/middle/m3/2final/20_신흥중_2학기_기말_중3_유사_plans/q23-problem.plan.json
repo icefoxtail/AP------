@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eR",
+        "count": 1,
+        "segments": [
+          "OA",
+          "OB"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "PO"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "PA",
+          "PB"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "원의 중심 O와 원 밖의 점 P, 두 접점 A, B가 있고 선분 PA, PB, OA, OB, PO가 그려져 있다. A와 B에 직각 표시가 있고 OA와 OB에 같은 길이 표시가 있다.",
+  "accessibilityDescription": "원의 중심 O와 원 밖의 점 P, 두 접점 A, B가 있고 선분 PA, PB, OA, OB, PO가 그려져 있다. A와 B에 직각 표시가 있고 OA와 OB에 같은 길이 표시가 있다.",
+  "newVisualInformation": [
+    "두 접선과 두 반지름, 공통인 선분 PO의 관계를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 원 $O$ 밖의 한 점 $P$에서 원 $O$에 그은 두 접선의 접점을 각각 $A, B$라 할 때, 두 접선의 길이가 같음($\\overline{PA} = \\overline{PB}$)을 증명하는 과정이다. 빈칸 ①~⑤에 알맞은 기호나 식을 쓰시오.\n\n(가정) $\\overline{PA}, \\overline{PB}$는 원 $O$의 접선 (결론) $\\overline{PA} = \\overline{PB}$ (증명) $\\triangle PAO$와 $\\triangle PBO$에서 ① $\\underline{\\hspace{2.5cm}}$ (R) ② $\\underline{\\hspace{2.5cm}}$ (H) ③ $\\underline{\\hspace{2.5cm}}$ (S) ④ $\\underline{\\hspace{2.5cm}}$ (RHS 합동) 따라서 ⑤ $\\underline{\\hspace{2.5cm}}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

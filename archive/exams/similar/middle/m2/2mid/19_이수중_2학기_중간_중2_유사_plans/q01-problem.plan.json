@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aQ",
+        "refs": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aR",
+        "refs": [
+          "P",
+          "R",
+          "Q"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aP1",
+        "refs": [
+          "Q",
+          "P",
+          "S"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "aP2",
+        "refs": [
+          "S",
+          "P",
+          "R"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "caption": "삼각형 PQR에서 ∠Q와 ∠R에 같은 표시가 있고, ∠P의 이등분선이 변 QR과 만나는 점 S가 그려진 그림이다.",
+  "accessibilityDescription": "이등변삼각형 모양의 삼각형 PQR, 변 QR 위의 점 S, 꼭짓점 P에서 S로 그은 선분 PS가 보이고, 밑각 Q와 R 및 P에서 나뉜 두 각에 같은 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 PQR",
+    "점 S",
+    "각의 이등분선 PS",
+    "같은 각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "「$\\triangle PQR$에서 $\\angle Q = \\angle R$이면 $\\overline{PQ} = \\overline{PR}$이다.」를 설명하는 과정이다. $\\angle P$의 이등분선과 변 $QR$의 교점을 $S$라 할 때, 다음 빈칸에 들어갈 내용으로 적당하지 않은 것은? [4점]\n\n- $\\angle Q =$ [ ① ], $\\angle QPS =$ [ ② ]  \n- 나머지 한 각도 같아지므로 [ ③ ]이고, [ ④ ]  \n- 따라서 $\\triangle PQS \\equiv \\triangle PRS$ ([ ⑤ ] 합동)이므로 $\\overline{PQ} = \\overline{PR}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

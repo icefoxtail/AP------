@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "433",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "b",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "h",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "b",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "caption": "한 변의 길이가 b인 정삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발을 D라 하고 높이 AD를 h로 나타낸 그림이다.",
+  "accessibilityDescription": "정삼각형 ABC와 꼭짓점 A에서 변 BC에 내린 수선 AD가 보인다. 변 AB와 변 BC 옆에 b, 높이 AD 옆에 h가 적혀 있고, D에 직각 표시와 BD와 DC가 같다는 표시가 있다.",
+  "newVisualInformation": [
+    "한 변의 길이가 b인 정삼각형 ABC",
+    "A에서 BC에 내린 수선의 발 D",
+    "높이 h",
+    "BD=CD 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $b$인 정삼각형 $\\text{ABC}$의 높이 $h$와 넓이 $S$를 구하는 과정이다. (가), (나)에 알맞은 것을 차례대로 구하면?\n\n> 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{D}$라고 하면 $\\overline{\\text{BD}}=\\overline{\\text{CD}}$ $\\triangle\\text{ABD}$에서 $b^2 = h^2 + [\\text{ (가) }]$이므로 $h = \\sqrt{b^2 - [\\text{ (가) }]} = [\\text{ (나) }]$ 따라서 정삼각형의 넓이 $S$는 $S = \\frac{1}{2}b \\times [\\text{ (나) }] = \\frac{\\sqrt{3}}{4}b^2$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

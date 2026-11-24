@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      5
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "down",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=-x^2/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2/3",
+          "y": "4/9"
+        },
+        {
+          "id": "B",
+          "x": "2/3",
+          "y": "4/9"
+        },
+        {
+          "id": "C",
+          "x": "2/3",
+          "y": "-2/9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "두 이차함수의 그래프 위에 y축에 서로 대칭인 점 A, B가 있고, B에서 y축에 평행한 선을 그어 아래쪽 그래프와 만난 점이 C이다. 선분 AB와 선분 BC의 길이의 비는 2:1이다.",
+  "accessibilityDescription": "위로 열린 포물선과 아래로 열린 포물선이 있고, 위 포물선 위의 점 A와 B를 선분으로 이었으며 B에서 아래 포물선 위의 점 C까지 세로 선분이 이어져 있다.",
+  "newVisualInformation": [
+    "두 포물선과 점 A, B, C, 선분 AB와 BC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 두 점 $\\text{A}$, $\\text{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\text{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{1}{2}x^2$의 그래프와 만나는 점을 $\\text{C}$라고 하자. $\\overline{\\text{AB}} : \\overline{\\text{BC}} = 2 : 1$일 때, 점 $\\text{A}$의 좌표는? (단, 점 $\\text{B}$는 제 $1$사분면 위에 있다.) (5.0점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

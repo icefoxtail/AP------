@@ -1,0 +1,421 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P3"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q3"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P0",
+          "Q0"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "m",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P1",
+          "Q1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "n",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P2",
+          "Q2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "o",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P3",
+          "Q3"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "Q0",
+        "Q1"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "Q2",
+        "Q3"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [
+    "l",
+    "m",
+    "n",
+    "o"
+  ],
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vx1",
+        "ownerSegment": "s1",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vx2",
+        "ownerSegment": "s2",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vx3",
+        "ownerSegment": "s3",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vx4",
+        "ownerSegment": "s4",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vx5",
+        "ownerSegment": "s5",
+        "text": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vx6",
+        "ownerSegment": "s6",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "서로 평행한 네 직선 l, m, n, o를 두 직선이 가로지르며, 왼쪽 직선에서 위부터 잘린 세 선분의 길이가 x, 4, 8이고 오른쪽 직선에서 대응하는 세 선분의 길이가 9, y, 6으로 표시되어 있다.",
+  "accessibilityDescription": "네 개의 평행한 직선 l, m, n, o를 두 개의 기울어진 직선이 차례로 지난다. 왼쪽 직선의 세 선분 옆에 위에서부터 x, 4, 8이, 오른쪽 직선의 대응하는 세 선분 옆에 위에서부터 9, y, 6이 적혀 있다.",
+  "newVisualInformation": [
+    "네 평행선 l, m, n, o",
+    "왼쪽 직선의 선분 x, 4, 8",
+    "오른쪽 직선의 선분 9, y, 6"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 평행한 네 직선 $l // m // n // o$가 두 직선과 차례로 만나 잘린 선분의 길이가 왼쪽 직선에서 위부터 $x, 4, 8$이고, 오른쪽 직선에서 대응하는 선분의 길이가 위부터 $9, y, 6$일 때, $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

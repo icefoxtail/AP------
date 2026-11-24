@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 36,
+        "label": "x",
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAC",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "color": "WARM",
+        "factRole": "GIVEN",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "label": "비 4"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "label": "비 1"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "선분 AB가 원 O의 지름이고 점 C가 반원 위에 있다. 호 AC와 호 BC의 길이의 비는 4 대 1이며 각 BOC는 x로 표시되어 있다.",
+  "accessibilityDescription": "원 O의 지름 AB와 반원 위의 점 C가 보인다. 호 AC에는 비 4, 호 BC에는 비 1이 표시되어 있고, 중심각 BOC는 x이다.",
+  "newVisualInformation": [
+    "원 O의 지름 AB와 반원 위의 점 C를 보여 준다.",
+    "호 AC와 호 BC의 비 4 대 1, 각 BOC=x를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 선분 $AB$가 원 $O$의 지름이고 점 $C$가 반원 위에 있다. 호의 길이의 비가 $\\overparen{AC} : \\overparen{BC} = 4 : 1$일 때, 중심각 $\\angle BOC$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

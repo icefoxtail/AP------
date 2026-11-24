@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPA",
+        "ownerSegment": "sPA",
+        "text": "4"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "lPC",
+        "ownerSegment": "sPC",
+        "text": "6"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "x"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sPA"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "sPC"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sCD"
+        ],
+        "color": "ROSE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "caption": "원 밖의 점 P에서 그은 두 할선이 원과 각각 A, B와 C, D에서 만나고, PA는 4, AB는 8, PC는 6, CD는 x인 그림을 보여 준다.",
+  "accessibilityDescription": "원 O와 원 밖의 점 P가 있고, P에서 그은 두 할선이 원과 A, B 및 C, D에서 만나며 PA는 4, AB는 8, PC는 6, CD는 x로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 원 밖의 한 점 $P$에서 원 $O$에 그은 두 할선이 원과 만나는 점을 각각 $A, B$와 $C, D$라 하자. $\\overline{PA} = 4$, $\\overline{AB} = 8$, $\\overline{PC} = 6$, $\\overline{CD} = x$일 때, $x$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원 밖의 점 P에서 그은 두 할선",
+    "원과의 교점 A, B, C, D",
+    "PA=4, AB=8, PC=6, CD=x"
+  ]
+}

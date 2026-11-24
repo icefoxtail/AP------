@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "350"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "S",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAS",
+      "refs": [
+        "A",
+        "S"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aSAD",
+        "refs": [
+          "S",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "factRole": "GIVEN",
+        "label": "30"
+      },
+      {
+        "id": "aBAT",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 40,
+        "factRole": "GIVEN",
+        "label": "40"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 40,
+        "factRole": "GIVEN",
+        "label": "x"
+      },
+      {
+        "id": "aDCB",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 70,
+        "factRole": "GIVEN",
+        "label": "y"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "S"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "원 O의 아래쪽 점 A에서 수평 접선 AT가 그려져 있고, 원 위의 점 B, C, D가 보인다. 접선과 현 AD 사이에 30, 접선과 현 AB 사이에 40, 각 ADB에 x, 각 DCB에 y가 적혀 있다.",
+  "accessibilityDescription": "원 O의 아래쪽 점 A에서 수평 접선 AT가 그려져 있고, 원 위의 점 B, C, D가 보인다. 접선과 현 AD 사이에 30, 접선과 현 AB 사이에 40, 각 ADB에 x, 각 DCB에 y가 적혀 있다.",
+  "newVisualInformation": [
+    "접선과 두 현이 이루는 각, 그리고 원에 내접한 사각형의 두 각을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고 점 $A$는 접점이다. 원 $O$ 위의 세 점 $B, C, D$에 대하여 접선과 현 $AD$가 이루는 각이 $30^\\circ$, 접선과 현 $AB$가 이루는 각이 $40^\\circ$일 때, $\\angle x + \\angle y$의 크기는? (단, $\\angle x = \\angle ADB$, $\\angle y = \\angle DCB$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "AT는 점 A에서 원 O에 그은 접선이고 접선과 AD, AB가 이루는 각은 30도, 40도이며 각 ADB=x, 각 DCB=y이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ]
+}

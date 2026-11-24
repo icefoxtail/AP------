@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "13"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "4",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "5",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "직각삼각형 ABC의 변 BC 위에 점 D를 잡고 선분 AD를 그린 그림이다. 선분 AD의 길이는 13, 선분 BD의 길이는 4, 선분 DC의 길이는 5이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 BC 위의 점 D와 선분 AD가 보이고, C에 직각 표시가 있다. AD는 13, BD는 4, DC는 5로 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC, 변 BC 위의 점 D, 선분 AD와 길이 13, 4, 5를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 변 $BC$ 위에 점 $D$가 있다. $\\overline{AD} = 13, \\overline{BD} = 4, \\overline{DC} = 5$일 때, $\\overline{AB}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

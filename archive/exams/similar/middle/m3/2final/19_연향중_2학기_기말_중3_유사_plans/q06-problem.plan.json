@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "지면에 수직이던 나무가 부러져 꼭대기 C가 지면에 닿은 모습이다. 밑동 B에서 C까지의 거리는 20 m이고, 부러진 나무가 지면과 이루는 각은 37도이다.",
+  "accessibilityDescription": "밑동 B, 부러진 지점 A, 지면에 닿은 꼭대기 C로 이루어진 직각삼각형과 37도의 각, BC 사이의 20 m가 보인다.",
+  "newVisualInformation": [
+    "점 A, B, C",
+    "BC 20 m",
+    "지면과 이루는 각 37도"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 37,
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "20",
+        "unit": "m"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지면에 수직으로 서 있던 나무가 부러져 오른쪽 그림과 같이 지면과 $37^\\circ$의 각을 이루며 쓰러졌다. 부러진 나무의 꼭대기가 닿은 지점 $C$와 나무의 밑동 $B$ 사이의 거리가 $20\\text{ m}$일 때, 부러지기 전 이 나무의 높이는? (단, $\\cos 37^\\circ = 0.8$, $\\tan 37^\\circ = 0.75$로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

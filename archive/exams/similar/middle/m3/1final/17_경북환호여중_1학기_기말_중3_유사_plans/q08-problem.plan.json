@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "L",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "8"
+        },
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "4"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "4"
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "포물선과 직선 y=8 사이에 정사각형 ABCD가 내접해 있다. 변 AD는 직선 위에 있고 두 점 B, C는 포물선 위에 있다.",
+  "accessibilityDescription": "포물선과 수평선 y=8 사이에 정사각형이 들어 있다. 정사각형의 윗변 AD는 수평선 위에 있고, 아랫변의 두 점 B, C는 포물선 위에 있다.",
+  "newVisualInformation": [
+    "포물선과 수평선 y=8",
+    "수평선 위의 변 AD와 포물선 위의 점 B, C를 가진 정사각형 ABCD"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y = x^2$의 그래프와 직선 $y = 8$로 둘러싸인 부분에 내접하는 정사각형 $\\mathrm{ABCD}$의 넓이는? (단, 변 $\\mathrm{AD}$는 직선 $y = 8$ 위에 있고 두 점 $\\mathrm{B, C}$는 포물선 $y = x^2$ 위에 있다.) [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

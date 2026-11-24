@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineOD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineOA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "verticalD",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineOA",
+          "verticalD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aob36",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 36,
+        "label": "36",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "0.59",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "OD",
+        "text": "0.81",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "0.73",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rb",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rd",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "caption": "반지름의 길이가 1인 원의 중심 O와 원 위의 점 A, D, A에서 수선의 발 B, 점 D에서 세운 수선이 직선 OA와 만나는 점 C를 나타낸 그림이다. 각 AOB는 36도이고 AB, OB, CD의 길이가 각각 0.59, 0.81, 0.73으로 주어져 있다.",
+  "accessibilityDescription": "중심 O인 원 위에 A와 D가 있고, A에서 OD에 내린 수선의 발이 B, D에서 OD에 수직인 선이 직선 OA와 만나는 점이 C이다. 각 AOB 36, OA 1, AB 0.59, OB 0.81, CD 0.73이 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름 1인 원과 점 A, B, C, D",
+    "각 AOB 36, AB 0.59, OB 0.81, CD 0.73"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle AOB = 36^\\circ$, $\\overline{AB} = 0.59$, $\\overline{OB} = 0.81$, $\\overline{CD} = 0.73$일 때, 다음 중 옳지 않은 것은? (단, $\\overline{AB} \\perp \\overline{OD}$, $\\overline{CD} \\perp \\overline{OD}$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

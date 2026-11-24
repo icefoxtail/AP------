@@ -1,0 +1,53 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 3,
+      "height": 6
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 10
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true,
+      "side": "LEFT",
+      "label": "6"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "side": "RIGHT",
+      "label": "10"
+    }
+  ],
+  "caption": "작은 원뿔 A의 높이는 6 cm, 큰 원뿔 B의 높이는 10 cm인 서로 닮은 두 원뿔 모양 그릇이다.",
+  "accessibilityDescription": "왼쪽의 작은 원뿔 A에는 높이 6이, 오른쪽의 큰 원뿔 B에는 높이 10이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원뿔 모양의 그릇이 있다. 작은 원뿔의 높이는 $6\\text{ cm}$, 큰 원뿔의 높이는 $10\\text{ cm}$일 때, 작은 원뿔에 물을 가득 담아 큰 원뿔에 부어 큰 원뿔을 가득 채우려면 물을 적어도 몇 번 부어야 하는가? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "서로 닮은 두 원뿔 모양 그릇에서 작은 원뿔의 높이는 6 cm, 큰 원뿔의 높이는 10 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "작은 원뿔의 높이 6과 큰 원뿔의 높이 10을 각각 바깥쪽 치수선에 표시한다."
+  ]
+}

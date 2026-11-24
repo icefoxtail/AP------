@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "264"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 48,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "color": "ROSE",
+        "noLabel": true
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "color": "BLUE",
+        "label": "5",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "color": "WARM",
+        "label": "6",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCA",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "CCW",
+        "color": "GREEN",
+        "label": "4",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sCA"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "원 위의 세 점 A, B, C에 대하여 호 AB, BC, CA의 길이의 비가 5 대 6 대 4인 그림을 보여 준다.",
+  "accessibilityDescription": "원 위의 점 A, B, C와 세 호 AB, BC, CA가 있고 각 호의 비를 나타내는 5, 6, 4가 표시되어 있으며, 점 B의 각이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 원 위의 세 점 $A, B, C$에 대하여 $\\overgroup{AB} : \\overgroup{BC} : \\overgroup{CA} = 5 : 6 : 4$일 때, $\\angle B$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원 위의 세 점 A, B, C",
+    "호 AB, BC, CA의 비 5:6:4",
+    "점 B의 각 표시"
+  ]
+}

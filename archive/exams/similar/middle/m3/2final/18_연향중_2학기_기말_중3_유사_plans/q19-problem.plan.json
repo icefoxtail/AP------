@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O의 지름 AD의 길이가 15센티미터이고, 원 위의 점 B, C에 대하여 AB는 12센티미터, AC는 10센티미터인 그림이다. 점 A에서 현 BC에 내린 수선의 발이 H이다.",
+  "accessibilityDescription": "원 O와 지름 AD가 있고, 원 위에 점 B와 C가 있다. AB는 12센티미터, AC는 10센티미터, AD는 15센티미터로 표시되어 있으며 A에서 BC에 내린 수선 AH와 발 H가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 원 $O$의 지름 $\\overline{AD}$의 길이는 $15\\text{ cm}$이고 $\\overline{BC} \\perp \\overline{AH}$이다. $\\overline{AB} = 12\\text{ cm}$, $\\overline{AC} = 10\\text{ cm}$일 때, $\\overline{AH}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원 O와 지름 AD=15센티미터",
+    "원 위의 점 B, C",
+    "AB=12센티미터, AC=10센티미터",
+    "A에서 BC에 내린 수선의 발 H"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "15",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  }
+}

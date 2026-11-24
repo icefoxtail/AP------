@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "24 m 떨어진 두 건물의 옥상 A, B와 백화점의 밑점 C를 나타낸 그림이다. A에서 B를 올려다본 각은 60도이고, C를 내려다본 각은 45도이다.",
+  "accessibilityDescription": "우체국 옥상 A와 백화점 옥상 B, 백화점 밑점 C가 보인다. A와 같은 높이의 수평선, A에서 B와 C로 향하는 두 시선, 60도와 45도의 각, 두 건물 사이의 24 m가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 A, B, C",
+    "두 건물 사이 24 m",
+    "올려다본 각 60도",
+    "내려다본 각 45도"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "24"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "24"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "color": "WARM"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "24",
+        "unit": "m",
+        "ownership": "NEAREST"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAD"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "sDC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sBD"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $24\\text{ m}$ 떨어진 우체국과 백화점이 있다. 우체국의 옥상 $A$에서 백화점의 옥상 $B$를 올려다본 각의 크기가 $60^\\circ$이고, 백화점의 밑점 $C$를 내려다본 각의 크기가 $45^\\circ$일 때, 백화점의 높이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

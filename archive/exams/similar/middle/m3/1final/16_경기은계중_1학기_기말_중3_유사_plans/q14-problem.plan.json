@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "10",
+          "-5"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      0,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "17",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "12"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "다이빙대 위에서 도약한 선수의 시간 t에 따른 높이 h의 그래프이다. 그래프는 높이 12에서 시작하여 위로 올라갔다가 다시 내려온다.",
+  "accessibilityDescription": "가로축을 시간, 세로축을 높이로 하는 위로 볼록한 포물선 모양의 그래프가 세로축의 12에서 시작해 꼭짓점을 지난 뒤 아래로 내려간다. 세로축에는 12가 표시되어 있다.",
+  "newVisualInformation": [
+    "시간에 따른 높이의 이차함수 그래프",
+    "세로축의 시작 높이 12 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "높이가 $12,\\text{m}$인 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h,\\text{m}$는 $h = -5t^2 + 10t + 12$라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

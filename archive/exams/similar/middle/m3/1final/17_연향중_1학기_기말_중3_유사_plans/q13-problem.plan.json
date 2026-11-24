@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      3,
+      -1,
+      14
+    ],
+    "curves": [
+      {
+        "id": "parabola",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=3x^2"
+      },
+      {
+        "id": "lineAB",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "12"
+        },
+        {
+          "id": "B",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        }
+      ]
+    }
+  },
+  "caption": "포물선 위의 점 A와 x축 위의 점 B(-4, 0), 원점 O로 삼각형 ABO를 이루고 있다. 삼각형 ABO의 넓이는 24이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선이 있고, 그 위의 점 A와 x축 위의 점 B, 원점 O를 연결한 삼각형 ABO가 그려져 있다. 점 B의 좌표 (-4, 0)이 표시되어 있다.",
+  "newVisualInformation": [
+    "점 A가 포물선 위에 있다.",
+    "점 B의 좌표가 (-4, 0)이고 점 O는 원점이다.",
+    "삼각형 ABO의 넓이가 24이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y = 3x^2$의 그래프 위에 점 $\\mathrm{A}$가 있다. 점 $\\mathrm{B}$의 좌표가 $(-4, 0)$이고 $\\triangle\\mathrm{ABO}$의 넓이가 $24$일 때, 점 $\\mathrm{A}$의 좌표는? (단, 점 $\\mathrm{A}$는 제 $1$ 사분면 위의 점이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

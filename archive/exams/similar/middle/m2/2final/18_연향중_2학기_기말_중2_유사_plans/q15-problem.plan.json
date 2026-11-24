@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "24",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "10",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "D",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2
+      },
+      {
+        "id": "d1",
+        "from": "E",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "정삼각형 ABC에서 꼭짓점 A가 변 BC 위의 점 D에 오도록 선분 FE를 접는 선으로 하여 접은 모양을 나타낸 그림이다. DE는 10 cm, EC는 8 cm, DC는 12 cm이다.",
+  "accessibilityDescription": "정삼각형 ABC의 밑변 BC 위에 점 D가 있고, 변 AB 위의 F와 변 AC 위의 E를 잇는 선분 FE가 보인다. D와 E 사이, E와 C 사이, D와 C 사이의 길이가 각각 10 cm, 8 cm, 12 cm로 적혀 있다.",
+  "newVisualInformation": [
+    "꼭짓점 A가 밑변 위의 D로 접힌 모양",
+    "접는 선 FE",
+    "DE 10 cm, EC 8 cm, DC 12 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정삼각형 $ABC$ 모양의 색종이에서 꼭짓점 $A$가 변 $BC$ 위의 점 $D$에 오도록 변 $AB$ 위의 점 $F$와 변 $AC$ 위의 점 $E$를 잇는 선분 $FE$를 접는 선으로 하여 접었다. $\\overline{DE} = 10\\text{ cm}$, $\\overline{EC} = 8\\text{ cm}$, $\\overline{DC} = 12\\text{ cm}$일 때, $\\overline{AF}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

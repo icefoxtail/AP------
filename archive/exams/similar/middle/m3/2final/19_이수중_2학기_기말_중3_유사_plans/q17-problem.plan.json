@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOB",
+          "sOT"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPA",
+        "ownerSegment": "sPA",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lAO",
+        "ownerSegment": "sAO",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lPT",
+        "ownerSegment": "sPT",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sPA"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sPT"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "caption": "원 O의 접선 PT와 중심 O를 지나는 할선 PAB가 있다. PA=4 cm, OA=6 cm이고 PT의 길이는 x로 나타내었다.",
+  "accessibilityDescription": "원 O의 중심 O를 지나는 할선 위에 P, A, B가 차례로 있고, 원 위의 점 T에서 그은 접선이 P와 이어진다. PA는 4 cm, OA는 6 cm, PT는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "원 O와 접선 PT, 할선 PAB를 보여 준다.",
+    "PA=4 cm, OA=6 cm, PT=x를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{PT}$는 반지름이 $\\overline{OA} = 6$인 원 $O$의 접선이고, 중심 $O$를 지나는 할선 $PAB$에 대하여 $\\overline{PA} = 4$일 때, 접선 $\\overline{PT}$의 길이 $x$는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

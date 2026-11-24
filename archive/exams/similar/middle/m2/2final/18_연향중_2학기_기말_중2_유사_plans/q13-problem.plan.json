@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2344167",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4060216",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19032501",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12180648",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 72,
+        "label": "72",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "value": 48,
+        "label": "48",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "F",
+          "E"
+        ],
+        "value": 60,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lDF",
+        "ownerSegment": "sDF",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lFE",
+        "ownerSegment": "sFE",
+        "text": "18",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 420
+  },
+  "caption": "서로 닮음인 두 삼각형 ABC와 DFE를 나타낸 그림이다. 각 A는 72도, 각 E는 48도, 각 F는 y도이고 BC는 6 cm, FE는 18 cm, AB는 x cm, DF는 12 cm이다.",
+  "accessibilityDescription": "왼쪽에 삼각형 ABC, 오른쪽에 더 큰 삼각형 DFE가 있다. 각 A와 각 D에 72, 각 E에 48, 각 F에 y가 적혀 있고 각 변 옆에 6 cm, 18 cm, x cm, 12 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "닮은 두 삼각형 ABC와 DFE",
+    "각 A 72, 각 E 48, 각 F y",
+    "BC 6 cm, FE 18 cm, AB x cm, DF 12 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 삼각형 $\\triangle ABC$와 $\\triangle DFE$가 서로 닮음($\\triangle ABC \\sim \\triangle DFE$)이고 $\\angle A = 72^\\circ$, $\\angle E = 48^\\circ$, $\\angle F = y^\\circ$, $\\overline{BC} = 6\\text{ cm}$, $\\overline{FE} = 18\\text{ cm}$, $\\overline{AB} = x\\text{ cm}$, $\\overline{DF} = 12\\text{ cm}$일 때, $x + y$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

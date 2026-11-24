@@ -1,0 +1,57 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 2,
+      "height": 4
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 3,
+      "height": 6
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "2k"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "4k"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "3k"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "6k"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 (가) / 오른쪽 (나)"
+  },
+  "caption": "서로 닮은 두 원뿔 (가), (나)가 나란히 있고, 밑면의 넓이의 비는 4 대 9이며 (가)의 부피는 32 세제곱센티미터이다.",
+  "accessibilityDescription": "왼쪽 원뿔 (가)에는 밑면의 반지름 2k와 높이 4k가, 오른쪽 원뿔 (나)에는 밑면의 반지름 3k와 높이 6k가 표시되어 있다.",
+  "newVisualInformation": [
+    "원뿔 (가)의 밑면 반지름 2k와 높이 4k",
+    "원뿔 (나)의 밑면 반지름 3k와 높이 6k",
+    "(가)의 부피 32 세제곱센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4] 서로 닮은 두 원뿔 (가)와 (나)의 밑면의 넓이의 비가 $4 : 9$이다. 원뿔 (가)의 부피가 $32\\text{ cm}^3$일 때, 원뿔 (나)의 부피를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

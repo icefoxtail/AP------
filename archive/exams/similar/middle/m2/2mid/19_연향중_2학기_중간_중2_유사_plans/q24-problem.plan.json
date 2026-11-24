@@ -1,0 +1,383 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "399"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "J",
+    "K",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "LJ",
+      "refs": [
+        "L",
+        "J"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "4"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "6"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "7"
+      },
+      {
+        "id": "vPQ",
+        "ownerSegment": "PQ",
+        "text": "5"
+      },
+      {
+        "id": "vQR",
+        "ownerSegment": "QR",
+        "text": "6"
+      },
+      {
+        "id": "vRP",
+        "ownerSegment": "RP",
+        "text": "8"
+      },
+      {
+        "id": "vJK",
+        "ownerSegment": "JK",
+        "text": "12"
+      },
+      {
+        "id": "vKL",
+        "ownerSegment": "KL",
+        "text": "18"
+      },
+      {
+        "id": "vLJ",
+        "ownerSegment": "LJ",
+        "text": "21"
+      }
+    ]
+  },
+  "caption": "세 삼각형 ABC, PQR, JKL의 세 변의 길이를 각각 나타낸 그림이다.",
+  "accessibilityDescription": "왼쪽 아래에 변의 길이가 4, 6, 7인 삼각형 ABC, 가운데 아래에 변의 길이가 5, 6, 8인 삼각형 PQR, 위쪽에 변의 길이가 12, 18, 21인 삼각형 JKL이 보인다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 세 변의 길이 4, 6, 7",
+    "삼각형 PQR의 세 변의 길이 5, 6, 8",
+    "삼각형 JKL의 세 변의 길이 12, 18, 21"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 다음 세 삼각형 가운데 서로 닮음인 두 삼각형을 찾아 물음에 답하시오. [5점]  \n- $\\triangle ABC$: $\\overline{AB} = 4\\text{ cm}$, $\\overline{BC} = 6\\text{ cm}$, $\\overline{CA} = 7\\text{ cm}$  \n- $\\triangle PQR$: $\\overline{PQ} = 5\\text{ cm}$, $\\overline{QR} = 6\\text{ cm}$, $\\overline{RP} = 8\\text{ cm}$  \n- $\\triangle JKL$: $\\overline{JK} = 12\\text{ cm}$, $\\overline{KL} = 18\\text{ cm}$, $\\overline{LJ} = 21\\text{ cm}$\n\n- (1) 서로 닮음인 두 삼각형을 찾아 기호 $\\sim$을 사용하여 나타내시오. [2점]  \n- (2) (1)에서 찾은 삼각형들의 닮음 조건을 쓰시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

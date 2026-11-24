@@ -1,0 +1,46 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "isosceles": true
+    },
+    {
+      "type": "point",
+      "id": "P",
+      "on": "BC"
+    },
+    {
+      "type": "perpendicular",
+      "from": "P",
+      "to": "AB",
+      "foot": "D"
+    },
+    {
+      "type": "perpendicular",
+      "from": "P",
+      "to": "AC",
+      "foot": "E"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "5 cm"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "5 cm"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "2√5 cm"
+    }
+  ]
+}

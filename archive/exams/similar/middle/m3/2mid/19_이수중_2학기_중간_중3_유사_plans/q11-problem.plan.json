@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "39"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "27"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "27"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lHC",
+        "ownerSegment": "sHC",
+        "text": "5",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "각 A가 직각인 직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 내린 수선의 발이 H이고, 변 AC의 길이가 10 cm, 변 CH의 길이가 5 cm로 주어진 그림이다.",
+  "accessibilityDescription": "삼각형 ABC와 A에서 변 BC에 내린 수선 AH가 보인다. 꼭짓점 A와 발 H에 직각 표시가 있고, 변 AC 옆에 10 cm, 변 CH 옆에 5 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "각 A가 직각인 삼각형 ABC",
+    "A에서 BC에 내린 수선의 발 H",
+    "AC=10 cm, CH=5 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AC}}=10\\text{ cm}$, $\\overline{\\text{CH}}=5\\text{ cm}$이고 $\\overline{\\text{AH}}\\perp\\overline{\\text{BC}}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

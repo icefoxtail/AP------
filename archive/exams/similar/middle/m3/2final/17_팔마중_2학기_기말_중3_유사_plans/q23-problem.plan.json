@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "230"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "U",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "U",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 35,
+        "label": "35",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCAD",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 45,
+        "label": "x",
+        "ring": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 55,
+        "label": "55",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 100,
+        "label": "100",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aEBC",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "원 위에 네 점 A, B, C, D가 있고 사각형 ABCD와 두 대각선이 그려져 있다. 점 A에서 각 35도와 각 x가, 점 D에서 각 55도, 점 C에서 각 100도가 표시되고, 변 AB를 B 쪽으로 연장한 반직선과 변 BC 사이의 외각이 y로 표시되어 있다.",
+  "accessibilityDescription": "원 위에 네 점 A, B, C, D가 있고 사각형 ABCD와 두 대각선이 그려져 있다. 점 A에서 각 35도와 각 x가, 점 D에서 각 55도, 점 C에서 각 100도가 표시되고, 변 AB를 B 쪽으로 연장한 반직선과 변 BC 사이의 외각이 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "원에 내접하는 사각형, 두 대각선, 꼭짓점 B의 외각을 이루는 연장 반직선과 x, y 각 라벨을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 그림과 같이 $\\square ABCD$가 원에 내접하고 $\\angle BAC = 35^\\circ$, $\\angle ADB = 55^\\circ$, $\\angle BCD = 100^\\circ$일 때, $\\angle x + \\angle y$의 크기를 구하시오. (단, $\\angle x = \\angle CAD$, $\\angle y$는 꼭짓점 $B$에서의 $\\square ABCD$의 외각이다. 풀이과정과 답을 모두 쓰시오.) (1) $\\angle x$의 크기를 구하시오. (2점) (2) $\\angle y$의 크기를 구하시오. (2점) (3) $\\angle x + \\angle y$의 크기를 구하시오. (1점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
