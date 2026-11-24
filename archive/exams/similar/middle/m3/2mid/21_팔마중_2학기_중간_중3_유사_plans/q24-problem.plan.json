@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O 밖의 점 Q에서 원에 그은 두 접선이 C, D에서 접하는 그림이다. 두 접선 QC와 QD, 두 반지름 OC와 OD, 선분 QO가 보인다.",
+  "accessibilityDescription": "원 O와 외부의 점 Q가 보이고, Q에서 원에 그은 두 접선 QC, QD가 각각 C, D에서 접한다. 중심 O와 Q를 잇는 선분 QO 및 두 반지름 OC, OD가 그려져 있다.",
+  "newVisualInformation": [
+    "원 O 밖의 점 Q",
+    "두 접선 QC, QD",
+    "접점 C, D",
+    "반지름 OC, OD"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "QD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "QO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오. (각 1점)\n\n<접선의 성질> 원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.\n\n원 $\\text{O}$ 밖의 한 점 $\\text{Q}$에서 이 원에 그은 두 접선의 접점을 각각 $\\text{C}$와 $\\text{D}$라고 할 때, $\\triangle\\text{QCO}$, $\\triangle\\text{QDO}$에서 ( ① ) ( ② ) ( ③ )을 만족한다. ①②③에 의해 $\\triangle\\text{QCO} \\equiv \\triangle\\text{QDO}$ ( ④ 합동) 이다. 따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로 ( ⑤ ) 이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

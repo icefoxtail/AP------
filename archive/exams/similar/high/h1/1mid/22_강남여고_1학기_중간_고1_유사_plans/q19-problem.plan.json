@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-3/4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "4",
+        "y": "12"
+      },
+      {
+        "id": "B",
+        "x": "8",
+        "y": "0"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "V",
+        "B"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "높이"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "6",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "curveX": "6"
+        }
+      ],
+      "segments": [
+        {
+          "id": "post",
+          "from": "C",
+          "to": "T"
+        },
+        {
+          "id": "upper",
+          "from": "T",
+          "to": "P",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "평평한 지면 위의 두 지점 A, B 사이의 기둥과, A에서 출발한 공이 기둥 위의 점 P를 지나 B에 떨어지는 포물선 모양의 궤적을 나타낸 그림이다. 기둥의 높이는 4미터이고 P는 기둥 꼭대기보다 5미터 위이며, A에서 기둥까지의 거리는 6미터, 기둥에서 B까지의 거리는 2미터이다.",
+  "accessibilityDescription": "지면을 나타내는 수평선 위에 A, C, B가 왼쪽부터 놓여 있고, C에 세워진 수직 기둥과 그 위쪽의 점 P가 보인다. A에서 시작해 P를 지나 B로 내려오는 아래로 볼록한 포물선 궤적이 그려져 있다.",
+  "newVisualInformation": [
+    "공의 포물선 모양 궤적",
+    "C에 세워진 기둥과 그 위의 점 P",
+    "지면 위의 점 A, B, C"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 평평한 지면 위에 있는 두 지점 $A$, $B$ 사이의 거리는 $8\\text{m}$이다. 두 지점 $A$, $B$에서 각각 $6\\text{m}$, $2\\text{m}$ 떨어진 $C$지점에 지면과 수직으로 높이가 $4\\text{m}$인 기둥이 세워져 있다. $A$지점에서 쏘아 올린 공이 포물선 모양으로 날아 기둥의 꼭대기에서 지면에 수직으로 $5\\text{m}$ 위인 $P$지점을 지나 $B$지점에 떨어졌다. 이 공이 가장 높이 올라갔을 때의 지면으로부터의 높이는? (단, 포물선의 축은 지면에 수직이고, 공의 크기와 기둥의 굵기는 생각하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

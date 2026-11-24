@@ -488,6 +488,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/20_매산여고_1학기_중간_고2_수학I_유사/q12-problem.svg",
     "category": "삼각함수의 그래프",
     "standardCourse": "",
     "curriculum": "2015",
