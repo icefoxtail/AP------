@@ -1,29 +1,256 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Op",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "27"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circOp",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Op"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "C",
+    "Op",
+    "B",
+    "Q",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "Op"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circO",
+    "circOp"
+  ],
+  "displaySegments": [
     {
-      "type": "segment",
-      "from": "A",
-      "to": "B",
-      "length": "36",
-      "midpoint": "C"
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
     },
     {
-      "type": "circle",
-      "center": "O",
-      "diameter": "AC"
-    },
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {},
+  "caption": "선분 AB 위의 두 원 O와 O 프라임에 대하여 점 A에서 원 O 프라임에 그은 접선이 원 O와 만나는 점 Q를 나타낸 그림이다.",
+  "accessibilityDescription": "선분 AB를 지름으로 분할한 두 원 O와 O 프라임이 점 C에서 접하고, 점 A에서 원 O 프라임에 그은 접선이 점 P에서 접하며 원 O와 점 Q에서 만난다.",
+  "newVisualInformation": [
+    "선분 AP는 원 O 프라임의 접선이고 접점은 P이다.",
+    "점 Q는 선분 AP와 원 O의 교점이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "circle",
-      "center": "O'",
-      "diameter": "CB"
-    },
-    {
-      "type": "tangent",
-      "from": "A",
-      "toCircle": "O'",
-      "touch": "P",
-      "intersectsOAt": "Q"
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 길이가 $36$인 선분 $\\text{AB}$의 중점 $\\text{C}$에 대하여 $\\overline{\\text{AC}}$와 $\\overline{\\text{CB}}$를 각각 지름으로 하는 두 원 $\\text{O}$, $\\text{O}'$이 있다. $\\overline{\\text{AP}}$가 원 $\\text{O}'$의 접선이고(단, $\\text{P}$는 접점), $\\overline{\\text{AP}}$와 원 $\\text{O}$의 교점을 $\\text{Q}$라고 할 때, $\\triangle\\text{AOQ}$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

@@ -140,6 +140,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/21_금당중_2학기_중간_중3_유사/q04-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -473,6 +474,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/21_금당중_2학기_중간_중3_유사/q11-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -518,6 +520,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/21_금당중_2학기_중간_중3_유사/q12-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -996,6 +999,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/21_금당중_2학기_중간_중3_유사/q22-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

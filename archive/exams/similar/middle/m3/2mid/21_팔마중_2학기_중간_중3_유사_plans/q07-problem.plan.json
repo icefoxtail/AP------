@@ -1,42 +1,225 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "pA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnAC",
+          "lnBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "AB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "type": "perpendicular",
-      "from": "A",
-      "to": "BC",
-      "foot": "D"
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
     },
     {
-      "type": "label",
-      "target": "AB",
-      "text": "6√2 cm"
-    },
-    {
-      "type": "angle",
-      "at": "B",
-      "arms": [
+      "id": "AD",
+      "refs": [
         "A",
         "D"
-      ],
-      "text": "45°"
-    },
+      ]
+    }
+  ],
+  "rightAngles": [
     {
-      "type": "angle",
-      "at": "C",
-      "arms": [
+      "id": "rD",
+      "refs": [
         "A",
-        "D"
-      ],
-      "text": "60°"
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "6*sqrt(2)",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 꼭짓점 A에서 변 BC에 내린 수선의 발이 D이고, 선분 AB의 길이는 6루트2 센티미터, 각 B는 45도, 각 C는 60도이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 A에서 밑변 BC에 내린 수선 AD와 수직 표시가 되어 있다. 변 AB의 길이는 6루트2 센티미터로 표시되어 있고, 각 B는 45도, 각 C는 60도로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이 6루트2 센티미터",
+    "각 B의 크기 45도",
+    "각 C의 크기 60도",
+    "수선의 발 D"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\triangle\\text{ABC}$의 꼭짓점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{D}$라고 할 때, $\\overline{\\text{AB}}=6\\sqrt{2}\\text{ cm}$, $\\angle\\text{B}=45^\\circ$, $\\angle\\text{C}=60^\\circ$이면 $\\overline{\\text{AC}}-\\overline{\\text{CD}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

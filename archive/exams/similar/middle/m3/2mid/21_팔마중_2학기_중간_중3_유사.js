@@ -4,6 +4,7 @@ window.examDisplayTitle = "21년 팔마중 중3 2학기 중간 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/21_팔마중_2학기_중간_중3_유사/q01-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -237,6 +238,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/21_팔마중_2학기_중간_중3_유사/q06-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -285,6 +287,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/21_팔마중_2학기_중간_중3_유사/q07-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",

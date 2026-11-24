@@ -236,6 +236,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/22_팔마중_2학기_중간_중3_유사/q06-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -957,6 +958,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/22_팔마중_2학기_중간_중3_유사/q21-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",

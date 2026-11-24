@@ -1,44 +1,231 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "480",
+              "denominator": "289"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2056",
+              "denominator": "289"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAD",
+      "refs": [
         "A",
-        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
         "C"
-      ],
-      "rightAngle": "A"
+      ]
     },
     {
-      "type": "point",
-      "id": "D",
-      "on": "AB"
-    },
-    {
-      "type": "perpendicular",
-      "from": "D",
-      "to": "BC",
-      "foot": "E"
-    },
-    {
-      "type": "label",
-      "target": "AB",
-      "text": "8"
-    },
-    {
-      "type": "label",
-      "target": "AC",
-      "text": "15"
-    },
-    {
-      "type": "angle",
-      "at": "D",
-      "arms": [
+      "id": "sBE",
+      "refs": [
         "B",
         "E"
-      ],
-      "text": "x"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBDE",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 28,
+        "label": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "8",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "15",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "raE",
+      "refs": [
+        "D",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 A가 직각인 직각삼각형 ABC에서 선분 AB 위의 점 D와 선분 BC 위의 점 E를 잇는 선분 DE가 선분 BC와 수직을 이루는 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 A는 직각이고 변 AB의 길이는 8, 변 AC의 길이는 15이다. 변 AB 위의 점 D에서 빗변 BC에 내린 수선의 발을 E라 할 때 각 BDE의 크기는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이가 8이고 선분 AC의 길이가 15이며 각 BDE의 크기가 x이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=8$, $\\overline{\\text{AC}}=15$이다. 점 $\\text{D}$는 선분 $\\text{AB}$ 위에, 점 $\\text{E}$는 선분 $\\text{BC}$ 위에 있고 $\\overline{\\text{DE}} \\perp \\overline{\\text{BC}}$이다. $\\angle\\text{BDE}=x$일 때, $17\\cos x$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

@@ -1,36 +1,309 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "31"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "U"
+  ],
+  "hiddenPointNames": [
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "type": "quarterCircle",
-      "center": "O",
-      "radius": 1,
-      "arcPoints": [
-        "C",
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
         "D"
       ]
     },
     {
-      "type": "point",
-      "id": "B",
-      "on": "arc"
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
     },
     {
-      "type": "segment",
-      "from": "B",
-      "to": "A",
-      "perpendicularTo": "OC"
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
     },
     {
-      "type": "segment",
-      "from": "D",
-      "to": "C",
-      "perpendicularTo": "OC"
-    },
+      "id": "rC",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 31,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcCU",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "U",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "1"
+      }
+    ]
+  },
+  "caption": "반지름의 길이가 1인 사분원에서 중심각의 크기가 x도일 때의 직각삼각형들을 나타낸 그림이다.",
+  "accessibilityDescription": "점 O를 중심으로 하는 사분원과 선분 OB 위의 점 B에서 내린 수선의 발 A, 점 C에서 올린 수선과 연장선의 교점 D가 있고, 각 AOB의 크기는 x, 선분 OB의 길이는 1로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 AOB의 크기는 x도이다.",
+    "선분 OB의 길이는 1이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "label",
-      "target": "AC",
-      "text": "0.14"
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\overline{\\text{AC}}=0.14$이다. 아래 삼각비의 표를 이용하여 $\\overline{\\text{AB}}$의 길이를 $a$, $\\overline{\\text{CD}}$의 길이를 $b$라고 할 때, $a+b$의 값은?\n\n| 각도 | 사인($\\sin$) | 코사인($\\cos$) | 탄젠트($\\tan$) |\n| :---: | :---: | :---: | :---: |\n| $31^\\circ$ | $0.52$ | $0.86$ | $0.60$ |\n| $32^\\circ$ | $0.53$ | $0.85$ | $0.62$ |\n| $33^\\circ$ | $0.54$ | $0.84$ | $0.65$ |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

@@ -1,42 +1,193 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "56"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "56"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "97"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "153"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayLines": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "AB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
         "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
         "C"
       ]
     },
     {
-      "type": "perpendicular",
-      "from": "A",
-      "to": "BC",
-      "foot": "H"
-    },
-    {
-      "type": "label",
-      "target": "AB",
-      "text": "8"
-    },
-    {
-      "type": "angle",
-      "at": "B",
-      "arms": [
+      "id": "AH",
+      "refs": [
         "A",
         "H"
-      ],
-      "text": "60°"
+      ]
     },
     {
-      "type": "angle",
-      "at": "A",
-      "arms": [
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
         "H",
         "C"
-      ],
-      "text": "45°"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aHAC",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 꼭짓점 A에서 밑변 BC에 내린 수선의 발을 H라 하고 선분 AB의 길이와 각의 크기가 주어진 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 A에서 밑변 BC에 수선 AH가 내려져 있고 각 B는 60도, 각 HAC는 45도이며 선분 AB의 길이는 8이다.",
+  "newVisualInformation": [
+    "삼각형 ABC에서 선분 AB의 길이 8, 각 B 60도, 각 HAC 45도, 수선의 발 H"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 $\\triangle\\text{ABC}$에서 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라고 하자. $\\overline{\\text{AB}}=8$, $\\angle\\text{B}=60^\\circ$, $\\angle\\text{HAC}=45^\\circ$일 때, $\\overline{\\text{AC}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

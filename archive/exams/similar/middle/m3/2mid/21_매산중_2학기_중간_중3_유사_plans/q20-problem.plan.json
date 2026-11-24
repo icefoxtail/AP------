@@ -1,35 +1,225 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "37",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
     {
-      "type": "quadrilateral",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
         "C",
         "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
       ],
-      "rightAngle": "B"
-    },
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
     {
-      "type": "incircle",
-      "center": "O"
-    },
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2*sqrt(34)",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "원 O에 외접하는 사각형 ABCD에서 각 B가 직각이고 변 AB, AD와 대각선 AC의 길이가 주어진 그림이다.",
+  "accessibilityDescription": "원 O에 사각형 ABCD가 외접하고 있다. 꼭짓점 B는 직각이고 선분 AB의 길이는 6센티미터, 선분 AD의 길이는 5센티미터이며 점선으로 이어진 대각선 AC의 길이는 2루트34센티미터이다.",
+  "newVisualInformation": [
+    "원 O에 외접하는 사각형 ABCD와 직각 B, 주어진 변 및 대각선 길이"
+  ],
+  "sourceConditions": [
     {
-      "type": "diagonal",
-      "from": "A",
-      "to": "C",
-      "label": "2√34 cm"
-    },
-    {
-      "type": "label",
-      "target": "AB",
-      "text": "6 cm"
-    },
-    {
-      "type": "label",
-      "target": "AD",
-      "text": "5 cm"
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\square\\text{ABCD}$가 원 $\\text{O}$에 외접하고, $\\angle\\text{B}=90^\\circ$, $\\overline{\\text{AB}}=6\\text{ cm}$, $\\overline{\\text{AC}}=2\\sqrt{34}\\text{ cm}$, $\\overline{\\text{AD}}=5\\text{ cm}$일 때, $\\overline{\\text{CD}}$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

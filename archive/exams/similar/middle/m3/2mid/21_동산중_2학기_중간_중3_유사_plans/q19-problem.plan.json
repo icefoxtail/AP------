@@ -1,47 +1,196 @@
 {
-  "kind": "geometry",
-  "elements": [
-    {
-      "type": "triangle",
-      "vertices": [
-        "A",
-        "B",
-        "C"
-      ],
-      "rightAngle": "C"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "45"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "45"
+            },
+            {
+              "kind": "integer",
+              "value": "26"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "type": "point",
-      "id": "D",
-      "on": "BC"
-    },
-    {
-      "type": "segment",
-      "from": "A",
-      "to": "D"
-    },
-    {
-      "type": "label",
-      "target": "BD",
-      "text": "12 cm"
-    },
-    {
-      "type": "angle",
-      "at": "B",
-      "arms": [
-        "A",
-        "C"
-      ],
-      "text": "30°"
-    },
-    {
-      "type": "angle",
-      "at": "D",
-      "arms": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
-      ],
-      "text": "120°"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 120,
+        "label": "120"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 변 BC 위의 점 D에 대하여 각 B는 30도, 각 ADB는 120도이고 선분 BD의 길이는 12cm인 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 C는 직각이다. 선분 BC 위에 점 D가 놓여 있고 선분 BD의 길이는 12cm이다. 각 B의 크기는 30도, 각 ADB의 크기는 120도로 표시되어 있으며 선분 AD가 그어져 있다.",
+  "newVisualInformation": [
+    "선분 BD의 길이가 12cm이고 각 B는 30도, 각 ADB는 120도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{D}$는 선분 $\\text{BC}$ 위에 있다. $\\overline{\\text{BD}}=12\\text{ cm}$, $\\angle\\text{B}=30^\\circ$, $\\angle\\text{ADB}=120^\\circ$일 때, $\\overline{\\text{AC}}$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

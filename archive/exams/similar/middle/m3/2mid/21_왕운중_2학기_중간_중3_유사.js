@@ -796,6 +796,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/21_왕운중_2학기_중간_중3_유사/q18-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -928,6 +929,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/21_왕운중_2학기_중간_중3_유사/q21-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

@@ -1,32 +1,150 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "485"
+            },
+            {
+              "kind": "integer",
+              "value": "280"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "776"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "type": "label",
-      "target": "AB",
-      "text": "10"
-    },
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8*sqrt(3)",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "삼각형 ABC에서 두 변 AB, BC의 길이와 각 B의 크기가 주어진 그림",
+  "accessibilityDescription": "삼각형 ABC가 있고 변 AB의 길이는 10, 변 BC의 길이는 8루트3이며 각 B의 크기는 30도이다.",
+  "newVisualInformation": [
+    "변 AB의 길이는 10이다.",
+    "변 BC의 길이는 8루트3이다.",
+    "각 B의 크기는 30도이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "label",
-      "target": "BC",
-      "text": "8√3"
-    },
-    {
-      "type": "angle",
-      "at": "B",
-      "arms": [
-        "A",
-        "C"
-      ],
-      "text": "30°"
+      "id": "source",
+      "condition": "아래 그림과 같은 삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=10$, $\\overline{\\text{BC}}=8\\sqrt{3}$, $\\angle\\text{B}=30^\\circ$일 때, 변 $\\text{AC}$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
