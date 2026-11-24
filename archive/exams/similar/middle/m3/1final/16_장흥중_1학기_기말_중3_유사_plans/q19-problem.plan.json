@@ -1,0 +1,118 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      10,
+      -1,
+      12
+    ],
+    "curves": [
+      {
+        "id": "para",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-1",
+          "1/4"
+        ],
+        "domain": [
+          "-5",
+          "9"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "8",
+          "y": "10"
+        },
+        {
+          "id": "D",
+          "x": "-4",
+          "y": "10"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "trap",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "이차함수 y=a(x-2)²+1의 그래프 위의 네 점 A, B, C, D를 꼭짓점으로 하는 사다리꼴 ABCD가 색칠되어 있다. 점 A는 (0, 2)이고 선분 AB와 선분 CD는 x축과 평행하며 선분 CD의 길이는 12이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선 위에 네 점 A, B, C, D가 있고, 그 네 점을 이은 사다리꼴이 옅게 칠해져 있다. 점 A 옆에 좌표 (0, 2)가 적혀 있다.",
+  "newVisualInformation": [
+    "포물선 위 네 점 A, B, C, D로 만든 사다리꼴",
+    "점 A의 좌표 (0, 2)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y = a(x - 2)^2 + 1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 $x$축과 평행하며 선분 $\\text{CD}$의 길이가 $12$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

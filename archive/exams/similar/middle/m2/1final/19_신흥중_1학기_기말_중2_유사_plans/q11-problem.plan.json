@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      6,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-7",
+          "5"
+        ],
+        "label": "y=-x+4",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2/3"
+        ],
+        "domain": [
+          "-7",
+          "5"
+        ],
+        "label": "y=2x/3+4",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 일차함수 y=-x+4와 y=2x/3+4의 그래프 및 x축으로 둘러싸인 도형이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차함수 $y = -x + 4$, $y = \\dfrac{2}{3}x + 4$의 그래프와 $x$축으로 둘러싸인 도형의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The two lines are y=-x+4 and y=2x/3+4.",
+    "The region is bounded by the two lines and the x-axis."
+  ],
+  "newVisualInformation": [
+    "두 직선과 x축으로 둘러싸인 삼각형"
+  ],
+  "accessibilityDescription": "두 직선이 세로축의 점 (0, 4)에서 만나고, 각각 가로축의 점 (4, 0)과 (−6, 0)에서 만나 x축과 함께 삼각형을 이룬다."
+}

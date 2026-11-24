@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      84,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/10"
+        ],
+        "domain": [
+          "0",
+          "80"
+        ],
+        "color": "BLUE",
+        "label": "A"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "1/5"
+        ],
+        "domain": [
+          "20",
+          "60"
+        ],
+        "color": "WARM",
+        "label": "B"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "20",
+        "60",
+        "80"
+      ],
+      "y": [
+        "8"
+      ]
+    },
+    "axisTitles": {
+      "x": "x(분)",
+      "y": "y(km)"
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 10
+    }
+  },
+  "caption": "동생과 형이 집에서 공원까지 이동할 때 시간에 따른 집으로부터의 거리를 나타낸 두 직선 그래프이다. 동생의 그래프를 A, 형의 그래프를 B라 한다.",
+  "accessibilityDescription": "가로축은 시간(분), 세로축은 거리(킬로미터)이고, 원점에서 시작하는 완만한 직선 A와 20분 지점에서 시작하는 가파른 직선 B가 오른쪽 위로 뻗어 있다. 두 직선이 한 점에서 만나며, 가로축에 20, 60, 80, 세로축에 8 눈금이 있다.",
+  "newVisualInformation": [
+    "동생의 시간과 거리의 관계를 나타내는 직선 A",
+    "형의 시간과 거리의 관계를 나타내는 직선 B",
+    "가로축의 20분, 60분, 80분 눈금과 세로축의 8킬로미터 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 $8\\text{ km}$ 떨어진 공원까지 가는데 동생은 걸어서 가고, 형은 동생이 출발한 지 $20$분 후에 자전거를 타고 갔다. 동생은 출발한 지 $80$분 만에 공원에 도착하고, 형은 동생이 출발한 지 $60$분 후에 공원에 도착한다. 두 사람이 각각 일정한 속력으로 이동할 때, 동생과 형이 만나는 곳은 집으로부터 몇 $\\text{km}$ 떨어진 지점인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

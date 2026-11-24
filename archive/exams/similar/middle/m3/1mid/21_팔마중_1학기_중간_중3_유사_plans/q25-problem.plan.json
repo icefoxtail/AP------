@@ -1,0 +1,424 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "가로의 길이가 2a-5미터, 세로의 길이가 3a+4미터인 직사각형 화단 안에 폭 1미터의 세로 길과 폭 2미터의 가로 길이 서로 만나도록 나 있다. 두 길의 폭과 화단의 가로, 세로가 치수선으로 표시되어 있다.",
+  "accessibilityDescription": "큰 직사각형 화단 안에 세로로 난 폭 1미터의 길과 가로로 난 폭 2미터의 길이 십자로 만나 있다. 화단의 아래쪽에 가로 길이 2a-5미터, 오른쪽에 세로 길이 3a+4미터가 치수선으로 표시되어 있고, 세로 길의 위쪽 폭 1미터와 가로 길의 왼쪽 폭 2미터도 치수선으로 표시되어 있다.",
+  "newVisualInformation": [
+    "직사각형 화단 안의 십자 모양 두 길",
+    "화단의 가로와 세로 치수선",
+    "두 길의 폭 1과 2 치수선"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "H1",
+    "H2",
+    "H3",
+    "H4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sV1V4",
+      "refs": [
+        "V1",
+        "V4"
+      ]
+    },
+    {
+      "id": "sV2V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sH1H2",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH4H3",
+      "refs": [
+        "H4",
+        "H3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rV",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "V1",
+              "V2",
+              "V3",
+              "V4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rH",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "H1",
+              "H2",
+              "H3",
+              "H4"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dW",
+        "from": "A",
+        "to": "B",
+        "label": "2a-5",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dH",
+        "from": "B",
+        "to": "C",
+        "label": "3a+4",
+        "unit": "m",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dPathV",
+        "from": "V4",
+        "to": "V3",
+        "label": "1",
+        "unit": "m",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "value": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dPathH",
+        "from": "H1",
+        "to": "H4",
+        "label": "2",
+        "unit": "m",
+        "side": "LEFT",
+        "style": "ARROW",
+        "value": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "H1",
+    "H2",
+    "H3",
+    "H4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 다음 그림과 같이 가로의 길이가 $(2a - 5)\\text{ m}$, 세로의 길이가 $(3a + 4)\\text{ m}$인 직사각형 모양의 화단이 있다. 이 화단 내부에 폭이 각각 $1\\text{ m}$, $2\\text{ m}$인 길을 내려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오. [5점] (1) 화단 전체의 넓이를 $a$에 관한 식으로 전개하시오. (2) 폭이 $1\\text{ m}$인 길과 폭이 $2\\text{ m}$인 길의 넓이의 합을 구하시오. (3) 길의 넓이를 제외한 화단의 넓이를 구한 후 인수분해 하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

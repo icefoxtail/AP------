@@ -1,0 +1,74 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6.928203230275509,
+        "depth": 4.242640687119285
+      },
+      "height": 7.0710678118654755,
+      "names": "ABCDE"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "\\sqrt{48}"
+    },
+    {
+      "edge": "BC",
+      "label": "\\sqrt{18}"
+    },
+    {
+      "height": true,
+      "label": "\\sqrt{50}"
+    }
+  ],
+  "caption": "밑면의 가로가 제곱근 48, 세로가 제곱근 18, 높이가 제곱근 50인 사각뿔을 보여 준다. 이 사각뿔의 높이의 5분의 1인 작은 사각뿔을 위에서 잘라 내는 상황이다.",
+  "accessibilityDescription": "밑면이 직사각형인 사각뿔의 가로, 세로, 높이가 치수선과 함께 표시되어 있고 꼭짓점 A, B, C, D, E가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 밑면의 가로의 길이가 $\\sqrt{48}$, 세로의 길이가 $\\sqrt{18}$인 직사각형이고, 높이가 $\\sqrt{50}$인 사각뿔에서 높이가 이 사각뿔의 높이의 $\\dfrac{1}{5}$인 작은 사각뿔을 위에서 잘라 낼 때, 잘라 낸 사각뿔의 부피를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "밑면의 가로는 제곱근 48이다.",
+      "mappedTo": [
+        "solids[0].base.width",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "밑면의 세로는 제곱근 18이다.",
+      "mappedTo": [
+        "solids[0].base.depth",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "높이는 제곱근 50이다.",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "높이가 전체 높이의 5분의 1인 작은 사각뿔을 위에서 잘라 낸다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사각뿔의 밑면 가로와 세로, 높이를 치수선으로 표시한다.",
+    "사각뿔의 꼭짓점과 밑면의 꼭짓점 이름을 표시한다."
+  ]
+}

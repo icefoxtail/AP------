@@ -1,0 +1,61 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b1"
+      ],
+      "label": "3"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 (가) / 오른쪽 (나)"
+  },
+  "caption": "서로 닮은 두 사각기둥 (가), (나)에서 대응하는 모서리의 길이가 각각 3 cm, 6 cm이고, (나)의 부피는 96 세제곱센티미터이다.",
+  "accessibilityDescription": "왼쪽 사각기둥 (가)와 오른쪽 사각기둥 (나)가 나란히 있고, 서로 대응하는 모서리에 각각 3과 6이 표시되어 있다.",
+  "newVisualInformation": [
+    "사각기둥 (가)의 모서리 3",
+    "사각기둥 (나)의 대응하는 모서리 6",
+    "사각기둥 (나)의 부피 96 세제곱센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 사각기둥 (가), (나)에서 대응하는 모서리의 길이가 각각 $3\\text{ cm}$, $6\\text{ cm}$이다. 사각기둥 (나)의 부피가 $96\\text{ cm}^3$일 때, 사각기둥 (가)의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

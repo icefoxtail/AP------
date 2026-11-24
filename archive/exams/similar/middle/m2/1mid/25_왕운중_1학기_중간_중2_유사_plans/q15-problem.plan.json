@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "r1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "r1",
+    "r2",
+    "r3",
+    "r4"
+  ],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "r1",
+        "r2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "r2",
+        "r3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "r3",
+        "r4"
+      ]
+    },
+    {
+      "id": "s41",
+      "refs": [
+        "r4",
+        "r1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          7,
+          9
+        ],
+        "text": "4.2 m",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "r1",
+    "r2",
+    "r3",
+    "r4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 540
+  },
+  "caption": "터널 진입 제한을 알리는 표지판 모양의 그림으로, 표지판 안에 적재 높이 기준값이 적혀 있다.",
+  "accessibilityDescription": "세로로 긴 직사각형 표지판 하나가 있고, 그 안쪽 가운데에 4.2 m라는 높이 기준이 적혀 있다.",
+  "newVisualInformation": [
+    "적재 높이 기준값 4.2 m"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 고속도로 터널 진입 제한을 나타내는 표지판에 대한 설명이다. 이를 부등식으로 옳게 나타낸 것을 고르면? [3점]\\n\\n\"차량의 적재 높이 $h\\text{ m}$가 $4.2\\text{ m}$ 이하이어야 통과할 수 있다.\"",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

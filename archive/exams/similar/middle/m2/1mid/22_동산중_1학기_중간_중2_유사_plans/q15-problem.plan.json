@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TL1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TR1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "R1",
+    "TL1",
+    "TR1",
+    "C1",
+    "L2",
+    "R2",
+    "P2",
+    "C2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "b1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "t1",
+      "refs": [
+        "TL1",
+        "TR1"
+      ]
+    },
+    {
+      "id": "l1",
+      "refs": [
+        "L1",
+        "TL1"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "R1",
+        "TR1"
+      ]
+    },
+    {
+      "id": "b2",
+      "refs": [
+        "L2",
+        "R2"
+      ]
+    },
+    {
+      "id": "l2",
+      "refs": [
+        "L2",
+        "P2"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "R2",
+        "P2"
+      ]
+    },
+    {
+      "id": "h2",
+      "refs": [
+        "C2",
+        "P2"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lH1",
+        "ownerSegment": "l1",
+        "text": "2ab^3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lH2",
+        "ownerSegment": "h2",
+        "text": "6a^3b^3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dR1",
+        "from": "C1",
+        "to": "R1",
+        "label": "3a^2b",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dR2",
+        "from": "C2",
+        "to": "R2",
+        "label": "ab",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "L1",
+    "R1",
+    "TL1",
+    "TR1",
+    "C1",
+    "L2",
+    "R2",
+    "P2",
+    "C2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "왼쪽은 밑면의 반지름이 3a²b이고 높이가 2ab³인 원기둥을 옆에서 본 모양, 오른쪽은 밑면의 반지름이 ab이고 높이가 6a³b³인 원뿔을 옆에서 본 모양이다.",
+  "accessibilityDescription": "왼쪽에는 직사각형, 오른쪽에는 밑변이 수평이고 꼭짓점이 위에 있는 삼각형이 보인다. 왼쪽에는 반지름 3a²b와 높이 2ab³, 오른쪽에는 반지름 ab와 높이 6a³b³이 적혀 있다.",
+  "newVisualInformation": [
+    "원기둥의 반지름 3a²b와 높이 2ab³",
+    "원뿔의 반지름 ab와 높이 6a³b³"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $3a^2b$이고 높이가 $2ab^3$인 원기둥의 부피는 밑면의 반지름의 길이가 $ab$이고 높이가 $6a^3b^3$인 원뿔의 부피의 몇 배인가? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

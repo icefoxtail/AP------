@@ -1,0 +1,159 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cA",
+        "row": 1,
+        "center": "M0",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "A",
+            "branch": "LEFT"
+          }
+        ]
+      },
+      {
+        "id": "cB",
+        "row": 1,
+        "center": "M0",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "B",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            -3,
+            0
+          ],
+          "to": [
+            -1,
+            1
+          ],
+          "toName": "P"
+        }
+      },
+      {
+        "id": "cC",
+        "row": 2,
+        "center": "M1",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "C",
+            "branch": "LEFT"
+          }
+        ]
+      },
+      {
+        "id": "cD",
+        "row": 2,
+        "center": "M1",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "D",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "toName": "Q"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "M0",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "A",
+            "value": "-3-sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "-3+sqrt(5)",
+            "showValue": false
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "M1",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "3-sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "D",
+            "value": "3+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "수직선 위의 두 점 -3과 3을 각각 중심으로 하는 원의 일부를 그려 수직선과 만나는 점을 A, B, C, D로 나타낸 그림이다. 각 중심 위에는 모눈 한 칸을 1로 하는 직각삼각형의 빗변이 그려져 있고, 네 점 A, B, C, D에 대응하는 수는 적혀 있지 않다.",
+  "accessibilityDescription": "위 줄 수직선에는 -3을 중심으로 하는 원호가 만나는 두 점 A, B가 있고, 그 위에 가로 두 칸, 세로 한 칸인 직각삼각형의 빗변이 보인다. 아래 줄 수직선에는 3을 중심으로 하는 원호가 만나는 두 점 C, D와 가로 한 칸, 세로 세 칸인 직각삼각형의 빗변이 보이며, 네 점에 대응하는 수는 표시되어 있지 않다.",
+  "newVisualInformation": [
+    "중심 -3에서 그린 원호와 수직선 위의 두 교점 A, B",
+    "중심 3에서 그린 원호와 수직선 위의 두 교점 C, D",
+    "각 중심 위 모눈에 그려진 직각삼각형의 빗변",
+    "네 교점에 대응하는 수는 표시하지 않음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 4] 다음 그림은 수직선 위의 두 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선과 만나는 점을 각각 $A, B, C, D$라 할 때, 네 점 $A, B, C, D$에 대응하는 수를 각각 구하고, 선분 $AD$와 선분 $BC$의 길이의 차를 구하는 과정을 서술하시오. [총 6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1",
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "curveX": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 오른쪽 아래로 향하고 y축의 원점 위쪽을 지나는 직선 y=ax-b의 그래프가 그려져 있다.",
+  "accessibilityDescription": "좌표평면에서 직선이 왼쪽 위에서 오른쪽 아래로 내려가며 y축의 원점보다 위쪽을 지난다. 직선은 y절편이 양수인 모양이다.",
+  "newVisualInformation": [
+    "오른쪽 아래로 향하는 직선의 기울기 방향",
+    "y축의 원점 위쪽에서 만나는 y절편",
+    "직선이 지나는 좌표평면의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax-b$의 그래프가 오른쪽 아래로 향하고 $y$축과 원점 위에서 만날 때, 일차함수 $y=-ax-b$의 그래프가 지나지 않는 사분면을 구하시오. (단, $a$, $b$는 수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
