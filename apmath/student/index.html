@@ -9,40 +9,41 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.24.3">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.24.3">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.24.3">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.24.3">
+  <link rel="manifest" href="./manifest.json?v=2026.11.24.4">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.24.4">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.24.4">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.24.4">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261123-similar-title-1"></script>
-  <script src="./current-question-content.js?v=2026.11.24.3"></script>
+  <script src="./current-question-content.js?v=2026.11.24.4"></script>
   <script src="./archive-review-output.js?v=20261124-current-1"></script>
   <link rel="stylesheet" href="../../archive/figure-zoom.css?v=20261124-zoom-3">
   <script src="../../archive/figure-zoom.js?v=20261124-zoom-3"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.24.3"></script>
-  <script src="../js/similar-exam.js?v=2026.11.24.3"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.24.4"></script>
+  <script src="../js/similar-exam.js?v=2026.11.24.4"></script>
   <script src="../../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
-  <script src="./similar-link.js?v=2026.11.24.3"></script>
-  <script src="./self-study-record.js?v=2026.11.24.3"></script>
-  <script src="./self-study-view.js?v=2026.11.24.3"></script>
-  <script src="./self-study-similar.js?v=2026.11.24.3"></script>
-  <script src="./self-study-type.js?v=2026.11.24.3"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.24.3"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.24.3">
-  <script src="../js/student-navigation.js?v=2026.11.24.3" data-student-navigation="manual"></script>
+  <script src="./student-fetch.js?v=2026.11.24.4"></script>
+  <script src="./similar-link.js?v=2026.11.24.4"></script>
+  <script src="./self-study-record.js?v=2026.11.24.4"></script>
+  <script src="./self-study-view.js?v=2026.11.24.4"></script>
+  <script src="./self-study-similar.js?v=2026.11.24.4"></script>
+  <script src="./self-study-type.js?v=2026.11.24.4"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.24.4"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.24.4">
+  <script src="../js/student-navigation.js?v=2026.11.24.4" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.24.3">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.24.4">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.24.3" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.24.4" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -65,7 +66,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.24.3';
+    const STUDENT_APP_VERSION = '2026.11.24.4';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -2129,7 +2130,10 @@
         });
       } catch (error) {
         if (!isStudentViewCurrent(view, 'omr-self-study')) return;
-        app.innerHTML = shell(titleFor(0), `<div class="empty" role="alert"><strong>${similar ? '유사' : '틀린'} 문항을 불러오지 못했어요.</strong><p>연결을 확인한 뒤 다시 시도해 주세요.</p><button type="button" class="btn" onclick="openSelfStudy('${similar ? 'similar' : 'wrong'}', '${escapeHtml(selfStudyAssignmentId)}', '${from === 'result' ? 'result' : 'list'}')">다시 불러오기</button></div>`);
+        // 통신 오류(끊김·서버 오류·시간 초과)는 "문항 소진"과 다른 화면이다. 다시 누르면 같은 일을 처음부터 다시 받고, "더 풀기" 중이었으면 "더 풀기"로 다시 한다.
+        const retryOpts = similar && opts.more ? ', { more: true }' : '';
+        const retryCode = `openSelfStudy('${similar ? 'similar' : 'wrong'}', '${String(selfStudyAssignmentId).replace(/[^\w.:-]/g, '')}', '${from === 'result' ? 'result' : 'list'}'${retryOpts})`;
+        app.innerHTML = shell(titleFor(0), selfStudy.loadFailureHtml(`${similar ? '유사' : '틀린'} 문항`, retryCode));
       }
     }
     function openSelfStudyWrong(assignmentId, from = 'list') { return openSelfStudy('wrong', assignmentId, from); }

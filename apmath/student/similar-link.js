@@ -6,12 +6,13 @@
    (tools/lib/build-similar-links.mjs); the portal never downloads the 75 MB catalog. If the map is missing
    or broken the entry is simply absent and every card stays exactly as it was. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.StudentSimilarLink = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
 
+  const Net = root.StudentFetch || (typeof require === 'function' ? require('./student-fetch.js') : null);
   const MAP_PATH = '../../archive/data/similar-links-v1.json';
   const ENGINE_PATH = '../../archive/engine.html';
   const MODES = ['exam', 'ans', 'sol'];
@@ -69,12 +70,10 @@
     </section>`;
   }
 
-  /** Never throws: a failed or malformed download means "no similar entries". */
+  /** Never throws: a failed, slow (time limit in student-fetch.js) or malformed download means "no similar entries". */
   async function load(fetchImpl, baseUrl) {
     try {
-      const response = await fetchImpl(new URL(MAP_PATH, baseUrl).href);
-      if (!response || !response.ok) return Object.create(null);
-      return normalizeMap(await response.json());
+      return normalizeMap(await Net.request(fetchImpl, new URL(MAP_PATH, baseUrl).href, { read: 'json' }));
     } catch {
       return Object.create(null);
     }

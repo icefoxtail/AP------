@@ -106,8 +106,11 @@
       const frozen = JSON.parse(String(exam?.mixed_payload_json || 'null'));
       if (Array.isArray(frozen?.questions) && frozen.questions.length) issuedQuestions = frozen.questions;
     } catch (error) { issuedQuestions = null; }
+    let transientError = null;
     const loaded = await Promise.all(sets.map(set => study.fetchQuestionList(`exams/${set.file}`, options)
-      .then(questions => ({ file: set.file, questions }), () => null)));
+      .then(questions => ({ file: set.file, questions }), error => { if (error?.transient === true) transientError = error; return null; })));
+    // Every similar paper failed because of the connection (not because a file is missing): a broken download must not read as "no similar questions".
+    if (transientError && !loaded.some(Boolean)) throw transientError;
     return { originalQuestions, issuedQuestions, similarSets: loaded.filter(set => set && set.questions.length === originalQuestions.length) };
   }
 
