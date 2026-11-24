@@ -137,11 +137,15 @@ test('카탈로그가 바뀐 뒤 열어도 선정 문항은 모든 행의 범위
   const filters = plain(opened.request(true).filters);
   const outside = opened.state.selected.filter(rec => !core.matches(rec, filters, { canonicalAuthority: changed.canonicalAuthority }));
   assert.equal(outside.length, 0, 'the server replay finds every saved question inside the range');
-  // 선정 문항이 카탈로그에서 사라지면 지금처럼 열기를 거절한다(이 변경과 무관)
+  // 2026-11-24: 선정 문항이 카탈로그에서 사라져도 거절하지 않는다. 그 문항만 빼고 열고, 몇 번이 빠졌는지 알린다.
   const missing = structuredClone(base);
   const first = [...selected][0];
   missing.records = missing.records.filter(r => r.questionUid !== first);
-  assert.throws(() => harness(missing).w.applyDraft(structuredClone(d)), /현재 아카이브에 없는 문항/);
+  const reopened = harness(missing).w;
+  reopened.applyDraft(structuredClone(d));
+  assert.ok(!reopened.state.selected.some(r => r.questionUid === first), 'the vanished question is left out');
+  assert.equal(reopened.state.selected.length, d.selected.length - 1, 'every other question is opened');
+  assert.match(reopened.state.composeNotice, /\d+번 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다/);
 });
 
 test('열 때 범위 키가 사라진 행은 선정 문항만으로 좁히지 않고 목록 없이 두며(안내는 기존 그대로), 나머지 행은 다시 계산한다', () => {
