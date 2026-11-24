@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "13",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "x": "3",
+        "y": "2"
+      },
+      {
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "p0",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "p1",
+        "x": "2",
+        "y": "1",
+        "marker": "NONE"
+      },
+      {
+        "id": "p2",
+        "x": "3",
+        "y": "2",
+        "marker": "NONE"
+      },
+      {
+        "id": "p3",
+        "x": "4",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "p4",
+        "x": "5",
+        "y": "3",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "0 이상 5 이하에서 정의된 함수 y=f(x)의 그래프를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 원점에서 시작하여 여러 개의 선분이 이어진 꺾은선 그래프가 있고, x축과 y축에 1부터 5까지의 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "정의역 0 이상 5 이하인 함수의 꺾은선 그래프가 그려져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 ${x \\mid 0 \\le x \\le 5}$에서 정의된 함수 $y = f(x)$의 그래프가 그림과 같을 때, $(f \\circ f)(a) = 2$를 만족시키는 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

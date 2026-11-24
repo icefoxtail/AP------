@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6928",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1a",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s1b",
+      "refs": [
+        "P1",
+        "P3"
+      ]
+    },
+    {
+      "id": "s1c",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s2a",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s2b",
+      "refs": [
+        "P4",
+        "P6"
+      ]
+    },
+    {
+      "id": "s2c",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "P2",
+          "P1",
+          "P3"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "P5",
+          "P4",
+          "P6"
+        ],
+        "value": 135,
+        "label": "135",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1a",
+        "ownerSegment": "s1a",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1b",
+        "ownerSegment": "s1b",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2a",
+        "ownerSegment": "s2a",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2b",
+        "ownerSegment": "s2b",
+        "text": "3√2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          2.5,
+          7.6
+        ],
+        "text": "ㄱ"
+      },
+      {
+        "id": "t2",
+        "at": [
+          13.5,
+          3.7
+        ],
+        "text": "ㄴ"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 삼각형 ㄱ과 ㄴ의 두 변의 길이와 끼인각을 각각 나타낸 그림이다.",
+  "accessibilityDescription": "왼쪽 삼각형 ㄱ은 두 변이 6과 8이고 끼인각이 60도이다. 오른쪽 삼각형 ㄴ은 두 변이 4와 3루트 2이고 끼인각이 135도이다.",
+  "newVisualInformation": [
+    "삼각형 ㄱ의 두 변 6, 8과 끼인각 60도, 삼각형 ㄴ의 두 변 4, 3루트 2와 끼인각 135도를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 삼각형 ㄱ, ㄴ의 넓이를 옳게 짝지은 것은? ㄱ. 두 변의 길이가 $6$, $8$이고 그 끼인각의 크기가 $60^\\circ$인 삼각형 ㄴ. 두 변의 길이가 $4$, $3\\sqrt{2}$이고 그 끼인각의 크기가 $135^\\circ$인 삼각형",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

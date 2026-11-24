@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (0, 3), (2, -1)을 지나는 일차함수의 그래프이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 아래로 향하는 직선이 있고, 그 위에 두 점 (0, 3)과 (2, -1)이 좌표와 함께 표시되어 있다.",
+  "newVisualInformation": [
+    "주어진 두 점을 지나는 직선의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(0, 3)$, $(2, -1)$을 지나는 일차함수의 그래프에 대한 설명으로 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

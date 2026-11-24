@@ -1,0 +1,853 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "g00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g50",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g60",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g70",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g43",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g53",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g63",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g73",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g06",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g36",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g66",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g76",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g61",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g71",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g62",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g72",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "g00",
+    "g10",
+    "g20",
+    "g30",
+    "g40",
+    "g50",
+    "g60",
+    "g70",
+    "g03",
+    "g13",
+    "g23",
+    "g33",
+    "g43",
+    "g53",
+    "g63",
+    "g73",
+    "g06",
+    "g36",
+    "g66",
+    "g76",
+    "g61",
+    "g71",
+    "g62",
+    "g72"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOut1",
+      "refs": [
+        "g00",
+        "g70"
+      ]
+    },
+    {
+      "id": "sOut2",
+      "refs": [
+        "g70",
+        "g76"
+      ]
+    },
+    {
+      "id": "sOut3",
+      "refs": [
+        "g76",
+        "g06"
+      ]
+    },
+    {
+      "id": "sOut4",
+      "refs": [
+        "g06",
+        "g00"
+      ]
+    },
+    {
+      "id": "sMid",
+      "refs": [
+        "g03",
+        "g73"
+      ]
+    },
+    {
+      "id": "sTop1",
+      "refs": [
+        "g33",
+        "g36"
+      ]
+    },
+    {
+      "id": "sTop2",
+      "refs": [
+        "g63",
+        "g66"
+      ]
+    },
+    {
+      "id": "sBot1",
+      "refs": [
+        "g10",
+        "g13"
+      ]
+    },
+    {
+      "id": "sBot2",
+      "refs": [
+        "g20",
+        "g23"
+      ]
+    },
+    {
+      "id": "sBot3",
+      "refs": [
+        "g30",
+        "g33"
+      ]
+    },
+    {
+      "id": "sBot4",
+      "refs": [
+        "g40",
+        "g43"
+      ]
+    },
+    {
+      "id": "sBot5",
+      "refs": [
+        "g50",
+        "g53"
+      ]
+    },
+    {
+      "id": "sBot6",
+      "refs": [
+        "g60",
+        "g66"
+      ]
+    },
+    {
+      "id": "sUnit1",
+      "refs": [
+        "g61",
+        "g71"
+      ]
+    },
+    {
+      "id": "sUnit2",
+      "refs": [
+        "g62",
+        "g72"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rS1",
+        "fill": "BLUE",
+        "label": "x²",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g03",
+              "g33",
+              "g36",
+              "g06"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rS2",
+        "fill": "BLUE",
+        "label": "x²",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g33",
+              "g63",
+              "g66",
+              "g36"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rT",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g63",
+              "g73",
+              "g76",
+              "g66"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB1",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g00",
+              "g10",
+              "g13",
+              "g03"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB2",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g10",
+              "g20",
+              "g23",
+              "g13"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB3",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g20",
+              "g30",
+              "g33",
+              "g23"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB4",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g30",
+              "g40",
+              "g43",
+              "g33"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB5",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g40",
+              "g50",
+              "g53",
+              "g43"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB6",
+        "fill": "WARM",
+        "label": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g50",
+              "g60",
+              "g63",
+              "g53"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rU1",
+        "fill": "LIGHT",
+        "label": "1",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g60",
+              "g70",
+              "g71",
+              "g61"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rU2",
+        "fill": "LIGHT",
+        "label": "1",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g61",
+              "g71",
+              "g72",
+              "g62"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rU3",
+        "fill": "LIGHT",
+        "label": "1",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "g62",
+              "g72",
+              "g73",
+              "g63"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "g00",
+    "g10",
+    "g20",
+    "g30",
+    "g40",
+    "g50",
+    "g60",
+    "g70",
+    "g03",
+    "g13",
+    "g23",
+    "g33",
+    "g43",
+    "g53",
+    "g63",
+    "g73",
+    "g06",
+    "g36",
+    "g66",
+    "g76",
+    "g61",
+    "g71",
+    "g62",
+    "g72"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "넓이가 각각 x 제곱, x, 1인 세 종류의 직사각형 타일을 2개, 7개, 3개 겹치지 않게 이어 붙여 만든 새 직사각형이 보인다.",
+  "accessibilityDescription": "가로로 긴 직사각형 안이 위쪽의 큰 정사각형 두 개, 아래쪽의 긴 막대 모양 타일 여섯 개와 오른쪽 위의 막대 타일 하나, 오른쪽 아래의 작은 정사각형 세 개로 빈틈없이 채워져 있고 각 타일에 넓이를 나타내는 글자가 쓰여 있다.",
+  "newVisualInformation": [
+    "새 직사각형은 큰 정사각형 2개, 막대 타일 7개, 작은 정사각형 3개로 채워져 있다",
+    "각 타일 안에 넓이 x 제곱, x, 1이 표시되어 있다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 넓이가 각각 $x^2$, $x$, $1$인 세 종류의 직사각형 타일을 각각 $2$개, $7$개, $3$개(총 $12$개) 겹치지 않게 이어 붙여 새로운 직사각형을 만들었다. 새로 만든 직사각형의 가로의 길이와 세로의 길이의 합은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

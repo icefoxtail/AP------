@@ -1,0 +1,81 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 7,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 3.464,
+        "y": 2
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 10.464,
+        "y": 2
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "30°"
+      }
+    ]
+  },
+  "caption": "폭이 4와 7인 두 종이 테이프가 30도로 겹쳐 만들어진 평행사변형 ABCD"
+}

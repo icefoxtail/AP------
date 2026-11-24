@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPOQ",
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOP",
+        "ownerSegment": "sOP",
+        "text": "10",
+        "unit": "m"
+      },
+      {
+        "id": "lOQ",
+        "ownerSegment": "sOQ",
+        "text": "14",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "hiddenPointNames": [],
+  "caption": "호수의 양 끝 지점 P, Q와 기준점 O를 연결한 삼각형 OPQ를 보여 준다.",
+  "accessibilityDescription": "점 O에서 두 선분 OP, OQ가 뻗어 삼각형을 이루고, OP는 10m, OQ는 14m, 두 선분 사이의 각은 60도로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 OP의 길이 10m가 표시된다.",
+    "선분 OQ의 길이 14m가 표시된다.",
+    "두 선분이 이루는 각 60도가 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 어느 공원에 있는 호수의 양 끝 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리를 구하기 위하여 거리와 각을 측정하여 나타낸 것이다. $\\overline{\\text{OP}}=10\\text{ m}$, $\\overline{\\text{OQ}}=14\\text{ m}$이고 $\\angle\\text{O}=60^\\circ$일 때, 두 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

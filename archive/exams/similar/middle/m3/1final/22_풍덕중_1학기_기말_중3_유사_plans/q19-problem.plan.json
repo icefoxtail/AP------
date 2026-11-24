@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -0.5,
+      2
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "color": "WARM",
+        "label": "y=x^2/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2*sqrt(2)-2",
+          "y": "12-8*sqrt(2)"
+        },
+        {
+          "id": "A",
+          "x": "2*sqrt(2)-2",
+          "y": "6-4*sqrt(2)"
+        },
+        {
+          "id": "B",
+          "x": "4-2*sqrt(2)",
+          "y": "12-8*sqrt(2)"
+        }
+      ],
+      "segments": [
+        {
+          "id": "pa",
+          "from": "P",
+          "to": "A"
+        },
+        {
+          "id": "pb",
+          "from": "P",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "제1사분면에서 두 이차함수의 그래프와, 점 P를 지나는 세로선 및 가로선이 각각 만나는 점 A, B를 나타낸 그림이다. 선분 PA와 PB의 길이가 같다.",
+  "accessibilityDescription": "두 개의 위로 열린 포물선, 제1사분면의 점 P, P 아래의 점 A, P 오른쪽의 점 B, 세로선 PA와 가로선 PB가 보인다.",
+  "newVisualInformation": [
+    "두 이차함수의 그래프와 점 P, A, B 및 세로선·가로선 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2$의 그래프 위의 한 점 $P$를 지나는 $y$축에 평행한 직선과 $x$축에 평행한 직선이 이차함수 $y=\\dfrac{1}{2}x^2$의 그래프와 제1사분면에서 만나는 점을 각각 $A, B$라고 하자. $\\overline{PA}=\\overline{PB}$일 때, 점 $P$의 $x$좌표를 구하면? (단, 점 $P$는 제1사분면 위의 점이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

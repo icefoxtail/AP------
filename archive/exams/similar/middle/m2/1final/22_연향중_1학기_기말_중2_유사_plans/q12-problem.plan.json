@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -7,
+      7
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "2",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-5",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면 위에 두 점 (-2, -5), (3, 5)와 이 두 점을 지나는 직선이 그려져 있다.",
+  "accessibilityDescription": "가로축과 세로축, 두 점의 좌표, 두 점을 지나 오른쪽 위로 향하는 직선이 보인다.",
+  "newVisualInformation": [
+    "두 점의 좌표와 그 두 점을 지나는 직선이 제시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-2, -5)$, $(3, 5)$를 지나는 일차함수의 그래프의 $x$절편을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

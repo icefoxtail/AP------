@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3.5,
+      3.5,
+      -12,
+      14
+    ],
+    "curves": [
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=3x-2"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=3x+4"
+      },
+      {
+        "id": "l3",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "y=3x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "기울기가 같은 두 평행선 l1, l2와, 그 사이를 지나는 또 다른 평행선이 나란히 그려져 있다.",
+  "newVisualInformation": [
+    "l1은 y=3x-2, l2는 y=3x+4이고, 가운데 직선은 y=3x이다."
+  ],
+  "accessibilityDescription": "기울기가 3으로 같은 세 직선이 위아래로 나란히 그려져 있다. 가운데 직선은 위아래 두 직선 사이에 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 두 직선 $l_1: y=3x-2$, $l_2: y=3x+4$가 있다. 다음은 직선 $l_1$, $l_2$ 위의 임의의 점 $P$, $Q$에 대하여 선분 $PQ$를 $1:2$로 내분하는 점 $R$이 직선 $y=3x$ 위의 점임을 보이는 과정이다. 두 점 $P$, $Q$는 직선 $l_1$, $l_2$ 위의 점이므로 임의의 실수 $a$, $b$에 대하여 $P(a, \\text{(가)})$, $Q(b, \\text{(나)})$로 놓자. 선분 $PQ$를 $1:2$로 내분하는 점 $R\\left(\\dfrac{2a+b}{3}, \\dfrac{3b+\\text{(다)}}{3}\\right)$이므로 점 $R$은 직선 $y=3x$ 위의 점이다. (가), (나), (다)에 들어갈 식을 각각 $f(a)$, $g(b)$, $h(a)$라 할 때, $f(1)+g(-1)+h(0)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

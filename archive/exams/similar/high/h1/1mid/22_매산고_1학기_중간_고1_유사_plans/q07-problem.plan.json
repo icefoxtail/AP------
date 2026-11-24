@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -4,
+      20
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "4",
+          "intercept": "-6",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "포물선과 기울기가 4인 직선 l이 서로 만나지 않는 모양을 나타낸 그림이다. 직선 l의 y절편은 -m+2이고, m은 자연수이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선과 기울기 4인 직선 l이 서로 만나지 않고, 직선이 포물선 아래에 있다.",
+  "newVisualInformation": [
+    "포물선과 직선 l이 만나지 않는 배치를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-2x+5$의 그래프와 직선 $y=4x-m+2$가 만나지 않도록 하는 자연수 $m$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

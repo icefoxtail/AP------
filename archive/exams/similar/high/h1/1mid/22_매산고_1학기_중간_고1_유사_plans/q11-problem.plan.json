@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      2
+    ],
+    "viewport": [
+      -8,
+      2,
+      -12,
+      16
+    ],
+    "formula": "x^2+6*x-1",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-10",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3"
+      ],
+      "y": [
+        "-1"
+      ]
+    }
+  },
+  "caption": "이차함수 f의 그래프가 아래로 볼록하게 그려져 있고, 꼭짓점의 x좌표와 y절편이 눈금으로 표시되어 있다.",
+  "accessibilityDescription": "가로축과 세로축 위에 아래로 볼록한 포물선 f가 있고, 꼭짓점과 y절편의 위치가 눈금으로 나타나 있다.",
+  "newVisualInformation": [
+    "이차함수 f의 전체 개형",
+    "꼭짓점과 y절편의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)=x^2+6x-1$과 서로 다른 두 실수 $a$, $b$ ($a<b$)가 $f(a)=2b$, $f(b)=2a$를 만족할 때, 함수 $y=(x+2a)(x+2b)$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

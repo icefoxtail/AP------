@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "86603",
+              "denominator": "20000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1923",
+              "denominator": "2500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1327",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCD",
+        "ownerSegment": "sCD",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labDA",
+        "ownerSegment": "sDA",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "볼록사각형 ABCD의 네 변 AB, BC, CD, DA의 길이를 각각 4, 7, 3, 5로 적고, 꼭짓점 D의 각 CDA를 120으로 표시한 그림이다.",
+  "accessibilityDescription": "네 꼭짓점 A, B, C, D를 이은 볼록사각형이 있고, 각 변 옆에 4, 7, 3, 5가 적혀 있다. 점 D의 안쪽 각에는 120이라는 각 표시가 있다.",
+  "newVisualInformation": [
+    "볼록사각형 ABCD",
+    "네 변의 길이 4, 7, 3, 5",
+    "각 CDA의 크기 120"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "볼록사각형 $ABCD$에서 $\\overline{AB} = 4$, $\\overline{BC} = 7$, $\\overline{CD} = 3$, $\\overline{DA} = 5$이고 $\\angle CDA = 120^\\circ$일 때, 사각형 $ABCD$의 넓이는? (4.6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

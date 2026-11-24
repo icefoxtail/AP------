@@ -1,0 +1,52 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 무리함수와 직선의 교점 개수 조건 서술형 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "sq",
+          "kind": "SQRT",
+          "radicand": [
+            "6",
+            "-2"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "-3",
+            "3"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "l1",
+            "slope": "-1",
+            "intercept": "3"
+          },
+          {
+            "id": "l2",
+            "slope": "-1",
+            "intercept": "3.5"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "3"
+        ],
+        "y": [
+          "0"
+        ]
+      }
+    },
+    "caption": "y=√(-2x+6)과 직선 y=-x+k는 k=3에서 시작점을 지나고 k=7/2에서 접한다."
+  }
+}

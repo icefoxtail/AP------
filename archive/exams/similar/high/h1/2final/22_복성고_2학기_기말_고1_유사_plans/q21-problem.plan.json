@@ -1,0 +1,64 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 조각 유리함수 위 직각삼각형 넓이 최솟값 서술형 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f1",
+          "kind": "RATIONAL",
+          "numerator": [
+            "9",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "domain": [
+            "0.8",
+            "7"
+          ]
+        },
+        {
+          "id": "f2",
+          "kind": "RATIONAL",
+          "numerator": [
+            "4",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "domain": [
+            "-7",
+            "-0.5"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "l",
+            "slope": "-1",
+            "intercept": "0"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "0"
+        ],
+        "y": [
+          "0"
+        ]
+      }
+    },
+    "caption": "t>0과 t<0 모두 넓이 식이 ½(u+9/u)(u+4/u)로 같아 u=√6일 때 최솟값 25/2를 갖는다."
+  }
+}

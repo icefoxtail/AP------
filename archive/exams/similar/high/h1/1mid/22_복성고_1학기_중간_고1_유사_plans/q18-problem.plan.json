@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -1,
+      8
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -4,
+          4
+        ],
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2",
+        "label": "A(0, 2)"
+      },
+      {
+        "id": "Q",
+        "x": "sqrt(3)",
+        "y": "0",
+        "label": "Q"
+      },
+      {
+        "id": "P",
+        "x": "2*sqrt(3)",
+        "y": "6",
+        "label": "P"
+      },
+      {
+        "id": "R",
+        "x": "-2*sqrt(3)",
+        "y": "6",
+        "label": "R"
+      }
+    ]
+  },
+  "caption": "포물선 y=(1/2)x^2 위의 점 P, R과 x절편 Q로 이루어진 삼각형 RQP"
+}

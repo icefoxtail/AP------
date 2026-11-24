@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5.5,
+      2,
+      -14,
+      20
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-6",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2+3a"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "-4"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=2ax-a^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=x²+3a의 그래프와 직선 y=2ax-a²의 그래프가 서로 다른 두 점에서 만나는 모습을 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선과 오른쪽 아래로 내려가는 직선이 두 점에서 만나고, 각 그래프 곁에 문자가 포함된 식이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 그래프의 식",
+    "서로 다른 두 교점의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+3a$의 그래프와 직선 $y=2ax-a^2$의 서로 다른 두 교점의 $x$좌표의 곱이 $10$일 때, 상수 $a$를 구하고 이 두 교점의 $x$좌표의 합을 $b$라고 할 때, $b$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
