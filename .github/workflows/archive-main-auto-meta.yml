@@ -203,9 +203,9 @@ jobs:
             --summary-file "$GITHUB_STEP_SUMMARY" --label 'single Archive registration writer'
       # HANDED_OVER (a competing commit changed registrar-owned paths) and RETRY_EXHAUSTED (main moved again between writing and pushing)
       # mean nothing was pushed. Queue one more run now instead of waiting for the next push or the daily cron; concurrency keeps one pending
-      # run, and it re-reads main when it starts. A plain race on a push-triggered run is not queued here (the competing push already queued its own run); a scheduled or manual run whose full pass was skipped for that reason queues itself, so its digest-only work is not dropped.
+      # run, and it re-reads main when it starts. A push-triggered run never queues here: whatever landed first was itself a main push and already queued its own merge-mode run, and a dispatched run would replace that pending run with a heavier digest run. Only a scheduled or manual run queues itself, so its digest-only work is not dropped.
       - name: Queue another registration run when nothing could be pushed
-        if: always() && (contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist_required.outputs.result) || contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist.outputs.result) || (github.event_name != 'push' && steps.persist_required.outputs.overlaid == 'true'))
+        if: always() && github.event_name != 'push' && (contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist_required.outputs.result) || contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist.outputs.result) || steps.persist_required.outputs.overlaid == 'true')
         timeout-minutes: 5
         env:
           GH_TOKEN: ${{ github.token }}

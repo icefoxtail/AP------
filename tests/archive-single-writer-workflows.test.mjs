@@ -72,7 +72,7 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.equal((register.match(/--remote origin --branch main --max-attempts 4/g) || []).length, 2, 'both saves allow four cheap write-onto-the-new-tip attempts');
   // HANDED_OVER and RETRY_EXHAUSTED pushed nothing: queue one more run right away rather than waiting for the next push or the daily cron.
   const requeue = step(register, /^      - name: Queue another registration run when nothing could be pushed$/m);
-  assert.match(requeue, /if: always\(\) && \(contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist_required\.outputs\.result\) \|\| contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist\.outputs\.result\) \|\| \(github\.event_name != 'push' && steps\.persist_required\.outputs\.overlaid == 'true'\)\)/);
+  assert.match(requeue, /if: always\(\) && github\.event_name != 'push' && \(contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist_required\.outputs\.result\) \|\| contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist\.outputs\.result\) \|\| steps\.persist_required\.outputs\.overlaid == 'true'\)/);
   assert.match(requeue, /gh workflow run archive-main-auto-meta\.yml --ref main/);
   assert.match(step(register, /^        id: prepare$/m), /if: success\(\) && steps\.persist_required\.outputs\.overlaid != 'true'/, 'a run whose first save was written onto a newer tip stops; the merge that landed queued its own run');
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope|--regenerate/);
