@@ -1,39 +1,48 @@
-# 골든 동일성 게이트 (golden-gate)
+# 골든 게이트 (golden-gate): 학생 화면이 깨지는가
 
-엔진을 고칠 때 "통과하던 그림이 안 바뀌었다"를 이 PC에서 증명한다. 골든 plan 209개를 **같은 PC·같은 Chrome**에서 base와 head로 렌더해 SVG를 바이트로 비교한다. 해시표·기준 SVG는 저장소에 커밋하지 않는다(PC가 바뀌면 글자 폭이 달라져 기준이 무의미하므로 매번 base를 같은 PC에서 만든다).
+엔진을 고칠 때 **학생이 보는 그림이 깨졌는지**만 이 PC에서 확인한다(2026-11-24 원장님: "변화를 막는 고정은 깬다, 고정은 진짜 필요한 하나만"). 골든 plan을 **같은 PC·같은 Chrome**에서 base와 head로 렌더해 비교한다. 예전처럼 "바이트가 같은가"로 막지 않는다. 엔진이 좋아져 그림이 달라지는 것은 실패가 아니라, 달라진 쌍을 나란히 놓은 비교 PNG를 사람이 훑는 자료다. 해시표·기준 SVG는 저장소에 커밋하지 않는다(PC가 바뀌면 글자 폭이 달라지므로 매번 base를 같은 PC에서 만든다).
+
+**막는 것(종료 코드 1)은 이것뿐이다:** ① head가 base에서 그려지던 그림을 못 그린다(잘림 `TEXT_CLIPPED`·`*_OUT_OF_BOUNDS`, 휴대폰 390px 검사 `ARCHIVE_PHONE_DISPLAY_FAIL`, 게시 점수표가 막는(BLOCK)·못 재는(INDETERMINATE) 결함) ② head가 그린 그림에 **base에는 없던** 틀 밖 라벨·도형이 있다(`lib/clip.mjs`가 SVG를 직접 읽는다) ③ 실행 못 함(크래시·시간 초과·측정 실패·환경 오류) ④ `--tests`에서 head에서만 실패하거나 사라진 테스트. 그 밖은 막지 않는다.
 
 ## 명령
 
 ```
-node archive/tools/geometry-equation/ops/golden-gate/golden-gate.mjs --base origin/main
-node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all|stat,solid|item21 --expected 의도.txt --tests
+node archive/tools/geometry-equation/ops/golden-gate/golden-gate.mjs                 # PR 기본: 작업 트리 대 merge-base(origin/main, HEAD), 관련 표본만
+node .../golden-gate.mjs --base <ref> --head <ref|@worktree> [--all] [--families stat,solid|item21] [--tests]
 ```
 
-- `--base` 필수. 브랜치가 main보다 뒤처졌으면 `$(git merge-base origin/main HEAD)`를 쓴다(안 그러면 main의 새 커밋이 head의 변경처럼 보인다).
-- `--head` 기본은 작업 트리(커밋 안 한 변경 포함). 커밋·브랜치도 된다.
-- `--families auto`(기본): 바뀐 파일 -> 닿는 종류만 렌더. 공용 파일(render-plan, worker, phase2, label_layout 등 visual_engine, pipeline-core, 측정·정책, Archive 쪽 페이지 코드)이거나 **표에 없는 엔진 파일이면 209 전체**. `all`, 종류 이름(`stat set solid number-line chain composite ellipse container lattice graph construction`), capability 이름, 골든 `fam` 이름, 항목 이름(`item21`)도 된다. `--list`는 고른 항목만 출력하고 끝낸다.
-- `--expected <파일>`: 의도한 변경 목록. 한 줄에 `항목 DIFFERENT|FIXED|REGRESSED 이유`(이유 10자 이상 필수, `#` 주석 가능). 이유 없는 줄은 오류다. 줄에 적힌 항목은 항상 비교하고, 실제로 바뀌지 않은 줄이 있으면 실패한다. 인정된 줄은 출력에 `EXPECTED ... <= expected: 이유`로 드러난다.
-- `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 그대로 출력한다(건너뛰기·격리 없음; 스냅샷에 없는 저장소 파일이 필요한 테스트는 양쪽에서 같이 실패해 이 목록에 보인다). `auto`는 import 닫힘이 바뀐 파일에 닿거나(render-plan을 거치는 길은 따라가지 않음) 바뀐 종류의 capability·모듈 이름이 본문에 나오는 테스트만, 공용 파일이 바뀌면 전부.
-- `--repeat-check`: head를 두 번(순서를 뒤집고 묶음 크기를 바꿔) 렌더해 흔들림을 확인한다.
-- `--order-check [입체,...:그 밖의 항목,...]`: base 없이 head 스냅샷만으로, 앞에 그려진 그림이 뒤 그림에 새는지(같은 python 호스트·Chrome을 여러 항목이 재사용하므로 입체 관측기의 `YAW/VIEW/SCREEN_*` 같은 전역이 샐 수 있다) 본다. 골든 표본(입체 6개: 시점 0도·기본, 전개도, 원기둥류, 절단, 합성 패널 / 그 밖 3개: 그래프·작도·통계)을 프로세스 하나씩 다섯 순서로 렌더한다: `reuse-off`(기준, `GEOMETRY_WORKER_REUSE=0`·`GEOMETRY_BROWSER_REUSE=0`으로 요청마다 새 python·Chrome), `fwd`(입체 뒤에 비입체), `rev`(비입체 먼저, 입체는 거꾸로), `twice`(모든 항목을 연달아 두 번), `alone`(비입체만). 모든 칸을 기준과 SVG 바이트·결과 기록으로 비교해 SAME/DIFF를 표로 낸다. 종료 코드 0 통과, 1 누수(DIFF), 2 보증 못 함(항목이 안 돌았거나 입체가 하나도 안 그려짐). 작은 표본 검사는 `order-check.test.mjs`(Chrome·의존성이 없으면 건너뜀). 기준(`reuse-off`)은 python·Chrome만 새로 띄우고 node 프로세스는 한 개이므로, node 쪽 전역(`solid-figure-v1.mjs`의 `YAW_DEG` 등)이 새면 `fwd`는 기준과 같게 새고 `rev`·`twice`가 DIFF로 드러난다(2026-11-23 훼손 확인: 시점 초기화 한 줄을 빼면 rev에서 DIFF 2개).
+- `--base` 생략 시 `git merge-base origin/main HEAD`(main의 새 커밋이 head의 변경처럼 보이지 않게). `--head` 기본은 작업 트리(커밋 안 한 변경 포함). 커밋·브랜치도 된다.
+- **관련 표본만 렌더(기본, `--families auto`)**: 바뀐 파일(`git diff`)을 종류(kind)·항목에 대응시켜 고른다.
+  - 한 종류만 쓰는 파일(`stat-chart-v1.mjs` 등)이 바뀌면 그 종류의 항목. 한 종류가 `--max-per-kind`(기본 30)개보다 많으면 고르게 뽑은 표본(graph 58·construction 55개).
+  - **공용 파일(render-plan, worker, phase2, visual_engine, pipeline-core, 측정·정책, 페이지 코드)이거나 표에 없는 엔진 파일**이면 "관련성이 애매하다"고 보고 **모든 종류**를 넣되 종류마다 `--sample`(기본 6)개씩만. 이전에는 209 전체였다.
+  - 바뀐 항목 자체(골든 plan, 시험지 JS, 그 시험지의 그림·이미지)는 항상 넣는다. 바뀐 게 렌더와 무관(문서·테스트 등)하면 아무것도 안 돌리고 UNAFFECTED.
+  - `--all`(= `--families all`): 209 전체. `--families`에 종류 이름(`stat set solid number-line chain composite ellipse container lattice graph construction`)·capability 이름·골든 `fam` 이름·항목 이름(`item21`)을 쓰면 그것만(줄이지 않음). `--list`는 고른 항목만 출력하고 끝낸다.
+  - 이 선택 규칙은 `lib/related.mjs`에 있다(`kinds.mjs`·`select.mjs`는 바이트가 결과 캐시 키에 들어가므로 건드리지 않는다).
+- **비교 시트**: 바이트가 달라진 항목(DIFFERENT)과 CLIPPED 항목을 base 왼쪽·head 오른쪽으로 놓은 PNG를 만든다. 한 장에 10쌍(`--per-sheet`), 경로는 실행 끝에 출력된다(기본 `<캐시>/sheets/<시각>/sheet-01.png`, `--sheets-dir`로 지정, `--no-sheets`로 끔). 만들지 못해도 판정은 안 바뀐다. 사람이 훑는 자료이고 막는 장치가 아니다.
+- `--exam-batch N`(또는 `APMS_EXAM_BATCH=N`): 같은 시험지의 그림 N개가 아카이브 화면 하나를 나눠 쓴다(`production/exam-batch.mjs`, 결과는 한 건씩과 같다). 켜면 같은 시험지 항목을 같은 묶음에 넣는다. base와 head에 같은 값을 쓴다.
+- `--expected <파일>`: 선택 사항, **표시만** 한다. 한 줄에 `항목 DIFFERENT|FIXED|MINOR|CLIPPED|REGRESSED 이유`(이유 10자 이상). 맞지 않는 줄은 `EXPECTED-FILE NOTE`로 출력될 뿐 실패가 아니고, 깨진 그림(REGRESSED·CLIPPED)을 적어도 면제되지 않는다.
+- `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 출력한다. `auto`는 바뀐 파일에 닿는 테스트만, 공용 파일이 바뀌면 전부. 시간이 오래 걸리므로 기본은 끄고, 엔진 코드를 크게 바꿀 때만 켠다.
+- `--repeat-check`: head를 두 번(순서를 뒤집고 묶음 크기를 바꿔) 렌더해 같은 코드의 흔들림을 확인한다.
+- `--order-check [입체,...:그 밖의 항목,...]`: base 없이 head 스냅샷만으로, 앞에 그려진 그림이 뒤 그림에 새는지(같은 python 호스트·Chrome을 여러 항목이 재사용하므로 입체 관측기의 `YAW/VIEW/SCREEN_*` 같은 전역이 샐 수 있다) 본다. **옛 바이트와 비교하지 않고 같은 커밋 안에서 순서·재사용 여부만 바꿔** 결과가 달라지는지(같은 plan이 렌더 순서 때문에 다른 그림이 되는 진짜 결함)를 본다. 그래서 새 기준과 같다: 깨짐(누수·실행 못 함)만 실패다. 골든 표본(입체 6개 / 그 밖 3개)을 다섯 순서로 렌더한다: `reuse-off`(기준, 요청마다 새 python·Chrome), `fwd`, `rev`, `twice`, `alone`. 종료 코드 0 통과, 1 누수(DIFF), 2 항목이 안 돌았거나 입체가 하나도 안 그려짐. 작은 표본 검사는 `order-check.test.mjs`(Chrome·의존성이 없으면 건너뜀). node 쪽 전역(`solid-figure-v1.mjs`의 `YAW_DEG` 등)이 새면 `rev`·`twice`가 DIFF로 드러난다(2026-11-23 훼손 확인).
 - `--no-cache`: 캐시를 읽지 않고 양쪽을 새로 렌더(base=head여도 두 번 따로 렌더해 비교).
-- 종료 코드: **0 통과**(바이트를 비교했고 실패가 없음) 또는 **0 UNAFFECTED**(아래), **1 실패**(DIFFERENT·REGRESSED·NOT_RUN·REMOVED, `--expected` 파일 오류, 테스트 신규 실패·소실), **2 보증 못 함**(바뀐 게 없음(base=head 포함), 선택이 비었음(빈 `--families`·모르는 단어·고른 항목 0개), 바이트를 하나도 못 비교함, 바뀐 종류에 비교된 항목이 0개(NOT_COVERED), 분류 오류, 인자·의존성 없음). 종료 코드는 `lib/judge.mjs`의 `decide()` 한 곳에서 정한다.
-- **UNAFFECTED (nothing compared)**: 바뀐 파일이 있고 전부 렌더와 무관(문서·테스트 등)이며, base와 head의 공용 키(commonKey)와 모든 항목 키(itemKey)가 같을 때만 exit 0이다. "통과"라고 쓰지 않는다. 이 게이트가 PASS라고 말하면 실제로 비교한 것이다.
-- 선택은 git 파일 이름 분류에 **base와 head에서 항목 자체 입력(plan, 시험지 JS, 그 시험지가 가리키는 모든 이미지, 다른 시험지 폴더의 이미지 포함)이 다른 항목**을 합친다. 이름만으로는 안 보이는 다른 폴더 이미지 변경(예: 25_매산여고 q23.png)도 해당 항목이 선택된다.
+- 종료 코드: **0** = 깨진 것 없음(PASS) 또는 비교할 게 없음(UNAFFECTED: base=head, 렌더와 무관한 변경, 변경과 관련된 항목 없음, base·head 렌더 입력이 같음). **1** = 위 "막는 것" 중 하나. **2** = 돌릴 수 없음(빈 `--families`·모르는 단어, 분류 오류, 의존성 없음). 종료 코드는 `lib/judge.mjs`의 `decide()` 한 곳에서 정한다.
+- 선택은 git 파일 이름 분류에 **base와 head에서 항목 자체 입력(plan, 시험지 JS, 그 시험지가 가리키는 모든 이미지, 다른 시험지 폴더의 이미지 포함)이 다른 항목**을 합친다.
 - `--repo <폴더>`: 다른 저장소(테스트용 임시 저장소)에서 돌린다. 기본은 이 저장소.
-- 출력 첫 줄은 `byte compared N / selected M`이다. 선택한 M개 중 양쪽이 SVG를 내서 바이트를 비교한 것이 N개다. N이 0이면 통과가 아니다(전부 같은 실패로 끝난 날 초록이 되지 않게). 실패를 허용하는 목록 파일은 없다.
+- 출력 첫 줄은 `byte compared N / selected M`이다(양쪽이 SVG를 낸 항목 N개, 정보용). N이 0이어도 깨진 것이 없으면 통과이고 이유에 "no figure was drawn on both sides"가 붙는다. 마지막 줄 앞에 SAME·DIFFERENT 개수가 정보용으로 나온다.
 
 ## 판정
 
 | 판정 | 뜻 | 게이트 |
 |---|---|---|
 | SAME | SVG 바이트(와 sizeClass, solutionImageScale)가 같다 | 통과 |
-| DIFFERENT | 바이트·크기값이 바뀜, 또는 실패 코드가 바뀜 | **실패** |
-| REGRESSED | base는 그려졌는데 head는 실패(거절) | **실패** |
+| DIFFERENT | 바이트·크기값이 바뀜, 또는 양쪽 다 실패인데 실패가 달라짐. 개선일 수도 회귀일 수도 있어 비교 시트로 사람이 본다 | 통과(정보, 목록·시트) |
+| CLIPPED | 양쪽 다 그려졌는데 head 그림에 base에는 없던 틀 밖 라벨·도형이 있다(`lib/clip.mjs`: viewBox 밖 1.5px 초과, 이름으로 비교) | **실패** |
+| REGRESSED | base는 그려졌는데 head는 실패하고 그 실패가 학생 화면을 깬다: 잘림·휴대폰 검사 코드이거나 게시 점수표(`ops/score`)가 BLOCK·FAIL_SCORE·WAIT_ENGINE·INDETERMINATE로 보는 코드 | **실패** |
+| MINOR | base는 그려졌고 head는 실패했지만 결함이 게시 점수표가 통과시키는 것(라벨이 조금 가깝다 등)뿐 | 목록만 |
 | NOT_RUN | 실행 못 함 또는 믿을 수 없음: 프로세스 죽음, 시간 초과(단독 재실행 2번 뒤에도), **환경 오류**(문제 그림·페이지·모듈 로드 실패 `QUESTION_IMAGE_LOAD_FAILED`·`PAGE_RENDER_ERROR`·`ENOENT`, 브라우저 실행 실패 등: 양쪽이 같아도), 스냅샷에 저장소에 있는 자산이 없음, 코드 없는 실패 | **실패** |
 | FIXED | base 실패 -> head 통과 | 목록만 |
 | BOTH_FAIL_SAME | 양쪽이 **같은 실패**(code, stage, 중첩 status까지 같음) | 목록만 |
-| REMOVED | 골든 항목이 base에만 있다(분모가 줄었다) | **실패** |
+| REMOVED | 골든 항목이 base에만 있다(분모가 줄었다) | 목록만 |
 | ADDED | 골든 항목이 head에만 있다(비교할 base 없음) | 목록만 |
 
 FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력한다. 부하 때문에 나는 시간 초과(WORKER_TIMEOUT 등)는 그 항목만 단독으로 다시 돌린다(최대 2번, "solo retries"로 출력). 내용 실패는 다시 돌리지 않는다.
@@ -49,7 +58,16 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - 이어 돌기: 항목마다 결과를 저장하므로 중단돼도 끝낸 항목은 캐시에서 나오고 나머지만 돈다. 프로세스가 죽거나 시간이 지나면 끝낸 항목을 거두고 나머지는 단독 재실행한다.
 - 정리: 작업 트리 스냅샷은 하루, 커밋 스냅샷은 2주 안 쓰면 다음 실행 때 지운다. 엔진이 남기는 `.tmp/archive/<runId>`는 한 시간 지난 것을 지운다.
 
-## 걸리는 시간과 현황 (2026-11-23 실측, 커밋 d414970fd2, 이 PC, 슬롯 2, 묶음 10개, 새 캐시)
+## 걸리는 시간 전후 (2026-11-24 실측, 커밋 9000414abf, 이 PC가 다른 작업으로 바쁜 상태, 슬롯 2)
+
+- **전(바이트 게이트, 209 전체)**: main 대 main 한쪽만 렌더(두 쪽 입력이 같아 재사용)에 **1시간 10분**(바쁜 PC; 조용한 PC 41분). 변경이 있는 PR은 양쪽을 렌더하므로 이것의 두 배 안팎이고, 종료 코드는 바이트가 하나라도 달라지면 1, 변경이 없으면 2였다. 이 실행의 결과는 SAME 177, 같은 실패 32, NOT_RUN 0.
+- **후(깨짐만 실패)**:
+  - main 대 main(변경 없음): **3초**, 종료 0 UNAFFECTED, 스냅샷도 풀지 않는다. `--all`로 209 전체를 같은 base로 돌리면 캐시에서 16~22초, 실패 0.
+  - 한 종류의 파일을 바꾼 PR(stat, 23항목): head 렌더 **7분48초~8분39초**, 전체 12~13분(스냅샷 푸는 시간 포함, base는 캐시). 전에는 같은 PR에 바쁜 PC에서 양쪽 합쳐 약 50분(stat 한 쪽 25분 x 2).
+  - 공용 코드를 바꾼 PR(종류마다 6개, 51항목): head 렌더 **12분42초**(`--exam-batch 20`), 전체 약 16분. 전에는 209 전체. 같은 51항목을 묶음 없이 돌리면 항목 시간 합이 29분(슬롯 2에서 약 15분)이라 묶음은 15% 안팎 빠르고, 이 실행에서 바이트는 묶음 없는 base와 51개 모두 같았다.
+- 확인한 판정(임시 변경 후 되돌림): ① 상관없는 변경(base=head) 종료 0 ② stat의 y축 제목을 그림 밖으로 밀면 항목 8개가 `STAT_LABEL_OUT_OF_BOUNDS`(잘림)로 REGRESSED, **종료 1** ③ stat 축 화살표 끝을 0.6px 옮기면 DIFFERENT 10개, **종료 0**, 비교 시트 1장(10쌍, 위 `sheets` 경로).
+
+## 옛 실측 (2026-11-23, 커밋 d414970fd2, 슬롯 2, 묶음 10개, 새 캐시; 바이트 게이트 시절 수치)
 
 - **209 전체, 한쪽 렌더: 40분 49초**(렌더 39분 53초, 21묶음, 단독 재실행 0, 시간 초과 0). 항목 하나는 보통 15~30초이고 오래 걸리는 것은 1~2분이다. 두 쪽을 새로 돌리면 이 시간의 두 배다. 캐시가 모두 맞으면 2초(209개 모두 캐시에서).
 - 결과: **그림이 나온 것(ARCHIVE_BOUND) 146개, 엔진이 거절한 것 63개, 실행 못 한 것(NOT_RUN) 0개.** 거절 63개의 코드별 개수: LAYOUT_INVENTORY_INCOMPLETE 18, UNSUPPORTED_DISPLAY_ENVELOPE 16, STAT_LABEL_OUT_OF_BOUNDS 6, ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL 5(수식을 페이지가 조판하지 못함, MATH_TYPESET_ERROR), NUMBER_LINE_LABEL_TOO_LARGE 4, TEXT_CLIPPED 2, SOLID_LABELS_NO_ROOM 2, TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL 2, 그 밖에 코드마다 1개씩 8종(NUMBER_LINE_LABELS_TOO_CLOSE, PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:axisSqueeze, CONTAINER_LABEL_OUT_OF_BOUNDS, MARK_LEADER_NOT_ON_OWNER, SOLID_DIM_FAR_FROM_SEGMENT, OVERLAY_LINE_OUTSIDE_VIEWPORT:h, COORDINATE_LEADER_PANEL_CONFLICT, SET_ELEMENT_NO_ROOM). 이 63개는 "같은 실패가 계속된다"만 확인한다(BOTH_FAIL_SAME). 바이트 비교는 146개에서 한다.
@@ -62,7 +80,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 
 ## 못 막는 것 (한계)
 
-- 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
+- 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 그림이 없어 새 깨짐을 판정할 수 없다(2026-11-24 main은 32개). 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
 - 수식 조판 실패(MATH_TYPESET_ERROR)는 숙주 시험지(또는 플랜)의 TeX 오류이고 어느 PC에서도 같으므로 환경 오류로 세지 않는다(2026-11-23에는 24 효천고 2학기 기말 고1 q11 해설 1곳 때문에 item134·136·144·145·146이 바이트로 비교되지 못했다. 숙주를 고치면 FIXED로 나온다). 그 밖의 PAGE_RENDER_ERROR는 계속 환경 오류(NOT_RUN)다.
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
@@ -109,7 +127,7 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 3. **예제 plan**: `ops/golden/`에 골든 plan 한 개와 `golden.manifest.json` 항목을 더한다(그 종류를 도는 골든이 없으면 `golden set` 테스트가 실패한다).
 4. **안내 한 쪽**: `production/AUTHOR_GUIDE.md`(생성 소스는 `build-author-guide.mjs`)에 그 종류의 plan 필드 절을 쓴다.
 
-바꾼 뒤에는 `golden-gate.mjs --base origin/main --tests auto`로 기존 골든이 바이트 그대로인지 증명한다(render-plan·standalone-kinds는 공용이라 209개 전체).
+바꾼 뒤에는 `golden-gate.mjs`(--tests auto 선택)로 기존 골든이 깨지지 않았는지 확인한다(render-plan·standalone-kinds는 공용이라 종류마다 표본, 전체는 `--all`).
 
 ## 자리가 모자랄 때: label-room (R1-2)
 
