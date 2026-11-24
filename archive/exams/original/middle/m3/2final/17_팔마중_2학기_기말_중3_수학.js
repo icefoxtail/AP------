@@ -790,14 +790,15 @@ window.examData = {
       "id": 22,
       "layoutTag": "subjective-2up",
       "score": 5.0,
-      "question": "[서술형 2] 오른쪽 그림과 같이 원 $\\mathrm{O}$에 외접하는 $\\square \\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}}$와 원 $\\mathrm{O}$의 접점을 $\\mathrm{E}$라고 하자. $\\angle \\mathrm{B} = 90^\\circ$이고 $\\overline{\\mathrm{AB}} = 6\\text{ cm}$, $\\overline{\\mathrm{AD}} = 10\\text{ cm}$, $\\overline{\\mathrm{CD}} = 12\\text{ cm}$, $\\overline{\\mathrm{CE}} = 4\\text{ cm}$일 때, 원 $\\mathrm{O}$의 넓이를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s02.png\" /><br>(1) $\\overline{\\mathrm{BE}}$의 길이를 구하시오.(3점)<br>(2) 원 $\\mathrm{O}$의 넓이를 구하시오.(2점)",
+      "question": "[서술형 2] 오른쪽 그림과 같이 원 $\\mathrm{O}$에 외접하는 $\\square \\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}}$와 원 $\\mathrm{O}$의 접점을 $\\mathrm{E}$라고 하자. $\\angle \\mathrm{B} = 90^\\circ$이고 $\\overline{\\mathrm{AB}} = 6\\text{ cm}$, $\\overline{\\mathrm{AD}} = 10\\text{ cm}$, $\\overline{\\mathrm{CD}} = 12\\text{ cm}$, $\\overline{\\mathrm{CE}} = 4\\text{ cm}$일 때, 원 $\\mathrm{O}$의 넓이를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"원 O가 사각형 ABCD의 네 변에 접한다. B는 직각이고 AB는 6 cm, AD는 10 cm, CD는 12 cm이다. E는 변 BC 위의 접점이고 CE는 4 cm이다. 그림은 비례하지 않는다.\" style=\"display:block;width:min(100%,420px);height:auto;margin:0 auto;\"><br>(1) $\\overline{\\mathrm{BE}}$의 길이를 구하시오.(3점)<br>(2) 원 $\\mathrm{O}$의 넓이를 구하시오.(2점)",
       "choices": [],
       "answer": "(1) $4\\text{ cm}$; (2) $16\\pi\\text{ cm}^2$",
       "solution": "원에 외접하는 사각형에서 두 쌍의 대변의 길이의 합은 같다.<br>$AB+CD=AD+BC$이다.<br>$6+12=10+BC$이다.<br>$BC=8$ cm이다.<br>(1) $BE=BC-CE$이다.<br>$BE=8-4=4$ cm이다.<br>(2) 원 $O$가 변 $AB$와 접하는 점을 $F$라 하자.<br>$OE\\perp BC$, $OF\\perp AB$이고 $\\angle B=90^\\circ$이므로 사각형 $BEOF$는 직사각형이다.<br>$OE=OF$(반지름)이므로 사각형 $BEOF$는 정사각형이다.<br>따라서 반지름의 길이는 $OE=BE=4$ cm이다.<br>원 $O$의 넓이는 $\\pi\\times4^2=16\\pi$ cm$^2$이다.",
       "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q22-solution.svg",
       "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형(꼭짓점 A, B, C, D)이다. B는 직각이고 AB=6 cm, AD=10 cm, CD=12 cm, BC=8 cm, CE=4 cm가 표시되어 있다. BC와 AB 위의 접점 E, F에서 중심 O로 반지름을 그어 만든 사각형(초록)에 직각 표시가 있다. 길이는 비례하지 않는 설명용 그림이다.",
       "solutionImageCaption": "외접사각형은 두 쌍의 대변의 길이의 합이 같으므로 6+12=10+BC에서 BC=8 cm이다. (1) BE=BC−CE=8−4이다. (2) 초록 사각형은 네 각이 직각이고 OE=OF이므로 정사각형이다. 따라서 반지름은 BE와 같고 넓이는 πr²이다. 정답은 (1) 4 cm, (2) 16π cm²이다.",
-      "solutionImageSize": "full"
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     ,
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-06",
