@@ -249,6 +249,12 @@
     let questions = Array.isArray(frozen?.questions) && frozen.questions.length ? frozen.questions : null;
     if (!questions) {
       questions = await loadExamFile(exam, { fetchImpl, baseUrl });
+    } else if (root.StudentCurrentContent?.overlay) {
+      // 2026-11-24: 출제 사본의 문항도 고쳐졌으면 지금 원본 내용으로(못 읽으면 사본 그대로). 구성·순서는 그대로다.
+      try {
+        const updated = await root.StudentCurrentContent.overlay(questions, { baseUrl, fetchQuestionList: (path, base) => fetchQuestionList(path, { fetchImpl, baseUrl: base }) });
+        if (Array.isArray(updated?.questions) && updated.questions.length === questions.length) questions = updated.questions;
+      } catch (error) { /* 사본 그대로 */ }
     }
     const refresher = root.ArchiveStudentSvgRefresh;
     if (refresher?.refresh && exam?.assignment_id) {
