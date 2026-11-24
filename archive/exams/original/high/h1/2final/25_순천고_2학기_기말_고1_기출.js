@@ -604,7 +604,7 @@ window.questionBank = [
     "content": "$x\\gt3$일 때, $\\dfrac{x-3}{x^2-3x+4}$은 $x=a$에서 최댓값 $b$를 갖는다. $a+b$의 값을 구하시오. [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$\\dfrac{36}{7}$",
-    "solution": "$x>3$이므로 $t=x-3$으로 놓으면 $t>0$이고 $x=t+3$이다.\n분모를 $t$로 나타내면\n$x^2-3x+4=(t+3)^2-3(t+3)+4$\n$=t^2+3t+4$이다.\n따라서 $\\dfrac{x-3}{x^2-3x+4}=\\dfrac{t}{t^2+3t+4}$이다.\n$t>0$이므로 분자와 분모를 각각 $t$로 나누면\n$\\dfrac{t}{t^2+3t+4}=\\dfrac{1}{t+\\dfrac4t+3}$이다.\n분자가 $1$로 일정하므로 분모 $t+\\dfrac4t+3$이 가장 작을 때 분수의 값이 가장 크다.\n$t>0$, $\\dfrac4t>0$이므로 산술평균과 기하평균의 관계에 의하여\n$t+\\dfrac4t\\ge2\\sqrt{t\\times\\dfrac4t}=4$이다.\n등호는 $t=\\dfrac4t$일 때 성립하므로 $t^2=4$에서 $t=2$이다. ($t>0$)\n따라서 분모의 최솟값은 $4+3=7$이고, 분수의 최댓값은 $\\dfrac17$이다.\n$t=2$일 때 $x=t+3=5$이므로 $a=5$, $b=\\dfrac17$이다.\n$a+b=5+\\dfrac17=\\dfrac{36}{7}$이다.",
+    "solution": "$x>3$이므로 $t=x-3$으로 놓으면 $t>0$이고 $x=t+3$이다.\n분모를 $t$로 나타내면\n$x^2-3x+4=(t+3)^2-3(t+3)+4$\n$=t^2+3t+4$이다.\n따라서 $\\dfrac{x-3}{x^2-3x+4}=\\dfrac{t}{t^2+3t+4}$이다.\n$t>0$이므로 분자와 분모를 각각 $t$로 나누어 번분수 꼴로 나타내면\n$\\dfrac{t}{t^2+3t+4}=\\dfrac{1}{\\dfrac{t^2+3t+4}{t}}$\n$=\\dfrac{1}{t+3+\\dfrac4t}$이다.\n분자가 $1$로 일정하므로 분모 $t+3+\\dfrac4t$가 가장 작을 때 분수의 값이 가장 크다.\n$t>0$, $\\dfrac4t>0$이므로 산술평균과 기하평균의 관계에 의하여\n$t+\\dfrac4t\\ge2\\sqrt{t\\times\\dfrac4t}=4$이다.\n등호는 $t=\\dfrac4t$일 때 성립하므로 $t^2=4$에서 $t=2$이다. ($t>0$)\n따라서 분모의 최솟값은 $4+3=7$이고, 분수의 최댓값은 $\\dfrac17$이다.\n$t=2$일 때 $x=t+3=5$이므로 $a=5$, $b=\\dfrac17$이다.\n$a+b=5+\\dfrac17=\\dfrac{36}{7}$이다.",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
