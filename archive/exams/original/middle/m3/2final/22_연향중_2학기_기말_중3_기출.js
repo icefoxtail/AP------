@@ -824,7 +824,9 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q19.png",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q19-problem-visual-v2.svg",
+    "imageAlt": "큰 원의 내부에 점 A에서 내접하는 작은 원이 있고 점 A를 지나는 접선 TT'이 그려져 있다. 큰 원 위의 두 점 B, C를 잇는 선분이 점 D에서 작은 원과 접하며 각 CBA는 30도, 각 BAT'은 70도이고 각 CAD는 x, 각 BCA는 y로 표시되어 있다.",
+    "imageSize": "full",
     "content": "다음 그림에서 직선 $TT'$은 점 $A$에서 두 원과 접하고 현 $BC$는 점 $D$에서 작은 원에 접한다. $\\angle CBA=30^\\circ$, $\\angle BAT'=70^\\circ$일 때, $\\angle y-\\angle x$의 크기를 구하여라.[7점]",
     "choices": [],
     "answer": "$30^\\circ$",

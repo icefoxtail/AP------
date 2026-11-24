@@ -116,7 +116,9 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q03.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q03-problem-visual-v2.svg",
+    "imageAlt": "원 안에서 두 현 AC와 BD가 점 E에서 만난다. 호 AB는 원주의 6분의 1, 호 CD는 원주의 4분의 1이고, 각 DEC의 크기를 x로 나타냈다.",
+    "imageSize": "full",
     "decisiveStep": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
     "primaryMethod": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
     "questionType": "객관식",

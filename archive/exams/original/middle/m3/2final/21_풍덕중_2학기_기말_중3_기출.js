@@ -421,7 +421,9 @@ window.questionBank = [
       "원의 성질",
       "원주각"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q09.png",
+    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q09-problem-visual-v2.svg",
+    "imageAlt": "큰 원 위에 점 A, P, Q, D가 있고 작은 원 위에 점 P, Q, B, C가 있다. 선분 AB는 점 P를, 선분 DC는 점 Q를 지난다. 각 BPQ는 52도, 각 ADQ는 x로 표시되어 있다.",
+    "imageSize": "full",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -575,7 +577,9 @@ window.questionBank = [
       "원의 성질",
       "원주각"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q12.png",
+    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q12-problem-visual-v2.svg",
+    "imageAlt": "원 위에 네 점 A, B, C, D가 있고 두 선분 AD와 BC가 점 E에서 수직으로 만난다. 선분 AB와 선분 AC의 길이는 각각 5cm이고 선분 AE의 길이는 3cm이다.",
+    "imageSize": "full",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",

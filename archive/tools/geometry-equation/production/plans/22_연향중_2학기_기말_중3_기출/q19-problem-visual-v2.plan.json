@@ -1,0 +1,379 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tan",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bc",
+          "tan"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "bis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oa",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pd",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "oa",
+          "pd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sm",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O2",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "O2",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "U"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ",
+    "sm"
+  ],
+  "displaySegments": [
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sATp",
+      "refs": [
+        "A",
+        "U"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "cB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aT",
+        "refs": [
+          "B",
+          "A",
+          "U"
+        ],
+        "value": 70,
+        "label": "70",
+        "factRole": "GIVEN",
+        "labelPlacement": "LEADER",
+        "ring": 3
+      },
+      {
+        "id": "x",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 40,
+        "label": "x",
+        "ring": 1,
+        "labelPlacement": "LEADER",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 70,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "직선 TT'은 점 A에서 큰 원과 작은 원에 동시에 접하고 현 BC는 점 D에서 작은 원에 접한다. 각 CBA는 30도, 각 BAT'은 70도이고 각 CAD는 x, 각 BCA는 y이다.",
+  "accessibilityDescription": "큰 원의 내부에 점 A에서 내접하는 작은 원이 있고 점 A를 지나는 접선 TT'이 그려져 있다. 큰 원 위의 두 점 B, C를 잇는 선분이 점 D에서 작은 원과 접하며 각 CBA는 30도, 각 BAT'은 70도이고 각 CAD는 x, 각 BCA는 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "문제의 조건에 따라 두 원과 접선, 현과 각도의 위치 관계를 나타낸다."
+  ],
+  "hiddenPointNames": [
+    "O",
+    "O2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "pointNames": {
+    "U": "T'"
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 직선 $TT'$은 점 $A$에서 두 원과 접하고 현 $BC$는 점 $D$에서 작은 원에 접한다. $\\angle CBA=30^\\circ$, $\\angle BAT'=70^\\circ$일 때, $\\angle y-\\angle x$의 크기를 구하여라.[7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
