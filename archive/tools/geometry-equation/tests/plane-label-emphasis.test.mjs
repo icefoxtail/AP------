@@ -96,11 +96,13 @@ test('a label stays beside its own arc and own segment: moved away it fails the 
 test('a TEXT or unit trace label is drawn outside its arc and read back (an order sign ㉡, a radius 3cm)',async()=>{
   const traced=clone(marks);
   traced.traces=[{id:'tO',center:'O',radius:{point:'C'},through:['C','D'],spanDeg:30,label:'㉡',labelKind:'TEXT'}];
-  const plan=planOf(traced),result=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
+  // a roomier canvas than the default 640x380: the order sign stands beside point C's name, and whether the two fit on the default canvas is a matter of a pixel or two of measured text width
+  const roomy={canvas:{width:760,height:460}};
+  const plan=planOf(traced,roomy),result=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
   assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));assert.equal(result.staticAudit.planeMarks.status,'PASS',JSON.stringify(result.staticAudit.planeMarks.errors));
   assert.match(groupOf(result.svg,'tO-label'),/data-text="㉡"/);
   const radius=clone(marks);radius.traces=[{id:'tO',center:'O',radius:{point:'C'},through:['C'],spanDeg:30,label:'6',unit:'cm'}];
-  const second=await composeConstructionCandidate({plan:planOf(radius),model,identity,typographyPolicy:policy,browser});
+  const second=await composeConstructionCandidate({plan:planOf(radius,roomy),model,identity,typographyPolicy:policy,browser});
   assert.equal(second.status,'COMPOSED',JSON.stringify(second.detail));assert.equal(second.staticAudit.planeMarks.status,'PASS',JSON.stringify(second.staticAudit.planeMarks.errors));
   assert.match(groupOf(second.svg,'tO-label'),/data-tex="6\\mathrm\{cm\}"/);
   const wrong=await observe(regroup(second.svg,'tO-label',tag=>tag.replace('6\\mathrm{cm}','6\\,\\mathrm{cm}')),{planeMarks:radius});
