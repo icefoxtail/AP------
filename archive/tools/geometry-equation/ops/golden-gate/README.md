@@ -58,7 +58,16 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - 이어 돌기: 항목마다 결과를 저장하므로 중단돼도 끝낸 항목은 캐시에서 나오고 나머지만 돈다. 프로세스가 죽거나 시간이 지나면 끝낸 항목을 거두고 나머지는 단독 재실행한다.
 - 정리: 작업 트리 스냅샷은 하루, 커밋 스냅샷은 2주 안 쓰면 다음 실행 때 지운다. 엔진이 남기는 `.tmp/archive/<runId>`는 한 시간 지난 것을 지운다.
 
-## 걸리는 시간과 현황 (2026-11-23 실측, 커밋 d414970fd2, 이 PC, 슬롯 2, 묶음 10개, 새 캐시)
+## 걸리는 시간 전후 (2026-11-24 실측, 커밋 9000414abf, 이 PC가 다른 작업으로 바쁜 상태, 슬롯 2)
+
+- **전(바이트 게이트, 209 전체)**: main 대 main 한쪽만 렌더(두 쪽 입력이 같아 재사용)에 **1시간 10분**(바쁜 PC; 조용한 PC 41분). 변경이 있는 PR은 양쪽을 렌더하므로 이것의 두 배 안팎이고, 종료 코드는 바이트가 하나라도 달라지면 1, 변경이 없으면 2였다. 이 실행의 결과는 SAME 177, 같은 실패 32, NOT_RUN 0.
+- **후(깨짐만 실패)**:
+  - main 대 main(변경 없음): **3초**, 종료 0 UNAFFECTED, 스냅샷도 풀지 않는다. `--all`로 209 전체를 같은 base로 돌리면 캐시에서 16~22초, 실패 0.
+  - 한 종류의 파일을 바꾼 PR(stat, 23항목): head 렌더 **7분48초~8분39초**, 전체 12~13분(스냅샷 푸는 시간 포함, base는 캐시). 전에는 같은 PR에 바쁜 PC에서 양쪽 합쳐 약 50분(stat 한 쪽 25분 x 2).
+  - 공용 코드를 바꾼 PR(종류마다 6개, 51항목): head 렌더 **12분42초**(`--exam-batch 20`), 전체 약 16분. 전에는 209 전체. 같은 51항목을 묶음 없이 돌리면 항목 시간 합이 29분(슬롯 2에서 약 15분)이라 묶음은 15% 안팎 빠르고, 이 실행에서 바이트는 묶음 없는 base와 51개 모두 같았다.
+- 확인한 판정(임시 변경 후 되돌림): ① 상관없는 변경(base=head) 종료 0 ② stat의 y축 제목을 그림 밖으로 밀면 항목 8개가 `STAT_LABEL_OUT_OF_BOUNDS`(잘림)로 REGRESSED, **종료 1** ③ stat 축 화살표 끝을 0.6px 옮기면 DIFFERENT 10개, **종료 0**, 비교 시트 1장(10쌍, 위 `sheets` 경로).
+
+## 옛 실측 (2026-11-23, 커밋 d414970fd2, 슬롯 2, 묶음 10개, 새 캐시; 바이트 게이트 시절 수치)
 
 - **209 전체, 한쪽 렌더: 40분 49초**(렌더 39분 53초, 21묶음, 단독 재실행 0, 시간 초과 0). 항목 하나는 보통 15~30초이고 오래 걸리는 것은 1~2분이다. 두 쪽을 새로 돌리면 이 시간의 두 배다. 캐시가 모두 맞으면 2초(209개 모두 캐시에서).
 - 결과: **그림이 나온 것(ARCHIVE_BOUND) 146개, 엔진이 거절한 것 63개, 실행 못 한 것(NOT_RUN) 0개.** 거절 63개의 코드별 개수: LAYOUT_INVENTORY_INCOMPLETE 18, UNSUPPORTED_DISPLAY_ENVELOPE 16, STAT_LABEL_OUT_OF_BOUNDS 6, ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL 5(수식을 페이지가 조판하지 못함, MATH_TYPESET_ERROR), NUMBER_LINE_LABEL_TOO_LARGE 4, TEXT_CLIPPED 2, SOLID_LABELS_NO_ROOM 2, TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL 2, 그 밖에 코드마다 1개씩 8종(NUMBER_LINE_LABELS_TOO_CLOSE, PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:axisSqueeze, CONTAINER_LABEL_OUT_OF_BOUNDS, MARK_LEADER_NOT_ON_OWNER, SOLID_DIM_FAR_FROM_SEGMENT, OVERLAY_LINE_OUTSIDE_VIEWPORT:h, COORDINATE_LEADER_PANEL_CONFLICT, SET_ELEMENT_NO_ROOM). 이 63개는 "같은 실패가 계속된다"만 확인한다(BOTH_FAIL_SAME). 바이트 비교는 146개에서 한다.
@@ -71,7 +80,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 
 ## 못 막는 것 (한계)
 
-- 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
+- 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 그림이 없어 새 깨짐을 판정할 수 없다(2026-11-24 main은 32개). 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
 - 수식 조판 실패(MATH_TYPESET_ERROR)는 숙주 시험지(또는 플랜)의 TeX 오류이고 어느 PC에서도 같으므로 환경 오류로 세지 않는다(2026-11-23에는 24 효천고 2학기 기말 고1 q11 해설 1곳 때문에 item134·136·144·145·146이 바이트로 비교되지 못했다. 숙주를 고치면 FIXED로 나온다). 그 밖의 PAGE_RENDER_ERROR는 계속 환경 오류(NOT_RUN)다.
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
@@ -118,7 +127,7 @@ golden-gate는 "SVG 바이트가 그대로인가"만 본다. 바이트가 바뀌
 3. **예제 plan**: `ops/golden/`에 골든 plan 한 개와 `golden.manifest.json` 항목을 더한다(그 종류를 도는 골든이 없으면 `golden set` 테스트가 실패한다).
 4. **안내 한 쪽**: `production/AUTHOR_GUIDE.md`(생성 소스는 `build-author-guide.mjs`)에 그 종류의 plan 필드 절을 쓴다.
 
-바꾼 뒤에는 `golden-gate.mjs --base origin/main --tests auto`로 기존 골든이 바이트 그대로인지 증명한다(render-plan·standalone-kinds는 공용이라 209개 전체).
+바꾼 뒤에는 `golden-gate.mjs`(--tests auto 선택)로 기존 골든이 깨지지 않았는지 확인한다(render-plan·standalone-kinds는 공용이라 종류마다 표본, 전체는 `--all`).
 
 ## 자리가 모자랄 때: label-room (R1-2)
 
