@@ -1,6 +1,314 @@
 {
-  "target": "발문",
-  "type": "svg",
-  "description": "상단 가로 √32-√3, 높이 2√2, 중간 가로 √2+√3, 하단 높이 √2+√3인 계단형 도형",
-  "svg": "<svg viewBox=\"0 0 280 170\" width=\"280\" height=\"170\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"40,30 160,30 160,80 230,80 230,140 40,140\" fill=\"rgba(59,130,246,0.10)\" stroke=\"#111\" stroke-width=\"1.8\"/><text x=\"72\" y=\"22\" font-size=\"12\" fill=\"#111\">√32 - √3</text><text x=\"166\" y=\"58\" font-size=\"12\" fill=\"#111\">2√2</text><text x=\"172\" y=\"74\" font-size=\"12\" fill=\"#111\">√2 + √3</text><text x=\"235\" y=\"115\" font-size=\"12\" fill=\"#111\">√2 + √3</text></svg>"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "F",
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "rA",
+      "refs": [
+        "G",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "sqrt(32)-sqrt(3)"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "2*sqrt(2)"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "sqrt(2)+sqrt(3)"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "sqrt(2)+sqrt(3)"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "직사각형 두 개가 결합된 형태의 다각형에서 각 변의 길이가 주어져 있다.",
+  "accessibilityDescription": "직사각형 두 개가 붙은 계단 모양의 다각형이다. 가장 위쪽 가로변의 길이는 루트 32 빼기 루트 3이고, 왼쪽 위 세로변은 2 루트 2, 왼쪽 아래 세로변은 루트 2 더하기 루트 3이며, 가운데 계단 가로변의 길이는 루트 2 더하기 루트 3이다.",
+  "newVisualInformation": [
+    "가장 위쪽 가로변의 길이는 루트 32 빼기 루트 3이다.",
+    "왼쪽 위 세로변의 길이는 2 루트 2이다.",
+    "왼쪽 아래 세로변의 길이는 루트 2 더하기 루트 3이다.",
+    "가운데 계단 가로변의 길이는 루트 2 더하기 루트 3이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 도형의 넓이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

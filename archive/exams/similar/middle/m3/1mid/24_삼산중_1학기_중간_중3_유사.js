@@ -959,6 +959,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/24_삼산중_1학기_중간_중3_유사/q21-problem.svg",
     "category": "근호를 포함한 식의 계산",
     "standardCourse": "중3",
     "curriculum": "2015",

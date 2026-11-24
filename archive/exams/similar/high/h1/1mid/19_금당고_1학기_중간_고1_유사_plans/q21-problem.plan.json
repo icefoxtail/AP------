@@ -1,4 +1,75 @@
 {
-  "status": "EXEMPT",
-  "reason": "직선과의 교점 조건으로 f(x)를 세우고 표준형 변형 후 구간 내 꼭짓점 최솟값으로 a를 구하는 서술형 문항임"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -2,
+      9,
+      -10,
+      70
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "2",
+        "y": "-6"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "44"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "M",
+        "A",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "7"
+      ],
+      "y": [
+        "-6"
+      ]
+    }
+  },
+  "caption": "이차함수 f(x)의 그래프와 x축 위의 두 점 1과 7, 그리고 함수의 최솟값 -6을 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 이차함수 f(x)의 포물선이 그려져 있다. x축에 1과 7이 표시되어 있고 포물선의 꼭짓점에 해당하는 최솟값 -6이 y축에 표시되어 있다.",
+  "newVisualInformation": [
+    "이차함수 f(x)의 개형과 x=1, x=7 및 최솟값 -6의 위치 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형 1> 최고차항의 계수가 $a$ ($a>0$)인 이차함수 $f(x)$가 다음 조건을 만족시킨다. (가) 직선 $y=4ax-12$와 함수 $y=f(x)$의 그래프가 만나는 두 점의 $x$좌표는 $1$과 $7$이다. (나) $1\\le x\\le 7$에서 $f(x)$의 최솟값은 $-6$이다. $10\\times a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

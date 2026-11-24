@@ -1,12 +1,393 @@
 {
-  "target": "넓이 비 9:4:1인 세 정사각형 A, B, C를 아래쪽 변을 맞춰 이어 붙인 계단형 도형",
-  "type": "svg",
-  "width": 320,
-  "height": 180,
-  "elements": [
-    "정사각형 A (한 변 108px), 정사각형 B (한 변 72px), 정사각형 C (한 변 36px)",
-    "모두 밑변 y=155에 맞춰 빈틈없이 붙어 있는 형태",
-    "각 정사각형 중앙에 A, B, C 라벨"
+  "capability": "construction-spike-v1",
+  "caption": "밑변이 나란히 이어 붙여진 세 정사각형 A, B, C를 나타낸 그림이다.",
+  "accessibilityDescription": "밑변이 일직선 위에 놓인 세 정사각형 A, B, C가 왼쪽부터 차례로 이어 붙어 있다. 가장 왼쪽의 정사각형 A가 가장 크고, 가운데 정사각형 B는 중간 크기이며, 가장 오른쪽의 정사각형 C가 가장 작다.",
+  "newVisualInformation": [
+    "세 정사각형 A, B, C의 밑변이 일직선 위에 놓여 이어 붙여져 있다."
   ],
-  "svgCode": "<svg viewBox=\"0 0 320 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"40\" y=\"47\" width=\"108\" height=\"108\" fill=\"#e8f1fb\" stroke=\"#1a5fb4\" stroke-width=\"1.8\"/>\n  <rect x=\"148\" y=\"83\" width=\"72\" height=\"72\" fill=\"#f0fdf4\" stroke=\"#15803d\" stroke-width=\"1.8\"/>\n  <rect x=\"220\" y=\"119\" width=\"36\" height=\"36\" fill=\"#fefce8\" stroke=\"#b45309\" stroke-width=\"1.8\"/>\n  <text x=\"94\" y=\"106\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#1a5fb4\">A</text>\n  <text x=\"184\" y=\"124\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"#15803d\">B</text>\n  <text x=\"238\" y=\"142\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#b45309\">C</text>\n</svg>"
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9"
+  ],
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP0P9",
+      "refs": [
+        "P0",
+        "P9"
+      ]
+    },
+    {
+      "id": "sP9P8",
+      "refs": [
+        "P9",
+        "P8"
+      ]
+    },
+    {
+      "id": "sP8P7",
+      "refs": [
+        "P8",
+        "P7"
+      ]
+    },
+    {
+      "id": "sP7P1",
+      "refs": [
+        "P7",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP0P1",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP7P6",
+      "refs": [
+        "P7",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP6P5",
+      "refs": [
+        "P6",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP5P2",
+      "refs": [
+        "P5",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP5P4",
+      "refs": [
+        "P5",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4P3",
+      "refs": [
+        "P4",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 그림과 같이 넓이의 비가 $9:4:1$인 세 정사각형 $A, B, C$를 빈틈없이 겹치지 않게 이어 붙인 도형의 넓이가 $70\\text{ cm}^2$일 때, 다음 물음에 답하시오. [8점]\n\n(1) 세 정사각형 $A, B, C$의 넓이와 한 변의 길이를 각각 구하시오. (6점) (2) 이 도형의 전체 둘레의 길이를 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

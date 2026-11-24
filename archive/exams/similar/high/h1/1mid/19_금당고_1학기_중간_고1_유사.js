@@ -906,6 +906,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/19_금당고_1학기_중간_고1_유사/q21-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "수학(상)",
     "curriculum": "2015",

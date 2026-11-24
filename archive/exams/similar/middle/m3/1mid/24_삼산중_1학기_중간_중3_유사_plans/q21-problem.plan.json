@@ -1,4 +1,315 @@
 {
-  "status": "EXEMPT",
-  "reason": "정사각형 넓이의 무리수 변환 및 수직선 좌표 산출, 분모 유리화 서술형 문항"
+  "capability": "construction-spike-v1",
+  "caption": "수직선 위의 점 A와 이를 한 변으로 하는 정사각형, 그리고 점 A의 좌우에 위치한 두 점 P와 Q를 나타낸 그림이다.",
+  "accessibilityDescription": "수직선 위에 수 3에 대응하는 점 A가 있고, 선분 AP를 밑변으로 하는 정사각형이 위에 놓여 있다. 점 A의 왼쪽에는 점 Q가 있으며 선분 QA와 선분 AP는 길이가 같게 표시되어 있다.",
+  "newVisualInformation": [
+    "수직선 위의 점 A에 수 3이 대응하고, 점 A를 한 꼭짓점으로 하는 정사각형과 점 P, Q가 수직선 위에 놓여 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TickA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "P",
+    "Q",
+    "C",
+    "D",
+    "X1",
+    "X2",
+    "TickA"
+  ],
+  "hiddenPointNames": [
+    "C",
+    "D",
+    "X1",
+    "X2",
+    "TickA"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sX1Q",
+      "refs": [
+        "X1",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPX2",
+      "refs": [
+        "P",
+        "X2"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sTickA",
+      "refs": [
+        "A",
+        "TickA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sQA",
+          "sAP",
+          "sCP",
+          "sDC",
+          "sAD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl3",
+        "ownerSegment": "sTickA",
+        "text": "3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "C",
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "D",
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 1] 수직선 위의 점 $A$는 수 $3$에 대응한다. 넓이가 $12$인 정사각형의 한 변의 길이만큼 점 $A$에서 오른쪽으로 이동한 점을 $P$, 왼쪽으로 이동한 점을 $Q$라 한다. 점 $P, Q$에 대응하는 수가 각각 $a, b$일 때, $\\dfrac{b}{a}$의 값을 구하는 과정을 서술하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
