@@ -501,6 +501,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/22_복성고_1학기_중간_고1_유사/q12-problem.svg",
     "category": "직선 사이의 거리와 각",
     "standardCourse": "수학(상)",
     "curriculum": "2015",
@@ -897,6 +898,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/22_복성고_1학기_중간_고1_유사/q21-problem.svg",
     "category": "직선 사이의 거리와 각",
     "standardCourse": "수학(상)",
     "curriculum": "2015",

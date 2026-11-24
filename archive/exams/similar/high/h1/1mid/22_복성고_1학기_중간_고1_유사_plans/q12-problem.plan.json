@@ -1,37 +1,216 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
-  "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -6,
-      6
-    ],
-    "viewport": [
-      -6,
-      6,
-      -5,
-      5
-    ],
-    "pieces": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
       {
-        "domain": [
-          -6,
-          6
-        ],
-        "coefficients": [
-          "1/4",
-          "-5/12"
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "Q1",
+    "Q2",
+    "D1",
+    "D2"
+  ],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "Q1",
+    "Q2",
+    "D1",
+    "D2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sQ1Q2",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sP1P2",
+          "sQ1Q2"
         ]
       }
     ],
-    "referenceLines": [
+    "expressionLabels": [
       {
-        "slope": "-5/12",
-        "intercept": "-23/12",
-        "label": "5x+12y+23=0"
+        "id": "lP",
+        "ownerSegment": "sP1P2",
+        "text": "5x+12y-3=0",
+        "labelAt": "START"
+      },
+      {
+        "id": "lQ",
+        "ownerSegment": "sQ1Q2",
+        "text": "5x+12y+k=0",
+        "labelAt": "START"
       }
     ],
-    "requiredPoints": []
+    "dimensions": [
+      {
+        "id": "dDist",
+        "from": "D1",
+        "to": "D2",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "value": 2
+      }
+    ]
   },
-  "caption": "평행한 두 직선 5x+12y-3=0과 5x+12y+23=0 사이의 거리 2"
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "평행한 두 직선 5x+12y-3=0과 5x+12y+k=0 사이의 거리가 2임을 나타낸다.",
+  "accessibilityDescription": "평행한 두 가로 직선이 있고 위쪽 직선에는 5x+12y-3=0, 아래쪽 직선에는 5x+12y+k=0이 적혀 있으며 두 직선 사이의 거리는 화살표 치수선으로 2로 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직선이 평행하다.",
+    "두 직선 사이의 거리는 2이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행한 두 직선 $5x+12y-3=0$, $5x+12y+k=0$ 사이의 거리가 $2$일 때, 가능한 상수 $k$의 값들의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

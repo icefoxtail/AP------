@@ -1,12 +1,332 @@
 {
-  "target": "왼쪽 아래 넓이 18 m^2 정사각형 밭, 오른쪽 위 넓이 48 m^2 정사각형 밭이 한 꼭짓점에서 만나고 그 사이 오른쪽 아래에 직사각형 화단이 놓인 도형",
-  "type": "svg",
-  "width": 260,
-  "height": 200,
-  "elements": [
-    "왼쪽 아래 정사각형 (18 m^2)",
-    "오른쪽 위 정사각형 (48 m^2)",
-    "두 정사각형 변에 맞닿은 오른쪽 아래 직사각형 화단"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
   ],
-  "svgCode": "<svg viewBox=\"0 0 260 200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"30\" y=\"105\" width=\"75\" height=\"75\" fill=\"#fef3c7\" stroke=\"#92400e\" stroke-width=\"1.8\"/>\n  <rect x=\"105\" y=\"15\" width=\"120\" height=\"90\" fill=\"#fef3c7\" stroke=\"#92400e\" stroke-width=\"1.8\"/>\n  <rect x=\"105\" y=\"105\" width=\"120\" height=\"75\" fill=\"#dcfce7\" stroke=\"#166534\" stroke-width=\"1.8\"/>\n  <text x=\"67.5\" y=\"147\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#78350f\">18 m²</text>\n  <text x=\"165\" y=\"65\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#78350f\">48 m²</text>\n  <text x=\"165\" y=\"147\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#14532d\">화단</text>\n</svg>"
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s14",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "id": "s43",
+      "refs": [
+        "P4",
+        "P3"
+      ]
+    },
+    {
+      "id": "s32",
+      "refs": [
+        "P3",
+        "P2"
+      ]
+    },
+    {
+      "id": "s21",
+      "refs": [
+        "P2",
+        "P1"
+      ]
+    },
+    {
+      "id": "s37",
+      "refs": [
+        "P3",
+        "P7"
+      ]
+    },
+    {
+      "id": "s76",
+      "refs": [
+        "P7",
+        "P6"
+      ]
+    },
+    {
+      "id": "s65",
+      "refs": [
+        "P6",
+        "P5"
+      ]
+    },
+    {
+      "id": "s53",
+      "refs": [
+        "P5",
+        "P3"
+      ]
+    },
+    {
+      "id": "s28",
+      "refs": [
+        "P2",
+        "P8"
+      ]
+    },
+    {
+      "id": "s85",
+      "refs": [
+        "P8",
+        "P5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P3",
+              "P4"
+            ]
+          }
+        ],
+        "label": "18",
+        "unit": "m^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rg2",
+        "fill": "GREEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P3",
+              "P5",
+              "P6",
+              "P7"
+            ]
+          }
+        ],
+        "label": "48",
+        "unit": "m^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rgFlower",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "P2",
+              "P8",
+              "P5",
+              "P3"
+            ]
+          }
+        ],
+        "label": "화단",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 정사각형 모양의 밭과 이에 이웃한 직사각형 모양의 화단을 나타낸 그림이다.",
+  "accessibilityDescription": "넓이가 18 제곱미터인 정사각형 모양의 밭과 넓이가 48 제곱미터인 정사각형 모양의 밭에 이웃하여 직사각형 모양의 화단이 접해 있다.",
+  "newVisualInformation": [
+    "두 밭의 넓이는 각각 18 제곱미터와 48 제곱미터이다.",
+    "화단은 두 밭에 이웃하여 맞닿아 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 넓이가 각각 $18\\text{ m}^2$, $48\\text{ m}^2$인 두 정사각형 모양의 밭에 이웃하여 직사각형 모양의 화단을 만들었다. 이때 화단의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

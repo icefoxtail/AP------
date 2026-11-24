@@ -1,6 +1,596 @@
 {
-  "target": "발문",
-  "type": "svg",
-  "description": "넓이가 절반씩 줄어드는 네 정사각형 A, B, C, D가 가로로 나란히 맞닿아 있는 그림",
-  "svg": "<svg viewBox=\"0 0 320 130\" width=\"320\" height=\"130\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"16\" width=\"96\" height=\"96\" fill=\"rgba(59,130,246,0.10)\" stroke=\"#111\" stroke-width=\"1.8\"/><rect x=\"116\" y=\"44\" width=\"68\" height=\"68\" fill=\"rgba(16,185,129,0.10)\" stroke=\"#111\" stroke-width=\"1.8\"/><rect x=\"184\" y=\"64\" width=\"48\" height=\"48\" fill=\"rgba(245,158,11,0.10)\" stroke=\"#111\" stroke-width=\"1.8\"/><rect x=\"232\" y=\"78\" width=\"34\" height=\"34\" fill=\"rgba(239,68,68,0.10)\" stroke=\"#111\" stroke-width=\"1.8\"/><text x=\"62\" y=\"68\" font-size=\"15\" font-weight=\"bold\" fill=\"#1d4ed8\">A</text><text x=\"144\" y=\"83\" font-size=\"14\" font-weight=\"bold\" fill=\"#047857\">B</text><text x=\"202\" y=\"93\" font-size=\"13\" font-weight=\"bold\" fill=\"#b45309\">C</text><text x=\"244\" y=\"100\" font-size=\"12\" font-weight=\"bold\" fill=\"#dc2626\">D</text></svg>"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "D1",
+    "D2",
+    "D3",
+    "D4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA3A4",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA4A1",
+      "refs": [
+        "A4",
+        "A1"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2B3",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3B4",
+      "refs": [
+        "B3",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB4B1",
+      "refs": [
+        "B4",
+        "B1"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2C3",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3C4",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "id": "sC4C1",
+      "refs": [
+        "C4",
+        "C1"
+      ]
+    },
+    {
+      "id": "sD1D2",
+      "refs": [
+        "D1",
+        "D2"
+      ]
+    },
+    {
+      "id": "sD2D3",
+      "refs": [
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "id": "sD3D4",
+      "refs": [
+        "D3",
+        "D4"
+      ]
+    },
+    {
+      "id": "sD4D1",
+      "refs": [
+        "D4",
+        "D1"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "D1",
+    "D2",
+    "D3",
+    "D4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "label": "A",
+        "labelAt": [
+          -2,
+          3
+        ],
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "A2",
+              "A3",
+              "A4"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "B1",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "label": "B",
+        "labelAt": [
+          0,
+          3
+        ],
+        "shapes": [
+          {
+            "polygon": [
+              "B1",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "C1",
+              "C2",
+              "C3",
+              "C4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "label": "C",
+        "labelAt": [
+          -1,
+          1.5
+        ],
+        "shapes": [
+          {
+            "polygon": [
+              "C1",
+              "C2",
+              "C3",
+              "C4"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "D1",
+              "D2",
+              "D3",
+              "D4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rD",
+        "fill": "WARM",
+        "label": "D",
+        "labelAt": [
+          0,
+          0
+        ],
+        "shapes": [
+          {
+            "polygon": [
+              "D1",
+              "D2",
+              "D3",
+              "D4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "네 개의 정사각형 A, B, C, D가 바깥쪽에서부터 각 변의 중점을 연결하여 차례대로 안쪽에 만들어진 모습이다.",
+  "accessibilityDescription": "가장 바깥의 정사각형 A 안에 각 변의 중점을 꼭짓점으로 하는 정사각형 B가 있고 그 안에 정사각형 C와 D가 차례로 중점을 연결하여 중첩되어 있다.",
+  "newVisualInformation": [
+    "정사각형 A, B, C, D가 바깥쪽에서 안쪽으로 갈수록 크기가 절반씩 줄어들며 겹쳐 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족할 때, 도형 $D$의 한 변의 길이는? [4점]\n\n(가) $A, B, C, D$는 모두 정사각형이다. (나) $A$의 넓이는 $B$의 넓이의 $2$배이다. (다) $B$의 넓이는 $C$의 넓이의 $2$배이다. (라) $C$의 넓이는 $D$의 넓이의 $2$배이다. (마) $A$의 넓이는 $4,\\mathrm{cm}^2$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

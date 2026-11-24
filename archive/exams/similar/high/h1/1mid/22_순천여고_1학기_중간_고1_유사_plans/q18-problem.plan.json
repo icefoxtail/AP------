@@ -1,85 +1,219 @@
 {
-  "capability": "plane",
-  "title": "직각삼각형 ABC 내부의 사다리꼴 PQCR",
-  "points": [
-    {
-      "id": "A",
-      "x": 0,
-      "y": 0,
-      "label": "A"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "B",
-      "x": 10,
-      "y": 0,
-      "label": "B"
-    },
-    {
-      "id": "C",
-      "x": 0,
-      "y": 17.32,
-      "label": "C"
-    },
-    {
-      "id": "P",
-      "x": 2,
-      "y": 0,
-      "label": "P"
-    },
-    {
-      "id": "R",
-      "x": 0,
-      "y": 3.46,
-      "label": "R"
-    },
-    {
-      "id": "Q",
-      "x": 8,
-      "y": 3.46,
-      "label": "Q"
-    }
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lnBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lnBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R"
   ],
-  "segments": [
+  "displaySegments": [
     {
       "id": "sAB",
-      "from": "A",
-      "to": "B",
-      "label": "10"
+      "refs": [
+        "A",
+        "B"
+      ]
     },
     {
       "id": "sBC",
-      "from": "B",
-      "to": "C"
+      "refs": [
+        "B",
+        "C"
+      ]
     },
     {
       "id": "sCA",
-      "from": "C",
-      "to": "A"
+      "refs": [
+        "C",
+        "A"
+      ]
     },
     {
       "id": "sPR",
-      "from": "P",
-      "to": "R"
+      "refs": [
+        "P",
+        "R"
+      ]
     },
     {
       "id": "sPQ",
-      "from": "P",
-      "to": "Q"
+      "refs": [
+        "P",
+        "Q"
+      ]
     }
   ],
   "rightAngles": [
     {
-      "vertex": "A",
-      "p1": "C",
-      "p2": "B"
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
     },
     {
-      "vertex": "Q",
-      "p1": "P",
-      "p2": "C"
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "C"
+      ]
     }
   ],
   "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ],
     "parallels": [
       {
         "id": "p1",
@@ -89,7 +223,27 @@
           "sBC"
         ]
       }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
     ]
   },
-  "caption": "직각삼각형 ABC에서 평행선 PR과 수선 PQ로 만든 사다리꼴 PQCR"
+  "caption": "각 A가 90도, 각 B가 60도이고 선분 AB의 길이가 10인 직각삼각형 ABC 내부의 평행선 PR과 수선 PQ로 만든 사각형 PQCR",
+  "accessibilityDescription": "각 A가 직각이고 각 B가 60도인 직각삼각형 ABC에서 선분 AB의 길이가 10으로 표시되어 있다. 변 AB 위의 점 P에서 변 BC에 내린 수선의 발 Q와 변 BC에 평행한 선분 PR이 변 AC와 만나는 점 R이 표시되어 사각형 PQCR을 이룬다.",
+  "newVisualInformation": [
+    "각 A가 90도이고 각 B가 60도이며 선분 AB의 길이가 10인 직각삼각형 ABC",
+    "변 AB 위의 점 P에서 변 BC에 내린 수선 PQ와 평행선 PR로 만든 사각형 PQCR"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle A=90^\\circ$, $\\angle B=60^\\circ$이고 $\\overline{AB}=10$인 직각삼각형 $ABC$가 있다. 변 $AB$ 위의 한 점 $P$에서 변 $BC$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 변 $BC$와 평행한 직선이 변 $AC$와 만나는 점을 $R$이라 하자. 사각형 $PQCR$의 넓이의 최댓값을 구하면? (단, 점 $P$는 꼭짓점 $A$와 꼭짓점 $B$가 아니다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

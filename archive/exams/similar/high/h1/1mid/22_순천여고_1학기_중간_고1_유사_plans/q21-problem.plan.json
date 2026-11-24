@@ -1,23 +1,9 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -5,
-      3
-    ],
-    "viewport": [
-      -5,
-      4,
-      -10,
-      6
-    ],
+    "family": "piecewise-polynomial",
     "pieces": [
       {
-        "domain": [
-          -5,
-          3
-        ],
         "coefficients": [
           "-8",
           "2",
@@ -25,26 +11,70 @@
         ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -7,
+      5,
+      -12,
+      8
+    ],
+    "functionName": "f",
     "requiredPoints": [
       {
         "id": "A",
-        "x": "-4",
-        "y": "0",
-        "label": "(-4, 0)"
+        "x": -4,
+        "y": 0,
+        "marker": "NONE"
       },
       {
         "id": "B",
-        "x": "2",
-        "y": "0",
-        "label": "(2, 0)"
+        "x": 2,
+        "y": 0,
+        "marker": "NONE"
       },
       {
         "id": "V",
-        "x": "-1",
-        "y": "-9",
-        "label": "(-1, -9)"
+        "x": -1,
+        "y": -9,
+        "marker": "NONE"
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "2"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "V"
+      ]
+    }
   },
-  "caption": "x축과 (-4, 0), (2, 0)에서 만나고 최솟값이 -9인 이차함수 y=f(x)"
+  "caption": "x축과 두 점 (-4, 0), (2, 0)에서 만나는 이차함수 y=f(x)의 그래프",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 이차함수 y=f(x)의 그래프가 그려져 있고 x축과 만나는 두 점의 눈금 -4와 2가 표시되어 있다.",
+  "newVisualInformation": [
+    "x축과 -4, 2에서 만나는 아래로 볼록한 이차함수 y=f(x)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$의 그래프가 그림과 같이 $x$축과 두 점 $(-4, 0)$, $(2, 0)$에서 만나고 이 이차함수의 최솟값이 $-9$일 때, $f(4)$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

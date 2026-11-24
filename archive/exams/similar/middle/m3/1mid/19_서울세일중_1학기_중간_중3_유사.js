@@ -284,6 +284,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/19_서울세일중_1학기_중간_중3_유사/q07-problem.svg",
     "category": "근호를 포함한 식의 계산",
     "standardCourse": "중3",
     "curriculum": "2015",

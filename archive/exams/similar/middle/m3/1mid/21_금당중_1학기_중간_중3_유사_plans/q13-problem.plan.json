@@ -1,12 +1,490 @@
 {
-  "target": "넓이가 절반씩 줄어드는 네 정사각형 A, B, C, D를 밑변에 맞춰 이어 붙인 도형",
-  "type": "svg",
-  "width": 340,
-  "height": 160,
-  "elements": [
-    "정사각형 A(한 변 100px), B(71px), C(50px), D(35px)",
-    "모두 밑변 y=140에 맞춰 나란히 배치",
-    "각 정사각형 내부에 A, B, C, D 라벨"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "62"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "72"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "72"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "62"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "62"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10",
+    "P11",
+    "P12"
   ],
-  "svgCode": "<svg viewBox=\"0 0 340 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"35\" y=\"40\" width=\"100\" height=\"100\" fill=\"#e8f1fb\" stroke=\"#1a5fb4\" stroke-width=\"1.6\"/>\n  <rect x=\"135\" y=\"69\" width=\"71\" height=\"71\" fill=\"#f0fdf4\" stroke=\"#15803d\" stroke-width=\"1.6\"/>\n  <rect x=\"206\" y=\"90\" width=\"50\" height=\"50\" fill=\"#fefce8\" stroke=\"#b45309\" stroke-width=\"1.6\"/>\n  <rect x=\"256\" y=\"105\" width=\"35\" height=\"35\" fill=\"#fef2f2\" stroke=\"#c01c28\" stroke-width=\"1.6\"/>\n  <text x=\"85\" y=\"95\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"#1a5fb4\">A</text>\n  <text x=\"170\" y=\"109\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#15803d\">B</text>\n  <text x=\"231\" y=\"120\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#b45309\">C</text>\n  <text x=\"273\" y=\"127\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#c01c28\">D</text>\n</svg>"
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "P3",
+        "P6"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P6",
+        "P7"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "P7",
+        "P8"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "P2",
+        "P8"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "P8",
+        "P9"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "P9",
+        "P10"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "P1",
+        "P10"
+      ]
+    },
+    {
+      "id": "s13",
+      "refs": [
+        "P10",
+        "P11"
+      ]
+    },
+    {
+      "id": "s14",
+      "refs": [
+        "P11",
+        "P12"
+      ]
+    },
+    {
+      "id": "s15",
+      "refs": [
+        "P12",
+        "P0"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P0",
+              "P1",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ],
+        "label": "A"
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P8",
+              "P9",
+              "P10"
+            ]
+          }
+        ],
+        "label": "B"
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P2",
+              "P3",
+              "P6",
+              "P7",
+              "P8"
+            ]
+          }
+        ],
+        "label": "C"
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P3",
+              "P4",
+              "P5",
+              "P6"
+            ]
+          }
+        ],
+        "label": "D"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 320
+  },
+  "caption": "네 개의 정사각형 A, B, C, D를 밑변이 일직선이 되도록 차례로 이어 붙인 도형이다.",
+  "accessibilityDescription": "크기가 서로 다른 네 개의 정사각형 A, B, C, D가 왼쪽부터 오른쪽으로 밑변을 맞추어 나란히 이어 붙여져 있다.",
+  "newVisualInformation": [
+    "네 정사각형 A, B, C, D의 밑변이 일직선 위에 놓여 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 네 개의 정사각형 $A, B, C, D$를 나란히 이어 붙여서 새로운 도형을 만들었다. $A$의 넓이는 $B$의 넓이의 $2$배, $B$의 넓이는 $C$의 넓이의 $2$배, $C$의 넓이는 $D$의 넓이의 $2$배이고 $A$의 넓이가 $32$일 때, 이 도형의 둘레의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
