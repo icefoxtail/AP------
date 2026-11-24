@@ -1,0 +1,142 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "pi/6",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "caption": "삼각형 ABC에서 변 AB의 길이가 10이고 각 C의 크기가 6분의 파이인 것을 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC가 있고 변 AB의 길이는 10으로, 각 C는 6분의 파이로 표시되어 있다.",
+  "newVisualInformation": [
+    "변 AB의 길이는 10이다.",
+    "각 ACB의 크기는 6분의 파이이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 $\\overline{AB} = 10$, $\\angle ACB = \\frac{\\pi}{6}$일 때, 삼각형 $ABC$의 외접원의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

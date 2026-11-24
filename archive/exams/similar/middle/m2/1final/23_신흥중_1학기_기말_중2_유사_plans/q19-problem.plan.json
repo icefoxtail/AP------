@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "nb",
+          "text": "y=-bx+a",
+          "labelKind": "MATH",
+          "curveX": "1",
+          "labelValues": {
+            "a": "2",
+            "b": "1"
+          }
+        }
+      ]
+    }
+  },
+  "caption": "a가 양수이고 b가 양수일 때 일차함수 y=-bx+a의 그래프이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있는 좌표평면에 일차함수 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "일차함수 y=-bx+a의 개형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$a>0$, $b>0$일 때, 다음 중 일차함수 $y=-bx+a$의 그래프에 대한 설명으로 알맞은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

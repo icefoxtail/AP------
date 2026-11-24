@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1000",
+          "250"
+        ]
+      }
+    ],
+    "domain": [
+      4,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "4",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "8",
+        "y": "1000"
+      },
+      {
+        "id": "P2",
+        "x": "10",
+        "y": "1500"
+      }
+    ],
+    "axisScale": {
+      "x": "1",
+      "y": "1/60"
+    },
+    "axisTickValues": {
+      "x": [
+        "4",
+        "8",
+        "10"
+      ],
+      "y": [
+        "1000",
+        "1500"
+      ]
+    }
+  },
+  "caption": "동생이 출발한 지 x분 후에 형이 이동한 거리 y m를 나타낸 그래프이다.",
+  "accessibilityDescription": "가로축은 시간(분), 세로축은 거리(m)이며, 점 (4, 0)에서 시작하여 점 (8, 1000)을 지나 점 (10, 1500)까지 이어지는 선분이 그려져 있다.",
+  "newVisualInformation": [
+    "형의 이동 거리를 나타낸 선분이 점 (4, 0)과 점 (10, 1500)을 잇는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 $1500\\text{ m}$ 떨어진 공원까지 가는데 동생은 걸어서 가고, 형은 동생이 출발한 지 $4$분 후에 킥보드를 타고 출발하였다. 형은 출발한 지 $6$분 만에 공원에 도착하였다. 형과 동생이 집에서 $1000\\text{ m}$ 떨어진 지점에서 만났다면, 동생이 공원까지 가는 데 걸린 시간은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The brother starts 4 minutes after the younger brother and arrives at 1500m at 10 minutes."
+  ]
+}
