@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "판정",
+      "children": [
+        {
+          "label": "ㄱ 참"
+        },
+        {
+          "label": "ㄴ 거짓"
+        },
+        {
+          "label": "ㄷ 거짓"
+        }
+      ]
+    },
+    "highlightPaths": [
+      [
+        "ㄱ 참"
+      ]
+    ]
+  },
+  "caption": "신뢰구간의 길이는 2zσ/√n이므로 n이 일정할 때 신뢰도 α가 커지면 z가 커져 길이도 커진다. n이 작아지면 길이는 커지고, α가 커져도 길이는 커지므로 ㄴ은 거짓이다. n이 작아지면 길이는 커지지만 α가 작아지면 길이는 작아지므로 두 변화가 함께 있을 때 길이가 반드시 작아진다고 할 수 없어 ㄷ도 거짓이다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "세 명제 ㄱ, ㄴ, ㄷ의 참·거짓 판정을 한눈에 보여 주는 수형도",
+    "ㄱ만 참이고 ㄴ, ㄷ은 거짓임을 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $\\alpha\\%$의 신뢰구간은 $a\\le m\\le b$이다. 보기에서 옳은 것만을 있는 대로 고른 것은? (4.3점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $n$의 값이 일정하고 $\\alpha$의 값이 커지면, $b-a$의 값은 커진다.</td></tr><tr><td>ㄴ. $n$의 값이 작아지고 $\\alpha$의 값이 커지면, $b-a$의 값은 작아진다.</td></tr><tr><td>ㄷ. $n$의 값이 작아지고 $\\alpha$의 값이 작아지면, $b-a$의 값은 작아진다.</td></tr></tbody></table></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

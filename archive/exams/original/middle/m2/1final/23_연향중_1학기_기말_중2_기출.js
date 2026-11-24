@@ -1630,7 +1630,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 f와 g가 점 (1, 4)에서 만나고, 그 교점의 좌표가 점 옆에 적혀 있다.",
+    "solutionImageCaption": "그림의 두 직선 f, g는 각각 y=(5x+11)/4와 y=(7x+1)/2이고 점 (1, 4)에서 만난다. (1, 4)를 두 식에 대입하면 a−8b=11, −a+4b=−3이고, 두 식을 더하면 b=−2, a=−5이다. 따라서 b−a=−2−(−5)=3이다. 따라서 답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

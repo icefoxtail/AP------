@@ -457,7 +457,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 빗변의 길이가 1인 직각삼각형이 있고, 한 예각이 θ로 표시되어 있다. 세 변 옆에 cosθ, sinθ, 1이 적혀 있다.",
+    "solutionImageCaption": "각 변환 공식으로 a=cosθ+sinθ−sinθ+cosθ=2cosθ이고, b=(cosθ+sinθ)²+2sinθ−2sinθcosθ−1=2sinθ이다. 따라서 a²+b²=4cos²θ+4sin²θ=4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -610,7 +614,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 t축 위에 이차함수 k = -t² - t + 2의 그래프가 아래로 볼록한 모양으로 그려져 있고, 꼭짓점에 최대 9/4, 오른쪽 끝에 1과 0, 왼쪽 끝에 -1과 2가 표시된 그림이다.",
+    "solutionImageCaption": "sin x = t로 치환하면 -1 ≤ t ≤ 1이고, 주어진 식은 k = -t² - t + 2가 된다. 이 이차함수는 t = -1/2에서 최대 9/4, t = 1에서 최소 0이므로 k의 범위는 0 ≤ k ≤ 9/4이다. 따라서 b - a = 9/4 - 0 = 9/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

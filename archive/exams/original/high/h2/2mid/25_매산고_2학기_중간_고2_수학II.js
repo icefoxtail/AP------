@@ -612,7 +612,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프가 두 극값 점 E, F를 지나고, 그래프 위의 두 점 A, B를 잇는 직선 t가 그려져 있다. A, B, E, F가 표시되어 있다.",
+    "solutionImageCaption": "조건 (가)에서 f′(x)=3x²+k이고 평균변화율과 미분계수가 같다는 식을 정리하면 g(x)=−2x이다. 조건 (나)에서 (3x²+k)(12x²+k)=k²이므로 36x⁴+15kx²=0이고, 영이 아닌 두 근의 곱은 5k/12이다. 5k/12=−5에서 k=−12이므로 k/12=−1이고 g(−1)=2이다. 따라서 답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];
 })();

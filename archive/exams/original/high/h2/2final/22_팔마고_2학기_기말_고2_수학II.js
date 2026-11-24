@@ -159,7 +159,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 그래프가 세 개의 이차곡선 조각으로 이어져 있고, x축과 네 점 A, C, E, G에서 만난다. B와 F에서는 아래로 볼록한 극소, D에서는 위로 볼록한 극대를 이룬다.",
+    "solutionImageCaption": "도함수 f′(x)의 부호가 A에서 +에서 −로, C에서 −에서 +로, E에서 +에서 −로, G에서 −에서 +로 바뀐다. 따라서 f는 A, E에서 극대이고 C, G에서 극소이므로 극값은 네 개다. D는 f′의 극대점일 뿐 f′의 부호가 바뀌지 않으므로 f의 극대가 아니고, 닫힌구간 [B, D]에는 f′이 감소하는 부분이 있어 f가 계속 증가하지 않는다. 그러므로 옳은 것은 ㄷ, ㄹ이고 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

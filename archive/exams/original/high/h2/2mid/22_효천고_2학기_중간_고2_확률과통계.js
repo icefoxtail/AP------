@@ -1014,6 +1014,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "f(m+a)+f(m+2a)+…의 합은 X가 m+a 이상일 확률과 같고 그 값이 0.1587이다. 표준화하면 P(Z≥a/2)=0.1587이고 표에서 a/2=1이므로 a=2이다. 길이 2인 구간은 평균을 중심으로 [m-1,m+1]일 때 확률이 최대이며 그 값은 2×0.1915=0.3830이다. 따라서 답은 a=2, 최댓값 0.3830이다.",
+    "solutionImageSize": "full"
   }
 ];

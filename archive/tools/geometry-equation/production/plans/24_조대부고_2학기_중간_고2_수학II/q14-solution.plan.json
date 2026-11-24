@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3/4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-11/4",
+        "marker": "NONE"
+      }
+    ],
+    "viewport": [
+      -2.5,
+      8.5,
+      -3,
+      0.8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "1/4",
+          "marker": "FILLED",
+          "unnamed": true
+        },
+        {
+          "id": "Q2",
+          "x": "2",
+          "y": "-2+sqrt(5)",
+          "unnamed": true
+        },
+        {
+          "id": "Q4",
+          "x": "4",
+          "y": "(-2+sqrt(7))/3",
+          "unnamed": true
+        },
+        {
+          "id": "Q6",
+          "x": "6",
+          "y": "1/5",
+          "unnamed": true
+        },
+        {
+          "id": "Q8",
+          "x": "8",
+          "y": "(-2+sqrt(11))/7",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s2",
+          "from": "C",
+          "to": "Q2"
+        },
+        {
+          "id": "s4",
+          "from": "Q2",
+          "to": "Q4"
+        },
+        {
+          "id": "s6",
+          "from": "Q4",
+          "to": "Q6"
+        },
+        {
+          "id": "s8",
+          "from": "Q6",
+          "to": "Q8"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cc",
+          "point": "C",
+          "text": "1/4",
+          "direction": "N",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "d=2일 때 오른쪽 식은 1/(√(x+3)+2)로 간단히 되고 우극한은 1/4이다. 왼쪽 분자가 x−1로 나누어떨어져야 하므로 b=−a−1이고, 왼쪽 가지는 y=x+a+1로 간단히 된다. 연속 조건에서 c=1/4, a+2=1/4이므로 a=−7/4, b=3/4이다. 따라서 a+b+c+d=5/4이고 답은 ②이다.",
+  "accessibilityDescription": "왼쪽의 직선 y=x−3/4가 점 (1, 1/4)까지 올라오고, 그 점에서 오른쪽으로 완만히 내려가는 곡선이 이어져 있다. 점 (1, 1/4)에 1/4 지시선이 붙어 있다.",
+  "newVisualInformation": [
+    "왼쪽 가지 y=x−3/4, 오른쪽 가지, 연결점 (1, 1/4), c=1/4를 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}\\dfrac{x^2+ax+b}{x-1}&(x\\lt1)\\\\c&(x=1)\\\\\\dfrac{\\sqrt{x+3}-d}{x-1}&(x\\gt1)\\end{cases}$가 $x=1$에서 연속일 때, $a+b+c+d$의 값은? [4.2점] (단, $a,b,c,d$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -883,6 +883,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 x축 위에 선분 AB가 놓여 있고, AB를 지름으로 하는 큰 원과 AO를 지름으로 하는 작은 원이 그려져 있다. 큰 원 위의 점 P와 작은 원 위의 점 Q가 표시되어 있으며, A와 P, B와 P, A와 Q를 잇는 선분, 점 P의 직각 표시와 점 B의 30도 각 표시가 보인다.",
+    "solutionImageCaption": "A=(0,0), B=(8,0), O=(4,0)으로 두면 각 ABP=30°에서 P=(2, 2√3)이고 BP=(−6, 2√3)이다. 지름이 AO인 반원 위의 Q를 Q=(2+2cos t, 2sin t), 0≤t≤π로 두면 내적은 −12−12cos t+4√3sin t=−12+8√3sin(t−π/3)이다. 0≤t≤π에서 최댓값은 t=5π/6일 때 −12+8√3이고 최솟값은 t=0일 때 −24이다. 따라서 답은 최솟값 −24, 최댓값 −12+8√3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

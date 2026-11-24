@@ -627,7 +627,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 y=−x³+2x+5와 점 T(−1,4)에서 접하는 직선 l이 있고, 직선 l이 점 P(2,1)을 지난다. 곡선에는 두 극점 E, F가 표시되어 있다.",
+    "solutionImageCaption": "a=f(−1)=4이고 f′(x)=−3x²+2이므로 접선의 기울기는 f′(−1)=−1이다. 접선은 y−4=−(x+1), 즉 y=3−x이고, 이 접선이 (b,1)을 지나므로 b=2이다. 따라서 a+b=6이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
