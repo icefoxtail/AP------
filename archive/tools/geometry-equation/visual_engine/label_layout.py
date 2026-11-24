@@ -485,12 +485,145 @@ def line_between(start,box,occupied,incident,kinds=('line','axis','auxiliary','c
 def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4,skip_ids=frozenset(),away_from_circles=False):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids,away_from_circles=away_from_circles):return None
+    return end if leader_end_visible(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids,away_from_circles=away_from_circles) else None
+
+def leader_end_visible(start,end,occupied,incident,near_start=False,start_tolerance=1e-4,skip_ids=frozenset(),away_from_circles=False):
+    """True when the leader start->end touches no other geometry and does not hide along a line through the point (the two tests of visible_owner_leader)."""
+    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids,away_from_circles=away_from_circles):return False
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
-    if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
+    return not any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
-           for o in occupied):return None
-    return end
+           for o in occupied)
+
+# ---- a point callout whose label is wider than any free place on a straight line from its point (OBL) ---------------------------------------------------
+# A wide label on a figure shown small (a tall figure: the plot is scaled to fit the screen, the text is not) has no free box inside the ring around its point,
+# and the leader that aims at the box centre of a far free box runs along its own curve (a steep curve: the free band is straight above it). The leader needs
+# not aim at the centre: it may end anywhere on the edge of the box that faces its point. This last resort scans every free place nearest first and, for each,
+# the centre-aimed end first and then ends along the facing edges, least turned from the centre aim first. The same two leader tests apply (clear of every stroke,
+# label and dot; never within 15 degrees along a curve or line through the point), so a leader that is hard to read is never taken; it runs only after every
+# ordinary place and leader failed and the caller asked for the last resort (layout(last_resort=True)), so a callout that finds a place without it is never changed. A coarse map of the cells that are certainly covered by a stroke,
+# a label or a dot answers most boxes and leaders in O(1); the exact tests (acceptable, leader_end_visible) decide everything the map lets through.
+OBLIQUE_LEADER_BOX_STEP_PX=8.0
+OBLIQUE_LEADER_END_FRACTIONS=(.5,.4,.6,.3,.7,.2,.8,.1,.9)
+OBLIQUE_CELL_PX=4.0
+OBLIQUE_CLEARANCE_PX=6.0      # the clearance collision() and leader_clear() keep from a stroke, a label and a dot
+OBLIQUE_PIECE_PX=24.0         # a long stroke is marked piece by piece so that each piece's bounding rectangle stays small
+OBLIQUE_SAMPLE_PX=2.0
+
+class BlockedCells:
+    """The cells of a grid that lie wholly inside a stroke, label or dot grown by the clearance. A box that covers one such cell, or a leader that passes through one,
+    certainly touches that obstacle (the map never refuses what the exact tests would accept); a cell only partly covered is not marked."""
+    def __init__(self,area,cell=OBLIQUE_CELL_PX):
+        self.x0=area.x;self.y0=area.y;self.cell=cell
+        self.nx=max(1,int(math.ceil(area.width/cell)));self.ny=max(1,int(math.ceil(area.height/cell)))
+        self.core=bytearray(self.nx*self.ny);self.sat=None
+    def mark(self,x0,y0,x1,y1,inside):
+        c=self.cell
+        i0=max(0,int((x0-self.x0)//c));i1=min(self.nx-1,int((x1-self.x0)//c));j0=max(0,int((y0-self.y0)//c));j1=min(self.ny-1,int((y1-self.y0)//c))
+        for j in range(j0,j1+1):
+            y=self.y0+j*c
+            for i in range(i0,i1+1):
+                x=self.x0+i*c
+                if inside(x,y) and inside(x+c,y) and inside(x,y+c) and inside(x+c,y+c):self.core[j*self.nx+i]=1
+    def add(self,obstacle,for_boxes):
+        """for_boxes: the obstacle as collision() sees it from a label box; otherwise as leader_clear() sees it from a leader."""
+        kind=obstacle.get('kind');geometry=obstacle.get('geometry');pad=OBLIQUE_CLEARANCE_PX
+        box_kinds={'label','conditionBox','tick','indicator','rectangle'} if for_boxes else {'label','conditionBox','rectangle'}
+        if kind in box_kinds:
+            grown=geometry if isinstance(geometry,Box) else Box(**geometry) if isinstance(geometry,dict) and {'x','y','width','height'}<=set(geometry) else None
+            if grown is None:return
+            grown=grown.expand(pad)
+            self.mark(grown.x,grown.y,grown.right,grown.bottom,lambda x,y:grown.x<=x<=grown.right and grown.y<=y<=grown.bottom)
+        elif kind=='point':
+            x,y,r=geometry;reach=r if for_boxes else r+pad
+            self.mark(x-reach,y-reach,x+reach,y+reach,lambda px,py:math.hypot(px-x,py-y)<=reach)
+        elif kind in {'line','axis','auxiliary','leader','curve'} or (kind in {'tick','indicator'} and not for_boxes):
+            if not isinstance(geometry,(list,tuple)):return
+            for p,q in zip(geometry,geometry[1:]):
+                pieces=max(1,int(math.ceil(math.dist(p,q)/OBLIQUE_PIECE_PX)))
+                for k in range(pieces):
+                    a=(p[0]+(q[0]-p[0])*k/pieces,p[1]+(q[1]-p[1])*k/pieces);b=(p[0]+(q[0]-p[0])*(k+1)/pieces,p[1]+(q[1]-p[1])*(k+1)/pieces)
+                    self.mark(min(a[0],b[0])-pad,min(a[1],b[1])-pad,max(a[0],b[0])+pad,max(a[1],b[1])+pad,lambda x,y,p=p,q=q:point_segment_distance((x,y),p,q)<=pad)
+    def finish(self):
+        nx,ny=self.nx,self.ny;sat=[0]*((nx+1)*(ny+1))
+        for j in range(ny):
+            run=0
+            for i in range(nx):
+                run+=self.core[j*nx+i];sat[(j+1)*(nx+1)+i+1]=sat[j*(nx+1)+i+1]+run
+        self.sat=sat;return self
+    def box_blocked(self,box):
+        c=self.cell
+        i0=max(0,int(math.ceil((box.x-self.x0)/c)));i1=min(self.nx,int(math.floor((box.right-self.x0)/c)))
+        j0=max(0,int(math.ceil((box.y-self.y0)/c)));j1=min(self.ny,int(math.floor((box.bottom-self.y0)/c)))
+        if i1<=i0 or j1<=j0:return False
+        w=self.nx+1;s=self.sat
+        return s[j1*w+i1]-s[j0*w+i1]-s[j1*w+i0]+s[j0*w+i0]>0
+    def leader_blocked(self,start,end):
+        length=math.dist(start,end)
+        if length<=1e-9:return False
+        c=self.cell
+        for k in range(1,int(length/OBLIQUE_SAMPLE_PX)+1):
+            t=k*OBLIQUE_SAMPLE_PX/length
+            i=int((start[0]+(end[0]-start[0])*t-self.x0)//c);j=int((start[1]+(end[1]-start[1])*t-self.y0)//c)
+            if 0<=i<self.nx and 0<=j<self.ny and self.core[j*self.nx+i]:return True
+        return False
+
+OBLIQUE_MAX_EXACT_LEADERS=600   # a scan that has put this many leaders through the exact test without a clear one gives up (the figure has no leader to find)
+
+def oblique_start_blocked(start,occupied,incident,skip_ids):
+    """True when a stroke, label or dot that is not the point's own lies within the clearance of the point itself: no leader from it can be clear (a leader starts there)."""
+    pad=OBLIQUE_CLEARANCE_PX
+    for o in occupied:
+        if o.get('id') in incident or o.get('id') in skip_ids:continue
+        kind=o.get('kind');geometry=o.get('geometry')
+        if kind in {'label','conditionBox','rectangle'}:
+            box=geometry if isinstance(geometry,Box) else Box(**geometry) if isinstance(geometry,dict) and {'x','y','width','height'}<=set(geometry) else None
+            if box is not None and segment_hits_box(start,start,box.expand(pad)):return True
+        elif kind=='point':
+            if point_segment_distance((geometry[0],geometry[1]),start,start)<=geometry[2]+pad:return True
+        elif kind in {'line','axis','auxiliary','leader','curve','tick','indicator'} and isinstance(geometry,(list,tuple)) and len(geometry)>=2:
+            if any(point_segment_distance(start,c,d)<=pad for c,d in zip(geometry,geometry[1:])):return True
+    return False
+
+def oblique_leader_ends(box,start):
+    """The ends a leader from `start` may take on the edges of `box` that face it: the centre-aimed end first, then the edge points least turned from it."""
+    centre=(box.x+box.width/2,box.y+box.height/2);aim=owner_leader_endpoint(box,start,centre)
+    turned=lambda end:abs(math.atan2((end[0]-start[0])*(centre[1]-start[1])-(end[1]-start[1])*(centre[0]-start[0]),(end[0]-start[0])*(centre[0]-start[0])+(end[1]-start[1])*(centre[1]-start[1])))
+    ends=[]
+    for fraction in OBLIQUE_LEADER_END_FRACTIONS:
+        if start[1]<=box.y:ends.append([box.x+box.width*fraction,box.y])
+        if start[1]>=box.bottom:ends.append([box.x+box.width*fraction,box.bottom])
+        if start[0]<=box.x:ends.append([box.x,box.y+box.height*fraction])
+        if start[0]>=box.right:ends.append([box.right,box.y+box.height*fraction])
+    ends.sort(key=turned)
+    return [aim]+ends
+
+def oblique_leader_placement(start,w,h,safe_area,occupied,incident,skip_ids,acceptable,min_gap=LEADER_ONLY_MIN_PX,step=OBLIQUE_LEADER_BOX_STEP_PX):
+    """(box,end) of the nearest free w x h box (acceptable) whose edge takes a leader from `start` that is clear and not hidden along a curve through the point, or None."""
+    nx=int((safe_area.width-w)//step)+1;ny=int((safe_area.height-h)//step)+1
+    if nx<=0 or ny<=0:return None
+    if oblique_start_blocked(start,occupied,incident,skip_ids):return None
+    box_map=BlockedCells(safe_area);leader_map=BlockedCells(safe_area)
+    for obstacle in occupied:
+        box_map.add(obstacle,True)
+        if obstacle.get('id') not in incident and obstacle.get('id') not in skip_ids:leader_map.add(obstacle,False)
+    box_map.finish();leader_map.finish()
+    places=[]
+    for i in range(nx):
+        for j in range(ny):
+            box=Box(safe_area.x+i*step,safe_area.y+j*step,w,h)
+            if box_point_distance(box,start)<min_gap or box_map.box_blocked(box):continue
+            places.append((math.hypot(box.x+w/2-start[0],box.y+h/2-start[1]),j,i,box))
+    places.sort(key=lambda row:row[:3])
+    exact=0
+    for _distance,_j,_i,box in places:
+        if not acceptable(box,owner_check=False):continue
+        for end in oblique_leader_ends(box,start):
+            if leader_map.leader_blocked(start,end):continue
+            exact+=1
+            if exact>OBLIQUE_MAX_EXACT_LEADERS:return None
+            if leader_end_visible(start,end,occupied,incident,skip_ids=skip_ids):return box,end
+    return None
 
 NEAR_CURVE_GAPS=(8,10,12,15,18,21)        # (G18b) px between a curve label's box and its own curve, nearest first
 NEAR_CURVE_FAR_GAPS=(28,38)        # tried only when none of the above is free (the observer then judges the result)
@@ -1276,13 +1409,15 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         stuck_ids={label['id'] for label in current if label['id'] in result['unresolved'] and (
             (label.get('kind')=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
             or (label.get('lineOwned') and not label.get('collinearOwners'))
-            or ('wedgeSearch' in label and label.get('crossFallbackAllowed') is not True and label.get('tickLabelCallout') is None))}
+            or ('wedgeSearch' in label and label.get('crossFallbackAllowed') is not True and label.get('tickLabelCallout') is None)
+            or (label.get('kind')=='EQUATION_LABEL' and label.get('ringLeader') is True and label.get('leaderOnly') is True and label.get('obliqueAllowed') is not True))}
         if stuck_ids:
             trial=[]
             for label in current:
                 label=copy.deepcopy(label)
                 if label['id'] in stuck_ids:
                     if 'wedgeSearch' in label:label['crossFallbackAllowed']=True          # (FC) an angle label may take a leader from its arc that crosses a thin stroke or two
+                    elif label.get('kind')=='EQUATION_LABEL' and label.get('ringLeader') is True and label.get('leaderOnly') is True:label['obliqueAllowed']=True   # (OBL) a point callout may end its leader anywhere on the facing edge of its box
                     else:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
                     if label.get('lineOwned'):label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
                 trial.append(label)
@@ -1913,6 +2048,13 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         if end is None:continue
                         tie_to_owner(end);ring=box;ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
                     if ring is not None:break
+            if ring is None and leader_only and label['kind']=='EQUATION_LABEL' and label.get('ringLeader') and label.get('obliqueAllowed') is True and owner_marker is not None:
+                # (OBL) A callout label too wide for any free place on a leader aimed at its centre: scan every free place nearest first, each with leader ends along the edges that face the point.
+                incident_ids=owner_incident_ids(at,owner_marker,occupied)
+                for pass_skip in skip_passes:
+                    found=oblique_leader_placement(at,w,h,safe_area,occupied,incident_ids,pass_skip,acceptable)
+                    if found is not None:
+                        box,end=found;tie_to_owner(end);leaders[-1]['oblique']=True;ring=box;ring_method='OWNER_LEADER_OBLIQUE';break
             if ring is None and ((label['kind']=='POINT_NAME' and label.get('crossFallbackAllowed') is True) or (label['kind']=='COORDINATE_LABEL' and ring_like and not label.get('ringLeader'))) and owner_marker is not None and not leader_only:   # a coordinate label that found no clear leader either: the nearest free box on a leader that crosses a thin stroke or two (marked, never a point or another leader)
                 # (CL) no clear place and no clear leader: the nearest free box on a leader that crosses a thin stroke or two
                 incident=incident or owner_incident_ids(at,owner_marker,occupied)
