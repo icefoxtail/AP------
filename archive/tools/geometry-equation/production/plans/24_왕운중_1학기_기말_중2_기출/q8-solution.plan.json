@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "2*x+3",
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "3"
+      ],
+      "B": [
+        "1",
+        "5"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "5"
+        }
+      ],
+      "points": [
+        {
+          "id": "C",
+          "x": "-2",
+          "y": "5"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차함수는 y=ax+b 꼴이고 a는 0이 아니어야 한다. y=5는 기울기가 0인 상수함수이므로 일차함수가 아니고, y=2x+3은 기울기 2, y절편 3인 일차함수이다. y=3/x는 분모에 x가 있어 y=ax+b 꼴로 쓸 수 없다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "좌표평면에 기울기가 2이고 y절편이 3인 직선과, x축에 나란한 수평선 y=5가 함께 그려져 있다. 직선 위의 점 A와 두 직선이 만나는 점 B가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=2x+3의 기울기 2, y절편 3",
+    "수평선 y=5의 기울기 0과 교점 B(1,5)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "보기 중에서 일차함수인 것을 모두 찾은 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'><div style='font-weight:700; text-align:center;'>보기</div>ㄱ. $y=5$<br>ㄴ. $y=2x+3$<br>ㄷ. $y=\\dfrac{3}{x}$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

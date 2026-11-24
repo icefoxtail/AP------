@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      }
+    ],
+    "formula": "2*x + 4"
+  },
+  "caption": "두 주어진 점에서 기울기 2,절편 4이다. 일반점(p,2q)를 대입하면 2q2p+4→q=p+2→p−q=−2. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 점 $(-3, -2), (0, 4), (p, 2q)$가 한 직선 위에 있을 때, $p-q$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

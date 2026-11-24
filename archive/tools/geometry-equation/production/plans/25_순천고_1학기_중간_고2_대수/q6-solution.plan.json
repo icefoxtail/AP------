@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "위 줄은 밑 조건 x>−3, x≠−2의 범위이고, 가운데 줄은 진수 조건 −5<x<9의 범위이다. 아래 줄은 두 범위의 공통 부분으로, −2는 열린 점으로 빠진다. 가능한 정수는 −1, 0, 1, …, 8이고 합은 35이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "같은 수직선 위에 세 줄이 있다. 첫 줄은 −3보다 크고 −2에서 끊어진 범위, 둘째 줄은 −5와 9 사이의 범위, 셋째 줄은 두 줄의 공통 범위이며 정수점이 표시되어 있다.",
+  "newVisualInformation": [
+    "밑 조건, 진수 조건, 공통 범위를 같은 수직선에 겹쳐 −2 제외와 정수 범위를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\log_{x+3}(-x^2+4x+45)$의 값이 존재하기 위한 모든 정수 $x$값의 합은? (3.6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

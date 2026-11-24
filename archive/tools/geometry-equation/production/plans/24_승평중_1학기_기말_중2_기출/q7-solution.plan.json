@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "500",
+          "-1"
+        ],
+        "domain": [
+          "350",
+          "460"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8980/23",
+          "-17/23"
+        ],
+        "domain": [
+          "350",
+          "460"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "420",
+          "y": "80",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 작년 남학생,세로 y는 작년 여학생 수. x+y=500,17x+23y=8980의 교점(420,80). 올해 남학생 0.85·420=357명,여학생 92명,합 449명. 학교 명칭의 여자중학교 표현과 별개로 제시된 수량모형을 풀이한다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "승평여자중학교 작년 학생 수는 500명이었다. 올해는 작년에 비해 남학생 수는 15% 감소하고 여학생 수는 15% 증가하여 전체 학생 수가 449명이 되었다. 올해 남학생의 수를 구하면?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

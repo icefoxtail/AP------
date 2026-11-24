@@ -630,7 +630,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 x=3에서 끊어지는 f의 그래프, 아래쪽에 x=3에서 x축을 지나는 직선 g를 나란히 그리고 x=3 근처의 극한을 화살표로 표시한 그림이다.",
+    "solutionImageCaption": "위는 y=f(x), 아래는 a=-3일 때 y=g(x)=x-3이다. f는 x=3에서 좌극한 2, 우극한 1로 끊어진다. 곱이 연속이려면 2(3+a)=1(3+a)이어야 하므로 3+a=0, a=-3이다. 이때 g(3)=0이라 곱의 좌극한, 우극한, 함숫값이 모두 0이다. 따라서 구하는 값은 -3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

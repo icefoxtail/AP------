@@ -1068,7 +1068,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: a=0인 도함수의 예시이다. 구간 양 끝 높이는 양수이고 꼭짓점 높이는 음수여야 열린구간 안에서 두 번 부호가 바뀐다. 전체 a 범위는 세 높이의 조건을 함께 적용한다.",
+    "solutionImageCaption": "a=0인 도함수의 예시이다. 구간 양 끝 높이는 양수이고 꼭짓점 높이는 음수여야 열린구간 안에서 두 번 부호가 바뀐다. 전체 a 범위는 세 높이의 조건을 함께 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

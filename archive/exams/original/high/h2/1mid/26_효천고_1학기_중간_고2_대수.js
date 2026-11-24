@@ -941,6 +941,10 @@ window.questionBank = [
     "solution": "기울기가 $-1$인 직선 위에서는 두 점의 $x$좌표 차와 $y$좌표 차의 절댓값이 같다. 그림에서 $A$는 왼쪽 위, $B$는 오른쪽 아래에 있으므로, $AB=24\\sqrt2$에서 두 좌표 차의 절댓값은 각각 $24$이다.\n\n점 $A$의 $x$좌표를 $\\alpha$라 하자. 지수함수와 로그함수는 서로 역함수이고, $x+y=\\text{상수}$인 직선은 $y=x$ 대칭에 대해 변하지 않는다. 따라서\n\n\\[A=(\\alpha,3^\\alpha),\\qquad B=(3^\\alpha,\\alpha).\\]\n\n점 $C$는 $B$와 같은 높이에 있으므로 $BC$는 삼각형의 밑변이고, $A$에서 $BC$까지의 높이는 $3^\\alpha-\\alpha=24$이다. 삼각형의 넓이가 $312$이므로\n\n\\[312=\\frac12\\cdot BC\\cdot24,\\qquad BC=26.\\]\n\n$C$도 $y=3^x$ 위에 있고 $y_C=\\alpha$이므로 $C=(\\log_3\\alpha,\\alpha)$이다. 따라서\n\n\\[BC=3^\\alpha-\\log_3\\alpha=26.\\]\n\n이 식에서 $3^\\alpha-\\alpha=24$를 빼면\n\n\\[\\alpha-\\log_3\\alpha=26-24=2.\\]\n\n따라서 구하는 값은 $2$이다.",
     "image": "assets/images/26_효천고_1학기_중간_고2_대수/q23.png",
     "itemStatus": "PASS_AFTER_REPAIR",
-    "holdReason": ""
+    "holdReason": "",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_대수/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "역함수의 대칭으로 A=(α,3^α), B=(3^α,α), C=(log₃α,α)이다. 곡선 대신 삼각형만 분리했다. A에서 밑변에 내린 높이는 24, 넓이 312에서 얻은 밑변 BC는 26이다. AB의 기울기가 −1이므로 A와 B의 수평 거리도 24이다. 수선발 부근의 짧은 구간은 별도 확대도에서 확인한다.",
+    "solutionImageSize": "full"
   }
 ];

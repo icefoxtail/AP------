@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "23/4",
+          "-3/4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "5",
+        "y": "2"
+      }
+    ],
+    "formula": "23/4 - 3*x/4"
+  },
+  "caption": "y=1, 2, 3, 4, 5일 때 3x+4y=23의 x를 구하면 y=2일 때 x=5, y=5일 때 x=1만 자연수이다. 이어 그린 직선은 관계를 보이는 보조선이고, x와 y가 모두 자연수인 점은 (1, 5)와 (5, 2)뿐이다. 따라서 답은 ② 2개이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$가 자연수일 때, 일차방정식 $3x+4y=23$을 만족시키는 순서쌍 $(x,y)$는 모두 몇 개인가?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "연속직선은관계의보조연장이고실제해는두좌표모두자연수여야한다. y1..5중y2→x5,y5→x1만자연수. 실제점(1,5),(5,2),정답2개.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=1, 2, 3, 4, 5일 때 3x+4y=23의 x를 구하면 y=2일 때 x=5, y=5일 때 x=1만 자연수이다. 이어 그린 직선은 관계를 보이는 보조선이고, x와 y가 모두 자연수인 점은 (1, 5)와 (5, 2)뿐이다. 따라서 답은 ② 2개이다."
+  ]
+}

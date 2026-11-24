@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "양변 6배하면 −x<−5,음수로나눠 x>5. 빈경계 5와오른반직선,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $\\dfrac13x-\\dfrac{x-2}{2}<\\dfrac16$을 풀면?",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "양변6배하면−x<−5,음수로나눠x>5. 빈경계5와오른반직선,정답⑤.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양변6배하면−x<−5,음수로나눠x>5. 빈경계5와오른반직선,정답⑤."
+  ]
+}

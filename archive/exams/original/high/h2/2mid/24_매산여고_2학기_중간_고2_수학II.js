@@ -621,7 +621,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 f의 조각 그래프, 아래쪽에 g의 조각 그래프를 나란히 그리고 x=-1과 x=2 근처의 한쪽 극한을 화살표로 표시한 그림이다.",
+    "solutionImageCaption": "위는 y=f(x), 아래는 y=g(x)의 그래프이다. x→-2-이면 |x|→2+이므로 f(|x|)는 x≥2의 식 x²을 따라 4에 수렴한다. x→-1+이면 g(x)→2-이므로 f(g(x))는 -1≤t<2의 식 f(t)=t를 따라 2에 수렴한다. x→∞이면 (2x-7)/(x-3)=2-1/(x-3)→2-이므로 g는 -1<t≤2의 식 -t+1을 따라 -1에 수렴한다. 합은 4+2+(-1)=5이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 20,

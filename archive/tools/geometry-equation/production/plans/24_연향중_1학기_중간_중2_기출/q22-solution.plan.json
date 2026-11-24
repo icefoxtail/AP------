@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "3"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "-1/2",
+                "add": "9/2"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫째 부등식은 x≤3이다. 둘째 부등식 3x−a≥5(x−2)+1은 x≤(9−a)/2이다. 두 해가 같으려면 경계 (9−a)/2가 3과 같아야 하므로 a=3이고 그림은 a=3일 때 두 줄이 일치하는 모습이다. 따라서 답은 3이다.",
+  "newVisualInformation": [
+    "첫째 x≤3과 둘째 x≤(9−a)/2의 경계가 겹치는 a=3일 때 두 해집합이 같아지는 것을 두 줄로 비교"
+  ],
+  "accessibilityDescription": "같은 수직선 위에 첫째 줄과 둘째 줄이 있고 둘 다 3을 포함해 왼쪽으로 뻗는 해집합이 같은 모양으로 칠해져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차부등식 $3x-2 \\le x+4$와 $3x-a \\ge 5(x-2)+1$의 해가 서로 같을 때, 상수 $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

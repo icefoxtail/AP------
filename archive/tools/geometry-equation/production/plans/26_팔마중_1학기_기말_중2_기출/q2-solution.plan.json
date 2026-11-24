@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "formula": "11 - 3*x"
+  },
+  "caption": "④ y=11−3x의 점(3,2)를 표시한다. 같은 점을 만족하더라도 x²/xy가있는①③은일차가아니다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $x=3$, $y=2$를 해로 갖는 일차방정식은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

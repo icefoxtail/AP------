@@ -69,7 +69,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3의 오른쪽에서 올라가는 두 로그 곡선 f와 g가 있고, 세로선 x=5와 만나는 두 점 P, Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=log₂(x−3), g는 g(x)=log₂(x+3)의 그래프이다. 두 로그의 진수가 모두 양수이려면 x>3이어야 하므로 그래프는 x>3에서만 본다. x=5에서 f의 값은 1, g의 값은 3이어서 합이 4가 되고, x=−5는 x>3을 만족하지 못해 버린다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -330,7 +334,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 제2사분면 위의 점에서 x축에 점선 수선을 내린 그림이고, 원점에서 그 점까지의 동경과 x축이 이루는 각이 θ로 표시되어 있다.",
+    "solutionImageCaption": "제2사분면에서 cos θ < 0, sin θ > 0이므로 |cos θ − sin θ| = −cos θ + sin θ이고 |cos θ| = −cos θ이다. 이를 대입하면 sin θ = 1/2이다. 그러므로 cos θ = −√(1 − 1/4) = −√3/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -801,7 +809,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: t가 0보다 크고 4 이하인 구간에서 아래로 볼록한 포물선이 그려져 있고, 꼭짓점 V와 오른쪽 끝점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=2ˣ으로 두면 x≤2에서 0<t≤4이고 y=t²−2t−8=(t−1)²−9이다. 그래프는 꼭짓점 V(1, −9)에서 최소이고, 구간 끝점 B(4, 0)에서 최대이다. t=1이면 x=0, t=4이면 x=2이므로 a=2, b=0, M=0, m=−9이다. 따라서 답은 a=2, b=0, M=0, m=−9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      2,
+      13,
+      -2,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "7/2",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "3",
+          "0"
+        ],
+        "domain": [
+          "7/2",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "5"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "x": "3"
+        },
+        {
+          "id": "at5",
+          "x": "5"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=log₂(x−3), g는 g(x)=log₂(x+3)의 그래프이다. 두 로그의 진수가 모두 양수이려면 x>3이어야 하므로 그래프는 x>3에서만 본다. x=5에서 f의 값은 1, g의 값은 3이어서 합이 4가 되고, x=−5는 x>3을 만족하지 못해 버린다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "점근선 x=3의 오른쪽에서 올라가는 두 로그 곡선 f와 g가 있고, 세로선 x=5와 만나는 두 점 P, Q의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "x>3에서만 정의된 두 로그의 값 1과 3을 x=5에서 읽어 합이 4임을 보이고 진수 조건 x>3을 점근선으로 나타낸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 방정식 $\\log_2 (x-3) + \\log_2 (x+3) = 4$의 해를 구하면? [3.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

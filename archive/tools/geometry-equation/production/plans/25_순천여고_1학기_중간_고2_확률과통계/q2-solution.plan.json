@@ -1,0 +1,297 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "42"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-30"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-31"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-19"
+            },
+            {
+              "kind": "integer",
+              "value": "33"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "31"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "33"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "txS1",
+        "at": "S1",
+        "text": "M1"
+      },
+      {
+        "id": "txS2",
+        "at": "S2",
+        "text": "W1"
+      },
+      {
+        "id": "txS3",
+        "at": "S3",
+        "text": "M2"
+      },
+      {
+        "id": "txS4",
+        "at": "S4",
+        "text": "W2"
+      },
+      {
+        "id": "txS5",
+        "at": "S5",
+        "text": "W3"
+      },
+      {
+        "id": "txS6",
+        "at": "S6",
+        "text": "W4"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "정삼각형 탁자는 120도씩 회전해도 같은 배치이므로 6명을 앉히는 전체 경우는 6!/3=240가지이다. 남자 2명이 같은 모서리에 앉는 경우는 3×2!×4!/3=48가지이므로, 남자 2명이 다른 모서리에 앉는 경우는 240−48=192가지이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "정삼각형 탁자와 그 세 변 바깥에 두 개씩 놓인 좌석 점 여섯 개가 보이고, 왼쪽 위 좌석과 아래쪽 좌석에 M1, M2, 나머지 좌석에 W1부터 W4가 적혀 있다. 두 변이 각각 파랑과 주황으로 강조되어 있다.",
+  "newVisualInformation": [
+    "정삼각형 탁자의 세 변 바깥에 좌석 점 6개를 두 개씩 배치",
+    "남자 두 명의 좌석을 M1, M2로 표시하고 여자 네 명의 좌석을 W1부터 W4로 표시",
+    "남자가 앉은 서로 다른 두 모서리를 파랑과 주황으로 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 정삼각형 모양의 탁자에 남자 2명과 여자 4명이 둘러앉을 때, 남자 2명이 탁자의 다른 모서리에 앉는 경우의 수를 구하면? (단, 회전하여 일치하는 것은 같은 것으로 본다.) [3.8점]<br><img src=\"assets/images/25_순천여고_1학기_중간_고2_확률과통계/q02-readable-v3.svg\" alt=\"정삼각형 탁자 주변의 여섯 자리\" style=\"width:100%;max-width:520px;height:auto\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

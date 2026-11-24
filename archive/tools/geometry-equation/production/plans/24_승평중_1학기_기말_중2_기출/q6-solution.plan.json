@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3/5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "Y=3t/5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2/5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "Y=3-2t/5"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "9/5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "Y"
+    }
+  },
+  "caption": "가로 t는 시간 h,세로 Y는 출발점 기준 위치 y(km)를 10으로 나눈 값(Y=y/10). 형 Y=3t/5,동식 Y=3−2t/5가(3,9/5)에서 만나 실제위치는 18km. 두 이동거리 18km,12km,차이 6km. 실제구간 0≤t≤3. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "동식과 형이 30 km 떨어진 두 지점에서 서로를 향하여 출발하였다. 형은 시속 6 km로 자전거를 타고 동식은 시속 4 km로 걸어서 한 지점에서 만났을 때, 형은 동식보다 몇 km를 더 이동하였는지 구하면?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 내리막·양의 절편에서 b<0,a<0. 새 함수의 기울기/절편 모두 음수라 제1사분면을 지나지 않는다. 두 선은 a=b=−1의 부호 대표형이지 원문 유일 계수 아니다. 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $ax+by+1=0$이 아래 그림과 같을 때, 일차함수 $y=ax+b$의 그래프가 지나지 않는 사분면은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본내리막·양의절편에서b<0,a<0. 새함수의기울기/절편모두음수라제1사분면을지나지않는다. 두선은a=b=−1의부호대표형이지원문유일계수아니다. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본내리막·양의절편에서b<0,a<0. 새함수의기울기/절편모두음수라제1사분면을지나지않는다. 두선은a=b=−1의부호대표형이지원문유일계수아니다. 정답①."
+  ]
+}

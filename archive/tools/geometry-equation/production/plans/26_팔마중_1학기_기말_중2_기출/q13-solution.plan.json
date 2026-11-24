@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5/2",
+          "-3/4"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "formula": "5/2 - 3*x/4"
+  },
+  "caption": "가로변화 4,세로변화 −3이므로기울기 −3/4. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수의 그래프의 기울기는? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

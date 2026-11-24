@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -20,
+      520,
+      -20,
+      520
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "500",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "500"
+        ],
+        "color": "BLUE",
+        "label": "y=500-x"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "400",
+          "-1/2"
+        ],
+        "domain": [
+          "0",
+          "500"
+        ],
+        "color": "WARM",
+        "label": "y=400-x/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "200",
+          "y": "300",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "5% 소금물 x그램과 10% 소금물 y그램을 섞으면 전체 양은 500그램이므로 x+y=500이다. 소금의 양은 변하지 않으므로 (5/100)x+(10/100)y=500×(8/100)=40이다. 두 식을 풀면 x=200, y=300이다. ㉢에는 8/100이 아니라 40이 들어가야 하므로 답은 ③이다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 그래프에 서로 다른 색의 두 직선이 한 점에서 만나고, 교점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "전체 양을 나타내는 직선 y=500-x",
+    "소금의 양을 나타내는 직선 y=400-x/2",
+    "교점 (200, 300)의 좌표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$5\\%$의 소금물과 $10\\%$의 소금물을 섞어 농도가 $8\\%$인 소금물 $500\\,\\text{g}$을 만들려고 한다. 다음은 $5\\%$의 소금물과 $10\\%$의 소금물을 각각 몇 $\\text{g}$씩 섞어야 하는지 구하는 과정이다. 빈칸에 들어갈 내용으로 옳지 않은 것은? [4점]<br><img src=\"assets/images/25_연향중_1학기_기말_중2_기출/q8-problem-visual-v2.svg\" alt=\"왼쪽 그릇에는 5% 소금물 x g, 오른쪽 그릇에는 10% 소금물 y g이 있다. 두 그릇에서 내려오는 화살표가 아래쪽의 8% 소금물 500 g으로 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>5%의 소금물의 양을 $x\\,\\mathrm{g}$, 10%의 소금물의 양을 $y\\,\\mathrm{g}$이라고 하자.</p><p>두 소금물을 섞어 만든 소금물의 양은 $\\boxed{\\text{㉠}}\\,\\mathrm{g}$이므로<br>$x+y=\\boxed{\\text{㉠}}$.</p><p>두 소금물을 섞어도 소금의 양은 변하지 않으므로<br>$\\boxed{\\text{㉡}}x+\\dfrac{10}{100}y=\\boxed{\\text{㉢}}$.</p><p>다음 연립방정식을 풀면</p><p>$\\begin{cases}x+y=\\boxed{\\text{㉠}}\\\\[2pt]\\boxed{\\text{㉡}}x+\\dfrac{10}{100}y=\\boxed{\\text{㉢}}\\end{cases}$</p><p>$x=\\boxed{\\text{㉣}},\\quad y=\\boxed{\\text{㉤}}$이다.</p><p>따라서 5%의 소금물을 $\\boxed{\\text{㉣}}\\,\\mathrm{g}$, 10%의 소금물을 $\\boxed{\\text{㉤}}\\,\\mathrm{g}$을 섞어야 한다.</p></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "5/2",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "-3"
+      }
+    ],
+    "formula": "5 - 2*x"
+  },
+  "caption": "원본점(4,−3)을대입해 k1. 실제 y−2x+5의 x절편(5/2,0),정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $2x+ky-5k=0$의 그래프가 다음 그림과 같을 때, 그래프가 $x$축과 만나는 점의 좌표를 구하면? (단, $k$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본점(4,−3)을대입해k1. 실제y−2x+5의x절편(5/2,0),정답③. 주어진점/수평세로투영을보존한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본점(4,−3)을대입해k1. 실제y−2x+5의x절편(5/2,0),정답③."
+  ]
+}

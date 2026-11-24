@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "45",
+          "-9"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "27",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "45",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "5",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "27",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "9",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "3",
+          "y": "18",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 A는 0..5분, B는 0..9분 구간만 유효. 양의 물이 남아 있는 동안 같은 양은 교점 (3,18), 정답 3분. 모두 빈 9분 이후에는 둘 다 0이며 원래 직선을 음수로 연장하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3]\n45L, 27L의 물이 각각 들어 있는 두 물통 $A$, $B$에 구멍이 나서 동시에 물이 빠지고 있다. 다음 그래프는 물이 빠지기 시작한 지 $x$분 후에 물통에 남아 있는 물의 양을 $y$L라 할 때, $x$와 $y$ 사이의 관계를 나타낸 것이다. 이때, 다음 물음에 답하시오. [7점]\n(1) 물통 $A$에 대한 직선의 방정식을 구하시오. [2점]\n(2) 물통 $B$에 대한 직선의 방정식을 구하시오. [2점]\n(3) 물이 빠지기 시작한 지 몇 분 후에 두 물통 $A$, $B$에 남아 있는 물의 양이 같아지는지 구하시오. [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본A는0..5분,B는0..9분구간만유효. 양의물이남아있는동안같은양은교점(3,18),정답3분. 모두빈9분이후에는둘다0이며원래직선을음수로연장하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본A는0..5분,B는0..9분구간만유효. 양의물이남아있는동안같은양은교점(3,18),정답3분. 모두빈9분이후에는둘다0이며원래직선을음수로연장하지않는다."
+  ]
+}

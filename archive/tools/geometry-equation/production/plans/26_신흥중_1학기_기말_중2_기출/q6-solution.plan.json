@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "19/3",
+          "-2/3"
+        ],
+        "domain": [
+          "2",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-7",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "5",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 선의 공통점(5,3). 첫 식에서 둘째 식을 빼 4y12, y3과 x5를 구한다. 합 8,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}2x+3y=19\\\\2x-y=7\\end{cases}$의 해를 $x=a,\\ y=b$라고 할 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두 선의 공통점(5,3). 첫 식에서 둘째 식을 빼4y12, y3과x5를 구한다. 합8,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 선의 공통점(5,3). 첫 식에서 둘째 식을 빼4y12, y3과x5를 구한다. 합8,정답④."
+  ]
+}

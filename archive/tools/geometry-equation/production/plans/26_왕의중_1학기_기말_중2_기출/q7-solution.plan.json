@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "절댓값 x",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "가능한 y",
+        "elements": [
+          "2",
+          "−2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "ㄱ에서 x2를 정하면 y2/−2 두 수가 가능하므로 함수가 아니다. ㄴ은 같은 키여도 몸무게 다름. ㄷ은 자연수 개수 x−1, ㄹ은 5x로 하나씩 정해져 함수다. 정답 ㄷ·ㄹ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기에서 $y$가 $x$의 함수인 것을 있는 대로 고른 것은? [3점]<br><div class=\"note-box\"><b>&lt; 보 기 &gt;</b><br>ㄱ. 절댓값이 $x$인 수 $y$<br>ㄴ. 키가 $x$ cm인 사람의 몸무게 $y$ kg<br>ㄷ. 자연수 $x$보다 작은 자연수의 개수 $y$<br>ㄹ. 한 개에 $x$원인 물건 5개의 가격 $y$원</div>",
+      "mappedTo": "diagram"
+    }
+  ]
+}

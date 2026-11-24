@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-11",
+          "4"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-3/4"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "상수 없는 두 조건을 정리해 y4x−11,3x+4y32. 공통점 (4,5)을 나머지 식에 대입해 a3,b3. 정답 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 연립방정식<br><div class=\"note-box\">$0.4x-0.1y=1.1$<br>$ax-4y=-8$</div><div class=\"note-box\">$-2x+by=7$<br>$\\dfrac38x+\\dfrac12y=4$</div>의 해가 서로 같을 때, 상수 $a,b$의 값을 각각 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

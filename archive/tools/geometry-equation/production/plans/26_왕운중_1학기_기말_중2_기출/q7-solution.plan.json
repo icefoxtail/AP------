@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "formula": "2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "I",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "④의 첫 식은 수평선 y=−c/b,둘째 식은 수직선 x=−c′/a′이므로 항상 하나의 교점이다. 이 패널은 y2,x1의 설명용 대표값이며 실제 상수의 값을 정하지 않는다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}ax+by+c=0\\\\a'x+b'y+c'=0\\end{cases}$ ($a$, $b$, $c$, $a'$, $b'$, $c'$는 상수)에 대한 설명으로 옳은 것은? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

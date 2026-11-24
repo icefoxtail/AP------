@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1,
+      1,
+      -4,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "1/2"
+      },
+      {
+        "id": "W",
+        "x": "-1/2",
+        "y": "-1/2"
+      }
+    ],
+    "exactCoordinates": {
+      "O": [
+        "0",
+        "0"
+      ],
+      "V": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "2",
+          "2"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "s",
+        "slope": "2",
+        "intercept": "0",
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ]
+  },
+  "caption": "아래 경계 h(x)=-2x²+2x와 위 경계 g(x)=2x²+2x 사이에 f(x)가 있고 두 곡선은 원점 O에서 기울기 2인 직선 y=2x에 접한다. x>0에서 x로 나누면 -2x+2≤f(x)/x≤2x+2이므로 샌드위치 정리에 따라 f(x)/x→2이다. 식은 (f/x)²/(3+f/x)이므로 극한은 4/5이다. 따라서 답은 4/5이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 1] 함수 $f(x)$가 모든 실수 $x$에 대하여\n$$-2x^2+2x \\le f(x) \\le 2x^2+2x$$\n를 만족시킬 때, 극한값 $\\lim_{x\\to 0+} \\dfrac{\\{f(x)\\}^2}{x\\{3x+f(x)\\}}$을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위아래 두 포물선이 원점에서 기울기 2의 직선에 접하며 f를 끼우는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경계 포물선이 원점 O에서 직선 y=2x에 접하며 f(x)를 끼워 f(x)/x가 2로 수렴함을 보인다."
+  ],
+  "accessibilityDescription": "원점에서 만나는 위로 볼록한 포물선과 아래로 볼록한 포물선, 두 포물선에 원점에서 접하는 직선을 나타낸 그래프이다."
+}
