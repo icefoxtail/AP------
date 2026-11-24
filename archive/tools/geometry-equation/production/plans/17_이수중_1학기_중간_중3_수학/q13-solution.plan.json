@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "90"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Btm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-150"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "90"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-120"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "270"
+            },
+            {
+              "kind": "integer",
+              "value": "-60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-120"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "240"
+            },
+            {
+              "kind": "integer",
+              "value": "-120"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "Btm",
+    "O1",
+    "A1",
+    "O2",
+    "A2",
+    "O3",
+    "A3",
+    "R0",
+    "R1"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sRef",
+      "refs": [
+        "T",
+        "Btm"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "v1",
+        "from": "O1",
+        "to": "A1",
+        "label": "3√6",
+        "labelAt": 0.5,
+        "side": "LEFT"
+      },
+      {
+        "id": "v2",
+        "from": "O2",
+        "to": "A2",
+        "label": "4√6",
+        "labelAt": 0.5,
+        "side": "LEFT"
+      },
+      {
+        "id": "v3",
+        "from": "O3",
+        "to": "A3",
+        "label": "9√6",
+        "labelAt": 0.5,
+        "side": "LEFT"
+      },
+      {
+        "id": "v4",
+        "from": "R0",
+        "to": "R1",
+        "label": "8√6",
+        "labelAt": 0.5,
+        "side": "LEFT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "T",
+    "Btm",
+    "O1",
+    "A1",
+    "O2",
+    "A2",
+    "O3",
+    "A3",
+    "R0",
+    "R1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "√54=3√6, 2√24=4√6, √486=9√6이다. 부호를 붙여 3√6−4√6+9√6=8√6을 계산한다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "세로 기준선에서 세 개의 화살표가 각각 오른쪽, 왼쪽, 오른쪽으로 뻗고, 그 아래에 결과 화살표가 있다. 화살표 옆에 3√6, 4√6, 9√6이 적혀 있다.",
+  "newVisualInformation": [
+    "세로 기준선과 세 개의 항 화살표",
+    "세 항의 결과를 나타내는 아래쪽 화살표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. $\\sqrt{54}-2\\sqrt{24}+\\sqrt{486}$을 간단히 하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -365,7 +365,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에 정사각형이 내접하고, 그 정사각형의 각 변의 중점을 이은 마름모가 있으며, 원 위의 한 사분원에 90도 호가 표시되어 있다.",
+    "solutionImageCaption": "두 정사각형과 원이 만드는 영역은 큰 정사각형 안쪽의 네 삼각형과 가운데 마름모, 원과 큰 정사각형 사이의 네 활꼴을 합해 9개이다. 9가지 색을 모두 한 번씩 쓰는 배치는 9!가지이고, 90도씩 회전한 네 배치가 같은 문양이 된다. 모든 색이 달라 90도, 180도, 270도 회전이 색 배치를 그대로 두지 않으므로 9!을 4로 나눈다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

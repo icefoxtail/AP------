@@ -1,0 +1,116 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -2,
+      13
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7/2",
+          "7/2"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "9"
+        ],
+        "domain": [
+          "-6/5",
+          "6/5"
+        ],
+        "color": "WARM",
+        "label": "y=9x^2"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ],
+        "domain": [
+          "-7/2",
+          "7/2"
+        ],
+        "color": "GREEN",
+        "label": "y=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "9"
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "9"
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "9"
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=9와 y=x²의 교점은 A(−3,9), D(3,9)이고, y=ax²의 교점은 B, C이다. AB=BC=CD이려면 B, C의 x좌표가 각각 −1, 1이어야 하므로 y=ax²의 그래프가 점 (1,9)를 지난다. 9=a×1²에서 a=9이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선과 수평선 y=9가 그려져 있고, 수평선 위에 왼쪽부터 네 교점 A, B, C, D가 표시되어 있다. 세 선분 AB, BC, CD가 나란히 그려져 있다.",
+  "newVisualInformation": [
+    "수평선 y=9와 두 포물선의 교점 A, B, C, D",
+    "선분 AB, BC, CD"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 다음 그림과 같이 직선 $y=9$가 두 이차함수 $y=x^2, y=ax^2$의 그래프와 만나는 네 점을 각각 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$라 할 때, $\\overline{\\text{AB}}=\\overline{\\text{BC}}=\\overline{\\text{CD}}$이기 위한 상수 $a$의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

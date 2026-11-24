@@ -405,7 +405,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 f와 주황 지수곡선 g가 그려져 있다. 곡선 g는 점 P(0,1)을 지나고 오른쪽으로 갈수록 위로 올라간다.",
+    "solutionImageCaption": "그림에서 일차함수 f(x)=x+1이므로 1−f(x)=−x이다. 따라서 (1/2)의 (1−f(x))제곱은 2의 x제곱이 된다. 이 그래프는 증가하고 (0,1)을 지나며 x축을 점근선으로 갖는다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -525,7 +529,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f와 주황, 초록, 분홍의 로그곡선 세 개가 그려져 있다. 경계점 P(−1,0)와 Q(0,−2)가 표시되어 있다.",
+    "solutionImageCaption": "제3사분면에서 첫 곡선은 x가 −1보다 크고 0보다 작은 범위에 있다. t=3의 (x+1)제곱으로 두면 t는 1보다 크고 3보다 작으며, 교점 조건에서 a=3의 (2−t)제곱−로그₃t+1이다. 이 값은 t가 커질수록 4에서 1/3로 감소하므로 a는 1/3보다 크고 4보다 작다. 따라서 α+β=13/3이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -648,7 +656,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f가 0과 2를 오가며 반복되고, 주황색 로그곡선 g가 오른쪽으로 갈수록 완만하게 올라간다. x축에는 1, 2, 3, 4 눈금이, y축에는 2 눈금이 보인다.",
+    "solutionImageCaption": "f는 정수 k에서 k가 짝수이면 0, 홀수이면 2이고, 각 단위구간에서 0과 2 사이를 단조롭게 오간다. n=4일 때 로그의 밑은 12이고, 이 로그 그래프를 g라 하면 g의 값이 2가 되는 x는 144이다. 1부터 144까지의 143개 단위구간마다 두 그래프가 한 번씩 만나므로 교점은 143개이고 n=4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1063,7 +1075,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 2π까지의 사인 그래프와 수평선 y=−1/2이 두 점에서 만나고, 그래프의 봉우리와 골짜기에 점이 표시되어 있다.",
+    "solutionImageCaption": "사인(π−x)=사인 x이므로 부등식은 2(1−사인²x)+3사인 x≤0, 즉 (2사인 x+1)(사인 x−2)≥0이다. −1≤사인 x≤1이므로 사인 x≤−1/2이고, 0≤x<2π에서 해는 7π/6≤x≤11π/6이다. 최댓값과 최솟값의 합은 11π/6+7π/6=3π이므로 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1291,6 +1307,10 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f와 주황색 로그곡선 g, 가로선 y=3이 보이고, 가로선 위에 점 A, 중점 M, 점 B가 왼쪽부터 놓여 있다. 세 점의 좌표가 각각 표시되어 있다.",
+    "solutionImageCaption": "f의 역함수는 밑이 3인 로그를 오른쪽으로 2, 위로 1만큼 옮긴 그래프이다. 이를 왼쪽으로 2, 위로 a만큼 옮기면 g는 밑이 3인 로그를 위로 1+a만큼 옮긴 그래프가 된다. y=3과 만나는 점 A(1,3), B(3의 2−a제곱,3)의 중점 M이 (14,3)이므로 3의 2−a제곱=27이고 a=−1이다. 따라서 답은 −1이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -12,
+      12
+    ],
+    "curves": [
+      {
+        "id": "s",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-5"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-5x"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: b=0으로 두고 a=-5와 a=-1을 비교하면 a=-5인 직선이 y축에 더 가깝게 서 있어 더 가파르다. 가파른 정도는 a의 값 자체가 아니라 절댓값이 클수록 커지므로 'a값이 클수록 가파르다'는 ③은 옳지 않다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "원점을 지나는 파란 직선 y=-5x가 주황 직선 y=-x보다 가파르게 내려간다.",
+  "newVisualInformation": [
+    "기울기의 절댓값에 따른 직선의 가파른 정도를 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 다음 중 일차함수 $y=ax+b$에 대한 설명으로 잘못된 것은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

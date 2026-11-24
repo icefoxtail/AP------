@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "49/5",
+          "-49/10"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        2
+      ]
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      -1,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "79/10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "공의 높이는 y=−4.9x²+9.8x+3=−4.9(x−1)²+7.9이다. 따라서 x=1일 때 공은 최고 높이 7.9미터에 도달한다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점 V가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 V와 축 이름을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 지상 $3\\text{ m}$의 높이에서 지면에 수직인 방향으로 초속 $9.8\\text{ m}$로 던진 공의 $x$초 후의 높이 $y\\text{ m}$는 $y=-4.9x^2+9.8x+3$라고 한다. 쏘아 올린 공의 최고 높이는 얼마인가? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

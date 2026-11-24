@@ -360,7 +360,12 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심각 두 배 관계의 직접 적용",
-    "decisiveStep": "AOC=2B에B50을넣는다."
+    "decisiveStep": "AOC=2B에B50을넣는다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 세 꼭짓점을 지나는 원이 있고 외심 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 꼭짓점 B의 각 50°와 중심각 AOC 100°가 표시되어 있다.",
+    "solutionImageCaption": "예: ∠A=60°, ∠B=50°, ∠C=70°인 삼각형으로 그렸다. 외심 O에서 세 꼭짓점까지의 거리가 같아 OA=OB=OC이다. 호 AC에 대한 중심각 ∠AOC는 원주각 ∠B의 2배이므로 ∠AOC=2×50°=100°이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -411,7 +416,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내접반지름을 넓이와 둘레로 구해 영역 차 계산",
-    "decisiveStep": "직각삼각형넓이24와둘레24로r2를구한뒤원넓이를뺀다."
+    "decisiveStep": "직각삼각형넓이24와둘레24로r2를구한뒤원넓이를뺀다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안에 중심 I와 반지름 2인 내접원이 있고, 원을 뺀 나머지 부분이 색칠되어 있다. 세 변에 10, 8, 6이 표시되고 반지름에 r=2가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형 ABC의 넓이는 2분의 1 곱하기 8 곱하기 6, 즉 24 제곱센티미터이다. 내접원의 반지름은 8과 6을 더한 값에서 10을 뺀 것의 절반인 2 센티미터이므로 원의 넓이는 4π 제곱센티미터이다. 색칠한 부분의 넓이는 24에서 4π를 뺀 값이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -922,7 +932,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "순환하는 같은 각과 외각으로 내부 AA 구성",
-    "decisiveStep": "외각식에서같은표시각을상쇄해D=A,E=B,F=C를얻고둘레를1/2로환산한다."
+    "decisiveStep": "외각식에서같은표시각을상쇄해D=A,E=B,F=C를얻고둘레를1/2로환산한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 세 선분이 만나 작은 삼각형 DEF를 이루고 있다. 변 AB, BC, CA에 12, 10, 8, 변 DE에 6이 표시되어 있고 세 꼭짓점의 각에 같은 표시가 있다.",
+    "solutionImageCaption": "∠BAE=∠CBF=∠ACD를 θ라 하면 외각의 성질에서 ∠DEF=∠B, ∠EFD=∠C, ∠FDE=∠A이다. 따라서 삼각형 DEF는 삼각형 ABC와 닮음이고, DE:AB=6:12=1:2이다. 삼각형 ABC의 둘레가 30이므로 삼각형 DEF의 둘레는 30×1/2=15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -970,7 +984,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "네 중점연결선의 대각선 절반 둘레",
-    "decisiveStep": "대각선별로두중점연결선이각각절반임을읽어14+10을구한다."
+    "decisiveStep": "대각선별로두중점연결선이각각절반임을읽어14+10을구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD의 두 대각선 AC와 BD가 그어져 있고 네 변의 중점 P, Q, R, S를 차례로 이은 사각형 PQRS가 안쪽에 있다. PQ와 RS에 AC의 절반, QR과 SP에 BD의 절반이 적혀 있고 같은 길이의 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: AC와 BD의 길이의 합이 24cm인 사각형으로 그렸다. △ABC에서 P, Q가 AB, BC의 중점이므로 중점연결정리에 의해 PQ=(1/2)AC이고 RS도 같다. 같은 방법으로 QR=SP=(1/2)BD이다. 따라서 □PQRS의 둘레는 AC+BD=24cm이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

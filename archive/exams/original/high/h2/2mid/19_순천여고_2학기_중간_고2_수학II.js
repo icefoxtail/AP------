@@ -124,7 +124,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_FUNCTION_VALUE_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: y축에 대칭인 사차함수 그래프가 x축과 네 점 A, B, C, D에서 만나고, x축 아래에 두 개의 같은 깊이 골짜기가 있다.",
+    "solutionImageCaption": "f(-1)f(-2)<0과 f(-3)f(-4)<0에서 사잇값 정리에 의해 (-2,-1)과 (-4,-3)에 각각 근이 있다. f(x)=f(-x)이므로 (1,2)와 (3,4)에도 근이 있어 서로 다른 네 구간에 근이 적어도 하나씩 있다. 예로 f(x)=1/10(x²−9/4)(x²−49/4)는 네 근 ±3/2, ±7/2만 갖는다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

@@ -1,0 +1,459 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "43"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "43"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA3A4",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA4A1",
+      "refs": [
+        "A4",
+        "A1"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2B3",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3B4",
+      "refs": [
+        "B3",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB4B1",
+      "refs": [
+        "B4",
+        "B1"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2C3",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3C4",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "id": "sC4C1",
+      "refs": [
+        "C4",
+        "C1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "A2",
+              "A3",
+              "A4"
+            ]
+          }
+        ],
+        "label": "121",
+        "labelPlacement": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "B1",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ],
+        "label": "169",
+        "labelPlacement": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rC",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "C1",
+              "C2",
+              "C3",
+              "C4"
+            ]
+          }
+        ],
+        "label": "225",
+        "labelPlacement": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dA",
+        "from": "A1",
+        "to": "A2",
+        "label": "11",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dB",
+        "from": "B1",
+        "to": "B2",
+        "label": "13",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dC",
+        "from": "C1",
+        "to": "C2",
+        "label": "15",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "연속하는 세 홀수를 x−4, x−2, x라 하면 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작으므로 x²+65=(x−2)²+(x−4)²이다. 우변을 전개하면 x²+65=2x²−12x+20이고, 정리하면 x²−12x−45=0이다. (x−15)(x+3)=0에서 양수인 홀수는 x=15이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로가 각각 11, 13, 15인 세 정사각형이 나란히 있고, 각 정사각형의 넓이 121, 169, 225가 적혀 있다.",
+  "newVisualInformation": [
+    "세 정사각형의 넓이 121, 169, 225",
+    "가장 큰 정사각형과 나머지 두 정사각형의 넓이 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "가",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3.7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": false
+      },
+      {
+        "kind": "SET",
+        "label": "나",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": false
+      },
+      {
+        "kind": "SET",
+        "label": "공통",
+        "color": "GREEN",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": false
+      }
+    ]
+  },
+  "caption": "(1) 가: 13<2ˣ<256이므로 log₂13<x<8이고 log₂13은 약 3.70이다. (2) 나: x>2에서 x(x−2)≥8이므로 x≥4이다. (3) 수직선에서 두 해의 공통 범위는 4≤x<8이고 이 범위의 정수는 4, 5, 6, 7이므로 합은 22이다.",
+  "accessibilityDescription": "같은 수직선 위에 세 줄이 있다. 첫 줄은 약 3.7과 8 사이의 열린 구간, 둘째 줄은 4 이상의 반직선, 셋째 줄은 4 이상 8 미만의 구간이며 정수 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 로그부등식의 해 구간과 공통 구간의 정수 4, 5, 6, 7을 수직선에 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형1] (가) $\\log_3(2^x-13)<5$, (나) $\\log_2x+\\log_2(x-2)\\ge3$이다. (1) (가)의 해 (2) (나)의 해 (3) 둘 다 만족하는 정수 $x$의 합을 구하시오. [총 7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

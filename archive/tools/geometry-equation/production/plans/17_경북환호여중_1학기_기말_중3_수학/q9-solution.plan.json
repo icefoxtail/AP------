@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -2,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "7",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "처음 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로·세로 변화량을 따로 읽는다.",
+  "accessibilityDescription": "처음 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로·세로 변화량을 따로 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 이차함수 $y=-(x-2)^2+7$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하였더니 이차함수 $y=-(x+1)^2+2$의 그래프와 일치하였다. 이때 두 상수 $m-n$의 값을 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "꼭짓점(2,7)에서(−1,2)로 이동하여m=−3,n=−5, m−n=2로④.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "처음 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로·세로 변화량을 따로 읽는다."
+  ]
+}

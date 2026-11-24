@@ -1,0 +1,1260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-6",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-11",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P41",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-6",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q41",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P43",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q43",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P44",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q44",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P50",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q50",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-17",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P51",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q51",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-11",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P52",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q52",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P53",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q53",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P54",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q54",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P55",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q55",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P00",
+    "Q00",
+    "P10",
+    "Q10",
+    "P11",
+    "Q11",
+    "P20",
+    "Q20",
+    "P21",
+    "Q21",
+    "P22",
+    "Q22",
+    "P30",
+    "Q30",
+    "P31",
+    "Q31",
+    "P32",
+    "Q32",
+    "P33",
+    "Q33",
+    "P40",
+    "Q40",
+    "P41",
+    "Q41",
+    "P42",
+    "Q42",
+    "P43",
+    "Q43",
+    "P44",
+    "Q44",
+    "P50",
+    "Q50",
+    "P51",
+    "Q51",
+    "P52",
+    "Q52",
+    "P53",
+    "Q53",
+    "P54",
+    "Q54",
+    "P55",
+    "Q55"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "P00",
+        "P55"
+      ]
+    },
+    {
+      "id": "sR",
+      "refs": [
+        "P00",
+        "P50"
+      ]
+    },
+    {
+      "id": "sB",
+      "refs": [
+        "P55",
+        "P50"
+      ]
+    },
+    {
+      "id": "c00",
+      "refs": [
+        "Q00",
+        "P00"
+      ]
+    },
+    {
+      "id": "c10",
+      "refs": [
+        "Q10",
+        "P10"
+      ]
+    },
+    {
+      "id": "c11",
+      "refs": [
+        "Q11",
+        "P11"
+      ]
+    },
+    {
+      "id": "c20",
+      "refs": [
+        "Q20",
+        "P20"
+      ]
+    },
+    {
+      "id": "c21",
+      "refs": [
+        "Q21",
+        "P21"
+      ]
+    },
+    {
+      "id": "c22",
+      "refs": [
+        "Q22",
+        "P22"
+      ]
+    },
+    {
+      "id": "c30",
+      "refs": [
+        "Q30",
+        "P30"
+      ]
+    },
+    {
+      "id": "c31",
+      "refs": [
+        "Q31",
+        "P31"
+      ]
+    },
+    {
+      "id": "c32",
+      "refs": [
+        "Q32",
+        "P32"
+      ]
+    },
+    {
+      "id": "c33",
+      "refs": [
+        "Q33",
+        "P33"
+      ]
+    },
+    {
+      "id": "c40",
+      "refs": [
+        "Q40",
+        "P40"
+      ]
+    },
+    {
+      "id": "c41",
+      "refs": [
+        "Q41",
+        "P41"
+      ]
+    },
+    {
+      "id": "c42",
+      "refs": [
+        "Q42",
+        "P42"
+      ]
+    },
+    {
+      "id": "c43",
+      "refs": [
+        "Q43",
+        "P43"
+      ]
+    },
+    {
+      "id": "c44",
+      "refs": [
+        "Q44",
+        "P44"
+      ]
+    },
+    {
+      "id": "c50",
+      "refs": [
+        "Q50",
+        "P50"
+      ]
+    },
+    {
+      "id": "c51",
+      "refs": [
+        "Q51",
+        "P51"
+      ]
+    },
+    {
+      "id": "c52",
+      "refs": [
+        "Q52",
+        "P52"
+      ]
+    },
+    {
+      "id": "c53",
+      "refs": [
+        "Q53",
+        "P53"
+      ]
+    },
+    {
+      "id": "c54",
+      "refs": [
+        "Q54",
+        "P54"
+      ]
+    },
+    {
+      "id": "c55",
+      "refs": [
+        "Q55",
+        "P55"
+      ]
+    }
+  ],
+  "hiddenPointStyle": "NONE",
+  "hiddenPointNames": [
+    "P00",
+    "Q00",
+    "P10",
+    "Q10",
+    "P11",
+    "Q11",
+    "P20",
+    "Q20",
+    "P21",
+    "Q21",
+    "P22",
+    "Q22",
+    "P30",
+    "Q30",
+    "P31",
+    "Q31",
+    "P32",
+    "Q32",
+    "P33",
+    "Q33",
+    "P40",
+    "Q40",
+    "P41",
+    "Q41",
+    "P42",
+    "Q42",
+    "P43",
+    "Q43",
+    "P44",
+    "Q44",
+    "P50",
+    "Q50",
+    "P51",
+    "Q51",
+    "P52",
+    "Q52",
+    "P53",
+    "Q53",
+    "P54",
+    "Q54",
+    "P55",
+    "Q55"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "t00",
+        "ownerSegment": "c00",
+        "text": "1"
+      },
+      {
+        "id": "t10",
+        "ownerSegment": "c10",
+        "text": "1"
+      },
+      {
+        "id": "t11",
+        "ownerSegment": "c11",
+        "text": "1"
+      },
+      {
+        "id": "t20",
+        "ownerSegment": "c20",
+        "text": "1"
+      },
+      {
+        "id": "t21",
+        "ownerSegment": "c21",
+        "text": "2"
+      },
+      {
+        "id": "t22",
+        "ownerSegment": "c22",
+        "text": "1"
+      },
+      {
+        "id": "t30",
+        "ownerSegment": "c30",
+        "text": "1"
+      },
+      {
+        "id": "t31",
+        "ownerSegment": "c31",
+        "text": "3"
+      },
+      {
+        "id": "t32",
+        "ownerSegment": "c32",
+        "text": "3"
+      },
+      {
+        "id": "t33",
+        "ownerSegment": "c33",
+        "text": "1"
+      },
+      {
+        "id": "t40",
+        "ownerSegment": "c40",
+        "text": "1"
+      },
+      {
+        "id": "t41",
+        "ownerSegment": "c41",
+        "text": "4"
+      },
+      {
+        "id": "t42",
+        "ownerSegment": "c42",
+        "text": "6"
+      },
+      {
+        "id": "t43",
+        "ownerSegment": "c43",
+        "text": "4"
+      },
+      {
+        "id": "t44",
+        "ownerSegment": "c44",
+        "text": "1"
+      },
+      {
+        "id": "t50",
+        "ownerSegment": "c50",
+        "text": "1"
+      },
+      {
+        "id": "t51",
+        "ownerSegment": "c51",
+        "text": "5"
+      },
+      {
+        "id": "t52",
+        "ownerSegment": "c52",
+        "text": "10"
+      },
+      {
+        "id": "t53",
+        "ownerSegment": "c53",
+        "text": "10"
+      },
+      {
+        "id": "t54",
+        "ownerSegment": "c54",
+        "text": "5"
+      },
+      {
+        "id": "t55",
+        "ownerSegment": "c55",
+        "text": "1"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "파스칼의 삼각형은 각 줄의 양 끝을 1로 두고 안쪽 수를 바로 위 두 수의 합으로 채운다. n=5인 줄은 1, 5, 10, 10, 5, 1이고 각 줄의 합은 1, 2, 4, 8, 16, 32이다. 이항계수 사이에는 대칭성과 파스칼 성질이 성립하고 각 줄의 합이 2의 n제곱이라는 성질도 있다. 따라서 답은 n=0부터 5까지의 파스칼 삼각형과 대칭성, 파스칼 성질을 서술하는 것이다.",
+  "accessibilityDescription": "여섯 줄의 수가 삼각형 모양으로 배열되어 있고 맨 위 1에서 아래로 갈수록 수가 늘어난다. 맨 아랫줄에는 1, 5, 10, 10, 5, 1이 있으며 삼각형의 두 빗변과 밑변이 선으로 그려져 있다.",
+  "newVisualInformation": [
+    "n=0부터 5까지 여섯 줄로 배열된 파스칼의 삼각형의 수",
+    "각 줄의 양 끝 1과 안쪽의 합으로 만들어진 수",
+    "삼각형의 두 빗변과 밑변 경계선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] $n=5$일 때까지의 파스칼의 삼각형을 구하고, 이항계수 사이에 성립하는 성질에 대해 배운 것을 2개 이상 서술하시오. [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

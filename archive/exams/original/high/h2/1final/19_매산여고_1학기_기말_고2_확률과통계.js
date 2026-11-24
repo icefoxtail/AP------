@@ -309,7 +309,11 @@ window.questionBank = [
       "midUnit": "조건부확률",
       "l3": "사건의 독립",
       "l4": "독립 판정"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 1부터 6까지의 칸이 있고, 위쪽 네 줄에 사건 A, B, C, D가 포함하는 눈을 서로 다른 색의 짧은 막대로 표시한 그림이다.",
+    "solutionImageCaption": "주사위 눈은 1부터 6까지이고 A는 1, 3, 5, B는 2, 3, 5, C는 3, 6, D는 1, 2, 4이다. P(A)=P(B)=P(D)=1/2, P(C)=1/3이고 A∩C인 3에서 P(A∩C)=1/6=P(A)P(C)이므로 A와 C는 독립이다. 나머지 짝은 교집합의 확률이 두 확률의 곱과 다르다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -738,7 +742,11 @@ window.questionBank = [
       "midUnit": "순열과 조합",
       "l3": "순열",
       "l4": "중복·원순열"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A⊂B이므로 전체집합의 각 원소가 갈 수 있는 곳은 세 가지이다. 그림의 안쪽(A와 B에 모두 속함), 바깥 고리(B에만 속함), B 밖(어느 쪽에도 속하지 않음)이다. A에만 속하는 경우는 A⊂B에 어긋나 없다. 원소 5개가 각각 3가지 중 하나를 고르므로 경우의 수는 3의 5제곱이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1050,7 +1058,11 @@ window.questionBank = [
       "midUnit": "확률의 뜻과 활용",
       "l3": "확률의 기본",
       "l4": "확률 계산"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "첫 두 공에 빨간 공이 하나라도 있으면 그대로 B에 들어가 목표가 성립한다. 처음 두 공이 모두 검은색이면 A에는 빨간 공 4개와 검은 공 1개가 남아, 다음 두 공 중 적어도 하나는 반드시 빨간 공이다. 두 경우 모두 B에 빨간 공이 들어가므로 확률은 1이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

@@ -1,0 +1,163 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1029/1280",
+          "-1029/1280",
+          "1029/5120"
+        ]
+      },
+      {
+        "coefficients": [
+          "62",
+          "-90",
+          "93/2",
+          "-10",
+          "3/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "73/4",
+          "-10",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "x": "5",
+        "y": "-27/4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V1",
+        "x": "1",
+        "y": "1029/5120",
+        "marker": "NONE"
+      },
+      {
+        "id": "M1",
+        "x": "2",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "V2",
+        "x": "3",
+        "y": "5/4",
+        "marker": "NONE"
+      },
+      {
+        "id": "M2",
+        "x": "5",
+        "y": "-27/4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V1",
+        "M1",
+        "V2",
+        "M2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "4",
+        "7"
+      ],
+      "y": [
+        "-4",
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "a",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "b",
+          "x": "(14-sqrt(10))/3",
+          "y": "0"
+        },
+        {
+          "id": "c",
+          "x": "8",
+          "y": "9/4"
+        },
+        {
+          "id": "p1",
+          "curveX": "1",
+          "unnamed": true
+        },
+        {
+          "id": "p2",
+          "curveX": "2",
+          "unnamed": true
+        },
+        {
+          "id": "p3",
+          "curveX": "3",
+          "unnamed": true
+        },
+        {
+          "id": "p4",
+          "curveX": "5",
+          "unnamed": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "9/32",
+          "intercept": "0",
+          "label": "y=9x/32",
+          "labelAt": 0.2,
+          "ownership": "NEAREST"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 끝점 a=(0,0), c=(8,9/4)를 잇는 할선의 기울기는 9/32이다. 이 기울기와 평행한 접선은 첫 상승 구간에서 2개, 둘째 상승 구간에서 2개, 마지막 상승 구간에서 1개이므로 m=5이다. 롤의 정리를 적용하는 [0,b]에서 수평 접선은 극대 2개와 극소 1개이므로 n=3이다. 따라서 m+n=8이고 답은 ②이다.",
+  "accessibilityDescription": "가로축 x, 세로축 y의 좌표평면에 a=0에서 시작해 여러 번 오르내린 곡선 f가 그려져 있다. 곡선은 x=1과 x=3에서 극대, x=2와 x=5에서 극소이고, 점 a, b, c와 두 끝점을 잇는 할선이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 끝점 a, c를 잇는 할선",
+    "극대 2개와 극소 2개의 위치",
+    "롤의 정리에 쓰는 점 b"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[a, c]$에서 연속이고, 열린구간 $(a, c)$에서 미분가능한 함수 $y=f(x)$의 그래프가 다음 그림과 같을 때, $\\frac{f(c)-f(a)}{c-a} = f'(d) (a < d < c)$를 만족하는 $d$의 개수를 $m$, 닫힌구간 $[a, b]$에서 롤의 정리를 만족시키는 실수의 개수를 $n$이라고 할 때, $m+n$은? [3.7점]\n<img src=\"assets/images/19_순천고_2학기_중간_고2_수학II/q12.png\" alt=\"19_순천고_2학기_중간_고2_수학II Q12\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

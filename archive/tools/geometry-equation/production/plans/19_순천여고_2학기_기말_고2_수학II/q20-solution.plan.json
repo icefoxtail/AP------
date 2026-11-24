@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -3,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "f′(x)=2x+b에서 f′(3)=6+b=2이므로 b=−4이고, f(3)=9−12+c=0에서 c=3이다. 따라서 f(x)=x²−4x+3=(x−1)(x−3)이고 방정식 f(x)=0의 해는 x=1, 3이다. 따라서 답은 1, 3이다.",
+  "accessibilityDescription": "위로 열린 포물선이 x축과 두 점 A, B에서 만나고, 꼭짓점 V가 x축 아래에 있으며 y절편 C가 표시되어 있다. 점 A, B, V에는 각각의 좌표가 함께 적혀 있다.",
+  "newVisualInformation": [
+    "포물선 f의 두 x절편 A(1, 0), B(3, 0)과 꼭짓점 V(2, −1)를 좌표와 함께 표시했다.",
+    "y절편 C(0, 3)를 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 다항함수 $f(x)$와 그 도함수 $f'(x)$에 대하여 $\\displaystyle\\lim_{x\\to-\\infty}\\dfrac{f'(x)}{x}=2$, $\\displaystyle\\lim_{x\\to3}\\dfrac{f(x)}{x-3}=2$가 성립할 때, 방정식 $f(x)=0$의 해를 구하는 풀이과정과 답을 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

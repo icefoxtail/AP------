@@ -39,7 +39,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "62d24d343555bf9d44fcfb7378a523a7c756fc7c0b5de942068c3aa070938430"
+    "solutionSha256": "62d24d343555bf9d44fcfb7378a523a7c756fc7c0b5de942068c3aa070938430",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 y가 있는 좌표평면에 y축에 대하여 대칭인 사차곡선이 그려져 있고, 원점 아래의 최저점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=4x(x²+2)이므로 x<0에서 f′(x)<0이고 x>0에서 f′(x)>0이다. 따라서 x=0에서 극솟값 f(0)=−4를 갖는다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -242,7 +246,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "067064f02ba7d379a7a2dcd183e4bfd41f2d1752727ecedb0d6e47a8dfcd22c6"
+    "solutionSha256": "067064f02ba7d379a7a2dcd183e4bfd41f2d1752727ecedb0d6e47a8dfcd22c6",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "도함수의 부호 변화만 보존한 예시이며 x=1부터 5까지를 확대했다. 축 위아래 위치로 원함수의 증가와 감소를 구분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -282,7 +290,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "145aaa260cfc6e257e47550f7dd8e9279a3667ffd7133725e1ffb047510e8bce"
+    "solutionSha256": "145aaa260cfc6e257e47550f7dd8e9279a3667ffd7133725e1ffb047510e8bce",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "절댓값 안의 부호가 바뀌는 지점에서 두 적분 구간을 나누며 두 영역 모두 축 아래에 놓인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -362,7 +374,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "682d9953b69ab8761ce1604601cde7e44328f738d1a442caed522a1b511c5dd9"
+    "solutionSha256": "682d9953b69ab8761ce1604601cde7e44328f738d1a442caed522a1b511c5dd9",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로등 밑에서 꼭대기까지 높이 3.4가 표시되고, 사람의 머리에서 지면의 그림자 끝으로 햇빛이 지나간다. 사람까지의 거리 x와 그림자 길이 y가 지면에 표시되어 있다.",
+    "solutionImageCaption": "가로등과 사람, 그림자 끝이 만드는 두 직각삼각형은 닮음이고 높이의 비가 3.4:1.7=2:1이다. 사람까지의 거리를 x, 그림자 길이를 y라 하면 닮음비에서 y=x이다. 시간에 대해 미분하면 dy/dt=dx/dt이고 사람의 속도가 1.5 m/s이므로 그림자 길이의 변화율도 1.5 m/s이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -446,7 +462,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "24999e9f876b8d0686213d15f2124827bbe5089f7834ec6507e4429e85e5cd04"
+    "solutionSha256": "24999e9f876b8d0686213d15f2124827bbe5089f7834ec6507e4429e85e5cd04",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "수평선 y=k가 삼차곡선과 세 점에서 만나려면 두 극값 높이 사이를 지나야 한다. 그림의 수평선은 k=-2인 예시이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -526,7 +546,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "8bb173fb6842f8cef0cc0c1100154486af0d3b3e7276aa8f08cd42b3ee5c8d45"
+    "solutionSha256": "8bb173fb6842f8cef0cc0c1100154486af0d3b3e7276aa8f08cd42b3ee5c8d45",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수 그래프가 y축 아래의 꼭짓점에서 시작해 양쪽으로 올라가고, 꼭짓점과 그래프 위의 한 점에 이름과 좌표가 표시되어 있다.",
+    "solutionImageCaption": "주어진 등식을 두 번 미분하면 f(x)=12x²−2a이다. x=−1을 대입한 두 조건에서 a=3, b=−2이므로 f(x)=12x²−6이고 f(1)=6이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -566,7 +591,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "028d10dcdf1cc363226318101438d37fd3c2a89412782d7341831c6762d86af2"
+    "solutionSha256": "028d10dcdf1cc363226318101438d37fd3c2a89412782d7341831c6762d86af2",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "적분식을 정리한 삼차함수와 수평선의 교점 수를 비교한다. 수평선은 a=0인 예시이며 세 교점이 생기는 높이 범위를 두 극값으로 정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -650,7 +679,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "b5e61f9559db7bc5dc646a8a94601d20f2ff813f727cda9fab1a261151fae5b2"
+    "solutionSha256": "b5e61f9559db7bc5dc646a8a94601d20f2ff813f727cda9fab1a261151fae5b2",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프가 왼쪽 아래에서 오른쪽 위로 뻗고, 그래프 위의 점 P에 이름과 좌표가 표시되어 있다.",
+    "solutionImageCaption": "주어진 식을 미분하면 f(x)=4x³+3x²−2이고, x=1을 대입한 조건에서 a=1이다. 따라서 f(1)=5이고 구하는 극한은 2(a+1)f(a)=20이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -690,7 +723,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "ff4e2d06b65e1e6ec9a9217a49915fe8a0d847f7f13b26128cd27b8ea15891f2"
+    "solutionSha256": "ff4e2d06b65e1e6ec9a9217a49915fe8a0d847f7f13b26128cd27b8ea15891f2",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "삼차함수는 한 영점에서 축에 접하고 다른 영점에서 축을 가로지른다. 절댓값을 취할 때 접하는 영점과 가로지르는 영점의 매끄러움 차이를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -730,7 +767,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "e7469795792a81b475caff864a8126bd07faa23b3a4ae14a51929f76d7d83b3d"
+    "solutionSha256": "e7469795792a81b475caff864a8126bd07faa23b3a4ae14a51929f76d7d83b3d",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "교점 조건을 k=x|x−2|로 정리한다. 수평선 높이가 꼭짓점이나 두 조각의 접합점 높이를 지날 때 교점 수가 달라진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -766,7 +807,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "5cabf7b117683791564457bd3d75936e2aaf505f131f8b6685a78be07e0d116c"
+    "solutionSha256": "5cabf7b117683791564457bd3d75936e2aaf505f131f8b6685a78be07e0d116c",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "닫힌구간의 양 끝과 내부의 두 임계점을 함께 비교한다. 양 끝의 값도 최댓값과 최솟값의 후보에서 빼지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -802,7 +847,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "d1ff37754523f817477dba6cdf5e600285e5951dcd50d2bf4f0501db87de4ab0"
+    "solutionSha256": "d1ff37754523f817477dba6cdf5e600285e5951dcd50d2bf4f0501db87de4ab0",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 두 점 A, B에서 만나고, 꼭짓점 V가 x축 아래에 있으며 y절편 C가 표시되어 있다. 점 A, B, V에는 각각의 좌표가 함께 적혀 있다.",
+    "solutionImageCaption": "f′(x)=2x+b에서 f′(3)=6+b=2이므로 b=−4이고, f(3)=9−12+c=0에서 c=3이다. 따라서 f(x)=x²−4x+3=(x−1)(x−3)이고 방정식 f(x)=0의 해는 x=1, 3이다. 따라서 답은 1, 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -880,6 +929,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "9fa803807c9c545d0ba19bff9c96b29879c7cc9658304db995c74e01767cfe86"
+    "solutionSha256": "9fa803807c9c545d0ba19bff9c96b29879c7cc9658304db995c74e01767cfe86",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프가 왼쪽 아래에서 올라와 x축을 지나 극댓점을 이룬 뒤, 오른쪽의 한 점에서 x축에 접한 뒤 다시 올라간다. 그래프 위의 세 점 A, B, C에 이름과 좌표가 표시되어 있다.",
+    "solutionImageCaption": "조건 (나)에서 g(x)=cx이고, (가)에 넣으면 f(x)=x³+kx²+c/2(x²−4)이다. f(2)=0, f′(2)=0에서 k=−2, c=−2이므로 f(x)=x³−3x²+4이다. 그래프는 점 A(−1, 0)에서 x축을 지나고 점 C(2, 0)에서 x축에 접하며, 극댓점 B(0, 4)를 가진다. 따라서 답은 f(x)=x³−3x²+4이다.",
+    "solutionImageSize": "medium"
   }
 ];

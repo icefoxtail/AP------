@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "5",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x^3+5x+4",
+    "domain": [
+      -2.5,
+      1.8
+    ],
+    "viewport": [
+      -2.5,
+      2,
+      -14,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(1)=10이므로 분자는 x³+5x−6=(x−1)(x²+x+6)으로 인수분해된다. 분모는 (x−1)(x+1)이므로 약분하면 극한은 (1+1+6)/(1+1)=4이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가파르게 증가하는 삼차곡선과 그 위의 점 P(1, 10)이 표시되어 있다.",
+  "newVisualInformation": [
+    "삼차함수 y=x³+5x+4의 그래프와 점 P(1, 10)을 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+5x+4$에 대하여 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)-f(1)}{x^2-1}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -585,7 +585,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 5보다 작은 수 전체가 왼쪽으로 뻗은 구간이 있고 5에는 속이 빈 점이 있다.",
+    "solutionImageCaption": "0.5x−1<−(1−2x)/6의 양변에 6을 곱하면 3x−6<−1+2x이므로 x<5이다. 수직선에서 5는 속이 빈 점이어서 해에 포함되지 않는다. 따라서 x<5인 수직선인 ③이 답이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

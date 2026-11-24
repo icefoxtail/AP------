@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "4"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "6"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 41.63,
+        "arcs": 1,
+        "side": "INNER",
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 41.63,
+        "arcs": 1,
+        "side": "INNER",
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 360
+  },
+  "caption": "∠B=∠ADE이고 ∠A가 공통이므로 삼각형 ADE와 삼각형 ABC는 닮음이다. 닮음비에서 AD:AB=AE:AC이므로 6:12=4:(6+x)이다. 이를 풀면 6+x=8이므로 x=2이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 점 E, 변 AC 위에 점 D가 있고 선분 DE가 그려져 있다. 변 AB에 12, 선분 AE에 4, 선분 AD에 6, 선분 DC에 x가 표시되어 있고 각 B와 각 ADE에 같은 각 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 ADE와 삼각형 ABC의 닮음",
+    "각 B와 각 ADE의 같은 각 표시",
+    "변 AB 12, AE 4, AD 6, DC x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 그림에서 $\\angle \\text{B} = \\angle \\text{ADE}$ 일 때, $\\overline{\\text{CD}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/19_이수중_2학기_중간_중2_수학/q20.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

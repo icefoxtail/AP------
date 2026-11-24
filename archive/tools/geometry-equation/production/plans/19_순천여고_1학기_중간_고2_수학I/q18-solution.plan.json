@@ -1,0 +1,61 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6.28
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -1.5,
+      1.5
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "사인(π−x)=사인 x이므로 부등식은 2(1−사인²x)+3사인 x≤0, 즉 (2사인 x+1)(사인 x−2)≥0이다. −1≤사인 x≤1이므로 사인 x≤−1/2이고, 0≤x<2π에서 해는 7π/6≤x≤11π/6이다. 최댓값과 최솟값의 합은 11π/6+7π/6=3π이므로 답은 ⑤이다.",
+  "accessibilityDescription": "0부터 2π까지의 사인 그래프와 수평선 y=−1/2이 두 점에서 만나고, 그래프의 봉우리와 골짜기에 점이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. $0 \\le x < 2\\pi$일 때, 부등식 $2\\cos^2 x + 3\\sin(\\pi-x) \\le 0$을 만족시키는 $x$의 최댓값과 최솟값의 합을 구하면? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "0부터 2π까지의 사인 그래프",
+    "수평선 y=−1/2",
+    "두 교점과 극값 표시"
+  ]
+}
