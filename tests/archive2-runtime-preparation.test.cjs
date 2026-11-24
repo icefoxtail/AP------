@@ -72,6 +72,6 @@ test('registered runtime verification preserves the snapshot and executes the ex
   assert.equal(calls.length, 1);
   assert.equal(calls[0].args[0], '--test');
   assert.ok(calls[0].args.includes('archive/tools/meta-foundation/rpm-active-resolver.test.mjs'));
-  assert.equal(calls[0].options.timeout, 600000);
+  assert.equal(calls[0].options.timeout, 180000);
   assert.equal(calls[0].args.includes('--write'), false);
 });

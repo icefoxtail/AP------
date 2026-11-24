@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "주어진 해를 나타낸 수직선"
+  },
+  "caption": "수직선에 -3에 속이 찬 원을 표시하고 오른쪽으로 향하는 화살표가 그려져 있다.",
+  "accessibilityDescription": "수직선 위 -3의 위치에 속이 찬 원이 있고 그 오른쪽으로 화살표가 뻗어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $x + 3a \\ge 2 - (x - a)$의 해가 $x \\ge -3$일 때, 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x+3a ≥ 2-(x-a)의 해는 x≥-3이다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해가 -3 이상인 범위임을 닫힌 끝점과 오른쪽 화살표로 나타낸다"
+  ]
+}

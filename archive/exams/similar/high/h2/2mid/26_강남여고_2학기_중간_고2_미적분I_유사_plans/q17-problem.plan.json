@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [
+      -2,
+      5
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          -1,
+          2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-8",
+          "2"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "2",
+        "-4"
+      ]
+    }
+  },
+  "caption": "함수 y=f(x)의 그래프로, x=2의 왼쪽에서 함숫값이 2에 가까워지고 x=2에서 함숫값이 -4인 그래프이다.",
+  "accessibilityDescription": "왼쪽 직선이 x=2의 열린 점에서 끝나고, 같은 x=2의 아래쪽 채운 점에서 오른쪽 위로 향하는 직선이 시작된다.",
+  "newVisualInformation": [
+    "x=2에서 왼쪽 극한은 2이다.",
+    "f(2)=-4이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다. 함수 $g(x)=3x+a$에 대하여 함수 $|f(x)|g(x)$가 $x=2$에서 연속일 때, 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

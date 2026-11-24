@@ -1,0 +1,77 @@
+{
+  "family": "composite-two-panel-v1",
+  "caption": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프",
+  "sourceQuote": "두 함수 f(x), g(x)의 그래프가 다음 그림과 같을 때",
+  "panels": [
+    {
+      "title": "y=f(x)",
+      "pieces": [
+        {
+          "domain": "(-inf,0)",
+          "expr": "x+2",
+          "openEnd": true
+        },
+        {
+          "domain": "(0,1)",
+          "expr": "-2*x",
+          "openStart": true,
+          "openEnd": true
+        },
+        {
+          "domain": "(1,inf)",
+          "expr": "x+1",
+          "openStart": true
+        }
+      ],
+      "isolatedPoints": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "viewport": [
+        -2.5,
+        2.5,
+        -2.5,
+        3
+      ]
+    },
+    {
+      "title": "y=g(x)",
+      "pieces": [
+        {
+          "domain": "(-inf,0)",
+          "expr": "-(x+1)^2+1",
+          "openEnd": true
+        },
+        {
+          "domain": "(0,1]",
+          "expr": "2*x",
+          "openStart": true,
+          "closedEnd": true
+        },
+        {
+          "domain": "(1,inf)",
+          "expr": "x^2-3",
+          "openStart": true
+        }
+      ],
+      "isolatedPoints": [
+        [
+          0,
+          -2
+        ]
+      ],
+      "viewport": [
+        -2.5,
+        2.5,
+        -2.5,
+        3
+      ]
+    }
+  ]
+}

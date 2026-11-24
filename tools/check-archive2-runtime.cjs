@@ -75,7 +75,7 @@ if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
   console.log('REGISTERED_SNAPSHOT_REUSED: shared registration builders were not run');
 }
 const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
-  cwd: root, stdio: 'inherit', timeout: 600000,
+  cwd: root, stdio: 'inherit', timeout: 180000,
 });
 if (result.error) console.error(result.error.message);
 process.exit(result.status === 0 && !result.error ? 0 : 1);
