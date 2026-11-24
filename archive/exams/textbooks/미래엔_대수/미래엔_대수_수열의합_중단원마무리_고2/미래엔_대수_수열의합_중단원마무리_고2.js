@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 기호 $\\sum$를 사용하여 나타내시오.\n⑴ $2+7+12+\\cdots+42$\n⑵ $6+10+14+\\cdots+122$\n⑶ $\\frac{1}{1^3}+\\frac{1}{2^3}+\\frac{1}{3^3}+\\cdots+\\frac{1}{10^3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sum_{k=1}^{9}(5k-3)$\n⑵ $\\sum_{k=1}^{30}(4k+2)$\n⑶ $\\sum_{k=1}^{10}\\frac{1}{k^3}$",
+    "solution": "각 수열의 일반항 $a_k$를 구하고 마지막 항의 번호를 찾아 $\\sum$로 나타낸다.\n⑴ $2,\\ 7,\\ 12,\\ \\cdots$은 첫째항이 $2$, 공차가 $5$인 등차수열이므로 $a_k=2+5(k-1)=5k-3$이다. $5k-3=42$에서 $k=9$이므로 $\\sum_{k=1}^{9}(5k-3)$\n⑵ $6,\\ 10,\\ 14,\\ \\cdots$은 첫째항이 $6$, 공차가 $4$인 등차수열이므로 $a_k=6+4(k-1)=4k+2$이다. $4k+2=122$에서 $k=30$이므로 $\\sum_{k=1}^{30}(4k+2)$\n⑶ 일반항은 $\\frac{1}{k^3}$이고 $k=1$부터 $10$까지이므로 $\\sum_{k=1}^{10}\\frac{1}{k^3}$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{20} a_k = 10$이고 $\\sum_{k=1}^{20} b_k = 12$일 때, 다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{20} (2a_k - 5b_k)$\n⑵ $\\sum_{k=1}^{20} (a_k + 3b_k - 2)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-40$\n⑵ $6$",
+    "solution": "$\\sum(pa_k+qb_k)=p\\sum a_k+q\\sum b_k$, $\\sum c=cn$ (상수 $c$를 $n$번 더함)을 이용한다.\n⑴ $$\\sum_{k=1}^{20}(2a_k-5b_k)=2\\times 10-5\\times 12=20-60=-40$$\n⑵ $$\\sum_{k=1}^{20}(a_k+3b_k-2)=10+3\\times 12-2\\times 20=10+36-40=6$$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{20} (3k-1)$\n⑵ $\\sum_{k=1}^{15} (k-1)(k+3)$\n⑶ $\\sum_{k=1}^{10} (k^3-k+10)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $610$\n⑵ $1435$\n⑶ $3070$",
+    "solution": "$\\sum_{k=1}^{n}k=\\frac{n(n+1)}{2}$, $\\sum_{k=1}^{n}k^2=\\frac{n(n+1)(2n+1)}{6}$, $\\sum_{k=1}^{n}k^3=\\left\\{\\frac{n(n+1)}{2}\\right\\}^2$을 이용한다.\n⑴ $$\\sum_{k=1}^{20}(3k-1)=3\\times\\frac{20\\times 21}{2}-20=630-20=610$$\n⑵ $(k-1)(k+3)=k^2+2k-3$이므로\n$$\\sum_{k=1}^{15}(k^2+2k-3)=\\frac{15\\times 16\\times 31}{6}+2\\times\\frac{15\\times 16}{2}-3\\times 15=1240+240-45=1435$$\n⑶ $$\\sum_{k=1}^{10}(k^3-k+10)=\\left(\\frac{10\\times 11}{2}\\right)^2-\\frac{10\\times 11}{2}+10\\times 10=3025-55+100=3070$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{30} \\frac{1}{(k+1)(k+2)}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15}{32}$",
+    "solution": "$\\frac{1}{(k+1)(k+2)}=\\frac{1}{k+1}-\\frac{1}{k+2}$로 변형하면\n$$\\sum_{k=1}^{30}\\left(\\frac{1}{k+1}-\\frac{1}{k+2}\\right)=\\left(\\frac{1}{2}-\\frac{1}{3}\\right)+\\left(\\frac{1}{3}-\\frac{1}{4}\\right)+\\cdots+\\left(\\frac{1}{31}-\\frac{1}{32}\\right)$$\n중간 항이 모두 지워지므로\n$$=\\frac{1}{2}-\\frac{1}{32}=\\frac{16-1}{32}=\\frac{15}{32}$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 수열 $\\{a_n\\}$과 $\\{b_n\\}$에 대하여\n$$\\sum_{k=1}^{15} (b_k - a_k) = 7,\\quad \\sum_{k=1}^{15} (a_k + 2b_k) = 11$$\n일 때, $\\sum_{k=1}^{15} a_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "$A=\\sum_{k=1}^{15}a_k$, $B=\\sum_{k=1}^{15}b_k$라 하면 주어진 두 식은\n$$B-A=7\\qquad\\cdots\\ ①$$\n$$A+2B=11\\qquad\\cdots\\ ②$$\n①에서 $B=A+7$을 ②에 대입하면 $A+2A+14=11$이므로 $3A=-3$\n따라서 $A=-1$, 즉 $\\sum_{k=1}^{15}a_k=-1$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{20} (2k+a) = 500$을 만족시키는 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "$$\\sum_{k=1}^{20}(2k+a)=2\\times\\frac{20\\times 21}{2}+20a=420+20a=500$$\n$20a=80$이므로 $a=4$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2 - 4x - 3 = 0$의 두 근을 $\\alpha$와 $\\beta$라 할 때, $\\sum_{k=1}^7 (k+\\alpha)(k+\\beta)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$231$",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=4,\\ \\alpha\\beta=-3$이다.\n$$(k+\\alpha)(k+\\beta)=k^2+(\\alpha+\\beta)k+\\alpha\\beta=k^2+4k-3$$\n$$\\sum_{k=1}^{7}(k^2+4k-3)=\\frac{7\\times 8\\times 15}{6}+4\\times\\frac{7\\times 8}{2}-3\\times 7=140+112-21=231$$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$1^2 \\times 2 + 2^2 \\times 3 + 3^2 \\times 4 + \\cdots + 8^2 \\times 9$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1500$",
+    "solution": "$k$번째 항은 $k^2\\times(k+1)=k^3+k^2$이고 $k=1$부터 $8$까지이므로\n$$\\sum_{k=1}^{8}(k^3+k^2)=\\left(\\frac{8\\times 9}{2}\\right)^2+\\frac{8\\times 9\\times 17}{6}=36^2+204=1296+204=1500$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식\n$$\\sum_{k=1}^5 \\frac{k^3}{k+1} + \\sum_{k=1}^5 \\frac{1}{k+1} = \\sum_{l=1}^m \\left( \\sum_{k=1}^l 1 \\right)$$\n을 만족시키는 자연수 $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "좌변은 $$\\sum_{k=1}^{5}\\frac{k^3}{k+1}+\\sum_{k=1}^{5}\\frac{1}{k+1}=\\sum_{k=1}^{5}\\frac{k^3+1}{k+1}=\\sum_{k=1}^{5}(k^2-k+1)$$\n($k^3+1=(k+1)(k^2-k+1)$이므로)\n$$=55-15+5=45$$\n우변은 $\\sum_{l=1}^{m}\\left(\\sum_{k=1}^{l}1\\right)=\\sum_{l=1}^{m}l=\\frac{m(m+1)}{2}$이다.\n$\\frac{m(m+1)}{2}=45$에서 $m(m+1)=90$이므로 $m=9$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\frac{1}{1+\\sqrt{3}} + \\frac{1}{\\sqrt{3}+\\sqrt{5}} + \\frac{1}{\\sqrt{5}+\\sqrt{7}} + \\cdots + \\frac{1}{\\sqrt{79}+\\sqrt{81}}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "각 항의 분모를 유리화하면\n$$\\frac{1}{\\sqrt{2k-1}+\\sqrt{2k+1}}=\\frac{\\sqrt{2k+1}-\\sqrt{2k-1}}{(2k+1)-(2k-1)}=\\frac{\\sqrt{2k+1}-\\sqrt{2k-1}}{2}$$\n$1,\\ 3,\\ 5,\\ \\cdots,\\ 81$이므로 $2k+1=81$에서 $k=40$까지이다.\n$$\\sum_{k=1}^{40}\\frac{\\sqrt{2k+1}-\\sqrt{2k-1}}{2}=\\frac{1}{2}\\left\\{(\\sqrt{3}-1)+(\\sqrt{5}-\\sqrt{3})+\\cdots+(\\sqrt{81}-\\sqrt{79})\\right\\}$$\n중간 항이 지워지므로 $=\\frac{1}{2}(\\sqrt{81}-1)=\\frac{1}{2}(9-1)=4$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열\n$$\\frac{1}{1},\\quad \\frac{1}{1+2},\\quad \\frac{1}{1+2+3},\\quad \\frac{1}{1+2+3+4},\\quad \\cdots$$\n의 첫째항부터 제$n$항까지의 합이 $\\frac{20}{11}$일 때, 자연수 $n$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "제$k$항은 $\\frac{1}{1+2+\\cdots+k}=\\frac{2}{k(k+1)}$이므로\n$$a_k=\\frac{2}{k(k+1)}=2\\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)$$\n첫째항부터 제$n$항까지의 합은\n$$\\sum_{k=1}^{n}2\\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)=2\\left(1-\\frac{1}{n+1}\\right)=\\frac{2n}{n+1}$$\n이 합이 $\\frac{20}{11}$이므로 $\\frac{2n}{n+1}=\\frac{20}{11}$\n$22n=20n+20$에서 $2n=20$이므로 $n=10$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$에 대하여\n$$a_{11}=10,\\quad \\sum_{k=1}^{10} k a_k = \\sum_{k=1}^{10} k a_{k+1}$$\n일 때, $\\sum_{k=1}^{10} a_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$100$",
+    "solution": "$\\sum_{k=1}^{10}ka_{k+1}-\\sum_{k=1}^{10}ka_k=0$이다. 앞의 합에서 $k+1=j$로 놓으면\n$$\\sum_{k=1}^{10}ka_{k+1}=\\sum_{j=2}^{11}(j-1)a_j$$\n이므로\n$$\\sum_{j=2}^{11}(j-1)a_j-\\sum_{k=1}^{10}ka_k=10a_{11}+\\sum_{j=2}^{10}\\{(j-1)-j\\}a_j-a_1=10a_{11}-\\sum_{j=1}^{10}a_j=0$$\n따라서\n$$\\sum_{k=1}^{10}a_k=10a_{11}=10\\times 10=100$$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=n^2+2n$일 때, 다음에 답하시오.\n⑴ 수열 $\\{a_n\\}$의 일반항을 구하시오.\n⑵ $\\sum_{k=1}^{30} \\frac{1}{a_k a_{k+1}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n=2n+1$\n⑵ $\\frac{10}{63}$",
+    "solution": "⑴ $n=1$일 때 $a_1=S_1=1+2=3$\n$n\\ge 2$일 때 $a_n=S_n-S_{n-1}=(n^2+2n)-\\{(n-1)^2+2(n-1)\\}=2n+1$\n$n=1$일 때 $2\\times 1+1=3=a_1$이므로 $a_n=2n+1$\n⑵ $\\frac{1}{a_ka_{k+1}}=\\frac{1}{(2k+1)(2k+3)}=\\frac{1}{2}\\left(\\frac{1}{2k+1}-\\frac{1}{2k+3}\\right)$이므로\n$$\\sum_{k=1}^{30}\\frac{1}{a_ka_{k+1}}=\\frac{1}{2}\\left(\\frac{1}{3}-\\frac{1}{5}+\\frac{1}{5}-\\frac{1}{7}+\\cdots+\\frac{1}{61}-\\frac{1}{63}\\right)=\\frac{1}{2}\\left(\\frac{1}{3}-\\frac{1}{63}\\right)$$\n$$=\\frac{1}{2}\\times\\frac{20}{63}=\\frac{10}{63}$$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 항이 양수이고 첫째항과 공차가 같은 등차수열 $\\{a_n\\}$이\n$$\\sum_{k=1}^8 \\frac{1}{\\sqrt{a_k}+\\sqrt{a_{k+1}}} = \\frac{1}{2}$$\n을 만족시킬 때, $a_5$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$80$",
+    "solution": "첫째항과 공차가 같으므로 공차를 $d$ ($d>0$)라 하면 $a_n=d+(n-1)d=nd$이다.\n$$\\frac{1}{\\sqrt{a_k}+\\sqrt{a_{k+1}}}=\\frac{\\sqrt{a_{k+1}}-\\sqrt{a_k}}{a_{k+1}-a_k}=\\frac{\\sqrt{(k+1)d}-\\sqrt{kd}}{d}$$\n$$\\sum_{k=1}^{8}\\frac{\\sqrt{(k+1)d}-\\sqrt{kd}}{d}=\\frac{\\sqrt{9d}-\\sqrt{d}}{d}=\\frac{2\\sqrt{d}}{d}=\\frac{2}{\\sqrt{d}}$$\n이것이 $\\frac{1}{2}$이므로 $\\sqrt{d}=4$, $d=16$\n따라서 $a_5=5d=80$"
   },
   {
     "id": 15,
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 일반항이\n$$a_n = \\log \\sqrt{\\frac{n}{n+1}}$$\n일 때, $\\sum_{k=1}^m a_k$의 값이 정수가 되도록 하는 $100$ 이하의 자연수 $m$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$99$",
+    "solution": "$a_n=\\log\\sqrt{\\frac{n}{n+1}}=\\frac{1}{2}(\\log n-\\log(n+1))$이므로\n$$\\sum_{k=1}^{m}a_k=\\frac{1}{2}\\{(\\log 1-\\log 2)+(\\log 2-\\log 3)+\\cdots+(\\log m-\\log(m+1))\\}=\\frac{1}{2}(\\log 1-\\log(m+1))=-\\frac{1}{2}\\log(m+1)$$\n이 값이 정수이려면 $\\log(m+1)$이 $0$ 이상이므로 $\\log(m+1)$이 짝수 $0,\\ 2,\\ 4,\\ \\cdots$이어야 하고, $m+1=10^0,\\ 10^2,\\ 10^4,\\ \\cdots$이다.\n$m$은 $100$ 이하의 자연수이므로 $2\\le m+1\\le 101$에서 $m+1=100$, 즉 $m=99$이다. ($m+1=1$이면 $m=0$으로 자연수가 아니고, $m+1=10^4$은 $101$보다 크다.)\n(확인: $m=99$이면 $-\\frac{1}{2}\\log 100=-1$로 정수이다.)"
   }
 ];
