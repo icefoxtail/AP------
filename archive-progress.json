@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-24T00:23:39.801Z",
+  "updatedAt": "2026-11-24T00:32:04.685Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-11-23T05:22:39Z",
+    "oldestObservedAt": "2026-11-23T05:37:35Z",
     "seenRegistrationRuns": 0,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -47736,27 +47736,10 @@
     }
   },
   "observations": {
-    "release:45285784781:1:749b26854f4d0f60529b1ff3a6393f91e09df40c": {
-      "key": "release:45285784781:1:749b26854f4d0f60529b1ff3a6393f91e09df40c",
-      "status": "unverified",
-      "attempts": 2,
-      "reason": "배포 결과 단계 미검증",
-      "run": {
-        "id": 45285784781,
-        "attempt": 1,
-        "sha": "749b26854f4d0f60529b1ff3a6393f91e09df40c",
-        "at": "2026-11-23T23:15:54Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/45285784781",
-        "conclusion": "success",
-        "event": "workflow_dispatch",
-        "branch": "main"
-      },
-      "nextRetryAt": "2026-11-24T00:33:38.622Z"
-    },
     "release:45293680898:1:b52383422663e03b46c122d5a3b1f2ca2057b1fb": {
       "key": "release:45293680898:1:b52383422663e03b46c122d5a3b1f2ca2057b1fb",
       "status": "unverified",
-      "attempts": 1,
+      "attempts": 2,
       "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 45293680898,
@@ -47768,12 +47751,12 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
-      "nextRetryAt": "2026-11-24T00:28:26.975Z"
+      "nextRetryAt": "2026-11-24T00:42:02.707Z"
     },
     "release:45295884417:1:044f85a14cec355d996cfd8b07ac5ff39678fa7b": {
       "key": "release:45295884417:1:044f85a14cec355d996cfd8b07ac5ff39678fa7b",
       "status": "unverified",
-      "attempts": 1,
+      "attempts": 2,
       "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 45295884417,
@@ -47785,30 +47768,29 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
-      "nextRetryAt": "2026-11-24T00:28:25.807Z"
+      "nextRetryAt": "2026-11-24T00:42:01.687Z"
     },
-    "release:45259491375:1:46fdd7560bb120066fe6904ed7fdadb57e688126": {
-      "key": "release:45259491375:1:46fdd7560bb120066fe6904ed7fdadb57e688126",
+    "release:45285784781:1:749b26854f4d0f60529b1ff3a6393f91e09df40c": {
+      "key": "release:45285784781:1:749b26854f4d0f60529b1ff3a6393f91e09df40c",
       "status": "unverified",
-      "attempts": 3,
+      "attempts": 2,
       "run": {
-        "id": 45259491375,
+        "id": 45285784781,
         "attempt": 1,
-        "sha": "46fdd7560bb120066fe6904ed7fdadb57e688126",
-        "at": "2026-11-23T20:31:24Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/45259491375",
+        "sha": "749b26854f4d0f60529b1ff3a6393f91e09df40c",
+        "at": "2026-11-23T23:15:54Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/45285784781",
         "conclusion": "success",
         "event": "workflow_dispatch",
         "branch": "main"
       },
       "reason": "배포 결과 단계 미검증",
-      "nextRetryAt": "2026-11-24T00:24:31.742Z"
+      "nextRetryAt": "2026-11-24T00:33:38.622Z"
     },
     "release:45292971431:1:86ffc81acd4651961a5abaaa298be1e8a418c98e": {
       "key": "release:45292971431:1:86ffc81acd4651961a5abaaa298be1e8a418c98e",
       "status": "verified",
       "attempts": 1,
-      "verifiedAt": "2026-11-24T00:23:27.715Z",
       "run": {
         "id": 45292971431,
         "attempt": 1,
@@ -52715,6 +52697,7 @@
           }
         }
       },
+      "verifiedAt": "2026-11-24T00:23:27.715Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -557556,6 +557539,23 @@
         "test-fixtures"
       ],
       "reason": "Pages ZIP 다운로드 실패",
+      "retryExhausted": true
+    },
+    "release:45259491375:1:46fdd7560bb120066fe6904ed7fdadb57e688126": {
+      "key": "release:45259491375:1:46fdd7560bb120066fe6904ed7fdadb57e688126",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "배포 결과 단계 미검증",
+      "run": {
+        "id": 45259491375,
+        "attempt": 1,
+        "sha": "46fdd7560bb120066fe6904ed7fdadb57e688126",
+        "at": "2026-11-23T20:31:24Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/45259491375",
+        "conclusion": "success",
+        "event": "workflow_dispatch",
+        "branch": "main"
+      },
       "retryExhausted": true
     }
   }
