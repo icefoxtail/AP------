@@ -96,9 +96,9 @@ window.questionBank = [
     "difficultyReason": "외분비와 점의 순서를 이용해 B에서 Q까지의 좌표 변화를 구한다.",
     "sourceOrdinal": 2,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q2-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 점 A, B, Q가 한 직선에 있고 두 구간의 길이 비가 2:1인 그림.",
-    "solutionImageCaption": "A(3,1), B(6,4)에서 외분점 Q는 A, B 순서 뒤에 있으며 AB:BQ=2:1이다. 정답은 (15/2, 11/2)이다.",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q2-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 외분점은 A,B를 지난 쪽에 놓인다. AB:BQ=2:1에서 좌표 변화량을 비교한다. Q의 최종 좌표는 숨긴다.",
+    "solutionImageCaption": "외분점은 A,B를 지난 쪽에 놓인다. AB:BQ=2:1에서 좌표 변화량을 비교한다. Q의 최종 좌표는 숨긴다.",
     "solutionImageSize": "full"
   },
   {
@@ -146,9 +146,9 @@ window.questionBank = [
     "difficultyReason": "주어진 점과 기울기를 점-기울기 식에 바로 대입해 직선식을 정리한다.",
     "sourceOrdinal": 3,
     "sourceMode": "SOURCE_ONLY",
-    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q3-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 좌표축 위 점 P에서 뻗는 기울기 −2의 직선 그림.",
-    "solutionImageCaption": "P(−2,1)을 지나고 기울기가 −2인 직선을 나타낸다. 정답은 2x+y+3=0이다.",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q3-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 (−2, 1)을 지나고 오른쪽 아래로 내려가는 직선이 있고, 그 점에서 오른쪽으로 1, 아래로 2만큼 간 직각삼각형 모양의 보조선이 보인다.",
+    "solutionImageCaption": "기울기가 −2이고 점 (−2, 1)을 지나므로 y−1=−2(x+2)이다. 정리하면 y=−2x−3이고 2x+y+3=0이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {

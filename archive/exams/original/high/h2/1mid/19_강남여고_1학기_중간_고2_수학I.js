@@ -235,8 +235,10 @@ window.questionBank = [
       ]
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q3-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q3-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원 위의 제2사분면 점에서 x축에 수선을 내리고 직각을 표시하였다. 빗변의 길이는 1, 수선의 길이는 3/5, 밑변의 길이는 4/5이고 양의 x축과 반지름이 이루는 각 θ가 표시되어 있다.",
+    "solutionImageCaption": "sin²θ+cos²θ=1에서 sin²θ=1−(−4/5)²=9/25이다. θ가 제2사분면각이므로 sinθ>0이고 sinθ=3/5이다. 따라서 답은 ⑤이다."
   },
     {
     "id": 4,
