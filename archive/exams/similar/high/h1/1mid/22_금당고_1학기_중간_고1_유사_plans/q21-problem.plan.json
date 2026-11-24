@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "curveColor": "BLUE",
+    "domain": [
+      0,
+      9
+    ],
+    "viewport": [
+      0,
+      9,
+      -18,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V1",
+        "x": "4",
+        "y": "-16",
+        "marker": "NONE"
+      },
+      {
+        "id": "V2",
+        "x": "8",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "color": "GREEN",
+        "pieces": [
+          {
+            "coefficients": [
+              "-64",
+              "16",
+              "-1"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "intersectionX": [
+          "4",
+          "8"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "-16"
+        },
+        {
+          "id": "B",
+          "x": "8",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "두 포물선 f와 g가 두 점 A, B에서 만나고, 두 교점의 x좌표를 각각 α, β라 한다. 두 교점 사이의 가로 간격이 4인 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선 f와 위로 볼록한 포물선 g가 두 점 A, B에서 만난다. 두 교점의 x좌표 차이는 4이다.",
+  "newVisualInformation": [
+    "두 포물선 f, g의 교점 A, B와 그 가로 간격을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $f(x)=(x-a)^2-a^2$, $g(x)=-(x-2a)^2+4a^2+b$가 다음 조건을 만족시킨다. (가) 방정식 $f(x)=g(x)$는 서로 다른 두 실근 $\\alpha$, $\\beta$를 갖는다. (나) $\\beta-\\alpha=4$ (다) $f(\\beta)-g(\\alpha)\\le g(2a)-f(a)$ (라) $g(\\beta)=f(\\alpha)+5a^2+b$ 다음 조건을 모두 만족하는 $a$, $b$에 대하여 $ab$의 값을 구하고 서술하시오. (단, $a$, $b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

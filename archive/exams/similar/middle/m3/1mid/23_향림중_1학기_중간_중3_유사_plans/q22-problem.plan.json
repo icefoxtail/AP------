@@ -1,0 +1,121 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            2,
+            0
+          ],
+          "to": [
+            3,
+            2
+          ],
+          "toName": "D"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "B",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "toName": "C"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "2"
+          },
+          {
+            "id": "B",
+            "value": "3"
+          },
+          {
+            "id": "P",
+            "value": "3-sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "2+sqrt(5)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "모눈 삼각형과 옮긴 길이"
+  },
+  "caption": "수직선 위의 A(2), B(3)에서 모눈 위 두 선분의 길이를 각각 오른쪽과 왼쪽으로 옮겨 점 Q와 P를 정한 그림이다. 가로 1칸, 세로 2칸인 직각삼각형의 빗변 AD와 BC가 나타나 있다.",
+  "accessibilityDescription": "수직선 위에 A(2), B(3)가 표시되어 있고, A의 오른쪽에 Q, B의 왼쪽에 P가 있다. 위쪽 모눈에는 가로 1칸, 세로 2칸인 직각삼각형의 빗변 AD와 BC가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 한 눈금의 길이가 $1$인 모눈종이 위의 수직선에서 두 점 $A(2)$, $B(3)$에 대하여, 가로의 길이가 $1$, 세로의 길이가 $2$인 직각삼각형의 빗변과 길이가 같은 두 선분 $\\overline{AD} = \\overline{AQ}$, $\\overline{BC} = \\overline{BP}$를 잡아 수직선 위에 점 $Q$(점 $A$의 오른쪽)와 점 $P$(점 $B$의 왼쪽)를 정하였다. 두 점 $P, Q$에 대응하는 수를 각각 구하고, $\\overline{PQ}$의 길이를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "AD=AQ",
+      "mappedTo": [
+        "numberLine.constructions",
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BC=BP",
+      "mappedTo": [
+        "numberLine.constructions",
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모눈 위 두 빗변의 길이를 서로 반대 방향으로 옮긴 점 P, Q의 위치를 보인다"
+  ]
+}

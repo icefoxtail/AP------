@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "0",
+          "label": "y=3x"
+        }
+      ]
+    }
+  },
+  "caption": "포물선이 x축에 한 점에서 접하고, 기울기 3인 직선과 만나는 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 원점에서 x축에 접하고, 기울기 3인 직선이 포물선과 두 점에서 만난다.",
+  "newVisualInformation": [
+    "포물선이 x축에 접하는 위치와 기울기 3인 직선과의 교차 모양을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+6ax+b$의 그래프는 $x$축에 접하고, 직선 $y=3x$와 적어도 한 점에서 만날 때, 실수 $a$의 최댓값은? (단, $b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

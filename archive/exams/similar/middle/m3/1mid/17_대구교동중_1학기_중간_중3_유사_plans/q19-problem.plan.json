@@ -1,0 +1,399 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 정사각형 A, B, C가 왼쪽부터 차례로 밑변을 맞대어 붙어 있는 계단 모양이다. C의 넓이는 5이고, B의 넓이는 C의 2배, A의 넓이는 B의 2배이다.",
+  "accessibilityDescription": "왼쪽부터 가장 큰 정사각형 A, 중간 크기 정사각형 B, 가장 작은 정사각형 C가 밑변을 맞대어 붙어 있고, 각 정사각형의 가운데에 A, B, C가 적혀 있다.",
+  "newVisualInformation": [
+    "왼쪽부터 큰 정사각형 A, 중간 정사각형 B, 작은 정사각형 C가 밑변을 맞대어 붙어 있는 계단 모양"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "763",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "987",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "316",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "763",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "316",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "763",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "224",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "987",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "224",
+              "denominator": "100"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "200"
+            },
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "200"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "121",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "79",
+              "denominator": "50"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "35",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "25"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "p0",
+        "p1"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "s04",
+      "refs": [
+        "p0",
+        "p4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "p4",
+        "p5"
+      ]
+    },
+    {
+      "id": "s51",
+      "refs": [
+        "p5",
+        "p1"
+      ]
+    },
+    {
+      "id": "s67",
+      "refs": [
+        "p6",
+        "p7"
+      ]
+    },
+    {
+      "id": "s72",
+      "refs": [
+        "p7",
+        "p2"
+      ]
+    },
+    {
+      "id": "s89",
+      "refs": [
+        "p8",
+        "p9"
+      ]
+    },
+    {
+      "id": "s93",
+      "refs": [
+        "p9",
+        "p3"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "hiddenPointNames": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 사각형 $A, B, C$는 모두 정사각형이고, 각 정사각형의 넓이 사이에는 $B$는 $C$의 $2$배, $A$는 $B$의 $2$배인 관계가 있다. $C$의 넓이가 $5$일 때, 세 정사각형을 차례로 이어 붙여 만든 새로운 도형의 둘레의 길이를 풀이 과정을 상세히 써서 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

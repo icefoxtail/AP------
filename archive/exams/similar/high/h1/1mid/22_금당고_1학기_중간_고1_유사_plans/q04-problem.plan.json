@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "14",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-6x+14",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 5
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수의 그래프와 그 꼭짓점의 위치를 나타낸 그림이다. 꼭짓점의 좌표 값은 쓰지 않았다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 그려져 있고, 꼭짓점 자리에 점이 찍혀 있다. 꼭짓점의 좌표 값은 표시하지 않았다.",
+  "newVisualInformation": [
+    "이차함수의 그래프",
+    "꼭짓점의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-6x+14$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
