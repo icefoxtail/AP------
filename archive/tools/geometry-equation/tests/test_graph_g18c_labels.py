@@ -2,14 +2,15 @@
 on its own curve, and the observer accepts that leader (and only that leader). No Chrome."""
 import math
 import sys
-import time
 import unittest
+import unittest.mock
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'production'))
 sys.path.insert(0,str(ROOT))
 from graph_observer import multi_curve_label_audit
+from visual_engine import label_layout as label_layout_module
 from visual_engine.label_layout import (Box,collision,near_box_polyline_distance,near_candidate_centers,near_leader_placement,near_wide_centers,
                                         _prep_polyline,_prepped_distance,_prepped_within,visible_owner_leader)
 
@@ -27,11 +28,21 @@ class Search(unittest.TestCase):
                     self.assertEqual(_prepped_within(box,prep,limit),near_box_polyline_distance(box,points)<limit)
 
     def test_three_labels_are_found_quickly(self):
+        # "Fast" is the amount of work, not the wall clock of a busy machine: the search tries a fixed set of candidate boxes
+        # and each is judged by the pruned distance against its own curve and the other strokes, however many points a curve has.
         own=curve(0);others=[curve(25),curve(60),curve(95)]
-        begun=time.time()
-        for _ in range(3):
-            near_candidate_centers({'nearCurve':{'own':[own],'others':others,'end':False}},60,22,Box(12,12,488,388))
-        self.assertLess(time.time()-begun,2.0)
+        calls=[0]
+        def counted(function):
+            def wrapper(*args,**kwargs):
+                calls[0]+=1;return function(*args,**kwargs)
+            return wrapper
+        with unittest.mock.patch.object(label_layout_module,'_prepped_distance',counted(label_layout_module._prepped_distance)),\
+             unittest.mock.patch.object(label_layout_module,'_prepped_within',counted(label_layout_module._prepped_within)):
+            for _ in range(3):
+                centers=near_candidate_centers({'nearCurve':{'own':[own],'others':others,'end':False}},60,22,Box(12,12,488,388))
+        boxes=(len(label_layout_module.NEAR_CURVE_GAPS)+len(label_layout_module.NEAR_CURVE_FAR_GAPS))*len(label_layout_module.NEAR_CURVE_ANCHORS)*2*len(label_layout_module.NEAR_SLIDES)
+        self.assertTrue(centers)
+        self.assertLessEqual(calls[0],3*boxes*(1+len(others)))
 
     def test_a_hemmed_in_curve_finds_a_leader_on_its_own_vertex(self):
         own=curve(0);above=curve(26)[:120];below=[(x,y+26) for x,y in own][:120]   # the two neighbours stop short: the way out is past the end of the curve

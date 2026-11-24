@@ -5,7 +5,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'production'))
-from graph_framing import fit_overview
+from graph_framing import fit_overview,PIECEWISE_POLY_MAX_COEFFICIENTS
 from graph_spike import produce
 from graph_observer import audit
 
@@ -62,7 +62,7 @@ class Framing(unittest.TestCase):
         p=copy.deepcopy(Q22);del p['requiredPoints'][1];del p['exactCoordinates'];cases.append((p,'PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:1/2'))
         p=copy.deepcopy(Q22);p['formula']='abs(x^2+x-6)+3x';cases.append((p,'PIECEWISE_POLY_FORMULA_MISMATCH'))
         p=copy.deepcopy(Q22);p['lines']=[];cases.append((p,'PIECEWISE_POLY_FIELD_UNKNOWN:lines'))
-        p=copy.deepcopy(Q22);p['pieces'][0]['coefficients']=['0','0','0','1'];cases.append((p,'PIECEWISE_POLY_PIECE_INVALID'))
+        p=copy.deepcopy(Q22);p['pieces'][0]['coefficients']=['0']*(PIECEWISE_POLY_MAX_COEFFICIENTS+1);cases.append((p,'PIECEWISE_POLY_PIECE_INVALID'))
         p=copy.deepcopy(Q22);p['requiredPoints'][1]['y']=6.3;cases.append((p,'PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:B'))
         # y=-1 meets -x+2 only at the open end x=3, which is not on the graph.
         p=copy.deepcopy(INTERVAL);p['referenceLines'][0]['y']='-1';p['referenceLines'][0]['intersectionX']=['3'];cases.append((p,'PIECEWISE_POLY_INTERSECTION_MISMATCH:h:engine finds 0'))

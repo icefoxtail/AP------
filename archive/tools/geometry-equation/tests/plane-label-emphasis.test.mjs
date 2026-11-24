@@ -109,7 +109,7 @@ test('a TEXT or unit trace label is drawn outside its arc and read back (an orde
 
 test('error codes: a bad kind, unit or label is refused with an explicit code',()=>{
   const with_=change=>{const copy=clone(marks);change(copy);return copy;};
-  expectCode(specError(with_(m=>{m.expressionLabels[0].unit='km';})),'MARK_UNIT_INVALID');
+  expectCode(specError(with_(m=>{m.expressionLabels[0].unit='furlong';})),'MARK_UNIT_INVALID');
   expectCode(specError(with_(m=>{m.expressionLabels[2].unit='cm';})),'MARK_UNIT_REQUIRES_MATH_LABEL');
   expectCode(specError(with_(m=>{m.arcs[1].unit='cm';})),'MARK_UNIT_REQUIRES_MATH_LABEL');
   expectCode(specError(with_(m=>{m.arcs[2].labelKind='DEGREE';})),'MARK_UNIT_REQUIRES_MATH_LABEL');

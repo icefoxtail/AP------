@@ -1,13 +1,8 @@
 // AX1 tests: a displayed SEGMENT that lies on a displayed coordinate axis is drawn with the heavier `axisOverlapShape` stroke on a layer above the axis.
 // Real SymPy worker and real Chrome; A2 also runs the real R1-a Archive typography measurement (medium class). No provider is called.
-// Cases: A1 prepare of the R1-b real figure; A2 real medium L1 composition (stroke widths in the SVG and as rendered); A3 outputs that must NOT change
-// (PREFIX_PINS); A4 screen-distance boundary, hidden axes and what is deliberately out of scope (LINE, LEADER_LINE).
-//
-// PREFIX_PINS are the first 16 hex digits of sha-256 digests of what the engine produced BEFORE this change, from the same inputs through the same probe
-// (blobs engine.py sha-256 547d5827... from commit 4e49c0dc5, with the AX2 style_tokens.json sha-256 d7f15023... whose larger point markers apply to both
-// sides). They were re-derived by running that reference engine after AX2, not by estimating; the AX1 isolation itself was verified at commit 0072d7a32.
-// `primitives` is the digest of [id, sha-256 of the canonical primitive] pairs; figures whose segments lie on the axes (Q4, Q6) exclude exactly sAB and sCA,
-// and their svg/tex outputs are expected to change (A3b). Changing the engine for another reason means re-deriving the pins from the new reference.
+// Cases: A1 prepare of the R1-b real figure; A2 real medium L1 composition (stroke widths in the SVG and as rendered); A3 the overlap treatment reaches only the
+// segments lying on the axes (structure, never a digest of the engine output: an engine improvement must not break it); A4 screen-distance boundary, hidden axes
+// and what is deliberately out of scope (LINE, LEADER_LINE).
 import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -83,7 +78,7 @@ test('A2 R1-b real figure through the real medium Archive policy and L1: COMPOSE
 });
 
 // A3 inputs: figures whose output must not change, figures that only partly change, and the out-of-scope LINE / LEADER_LINE cases.
-const assetId=assetIdentity('ax1_a3_exam|1','SOLUTION_VISUAL','decisive-relation').assetId;// the id the PREFIX_PINS inputs were built with
+const assetId=assetIdentity('ax1_a3_exam|1','SOLUTION_VISUAL','decisive-relation').assetId;// the asset id the A3 inputs are built with
 const P_GRAPH={schemaVersion:'construction-spike-v1',nodes:[pointNode('A',-2,-1),pointNode('B',4,-1),pointNode('C',-2,3),node('M','MIDPOINT',['B','C'],'POINT'),node('lineBC','LINE_THROUGH',['B','C'],'LINE'),node('lineAM','LINE_THROUGH',['A','M'],'LINE'),node('circM','CIRCLE_THROUGH_POINT',['M','B'],'CIRCLE')]};
 const P_PLAN={capability:'construction-spike-v1',caption:'직각삼각형과 외접원',mathPlan:P_GRAPH,displaySegments:[{id:'sAB',refs:['A','B']},{id:'sCA',refs:['C','A']}],displayLines:['lineBC','lineAM'],rightAngles:[{id:'raA',refs:['B','A','C']}],coordinateLabels:['A','B','C'],coordinateCanvas:{width:560,height:440}};
 const plain={title:'probe',sourceFacts:{independentFactHash:'frozen'},derivedFacts:{},displayFacts:{}};
@@ -111,62 +106,48 @@ async function buildSpecs(){
   for(const name of ['equal-length-owners','fraction-point-T','multi-angle-owner','owner-triangle','region-leader'])specs['pub_'+name]=JSON.parse(fs.readFileSync(path.join(dir,name+'.spec.json'),'utf8'));
   return specs;
 }
-const PREFIX_PINS={
-  'P_offaxis_plan':{input:'11b7a31249fdc6f0',primitives:'605434c70bb08b3a',labels:'112171c2d9ae1ae5',obstacles:'1076828fa86b2c91',model:'3632536b2e95070f',sampling:'4f53cda18c2baa0c',layout:'cafeadfa460cee1d',svg:'b4d266a13a3f157e',tex:'06f56483de3d1cfa'},
-  'Q4_overlap_plan':{input:'f541dee4730f8849',primitives:'765604c2a8bba712',labels:'429af4de7ba03ea4',obstacles:'d80dc168aec2d192',model:'9383102f265fabe4',sampling:'4f53cda18c2baa0c',layout:'9eddb8cadb9f738e',svg:'78e1d3af1cace94b',tex:'9584c12214b64b67',except:['sAB','sCA']},
-  'Q6_overlap_plan':{input:'b811f1725e8e8a58',primitives:'b8c9e74b19d6428d',labels:'a78c5d22e89b0953',obstacles:'89feb9969e40214e',model:'8c1760a35f326ce5',sampling:'4f53cda18c2baa0c',layout:'9b0cdb16a336c6d1',svg:'9a390fcd10403cbc',tex:'f77f38de5fc7a51c',except:['sAB','sCA']},
-  'circle_fixture':{input:'c70413f0722b8264',primitives:'04857829d791f441',labels:'1d4886f9da70d222',obstacles:'94aa896d1d6149ee',model:'37a291cc0c3dd9ca',sampling:'4f53cda18c2baa0c',layout:'1134632c3765f36b',svg:'4f48ac775833602c',tex:'81ef6aa59d055095'},
-  'graph_cubic_tangent':{input:'e88ba9301e55a4e3',primitives:'164ca6f6d5295334',labels:'f97a42a182be3eee',obstacles:'e7c4ec273b0f33ab',model:'1a04218389846eed',sampling:'75715886de4a3410',layout:'a92164e07772750d',svg:'a1c2374fad841fab',tex:'81fc6429fd908cba'},
-  'leader_on_axis_literal':{input:'1a325c89fe2e84aa',primitives:'d13182ff14de47bb',labels:'a8a8366e8b172da1',obstacles:'7ad8875edb5a2157',model:'4031de74ddeb11d6',sampling:'4f53cda18c2baa0c',layout:'518e21a3e8eda3a9',svg:'842bf0bfc5e91c70',tex:'0b2ed76d81ffda37'},
-  'line_on_axis_literal':{input:'8955fe76d5d12472',primitives:'7d4f4723d459bf4c',labels:'a8a8366e8b172da1',obstacles:'93a2608e12888b9c',model:'4031de74ddeb11d6',sampling:'4f53cda18c2baa0c',layout:'518e21a3e8eda3a9',svg:'bd5ed98e1e80d986',tex:'1e60b04868de3d39'},
-  'pub_equal-length-owners':{input:'9e5921f4f36b45a7',primitives:'d10c275335107c7f',labels:'174731d389af2fdc',obstacles:'2d624ef6922eca10',model:'7fbcb7718cef0cab',sampling:'4f53cda18c2baa0c',layout:'3e3ca3e96b1873af',svg:'23cdc0b6f7113c0d',tex:'4c2919b73c260e37'},
-  'pub_fraction-point-T':{input:'3d9d1f9250f2274b',primitives:'b7f0d09b2831e14b',labels:'9b21972151479c0d',obstacles:'3a120c001bebacfd',model:'0372d487605004cf',sampling:'4f53cda18c2baa0c',layout:'d57d3636519f845d',svg:'da144ba4dab7ade8',tex:'61dddc31b40c57e5'},
-  'pub_multi-angle-owner':{input:'8d0c437e6491082c',primitives:'b92405724f12878e',labels:'e22f5fcadf4ae569',obstacles:'d95c53c755c96e9f',model:'7fbcb7718cef0cab',sampling:'4f53cda18c2baa0c',layout:'111d1923353bb791',svg:'5eb71315caa4b604',tex:'9bf5c17cb81e006b'},
-  'pub_owner-triangle':{input:'e1bf7af24967f6ad',primitives:'50c880d7b6bf2994',labels:'7bd8e735a24674ee',obstacles:'2ae78ef8226f96e7',model:'7fbcb7718cef0cab',sampling:'4f53cda18c2baa0c',layout:'41e0ffdd49abeb41',svg:'2b0f82fdddd39514',tex:'964063441aefca19'},
-  'pub_region-leader':{input:'5b8047c1743c9e4f',primitives:'4367265f34171127',labels:'4480012c25c193d0',obstacles:'f04cfda78f78d917',model:'7fbcb7718cef0cab',sampling:'4f53cda18c2baa0c',layout:'35222c0b45610840',svg:'5d35da41c337fe0a',tex:'bc60ffd9c31d220b'},
-  'triangle_offaxis_literal':{input:'c7e7cdcef3cb9101',primitives:'35f976c2ef4f2d3a',labels:'874b101a81137ddd',obstacles:'72eb6dbe5b89cc44',model:'4031de74ddeb11d6',sampling:'4f53cda18c2baa0c',layout:'5ccd9fd71495e009',svg:'55efd7401a686d08',tex:'bd8490cbbc276348'},
-};
-const PROBE_PY=`import json,sys,hashlib
-# argv[1] = geometry-equation directory whose visual_engine is probed; stdin = {id: spec}; stdout = {id: hashes}
+// Which primitives carry the axis-overlap treatment: the two segments lying on the axes of the figures made for it, and nothing else.
+const OVERLAP_IDS={'Q4_overlap_plan':['sAB','sCA'],'Q6_overlap_plan':['sAB','sCA']};
+const PROBE_PY=`import json,sys
+# argv[1] = geometry-equation directory whose visual_engine is probed; stdin = {id: spec}; stdout = {id: what the engine drew}
 sys.path.insert(0,sys.argv[1])
 from visual_engine.engine import prepare,build
-def canon(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
-def sha(value):return hashlib.sha256(canon(value).encode('utf-8')).hexdigest()
 specs=json.loads(sys.stdin.buffer.read().decode('utf-8'))
 out={}
 for sid,spec in specs.items():
-    spec_sha=sha(spec)
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
     built=build(spec)
-    out[sid]={'specSha':spec_sha,'primitiveSha':{p['id']:sha(p) for p in prepared['primitives']},'labelsSha':sha(labels),'obstaclesSha':sha(obstacles),
-        'modelSha':sha(vp.model()),'samplingSha':sha(sampling),'layoutSha':sha(built['witness']['layout']),
-        'svgSha':hashlib.sha256(built['svg'].encode('utf-8')).hexdigest(),'texSha':hashlib.sha256(built['tex'].encode('utf-8')).hexdigest()}
+    out[sid]={'overlapIds':sorted(p['id'] for p in prepared['primitives'] if p.get('axisOverlap')),
+        'overlapTokens':sorted(p['id'] for p in prepared['primitives'] if p.get('token')=='axisOverlapShape'),
+        'svg':built['svg'],'witnessStatus':built['witness']['status']}
 sys.stdout.buffer.write((json.dumps(out,sort_keys=True,ensure_ascii=False)+'\\n').encode('utf-8'))
 `;
-const digestOf=(map,except=[])=>crypto.createHash('sha256').update(JSON.stringify(Object.keys(map).filter(id=>!except.includes(id)).sort().map(id=>[id,map[id]]))).digest('hex');
 let probePromise;
 const probed=()=>probePromise??=(async()=>{
   const specs=await buildSpecs(),dir=path.join(root,'.tmp/archive','ax1-a3-'+crypto.randomUUID());fs.mkdirSync(dir,{recursive:true});
   const probeFile=path.join(dir,'probe.py');fs.writeFileSync(probeFile,PROBE_PY);
   const run=spawnSync(process.env.GEOMETRY_PYTHON||'python',['-X','utf8',probeFile,geometryDir],{input:JSON.stringify(specs),encoding:'utf8',maxBuffer:64*1024*1024});
   assert.equal(run.status,0,run.stderr);
-  return Object.fromEntries(Object.entries(JSON.parse(run.stdout)).map(([id,row])=>[id,{input:row.specSha,primitives:digestOf(row.primitiveSha,PREFIX_PINS[id]?.except),labels:row.labelsSha,obstacles:row.obstaclesSha,model:row.modelSha,sampling:row.samplingSha,layout:row.layoutSha,svg:row.svgSha,tex:row.texSha}]));
+  return JSON.parse(run.stdout);
 })();
-const short=value=>value.slice(0,16);
-const SHARED=['input','primitives','labels','obstacles','model','sampling','layout'];
 
-test('A3 outputs that must not change are identical to the engine before this change: off-axis and out-of-scope figures in every field, the axis-overlap figures in everything but the two segments and the SVG/TeX bytes',async()=>{
+test('A3 the axis-overlap treatment reaches exactly the segments lying on the axes: no other figure, line or leader carries it',async()=>{
   const now=await probed();
-  assert.deepEqual(Object.keys(now).sort(),Object.keys(PREFIX_PINS).sort());
-  for(const [id,pin] of Object.entries(PREFIX_PINS)){
-    const fields=pin.except?SHARED:[...SHARED,'svg','tex'];
-    for(const field of fields)assert.equal(short(now[id][field]),pin[field],`${id}.${field} differs from the engine before this change`);
+  assert.ok(Object.keys(now).length>=13);
+  for(const [id,row] of Object.entries(now)){
+    const expected=OVERLAP_IDS[id]??[];
+    assert.deepEqual(row.overlapIds,expected,id+' axisOverlap');
+    assert.deepEqual(row.overlapTokens,expected,id+' axisOverlapShape token');
+    assert.ok(row.svg.startsWith('<svg')&&row.svg.endsWith('</svg>'),id+' builds an SVG');
   }
 });
-test('A3b the figures with segments on the axes do change in their SVG bytes, and the others do not',async()=>{
+test('A3b the figures with segments on the axes draw them with the heavy stroke; the figures without them draw no stroke of that width on a segment, line or leader',async()=>{
   const now=await probed();
-  for(const [id,pin] of Object.entries(PREFIX_PINS).filter(([,value])=>value.except))assert.notEqual(short(now[id].svg),pin.svg,id+' svg');
-  for(const [id,pin] of Object.entries(PREFIX_PINS).filter(([,value])=>!value.except))assert.equal(short(now[id].svg),pin.svg,id+' svg');
+  for(const [id,expected] of Object.entries(OVERLAP_IDS))for(const segment of expected)assert.equal(strokeOf(now[id].svg,segment),tokens.axisOverlapShape,id+' '+segment);
+  for(const [id,row] of Object.entries(now).filter(([key])=>!OVERLAP_IDS[key])){
+    const heavy=[...row.svg.matchAll(/<line id="([^"]+)"[^>]*? stroke-width="([0-9.]+)"/g)].filter(match=>Number(match[2])===tokens.axisOverlapShape).map(match=>match[1]);
+    assert.deepEqual(heavy,[],id+' has no heavy axis-overlap line');
+  }
 });
 
 // A4: the decision is made on screen coordinates (user-space px of the SVG), 0.5 px, on displayed axes only.

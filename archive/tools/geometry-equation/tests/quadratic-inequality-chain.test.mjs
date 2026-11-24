@@ -75,7 +75,7 @@ test('the chain expands to a graph panel in the solution variable over a number-
   assert.deepEqual(finite.sourceDomain,{kind:'INTERVAL',range:['0','6'],states:['CLOSED','CLOSED']});
   assert.deepEqual(finite.requiredPoints.map(point=>point.id),['B','V']);
   assert.throws(()=>expandInequalityChain(chain({coefficients:['-6','1','1'],comparator:'>'})),code('INEQUALITY_SOLUTION_NOT_ONE_INTERVAL'));
-  assert.throws(()=>expandInequalityChain({...chain(q11),graphCaption:{math:'y=D/4'}}),code('CHAIN_CAPTION_INVALID'));
+  assert.throws(()=>expandInequalityChain({...chain(q11),graphCaption:{math:'y=$D$'}}),code('CHAIN_CAPTION_INVALID'));
   assert.throws(()=>expandInequalityChain({...chain(q11),panels:[]}),code('CHAIN_PLAN_INVALID'));
   // compositePanels accepts the number line only as the last of two panels
   assert.equal(compositePanels(composite)[1].plan.capability,'number-line-v1');
