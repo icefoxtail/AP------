@@ -1,0 +1,96 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "...."
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b1"
+      ],
+      "label": "3ab"
+    },
+    {
+      "edge": [
+        "s1#b1",
+        "s1#b2"
+      ],
+      "label": "2b^2"
+    },
+    {
+      "edge": [
+        "s1#b0",
+        "s1#t0"
+      ],
+      "label": "2a"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "4ab"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b2"
+      ],
+      "label": "3b"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "h"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체와 삼각뿔"
+  },
+  "caption": "밑면의 가로와 세로, 높이가 주어진 직육면체와 밑면이 직각삼각형인 삼각뿔을 나란히 나타낸 그림.",
+  "accessibilityDescription": "왼쪽 직육면체에는 세 모서리의 길이 라벨이 있고, 오른쪽 삼각뿔에는 밑면 두 변의 길이와 높이 h가 표시되어 있다.",
+  "newVisualInformation": [
+    "직육면체의 세 모서리 길이, 삼각뿔 밑면 두 변의 길이와 높이 h"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 가로의 길이가 $3ab$, 세로의 길이가 $2b^2$, 높이가 $2a$인 직육면체와 밑면이 밑변의 길이가 $4ab$, 높이가 $3b$인 직각삼각형인 삼각뿔의 부피가 서로 같을 때, 이 삼각뿔의 높이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

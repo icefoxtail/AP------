@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "viewport": [
+      -4,
+      10,
+      -2,
+      6
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "I1",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "I2",
+        "x": "0",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x절편이 6이고 y절편이 3인 일차함수의 그래프가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$절편이 $6$이고 $y$절편이 $3$인 일차함수의 그래프에 대한 설명으로 옳지 않은 것을 고르면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The x-intercept of the graph is 6.",
+    "The y-intercept of the graph is 3."
+  ],
+  "newVisualInformation": [
+    "x절편 (6, 0)과 y절편 (0, 3)을 지나는 직선"
+  ],
+  "accessibilityDescription": "가로축의 점 (6, 0)과 세로축의 점 (0, 3)을 지나는 직선이 그려져 있다."
+}

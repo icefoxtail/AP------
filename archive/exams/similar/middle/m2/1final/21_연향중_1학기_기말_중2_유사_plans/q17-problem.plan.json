@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(3/4)x+3",
+    "requiredPoints": [],
+    "viewport": [
+      -2,
+      6,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (4, 0), (0, 3)을 지나는 일차함수의 그래프이다.",
+  "accessibilityDescription": "좌표축 위에 x축의 양의 부분과 y축의 양의 부분을 지나는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "두 점 (4, 0), (0, 3)을 지나는 직선",
+    "x절편 4와 y절편 3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(4, 0)$, $(0, 3)$을 지나는 일차함수의 그래프를 $y$축의 방향으로 $k$만큼 평행이동하면 일차함수 $y = -ax + 8$의 그래프와 일치한다. $a + k$의 값은? (단, $a$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

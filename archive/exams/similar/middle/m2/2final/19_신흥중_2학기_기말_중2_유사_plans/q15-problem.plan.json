@@ -1,0 +1,433 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "네 영역 A, B, C, D로 나뉜 도형이며 A는 B, C, D와, B는 C와, C는 D와 이웃한다.",
+  "accessibilityDescription": "위쪽의 긴 영역 A 아래에 B, C, D가 나란히 있고, A와 세 영역, B와 C, C와 D가 변을 맞대고 있다.",
+  "newVisualInformation": [
+    "영역 A, B, C, D의 배치와 이웃 관계"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "t0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "t0",
+    "t10",
+    "m0",
+    "m3",
+    "m7",
+    "m10",
+    "b0",
+    "b3",
+    "b7",
+    "b10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTop",
+      "refs": [
+        "t0",
+        "t10"
+      ]
+    },
+    {
+      "id": "sRight",
+      "refs": [
+        "t10",
+        "m10"
+      ]
+    },
+    {
+      "id": "sBotR",
+      "refs": [
+        "m10",
+        "b10"
+      ]
+    },
+    {
+      "id": "sBotM",
+      "refs": [
+        "b10",
+        "b7"
+      ]
+    },
+    {
+      "id": "sBotL",
+      "refs": [
+        "b7",
+        "b3"
+      ]
+    },
+    {
+      "id": "sBotLL",
+      "refs": [
+        "b3",
+        "b0"
+      ]
+    },
+    {
+      "id": "sLeft",
+      "refs": [
+        "b0",
+        "m0"
+      ]
+    },
+    {
+      "id": "sTopL",
+      "refs": [
+        "m0",
+        "t0"
+      ]
+    },
+    {
+      "id": "sMid1",
+      "refs": [
+        "m0",
+        "m3"
+      ]
+    },
+    {
+      "id": "sMid2",
+      "refs": [
+        "m3",
+        "m7"
+      ]
+    },
+    {
+      "id": "sMid3",
+      "refs": [
+        "m7",
+        "m10"
+      ]
+    },
+    {
+      "id": "sDiv1",
+      "refs": [
+        "m3",
+        "b3"
+      ]
+    },
+    {
+      "id": "sDiv2",
+      "refs": [
+        "m7",
+        "b7"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "t0",
+              "t10",
+              "m10",
+              "m0"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "m0",
+              "m3",
+              "b3",
+              "b0"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "m3",
+              "m7",
+              "b7",
+              "b3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "m7",
+              "m10",
+              "b10",
+              "b7"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [
+          5,
+          6
+        ],
+        "text": "A"
+      },
+      {
+        "id": "tB",
+        "at": [
+          1.5,
+          2
+        ],
+        "text": "B"
+      },
+      {
+        "id": "tC",
+        "at": [
+          5,
+          2
+        ],
+        "text": "C"
+      },
+      {
+        "id": "tD",
+        "at": [
+          8.5,
+          2
+        ],
+        "text": "D"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "t0",
+    "t10",
+    "m0",
+    "m3",
+    "m7",
+    "m10",
+    "b0",
+    "b3",
+    "b7",
+    "b10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 영역 $A, B, C, D$로 나뉜 도형이 있다. 영역 $A$는 $B, C, D$ 모두와 이웃하고, $B$는 $C$와, $C$는 $D$와 이웃하며 $B$와 $D$는 이웃하지 않는다. 이 도형의 각 영역을 빨강, 주황, 노랑, 초록, 파랑의 $5$가지 색으로 칠하려고 할 때, 같은 색을 중복하여 사용해도 좋으나 이웃한 영역은 서로 다른 색으로 칠하는 경우의 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

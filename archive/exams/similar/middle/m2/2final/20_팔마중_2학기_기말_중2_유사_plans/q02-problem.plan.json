@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 10,
+      "height": 6.6332495807108
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 15,
+      "height": 9.9498743710662
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "slant": true,
+      "label": "12"
+    },
+    {
+      "solid": "s2",
+      "slant": true,
+      "label": "18"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "15"
+    }
+  ],
+  "caption": "서로 닮은 두 원뿔 A, B에서 원뿔 A의 모선은 12 cm, 원뿔 B의 모선은 18 cm이고 원뿔 B의 밑면의 반지름은 15 cm이다.",
+  "accessibilityDescription": "왼쪽의 작은 원뿔 A에는 모선 12가, 오른쪽의 큰 원뿔 B에는 모선 18과 밑면의 반지름 15가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원뿔 $A, B$가 있다. 원뿔 $A$의 모선의 길이는 $12\\text{ cm}$, 원뿔 $B$의 모선의 길이는 $18\\text{ cm}$이고 원뿔 $B$의 밑면의 반지름의 길이가 $15\\text{ cm}$일 때, 원뿔 $A$의 밑면의 둘레의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "서로 닮은 두 원뿔 A, B의 모선의 길이는 각각 12 cm, 18 cm이고 원뿔 B의 밑면의 반지름은 15 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔 A의 모선 12, 원뿔 B의 모선 18과 밑면 반지름 15를 표시한다."
+  ]
+}

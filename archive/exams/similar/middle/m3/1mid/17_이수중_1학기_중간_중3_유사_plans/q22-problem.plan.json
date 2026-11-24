@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBottom",
+      "refs": [
+        "A1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sLeft",
+      "refs": [
+        "A1",
+        "A4"
+      ]
+    },
+    {
+      "id": "sTopA",
+      "refs": [
+        "A4",
+        "A3"
+      ]
+    },
+    {
+      "id": "sRightA",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sTopB",
+      "refs": [
+        "B3",
+        "B4"
+      ]
+    },
+    {
+      "id": "sRightB",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sTopC",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "id": "sRightC",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "A2",
+              "A3",
+              "A4"
+            ]
+          }
+        ],
+        "label": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "B1",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ],
+        "label": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "C1",
+              "C2",
+              "C3",
+              "C4"
+            ]
+          }
+        ],
+        "label": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "caption": "아래 변이 일직선이 되도록 왼쪽부터 정사각형 A, B, C를 차례로 붙인 도형이다.",
+  "accessibilityDescription": "왼쪽에 가장 큰 정사각형 A, 가운데 중간 크기 정사각형 B, 오른쪽에 가장 작은 정사각형 C가 나란히 붙어 있다. 세 정사각형의 아래 변은 한 직선 위에 있다.",
+  "newVisualInformation": [
+    "세 정사각형 A, B, C가 왼쪽부터 차례로 붙어 있음",
+    "세 정사각형의 아래 변이 일직선임"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 2】 다음 그림에서 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$는 모두 정사각형이고, $\\mathrm{A}$와 $\\mathrm{B}$의 넓이가 각각 $\\mathrm{C}$의 넓이의 $5$배, $3$배이다. 이 세 정사각형을 아래 변이 일직선이 되도록 차례로 붙여서 만든 도형의 둘레의 길이가 $12\\sqrt{5} + 6\\sqrt{3} + 6,\\text{cm}$일 때, 이 도형의 넓이를 구하여라. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

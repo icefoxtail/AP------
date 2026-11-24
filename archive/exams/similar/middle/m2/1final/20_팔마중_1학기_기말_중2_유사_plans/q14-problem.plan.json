@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해를 나타낸 수직선"
+  },
+  "caption": "수직선 위의 -2 지점에 색칠한 동그라미가 있고 그 오른쪽이 굵은 선으로 표시되어 있다.",
+  "accessibilityDescription": "가로 수직선에서 -2에 해당하는 자리에 속이 채워진 동그라미가 있고, 그 점에서 오른쪽 끝까지 굵은 반직선이 그어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $-3(x+a) \\le -x-5$의 해를 수직선 위에 나타내면 $-2$에 색칠한 동그라미를 표시하고 오른쪽으로 뻗은 반직선일 때, 수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "-3(x+a)<=-x-5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "끝점을 포함하는 해집합의 경계값과 방향을 수직선으로 보인다"
+  ]
+}
