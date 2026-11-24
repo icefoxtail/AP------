@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      200,
+      0,
+      1300
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "300",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "180"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "f"
+        }
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "8"
+        ],
+        "domain": [
+          "0",
+          "150"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "150",
+        "180"
+      ],
+      "y": [
+        "300",
+        "1200"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "동생과 형이 일정한 속력으로 달릴 때, 출발한 지 x초 후의 거리 y를 나타낸 두 직선 f, g이다. 동생은 300미터 앞에서 출발해 180초에, 형은 150초에 결승선에 도착한다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있는 좌표평면에 두 직선 f와 g가 있다. 직선 f는 y절편 300에서 시작해 180초에 1200에 이르고, 직선 g는 원점에서 시작해 150초에 1200에 이른다.",
+  "newVisualInformation": [
+    "두 사람의 출발 위치와 결승선 도착 시간을 나타낸 두 직선 f와 g"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "동생과 형이 $1200\\text{ m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $300\\text{ m}$ 앞에서 출발하기로 하였다. 두 사람이 동시에 출발하여 각자 일정한 속력으로 달릴 때, 동생은 $180$초 만에 결승선($1200\\text{ m}$)에 도착하고 형은 $150$초 만에 결승선($1200\\text{ m}$)에 도착한다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작하는가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
