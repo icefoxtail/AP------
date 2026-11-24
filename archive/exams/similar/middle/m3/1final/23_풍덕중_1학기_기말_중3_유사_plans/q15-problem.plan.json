@@ -1,38 +1,117 @@
 {
-  "target": "y=3(x-2)(x+2), y=3(x-2)^2, y=3(x+2)^2 세 포물선으로 둘러싸인 영역",
-  "type": "three_parabolas_region",
-  "axes": {
-    "x": [
-      -3,
-      3
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "12",
+          "-12",
+          "3"
+        ]
+      }
     ],
-    "y": [
-      -13,
-      14
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "12"
+      }
     ],
-    "origin": "O"
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-12",
+          "0",
+          "3"
+        ],
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -15,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-12"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "0",
+        "y": "12"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "g",
+        "from": "-2",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTitles": {
+      "x": "x"
+    }
   },
-  "curves": [
-    "y=3(x-2)(x+2)",
-    "y=3(x-2)^2",
-    "y=3(x+2)^2"
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면에 세 포물선으로 둘러싸인 영역이 색칠되어 있다.",
+  "accessibilityDescription": "좌표평면에 세 개의 포물선이 그려져 있고, 교점 A, C, D와 꼭짓점 B로 둘러싸인 영역이 색칠되어 있다. x축 위에 점 A와 C가 있고, y축 위에 점 B와 D가 위치한다.",
+  "newVisualInformation": [
+    "세 포물선으로 둘러싸인 닫힌 영역이 색칠되어 있다."
   ],
-  "vertices": [
-    [
-      -2,
-      0
-    ],
-    [
-      2,
-      0
-    ],
-    [
-      0,
-      12
-    ],
-    [
-      0,
-      -12
-    ]
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그래프는 $y=3x^2$을 평행이동한 세 이차함수 $y=3(x-2)(x+2)$, $y=3(x-2)^2$, $y=3(x+2)^2$의 그래프이다. 세 포물선으로 둘러싸인 색칠된 부분의 넓이를 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }

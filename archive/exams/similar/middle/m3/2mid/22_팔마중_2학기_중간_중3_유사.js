@@ -285,6 +285,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/22_팔마중_2학기_중간_중3_유사/q07-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",

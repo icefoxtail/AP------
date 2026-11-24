@@ -1,43 +1,82 @@
 {
-  "kind": "geometry",
-  "caption": "y=-x²+2x+8의 x절편 A(-2,0), B(4,0)와 y절편 C(0,8)",
-  "viewBox": [
-    0,
-    0,
-    240,
-    180
-  ],
-  "vertices": {
-    "A": [
-      60,
-      140
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "2",
+          "-1"
+        ]
+      }
     ],
-    "B": [
-      180,
-      140
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 9,
+        "marker": "NONE"
+      }
     ],
-    "C": [
-      100,
-      45
-    ]
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "4"
+        },
+        {
+          "id": "C",
+          "curveX": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
   },
-  "segments": [
-    [
-      "A",
-      "B"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "C",
-      "A"
-    ]
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "O": "O"
+  },
+  "caption": "이차함수 그래프와 x축의 교점 A, B, y축의 교점 C로 이루어진 삼각형 ABC가 색칠되어 있다.",
+  "accessibilityDescription": "좌표평면에서 위로 볼록한 포물선이 x축과 점 A, B에서 만나고 y축과 점 C에서 만나며 삼각형 ABC의 내부가 칠해져 있다.",
+  "newVisualInformation": [
+    "이차함수 그래프와 세 교점 A, B, C로 이루어진 삼각형 ABC의 영역"
   ],
-  "labels": {
-    "A": "A(-2,0)",
-    "B": "B(4,0)",
-    "C": "C(0,8)"
-  }
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=-x^2+2x+8$의 그래프가 $x$축과 만나는 두 점을 $A$, $B$, $y$축과 만나는 점을 $C$라 할 때, $\\triangle ABC$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

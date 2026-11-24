@@ -229,6 +229,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/23_동산중_2학기_중간_중3_유사/q06-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "",
     "curriculum": "2015",

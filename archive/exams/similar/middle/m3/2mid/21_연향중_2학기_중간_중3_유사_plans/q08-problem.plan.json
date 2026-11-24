@@ -1,45 +1,354 @@
 {
-  "kind": "geometry",
-  "elements": [
-    {
-      "type": "circle",
-      "center": "O"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p1",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "lineAC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "p2",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "K",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "p1",
+          "p2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
-      ],
-      "inscribedIn": "O"
+      ]
     },
     {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "AB",
-      "foot": "D"
-    },
-    {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "BC",
-      "foot": "E"
-    },
-    {
-      "type": "perpendicular",
-      "from": "O",
-      "to": "AC",
-      "foot": "F"
-    },
-    {
-      "type": "angle",
-      "at": "O",
-      "arms": [
-        "B",
+      "id": "sAC",
+      "refs": [
+        "A",
         "C"
-      ],
-      "text": "110°"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "B",
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "C",
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 110,
+        "label": "110",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "angleACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 70,
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "distance",
+        "count": 1,
+        "segments": [
+          "sOE",
+          "sOF"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "원 O에 내접하는 삼각형 ABC와 외심 O에서 각 변에 내린 수선의 발 D, E, F",
+  "accessibilityDescription": "원 O에 내접하는 삼각형 ABC에서 원의 중심 O에서 변 AB, BC, AC에 각각 수선을 내려 수선의 발을 D, E, F라 하고 선분 OE와 OF의 길이가 같다는 표시가 되어 있다. 중심각 BOC의 크기는 110도로 주어져 있고 각 ACB의 크기는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 BOC의 크기 110도와 각 ACB의 크기 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 $\\triangle\\text{ABC}$는 원 $\\text{O}$에 내접하고, 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 원 $\\text{O}$의 중심에서 각각 변 $\\text{AB}$, $\\text{BC}$, $\\text{AC}$에 내린 수선의 발이다. $\\overline{\\text{OE}}=\\overline{\\text{OF}}$이고 $\\angle\\text{BOC}=110^\\circ$일 때, $\\angle x = \\angle\\text{ACB}$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
