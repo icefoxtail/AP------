@@ -1,7 +1,6 @@
 # AGENTS.md — 작업 안내판
 
-이 파일은 작업 진입 안내판이다. 자동 로드는 실행기·작업 폴더·설정에 따라 달라지며, 링크한 문서 본문까지 읽었다는 뜻은 아니다. 세부 규칙은 해당 작업을 할 때 실제로 열어 읽는다.
-요약과 원문이 다르면 영역 문서의 원문이 우선한다.
+이 파일은 작업 안내판이다. 자동 로드·링크 문서 열람을 보장하지 않으니 해당 영역 문서를 직접 읽는다. 충돌 시 영역 문서 원문이 우선한다.
 
 ## 첫걸음
 
@@ -50,7 +49,7 @@
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
-| GPT 채팅창 기출 유사1~N·난도 믹서 | [docs/agents/gpt-similar-difficulty-mixer.md](docs/agents/gpt-similar-difficulty-mixer.md) |
+| GPT 유사세트 난도 믹서 | [운영계약](docs/agents/gpt-similar-difficulty-mixer.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
@@ -67,5 +66,5 @@
 
 - 새 사용자 지시와 캠페인 규칙은 해당 영역 문서에 추가한다. 모든 라인에 필요한 간결한 공통 우선순위는 `모든 작업 공통` 절에 둘 수 있다. 이 파일에는 날짜별 지시(`CURRENT TOP` 등)나 진행 현황을 쌓지 않는다. 여러 실행기의 공통 진입 문서이기 때문이다.
 - 끝난 캠페인 규칙은 지운다. 이력은 git에 남는다(예: NEW14 규칙 3개는 2026-10-30 사용자 결정으로 삭제했다).
-- 규칙을 추가할 때는 이유를 한 줄 붙인다. 이유가 있어야 다음 작업자가 다시 조사하거나 되돌리지 않는다.
+- 규칙 추가 시 이유 한 줄을 붙여 불필요한 재조사를 줄인다.
 - 크기 상한, 날짜별 지시 금지, 링크 존재는 `tests/agents-md-budget.test.js`가 검사한다.
