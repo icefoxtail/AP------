@@ -2112,7 +2112,7 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
 // A receipt's applied row is replayed against the current row byte for byte. A DIRECT_JUDGMENT (TYPE_ONLY) registration afterwards adds the type
 // fields and a typeApproval to a row whose receipt recorded NO type; those fields (and only those) are then left out of the comparison.
 // Anything else that differs, or a receipt that recorded a type of its own, still counts as drift.
-const TYPE_LANE_ROW_KEYS = ["problemTypeKey", "templateKey", "typeApproval"];
+const TYPE_LANE_ROW_KEYS = ["problemTypeKey", "templateKey", "typeApproval", "templateApproval"];
 const withoutTypeLane = row => {
   const copy = structuredClone(row);
   for (const key of TYPE_LANE_ROW_KEYS) delete copy[key];

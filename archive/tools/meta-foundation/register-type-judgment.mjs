@@ -15,6 +15,11 @@
 //
 // A request may also widen a pack's declared scope (append curricula/standardCourses values only) next to its new bindings.
 //
+// TPL append (item.templateOnly: true, 2026-11-24): the row's PT is already approved and only the template is empty. The item then writes the
+// template alone: templateKey, fieldStatus.template (approved_direct_judgment, or draft_single_model when item.templateGrade says one model judged it)
+// and a new templateApproval record. problemTypeKey, fieldStatus.problemType and the existing typeApproval are never touched. Allowed only when the
+// judged PT equals the row's approved PT, the row's templateKey is empty (never overwritten) and the stem+choices text still equals the judged text.
+//
 // What stays strict (the type fields themselves): the PT is ACTIVE; a TPL is ACTIVE and its parent is the chosen PT; an
 // ACTIVE binding of the PT exists for the question's curriculum and course (a new key and its binding may be added by the
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
@@ -30,6 +35,9 @@ export const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
 export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
 export const TYPE_FIELD_STATUS = "approved_direct_judgment";
 export const TYPE_APPROVAL_SCHEMA = "archive-type-direct-judgment-approval-v1";
+export const TEMPLATE_APPROVAL_SCHEMA = "archive-template-append-approval-v1";
+// 단일 모델 초안 등급 표시(docs/agents/metadata.md "단일 모델 초안 등급"; register-difficulty5.mjs DRAFT_FIELD_STATUS와 같은 값).
+export const TEMPLATE_DRAFT_STATUS = "draft_single_model";
 export const DECISION_DOCUMENT = "docs/agents/metadata.md";
 const META_FILE = "archive/data/question_metadata.json";
 // Statuses of an unapproved type field. Anything else (approved_*, hold, adjudicated, debt) is never overwritten.
@@ -37,7 +45,7 @@ const OVERWRITABLE_STATUS = new Set(["", "manual_review_pending", "projection_un
 const REQUEST_KEYS = new Set(["schemaVersion", "requestId", "examUid", "sourceArchiveFile", "expectedSourceBlobSha1", "expectedQuestionCount",
   "scope", "fieldScope", "approval", "registryChanges", "items"]);
 const APPROVAL_KEYS = new Set(["type", "metadataReviewed", "reviewPassCount", "approvedBy", "judge", "decisionRef", "resultSource", "evidenceRefs"]);
-const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "textBindingFingerprint", "evidenceRefs", "reason"]);
+const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "textBindingFingerprint", "evidenceRefs", "reason", "templateOnly", "templateGrade"]);
 const TYPE_FIELDS = ["problemTypeKey", "templateKey"];
 const PLACEHOLDER = /^(?:-|none|null|n\/a|tbd|todo|\?+)$/i;
 const compact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
@@ -78,6 +86,9 @@ function assertRequestShape(req, h) {
   if (!Array.isArray(req.items) || !req.items.length) fail("direct judgment items required");
   for (const item of req.items) {
     for (const key of Object.keys(item)) if (!ITEM_KEYS.has(key)) fail(`direct judgment item key not allowed (type fields only): ${item.questionUid}.${key}`);
+    if (item.templateOnly !== undefined && item.templateOnly !== true) fail(`templateOnly must be true when present: ${item.questionUid}`);
+    if (item.templateGrade !== undefined && (item.templateOnly !== true || item.templateGrade !== TEMPLATE_DRAFT_STATUS))
+      fail(`templateGrade is only "${TEMPLATE_DRAFT_STATUS}" and only with templateOnly: ${item.questionUid}`);
   }
 }
 
@@ -145,7 +156,8 @@ function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliase
 
 const typeSlice = row => ({ questionUid: row.questionUid, sourceArchiveFile: row.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal,
   problemTypeKey: row.problemTypeKey, templateKey: row.templateKey,
-  fieldStatus: { problemType: row.fieldStatus?.problemType, template: row.fieldStatus?.template }, typeApproval: row.typeApproval });
+  fieldStatus: { problemType: row.fieldStatus?.problemType, template: row.fieldStatus?.template }, typeApproval: row.typeApproval,
+  ...(row.templateApproval !== undefined ? { templateApproval: row.templateApproval } : {}) });
 
 export function registerTypeJudgment(ctx) {
   const { root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, h } = ctx;
@@ -175,7 +187,7 @@ export function registerTypeJudgment(ctx) {
       const patch = patches.get(record.questionUid);
       const current = rows.find(row => row.questionUid === record.questionUid);
       if (!patch || !current || !eq(JSON.parse(JSON.stringify(typeSlice(current))), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
-      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h, aliases);
+      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: (record.templateApproval || record.typeApproval).scope }, h, aliases);
     }
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, fieldScope: FIELD_SCOPE_TYPE_ONLY, replay: true,
       plannedPaths: [], typeApprovals: patches.size, newMetadataApprovals: 0,
@@ -211,9 +223,18 @@ export function registerTypeJudgment(ctx) {
       const was = empty(current[key]) ? "" : current[key], claimed = empty(patch.before[key]) ? "" : patch.before[key];
       if (was !== claimed) failWith(`before mismatch: ${uid}.${key}`);
     }
+    const templateOnly = patch.templateOnly === true;
+    if (templateOnly) {
+      // TPL append: only a row whose PT is already approved, equals the judged PT and whose template is empty. Nothing else is read or written.
+      if (!typeFieldHoldsRegisteredValue(tables, "problemType", current.problemTypeKey) || !/^approved/i.test(String(current.fieldStatus?.problemType ?? "")))
+        failWith(`template append needs an approved PT: ${uid}`);
+      if (problemTypeKey !== current.problemTypeKey) failWith(`template append PT differs from the approved PT: ${uid}`);
+      if (!empty(current.templateKey)) failWith(`template already present (never overwritten): ${uid}=${current.templateKey}`);
+      if (!templateKey) failWith(`template append needs after.templateKey: ${uid}`);
+    }
     // A type that is already approved is final for this lane; an unapproved (draft/pending) value is replaced.
     // A field with no value has nothing to protect: its status is only a tag, so an empty field is filled whatever the tag says.
-    for (const field of ["problemType", "template"]) {
+    if (!templateOnly) for (const field of ["problemType", "template"]) {
       if (!typeFieldHoldsRegisteredValue(tables, field, current[`${field}Key`])) continue;
       const status = String(current.fieldStatus?.[field] ?? "");
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
@@ -256,6 +277,18 @@ export function registerTypeJudgment(ctx) {
       ...(hasEmbedded ? { examEmbeddedType: { ...embedded, matchesRegistered: embedded.problemTypeKey === problemTypeKey && (empty(embedded.templateKey) || embedded.templateKey === templateKey) } } : {}),
       priorType: { problemTypeKey: current.problemTypeKey ?? null, templateKey: current.templateKey ?? null,
         problemTypeStatus: current.fieldStatus?.problemType ?? null, templateStatus: current.fieldStatus?.template ?? null } };
+    if (templateOnly) {
+      const grade = patch.templateGrade || TYPE_FIELD_STATUS;
+      const templateApproval = { schemaVersion: TEMPLATE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
+        grade, scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
+          ...(["alias", "successor", "reach"].includes(courseRelation) ? { rowCourse, courseRelation } : {}) },
+        judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding, textBindingFingerprint: judgedText,
+        resultSource: req.approval.resultSource, decisionRef: req.approval.decisionRef, receipt: receiptPath,
+        priorTemplate: { templateKey: current.templateKey ?? null, templateStatus: current.fieldStatus?.template ?? null } };
+      Object.assign(current, { templateKey, fieldStatus: { ...(current.fieldStatus || {}), template: grade }, templateApproval });
+      typeRecords.push(typeSlice(current));
+      continue;
+    }
     const final = { ...current, problemTypeKey, templateKey: templateKey || (empty(current.templateKey) ? current.templateKey : ""),
       fieldStatus: { ...(current.fieldStatus || {}), problemType: TYPE_FIELD_STATUS, ...(templateKey ? { template: TYPE_FIELD_STATUS } : {}) },
       typeApproval };

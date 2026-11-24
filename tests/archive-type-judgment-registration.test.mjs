@@ -734,3 +734,56 @@ test("catalog conflict rule: the two type fields never count as a conflict, ever
   assert.equal(isMetadataConflict("difficultyBucket", "하", undefined), false);
   assert.equal(isMetadataConflict("difficultyBucket", "하", "상", { metaV2Sidecar: true }), false);
 });
+
+// TPL append (item.templateOnly): the PT is already approved; only an empty template is filled, nothing else is written.
+const approvedPt = { problemTypeKey: "PT_A", templateKey: "", fieldStatus: { problemType: "approved_direct_judgment", template: "manual_review_pending", standardUnit: "manual_review_pending", subUnit: "manual_review_pending", concept: "manual_review_pending", difficulty: "source_unreviewed" },
+  typeApproval: { schemaVersion: "archive-type-direct-judgment-approval-v1", approvalType: DIRECT_JUDGMENT, requestId: "older-request", rationale: "이전 판정의 근거 문장" } };
+const append = (f, n, after, over = {}) => f.item(n, after, { templateOnly: true, ...over });
+
+test("TPL append: an approved PT with an empty template gets the template alone; PT, PT status, typeApproval and every other field stay byte-identical; replay verifies", t => {
+  const f = fixture(t, { rowMutations: { 1: approvedPt, 2: approvedPt } }), rowsBefore = f.rows();
+  const req = f.request([append(f, 1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), append(f, 2, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { templateGrade: "draft_single_model" })]);
+  const result = f.run(req, { write: true });
+  assert.equal(result.status, "PASS");
+  assert.equal(result.typeApprovals, 2);
+  const rowsAfter = f.rows();
+  for (const n of [1, 2]) {
+    const row = rowsAfter[n - 1], was = rowsBefore[n - 1];
+    assert.equal(row.templateKey, "TPL_A");
+    assert.equal(row.problemTypeKey, "PT_A");
+    assert.equal(row.fieldStatus.problemType, "approved_direct_judgment");
+    assert.deepEqual(row.typeApproval, was.typeApproval, "the existing typeApproval record is not touched");
+    assert.equal(row.templateApproval.schemaVersion, "archive-template-append-approval-v1");
+    assert.equal(row.templateApproval.requestId, req.requestId);
+    assert.deepEqual(row.templateApproval.priorTemplate, { templateKey: "", templateStatus: "manual_review_pending" });
+    const strip = r => { const c = structuredClone(r); delete c.templateKey; delete c.templateApproval; delete c.fieldStatus.template; return c; };
+    assert.deepEqual(strip(row), strip(was), `row ${n}: every other field is unchanged`);
+  }
+  assert.equal(rowsAfter[0].fieldStatus.template, TYPE_FIELD_STATUS);
+  assert.equal(rowsAfter[1].fieldStatus.template, "draft_single_model", "a one-model judgment carries the draft grade on the template field");
+  assert.equal(rowsAfter[0].templateApproval.grade, TYPE_FIELD_STATUS);
+  assert.equal(rowsAfter[1].templateApproval.grade, "draft_single_model");
+  assert.equal(f.run(req, { write: true }).replay, true);
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+  // a receipt of another request that recorded this row without a type stays replayable once the template was appended
+  const recorded = { ...rowsBefore[0], problemTypeKey: "", templateKey: "", typeApproval: undefined, fieldStatus: { ...rowsBefore[0].fieldStatus, problemType: "manual_review_pending" } };
+  assert.equal(receiptRecordMatchesRow(rowsAfter[0], recorded), true);
+});
+
+test("TPL append refuses: judged PT differs from the approved PT, template already present, key missing or another PT's template, stem changed, PT not approved", t => {
+  const refuse = (rowOver, after, itemOver, pattern, label) => {
+    const f = fixture(t, { rowMutations: { 1: { ...approvedPt, ...rowOver } } }), before = f.bytes();
+    assert.throws(() => f.run(f.request([append(f, 1, after, itemOver)]), { write: true }), pattern, label);
+    assert.deepEqual(f.bytes(), before, `${label}: nothing is written`);
+  };
+  refuse({}, { problemTypeKey: "PT_B", templateKey: "TPL_B" }, {}, /template append PT differs from the approved PT/, "other PT");
+  refuse({ templateKey: "TPL_A", fieldStatus: { ...approvedPt.fieldStatus, template: "approved_direct_judgment" } }, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, {}, /template already present \(never overwritten\)/, "template present");
+  refuse({}, { problemTypeKey: "PT_A", templateKey: "TPL_NOPE" }, {}, /inactive\/missing TPL: TPL_NOPE/, "key not in the registry");
+  refuse({}, { problemTypeKey: "PT_A", templateKey: "TPL_B" }, {}, /TPL parent mismatch: TPL_B/, "another PT's template");
+  refuse({}, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { textBindingFingerprint: "0".repeat(64) }, /stem or choices differ from the judged text/, "stem changed");
+  refuse({ fieldStatus: { ...approvedPt.fieldStatus, problemType: "manual_review_pending" } }, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, {}, /template append needs an approved PT/, "PT only pending");
+  // the flag is strict: a grade without templateOnly, or another grade value, is not accepted
+  const f = fixture(t, { rowMutations: { 1: approvedPt } });
+  assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { templateGrade: "draft_single_model" })]), { write: true }), /templateGrade is only/);
+  assert.throws(() => f.run(f.request([append(f, 1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { templateGrade: "approved_x" })]), { write: true }), /templateGrade is only/);
+});
