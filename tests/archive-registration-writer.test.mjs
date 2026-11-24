@@ -7,7 +7,8 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,matchesReference,compilePatterns,fingerprint,indexRows,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {producerClosure} from '../tools/ci/registration-producer-closure.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,registrationPictureInputs,EXCLUDED_CODE_DIRS,CODE_TREE,matchesReference,compilePatterns,fingerprint,indexRows,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -1077,4 +1078,107 @@ test('the compiled path matcher answers exactly like the original definition and
       assert.equal(fingerprint(rows.filter(r=>sample.has(r.path)),list),original,`${lane.id} fingerprint`);
     }
   }
+});
+
+
+test('no lane runs or imports a path its inputs exclude, and edits to excluded paths leave that lane digest alone',()=>{
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const lanes=nativeLanes(root);
+  assert.ok(EXCLUDED_CODE_DIRS.length>=1&&EXCLUDED_CODE_DIRS.every(d=>d.startsWith(CODE_TREE)&&d.endsWith('/')));
+  const codeLanes=lanes.filter(l=>l.inputs.includes(CODE_TREE));
+  assert.deepEqual(codeLanes.map(l=>l.id).sort(),['generated','reviewed','semantic','shared','studentIndexes']);
+  const rows=indexRows(root),withRow=p=>[...rows,{path:p,mode:'100644',blob:'1'.repeat(40)}];
+  let followed=0;
+  for(const lane of lanes) {
+    // The scripts this lane's commands run and everything they import or spawn, computed now from the tracked files.
+    const {entries,visited,parent}=producerClosure(root,[lane]);
+    const chain=f=>{const out=[f];while(parent.has(out[out.length-1])&&out.length<12)out.push(parent.get(out[out.length-1]));return out.join(' <- ');};
+    assert.ok(entries.length>=1,`${lane.id}: lane commands resolve to real scripts`);
+    followed+=visited.length;
+    const excluded=lane.excludeInputs||[];
+    for(const file of visited) {
+      assert.equal(matches(file,excluded),false,`${lane.id} runs an excluded path: ${chain(file)}`);
+      // The writer is the one file that names the excluded paths: it holds the lists and never loads them.
+      if(file==='tools/ci/archive-registration-writer.mjs')continue;
+      const text=fs.readFileSync(path.join(root,file),'utf8');
+      for(const dir of excluded.filter(p=>p.endsWith('/'))) {
+        const name=dir.slice(CODE_TREE.length,-1);
+        if(!name||name.includes('/'))continue;
+        assert.equal(new RegExp(`(?:\\.{1,2}\\/|\\btools\\/)${name}(?![\\w-])|['"\`]${name}['"\`]`).test(text),false,`${lane.id}: ${file} reaches the excluded tree ${dir}: ${chain(file)}`);
+      }
+    }
+    // Digests: every excluded path may change freely; a neighbouring file under archive/tools still changes the digest of a code lane.
+    const base=fingerprint(rows,lane.inputs,lane.excludeInputs);
+    for(const pattern of excluded) {
+      const probe=pattern.endsWith('/')?pattern+'zz-probe.mjs':pattern;
+      assert.equal(fingerprint(withRow(probe),lane.inputs,lane.excludeInputs),base,`${lane.id}: an edit to ${pattern} must not change the input digest`);
+    }
+    if(lane.inputs.includes(CODE_TREE))assert.notEqual(fingerprint(withRow(CODE_TREE+'zz-probe.mjs'),lane.inputs,lane.excludeInputs),base,`${lane.id}: any other archive/tools edit must still change it`);
+  }
+  console.log(`lane closures followed ${followed} files in total`);
+  assert.ok(followed>100,'the closures follow imports');
+});
+
+// ---- pictures: the shared lane's commands never open archive/assets, the lanes that do still see every picture ----
+test('a picture edit leaves the shared lane digest alone but still reaches the lanes that read pictures',()=>{
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(root);
+  const rows=indexRows(root),probe='archive/assets/images/zz-probe/q1.svg';
+  const changed=[...rows,{path:probe,mode:'100644',blob:'2'.repeat(40)}],edited=rows.map(r=>r.path.startsWith('archive/assets/images/')&&!matches(r.path,lanes.find(l=>l.id==='shared').inputs)?{...r,blob:'3'.repeat(40)}:r);
+  const digest=(set,lane)=>fingerprint(set,lane.inputs,lane.excludeInputs);
+  const shared=lanes.find(l=>l.id==='shared');
+  assert.equal(matches(probe,shared.inputs),false,'no shared input names the picture tree (only the held-source pictures that the quality-hold policy binds by name)');
+  const rebind=registrationPictureInputs(root);assert.ok(rebind.length>=1&&rebind.every(p=>matches(p,shared.inputs)),'the pictures the pipeline hashes stay inputs');
+  assert.equal(digest(changed,shared),digest(rows,shared));assert.equal(digest(edited,shared),digest(rows,shared));
+  for(const id of ['studentIndexes','fourSlot']) {
+    const lane=lanes.find(l=>l.id===id);
+    assert.notEqual(digest(changed,lane),digest(rows,lane),`${id} reads pictures`);
+  }
+  // The picture reading is not hidden in a producer: none of the shared lane's own scripts mentions the picture tree.
+  const {visited}=producerClosure(root,[shared]);
+  const own=visited.filter(f=>/^(?:archive\/tools\/(?:intelligence|build-|verify-archive-registration|meta-foundation\/(?:compile-meta-foundation|materialize-meta-v2))|tools\/ci\/archive-(?:registration-build-db|pages-registration-derive))/.test(f)||f==='archive/build_db.py');
+  assert.ok(own.length>=8);
+  // The one producer that opens pictures: it hashes the figures named in the visual-rebind receipts, which registrationPictureInputs reads.
+  for(const f of own.filter(f=>f!=='archive/tools/intelligence/apply-reviewed-legacy-similar-ledgers.mjs'))assert.equal(/['"`/]archive\/assets\/|['"`]assets\/images/.test(fs.readFileSync(path.join(root,f),'utf8')),false,`${f} opens the picture tree`);
+});
+
+// ---- digestOnly lane (4slot): skipped by a merge run, brought current by a digest run, never relabelled in between ----
+test('a digestOnly lane is skipped in a merge run with its proof untouched, announced in the summary, and run by the digest run',async t=>{
+  const f=fixture(t),lanes=f.lanes.map(l=>l.id==='fourSlot'?{...l,digestOnly:true}:l),merge={ARCHIVE_REGISTRATION_MODE:'merge'},digest={ARCHIVE_REGISTRATION_MODE:'digest'};
+  const options={...f.options,lanes};
+  const seeded=await prepareRegistration({...options,env:digest});assert.equal(seeded.publishable,true);commit(f.root,'registered fixture');f.calls.length=0;
+  const seededState=readJson(f.root,STATE).lanes.fourSlot;
+  // A picture change: the required lanes run, the digestOnly lane does not.
+  write(f.root,asset,'<svg xmlns="http://www.w3.org/2000/svg"><g/></svg>\n');commit(f.root,'one picture edited');
+  const checkedMerge=checkRegistration({...options,env:merge});
+  assert.equal(checkedMerge.needed,true);assert.deepEqual(checkedMerge.deferredLanes,['fourSlot']);
+  assert.equal(checkedMerge.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST');
+  assert.equal(checkRegistration({...options,env:digest}).lanes.find(l=>l.id==='fourSlot').status,'NEEDS_REGISTRATION','a digest run still sees it as needed');
+  const result=await prepareRegistration({...options,env:merge});
+  assert.equal(result.safeToPersist,true);assert.equal(result.publishable,true);assert.deepEqual(result.deferredLanes,['fourSlot']);
+  assert.ok(f.calls.includes('shared')&&!f.calls.includes('fourSlot'),'fourSlot did not run: '+f.calls);
+  assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST');
+  assert.deepEqual(readJson(f.root,STATE).lanes.fourSlot,seededState,'the committed proof of the skipped lane is untouched');
+  assert.ok(!result.changedPaths.includes('out/4slot.json'));
+  const summary=renderRegistrationSummary(result);
+  assert.match(summary,/Left for the scheduled or manual run[^\n]*fourSlot[^\n]*NOT recomputed/);
+  commit(f.root,'registered in merge mode');f.calls.length=0;
+  // Nothing left for a later merge run, but the digest run still owes the lane.
+  assert.equal(checkRegistration({...options,env:merge}).needed,false);
+  assert.equal(checkRegistration({...options,env:digest}).needed,true);
+  const later=await prepareRegistration({...options,env:digest});
+  assert.deepEqual(f.calls,['fourSlot'],'only the owed lane runs');
+  assert.equal(later.deferredLanes,undefined);assert.equal(later.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+  assert.equal(readJson(f.root,'out/4slot.json').assetSha256,hash(read(f.root,asset)));
+  commit(f.root,'registered in digest mode');
+  assert.equal(checkRegistration({...options,env:digest}).needed,false);
+});
+
+test('a required lane is never deferred, and a digestOnly lane that never ran gets no invented proof',async t=>{
+  const f=fixture(t),merge={ARCHIVE_REGISTRATION_MODE:'merge'};
+  const lanes=f.lanes.map(l=>l.id==='fourSlot'||l.id==='shared'?{...l,digestOnly:true}:l);
+  const options={...f.options,lanes,env:merge};
+  const first=await prepareRegistration(options);
+  assert.ok(first.lanes.find(l=>l.id==='shared').status!=='DEFERRED_TO_DIGEST','required lanes ignore digestOnly');
+  assert.equal(first.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST','a lane that never ran is deferred too');
+  assert.equal(readJson(f.root,STATE).lanes.fourSlot,undefined,'no proof is invented for a lane that never ran');
 });
