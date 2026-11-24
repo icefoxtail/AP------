@@ -1,6 +1,5 @@
 {
   "capability": "construction-spike-v1",
-  "caption": "평행한 보조선을 그어 엇각의 크기를 합산하는 해설 다이어그램이다.",
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
     "realization": {
@@ -10,199 +9,375 @@
     },
     "nodes": [
       {
-        "id": "L1",
+        "id": "A",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-6"
-            },
-            {
-              "kind": "integer",
-              "value": "4"
-            }
+            { "kind": "integer", "value": "278" },
+            { "kind": "integer", "value": "292" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "L2",
+        "id": "P",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "4"
-            }
+            { "kind": "integer", "value": "138" },
+            { "kind": "integer", "value": "194" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "M1",
+        "id": "Q",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-6"
-            },
-            {
-              "kind": "integer",
-              "value": "-4"
-            }
+            { "kind": "integer", "value": "108" },
+            { "kind": "integer", "value": "92" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "M2",
+        "id": "B",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "-4"
-            }
+            { "kind": "integer", "value": "200" },
+            { "kind": "integer", "value": "0" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "P1",
+        "id": "lL",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-2"
-            },
-            {
-              "kind": "integer",
-              "value": "2"
-            }
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "292" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "P2",
+        "id": "lR",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "2"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "292" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "P3",
+        "id": "mL",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-1"
-            },
-            {
-              "kind": "integer",
-              "value": "-2"
-            }
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "0" }
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "194" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "194" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "30" },
+            { "kind": "integer", "value": "92" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "380" },
+            { "kind": "integer", "value": "92" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
   "displayPoints": [
-    "L1",
-    "L2",
-    "M1",
-    "M2",
-    "P1",
-    "P2",
-    "P3"
+    "A",
+    "P",
+    "Q",
+    "B",
+    "lL",
+    "lR",
+    "mL",
+    "mR",
+    "pL",
+    "pR",
+    "qL",
+    "qR"
   ],
+  "hiddenPointNames": [
+    "A",
+    "P",
+    "Q",
+    "B",
+    "lL",
+    "lR",
+    "mL",
+    "mR",
+    "pL",
+    "pR",
+    "qL",
+    "qR"
+  ],
+  "hiddenPointStyle": "NONE",
   "displaySegments": [
     {
-      "id": "sL",
+      "id": "sl",
       "refs": [
-        "L1",
-        "L2"
+        "lL",
+        "lR"
       ]
     },
     {
-      "id": "sM",
+      "id": "sm",
       "refs": [
-        "M1",
-        "M2"
+        "mL",
+        "mR"
       ]
     },
     {
-      "id": "s1",
+      "id": "sAP",
       "refs": [
-        "L1",
-        "P1"
+        "A",
+        "P"
       ]
     },
     {
-      "id": "s2",
+      "id": "sPQ",
       "refs": [
-        "P1",
-        "P2"
+        "P",
+        "Q"
       ]
     },
     {
-      "id": "s3",
+      "id": "sQB",
       "refs": [
-        "P2",
-        "P3"
+        "Q",
+        "B"
       ]
     },
     {
-      "id": "s4",
+      "id": "sp",
       "refs": [
-        "P3",
-        "M2"
-      ]
+        "pL",
+        "pR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sq",
+      "refs": [
+        "qL",
+        "qR"
+      ],
+      "dashed": true
     }
   ],
-  "status": "ACTIVE",
-  "assetPath": "assets/images/23_왕운중_2학기_중간_중1_유사/q12-solution.svg",
-  "sourceQuote": "꺾인 두 점에서 두 직선 $l, m$에 각각 평행한 보",
-  "engineEvidence": {
-    "resultPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-solution-result.json",
-    "statePath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-solution-state.json",
-    "svgPath": "archive/assets/images/23_왕운중_2학기_중간_중1_유사/q12-solution-solution.svg"
-  }
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "par1",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a35",
+        "refs": [
+          "lL",
+          "A",
+          "P"
+        ],
+        "value": 35,
+        "label": "35°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "A",
+          "P",
+          "Q"
+        ],
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "P",
+          "Q",
+          "B"
+        ],
+        "label": "y",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "a45",
+        "refs": [
+          "mL",
+          "B",
+          "Q"
+        ],
+        "value": 45,
+        "label": "45°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_p_upper",
+        "refs": [
+          "A",
+          "P",
+          "pR"
+        ],
+        "value": 35,
+        "label": "35°",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a_q_lower",
+        "refs": [
+          "B",
+          "Q",
+          "qR"
+        ],
+        "value": 45,
+        "label": "45°",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sl",
+        "text": "l",
+        "labelAt": "START"
+      },
+      {
+        "id": "lbl_m",
+        "ownerSegment": "sm",
+        "text": "m",
+        "labelAt": "START"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "보조 평행선과 엇각 35°, 45°를 이용한 해설 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선 l과 m은 서로 평행",
+      "mappedTo": "par1"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 l과 꺾인 선 사이의 각의 크기가 35°",
+      "mappedTo": "a35"
+    },
+    {
+      "id": "c3",
+      "condition": "꺾인 점에서의 각 x",
+      "mappedTo": "ax"
+    },
+    {
+      "id": "c4",
+      "condition": "다른 꺾인 점에서의 각 y",
+      "mappedTo": "ay"
+    },
+    {
+      "id": "c5",
+      "condition": "직선 m과 꺾인 선 사이의 각의 크기가 45°",
+      "mappedTo": "a45"
+    },
+    {
+      "id": "c6",
+      "condition": "보조 평행선을 통한 엇각 관계",
+      "mappedTo": "a_p_upper, a_q_lower"
+    }
+  ],
+  "newVisualInformation": "보조 평행선 2개, 엇각 35°, 45° 표시"
 }
