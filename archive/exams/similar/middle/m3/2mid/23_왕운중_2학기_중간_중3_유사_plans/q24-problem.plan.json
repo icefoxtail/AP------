@@ -1,110 +1,75 @@
 {
-  "kind": "geometry",
-  "caption": "한 모서리 4인 정육면체와 AD의 중점 M (∠FMG=x°)",
-  "viewBox": [
-    0,
-    0,
-    240,
-    220
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "FGHEBCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "A",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
   ],
-  "vertices": {
-    "E": [
-      40,
-      155
-    ],
-    "F": [
-      140,
-      155
-    ],
-    "G": [
-      195,
-      120
-    ],
-    "H": [
-      95,
-      120
-    ],
-    "A": [
-      40,
-      65
-    ],
-    "B": [
-      140,
-      65
-    ],
-    "C": [
-      195,
-      30
-    ],
-    "D": [
-      95,
-      30
-    ],
-    "M": [
-      67.5,
-      47.5
+  "segments": [
+    {
+      "from": "M",
+      "to": "F",
+      "style": "SOLID"
+    },
+    {
+      "from": "M",
+      "to": "G",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "F",
+          "M",
+          "G"
+        ],
+        "label": "x"
+      }
     ]
   },
-  "segments": [
-    [
-      "E",
-      "F"
-    ],
-    [
-      "F",
-      "G"
-    ],
-    [
-      "G",
-      "H"
-    ],
-    [
-      "H",
-      "E"
-    ],
-    [
-      "A",
-      "B"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "C",
-      "D"
-    ],
-    [
-      "D",
-      "A"
-    ],
-    [
-      "A",
-      "E"
-    ],
-    [
-      "B",
-      "F"
-    ],
-    [
-      "C",
-      "G"
-    ],
-    [
-      "D",
-      "H"
-    ],
-    [
-      "M",
-      "F"
-    ],
-    [
-      "M",
-      "G"
-    ]
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "caption": "한 모서리의 길이가 4인 정육면체 ABCD-EFGH에서 모서리 AD의 중점 M과 두 꼭짓점 F, G를 연결하여 각 FMG의 크기를 x도로 나타낸 그림이다.",
+  "accessibilityDescription": "정육면체 ABCD-EFGH가 그려져 있고 모서리 AD의 중점에 점 M이 있다. 점 M에서 밑면의 두 꼭짓점 F와 G로 각각 선분이 그어져 있으며, 각 FMG의 안쪽에 각 호와 x가 표시되어 있다. 모서리 AB 옆에는 4가 적혀 있다.",
+  "newVisualInformation": [
+    "각 FMG의 크기 x",
+    "모서리 AD의 중점 M과 두 선분 MF, MG"
   ],
-  "labels": {
-    "FG": "4",
-    "M": "중점"
-  }
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 다음 그림과 같이 한 모서리의 길이가 $4$인 정육면체 $ABCD-EFGH$에서 모서리 $AD$의 중점을 $M$이라 하자. $\\angle FMG=x^\\circ$일 때, $\\sin x^\\circ$의 값을 구하는 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

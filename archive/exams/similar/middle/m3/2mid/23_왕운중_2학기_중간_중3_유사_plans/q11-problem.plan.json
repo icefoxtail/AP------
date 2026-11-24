@@ -1,62 +1,203 @@
 {
-  "kind": "geometry",
-  "caption": "AB=6, BC=10, ∠B=60°, ∠D=90°, AD=DC인 사각형 ABCD",
-  "viewBox": [
-    0,
-    0,
-    260,
-    190
-  ],
-  "vertices": {
-    "B": [
-      35,
-      155
-    ],
-    "C": [
-      225,
-      155
-    ],
-    "A": [
-      90,
-      60
-    ],
-    "D": [
-      205,
-      50
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4549",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3049",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "B"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "C",
-      "D"
-    ],
-    [
-      "D",
-      "A"
-    ],
-    [
-      "A",
-      "C"
-    ]
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
   ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sCD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
   "rightAngles": [
-    [
-      "A",
-      "D",
-      "C"
-    ]
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
   ],
-  "labels": {
-    "AB": "6",
-    "BC": "10",
-    "B": "60°"
-  }
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "caption": "선분 AB의 길이가 6, 선분 BC의 길이가 10이고 각 B가 60도인 사각형 ABCD를 나타낸 그림이다. 꼭짓점 D에서 각 ADC는 직각이고 선분 AD와 선분 DC의 길이가 같다.",
+  "accessibilityDescription": "사각형 ABCD에서 선분 AB 바깥쪽에 6, 선분 BC 아래쪽에 10이라는 치수가 표시되어 있다. 꼭짓점 B에는 60도 각 표시가 있고, 꼭짓점 D에는 직각 표시가 있다. 선분 AD와 선분 DC에는 길이가 같음을 나타내는 같은 길이 기호가 표시되어 있다.",
+  "newVisualInformation": [
+    "사각형 ABCD에서 각 B의 크기는 60도이고 각 D는 직각이다.",
+    "선분 AD와 선분 DC의 길이가 서로 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $AB=6$, $BC=10$, $\\angle B=60^\\circ$, $\\angle ADC=90^\\circ$, $AD=DC$인 사각형 $ABCD$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

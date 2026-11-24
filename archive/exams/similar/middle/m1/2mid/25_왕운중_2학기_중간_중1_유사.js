@@ -735,6 +735,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/25_왕운중_2학기_중간_중1_유사/q17-problem.svg",
     "category": "점·선·면과 각",
     "standardCourse": "중1",
     "curriculum": "2022",

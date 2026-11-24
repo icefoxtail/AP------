@@ -1,24 +1,70 @@
 {
-  "kind": "geometry",
-  "caption": "위로 볼록, 축 x=1/2, (5/6, 0)을 지나는 포물선",
-  "viewBox": [
-    0,
-    0,
-    220,
-    180
-  ],
-  "vertices": {
-    "O": [
-      70,
-      90
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5/4",
+          "9",
+          "-9"
+        ]
+      }
     ],
-    "X2": [
-      165,
-      90
-    ]
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0.5,
+        "y": 1,
+        "marker": "NONE"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1/2",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "5/6"
+      ],
+      "y": []
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -2,
+      2
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "sym",
+          "x": "1/2",
+          "label": "x=1/2"
+        }
+      ]
+    }
   },
-  "segments": [],
-  "labels": {
-    "X2": "5/6"
-  }
+  "caption": "위로 볼록한 이차함수의 그래프와 대칭축 x=1/2, x축과 만나는 점의 좌표 5/6가 나타나 있다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있고, 대칭축을 나타내는 직선 x=1/2과 x축 위의 눈금 5/6가 표시되어 있다.",
+  "newVisualInformation": [
+    "대칭축 직선 x=1/2과 x절편 5/6가 표시됨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프가 위로 볼록하고 축의 방정식이 $x=\\dfrac{1}{2}$이며 점 $\\left(\\dfrac{5}{6}, 0\\right)$을 지날 때, 다음 중 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
