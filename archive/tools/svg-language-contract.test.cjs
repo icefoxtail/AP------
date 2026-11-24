@@ -124,6 +124,20 @@ test('advisory mode lists description-quality findings without blocking, and sti
   }
   // 학생 눈에 보이는 결함, 중복 id, 루트 없음은 옛 그림도 막는다.
   assert.throws(() => assertSvgStudentLanguage(svg('<text>축척: x,y 동일 단위</text>'), { assetRef: 'd.svg', advisory: [] }), /SCALE_GUIDANCE_FORBIDDEN/);
-  assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
+  // 겹치는 id를 모양이 가리키면(url(#id)·href="#id") 그림이 틀어질 수 있어 막는다. 아무도 가리키지 않는 id의 중복은 그림이 그대로라 목록으로만 남긴다.
+  assert.throws(() => assertSvgStudentLanguage(svg('<linearGradient id="g"/><linearGradient id="g"/><rect fill="url(#g)"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
+  assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/><use href="#same"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
+  assert.throws(() => assertSvgStudentLanguage(svg('<marker id="m"/><marker id="m"/><line marker-end="url( #m )"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
+  const decorationIds = [];
+  const unreferenced = assertSvgStudentLanguage(svg('<circle id="point-A"/><circle id="point-A"/>'), { assetRef: 'e.svg', advisory: decorationIds });
+  assert.equal(unreferenced.status, 'PASS');
+  assert.deepEqual(decorationIds.map(row => row.code), ['SVG_ACCESSIBILITY_DUPLICATE_ID_UNREFERENCED']);
+  // 엔진 그림도 가리키는 이가 없는 이름표 id 중복은 목록으로만 남지만, title/desc·aria가 가리키는 id의 중복은 계속 막는다.
+  const engineRoot = 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="title desc"';
+  const engineSvg = body => svg(body, undefined, undefined, engineRoot);
+  assert.equal(assertSvgStudentLanguage(engineSvg('<circle id="point-A"/><circle id="point-A"/>'), { assetRef: 'e.svg', advisory: [] }).status, 'PASS');
+  assert.throws(() => assertSvgStudentLanguage(engineSvg('<g id="desc"/>'), { assetRef: 'e.svg', advisory: [] }), /TITLE_DESC_ID_INVALID/);
+  // 직접 호출(advisory 없음: 엔진·감사 모드)은 전과 같이 엄격하다.
+  assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg' }), /DUPLICATE_ID/);
   assert.throws(() => assertSvgStudentLanguage('<g/>', { assetRef: 'c.svg', advisory: [] }), /SVG_ROOT_MISSING/);
 });

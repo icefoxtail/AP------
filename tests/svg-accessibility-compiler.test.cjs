@@ -299,13 +299,16 @@ test('production compiler lets a legacy SVG without accessibility markup through
   assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
   fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-composite="composite-panels-v1"><circle r="5"/></svg>\n');
   assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
-  // visible defects, duplicate ids and a missing root keep blocking even for legacy figures
+  // visible defects, referenced duplicate ids and a missing root keep blocking even for legacy figures
   const legacyHead = '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">';
   const body = '<title id="t">직선과 점</title><desc id="d">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc>';
   fs.writeFileSync(newSvg, `${legacyHead}${body}<text>축척: x,y 동일 단위</text></svg>\n`);
   assert.throws(compile, /SCALE_GUIDANCE_FORBIDDEN/);
-  fs.writeFileSync(newSvg, `${legacyHead}${body}<g id="same"/><g id="same"/></svg>\n`);
+  // a duplicate id that a shape points at (url(#id)) blocks; one nobody points at is only listed
+  fs.writeFileSync(newSvg, `${legacyHead}${body}<g id="same"/><g id="same"/><rect fill="url(#same)"/></svg>\n`);
   assert.throws(compile, /DUPLICATE_ID/);
+  fs.writeFileSync(newSvg, `${legacyHead}${body}<g id="same"/><g id="same"/></svg>\n`);
+  assert.ok(compile().qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID_UNREFERENCED'));
   fs.writeFileSync(newSvg, 'not an svg\n');
   assert.throws(compile, /SVG_ROOT_MISSING|SVG_STUDENT_LANGUAGE_CONTRACT_FAIL/);
 });

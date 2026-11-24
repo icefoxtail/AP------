@@ -103,6 +103,14 @@ function inspectText(value, surface, assetRef, errors) {
   return text;
 }
 
+// 그림이 다른 요소의 id를 모양으로 가리키는가: url(#id)(그라데이션·clipPath·marker·mask·filter), href="#id"(use), CSS `#id` 선택자, SMIL begin/end="id.…".
+// 가리키는 id가 겹치면 브라우저가 첫 번째 것만 잡아 그림이 달라질 수 있다. 아무도 가리키지 않는 id(점·선 이름표)의 중복은 그림에 영향이 없다.
+function isVisuallyReferenced(source, id) {
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp('#' + escaped + '(?![\\w.:-])').test(source)
+    || new RegExp('\\b(?:begin|end)\\s*=\\s*(["\'])[^"\']*(?<![\\w.:-])' + escaped + '\\.', 'i').test(source);
+}
+
 function validateSvgStudentLanguage(svg, options = {}) {
   const assetRef = options.assetRef || '<memory>';
   const source = String(svg ?? '');
@@ -116,7 +124,10 @@ function validateSvgStudentLanguage(svg, options = {}) {
   const ids = [...source.matchAll(/(?<![\w:.-])id\s*=\s*(["'])(.*?)\1/g)].map(match => decodeXml(match[2]));
   const idCounts = new Map();
   for (const id of ids) idCounts.set(id, (idCounts.get(id) || 0) + 1);
-  if ([...idCounts.values()].some(count => count > 1)) errors.push({ code: 'SVG_ACCESSIBILITY_DUPLICATE_ID', assetRef });
+  const duplicateIds = [...idCounts].filter(([, count]) => count > 1).map(([id]) => id);
+  if (duplicateIds.length) {
+    errors.push({ code: 'SVG_ACCESSIBILITY_DUPLICATE_ID', assetRef, referencedDuplicateIds: duplicateIds.filter(id => isVisuallyReferenced(source, id)) });
+  }
   const titlePattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'title\\b([^>]*)>([\\s\\S]*?)<\\/' + escapeRegExp(tagPrefix) + 'title\\s*>', 'gi');
   const descriptionPattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b([^>]*)>([\\s\\S]*?)<\\/' + escapeRegExp(tagPrefix) + 'desc\\s*>', 'gi');
   const titles = [...source.matchAll(titlePattern)].map(match => ({ attrs: attributes(match[1]), text: decodeXml(match[2]) }));
@@ -222,14 +233,25 @@ function substituteAccessibilityText(use = {}) {
   return [exam, number ? `${Number(number[0])}번` : '', role].filter(Boolean).join(' ');
 }
 
+// 등록기·수리 목록이 같은 기준으로 가르는 한 곳: 이 오류가 막지 않고 목록으로만 남는 것인가.
+// 겹치는 id를 아무도 가리키지 않으면(오류의 referencedDuplicateIds가 비어 있으면) 학생 그림은 그대로이니 목록으로만 남긴다(엔진 그림 포함).
+// title/desc·aria가 가리키는 id의 중복은 TITLE_DESC_ID_INVALID·ARIA_REFERENCE_INVALID가 따로 잡고, 엔진 그림은 그쪽에서 계속 막힌다.
+function isAdvisoryError(error, legacyAllowed) {
+  if (QUALITY_ONLY_CODES.has(error.code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(error.code))) return true;
+  return error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID' && Array.isArray(error.referencedDuplicateIds) && error.referencedDuplicateIds.length === 0;
+}
+function advisoryLabel(error) {
+  return error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID' ? 'SVG_ACCESSIBILITY_DUPLICATE_ID_UNREFERENCED' : error.code;
+}
+
 function assertSvgStudentLanguage(svg, options = {}) {
   const result = validateSvgStudentLanguage(svg, options);
   if (result.status !== 'PASS' && Array.isArray(options.advisory)) {
     const legacyAllowed = !isEngineSvg(svg, { newPath: options.newPath });
-    const advisoryCode = code => QUALITY_ONLY_CODES.has(code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(code));
-    const blocking = result.errors.filter(error => !advisoryCode(error.code));
+    const isAdvisory = error => isAdvisoryError(error, legacyAllowed);
+    const blocking = result.errors.filter(error => !isAdvisory(error));
     for (const error of result.errors) {
-      if (advisoryCode(error.code)) options.advisory.push({ assetRef: options.assetRef || '<memory>', code: error.code, surface: error.surface || '' });
+      if (isAdvisory(error)) options.advisory.push({ assetRef: options.assetRef || '<memory>', code: advisoryLabel(error), surface: error.surface || '' });
     }
     if (!blocking.length) return { ...result, status: 'PASS', advisoryErrors: result.errors };
     result.errors = blocking;
@@ -241,4 +263,4 @@ function assertSvgStudentLanguage(svg, options = {}) {
   return result;
 }
 
-module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isEngineSvg, substituteAccessibilityText };
+module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isEngineSvg, substituteAccessibilityText };
