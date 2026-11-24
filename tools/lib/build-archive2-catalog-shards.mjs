@@ -28,6 +28,7 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { UNIT_PAST_SCHEMA, unitPastExtras } from './build-archive2-unit-past-part.mjs';
 import { examMetaExtras, projectExamMeta } from './build-archive2-exam-meta-part.mjs';
+import { svgAltExtras, projectSvgAlt } from './build-archive2-svg-alt-part.mjs';
 
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
@@ -412,6 +413,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   // the approved metadata of each exam (original-exam window, class registration): one small file per exam, see build-archive2-exam-meta-part.mjs
   const examMetaPart = extras.examMeta ? projectExamMeta(extras.examMeta, indexVersion) : null;
   if (examMetaPart) for (const [rel, content] of examMetaPart.files) files.set(rel, content);
+  // the figure names of each exam (original-exam and problem-sheet windows): one small file per exam, see build-archive2-svg-alt-part.mjs
+  const svgAltPart = extras.svgAlt ? projectSvgAlt(extras.svgAlt, indexVersion) : null;
+  if (svgAltPart) for (const [rel, content] of svgAltPart.files) files.set(rel, content);
   const index = {
     schemaVersion: CATALOG_SHARDS_INDEX_SCHEMA,
     recordSchema: CATALOG_SHARD_FILE_SCHEMA,
@@ -429,6 +433,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
     ...(extras.unitPast ? { unitPastSchema: UNIT_PAST_SCHEMA } : {}),
     ...(examMetaPart ? { examMeta: examMetaPart.index } : {}),
+    ...(svgAltPart ? { svgAlt: svgAltPart.index } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -480,6 +485,7 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   if (unitPast) extras.unitPast = unitPast;
   const examMeta = examMetaExtras(root, catalog);
   if (examMeta) extras.examMeta = examMeta;
+  extras.svgAlt = svgAltExtras(root, catalog);
   const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
@@ -488,6 +494,8 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const [rel, content] of [...projection.files.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     const reason = rel === CATALOG_COMMON_PATH
       ? 'catalog common tables (authority tables and catalog-level lists that do not depend on a question)'
+      : rel.startsWith('svg-alt/')
+        ? 'alternative texts of the figures of one exam (original-exam and problem-sheet windows), the records of the svg accessibility index for that exam'
       : rel.startsWith('exam-meta/')
         ? 'approved question metadata of one exam (original-exam window, class registration), the records of the browser copy for that exam'
         : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';

@@ -390,6 +390,8 @@ function createArchiveScreenRuntime() {
             if (!snapshot || !Array.isArray(snapshot.questionBank)) throw new Error('INVALID_REVIEW_SNAPSHOT');
             const sourceArchiveFile = String(snapshot.sourceArchiveFile || input.sourceArchiveFile || input.safeDataUrl || '').trim();
             if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile)) throw new Error('INVALID_REVIEW_SOURCE_IDENTITY');
+            // 그림 이름(색인 중 이 시험지 몫)은 그리기 전에 붙는다: svg-accessibility-lazy.js
+            if (window.APSvgAccessibilityLazy) await window.APSvgAccessibilityLazy.prepare(snapshot.questionBank, [sourceArchiveFile]);
             const data = snapshot.questionBank.map((question, index) => snapshot.frozenSource ? {...question,questionUid:snapshot.questionUids?.[index]||question.questionUid,sourceArchiveFile,sourceOrdinal:index+1} : window.mergeArchiveQuestionMetadata
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
@@ -448,6 +450,7 @@ function createArchiveScreenRuntime() {
         }
         if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
         const sourceArchiveFile = String(input.safeDataUrl).replace(/^[^#?]*\/exams\//i, '').replace(/[?#].*$/, '').replace(/^\.?\//, '');
+        if (window.APSvgAccessibilityLazy) await window.APSvgAccessibilityLazy.prepare(raw, [sourceArchiveFile]);
         const data = raw.map((question, index) => window.mergeArchiveQuestionMetadata ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 }) : question);
         const canonical = window.APRenderAuthority.normalizeArchiveQuestions(data, { sourceArchiveFile });
         const canonicalRenderData = N.canonicalRenderData(canonical, data);

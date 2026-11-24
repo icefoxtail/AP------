@@ -145,8 +145,9 @@
     })();
     </script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
-    <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
+    <!-- 그림 이름 색인(data/svg-accessibility-index.js, 압축 1.4MB)은 정적으로 받지 않는다: 이 시험지의 그림 몇 개 분량 파일만 받고(svg-alt/<키>.json), 없거나 안 맞으면 예전처럼 전체를 받는다. 첫 문항을 그리기 전에 prepare()로 기다린다. -->
+    <script src="svg-accessibility-lazy.js?v=20261124-lazy-1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="layout-materializer.js?v=20261123-engine-robust-1"></script>
@@ -165,7 +166,7 @@
     <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <link rel="stylesheet" href="figure-zoom.css?v=20261124-zoom-3">
     <script src="figure-zoom.js?v=20261124-zoom-3"></script>
-    <script src="screen-runtime-adapter.js?v=20261123-engine-robust-2"></script>
+    <script src="screen-runtime-adapter.js?v=20261124-svg-lazy-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
@@ -1842,6 +1843,8 @@ async function init() {
                 .replace(/[?#].*$/, '')
                 .replace(/^\.?\//, '');
             AppState.sourceArchiveFile = sourceArchiveFile;
+            // 그림 이름은 첫 문항을 그리기 전에 붙는다(그림 이름 색인 중 이 시험지 몫, 안 되면 전체): 그린 결과와 인쇄 준비 시점은 예전과 같다.
+            if (window.APSvgAccessibilityLazy) await window.APSvgAccessibilityLazy.prepare(loadedQuestions, [sourceArchiveFile]);
             AppState.data = loadedQuestions.map((question, index) => window.mergeArchiveQuestionMetadata
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);

@@ -712,6 +712,26 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **같음을 지키는 테스트:** `tests/question-metadata-browser.test.js`가 같은 실행에서 모든 시험지에 대해 ① 시험지 파일의 레코드 = 사본의 그 시험지 레코드, ② 두 길로 만든 `mergeArchiveQuestionMetadata` 결과가 모든 순번(+1)·빈 문항/값이 이미 있는 문항 모두 같음을 비교하고, 대체 조건 7가지와 "훅이 없으면 사본만 읽음"을 본다(기대값 고정 없음). `tests/archive-engine-original-metadata-on-demand.test.js`는 게이트가 등록 주소에서만 훅을 세우는지, `tests/archive2-catalog-shards.test.js`는 `exam-meta/` 폴더가 색인이 알린 개수와 같은지 본다.
 - **죽은 도구:** 옛 1단계 도구 `archive/tools/build-archive2-shards.mjs`(자기 테스트 `tests/archive2-shards-builder.test.mjs`와 문서에서만 쓰임)의 시험지 메타 조각은 쓰이지 않는다. 이번 파일은 새 빌더 한 곳에서 만든다. 정리 후보이며 이번엔 두었다.
 
+## 원본 열기는 그림 이름 색인을 시험지 하나 분량만 받는다 (2026-11-24, 폰 390 + Slow 4G 첫 문항 27초 → 18초)
+
+- **왜:** `engine.html`은 `data/svg-accessibility-index.js`(그림 대체 글 색인, 원본 7MB·압축 1.4~1.8MB)를 파서가 멈추는 정적 스크립트로 받았다. `window.onload`가 이것을 기다린 뒤에야 시험지 파일을 요청해서, 폰 + Slow 4G에서는 시험지 파일 요청이 **11초 뒤**에 나갔다(측정: 색인 0.7→11.7초 구간, 시험지 12.6초). 이 창이 쓰는 것은 그 시험지 문항이 그리는 그림 몇 개의 행뿐이다(`question.image`·`question.solutionImage`, `render-authority.js`와 옛 그리기가 `APSvgAccessibility`로 찾는 것).
+- **무엇:** 빌더(`tools/lib/build-archive2-svg-alt-part.mjs`, 카탈로그 조각 빌드에 연결)가 시험지마다 `archive2-catalog-shards-v1/svg-alt/<키>.json`을 만든다. 키·릴리스 확인·대체 길은 `exam-meta`와 같다(`sha256(question-meta.js 방식으로 정규화한 시험 파일 이름).hex.slice(0,32)`, `indexVersion`). 내용은 `refs`(그 시험지가 이름 붙이는 모든 그림, 행이 없는 것도)와 `records`(색인에서 그 그림들의 행 전부, 색인의 순서 그대로). 1,383개, 압축 중앙 1.2KB·최대 7.3KB(합계 원본 7.6MB·압축 2.0MB). 그림이 없는 시험지(248개)는 `refs`가 비어 있다.
+- **읽는 쪽:** `archive/svg-accessibility-lazy.js`(`APSvgAccessibilityLazy.prepare(questions, examFiles)`). `engine.html`·`screen-runtime-adapter.js`가 문항을 받은 뒤 **첫 문항을 그리기 전에** 기다려서 대체 글은 그릴 때 붙고, 인쇄 준비(ready) 시점도 예전과 같다. 주소의 `data`로 파일을 스크립트가 실행되는 즉시 미리 요청한다(시험지·MathJax와 병렬). 규칙: 필요한 그림이 없으면 아무것도 받지 않고, 있으면 시험지 파일 + 색인(`no-cache`)을 받아 릴리스·시험지가 맞고 `refs`가 문항의 모든 그림을 덮을 때만 그 행으로 `APSvgAccessibilityIndex`를 세운다(여러 시험지면 합집합, 같은 행은 한 번). **파일 없음·릴리스/시험지 불일치·`refs`가 못 덮는 그림·crypto 없음·8초 지연이면 전체 색인 스크립트를 동적으로 받아 예전과 같게 간다**(무한 대기 없음).
+- **끄기·바꾸기:** `engine.html`의 `svg-accessibility-lazy.js` 한 줄과 두 `prepare` 호출이 전부다. 전체 색인(`data/svg-accessibility-index.js`)은 그대로 만들어지고 여전히 `mixed_engine.html`·`apmath/wrong_print_engine.html`이 정적으로 받는다(다음 조각).
+- **효과(`19_금당고_1학기_중간_고1_기출`, 폰 390 + Slow 4G, 헤드리스 Chrome, 첫 문항 본문이 그려진 시각):**
+
+  | 열기 | 전 | 후 |
+  | --- | --- | --- |
+  | 시험지(engine) 캐시 없음 | 27.4초, 4.72MB | 18.4초, 3.00MB |
+  | 해설(engine, sol) 캐시 없음 | 19.2초, 3.15MB | 10.2초, 1.43MB |
+  | 학생 주소(`studentReview=1&submitQr=0`) 시험지·해설 | 27.3·18.9초 | 18.1·9.9초 |
+  | 캐시 있음(같은 열기 두 번째) | 1.65~2.2초 | 1.58~2.5초(0.01MB 더: 색인 확인 11KB) |
+  | 시험지 → 해설 → 정답을 이어서 열기(캐시 있음) | 2·3번째: 문서 48KB + 시험지 8KB만 다시 받음, 3.3초 / 0.7초 | 같음(+색인 확인 11KB, Pages에서는 304) |
+
+  남은 시간은 그림 PNG 6장(1.7MB)·Nanum 글꼴 조각(0.6MB)·MathJax(0.45MB)이고 대역폭이 한도라 더 줄이려면 바이트를 줄여야 한다(그림 이미지·MathJax·글꼴은 인쇄 준비와 얽혀 이번엔 측정만 하고 건드리지 않았다).
+- **같음을 지키는 것:** `tests/svg-accessibility-lazy.test.js`가 같은 실행에서 모든 시험지에 대해 ① 시험지 파일의 `records`가 전체 색인에서 그 시험지의 그림으로 거른 것과 같고(순서까지) ② 두 길의 `resolveImageDescription` 결과가 모든 그림·두 필드·빈/있는 기존 대체 글에서 같고 ③ `refs`가 문항의 모든 그림을 덮는지 본다. 창 쪽은 대체 조건 8가지·crypto 없음·시험지 이름 없음·그림 없음·여러 시험지 합집합을 본다. Chrome에서 대표 시험지 6개(중등·고등·유사·교재, 그림 있음/없음/행 없음)의 시험지·해설(한 시험지는 정답까지) `#print-area` HTML과 모든 이미지 alt가 전·후 같음을 비교했다(대체 글이 붙은 그림 포함).
+- **다음 조각(문제지 창):** `mixed_engine.html`(폰 + Slow 4G 첫 문항 54초, 9.6MB)은 `question-metadata-browser-v1.json`(4.2MB, `output-metadata-loader.js`가 시험지 파일 앞에 직렬로 기다림)·`svg-accessibility-index.js`(1.8MB)·`question-identity.js`(1.4MB)가 7.4MB다. 앞의 둘은 같은 시험지별 파일(`exam-meta`·`svg-alt`)을 문제지에 든 시험지들의 합집합으로 받으면 되고, `question-identity.js`(uid → 시험지·번호 해석표)는 문항이 가진 시험지 이름으로 같은 방식의 조각이 필요하다.
+
 ## 학생 화면에서 그림 눌러서 크게 보기 (2026-11-24 원장님 결정)
 
 - 문제·해설 그림은 2단 시험지 배치에 맞춰 단 폭의 일부로 줄여 그리므로 휴대폰·패드에서 그림 속 글자가 작다. 그래서 그림 속 글자 크기를 렌더에서 더 키우지 않고, 학생이 그림을 눌러 크게 본다(원장님: "애들이 패드나 핸드폰에서 그림을 확대할 수 있으니까").
