@@ -14,6 +14,7 @@ OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 LEADER_ONLY_MIN_PX=14.0
+TICK_ROOT_CURVE_PX=0.6   # (PN6) a curve passing within this of a tick point crosses the axis at that tick (the verifier's own tolerance is 1 css px)
 SAFE_MARGIN_RELIEF_PX=4.0   # (PN3) how far the 12 px safe margin may be cut for a label that found no place inside it (the label stays at least 8 px inside the frame)
 LEADER_MAY_CROSS_ASYMPTOTE=re.compile(r'(?:.*-)?asymptote(?:-|$)|rational-asymptote-')   # (EXT-20261109-e) a point callout's leader may cross a dashed asymptote like an axis, tick or guide (never a curve or a line)
 RING_LABEL_OWN_REACH_PX=60.0   # the independent observer refuses a leaderless overlay coordinate label farther than this from its own dot
@@ -1304,8 +1305,13 @@ def tick_callout_offsets(label):
     return TICK_CALLOUT_OFFSETS
 
 def tick_ground_line_ids(obstacles,at):
-    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
-    return {o.get('id') for o in obstacles if o.get('kind')=='line' and isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`, and of the graph curve (f-/g- piece or branch) that crosses the axis
+    exactly at it, with or without a dot on it (PN6: the tick of a root, or of the value a constant function takes; a sampled curve passes within a fraction of a px of the point).
+    A leader may touch these only at its start. The rendered-layout check (verify-rendered-layout.mjs ownerLeaderClearance) already treats such a curve as the tick's ground, so refusing it
+    here only dropped the tick number."""
+    return {o.get('id') for o in obstacles if isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple))
+        and ((o.get('kind')=='line' and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:])))
+             or (o.get('kind')=='curve' and re.match(r'[fg]-(?:piece-\d+|branch-\d+)',o['id']) and any(point_segment_distance(at,c,d)<=TICK_ROOT_CURVE_PX for c,d in zip(o['geometry'],o['geometry'][1:]))))}
 
 def tick_start_circle_ids(obstacles,start,end):
     """An exact circle-axis intersection may be touched at the leader's start, if it leaves the circle outwards."""

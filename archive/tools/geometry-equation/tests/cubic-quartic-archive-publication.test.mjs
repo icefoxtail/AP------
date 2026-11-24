@@ -126,7 +126,7 @@ test('cubic/quartic final SVGs pass the measured Archive CSS/profile publication
   assert.ok(sourceQuestion);
   const fixtures=[
     {family:'cubic',coefficients:['0','-3','0','1'],axisTickValues:{x:['-2','-1','1','2'],y:['-2','2']},content:'합성 자료에서 함수 y=x³-3x의 그래프를 해석한다.',answer:'x=0, ±√3',solution:'실험용 cubic 그래프 fixture.'},
-    {family:'quartic',coefficients:['0','-1','0','0','1'],axisTickValues:{x:['-1','-0.5','0.5'],y:['-1','1','2','3']},content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
+    {family:'quartic',coefficients:['0','-1','0','0','1'],axisTickValues:{x:['-1','-0.5','0.5','1'],y:['-1','1','2','3']},content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
   ];
   const outcomes=[];
   for(const fixture of fixtures){
