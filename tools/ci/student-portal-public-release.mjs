@@ -25,7 +25,7 @@ const sourcePaths = [
   'apmath/student/index.html', 'apmath/student/student-version.json', 'apmath/student/manifest.json',
   'apmath/student/sw.js', 'apmath/student/student-portal.css', 'apmath/student/archive-review-output.js',
   'apmath/student/current-question-content.js', 'apmath/student/clinic-learning-view.js', 'apmath/student/clinic-lineage-view.js',
-  'apmath/student/similar-link.js', 'apmath/student/self-study-view.js', 'apmath/student/self-study-similar.js',
+  'apmath/student/similar-link.js', 'apmath/student/self-study-view.js', 'apmath/student/self-study-similar.js', 'apmath/student/self-study-type.js',
   'apmath/js/student-navigation.js', 'apmath/js/similar-exam.js', 'apmath/css/student-navigation.css',
   'apmath/css/student-tools.css', 'apmath/css/apms-ui-foundation.css',
   'apmath/planner/index.html', 'apmath/homework/index.html', 'apmath/playground/index.html',

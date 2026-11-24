@@ -9,39 +9,40 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.24.2">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.24.2">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.24.2">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.24.2">
+  <link rel="manifest" href="./manifest.json?v=2026.11.24.3">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.24.3">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.24.3">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.24.3">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261123-similar-title-1"></script>
-  <script src="./current-question-content.js?v=2026.11.24.2"></script>
+  <script src="./current-question-content.js?v=2026.11.24.3"></script>
   <script src="./archive-review-output.js?v=20261124-current-1"></script>
   <link rel="stylesheet" href="../../archive/figure-zoom.css?v=20261124-zoom-3">
   <script src="../../archive/figure-zoom.js?v=20261124-zoom-3"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.24.2"></script>
-  <script src="../js/similar-exam.js?v=2026.11.24.2"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.24.3"></script>
+  <script src="../js/similar-exam.js?v=2026.11.24.3"></script>
   <script src="../../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
-  <script src="./similar-link.js?v=2026.11.24.2"></script>
-  <script src="./self-study-record.js?v=2026.11.24.2"></script>
-  <script src="./self-study-view.js?v=2026.11.24.2"></script>
-  <script src="./self-study-similar.js?v=2026.11.24.2"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.24.2"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.24.2">
-  <script src="../js/student-navigation.js?v=2026.11.24.2" data-student-navigation="manual"></script>
+  <script src="./similar-link.js?v=2026.11.24.3"></script>
+  <script src="./self-study-record.js?v=2026.11.24.3"></script>
+  <script src="./self-study-view.js?v=2026.11.24.3"></script>
+  <script src="./self-study-similar.js?v=2026.11.24.3"></script>
+  <script src="./self-study-type.js?v=2026.11.24.3"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.24.3"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.24.3">
+  <script src="../js/student-navigation.js?v=2026.11.24.3" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.24.2">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.24.3">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.24.2" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.24.3" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -64,7 +65,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.24.2';
+    const STUDENT_APP_VERSION = '2026.11.24.3';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -85,6 +86,9 @@
     let homeIndex = null;
     let omrData = null;
     let similarLinksMap = null; // past exam -> similar files (small build-time map); null until loaded, {} when absent
+    let typeIndexData = null; // 같은 유형 조회 색인(빌드가 만든 작은 JSON); null이면 같은 유형 입구는 없다
+    const selfStudyTypeExhausted = new Set(); // 더 풀 같은 유형 문항이 없다고 확인된 배정(이번 접속 동안)
+    const selfStudyTypeOffer = new WeakMap();
     let omrIndex = null;
     let omrLoadedAssignmentId = null;
     let omrDraft = null;
@@ -1663,11 +1667,28 @@
     }
     // 유사문제 연결 표(빌드가 만든 작은 JSON). 실패해도 목록은 그대로 나오고 유사 입구만 빠진다.
     async function loadSimilarLinks() {
-      if (similarLinksMap) return similarLinksMap;
+      // 같은 유형 색인도 같이 받는다(둘 다 작은 빌드 산출물, 목록과 함께 한 번).
+      const typeIndexLoad = loadTypeIndex();
+      if (similarLinksMap) { await typeIndexLoad; return similarLinksMap; }
       similarLinksMap = window.StudentSimilarLink
         ? await window.StudentSimilarLink.load(window.fetch.bind(window), window.location.href)
         : {};
+      await typeIndexLoad;
       return similarLinksMap;
+    }
+    // 같은 유형 조회 색인(약 3KB): 유사 시험지가 없는 시험(선생님이 만든 모의고사 등)에서도 틀린 문항과 같은 유형의 문항을 내려 주기 위한 것. 실패해도 목록은 그대로다.
+    async function loadTypeIndex() {
+      if (typeIndexData) return typeIndexData;
+      typeIndexData = window.StudentSelfStudyType
+        ? await window.StudentSelfStudyType.loadIndex(window.fetch.bind(window), window.location.href)
+        : null;
+      return typeIndexData;
+    }
+    function canOfferSelfStudyType(exam) {
+      const type = globalThis.StudentSelfStudyType;
+      if (!type || !typeIndexData || !exam) return false;
+      if (!selfStudyTypeOffer.has(exam)) selfStudyTypeOffer.set(exam, type.canOffer(typeIndexData, exam, normalizeOmrWrongIds(exam.wrong_ids)));
+      return selfStudyTypeOffer.get(exam);
     }
     function renderSimilarEntry(exam) {
       if (!window.StudentSimilarLink || !similarLinksMap) return '';
@@ -1913,13 +1934,16 @@
       `;
     }
     // 스스로 공부: "오답 다시 풀기"(틀린 문항)와 "유사 문항 풀어보기"(틀린 문항 각각의 같은 번호 유사 문항). 둘 다 제출했고 틀린 번호가 있는 시험에만.
-    // 틀린 번호는 서버가 wrong_answers에서 채워 준다. 유사 단추는 유사 시험지가 문항 수까지 맞게 연결된 시험에만(빌드가 만든 작은 표로 판단, 내려받기 없음).
+    // 틀린 번호는 서버가 wrong_answers에서 채워 준다. 유사 단추는 유사 시험지가 문항 수까지 맞게 연결된 시험, 또는 틀린 문항의 유형을 아는 시험(self-study-type.js: 같은 유형 문항)에 뜬다(빌드가 만든 작은 표로 판단, 내려받기 없음).
     function getSelfStudyWrongCount(exam) {
       if (getStudentPortalRecordedSubmission(exam) !== 'submitted' || !isOmrReviewAvailable(exam)) return 0;
       return normalizeOmrWrongIds(exam?.wrong_ids).length;
     }
+    // 제출했고 틀린 문항이 있으면: 유사 시험지가 연결된 시험은 같은 번호 유사 문항, 그 밖(선생님이 만든 모의고사 등)은 틀린 문항과 같은 유형의 문항.
     function canOfferSelfStudySimilar(exam) {
-      return getSelfStudyWrongCount(exam) > 0 && Boolean(globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink));
+      if (getSelfStudyWrongCount(exam) < 1) return false;
+      if (globalThis.StudentSelfStudySimilar?.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink)) return true;
+      return typeof canOfferSelfStudyType === 'function' && canOfferSelfStudyType(exam);
     }
     // 자습 기록: 풀이 결과는 먼저 이 기기(localStorage)에, 이어서 서버에 저장한다. 서버가 꺼져 있거나 아직 없으면(FEATURE_UNAVAILABLE·404) 오류 표시 없이 로컬 기록만으로 동작한다.
     // 교사 미리보기에서는 읽지도 저장하지도 않는다.
@@ -2021,7 +2045,8 @@
       const similar = renderSelfStudySimilarButton(exam, from);
       return `<div class="self-study-row${similar ? ' has-two' : ''}">${wrong}${similar}</div>`;
     }
-    async function openSelfStudy(kind, assignmentId, from = 'list') {
+    // opts.more: "다른 유사 문항 더 풀기"(새 같은 유형 문항으로 한 판 더), opts.notice: 화면 위에 한 줄 안내.
+    async function openSelfStudy(kind, assignmentId, from = 'list', opts = {}) {
       const similar = kind === 'similar';
       const exam = findOmrExam(assignmentId);
       const wrongIds = exam ? normalizeOmrWrongIds(exam.wrong_ids) : [];
@@ -2045,11 +2070,41 @@
       try {
         let set;
         let other = null;
+        let notice = String(opts.notice || '');
+        let more = null;
         if (similar) {
-          const loaded = await supply.loadSimilarSets(exam, similarLinksMap, { view: selfStudy, link: globalThis.StudentSimilarLink });
-          if (!isStudentViewCurrent(view, 'omr-self-study')) return;
-          set = supply.buildSimilarSet({ ...loaded, wrongIds });
-          set.title = titleFor(set.questions.length);
+          const type = globalThis.StudentSelfStudyType;
+          const typeOk = canOfferSelfStudyType(exam);
+          // 1) 유사 시험지가 연결된 시험의 같은 번호 유사 문항(지금 방식 그대로). 처음 판에서만 쓴다.
+          let linked = { questions: [], emptyText: '' };
+          if (supply.canOffer(exam, similarLinksMap, globalThis.StudentSimilarLink) && !opts.more) {
+            try {
+              const loaded = await supply.loadSimilarSets(exam, similarLinksMap, { view: selfStudy, link: globalThis.StudentSimilarLink });
+              if (!isStudentViewCurrent(view, 'omr-self-study')) return;
+              linked = supply.buildSimilarSet({ ...loaded, wrongIds });
+            } catch (error) { if (!typeOk) throw error; }
+          }
+          // 2) 짝이 없는 틀린 문항(또는 더 풀기)은 같은 유형(TPL 먼저, 없으면 PT)의 다른 문항.
+          let round = { questions: [], exhausted: false, withLinked: false, failed: false };
+          if (typeOk) {
+            round = await type.loadRound({
+              exam, wrongNumbers: wrongIds, exams: getOmrExams(), index: typeIndexData, studentId: session?.student_id,
+              storage: selfStudyStorage(), view: selfStudy, mode: opts.more ? 'next' : 'current',
+              skipNumbers: linked.questions.map(question => question.ssSrc), withLinked: linked.questions.length > 0,
+              extraShown: linked.questions.map(question => question.ssUid).filter(Boolean)
+            });
+            if (!isStudentViewCurrent(view, 'omr-self-study')) return;
+            if (opts.more && round.exhausted) {
+              selfStudyTypeExhausted.add(String(exam.assignment_id));
+              return openSelfStudy('similar', exam.assignment_id, from, { notice: '더 풀 유사 문항이 없어요. 여기까지 풀어 봤어요.' });
+            }
+            if (round.failed && !linked.questions.length) throw new Error('STUDENT_TYPE_FAILED');
+          }
+          const useLinked = linked.questions.length > 0 && (!typeOk || round.withLinked || !opts.more && !round.questions.length);
+          const questions = [...(useLinked ? linked.questions : []), ...round.questions].map((question, index) => ({ ...question, no: index + 1 }));
+          set = { title: titleFor(questions.length), questions, emptyText: typeOk ? '틀린 문항과 같은 유형의 문항을 아직 찾지 못했어요.' : linked.emptyText };
+          more = typeOk && !selfStudyTypeExhausted.has(String(exam.assignment_id)) && questions.length
+            ? { label: '다른 유사 문항 더 풀기', onClick: () => openSelfStudy('similar', exam.assignment_id, from, { more: true }) } : null;
           other = { label: '오답 다시 풀기', onClick: () => openSelfStudy('wrong', exam.assignment_id, from) };
         } else {
           const questions = await selfStudy.loadExamQuestions(exam);
@@ -2067,7 +2122,9 @@
         });
         selfStudyRecorder = recorder;
         await selfStudy.show(set, {
-          container: app, onBack: back, headerHtml: renderPreviewNotice(), bottomAction: other, recorder,
+          container: app, onBack: back, recorder,
+          headerHtml: renderPreviewNotice() + (notice ? `<p class="notice ss-more-note" role="status">${escapeHtml(notice)}</p>` : ''),
+          bottomActions: [more, other].filter(Boolean),
           recordNote: isTeacherPreview ? '선생님 미리보기에서는 푼 기록이 저장되지 않아요.' : undefined
         });
       } catch (error) {

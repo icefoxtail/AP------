@@ -412,7 +412,7 @@
 
   /**
    * Draws the card screen into options.container.
-   * options: { container, onBack(), headerHtml?, document?, baseUrl?, bottomAction?, recorder?, recordNote? }. set: { title, questions }.
+   * options: { container, onBack(), headerHtml?, document?, baseUrl?, bottomAction? | bottomActions? [{ label, onClick }], recorder?, recordNote? }. set: { title, questions }.
    * recorder (self-study-record.js createRecorder) keeps the student's results; without one the screen works in memory only.
    * Returns once the cards are on screen; formulas are typeset card by card afterwards (first card first).
    */
@@ -435,6 +435,8 @@
       handler?.();
     };
     const note = options.recordNote || RECORD_NOTE;
+    // One or more buttons under the cards (bottomAction = the single-button form).
+    const bottomActions = (Array.isArray(options.bottomActions) ? options.bottomActions : [options.bottomAction]).filter(action => action && action.label);
     const shell = body => `<div class="student-shell self-study">${options.headerHtml || ''}
       <button type="button" class="btn back-btn" data-ss-back>← 돌아가기</button>
       <section class="ss-head"><h1 class="card-title ss-title">${escapeHtml(set?.title || '')}</h1>
@@ -460,9 +462,9 @@
       ${cards && answerable.length ? `<div class="ss-progress"><p class="ss-progress-text" data-ss-progress-text role="status" aria-live="polite"></p>
         <button type="button" class="btn ss-retry-wrong" data-ss-retry-wrong hidden>틀린 것만 다시 풀기</button></div>` : ''}
       ${cards ? `<div class="ss-list">${cards}</div>` : `<div class="empty">${escapeHtml(set?.emptyText || '표시할 문항이 없습니다.')}</div>`}
-      ${cards && options.bottomAction ? `<button type="button" class="btn btn-primary ss-next" data-ss-next>${escapeHtml(options.bottomAction.label)}</button>` : ''}
+      ${cards ? bottomActions.map((action, index) => `<button type="button" class="btn btn-primary ss-next" data-ss-next="${index}">${escapeHtml(action.label)}</button>`).join('') : ''}
       <button type="button" class="btn back-btn ss-back-bottom" data-ss-back>← 돌아가기</button>`);
-    container.querySelector('[data-ss-next]')?.addEventListener('click', leave(() => options.bottomAction?.onClick?.()));
+    container.querySelectorAll('[data-ss-next]').forEach(button => button.addEventListener('click', leave(() => bottomActions[Number(button.dataset.ssNext) || 0]?.onClick?.())));
     container.querySelectorAll('[data-ss-back]').forEach(button => button.addEventListener('click', leave(options.onBack)));
     recorder.start?.(doc, root);
 
