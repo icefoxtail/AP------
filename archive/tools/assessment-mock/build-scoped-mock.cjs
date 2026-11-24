@@ -365,18 +365,47 @@ function assemblePack(scope, common, selectedCandidates, roundNo, helpers) {
   };
 }
 
-function buildScopedPacks(helpers) {
+// 새로 고침(--refresh): 이미 만든 팩의 구성(문항 목록·순서·묶음·유형 값)은 그대로 두고 문항 내용만 지금의 원본 시험지에서 다시 복사한다.
+// 이유: 구성은 카탈로그의 단원·유형 판정에 따라 달라지는데, 원본 문항을 고치면 그 문항의 판정이 검토 대기로 돌아가 다시 조립하면 문항이 바뀐다.
+// 선생님이 이미 출제한 회차의 구성이 바뀌면 안 되고, 원본의 고친 내용은 팩에도 따라와야 한다.
+function refreshCandidates(scope, existingPack) {
+  const exams = new Map();
+  return existingPack.questions.map((eq) => {
+    const file = eq._sourceFile;
+    if (!exams.has(file)) exams.set(file, loadExam(file).questions);
+    const q = exams.get(file).find((x) => String(x.id) === String(eq._sourceQuestionNo));
+    if (!q) throw new Error(`새로 고침: 원본 문항을 찾지 못함 ${file} #${eq._sourceQuestionNo} (${existingPack.id})`);
+    const gi = scope.groups.findIndex((g) => g.label === eq._scopeGroup);
+    if (gi < 0) throw new Error(`새로 고침: 범위 묶음 "${eq._scopeGroup}"이 ${scope.id} 정의에 없음 (${existingPack.id})`);
+    return { file, q, gi, l2: eq._scopeL2, type: eq._assessmentSkill, bucket: eq.difficultyBucket, qKey: `${file}_${q.id}` };
+  });
+}
+
+function buildScopedPacks(helpers, options = {}) {
   const config = loadScopes();
+  const refreshPacks = options.refreshPacks || null;
   const prefixes = [...new Set(config.scopes.flatMap((s) => s.sourceDirs))];
-  const { records: catalog } = loadCatalogRecords(prefixes);
+  let catalog = null;
+  const catalogOnce = () => (catalog ||= loadCatalogRecords(prefixes).records);
   const packs = [];
   const report = [];
   const rows = [];
   for (const scope of config.scopes) {
-    const { pool, stats } = buildPool(scope, catalog, config.common);
-    const selected = selectPacks(scope, pool, config.common);
+    const idPrefix = `MOCK_2026_2SEM_FINAL_${scope.gradeKey.toUpperCase()}_${scope.idKey}_`;
+    // 새로 고침에서도 아직 팩이 없는 범위(새로 더한 학교·범위)는 일반 조립으로 만든다.
+    const existing = refreshPacks ? refreshPacks.filter((p) => p.id.startsWith(idPrefix)).sort((a, b) => (a.id < b.id ? -1 : 1)) : [];
+    let stats = null;
+    let selected;
+    if (existing.length) {
+      selected = existing.map((p) => refreshCandidates(scope, p));
+    } else {
+      const built = buildPool(scope, catalogOnce(), config.common);
+      stats = built.stats;
+      selected = selectPacks(scope, built.pool, config.common);
+    }
     selected.forEach((cands, i) => {
       const pack = assemblePack(scope, config.common, cands, i + 1, helpers);
+      if (existing.length && pack.id !== existing[i].id) throw new Error(`새로 고침: 팩 번호가 이어지지 않음 ${existing[i].id} -> ${pack.id}`);
       packs.push(pack);
       cands.forEach((c, n) => rows.push({
         packId: pack.id, title: pack.title, n: n + 1, file: c.file, srcNo: c.q.id, group: scope.groups[c.gi].label, l2: c.l2,
