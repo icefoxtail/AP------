@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-8",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -15,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-2",
+        "y": "-12"
+      },
+      {
+        "id": "E1",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "E2",
+        "x": "2",
+        "y": "-12"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1",
+        "E2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "4"
+      ]
+    }
+  },
+  "caption": "주어진 좌우 대칭과 세 극점 위치를 확인한다. 계수는 극점 조건으로 결정하며 구하는 함수식과 f(3)은 그림에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 최고차항의 계수가 $1$인 사차함수 $f(x)$의 그래프가 $y$축에 대칭이다.\n이 그래프가 $(0,4)$에서 극댓값을 갖고 $x=-2$, $x=2$에서 극솟값을 갖는다.\n$f(x)$를 구하고 $f(3)$의 값을 구하는 과정을 서술하시오. [총 7점] (함수식 2점, 과정 5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문주어진극대0,4와극소가로좌표±2. f식자체답이므로piecewise에formula없고극소높이−12숨김. f3=13도미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "주어진 좌우 대칭과 세 극점 위치를 확인한다. 계수는 극점 조건으로 결정하며 구하는 함수식과 f(3)은 그림에 쓰지 않는다.",
+  "newVisualInformation": [
+    "원문주어진극대0,4와극소가로좌표±2. f식자체답이므로piecewise에formula없고극소높이−12숨김. f3=13도미표시."
+  ]
+}

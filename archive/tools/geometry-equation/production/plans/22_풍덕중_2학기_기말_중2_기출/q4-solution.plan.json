@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/3",
+          "1/6"
+        ],
+        "domain": [
+          "-20",
+          "0"
+        ],
+        "label": "x-6y=10"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1/2"
+        ],
+        "domain": [
+          "-20",
+          "0"
+        ],
+        "label": "-x+2y=8"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-17",
+          "y": "-9/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "정수 계수로 고친 두 직선의 교점은(−17,−9/2). 합으로 −4y18을 얻고 a−4b=−17+18=1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식의 해가 $x=a$, $y=b$일 때, $a-4b$로 옳은 것은? [4점]\n$\\begin{cases}0.1x-\\dfrac35y=1\\\\-\\dfrac14x+\\dfrac12y=2\\end{cases}$",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

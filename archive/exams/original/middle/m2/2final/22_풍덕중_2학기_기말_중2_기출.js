@@ -44,7 +44,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 자연수 해표의 공통 순서쌍",
-    "decisiveStep": "각 식에 자연수 후보를 대입하여 두 표에 함께 나타나는(4,2)를 찾는다."
+    "decisiveStep": "각 식에 자연수 후보를 대입하여 두 표에 함께 나타나는(4,2)를 찾는다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "표와 그래프에서 두 식을 동시에 만족하는 자연수 점(4,2)를 찾는다. 첫 식의 자연수 점 중 표 1..5 안에는(2,3),(4,2), 둘째에는(4,2)만 있다. 연속 직선은 관계 안내이며 자연수 조건을 대신하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -96,7 +100,11 @@ window.questionBank = [
       "l4": "대입법"
     },
     "primaryMethod": "대입법으로 해와 차",
-    "decisiveStep": "y=x−2를 둘째 식에 넣어 두 값을 구해 차를 계산한다."
+    "decisiveStep": "y=x−2를 둘째 식에 넣어 두 값을 구해 차를 계산한다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 직선의 교점(8,6)이 연립방정식 해이다. a−b=8−6=2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -148,7 +156,11 @@ window.questionBank = [
       "l4": "가감법"
     },
     "primaryMethod": "가감·대입 계산 과정 확인",
-    "decisiveStep": "두 식을 더해 y2를 구하고 첫 식에 대입해 x−1/2를 얻어 잘못된 빈칸을 고른다."
+    "decisiveStep": "두 식을 더해 y2를 구하고 첫 식에 대입해 x−1/2를 얻어 잘못된 빈칸을 고른다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 식을 더하면 4y=8, y2. 첫 식에 대입하여 2x+6=5, x−1/2. 교점(−1/2,2)이므로 빈칸(마)의 −1이 틀리다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -200,7 +212,11 @@ window.questionBank = [
       "l4": "분수·소수가 있는 연립방정식"
     },
     "primaryMethod": "소수·분수를 정수계수로 바꾼 가감",
-    "decisiveStep": "각 식에10과4를 곱해 x를 소거한 뒤 일차결합을 구한다."
+    "decisiveStep": "각 식에10과4를 곱해 x를 소거한 뒤 일차결합을 구한다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "정수 계수로 고친 두 직선의 교점은(−17,−9/2). 합으로 −4y18을 얻고 a−4b=−17+18=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -252,7 +268,11 @@ window.questionBank = [
       "l4": "두 수 관계"
     },
     "primaryMethod": "현재와 미래 나이의 두 식",
-    "decisiveStep": "현재나이합54와 두 사람 모두12세 증가한 뒤의 배수관계를 연립한다."
+    "decisiveStep": "현재나이합54와 두 사람 모두12세 증가한 뒤의 배수관계를 연립한다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 아들의 현재 나이 S, 세로 y는 아버지 F이다. 합 54와 12년 뒤 두 배 조건 F+12=2(S+12)의 교점으로 S14,F40. 실제 나이는 음수가 아닌 값만 해석한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -801,7 +821,11 @@ window.questionBank = [
       "l4": "중복 없이 세기"
     },
     "primaryMethod": "두 배수 집합의 공통부분 제외",
-    "decisiveStep": "2배수6개와3배수4개에서6배수2개 중복을 뺀다."
+    "decisiveStep": "2배수6개와3배수4개에서6배수2개 중복을 뺀다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "가운데 합집합에는 서로 다른 카드 번호 8개를 한 번씩 적었다. 양쪽에서 6과 12로 화살표가 겹쳐 들어오므로 중복 2개를 빼야 한다. 6+4−2=8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -957,7 +981,11 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "주사위 사건의 순서쌍 비율 비교",
-    "decisiveStep": "각 보기의 사건을36개 표본에서 세고 실제 비율과 대조한다."
+    "decisiveStep": "각 보기의 사건을36개 표본에서 세고 실제 비율과 대조한다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "⑤의 합 5 또는 10 조건을 분리하면 4점+3점=7점, 확률 7/36으로 1/18이 아니다. 두 눈은 1..6 정수이며 연속 직선은 안내선이다. 나머지 보기: 합≤12는 1, 차 6은 0, 곱 9는 1/36, 적어도 한 짝수는 3/4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "13",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        4
+      ]
+    },
+    "formula": "3x^2-6x+13",
+    "functionName": "f",
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -2,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "10"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "MEDIUM",
+        "label": "S"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: f(t)=3t²−6t+13, a=1, x=3일 때 색칠한 영역의 넓이는 S(x)=F(x)−F(a)이다. 구하는 극한은 2 곱하기 F′(a)이고 F′(a)=f(a)=10이므로 값은 20이다. 따라서 답은 20이다.",
+  "accessibilityDescription": "좌표평면에 곡선 y=f(t)와 t축 사이의 영역이 x=1부터 x=3까지 색칠되어 있고, 곡선 위의 점 A(1, 10)이 표시되어 있다.",
+  "newVisualInformation": [
+    "x=1부터 x=3까지 곡선 아래 영역을 S로 색칠하고 점 A(1, 10)을 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 2. $x \\ge a$에서 $f(x) \\ge 0$인 연속함수 $f(x)$에 대하여 다음 그림과 같은 영역의 넓이를 $S(x)$라 하자.\n$f(a)=10$이고, $F'(x)=f(x)$일 때, $\\lim_{x \\to a} \\frac{2S(x)}{x-a}$의 값을 구하고, 그 풀이과정을 서술하시오. [7.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

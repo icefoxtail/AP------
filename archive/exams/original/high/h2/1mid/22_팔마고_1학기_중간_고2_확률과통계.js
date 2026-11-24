@@ -657,7 +657,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "각 원소는 A, B에서 A를 뺀 부분, U에서 B를 뺀 부분 중 하나에 속한다. 전체 경우는 3⁵=243가지이고, A가 공집합인 경우 2⁵=32가지를 빼면 211가지다. 그림은 1, 2가 A와 B에, 3이 B에만, 4와 5가 B 밖에 있는 경우를 예로 든 것이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

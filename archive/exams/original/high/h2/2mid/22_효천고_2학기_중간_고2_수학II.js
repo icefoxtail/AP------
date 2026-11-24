@@ -412,7 +412,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선의 구간 [1,3]에서 가운데 꼭짓점 V가 가장 높고 양 끝점 A, B가 같은 높이인 그래프이다.",
+    "solutionImageCaption": "t→-∞에서 (1+xt)/(1-t)는 -x로 가까워지므로 f(x)=-x(x-4)=-(x-2)²+4이다. 닫힌구간 [1,3]에 꼭짓점 V(2,4)가 있으므로 최댓값은 4이고 양 끝은 A(1,3), B(3,3)이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

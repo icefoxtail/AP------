@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1/19",
+          "8/19"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "7",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 십의 자리 x, 세로 일의 자리 y. x=y+4와 19y−8x1의 교점 (7,3). 자리 숫자는 정수 0..9이며 십의 자리는 양수. 처음 수 73, 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 자리의 자연수가 있다. 십의 자리의 숫자는 일의 자리의 숫자보다 4만큼 크고, 십의 자리와 일의 자리를 바꾼 수의 2배는 처음 수보다 1만큼 크다. 처음의 수를 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로십의자리x,세로일의자리y. x=y+4와19y−8x1의교점(7,3). 자리숫자는정수0..9이며십의자리는양수. 처음수73,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로십의자리x,세로일의자리y. x=y+4와19y−8x1의교점(7,3). 자리숫자는정수0..9이며십의자리는양수. 처음수73,정답③."
+  ]
+}

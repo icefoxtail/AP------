@@ -55,7 +55,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널에는 한 각이 60도로 표시된 마름모와 한 각에 직각 표시가 있는 정사각형이 나란히 있고, 오른쪽 패널에는 높이가 같고 가로의 길이가 4와 3으로 다른 직사각형 두 개가 치수선과 함께 있다.",
+    "solutionImageCaption": "정삼각형은 세 각이 모두 60도로 같고, 원은 반지름의 비로 확대하거나 축소하면 포개어지며, 정사각형은 네 각이 직각이고 변의 비가 같아 어떤 두 도형도 항상 닮음이다. 마름모는 각의 크기가, 직사각형은 가로와 세로의 비가, 이등변삼각형은 꼭지각이 달라질 수 있어 항상 닮음이 아니다. 따라서 항상 닮음인 것은 ㄱ, ㄷ, ㅂ이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -112,7 +117,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널은 직각변이 3과 4, 빗변이 5인 직각삼각형이고 오른쪽 패널은 직각변이 6과 8, 빗변이 10인 직각삼각형이다. 두 삼각형 모두 직각 표시가 있다.",
+    "solutionImageCaption": "닮은 두 평면도형에서 대응하는 각의 크기는 변의 길이비와 관계없이 서로 같다. 직각변이 3, 4인 삼각형과 6, 8인 삼각형은 닮음비가 1:2이지만 대응하는 직각은 모두 90도로 같다. 각의 크기가 비례한다는 ③의 설명이 틀렸다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -174,7 +184,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "대응 A↔D, B↔E, C↔F. 길이비 3:5여서 BC9→EF15, 각 C=F50°이고 각의 비는 1:1. 잘못된 ③⑤. AC6인 대표형이며 원문이 AC 길이를 정한 것은 아니다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -236,7 +251,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 갈수록 넓어지는 세 단의 사다리꼴이 포개진 뜀틀 앞면이 있고, 세 단의 가로 변에 72, 60, 48이 적혀 있다.",
+    "solutionImageCaption": "각 단은 등변사다리꼴이고 양쪽 옆선이 곧으므로 같은 높이만큼 올라갈 때마다 평행한 변의 길이가 같은 양만큼 줄어든다. 가장 아래 72와 가장 위 48의 차 24를 같은 높이의 두 구간으로 나누면 한 구간마다 12씩 줄어든다. 따라서 가운데 변의 길이는 72−12=60이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -298,7 +317,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "OP=PQ=QR=r. 단위 r로 정규화한 세 반지름 1/2/3이다. (가)=πr², (다)=9πr²−4πr²=5πr²이므로 1:5, 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -361,7 +384,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "20²=16(16+z)에서 z9. x²16×9라 x12,y²9×25라 y15. x−y+z=12−15+9=6,정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -423,7 +450,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "AH를내려 BH=t라두면 36−9=t²−(t−4)²이므로 t43/8. AC²=(9−t)²+36−t²=81/4,AC9/2,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -485,7 +516,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "밑면의 둘레의 비 2 : 3은 대응하는 길이의 비와 같으므로 길이의 비는 2 : 3이다. 부피의 비는 길이의 비의 세제곱인 8 : 27이므로 (나)의 부피는 40×(27/8)=135이다. 따라서 답은 ② 135이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -548,7 +584,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "BM=MC9/2, AP:PM=DQ:QM=4:3. PQ∥AD이고 PQ/AD=3/7라 PQ18/7, 정답 ②. 높이 6/윗변 위치 1은 원문이 정하지 않은 대표형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -610,7 +650,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "AF : FD=6 : 5이고 AD=8이므로 AF=48/11이다. 평행선으로 생기는 닮음에서 AD/AB=AF/AD이므로 AB=AD²/AF=44/3이다. 따라서 x=BD=44/3-8=20/3이고 답은 ⑤ 20/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -788,7 +832,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "E는 AD중점이어서 GAE=GDE15. 교차닮음 GE:GC1:2에서 GDC30. 합 30+15=45,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -911,7 +959,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "반원의 넓이는 지름이 d일 때 (π/8)d²이다. S₁=(25/2)π에서 AB=10, S₂=(9/2)π에서 BC=6이고, 피타고라스 정리로 AC=8이다. 따라서 삼각형 ABC의 넓이는 (1/2)×6×8=24이고 답은 ② 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -976,7 +1028,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "x=−b/(3a)가 정수인 경우만 연결한다. (1,3),(1,6),(2,6) 세 개이고 a≥3은 3a>b라 불가. 전체 36 중 3, 확률 1/12.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1214,7 +1270,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "한 명만 푸는 경우를 푸는 학생에 따라 나눈다. 요훈이만 풀 확률은 3/7×2/3×3/5=18/105이고, 준혁이만 풀 확률은 4/7×1/3×3/5=12/105이며, 현호만 풀 확률은 4/7×2/3×2/5=16/105이다. 세 경우는 서로 겹치지 않으므로 더하면 (18+12+16)/105=46/105이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1329,7 +1389,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "대응 AC8:DF10=4:5. BC4→EF5이고큰넓이 10×5/2=25.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1385,7 +1450,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "AB∥EF이므로 △ABC∽△FCE이고 AB : EF=6 : 9=2 : 3이므로 BC : CE=2 : 3, BC : BE=2 : 5이다. 이어서 △BCD∽△BFE에서 x=BD=10×(2/5)=4, y=CD=9×(2/5)=18/5이다. 따라서 x+y=38/5이다. 그림은 주어진 세 길이로 그린 대표 모양이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1442,6 +1511,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "두 식이 같은 직선이려면 a=2b. 가능한 쌍 (2,1),(4,2),(6,3) 세 개. 전체 6×6=36 중 3이므로 1/12. 나머지 눈이 생략된 유리한 사건도 이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -674,7 +674,12 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "g는 항등함수이므로 g(1)=1, g(2)=2, g(3)=3이고 f(2)=g(2)=h(2)에서 f(2)=h(2)=2이다. f는 상수함수이므로 f(1)=f(3)=2이고 h(1)=f(1)+g(1)=2+1=3이다. h는 일대일대응이므로 h(1)=3, h(2)=2에서 남은 h(3)=1이다. 따라서 f(3)+g(3)+h(3)=2+3+1=6이므로 답은 6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 20,

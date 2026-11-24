@@ -625,7 +625,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC가 있고 빗변 AB의 길이 15, 변 BC의 길이 9, 변 CA의 길이 12가 각 변에 적혀 있다. 꼭짓점 C에 직각 표시가 있고 삼각형 내부에 넓이 라벨이 지시선으로 붙어 있다.",
+    "solutionImageCaption": "직각삼각형에서 피타고라스 정리를 쓰면 AC²=15²−9²=144이므로 AC=12이다. 넓이는 1/2×9×12=54이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

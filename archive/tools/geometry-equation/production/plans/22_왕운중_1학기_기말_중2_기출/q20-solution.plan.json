@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "O_B",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "B_C",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "C_D",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "D_E",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "E_F",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "F_O",
+      "refs": [
+        "F",
+        "O"
+      ]
+    },
+    {
+      "id": "A_D",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "G_D",
+      "refs": [
+        "G",
+        "D"
+      ]
+    }
+  ],
+  "caption": "원본은 위 띠와 오른쪽 띠를 더한 ㄱ자이며 우상단 모서리는 빈 공간이다. 원래 3×2 넓이 6, 오른쪽 2×6 넓이 12, 위쪽 3×4 넓이 12로 총 30. x=y+2와 2x+3y24에서 가로 6/세로 4 연장, 정답 ④.",
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "basew",
+        "ownerSegment": "G_D",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "baseh",
+        "ownerSegment": "A_D",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "up",
+        "ownerSegment": "D_E",
+        "text": "4"
+      },
+      {
+        "id": "right",
+        "ownerSegment": "C_D",
+        "text": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "base",
+        "fill": "LIGHT",
+        "label": "6",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "D",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "top",
+        "fill": "LIGHT",
+        "label": "12",
+        "shapes": [
+          {
+            "polygon": [
+              "G",
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rightRegion",
+        "fill": "LIGHT",
+        "label": "12",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 3cm, 세로의 길이가 2cm인 직사각형이 있다. 이 직사각형의 가로와 세로의 길이를 늘여서 오른쪽 그림과 같은 도형을 만들었다. 가로로 늘인 길이는 세로로 늘인 길이보다 2cm 더 길고 새로 만든 도형의 넓이는 원래 직사각형의 넓이의 5배라고 한다. 가로와 세로의 길이를 각각 얼마만큼 늘렸는가 구하면? [5점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은위띠와오른쪽띠를더한ㄱ자이며우상단모서리는빈공간이다. 원래3×2넓이6,오른쪽2×6넓이12,위쪽3×4넓이12로총30. x=y+2와2x+3y24에서가로6/세로4연장,정답④. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은위띠와오른쪽띠를더한ㄱ자이며우상단모서리는빈공간이다. 원래3×2넓이6,오른쪽2×6넓이12,위쪽3×4넓이12로총30. x=y+2와2x+3y24에서가로6/세로4연장,정답④."
+  ]
+}

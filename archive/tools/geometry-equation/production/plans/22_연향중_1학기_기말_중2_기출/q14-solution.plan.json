@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1/2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "실제 직선 y−4x+2는 절편 1/2와 2, 감소하며 제3사분면 없음. 비교선 y4x와 기울기가 반대이므로 평행이라는 ⑤가 거짓.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차방정식 $4x+y-2=0$의 그래프에 대한 설명으로 옳지 않은 것은? [3점] 보기: ['$x$절편은 $\\\\dfrac12$이다.', '$y$절편은 $2$이다.', '$x$의 값이 증가할 때 $y$의 값은 감소한다.', '제 3사분면을 지나지 않는다.', '$y=4x$의 그래프와 평행하다.']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제직선y−4x+2는 절편1/2와2,감소하며제3사분면없음. 비교선y4x와 기울기가반대이므로 평행이라는⑤가거짓.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제직선y−4x+2는 절편1/2와2,감소하며제3사분면없음. 비교선y4x와 기울기가반대이므로 평행이라는⑤가거짓."
+  ]
+}

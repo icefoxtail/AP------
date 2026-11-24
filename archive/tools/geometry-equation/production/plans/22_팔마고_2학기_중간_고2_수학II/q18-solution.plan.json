@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          "1/2"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          "1/2",
+          "4/3"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          "4/3",
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "x": "1/2",
+        "y": "1"
+      },
+      {
+        "x": "4/3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "4/3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "가로축이 a, 세로축이 실근의 개수 f(a)이다. a≠0이면 판별식/4=(2a-1)(3a-4)의 부호로 정해져 a<1/2이면 2, a=1/2이면 1, 1/2<a<4/3이면 0, a=4/3이면 1, a>4/3이면 2이다. a=0이면 일차방정식 4x+7=0이라 1이다. 따라서 a=0의 좌우극한은 모두 2(ㄱ 참), 좌우극한이 다른 점은 1/2, 4/3 두 개(ㄴ 거짓)이며 ㄷ은 참이다. 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $a$에 대하여 집합 $\\{x\\mid ax^2-2(a-2)x-5a+7=0,\\ x$는 실수$\\}$의 원소의 개수를 $f(a)$라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $\\displaystyle\\lim_{a\\to0-}f(a)=\\lim_{a\\to0+}f(a)$<br>ㄴ. $\\displaystyle\\lim_{a\\to c-}f(a)\\ne\\lim_{a\\to c+}f(a)$인 실수 $c$는 $3$개다.<br>ㄷ. $f(f(a))\\times g(a)$가 실수 전체에서 연속이 되도록 하는 이차함수 $g(a)$가 존재하지 않는다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a에 따른 실근의 개수 f(a)의 계단 그래프에서 a=0, 1/2, 4/3의 값을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a에 따른 실근의 개수 f(a)의 계단 그래프에서 a=0, 1/2, 4/3에서 값이 1로 떨어지는 점을 보인다."
+  ],
+  "accessibilityDescription": "가로축 a에 따라 실근의 개수가 2에서 0으로 줄었다 다시 2로 늘어나는 계단 모양의 그래프이고, a=0, 1/2, 4/3에서 높이 1의 닫힌 점이 있다."
+}

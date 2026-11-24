@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "3",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-3*x^2+3*x+2",
+    "functionName": "f",
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -2,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "11"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "3"
+      ],
+      "B": [
+        "3",
+        "11"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(x)=x³−3x²+3x+2에서 f(1)=3, f(3)=11이다. x=1부터 x=3까지 f 아래의 넓이는 10이고, 역함수의 적분은 3×11−1×3에서 10을 빼어 20이다. 두 적분의 합은 10+20=30이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로축과 세로축 위에 세제곱곡선 f가 그려져 있고, 점 A(1, 3)와 점 B(3, 11) 사이의 곡선 아래 영역 S가 옅게 색칠되어 있다.",
+  "newVisualInformation": [
+    "f(1)=3과 f(3)=11을 점 A, B의 좌표로 표시했다.",
+    "x=1부터 x=3까지 곡선 f 아래의 영역 S를 색칠했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=(x-1)^3+3$의 역함수를 $g(x)$라 할 때, $\\displaystyle\\int_1^3 f(x)\\,dx+\\displaystyle\\int_3^{11}g(x)\\,dx$의 값을 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

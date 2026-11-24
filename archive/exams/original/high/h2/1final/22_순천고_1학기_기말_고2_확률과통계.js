@@ -375,7 +375,11 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "SOURCE_IMAGE_SUFFICIENT"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 4개가 붙은 3×3 격자점 아홉 개가 검은 점으로 표시되어 있고, 가로·세로 방향의 실선과 긴 점선이 격자를 이룬다. 아래와 왼쪽에는 한 칸의 길이 1과 두 칸의 길이 2를 나타내는 치수선이 있다.",
+    "solutionImageCaption": "그림의 아홉 점은 가로·세로가 각각 0, 1, 2인 3×3 격자점이다. 서로 다른 두 점을 고르는 경우는 36가지이고, 길이가 유리수이려면 두 점이 같은 가로줄이나 같은 세로줄에 있어야 한다. 가로줄마다 3쌍씩 9쌍, 세로줄마다 3쌍씩 9쌍이므로 유리수 길이의 선분은 18개이고 확률은 18/36=1/2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1071,7 +1075,12 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 B가 A 안에 포함되고 겹침이 색칠되어 있으며, 오른쪽은 두 집합이 겹쳐 합집합이 전체를 덮고 겹침이 색칠되어 있다.",
+    "solutionImageCaption": "A∩B는 A와 B 중 작은 쪽보다 클 수 없으므로 M=min{5/6, 1/4}=1/4이고, 이는 B가 A에 포함될 때(왼쪽 그림)이다. 또 P(A∪B)≤1에서 P(A∩B)≥5/6+1/4−1=1/12이고, 이는 A∪B가 표본공간 전체일 때(오른쪽 그림)이므로 m=1/12이다. 따라서 M−m=1/4−1/12=1/6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

@@ -1214,7 +1214,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "이단계 독립시행",
-    "decisiveStep": "개인별 최종 합격확률을 구해 정확히 2명 계산"
+    "decisiveStep": "개인별 최종 합격확률을 구해 정확히 2명 계산",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "한 학생이 최종 합격하는 경로는 수시모집에 바로 합격하는 경우와 수시모집에 불합격한 뒤 정시모집에 합격하는 경우이고, 두 경로의 확률은 각각 1/3, 2/3 × 1/6 = 1/9이다. 따라서 한 학생이 최종 합격할 확률은 1/3 + 1/9 = 4/9이고, 최종 불합격할 확률은 5/9이다. 세 학생이 서로 독립이므로 정확히 두 명이 합격할 확률은 세 명 중 두 명을 고르는 경우 3가지에 (4/9)² × (5/9)를 곱한 80/243이다. 수시모집에 합격한 학생은 정시모집에 지원하지 않으므로 두 합격 경로를 겹쳐 세지 않았고, 따라서 답은 80/243이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

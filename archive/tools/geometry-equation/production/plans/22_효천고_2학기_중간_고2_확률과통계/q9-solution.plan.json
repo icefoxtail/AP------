@@ -1,0 +1,33 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "........"
+    }
+  ],
+  "solidCaption": {
+    "text": "주사위"
+  },
+  "caption": "주사위의 여섯 면 중 1이 3개, 2가 2개, 3이 1개이다. 확률은 각각 3/6, 2/6, 1/6이고, 기댓값은 5/3, 제곱의 기댓값은 10/3이다. 분산은 10/3 빼기 25/9, 즉 5/9이고, 3X-9의 분산은 9 곱하기 5/9, 즉 5이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "정육면체 주사위가 비스듬히 보이고, 보이지 않는 모서리는 점선으로 표시되어 있다.",
+  "newVisualInformation": [
+    "1이 3면, 2가 2면, 3이 1면인 주사위",
+    "확률변수 X의 분포를 이용한 분산 계산"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 각 면에 $1, 1, 1, 2, 2, 3$의 숫자가 각각 하나씩 적힌 정육면체 모양의 주사위가 있다. 이 주사위를 던져서 나온 눈의 수를 확률변수 $X$라 할 때, $V(3X-9)$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

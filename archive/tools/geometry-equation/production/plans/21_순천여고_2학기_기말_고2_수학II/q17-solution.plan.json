@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -4,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3",
+        "1"
+      ]
+    }
+  },
+  "caption": "원함수 f의 그래프에서 0부터 2까지의 부호 있는 넓이를 읽는다. 이 적분이 F의 해당 점에서 접선 기울기이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $F(x)=\\displaystyle\\int_0^x(x-t)f(t),dt$라 하자. 함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 함수 $y=F(x)$의 그래프 위의 점 $(2,F(2))$에서의 접선의 기울기는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "실제PNG극점0,1과2,−3. 최고계수1이므로f=x³−3x²+1. F′2는적분−2이나최종값숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "원함수 f의 그래프에서 0부터 2까지의 부호 있는 넓이를 읽는다. 이 적분이 F의 해당 점에서 접선 기울기이다.",
+  "newVisualInformation": [
+    "실제PNG극점0,1과2,−3. 최고계수1이므로f=x³−3x²+1. F′2는적분−2이나최종값숨김."
+  ]
+}

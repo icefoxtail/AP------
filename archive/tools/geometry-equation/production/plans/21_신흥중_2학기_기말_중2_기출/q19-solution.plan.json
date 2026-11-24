@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "두 눈의 합",
+        "elements": [
+          "3",
+          "8"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "도착 꼭짓점",
+        "elements": [
+          "C"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "오각형에서 A에서 시계 방향으로 세 번 이동하면 C에 닿고, 한 바퀴 다섯 번을 더 이동한 여덟 번도 C에 닿는다. 두 주사위 눈의 합이 3인 순서쌍은 (1,2), (2,1)의 2가지이고 합이 8인 순서쌍은 (2,6), (3,5), (4,4), (5,3), (6,2)의 5가지이다. 유리한 경우는 2+5=7가지이고 전체는 6×6=36가지이므로 확률은 7/36이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 1인 정오각형 $ABCDE$가 있다.\n 꼭짓점 $A$에 있는 말을 주사위를 던져서 나오는 눈의 수만큼 시계바늘이 도는 방향으로 이동한다. 한 개의 주사위를 두 번 던질 때,\n 말이 꼭짓점 $C$로 이동해 있을 확률을 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 합 3과 합 8이 모두 꼭짓점 C로 이어지는 대응도를 그렸다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 열에 합 3과 합 8이, 오른쪽 열에 꼭짓점 C가 놓이고 두 값에서 C로 가는 화살표 두 개가 그려져 있다."
+  ]
+}

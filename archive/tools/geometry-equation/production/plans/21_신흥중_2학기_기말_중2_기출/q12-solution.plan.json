@@ -1,0 +1,116 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "집→학교",
+        "elements": [
+          "길1",
+          "길2"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "학교→도서관",
+        "elements": [
+          "길1",
+          "길2",
+          "길3",
+          "길4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ]
+  },
+  "caption": "두 구간 선택쌍 2×4=8가지를 연결 도로 나타낸다. 같은 지점 재방문은 포함하지 않음, 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 집에서 학교로 가는 길은 2가지, 학교에서 도서관으로 가는 길은 4가지가 있다.\n 집에서 도서관으로 가는 모든 경우의 수를 구하면? \n(단, 같은 지점을 두 번 이상 지나지 않는다.) (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -191,7 +191,11 @@ window.questionBank = [
       "examUid": "21_매산여고_1학기_중간_고2_확률과통계",
       "sourceSha256": "d27f81d2fd5848c661f9338ca484b5b20cbc023c405260e199cf65b22ff39a7f"
     },
-    "metaStatus": "EVIDENCE_DEBT_ORIGINAL_CHOICES"
+    "metaStatus": "EVIDENCE_DEBT_ORIGINAL_CHOICES",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파스칼의 삼각형 여섯 줄의 수가 삼각형 모양으로 놓여 있고, 위의 두 수에서 아래 수로 내려가는 짧은 선들이 파랗게 그려져 있다.",
+    "solutionImageCaption": "파스칼의 삼각형은 좌우 대칭이므로 C(n,r)=C(n,n−r)을 설명할 수 있고, 아래 수가 바로 위 두 수의 합이라는 성질로 C(n,r)=C(n−1,r−1)+C(n−1,r)을 설명할 수 있다. 여섯째 줄의 계수로 (a+b)의 6제곱 전개식을 구할 수 있다. C(6,8)은 8이 6보다 커서 정의되지 않으므로 ㄴ은 옳지 않다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
