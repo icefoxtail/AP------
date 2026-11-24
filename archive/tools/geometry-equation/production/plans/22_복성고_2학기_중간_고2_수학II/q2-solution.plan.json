@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "x가 0에 왼쪽에서 가까워질 때 높이는 1, 오른쪽에서 가까워질 때 높이는 -1이다. x가 2에 오른쪽에서 가까워질 때는 열린 점 (2,2)를 향하므로 높이는 2이다. 실제 함수값 f(0)=0, f(2)=0은 극한 계산에 쓰지 않는다. 따라서 1-(-1)+2=4이므로 답은 ⑤이다.",
+  "accessibilityDescription": "왼쪽은 x=-2부터 0까지 높이 1인 수평선이고, 가운데는 0부터 2까지 높이 -1인 수평선이다. x=2에서 오른쪽 위로 향하는 직선이 열린 점 (2,2)에서 시작하며, x=0과 x=2에는 높이 0인 점이 따로 표시되어 있다.",
+  "newVisualInformation": [
+    "x=0에서 왼쪽 높이 1과 오른쪽 높이 -1",
+    "x=2 오른쪽에서 높이 2로 향하는 열린 점",
+    "x=0과 x=2의 함수값 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수 $y=f(x)$의 그래프가 그림과 같을 때, $\\lim_{x \\to 0-} f(x) - \\lim_{x \\to 0+} f(x) + \\lim_{x \\to 2+} f(x)$값을 구하시오. [3.5점]\n<img src=\"assets/images/22_복성고_2학기_중간_고2_수학II/q02.png\" alt=\"22_복성고_2학기_중간_고2_수학II Q02\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

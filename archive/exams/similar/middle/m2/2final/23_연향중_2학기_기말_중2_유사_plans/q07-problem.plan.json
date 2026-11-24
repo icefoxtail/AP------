@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "frameL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-9",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "frameB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M",
+    "N",
+    "frameL",
+    "frameB"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "bigarc",
+        "circle": "big",
+        "center": "O",
+        "from": "C",
+        "to": "B",
+        "side": "CCW"
+      },
+      {
+        "id": "abarc",
+        "circle": "ab",
+        "center": "M",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      },
+      {
+        "id": "acarc",
+        "circle": "ac",
+        "center": "N",
+        "from": "C",
+        "to": "A",
+        "side": "CCW"
+      },
+      {
+        "id": "bigLuneAB",
+        "circle": "big",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "bigLuneAC",
+        "circle": "big",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "15",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "luneAB",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "M",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "luneAC",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "N",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "M",
+    "N",
+    "frameL",
+    "frameB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원을 그린 그림이다. 두 직각변 위의 반원에서 빗변의 반원과 겹치지 않는 두 초승달 모양 부분을 색칠하였고, 변 AB의 길이 12와 빗변 BC의 길이 15를 나타내었다.",
+  "accessibilityDescription": "삼각형 ABC의 세 변 바깥쪽에 반원이 그려져 있고, 두 직각변 위의 반원과 빗변의 반원 사이에 생기는 두 초승달 모양 영역이 색칠되어 있다. 점 A에 직각 표시가 있고 변 AB 옆에 12, 변 BC 옆에 15가 적혀 있다.",
+  "newVisualInformation": [
+    "세 변을 지름으로 하는 반원 세 개를 그린다.",
+    "두 직각변 위의 반원과 빗변의 반원 사이에 생기는 두 초승달 모양 영역을 색칠한다.",
+    "변 AB의 길이 12와 빗변 BC의 길이 15를 적고 점 A에 직각 표시를 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$의 세 변을 각각 지름으로 하는 반원을 그렸다. $\\overline{AB} = 12\\text{ cm}$, $\\overline{BC} = 15\\text{ cm}$일 때, 두 직각변 위의 반원에서 빗변의 반원과 겹치지 않는 색칠한 두 초승달 모양 부분의 넓이의 합은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

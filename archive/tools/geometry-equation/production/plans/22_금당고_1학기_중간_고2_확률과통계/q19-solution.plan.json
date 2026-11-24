@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "√20"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "4"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "예를 들어 (a,b,c)=(1,4,2)이면 A(-1,0), B(4,0), C(2,4)이고 AB=AC=5이다. 이때 AB²=25, AC²=3²+4²=25, BC²=2²+4²=20이므로 세 변의 제곱을 비교하면 된다. 해설의 세 경우를 모두 세면 2+7+6=15가지이고 전체는 216가지이므로 확률은 15/216=5/72이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "왼쪽 아래에 A, 오른쪽 아래에 B, 위쪽에 C가 있는 삼각형이 그려져 있고, 변 AB와 변 AC에 같은 길이 표시가 있으며 각 변에 5, 5, √20의 길이 라벨이 붙어 있다. 꼭짓점 C에서 변 AB로 내린 점선 수선과 길이 4의 라벨, 수선의 발의 직각 표시가 보인다.",
+  "newVisualInformation": [
+    "예시 (a,b,c)=(1,4,2)에 대응하는 A(-1,0), B(4,0), C(2,4)를 잡는다.",
+    "AB와 AC에 같은 길이 표시를 하고 두 변의 길이 5를 적는다.",
+    "BC의 길이 √20과 높이 4를 적어 세 변의 제곱 관계를 확인한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주사위 한 개를 세 번 던져서 나온 눈의 수를 차례로 $a, b, c$라 할 때, 좌표평면의 세 점 $\\mathrm{A}(-a, 0)$, $\\mathrm{B}(b, 0)$, $\\mathrm{C}(c, 4)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$가 이등변삼각형일 확률을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1002,7 +1002,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "845a261bf2414caccbabe4be1b02f58657aafaa8"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에 대각선 AC가 점선으로 그어져 있고 삼각형 ABC는 파란색, 삼각형 ADC는 주황색으로 칠해져 있다. 각 B에는 60도, 각 D에는 120도 표시가 있고 네 변에 길이가 적혀 있다.",
+    "solutionImageCaption": "대각선 AC로 사각형을 삼각형 ABC와 삼각형 ADC로 나눈다. 삼각형 ABC의 넓이는 두 변 12, 8과 끼인각 60도로 24√3이고, 삼각형 ADC는 두 변 2√7, 2√7과 끼인각 120도로 7√3이다. 두 넓이를 더하면 31√3 cm²이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

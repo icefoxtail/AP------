@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      3,
+      6,
+      4,
+      3,
+      3,
+      6,
+      4,
+      5,
+      3,
+      3
+    ],
+    "xTitle": "자료 값",
+    "marks": {
+      "meanLine": {
+        "value": "4",
+        "label": "평균 4"
+      },
+      "medianLine": {
+        "value": "7/2",
+        "label": "중앙값 3.5"
+      },
+      "highlight": [
+        {
+          "value": 3,
+          "color": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "자료를 작은 값부터 늘어놓으면 3, 3, 3, 3, 3, 4, 4, 5, 6, 6이다. 평균은 40/10=4, 중앙값은 다섯째와 여섯째 값의 평균인 7/2, 최빈값은 다섯 번 나온 3이다. 따라서 a+b+c=4+7/2+3=21/2=10.5이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "24. 다음 변량의 평균을 $a$, 중앙값을 $b$, 최빈값을 $c$라고 할 때, $a + b + c$의 값은? [4.4점]<br><div class=\"exam-box\" style=\"text-align: center;\">3 \\quad 6 \\quad 4 \\quad 3 \\quad 3 \\quad 6 \\quad 4 \\quad 5 \\quad 3 \\quad 3</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "변량 3, 6, 4, 3, 3, 6, 4, 5, 3, 3",
+      "mappedTo": "chart.values"
+    }
+  ],
+  "newVisualInformation": [
+    "자료 값 3, 4, 5, 6의 점을 각각 5개, 2개, 1개, 2개씩 쌓아 나타낸다.",
+    "평균선 4와 중앙값선 3.5를 긋고, 최빈값 3의 점을 파랑으로 칠한다."
+  ]
+}

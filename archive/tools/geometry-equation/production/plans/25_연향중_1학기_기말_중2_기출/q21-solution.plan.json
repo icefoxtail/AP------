@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 처음 주문한 복숭아,세로 y는 포도 수. 총 10개와 금액차 700(x−y)=1400에서 두 조건 x+y10,x−y2의 교점(6,4). 실제개수는 비음수정수. 처음 복숭아 6개가 답이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 애순이는 과일 가게에서 1개에 1300원인 복숭아와 1개에 2000원인 포도를 합하여 10개를 주문하였다. 그런데 복숭아와 포도의 개수가 바뀌어서 배달되면서 처음에 주문한 총 금액보다 1400원이 더 비싸졌다고 한다. 처음에 주문한 복숭아의 개수는?\n\n(1) 미지수를 정하고, 문제를 해결하기 위한 연립방정식을 세우시오. [3점]\n\n\n\n\n\n(2) 연립방정식을 풀고, 처음에 주문한 복숭아의 개수를 구하시오. [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

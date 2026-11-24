@@ -1,0 +1,147 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "n=1 밑 2"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "0"
+              ],
+              "domain": [
+                1,
+                2
+              ],
+              "start": "OPEN",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "1"
+              ],
+              "domain": [
+                2,
+                4
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "2"
+              ],
+              "domain": [
+                4,
+                8
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "3"
+              ],
+              "domain": [
+                8,
+                10
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "2",
+              "4",
+              "8"
+            ],
+            "y": [
+              "1",
+              "2",
+              "3"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "n=2 밑 3"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "0"
+              ],
+              "domain": [
+                1,
+                3
+              ],
+              "start": "OPEN",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "1"
+              ],
+              "domain": [
+                3,
+                9
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "2"
+              ],
+              "domain": [
+                9,
+                10
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "3",
+              "9"
+            ],
+            "y": [
+              "1",
+              "2"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "y=[log_(n+1) x]는 로그가 정수가 되는 x=(n+1)의 거듭제곱에서 뛴다. 왼쪽은 n=1(밑 2)로 x=2, 4, 8의 3곳, 오른쪽은 n=2(밑 3)로 x=3, 9의 2곳에서 끊어진다. n=3, 4, ..., 8(밑 4부터 9)은 x=밑 자신 한 곳씩이고 n=9(밑 10)는 x=10이 정의역 밖이라 0곳이다. 따라서 a_1+...+a_9=3+2+6+0=11이고 답은 ①이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 x=2, 4, 8에서 한 칸씩 올라가는 계단이, 둘째 패널에는 x=3, 9에서 한 칸씩 올라가는 계단이 그려져 있고 각 수평선의 왼쪽 끝은 닫힌 점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역 $1 < x < 10$에 대하여 함수 $y=[\\log_{n+1} x]$의 불연속점의 개수를 $a_n$이라고 정의하자.\n$a_1+a_2+\\cdots+a_9$의 값으로 알맞은 것을 고른 것은? (단, $[x]$는 $x$를 넘지 않는 최대 정수) [5.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 밑 2와 밑 3의 가우스 로그 계단 그래프를 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "밑 2일 때 불연속점 x=2, 4, 8과 밑 3일 때 불연속점 x=3, 9를 계단 그래프로 보인다."
+  ]
+}

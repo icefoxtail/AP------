@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "Q",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "Q",
+    "H1",
+    "H2"
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "X",
+    "H1",
+    "H2"
+  ],
+  "unmarkedPointNames": [
+    "H1",
+    "H2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPH1",
+      "refs": [
+        "P",
+        "H1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sQH2",
+      "refs": [
+        "Q",
+        "H2"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q"
+  ],
+  "labelDirections": {
+    "P": "NE",
+    "Q": "NW"
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "P",
+        "H1",
+        "X"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "Q",
+        "H2",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 35.26,
+        "label": "α",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "X",
+          "O",
+          "Q"
+        ],
+        "value": 109.47,
+        "label": "β",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "ring": 2,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "반지름 1인 단위원에서 α는 제1사분면, β는 제2사분면의 각이다. sin α=√3/3에서 cos α=√6/3이고, cos β=−1/3에서 sin β=2√2/3이다. 따라서 cos(α−β)=cos α cos β+sin α sin β=−√6/9+2√6/9=√6/9이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "반지름 1인 단위원 위에 α 동경과 β 동경이 있고, α는 제1사분면, β는 제2사분면에 있다. 두 동경의 끝에서 x축으로 내린 점선과 두 끝 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sin\\alpha=\\dfrac{\\sqrt3}3$, $\\cos\\beta=-\\dfrac13$일 때, $\\cos(\\alpha-\\beta)$의 값을 구하면? (단, $0\\lt\\alpha\\lt\\dfrac\\pi2$, $\\dfrac\\pi2\\lt\\beta\\lt\\pi$) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "단위원 위에 α와 β의 동경을 그리고 두 점의 좌표 (√6/3, √3/3), (−1/3, 2√2/3)를 점 곁에 쓴다."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "l"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "-2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "같은 높이에 있는 두 점의 가로좌표 차이가 선분의 길이이다. 이 차이를 이차식으로 정리하여 가장 짧을 때의 두 점을 찾는다.",
+  "accessibilityDescription": "같은 높이에 있는 두 점의 가로좌표 차이가 선분의 길이이다. 이 차이를 이차식으로 정리하여 가장 짧을 때의 두 점을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "22. 아래 그림과 같이 이차함수 $y = x^2 - 2x - 2$의 그래프 위의 한 점 $\\text{P}$에서 $x$축에 평행한 직선을 그어 직선 $y = 2x - 8$과 만나는 점을 $\\text{Q}$라 하자. 선분 $\\text{PQ}$의 길이가 최소가 되는 점 $\\text{Q}$의 좌표를 $(a, b)$라 할 때, $ab$의 값은? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"파란 위로 열린 포물선 위 P와 주황 점선 직선 위 Q를 가로선으로 연결했다. 포물선의 y절편은 −2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인. P가로t, Q가로(t²−2t+6)/2, 차(t−2)²/2+1>0. 최소t2,Q3,−2. 최종ab−6숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 높이에 있는 두 점의 가로좌표 차이가 선분의 길이이다. 이 차이를 이차식으로 정리하여 가장 짧을 때의 두 점을 찾는다."
+  ]
+}

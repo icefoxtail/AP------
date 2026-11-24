@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "4/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4.5,
+      4.5,
+      -1,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "Q",
+        "x": "-3",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "(4/9)*x^2"
+  },
+  "caption": "꼭짓점이 원점이므로 포물선의 식을 y=ax²로 놓는다. 점 (3,4)를 대입하면 4=a×3²=9a이므로 a=4/9이다. 아래로 볼록하므로 a>0이고, 구하는 식은 y=(4/9)x²이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "좌표평면에 원점을 꼭짓점으로 하는 아래로 볼록한 포물선이 그려져 있고, 곡선 위의 점 (3,4)와 (-3,4)가 표시되어 있다.",
+  "newVisualInformation": [
+    "원점 O를 꼭짓점으로 하는 포물선 y=(4/9)x²",
+    "곡선 위의 점 P(3,4)와 Q(-3,4)",
+    "점 (3,4)를 지나며 위로 볼록한 선지 곡선과의 대비"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 아래로 볼록하며 점 (3, 4)를 지나는 포물선 그래프\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

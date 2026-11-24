@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -6,
+      17
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    }
+  },
+  "caption": "삼차함수는 한 영점에서 축에 접하고 다른 영점에서 축을 가로지른다. 절댓값을 취할 때 접하는 영점과 가로지르는 영점의 매끄러움 차이를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 모두 $1$인 삼차함수 $f(x)$와 이차함수 $g(x)$가 다음 조건을 만족시킨다.\n(가) 함수 $|f(x)|$는 $x=3$에서만 미분가능하지 않다.\n(나) 함수 $g(x)$는 $x=\\dfrac{3}{2}$에서 극솟값 $-\\dfrac{9}{4}$를 가진다.\n(다) 모든 실수 $p$에 대하여 $\\displaystyle\\lim_{x\\to p}\\dfrac{f(x)}{g(x)}$의 값이 존재한다.\n이때, $\\displaystyle\\int_{-1}^1{f(x)+g(x)},dx$의 값은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "g=x(x−3),유한극한으로f는0/3의근. |f|비미분점3만이므로f=x²(x−3). f그래프의0접함과3가로지름;최종적분−4/3숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "g=x(x−3),유한극한으로f는0/3의근. |f|비미분점3만이므로f=x²(x−3). f그래프의0접함과3가로지름;최종적분−4/3숨김."
+  ]
+}

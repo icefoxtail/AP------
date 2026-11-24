@@ -56,7 +56,11 @@ window.examData = {
         "$y=3x+\\dfrac{3}{2}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "오른쪽 아래로 향하는 직선이 x축과 (3,0)에서, y축과 (0,2)에서 만나고 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "x절편이 3이면 점 (3,0)을, y절편이 2이면 점 (0,2)를 지난다. 기울기는 (2−0)/(0−3)=−2/3이고 y절편이 2이므로 y=−(2/3)x+2이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -112,7 +116,11 @@ window.examData = {
         "4"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 x절편 -2와 y절편 1을 지나는 직선이 그려져 있고, 두 절편의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "그래프가 x절편 -2와 y절편 1을 지난다. 기울기는 (1-0)/(0-(-2))=1/2이고 식은 y=x/2+1, 즉 x-2y+2=0이다. 따라서 b=-2, c=2이므로 bc=-4이다. 따라서 답은 ① -4이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -140,7 +148,11 @@ window.examData = {
         "$x$의 값이 증가할 때, $y$의 값은 감소한다."
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 y축의 2와 x축의 -4를 지나는 오르막 직선이 있고, 두 절편 A, B와 점 P가 표시되어 있다.",
+      "solutionImageCaption": "그래프가 x축과 만나는 점은 (-4, 0), y축과 만나는 점은 (0, 2)이고, 점 (4, 4)도 지난다. 기울기는 1/2이고 식은 y=1/2x+2이므로 y절편은 2이다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -247,7 +259,12 @@ window.examData = {
         "$220\\,\\mathrm{m}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 위쪽 막대는 다리와 열차를 이어 붙인 구간, 아래쪽 막대는 터널과 열차를 이어 붙인 구간을 나타내고, 각 부분과 전체 길이가 치수선으로 적혀 있는 그림이다.",
+      "solutionImageCaption": "열차의 길이를 L, 속력을 초속 v라 하면 다리를 완전히 통과할 때 이동한 거리는 1100+L, 터널은 1700+L이다. 55v=1100+L과 80v=1700+L을 변끼리 빼면 25v=600이므로 v=24이고 L=55×24-1100=220이다. 따라서 열차의 길이는 220 m이고 답은 ⑤이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     },
     {
       "id": 18,
@@ -261,7 +278,11 @@ window.examData = {
         "없다."
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 직선과 제1사분면부터 제4사분면까지의 이름이 표시되어 있다. 한 직선은 기울기와 y절편이 모두 음수이고, 다른 직선은 기울기가 음수이며 y절편이 양수이다.",
+      "solutionImageCaption": "주어진 그래프에서 기울기 a-b는 0보다 작고 y절편 ab도 0보다 작다. 따라서 a는 b보다 작고 a와 b는 서로 다른 부호이므로 a는 음수, b는 양수이다. 그러면 y=ax+b는 기울기가 음수이고 y절편이 양수이므로 제1,2,4사분면을 지나고 제3사분면은 지나지 않는다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,

@@ -39,7 +39,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "정사면체 네 면의 수의 합은 20이고, 바닥에 닿는 면의 수를 D라 하면 X=20-D이다. D가 2, 4, 6, 8일 때 X는 각각 18, 16, 14, 12이고 네 경우가 같은 확률로 일어난다. X의 평균은 (18+16+14+12)/4=15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -80,7 +84,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "X는 12, 14, 16, 18을 각각 1/4의 확률로 갖고 평균은 15이다. 편차 제곱의 평균은 (9+1+1+9)/4=20/4=5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -335,7 +343,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "N(n, n²/4)의 표준편차는 n/2이다. 아래 경계 n은 z=0이고 위 경계 120은 z=(120−n)/(n/2)이다. P(n≤X≤120)=P(0≤Z≤1)이려면 위 경계가 z=1이어야 하므로 (120−n)/(n/2)=1에서 n=80이다(그림은 n=80일 때: 평균 80, 표준편차 40). 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -591,7 +603,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "평균 0인 정규분포에서 x>0일 때 밀도는 x가 커질수록 줄어든다. 길이가 같은 구간 [1, 2]와 [2, 3]을 비교하면 앞 구간의 곡선이 더 높아 P(1≤X≤2)>P(2≤X≤3)이므로 ㄱ은 거짓이다. 표준화하면 ㄴ은 P(−1≤Z≤0)=P(0≤W≤1)로 참이고, ㄷ은 1/a=2/b에서 b=2a이므로 a<b로 참이다. 따라서 ㄴ, ㄷ이 옳아 답은 ④이다. 그림의 표준편차 2는 예이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -632,7 +648,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "정원 23명은 응시자 1000명의 상위 23/1000=0.023이다. 표에서 P(0≤Z≤2)=0.477이므로 오른쪽 꼬리가 0.5−0.477=0.023인 경계는 z=2이다. 합격 최저 점수는 평균 300에 표준편차 30의 2배를 더한 300+60=360점이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -757,7 +777,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 0에서 a 미만이, 오른쪽 곡선은 평균 3에서 b+3 미만이 칠해져 있다.",
+    "solutionImageCaption": "X는 N(0, 2²)이므로 P(X<a)=P(Z<a/2)이다. Y는 N(3, 1²)이므로 P(Y<b+3)=P(Z<b)이다. 누적확률이 같으면 표준점수가 같으므로 a/2=b이고 a=2b이다. 그림은 b=1, a=2인 예이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 19,

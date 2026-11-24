@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "실제 y2x−6은기울기 2,절편점(0,−6),(3,0),제1·3·4사분면. y2x+4와평행하고 y2x에서아래 6이동. 정답②④⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $2x-y-6=0$의 그래프의 성질 중 옳은 것을 모두 고르면? (정답 3개) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제y2x−6은기울기2,절편점(0,−6),(3,0),제1·3·4사분면. y2x+4와평행하고y2x에서아래6이동. 정답②④⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제y2x−6은기울기2,절편점(0,−6),(3,0),제1·3·4사분면. y2x+4와평행하고y2x에서아래6이동. 정답②④⑤."
+  ]
+}

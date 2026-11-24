@@ -1,0 +1,130 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "40",
+          "1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "90"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      90
+    ],
+    "viewport": [
+      -10,
+      100,
+      -5,
+      70
+    ],
+    "axisTickValues": {
+      "x": [
+        "50",
+        "70"
+      ],
+      "y": [
+        "42",
+        "55"
+      ]
+    },
+    "axisTitles": {
+      "x": "x(회)",
+      "y": "y(화씨)"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "40",
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "10",
+          "y": "85/2",
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "20",
+          "y": "45",
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "30",
+          "y": "95/2",
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "40",
+          "y": "50",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "80",
+          "y": "60"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s1",
+          "from": "P0",
+          "to": "P1"
+        },
+        {
+          "id": "s2",
+          "from": "P1",
+          "to": "P2"
+        },
+        {
+          "id": "s3",
+          "from": "P2",
+          "to": "P3"
+        },
+        {
+          "id": "s4",
+          "from": "P3",
+          "to": "P4"
+        },
+        {
+          "id": "s5",
+          "from": "P4",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "x가 10 증가할 때 y는 2.5씩 일정하게 증가하므로 기울기는 2.5/10=1/4이다. x=0일 때 y=40이므로 관계식은 y=(1/4)x+40이다. y=60일 때 (1/4)x=20에서 x=80이다. 따라서 답은 (1) 1/4, (2) 40, (3) y=(1/4)x+40, (4) 80회이다.",
+  "accessibilityDescription": "가로축 x(회), 세로축 y(화씨)인 좌표평면에 측정점 다섯 개와 오른쪽 위의 점 P를 잇는 직선이 있다. 측정점들은 x가 커질수록 일정한 간격으로 높아진다.",
+  "newVisualInformation": [
+    "측정점 (0,40), (10,42.5), (20,45), (30,47.5), (40,50)을 표시한다.",
+    "측정점들을 잇는 직선과 그 위의 점 P를 표시한다.",
+    "가로축 눈금 50, 70과 세로축 눈금 42, 55를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

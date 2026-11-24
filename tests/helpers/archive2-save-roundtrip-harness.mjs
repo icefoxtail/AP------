@@ -228,7 +228,7 @@ export function createWorkspace(workerHandle, options = {}) {
   storage.set("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   loadWorkspace(ctx, `
     render = () => {};
-    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision, applyDraft, draft, shardGlue: { shardCatalog, installCatalogDerived, ensureShards, ensureShardFiles, shardNeed, shardMissing, shardNeedsLoading } };
+    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision, applySavedPaperRevision, applyDraft, draft, shardGlue: { shardCatalog, installCatalogDerived, ensureShards, ensureShardFiles, shardNeed, shardMissing, shardNeedsLoading } };
   `);
   const ws = ctx.ws;
   if (options.shardFiles) {

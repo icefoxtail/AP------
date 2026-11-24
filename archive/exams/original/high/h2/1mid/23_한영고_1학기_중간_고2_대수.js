@@ -254,7 +254,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q7-solution.svg",
+    "solutionImageAlt": "원점에서 뻗은 다섯 동경 OA, OB, OC, OD, OE가 있고 각각 330°, −45°, 240°, 150°, 90°의 각 표시가 붙어 있다.",
+    "solutionImageCaption": "각을 한 좌표평면의 동경으로 나타내면 ①은 330°(동경 OA, 제4사분면)이므로 sin330°=−1/2, ②는 −π/4=−45°(동경 OB)이므로 cos(−π/4)=√2/2, ③은 4π/3=240°(동경 OC)이므로 tan(4π/3)=√3, ⑤는 90°(동경 OE)이므로 cos90°=0이다. ④의 150°(동경 OD)는 제2사분면이고 기준각 30°이므로 sin150°=1/2이다. √3/2가 아니므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -289,7 +293,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 반지름 5인 원 위 제2사분면에 점 (-4, 3)이 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 3, 원점에서 수선의 발까지의 가로 길이는 4, 빗변은 5로 표시되어 있다.",
+    "solutionImageCaption": "θ가 제2사분면의 각이고 sinθ=3/5이므로 cosθ=-4/5, tanθ=-3/4이다. sin(π/2+θ)=cosθ, tan(π-θ)=-tanθ이므로 주어진 식은 cosθ-tanθ-cosθ=-tanθ이다. 따라서 -tanθ=3/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -369,7 +377,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "반지름 4인 원 위에서 225°와 270° 동경 사이의 제3사분면 영역이 색칠되어 있고 각 225°와 270°가 표시되어 있다.",
+    "solutionImageCaption": "반지름 4인 부채꼴의 넓이는 S=(1/2)·4²·θ=8θ이므로 10π<8θ<12π에서 5π/4<θ<3π/2이다. 그림의 색칠한 부분은 225°(5π/4)에서 270°(3π/2)까지의 범위로 제3사분면에 있다. 제3사분면에서 sinθ<0, cosθ<0, tanθ>0이므로 ①, ②, ③, ⑤는 옳다. 5π/4<θ<3π/2에서는 cosθ가 sinθ보다 커서 cosθ−sinθ>0이므로 ④는 옳지 않다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -610,7 +622,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원과 세 개의 동경이 있고, 각각 π/3, π, 5π/3의 각이 호와 함께 표시되어 있다.",
+    "solutionImageCaption": "tan x를 sin x/cos x로 바꾸어 정리하면 sin x(1/cos x − 2) = 0이다. sin x = 0에서 x = π, 2π이고, cos x = 1/2에서 x = π/3, 5π/3이다. 네 해를 더하면 π + 2π + π/3 + 5π/3 = 5π이다. 따라서 답은 5π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

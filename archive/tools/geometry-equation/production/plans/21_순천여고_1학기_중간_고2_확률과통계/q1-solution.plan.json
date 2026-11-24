@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "306"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "234"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "162"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "R1",
+    "R2",
+    "B",
+    "R3"
+  ],
+  "displaySegments": [],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "caption": "A와 B를 포함하여 5명을 고르는 방법은 나머지 5명 중 3명을 고르는 10가지이다. 선택된 5명의 원순열은 4!=24가지이고, A와 B가 이웃한 경우는 두 사람을 묶어 3!×2=12가지이다. 이웃하지 않는 배열은 24-12=12가지이므로 전체는 10×12=120가지이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "원 위에 다섯 개의 점이 같은 간격으로 놓여 있고, 그중 두 점에 A와 B가 붙어 있으며 두 점은 서로 떨어져 있다.",
+  "newVisualInformation": [
+    "다섯 좌석을 원 위에 표시",
+    "A와 B를 이웃하지 않는 두 자리에 배치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다섯 명이 둘러앉을 수 있는 원 모양의 탁자와 두 학생 $A, B$를 포함한 7명의 학생이 있다. 이 7명의 학생 중에서 $A, B$를 포함하여 5명을 선택하고 이 5명의 학생 모두를 일정한 간격으로 탁자에 둘러앉게 할 때, $A$와 $B$가 이웃하지 않는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><div class=\"exam-img-box\"><img src=\"assets/images/21_순천여고_1학기_중간_고2_확률과통계/q01.png\" class=\"exam-img\"></div> [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

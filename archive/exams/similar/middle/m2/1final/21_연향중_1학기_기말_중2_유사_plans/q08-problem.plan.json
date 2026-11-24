@@ -1,0 +1,44 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "좌표평면에 x축에 평행한 직선이 그려져 있고, 이 직선이 점 (0, 3)을 지난다.",
+  "accessibilityDescription": "좌표평면에 가로로 놓인 직선이 있고, 이 직선이 y축과 만나는 점의 좌표 (0, 3)이 표시되어 있다.",
+  "newVisualInformation": [
+    "x축에 평행하고 점 (0, 3)을 지나는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax - by - 6 = 0$의 그래프가 점 $(0, 3)$을 지나고 $x$축에 평행할 때, 두 수 $a$와 $b$의 값을 각각 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

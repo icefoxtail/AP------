@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-3",
+          "-1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      2
+    ],
+    "viewport": [
+      -7,
+      2,
+      -5,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": "11/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "축의 왼쪽과 오른쪽에서 높이가 변하는 방향이 다르다. 꼭짓점과 y절편으로 제시된 증가구간 설명을 검토한다.",
+  "accessibilityDescription": "축의 왼쪽과 오른쪽에서 높이가 변하는 방향이 다르다. 꼭짓점과 y절편으로 제시된 증가구간 설명을 검토한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 이차함수 $y=-\\dfrac{1}{2}(x+3)^2+\\dfrac{11}{2}$의 그래프에 대한 다음 설명 중 옳지 않은 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "꼭짓점(−3,11/2), y절편1, 근−3±√11. 증가하는 범위는x<−3이며x<3 전체는 아니므로④.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "축의 왼쪽과 오른쪽에서 높이가 변하는 방향이 다르다. 꼭짓점과 y절편으로 제시된 증가구간 설명을 검토한다."
+  ]
+}

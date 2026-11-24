@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "고정한 자연수",
+        "elements": [
+          "12"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "소인수",
+        "elements": [
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x12에 소인수 2,3 두 값이 대응하므로⑤는함수가 아니다. x1에는 소인수가 없다는 점도 자연수 전체에서 함수가 안되는 이유지만 이 도식은 복수대응의 반례를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수가 아닌 것은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

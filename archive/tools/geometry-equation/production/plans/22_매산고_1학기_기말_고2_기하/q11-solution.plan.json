@@ -1,0 +1,114 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 3,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "D",
+              "F"
+            ],
+            "ratio": "1:2"
+          }
+        },
+        {
+          "id": "T",
+          "at": {
+            "footOnLine": {
+              "from": "P",
+              "line": [
+                "E",
+                "F"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "P",
+      "to": "F",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "P",
+      "to": "T",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "T",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "3"
+    },
+    {
+      "from": "P",
+      "to": "T",
+      "label": "2\\sqrt{2}"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "T",
+        "refs": [
+          "P",
+          "E"
+        ]
+      }
+    ]
+  },
+  "caption": "E를 원점, EF를 x축, EH를 y축, EA를 z축으로 잡으면 E(0, 0, 0), F(3, 0, 0), D(0, 3, 3)이고 DF를 1:2로 나누는 점은 P(1, 2, 2)이다. P에서 EF(x축)에 내린 수선의 발 T까지의 거리는 √(2²+2²)=2√2이다. 삼각형 PEF의 넓이는 (1/2)×3×2√2=3√2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "정육면체의 대각선 DF 위의 점 P와 모서리 EF의 두 끝 E, F를 이은 삼각형 PEF가 색칠되어 있다. P에서 EF로 내린 수선의 발 T까지의 점선과 직각 표시, 길이 2√2와 EF의 길이 3이 표시되어 있다.",
+  "newVisualInformation": [
+    "DF를 1:2로 나눈 점 P에서 모서리 EF에 내린 수선 PT=2√2와 삼각형 PEF를 보여 넓이 3√2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 한 모서리의 길이가 3인 정육면체에서 선분 $\\mathrm{DF}$를 $1:2$로 내분하는 점을 $\\mathrm{P}$라고 할 때, 삼각형 $\\mathrm{PEF}$의 넓이를 구하면? [4.5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q11.png\" class=\"exam-img\" alt=\"정육면체에서 D와 F를 잇는 선분의 내분점 P와 삼각형 PEF\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

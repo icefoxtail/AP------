@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "1/7"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      16
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "14",
+        "y": "0"
+      }
+    ],
+    "formula": "x/7 - 2"
+  },
+  "caption": "기울기 1/7 양수이므로 오른쪽 위. x절편 14/y절편 −2, 제2사분면 없다. 오른쪽 아래라는 ⑤가 틀리다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 다음 일차함수 $y=\\frac{1}{7}x-2$에 대한 설명으로 옳지 않은 것은? (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기1/7양수이므로오른쪽위. x절편14/y절편−2,제2사분면없다. 오른쪽아래라는⑤가틀리다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기1/7양수이므로오른쪽위. x절편14/y절편−2,제2사분면없다. 오른쪽아래라는⑤가틀리다."
+  ]
+}

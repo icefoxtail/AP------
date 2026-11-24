@@ -324,7 +324,11 @@ window.questionBank = [
       "qid": 6,
       "curriculum": "2015",
       "scope": "CURRENT"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "x=0에서 위쪽 수평선이 열린 점으로 끝나고 원점 닫힌 점에서 내려가는 직선이 시작되며, x=1과 x=2에서 선분의 열린 점과 따로 찍힌 닫힌 점이 있는 끊어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=0에서 왼쪽 극한은 1, 오른쪽 극한은 0이라 불연속이다(ㄱ 거짓). x=1에서는 곡선이 양쪽에서 높이 -1의 열린 점으로 가까워지므로 극한은 -1이고 닫힌 점 f(1)=-2와 다르지만 극한은 존재한다(ㄷ 거짓). x=2에서는 양쪽이 높이 0으로 가까워지지만 닫힌 점은 f(2)=1이라 불연속이다(ㄴ 참). 따라서 답은 ②이다. x=2의 눈금 글자는 생략했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,

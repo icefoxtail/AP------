@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8/3",
+          "-1/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "8/3"
+      },
+      {
+        "id": "P1",
+        "x": "8",
+        "y": "0"
+      }
+    ],
+    "formula": "8/3 - x/3"
+  },
+  "caption": "a8,b−15이면 두 식 모두 x+3y8을 나타낸다. 같은 직선 위 무수한 공통점, a−b23. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} x+3y=a \\\\ 5x-by=40 \\end{cases}$의 해가 무수히 많을 때, $a-b$의 값을 구하면? (단, $a,b$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a8,b−15이면두식모두x+3y8을나타낸다. 같은직선위무수한공통점, a−b23. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a8,b−15이면두식모두x+3y8을나타낸다. 같은직선위무수한공통점, a−b23. 정답⑤."
+  ]
+}

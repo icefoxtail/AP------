@@ -215,7 +215,11 @@ window.questionBank = [
     "sourceQid": 6,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "C가 세 자리 중 어느 자리를 받는지는 각각 1/3이다. C가 부전승 자리이면 결승 상대가 A 또는 B이므로 우승 확률은 (1/2)(2/5)+(1/2)(1/3)=11/30이고 경로 확률은 1/3×11/30=11/90이다. A나 B가 부전승 자리이면 C가 예선과 결승을 모두 이겨야 하므로 경로 확률이 각각 2/45이다. C가 우승하는 세 경로의 합은 19/90이고 이 중 한 경기만 한 경우는 11/90이다. 따라서 구하는 확률은 (11/90)÷(19/90)=11/19이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -553,7 +557,11 @@ window.questionBank = [
     "sourceQid": 15,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "A에서 B로 옮겨지는 흰 공의 수 W는 0, 1, 2이고(그림의 W=0, W=1, W=2) 확률은 6/15, 8/15, 1/15이다. B에는 공이 6개가 되며 흰 공이 1, 2, 3개이므로 B에서 흰 공을 뽑을 확률은 1/6, 2/6, 3/6이다. 흰 공이 뽑히는 세 경로(파란색)의 확률은 1/15, 8/45, 1/30이고 합은 5/18이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -769,7 +777,11 @@ window.questionBank = [
     "sourceQid": 21,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_BINDING_PENDING"
+    "metaProjectionStatus": "PROJECTION_BINDING_PENDING",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "자리별 경우의 수 칸 자리마다 고를 수 있는 경우의 수를 칸에 적어 곱의 법칙(또는 합의 법칙)을 보여 주는 그림이다.",
+    "solutionImageCaption": "A는 앞으로 4승, B는 앞으로 2승이 필요하다. 앞으로 5게임을 모두 한다고 가정하면 전체는 2⁵=32가지이다. A가 우승하는 경우는 처음 4게임을 모두 이기는 경우(5번째 게임은 무엇이든 2가지)와, 처음 4게임 중 B가 정확히 1번 이기고 5번째 게임을 A가 이기는 경우(4가지)이다. 칸의 2와 4를 더한 6가지이므로 A 우승 확률은 6/32=3/16, B는 13/16이다. 상금 640만원은 A 120만원, B 520만원으로 나누는 것이 공정하다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -799,7 +811,11 @@ window.questionBank = [
     "sourceQid": 22,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_BINDING_PENDING"
+    "metaProjectionStatus": "PROJECTION_BINDING_PENDING",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "전체 12개 중 10의 약수는 1, 2, 5, 10이므로 A의 원소는 4개이다. P(A∩B)=1/4에서 겹침은 3개이다. A와 B가 독립이면 1/4=(1/3)P(B)이므로 P(B)=3/4이고 B의 원소는 9개이다. 그림은 겹침 3개, A만 1개, B만 6개, 어느 쪽도 아닌 2개이다. B는 A의 4개 중 3개를 고르는 4C3=4가지와 A 밖의 8개 중 6개를 고르는 8C6=28가지의 곱 112가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

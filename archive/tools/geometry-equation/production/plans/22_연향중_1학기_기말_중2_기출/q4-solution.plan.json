@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "3/2"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "14",
+          "-3"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "분수식×12는 3x−2y8,소수식×100은 3x+y14. 두 직선 교점(4,2),a−b2. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} \\dfrac{x}{4}-\\dfrac{y}{6}=\\dfrac{2}{3} \\\\ 0.03x+0.01y=0.14 \\end{cases}$의 해가 $(a,b)$일 때, $a-b$의 값은? [4점] 보기: ['-2', '2', '-4', '4', '6']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "분수식×12는3x−2y8,소수식×100은3x+y14. 두 직선 교점(4,2),a−b2. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "분수식×12는3x−2y8,소수식×100은3x+y14. 두 직선 교점(4,2),a−b2. 정답②."
+  ]
+}

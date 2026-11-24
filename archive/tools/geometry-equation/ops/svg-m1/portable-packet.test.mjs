@@ -24,7 +24,9 @@ test('examData question alias and exact legacy image paths retain complete sourc
       for(const key of ['choices','answer','solution']) assert.equal(JSON.stringify(item[key]),JSON.stringify(q[key]));
     }
     const item=packet.items[0];assert.equal(item.questionImageSource,bank[0].image);
-    assert.equal(item.questionImage,path.join(path.dirname(path.join(root,source)),bank[0].image));
+    // the figure file is the Archive one (archive/<image>) or the exam-local legacy copy, whichever exists: an existing file at one of the two exact references
+    assert.ok([path.join(root,'archive',bank[0].image),path.join(path.dirname(path.join(root,source)),bank[0].image)].includes(item.questionImage),item.questionImage);
+    assert.ok(fs.statSync(item.questionImage).isFile());
     assert.equal(item.inlineImages[0].src,bank[0].image);assert.equal(item.inlineImages[0].path,item.questionImage);
     fs.writeFileSync(output,'sentinel');
     fs.writeFileSync(local,'window.questionBank=[{id:1,question:""}]');

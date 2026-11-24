@@ -100,7 +100,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 직선은 (-3,0)에서 (-1,2)로 올라가며 -1에서 열린 점으로 끝난다. x=-1에는 높이 1인 닫힌 점이 있고, 가운데 수평선은 높이 1로 0까지 이어진다. 0부터는 원점에서 오른쪽 아래로 내려가는 직선이 그려져 있다.",
+    "solutionImageCaption": "x가 0에 오른쪽에서 가까워질 때 그래프는 원점에서 시작하는 직선을 따라 0에 가까워진다. x가 -1에 왼쪽에서 가까워질 때 왼쪽 직선은 열린 점 (-1,2)로 다가가므로 극한은 2이다. 따라서 두 극한의 합은 0+2=2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -515,7 +519,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "왼쪽의 오른쪽 아래로 내려가는 직선과 오른쪽의 오르는 제곱근 곡선이 한 점 P에서 만나 이어지는 그래프이다.",
+    "solutionImageCaption": "x>1에서 분모가 0으로 가므로 분자 x+b도 x=1에서 0이어야 하고 b=-1이다. 그러면 (x-1)/(√(x+3)-2)=√(x+3)+2이고 x→1+에서 극한은 4이다. 직선 -3x+a는 x=1에서 4가 되어야 하므로 a=7이고, 곡선 y=√(x+3)+2와 같은 점 P(1,4)에서 이어진다. 따라서 a+b=6이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -565,7 +573,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 위의 두 점 A, B를 잇는 내려가는 직선 l과 점 A에서 접하는 올라가는 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "f(x)=ax²+bx+1에서 구간 [-1,0]의 평균변화율은 -a+b=-1이고, x=-1에서의 순간변화율은 f′(-1)=-2a+b=1이다. 두 식에서 a=-2, b=-3이다. 그림의 할선 l은 A(-1,2), B(0,1)을 잇는 기울기 -1의 직선이고 접선 m은 A에서 기울기 1이다. a+b=-5이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1159,7 +1171,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 위 -2부터 2까지 그린 그래프로, x=0 근처에서 두 직선이 원점으로 모이고 x=0의 값은 1인 점으로 따로 표시되어 있다. x=-1과 x=1에서 좌우 높이가 달라지고, x=1의 왼쪽은 높이 1, 오른쪽은 높이 0에서 시작한다.",
+    "solutionImageCaption": "f(x)g(x)=1이므로 g(x)=1/f(x)이다. x=1에서 f의 왼쪽 극한은 1, 오른쪽 극한은 0이므로 g의 극한은 존재하지 않아 (가)는 거짓이다. u가 1보다 작은 쪽에서 1에 가까워질 때 f(u)가 1에 가까워지므로 (나)는 참이고, x=-1과 x=1에서만 x²g(x)가 불연속이므로 (다)도 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

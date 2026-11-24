@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "formula": "x - 1"
+  },
+  "caption": "원본은 양의 기울기/음의 절편. −1/b>0에서 b<0, −c/b<0에서 c<0. 이 선은 b=c=−1의 대표 부호형이지 원문 실제 계수 지정 아님. 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-\\dfrac{1}{b}x-\\dfrac{c}{b}$의 그래프가 오른쪽 그림과 같을 때, $b, c$의 부호를 구하면? (단, $b\\ne0$) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은양의기울기/음의절편. −1/b>0에서b<0,−c/b<0에서c<0. 이선은b=c=−1의대표부호형이지원문실제계수지정아님. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은양의기울기/음의절편. −1/b>0에서b<0,−c/b<0에서c<0. 이선은b=c=−1의대표부호형이지원문실제계수지정아님. 정답③."
+  ]
+}

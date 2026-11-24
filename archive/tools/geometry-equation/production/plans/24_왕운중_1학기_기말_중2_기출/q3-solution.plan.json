@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "아래로 2이동하면기울기 3유지·절편 −2. a3,b−2의합 1,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=3x$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동하면 일차함수 $y=ax+b$의 그래프가 된다. 이때 $a+b$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "아래로2이동하면기울기3유지·절편−2. a3,b−2의합1,정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "아래로2이동하면기울기3유지·절편−2. a3,b−2의합1,정답①."
+  ]
+}

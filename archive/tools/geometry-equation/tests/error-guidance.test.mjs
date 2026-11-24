@@ -201,7 +201,11 @@ test('LAYOUT_INVENTORY_INCOMPLETE on a real crowded figure: the result file and 
   const [fix]=r.fix;
   assert.equal(fix.op,'choose');assert.ok(fix.labels.includes('A-coordinate'));
   const bySuggestion=Object.fromEntries(fix.options.map(option=>[option.suggestion,option.steps]));
-  assert.deepEqual(bySuggestion.PANEL_SPLIT,[{path:'coordinatePanel',op:'add',ids:['A','B','C','D']}]);
+  // which of the crowded points need the panel depends on the measured text widths: the step is one coordinatePanel add naming some of the crowded points that failed
+  assert.equal(bySuggestion.PANEL_SPLIT.length,1);
+  const [panelStep]=bySuggestion.PANEL_SPLIT,failedPoints=fix.labels.filter(label=>label.endsWith('-coordinate')).map(label=>label.slice(0,-'-coordinate'.length));
+  assert.deepEqual([panelStep.path,panelStep.op],['coordinatePanel','add']);
+  assert.ok(panelStep.ids.length>0&&panelStep.ids.every(id=>['A','B','C','D'].includes(id)&&failedPoints.includes(id)),JSON.stringify(panelStep.ids));
   assert.deepEqual(bySuggestion.VIEWPORT_EXPANSION[0].value,{width:720,height:600});
   for(const option of fix.options)assert.ok(PLACER_SUGGESTIONS.includes(option.suggestion));
   assert.deepEqual(validateFix(fix),[]);

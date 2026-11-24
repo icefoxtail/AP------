@@ -1,0 +1,378 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "BR",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "RC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "PR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "DP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cc"
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "P",
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "Q",
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "R",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "50",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "B",
+              "R"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 480
+  },
+  "caption": "한 변의 길이가 12인 정사각형 ABCD에 내접하는 원 위의 점 P에서 변 AB와 BC에 내린 수선의 발을 각각 Q, R라 하면 직사각형 PQBR이 생긴다. 이 직사각형의 둘레가 32, 넓이가 50임이 주어져 있다.",
+  "accessibilityDescription": "정사각형 ABCD 안에 내접원이 있고, 원 위의 점 P에서 변 AB와 BC에 내린 수선의 발 Q, R가 표시되어 있다. 정사각형의 한 변 12와 직사각형 PQBR의 넓이 50이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 변의 길이가 $12$인 정사각형 $ABCD$에 내접하는 원이 있다. 원 위의 점 $P$에서 선분 $AB$에 내린 수선의 발을 $Q$, 선분 $BC$에 내린 수선의 발을 $R$라 하자. 직사각형 $PQBR$의 둘레의 길이가 $32$, 넓이가 $50$일 때, 선분 $DP$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "정사각형 ABCD의 한 변의 길이는 12이다.",
+    "원은 정사각형 ABCD에 내접한다.",
+    "점 P는 원 위의 점이고 Q, R는 각각 P에서 AB, BC에 내린 수선의 발이다.",
+    "직사각형 PQBR의 둘레의 길이는 32, 넓이는 50이다."
+  ],
+  "newVisualInformation": [
+    "유사 문항의 정사각형 크기와 직사각형 PQBR의 둘레와 넓이에 맞춘 원과 수선의 발 배치를 보여 준다."
+  ]
+}

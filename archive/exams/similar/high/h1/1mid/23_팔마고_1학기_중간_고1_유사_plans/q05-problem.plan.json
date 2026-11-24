@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "-3x+6",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "a=1/2",
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "1/2",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "1/2",
+          "y": "9/2"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "9/2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S",
+          "points": [
+            "O",
+            "Q",
+            "P",
+            "R"
+          ],
+          "label": "S"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=-3x+6 위의 점 P에서 x축과 y축에 내린 수선의 발을 각각 Q, R이라 하고, 직사각형 PQOR과 그 넓이 S를 나타낸다.",
+  "accessibilityDescription": "좌표축, 기울기가 음수인 직선, 제1사분면의 점 P, 축 위의 점 Q와 R, 원점 O, 직사각형 PQOR과 그 안의 S가 보인다.",
+  "newVisualInformation": [
+    "직사각형 PQOR과 넓이 이름 S, 직선 위의 점 P를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 직선 $y=-3x+6$ 위의 점 $P(a, -3a+6)$에서 $x$축과 $y$축에 내린 수선의 발을 각각 $Q, R$이라 하자. 직사각형 $PQOR$의 넓이를 $S$라 할 때, $S$의 최댓값은? (단, $O$는 원점이고, $0 < a < 2$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

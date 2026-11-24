@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "x가 0에 오른쪽에서 가까워질 때 그래프는 원점에서 시작하는 직선을 따라 0에 가까워진다. x가 -1에 왼쪽에서 가까워질 때 왼쪽 직선은 열린 점 (-1,2)로 다가가므로 극한은 2이다. 따라서 두 극한의 합은 0+2=2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "왼쪽 직선은 (-3,0)에서 (-1,2)로 올라가며 -1에서 열린 점으로 끝난다. x=-1에는 높이 1인 닫힌 점이 있고, 가운데 수평선은 높이 1로 0까지 이어진다. 0부터는 원점에서 오른쪽 아래로 내려가는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "x=-1의 왼쪽 열린 점 (-1,2)와 닫힌 점 (-1,1)",
+    "x=0의 오른쪽 극한 0과 함수값 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수 $y=f(x)$의 그래프가 그림과 같다. [2.5점]\n<img src=\"assets/images/21_강남여고_2학기_중간_고2_수학II/q02.png\" alt=\"21_강남여고_2학기_중간_고2_수학II Q02\" />\n\n$\\lim_{x \\to 0+} f(x) + \\lim_{x \\to -1-} f(x)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

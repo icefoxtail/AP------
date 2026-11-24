@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": true
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true,
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "위 줄은 집합 A의 정수 1부터 7이고(x=1과 2≤x≤7), 가운데 줄은 집합 B의 정수 1부터 6이다(1≤x≤6). 아래 줄은 두 집합의 공통 원소 1, 2, 3, 4, 5, 6이며 합은 21이다. 집합은 정수만 뜻하므로 점으로 표시된 정수만 센다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "같은 수직선 위에 세 줄이 있다. 첫 줄은 A의 정수 1부터 7, 둘째 줄은 B의 정수 1부터 6, 셋째 줄은 두 줄에서 겹치는 정수 점이다.",
+  "newVisualInformation": [
+    "두 집합 A, B의 정수 원소를 같은 수직선에 놓아 공통 원소 1부터 6을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x \\gt 0$에서 다음 부등식\\n$$x^{x^2+6} \\le x^{9x-8}$$\\n을 만족하는 모든 정수 $x$들의 집합을 A라고 하고 연립부등식\\n$$\\begin{cases} 2^{3x-1} \\ge 4^x \\\\ 3(\\sqrt{3})^x \\ge (\\sqrt{9})^{x-2} \\end{cases}$$\\n을 만족하는 모든 정수 $x$들의 집합을 B라고 하자. 이때 $A \\cap B$의 모든 원소의 합은? (4.7점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

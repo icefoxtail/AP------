@@ -1,0 +1,238 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "만두2개의 값1000원 하나"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "1000"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "쌀20kg을2명이"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "10"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "자연수2의 약수1과2 둘 다"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "1",
+                "2"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "240쪽 중2쪽을"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "238"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "2보다 큰 홀수3과5 등"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "3",
+                "5"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "① 만두 2개의 값 1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다. ② 쌀 20kg을 2명이 나누면 10kg 하나. ③ 자연수 2의 약수 1과 2 둘 다 가능. ④ 240쪽 중2쪽을 읽으면 238쪽 하나. ⑤ 2보다 큰 홀수 3과 5 등 여러 값.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 $y$가 $x$의 함수가 아닌 것은? (정답 2개)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 5개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "① 만두2개의 값1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다. ② 쌀20kg을2명이 나누면10kg 하나. ③ 자연수2의 약수1과2 둘 다 가능. ④ 240쪽 중2쪽을 읽으면238쪽 하나. ⑤ 2보다 큰 홀수3과5 등 여러 값."
+  ]
+}

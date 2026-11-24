@@ -1,0 +1,75 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 2,
+            "height": 4
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "radius": "bottom"
+          },
+          {
+            "solid": "cone",
+            "height": true
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 3,
+            "height": 6
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "radius": "bottom"
+          },
+          {
+            "solid": "cone",
+            "height": true
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "밑면의 둘레의 비 2 : 3은 대응하는 길이의 비와 같으므로 길이의 비는 2 : 3이다. 부피의 비는 길이의 비의 세제곱인 8 : 27이므로 (나)의 부피는 40×(27/8)=135이다. 따라서 답은 ② 135이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 두 원뿔 (가), (나)는 서로 닮은 도형이고 밑면의 둘레의 길이의 비가 2:3일 때, (가)의 부피가 40일 때 (나)의 부피를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "밑면의 둘레의 비 2 : 3은 대응하는 길이의 비와 같으므로 길이의 비는 2 : 3이다. 부피의 비는 길이의 비의 세제곱인 8 : 27이므로 (나)의 부피는 40×(27/8)=135이다. 따라서 답은 ② 135이다."
+  ]
+}

@@ -249,7 +249,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 V자 그래프가 x=−1에서 꼭짓점을 이루고 그 점은 빈 점으로 표시되어 있으며, 좌우 두 직선 조각이 위로 뻗는다.",
+    "solutionImageCaption": "ㄱ은 (x+1)²/|x+1|=|x+1|이므로 x→−1에서 극한값이 0으로 존재한다. ㄴ은 1/|x−1|이 한없이 커져 극한값이 없고, ㄷ은 왼쪽에서 −3, 오른쪽에서 3으로 가서 극한값이 없다. 따라서 극한값이 존재하는 것은 ㄱ뿐이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -282,7 +286,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 그래프의 구간 [-1,3] 부분이며 양 끝점 A, B가 x축 위에 있고 수평 접선을 갖는 세 점 C, D, E가 표시되어 있다.",
+    "solutionImageCaption": "f(-1)=f(3)=0이므로 두 끝점 A(-1,0), B(3,0)의 높이가 같다. f′(x)=4x(x-1)(x-2)=0에서 그래프가 수평한 접선을 갖는 점이 C(0,-9), D(1,-8), E(2,-9)이고 x=0, 1, 2는 모두 (-1,3) 안에 있다. 합은 0+1+2=3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -348,7 +356,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "삼차곡선 위의 두 점 A, B를 잇는 할선 l과 그 할선에 평행하며 점 T에서 접하는 접선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "구간 [0,2]의 평균변화율은 (f(2)-f(0))/2=(2-(-4))/2=3이고 그림의 할선 l은 A(0,-4), B(2,2)를 지난다. f′(a)=3, 즉 -3a²+4a=0에서 a=0 또는 4/3이고 a=4/3인 점 T에서 접선 m이 l과 평행하다. 양수인 a는 4/3이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -418,7 +430,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "x=-1에서 끊어지고 x=1에서 이어지는 직선과 포물선 조각의 그래프이며 x=-1의 두 점 A, B와 x=1의 점 C가 표시되어 있다.",
+    "solutionImageCaption": "f는 x=1에서 좌극한, 우극한, 함숫값이 모두 1(점 C)이라 연속이고 x=-1에서는 좌극한 -1, 함숫값과 우극한 1(점 B)이라 불연속이므로 ㄱ은 참이다. {f(x)}²은 x=-1에서 좌극한 (-1)²=1, 함숫값 1이 같아 연속이어서 ㄴ도 참이다. (x-1)f(x)는 x=-1에서 좌극한 (-2)(-1)=2, 우극한 (-2)(1)=-2로 달라 불연속이므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -451,7 +467,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 x=0에서 끊어지는 f의 그래프(왼쪽은 닫힌 점, 오른쪽은 빈 점), 아래쪽에 x축 위에 놓인 포물선 g를 나란히 그린 그림이다.",
+    "solutionImageCaption": "예: a=2일 때의 그림이다. 위는 y=f(x)로 입력 0에서만 좌극한 -1, 우극한 1로 불연속이다. 아래는 y=g(x)=x²-2x+2로 x축 위에 있어 g(x)=0인 점이 없으므로 f(g(x))는 모든 x에서 연속이다. 이는 판별식 a²-4a<0, 즉 0<a<4일 때이며 정수 a는 1, 2, 3의 3개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 14,
@@ -692,7 +713,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "왼쪽의 위로 볼록한 V자 모양과 x=0에서 끊어진 오른쪽 아래로 볼록한 포물선, 수평선 y=-18을 나타낸 그래프이며 꼭짓점들이 표시되어 있다.",
+    "solutionImageCaption": "예: a=-12, b=18일 때의 그림이다. x<0에서 -|2x+18|은 A(-9,0)을 꼭대기로 하는 V자 모양이고 x=0의 왼쪽에서 점 (0,-18)로 다가가며, x≥0에서는 C(0,18)에서 시작해 꼭짓점 V(6,-18)을 지나는 포물선이다. 수평선 y=-18은 V에서 접하고 그보다 조금 위에서는 오른쪽 포물선과 2점에서 만나 해가 모두 4개이며, 조금 아래에서는 V자 모양과만 1점에서 만난다. 따라서 a+b=6이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

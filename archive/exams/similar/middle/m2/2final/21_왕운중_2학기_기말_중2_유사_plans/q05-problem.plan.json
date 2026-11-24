@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vOP",
+        "ownerSegment": "OP",
+        "text": "r",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOQ",
+        "ownerSegment": "OQ",
+        "text": "2r",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOR",
+        "ownerSegment": "OR",
+        "text": "3r",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "label": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P",
+              "steps": [
+                {
+                  "to": "P",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "MEDIUM",
+        "label": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "R",
+              "steps": [
+                {
+                  "to": "R",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "Q",
+              "steps": [
+                {
+                  "to": "Q",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "caption": "중심이 같은 세 동심원과 가장 안쪽 원의 내부인 영역 A, 가장 바깥쪽 원과 중간 원 사이의 고리 모양 영역 B를 나타낸 그림",
+  "accessibilityDescription": "중심이 같은 세 개의 원이 있고, 반지름 방향으로 그은 세 선분에 각각 r, 2r, 3r이 적혀 있다. 가장 안쪽 원의 내부가 영역 A, 가장 바깥쪽 원과 중간 원 사이의 고리 부분이 영역 B로 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름의 길이가 1 대 2 대 3인 세 동심원",
+    "가장 안쪽 원의 내부 영역 A",
+    "가운데 원과 바깥 원 사이의 고리 영역 B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심이 같은 세 동심원에서 반지름의 길이의 비가 $1 : 2 : 3$이다. 가장 안쪽 원의 내부를 영역 $A$, 가장 바깥쪽 원과 중간 원 사이의 고리 모양 영역을 영역 $B$라 할 때, 두 영역 $A, B$의 넓이의 비는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

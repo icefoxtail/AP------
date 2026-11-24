@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "-10"
+      },
+      {
+        "id": "P1",
+        "x": "5",
+        "y": "-18"
+      }
+    ],
+    "formula": "-2*x - 8"
+  },
+  "caption": "x1→5의 증가 4에 y−10→−18의 감소 8. 기울기 −2이므로 y−2x−8,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수의 그래프 중 $x$의 값이 $1$에서 $5$까지 증가할 때, $y$의 값이 $8$만큼 감소하는 것은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x1→5의 증가4에 y−10→−18의 감소8. 기울기−2이므로 y−2x−8,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x1→5의 증가4에 y−10→−18의 감소8. 기울기−2이므로 y−2x−8,정답②."
+  ]
+}

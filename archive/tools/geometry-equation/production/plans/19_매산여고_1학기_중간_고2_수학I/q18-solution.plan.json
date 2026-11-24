@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      7,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/8",
+          "6"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "dn",
+        "kind": "LOGARITHMIC",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/8",
+          "6"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a가 1보다 큰 로그곡선은 증가하고, 0보다 크고 1보다 작은 밑의 로그곡선은 감소한다. 두 곡선 모두 (1,0)을 지나고 y축이 점근선이다. 보기 번호를 차례로 계산하면 6−5+7−8+3−10=−7이다. 따라서 답은 −7이다.",
+  "accessibilityDescription": "파란 증가 로그곡선과 주황 감소 로그곡선이 y축에 가까워지며 그려져 있다. 두 곡선이 함께 지나는 점 P(1,0)가 표시되어 있다.",
+  "newVisualInformation": [
+    "밑이 2인 증가 로그곡선과 밑이 1/2인 감소 로그곡선",
+    "공통점 (1,0)",
+    "y축 점근선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형1] $y=\\log_a x$ ($a>0,a\\ne1$)의 성질을 보기 번호로 골라 $\\text{㉠}-\\text{㉡}+\\text{㉢}-\\text{㉣}+\\text{㉤}-\\text{㉥}$을 계산하시오. [5점]<br>㉠ 정의역, ㉡ 치역, ㉢ $a>1$일 때 변화, ㉣ $0<a<1$일 때 변화, ㉤ 그래프가 지나는 점, ㉥ 점근선이 되는 축.<br>① $(0,0)$ ② $(0,1)$ ③ $(1,0)$ ④ $(1,1)$ ⑤ 실수 전체 ⑥ 양의 실수 전체 ⑦ 증가 ⑧ 감소 ⑨ $x$축 ⑩ $y$축",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -623,7 +623,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 높이를 전체 삼각형 높이의 t배로 놓은 t=1/3 배치 예시이며 최적 배치를 뜻하지 않는다. 윗변 위의 작은 삼각형과 원래 삼각형의 닮음으로 가로 5(1-t), 세로 12t/5를 연결한다.",
+    "solutionImageCaption": "직사각형 높이를 전체 삼각형 높이의 t배로 놓은 t=1/3 배치 예시이며 최적 배치를 뜻하지 않는다. 윗변 위의 작은 삼각형과 원래 삼각형의 닮음으로 가로 5(1-t), 세로 12t/5를 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

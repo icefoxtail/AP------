@@ -1,0 +1,48 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "3",
+      "4",
+      "2"
+    ],
+    "phasePi": "3/2",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/4",
+        "1/2",
+        "3/4"
+      ],
+      "y": [
+        "-1",
+        "5"
+      ]
+    }
+  },
+  "caption": "사인 함수 그래프의 일부가 최고점의 높이 5와 최저점의 높이 -1을 오가며, 이웃한 두 최고점의 x좌표가 각각 파이/4와 3파이/4인 모습을 보여 준다.",
+  "accessibilityDescription": "가로축에는 파이/4, 파이/2, 3파이/4가, 세로축에는 -1과 5가 눈금으로 표시되어 있다. 곡선은 높이 5의 봉우리를 파이/4와 3파이/4에서 이루고, 높이 -1의 골을 0, 파이/2, 파이에서 이룬다. 그래프는 파이에서 끊겨 그려진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = a\\sin(bx + c) + d$ ($a > 0$, $b > 0$, $\\pi < c < 2\\pi$)의 최댓값이 $5$, 최솟값이 $-1$이고, 이 함수의 그래프에서 인접한 두 최댓값을 갖는 점의 $x$좌표가 각각 $\\dfrac{\\pi}{4}$, $\\dfrac{3\\pi}{4}$일 때, $\\dfrac{abcd}{2\\pi}$의 값은? (5.1점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "사인 곡선의 최고점 높이 5와 최저점 높이 -1, 그리고 이웃한 두 최고점의 x좌표 파이/4, 3파이/4가 눈금으로 드러난다."
+  ]
+}

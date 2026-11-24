@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "자연수",
+        "points": [
+          {
+            "id": "A",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "2x−4≤8−x에서 3x≤12이므로 x≤4이다. 수직선의 해집합 안에 있는 자연수는 1, 2, 3, 4이고 5는 해가 아니어서 ×로 표시된다. 따라서 해의 개수는 4개이고 답은 ⑤이다.",
+  "newVisualInformation": [
+    "해집합 x≤4 안에 드는 자연수 1, 2, 3, 4와 바깥의 5를 점으로 구분해 해가 4개임을 확인"
+  ],
+  "accessibilityDescription": "수직선에 4를 포함해 왼쪽으로 뻗는 해집합이 칠해져 있고 그 아래 점 줄에 자연수 1, 2, 3, 4는 해 안의 점으로, 5는 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $2x-4 \\le 8-x$를 만족시키는 자연수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

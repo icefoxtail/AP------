@@ -120,44 +120,66 @@ for (const grade of GRADES) {
       assert.deepEqual(saved.snapshot.questions.slice(0, k).map(pick), paper.snapshot.questions.slice(0, k).map(pick), `${grade}: untouched questions changed`);
     });
 
-    // e3. a snapshot question changed on its way to the Worker is never saved silently
-    await t.test(`${grade}: a changed snapshot question is refused`, async () => {
-      const tamper = async (mutate, expected) => {
+    // e3. content that differs from the current catalog is still refused by the Worker (tampering, a stale screen)
+    await t.test(`${grade}: a question that differs from the catalog is refused`, async () => {
+      const tamper = async (mutate) => {
         const bad = createWorkspace(server);
         await bad.ws.openSavedPaperRevision(paperId);
-        mutate(bad.ws.state.derivedBaseQuestions);
+        const papers = await bad.ws.prepare();
+        mutate(papers[0].questions);
         const rowsBefore = (await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n;
         await bad.ws.savePapers();
         assert.notEqual(bad.ws.state.saveResultState, "SAVED", "a changed question must not be saved");
-        assert.match(bad.ws.state.saveError, expected);
+        assert.match(bad.ws.state.saveError, /fingerprint/);
+        assert.equal(bad.wire.log.find((l) => l.method === "POST").status, 409);
         assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, rowsBefore, "nothing was stored");
-        return bad;
       };
-      // text changed next to an embedded image: the screen refuses before anything is sent
-      const textIndex = paper.snapshot.questions.findIndex((q) => ["content", "solution"].some((f) => typeof q[f] === "string" && q[f].includes("data:image/")));
-      if (textIndex >= 0) {
-        const field = ["content", "solution"].find((f) => typeof paper.snapshot.questions[textIndex][f] === "string" && paper.snapshot.questions[textIndex][f].includes("data:image/"));
-        const blocked = await tamper((base) => { base[textIndex][field] = String(base[textIndex][field]) + " 바뀐 문장"; }, /원본 문항이 바뀌어/);
-        assert.equal(blocked.wire.posts.length, 0, "nothing was sent");
-      }
-      // problem text changed on a question whose text has no embedded image: the Worker's fingerprint check refuses
-      const plainIndex = paper.snapshot.questions.findIndex((q) => typeof q.content === "string" && !q.content.includes("data:image/"));
-      if (plainIndex >= 0) {
-        const refusedText = await tamper((base) => { base[plainIndex].content = String(base[plainIndex].content) + " 바뀐 문장"; }, /fingerprint/);
-        assert.equal(refusedText.wire.log.find((l) => l.method === "POST").status, 409);
-      }
-      // answer changed: the Worker's fingerprint check refuses
-      const refused = await tamper((base) => { base[0].answer = String(base[0].answer) + "9"; }, /fingerprint/);
-      assert.equal(refused.wire.log.find((l) => l.method === "POST").status, 409);
+      const plainIndex = paper.snapshot.questions.findIndex((q) => typeof q.content === "string");
+      await tamper((questions) => { questions[plainIndex].content = String(questions[plainIndex].content) + " 바뀐 문장"; });
+      await tamper((questions) => { questions[0].answer = String(questions[0].answer) + "9"; });
     });
 
-    // f. one question's source changed after saving: the revision must not open silently with the old content
-    const changed = createWorkspace(server);
-    const uid = sentUids[0];
-    changed.ws.state.byUid.set(uid, { ...changed.ws.state.byUid.get(uid), sourceFingerprint: "0".repeat(64) });
-    await assert.rejects(() => changed.ws.openSavedPaperRevision(paperId), /원본 문항이 바뀌어/, `${grade}: a changed source must block the revision with a Korean notice`);
-    assert.equal(changed.ws.state.derivationSource, null, "nothing was opened");
-    assert.equal(changed.ws.state.selected.length, 0, "no old content was put on the screen");
+    // f. 2026-11-24: a question fixed after the save never blocks the revision (it opens with the current content and a one-line notice);
+    // a question that left the archive is the only one left out, and its number is told. The revision saves in both cases.
+    await t.test(`${grade}: a fixed or vanished question never blocks the revision`, async () => {
+      const raw = structuredClone(paper);
+      const fixed = createWorkspace(server);
+      const old = structuredClone(raw);
+      old.snapshot.questions[0].sourceFingerprint = "0".repeat(64);
+      fixed.ws.applySavedPaperRevision(old);
+      assert.deepEqual(fixed.ws.state.selected.map((r) => r.questionUid), sentUids, `${grade}: a fixed question must still open`);
+      assert.match(fixed.ws.state.composeNotice, /문항 1개가 저장 뒤 고쳐져 최신 내용으로 열었습니다/);
+      await fixed.ws.savePapers();
+      assert.equal(fixed.ws.state.saveResultState, "SAVED", sendFailure(fixed.ws, grade + " (fixed question)"));
+      const savedFixed = (await (await api("/archive-saved-papers/" + fixed.ws.state.savedPaperIds[0])).json()).paper;
+      assert.deepEqual(savedFixed.snapshot.questions.map(pick), paper.snapshot.questions.map(pick), `${grade}: the revision holds the current content`);
+
+      const gone = createWorkspace(server);
+      const ghostPaper = structuredClone(raw);
+      const ghostUid = "qid_v1_" + "0".repeat(64);
+      ghostPaper.snapshot.questions[1].questionUid = ghostUid;
+      ghostPaper.snapshot.meta.questionUids[1] = ghostUid;
+      gone.ws.applySavedPaperRevision(ghostPaper);
+      assert.deepEqual(gone.ws.state.selected.map((r) => r.questionUid), sentUids.filter((_, index) => index !== 1), `${grade}: only the vanished question is left out`);
+      assert.match(gone.ws.state.composeNotice, /2번 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다/);
+      await gone.ws.savePapers();
+      assert.equal(gone.ws.state.saveResultState, "SAVED", sendFailure(gone.ws, grade + " (vanished question)"));
+      const savedGone = (await (await api("/archive-saved-papers/" + gone.ws.state.savedPaperIds[0])).json()).paper;
+      assert.deepEqual(savedGone.snapshot.questions.map((q) => q.questionUid), sentUids.filter((_, index) => index !== 1));
+
+      // The unit of a question changed after the save, so the saved range no longer names the unit key the real check (general mode) reads:
+      // the revision must still open, pass review (no HARD_BLOCK / row mismatch) and save. An empty raw key in the range used to hide this.
+      const reclassified = createWorkspace(server);
+      const moved = structuredClone(raw);
+      moved.snapshot.selectionFilters.primaryPaths = [core.pathKey({}, 4)];
+      reclassified.ws.applySavedPaperRevision(moved);
+      reclassified.ws.state.ackWarnings = true;
+      assert.deepEqual(reclassified.ws.review().hardFailures, [], `${grade}: a question whose unit changed after the save must not block the revision`);
+      const preview = await reclassified.ws.prepare();
+      assert.equal(preview[0].questions.length, sentUids.length, `${grade}: the preview is built`);
+      await reclassified.ws.savePapers();
+      assert.equal(reclassified.ws.state.saveResultState, "SAVED", sendFailure(reclassified.ws, grade + " (reclassified question)"));
+    });
 
     // g. assign the saved paper to a class: the assignment keeps the saved order
     const sourceGrades = [...new Set(paper.snapshot.questions.map((q) => q.sourceGrade))].sort((a, b) => core.gradeRank(a) - core.gradeRank(b));
@@ -462,9 +484,9 @@ for (const grade of ["중1", "고1", "고2"]) {
 
 // A draft keeps only {questionUid, rowId, sourceFingerprint} per question (no exam file) and the grade of its filters. Restoring it ("이전 작업 복원"),
 // or importing a work file, on a screen that holds the shards of ANOTHER grade must find the questions: the grade hint first, then every shard;
-// "현재 아카이브에 없는 문항" is only said after all shards are in.
+// "not in the archive" is only said after all shards are in.
 for (const grade of ["중1", "고1"]) {
-  test(`${grade} screen: a draft made in another grade is restored (grade hint, and every shard when the hint is missing); a missing question is refused only after all shards`, async () => {
+  test(`${grade} screen: a draft made in another grade is restored (grade hint, and every shard when the hint is missing); a missing question is left out (never refuses the draft) only after all shards`, async () => {
     const files = await shardFiles();
     const otherGrade = grade === "중1" ? "고2" : "중1";
     const otherSample = await sampleFor(otherGrade);
@@ -507,7 +529,10 @@ for (const grade of ["중1", "고1"]) {
     const ghost = { ...made, selected: [...made.selected, { ...made.selected[0], questionUid: "qid_v1_" + "0".repeat(64) }] };
     await ws.shardGlue.ensureShardFiles(ghost.selected, ghost.sources, { grades: [ghost.filters.grade] });
     assert.equal(ws.state.catalog.complete, true);
-    assert.throws(() => ws.applyDraft(ghost), /현재 아카이브에 없는 문항/);
+    // 2026-11-24: it no longer refuses the whole draft; only that question is left out, with its number told.
+    ws.applyDraft(ghost);
+    assert.deepEqual(ws.state.selected.map((r) => r.questionUid), wanted);
+    assert.match(ws.state.composeNotice, new RegExp(`${wanted.length + 1}번 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다`));
   });
 }
 

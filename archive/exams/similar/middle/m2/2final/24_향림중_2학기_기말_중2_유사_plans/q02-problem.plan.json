@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 점 B, C, E가 한 직선 위에 있고 선분 AC와 선분 DE가 평행인 그림이다. 삼각형 ABC의 넓이는 18제곱센티미터, 삼각형 ACD의 넓이는 12제곱센티미터로 주어져 있다.",
+  "accessibilityDescription": "점 A, B, C, D, E가 있고 점 B, C, E는 한 직선 위에 있다. 선분 AC와 선분 DE에 평행 표시가 있으며, 삼각형 ABC 안에 18제곱센티미터, 삼각형 ACD 안에 12제곱센티미터가 적혀 있다. 삼각형 ABE의 넓이는 적혀 있지 않다.",
+  "newVisualInformation": [
+    "세 점 B, C, E가 한 직선 위에 있음",
+    "선분 AC와 DE가 평행",
+    "삼각형 ABC의 넓이 18제곱센티미터",
+    "삼각형 ACD의 넓이 12제곱센티미터"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "E",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pACDE",
+        "count": 1,
+        "segments": [
+          "sCA",
+          "sDE"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "rABC",
+        "fill": "LIGHT",
+        "label": "18",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rACD",
+        "fill": "MEDIUM",
+        "label": "12",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 점 $B, C, E$는 한 직선 위에 있고 $\\overline{AC} \\parallel \\overline{DE}$이다. $\\triangle ABC$의 넓이가 $18\\rm\\,cm^2$이고 $\\triangle ACD$의 넓이가 $12\\rm\\,cm^2$일 때, 삼각형 $ABE$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

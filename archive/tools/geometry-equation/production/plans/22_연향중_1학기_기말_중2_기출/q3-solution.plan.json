@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-7/2",
+          "3/2"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1/7",
+          "y": "-23/7",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "㉠×3과㉡×2는 각 원래 직선과 같은 해집합이다. x계수를 6으로 맞춰 빼면 7y=−23. 교점(1/7,−23/7)은 해 확인용이며 x소거 계산은③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가감법을 이용하여 연립방정식 $\\begin{cases} 2x+y=-3 \\quad \\cdots \\text{㉠} \\\\ 3x-2y=7 \\quad \\cdots \\text{㉡} \\end{cases}$을 풀 때, 다음 중 $x$를 없애기 위하여 필요한 식은? [3점] 보기: ['㉠$\\\\times2$ - ㉡', '㉠$\\\\times2$ + ㉡', '㉠$\\\\times3$ - ㉡$\\\\times2$', '㉠$\\\\times3$ + ㉡$\\\\times2$', '㉠$\\\\times2$ - ㉡$\\\\times3$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "㉠×3과㉡×2는 각 원래 직선과 같은 해집합이다. x계수를6으로 맞춰 빼면7y=−23. 교점(1/7,−23/7)은 해 확인용이며 x소거 계산은③이다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "㉠×3과㉡×2는 각 원래 직선과 같은 해집합이다. x계수를6으로 맞춰 빼면7y=−23. 교점(1/7,−23/7)은 해 확인용이며 x소거 계산은③이다."
+  ]
+}

@@ -359,7 +359,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "구간 2에서 4까지 오른쪽 위로 오르는 제곱근 곡선 f와 쌍곡선의 한 가지 g가 한 좌표평면에 그려져 있고, f 위의 점 B와 g 위의 점 C가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=√(2x-4)는 [2,4]에서 증가하므로 최댓값은 점 B(4,2)에서 M=2이다. g(x)=(3x-3)/(x+1)의 도함수 6/(x+1)²이 양수이므로 g도 [2,4]에서 증가하고 최솟값은 점 C(2,1)에서 m=1이다. 따라서 M+m=3이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 9,
@@ -851,7 +855,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x축을 따라 왼쪽에는 아래로 볼록한 이차곡선이 점 A에서 x축과 만나 꼭짓점을 지나 점 P에서 끝나고, 오른쪽에는 위로 볼록한 이차곡선이 x=3에서 열린 점으로 시작해 점 B에서 x축과 만난다. 두 조각은 x=3에서 세로로 크게 끊어져 있다.",
+    "solutionImageCaption": "f(1)=0, f(a)=0이고 x=3에서 f의 왼쪽 값과 오른쪽 극한이 서로 달라 h가 연속이려면 g(1)=g(a)=g(3)=0이다. 따라서 최고차항의 계수가 1인 삼차함수는 g(x)=(x−1)(x−a)(x−3)이다. 약분하면 h(1)=−2(a−1)/3, h(a)=−(a−1)(a−3)/a이고 h(1)=h(a)에서 a=9, h(1)=−16/3이다. 따라서 3h(1)=−16이므로 답은 −16이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 20,

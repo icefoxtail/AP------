@@ -405,7 +405,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 f와 주황 지수곡선 g가 그려져 있다. 곡선 g는 점 P(0,1)을 지나고 오른쪽으로 갈수록 위로 올라간다.",
+    "solutionImageCaption": "그림에서 일차함수 f(x)=x+1이므로 1−f(x)=−x이다. 따라서 (1/2)의 (1−f(x))제곱은 2의 x제곱이 된다. 이 그래프는 증가하고 (0,1)을 지나며 x축을 점근선으로 갖는다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -464,7 +468,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "−1에서 1까지 오른쪽 위로 올라가는 지수 곡선이 그려져 있고 왼쪽 끝 A와 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=2ˣ⁺²·3⁻ˣ⁺¹은 12·(4/3)ˣ로 정리된다. 밑 4/3이 1보다 크므로 −1≤x≤1에서 증가한다. 그림의 왼쪽 끝 A(−1, 9)가 최솟값 m=9이고 오른쪽 끝 B(1, 16)이 최댓값 M=16이다. 따라서 M+m=25이고 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -525,7 +533,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f와 주황, 초록, 분홍의 로그곡선 세 개가 그려져 있다. 경계점 P(−1,0)와 Q(0,−2)가 표시되어 있다.",
+    "solutionImageCaption": "제3사분면에서 첫 곡선은 x가 −1보다 크고 0보다 작은 범위에 있다. t=3의 (x+1)제곱으로 두면 t는 1보다 크고 3보다 작으며, 교점 조건에서 a=3의 (2−t)제곱−로그₃t+1이다. 이 값은 t가 커질수록 4에서 1/3로 감소하므로 a는 1/3보다 크고 4보다 작다. 따라서 α+β=13/3이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -587,7 +599,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "절댓값 지수 곡선이 왼쪽에서 내려와 x축에 닿는 꺾이는 점에서 다시 올라가 y=8에 가까워지며, 가로선 y=4와 두 점에서 만난다.",
+    "solutionImageCaption": "x=4에서 y=log(1/3)(3x−p)가 정의되려면 12−p>0이므로 p<12이다. 그림은 p=8일 때 y=|3^(−x−1)−8|의 그래프로, t=3^(−x−1)>0이라 두면 |t−p|=4에서 y=4와 두 점에서 만나려면 두 해 t=p±4가 모두 양수여야 하므로 p>4이다(꺾이는 점의 x좌표는 약 −2.9). 따라서 4<p<12이고 정수 p는 5, 6, 7, 8, 9, 10, 11의 7개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -648,7 +664,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f가 0과 2를 오가며 반복되고, 주황색 로그곡선 g가 오른쪽으로 갈수록 완만하게 올라간다. x축에는 1, 2, 3, 4 눈금이, y축에는 2 눈금이 보인다.",
+    "solutionImageCaption": "f는 정수 k에서 k가 짝수이면 0, 홀수이면 2이고, 각 단위구간에서 0과 2 사이를 단조롭게 오간다. n=4일 때 로그의 밑은 12이고, 이 로그 그래프를 g라 하면 g의 값이 2가 되는 x는 144이다. 1부터 144까지의 143개 단위구간마다 두 그래프가 한 번씩 만나므로 교점은 143개이고 n=4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -709,7 +729,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "단위원과 x축 위의 시초선이 있고 x축의 위쪽과 아래쪽에 대칭인 두 동경이 있다. 각각 α와 −α의 각이 표시되어 있다.",
+    "solutionImageCaption": "예: 동경 OP와 OP'(그림의 점 Q)가 x축에 대하여 대칭이다. OP의 기준각은 α°이고 OP'의 기준각은 −α°이다. 따라서 일반각은 ∠XOP=360°×l+α°, ∠XOP'=360°×m−α°이고 합은 360°×(l+m)이다. 따라서 (가) α°, (나) −α°, (다) l+m이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1004,7 +1028,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "0에서 2π까지 한 주기의 사인 곡선과 가로선이 위쪽 봉우리 부분에서 두 점에서 만난다. 가로축에 π/4, 3π/4, 2π 눈금이 표시되어 있다.",
+    "solutionImageCaption": "사인 곡선과 가로선 y=√2/2는 0≤x≤2π에서 두 점에서 만나고 그 x좌표는 α=π/4, β=3π/4이다. 두 점은 직선 x=π/2에 대하여 대칭이다. 따라서 β−α=π/2이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1063,7 +1091,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 2π까지의 사인 그래프와 수평선 y=−1/2이 두 점에서 만나고, 그래프의 봉우리와 골짜기에 점이 표시되어 있다.",
+    "solutionImageCaption": "사인(π−x)=사인 x이므로 부등식은 2(1−사인²x)+3사인 x≤0, 즉 (2사인 x+1)(사인 x−2)≥0이다. −1≤사인 x≤1이므로 사인 x≤−1/2이고, 0≤x<2π에서 해는 7π/6≤x≤11π/6이다. 최댓값과 최솟값의 합은 11π/6+7π/6=3π이므로 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1291,6 +1323,10 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f와 주황색 로그곡선 g, 가로선 y=3이 보이고, 가로선 위에 점 A, 중점 M, 점 B가 왼쪽부터 놓여 있다. 세 점의 좌표가 각각 표시되어 있다.",
+    "solutionImageCaption": "f의 역함수는 밑이 3인 로그를 오른쪽으로 2, 위로 1만큼 옮긴 그래프이다. 이를 왼쪽으로 2, 위로 a만큼 옮기면 g는 밑이 3인 로그를 위로 1+a만큼 옮긴 그래프가 된다. y=3과 만나는 점 A(1,3), B(3의 2−a제곱,3)의 중점 M이 (14,3)이므로 3의 2−a제곱=27이고 a=−1이다. 따라서 답은 −1이다.",
+    "solutionImageSize": "full"
   }
 ];

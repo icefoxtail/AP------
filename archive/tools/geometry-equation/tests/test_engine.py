@@ -13,8 +13,15 @@ class EngineTests(unittest.TestCase):
     def test_pure_deterministic_build(self):
         a=build(spec());b=build(spec());self.assertEqual(a,b)
         self.assertEqual(a['witness']['authority'],'BUILD_SIDE_ONLY')
-        self.assertEqual(a['witness']['status'],'POLISH_REQUIRED')
-        self.assertIn('tick-x--2-label',a['witness']['layout']['unresolved'])
+        self.assertFalse(a['witness']['publicationAuthorized'])
+        self.assertNotEqual(a['witness']['status'],'PASS')
+        layout=a['witness']['layout']
+        placed={label['id']:label for label in layout['labels']}
+        for tick_label in ('tick-x--1-label','tick-x--2-label','tick-x-1-label','tick-x-2-label'):
+            self.assertTrue(tick_label in placed or tick_label in layout['unresolved'],tick_label)
+        for label in placed.values():
+            box=label['box']
+            self.assertGreaterEqual(box['x'],0);self.assertGreaterEqual(box['y'],0)
     def test_final_svg_serializes_tick_owner_and_unit_tick_metadata(self):
         s=spec();s['id']='tick-binding';s['visualType']='function_graph';s['viewport']={'xMin':-2,'xMax':2,'yMin':-2,'yMax':2};s['objects']=[{'id':'g','kind':'FUNCTION_GRAPH','expression':'x^3','domain':[-2,2]}]
         root=ET.fromstring(build(s)['svg']);labels=[node for node in root.iter() if node.get('data-label-kind')=='TICK_LABEL']

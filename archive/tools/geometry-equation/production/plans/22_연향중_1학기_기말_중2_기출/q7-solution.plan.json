@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "3/2"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "10/3",
+          "2/3"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "7",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 A의 승리횟수 x,세로 B의 승리횟수 y.3x−2y5와 −2x+3y10의 교점(7,8),B8회. 실제횟수는 비음수정수이며 선은 조건의 보조 연장이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A, B 두 사람이 가위바위보를 하여 이긴 사람은 3계단씩 올라가고, 진 사람은 2계단씩 내려가기로 하였다. 그 결과 A는 처음의 위치보다 5계단을 올라가고, B는 10계단을 올라가 있었다. 이때, B가 이긴 횟수는? (단, 비기는 경우는 없다.) [5점] 보기: ['11회', '10회', '9회', '8회', '7회']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로 A의 승리횟수 x,세로 B의 승리횟수 y.3x−2y5와−2x+3y10의 교점(7,8),B8회. 실제횟수는 비음수정수이며 선은 조건의 보조 연장이다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로 A의 승리횟수 x,세로 B의 승리횟수 y.3x−2y5와−2x+3y10의 교점(7,8),B8회. 실제횟수는 비음수정수이며 선은 조건의 보조 연장이다."
+  ]
+}

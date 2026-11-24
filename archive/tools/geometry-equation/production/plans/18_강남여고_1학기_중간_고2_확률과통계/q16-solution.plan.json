@@ -1,0 +1,27 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "NONE",
+    "highlight": {
+      "expr": "a+b",
+      "in": [
+        10,
+        11,
+        12
+      ]
+    }
+  },
+  "caption": "두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 합이 10 이상인 칸을 칠했다. (4, 6), (5, 5), (6, 4), (5, 6), (6, 5), (6, 6)의 6칸이고 전체는 36칸이다. 따라서 확률은 6/36=1/6이고 답은 ①이다.",
+  "newVisualInformation": [
+    "합이 10 이상인 칸이 모서리의 여섯 칸임이 보여 유리한 경우 6가지가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던질 때 나오는 눈의 수를 차례로 $a, b$라 하자. $a+b \\ge 10$이 성립할 확률은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

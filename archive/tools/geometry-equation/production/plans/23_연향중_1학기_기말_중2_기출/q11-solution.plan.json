@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 PNG는 내리막/양의 절편으로 a,b 같은 부호, c 반대. 새 식 y=−(a/c)x+a/b는 기울기와 절편 모두 양수로 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by+c=0$의 그래프가 오른쪽 그림과 같을 때, 다음 중 일차방정식 $abx+bcy-ca=0$의 그래프로 옳은 것은? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG는내리막/양의절편으로a,b같은부호,c반대. 새식y=−(a/c)x+a/b는기울기와절편모두양수로⑤. 두선은a1,b1,c−1의부호대표예시이며원본계수를확정하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG는내리막/양의절편으로a,b같은부호,c반대. 새식y=−(a/c)x+a/b는기울기와절편모두양수로⑤."
+  ]
+}

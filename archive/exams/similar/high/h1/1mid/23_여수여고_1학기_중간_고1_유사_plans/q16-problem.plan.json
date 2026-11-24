@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "25/4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3"
+      ],
+      "y": []
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/2"
+    }
+  },
+  "caption": "x=-2와 x=3에서 이어지는 세 개의 포물선 조각으로 이루어진 함수 y=f(x)의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $x < -2$ 또는 $x > 3$일 때 $f(x)=x^2-x-6$이고, $-2 \\le x \\le 3$일 때 $f(x)=-x^2+x+6$인 함수 $f(x)$의 그래프가 있다. 직선 $y=x+k$가 함수 $y=f(x)$의 그래프와 서로 다른 네 점에서 만나도록 하는 정수 $k$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The graph is defined piecewise with breakpoints at x=-2 and x=3."
+  ],
+  "newVisualInformation": [
+    "가운데 구간에서 위로 볼록하고 바깥 구간에서 아래로 볼록한 포물선 조각이 이어져 있다."
+  ],
+  "accessibilityDescription": "가로축의 -2와 3 부근에서 세 개의 포물선 조각이 이어지며, 가운데 조각은 위로 볼록하고 양 끝 조각은 아래로 볼록하다."
+}

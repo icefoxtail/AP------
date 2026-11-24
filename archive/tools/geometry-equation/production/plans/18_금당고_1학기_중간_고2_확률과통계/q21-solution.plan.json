@@ -1,0 +1,104 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "hiddenPointNames": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "line",
+      "refs": [
+        "Q1",
+        "Q3"
+      ]
+    }
+  ],
+  "caption": "세 점이 한 직선 위에 있으려면 c(a−1)=b(b−1)이어야 한다. 예를 들어 (a, b, c)=(3, 2, 1)이면 세 점 (3, 2), (2, 1), (1, 0)이 직선 y=x−1 위에 있다. b=1, 2, 3, 4인 경우를 세고 앞의 두 점이 같은 경우를 빼면 10+1+3+3=17이다. 따라서 답은 17이다.",
+  "accessibilityDescription": "좌표평면에 기울기 1인 직선의 일부가 그려져 있고, 그 위에 (1, 0), (2, 1), (3, 2) 세 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "기울기 1인 직선 위에 놓인 세 점 (1, 0), (2, 1), (3, 2)",
+    "공선 조건을 만족하는 예 (a, b, c)=(3, 2, 1)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 자연수 $a, b, c$에 대하여 좌표평면의 서로 다른 세 점 $(a, b), (b, c), (1, 0)$이 한 직선 위에 있다. 이때 $a+b+c \\le 13$을 만족하는 순서쌍 $(a, b, c)$의 개수를 구하여라. (10점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

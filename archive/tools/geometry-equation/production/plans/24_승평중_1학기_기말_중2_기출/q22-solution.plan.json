@@ -1,0 +1,166 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "전체 삼각형"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -62,
+            4,
+            -1,
+            5
+          ],
+          "axisScale": {
+            "x": 1,
+            "y": 10
+          },
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "1/29"
+              ],
+              "domain": [
+                "-60",
+                "2"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "-1"
+              ],
+              "domain": [
+                "-2",
+                "2"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "A",
+                "x": "0",
+                "y": "2"
+              },
+              {
+                "id": "B",
+                "x": "-58",
+                "y": "0",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "C",
+                "x": "2",
+                "y": "0"
+              }
+            ]
+          }
+        },
+        "pointNames": {
+          "A": "A",
+          "C": "C"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "A와 C 부근"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -2,
+            3,
+            -1,
+            4
+          ],
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "1/29"
+              ],
+              "domain": [
+                "-2",
+                "3"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "-1"
+              ],
+              "domain": [
+                "-2",
+                "3"
+              ],
+              "color": "WARM"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "A",
+                "x": "0",
+                "y": "2",
+                "coordinates": true
+              },
+              {
+                "id": "C",
+                "x": "2",
+                "y": "0",
+                "coordinates": true
+              }
+            ]
+          }
+        },
+        "pointNames": {
+          "A": "A",
+          "C": "C"
+        }
+      }
+    }
+  ],
+  "caption": "두 직선은 y축 위의 점 A(0,2)에서 만나고, y=−x+2의 x절편은 C(2,0)이다. y=ax+2의 x절편은 B(−2/a,0)이므로 밑변은 2+2/a, 높이는 2이다. 넓이 60에서 a=1/29, b=2이다. 따라서 ab=2/29이다.",
+  "accessibilityDescription": "위 패널은 y축 위의 점 A에서 만나는 두 직선과 x축으로 둘러싸인 삼각형을, 아래 패널은 A와 C 부근을 확대해 보여 준다.",
+  "newVisualInformation": [
+    "두 직선의 교점 A(0,2)",
+    "x절편 B(−58,0)과 C(2,0)",
+    "삼각형 ABC의 넓이 60"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 일차함수 $y=ax+2$, $y=-x+b$의 그래프가 $y$축 위의 점 $A$에서 만나고, 두 일차함수의 그래프와 $x$축으로 둘러싸인 삼각형 $ABC$의 넓이가 60이다. 이때 두 상수 $a$, $b$에 대하여 $ab$의 값을 구하는 과정과 답을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

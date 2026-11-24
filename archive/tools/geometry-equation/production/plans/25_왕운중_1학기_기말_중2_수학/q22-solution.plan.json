@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "30",
+          "-1"
+        ],
+        "domain": [
+          "10",
+          "25"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "47",
+          "-2"
+        ],
+        "domain": [
+          "10",
+          "25"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "17",
+          "y": "13",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 돼지 수,세로 y는 닭 수. 마릿수합 x+y30,다리합 4x+2y94의 교점(17,13). 실제 해는 비음수 정수이며 선은 조건의 보조연장이다. 꼬리 17+날개 2·13=43. 정답 43개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 다음 표와 같이 어느 농장에는 돼지와 닭이 모두 30마리 있다. 돼지와 닭의 다리의 수의 합이 94개일 때, 돼지의 꼬리와 닭의 날개의 수의 합을 구하는 과정을 서술하여라. (5점)<br><br><table style=\"border-collapse: collapse; width: 100%; max-width: 360px; margin: 10px auto; text-align: center; border: 1px solid #333;\"><tr style=\"border-bottom: 1px solid #333; background-color: #f9f9f9;\"><th style=\"border: 1px solid #333; padding: 6px;\">구분</th><th style=\"border: 1px solid #333; padding: 6px;\">돼지</th><th style=\"border: 1px solid #333; padding: 6px;\">닭</th><th style=\"border: 1px solid #333; padding: 6px;\">합계</th></tr><tr><td style=\"border: 1px solid #333; padding: 6px;\">마릿수</td><td style=\"border: 1px solid #333; padding: 6px;\">$x$</td><td style=\"border: 1px solid #333; padding: 6px;\">$y$</td><td style=\"border: 1px solid #333; padding: 6px;\">$30$</td></tr><tr><td style=\"border: 1px solid #333; padding: 6px;\">다리의 수</td><td style=\"border: 1px solid #333; padding: 6px;\">$4x$</td><td style=\"border: 1px solid #333; padding: 6px;\">$2y$</td><td style=\"border: 1px solid #333; padding: 6px;\">$94$</td></tr></table><br>($x, y$를 이용하여 연립일차방정식을 세우는 과정: 2점, 연립방정식 풀이를 이용하여 $x, y$ 값을 구하는 과정: 각 1점, 돼지 꼬리와 닭의 날개 수의 합을 구하는 과정: 1점)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

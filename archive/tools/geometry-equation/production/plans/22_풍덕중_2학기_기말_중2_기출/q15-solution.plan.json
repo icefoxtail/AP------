@@ -1,0 +1,164 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "2의 배수",
+        "elements": [
+          "2",
+          "4",
+          "6",
+          "8",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "합집합",
+        "elements": [
+          "2",
+          "3",
+          "4",
+          "6",
+          "8",
+          "9",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "3의 배수",
+        "elements": [
+          "3",
+          "6",
+          "9",
+          "12"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 6
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 7
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 7
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "가운데 합집합에는 서로 다른 카드 번호 8개를 한 번씩 적었다. 양쪽에서 6과 12로 화살표가 겹쳐 들어오므로 중복 2개를 빼야 한다. 6+4−2=8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$부터 $12$까지의 자연수가 각각 적힌 $12$장의 카드 중에서 한 장을 뽑을 때, $2$의 배수 또는 $3$의 배수가 적힌 카드를 뽑는 경우의 수는? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

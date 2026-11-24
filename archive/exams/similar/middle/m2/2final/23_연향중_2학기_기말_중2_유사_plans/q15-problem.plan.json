@@ -1,0 +1,365 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p60",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p66",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p06",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p62",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p04",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p64",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p34",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p00",
+    "p60",
+    "p66",
+    "p06",
+    "p02",
+    "p62",
+    "p04",
+    "p64",
+    "p32",
+    "p34"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p00",
+        "p60"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p60",
+        "p66"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p66",
+        "p06"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p06",
+        "p00"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "p02",
+        "p62"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "p04",
+        "p64"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "p32",
+        "p34"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "label": "A",
+        "labelKind": "TEXT",
+        "shapes": [
+          {
+            "polygon": [
+              "p04",
+              "p64",
+              "p66",
+              "p06"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "label": "B",
+        "labelKind": "TEXT",
+        "shapes": [
+          {
+            "polygon": [
+              "p02",
+              "p32",
+              "p34",
+              "p04"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "label": "D",
+        "labelKind": "TEXT",
+        "shapes": [
+          {
+            "polygon": [
+              "p32",
+              "p62",
+              "p64",
+              "p34"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "label": "C",
+        "labelKind": "TEXT",
+        "shapes": [
+          {
+            "polygon": [
+              "p00",
+              "p60",
+              "p62",
+              "p02"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "p00",
+    "p60",
+    "p66",
+    "p06",
+    "p02",
+    "p62",
+    "p04",
+    "p64",
+    "p32",
+    "p34"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "네 영역 A, B, C, D로 나뉜 도형이다. 영역 B와 D는 서로 맞닿아 있고, A와 C는 각각 B, D와 이웃하지만 A와 C는 서로 맞닿지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "빨간색, 노란색, 파란색, 초록색의 $4$가지 색을 사용하여 오른쪽 그림과 같이 네 영역 $A, B, C, D$를 칠하려고 한다. 같은 색을 여러 번 사용해도 좋으나 이웃한 영역은 서로 다른 색으로 칠해야 한다. 영역 $B$와 $D$는 서로 맞닿아 있고, 영역 $A$와 $C$는 각각 $B, D$와 모두 이웃하지만 $A$와 $C$는 서로 맞닿지 않을 때, 칠할 수 있는 모든 방법의 수는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "영역 A, B, C, D의 위치와 인접 관계"
+  ],
+  "accessibilityDescription": "가로로 긴 직사각형이 위아래 두 줄과 가운데 두 칸으로 나뉘어 A, B, D, C 영역이 보인다. 가운데 왼쪽이 B, 가운데 오른쪽이 D이고 B와 D가 맞닿아 있다."
+}

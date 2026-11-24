@@ -2,6 +2,8 @@
 
 status: CURRENT / DIRECT USER OVERRIDE — 2026-10-09
 
+> 2026-11-24 덧붙임(원장님 결정): 이 문서의 "원본 확인"은 참고 근거다. 이미 들어온 시험지의 수정은 ① 수정 프로토콜 → ② 작업자 재량 → ③ 원본 대조(참고) 순이고, 원본 대조가 필수인 것은 처음 만들 때(CREATE·첫 반입)뿐이다. 원본을 못 봤다는 이유로 qid를 HOLD·확인 대기로 남기거나 사용자에게 원본 확인을 부탁하지 않는다. 원문: [common.md](../../agents/common.md) 맨 위 절.
+
 사용자 지시: 발문·보기·수식과 문제 에셋이 추출된 순간부터 CREATE/R1/R2/R3의 기본 작업 입력은 해당 JS와 실제 이미지 에셋이다. PDF는 원문 확인이 실제로 필요한 문항 결함이 생겼을 때만 제한적으로 대조한다. 이 지시는 과거의 routine PDF 재열람·전 페이지 대조 요구보다 우선한다. 품질 계약 버전, 독립 답안 freeze, 실제 자산 열람, R3 렌더 및 publication 기준은 변경하지 않는다.
 
 ## 1. 추출과 제작·검수의 경계
@@ -39,6 +41,6 @@ JS와 에셋을 확인했다는 이유만으로 `원본 PDF 실제 대조 완료
 
 필수 학생 입력이 빠져 있으면 불완전한 상태로 freeze하지 않는다. ROOT가 intake/원 stage owner에게 누락된 범위 복구를 연결한다. R1/R2 worker에게 freeze 전에 답안·해설을 포함한 원본을 전달하는 방식으로 복구하지 않는다.
 
-원본을 확인한 문항의 실패·수정 근거와 원 freeze는 보존한다. 학생 조건·보기·결정적 문제 visual이 바뀌면 worker가 freeze validity를 판단하고 무효 범위만 fresh 검수한다. 계산·기호 정정이나 의미 불변 조판은 기존 session의 근거 있는 최소 adjudication/correction-review를 따른다. 필요한 PDF 확인도 하지 않은 채 알려진 문항 결함을 PASS하거나 source HOLD를 강제 해제하지 않는다.
+원본을 확인한 문항의 실패·수정 근거와 원 freeze는 보존한다. 학생 조건·보기·결정적 문제 visual이 바뀌면 worker가 freeze validity를 판단하고 무효 범위만 fresh 검수한다. 계산·기호 정정이나 의미 불변 조판은 기존 session의 근거 있는 최소 adjudication/correction-review를 따른다. 알려진 문항 결함은 PASS로 덮지 않고 수정 프로토콜대로 고친다. 원본을 보지 못했다는 이유로 source HOLD로 남기지 않는다(2026-11-24).
 
 ROOT는 원본 확인의 필요 범위·routing·기술 receipt를 담당한다. 원문·수학·Meta·visual 판정은 해당 worker가 담당한다. 완료된 시험지의 역사 receipt를 이 정책을 적용하기 위해 소급 변환하거나 재검수하지 않는다.

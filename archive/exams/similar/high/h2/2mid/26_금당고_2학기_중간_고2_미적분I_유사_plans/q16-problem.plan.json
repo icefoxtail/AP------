@@ -1,0 +1,514 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "97",
+              "denominator": "27"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "97",
+              "denominator": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AX1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AX2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AY1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AY2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "AX1",
+    "AX2",
+    "AY1",
+    "AY2"
+  ],
+  "displaySegments": [
+    {
+      "id": "k1",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "k2",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "k3",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "id": "k4",
+      "refs": [
+        "C4",
+        "P"
+      ]
+    },
+    {
+      "id": "k5",
+      "refs": [
+        "P",
+        "C6"
+      ]
+    },
+    {
+      "id": "k6",
+      "refs": [
+        "C6",
+        "C7"
+      ]
+    },
+    {
+      "id": "k7",
+      "refs": [
+        "C7",
+        "C8"
+      ]
+    },
+    {
+      "id": "k8",
+      "refs": [
+        "C8",
+        "C9"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "ax",
+      "refs": [
+        "AX1",
+        "AX2"
+      ]
+    },
+    {
+      "id": "ay",
+      "refs": [
+        "AY1",
+        "AY2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lLab",
+        "ownerSegment": "sQR",
+        "text": "l"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tx",
+        "at": [
+          7.2,
+          -0.7
+        ],
+        "text": "x",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "ty",
+        "at": [
+          -0.6,
+          6
+        ],
+        "text": "y",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tc",
+        "at": [
+          5,
+          1.6
+        ],
+        "text": "y=4/x",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "AX1",
+    "AX2",
+    "AY1",
+    "AY2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "곡선 y=4/x 위의 점 P를 지나고 직선 OP에 수직인 직선 l이 x축, y축과 만나는 점 Q, R을 보여 준다. O는 원점이고, OP와 l이 이루는 직각이 표시되어 있다.",
+  "accessibilityDescription": "원점 O에서 곡선 y=4/x 위의 점 P로 선분 OP가 이어지고, P를 지나 OP와 직각으로 만나는 직선 l이 x축과 만나는 점이 Q, y축과 만나는 점이 R이다. x축과 y축, 곡선 y=4/x, 점 O, P, Q, R이 표시되어 있다.",
+  "newVisualInformation": [
+    "곡선 y=4/x 위의 점 P",
+    "OP에 수직인 직선 l",
+    "x축과 만나는 점 Q, y축과 만나는 점 R",
+    "OP와 l이 이루는 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 곡선 $y=\\dfrac{4}{x}$ ($x>0$) 위의 점 $P\\left(t,\\dfrac{4}{t}\\right)$를 지나고 직선 $OP$에 수직인 직선 $l$이 $x$축과 만나는 점을 $Q$, $y$축과 만나는 점을 $R$이라 하자. 삼각형 $OPQ$의 넓이를 $S_1(t)$, 삼각형 $OPR$의 넓이를 $S_2(t)$라 할 때, $\\displaystyle\\lim_{t\\to2}\\frac{S_2(t)-S_1(t)}{t-2}$의 값은? (단, $O$는 원점이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

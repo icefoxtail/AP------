@@ -1,0 +1,99 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "prism",
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  0,
+                  4
+                ]
+              ]
+            },
+            "height": 9
+          }
+        ],
+        "dims": [
+          {
+            "solid": "prism",
+            "edge": "AD"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "prism",
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  0,
+                  5.333333333333333
+                ]
+              ]
+            },
+            "height": 12
+          }
+        ],
+        "dims": [
+          {
+            "solid": "prism",
+            "edge": "AD"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "부피 54:128=27:64라닮음비 3:4,겉넓이비 9:16,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 두 삼각기둥 (가)와 (나)는 닮은 도형이고 (가)와 (나)의 부피는 각각 $54\\,\\mathrm{cm}^3$, $128\\,\\mathrm{cm}^3$일 때, 두 삼각기둥 (가)와 (나)의 겉넓이의 비는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "부피54:128=27:64라닮음비3:4,겉넓이비9:16,정답③."
+  ]
+}

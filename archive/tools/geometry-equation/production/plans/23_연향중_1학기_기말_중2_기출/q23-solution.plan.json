@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "11",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "11"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "-5/4"
+        ],
+        "domain": [
+          "0",
+          "11"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 오징어 x, 세로 문어 y. 머리 x+y11, 다리 10x+8y96의 공통점 (4,7). 실제 해는 비음수 정수, 문어 7마리.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4]\n어항 한 수조에는 오징어와 문어가 들어있다. 머리의 수는 11개이고, 다리의 수는 96개라고 할 때, 문어가 몇 마리인지 구하시오. [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로오징어x,세로문어y. 머리x+y11,다리10x+8y96의공통점(4,7). 실제해는비음수정수,문어7마리.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로오징어x,세로문어y. 머리x+y11,다리10x+8y96의공통점(4,7). 실제해는비음수정수,문어7마리."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-6"
+      },
+      {
+        "id": "P2",
+        "x": "2",
+        "y": "-10"
+      }
+    ],
+    "formula": "-2*x - 6",
+    "overlays": {
+      "points": [
+        {
+          "id": "wrong",
+          "x": "2",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "실제절편(−3,0),(0,−6)에서 y−2x−6. x2의 실제 y−10과 보기⑤(2,−8)을 나란히 비교한다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 직선을 그래프로 하는 일차함수의 그래프 위의 점이 아닌 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제절편(−3,0),(0,−6)에서y−2x−6. x2의 실제y−10과 보기⑤(2,−8)을 나란히 비교한다. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제절편(−3,0),(0,−6)에서y−2x−6. x2의 실제y−10과 보기⑤(2,−8)을 나란히 비교한다. 정답⑤."
+  ]
+}

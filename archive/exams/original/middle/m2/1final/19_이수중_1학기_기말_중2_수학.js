@@ -117,7 +117,11 @@ window.examData = {
         "$y=-4x-3$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "오른쪽 위로 향하는 직선이 y축과 (0,3)에서, x축과 (−6,0)에서 만나고 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "일차함수의 식은 y=(기울기)x+(y절편)이므로 기울기가 1/2, y절편이 3이면 y=(1/2)x+3이다. 따라서 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -183,7 +187,11 @@ window.examData = {
         "$y=\\dfrac{3}{4}x+4$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 y축의 3과 x축의 4를 지나는 내리막 직선이 있고, 두 절편 A, B가 표시되어 있다.",
+      "solutionImageCaption": "그래프가 y축과 만나는 점은 (0, 3), x축과 만나는 점은 (4, 0)이다. 기울기는 (0-3)/(4-0)=-3/4이므로 일차함수의 식은 y=-3/4x+3이다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -197,7 +205,11 @@ window.examData = {
         "$y=2x-4$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q13-solution.svg",
+      "solutionImageAlt": "오른쪽 위로 향하는 직선이 두 점 (1,−2), (3,2)를 지나고 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "두 점 (1,−2), (3,2)를 지나므로 기울기는 (2−(−2))/(3−1)=2이다. y=2x+b에 (3,2)를 대입하면 2=6+b에서 b=−4이다. 따라서 직선의 방정식은 y=2x−4이고 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -211,7 +223,11 @@ window.examData = {
         "$30\\,\\mathrm{m}^3$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "y절편 0.84천 원(840원)에서 시작해 오른쪽 위로 올라가는 직선이 있고 x=20일 때 요금이 13.64천 원(13,640원)인 점 P가 표시되어 있다.",
+      "solutionImageCaption": "표에서 사용량이 1씩 늘 때마다 요금이 640원씩 늘고 사용량이 0일 때 840원이므로 사용량 x와 요금 y 사이에 y=640x+840이 성립한다. y=13640이면 640x=12800에서 x=20이다. 그림의 세로축은 천 원 단위(13.64천 원 = 13,640원)이다. 따라서 도시가스의 사용량은 20m³이고 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -225,7 +241,11 @@ window.examData = {
         "$y=3$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q15-solution.svg",
+      "solutionImageAlt": "y축과 평행한 수직 직선이 x=3의 위치에 그려져 있고 x축 위의 점 (3,0)이 표시되어 있다.",
+      "solutionImageCaption": "y축에 평행한 직선은 x좌표가 일정한 직선이다. 점 (3,0)을 지나므로 x좌표가 항상 3이다. 따라서 직선의 방정식은 x=3이고 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -239,7 +259,11 @@ window.examData = {
         "⑤"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q16-solution.svg",
+      "solutionImageAlt": "오른쪽 아래로 향하는 직선이 x축과 (−6,0)에서, y축과 (0,−3)에서 만나고 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "x+2y+6=0에서 y=0이면 x=−6이므로 x절편은 −6이고, x=0이면 y=−3이므로 y절편은 −3이다. 두 점 (−6,0), (0,−3)을 지나는 오른쪽 아래로 향하는 직선이 정답 그래프이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -253,7 +277,11 @@ window.examData = {
         "8"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 두 직선이 점 (2, 1)에서 만나고, 그 점에서 두 축에 보조선이 그어져 있다.",
+      "solutionImageCaption": "두 직선의 교점이 (2, 1)이다. ax+y=3에 (2, 1)을 대입하면 2a+1=3이므로 a=1이고, x-by=-5에 대입하면 2-b=-5이므로 b=7이다. 따라서 a+b=8이다. 따라서 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,

@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "7/2"
+        ],
+        "label": "b=2a-1"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "7/2"
+        ],
+        "label": "b=6"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "b"
+    }
+  },
+  "caption": "원래 좌표점(2,1)을 ax−by1에 대입하면 2a−b1. 여기 가로/세로는 원래 x/y가 아니라 주사위 계수 a/b이다. 실제 세 정수쌍(1,1),(2,3),(3,5)만 가능하므로 3/36=1/12. 안내선의 연속점은 결과가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던질 때, 첫 번째에 나오는 눈의 수를 $a$, 두 번째에 나오는 눈의 수를 $b$라 하자. 이때, 직선 $ax-by=1$가 점 $(2,1)$을 지날 확률은? (4점)",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

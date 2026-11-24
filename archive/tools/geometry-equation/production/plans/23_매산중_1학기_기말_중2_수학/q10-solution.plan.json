@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-5/2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "5 - 5*x/2"
+  },
+  "caption": "x절편 2에서 a5,따라서 y절편 5. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 일차함수 $y=-\\frac{5}{2}x+a$의 그래프의 $x$절편이 2일 때, $y$절편은? (단, $a$는 상수이다.) (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x절편2에서a5,따라서y절편5. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x절편2에서a5,따라서y절편5. 정답⑤."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "formula": "2*x + 3"
+  },
+  "caption": "일치한 두 그래프는 실제 y2x+3 한 직선. a/2=2,b−3이므로 a4,b−3, 합 1. 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차함수 $y=\\dfrac{a}{2}x+3$, $y=2x-b$의 그래프가 일치할 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "일치한두그래프는실제y2x+3한직선. a/2=2,b−3이므로a4,b−3,합1. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "일치한두그래프는실제y2x+3한직선. a/2=2,b−3이므로a4,b−3,합1. 정답③."
+  ]
+}

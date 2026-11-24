@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sQ1Q2",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sQ2Q3",
+      "refs": [
+        "Q2",
+        "Q3"
+      ]
+    },
+    {
+      "id": "sQ3Q4",
+      "refs": [
+        "Q3",
+        "Q4"
+      ]
+    },
+    {
+      "id": "sQ4Q1",
+      "refs": [
+        "Q4",
+        "Q1"
+      ]
+    },
+    {
+      "id": "sQ5Q7",
+      "refs": [
+        "Q5",
+        "Q7"
+      ]
+    },
+    {
+      "id": "sQ8Q6",
+      "refs": [
+        "Q8",
+        "Q6"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "label": "1",
+        "shapes": [
+          {
+            "polygon": [
+              "Q1",
+              "Q5",
+              "Q9",
+              "Q8"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "label": "2",
+        "shapes": [
+          {
+            "polygon": [
+              "Q5",
+              "Q2",
+              "Q6",
+              "Q9"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "GREEN",
+        "label": "3",
+        "shapes": [
+          {
+            "polygon": [
+              "Q9",
+              "Q6",
+              "Q3",
+              "Q7"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "fill": "LIGHT",
+        "label": "4",
+        "shapes": [
+          {
+            "polygon": [
+              "Q8",
+              "Q9",
+              "Q7",
+              "Q4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "7가지 색 중에서 사용할 4가지 색을 고르는 방법은 35가지이다. 고른 네 색을 네 영역에 배열하는 방법은 4!가지이고, 회전하여 일치하는 배열은 네 가지씩 같은 것으로 보므로 35 곱하기 24 나누기 4는 210가지이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "정사각형이 가운데에서 가로와 세로로 나뉘어 네 영역이 되고, 각 영역이 서로 다른 색으로 칠해져 있으며 1, 2, 3, 4가 적혀 있다.",
+  "newVisualInformation": [
+    "정사각형을 4등분한 네 영역",
+    "각 영역의 색 구분과 번호",
+    "회전 중복을 고려한 칠하기 경우의 수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 정사각형을 4등분 한 4개의 영역을 서로 다른 7가지 색 중에서 4가지 색을 택하여 칠하는 경우의 수는? (단, 각 영역에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.)<br><img src=\"assets/images/22_매산고_1학기_중간_고2_확률과통계/q02.png\" class=\"problem-img\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

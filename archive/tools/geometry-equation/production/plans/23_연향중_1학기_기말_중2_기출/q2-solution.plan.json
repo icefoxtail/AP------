@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "3/5",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "3"
+      }
+    ],
+    "formula": "5*x - 2"
+  },
+  "caption": "f(3/5)=1,f1=3인두점을읽어 2×1−3×3=−7. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=5x-2$에 대하여 $2f\\left(\\dfrac{3}{5}\\right)-3f(1)$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "f(3/5)=1,f1=3인두점을읽어2×1−3×3=−7. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f(3/5)=1,f1=3인두점을읽어2×1−3×3=−7. 정답①."
+  ]
+}

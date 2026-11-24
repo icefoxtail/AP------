@@ -329,7 +329,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "g∘f의 합성 대응이다. 마지막 열의 2에서 시작하여 강조된 경로를 거슬러 올라가 역함수 입력을 찾는다. f∘g의 합성 대응이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -644,7 +648,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
     "subUnit": "조합의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 가로 5개, 세로 3개로 놓인 15개의 점이 있고, 맨 윗줄 가운데 점 P를 지나는 가로선과 P에서 아래로 향하는 세로선, P에서 왼쪽 아래와 오른쪽 아래로 향하는 두 대각선이 그어져 있다.",
+    "solutionImageCaption": "P 이외의 14개 점에서 두 점을 고르는 방법은 91가지이다. P와 일직선이 되는 선택은 가로줄 6가지, 세로줄 1가지, 왼쪽 아래 대각선 1가지, 오른쪽 아래 대각선 1가지로 모두 9가지이다. 따라서 91−9=82이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

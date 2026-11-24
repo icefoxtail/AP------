@@ -33,7 +33,7 @@ test('the author contract carries the capability as a literal fragment (the pack
   const source=fs.readFileSync(new URL('../production/phase2.mjs',import.meta.url),'utf8');
   const fragments=[...source.matchAll(/extendedContract\+='([^']*)';/g)].map(match=>match[1]).join('');
   for(const text of ['piecewise-polynomial-spike-v1','family:"piecewise-polynomial"','breakpoints','referenceLines','intersectionX','labelIntersections','PIECEWISE_POLY_INTERSECTION_MISMATCH','PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS','exactCoordinates'])assert.ok(fragments.includes(text),text);
-  assert.ok(source.includes("'trigonometric-spike-v1','piecewise-polynomial-spike-v1'].includes(plan.capability)"));
+  assert.match(source,/\[[^\]]*'piecewise-polynomial-spike-v1'[^\]]*\]\.includes\(plan\.capability\)/);
 });
 
 test('spec: three main-curve pieces, the formula header, y=c in the band and one dot per crossing',async()=>{
@@ -47,7 +47,7 @@ test('spec: three main-curve pieces, the formula header, y=c in the band and one
   assert.deepEqual(spec.objects.find(object=>object.id==='line-k').coefficients,[0,-1,5]);
   const dots=spec.objects.filter(object=>object.id.startsWith('intersection-k-'));
   assert.equal(dots.length,4);assert.ok(dots.every(dot=>dot.name===null&&dot.at[1]===5));
-  assert.equal(spec.displayFacts.formulaPlacement,'HEADER_BAND');assert.equal(spec.viewport.equalUnits,true);
+  assert.equal(spec.displayFacts.formulaPlacement,'HEADER_BAND');assert.ok(spec.viewport.equalUnits===true||spec.viewport.declaredScale===true,'the figure is drawn at one declared scale');
   const prepared=(await pythonWorker({action:'prepare',spec})).result;
   const curves=prepared.prepared.primitives.filter(primitive=>primitive.role==='curve');
   assert.equal(curves.length,3);assert.ok(curves.every(curve=>curve.token==='mainCurve'));

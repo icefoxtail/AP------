@@ -29,7 +29,6 @@
     } = WS.api);
   });
   V.classRows = [];
-  let derivedBaseLoad = null;
   let autosaveTimer;
   const HANGUL = /[가-힣]/;
   // Text for teachers: Korean messages are already written for them; anything else (a code, English) is replaced by
@@ -411,23 +410,32 @@
       data.selected.length > 400
     )
       throw new Error("지원하지 않는 작업 파일입니다.");
-    if (
-      data.selected.some(
-        (r) => !C.UID.test(r.questionUid) || !state.byUid.has(r.questionUid),
-      )
-    )
-      throw new Error("현재 아카이브에 없는 문항이 포함되어 있습니다.");
-    if (
-      data.selected.some(
-        (r) =>
-          r.sourceFingerprint &&
-          r.sourceFingerprint !==
-            state.byUid.get(r.questionUid).sourceFingerprint,
-      )
-    )
-      throw new Error(
-        "원본 문항이 변경되었습니다. 과거 작업을 조용히 새 문항으로 복원하지 않습니다. 새 작업에서 다시 만들어 주세요.",
-      );
+    if (data.selected.some((r) => !C.UID.test(r.questionUid)))
+      throw new Error("지원하지 않는 작업 파일입니다.");
+    // 2026-11-24 원장 결정: 그사이 고쳐진 문항은 거절하지 않고 지금의 내용으로 연다. 아카이브에서 사라진 문항만 빼고 나머지는 연다.
+    const droppedNumbers = [];
+    data.selected.forEach((r, index) => { if (!state.byUid.has(r.questionUid)) droppedNumbers.push(index + 1); });
+    const fixedCount = data.selected.filter((r) => r.sourceFingerprint && state.byUid.has(r.questionUid) &&
+      r.sourceFingerprint !== state.byUid.get(r.questionUid).sourceFingerprint).length;
+    if (droppedNumbers.length) {
+      if (droppedNumbers.length === data.selected.length)
+        throw new Error("이 작업의 문항이 아카이브에서 모두 사라져 열 수 없습니다.");
+      const gone = new Set(data.selected.filter((r) => !state.byUid.has(r.questionUid)).map((r) => r.questionUid));
+      const kept = data.selected.length - droppedNumbers.length;
+      // 빠진 문항이 속한 행의 요청 개수를 그만큼 줄인다(안 줄이면 "요청한 문항 수가 충족되지 않았습니다"로 저장·출력이 막힌다).
+      const lost = new Map();
+      for (const r of data.selected) if (gone.has(r.questionUid)) lost.set(r.rowId, (lost.get(r.rowId) || 0) + 1);
+      data = {
+        ...data,
+        selected: data.selected.filter((r) => !gone.has(r.questionUid)),
+        pins: Array.isArray(data.pins) ? data.pins.filter((uid) => !gone.has(uid)) : data.pins,
+        ...(Array.isArray(data.rows)
+          ? { rows: data.rows.map((row) => (lost.has(row?.id) && Number.isFinite(row.count) ? { ...row, count: Math.max(0, row.count - lost.get(row.id)) } : row)) }
+          : {}),
+        ...(data.derivationSource ? { count: kept } : {}),
+      };
+    }
+    const reopenNotice = revisionOpenNotice(fixedCount, droppedNumbers);
     if (
       !Array.isArray(data.rows) ||
       !Array.isArray(data.pins) ||
@@ -528,10 +536,8 @@
       ? data.composeShortage.map((item) => ({ label: item.label, difficultyBuckets: item.difficultyBuckets, requested: item.requested, got: item.got }))
       : [];
     state.composeStale = false;
-    state.composeNotice = "";
+    state.composeNotice = reopenNotice;
     state.includeExtended = data.includeExtended === true;
-    state.derivedBaseQuestions = null;
-    derivedBaseLoad = null;
     if (state.derivationSource && (
       state.derivationSource.parentKind !== "SAVED_PAPER" ||
       !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(String(state.derivationSource.parentId || "")) ||
@@ -611,10 +617,17 @@
       (data.indexVersion === state.catalog.indexVersion
         ? "이전 작업을 복원했습니다. 이전 출제 확인은 필요할 때 고급 설정에서 실행할 수 있습니다."
         : "문항 목록이 갱신되었습니다. 다시 만들기한 뒤 출력하세요.") +
-        (state.scopeNotice ? " " + state.scopeNotice : ""),
+        (state.scopeNotice ? " " + state.scopeNotice : "") + (reopenNotice ? " " + reopenNotice : ""),
       data.indexVersion !== state.catalog.indexVersion || Boolean(state.scopeNotice),
     );
     if (state.studentIds.length) refreshHistory();
+  }
+  // 저장본·이전 작업을 열 때 선생님에게 보이는 한 줄 안내(막는 경고가 아니다). 내부 용어 없이.
+  function revisionOpenNotice(fixedCount, droppedNumbers) {
+    const parts = [];
+    if (fixedCount) parts.push(`문항 ${fixedCount}개가 저장 뒤 고쳐져 최신 내용으로 열었습니다.`);
+    if (droppedNumbers.length) parts.push(`${droppedNumbers.map((n) => n + "번").join(", ")} 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다.`);
+    return parts.join(" ");
   }
   function validateSavedPaperRevision(paper) {
     const snapshot = paper?.snapshot;
@@ -627,16 +640,18 @@
         questionUids.some((uid, index) => uid !== snapshot.questions[index]?.questionUid) ||
         new Set(questionUids).size !== questionUids.length)
       throw new Error("저장한 시험지의 문항 순서를 확인할 수 없습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
-    const records = snapshot.questions.map((question) => {
+    // 2026-11-24 원장 결정: 수정본은 항상 지금의 문항 내용으로 연다(저장 뒤 고쳐진 문항을 거절하지 않는다).
+    // 아카이브에서 사라진 문항만 빼고 나머지를 열고, 몇 번이 빠졌는지 알린다.
+    const droppedNumbers = [];
+    let fixedCount = 0;
+    const records = snapshot.questions.map((question, index) => {
       const record = state.byUid.get(question.questionUid);
-      const sourceFile = String(question.sourceArchiveFile || question.sourceFile || question._sourceFile || "");
-      if (!record || !question.sourceFingerprint ||
-          String(question.sourceFingerprint) !== String(record.sourceFingerprint) ||
-          sourceFile !== String(record.sourceFile || "") ||
-          Number(question.sourceOrdinal) !== Number(record.sourceOrdinal))
-        throw new Error("원본 문항이 바뀌어, 저장 당시 내용 그대로는 수정본을 열 수 없습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
+      if (!record) { droppedNumbers.push(index + 1); return null; }
+      if (question.sourceFingerprint && String(question.sourceFingerprint) !== String(record.sourceFingerprint)) fixedCount++;
       return { ...record, rowId: "saved-paper-revision" };
-    });
+    }).filter(Boolean);
+    if (!records.length)
+      throw new Error("이 시험지의 문항이 아카이브에서 모두 사라져 수정본을 열 수 없습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
     const selectionFilters = snapshot.selectionFilters;
     const paths = Array.isArray(selectionFilters.primaryPaths) && selectionFilters.primaryPaths.length
       ? [...new Set(selectionFilters.primaryPaths.map(String))]
@@ -644,6 +659,13 @@
     const scopeQuestionUids = Array.isArray(selectionFilters.scopeQuestionUids) && selectionFilters.scopeQuestionUids.length
       ? [...new Set(selectionFilters.scopeQuestionUids.map(String))]
       : records.map(record => record.questionUid);
+    // 저장 뒤 분류가 고쳐져 옛 범위에 안 맞는 문항도 거절하지 않고, 그 문항의 지금 단원을 범위에 보탠다(서버는 이 범위로 다시 대조한다).
+    // 맞는지 미리 판정하지 않고 모든 문항의 원시 키·일반 키를 둘 다 보탠다: 저장본 범위에 원시 모드로는 맞는 빈 키가 이미 들어 있어도,
+    // 실제 판정(C.review)과 서버(core.matches)는 일반 모드라 그 키로 맞지 않을 수 있다. 범위는 scopeQuestionUids가 함께 좁힌다.
+    for (const record of records) {
+      if (!scopeQuestionUids.includes(record.questionUid)) scopeQuestionUids.push(record.questionUid);
+      for (const key of [C.pathKey(record, 4), C.generalPathKey(record, 4)]) if (!paths.includes(key)) paths.push(key);
+    }
     const row = {
       id: "saved-paper-revision",
       label: "원본 저장 시험지 범위",
@@ -653,17 +675,12 @@
       scopeQuestionUids,
       difficultyBuckets: [],
     };
-    for (const record of records)
-      // Papers saved before the unified list recorded raw path keys; unified papers record the
-      // general-mode keys of their fallback taxonomy. Either must be accepted.
-      if (!C.rowMatches(record, row) && !C.rowMatches(record, row, workspaceMatchOptions()))
-        throw new Error("저장 당시의 범위가 지금의 단원·분류 기준과 달라 수정본을 안전하게 열 수 없습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
     const filters = { ...selectionFilters };
     delete filters.sourceFiles;
     delete filters.primaryPaths;
     delete filters.scopeQuestionUids;
     delete filters.difficultyBuckets;
-    return { snapshot, records, row, filters, selectionFilters };
+    return { snapshot, records, row, filters, selectionFilters, notice: revisionOpenNotice(fixedCount, droppedNumbers) };
   }
   function applySavedPaperRevision(paper) {
     const validated = validateSavedPaperRevision(paper);
@@ -716,17 +733,16 @@
       derivationType: "REVISION",
     };
     state.derive = null;
-    state.derivedBaseQuestions = structuredClone(snapshot.questions);
-    derivedBaseLoad = null;
     state.prepared = [];
     state.undo = [];
     state.previewIndex = 0;
     state.ackWarnings = false;
+    state.composeNotice = validated.notice;
     state.view = "compose";
     state.inspector = "summary";
     save();
     render();
-    status("저장한 시험지로 새 문제지를 만들었습니다. 원래 시험지는 그대로 유지되고, 수정본을 저장하면 원본과의 관계가 기록됩니다.");
+    status("저장한 시험지로 새 문제지를 만들었습니다. 원래 시험지는 그대로 유지되고, 수정본을 저장하면 원본과의 관계가 기록됩니다." + (validated.notice ? " " + validated.notice : ""));
   }
   async function openSavedPaperRevision(id) {
     const data = await api("/archive-saved-papers/" + encodeURIComponent(id));
@@ -735,28 +751,6 @@
     applySavedPaperRevision(data.paper);
     state.editSavedPaperId = "";
     history.replaceState(null, "", `workspace.html?view=compose${state.assignLegacy ? "&assign=legacy" : ""}`);
-  }
-  async function ensureDerivedBaseQuestions() {
-    if (!state.derivationSource) return null;
-    if (Array.isArray(state.derivedBaseQuestions)) return state.derivedBaseQuestions;
-    if (!derivedBaseLoad) derivedBaseLoad = (async () => {
-      const data = await api("/archive-saved-papers/" + encodeURIComponent(state.derivationSource.parentId));
-      const paper = data.paper;
-      if (paper?.id !== state.derivationSource.parentId ||
-          String(paper.snapshot_hash || "").toLowerCase() !== state.derivationSource.parentSnapshotHash)
-        throw new Error("수정본의 원본 시험지 정보가 맞지 않습니다. 새로고침한 뒤 다시 시도해 주세요.");
-      if (!Array.isArray(paper.snapshot?.questions) || !paper.snapshot.questions.length)
-        throw new Error("수정본의 원본 시험지 내용을 확인할 수 없습니다. 새로고침한 뒤 다시 시도해 주세요.");
-      // saving the revision compares these questions with the catalog records: on a partial catalog the shards of their exams come first
-      await ensureShardFiles(paper.snapshot.questions);
-      return structuredClone(paper.snapshot.questions);
-    })();
-    try {
-      state.derivedBaseQuestions = await derivedBaseLoad;
-      return state.derivedBaseQuestions;
-    } finally {
-      derivedBaseLoad = null;
-    }
   }
   function openOriginalIssue(exam, step = "review") {
     state.originalExam = exam;
@@ -1093,8 +1087,6 @@
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
       const papers = Array.isArray(options.papers) && options.papers.length ? options.papers : await prepare();
-      // 전송 사본: 저장본에서 온(수정본의) 문항은 서버가 내장해 둔 그림(data: URL)을 원래 경로로 되돌려 보낸다(화면용 문항은 그대로).
-      const wireQuestions = await Promise.all(papers.map((paper) => saveWireQuestionsFor(paper)));
       const filters = saveRequestFilters(request(true).filters);
       // 보내는 값은 "이 화면이 문항을 대조한 목록의 버전"이다: prepare()가 문항마다 지금 카탈로그(state.catalog)와 지문(fingerprint)을
       // 대조해 만들므로 그 카탈로그의 버전이 맞고, 초안을 만든 때의 값(state.indexVersion)은 옛 값일 수 있어 보내지 않는다.
@@ -1132,7 +1124,7 @@
         include_extended: state.includeExtended === true,
         papers: papers.map((paper, paperIndex) => ({
           part_index: paper.index,
-          questions: wireQuestions[paperIndex].map(saveWireQuestion),
+          questions: papers[paperIndex].questions.map(saveWireQuestion),
           meta: { ...paper.meta, indexVersion: version },
           ...(state.derivationSource ? {
             lineage: {
@@ -1225,51 +1217,7 @@
   // 출력용으로 원본 JS의 값을 남기지만, 서버는 정본(카탈로그) 값과 한 글자라도 다르면(빈 문자열 포함) 409로 거절한다.
   // 그래서 보내는 사본의 정본 메타 필드(C.META_FIELDS)를 브라우저 카탈로그 레코드 값 그대로 맞춘다: 값이 비어 있으면 빈 값 그대로,
   // 필드가 없으면 사본에서도 뺀다. 카탈로그 레코드가 없는 문항은 손대지 않는다. 필드를 통째로 빼지 않으므로 서버 검사는 그대로 살아 있다.
-  // 수정본(state.derivationSource)의 문항은 prepare()가 저장 당시의 스냅샷 문항을 그대로 쓴다(저장본을 현재 문항으로 바꾸지 않기 위해).
-  // 스냅샷에는 서버가 저장 때 내장한 그림(data: URL)이 들어 있어, 그대로 다시 보내면 서버가 content·choices·image로 다시 계산하는 지문이
-  // 카탈로그와 어긋나 409("assignment fingerprint가 일치하지 않습니다")가 된다. 그래서 전송 사본에서만, 그 문항의 원본 파일에서 복원한
-  // 같은 UID 문항(저장 당시 지문 = 지금 카탈로그 지문임은 prepare()가 이미 확인했다)의 그림 자리를 원래 경로로 되돌린다.
-  // 그림 자리를 빼고 본문이 한 글자라도 다르면(스냅샷이 바뀌었거나 원본이 달라졌으면) 조용히 보내지 않고 막는다. 서버 검사는 그대로다.
-  // 같은 경로의 그림 파일이 저장 뒤 교정됐다면 서버가 지금 파일을 다시 내장하므로 수정본에는 교정된 그림이 들어간다(알려진 한계).
-  const SAVE_EMBEDDED_FIELDS = ["content", "question", "solution", "image", "solutionImage"];
-  const SAVE_DATA_URL = /data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]*/gi;
-  const SAVE_HTML_IMAGE_REF = /(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi;
-  const SAVE_IMAGE_MARK = "\u0000IMG\u0000";
-  // 서버(archive-saved-papers.js sourceAssetPath)가 내장하는 참조인가: 시험지 그림 경로이고 data/blob/http가 아니다.
-  const saveEmbeddableRef = (value) => {
-    const raw = String(value ?? "").trim().replace(/\\/g, "/");
-    return Boolean(raw) && !/^(?:data:|blob:|https?:)/i.test(raw) && raw.split(/[?#]/, 1)[0].toLowerCase().includes("assets/images/");
-  };
-  // 저장본 값에서 내장 그림을 빼고 원본 값에서 시험지 그림 참조를 뺀 것이 같을 때만 원본 값을 돌려준다(아니면 null).
-  function saveOriginalIfOnlyImagesDiffer(field, frozenValue, originalValue) {
-    if (typeof frozenValue !== "string" || typeof originalValue !== "string") return null;
-    if (field === "image" || field === "solutionImage")
-      return /^data:image\//i.test(frozenValue) && saveEmbeddableRef(originalValue) ? originalValue : null;
-    const left = frozenValue.replace(SAVE_DATA_URL, SAVE_IMAGE_MARK);
-    const right = originalValue.replace(SAVE_HTML_IMAGE_REF, (match, srcPrefix, quote, srcRef, urlQuote, urlRef, urlSuffix) => {
-      const ref = srcRef || urlRef;
-      if (!saveEmbeddableRef(ref)) return match;
-      return srcRef ? `${srcPrefix}${quote}${SAVE_IMAGE_MARK}${quote}` : `url(${urlQuote}${SAVE_IMAGE_MARK}${urlSuffix}`;
-    });
-    return left === right ? originalValue : null;
-  }
-  async function saveWireQuestionsFor(paper) {
-    const base = new Set((state.derivedBaseQuestions || []).map((question) => question.questionUid));
-    return Promise.all(paper.questions.map(async (question) => {
-      const embedded = SAVE_EMBEDDED_FIELDS.filter((field) => typeof question[field] === "string" && /data:image\//i.test(question[field]));
-      if (!state.derivationSource || !embedded.length || !base.has(question.questionUid)) return question;
-      const record = state.byUid.get(question.questionUid);
-      const original = record ? (await Source.restore([record], state.catalog))[0] : null;
-      const copy = { ...question };
-      for (const field of embedded) {
-        const value = original ? saveOriginalIfOnlyImagesDiffer(field, question[field], original[field]) : null;
-        if (value === null)
-          throw new Error("원본 문항이 바뀌어, 저장 당시 내용 그대로는 저장할 수 없습니다. 새로고침한 뒤 수정본을 다시 열어 주세요.");
-        copy[field] = value;
-      }
-      return copy;
-    }));
-  }
+  // 수정본(state.derivationSource)의 문항도 prepare()가 지금의 원본에서 복원한 것을 쓴다(2026-11-24 원장 결정: 항상 고쳐진 내용으로 연다). 그래서 저장본에 내장된 그림(data: URL)을 되돌려 보내는 단계는 없다.
   function saveWireQuestion(question) {
     const record = state.byUid.get(question?.questionUid);
     if (!record) return question;
@@ -1573,9 +1521,7 @@
       saveResultState: "",
       derivationSource: null,
       derive: null,
-      derivedBaseQuestions: null,
     });
-    derivedBaseLoad = null;
     return hadUidRoute;
   }
   // 만들던 문제지 삭제: 이 기기(브라우저)에 저장된 작업만 지운다. 보관함 문제지와 이미 낸 출제는 건드리지 않는다.
@@ -1672,7 +1618,6 @@
     validateSavedPaperRevision,
     applySavedPaperRevision,
     openSavedPaperRevision,
-    ensureDerivedBaseQuestions,
     openOriginalIssue,
     openSavedPaperIssue,
     assignRequest,
@@ -1691,13 +1636,6 @@
     refreshComposeSaveContinuity,
     refreshComposeBar,
     savePapers,
-    SAVE_EMBEDDED_FIELDS,
-    SAVE_DATA_URL,
-    SAVE_HTML_IMAGE_REF,
-    SAVE_IMAGE_MARK,
-    saveEmbeddableRef,
-    saveOriginalIfOnlyImagesDiffer,
-    saveWireQuestionsFor,
     saveWireQuestion,
     SAVE_FINDER_ONLY_FILTER_KEYS,
     saveRequestFilters,

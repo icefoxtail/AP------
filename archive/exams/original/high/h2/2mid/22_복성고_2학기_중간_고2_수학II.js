@@ -92,7 +92,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 x=-2부터 0까지 높이 1인 수평선이고, 가운데는 0부터 2까지 높이 -1인 수평선이다. x=2에서 오른쪽 위로 향하는 직선이 열린 점 (2,2)에서 시작하며, x=0과 x=2에는 높이 0인 점이 따로 표시되어 있다.",
+    "solutionImageCaption": "x가 0에 왼쪽에서 가까워질 때 높이는 1, 오른쪽에서 가까워질 때 높이는 -1이다. x가 2에 오른쪽에서 가까워질 때는 열린 점 (2,2)를 향하므로 높이는 2이다. 실제 함수값 f(0)=0, f(2)=0은 극한 계산에 쓰지 않는다. 따라서 1-(-1)+2=4이므로 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -734,7 +738,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 점 P를 지나는 원점 중심의 원과 x축 위의 점 Q, 두 점 P, Q를 지나는 직선이 y축과 만나는 점 R이 표시된 그래프이다.",
+    "solutionImageCaption": "예: P(t,t²)에서 t=3/4일 때를 그린다. OP=t√(1+t²)=15/16이므로 원점 중심의 원이 P를 지나 x축과 만나는 점이 Q(15/16,0)이다. 직선 PQ(l)의 기울기는 -3이고 y절편은 R(0,45/16)이다. 일반적으로 r_t=√(1+t²)(√(1+t²)+1)이므로 t→0+에서 r_t→1×(1+1)=2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -996,6 +1004,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선과 삼차곡선이 점 P에서 만나고, P에서 두 곡선에 함께 접하는 직선 t가 그려진 그래프이다.",
+    "solutionImageCaption": "(3) 첫 곡선 y=x²+ax-3이 (1,-1)을 지나므로 a=1이다. 기울기 2x+a=3이고 둘째 곡선의 기울기 3x²+b=3에서 b=0, 1+b+c=-1에서 c=-2이다. 그림의 두 곡선 y=x²+x-3(포물선)과 g: y=x³-2는 P(1,-1)에서 만나며 공통 접선 y=3x-4(직선 t)를 가진다. 답은 a=1, b=0, c=-2, 접선 y=3x-4이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -40,7 +40,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q2-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q2-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간에 따른 넓이와 처음 넓이를 나타내는 수평선을 비교한다. 출발 순간을 제외한 만남을 찾는다.",
+    "solutionImageCaption": "시간에 따른 넓이와 처음 넓이를 나타내는 수평선을 비교한다. 출발 순간을 제외한 만남을 찾는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -80,7 +84,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선은 폭이 같다. 꼭짓점의 위치를 비교하여 평행이동의 방향과 크기를 판단한다.",
+    "solutionImageCaption": "두 포물선은 폭이 같다. 꼭짓점의 위치를 비교하여 평행이동의 방향과 크기를 판단한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -122,7 +130,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q6-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q6-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이의 수평선에서 중점 C와 삼등분점 D의 가로좌표를 읽어 각각의 이차함수에 대입한다.",
+    "solutionImageCaption": "같은 높이의 수평선에서 중점 C와 삼등분점 D의 가로좌표를 읽어 각각의 이차함수에 대입한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -164,7 +176,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q8-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q8-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 위 두 꼭짓점의 가로 차와 세로 차가 같은 정사각형을 확인한다. 가로좌표의 비를 함께 사용한다.",
+    "solutionImageCaption": "곡선 위 두 꼭짓점의 가로 차와 세로 차가 같은 정사각형을 확인한다. 가로좌표의 비를 함께 사용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -186,7 +202,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q9-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원본과 같은 부호를 가진 예시에서 원점을 지나는 위로 열린 곡선과 새 곡선의 방향을 비교한다. 예시의 계수 크기는 일반값이 아니다.",
+    "solutionImageCaption": "원본과 같은 부호를 가진 예시에서 원점을 지나는 위로 열린 곡선과 새 곡선의 방향을 비교한다. 예시의 계수 크기는 일반값이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -208,7 +228,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q10-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 두 포물선과 수평선 y=9가 그려져 있고, 수평선 위에 왼쪽부터 네 교점 A, B, C, D가 표시되어 있다. 세 선분 AB, BC, CD가 나란히 그려져 있다.",
+    "solutionImageCaption": "직선 y=9와 y=x²의 교점은 A(−3,9), D(3,9)이고, y=ax²의 교점은 B, C이다. AB=BC=CD이려면 B, C의 x좌표가 각각 −1, 1이어야 하므로 y=ax²의 그래프가 점 (1,9)를 지난다. 9=a×1²에서 a=9이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -248,7 +272,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 두 포물선이 있고, 한 포물선의 꼭짓점에서 다른 포물선의 꼭짓점으로 향하는 선분과 한 포물선 위의 점이 표시되어 있다.",
+    "solutionImageCaption": "y=a(x−p)²의 그래프를 x축 방향으로 −1만큼, y축 방향으로 −2만큼 평행이동한 그래프의 꼭짓점이 (3,−2)이므로 p−1=3에서 p=4이다. 이 그래프가 점 (4,1)을 지나므로 1=a×1²−2에서 a=3이다. 따라서 a+p=3+4=7이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -268,7 +296,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 주어진 점으로 정한 포물선에서 가로좌표가 같은 위치의 높이를 읽는다.",
+    "solutionImageCaption": "꼭짓점과 주어진 점으로 정한 포물선에서 가로좌표가 같은 위치의 높이를 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -288,7 +320,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축과 꼭짓점, 세로축과 만나는 위치를 구별하여 각 설명을 확인한다.",
+    "solutionImageCaption": "대칭축과 꼭짓점, 세로축과 만나는 위치를 구별하여 각 설명을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -310,7 +346,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q15-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 세로축의 주어진 점을 꼭짓점형에 대입하여 계수를 정한다.",
+    "solutionImageCaption": "꼭짓점과 세로축의 주어진 점을 꼭짓점형에 대입하여 계수를 정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -354,7 +394,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축의 두 점과 꼭짓점의 대칭 관계를 이용하고 사각형을 삼각형으로 나누어 넓이를 확인한다.",
+    "solutionImageCaption": "가로축의 두 점과 꼭짓점의 대칭 관계를 이용하고 사각형을 삼각형으로 나누어 넓이를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -374,7 +418,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 예시와 아래로 열린 예시를 비교한다. 두 예시는 각 보기의 실제 좌표를 나타내는 것이 아니라 방향에 따른 성질을 보여 준다.",
+    "solutionImageCaption": "위로 열린 예시와 아래로 열린 예시를 비교한다. 두 예시는 각 보기의 실제 좌표를 나타내는 것이 아니라 방향에 따른 성질을 보여 준다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -394,7 +442,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 꼭짓점을 가진 예시 a=1이다. 세로축 왼쪽으로 갈수록 높아지는 부분과 세로축에서의 높이를 비교한다.",
+    "solutionImageCaption": "주어진 꼭짓점을 가진 예시 a=1이다. 세로축 왼쪽으로 갈수록 높아지는 부분과 세로축에서의 높이를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -442,7 +494,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 2.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 대칭에서는 가로좌표가 같고 높이의 부호만 바뀐다. 같은 가로좌표의 두 점을 비교한다.",
+    "solutionImageCaption": "가로축 대칭에서는 가로좌표가 같고 높이의 부호만 바뀐다. 같은 가로좌표의 두 점을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -474,7 +530,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"
+    "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 만나는 두 점 사이를 밑변으로 잡고 꼭짓점에서 가로축까지의 수직 거리를 높이로 비교한다.",
+    "solutionImageCaption": "가로축과 만나는 두 점 사이를 밑변으로 잡고 꼭짓점에서 가로축까지의 수직 거리를 높이로 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

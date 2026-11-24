@@ -25,7 +25,7 @@
 
 ## Archive 추출 입력 우선 — 사용자 지정 2026-10-09
 
-`docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md`를 따른다. 발문·보기·수식·문제 이미지가 추출된 이후에는 CREATE부터 JS·실제 에셋을 기본 입력으로 쓰며 PDF routine 전수 대조를 하지 않는다. 원본이 실제로 필요한 문항 결함만 qid·확인할 사실을 명시해 해당 영역을 대조한다. JS/asset SHA·intake provenance는 재사용하고 실제 하지 않은 원문 대조 PASS를 기록하지 않는다. 완전한 학생 입력·실제 에셋 열람과 독립 freeze, 문항 품질·렌더·HOLD·publication 기준은 유지한다. 아래의 기존 PDF 자동 선행·전 페이지 대조 요구보다 최신 사용자 지시가 우선한다.
+`docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md`를 따른다. 발문·보기·수식·문제 이미지가 추출된 이후에는 CREATE부터 JS·실제 에셋을 기본 입력으로 쓰며 PDF routine 전수 대조를 하지 않는다. 원본이 실제로 필요한 문항 결함만 qid·확인할 사실을 명시해 해당 영역을 대조한다. JS/asset SHA·intake provenance는 재사용하고 실제 하지 않은 원문 대조 PASS를 기록하지 않는다. 완전한 학생 입력·실제 에셋 열람과 독립 freeze, 문항 품질·렌더·HOLD·publication 기준은 유지한다. 아래의 기존 PDF 자동 선행·전 페이지 대조 요구보다 최신 사용자 지시가 우선한다. **원본 대조가 필수인 것은 처음 만들 때(CREATE·첫 반입)뿐이다. 그 뒤 수정은 수정 프로토콜 → 작업자 재량 → 원본 대조(참고) 순이고, 원본 때문에 HOLD·확인 대기·판단 불가로 남기거나 사용자에게 원본 확인을 부탁하지 않는다**(원장님 결정 2026-11-11·11-23·11-24, 원문: [common.md](common.md) 맨 위 절).
 
 ## Archive 2.0 Codex 실행 라인
 
@@ -56,7 +56,7 @@
 ## Archive Codex 실행 증거·수납 보완
 
 - assignment의 worktree/working JS/asset root/evidence root 절대 경로와 expected SHA를 첫 동작에서 확인한다. asset root는 실제 `assets/` 부모다.
-- CREATE 결함은 해당 qid 담당자의 JS·에셋 직접 수정 → 필요한 해당 PDF 영역 대조 → 원문 복구 불가능 시 승인 ALIVE 문형 대체 → 변경 qid R1/R2 검수로 완성한다. 신규 item/시험지/run HOLD를 발행하지 않으며 ROOT가 담당자·다음 행동을 연결하고 완료를 수납한다.
+- CREATE 결함은 해당 qid 담당자의 JS·에셋 직접 수정 → 필요한 해당 PDF 영역 대조 → 원문 복구 불가능 시 승인 ALIVE 문형 대체 → 변경 qid R1/R2 검수로 완성한다. 신규 item/시험지/run HOLD를 발행하지 않으며(2026-11-24: 바이트 고정 보류도 두지 않는다, [common.md](common.md) 맨 위 절) ROOT가 담당자·다음 행동을 연결하고 완료를 수납한다.
 - stage 결과는 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json`의 실제 raw generic report를 보존한다. custom PASS 요약이나 common-only PASS는 active artifact contract 증거를 대신하지 않는다.
 - ROOT는 publish 전에 실제 report schema, 전 qid 분모, JS·자산·receipt SHA를 수납한다. Git index와 remote bytes를 각각 확인하고 기존 파일도 raw witness와 다르면 명시한 경로만 재정규화·stage한다. 기존 실패와 수정 provenance는 보존한다.
 - 명시적 사용자 지시가 특정 run의 실제 캡처 요건을 면제하면 원문 지시·고정 roster·범위·SHA를 별도 evidence로 결속한다. `NOT_RUN_USER_WAIVER`와 `USER_DIRECTED_STATIC_COMPLETE`를 사용하고 실제 `RENDER_PASS`를 주장하지 않는다. JS/자산, R1/R2, item HOLD, production·remote readback 요건은 유지한다. 기본 actual render 계약은 유지한다.

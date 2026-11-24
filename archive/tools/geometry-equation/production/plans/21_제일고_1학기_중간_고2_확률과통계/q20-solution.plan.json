@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "NONE",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        0
+      ]
+    }
+  },
+  "caption": "세 눈 a, b, c 중 적어도 두 개가 같은 경우를 센다. 표는 a와 b의 6×6 칸이며 색칠한 대각선 6칸은 a=b인 경우로 c는 6가지이므로 36가지이다. 색칠하지 않은 30칸은 a, b가 다르므로 c가 a 또는 b와 같은 2가지씩 60가지이다. 합은 96가지이고 확률은 96/216=4/9이다. 여사건인 세 눈이 모두 다른 경우 6×5×4=120가지를 빼도 같다. 따라서 답은 ③이다.",
+  "newVisualInformation": [
+    "a=b인 대각선 6칸과 나머지 30칸이 구분되어 c가 6가지, 2가지인 경우로 나뉘는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 개의 주사위를 동시에 던져서 나온 눈의 수를 각각 $a, b, c$라고 할 때, $(a-b)^2(b-c)^2(c-a)^2=0$일 확률은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

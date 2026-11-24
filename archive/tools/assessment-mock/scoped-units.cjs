@@ -63,12 +63,25 @@ function middleL2Of(record, profileId) {
       : undefined,
   };
   const tree = treeFor(profileId);
-  const childKey = tree.childKeyOf(e.unitKey, wrapped);
+  let childKey = tree.childKeyOf(e.unitKey, wrapped);
+  let viaRow = false;
+  // 원본을 정식 수정한 문항(행이 등록된 때의 원본 지문과 지금 원본 지문이 다르고, 재결속 기록으로 발문·보기가 같다고 확인된 행)은
+  // 정본 판정이 검토 대기로 돌아가 비고, 화면 쪽 목차 판정도 "수정된 원본의 옛 부모는 쓰지 않는다"(rpm-middle-toc.js staleMetadata)로 중단원을 못 정한다.
+  // 유형·단원 판정은 발문·보기가 바뀌어도 쓴다는 결정(docs/agents/metadata.md)에 따라, 행에 적힌 중단원 이름을 같은 대단원의 중단원과 대조해 쓴다.
+  // 대단원이 다르거나 이름을 못 찾으면 그대로 미지정이다. 수정하지 않은 문항에는 적용하지 않는다.
+  const evidenceFp = record.metadataAssignmentEvidence && record.metadataAssignmentEvidence.sourceFingerprint;
+  const sourceCorrected = Boolean(evidenceFp && record.sourceFingerprint && evidenceFp !== record.sourceFingerprint);
+  if ((!childKey || childKey === Tree.NONE_KEY) && record.metaBinding === 'text' && sourceCorrected) {
+    const tax = record.unverifiedTaxonomy || {};
+    const hit = tax.L1 === e.unitLabel && tax.L2
+      ? tree.childrenOf(e.unitKey).find((child) => child.name === tax.L2 && child.key !== Tree.NONE_KEY) : null;
+    if (hit) { childKey = hit.key; viaRow = true; }
+  }
   if (!childKey || childKey === Tree.NONE_KEY) return null;
   const name = tree.childName(e.unitKey, childKey);
   // 중단원을 정한 길: exact(정본 판정 EXACT), reviewed(문항별 중단원 지정표), legacy(옛 소단원 키 매핑)
   const status = wrapped.rpmParentResolution && wrapped.rpmParentResolution.status;
-  const via = status === 'EXACT' ? 'exact' : (wrapped.rpmParentResolution && wrapped.rpmParentResolution.reviewedParent ? 'reviewed' : 'legacy');
+  const via = viaRow ? 'corrected-row' : status === 'EXACT' ? 'exact' : (wrapped.rpmParentResolution && wrapped.rpmParentResolution.reviewedParent ? 'reviewed' : 'legacy');
   return name ? { l1: e.unitLabel, l2: name, unitKey: e.unitKey, reason: e.reason, via } : null;
 }
 

@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/1000"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      2.5
+    ],
+    "viewport": [
+      -0.5,
+      2.5,
+      -0.08,
+      0.6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A0",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "A1",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "A2",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "B0",
+          "x": "0",
+          "y": "7/15",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "N"
+        },
+        {
+          "id": "B1",
+          "x": "1",
+          "y": "7/15",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "N"
+        },
+        {
+          "id": "B2",
+          "x": "2",
+          "y": "1/15",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "N"
+        }
+      ],
+      "segments": [
+        {
+          "id": "S0",
+          "from": "A0",
+          "to": "B0"
+        },
+        {
+          "id": "S1",
+          "from": "A1",
+          "to": "B1"
+        },
+        {
+          "id": "S2",
+          "from": "A2",
+          "to": "B2"
+        }
+      ]
+    }
+  },
+  "caption": "전체 경우는 10개 중 2개를 뽑는 45가지이다. X=0일 확률은 7/15, X=1일 확률은 7/15, X=2일 확률은 1/15이다. 불량품이 1개 이상일 확률은 7/15+1/15=8/15이다. 따라서 답은 8/15이다.",
+  "accessibilityDescription": "세로 막대 세 개가 나란히 서 있고, 높이는 왼쪽부터 7/15, 7/15, 1/15이다. 각 막대의 끝에는 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "확률변수 X=0, 1, 2에 대한 확률 7/15, 7/15, 1/15를 세로 막대로 나타냈다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형1. 3개의 불량품을 포함한 10개의 제품 중에서 임의로 2개를 동시에 꺼내려고 한다. 꺼낸 제품 중에서 불량품의 개수를 확률변수 $X$라고 할 때, 다음 물음에 답하시오. [6점]\n(1) $X$의 확률질량함수를 구하시오. (3점)\n(2) 불량품이 1개 이상일 확률을 구하시오. (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

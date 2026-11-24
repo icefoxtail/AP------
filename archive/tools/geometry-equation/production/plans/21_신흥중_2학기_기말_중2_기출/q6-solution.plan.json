@@ -1,0 +1,310 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "17이 빗변이면 x²=17²−15²=64"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vAB",
+              "ownerSegment": "AB",
+              "text": "15",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "CA",
+              "text": "8",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "17",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "x가 빗변이면 x²=17²+15²=514"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "17"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vAB",
+              "ownerSegment": "AB",
+              "text": "15",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "CA",
+              "text": "17",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "sqrt(514)",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "세 길이 17, 15, x 중 17이 빗변이면 x²=17²−15²=64이고, x가 빗변이면 x²=17²+15²=514이다. 가능한 x²의 값들의 차는 514−64=450이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 패널은 직각변이 15와 8, 빗변이 17인 직각삼각형이고 오른쪽 패널은 직각변이 15와 17, 빗변이 √514인 직각삼각형이다. 두 패널 모두 직각 표시와 변 길이가 적혀 있다.",
+  "newVisualInformation": [
+    "17이 빗변인 경우를 직각변 15, 8과 빗변 17로 그렸다.",
+    "x가 빗변인 경우를 직각변 15, 17과 빗변 √514로 그렸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "길이가 각각 $17\\text{ cm}$, $15\\text{ cm}$, $x\\text{ cm}$인 3개의 빨대를 이용하여 직각삼각형을 만들려고 할 때, 가능한 $x^2$의 값들의 차는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

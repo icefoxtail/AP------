@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-7",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "7",
+                "denominator": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "7",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "7",
+                "denominator": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-8",
+            "denominator": "7"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "47",
+                "denominator": "21"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "7",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "sSP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPQ",
+        "ownerSegment": "sPQ",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lQS",
+        "ownerSegment": "sQS",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lSP",
+        "ownerSegment": "sSP",
+        "text": "7",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "value": 43.585,
+        "label": "θ1",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "side": "INNER",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "Q",
+          "O",
+          "S"
+        ],
+        "value": 76.415,
+        "label": "θ2",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "side": "INNER",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "P",
+          "O",
+          "S"
+        ],
+        "value": 120,
+        "label": "θ3",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "side": "INNER",
+        "ring": 2,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q",
+    "S"
+  ],
+  "caption": "한 원 위에 세 점을 잡아 만든 세 현의 길이가 각각 3, 5, 7이고, 세 현에 대응하는 중심각을 θ1, θ2, θ3으로 나타낸 그림이다. θ3은 θ1과 θ2를 합한 각이다.",
+  "accessibilityDescription": "하나의 원 안에 길이가 3, 5, 7인 세 현이 삼각형 모양으로 그려져 있다. 원의 중심에서 세 현의 끝점으로 반지름이 이어져 있고, 중심 둘레에 세 중심각 θ1, θ2, θ3이 표시되어 있다.",
+  "newVisualInformation": [
+    "길이가 3, 5, 7인 세 현과 그에 대응하는 중심각 θ1, θ2, θ3을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원에 길이가 각각 $3, 5, 7$인 세 개의 현이 있다. 이 세 개의 현에 대응하는 중심각의 크기를 각각 $\\theta_1, \\theta_2, \\theta_3$이라 할 때, $\\theta_3 = \\theta_1 + \\theta_2$가 성립한다. $\\cos\\theta_2$의 값은? (단, $\\theta_3 < 180^\\circ$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

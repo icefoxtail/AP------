@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -3,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "5",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=ax의 그래프가 원점 (0, 0)과 점 (5, 4)를 지난다.",
+  "accessibilityDescription": "좌표평면에 원점을 지나 오른쪽 위로 올라가는 직선이 있고, 점 (5, 4)가 표시되어 있다.",
+  "newVisualInformation": [
+    "원점 (0, 0)을 지나는 직선",
+    "점 (5, 4)의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax$의 그래프가 원점 $(0, 0)$과 점 $(5, 4)$를 지날 때, 수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

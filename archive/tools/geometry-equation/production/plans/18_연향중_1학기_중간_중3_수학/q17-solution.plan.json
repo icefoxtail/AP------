@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "E",
+          "F",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "x+y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "x=2, y=1의 배치 예시이다. 중앙 연못의 넓이를 남은 잔디밭 넓이에 더해 전체 직사각형 넓이를 복원한 뒤 세로 길이로 나눈다.",
+  "accessibilityDescription": "x=2, y=1의 배치 예시이다. 중앙 연못의 넓이를 남은 잔디밭 넓이에 더해 전체 직사각형 넓이를 복원한 뒤 세로 길이로 나눈다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "E",
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 세로의 길이가 $x+y$인 직사각형 모양의 잔디밭 중앙에 한 변의 길이가 $x$인 정사각형 모양의 연못을 만들었더니 남은 잔디밭의 넓이가 $x^2+3xy+y^2$이었다. 이때 잔디밭의 가로의 길이를 구하여라.(5점) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "남은 넓이에 x²를 더하면2x²+3xy+y²=(2x+y)(x+y). 전체 가로2x+y는 최종답이므로 표시하지 않는다. 특정 그림은 x2,y1 예시이며 숫자 길이표시 없이 x,y 조건만 적는다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "예시 x2,y1을 기존 visible caption에 유지. 원점은 정규화; 전체 넓이(x²+3xy+y²)+x²=15 및 세로3에서 가로5를 유도한 평행이동으로 외곽 작도. 대각선 중점M에서 반변1씩 이동해 중앙 정사각형을 생성. 가로5는 출력 길이 라벨로 노출하지 않음. PLANE_FIGURE_v1은 NORMALIZATION_ORIGIN을 거절하고 SOURCE_POINT를 요구하므로, 단 하나의 시작 꼭짓점(0,0)은 임의 평행이동 자유도를 고정한 배치 앵커로 사용한다. 원문이 좌표0을 주었다는 뜻이 아니며 모든 길이와 위치관계는 뒤따르는 파생 연산에서 생성한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "남은 넓이에 x²를 더하면2x²+3xy+y²=(2x+y)(x+y). 전체 가로2x+y는 최종답이므로 표시하지 않는다. 특정 그림은 x2,y1 예시이며 숫자 길이표시 없이 x,y 조건만 적는다."
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE"
+}

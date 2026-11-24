@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "-4"
+      }
+    ],
+    "formula": "2 - 3*x"
+  },
+  "caption": "기울기 −3과점(2,−4)에서 y−3x+2. 원문상수항 −4로맞춰 6x+2y−4=0,a6,b2,합 8. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "기울기가 $-3$이고 점 $(2,-4)$를 지나는 직선의 방정식이 $ax+by-4=0$일 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

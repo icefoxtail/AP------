@@ -1,0 +1,297 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 AOD에서 각 AOD=115도이고 각 ADO=30도이므로 각 OAD=35도이다. AD와 BC가 평행하므로 x=35도이고, 각 BAD=65도+35도=100도이므로 이웃각 각 ADC=80도이다. 따라서 y=80도-30도=50도이고 x+y=85도이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평행사변형 ABCD의 두 대각선이 점 O에서 만나고, 점 A에는 65도와 35도의 각, 점 D에는 30도와 y의 각, 점 O에는 115도의 각, 점 C에는 x의 각이 표시되어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD와 두 대각선의 교점 O",
+    "점 A의 65도와 35도, 점 D의 30도와 y, 점 O의 115도, 점 C의 x 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "234",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-104189",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "209115",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "831811",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "209115",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lac",
+          "lbd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a100",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 100,
+        "label": "100",
+        "ring": 2,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a65",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 65,
+        "label": "65",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a35",
+        "refs": [
+          "O",
+          "A",
+          "D"
+        ],
+        "value": 35,
+        "label": "35",
+        "ring": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a30",
+        "refs": [
+          "A",
+          "D",
+          "O"
+        ],
+        "value": 30,
+        "label": "30",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a80",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 80,
+        "label": "80",
+        "ring": 2,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "value": 50,
+        "label": "y",
+        "ring": 1,
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "a115",
+        "refs": [
+          "A",
+          "O",
+          "D"
+        ],
+        "value": 115,
+        "label": "115",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 35,
+        "label": "x",
+        "ring": 1,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 평행사변형 ABCD에서 대각선의 교점을 O라 할 때, $\\angle x+\\angle y$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

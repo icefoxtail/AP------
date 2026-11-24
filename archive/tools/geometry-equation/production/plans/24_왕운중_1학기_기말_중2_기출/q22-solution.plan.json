@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-3/2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-3/2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "옮긴선은 y−3x/2+k+3이고(4,2)를지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-\\dfrac{3}{2}x+k$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 점 $(4,2)$를 지날 때, $k$의 값을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "옮긴선은y−3x/2+k+3이고(4,2)를지난다. k5이며원선절편5/새선8로위3이동을보존한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "옮긴선은y−3x/2+k+3이고(4,2)를지난다."
+  ]
+}

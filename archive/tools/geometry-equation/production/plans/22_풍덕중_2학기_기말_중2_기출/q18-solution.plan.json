@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "label": "x+y=5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "4",
+          "6"
+        ],
+        "label": "x+y=10"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P4",
+          "x": "4",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "P5",
+          "x": "5",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "P6",
+          "x": "6",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "⑤의 합 5 또는 10 조건을 분리하면 4점+3점=7점, 확률 7/36으로 1/18이 아니다. 두 눈은 1..6 정수이며 연속 직선은 안내선이다. 나머지 보기: 합≤12는 1, 차 6은 0, 곱 9는 1/36, 적어도 한 짝수는 3/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 개의 주사위를 동시에 던질 때 옳지 않은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

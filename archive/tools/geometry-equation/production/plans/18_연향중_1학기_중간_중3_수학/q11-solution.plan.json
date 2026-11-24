@@ -1,0 +1,571 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C0",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A0",
+          "B0",
+          "D0"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "temp1",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B0",
+          "C0"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "temp1",
+          "C0"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A1",
+          "B1",
+          "D1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "temp2",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B1",
+          "C1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "temp2",
+          "C1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A2",
+          "B2",
+          "D2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "temp3",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B2",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "temp3",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A3"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A3"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C3",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A3",
+          "B3",
+          "D3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "B0",
+    "C0",
+    "D0",
+    "A1",
+    "B1",
+    "C1",
+    "D1",
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "A3",
+    "B3",
+    "C3",
+    "D3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sA0B0",
+      "refs": [
+        "A0",
+        "B0"
+      ]
+    },
+    {
+      "id": "sB0C0",
+      "refs": [
+        "B0",
+        "C0"
+      ]
+    },
+    {
+      "id": "sC0D0",
+      "refs": [
+        "C0",
+        "D0"
+      ]
+    },
+    {
+      "id": "sD0A0",
+      "refs": [
+        "D0",
+        "A0"
+      ]
+    },
+    {
+      "id": "sA1B1",
+      "refs": [
+        "A1",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB1C1",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1D1",
+      "refs": [
+        "C1",
+        "D1"
+      ]
+    },
+    {
+      "id": "sD1A1",
+      "refs": [
+        "D1",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2D2",
+      "refs": [
+        "C2",
+        "D2"
+      ]
+    },
+    {
+      "id": "sD2A2",
+      "refs": [
+        "D2",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA3B3",
+      "refs": [
+        "A3",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3C3",
+      "refs": [
+        "B3",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3D3",
+      "refs": [
+        "C3",
+        "D3"
+      ]
+    },
+    {
+      "id": "sD3A3",
+      "refs": [
+        "D3",
+        "A3"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lA0B0",
+        "ownerSegment": "sA0B0",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lA1B1",
+        "ownerSegment": "sA1B1",
+        "text": "2*sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lA2B2",
+        "ownerSegment": "sA2B2",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lA3B3",
+        "ownerSegment": "sA3B3",
+        "text": "6*sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "윗변을 맞춘 네 정사각형의 넓이가 세 배씩 커지면 변의 길이는 루트 삼 배씩 커진다. 위쪽 네 변을 차례로 더한다.",
+  "accessibilityDescription": "윗변을 맞춘 네 정사각형의 넓이가 세 배씩 커지면 변의 길이는 루트 삼 배씩 커진다. 위쪽 네 변을 차례로 더한다.",
+  "pointNames": {
+    "A0": "P",
+    "B3": "Q"
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 다음 그림과 같이 4개의 정사각형을 붙여서 새로운 도형을 만들었다. 이웃한 두 정사각형 중 큰 정사각형의 넓이는 작은 정사각형의 넓이의 3배이고, (가)의 한 변의 길이는 2일 때, $\\overline{\\mathrm{PQ}}$의 길이를 구하여라.(5점) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "기존 문제 SVG 직접 확인. 위쪽 정렬된 네 변은 2,2√3,6,6√3. 각 길이는 중간값이며 합8+8√3은 최종 라벨에서 숨긴다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "왼쪽 위 꼭짓점을 정규화 원점으로 잡음. 주어진 첫 변2, 면적3배에서 유도한 변2√3,6,6√3을 정확 평행이동량으로 사용. 각 아래 오른쪽 꼭짓점은 두 변의 벡터합. 일치하는 인접 위 꼭짓점은 두 번의 점대칭으로 복제해 원시좌표를 넣지 않음. PLANE_FIGURE_v1은 NORMALIZATION_ORIGIN을 거절하고 SOURCE_POINT를 요구하므로, 단 하나의 시작 꼭짓점(0,0)은 임의 평행이동 자유도를 고정한 배치 앵커로 사용한다. 원문이 좌표0을 주었다는 뜻이 아니며 모든 길이와 위치관계는 뒤따르는 파생 연산에서 생성한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG 직접 확인. 위쪽 정렬된 네 변은 2,2√3,6,6√3. 각 길이는 중간값이며 합8+8√3은 최종 라벨에서 숨긴다."
+  ],
+  "hiddenPointNames": [
+    "B0",
+    "C0",
+    "D0",
+    "A1",
+    "B1",
+    "C1",
+    "D1",
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "A3",
+    "C3",
+    "D3"
+  ],
+  "hiddenPointStyle": "NONE"
+}

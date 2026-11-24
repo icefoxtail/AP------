@@ -365,7 +365,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 안에 정사각형이 내접하고, 그 정사각형의 각 변의 중점을 이은 마름모가 있으며, 원 위의 한 사분원에 90도 호가 표시되어 있다.",
+    "solutionImageCaption": "두 정사각형과 원이 만드는 영역은 큰 정사각형 안쪽의 네 삼각형과 가운데 마름모, 원과 큰 정사각형 사이의 네 활꼴을 합해 9개이다. 9가지 색을 모두 한 번씩 쓰는 배치는 9!가지이고, 90도씩 회전한 네 배치가 같은 문양이 된다. 모든 색이 달라 90도, 180도, 270도 회전이 색 배치를 그대로 두지 않으므로 9!을 4로 나눈다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -784,7 +788,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "곡선 A는 대칭축이 30이고 B와 C는 대칭축이 70이다. B는 A를 평행이동한 것이어서 모양이 같고 표준편차가 같으며, C는 더 낮고 넓어 표준편차가 크다(ㄱ 참). 그림의 표준편차 값은 예이다. E(Y)=70이고 E(2X+10)=2×30+10=70이어서 같다(ㄴ 참). Y=2X+100이면 평균이 160이 되어 거짓이다(ㄷ). X와 Z는 각자 평균에서 대칭이어서 P(X≤30)=P(Z≥70)=1/2이다(ㄹ 참). 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -834,7 +842,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(50, 25)이므로 평균 50, 표준편차 5이다. 55는 z=1, 60은 z=2이다. 색칠한 구간의 넓이는 P(0≤Z≤2)−P(0≤Z≤1)=0.48−0.34=0.14이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -936,7 +948,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "상위 11%의 경계는 오른쪽 꼬리가 0.11인 점수이다. 평균에서 경계까지의 넓이는 0.5−0.11=0.39이고 표에서 P(0≤Z≤1.25)=0.39이므로 z=1.25이다. 점수는 45+20×1.25=70점이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1042,7 +1058,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "F(x+8)−F(x−2)는 폭이 10인 구간 (x−2, x+8]의 넓이이다. 구간의 중심 x+3이 평균 50일 때 넓이가 최대이므로 k=47이고 구간은 45부터 55까지이다. 표준편차 4로 표준화하면 z=−1.25부터 1.25까지이고 넓이는 2×0.39=0.78이다. 따라서 k+M=47+0.78=47.78이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1086,7 +1106,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "구간 [−1, 2]를 0을 경계로 [−1, 0]과 [0, 2]로 나눈다. 표준정규분포는 대칭이므로 P(−1≤Z≤0)=P(0≤Z≤1)=0.34이고 P(0≤Z≤2)=0.48이다. 합은 0.34+0.48=0.82이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1130,7 +1154,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "반품 수 X는 B(10000, 0.02)이고 평균 200, 표준편차 14인 정규분포로 근사한다. 228은 z=(228−200)/14=2이다. 색칠한 오른쪽 꼬리의 넓이는 0.5−0.48=0.02이다. 따라서 구하는 확률은 약 0.02이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1174,7 +1202,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "주어진 합은 X가 B(72, 1/3)을 따를 때 P(26≤X≤34)이다. 평균은 24, 표준편차는 4이므로 정규분포로 근사하면 26은 z=0.5, 34는 z=2.5이다. 색칠한 구간의 넓이는 P(0≤Z≤2.5)−P(0≤Z≤0.5)=0.49−0.19=0.30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

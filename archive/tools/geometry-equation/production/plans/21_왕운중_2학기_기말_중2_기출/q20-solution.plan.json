@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "요훈",
+        "elements": [
+          "3/7",
+          "4/7"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "준혁",
+        "elements": [
+          "1/3",
+          "2/3"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "현호",
+        "elements": [
+          "2/5",
+          "3/5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "한 명만 푸는 경우를 푸는 학생에 따라 나눈다. 요훈이만 풀 확률은 3/7×2/3×3/5=18/105이고, 준혁이만 풀 확률은 4/7×1/3×3/5=12/105이며, 현호만 풀 확률은 4/7×2/3×2/5=16/105이다. 세 경우는 서로 겹치지 않으므로 더하면 (18+12+16)/105=46/105이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 명의 학생이 수학문제를 풀 확률이 요훈이는 $\\frac{3}{7}$, 준혁이는 $\\frac{1}{3}$, 현호는 $\\frac{2}{5}$이다. 이때, 이 세 명의 학생이 하나의 문제를 풀 때, 한 명만 문제를 풀 확률을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 각 학생의 확률을 열로 놓고 한 명만 푸는 세 경우를 화살표 경로로 이었다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "요훈, 준혁, 현호의 푸는 확률과 못 푸는 확률이 열마다 두 값으로 놓이고, 한 명만 푸는 세 경로가 화살표로 이어져 있다."
+  ]
+}

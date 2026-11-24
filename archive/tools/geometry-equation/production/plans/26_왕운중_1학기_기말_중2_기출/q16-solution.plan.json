@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "100",
+          "-5/4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      80
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "80"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "100"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "95"
+      },
+      {
+        "id": "P2",
+        "x": "80",
+        "y": "0"
+      }
+    ],
+    "formula": "100 - 5*x/4"
+  },
+  "caption": "문제의 일정감소 모형에서 4분마다 5%포인트 감소. 100/5=20회,80분후 0%. 실제잔량범위 0~100%와시간 0~80분만 표시한다. 정답 1시간 20분.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어떤 스마트폰 배터리가 4분마다 5%씩 감소한다고 하자. 현재 이 스마트폰의 배터리가 100%라고 할 때, 배터리가 완전히 방전되는 것은 몇 시간 몇 분 후인가? (단, 동영상 시청 이외의 다른 상황은 생각하지 않는다.) [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

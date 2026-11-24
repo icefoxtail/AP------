@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "O1",
+    "K",
+    "Q",
+    "N",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4P1",
+      "refs": [
+        "P4",
+        "P1"
+      ]
+    },
+    {
+      "id": "sAK",
+      "refs": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sKQ",
+      "refs": [
+        "K",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dCylR",
+        "from": "O1",
+        "to": "P2",
+        "label": "a",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dCylH",
+        "from": "P2",
+        "to": "P3",
+        "label": "3a-6b",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dConeR",
+        "from": "N",
+        "to": "Q",
+        "label": "3a",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "O1",
+    "K",
+    "Q",
+    "N",
+    "A"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원기둥 모양 그릇과 원뿔 모양 그릇을 나란히 옆에서 본 모양이다. 원기둥의 밑면 반지름과 높이, 원뿔의 밑면 반지름이 주어져 있고 원뿔의 높이는 구해야 하는 값이다.",
+  "accessibilityDescription": "왼쪽에 원기둥을 옆에서 본 직사각형이, 오른쪽에 원뿔을 옆에서 본 삼각형이 있다. 원기둥의 밑면 반지름은 a, 높이는 3a-6b로 표시되어 있고, 원뿔의 밑면 반지름은 3a로 표시되어 있으며 원뿔의 높이는 표시되어 있지 않다.",
+  "newVisualInformation": [
+    "원기둥의 밑면의 반지름이 a이다",
+    "원기둥의 높이가 3a-6b이다",
+    "원뿔의 밑면의 반지름이 3a이다",
+    "원뿔의 높이는 주어져 있지 않다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 2]  \n밑면의 반지름의 길이가 $a$, 높이가 $3a - 6b$인 원기둥 모양의 그릇에 가득 들어 있는 물을 밑면의 반지름의 길이가 $3a$인 원뿔 모양의 그릇에 모두 부었더니 물이 넘치지 않고 가득 찼다. 다음 물음에 답하시오. (단, 그릇의 두께는 생각하지 않는다.) [7점]\n\n(1) 원기둥의 부피를 구하는 과정을 서술하시오. [3점]\n\n(2) (1)에서 구한 원기둥의 부피를 이용하여 원뿔의 높이를 구하는 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

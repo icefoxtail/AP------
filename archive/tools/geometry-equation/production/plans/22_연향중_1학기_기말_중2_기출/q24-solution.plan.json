@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "120",
+          "20"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "2",
+        "y": "160"
+      },
+      {
+        "id": "P1",
+        "x": "6",
+        "y": "240"
+      }
+    ],
+    "formula": "(20)*x+(120)",
+    "axisScale": {
+      "x": "1",
+      "y": "1/20"
+    }
+  },
+  "caption": "CP=2x. 평행한 AB12/CP2x, 높이 AD20으로 y=(12+2x)20/2=120+20x. 실제 0<x≤6에서 (2,160)이 목표. x0은 원문 정의역에서 제외, 240은 전체 직사각형 넓이. 정답 2초.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형4. 그림과 같은 직사각형 $ABCD$에서 점 $P$가 점 $C$를 출발하여 점 $D$까지 초속 $2\\mathrm{cm}$로 움직일 때, 점 $P$가 점 $C$를 출발한 지 $x$초 후에 사각형 $ABCP$의 넓이를 $y\\mathrm{cm}^2$라 하자. 이때, 다음 물음에 답하시오. (단, $0<x\\le6$)\n(1) $x$와 $y$ 사이의 관계식을 구하시오. (반드시 $\\overline{CP}$의 길이를 언급할 것)\n(2) 사각형 $ABCP$의 넓이가 $160\\mathrm{cm}^2$이 되는 것은 점 $P$가 점 $C$를 출발한 지 몇 초 후인지 구하시오. 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "CP=2x. 평행한AB12/CP2x,높이AD20으로y=(12+2x)20/2=120+20x. 실제0<x≤6에서(2,160)이목표. x0은원문정의역에서제외,240은전체직사각형넓이. 정답2초.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "CP=2x. 평행한AB12/CP2x,높이AD20으로y=(12+2x)20/2=120+20x. 실제0<x≤6에서(2,160)이목표. x0은원문정의역에서제외,240은전체직사각형넓이. 정답2초."
+  ]
+}

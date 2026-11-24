@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -9,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "low",
+        "y": "0",
+        "intersectionX": [
+          "0",
+          "2"
+        ]
+      },
+      {
+        "id": "high",
+        "y": "1",
+        "intersectionX": [
+          "1",
+          "1+sqrt(2)"
+        ]
+      }
+    ]
+  },
+  "caption": "교점 조건을 k=x|x−2|로 정리한다. 수평선 높이가 꼭짓점이나 두 조각의 접합점 높이를 지날 때 교점 수가 달라진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체 집합에서 연속인 함수 $f(x)$가 다음 조건을 만족시킨다.\n(가) $\\displaystyle\\int_0^4\\dfrac{1}{6}f(t),dt=a$\n(나) $f(x)=|x-2|+\\dfrac{1}{6}\\displaystyle\\int_0^4 xf(t),dt$\n(다) $g(k)$는 두 곡선 $y=xf(x)-k$, $y=ax^2$의 교점의 개수이다. (단, $k$는 실수)\n함수 $g(x)(x^2+bx+c)$가 실수 전체 집합에서 연속일 때, $a+b+c$의 값을 구하면? (단, $a,b,c$는 상수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "적분상수a−2. H=x|x−2|의수평교점: k<0 1,k0 2,0<k<1 3,k1 2,k>1 1. 곱연속조건의경계0/1을보이며최종a+b+c−3숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분상수a−2. H=x|x−2|의수평교점: k<0 1,k0 2,0<k<1 3,k1 2,k>1 1. 곱연속조건의경계0/1을보이며최종a+b+c−3숨김."
+  ]
+}

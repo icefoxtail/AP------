@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "14",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫두점(1,2),(3,8)의기울기 3과같은평행선이(4,14)를지나면 y3x+2. x2에서 a8. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(2,a)$와 $(4,14)$를 지나는 일차함수의 그래프가 두 점 $(1,2)$와 $(3,8)$을 지나는 일차함수의 그래프와 평행할 때, $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}
