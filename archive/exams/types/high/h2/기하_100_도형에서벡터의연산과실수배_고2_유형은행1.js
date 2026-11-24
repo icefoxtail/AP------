@@ -1,0 +1,270 @@
+window.examTitle = "기하_100_도형에서벡터의연산과실수배_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "평행사변형 $\\text{ABCD}$에서 점 $\\text{P}$는 변 $\\text{AB}$를 $4:1$로 내분하고 점 $\\text{Q}$는 대각선 $\\text{BD}$를 $1:5$로 내분한다. 이때 $\\vec{\\text{QC}} = k\\vec{\\text{PQ}}$를 만족시키는 실수 $k$의 값은?\n[그림: 평행사변형 $\\text{ABCD}$에서 점 $\\text{P}$는 선분 $\\text{AB}$ 위에 있으며 $\\text{AP}:\\text{PB}=4:1$이다. 대각선 $\\text{BD}$ 위에 점 $\\text{Q}$가 있어 $\\text{BQ}:\\text{QD}=1:5$를 만족하고, 세 점 $\\text{P, Q, C}$는 일직선상에 연결되어 있다.]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "⑤",
+    "solution": "기준 벡터 설정: $\\vec{\\text{AB}} = \\vec{a}$, $\\vec{\\text{AD}} = \\vec{b}$라 하면 평행사변형의 성질에 의해 $\\vec{\\text{AC}} = \\vec{a} + \\vec{b}$이다.\n점 $\\text{P}$의 위치벡터 구하기: 점 $\\text{P}$는 선분 $\\text{AB}$를 $4:1$로 내분하므로 $\\vec{\\text{AP}} = \\frac{4}{4+1}\\vec{\\text{AB}} = \\frac{4}{5}\\vec{a}$이다.\n선분의 내분점 공식으로 점 $\\text{Q}$의 위치벡터 구하기: 점 $\\text{Q}$는 선분 $\\text{BD}$를 $1:5$로 내분하므로 $\\vec{\\text{AQ}} = \\frac{5\\vec{\\text{AB}} + 1\\vec{\\text{AD}}}{1+5} = \\frac{5}{6}\\vec{a} + \\frac{1}{6}\\vec{b}$이다.\n벡터의 뺄셈으로 $\\vec{\\text{PQ}}$ 표현하기: $\\vec{\\text{PQ}} = \\vec{\\text{AQ}} - \\vec{\\text{AP}} = \\left(\\frac{5}{6}\\vec{a} + \\frac{1}{6}\\vec{b}\\right) - \\frac{4}{5}\\vec{a} = \\left(\\frac{5}{6} - \\frac{4}{5}\\right)\\vec{a} + \\frac{1}{6}\\vec{b} = \\frac{1}{30}\\vec{a} + \\frac{1}{6}\\vec{b}$이다.\n벡터의 뺄셈으로 $\\vec{\\text{QC}}$ 표현하기: $\\vec{\\text{QC}} = \\vec{\\text{AC}} - \\vec{\\text{AQ}} = (\\vec{a} + \\vec{b}) - \\left(\\frac{5}{6}\\vec{a} + \\frac{1}{6}\\vec{b}\\right) = \\frac{1}{6}\\vec{a} + \\frac{5}{6}\\vec{b}$이다.\n실수배 $k$의 값 비교: $\\vec{\\text{QC}} = \\frac{1}{6}\\vec{a} + \\frac{5}{6}\\vec{b} = 5\\left(\\frac{1}{30}\\vec{a} + \\frac{1}{6}\\vec{b}\\right) = 5\\vec{\\text{PQ}}$이므로 $k = 5$이다.\n주의: 시점을 꼭짓점 $\\text{A}$로 통일하여 내분점 공식과 벡터의 뺄셈을 차례대로 적용해야 계산 오류를 방지할 수 있다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_INTERNAL_DIVISION",
+      "CC_PARALLELOGRAM_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "직사각형 $\\text{ABCD}$에서 점 $\\text{E}$는 선분 $\\text{DC}$의 중점이고 점 $\\text{F}$는 선분 $\\text{BC}$를 $1:2$로 내분하는 점이다. $\\vec{\\text{AE}}=\\vec{a}$, $\\vec{\\text{AF}}=\\vec{b}$라 할 때, $\\vec{\\text{AC}} = m\\vec{a} + n\\vec{b}$가 성립하도록 하는 두 상수 $m, n$에 대하여 $10(m+n)$의 값은?\n[그림: 직사각형 $\\text{ABCD}$에서 점 $\\text{E}$는 변 $\\text{DC}$의 중점이고, 점 $\\text{F}$는 변 $\\text{BC}$ 위에 위치하며 $\\text{BF}:\\text{FC}=1:2$이다. 점 $\\text{A}$에서 세 점 $\\text{E, F, C}$로 각각 선분이 그어져 있다.]",
+    "choices": [
+      "8",
+      "10",
+      "12",
+      "14",
+      "16"
+    ],
+    "answer": "④",
+    "solution": "기본 벡터 설정: $\\vec{\\text{AB}} = \\vec{x}$, $\\vec{\\text{AD}} = \\vec{y}$라 하면 직사각형에서 $\\vec{\\text{DC}} = \\vec{x}$, $\\vec{\\text{BC}} = \\vec{y}$, $\\vec{\\text{AC}} = \\vec{x} + \\vec{y}$이다.\n점 $\\text{E}$의 조건으로 벡터 $\\vec{a}$ 표현하기: 점 $\\text{E}$가 선분 $\\text{DC}$의 중점이므로 $\\vec{\\text{DE}} = \\frac{1}{2}\\vec{x}$이고, $\\vec{a} = \\vec{\\text{AE}} = \\vec{\\text{AD}} + \\vec{\\text{DE}} = \\frac{1}{2}\\vec{x} + \\vec{y} \\quad \\cdots \\text{ (i)}$이다.\n점 $\\text{F}$의 조건으로 벡터 $\\vec{b}$ 표현하기: 점 $\\text{F}$가 선분 $\\text{BC}$를 $1:2$로 내분하므로 $\\vec{\\text{BF}} = \\frac{1}{3}\\vec{y}$이고, $\\vec{b} = \\vec{\\text{AF}} = \\vec{\\text{AB}} + \\vec{\\text{BF}} = \\vec{x} + \\frac{1}{3}\\vec{y} \\quad \\cdots \\text{ (ii)}$이다.\n연립방정식을 풀어 $\\vec{y}$ 구하기: 식 (ii)에 $\\frac{1}{2}$을 곱하면 $\\frac{1}{2}\\vec{x} + \\frac{1}{6}\\vec{y} = \\frac{1}{2}\\vec{b}$이고, 식 (i)에서 이를 빼면 $\\left(1 - \\frac{1}{6}\\right)\\vec{y} = \\vec{a} - \\frac{1}{2}\\vec{b}$이므로 $\\frac{5}{6}\\vec{y} = \\vec{a} - \\frac{1}{2}\\vec{b} \\implies \\vec{y} = \\frac{6}{5}\\vec{a} - \\frac{3}{5}\\vec{b}$이다.\n$\\vec{x}$ 구하기: 식 (ii)에 $\\vec{y}$를 대입하면 $\\vec{x} = \\vec{b} - \\frac{1}{3}\\vec{y} = \\vec{b} - \\frac{1}{3}\\left(\\frac{6}{5}\\vec{a} - \\frac{3}{5}\\vec{b}\\right) = -\\frac{2}{5}\\vec{a} + \\frac{6}{5}\\vec{b}$이다.\n$\\vec{\\text{AC}}$를 $\\vec{a}, \\vec{b}$로 표현하기: $\\vec{\\text{AC}} = \\vec{x} + \\vec{y} = \\left(-\\frac{2}{5}\\vec{a} + \\frac{6}{5}\\vec{b}\\right) + \\left(\\frac{6}{5}\\vec{a} - \\frac{3}{5}\\vec{b}\\right) = \\frac{4}{5}\\vec{a} + \\frac{3}{5}\\vec{b}$이다.\n두 상수 $m, n$과 구하는 값 계산하기: $m = \\frac{4}{5}, n = \\frac{3}{5}$이므로 $m + n = \\frac{7}{5}$이고, $10(m+n) = 10 \\times \\frac{7}{5} = 14$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_MIDPOINT",
+      "CC_INTERNAL_DIVISION",
+      "CC_RECTANGLE_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "중심이 $\\text{O}$이고 반지름의 길이가 1인 원 위의 세 점 $\\text{A, B, C}$가 다음 조건을 모두 만족시킨다. $\\vec{\\text{OA}}=\\vec{a}$, $\\vec{\\text{OB}}=\\vec{b}$, $\\vec{\\text{OC}}=\\vec{c}$일 때, $\\vec{c}$를 $\\vec{a}, \\vec{b}$로 나타내면?\n(가) $\\angle\\text{AOB} = 60^\\circ$\n(나) $\\vec{\\text{OC}}$는 $\\angle\\text{AOB}$의 이등분선이다.\n[그림: 중심이 $\\text{O}$이고 반지름의 길이가 1인 원 위에 두 점 $\\text{A, B}$가 있으며 $\\angle\\text{AOB}=60^\\circ$이다. 점 $\\text{C}$는 호 $\\text{AB}$ 위에 있고 선분 $\\text{OC}$는 $\\angle\\text{AOB}$를 이등분한다.]",
+    "choices": [
+      "\\frac{1}{3}(\\vec{a}+\\vec{b})",
+      "\\frac{1}{2}(\\vec{a}+\\vec{b})",
+      "\\frac{\\sqrt{3}}{3}(\\vec{a}+\\vec{b})",
+      "\\frac{\\sqrt{2}}{2}(\\vec{a}+\\vec{b})",
+      "\\frac{\\sqrt{3}}{2}(\\vec{a}+\\vec{b})"
+    ],
+    "answer": "③",
+    "solution": "삼각형의 기하적 성질 파악: $|\\vec{a}| = 1, |\\vec{b}| = 1$이고 $\\angle\\text{AOB} = 60^\\circ$이므로 삼각형 $\\text{OAB}$는 한 변의 길이가 1인 정삼각형이다.\n선분 $\\text{AB}$의 중점 벡터 구하기: 선분 $\\text{AB}$의 중점을 $\\text{M}$이라 하면 $\\vec{\\text{OM}} = \\frac{\\vec{a} + \\vec{b}}{2}$이다.\n선분 $\\text{OM}$의 길이 계산: 정삼각형의 높이 공식에 의해 $\\text{OM} = 1 \\times \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}$이다.\n각의 이등분선의 방향 파악: 조건 (나)에 의해 $\\vec{\\text{OC}}$는 $\\angle\\text{AOB}$를 이등분하므로 $\\vec{\\text{OC}}$와 $\\vec{\\text{OM}}$은 방향이 같은 유향선분이다.\n단위벡터의 실수배로 $\\vec{c}$ 구하기: 점 $\\text{C}$는 원 위의 점이므로 $|\\vec{c}| = 1$이고, $\\vec{c} = \\frac{|\\vec{\\text{OC}}|}{|\\vec{\\text{OM}}|}\\vec{\\text{OM}} = \\frac{1}{\\frac{\\sqrt{3}}{2}}\\vec{\\text{OM}} = \\frac{2}{\\sqrt{3}}\\left(\\frac{\\vec{a}+\\vec{b}}{2}\\right) = \\frac{\\sqrt{3}}{3}(\\vec{a}+\\vec{b})$이다.\n주의: $\\vec{a}+\\vec{b}$는 이등분선 방향의 벡터이지만 그 크기가 $\\sqrt{3}$이므로, 반드시 크기로 나누어 단위벡터를 만들어야 한다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_CIRCLE_RADIUS_DEFINITION",
+      "CC_ANGLE_BISECTOR",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "반지름의 길이가 1, 중심각의 크기가 $\\frac{\\pi}{2}$인 부채꼴 $\\text{OAB}$에서 $\\vec{\\text{OA}}=\\vec{a}$, $\\vec{\\text{OB}}=\\vec{b}$라 하자. $\\angle\\text{AOC}=45^\\circ$인 부채꼴의 호 위의 점 $\\text{C}$에 대하여 $\\vec{\\text{OC}}=m\\vec{a}+n\\vec{b}$라 할 때, $mn$의 값은? (단, $m, n$은 실수이다.)\n[그림: 중심이 $\\text{O}$이고 반지름이 1인 사분원 부채꼴 $\\text{OAB}$에서 $\\vec{\\text{OA}}=\\vec{a}$는 가로 방향, $\\vec{\\text{OB}}=\\vec{b}$는 세로 방향이며 수직이다. 호 $\\text{AB}$ 위의 점 $\\text{C}$는 선분 $\\text{OA}$와 이루는 각의 크기가 $45^\\circ$이다.]",
+    "choices": [
+      "\\frac{1}{4}",
+      "\\frac{1}{2}",
+      "\\frac{\\sqrt{2}}{2}",
+      "\\frac{\\sqrt{3}}{2}",
+      "1"
+    ],
+    "answer": "②",
+    "solution": "좌표평면 도입: 점 $\\text{O}$를 원점 $(0, 0)$으로 하고, 직선 $\\text{OA}$를 $x$축, 직선 $\\text{OB}$를 $y$축으로 잡으면 $\\vec{a} = (1, 0)$, $\\vec{b} = (0, 1)$이다.\n점 $\\text{C}$의 좌표 표현: 점 $\\text{C}$는 반지름이 1인 단위원 호 위에 있고 $x$축의 양의 방향과 이루는 각이 $45^\\circ$이므로 $\\text{C} = (\\cos 45^\\circ, \\sin 45^\\circ) = \\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right)$이다.\n위치벡터 $\\vec{\\text{OC}}$의 성분 분해: $\\vec{\\text{OC}} = \\left(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2}\\right) = \\frac{\\sqrt{2}}{2}(1, 0) + \\frac{\\sqrt{2}}{2}(0, 1) = \\frac{\\sqrt{2}}{2}\\vec{a} + \\frac{\\sqrt{2}}{2}\\vec{b}$이다.\n계수 $m, n$ 결정: $\\vec{\\text{OC}} = m\\vec{a} + n\\vec{b}$와 비교하면 $m = \\frac{\\sqrt{2}}{2}, n = \\frac{\\sqrt{2}}{2}$이다.\n$mn$의 값 계산하기: $mn = \\frac{\\sqrt{2}}{2} \\times \\frac{\\sqrt{2}}{2} = \\frac{2}{4} = \\frac{1}{2}$이다.\n역산 및 검산: 점 $\\text{C}$에서 선분 $\\text{OA, OB}$에 내린 수선의 길이는 직각이등변삼각형에 의해 모두 $1 \\times \\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2}}{2}$이므로 계수의 곱은 $\\frac{1}{2}$이 맞다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR",
+      "CC_RADIAN_DEGREE_CONVERSION",
+      "CC_CIRCLE_RADIUS_DEFINITION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "$\\text{AD} \\parallel \\text{BC}$, $\\text{AD}:\\text{BC}=3:4$인 사다리꼴 $\\text{ABCD}$가 있다. 두 벡터 $\\vec{\\text{AB}}=\\vec{a}$, $\\vec{\\text{AD}}=\\vec{b}$에 대하여 $\\vec{\\text{DC}}=m\\vec{a}+n\\vec{b}$일 때, 두 상수 $m, n$에 대하여 $m+n$의 값은?\n[그림: 윗변 $\\text{AD}$와 아랫변 $\\text{BC}$가 평행한 사다리꼴 $\\text{ABCD}$에서 $\\text{AD}:\\text{BC}=3:4$이다. 벡터 $\\vec{\\text{AB}}=\\vec{a}$, $\\vec{\\text{AD}}=\\vec{b}$가 주어져 있고, 점 $\\text{D}$에서 점 $\\text{C}$로 향하는 벡터 $\\vec{\\text{DC}}$가 표시되어 있다.]",
+    "choices": [
+      "\\frac{4}{3}",
+      "\\frac{3}{2}",
+      "\\frac{5}{3}",
+      "2",
+      "\\frac{7}{3}"
+    ],
+    "answer": "①",
+    "solution": "평행과 길이의 비를 이용한 $\\vec{\\text{BC}}$ 표현: $\\text{AD} \\parallel \\text{BC}$이고 $\\text{AD}:\\text{BC}=3:4$이므로 $\\vec{\\text{BC}} = \\frac{4}{3}\\vec{\\text{AD}} = \\frac{4}{3}\\vec{b}$이다.\n벡터의 덧셈으로 $\\vec{\\text{AC}}$ 구하기: $\\vec{\\text{AC}} = \\vec{\\text{AB}} + \\vec{\\text{BC}} = \\vec{a} + \\frac{4}{3}\\vec{b}$이다.\n벡터의 뺄셈으로 $\\vec{\\text{DC}}$ 표현하기: $\\vec{\\text{DC}} = \\vec{\\text{AC}} - \\vec{\\text{AD}} = \\left(\\vec{a} + \\frac{4}{3}\\vec{b}\\right) - \\vec{b} = \\vec{a} + \\left(\\frac{4}{3} - 1\\right)\\vec{b} = \\vec{a} + \\frac{1}{3}\\vec{b}$이다.\n상수 $m, n$ 결정: $\\vec{\\text{DC}} = m\\vec{a} + n\\vec{b}$에서 $m = 1, n = \\frac{1}{3}$이다.\n$m+n$의 값 계산하기: $m + n = 1 + \\frac{1}{3} = \\frac{4}{3}$이다.\n다른 풀이(둘레 경로 이용): $\\vec{\\text{DC}} = \\vec{\\text{DA}} + \\vec{\\text{AB}} + \\vec{\\text{BC}} = -\\vec{b} + \\vec{a} + \\frac{4}{3}\\vec{b} = \\vec{a} + \\frac{1}{3}\\vec{b}$로 직접 계산해도 $m+n = \\frac{4}{3}$을 얻는다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_TRAPEZOID",
+      "CC_PARALLEL_LINES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "사각형 $\\text{ABCD}$에서 선분 $\\text{AB}$ 위의 점 $\\text{M}$과 선분 $\\text{DC}$ 위의 점 $\\text{N}$에 대하여 $\\text{AM}:\\text{MB}=1:2$, $\\text{DN}:\\text{NC}=1:2$이다. $\\vec{\\text{AD}}=\\vec{a}$, $\\vec{\\text{BC}}=\\vec{b}$라 할 때, 벡터 $\\vec{\\text{MN}}$을 $\\vec{a}, \\vec{b}$로 나타내면?\n[그림: 사각형 $\\text{ABCD}$에서 변 $\\text{AB}$ 위의 점 $\\text{M}$은 $\\text{AM}:\\text{MB}=1:2$이고, 변 $\\text{DC}$ 위의 점 $\\text{N}$은 $\\text{DN}:\\text{NC}=1:2$이다. 점 $\\text{M}$에서 점 $\\text{N}$으로 향하는 벡터 $\\vec{\\text{MN}}$이 그어져 있고 $\\vec{\\text{AD}}=\\vec{a}$, $\\vec{\\text{BC}}=\\vec{b}$이다.]",
+    "choices": [
+      "\\frac{\\vec{a}+\\vec{b}}{3}",
+      "\\frac{\\vec{a}+2\\vec{b}}{3}",
+      "\\frac{2\\vec{a}+\\vec{b}}{3}",
+      "\\frac{\\vec{a}+3\\vec{b}}{4}",
+      "\\frac{3\\vec{a}+\\vec{b}}{4}"
+    ],
+    "answer": "③",
+    "solution": "경로를 이용한 벡터 합 식 작성:\n(i) 점 $\\text{A, D}$를 거치는 경로: $\\vec{\\text{MN}} = \\vec{\\text{MA}} + \\vec{\\text{AD}} + \\vec{\\text{DN}} = \\vec{\\text{MA}} + \\vec{a} + \\vec{\\text{DN}}$\n(ii) 점 $\\text{B, C}$를 거치는 경로: $\\vec{\\text{MN}} = \\vec{\\text{MB}} + \\vec{\\text{BC}} + \\vec{\\text{CN}} = \\vec{\\text{MB}} + \\vec{b} + \\vec{\\text{CN}}$\n내분 조건에 따른 역벡터 관계 파악: $\\text{AM}:\\text{MB} = 1:2$이므로 $\\vec{\\text{MB}} = -2\\vec{\\text{MA}} \\implies 2\\vec{\\text{MA}} + \\vec{\\text{MB}} = \\vec{0}$이고, $\\text{DN}:\\text{NC} = 1:2$이므로 $\\vec{\\text{CN}} = -2\\vec{\\text{DN}} \\implies 2\\vec{\\text{DN}} + \\vec{\\text{CN}} = \\vec{0}$이다.\n가중합 연립하기: 식 (i)의 양변에 2를 곱하면 $2\\vec{\\text{MN}} = 2\\vec{\\text{MA}} + 2\\vec{a} + 2\\vec{\\text{DN}}$이다.\n두 식 더하기: $2\\vec{\\text{MN}} + \\vec{\\text{MN}} = (2\\vec{\\text{MA}} + \\vec{\\text{MB}}) + (2\\vec{a} + \\vec{b}) + (2\\vec{\\text{DN}} + \\vec{\\text{CN}})$이다.\n영벡터 대입 및 정리: $3\\vec{\\text{MN}} = \\vec{0} + (2\\vec{a} + \\vec{b}) + \\vec{0} = 2\\vec{a} + \\vec{b}$이다.\n$\\vec{\\text{MN}}$ 정리: 양변을 3으로 나누면 $\\vec{\\text{MN}} = \\frac{2\\vec{a}+\\vec{b}}{3}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

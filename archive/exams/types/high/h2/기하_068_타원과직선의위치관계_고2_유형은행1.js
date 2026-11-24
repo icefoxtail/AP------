@@ -1,0 +1,261 @@
+window.examTitle = "기하_068_타원과직선의위치관계_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "실수 $m$에 대하여 타원 $3x^2 + 2y^2 = 6$과 직선 $y = mx + \\sqrt{11}$의 위치관계에 대한 설명으로 <보기>에서 옳은 것만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $m < -2$ 또는 $m > 2$이면 서로 다른 두 점에서 만난다.\nㄴ. $m = -2$ 또는 $m = 2$이면 한 점에서 만난다.\nㄷ. $-2 < m < 2$이면 만나지 않는다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "[타원과 직선의 연립] $3x^2 + 2(mx + \\sqrt{11})^2 = 6$\n[전개 및 동류항 정리] $3x^2 + 2(m^2 x^2 + 2\\sqrt{11}mx + 11) = 6$\n[내림차순 정리] $(2m^2 + 3)x^2 + 4\\sqrt{11}mx + 16 = 0$\n[이차방정식의 판별식 $D$ 계산] $D/4 = (2\\sqrt{11}m)^2 - (2m^2 + 3) \\times 16 = 44m^2 - 32m^2 - 48 = 12m^2 - 48 = 12(m^2 - 4)$\n[(i) 서로 다른 두 점에서 만나는 경우] $D/4 > 0 \\iff 12(m - 2)(m + 2) > 0 \\iff m < -2$ 또는 $m > 2$이므로 ㄱ은 참이다.\n[(ii) 한 점에서 만나는(접하는) 경우] $D/4 = 0 \\iff 12(m - 2)(m + 2) = 0 \\iff m = -2$ 또는 $m = 2$이므로 ㄴ은 참이다.\n[(iii) 만나지 않는 경우] $D/4 < 0 \\iff 12(m - 2)(m + 2) < 0 \\iff -2 < m < 2$이므로 ㄷ은 참이다.\n[결론] 따라서 <보기>에서 옳은 것은 ㄱ, ㄴ, ㄷ이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "타원 $x^2 + 4y^2 = 16$과 직선 $y = x + k$가 만나도록 하는 정수 $k$의 개수는?",
+    "choices": [
+      "5",
+      "7",
+      "9",
+      "11",
+      "13"
+    ],
+    "answer": "③",
+    "solution": "[타원과 직선의 연립] $x^2 + 4(x + k)^2 = 16$\n[식 전개] $x^2 + 4(x^2 + 2kx + k^2) = 16$\n[내림차순 정리] $5x^2 + 8kx + 4k^2 - 16 = 0$\n[이차방정식의 판별식 $D$ 계산] $D/4 = (4k)^2 - 5(4k^2 - 16) = 16k^2 - 20k^2 + 80 = -4k^2 + 80$\n[만나기 위한 조건 (판별식 $D \\ge 0$)] $-4k^2 + 80 \\ge 0 \\iff 4k^2 \\le 80 \\iff k^2 \\le 20$\n[부등식의 해 구하기] $-\\sqrt{20} \\le k \\le \\sqrt{20}$이고 $4 < \\sqrt{20} < 5$이므로 $-4.47 \\le k \\le 4.47$\n[정수 $k$의 값 나열] 만족하는 정수 $k$는 $-4, -3, -2, -1, 0, 1, 2, 3, 4$이다.\n[개수 계산] 구하는 정수의 개수는 $4 - (-4) + 1 = 9$개이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "타원 $5x^2 + y^2 = 5$와 직선 $y = mx + 3$이 만나지 않도록 하는 정수 $m$의 개수는?",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "①",
+    "solution": "[타원과 직선의 연립] $5x^2 + (mx + 3)^2 = 5$\n[식 전개] $5x^2 + m^2 x^2 + 6mx + 9 = 5$\n[내림차순 정리] $(m^2 + 5)x^2 + 6mx + 4 = 0$\n[이차방정식의 판별식 $D$ 계산] $D/4 = (3m)^2 - 4(m^2 + 5) = 9m^2 - 4m^2 - 20 = 5m^2 - 20$\n[만나지 않을 조건 (판별식 $D < 0$)] $5m^2 - 20 < 0 \\iff 5(m^2 - 4) < 0 \\iff m^2 < 4$\n[부등식의 해 구하기] $-2 < m < 2$\n[정수 $m$ 구하기] 만족하는 정수 $m$은 $-1, 0, 1$이다.\n[개수 계산] 따라서 정수 $m$의 개수는 3개이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "타원 $\\frac{x^2}{4} + \\frac{y^2}{5} = 1$이 직선 $y = x + n$과는 만나지 않고, 직선 $y = 3x + n$과는 서로 다른 두 점에서 만나도록 하는 정수 $n$의 개수는?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "answer": "②",
+    "solution": "[타원의 방정식 정리] 양변에 20을 곱하면 $5x^2 + 4y^2 = 20$\n[(i) 직선 $y = x + n$과 만나지 않는 조건] $5x^2 + 4(x + n)^2 = 20 \\iff 9x^2 + 8nx + 4n^2 - 20 = 0$\n[첫 번째 판별식 $D_1 < 0$ 적용] $D_1/4 = (4n)^2 - 9(4n^2 - 20) = 16n^2 - 36n^2 + 180 = -20(n^2 - 9) < 0$\n[첫 번째 부등식 풀이] $n^2 - 9 > 0 \\iff n^2 > 9$\n[(ii) 직선 $y = 3x + n$과 서로 다른 두 점에서 만나는 조건] $5x^2 + 4(3x + n)^2 = 20 \\iff 41x^2 + 24nx + 4n^2 - 20 = 0$\n[두 번째 판별식 $D_2 > 0$ 적용] $D_2/4 = (12n)^2 - 41(4n^2 - 20) = 144n^2 - 164n^2 + 820 = -20(n^2 - 41) > 0$\n[두 번째 부등식 풀이] $n^2 - 41 < 0 \\iff n^2 < 41$\n[(i), (ii)의 공통 범위] $9 < n^2 < 41$\n[정수 $n$의 값 나열] 가능한 제곱수는 $n^2 = 16, 25, 36$이므로 $|n| = 4, 5, 6$, 즉 $n = -6, -5, -4, 4, 5, 6$이다.\n[개수 계산] 따라서 만족하는 정수 $n$의 개수는 6개이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "타원 $\\frac{x^2}{2} + \\frac{y^2}{10} = 1$ 위의 점 $(x, y)$에 대하여 $2x + y$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M - m$의 값은?",
+    "choices": [
+      "$4\\sqrt{2}$",
+      "$6\\sqrt{2}$",
+      "$8\\sqrt{2}$",
+      "$10\\sqrt{2}$",
+      "$12\\sqrt{2}$"
+    ],
+    "answer": "②",
+    "solution": "[직선의 방정식 설정] $2x + y = k$로 놓으면 $y = -2x + k$\n[타원의 방정식에 대입] 양변에 10을 곱한 $5x^2 + y^2 = 10$에 대입하면 $5x^2 + (-2x + k)^2 = 10$\n[식 전개 및 내림차순 정리] $5x^2 + (4x^2 - 4kx + k^2) = 10 \\iff 9x^2 - 4kx + k^2 - 10 = 0$\n[실근 존재 조건 (판별식 $D \\ge 0$)] $x$가 실수이므로 $D/4 = (-2k)^2 - 9(k^2 - 10) \\ge 0$\n[판별식 계산 및 정리] $4k^2 - 9k^2 + 90 \\ge 0 \\iff -5k^2 + 90 \\ge 0 \\iff 5k^2 \\le 90 \\iff k^2 \\le 18$\n[부등식 풀이] $-3\\sqrt{2} \\le k \\le 3\\sqrt{2}$\n[최댓값과 최솟값 결정] 최댓값 $M = 3\\sqrt{2}$, 최솟값 $m = -3\\sqrt{2}$\n[$M - m$ 계산] $M - m = 3\\sqrt{2} - (-3\\sqrt{2}) = 6\\sqrt{2}$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [
+      "CC_TRIGONOMETRIC_EXTREMUM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 6,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "점 $(0, \\sqrt{2})$를 지나고 초점이 $\\mathrm{F}(2, 0)$, $\\mathrm{F}'(-2, 0)$인 타원이 있다. 이 타원 위의 점 $(x, y)$에 대하여 $x + y$의 최댓값은?",
+    "choices": [
+      "$\\sqrt{5}$",
+      "$\\sqrt{6}$",
+      "$2\\sqrt{2}$",
+      "$\\sqrt{10}$",
+      "$2\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "[타원의 표준형 설정] 초점이 $x$축 위에 있으므로 타원의 방정식을 $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a > b > 0$)이라 둔다.\n[초점 조건으로부터 관계식 도출] 초점이 $(\\pm 2, 0)$이므로 $c = 2$이고, $a^2 - b^2 = c^2 = 2^2 = 4$\n[지나는 점 대입하여 $b^2$ 결정] 점 $(0, \\sqrt{2})$를 지나므로 $\\frac{0}{a^2} + \\frac{(\\sqrt{2})^2}{b^2} = 1 \\iff \\frac{2}{b^2} = 1 \\iff b^2 = 2$\n[$a^2$ 계산 및 타원 완성] $a^2 = b^2 + 4 = 2 + 4 = 6$이므로 타원의 방정식은 $\\frac{x^2}{6} + \\frac{y^2}{2} = 1 \\iff x^2 + 3y^2 = 6$\n[$x + y = k$ 치환 및 연립] $y = -x + k$를 $x^2 + 3y^2 = 6$에 대입하면 $x^2 + 3(-x + k)^2 = 6$\n[내림차순 정리] $x^2 + 3(x^2 - 2kx + k^2) = 6 \\iff 4x^2 - 6kx + 3k^2 - 6 = 0$\n[실근 조건 (판별식 $D \\ge 0$)] $D/4 = (-3k)^2 - 4(3k^2 - 6) = 9k^2 - 12k^2 + 24 = -3k^2 + 24 \\ge 0$\n[부등식 풀이] $3k^2 \\le 24 \\iff k^2 \\le 8 \\iff -2\\sqrt{2} \\le k \\le 2\\sqrt{2}$\n[최댓값 결정] 따라서 $x + y$의 최댓값은 $2\\sqrt{2}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-095",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS",
+      "CC_TRIGONOMETRIC_EXTREMUM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

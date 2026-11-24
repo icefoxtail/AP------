@@ -1,0 +1,221 @@
+window.examTitle = "기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 한 변의 길이가 $1$인 정사각형 격자 위에 점 $O$를 시점으로 하는 두 벡터 $\\vec{OA} = \\vec{a}$, $\\vec{OB} = \\vec{b}$가 있다. 두 점 $P, Q$에 대하여 $\\vec{PQ} = m\\vec{a} + n\\vec{b}$가 성립할 때, 두 실수 $m, n$에 대하여 $m+n$의 값은? [그림: 가로, 세로가 각각 1인 정사각형 격자 위에 점 $O$를 기준으로 위쪽으로 1칸 떨어진 점 $A$, 오른쪽으로 1칸 떨어진 점 $B$가 있어 $\\vec{OA}=\\vec{a}$, $\\vec{OB}=\u000bec{b}$이다. 점 $P$는 $O$에서 오른쪽으로 1칸, 위쪽으로 4칸 떨어진 점이고, 점 $Q$는 $O$에서 오른쪽으로 5칸, 위쪽으로 2칸 떨어진 점이며, $P$에서 $Q$로 향하는 벡터 $\\vec{PQ}$가 표시되어 있다.]",
+    "choices": [
+      "-2",
+      "-1",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": "④",
+    "solution": "점 $O$를 시점으로 하여 두 점 $P, Q$의 위치벡터를 기본 벡터 $\\vec{a}, \\vec{b}$로 나타냅니다:\n점 $P$는 $O$에서 오른쪽으로 $1$칸($\\vec{b}$ 방향), 위쪽으로 $4$칸($\\vec{a}$ 방향)이므로 $\\vec{OP} = 4\\vec{a} + \\vec{b}$\n점 $Q$는 $O$에서 오른쪽으로 $5$칸($\\vec{b}$ 방향), 위쪽으로 $2$칸($\\vec{a}$ 방향)이므로 $\\vec{OQ} = 2\\vec{a} + 5\\vec{b}$\n[벡터의 뺄셈 정의] 시점을 $O$로 통일하여 벡터 $\\vec{PQ}$를 위치벡터의 차로 나타냅니다:\n$\\vec{PQ} = \\vec{OQ} - \\vec{OP}$\n구한 두 위치벡터를 대입하여 계산합니다:\n$\\vec{PQ} = (2\\vec{a} + 5\\vec{b}) - (4\\vec{a} + \\vec{b})$\n$\\vec{PQ} = (2 - 4)\\vec{a} + (5 - 1)\\vec{b} = -2\\vec{a} + 4\\vec{b}$\n[벡터가 서로 같을 조건] 주어진 식 $\\vec{PQ} = m\\vec{a} + n\\vec{b}$와 계수를 비교합니다:\n$\\vec{a}, \\vec{b}$는 서로 수직이므로 평행하지 않고 영벡터가 아닙니다.\n따라서 $m = -2$, $n = 4$입니다.\n두 실수 $m, n$의 합 $m+n$을 구합니다:\n$m + n = -2 + 4 = 2$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-069",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+    "crossConceptKeys": [
+      "CC_COORDINATE_DISPLACEMENT",
+      "CC_LATTICE_POINTS_COORDINATES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 모양과 크기가 같은 $9$개의 평행사변형으로 이뤄진 도형에서 평행사변형의 꼭짓점 $A, B, C, D, P, Q$가 있다. $\\vec{PQ} = k\\vec{AB} + l\\vec{CD}$가 성립할 때, 두 실수 $k, l$에 대하여 $k+l$의 값은? [그림: 합동인 9개의 평행사변형이 가로 3칸, 비스듬한 방향 3칸으로 배열되어 있다. 평행사변형의 밑변 방향 기본 단위벡터를 $\\vec{u}$, 비스듬한 옆변 방향 기본 단위벡터를 $\\vec{v}$라 하고 가장 왼쪽 아래 꼭짓점을 원점 $(0,0)$이라 할 때, 점 $A$는 $(0,0)$, 점 $B$는 $(1,0)$에 있어 $\\vec{AB}=\\vec{u}$이다. 점 $C$는 밑변 위의 $(3,0)$, 점 $D$는 $(1,2)$에 있어 $\\vec{CD}$는 점 $C$에서 점 $D$로 향하는 벡터이다. 점 $P$는 $(2,3)$, 점 $Q$는 $(1,1)$에 있어 $\\vec{PQ}$는 점 $P$에서 점 $Q$로 향하는 벡터이다.]",
+    "choices": [
+      "-4",
+      "-2",
+      "0",
+      "2",
+      "4"
+    ],
+    "answer": "①",
+    "solution": "평행사변형의 밑변 방향 단위벡터를 $\\vec{u}$, 비스듬한 옆변 방향 단위벡터를 $\\vec{v}$라 정의합니다.\n점 $A$를 원점으로 하여 각 꼭짓점의 위치벡터를 $\\vec{u}, \\vec{v}$로 나타냅니다:\n$A = \\vec{0}, \\quad B = \\vec{u} \\implies \\vec{AB} = \\vec{u}$\n$C = 3\\vec{u}, \\quad D = \\vec{u} + 2\\vec{v}$\n$P = 2\\vec{u} + 3\\vec{v}, \\quad Q = \\vec{u} + \\vec{v}$\n[벡터의 뺄셈] 벡터 $\\vec{CD}$와 $\\vec{PQ}$를 기본 벡터 $\\vec{u}, \\vec{v}$로 각각 표현합니다:\n$\\vec{CD} = D - C = (\\vec{u} + 2\\vec{v}) - 3\\vec{u} = -2\\vec{u} + 2\\vec{v}$\n$\\vec{PQ} = Q - P = (\\vec{u} + \\vec{v}) - (2\\vec{u} + 3\\vec{v}) = -\\vec{u} - 2\\vec{v}$\n주어진 등식 $\\vec{PQ} = k\\vec{AB} + l\\vec{CD}$에 위 식을 대입하여 전개합니다:\n$-\\vec{u} - 2\\vec{v} = k\\vec{u} + l(-2\\vec{u} + 2\\vec{v})$\n$-\\vec{u} - 2\\vec{v} = (k - 2l)\\vec{u} + 2l\\vec{v}$\n[벡터의 상등 조건] $\\vec{u}, \\vec{v}$는 평행하지 않은 영벡터가 아닌 벡터이므로 계수를 비교합니다:\n$k - 2l = -1 \\quad \\cdots$ ㉠\n$2l = -2 \\quad \\cdots$ ㉡\n㉡식에서 $l$의 값을 구합니다:\n$l = -1$\n$l = -1$을 ㉠식에 대입하여 $k$의 값을 구합니다:\n$k - 2(-1) = -1 \\implies k + 2 = -1 \\implies k = -3$\n두 실수 $k, l$의 합 $k+l$을 계산합니다:\n$k + l = -3 + (-1) = -4$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-069",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+    "crossConceptKeys": [
+      "CC_PARALLELOGRAM_PROPERTIES",
+      "CC_COORDINATE_DISPLACEMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "다음은 정사각형으로 된 모눈종이 위에 세 벡터 $\\vec{a}, \\vec{b}, \\vec{c}$를 나타낸 그림이다. 벡터 $\\vec{c}$를 두 벡터 $\\vec{a}, \\vec{b}$를 이용하여 $\\vec{c} = m\\vec{a} + n\\vec{b}$ ($m, n$은 실수)로 나타낼 때, $m+n$의 값은? [그림: 정사각형 모양의 모눈종이 위에 세 벡터 $\\vec{a}, \\vec{b}, \\vec{c}$가 그려져 있다. $\\vec{a}$는 가로 오른쪽으로 1칸, 세로 위쪽으로 1칸 이동하는 벡터이고, $\\vec{b}$는 가로 오른쪽으로 2칸, 세로 아래쪽으로 1칸 이동하는 벡터이며, $\\vec{c}$는 가로 왼쪽으로 3칸, 세로 위쪽으로 3칸 이동하는 벡터이다.]",
+    "choices": [
+      "-2",
+      "-1",
+      "0",
+      "1",
+      "2"
+    ],
+    "answer": "②",
+    "solution": "모눈종이의 가로 오른쪽 방향 기본 단위벡터를 $\\vec{e}_1 = (1, 0)$, 세로 위쪽 방향 기본 단위벡터를 $\\vec{e}_2 = (0, 1)$로 둡니다.\n세 벡터 $\\vec{a}, \\vec{b}, \\vec{c}$의 성분을 각각 구합니다:\n$\\vec{a} = (1, 1)$\n$\\vec{b} = (2, -1)$\n$\\vec{c} = (-3, 3)$\n등식 $\\vec{c} = m\\vec{a} + n\\vec{b}$를 성분으로 나타내어 정리합니다:\n$(-3, 3) = m(1, 1) + n(2, -1)$\n$(-3, 3) = (m + 2n, m - n)$\n[벡터의 상등] 양변의 $x$성분과 $y$성분을 비교하여 연립일차방정식을 세웁니다:\n$m + 2n = -3 \\quad \\cdots$ ㉠\n$m - n = 3 \\quad \\cdots$ ㉡\n㉠식에서 ㉡식을 변끼리 뺍니다:\n$(m + 2n) - (m - n) = -3 - 3$\n$3n = -6 \\implies n = -2$\n구한 $n = -2$를 ㉡식에 대입하여 $m$을 구합니다:\n$m - (-2) = 3 \\implies m + 2 = 3 \\implies m = 1$\n두 실수 $m, n$의 합 $m+n$을 구합니다:\n$m + n = 1 + (-2) = -1$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-069",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+    "crossConceptKeys": [
+      "CC_COORDINATE_DISPLACEMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 일정한 간격의 평행선이 서로 만나고 있다. 네 점 $O, P, Q, R$에 대하여 $\\vec{OR} = m\\vec{OP} + n\\vec{OQ}$가 성립할 때, 두 실수 $m, n$에 대하여 $m-n$의 값은? [그림: 일정한 간격의 수평선들과 오른쪽 위로 기울어진 평행선들이 만나 이루는 사교 격자 위에 점 $O, P, Q, R$이 있다. 수평 방향 1칸의 벡터를 $\\vec{u}$, 기울어진 평행선 방향 1칸의 벡터를 $\\vec{v}$라 할 때, 점 $O$를 기준으로 점 $P$는 수평 왼쪽으로 2칸, 기울어진 선을 따라 위로 1칸 떨어진 위치에 있고($\\vec{OP}=-2\\vec{u}+\\vec{v}$), 점 $Q$는 수평 오른쪽으로 3칸, 기울어진 선을 따라 위로 2칸 떨어진 위치에 있으며($\\vec{OQ}=3\\vec{u}+2\\vec{v}$), 점 $R$는 수평 왼쪽으로 1칸, 기울어진 선을 따라 위로 3칸 떨어진 위치에 있다($\\vec{OR}=-\\vec{u}+3\\vec{v}$).]",
+    "choices": [
+      "\\frac{3}{7}",
+      "\\frac{4}{7}",
+      "\\frac{5}{7}",
+      "\\frac{6}{7}",
+      "1"
+    ],
+    "answer": "④",
+    "solution": "수평선 방향 1칸의 기본 벡터를 $\\vec{u}$, 기울어진 평행선 방향 1칸의 기본 벡터를 $\\vec{v}$라 합니다.\n점 $O$를 기준으로 세 점 $P, Q, R$의 위치벡터를 $\\vec{u}, \\vec{v}$로 나타냅니다:\n$\\vec{OP} = -2\\vec{u} + \\vec{v}$\n$\\vec{OQ} = 3\\vec{u} + 2\\vec{v}$\n$\\vec{OR} = -\\vec{u} + 3\\vec{v}$\n등식 $\\vec{OR} = m\\vec{OP} + n\\vec{OQ}$에 각 벡터를 대입하여 전개합니다:\n$-\\vec{u} + 3\\vec{v} = m(-2\\vec{u} + \\vec{v}) + n(3\\vec{u} + 2\\vec{v})$\n$-\\vec{u} + 3\\vec{v} = (-2m + 3n)\\vec{u} + (m + 2n)\\vec{v}$\n[벡터가 서로 같을 조건] 두 벡터 $\\vec{u}, \\vec{v}$는 서로 평행하지 않고 영벡터가 아니므로 계수를 비교합니다:\n$-2m + 3n = -1 \\quad \\cdots$ ㉠\n$m + 2n = 3 \\quad \\cdots$ ㉡\n㉡식에서 $m = 3 - 2n$으로 두고, ㉠식에 대입하여 일차방정식을 풉니다:\n$-2(3 - 2n) + 3n = -1$\n$-6 + 4n + 3n = -1$\n$7n = 5 \\implies n = \\frac{5}{7}$\n구한 $n = \\frac{5}{7}$를 $m = 3 - 2n$에 대입하여 $m$의 값을 구합니다:\n$m = 3 - 2 \\times \\frac{5}{7} = \\frac{21}{7} - \\frac{10}{7} = \\frac{11}{7}$\n두 실수 $m, n$의 차 $m-n$을 계산합니다:\n$m - n = \\frac{11}{7} - \\frac{5}{7} = \\frac{6}{7}$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-069",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+    "crossConceptKeys": [
+      "CC_COORDINATE_DISPLACEMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 일정한 간격의 평행선으로 이뤄진 도형 위의 네 점 $A, B, C, D$가 있다. $\\vec{AC} = m\\vec{AB} + n\\vec{AD}$일 때, 두 실수 $m, n$에 대하여 $m+n$의 값은? [그림: 일정한 간격의 평행선들로 이루어진 평행사변형 격자 위에 네 점 $A, B, C, D$가 있다. 두 평행선 방향의 기본 단위벡터를 각각 $\\vec{u}, \\vec{v}$라 할 때, 점 $A$를 시점으로 하여 점 $B$의 위치는 $\\vec{AB}=2\\vec{u}+\\vec{v}$, 점 $D$의 위치는 $\\vec{AD}=\\vec{u}+4\\vec{v}$, 점 $C$의 위치는 $\\vec{AC}=3\\vec{u}+2\\vec{v}$이다.]",
+    "choices": [
+      "\\frac{5}{7}",
+      "\\frac{8}{7}",
+      "\\frac{11}{7}",
+      "\\frac{13}{7}",
+      "\\frac{16}{7}"
+    ],
+    "answer": "③",
+    "solution": "평행선 격자를 이루는 두 기본 단위벡터를 각각 $\\vec{u}, \\vec{v}$라 할 때, 세 벡터 $\\vec{AB}, \\vec{AD}, \\vec{AC}$는 다음과 같습니다:\n$\\vec{AB} = 2\\vec{u} + \\vec{v}$\n$\\vec{AD} = \\vec{u} + 4\\vec{v}$\n$\\vec{AC} = 3\\vec{u} + 2\\vec{v}$\n등식 $\\vec{AC} = m\\vec{AB} + n\\vec{AD}$의 우변에 위 식을 대입하여 동류항끼리 묶습니다:\n$3\\vec{u} + 2\\vec{v} = m(2\\vec{u} + \\vec{v}) + n(\\vec{u} + 4\\vec{v})$\n$3\\vec{u} + 2\\vec{v} = (2m + n)\\vec{u} + (m + 4n)\\vec{v}$\n[벡터가 서로 같을 조건] 기본 벡터 $\\vec{u}, \\vec{v}$가 서로 평행하지 않고 영벡터가 아니므로 양변의 계수를 비교합니다:\n$2m + n = 3 \\quad \\cdots$ ㉠\n$m + 4n = 2 \\quad \\cdots$ ㉡\n㉠식에서 $n = 3 - 2m$으로 정리한 후, ㉡식에 대입합니다:\n$m + 4(3 - 2m) = 2$\n$m + 12 - 8m = 2$\n$-7m = -10 \\implies m = \\frac{10}{7}$\n구한 $m = \\frac{10}{7}$을 $n = 3 - 2m$에 대입하여 $n$의 값을 구합니다:\n$n = 3 - 2 \\times \\frac{10}{7} = \\frac{21}{7} - \\frac{20}{7} = \\frac{1}{7}$\n두 실수 $m, n$의 합 $m+n$을 계산합니다:\n$m + n = \\frac{10}{7} + \\frac{1}{7} = \\frac{11}{7}$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-069",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+    "crossConceptKeys": [
+      "CC_COORDINATE_DISPLACEMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

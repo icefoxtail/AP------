@@ -1,0 +1,131 @@
+window.examTitle = "기하_105_선분의내분점과외분점의위치벡터-각의이등_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "삼각형 $\\text{ABC}$에서 점 $\\text{D}$는 $\\angle\\text{A}$의 이등분선이 선분 $\\text{BC}$와 만나는 점이고 $\\overline{\\text{AB}} = 5, \\overline{\\text{AC}} = 3$이다. $\\vec{AD} = m\\vec{AB} + n\\vec{AC}$일 때, 실수 $m, n$의 곱 $mn$의 값은? [그림: 삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 변 $\\text{BC}$와 만나는 점이 $\\text{D}$이며 $\\overline{\\text{AB}}=5, \\overline{\\text{AC}}=3$이다.]",
+    "choices": [
+      "$\\frac{7}{64}$",
+      "$\\frac{9}{64}$",
+      "$\\frac{11}{64}$",
+      "$\\frac{13}{64}$",
+      "$\\frac{15}{64}$"
+    ],
+    "answer": "⑤",
+    "solution": "삼각형의 내각의 이등분선의 성질을 적용하여 선분 $\\text{BC}$의 분할 비율을 구한다.\n$\\overline{\\text{BD}} : \\overline{\\text{DC}} = \\overline{\\text{AB}} : \\overline{\\text{AC}} = 5 : 3$\n따라서 점 $\\text{D}$는 선분 $\\text{BC}$를 $5:3$으로 내분하는 점이다.\n선분의 내분점 위치벡터 공식을 이용하여 $\\vec{AD}$를 표현한다.\n$\\vec{AD} = \\frac{3\\vec{AB} + 5\\vec{AC}}{5+3} = \\frac{3}{8}\\vec{AB} + \\frac{5}{8}\\vec{AC}$\n실수 $m, n$의 값을 구한다.\n$m = \\frac{3}{8}, \\quad n = \\frac{5}{8}$\n두 실수의 곱 $mn$을 계산한다.\n$mn = \\frac{3}{8} \\times \\frac{5}{8} = \\frac{15}{64}$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-070",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "$\\overline{\\text{AB}} = 5, \\overline{\\text{AC}} = 2$인 삼각형 $\\text{ABC}$에 내접하는 원의 중심을 $\\text{I}$라 하자. 점 $\\text{A}$와 점 $\\text{I}$를 지나는 직선이 선분 $\\text{BC}$와 만나는 점을 $\\text{D}$라 하고, $\\vec{AD} = m\\vec{AB} + n\\vec{AC}$일 때, 실수 $m, n$에 대하여 $m-n$의 값은? [그림: 삼각형 $\\text{ABC}$에 내접하는 원의 중심 $\\text{I}$를 지나는 직선이 변 $\\text{BC}$와 만나는 점이 $\\text{D}$이며 $\\overline{\\text{AB}}=5, \\overline{\\text{AC}}=2$이다.]",
+    "choices": [
+      "$-\\frac{5}{7}$",
+      "$-\\frac{4}{7}$",
+      "$-\\frac{3}{7}$",
+      "$-\\frac{2}{7}$",
+      "$-\\frac{1}{7}$"
+    ],
+    "answer": "③",
+    "solution": "삼각형의 내심은 세 내각의 이등분선의 교점이므로 직선 $\\text{AI}$는 $\\angle\\text{A}$의 이등분선이다.\n삼각형의 내각의 이등분선의 성질을 적용하여 선분 $\\text{BC}$의 분할 비율을 구한다.\n$\\overline{\\text{BD}} : \\overline{\\text{DC}} = \\overline{\\text{AB}} : \\overline{\\text{AC}} = 5 : 2$\n따라서 점 $\\text{D}$는 선분 $\\text{BC}$를 $5:2$로 내분하는 점이다.\n선분의 내분점 위치벡터 공식에 의해 $\\vec{AD}$를 나타낸다.\n$\\vec{AD} = \\frac{2\\vec{AB} + 5\\vec{AC}}{5+2} = \\frac{2}{7}\\vec{AB} + \\frac{5}{7}\\vec{AC}$\n실수 $m, n$의 값을 구한다.\n$m = \\frac{2}{7}, \\quad n = \\frac{5}{7}$\n$m-n$의 값을 계산한다.\n$m - n = \\frac{2}{7} - \\frac{5}{7} = -\\frac{3}{7}$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-070",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "$\\overline{\\text{AB}} = 7, \\overline{\\text{AC}} = 8, \\overline{\\text{BC}} = 5$인 삼각형 $\\text{ABC}$에 내접하는 원의 중심을 $\\text{I}$라 하자. $\\vec{AI} = p\\vec{AB} + q\\vec{AC}$를 만족시키는 두 실수 $p, q$에 대하여 $p+q$의 값은? [그림: 삼각형 $\\text{ABC}$에 내접하는 원의 중심 $\\text{I}$가 주어지고 변의 길이는 $\\overline{\\text{AB}}=7, \\overline{\\text{AC}}=8, \\overline{\\text{BC}}=5$이며 벡터 $\\vec{AI}$가 그려져 있다.]",
+    "choices": [
+      "$\\frac{2}{3}$",
+      "$\\frac{3}{4}$",
+      "$\\frac{4}{5}$",
+      "$\\frac{5}{6}$",
+      "$1$"
+    ],
+    "answer": "②",
+    "solution": "직선 $\\text{AI}$가 선분 $\\text{BC}$와 만나는 점을 $\\text{D}$라 하면, 내심의 성질에 의해 선분 $\\text{AD}$는 $\\angle\\text{A}$의 이등분선이다.\n삼각형의 내각의 이등분선의 성질을 적용하여 선분 $\\text{BC}$의 분할 비율을 구한다.\n$\\overline{\\text{BD}} : \\overline{\\text{DC}} = \\overline{\\text{AB}} : \\overline{\\text{AC}} = 7 : 8$\n선분의 내분점 공식에 의해 점 $\\text{D}$의 위치벡터 $\\vec{AD}$를 표현한다.\n$\\vec{AD} = \\frac{8\\vec{AB} + 7\\vec{AC}}{7+8} = \\frac{8}{15}\\vec{AB} + \\frac{7}{15}\\vec{AC}$\n선분 $\\text{BD}$의 길이를 비례배분으로 구한다.\n$\\overline{\\text{BD}} = \\overline{\\text{BC}} \\times \\frac{7}{7+8} = 5 \\times \\frac{7}{15} = \\frac{7}{3}$\n삼각형 $\\text{ABD}$에서 선분 $\\text{BI}$는 $\\angle\\text{B}$의 이등분선이므로 다시 내각의 이등분선의 성질을 적용한다.\n$\\overline{\\text{AI}} : \\overline{\\text{ID}} = \\overline{\\text{AB}} : \\overline{\\text{BD}} = 7 : \\frac{7}{3} = 3 : 1$\n점 $\\text{I}$는 선분 $\\text{AD}$를 $3:1$로 내분하므로 벡터 $\\vec{AI}$는 벡터 $\\vec{AD}$의 $\\frac{3}{3+1}$이다.\n$\\vec{AI} = \\frac{3}{4}\\vec{AD} = \\frac{3}{4}\\left(\\frac{8}{15}\\vec{AB} + \\frac{7}{15}\\vec{AC}\\right) = \\frac{2}{5}\\vec{AB} + \\frac{7}{20}\\vec{AC}$\n계수를 비교하면 $p = \\frac{2}{5} = \\frac{8}{20}, q = \\frac{7}{20}$이다.\n두 실수의 합 $p+q$를 계산한다.\n$p + q = \\frac{8}{20} + \\frac{7}{20} = \\frac{15}{20} = \\frac{3}{4}$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-070",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

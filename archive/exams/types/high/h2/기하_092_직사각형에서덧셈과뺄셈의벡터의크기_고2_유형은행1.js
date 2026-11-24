@@ -1,0 +1,269 @@
+window.examTitle = "기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 가로의 길이가 $4$, 세로의 길이가 $3$인 직사각형 $ABCD$에서 $\\vec{a}=\\vec{AB}$, $\\vec{b}=\\vec{AC}$, $\\vec{c}=\\vec{AD}$라 할 때, $|\\vec{a}+2\\vec{b}+\\vec{c}|$의 값은?\n[그림: 직사각형 ABCD에서 점 A는 좌측 상단, B는 좌측 하단, C는 우측 하단, D는 우측 상단이다. 변 AB의 길이는 3, 변 AD의 길이는 4이다. A에서 B로 향하는 벡터 a, A에서 C로 향하는 대각선 벡터 b, A에서 D로 향하는 벡터 c가 표시되어 있다.]",
+    "choices": [
+      "$9$",
+      "$12$",
+      "$15$",
+      "$18$",
+      "$21$"
+    ],
+    "answer": "③",
+    "solution": "1단계: 직사각형의 두 변으로 만든 벡터의 덧셈 성질(평행사변형 법칙)을 적용한다:\n$\\vec{a} + \\vec{c} = \\vec{AB} + \\vec{AD} = \\vec{AC} = \\vec{b}$\n2단계: 주어진 벡터 식에 $\\vec{a}+\\vec{c}=\\vec{b}$를 대입하여 하나의 벡터로 정리한다:\n$\\vec{a} + 2\\vec{b} + \\vec{c} = (\\vec{a} + \\vec{c}) + 2\\vec{b} = \\vec{b} + 2\\vec{b} = 3\\vec{b} = 3\\vec{AC}$\n3단계: 피타고라스 정리를 이용하여 대각선 $\\overline{AC}$의 길이를 구한다:\n$|\\vec{AC}| = \\sqrt{\\overline{AB}^2 + \\overline{AD}^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$\n4단계: 벡터의 크기 공식 $|k\\vec{v}| = |k| |\\vec{v}|$를 이용하여 구하는 벡터의 크기를 계산한다:\n$|\\vec{a} + 2\\vec{b} + \\vec{c}| = |3\\vec{AC}| = 3|\\vec{AC}| = 3 \\times 5 = 15$\n주의: 벡터의 크기를 구할 때 각각의 크기를 단순히 더하지 않고, 먼저 벡터를 단순화한 후 크기를 구해야 한다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_PROPERTIES",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $2$인 정사각형 $ABCD$에서 $\\vec{AB}=\\vec{a}$, $\\vec{AD}=\\vec{b}$, $\\vec{AC}=\\vec{c}$라 할 때, <보기> 중 옳은 것만을 있는 대로 고른 것은?\n<보기>\nㄱ. $|\\vec{a}+\\vec{b}+\\vec{c}| = 4\\sqrt{2}$\nㄴ. $|\\vec{a}-\\vec{b}+\\vec{c}| = 2\\sqrt{5}$\nㄷ. $|\\vec{a}-2\\vec{b}+\\vec{c}| = 2\\sqrt{5}$\n[그림: 한 변의 길이가 2인 정사각형 ABCD에서 점 A는 좌측 상단, B는 좌측 하단, C는 우측 하단, D는 우측 상단이다. A에서 B로 향하는 벡터 a, A에서 D로 향하는 벡터 b, A에서 C로 향하는 대각선 벡터 c가 표시되어 있다.]",
+    "choices": [
+      "ㄱ",
+      "ㄷ",
+      "ㄱ, ㄴ",
+      "ㄱ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "④",
+    "solution": "1단계: 정사각형에서 평행사변형 법칙에 의해 대각선 벡터 $\\vec{c}$는 두 변의 벡터의 합과 같다:\n$\\vec{c} = \\vec{AC} = \\vec{AB} + \\vec{AD} = \\vec{a} + \\vec{b}$\n2단계: 정사각형의 변의 길이와 대각선의 길이를 각각 구한다:\n$|\\vec{a}| = 2$, $|\\vec{b}| = 2$, $|\\vec{c}| = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$\n3단계: 보기 ㄱ의 참·거짓을 판정한다:\n$\\vec{a} + \\vec{b} + \\vec{c} = (\\vec{a} + \\vec{b}) + \\vec{c} = \\vec{c} + \\vec{c} = 2\\vec{c}$\n$|\\vec{a} + \\vec{b} + \\vec{c}| = |2\\vec{c}| = 2|\\vec{c}| = 2 \\times 2\\sqrt{2} = 4\\sqrt{2}$ (참)\n4단계: 보기 ㄴ의 참·거짓을 판정한다:\n$\\vec{c} = \\vec{a} + \\vec{b}$를 대입하면 $\\vec{a} - \\vec{b} + \\vec{c} = \\vec{a} - \\vec{b} + (\\vec{a} + \\vec{b}) = 2\\vec{a}$\n$|\\vec{a} - \\vec{b} + \\vec{c}| = |2\\vec{a}| = 2|\\vec{a}| = 2 \\times 2 = 4 \\neq 2\\sqrt{5}$ (거짓)\n5단계: 보기 ㄷ의 참·거짓을 판정한다:\n$\\vec{c} = \\vec{a} + \\vec{b}$를 대입하면 $\\vec{a} - 2\\vec{b} + \\vec{c} = \\vec{a} - 2\\vec{b} + (\\vec{a} + \\vec{b}) = 2\\vec{a} - \\vec{b}$\n정사각형에서 $\\vec{a} \\perp \\vec{b}$이므로 피타고라스 정리를 적용하여 크기를 계산한다:\n$|2\\vec{a} - \\vec{b}| = \\sqrt{|2\\vec{a}|^2 + |-\\vec{b}|^2} = \\sqrt{(2 \\times 2)^2 + 2^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$ (참)\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_SQUARE_PROPERTIES",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $2$인 정사각형 $OABC$에서 $\\vec{OA}=\\vec{a}$, $\\vec{OB}=\\vec{b}$, $\\vec{OC}=\\vec{c}$라 할 때, $|3\\vec{a}-\\vec{b}-2\\vec{c}|$의 값은? (단, 점 $B$는 대각선으로 점 $O$와 마주보는 꼭짓점이다.)\n[그림: 한 변의 길이가 2인 정사각형 OABC에서 점 O는 좌하단, 점 A는 우하단, 점 B는 우상단, 점 C는 좌상단이다. O에서 A로 향하는 벡터 a, O에서 B로 향하는 벡터 b, O에서 C로 향하는 벡터 c가 표시되어 있다.]",
+    "choices": [
+      "$\\sqrt{13}$",
+      "$4$",
+      "$3\\sqrt{2}$",
+      "$2\\sqrt{10}$",
+      "$2\\sqrt{13}$"
+    ],
+    "answer": "⑤",
+    "solution": "1단계: 정사각형 $OABC$에서 대각선 벡터 $\\vec{b}$를 두 이웃한 변의 벡터 $\\vec{a}, \\vec{c}$의 합으로 나타낸다(평행사변형 법칙):\n$\\vec{b} = \\vec{OB} = \\vec{OA} + \\vec{OC} = \\vec{a} + \\vec{c}$\n2단계: 구하고자 하는 벡터 식에 $\\vec{b} = \\vec{a} + \\vec{c}$를 대입하여 단순화한다:\n$3\\vec{a} - \\vec{b} - 2\\vec{c} = 3\\vec{a} - (\\vec{a} + \\vec{c}) - 2\\vec{c} = (3-1)\\vec{a} - (1+2)\\vec{c} = 2\\vec{a} - 3\\vec{c}$\n3단계: 정사각형의 성질에 의해 두 벡터 $\\vec{a}$와 $\\vec{c}$는 서로 수직이고 길이가 각각 $2$이다:\n$|\\vec{a}| = 2$, $|\\vec{c}| = 2$, $\\vec{a} \\cdot \\vec{c} = 0$\n4단계: 벡터의 내적과 크기 공식 $|\\vec{v}|^2 = \\vec{v} \\cdot \\vec{v}$를 이용하여 $|2\\vec{a} - 3\\vec{c}|^2$을 계산한다:\n$|2\\vec{a} - 3\\vec{c}|^2 = 4|\\vec{a}|^2 - 12(\\vec{a} \\cdot \\vec{c}) + 9|\\vec{c}|^2 = 4(2^2) - 12(0) + 9(2^2) = 16 + 36 = 52$\n5단계: 양의 제곱근을 취하여 크기를 구한다:\n$|3\\vec{a} - \\vec{b} - 2\\vec{c}| = \\sqrt{52} = 2\\sqrt{13}$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_SQUARE_PROPERTIES",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 정삼각형 $ABC$와 정사각형 $BCDE$가 변 $BC$를 공유하며 서로 겹치지 않게 붙어 있다. $\\vec{AD}=\\vec{a}$, $\\vec{CB}=\\vec{b}$, $\\vec{EB}=\\vec{c}$라 할 때, $|\\vec{a}+\\vec{b}+\\vec{c}|=2$이다. 삼각형 $ABC$의 넓이는?\n[그림: 위쪽에 정삼각형 ABC가 있고, 그 밑변 BC 아래에 정사각형 BCDE가 붙어 있다. 꼭짓점 배치는 A가 상단, B가 중앙 좌측, C가 중앙 우측, E가 하단 좌측, D가 하단 우측이다. A에서 D로 향하는 벡터 a, C에서 B로 향하는 벡터 b, E에서 B로 향하는 벡터 c가 표시되어 있다.]",
+    "choices": [
+      "$\\sqrt{3}$",
+      "$2\\sqrt{3}$",
+      "$3\\sqrt{3}$",
+      "$4\\sqrt{3}$",
+      "$5\\sqrt{3}$"
+    ],
+    "answer": "①",
+    "solution": "1단계: 정사각형 $BCDE$의 마주보는 변의 길이와 방향이 같으므로 벡터의 상등을 이용한다:\n선분 $EB$와 선분 $DC$는 평행하고 길이가 같으며 방향이 같으므로 $\\vec{EB} = \\vec{DC} = \\vec{c}$\n2단계: 벡터의 덧셈의 삼각형 법칙을 이용하여 $\\vec{a}+\\vec{c}$를 합성한다:\n$\\vec{a} + \\vec{c} = \\vec{AD} + \\vec{EB} = \\vec{AD} + \\vec{DC} = \\vec{AC}$\n3단계: 주어진 벡터 합식에 $\\vec{b}=\\vec{CB}$를 결합하여 하나의 벡터로 표현한다:\n$\\vec{a} + \\vec{b} + \\vec{c} = (\\vec{a} + \\vec{c}) + \\vec{b} = \\vec{AC} + \\vec{CB} = \\vec{AB}$\n4단계: 조건 $|\\vec{a}+\\vec{b}+\\vec{c}|=2$로부터 정삼각형 $ABC$의 한 변의 길이를 구한다:\n$|\\vec{AB}| = 2$\n5단계: 정삼각형의 넓이 공식 $S = \\frac{\\sqrt{3}}{4}s^2$에 한 변의 길이 $s=2$를 대입한다:\n$S = \\frac{\\sqrt{3}}{4} \\times 2^2 = \\frac{\\sqrt{3}}{4} \\times 4 = \\sqrt{3}$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_SQUARE_PROPERTIES",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{AB}=3a$, $\\overline{AD}=4a$인 직사각형 $ABCD$와 평면 $ABCD$ 위의 점 $P$가 다음 조건을 만족시킬 때, $|\\vec{PA}-\\vec{CD}|$의 값은?\n(가) $\\vec{PA}+\\vec{PC}+\\vec{PD}=\\vec{PB}$\n(나) 직사각형 $ABCD$의 넓이는 $48$이다.\n[그림: 가로의 길이가 4a, 세로의 길이가 3a인 직사각형 ABCD에서 점 A는 좌측 상단, B는 좌측 하단, C는 우측 하단, D는 우측 상단이다.]",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$"
+    ],
+    "answer": "①",
+    "solution": "1단계: 조건 (나)의 직사각형의 넓이 공식을 이용하여 양수 $a$의 값을 구한다:\n$\\text{넓이} = \\overline{AB} \\times \\overline{AD} = (3a) \\times (4a) = 12a^2 = 48$\n$a^2 = 4 \\implies a = 2$ ($a>0$)\n2단계: 직사각형의 두 변의 길이를 구한다:\n$\\overline{AB} = 3 \\times 2 = 6$, $\\overline{AD} = 4 \\times 2 = 8$\n3단계: 조건 (가)의 벡터 방정식을 이항하여 점 $P$의 위치를 결정한다:\n$\\vec{PC} + \\vec{PD} = \\vec{PB} - \\vec{PA} = \\vec{AB}$\n직사각형에서 대변 벡터의 성질에 의해 $\\vec{AB} = \\vec{DC}$이므로 이를 대입한다:\n$\\vec{PC} + \\vec{PD} = \\vec{DC}$\n벡터의 뺄셈 정의에 의해 $\\vec{DC} = \\vec{PC} - \\vec{PD}$이므로:\n$\\vec{PC} + \\vec{PD} = \\vec{PC} - \\vec{PD} \\implies 2\\vec{PD} = \\vec{0} \\implies \\vec{PD} = \\vec{0}$\n따라서 점 $P$는 꼭짓점 $D$와 일치한다 ($P = D$).\n4단계: 구하고자 하는 벡터 식에 $P = D$를 대입한다:\n$|\\vec{PA} - \\vec{CD}| = |\\vec{DA} - \\vec{CD}| = |\\vec{DA} + \\vec{DC}|$\n5단계: 직사각형에서 두 벡터 $\\vec{DA}, \\vec{DC}$는 서로 수직이고 합벡터는 대각선 $\\vec{DB}$이므로 피타고라스 정리를 적용한다:\n$|\\vec{DA} + \\vec{DC}| = |\\vec{DB}| = \\sqrt{\\overline{DA}^2 + \\overline{DC}^2} = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_PROPERTIES",
+      "CC_RECTANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "다음 세 조건을 만족시키는 점 $P$가 있다.\n(가) 점 $P$는 삼각형 $ABC$가 포함된 평면 위의 점이다.\n(나) $\\vec{PA}+\\vec{PB}=2\\vec{CP}$\n(다) 삼각형 $ABC$의 넓이는 $24$이다.\n이때 삼각형 $PAB$의 넓이는?",
+    "choices": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "answer": "④",
+    "solution": "1단계: 선분 $AB$의 중점을 $M$이라 하고 중점 벡터의 성질을 적용한다:\n$\\vec{PA} + \\vec{PB} = 2\\vec{PM}$\n2단계: 조건 (나)의 식에 대입하여 점 $P$의 기하학적 위치를 파악한다:\n$2\\vec{PM} = 2\\vec{CP} \\implies \\vec{PM} = \\vec{CP}$\n$\\vec{PM} = -\\vec{PC} \\implies \\vec{PC} + \\vec{PM} = \\vec{0}$\n따라서 점 $P$는 선분 $CM$의 중점이다.\n3단계: 중선 $CM$과 삼각형의 넓이 분할 성질을 이용한다:\n점 $M$이 선분 $AB$의 중점이므로 중선 $CM$에 의해 삼각형 $CAB$의 넓이가 이등분된다:\n$\\triangle CAM = \\triangle CBM = \\frac{1}{2}\\triangle ABC = \\frac{1}{2} \\times 24 = 12$\n4단계: 점 $P$가 선분 $CM$의 중점이므로 점 $P$에서 직선 $AB$까지의 거리는 점 $C$에서 직선 $AB$까지의 거리의 $\\frac{1}{2}$이다:\n밑변 $AB$를 공유하므로 높이의 비에 의해 삼각형 $PAB$의 넓이를 계산한다:\n$\\triangle PAB = \\frac{1}{2}\\triangle CAB = \\frac{1}{2} \\times 24 = 12$\n주의: $\\vec{CP} = -\\vec{PC}$이므로 방향에 유의하여 점 $P$가 선분 $CM$의 내분점임을 명확히 확인해야 한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA",
+      "CC_INTERNAL_POINT_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
