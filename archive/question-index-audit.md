@@ -96,10 +96,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 7058 |
+| q.image 보유 | 7068 |
 | content <img> | 1247 |
 | content <svg> | 36 |
 | content <table> | 416 |
-| 시각요소 보유(hasImage=true) | 8518 |
+| 시각요소 보유(hasImage=true) | 8528 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
