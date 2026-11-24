@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "base"
+  ],
+  "displaySegments": [
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "sTO",
+      "refs": [
+        "T",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "hTO",
+        "ownerSegment": "sTO",
+        "text": "4x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "A",
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "밑면이 원인 원뿔을 나타낸 그림으로, 꼭짓점에서 밑면의 중심까지의 높이가 4x로 표시되어 있다.",
+  "accessibilityDescription": "원 모양의 밑면 위에 꼭짓점이 놓여 있고, 꼭짓점에서 밑면의 양옆으로 두 모선이 그려진 원뿔이다. 꼭짓점에서 밑면의 중심까지 내려가는 점선 옆에 높이 4x가 표시되어 있다.",
+  "newVisualInformation": [
+    "높이가 4x인 원뿔",
+    "부피가 16x²y²로 주어진 원뿔"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "높이가 $4x$이고 부피가 $16x^2y^2$인 원뿔의 밑넓이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

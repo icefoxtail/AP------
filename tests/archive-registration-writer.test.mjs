@@ -7,7 +7,8 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,matchesReference,compilePatterns,fingerprint,indexRows,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {producerClosure} from '../tools/ci/registration-producer-closure.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,registrationPictureInputs,EXCLUDED_CODE_DIRS,CODE_TREE,matchesReference,compilePatterns,fingerprint,indexRows,executeCommands,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -173,8 +174,6 @@ test('existing-vector carrier bytes invalidate a VERIFIED fourSlot cache while u
     assert.notEqual(four.inputDigest,before,name+' carrier bytes must affect the native fourSlot input digest');
     assert.equal(four.needed,true);assert.equal(checked.needed,true);
     assert.deepEqual(checked.lanes.filter(l=>l.needed).map(l=>l.id),['fourSlot']);
-    const range=unrelatedRange({root:f.root,base,head,lanes:f.lanes});
-    assert.equal(range.unrelated,false);assert.equal(range.firstProtectedHit,carrier);
     f.calls.length=0;const refreshed=await prepareRegistration(options);
     assert.deepEqual(f.calls,['fourSlot']);assert.equal(refreshed.needed,false);
     assert.equal(refreshed.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
@@ -528,53 +527,7 @@ test('timed-out native command cannot leave a child that advances a cursor after
   assert.equal(fs.existsSync(lateCursor),false,'the entire owned native process group has stopped');
 });
 
-// Race shortcut: the verified derived commit is reused only when the competing range is provably unrelated.
-test('--unrelated-range accepts only provably unrelated competing changes', t=>{
-  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(realRoot);
-  const f=fixture(t),base=git(f.root,'rev-parse','HEAD');
-  const verdict=paths=>{
-    for(const rel of paths)write(f.root,rel,`change ${paths.join()}\n`);
-    const head=commit(f.root,'competitor '+paths.join());
-    const result=unrelatedRange({root:f.root,base,head,lanes});git(f.root,'reset','-q','--hard',base);return result;
-  };
-  const ok=verdict(['apmath/playground/next/x.js']);
-  assert.equal(ok.unrelated,true);assert.equal(ok.changedCount,1);assert.equal(ok.firstProtectedHit,null);
-  for(const protectedPath of ['archive/exams/x.js','archive/archive2-source.js','archive/unit-past-exams-core.js','archive/engine.html','tests/fixtures/diff5/x.json',STATE,'tools/ci/foo.mjs','.github/workflows/archive-main-auto-meta.yml',
-    'apmath/playground/next/.gitignore','.gitattributes','tools/lib/x.mjs','.archive-meta-register/inbox/x.json',
-    '.archive-meta-register/4slot-existing-vector-continuity/x.json','package.json','package-lock.json']) {
-    const result=verdict([protectedPath]);
-    assert.equal(result.unrelated,false,protectedPath);assert.equal(result.firstProtectedHit,protectedPath);
-  }
-  // 화면 전용 파일(레인 입력 목록에 없는 css·html·md)은 재계산 없이 다시 붙인다. 레인 입력에 든 화면 파일과 js는 그대로 보호.
-  const inputPatterns=lanes.flatMap(l=>[l.inputs,l.outputs,l.scopedInputs].flatMap(v=>Array.isArray(v)?v:[]));
-  const screenOnly='archive/archive2-navigation.css';
-  assert.equal(matches(screenOnly,inputPatterns),false,'fixture css must not be a lane input');
-  const screen=verdict([screenOnly,'archive/archive2-history.css','archive/DESIGN.md','tests/archive-x.test.js','docs/x.md']);
-  assert.equal(screen.unrelated,true,'screen-only css/doc/test changes need no recomputation');
-  for(const stillProtected of ['archive/archive2-navigation.js','archive/engine.html','archive/equal-slot-engine.css','archive/data/x.html','archive/tools/x.html'])
-    assert.equal(verdict([stillProtected]).unrelated,false,stillProtected);
-  assert.equal(verdict(['apmath/playground/next/x.js','archive/exams/y.js']).firstProtectedHit,'archive/exams/y.js','one protected hit among many refuses');
-  // Not an ancestor: history was rewritten, so the range says nothing.
-  write(f.root,'apmath/playground/next/a.js','a\n');const sibling=commit(f.root,'sibling');git(f.root,'reset','-q','--hard',base);
-  write(f.root,'apmath/playground/next/b.js','b\n');const other=commit(f.root,'other');
-  const rewritten=unrelatedRange({root:f.root,base:sibling,head:other,lanes});
-  assert.equal(rewritten.unrelated,false);assert.match(rewritten.error,/BASE_NOT_ANCESTOR_OF_HEAD/);
-  assert.equal(unrelatedRange({root:f.root,base:'not-a-sha',head:other,lanes}).unrelated,false);
-});
 
-test('--unrelated-range CLI exits 0 only for an unrelated range and 1 for anything else',t=>{
-  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),script=path.join(realRoot,'tools/ci/archive-registration-writer.mjs');
-  const head=git(realRoot,'rev-parse','HEAD');
-  const run=(...args)=>spawnSync(process.execPath,[script,'--unrelated-range',...args],{cwd:realRoot,encoding:'utf8'});
-  const same=run(head,head);assert.equal(same.status,0,same.stderr);
-  assert.deepEqual(Object.keys(JSON.parse(same.stdout)).slice(0,5),['unrelated','base','head','changedCount','firstProtectedHit']);
-  const malformed=run('zzzz',head);assert.equal(malformed.status,1);assert.equal(JSON.parse(malformed.stdout).unrelated,false);assert.match(malformed.stderr,/UNRELATED_RANGE_UNKNOWN/);
-  assert.equal(run(head).status,1,'missing head');
-  // Any error (here: a checkout without the real lane configuration) is "unknown", never "unrelated".
-  const f=fixture(t);write(f.root,'apmath/playground/next/x.js','x\n');const next=commit(f.root,'would be unrelated');
-  const unknown=spawnSync(process.execPath,[script,'--unrelated-range',git(f.root,'rev-parse',next+'^'),next,'--root',f.root],{cwd:realRoot,encoding:'utf8'});
-  assert.equal(unknown.status,1);
-});
 
 
 for(const unexpected of [false,true])test('reviewed compiler output ownership is exact: unexpected='+unexpected,async t=>{
@@ -853,12 +806,6 @@ test('needsContinuation never feeds publication: publishable, registrationReady 
   assert.deepEqual(lanes.filter(l=>l.digestContinuation).map(l=>l.id),['semantic'],'only the semantic lane defers its backlog');
   assert.ok(lanes.filter(l=>l.continuation).every(l=>l.digestContinuation));
 });
-test('--unrelated-range and the regenerate path do not read needsContinuation',()=>{
-  const source=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-registration-writer.mjs'),'utf8');
-  const uses=[...source.matchAll(/needsContinuation/g)].length;
-  const unrelated=source.slice(source.indexOf('export function unrelatedRange'),source.indexOf('async function main'));
-  assert.ok(uses>0);assert.doesNotMatch(unrelated,/needsContinuation|continuation/);
-});
 test('fourSlot stage times are collected like the semantic ones and stay evidence only',t=>{
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'four-slot-stage-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
   write(dir,'archive-four-slot/stage-times.jsonl',['build-write','check-full-rebuild','replay-reuse-cache','receipt-proof','git-diff-guards','path-allowlist'].map((stage,i)=>JSON.stringify({stage,durationMs:1000+i,exitCode:0})).join('\n')+'\n');
@@ -1077,4 +1024,147 @@ test('the compiled path matcher answers exactly like the original definition and
       assert.equal(fingerprint(rows.filter(r=>sample.has(r.path)),list),original,`${lane.id} fingerprint`);
     }
   }
+});
+
+
+test('no lane runs or imports a path its inputs exclude, and edits to excluded paths leave that lane digest alone',()=>{
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const lanes=nativeLanes(root);
+  assert.ok(EXCLUDED_CODE_DIRS.length>=1&&EXCLUDED_CODE_DIRS.every(d=>d.startsWith(CODE_TREE)&&d.endsWith('/')));
+  const codeLanes=lanes.filter(l=>l.inputs.includes(CODE_TREE));
+  assert.deepEqual(codeLanes.map(l=>l.id).sort(),['generated','reviewed','semantic','shared','studentIndexes']);
+  const rows=indexRows(root),withRow=p=>[...rows,{path:p,mode:'100644',blob:'1'.repeat(40)}];
+  let followed=0;
+  for(const lane of lanes) {
+    // The scripts this lane's commands run and everything they import or spawn, computed now from the tracked files.
+    const {entries,visited,parent}=producerClosure(root,[lane]);
+    const chain=f=>{const out=[f];while(parent.has(out[out.length-1])&&out.length<12)out.push(parent.get(out[out.length-1]));return out.join(' <- ');};
+    assert.ok(entries.length>=1,`${lane.id}: lane commands resolve to real scripts`);
+    followed+=visited.length;
+    const excluded=lane.excludeInputs||[];
+    for(const file of visited) {
+      assert.equal(matches(file,excluded),false,`${lane.id} runs an excluded path: ${chain(file)}`);
+      // The writer is the one file that names the excluded paths: it holds the lists and never loads them.
+      if(file==='tools/ci/archive-registration-writer.mjs')continue;
+      const text=fs.readFileSync(path.join(root,file),'utf8');
+      for(const dir of excluded.filter(p=>p.endsWith('/'))) {
+        const name=dir.slice(CODE_TREE.length,-1);
+        if(!name||name.includes('/'))continue;
+        assert.equal(new RegExp(`(?:\\.{1,2}\\/|\\btools\\/)${name}(?![\\w-])|['"\`]${name}['"\`]`).test(text),false,`${lane.id}: ${file} reaches the excluded tree ${dir}: ${chain(file)}`);
+      }
+    }
+    // Digests: every excluded path may change freely; a neighbouring file under archive/tools still changes the digest of a code lane.
+    const base=fingerprint(rows,lane.inputs,lane.excludeInputs);
+    for(const pattern of excluded) {
+      const probe=pattern.endsWith('/')?pattern+'zz-probe.mjs':pattern;
+      assert.equal(fingerprint(withRow(probe),lane.inputs,lane.excludeInputs),base,`${lane.id}: an edit to ${pattern} must not change the input digest`);
+    }
+    if(lane.inputs.includes(CODE_TREE))assert.notEqual(fingerprint(withRow(CODE_TREE+'zz-probe.mjs'),lane.inputs,lane.excludeInputs),base,`${lane.id}: any other archive/tools edit must still change it`);
+  }
+  console.log(`lane closures followed ${followed} files in total`);
+  assert.ok(followed>100,'the closures follow imports');
+});
+
+// ---- pictures: the shared lane's commands never open archive/assets, the lanes that do still see every picture ----
+test('a picture edit leaves the shared lane digest alone but still reaches the lanes that read pictures',()=>{
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(root);
+  const rows=indexRows(root),probe='archive/assets/images/zz-probe/q1.svg';
+  const changed=[...rows,{path:probe,mode:'100644',blob:'2'.repeat(40)}],edited=rows.map(r=>r.path.startsWith('archive/assets/images/')&&!matches(r.path,lanes.find(l=>l.id==='shared').inputs)?{...r,blob:'3'.repeat(40)}:r);
+  const digest=(set,lane)=>fingerprint(set,lane.inputs,lane.excludeInputs);
+  const shared=lanes.find(l=>l.id==='shared');
+  assert.equal(matches(probe,shared.inputs),false,'no shared input names the picture tree (only the held-source pictures that the quality-hold policy binds by name)');
+  const rebind=registrationPictureInputs(root);assert.ok(rebind.length>=1&&rebind.every(p=>matches(p,shared.inputs)),'the pictures the pipeline hashes stay inputs');
+  assert.equal(digest(changed,shared),digest(rows,shared));assert.equal(digest(edited,shared),digest(rows,shared));
+  for(const id of ['studentIndexes','fourSlot']) {
+    const lane=lanes.find(l=>l.id===id);
+    assert.notEqual(digest(changed,lane),digest(rows,lane),`${id} reads pictures`);
+  }
+  // The picture reading is not hidden in a producer: none of the shared lane's own scripts mentions the picture tree.
+  const {visited}=producerClosure(root,[shared]);
+  const own=visited.filter(f=>/^(?:archive\/tools\/(?:intelligence|build-|verify-archive-registration|meta-foundation\/(?:compile-meta-foundation|materialize-meta-v2))|tools\/ci\/archive-(?:registration-build-db|pages-registration-derive))/.test(f)||f==='archive/build_db.py');
+  assert.ok(own.length>=8);
+  // The one producer that opens pictures: it hashes the figures named in the visual-rebind receipts, which registrationPictureInputs reads.
+  for(const f of own.filter(f=>f!=='archive/tools/intelligence/apply-reviewed-legacy-similar-ledgers.mjs'))assert.equal(/['"`/]archive\/assets\/|['"`]assets\/images/.test(fs.readFileSync(path.join(root,f),'utf8')),false,`${f} opens the picture tree`);
+});
+
+// ---- a merge that lands while the writer works: the finished result is written onto the new tip, never recomputed ----
+test('a competing merge during preparation: no second computation, one push on the new tip, and the next run sees the merge as not yet registered',async t=>{
+  const f=fixture(t),helper=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/git-push-derived-with-retry.mjs');
+  const origin=path.join(f.dir,'origin.git'),competitor=path.join(f.dir,'competitor');
+  git(f.dir,'init','-q','--bare','--initial-branch=main',origin);
+  git(f.root,'remote','add','origin',origin);git(f.root,'push','-q','origin','HEAD:main');
+  git(f.dir,'clone','-q','-c','core.autocrlf=false',origin,competitor);git(competitor,'config','user.name','competitor');git(competitor,'config','user.email','competitor@example.invalid');
+  const base=git(f.root,'rev-parse','HEAD');
+  const result=await prepareRegistration(f.options);                      // computed on `base`
+  assert.equal(result.safeToPersist,true);const computations=f.calls.length;
+  // Another merge lands first: a picture changes (an input of shared and fourSlot, owned by nobody here).
+  write(competitor,asset,'<svg xmlns="http://www.w3.org/2000/svg"><g id="landed-first"/></svg>\n');
+  git(competitor,'add','-A');git(competitor,'commit','-q','-m','merge landed first');git(competitor,'push','-q','origin','HEAD:main');
+  const landed=git(origin,'rev-parse','main');
+  const push=spawnSync(process.execPath,[helper,'--paths-file',path.join(f.work,'commit.paths'),'--message','chore(archive): register main snapshot [skip ci]','--label','fixture'],
+    {cwd:f.root,encoding:'utf8',env:{...process.env,GITHUB_OUTPUT:path.join(f.dir,'out.txt')}});
+  assert.equal(push.status,0,push.stdout+push.stderr);
+  assert.match(push.stdout,/result=PUSHED attempts=2 .* overlaid=true/);
+  assert.equal(f.calls.length,computations,'no lane ran again');
+  assert.equal(git(origin,'rev-parse','main^'),landed,'one commit of ours, directly on the competitor tip');
+  assert.equal(git(origin,'log','--format=%s','main').split('\n').filter(s=>s.startsWith('chore(archive): register')).length,1);
+  // What the new tip holds: the competitor's picture, our derived files, and a state that records the OLD input digests.
+  const clone=path.join(f.dir,'next');
+  git(f.dir,'clone','-q','-c','core.autocrlf=false',origin,clone);git(clone,'config','user.name','next');git(clone,'config','user.email','next@example.invalid');
+  assert.match(read(clone,asset),/landed-first/);
+  assert.equal(git(origin,'rev-parse','main:out/identity.json'),git(f.root,'rev-parse','HEAD:out/identity.json'),'our derived file, blob for blob');
+  const state=readJson(clone,STATE);
+  assert.equal(readJson(clone,cursor).lastProcessedCommit,base,'the semantic cursor still names the commit it processed');
+  const check=checkRegistration({...f.options,root:clone,work:path.join(f.dir,'check-next')});
+  assert.equal(check.publishable,false,'a snapshot whose inputs moved is never published as registered');
+  for(const id of ['shared','fourSlot'])assert.equal(check.lanes.find(l=>l.id===id).needed,true,id+' sees the merged picture as not yet registered');
+  for(const id of ['reviewed','semantic','generated'])assert.equal(check.lanes.find(l=>l.id===id).needed,false,id+' inputs did not move');
+  assert.ok(Object.keys(state.lanes).length>=5);
+  // The next run: starts from the new tip, computes only what moved, and ends fully registered.
+  f.calls.length=0;
+  const next=await prepareRegistration({...f.options,root:clone,work:path.join(f.dir,'work-next')});
+  assert.equal(next.publishable,true,JSON.stringify(next.lanes.map(l=>[l.id,l.status,l.error])));assert.ok(f.calls.includes('shared')&&!f.calls.includes('generated')&&!f.calls.includes('semantic'),'only the moved lanes ran: '+f.calls);
+  assert.equal(readJson(clone,'out/4slot.json').assetSha256,hash(read(clone,asset)),'the derived value follows the merged picture');
+});
+
+// ---- digestOnly lane (4slot): skipped by a merge run, brought current by a digest run, never relabelled in between ----
+test('a digestOnly lane is skipped in a merge run with its proof untouched, announced in the summary, and run by the digest run',async t=>{
+  const f=fixture(t),lanes=f.lanes.map(l=>l.id==='fourSlot'?{...l,digestOnly:true}:l),merge={ARCHIVE_REGISTRATION_MODE:'merge'},digest={ARCHIVE_REGISTRATION_MODE:'digest'};
+  const options={...f.options,lanes};
+  const seeded=await prepareRegistration({...options,env:digest});assert.equal(seeded.publishable,true);commit(f.root,'registered fixture');f.calls.length=0;
+  const seededState=readJson(f.root,STATE).lanes.fourSlot;
+  // A picture change: the required lanes run, the digestOnly lane does not.
+  write(f.root,asset,'<svg xmlns="http://www.w3.org/2000/svg"><g/></svg>\n');commit(f.root,'one picture edited');
+  const checkedMerge=checkRegistration({...options,env:merge});
+  assert.equal(checkedMerge.needed,true);assert.deepEqual(checkedMerge.deferredLanes,['fourSlot']);
+  assert.equal(checkedMerge.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST');
+  assert.equal(checkRegistration({...options,env:digest}).lanes.find(l=>l.id==='fourSlot').status,'NEEDS_REGISTRATION','a digest run still sees it as needed');
+  const result=await prepareRegistration({...options,env:merge});
+  assert.equal(result.safeToPersist,true);assert.equal(result.publishable,true);assert.deepEqual(result.deferredLanes,['fourSlot']);
+  assert.ok(f.calls.includes('shared')&&!f.calls.includes('fourSlot'),'fourSlot did not run: '+f.calls);
+  assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST');
+  assert.deepEqual(readJson(f.root,STATE).lanes.fourSlot,seededState,'the committed proof of the skipped lane is untouched');
+  assert.ok(!result.changedPaths.includes('out/4slot.json'));
+  const summary=renderRegistrationSummary(result);
+  assert.match(summary,/Left for the scheduled or manual run[^\n]*fourSlot[^\n]*NOT recomputed/);
+  commit(f.root,'registered in merge mode');f.calls.length=0;
+  // Nothing left for a later merge run, but the digest run still owes the lane.
+  assert.equal(checkRegistration({...options,env:merge}).needed,false);
+  assert.equal(checkRegistration({...options,env:digest}).needed,true);
+  const later=await prepareRegistration({...options,env:digest});
+  assert.deepEqual(f.calls,['fourSlot'],'only the owed lane runs');
+  assert.equal(later.deferredLanes,undefined);assert.equal(later.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+  assert.equal(readJson(f.root,'out/4slot.json').assetSha256,hash(read(f.root,asset)));
+  commit(f.root,'registered in digest mode');
+  assert.equal(checkRegistration({...options,env:digest}).needed,false);
+});
+
+test('a required lane is never deferred, and a digestOnly lane that never ran gets no invented proof',async t=>{
+  const f=fixture(t),merge={ARCHIVE_REGISTRATION_MODE:'merge'};
+  const lanes=f.lanes.map(l=>l.id==='fourSlot'||l.id==='shared'?{...l,digestOnly:true}:l);
+  const options={...f.options,lanes,env:merge};
+  const first=await prepareRegistration(options);
+  assert.ok(first.lanes.find(l=>l.id==='shared').status!=='DEFERRED_TO_DIGEST','required lanes ignore digestOnly');
+  assert.equal(first.lanes.find(l=>l.id==='fourSlot').status,'DEFERRED_TO_DIGEST','a lane that never ran is deferred too');
+  assert.equal(readJson(f.root,STATE).lanes.fourSlot,undefined,'no proof is invented for a lane that never ran');
 });

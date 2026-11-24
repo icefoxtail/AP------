@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "건물 앞 지면의 점 A에서 눈높이 1.5 m인 눈으로 건물 꼭대기를 올려다본 각이 60도이고, A에서 건물까지의 거리가 8루트 3 m인 상황을 나타낸 그림이다.",
+  "accessibilityDescription": "지면에 수직인 건물과 그 앞의 점 A, 지면에서 1.5 m 높이의 눈높이 지점, 건물 꼭대기까지의 시선, 60도의 각이 보인다.",
+  "newVisualInformation": [
+    "점 A",
+    "건물까지의 거리 8루트 3 m",
+    "눈높이 1.5 m",
+    "올려다본 각 60도"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "51",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "T",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sFT",
+      "refs": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "id": "sET",
+      "refs": [
+        "E",
+        "T"
+      ]
+    },
+    {
+      "id": "sXA",
+      "refs": [
+        "X",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "F",
+          "E",
+          "T"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "1.5",
+        "unit": "m"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "8sqrt(3)",
+        "unit": "m"
+      },
+      {
+        "id": "lFT",
+        "ownerSegment": "sFT",
+        "text": "h",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sEF"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sFT"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "sET"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sAE"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "F",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "E",
+    "F",
+    "G",
+    "T",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 400,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 건물로부터 $8\\sqrt{3}\\rm,m$ 떨어진 지점 $A$에서 건물의 꼭대기를 올려다본 각의 크기가 $60^\\circ$이고, 측정자의 눈높이가 $1.5\\rm,m$일 때, 이 건물의 높이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

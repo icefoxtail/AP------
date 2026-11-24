@@ -1,0 +1,283 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "수평선 위에 세 지점 A, B, H가 이 순서로 놓여 있고, H에서 수직으로 서 있는 산의 꼭대기를 C라 한 그림이다. AB는 400 m이고, A에서 꼭대기를 올려다본 각은 30도, B에서 올려다본 각은 45도이다.",
+  "accessibilityDescription": "수평선 위의 세 점 A, B, H와 H 바로 위의 점 C가 보인다. A와 H를 잇는 수평선분 위에 B가 있고, A에서 C로, B에서 C로 가는 두 선분과 H에서 C로 가는 수직선분이 그려져 있다. A 쪽에 30도의 각, B 쪽에 45도의 각이 표시되고, A와 B 사이에 400 m 치수가 있다.",
+  "newVisualInformation": [
+    "세 지점 A, B, H가 한 수평선 위에 이 순서로 놓임",
+    "H에서 수직으로 서 있는 산꼭대기 C",
+    "AB 사이의 거리 400 m",
+    "A에서 잰 각 30도와 B에서 잰 각 45도"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "200"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "600"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "VIOLET"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "h"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "offset": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수평선 위의 세 지점 $A, B, H$가 이 순서로 한 직선 위에 있고, 지점 $H$에서 수직으로 서 있는 산의 꼭대기를 $C$라 하자. $\\overline{AB} = 400\\rm,m$, $\\angle CAH = 30^\\circ, \\angle CBH = 45^\\circ$일 때, 산의 높이 $\\overline{CH}$는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

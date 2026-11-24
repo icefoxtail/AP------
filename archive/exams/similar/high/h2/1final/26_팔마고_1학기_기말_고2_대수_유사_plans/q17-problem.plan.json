@@ -1,0 +1,434 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "P",
+    "C",
+    "Q",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "ao",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "od",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "db",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "ap",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "pc",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "pq",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "qb",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "po",
+      "refs": [
+        "P",
+        "O"
+      ]
+    },
+    {
+      "id": "oq",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "qc",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "qd",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "upper",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "regionS",
+        "fill": "LIGHT",
+        "label": "S",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "Q",
+              "D",
+              "B"
+            ]
+          }
+        ],
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "regionT",
+        "fill": "LIGHT",
+        "label": "T",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "C"
+            ]
+          }
+        ],
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "abLength",
+        "points": [
+          "A",
+          "O",
+          "D",
+          "B"
+        ],
+        "label": "6",
+        "value": "6",
+        "side": "RIGHT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 590,
+    "height": 385
+  },
+  "caption": "지름 AB의 반원 위에 점 P와 C가 있고, 두 삼각형 QDB와 PQC의 넓이를 S와 T로 나타낸 그림",
+  "accessibilityDescription": "선분 AB를 지름으로 하는 반원이 있고, 반원 위의 두 점 P와 C에서 여러 선분이 이어진다. 삼각형 QDB와 삼각형 PQC가 각각 S, T로 표시되어 있다.",
+  "newVisualInformation": [
+    "반원 위의 점 P와 C의 위치",
+    "삼각형 QDB와 PQC의 넓이 영역 S와 T"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "길이가 $6$인 선분 $AB$를 지름으로 하는 반원이 있다. 선분 $AB$의 중점을 $O$라 하고, 호 $AB$ 위의 점 $C$에 대하여 $\\angle CAB = \\frac{\\pi}{6}$라 하자. 점 $A$를 지나고 선분 $OC$와 평행한 직선이 호 $AB$와 만나는 점을 $P$, 선분 $OC$와 선분 $BP$의 교점을 $Q$라 하자. 점 $Q$를 지나고 선분 $PO$와 평행한 직선이 선분 $OB$와 만나는 점을 $D$라 할 때, 삼각형 $QDB$의 넓이 $S$와 삼각형 $PQC$의 넓이 $T$의 합 $S + T$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

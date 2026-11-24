@@ -136,8 +136,12 @@
     <script id="engine-metadata-gate">
     (function () {
         var params = new URLSearchParams(location.search);
-        if (params.get('submitQr') === '1' || params.get('osqr') === '1')
-            document.write('<script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn(\'[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행\')"><\/script>');
+        if (params.get('submitQr') === '1' || params.get('osqr') === '1') {
+            // 이 창이 여는 시험지 하나의 메타만 받는다: question-meta.js는 data/archive2-catalog-shards-v1/exam-meta/<키>.json(수 KB)을 먼저 받고,
+            // 없거나 같은 릴리스가 아니면 예전처럼 승인 메타 사본 전체로 간다.
+            window.__ARCHIVE_METADATA_EXAM__ = params.get('data') || '';
+            document.write('<script src="question-meta.js?v=archive-metadata-v1-exam-meta-1" onerror="console.warn(\'[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행\')"><\/script>');
+        }
     })();
     </script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>

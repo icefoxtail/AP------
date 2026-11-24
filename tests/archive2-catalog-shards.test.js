@@ -36,9 +36,17 @@ test('two builds write the same bytes, and the written folder matches its index'
   }
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'archive2-shards-test-'));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
-  for (const entry of first.entries) fs.writeFileSync(path.join(dir, path.basename(entry.path)), entry.content);
+  // the exam-meta files sit in a folder of their own, as the --write CLI writes them
+  for (const entry of first.entries) {
+    const out = path.join(dir, entry.path.slice(entry.path.indexOf('archive2-catalog-shards-v1/') + 'archive2-catalog-shards-v1/'.length));
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, entry.content);
+  }
   const index = JSON.parse(fs.readFileSync(path.join(dir, 'index.json'), 'utf8'));
-  const onDisk = fs.readdirSync(dir).filter((name) => name !== 'index.json').sort();
+  const onDisk = fs.readdirSync(dir, { withFileTypes: true }).filter((item) => item.isFile() && item.name !== 'index.json').map((item) => item.name).sort();
+  const examMetaDir = path.join(dir, 'exam-meta');
+  assert.equal(fs.existsSync(examMetaDir), Boolean(index.examMeta), 'the exam-meta folder is there exactly when the index announces it');
+  if (index.examMeta) assert.equal(fs.readdirSync(examMetaDir).length, index.examMeta.count, 'every announced exam file is there and nothing else');
   assert.deepEqual(onDisk, [...index.shards.map((shard) => shard.path), index.common.path].sort(), 'every shard and the common file in the index exist and nothing else is there');
   for (const shard of index.shards) {
     const bytes = fs.readFileSync(path.join(dir, shard.path));

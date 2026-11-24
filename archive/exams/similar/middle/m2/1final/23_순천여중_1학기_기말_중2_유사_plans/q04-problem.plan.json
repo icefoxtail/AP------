@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      3500,
+      0,
+      6500
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6000",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "3000"
+        ],
+        "color": "BLUE",
+        "label": "y=-2x+6000"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3500",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3500"
+        ],
+        "color": "WARM",
+        "label": "y=-x+3500"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1000",
+        "2000",
+        "3000"
+      ],
+      "y": [
+        "2000",
+        "4000",
+        "6000"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "샌드위치와 우유의 가격을 각각 x원, y원이라 할 때, 두 구매 조건을 나타낸 두 직선이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있는 좌표평면에 두 직선 y=-2x+6000과 y=-x+3500이 그려져 있다.",
+  "newVisualInformation": [
+    "두 구매 조건을 나타내는 두 직선의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "민이가 샌드위치 $2$개, 우유 $1$컵을 사고 지불한 금액은 $6000$원이고, 찬영이가 샌드위치 $1$개, 우유 $1$컵을 사고 지불한 금액은 $3500$원이라고 한다. 이때 샌드위치 한 개의 가격을 $x$원, 우유 한 컵의 가격을 $y$원이라 할 때, 샌드위치 한 개의 가격을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

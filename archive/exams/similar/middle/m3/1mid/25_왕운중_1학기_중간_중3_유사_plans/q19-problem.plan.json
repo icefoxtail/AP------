@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "nw",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ne",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "se",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sw",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "top",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bottom",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "left",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "nw",
+    "ne",
+    "se",
+    "sw",
+    "top",
+    "bottom",
+    "left",
+    "right"
+  ],
+  "hiddenPointNames": [
+    "nw",
+    "ne",
+    "se",
+    "sw",
+    "top",
+    "bottom",
+    "left",
+    "right"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "topSide",
+      "refs": [
+        "nw",
+        "ne"
+      ]
+    },
+    {
+      "id": "rightSide",
+      "refs": [
+        "ne",
+        "se"
+      ]
+    },
+    {
+      "id": "bottomSide",
+      "refs": [
+        "se",
+        "sw"
+      ]
+    },
+    {
+      "id": "leftSide",
+      "refs": [
+        "sw",
+        "nw"
+      ]
+    },
+    {
+      "id": "colDiv",
+      "refs": [
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "id": "rowDiv",
+      "refs": [
+        "left",
+        "right"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "upperLeft",
+        "at": [
+          3.5,
+          9.5
+        ],
+        "labelKind": "TEXT",
+        "text": "3x²",
+        "anchor": "CENTER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "upperRight",
+        "at": [
+          9.5,
+          9.5
+        ],
+        "labelKind": "MATH",
+        "text": "5x",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lowerLeft",
+        "at": [
+          3.5,
+          3
+        ],
+        "labelKind": "MATH",
+        "text": "6x",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lowerRight",
+        "at": [
+          9.5,
+          3
+        ],
+        "labelKind": "MATH",
+        "text": "10",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 440
+  },
+  "caption": "큰 직사각형이 가로선과 세로선으로 네 개의 작은 직사각형으로 나뉘어 있고, 각 영역에 넓이가 적혀 있다.",
+  "accessibilityDescription": "큰 직사각형이 십자 모양의 두 선으로 네 영역으로 나뉘어 있다. 왼쪽 위에는 3x 제곱, 오른쪽 위에는 5x, 왼쪽 아래에는 6x, 오른쪽 아래에는 10이 적혀 있다.",
+  "newVisualInformation": [
+    "네 작은 직사각형의 넓이 3x 제곱, 5x, 6x, 10이 각 영역에 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 큰 직사각형을 네 개의 작은 직사각형으로 나눈 넓이가 각각 $3x^2, ; 6x, ; 5x, ; 10$이다. 이때 큰 직사각형의 둘레의 길이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

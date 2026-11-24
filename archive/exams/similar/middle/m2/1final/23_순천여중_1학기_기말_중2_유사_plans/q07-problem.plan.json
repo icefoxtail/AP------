@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -2,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "A"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "B"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "두 식 A와 B를 각각 그래프로 나타낸 두 직선이다. 식 A의 그래프를 A, 식 B의 그래프를 B라 한다.",
+  "accessibilityDescription": "좌표평면에 두 직선 A와 B가 있고, A는 왼쪽 위에서 오른쪽 아래로, B는 왼쪽 아래에서 오른쪽 위로 뻗어 한 점에서 만난다. 가로축에 2, 4, 세로축에 2, 4 눈금이 있다.",
+  "newVisualInformation": [
+    "식 A를 나타내는 직선",
+    "식 B를 나타내는 직선",
+    "가로축의 2, 4 눈금과 세로축의 2, 4 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 수 $x$, $y$에 대하여 식 $\\text{A}$는 $x+y=4$이고, 식 $\\text{B}$는 $x$에 $2$를 곱한 값에서 $y$를 뺀 결과가 $5$일 때, 두 식 $\\text{A}$, $\\text{B}$를 모두 만족시키는 $x-y$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
