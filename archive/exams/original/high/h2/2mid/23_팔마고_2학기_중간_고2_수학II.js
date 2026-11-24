@@ -380,7 +380,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 가장 높고 양쪽으로 내려가는 y축 대칭 곡선이 그려져 있고, 곡선 위의 대칭인 점 A와 B, C와 D가 표시되어 있으며 B와 D에서의 접선 l, m이 그려져 있다.",
+    "solutionImageCaption": "예: f′(-1)=1, f′(-2)=6을 만족하는 y축 대칭 함수 f(x)=-(x²+x⁴)/6이다. 그래프가 y축에 대칭이므로 f′는 기함수이고 f′(1)=-1, f′(2)=-6이다. 그림의 접선 l은 B(1,-1/3)에서 기울기 -1, m은 D(2,-10/3)에서 기울기 -6이고, A, C에서는 기울기의 부호가 반대(1, 6)이다. 극한의 분자를 x+1로 나누면 f′(2)=-6, 분모를 x+1로 나누면 f′(1)×(-2)=2이다. 따라서 극한은 -3이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -718,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 [1, 8]에서 삼차함수 f의 그래프가 x축과 세 점 A, C, B에서 만나고, x=2와 x=7 부근에서 그래프가 각각 위로 향한다. 두 극값 점 E, F의 위치도 보인다.",
+    "solutionImageCaption": "f(2)=0, f(7)=0이고 f′(2)=5, f′(7)=10이므로 x=2의 오른쪽 가까이에서 f(x)는 양수, x=7의 왼쪽 가까이에서 f(x)는 음수이다. 따라서 (2, 7)에 f(x)=0인 실근이 적어도 하나 있고, 끝점 2와 7을 더하면 [2, 7]에서 적어도 3개의 실근을 갖는다. 따라서 n=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

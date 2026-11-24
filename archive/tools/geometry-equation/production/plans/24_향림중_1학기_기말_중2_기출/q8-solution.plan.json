@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a<2b에서 2(a−2b)<0. 이를 나누면 x<2로 뒤집힌다. x2는 양변 같아 엄격 부등식에서 제외. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "양수 $a, b$에 대하여 $a\\lt 2b$일 때, $2ax+8b\\gt 4bx+4a$의 해는? [5점] 보기: ['$x\\\\gt 4$', '$x\\\\lt 4$', '$x\\\\gt 6$', '$x\\\\gt 2$', '$x\\\\lt 2$']",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a<2b에서2(a−2b)<0. 이를나누면x<2로뒤집힌다. x2는양변같아엄격부등식에서제외. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a<2b에서2(a−2b)<0. 이를나누면x<2로뒤집힌다. x2는양변같아엄격부등식에서제외. 정답⑤."
+  ]
+}

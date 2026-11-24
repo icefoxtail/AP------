@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "P",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1",
+        "1"
+      ],
+      "P": [
+        "2",
+        "0"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-2",
+          "intercept": "4",
+          "label": "l",
+          "labelAt": "END"
+        },
+        {
+          "id": "r",
+          "slope": "2",
+          "intercept": "-4",
+          "label": "r",
+          "labelAt": "END"
+        }
+      ]
+    }
+  },
+  "caption": "h(x)=x|x−2|는 x가 2보다 작을 때 x(2−x), 2 이상일 때 x(x−2)로 나타난다. h(2)=0이고 x가 2로 가까워질 때의 좌우 극한이 모두 0이므로 h는 x=2에서 연속이다. 두 접선 l, r의 기울기는 각각 −2와 2이므로 좌미분계수와 우미분계수가 다르다. 따라서 x=2에서 연속이지만 미분가능하지 않다.",
+  "accessibilityDescription": "x축과 만나는 점 P(2, 0)에서 왼쪽 가지는 위로 볼록하고 오른쪽 가지는 아래로 볼록한 두 포물선이 이어져 있다. 왼쪽 가지에 접하는 직선 l과 오른쪽 가지에 접하는 직선 r, 그리고 왼쪽 가지의 꼭짓점 V가 표시되어 있다.",
+  "newVisualInformation": [
+    "구간별 함수 h(x)=x|x−2|의 그래프",
+    "x=2에서의 연속성과 좌우 접선 l, r",
+    "꼭짓점 V의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x)=|x-2|$에 대하여 함수 $xf(x)$의 $x=2$에서의 연속성과 미분가능성을 조사하시오. (연속의 정의와 미분계수의 정의를 이용하여 서술하시오.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

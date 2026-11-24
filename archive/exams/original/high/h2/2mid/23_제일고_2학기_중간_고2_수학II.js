@@ -736,7 +736,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 만나는 점 P(2, 0)에서 왼쪽 가지는 위로 볼록하고 오른쪽 가지는 아래로 볼록한 두 포물선이 이어져 있다. 왼쪽 가지에 접하는 직선 l과 오른쪽 가지에 접하는 직선 r, 그리고 왼쪽 가지의 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "h(x)=x|x−2|는 x가 2보다 작을 때 x(2−x), 2 이상일 때 x(x−2)로 나타난다. h(2)=0이고 x가 2로 가까워질 때의 좌우 극한이 모두 0이므로 h는 x=2에서 연속이다. 두 접선 l, r의 기울기는 각각 −2와 2이므로 좌미분계수와 우미분계수가 다르다. 따라서 x=2에서 연속이지만 미분가능하지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

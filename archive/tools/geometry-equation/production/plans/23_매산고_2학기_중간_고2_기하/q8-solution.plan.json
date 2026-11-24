@@ -1,0 +1,54 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "8",
+    "bSquared": "2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "LINE_CONIC",
+      "line": "k6",
+      "which": 1
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "k6",
+      "which": 2
+    }
+  ],
+  "lines": [
+    {
+      "id": "k6",
+      "slope": "2",
+      "intercept": "6"
+    },
+    {
+      "id": "k5",
+      "slope": "2",
+      "intercept": "5",
+      "dashed": true
+    }
+  ],
+  "caption": "직선 y=2x+k를 쌍곡선 x²−4y²=8에 대입하면 15x²+16kx+4k²+8=0이다. 서로 다른 두 점에서 만나려면 판별식이 0보다 커야 하므로 16k²−480>0, 즉 k²>30이다. 실선은 k=6인 직선으로 쌍곡선과 두 점 P, Q에서 만나고, 점선은 k=5인 직선으로 쌍곡선과 만나지 않는다. 자연수 k의 최솟값은 6이므로 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $x^2-4y^2=8$과 직선 $y=2x+k$가 서로 다른 두 점에서 만나도록 하는 자연수 $k$의 최솟값은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "k=6인 실선 직선 y=2x+6과 쌍곡선의 두 교점 P, Q",
+    "k=5인 점선 직선 y=2x+5는 쌍곡선과 만나지 않음",
+    "판별식 조건 k²>30"
+  ],
+  "accessibilityDescription": "좌표평면에 쌍곡선과 기울기가 2인 두 직선이 그려져 있고, 실선은 두 점 P, Q에서 쌍곡선과 만나며 점선은 쌍곡선과 만나지 않는다."
+}

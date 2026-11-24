@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "6-sqrt(42)",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6+sqrt(42)",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "a의 범위"
+  },
+  "caption": "f가 일대일이므로 삼차함수 f는 모든 실수에서 증가해야 한다. f′(x)=6x²+2ax+(2a+1)의 판별식 D=4(a²-12a-6)이 0 이하이면 되고, 6-√42≤a≤6+√42이다. 6-√42는 -1과 0 사이, 6+√42는 12와 13 사이이므로 정수 a는 0부터 12까지의 13개이다. 따라서 답은 13개이다.",
+  "accessibilityDescription": "수직선에 6-√42와 6+√42를 양 끝으로 하는 닫힌구간이 굵게 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "치역과 공역이 같은 함수 $f(x)$가 있다. $f(x)=2x^3+ax^2+(2a+1)x+17$이다. 임의의 실수 $x_1,x_2$에 대하여 $f(x_1)=f(x_2)$이면 $x_1=x_2$를 만족할 때 정수 $a$의 개수를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "f′(x)=6x²+2ax+(2a+1)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "D=4(a²-12a-6)≤0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 0 이하가 되는 a의 닫힌구간을 수직선에 나타낸다",
+    "두 끝값이 놓이는 정수 사이 위치를 확인한다"
+  ]
+}

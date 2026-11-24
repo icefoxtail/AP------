@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "14/5",
+          "-12/5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-10/3",
+          "2/3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "각표현이 12와같다는뜻이므로 12x+5y14,2x−3y10. 공통점(2,−2),합 0. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $12x+5y-2=2x-3y+2=12$의 해가 $x=a, y=b$일 때, $a+b$의 값은? [4점] 보기: ['0', '2', '4', '6', '8']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "각표현이12와같다는뜻이므로12x+5y14,2x−3y10. 공통점(2,−2),합0. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "각표현이12와같다는뜻이므로12x+5y14,2x−3y10. 공통점(2,−2),합0. 정답①."
+  ]
+}

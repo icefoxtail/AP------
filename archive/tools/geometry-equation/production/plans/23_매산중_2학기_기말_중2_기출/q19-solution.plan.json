@@ -1,0 +1,183 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "x=1은b=1"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "a",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "b",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 4
+              },
+              "to": {
+                "column": 1,
+                "element": 4
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 5
+              },
+              "to": {
+                "column": 1,
+                "element": 5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "x=2은b=2"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "a",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "b",
+              "elements": [
+                "2",
+                "4",
+                "6"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "x=1은 b=1a인순서쌍이다. x1인 6쌍과 x2인 3쌍은겹치지않아 9/36=1/4,정답③. x=2은 b=2a인순서쌍이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위 $A$, $B$를 동시에 던져서 나오는 눈의 수를 각각 $a$, $b$라고 할 때, 일차방정식 $ax-b=0$의 해가 $x=1$ 또는 $x=2$일 확률은? (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1은b=1a인순서쌍이다. x1인6쌍과x2인3쌍은겹치지않아9/36=1/4,정답③. x=2은b=2a인순서쌍이다."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -2,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "2x+y=3"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/3",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "2x+3y=7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1/2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "0.3x+0.15y=0.45의 양변에 20을 곱하면 2x+y=3, 1/4x+3/8y=7/8의 양변에 8을 곱하면 2x+3y=7이다. 두 식을 빼면 2y=4이므로 y=2이고, 2x+2=3에서 x=1/2이다. 두 직선의 교점은 (1/2, 2)이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "기울기가 음수인 파란 직선과 기울기가 더 완만한 음수인 주황 직선이 제1사분면의 한 점에서 만나고, 그 교점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "계수를 정리한 두 직선 2x+y=3과 2x+3y=7을 한 좌표평면에 표시",
+    "두 직선의 교점 (1/2, 2) 좌표 표시",
+    "교점의 x좌표와 y좌표가 구하는 해임을 그림에서 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}0.3x+0.15y=0.45\\\\{}\\dfrac{1}{4}x+\\dfrac{3}{8}y=\\dfrac{7}{8}\\end{cases}$의 해는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "CO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "DO",
+      "refs": [
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직교 대각선으로 네 직각삼각형을 분리한다. AB²=a²+b²,CD²=c²+d²이므로 합은 a²+b²+c²+d². AD²+BC²도 같은 네 항이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 $\\square ABCD$에서 두 대각선 $AC$, $BD$가 직교할 때, $\\overline{AB}^2+\\overline{CD}^2=\\overline{AD}^2+\\overline{BC}^2$이 성립함을 설명하는 과정이다. (가), (나)에 알맞은 것을 바르게 나타낸 것은? [4점]<br><img src=\"assets/images/23_이수중_2학기_기말_중2_기출/q7-problem-visual-v2.svg\" alt=\"AC와 BD는 O에서 서로 수직으로 만난다. O에서 A, B, C, D에 이르는 네 선분의 길이를 각각 a, b, c, d로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>피타고라스 정리에 의해</p><p>$\\overline{AB}^{2}=\\boxed{\\text{(가)}},\\;\\overline{CD}^{2}=\\boxed{\\text{(나)}}$</p><p>$\\overline{AD}^{2}=a^{2}+d^{2},\\;\\overline{BC}^{2}=b^{2}+c^{2}$</p><p>따라서 $\\overline{AB}^{2}+\\overline{CD}^{2}$<br>$=\\boxed{\\text{(가)}}+\\boxed{\\text{(나)}}$<br>$=(a^{2}+d^{2})+(b^{2}+c^{2})$<br>$=\\overline{AD}^{2}+\\overline{BC}^{2}$</p></div>",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAO",
+        "ownerSegment": "AO",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBO",
+        "ownerSegment": "BO",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCO",
+        "ownerSegment": "CO",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDO",
+        "ownerSegment": "DO",
+        "text": "d",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -371,7 +371,11 @@ window.questionBank = [
       "도형"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 파스칼의 삼각형 수 배열이 삼각형 모양으로 놓여 있고, 왼쪽 안쪽 대각선과 그보다 오른쪽 대각선이 각각 파랑과 주황 선으로 이어져 있다.",
+    "solutionImageCaption": "색칠된 수는 파스칼의 삼각형에서 C(n,1)과 C(n,2)에 해당하는 두 대각선이고 n은 2부터 10까지이다. C(n,1)의 합은 2부터 10까지의 합이므로 54이고, C(n,2)의 합은 C(11,3)=165이다. 따라서 모든 수의 합은 54+165=219이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 7,

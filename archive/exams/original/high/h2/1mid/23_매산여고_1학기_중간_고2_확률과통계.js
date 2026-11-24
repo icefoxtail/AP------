@@ -1197,7 +1197,11 @@ window.questionBank = [
     ],
     "wide": false,
     "projectionStatus": "PROJECTION_REUSE",
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 이차방정식이 실근을 갖는 조건 b≤a²/3인 칸을 칠했다. a=1, 2, 3, 4, 5, 6에서 가능한 b의 개수는 0, 1, 3, 5, 6, 6이므로 모두 21칸이다. 전체 36칸 중 확률은 21/36=7/12이다. 답은 7/12이다.",
+    "solutionImageSize": "full"
   },
 {
     "number": 21,

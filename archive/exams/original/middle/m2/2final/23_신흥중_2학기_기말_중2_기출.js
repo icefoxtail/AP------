@@ -86,7 +86,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "축척을 실제 가로·세로에 적용",
-    "decisiveStep": "m를cm로 통일한 두 길이를 축척의 분모80으로 나눈다."
+    "decisiveStep": "m를cm로 통일한 두 길이를 축척의 분모80으로 나눈다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로가 세로보다 긴 직사각형이 있고, 가로 변에 6, 세로 변에 4.5가 적혀 있다.",
+    "solutionImageCaption": "1:80의 비율은 실제 길이를 80으로 나눈 길이로 그린다는 뜻이다. 실제 가로 4.8 m는 480 cm이므로 480을 80으로 나누면 6 cm이고, 세로 3.6 m는 360 cm이므로 360을 80으로 나누면 4.5 cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -707,7 +711,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 반원 넓이의 지름 제곱 합",
-    "decisiveStep": "반원 넓이합을 세 변의 제곱합으로 나타내고 직각변 제곱합을 빗변 제곱으로 치환한다."
+    "decisiveStep": "반원 넓이합을 세 변의 제곱합으로 나타내고 직각변 제곱합을 빗변 제곱으로 치환한다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "P는 AB, Q는 AC, R은 BC를 지름으로 하는 반원이다. AB²+AC²=BC²=256이므로 P+Q=R=32π, 세 넓이합 64π. 세 반원은 삼각형 바깥 방향에 각각 놓인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -833,7 +841,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "닮음 정의를 만족하는 도형 예시 구성",
-    "decisiveStep": "정사각형과 정삼각형을 선택하여 대응각동등과 대응변비 일정, 확대·축소 관계를 설명한다."
+    "decisiveStep": "정사각형과 정삼각형을 선택하여 대응각동등과 대응변비 일정, 확대·축소 관계를 설명한다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널에는 한 변이 2인 정사각형과 한 변이 3인 정사각형, 오른쪽 패널에는 한 변이 2인 정삼각형과 한 변이 3인 정삼각형이 나란히 그려져 있다.",
+    "solutionImageCaption": "임의의 두 정사각형은 네 각이 모두 90도이고 대응하는 변의 길이의 비가 한 변의 비와 같아 항상 닮음이다. 임의의 두 정삼각형도 세 각이 모두 60도이고 세 변의 비가 모두 같아 항상 닮음이다. 한 도형을 일정한 비율로 확대하거나 축소하면 다른 도형과 합동이 되므로 두 예 모두 항상 닮음이다. 따라서 답은 정사각형끼리, 정삼각형끼리이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -908,7 +921,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "삼각형 내부 평행선의 부분과 전체 비",
-    "decisiveStep": "부분4와6을 합한 전체10에 대한4의 비를 평행한 두 변x와8에 적용한다."
+    "decisiveStep": "부분4와6을 합한 전체10에 대한4의 비를 평행한 두 변x와8에 적용한다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "AB4와 BD6에서 AD10. 평행선으로 △ABC∼△ADE이므로 4:10=BC:8, BC16/5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1026,6 +1043,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "제한된 동전 개수의 큰 액면별 경우분류",
-    "decisiveStep": "가중합을800으로 놓고500원 개수0·1·2이상으로 분기하여 범위 안의 정수쌍을 센다."
+    "decisiveStep": "가중합을800으로 놓고500원 개수0·1·2이상으로 분기하여 범위 안의 정수쌍을 센다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "50원 x개,100원 y개,500원 z개는 각각 0..4 정수. x+2y+10z16에서 z0은 최대 12로 불가,z≥2도불가라 z1. 남은 x+2y6의 범위 안 정수해(0,3),(2,2),(4,1) 세 개가 결제방법 3가지이다. 안내 직선의 연속점은 동전 개수로 세지 않는다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -37,7 +37,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선이 있고 F의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=8x는 y²=4px에서 p=2이다. 초점은 (p, 0)=(2, 0)이고 준선은 x=−2이다. 따라서 a=2이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -685,7 +689,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우로 갈라진 쌍곡선의 오른쪽 가지 위의 점 P에서 닿는 접선이 y축과 만나는 점 N까지 이어져 있고 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "쌍곡선 x²−y²/2=1 위의 점 P(3, 4)에서의 접선은 3x−4y/2=1, 즉 3x−2y=1이다. y=(3/2)x−1/2로 정리되므로 y절편은 N(0, −1/2)이다. 따라서 답은 −1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

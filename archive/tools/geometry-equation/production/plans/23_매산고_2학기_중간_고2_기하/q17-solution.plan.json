@@ -1,0 +1,104 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "PARABOLA",
+      "vertex": [
+        "3",
+        "0"
+      ],
+      "p": "-2",
+      "axis": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "1",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "c1"
+    },
+    {
+      "id": "V1",
+      "kind": "VERTEX",
+      "curve": "c1"
+    },
+    {
+      "id": "V2",
+      "kind": "VERTEX",
+      "curve": "c2"
+    },
+    {
+      "id": "D1",
+      "kind": "POINT",
+      "x": "5",
+      "y": "0",
+      "label": false
+    },
+    {
+      "id": "D2",
+      "kind": "POINT",
+      "x": "-1",
+      "y": "0",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "l1",
+      "role": "DIRECTRIX",
+      "curve": "c1",
+      "label": "l"
+    },
+    {
+      "id": "l2",
+      "role": "DIRECTRIX",
+      "curve": "c2",
+      "label": "m"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sD",
+      "from": "D2",
+      "to": "D1",
+      "label": "6"
+    },
+    {
+      "id": "sFV1",
+      "from": "F",
+      "to": "V1",
+      "label": "2"
+    },
+    {
+      "id": "sV2F",
+      "from": "V2",
+      "to": "F",
+      "label": "1"
+    }
+  ],
+  "caption": "포물선 y²=-8(x-p)의 초점거리는 2이고 y²=4(x-q)의 초점거리는 1이다. 예를 들어 p=3, q=0으로 그리면 꼭짓점 V1, V2와 공통 초점 F(1, 0), 두 준선 l과 m이 각각 x=5, x=-1인 모양이 된다. 초점이 일치하므로 p-q=3이고 두 준선 사이의 거리는 (p+2)-(q-1)=(p-q)+3=3+3=6이다. 따라서 답은 6이다.",
+  "accessibilityDescription": "두 포물선이 각각 왼쪽과 오른쪽으로 열려 있고, 공통인 초점 F와 두 꼭짓점 V1, V2, 두 준선 l과 m이 세로선으로 그려져 있다. 초점에서 두 꼭짓점으로 가는 선분과 두 준선이 x축과 만나는 점을 잇는 선분이 표시되어 있다.",
+  "newVisualInformation": [
+    "두 포물선 y²=-8(x-3)과 y²=4x를 한 좌표평면에 나란히 그리고 공통 초점 F(1, 0)을 표시한다.",
+    "각 포물선의 준선 l: x=5와 m: x=-1을 세로선으로 긋고, 두 준선과 x축의 교점 사이 거리에 6을 적는다.",
+    "초점에서 두 꼭짓점 V1(3, 0), V2(0, 0)까지의 거리를 각각 2와 1로 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 포물선 $y^2=-8(x-p)$와 $y^2=4(x-q)$의 초점이 일치할 때, 두 포물선의 준선 사이의 거리를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

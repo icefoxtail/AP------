@@ -293,7 +293,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 반지름 5인 원 위 제2사분면에 점 (-4, 3)이 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 3, 원점에서 수선의 발까지의 가로 길이는 4, 빗변은 5로 표시되어 있다.",
+    "solutionImageCaption": "θ가 제2사분면의 각이고 sinθ=3/5이므로 cosθ=-4/5, tanθ=-3/4이다. sin(π/2+θ)=cosθ, tan(π-θ)=-tanθ이므로 주어진 식은 cosθ-tanθ-cosθ=-tanθ이다. 따라서 -tanθ=3/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -618,7 +622,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원과 세 개의 동경이 있고, 각각 π/3, π, 5π/3의 각이 호와 함께 표시되어 있다.",
+    "solutionImageCaption": "tan x를 sin x/cos x로 바꾸어 정리하면 sin x(1/cos x − 2) = 0이다. sin x = 0에서 x = π, 2π이고, cos x = 1/2에서 x = π/3, 5π/3이다. 네 해를 더하면 π + 2π + π/3 + 5π/3 = 5π이다. 따라서 답은 5π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

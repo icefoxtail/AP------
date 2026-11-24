@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-6"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-7/2",
+          "3/2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "계수 없는 두 식 6x+y4,3x−2y7의 공통해 (1,−2)를 먼저 찾는다. 다른 두 식에 대입하면 a−b4,b3로 a7. 정답 a7,b3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 연립방정식의 해가 서로 같을 때, $a, b$의 값을 구하시오. (단, $a, b$는 상수) [6점]\n$\\begin{cases}2ax+by=8\\\\6x+y=4\\end{cases}$\n$\\begin{cases}3x-2y=7\\\\x-2by=13\\end{cases}$ 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "계수없는두식6x+y4,3x−2y7의공통해(1,−2)를먼저찾는다. 다른두식에대입하면a−b4,b3로a7. 정답a7,b3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "계수없는두식6x+y4,3x−2y7의공통해(1,−2)를먼저찾는다. 다른두식에대입하면a−b4,b3로a7. 정답a7,b3."
+  ]
+}

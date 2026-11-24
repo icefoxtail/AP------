@@ -226,7 +226,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 반지름 5인 원 위 제3사분면에 점 (-3, -4)가 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 4, 원점에서 수선의 발까지의 가로 길이는 3, 빗변은 5로 표시되어 있다.",
+    "solutionImageCaption": "tanθ=4/3>0이고 θ가 제3사분면의 각이므로 sinθ<0, cosθ<0이다. tanθ=y/x=(-4)/(-3)로 두고 점 (-3,-4)를 잡으면 빗변 r=5이다. 따라서 sinθ=y/r=-4/5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -263,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 f와 분홍 곡선 g, 수평선 y=1과 y=-1이 그려져 있다. f는 y=1과 점 P에서, y=-1과 점 Q에서 만나고, g는 y=1과 점 P와 R에서 만난다.",
+    "solutionImageCaption": "예: n=3일 때 곡선 y=x³은 수평선 y=1과 한 점 P(1, 1)에서, y=-1과 한 점 Q(-1, -1)에서 만난다. n=4일 때 곡선 y=x⁴은 y=1과 두 점 P(1, 1), R(-1, 1)에서 만나고 y=-1과는 만나지 않는다. 따라서 ㄱ은 거짓이고 ㄴ, ㄷ, ㄹ은 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -334,7 +342,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선과 가로 점선 y=2가 만나고, x축에는 10과 11 눈금이, y축에는 1 눈금이 보인다.",
+    "solutionImageCaption": "매년 7퍼센트씩 증가하는 농도를 지수곡선으로, 현재의 2배가 되는 수준을 가로 점선으로 나타내었다. 0.03n ≥ 0.3010에서 n ≥ 301/30이므로 지수곡선은 10년과 11년 사이에 2배 수준을 지난다. 따라서 최소 11년 후이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -405,7 +417,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-FUNCTION_INVERSE",
     "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f가 가로 점선 y=2 아래에 있고, 주황색 지수곡선 g가 가로 점선 y=8 위에 있다. y축에는 3, 4, 5, 6, 7 눈금이 보인다.",
+    "solutionImageCaption": "f의 그래프는 y=2를 점근선으로 하여 항상 2보다 작고, g의 그래프는 y=8을 점근선으로 하여 항상 8보다 크다. 따라서 모든 실수 x에서 f(x)보다 크고 g(x)보다 작은 정수 n은 2부터 8까지이다. 그 개수는 7이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

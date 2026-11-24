@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A5",
+    "P1",
+    "P2",
+    "P4",
+    "T1",
+    "T2",
+    "T4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAxis",
+      "refs": [
+        "A0",
+        "A5"
+      ]
+    },
+    {
+      "id": "sT1",
+      "refs": [
+        "P1",
+        "T1"
+      ]
+    },
+    {
+      "id": "sT2",
+      "refs": [
+        "P2",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT4",
+      "refs": [
+        "P4",
+        "T4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sT1",
+        "text": "1"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sT2",
+        "text": "2"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sT4",
+        "text": "4"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d14",
+        "from": "P1",
+        "to": "P4",
+        "label": "3",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A0",
+    "A5",
+    "P1",
+    "P2",
+    "P4",
+    "T1",
+    "T2",
+    "T4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "1과 4의 차가 3이므로 조건에 따라 1과 4는 이웃할 수 없고, 2의 개수에 따라 나누어 센다. 2가 2개, 3개, 4개, 5개일 때 경우의 수는 각각 38, 32, 10, 1이다. 합은 38+32+10+1=81이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "가로선 위에 1, 2, 4가 적힌 세 눈금이 있고, 1과 4 사이에 길이 3을 나타내는 치수선이 있다.",
+  "newVisualInformation": [
+    "수 1, 2, 4를 표시한 가로선의 세 눈금",
+    "1과 4 사이의 거리가 3임을 나타내는 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "숫자 $1$, $2$, $4$ 중에서 중복을 허용하여 다섯 개를 선택한 후 일렬로 나열할 때, 다음 조건을 만족시키도록 나열하는 경우의 수는? [4.5점]<br><조건><br>(가) 숫자 $2$가 두 번 이상 나온다.<br>(나) 이웃한 두 수의 차는 모두 $2$ 이하이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

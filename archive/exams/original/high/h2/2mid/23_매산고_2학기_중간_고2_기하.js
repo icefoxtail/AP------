@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선이 있다. 세로 점선 x=1/2이 포물선과 위아래 두 점 A, B에서 만나고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "초점이 (2, 0)이고 준선이 x=−2인 포물선은 y²=8x이다. 직선 x=1/2과 만나는 점은 A(1/2, 2), B(1/2, −2)로 a²=8×(1/2)=4에서 a=±2이다. 보기에서 양수는 2뿐이므로 a=2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -97,7 +101,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선 y²=8x와 아래쪽 접점 T에서 닿는 기울기 −2의 접선, 그와 평행한 점선 직선이 있다. 초점 F와 접점 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=8x에서 p=2이고, 직선 2x+y−3=0은 기울기가 −2인 직선 y=−2x+3(점선)이다. 평행한 접선의 기울기는 −2이므로 접선의 공식 y=mx+p/m에서 y=−2x−1이고 접점은 T(1/2, −2)이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -272,7 +280,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 쌍곡선과 기울기가 2인 두 직선이 그려져 있고, 실선은 두 점 P, Q에서 쌍곡선과 만나며 점선은 쌍곡선과 만나지 않는다.",
+    "solutionImageCaption": "직선 y=2x+k를 쌍곡선 x²−4y²=8에 대입하면 15x²+16kx+4k²+8=0이다. 서로 다른 두 점에서 만나려면 판별식이 0보다 커야 하므로 16k²−480>0, 즉 k²>30이다. 실선은 k=6인 직선으로 쌍곡선과 두 점 P, Q에서 만나고, 점선은 k=5인 직선으로 쌍곡선과 만나지 않는다. 자연수 k의 최솟값은 6이므로 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -452,7 +464,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 초점을 지나는 현의 양 끝점 P, Q에서 준선에 내린 수선의 발 H, H′와 사다리꼴 PHH′Q가 색칠되어 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "포물선의 정의로 PF=PH=2, QF=QH′=6이고 F가 선분 PQ 위에 있으므로 PQ=8이다. P와 Q의 준선에 수직인 방향의 거리 차는 6−2=4이므로 준선과 나란한 방향의 거리 HH′=√(8²−4²)=4√3이다. 사다리꼴 PHH′Q의 넓이는 (1/2)(2+6)×4√3=16√3이다. 그림은 이 조건을 만족하는 포물선 y²=6x의 한 예이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -583,7 +599,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선이 각각 왼쪽과 오른쪽으로 열려 있고, 공통인 초점 F와 두 꼭짓점 V1, V2, 두 준선 l과 m이 세로선으로 그려져 있다. 초점에서 두 꼭짓점으로 가는 선분과 두 준선이 x축과 만나는 점을 잇는 선분이 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=-8(x-p)의 초점거리는 2이고 y²=4(x-q)의 초점거리는 1이다. 예를 들어 p=3, q=0으로 그리면 꼭짓점 V1, V2와 공통 초점 F(1, 0), 두 준선 l과 m이 각각 x=5, x=-1인 모양이 된다. 초점이 일치하므로 p-q=3이고 두 준선 사이의 거리는 (p+2)-(q-1)=(p-q)+3=3+3=6이다. 따라서 답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "20",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "53/3",
+          "-2/3"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "7",
+          "y": "13",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 2점슛 x, 세로 3점슛 y. 총 20골과 2x+3y53의 공통점 (7,13). 실제 골수는 비음수 정수, 직선은 조건의 보조 연장. 정답 7골/13골.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "향림이는 친구와 함께 농구 경기를 하였는데, 2점 슛과 3점 슛을 합하여 20골을 넣어 53점을 얻었다. 향림이가 2점 슛과 3점 슛을 각각 몇 골씩 넣었는지 구하시오. [5점] 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로2점슛x,세로3점슛y. 총20골과2x+3y53의공통점(7,13). 실제골수는비음수정수,직선은조건의보조연장. 정답7골/13골.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로2점슛x,세로3점슛y. 총20골과2x+3y53의공통점(7,13). 실제골수는비음수정수,직선은조건의보조연장. 정답7골/13골."
+  ]
+}

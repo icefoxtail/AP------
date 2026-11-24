@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 눈을 가로세로로 놓은 6×6 표에서 두 눈의 차가 3인 칸을 칠했다. 해당하는 순서쌍은 (1,4), (4,1), (2,5), (5,2), (3,6), (6,3)의 6칸이므로 한 번의 성공확률은 6/36=1/6이다. 따라서 X는 B(180, 1/6)이고 E(X)=30, V(X)=25, σ(X)=5이므로 평균과 표준편차의 합은 35이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -200,7 +204,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X의 곡선은 대칭축이 Y의 대칭축 x=4보다 왼쪽에 있으므로 m<4이고 자연수 m은 1, 2, 3의 3가지이다. Y의 곡선이 더 뾰족하므로 σ<7이고 자연수 σ는 1부터 6까지의 6가지이다. 따라서 순서쌍은 3×6=18개이다. 그림의 m과 σ는 조건을 만족하는 예이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -496,7 +504,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "세 공에 적힌 수의 합 X는 4부터 8까지이고 그 경우의 수는 차례로 2, 4, 8, 4, 2로 모두 20가지이다. 직선과 곡선을 연립하면 Xx²+10x+X/2=0이고, 만나지 않을 조건은 판별식 100−2X²이 0보다 작은 것이다. 이때 X²>50이므로 X=8뿐이고, X=8은 3, 3, 2를 꺼내는 2가지이므로 확률은 2/20=1/10이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

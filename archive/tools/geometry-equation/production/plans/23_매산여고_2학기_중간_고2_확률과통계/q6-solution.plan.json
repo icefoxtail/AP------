@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "2",
+        "sd": "7",
+        "label": "X"
+      },
+      {
+        "id": "Y",
+        "mean": "4",
+        "sd": "3",
+        "label": "Y"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "2",
+        "text": "m"
+      },
+      {
+        "x": "4",
+        "text": "4"
+      }
+    ]
+  },
+  "caption": "X의 곡선은 대칭축이 Y의 대칭축 x=4보다 왼쪽에 있으므로 m<4이고 자연수 m은 1, 2, 3의 3가지이다. Y의 곡선이 더 뾰족하므로 σ<7이고 자연수 σ는 1부터 6까지의 6가지이다. 따라서 순서쌍은 3×6=18개이다. 그림의 m과 σ는 조건을 만족하는 예이다. 답은 ②이다.",
+  "newVisualInformation": [
+    "X의 대칭축이 Y의 대칭축 x=4보다 왼쪽이고 Y가 더 뾰족해 m<4, σ<7임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 확률변수 $X$, $Y$는 각각 정규분포 $N(m,7^2)$, $N(4,\\sigma^2)$을 따른다. 두 확률변수 $X$, $Y$의 확률밀도함수가 각각 $f(x)$, $g(x)$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프는 그림과 같다. 자연수 $m$, $\\sigma$의 값으로 가능한 모든 순서쌍 $(m,\\sigma)$의 개수는? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

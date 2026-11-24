@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "양의 절편 b>0이면 x0의 왼쪽 아주 가까운 곳에서도 y>0이므로 제2사분면을 반드시 지난다. 두 선은 기울기 양/음의 대표일 뿐 모든 계수 지정이 아니다. 정답 ④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수 $y=ax+b$의 그래프에 대한 설명으로 옳은 것을 고르면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "양의절편b>0이면x0의왼쪽아주가까운곳에서도y>0이므로제2사분면을반드시지난다. 두선은기울기양/음의대표일뿐모든계수지정이아니다. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "양의절편b>0이면x0의왼쪽아주가까운곳에서도y>0이므로제2사분면을반드시지난다. 두선은기울기양/음의대표일뿐모든계수지정이아니다. 정답④."
+  ]
+}

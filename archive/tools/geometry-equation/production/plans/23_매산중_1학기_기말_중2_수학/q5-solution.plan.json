@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1/3",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "5/3",
+          "y": "-4/3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "②만 기울기가 서로 달라 교점 하나. 다른 보기는 평행한 두 선이거나 같은 선으로 겹친다. 교점 (5/3,−4/3), 정답 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>5. 다음에서 해가 한 개인 연립방정식은? (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "②만기울기가서로달라교점하나. 다른보기는평행한두선이거나같은선으로겹친다. 교점(5/3,−4/3),정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "②만기울기가서로달라교점하나. 다른보기는평행한두선이거나같은선으로겹친다. 교점(5/3,−4/3),정답②."
+  ]
+}

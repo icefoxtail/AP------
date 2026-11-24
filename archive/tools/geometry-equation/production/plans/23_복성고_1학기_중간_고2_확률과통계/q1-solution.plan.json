@@ -1,0 +1,26 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 8,
+    "cell": "NONE",
+    "highlight": {
+      "expr": "a+b",
+      "in": [
+        6,
+        12
+      ]
+    }
+  },
+  "caption": "1부터 8까지의 순서쌍 (x, y)를 가로세로로 놓은 8×8 표에서 x+y가 6의 배수인 칸을 칠했다. x+y의 범위는 2부터 16이므로 6의 배수는 6과 12뿐이다. x+y=6인 칸이 5개, x+y=12인 칸이 5개이고 겹치지 않으므로 모두 10개이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "x+y=6과 x+y=12인 두 대각선 칸이 5개씩임이 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $A = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$에 대하여 집합 $B = \\{(x, y) \\mid x \\in A, y \\in A\\}$일 때, $x+y$의 값이 6의 배수가 되는 집합 $B$의 원소 $(x, y)$의 개수는? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

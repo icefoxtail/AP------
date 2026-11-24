@@ -191,7 +191,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
     "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 눈을 가로세로로 놓은 6×6 표에서 두 눈의 차가 5인 칸을 칠했다. 해당하는 순서쌍은 (1, 6)과 (6, 1)의 2칸뿐이다. 전체 36칸 중 확률은 2/36=1/18이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

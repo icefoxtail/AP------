@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-4"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1/2",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "formula": "-4*x - 2"
+  },
+  "caption": "x절편 −1/2를 대입해 a−2,원식은 y−4x−2. y절편 −2,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-4(x+1)-a$의 그래프의 $x$절편이 $-\\dfrac{1}{2}$일 때, $y$절편을 구하라.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x절편−1/2를 대입해 a−2,원식은y−4x−2. y절편−2,정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x절편−1/2를 대입해 a−2,원식은y−4x−2. y절편−2,정답①."
+  ]
+}
