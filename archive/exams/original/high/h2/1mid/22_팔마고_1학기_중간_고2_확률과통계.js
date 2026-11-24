@@ -1430,6 +1430,10 @@ window.questionBank = [
       "templateKey"
     ],
     "image": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q22.png",
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 6번, 아래로 4번 이동하는 최단 경로는 모두 210가지이다. 가로로 4칸 이상 이어진 구간을 포함하는 경우는 75가지, 세로로 4칸이 이어진 경우는 7가지이고 둘을 함께 만족하는 경우는 6가지이다. 포함배제로 75+7-6=76이다. 따라서 답은 76이다.",
+    "solutionImageCaption": "오른쪽으로 6번, 아래로 4번 이동하는 최단 경로는 모두 210가지이다. 가로로 4칸 이상 이어진 구간을 포함하는 경우는 75가지, 세로로 4칸이 이어진 경우는 7가지이고 둘을 함께 만족하는 경우는 6가지이다. 포함배제로 75+7-6=76이다. 따라서 답은 76이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -371,7 +371,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COMBINATION",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 교차점에는 왼쪽에서 오는 경우의 수와 아래에서 오는 경우의 수를 더해 적는다. 공사장으로 막힌 두 도로를 지나는 경로는 빼고 세면 A에서 B까지 가는 최단 경로는 89가지이다. 따라서 답은 ③이다.",
+    "solutionImageCaption": "각 교차점에는 왼쪽에서 오는 경우의 수와 아래에서 오는 경우의 수를 더해 적는다. 공사장으로 막힌 두 도로를 지나는 경로는 빼고 세면 A에서 B까지 가는 최단 경로는 89가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
