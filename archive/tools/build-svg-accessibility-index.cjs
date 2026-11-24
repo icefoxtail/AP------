@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const crypto = require('node:crypto');
-const { assertSvgStudentLanguage, isEngineSvg, hasHiddenInternalText, substituteAccessibilityText } = require('./svg-language-contract.cjs');
+const { assertSvgStudentLanguage, isEngineSvg, hasHiddenInternalText, hasMissingTitleDesc, substituteAccessibilityText } = require('./svg-language-contract.cjs');
 // 옛 그림에 title/desc가 없어 시험지·문항·역할로 만든 기계 대체 문구를 넣은 행의 표시(textSource). 내용을 추측한 문구가 아니다.
 const TEXT_SOURCE_SUBSTITUTE = 'MACHINE_SUBSTITUTE';
 const { collectSvgAccessibilitySourceIndex, collectChangedSourceScope } = require('./collect-svg-accessibility-source-index.cjs');
@@ -103,9 +103,10 @@ function validateRecord(record, repoRoot, seen, options = {}) {
   assertSvgStudentLanguage(bytes.toString('utf8'), { assetRef, advisory: options.advisory, newPath });
   const substitute = record.textSource === TEXT_SOURCE_SUBSTITUTE;
   if (record.textSource !== undefined && !substitute) fail('INVALID_SVG_ACCESSIBILITY_TEXT_SOURCE', assetRef);
-  // 대체 문구 행은 그림에 쓰인 글이 없다는 뜻이다. 새 엔진 그림(엔진 표지가 있는 그림)은 대체 문구를 받지 않는다.
-  // 예외: title/desc에 내부 용어가 든 그림은 엔진 그림이어도 그 행만 대체 문구를 쓴다(화면에는 안 보이는 글이라 등록·배포를 세우지 않는다).
-  if (substitute && isEngineSvg(bytes.toString('utf8'), { newPath }) && !hasHiddenInternalText(bytes.toString('utf8'), { assetRef })) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
+  // 대체 문구 행은 그림에 쓰인 글이 없다는 뜻이다. 엔진 그림(엔진 표지가 있는 그림)은 원래 대체 문구를 받지 않는다.
+  // 예외: title/desc에 내부 용어가 든 그림, title/desc가 아예 없는 그림은 엔진 그림이어도 그 행만 대체 문구를 쓴다
+  // (화면에는 안 보이는 글이라 등록·배포를 세우지 않는다. 등록 실행 45334205571 사례, 2026-11-24).
+  if (substitute && isEngineSvg(bytes.toString('utf8'), { newPath }) && !hasHiddenInternalText(bytes.toString('utf8'), { assetRef }) && !hasMissingTitleDesc(bytes.toString('utf8'), { assetRef })) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
   if (!substitute) {
     const svgText = svgAccessibilityText(bytes, assetRef);
     if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
@@ -153,8 +154,8 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
     }
   }
   catch (error) {
-    // 옛 그림에 title/desc가 없으면 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남는다). 엔진 그림은 계속 막는다.
-    if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8'), { newPath: options.isNewPath ? () => options.isNewPath(assetRef) : false }) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
+    // title/desc가 없는 그림은 옛 그림이든 엔진 그림이든 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남고, 엔진 회귀는 SVG 라인이 그 목록으로 고친다).
+    if (!Array.isArray(options.advisory) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
     const substitute = substituteAccessibilityText(use);
     text = { titleKo: substitute, descriptionKo: substitute, textSource: TEXT_SOURCE_SUBSTITUTE };
     options.advisory.push({ assetRef, code: 'SVG_ACCESSIBILITY_LEGACY_TEXT_SUBSTITUTED', surface: '' });
