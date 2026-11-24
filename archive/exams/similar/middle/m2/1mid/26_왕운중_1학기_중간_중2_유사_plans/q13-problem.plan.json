@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2x^2y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "3x^2y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "aAB",
+        "circle": "cAB",
+        "center": "M",
+        "from": "B",
+        "to": "A",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세로인 변 AB를 지름으로 하는 반원이 직사각형 ABCD 안쪽에 그려져 있고, 대각선 AC가 직각삼각형 ABC를 이룬다. 변 AB와 변 BC에는 각각의 길이가 문자식으로 적혀 있다.",
+  "accessibilityDescription": "직사각형 ABCD가 있고 변 AB는 세로이다. 변 AB를 지름으로 하는 반원이 직사각형 안쪽으로 그려져 있으며, 점 A와 점 B에서 각각 점 C로 가는 선분이 직각삼각형 ABC를 만든다. 변 AB에는 세로 길이를 나타내는 문자식, 변 BC에는 가로 길이를 나타내는 문자식이 적혀 있다.",
+  "newVisualInformation": [
+    "세로 변 AB를 지름으로 하는 반원",
+    "직사각형 ABCD와 대각선 AC로 이루어진 직각삼각형 ABC",
+    "변 AB의 길이 2x^2y와 변 BC의 길이 3x^2y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 $3x^2y$, 세로의 길이가 $2x^2y$인 직사각형 $ABCD$에서 변 $AB$는 세로이다. 변 $AB$를 회전축으로 하여 직각삼각형 $ABC$를 $1$회전시킬 때 생기는 회전체의 부피를 $V_1$, 변 $AB$를 지름으로 하는 반원을 지름 $AB$를 축으로 하여 $1$회전시킬 때 생기는 회전체의 부피를 $V_2$라고 할 때, $V_1 + V_2$를 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

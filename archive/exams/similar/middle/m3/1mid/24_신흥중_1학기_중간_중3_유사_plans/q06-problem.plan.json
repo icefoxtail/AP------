@@ -1,0 +1,128 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P",
+            "value": "-sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "0",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "2+sqrt(13)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "cA",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            -2,
+            1
+          ],
+          "toName": "B"
+        }
+      },
+      {
+        "id": "cC",
+        "center": "C",
+        "radius": {
+          "value": "sqrt(13)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            2,
+            0
+          ],
+          "to": [
+            5,
+            2
+          ],
+          "toName": "D"
+        }
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 선분의 길이 옮기기"
+  },
+  "caption": "모눈 위 두 선분 AB와 CD의 길이를 각각 A와 C를 중심으로 수직선에 옮겨 점 P와 Q를 정한 그림이다.",
+  "accessibilityDescription": "수직선 위의 점 A는 0, 점 C는 2이고, 모눈 위의 점 B는 A에서 왼쪽으로 2칸 위로 1칸, 점 D는 C에서 오른쪽으로 3칸 위로 2칸에 있다. A를 중심으로 한 호가 P를, C를 중심으로 한 호가 Q를 만든다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$를 그린 후, $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{CQ}}$가 되도록 수직선 위에 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$를 정한 것이다. 다음 중 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "AB=AP",
+      "mappedTo": [
+        "numberLine.constructions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "CD=CQ",
+      "mappedTo": [
+        "numberLine.constructions"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "모눈 한 눈금의 길이는 1",
+      "mappedTo": [
+        "numberLine.constructions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모눈 위 두 선분의 길이를 수직선 위의 점 P와 Q의 위치로 옮긴다"
+  ]
+}

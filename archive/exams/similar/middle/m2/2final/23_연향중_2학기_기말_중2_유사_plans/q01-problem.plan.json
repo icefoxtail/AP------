@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "22"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "24"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "M",
+    "N",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GM",
+      "refs": [
+        "G",
+        "M"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "GN",
+      "refs": [
+        "G",
+        "N"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAG",
+        "ownerSegment": "AG",
+        "text": "16",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vGN",
+        "ownerSegment": "GN",
+        "text": "x"
+      },
+      {
+        "id": "vBM",
+        "ownerSegment": "BM",
+        "text": "y"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "22",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 변 AB의 중점 N, 변 BC의 중점 M, 두 중선의 교점 G가 표시되어 있고 AG, BC의 길이와 GN, BM을 나타내는 x, y가 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC에서 AB의 중점 N과 BC의 중점 M을 지나는 중선들이 점 G에서 만난다. AG는 16, BC는 22로 적혀 있고 GN에는 x, BM에는 y가 적혀 있다.",
+  "newVisualInformation": [
+    "G는 무게중심",
+    "AG=16 cm",
+    "BC=22 cm",
+    "GN=x, BM=y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 두 변 $AB, BC$의 중점을 각각 $N, M$이라 하고, 두 중선 $AN$과 $CM$의 교점을 $G$라 하자. 점 $G$가 삼각형 $ABC$의 무게중심이고 선분 $\\overline{AG} = 16\\text{ cm}$, 변 $\\overline{BC} = 22\\text{ cm}$일 때, $\\overline{GN} = x\\text{ cm}$, $\\overline{BM} = y\\text{ cm}$라 하자. $x + y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

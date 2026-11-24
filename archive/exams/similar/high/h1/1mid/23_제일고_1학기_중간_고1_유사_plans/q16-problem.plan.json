@@ -1,0 +1,87 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 삼각형 OAB와 각 AOB의 이등분선을 제시한다."
+  },
+  "solution": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+      "nodes": [
+        {
+          "id": "O",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": "0",
+            "y": "0"
+          }
+        },
+        {
+          "id": "A",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": "3",
+            "y": "4"
+          }
+        },
+        {
+          "id": "B",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": "8",
+            "y": "-6"
+          }
+        },
+        {
+          "id": "P",
+          "op": "DIVISION_POINT",
+          "inputs": [
+            "A",
+            "B"
+          ],
+          "args": {
+            "m": "1",
+            "n": "2",
+            "mode": "INTERNAL"
+          }
+        },
+        {
+          "id": "OA",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "A"
+          ],
+          "args": {}
+        },
+        {
+          "id": "OB",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "B"
+          ],
+          "args": {}
+        },
+        {
+          "id": "AB",
+          "op": "SEGMENT",
+          "inputs": [
+            "A",
+            "B"
+          ],
+          "args": {}
+        },
+        {
+          "id": "OP",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "P"
+          ],
+          "args": {}
+        }
+      ]
+    },
+    "caption": "OA:OB=1:2이므로 각 AOB의 이등분선은 선분 AB를 1:2로 내분하는 점 P를 지난다."
+  }
+}

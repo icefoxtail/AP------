@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5877853",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-8090170",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9271839",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3746066",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAO",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 18,
+        "label": "18",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aOAC",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "value": 34,
+        "label": "34",
+        "ring": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 104,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "예각삼각형 ABC와 그 외심 O가 있고 O에서 세 꼭짓점 A, B, C로 선분을 그었다. 각 BAO는 18도, 각 OAC는 34도로 주어져 있고 각 BOC는 x로 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 점 O가 있으며 O에서 A, B, C로 선분이 이어진다. 꼭짓점 A에서 선분 AB와 AO 사이의 각에 18, AO와 AC 사이의 각에 34가 적혀 있고, 점 O에서 OB와 OC 사이의 각에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 외심 O",
+    "선분 OA, OB, OC",
+    "각 BAO 18도, 각 OAC 34도, 각 BOC는 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "예각삼각형 $ABC$의 외심을 $O$라 하자. $\\angle BAO=18^\\circ$, $\\angle OAC=34^\\circ$일 때, $\\angle BOC$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

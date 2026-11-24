@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cIn",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cOut",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cIn",
+    "cOut"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rIn",
+        "ownerSegment": "sOP",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "rAdd",
+        "ownerSegment": "sPQ",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 점을 중심으로 하는 두 원이 있고, 안쪽 원의 반지름 8 cm와 바깥 원까지 늘어난 길이 x cm가 표시되어 있다.",
+  "accessibilityDescription": "같은 중심을 갖는 두 원에서 안쪽 원의 반지름은 8 cm이고, 바깥 원의 반지름은 안쪽 원보다 x cm 더 길게 그려져 있다.",
+  "newVisualInformation": [
+    "안쪽 원의 반지름 8 cm",
+    "반지름이 x cm 늘어난 바깥 원"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 반지름의 길이가 $8\\text{ cm}$인 원이 있다. 이 원의 반지름의 길이를 $x\\text{ cm}$만큼 늘인 원의 넓이는 처음 원의 넓이의 $2$배가 되었다. 이때 $x$의 값을 구하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
