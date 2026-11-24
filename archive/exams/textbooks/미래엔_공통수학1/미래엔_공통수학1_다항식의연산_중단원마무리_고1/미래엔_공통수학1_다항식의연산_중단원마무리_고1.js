@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 다항식을 [ ] 안의 방법으로 정리하시오.\n⑴ $4x-2+3x^3-x^2$ [$x$에 대한 내림차순]\n⑵ $3y^2-xy-x^2+5y^3+6$ [$y$에 대한 내림차순]",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $3x^3-x^2+4x-2$\n⑵ $5y^3+3y^2-xy-x^2+6$",
+    "solution": "⑴ $x$에 대한 내림차순은 $x$의 차수가 높은 항부터 차례로 쓰는 것이다.\n$$4x-2+3x^3-x^2=3x^3-x^2+4x-2$$\n⑵ $y$에 대한 내림차순은 $y$의 차수가 높은 항부터 쓴다. $y^3,\\ y^2,\\ y$의 항 다음에 $y$가 없는 항을 쓴다.\n$$3y^2-xy-x^2+5y^3+6=5y^3+3y^2-xy-x^2+6$$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식\n$$A=-x^2+3xy-2y^2,\\quad B=2x^2-xy+5y^2$$\n에 대하여 다음을 계산하시오.\n⑴ $2A+3B$\n⑵ $A-(B+4A)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $4x^2+3xy+11y^2$\n⑵ $x^2-8xy+y^2$",
+    "solution": "⑴ $2A+3B$에 대입하면\n$$2(-x^2+3xy-2y^2)+3(2x^2-xy+5y^2)=-2x^2+6xy-4y^2+6x^2-3xy+15y^2=4x^2+3xy+11y^2$$\n⑵ $A-(B+4A)=A-B-4A=-3A-B$이므로\n$$-3(-x^2+3xy-2y^2)-(2x^2-xy+5y^2)=3x^2-9xy+6y^2-2x^2+xy-5y^2=x^2-8xy+y^2$$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 전개하시오.\n⑴ $(x-y+z)^2$\n⑵ $(x-1)^3$\n⑶ $(2a+1)(4a^2-2a+1)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x^2+y^2+z^2-2xy-2yz+2zx$\n⑵ $x^3-3x^2+3x-1$\n⑶ $8a^3+1$",
+    "solution": "⑴ $(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$에서 $a=x,\\ b=-y,\\ c=z$를 대입하면\n$$(x-y+z)^2=x^2+y^2+z^2-2xy-2yz+2zx$$\n⑵ $(a-b)^3=a^3-3a^2b+3ab^2-b^3$에서 $a=x,\\ b=1$을 대입하면\n$$(x-1)^3=x^3-3x^2+3x-1$$\n⑶ $4a^2-2a+1=(2a)^2-2a\\times 1+1^2$이므로 $(a+b)(a^2-ab+b^2)=a^3+b^3$에서\n$$(2a+1)(4a^2-2a+1)=(2a)^3+1^3=8a^3+1$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $2x^3-3x^2-3x+1$을 $2x^2-x+1$로 나누었을 때의 몫과 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "몫: $x-1$, 나머지: $-5x+2$",
+    "solution": "$2x^3-3x^2-3x+1$을 $2x^2-x+1$로 나눈다.\n$x\\times(2x^2-x+1)=2x^3-x^2+x$를 빼면 $-2x^2-4x+1$\n$-1\\times(2x^2-x+1)=-2x^2+x-1$을 빼면 $-5x+2$\n나머지 $-5x+2$의 차수가 나누는 식보다 낮으므로 몫은 $x-1$, 나머지는 $-5x+2$이다.\n$$2x^3-3x^2-3x+1=(2x^2-x+1)(x-1)+(-5x+2)$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 만족시키는 두 다항식 $A$와 $B$를 구하시오.\n$$A+B=x^3-9x^2+4$$\n$$2A-B=2x^3-6x^2-3x+2$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A=x^3-5x^2-x+2,\\ B=-4x^2+x+2$",
+    "solution": "$A+B=x^3-9x^2+4\\qquad\\cdots\\ ①$\n$2A-B=2x^3-6x^2-3x+2\\qquad\\cdots\\ ②$\n①$+$②를 하면 $B$가 없어진다.\n$$3A=3x^3-15x^2-3x+6$$\n이므로 $A=x^3-5x^2-x+2$\n①에서\n$$B=(x^3-9x^2+4)-(x^3-5x^2-x+2)=-4x^2+x+2$$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 전개하시오.\n⑴ $(x^2-2x-3)(x^2-2x-2)$\n⑵ $(a-1)(a+1)(a^2+1)(a^4+1)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x^4-4x^3-x^2+10x+6$\n⑵ $a^8-1$",
+    "solution": "⑴ $x^2-2x=X$로 놓으면\n$$(X-3)(X-2)=X^2-5X+6$$\n$X$에 $x^2-2x$를 대입하면\n$$(x^2-2x)^2-5(x^2-2x)+6=x^4-4x^3+4x^2-5x^2+10x+6=x^4-4x^3-x^2+10x+6$$\n⑵ $(a-1)(a+1)=a^2-1$\n$(a^2-1)(a^2+1)=a^4-1$\n$(a^4-1)(a^4+1)=a^8-1$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x=\\sqrt{2}+1$이고 $y=\\sqrt{2}-1$일 때, $x^3+y^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10\\sqrt{2}$",
+    "solution": "$x+y=(\\sqrt{2}+1)+(\\sqrt{2}-1)=2\\sqrt{2}$, $xy=(\\sqrt{2}+1)(\\sqrt{2}-1)=2-1=1$\n$x^3+y^3=(x+y)^3-3xy(x+y)$이므로\n$$x^3+y^3=(2\\sqrt{2})^3-3\\times 1\\times 2\\sqrt{2}=16\\sqrt{2}-6\\sqrt{2}=10\\sqrt{2}$$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $2x^3-x^2-x+a$가 $x^2+x+1$로 나누어떨어질 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3$",
+    "solution": "$2x^3-x^2-x+a$를 $x^2+x+1$로 나눈다.\n$2x\\times(x^2+x+1)=2x^3+2x^2+2x$를 빼면 $-3x^2-3x+a$\n$-3\\times(x^2+x+1)=-3x^2-3x-3$을 빼면 나머지 $a+3$\n나누어떨어지려면 나머지가 $0$이어야 하므로 $a+3=0$, 즉 $a=-3$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $x^3-x^2+3x+2$를 다항식 $A$로 나누었을 때의 몫은 $x-1$이고 나머지는 $2x+3$이다. 다항식 $A$를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A=x^2+1$",
+    "solution": "(나누어지는 식)$=A\\times$(몫)$+$(나머지)이므로\n$$x^3-x^2+3x+2=A(x-1)+2x+3$$\n$A(x-1)$을 구하기 위해 나머지를 이항하면\n$$A(x-1)=x^3-x^2+3x+2-(2x+3)=x^3-x^2+x-1$$\n우변을 인수분해하면\n$$x^3-x^2+x-1=x^2(x-1)+(x-1)=(x-1)(x^2+1)$$\n따라서 $A(x-1)=(x-1)(x^2+1)$이므로 $A=x^2+1$\n(확인: $(x^2+1)(x-1)+2x+3=x^3-x^2+x-1+2x+3=x^3-x^2+3x+2$)"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 밑면의 가로와 세로의 길이가 각각 $a$와 $b$이고 높이가 $c$인 직육면체의 겉넓이는 $94$이다. 대각선 $\\mathrm{AG}$의 길이가 $5\\sqrt{2}$일 때, $a+b+c$의 값을 구하시오.\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "직육면체의 겉넓이는 $2(ab+bc+ca)=94$이므로\n$$ab+bc+ca=47$$\n대각선 $\\mathrm{AG}$의 길이는 $\\sqrt{a^2+b^2+c^2}=5\\sqrt{2}$이므로\n$$a^2+b^2+c^2=50$$\n$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)=50+94=144$\n$a+b+c>0$이므로 $a+b+c=12$"
   },
   {
     "id": 11,
@@ -306,7 +306,7 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $A=x^4-x^3-5x^2-6x+3$에 대하여 다음에 답하시오.\n⑴ 다항식 $A$를 $x^2+x+1$로 나누었을 때의 몫과 나머지를 구하시오.\n⑵ $x^2+x+1=0$일 때, 다항식 $A$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 몫: $x^2-2x-4$, 나머지: $7$\n⑵ $7$",
+    "solution": "⑴ $A=x^4-x^3-5x^2-6x+3$을 $x^2+x+1$로 나눈다.\n$x^2\\times(x^2+x+1)=x^4+x^3+x^2$을 빼면 $-2x^3-6x^2-6x+3$\n$-2x\\times(x^2+x+1)=-2x^3-2x^2-2x$를 빼면 $-4x^2-4x+3$\n$-4\\times(x^2+x+1)=-4x^2-4x-4$를 빼면 $7$\n따라서 몫은 $x^2-2x-4$, 나머지는 $7$이다.\n$$A=(x^2+x+1)(x^2-2x-4)+7$$\n⑵ $x^2+x+1=0$이면 $A=0\\times(x^2-2x-4)+7=7$"
   }
 ];
