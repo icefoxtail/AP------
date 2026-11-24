@@ -1014,7 +1014,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "통계적 추정",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "64가구 표본평균의 표준편차는 σ/8이다. 4σ 이상일 확률 0.9772가 표준화 값 -2에 대응하므로 σ=80/17이고, 표본평균의 표준편차는 10/17이다. 그림에서 k는 330/17이고 그 표준화 값은 -1이므로 왼쪽 꼬리 넓이는 0.5에서 0.3413을 뺀 0.1587이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

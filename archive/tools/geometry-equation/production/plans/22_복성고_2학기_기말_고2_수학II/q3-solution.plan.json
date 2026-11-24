@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "속도",
+        "points": [
+          {
+            "id": "P0",
+            "value": "20",
+            "hideName": true
+          }
+        ],
+        "band": false
+      },
+      {
+        "kind": "POINTS",
+        "label": "가속도",
+        "points": [
+          {
+            "id": "P1",
+            "value": "16",
+            "hideName": true
+          }
+        ],
+        "band": false
+      },
+      {
+        "kind": "POINTS",
+        "label": "합",
+        "points": [
+          {
+            "id": "P2",
+            "value": "36",
+            "hideName": true
+          }
+        ],
+        "band": false
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "t=2에서 속도·가속도·합"
+  },
+  "caption": "속도는 위치의 도함수이므로 v(t)=3t²+4t이고, 가속도는 a(t)=6t+4이다. t=2에서 v(2)=20, a(2)=16이므로 두 값의 합은 20+16=36이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "수직선 위에 가속도, 속도, 합을 각각 나타내는 세 점이 서로 다른 줄에 표시되어 있고 각 점에는 값이 함께 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서 위치 $x$가 $x=t^3+2t^2-5$일 때, $t=2$에서 점 $\\mathrm{P}$의 속도와 가속도의 합을 구하시오. [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x=t³+2t²-5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "t=2에서의 속도 20, 가속도 16, 합 36을 수직선의 세 줄에 각각 표시한다"
+  ]
+}

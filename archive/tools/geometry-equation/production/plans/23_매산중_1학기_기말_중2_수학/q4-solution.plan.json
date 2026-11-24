@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-22/5",
+          "12/5"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-11/5",
+          "1/5"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "각식이 22와같으므로 12x−5y22,2x−10y22. 공통해(1,−2),정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>4. 다음 방정식 $12x-5y = 2x-10y = 22$의 해는? (5점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "각식이22와같으므로12x−5y22,2x−10y22. 공통해(1,−2),정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "각식이22와같으므로12x−5y22,2x−10y22. 공통해(1,−2),정답④."
+  ]
+}

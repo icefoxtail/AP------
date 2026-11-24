@@ -386,7 +386,11 @@ window.questionBank = [
       "sourceRawSha256": "25a92e669b53bc1b21345b3c4d65b80d1c8d2b664a2fd3b9729c7818ed87c6e8",
       "sourceIntakeEvidencePath": "archive/analysis/source-only/h2-1mid-20261011-b6/22_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ec04f1542bce9af6338df1695c72ec01f3c99d41529517b4760c9b6e4c500cce"
-    }
+    },
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 탁자 둘레에 번호가 붙은 여섯 좌석이 배치되어 있다.",
+    "solutionImageCaption": "6명을 일렬로 앉히는 배열은 6!가지이다. 직사각형 탁자는 180° 회전한 배열과만 겹치므로 서로 다른 배열은 6!을 2로 나눈 360가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -1011,7 +1015,11 @@ window.questionBank = [
       "sourceRawSha256": "25a92e669b53bc1b21345b3c4d65b80d1c8d2b664a2fd3b9729c7818ed87c6e8",
       "sourceIntakeEvidencePath": "archive/analysis/source-only/h2-1mid-20261011-b6/22_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ec04f1542bce9af6338df1695c72ec01f3c99d41529517b4760c9b6e4c500cce"
-    }
+    },
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 정육각형이 있고, 중심에서 여섯 꼭짓점으로 반지름이 그어져 있으며, 이웃한 두 반지름 사이에 60도 각이 표시되어 있다.",
+    "solutionImageCaption": "정육각형의 꼭짓점과 원의 중심을 이으면 안쪽에 6개의 삼각형, 정육각형과 원 사이에 6개의 활꼴이 생겨 모두 12개 영역이 된다. 12가지 색을 모두 쓰는 배치는 12!가지이고, 60도씩 회전한 6가지가 같은 문양이 된다. 모든 색이 달라 회전으로 겹치는 배치는 없으므로 12!을 6으로 나누면 k=6이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1485,7 +1493,11 @@ window.questionBank = [
       "sourceRawSha256": "25a92e669b53bc1b21345b3c4d65b80d1c8d2b664a2fd3b9729c7818ed87c6e8",
       "sourceIntakeEvidencePath": "archive/analysis/source-only/h2-1mid-20261011-b6/22_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ec04f1542bce9af6338df1695c72ec01f3c99d41529517b4760c9b6e4c500cce"
-    }
+    },
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래에 A, 오른쪽 아래에 B, 위쪽에 C가 있는 삼각형이 그려져 있고, 변 AB와 변 AC에 같은 길이 표시가 있으며 각 변에 5, 5, √20의 길이 라벨이 붙어 있다. 꼭짓점 C에서 변 AB로 내린 점선 수선과 길이 4의 라벨, 수선의 발의 직각 표시가 보인다.",
+    "solutionImageCaption": "예를 들어 (a,b,c)=(1,4,2)이면 A(-1,0), B(4,0), C(2,4)이고 AB=AC=5이다. 이때 AB²=25, AC²=3²+4²=25, BC²=2²+4²=20이므로 세 변의 제곱을 비교하면 된다. 해설의 세 경우를 모두 세면 2+7+6=15가지이고 전체는 216가지이므로 확률은 15/216=5/72이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1636,7 +1648,11 @@ window.questionBank = [
       "sourceIntakeEvidencePath": "archive/analysis/source-only/h2-1mid-20261011-b6/22_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ec04f1542bce9af6338df1695c72ec01f3c99d41529517b4760c9b6e4c500cce"
     },
-    "choices": []
+    "choices": [],
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6×6 표에서 A는 a=b인 대각선 6칸, B는 a+b=6인 5칸이다. 그림은 B만 있는 4칸을 연한 회색, A의 대각선 6칸을 진한 회색으로 칠했다. 두 사건이 겹치는 칸은 대각선 위의 (3, 3) 하나이므로 서로 배반이 아니다. P(A)=6/36=1/6, P(B)=5/36, P(A∩B)=1/36이므로 P(A∪B)=6/36+5/36−1/36=10/36=5/18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

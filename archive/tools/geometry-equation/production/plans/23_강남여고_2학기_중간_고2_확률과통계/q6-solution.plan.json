@@ -1,0 +1,26 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "NONE",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        -5,
+        5
+      ]
+    }
+  },
+  "caption": "서로 다른 두 주사위의 눈을 가로세로로 놓은 6×6 표에서 두 눈의 차가 5인 칸을 칠했다. 해당하는 순서쌍은 (1, 6)과 (6, 1)의 2칸뿐이다. 전체 36칸 중 확률은 2/36=1/18이다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "차가 5인 칸이 두 모서리 칸뿐임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 두 눈의 수의 차가 $5$일 확률은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

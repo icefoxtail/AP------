@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "5/4"
+        ],
+        "label": "D=2U"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "5/4"
+        ],
+        "label": "D=4U"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "6"
+        ],
+        "domain": [
+          "0",
+          "5/4"
+        ],
+        "label": "D=6U"
+      },
+      {
+        "id": "f3",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "5/4"
+        ],
+        "label": "D=6"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "1",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "U",
+      "y": "D"
+    }
+  },
+  "caption": "시간 t(h)를 U=5t/π, 거리 d(km)를 D=d/π로 바꾼 정확 비교다. 반대 방향 이동 거리합 6U가 트랙 둘레 6에 닿는 U1에서 처음 만난다. 각 거리 2π/4π, 실제 시간 π/5시간=12π분. 표시 끝 5/4는 원문 상한이 아니며 첫 만남을 찾는 비교창이다. 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름이 3km인 원모양 트랙에서 영배와 태욱이가 같은 지점에서 동시에 출발하여 서로 반대방향으로 트랙을 이동하고 있다. 영배는 시속 10km, 태욱은 시속 20km로 이동할 때, 영배와 태욱이가 만나는 데 걸리는 최소 시간은? [5점] 보기: ['$12\\\\pi$분', '13분', '14분', '15분', '16분']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "시간t(h)를U=5t/π,거리d(km)를D=d/π로바꾼정확비교다. 반대방향이동거리합6U가트랙둘레6에닿는U1에서처음만난다. 각거리2π/4π,실제시간π/5시간=12π분. 표시끝5/4는원문상한이아니며첫만남을찾는비교창이다. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "시간t(h)를U=5t/π,거리d(km)를D=d/π로바꾼정확비교다. 반대방향이동거리합6U가트랙둘레6에닿는U1에서처음만난다. 각거리2π/4π,실제시간π/5시간=12π분. 표시끝5/4는원문상한이아니며첫만남을찾는비교창이다. 정답①."
+  ]
+}

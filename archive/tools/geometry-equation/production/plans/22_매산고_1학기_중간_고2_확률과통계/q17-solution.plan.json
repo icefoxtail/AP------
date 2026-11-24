@@ -1,0 +1,27 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        -1,
+        0,
+        1
+      ]
+    }
+  },
+  "caption": "판별식 D=(a+b)²−4(ab+1)=(a−b)²−4이므로 실근이 없으려면 |a−b|<2이다. 6×6 표에서 대각선 6칸과 그 바로 옆 10칸을 칠했다. 모두 16칸이므로 확률은 16/36=4/9이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "|a−b|<2인 칸이 대각선과 그 양옆 띠로 16칸임이 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던져서 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 방정식<br>$$x^2 - (a+b)x + ab + 1 = 0$$<br>의 근이 존재하지 않을 확률은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

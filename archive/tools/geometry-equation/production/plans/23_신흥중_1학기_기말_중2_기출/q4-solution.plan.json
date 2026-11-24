@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "60"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-16",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "60"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "56",
+          "y": "40",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "나이 이동 후 갑 x+8/을 y−8로 x−2y−24,반대 이동은 x−y16. 정답 연립식①. 교점(56,40)은 식의 일관성 확인이며 실제 나이는 비음수이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "조선시대의 수학책 『구일집』에 실린 내용이다. “갑이 을에게 말하기를, 네 나이에서 $8$세를 내게 주면 내 나이는 네 나이의 두 배가 된다고 하였고, 을이 갑에게 말하기를, 네 나이에서 $8$세를 내게 주면 우리 둘의 나이가 같다고 하였다.” 이때 갑의 나이를 $x$, 을의 나이를 $y$라 할 때, 다음 중 $x$, $y$에 대한 연립방정식을 옳게 세운 것은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "나이 이동 후 갑x+8/을y−8로 x−2y−24,반대 이동은x−y16. 정답 연립식①. 교점(56,40)은 식의 일관성 확인이며 실제 나이는 비음수이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "나이 이동 후 갑x+8/을y−8로 x−2y−24,반대 이동은x−y16. 정답 연립식①. 교점(56,40)은 식의 일관성 확인이며 실제 나이는 비음수이다."
+  ]
+}

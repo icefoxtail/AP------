@@ -500,7 +500,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 두 점 A, B를 잇는 할선, 평행한 접선, 두 점 C, D를 잇는 수평한 할선, 꼭짓점에서의 수평한 접선을 나타낸 그래프이다.",
+    "solutionImageCaption": "(1) [-2,2]에서 할선 l은 A(-2,14), B(2,-2)를 지나 기울기 -4이고, 이와 평행한 접선 m이 T(0,2)에서 접하므로 c=0이다. (2) [-1,5]에서 C(-1,7), D(5,7)의 높이가 같아 롤의 정리가 성립하며 수평한 직선 n이 두 점을 잇고, 수평한 접선 p가 꼭짓점 B(2,-2)에서 접하므로 c=2이다. 따라서 (1) 0, (2) 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -572,7 +576,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 6-√42와 6+√42를 양 끝으로 하는 닫힌구간이 굵게 표시되어 있다.",
+    "solutionImageCaption": "f가 일대일이므로 삼차함수 f는 모든 실수에서 증가해야 한다. f′(x)=6x²+2ax+(2a+1)의 판별식 D=4(a²-12a-6)이 0 이하이면 되고, 6-√42≤a≤6+√42이다. 6-√42는 -1과 0 사이, 6+√42는 12와 13 사이이므로 정수 a는 0부터 12까지의 13개이다. 따라서 답은 13개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

@@ -68,7 +68,11 @@ window.questionBank = [
     "nullReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
     "projectionReason": "No exact target-scope RPM/PT/TPL binding exists for this semantic in middle2.json.",
     "semanticBoundaryReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
-    "boundaryStatus": "EXPLICIT_RPM_BOUNDARY"
+    "boundaryStatus": "EXPLICIT_RPM_BOUNDARY",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "한 입력 x2에 배수 2,4,6이 동시에 대응하므로 ③은 함수가 아니다. 나머지는 출력이 하나로 정해진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -138,7 +142,12 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "DIRECT_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f(3/5)=1,f1=3인두점을읽어 2×1−3×3=−7. 정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -209,7 +218,12 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 a5,x절편 b3/5,y절편 c−3. 절편점과식에서 ab+c=0,정답③.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -281,7 +295,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 PNG의(0,−6),(6,−3)을보존. 기울기 3/6=1/2,절편 −6이므로 ab−3. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -353,7 +371,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "양의 절편 b>0이면 x0의 왼쪽 아주 가까운 곳에서도 y>0이므로 제2사분면을 반드시 지난다. 두 선은 기울기 양/음의 대표일 뿐 모든 계수 지정이 아니다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -424,7 +446,12 @@ window.questionBank = [
     "nullReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
     "projectionReason": "No exact target-scope RPM/PT/TPL binding exists for this semantic in middle2.json.",
     "semanticBoundaryReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
-    "boundaryStatus": "EXPLICIT_RPM_BOUNDARY"
+    "boundaryStatus": "EXPLICIT_RPM_BOUNDARY",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로높이 km,세로기온℃. km당 3℃감소하므로 y15−3x. 실제모형 0≤x≤10에서(2,9)이목표,정답 2km.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -499,7 +526,11 @@ window.questionBank = [
     "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "rpmPrimaryId": "M2-RPM-053",
     "rpmL1": "일차함수",
-    "rpmL2": "일차함수와 그 그래프"
+    "rpmL2": "일차함수와 그 그래프",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 두 평행선이 있고, 한 직선은 점 (−3, 0)과 (0, −4)를, 다른 직선은 점 (−1, 4)를 지난다.",
+    "solutionImageCaption": "그림의 직선은 두 점 (−3, 0), (0, −4)를 지나므로 기울기는 −4/3이다. 구하는 직선은 이 직선과 평행하므로 −4/a=−4/3에서 a=3이고, 점 (−1, 4)를 지나므로 b=−8이다. 따라서 a+b=3−8=−5이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -569,7 +600,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "DIRECT_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "직선 y3x/2를위로 2옮겨 y3x/2+2. 실제점(2,5)에서 k5,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -709,7 +744,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "DIRECT_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 모두 -2/3인 두 평행한 직선이 그려져 있다. 위쪽 직선의 y절편은 3/2이고 아래쪽 직선의 y절편은 4/3이며, 두 직선 위에 점 A와 점 P가 표시되어 있다.",
+    "solutionImageCaption": "첫째 직선을 y에 대하여 정리하면 y=-(2/3)x+4/3이고, a=-4일 때 둘째 직선은 y=-(2/3)x+3/2가 된다. 교점이 존재하지 않으려면 두 직선이 평행해야 하므로 기울기가 같아야 하고, a/6=-2/3에서 a=-4이다. 그림에서도 두 직선의 기울기가 모두 -2/3로 같고 y절편만 4/3과 3/2로 달라 만나지 않는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -775,7 +814,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 PNG는 내리막/양의 절편으로 a,b 같은 부호, c 반대. 새 식 y=−(a/c)x+a/b는 기울기와 절편 모두 양수로 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -848,7 +891,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "네 직선 x=0, x=6, y=0, y=6은 한 변이 6인 정사각형을 이루고, 이 정사각형의 넓이를 이등분하는 직선은 중심 (3, 3)을 지난다. y=ax+4에 (3, 3)을 대입하면 3=3a+4이므로 a=-(1/3)이다. 따라서 답은 ④ -(1/3)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -918,7 +965,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 빵 개수 x, 세로 음료 개수 y. 총 12개와 3x+4y44의 교점 (4,8). 실제 개수는 비음수 정수, 직선은 조건의 보조 연장. 빵 4개 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1000,7 +1051,11 @@ window.questionBank = [
     "rpmPrimaryId": "M1-RPM-042",
     "rpmL1": "문자와 식",
     "rpmL2": "일차방정식의 활용",
-    "courseKey": "M2-1"
+    "courseKey": "M2-1",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 동생 한 명의 나이, 세로 다훈이 나이. 동생 3명 나이가 같다는 조건에서 y=x+5,y=21−3x의 교점 (4,9). 다훈 9살, 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1071,7 +1126,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로축은 기차의 길이(m), 세로축은 속력(m/분)이다. 터널과 다리를 완전히 통과할 때는 기차 길이에 시설 길이를 더한 거리를 이동하므로 속력은 (x+1700)/3과 (x+1000)/2이다. 두 식의 그래프가 만나는 점 (400, 700)에서 기차의 길이는 400 m이므로 답은 ① 400 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1213,7 +1272,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 6%소금물 g,세로소금 g. 마지막생수는전체 775−200−250=325g,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1284,7 +1347,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 가희/세로 나영의 하루 일 비율. x+y1/4,2x+5y1에서 교점 (1/12,1/6). 나영 혼자 1÷(1/6)=6일, 정답 ②. 표시 직선은 식 연장이고 일 비율은 양수.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1355,7 +1422,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 학생 수, 세로축이 총액(천원)인 두 직선이 점 (32, 432/5)에서 만난다.",
+    "solutionImageCaption": "학생 수를 x라 하면 2000x+22400=3000x−9600이다. 이를 풀면 1000x=32000이므로 x=32이다. 총비용은 2000×32+22400=86400원이고, 한 벌 값은 86400÷32=2700원이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1420,7 +1491,11 @@ window.questionBank = [
     "nullReason": null,
     "projectionReason": "DIRECT_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 기준 직선과 세 후보 직선이 여러 색으로 그려져 있고, 두 기준 직선의 교점 (-1,-1)에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 직선 x+y+2=0과 x-y=0은 y=-x-2, y=x로 나타나고 교점은 (-1,-1)이다. 셋째 직선 y=ax-3이 이 교점을 지나면 a=-2이고, y=-x-2와 평행하면 a=-1, y=x와 평행하면 a=1이다. 세 경우 모두 삼각형이 만들어지지 않는다. 따라서 가능한 값의 합은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1484,7 +1559,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 삼각형을 이루고, 밑변의 길이 5와 높이 6이 각각 선분 곁에 표시되어 있다.",
+    "solutionImageCaption": "세 직선 2x+y−3=0, y+1=0, 3x−y+8=0이 만나는 점은 (2, −1), (−3, −1), (−1, 5)이다. 밑변의 길이는 2−(−3)=5이고 높이는 5−(−1)=6이다. 따라서 넓이는 1/2×5×6=15이다. 따라서 답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1616,6 +1695,10 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 오징어 x, 세로 문어 y. 머리 x+y11, 다리 10x+8y96의 공통점 (4,7). 실제 해는 비음수 정수, 문어 7마리.",
+    "solutionImageSize": "full"
   }
 ];

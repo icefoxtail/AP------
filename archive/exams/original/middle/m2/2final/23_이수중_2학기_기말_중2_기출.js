@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스로 직각변 구하기",
-    "decisiveStep": "주어진 빗변과 직각변의 제곱 차를 구한다."
+    "decisiveStep": "주어진 빗변과 직각변의 제곱 차를 구한다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이 표시된 직각삼각형의 세 변에 길이가 적혀 있고, 빗변은 17, 한 직각변은 15이다.",
+    "solutionImageCaption": "직각삼각형의 빗변이 17, 한 직각변이 15이므로 x²+15²=17²이다. x²=289−225=64이고 길이는 양수이므로 x=8이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스로 빗변 구하기",
-    "decisiveStep": "두 직각변의 제곱합으로 빗변을 구한다."
+    "decisiveStep": "두 직각변의 제곱합으로 빗변을 구한다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "C가 직각이며 AC6,BC8. AB²=6²+8²=100이므로 x=AB10.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -125,7 +133,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스의 세 정사각형 넓이 관계",
-    "decisiveStep": "주어진 넓이를 변의 제곱으로 읽어 나머지 정사각형 넓이를 뺀다."
+    "decisiveStep": "주어진 넓이를 변의 제곱으로 읽어 나머지 정사각형 넓이를 뺀다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위에 정사각형 세 개가 붙어 있고, 두 정사각형 안에 169와 25가 적혀 있으며 C의 직각이 표시되어 있다.",
+    "solutionImageCaption": "정사각형 AHIB의 넓이 169에서 AB=13이고, 정사각형 ACFG의 넓이 25에서 AC=5이다. 직각삼각형 ABC에서 AB가 빗변이므로 BC²=169−25=144이고 BC=12이다. 정사각형 BDCE의 넓이는 BC²과 같으므로 144이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -300,7 +312,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "직각삼각형의 제곱 관계 식 채우기",
-    "decisiveStep": "그림에서 두 직각변 문자를 읽어 해당 빗변 제곱의 합 표현을 빈칸에 넣는다."
+    "decisiveStep": "그림에서 두 직각변 문자를 읽어 해당 빗변 제곱의 합 표현을 빈칸에 넣는다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "직교 대각선으로 네 직각삼각형을 분리한다. AB²=a²+b²,CD²=c²+d²이므로 합은 a²+b²+c²+d². AD²+BC²도 같은 네 항이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -342,7 +358,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 직각변 반원 넓이의 합",
-    "decisiveStep": "두 반원 합을 빗변 지름의 반원 하나의 넓이로 옮긴다."
+    "decisiveStep": "두 반원 합을 빗변 지름의 반원 하나의 넓이로 옮긴다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원문은 직각변 위의 두 반원 전체를 칠했다. 두 반원의 넓이합=(π/8)(AB²+AC²)=(π/8)BC²=(π/8)×16²=32π. 그림의 직각변비 3:4는 대표형이며 주어진 길이는 빗변 16만이다. 원래 음영은 유지하고 이 패널에서는 반원 경계 및 피타고라스 관계를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -579,7 +599,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "삼각형이 되지 않는 공선 선택 제외",
-    "decisiveStep": "전체7개 점의3개 선택에서 지름 위4개 중3개인 경우를 뺀다."
+    "decisiveStep": "전체7개 점의3개 선택에서 지름 위4개 중3개인 경우를 뺀다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "전체 7점 중3점은 35가지. 지름 위 D,E,F,G 중 세 점인 DEF,DEG,DFG,EFG 네 경우는 일직선이므로 제외하여 31개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -966,6 +990,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수직선 이동을 횟수 연립으로 변환",
-    "decisiveStep": "전체 시행 수와 순변위를 연립하여 앞뒤 횟수를 정한 뒤 그 순서 수를 센다."
+    "decisiveStep": "전체 시행 수와 순변위를 연립하여 앞뒤 횟수를 정한 뒤 그 순서 수를 센다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "앞면 x,뒷면 y에서 x+y5,x−y3 →x4,y1. 다섯 자리 중 뒷면 자리 1개를 선택하는 5가지가 모두 최종위치 3으로 간다. 공정·독립 동전 모형의 전체 32결과 중5개라 5/32. 실제 이동경로 그림이 아닌 결과 분류이다.",
+    "solutionImageSize": "full"
   }
 ];

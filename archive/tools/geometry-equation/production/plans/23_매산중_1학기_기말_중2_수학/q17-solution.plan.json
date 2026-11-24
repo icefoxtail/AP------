@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "그래프에는 오르막 직선도 있지만 문제가 묻는 두 내리막 직선 y=-x-2와 y=-(1/2)x만 골라 비교한다. 두 직선은 점 (-4, 2)에서 만나고, 연립하면 -x-2=-(1/2)x에서 x=-4, y=2이다. 따라서 답은 ② x=-4, y=2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"원점을 지나는 완만한 내리막과 두 번째 내리막, 오른쪽의 오르막이 같은 좌표평면에 있다. 위 범례에는 원본의 두 내리막 식을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본에는추가오르막도있지만발문이지정한두내리막만해설보조로비교한다. 공통점(−4,2),정답②. 기존문제그림은삭제하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프에는 오르막 직선도 있지만 문제가 묻는 두 내리막 직선 y=-x-2와 y=-(1/2)x만 골라 비교한다. 두 직선은 점 (-4, 2)에서 만나고, 연립하면 -x-2=-(1/2)x에서 x=-4, y=2이다. 따라서 답은 ② x=-4, y=2이다."
+  ]
+}

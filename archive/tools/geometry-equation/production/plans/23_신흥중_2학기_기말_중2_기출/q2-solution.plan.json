@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "width",
+        "ownerSegment": "DA",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "AB",
+        "text": "4.5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "1:80의 비율은 실제 길이를 80으로 나눈 길이로 그린다는 뜻이다. 실제 가로 4.8 m는 480 cm이므로 480을 80으로 나누면 6 cm이고, 세로 3.6 m는 360 cm이므로 360을 80으로 나누면 4.5 cm이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로가 세로보다 긴 직사각형이 있고, 가로 변에 6, 세로 변에 4.5가 적혀 있다.",
+  "newVisualInformation": [
+    "가로 길이 6",
+    "세로 길이 4.5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직사각형 모양의 아파트 평면도를 $1:80$의 비율로 축소하여 그리려고 한다. 안방의 실제 가로와 세로의 길이가 각각 $4.8\\rm\\,m$, $3.6\\rm\\,m$일 때, 축소했을 때의 가로와 세로의 길이를 차례대로 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

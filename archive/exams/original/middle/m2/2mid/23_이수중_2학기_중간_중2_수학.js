@@ -318,7 +318,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 세 접점으로 수직인 선분이 그어져 있다. 각 꼭짓점에서 접점까지의 길이가 같은 것끼리 x, 10−x, 9−x로 표시되고 변 BC 아래에 13이 적혀 있다.",
+    "solutionImageCaption": "내접원과 변의 접점을 D, E, F라 하자. 한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=x라 하면 BD=BE=10−x, CE=CF=9−x이다. BC=13이므로 (10−x)+(9−x)=13에서 x=3이다. 그러므로 BE=10−3=7cm이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -499,7 +504,12 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD와 두 대각선 AC, BD가 그려져 있고, 두 대각선이 만나는 점 O에 직각 표시가 있다. 점 A와 점 B의 한 각에 각각 60과 30이 적혀 있고, 선분 BO에는 x=8, 선분 OD에는 8이 적혀 있다.",
+    "solutionImageCaption": "마름모의 두 대각선은 서로를 수직이등분하므로 BO=OD=8에서 x=8이다. 대각선 AC가 각 A를 이등분하므로 각 A=120°이고, 마름모는 평행사변형이므로 각 B=60°이다. 대각선 BD가 각 B를 이등분하므로 y=30°이다. 따라서 x+y=8+30=38이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

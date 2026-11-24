@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sT12",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT23",
+      "refs": [
+        "T2",
+        "T3"
+      ]
+    },
+    {
+      "id": "sT34",
+      "refs": [
+        "T3",
+        "T4"
+      ]
+    },
+    {
+      "id": "sT41",
+      "refs": [
+        "T4",
+        "T1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "n1",
+        "at": [
+          3,
+          4.8
+        ],
+        "text": "1",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n2",
+        "at": [
+          6,
+          4.8
+        ],
+        "text": "2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n3",
+        "at": [
+          9.9,
+          2.5
+        ],
+        "text": "3",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n4",
+        "at": [
+          6,
+          0.2
+        ],
+        "text": "4",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n5",
+        "at": [
+          3,
+          0.2
+        ],
+        "text": "5",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n6",
+        "at": [
+          0.1,
+          2.5
+        ],
+        "text": "6",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "6명을 일렬로 앉히는 배열은 6!가지이다. 직사각형 탁자는 180° 회전한 배열과만 겹치므로 서로 다른 배열은 6!을 2로 나눈 360가지이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "직사각형 탁자 둘레에 번호가 붙은 여섯 좌석이 배치되어 있다.",
+  "newVisualInformation": [
+    "직사각형 탁자와 여섯 좌석 배치",
+    "좌석 번호 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$6$명의 학생이 오른쪽 그림과 같은 직사각형 모양의 탁자에 각각 둘러앉는 모든 경우의 수를 구하시오. (단, 회전하여 일치하는 경우는 모두 같은 것으로 본다.)<br><img src=\"assets/images/22_금당고_1학기_중간_고2_확률과통계/q05.png\" class=\"problem-img\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

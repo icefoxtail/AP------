@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      15,
+      0,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "107/100",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "14"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "two",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "style": "DASHED",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "11"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "매년 7퍼센트씩 증가하는 농도를 지수곡선으로, 현재의 2배가 되는 수준을 가로 점선으로 나타내었다. 0.03n ≥ 0.3010에서 n ≥ 301/30이므로 지수곡선은 10년과 11년 사이에 2배 수준을 지난다. 따라서 최소 11년 후이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "파란 지수곡선과 가로 점선 y=2가 만나고, x축에는 10과 11 눈금이, y축에는 1 눈금이 보인다.",
+  "newVisualInformation": [
+    "지수곡선은 x=10에서 점선 y=2보다 낮고 x=11에서 점선보다 높다.",
+    "가로 점선 y=2와 x축 눈금 10, 11, y축 눈금 1이 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미세 먼지 농도가 매년 7%씩 증가할 때, 현재의 2배 이상이 되는 것은 최소 몇 년 후인가? (단, $\\log 2 = 0.3010, \\log 1.07 = 0.03$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
