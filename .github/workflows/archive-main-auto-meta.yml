@@ -36,7 +36,7 @@ on:
       - '.github/workflows/archive-reviewed-apply.yml'
       - '.github/workflows/archive-pages-release.yml'
   workflow_dispatch:
-  # Safety net only: every main push already runs this, and RETRY_EXHAUSTED queues one more run. Hourly runs held the
+  # Safety net only: every main push already runs this, and a push the writer could not land (HANDED_OVER, RETRY_EXHAUSTED) queues one more run. Hourly runs held the
   # single registration lock for 40-60 min and made each merge wait up to 30 min, so run once a day (03:43 KST).
   schedule:
     - cron: '43 18 * * *'
@@ -161,11 +161,8 @@ jobs:
           node tools/ci/git-push-derived-with-retry.mjs \
             --paths-file "$WRITER_WORK_DIR/commit.paths" \
             --message 'chore(archive): register main snapshot [skip ci]' \
-            --regenerate 'node tools/ci/archive-registration-writer.mjs --required-only --work-dir "$WRITER_WORK_DIR"' \
             --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
-            --reapply-check 'node tools/ci/archive-registration-writer.mjs --unrelated-range "$DERIVED_BASE_SHA" "$COMPETITOR_HEAD_SHA"' \
             --remote origin --branch main --max-attempts 4 \
-            --race-fetch-scope all-heads \
             --summary-file "$GITHUB_STEP_SUMMARY" --label 'required Archive registration lanes'
       - name: Publish the required-lane snapshot before the long pass
         if: steps.persist_required.outcome == 'success'
@@ -183,11 +180,14 @@ jobs:
           if [[ "$(node -p "const r=require(process.argv[1]);r.publishable===true" "$out/report.json")" == true && ( "$FIRST_SAVE_RESULT" == PUSHED || "$GITHUB_EVENT_NAME" != schedule ) ]]; then
             gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$FIRST_SAVE_SHA"
           fi
+      # When the required lanes were written onto a newer main tip (another merge landed first), this pass would only compute that
+      # merge's work, which the registration run queued by its push does from the latest main. Stop here instead of computing it twice.
       - name: Prepare only changed native registration lanes in one transaction
         id: prepare
+        if: success() && steps.persist_required.outputs.overlaid != 'true'
         timeout-minutes: 150
         run: node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"
-      - name: Persist verified lanes, native cursors and receipts once with race-safe regeneration
+      - name: Persist verified lanes, native cursors and receipts once, written onto the newest main when it moved
         id: persist
         if: steps.prepare.outputs.safe_to_persist == 'true'
         timeout-minutes: 170
@@ -198,16 +198,14 @@ jobs:
           node tools/ci/git-push-derived-with-retry.mjs \
             --paths-file "$WRITER_WORK_DIR/commit.paths" \
             --message 'chore(archive): register main snapshot [skip ci]' \
-            --regenerate 'node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"' \
             --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
-            --reapply-check 'node tools/ci/archive-registration-writer.mjs --unrelated-range "$DERIVED_BASE_SHA" "$COMPETITOR_HEAD_SHA"' \
             --remote origin --branch main --max-attempts 4 \
-            --race-fetch-scope all-heads \
             --summary-file "$GITHUB_STEP_SUMMARY" --label 'single Archive registration writer'
-      # RETRY_EXHAUSTED means nothing was pushed because main kept moving. Queue one more run now instead of waiting for the next push
-      # or the hourly cron (which may be an hour away); concurrency keeps one pending run, and it re-reads main when it starts.
-      - name: Queue another registration run when main kept moving
-        if: always() && (steps.persist_required.outputs.result == 'RETRY_EXHAUSTED' || steps.persist.outputs.result == 'RETRY_EXHAUSTED')
+      # HANDED_OVER (a competing commit changed registrar-owned paths) and RETRY_EXHAUSTED (main moved again between writing and pushing)
+      # mean nothing was pushed. Queue one more run now instead of waiting for the next push or the daily cron; concurrency keeps one pending
+      # run, and it re-reads main when it starts. A push-triggered run never queues here: whatever landed first was itself a main push and already queued its own merge-mode run, and a dispatched run would replace that pending run with a heavier digest run. Only a scheduled or manual run queues itself, so its digest-only work is not dropped.
+      - name: Queue another registration run when nothing could be pushed
+        if: always() && github.event_name != 'push' && (contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist_required.outputs.result) || contains(fromJSON('["HANDED_OVER","RETRY_EXHAUSTED"]'), steps.persist.outputs.result) || steps.persist_required.outputs.overlaid == 'true')
         timeout-minutes: 5
         env:
           GH_TOKEN: ${{ github.token }}
@@ -235,7 +233,13 @@ jobs:
           gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$REGISTERED_MAIN_SHA"
       - name: Report incomplete required registration without publishing
         if: steps.persist.outcome == 'success' && steps.registered.outputs.publishable != 'true'
+        env:
+          OVERLAID: ${{ steps.persist.outputs.overlaid }}
         run: |
+          if [[ "$OVERLAID" == true ]]; then
+            echo '::notice::Registered lanes were written onto a newer main; its changes are registered by the run that merge queued. Nothing was published from this tree.'
+            exit 0
+          fi
           echo '::error::Required registration remains incomplete; verified independent lanes were persisted, and the existing student site remains live. See per-lane evidence; hourly reconciliation resumes the remaining inputs.'
           exit 1
       - name: Upload registration evidence including isolated failures and no-op decisions

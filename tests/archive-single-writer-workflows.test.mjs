@@ -65,23 +65,23 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.match(register, /permissions:\n      contents: write\n      actions: write/);
   assert.match(register, /group: archive-reviewed-exam-meta-register-main\n      cancel-in-progress: false/);
   assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
-  assert.match(step(register, /^        id: persist_required$/m), /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --required-only --work-dir "\$WRITER_WORK_DIR"'/);
+  assert.doesNotMatch(step(register, /^        id: persist_required$/m), /--regenerate|--reapply-check|--race-fetch-scope/, 'a race never recomputes: the finished result is written onto the new tip');
   assert.match(step(register, /^        id: prepare_required$/m), /archive-registration-writer\.mjs --required-only --work-dir/);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
-  assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
-  assert.equal((register.match(/--remote origin --branch main --max-attempts 4/g) || []).length, 2, 'both saves retry up to 4 times (a regeneration outlasts the merge interval on busy days)');
-  // RETRY_EXHAUSTED pushed nothing: queue one more run right away rather than waiting for the next push or the hourly cron.
-  const requeue = step(register, /^      - name: Queue another registration run when main kept moving$/m);
-  assert.match(requeue, /if: always\(\) && \(steps\.persist_required\.outputs\.result == 'RETRY_EXHAUSTED' \|\| steps\.persist\.outputs\.result == 'RETRY_EXHAUSTED'\)/);
+  assert.doesNotMatch(register, /--regenerate|--reapply-check|--race-fetch-scope|--unrelated-range/);
+  assert.equal((register.match(/--remote origin --branch main --max-attempts 4/g) || []).length, 2, 'both saves allow four cheap write-onto-the-new-tip attempts');
+  // HANDED_OVER and RETRY_EXHAUSTED pushed nothing: queue one more run right away rather than waiting for the next push or the daily cron.
+  const requeue = step(register, /^      - name: Queue another registration run when nothing could be pushed$/m);
+  assert.match(requeue, /if: always\(\) && github\.event_name != 'push' && \(contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist_required\.outputs\.result\) \|\| contains\(fromJSON\('\["HANDED_OVER","RETRY_EXHAUSTED"\]'\), steps\.persist\.outputs\.result\) \|\| steps\.persist_required\.outputs\.overlaid == 'true'\)/);
   assert.match(requeue, /gh workflow run archive-main-auto-meta\.yml --ref main/);
-  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 2);
-  assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
+  assert.match(step(register, /^        id: prepare$/m), /if: success\(\) && steps\.persist_required\.outputs\.overlaid != 'true'/, 'a run whose first save was written onto a newer tip stops; the merge that landed queued its own run');
+  assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope|--regenerate/);
   assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);
   assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 170/);
   // The reviewed inbox lane may run 120 minutes; its enclosing prepare step must outlast it.
   assert.match(step(register, /^        id: prepare$/m), /timeout-minutes: 150/);
   assert.match(register, /--verify-command 'node tools\/check-git-growth\.mjs --base "\$DERIVED_BASE_SHA" --head "\$DERIVED_HEAD_SHA"'/);
-  assert.match(register, /--reapply-check 'node tools\/ci\/archive-registration-writer\.mjs --unrelated-range "\$DERIVED_BASE_SHA" "\$COMPETITOR_HEAD_SHA"'/);
+  assert.doesNotMatch(register, /--reapply-check/);
   assert.doesNotMatch(register, /--force|git\s+(?:commit|push)\b/);
   assert.match(step(register, /^        id: persist$/m), /if: steps\.prepare\.outputs\.safe_to_persist == 'true'/);
   for (const [name, text] of [['Pages', pages], ['compatibility recovery', compatibility]]) {

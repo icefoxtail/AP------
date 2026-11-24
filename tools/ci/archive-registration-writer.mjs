@@ -162,7 +162,7 @@ export function nativeLanes(root) {
   const code=['archive/tools/','archive/build_db.py','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-build-db.mjs','tools/ci/archive-registration-whitespace.mjs',
     'tools/ci/archive-pages-registration.paths','tools/ci/archive-meta-register-commit.paths',
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
-    'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
+    'archive/problem-bank-meta.js','archive/question-binding.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
     'archive/archive2-source.js','archive/exam-source-reader.js','archive/unit-past-exams-core.js'];
   const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question-metadata/v1/',
     'archive/data/meta-foundation/','archive/data/master_tables/','archive/data/r2e-intake/',
@@ -664,45 +664,13 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   report.changedPaths=changed(root);report.safeToPersist=true;
   const failed=report.lanes.some(r=>['FAILED','ROLLED_BACK','STALE_DEPENDENCY'].includes(r.status));
   report.status=failed?'PREPARED_WITH_FAILURES':report.needed?'PREPARED_WITH_PENDING':report.changedPaths.length?(ready.backlogDeferred?'PREPARED_WITH_BACKLOG':'PREPARED'):(ready.backlogDeferred?'NO_OP_WITH_BACKLOG':'NO_OP');
-  // Include the entire allowlist: regeneration after a main race may touch different derived files.
+  // The whole allowlist is listed: a write onto a newer tip may carry any of the derived files.
   writeEvidence(work,report,allOutputs);
   return report;
 }
 
-// Only provably unrelated changes may reuse the verified commit; anything uncertain regenerates.
-// Producers import many archive modules, so any archive/ change is never "clearly unrelated"; diff5 fixtures feed the reviewed lane.
-const PROTECTED_PREFIXES=['archive/','tests/fixtures/diff5/','.archive-meta-register/','tools/ci/','tools/lib/','.github/workflows/archive-'];
-const PROTECTED_FILES=[STATE,'package.json','package-lock.json'];
-// 화면 전용 파일(css·html·md)은 archive/ 아래라도 등록 결과를 만들지 않는다. 다만 레인 입력 목록(예: archive/engine.html, 4slot 렌더러 UI 입력)에
-// 들어 있는 것은 아래 matches(f,patterns)가 그대로 잡으므로, 여기서는 "목록에 없는 화면 파일"만 풀어 준다. js·mjs·json·py·sh는 다른 생산자가 가져다 쓸 수 있어 계속 보호한다.
-// 이유: 화면 CSS 한 줄 병합에도 전체 재계산(약 40분 x 재시도)이 돌아 스냅숏 저장이 몇 시간씩 늦어졌다.
-const SCREEN_ONLY_ASSET=/^archive\/(?!data\/|exams\/|tools\/|generated\/|_generated\/|textbook\/|assets\/|fixtures\/)(?:[^/]+\/)*[^/]+\.(?:css|html|md)$/;
-const isProtectedExtra=f=>(!SCREEN_ONLY_ASSET.test(f)&&PROTECTED_PREFIXES.some(p=>f.startsWith(p)))||PROTECTED_FILES.includes(f)
-  ||['.gitignore','.gitattributes'].includes(f.split('/').pop());
-export function unrelatedRange({root=ROOT,base,head,lanes}={}) {
-  const verdict={unrelated:false,base,head,changedCount:0,firstProtectedHit:null};
-  try {
-    for(const sha of [base,head])if(!/^[a-f0-9]{40}$/.test(sha||''))throw Error('MALFORMED_SHA:'+sha);
-    if(spawnSync('git',['merge-base','--is-ancestor',base,head],{cwd:root}).status!==0)throw Error('BASE_NOT_ANCESTOR_OF_HEAD');
-    const patterns=unique((lanes||nativeLanes(root)).flatMap(l=>[l.inputs,l.outputs,l.scopedInputs].flatMap(v=>Array.isArray(v)?v:[])));
-    // Files no lane reads (the excluded code trees) never make a competing commit "related".
-    const files=splitZ(git(root,'diff','--name-only','--no-renames','-z',base,head)).filter(f=>!matches(f,EXCLUDED_CODE_DIRS));
-    verdict.changedCount=files.length;
-    verdict.firstProtectedHit=files.find(f=>isProtectedExtra(f)||matches(f,patterns))||null;
-    verdict.unrelated=verdict.firstProtectedHit===null;
-  } catch(error) {
-    verdict.unrelated=false;verdict.error=String(error.message||error).split('\n')[0];
-    console.error('UNRELATED_RANGE_UNKNOWN:'+verdict.error);
-  }
-  return verdict;
-}
-
 async function main() {
   const args=process.argv.slice(2),options={};let check=false,requiredOnly=false;
-  if(args[0]==='--unrelated-range') {
-    const rootAt=args.indexOf('--root'),verdict=unrelatedRange({...(rootAt>0&&args[rootAt+1]?{root:path.resolve(args[rootAt+1])}:{}),base:args[1],head:args[2]});
-    console.log(JSON.stringify(verdict));process.exitCode=verdict.unrelated?0:1;return;
-  }
   for(let i=0;i<args.length;i++) {
     if(args[i]==='--check')check=true;
     else if(args[i]==='--required-only')requiredOnly=true;
