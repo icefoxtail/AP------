@@ -1,0 +1,388 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "b0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "b0",
+    "b1",
+    "m0",
+    "m1",
+    "t0",
+    "t1"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "b0",
+        "b1"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "m0",
+        "m1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "t0",
+        "t1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "h1",
+        "at": [
+          -1.5,
+          1.8
+        ],
+        "text": "계단 수",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "h2",
+        "at": [
+          -1.5,
+          0.6
+        ],
+        "text": "방법 수",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n1",
+        "at": [
+          0.5,
+          1.8
+        ],
+        "text": "1"
+      },
+      {
+        "id": "n2",
+        "at": [
+          1.5,
+          1.8
+        ],
+        "text": "2"
+      },
+      {
+        "id": "n3",
+        "at": [
+          2.5,
+          1.8
+        ],
+        "text": "3"
+      },
+      {
+        "id": "n4",
+        "at": [
+          3.5,
+          1.8
+        ],
+        "text": "4"
+      },
+      {
+        "id": "n5",
+        "at": [
+          4.5,
+          1.8
+        ],
+        "text": "5"
+      },
+      {
+        "id": "n6",
+        "at": [
+          5.5,
+          1.8
+        ],
+        "text": "6"
+      },
+      {
+        "id": "n7",
+        "at": [
+          6.5,
+          1.8
+        ],
+        "text": "7"
+      },
+      {
+        "id": "n8",
+        "at": [
+          7.5,
+          1.8
+        ],
+        "text": "8"
+      },
+      {
+        "id": "n9",
+        "at": [
+          8.5,
+          1.8
+        ],
+        "text": "9"
+      },
+      {
+        "id": "n10",
+        "at": [
+          9.5,
+          1.8
+        ],
+        "text": "10"
+      },
+      {
+        "id": "n11",
+        "at": [
+          10.5,
+          1.8
+        ],
+        "text": "11"
+      },
+      {
+        "id": "a1",
+        "at": [
+          0.5,
+          0.6
+        ],
+        "text": "1"
+      },
+      {
+        "id": "a2",
+        "at": [
+          1.5,
+          0.6
+        ],
+        "text": "2"
+      },
+      {
+        "id": "a3",
+        "at": [
+          2.5,
+          0.6
+        ],
+        "text": "3"
+      },
+      {
+        "id": "a4",
+        "at": [
+          3.5,
+          0.6
+        ],
+        "text": "5"
+      },
+      {
+        "id": "a5",
+        "at": [
+          4.5,
+          0.6
+        ],
+        "text": "8"
+      },
+      {
+        "id": "a6",
+        "at": [
+          5.5,
+          0.6
+        ],
+        "text": "13"
+      },
+      {
+        "id": "a7",
+        "at": [
+          6.5,
+          0.6
+        ],
+        "text": "21"
+      },
+      {
+        "id": "a8",
+        "at": [
+          7.5,
+          0.6
+        ],
+        "text": "34"
+      },
+      {
+        "id": "a9",
+        "at": [
+          8.5,
+          0.6
+        ],
+        "text": "55"
+      },
+      {
+        "id": "a10",
+        "at": [
+          9.5,
+          0.6
+        ],
+        "text": "89"
+      },
+      {
+        "id": "a11",
+        "at": [
+          10.5,
+          0.6
+        ],
+        "text": "144"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "b0",
+    "b1",
+    "m0",
+    "m1",
+    "t0",
+    "t1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "마지막에 1계단을 오르는 경우는 10번째 계단까지의 방법 수, 2계단을 오르는 경우는 9번째 계단까지의 방법 수와 같으므로 aₙ=aₙ₋₁+aₙ₋₂이다. a₁=1, a₂=2에서 차례로 구하면 3, 5, 8, 13, 21, 34, 55, 89, 144이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "1부터 11까지의 계단 수와 각 계단까지 오르는 방법 수를 두 줄로 나타낸 표가 있다.",
+  "newVisualInformation": [
+    "1계단 또는 2계단 오르기로 11번째 계단까지 가는 방법 수를 계단 수별로 정리한 표",
+    "a₁=1, a₂=2에서 시작해 차례로 더해 구한 중간값"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "철수는 11개의 계단을 1계단 또는 2계단씩 오르려고 한다. 철수가 11개의 계단을 올라가는 경우의 수는? (단, 계단의 높이, 크기, 모양은 모두 같다.) [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

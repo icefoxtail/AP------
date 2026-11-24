@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "26"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "24"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "height",
+        "ownerSegment": "sAH",
+        "text": "24",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "ownerSegment": "sCB",
+        "text": "26",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "역함수의 대칭으로 A=(α,3^α), B=(3^α,α), C=(log₃α,α)이다. 곡선 대신 삼각형만 분리했다. A에서 밑변에 내린 높이는 24, 넓이 312에서 얻은 밑변 BC는 26이다. AB의 기울기가 −1이므로 A와 B의 수평 거리도 24이다. 수선발 부근의 짧은 구간은 별도 확대도에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 기울기가 $-1$인 직선이 두 곡선 $y=3^x$, $y=\\log_3x$와 만나는 두 점을 각각 $A$, $B$라 하고, 선분 $AB$를 지나고 $x$축과 평행한 직선이 곡선 $y=3^x$와 만나는 점을 $C$라 하자. 선분 $AB$의 길이가 $24\\sqrt2$, 삼각형 $ABC$의 넓이가 $312$이다. 점 $A$의 $x$좌표를 $\\alpha$라 할 때, $\\alpha-\\log_3\\alpha$의 값을 구하고 그 과정을 서술하시오. (단, $O$는 원점이다.) [7점]",
+      "mappedTo": "source geometry"
+    },
+    {
+      "id": "image",
+      "condition": "직접 본 원본 PNG는 A 왼쪽 위, B 오른쪽 아래, C는 B와 같은 높이의 지수곡선 위 점이다. 발문의 수평선 표현은 그림의 BC로 확인한다. 원본 곡선은 변경하지 않고 새 보조도는 삼각형만 분리한다.",
+      "mappedTo": "A B C"
+    },
+    {
+      "id": "gauge",
+      "condition": "평면 보조도 C=(0,0)은 평행이동 자유도 고정용 비표시 기준점이며 실제 함수좌표 C라고 주장하지 않는다. AB의 기울기−1과 길이24√2로 수평/수직 차24, 넓이312로 BC26이므로 B=C+(26,0), A=B+(−24,24)는 정확 파생이다. H는 A의 직선CB 수선발이다. 좌표값을 표시하지 않는다.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 겹침 없이 높이와 밑변의 차가 목표 좌표차 CH임을 보여 준다. 최종 길이는 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE"
+}

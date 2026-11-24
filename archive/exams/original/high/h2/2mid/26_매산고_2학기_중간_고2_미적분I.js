@@ -662,7 +662,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "a=−1을 얻은 뒤 세로 단위를 8로 나눈 v=f(x)/8의 일부와 원래 P(3,3)을 같은 비율로 옮긴 점을 표시했다. 세 접선 중 t=0인 한 경우만 그렸으며 원래 접선 y=x는 이 좌표에서 v=x/8이다. 직선이 곡선과 다시 만나는 점은 이 접선의 접점이 아니다. 일반 접점 t에서는 3=f′(t)(3−t)+f(t)를 세우고, 그 방정식의 세 근의 합을 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

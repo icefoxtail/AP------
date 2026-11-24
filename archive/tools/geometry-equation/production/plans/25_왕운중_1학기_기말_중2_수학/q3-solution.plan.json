@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x=2y를 y=x/2로 읽으면 두 직선의 공통점은(4,2). 대입하면 3y=6→y2→x4. 빈칸 6,2,4의 합 12,정답⑤. 그래프는 대입법을 대체하지 않는 해 확인이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 식의 대입을 이용하여 연립방정식<br>$$\\begin{cases} x = 2y & \\cdots \\text{①} \\\\ x + y = 6 & \\cdots \\text{②} \\end{cases}$$<br>을 푸는 과정이다. ①+②+③의 값은? (4점)<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">$x$를 없애기 위하여 ①을 ②에 대입하면<br>$2y + y = 6$<br>일차방정식을 풀면 $3y = [①]$, $y = [②]$<br>$y = [②]$를 ①에 대입하면 $x = [③]$<br>따라서 구하는 해는 $x = [③], y = [②]$</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

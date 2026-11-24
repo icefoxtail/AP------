@@ -205,7 +205,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "내심의 세 반각 합으로 미지각",
-    "decisiveStep": "그림의40도·30도가 두 내각의 절반이므로 남은 반각을90도에서 보완한다."
+    "decisiveStep": "그림의40도·30도가 두 내각의 절반이므로 남은 반각을90도에서 보완한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 내심 I가 있고 세 꼭짓점에서 I로 선분이 그어져 있다. 꼭짓점 A의 각 40°, B의 각 30°, C의 각 x, I의 각 130°가 표시되어 있다.",
+    "solutionImageCaption": "내심이므로 AI와 BI는 각각 ∠A와 ∠B의 이등분선이다. ∠BAI=40°이므로 ∠A=80°이고, ∠IBC=30°에서 ∠B=60°이다. 따라서 ∠C=40°이므로 x=∠ICB=20°이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -246,7 +250,11 @@ window.examData = {
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "외접반지름 등변각에서 중심각의 절반",
-    "decisiveStep": "OB=OC로 밑각26도를 옮겨 중심각 BOC를 구하고 맞은편 A각을 반으로 구한다."
+    "decisiveStep": "OB=OC로 밑각26도를 옮겨 중심각 BOC를 구하고 맞은편 A각을 반으로 구한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 외심 O가 있고 OA, OB, OC가 그려져 있다. 각 ABO=26°, 각 OCB=37°, 각 OAC=x가 표시되어 있다.",
+    "solutionImageCaption": "O가 외심이므로 OA=OB=OC이다. 각 ABO=26°에서 각 AOB=180°−2·26°=128°이고, 각 OCB=37°에서 각 BOC=180°−2·37°=106°이다. 따라서 각 AOC=360°−128°−106°=126°이고, 이등변삼각형 AOC에서 x=(180°−126°)/2=27°이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -549,7 +557,11 @@ window.examData = {
       "l4": "변·각의 성질"
     },
     "primaryMethod": "평행 분할로 생긴 작은 평행사변형의 길이",
-    "decisiveStep": "부분도형의 대변 등량으로 PH=9-3,PF=12-4를 구해 합한다."
+    "decisiveStep": "부분도형의 대변 등량으로 PH=9-3,PF=12-4를 구해 합한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 내부 점 P를 지나 AB에 평행한 선분 GH와 AD에 평행한 선분 EF가 그려져 있다. 변 AB와 AD, BH와 DF에 각각 9 cm, 12 cm, 4 cm, 3 cm의 길이 표시가 있고, PH와 PF 옆에 6과 8이 적혀 있다.",
+    "solutionImageCaption": "평행사변형에서 GH는 AB와 평행하므로 AG=BH=4 cm이고, EF는 AD와 평행하므로 AE=DF=3 cm이다. 따라서 PH=AB−AE=9−3=6 cm, PF=AD−AG=12−4=8 cm이다. 그러므로 PH+PF=14 cm이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -608,7 +620,11 @@ window.examData = {
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "마름모의 직교 대각선과 같은 밑각",
-    "decisiveStep": "대각선 교점의 x는90도이며 같은 두 변의 밑각으로 y를 주어진30도와 같게 놓아 합한다."
+    "decisiveStep": "대각선 교점의 x는90도이며 같은 두 변의 밑각으로 y를 주어진30도와 같게 놓아 합한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 두 대각선 AC와 BD가 점 O에서 만나고, 점 B의 각 30°, 점 O의 각 x, 점 D의 각 y가 표시되어 있다. 네 변에는 같은 길이 표시가 있다.",
+    "solutionImageCaption": "마름모의 두 대각선은 서로 수직이므로 각 x=90°이다. 대각선 BD가 각 B를 이등분하므로 각 ABC=60°이고, 마름모의 대각은 같으므로 각 CDA=60°이다. 따라서 대각선 BD가 각 D를 이등분하므로 각 y=30°이고, 각 x와 각 y의 합은 120°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -690,7 +706,11 @@ window.examData = {
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "평행사변형을 마름모로 만드는 두 조건",
-    "decisiveStep": "이웃한 두 변이 같거나 두 대각선이 수직인 조건을 직사각형 조건과 구별한다."
+    "decisiveStep": "이웃한 두 변이 같거나 두 대각선이 수직인 조건을 직사각형 조건과 구별한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 네 변에 같은 길이 표시가 있고, 두 대각선 AC와 BD가 점 O에서 수직으로 만난다.",
+    "solutionImageCaption": "평행사변형에서 이웃한 두 변의 길이가 같으면 마름모가 되고, 두 대각선이 수직으로 만나도 마름모가 된다. 그림과 같이 네 변의 길이가 같고 대각선 AC와 BD가 점 O에서 수직으로 만나므로 ①과 ④가 조건이다. 따라서 답은 ①, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -820,7 +840,11 @@ window.examData = {
       "l4": "길이"
     },
     "primaryMethod": "한 등각과 공통각의 AA로 전체길이 복원",
-    "decisiveStep": "ABC와ADE의 AA에서 AB:AD=AC:AE를 쓰고 AC에서AD를 빼 CD를 구한다."
+    "decisiveStep": "ABC와ADE의 AA에서 AB:AD=AC:AE를 쓰고 AC에서AD를 빼 CD를 구한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 AB 위에 점 E, 변 AC 위에 점 D가 있고 선분 DE가 그려져 있다. 변 AB에 12, 선분 AE에 4, 선분 AD에 6, 선분 DC에 x가 표시되어 있고 각 B와 각 ADE에 같은 각 표시가 있다.",
+    "solutionImageCaption": "∠B=∠ADE이고 ∠A가 공통이므로 삼각형 ADE와 삼각형 ABC는 닮음이다. 닮음비에서 AD:AB=AE:AC이므로 6:12=4:(6+x)이다. 이를 풀면 6+x=8이므로 x=2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -861,7 +885,11 @@ window.examData = {
       "l4": "길이"
     },
     "primaryMethod": "빗변 높이가 만드는 AA 사영 관계",
-    "decisiveStep": "AB제곱=BH·BC를 AA 닮음에서 얻어 BC를 구하고 BH를 빼 HC를 정한다."
+    "decisiveStep": "AB제곱=BH·BC를 AA 닮음에서 얻어 BC를 구하고 BH를 빼 HC를 정한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 꼭짓점 A와 빗변 위의 점 H에 직각 표시가 있고, A에서 H로 수선이 그어져 있다. 변 AB에는 8센티미터, BH에는 6센티미터, HC에는 x가 표시되어 있다.",
+    "solutionImageCaption": "각 A가 직각인 직각삼각형 ABC에서 AH는 빗변 BC에 내린 수선이다. 직각삼각형에서 AB²=BH×BC이므로 8²=6×(6+x)이다. 64=36+6x에서 6x=28이므로 x=14/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -933,7 +961,11 @@ window.examData = {
       "l4": "대응변·대응각"
     },
     "primaryMethod": "닮은 직육면체의 대응 모서리와 면",
-    "decisiveStep": "대응 높이6:8로 x,y를 구하고 같은 변비의 앞·뒤 직사각형 면을 비교한다."
+    "decisiveStep": "대응 높이6:8로 x,y를 구하고 같은 변비의 앞·뒤 직사각형 면을 비교한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에 가로 4cm, 높이 6cm, 깊이 5cm인 직육면체가 있고 그 오른쪽에 더 큰 직육면체가 있다. 큰 직육면체의 높이는 8cm이고 밑면의 가로와 깊이가 각각 x cm, y cm로 표시되어 있으며, 두 직육면체 모두 보이지 않는 모서리는 점선으로 그려져 있다.",
+    "solutionImageCaption": "두 직육면체는 닮은 도형이고 대응하는 높이가 6cm와 8cm이므로 닮음비는 6:8=3:4이다. 따라서 x=4×4/3=16/3이고 y=5×4/3=20/3이므로 x+y=16/3+20/3=12이다. 면 BFGC는 가로 4cm, 세로 6cm인 직사각형이므로 오른쪽 직육면체에서 이와 닮은 면은 앞면과 뒷면이다. 따라서 답은 (1) 3:4, (2) 12, (3) 앞면과 뒷면이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

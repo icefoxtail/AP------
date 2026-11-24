@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "91/2",
+          "1/6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "40"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      40
+    ],
+    "viewport": [
+      -7.2,
+      47.2,
+      -9.39,
+      61.56
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "온도 x",
+      "y": "부피 y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "15",
+          "y": "48",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "27",
+          "y": "50",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "36",
+          "y": "103/2"
+        }
+      ]
+    }
+  },
+  "caption": "그래프는 두 점 (15, 48), (27, 50)을 지나는 직선이다. 기울기는 (50−48)/(27−15)=1/6이다. 온도가 36도일 때 부피는 50+9×1/6=51.5L이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로축이 온도, 세로축이 부피인 좌표평면에 오른쪽 위로 완만하게 올라가는 직선이 그려져 있다. 직선 위의 두 점에 (15, 48), (27, 50) 좌표가 표시되고, 오른쪽에 점 P가 있다.",
+  "newVisualInformation": [
+    "온도와 부피의 관계를 나타내는 기울기 1/6의 직선",
+    "두 점 (15, 48), (27, 50)의 좌표",
+    "온도 36도에서의 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일정한 압력에서 온도가 $15\\,^{\\circ}\\mathrm{C}$일 때 부피가 $48\\,\\mathrm{L}$이고, 온도가 $27\\,^{\\circ}\\mathrm{C}$일 때 부피가 $50\\,\\mathrm{L}$인 어떤 기체가 있다. 이 기체의 온도가 $x\\,^{\\circ}\\mathrm{C}$일 때 부피를 $y\\,\\mathrm{L}$라 하고, $x$와 $y$ 사이의 관계를 그래프로 나타내면 아래 그림과 같다. 온도가 $36\\,^{\\circ}\\mathrm{C}$일 때, 이 기체의 부피는 몇 $\\mathrm{L}$인가? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

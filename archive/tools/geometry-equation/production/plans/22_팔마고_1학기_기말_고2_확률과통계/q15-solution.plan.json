@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "hiddenPointNames": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "주사위에서 소수의 눈은 2, 3, 5의 3개이므로 한 번에 2칸 움직일 확률은 1/2이다. 6번 중 2칸 이동이 k번이면 총 이동 거리는 6+k칸이고 A에서 반시계 방향으로 F까지는 5칸이므로 6+k를 6으로 나눈 나머지가 5가 되어야 한다. 따라서 k=5이고 확률은 6C5×(1/2)⁶=6/64=3/32이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "정육각형 A, B, C, D, E, F의 여섯 변이 그려져 있고 각 변에 A에서 B, C, D, E, F로 이어지는 이동 방향 화살표가 표시되어 있다.",
+  "newVisualInformation": [
+    "정육각형의 꼭짓점 A에서 B, C, D, E, F로 이어지는 반시계 방향 변에 화살표를 달아 다섯 칸 이동을 보였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 변의 길이가 1인 정육각형 $ABCDEF$의 꼭짓점 $\\mathrm{A}$에서 출발하여 변을 따라 시계 반대 방향으로 움직이는 점 $\\mathrm{P}$가 있다. 점 $\\mathrm{P}$는 주사위 1개를 던져서 소수의 눈이 나오면 2만큼, 소수가 아닌 눈이 나오면 1만큼 움직인다. 주사위 1개를 6번 던질 때, 점 $\\mathrm{P}$가 꼭짓점 $\\mathrm{F}$에 도착할 확률은? [4.6점]\n<div class=\"text-center my-3\"><img src=\"assets/images/22_팔마고_1학기_기말_고2_확률과통계/q15.png\" style=\"max-width: 250px;\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

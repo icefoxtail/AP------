@@ -1,0 +1,366 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ci",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "co",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "I",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "ci",
+    "co"
+  ],
+  "displayLines": [],
+  "caption": "내접원의 접선의 길이가 같으므로 AD=AF, CE=CF이고 AD+EC=AF+FC=AC이다. 외접원의 반지름이 5cm이고 외심이 빗변 AC의 중점이므로 AC=10cm이다. (1) AD+EC=10cm이다. (2) BD=BE=r=2cm이므로 AB+BC=(AD+2)+(EC+2)=14cm이고 둘레는 14+10=24cm이다. (3) 넓이는 (1/2)×r×(둘레)=(1/2)×2×24=24cm²이다.",
+  "accessibilityDescription": "꼭짓점 B에서 직각인 직각삼각형 ABC에 내접원과 외접원이 함께 그려져 있다. 내심 I에서 세 변으로 수선이 내려져 있고 세 접점 D, E, F에 직각 표시가 있으며 반지름 2가 적혀 있고 같은 접선의 길이에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "접선의 길이 AD+EC=AC=10, AB+BC=14이므로 둘레 24, 넓이 (1/2)×2×24=24"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>【 서술형 3 】 오른쪽 그림에서 두 점 $\\text{O}$, $\\text{I}$는 각각 직각삼각형 $\\text{ABC}$의 외심과 내심이고, 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 내접원과 세 변 $\\text{AB}$, $\\text{BC}$, $\\text{CA}$의 접점일 때, $\\triangle\\text{ABC}$의 넓이를 구하려고 한다. 다음 물음에 답하여라. (7점)<br><img src=\"assets/images/18_동산중_2학기_중간_중2_수학/q24.png\" alt=\"직각삼각형 ABC의 외심 O와 내심 I에서 외접원 반지름이 5, 내접원 반지름이 2일 때 삼각형의 넓이를 단계별로 구하는 기하 도형\" /><br><br>(1) $\\overline{\\text{AD}}+\\overline{\\text{EC}}$의 길이를 구하여라. (2점)<br>(2) $\\triangle\\text{ABC}$의 둘레 길이를 구하여라. (2점)<br>(3) 위 문제의 답을 구하여라. (3점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "ID",
+        "IE",
+        "IF"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "DA",
+        "AF"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "EC",
+        "FC"
+      ]
+    },
+    {
+      "id": "eq3",
+      "count": 4,
+      "segments": [
+        "BD",
+        "BE"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vID",
+        "ownerSegment": "ID",
+        "text": "r=2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  }
+}

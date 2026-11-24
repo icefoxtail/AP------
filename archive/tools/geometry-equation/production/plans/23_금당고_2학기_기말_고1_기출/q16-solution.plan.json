@@ -1,0 +1,109 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "u",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "U",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "label": "A",
+        "within": 1,
+        "points": [
+          {
+            "id": "L1",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "R1",
+            "value": "1",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "B",
+        "within": 1,
+        "points": [
+          {
+            "id": "L2",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "R2",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "C",
+        "within": 1,
+        "points": [
+          {
+            "id": "L3",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "R3",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "u가 될 수 있는 범위"
+  },
+  "caption": "제곱근 조각은 높이 t≥0에서 항상 한 점과 만나므로, 교점이 2개인 t의 범위 0<t≤3은 왼쪽 조각의 교점 개수로 결정된다. 조건에서 p=1/3이고 q=0 또는 q=−3이다. 따라서 p−q는 1/3 또는 10/3이고 그 합은 11/3이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "수직선에서 −3보다 작은 부분과 0보다 큰 부분이 굵게 표시되고, −3과 0에는 열린 점이 있다. 세 줄에 각각 −1과 1, −3과 3, −4와 4가 점으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $p,q$ $(p\\ge0)$에 대하여 함수 $f(x)=\\begin{cases}\\sqrt{x-p}&(x\\ge p)\\\\\\left|\\dfrac1x+q\\right|&(x<p)\\end{cases}$이다. 실수 $t$에 대하여 함수 $y=f(x)$의 그래프와 직선 $y=t$의 교점의 개수를 $g(t)$라 하면 $\\{t\\mid g(t)=2\\}=\\{t\\mid0\\lt t\\le3\\}$일 때, $p-q$의 값으로 가능한 모든 수의 합은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "교점이 2개인 t의 범위는 0<t≤3",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p=1/3, q=0 또는 q=−3",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "u가 될 수 있는 범위를 수직선에 나타내고 그 안과 밖의 값을 점으로 구분한다"
+  ]
+}

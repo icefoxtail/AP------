@@ -1,0 +1,281 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "B",
+          "A"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vCA",
+              "ownerSegment": "sCA",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "vBC",
+              "ownerSegment": "sBC",
+              "text": "8",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "c",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 DEF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "F"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "F"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "9"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "F",
+          "E",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vFD",
+              "ownerSegment": "sFD",
+              "text": "9",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "f",
+            "refs": [
+              "D",
+              "F",
+              "E"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "닮은 두 직각삼각형 ABC와 DEF를 나란히 보여 준다.",
+  "accessibilityDescription": "왼쪽 직각삼각형 ABC는 직각이 C에 있고 AC는 6, BC는 8이다. 오른쪽 직각삼각형 DEF는 직각이 F에 있고 DF는 9이다.",
+  "newVisualInformation": [
+    "두 직각삼각형의 대응하는 변과 주어진 길이를 각각 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 2. 두 직각삼각형 $ABC$와 $DEF$가 서로 닮음이고($\\triangle ABC \\sim \\triangle DEF$), $\\angle C = \\angle F = 90^\\circ$이다. 선분 $\\overline{AC} = 6\\text{ cm}$, 선분 $\\overline{BC} = 8\\text{ cm}$, 선분 $\\overline{DF} = 9\\text{ cm}$일 때, 다음을 구하시오. [5점]   (1) 두 삼각형 $ABC$와 $DEF$의 닮음비를 구하시오. [2점]   (2) 선분 $\\overline{EF}$의 길이와 삼각형 $DEF$의 넓이를 각각 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

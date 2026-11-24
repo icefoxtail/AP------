@@ -1,0 +1,310 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "닮음비 1:2, 직각은 그대로"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vAB",
+              "ownerSegment": "AB",
+              "text": "3",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "CA",
+              "text": "4",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "5",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "a",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "닮음비 2:1, 직각은 그대로"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vAB",
+              "ownerSegment": "AB",
+              "text": "6",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "CA",
+              "text": "8",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "10",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "a",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "닮은 두 평면도형에서 대응하는 각의 크기는 변의 길이비와 관계없이 서로 같다. 직각변이 3, 4인 삼각형과 6, 8인 삼각형은 닮음비가 1:2이지만 대응하는 직각은 모두 90도로 같다. 각의 크기가 비례한다는 ③의 설명이 틀렸다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 패널은 직각변이 3과 4, 빗변이 5인 직각삼각형이고 오른쪽 패널은 직각변이 6과 8, 빗변이 10인 직각삼각형이다. 두 삼각형 모두 직각 표시가 있다.",
+  "newVisualInformation": [
+    "닮음비 1:2인 두 직각삼각형의 변 3, 4, 5와 6, 8, 10을 적었다.",
+    "두 삼각형의 대응하는 직각에 직각 표시를 하여 각이 변하지 않음을 보였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닮음에 대한 설명으로 틀린 것을 고르면? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

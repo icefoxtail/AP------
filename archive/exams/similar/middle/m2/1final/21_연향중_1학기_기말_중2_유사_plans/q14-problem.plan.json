@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=-(3/a)x+1/b"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "quadrants": [
+        {
+          "id": "q1",
+          "quadrant": 1,
+          "label": "제1사분면"
+        },
+        {
+          "id": "q2",
+          "quadrant": 2,
+          "label": "제2사분면"
+        },
+        {
+          "id": "q3",
+          "quadrant": 3,
+          "label": "제3사분면"
+        },
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면"
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=-(3/a)x+1/b의 그래프가 오른쪽 아래로 향하고 y축의 양의 부분에서 만나는 모습을 좌표평면에 나타낸 것이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 아래로 향하는 직선이 y축의 양의 부분에서 만나고, 네 사분면의 이름이 표시되어 있다.",
+  "newVisualInformation": [
+    "오른쪽 아래로 향하는 직선",
+    "y축의 양의 부분에서 만나는 교점",
+    "네 사분면의 이름"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = -\\dfrac{3}{a}x + \\dfrac{1}{b}$의 그래프가 오른쪽 아래로 향하고 $y$축과 양의 부분에서 만날 때, 일차함수 $y = abx + \\dfrac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

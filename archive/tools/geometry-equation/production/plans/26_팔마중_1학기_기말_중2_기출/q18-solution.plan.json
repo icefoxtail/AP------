@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "6",
+        "y": "4"
+      }
+    ],
+    "formula": "4"
+  },
+  "caption": "y축에 수직인 수평선에서는 두 점의 y좌표가 같다. a+4=−2a+4에서 a0. 실제 두 점 (6,4),(0,4)은 y4 위에 있다. 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(6,a+4)$, $(-3a,-2a+4)$를 지나는 직선이 $y$축에 수직일 때, $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

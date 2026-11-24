@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      }
+    ],
+    "formula": "2*x + 4"
+  },
+  "caption": "원본두절편(−2,0),(0,4). 변화량 4/2로기울기 2,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$절편이 $-2$이고 $y$절편이 4인 일차함수의 그래프의 기울기는?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본두절편(−2,0),(0,4). 변화량4/2로기울기2,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본두절편(−2,0),(0,4). 변화량4/2로기울기2,정답④."
+  ]
+}

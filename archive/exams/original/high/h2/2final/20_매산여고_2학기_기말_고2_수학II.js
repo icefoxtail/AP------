@@ -199,7 +199,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 꼭짓점 V(2, 5)와 점 P(1, 7)를 지난다.",
+    "solutionImageCaption": "f′(x)=4x-8이므로 f(x)=2x²-8x+C=2(x-2)²+C-8이다. 최솟값이 5이므로 C-8=5에서 C=13이고, 그림의 꼭짓점 V는 (2, 5), 점 P는 (1, 7)이다. 따라서 f(1)=2-8+13=7이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -463,7 +467,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 점 Q(-2, 46)과 P(2, 6)를 지난다.",
+    "solutionImageCaption": "F′(x)=f(x)이므로 주어진 식을 미분하면 f(x)=f(x)+xf′(x)-9x²+10x, 즉 f′(x)=9x-10이다. 적분하면 f(x)=9/2 x²-10x+C이고 f(2)=6에서 C=8이다. 그림의 점 P는 (2, 6), Q는 (-2, 46)이며 f(-2)=18+20+8=46이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -679,7 +688,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 세제곱곡선 g가 원점을 지나고, 제2사분면의 점 A와 제4사분면의 점 B가 원점에 대하여 대칭인 위치에 표시되어 있다. 두 점에는 각각의 좌표가 적혀 있다.",
+    "solutionImageCaption": "예: g(x)=−5/12 x³이면 g는 홀함수이고 g′는 짝함수이다. (x³+x)g′(x)는 홀함수이므로 대칭구간에서 적분값이 0이고, −3(g(2)−g(−2))=20에서 g(2)=−10/3, g(−2)=10/3이다. 따라서 12g(−2)=40이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -761,7 +774,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 0부터 2까지의 구간에서 삼차함수 f의 그래프가 x=1에서 봉우리를 이루고, 양 끝점과 봉우리에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "a=1/4일 때 그래프는 양 끝점 P(0,−1/4), R(2,−9/4)와 극대점 Q(1,1/4)를 갖는다. f′(x)=3x(1−x)이므로 x=1에서 극댓값 1/4을 가지며 g(1/4)=1/4이다. 한편 g(−1)=1, g(1)=15이므로 g(−1)+8g(1/4)+g(1)=1+2+15=18이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

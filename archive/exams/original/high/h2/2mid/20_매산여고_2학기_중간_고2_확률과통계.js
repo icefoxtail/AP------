@@ -47,7 +47,12 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 1,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 0, 1, 2, 3, 4, 5가 적힌 짧은 세로선 여섯 개가 같은 간격으로 늘어서 있고, 그 위에 뒷면이 나온 횟수라는 치수선이 있다. 아래쪽에는 파란색으로 칠한 가로 직사각형 띠가 있고 그 아래에 등교 시간이라는 치수선이 있다.",
+    "solutionImageCaption": "확률변수가 가질 수 있는 값이 셀 수 있으면 이산확률변수, 구간의 모든 실숫값을 가지면 연속확률변수이다. 뒷면이 나온 횟수는 0부터 5까지의 정수이므로 이산확률변수이고, 등교 시간은 연속적인 시간값이므로 연속확률변수이다. 몸무게는 연속적인 값을 가지므로 ㄱ은 거짓이고, 구간의 모든 실숫값을 갖는 확률변수는 연속확률변수이므로 ㄹ도 거짓이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -400,7 +405,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 8,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A와 B가 독립이면 겹침은 P(A)P(B), A만은 P(A)(1−P(B)), B만은 (1−P(A))P(B), 바깥은 (1−P(A))(1−P(B))이다. 바깥은 P(A의 여사건)P(B의 여사건)과 같으므로 두 여사건도 독립이다(ㄱ 참). A의 여사건과 B는 B 전체와 바깥의 합집합으로 나뉘어 색칠한 부분은 P(B)+P(A의 여사건)P(B의 여사건)이다(ㄷ 참). 반면 P(A의 여사건|B의 여사건)=P(A의 여사건)=1−P(A)이므로 ㄴ은 거짓이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -808,7 +817,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 16,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6x6 표에서 b/a가 2/3 또는 1/2인 칸을 칠했다. 근 2/3은 (a, b)가 (3, 2), (6, 4)의 2칸이고 근 1/2은 (2, 1), (4, 2), (6, 3)의 3칸이며 서로 겹치지 않는다. 모두 5칸이므로 한 번에 성공할 확률은 5/36이고 X는 이항분포 B(36, 5/36)을 따른다. V(X)=36×5/36×31/36=155/36이고 V(6X+1)=36×V(X)=155이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -907,7 +920,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 18,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "그림의 A 흰은 주머니 A에서 흰 구슬, B 흰은 주머니 B에서 흰 구슬을 꺼낸 것이다. 같은 색 두 경로는 흰색 두 개(파랑) W=a/100×(100−2a)/100와 검은색 두 개(주황) K=(100−a)/100×2a/100이다. 조건부확률 W/(W+K)=(100−2a)/(300−4a)=1/4에서 400−8a=300−4a이므로 a=25이다. 그림은 a=25일 때의 수형도이며 W=1/8, K=3/8이어서 W/(W+K)=1/4이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

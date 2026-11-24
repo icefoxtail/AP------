@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "시각",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "후보",
+        "within": 1,
+        "points": [
+          {
+            "id": "P0",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "속도가 6인 시각"
+  },
+  "caption": "속도는 위치의 도함수이므로 v(t)=3t²-12t-9이다. v(t)=6에서 t²-4t-5=0이므로 t=-1 또는 t=5이다. 시각은 t≥0이므로 t=5이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "수직선에 t≥0인 구간이 표시되고, 그 위 줄에 후보값 -1과 5가 놓여 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서 위치 $x$가 $x=t^3-6t^2-9t$일 때, 점 $\\mathrm{P}$의 속도가 $6$이 되는 시각은? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "v(t)=3t²-12t-9",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "v(t)=6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "t≥0인 시각의 범위와 방정식의 후보근 -1, 5를 같은 수직선에 비교한다"
+  ]
+}

@@ -334,7 +334,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "R1_SOURCE_REPAIRED_META_CORRECTED",
-    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY"
+    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선이 왼쪽 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 점 B로 올라가며, 점 A와 점 B의 높이에 수평선이 하나씩 그려진 그래프이다.",
+    "solutionImageCaption": "x²+x+a=0은 x²+x=-a이므로 곡선 y=x²+x와 수평선 y=-a가 열린구간 (-2,2)에서 한 번 만나는 경우를 센다. 이 곡선은 A(-2,2)에서 꼭짓점 V(-1/2,-1/4)까지 내려가고 V에서 B(2,6)까지 올라간다. 수평선이 y=2(a=-2, 교점 x=-2는 제외되고 x=1만 포함)에서 y=6 직전까지 있으면 구간 안에서 한 번 만난다. 정수 a는 -5, -4, -3, -2이고 합은 -14이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -503,7 +507,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "왼쪽 위에서 내려와 점 M에서 가장 낮고 올라가 점 N에서 꼭대기에 이른 뒤 오른쪽 아래로 내려가는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "f(-2)=-10과 f′(-2)=0에서 a=-3, b=12이고 f′(x)=-6(x+2)(x-1)이다. 그림에서 f′의 부호가 x=-2에서 -에서 +로 바뀌어 극소점 M(-2,-10), x=1에서 +에서 -로 바뀌어 극대점 N(1,17)이 생긴다. 극댓값은 17이므로 a+b+17=-3+12+17=26이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -562,7 +570,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "OWNER_INCOMPLETE",
-    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY"
+    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라와 점 A에서 가로축을 지나 위로 솟았다가 내려와 점 B에서 가로축에 닿고 다시 올랐다가 점 C에서 가로축을 지나 아래로 내려가는 곡선 그래프이다.",
+    "solutionImageCaption": "예: 이 그림은 f′의 그래프이고 곡선의 세부 모양은 해설이 읽은 영점과 부호에 맞춘 예시이다. f′는 A(-6,0)에서 음에서 양으로 바뀌고, B(2,0)에서는 x축에 닿았다가 양의 값으로 되돌아가며, C(6,0)에서 양에서 음으로 바뀐다. -2<x<2에서 f′>0이라 f는 증가하고(ㄴ 참), x=2는 부호가 바뀌지 않아 극대가 아니며(ㄷ 거짓), x=-6은 극소이다(ㄹ 참). 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -670,7 +682,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "R3_META_SEMANTIC_PINPOINT_CORRECTED_COMPATIBILITY_PENDING"
+    "metaReviewStatus": "R3_META_SEMANTIC_PINPOINT_CORRECTED_COMPATIBILITY_PENDING",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "정수마다 끊어지는 직선 조각들의 그래프이고, x=-1에서만 열린 점과 닫힌 점이 같은 높이로 이어지며 나머지 정수에서는 위아래로 어긋난다.",
+    "solutionImageCaption": "(x+1)[x]의 그래프로, 구간 n≤x<n+1에서 직선 n(x+1)이고 정수마다 끊어진다. x=n에서 좌극한은 (n+1)(n-1), 우극한과 함숫값은 (n+1)n이다. 두 값이 같으려면 n+1=0이어야 하므로 x=-1에서만 열린 점과 닫힌 점이 높이 0으로 만나 이어진다. 다른 정수에서는 위아래로 어긋나 끊어진다. 따라서 정수 n은 1개이고 답은 ①이다. x=-1의 눈금 글자는 생략했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -1149,7 +1165,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 2의 수평선이 내려가는 곡선으로 이어졌다가 x=1에서 위쪽 닫힌 점으로 점프하고 다시 수평선과 곡선이 반복되는 그래프이다.",
+    "solutionImageCaption": "예: a=2일 때 f의 그래프이다. 주기 2로 [-1,1)의 모양이 반복되어 x=1에서 왼쪽은 열린 점 (1,1)로, f(1)=a=2인 닫힌 점은 위에 있다. x=0에서는 양쪽이 모두 2로 이어진다. |f+c|가 연속이려면 x=0에서 |a+c|=|2+c|, x=1에서 |1+c|=|a+c|이어야 하고 c=-3/2, a=1 또는 2이다. a-c는 5/2 또는 7/2이므로 합은 6이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1204,7 +1224,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "OWNER_INCOMPLETE",
-    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY"
+    "originalSourceProvenance": "ORIGINAL_SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=√(2x) 위의 점 A(8,4), x축 위의 점 B(8,0), 원점 O가 표시되어 있다. A와 B는 같은 x좌표 8 위에 있다.",
+    "solutionImageCaption": "곡선 y=√(2x) 위의 점 A에서 x축에 내린 수선의 발이 B이고, O를 중심으로 B를 지나는 원의 반지름은 OB, A를 지나는 원의 반지름은 OA이다. 예: a=8일 때 A(8,4), B(8,0)이고 OA−OB=4√5−8이다. b²=2a를 쓰면 f(a)=√(a²+2a)−a=2a/(√(a²+2a)+a)이므로 a가 무한히 커질 때 f(a)는 1에 가까워진다. 따라서 답은 3/2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

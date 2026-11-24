@@ -1,0 +1,134 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PX",
+      "refs": [
+        "P",
+        "X"
+      ]
+    },
+    {
+      "id": "OX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angXOP",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 45,
+        "label": "45",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "f(x)를 정리하면 −1/(sin x+cos x)이고, 미분하면 (cos x−sin x)/(sin x+cos x)²이다. x=π/4에서 sin x=cos x이므로 도함숫값은 0이다. 그림은 45°에서 가로 성분과 세로 성분이 같은 것을 보여 준다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면의 원점에서 (1, 1)까지 그은 선분, (1, 1)에서 (1, 0)까지 내린 선분, 원점에서 (1, 0)까지 그은 선분이 있고, 원점의 각에 45가 표시되어 있다.",
+  "newVisualInformation": [
+    "원점에서 45° 방향으로 그은 선분과 좌표축이 만드는 직각이등변삼각형",
+    "45°에서 sin x와 cos x가 같아 도함숫값이 0이 되는 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\dfrac{-\\csc x}{1+\\cot x}$에 대하여 $\\displaystyle\\lim_{x\\to\\pi/4}\\dfrac{f(x)-f(\\pi/4)}{x-\\pi/4}$의 값은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

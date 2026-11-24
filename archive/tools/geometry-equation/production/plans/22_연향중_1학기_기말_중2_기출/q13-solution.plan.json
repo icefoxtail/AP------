@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "3/2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "3/2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "평행하므로 a3/2,점(b,−1)에서 b−2. 원래 두선의 같은 기울기와 다른절편 보존,합 −1/2. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+2$의 그래프는 일차함수 $y=\\dfrac32x-4$의 그래프와 평행하고 점 $(b,-1)$을 지난다. 이때 $a+b$의 값은? (단, $a,b$는 수) [4점] 보기: ['$\\\\dfrac72$', '$\\\\dfrac12$', '$-\\\\dfrac12$', '$-\\\\dfrac72$', '$-2$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "평행하므로a3/2,점(b,−1)에서b−2. 원래 두선의 같은 기울기와 다른절편 보존,합−1/2. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "평행하므로a3/2,점(b,−1)에서b−2. 원래 두선의 같은 기울기와 다른절편 보존,합−1/2. 정답③."
+  ]
+}

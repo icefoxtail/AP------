@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      8,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/5",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-4/5",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "a1",
+          "x": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "f는 y=log₃x의 그래프이고 g는 y=log₃(x+1)−1의 그래프이다. f 위의 점 P(1, 0)이 g 위의 점 Q(0, −1)로 옮겨지므로 x축으로 −1, y축으로 −1만큼 평행이동한 것이다. 점근선도 x=0에서 x=−1로 옮겨진다. 따라서 a+b=−2이고 답은 ①이다.",
+  "accessibilityDescription": "파란 로그 곡선 f와 주황 로그 곡선 g가 있고, g는 f를 왼쪽 아래로 옮긴 모양이다. f 위의 점 P와 g 위의 점 Q의 좌표가 표시되어 있고 세로 점근선 x=−1이 그려져 있다.",
+  "newVisualInformation": [
+    "y=log₃x와 평행이동한 곡선, 대응하는 점 P(1, 0), Q(0, −1), 새 점근선 x=−1을 함께 보여 a=−1, b=−1을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\log_{3}(x+1)-1$의 그래프는 $y=\\log_{3}x$의 그래프를 $x$축으로 $a$만큼, $y$축으로 $b$만큼 평행이동 한 것이다. $a+b$의 값은? (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

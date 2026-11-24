@@ -1,0 +1,1083 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "제품 A는 한 모서리의 길이가 4 cm인 작은 정사면체 7개로, 제품 B는 한 모서리의 길이가 8 cm인 큰 정사면체 1개로 나타낸 그림이다.",
+  "accessibilityDescription": "왼쪽에는 작은 정사면체 일곱 개가 4개와 3개로 나뉘어 놓여 있고, 그 묶음의 위쪽에 A가 적혀 있다. 오른쪽에는 큰 정사면체 하나가 있고 그 꼭짓점에 B가 적혀 있다. 작은 정사면체의 한 모서리에는 4 cm, 큰 정사면체의 한 모서리에는 8 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "작은 정사면체 7개를 4개와 3개로 나누어 배치하고, 작은 정사면체의 한 모서리 4 cm와 큰 정사면체의 한 모서리 8 cm를 표시하였다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "31",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "23",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "31",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "31",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LP",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LQ",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "34"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "p1",
+    "q1",
+    "r1",
+    "s1",
+    "p2",
+    "q2",
+    "r2",
+    "s2",
+    "p3",
+    "q3",
+    "r3",
+    "s3",
+    "p4",
+    "q4",
+    "r4",
+    "s4",
+    "p5",
+    "q5",
+    "r5",
+    "s5",
+    "p6",
+    "q6",
+    "r6",
+    "p7",
+    "q7",
+    "r7",
+    "s7",
+    "LP",
+    "LQ",
+    "LR"
+  ],
+  "displaySegments": [
+    {
+      "id": "t1pq",
+      "refs": [
+        "p1",
+        "q1"
+      ]
+    },
+    {
+      "id": "t1qr",
+      "refs": [
+        "q1",
+        "r1"
+      ]
+    },
+    {
+      "id": "t1rp",
+      "refs": [
+        "r1",
+        "p1"
+      ]
+    },
+    {
+      "id": "t1ps",
+      "refs": [
+        "p1",
+        "s1"
+      ]
+    },
+    {
+      "id": "t1qs",
+      "refs": [
+        "q1",
+        "s1"
+      ]
+    },
+    {
+      "id": "t1rs",
+      "refs": [
+        "r1",
+        "s1"
+      ]
+    },
+    {
+      "id": "t2pq",
+      "refs": [
+        "p2",
+        "q2"
+      ]
+    },
+    {
+      "id": "t2qr",
+      "refs": [
+        "q2",
+        "r2"
+      ]
+    },
+    {
+      "id": "t2rp",
+      "refs": [
+        "r2",
+        "p2"
+      ]
+    },
+    {
+      "id": "t2ps",
+      "refs": [
+        "p2",
+        "s2"
+      ]
+    },
+    {
+      "id": "t2qs",
+      "refs": [
+        "q2",
+        "s2"
+      ]
+    },
+    {
+      "id": "t2rs",
+      "refs": [
+        "r2",
+        "s2"
+      ]
+    },
+    {
+      "id": "t3pq",
+      "refs": [
+        "p3",
+        "q3"
+      ]
+    },
+    {
+      "id": "t3qr",
+      "refs": [
+        "q3",
+        "r3"
+      ]
+    },
+    {
+      "id": "t3rp",
+      "refs": [
+        "r3",
+        "p3"
+      ]
+    },
+    {
+      "id": "t3ps",
+      "refs": [
+        "p3",
+        "s3"
+      ]
+    },
+    {
+      "id": "t3qs",
+      "refs": [
+        "q3",
+        "s3"
+      ]
+    },
+    {
+      "id": "t3rs",
+      "refs": [
+        "r3",
+        "s3"
+      ]
+    },
+    {
+      "id": "t4pq",
+      "refs": [
+        "p4",
+        "q4"
+      ]
+    },
+    {
+      "id": "t4qr",
+      "refs": [
+        "q4",
+        "r4"
+      ]
+    },
+    {
+      "id": "t4rp",
+      "refs": [
+        "r4",
+        "p4"
+      ]
+    },
+    {
+      "id": "t4ps",
+      "refs": [
+        "p4",
+        "s4"
+      ]
+    },
+    {
+      "id": "t4qs",
+      "refs": [
+        "q4",
+        "s4"
+      ]
+    },
+    {
+      "id": "t4rs",
+      "refs": [
+        "r4",
+        "s4"
+      ]
+    },
+    {
+      "id": "t5pq",
+      "refs": [
+        "p5",
+        "q5"
+      ]
+    },
+    {
+      "id": "t5qr",
+      "refs": [
+        "q5",
+        "r5"
+      ]
+    },
+    {
+      "id": "t5rp",
+      "refs": [
+        "r5",
+        "p5"
+      ]
+    },
+    {
+      "id": "t5ps",
+      "refs": [
+        "p5",
+        "s5"
+      ]
+    },
+    {
+      "id": "t5qs",
+      "refs": [
+        "q5",
+        "s5"
+      ]
+    },
+    {
+      "id": "t5rs",
+      "refs": [
+        "r5",
+        "s5"
+      ]
+    },
+    {
+      "id": "t6pq",
+      "refs": [
+        "p6",
+        "q6"
+      ]
+    },
+    {
+      "id": "t6qr",
+      "refs": [
+        "q6",
+        "r6"
+      ]
+    },
+    {
+      "id": "t6rp",
+      "refs": [
+        "r6",
+        "p6"
+      ]
+    },
+    {
+      "id": "t6pA",
+      "refs": [
+        "p6",
+        "A"
+      ]
+    },
+    {
+      "id": "t6qA",
+      "refs": [
+        "q6",
+        "A"
+      ]
+    },
+    {
+      "id": "t6rA",
+      "refs": [
+        "r6",
+        "A"
+      ]
+    },
+    {
+      "id": "t7pq",
+      "refs": [
+        "p7",
+        "q7"
+      ]
+    },
+    {
+      "id": "t7qr",
+      "refs": [
+        "q7",
+        "r7"
+      ]
+    },
+    {
+      "id": "t7rp",
+      "refs": [
+        "r7",
+        "p7"
+      ]
+    },
+    {
+      "id": "t7ps",
+      "refs": [
+        "p7",
+        "s7"
+      ]
+    },
+    {
+      "id": "t7qs",
+      "refs": [
+        "q7",
+        "s7"
+      ]
+    },
+    {
+      "id": "t7rs",
+      "refs": [
+        "r7",
+        "s7"
+      ]
+    },
+    {
+      "id": "bigpq",
+      "refs": [
+        "LP",
+        "LQ"
+      ]
+    },
+    {
+      "id": "bigqr",
+      "refs": [
+        "LQ",
+        "LR"
+      ]
+    },
+    {
+      "id": "bigrp",
+      "refs": [
+        "LR",
+        "LP"
+      ]
+    },
+    {
+      "id": "bigpB",
+      "refs": [
+        "LP",
+        "B"
+      ]
+    },
+    {
+      "id": "bigqB",
+      "refs": [
+        "LQ",
+        "B"
+      ]
+    },
+    {
+      "id": "bigrB",
+      "refs": [
+        "LR",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenA",
+        "ownerSegment": "t1pq",
+        "text": "4",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenB",
+        "ownerSegment": "bigpq",
+        "text": "8",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "q1",
+    "r1",
+    "s1",
+    "p2",
+    "q2",
+    "r2",
+    "s2",
+    "p3",
+    "q3",
+    "r3",
+    "s3",
+    "p4",
+    "q4",
+    "r4",
+    "s4",
+    "p5",
+    "q5",
+    "r5",
+    "s5",
+    "p6",
+    "q6",
+    "r6",
+    "p7",
+    "q7",
+    "r7",
+    "s7",
+    "LP",
+    "LQ",
+    "LR"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 정사면체 모양의 아이스크림이 $A$, $B$ 두 종류로 판매되고 있다. 제품 $A$에는 한 모서리의 길이가 $4\\text{ cm}$인 작은 아이스크림 $7$개가 들어 있고, 제품 $B$에는 한 모서리의 길이가 $8\\text{ cm}$인 큰 아이스크림 $1$개가 들어 있다. $A$와 $B$의 가격이 같을 때, 더 많은 양의 아이스크림을 사려면 $A$와 $B$ 중 어느 것을 사야 하는지 수학적 논리로 설명하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "8"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "15"
+      }
+    ],
+    "formula": "8*x + 7"
+  },
+  "caption": "두 식이 비례해 같은 직선이 되어야 한다. a4,b14이면 8x−y=−7과 −16x+2y=14로 정확 −2배. 두 선은 모두 y8x+7 하나로 겹쳐 무수한 해. 합 18,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 수 $a, b$에 대하여 연립방정식 $\\begin{cases}2ax-y=1-2a\\\\(12-2b)x+2y=b\\end{cases}$의 해가 무수히 많을 때, $a+b$의 값은? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두 식이 비례해 같은 직선이 되어야 한다. a4,b14이면8x−y=−7과−16x+2y=14로 정확−2배. 두 선은 모두y8x+7 하나로 겹쳐 무수한 해. 합18,정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 식이 비례해 같은 직선이 되어야 한다. a4,b14이면8x−y=−7과−16x+2y=14로 정확−2배. 두 선은 모두y8x+7 하나로 겹쳐 무수한 해. 합18,정답①."
+  ]
+}

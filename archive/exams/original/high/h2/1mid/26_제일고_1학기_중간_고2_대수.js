@@ -952,7 +952,11 @@ window.questionBank = [
     "tags": [
       "H22-A-03-LOGARITHMIC_FUNCTION"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 y축에 대하여 대칭인 두 로그 곡선 가지가 그려져 있고, 수평선 y=3이 두 곡선과 만난다. x축 위의 점 A, B와 수평선 위의 점 C, D를 꼭짓점으로 하는 사다리꼴이 연하게 칠해져 있다.",
+    "solutionImageCaption": "y=f(x)의 그래프가 x축과 만나는 점은 |2x|=1에서 A(-1/2, 0), B(1/2, 0)이고, 직선 y=3과 만나는 점은 |2x|=8에서 C(-4, 3), D(4, 3)이다. 평행한 두 변 AB, CD의 길이가 각각 1, 8이고 높이가 3이므로 사다리꼴 ABCD의 넓이는 (1+8)/2×3=27/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 19,

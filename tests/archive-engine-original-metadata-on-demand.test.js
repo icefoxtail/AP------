@@ -24,9 +24,10 @@ function gateSource() {
   return match[1];
 }
 
-function runGate(search) {
+function runGate(search, window = {}) {
   const written = [];
   const context = vm.createContext({
+    window,
     URLSearchParams,
     location: { search },
     document: { write: (text) => written.push(text) },
@@ -53,6 +54,13 @@ test('registration URLs (submitQr=1 or osqr=1) still load the sidecar before the
     assert.equal(written.length, 1, search);
     assert.ok(written[0].includes(META_SRC) && /<script\s+src=/.test(written[0]), 'a parser-blocking script tag is written, as the static tag was');
   }
+  // a registration window names the one exam it opens, so question-meta.js can read that exam's few KB instead of the whole copy
+  const registration = {};
+  runGate('?data=exams/original/high/h1/1mid/x.js&mode=exam&submitQr=1', registration);
+  assert.equal(registration.__ARCHIVE_METADATA_EXAM__, 'exams/original/high/h1/1mid/x.js');
+  const plain = {};
+  runGate('?data=exams/x.js&mode=exam', plain);
+  assert.equal(plain.__ARCHIVE_METADATA_EXAM__, undefined, 'a plain open names nothing and loads nothing');
   // the exam script waits for the sidecar only when it was requested
   assert.match(html, /if \(window\.__ARCHIVE_METADATA_READY__\) await window\.__ARCHIVE_METADATA_READY__;/);
   assert.ok(html.indexOf('id="engine-metadata-gate"') > 0 && html.indexOf('id="engine-metadata-gate"') < html.indexOf('print-contract.js'), 'the gate sits where the static tag was');

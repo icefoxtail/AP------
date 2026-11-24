@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "600"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "600"
+            },
+            {
+              "kind": "integer",
+              "value": "420"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "420"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rArea",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "label": "77개",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "7명",
+        "labelKind": "TEXT",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "11개",
+        "labelKind": "TEXT",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "학생 수를 n이라 하면 한 사람이 받는 사탕 수는 n+4이므로 n(n+4)=77이다. 이를 정리하면 n²+4n−77=0이고 (n+11)(n−7)=0이다. 학생 수는 자연수이므로 n=7이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로변이 7명, 세로변이 11개인 직사각형이 있고, 그 넓이 자리에 77개가 적혀 있다.",
+  "newVisualInformation": [
+    "직사각형의 가로 7명과 세로 11개",
+    "넓이 77개로 나타낸 곱셈 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 어느 수업 시간에 사탕 77개를 한 모둠의 학생들에게 똑같이 나누어 주려고 한다. 한 사람이 받을 사탕 수가 모둠의 학생 수보다 4만큼 크다고 할 때, 이 모둠의 학생 수는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "1/2",
+      "branch": "NEG",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-2",
+      "intercept": "-1",
+      "tangent": true,
+      "label": "y=-2x-1"
+    },
+    {
+      "id": "g",
+      "slope": "-2",
+      "intercept": "3",
+      "dashed": true,
+      "label": "y=-2x+3"
+    }
+  ],
+  "caption": "포물선 y²=8x에서 p=2이고, 직선 2x+y−3=0은 기울기가 −2인 직선 y=−2x+3(점선)이다. 평행한 접선의 기울기는 −2이므로 접선의 공식 y=mx+p/m에서 y=−2x−1이고 접점은 T(1/2, −2)이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "오른쪽으로 열린 포물선 y²=8x와 아래쪽 접점 T에서 닿는 기울기 −2의 접선, 그와 평행한 점선 직선이 있다. 초점 F와 접점 T의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "접선 y=−2x−1이 주어진 직선 y=−2x+3과 평행하고 접점 T(1/2, −2)에서 포물선에 닿음을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$y^2=8x$에 접하고 $2x+y-3=0$과 평행한 직선의 방정식은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

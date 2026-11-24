@@ -1,0 +1,54 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          null,
+          3,
+          null,
+          2
+        ]
+      }
+    ],
+    "total": 10,
+    "unknownLabels": [
+      {
+        "class": 0,
+        "label": "A"
+      },
+      {
+        "class": 2,
+        "label": "B"
+      }
+    ],
+    "xTitle": "성적(점)",
+    "yTitle": "학생 수(명)"
+  },
+  "caption": "같은 폭의 계급을 도수로 나타낸다. 미상 A,B는 값 없는 점선 윤곽으로 두고 알려진 도수 3,2와 총합 10·평균 6의 조건을 함께 사용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형5] 다음 도수분포표는 수현이네 반 학생 10명의 쪽지시험 성적의 결과를 조사하여 나타낸 것이다. 평균이 6점이라고 할 때, 물음에 답하여라. [5.0점]\n(단, 풀이과정을 자세히 쓰시오.)\n\n<table class=\"exam-table\"><tr><th>국어 성적(점)</th><th>학생 수(명)</th></tr><tr><td>$2^{\\text{이상}} \\sim 4^{\\text{미만}}$</td><td>$A$</td></tr><tr><td>$4 \\sim 6$</td><td>3</td></tr><tr><td>$6 \\sim 8$</td><td>$B$</td></tr><tr><td>$8 \\sim 10$</td><td>2</td></tr><tr><th>합계</th><td>10</td></tr></table>\n\n(1) $A$와 $B$의 값을 각각 구하여라. [2.0점]\n(2) 쪽지시험 성적의 표준편차를 구하여라. [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "A+B=5와 계급값 가중합3A+7B=27에서 A=2,B=3. 분산42/10=21/5, 표준편차√105/5.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 폭의 계급을 도수로 나타낸다. 미상 A,B는 값 없는 점선 윤곽으로 두고 알려진 도수3,2와 총합10·평균6의 조건을 함께 사용한다."
+  ]
+}

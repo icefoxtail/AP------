@@ -62,7 +62,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 여섯 개의 점이 같은 간격으로 놓여 있고, 이웃한 두 점 사이의 짧은 호가 파란색으로 강조되어 있다.",
+    "solutionImageCaption": "원탁에서는 회전하여 같은 배치를 한 가지로 본다. 한 학생의 자리를 고정하면 나머지 다섯 학생이 남은 다섯 자리에 앉는 방법은 5!=120가지이다. 6!을 6으로 나눈 값과 같다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -268,7 +272,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
     "subUnit": "이항정리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 파스칼의 삼각형 수 배열에서 왼쪽 위에서 오른쪽 아래로 내려가는 한 줄이 초록 선으로 이어져 있다.",
+    "solutionImageCaption": "각 항은 C(k,k−2)=C(k,2)이므로 주어진 합은 C(2,2)부터 C(20,2)까지의 합이다. 하키스틱 항등식에 의해 이 합은 C(21,3)=(21×20×19)/6=1330이고, C(21,18)=C(21,3)이므로 같은 값이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -335,7 +343,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 2, 세로 4, 높이 5인 직육면체가 보이고, 세 모서리의 길이가 표시되어 있다.",
+    "solutionImageCaption": "세 모서리의 길이가 2, 4, 5로 모두 다른 직육면체이다. 고정한 상태에서 여섯 면에 서로 다른 여섯 색을 칠하는 경우는 6!, 즉 720가지이다. 자기 자신으로 옮기는 회전은 4가지이므로 720 나누기 4는 180가지이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -401,7 +413,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 이어진 아홉 개의 칸이 있고, 첫째 칸과 넷째 칸은 주황빛으로 칠해져 있으며 그 안에 노라고 적혀 있다. 각 칸의 위쪽에는 1부터 9까지의 번호가 붙어 있고, 둘째와 셋째 칸 아래에는 2칸이라고 적힌 치수선이 있다.",
+    "solutionImageCaption": "노란 공 2개 사이에 공이 정확히 2개 놓이려면 두 노란 공은 세 자리 떨어져 있어야 한다. 두 노란 공의 자리는 1과 4, 2와 5, …, 6과 9의 6가지이다. 노란 공의 자리를 정한 뒤 남은 7자리에 파란 공 3개와 빨간 공 4개를 배열하는 방법은 7! 나누기 (3! 곱하기 4!)이므로 35가지이다. 그러므로 구하는 방법의 수는 6 곱하기 35, 즉 210이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -521,7 +538,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "6과 7은 A와 B에 모두 속하고 8은 세 집합 밖에 있다. 나머지 원소 1부터 5는 각각 A만, B만, C만 중 정확히 한 곳에 속하므로 3⁵=243가지이다. 이 중 C가 공집합이 되는 2⁵=32가지와 A=B가 되는 1가지를 빼면 243−32−1=210이다. 따라서 구하는 값은 210이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

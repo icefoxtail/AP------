@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "sQR",
+        "text": "x"
+      },
+      {
+        "id": "ly",
+        "ownerSegment": "sPQ",
+        "text": "y"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rPQRS",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "rR",
+      "refs": [
+        "Q",
+        "R",
+        "S"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "밑변 BC의 길이가 8이고 높이가 6인 삼각형 ABC 안에 직사각형 PQRS가 내접해 있다. QR=PS=x, PQ=SR=y이다.",
+  "accessibilityDescription": "삼각형 ABC의 밑변 BC 위에 직사각형 PQRS의 아래 변 QR이 놓여 있고, 윗변 PS의 양 끝 P, S가 각각 삼각형의 두 변 AB, AC에 닿아 있다. 밑변에는 8, 직사각형의 가로와 세로에는 x와 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC에 내접한 직사각형 PQRS",
+    "밑변 BC의 길이 8",
+    "직사각형의 가로 x, 세로 y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑변 $BC$의 길이가 $8$이고 높이가 $6$인 삼각형 $ABC$에 내접하는 직사각형 $PQRS$가 있다. 다음은 직사각형 $PQRS$의 넓이의 최댓값을 구하는 과정이다.\n\n$\\overline{QR}=\\overline{PS}=x$, $\\overline{PQ}=\\overline{SR}=y$라 하면 $\\triangle APS \\sim \\triangle ABC$이므로 $x:8 = ([\\text{빈칸}]):6$에서 $y = \\text{(가)}$ 직사각형 $PQRS$의 넓이는 $xy = -\\dfrac{3}{4}(x-\\text{(나)})^2+\\text{(다)}$ 이때 $0<x<8$이므로 $xy$는 $x=\\text{(라)}$일 때 최댓값 $\\text{(다)}$를 가진다.\n\n(가)의 식을 $f(x)$, (나)의 상수를 $a$, (다)의 상수를 $b$라 할 때, $abf(4)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "끝 두 자리",
+        "elements": [
+          "04",
+          "12",
+          "20",
+          "24",
+          "32",
+          "40"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "백 자리 수",
+        "elements": [
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "4의 배수는 끝 두 자리 04,12,20,24,32,40이다. 백의 자리 0 금지와 숫자 재사용 금지로 선택 수 3,2,3,2,2,3의 합 c15. 전체 a4×4×3=48, 짝수 b12+18=30을 더해 93. 같은 수의 공유는 별개 끝자리 경우를 합치는 것이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] $0$, $1$, $2$, $3$, $4$가 각각 하나씩 적힌 $5$장의 카드 중에서 서로 다른 세 장의 카드를 뽑아 만들 수 있는 세 자리 자연수의 개수를 $a$, 세 자리 자연수 중 짝수의 개수를 $b$, 세 자리 자연수 중 $4$의 배수의 개수를 $c$라고 할 때, $a+b+c$의 값을 구하시오. [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

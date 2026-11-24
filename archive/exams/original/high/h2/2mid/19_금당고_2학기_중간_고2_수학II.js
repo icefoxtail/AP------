@@ -68,7 +68,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선과 곡선 위의 점 T에서 접하는 내려가는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "y′=2x+2이므로 점 T(-2,-3)에서의 접선의 기울기는 2(-2)+2=-2이다. 그림의 직선 l은 T에서 곡선에 접하는 접선이고 y=-2x-7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -103,7 +107,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선 위의 두 점 A, B를 잇는 오르는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "x가 1에서 5까지 변할 때 두 점 A(1,-2), B(5,10)를 잇는 직선 l이 할선이고, 평균변화율은 이 할선의 기울기 (10-(-2))/(5-1)=3이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +183,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "위아래로 가까이 놓인 두 제곱근 곡선 사이에 가운데 제곱근 곡선이 끼어 있고 세 곡선이 오른쪽 위로 완만하게 오르는 그래프이다.",
+    "solutionImageCaption": "예: f(x)=√(5x+2)일 때를 그렸다. 곡선 y=√(5x+1)과 y=√(5x+3) 사이에 f가 놓인다. 제곱하면 5x+1<{f(x)}²<5x+3이고 2x+1로 나눈 양 끝 (5x+1)/(2x+1), (5x+3)/(2x+1)이 모두 5/2로 가까워지므로 샌드위치 정리에 의해 극한은 5/2이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -212,7 +224,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 꼭짓점 V가 가로축 위에 닿는 아래로 볼록한 포물선이, 둘째 패널에는 꼭짓점 W가 가로축보다 위에 있는 같은 모양의 포물선이 그려져 있다.",
+    "solutionImageCaption": "분모 f(x)+k=(x-2)²+k-3이 모든 실수에서 0이 아니어야 한다. 왼쪽은 k=3일 때 꼭짓점 V(2,0)이 x축 위에 있어 x=2에서 분모가 0이 되므로 안 된다. 오른쪽은 k=4일 때 꼭짓점 W(2,1)이 x축 위쪽이라 분모가 항상 양수이다. 따라서 k>3이고 정수 k의 최솟값은 4이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -282,7 +298,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 정수마다 한 칸씩 오르는 계단 그래프가, 둘째 패널에는 원점 P에서 V자로 꺾이는 그래프가 그려져 있다.",
+    "solutionImageCaption": "③ [x]는 x=0에서 왼쪽 높이 -1, 오른쪽 높이 0으로 끊어져 연속이 아니다. ④ |x|는 원점 P에서 끊김없이 이어지지만 좌미분계수 -1, 우미분계수 1이 달라 뾰족하게 꺾이므로 연속이지만 미분가능하지 않다. ①은 미분가능, ②는 x=0에서 정의되지 않고, ⑤ |x-1|은 꺾이는 점이 x=1이라 x=0에서는 미분가능하다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -476,7 +496,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "원점 A에서 가로축을 지나 올라간 뒤 점 R에서 가로축을 지나 내려가고 다시 올라 오른쪽의 점 B에서 가로축을 지나는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x(x-2)(5x/2-3)일 때를 그렸다. f(0)=f(2)=0이고 f′(0)=6, f′(2)=4가 모두 양수이다. 0 바로 오른쪽에서 f는 양수이고 2 바로 왼쪽에서 f는 음수이므로 연속성에 의해 구간 안에 적어도 한 근이 더 있다. 그림은 A(0,0), R(6/5,0), B(2,0)에서 x축을 지난다. 따라서 근은 최소 3개이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

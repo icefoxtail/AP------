@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "441/160",
+          "0",
+          "-29/20",
+          "0",
+          "1/10"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4.2,
+      4.2,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-7/2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-3/2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "3/2",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "7/2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-sqrt(29)/2",
+        "y": "-5/2"
+      },
+      {
+        "id": "W",
+        "x": "0",
+        "y": "441/160"
+      },
+      {
+        "id": "X",
+        "x": "sqrt(29)/2",
+        "y": "-5/2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-7/2",
+        "0"
+      ],
+      "B": [
+        "-3/2",
+        "0"
+      ],
+      "C": [
+        "3/2",
+        "0"
+      ],
+      "D": [
+        "7/2",
+        "0"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W",
+        "X"
+      ]
+    }
+  },
+  "caption": "f(-1)f(-2)<0과 f(-3)f(-4)<0에서 사잇값 정리에 의해 (-2,-1)과 (-4,-3)에 각각 근이 있다. f(x)=f(-x)이므로 (1,2)와 (3,4)에도 근이 있어 서로 다른 네 구간에 근이 적어도 하나씩 있다. 예로 f(x)=1/10(x²−9/4)(x²−49/4)는 네 근 ±3/2, ±7/2만 갖는다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "y축에 대칭인 사차함수 그래프가 x축과 네 점 A, B, C, D에서 만나고, x축 아래에 두 개의 같은 깊이 골짜기가 있다.",
+  "newVisualInformation": [
+    "x축과 만나는 네 점 A, B, C, D의 좌표를 표시한다.",
+    "y축 대칭인 사차곡선과 두 극소점, 가운데 극대점을 그린다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $f(x)$에 대하여\n$$f(x)=f(-x), f(-1)f(-2)<0, f(-3)f(-4)<0$$\n이 성립할 때 $f(x)=0$의 실근은 적어도 몇 개인지를 구하면? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

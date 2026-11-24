@@ -397,7 +397,11 @@ window.questionBank = [
       "subConcept": "그래프의 모양",
       "conditionsUsed": "위로 열림(a>0)과 폭이 가장 좁은 그래프.",
       "integrationPatternExplanation": "독립 개념 풀이"
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원점을 꼭짓점으로 하는 위로 볼록한 세 포물선이 있고, 파란 곡선이 가장 좁고 초록 곡선이 가장 넓다.",
+    "solutionImageCaption": "위로 볼록한 그래프는 y=ax²에서 a가 음수인 ②, ③, ⑤이다. 계수의 절댓값이 클수록 폭이 좁아지므로 절댓값이 3인 ② y=-3x²가 폭이 가장 좁다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

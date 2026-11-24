@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "4"
+      }
+    ],
+    "formula": "3*x + 1"
+  },
+  "caption": "절편 1과 (0,1)→(1,4)의 기울기 3을 구별한다. 문제 a=1,b=3이므로 합 4, 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=3x+1$의 그래프의 $y$절편을 $a$, 기울기를 $b$라고 할 때, $a+b$의 값을 고르시오. [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "절편1과 (0,1)→(1,4)의 기울기3을 구별한다. 문제 a=1,b=3이므로 합4, 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절편1과 (0,1)→(1,4)의 기울기3을 구별한다. 문제 a=1,b=3이므로 합4, 정답④."
+  ]
+}

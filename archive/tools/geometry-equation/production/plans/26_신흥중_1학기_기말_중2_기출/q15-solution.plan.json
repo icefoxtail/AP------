@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "18",
+          "-6"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "18"
+      },
+      {
+        "id": "P1",
+        "x": "17/10",
+        "y": "39/5"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "P3",
+        "x": "10",
+        "y": "-42"
+      }
+    ],
+    "formula": "18 - 6*x",
+    "axisScale": {
+      "x": "1",
+      "y": "1/6"
+    }
+  },
+  "caption": "실제 적용 높이는 0≤x≤10km. 지면 18에서 1.7km에서 7.8°C,정답⑤. 이후 양의 높이에서 음수 기온도 가능하며 음수 높이는 그리지 않는다. 가로 높이 km와 세로 기온°C는 다른 양이므로 세로축 1/6배율로 읽으며 좌표 값은 실제 기온 그대로이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지면에서 10 km까지는 높이가 1 km 높아질 때마다 기온이 $6^\\circ\\mathrm{C}$씩 일정하게 낮아진다고 한다. 지면의 기온이 $18^\\circ\\mathrm{C}$일 때, 높이가 1.7 km인 대청봉 정상의 기온은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제 적용 높이는0≤x≤10km. 지면18에서1.7km에서7.8°C,정답⑤. 이후 양의 높이에서 음수 기온도 가능하며 음수 높이는 그리지 않는다. 가로 높이km와 세로 기온°C는 다른 양이므로 세로축1/6배율로 읽으며 좌표 값은 실제 기온 그대로이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 적용 높이는0≤x≤10km. 지면18에서1.7km에서7.8°C,정답⑤. 이후 양의 높이에서 음수 기온도 가능하며 음수 높이는 그리지 않는다. 가로 높이km와 세로 기온°C는 다른 양이므로 세로축1/6배율로 읽으며 좌표 값은 실제 기온 그대로이다."
+  ]
+}

@@ -44,7 +44,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 모양의 탁자 둘레에 여섯 개의 점이 같은 간격으로 놓여 있고, 중심에서 각 점으로 점선이 뻗어 있으며 그 점선마다 1부터 6까지의 번호가 붙어 있다. 한 자리 옆의 파란 호에는 고정, 이웃한 자리 사이의 보라색 호에는 회전이라고 적혀 있다.",
+    "solutionImageCaption": "원탁에서는 회전하여 같은 자리가 되는 배치를 한 가지로 센다. 한 학생의 자리를 고정하면 나머지 5명의 자리를 배열하는 방법만 세면 된다. 이때 경우의 수는 5! = 5×4×3×2×1 = 120이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -90,7 +94,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각뿔의 다섯 옆면이 보이고, 밑면과 뒤쪽 모서리는 점선으로 나타나 있다.",
+    "solutionImageCaption": "7가지 색 중 옆면에 칠할 5가지를 고르는 경우는 21가지이다. 고른 5가지 색을 옆면에 원형으로 배열하는 경우는 (5-1)!가지, 즉 24가지이다. 따라서 21 곱하기 24는 504가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -850,7 +858,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 줄의 수가 위에서 아래로 놓인 삼각형 모양 배열로, 각 줄의 양 끝은 1이고 아래 줄로 갈수록 수가 하나씩 늘어난다. 수 1, 2, 3, 4, 5, 6, 10이 각각 짧은 가로선 위에 놓여 있다.",
+    "solutionImageCaption": "파스칼의 삼각형은 각 줄의 양 끝을 1로 두고 안쪽의 수를 바로 위 두 수의 합으로 만든다. 첫째 줄은 1이고, 둘째 줄은 1과 1, 셋째 줄은 1, 2, 1, 넷째 줄은 1, 3, 3, 1, 다섯째 줄은 1, 4, 6, 4, 1, 여섯째 줄은 1, 5, 10, 10, 5, 1이다. 가운데 수 2는 1과 1의 합, 6은 3과 3의 합, 10은 4와 6의 합처럼 바로 위 두 수를 더해 만든다. 따라서 답은 1; 1, 1; 1, 2, 1; 1, 3, 3, 1; 1, 4, 6, 4, 1; 1, 5, 10, 10, 5, 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

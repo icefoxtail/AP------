@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-4",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "-2"
+      }
+    ],
+    "formula": "-x/2"
+  },
+  "caption": "가로 8 증가에 세로 −4, 따라서 증가량 −4 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프는 $x$의 값이 2만큼 증가할 때 $y$의 값은 1만큼 감소한다. $x$의 값이 $-4$에서 4까지 증가할 때, $y$의 값의 증가량을 고르시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "절편을0으로 둔 대표 예이며 원문의 b를 확정하지 않는다. 가로8 증가에 세로−4, 따라서 증가량−4 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로8 증가에 세로−4, 따라서 증가량−4 정답②."
+  ]
+}

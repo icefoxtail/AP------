@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "angleB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "alpha",
+        "from": "A",
+        "to": "B",
+        "label": "α",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "beta",
+        "from": "B",
+        "to": "C",
+        "label": "β",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "square",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 320
+  },
+  "caption": "직각삼각형 ABC의 두 직각변 AB와 BC의 길이가 각각 알파와 베타이고, 두 변 AB와 BC 위에 두 변이 놓인 정사각형이 내접해 있다.",
+  "accessibilityDescription": "직각삼각형 ABC, 변 AB의 길이 표시 알파, 변 BC의 길이 표시 베타, 삼각형 안의 정사각형이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-9x+6=0$의 두 실근을 $\\alpha$, $\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$에 내접하는 정사각형의 한 변의 길이와 넓이가 두 근인 이차방정식이 $27x^2+mx+n=0$일 때, $|m+n|$의 값은? (단, 정사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "직각삼각형 ABC에서 AB의 길이는 α, BC의 길이는 β이다.",
+    "정사각형의 두 변은 선분 AB와 선분 BC 위에 있다."
+  ],
+  "newVisualInformation": [
+    "유사 문항의 α, β에 맞춘 직각삼각형과 내접 정사각형의 배치를 보여 준다."
+  ]
+}

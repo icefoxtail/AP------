@@ -1,0 +1,50 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "길이 L",
+      "children": [
+        {
+          "label": "n↑분산↓"
+        },
+        {
+          "label": "신뢰↓n↑"
+        },
+        {
+          "label": "α↑길이↑"
+        },
+        {
+          "label": "둘다↑미정"
+        }
+      ]
+    }
+  },
+  "caption": "신뢰구간의 길이는 2zσ/√n이고, 여기서 z는 신뢰도에 대응하는 임계값이며 표본평균의 분산은 σ²/n이다. 표본이 커지면 분산과 길이는 작아지고, 신뢰도를 낮추면서 표본을 키우면 길이는 짧아진다. 표본이 일정할 때 신뢰도를 높이면 길이는 커지지만, 표본과 신뢰도를 함께 높이면 길이의 변화는 정해지지 않는다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $\\alpha\\%$의 신뢰구간은 $a \\le m \\le b$이다. &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [3.8점]<br><br>&lt;보기&gt;<br>ㄱ. 표본의 크기가 커지면 표본평균 $\\overline{X}$의 분산은 작아진다.<br>ㄴ. 신뢰도를 낮추면서 표본의 크기를 크게 하면 신뢰구간의 길이는 짧아진다.<br>ㄷ. $n$의 값이 일정하고 $\\alpha$의 값이 커지면 $b-a$의 값은 커진다.<br>ㄹ. $n$의 값이 커지고 $\\alpha$의 값이 커지면 $b-a$의 값은 커진다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "표준편차가 σ인 정규분포 모집단",
+      "mappedTo": "chart.root.label"
+    },
+    {
+      "id": "c2",
+      "condition": "신뢰도 α%의 신뢰구간 a≤m≤b",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c3",
+      "condition": "표본의 크기 n",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "신뢰구간 길이 L을 중심으로 n과 신뢰도 변화에 따른 네 가지 판단을 가지로 나눈 수형도",
+    "표본이 커지면 분산이 작아지고, 신뢰도를 낮추면서 표본을 키우면 길이가 짧아지는 관계를 표시"
+  ]
+}

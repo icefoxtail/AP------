@@ -1,0 +1,45 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8*sqrt(6)",
+      "-2",
+      "-2*sqrt(6)/3",
+      "1/4"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      7
+    ],
+    "viewport": [
+      -4,
+      7,
+      -10,
+      25
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "g의 극값은 부호를 바꾸는 근에서만 생긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 다음 그림과 같이 주어진 최고차항의 계수가 1인 삼차함수 $f(x)$가 있다.\n함수 $g(x)=x^2 \\int_0^x f(t)dt - \\int_0^x t^2 f(t)dt$가 오직 하나의 극값을 갖도록 하는 실수 $a$ ($a>2$)에 대하여 $a^2$의 최댓값은? [5.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG f의근−2,2,a와양의최고차항확인. g′=2x²Q; 경계 Q=(x−2√6)²(x+4√6/3)/4. a의경계는중간값이고최종a²24는표시하지않음. polynomial의동일제곱근체삼차지원경로사용.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "g의 극값은 부호를 바꾸는 근에서만 생긴다."
+  ]
+}

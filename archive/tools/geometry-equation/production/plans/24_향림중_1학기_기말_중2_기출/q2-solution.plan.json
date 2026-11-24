@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "name": null
+          },
+          {
+            "id": "B",
+            "value": "3",
+            "name": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "④의 해집합 x<3을 첫 행에, 후보 2와 3을 둘째 행에 표시한다. 3은 열린 경계라 제외되고 2는 포함된다. 원래 검사 후보 3을 대입한 1>1은 거짓, 정답 ④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 [ ] 안의 수가 주어진 부등식의 해가 아닌 것은? [3점] 보기: ['$x+3 \\\\le 5$   [$2$]', '$2x-4 \\\\ge 3$   [$5$]', '$3x \\\\ge -2x+9$   [$4$]', '$4-x\\\\gt 2x-5$   [$3$]', '$8-4x\\\\lt 16+2x$   [$-1$]']",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④의해집합x<3을첫행에,후보2와3을둘째행에표시한다. 3은열린경계라제외되고2는포함된다. 원래검사후보3을대입한1>1은거짓,정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "④의해집합x<3을첫행에,후보2와3을둘째행에표시한다. 3은열린경계라제외되고2는포함된다. 원래검사후보3을대입한1>1은거짓,정답④."
+  ]
+}

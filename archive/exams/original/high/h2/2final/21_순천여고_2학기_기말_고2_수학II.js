@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선 y=−k가 삼차곡선과 세 점에서 만나는 높이 범위를 두 극값으로 비교한다.",
+    "solutionImageCaption": "수평선 y=−k가 삼차곡선과 세 점에서 만나는 높이 범위를 두 극값으로 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -356,7 +360,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 5인 가로등과 키 2인 사람이 지면에 서 있고, 사람까지의 거리 1.5t와 사람에서 그림자 끝까지 x-1.5t가 표시되어 있다. 가로등 꼭대기에서 사람 머리를 지나 그림자 끝으로 햇빛 직선이 이어진다.",
+    "solutionImageCaption": "출발 후 t초에 사람까지의 거리는 1.5t이고 그림자 끝까지의 거리는 x이다. 높이 5와 2의 닮음비에서 5:x=2:(x-1.5t)이므로 3x=5 곱하기 1.5t, 즉 x=2.5t이다. 시간에 대해 미분하면 그림자 끝의 속도는 2.5 m/s이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -557,7 +565,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 −4부터 2까지 세 개의 이차곡선 조각이 이어져 주기적으로 반복되는 그래프가 있고, 각 조각의 꼭짓점과 조각이 이어지는 점들이 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=21/16x²−13/8x로 두면 f(0)=0, f(2)=2이고 0부터 2까지의 적분은 1/4이다. 이때 g는 주기 4로 반복되고, −2부터 0까지의 적분은 −1/4+4=15/4이다. 한 주기의 적분은 4이므로 −4부터 2까지의 적분은 4+1/4=17/4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -598,7 +610,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 함수 차 g−f의 그래프를 본다. 왼쪽 교점 바깥에서는 차가 음수이고 두 교점 사이에서는 양수이므로 적분을 부호 있는 넓이로 더한다.",
+    "solutionImageCaption": "두 함수 차 g−f의 그래프를 본다. 왼쪽 교점 바깥에서는 차가 음수이고 두 교점 사이에서는 양수이므로 적분을 부호 있는 넓이로 더한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -681,7 +697,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수 f의 그래프에서 0부터 2까지의 부호 있는 넓이를 읽는다. 이 적분이 F의 해당 점에서 접선 기울기이다.",
+    "solutionImageCaption": "원함수 f의 그래프에서 0부터 2까지의 부호 있는 넓이를 읽는다. 이 적분이 F의 해당 점에서 접선 기울기이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -719,7 +739,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세제곱 곡선이 점 A에서 극댓값 6, 점 B에서 극솟값 2를 갖고, 수평선 y=4가 곡선과 세 점에서 만난다.",
+    "solutionImageCaption": "g(x)=f(x), h(x)=f(x)-6이므로 g(x)+h(x)=2f(x)-6=x³-3x²+6이다. p(x)=x³-3x²+6은 x=0에서 극댓값 6, x=2에서 극솟값 2를 갖는다. 수평선 y=n이 곡선과 서로 다른 세 점에서 만나려면 2<n<6이고, 정수 n은 3, 4, 5이다. 따라서 n의 합은 12이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -874,7 +898,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 좌우 대칭과 세 극점 위치를 확인한다. 계수는 극점 조건으로 결정하며 구하는 함수식과 f(3)은 그림에 쓰지 않는다.",
+    "solutionImageCaption": "주어진 좌우 대칭과 세 극점 위치를 확인한다. 계수는 극점 조건으로 결정하며 구하는 함수식과 f(3)은 그림에 쓰지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -912,6 +940,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 증감표를 만족하는 g의 증가와 감소를 그림으로 확인한다. 적분한 절댓값은 올라간 양과 내려간 양을 더하는 총 변화량이다. 내부 극점의 좌표와 높이는 숨긴다.",
+    "solutionImageCaption": "증감표를 만족하는 g의 증가와 감소를 그림으로 확인한다. 적분한 절댓값은 올라간 양과 내려간 양을 더하는 총 변화량이다. 내부 극점의 좌표와 높이는 숨긴다.",
+    "solutionImageSize": "full"
   }
 ];

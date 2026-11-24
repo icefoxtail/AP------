@@ -1,0 +1,115 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "14",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "14"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "viewport": [
+      -1,
+      16,
+      -1,
+      16
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "14"
+        },
+        {
+          "id": "B",
+          "x": "14",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "curveX": "6"
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "8"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "QP",
+          "from": "Q",
+          "to": "P"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R1",
+          "points": [
+            "O",
+            "P",
+            "Q",
+            "R"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "O": "O"
+  },
+  "caption": "일차함수 y=-x+14의 그래프 위를 점 A에서 점 B까지 움직이는 점 Q와, Q에서 x축, y축에 내린 수선의 발 P, R로 만든 직사각형 OPQR을 그린 그림이다.",
+  "accessibilityDescription": "좌표평면에 기울기 -1인 직선의 선분 AB가 있고, 그 위의 점 Q에서 x축과 y축에 내린 수선으로 직사각형 OPQR이 그려져 있다.",
+  "newVisualInformation": [
+    "일차함수 y=-x+14의 선분 AB",
+    "선분 위의 점 Q",
+    "직사각형 OPQR"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 3] 그림과 같이 점 $Q$는 점 $A$를 출발하여 점 $B$까지 일차함수 $y=-x+14$의 그래프를 따라 움직이고 있다. 점 $Q$에서 $x$축, $y$축에 내린 수선의 발을 각각 $P, R$라고 할 때, $\\square OPQR$의 넓이가 $45$가 되게 하는 점 $P(a, 0)$의 좌표를 모두 구하여라. (단, $0 < a < 14$) [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

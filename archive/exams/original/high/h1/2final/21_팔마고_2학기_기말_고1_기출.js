@@ -62,7 +62,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "위에서부터 첫 근호, 분모의 근호, 마지막 근호가 실수로 정의되는 조건이다. 분모의 끝점은 열린 점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -218,7 +222,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "g는 f의 역함수이다. 두 곡선은 y=x에 대칭이고, 중심이 대칭선 위인 원도 같은 대칭에 보존된다. 따라서 원과 f의 두 교점을 이은 현은 원과 g의 두 교점을 이은 현으로 옮겨진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

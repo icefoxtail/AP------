@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "5",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "11",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2,
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "ownership": "NEAREST"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "y",
+        "ownership": "NEAREST"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "20",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "꼭짓점 B의 각이 직각인 삼각형 ABC에서 점 D가 변 BC 위에 있다. BD=5 cm, DC=11 cm, AC=20 cm이고 AB=x cm, AD=y cm이다.",
+  "accessibilityDescription": "직각삼각형 ABC와 변 BC 위의 점 D가 보인다. BD와 DC의 길이 5 cm, 11 cm, 빗변 AC의 길이 20 cm가 표시되어 있고 AB 옆에 x, AD 옆에 y가 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC와 변 BC 위의 점 D를 보여 준다.",
+    "BD=5 cm, DC=11 cm, AC=20 cm를 보여 준다.",
+    "AB=x cm, AD=y cm를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle B = 90^\\circ$인 직각삼각형 $ABC$의 변 $BC$ 위의 점 $D$에 대하여 $\\overline{BD} = 5\\text{ cm}, \\overline{DC} = 11\\text{ cm}, \\overline{AC} = 20\\text{ cm}$이다. $\\overline{AB} = x\\text{ cm}, \\overline{AD} = y\\text{ cm}$일 때, $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

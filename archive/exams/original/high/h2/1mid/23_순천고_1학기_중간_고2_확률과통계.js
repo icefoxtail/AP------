@@ -484,7 +484,11 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각뿔의 밑면과 다섯 옆면이 보이고, 뒤쪽의 보이지 않는 모서리는 점선으로 나타나 있다.",
+    "solutionImageCaption": "정오각뿔의 밑면은 1개, 옆면은 5개이다. 밑면에 7가지 색 중 하나를 칠하면 남은 6가지 색에서 옆면에 쓸 5가지를 고른다. 옆면은 회전하여 같은 배열을 하나로 보므로 (5-1)!가지로 배열한다. 따라서 7 곱하기 6 곱하기 24는 1008가지이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

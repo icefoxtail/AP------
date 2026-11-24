@@ -1,0 +1,100 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "x(분)",
+        "band": false,
+        "points": [
+          {
+            "id": "P1",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P2",
+            "value": "5",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "A의 y",
+        "band": false,
+        "points": [
+          {
+            "id": "P3",
+            "value": "4",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P4",
+            "value": "7",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "B의 y",
+        "band": false,
+        "points": [
+          {
+            "id": "P5",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P6",
+            "value": "4",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "A, B의 시간과 위치"
+  },
+  "caption": "물체 A는 두 점 (0, 4), (5, 7)을 지나고 물체 B는 두 점 (0, 0), (5, 4)를 지난다. 각 물체의 시간과 위치 값을 수직선 위에 나타내었다.",
+  "accessibilityDescription": "시간 x의 값 0과 5, A의 위치 y의 값 4와 7, B의 위치 y의 값 0과 4가 각각 수직선 위에 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위를 일정한 속력으로 움직이는 두 물체 $A$와 $B$가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 하자. 물체 $A$의 시간-위치 그래프는 두 점 $(0, 4)$, $(5, 7)$을 지나는 직선이고, 물체 $B$의 시간-위치 그래프는 두 점 $(0, 0)$, $(5, 4)$를 지나는 직선일 때, 다음 물음에 답하시오.  \n(1) 물체 $A$에 대하여 $x$와 $y$ 사이의 관계식을 세우시오. (2점)  \n(2) 물체 $B$에 대하여 $x$와 $y$ 사이의 관계식을 세우시오. (2점)  \n(3) 두 물체 $A$와 $B$는 움직이기 시작한 지 몇 분 후에 만나는지 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A는 (0, 4), (5, 7)을 지난다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "B는 (0, 0), (5, 4)를 지난다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 B의 시간에 따른 위치 값을 같은 눈금에서 확인할 수 있다"
+  ]
+}

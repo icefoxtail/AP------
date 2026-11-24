@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4.5,
+      4.5,
+      -55,
+      55
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1/2",
+        "y": "-47/8"
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 11
+      },
+      {
+        "id": "E",
+        "x": -2,
+        "y": 16
+      },
+      {
+        "id": "F",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "E",
+        "F"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "t",
+          "slope": "-45/4",
+          "intercept": "-1/4",
+          "label": "t",
+          "labelAt": "END"
+        }
+      ]
+    }
+  },
+  "caption": "조건 (가)에서 f′(x)=3x²+k이고 평균변화율과 미분계수가 같다는 식을 정리하면 g(x)=−2x이다. 조건 (나)에서 (3x²+k)(12x²+k)=k²이므로 36x⁴+15kx²=0이고, 영이 아닌 두 근의 곱은 5k/12이다. 5k/12=−5에서 k=−12이므로 k/12=−1이고 g(−1)=2이다. 따라서 답은 2이다.",
+  "accessibilityDescription": "삼차함수 f의 그래프가 두 극값 점 E, F를 지나고, 그래프 위의 두 점 A, B를 잇는 직선 t가 그려져 있다. A, B, E, F가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼차함수 f(x)=x³−12x의 그래프",
+    "두 점 A, B를 잇는 직선 t",
+    "극값 점 E, F의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 6번] 삼차함수 $f(x)=x^3+kx$에 대하여 다항함수 $g(x)$가 다음 조건을 만족시킨다.<br><div class=\"note-box\">(가) $a\\ne0$에 대하여 $f'(a)=\\dfrac{f(a)-f(g(a))}{a-g(a)}$이다.<br>(나) 방정식 $f'(x)\\times f'(g(x))=k^2$의 실근 중 $0$이 아닌 두 실근이 존재하며, 곱은 $-5$이다.</div><br>$0$이 아닌 실수 $x$에 대하여 $g(x)\\ne x$일 때, $g\\left(\\dfrac{k}{12}\\right)$의 값을 구하고 그 과정을 서술하시오. [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

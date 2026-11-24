@@ -89,7 +89,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "신뢰도 95%일 때 표준정규분포의 임계값은 1.96이므로 신뢰구간의 길이는 2 × 1.96 × σ/√n = 3.92σ/√n이다. 따라서 σ가 커지면 길이가 길어지고, 표본평균의 기댓값은 모평균과 같으며, 구간 [a, b]의 길이는 b - a이다. 세 학생의 설명이 모두 옳다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -179,7 +183,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "확률의 분모를 9로 맞추면 값 1, 2, 3, 4, 5의 확률은 차례로 1/9, 2/9, 3/9, 2/9, 1/9이다. 각 값에 확률을 곱한 기댓값은 3이고, 평균 3에서 떨어진 거리의 제곱에 확률을 곱해 더하면 분산은 4/3이다. 따라서 모평균과 분산을 곱하면 3×4/3=4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -416,7 +424,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝을 맞춘 두 개의 가로 선분이 위아래로 놓여 있고, 위 선분에는 Z, 아래 선분에는 X=Y라는 이름이 붙어 있다. 위 선분의 길이는 2, 아래 선분의 길이는 4로 표시되어 있어 아래 선분이 두 배로 길다.",
+    "solutionImageCaption": "연속한 50개의 자연수 a, a+1, …, a+49에서 두 위치 i, j를 뽑으면 두 수의 차는 |i−j|이다. 짝수와 홀수는 이웃한 수 사이의 간격이 2이므로 같은 두 위치를 뽑을 때 차가 2|i−j|가 된다. 따라서 E(X)=E(Y)=2E(Z)>E(Z)이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

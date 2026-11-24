@@ -69,7 +69,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3의 오른쪽에서 올라가는 두 로그 곡선 f와 g가 있고, 세로선 x=5와 만나는 두 점 P, Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=log₂(x−3), g는 g(x)=log₂(x+3)의 그래프이다. 두 로그의 진수가 모두 양수이려면 x>3이어야 하므로 그래프는 x>3에서만 본다. x=5에서 f의 값은 1, g의 값은 3이어서 합이 4가 되고, x=−5는 x>3을 만족하지 못해 버린다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -330,7 +334,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 제2사분면 위의 점에서 x축에 점선 수선을 내린 그림이고, 원점에서 그 점까지의 동경과 x축이 이루는 각이 θ로 표시되어 있다.",
+    "solutionImageCaption": "제2사분면에서 cos θ < 0, sin θ > 0이므로 |cos θ − sin θ| = −cos θ + sin θ이고 |cos θ| = −cos θ이다. 이를 대입하면 sin θ = 1/2이다. 그러므로 cos θ = −√(1 − 1/4) = −√3/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -354,10 +362,10 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q10-solution.svg",
-    "solutionImageAlt": "로그함수 y=2log(x+1)+1의 그래프가 점 (0,1)을 지나고 수직점근선 x=−1을 가지는 모습을 그린 그림. 그래프가 제4사분면을 지나지 않아 옳은 명제가 ㄱ, ㄷ임을 보여준다.",
-    "solutionImageCaption": "log_statements",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 로그곡선이 x=-1에 수직점근선을 가지며 오른쪽 위로 증가하고, 점 (0, 1)을 지난다. 그래프는 제1, 2, 3사분면을 지나고 제4사분면에는 들어가지 않는다.",
+    "solutionImageCaption": "x=0을 대입하면 함숫값이 1이므로 그래프는 점 (0, 1)을 지나고, 진수 조건 x+1>0에서 점근선은 x=-1이다. 그래프는 제4사분면을 지나지 않는다. 정의역이 x≠-1인 로그 (x+1)²와는 정의역이 달라 ㄹ은 옳지 않으므로 옳은 것은 ㄱ, ㄷ이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y=2\\log(x+1)+1$에 대한 설명으로 옳은 것만을 <보기>\\n에서 있는대로 모두 고른 것은? [4점]\\n<보기>\\nㄱ. 그래프는 점 $(0, 1)$을 지난다.\\nㄴ. 그래프의 점근선은 직선 $y=1$이다.\\nㄷ. 그래프는 제 $4$사분면을 지나지 않는다.\\nㄹ. 그래프는 함수 $y=\\log(x+1)^2$를 $y$축의 방향으로 $1$만큼\\n    평행이동 한 것이다.",
     "choices": [
@@ -443,7 +451,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위 제2사분면에 점 P가 있고 원점에서 P로 향하는 동경이 있다. 각 θ와 한 바퀴 더 돈 각 4θ가 같은 동경에서 끝나도록 표시되어 있다.",
+    "solutionImageCaption": "두 동경이 일치하면 4θ−θ=2nπ이므로 θ=2nπ/3이고, π/2<θ<π에서 n=1이어서 θ=2π/3(120°)이다. 이때 4θ=8π/3(480°)는 한 바퀴(360°)를 더 돈 뒤 같은 동경 OP로 온다. θ=(2/3)π이므로 p=3, q=2이고 p−q=1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -801,7 +813,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: t가 0보다 크고 4 이하인 구간에서 아래로 볼록한 포물선이 그려져 있고, 꼭짓점 V와 오른쪽 끝점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=2ˣ으로 두면 x≤2에서 0<t≤4이고 y=t²−2t−8=(t−1)²−9이다. 그래프는 꼭짓점 V(1, −9)에서 최소이고, 구간 끝점 B(4, 0)에서 최대이다. t=1이면 x=0, t=4이면 x=2이므로 a=2, b=0, M=0, m=−9이다. 따라서 답은 a=2, b=0, M=0, m=−9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

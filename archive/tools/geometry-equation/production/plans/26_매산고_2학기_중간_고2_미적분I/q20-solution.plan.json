@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/8",
+          "-1/8",
+          "1/8"
+        ]
+      }
+    ],
+    "domain": [
+      "-1/2",
+      "3/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "v"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "3/8"
+        }
+      ],
+      "lines": [
+        {
+          "id": "tangent",
+          "slope": "1/8",
+          "intercept": "0",
+          "label": "v=x/8",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "a=−1을 얻은 뒤 세로 단위를 8로 나눈 v=f(x)/8의 일부와 원래 P(3,3)을 같은 비율로 옮긴 점을 표시했다. 세 접선 중 t=0인 한 경우만 그렸으며 원래 접선 y=x는 이 좌표에서 v=x/8이다. 직선이 곡선과 다시 만나는 점은 이 접선의 접점이 아니다. 일반 접점 t에서는 3=f′(t)(3−t)+f(t)를 세우고, 그 방정식의 세 근의 합을 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2번] 어떤 정수 $a$에 대하여 함수 $f(x)=x^3+ax^2+x+2a+2$가 역함수를 가지며, 그 역함수를 $g(x)$라 하자. 이때, 두 곡선 $y=f(x)$와 $y=g(x)$의 서로 다른 교점의 개수는 $2$이다. 점 $P(3,\\,3)$을 지나며 곡선 $y=f(x)$에 접하는 서로 다른 세 접선의 접점의 $x$좌표의 합을 구하고, 그 과정을 서술하시오. [7점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "derived",
+      "condition": "a²≤3 및 f(x)=x 서로 다른근2개로 a=−1. f′(0)=1,f(0)=0이므로 t0접선y=x가P3,3을통과한다. x1에서는f′=2이므로y=x와다시만나도접점이아니다. 전체세접선을임의축척으로겹치지않고정의이해를위한한경우만보인다.",
+      "mappedTo": "curve and tangent"
+    },
+    {
+      "id": "domain",
+      "condition": "요청 표시구간은 [−1/2,3/2]이며 공식 프레임은 P까지 필요한 곡선을 확장한다. 원래 정의역은 전체 실수이다. v=y/8이므로 곡선 계수·직선 기울기·점 P의 세로 좌표를 모두 정확1/8로 변환했고 접함과 x좌표는 보존한다. P는 곡선 위 점이 아니라 외부 점으로 overlays에 둔다.",
+      "mappedTo": "domain"
+    }
+  ],
+  "newVisualInformation": [
+    "a=−1을 얻은 뒤 세로 단위를8로 나눈 v=f(x)/8의 일부와 원래 P(3,3)을 같은 비율로 옮긴 점을 표시했다. 세 접선 중 t=0인 한 경우만 그렸으며 원래 접선 y=x는 이 좌표에서 v=x/8이다. 직선이 곡선과 다시 만나는 점은 이 접선의 접점이 아니다. 일반 접점 t에서는 3=f′(t)(3−t)+f(t)를 세우고, 그 방정식의 세 근의 합을 구한다."
+  ]
+}

@@ -139,7 +139,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 줄짜리 표 모양 그림으로 각 줄에 보기 ㄱ, ㄴ, ㄷ의 내용과 판정이 적혀 있고 마지막 줄에 정리한 결과가 적혀 있다.",
+    "solutionImageCaption": "ㄱ은 배반사건이면 P(A∪B)=P(A)+P(B)일 뿐 합이 1이라는 보장이 없으므로 거짓이다. 예를 들어 A={1}, B={2}이면 P(A∪B)=1/3이다. ㄴ은 확률의 기본 성질로 참이고, ㄷ은 P(A|B)+P(A의 여사건|B)=1이 항상 성립하므로 독립 조건이 없어도 참이다. 따라서 옳은 것은 ㄴ, ㄷ이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -611,7 +616,11 @@ window.questionBank = [
     ],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "곡선과 직선이 서로 다른 두 점에서 만나려면 x²+(a−1)x+(b−1)=0의 판별식 (a−1)²−4(b−1)>0이어야 한다. 6×6 표에서 이 조건을 만족하는 칸을 칠했다. a별로 0, 1, 1, 3, 4, 6칸이므로 모두 15칸이다. 전체 36칸 중 확률은 15/36=5/12이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -756,7 +765,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 B가 A 안에 포함되고 겹침이 색칠되어 있으며, 오른쪽은 두 집합이 겹쳐 합집합이 전체를 덮고 겹침이 색칠되어 있다.",
+    "solutionImageCaption": "P(A∩B)는 P(A)=5/8, P(B)=1/2 중 작은 쪽을 넘지 못해 최대 1/2이고 이는 B가 A에 포함될 때(왼쪽 그림)이다. P(A∪B)≤1에서 P(A∩B)≥5/8+1/2−1=1/8이고 이는 A∪B가 전체일 때(오른쪽 그림)이다. P(A|B)=P(A∩B)/P(B)이므로 M=(1/2)/(1/2)=1, m=(1/8)/(1/2)=1/4이다. 따라서 M+m=5/4이고 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,

@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-1/2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1/4"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "-3/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "순환소수 2/3,4/3으로 바꾸고 x+2y3,x−4y12로 정리한다. 교점(6,−3/2)에서 xy−9. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $0.\\dot{6}x+1.\\dot{3}y=\\dfrac{1}{6}x-\\dfrac{2}{3}y=2$를 만족시키는 $x$, $y$에 대하여 $xy$의 값을 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -160,7 +160,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 단위원 위에 α 동경과 β 동경이 있고, α는 제1사분면, β는 제2사분면에 있다. 두 동경의 끝에서 x축으로 내린 점선과 두 끝 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "반지름 1인 단위원에서 α는 제1사분면, β는 제2사분면의 각이다. sin α=√3/3에서 cos α=√6/3이고, cos β=−1/3에서 sin β=2√2/3이다. 따라서 cos(α−β)=cos α cos β+sin α sin β=−√6/9+2√6/9=√6/9이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -292,7 +296,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기 3/5인 직선과 기울기 −3인 직선이 원점 가까운 한 점에서 만나고, 두 직선 사이의 예각이 θ로 표시되어 있다.",
+    "solutionImageCaption": "두 직선 3x−5y−1=0과 3x+y=0을 좌표평면에 그린다. 두 기울기는 3/5과 −3이고, 두 직선이 이루는 예각 θ에 대하여 tan θ=9/2이다. 따라서 4sec²θ=4(1+81/4)=85이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -325,7 +333,12 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
     "subUnit": "지수함수와 로그함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 가지인 포물선 y=x²−1과 수평 기준선 y=−1, 두 점 A와 B가 보인다.",
+    "solutionImageCaption": "x=0에서 연속이려면 왼쪽 극한이 f(0)=−1과 같아야 한다. 유한한 극한을 위해 분자가 0이 되어야 하므로 ln2−ln a=0에서 a=2이다. 로그의 기본 극한을 쓰면 왼쪽 극한은 1/(2b)이므로 1/(2b)=−1에서 b=−1/2이다. 따라서 a+b=3/2이므로 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -358,7 +371,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 원점에서 (1, 1)까지 그은 선분, (1, 1)에서 (1, 0)까지 내린 선분, 원점에서 (1, 0)까지 그은 선분이 있고, 원점의 각에 45가 표시되어 있다.",
+    "solutionImageCaption": "f(x)를 정리하면 −1/(sin x+cos x)이고, 미분하면 (cos x−sin x)/(sin x+cos x)²이다. x=π/4에서 sin x=cos x이므로 도함숫값은 0이다. 그림은 45°에서 가로 성분과 세로 성분이 같은 것을 보여 준다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -492,7 +509,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 점 B를 중심으로 회전한 정사각형과 원래 변 BC의 파선이 보이고, 점 C′에서 x축에 내린 수선의 발 H와 직각 표시가 있다.",
+    "solutionImageCaption": "점 B를 중심으로 정사각형을 시계방향으로 θ만큼 회전한 그림에서 θ=π/3인 경우를 그렸다. 이때 C′=(2+√3/2, 1/2), H=(2+√3/2, 0)이므로 OH=2+√3/2, C′H=1/2이고 f(θ)=1/2(2+sinθ)cosθ이다. f′(π/3)=−√3/2−1/4=−(1+2√3)/4이므로 a=1, b=2, c=4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -552,7 +573,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-02-SERIES",
     "subUnit": "급수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 0부터 1까지 사인 곡선 한 봉우리가 솟아 있고, 원점에서 오른쪽 위로 뻗는 직선 y=x/3이 원점과 봉우리 오른쪽의 한 점에서 곡선과 만난다. 두 교점은 주황색 점으로 표시되어 있다.",
+    "solutionImageCaption": "예로 n=3일 때, 0≤x≤1에서는 |sin πx|=sin πx이므로 이 구간의 곡선을 sin πx로 그렸고 직선 y=x/3은 원점과 그 오른쪽 한 점에서 만난다. 같은 모양이 되풀이되는 나머지 두 구간에서는 봉우리의 높이 1이 x/3보다 크므로 각 구간에 두 점씩 만나 양의 쪽 교점은 1+2·2=5개이고, 원점 1개와 음의 쪽 5개를 더해 a₃=11이다. 일반적으로 aₙ=4n−1이고 36/(aₙaₙ₊₁)=9(1/(4n−1)−1/(4n+3))의 망원합은 3이다. 따라서 답은 3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -580,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O, 반지름 1인 사분원 위에 점 P가 있고, P에서 x축에 내린 수선의 발 H와 P의 접선이 x축과 만나는 점 Q가 표시되어 있다. Q를 중심으로 A와 R을 지나는 원이 있고, 삼각형 OHP와 부채꼴 QRA가 각각 옅은 회색과 진한 회색으로 칠해져 있다.",
+    "solutionImageCaption": "예: θ=60°일 때를 그린다. P=(cosθ, sinθ)=(1/2, √3/2), H=(1/2, 0)이므로 f(θ)=1/2·OH·PH=1/2 sinθcosθ이다. 이 점의 접선이 x축과 만나는 점은 Q=(2, 0)이고 QA=1, ∠AQR=30°=π/2−θ이므로 g(θ)=1/2·1²·(π/2−θ)이다. θ→0+에서 주어진 극한은 √π이다. 따라서 답은 √π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -636,7 +665,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-02-SERIES",
     "subUnit": "급수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_미적분/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 중심을 가진 반지름 4, 2, 1인 세 원이 있고, 가장 큰 원과 둘째 원에 각각 내접하는 정삼각형이 겹쳐 그려져 있다. 큰 삼각형과 둘째 원 사이의 영역이 S₁, 작은 삼각형과 가장 작은 원 사이의 영역이 S₂로 표시되어 있다.",
+    "solutionImageCaption": "(1) 원의 반지름은 4, 2, 1, …이므로 둘레의 합은 8π+4π+2π+…=16π이다. (2) S₁=12√3−4π, S₂=3√3−π이고 각 단계의 넓이는 앞 단계의 1/4이므로 S₁+S₂+…=(12√3−4π)/(1−1/4)=(48√3−16π)/3이다. 따라서 답은 (1) 16π, (2) (48√3−16π)/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

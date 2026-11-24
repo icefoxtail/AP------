@@ -203,7 +203,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 단계로 갈라지는 나뭇가지 그림이 있고, 각 가지에 앞과 뒤가 적혀 있으며, 네 끝에 앞앞, 앞뒤, 뒤앞, 뒤뒤와 각각 1/4가 보인다.",
+    "solutionImageCaption": "두 동전이 모두 앞면일 확률은 1/2 곱하기 1/2, 즉 1/4이다. 따라서 30번 반복할 때 모두 앞면이 나온 횟수는 이항분포 B(30,1/4)를 따른다. 보기의 B(30,1/2)는 틀리다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -244,7 +248,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0, 1, 2, 3의 각 값 위에 확률질량을 나타내는 점이 찍혀 있고, 그 점들을 지나는 증가하는 직선이 그려져 있다.",
+    "solutionImageCaption": "확률질량의 합이 1이므로 (0+a)+(1+a)+(2+a)+(3+a)=6+4a=10에서 a=1이다. 따라서 P(X=2)=(2+1)/10=3/10이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -289,7 +297,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (0, 1/6)에서 올라가 x=2에서 꼭짓점을 이루고 x=5에서 0으로 내려오는 꺾은선 모양의 확률밀도함수 그래프이며 x=1부터 x=4까지 아래쪽이 칠해져 있다.",
+    "solutionImageCaption": "그래프는 (0, 1/6), (2, k), (5, 0)을 지나는 꺾은선이고 전체 넓이 (1/6+k)+3k/2=1에서 k=1/3이다. 그림은 이 값으로 그렸다. P(1≤X≤4)는 전체에서 양 끝 [0, 1]과 [4, 5]를 뺀 것이다. [0, 1]의 넓이는 5/24, [4, 5]의 넓이는 1/18이므로 1−5/24−1/18=53/72이다. p=72, q=53이므로 p−q=19이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -371,7 +383,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 주사위가 비스듬히 보이고, 보이지 않는 모서리는 점선으로 표시되어 있다.",
+    "solutionImageCaption": "주사위의 여섯 면 중 1이 3개, 2가 2개, 3이 1개이다. 확률은 각각 3/6, 2/6, 1/6이고, 기댓값은 5/3, 제곱의 기댓값은 10/3이다. 분산은 10/3 빼기 25/9, 즉 5/9이고, 3X-9의 분산은 9 곱하기 5/9, 즉 5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -494,7 +510,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "정규분포 N(10, 25)의 평균은 10, 표준편차는 5이다. 5의 표준화 값은 -1이므로 5 이하일 확률은 0.5에서 0.3413을 뺀 값이다. 계산하면 0.1587이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -535,7 +555,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "안경을 쓴 학생 수 X는 평균 40, 표준편차 6인 정규분포로 근사한다. 37과 52를 표준화하면 각각 -0.5와 2이다. 표에서 두 구간의 넓이를 더하면 0.1915+0.4772=0.6687이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -576,7 +600,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "상위 4%이면 기준 점수 이상의 오른쪽 꼬리가 0.04이다. P(0≤Z≤1.76)=0.46이므로 꼬리는 0.5−0.46=0.04이고 경계는 z=1.76이다. 점수는 55+5×1.76=63.8점이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -617,7 +645,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 10에서 6부터 k까지가, 오른쪽 곡선은 평균 24에서 k부터 27까지가 칠해져 있다.",
+    "solutionImageCaption": "X의 구간 [6, k]는 표준화하면 [−1, (k−10)/4]이고 Y의 구간 [k, 27]은 [(k−24)/3, 1]이다. 두 확률이 같으려면 두 구간이 0에 대해 대칭이어야 하므로 (k−10)/4=−(k−24)/3이다. 이를 풀면 k=18이고 두 구간은 [−1, 2]와 [−2, 1]이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -660,7 +692,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 1 이상 2 미만의 구간과 4 초과 6 이하의 구간이 칠해져 있다.",
+    "solutionImageCaption": "판별식 D=4(a−2)(a−4)이다. D>0인 a의 범위는 수직선에 표시한 1≤a<2와 4<a≤6이다. 주사위 눈에서 이에 해당하는 것은 a=1, 5, 6의 3개로 실근이 2개이다. D=0인 a=2, 4는 실근 1개, D<0인 a=3은 실근 0개이다. P(X=2)=3/6, P(X=1)=2/6, P(X=0)=1/6이므로 E(X)=4/3이고 E(3X+2)=6이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -783,7 +819,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "200명 중 62명이 통과하므로 통과 비율은 62/200=0.31이다. P(0≤Z≤0.5)=0.19이므로 오른쪽 꼬리 0.5−0.19=0.31인 경계는 z=0.5이다. 최저 통과 점수는 64+18×0.5=73점이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -824,7 +864,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "두 곡선의 표준편차가 2로 같으므로 f(14)=g(23)이면 14와 23은 각 평균에서 거리가 같다. 14는 X의 평균 12에서 2만큼 떨어져 있으므로 |23−m|=2에서 m=21 또는 25이다. 조건 (가)에서 m=25이면 P(Y≥23)>1/2이라 어긋나므로 m=21이다. P(Y≤25)=P(Z≤(25−21)/2)=P(Z≤2)이므로 a=2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -931,7 +975,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "복숭아 무게 X는 평균 260, 표준편차 30인 정규분포를 따른다. 252와 268이 평균 260에서 같은 거리만큼 떨어져 있으므로 두 꼬리 확률의 합이 1이 된다. 오른쪽 꼬리 넓이 0.0668은 z=1.5에 대응하므로 (a-260)/30=1.5이고 a=305이다. 따라서 답은 305이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -966,6 +1014,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:337fe9e14e346d8959d39db467603afec1a50874aea44b0ddd59d38a861ce69d",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "f(m+a)+f(m+2a)+…의 합은 X가 m+a 이상일 확률과 같고 그 값이 0.1587이다. 표준화하면 P(Z≥a/2)=0.1587이고 표에서 a/2=1이므로 a=2이다. 길이 2인 구간은 평균을 중심으로 [m-1,m+1]일 때 확률이 최대이며 그 값은 2×0.1915=0.3830이다. 따라서 답은 a=2, 최댓값 0.3830이다.",
+    "solutionImageSize": "full"
   }
 ];

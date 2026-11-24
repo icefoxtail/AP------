@@ -65,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "④의 해집합 x<3을 첫 행에, 후보 2와 3을 둘째 행에 표시한다. 3은 열린 경계라 제외되고 2는 포함된다. 원래 검사 후보 3을 대입한 1>1은 거짓, 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -198,7 +202,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "원식을 정리하면 (3−a)x≤16. 왼쪽 방향 해집합이므로 3−a>0, 경계 16/(3−a)=4에서 a−1. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -270,7 +278,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "a<2b에서 2(a−2b)<0. 이를 나누면 x<2로 뒤집힌다. x2는 양변 같아 엄격 부등식에서 제외. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -305,7 +317,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "시간 t(h)를 U=5t/π, 거리 d(km)를 D=d/π로 바꾼 정확 비교다. 반대 방향 이동 거리합 6U가 트랙 둘레 6에 닿는 U1에서 처음 만난다. 각 거리 2π/4π, 실제 시간 π/5시간=12π분. 표시 끝 5/4는 원문 상한이 아니며 첫 만남을 찾는 비교창이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -337,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 오른쪽 위로 향하는 직선이 그려져 있고, 직선 위에 네 개의 점, 직선 위쪽에 한 점이 표시되어 있다. 직선 위의 두 점은 서로 가까이 붙어 있다.",
+    "solutionImageCaption": "3x−7y=15를 정리하면 y=(3/7)x−15/7인 직선이다. 이 직선 위의 점 A(−2,−3)와 D(5,0), 그리고 (7/3,−8/7), (5/2,−15/14)를 표시하면 네 점이 모두 해가 된다. 각 순서쌍을 3x−7y에 대입하면 ②만 −15이고 나머지는 모두 15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -370,7 +390,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "④의 두 식 5x+8y4,2x−3y14가 실제 (4,−2)에서 만난다. 다른 보기는 적어도 한 식 불일치. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -402,7 +426,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "대입 y=x−3으로 x6,y3. 두선공통점이해,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -435,7 +463,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y=x+10을 둘째 식에 대입해 공통점 (−4,6). a+b2, 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -468,7 +500,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 음수인 파란 직선과 기울기가 더 완만한 음수인 주황 직선이 제1사분면의 한 점에서 만나고, 그 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "0.3x+0.15y=0.45의 양변에 20을 곱하면 2x+y=3, 1/4x+3/8y=7/8의 양변에 8을 곱하면 2x+3y=7이다. 두 식을 빼면 2y=4이므로 y=2이고, 2x+2=3에서 x=1/2이다. 두 직선의 교점은 (1/2, 2)이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -502,7 +538,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로민호의패배 l,세로승리 w. w=2l+2와총 10회/계단 18에서 w−l4의교점(l,w)=(2,6). 비김 2회이고유일변화 −6+6+2=2. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -535,7 +575,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진해(4,2)를대입한계수평면:8a+11b−8,a+2b4. 교점(a,b)=(−12,8),정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -568,7 +612,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "각표현이 12와같다는뜻이므로 12x+5y14,2x−3y10. 공통점(2,−2),합 0. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -601,7 +649,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "④ 원래 절편 1을 아래 3 옮기면 −2여야 한다. 세 번째 선은 잘못 제시된 절편 4로 위 3 이동이라 비교한다. 올바른 식 y5x−2, 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -666,7 +718,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f4=11로 a2. 실제점(−1,1),(3,9)에서 2f−1+f3=2+9=11. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -693,7 +749,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "−4x≤17을 음수로 나눠 x≥−17/4. 첫 행 실수 해집합과 둘째 행 정수 후보 −5/−4를 대조한다. −5는 제외되고 −4가 포함되므로 최소 정수 −4. 전체 해집합을 한 점으로 축소하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -720,7 +780,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "계수 없는 두 식 6x+y4,3x−2y7의 공통해 (1,−2)를 먼저 찾는다. 다른 두 식에 대입하면 a−b4,b3로 a7. 정답 a7,b3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -748,7 +812,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 2점슛 x, 세로 3점슛 y. 총 20골과 2x+3y53의 공통점 (7,13). 실제 골수는 비음수 정수, 직선은 조건의 보조 연장. 정답 7골/13골.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

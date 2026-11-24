@@ -96,7 +96,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=12x+16과 곡선 y=x³이 점 P(-2,-8)에서 기울기가 같게 이어지는 그래프이다.",
+    "solutionImageCaption": "x=-2에서 미분가능하면 함숫값이 이어지고(-2a+b=(-2)³=-8) 좌우 미분계수가 같다(a=3·(-2)²=12). 따라서 a=12, b=16이고 왼쪽 직선 y=12x+16은 x=-2에서 곡선 y=x³의 접선이다. 점 P(-2,-8)에서 두 조각이 이어진다. a와 b의 차는 |12-16|=4이다 (정답 ④).",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -126,7 +130,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 P의 그래프가 x=−1에서 음수, x=0에서 양수이고 두 점 A, B 사이에서 x축을 한 번 지난다. 그래프의 두 극값 점 E, F가 표시되어 있다.",
+    "solutionImageCaption": "P(x)=3x³−x²−x+2라 하면 P(−1)=−1, P(0)=2로 부호가 다르고 P는 연속이다. 따라서 중간값 정리에 의해 (−1, 0)에 실근이 적어도 하나 있고, 실근이 오직 하나이므로 그 실근은 이 구간에 있다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -216,7 +224,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 꺾이는 점 V(1,1)을 가진 절댓값 함수의 그래프와 점 (2,0)을 지나는 세 직선을 함께 나타낸 그래프이다.",
+    "solutionImageCaption": "직선 y=kx-2k는 항상 점 P(2,0)을 지난다. 교점의 개수가 달라지는 경계의 기울기는 k=-2(왼쪽 가지와 평행, y=-2x+4), k=-1(꼭짓점 V(1,1)을 지남, y=-x+2), k=2(오른쪽 가지와 평행, y=2x-4)이다. 개수는 k≤-2에서 1, -2<k<-1에서 2, k=-1에서 1, -1<k≤2에서 0, k>2에서 1이라 g(k)의 불연속점은 -2, -1, 2이고 곱은 4이다 (정답 ①).",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -380,7 +392,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 극솟값 0, 극댓값 1을 갖는 삼차함수 h의 그래프와 그 위의 점 Q를 나타낸 그래프이다.",
+    "solutionImageCaption": "점 (2,k)를 지나는 접선의 접점의 x좌표 t는 k=-2t³+9t²-12t+5(=h(t))를 만족한다. h는 t=1에서 극솟값 0, t=2에서 극댓값 1이므로 0<k<1이면 y=k와 세 점에서 만나 서로 다른 접선이 세 개 생긴다. 세 근이 등비수열이면 가운데 근 β=4/3이고 k=h(4/3)=7/27이다 (정답 ③). 그림에는 점 Q(4/3, 7/27)이 이 가운데 근에 해당한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -496,7 +512,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 이어지며 꺾이는 두 포물선 조각으로 된 함수의 그래프이다.",
+    "solutionImageCaption": "x=1에서 왼쪽 극한과 f(1)이 같아야 하므로 1+2a+b=-3, 즉 2a+b=-4이다. 왼쪽 미분계수는 2·1-4=-2, 오른쪽은 2+2a이고 g(1)=(2+2a)-(-2)=4+2a이다. x≠1에서는 g=0이므로 치역은 {0, 4+2a}이고 합이 6이면 a=1, b=-6이다. 그래프는 a=1, b=-6인 f이며 P(1,-3)에서 꺾인다. ab=-6.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -592,7 +612,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프가 두 극값 점 E, F를 지나고, 그래프 위의 두 점 A, B를 잇는 직선 t가 그려져 있다. A, B, E, F가 표시되어 있다.",
+    "solutionImageCaption": "조건 (가)에서 f′(x)=3x²+k이고 평균변화율과 미분계수가 같다는 식을 정리하면 g(x)=−2x이다. 조건 (나)에서 (3x²+k)(12x²+k)=k²이므로 36x⁴+15kx²=0이고, 영이 아닌 두 근의 곱은 5k/12이다. 5k/12=−5에서 k=−12이므로 k/12=−1이고 g(−1)=2이다. 따라서 답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];
 })();

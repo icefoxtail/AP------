@@ -40,7 +40,11 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_CIRCULAR_PERMUTATION",
     "primaryMethod": "서로 다른 네 색을 사분면에 배치하고 정사각형의 90도 회전으로 일치하는 배치를 한 경우로 계산",
-    "decisiveStep": "네 색이 모두 달라 비항등 회전으로 자기 자신과 일치하지 않으므로 4!/4=3!=6"
+    "decisiveStep": "네 색이 모두 달라 비항등 회전으로 자기 자신과 일치하지 않으므로 4!/4=3!=6",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형이 가운데에서 십자로 나뉘어 네 영역이 되고 각 영역이 다른 색과 번호로 표시되어 있다.",
+    "solutionImageCaption": "서로 다른 네 색을 네 영역에 모두 쓰는 배열은 4!가지이다. 회전하여 같은 배열은 네 가지씩 한 묶음이 되므로 서로 다른 칠하기는 4!을 4로 나눈 6가지이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -82,7 +86,11 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_CIRCULAR_PERMUTATION",
     "primaryMethod": "정삼각형 탁자의 세 방향 회전 중복을 제거한 전체 배치에서 남자 두 명이 같은 모서리인 배치를 제외",
-    "decisiveStep": "전체 6!/3=240, 같은 모서리 3·2!·4!/3=48이므로 다른 모서리 192"
+    "decisiveStep": "전체 6!/3=240, 같은 모서리 3·2!·4!/3=48이므로 다른 모서리 192",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 탁자와 그 세 변 바깥에 두 개씩 놓인 좌석 점 여섯 개가 보이고, 왼쪽 위 좌석과 아래쪽 좌석에 M1, M2, 나머지 좌석에 W1부터 W4가 적혀 있다. 두 변이 각각 파랑과 주황으로 강조되어 있다.",
+    "solutionImageCaption": "정삼각형 탁자는 120도씩 회전해도 같은 배치이므로 6명을 앉히는 전체 경우는 6!/3=240가지이다. 남자 2명이 같은 모서리에 앉는 경우는 3×2!×4!/3=48가지이므로, 남자 2명이 다른 모서리에 앉는 경우는 240−48=192가지이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -643,7 +651,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A∪B=U이므로 U의 각 원소는 A−B, A∩B, B−A 세 영역 중 하나에만 들어가 3⁵=243가지이다. 그중 A∩B=∅인 경우는 모든 원소가 A−B 또는 B−A에만 있는 경우이고 2⁵=32가지이다. 조건 (나)는 색칠한 A∩B가 비어 있지 않은 것이므로 243−32=211이다. 따라서 답은 211이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -847,7 +859,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 정사각형인 사각뿔이 보이고 꼭짓점 P에서 밑면의 네 꼭짓점 A, B, C, D로 모서리가 이어진다. 밑면과 한 옆면에 짧은 이름표가 붙어 있다.",
+    "solutionImageCaption": "밑면이 정사각형인 사각뿔의 5개 면에 6가지 색 중 5가지를 칠한다. 6가지 색 중 5가지를 고르는 경우는 6가지, 밑면에 칠할 색은 5가지, 옆면 네 개를 돌려 같은 것으로 보는 배열은 6가지이므로 6×5×6=180이다. 따라서 답은 180이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4/5",
+          "2/5"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-4/5"
+      },
+      {
+        "id": "P2",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "2*x/5 - 4/5"
+  },
+  "caption": "원래식을정리하면 y2x/5−4/5. x절편점(2,0)에서 a2,원문점(−3,−2)에서 b−2. ab−4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $6x-15y-12=0$의 그래프의 $x$절편을 $a$라 하고, 점 $(-3,b)$를 지날 때, $ab$의 값을 구하고 그 풀이 과정을 서술하시오. [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

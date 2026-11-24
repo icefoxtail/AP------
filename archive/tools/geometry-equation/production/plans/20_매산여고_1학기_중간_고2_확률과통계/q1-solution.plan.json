@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "D",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcOne",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "한 칸 회전",
+        "labelKind": "TEXT",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "일렬 배열에서는 첫 자리가 달라지면 다른 배열이므로 ABCD와 BCDA는 다르다. 원형 배열에서는 한 자리씩 회전한 BCDA를 ABCD와 같은 것으로 본다. 서로 다른 n개를 원형으로 배열하면 회전하여 같아지는 경우가 n가지씩 생기므로 회전 중복을 n으로 나눈다. 따라서 세 진술 ㄱ, ㄴ, ㄷ이 모두 옳다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "원 위에 A, B, C, D가 차례로 놓여 있고, A와 B 사이에 한 칸 회전을 나타내는 파란 호가 있다.",
+  "newVisualInformation": [
+    "네 사람의 원형 배치 A, B, C, D 표시",
+    "한 자리 회전을 파란 호와 글자로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사물놀이 패에서 꽹과리, 징, 장구, 북을 치는 사람을 각각 $\\mathrm{A, B, C, D}$라고 할 때, 다음 <보 기>에서 옳은 것을 모두 고르면? [3.3점]\n\n$$\\begin{gathered} \\text{<보 기>} \\\\ \\text{ㄱ. 일렬로 서서 공연할 때, } \\mathrm{ABCD}\\text{와 } \\mathrm{BCDA}\\text{는 서로 다른 배열이다.} \\\\ \\text{ㄴ. 원형으로 서서 공연할 때, } \\mathrm{ABCD}\\text{와 } \\mathrm{BCDA}\\text{는 서로 같은 배열이다.} \\\\ \\text{ㄷ. 서로 다른 } n\\text{개를 원형으로 배열하는 원순열의 수는 회전하여 같아지는 경우가 } n\\text{가지씩 있다.} \\end{gathered}$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

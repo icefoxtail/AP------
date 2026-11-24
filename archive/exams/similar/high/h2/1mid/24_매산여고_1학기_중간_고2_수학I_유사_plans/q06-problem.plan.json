@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-6x+5",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1",
+        "intercept": "-1",
+        "intersectionX": [
+          "1",
+          "6"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "q1",
+        "x": "1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "q2",
+        "x": "3",
+        "y": "-4",
+        "marker": "NONE"
+      },
+      {
+        "id": "q3",
+        "x": "6",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수 y=f(x)의 그래프와 일차함수 y=g(x)의 그래프가 두 점에서 만나고, 두 곡선의 위아래 위치가 드러나도록 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선 y=f(x)와 오른쪽 위로 향하는 직선 y=g(x)가 두 점에서 교차하는 모습이 보인다.",
+  "newVisualInformation": [
+    "이차함수 y=f(x)와 일차함수 y=g(x)의 그래프, 두 교점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x) = (x - 3)^2 - 4$와 일차함수 $g(x) = x - 1$에 대하여 부등식  \n$$\\left(\\dfrac{3}{4}\\right)^{f(x)} > \\left(\\dfrac{3}{4}\\right)^{g(x)}$$  \n를 만족시키는 모든 자연수 $x$의 값의 합을 구하면? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

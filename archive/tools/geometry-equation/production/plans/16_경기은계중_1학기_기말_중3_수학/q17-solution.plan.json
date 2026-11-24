@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=-2x^2/3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3/5",
+          "y": "9/25",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "3/5",
+          "y": "9/25",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "3/5",
+          "y": "-6/25",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+  "accessibilityDescription": "B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 그림과 같이 두 점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\mathrm{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\mathrm{C}$라고 하자. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 2 : 1$일 때, 점 $\\mathrm{A}$의 좌표는?<br>(단, 점 $\\mathrm{B}$는 제1사분면 위에 있다.) [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "B가로좌표t>0이면AB=2t,BC=5t²/3. 비2:1에서t=3/5,A=(−3/5,9/25).",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다."
+  ]
+}

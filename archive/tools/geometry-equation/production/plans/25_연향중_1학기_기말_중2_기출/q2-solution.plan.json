@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16/3",
+          "-2/3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "5",
+        "y": "2"
+      },
+      {
+        "id": "P2",
+        "x": "8",
+        "y": "0"
+      }
+    ],
+    "formula": "16/3 - 2*x/3"
+  },
+  "caption": "음이 아닌 정수해만 표시한다. (8,0),(5,2),(2,4) 세 점이며 y0도 허용한다. 선 전체가 정수해 집합이라는 뜻은 아니다. 정답 3개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "관식이가 퀴즈 대회에 참가하여 2점짜리 문제 $x$개와 3점짜리 문제 $y$개를 맞추어 얻은 점수는 16점이었다. 이를 만족시키는 음이 아닌 정수 $x$와 $y$의 순서쌍 $(x, y)$의 개수는? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

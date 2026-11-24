@@ -1,0 +1,345 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "8",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-8",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "equalGroup": 1,
+        "ring": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aCAB",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "ring": 2,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 2,
+        "equalGroup": 2,
+        "ring": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "arcs": 2,
+        "equalGroup": 2,
+        "ring": 2,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AB",
+          "BC",
+          "CD",
+          "DA"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "BO",
+          "OD"
+        ]
+      },
+      {
+        "id": "eq2",
+        "count": 3,
+        "segments": [
+          "AO",
+          "OC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vBO",
+        "ownerSegment": "BO",
+        "text": "x=8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vOD",
+        "ownerSegment": "OD",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "마름모의 두 대각선은 서로를 수직이등분하므로 BO=OD=8에서 x=8이다. 대각선 AC가 각 A를 이등분하므로 각 A=120°이고, 마름모는 평행사변형이므로 각 B=60°이다. 대각선 BD가 각 B를 이등분하므로 y=30°이다. 따라서 x+y=8+30=38이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "마름모 ABCD와 두 대각선 AC, BD가 그려져 있고, 두 대각선이 만나는 점 O에 직각 표시가 있다. 점 A와 점 B의 한 각에 각각 60과 30이 적혀 있고, 선분 BO에는 x=8, 선분 OD에는 8이 적혀 있다.",
+  "newVisualInformation": [
+    "마름모 ABCD와 두 대각선 AC, BD",
+    "두 대각선의 교점 O와 직각 표시",
+    "각 A의 60 표시와 같은 각의 호 표시",
+    "각 B의 30 표시와 같은 각의 호 표시",
+    "BO=x=8, OD=8 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같은 마름모 $ABCD$에서 $x+y$의 값을 구하여라. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

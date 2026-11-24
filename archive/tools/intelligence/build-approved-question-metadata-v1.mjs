@@ -362,7 +362,35 @@ function runtimeSource(report) {
   const readSidecar = () => fetchSidecar('data/question-metadata-browser-v1.json')
     .then(data => { if (!data || data.browserProjection !== 'archive2-question-metadata-browser-v1' || !Array.isArray(data.records)) throw new Error('browser metadata copy is not usable'); return data; })
     .catch(() => fetchSidecar('data/question_metadata.json'));
-  window.__ARCHIVE_METADATA_READY__ = readSidecar()
+  // The original-exam window opened for a class registration (archive/engine.html) names the one exam it opens in
+  // window.__ARCHIVE_METADATA_EXAM__ and needs the metadata of that exam only: the release ships it as a file of a few KB next to the catalog shards
+  // (tools/lib/build-archive2-exam-meta-part.mjs: the records of the browser copy for that exam, same fields, same values, same order), so the lookup
+  // tables below come out the same. The file must belong to the release of the shard index fetched with it and to this exam; anything else (no
+  // file, another release, no crypto, a slow answer) reads the whole copy as before. Pages that do not name an exam are unchanged.
+  const EXAM_META_TIMEOUT_MS = 8000;
+  const fetchExamMetaJson = (name, init) => {
+    const controller = typeof AbortController === 'function' ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), EXAM_META_TIMEOUT_MS) : null;
+    return fetch(new URL(name, document.baseURI), { ...init, ...(controller ? { signal: controller.signal } : {}) })
+      .then(response => { if (!response.ok) throw new Error('exam metadata HTTP ' + response.status); return response.json(); })
+      .finally(() => { if (timer) clearTimeout(timer); });
+  };
+  const readExamMeta = async () => {
+    const exam = sourceFile(window.__ARCHIVE_METADATA_EXAM__ || '');
+    if (!exam || !window.crypto?.subtle || typeof TextEncoder !== 'function') return null;
+    const digest = new Uint8Array(await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(exam)));
+    const key = Array.from(digest.slice(0, 16), byte => byte.toString(16).padStart(2, '0')).join('');
+    const [index, doc] = await Promise.all([
+      fetchExamMetaJson('data/archive2-catalog-shards-v1/index.json', { cache: 'no-cache' }),
+      fetchExamMetaJson('data/archive2-catalog-shards-v1/exam-meta/' + key + '.json'),
+    ]);
+    if (index?.examMeta?.schemaVersion !== 'archive2-exam-meta-v1' || doc?.schemaVersion !== 'archive2-exam-meta-v1' ||
+        !index.indexVersion || doc.indexVersion !== index.indexVersion || doc.sourceArchiveFile !== exam || !Array.isArray(doc.records))
+      throw new Error('exam metadata does not belong to this release or exam');
+    return { browserProjection: 'archive2-question-metadata-browser-v1', examMetadata: exam, records: doc.records };
+  };
+  const readMetadata = () => readExamMeta().catch(() => null).then(data => data || readSidecar());
+  window.__ARCHIVE_METADATA_READY__ = readMetadata()
     .then(data => {
       state.data = data;
       for (const record of data.records || []) {

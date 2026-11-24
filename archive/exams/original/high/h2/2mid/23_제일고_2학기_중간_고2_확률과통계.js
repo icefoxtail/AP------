@@ -131,7 +131,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표준정규분포는 0을 중심으로 대칭이므로 P(−1≤Z≤0)=P(0≤Z≤1)=0.34이다. P(0≤Z≤0.5)=0.19이므로 P(−1≤Z≤0.5)=0.34+0.19=0.53이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -388,7 +392,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 36에서 28부터 32까지, 오른쪽 곡선은 평균 62에서 k부터 72까지가 칠해져 있다.",
+    "solutionImageCaption": "X는 N(36, 4²)이므로 28은 z=−2, 32는 z=−1이다. P(28≤X≤32)=P(−2≤Z≤−1)=P(1≤Z≤2)이다. Y는 N(62, 5²)이고 72는 z=2이다. 같은 넓이이려면 k의 표준점수가 1이어야 하므로 (k−62)/5=1에서 k=67이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -422,7 +430,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "키 171cm의 표준점수는 (171−175)/4=−1이다. 171cm 이하의 비율은 z=−1의 왼쪽 꼬리이고 0.5−0.34=0.16이다. 학생 수는 500×0.16=80명이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -456,7 +468,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "360mL의 표준점수는 (360−350)/5=2이다. 360mL 이상일 확률은 z=2의 오른쪽 꼬리이고 0.5−0.48=0.02이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -488,7 +504,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(40, 4²)이다. F(x+20)−F(x)는 구간 [x, x+20]의 확률이고 길이가 일정할 때 구간의 중점이 평균과 같을 때 가장 크다. 중점 x+10이 평균 40과 같으면 x=30이다. 그림은 그때의 구간 [30, 50]이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -522,7 +542,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "성공 횟수는 B(225, 4/5)이므로 평균 180, 분산 36, 표준편차 6이고 N(180, 6²)으로 근사한다. 192는 z=(192−180)/6=2이므로 192발 이상은 오른쪽 꼬리이다. 확률은 0.5−0.48=0.02이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -589,7 +613,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "문학 도서 수는 B(2100, 0.3)이므로 평균 630, 분산 441, 표준편차 21이고 N(630, 21²)으로 근사한다. 651과 672의 표준점수는 1과 2이므로 구하는 확률은 z=1부터 2까지의 넓이이다. 0.48−0.34=0.14이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -687,7 +715,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "그림의 m은 E(X)=n/3이다. σ(X)=√(2n)/3이다. P(|Z|≤2)=2×0.48=0.96이므로 P(|X−n/3|≤8)≥0.96이려면 중심에서 ±8이 ±2σ 이상이어야 한다. 즉 8/σ≥2이고 σ≤4에서 2n≤144이므로 n≤72이다. 그림은 ±8이 ±2σ에 대응하는 경계의 경우이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -769,6 +801,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "표준정규분포 곡선 두 개가 나란히 있다. 왼쪽 곡선은 z=−2의 왼쪽과 z=2의 오른쪽 꼬리가, 오른쪽 곡선은 168에 해당하는 z=1.5의 오른쪽 꼬리가 칠해져 있다.",
+    "solutionImageCaption": "제품 길이는 N(58, 4²)이고 50은 z=−2, 66은 z=2이므로 불량일 확률은 양쪽 꼬리 0.02+0.02=0.04이다. 불량품 개수는 B(3750, 0.04)이며 평균 150, 표준편차 12이므로 N(150, 12²)으로 근사한다. 168은 z=1.5이므로 P(Y≥168)=0.5−0.43=0.07이다. 따라서 답은 0.07이다.",
+    "solutionImageSize": "full"
   }
 ];

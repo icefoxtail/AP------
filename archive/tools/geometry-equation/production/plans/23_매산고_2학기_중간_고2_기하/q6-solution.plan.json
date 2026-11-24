@@ -1,0 +1,74 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "16",
+      "bSquared": "9",
+      "transverse": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "100",
+      "bSquared": "75",
+      "major": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "CENTER",
+      "curve": "c2"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "c1"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "c1"
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1,
+      "curve": "c2"
+    }
+  ],
+  "segments": [
+    {
+      "id": "s1",
+      "from": "O",
+      "to": "V",
+      "label": "10"
+    }
+  ],
+  "caption": "쌍곡선 x²/16−y²/9=1에서 c²=16+9=25이므로 초점은 F(5,0), F′(−5,0)이다. 장축의 길이가 20인 타원은 a=10, 즉 a²=100이고 초점이 같으므로 a²−b²=25에서 b²=100−25=75이다. 따라서 a²+b²=100+75=175이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$과 초점이 일치하는 타원 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$의 장축 길이가 $20$일 때, $a^2+b^2$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "쌍곡선과 타원이 공유하는 두 초점 F, F′",
+    "타원의 중심 O에서 오른쪽 꼭짓점 V까지의 거리 10",
+    "타원의 b²=75와 a²+b²=175"
+  ],
+  "accessibilityDescription": "하나의 좌표평면에 중심이 원점인 쌍곡선과 타원이 겹쳐 그려져 있고, x축 위에 두 곡선의 공통 초점 F와 F′, 타원의 중심 O, 타원의 오른쪽 꼭짓점 V가 표시되어 있으며 O와 V 사이에 길이 10이 적혀 있다."
+}

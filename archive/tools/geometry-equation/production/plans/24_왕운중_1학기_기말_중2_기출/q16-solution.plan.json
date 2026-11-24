@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5/3",
+          "2/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-5/3"
+      },
+      {
+        "id": "P1",
+        "x": "5/2",
+        "y": "0"
+      }
+    ],
+    "formula": "2*x/3 - 5/3"
+  },
+  "caption": "두 식이 같은 직선이려면 둘째가 첫째의 −1/2배. a−2,b−5의 곱 10. 무수한 공통점을 한 직선으로 표시, 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 상수 $a$, $b$에 대하여 연립방정식 $\\begin{cases}4x-6y=10\\\\ax+3y=b\\end{cases}$의 해가 무수히 많을 때, $ab$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두식이같은직선이려면둘째가첫째의−1/2배. a−2,b−5의곱10. 무수한공통점을한직선으로표시,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두식이같은직선이려면둘째가첫째의−1/2배. a−2,b−5의곱10. 무수한공통점을한직선으로표시,정답③."
+  ]
+}

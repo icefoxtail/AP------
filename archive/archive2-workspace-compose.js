@@ -14,7 +14,7 @@
   let
     $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
     advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
-    composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
+    composeUnitLabel, context, displayTemplate, drafts, ensureMetaIndex, esc,
     filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
     isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options, ownHistoryContext,
     quickPreset, quickProduct, quickState, rebuildUnissued, reconcileFinderSchool, reconcileUnifiedFilters,
@@ -27,7 +27,7 @@
     ({
       $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
       advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
-      composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
+      composeUnitLabel, context, displayTemplate, drafts, ensureMetaIndex, esc,
       filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
       isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options,
       ownHistoryContext, quickPreset, quickProduct, quickState, rebuildUnissued, reconcileFinderSchool,
@@ -138,7 +138,8 @@
     state.undo = [];
     state.rows = [];
     state.ackWarnings = false;
-    state.indexVersion = state.catalog.indexVersion;
+    // 시험지 목록만 받은 첫 진입(catalog 없음)에서도 문항 선택·선택 비우기가 여기를 지난다. 버전은 자료가 오면 채워진다.
+    if (state.catalog) state.indexVersion = state.catalog.indexVersion;
     scheduleSave();
   }
   V.scopeRenderCache = null;
@@ -1521,7 +1522,7 @@
       `<option value="${esc(option.value)}"${current === option.value ? " selected" : ""}>${esc(option.label)} · ${esc(C.metaFacetStatusText(option))}</option>`).join("")}`;
   function renderDerivedComposition() {
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
-    return `<section class="compose-composition cz-derived"><h2 class="cz-derived-title">원본 저장 시험지의 고정된 범위</h2><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
+    return `<section class="compose-composition cz-derived"><h2 class="cz-derived-title">원본 저장 시험지의 고정된 범위</h2><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">문항 내용은 항상 지금의 최신 내용으로 열립니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
   }
   function composeStepLabel(row) {
     const label = row.label || "선택한 전체 범위";
@@ -1806,8 +1807,6 @@
           for (const question of paper.questions || [])
             if (question?.questionUid) reusable.set(question.questionUid, question);
     const prepared = [];
-    const derivedBaseQuestions = await ensureDerivedBaseQuestions();
-    const derivedBaseByUid = new Map((derivedBaseQuestions || []).map(question => [question.questionUid, question]));
     for (let i = 0; i < records.length; i += 50) {
       const index = i / 50,
         saved = Parts.receipt(state.receipts, index);
@@ -1838,27 +1837,8 @@
         continue;
       }
       const partRecords = records.slice(i, i + 50);
-      const part = derivedBaseQuestions
-        ? await (window.Archive2ErrorDetail?.allOrReport || ((promises) => Promise.all(promises)))(partRecords.map(async record => {
-          try {
-            const frozen = derivedBaseByUid.get(record.questionUid);
-            if (frozen) {
-              const sourceFile = String(frozen.sourceArchiveFile || frozen.sourceFile || frozen._sourceFile || "");
-              if (!frozen.sourceFingerprint || String(frozen.sourceFingerprint) !== String(record.sourceFingerprint) ||
-                  sourceFile !== String(record.sourceFile || "") || Number(frozen.sourceOrdinal) !== Number(record.sourceOrdinal))
-                throw new Error("원본 문항이 바뀌어, 저장 당시 문항을 현재 문항으로 바꾸지 않았습니다. 저장한 시험지는 그대로 출력할 수 있습니다.");
-              return structuredClone(frozen);
-            }
-            return (await Source.restore([record], state.catalog))[0];
-          } catch (error) {
-            // Say which exam / question was behind it (Source.restore already did for its own errors).
-            throw window.Archive2ErrorDetail ? window.Archive2ErrorDetail.annotate(error, {
-              file: record.sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: record.questionUid,
-              code: "QUESTION_CONTENT_CHANGED",
-            }) : error;
-          }
-        }))
-        : await restoreChanged(partRecords, reusable);
+      // 수정본도 다른 문제지와 같이 지금의 원본에서 복원한다: 저장 뒤 고쳐진 문항은 고쳐진 내용으로 열린다(2026-11-24 원장 결정).
+      const part = await restoreChanged(partRecords, reusable);
       const partSignature = JSON.stringify([
           part.map((q) => q.questionUid),
           state.header,

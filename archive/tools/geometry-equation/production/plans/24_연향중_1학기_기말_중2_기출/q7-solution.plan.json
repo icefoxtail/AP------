@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "80",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "50"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "100",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "50"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "20",
+          "y": "60",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 빠른 시간, 세로 느린 시간(분). 합 80분과 거리 조건 2x+y100의 공통점 (20,60). 빠른 거리 200×20=4000m, 정답 ②. 조건선 연장과 실제 비음수 시간을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "민정이가 시각 장애인과 함께 하는 $10\\text{ km}$ 단축 마라톤 대회에 참가했다. 처음에는 분속 $200\\text{ m}$로 일정하게 달렸지만 도중에 체력이 떨어져 분속 $100\\text{ m}$로 일정하게 달려서 1시간 20분 만에 완주하였다. 이때, 민정이가 분속 $200\\text{ m}$로 달린 거리를 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로빠른시간,세로느린시간(분). 합80분과거리조건2x+y100의공통점(20,60). 빠른거리200×20=4000m,정답②. 조건선연장과실제비음수시간을구별한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로빠른시간,세로느린시간(분). 합80분과거리조건2x+y100의공통점(20,60). 빠른거리200×20=4000m,정답②. 조건선연장과실제비음수시간을구별한다."
+  ]
+}

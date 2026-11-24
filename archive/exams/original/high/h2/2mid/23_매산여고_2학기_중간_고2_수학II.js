@@ -574,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -4와 1 사이에서 -2를 뺀 두 열린구간이 굵게 표시되고, 그 구간 안의 정수 자리에 눈금이 찍혀 있다.",
+    "solutionImageCaption": "f′(x)=6(x-2)(x+a)이므로 도함수의 두 근은 x=2와 x=-a이다. 두 근이 모두 열린구간 (-1,4)에 있어야 하므로 -1<-a<4에서 -4<a<1이고, 두 근이 서로 달라야 하므로 a≠-2이다. 이 범위의 정수는 -3, -1, 0의 3개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -645,7 +649,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "x=0에서 끊어지는 두 포물선 조각의 그래프이며 두 꼭짓점 P, Q와 x=0의 점 A, B가 표시되어 있다.",
+    "solutionImageCaption": "f는 x<0에서 (x+3)²(꼭짓점 P(-3,0)), x≥0에서 (x-1)²(꼭짓점 Q(1,0))이고 x=0에서 좌극한 9, 함숫값 1(점 B)로 끊어진다. |f(x)-5|=t는 f(x)=5±t로 나누어 수평선 y=5+t, y=5-t와의 교점 수를 센다. 교점 수 g(t)는 t=0에서 좌극한 0, 함숫값 3, 우극한 6이고 t=5에서 좌극한 6, 함숫값 4, 우극한 2라서 불연속점은 2개이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -792,6 +800,10 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 꺾이는 직선과 포물선으로 이어진 f의 그래프로 꺾임점 P, x축과의 교점 A, B, 극소점 V, 수평선과의 교점 C와 점 D가 표시되어 있다.",
+    "solutionImageCaption": "x>0의 이차함수를 q(x)=ax²+bx+6이라 하면 q(x)=6의 0이 아닌 해 r=-b/a에서 최댓값을 주는 끝점이 바뀐다. 미분 불가능점이 0, 1, 3이려면 r=5이고 b=-5a이며 g(4)=q(4)=0에서 a=3/2, b=-15/2이다. 그림은 이때의 f로 P(0,6)에서 꺾이고 x축과 A(1,0), B(4,0)에서 만나며 수평선 y=6과 C(5,6)에서 만난다. f(2)=-3(점 D)이다.",
+    "solutionImageSize": "full"
   }
 ];

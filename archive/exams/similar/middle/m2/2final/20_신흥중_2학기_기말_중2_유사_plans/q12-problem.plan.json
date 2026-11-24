@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2472",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7608",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12472",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7608",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 72,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 108,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      },
+      {
+        "id": "p2",
+        "count": 2,
+        "segments": [
+          "sBC",
+          "sDA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "평행사변형에서 이웃한 두 내각의 크기의 비가 3 대 2이고, 두 내각을 각각 x, y로 나타낸 그림이다.",
+  "accessibilityDescription": "평행사변형의 오른쪽 위 꼭짓점 각에 x, 오른쪽 아래 꼭짓점 각에 y가 적혀 있고, 마주 보는 변끼리 같은 방향의 평행 표시가 되어 있다.",
+  "newVisualInformation": [
+    "평행사변형의 두 각 x와 y, 두 쌍의 평행 표시가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 두 이웃하는 내각 $\\angle DAB$와 $\\angle ADC$의 크기의 비가 $3 : 2$일 때, $\\angle y - \\angle x$의 값은? (단, $x = \\angle ADC$, $y = \\angle BCD$이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

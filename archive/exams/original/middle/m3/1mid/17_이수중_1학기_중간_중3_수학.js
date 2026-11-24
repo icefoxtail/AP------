@@ -17,7 +17,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -5와 5 두 점이 원점을 사이에 두고 표시되어 있다.",
+    "solutionImageCaption": "25의 제곱근은 5와 -5이고 √25=5, -√25=-5도 25의 제곱근이다. 음수인 -25는 제곱해서 -25가 되는 실수가 없으므로 √-25는 25의 제곱근이 아니다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -36,7 +40,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -3과 3 두 점이 원점을 사이에 두고 표시되어 있다.",
+    "solutionImageCaption": "x²=9를 만족하는 x, ±3, 제곱하여 9가 되는 수, (-3)²=9의 제곱근은 모두 3과 -3 두 값이다. 그러나 √9는 양의 제곱근인 3 하나뿐이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -55,7 +63,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -25, 0, 25 세 점이 표시되어 있다.",
+    "solutionImageCaption": "-5²은 -(5²)=-25이고 (-5)²=25이므로 두 값은 서로 다르다. 음수 -25의 제곱근은 실수로 존재하지 않으므로 -5²의 제곱근이 -5라는 ③은 옳지 않다. √((-5)²)=5이고 5의 제곱근은 ±√5이므로 ⑤는 옳다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -74,7 +86,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝을 맞춘 세 개의 가로 선분이 위에서부터 놓여 있고, 각 선분 곁에 √(1/2), √(1/3), 1/2이 적혀 있다. 맨 위 선분이 가장 길고 맨 아래 선분이 가장 짧다.",
+    "solutionImageCaption": "1/2이 1/3보다 크므로 √(1/2)이 √(1/3)보다 크다. 따라서 √(1/2)이 √(1/3)보다 작다는 ③은 옳지 않다. ①은 11이 13보다 작아 √11이 √13보다 작으므로 옳고, ②와 ⑤는 √(1/3)이 1/2보다 커서 옳으며, ④는 3이 √7보다 커서 옳다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -150,7 +166,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 개의 가로 선분이 위에서부터 놓여 있고, 각 선분에 세 제곱근을 간단히 한 식과 마지막 계산 결과가 붙어 있다. 선분은 주황색, 파란색, 초록색, 보라색으로 구분되어 있다.",
+    "solutionImageCaption": "a<0이므로 −3a>0, a−3<0, 3a<0이다. 따라서 √((−3a)²)=−3a, √((a−3)²)=3−a, √(9a²)=−3a이다. 주어진 식은 −3a−(3−a)+(−3a)=−5a−3으로 간단해진다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -245,7 +265,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로 기준선에서 세 개의 화살표가 각각 오른쪽, 왼쪽, 오른쪽으로 뻗고, 그 아래에 결과 화살표가 있다. 화살표 옆에 3√6, 4√6, 9√6이 적혀 있다.",
+    "solutionImageCaption": "√54=3√6, 2√24=4√6, √486=9√6이다. 부호를 붙여 3√6−4√6+9√6=8√6을 계산한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -283,7 +307,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 수직선에는 2와 3 사이의 점 √8이, 아래쪽 수직선에는 11과 12 사이의 점 √128이 놓여 있다. 위쪽 수직선에서 2부터 √8까지의 거리를 화살표와 a로 표시한다.",
+    "solutionImageCaption": "√8=2√2이므로 정수 부분은 2이고 소수부분은 a=√8−2=2√2−2이다. √128=8√2=4(2√2)=4a+8이고 정수 부분이 11이므로 소수부분은 4a+8−11=4a−3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -302,7 +330,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가운데 점에서 다섯 갈래 선이 뻗어 나가고, 각 선 위에 a², b, a+b, a+b, a+b가 차례로 적힌 인수 나무 모양 그림이다.",
+    "solutionImageCaption": "a²b(a+b)³은 a², b, (a+b)를 세 번 곱한 식이다. 따라서 인수로는 a², b, a+b, (a+b)², b(a+b)² 등이 들어가지만 b²은 들어가지 않는다. ⑤ b²(a+b)³은 b를 두 번 포함하므로 주어진 식의 인수가 아니다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

@@ -1,0 +1,41 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "showUniverse": false,
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "딸기 맛일 사건을 A, 오렌지 맛일 사건을 B라 하면 두 사건은 동시에 일어나지 않으므로 서로 배반사건이다. 확률의 덧셈정리에 의해 구하는 확률은 1/3+1/5이다. 15로 통분하면 5/15+3/15=8/15이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 여러 가지 맛의 사탕이 들어 있는 상자에서 사탕 한 개를 임의로 꺼낼 때, 꺼낸 사탕이 딸기 맛일 확률은 $\\dfrac{1}{3}$, 오렌지 맛일 확률은 $\\dfrac{1}{5}$이라고 한다. 이 상자에서 사탕 한 개를 임의로 꺼낼 때, 그 사탕이 딸기 맛 또는 오렌지 맛일 확률은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "딸기 맛일 확률은 1/3, 오렌지 맛일 확률은 1/5이고 두 사건은 동시에 일어나지 않음",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "겹치지 않는 두 원 A와 B",
+    "A∪B 영역 색칠"
+  ]
+}

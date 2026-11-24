@@ -1,0 +1,96 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "예: 00011의 안전한 틈"
+  },
+  "caption": "예: 0,0,0,1,1을 00011로 배열하면 2를 넣을 수 있는 안전한 틈은 0, 1, 2번이고 3, 4, 5번에는 2를 놓을 수 없다. 전체 나열은 7!/(3!2!2!)=210가지이고, 00011, 00110, 01100, 11000의 4가지 배열에서는 안전한 틈이 3개라 두 개의 2를 넣는 방법이 각각 3가지, 나머지 6가지 배열에서는 1가지이다. 조건을 만족하는 나열은 4×3+6×1=18가지이므로 확률은 18/210=3/35이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "수직선에 0부터 5까지의 눈금이 있고 0부터 2까지의 구간이 굵게 표시되어 있으며, 0, 1, 2에는 고리가, 3, 4, 5에는 ×가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "숫자 0, 0, 0, 1, 1, 2, 2가 하나씩 적힌 7장의 카드가 있다. 이 7장의 카드를 모두 한 번씩 사용하여 일렬로 나열할 때, 이웃하는 두 장의 카드에 적힌 수의 곱이 1 이하일 확률은? (단, 같은 숫자가 적힌 카드끼리는 구별하지 않는다.) (4.6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "숫자 0이 3개, 1이 2개, 2가 2개인 카드 7장을 일렬로 나열",
+      "mappedTo": [
+        "numberLine"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이웃한 두 수의 곱이 1 이하",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "2는 0과만 이웃하거나 끝자리에 놓임",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예시 배열 00011에서 2를 넣을 수 있는 안전한 틈 0, 1, 2와 넣을 수 없는 틈 3, 4, 5를 수직선에 표시한다"
+  ]
+}

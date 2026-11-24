@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "AB=AC인 이등변삼각형 ABC에서 각 A의 크기가 44도로 주어져 있고, 변 BC를 C 너머로 연장하여 꼭짓점 C에서의 한 외각을 표시한 그림이다.",
+  "accessibilityDescription": "이등변삼각형 ABC가 있고 두 변 AB와 AC의 길이가 같다는 표시가 있다. 꼭짓점 A에 44도가 적혀 있고, 두 밑각 B와 C에는 같은 크기임을 나타내는 호 표시가 있다. 변 BC를 C 너머로 연장한 직선이 그려져 있고, 변 CA와 그 연장선 사이의 외각이 표시되어 있다.",
+  "newVisualInformation": [
+    "AB=AC인 이등변삼각형 ABC",
+    "각 A의 크기 44도",
+    "같은 크기인 두 밑각 표시",
+    "변 BC의 연장선과 꼭짓점 C의 외각 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "68"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "68"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 44,
+        "label": "44",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 68,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true,
+        "ring": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 112,
+        "style": "ARC",
+        "noLabel": true,
+        "ring": 2
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A = 44^\\circ$일 때, 꼭짓점 $C$에서의 한 외각의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

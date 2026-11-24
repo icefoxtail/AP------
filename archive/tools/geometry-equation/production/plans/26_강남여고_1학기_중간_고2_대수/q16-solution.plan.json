@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1/2",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "zero",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "regions": [
+      {
+        "id": "area",
+        "between": [
+          "zero",
+          "f"
+        ],
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "sqrt(2)"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "2*sqrt(2)"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "caption": "경계가 포함된 영역에서 정수 가로좌표마다 가능한 정수 높이를 센다. 두 예시 세로선에서 곡선 높이와 정수 눈금을 비교한다.",
+  "accessibilityDescription": "경계가 포함된 영역에서 정수 가로좌표마다 가능한 정수 높이를 센다. 두 예시 세로선에서 곡선 높이와 정수 눈금을 비교한다.",
+  "newVisualInformation": [
+    "경계가 포함된 영역에서 정수 가로좌표마다 가능한 정수 높이를 센다. 두 예시 세로선에서 곡선 높이와 정수 눈금을 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지수함수 $y=2^{\\frac{x}{2}}$의 그래프와 $x$축, $y$축 및 직선 $x=4$로 둘러싸인 도형과 그 내부에 있는 점 중 $x$좌표와 $y$좌표가 모두 정수인 점의 개수는? (4.5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x0..4 높이1,√2,2,2√2,4; 경계 포함 열별2,2,3,3,5. 합15를 쓰거나 전체 격자점을 한꺼번에 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

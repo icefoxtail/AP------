@@ -195,13 +195,13 @@ test('opening an original from the home list needs no catalog, and everything th
   assert.doesNotMatch(block, /state\.catalog/, 'the original is opened from the exam row only');
   // Leaving the home for a screen that reads the catalog, or pressing a button that does, starts the download.
   assert.match(main, /if \(state\.view !== "home" && Boot\?\.catalogDeferred && !lightPending\) ensureCatalog\(\);/);
-  assert.match(main, /status\(DEFERRED_NOTICE\);\s*ensureCatalog\(\);/);
+  assert.match(main, /status\(DEFERRED_NOTICE\);[\s\S]{0,500}?ensureCatalog\(\);/);
   // The boot asks for the exam list first on a plain home or school finder, and starts the catalog itself otherwise or when the list is unusable.
   assert.match(main, /lightPending = Boolean\(Boot\?\.catalogDeferred && \(state\.view === "home" \|\| state\.view === "find"\)\);/);
   assert.match(main, /if \(lightPending\) \{\s*const listed = await loadLightExamList\(\);/);
   assert.match(main, /\n    ensureCatalog\(\);\n  \}\)\(\);/);
   // A list that belongs to another release drops the pending press instead of replaying it on the wrong exam.
-  assert.match(main, /state\.light\.identityDigest !== catalog\.identityDigest\) deferredClick = null/);
+  assert.match(main, /state\.light\.identityDigest !== catalog\.identityDigest\) \{ deferredClick = null;/);
 });
 
 test('workspace.html opts in and the release manifest ships the exam list', () => {
@@ -259,12 +259,70 @@ test('conditions only the records can decide wait for the catalog; the ones a li
 
 test('the finder buttons run on the list alone only while there is a list, and the rest still waits for the catalog', () => {
   const home = loadHome();
-  for (const action of ['finder-search', 'finder-axis-quick', 'finder-grade', 'finder-publisher', 'finder-reset', 'material', 'page-prev', 'page-next', 'multi-pick', 'multi-pick-clear'])
+  for (const action of ['finder-search', 'finder-axis-quick', 'finder-grade', 'finder-publisher', 'finder-reset', 'material', 'page-prev', 'page-next', 'multi-pick', 'multi-pick-clear', 'finder-subject', 'source-toggle', 'sources-clear'])
     assert.ok(home.LIGHT_FIND_ACTIONS.has(action), action);
-  for (const action of ['go-compose', 'source-issue', 'multi-assign', 'source-toggle', 'sources-clear', 'finder-subject'])
-    assert.equal(home.LIGHT_FIND_ACTIONS.has(action), false, `${action} waits for the catalog`);
+  for (const action of ['go-compose', 'source-issue', 'multi-assign', 'derive-mock-open'])
+    assert.equal(home.LIGHT_FIND_ACTIONS.has(action), false, `${action} waits for the records`);
   const main = readWorkspacePart('main');
   assert.match(main, /!\(state\.light && LIGHT_FIND_ACTIONS\.has\(a\)\)/);
-  assert.match(main, /startCatalogAfterPaint\(\);\s*return;/, 'the catalog starts after the list-only draw');
+  // 조각 3단계: the list-only draw hands over to afterListFindPaint, which starts the whole catalog only when there is no shard path / no table.
+  assert.match(main, /afterListFindPaint\(\);\s*return;/, 'the finder asks what is left to do after the list-only draw');
+  assert.match(main, /if \(!shardsOn\(\)\) \{ startCatalogAfterPaint\(\); return; \}/, 'without the shard path the whole catalog starts after the draw, as before');
+  assert.match(main, /if \(ok\) renderKeepingFindPlace\(\); else startCatalogAfterPaint\(\);/, 'a table that cannot be used falls back to the whole catalog');
   assert.match(main, /else if \(state\.view === "find"\) renderKeepingFindPlace\(\);/, 'the full screen replaces the list-only one in place');
+});
+
+// ---- 조각 3단계: the finder table (common.json) answers the record-based conditions from the list ----
+test('with the finder table the list answers curriculum, subject and question-name words; only a uid-like word waits for the records', () => {
+  const home = loadHome();
+  const rowsOf = findRows();
+  home.state.light = { exams: rowsOf, identityDigest: 'a'.repeat(64) };
+  const set = (...items) => new Set(items);
+  const identity = (grades, curricula) => ({ courseKeys: set(), curriculumKeys: set(...curricula), sourceGrades: set(...grades), subjectProjections: set(), subjectCurriculumPairs: set() });
+  const table = {
+    finderIndex: new Map([
+      ['original/a/25_가나고_고1.js', identity(['고1'], ['2022'])],
+      ['original/a/26_가나고_고2.js', identity(['고2'], ['2015'])],
+      ['original/a/26_다라고_고1.js', identity(['고1'], ['2022'])],
+      ['original/a/24_다라고_중1.js', identity(['중1'], ['2015'])],
+      ['similar/a/26_가나고_고2_유사.js', identity(['고2'], ['2015'])],
+    ]),
+    examSubjects: new Map([['original/a/26_가나고_고2.js', set('ALGEBRA')]]),
+    labelsOf: (file) => (file === 'original/a/25_가나고_고1.js' ? ['다항식의연산'] : []),
+    uidChars: set(...'0123456789_abcdefiqv'),
+  };
+  home.state.finderTable = table;
+  home.state.find = { material: 'exam', curriculumKey: '2015' };
+  assert.equal(home.lightFindUsable(), true, 'a curriculum no longer waits for the catalog once the table is there');
+  assert.deepEqual(home.findExams().map((e) => e.file), ['original/a/26_가나고_고2.js', 'original/a/24_다라고_중1.js']);
+  home.state.find = { material: 'exam', semanticSubject: 'ALGEBRA' };
+  assert.deepEqual(home.findExams().map((e) => e.file), ['original/a/26_가나고_고2.js']);
+  home.state.find = { material: 'exam', query: '다항식' };
+  assert.deepEqual(home.findExams().map((e) => e.file), ['original/a/25_가나고_고1.js'], 'a word from the question names finds the exam');
+  assert.doesNotMatch(home.renderFind(), /find-light-note/, 'a plain word needs no "preparing" line');
+  assert.doesNotMatch(home.renderFind(), /<select data-filter="curriculumKey" data-group="find" disabled>/, 'the boxes are live');
+  // short digits never match a uid; a long uid-like word cannot be answered from the table
+  home.state.find = { material: 'exam', query: '2025' };
+  assert.deepEqual(home.findExams().map((e) => e.file), ['original/a/25_가나고_고1.js']);
+  home.state.find = { material: 'exam', query: 'qid_v1_ab12cd34' };
+  const markup = home.renderFind();
+  assert.match(markup, /문항 단위 검색을 준비하는 중…/);
+  assert.doesNotMatch(markup, /현재 조건에 맞는 자료가 없습니다/);
+});
+
+// ---- 조각 3단계: with a few shards held for a button, the finder and the home still draw from the list ----
+test('with only some shards held, the finder and the home keep the list (same rows, same numbers); other screens read their own catalog', () => {
+  const home = loadHome();
+  home.state.light = { exams: findRows(), identityDigest: 'a'.repeat(64) };
+  // one shard of one exam: its `exams` is a subset, so row numbers would shift if the screen read it
+  home.state.catalog = { complete: false, exams: findRows().slice(2, 3), records: [], taxonomy: [], projectionPolicy: {} };
+  home.state.view = 'find';
+  assert.equal(home.catalogExams().length, findRows().length, 'the finder lists the whole list');
+  home.state.view = 'home';
+  assert.equal(home.catalogExams().length, findRows().length, 'the home lists the whole list');
+  home.state.view = 'compose';
+  assert.equal(home.catalogExams().length, 1, 'other screens read the catalog they hold');
+  home.state.catalog.complete = true;
+  home.state.view = 'find';
+  assert.equal(home.catalogExams().length, 1, 'a complete catalog is the list');
 });

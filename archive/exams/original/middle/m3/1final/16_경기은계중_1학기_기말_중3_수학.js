@@ -18,7 +18,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 긴 직사각형 칸이 위아래로 놓여 있고, 각 칸에 보기 번호와 방정식의 종류가 적혀 있다. 셋째 칸만 다른 색으로 칠해져 있다.",
+    "solutionImageCaption": "이차방정식은 정리했을 때 x² 항이 남는 방정식이다. ①은 일차방정식이고, ②는 정리하면 −x−2=0이므로 일차방정식이며, ④는 등식이 아니고, ⑤는 2x³+x²−3x=0이므로 삼차방정식이다. ③은 x²+5x−7=0으로 정리되어 이차방정식이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -138,7 +143,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 두 포물선 f와 g가 있고, f의 꼭짓점에서 g의 꼭짓점으로 향하는 선분이 그려져 있다. 두 꼭짓점에는 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=3x²의 그래프를 x축 방향으로 1만큼, y축 방향으로 −5만큼 평행이동하면 y=3(x−1)²−5의 그래프가 된다. 두 꼭짓점은 각각 (0, 0), (1, −5)이므로 n=1, m=−5이다. 따라서 n+m=−4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -220,7 +229,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 대칭축을 기준으로 좌우에서 증가·감소를 확인한다. 옳지 않은 보기번호는 표시하지 않는다.",
+    "solutionImageCaption": "꼭짓점과 대칭축을 기준으로 좌우에서 증가·감소를 확인한다. 옳지 않은 보기번호는 표시하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -303,7 +316,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t&lt;6에서 정의되며 끝점 6은 퇴화상태이다.",
+    "solutionImageCaption": "넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t<6에서 정의되며 끝점 6은 퇴화상태이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -325,7 +342,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+    "solutionImageCaption": "근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -347,7 +368,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+    "solutionImageCaption": "B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -405,6 +430,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 7,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+    "solutionImageCaption": "같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+    "solutionImageSize": "full"
   }
 ];

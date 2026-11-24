@@ -1,9 +1,9 @@
 /* Student review transports the authorized, issued snapshot to the shared engine. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.StudentArchiveReviewOutput = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   function studentReturnTarget(baseUrl) {
     try {
       const source = new URL(baseUrl);
@@ -37,13 +37,23 @@
     const mixed = String(exam.archive_file || '').startsWith('MIXED:');
     const meta = { ...payload.meta, qpp: Number(payload.meta.qpp || exam.pdf_qpp || (mixed ? 2 : 4)) };
     if (![1, 2, 4, 6, 8].includes(meta.qpp)) throw new Error('저장된 출력 설정을 확인할 수 없습니다.');
+    // 2026-11-24 원장 결정: 학생이 보는 화면도 문항이 고쳐지면 고쳐진 내용으로. 사본의 각 문항을 지금 원본으로 덮어 그리고(구성·순서·번호는 사본 그대로),
+    // 못 읽으면 사본 그대로 연다. 시간 예산을 넘겨도 열기를 막지 않는다(current-question-content.js).
+    let questions = payload.questions;
+    const current = root.StudentCurrentContent;
+    if (current && typeof current.overlay === 'function') {
+      try {
+        const updated = await current.overlay(payload.questions, { baseUrl });
+        if (Array.isArray(updated?.questions) && updated.questions.length === payload.questions.length) questions = updated.questions;
+      } catch (error) { /* 사본 그대로 */ }
+    }
     const envelope = await output.publishOutputEnvelope({
       sourceKind: 'assignment', sourceId: String(exam.archive_file), assignmentId,
       ...(exam.saved_paper_id ? { paperId: String(exam.saved_paper_id) } : {}),
       mode, questionCount: payload.questions.length,
       questionUids: meta.questionUids || payload.questions.map(question =>
         question.questionUid || question.source_question_uid || question._sourceQuestionUid || null),
-      meta, questions: payload.questions,
+      meta, questions,
     });
     const url = output.outputEnvelopeUrl(
       mixed ? '../../archive/mixed_engine.html' : '../../archive/engine.html',

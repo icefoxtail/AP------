@@ -1,0 +1,157 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "정사각형 ABCD의 꼭짓점 A에 말이 놓여 있고, A에서 B, C, D를 거쳐 다시 A로 가는 방향이 화살표로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $1$인 정사각형 $ABCD$가 있다. 꼭짓점 $A$에 있는 말을 주사위를 던져서 나오는 눈의 수만큼 $A \\to B \\to C \\to D \\to A$ 순서(시계바늘이 도는 반대 방향)로 한 칸씩 이동한다. 한 개의 주사위를 두 번 던질 때, 다음 물음에 답하시오. [6점]  \n(1) 말이 꼭짓점 $C$로 이동할 경우의 수를 구하시오. (풀이과정과 답) [4점]  \n(2) 말이 꼭짓점 $C$로 이동할 확률을 구하시오. (풀이과정과 답) [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "한 변의 길이가 1인 정사각형 ABCD와 꼭짓점을 따라 도는 방향을 보인다."
+  ],
+  "accessibilityDescription": "정사각형 ABCD의 각 변에 A에서 B, B에서 C, C에서 D, D에서 A로 향하는 화살표가 있고, 변 AB의 길이는 1로 표시되어 있다."
+}

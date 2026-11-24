@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "formula": "(1/2)*x+(2)"
+  },
+  "caption": "기울기 a1/2,x절편 b−4,y절편 c2에서 abc−4. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=\\dfrac12x+2$의 그래프의 기울기를 $a$, $x$절편을 $b$, $y$절편을 $c$라고 할 때, $abc$의 값을 구하면? [3점] 보기: ['1', '4', '-4', '8', '-8']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기a1/2,x절편b−4,y절편c2에서abc−4. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기a1/2,x절편b−4,y절편c2에서abc−4. 정답③."
+  ]
+}

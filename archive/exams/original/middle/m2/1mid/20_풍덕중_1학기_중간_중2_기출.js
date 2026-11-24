@@ -600,7 +600,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 접점으로 수직인 선분이 그어져 있다. AD와 AF에 4, DB와 BE에 5, EC와 CF에 2가 적혀 있다.",
+    "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=4, BD=BE=5이고 CE=CF=x라 하자. 삼각형의 둘레가 22이므로 2(4+5+x)=22에서 4+5+x=11이고 x=2이다. 따라서 EC=2cm이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -708,7 +712,12 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에서 오른쪽으로, 아래로 두 번, 다시 오른쪽으로 이어지는 다섯 개의 화살표가 있고, 각 화살표 옆에 예 또는 아니오가 적혀 있다. 마지막 화살표 끝에 도착지 이름이 적혀 있다.",
+    "solutionImageCaption": "1단계는 참이라 예, 2단계는 거짓이라 아니오, 3단계도 거짓이라 아니오, 4단계와 5단계는 참이라 예 방향으로 이동한다. 화살표를 따라가면 도착지는 대구이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

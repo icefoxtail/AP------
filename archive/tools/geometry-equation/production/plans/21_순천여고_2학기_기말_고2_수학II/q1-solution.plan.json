@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5,
+      5,
+      -20,
+      20
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-2",
+        "y": "16"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-16"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "level",
+        "y": "-9",
+        "intersectionX": [
+          "(-3-sqrt(21))/2",
+          "(-3+sqrt(21))/2",
+          "3"
+        ]
+      }
+    ]
+  },
+  "caption": "수평선 y=−k가 삼차곡선과 세 점에서 만나는 높이 범위를 두 극값으로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $x^3-12x+k=0$이 서로 다른 세 실근을 갖도록 하는 정수 $k$의 최댓값을 $m$, 최솟값을 $n$이라 할 때, $n+m$의 값은? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극점±2,높이±16. −16<k<16에서정수최댓값15/최솟값−15,최종합0미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "수평선 y=−k가 삼차곡선과 세 점에서 만나는 높이 범위를 두 극값으로 비교한다.",
+  "newVisualInformation": [
+    "수평선 y=−k가 삼차곡선과 세 점에서 만나는 높이 범위를 두 극값으로 비교한다."
+  ]
+}

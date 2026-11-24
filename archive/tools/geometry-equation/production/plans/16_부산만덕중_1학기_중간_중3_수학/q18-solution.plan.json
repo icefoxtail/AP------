@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "72"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cOuter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "120"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cInner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "72"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "cOuter",
+    "cInner"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vA",
+        "ownerSegment": "OA",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vB",
+        "ownerSegment": "OB",
+        "text": "b",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "색칠한 부분은 반지름이 a인 큰 원에서 반지름이 b인 작은 원을 뺀 원환이다. 그 넓이는 πa²−πb²=π(a²−b²)로 나타낼 수 있다. 이때 a²−b²=(a+b)(a−b)인 합차공식을 쓰면 넓이는 π(a+b)(a−b)가 된다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "중심이 같은 두 원이 겹쳐 있고, 두 원 사이의 원환 부분이 연한 회색으로 색칠되어 있다. 중심에서 큰 원과 작은 원에 이르는 반지름이 각각 a, b로 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름 a인 큰 원",
+    "반지름 b인 작은 원",
+    "두 원 사이의 색칠한 원환 영역",
+    "원환의 넓이 식 πa²−πb²"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 다음 도형에서 색칠한 부분의 넓이를 인수분해 공식을 이용하여 구하고자 할 때, 가장 알맞은 공식은? [3.0점]\n\n<img src=\"assets/images/16_부산만덕중_1학기_중간_중3_수학/q18.png\" alt=\"반지름의 길이가 각각 주어진 두 동심원으로 이루어진 원환에서 색칠한 부분의 넓이를 나타낸 그림\" width=\"350\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

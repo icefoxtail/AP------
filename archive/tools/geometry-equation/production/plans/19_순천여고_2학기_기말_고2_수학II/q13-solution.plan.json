@@ -1,0 +1,59 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-6",
+      "0",
+      "12"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.2,
+      1.2
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -10,
+      15
+    ],
+    "formula": "-6+12*x^2",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "주어진 등식을 두 번 미분하면 f(x)=12x²−2a이다. x=−1을 대입한 두 조건에서 a=3, b=−2이므로 f(x)=12x²−6이고 f(1)=6이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "아래로 볼록한 이차함수 그래프가 y축 아래의 꼭짓점에서 시작해 양쪽으로 올라가고, 꼭짓점과 그래프 위의 한 점에 이름과 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "f(x)=12x²−6의 그래프와 꼭짓점 (0, −6), 점 (1, 6)을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 <br>$\\displaystyle\\int_{-1}^x(x-t)f(t),dt=x^4-ax^2+bx$를 만족시킬 때, $f(1)$의 값은? (단, $a,b$는 상수이다.) [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

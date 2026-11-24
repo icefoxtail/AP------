@@ -318,7 +318,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표본평균의 평균은 모두 m이므로 ㄱ은 거짓이다. 표본평균의 분산은 σ²/n이므로 ㄴ은 참이다. n2=9n1이면 Y의 표준편차는 X의 표준편차의 1/3이므로 ㄷ도 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -356,7 +360,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "철수는 2승을 더 하면 상금을 얻고 영희는 3승을 더 해야 한다. 철수가 2경기, 3경기, 4경기 만에 두 번째 승리를 하는 확률은 각각 1/4, 1/4, 3/16이고 합은 11/16이다. 영희가 이길 확률은 1−11/16=5/16이므로 b/a=5/11이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

@@ -40,7 +40,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평인 평면 α 위의 점 H에서 아래로 내려간 점 P와 위로 올라간 점 Q가 한 수직선 위에 있고, 선분 PQ가 평면 α를 H에서 직각으로 지난다.",
+    "solutionImageCaption": "점 P(3, 2, −4)에서 xy평면(평면 α)에 내린 수선의 발은 H(3, 2, 0)이다. xy평면에 대하여 대칭인 점 Q는 H에서 P의 반대쪽으로 같은 거리(4)인 점이므로 x, y좌표는 그대로이고 z좌표의 부호만 바뀌어 Q(3, 2, 4)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -174,7 +178,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우로 갈라진 쌍곡선이 아주 가파른 두 점선 점근선 사이에 있다. 오른쪽 가지의 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "쌍곡선 x²/a²−y²/16=1의 점근선은 y=±(4/a)x이다. 한 점근선의 기울기가 5이면 4/a=5이므로 a=4/5이다. 그림은 a=4/5일 때의 쌍곡선과 두 점근선 y=±5x, 꼭짓점 V(4/5, 0)이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -490,7 +498,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 대각선 DF 위의 점 P와 모서리 EF의 두 끝 E, F를 이은 삼각형 PEF가 색칠되어 있다. P에서 EF로 내린 수선의 발 T까지의 점선과 직각 표시, 길이 2√2와 EF의 길이 3이 표시되어 있다.",
+    "solutionImageCaption": "E를 원점, EF를 x축, EH를 y축, EA를 z축으로 잡으면 E(0, 0, 0), F(3, 0, 0), D(0, 3, 3)이고 DF를 1:2로 나누는 점은 P(1, 2, 2)이다. P에서 EF(x축)에 내린 수선의 발 T까지의 거리는 √(2²+2²)=2√2이다. 삼각형 PEF의 넓이는 (1/2)×3×2√2=3√2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -532,7 +544,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 긴 타원과 위쪽 꼭짓점 A, 오른쪽 꼭짓점 B를 잇는 직선, 이 직선과 평행한 두 접선이 있다. 왼쪽 아래 접점 P와 삼각형 ABP가 색칠되어 있고 접선이 x축과 만나는 점 N이 표시되어 있다.",
+    "solutionImageCaption": "밑변 AB가 고정되므로 삼각형 ABP의 넓이는 P에서 직선 AB까지의 거리가 클 때 최대이다. 직선 AB는 8x+5y=40이고, AB와 평행한 두 접선 중 AB에서 더 먼 접선의 접점이 P(−5/√2, −8/√2)이다(점 S는 P와 대칭인 다른 접점). 접선 xx₀/25+yy₀/64=1에서 y=0이면 x=25/x₀=−5√2이므로 접선은 x축과 N(−5√2, 0)에서 만난다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -574,7 +590,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사면체 ABCD에서 모서리 CD의 중점 M, 모서리 AB의 중점 N이 있고 삼각형 ABM이 색칠되어 있다. 선분 CN과 MN은 AB에 수직이며 직각 표시와 길이가 표시되어 있다.",
+    "solutionImageCaption": "정사면체에서 CD⊥평면 ABM이므로 점 C의 평면 ABM 위 정사영은 CD의 중점 M이고, 삼각형 ABC의 정사영은 삼각형 ABM이다. AB의 중점을 N이라 하면 CN=AM=2√3이고 MN=√(12−4)=2√2이다. 정사영의 넓이는 (1/2)×AB×MN=(1/2)×4×2√2=4√2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -781,7 +801,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 원점 O에서 오른쪽의 점 P로 향하는 선분과, 왼쪽의 세로 선분 AB가 있다. A에서 P까지의 점선과 B에서 P까지의 선분이 삼각형 ABP를 이루고 직각 표시와 길이 5, 2, 8이 표시되어 있다.",
+    "solutionImageCaption": "u=OP/5로 두면 AB가 OP에 수직이므로 직선 l은 u에 수직이다. OP·OA=−15에서 u·OA=−3이고 u·OP=5이므로 P에서 직선 l까지의 거리는 5−(−3)=8이다. 그림은 O(0, 0), P(5, 0), l: x=−3, A(−3, 0), B(−3, 2)로 놓은 한 예이다. 삼각형 ABP의 넓이는 (1/2)×2×8=8이다. 따라서 답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -859,6 +883,11 @@ window.questionBank = [
       "examUid": "22_매산고_1학기_기말_고2_기하",
       "sourceSha256": "836070651676aac4ea108811a5cd9ae0d8da148db66ea4def0a7b5c195bb05c8"
     },
-    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "metaStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 x축 위에 선분 AB가 놓여 있고, AB를 지름으로 하는 큰 원과 AO를 지름으로 하는 작은 원이 그려져 있다. 큰 원 위의 점 P와 작은 원 위의 점 Q가 표시되어 있으며, A와 P, B와 P, A와 Q를 잇는 선분, 점 P의 직각 표시와 점 B의 30도 각 표시가 보인다.",
+    "solutionImageCaption": "A=(0,0), B=(8,0), O=(4,0)으로 두면 각 ABP=30°에서 P=(2, 2√3)이고 BP=(−6, 2√3)이다. 지름이 AO인 반원 위의 Q를 Q=(2+2cos t, 2sin t), 0≤t≤π로 두면 내적은 −12−12cos t+4√3sin t=−12+8√3sin(t−π/3)이다. 0≤t≤π에서 최댓값은 t=5π/6일 때 −12+8√3이고 최솟값은 t=0일 때 −24이다. 따라서 답은 최솟값 −24, 최댓값 −12+8√3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

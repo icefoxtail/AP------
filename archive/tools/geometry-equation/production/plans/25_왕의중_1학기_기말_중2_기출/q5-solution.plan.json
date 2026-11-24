@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-7"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "formula": "3*x - 7"
+  },
+  "caption": "같은 직선 6x−2y14와 3x−y7이 겹친다. a6,b−1이므로 합 5. 한 직선 위 모든 점이 두 식의 해이며 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} ax-2y=14 \\\\ 3x+by=7 \\end{cases}$의 해가 무수히 많을 때, $a+b$의 값은? (단, $a, b$는 수이다.) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "같은 직선6x−2y14와3x−y7이 겹친다. a6,b−1이므로 합5. 한 직선 위 모든 점이 두 식의 해이며 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 직선6x−2y14와3x−y7이 겹친다. a6,b−1이므로 합5. 한 직선 위 모든 점이 두 식의 해이며 정답④."
+  ]
+}

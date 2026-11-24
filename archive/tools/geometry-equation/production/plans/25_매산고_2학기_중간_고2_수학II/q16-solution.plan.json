@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "-3"
+      ]
+    }
+  },
+  "caption": "x=1에서 왼쪽 극한과 f(1)이 같아야 하므로 1+2a+b=-3, 즉 2a+b=-4이다. 왼쪽 미분계수는 2·1-4=-2, 오른쪽은 2+2a이고 g(1)=(2+2a)-(-2)=4+2a이다. x≠1에서는 g=0이므로 치역은 {0, 4+2a}이고 합이 6이면 a=1, b=-6이다. 그래프는 a=1, b=-6인 f이며 P(1,-3)에서 꺾인다. ab=-6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 2번] 실수 $a,b$에 대하여 함수 $f(x)=\\begin{cases}x^2-4x&(x\\lt 1)\\\\x^2+2ax+b&(x\\ge1)\\end{cases}$와 실수 전체의 집합에서 정의된 함수 $g(x)=\\lim_{t\\to x+}\\dfrac{f(t)-f(x)}{t-x}-\\lim_{t\\to x-}\\dfrac{f(t)-f(x)}{t-x}$가 있다. 함수 $g(x)$의 치역의 모든 원소의 합이 $6$일 때, $ab$의 값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1, b=-6일 때 x=1에서 이어지는 두 포물선과 두 기울기를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 왼쪽 극한과 f(1)이 같아야 하므로 1+2a+b=-3, 즉 2a+b=-4이다. 왼쪽 미분계수는 2·1-4=-2, 오른쪽은 2+2a이고 g(1)=(2+2a)-(-2)=4+2a이다. x≠1에서는 g=0이므로 치역은 {0, 4+2a}이고 합이 6이면 a=1, b=-6이다. 그래프는 a=1, b=-6인 f이며 P(1,-3)에서 꺾인다. ab=-6."
+  ],
+  "accessibilityDescription": "x=1에서 이어지며 꺾이는 두 포물선 조각으로 된 함수의 그래프이다."
+}

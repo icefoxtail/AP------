@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "27",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "27"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "598/25",
+          "-18/25"
+        ],
+        "domain": [
+          "0",
+          "27"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "11",
+          "y": "16",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x교통카드 인원,y현금 인원. x+y27과 720x+1000y23920의 공통 자연수점(11,16). 차 5,정답②. 선들은 실수 보조연장이며 실제 인원은 비음수 정수.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "선형네 반 학생 27명이 체험 학습을 가기 위해 버스를 탔는데 요금의 총액이 23920원이었다. 버스 요금을 교통 카드로 지불하면 720원이고, 현금으로 지불하면 1000원일 때, 교통 카드로 지불한 학생 수와 현금으로 지불한 학생 수의 차는? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x교통카드 인원,y현금 인원. x+y27과720x+1000y23920의 공통 자연수점(11,16). 차5,정답②. 선들은 실수 보조연장이며 실제 인원은 비음수 정수.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x교통카드 인원,y현금 인원. x+y27과720x+1000y23920의 공통 자연수점(11,16). 차5,정답②. 선들은 실수 보조연장이며 실제 인원은 비음수 정수."
+  ]
+}

@@ -71,7 +71,7 @@ node archive/tools/past-exam-pipeline/build-visual-candidate.mjs --facts <frozen
 
 The frozen bundle uses schema `past-exam-expected-facts-v1`. Its typed source,
 derived, display and object facts are hash-bound before engine validation. The
-adapter writes only below `archive/_generated/geometry-visual-engine/<runId>/`
+adapter writes only below `.tmp/archive/<runId>/<questionUid>/visual-engine/production/`
 and never edits production JS/assets or creates production fields. Engine QA,
 independent review and existing FINAL/APPLY authority remain separate; the
 `SVG_ENGINE_UPGRADE_PENDING|COMPLETE|EXEMPT` work state belongs in a ledger or

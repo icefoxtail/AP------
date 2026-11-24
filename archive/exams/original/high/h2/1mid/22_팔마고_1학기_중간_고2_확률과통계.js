@@ -657,7 +657,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "각 원소는 A, B에서 A를 뺀 부분, U에서 B를 뺀 부분 중 하나에 속한다. 전체 경우는 3⁵=243가지이고, A가 공집합인 경우 2⁵=32가지를 빼면 211가지다. 그림은 1, 2가 A와 B에, 3이 B에만, 4와 5가 B 밖에 있는 경우를 예로 든 것이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -995,7 +999,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 A, B, C가 같은 간격으로 한 직선 위에 놓여 있고, 그 직선이 세 점을 지나며 그려져 있다.",
+    "solutionImageCaption": "예: (a, b, c)=(2, 3, 4)이면 세 점 (1, 2), (2, 3), (3, 4)가 한 직선 위에 놓인다. 세 점이 한 직선 위에 있으려면 a+c=2b이고, a+b+c=9와 함께 쓰면 b=3, a+c=6이므로 (a, c)는 5가지이다. 전체 양의 정수해가 28가지이므로 한 직선 위에 있지 않은 경우는 28−5=23가지이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1187,7 +1195,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "전체 80명 중 수학 또는 영어에 관심이 있는 학생은 60명이다. 포함배제에 의해 두 과목 모두 관심 있는 학생은 $40+30-60=10$명이다. 그중 여학생은 $10\\cdot\\frac25=4$명이고, 수학 관심 학생은 남녀가 같으므로 여학생은 20명이다. 수학에는 관심 있고 영어에는 관심 없는 여학생은 $20-4=16$명이다. 이 집합의 전체 인원은 $40-10=30$명이므로 남학생 수는 14명, 구하는 확률은 $\\frac{14}{30}=\\frac7{15}$이다.",
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A를 수학, B를 영어에 관심 있는 학생의 집합으로 본다. 수학 또는 영어에 관심 있는 학생은 80−20=60명이고 둘 다 관심 있는 학생은 40+30−60=10명이다. 둘 다에서 여학생은 10×2/5=4명이고 수학에 관심 있는 학생은 남녀가 같아 여학생이 20명이다. 그림의 색칠한 수학만 30명은 남학생 14명, 여학생 16명이다. 따라서 구하는 확률은 14/30=7/15이다. 그림의 수는 수학만 30명, 둘 다 10명, 영어만 20명, 둘 다 아님 20명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1358,7 +1370,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "전체 선택은 $\\binom{10}{3}=120$가지이다. 최댓값이 9인 경우는 나머지 두 수를 1부터 8에서 고르므로 $\\binom82=28$가지이고, 최솟값이 3인 경우는 나머지 두 수를 4부터 10에서 고르므로 $\\binom72=21$가지이다. 두 조건을 함께 만족하면 3과 9를 고르고 나머지 한 수는 4부터 8 중 하나이므로 5가지이다. 덧셈정리에 따라 확률은 $\\frac{28+21-5}{120}=\\frac{11}{30}$이므로 $p+q=30+11=41$이다.",
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A를 최댓값이 9인 경우, B를 최솟값이 3인 경우로 본다. 전체 선택은 10C3=120가지이고, A는 8C2=28가지, B는 7C2=21가지이며 둘이 겹치면 3과 9에 4부터 8 중 하나를 더한 5가지이다. 그림은 A만 23가지, 겹침 5가지, B만 16가지, 어느 쪽도 아닌 76가지이고 색칠한 합집합은 28+21−5=44가지이다. 확률은 44/120=11/30이므로 p+q=30+11=41이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

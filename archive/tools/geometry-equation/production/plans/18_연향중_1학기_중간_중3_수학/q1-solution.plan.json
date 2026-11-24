@@ -1,0 +1,557 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G01",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G00",
+    "G10",
+    "G20",
+    "G30",
+    "G01",
+    "G11",
+    "G21",
+    "G31",
+    "G02",
+    "G12",
+    "G22",
+    "G32",
+    "G03",
+    "G13",
+    "G23",
+    "G33"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "h00",
+      "refs": [
+        "G00",
+        "G10"
+      ]
+    },
+    {
+      "id": "h01",
+      "refs": [
+        "G10",
+        "G20"
+      ]
+    },
+    {
+      "id": "h02",
+      "refs": [
+        "G20",
+        "G30"
+      ]
+    },
+    {
+      "id": "h10",
+      "refs": [
+        "G01",
+        "G11"
+      ]
+    },
+    {
+      "id": "h11",
+      "refs": [
+        "G11",
+        "G21"
+      ]
+    },
+    {
+      "id": "h12",
+      "refs": [
+        "G21",
+        "G31"
+      ]
+    },
+    {
+      "id": "h20",
+      "refs": [
+        "G02",
+        "G12"
+      ]
+    },
+    {
+      "id": "h21",
+      "refs": [
+        "G12",
+        "G22"
+      ]
+    },
+    {
+      "id": "h22",
+      "refs": [
+        "G22",
+        "G32"
+      ]
+    },
+    {
+      "id": "h30",
+      "refs": [
+        "G03",
+        "G13"
+      ]
+    },
+    {
+      "id": "h31",
+      "refs": [
+        "G13",
+        "G23"
+      ]
+    },
+    {
+      "id": "h32",
+      "refs": [
+        "G23",
+        "G33"
+      ]
+    },
+    {
+      "id": "v00",
+      "refs": [
+        "G00",
+        "G01"
+      ]
+    },
+    {
+      "id": "v01",
+      "refs": [
+        "G01",
+        "G02"
+      ]
+    },
+    {
+      "id": "v02",
+      "refs": [
+        "G02",
+        "G03"
+      ]
+    },
+    {
+      "id": "v10",
+      "refs": [
+        "G10",
+        "G11"
+      ]
+    },
+    {
+      "id": "v11",
+      "refs": [
+        "G11",
+        "G12"
+      ]
+    },
+    {
+      "id": "v12",
+      "refs": [
+        "G12",
+        "G13"
+      ]
+    },
+    {
+      "id": "v20",
+      "refs": [
+        "G20",
+        "G21"
+      ]
+    },
+    {
+      "id": "v21",
+      "refs": [
+        "G21",
+        "G22"
+      ]
+    },
+    {
+      "id": "v22",
+      "refs": [
+        "G22",
+        "G23"
+      ]
+    },
+    {
+      "id": "v30",
+      "refs": [
+        "G30",
+        "G31"
+      ]
+    },
+    {
+      "id": "v31",
+      "refs": [
+        "G31",
+        "G32"
+      ]
+    },
+    {
+      "id": "v32",
+      "refs": [
+        "G32",
+        "G33"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "G00",
+    "G10",
+    "G20",
+    "G30",
+    "G01",
+    "G11",
+    "G21",
+    "G31",
+    "G02",
+    "G12",
+    "G22",
+    "G32",
+    "G03",
+    "G13",
+    "G23",
+    "G33"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dSide",
+        "from": "G00",
+        "to": "G30",
+        "label": "3",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 360
+  },
+  "caption": "(-3)²=9이고 9의 양의 제곱근은 3이므로 ②가 옳다. 0의 제곱근은 0 하나이고, 15의 제곱근은 ±√15이며, 모든 정수의 제곱근이 두 개인 것은 아니다. -10의 제곱근은 실수로 존재하지 않는다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "한 변이 3인 정사각형이 가로와 세로로 각각 3등분되어 9개의 작은 정사각형으로 나뉘어 있다. 아래쪽 변에는 길이 3을 나타내는 치수선이 있다.",
+  "newVisualInformation": [
+    "한 변이 3인 정사각형",
+    "3등분 격자로 나뉜 9개의 작은 정사각형",
+    "아래 변의 길이 3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 다음 중 옳은 것은?(3점) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

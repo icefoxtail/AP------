@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "끝수",
+        "elements": [
+          "0",
+          "2또는4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "짝수",
+        "elements": [
+          "20",
+          "32"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "일의 자리가 0이면 백의 자리 5가지, 십의 자리 4가지로 5×4=20개이다. 일의 자리가 2 또는 4이면 일의 자리 2가지, 백의 자리 4가지, 십의 자리 4가지로 2×4×4=32개이다. 따라서 짝수는 20+32=52개이다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "일의 자리가 0인 경우 20, 2 또는 4인 경우 32로 갈라지는 두 줄 대응도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0$부터 $5$까지 숫자가 각각 하나씩 적힌 $6$장의 카드가 있다. 이 중 $3$장을 뽑아 세 자리 자연수를 만들 때, 짝수의 개수는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

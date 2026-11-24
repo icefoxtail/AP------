@@ -209,7 +209,11 @@ window.examData = {
     "subUnit": "삼각형의 성질",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "이등변의 밑각으로 SAS 후 대응각 합 전달",
-    "decisiveStep": "두밑각65와서로뒤바뀐동일길이로FBD와DCE를합동시켜D주변각합을계산한다."
+    "decisiveStep": "두밑각65와서로뒤바뀐동일길이로FBD와DCE를합동시켜D주변각합을계산한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "이등변삼각형 ABC의 변 BC 위에 점 D, 변 AC 위에 점 E, 변 AB 위에 점 F가 있고 선분 DF와 DE가 그어져 있다. BF와 CD, BD와 CE에 같은 눈금이 있고 꼭지각 50°, 두 밑각 65°, 각 FDE 65°가 표시되어 있다.",
+    "solutionImageCaption": "예: BD=4, CD=6인 그림이다. △BDF와 △CED에서 BF=CD, ∠B=∠C(밑각), BD=CE이므로 SAS 합동이고 ∠BDF=∠CED이다. △CDE의 내각에서 ∠CDE+∠CED=180°−∠C이고 ∠B=∠C=(180°−50°)/2=65°이므로 ∠CDE+∠BDF=115°이다. 평각 180°에서 ∠FDE=180°−115°=65°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -360,7 +364,12 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심각 두 배 관계의 직접 적용",
-    "decisiveStep": "AOC=2B에B50을넣는다."
+    "decisiveStep": "AOC=2B에B50을넣는다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 세 꼭짓점을 지나는 원이 있고 외심 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 꼭짓점 B의 각 50°와 중심각 AOC 100°가 표시되어 있다.",
+    "solutionImageCaption": "예: ∠A=60°, ∠B=50°, ∠C=70°인 삼각형으로 그렸다. 외심 O에서 세 꼭짓점까지의 거리가 같아 OA=OB=OC이다. 호 AC에 대한 중심각 ∠AOC는 원주각 ∠B의 2배이므로 ∠AOC=2×50°=100°이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -411,7 +420,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내접반지름을 넓이와 둘레로 구해 영역 차 계산",
-    "decisiveStep": "직각삼각형넓이24와둘레24로r2를구한뒤원넓이를뺀다."
+    "decisiveStep": "직각삼각형넓이24와둘레24로r2를구한뒤원넓이를뺀다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안에 중심 I와 반지름 2인 내접원이 있고, 원을 뺀 나머지 부분이 색칠되어 있다. 세 변에 10, 8, 6이 표시되고 반지름에 r=2가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형 ABC의 넓이는 2분의 1 곱하기 8 곱하기 6, 즉 24 제곱센티미터이다. 내접원의 반지름은 8과 6을 더한 값에서 10을 뺀 것의 절반인 2 센티미터이므로 원의 넓이는 4π 제곱센티미터이다. 색칠한 부분의 넓이는 24에서 4π를 뺀 값이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -612,7 +626,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "평행사변형에서 얻은 평행으로 중점연결",
-    "decisiveStep": "O의중점과OF∥CD를읽어AF와OF를각해당변의절반으로구한다."
+    "decisiveStep": "O의중점과OF∥CD를읽어AF와OF를각해당변의절반으로구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "평행사변형 ABCD의 대각선 AC의 중점 O에서 변 CD와 평행하게 선분 OE가 그어져 사각형 OCDE도 평행사변형이고, 선분 AD와 EO가 점 F에서 만난다. AB 12, BC 8, AF 4, FO 6이 적혀 있다.",
+    "solutionImageCaption": "□ABCD가 평행사변형이므로 OC=(1/2)AC이고 CD=AB=12cm이다. □OCDE도 평행사변형이므로 OE∥CD이고 OE=CD=12cm이다. O가 AC의 중점이고 OF∥CD이므로 △ACD에서 F는 AD의 중점이다. 따라서 AF=(1/2)AD=(1/2)BC=4cm이고 OF=(1/2)CD=6cm이다(중점연결정리). 그러므로 AF+OF=4+6=10cm이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -820,7 +838,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "주어진 닮음비로 대응변과 둘레 계산",
-    "decisiveStep": "작은삼각형의이미알려진변5와대응변8/2,12/2를더한다."
+    "decisiveStep": "작은삼각형의이미알려진변5와대응변8/2,12/2를더한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮음비 2:1인 두 삼각형 ABC와 DEF가 나란히 있고, 각 변의 길이가 변 옆에 cm 단위로 적혀 있다.",
+    "solutionImageCaption": "닮음비가 2:1이므로 AB:DE=2:1에서 AB=10cm이다. 삼각형 ABC의 둘레는 10+12+8=30cm이고, 닮은 두 삼각형의 둘레의 비도 2:1이다. 따라서 삼각형 DEF의 둘레는 30÷2=15cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -922,7 +945,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "순환하는 같은 각과 외각으로 내부 AA 구성",
-    "decisiveStep": "외각식에서같은표시각을상쇄해D=A,E=B,F=C를얻고둘레를1/2로환산한다."
+    "decisiveStep": "외각식에서같은표시각을상쇄해D=A,E=B,F=C를얻고둘레를1/2로환산한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 세 선분이 만나 작은 삼각형 DEF를 이루고 있다. 변 AB, BC, CA에 12, 10, 8, 변 DE에 6이 표시되어 있고 세 꼭짓점의 각에 같은 표시가 있다.",
+    "solutionImageCaption": "∠BAE=∠CBF=∠ACD를 θ라 하면 외각의 성질에서 ∠DEF=∠B, ∠EFD=∠C, ∠FDE=∠A이다. 따라서 삼각형 DEF는 삼각형 ABC와 닮음이고, DE:AB=6:12=1:2이다. 삼각형 ABC의 둘레가 30이므로 삼각형 DEF의 둘레는 30×1/2=15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -970,7 +997,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "네 중점연결선의 대각선 절반 둘레",
-    "decisiveStep": "대각선별로두중점연결선이각각절반임을읽어14+10을구한다."
+    "decisiveStep": "대각선별로두중점연결선이각각절반임을읽어14+10을구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD의 두 대각선 AC와 BD가 그어져 있고 네 변의 중점 P, Q, R, S를 차례로 이은 사각형 PQRS가 안쪽에 있다. PQ와 RS에 AC의 절반, QR과 SP에 BD의 절반이 적혀 있고 같은 길이의 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: AC와 BD의 길이의 합이 24cm인 사각형으로 그렸다. △ABC에서 P, Q가 AB, BC의 중점이므로 중점연결정리에 의해 PQ=(1/2)AC이고 RS도 같다. 같은 방법으로 QR=SP=(1/2)BD이다. 따라서 □PQRS의 둘레는 AC+BD=24cm이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1020,7 +1051,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "평행사변형의 전체변과 교차 닮음비",
-    "decisiveStep": "두평행쌍에서DF6을얻고교차삼각형4:5로DE를전체의4/9로정한다."
+    "decisiveStep": "두평행쌍에서DF6을얻고교차삼각형4:5로DE를전체의4/9로정한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "평행한 변 AD와 BC 사이에 사다리꼴이 있고 점 A에서 평행하게 내린 AB와 DF가 평행사변형 ABFD를 만든다. 대각선 AC와 DF가 점 E에서 만나고 AB 6, AE 4, EC 5가 적혀 있다.",
+    "solutionImageCaption": "예: AD∥BC, AB∥DF인 그림이다. □ABFD는 평행사변형이므로 DF=AB=6이다. AD∥BC에서 △ADE∽△CFE(AA 닮음)이므로 DE:EF=AE:CE=4:5이다. DE+EF=6이므로 DE=6×4/9=8/3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1065,7 +1100,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "정삼각형 각과 정사각형 변을 이등변에 연결",
-    "decisiveStep": "세변일치로60도를얻어y30을정하고AB=BE의밑각x75를구한다."
+    "decisiveStep": "세변일치로60도를얻어y30을정하고AB=BE의밑각x75를구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "정사각형 ABCD의 안쪽에 점 E가 있고 삼각형 EBC가 정삼각형이며 E에서 A와 D로 선분이 그어져 있다. 각 EBC 60°, 각 ABE y=30°, 각 AEB x=75°가 표시되어 있고 EB, BC, EC에 같은 눈금이 있다.",
+    "solutionImageCaption": "△EBC는 EB=BC=EC인 정삼각형이므로 ∠EBC=60°이다. 정사각형의 한 각이 90°이므로 (1) ∠y=∠ABE=90°−60°=30°이다. (2) BA=BC=BE이므로 △ABE는 이등변삼각형이고 ∠x=∠AEB=(180°−30°)/2=75°이다. 따라서 ∠y=30°, ∠x=75°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1111,7 +1150,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심 반각과 외심 이등변각의 차",
-    "decisiveStep": "밑각70에서내심각35와외심관련밑각20을각각구해차15를구한다."
+    "decisiveStep": "밑각70에서내심각35와외심관련밑각20을각각구해차15를구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC 안에 내심 I와 외심 O가 있고, 꼭짓점 B에서 I와 O로 선분이 그어져 있다. 꼭짓점 A와 B 주변에 각의 크기와 호 표시가 있고, 오른쪽에 각 OBI를 따로 그린 작은 그림이 있다.",
+    "solutionImageCaption": "이등변삼각형 ABC에서 꼭지각 A가 40도이므로 두 밑각 B와 C는 각각 70도이다. 내심 I에 대하여 BI가 각 B를 이등분하므로 각 ABI는 35도이고, 외심 O에 대하여 각 AOB는 각 C의 두 배인 140도이므로 각 ABO는 20도이다. 따라서 각 OBI는 35도에서 20도를 뺀 15도이다. 따라서 답은 (1) 35도, (2) 20도, (3) 15도이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,

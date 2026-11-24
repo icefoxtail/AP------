@@ -153,7 +153,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "자연수 해를 식으로 표현한 뒤 가능한 x값을 순서대로 세면 되는 표준 열거이다."
+    "difficultyReason": "자연수 해를 식으로 표현한 뒤 가능한 x값을 순서대로 세면 되는 표준 열거이다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x,y는 양의 정수이므로 직선 전체가 해가 아니다. 표시한 (1,9),(2,7),(3,5),(4,3),(5,1)만 자연수 해다. x=0 또는 y=0은 제외한다. 정답 5개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -232,7 +236,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "주어진 대입법 절차를 따라 한 번 대입하고 두 값을 복원하는 기본 절차이다."
+    "difficultyReason": "주어진 대입법 절차를 따라 한 번 대입하고 두 값을 복원하는 기본 절차이다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x=2y를 y=x/2로 읽으면 두 직선의 공통점은(4,2). 대입하면 3y=6→y2→x4. 빈칸 6,2,4의 합 12,정답⑤. 그래프는 대입법을 대체하지 않는 해 확인이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -311,7 +319,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "주어진 해를 두 식에 대입한 뒤 연립 일차식 두 개를 풀어 계수를 결정한다."
+    "difficultyReason": "주어진 해를 두 식에 대입한 뒤 연립 일차식 두 개를 풀어 계수를 결정한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "이 좌표평면의 가로축은 a,세로축은 b이다. (1,−2)를 대입해 a+2b=6,a−2b=2. 두 조건의 교점(a,b)=(4,1),a+b=5. 원래 미지수 x,y의 그래프가 아니라 계수 조건의 보조 그래프다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -386,7 +398,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "거리 차와 전체 시간 조건을 변수식으로 세우고 시간 단위를 변환해 연립방정식을 푼다."
+    "difficultyReason": "거리 차와 전체 시간 조건을 변수식으로 세우고 시간 단위를 변환해 연립방정식을 푼다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 뛴 거리 km,세로 y는 걸은 거리 km. x−y=2와 x/6+y/2=7/3시간에서 y=x−2,y=(14−x)/3의 교점(5,3). 둘레 8km. 두 직선은 조건식의 보조연장이며 거리의 실제범위는 x,y≥0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -465,7 +481,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "주어진 x값을 첫 식과 둘째 식에 차례로 대입하는 직접 절차이다."
+    "difficultyReason": "주어진 x값을 첫 식과 둘째 식에 차례로 대입하는 직접 절차이다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫 식에 x=−2를 대입하면 y3. 둘째식의 a=x+2y=4이므로 y=2−x/2와 같은 교점(−2,3)을 갖는다. 정답 4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -544,7 +564,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "소수·분수 계수를 정리한 뒤 익숙한 연립방정식 풀이를 적용한다."
+    "difficultyReason": "소수·분수 계수를 정리한 뒤 익숙한 연립방정식 풀이를 적용한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "소수를 없애면 3x+y20,분모를 없애면 2x−3y=−5. 두 직선 교점은(5,5)이며 2a−b=5. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -623,7 +647,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "첫 시스템의 공통 해를 구하고 두 매개변수 식에 대입해 조건을 결합한다."
+    "difficultyReason": "첫 시스템의 공통 해를 구하고 두 매개변수 식에 대입해 조건을 결합한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "상수가 없는 두 조건 2x+y5,x+y3의 교점(2,1)을 먼저 찾는다. a=3·2−2·1=4,b=(5−1)/2=2이므로 a+b6. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -698,7 +726,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "함수의 일대일 대응 정의를 보기별로 확인하는 표준 판별이다."
+    "difficultyReason": "함수의 일대일 대응 정의를 보기별로 확인하는 표준 판별이다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "⑤에서 x5를 고정해도 y1,2,3,4 네 값이 가능하므로 함수가 아니다. 나머지는 각 x에서 금액·세로길이·약수개수·거리가 하나로 정해진다. 이 도식은 함수가 아닌 관계의 반례다. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -931,7 +963,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "두 점의 좌표에서 함숫값을 계산하고 결과를 더한다."
+    "difficultyReason": "두 점의 좌표에서 함숫값을 계산하고 결과를 더한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x1에서 p−1,x2에서 q−3이다. 두 점(1,−1),(2,−3)을 같은 직선 위에서 읽는다. p+q=−4,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1013,7 +1049,11 @@ window.questionBank = [
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The source problem graph is already present in the question and the decisive solution is a direct equation/value calculation; a second visual would repeat the same information.",
     "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
-    "difficultyReason": "평행이동 방향과 크기를 읽어 식의 절편에 적용한다."
+    "difficultyReason": "평행이동 방향과 크기를 읽어 식의 절편에 적용한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 y=x의 각 점이 세로로 3만큼 올라가 y=x+3이 된다. 기울기 1은 그대로,절편만 0→3. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1088,7 +1128,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "같은 기울기에서 y절편 변화량을 바로 비교한다."
+    "difficultyReason": "같은 기울기에서 y절편 변화량을 바로 비교한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 직선은 기울기 −3이 같다. y절편 −1→2의 변화 2−(−1)=3이 세로 평행이동량이다. 정답 3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1163,7 +1207,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "두 절편은 각각 y=0, x=0 대입으로 구한다."
+    "difficultyReason": "두 절편은 각각 y=0, x=0 대입으로 구한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y0일 때 x−2,x0일 때 y−2. 교점(−2,0),(0,−2)는 서로 다른 두 점이다. 절편의 순서쌍 답은 −2,−2이지 점(−2,−2)가 그래프 위라는 뜻이 아니다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1241,7 +1289,12 @@ window.questionBank = [
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The source problem graph is already present in the question and the decisive solution is a direct equation/value calculation; a second visual would repeat the same information.",
     "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
-    "difficultyReason": "그래프에서 두 점을 읽어 기울기 공식을 적용한다."
+    "difficultyReason": "그래프에서 두 점을 읽어 기울기 공식을 적용한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 변화 2,세로 변화 −6이므로 기울기 −6/2=−3. 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -1565,7 +1618,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "두 점으로 기울기와 절편을 복원한 뒤 곱한다."
+    "difficultyReason": "두 점으로 기울기와 절편을 복원한 뒤 곱한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 주어진 점(−1,4),(2,−2) 사이에서 Δy/Δx=−6/3=−2. y절편 2이므로 a−2,b2,ab−4. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1634,7 +1691,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "소거법으로 한 변수를 구하고 나머지를 대입해 복원한다."
+    "difficultyReason": "소거법으로 한 변수를 구하고 나머지를 대입해 복원한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 식을 더해 4x16→x4,둘째식에 대입해 y7. 두 직선 공통점(4,7)로 소거법의 해를 확인한다. 정답 x4,y7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1703,7 +1764,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "두 수량 조건을 연립방정식으로 모델링하고 개체별 꼬리·날개 수를 계산한다."
+    "difficultyReason": "두 수량 조건을 연립방정식으로 모델링하고 개체별 꼬리·날개 수를 계산한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 돼지 수,세로 y는 닭 수. 마릿수합 x+y30,다리합 4x+2y94의 교점(17,13). 실제 해는 비음수 정수이며 선은 조건의 보조연장이다. 꼬리 17+날개 2·13=43. 정답 43개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1772,7 +1837,11 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "평행 조건으로 기울기를 정하고 x절편 점 대입으로 절편을 구한다."
+    "difficultyReason": "평행 조건으로 기울기를 정하고 x절편 점 대입으로 절편을 구한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "평행하므로 기울기 −2. x절편 2인 점(2,0)을 y=−2x+b에 대입해 b4. 정답 y=−2x+4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1841,6 +1910,10 @@ window.questionBank = [
     "problemVisualReason": "The question is fully specified by text, expressions, and any inline table; no external spatial/graph evidence is required.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
-    "difficultyReason": "두 시점의 값을 이용해 선형식의 기울기와 절편을 구한 뒤 목표 시각을 대입한다."
+    "difficultyReason": "두 시점의 값을 이용해 선형식의 기울기와 절편을 구한 뒤 목표 시각을 대입한다.",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진(3,18),(6,16)에서 기울기 −2/3cm/분,초기길이 20cm. 실제 연소 구간 0≤x≤30만 표시하며 x20에서 20/3cm. 양초가 다 탄 이후 음의 길이로 연장하지 않는다. 정답 20/3cm.",
+    "solutionImageSize": "full"
   }
 ];

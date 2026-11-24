@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1/3"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "6",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "3",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "left",
+          "x": "0"
+        },
+        {
+          "id": "right",
+          "x": "6"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "square",
+          "points": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "네 직선 x=0, x=6, y=0, y=6은 한 변이 6인 정사각형을 이루고, 이 정사각형의 넓이를 이등분하는 직선은 중심 (3, 3)을 지난다. y=ax+4에 (3, 3)을 대입하면 3=3a+4이므로 a=-(1/3)이다. 따라서 답은 ④ -(1/3)이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음의 네 직선이 만나서 생기는 도형의 넓이를 이등분하는 일차함수가 $y=ax+4$일 때, 상수 $a$의 값을 구하면? [5점]\n<div style=\"display:inline-block; margin:4px 0 0 0; padding:6px 14px; border:1px solid #333; line-height:1.6; text-align:center;\">$2x=0$ &nbsp;&nbsp;&nbsp; $y-6=0$<br>$-5y=0$ &nbsp;&nbsp;&nbsp; $3x-17=1$</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "네선x0,x6,y0,y6은정사각형이며중심(3,3)을지나는직선은중심대칭두부분의넓이를같게한다. y=ax+4에대입해a−1/3. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "네 직선 x=0, x=6, y=0, y=6은 한 변이 6인 정사각형을 이루고, 이 정사각형의 넓이를 이등분하는 직선은 중심 (3, 3)을 지난다. y=ax+4에 (3, 3)을 대입하면 3=3a+4이므로 a=-(1/3)이다. 따라서 답은 ④ -(1/3)이다."
+  ]
+}

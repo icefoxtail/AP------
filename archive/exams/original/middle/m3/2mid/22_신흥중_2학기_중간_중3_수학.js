@@ -182,7 +182,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "꼭짓점형에서 꼭짓점(4,−1)과 축을 읽고 양의 계수 및 y절편3을 대조하여 맞는 그림을 고른다.",
-    "decisiveStep": "꼭짓점형에서 꼭짓점(4,−1)과 축을 읽고 양의 계수 및 y절편3을 대조하여 맞는 그림을 고른다."
+    "decisiveStep": "꼭짓점형에서 꼭짓점(4,−1)과 축을 읽고 양의 계수 및 y절편3을 대조하여 맞는 그림을 고른다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y=(x−4)²/4−1은 y=x²/4를 오른쪽 4, 아래 1만큼 옮긴 포물선이다. 꼭짓점(4,−1), 대칭축 x=4, y절편 3이며 x절편은 2와 6이다. 판독 가능한 보기①의 꼭짓점과 y절편이 일치한다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

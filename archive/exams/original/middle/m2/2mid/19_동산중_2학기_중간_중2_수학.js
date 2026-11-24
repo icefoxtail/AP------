@@ -224,7 +224,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "이등변삼각형의 내심각 역산",
-    "decisiveStep": "같은 밑각의 이등분각과 작은 삼각형 내각합으로 DBC를 구한 뒤 큰 꼭지각을 구한다."
+    "decisiveStep": "같은 밑각의 이등분각과 작은 삼각형 내각합으로 DBC를 구한 뒤 큰 꼭지각을 구한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "이등변삼각형 ABC에서 B와 C의 이등분선이 점 D에서 만나고 각 BDC 100°, 꼭짓점 A의 각 20°, 이등분된 각 40°가 같은 표시로 표시되어 있으며 변 AB와 CA에 같은 눈금이 있다.",
+    "solutionImageCaption": "D는 ∠B와 ∠C의 이등분선의 교점이므로 ∠DBC=(1/2)∠B, ∠DCB=(1/2)∠C이다. △DBC에서 ∠DBC+∠DCB=180°−100°=80°이다. AB=AC이므로 ∠B=∠C이고 ∠DBC=∠DCB=40°이다. 따라서 ∠B=∠C=80°이고 ∠A=180°−80°−80°=20°이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -238,7 +242,11 @@ window.examData = {
       "$10\\text{cm}^2$"
     ],
     "answer": "",
-    "solution": ""
+    "solution": "",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 변 AB 위에 점 E가 있고, E에서 D로 수선 ED가 그어져 있으며 D는 BC 위에 있다. AE와 AC에 4cm, DC에 2cm, BD에 4cm가 표시되고 ∠EAD=30°, E와 C에 직각 표시가 있다.",
+    "solutionImageCaption": "직각삼각형 ADC에서 tan∠DAC=DC/AC=2/4=1/2이다. ∠EAD=30°이므로 ∠BAC=30°+∠DAC이고, 이를 이용하면 BC=6이 되어 BD=BC-DC=6-2=4이다. 따라서 삼각형 ADB의 넓이는 1/2×BD×AC=1/2×4×4=8이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -335,7 +343,11 @@ window.examData = {
       "$24\\text{cm}$"
     ],
     "answer": "",
-    "solution": ""
+    "solution": "",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 외심 O가 있고, O에서 변 AB와 AC에 내린 수선과 그 발의 직각 표시가 있다. 두 수선의 길이는 각각 3센티미터와 4센티미터이고, OA=OB=OC와 두 변이 이등분된 표시가 있다.",
+    "solutionImageCaption": "O가 외심이므로 OA=OB=OC이고, O에서 변 AB, AC에 내린 수선은 그 변을 각각 이등분한다. 그림에서 O가 BC 위에 있으므로 BC는 외접원의 지름이고 각 A는 직각이다. 수선의 길이가 3센티미터, 4센티미터이므로 AC=6, AB=8이고 BC=10이다. 따라서 둘레의 길이는 6+8+10=24센티미터이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -366,7 +378,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심의 기본성질 진술 판정",
-    "decisiveStep": "꼭짓점 등거리와 중심각 관계를 외심 성질로 구별하고 내심 성질의 혼입을 판단한다."
+    "decisiveStep": "꼭짓점 등거리와 중심각 관계를 외심 성질로 구별하고 내심 성질의 혼입을 판단한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 변의 중점 D, E, F에서 수선이 세워져 점 O에서 만나고 O에서 세 중점과 세 꼭짓점으로 선분이 그어져 있다. 중점에 직각 표시가 있고 O에서 세 꼭짓점으로의 선분에 같은 눈금이 있으며 각 BOC가 각 A의 2배로 표시되어 있다.",
+    "solutionImageCaption": "외심 O는 세 변의 수직이등분선의 교점이다. 외심에서 세 꼭짓점까지의 거리는 같아 OA=OB=OC이지만 OD, OE, OF는 일반적으로 같지 않고(①), △ADO와 △AOF도 합동이 아니다(③). ∠DBO=∠EBO는 내심의 성질이다(④). 예각삼각형에서만 외심이 삼각형의 내부에 있다(⑤). 한 변에 대한 중심각은 원주각의 2배이므로 ∠BOC=2∠A이다(②). 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -454,7 +470,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "세 이등분각과 내심각 합",
-    "decisiveStep": "그림의 두 밑각 절반으로 BIC와 꼭지각의 절반 x를 구하여 합한다."
+    "decisiveStep": "그림의 두 밑각 절반으로 BIC와 꼭지각의 절반 x를 구하여 합한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 내심 I가 있고 A, B, C에서 I로 선분이 그어져 있다. B의 각 25°, C의 각 30°, 꼭짓점 A의 x, I의 각 125°가 표시되어 있다.",
+    "solutionImageCaption": "내심이므로 BI와 CI는 각각 ∠B와 ∠C의 이등분선이다. ∠IBC=25°, ∠ICB=30°에서 ∠B=50°, ∠C=60°이므로 ∠A=70°이고 x=∠BAI=35°이다. 또 ∠BIC=90°+35°=125°이므로 x+∠BIC=35°+125°=160°이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -585,7 +605,11 @@ window.examData = {
       "l4": "평행사변형의 대각선 성질"
     },
     "primaryMethod": "대각선의 이등분과 대변 길이",
-    "decisiveStep": "AO,OD를 각각 대각선의 절반으로 읽고 AD=BC를 써 세 변을 더하는 형식이다."
+    "decisiveStep": "AO,OD를 각각 대각선의 절반으로 읽고 AD=BC를 써 세 변을 더하는 형식이다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고, 선분 AO와 OD에 각각 4와 6, 변 BC와 AD에 10이 표시되어 있다.",
+    "solutionImageCaption": "평행사변형의 두 대각선은 서로 다른 것을 이등분하므로 AO=AC/2=4cm이고 OD=BD/2=6cm이다. 또 AD=BC=10cm이므로 삼각형 AOD의 둘레의 길이는 4+6+10=20cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -951,7 +975,11 @@ window.examData = {
       "l4": "각 사각형의 성질"
     },
     "primaryMethod": "안내된 평행사변형 증명과 교차각 계산",
-    "decisiveStep": "정사각형의 같은 변에서 같은 길이를 빼 ED=BF를 얻고 평행사변형으로 확인한 뒤 평행선과 대각선45도로 목표각을 옮긴다."
+    "decisiveStep": "정사각형의 같은 변에서 같은 길이를 빼 ED=BF를 얻고 평행사변형으로 확인한 뒤 평행선과 대각선45도로 목표각을 옮긴다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "정사각형 ABCD의 변 AD 위에 점 E, 변 BC 위에 점 F가 있고 대각선 AC와 선분 BE, DF가 각각 점 G, H에서 만난다. AE와 CF에 같은 눈금이 있고 각 ABG 25°, 각 GHF 110°가 표시되어 있다.",
+    "solutionImageCaption": "(1) AE=CF이고 AD∥BC이므로 ED=AD−AE=BC−CF=BF이고 ED∥BF이다. 한 쌍의 대변이 평행하고 길이가 같으므로 EBFD는 평행사변형이다. (2) 평행사변형에서 BE∥DF이므로 ∠AGB=∠AHD(동위각)이다. △ABG에서 ∠BAG=45°이므로 ∠AGB=180°−45°−25°=110°이다. 따라서 ∠AHD=110°이고 맞꼭지각 ∠GHF=∠AHD=110°이다. 그림은 해설의 ∠ABG=25°를 쓴 것이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

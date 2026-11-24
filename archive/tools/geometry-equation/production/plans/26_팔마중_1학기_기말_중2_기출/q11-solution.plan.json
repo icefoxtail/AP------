@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래 y2x−2를위로 4옮기면 y2x+2. 기울기 2는같고절편 −2→2. 원본보기①과일치한다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y=2x-2$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프를 고르면? [4점]<br><img src=\"assets/images/26_팔마중_1학기_기말_중2_기출/q11-problem-visual-v2.svg\" alt=\"①과 ②는 같은 정도로 가파르게 올라가며 각각 세로축 2, −2를 지난다. ③과 ④는 기울기가 완만하며 각각 세로축 2, −2를 지난다. ⑤는 오른쪽으로 갈수록 내려가고 세로축 2를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

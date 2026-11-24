@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      30,
+      -2,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "1",
+        "coefficients": [
+          "1",
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/3",
+          "29"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "14",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "27",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "3"
+        }
+      ]
+    }
+  },
+  "caption": "f의 역함수는 밑이 3인 로그를 오른쪽으로 2, 위로 1만큼 옮긴 그래프이다. 이를 왼쪽으로 2, 위로 a만큼 옮기면 g는 밑이 3인 로그를 위로 1+a만큼 옮긴 그래프가 된다. y=3과 만나는 점 A(1,3), B(3의 2−a제곱,3)의 중점 M이 (14,3)이므로 3의 2−a제곱=27이고 a=−1이다. 따라서 답은 −1이다.",
+  "accessibilityDescription": "파란 지수곡선 f와 주황색 로그곡선 g, 가로선 y=3이 보이고, 가로선 위에 점 A, 중점 M, 점 B가 왼쪽부터 놓여 있다. 세 점의 좌표가 각각 표시되어 있다.",
+  "newVisualInformation": [
+    "가로선 y=3 위에 A(1,3), M(14,3), B(27,3)가 놓인다.",
+    "f는 파란 지수곡선, g는 주황색 로그곡선으로 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 함수 $f(x)=3^{x-1}+2$의 역함수의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $a$만큼 평행이동시키면 함수 $y=g(x)$의 그래프가 된다. 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 직선 $y=3$와 만나는 점을 각각 $A, B$라 할 때, 선분 $AB$의 중점의 좌표가 $(14, 3)$이다. 이 때, 실수 $a$의 값을 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

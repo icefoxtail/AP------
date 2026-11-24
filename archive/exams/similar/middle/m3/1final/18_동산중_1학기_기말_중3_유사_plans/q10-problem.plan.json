@@ -1,0 +1,392 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sH1",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "sV1",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d0",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "B",
+        "label": "24",
+        "unit": "m",
+        "side": "BELOW"
+      },
+      {
+        "id": "d1",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "D",
+        "label": "18",
+        "unit": "m",
+        "side": "LEFT"
+      },
+      {
+        "id": "d2",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "V2",
+        "to": "V4",
+        "label": "x",
+        "unit": "m",
+        "side": "ABOVE"
+      },
+      {
+        "id": "d3",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "H2",
+        "to": "H4",
+        "label": "x",
+        "unit": "m",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로 24 m, 세로 18 m인 직사각형 모양의 꽃밭에 폭이 x m인 가로 방향 길과 세로 방향 길이 서로 교차하며 나 있다. 길을 제외한 나머지 부분은 네 조각으로 나뉜다.",
+  "accessibilityDescription": "직사각형 꽃밭 안에 가로로 가로지르는 띠와 세로로 가로지르는 띠가 십자로 겹쳐 있다. 가로변에 24 m, 세로변에 18 m가 표시되고, 두 띠의 폭에 각각 x m가 표시되어 있다.",
+  "newVisualInformation": [
+    "꽃밭의 가로 길이는 24 m, 세로 길이는 18 m이다.",
+    "가로 방향 길과 세로 방향 길의 폭은 각각 x m이다.",
+    "두 길이 서로 교차하여 꽃밭이 네 조각으로 나뉜다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 가로의 길이가 $24,\\text{m}$이고 세로의 길이가 $18,\\text{m}$인 직사각형 모양의 꽃밭에 폭이 일정한 길을 만들었다. 길을 제외한 나머지 부분의 넓이가 $280,\\text{m}^2$일 때, 길의 폭을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 조각함수 치역 및 방정식 실근 개수 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "fR",
+          "kind": "SQRT",
+          "radicand": [
+            "-1",
+            "2"
+          ],
+          "amplitude": "1",
+          "sign": -1,
+          "offset": "4",
+          "domain": [
+            "1",
+            "6"
+          ]
+        },
+        {
+          "id": "fL",
+          "kind": "RATIONAL",
+          "numerator": [
+            "-5",
+            "2"
+          ],
+          "denominator": [
+            "-2",
+            "1"
+          ],
+          "domain": [
+            "-4",
+            "1"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "y3",
+            "slope": "0",
+            "intercept": "3"
+          },
+          {
+            "id": "y1",
+            "slope": "0",
+            "intercept": "1"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "1"
+        ],
+        "y": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    },
+    "caption": "a=-5, b=-1일 때 x<1에서는 2<f(x)<3이고 x≥1에서는 f(x)≤3으로 치역과 교점 조건을 만족한다."
+  }
+}

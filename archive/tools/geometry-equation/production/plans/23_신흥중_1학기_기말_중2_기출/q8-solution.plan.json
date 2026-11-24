@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "3/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-6"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "formula": "3*x/2 - 6"
+  },
+  "caption": "둘째식×2/3은 x−2y/3=4. a−2/3일 때 첫식과 같은 y3x/2−6 하나로 겹쳐 무수한 해. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}x+ay=4\\\\{}\\dfrac{3}{2}x-y=6\\end{cases}$의 해가 무수히 많을 때, 수 $a$의 값을 구하라.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "둘째식×2/3은x−2y/3=4. a−2/3일 때 첫식과 같은 y3x/2−6 하나로 겹쳐 무수한 해. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "둘째식×2/3은x−2y/3=4. a−2/3일 때 첫식과 같은 y3x/2−6 하나로 겹쳐 무수한 해. 정답①."
+  ]
+}

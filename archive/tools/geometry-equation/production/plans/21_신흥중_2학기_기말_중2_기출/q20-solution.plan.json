@@ -1,0 +1,209 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "합8, 9"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "x",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "y",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 4
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 4
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 4
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 4
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "합10, 11, 12"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "x",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "y",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 5
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 4
+              },
+              "to": {
+                "column": 1,
+                "element": 4
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 4
+              },
+              "to": {
+                "column": 1,
+                "element": 5
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 5
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 5
+              },
+              "to": {
+                "column": 1,
+                "element": 4
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 5
+              },
+              "to": {
+                "column": 1,
+                "element": 5
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "합 [8, 9]이면서 차 절댓값 ≤2인 쌍만 표시. 다섯 합 8/9/10/11/12별 개수 3/2/3/2/1, 총 11/36. 두 패널은 서로 다른 합으로 겹치지 않음. 정답 ④. 합 [10, 11, 12]이면서 차 절댓값 ≤2인 쌍만 표시.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위 $A$, $B$를 동시에 던져 나온 눈의 수를 각각 $x$, $y$라 하자.\n $x+y\\ge8$이고 $|x-y|\\le2$일 확률을 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "합[8, 9]이면서차절댓값≤2인쌍만표시. 다섯합8/9/10/11/12별개수3/2/3/2/1,총11/36. 두패널은서로다른합으로겹치지않음. 정답④. 합[10, 11, 12]이면서차절댓값≤2인쌍만표시."
+  ]
+}

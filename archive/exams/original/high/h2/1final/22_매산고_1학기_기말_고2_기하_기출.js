@@ -167,9 +167,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q04-solution.svg",
-    "solutionImageAlt": "쌍곡선의 두 점근선과 기울기 4/a",
-    "solutionImageCaption": "점근선 기울기의 크기에서 양수 a를 구한다.",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 따라 좌우로 벌어진 쌍곡선의 두 가지와, 원점에서 엇갈리며 뻗는 두 점근선이 점선으로 보인다. 가로축 위의 두 꼭짓점 옆에 각각의 좌표가 적혀 있다.",
+    "solutionImageCaption": "쌍곡선 x²/a² − y²/16 = 1의 점근선은 y = ±4x/a이고, a = 4/5이면 y = ±5x가 된다. 점근선의 기울기의 크기가 5이므로 4/a = 5에서 a = 4/5이다. a > 0이므로 조건을 만족한다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
@@ -562,7 +562,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사면체 ABCD에서 CD의 중점 M과 AB의 중점 N이 잡혀 있고 AM, BM, CN, MN이 그려져 있다. N에 AB와 NC, AB와 NM이 이루는 두 직각 표시와 각 φ가 있고, CN 옆에 2√3, MN 옆에 2√2가 적혀 있다.",
+    "solutionImageCaption": "정사면체 ABCD에서 M은 CD의 중점, N은 AB의 중점이다. AB에 수직인 단면에서 NC와 NM이 이루는 각 φ가 두 평면 ABC와 ABM이 이루는 이면각이다. CN=2√3, MN=2√2에서 cosφ=(4√3/3)/(2√2)=√6/3이고 삼각형 ABC의 넓이는 4√3이므로 정사영의 넓이는 4√3×√6/3=4√2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

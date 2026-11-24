@@ -1,0 +1,594 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "55",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "55",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "67",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "67",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "E2",
+    "F2",
+    "G2",
+    "H2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sB2F2",
+      "refs": [
+        "B2",
+        "F2"
+      ]
+    },
+    {
+      "id": "sF2G2",
+      "refs": [
+        "F2",
+        "G2"
+      ]
+    },
+    {
+      "id": "sG2C2",
+      "refs": [
+        "G2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2B2",
+      "refs": [
+        "C2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sC2D2",
+      "refs": [
+        "C2",
+        "D2"
+      ]
+    },
+    {
+      "id": "sG2H2",
+      "refs": [
+        "G2",
+        "H2"
+      ]
+    },
+    {
+      "id": "sD2A2",
+      "refs": [
+        "D2",
+        "A2"
+      ]
+    },
+    {
+      "id": "sH2D2",
+      "refs": [
+        "H2",
+        "D2"
+      ]
+    },
+    {
+      "id": "sA2E2",
+      "refs": [
+        "A2",
+        "E2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sE2H2",
+      "refs": [
+        "E2",
+        "H2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sE2F2",
+      "refs": [
+        "E2",
+        "F2"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sBF",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sFG",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sGH",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sH2D2",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "sF2G2",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "l6",
+        "ownerSegment": "sG2H2",
+        "text": "y",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 470
+  },
+  "hiddenPointNames": [
+    "A",
+    "D",
+    "E",
+    "H",
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "E2",
+    "F2",
+    "G2",
+    "H2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 직육면체는 닮은 도형이고 대응하는 높이가 6cm와 8cm이므로 닮음비는 6:8=3:4이다. 따라서 x=4×4/3=16/3이고 y=5×4/3=20/3이므로 x+y=16/3+20/3=12이다. 면 BFGC는 가로 4cm, 세로 6cm인 직사각형이므로 오른쪽 직육면체에서 이와 닮은 면은 앞면과 뒷면이다. 따라서 답은 (1) 3:4, (2) 12, (3) 앞면과 뒷면이다.",
+  "accessibilityDescription": "왼쪽에 가로 4cm, 높이 6cm, 깊이 5cm인 직육면체가 있고 그 오른쪽에 더 큰 직육면체가 있다. 큰 직육면체의 높이는 8cm이고 밑면의 가로와 깊이가 각각 x cm, y cm로 표시되어 있으며, 두 직육면체 모두 보이지 않는 모서리는 점선으로 그려져 있다.",
+  "newVisualInformation": [
+    "닮은 두 직육면체",
+    "왼쪽 치수 4cm, 6cm, 5cm",
+    "오른쪽 치수 x cm, 8cm, y cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서답형 2] 그림에서 두 직육면체는 서로 닮은 도형일 때, 다음을 구하여라. [5점]</p><p>(1) 두 도형의 닮음비를 구하여라.</p><p>(2) $x+y$를 구하여라.</p><p>(3) $\\square \\text{BFGC}$와 닮은 도형을 모두 찾아라.</p><p><img src=\"assets/images/19_이수중_2학기_중간_중2_수학/s02.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cR",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "LEFT"
+          },
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            1,
+            0
+          ],
+          "to": [
+            4,
+            1
+          ],
+          "toName": "B"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "Q",
+            "value": "1-sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "P",
+            "value": "1+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "모눈 위에 그린 정사각형의 한 변을 반지름으로 하고 수직선 위의 점 1을 중심으로 하는 원호가 수직선과 만나는 두 점을 P, Q로 나타낸 그림이다.",
+  "accessibilityDescription": "수직선 위의 점 1을 중심으로 하는 원호가 수직선과 두 점에서 만나고, 그 두 점이 각각 P, Q로 표시되어 있다. 위쪽 모눈에는 정사각형의 한 변이 그려져 있다.",
+  "newVisualInformation": [
+    "수직선 위의 중심 1",
+    "원호와 수직선의 교점 P, Q",
+    "모눈 위 정사각형의 한 변"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수직선 위에서 한 눈금의 길이가 $1$인 모눈 위에 그린 정사각형의 한 변을 반지름으로 하는 원을 그릴 때, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$에 대응하는 수를 구하여 $P - Q$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

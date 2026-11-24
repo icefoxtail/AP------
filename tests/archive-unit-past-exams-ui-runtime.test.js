@@ -601,3 +601,87 @@ test('권 목록의 "문제지 만들기에서 열기"는 그 권의 UID 목록�
   assert.match(api.composeEntryUrl({ records: [{}] }).error, /알아볼 수 없어/);
   assert.ok(api.composeEntryUrl(many(80)).url, '한 권 최대 80문항은 넘길 수 있다');
 });
+
+// ---- 문항 목록 조각 경로 (2단계 2-3): 학년을 고르면 그 학년의 조각만 받는다 ---------------------------------------------------------------
+// 조각 파일 대신 손으로 만든 두 학년짜리 가짜 조각을 쓰는 로더(조립·합치는 코드는 진짜). 같은 결과인지는 tests/archive2-catalog-shards-compose.test.js가
+// 진짜 입력으로 보증하고, 여기서는 "언제 무엇을 받는가"와 실패했을 때 화면이 멈추지 않는지만 본다.
+const shardApi = require(path.join(archiveRoot, 'archive2-catalog-shards.js'));
+const makeShardSite = () => {
+  const uid = n => `qid_v1_${String(n).padStart(64, '0')}`;
+  const exam = (file, n, unitKey, unitName, subKey) => ({
+    key: file.includes('/middle/') ? 'm1' : 'high1-common',
+    records: [{ questionUid: uid(n), sourceFile: file, sourceOrdinal: 1, sourceQuestionNo: '1', identityStatus: 'VERIFIED', sourceIntegrityStatus: 'VERIFIED', sourceFingerprint: 'f'.repeat(8), difficultyBucket: 3 }],
+    unit: { schemaVersion: shardApi.UNIT_PAST_SCHEMA, index: [[1, unitName, unitKey, subKey, '핵심', '중', '시험고', '시험고', 2025, '1', 'mid']], meta: [{ questionUid: true, difficultyBucket: 3, standardUnitKey: unitKey }] },
+  });
+  const docs = {
+    'high1-common': exam('original/high/h1/1mid/25_runtime.js', 1, 'H22-C-01', '다항식의 연산', 'H22-C-01-CORE'),
+    m1: exam('original/middle/m1/1mid/25_runtime.js', 2, 'M1-01', '소인수분해', 'M1-01-PRIME_FACTORIZATION'),
+  };
+  const common = { unitPast: { schemaVersion: shardApi.UNIT_PAST_SCHEMA, indexColumns: ['id', 'standardUnit', 'standardUnitKey', 'subUnitKey', 'subUnit', 'level', 'school', 'schoolKey', 'examYear', 'semester', 'examType'],
+    runtime: { ownedScopes: [], taxonomyRows: [] }, subUnitLabels: {} }, labels: { problemTypes: {}, templates: {} } };
+  const state = { calls: [], fail: null, created: 0 };
+  const loader = {
+    loadIndex: async () => ({}), loadCommon: async () => common,
+    examFiles: () => Object.values(docs).map(doc => doc.records[0].sourceFile),
+    keysFor: ({ exams }) => ({ keys: [...new Set((exams || []).map(file => Object.entries(docs).find(([, doc]) => doc.records[0].sourceFile === file)[0]))], unknownExams: [] }),
+    loadCatalog: async ({ shards }) => {
+      state.calls.push([...shards]);
+      if (state.fail) throw state.fail;
+      return { unitPast: { ready: true, common: common.unitPast, docs: shards.map(key => ({ key, ...docs[key] })) } };
+    },
+  };
+  return { state, api: { ...shardApi, shardsDisabled: shardApi.shardsDisabled, createLoader: () => { state.created += 1; return loader; } } };
+};
+
+test('조각 경로: 학년을 고를 때에야 그 학년 조각만 받아 표를 그리고, 받은 조각은 다시 받지 않는다', async () => {
+  const site = makeShardSite();
+  const runtime = createRuntime({ teacher: true, questionIndex: [], url: 'http://unit.test/archive/unit-past-exams.html', window: { Archive2CatalogShards: site.api } });
+  await runtime.window.UnitPastExams.init();
+  assert.equal(site.state.created, 1, 'the loader is used');
+  assert.deepEqual(site.state.calls, [], 'no question list is fetched before a grade is chosen');
+  assert.match(runtime.getElement('unit-content').innerHTML, /학년을 고르면 단원과 난이도 단계가 한눈에 보이는 표가 나옵니다/);
+  runtime.window.UnitPastExams.gridSelectGrade('h1');
+  for (let i = 0; i < 20; i += 1) await Promise.resolve();
+  assert.deepEqual(site.state.calls, [['high1-common']], 'only the shard of the grade');
+  assert.match(runtime.getElement('unit-content').innerHTML, /class="ug-table"/);
+  assert.match(runtime.getElement('unit-content').innerHTML, /aria-label="다항식의 연산 [^"]*1문항"/);
+  runtime.window.UnitPastExams.gridSelectGrade('m1');
+  for (let i = 0; i < 20; i += 1) await Promise.resolve();
+  assert.deepEqual(site.state.calls, [['high1-common'], ['m1']], 'the second grade adds its own shard');
+  assert.match(runtime.getElement('unit-content').innerHTML, /소인수분해/);
+  runtime.window.UnitPastExams.gridSelectGrade('h1');
+  assert.equal(site.state.calls.length, 2, 'a grade already held is not fetched again');
+});
+
+test('조각 경로: 저장된 학년이 있으면 그 학년 조각을 먼저 받고 처음부터 표를 그린다', async () => {
+  const site = makeShardSite();
+  const runtime = createRuntime({ teacher: true, questionIndex: [], url: 'http://unit.test/archive/unit-past-exams.html?grade=h1', window: { Archive2CatalogShards: site.api } });
+  await runtime.window.UnitPastExams.init();
+  assert.deepEqual(site.state.calls, [['high1-common']]);
+  assert.match(runtime.getElement('unit-content').innerHTML, /class="ug-table"/);
+});
+
+test('조각 경로: ?shards=0이면 조각을 쓰지 않고 옛 문항 색인 그대로 표를 그린다', async () => {
+  const site = makeShardSite();
+  const runtime = createRuntime({ teacher: true, url: 'http://unit.test/archive/unit-past-exams.html?shards=0', window: { Archive2CatalogShards: site.api } });
+  await runtime.window.UnitPastExams.init();
+  runtime.window.UnitPastExams.gridSelectGrade('h1');
+  assert.equal(site.state.created, 0, 'the loader is never created');
+  assert.match(runtime.getElement('unit-content').innerHTML, /class="ug-table"/);
+  assert.match(runtime.getElement('unit-content').innerHTML, /aria-label="다항식의 연산 [^"]*1문항"/);
+});
+
+test('조각 경로: 연결이 끊기면 한국어 안내를 하고 학년 단추를 다시 누르면 받아 열린다(화면은 멈추지 않는다)', async () => {
+  const site = makeShardSite();
+  const runtime = createRuntime({ teacher: true, questionIndex: [], url: 'http://unit.test/archive/unit-past-exams.html', window: { Archive2CatalogShards: site.api } });
+  await runtime.window.UnitPastExams.init();
+  site.state.fail = Object.assign(new Error('network'), { code: 'CATALOG_SHARD_NETWORK', retryable: true });
+  runtime.window.UnitPastExams.gridSelectGrade('h1');
+  for (let i = 0; i < 20; i += 1) await Promise.resolve();
+  assert.equal(runtime.getElement('unit-status').textContent, shardApi.NETWORK_MESSAGE);
+  assert.doesNotMatch(runtime.getElement('unit-content').innerHTML, /class="ug-table"/, 'no table from a failed load');
+  site.state.fail = null;
+  runtime.window.UnitPastExams.gridSelectGrade('h1');
+  for (let i = 0; i < 20; i += 1) await Promise.resolve();
+  assert.match(runtime.getElement('unit-content').innerHTML, /class="ug-table"/);
+});

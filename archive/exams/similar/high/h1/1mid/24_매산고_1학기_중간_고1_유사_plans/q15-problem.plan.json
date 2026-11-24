@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      6,
+      -3,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3/2",
+          "1/2",
+          "1/8"
+        ],
+        "domain": [
+          "-6",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "3",
+          "-3/4"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "-2"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "6"
+        },
+        {
+          "id": "D",
+          "x": "-2",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점이 A인 이차함수 f의 그래프와 꼭짓점이 C인 이차함수 g의 그래프, 그리고 사각형 ABCD를 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 f가 A에서 꼭짓점을 이루고 B를 지나며, 위로 볼록한 g가 C에서 꼭짓점을 이루고 y축에서 선분 CD와 만난다.",
+  "newVisualInformation": [
+    "두 포물선의 꼭짓점 A, C와 x축 위의 점 B, D, 사각형 ABCD의 네 변을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "양수 $a$에 대하여 꼭짓점이 $A(-2,-a)$이고 점 $B(2,0)$을 지나는 이차함수 $y=f(x)$의 그래프와 꼭짓점이 $C(2,3a)$인 이차함수 $y=g(x)$의 그래프가 있다. 점 $A$에서 $x$축에 내린 수선의 발을 $D$라 할 때, 사각형 $ABCD$의 넓이는 $16$이다. 이차함수 $y=g(x)$의 그래프가 $y$축과 만나는 점이 선분 $CD$ 위에 있을 때, $-3\\le t\\le 3$을 만족시키는 실수 $t$에 대하여 $8f(t)-4g(t)$의 최댓값과 최솟값의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

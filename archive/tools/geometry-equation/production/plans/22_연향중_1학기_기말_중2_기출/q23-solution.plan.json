@@ -1,0 +1,115 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [
+    "v"
+  ],
+  "displaySegments": [],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "hiddenPointNames": [
+    "A",
+    "B"
+  ],
+  "caption": "원본 수직선 x3을 표시하기 위해 임의 높이 −2,3의 두 표시 앵커를 고른다. 높이는 원문 조건이 아니다. y항이 없어 a0, 3·3−b−5=0에서 b4. 정답 a=0,b=4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형3. 다음 그림은 일차방정식 $3x-ay-b-5=0$의 그래프이다. 이때, 두 수 $a,b$의 값을 각각 구하시오. [5점] 보기: []",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본수직선x3을표시하기위해임의높이−2,3의두표시앵커를고른다. 높이는원문조건이아니다. y항이없어a0,3·3−b−5=0에서b4. 정답a=0,b=4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본수직선x3을표시하기위해임의높이−2,3의두표시앵커를고른다. 높이는원문조건이아니다. y항이없어a0,3·3−b−5=0에서b4. 정답a=0,b=4."
+  ]
+}

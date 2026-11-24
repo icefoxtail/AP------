@@ -18,7 +18,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 n, 세로축 대각선 수를 나타내는 좌표평면에 아래로 볼록한 포물선과 수평선이 만나는 점 하나가 표시되어 있다.",
+    "solutionImageCaption": "대각선의 개수가 20개이므로 n(n-3)/2=20이다. 양변에 2를 곱하면 n²-3n-40=0이고, 인수분해하면 (n-8)(n+5)=0이다. n은 자연수이므로 n=8이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -38,7 +42,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 긴 직사각형의 아랫변 아래에 x cm, 오른쪽 변 오른쪽에 x+5 cm의 길이 표시가 있고, 직사각형 내부에 넓이 126 cm²가 적혀 있다.",
+    "solutionImageCaption": "가로의 길이를 x cm라 하면 세로의 길이는 x+5 cm이고, 넓이가 126 cm²이므로 x(x+5)=126이다. x²+5x−126=0을 풀면 (x+14)(x−9)=0이므로 x=9이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -78,7 +87,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: a=1,2인 대표 그래프로 폭을 비교하고 y=−x²로 x축 대칭을 확인한다.",
+    "solutionImageCaption": "a=1,2인 대표 그래프로 폭을 비교하고 y=−x²로 x축 대칭을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -118,7 +131,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 주어진 점 (5,1)로 포물선의 계수를 정한다. x=−6에서 읽어야 하는 높이는 숨긴다.",
+    "solutionImageCaption": "꼭짓점과 주어진 점 (5,1)로 포물선의 계수를 정한다. x=−6에서 읽어야 하는 높이는 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -138,7 +155,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 포물선이 있고, 왼쪽 위의 꼭짓점 V에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "② y=-(x+1)²+1은 위로 볼록하고 꼭짓점이 (-1, 1)이므로 제2사분면에 있다. ①의 꼭짓점은 (0, -1), ③은 (2, 2), ④는 (2, -2), ⑤는 (-2, 0)이므로 제2사분면의 꼭짓점이 아니다. 그림은 ②의 그래프와 꼭짓점 V를 나타낸다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -160,7 +181,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "정사각형의 한 변을 $2t$라 하면 $A, D$는 $y=x^2$ 위에 있으므로 높이는 $15-t^2$이다. 정사각형이므로 $2t=15-t^2$, 즉 $(t+5)(t-3)=0$에서 $t=3$이다. 한 변이 $6$이므로 넓이는 $36$이다. 정답은 ⑤이다.",
     "score": 5.0,
-    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png"
+    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²과 수평선 y=15 사이에 정사각형 ABCD가 놓여 있고, 위의 두 변은 수평선 위에, 아래의 두 꼭짓점은 포물선 위에 있다. 네 변은 각각 수평·수직으로 그려져 있다.",
+    "solutionImageCaption": "정사각형의 한 변의 길이를 2t라 하면 A, D가 y=x² 위에 있으므로 높이는 15−t²이다. 2t=15−t²에서 (t+5)(t−3)=0이고 t는 양수이므로 t=3이다. 한 변이 6이므로 넓이는 36이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -180,7 +205,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 처음 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로·세로 변화량을 따로 읽는다.",
+    "solutionImageCaption": "처음 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로·세로 변화량을 따로 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -220,7 +249,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 축의 왼쪽과 오른쪽에서 높이가 변하는 방향이 다르다. 꼭짓점과 y절편으로 제시된 증가구간 설명을 검토한다.",
+    "solutionImageCaption": "축의 왼쪽과 오른쪽에서 높이가 변하는 방향이 다르다. 꼭짓점과 y절편으로 제시된 증가구간 설명을 검토한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -240,7 +273,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x와 세로축 y가 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "공의 높이는 y=−4.9x²+9.8x+3=−4.9(x−1)²+7.9이다. 따라서 x=1일 때 공은 최고 높이 7.9미터에 도달한다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -282,7 +320,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 k와 세로축 m이 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "이차함수의 최솟값은 m=−4k²−8k+1=−4(k+1)²+5이다. 따라서 m은 k=−1일 때 최댓값 5를 갖는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -302,7 +344,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 과일별 학생 수를 나타낸 막대그래프이다. 왼쪽부터 복숭아, 바나나, 포도, 수박, 참외 막대가 있고, 각각 3명, 7명, 7명, 8명, 5명을 나타낸다.",
+    "solutionImageCaption": "표에서 학생 수가 가장 많은 과일은 수박으로 8명이다. 최빈값은 자료에서 가장 많이 나타나는 값이므로 수박이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -342,7 +389,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "점 하나는 자료 하나이다. 같은 수가 쌓인 높이와 전체 자료의 가운데 순위를 따로 읽어 최빈값과 중앙값을 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -362,7 +413,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "예: 1, 2, 2, 3, 3, 4에서는 최빈값이 2와 3으로 여러 개이고, 자료가 6개일 때 중앙값은 가운데 두 값의 평균인 2.5라서 ㉠은 옳고 ㉡은 옳지 않다. 표준편차는 편차 제곱의 평균의 양의 제곱근이고 편차의 평균은 항상 0이므로 ㉢과 ㉥은 옳지 않다. 분산이 클수록 자료가 평균에서 멀리 흩어지고, 편차는 각 변량에서 평균을 뺀 값이므로 ㉣은 옳지 않고 ㉤은 옳다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -382,7 +437,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균을 0으로 둔 편차 수직선이다. 학생 점수의 대소는 편차의 대소와 같고 두 점수 차는 편차 차와 같다.",
+    "solutionImageCaption": "평균을 0으로 둔 편차 수직선이다. 학생 점수의 대소는 편차의 대소와 같고 두 점수 차는 편차 차와 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -402,7 +461,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "A미술관의 관람객 수는 5, 3, 4, 2, 1명으로 평균이 3명이고, 편차가 2, 0, 1, -1, -2이므로 분산은 2, 표준편차는 √2이다. B미술관의 관람객 수는 3, 3, 2, 5, 7명으로 평균이 4명이고, 편차가 -1, -1, -2, 1, 3이므로 분산은 16/5, 표준편차는 √(16/5)이다. 두 표준편차를 비교하면 A미술관이 B미술관보다 작아 관람객 수가 더 고르다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -422,7 +485,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -3, -1, 1의 편차가 점으로 표시되고, 그 양쪽 바깥에 점 A와 B가 있다.",
+    "solutionImageCaption": "다섯 편차의 합이 0이므로 a+b=3이고, 표준편차가 2√3이므로 편차 제곱의 합은 5×12=60에서 a²+b²=49이다. 따라서 (a+b)²=a²+2ab+b²에 대입하면 9=49+2ab이므로 ab=-20이다. a와 b는 (3±√89)/2에 위치하고, 수직선에는 주어진 편차 -3, -1, 1과 함께 나타내었다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -436,7 +503,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, 가장 낮은 점인 꼭짓점 V에 좌표 (2, -6)이 표시되어 있다.",
+    "solutionImageCaption": "y=x²-4x-2를 완전제곱식으로 고치면 y=(x-2)²-6이다. 이때 꼭짓점의 좌표는 (2, -6)이다. 따라서 답은 (2, -6)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -480,7 +551,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 변량의 값을 점으로 나타내 두 변량 사이의 관계를 보여 주는 그래프이다.",
+    "solutionImageCaption": "다섯 변량에 더한 값은 -2, -1, 3, 6, -1이고 그 합은 5이므로 더한 값의 평균은 1이다. 원래 다섯 변량의 평균이 10이므로 새 변량의 평균은 10+1=11이다. 예: a=b=c=d=e=10일 때 새 변량은 8, 9, 13, 16, 9이고 그 평균이 가로 기준선 11이다. 따라서 답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -494,6 +569,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q26-solution.svg",
+    "solutionImageAlt": "해설 그림: 계급별 도수를 막대로 나타내 자료의 분포를 보여 주는 히스토그램이다.",
+    "solutionImageCaption": "같은 폭의 계급을 도수로 나타낸다. 미상 A,B는 값 없는 점선 윤곽으로 두고 알려진 도수 3,2와 총합 10·평균 6의 조건을 함께 사용한다.",
+    "solutionImageSize": "full"
   }
 ];

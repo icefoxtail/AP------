@@ -159,7 +159,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 그래프가 세 개의 이차곡선 조각으로 이어져 있고, x축과 네 점 A, C, E, G에서 만난다. B와 F에서는 아래로 볼록한 극소, D에서는 위로 볼록한 극대를 이룬다.",
+    "solutionImageCaption": "도함수 f′(x)의 부호가 A에서 +에서 −로, C에서 −에서 +로, E에서 +에서 −로, G에서 −에서 +로 바뀐다. 따라서 f는 A, E에서 극대이고 C, G에서 극소이므로 극값은 네 개다. D는 f′의 극대점일 뿐 f′의 부호가 바뀌지 않으므로 f의 극대가 아니고, 닫힌구간 [B, D]에는 f′이 감소하는 부분이 있어 f가 계속 증가하지 않는다. 그러므로 옳은 것은 ㄷ, ㄹ이고 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -487,7 +491,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 양수 매개변수 k=1의 예시이다. x=0에서 감소하기 시작한 뒤 x=k에서 증가로 바뀌므로 그 지점의 높이를 확인한다. 예시를 최댓값을 주는 매개변수로 해석하지 않는다.",
+    "solutionImageCaption": "양수 매개변수 k=1의 예시이다. x=0에서 감소하기 시작한 뒤 x=k에서 증가로 바뀌므로 그 지점의 높이를 확인한다. 예시를 최댓값을 주는 매개변수로 해석하지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -703,7 +711,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+    "solutionImageCaption": "도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1128,7 +1140,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 곡선 y=f(t)와 t축 사이의 영역이 x=1부터 x=3까지 색칠되어 있고, 곡선 위의 점 A(1, 10)이 표시되어 있다.",
+    "solutionImageCaption": "예: f(t)=3t²−6t+13, a=1, x=3일 때 색칠한 영역의 넓이는 S(x)=F(x)−F(a)이다. 구하는 극한은 2 곱하기 F′(a)이고 F′(a)=f(a)=10이므로 값은 20이다. 따라서 답은 20이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 22,

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "-9",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-2",
+          "y": "-7",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "이동후 y3x−3+k에(−2,−7)을대입해 k2. 원래점(−2,−9)이위로 2올라간다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=3x-3$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 그래프가 점 $(-2,-7)$을 지날 때, $k$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

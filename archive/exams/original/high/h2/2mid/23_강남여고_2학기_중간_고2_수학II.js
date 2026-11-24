@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "기울기 1인 직선의 한 점 H가 속이 빈 점으로 표시된 그래프이며 H의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "x≠1에서 (x-1)(x+3)/(x-1)=x+3이므로 그래프는 직선 y=x+3에서 x=1인 점 H(1,4)만 빠진(속이 빈) 모양이다. x가 1에 가까워질 때 값은 4에 가까워지므로 극한은 4이다. x=1에서의 함숫값은 없지만 극한은 존재한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -218,7 +222,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 두 점 A, B를 잇는 할선을 나타낸 그래프이며 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: a=3일 때의 그래프이다. 평균변화율은 (f(1)-f(-1))/2=((5+a)-(5-a))/2=a이고 이것이 3이므로 a=3이다. 그림에서 할선 l은 두 점 A(-1,2), B(1,8)을 지나며 기울기가 평균변화율 3이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -304,7 +312,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 아래로 볼록한 포물선이 한 점 P에서 만나는 그래프이며 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "아래 경계는 h(x)=-x²+2x-3=-(x-1)²-2, 위 경계는 g(x)=x²-2x-1=(x-1)²-2이고 f(x)는 두 곡선 사이에 있다. 두 곡선은 점 P(1,-2)에서만 만나며 x→1이면 양쪽 경계가 모두 -2로 모이므로 f(x)도 -2로 수렴한다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -519,7 +531,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 4와 11을 양 끝으로 하는 열린구간이 굵게 표시되고, 그 안의 정수 5부터 10까지 자리에 눈금이 찍혀 있다.",
+    "solutionImageCaption": "f(1)=a와 f(3)=a-7이 4의 서로 반대쪽에 있어야 열린구간 (1,3)에서 f(x)=4의 근이 반드시 존재한다. a<4와 a-7<4에서 4<a<11이고, 끝값 4와 11은 열린구간의 근을 보장하지 못하므로 포함하지 않는다. 이 범위의 정수는 5, 6, 7, 8, 9, 10의 6개이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

@@ -95,7 +95,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널에는 정육면체에서 A에서 C까지 파란색과 주황색의 두 경로가, 오른쪽 패널에는 C에서 L까지 파란색과 주황색의 두 경로가 표시되어 있다. 아래쪽 넓은 직육면체에는 A에서 L까지 초록색 경로가 표시되어 있다.",
+    "solutionImageCaption": "최단 경로는 가로 2번, 깊이 1번, 높이 1번의 네 이동을 배열하는 경우이므로 전체는 12가지이다. A에서 C까지는 가로 1번과 깊이 1번을 배열하는 2가지이고, C에서 L까지는 가로 1번과 높이 1번을 배열하는 2가지이다. 따라서 C를 지나는 최단 경로는 2×2=4가지이므로 확률은 4/12=1/3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -193,7 +198,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "정규분포 곡선은 평균 m을 지나는 직선 x=m에 대하여 대칭이다(ㄴ). 그래서 m−σ부터 m까지와 m부터 m+σ까지의 넓이가 같고, m−σ부터 m+σ까지의 확률은 m−σ부터 m까지의 두 배이다(ㄱ). 또 (X−m)/σ는 평균 0, 표준편차 1인 표준정규분포를 따른다(ㄷ). 따라서 ㄱ, ㄴ, ㄷ이 모두 옳아 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -287,7 +296,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6×6 순서쌍 표에서 |a−3|+|b−2|=3인 8칸 중 a=b가 아닌 6칸은 연한 회색, a=b인 대각선 6칸은 진한 회색으로 칠했다. 대각선의 (1,1), (4,4)는 두 조건에 모두 속하는 2칸이다. 합집합은 8+6−2=12칸이므로 확률은 12/36=1/3이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -356,9 +369,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
-    "solutionImageCaption": "P(X≤5)=0.0228이므로 5의 표준화 값은 −2이고 (5−m)/2=−2에서 m=9이다. 4는 z=−2.5, 11은 z=1이므로 P(4≤X≤11)=P(−2.5≤Z≤1)이다. 표에서 0.4938+0.3413=0.8351이다. 따라서 답은 ④이다.",
+    "solutionImageCaption": "5 이하일 확률이 0.0228이므로 5의 표준화 값은 -2이고, 이를 풀면 평균 m=9이다. 4와 11의 표준화 값은 각각 -2.5와 1이다. 4 이상 11 이하의 넓이는 0.4938과 0.3413의 합인 0.8351이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -392,7 +405,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 가운데에서 꼭짓점을 찍고 내려오는 삼각형 모양의 확률밀도함수 그래프이며 왼쪽 삼각형과 오른쪽 삼각형이 다른 농도로 칠해져 있다.",
+    "solutionImageCaption": "확률밀도함수의 그래프는 (0,0), 꼭짓점 (a, 4/13), (b, 0)을 잇는 삼각형 모양이다. 왼쪽 삼각형의 넓이가 P(X≤a)=7/13이고 오른쪽 삼각형이 P(X≥a)=6/13이다. 왼쪽 넓이 2a/13=7/13에서 a=7/2, 오른쪽 넓이 (b−a)/b=6/13에서 b=13/2이다. 그림은 이 값으로 그렸고 2(a+b)=20이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -622,9 +639,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
-    "solutionImageCaption": "두 근의 합이 24이므로 두 근 α, β는 평균 12에 대하여 대칭이다. P(α≤X≤β)=0.8664=2×0.4332이므로 경계는 z=±1.5이고 평균에서 거리가 1.5×2=3이다. 따라서 α=9, β=15이고 a=9×15=135이다. 따라서 답은 ③이다.",
+    "solutionImageCaption": "이차방정식의 두 근의 합이 24이므로 두 근의 중점은 평균 12이다. 두 근 사이의 확률 0.8664는 0.4332의 두 배이므로 표준점수 1.5까지의 넓이이다. 표준편차가 2이므로 두 근은 9와 15이고 곱은 135이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -657,7 +674,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "E(X²)=σ²+30²=916에서 σ=4이다. P(X≥26)=0.8413이므로 P(Y≥46)=0.1587=P(Z≥1)이고 m=46−4=42이다. 같은 분산의 두 곡선의 교점은 평균 30, 42의 중점 36이고, Y의 대칭으로 b=48이다. P(36≤Y≤48)=P(−1.5≤Z≤1.5)=2×0.4332=0.8664이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -690,9 +711,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
-    "solutionImageCaption": "확률질량함수는 성공확률 4/5인 이항분포이고 평균 4n/5=180에서 n=225이다. 분산은 225×4/5×1/5=36, 표준편차는 6이다. X≥174를 표준화하면 z=(174−180)/6=−1 이상이므로 확률은 0.5+0.3413=0.8413이다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "성공확률이 4/5인 이항분포에서 평균이 180이므로 시행 횟수는 225이다. 분산은 36이므로 표준편차는 6이고, 174의 표준점수는 −1이다. 따라서 P(X≥174)는 0.5+0.3413=0.8413이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -748,7 +769,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "f(20)=g(20)=f(16)이므로 X의 평균은 16과 20의 중점 18이다. 평균에 대한 대칭으로 P(15≤X≤18)=P(18≤X≤21)=a이다. Y는 X를 오른쪽으로 4만큼 옮긴 분포이므로 b=P(17≤X≤21)이고, P(17≤X≤18)=P(18≤X≤19)=b−a이다(그림의 c). 그러면 P(19≤X≤21)=a−(b−a)=2a−b이다(그림의 d, 왼쪽의 15~17도 대칭으로 같은 d). 그림의 모양은 X의 예이고 구간 길이만 정확하다. 따라서 답은 2a−b이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -26,6 +26,8 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { UNIT_PAST_SCHEMA, unitPastExtras } from './build-archive2-unit-past-part.mjs';
+import { examMetaExtras, projectExamMeta } from './build-archive2-exam-meta-part.mjs';
 
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
@@ -37,6 +39,12 @@ export const CATALOG_SHARDS_INPUTS = Object.freeze([
   'archive/data/archive2-catalog.json',
   'archive/data/archive2-canonical-input-manifest.json',
   'archive/data/meta-foundation/course-aliases.v1.json',
+  // stage 2-3 (the unit-past part, build-archive2-unit-past-part.mjs): the legacy question index and the two scripts that merge the approved
+  // metadata with the foundation runtime. The assembled sidecar (archive/data/question_metadata.json) is the assembly of registered shards that the
+  // release identity already checks for the question-metadata browser copy, so it is not listed here (it is not a registered path).
+  'archive/question-index.js',
+  'archive/question-meta.js',
+  'archive/meta-foundation-runtime.js',
 ]);
 export const COURSE_ALIASES_PATH = 'archive/data/meta-foundation/course-aliases.v1.json';
 export const CANONICAL_JS_PATH = 'archive/archive2-canonical.js';
@@ -108,6 +116,7 @@ export function slimRecord(record) {
 // gets the same basicEligibility and advancedEligible result as with the full authority.
 export const CATALOG_COMMON_PATH = 'common.json';
 export const CATALOG_COMMON_SCHEMA = 'archive2-catalog-common-v1';
+export const CATALOG_FINDER_SCHEMA = 'archive2-catalog-finder-v1';
 export const CATALOG_AUTHORITY_SCHEMA = 'archive2-catalog-shard-authority-v1';
 export const AUTHORITY_UNUSED_CATALOG_KEYS = Object.freeze(['basicScopeLinks']); // shipped as [] (see the comment above)
 // Keys of an assignment row the validators and screens read (validateBasicAssignment, validateAdvancedAssignment,
@@ -209,7 +218,14 @@ export function makeCourseBuckets(aliasDoc) {
   const canonical = (value) => { const g = spelling.get(compact(value)); return g ? compact(g.members[0]) : compact(value); };
   const byName = new Map();
   const buckets = new Map();
-  const add = (name, bucket) => { buckets.set(bucket.key, bucket); byName.set(canonical(name), bucket); };
+  // every spelling that resolves to a bucket, so a screen can put a name that is not an exam (a generated question's subject) into the same course
+  const spellings = new Map();
+  const add = (name, bucket) => {
+    buckets.set(bucket.key, bucket); byName.set(canonical(name), bucket);
+    if (!spellings.has(bucket.key)) spellings.set(bucket.key, new Set());
+    const group = spelling.get(compact(name));
+    for (const member of group ? group.members : [name]) spellings.get(bucket.key).add(compact(member));
+  };
   for (const group of aliasDoc?.successorGroups || []) {
     const bucket = { key: keyOfGroupId(group.id), label: group.subject || group.id };
     for (const courses of Object.values(group.curricula || {})) for (const course of courses) add(course, bucket);
@@ -220,7 +236,11 @@ export function makeCourseBuckets(aliasDoc) {
     const bucket = { key: keyOfGroupId(group.id), label: group.members[0] };
     for (const member of group.members) add(member, bucket);
   }
-  return { bucketOf: (name) => byName.get(canonical(name)) || null, all: () => [...buckets.values()] };
+  return {
+    bucketOf: (name) => byName.get(canonical(name)) || null,
+    all: () => [...buckets.values()],
+    namesOf: (key) => [...(spellings.get(key) || [])].sort(),
+  };
 }
 
 const MIDDLE_GRADES = ['중1', '중2', '중3'];
@@ -282,8 +302,8 @@ export function splitBucketFiles(groups, limit = SHARD_RAW_LIMIT_BYTES) {
   return out;
 }
 
-const shardFileText = (key, indexVersion, lines, authority) =>
-  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]${authority ? `,"authority":${JSON.stringify(authority)}` : ''}}\n`;
+const shardFileText = (key, indexVersion, lines, authority, unit) =>
+  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]${authority ? `,"authority":${JSON.stringify(authority)}` : ''}${unit ? `,"unit":${JSON.stringify(unit)}` : ''}}\n`;
 const sha256Hex = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 
 // catalog: the object resolveCatalog returns (or any object with .records, .exams, .indexVersion, .identityDigest).
@@ -318,7 +338,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   const pending = []; // shards in order: { key, bucket, part, lines, records }
   let recordTotal = 0;
   for (const { bucket, groups } of entries) {
-    const course = { key: bucket.key, label: bucket.label, kind: bucket.kind, ...(bucket.grade ? { grade: bucket.grade } : {}), shards: [] };
+    // `names`: every spelling of the course's name (문제은행 검색 puts a generated question, which has a subject but no exam, into the course of that name)
+    const names = bucket.kind === 'course' ? buckets.namesOf(bucket.key) : [];
+    const course = { key: bucket.key, label: bucket.label, kind: bucket.kind, ...(bucket.grade ? { grade: bucket.grade } : {}), ...(names.length ? { names } : {}), shards: [] };
     for (const part of splitBucketFiles(groups, limit)) {
       const key = `${bucket.key}${part.suffix}`;
       if (!SHARD_KEY_PATTERN.test(key)) throw new Error(`shard key is not a plain file name: ${key}`);
@@ -356,7 +378,13 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     const authority = withAuthority
       ? projectShardAuthority(catalog, indexVersion, records, catalog.exams.filter((exam) => examShard[exam.file] === key))
       : null;
-    const content = Buffer.from(shardFileText(key, indexVersion, lines, authority), 'utf8');
+    // STAGE 2-3: the two inputs 단원별 기출 joins (see build-archive2-unit-past-part.mjs), one entry per record of this shard, in its order
+    let unit = null;
+    if (extras.unitPast) {
+      const rows = records.map((record) => extras.unitPast.rowOf(record));
+      unit = { schemaVersion: UNIT_PAST_SCHEMA, index: rows.map((row) => row[0]), meta: rows.map((row) => row[1]) };
+    }
+    const content = Buffer.from(shardFileText(key, indexVersion, lines, authority, unit), 'utf8');
     const rel = `shard-${key}.json`;
     files.set(rel, content);
     shards.push({
@@ -371,6 +399,8 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   let commonInfo = null;
   if (withAuthority) {
     const common = projectCommon(catalog, extras);
+    if (extras.unitPast) common.unitPast = extras.unitPast.common;
+    if (extras.finder) common.finder = extras.finder;
     // source hashes of files that belong to no exam of the catalog stay common (none today), so no entry is lost
     const examFiles = new Set(catalog.exams.map((exam) => exam.file));
     const loose = (catalog.sourceHashes || []).filter((entry) => !examFiles.has(entry[0]));
@@ -379,6 +409,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     files.set(CATALOG_COMMON_PATH, content);
     commonInfo = { path: CATALOG_COMMON_PATH, sha256: sha256Hex(content), bytes: content.length };
   }
+  // the approved metadata of each exam (original-exam window, class registration): one small file per exam, see build-archive2-exam-meta-part.mjs
+  const examMetaPart = extras.examMeta ? projectExamMeta(extras.examMeta, indexVersion) : null;
+  if (examMetaPart) for (const [rel, content] of examMetaPart.files) files.set(rel, content);
   const index = {
     schemaVersion: CATALOG_SHARDS_INDEX_SCHEMA,
     recordSchema: CATALOG_SHARD_FILE_SCHEMA,
@@ -394,6 +427,8 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     shards,
     examShard: examShardInCatalogOrder,
     ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
+    ...(extras.unitPast ? { unitPastSchema: UNIT_PAST_SCHEMA } : {}),
+    ...(examMetaPart ? { examMeta: examMetaPart.index } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -438,8 +473,13 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const input of CATALOG_SHARDS_INPUTS) {
     if (!fs.statSync(path.join(root, input), { throwIfNoEntry: false })?.isFile()) throw new Error(`catalog shards input is missing: ${input}`);
   }
-  const { catalog, bundle } = await loadResolvedCatalog(root);
+  const { catalog, bundle, canonical } = await loadResolvedCatalog(root);
   const extras = catalogExtras(root, catalog, bundle);
+  // STAGE 2-3: what 단원별 기출 needs next to the records (null when the assembled metadata sidecar is not there: that screen then keeps the whole bundle)
+  const unitPast = await unitPastExtras(root, { catalog, bundle, canonical, core: createRequire(import.meta.url)(path.join(root, 'archive/archive2-core.js')) });
+  if (unitPast) extras.unitPast = unitPast;
+  const examMeta = examMetaExtras(root, catalog);
+  if (examMeta) extras.examMeta = examMeta;
   const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
@@ -448,13 +488,15 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const [rel, content] of [...projection.files.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     const reason = rel === CATALOG_COMMON_PATH
       ? 'catalog common tables (authority tables and catalog-level lists that do not depend on a question)'
-      : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
+      : rel.startsWith('exam-meta/')
+        ? 'approved question metadata of one exam (original-exam window, class registration), the records of the browser copy for that exam'
+        : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
     entries.push({
       path: `${CATALOG_SHARDS_DIR}/${rel}`, content, bytes: content.length, sourceBytes: 0,
       reasons: [reason], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
     });
   }
-  return { entries, index: projection.index, files: projection.files, catalog };
+  return { entries, index: projection.index, files: projection.files, catalog, bundle, canonical };
 }
 
 // Values the browser computes next to resolveCatalog (archive/meta-foundation-runtime.js), computed here once for the whole catalog:
@@ -477,7 +519,56 @@ export function catalogExtras(root, catalog, bundle) {
   }
   const built = catalog.health || {};
   const browseGradesOf = (record) => BROWSE_GRADES.filter((grade) => core.browseGradeMatchesRecord(record, grade, catalog.projectionPolicy));
-  return { labels, browseGradesOf, health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
+  return { labels, browseGradesOf, finder: finderPart(root, catalog), health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
+}
+
+// ---- 학교별 기출(찾기) 표: what the school finder reads of the records, per exam (2026-11-24, 조각 3단계) ----------------------------------
+// The finder lists EXAMS. Which exams a grade / curriculum / course / subject filter keeps, and which exams a search word finds in the
+// questions' L1-L4 names, depends on the records of each exam. Those are computed here once, with the browser's own functions
+// (Archive2Core.buildFinderIndex, Archive2UnifiedUnits.buildIndex / examSubjects, normalizeSearch) over the same slim records the shards
+// carry, so the finder can answer from this table without any shard (archive/archive2-catalog-shards.js assembleFinder turns it back
+// into the shapes the finder reads). Arrays are parallel to `files` (catalog exam order); every set is sorted and the label dictionary
+// is in first-use order of the catalog's records, so two builds give the same bytes.
+//   identity[i]  = [courseKeys, curriculumKeys, sourceGrades, subjectProjections, subjectCurriculumPairs] of exam i (buildFinderIndex)
+//   subjects[i]  = the unified subjects the exam's questions fall in (examSubjects), null when none
+//   labels / labelsByExam[i] = distinct normalized "L1 L2 L3 L4 + parent L1 L2" texts of the exam's questions (indexes into labels)
+//   uidChars     = the characters question uids are made of: a search word made only of them could match a uid, which is not in this table
+export function finderPart(root, catalog) {
+  const require = createRequire(import.meta.url);
+  const core = require(path.join(root, 'archive/archive2-core.js'));
+  const Unified = require(path.join(root, 'archive/archive2-unified-units.js'));
+  const records = catalog.records.map(slimRecord);
+  const finderIndex = core.buildFinderIndex({ ...catalog, records });
+  const unified = Unified.buildIndex(records, { projectionPolicy: catalog.projectionPolicy });
+  const subjectsOf = Unified.examSubjects(unified);
+  const sorted = (set) => [...set].sort();
+  const files = catalog.exams.map((exam) => exam.file);
+  const identity = files.map((file) => {
+    const row = finderIndex.get(core.normalizeFile(file));
+    return row ? [sorted(row.courseKeys), sorted(row.curriculumKeys), sorted(row.sourceGrades), sorted(row.subjectProjections), sorted(row.subjectCurriculumPairs)] : null;
+  });
+  const subjects = files.map((file) => { const set = subjectsOf.get(core.normalizeFile(file)); return set && set.size ? sorted(set) : null; });
+  const dictionary = new Map();
+  const byFile = new Map();
+  const uidChars = new Set();
+  for (const record of records) {
+    for (const char of core.normalizeSearch(record.questionUid)) uidChars.add(char);
+    const entry = unified.byUid.get(record.questionUid);
+    const parent = entry?.rpmParentStatus === 'EXACT' ? entry.rpmParent : null;
+    const text = core.normalizeSearch([record.L1, record.L2, record.L3, record.L4, parent?.L1, parent?.L2].filter(Boolean).join(' '));
+    if (!text) continue;
+    if (!dictionary.has(text)) dictionary.set(text, dictionary.size);
+    let set = byFile.get(record.sourceFile);
+    if (!set) byFile.set(record.sourceFile, (set = new Set()));
+    set.add(dictionary.get(text));
+  }
+  return {
+    schemaVersion: CATALOG_FINDER_SCHEMA,
+    files, identity, subjects,
+    labels: [...dictionary.keys()],
+    labelsByExam: files.map((file) => [...(byFile.get(file) || [])].sort((a, b) => a - b)),
+    uidChars: sorted(uidChars).join(''),
+  };
 }
 
 export const gzipBytes = (buffer) => zlib.gzipSync(buffer, { level: 6 }).length;
@@ -492,7 +583,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const built = await buildCatalogShards(root);
   fs.rmSync(target, { recursive: true, force: true });
   fs.mkdirSync(target, { recursive: true });
-  for (const entry of built.entries) fs.writeFileSync(path.join(target, path.basename(entry.path)), entry.content);
+  for (const entry of built.entries) {
+    const out = path.join(target, path.relative(CATALOG_SHARDS_DIR, entry.path)); // exam-meta/<key>.json sits in a folder of its own
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, entry.content);
+  }
   let rawTotal = 0; let gzTotal = 0;
   console.log('shard'.padEnd(34), 'records'.padStart(8), 'exams'.padStart(6), 'raw'.padStart(11), 'gzip'.padStart(10));
   for (const shard of built.index.shards) {

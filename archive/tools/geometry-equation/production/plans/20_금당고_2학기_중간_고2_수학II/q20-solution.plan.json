@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: a=2일 때 f의 그래프이다. 주기 2로 [-1,1)의 모양이 반복되어 x=1에서 왼쪽은 열린 점 (1,1)로, f(1)=a=2인 닫힌 점은 위에 있다. x=0에서는 양쪽이 모두 2로 이어진다. |f+c|가 연속이려면 x=0에서 |a+c|=|2+c|, x=1에서 |1+c|=|a+c|이어야 하고 c=-3/2, a=1 또는 2이다. a-c는 5/2 또는 7/2이므로 합은 6이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 실수 $a$에 대하여 실수 전체의 집합에서 정의된 함수 $f(x)$가 다음을 만족시킨다.\n\n(가) $-1 \\le x < 1$일 때, $f(x) = \\begin{cases} a & (-1 \\le x < 0) \\\\ 2-x^2 & (0 \\le x < 1) \\end{cases}$\n(나) 모든 실수 $x$에 대하여 $f(x)=f(x+2)$이다.\n\n함수 $|f(x)+c|$ ($c$는 실수)가 실수 전체의 집합에서 연속일 때, $a-c$의 최댓값과 최솟값의 합을 구하여라. [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주기 2인 조각함수의 x=0, 1에서의 좌우극한과 함숫값을 열린 점과 닫힌 점으로 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "주기 2인 f가 x=1에서 열린 점 (1,1)과 닫힌 점 (1,2)로 끊어지고 x=0, 2에서는 이어짐을 보인다."
+  ],
+  "accessibilityDescription": "높이 2의 수평선이 내려가는 곡선으로 이어졌다가 x=1에서 위쪽 닫힌 점으로 점프하고 다시 수평선과 곡선이 반복되는 그래프이다."
+}

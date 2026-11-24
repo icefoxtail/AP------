@@ -56,7 +56,11 @@ window.questionBank = [
       "scope": "수학_하",
       "l3": "합·곱의 법칙",
       "l4": "경우를 나누어 세기"
-    }
+    },
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "1부터 8까지의 순서쌍 (x, y)를 가로세로로 놓은 8×8 표에서 x+y가 6의 배수인 칸을 칠했다. x+y의 범위는 2부터 16이므로 6의 배수는 6과 12뿐이다. x+y=6인 칸이 5개, x+y=12인 칸이 5개이고 겹치지 않으므로 모두 10개이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

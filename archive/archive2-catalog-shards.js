@@ -19,6 +19,8 @@
   const SHARD_SCHEMA = "archive2-catalog-shard-v2";
   const COMMON_SCHEMA = "archive2-catalog-common-v1";
   const AUTHORITY_SCHEMA = "archive2-catalog-shard-authority-v1";
+  const UNIT_PAST_SCHEMA = "archive2-catalog-unit-past-v1";
+  const FINDER_SCHEMA = "archive2-catalog-finder-v1";
   const text = (value) => String(value ?? "").trim();
 
   // validateBasicAssignment compares identityByUid[uid] with the record's own uid, file, ordinal and status, so the identity table is
@@ -121,9 +123,74 @@
       sourceHashes,
       canonicalAuthority: authority,
       shardKeys: docs.map((doc) => doc.key),
+      // 단원별 기출 (stage 2-3): ready when the common file and every shard held carry the part that screen joins (unitPastRows turns a doc into the join's inputs)
+      unitPast: {
+        ready: Boolean(common.unitPast && common.unitPast.schemaVersion === UNIT_PAST_SCHEMA) && docs.every((doc) => doc.unit && doc.unit.schemaVersion === UNIT_PAST_SCHEMA),
+        common: common.unitPast || null,
+        docs,
+      },
       // true when every shard of the release is in: a screen that needs the whole list can tell a partial catalog from a complete one
       complete: docs.length === (index.shards || []).length,
     };
+  }
+
+  // ---- 단원별 기출 (stage 2-3): the two inputs of its join, from one shard file ---------------------------------------------------
+  // The screen joins question-index rows (the unit, sub-unit and level of each question as the legacy index has them) with the approved
+  // metadata rows (the sidecar merged with the foundation runtime): archive/unit-past-exams.js joinApprovedMetadata. The builder
+  // (tools/lib/build-archive2-unit-past-part.mjs) stores both for each record next to it; this puts them back into the shapes the join
+  // takes. Nothing is decided here: the values are the ones the whole-bundle path reads.
+  function unitPastRows(unitCommon, doc) {
+    if (!unitCommon || !doc || !doc.unit || !Array.isArray(doc.unit.index) || !Array.isArray(doc.unit.meta))
+      throw Object.assign(new Error("catalog shard has no unit part: " + (doc && doc.key)), { code: "CATALOG_SHARD_INVALID" });
+    const columns = unitCommon.indexColumns;
+    const questionIndex = [];
+    const metaRecords = [];
+    doc.records.forEach((record, i) => {
+      const tuple = doc.unit.index[i];
+      if (tuple) {
+        const row = { qKey: "", sourceFile: record.sourceFile, sourceOrdinal: record.sourceOrdinal, sourceExamKey: record.sourceFile };
+        for (let k = 0; k < columns.length; k += 1) row[columns[k]] = tuple[k];
+        row.qKey = record.sourceFile + "_" + row.id; // the index's own rule (sourceFile_id)
+        questionIndex.push(row);
+      }
+      const meta = doc.unit.meta[i];
+      if (meta) {
+        metaRecords.push({
+          ...meta,
+          questionUid: meta.questionUid === true ? record.questionUid : meta.questionUid,
+          sourceArchiveFile: record.sourceFile,
+          sourceOrdinal: record.sourceOrdinal,
+        });
+      }
+    });
+    return { questionIndex, metaRecords };
+  }
+  // What the screen sets up once: the foundation runtime authority (owned scopes and taxonomy rows) its join checks every question against.
+  function unitPastRuntime(unitCommon) {
+    return { status: "ACTIVE", ownedScopes: unitCommon.runtime.ownedScopes, taxonomyRows: unitCommon.runtime.taxonomyRows };
+  }
+
+  // ---- 학교별 기출(찾기) 표 (stage 3): the school finder answers from the common file, without any shard ----------------------------
+  // `common.finder` (tools/lib/build-archive2-catalog-shards.mjs finderPart) holds, per exam, what the finder reads of the records: the
+  // exam's identity sets (Archive2Core.buildFinderIndex), the unified subjects its questions fall in (examSubjects) and the distinct
+  // L1-L4 texts of its questions. This turns them back into the shapes the finder code already reads: a Map for finderMatches, a Map of
+  // Sets for the subject check and the search words. null when the common file has no such part (an older build) or is of another release.
+  function assembleFinder(common, normalizeFile) {
+    const part = common && common.finder;
+    if (!part || part.schemaVersion !== FINDER_SCHEMA || !Array.isArray(part.files) || !Array.isArray(part.identity) || !Array.isArray(part.labels)) return null;
+    const norm = typeof normalizeFile === "function" ? normalizeFile : (value) => String(value ?? "");
+    const finderIndex = new Map();
+    const examSubjects = new Map();
+    const labelsByFile = new Map();
+    part.files.forEach((file, i) => {
+      const key = norm(file);
+      const row = part.identity[i];
+      if (row) finderIndex.set(key, { courseKeys: new Set(row[0]), curriculumKeys: new Set(row[1]), sourceGrades: new Set(row[2]), subjectProjections: new Set(row[3]), subjectCurriculumPairs: new Set(row[4]) });
+      const subjects = part.subjects && part.subjects[i];
+      if (subjects && subjects.length) examSubjects.set(key, new Set(subjects));
+      labelsByFile.set(file, (part.labelsByExam[i] || []).map((at) => part.labels[at]));
+    });
+    return { finderIndex, examSubjects, labelsOf: (file) => labelsByFile.get(file) || [], uidChars: new Set(String(part.uidChars || "")), indexVersion: common.indexVersion, identityDigest: common.identityDigest, files: part.files };
   }
 
   // ---- the loader (stage 2-2): fetch, verify, assemble ---------------------------------------------------------------------
@@ -226,6 +293,8 @@
     // The shard the questions of an exam are in. Looked up in the index (never derived from the subject name: the five 중2 exams whose
     // registered course says 중1 are in the m2 shard).
     function shardKeyOfExam(file) { return needIndex().examShard[file] || null; }
+    // Every exam file the index knows (a screen that picks shards by a rule of its own over file names, e.g. 단원별 기출 by scope prefix).
+    function examFiles() { return Object.keys(needIndex().examShard); }
 
     // One verified file. `entryOf(index)` finds the file's entry in an index; the retry asks it again after a fresh index.
     async function verified(entryOf, cacheMode) {
@@ -311,7 +380,7 @@
       throw failure("CATALOG_SHARD_STALE", STALE_MESSAGE, true);
     }
     return {
-      loadIndex, hasIndex: () => index !== null, courses, shardKeysOfCourse, shardKeyOfExam, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
+      loadIndex, hasIndex: () => index !== null, courses, shardKeysOfCourse, shardKeyOfExam, examFiles, keysFor, loadShard, loadShards, loadCommon, loadCatalog,
       // for tests and the screen's status line: what is held now
       held: () => ({ indexVersion: index && index.indexVersion, shards: [...wanted], generation }),
     };
@@ -320,8 +389,25 @@
   // The address says ?shards=0 (or off / false): this document uses the whole bundle, as before stage 2. The default (no parameter) is shards.
   const shardsDisabled = (search) => /[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(String(search || ""));
 
+  // 문제은행 검색 (archive/problem-bank-search.html): the course (`courses[].key` of index.json) a generated question belongs to, or null
+  // (then only the whole-list scope has it). A generated question has a grade and a subject but no exam: a middle school grade is its own course;
+  // a high school subject is looked up in `courses[].names`, every spelling of the course's name the builder knows.
+  const nameKey = (value) => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+  function courseOfGenerated(courses, row) {
+    const grade = text(row && row.grade);
+    const byGrade = (courses || []).find((course) => course.kind === "grade" && course.grade === grade);
+    if (byGrade) return byGrade.key;
+    for (const value of [row && row.subject, row && row.meta && row.meta.standardCourse, row && row.metaProjection && row.metaProjection.standardCourse]) {
+      const name = nameKey(value);
+      if (!name) continue;
+      const hit = (courses || []).find((course) => course.kind === "course" && (course.names || []).some((known) => known === name || known === name.replace(/c$/, "")));
+      if (hit) return hit.key;
+    }
+    return null;
+  }
+
   return {
     SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
-    identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
+    UNIT_PAST_SCHEMA, FINDER_SCHEMA, assembleFinder, unitPastRows, unitPastRuntime, identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled, courseOfGenerated,
   };
 });

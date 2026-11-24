@@ -707,7 +707,12 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 만나는 위로 볼록한 포물선과 아래로 볼록한 포물선, 두 포물선에 원점에서 접하는 직선을 나타낸 그래프이다.",
+    "solutionImageCaption": "아래 경계 h(x)=-2x²+2x와 위 경계 g(x)=2x²+2x 사이에 f(x)가 있고 두 곡선은 원점 O에서 기울기 2인 직선 y=2x에 접한다. x>0에서 x로 나누면 -2x+2≤f(x)/x≤2x+2이므로 샌드위치 정리에 따라 f(x)/x→2이다. 식은 (f/x)²/(3+f/x)이므로 극한은 4/5이다. 따라서 답은 4/5이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 17,

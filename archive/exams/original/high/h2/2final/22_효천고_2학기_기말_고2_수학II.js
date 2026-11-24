@@ -106,7 +106,11 @@ window.questionBank = [
     "rpmL3": "속도와 가속도",
     "rpmL4": "위치·속도·가속도",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 t≥0인 구간이 표시되고, 그 위 줄에 후보값 -1과 5가 놓여 있다.",
+    "solutionImageCaption": "속도는 위치의 도함수이므로 v(t)=3t²-12t-9이다. v(t)=6에서 t²-4t-5=0이므로 t=-1 또는 t=5이다. 시각은 t≥0이므로 t=5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -633,7 +637,12 @@ window.questionBank = [
     "rpmL3": "정적분의 뜻",
     "rpmL4": "정적분 계산",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=3x²+1과 x축 사이에서 x=1부터 x=3/2까지의 영역 S가 색칠되어 있고, 두 끝점 A, B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "곡선 y=3x²+1과 x축, 두 직선 x=1, x=1+h로 둘러싸인 넓이를 S(h)라 하자. h=1/2인 예에서 S(h)=4h+3h²+h³이므로 S(h)/h=4+3h+h²이다. h가 0에 가까워지면 이 값은 4에 가까워진다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 12,
@@ -688,7 +697,12 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 오른쪽 위로 향하는 직선이 그려져 있고, x=0에서 y=-8인 점 A와 x=3에서 y=1/2인 점 B가 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=17x/6-8인 경우 그래프는 두 점 (0, -8)과 (3, 1/2)를 지난다. 곱의 미분을 거꾸로 쓰면 주어진 적분은 0에서 3까지 (x³-1)f(x)의 변화량이므로 26f(3)-(-1)f(0)=26f(3)+f(0)이다. 26f(3)-8=5에서 f(3)=1/2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 13,
@@ -743,7 +757,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 x=0부터 x=1까지 색칠된 영역, 영역 안의 넓이 값, 두 끝점 A와 B가 보인다.",
+    "solutionImageCaption": "f(x)=3x²+2x+K로 두면 f(1)-f(0)=5이므로 K=5이다. 따라서 f(x)=3x²+2x+5이고 0부터 1까지의 정적분은 7이다. 그림은 그 영역을 색칠하고 넓이 7을 표시한 것이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -975,7 +993,11 @@ window.questionBank = [
     "rpmL3": "속도와 거리",
     "rpmL4": "속도에서 이동거리",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 D 위에 사차곡선이 원점과 두 양의 영점에서 가로축과 만나고, 두 양의 영점 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 자동차의 상대 변위는 D(t)=t²(t−2)(t−3)/4로 정리된다. t=0은 출발 순간이므로 제외하면 처음 다시 만나는 양의 시각은 t=2이다. t=3은 두 번째 만남이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1037,7 +1059,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q18.png",
-    "imageAlt": "삼차함수의 x절편 -2,2,a"
+    "imageAlt": "삼차함수의 x절편 -2,2,a",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "g의 극값은 부호를 바꾸는 근에서만 생긴다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1099,7 +1125,12 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q19.png",
-    "imageAlt": "f,g 교점 0,α,β와 S1,S2"
+    "imageAlt": "f,g 교점 0,α,β와 S1,S2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x(x−1)(x−3)이 x축과 만나는 세 점을 지나고, 0과 1 사이와 1과 3 사이의 영역이 각각 S₁, S₂로 색칠되어 있다.",
+    "solutionImageCaption": "예로 f(x)=x(x−2)², g(x)=x를 잡으면 h′(x)=f(x)−g(x)=x(x−1)(x−3)이다. 이때 α=1, β=3이고 S₁=5/12, S₂=8/3이므로 S₁<S₂이다. h′의 부호가 음, 양, 음, 양으로 바뀌어 h는 x=0에서도 극솟값을 가진다. 참인 것은 ㄱ, ㄷ, ㄹ 세 개이므로 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 20,
@@ -1214,7 +1245,11 @@ window.questionBank = [
     "rpmL3": "방정식과 부등식",
     "rpmL4": "근의 개수",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세제곱 곡선이 왼쪽 아래에서 올라와 점 M에서 극댓값을, 점 m에서 극솟값을 가진 뒤 다시 올라간다. 두 점 M, m이 모두 x축 위에 있어 곡선이 x축과 한 점에서만 만난다.",
+    "solutionImageCaption": "n=1일 때 F(x)=x³-3x+32는 x=-1에서 극댓값 34, x=1에서 극솟값 30을 가져 극솟값이 양수이므로 x축과 한 점에서만 만난다. n=2, 3일 때도 극솟값 2n(16-n²)이 양수이고, n=4이면 0, n이 5 이상이면 음수가 되어 서로 다른 실근이 세 개가 된다. 조건을 만족하는 자연수는 1, 2, 3이고 그 합은 6이다. 따라서 답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1322,7 +1357,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기 3인 직선이 그려져 있고, 왼쪽 아래의 점 P에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "양변을 x에 대하여 세 번 미분하면 2f(x)=6x+2a이므로 f(x)=3x+a이다. x=1에서 왼쪽의 함숫값과 두 도함숫값이 모두 0이므로 세 식을 연립하면 a=-9/4, b=3/2, c=-1/4이다. 따라서 f(a)=3a+a=4a=-9이고 f(a)+10=1이다. 따라서 답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

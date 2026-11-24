@@ -1,0 +1,100 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "C 부전승",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "C 우승",
+              "p": "17/30"
+            },
+            {
+              "label": "우승 못함",
+              "p": "13/30"
+            }
+          ]
+        },
+        {
+          "label": "A 부전승",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "C 우승",
+              "p": "3/10"
+            },
+            {
+              "label": "우승 못함",
+              "p": "7/10"
+            }
+          ]
+        },
+        {
+          "label": "B 부전승",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "C 우승",
+              "p": "3/10"
+            },
+            {
+              "label": "우승 못함",
+              "p": "7/10"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "C 부전승",
+          "C 우승"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A 부전승",
+          "C 우승"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "B 부전승",
+          "C 우승"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "부전승 자리에 A, B, C가 배정될 확률은 각각 1/3이다. C가 부전승이면 결승 승률은 (1/3)(1/2)+(2/3)(3/5)=17/30이고, A나 B가 부전승이면 C는 두 경기를 이겨야 하므로 각각 3/10이다. 따라서 C의 우승 확률은 (1/3)(17/30+3/10+3/10)=7/18이고, ㄷ과 ㄹ만 참이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "농구 시합에서 B가 A를 이길 확률은 $\\frac{2}{3}$, C가 B를 이길 확률은 $\\frac{3}{5}$, C가 A를 이길 확률은 $\\frac{1}{2}$이다. 오른쪽 대진표와 같이 승자 진출전 방식으로 농구 시합을 할 때, (단, A, B, C가 각각 대진표의 세 자리에 배정될 확률은 같고, 비기는 경우는 없음.)<br>다음 &lt;보기&gt;에서 옳은 것을 모두 고르면? [3.8점]<br><img src=\"assets/images/20_매산여고_1학기_기말_고2_확률과통계/q11.png\" class=\"exam-img\"><br><div class=\"exam-box\">&lt;보기&gt;<br>ㄱ. C가 우승하기 위해서는 최소한 2게임은 이겨야만 한다.<br>ㄴ. C가 결승에서 A와 만나서 우승할 확률은 $\\frac{1}{18}$이다.<br>ㄷ. C가 결승에서 이겨서 우승할 확률은 $\\frac{7}{18}$이다.<br>ㄹ. 총 2게임을 하면 우승자가 결정된다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "B가 A를 이길 확률 2/3, C가 B를 이길 확률 3/5, C가 A를 이길 확률 1/2",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "A, B, C가 부전승 자리에 배정될 확률이 각각 1/3",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "부전승 선수 세 경우를 뿌리로 한 확률 수형도와 가지 확률 1/3",
+    "각 경우의 C 우승 확률 17/30, 3/10, 3/10과 나머지 확률",
+    "C가 우승하는 세 경로를 파란색 굵은 가지와 잎 고리로 강조",
+    "잎마다 표시한 경로 확률 17/90, 1/10, 1/10"
+  ]
+}

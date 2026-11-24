@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5402739",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8646174",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "value": 29,
+        "label": "29",
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "B",
+          "C",
+          "I"
+        ],
+        "value": 31,
+        "label": "31",
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "value": 30,
+        "label": "x",
+        "style": "SECTOR",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "내심 I를 잇는 BI와 CI가 각 B와 C를 이등분하므로 ∠IBC = 29, ∠ICB = 31이다. 세 내각의 합이 180이므로 반각을 하나씩 고른 합은 90이고 x + 29 + 31 = 90이다. 따라서 x의 크기는 30이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 내심 I가 있고 I에서 세 꼭짓점으로 선분이 그려져 있다. 꼭짓점 B의 각에 29, 꼭짓점 C의 각에 31, 꼭짓점 A의 각에 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "내심 I에서 세 꼭짓점으로 그은 선분",
+    "B의 29와 C의 31, A의 x 각 표시",
+    "세 내각의 이등분선이 한 점 I에서 만나는 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 다음 그림에서 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이다. $\\angle x$의 크기는? (4점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q08.png\" alt=\"삼각형 ABC의 내심 I에서 각 꼭짓점을 잇는 선분이 그어져 있고 각 꼭짓점에서의 각의 크기가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

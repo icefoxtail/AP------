@@ -128,7 +128,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "위로 볼록한 포물선이 있고 꼭짓점 V(3,5)가 가장 높은 점으로 표시되어 있으며 좌표가 적혀 있다.",
+    "solutionImageCaption": "y=−x²+2ax+b−7을 완전제곱식으로 고치면 y=−(x−a)²+a²+b−7이다. x²의 계수가 음수이므로 꼭짓점 (a, a²+b−7)에서 최댓값을 갖는다. x=3에서 최댓값 5이므로 a=3이고 a²+b−7=5에서 9+b−7=5이므로 b=3이다. 따라서 a+b=6이고 답은 ②이다. 그림은 꼭짓점이 V(3,5)인 위로 볼록한 포물선이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

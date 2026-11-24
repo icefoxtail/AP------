@@ -1,0 +1,50 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1.96",
+      "0",
+      "1.96"
+    ],
+    "shades": [
+      {
+        "from": "-1.96",
+        "to": "1.96",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.95"
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "신뢰도 95%일 때 표준정규분포의 임계값은 1.96이므로 신뢰구간의 길이는 2 × 1.96 × σ/√n = 3.92σ/√n이다. 따라서 σ가 커지면 길이가 길어지고, 표본평균의 기댓값은 모평균과 같으며, 구간 [a, b]의 길이는 b - a이다. 세 학생의 설명이 모두 옳다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 어느 모집단은 정규분포 $\\mathrm{N}(m, \\sigma^2)$를 따른다고 한다. 이 모집단에서 크기가 $n$인 표본을 임의추출하여 모평균 $m$에 대한 신뢰도 $95\\%$의 신뢰구간을 구하고자 한다. 다음 세 학생의 설명 중 옳은 것을 모두 고르면? [3.7점]<br><br><table class=\"exam-table\"><tr><td>대한: 모표준편차 $\\sigma$가 커지면 신뢰구간의 길이는 길어져.<br>민국: 크기가 $n$인 표본을 모두 추출할 때, 모든 표본평균들의 평균과 모평균이 항상 같아.<br>만세: 신뢰구간이 $a \\le m \\le b$일 때, 신뢰구간 길이는 $b-a$이야.</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "신뢰도 95%, 표준정규분포의 임계값 1.96",
+      "mappedTo": "chart.ticks"
+    }
+  ],
+  "newVisualInformation": [
+    "표준정규분포 곡선의 가운데 넓이 0.95를 파란색으로 칠하고, 양쪽 경계에 -1.96과 1.96, 가운데에 0을 표시한다.",
+    "가운데 넓이에는 0.95가 적혀 있다."
+  ]
+}

@@ -212,7 +212,11 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "첫 추첨에서 B학교 학생 두 명을 뽑을 확률은 6C2/10C2=1/3이다. 이때 남은 8명 중 B학교가 4명이므로 둘째 추첨에서도 B학교 두 명을 뽑을 확률은 4C2/8C2=3/14이다. 무료 참가권을 받은 학생이 모두 B학교이려면 두 단계를 모두 B학교로 뽑아야 하므로 1/3×3/14=1/14이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -371,7 +375,11 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "SOURCE_IMAGE_SUFFICIENT"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 4개가 붙은 3×3 격자점 아홉 개가 검은 점으로 표시되어 있고, 가로·세로 방향의 실선과 긴 점선이 격자를 이룬다. 아래와 왼쪽에는 한 칸의 길이 1과 두 칸의 길이 2를 나타내는 치수선이 있다.",
+    "solutionImageCaption": "그림의 아홉 점은 가로·세로가 각각 0, 1, 2인 3×3 격자점이다. 서로 다른 두 점을 고르는 경우는 36가지이고, 길이가 유리수이려면 두 점이 같은 가로줄이나 같은 세로줄에 있어야 한다. 가로줄마다 3쌍씩 9쌍, 세로줄마다 3쌍씩 9쌍이므로 유리수 길이의 선분은 18개이고 확률은 18/36=1/2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -919,7 +927,11 @@ window.questionBank = [
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED",
       "templateSelection": "ACTIVE_SAME_PT_ALTERNATE_TEMPLATE_BRANCH"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "1단계에서 A의 흰 공 2개가 B로 이동한 뒤, 2단계에서 B에서 A로 돌아오는 흰 공 수를 k라 하자. k=0, 1, 2일 확률은 각각 15/22, 10/33, 1/66이고, 최종 흰 공 수가 홀수가 되는 경로는 k=0에서 흰 공 1개와 검은 공 1개를 옮기는 경우와 k=1에서 흰 공 2개를 옮기는 경우이다. 두 경로의 확률은 각각 8/33이므로 전체 확률은 16/33이다. 따라서 p=33, q=16이므로 p-q=17이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1067,7 +1079,12 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 왼쪽은 B가 A 안에 포함되고 겹침이 색칠되어 있으며, 오른쪽은 두 집합이 겹쳐 합집합이 전체를 덮고 겹침이 색칠되어 있다.",
+    "solutionImageCaption": "A∩B는 A와 B 중 작은 쪽보다 클 수 없으므로 M=min{5/6, 1/4}=1/4이고, 이는 B가 A에 포함될 때(왼쪽 그림)이다. 또 P(A∪B)≤1에서 P(A∩B)≥5/6+1/4−1=1/12이고, 이는 A∪B가 표본공간 전체일 때(오른쪽 그림)이므로 m=1/12이다. 따라서 M−m=1/4−1/12=1/6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

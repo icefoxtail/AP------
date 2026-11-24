@@ -2,7 +2,7 @@
 // index.html의 STUDENT_APP_VERSION, manifest.json version,
 // student-version.json version과 반드시 같은 값으로 올린다.
 // 함께 확인할 값: index.html 정적 리소스 ?v= query.
-const STUDENT_SW_VERSION = '2026.11.23.5';
+const STUDENT_SW_VERSION = '2026.11.24.2';
 const CACHE_NAME = `apmath-student-portal-${STUDENT_SW_VERSION}`;
 
 const APP_SHELL = [
@@ -70,6 +70,13 @@ self.addEventListener('fetch', event => {
       networkFirst(req, `./index.html?v=${STUDENT_SW_VERSION}`)
         .then(response => response || caches.match('./index.html'))
     );
+    return;
+  }
+
+  // 시험지 문항 파일(archive/exams/*.js)은 고치면 학생 화면에 바로 보여야 한다(2026-11-24): 네트워크 먼저, 못 받으면(오프라인) 캐시.
+  // 캐시 먼저 분기로 가면 한 번 받은 시험지가 포털 버전을 올릴 때까지 계속 옛 사본으로 나간다. 그림 등 다른 정적 파일은 아래 그대로다.
+  if (/\/archive\/exams\/.+\.js$/i.test(url.pathname)) {
+    event.respondWith(networkFirst(req));
     return;
   }
 

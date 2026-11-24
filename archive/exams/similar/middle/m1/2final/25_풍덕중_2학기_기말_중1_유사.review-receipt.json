@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0.0",
+  "examUid": "25_풍덕중_2학기_기말_중1_유사",
+  "candidateJsPath": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "549518e32e824cc8c5f61fe9b1b1482c137cc32b",
+  "reviewTimestamp": "2026-11-24T06:15:00.000Z",
+  "reviewerRole": "MIDDLE_SIMILAR_REVIEWER_MERGER",
+  "reviewRound": "R2_FINAL_SIGN_OFF",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_REPAIRS",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "method": "생성자 정답 및 해설을 일절 보지 않고 지문과 SVG 그림만을 토대로 전 문항 독립적 수학 블라인드 풀이를 완결한 뒤 정답 대조 및 결함 수리를 완결함."
+  },
+  "defects": [
+    {
+      "qid": 19,
+      "kind": "CHOICE_MATH_SYNTAX",
+      "description": "선지 4번에서 영문 학교 명칭 'B', 'A'가 수식 달러 기호('$')로 감싸이지 않아 하네스 LaTeX 선택지 검사에서 거절된 결함을 '$B$', '$A$'로 수리함.",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 16,
+      "kind": "PLAN_ASSET_AND_QUOTE_BINDING",
+      "description": "Q16~Q19 문항의 JS 내 이미지 경로에 'archive/' 접두사를 보강하고, 플랜 파일에 지문 원문 일치 sourceQuote 및 engineEvidence를 완결 결속함.",
+      "status": "VERIFIED_REPAIRED"
+    },
+    {
+      "qid": 0,
+      "kind": "TAXONOMY_CANONICAL_REALIGNMENT",
+      "description": "임시/미등록 키(PT_M1_REPRESENTATIVE_VALUE 등 12개)를 중1 정본 분류 체계(PT_M1_CENTRAL_TENDENCY, PT_M1_FREQUENCY_DISTRIBUTION_READING 등)로 전면 매핑함.",
+      "status": "VERIFIED_REPAIRED"
+    }
+  ],
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "다면체는 다각형인 면으로만 둘러싸인 입체도형이다. 삼각뿔, 오각기둥, 사각뿔대, 정육면체는 모든 면이 다각형인 다면체이나, 원기둥은 밑면이 원이고 옆면이 굽은 면인 회전체이므로 다면체가 아니다. 따라서 정답은 ①이다."
+    },
+    {
+      "qid": 2,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "각뿔대는 각뿔을 밑면에 평행한 평면으로 자를 때 생기는 두 다면체 중 각뿔이 아닌 쪽의 입체도형이다. 두 밑면은 서로 평행하지만 크기가 달라 합동이 아니다. 따라서 옳지 않은 설명은 ④이다."
+    },
+    {
+      "qid": 3,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "밑면이 2개의 삼각형이고 옆면이 3개의 직사각형인 전개도를 접으면 삼각기둥이 된다. 삼각기둥에서 꼭짓점의 개수는 a = 2 * 3 = 6개이고, 모서리의 개수는 b = 3 * 3 = 9개이다. 따라서 a + b = 6 + 9 = 15이므로 정답은 ③이다."
+    },
+    {
+      "qid": 4,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "원뿔의 옆면 전개도는 부채꼴이며 호의 길이는 2*pi*r, 밑넓이는 pi*r^2, 옆넓이는 pi*r*l이다. 겉넓이는 밑넓이와 옆넓이의 합이므로 pi*r^2 + pi*r*l이어야 하는데, 선지 ⑤는 2*pi*r^2 + pi*r*l로 밑넓이를 2개 더했으므로 옳지 않다. 정답은 ⑤이다."
+    },
+    {
+      "qid": 5,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "회전축에 수직인 단면이 반지름 3cm인 원이고 회전축을 포함하는 단면이 가로 6cm, 세로 8cm인 직사각형인 회전체는 밑면의 반지름이 3cm이고 높이가 8cm인 원기둥이다. 겉넓이는 두 밑넓이(2 * 9pi = 18pi)와 옆넓이(2*pi*3 * 8 = 48pi)의 합인 66pi cm^2이다. 정답은 ②이다."
+    },
+    {
+      "qid": 6,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "원기둥에 물을 가득 채우고 밑면의 반지름과 높이가 같은 원뿔을 넣었다 꺼냈을 때 넘친 물의 부피는 원뿔의 부피와 같다. 원뿔의 부피는 1/3 * pi * 3^2 * 8 = 24pi cm^3이다. 정답은 ①이다."
+    },
+    {
+      "qid": 7,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "밑면이 한 변의 길이 6cm인 정사각형이고 높이가 7cm인 사각뿔의 부피는 1/3 * (6 * 6) * 7 = 1/3 * 36 * 7 = 84 cm^3이다. 정답은 ②이다."
+    },
+    {
+      "qid": 8,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "원뿔대의 부피는 큰 원뿔의 부피에서 잘라낸 작은 원뿔의 부피를 뺀 것이다. 큰 원뿔 부피는 1/3 * pi * 4^2 * 6 = 32pi cm^3이고, 작은 원뿔 부피는 1/3 * pi * 2^2 * 3 = 4pi cm^3이다. 따라서 원뿔대의 부피는 32pi - 4pi = 28pi cm^3이므로 정답은 ①이다."
+    },
+    {
+      "qid": 9,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "원기둥 수조에서 쇠구슬을 넣었다 꺼냈을 때 넘친 물의 부피는 반지름 3cm인 구의 부피와 같다. 구의 부피는 4/3 * pi * 3^3 = 36pi cm^3이다. 정답은 ③이다."
+    },
+    {
+      "qid": 10,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "밑면이 뚫린 고깔모자를 만드는 데 필요한 종이의 넓이는 원뿔의 옆넓이이다. 밑면의 반지름이 6cm이고 모선의 길이가 15cm이므로 옆넓이는 pi * r * l = pi * 6 * 15 = 90pi cm^2이다. 정답은 ④이다."
+    },
+    {
+      "qid": 11,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "자료에 300이라는 극단적인 값(이상치)이 존재하므로 자료의 특징을 나타내기에 가장 적절한 대푯값은 중앙값이다. 10개의 변량을 오름차순으로 정렬하면 30, 35, 35, 40, 40, 40, 45, 50, 55, 300이며, 5번째와 6번째 값의 평균은 (40 + 40) / 2 = 40분이다. 정답은 ④이다."
+    },
+    {
+      "qid": 12,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "자료 8, 6, 4, 7, x, 5, 4, 6에서 최빈값이 1개이려면 x는 4 또는 6이어야 한다. x=4이면 최빈값은 4이나 중앙값은 5.5가 되어 불일치한다. x=6이면 최빈값은 6이고 정렬 시 4, 4, 5, 6, 6, 6, 7, 8이 되어 4, 5번째 변량의 평균인 중앙값도 6이 되므로 일치한다. 따라서 x = 6이며 정답은 ②이다."
+    },
+    {
+      "qid": 13,
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "변량 4, 8, a의 중앙값이 8이므로 a >= 8이어야 한다. 변량 12, 15, a의 중앙값이 12이므로 a <= 12이어야 한다. 따라서 8 <= a <= 12이므로 a의 값이 될 수 없는 것은 7이다. 정답은 ①이다."
+    },
+    {
+      "qid": 14,
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "줄기와 잎 그림에서 전체 학생 수는 4 + 6 + 7 + 5 = 22명이고, 잎이 가장 많은 줄기는 3이며, 최대 독서량은 49권이고, 3번째로 적은 학생은 17권이다. 독서 권수가 40권 이상인 학생은 줄기 4의 5명이므로 6명이라고 한 선지 ④가 옳지 않다. 정답은 ④이다."
+    },
+    {
+      "qid": 15,
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "도수분포표에서 4회 이상 6회 미만 계급의 학생 수가 10명이지만, 기록이 정확히 5회인 학생 수가 몇 명인지는 알 수 없다. 따라서 기록이 5회인 학생 수가 정확히 10명이라고 단정한 선지 ②가 옳지 않다. 정답은 ②이다."
+    },
+    {
+      "qid": 16,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "히스토그램에서 계급의 크기는 a = 3시간이다. 독서 시간이 많은 쪽부터 누적하면 12~15시간이 3명, 9~12시간이 6명이므로 5번째로 많은 학생이 속한 계급은 9~12시간이며 그 도수는 b = 6명이다. 따라서 b - a = 6 - 3 = 3이다. 정답은 ③이다."
+    },
+    {
+      "qid": 17,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "도수분포다각형에서 계급은 5개, 계급의 크기는 4회, 전체 학생 수는 3+6+11+7+3=30명이다. 8회 미만은 3+6=9명이다. 16회 이상인 학생은 3명이며 전체의 (3/30)*100 = 10%이므로 선지 ⑤가 옳다. 정답은 ⑤이다."
+    },
+    {
+      "qid": 18,
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "기록이 110회인 학생이 속한 계급은 100회 이상 120회 미만이며, 그래프에서 상대도수는 0.20이다. 전체 학생 수가 200명이므로 학생 수는 200 * 0.20 = 40명이다. 정답은 ③이다."
+    },
+    {
+      "qid": 19,
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "두 중학교의 전체 학생 수가 다르므로 상대도수에 학생 수를 곱해 실제 인원을 구한다. A 중학교 140~160cm 학생 수는 150 * 0.30 = 45명이고, B 중학교 140~160cm 학생 수는 300 * 0.20 = 60명이므로 두 학교의 학생 수는 같지 않다. 따라서 옳지 않은 설명은 ⑤이다."
+    },
+    {
+      "qid": 20,
+      "blindFrozenAnswer": "(1) $x=3$, (2) $x=5$, (3) $x=8$",
+      "candidateAnswer": "(1) $x=3$, (2) $x=5$, (3) $x=8$",
+      "blindMatch": true,
+      "blindDerivation": "(1) 3x - 5 = 4에서 3x = 9, x = 3이다. (2) 4(x - 2) = x + 7에서 4x - 8 = x + 7, 3x = 15, x = 5이다. (3) 0.4x - 1/5 = 3의 양변에 10을 곱하면 4x - 2 = 30, 4x = 32, x = 8이다. 정답은 (1) x=3, (2) x=5, (3) x=8이다."
+    },
+    {
+      "qid": 21,
+      "blindFrozenAnswer": "(1) 밑면은 정사각형이고 옆면은 삼각형이므로 모든 면이 서로 합동인 정다각형이 아니며, 각 꼭짓점에 모인 면의 개수도 같지 않기 때문이다. (2) 모든 면이 서로 합동인 정다각형이고, 각 꼭짓점에 모인 면의 개수가 같은 다면체이다. (3) 정오각형의 한 내각의 크기는 $108^\\circ$이다. 입체도형이 되려면 한 꼭짓점에 모이는 면의 내각의 합이 $360^\\circ$보다 작아야 한다. 정오각형 $3$개가 모이면 $108^\\circ\\times3=324^\\circ<360^\\circ$이므로 가능하지만, $4$개가 모이면 $108^\\circ\\times4=432^\\circ>360^\\circ$가 되어 평면보다 커져 모일 수 없다. 따라서 한 꼭짓점에 $3$개 모이는 경우만 가능하며, 이는 정십이면체이다.",
+      "candidateAnswer": "(1) 밑면은 정사각형이고 옆면은 삼각형이므로 모든 면이 서로 합동인 정다각형이 아니며, 각 꼭짓점에 모인 면의 개수도 같지 않기 때문이다. (2) 모든 면이 서로 합동인 정다각형이고, 각 꼭짓점에 모인 면의 개수가 같은 다면체이다. (3) 정오각형의 한 내각의 크기는 $108^\\circ$이다. 입체도형이 되려면 한 꼭짓점에 모이는 면의 내각의 합이 $360^\\circ$보다 작아야 한다. 정오각형 $3$개가 모이면 $108^\\circ\\times3=324^\\circ<360^\\circ$이므로 가능하지만, $4$개가 모이면 $108^\\circ\\times4=432^\\circ>360^\\circ$가 되어 평면보다 커져 모일 수 없다. 따라서 한 꼭짓점에 $3$개 모이는 경우만 가능하며, 이는 정십이면체이다.",
+      "blindMatch": true,
+      "blindDerivation": "(1) 정사각뿔은 밑면이 정사각형이고 옆면이 이등변삼각형이므로 모든 면이 합동인 정다각형이 아니며 각 꼭짓점에 모인 면의 개수도 같지 않다. (2) 각 면이 모두 합동인 정다각형이고 각 꼭짓점에 모인 면의 개수가 같은 다면체이다. (3) 정오각형의 한 내각의 크기는 108도이고 입체도형이 되려면 한 꼭짓점에 모인 각의 합이 360도 미만이어야 하므로 3개(324도)만 모일 수 있어 정십이면체 하나뿐이다."
+    },
+    {
+      "qid": 22,
+      "blindFrozenAnswer": "(1) 구의 겉넓이는 단면의 넓이 $S$의 $4$배이고, 겉넓이 공식은 $4\\pi r^2$이다. (2) 반구의 곡면의 넓이는 $2\\pi r^2 = 32\\pi\\rm\\,cm^2$이고, 잘린 단면의 넓이는 $\\pi r^2 = 16\\pi\\rm\\,cm^2$이므로 반구의 겉넓이는 $32\\pi + 16\\pi = 48\\pi\\rm\\,cm^2$이다.",
+      "candidateAnswer": "(1) 구의 겉넓이는 단면의 넓이 $S$의 $4$배이고, 겉넓이 공식은 $4\\pi r^2$이다. (2) 반구의 곡면의 넓이는 $2\\pi r^2 = 32\\pi\\rm\\,cm^2$이고, 잘린 단면의 넓이는 $\\pi r^2 = 16\\pi\\rm\\,cm^2$이므로 반구의 겉넓이는 $32\\pi + 16\\pi = 48\\pi\\rm\\,cm^2$이다.",
+      "blindMatch": true,
+      "blindDerivation": "(1) 구의 단면의 넓이 S = pi*r^2이고 구의 겉넓이는 4*pi*r^2이므로 S의 4배이며 공식은 4*pi*r^2이다. (2) 반지름 4cm인 반구의 겉넓이는 곡면의 넓이(2*pi*4^2 = 32pi)와 단면 밑넓이(pi*4^2 = 16pi)의 합이므로 32pi + 16pi = 48pi cm^2이다."
+    },
+    {
+      "qid": 23,
+      "blindFrozenAnswer": "적절한 대푯값은 최빈값인 과학이다. 도서 분야는 수치로 나타낼 수 없는 문자나 범주로 표현되는 자료이므로 평균이나 중앙값을 구할 수 없고, 가장 많이 대출된 분야($60$권)를 찾는 최빈값이 자료 전체의 경향을 대표하기에 가장 적절하다.",
+      "candidateAnswer": "적절한 대푯값은 최빈값인 과학이다. 도서 분야는 수치로 나타낼 수 없는 문자나 범주로 표현되는 자료이므로 평균이나 중앙값을 구할 수 없고, 가장 많이 대출된 분야($60$권)를 찾는 최빈값이 자료 전체의 경향을 대표하기에 가장 적절하다.",
+      "blindMatch": true,
+      "blindDerivation": "도서 분야는 수치로 표현할 수 없는 범주형 자료이므로 평균이나 중앙값을 정의할 수 없고, 가장 많이 대출된 분야(빈도가 가장 높은 과학, 60권)를 나타내는 최빈값이 자료 전체의 경향을 대표하기에 가장 적절하다. 대푯값: 최빈값(과학)."
+    }
+  ]
+}

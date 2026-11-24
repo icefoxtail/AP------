@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "144/7",
+          "-10/7"
+        ],
+        "domain": [
+          "0",
+          "22"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "22"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "12",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "6",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "20",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "v",
+          "x": "6"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "target",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "height",
+          "from": "P0",
+          "to": "P1",
+          "length": true
+        },
+        {
+          "id": "base",
+          "from": "P1",
+          "to": "P2",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "a>0이므로 세로변 2(a+4),기울기절댓값(a+4)/7에서 밑변 AB14. 넓이 140=14(a+4)로 a6,b144를 얻는다. 여기는 확정값의 실제좌표 P(6,12),B(6,−8),A(20,−8)를 그려 높이 20과 넓이 140을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 총 8점<br>수 $a, b$ (단, $a>0$)에 대하여 일차방정식 $(a+4)x+7y-b=0$의 그래프가 점 $(a,2a)$를 지난다고 한다. 세 일차방정식 $(a+4)x+7y-b=0$, $x=a$, $y=-8$의 그래프로 둘러싸인 도형의 넓이가 140일 때, $a,b$의 값을 각각 구하고자 한다.<br>(1) 일차방정식 $y=-8$의 그래프가 두 일차방정식 $(a+4)x+7y-b=0$, $x=a$의 그래프와 만나는 교점을 각각 $A,B$라고 하자. 이때, 선분 $AB$의 길이를 구하고, 그 풀이 과정을 기울기를 이용하여 서술하시오. [4점]<br>(2) (1)의 결과를 이용하여 $a,b$의 값을 구하고, 그 풀이 과정을 서술하시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a>0이므로 세로변2(a+4),기울기절댓값(a+4)/7에서 밑변AB14. 넓이140=14(a+4)로a6,b144를 얻는다. 여기는 확정값의 실제좌표 P(6,12),B(6,−8),A(20,−8)를 그려 높이20과 넓이140을 확인한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a>0이므로 세로변2(a+4),기울기절댓값(a+4)/7에서 밑변AB14. 넓이140=14(a+4)로a6,b144를 얻는다. 여기는 확정값의 실제좌표 P(6,12),B(6,−8),A(20,−8)를 그려 높이20과 넓이140을 확인한다."
+  ]
+}

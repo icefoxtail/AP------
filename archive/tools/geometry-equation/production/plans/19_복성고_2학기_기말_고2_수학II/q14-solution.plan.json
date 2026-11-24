@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "18",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        6
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -5,
+      110
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "96"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "6"
+      ],
+      "y": [
+        "48"
+      ]
+    },
+    "axisTitles": {
+      "x": "r"
+    }
+  },
+  "caption": "원기둥의 반지름을 r, 높이를 h라 하면 닮음으로 h=18-3r이다. 부피 V=πr²(18-3r)를 π로 나눈 값 18r²-3r³은 r=4에서 최대 96이다. 따라서 부피가 최대인 원기둥의 밑면의 반지름은 4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "가로축 r인 좌표평면에 0부터 6까지 위로 볼록한 삼차곡선이 그려져 있고, 봉우리의 좌표와 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "부피를 π로 나눈 함수의 봉우리와 x축 눈금을 보여 준다.",
+    "봉우리의 좌표를 표시하여 부피가 최대가 되는 반지름을 확인할 수 있게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑면의 반지름의 길이가 $6$이고 높이가 $18$인 원뿔에 내접하는 원기둥 중에서 부피가 최대인 원기둥의 밑면의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

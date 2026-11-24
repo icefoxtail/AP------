@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "3-3/4x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      4
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "그래프가 y축과 만나는 점은 (0, 3), x축과 만나는 점은 (4, 0)이다. 기울기는 (0-3)/(4-0)=-3/4이므로 일차함수의 식은 y=-3/4x+3이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 y축의 3과 x축의 4를 지나는 내리막 직선이 있고, 두 절편 A, B가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선이 y축의 3과 x축의 4를 지나며 두 절편 A, B가 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 오른쪽 직선을 그래프로 하는 일차함수의 식은? (4점)</p><p><img src=\"assets/images/19_이수중_1학기_기말_중2_수학/q12.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

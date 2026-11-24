@@ -642,7 +642,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-031",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "신뢰구간의 길이는 2zσ/√n이고, 여기서 z는 신뢰도에 대응하는 임계값이며 표본평균의 분산은 σ²/n이다. 표본이 커지면 분산과 길이는 작아지고, 신뢰도를 낮추면서 표본을 키우면 길이는 짧아진다. 표본이 일정할 때 신뢰도를 높이면 길이는 커지지만, 표본과 신뢰도를 함께 높이면 길이의 변화는 정해지지 않는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1158,7 +1162,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-029",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "표본평균은 4/3, 5/3, 2, 7/3, 8/3이고 확률은 차례대로 4/56, 14/56, 20/56, 14/56, 4/56이다. 분포가 2를 중심으로 좌우대칭이므로 평균은 2이다. 분산은 각 값과 2의 차를 제곱해 확률을 곱한 합인 5/42이다. 따라서 답은 평균 2, 분산 5/42이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

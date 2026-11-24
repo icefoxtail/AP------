@@ -661,7 +661,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다."
+    "nullableFieldReason": "현재 고2 2022 개정 대수의 question_metadata.json H22-A-01..04/대수 행에는 problemTypeKey/templateKey가 비어 있고 현재 runtime taxonomy에도 이 범위의 active exact PT/TPL row가 없다. nearest-match를 만들지 않고 두 nullable projection debt를 기록한다.",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 원점 O와, x축 위의 점에서 수선을 세운 자리에 점 P가 있고, O에서 P로 가는 동경과 x축이 이루는 각 θ, 수선과 x축 사이의 직각이 표시되어 있다.",
+    "solutionImageCaption": "점 P가 제1사분면에 있으므로 cosθ > 0, sinθ > 0이다. sin²θ = 1 − cos²θ를 대입하면 4cos²θ = 3이므로 cosθ = √3/2, sinθ = 1/2이고 tanθ = 1/√3이다. P = (x, √x)에서 tanθ = √x/x = 1/√x이므로 1/√x = 1/√3에서 x = 3, y = √3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

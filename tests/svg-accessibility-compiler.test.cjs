@@ -260,12 +260,15 @@ test('production compiler lists description-quality shortfalls as advisory and s
   const report = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
   assert.equal(report.recordCount, 2);
   assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE'), JSON.stringify(report.qualityAdvisory));
-  // 실제 결함은 계속 막는다: 새 엔진 그림(엔진 표지)의 참조 깨짐, 학생 눈에 보이는 축척 안내.
+  // 엔진 그림의 aria 참조 깨짐(보이지 않는 표기)은 목록으로만 남고 통과한다. 학생 눈에 보이는 축척 안내는 계속 막는다.
   fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1" role="img" aria-labelledby="missing svg-desc"><title id="svg-title">직선과 점</title><desc id="svg-desc">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc></svg>\n');
-  assert.throws(() => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }), /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*ARIA_REFERENCE_INVALID/);
+  const ariaReport = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  assert.ok(ariaReport.qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID'), JSON.stringify(ariaReport.qualityAdvisory));
+  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1" role="img" aria-labelledby="svg-title svg-desc"><title id="svg-title">직선과 점</title><desc id="svg-desc">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc><text>축척: x,y 동일 단위</text></svg>\n');
+  assert.throws(() => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }), /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*SCALE_GUIDANCE_FORBIDDEN/);
 });
 
-test('production compiler lets a legacy SVG without accessibility markup through with a machine substitute name, but blocks engine output and visible defects', t => {
+test('production compiler lets a legacy or engine SVG without accessibility markup through with a machine substitute name, but blocks visible defects', t => {
   const { compileManifest } = loadCompiler();
   const files = productionFixture(t);
   const newSvg = path.join(files.repoRoot, 'archive', 'assets', 'images', 'new.svg');
@@ -291,22 +294,32 @@ test('production compiler lets a legacy SVG without accessibility markup through
   assert.ok(withText.qualityAdvisory.some(item => item.code === 'SVG_ACCESSIBILITY_ROLE_IMG_REQUIRED'));
   assert.equal(rowOf().textSource, undefined);
   assert.equal(rowOf().titleKo, '직선과 점');
-  // new engine output (engine marker) missing its markup is an engine regression: blocked
-  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"><circle r="5"/></svg>\n');
-  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
-  // other engine generators: stat-chart (confirmed marker) and composite (new-path marker; new.svg is a new file at the base) are blocked too
-  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-stat-chart="stat-chart-figure-v1" data-publication-profile="fragment-publication-spike-v1"><circle r="5"/></svg>\n');
-  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
-  fs.writeFileSync(newSvg, '<svg xmlns="http://www.w3.org/2000/svg" data-composite="composite-panels-v1"><circle r="5"/></svg>\n');
-  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
+  // engine output (engine marker) missing its invisible markup is no longer blocked (run 45334205571): it passes, is listed, and its row carries the machine substitute name
+  const engineMissing = [
+    ['data-engine-version="geometry-visual-v1"', 'engine-version'],
+    ['data-stat-chart="stat-chart-figure-v1" data-publication-profile="fragment-publication-spike-v1"', 'stat-chart'],
+    ['data-composite="composite-panels-v1"', 'composite (new-path marker; new.svg is a new file at the base)']
+  ];
+  for (const [marker, label] of engineMissing) {
+    fs.writeFileSync(newSvg, `<svg xmlns="http://www.w3.org/2000/svg" ${marker}><circle r="5"/></svg>
+`);
+    const engineReport = compile();
+    assert.equal(engineReport.recordCount, 2, label);
+    assert.ok(engineReport.qualityAdvisory.some(item => item.assetRef === 'assets/images/new.svg' && item.code === 'SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED'), label + JSON.stringify(engineReport.qualityAdvisory));
+    assert.equal(rowOf().textSource, 'MACHINE_SUBSTITUTE', label);
+    assert.equal(rowOf().titleKo, 'sample 2번 문제 그림', label);
+  }
   // visible defects, referenced duplicate ids and a missing root keep blocking even for legacy figures
   const legacyHead = '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">';
   const body = '<title id="t">직선과 점</title><desc id="d">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc>';
-  // scale guidance text: listed only for a legacy figure, blocked for engine output
+  // scale guidance text and visible internal text: listed only for a legacy figure, still blocked for engine output
   fs.writeFileSync(newSvg, `${legacyHead}${body}<text>축척: x,y 동일 단위</text></svg>\n`);
   assert.ok(compile().qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_SCALE_GUIDANCE_FORBIDDEN'));
   fs.writeFileSync(newSvg, `${legacyHead.replace('<svg ', '<svg data-engine-version="geometry-visual-v1" ')}${body}<text>축척: x,y 동일 단위</text></svg>\n`);
   assert.throws(compile, /SCALE_GUIDANCE_FORBIDDEN/);
+  fs.writeFileSync(newSvg, `${legacyHead.replace('<svg ', '<svg data-engine-version="geometry-visual-v1" ')}${body}<text>source 값</text></svg>
+`);
+  assert.throws(compile, /INTERNAL_STUDENT_TEXT_FORBIDDEN/);
   // a duplicate id that a shape points at (url(#id)) blocks; one nobody points at is only listed
   fs.writeFileSync(newSvg, `${legacyHead}${body}<g id="same"/><g id="same"/><rect fill="url(#same)"/></svg>\n`);
   assert.throws(compile, /DUPLICATE_ID/);
@@ -435,7 +448,7 @@ test('production compiler rebuilds a managed row from the current SVG when its h
   assert.ok(compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }).qualityAdvisory.some(item => item.code === 'SVG_ACCESSIBILITY_MANAGED_ROW_STALE'));
 });
 
-test('production compiler still blocks a stale managed row whose SVG is missing, unparsable, or an engine figure with a real defect', t => {
+test('production compiler still blocks a stale managed row whose SVG is missing or unparsable, and rebuilds one whose engine SVG lost its invisible markup', t => {
   const { compileManifest } = loadCompiler();
   const files = productionFixture(t);
   const sample = path.join(files.repoRoot, 'archive', 'assets', 'images', 'sample.svg');
@@ -443,7 +456,8 @@ test('production compiler still blocks a stale managed row whose SVG is missing,
   fs.writeFileSync(sample, 'not an svg\n');
   assert.throws(compile, /SVG_ROOT_MISSING|SVG_STUDENT_LANGUAGE_CONTRACT_FAIL/);
   fs.writeFileSync(sample, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"><circle r="5"/></svg>\n');
-  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
+  // engine figure missing only the invisible markup: a stale managed row is rebuilt with the substitute name, not blocked
+  assert.equal(compile().recordCount, 2);
   fs.rmSync(sample);
   assert.throws(compile, /SVG_ACCESSIBILITY_ASSET_NOT_FOUND|ENOENT/);
 });
@@ -533,7 +547,7 @@ test('--quality-report lists every flagged SVG with its exams and text, English/
   assert.equal(more.flagged, 5);
   const moreRows = fs.readFileSync(path.join(repoRoot, 'more.tsv'), 'utf8').trim().split('\n').slice(1).map(line => line.split('\t'));
   assert.equal(moreRows.find(row => row[0] === 'assets/images/visible.svg')[1], 'defect', 'scale guidance in engine output is a defect');
-  assert.equal(moreRows.find(row => row[0] === 'assets/images/engine.svg')[1], 'defect', 'engine output missing markup is a defect, not legacy');
+  assert.equal(moreRows.find(row => row[0] === 'assets/images/engine.svg')[1], 'legacy-a11y', 'engine output missing invisible markup stays on the repair list but does not block');
   const jsonOut = path.join(repoRoot, 'report.json');
   assert.equal(writeQualityReport({ repoRoot, outPath: jsonOut, uses }).flagged, 5);
   assert.equal(JSON.parse(fs.readFileSync(jsonOut, 'utf8')).rows.length, 5);

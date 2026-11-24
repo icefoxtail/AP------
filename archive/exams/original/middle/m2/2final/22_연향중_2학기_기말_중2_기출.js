@@ -607,7 +607,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 집단의 블록 배열",
-    "decisiveStep": "두 집단을 각각 한 블록으로 묶고 블록 순서와 내부 순서를 곱한다."
+    "decisiveStep": "두 집단을 각각 한 블록으로 묶고 블록 순서와 내부 순서를 곱한다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "초등학생 2명을 한 묶음, 중학생 3명을 한 묶음으로 보면 두 묶음의 앞뒤 순서는 2가지이다. 초등학생 묶음 안의 순서는 2가지, 중학생 묶음 안의 순서는 3×2×1=6가지이다. 따라서 전체는 2×2×6=24가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -693,7 +697,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBucket": 3,
     "primaryMethod": "끝자리0 여부로 자리 제한 분기",
-    "decisiveStep": "짝수인 끝자리를0과2·4로 나누어 백의 자리0금지와 사용한 카드 제외를 각각 적용한다."
+    "decisiveStep": "짝수인 끝자리를0과2·4로 나누어 백의 자리0금지와 사용한 카드 제외를 각각 적용한다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "일의 자리가 0이면 백의 자리 5가지, 십의 자리 4가지로 5×4=20개이다. 일의 자리가 2 또는 4이면 일의 자리 2가지, 백의 자리 4가지, 십의 자리 4가지로 2×4×4=32개이다. 따라서 짝수는 20+32=52개이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -732,7 +740,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "동전 사건별 확률 계산·비교",
-    "decisiveStep": "8개 등가능 결과에서 각 사건의 수를 구하고 적어도 하나 앞면은 모두뒷면을 제외해 비교한다."
+    "decisiveStep": "8개 등가능 결과에서 각 사건의 수를 구하고 적어도 하나 앞면은 모두뒷면을 제외해 비교한다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "H앞면,T뒷면. 공정·독립 모형의 8결과를 앞면 수 0/1/2/3으로 나누면 1/3/3/1개다. 적어도 한 앞면은 TTT만 뺀 7/8로 가장 크므로②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -815,7 +827,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "점 대입으로 주사위 순서쌍 제한",
-    "decisiveStep": "직선 위 점을 대입해 b=2a-1로 바꾸고 두 눈이1..6인 순서쌍만 세어36으로 나눈다."
+    "decisiveStep": "직선 위 점을 대입해 b=2a-1로 바꾸고 두 눈이1..6인 순서쌍만 세어36으로 나눈다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 좌표점(2,1)을 ax−by1에 대입하면 2a−b1. 여기 가로/세로는 원래 x/y가 아니라 주사위 계수 a/b이다. 실제 세 정수쌍(1,1),(2,3),(3,5)만 가능하므로 3/36=1/12. 안내선의 연속점은 결과가 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -856,7 +872,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "비복원 실패확률의 곱과 여사건",
-    "decisiveStep": "첫 실패 후 줄어든 꽝 수와 전체 수를 반영해 모두실패 확률을 구하고1에서 뺀다."
+    "decisiveStep": "첫 실패 후 줄어든 꽝 수와 전체 수를 반영해 모두실패 확률을 구하고1에서 뺀다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "꽝 제비는 5개이므로 A가 꽝을 뽑을 확률은 5/9이고, 그 뒤 B도 꽝을 뽑을 확률은 4/8이다. 두 사람 모두 꽝일 확률은 5/9×4/8=5/18이다. 적어도 한 사람이 당첨될 확률은 1-5/18=13/18이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -899,7 +919,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "서로 다른 주사위의 합 범위 계수",
-    "decisiveStep": "사면체 눈별로 합8이상이 되는 육면체 눈을 세어 합한 후 전체24로 나눈다."
+    "decisiveStep": "사면체 눈별로 합8이상이 되는 육면체 눈을 세어 합한 후 전체24로 나눈다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 a는 정사면체 1..4,세로 b는 정육면체 1..6의 바닥 눈이다. 합≥8의 정수점 6개만 표시했다. 전체 4×6=24중6개라 1/4. 경계의 합 8도 포함하며 연속선은 안내이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

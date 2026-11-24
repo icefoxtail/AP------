@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "묶음내순서",
+        "elements": [
+          "부철모",
+          "모철부"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "세대상배열",
+        "elements": [
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "철이와 부모님이 붙어 서고 철이가 가운데라고 보는 풀이이다. 부모님이 서는 순서가 2가지이고, 이 묶음과 나머지 두 사람, 모두 세 대상을 한 줄로 세우는 방법이 3!=6가지이므로 2×6=12이다. 따라서 답은 ③ 12가지이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "철이네 가족 5명이 나란히 서서 사진을 찍으려고 한다. 이때 철이가 부모님 사이에 서게 되는 경우의 수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

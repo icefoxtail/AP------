@@ -64,7 +64,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6×6 표에서 첫 번째 눈이 두 번째 눈보다 큰 칸이 사건 A이고 모두 15칸이다. 이 중 눈의 차가 2 또는 4인 6칸(진한 회색)은 합이 짝수여서 A와 B의 공통부분이고, 나머지 9칸(옅은 회색)은 합이 홀수이다. 따라서 P(B|A)=6/15=2/5이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -194,7 +198,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 1월부터 12월까지를 나타내는 열두 칸의 가로 막대가 있고, 1월, 4월, 8월 칸이 파란색으로 강조되어 있다. 각 칸에 달을 나타내는 숫자가 붙어 있다.",
+    "solutionImageCaption": "12달 중 3달을 고르는 전체 경우는 220가지이고, 이웃하지 않게 고르는 경우는 10개 중 3개를 고르는 것과 같아 120가지이다. 예: 1월, 4월, 8월처럼 고르면 서로 이웃하지 않는다. 그러므로 확률은 120/220=6/11이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -364,7 +372,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(0, 1)이고 Y는 N(3, 1/4)이다. Y의 평균 3이 X의 평균 0보다 크므로 Y의 곡선 중심은 X보다 오른쪽에 있다. Y의 표준편차 1/2이 X의 표준편차 1보다 작으므로 Y의 곡선은 X보다 폭이 좁고 꼭대기가 높다. 이 두 조건을 모두 만족하는 개형이 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -615,7 +627,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 86에서 98 이하가, 오른쪽 곡선은 평균 88에서 a 이하가 칠해져 있다.",
+    "solutionImageCaption": "주봉이 과수원 사과는 N(86, 15²)이므로 98의 표준점수는 (98−86)/15=0.8이다. 양현이 과수원 사과는 N(88, 10²)이고 누적확률이 같으면 표준점수가 같으므로 (a−88)/10=0.8이다. 따라서 a=96이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -678,6 +694,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "표준정규분포 곡선 두 개가 나란히 있다. 왼쪽 곡선은 평균 70에 대응하는 중심과 90의 오른쪽 꼬리가, 오른쪽 곡선은 78.4의 오른쪽 꼬리가 칠해져 있다.",
+    "solutionImageCaption": "(1) 90점의 표준점수는 (90−70)/10=2이고 표에서 오른쪽 꼬리는 0.5−0.48=0.02이다. 1000명 중 1000×0.02=20명이 90점 이상이므로 약 20등이다. (2) 500명 중 100등은 상위 100/500=0.20이므로 오른쪽 꼬리가 0.20이다. 이때 P(0≤Z≤z)=0.30에서 z=0.84이므로 점수는 70+10×0.84=78.4점이다.",
+    "solutionImageSize": "full"
   }
 ];

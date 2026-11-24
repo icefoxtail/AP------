@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sHT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPH",
+        "ownerSegment": "sPH",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lHT",
+        "ownerSegment": "sHT",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "P",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P",
+    "H",
+    "T"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "caption": "기울기가 −2이고 점 (−2, 1)을 지나므로 y−1=−2(x+2)이다. 정리하면 y=−2x−3이고 2x+y+3=0이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "좌표평면에 점 (−2, 1)을 지나고 오른쪽 아래로 내려가는 직선이 있고, 그 점에서 오른쪽으로 1, 아래로 2만큼 간 직각삼각형 모양의 보조선이 보인다.",
+  "newVisualInformation": [
+    "점 (−2, 1)을 지나며 기울기가 −2인 직선과, 가로 1·세로 2의 기울기 삼각형을 함께 보여 준다.",
+    "직선의 방정식 2x+y+3=0을 해설과 함께 확인할 수 있게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(-2,1)$을 지나고 기울기가 $-2$인 직선의 방정식을 구하시오. [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

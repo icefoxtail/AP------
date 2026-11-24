@@ -364,7 +364,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고, 점 A에는 65도와 35도의 각, 점 D에는 30도와 y의 각, 점 O에는 115도의 각, 점 C에는 x의 각이 표시되어 있다.",
+    "solutionImageCaption": "삼각형 AOD에서 각 AOD=115도이고 각 ADO=30도이므로 각 OAD=35도이다. AD와 BC가 평행하므로 x=35도이고, 각 BAD=65도+35도=100도이므로 이웃각 각 ADC=80도이다. 따라서 y=80도-30도=50도이고 x+y=85도이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

@@ -218,7 +218,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 −3보다 크고 −2에서 끊어진 범위, 둘째 줄은 −5와 9 사이의 범위, 셋째 줄은 두 줄의 공통 범위이며 정수점이 표시되어 있다.",
+    "solutionImageCaption": "위 줄은 밑 조건 x>−3, x≠−2의 범위이고, 가운데 줄은 진수 조건 −5<x<9의 범위이다. 아래 줄은 두 범위의 공통 부분으로, −2는 열린 점으로 빠진다. 가능한 정수는 −1, 0, 1, …, 8이고 합은 35이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -254,7 +258,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 파란 로그곡선 f, 주황 점선 y=1, 세로 점선 x=2가 있고, 곡선과 y=1이 만나는 점 P가 표시되어 있다.",
+    "solutionImageCaption": "로그곡선을 f라 하면 진수 조건에서 x는 2보다 작다. 밑 1/3이 1보다 작으므로 부등호가 바뀌어 −x+2는 1/3보다 작고, 직선 y=1과 f의 교점 P에서 x는 5/3보다 크다. 진수 조건과 함께 정리하면 x는 5/3보다 크고 2보다 작다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -290,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "원점에서 제3사분면의 점 P로 향하는 동경 OP와 P에서 x축으로 내린 점선이 있고, 각 θ와 점 P의 좌표, 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "x≤0이고 원점이 아니므로 P는 직선 y=√3x 위의 제3사분면의 점이다. P(−1, −√3)로 잡으면 가로 1, 세로 √3인 직각삼각형에서 OP=2이다. 따라서 sinθ=−√3/2이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -439,7 +451,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "x=1에서 가장 낮고 양쪽으로 올라가는 V자 모양의 곡선 f가 있고, 왼쪽 끝 A, 꼭짓점 B, 오른쪽 끝 C의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=|log(1/2)x|+2의 그래프이다. x=1에서 로그값이 0이라 그래프가 꺾이며 이 점이 최저점이다. 양 끝점은 A(1/4, 4), C(8, 5)이고 최저점은 B(1, 2)이다. 최댓값은 5, 최솟값은 2이므로 합은 7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -669,7 +685,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 A의 정수 1부터 7, 둘째 줄은 B의 정수 1부터 6, 셋째 줄은 두 줄에서 겹치는 정수 점이다.",
+    "solutionImageCaption": "위 줄은 집합 A의 정수 1부터 7이고(x=1과 2≤x≤7), 가운데 줄은 집합 B의 정수 1부터 6이다(1≤x≤6). 아래 줄은 두 집합의 공통 원소 1, 2, 3, 4, 5, 6이며 합은 21이다. 집합은 정수만 뜻하므로 점으로 표시된 정수만 센다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -771,7 +791,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위에 원점에서 나가는 두 동경 OP와 OQ가 있다. P는 아래쪽 왼쪽, Q는 아래쪽 오른쪽에 있고 두 점의 좌표와 각 θ, 3θ가 표시되어 있다.",
+    "solutionImageCaption": "θ와 3θ의 동경이 y축에 대칭이면 θ+3θ=(2n+1)π이므로 θ=π/4, 3π/4, 5π/4, 7π/4 중에서 sinθ+cosθ<0인 것은 θ=5π/4(225°)이다. 이때 3θ=15π/4는 315°의 동경이고, 두 동경 OP, OQ는 y축에 대칭이다. tan(θ+7π/12)=tan(11π/6)=−√3/3이다. 따라서 답은 −√3/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

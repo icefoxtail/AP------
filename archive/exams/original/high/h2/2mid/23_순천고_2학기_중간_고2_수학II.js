@@ -236,7 +236,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 x+[x]의 톱니 모양 그래프, 아래쪽에 x+[-x]의 톱니 모양 그래프를 나란히 그리고 x=-1 근처의 빈 점과 채운 점을 눈금과 함께 표시한 그림이다.",
+    "solutionImageCaption": "위는 y=x+[x], 아래는 y=x+[-x]이다. x→-1-이면 [x]=-2이므로 a=-1-2=-3(위 그림에서 x=-1 왼쪽 끝의 빈 점의 y값)이다. x→-1+이면 [-x]=0이므로 b=-1+0=-1(아래 그림에서 x=-1 오른쪽 끝의 빈 점의 y값)이다. x→-1-이면 [-x]=1이므로 c=-1-1=-2이다. 따라서 -a+b+c=3-1-2=0이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 8,
@@ -511,7 +516,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 x=1에서 끊어지는 f의 그래프, 아래쪽에 x=-2와 x=2에서 끊어지는 g의 그래프를 나란히 그리고 극한을 화살표로 표시한 그림이다.",
+    "solutionImageCaption": "위는 y=f(x), 아래는 y=g(x)이다. x→1+에서 f(x)=x+1은 2의 오른쪽에서 2로 가므로 |f|≥2인 식 g=2|x|-2를 따라 g(f(x))→2이다. x→1-에서 f(x)=-x-1은 -2의 오른쪽에서 -2로 가므로 |f|<2인 식 g=-x²+1을 따라 g(f(x))→-3이다. 합은 2-3=-1이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 16,

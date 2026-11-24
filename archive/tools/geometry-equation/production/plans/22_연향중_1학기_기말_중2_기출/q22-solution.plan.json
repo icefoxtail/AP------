@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1/2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫 기준선의 x절편 (4,0), 둘째 기준선의 y절편 (0,−8)을 지나는 새 직선은 y2x−8. 두 점과 세 선 역할을 구분한다. 정답 y=2x−8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형2. 일차함수 $y=\\dfrac12x-2$의 그래프와 $x$축 위에서 만나고, $y=-x-8$의 그래프와 $y$축 위에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하시오. [5점] 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "첫기준선의x절편(4,0),둘째기준선의y절편(0,−8)을지나는새직선은y2x−8. 두점과세선역할을구분한다. 정답y=2x−8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫기준선의x절편(4,0),둘째기준선의y절편(0,−8)을지나는새직선은y2x−8. 두점과세선역할을구분한다. 정답y=2x−8."
+  ]
+}

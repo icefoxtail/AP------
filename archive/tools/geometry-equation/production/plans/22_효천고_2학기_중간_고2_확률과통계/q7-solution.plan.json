@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/6",
+          "1/12"
+        ]
+      },
+      {
+        "coefficients": [
+          "5/9",
+          "-1/9"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "1/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -1,
+      6,
+      -0.05,
+      0.42
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1/6",
+        "1/3"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "1/6"
+      },
+      {
+        "id": "M",
+        "x": "2",
+        "y": "1/3"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": "part",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 15
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "그래프는 (0, 1/6), (2, k), (5, 0)을 지나는 꺾은선이고 전체 넓이 (1/6+k)+3k/2=1에서 k=1/3이다. 그림은 이 값으로 그렸다. P(1≤X≤4)는 전체에서 양 끝 [0, 1]과 [4, 5]를 뺀 것이다. [0, 1]의 넓이는 5/24, [4, 5]의 넓이는 1/18이므로 1−5/24−1/18=53/72이다. p=72, q=53이므로 p−q=19이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "점 (0, 1/6)에서 올라가 x=2에서 꼭짓점을 이루고 x=5에서 0으로 내려오는 꺾은선 모양의 확률밀도함수 그래프이며 x=1부터 x=4까지 아래쪽이 칠해져 있다.",
+  "newVisualInformation": [
+    "꼭짓점 높이 k=1/3과 구간 [1, 4] 아래의 색칠한 부분, 양 끝 구간의 남은 부분이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 연속확률변수 $X$의 확률밀도함수 $f(x)$의 그래프가 아래 그림과 같을 때, $P(1 \\le X \\le 4) = \\frac{q}{p}$에 대하여 $p-q$ 값은? ($p, q$ 는 서로소이다.) [4.0점]\n\n<img src=\"assets/images/22_효천고_2학기_중간_고2_확률과통계/q7.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -11,13 +11,13 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
-    finderSchoolValues, gradeClass, isQuickAssessmentView, options, reconcileFinderSchool, render,
+    finderSchoolValues, gradeClass, isQuickAssessmentView, listMode, options, reconcileFinderSchool, render,
     replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
     workspaceScopeParent;
   WS.links.push(() => {
     ({
       $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
-      finderSchoolValues, gradeClass, isQuickAssessmentView, options, reconcileFinderSchool, render,
+      finderSchoolValues, gradeClass, isQuickAssessmentView, listMode, options, reconcileFinderSchool, render,
       replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
       workspaceScopeParent
     } = WS.api);
@@ -119,14 +119,29 @@
   // ---- 학교별 기출을 목록만으로 먼저 그리기 (2026-11-23) ----
   // 시험지 목록(state.light)만 있고 카탈로그가 아직 없을 때: 시험지 단위 값(학교·연도·학기·학년·종류·검색어의 시험지 글자)으로 먼저 보이고,
   // 레코드에서 판정하는 것(교육과정·과목, 문항 단위 검색어, 레코드 기준 학년)은 전체 자료가 온 뒤 같은 화면이 다시 그려져 채워진다.
-  const findLight = () => !state.catalog && Boolean(state.light);
-  // 교육과정·과목·계열은 목록만으로 판정하지 않는다: 이런 조건이 주소에 있으면 전체 자료를 기다린다(준비 중 화면).
+  // 조각 3단계: 학교별 기출 표(state.finderTable, common.json의 finder 부분)가 오면 교육과정·과목·학년·검색어가 전체 자료와 같은 결과를 조각 없이 낸다.
+  // 표가 오기 전의 아주 짧은 동안(findLight)만 아래 제한이 있다. 표가 없는 환경(?shards=0, 조각 없음)에서는 예전처럼 전체 자료가 그 자리를 채운다.
+  const findLight = () => listMode() && !state.finderTable;
+  // 교육과정·과목·계열은 표가 오기 전에는 목록만으로 판정하지 않는다: 이런 조건이 주소에 있으면 기다린다(준비 중 화면).
   const LIGHT_BLOCKED_FILTERS = ["curriculumKey", "courseKey", "semanticSubject", "family"];
-  const lightFindUsable = () => findLight() && !LIGHT_BLOCKED_FILTERS.some((key) => state.find[key]);
+  const lightFindUsable = () => listMode() && (Boolean(state.finderTable) || !LIGHT_BLOCKED_FILTERS.some((key) => state.find[key]));
   // 통합 과목 목록(학년별 고정 목록)이 있는 화면으로 그린다: 전체 자료가 오기 전에도 칸 모양이 같다.
-  const finderUnified = () => Boolean(unifiedIndex()) || findLight();
-  // 목록만으로 보인 결과가 전체 자료가 오면 달라질 수 있는 조건(검색어, 학년): 이때만 "준비하는 중" 줄을 보이고 "결과 없음"을 단정하지 않는다.
-  const lightResultsPending = () => findLight() && Boolean(state.find.query || state.find.grade);
+  const finderUnified = () => listMode() || Boolean(unifiedIndex());
+  // 문항 uid는 8글자 이상의 검색어에만 쓴다(2026-11-24). 짧은 숫자·영문("1", "2025")은 어느 시험지에나 있는 uid 글자에 걸려 "1"이 모든 시험지를,
+  // "2025"가 상관없는 시험지 31개를 돌려주었다. 8글자 이상은 uid 조각을 붙여 넣어 찾는 경우로 본다.
+  const UID_TERM_MIN = 8;
+  // 검색어를 단어로 나눈 것(공백으로 구분, "1학기 기말"은 한 단어).
+  const findQueryTerms = (f = state.find) => String(f.query || "")
+    .replace(/(\d)\s*학기\s*(기말|중간)/g, "$1학기$2")
+    .split(/\s+/)
+    .map(C.normalizeSearch)
+    .filter(Boolean);
+  // 표로 답하는 동안 uid를 봐야 하는 검색어(uid를 이루는 글자로만 된 8글자 이상의 단어): 이때만 전체 자료가 와야 결과가 정확하다.
+  const findQueryNeedsUids = (f = state.find) => listMode() && Boolean(state.finderTable) &&
+    findQueryTerms(f).some((term) => term.length >= UID_TERM_MIN && [...term].every((char) => state.finderTable.uidChars.has(char)));
+  // 목록만으로 보인 결과가 전체 자료가 오면 달라질 수 있는 조건: 표가 없으면 검색어·학년, 표가 있으면 uid를 찾는 검색어뿐이다.
+  // 이때만 "준비하는 중" 줄을 보이고 "결과 없음"을 단정하지 않는다.
+  const lightResultsPending = () => listMode() && (state.finderTable ? findQueryNeedsUids() : Boolean(state.find.query || state.find.grade));
   // The finder screen can be drawn from the exam list alone (see lightFindUsable): main part asks before it draws.
   // Finder filters in the unified vocabulary: the subject comes from the unified list for the
   // chosen grade (all unified subjects while no grade is chosen); the old subject family, the
@@ -319,37 +334,65 @@
   // the uid and L1-L4 text of its questions. Exact current middle-school parents are search
   // aliases from the shared selection index; stored source/request paths remain unchanged.
   let findSearchIndex = null;
-  const lightSearchText = new WeakMap();
+  const lightSearchText = new WeakMap(); // 목록 모드, 표 없음: 시험지 글자까지만
+  const tableSearchText = new WeakMap(); // 목록 모드, 표 있음: 시험지 글자 + 문항 이름(L1~L4)
   function findSearchText(exam) {
     const catalog = state.catalog;
-    // 목록만 있을 때는 시험지 글자까지만(문항의 uid·L1~L4는 전체 자료가 온 뒤 더해진다).
-    if (!catalog) {
-      let lightText = lightSearchText.get(exam);
-      if (lightText === undefined) lightSearchText.set(exam, (lightText = examSearchParts(exam).join("\n")));
-      return lightText;
+    // 목록 모드: 표가 있으면 문항의 L1~L4 이름까지(전체 자료와 같다), 없으면 시험지 글자까지만(나머지는 전체 자료가 온 뒤 더해진다).
+    if (listMode() || !catalog) {
+      const table = state.finderTable;
+      const cache = table ? tableSearchText : lightSearchText;
+      let text = cache.get(exam);
+      if (text === undefined) {
+        const parts = examSearchParts(exam);
+        if (table) parts.push(...table.labelsOf(exam.file));
+        cache.set(exam, (text = parts.join("\n")));
+      }
+      return text;
     }
+    return findSearchIndexOf(catalog).text(exam, "questions");
+  }
+  // uid 글자: 표로 답하는 동안에는 없다(그때 uid를 찾는 검색어는 전체 자료가 올 때까지 "준비하는 중"이다, findQueryNeedsUids).
+  function findUidText(exam) {
+    const catalog = state.catalog;
+    if (listMode() || !catalog) return "";
+    return findSearchIndexOf(catalog).text(exam, "uids");
+  }
+  function findSearchIndexOf(catalog) {
     if (!findSearchIndex || findSearchIndex.exams !== catalog.exams || findSearchIndex.records !== catalog.records) {
       const questionsByFile = new Map();
+      const uidsByFile = new Map();
       const index = unifiedIndex();
+      const push = (map, file, value) => {
+        if (!value) return;
+        const list = map.get(file);
+        if (list) list.push(value);
+        else map.set(file, [value]);
+      };
       for (const r of catalog.records) {
         const entry = index?.byUid.get(r.questionUid);
         const parent = entry?.rpmParentStatus === "EXACT" ? entry.rpmParent : null;
-        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4, parent?.L1, parent?.L2].filter(Boolean).join(" "));
-        if (!text) continue;
-        const list = questionsByFile.get(r.sourceFile);
-        if (list) list.push(text);
-        else questionsByFile.set(r.sourceFile, [text]);
+        push(questionsByFile, r.sourceFile, C.normalizeSearch([r.L1, r.L2, r.L3, r.L4, parent?.L1, parent?.L2].filter(Boolean).join(" ")));
+        push(uidsByFile, r.sourceFile, C.normalizeSearch(r.questionUid));
       }
-      findSearchIndex = { exams: catalog.exams, records: catalog.records, questionsByFile, text: new WeakMap() };
+      const cache = { questions: new WeakMap(), uids: new WeakMap() };
+      findSearchIndex = {
+        exams: catalog.exams, records: catalog.records,
+        text(exam, kind) {
+          let text = cache[kind].get(exam);
+          if (text === undefined) {
+            if (kind === "questions") {
+              const parts = examSearchParts(exam);
+              parts.push(...(questionsByFile.get(exam.file) || []));
+              text = parts.join("\n");
+            } else text = (uidsByFile.get(exam.file) || []).join("\n");
+            cache[kind].set(exam, text);
+          }
+          return text;
+        },
+      };
     }
-    let text = findSearchIndex.text.get(exam);
-    if (text === undefined) {
-      const parts = examSearchParts(exam);
-      parts.push(...(findSearchIndex.questionsByFile.get(exam.file) || []));
-      text = parts.join("\n");
-      findSearchIndex.text.set(exam, text);
-    }
-    return text;
+    return findSearchIndex;
   }
   // The exam's own visible values plus its card title.
   function examSearchParts(exam) {
@@ -375,11 +418,7 @@
   }
   function findExams(f = state.find) {
     // Words are separated by spaces and may come in any order; "1학기 기말" stays one word.
-    const terms = String(f.query || "")
-      .replace(/(\d)\s*학기\s*(기말|중간)/g, "$1학기$2")
-      .split(/\s+/)
-      .map(C.normalizeSearch)
-      .filter(Boolean);
+    const terms = findQueryTerms(f);
     return catalogExams().filter((exam) => {
       const hasYearFilter = Boolean(f.yearFrom || f.yearTo);
       const examYear = Number(exam.year);
@@ -400,7 +439,7 @@
       if (f.similarOnly && findSimilarFilterApplies(f) && !similarPairs().setsFor(exam.file).length) return false;
       if (!terms.length) return true;
       const text = findSearchText(exam);
-      return terms.every((term) => text.includes(term));
+      return terms.every((term) => text.includes(term) || (term.length >= UID_TERM_MIN && findUidText(exam).includes(term)));
     }).sort(f.material === "textbook" ? compareTextbookRows : compareFindRows);
   }
   // Newest year first (the shared rule); inside one year the later term comes first (2학기 기말 → 1학기 중간).
@@ -1015,6 +1054,7 @@
     homeRecentBodyMarkup,
     fillHomeFromCatalog,
     lightFindUsable,
+    findQueryNeedsUids,
     PREPARING_TITLES,
     preparingMarkup,
     renderHome,

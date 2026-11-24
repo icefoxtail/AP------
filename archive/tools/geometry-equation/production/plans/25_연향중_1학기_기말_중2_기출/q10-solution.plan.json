@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "6"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "-11"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "formula": "6*x + 1"
+  },
+  "caption": "f(a)=−11은 직선 위 함숫값 −11인 점의 가로좌표를 찾는 것이다. (−2,−11)에서 a−2. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=6x+1$에 대하여 $f(a)=-11$일 때, 상수 $a$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": "P1",
+        "text": "① √5×2√5 = 2×5 = 10, 맞음",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t2",
+        "at": "P2",
+        "text": "② √(12/5)×√(15/4) = √9 = 3, 맞음",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t3",
+        "at": "P3",
+        "text": "③ √36÷√12 = 6÷2√3 = √3, 틀림",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t4",
+        "at": "P4",
+        "text": "④ 5√2×√98 = 5×14 = 70, 맞음",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t5",
+        "at": "P5",
+        "text": "⑤ √3×2√2×(-3√3) = -18√2, 맞음",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "①은 √5×2√5=2×5=10, ②는 √(12/5)×√(15/4)=√9=3, ④는 5√2×√98=5×14=70, ⑤는 √3×2√2×(-3√3)=-18√2로 모두 옳다. ③은 √36÷√12=6÷2√3=√3이므로 3이 아니다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "다섯 개의 근호 계산식과 각 식 끝의 맞음 또는 틀림 표시가 한 줄씩 적힌 목록 그림이다.",
+  "newVisualInformation": [
+    "각 보기의 계산값 10, 3, √3, 70, -18√2",
+    "틀린 보기에 붙은 틀림 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 계산결과가 옳지 않은 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선이 있다. 세로 점선 x=1/2이 포물선과 위아래 두 점 A, B에서 만나고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "초점이 (2, 0)이고 준선이 x=−2인 포물선은 y²=8x이다. 직선 x=1/2과 만나는 점은 A(1/2, 2), B(1/2, −2)로 a²=8×(1/2)=4에서 a=±2이다. 보기에서 양수는 2뿐이므로 a=2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -97,7 +101,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선 y²=8x와 아래쪽 접점 T에서 닿는 기울기 −2의 접선, 그와 평행한 점선 직선이 있다. 초점 F와 접점 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=8x에서 p=2이고, 직선 2x+y−3=0은 기울기가 −2인 직선 y=−2x+3(점선)이다. 평행한 접선의 기울기는 −2이므로 접선의 공식 y=mx+p/m에서 y=−2x−1이고 접점은 T(1/2, −2)이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -201,7 +209,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 하나의 좌표평면에 중심이 원점인 쌍곡선과 타원이 겹쳐 그려져 있고, x축 위에 두 곡선의 공통 초점 F와 F′, 타원의 중심 O, 타원의 오른쪽 꼭짓점 V가 표시되어 있으며 O와 V 사이에 길이 10이 적혀 있다.",
+    "solutionImageCaption": "쌍곡선 x²/16−y²/9=1에서 c²=16+9=25이므로 초점은 F(5,0), F′(−5,0)이다. 장축의 길이가 20인 타원은 a=10, 즉 a²=100이고 초점이 같으므로 a²−b²=25에서 b²=100−25=75이다. 따라서 a²+b²=100+75=175이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -235,7 +247,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q7-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 오른쪽 초점 F, 왼쪽 초점 F′가 있다. F를 지나는 세로선의 위아래 끝점 A, B와 F′를 잇는 두 선분이 그려져 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "예: 주축의 길이 6인 쌍곡선 x²/9−y²/12=1의 그림이다. F를 지나는 직선과 만나는 점 A, B는 F의 양쪽에 있다. 쌍곡선의 정의로 AF′−AF=6, BF′−BF=6이고 두 식을 더하면 (AF′+BF′)−(AF+BF)=12이다. AF′+BF′=20이므로 AF+BF=8이고 F가 선분 AB 위에 있으므로 AB=AF+BF=8이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -268,7 +284,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 쌍곡선과 기울기가 2인 두 직선이 그려져 있고, 실선은 두 점 P, Q에서 쌍곡선과 만나며 점선은 쌍곡선과 만나지 않는다.",
+    "solutionImageCaption": "직선 y=2x+k를 쌍곡선 x²−4y²=8에 대입하면 15x²+16kx+4k²+8=0이다. 서로 다른 두 점에서 만나려면 판별식이 0보다 커야 하므로 16k²−480>0, 즉 k²>30이다. 실선은 k=6인 직선으로 쌍곡선과 두 점 P, Q에서 만나고, 점선은 k=5인 직선으로 쌍곡선과 만나지 않는다. 자연수 k의 최솟값은 6이므로 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -301,7 +321,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q9-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 꼭짓점 A, B를 잇는 직선, 이 직선과 평행한 두 접선이 있다. 아래쪽 접선의 접점 P와 삼각형 ABP가 색칠되어 있고, 위쪽 접점 Q가 표시되어 있다.",
+    "solutionImageCaption": "밑변 AB가 고정되어 있으므로 삼각형 ABP의 넓이는 P에서 직선 AB까지의 거리가 클 때 최대이다. 직선 AB는 y=−(3/5)x+3이고, 기울기 −3/5인 타원의 접선은 y=−(3/5)x±3√2이다. 직선 AB에서 더 먼 접선은 y=−(3/5)x−3√2이고 접점이 P이다. 점 Q는 P와 중심 O에 대하여 대칭이며 다른 접선의 접점이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -444,7 +468,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 초점을 지나는 현의 양 끝점 P, Q에서 준선에 내린 수선의 발 H, H′와 사다리꼴 PHH′Q가 색칠되어 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "포물선의 정의로 PF=PH=2, QF=QH′=6이고 F가 선분 PQ 위에 있으므로 PQ=8이다. P와 Q의 준선에 수직인 방향의 거리 차는 6−2=4이므로 준선과 나란한 방향의 거리 HH′=√(8²−4²)=4√3이다. 사다리꼴 PHH′Q의 넓이는 (1/2)(2+6)×4√3=16√3이다. 그림은 이 조건을 만족하는 포물선 y²=6x의 한 예이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -478,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q14-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 두 점선 점근선이 있다. 오른쪽 가지의 꼭짓점 P에서 두 점근선에 내린 수선의 발 Q, R와 사각형 OQPR이 색칠되어 있고 대각선 OP의 길이 4가 표시되어 있다.",
+    "solutionImageCaption": "x²/16−y²/9=1에서 주축의 길이는 2a=8이고 점근선은 y=±(3/4)x로 기울기의 곱은 −9/16이다. 예: P가 꼭짓점 (4, 0)이면 수선의 발은 Q(64/25, 48/25), R(64/25, −48/25)이고 대각선 OP=4, QR=96/25가 서로 수직이어서 넓이는 (1/2)×4×96/25=192/25이다. 이는 144/25가 아니므로 ㄷ은 거짓이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -571,7 +603,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선이 각각 왼쪽과 오른쪽으로 열려 있고, 공통인 초점 F와 두 꼭짓점 V1, V2, 두 준선 l과 m이 세로선으로 그려져 있다. 초점에서 두 꼭짓점으로 가는 선분과 두 준선이 x축과 만나는 점을 잇는 선분이 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=-8(x-p)의 초점거리는 2이고 y²=4(x-q)의 초점거리는 1이다. 예를 들어 p=3, q=0으로 그리면 꼭짓점 V1, V2와 공통 초점 F(1, 0), 두 준선 l과 m이 각각 x=5, x=-1인 모양이 된다. 초점이 일치하므로 p-q=3이고 두 준선 사이의 거리는 (p+2)-(q-1)=(p-q)+3=3+3=6이다. 따라서 답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -599,7 +635,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-07-VECTOR_BASIC",
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q18-solution.svg",
+    "solutionImageAlt": "B에서 직각을 이루는 직각삼각형 ABC가 있고 빗변 AC 위에 점 P가 있다. 선분 BP는 점선이며 AB=3, BC=4, AP=3, PC=2와 각 θ가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형 ABC에서 AC=5이고 ∠A=θ이면 sinθ=BC/AC=4/5이다. 점 P가 AC 위에 있고 AP=AB=3이므로 ∠PAB=θ이다. 삼각형 ABP의 넓이는 S=(1/2)×3×3×sinθ=(1/2)×3×3×4/5=18/5이다. 따라서 5S=18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래 직선을 아래로 4 옮기면 y2x+k−4. 이동후(−1,2)이므로 k8. 원래점(−1,6)이 이동후(−1,2)로 내려간다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=2x+k$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동한 그래프가 점 $(-1, 2)$를 지날 때, 상수 $k$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

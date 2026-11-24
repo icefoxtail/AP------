@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      5,
+      3,
+      4,
+      2,
+      1
+    ],
+    "xTitle": "관람객 수(명)",
+    "marks": {
+      "meanLine": {
+        "value": "3",
+        "label": "평균"
+      },
+      "deviations": true
+    }
+  },
+  "caption": "A미술관의 관람객 수는 5, 3, 4, 2, 1명으로 평균이 3명이고, 편차가 2, 0, 1, -1, -2이므로 분산은 2, 표준편차는 √2이다. B미술관의 관람객 수는 3, 3, 2, 5, 7명으로 평균이 4명이고, 편차가 -1, -1, -2, 1, 3이므로 분산은 16/5, 표준편차는 √(16/5)이다. 두 표준편차를 비교하면 A미술관이 B미술관보다 작아 관람객 수가 더 고르다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 다음 표는 어느 마을에서 운영하는 작은 미술관 두 곳의 5일 동안 하루 관람객 수를 조사하여 나타낸 것이다. 다음 설명 중 옳은 것은? [4.0점]\n(단위: 명)\n<table class=\"exam-table\"><tr><th>일</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>A미술관</th><td>5</td><td>3</td><td>4</td><td>2</td><td>1</td></tr><tr><th>B미술관</th><td>3</td><td>3</td><td>2</td><td>5</td><td>7</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A미술관의 5일 관람객 수는 5, 3, 4, 2, 1명이다.",
+      "mappedTo": "chart.values"
+    }
+  ],
+  "newVisualInformation": [
+    "A미술관의 관람객 수 5, 3, 4, 2, 1명을 점도표로 나타내고, 평균 3명 자리에 세로 점선을 그었으며 각 값의 편차를 표시하였다."
+  ]
+}

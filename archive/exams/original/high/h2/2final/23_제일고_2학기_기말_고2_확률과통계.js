@@ -266,7 +266,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "A가 첫 경기를 이겼으므로 남은 네 경기에서 A가 2승 이상 하면 우승한다. A가 2경기 만에 우승할 확률은 4/9, 3경기 만에는 8/27, 4경기 만에는 4/27이고, B가 우승할 확률은 1/9이다. 이들을 더하면 A의 우승 확률은 4/9+8/27+4/27=8/9이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -328,7 +333,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-INDEPENDENCE",
     "subUnit": "독립사건과 독립시행",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 파란 직사각형과 오른쪽의 초록 직사각형이 가운데에서 겹쳐 있고, 겹친 부분은 주황색으로 칠해져 있다. 두 직사각형의 아래쪽 변에 각각 A와 B가 적혀 있다.",
+    "solutionImageCaption": "두 사건 A, B가 독립이면 P(A∩B)=P(A)P(B)이고 A와 B의 여사건도 독립이다. 따라서 A와 B의 여사건이 함께 일어날 확률은 P(A)P(B의 여사건)이고, P(A의 여사건|B)=P(A의 여사건)=1−P(A)이다. 반면 P(A|B)=P(A)와 P(B|A)=P(B)는 일반적으로 같지 않고, P(A∪B)=P(A)+P(B)도 항상 성립하지 않는다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -458,7 +467,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "신뢰구간의 길이는 1/√n에 비례하므로 6/10 = √81/√n = 9/√n이다. 이를 풀면 √n = 15, n = 225이다. 표본의 크기가 225일 때 길이가 6이 된다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -586,7 +599,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "신뢰구간의 길이는 2zσ/√n이므로 n이 일정할 때 신뢰도 α가 커지면 z가 커져 길이도 커진다. n이 작아지면 길이는 커지고, α가 커져도 길이는 커지므로 ㄴ은 거짓이다. n이 작아지면 길이는 커지지만 α가 작아지면 길이는 작아지므로 두 변화가 함께 있을 때 길이가 반드시 작아진다고 할 수 없어 ㄷ도 거짓이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

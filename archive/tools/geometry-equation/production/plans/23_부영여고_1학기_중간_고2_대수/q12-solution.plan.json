@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "86603",
+              "denominator": "100000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "86603",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "50000",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 30,
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "cosθ",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAP",
+        "ownerSegment": "sAP",
+        "text": "sinθ",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOP",
+        "ownerSegment": "sOP",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "각 변환 공식으로 a=cosθ+sinθ−sinθ+cosθ=2cosθ이고, b=(cosθ+sinθ)²+2sinθ−2sinθcosθ−1=2sinθ이다. 따라서 a²+b²=4cos²θ+4sin²θ=4이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "빗변의 길이가 1인 직각삼각형이 있고, 한 예각이 θ로 표시되어 있다. 세 변 옆에 cosθ, sinθ, 1이 적혀 있다.",
+  "newVisualInformation": [
+    "각 θ와 세 변 cosθ, sinθ, 1의 관계",
+    "직각삼각형에서의 삼각비 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sin\\left(\\frac{\\pi}{2}+\\theta\\right)+\\sin(\\pi-\\theta)+\\cos\\left(\\frac{\\pi}{2}+\\theta\\right)+\\cos(-\\theta)=a$, $\\cos^{2}\\theta(1+\\tan\\theta)^{2}+2\\sin\\theta(1-\\cos\\theta)-1=b$ 라 할 때, 두 상수 $a, b$에 대하여 $a^{2}+b^{2}$ 의 값은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

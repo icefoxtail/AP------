@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-7"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "formula": "4*x - 7"
+  },
+  "caption": "기울기 4인식 y4x+b에(1,−3)을대입해 b−7. 직선 y4x−7,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "기울기가 4이고 점 $(1,-3)$을 지나는 직선을 그래프로 하는 일차함수의 식은? [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

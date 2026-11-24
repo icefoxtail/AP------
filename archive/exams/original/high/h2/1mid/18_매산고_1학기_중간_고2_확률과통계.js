@@ -242,7 +242,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/18_매산고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 다섯 칸에 첫 칸은 AB, 이어서 C, D, E, F가 한 칸에 하나씩 들어 있고, 그 아래 줄에는 5!=120, 2가지, 그리고 두 값을 곱한 결과가 적힌 세 칸이 있다.",
+    "solutionImageCaption": "A와 B를 한 묶음으로 보면 배열할 대상은 묶음 하나와 C, D, E, F로 모두 5개이므로 5!=120가지이다. 묶음 안에서 A와 B가 자리를 바꾸는 경우가 AB, BA의 2가지이므로 전체는 120×2=240가지이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -760,7 +764,12 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/18_매산고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 10까지 수가 적힌 카드가 한 줄로 놓여 있고, 연속한 두 수와 연속한 세 수의 묶음이 각각 다른 색으로 표시되어 있다. 아래에는 f(10), g(8)과 확률식을 구하는 과정이 적혀 있다.",
+    "solutionImageCaption": "세 수 중 정확히 한 쌍만 연속하는 경우는 f(n)=(n-3)(n-4)가지이고 f(10)=42이다. 세 수가 모두 연속하는 경우는 g(n)=n-2가지이고 g(8)=6이다. 이를 이용하면 확률 p(n)은 6(n-2)/(n(n-1))이고, 90×합은 16이므로 구하는 값은 42/6+16=23이다. 따라서 답은 23이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,

@@ -113,7 +113,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "3에서 5까지 오른쪽으로 내려가는 지수 곡선 f가 있고, 왼쪽 끝 점 A와 오른쪽 끝 점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=(1/3)ˣ⁻⁵+3의 그래프를 3≤x≤5에서 본 것이다. 밑이 1/3이어서 f는 감소하므로 왼쪽 끝 A(3, 12)에서 최댓값 M=12, 오른쪽 끝 B(5, 4)에서 최솟값 m=4를 갖는다. 따라서 M−m=8이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -222,7 +226,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 반지름 5인 원 위 제3사분면에 점 (-3, -4)가 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 4, 원점에서 수선의 발까지의 가로 길이는 3, 빗변은 5로 표시되어 있다.",
+    "solutionImageCaption": "tanθ=4/3>0이고 θ가 제3사분면의 각이므로 sinθ<0, cosθ<0이다. tanθ=y/x=(-4)/(-3)로 두고 점 (-3,-4)를 잡으면 빗변 r=5이다. 따라서 sinθ=y/r=-4/5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -259,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 파란 곡선 f와 분홍 곡선 g, 수평선 y=1과 y=-1이 그려져 있다. f는 y=1과 점 P에서, y=-1과 점 Q에서 만나고, g는 y=1과 점 P와 R에서 만난다.",
+    "solutionImageCaption": "예: n=3일 때 곡선 y=x³은 수평선 y=1과 한 점 P(1, 1)에서, y=-1과 한 점 Q(-1, -1)에서 만난다. n=4일 때 곡선 y=x⁴은 y=1과 두 점 P(1, 1), R(-1, 1)에서 만나고 y=-1과는 만나지 않는다. 따라서 ㄱ은 거짓이고 ㄴ, ㄷ, ㄹ은 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -330,7 +342,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선과 가로 점선 y=2가 만나고, x축에는 10과 11 눈금이, y축에는 1 눈금이 보인다.",
+    "solutionImageCaption": "매년 7퍼센트씩 증가하는 농도를 지수곡선으로, 현재의 2배가 되는 수준을 가로 점선으로 나타내었다. 0.03n ≥ 0.3010에서 n ≥ 301/30이므로 지수곡선은 10년과 11년 사이에 2배 수준을 지난다. 따라서 최소 11년 후이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -401,7 +417,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-FUNCTION_INVERSE",
     "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f가 가로 점선 y=2 아래에 있고, 주황색 지수곡선 g가 가로 점선 y=8 위에 있다. y축에는 3, 4, 5, 6, 7 눈금이 보인다.",
+    "solutionImageCaption": "f의 그래프는 y=2를 점근선으로 하여 항상 2보다 작고, g의 그래프는 y=8을 점근선으로 하여 항상 8보다 크다. 따라서 모든 실수 x에서 f(x)보다 크고 g(x)보다 작은 정수 n은 2부터 8까지이다. 그 개수는 7이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -437,7 +457,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 빗변의 길이가 1인 직각삼각형이 있고, 한 예각이 θ로 표시되어 있다. 세 변 옆에 cosθ, sinθ, 1이 적혀 있다.",
+    "solutionImageCaption": "각 변환 공식으로 a=cosθ+sinθ−sinθ+cosθ=2cosθ이고, b=(cosθ+sinθ)²+2sinθ−2sinθcosθ−1=2sinθ이다. 따라서 a²+b²=4cos²θ+4sin²θ=4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -590,7 +614,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 t축 위에 이차함수 k = -t² - t + 2의 그래프가 아래로 볼록한 모양으로 그려져 있고, 꼭짓점에 최대 9/4, 오른쪽 끝에 1과 0, 왼쪽 끝에 -1과 2가 표시된 그림이다.",
+    "solutionImageCaption": "sin x = t로 치환하면 -1 ≤ t ≤ 1이고, 주어진 식은 k = -t² - t + 2가 된다. 이 이차함수는 t = -1/2에서 최대 9/4, t = 1에서 최소 0이므로 k의 범위는 0 ≤ k ≤ 9/4이다. 따라서 b - a = 9/4 - 0 = 9/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -701,7 +729,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "0에서 4까지 연달아 이어진 사인 봉우리 모양의 곡선과 원점에서 올라가는 직선이 있다. 첫 봉우리에서는 원점 말고 한 번, 나머지 세 봉우리에서는 두 번씩 곡선과 직선이 만난다.",
+    "solutionImageCaption": "y=|sin πx|의 그래프와 직선 y=x/4의 교점이 근이다. x≥0이어야 하고 x=4에서 직선은 1이어서 해가 없으므로 0≤x<4만 본다. x=0에서 1개, 0<x<1에서 1개, 그리고 봉우리 [1, 2], [2, 3], [3, 4]에서 각각 2개씩 만나 모두 1+1+2×3=8개이다. 따라서 답은 8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

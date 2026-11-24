@@ -235,8 +235,10 @@ window.questionBank = [
       ]
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q3-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q3-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원 위의 제2사분면 점에서 x축에 수선을 내리고 직각을 표시하였다. 빗변의 길이는 1, 수선의 길이는 3/5, 밑변의 길이는 4/5이고 양의 x축과 반지름이 이루는 각 θ가 표시되어 있다.",
+    "solutionImageCaption": "sin²θ+cos²θ=1에서 sin²θ=1−(−4/5)²=9/25이다. θ가 제2사분면각이므로 sinθ>0이고 sinθ=3/5이다. 따라서 답은 ⑤이다."
   },
     {
     "id": 4,
@@ -467,7 +469,11 @@ window.questionBank = [
       "crossConceptReason": "현재 풀이의 결정 단계가 주 unit 안에서 닫히며 추가 canonical CrossConcept를 요구하지 않는다.",
       "conditionReason": "별도 조건축을 추가하지 않아도 source의 수학 구조가 완전히 분류된다."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑이 1/2인 감소하는 로그곡선과 세로선 x=1/3, x=3, 가로선 y=-1이 보인다.",
+    "solutionImageCaption": "밑이 1/2인 로그함수는 감소하고, a는 x=3에서의 함숫값이므로 y=-1보다 작다. b는 x=1/3에서의 함숫값이므로 y=1보다 크고, c=-1이다. 따라서 a<c<b이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
       {
     "id": 7,

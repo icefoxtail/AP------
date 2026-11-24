@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "x+2y=6"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "50원 x개,100원 y개,500원 z개는 각각 0..4 정수. x+2y+10z16에서 z0은 최대 12로 불가,z≥2도불가라 z1. 남은 x+2y6의 범위 안 정수해(0,3),(2,2),(4,1) 세 개가 결제방법 3가지이다. 안내 직선의 연속점은 동전 개수로 세지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형6]\n진수는 $50$원, $100$원, $500$원짜리 동전을 각각 $4$개씩 갖고 있다. 가게에서 $800$원짜리 과자를 한 개 살 때, 이 돈으로 거스름돈 없이 그 값을 지불하는 모든 방법의 수를 구하시오. (5점)\n(풀이)",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

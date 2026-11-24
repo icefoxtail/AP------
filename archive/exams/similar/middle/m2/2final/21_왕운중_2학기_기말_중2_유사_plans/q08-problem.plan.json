@@ -1,0 +1,53 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "서로 닮은 두 입체도형 P, Q의 밑면의 둘레의 길이의 비는 3 : 4이고, 작은 입체도형 P의 부피는 54 세제곱센티미터이다.",
+  "accessibilityDescription": "왼쪽에는 작은 원뿔 P, 오른쪽에는 이와 닮은 큰 원뿔 Q가 있다. 두 입체도형의 밑면 둘레의 비는 3 : 4로 제시되어 있고, P의 부피는 54 세제곱센티미터이다.",
+  "newVisualInformation": [
+    "닮은 두 원뿔 P, Q",
+    "밑면 둘레의 비 3 : 4",
+    "P의 부피 54 세제곱센티미터"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "P 둘레3"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "p",
+            "kind": "CONE",
+            "radius": 3,
+            "height": 9
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "Q 둘레4"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "q",
+            "kind": "CONE",
+            "radius": 4,
+            "height": 12
+          }
+        ]
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 입체도형 $P, Q$가 있다. 두 입체도형의 밑면의 둘레의 길이의 비가 $3 : 4$이고, 작은 입체도형 $P$의 부피가 $54\\text{ cm}^3$일 때, 큰 입체도형 $Q$의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

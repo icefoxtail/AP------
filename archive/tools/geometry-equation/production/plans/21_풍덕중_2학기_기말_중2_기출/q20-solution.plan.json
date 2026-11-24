@@ -1,0 +1,81 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "일의자리",
+        "elements": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "백의선택",
+        "elements": [
+          "5",
+          "4"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "십의선택",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "백의 자리 0 제외. 전체 5×5×4=100 중 일의 0이면 20, 일의 5이면 16. 총 36/100=9/25, 정답 ②. 화살표는 자리별 선택수의 계산 순서이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "0에서 5까지의 수가 각각 적힌 6장의 카드 중에서 3장의 카드를 뽑아 세 자리의 정수를 만들 때, 이 수가 5의 배수일 확률은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

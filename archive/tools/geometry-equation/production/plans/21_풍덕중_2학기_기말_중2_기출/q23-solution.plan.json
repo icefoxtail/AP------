@@ -1,0 +1,88 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "청소",
+        "elements": [
+          "12"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "남은",
+        "elements": [
+          "3",
+          "1"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "전체",
+        "elements": [
+          "36"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "청소당번은 남학생 4명 중 1명, 여학생 3명 중 1명을 뽑으므로 4×3=12가지이다. 청소당번으로 남학생 1명을 뺀 뒤 빨래당번은 남은 남학생 3명 중 2명을 뽑아 3가지이고, 여학생은 남은 2명을 모두 식사당번으로 뽑아 1가지이다. 따라서 전체는 12×3×1=36가지이다. 따라서 답은 (1) 12, (2) 36이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 3. 장애인 복지관 봉사활동을 위해 남학생 4명, 여학생 3명이 모여서 청소, 식사, 빨래당번을 정하려고 한다. 다음 물음에 답하시오.\n(1) 청소당번을 남, 여 1명씩 뽑는 경우의 수를 구하시오. (단답형) (2점)\n(2) 청소당번을 제외한 식사당번과 빨래당번을 2명씩 뽑을 경우의 수를 구하시오. (단, 식사당번은 여학생 중에서 2명, 빨래당번은 남학생 중에서 2명을 뽑는다.) (풀이과정 서술) (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 청소 12가지에서 빨래 3가지와 식사 1가지로 갈라지고 다시 전체 36가지로 모이는 대응도로 나타냈다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "청소 12에서 남은 3과 1로 화살표가 갈라지고, 두 값이 다시 전체 36으로 모이는 대응도이다."
+  ]
+}

@@ -67,7 +67,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "입력 6 하나에서 약수 1,2,3,6이 여러 개 대응하므로 함수가 아니다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -135,7 +139,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "입력 3에서 점(3,5)를 읽는다. f(3)=5, 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -274,7 +282,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "같은 x에서 세로좌표가 3 감소한다. y=2x−3, 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -343,7 +355,12 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "절편 1과 (0,1)→(1,4)의 기울기 3을 구별한다. 문제 a=1,b=3이므로 합 4, 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -487,7 +504,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 8 증가에 세로 −4, 따라서 증가량 −4 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -556,7 +577,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "평행 조건으로 a=−2, y축에서 다른 선과 만나므로 b=2. 곱 −4, 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -628,7 +653,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기존 두 절편(−5,0),(0,−4)를 보존. 기울기 −4/5에서 y=−4x/5−4, 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1132,7 +1161,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "(가)와(다)만(3,2)를 지난다. 두 식 y=5−x와 y=2x−4의 교점, 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1200,7 +1233,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "대입해 8y=16, y2/x−1. 공통점(−1,2), 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1268,7 +1305,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "잘못 보지 않은 식에 각각(2,1),(1,−3)을 대입해 a3,b1을 복구한다. 바른 두 직선의 교점(3/4,−11/4), 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1338,7 +1379,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 제3사분면에서 서로 다른 색의 두 직선이 한 점에서 만나고, 교점의 좌표와 각 직선의 식이 표시되어 있다.",
+    "solutionImageCaption": "소수와 분수를 없애면 5x-3y=4, 3x+2y=-9이다. 두 식을 각각 2배, 3배 하여 더하면 19x=-19이므로 x=-1이고, y=-3이다. 두 직선의 교점 (-1, -3)이 연립방정식의 해이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1483,7 +1528,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 같은 두 평행선이 그려져 있고, y축과 만나는 두 점 (0, 3/2), (0, 1/2)에 점과 좌표가 표시되어 있다. 파란 직선과 주황 직선이 나란히 놓여 있다.",
+    "solutionImageCaption": "a=3, b=-5이면 ax+2y-3=0은 3x+2y-3=0이고, (b+2)x-2y+1=0은 3x+2y-1=0이므로 두 직선은 평행하다. 셋째 직선 (-2b-1)x+6y-9=0은 b=-5일 때 9x+6y-9=0, 즉 3x+2y-3=0으로 첫 직선과 일치한다. 조건을 연립하면 a=-b-2, -2b-1=3a에서 b=-5, a=3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1546,7 +1595,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "표의 매분 증가 3과 초깃값 4에서 y=3x+4. 일정 가열 모형을 100°C까지 적용하면 32분. 이후 물리 변화는 연장하지 않는다. 세로 표시 배율은 1/3이며 온도 눈금·좌표는 실제 °C 값이다. 초기 표 0~5분은 별도 확대에서 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1609,7 +1662,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 언니 나이 x, 세로 동생 y. 차 8과 5년 후 조건 x−2y=−1의 교점(17,9)이다. 나이는 자연수, 선은 비교 보조 연장.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

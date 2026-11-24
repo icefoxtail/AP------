@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "A.....G."
+    }
+  ],
+  "caption": "모서리를 따라 이동하는 개미가 꼭짓점 A에서 가장 멀리 떨어진 맞은편 꼭짓점 G까지 가는 정육면체 모양 상자이다.",
+  "accessibilityDescription": "정육면체 모양 상자의 한 꼭짓점 A와 그 맞은편 꼭짓점 G가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정육면체 모양의 상자에서 개미가 모서리를 따라 한 꼭짓점 $A$에서 가장 멀리 떨어진 맞은편 꼭짓점 $G$까지 최단거리로 이동할 수 있는 모든 경우의 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "정육면체 모양 상자에서 개미가 꼭짓점 A에서 가장 멀리 떨어진 맞은편 꼭짓점 G까지 모서리를 따라 이동한다.",
+      "mappedTo": [
+        "solids",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정육면체에서 서로 맞은편에 있는 두 꼭짓점 A와 G를 표시한다."
+  ]
+}

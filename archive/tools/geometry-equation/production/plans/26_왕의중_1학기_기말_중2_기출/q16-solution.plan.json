@@ -1,0 +1,49 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "formula": "x-1"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예를 들어 y=x−1의 그래프로 보면 오른쪽 위로 올라가므로 기울기 −a/b는 양수이고, y축과 원점 아래에서 만나므로 y절편 −1/b는 음수이다. 따라서 b는 양수이고 a는 음수이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 올라가는 직선이 그려져 있고, y축과 만나는 점 (0,−1)이 원점 아래에, x축과 만나는 점 (1,0)이 표시되어 있다.",
+  "newVisualInformation": [
+    "오른쪽 위로 올라가는 직선",
+    "y절편 (0,−1)이 원점 아래",
+    "x절편 (1,0)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by+1=0$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? (단, $a,b$는 상수) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

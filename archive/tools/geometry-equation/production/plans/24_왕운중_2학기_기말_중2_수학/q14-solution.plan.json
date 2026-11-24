@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "15"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "1"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "universe": {
+      "name": "U",
+      "count": "16"
+    }
+  },
+  "caption": "A는 앞면 적어도 한 번, B는 모두 뒷면 사건이다. 동전 4번의 전체 16가지 중 모두 뒷면인 1가지가 여사건이다. 적어도 한 번 앞면은 15가지이므로 15/16, 정답 ④. 두 영역 숫자는 원소 이름이 아닌 경우의 수다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1개의 동전을 네 번 던질 때, 적어도 한 번은 앞면이 나올 확률은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

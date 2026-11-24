@@ -466,7 +466,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 제2사분면 위의 점에서 x축에 점선 수선을 내린 그림이고, 원점에서 그 점까지의 동경과 x축이 이루는 각이 θ로 표시되어 있다.",
+    "solutionImageCaption": "sin²θ + cos²θ = 1에서 cos²θ = 1 − 7/16 = 9/16이다. 제2사분면에서는 cos θ < 0이므로 cos θ = −3/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -876,6 +880,10 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: −π부터 π까지 절댓값 코사인 그래프가 그려져 있고, 세로축에 최솟값 1/2과 최댓값 3/2 높이의 눈금이 있으며, 수평선 y=3/4가 그래프와 만나는 점들이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=|cos 2(x−π/6)|+1/2의 최솟값은 1/2, 최댓값은 3/2이고 주기는 π/2이다. y=1과의 교점은 9개이므로 m−n=−1이려면 m=8이어야 하고, k의 범위는 1/2<k<3/2에서 k≠1이다. 예: k=3/4일 때 교점은 8개이고 실근의 합은 4π/3이며, 1<k<3/2일 때 실근의 합은 −2π/3이다. 따라서 답은 1/2<k<3/2 (k≠1)이고, 1/2<k<1일 때 실근의 합은 4π/3, 1<k<3/2일 때 −2π/3이다.",
+    "solutionImageSize": "medium"
   }
 ];

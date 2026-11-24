@@ -1,5 +1,7 @@
 # Original source error: exact negative hold v1
 
+> **2026-11-24 폐지(바이트 고정): 이 문서가 설명하는 "원본·그림·영수증·증거 파일의 바이트가 바뀌면 실패" 검사는 모두 없앴다.** 보류는 이제 문항 하나에 `sourceIssueHold`/`sourceQualityHold`를 표시하는 일만 하고(UID로만 맞춘다), 시험지 JS·그림·영수증·증거·identity 지문·카탈로그 포함 여부가 바뀌어도 어떤 레인·빌더·CI·훅도 이 때문에 실패하지 않는다. 이 문서의 "검증한다"·"멈춘다"·"해소 기록" 서술은 이력이다. 기존 보류·해소 기록 데이터는 고치거나 지우지 않고 남겼다. 이유: 보류가 파일 전체를 고정해 같은 파일의 다른 문항 오류 수정까지 막았고(2026-11-23 사고), 원장님이 "바이트 고정해 놓은 것 자체가 잘못이다, 쉽게·넓게·빠르게·변화하게"로 결정했다(2026-11-24). 규칙: [common.md](../../agents/common.md) 맨 위 절.
+
 ## Purpose and authority
 
 This contract suspends reuse of one previously registered four-slot vector when

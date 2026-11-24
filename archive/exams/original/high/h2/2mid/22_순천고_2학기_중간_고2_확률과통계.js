@@ -246,7 +246,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "Z=(X−m)/σ로 표준화하면 |X−m|≤3σ는 −3≤Z≤3이다. 표준정규분포는 0을 중심으로 대칭이므로 −3부터 0까지와 0부터 3까지의 넓이가 같고 각각 0.4987이다. 따라서 P=2×0.4987=0.9974이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -287,7 +291,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 평균 10, 표준편차 6이고 13의 표준화 값은 0.5이다. Y는 평균 28, 표준편차 6이며 25의 표준화 값은 -0.5이므로 두 확률이 같아진다. 따라서 k=28-3=25이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -506,7 +514,11 @@ window.questionBank = [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 x=1에서 꼭짓점을 이루고 x=4에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 x=1/6부터 x=1까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체는 두 삼각형이며 넓이 3m/2+9m/2=6m=1에서 m=1/6이다. 그림은 이 값으로 그렸다(꼭짓점 (1, 1/2)). 구하는 구간은 m=1/6부터 6m=1까지이고 모두 첫 식 f(x)=x/2 위에 있다. 색칠한 부분은 높이 1/12과 1/2, 폭 5/6인 사다리꼴이고 넓이는 (1/12+1/2)/2×5/6=35/144이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -768,7 +780,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(k≤X≤20)=0.4332이므로 k는 평균보다 1.5σ 작아 k=20−1.5σ이다. 표본크기 36이면 표본평균의 표준편차는 σ/6이고 그림의 s가 이 값이다. 경계 k+5σ/3=20+σ/6=20+s는 평균에서 표준편차 1배이므로 z=1이다. P(X̄≤k+5σ/3)=0.5+0.3413=0.8413이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -838,7 +854,12 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 10에서 7부터 9까지가, 오른쪽 표준정규분포 곡선은 z=−1.5부터 −0.5까지가 칠해져 있다.",
+    "solutionImageCaption": "g(x)=f(x−4)이므로 Y는 X를 오른쪽으로 4만큼 옮긴 분포이고 P(Y≥12)=P(X≥8)이다. P(X≤12)=P(X≥8)이므로 평균은 8과 12의 중점 10이다. P(8≤X≤11)−P(13≤Y≤14)=P(8≤X≤10)=0.3413에서 σ=2이다. 구하는 P(7≤X≤9)는 z=−1.5부터 −0.5까지이고 P(0.5≤Z≤1.5)=0.4332−0.1915=0.2417이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 21,

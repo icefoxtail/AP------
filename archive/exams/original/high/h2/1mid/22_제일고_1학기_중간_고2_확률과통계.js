@@ -758,7 +758,11 @@ window.questionBank = [
       "standardUnit": "경우의 수",
       "subUnit": "중복순열",
       "difficulty": 2
-    }
+    },
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "전체집합 U의 원소 8개는 각각 A와 B에 모두 속함, B에만 속함, 둘 다에 속하지 않음의 세 경우 중 하나로 정해진다. 따라서 경우의 수는 3을 8번 곱한 3⁸가지다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

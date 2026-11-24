@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 A, B, C, D가 차례로 놓여 있고, A와 B 사이에 한 칸 회전을 나타내는 파란 호가 있다.",
+    "solutionImageCaption": "일렬 배열에서는 첫 자리가 달라지면 다른 배열이므로 ABCD와 BCDA는 다르다. 원형 배열에서는 한 자리씩 회전한 BCDA를 ABCD와 같은 것으로 본다. 서로 다른 n개를 원형으로 배열하면 회전하여 같아지는 경우가 n가지씩 생기므로 회전 중복을 n으로 나눈다. 따라서 세 진술 ㄱ, ㄴ, ㄷ이 모두 옳다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionNumber": 2,
@@ -387,7 +391,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q09.png"
+    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q09.png",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 탁자 둘레에 번호가 붙은 열 개의 좌석이 위아래에 세 개씩, 좌우에 두 개씩 배치되어 있다.",
+    "solutionImageCaption": "10명을 일렬로 앉히는 배열은 10!가지이다. 직사각형 탁자는 180° 회전한 배열과만 겹치므로 서로 다른 배열은 10!을 2로 나눈 5×9!가지이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "questionNumber": 10,
@@ -431,7 +439,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10.png"
+    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10.png",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 6칸, 세로 3칸의 격자 위에 오른쪽 위로 3칸이 더 붙은 도로망이 보이고, 왼쪽 아래에 A, 오른쪽 위에 B가 있다. 모든 칸은 같은 크기의 사각형이다.",
+    "solutionImageCaption": "최단 경로는 오른쪽과 위쪽으로만 움직인다. 윗줄에 처음 들어가는 열을 k=3, 4, 5, 6으로 나누면 각 경우의 경로 수는 20, 35, 56, 84이고 서로 겹치지 않는다. 따라서 20+35+56+84=195이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "questionNumber": 11,
@@ -822,7 +835,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 11까지의 계단 수와 각 계단까지 오르는 방법 수를 두 줄로 나타낸 표가 있다.",
+    "solutionImageCaption": "마지막에 1계단을 오르는 경우는 10번째 계단까지의 방법 수, 2계단을 오르는 경우는 9번째 계단까지의 방법 수와 같으므로 aₙ=aₙ₋₁+aₙ₋₂이다. a₁=1, a₂=2에서 차례로 구하면 3, 5, 8, 13, 21, 34, 55, 89, 144이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "questionNumber": 20,
