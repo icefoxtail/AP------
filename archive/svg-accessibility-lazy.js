@@ -70,12 +70,15 @@
     return refs;
   };
 
+  let installedCover = null; // the figures the installed records cover
   async function prepare(questions, examFiles) {
     try {
       if (!resolver) return 'none';
       const need = figuresOf(questions);
       if (!need.size) return 'none'; // no figure is drawn: the resolver is never asked
       if (root.APSvgAccessibilityIndex && Array.isArray(root.APSvgAccessibilityIndex.records) && !root.APSvgAccessibilityIndex.slice) return 'full';
+      // a window that draws again (mode switch) asks again: the records installed before already hold every row of the figures they cover
+      if (installedCover && root.APSvgAccessibilityIndex && root.APSvgAccessibilityIndex.slice && [...need].every(ref => installedCover.has(ref))) return 'slice';
       const exams = [...new Set((examFiles || []).map(sourceFile).filter(Boolean))];
       if (!exams.length) return loadFull();
       let timer;
@@ -97,8 +100,10 @@
       }
       for (const ref of need) if (!covered.has(ref)) throw new Error('a figure of the questions is not listed in the exam file');
       root.APSvgAccessibilityIndex = { schemaVersion: 'SVG_STUDENT_ACCESSIBILITY_V1', slice: true, records };
+      installedCover = covered;
       return 'slice';
     } catch (error) {
+      installedCover = null;
       return loadFull();
     }
   }

@@ -11,7 +11,9 @@ const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js')
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
   assertLoads(html, 'print-contract.js', 'html');
   assertLoads(html, 'render-authority.js', 'html');
-  assertLoads(html, 'data/svg-accessibility-index.js', 'html');
+  // the compiled index is no static script any more: svg-accessibility-lazy.js reads the exams' few records (or the whole index when it cannot) before the body is drawn
+  assert.doesNotMatch(html, /<script[^>]*\ssrc="data\/svg-accessibility-index\.js/);
+  assertLoads(html, 'svg-accessibility-lazy.js', 'html');
   assertLoads(html, 'svg-accessibility.js', 'html');
   assert.match(html, /function buildMixedCanonicalData\(\)/);
   assert.match(html, /AppState\.canonicalData = buildMixedCanonicalData\(\)/);
