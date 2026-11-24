@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -2,
+      9,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차함수 y=-2/3x+b의 그래프가 점 (0, 4)와 x축 위의 점 P를 지나고, P의 x좌표를 p라 한다.",
+  "accessibilityDescription": "좌표평면에 왼쪽 위에서 오른쪽 아래로 내려가는 직선이 y축 위의 점 (0, 4)와 x축 위에 놓인 점 P를 지난다.",
+  "newVisualInformation": [
+    "y축 위의 점 (0, 4)",
+    "x축 위에 놓인 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-\\dfrac{2}{3}x+b$의 그래프가 두 점 $(0, 4)$, $(p, 0)$을 지날 때, $b, p$의 값을 각각 구하면? (단, $b$는 수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

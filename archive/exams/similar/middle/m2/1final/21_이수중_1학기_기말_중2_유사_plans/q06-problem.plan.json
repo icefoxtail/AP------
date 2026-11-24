@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "경계값",
+        "band": false,
+        "points": [
+          {
+            "id": "P0",
+            "value": "2",
+            "hideName": true,
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "경계값의 자리"
+  },
+  "caption": "수직선 위에 2의 자리가 표시되어 있고, 해집합의 영역은 아직 그려져 있지 않다.",
+  "accessibilityDescription": "가로 수직선 한가운데 오른쪽 부분에 값 2가 적힌 눈금 한 개가 놓여 있고, 굵은 구간선이나 동그라미는 없다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $0.3(2x + 1) < \\dfrac{4x - 3}{5} + 0.5$의 해를 수직선 위에 바르게 나타낸 설명은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "0.3(2x+1)<(4x-3)/5+0.5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선 위에서 해의 경계가 될 값의 자리를 보인다"
+  ]
+}

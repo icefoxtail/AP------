@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "수직선",
+        "band": false,
+        "points": [
+          {
+            "id": "P1",
+            "value": "-2",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P2",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P3",
+            "value": "2",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P4",
+            "value": "4",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P5",
+            "value": "6",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해를 나타낼 수직선"
+  },
+  "caption": "일차부등식의 해를 수직선 위에 나타내기 위한 빈 수직선이다.",
+  "accessibilityDescription": "-2, 0, 2, 4, 6의 눈금이 표시된 수직선이 놓여 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 물음에 답하시오.  \n(1) 일차부등식 $3x + 2 \\ge 5x - 4$를 푸시오.  \n(2) (1)에서 구한 해를 수직선 위에 나타내는 방법을 경계점의 포함 여부와 방향을 밝혀 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "3x + 2 ≥ 5x - 4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해를 표시할 수 있는 수직선의 눈금을 보인다"
+  ]
+}

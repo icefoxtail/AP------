@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "304",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHM",
+      "refs": [
+        "H",
+        "M"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tBG",
+        "ownerSegment": "sBG",
+        "text": "16",
+        "unit": "cm"
+      },
+      {
+        "id": "tGC",
+        "ownerSegment": "sGC",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "G",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 빗변 BC의 중점 M과 수선의 발 G, H를 보여 주고 BG와 CG의 길이를 적어 둔 그림이다.",
+  "accessibilityDescription": "각 A가 직각인 삼각형 ABC가 있고, 빗변 BC 위에 중점 M과 수선의 발 G가 있다. A에서 BC로 내린 선분 AG와 G에서 AM으로 내린 선분 GH가 직각으로 만나며, BG는 16 cm, GC는 4 cm로 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC, 빗변 BC의 중점 M, A에서 BC에 내린 수선의 발 G, G에서 AM에 내린 수선의 발 H, BG=16 cm, CG=4 cm, 세 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] $\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 빗변 $BC$의 중점을 $M$이라 하고($\\overline{BM} = \\overline{CM}$), 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $G$, 점 $G$에서 선분 $AM$에 내린 수선의 발을 $H$라 하자($\\overline{AG} \\perp \\overline{BC}, \\overline{GH} \\perp \\overline{AM}$). $\\overline{BG} = 16\\text{ cm}, \\overline{CG} = 4\\text{ cm}$일 때, $\\overline{AH}$의 길이를 구하고 그 과정을 설명하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

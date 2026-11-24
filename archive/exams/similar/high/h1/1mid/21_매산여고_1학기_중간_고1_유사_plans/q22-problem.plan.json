@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "12",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      1
+    ],
+    "viewport": [
+      -7,
+      2,
+      -10,
+      14
+    ],
+    "formula": "2*x^2+12*x+10",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -5,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 10
+      },
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "-7/2"
+        }
+      ]
+    }
+  },
+  "caption": "이차함수의 그래프가 x축과 만나는 두 점을 A, B, y축과 만나는 점을 C라 하고, 점 A에서 점 C까지 그래프 위를 움직이는 점 P를 나타낸 것이다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 아래로 볼록한 포물선이 그려져 있고, 가로축과 만나는 왼쪽 점에 A, 오른쪽 점에 B, 세로축과 만나는 점에 C가 표시되어 있다. A와 꼭짓점 사이의 그래프 위에 점 P가 찍혀 있다.",
+  "newVisualInformation": [
+    "x축과 만나는 두 점 A, B",
+    "y축과 만나는 점 C",
+    "그래프 위에서 A에서 C로 움직이는 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 이차함수 $y=2x^2+12x+10$의 그래프가 $x$축과 만나는 두 점을 $A, B$, $y$축과 만나는 점을 $C$라 하자. 점 $P(x, y)$가 점 $A$에서 $C$까지 그래프 위를 움직일 때, $-6x+y+5$의 최댓값과 최솟값의 합을 구하시오. (단, 점 $A$의 $x$좌표는 점 $B$의 $x$좌표보다 작다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

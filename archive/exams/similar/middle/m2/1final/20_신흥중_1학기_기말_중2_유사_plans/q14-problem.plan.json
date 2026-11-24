@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해를 나타낸 수직선"
+  },
+  "caption": "수직선 위의 3 지점에 색칠한 동그라미가 있고 그 오른쪽이 굵은 선으로 표시되어 있다.",
+  "accessibilityDescription": "가로 수직선에서 3에 해당하는 자리에 속이 채워진 동그라미가 있고, 그 점에서 오른쪽 끝까지 굵은 반직선이 그어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 일차부등식 $x+2 \\le 4x-7$의 해를 수직선 위에 바르게 나타낸 설명은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x+2<=4x-7",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "끝점을 포함하는 해집합을 수직선 위의 오른쪽 반직선으로 보인다"
+  ]
+}

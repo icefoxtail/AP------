@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-18"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-36",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "48",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "B",
+    "D",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vCA",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "sDC",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "삼각형 ABC의 변 BC 위에 점 D가 있고, 각 B와 각 CAD가 같은 크기로 표시되어 있다. AC는 12, CD는 8이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 BC 위에 점 D가 있다. 각 B와 각 CAD에 같은 크기의 각 표시가 있고, AC는 12, CD는 8로 표시되어 있다.",
+  "newVisualInformation": [
+    "변 BC 위의 점 D와 같은 크기의 두 각, 주어진 길이를 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$의 변 $BC$ 위의 점 $D$에 대하여 $\\angle B = \\angle CAD$이다. 선분 $\\overline{AC} = 12\\text{ cm}$, 선분 $\\overline{CD} = 8\\text{ cm}$일 때, 선분 $\\overline{BD}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-8",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "6"
+        },
+        {
+          "id": "C",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "C",
+            "B"
+          ],
+          "fill": "LIGHT",
+          "label": "24"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cS",
+          "point": "S",
+          "text": "x=2",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "caption": "이차함수 y=f(x)의 그래프가 x축과 두 점 A, B에서 만나고 y축과 점 C(0, -6)에서 만난다. 축의 방정식은 x=2이고 삼각형 ACB의 넓이는 24이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선이 x축과 두 점 A, B에서, y축과 점 C(0, -6)에서 만나며, 축의 방정식 x=2가 지시선으로 표시되어 있다. 삼각형 ACB가 옅게 칠해져 있고 그 넓이 24가 적혀 있다.",
+  "newVisualInformation": [
+    "x축과 만나는 두 점 A, B",
+    "y축과 만나는 점 C(0, -6)",
+    "축의 방정식 x=2를 나타내는 지시선",
+    "넓이 24가 적힌 삼각형 ACB"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 이차함수 $y=f(x)$의 그래프가 $x$축과 만나는 두 점이 각각 $A, B$, $y$축과 만나는 점이 $C(0, -6)$이다. 축의 방정식이 $x=2$이고 삼각형 $ACB$의 넓이가 $24$일 때, 다음을 구하시오. (1) 점 $A$, 점 $B$의 좌표를 구하시오. (단, 점 $A$의 $x$좌표는 점 $B$의 $x$좌표보다 작다.) (2) 이차함수 $y=f(x)$의 식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
