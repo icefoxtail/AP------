@@ -1953,3 +1953,29 @@ test('a stem edit confirmed by a rebind record keeps the judgment; the same edit
   const unbound=planQuestion({...f,current:{...f.current,sourceFingerprint:sourceFingerprint(f.question)}});
   assert.equal(unbound.status,'APPLY');assert.equal(unbound.coreChanged,true);assert.equal(unbound.final.reviewStatus,'review_required');
 });
+// 단원 칸 승인(standardUnit·subUnit)은 발문·보기가 확인 없이 바뀐 문항에서만 함께 내려간다(contentFingerprint가 현재 지문으로 덮여 "묶인 승인"으로 오해되는 것을 막는다).
+test('unit approval after a stem edit: unconfirmed edit drops it, answer/figure-only, rebound and approved_source rows keep it',()=>{
+  const approvedRow=(f,unit='approved_final_qa')=>{
+    f.current={...f.current,metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2',problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',
+      contentFingerprint:contentFingerprint(f.previous),fieldStatus:{...f.current.fieldStatus,standardUnit:unit,subUnit:unit}};
+  };
+  const run=(edit,{rebind=false,unit}={})=>{
+    const f=fixture();f.previous=structuredClone(f.question);edit(f.question);
+    f.identity.sourceFingerprint=sourceFingerprint(f.question);approvedRow(f,unit);
+    return planQuestion(rebind?{...f,textRebinds:rebindsFor(uid,f.current.contentFingerprint,f.question)}:f);
+  };
+  const stem=q=>{q.content='question (changed meaning)';};
+  const dropped=run(stem);
+  assert.equal(dropped.status,'APPLY');assert.equal(dropped.final.reviewStatus,'review_required');
+  assert.equal(dropped.final.fieldStatus.standardUnit,'registered_main_merge');assert.equal(dropped.final.fieldStatus.subUnit,'registered_main_merge');
+  for(const edit of [q=>{q.answer='b';},q=>{q.image='new-figure.png';}]) {
+    const kept=run(edit,{rebind:true});
+    assert.equal(kept.final.fieldStatus.standardUnit,'approved_final_qa');assert.equal(kept.final.fieldStatus.subUnit,'approved_final_qa');
+  }
+  const reboundStem=run(stem,{rebind:true});
+  assert.equal(reboundStem.final.reviewStatus,'reviewed_pass');assert.equal(reboundStem.final.fieldStatus.standardUnit,'approved_final_qa');
+  const declared=run(stem,{unit:'approved_source'});
+  assert.equal(declared.final.reviewStatus,'review_required');
+  assert.equal(declared.final.fieldStatus.standardUnit,'approved_source',"the source's own declared unit is not this judgment");
+  assert.equal(declared.final.fieldStatus.subUnit,'approved_source');
+});
