@@ -1,17 +1,94 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-2*x^2 + 5*x + 1",
-  "highlights": {
-    "points": [
-      [
-        2,
-        3
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "5",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -2,
+      4,
+      -4,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5/4",
+        "y": "33/8",
+        "marker": "NONE"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [
+        "-1/2",
+        "2"
       ],
-      [
-        -0.5,
-        -2
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "X1",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "P1",
+          "curveX": "2"
+        },
+        {
+          "id": "X2",
+          "x": "-1/2",
+          "y": "0"
+        },
+        {
+          "id": "P2",
+          "curveX": "-1/2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "S1",
+          "from": "X1",
+          "to": "P1",
+          "dashed": true
+        },
+        {
+          "id": "S2",
+          "from": "X2",
+          "to": "P2",
+          "dashed": true
+        }
       ]
-    ]
+    }
   },
-  "caption": "위로 볼록하고 축이 오른쪽에 있으며 f(2)>0, f(-1/2)<0인 포물선"
+  "caption": "위로 볼록하고 축이 y축 오른쪽에 있으며 점 (2, f(2))와 점 (-1/2, f(-1/2))에서 x축으로 점선이 그어진 이차함수의 그래프이다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있다. 꼭짓점은 제1사분면에 있고 y절편은 양수이다. x축의 2에서 곡선 위의 점까지 점선이 위로 이어져 있고, x축의 -1/2에서 곡선 위의 점까지 점선이 아래로 이어져 있다.",
+  "newVisualInformation": [
+    "포물선은 위로 볼록하다.",
+    "x가 2일 때 함숫값은 양수이다.",
+    "x가 -1/2일 때 함숫값은 음수이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

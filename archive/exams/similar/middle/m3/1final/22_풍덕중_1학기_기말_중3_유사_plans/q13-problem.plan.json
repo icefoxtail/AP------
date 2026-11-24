@@ -1,4 +1,69 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "일차함수 직선 개형과 5개 포물선 그림 보기를 발문·선지 텍스트 조건으로 치환해 완결하였다."
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -2,
+      5
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "좌표평면에 오른쪽 아래로 향하며 x축의 양의 부분과 y축의 양의 부분을 지나는 직선의 그래프가 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 기울기가 음수이고 y절편이 양수인 직선이 그려져 있다. 원점 O가 표시되어 있고 직선이 y축의 양의 부분과 만나는 점과 x축의 양의 부분과 만나는 점에 각각 점이 찍혀 있다.",
+  "newVisualInformation": [
+    "직선은 오른쪽 아래로 향하고 x축과 y축의 양의 부분에서 각각 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프가 오른쪽 아래로 향하는 직선이고 $y$축과 양의 부분에서 만날 때, 다음 중에서 이차함수 $y=b(x+a)^2$의 그래프에 대한 설명으로 옳은 것은? (단, $a, b$는 수) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,43 +1,96 @@
 {
-  "figureType": "coordinate_parabola_triangle",
-  "axes": {
-    "xRange": [
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "4",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
       -4,
       6
     ],
-    "yRange": [
+    "viewport": [
       -4,
-      21
-    ]
-  },
-  "parabola": {
-    "expr": "-2*(x+2)*(x-4)",
-    "vertex": [
-      1,
-      18
+      6,
+      -5,
+      22
     ],
-    "xIntercepts": [
-      -2,
-      4
-    ]
-  },
-  "triangle": {
-    "A": [
-      1,
-      18
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 18,
+        "marker": "NONE"
+      }
     ],
-    "B": [
-      -2,
-      0
-    ],
-    "C": [
-      4,
-      0
-    ]
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1"
+        },
+        {
+          "id": "B",
+          "curveX": "-2"
+        },
+        {
+          "id": "C",
+          "curveX": "4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
   },
-  "labels": [
-    "A",
-    "B",
-    "C"
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "caption": "이차함수 그래프의 꼭짓점 A와 x축과의 교점 B, C로 이루어진 삼각형 ABC이다.",
+  "accessibilityDescription": "좌표평면 위에 위로 볼록한 포물선이 있고 꼭짓점 A와 x축과 만나는 두 점 B, C를 연결한 삼각형 ABC가 그려져 있다.",
+  "newVisualInformation": [
+    "꼭짓점 A와 x축 교점 B, C를 연결하여 삼각형 ABC를 형성하고 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 이차함수 $y=-2(x+2)(x-4)$의 그래프이다. 점 $A$는 포물선의 꼭짓점이고, 점 $B, C$는 포물선이 $x$축과 만나는 점이라고 할 때, $\\triangle ABC$의 넓이를 구하려고 한다. 물음에 답하시오. [8점]\n\n(1) 점 $B, C$의 $x$좌표를 구하기 위한 이차방정식을 세워 점 $B, C$의 좌표를 각각 구하고, $\\overline{BC}$의 길이를 구하시오. [3점] (2) 꼭짓점 $A$의 좌표를 구하시오. (풀이 과정을 쓰시오.) [4점] (3) $\\triangle ABC$의 넓이를 구하시오. [1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }

@@ -1,19 +1,92 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 6*x - 5",
-  "points": {
-    "A": [
-      3,
-      4
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ]
+      }
     ],
-    "B": [
-      0,
-      -5
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
     ],
-    "C": [
-      3,
-      0
-    ]
+    "viewport": [
+      -1,
+      7,
+      -7,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 4
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-5"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "ABC",
+          "points": [
+            "A",
+            "C",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
   },
-  "caption": "포물선 y=-x²+6x-5의 꼭짓점 A, y절편 B, 축의 x축 교점 C로 이루어진 삼각형 ABC"
+  "caption": "이차함수의 그래프와 꼭짓점 A, y절편 B, 축과 x축의 교점 C로 이루어진 삼각형 ABC이다.",
+  "accessibilityDescription": "좌표평면 위에 위로 볼록한 포물선이 그려져 있다. 꼭짓점 A, y축과의 교점 B, 축과 x축의 교점 C를 세 꼭짓점으로 하는 삼각형 ABC가 색칠되어 있고 원점 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 A, y절편 B, 축과 x축의 교점 C의 위치",
+    "삼각형 ABC의 영역"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = -x^2 + 6x - 5$의 그래프의 꼭짓점을 $\\mathrm{A}$, 그래프와 $y$축과의 교점을 $\\mathrm{B}$, 그래프의 축과 $x$축과의 교점을 $\\mathrm{C}$라고 할 때, $\\triangle\\mathrm{ABC}$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
