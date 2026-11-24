@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "ta-0bf4b0cb7952-9882fdfa",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+  "judge": "claude-sonnet",
+  "resultSource": {
+    "branch": "local",
+    "commit": "0000000000000000000000000000000000000000",
+    "file": "sol-fill-b.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_84202dda6be94d3aa3e6cba7590f8c4bacf9d9d895288f5fcdb8055a8b0314cc",
+      "sourceOrdinal": 39,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "해구간의 끝점이 이차식의 근임을 이용해 계수를 정한다",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "sol-fill-b.jsonl",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model"
+    },
+    {
+      "questionUid": "qid_v1_d559627f73d05e2d31f1ac28c3a435591fe2768c24bb9037de2c05ecbcce2dd0",
+      "sourceOrdinal": 44,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "x=1 인수정리로 인수분해해 서로 다른 실근 개수 조건을 푼다",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "sol-fill-b.jsonl",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model"
+    }
+  ]
+}

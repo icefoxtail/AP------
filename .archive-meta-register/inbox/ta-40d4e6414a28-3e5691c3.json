@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-40d4e6414a28-3e5691c3",
+  "examUid": "동아_공통수학1_다항식_대단원평가_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_다항식_대단원평가_고1/동아_공통수학1_다항식_대단원평가_고1.js",
+  "expectedSourceBlobSha1": "d341239506bc13ea98707e930e40bc3d58856687",
+  "expectedQuestionCount": 15,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-40d4e6414a28-3e5691c3.type-ledger.json",
+        "sha256": "88f9f5ca62722727d87da71ba4f3909d1b47534a60c5674aa1e30711ec8ac99f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_44a110beffcdc22010ed6c96ca0e6b5a03cfee0b2bf7cf3ce0fb1c8cd02fd875",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      "rationale": "x=-2 대입값 p,q로 놓고 나머지정리로 곱의 나머지를 구한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "9a38b55049260b50fda49fa4413b2e309b3f3b829e49b4e90d2e940147c49124",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-40d4e6414a28-3e5691c3.type-ledger.json",
+          "sha256": "88f9f5ca62722727d87da71ba4f3909d1b47534a60c5674aa1e30711ec8ac99f"
+        }
+      ]
+    }
+  ]
+}
