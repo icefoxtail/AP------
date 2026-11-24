@@ -936,7 +936,7 @@ test("workspace: 패널에 현재 배포된 기준 버전을 다시 읽는 함�
 
 test("workspace: source-issue는 새 패널 함수로 가고, 단원별 기출·옛 iframe 함수는 그대로 남아 있다", () => {
   const workspace = readWorkspace();
-  assert.match(workspace, /a === "source-issue"\) \{[\s\S]{0,200}openOriginalAssign\(state\.catalog\.exams\[Number\(b\.dataset\.exam\)\]\);/);
+  assert.match(workspace, /a === "source-issue"\) \{[\s\S]{0,200}openOriginalAssign\(catalogExams\(\)\[Number\(b\.dataset\.exam\)\]\);/);
   assert.match(workspace, /function openOriginalIssue\(exam, step = "review"\)/);
   assert.match(workspace, /function openSavedPaperIssue\(id\)/);
   assert.doesNotMatch(workspace, /openOriginalIssue\(state\.catalog\.exams\[Number\(b\.dataset\.exam\)\], "targets"\)/);

@@ -248,3 +248,72 @@ test('단원별 기출: no screen script reads a question-index column the shard
     assert.ok(unitPastMetaFields.includes(name), name);
   assert.ok(coreText.includes('META_FOUNDATION_SCOPE_FIELDS') && /\['curriculumKey', 'courseKey', 'L1', 'L2'\]/.test(coreText), 'the scope tuple moved: update META_FIELDS');
 });
+
+// ---- 학교별 기출(찾기) 표 (조각 3단계): the school finder answers from `common.finder`, without any shard ----
+test('학교별 기출: the table in the common file gives the finder the same answers as the records of the whole catalog, for every exam', async () => {
+  const { files, entries } = await built();
+  const all = new Map(files);
+  all.set('index.json', entries.find((entry) => entry.path.endsWith('/index.json')).content);
+  const loader = shards.createLoader({ base: 'https://site.test/archive/data/archive2-catalog-shards-v1/', fetch: fakeFetch(all) });
+  const whole = await loader.loadCatalog({ all: true });
+  const common = await loader.loadCommon();
+  const index = await loader.loadIndex();
+  const table = shards.assembleFinder(common, core.normalizeFile);
+  assert.ok(table, 'the common file carries the finder table');
+  assert.equal(table.identityDigest, index.catalogIdentityDigest);
+  // the table lists the exams in the order of the catalog and of the shard index (the exam list the screens draw from is the same order)
+  assert.deepEqual(table.files, whole.exams.map((exam) => exam.file));
+  assert.deepEqual(table.files, Object.keys(index.examShard));
+  const sorted = (set) => [...(set || [])].sort();
+  // 1) the identity sets, from the records of the whole catalog (what the screen builds when it holds everything)
+  const recordIndex = core.buildFinderIndex(whole);
+  for (const exam of whole.exams) {
+    const key = core.normalizeFile(exam.file);
+    const expected = recordIndex.get(key);
+    const given = table.finderIndex.get(key);
+    assert.ok(given, `identity of ${exam.file}`);
+    for (const name of ['courseKeys', 'curriculumKeys', 'sourceGrades', 'subjectProjections', 'subjectCurriculumPairs'])
+      assert.deepEqual(sorted(given[name]), sorted(expected[name]), `${name} of ${exam.file}`);
+  }
+  // 2) the unified subjects each exam covers
+  const Unified = require(path.join(root, 'archive/archive2-unified-units.js'));
+  const unified = Unified.buildIndex(whole.records, { projectionPolicy: whole.projectionPolicy });
+  const covered = Unified.examSubjects(unified);
+  assert.deepEqual([...table.examSubjects.keys()].sort(), [...covered.keys()].sort());
+  for (const [key, set] of covered) assert.deepEqual(sorted(table.examSubjects.get(key)), sorted(set), `unified subjects of ${key}`);
+  // 3) the filters the finder applies, over every value the data has (nothing typed by hand)
+  const grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+  const curricula = [...new Set(whole.exams.flatMap((exam) => [...(recordIndex.get(core.normalizeFile(exam.file))?.curriculumKeys || [])]))].sort();
+  const courses = [...new Set(whole.exams.flatMap((exam) => [...(recordIndex.get(core.normalizeFile(exam.file))?.courseKeys || [])]))].sort();
+  const subjects = [...new Set([...covered.values()].flatMap((set) => [...set]))].sort();
+  let compared = 0;
+  const decide = (exam, filters, source, subjectsByFile) => {
+    // the same two steps as finderIdentityMatch in archive2-workspace-core.js
+    const matched = core.finderMatches(exam, { grade: filters.grade, curriculumKey: filters.curriculumKey, courseKey: filters.courseKey, semanticSubject: '' }, source);
+    if (!matched || !filters.semanticSubject) return matched;
+    const set = subjectsByFile.get(core.normalizeFile(exam.file));
+    return set && set.size ? set.has(filters.semanticSubject) : core.finderMatches(exam, { semanticSubject: filters.semanticSubject }, source);
+  };
+  const combos = [];
+  for (const grade of ['', ...grades]) for (const curriculumKey of ['', ...curricula]) for (const subject of ['', ...subjects]) combos.push({ grade, curriculumKey, semanticSubject: subject });
+  for (const courseKey of courses) combos.push({ courseKey }, { grade: '고1', courseKey });
+  for (const filters of combos) {
+    for (const exam of whole.exams) {
+      assert.equal(decide(exam, filters, table.finderIndex, table.examSubjects), decide(exam, filters, recordIndex, covered), `${JSON.stringify(filters)} ${exam.file}`);
+      compared += 1;
+    }
+  }
+  assert.ok(compared > 10000, 'many decisions compared');
+  // 4) the question names a search word can find: the same set of texts per exam, and the characters of a uid
+  const parentOf = (uid) => { const entry = unified.byUid.get(uid); return entry?.rpmParentStatus === 'EXACT' ? entry.rpmParent : null; };
+  const byFile = new Map();
+  const uidChars = new Set();
+  for (const record of whole.records) {
+    const parent = parentOf(record.questionUid);
+    const text = core.normalizeSearch([record.L1, record.L2, record.L3, record.L4, parent?.L1, parent?.L2].filter(Boolean).join(' '));
+    if (text) { if (!byFile.has(record.sourceFile)) byFile.set(record.sourceFile, new Set()); byFile.get(record.sourceFile).add(text); }
+    for (const char of core.normalizeSearch(record.questionUid)) uidChars.add(char);
+  }
+  for (const exam of whole.exams) assert.deepEqual([...table.labelsOf(exam.file)].sort(), sorted(byFile.get(exam.file)), `question names of ${exam.file}`);
+  assert.deepEqual([...table.uidChars].sort(), [...uidChars].sort());
+});

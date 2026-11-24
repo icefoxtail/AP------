@@ -115,6 +115,7 @@ export function slimRecord(record) {
 // gets the same basicEligibility and advancedEligible result as with the full authority.
 export const CATALOG_COMMON_PATH = 'common.json';
 export const CATALOG_COMMON_SCHEMA = 'archive2-catalog-common-v1';
+export const CATALOG_FINDER_SCHEMA = 'archive2-catalog-finder-v1';
 export const CATALOG_AUTHORITY_SCHEMA = 'archive2-catalog-shard-authority-v1';
 export const AUTHORITY_UNUSED_CATALOG_KEYS = Object.freeze(['basicScopeLinks']); // shipped as [] (see the comment above)
 // Keys of an assignment row the validators and screens read (validateBasicAssignment, validateAdvancedAssignment,
@@ -385,6 +386,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   if (withAuthority) {
     const common = projectCommon(catalog, extras);
     if (extras.unitPast) common.unitPast = extras.unitPast.common;
+    if (extras.finder) common.finder = extras.finder;
     // source hashes of files that belong to no exam of the catalog stay common (none today), so no entry is lost
     const examFiles = new Set(catalog.exams.map((exam) => exam.file));
     const loose = (catalog.sourceHashes || []).filter((entry) => !examFiles.has(entry[0]));
@@ -495,7 +497,56 @@ export function catalogExtras(root, catalog, bundle) {
   }
   const built = catalog.health || {};
   const browseGradesOf = (record) => BROWSE_GRADES.filter((grade) => core.browseGradeMatchesRecord(record, grade, catalog.projectionPolicy));
-  return { labels, browseGradesOf, health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
+  return { labels, browseGradesOf, finder: finderPart(root, catalog), health: { exams: built.exams, questions: built.questions, metadataRecords: built.metadataRecords, automatic, exclusionReasons } };
+}
+
+// ---- 학교별 기출(찾기) 표: what the school finder reads of the records, per exam (2026-11-24, 조각 3단계) ----------------------------------
+// The finder lists EXAMS. Which exams a grade / curriculum / course / subject filter keeps, and which exams a search word finds in the
+// questions' L1-L4 names, depends on the records of each exam. Those are computed here once, with the browser's own functions
+// (Archive2Core.buildFinderIndex, Archive2UnifiedUnits.buildIndex / examSubjects, normalizeSearch) over the same slim records the shards
+// carry, so the finder can answer from this table without any shard (archive/archive2-catalog-shards.js assembleFinder turns it back
+// into the shapes the finder reads). Arrays are parallel to `files` (catalog exam order); every set is sorted and the label dictionary
+// is in first-use order of the catalog's records, so two builds give the same bytes.
+//   identity[i]  = [courseKeys, curriculumKeys, sourceGrades, subjectProjections, subjectCurriculumPairs] of exam i (buildFinderIndex)
+//   subjects[i]  = the unified subjects the exam's questions fall in (examSubjects), null when none
+//   labels / labelsByExam[i] = distinct normalized "L1 L2 L3 L4 + parent L1 L2" texts of the exam's questions (indexes into labels)
+//   uidChars     = the characters question uids are made of: a search word made only of them could match a uid, which is not in this table
+export function finderPart(root, catalog) {
+  const require = createRequire(import.meta.url);
+  const core = require(path.join(root, 'archive/archive2-core.js'));
+  const Unified = require(path.join(root, 'archive/archive2-unified-units.js'));
+  const records = catalog.records.map(slimRecord);
+  const finderIndex = core.buildFinderIndex({ ...catalog, records });
+  const unified = Unified.buildIndex(records, { projectionPolicy: catalog.projectionPolicy });
+  const subjectsOf = Unified.examSubjects(unified);
+  const sorted = (set) => [...set].sort();
+  const files = catalog.exams.map((exam) => exam.file);
+  const identity = files.map((file) => {
+    const row = finderIndex.get(core.normalizeFile(file));
+    return row ? [sorted(row.courseKeys), sorted(row.curriculumKeys), sorted(row.sourceGrades), sorted(row.subjectProjections), sorted(row.subjectCurriculumPairs)] : null;
+  });
+  const subjects = files.map((file) => { const set = subjectsOf.get(core.normalizeFile(file)); return set && set.size ? sorted(set) : null; });
+  const dictionary = new Map();
+  const byFile = new Map();
+  const uidChars = new Set();
+  for (const record of records) {
+    for (const char of core.normalizeSearch(record.questionUid)) uidChars.add(char);
+    const entry = unified.byUid.get(record.questionUid);
+    const parent = entry?.rpmParentStatus === 'EXACT' ? entry.rpmParent : null;
+    const text = core.normalizeSearch([record.L1, record.L2, record.L3, record.L4, parent?.L1, parent?.L2].filter(Boolean).join(' '));
+    if (!text) continue;
+    if (!dictionary.has(text)) dictionary.set(text, dictionary.size);
+    let set = byFile.get(record.sourceFile);
+    if (!set) byFile.set(record.sourceFile, (set = new Set()));
+    set.add(dictionary.get(text));
+  }
+  return {
+    schemaVersion: CATALOG_FINDER_SCHEMA,
+    files, identity, subjects,
+    labels: [...dictionary.keys()],
+    labelsByExam: files.map((file) => [...(byFile.get(file) || [])].sort((a, b) => a - b)),
+    uidChars: sorted(uidChars).join(''),
+  };
 }
 
 export const gzipBytes = (buffer) => zlib.gzipSync(buffer, { level: 6 }).length;

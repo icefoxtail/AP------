@@ -20,6 +20,7 @@
   const COMMON_SCHEMA = "archive2-catalog-common-v1";
   const AUTHORITY_SCHEMA = "archive2-catalog-shard-authority-v1";
   const UNIT_PAST_SCHEMA = "archive2-catalog-unit-past-v1";
+  const FINDER_SCHEMA = "archive2-catalog-finder-v1";
   const text = (value) => String(value ?? "").trim();
 
   // validateBasicAssignment compares identityByUid[uid] with the record's own uid, file, ordinal and status, so the identity table is
@@ -167,6 +168,29 @@
   // What the screen sets up once: the foundation runtime authority (owned scopes and taxonomy rows) its join checks every question against.
   function unitPastRuntime(unitCommon) {
     return { status: "ACTIVE", ownedScopes: unitCommon.runtime.ownedScopes, taxonomyRows: unitCommon.runtime.taxonomyRows };
+  }
+
+  // ---- 학교별 기출(찾기) 표 (stage 3): the school finder answers from the common file, without any shard ----------------------------
+  // `common.finder` (tools/lib/build-archive2-catalog-shards.mjs finderPart) holds, per exam, what the finder reads of the records: the
+  // exam's identity sets (Archive2Core.buildFinderIndex), the unified subjects its questions fall in (examSubjects) and the distinct
+  // L1-L4 texts of its questions. This turns them back into the shapes the finder code already reads: a Map for finderMatches, a Map of
+  // Sets for the subject check and the search words. null when the common file has no such part (an older build) or is of another release.
+  function assembleFinder(common, normalizeFile) {
+    const part = common && common.finder;
+    if (!part || part.schemaVersion !== FINDER_SCHEMA || !Array.isArray(part.files) || !Array.isArray(part.identity) || !Array.isArray(part.labels)) return null;
+    const norm = typeof normalizeFile === "function" ? normalizeFile : (value) => String(value ?? "");
+    const finderIndex = new Map();
+    const examSubjects = new Map();
+    const labelsByFile = new Map();
+    part.files.forEach((file, i) => {
+      const key = norm(file);
+      const row = part.identity[i];
+      if (row) finderIndex.set(key, { courseKeys: new Set(row[0]), curriculumKeys: new Set(row[1]), sourceGrades: new Set(row[2]), subjectProjections: new Set(row[3]), subjectCurriculumPairs: new Set(row[4]) });
+      const subjects = part.subjects && part.subjects[i];
+      if (subjects && subjects.length) examSubjects.set(key, new Set(subjects));
+      labelsByFile.set(file, (part.labelsByExam[i] || []).map((at) => part.labels[at]));
+    });
+    return { finderIndex, examSubjects, labelsOf: (file) => labelsByFile.get(file) || [], uidChars: new Set(String(part.uidChars || "")), indexVersion: common.indexVersion, identityDigest: common.identityDigest, files: part.files };
   }
 
   // ---- the loader (stage 2-2): fetch, verify, assemble ---------------------------------------------------------------------
@@ -367,6 +391,6 @@
 
   return {
     SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
-    UNIT_PAST_SCHEMA, unitPastRows, unitPastRuntime, identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
+    UNIT_PAST_SCHEMA, FINDER_SCHEMA, assembleFinder, unitPastRows, unitPastRuntime, identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
   };
 });
