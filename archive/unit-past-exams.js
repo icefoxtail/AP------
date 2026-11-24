@@ -55,10 +55,11 @@
   // 실패 안내는 맨 위 줄에만 두면 표 아래쪽에서 누른 교사가 못 본다. 화면에 고정된 닫을 수 있는 알림으로도 띄운다
   // (문제지 만들기 화면의 오류 알림과 같은 모양, 코드·영어 문구는 그대로 보이지 않게 한다).
   let errorToastEl = null;
+  let errorToastRetryEl = null;
   function hideErrorToast() {
     if (errorToastEl && errorToastEl.parentNode) errorToastEl.parentNode.removeChild(errorToastEl);
   }
-  function showErrorToast(message) {
+  function showErrorToast(message, retry) {
     try {
       if (!errorToastEl) {
         const box = document.createElement('div');
@@ -76,11 +77,22 @@
         errorToastEl = box;
       }
       errorToastEl.firstChild.textContent = message;
+      if (errorToastRetryEl && errorToastRetryEl.parentNode) errorToastRetryEl.parentNode.removeChild(errorToastRetryEl);
+      errorToastRetryEl = null;
+      if (typeof retry === 'function') {
+        const again = document.createElement('button');
+        again.type = 'button';
+        again.className = 'error-toast-close error-toast-retry';
+        again.textContent = '다시 시도';
+        again.addEventListener('click', () => { hideErrorToast(); retry(); });
+        errorToastEl.insertBefore(again, errorToastEl.lastChild);
+        errorToastRetryEl = again;
+      }
       hideErrorToast();
       (document.querySelector('dialog[open]') || document.body).appendChild(errorToastEl);
     } catch (e) { console.warn('[unit-past] error alert unavailable:', e); }
   }
-  function setStatus(message, isError = false) {
+  function setStatus(message, isError = false, retry) {
     const el = document.getElementById('unit-status');
     if (isError) {
       const raw = String(message ?? '');
@@ -88,7 +100,7 @@
       message = /[가-힣]/.test(stripped) ? stripped : '작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.';
       if (message !== raw) console.warn('[unit-past] error text replaced for display:', raw);
     }
-    if (isError && message) showErrorToast(message); else hideErrorToast();
+    if (isError && message) showErrorToast(message, retry); else hideErrorToast();
     if (!el) return;
     el.textContent = message || '';
     el.classList.toggle('is-loading', false);
@@ -111,8 +123,8 @@
     state.metadataError = !data;
     return data;
   }
-  function buildMetaFoundationSelectionAuthority() {
-    return core.createMetaFoundationSelectionAuthority(window.ARCHIVE_META_FOUNDATION_RUNTIME || null);
+  function buildMetaFoundationSelectionAuthority(runtime) {
+    return core.createMetaFoundationSelectionAuthority(runtime || window.ARCHIVE_META_FOUNDATION_RUNTIME || null);
   }
 
   // Usage gate shared with 문제지 만들기 (Archive2Core.generalUseEligibility on the final catalog
@@ -120,8 +132,8 @@
   // review, source-issue annotations and the Meta Foundation taxonomy chain are NOT usage gates.
   // Without a final catalog nothing can be judged, so records stay unmarked (the core treats an
   // unmarked record as usable and the status line says the check could not run).
-  function buildGeneralUseAuthority() {
-    const catalog = window.ARCHIVE2_FINAL_CATALOG;
+  function buildGeneralUseAuthority(finalCatalog) {
+    const catalog = finalCatalog || window.ARCHIVE2_FINAL_CATALOG;
     const archive2 = window.Archive2Core;
     if (!catalog || !Array.isArray(catalog.records) || !archive2 || typeof archive2.generalUseEligibility !== 'function') return null;
     const byUid = new Map();
@@ -138,16 +150,18 @@
         // content-bound usable-meta lane (null when the record has none or is not bound).
         const eligibility = archive2.generalUseEligibility(found);
         return { ...eligibility,
-          rpmParentResolution: core.resolveRpmParent(found, state.profileId),
+          // The join runs once per set of rows, before a grade is chosen: the question's own grade decides (a chosen grade must not change it).
+          rpmParentResolution: core.resolveRpmParent(found, ''),
           facets: typeof archive2.metaFacetsOf === 'function' ? archive2.metaFacetsOf(found) : null };
       }
     };
   }
 
-  function joinApprovedMetadata(records) {
-    const sidecar = window.ARCHIVE_QUESTION_METADATA;
-    const authority = buildMetaFoundationSelectionAuthority();
-    const generalUse = buildGeneralUseAuthority();
+  // source (optional): { sidecar, finalCatalog, runtime, labels } in place of the whole-bundle globals (the catalog-shard path hands in its own).
+  function joinApprovedMetadata(records, source = {}) {
+    const sidecar = source.sidecar || window.ARCHIVE_QUESTION_METADATA;
+    const authority = buildMetaFoundationSelectionAuthority(source.runtime);
+    const generalUse = buildGeneralUseAuthority(source.finalCatalog);
     state.generalUseChecked = Boolean(generalUse);
     const bySource = new Map();
     for (const meta of sidecar?.records || []) {
@@ -173,7 +187,7 @@
       // S14: with the final catalog, concept/type/template come ONLY from its content-bound
       // usable-meta lane (never from a sidecar row that may describe older question bytes), with
       // their own 승인 / 검토 대기 status. Without a catalog the sidecar join below is unchanged.
-      const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
+      const labels = source.labels || window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
       const facets = useGate ? useGate.facets : undefined;
       const facetFields = useGate ? {
         problemTypeKey: facets ? facets.pt : '',
@@ -1114,6 +1128,123 @@
     if (Array.isArray(window.questionIndex)) return Promise.resolve();
     return loadScript(QUESTION_INDEX_SRC);
   }
+  // ---- 문항 목록 조각 경로 (2단계 2-3) ----
+  // 단원별 기출은 고른 학년의 조각만 받는다(문항 약 20MB 전체 묶음 + 11.6MB 문항 색인 대신). 학년을 바꾸면 그 학년 조각을 더 받는다.
+  // 같은 결과를 내려고 조각에는 이 화면이 옛 방식으로 합치던 두 입력(question-index.js 행, 승인 메타 행)이 그대로 들어 있고
+  // (tools/lib/build-archive2-unit-past-part.mjs), 합치는 코드(joinApprovedMetadata)와 그 뒤의 집계·뽑기는 바뀌지 않는다.
+  // 주소에 ?shards=0 이 있거나 조각이 사이트에 없으면(색인·단원별 기출 부분 없음) 옛 전체 묶음 경로 그대로다. 조각 파일이 틀린 경우(릴리스가 움직임)도
+  // 검증된 전체 묶음으로 조용히 바꾼다. 연결이 끊긴 경우만 안내와 "다시 시도"다(연결이 없으면 전체 묶음도 받을 수 없다).
+  const ShardsApi = window.Archive2CatalogShards || null;
+  const SHARDS_OFF = !ShardsApi || ShardsApi.shardsDisabled(String(window.location && window.location.search || '')) === true;
+  const SHARD_NOTICE = '문항 목록을 불러오는 중입니다.';
+  const QUESTION_META_SRC = 'question-meta.js?v=archive-metadata-v1-phase1b-20260826b';
+  const FOUNDATION_RUNTIME_SRC = 'meta-foundation-runtime.js?v=20261110-first-paint-1';
+  const shard = { tried: false, broken: false, loader: null, common: null, joined: new Set(), queue: Promise.resolve(), token: 0 };
+  const shardsOn = () => !SHARDS_OFF && !shard.broken;
+  function shardLoader() {
+    if (!shard.loader) shard.loader = ShardsApi.createLoader({ base: new URL('data/archive2-catalog-shards-v1/', document.baseURI || window.location.href).href, fetch: (url, init) => window.fetch(url, init) });
+    return shard.loader;
+  }
+  // The shards that hold every question of a grade's scope (files by the same rule buildCatalog filters with), named by the index alone.
+  function shardKeysOfProfile(profileId) {
+    const loader = shardLoader();
+    const scope = core.getProfile(profileId).scope;
+    return loader.keysFor({ exams: loader.examFiles().filter(file => core.isInScope({ sourceFile: file }, scope)) }).keys;
+  }
+  function shardProfileMissing(profileId) {
+    if (!shard.tried || !shardsOn()) return false;
+    try { return shardKeysOfProfile(profileId).some(key => !shard.joined.has(key)); } catch (error) { return false; }
+  }
+  // The index, the common tables and what the join needs once (sub-unit names). Throws CATALOG_SHARDS_UNAVAILABLE when this site has no usable shards.
+  async function shardPrepare() {
+    const loader = shardLoader();
+    await loader.loadIndex();
+    const common = await loader.loadCommon();
+    if (!common.unitPast || common.unitPast.schemaVersion !== ShardsApi.UNIT_PAST_SCHEMA)
+      throw Object.assign(new Error('the catalog shards have no unit-past part'), { code: 'CATALOG_SHARDS_UNAVAILABLE' });
+    shard.common = common;
+    if (!window.ARCHIVE_SUBUNIT_LABELS) window.ARCHIVE_SUBUNIT_LABELS = common.unitPast.subUnitLabels;
+  }
+  // Brings the question rows of these shards in (joined exactly as the whole-bundle path joins them). One load at a time.
+  function shardLoadKeys(keys) {
+    const run = async () => {
+      if (!keys.some(key => !shard.joined.has(key))) return;
+      const catalog = await shardLoader().loadCatalog({ shards: keys });
+      if (!catalog.unitPast || !catalog.unitPast.ready)
+        throw Object.assign(new Error('the catalog shards have no unit-past part'), { code: 'CATALOG_SHARD_STALE' });
+      for (const doc of catalog.unitPast.docs) {
+        if (shard.joined.has(doc.key)) continue;
+        const rows = ShardsApi.unitPastRows(catalog.unitPast.common, doc);
+        const joined = joinApprovedMetadata(rows.questionIndex, {
+          sidecar: { records: rows.metaRecords }, finalCatalog: { records: doc.records },
+          runtime: ShardsApi.unitPastRuntime(catalog.unitPast.common), labels: shard.common.labels
+        });
+        for (const row of joined) state.index.push(row);
+        shard.joined.add(doc.key);
+      }
+    };
+    const next = shard.queue.then(run, run);
+    shard.queue = next.catch(() => {});
+    return next;
+  }
+  const shardEnsureProfile = profileId => shardLoadKeys(shardKeysOfProfile(profileId));
+  // The whole bundle after all (shard files that stay wrong, or the shards left the site): the old scripts and files, nothing else changes.
+  async function ensureWholeBundleScripts() {
+    if (!shard.tried || window.__ARCHIVE_METADATA_READY__) return;
+    await loadScript(QUESTION_META_SRC);
+    await loadScript(FOUNDATION_RUNTIME_SRC);
+  }
+  function shardGiveUp(error) {
+    console.warn('[unit-past] catalog shards are not usable; using the whole bundle:', error && error.code || '', error);
+    shard.broken = true; shard.joined = new Set(); state.index = [];
+  }
+  async function shardUseWholeBundleNow(error) {
+    shardGiveUp(error);
+    await ensureWholeBundleScripts();
+    await ensureQuestionIndex();
+    if (!Array.isArray(window.questionIndex)) throw new Error('question-index.js를 불러오지 못했습니다.');
+    try { await loadMetadata(); } catch (failure) { state.metadataError = true; console.warn(failure); }
+    state.index = joinApprovedMetadata(window.questionIndex);
+  }
+  // First load (page start). true = handled (drawn or shown an error); false = use the whole bundle.
+  async function initFromShards(groupsReady) {
+    const Boot = window.Archive2Boot;
+    shard.tried = true;
+    try {
+      Boot?.setStage?.('resolve');
+      await shardPrepare();
+      const initial = gridInitialGrade(gridReadStore());
+      if (initial) await shardEnsureProfile(initial);
+    } catch (error) {
+      if (!ShardsApi.isUnavailable(error) && ShardsApi.isNetworkFailure(error)) { Boot?.finish?.(true); renderSafeFallback(ShardsApi.NETWORK_MESSAGE); return true; }
+      shardGiveUp(error);
+      return false;
+    }
+    Boot?.setStage?.('index');
+    try { await groupsReady; } catch (error) { console.warn(error); }
+    gridInit();
+    state.ready = true;
+    Boot?.finish?.(false);
+    return true;
+  }
+  // A grade button pressed while that grade's shards are not here yet: fetch them, then do what the button does. A newer press wins.
+  function shardSelectLater(profileId, options) {
+    const token = ++shard.token;
+    setStatus(SHARD_NOTICE);
+    const retry = () => gridSelectGrade(profileId, options);
+    shardEnsureProfile(profileId).then(() => {
+      if (token !== shard.token) return;
+      setStatus('');
+      gridSelectGrade(profileId, options);
+    }, async error => {
+      if (token !== shard.token) return;
+      if (ShardsApi.isNetworkFailure(error) && !ShardsApi.isUnavailable(error)) { setStatus(ShardsApi.NETWORK_MESSAGE, true, retry); return; }
+      try { await shardUseWholeBundleNow(error); } catch (failure) { console.error(failure); setStatus(failure && failure.message || ShardsApi.NETWORK_MESSAGE, true, retry); return; }
+      if (token !== shard.token) return;
+      setStatus('');
+      gridSelectGrade(profileId, options);
+    });
+  }
   async function init() {
     const app = document.getElementById('unit-content');
     const Boot = window.Archive2Boot;
@@ -1125,6 +1256,8 @@
     // 고등 소단원 묶음표(작은 JSON)는 큰 자료와 함께 비동기로 읽는다. 못 읽으면 loadGroups가 콘솔 경고를 남기고 고등은 대단원만 보인다.
     const groupsReady = treeApi()?.loadGroups ? treeApi().loadGroups() : Promise.resolve(null);
     try {
+      if (shardsOn() && await initFromShards(groupsReady)) return;
+      await ensureWholeBundleScripts();
       try { await ensureQuestionIndex(); } catch (error) { console.error(error); }
       if (!Array.isArray(window.questionIndex)) { Boot?.finish?.(true); renderSafeFallback('question-index.js를 불러오지 못했습니다.'); return; }
       try { await loadMetadata(); } catch (error) { state.metadataError = true; console.warn(error); }
@@ -1489,6 +1622,7 @@
   }
   function gridSelectGrade(profileId, options = {}) {
     if (!core.PROFILES[profileId] || state.busyKey) return;
+    if (!G.catalogs.has(profileId) && shardProfileMissing(profileId)) { shardSelectLater(profileId, options); return; }
     let entry;
     try { entry = gridCatalogFor(profileId); } catch (error) {
       console.error(error);
