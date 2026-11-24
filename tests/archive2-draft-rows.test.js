@@ -45,7 +45,7 @@ function harness(data = base, extra = {}) {
   ctx.window = ctx;
   loadWorkspace(ctx, `
     render = () => {}; save = () => {};
-    globalThis.workspaceTest = { state, scopeOptions, planRows, request, pool, draft, applyDraft, generate };
+    globalThis.workspaceTest = { state, scopeOptions, planRows, request, pool, draft, applyDraft, generate, review };
   `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -146,6 +146,17 @@ test('카탈로그가 바뀐 뒤 열어도 선정 문항은 모든 행의 범위
   assert.ok(!reopened.state.selected.some(r => r.questionUid === first), 'the vanished question is left out');
   assert.equal(reopened.state.selected.length, d.selected.length - 1, 'every other question is opened');
   assert.match(reopened.state.composeNotice, /\d+번 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다/);
+  // 여러 행 초안에서 빠진 문항이 속한 행의 요청 개수도 그만큼 줄어, 열린 뒤 저장·출력이 "요청한 문항 수 불충족"으로 막히지 않는다.
+  const droppedRow = d.selected.find(r => r.questionUid === first).rowId;
+  const perRow = rowId => reopened.state.selected.filter(r => r.rowId === rowId).length;
+  for (const row of plain(reopened.state.rows)) {
+    const before = d.rows.find(r => r.id === row.id).count;
+    assert.equal(row.count, before - (row.id === droppedRow ? 1 : 0), `row ${row.id}: request count follows the vanished question`);
+    assert.equal(perRow(row.id), row.count, `row ${row.id}: the paper holds exactly the requested count`);
+  }
+  assert.ok(d.rows.length >= 2, 'a multi-row draft');
+  reopened.state.ackWarnings = true;
+  assert.deepEqual(plain(reopened.review().hardFailures), [], 'nothing blocks saving or printing after the question left the archive');
 });
 
 test('열 때 범위 키가 사라진 행은 선정 문항만으로 좁히지 않고 목록 없이 두며(안내는 기존 그대로), 나머지 행은 다시 계산한다', () => {

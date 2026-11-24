@@ -422,13 +422,17 @@
         throw new Error("이 작업의 문항이 아카이브에서 모두 사라져 열 수 없습니다.");
       const gone = new Set(data.selected.filter((r) => !state.byUid.has(r.questionUid)).map((r) => r.questionUid));
       const kept = data.selected.length - droppedNumbers.length;
+      // 빠진 문항이 속한 행의 요청 개수를 그만큼 줄인다(안 줄이면 "요청한 문항 수가 충족되지 않았습니다"로 저장·출력이 막힌다).
+      const lost = new Map();
+      for (const r of data.selected) if (gone.has(r.questionUid)) lost.set(r.rowId, (lost.get(r.rowId) || 0) + 1);
       data = {
         ...data,
         selected: data.selected.filter((r) => !gone.has(r.questionUid)),
         pins: Array.isArray(data.pins) ? data.pins.filter((uid) => !gone.has(uid)) : data.pins,
-        ...(data.derivationSource && Array.isArray(data.rows) && data.rows.length === 1
-          ? { count: kept, rows: data.rows.map((row) => ({ ...row, count: kept })) }
+        ...(Array.isArray(data.rows)
+          ? { rows: data.rows.map((row) => (lost.has(row?.id) && Number.isFinite(row.count) ? { ...row, count: Math.max(0, row.count - lost.get(row.id)) } : row)) }
           : {}),
+        ...(data.derivationSource ? { count: kept } : {}),
       };
     }
     const reopenNotice = revisionOpenNotice(fixedCount, droppedNumbers);
@@ -656,11 +660,10 @@
       ? [...new Set(selectionFilters.scopeQuestionUids.map(String))]
       : records.map(record => record.questionUid);
     // 저장 뒤 분류가 고쳐져 옛 범위에 안 맞는 문항도 거절하지 않고, 그 문항의 지금 단원을 범위에 보탠다(서버는 이 범위로 다시 대조한다).
-    const rangeRow = () => ({ paths, scopeQuestionUids, depth: 4, difficultyBuckets: [] });
-    for (const record of records)
-      if (!scopeQuestionUids.includes(record.questionUid)) scopeQuestionUids.push(record.questionUid);
+    // 맞는지 미리 판정하지 않고 모든 문항의 원시 키·일반 키를 둘 다 보탠다: 저장본 범위에 원시 모드로는 맞는 빈 키가 이미 들어 있어도,
+    // 실제 판정(C.review)과 서버(core.matches)는 일반 모드라 그 키로 맞지 않을 수 있다. 범위는 scopeQuestionUids가 함께 좁힌다.
     for (const record of records) {
-      if (C.rowMatches(record, rangeRow()) || C.rowMatches(record, rangeRow(), workspaceMatchOptions())) continue;
+      if (!scopeQuestionUids.includes(record.questionUid)) scopeQuestionUids.push(record.questionUid);
       for (const key of [C.pathKey(record, 4), C.generalPathKey(record, 4)]) if (!paths.includes(key)) paths.push(key);
     }
     const row = {

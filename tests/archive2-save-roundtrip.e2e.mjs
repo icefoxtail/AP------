@@ -166,6 +166,19 @@ for (const grade of GRADES) {
       assert.equal(gone.ws.state.saveResultState, "SAVED", sendFailure(gone.ws, grade + " (vanished question)"));
       const savedGone = (await (await api("/archive-saved-papers/" + gone.ws.state.savedPaperIds[0])).json()).paper;
       assert.deepEqual(savedGone.snapshot.questions.map((q) => q.questionUid), sentUids.filter((_, index) => index !== 1));
+
+      // The unit of a question changed after the save, so the saved range no longer names the unit key the real check (general mode) reads:
+      // the revision must still open, pass review (no HARD_BLOCK / row mismatch) and save. An empty raw key in the range used to hide this.
+      const reclassified = createWorkspace(server);
+      const moved = structuredClone(raw);
+      moved.snapshot.selectionFilters.primaryPaths = [core.pathKey({}, 4)];
+      reclassified.ws.applySavedPaperRevision(moved);
+      reclassified.ws.state.ackWarnings = true;
+      assert.deepEqual(reclassified.ws.review().hardFailures, [], `${grade}: a question whose unit changed after the save must not block the revision`);
+      const preview = await reclassified.ws.prepare();
+      assert.equal(preview[0].questions.length, sentUids.length, `${grade}: the preview is built`);
+      await reclassified.ws.savePapers();
+      assert.equal(reclassified.ws.state.saveResultState, "SAVED", sendFailure(reclassified.ws, grade + " (reclassified question)"));
     });
 
     // g. assign the saved paper to a class: the assignment keeps the saved order
