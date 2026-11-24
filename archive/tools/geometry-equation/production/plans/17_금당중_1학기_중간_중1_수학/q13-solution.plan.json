@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "네 점",
+        "band": false,
+        "points": [
+          {
+            "id": "b",
+            "style": "TICK"
+          },
+          {
+            "id": "-a",
+            "style": "TICK"
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "a",
+            "style": "TICK"
+          }
+        ],
+        "order": [
+          "b",
+          "-a",
+          "O",
+          "a"
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "네 점의 대소 관계"
+  },
+  "caption": "수직선에서 b는 −a보다 왼쪽에 있고, −a는 0보다 왼쪽, a는 0보다 오른쪽에 있다. 따라서 a>0, b<0이고 b<−a이므로 a+b<0, a−b>0이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "수직선 위에 왼쪽부터 b, −a, 0, a가 차례로 눈금으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수직선에서 점 $A, B$에 대응하는 수를 각각 $a, b$라 할 때, 다음 중 옳은 것은? (4점)<br><img src=\"assets/images/17_금당중_1학기_중간_중1_수학/17_금당중_1학기_중간_중1_수학_q13_img01.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "b는 −a보다 왼쪽에 있고, −a는 0보다 왼쪽, 0은 a보다 왼쪽에 있다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "b, −a, 0, a의 위치 관계를 수직선에 나타낸다"
+  ]
+}

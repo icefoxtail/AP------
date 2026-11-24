@@ -1,0 +1,85 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "L",
+            "value": "2",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "sqrt(8)",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "3",
+            "hideName": true,
+            "showValue": false
+          }
+        ],
+        "spans": [
+          {
+            "from": "L",
+            "to": "A",
+            "label": "a",
+            "style": "ARROW"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "S",
+            "value": "11",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "sqrt(128)",
+            "hideName": true
+          },
+          {
+            "id": "T",
+            "value": "12",
+            "hideName": true,
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 수의 소수부분 비교"
+  },
+  "caption": "√8=2√2이므로 정수 부분은 2이고 소수부분은 a=√8−2=2√2−2이다. √128=8√2=4(2√2)=4a+8이고 정수 부분이 11이므로 소수부분은 4a+8−11=4a−3이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "위쪽 수직선에는 2와 3 사이의 점 √8이, 아래쪽 수직선에는 11과 12 사이의 점 √128이 놓여 있다. 위쪽 수직선에서 2부터 √8까지의 거리를 화살표와 a로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. $\\sqrt{8}$의 소수부분을 $a$라 할 때, $\\sqrt{128}$의 소수부분을 $a$로 나타내면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "√8의 소수부분을 a라 한다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "√8과 √128을 각각 정수 2, 3 사이와 11, 12 사이의 위치로 나타낸다",
+    "√8의 소수부분 a를 2에서 √8까지의 화살표로 표시한다"
+  ]
+}

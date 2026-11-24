@@ -838,7 +838,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "주어진 닮음비로 대응변과 둘레 계산",
-    "decisiveStep": "작은삼각형의이미알려진변5와대응변8/2,12/2를더한다."
+    "decisiveStep": "작은삼각형의이미알려진변5와대응변8/2,12/2를더한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮음비 2:1인 두 삼각형 ABC와 DEF가 나란히 있고, 각 변의 길이가 변 옆에 cm 단위로 적혀 있다.",
+    "solutionImageCaption": "닮음비가 2:1이므로 AB:DE=2:1에서 AB=10cm이다. 삼각형 ABC의 둘레는 10+12+8=30cm이고, 닮은 두 삼각형의 둘레의 비도 2:1이다. 따라서 삼각형 DEF의 둘레는 30÷2=15cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -1145,7 +1150,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심 반각과 외심 이등변각의 차",
-    "decisiveStep": "밑각70에서내심각35와외심관련밑각20을각각구해차15를구한다."
+    "decisiveStep": "밑각70에서내심각35와외심관련밑각20을각각구해차15를구한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC 안에 내심 I와 외심 O가 있고, 꼭짓점 B에서 I와 O로 선분이 그어져 있다. 꼭짓점 A와 B 주변에 각의 크기와 호 표시가 있고, 오른쪽에 각 OBI를 따로 그린 작은 그림이 있다.",
+    "solutionImageCaption": "이등변삼각형 ABC에서 꼭지각 A가 40도이므로 두 밑각 B와 C는 각각 70도이다. 내심 I에 대하여 BI가 각 B를 이등분하므로 각 ABI는 35도이고, 외심 O에 대하여 각 AOB는 각 C의 두 배인 140도이므로 각 ABO는 20도이다. 따라서 각 OBI는 35도에서 20도를 뺀 15도이다. 따라서 답은 (1) 35도, (2) 20도, (3) 15도이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,

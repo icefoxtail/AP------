@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "table",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "table"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "P3"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "P4"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "P5"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "P6"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "n1",
+        "ownerSegment": "s1",
+        "text": "1"
+      },
+      {
+        "id": "n2",
+        "ownerSegment": "s2",
+        "text": "2"
+      },
+      {
+        "id": "n3",
+        "ownerSegment": "s3",
+        "text": "3"
+      },
+      {
+        "id": "n4",
+        "ownerSegment": "s4",
+        "text": "4"
+      },
+      {
+        "id": "n5",
+        "ownerSegment": "s5",
+        "text": "5"
+      },
+      {
+        "id": "n6",
+        "ownerSegment": "s6",
+        "text": "6"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "fix",
+        "circle": "table",
+        "center": "O",
+        "from": "P1",
+        "to": "P6",
+        "side": "MINOR",
+        "label": "고정",
+        "labelKind": "TEXT",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rot",
+        "circle": "table",
+        "center": "O",
+        "from": "P2",
+        "to": "P3",
+        "side": "MINOR",
+        "label": "회전",
+        "labelKind": "TEXT",
+        "color": "VIOLET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "caption": "원탁에서는 회전하여 같은 자리가 되는 배치를 한 가지로 센다. 한 학생의 자리를 고정하면 나머지 5명의 자리를 배열하는 방법만 세면 된다. 이때 경우의 수는 5! = 5×4×3×2×1 = 120이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "원 모양의 탁자 둘레에 여섯 개의 점이 같은 간격으로 놓여 있고, 중심에서 각 점으로 점선이 뻗어 있으며 그 점선마다 1부터 6까지의 번호가 붙어 있다. 한 자리 옆의 파란 호에는 고정, 이웃한 자리 사이의 보라색 호에는 회전이라고 적혀 있다.",
+  "newVisualInformation": [
+    "원탁의 여섯 자리를 같은 간격의 점과 번호로 표시",
+    "한 학생의 자리를 고정한 자리와 회전 방향을 두 개의 호로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6명의 학생이 원탁에 둘러앉는 모든 경우의 수를 구한 것은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

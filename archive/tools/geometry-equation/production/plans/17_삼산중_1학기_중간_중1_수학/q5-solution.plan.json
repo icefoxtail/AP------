@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "위치 -7/3",
+        "points": [
+          {
+            "id": "P1",
+            "value": "-7/3",
+            "hideName": true,
+            "showValue": false
+          }
+        ],
+        "subdivisions": [
+          {
+            "from": "-3",
+            "to": "-2",
+            "parts": 3
+          }
+        ],
+        "band": false
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "구하는 수의 위치"
+  },
+  "caption": "−7/3은 −3과 −2 사이를 삼등분한 눈금에서 −2보다 왼쪽으로 한 칸 떨어진 수이다. 주어진 수직선에서 이 위치를 가리키는 화살표는 ①이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "수직선의 −3과 −2 사이에 삼등분 눈금이 있고, 그중 한 눈금 위에 점이 찍혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수직선의 화살표가 나타내는 수 중에서 $-\\frac{7}{3}$을 나타내는 것은? [4점]<br><img src=\"assets/images/17_삼산중_1학기_중간_중1_수학/17_삼산중_1학기_중간_중1_수학_q05_img01.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "−7/3은 −3과 −2 사이에 있다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "−3과 −2 사이를 삼등분한 눈금 위에 −7/3의 위치를 점으로 표시한다"
+  ]
+}

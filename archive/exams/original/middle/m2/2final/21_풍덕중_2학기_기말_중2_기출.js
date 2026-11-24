@@ -702,7 +702,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "M2_CURRICULUM_SCOPE_REVIEW_REQUIRED_FOR_H1_GRAPH_PATH_TEMPLATE_REUSE",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "그림에서 A-B 사이 경로는 위, 가운데, 아래의 3가지이고 B-C 사이 경로도 3가지이다. 두 구간의 경로를 각각 하나씩 고르면 되므로 3×3=9가지이다. 각 경로는 B에서 이어지고 다른 지점을 다시 지나지 않으므로 조건을 만족한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1446,7 +1450,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "청소당번은 남학생 4명 중 1명, 여학생 3명 중 1명을 뽑으므로 4×3=12가지이다. 청소당번으로 남학생 1명을 뺀 뒤 빨래당번은 남은 남학생 3명 중 2명을 뽑아 3가지이고, 여학생은 남은 2명을 모두 식사당번으로 뽑아 1가지이다. 따라서 전체는 12×3×1=36가지이다. 따라서 답은 (1) 12, (2) 36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -1,0 +1,399 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "c0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "c0",
+    "c4",
+    "r1a",
+    "r1b",
+    "r2a",
+    "r2b",
+    "r3a",
+    "r3b",
+    "v0",
+    "v3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "h0",
+      "refs": [
+        "c0",
+        "c4"
+      ]
+    },
+    {
+      "id": "h1",
+      "refs": [
+        "r1a",
+        "r1b"
+      ]
+    },
+    {
+      "id": "h2",
+      "refs": [
+        "r2a",
+        "r2b"
+      ]
+    },
+    {
+      "id": "h3",
+      "refs": [
+        "r3a",
+        "r3b"
+      ]
+    },
+    {
+      "id": "vv",
+      "refs": [
+        "v0",
+        "v3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t00",
+        "at": [
+          0.5,
+          2.5
+        ],
+        "text": "사람",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t10",
+        "at": [
+          1.5,
+          2.5
+        ],
+        "text": "이긴 횟수",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t20",
+        "at": [
+          2.5,
+          2.5
+        ],
+        "text": "진 횟수",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t30",
+        "at": [
+          3.5,
+          2.5
+        ],
+        "text": "이동 계단",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t01",
+        "at": [
+          0.5,
+          1.5
+        ],
+        "text": "상태",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t11",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "text": "10"
+      },
+      {
+        "id": "t21",
+        "at": [
+          2.5,
+          1.5
+        ],
+        "text": "7"
+      },
+      {
+        "id": "t31",
+        "at": [
+          3.5,
+          1.5
+        ],
+        "text": "23"
+      },
+      {
+        "id": "t02",
+        "at": [
+          0.5,
+          0.5
+        ],
+        "text": "강태",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t12",
+        "at": [
+          1.5,
+          0.5
+        ],
+        "text": "7"
+      },
+      {
+        "id": "t22",
+        "at": [
+          2.5,
+          0.5
+        ],
+        "text": "10"
+      },
+      {
+        "id": "t32",
+        "at": [
+          3.5,
+          0.5
+        ],
+        "text": "11"
+      },
+      {
+        "id": "total",
+        "at": [
+          2.5,
+          -0.7
+        ],
+        "text": "전체 17회",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "c0",
+    "c4",
+    "r1a",
+    "r1b",
+    "r2a",
+    "r2b",
+    "r3a",
+    "r3b",
+    "v0",
+    "v3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "상태가 이긴 횟수를 x, 진 횟수를 y라 하면 상태의 이동은 3x−y=23이고 강태의 이동은 −x+3y=11이다. 두 식을 풀면 x=10, y=7이므로 두 사람이 가위바위보를 한 전체 횟수는 10+7=17회이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "상태와 강태의 이긴 횟수, 진 횟수, 이동 계단 수를 정리한 표가 있고, 상태는 10승 7패로 23계단, 강태는 7승 10패로 11계단이 적혀 있다.",
+  "newVisualInformation": [
+    "상태와 강태의 승패 횟수 및 이동 계단 수를 정리한 표",
+    "두 사람의 총 경기 횟수 17회"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 상태와 강태가 가위바위보를 하여 이긴 사람은 세 계단 올라가고, 진 사람은 한 계단 내려가기로 했다. 그 결과 처음의 위치보다 상태는 23계단 올라가고 강태는 11계단 올라가 있었다. 두 사람이 가위바위보를 한 전체 횟수는? (단, 비긴 경우는 없었다고 한다.) [5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

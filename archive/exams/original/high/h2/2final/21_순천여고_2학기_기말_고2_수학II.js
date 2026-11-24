@@ -565,7 +565,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 −4부터 2까지 세 개의 이차곡선 조각이 이어져 주기적으로 반복되는 그래프가 있고, 각 조각의 꼭짓점과 조각이 이어지는 점들이 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=21/16x²−13/8x로 두면 f(0)=0, f(2)=2이고 0부터 2까지의 적분은 1/4이다. 이때 g는 주기 4로 반복되고, −2부터 0까지의 적분은 −1/4+4=15/4이다. 한 주기의 적분은 4이므로 −4부터 2까지의 적분은 4+1/4=17/4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

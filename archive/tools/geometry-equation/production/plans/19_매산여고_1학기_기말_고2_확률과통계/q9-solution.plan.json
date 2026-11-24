@@ -1,0 +1,347 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "64"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "64"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4",
+      "refs": [
+        "P8",
+        "P7"
+      ]
+    },
+    {
+      "id": "sP5",
+      "refs": [
+        "P7",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP6",
+      "refs": [
+        "P6",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP7",
+      "refs": [
+        "P1",
+        "P8"
+      ]
+    },
+    {
+      "id": "sP8",
+      "refs": [
+        "P2",
+        "P7"
+      ]
+    },
+    {
+      "id": "sP9",
+      "refs": [
+        "P3",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP10",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "label": "15",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P7",
+              "P8"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "label": "7",
+        "shapes": [
+          {
+            "polygon": [
+              "P2",
+              "P3",
+              "P6",
+              "P7"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "VIOLET",
+        "label": "42",
+        "shapes": [
+          {
+            "polygon": [
+              "P3",
+              "P4",
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dFav",
+        "from": "P8",
+        "to": "P6",
+        "label": "22",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAll",
+        "from": "P1",
+        "to": "P4",
+        "label": "64",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "6번 중 앞면이 4번, 5번, 6번 나오는 경우를 센다. 그 수는 15+6+1=22이고 전체는 64가지이므로 확률은 22/64=11/32이다. 그림은 64가지를 한 막대로 보고 앞면이 4번 이상인 22가지를 15와 7로 나누어 표시한 것이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "가로로 놓인 하나의 큰 직사각형이 세 칸으로 나뉘어 있고, 왼쪽부터 파란색 칸에 15, 주황색 칸에 7, 보라색 칸에 42가 적혀 있다. 첫 두 칸 위를 가로지르는 치수선에는 22, 세 칸 전체 아래를 가로지르는 치수선에는 64가 적혀 있다.",
+  "newVisualInformation": [
+    "전체 64가지 중 앞면이 4번 이상인 22가지",
+    "22가지를 15와 7로 나눈 막대",
+    "확률 11/32"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 동전을 6번 던질 때, 앞면이 나오는 횟수가 뒷면이 나오는 횟수보다 클 확률은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

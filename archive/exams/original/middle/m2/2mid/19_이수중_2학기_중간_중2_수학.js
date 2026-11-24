@@ -620,7 +620,11 @@ window.examData = {
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "마름모의 직교 대각선과 같은 밑각",
-    "decisiveStep": "대각선 교점의 x는90도이며 같은 두 변의 밑각으로 y를 주어진30도와 같게 놓아 합한다."
+    "decisiveStep": "대각선 교점의 x는90도이며 같은 두 변의 밑각으로 y를 주어진30도와 같게 놓아 합한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 두 대각선 AC와 BD가 점 O에서 만나고, 점 B의 각 30°, 점 O의 각 x, 점 D의 각 y가 표시되어 있다. 네 변에는 같은 길이 표시가 있다.",
+    "solutionImageCaption": "마름모의 두 대각선은 서로 수직이므로 각 x=90°이다. 대각선 BD가 각 B를 이등분하므로 각 ABC=60°이고, 마름모의 대각은 같으므로 각 CDA=60°이다. 따라서 대각선 BD가 각 D를 이등분하므로 각 y=30°이고, 각 x와 각 y의 합은 120°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

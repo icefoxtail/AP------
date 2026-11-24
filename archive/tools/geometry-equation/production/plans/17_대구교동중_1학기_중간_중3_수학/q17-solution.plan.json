@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2236",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2291",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2345",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2398",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2449",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2550",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2646",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "E",
+    "A",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAxis",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d5",
+        "from": "O",
+        "to": "A",
+        "label": "√5",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d7",
+        "from": "O",
+        "to": "B",
+        "label": "√7",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "O",
+    "E",
+    "A",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "B"
+  ],
+  "caption": "√5는 약 2.24, √7은 약 2.65이므로 그 사이에는 무리수가 무수히 많다. 예를 들어 √21/2, √22/2, √23/2, √6, √26/2는 모두 √5보다 크고 √7보다 작은 무리수이다. 따라서 답은 √21/2, √22/2, √23/2, √6, √26/2이다.",
+  "accessibilityDescription": "가로선 위에 √5와 √7의 위치가 표시되어 있고, 그 사이에 다섯 개의 작은 점이 놓여 있다.",
+  "newVisualInformation": [
+    "√5와 √7 사이에 놓인 다섯 무리수의 위치",
+    "두 끝값 √5와 √7의 크기 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 2】 두 수 $\\sqrt{5}$와 $\\sqrt{7}$ 사이에 있는 무리수를 5개 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ND",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "38"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "ND"
+  ],
+  "displaySegments": [],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "ND"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "v1",
+        "from": "N1",
+        "to": "N2"
+      },
+      {
+        "id": "v2",
+        "from": "N2",
+        "to": "N3"
+      },
+      {
+        "id": "v3",
+        "from": "N3",
+        "to": "N4"
+      },
+      {
+        "id": "v4",
+        "from": "N4",
+        "to": "N5"
+      },
+      {
+        "id": "v5",
+        "from": "N5",
+        "to": "ND"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "N1",
+        "to": "N2",
+        "label": "예",
+        "labelKind": "TEXT",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "d2",
+        "from": "N2",
+        "to": "N3",
+        "label": "아니오",
+        "labelKind": "TEXT",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "d3",
+        "from": "N3",
+        "to": "N4",
+        "label": "아니오",
+        "labelKind": "TEXT",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "d4",
+        "from": "N4",
+        "to": "N5",
+        "label": "예",
+        "labelKind": "TEXT",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "d5",
+        "from": "N5",
+        "to": "ND",
+        "label": "예",
+        "labelKind": "TEXT",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "txdest",
+        "at": "ND",
+        "text": "대구"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "1단계는 참이라 예, 2단계는 거짓이라 아니오, 3단계도 거짓이라 아니오, 4단계와 5단계는 참이라 예 방향으로 이동한다. 화살표를 따라가면 도착지는 대구이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 위에서 오른쪽으로, 아래로 두 번, 다시 오른쪽으로 이어지는 다섯 개의 화살표가 있고, 각 화살표 옆에 예 또는 아니오가 적혀 있다. 마지막 화살표 끝에 도착지 이름이 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 성질의 참과 거짓에 따른 다섯 단계 이동 경로",
+    "각 단계의 예와 아니오 방향 표시",
+    "도착지 대구"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

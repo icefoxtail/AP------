@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "120"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "120"
+            },
+            {
+              "kind": "integer",
+              "value": "360"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "520"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "520"
+            },
+            {
+              "kind": "integer",
+              "value": "360"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G0",
+    "G9",
+    "D0",
+    "D3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "ground",
+      "refs": [
+        "G0",
+        "D0"
+      ]
+    },
+    {
+      "id": "gMove",
+      "refs": [
+        "G0",
+        "G9"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "dMove",
+      "refs": [
+        "D0",
+        "D3"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eG",
+        "ownerSegment": "gMove",
+        "text": "2x-y=9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eD",
+        "ownerSegment": "dMove",
+        "text": "-x+2y=3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "p0g",
+        "at": [
+          95,
+          45
+        ],
+        "text": "0"
+      },
+      {
+        "id": "p9g",
+        "at": [
+          128,
+          372
+        ],
+        "text": "9"
+      },
+      {
+        "id": "p0d",
+        "at": [
+          535,
+          45
+        ],
+        "text": "0"
+      },
+      {
+        "id": "p3d",
+        "at": [
+          568,
+          372
+        ],
+        "text": "3"
+      },
+      {
+        "id": "nG",
+        "at": [
+          160,
+          390
+        ],
+        "text": "금이"
+      },
+      {
+        "id": "nD",
+        "at": [
+          520,
+          390
+        ],
+        "text": "당이"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "G0",
+    "G9",
+    "D0",
+    "D3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "금이가 이긴 횟수 x번마다 2계단 올라가고 진 횟수 y번마다 1계단 내려가므로 2x-y=9이다. 당이는 이긴 횟수 y번마다 2계단 올라가고 진 횟수 x번마다 1계단 내려가므로 -x+2y=3이다. 두 식을 풀면 x=7, y=5이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "두 개의 위쪽 화살표가 나란히 있고, 왼쪽 화살표에는 2x-y=9, 오른쪽 화살표에는 -x+2y=3이 붙어 있으며, 왼쪽은 0에서 9까지, 오른쪽은 0에서 3까지의 높이를 나타낸다.",
+  "newVisualInformation": [
+    "금이의 계단 위치를 나타내는 2x-y=9 화살표",
+    "당이의 계단 위치를 나타내는 -x+2y=3 화살표",
+    "두 사람의 처음 위치 0과 나중 위치 9, 3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 금이와 당이가 가위바위보를 하여 이긴 사람은 두 계단 올라가고, 진 사람은 한 계단 내려가기로 하였다. 그 결과 처음의 위치보다 금이는 9계단 올라가고, 당이는 3계단을 올라가 있었다. 금이가 이긴 횟수를 $x$번, 당이가 이긴 횟수를 $y$번이라고 할 때, $x, y$값을 구하기 위한 식으로 적절한 것은? (5점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -47,7 +47,12 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 1,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에는 0, 1, 2, 3, 4, 5가 적힌 짧은 세로선 여섯 개가 같은 간격으로 늘어서 있고, 그 위에 뒷면이 나온 횟수라는 치수선이 있다. 아래쪽에는 파란색으로 칠한 가로 직사각형 띠가 있고 그 아래에 등교 시간이라는 치수선이 있다.",
+    "solutionImageCaption": "확률변수가 가질 수 있는 값이 셀 수 있으면 이산확률변수, 구간의 모든 실숫값을 가지면 연속확률변수이다. 뒷면이 나온 횟수는 0부터 5까지의 정수이므로 이산확률변수이고, 등교 시간은 연속적인 시간값이므로 연속확률변수이다. 몸무게는 연속적인 값을 가지므로 ㄱ은 거짓이고, 구간의 모든 실숫값을 갖는 확률변수는 연속확률변수이므로 ㄹ도 거짓이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,

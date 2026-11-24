@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "viewport": [
+      -4,
+      3,
+      -5,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "-2",
+          "-2"
+        ],
+        "domain": [
+          "-13/5",
+          "8/5"
+        ],
+        "label": "f"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "label": "y=7",
+        "style": "DASHED"
+      },
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "label": "y=-1",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "(-1-sqrt(11))/2",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "(-1+sqrt(11))/2",
+          "y": "-1",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "그래프의 t축 교점이 −2, 1이고 최고차항의 계수가 −2이므로 f(t)=−2(t+2)(t−1)이고 최댓값은 9/2이다. 판별식은 f(t)²−6f(t)−7=(f(t)−7)(f(t)+1)이므로 중근 조건은 f(t)=7 또는 f(t)=−1이다. 최댓값이 9/2라 f(t)=7인 t는 없고, 수평선 y=−1은 포물선과 두 점에서 만난다. 따라서 조건을 만족하는 t는 2개이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "아래로 열린 포물선 f와 두 수평 점선 y=7, y=−1이 같은 좌표평면에 그려져 있고, y=−1이 포물선과 만나는 두 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선 f(t)와 직선 y=7, y=−1을 같은 좌표평면에 그리고 y=−1과의 교점 두 개를 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $-2$인 이차함수 $y=f(t)$의 그래프가 그림과 같을 때, $x$에 대한 이차방정식 $x^2-\\{f(t)-1\\}x+f(t)+2=0$이 중근을 갖게 하는 서로 다른 실수 $t$의 개수는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

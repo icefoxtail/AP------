@@ -1244,7 +1244,11 @@ window.examData = {
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "두 직선의 교점을 지나는 세번째선",
-    "decisiveStep": "앞의 두식을 연립한 교점을 세번째식에 대입하여 계수를 정한다."
+    "decisiveStep": "앞의 두식을 연립한 교점을 세번째식에 대입하여 계수를 정한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 f, 주황 직선 g, 초록 직선 h가 한 점 P에서 만나고, 교점 P에 좌표 (5, -3)이 표시되어 있다.",
+    "solutionImageCaption": "그림에서 f는 x+y=2, g는 2x+3y=1, h는 a=-2일 때의 x+3y=-4이다. f와 g를 연립하면 교점 (5, -3)을 얻는다. 이 점을 ax+3ay=8에 대입하면 -4a=8이므로 a=-2이다. 따라서 답은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

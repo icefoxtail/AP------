@@ -801,7 +801,12 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 긴 표 모양 그림이다. 첫 줄에 1부터 10까지의 수가, 둘째 줄에 20, 10, 6, 5, 4, 3, 2, 2, 2, 2가, 셋째 줄에 1이 열 번 적혀 있다. 왼쪽 중괄호 옆에 56, 오른쪽 아래 중괄호 옆에 10이 적혀 있다.",
+    "solutionImageCaption": "x+1=u, y+1=v로 두면 조건은 (x+1)(y+1)≤20이다. u=1부터 10까지에서 가능한 v의 개수는 20, 10, 6, 5, 4, 3, 2, 2, 2, 2로 합이 56이고, u=11부터 20까지는 각각 1개이므로 전체는 56+10=66쌍이다. x+y=19이면 xy≤0이므로 (0, 19), (19, 0)의 두 쌍뿐이어서 확률은 2/66=1/33이다. 따라서 a+b=34이고, 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,

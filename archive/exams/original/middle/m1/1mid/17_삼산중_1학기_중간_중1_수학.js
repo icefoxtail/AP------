@@ -70,7 +70,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선의 −3과 −2 사이에 삼등분 눈금이 있고, 그중 한 눈금 위에 점이 찍혀 있다.",
+      "solutionImageCaption": "−7/3은 −3과 −2 사이를 삼등분한 눈금에서 −2보다 왼쪽으로 한 칸 떨어진 수이다. 주어진 수직선에서 이 위치를 가리키는 화살표는 ①이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,
@@ -98,7 +102,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 -10, -8/3, -2, 1, 3, 4가 표시되어 있고, -10 옆에 a, 1 옆에 b가 적혀 있으며, 0에서 -10까지의 거리 10이 치수선으로 나타난 그림이다.",
+      "solutionImageCaption": "절댓값이 가장 큰 수는 |-10| = 10인 -10이므로 a = -10이고, 절댓값이 가장 작은 수는 |1| = 1인 1이므로 b = 1이다. 따라서 a + b = -10 + 1 = -9이다. 따라서 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -252,7 +260,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 연도를 나타내는 수평선 위에 2004년과 2064년을 나타내는 두 점이 같은 간격으로 표시되어 있다.",
+      "solutionImageCaption": "십간은 10년마다, 십이지는 12년마다 되풀이되므로 해의 이름은 10과 12의 최소공배수인 60년마다 되풀이된다. 2004년이 갑신년이므로 다시 갑신년이 되는 해는 2004+60=2064년이다. 따라서 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -260,7 +272,11 @@ window.examData = {
       "choices": [],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 여덟 줄로 된 수 피라미드가 있고 각 줄에는 1부터 그 줄의 번호까지의 수가 한 번씩 적혀 있으며 마지막 줄은 여덟 칸이다.",
+      "solutionImageCaption": "여덟째 줄에 1부터 8까지를 한 번씩 쓰고 이웃한 두 수의 합이 소수가 되도록 배열한다. 1 다음에는 2가 오고, 4의 양옆에는 3과 7이 와야 하며 남은 자리에는 6이 들어간다. 이렇게 하면 1+2=3, 2+3=5, 3+4=7, 4+7=11, 7+6=13, 6+5=11, 5+8=13이 모두 소수가 된다. 따라서 답은 2, 3, 7, 6이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -292,7 +308,11 @@ window.examData = {
       "choices": [],
       "answer": "",
       "solution": "",
-      "score": 5.0
+      "score": 5.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 가로로 늘어놓은 바둑돌 열 개를 보여 주며, 앞쪽 흰 돌 네 개와 뒤쪽 검은 돌 여섯 개를 각각 치수선과 함께 구분한 그림이다.",
+      "solutionImageCaption": "그림에서 흰 바둑돌 4개와 검은 바둑돌 6개가 한 주기 10개로 반복된다. 200 = 10 × 20이므로 200번째 바둑돌은 한 주기의 마지막인 검은 돌이다. 한 주기에 흰 돌 4개, 검은 돌 6개이므로 200개 중 흰 돌은 4 × 20 = 80개, 검은 돌은 6 × 20 = 120개이다. 따라서 200번째는 검은 돌이고, 흰 돌 80개, 검은 돌 120개이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,

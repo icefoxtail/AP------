@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "99"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "80"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "label": "68",
+        "arcs": 1,
+        "side": "INNER",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 22,
+        "label": "22",
+        "arcs": 1,
+        "side": "INNER",
+        "equalGroup": 1,
+        "ring": 1
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 22,
+        "label": "22",
+        "arcs": 1,
+        "side": "INNER",
+        "equalGroup": 1,
+        "ring": 1
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "4",
+        "side": "BELOW",
+        "style": "ARROW"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 600
+  },
+  "caption": "AB = AC인 이등변삼각형에서 꼭짓각 A의 이등분선 AD는 밑변 BC를 수직이등분하므로 BD = 8 ÷ 2 = 4, 즉 x = 4이다. 직각삼각형 ABD에서 각 ADB = 90도이고 각 B = 68도이므로 각 BAD = 180도 − 90도 − 68도 = 22도, 즉 y = 22이다. 따라서 x + y = 4 + 22 = 26이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "꼭짓점 A와 밑변 BC로 이루어진 이등변삼각형에 꼭짓각의 이등분선 AD가 그려져 있고, D에 직각 표시와 두 변 AB, AC의 같은 길이 표시가 있다. B의 각에는 68도, A의 두 각에는 같은 크기의 각 표시가 있고, 밑변 아래에는 두 변 BD, DC의 길이 표시가 나란히 있다.",
+  "newVisualInformation": [
+    "꼭짓각 A의 이등분선 AD와 밑변 BC의 교점 D, D에 직각 표시",
+    "변 AB와 AC에 같은 길이 표시",
+    "각 B = 68도, 각 BAD = 각 DAC = 22도의 각 표시",
+    "밑변 아래 BD = 4, DC = 4의 길이 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 이등변삼각형 ABC. 각 B는 68°이고 변 BC의 길이는 8 cm이다. 점 A에서 BC 위의 점 D까지 각 A의 이등분선이 그어져 있다.\" style=\"display:block;width:min(100%,280px);height:auto;margin:0 auto;\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -98,7 +98,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_매산중_1학기_중간_중1_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 -6, -7/3, -0.8, 0, 1/3, 2.3, 5가 차례로 표시되어 있고, 0에서 -6까지의 거리 6이 치수선으로 나타난 그림이다.",
+      "solutionImageCaption": "양수는 1/3, 5, 2.3의 3개이고, 자연수는 5가 있으며, 정수가 아닌 유리수는 1/3, -7/3, 2.3, -0.8의 4개이다. 절댓값이 가장 큰 수는 |-6| = 6인 -6이고, 0에서 가장 멀리 떨어진 수도 -6이다. 따라서 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -144,7 +148,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_매산중_1학기_중간_중1_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 두 줄이 있고 윗줄에는 -7, -6, -2, -3/2가, 아랫줄에는 1/16, 1/4, 2, 3이 왼쪽부터 차례로 표시되어 있다.",
+      "solutionImageCaption": "|-3|=3이므로 3은 2보다 크다. |-2|=2, |-3|=3이므로 |-2|>|-3|는 거짓이고, -6은 -7보다 크며 -1.5는 -2보다 크다. 또 1/4은 (-1/4)²=1/16보다 크므로 남은 보기도 모두 거짓이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -158,7 +166,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_매산중_1학기_중간_중1_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위 −2, 0, 3에 점이 있고, −2에서 3으로 가는 위쪽 화살표에 +5, 0에서 3으로 가는 아래쪽 화살표에 +3이 표시되어 있다.",
+      "solutionImageCaption": "수직선에서 −2에서 3까지 +5만큼 이동하고, 0에서 3까지 +3만큼 이동한다. 두 화살표가 같은 점 3에서 끝나므로 (−2)+(+5)=+3이다. 따라서 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,

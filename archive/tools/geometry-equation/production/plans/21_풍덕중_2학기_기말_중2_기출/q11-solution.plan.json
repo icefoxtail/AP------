@@ -1,0 +1,50 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A-B",
+        "elements": [
+          "3가지"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B-C",
+        "elements": [
+          "3가지"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "그림에서 A-B 사이 경로는 위, 가운데, 아래의 3가지이고 B-C 사이 경로도 3가지이다. 두 구간의 경로를 각각 하나씩 고르면 되므로 3×3=9가지이다. 각 경로는 B에서 이어지고 다른 지점을 다시 지나지 않으므로 조건을 만족한다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 경로를 따라 지점 $A$에서 지점 $C$까지 가는 모든 경로의 수를 구하면? (단, 같은 지점을 두 번 이상 지나지 않는다.) (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: A-B 경로 3가지와 B-C 경로 3가지를 두 열로 나타내고 화살표로 이었다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A-B 경로 3가지와 B-C 경로 3가지가 두 열에 놓이고 하나의 화살표로 이어져 있다."
+  ]
+}

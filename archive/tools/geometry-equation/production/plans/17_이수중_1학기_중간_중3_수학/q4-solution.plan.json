@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "140"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "71"
+            },
+            {
+              "kind": "integer",
+              "value": "140"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "58"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "155"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "A1",
+    "O2",
+    "B1",
+    "O3",
+    "C1",
+    "G1",
+    "G2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O1",
+        "A1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O2",
+        "B1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O3",
+        "C1"
+      ]
+    },
+    {
+      "id": "sG",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "t1",
+        "ownerSegment": "s1",
+        "text": "√(1/2)"
+      },
+      {
+        "id": "t2",
+        "ownerSegment": "s2",
+        "text": "√(1/3)"
+      },
+      {
+        "id": "t3",
+        "ownerSegment": "s3",
+        "text": "1/2"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "s1"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "s2"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "s3"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O1",
+    "A1",
+    "O2",
+    "B1",
+    "O3",
+    "C1",
+    "G1",
+    "G2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "1/2이 1/3보다 크므로 √(1/2)이 √(1/3)보다 크다. 따라서 √(1/2)이 √(1/3)보다 작다는 ③은 옳지 않다. ①은 11이 13보다 작아 √11이 √13보다 작으므로 옳고, ②와 ⑤는 √(1/3)이 1/2보다 커서 옳으며, ④는 3이 √7보다 커서 옳다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 끝을 맞춘 세 개의 가로 선분이 위에서부터 놓여 있고, 각 선분 곁에 √(1/2), √(1/3), 1/2이 적혀 있다. 맨 위 선분이 가장 길고 맨 아래 선분이 가장 짧다.",
+  "newVisualInformation": [
+    "√(1/2), √(1/3), 1/2의 크기를 선분 길이로 나란히 비교",
+    "√(1/2)이 √(1/3)보다 긴 모습을 색으로 구분"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 다음 중 두 수의 대소 관계가 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
