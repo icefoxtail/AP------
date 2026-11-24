@@ -501,12 +501,12 @@ window.questionBank = [
     "choices": [
       "$f(a)=f(b)$",
       "$f(a)=f(b)=0$",
-      "$g(a)=g(b)$",
+      "$g(a)=g(b)\\neq0$",
       "$g(a)=g(b)=0$",
       "$f(a)=g(a)$"
     ],
     "answer": "④",
-    "solution": "두 점 $A(a,f(a))$, $B(b,f(b))$를 지나는 직선을 빼어 만든 함수는\n$g(x)=f(x)-\\left\\{\\dfrac{f(b)-f(a)}{b-a}(x-a)+f(a)\\right\\}$이다.\n$x=a$를 대입하면 $g(a)=f(a)-f(a)=0$이다.\n$x=b$를 대입하면\n$g(b)=f(b)-\\left\\{\\dfrac{f(b)-f(a)}{b-a}(b-a)+f(a)\\right\\}$\n$=f(b)-\\{f(b)-f(a)+f(a)\\}=0$이다.\n따라서 $g(a)=g(b)=0$이고 정답은 ④이다.",
+    "solution": "두 점 $A(a,f(a))$, $B(b,f(b))$를 지나는 직선을 빼어 만든 함수는\n$g(x)=f(x)-\\left\\{\\dfrac{f(b)-f(a)}{b-a}(x-a)+f(a)\\right\\}$이다.\n$x=a$를 대입하면 $g(a)=f(a)-f(a)=0$이다.\n$x=b$를 대입하면\n$g(b)=f(b)-\\left\\{\\dfrac{f(b)-f(a)}{b-a}(b-a)+f(a)\\right\\}$\n$=f(b)-\\{f(b)-f(a)+f(a)\\}=0$이다.\n따라서 $g(a)=g(b)=0$이다.\n그러므로 ③ $g(a)=g(b)\\neq0$은 성립하지 않고 정답은 ④이다.",
     "level": "중",
     "category": "도함수의 활용",
     "originalCategory": "도함수의 활용",
