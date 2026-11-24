@@ -218,7 +218,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 −3보다 크고 −2에서 끊어진 범위, 둘째 줄은 −5와 9 사이의 범위, 셋째 줄은 두 줄의 공통 범위이며 정수점이 표시되어 있다.",
+    "solutionImageCaption": "위 줄은 밑 조건 x>−3, x≠−2의 범위이고, 가운데 줄은 진수 조건 −5<x<9의 범위이다. 아래 줄은 두 범위의 공통 부분으로, −2는 열린 점으로 빠진다. 가능한 정수는 −1, 0, 1, …, 8이고 합은 35이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -254,7 +258,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 파란 로그곡선 f, 주황 점선 y=1, 세로 점선 x=2가 있고, 곡선과 y=1이 만나는 점 P가 표시되어 있다.",
+    "solutionImageCaption": "로그곡선을 f라 하면 진수 조건에서 x는 2보다 작다. 밑 1/3이 1보다 작으므로 부등호가 바뀌어 −x+2는 1/3보다 작고, 직선 y=1과 f의 교점 P에서 x는 5/3보다 크다. 진수 조건과 함께 정리하면 x는 5/3보다 크고 2보다 작다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -677,7 +685,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 A의 정수 1부터 7, 둘째 줄은 B의 정수 1부터 6, 셋째 줄은 두 줄에서 겹치는 정수 점이다.",
+    "solutionImageCaption": "위 줄은 집합 A의 정수 1부터 7이고(x=1과 2≤x≤7), 가운데 줄은 집합 B의 정수 1부터 6이다(1≤x≤6). 아래 줄은 두 집합의 공통 원소 1, 2, 3, 4, 5, 6이며 합은 21이다. 집합은 정수만 뜻하므로 점으로 표시된 정수만 센다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

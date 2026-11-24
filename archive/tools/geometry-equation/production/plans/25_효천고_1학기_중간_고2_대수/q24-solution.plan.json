@@ -1,0 +1,68 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "2",
+      "1/2"
+    ],
+    "phasePi": "-1/3",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3.15,
+      3.15
+    ],
+    "viewport": [
+      -3.4,
+      3.4,
+      0,
+      2
+    ],
+    "referenceLines": [
+      {
+        "id": "kk",
+        "y": "3/4",
+        "intersectionCount": 8,
+        "color": "WARM"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1/2",
+        "1/2"
+      ],
+      "y": [
+        "1/2",
+        "3/2"
+      ]
+    }
+  },
+  "caption": "f(x)=|cos 2(x−π/6)|+1/2의 최솟값은 1/2, 최댓값은 3/2이고 주기는 π/2이다. y=1과의 교점은 9개이므로 m−n=−1이려면 m=8이어야 하고, k의 범위는 1/2<k<3/2에서 k≠1이다. 예: k=3/4일 때 교점은 8개이고 실근의 합은 4π/3이며, 1<k<3/2일 때 실근의 합은 −2π/3이다. 따라서 답은 1/2<k<3/2 (k≠1)이고, 1/2<k<1일 때 실근의 합은 4π/3, 1<k<3/2일 때 −2π/3이다.",
+  "accessibilityDescription": "−π부터 π까지 절댓값 코사인 그래프가 그려져 있고, 세로축에 최솟값 1/2과 최댓값 3/2 높이의 눈금이 있으며, 수평선 y=3/4가 그래프와 만나는 점들이 표시되어 있다.",
+  "newVisualInformation": [
+    "주기 π/2인 절댓값 코사인 그래프와 최솟값 1/2, 최댓값 3/2",
+    "수평선 y=3/4와 그래프의 교점 8개(예: k=3/4)",
+    "x축의 −π/2, π/2 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 4. [5점]<br><br>함수 $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac{1}{2}\\left(-\\pi\\le x\\le\\pi\\right)$에 대하여 두 직선 $y=k,\\ y=1$과 만나는 서로 다른 점의 개수를 각각 $m,\\ n$이라고 할 때, $m-n=-1$이면 $k$의 범위와 $f(x)=k$의 모든 실근의 합을 구하는 과정을 각각 서술하시오. (단, $k$는 양의 실수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

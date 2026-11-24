@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3/2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "3 - 3*x/2"
+  },
+  "caption": "3x+2y6을정리해 y−3x/2+3. 절편점(2,0),(0,3)이며옳은③. 감소하고제4사분면도지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차방정식 $3x+2y-6=0$의 그래프에 대한 설명으로 옳은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "3x+2y6을정리해y−3x/2+3. 절편점(2,0),(0,3)이며옳은③. 감소하고제4사분면도지난다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "3x+2y6을정리해y−3x/2+3. 절편점(2,0),(0,3)이며옳은③. 감소하고제4사분면도지난다."
+  ]
+}

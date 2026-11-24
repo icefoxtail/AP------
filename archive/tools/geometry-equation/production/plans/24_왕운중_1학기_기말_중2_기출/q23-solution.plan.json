@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P2",
+        "x": "2",
+        "y": "8"
+      }
+    ],
+    "formula": "2*x + 4"
+  },
+  "caption": "두점(−1,2),(2,8)의기울기 6/3=2. 원래점대입해절편 4,정답 y2x+4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수의 그래프가 두 점 $(-1,2)$, $(2,8)$을 지날 때, 그 일차함수의 식을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두점(−1,2),(2,8)의기울기6/3=2. 원래점대입해절편4,정답y2x+4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두점(−1,2),(2,8)의기울기6/3=2. 원래점대입해절편4,정답y2x+4."
+  ]
+}

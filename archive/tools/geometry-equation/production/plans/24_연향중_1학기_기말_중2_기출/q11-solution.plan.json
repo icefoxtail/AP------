@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-12",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3/4"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫 기준선과 평행하므로 a3, 다른 기준선의 x절편 4를 공유하므로 b−12. 세 선을 구별해 교점과 평행을 읽는다. 합 −9, 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프는 일차함수 $y=3x-2$의 그래프와 평행하고, 일차함수 $y=\\dfrac{3}{4}x-3$의 그래프와 $x$축에서 만난다고 한다. 이때, $a+b$를 구하면? (단, $a,b$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "첫기준선과평행하므로a3,다른기준선의x절편4를공유하므로b−12. 세선을구별해교점과평행을읽는다. 합−9,정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫기준선과평행하므로a3,다른기준선의x절편4를공유하므로b−12. 세선을구별해교점과평행을읽는다. 합−9,정답①."
+  ]
+}

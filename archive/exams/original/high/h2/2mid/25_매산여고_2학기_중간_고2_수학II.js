@@ -297,7 +297,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 값과 기울기가 이어지는 삼차 조각과 이차 조각으로 된 함수의 그래프이다.",
+    "solutionImageCaption": "x=1에서 연속이려면 1+a=b-2, 미분가능이려면 3+a=2b-1이다. 연립하면 a=-2, b=1이다. 그림은 f(x)=x³-2x(x<1)와 x²-x-1(x≥1)이고 P(1,-1)에서 값과 기울기(둘 다 1)가 같게 이어진다. a+b=-1.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -676,7 +680,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1과 x=2에서 식이 바뀌는 조각 함수의 그래프에 꼭짓점과 네 점의 좌표가 표시된 그림이다.",
+    "solutionImageCaption": "g(t)는 0에서 t까지의 평균변화율이고 a=−3/2일 때의 f를 그렸다. 점 A(0, −3/2), B(1/2, −1), C(3/2, 0), D(5/2, 1)은 기울기가 1인 직선 y=x−3/2 위에 있어 g(1/2)=g(3/2)=g(5/2)=1이다. 따라서 k=1/2이고 f(−1)=(−2)(1/2)=−1이므로 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -758,6 +766,10 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 감소하는 함수의 그래프가 세 점 A, P, C를 지나고 직선 y=x와 점 P에서 만나는 모습을 나타낸 그래프이다.",
+    "solutionImageCaption": "f가 연속이고 역함수를 가지므로 증가 또는 감소한다. 증가하면 해가 모두 f(x)=x의 해여야 하는데 f(2)=2, f(3)=3을 동시에 만족하는 c가 없으므로 f는 감소한다. 이때 해 0, 2, 3은 f로 서로 대응되어 f(0)=3, f(2)=2, f(3)=0이다. 따라서 b=3, c=-1, 연속 조건 2a+b=2에서 a=-1/2이고 그래프는 A(0,3), P(2,2), C(3,0)을 지난다(A와 C는 y=x에 대칭). a+b+c=-1/2+3-1=3/2.",
+    "solutionImageSize": "full"
   }
 ];

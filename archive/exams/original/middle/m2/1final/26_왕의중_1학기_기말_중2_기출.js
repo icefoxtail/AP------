@@ -38,7 +38,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "자연수 해는 (2, 7), (4, 4), (6, 1)의 세 점이다. x는 짝수이고 y는 양수이어야 하며, 이어 그린 직선 위의 모든 점이 자연수 해는 아니다. 따라서 답은 ④ 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -115,7 +119,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y2x−6대입에서 9x24,x8/3,y−2/3. 정확교점의좌표합 2. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -154,7 +162,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "분모와소수를없애 4x−3y6,3x+2y13. 교점(3,2)에서 2a+b8. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -232,7 +244,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 지난달 남학생 방문수, 세로 y는 여학생 방문수. x+y500,0.2x−0.1y40의 교점 (300,200). 이번 달 남학생 수가 아니라 지난달 300명이 답.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -271,7 +287,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "ㄱ에서 x2를 정하면 y2/−2 두 수가 가능하므로 함수가 아니다. ㄴ은 같은 키여도 몸무게 다름. ㄷ은 자연수 개수 x−1, ㄹ은 5x로 하나씩 정해져 함수다. 정답 ㄷ·ㄹ.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -309,7 +329,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f1=−3,f(−2)=6을 같은 직선의 두 점에서 읽는다. −3+2·6=9. 정답 ④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -348,7 +373,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "이동후 y3x−3+k에(−2,−7)을대입해 k2. 원래점(−2,−9)이위로 2올라간다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -388,7 +417,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫두점(1,2),(3,8)의기울기 3과같은평행선이(4,14)를지나면 y3x+2. x2에서 a8. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -517,7 +550,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 4인식 y4x+b에(1,−3)을대입해 b−7. 직선 y4x−7,정답③.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -557,7 +595,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래두점기울기 2/3와평행하고절편 5이므로목표 y2x/3+5. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -596,7 +638,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "수평선에서는 2a−1=a+1,a2. 실제두점(−5,3),(2,3)이 y3위에있다. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -638,7 +684,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 오른쪽 위로 올라가는 직선이 그려져 있고, y축과 만나는 점 (0,−1)이 원점 아래에, x축과 만나는 점 (1,0)이 표시되어 있다.",
+    "solutionImageCaption": "예를 들어 y=x−1의 그래프로 보면 오른쪽 위로 올라가므로 기울기 −a/b는 양수이고, y축과 원점 아래에서 만나므로 y절편 −1/b는 음수이다. 따라서 b는 양수이고 a는 음수이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -681,7 +731,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 m절편 9/9로 x+y9, l절편 −3/3으로 x−y−3이다. 교점(3,6)이두식의공통해. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -720,7 +774,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 그려져 있고, 기울기가 1/2인 직선 y=x/2-1과 수평선 y=2가 점 (6,2)에서 만나며 그 좌표가 표시되어 있다. 기울기가 같은 평행한 직선 y=x/2-2도 파선으로 함께 그려져 있다.",
+    "solutionImageCaption": "첫째 식은 y=x/2-1로 정리된다. a=0, b=-2이면 둘째 식은 y=2가 되어 두 직선이 점 (6,2)에서 만나므로 해가 한 개 존재한다. a=-1, b=2이면 둘째 식은 y=x/2-2로 첫째 식과 기울기가 같고 절편이 달라 해가 없다. 따라서 옳지 않은 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -841,7 +899,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 A 시간, 세로 y는 B 시간(분). x+y60,60x+40y2800에서 교점 (20,40). A 거리 1200m, B 거리 1600m. 시간은 비음수이며 선은 조건식 보조 연장이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -912,7 +974,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "100g당 600원은 1g당 6원. 튀김가루고정 4500원에더해 y6x+4500. 1kg=1000g에서 10500원. 그려진 직선의 표시창 −200~1200g은 보조 연장이며 음의 무게는 구매량이 아니다. 실제 모형은 비음수 무게이고 이 문항에서 읽는 구매 범위는 0~1000g이다. 무게 g와금액원의다른양을비교하므로세로 1/10표시배율을명시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -945,6 +1011,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_왕의중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "행렬식 0 조건 24−6ab=0에서 ab4의 정수쌍 6개를 빠짐없이 대응시킨다. 같은 상수항 5에서 동일선은 (2,2)뿐이라 A4. 그 한 쌍을 제외한 나머지 5개는 서로 다른 평행선이므로 B5. a0/b0은 행렬식이 0 아니어서 해 없음 경우에 빠진 것이 아니다.",
+    "solutionImageSize": "full"
   }
 ];

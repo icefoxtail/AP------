@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 조건은 x,y가 양의 정수. 선분은 방정식의 보조 실수 연장이며 자연수 격자점 중 (2,1)만 가능하다. y≥2이면 x≤−1. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -55,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "절편(0,7)과 주어진 점(2,3)의 기울기(3−7)/2=−2. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -83,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x가 0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -172,7 +184,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 선의 공통점(5,3). 첫 식에서 둘째 식을 빼 4y12, y3과 x5를 구한다. 합 8,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -228,7 +244,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "a/2=4에서 a8. 같은 기울기 4와 서로 다른 절편 −2,1이므로 평행한 별개의 두 선. 교점없음,정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -256,7 +276,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 5/4를 공유한다. x의 변화 8에 y의 변화 10이므로 k11,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -284,7 +308,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "교점(3,−2)에서 두 함숫값이 같다. a+b1,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -340,7 +368,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫 선의 x절편 6과 둘째 선의 y절편 −4를 연결한 목표선 y2x/3−4. 기울기 2/3,정답④. 기준선의 연장은 별도 함수이며 목표선과 구별한다. 절편을 찾는 둘째 기준선은 0≤x≤3/2만 발췌하며 실제 직선의 끝이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -368,7 +400,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "위로 8 이동해 y3x/2+7. 높이 1에서 x−4이므로 k−4,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -396,7 +432,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 오른쪽 위로 완만하게 올라가는 직선과 그 위의 세 점이 표시되어 있다.",
+    "solutionImageCaption": "두 점 (3,7), (6,8)을 지나므로 기울기는 (8−7)÷(6−3)=1/3이다. f(x)=x/3+b에 (3,7)을 대입하면 7=1+b에서 b=6이므로 f(x)=x/3+6이다. 따라서 f(1)=1/3+6=19/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -424,7 +464,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제 적용 높이는 0≤x≤10km. 지면 18에서 1.7km에서 7.8°C,정답⑤. 이후 양의 높이에서 음수 기온도 가능하며 음수 높이는 그리지 않는다. 가로 높이 km와 세로 기온°C는 다른 양이므로 세로축 1/6배율로 읽으며 좌표 값은 실제 기온 그대로이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -452,7 +496,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "비 3:1은 y=x/3. 첫 식과 공통점(9,3)에서 a=x+4y21, 셋째 선도 지남을 확인. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -480,7 +528,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x교통카드 인원,y현금 인원. x+y27과 720x+1000y23920의 공통 자연수점(11,16). 차 5,정답②. 선들은 실수 보조연장이며 실제 인원은 비음수 정수.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -572,7 +624,12 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 식이 비례해 같은 직선이 되어야 한다. a4,b14이면 8x−y=−7과 −16x+2y=14로 정확 −2배. 두 선은 모두 y8x+7 하나로 겹쳐 무수한 해. 합 18,정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -620,7 +677,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제 양은 y410−3x/2,비음수인 0≤x≤820/3일에만 유효하다. 표시는 0..200일 발췌로 고갈 이후 연장하지 않는다. 주어진(20,380),(30,365),목표(180,140). 정답 180일. 가로일/세로 mL는 다른 양이며 세로배율 1/2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

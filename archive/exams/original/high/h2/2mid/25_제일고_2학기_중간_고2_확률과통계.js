@@ -289,7 +289,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 방향 평행선 세 개와 세로 방향 평행선 세 개가 직각으로 만나고 사이 간격이 1로 표시되어 있다.",
+    "solutionImageCaption": "가로 길이와 세로 길이는 각각 1 또는 2이고, 넓이 1, 2, 4의 확률은 4/9, 4/9, 1/9이다. E(X)=16/9, E(X²)=4이므로 V(X)=68/81이고, V(-9X+5)=81×68/81=68이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

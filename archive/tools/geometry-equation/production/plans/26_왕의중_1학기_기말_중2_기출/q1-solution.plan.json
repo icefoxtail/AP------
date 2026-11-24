@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-3/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "2",
+        "y": "7"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "P2",
+        "x": "6",
+        "y": "1"
+      }
+    ],
+    "formula": "10 - 3*x/2"
+  },
+  "caption": "자연수 해는 (2, 7), (4, 4), (6, 1)의 세 점이다. x는 짝수이고 y는 양수이어야 하며, 이어 그린 직선 위의 모든 점이 자연수 해는 아니다. 따라서 답은 ④ 3개이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$가 자연수일 때, 일차방정식 $3x+2y=20$의 해의 개수는? [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-5/8"
+        ],
+        "domain": [
+          "0",
+          "56/5"
+        ],
+        "label": "Y=7-5X/8"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "9/2",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "56/5"
+        ],
+        "label": "Y=9/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "9/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "56/5",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "X",
+      "y": "Y"
+    }
+  },
+  "caption": "화면 가로 X=x/100(실제거리 x km),세로 Y=y/10(실제잔량 y L)로 표시. 실제 y=70−x/16과 정확히 같은 관계 Y=7−5X/8. (0,7)=(0km,70L),(4,9/2)=(400km,45L),(56/5,0)=(1120km,0L). 실제 주행구간 0≤x≤1120에서 잔량 45L일 때 400km. 정답①. 수평 안내선 Y=9/2는 실제 잔량 45L 조건이며 연료함수와의 교점 X=4를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1 L에 16 km를 가는 어떤 자동차의 연료 탱크에 연료를 가득 채운 후, 일정한 속력으로 주행하였더니 1120 km를 주행한 후에 연료가 완전히 소모되었다. 이 자동차의 연료 탱크에 연료를 가득 채운 후, $x$ km 주행하였을 때 남은 연료의 양을 $y$ L라고 하자. 남은 연료가 45 L일 때, 이 자동차가 주행한 거리를 구하면?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

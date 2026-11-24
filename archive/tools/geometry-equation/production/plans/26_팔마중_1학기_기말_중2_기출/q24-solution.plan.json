@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "-10",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1/4"
+        ],
+        "domain": [
+          "-10",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-8",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫 원래 식 y−12x+8에서 a−12, 둘째 y−x/2+20에서 b20. 이 계수를 대입한 연립은 y=x/2+3,y=x/4+1로 기울기가 달라 교점 (−8,−1) 하나. a+b8. 이 그림은 최종 연립의 두 선이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $3x+\\dfrac14y-2=0$의 그래프의 기울기를 $a$, 일차방정식 $0.1x+0.2y-4=0$의 그래프의 $y$절편을 $b$라 할 때, 연립방정식<br><div class=\"note-box\">$2x-4y=a$<br>$-5x+by=20$</div>의 해의 개수와 $a+b$의 값을 구하고 그 풀이 과정을 각각 서술하시오. (단, $a,b$는 유리수) [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

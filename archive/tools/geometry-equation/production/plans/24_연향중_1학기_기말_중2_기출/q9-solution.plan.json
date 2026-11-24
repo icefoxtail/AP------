@@ -1,0 +1,59 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-12",
+      "3"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -5,
+      9,
+      -5,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "curveX": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "curveX": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "실제점(6,1),(−2,9)에서 2f6+f(−2)=2+9=11,정답④. x0은제외하고점근선 x0,y3을읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-\\dfrac{12}{x}+3$에 대하여 $2f(6)+f(-2)$의 값을 구하면? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제점(6,1),(−2,9)에서2f6+f(−2)=2+9=11,정답④. x0은제외하고점근선x0,y3을읽는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제점(6,1),(−2,9)에서2f6+f(−2)=2+9=11,정답④. x0은제외하고점근선x0,y3을읽는다."
+  ]
+}

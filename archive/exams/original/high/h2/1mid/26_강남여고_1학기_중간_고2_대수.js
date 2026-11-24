@@ -356,7 +356,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 밑이 3인 두 지수함수 곡선과 수평선 y=1, y=9가 있고, 높이 y=3에서 왼쪽 곡선 위의 점 A와 오른쪽 곡선 위의 점 B를 잇는 수평 선분 AB가 그려져 있다.",
+    "solutionImageCaption": "밑이 3인 지수함수 y=3의 x제곱에서 x를 y에 대하여 풀면 x는 로그₃ y이고, y=9 곱하기 3의 x제곱에서는 x가 로그₃ y에서 2만큼 작다. 따라서 1≤y≤9에서 두 그래프 사이의 가로 길이는 항상 2이다. 도형의 넓이는 2×(9−1)=16이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -709,7 +713,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 경계가 포함된 영역에서 정수 가로좌표마다 가능한 정수 높이를 센다. 두 예시 세로선에서 곡선 높이와 정수 눈금을 비교한다.",
+    "solutionImageCaption": "경계가 포함된 영역에서 정수 가로좌표마다 가능한 정수 높이를 센다. 두 예시 세로선에서 곡선 높이와 정수 눈금을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1090,7 +1098,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 눈금은 x/π이다. 두 부등식에서 얻은 범위를 따로 놓고 열린 끝과 제외점이 공통 범위에 미치는 영향을 비교한다.",
+    "solutionImageCaption": "가로 눈금은 x/π이다. 두 부등식에서 얻은 범위를 따로 놓고 열린 끝과 제외점이 공통 범위에 미치는 영향을 비교한다.",
+    "solutionImageSize": "full"
   }
 ];
 window.questions = window.questionBank;

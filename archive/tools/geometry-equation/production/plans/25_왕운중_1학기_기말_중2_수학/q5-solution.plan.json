@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "14/3",
+          "-1/3"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "5",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 뛴 거리 km,세로 y는 걸은 거리 km. x−y=2와 x/6+y/2=7/3시간에서 y=x−2,y=(14−x)/3의 교점(5,3). 둘레 8km. 두 직선은 조건식의 보조연장이며 거리의 실제범위는 x,y≥0이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "호수공원에서 시속 $6\\text{ km}$로 뛰다가 힘들어서 시속 $2\\text{ km}$로 걸었더니 한 바퀴 도는 데 $2$시간 $20$분이 걸렸다. 뛰어간 거리와 걸어간 거리의 차가 $2\\text{ km}$일 때, 호수공원의 둘레를 구하면? (단, 뛰어간 거리가 걸어간 거리보다 길다.) (3점)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

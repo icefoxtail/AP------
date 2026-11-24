@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-8"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-5"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "4"
+      }
+    ],
+    "formula": "3*x - 5"
+  },
+  "caption": "f3=4에서 3a−5=4,a3. 확정한직선의(−1,−8)을읽어 f(−1)=−8. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(x)=ax-5$에서 $f(3)=4$일 때, $f(-1)$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "가로 cm",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "세로 cm",
+        "elements": [
+          "20",
+          "10",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "넓이 20인 직사각형의 양의 길이 대응은 1→20,2→10,4→5. 변화량 비가 −10과 −5/2로 달라 일정한 기울기의 일차함수가 아니다. 정확 관계 y=20/x,x>0. 정답②. 대응표 다음의 양수 곡선·할선 비교 패널에서 기울기가 일정하지 않음을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 $y$가 $x$의 일차함수가 아닌 것은? [3점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "넓이20인 직사각형의 양의 길이 대응은 1→20,2→10,4→5. 변화량 비가 −10과−5/2로 달라 일정한 기울기의 일차함수가 아니다. 정확 관계 y=20/x,x>0. 정답②. 대응표 다음의 양수 곡선·할선 비교 패널에서 기울기가 일정하지 않음을 확인한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이20인 직사각형의 양의 길이 대응은 1→20,2→10,4→5. 변화량 비가 −10과−5/2로 달라 일정한 기울기의 일차함수가 아니다. 정확 관계 y=20/x,x>0. 정답②. 대응표 다음의 양수 곡선·할선 비교 패널에서 기울기가 일정하지 않음을 확인한다."
+  ]
+}

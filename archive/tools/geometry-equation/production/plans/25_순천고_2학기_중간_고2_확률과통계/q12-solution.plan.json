@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8/91"
+        ]
+      },
+      {
+        "coefficients": [
+          "2/3",
+          "-4/39"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "7/2",
+        "y": "4/13"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "13/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6.5
+    ],
+    "viewport": [
+      -1,
+      7.5,
+      -0.04,
+      0.38
+    ],
+    "axisTickValues": {
+      "x": [
+        "7/2",
+        "13/2"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "7/2",
+        "y": "4/13"
+      },
+      {
+        "id": "B",
+        "x": "13/2",
+        "y": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": "leftPart",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "7/2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "rightPart",
+        "upper": "f",
+        "lower": "axis",
+        "from": "7/2",
+        "to": "13/2",
+        "fill": "MEDIUM"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 20
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "확률밀도함수의 그래프는 (0,0), 꼭짓점 (a, 4/13), (b, 0)을 잇는 삼각형 모양이다. 왼쪽 삼각형의 넓이가 P(X≤a)=7/13이고 오른쪽 삼각형이 P(X≥a)=6/13이다. 왼쪽 넓이 2a/13=7/13에서 a=7/2, 오른쪽 넓이 (b−a)/b=6/13에서 b=13/2이다. 그림은 이 값으로 그렸고 2(a+b)=20이므로 답은 ②이다.",
+  "accessibilityDescription": "원점에서 올라가 가운데에서 꼭짓점을 찍고 내려오는 삼각형 모양의 확률밀도함수 그래프이며 왼쪽 삼각형과 오른쪽 삼각형이 다른 농도로 칠해져 있다.",
+  "newVisualInformation": [
+    "꼭짓점의 x좌표 a=7/2와 끝 b=13/2, 두 삼각형의 넓이 7/13과 6/13을 한 그림에서 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속확률변수 $X$가 갖는 값의 범위는 $0\\le X\\le b$이고, $X$의 확률밀도함수의 그래프가 그림과 같다. $\\dfrac{P(X\\ge a)}{P(X\\le a)}=\\dfrac{6}{7}$일 때, $2(a+b)$의 값은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

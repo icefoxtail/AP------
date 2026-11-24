@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "100",
+          "-5/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      32
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "32"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "100"
+      },
+      {
+        "id": "P1",
+        "x": "20",
+        "y": "50"
+      },
+      {
+        "id": "P2",
+        "x": "32",
+        "y": "20"
+      }
+    ],
+    "formula": "100 - 5*x/2"
+  },
+  "caption": "문제에서 정한 일정 감소 모형에서 20분동안 50°C 감소하므로 기울기 −5/2. y=100−5x/2에 y20을 대입하면 x32분. 0~32분의 필요한 구간만 나타낸다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "냄비에 담긴 $100^\\circ\\text{C}$의 물을 실온에 둔 지 20분 후의 물의 온도가 $50^\\circ\\text{C}$이었다. 물의 온도가 $20^\\circ\\text{C}$가 되는 것은 물을 실온에 둔 지 몇 분 후인가? [5점] (단, 실온에서 물의 온도가 내려가는 속도는 일정하다.)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

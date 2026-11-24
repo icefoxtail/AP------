@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "6 - 3*x"
+  },
+  "caption": "가로 변화 2,세로 변화 −6이므로 기울기 −6/2=−3. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 일차함수의 그래프에서 기울기를 구하면? (4점)<br><br>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A에서 C까지 2가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 1,
+              "depth": 1
+            },
+            "height": 1,
+            "names": "ABCDEFGH"
+          }
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "style": "AUTO",
+            "color": "BLUE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "style": "AUTO",
+            "color": "BLUE"
+          },
+          {
+            "from": "A",
+            "to": "D",
+            "style": "AUTO",
+            "color": "WARM"
+          },
+          {
+            "from": "D",
+            "to": "C",
+            "style": "AUTO",
+            "color": "WARM"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "C에서 L까지 2가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 1,
+              "depth": 1
+            },
+            "height": 1,
+            "names": "BIJCFKLG"
+          }
+        ],
+        "segments": [
+          {
+            "from": "C",
+            "to": "J",
+            "style": "AUTO",
+            "color": "BLUE"
+          },
+          {
+            "from": "J",
+            "to": "L",
+            "style": "AUTO",
+            "color": "BLUE"
+          },
+          {
+            "from": "C",
+            "to": "G",
+            "style": "AUTO",
+            "color": "WARM"
+          },
+          {
+            "from": "G",
+            "to": "L",
+            "style": "AUTO",
+            "color": "WARM"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "전체 최단 경로 12가지"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 2,
+              "depth": 1
+            },
+            "height": 1,
+            "names": "AIJDEKLH"
+          }
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "I",
+            "style": "AUTO",
+            "color": "GREEN"
+          },
+          {
+            "from": "I",
+            "to": "J",
+            "style": "AUTO",
+            "color": "GREEN"
+          },
+          {
+            "from": "J",
+            "to": "L",
+            "style": "AUTO",
+            "color": "GREEN"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "최단 경로는 가로 2번, 깊이 1번, 높이 1번의 네 이동을 배열하는 경우이므로 전체는 12가지이다. A에서 C까지는 가로 1번과 깊이 1번을 배열하는 2가지이고, C에서 L까지는 가로 1번과 높이 1번을 배열하는 2가지이다. 따라서 C를 지나는 최단 경로는 2×2=4가지이므로 확률은 4/12=1/3이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 패널에는 정육면체에서 A에서 C까지 파란색과 주황색의 두 경로가, 오른쪽 패널에는 C에서 L까지 파란색과 주황색의 두 경로가 표시되어 있다. 아래쪽 넓은 직육면체에는 A에서 L까지 초록색 경로가 표시되어 있다.",
+  "newVisualInformation": [
+    "A에서 C까지의 두 경로",
+    "C에서 L까지의 두 경로",
+    "가로 2번, 깊이 1번, 높이 1번의 이동"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 정육면체 두 개가 붙어 있다. 모서리를 따라 $A$지점에서 $L$지점으로 가는 최단 경로 중 $C$지점을 통과할 확률은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

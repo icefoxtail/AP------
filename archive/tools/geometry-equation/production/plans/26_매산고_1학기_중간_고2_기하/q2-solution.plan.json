@@ -1,0 +1,193 @@
+{
+  "capability": "solid-figure-v1",
+  "solidCaption": {
+    "text": "평면 결정과 꼬인 직선"
+  },
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -2.3,
+          -1.3,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "B",
+        "at": [
+          1.5,
+          -1.3,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "C",
+        "at": [
+          -1.7,
+          0.9,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "D",
+        "at": [
+          2.7,
+          0.9,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "P",
+        "at": [
+          0.9,
+          1.2,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "W",
+        "at": [
+          0,
+          2.3,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "E",
+        "at": [
+          -1.3,
+          2.3,
+          0.25
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "F",
+        "at": [
+          1.4,
+          2.3,
+          1.3
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "A",
+        "extent": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "u": [
+            3.4,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            2.3,
+            0
+          ]
+        }
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "point": "W",
+        "extent": {
+          "center": [
+            0,
+            2.3,
+            0.7
+          ],
+          "u": [
+            3.2,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            0.7
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "p",
+        "name": "p",
+        "through": [
+          "C",
+          "D"
+        ]
+      },
+      {
+        "id": "q",
+        "name": "q",
+        "through": [
+          "E",
+          "F"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α 위에 한 직선 위에 있지 않은 세 점과, 직선 l과 그 위에 있지 않은 한 점, 한 점에서 만나는 두 직선 l과 m, 평행한 두 직선 l과 p를 함께 놓았다. 이 네 가지는 모두 α 하나에 담긴다. α에 수직으로 선 평면 β 위의 직선 q는 α 위의 l과 만나지도 평행하지도 않아 꼬인 위치에 있고, 두 직선을 함께 담는 평면은 없다. 따라서 평면을 결정하지 못하는 것은 ⑤이다.",
+  "accessibilityDescription": "수평인 평면 α와 그 뒤에 수직으로 선 평면 β가 있다. α에는 한 직선 위에 있지 않은 세 점과 직선 l, l과 한 점에서 만나는 직선 m, l과 평행한 직선 p가 있고, β에는 α 쪽으로 비스듬히 오르는 직선 q가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "공간에서 평면이 하나로 결정되는 조건이 아닌 것은? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "choices",
+      "condition": "① 한 직선 위에 있지 않은 세 점 ② 한 직선과 그 직선 위에 있지 않은 한 점 ③ 한 점에서 만나는 두 직선 ④ 평행한 두 직선 ⑤ 꼬인 위치에 있는 두 직선",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "평면 α 하나에 세 점, 직선 l과 그 밖의 한 점, 만나는 두 직선 l과 m, 평행한 두 직선 l과 p가 모두 들어 있다. α에 수직인 평면 β 위의 직선 q는 α 위의 l과 만나지도 평행하지도 않아 꼬인 위치에 있다."
+  ]
+}

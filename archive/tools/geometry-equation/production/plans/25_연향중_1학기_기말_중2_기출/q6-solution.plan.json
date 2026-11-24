@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "360",
+          "-1"
+        ],
+        "domain": [
+          "100",
+          "220"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-120",
+          "2"
+        ],
+        "domain": [
+          "100",
+          "220"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "160",
+          "y": "200",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x는 작년 남학생,y는 작년 여학생. 전체 x+y360과 순증가 0.10x−0.05y6에서 2x−y120. 교점(160,200)을 얻은 뒤 올해 남학생 1.1·160=176명. 선은 조건의 보조연장이며 실제 인원은 비음수 정수다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "Y학교 작년 전체 학생수는 360명이었다. 올해는 작년보다 남학생이 $10\\%$ 증가하고 여학생은 $5\\%$ 감소하여, 전체 학생수는 6명이 증가하였다. 올해의 남학생 수는 몇 명인가? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

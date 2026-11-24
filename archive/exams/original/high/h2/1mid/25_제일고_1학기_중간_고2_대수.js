@@ -59,7 +59,11 @@ window.questionBank = [
     "choices": ["-2","-1","0","1","2"],
     "answer": "①",
     "solution": "<b>[논리 분석]</b> 평행이동 정의를 이용한 계수 비교\n이유: $y = \\log_3(x - (-1)) + (-1)$ 꼴로 변형됨\n근거: $x$축 이동량 $a=-1$, $y$축 이동량 $b=-1$임\n결론적으로 $a+b = -1 + (-1) = -2$",
-    "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION","subUnit": "로그함수","subUnitConfidence": "candidate_evidence","subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION","subUnit": "로그함수","subUnitConfidence": "candidate_evidence","subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 로그 곡선 f와 주황 로그 곡선 g가 있고, g는 f를 왼쪽 아래로 옮긴 모양이다. f 위의 점 P와 g 위의 점 Q의 좌표가 표시되어 있고 세로 점근선 x=−1이 그려져 있다.",
+    "solutionImageCaption": "f는 y=log₃x의 그래프이고 g는 y=log₃(x+1)−1의 그래프이다. f 위의 점 P(1, 0)이 g 위의 점 Q(0, −1)로 옮겨지므로 x축으로 −1, y축으로 −1만큼 평행이동한 것이다. 점근선도 x=0에서 x=−1로 옮겨진다. 따라서 a+b=−2이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,"level": "하","category": "로그방정식","originalCategory": "로그방정식","standardCourse": "대수","standardUnitKey": "H22-A-01","standardUnit": "지수와 로그","standardUnitOrder": 1,"questionType": "객관식","layoutTag": "grid","tags": ["객관식","로그","지수","조건해석","개념"],"wide": false,

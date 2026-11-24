@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-3/2"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-7",
+          "5"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫식에서 x2→y3,둘째 10−3=a+2에서 a5. 실제두선의교점(2,3)을표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}3x+2y=12\\\\5x-y=a+2\\end{cases}$를 만족시키는 $x$의 값이 2일 때, $a$의 값을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "첫식에서x2→y3,둘째10−3=a+2에서a5. 실제두선의교점(2,3)을표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫식에서x2→y3,둘째10−3=a+2에서a5. 실제두선의교점(2,3)을표시한다."
+  ]
+}

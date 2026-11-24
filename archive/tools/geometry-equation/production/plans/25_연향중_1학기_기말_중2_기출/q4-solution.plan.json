@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-16",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "분모를 없앤 4x−y16과 x+y−6의 교점(2,−8). 가감법 5x10→x2,y−8. a−b=2−(−8)=10. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} x+y=-6 \\\\ x-\\dfrac{1}{4}y=4 \\end{cases}$의 해가 $(a, b)$일 때, $a-b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

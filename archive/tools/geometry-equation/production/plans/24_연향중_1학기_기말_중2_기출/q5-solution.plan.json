@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "-15",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1/6"
+        ],
+        "domain": [
+          "-15",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-12",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "조건 x=3y와 x−6y12의교점(−12,−4). 첫식 −24+4a8에서 a8,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} 2x-ay=8 \\\\ x-6y=12 \\end{cases}$를 만족시키는 $x$의 값이 $y$의 3배일 때, $a$의 값을 구하면? (단, $a$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "조건x=3y와x−6y12의교점(−12,−4). 첫식−24+4a8에서a8,정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "조건x=3y와x−6y12의교점(−12,−4). 첫식−24+4a8에서a8,정답⑤."
+  ]
+}

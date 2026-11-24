@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5/3",
+          "-1/3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "5/3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "P2",
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "formula": "5/3 - x/3"
+  },
+  "caption": "원래 조건은 x,y가 양의 정수. 선분은 방정식의 보조 실수 연장이며 자연수 격자점 중 (2,1)만 가능하다. y≥2이면 x≤−1. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$의 값이 자연수일 때, 일차방정식 $x+3y=5$의 해는? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원래 조건은 x,y가 양의 정수. 선분은 방정식의 보조 실수 연장이며 자연수 격자점 중 (2,1)만 가능하다. y≥2이면x≤−1. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 조건은 x,y가 양의 정수. 선분은 방정식의 보조 실수 연장이며 자연수 격자점 중 (2,1)만 가능하다. y≥2이면x≤−1. 정답②."
+  ]
+}
