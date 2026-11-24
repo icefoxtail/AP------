@@ -1,13 +1,81 @@
 {
-  "kind": "coordinate",
-  "elements": [
-    {
-      "type": "parabola",
-      "opens": "down",
-      "xIntercepts": [
-        -2,
-        1
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "9/4",
+        "marker": "NONE"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "0"
+      ],
+      "B": [
+        "1",
+        "0"
+      ],
+      "V": [
+        "-1/2",
+        "9/4"
       ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "V"
+      ]
+    }
+  },
+  "caption": "좌표평면에 위로 볼록한 이차함수 f의 그래프가 있고, 가로축과 만나는 점의 눈금이 표시되어 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 가로축의 -2, -1, 1에 눈금이 표시되어 있으며 포물선은 -2와 1에서 가로축과 만난다.",
+  "newVisualInformation": [
+    "위로 볼록한 포물선과 가로축의 교점 눈금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프는 아래 그림과 같이 위로 볼록하고 $x$축과 $x=-2$, $x=1$에서 만난다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
