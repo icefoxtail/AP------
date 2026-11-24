@@ -25,11 +25,13 @@ on:
 permissions:
   contents: read
 
-# A newer push to the same pull request cancels that PR's older run (runner demand).
+# A newer push to the same pull request cancels that PR's older run, and a newer push to the same branch (main)
+# cancels that branch's older run: only the newest commit keeps a verdict (runner capacity: 20 concurrent jobs —
+# on 2026-11-24 forty merges queued 100+ runs and the student release waited 40-50 minutes for a runner).
 # Manual runs keep one group per run and are never cancelled.
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('generated-consumer-browser-smoke-pr-{0}', github.event.pull_request.number) || format('generated-consumer-browser-smoke-{0}-{1}', github.event_name, github.run_id) }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.event_name == 'pull_request' && format('generated-consumer-browser-smoke-pr-{0}', github.event.pull_request.number) || github.event_name == 'push' && format('generated-consumer-browser-smoke-push-{0}', github.ref) || format('generated-consumer-browser-smoke-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
 
 jobs:
   browser-smoke:

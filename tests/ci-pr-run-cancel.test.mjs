@@ -1,6 +1,7 @@
-// Runner demand: a pull request's superseded run is cancelled, nothing else is.
-// main pushes, registration writers, Pages and Worker deploys must never be cancelled, so every main commit
-// keeps its verdict and a running writer is never cut off half way.
+// Runner demand: a validating run that a newer commit has superseded is cancelled - a pull request's older run,
+// and (since 2026-11-24) a branch push's older run, so only the newest main commit keeps a verdict. Forty merges
+// in one day queued 100+ runs and the student release waited 40-50 minutes for a runner.
+// Registration writers, Pages and Worker deploys must never be cancelled: a running writer is never cut off half way.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,6 +23,7 @@ const PR_ONLY_CANCEL = new Map([
   ['generated-consumer-browser-smoke.yml', 'generated-consumer-browser-smoke'],
   ['archive-stage-validator.yml', 'archive-stage-validator'],
   ['meta-resolver-bridge.yml', 'meta-resolver-bridge'],
+  ['svg-engine-tests.yml', 'svg-engine-tests'],
 ]);
 
 // Workflows that write to main, register data or deploy. They must never be cancelled.
@@ -42,22 +44,23 @@ test('a pull request run is replaced by a newer push to the same PR, in every PR
     assert.ok(block, `${file} has a top-level concurrency block`);
     const group = /^  group: (.+)$/m.exec(block)?.[1];
     assert.equal(group,
-      `\${{ github.event_name == 'pull_request' && format('${prefix}-pr-{0}', github.event.pull_request.number) || format('${prefix}-{0}-{1}', github.event_name, github.run_id) }}`,
-      `${file}: one group per PR number, one group per run for every other event`);
-    assert.match(block, /^  cancel-in-progress: \$\{\{ github\.event_name == 'pull_request' \}\}$/m,
-      `${file}: only pull_request events cancel an older run`);
+      `\${{ github.event_name == 'pull_request' && format('${prefix}-pr-{0}', github.event.pull_request.number) || github.event_name == 'push' && format('${prefix}-push-{0}', github.ref) || format('${prefix}-{0}-{1}', github.event_name, github.run_id) }}`,
+      `${file}: one group per PR number, one group per pushed branch, one group per run for every other event`);
+    assert.match(block, /^  cancel-in-progress: \$\{\{ github\.event_name == 'pull_request' \|\| github\.event_name == 'push' \}\}$/m,
+      `${file}: pull_request and push events cancel their own older run; manual runs never`);
     assert.doesNotMatch(block, /cancel-in-progress: true/, `${file}: never an unconditional cancel`);
   }
 });
 
-test('the group expression separates PRs from each other and never groups two main/manual runs', () => {
+test('the group expression separates PRs from each other, groups pushes by branch, and never groups two manual runs', () => {
   // Evaluate the shared expression shape for representative events.
-  const groupFor = (prefix, { event, pr, runId }) =>
-    event === 'pull_request' ? `${prefix}-pr-${pr}` : `${prefix}-${event}-${runId}`;
+  const groupFor = (prefix, { event, pr, runId, ref = 'refs/heads/main' }) =>
+    event === 'pull_request' ? `${prefix}-pr-${pr}` : event === 'push' ? `${prefix}-push-${ref}` : `${prefix}-${event}-${runId}`;
   for (const prefix of PR_ONLY_CANCEL.values()) {
     assert.equal(groupFor(prefix, { event: 'pull_request', pr: 7, runId: 1 }), groupFor(prefix, { event: 'pull_request', pr: 7, runId: 2 }));
     assert.notEqual(groupFor(prefix, { event: 'pull_request', pr: 7, runId: 1 }), groupFor(prefix, { event: 'pull_request', pr: 8, runId: 1 }));
-    assert.notEqual(groupFor(prefix, { event: 'push', runId: 1 }), groupFor(prefix, { event: 'push', runId: 2 }));
+    assert.equal(groupFor(prefix, { event: 'push', runId: 1 }), groupFor(prefix, { event: 'push', runId: 2 }));
+    assert.notEqual(groupFor(prefix, { event: 'push', runId: 1 }), groupFor(prefix, { event: 'push', runId: 1, ref: 'refs/heads/other' }));
     assert.notEqual(groupFor(prefix, { event: 'workflow_dispatch', runId: 1 }), groupFor(prefix, { event: 'workflow_dispatch', runId: 2 }));
   }
 });
@@ -70,7 +73,7 @@ test('registration, Pages, Worker deploy, sync and observer runs are never cance
   }
 });
 
-test('every workflow that runs on a push to main cancels nothing on that push', () => {
+test('a main push is cancelled only by the listed validating workflows (newest commit only), never by a writer or deploy', () => {
   const offenders = [];
   for (const file of fs.readdirSync(workflowDir).filter(name => name.endsWith('.yml'))) {
     const text = read(file);
@@ -81,6 +84,7 @@ test('every workflow that runs on a push to main cancels nothing on that push', 
     if (!block) continue;
     const cancel = /^  cancel-in-progress: (.+)$/m.exec(block)?.[1]?.trim();
     if (cancel === 'true') offenders.push(`${file}: cancel-in-progress: true applies to a main push`);
+    else if (cancel?.startsWith('${{') && cancel.includes("'push'") && !PR_ONLY_CANCEL.has(file)) offenders.push(`${file}: ${cancel}`);
     else if (cancel?.startsWith('${{') && !cancel.includes("github.event_name == 'pull_request'")) offenders.push(`${file}: ${cancel}`);
   }
   // An existing browser smoke that predates this rule cancels a main push when a newer push to main arrives. It is
