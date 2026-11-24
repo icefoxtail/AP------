@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "11/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-9/4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "x(t)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTickLabels": {
+      "x": {
+        "1": "a",
+        "4": "b",
+        "11/2": "c"
+      }
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "axis": "x",
+          "value": "11/2",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "curveX": "11/2",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "sCP",
+          "from": "C",
+          "to": "P",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "수직선 위를 움직이는 점 P의 시각 t에서의 위치 x(t)의 그래프이다.",
+  "accessibilityDescription": "가로축은 t, 세로축은 x(t)이고 원점 O가 표시되어 있다. 아래로 볼록한 포물선이 t축과 두 점 a, b에서 만나고 t가 c일 때까지 이어지며, t가 c인 점에서 곡선까지 점선 수선이 그어져 있다.",
+  "newVisualInformation": [
+    "시각 t가 0에서 c까지 변할 때 위치 x(t)의 그래프는 t축과 두 시각 a, b에서 만난다.",
+    "시각 t가 c일 때 곡선의 끝점까지 t축에서 올라가는 점선 수선이 그어져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x(t)$의 그래프가 오른쪽 그림과 같을 때, 점 $P$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [3.9점]\nㄱ. $0<t<c$에서 원점을 두 번 지난다.\nㄴ. $a<t<b$에서 한 방향으로만 움직인다.\nㄷ. $0<t<c$에서 운동 방향이 두 번 바뀐다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
