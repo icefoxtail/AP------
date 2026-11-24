@@ -1,0 +1,260 @@
+window.examTitle = "미적분II_259_정적분과급수의합사이의관계_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty} \\frac{1}{n} \\left\\{ \\left(\\frac{n+1}{n}\\right)^3 + \\left(\\frac{n+2}{n}\\right)^3 + \\left(\\frac{n+3}{n}\\right)^3 + \\cdots + \\left(\\frac{2n}{n}\\right)^3 \\right\\}$의 값은?",
+    "choices": [
+      "$\\frac{7}{4}$",
+      "$\\frac{9}{4}$",
+      "$\\frac{11}{4}$",
+      "$\\frac{13}{4}$",
+      "$\\frac{15}{4}$"
+    ],
+    "answer": "⑤",
+    "solution": "[급수식 정리] 주어진 식을 시그마로 나타내면 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\left(1+\\frac{k}{n}\\right)^3\\frac{1}{n}$이다.\n[치환] $x=\\frac{k}{n}$으로 놓으면 $\\Delta x=\\frac{1}{n}$이다.\n[적분 구간] $k=1$일 때 $x\\to0$, $k=n$일 때 $x\\to1$이므로 적분 구간은 $[0,1]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\left(1+\\frac{k}{n}\\right)^3\\frac{1}{n}=\\int_0^1(1+x)^3dx$이다.\n[전개] $(1+x)^3=1+3x+3x^2+x^3$이다.\n[적분] $\\int_0^1(1+3x+3x^2+x^3)dx=\\left[x+\\frac{3}{2}x^2+x^3+\\frac{1}{4}x^4\\right]_0^1$이다.\n[대입] $=1+\\frac{3}{2}+1+\\frac{1}{4}$이다.\n[통분] $=\\frac{4+6+4+1}{4}=\\frac{15}{4}$이다.\n[검산] $u=1+x$로 치환하면 $\\int_1^2u^3du=\\left[\\frac{u^4}{4}\\right]_1^2=\\frac{15}{4}$로 같다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "함수 $f(x) = \\sin\\left(\\frac{\\pi}{2}x\\right)$에 대하여 $\\lim_{n\\to\\infty} \\sum_{k=1}^n f\\left(1 + \\frac{2k}{n}\\right) \\frac{1}{n}$의 값은?",
+    "choices": [
+      "$-\\frac{4}{\\pi}$",
+      "$-\\frac{2}{\\pi}$",
+      "$0$",
+      "$\\frac{2}{\\pi}$",
+      "$\\frac{4}{\\pi}$"
+    ],
+    "answer": "③",
+    "solution": "[급수식 확인] 주어진 식은 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\sin\\left(\\frac{\\pi}{2}\\left(1+\\frac{2k}{n}\\right)\\right)\\frac{1}{n}$이다.\n[치환] $x=1+\\frac{2k}{n}$으로 놓으면 $\\Delta x=\\frac{2}{n}$이다.\n[계수 변형] $\\frac{1}{n}=\\frac{1}{2}\\Delta x$이다.\n[적분 구간] $k=1$일 때 $x\\to1$, $k=n$일 때 $x\\to3$이므로 적분 구간은 $[1,3]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 주어진 극한은 $\\frac{1}{2}\\int_1^3\\sin\\left(\\frac{\\pi}{2}x\\right)dx$이다.\n[부정적분] $\\int\\sin\\left(\\frac{\\pi}{2}x\\right)dx=-\\frac{2}{\\pi}\\cos\\left(\\frac{\\pi}{2}x\\right)+C$이다.\n[대입] $\\frac{1}{2}\\left[-\\frac{2}{\\pi}\\cos\\left(\\frac{\\pi}{2}x\\right)\\right]_1^3=-\\frac{1}{\\pi}\\left[\\cos\\left(\\frac{\\pi}{2}x\\right)\\right]_1^3$이다.\n[특수각] $\\cos\\frac{3\\pi}{2}=0$, $\\cos\\frac{\\pi}{2}=0$이다.\n[계산] $-\\frac{1}{\\pi}(0-0)=0$이다.\n[주의] $\\Delta x=\\frac{2}{n}$이므로 $\\frac{1}{n}$ 앞의 계수 $\\frac{1}{2}$을 빠뜨리지 않는다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "함수 $f(x) = \\frac{1}{x}$에 대하여 $\\lim_{n\\to\\infty} \\sum_{k=1}^n f\\left(2 + \\frac{2k}{n}\\right) \\frac{1}{n}$의 값은?",
+    "choices": [
+      "$\\frac{1}{3}\\ln 2$",
+      "$\\frac{1}{2}\\ln 2$",
+      "$\\frac{2}{3}\\ln 2$",
+      "$\\ln 2$",
+      "$\\frac{3}{2}\\ln 2$"
+    ],
+    "answer": "②",
+    "solution": "[급수식 확인] 주어진 식은 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\frac{1}{2+\\frac{2k}{n}}\\cdot\\frac{1}{n}$이다.\n[치환] $x=2+\\frac{2k}{n}$으로 놓으면 $\\Delta x=\\frac{2}{n}$이다.\n[계수 변형] $\\frac{1}{n}=\\frac{1}{2}\\Delta x$이다.\n[적분 구간] $k=1$일 때 $x\\to2$, $k=n$일 때 $x\\to4$이므로 적분 구간은 $[2,4]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 주어진 극한은 $\\frac{1}{2}\\int_2^4\\frac{1}{x}dx$이다.\n[부정적분] $\\int\\frac{1}{x}dx=\\ln|x|+C$이다.\n[대입] $\\frac{1}{2}\\left[\\ln x\\right]_2^4=\\frac{1}{2}(\\ln4-\\ln2)$이다.\n[로그의 성질] $\\ln4=\\ln2^2=2\\ln2$이다.\n[계산] $\\frac{1}{2}(2\\ln2-\\ln2)=\\frac{1}{2}\\ln2$이다.\n[주의] $\\Delta x=\\frac{2}{n}$에서 생기는 계수 $\\frac{1}{2}$을 반드시 남긴다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "함수 $f(x) = e^x + a$에 대하여 $\\lim_{n\\to\\infty} \\frac{1}{n} \\sum_{k=1}^n f\\left(\\frac{2k}{n}\\right) = \\frac{e^2 + 7}{2}$일 때, 상수 $a$의 값은?",
+    "choices": [
+      "$\\frac{1}{2}$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "answer": "⑤",
+    "solution": "[좌변 정리] 주어진 극한은 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\left(e^{\\frac{2k}{n}}+a\\right)\\frac{1}{n}$이다.\n[치환] $x=\\frac{2k}{n}$으로 놓으면 $\\Delta x=\\frac{2}{n}$이다.\n[계수 변형] $\\frac{1}{n}=\\frac{1}{2}\\Delta x$이다.\n[적분 구간] $k=1$일 때 $x\\to0$, $k=n$일 때 $x\\to2$이므로 적분 구간은 $[0,2]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 좌변은 $\\frac{1}{2}\\int_0^2(e^x+a)dx$이다.\n[적분] $\\frac{1}{2}\\left[e^x+ax\\right]_0^2$이다.\n[대입] $=\\frac{1}{2}\\{(e^2+2a)-(1+0)\\}=\\frac{e^2+2a-1}{2}$이다.\n[방정식 세우기] 문제의 값과 같으므로 $\\frac{e^2+2a-1}{2}=\\frac{e^2+7}{2}$이다.\n[정리] 양변에 $2$를 곱하면 $e^2+2a-1=e^2+7$이다.\n[풀이] $2a-1=7$에서 $2a=8$이므로 $a=4$이다.\n[검산] $a=4$이면 $\\frac{1}{2}(e^2+8-1)=\\frac{e^2+7}{2}$로 성립한다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [
+      "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty} \\sum_{k=1}^n \\frac{\\pi}{2n} \\tan^2 \\frac{k\\pi}{4n}$의 값은?",
+    "choices": [
+      "$2 - \\frac{\\pi}{2}$",
+      "$3 - \\frac{\\pi}{2}$",
+      "$2 + \\frac{\\pi}{2}$",
+      "$3 + \\frac{\\pi}{2}$",
+      "$4 + \\frac{\\pi}{2}$"
+    ],
+    "answer": "①",
+    "solution": "[급수식 확인] 주어진 식은 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\frac{\\pi}{2n}\\tan^2\\frac{k\\pi}{4n}$이다.\n[치환] $x=\\frac{k\\pi}{4n}$으로 놓으면 $\\Delta x=\\frac{\\pi}{4n}$이다.\n[계수 변형] $\\frac{\\pi}{2n}=2\\cdot\\frac{\\pi}{4n}=2\\Delta x$이다.\n[적분 구간] $k=1$일 때 $x\\to0$, $k=n$일 때 $x\\to\\frac{\\pi}{4}$이므로 적분 구간은 $\\left[0,\\frac{\\pi}{4}\\right]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 주어진 극한은 $2\\int_0^{\\frac{\\pi}{4}}\\tan^2x\\,dx$이다.\n[삼각함수 항등식] $1+\\tan^2x=\\sec^2x$이므로 $\\tan^2x=\\sec^2x-1$이다.\n[부정적분] $\\int\\sec^2x\\,dx=\\tan x+C$이다.\n[적분] $2\\int_0^{\\frac{\\pi}{4}}(\\sec^2x-1)dx=2\\left[\\tan x-x\\right]_0^{\\frac{\\pi}{4}}$이다.\n[대입] $\\tan\\frac{\\pi}{4}=1$, $\\tan0=0$이므로 $2\\left(1-\\frac{\\pi}{4}\\right)$이다.\n[정리] $=2-\\frac{\\pi}{2}$이다.\n[주의] $\\tan^2x$는 그대로 적분하지 말고 $\\sec^2x-1$로 변형한다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [
+      "CC_TRIGONOMETRIC_IDENTITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "함수 $f(x) = 6x^3 + 6x^2$에 대하여 $\\lim_{n\\to\\infty} \\sum_{k=1}^n \\frac{1}{n+k} f\\left(\\frac{k}{n}\\right)$의 값은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "②",
+    "solution": "[분모 변형] $\\frac{1}{n+k}=\\frac{1}{n}\\cdot\\frac{1}{1+\\frac{k}{n}}$이다.\n[급수 재구성] 주어진 극한은 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\frac{f\\left(\\frac{k}{n}\\right)}{1+\\frac{k}{n}}\\cdot\\frac{1}{n}$이다.\n[치환] $x=\\frac{k}{n}$으로 놓으면 $\\Delta x=\\frac{1}{n}$이다.\n[적분 구간] $k=1$일 때 $x\\to0$, $k=n$일 때 $x\\to1$이므로 적분 구간은 $[0,1]$이다.\n[정적분으로 변환] 정적분과 급수의 관계에 의해 주어진 극한은 $\\int_0^1\\frac{f(x)}{1+x}dx$이다.\n[함수 대입] $f(x)=6x^3+6x^2=6x^2(x+1)$이다.\n[약분] $\\frac{f(x)}{1+x}=\\frac{6x^2(x+1)}{x+1}=6x^2$이다.\n[적분] $\\int_0^1 6x^2dx=\\left[2x^3\\right]_0^1$이다.\n[계산] $=2-0=2$이다.\n[검산] $\\sum_{k=1}^{n}6\\left(\\frac{k}{n}\\right)^2\\frac{1}{n}=\\frac{6}{n^3}\\cdot\\frac{n(n+1)(2n+1)}{6}\\to2$로 일치한다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "정적분의 활용",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-08",
+    "standardUnit": "정적분의 활용",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "정적분의 활용"
+    ],
+    "wide": false,
+    "content": "다음 급수의 합을 정적분으로 나타낸 것이 옳지 않은 것은?",
+    "choices": [
+      "$\\lim_{n\\to\\infty} \\frac{2}{n} \\sum_{k=1}^n \\left(\\frac{2k}{n}\\right)^4 = \\int_0^2 x^4 dx$",
+      "$\\lim_{n\\to\\infty} \\frac{1}{n} \\sum_{k=1}^n \\cos\\left(\\frac{k\\pi}{2n}\\right) = \\int_0^1 \\cos\\left(\\frac{\\pi}{2}x\\right) dx$",
+      "$\\lim_{n\\to\\infty} \\frac{1}{n} \\sum_{k=1}^n \\left(1 + \\frac{2k}{n}\\right)^3 = \\int_1^3 x^3 dx$",
+      "$\\lim_{n\\to\\infty} \\frac{1}{n} \\sum_{k=1}^n \\frac{1}{1 + \\left(\\frac{k}{n}\\right)^2} = \\int_0^1 \\frac{1}{1+x^2} dx$",
+      "$\\lim_{n\\to\\infty} \\frac{1}{n} \\sum_{k=1}^n \\left(1 + \\frac{3k}{n}\\right)^5 = \\frac{1}{3} \\int_1^4 x^5 dx$"
+    ],
+    "answer": "③",
+    "solution": "[판별 공식] 연속함수 $f$에 대하여 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}f\\left(a+\\frac{pk}{n}\\right)\\frac{p}{n}=\\int_a^{a+p}f(x)dx$를 이용한다.\n[보기 ①] $x=\\frac{2k}{n}$이면 $\\Delta x=\\frac{2}{n}$이고 구간은 $[0,2]$이므로 $\\int_0^2x^4dx$가 되어 참이다.\n[보기 ②] $x=\\frac{k}{n}$이면 $\\Delta x=\\frac{1}{n}$이고 구간은 $[0,1]$이므로 $\\int_0^1\\cos\\left(\\frac{\\pi}{2}x\\right)dx$가 되어 참이다.\n[보기 ③] $x=1+\\frac{2k}{n}$이면 $\\Delta x=\\frac{2}{n}$이므로 $\\frac{1}{n}=\\frac{1}{2}\\Delta x$이다.\n[보기 ③ 계산] 따라서 극한은 $\\frac{1}{2}\\int_1^3x^3dx$인데 보기에는 $\\int_1^3x^3dx$로 되어 있어 옳지 않다.\n[보기 ④] $x=\\frac{k}{n}$이면 $\\Delta x=\\frac{1}{n}$이고 구간은 $[0,1]$이므로 $\\int_0^1\\frac{1}{1+x^2}dx$가 되어 참이다.\n[보기 ⑤] $x=1+\\frac{3k}{n}$이면 $\\Delta x=\\frac{3}{n}$이므로 $\\frac{1}{n}=\\frac{1}{3}\\Delta x$이고 구간은 $[1,4]$이므로 $\\frac{1}{3}\\int_1^4x^5dx$가 되어 참이다.\n[주의] $x=a+\\frac{pk}{n}$일 때 $\\frac{1}{n}=\\frac{1}{p}dx$이므로 적분 앞의 계수 $\\frac{1}{p}$을 확인한다.\n[결론] 옳지 않은 것은 ③이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-189",
+    "problemTypeKey": "PT_CALCULUS_RIEMANN_SUM",
+    "templateKey": "TPL_CALCULUS_RIEMANN_SERIES_TO_INTEGRAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  }
+];
