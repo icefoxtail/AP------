@@ -65,7 +65,18 @@ export function indexRows(root) {
 // The SVG authoring engine is most of archive/tools (3,184 of 4,363 files) and no registration producer imports it, yet every edit
 // to it re-ran the whole registration (12-14 minutes). A test computes the producers' import chains and fails if one reaches it.
 export const CODE_TREE='archive/tools/';
-export const EXCLUDED_CODE_DIRS=['archive/tools/geometry-equation/'];
+// Trees under archive/tools that no registration lane runs or imports (the SVG authoring engine, audit and import harnesses, pilots).
+// An edit there changes no registration result. The test computes every lane's script closure and fails if one reaches an excluded tree.
+export const EXCLUDED_CODE_DIRS=['archive/tools/geometry-equation/','archive/tools/logic-visual-audit/','archive/tools/past-exam-pipeline/',
+  'archive/tools/function-family/','archive/tools/similar-import/','archive/tools/high1-svg-audit/','archive/tools/js-bank-cleanup/','archive/tools/r2e/',
+  'archive/tools/aistudio-similar/','archive/tools/tag-enrichment/','archive/tools/assessment-mock/','archive/tools/scan_dynamic_intake_v1/',
+  'archive/tools/completion/','archive/tools/meta-os/','archive/tools/set-visual-pilot/'];
+// Tools only the student-index lane runs, and tools only the generated lane runs: the other lanes ignore edits to them.
+export const STUDENT_INDEX_ONLY_TOOLS=['archive/tools/build-svg-accessibility-index.cjs','archive/tools/svg-quality-report.cjs','archive/tools/svg-language-contract.cjs',
+  'archive/tools/collect-svg-accessibility-source-index.cjs','archive/tools/build-archive2-extension-keys.mjs','archive/tools/archive2-extension-key-extract.cjs'];
+export const GENERATED_ONLY_TOOLS=['archive/tools/generated-meta/','archive/tools/sealed-crosswalk-digests.cjs','archive/tools/generated-meta-retention-gate.cjs'];
+export const LANE_EXCLUDED_INPUTS={reviewed:[...STUDENT_INDEX_ONLY_TOOLS,...GENERATED_ONLY_TOOLS],semantic:[...STUDENT_INDEX_ONLY_TOOLS,...GENERATED_ONLY_TOOLS],
+  shared:[...STUDENT_INDEX_ONLY_TOOLS,...GENERATED_ONLY_TOOLS],generated:STUDENT_INDEX_ONLY_TOOLS,studentIndexes:GENERATED_ONLY_TOOLS};
 export function fingerprint(rows, patterns, exclude) {
   const hit=compilePatterns(patterns),skip=exclude?.length?compilePatterns(exclude):null;
   return sha(rows.filter(r=>r.path!==STATE&&hit(r.path)&&!(skip&&skip(r.path))).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
@@ -113,6 +124,20 @@ function rollbackStaged(root, allowed) {
   reassembleMetadata(root);
 }
 
+// The registration pipeline opens exactly these pictures: the legacy-similar visual-rebind receipts name figures whose bytes
+// archive/tools/intelligence/apply-reviewed-legacy-similar-ledgers.mjs hashes against the receipt. Every other picture is never read by it.
+// (Held-source pictures come from sourceQualityHoldDependencyPaths.) Read from the committed receipts, so a new receipt widens this by itself.
+export function registrationPictureInputs(root) {
+  const dir=path.join(root,'archive/data/legacy-similar-visual-rebind');
+  if(!fs.existsSync(dir))return [];
+  const out=[];
+  for(const name of fs.readdirSync(dir).filter(n=>n.endsWith('.json')).sort()) {
+    const receipt=JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+    for(const figure of Array.isArray(receipt.figures)?receipt.figures:[])
+      if(typeof figure?.asset==='string'&&figure.asset.startsWith('assets/'))out.push('archive/'+figure.asset);
+  }
+  return unique(out);
+}
 export function nativeLanes(root) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
   const parentRetry=canonicalParentRetryRequests(root)[0]||null;
@@ -180,7 +205,10 @@ export function nativeLanes(root) {
         // this exact run's results, otherwise stable refusals would rebuild forever on identical input.
         return canonicalParentRetryRequests(root).length>0||Object.keys(pending).some(key=>!attempted.has(key));
       }},
-    {id:'shared',inputs:[...code,...registration,'archive/assets/','archive/data/generated-lite-consumer/v1/',
+    // No 'archive/assets/': the shared commands open only the pictures that registrationPictureInputs names, so a picture-only merge
+    // no longer rebuilds the whole database (the 313-picture merge #2765 left every shared output byte-identical after 387 s).
+    {id:'shared',inputs:[...code,...registration,...registrationPictureInputs(root),'archive/data/legacy-similar-reviewed/',
+      'archive/data/legacy-similar-visual-rebind/','archive/data/generated-lite-consumer/v1/',
       'archive/db.js','archive/question-index.js','archive/question-identity.js'],outputs:shared,required:true,
       commands:sharedCommands,finalCommands:sharedCommands},
     {id:'generated',inputs:[...code,'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/',
@@ -217,7 +245,7 @@ export function nativeLanes(root) {
       outputs:fourSlot,required:false,digestOnly:true,enabled:config.fourSlotEnabled!==false,
       commands:[cmd('bash','tools/ci/archive-four-slot-pass.sh')]}
   ];
-  return lanes.map(lane=>lane.inputs.includes(CODE_TREE)?{...lane,excludeInputs:EXCLUDED_CODE_DIRS}:lane);
+  return lanes.map(lane=>lane.inputs.includes(CODE_TREE)?{...lane,excludeInputs:[...EXCLUDED_CODE_DIRS,...(LANE_EXCLUDED_INPUTS[lane.id]||[])]}:lane);
 }
 
 export function executeCommands({root, work, lane, env}) {
