@@ -853,6 +853,10 @@ window.questionBank = [
       "확률과통계",
       "순열과 조합",
       "금지 인접 전이 점화"
-    ]
+    ],
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선 위에 2, 4, 6, 8이 적힌 네 눈금이 있고, 2와 8 사이의 거리 6을 나타내는 치수선이 있다.",
+    "solutionImageCaption": "네 숫자 2, 4, 6, 8 중 이웃한 두 수의 차가 4를 넘는 경우는 2와 8이 이웃할 때뿐이다. 이웃 조건만 만족하는 네 자리 배열은 178개이고, 그중 2가 한 번도 없는 배열 81개를 빼면 97개이다. 따라서 답은 97이다.",
+    "solutionImageSize": "full"
   }
 ];

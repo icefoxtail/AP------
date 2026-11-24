@@ -1,0 +1,68 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 두 곡선 사이 격자점 개수 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "2",
+            "1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "0",
+            "7"
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "RATIONAL",
+          "numerator": [
+            "0",
+            "-3"
+          ],
+          "denominator": [
+            "2",
+            "1"
+          ],
+          "domain": [
+            "0",
+            "7"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "x0",
+            "x": "0"
+          },
+          {
+            "id": "x7",
+            "x": "7"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "0",
+          "7"
+        ],
+        "y": [
+          "-2",
+          "3"
+        ]
+      }
+    },
+    "caption": "0≤x≤7에서 y=√(x+2)와 y=-3x/(x+2) 사이의 정수 격자점을 세는 영역이다."
+  }
+}

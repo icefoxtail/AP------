@@ -253,7 +253,11 @@ window.examData = {
         "3"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/22_향림중_1학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면에 두 점 (-2,3)과 (3,-7)을 지나는 직선이 그려져 있고, 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "그래프가 두 점 (-2,3), (3,-7)을 지난다. 기울기는 (-7-3)/(3-(-2))=-2이다. 따라서 답은 ② -2이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,

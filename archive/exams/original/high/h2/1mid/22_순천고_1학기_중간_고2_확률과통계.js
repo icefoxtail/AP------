@@ -1715,7 +1715,11 @@ window.questionBank = [
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
     "sourceQuestionTextExact": "A학급 학생 2명, B학급 학생 3명, C학급 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br>ㄱ. 같은 학급 학생끼리는 서로 이웃하여 앉지 않는다.<br>ㄴ. 같은 학급 학생끼리는 서로 마주보고 앉지 않는다.<br><br><img src=\"assets/images/22_순천고_1학기_중간_고2_확률과통계/q17.png\" alt=\"q17\">",
     "category": "조건을 만족시키는 원순열",
-    "originalCategory": "조건을 만족시키는 원순열"
+    "originalCategory": "조건을 만족시키는 원순열",
+    "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 여덟 개의 점이 같은 간격으로 놓여 있고, 한 점에서 두 칸 떨어진 점까지의 호와 세 칸 떨어진 점까지의 호가 서로 다른 색으로 표시되어 있다.",
+    "solutionImageCaption": "A학급 두 학생은 이웃하거나 마주보지 않아야 하므로 원형 거리 2 또는 3에 놓인다. 거리 3인 배치마다 B학급과 C학급을 조건에 맞게 놓는 방법이 2가지씩 있어 학급 배치는 16가지이다. 학생 개인별 배열 2!3!3!=72가지를 곱하고 회전 중복 8을 나누면 16×72÷8=144이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

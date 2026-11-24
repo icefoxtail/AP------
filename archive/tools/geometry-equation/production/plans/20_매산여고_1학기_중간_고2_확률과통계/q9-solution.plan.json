@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sT12",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT23",
+      "refs": [
+        "T2",
+        "T3"
+      ]
+    },
+    {
+      "id": "sT34",
+      "refs": [
+        "T3",
+        "T4"
+      ]
+    },
+    {
+      "id": "sT41",
+      "refs": [
+        "T4",
+        "T1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "n1",
+        "at": [
+          3,
+          5
+        ],
+        "text": "1",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n2",
+        "at": [
+          5.5,
+          5
+        ],
+        "text": "2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n3",
+        "at": [
+          8,
+          5
+        ],
+        "text": "3",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n4",
+        "at": [
+          10.8,
+          3.3
+        ],
+        "text": "4",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n5",
+        "at": [
+          10.8,
+          2.1
+        ],
+        "text": "5",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n6",
+        "at": [
+          8,
+          0.4
+        ],
+        "text": "6",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n7",
+        "at": [
+          5.5,
+          0.4
+        ],
+        "text": "7",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n8",
+        "at": [
+          3,
+          0.4
+        ],
+        "text": "8",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n9",
+        "at": [
+          0.2,
+          2.1
+        ],
+        "text": "9",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n10",
+        "at": [
+          0.2,
+          3.3
+        ],
+        "text": "10",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "10명을 일렬로 앉히는 배열은 10!가지이다. 직사각형 탁자는 180° 회전한 배열과만 겹치므로 서로 다른 배열은 10!을 2로 나눈 5×9!가지이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "직사각형 탁자 둘레에 번호가 붙은 열 개의 좌석이 위아래에 세 개씩, 좌우에 두 개씩 배치되어 있다.",
+  "newVisualInformation": [
+    "직사각형 탁자와 열 좌석 배치",
+    "좌석 번호 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 10명의 학생이 직사각형 모양의 탁자에 각각 둘러앉는 모든 경우의 수를 구하면? (단, 회전하여 일치하는 경우는 모두 같은 것으로 본다.) [3.7점]\n\n<img src=\"assets/images/20_매산여고_1학기_중간_고2_확률과통계/q09.png\" alt=\"그림\" class=\"exam-image\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

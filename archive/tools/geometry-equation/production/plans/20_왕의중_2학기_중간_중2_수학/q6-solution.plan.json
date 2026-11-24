@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "BD",
+          "AE"
+        ]
+      },
+      {
+        "id": "eq2",
+        "count": 3,
+        "segments": [
+          "DA",
+          "CE"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAE",
+        "ownerSegment": "AE",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "D",
+        "to": "E",
+        "label": "10",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 10,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 380
+  },
+  "caption": "∠DAB+∠EAC=90°이고 ∠DBA+∠DAB=90°이므로 ∠DBA=∠EAC이다. 빗변 AB와 CA가 같고 한 예각이 같으므로 △BDA와 △AEC는 합동이다. 따라서 DA=CE=4, AE=BD=6이므로 DE=4+6=10이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "직선 l 위에 점 D, A, E가 차례로 놓여 있고, 그 위쪽에 A를 꼭짓점으로 하는 직각이등변삼각형 ABC가 있다. B에서 l에 내린 수선 BD의 길이 6과 C에서 내린 수선 CE의 길이 4가 적혀 있고, D와 E 사이에 치수선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선 l 위의 점 D, A, E",
+    "수선 BD와 CE",
+    "DE의 길이를 나타내는 치수선",
+    "합동인 삼각형 BDA와 AEC의 같은 길이 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>6. 오른쪽 직각이등변삼각형 $\\text{ABC}$에서 꼭짓점 $\\text{A}$를 지나는 직선 $l$을 긋고, 두 점 $\\text{B}$와 $\\text{C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D}$와 $\\text{E}$라고 하자. $\\overline{\\text{BD}} = 6\\text{ cm}$이고 $\\overline{\\text{CE}} = 4\\text{ cm}$일 때, $\\overline{\\text{DE}}$의 길이는? [4점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/q06.png\" alt=\"직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선에 B와 C에서 내린 수선의 발 D, E를 나타낸 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

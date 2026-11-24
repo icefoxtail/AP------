@@ -1,0 +1,602 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "E2",
+    "F",
+    "F2",
+    "G",
+    "G2",
+    "H",
+    "H2",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sV1",
+      "refs": [
+        "E2",
+        "I1"
+      ]
+    },
+    {
+      "id": "sV2",
+      "refs": [
+        "I1",
+        "I2"
+      ]
+    },
+    {
+      "id": "sV3",
+      "refs": [
+        "I2",
+        "E"
+      ]
+    },
+    {
+      "id": "sV4",
+      "refs": [
+        "F2",
+        "I3"
+      ]
+    },
+    {
+      "id": "sV5",
+      "refs": [
+        "I3",
+        "I4"
+      ]
+    },
+    {
+      "id": "sV6",
+      "refs": [
+        "I4",
+        "F"
+      ]
+    },
+    {
+      "id": "sH1",
+      "refs": [
+        "H",
+        "I1"
+      ]
+    },
+    {
+      "id": "sH2",
+      "refs": [
+        "I1",
+        "I3"
+      ]
+    },
+    {
+      "id": "sH3",
+      "refs": [
+        "I3",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH4",
+      "refs": [
+        "G",
+        "I2"
+      ]
+    },
+    {
+      "id": "sH5",
+      "refs": [
+        "I2",
+        "I4"
+      ]
+    },
+    {
+      "id": "sH6",
+      "refs": [
+        "I4",
+        "G2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "BLUE",
+        "label": "315",
+        "labelName": "길을 제외한 땅",
+        "unit": "m^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "E2",
+              "I1",
+              "H"
+            ]
+          },
+          {
+            "polygon": [
+              "G",
+              "I2",
+              "E",
+              "D"
+            ]
+          },
+          {
+            "polygon": [
+              "F2",
+              "B",
+              "H2",
+              "I3"
+            ]
+          },
+          {
+            "polygon": [
+              "I4",
+              "G2",
+              "C",
+              "F"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "24",
+        "side": "BELOW",
+        "style": "ARROW"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "18",
+        "side": "RIGHT",
+        "style": "ARROW"
+      },
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "x",
+        "side": "ABOVE",
+        "style": "ARROW"
+      },
+      {
+        "id": "dHG",
+        "from": "H",
+        "to": "G",
+        "label": "x",
+        "side": "LEFT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "E2",
+    "F",
+    "F2",
+    "G",
+    "G2",
+    "H",
+    "H2",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로 24 m, 세로 18 m인 직사각형 땅에 폭 x m인 가로 방향 길과 세로 방향 길이 각각 하나씩 있고, 길을 제외한 부분의 넓이가 315 제곱미터로 주어진 그림이다.",
+  "accessibilityDescription": "직사각형의 네 변과 그 안을 지나는 가로 방향과 세로 방향의 흰 길이 보이고, 땅의 가로 24 m와 세로 18 m, 길의 폭 x, 남은 넓이 315 제곱미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "가로 24 m, 세로 18 m인 직사각형 땅",
+    "폭 x m인 가로 방향 길과 세로 방향 길",
+    "길을 제외한 넓이 315 제곱미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 $24\\text{ m}$, 세로의 길이가 $18\\text{ m}$인 직사각형 모양의 땅에 가로 방향과 세로 방향으로 각각 $1$개씩 폭이 $x\\text{ m}$로 일정한 $2$개의 길을 만들었다. 길을 제외한 땅의 넓이가 $315\\text{ m}^2$일 때, 길의 폭을 구하여라. [6점] ※ 이차방정식을 활용하여 풀이 과정을 적어야 함. 다른 영역의 풀이는 감점 처리함.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

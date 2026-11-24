@@ -1,0 +1,63 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "e1",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=3/2-x/2"
+      },
+      {
+        "id": "e2",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-3/2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=1/2-3x/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫째 식 x=-2y+3을 둘째 식에 대입하면 -4y=-8에서 y=2이고 x=-1이다. 두 직선 x=-2y+3과 3x+2y=1은 점 (-1,2)에서 만나므로 a=-1, b=2이다. 따라서 a+b=1이고 답은 ①이다.",
+  "accessibilityDescription": "기울기가 음수인 두 직선이 한 점에서 만나는 그래프이고, 그 교점의 좌표가 함께 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직선의 교점 (-1,2)를 좌표와 함께 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식<br><div class=\"note-box\">$x=-2y+3$<br>$3x+2y=1$</div>의 해를 $(a,b)$와 같이 나타낼 때, $a+b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

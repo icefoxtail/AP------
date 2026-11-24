@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -12,
+      12
+    ],
+    "curves": [
+      {
+        "id": "ga",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "5/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=ax^2"
+      },
+      {
+        "id": "gd",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-5/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=dx^2"
+      },
+      {
+        "id": "gb",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=bx^2"
+      },
+      {
+        "id": "gc",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=cx^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "원점을 지나고 x축에 서로 대칭인 네 개의 포물선을 나타낸 그림이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 있고, 위쪽에 폭이 다른 두 포물선, 아래쪽에 그와 x축에 대칭인 두 포물선이 원점에서 만난다.",
+  "newVisualInformation": [
+    "x축 대칭인 두 쌍의 포물선과 각 그래프의 이름을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 이차함수 $y = ax^2$과 $y = dx^2$, $y = bx^2$과 $y = cx^2$의 그래프는 각각 $x$축에 서로 대칭이다. 다음 <보기> 중 옳은 것을 모두 골라라. [4점]\n\n<보기> ㄱ. $a + b + c + d = 0$ ㄴ. $|b| > |d|$ ㄷ. $abcd > 0$ ㄹ. $a, b, c, d$ 중 가장 작은 값은 $c$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

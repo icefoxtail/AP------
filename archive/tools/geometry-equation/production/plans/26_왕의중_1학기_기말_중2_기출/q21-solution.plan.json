@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "60",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "60"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "70",
+          "-3/2"
+        ],
+        "domain": [
+          "0",
+          "60"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "20",
+          "y": "40",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 A 시간, 세로 y는 B 시간(분). x+y60,60x+40y2800에서 교점 (20,40). A 거리 1200m, B 거리 1600m. 시간은 비음수이며 선은 조건식 보조 연장이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지윤이는 1시간 동안 어느 공원 둘레길을 A코스는 분속 60 m로, B코스는 분속 40 m로 걸었다. 지윤이가 걸은 거리가 총 2800 m일 때, A코스와 B코스의 거리를 풀이과정과 함께 각각 구하시오. [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

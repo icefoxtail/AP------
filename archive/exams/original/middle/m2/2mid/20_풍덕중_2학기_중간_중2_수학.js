@@ -381,7 +381,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 속력 구간의 거리합·시간합 연립 모델",
-    "decisiveStep": "총거리3과40분을 같은 단위로 놓고 걸은거리와뛴거리의 두 식을 구성한다."
+    "decisiveStep": "총거리3과40분을 같은 단위로 놓고 걸은거리와뛴거리의 두 식을 구성한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "가로축이 시간(분), 세로축이 거리(km)인 좌표평면에서 원점에서 점 A(20,1)까지 완만한 선분, 점 A에서 점 B(40,3)까지 더 가파른 선분이 이어져 있다.",
+    "solutionImageCaption": "그림에서 파란 선분은 걷기, 주황 선분은 뛰기를 나타낸다. 걸어간 거리를 x km, 뛰어간 거리를 y km라 하면 x+y=3이고 걸린 시간이 x/3+y/6=2/3시간(40분)이다. 풀면 x=1, y=2이다. 그림은 처음 20분 동안 시속 3km로 1km를 걸어 점 A(20,1)에 이르고, 다음 20분 동안 시속 6km로 2km를 뛰어 점 B(40,3)에 도착하는 거리와 시간의 그래프이다. 따라서 뛰어간 거리는 2km이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -422,7 +426,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각 입력에 대응하는 출력의 유일성 판정",
-    "decisiveStep": "배수와절댓값 조건에서 한 입력에 복수 출력이 생기는 반례를 든다."
+    "decisiveStep": "배수와절댓값 조건에서 한 입력에 복수 출력이 생기는 반례를 든다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "두 대응도가 위아래로 있다. 위쪽은 x가 2일 때 2, 4, 6의 여러 y로, 3일 때 3, 6, 9의 여러 y로 화살표가 나가고, 아래쪽은 x가 3일 때 −3과 3으로, 5일 때 −5와 5로 화살표가 나간다.",
+    "solutionImageCaption": "함수는 x의 각 값에 y의 값이 오직 하나씩 대응해야 한다. ①에서 x=2이면 y는 2, 4, 6, …으로 여러 개가 대응하고(위쪽 그림), ③에서 절댓값이 3인 y는 −3과 3의 두 개가 대응한다(아래쪽 그림). 따라서 y가 x의 함수가 아닌 것은 ①, ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -467,7 +475,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 닮음의 대응각·대응변 진술 판정",
-    "decisiveStep": "명시된ABC~DEF의 대응과삼각형 내각합을 이용해 모든 보기를 비교한다."
+    "decisiveStep": "명시된ABC~DEF의 대응과삼각형 내각합을 이용해 모든 보기를 비교한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "크기가 다른 두 닮은 삼각형 ABC와 DEF가 나란히 있고 대응하는 각끼리 같은 표시와 각도 40°, 105°, 35°가 있으며 변 AB 4, BC 7, DE 8, EF 14가 적혀 있다.",
+    "solutionImageCaption": "△ABC∽△DEF이므로 대응각의 크기가 같아 ∠A=∠D=105°, ∠B=∠E=40°, ∠C=180°−105°−40°=35°이다. 대응변 AB와 DE의 비 4:8=1:2가 닮음비이므로 EF=2×7=14cm이다. 그러나 닮음비는 1:2이므로 7:8이라는 ⑤는 옳지 않다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -512,7 +524,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "입체 닮음의 길이·면적·부피비 판정",
-    "decisiveStep": "실제 그림의 높이4:8에서1:2를 얻어 면적1:4와부피1:8을 확인한다."
+    "decisiveStep": "실제 그림의 높이4:8에서1:2를 얻어 면적1:4와부피1:8을 확인한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "크기가 다른 두 사각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 (가)는 높이 4, 오른쪽 (나)는 높이 8이 표시되어 있다.",
+    "solutionImageCaption": "예: 해설의 값에 맞춘 두 닮은 사각기둥이다(밑면의 가로 길이는 모양만 나타낸 예이다). (가)의 높이 4cm와 (나)의 높이 8cm가 대응하므로 닮음비는 1:2이다. 대응하는 모서리의 길이는 2배이므로 JK=2×3=6cm이고, 부피의 비는 1³:2³=1:8이다. (가)의 부피가 12cm³이면 (나)의 부피는 12×8=96cm³이므로 36cm³라는 ④가 옳지 않다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -800,7 +816,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "교차삼각형과 내부 평행선의 연속 비",
-    "decisiveStep": "실제그림AD7,BC3로AF:FC=7:3을 얻고AB10에서AE와EF를 구한다."
+    "decisiveStep": "실제그림AD7,BC3로AF:FC=7:3을 얻고AB10에서AE와EF를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABCD의 두 대각선이 점 F에서 만나고 F를 지나 밑변 BC에 평행한 선분 EF가 변 AB 위의 점 E까지 그어져 있다. AD 7, BC 3, EF x=2.1, AE y=7이 적혀 있다.",
+    "solutionImageCaption": "예: AD=7cm, BC=3cm, AB=10cm인 사다리꼴로 그렸다. AD∥BC이므로 △AFD∽△CFB이고 AF:FC=7:3이다. △ABC에서 EF∥BC이므로 AE:AB=AF:AC=7:10이고 y=AE=7, x=EF=(7/10)×3=2.1이다. 따라서 x+y=2.1+7=9.1cm이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -1047,7 +1068,11 @@ window.examData = {
       "assets/images/20_풍덕중_2학기_중간_중2_수학/s04.png"
     ],
     "answer": "1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$",
-    "solution": "$\\triangle\\mathrm{ABC}$에서 중선 $\\overline{\\mathrm{AD}}$, 무게중심 $\\mathrm{G}$, 두 변의 중점연결선 $\\overline{\\mathrm{EF}}$와 $\\overline{\\mathrm{AD}}$의 교점 $\\mathrm{P}$에 대하여 각 물음에 답한다.\n\n1. 그림에서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$ 위에, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$ 위에 있으며, $\\mathrm{B}, \\mathrm{G}, \\mathrm{E}$와 $\\mathrm{C}, \\mathrm{G}, \\mathrm{F}$는 각각 한 직선 위에 있다. 무게중심 $\\mathrm{G}$는 세 중선이 만나는 점이므로 $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{CF}}$는 각각 중선이다. 따라서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$의 중점, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$의 중점이다.\n삼각형의 중점연결정리에 의해 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이다. 따라서 $\\triangle\\mathrm{ABD}$에서 변 $\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{F}$를 지나 변 $\\overline{\\mathrm{BD}}$와 평행한 선분이 $\\overline{\\mathrm{AD}}$와 만나는 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이다. 즉, $\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$이다.\n2. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$에서 $\\overline{\\mathrm{AG}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{GD}} = \\dfrac{1}{3}\\overline{\\mathrm{AD}}$이다.\n3. $\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$이다.\n\n1단계: 1)번 답안\n점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이므로:\n$\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{2}$배)\n\n2단계: 2)번 답안\n점 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} = \\dfrac{2}{2+1}\\overline{\\mathrm{AD}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{2}{3}$배)\n\n3단계: 3)번 답안\n$\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}} - \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\left(\\dfrac{4}{6} - \\dfrac{3}{6}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{6}$배)\n\n4단계: 4)번 답안\n세 선분의 길이의 비를 통분하여 계산하면:\n$\\overline{\\mathrm{AP}} : \\overline{\\mathrm{PG}} : \\overline{\\mathrm{GD}} = \\dfrac{3}{6} : \\dfrac{1}{6} : \\dfrac{2}{6} = 3 : 1 : 2$\n\n5단계: 5)번 답안\n$\\overline{\\mathrm{GD}} = 4\\text{cm}$일 때, 비례식 $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{GD}} = 3 : 2$에 대입하면:\n$\\overline{\\mathrm{AP}} : 4 = 3 : 2 \\implies 2\\overline{\\mathrm{AP}} = 12 \\implies \\overline{\\mathrm{AP}} = 6\\text{cm}$\n(또는 $\\overline{\\mathrm{AD}} = 3 \\times \\overline{\\mathrm{GD}} = 12\\text{cm} \\implies \\overline{\\mathrm{AP}} = \\dfrac{1}{2} \\times 12 = 6\\text{cm}$)\n\n1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$"
+    "solution": "$\\triangle\\mathrm{ABC}$에서 중선 $\\overline{\\mathrm{AD}}$, 무게중심 $\\mathrm{G}$, 두 변의 중점연결선 $\\overline{\\mathrm{EF}}$와 $\\overline{\\mathrm{AD}}$의 교점 $\\mathrm{P}$에 대하여 각 물음에 답한다.\n\n1. 그림에서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$ 위에, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$ 위에 있으며, $\\mathrm{B}, \\mathrm{G}, \\mathrm{E}$와 $\\mathrm{C}, \\mathrm{G}, \\mathrm{F}$는 각각 한 직선 위에 있다. 무게중심 $\\mathrm{G}$는 세 중선이 만나는 점이므로 $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{CF}}$는 각각 중선이다. 따라서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$의 중점, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$의 중점이다.\n삼각형의 중점연결정리에 의해 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이다. 따라서 $\\triangle\\mathrm{ABD}$에서 변 $\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{F}$를 지나 변 $\\overline{\\mathrm{BD}}$와 평행한 선분이 $\\overline{\\mathrm{AD}}$와 만나는 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이다. 즉, $\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$이다.\n2. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$에서 $\\overline{\\mathrm{AG}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{GD}} = \\dfrac{1}{3}\\overline{\\mathrm{AD}}$이다.\n3. $\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$이다.\n\n1단계: 1)번 답안\n점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이므로:\n$\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{2}$배)\n\n2단계: 2)번 답안\n점 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} = \\dfrac{2}{2+1}\\overline{\\mathrm{AD}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{2}{3}$배)\n\n3단계: 3)번 답안\n$\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}} - \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\left(\\dfrac{4}{6} - \\dfrac{3}{6}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{6}$배)\n\n4단계: 4)번 답안\n세 선분의 길이의 비를 통분하여 계산하면:\n$\\overline{\\mathrm{AP}} : \\overline{\\mathrm{PG}} : \\overline{\\mathrm{GD}} = \\dfrac{3}{6} : \\dfrac{1}{6} : \\dfrac{2}{6} = 3 : 1 : 2$\n\n5단계: 5)번 답안\n$\\overline{\\mathrm{GD}} = 4\\text{cm}$일 때, 비례식 $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{GD}} = 3 : 2$에 대입하면:\n$\\overline{\\mathrm{AP}} : 4 = 3 : 2 \\implies 2\\overline{\\mathrm{AP}} = 12 \\implies \\overline{\\mathrm{AP}} = 6\\text{cm}$\n(또는 $\\overline{\\mathrm{AD}} = 3 \\times \\overline{\\mathrm{GD}} = 12\\text{cm} \\implies \\overline{\\mathrm{AP}} = \\dfrac{1}{2} \\times 12 = 6\\text{cm}$)\n\n1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변의 중점 F, E를 이은 선분 EF와 중선 AD가 점 P에서 만나고 무게중심 G가 AD 위에 있다. 세 선분 AP, PG, GD에 3k, k, 2k가 적혀 있고 중점으로 나뉜 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "F, E는 AB, AC의 중점이므로 중점연결정리에 의해 EF∥BC이고 △ABD에서 F를 지나 BD에 평행한 선분 FP는 AD를 이등분하여 AP=(1/2)AD이다. G는 무게중심이므로 AG=(2/3)AD이고 PG=AG−AP=(2/3−1/2)AD=(1/6)AD이다. 따라서 AP:PG:GD=3:1:2이다(그림에서 k=AD/6). 그림의 각 길이는 이 비를 나타낸다.",
+    "solutionImageSize": "full"
   }
 ]
 };

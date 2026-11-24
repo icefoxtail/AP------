@@ -1,0 +1,64 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      -1,
+      13,
+      -1,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 8,
+        "y": 4
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "8",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "x": "8",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=√(2x) 위의 점 A에서 x축에 내린 수선의 발이 B이고, O를 중심으로 B를 지나는 원의 반지름은 OB, A를 지나는 원의 반지름은 OA이다. 예: a=8일 때 A(8,4), B(8,0)이고 OA−OB=4√5−8이다. b²=2a를 쓰면 f(a)=√(a²+2a)−a=2a/(√(a²+2a)+a)이므로 a가 무한히 커질 때 f(a)는 1에 가까워진다. 따라서 답은 3/2이다.",
+  "accessibilityDescription": "곡선 y=√(2x) 위의 점 A(8,4), x축 위의 점 B(8,0), 원점 O가 표시되어 있다. A와 B는 같은 x좌표 8 위에 있다.",
+  "newVisualInformation": [
+    "곡선 y=√(2x)",
+    "점 A(8,4), B(8,0), O(0,0)",
+    "A에서 x축으로 내린 수선의 발 B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 곡선 $y=\\sqrt{2x}$ 위의 점 $\\mathrm{A}(a, b)$에서 $x$축에 내린 수선의 발을 $\\mathrm{B}$라 하자. 원점 $\\mathrm{O}$가 중심이고, 점 $\\mathrm{A}$와 점 $\\mathrm{B}$를 각각 지나는 두 원의 반지름의 길이의 차를 $f(a)$라 할 때, $\\lim_{a \\to \\infty} \\frac{3}{2}f(a)$의 값은? [10.0점]\n<img src=\"assets/images/20_금당고_2학기_중간_고2_수학II/q21.png\" alt=\"20_금당고_2학기_중간_고2_수학II Q21\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

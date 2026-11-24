@@ -1,0 +1,43 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "12",
+      "-2",
+      "-4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -11,
+      10
+    ]
+  },
+  "caption": "사차곡선의 두 극소와 극대 높이를 원점 높이와 비교하여 수평선의 교점 위치를 판단한다.",
+  "accessibilityDescription": "사차곡선의 두 극소와 극대 높이를 원점 높이와 비교하여 수평선의 교점 위치를 판단한다.",
+  "newVisualInformation": [
+    "사차곡선의 두 극소와 극대 높이를 원점 높이와 비교하여 수평선의 교점 위치를 판단한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사차방정식 $x^4-4x^3-2x^2+12x-k=0$의 서로 다른 네 근 $\\alpha,\\beta,\\gamma,\\delta$에 대하여 $\\alpha<0<\\beta<\\gamma<\\delta$일 때, 모든 정수 $k$의 개수를 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "수평선 임의 k의 근은 중첩근호가 될 수 있어 곡선 자체의 극값과 원점 위치를 보이는 지원 경로 선택. 최종정수개수6 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

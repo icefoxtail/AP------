@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-1/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "②는 y=x−1과 y=x−1/2인서로다른평행선. 공통점없어해없음,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식 중 해가 없는 것을 고르면? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "②는y=x−1과y=x−1/2인서로다른평행선. 공통점없어해없음,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "②는y=x−1과y=x−1/2인서로다른평행선. 공통점없어해없음,정답②."
+  ]
+}

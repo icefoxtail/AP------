@@ -252,7 +252,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 대각선이 교점에서 수직으로 만나는 마름모가 있고, 교점에서 한 꼭짓점으로 가는 각이 45로 표시되어 있다.",
+    "solutionImageCaption": "마름모의 두 대각선은 서로 수직으로 이등분된다. 두 대각선의 길이까지 같으면 교점에서 네 꼭짓점까지의 거리가 모두 같아진다. 네 작은 삼각형이 모두 직각이등변삼각형이므로 마름모의 네 각이 직각이 된다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

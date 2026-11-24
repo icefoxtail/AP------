@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      3,
+      -6,
+      3
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=ax+b"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=ax+b의 그래프가 x축과 점 (-2, 0)에서, y축과 점 (0, -4)에서 만나는 모습을 나타낸 것이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 아래로 향하는 직선이 그려져 있고, x축과 만나는 점 (-2, 0)과 y축과 만나는 점 (0, -4)이 표시되어 있다.",
+  "newVisualInformation": [
+    "x축과 만나는 점 (-2, 0)",
+    "y축과 만나는 점 (0, -4)",
+    "오른쪽 아래로 향하는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 $x$축과 점 $(-2, 0)$에서 만나고 $y$축과 점 $(0, -4)$에서 만날 때, 두 수 $a$와 $b$의 값을 각각 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

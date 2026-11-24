@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "formula": "(0)*x+(0)",
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "2"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "-4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "가로좌표 2에서 세로좌표 −4와 −1이 모두 대응하므로 수직선 x=2는 함수 그래프가 아니다. 수평선은 좌표축 보조이다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직선의 그래프가 함수의 그래프라고 할 수 없는 것은?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

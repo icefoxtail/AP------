@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "0",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "0",
+        "y": "8"
+      },
+      {
+        "id": "N",
+        "x": "-4/3",
+        "y": "184/27"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "0",
+        "8"
+      ],
+      "N": [
+        "-4/3",
+        "184/27"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "-4",
+        "intercept": "0",
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "접점의 x좌표를 t라 하면 접선의 기울기는 k=−3t²−4t이고, 접점이 직선 y=kt 위에 있으므로 −t³−2t²+8=kt이다. 대입하면 t³+t²+4=0이고 (t+2)(t²−t+2)=0에서 실근은 t=−2이다. 따라서 k=−3×4−4×(−2)=−4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "삼차곡선 y=−x³−2x²+8이 원점을 지나는 직선 t와 x=−2에서 접하고 x=2에서 다시 만난다. 곡선의 꼭짓점 M(0, 8)과 N(−4/3, 184/27)이 표시되어 있다.",
+  "newVisualInformation": [
+    "삼차곡선 y=−x³−2x²+8",
+    "원점을 지나는 접선 t와 접점 (−2, 8), 교점 (2, −8)",
+    "극값 점 M, N의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=kx$가 곡선 $y=-x^3-2x^2+8$에 접할 때, 상수 $k$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

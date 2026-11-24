@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -1,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "주어진 식에 y=0을 넣으면 f(0)=0이다. 식을 y에 대하여 미분하고 y=0을 넣으면 f'(x)=f'(0)=2이므로 f(x)=2x이다. 따라서 f(1)=2이고 답은 ⑤이다.",
+  "accessibilityDescription": "원점을 지나고 기울기가 2인 직선이 그려져 있으며, 원점과 점 (1,2)가 표시되어 있다.",
+  "newVisualInformation": [
+    "원점을 지나는 기울기 2의 직선을 그림",
+    "점 (1,2)의 좌표를 표시함"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미분가능한 함수 $f(x)$가 모든 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키고, $f'(0)=2$일 때, $f(1)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

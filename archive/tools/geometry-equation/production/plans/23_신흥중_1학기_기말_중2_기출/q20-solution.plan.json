@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      19
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "19"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "15"
+      },
+      {
+        "id": "P2",
+        "x": "19",
+        "y": "100"
+      }
+    ],
+    "formula": "5*x + 5",
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    }
+  },
+  "caption": "가열 전 5°C,2분마다 10°C로 분당 5°C. 실제 끓기전 0≤x≤19분에서(19,100)에 도달,정답 19분. 시간/온도는 다른 양으로 세로 1/5배율.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "비커에 담긴 $5^\\circ\\mathrm{C}$의 물을 가열하면서 온도를 재었더니 $2$분마다 $10^\\circ\\mathrm{C}$씩 일정하게 올라갔다. 물은 $100^\\circ\\mathrm{C}$에서 끓는데, 이 물이 끓게 되는 것은 가열하기 시작하여 몇 분이 지난 후인가?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가열 전5°C,2분마다10°C로 분당5°C. 실제 끓기전0≤x≤19분에서(19,100)에 도달,정답19분. 끓은 뒤의 온도 상승은 주장하지 않는다. 시간/온도는 다른 양으로 세로1/5배율.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가열 전5°C,2분마다10°C로 분당5°C. 실제 끓기전0≤x≤19분에서(19,100)에 도달,정답19분. 시간/온도는 다른 양으로 세로1/5배율."
+  ]
+}

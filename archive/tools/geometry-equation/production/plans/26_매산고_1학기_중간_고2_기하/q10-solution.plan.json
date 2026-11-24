@@ -1,0 +1,160 @@
+{
+  "capability": "solid-figure-v1",
+  "solidCaption": {
+    "text": "수직 관계의 반례"
+  },
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "K",
+        "at": [
+          -0.7,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "L",
+        "at": [
+          2.4,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "M",
+        "at": [
+          0,
+          0,
+          2.1
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "N",
+        "at": [
+          1.7,
+          1.7,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "O",
+        "extent": {
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "u": [
+            2.9,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            2.1,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "O",
+          "L"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "O",
+          "M"
+        ]
+      },
+      {
+        "id": "n",
+        "name": "n",
+        "through": [
+          "O",
+          "N"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "K",
+          "M"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "N",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "L",
+          "O",
+          "N"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      }
+    ]
+  },
+  "caption": "ㄱ은 서로 다른 두 평면 α, β가 같은 직선 l에 모두 수직이면 두 평면의 수직 방향이 같아 α와 β가 평행하므로 참이다. ㄴ은 그림에서 l과 m, m과 n이 각각 수직이어도 l과 n이 45도를 이루므로 거짓이다. ㄷ은 직선 l에 수직인 평면 α와 l이 평행한 평면 β가 있을 때 β가 γ와 수직이어도 α와 γ가 평행해지지 않으므로 거짓이다. 따라서 옳은 것은 ㄱ뿐이므로 답은 ①이다.",
+  "accessibilityDescription": "수평인 평면 α 위의 한 점에서 세 직선 l, m, n이 만난다. m은 평면 α에 수직으로 서 있고, l과 m 사이와 n과 m 사이에 각각 직각 표시가 있으며, l과 n 사이에는 45도 각이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 세 직선 l, m, n과 서로 다른 세 평면 α, β, γ에 대하여 보기에서 옳은 것을 모두 고른 것은? (4.5점) ㄱ. l⊥α이고 l⊥β이면 α∥β ㄴ. l⊥m이고 m⊥n이면 l⊥n이다. ㄷ. 직선 l과 수직인 평면 α에 대하여 l∥β이고 β⊥γ이면 α∥γ이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "choices",
+      "condition": "① ㄱ ② ㄱ, ㄴ ③ ㄱ, ㄷ ④ ㄴ, ㄷ ⑤ ㄱ, ㄴ, ㄷ",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "평면 α 위의 한 점 O에서 직선 l, m, n이 만나고, m은 α에 수직이다. l과 m, n과 m 사이에는 직각 표시가 있고, l과 n 사이에는 45도 각이 표시되어 l과 n이 수직이 아님을 보인다."
+  ]
+}

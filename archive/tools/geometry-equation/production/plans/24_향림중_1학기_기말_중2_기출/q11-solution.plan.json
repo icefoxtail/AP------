@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-5/8"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-14/3",
+          "2/3"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "④의 두 식 5x+8y4,2x−3y14가 실제 (4,−2)에서 만난다. 다른 보기는 적어도 한 식 불일치. 정답 ④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식에서 $x=4, y=-2$를 해로 갖는 것은? [3점] 보기: ['$\\\\begin{cases}x+y=2\\\\\\\\3x+y=8\\\\end{cases}$', '$\\\\begin{cases}2x-y=10\\\\\\\\4x+5y=4\\\\end{cases}$', '$\\\\begin{cases}-x+3y=-1\\\\\\\\6x-3y=1\\\\end{cases}$', '$\\\\begin{cases}5x+8y=4\\\\\\\\2x-3y=14\\\\end{cases}$', '$\\\\begin{cases}4x-4y=20\\\\\\\\7x+8y=14\\\\end{cases}$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④의두식5x+8y4,2x−3y14가실제(4,−2)에서만난다. 다른보기는적어도한식불일치. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "④의두식5x+8y4,2x−3y14가실제(4,−2)에서만난다. 다른보기는적어도한식불일치. 정답④."
+  ]
+}

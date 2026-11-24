@@ -369,7 +369,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선과 점 T에서 접하는 직선 t, 포물선 위의 두 점 A, B를 지나는 할선 s를 나타낸 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x²-4x+5, h=1/2일 때의 그림이다. 접선 t는 T(1,2)에서 기울기 f′(1)=-2이고 할선 s는 A(0,5)=(1-2h, f(1-2h))와 B(3/2,5/4)=(1+h, f(1+h))를 지난다. 분자 f(1-2h)-f(1+h)를 3h로 나눈 값은 두 점의 기울기에 관한 값이며 h→0이면 -f′(1)로 수렴해 주어진 극한은 -f′(1)=2이다. 따라서 f′(1)=-2이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

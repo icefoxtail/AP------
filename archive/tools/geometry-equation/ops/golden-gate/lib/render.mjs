@@ -8,6 +8,7 @@ import {sha256, mkdirp, readJson, writeJson, run, sleep} from './util.mjs';
 import {GE} from './kinds.mjs';
 import {resolveChrome} from './env-fingerprint.mjs';
 import {envErrorInText, statusChainOf} from './judge.mjs';
+import {clipSignatures} from './clip.mjs';
 
 // What a solo retry can cure: the machine's timeouts and crashed processes. Load errors of the page or an image are not retried (they repeat).
 const TRANSIENT = /WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed|ENOMEM|EMFILE/i;
@@ -47,7 +48,11 @@ export function loadResult(root, itemKey) {
   const dir = storeDir(root, itemKey);
   try {
     const r = readJson(path.join(dir, 'record.json'));
-    if (r.svgSha) r.svgPath = path.join(dir, 'solution.svg');
+    if (r.svgSha) {
+      r.svgPath = path.join(dir, 'solution.svg');
+      // a result stored before the clip check existed: read it from the stored figure
+      if (r.clip === undefined) { try { r.clip = clipSignatures(fs.readFileSync(r.svgPath, 'utf8')); } catch { r.clip = []; } }
+    }
     return r;
   } catch { return null; }
 }
@@ -72,7 +77,8 @@ export function harvest(outDir, name) {
     statusChain: r.status === 'FAILED' ? statusChainOf(r.detailFull ?? r.detail) : undefined,
     envError: r.status === 'FAILED' ? envErrorInText(`${r.code ?? ''} ${r.detailFull ?? ''} ${typeof r.detail === 'string' ? r.detail : ''}`) : undefined,
     sizeClass: r.sizeClass ?? null, solutionImageScale: r.solutionImageScale ?? null,
-    capability: r.capability ?? null, svgSha: svg ? sha256(svg) : null, svgBytes: svg ? svg.length : 0
+    capability: r.capability ?? null, svgSha: svg ? sha256(svg) : null, svgBytes: svg ? svg.length : 0,
+    clip: svg ? clipSignatures(svg.toString('utf8')) : undefined // labels/shapes outside the frame (lib/clip.mjs); only a NEW one fails the gate
   };
   if (r.status === 'ARCHIVE_BOUND' && !svg) { rec.status = 'FAILED'; rec.code = 'SVG_MISSING'; rec.envError = 'SVG_MISSING'; rec.detail = 'result says ARCHIVE_BOUND but no svg was written'; }
   return {rec, svg};
@@ -91,7 +97,7 @@ function attemptDurations(outDir) {
 }
 
 // One production process over a list of items (in a snapshot, holding one slot).
-async function runChunk({snap, items, workRoot, tag, env, lockDir, slots, log, idleMs, totalMs}) {
+async function runChunk({snap, items, workRoot, tag, env, lockDir, slots, log, idleMs, totalMs, examBatch = 0}) {
   const packet = path.join(workRoot, tag, 'packet');
   const outDir = path.join(workRoot, tag, 'out');
   mkdirp(outDir);
@@ -104,7 +110,9 @@ async function runChunk({snap, items, workRoot, tag, env, lockDir, slots, log, i
   const started = Date.now();
   let done = 0;
   try {
-    const r = await run(process.execPath, [path.join(snap.dir, GE, 'production/render-plan.mjs'), '--manifest', packet, '--out', outDir], {
+    // --exam-batch N (production/exam-batch.mjs): the figures of one exam share one open Archive page; the results are the same as one by one
+    const batchArgs = examBatch >= 2 ? ['--exam-batch', String(examBatch)] : [];
+    const r = await run(process.execPath, [path.join(snap.dir, GE, 'production/render-plan.mjs'), '--manifest', packet, '--out', outDir, ...batchArgs], {
       cwd: snap.dir, env, idleMs, timeoutMs: totalMs,
       onLine: () => { done++; log(`  [${tag}] ${done}/${items.length} items finished`); }
     });
@@ -126,7 +134,7 @@ export function childEnv({cacheRoot, depsDir}) {
 }
 
 // Render `itemDirs` of a snapshot. Returns {results: Map(dir -> record), stats}.
-export async function renderItems({snap, itemDirs, envKey, resultsRoot, noCache = false, slots = 1, lockDir, chunkSize = 10, retries = 2, log = () => {}, cacheRoot, depsDir, idleMs = 20 * 60e3, totalMs = 150 * 60e3, label = 'render'}) {
+export async function renderItems({snap, itemDirs, envKey, resultsRoot, noCache = false, slots = 1, lockDir, chunkSize = 10, retries = 2, log = () => {}, cacheRoot, depsDir, idleMs = 20 * 60e3, totalMs = 150 * 60e3, label = 'render', examBatch = 0}) {
   if (!envKey) throw new Error('renderItems needs the environment fingerprint (envKey): a stored result is only valid for the environment that made it');
   const byDir = new Map(snap.items.map(i => [i.dir, i]));
   const results = new Map();
@@ -154,13 +162,18 @@ export async function renderItems({snap, itemDirs, envKey, resultsRoot, noCache 
   const runList = async (list, tagBase, concurrency) => {
     const count = Math.max(Math.ceil(list.length / chunkSize), Math.min(concurrency, list.length));
     const chunks = Array.from({length: count}, () => []);
-    list.forEach((it, i) => chunks[i % count].push(it));
+    if (examBatch >= 2) {
+      // one exam's figures in the same chunk (they share the Archive page), in exam order
+      const bySource = [...list].sort((a, b) => String(a.sourcePath).localeCompare(String(b.sourcePath)) || a.dir.localeCompare(b.dir));
+      const per = Math.ceil(bySource.length / count);
+      bySource.forEach((it, i) => chunks[Math.min(count - 1, Math.floor(i / per))].push(it));
+    } else list.forEach((it, i) => chunks[i % count].push(it));
     const n = Math.min(concurrency, count);
     stats.chunks += count;
     const queue = chunks.map((c, i) => ({c, tag: `${tagBase}${i}`}));
     const worker = async () => {
       for (let job = queue.shift(); job; job = queue.shift()) {
-        const r = await runChunk({snap, items: job.c, workRoot, tag: job.tag, env, lockDir, slots, log, idleMs, totalMs});
+        const r = await runChunk({snap, items: job.c, workRoot, tag: job.tag, env, lockDir, slots, log, idleMs, totalMs, examBatch});
         if (r.timedOut) { stats.timedOutChunks++; log(`  [${job.tag}] chunk ${r.timedOut} timeout, harvesting finished items`); }
         const dur = attemptDurations(r.outDir);
         for (const it of job.c) {

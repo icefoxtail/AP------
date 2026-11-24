@@ -1,0 +1,111 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      7,
+      -3,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "11/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-19/10",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "5",
+          "y": "6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "2"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=2의 (x−2)제곱−2의 역함수는 g(x)=로그₂(x+2)+2이다. 부등식은 f(x)<g(x)로 정리되고, 정수 x=−1, 0, 1, 2, 3, 4에서 성립한다. x가 5 이상이면 f의 증가폭이 더 커져 f(x)>g(x)가 유지된다. 따라서 답은 6이다.",
+  "accessibilityDescription": "파란 지수곡선 f, 주황 로그곡선 g, 점선 y=x가 그려져 있다. 점 P(−1,2), Q(4,2), R(5,6)과 가로선 y=2가 표시되어 있다.",
+  "newVisualInformation": [
+    "f와 g의 교점 근처에서 부등식 f(x)<g(x) 확인",
+    "정수해 −1, 0, 1, 2, 3, 4",
+    "경계값 P(−1,2), Q(4,2), R(5,6)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형1] 함수 $f(x)=2^{x-2}-2$와 그 역함수 $g(x)=f^{-1}(x)$에 대하여 $\\left(\\dfrac{1}{2}\\right)^{f(x)} > 2^{-g(x)}$를 만족하는 정수 $x$의 개수를 구하는 과정을 서술하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA3A4",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA4A1",
+      "refs": [
+        "A4",
+        "A1"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2B3",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3B4",
+      "refs": [
+        "B3",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB4B1",
+      "refs": [
+        "B4",
+        "B1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "B1",
+              "B4",
+              "A4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rAB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "B1",
+              "A2",
+              "A3",
+              "B4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "GREEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A2",
+              "B2",
+              "B3",
+              "A3"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lA",
+        "ownerSegment": "sA1A2",
+        "text": "A"
+      },
+      {
+        "id": "lB",
+        "ownerSegment": "sB1B2",
+        "text": "B"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 사건 A, B가 독립이면 P(A∩B)=P(A)P(B)이고 A와 B의 여사건도 독립이다. 따라서 A와 B의 여사건이 함께 일어날 확률은 P(A)P(B의 여사건)이고, P(A의 여사건|B)=P(A의 여사건)=1−P(A)이다. 반면 P(A|B)=P(A)와 P(B|A)=P(B)는 일반적으로 같지 않고, P(A∪B)=P(A)+P(B)도 항상 성립하지 않는다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "왼쪽의 파란 직사각형과 오른쪽의 초록 직사각형이 가운데에서 겹쳐 있고, 겹친 부분은 주황색으로 칠해져 있다. 두 직사각형의 아래쪽 변에 각각 A와 B가 적혀 있다.",
+  "newVisualInformation": [
+    "사건 A와 B를 나타내는 두 직사각형",
+    "겹친 부분과 양쪽만의 부분을 색으로 구분",
+    "독립과 여사건의 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A$, $B$가 서로 독립일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $A\\ne\\varnothing$, $B\\ne\\varnothing$) (4.1점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $P(A\\cup B)=P(A)+P(B)$</td></tr><tr><td>ㄴ. $P(A\\cap B^c)=P(A)P(B^c)$</td></tr><tr><td>ㄷ. $P(A^c\\mid B)=1-P(A)$</td></tr><tr><td>ㄹ. $P(A\\mid B)=P(B\\mid A)$</td></tr></tbody></table></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

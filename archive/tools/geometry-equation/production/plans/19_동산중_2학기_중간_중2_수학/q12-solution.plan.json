@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1481",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7059",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "value": 25,
+        "label": "25",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "I",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ax",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "value": 35,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "aBIC",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 125,
+        "label": "125",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "caption": "내심이므로 BI와 CI는 각각 ∠B와 ∠C의 이등분선이다. ∠IBC=25°, ∠ICB=30°에서 ∠B=50°, ∠C=60°이므로 ∠A=70°이고 x=∠BAI=35°이다. 또 ∠BIC=90°+35°=125°이므로 x+∠BIC=35°+125°=160°이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고 A, B, C에서 I로 선분이 그어져 있다. B의 각 25°, C의 각 30°, 꼭짓점 A의 x, I의 각 125°가 표시되어 있다.",
+  "newVisualInformation": [
+    "내심 I를 잇는 세 선분",
+    "∠IBC=25°, ∠ICB=30°",
+    "∠BAI=x, ∠BIC=125°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 아래 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심일 때, $x$와 $\\angle\\mathrm{BIC}$에 대해 $x+\\angle\\mathrm{BIC}$를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q12.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

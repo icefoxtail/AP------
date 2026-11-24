@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.4,
+      3.4
+    ],
+    "viewport": [
+      -0.6,
+      3.6,
+      -3,
+      3
+    ],
+    "formula": "x*(x-1)*(x-3)",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "(4-sqrt(7))/3",
+        "y": "(-20+14*sqrt(7))/27",
+        "marker": "NONE"
+      },
+      {
+        "id": "E1",
+        "x": "(4+sqrt(7))/3",
+        "y": "(-20-14*sqrt(7))/27",
+        "marker": "NONE"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1",
+        "O"
+      ]
+    },
+    "regions": [
+      {
+        "id": "Sone",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "Stwo",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "3",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예로 f(x)=x(x−2)², g(x)=x를 잡으면 h′(x)=f(x)−g(x)=x(x−1)(x−3)이다. 이때 α=1, β=3이고 S₁=5/12, S₂=8/3이므로 S₁<S₂이다. h′의 부호가 음, 양, 음, 양으로 바뀌어 h는 x=0에서도 극솟값을 가진다. 참인 것은 ㄱ, ㄷ, ㄹ 세 개이므로 답은 ③이다.",
+  "accessibilityDescription": "곡선 y=x(x−1)(x−3)이 x축과 만나는 세 점을 지나고, 0과 1 사이와 1과 3 사이의 영역이 각각 S₁, S₂로 색칠되어 있다.",
+  "newVisualInformation": [
+    "h′=f−g의 예시 곡선과 두 영역 S₁, S₂를 표시하고, x=0에서도 극값이 생기는 부호 변화를 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "19. 삼차함수 $f(x)$와 일차함수 $g(x)$에 대하여 양의 실수 $\\alpha, \\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1$, $S_2$ ($S_1 < S_2$)라고 하고 $h(x) = \\int_0^x (f(t)-g(t))dt$ 라고 할 때, <보기>에서 옳은 것의 개수는? [5.0점]\n(단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x)$, $y=g(x)$ 모두 원점을 지난다.)\n\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며, 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=\\alpha, x=\\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2 = 2h(\\alpha)-h(\\beta)$\nㄹ. $f'(\\frac{\\alpha+\\beta}{2}) + f(\\frac{\\alpha+\\beta}{2}) = 0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

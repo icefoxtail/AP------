@@ -6,7 +6,10 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import os from 'node:os';
 import {spawnSync} from 'node:child_process';
-import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf, decide, bytesCompared, removedRow, addedRow, testsFail} from './lib/judge.mjs';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf, decide, bytesCompared, removedRow, addedRow, testsFail, FAIL_VERDICTS, LIST_VERDICTS} from './lib/judge.mjs';
+import {clipSignatures} from './lib/clip.mjs';
+import {narrowSelection, spread} from './lib/related.mjs';
+import {sheetPairs, chunkPairs, sheetHtml} from './lib/sheet.mjs';
 import {chooseItems} from './lib/select.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {
@@ -37,7 +40,7 @@ test('verdicts: identical bytes are SAME, changed bytes DIFFERENT, size fields c
   assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {solutionImageScale: 85})).verdict, 'DIFFERENT');
 });
 
-test('verdicts: pass to fail is REGRESSED, fail to pass and same-code failures are listed, other changes fail', () => {
+test('verdicts: pass to fail is REGRESSED, fail to pass, same-code failures and changed failures are listed, a run that could not run fails', () => {
   assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'X'})).verdict, 'REGRESSED');
   assert.equal(compareItem('i', rec('FAILED', {code: 'X'}), rec('ARCHIVE_BOUND')).verdict, 'FIXED');
   assert.equal(compareItem('i', rec('FAILED', {code: 'X'}), rec('FAILED', {code: 'X'})).verdict, 'BOTH_FAIL_SAME');
@@ -52,11 +55,64 @@ test('summary: failing verdicts fail the gate, listed verdicts do not, and they 
   const s = summarize(rows);
   assert.equal(s.pass, true); assert.equal(s.total, 3); assert.equal(s.listed.length, 2);
   rows.push(compareItem('d', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)})));
+  assert.equal(summarize(rows).pass, true, 'a changed figure (DIFFERENT) is information, not a failure');
+  assert.equal(summarize(rows).counts.DIFFERENT, 1);
+  rows.push(compareItem('e', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'STAT_LABEL_OUT_OF_BOUNDS'})));
   assert.equal(summarize(rows).pass, false);
-  assert.equal(summarize([]).pass, false); // nothing compared is not a pass; the CLI reports "nothing rendered" separately
+  assert.equal(summarize([]).pass, true); // nothing broke; "nothing rendered" is reported by decide()
 });
 
-test('expected file: only lines with a reason count, and an expected change that did not happen fails', () => {
+test('2026-11-24 verdicts: only a broken figure fails; a changed figure, a minor finding, a removed item are listed', () => {
+  const diff = compareItem('i', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}));
+  assert.equal(diff.verdict, 'DIFFERENT'); assert.equal(FAIL_VERDICTS.has('DIFFERENT'), false); assert.equal(LIST_VERDICTS.has('DIFFERENT'), true);
+  // the head cannot draw a figure the base drew: a cut-off is always a break, whatever the score says
+  for (const code of ['STAT_LABEL_OUT_OF_BOUNDS', 'TEXT_CLIPPED', 'ARCHIVE_PHONE_DISPLAY_FAIL:TEXT_CLIPPED', 'GEOMETRY_VIEWPORT_CLIPPING']) {
+    const v = compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code}));
+    assert.equal(v.verdict, 'REGRESSED', code); assert.equal(v.breakKind, 'cut-off', code);
+  }
+  // a block or a measurement the score cannot judge is a break; findings the publication score still passes are MINOR
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'MISSING_GLYPH'})).verdict, 'REGRESSED');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'UNSUPPORTED_DISPLAY_ENVELOPE'})).verdict, 'REGRESSED');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'LAYOUT_INVENTORY_INCOMPLETE'})).verdict, 'REGRESSED');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'STAT_LABELS_TOO_CLOSE'})).verdict, 'MINOR');
+  assert.equal(FAIL_VERDICTS.has('MINOR'), false);
+  // a crash, a timeout and a failed measurement are the gate's own failure
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('NOT_RUN')).verdict, 'NOT_RUN');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'WORKER_TIMEOUT'})).verdict, 'NOT_RUN');
+  assert.equal(FAIL_VERDICTS.has('NOT_RUN'), true);
+  assert.equal(removedRow('gone').verdict, 'REMOVED'); assert.equal(FAIL_VERDICTS.has('REMOVED'), false);
+});
+
+test('2026-11-24 a figure the head still draws but with a label or shape outside its frame is CLIPPED, only when the base did not have it', () => {
+  const withClip = (clip, more = {}) => rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64), clip, ...more});
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND', {clip: []}), withClip(['label A-name'])).verdict, 'CLIPPED');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND', {clip: ['label A-name']}), withClip(['label A-name'])).verdict, 'DIFFERENT', 'it was cut off on the base already');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND', {clip: ['label A-name']}), withClip(['label A-name', 'label B-name'])).verdict, 'CLIPPED');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND', {clip: ['label A-name']}), withClip([])).verdict, 'DIFFERENT', 'a cut-off that went away is not a failure');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')).verdict, 'SAME');
+  const clipped = compareItem('i', rec('ARCHIVE_BOUND', {clip: []}), withClip(['label A-name']));
+  assert.match(clipped.reason, /outside its frame/); assert.equal(summarize([clipped]).pass, false); assert.equal(summarize([clipped]).failures.length, 1);
+});
+
+test('2026-11-24 decide(): only a broken figure is exit 1; nothing to compare is exit 0; an empty explicit selection is exit 2', () => {
+  const same = compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'));
+  const diff = compareItem('b', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}));
+  const broke = compareItem('c', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'TEXT_CLIPPED'}));
+  const fr = () => rec('FAILED', {code: 'UNSUPPORTED_DISPLAY_ENVELOPE', stage: 'compose', detailFull: '{"status":"COMPOSITE_PANEL_NOT_COMPOSED","detail":{"status":"X"}}'});
+  const both = compareItem('d', fr(), fr());
+  const dec = (rows, more = {}) => decide({rows, summary: summarize(rows), changedCount: 1, ...more});
+  assert.equal(dec([same, diff]).exit, 0); assert.equal(dec([same, diff]).outcome, 'PASS');
+  assert.equal(dec([same, diff, broke]).exit, 1);
+  assert.equal(dec([both]).exit, 0); assert.match(dec([both]).reason, /no figure was drawn on both sides/);
+  assert.equal(dec([]).exit, 0); assert.equal(dec([]).outcome, 'UNAFFECTED'); assert.match(dec([]).reason, /no golden item is related/);
+  assert.match(dec([], {allChangesIgnored: true}).reason, /outside the render/);
+  assert.match(dec([], {changedCount: 0}).reason, /do not differ/);
+  assert.equal(dec([], {explicitSelection: true}).exit, 2);
+  assert.equal(dec([same], {reusedHead: true}).outcome, 'UNAFFECTED');
+  assert.equal(dec([broke], {reusedHead: true}).exit, 1, 'a failure still fails');
+});
+
+test('expected file (annotation only): only lines with a reason count; an expected change that did not happen is a note, never a failure', () => {
   const bad = parseExpected('item1 DIFFERENT\nitem2 DIFFERENT short\nitem3 MAYBE a long enough reason here\n');
   assert.equal(bad.entries.length, 0); assert.equal(bad.errors.length, 3);
   const exp = parseExpected('# comment\n\nitem1 DIFFERENT x-axis dimension moved up by design (commit cc76160b8d)\nitem2 DIFFERENT intended change that never happened\n');
@@ -64,12 +120,15 @@ test('expected file: only lines with a reason count, and an expected change that
   const rows = [compareItem('item1', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)})), compareItem('item2', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'))];
   const applied = applyExpected(rows, exp);
   assert.equal(applied.accepted.length, 1); assert.match(applied.errors.join('\n'), /item2.*did not change/);
-  assert.equal(summarize(rows, applied).pass, false);
+  assert.equal(summarize(rows, applied).pass, true, 'a note about the expected file never fails the gate');
   const ok = applyExpected(rows.slice(0, 1), parseExpected('item1 DIFFERENT x-axis dimension moved up by design\n'));
   assert.equal(summarize(rows.slice(0, 1), ok).pass, true);
   assert.equal(rows[0].accepted, 'x-axis dimension moved up by design');
-  const wrong = applyExpected([compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'X'}))], parseExpected('i DIFFERENT this was announced as a plain change\n'));
+  const brokeRows = [compareItem('i', rec('ARCHIVE_BOUND'), rec('FAILED', {code: 'X'}))];
+  const wrong = applyExpected(brokeRows, parseExpected('i DIFFERENT this was announced as a plain change\n'));
   assert.match(wrong.errors.join('\n'), /expected DIFFERENT for i but it is REGRESSED/);
+  const excused = applyExpected(brokeRows, parseExpected('i REGRESSED a broken figure is not excused by naming it\n'));
+  assert.equal(summarize(brokeRows, excused).pass, false, 'naming a broken figure in the expected file does not excuse it');
   const missing = applyExpected(rows, parseExpected('zzz DIFFERENT an item that is not in this run at all\n'));
   assert.match(missing.errors.join('\n'), /not part of this run/);
 });
@@ -185,11 +244,12 @@ test('engine test comparison: names that hold the snapshot path match across bas
 // ---- a green gate must have compared something -------------------------------------------------------------------------------
 const failRec = (more = {}) => rec('FAILED', {code: 'UNSUPPORTED_DISPLAY_ENVELOPE', stage: 'compose', detailFull: '{"status":"COMPOSITE_PANEL_NOT_COMPOSED","detail":{"status":"X"}}', ...more});
 
-test('209 identical failures are not a pass: no bytes compared means the gate cannot vouch', () => {
+test('209 identical failures break nothing, but no bytes were compared and the run says so', () => {
   const rows = items.map(i => compareItem(i.dir, failRec(), failRec()));
   assert.equal(rows.every(r => r.verdict === 'BOTH_FAIL_SAME'), true);
   const s = summarize(rows);
-  assert.equal(s.total, 209); assert.equal(s.byteCompared, 0); assert.equal(s.pass, false);
+  assert.equal(s.total, 209); assert.equal(s.byteCompared, 0); assert.equal(s.pass, true);
+  assert.match(decide({rows, summary: s, changedCount: 1}).reason, /no figure was drawn on both sides/);
   const cover = evaluate(rows, {kindOf: d => planKinds(plans[d])});
   assert.equal(cover.byteCompared, 0); assert.equal(cover.cannotVouch, true); assert.equal(cover.selected, 209);
 });
@@ -347,44 +407,42 @@ const sameCover = rows => evaluate(rows, {});
 const noSummary = summarize([]);
 
 // ---- 1. an empty selection never says PASS ------------------------------------------------------------------------------------
-test('1: no change, an empty or unknown selection, or an expected-file error never exit 0 with PASS text', () => {
+test('1: no change, an unknown or empty selection, a kind nobody uses: exit 0 UNAFFECTED, exit 2 only for a selection that cannot run', () => {
   const fx = fixture();
-  const run = (args, want, notWord) => { const r = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, ...args]); assert.equal(r.code, want, `${args.join(' ')}\n${r.out}\n${r.err}`); assert.doesNotMatch(r.out, new RegExp(notWord)); return r; };
-  assert.match(run([], 2, 'GOLDEN GATE PASS').out, /CANNOT VOUCH/); // base = head
+  const same = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1]); // base = head: nothing can break, and no snapshot is unpacked for it
+  assert.equal(same.code, 0, same.out + same.err); assert.match(same.out, /UNAFFECTED \(nothing compared\)/); assert.doesNotMatch(same.out, /GOLDEN GATE PASS/);
   const empty = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c2, '--families', '']);
-  assert.equal(empty.code, 2); assert.match(empty.out, /CANNOT VOUCH/); assert.doesNotMatch(empty.out, /GOLDEN GATE PASS/);
+  assert.equal(empty.code, 2); assert.match(empty.out, /CANNOT RUN/); assert.doesNotMatch(empty.out, /GOLDEN GATE PASS/);
   const unknown = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c2, '--families', 'nonsense-kind']);
   assert.equal(unknown.code, 2); assert.match(unknown.out, /unknown --families/);
-  const noKind = cli(fx, ['--base', fx.c.c4, '--head', fx.c.c5]); // a kind change that no golden item uses: nothing selected
-  assert.equal(noKind.code, 2); assert.match(noKind.out, /CANNOT VOUCH/); assert.doesNotMatch(noKind.out, /GOLDEN GATE PASS/);
+  const noKind = cli(fx, ['--base', fx.c.c4, '--head', fx.c.c5]); // a kind change that no golden item uses: nothing is related, nothing can break
+  assert.equal(noKind.code, 0, noKind.out + noKind.err); assert.match(noKind.out, /no golden item is related/); assert.doesNotMatch(noKind.out, /GOLDEN GATE PASS/);
   const bad = path.join(fx.root, 'bad-expected.txt'); fs.writeFileSync(bad, 'itemA DIFFERENT x\n');
-  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', bad]).code, 1); // a wrong expected file is exit 1 whatever the rest says
-  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', path.join(fx.root, 'does-not-exist.txt')]).code, 1);
+  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', bad]).code, 0); // the expected file only annotates: a wrong one is a note
+  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', path.join(fx.root, 'does-not-exist.txt')]).code, 0);
 });
 
-test('1: only "changed files all outside the render and identical render inputs" is UNAFFECTED (exit 0, never the word PASS)', () => {
+test('1: changed files all outside the render are UNAFFECTED (exit 0, never the word PASS)', () => {
   const fx = fixture();
   const r = cli(fx, ['--base', fx.c.c3, '--head', fx.c.c4]); // docs/notes.md only
   assert.equal(r.code, 0, r.out + r.err);
-  assert.match(r.out, /UNAFFECTED \(nothing compared\)/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
+  assert.match(r.out, /UNAFFECTED \(nothing compared/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
   assert.match(r.out.split('\n')[0], /byte compared 0 \/ selected 0/);
-  const d = (more) => decide({rows: [], cover: sameCover([]), summary: noSummary, changedCount: 1, allChangesIgnored: true, inputsIdentical: true, ...more});
+  const d = (more) => decide({rows: [], summary: noSummary, changedCount: 1, allChangesIgnored: true, ...more});
   assert.equal(d({}).exit, 0); assert.equal(d({}).outcome, 'UNAFFECTED');
-  assert.equal(d({inputsIdentical: false}).exit, 2); // the render inputs differ: ignoring the names is not allowed
-  assert.equal(d({allChangesIgnored: false}).exit, 2);
-  assert.equal(d({changedCount: 0}).exit, 2);
+  assert.equal(d({allChangesIgnored: false}).exit, 0); // related items only: nothing is related, nothing can break
+  assert.equal(d({changedCount: 0}).exit, 0);
   assert.equal(d({explicitSelection: true}).exit, 2);
-  assert.equal(d({expectedErrors: ['x']}).exit, 1);
 });
 
-test('1: decide() is the one exit-code authority: fail first, then cannot-vouch, then pass only with bytes compared', () => {
+test('1: decide() is the one exit-code authority: a broken figure first, then explicit-empty, then pass', () => {
   const same = compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'));
   const diff = compareItem('b', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}));
   const both = compareItem('c', failRec(), failRec());
-  const dec = (rows, more = {}) => decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), changedCount: 1, ...more});
+  const dec = (rows, more = {}) => decide({rows, summary: summarize(rows), changedCount: 1, ...more});
   assert.equal(dec([same]).outcome, 'PASS');
-  assert.equal(dec([same, diff]).exit, 1);
-  assert.equal(dec([both]).exit, 2); // nothing compared byte for byte
+  assert.equal(dec([same, diff]).exit, 0); // a changed figure is information
+  assert.equal(dec([both]).exit, 0); // nothing was drawn on both sides: nothing broke (the reason says so)
   assert.equal(dec([same, both]).exit, 0);
   assert.equal(dec([compareItem('d', rec('NOT_RUN'), rec('ARCHIVE_BOUND'))]).exit, 1);
 });
@@ -409,15 +467,15 @@ test('2: an image in another exam folder, named by a golden exam, selects that e
   assert.equal(r.code, 0, r.out + r.err); assert.match(r.out, /golden items selected: 1 of 2/); assert.match(r.out, /itemA/);
 });
 
-test('2: kind change nobody uses, with the render inputs different and nothing selected, is exit 2 (not a pass, not UNAFFECTED)', () => {
+test('2: kind change nobody uses, with the render inputs different and nothing selected, is UNAFFECTED exit 0 (nothing is related to it, nothing can break)', () => {
   const fx = fixture();
   const b4 = fxSnap(fx, 'c4'), b5 = fxSnap(fx, 'c5');
   assert.notEqual(b4.commonKey, b5.commonKey);
   const changed = changedFiles(fx.repo, resolveTarget(fx.repo, fx.c.c4), resolveTarget(fx.repo, fx.c.c5));
   const sel = chooseItems({changed, baseSnap: b4, headSnap: b5});
   assert.deepEqual(sel.selected, []);
-  const d = decide({rows: [], cover: evaluate([], {}), summary: noSummary, changedCount: changed.length, allChangesIgnored: false, inputsIdentical: false, explicitSelection: false});
-  assert.equal(d.exit, 2); assert.match(d.reason, /render inputs differ/);
+  const d = decide({rows: [], summary: noSummary, changedCount: changed.length, allChangesIgnored: false, explicitSelection: false});
+  assert.equal(d.exit, 0); assert.equal(d.outcome, 'UNAFFECTED'); assert.match(d.reason, /no golden item is related/);
 });
 
 // ---- 3. rules that had no test ---------------------------------------------------------------------------------------------
@@ -425,7 +483,7 @@ test('3 NOT_RUN=fail: a run that could not run an item fails the gate and the ex
   const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), compareItem('b', rec('NOT_RUN', {detail: 'x'}), rec('ARCHIVE_BOUND'))];
   assert.equal(rows[1].verdict, 'NOT_RUN');
   assert.equal(summarize(rows).pass, false); assert.equal(summarize(rows).failures.length, 1);
-  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), changedCount: 1}).exit, 1);
+  assert.equal(decide({rows, summary: summarize(rows), changedCount: 1}).exit, 1);
 });
 
 test('3 bytesCompared: a comparison needs an SVG on BOTH sides', () => {
@@ -576,13 +634,13 @@ test('3 lazy import: a python import inside a function is lazy, a top-level one 
   } finally { fs.rmSync(root, {recursive: true, force: true}); }
 });
 
-test('3 duplicate expected: the same item twice in the expected file is an error, and an error fails the gate', () => {
+test('3 duplicate expected: the same item twice in the expected file is a note, and a note does not fail the gate', () => {
   const e = parseExpected('itemA DIFFERENT first reason that is long enough\nitemA DIFFERENT second reason that is long enough\n');
   assert.equal(e.entries.length, 1); assert.match(e.errors.join('\n'), /itemA is listed twice/);
   const rows = [compareItem('itemA', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}))];
   const applied = applyExpected(rows, e);
-  assert.equal(summarize(rows, applied).pass, false);
-  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: summarize(rows, applied), expectedErrors: applied.errors, changedCount: 1}).exit, 1);
+  assert.equal(summarize(rows, applied).pass, true);
+  assert.equal(decide({rows, summary: summarize(rows, applied), changedCount: 1}).exit, 0);
 });
 
 // ---- 4. the environment is part of the stored-result key -------------------------------------------------------------------------
@@ -635,7 +693,7 @@ test('1: CLI with identical render inputs and an explicit --families all: UNAFFE
     const r = cli(fx, ['--base', fx.c.c3, '--head', fx.c.c4, '--families', 'all']);
     assert.equal(r.code, 0, r.out + r.err);
     assert.match(r.out.split('\n')[0], /byte compared 0 \/ selected 2/);
-    assert.match(r.out, /UNAFFECTED \(nothing compared\)/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
+    assert.match(r.out, /UNAFFECTED \(nothing compared/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
   } finally { if (old === undefined) delete process.env.GEOMETRY_BROWSER_EXECUTABLE; else process.env.GEOMETRY_BROWSER_EXECUTABLE = old; }
 });
 
@@ -652,30 +710,31 @@ test('1: a head result reused from base (identical render inputs) is UNAFFECTED,
   const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'))];
   assert.equal(evaluate(rows, {}).byteCompared, 1);
   assert.equal(evaluate(rows, {reused: true}).byteCompared, 0);
-  const d = more => decide({rows, cover: evaluate(rows, {reused: more.reusedHead}), summary: summarize(rows), changedCount: 1, explicitSelection: true, inputsIdentical: true, ...more});
+  const d = more => decide({rows, summary: summarize(rows), changedCount: 1, explicitSelection: true, ...more});
   assert.equal(d({reusedHead: true}).outcome, 'UNAFFECTED'); assert.equal(d({reusedHead: true}).exit, 0);
   assert.equal(d({reusedHead: false}).outcome, 'PASS'); // two separate renders (--no-cache) may say PASS
   const bad = [compareItem('a', rec('NOT_RUN'), rec('NOT_RUN'))];
-  assert.equal(decide({rows: bad, cover: evaluate(bad, {reused: true}), summary: summarize(bad), changedCount: 1, reusedHead: true}).exit, 1, 'a failure still fails');
+  assert.equal(decide({rows: bad, summary: summarize(bad), changedCount: 1, reusedHead: true}).exit, 1, 'a failure still fails');
 });
 
-test('6: a golden item only on base is REMOVED and fails; an item only on head is ADDED and listed', () => {
+test('6: a golden item only on base is REMOVED and an item only on head is ADDED: both are listed, neither is a broken figure', () => {
   const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), removedRow('gone')];
   assert.equal(rows[1].verdict, 'REMOVED');
-  const s = summarize(rows); assert.equal(s.pass, false); assert.equal(s.failures.length, 1);
-  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: s, changedCount: 1}).exit, 1);
-  assert.equal(decide({rows: [removedRow('gone')], cover: evaluate([removedRow('gone')], {}), summary: summarize([removedRow('gone')]), changedCount: 1}).exit, 1, 'REMOVED fails even when nothing else was compared');
+  const s = summarize(rows); assert.equal(s.pass, true); assert.equal(s.failures.length, 0); assert.equal(s.listed.length, 1);
+  assert.equal(decide({rows, summary: s, changedCount: 1}).exit, 0);
   const added = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), addedRow('fresh', rec('ARCHIVE_BOUND'))];
   assert.equal(added[1].verdict, 'ADDED'); assert.equal(summarize(added).pass, true); assert.equal(summarize(added).listed.length, 1);
   const accepted = applyExpected(rows, parseExpected('gone REMOVED the item was retired on purpose in this change\n'));
   assert.equal(accepted.errors.length, 0); assert.equal(summarize(rows, accepted).pass, true);
 });
 
-test('1: no change is exit 2 even when an explicit selection has rows (base = head compares a tree with itself)', () => {
+test('1: base = head with an explicit selection renders and compares a tree with itself: exit 0 (nothing changed, nothing broke)', () => {
   const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'))];
-  const d = more => decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), explicitSelection: true, inputsIdentical: true, ...more});
-  assert.equal(d({changedCount: 0}).exit, 2); assert.match(d({changedCount: 0}).reason, /do not differ/);
+  const d = more => decide({rows, summary: summarize(rows), explicitSelection: true, ...more});
+  assert.equal(d({changedCount: 0}).exit, 0);
   assert.equal(d({changedCount: 1}).exit, 0);
+  const broke = [compareItem('a', rec('NOT_RUN'), rec('NOT_RUN'))];
+  assert.equal(decide({rows: broke, summary: summarize(broke), explicitSelection: true, changedCount: 0}).exit, 1, 'an item that cannot run still fails on main against main');
 });
 
 test('6: engine tests that passed on base and are skipped or deleted on head fail like a new failure', () => {
@@ -717,6 +776,74 @@ test('7: a snapshot is built in a folder of its own and renamed into place; a fo
   const again = fxSnap(fx, 'c1');
   assert.equal(again.dir, s1.dir); assert.equal(again.commonKey, s1.commonKey);
   assert.ok(fs.existsSync(path.join(foreign, 'half-written.txt')));
+});
+
+// ---- 2026-11-24: break-only gate ---------------------------------------------------------------------------------------------
+const clipSvg = body => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80"><title>t</title><rect width="100" height="80" fill="#fff"/>${body}</svg>`;
+const labelAt = (id, x, y, w = 15, h = 14) => `<g id="${id}" data-label-kind="POINT_NAME" transform="translate(${x} ${y})"><svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" id="lb-${id}"><g transform="scale(0.02)"><path d="M0 0L900 900"/></g></svg></g>`;
+
+test('clip check: a label or shape outside the frame is named, one inside (or touching the edge) is not, and what it cannot place is left out', () => {
+  assert.deepEqual(clipSignatures(clipSvg(labelAt('A-name', 10, 10) + labelAt('B-name', 84, 66))), [], 'inside, and flush with the frame (15 wide at 84 ends at 99)');
+  assert.deepEqual(clipSignatures(clipSvg(labelAt('A-name', 10, 10) + labelAt('B-name', 96, 10))), ['label B-name']);
+  assert.deepEqual(clipSignatures(clipSvg(labelAt('A-name', -20, 10))), ['label A-name']);
+  assert.deepEqual(clipSignatures(clipSvg(`<g data-layer="30"><line id="L1" x1="5" y1="5" x2="140" y2="5"/></g>`)), ['L1']);
+  assert.deepEqual(clipSignatures(clipSvg(`<circle id="P" cx="97" cy="40" r="3.2"/>`)), [], 'a point 0.2 px over the edge is within the tolerance');
+  assert.deepEqual(clipSignatures(clipSvg(`<circle id="P" cx="110" cy="40" r="3.2"/>`)), ['P']);
+  assert.deepEqual(clipSignatures(clipSvg(`<polygon data-role="arrow" points="90,40 120,35 120,45"/>`)), ['polygon(arrow)']);
+  assert.deepEqual(clipSignatures(clipSvg(`<path d="M10 10 L60 10 L200 10"/>`)), ['path']);
+  assert.deepEqual(clipSignatures(clipSvg(`<path d="M10 10 C 300 10 300 50 60 60"/>`)), [], 'a curve is not measured');
+  assert.deepEqual(clipSignatures(clipSvg(`<g transform="scale(2)"><line x1="0" y1="0" x2="500" y2="0"/></g><defs><line x1="0" y1="0" x2="500" y2="0"/></defs>`)), [], 'scaled groups and defs are not measured');
+  assert.deepEqual(clipSignatures(clipSvg(`<g transform="translate(60 0)"><line id="T" x1="0" y1="5" x2="60" y2="5"/></g>`)), ['T'], 'a plain translate is followed');
+  assert.deepEqual(clipSignatures(clipSvg(`<line x1="1" y1="1" x2="500" y2="1"/><line x1="1" y1="2" x2="500" y2="2"/>`)), ['line', 'line#2'], 'no id: the tag and a running count');
+  assert.deepEqual(clipSignatures('not an svg at all'), []);
+  assert.deepEqual(clipSignatures(labelAt('A-name', 96, 10)), []); // no root svg frame: nothing to measure against
+});
+
+test('clip check on a figure the engine drew: moving one label out of the frame is found by name (the "label pushed out" change)', () => {
+  const sample = clipSvg(`<g data-layer="30"><line id="x-axis" x1="10" y1="40" x2="90" y2="40"/></g>${labelAt('A-name', 12, 20)}${labelAt('B-name', 70, 20)}`);
+  assert.deepEqual(clipSignatures(sample), []);
+  const moved = sample.replace('translate(70 20)', 'translate(400 20)');
+  assert.notEqual(moved, sample);
+  assert.deepEqual(clipSignatures(moved), ['label B-name']);
+  const rows = [compareItem('item1', rec('ARCHIVE_BOUND', {clip: clipSignatures(sample)}), rec('ARCHIVE_BOUND', {svgSha: 'f'.repeat(64), clip: clipSignatures(moved)}))];
+  assert.equal(rows[0].verdict, 'CLIPPED'); assert.equal(decide({rows, summary: summarize(rows), changedCount: 1}).exit, 1);
+  const nudged = sample.replace('translate(70 20)', 'translate(71.5 20.5)'); // a small coordinate change: DIFFERENT, passes
+  const rows2 = [compareItem('item1', rec('ARCHIVE_BOUND', {clip: clipSignatures(sample)}), rec('ARCHIVE_BOUND', {svgSha: 'e'.repeat(64), clip: clipSignatures(nudged)}))];
+  assert.equal(rows2[0].verdict, 'DIFFERENT'); assert.equal(decide({rows: rows2, summary: summarize(rows2), changedCount: 1}).exit, 0);
+});
+
+test('related items: shared code samples every kind, a kind change renders that kind, named items always, --all is the whole set', () => {
+  const sel = more => ({auto: true, all: false, kinds: new Set(), itemDirs: new Set(), plans, selected: items.map(i => i.dir), ...more});
+  const whole = narrowSelection({sel: sel({all: true}), items, perKind: 100});
+  assert.equal(whole.selected.length, items.length);
+  const sample = narrowSelection({sel: sel({all: true}), items, perKind: 3});
+  assert.ok(sample.sampled && sample.selected.length < items.length / 2, `${sample.selected.length} of ${items.length}`);
+  for (const k of KINDS) assert.ok(sample.selected.some(d => planKinds(plans[d]).has(k)), `kind ${k} has an item in the sample`);
+  assert.deepEqual(sample.selected, items.map(i => i.dir).filter(d => sample.selected.includes(d)), 'item order is kept');
+  assert.deepEqual(narrowSelection({sel: sel({all: true}), items, perKind: 3}).selected, sample.selected, 'deterministic');
+  const stat = narrowSelection({sel: sel({kinds: new Set(['stat'])}), items});
+  assert.ok(stat.selected.length > 0 && stat.selected.every(d => planKinds(plans[d]).has('stat') || planKinds(plans[d]).has('unknown')));
+  assert.equal(stat.selected.length, items.filter(i => planKinds(plans[i.dir]).has('stat')).length + items.filter(i => planKinds(plans[i.dir]).has('unknown') && !planKinds(plans[i.dir]).has('stat')).length);
+  const capped = narrowSelection({sel: sel({kinds: new Set(['graph'])}), items, maxPerKind: 5});
+  assert.ok(capped.sampled && capped.note && capped.selected.length < 12, `${capped.selected.length}`);
+  const named = narrowSelection({sel: sel({kinds: new Set(['stat']), itemDirs: new Set(['item01'])}), items});
+  assert.ok(named.selected.includes('item01'));
+  const nothing = narrowSelection({sel: sel(), items});
+  assert.deepEqual(nothing.selected, []);
+  const explicit = narrowSelection({sel: sel({auto: false, selected: ['item01', 'item02']}), items});
+  assert.deepEqual(explicit.selected, ['item01', 'item02'], '--families words and --all are not narrowed');
+  assert.deepEqual(spread(['a', 'b', 'c', 'd', 'e'], 3), ['a', 'c', 'e']); assert.deepEqual(spread(['a', 'b'], 5), ['a', 'b']); assert.deepEqual(spread(['a', 'b', 'c'], 1), ['a']);
+});
+
+test('comparison sheets: only pairs with a figure on both sides and a change become rows, CLIPPED first, 10 pairs to a sheet', () => {
+  const svgOf = (side, item) => item === 'noSvg' ? null : `<svg id="${side}-${item}"></svg>`;
+  const mk = (item, verdict, bs = 'ARCHIVE_BOUND', hs = 'ARCHIVE_BOUND') => ({item, verdict, reason: 'r', base: {status: bs}, head: {status: hs}});
+  const rows = [mk('b', 'DIFFERENT'), mk('a', 'DIFFERENT'), mk('c', 'CLIPPED'), mk('s', 'SAME'), mk('f', 'DIFFERENT', 'FAILED'), mk('noSvg', 'DIFFERENT'), mk('r', 'REGRESSED', 'ARCHIVE_BOUND', 'FAILED')];
+  const pairs = sheetPairs(rows, svgOf);
+  assert.deepEqual(pairs.map(p => p.item), ['c', 'a', 'b']);
+  assert.equal(chunkPairs(Array.from({length: 23}, (_, i) => i)).map(c => c.length).join(','), '10,10,3');
+  const html = sheetHtml(pairs, {title: 't', baseLabel: 'base x', headLabel: 'head y', fontUrl: null});
+  assert.match(html, /base-c/); assert.match(html, /head-c/); assert.match(html, /base x/); assert.match(html, /CLIPPED/);
 });
 
 test('zz fixture cleanup', () => { if (fxCache) { fs.rmSync(fxCache.root, {recursive: true, force: true}); fxCache = null; } });

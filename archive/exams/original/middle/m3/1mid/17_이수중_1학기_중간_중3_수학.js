@@ -17,7 +17,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -5와 5 두 점이 원점을 사이에 두고 표시되어 있다.",
+    "solutionImageCaption": "25의 제곱근은 5와 -5이고 √25=5, -√25=-5도 25의 제곱근이다. 음수인 -25는 제곱해서 -25가 되는 실수가 없으므로 √-25는 25의 제곱근이 아니다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -36,7 +40,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -3과 3 두 점이 원점을 사이에 두고 표시되어 있다.",
+    "solutionImageCaption": "x²=9를 만족하는 x, ±3, 제곱하여 9가 되는 수, (-3)²=9의 제곱근은 모두 3과 -3 두 값이다. 그러나 √9는 양의 제곱근인 3 하나뿐이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -55,7 +63,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -25, 0, 25 세 점이 표시되어 있다.",
+    "solutionImageCaption": "-5²은 -(5²)=-25이고 (-5)²=25이므로 두 값은 서로 다르다. 음수 -25의 제곱근은 실수로 존재하지 않으므로 -5²의 제곱근이 -5라는 ③은 옳지 않다. √((-5)²)=5이고 5의 제곱근은 ±√5이므로 ⑤는 옳다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -245,7 +257,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로 기준선에서 세 개의 화살표가 각각 오른쪽, 왼쪽, 오른쪽으로 뻗고, 그 아래에 결과 화살표가 있다. 화살표 옆에 3√6, 4√6, 9√6이 적혀 있다.",
+    "solutionImageCaption": "√54=3√6, 2√24=4√6, √486=9√6이다. 부호를 붙여 3√6−4√6+9√6=8√6을 계산한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -1,0 +1,128 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      4.5,
+      -0.5,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "p0",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "p1",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula"
+        ]
+      },
+      {
+        "id": "p2",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula"
+        ]
+      },
+      {
+        "id": "p3",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "4",
+        "coefficients": [
+          "1",
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          "4"
+        ],
+        "color": "BLUE",
+        "hideLabels": [
+          "formula"
+        ]
+      },
+      {
+        "id": "lg",
+        "kind": "LOGARITHMIC",
+        "base": "12",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "f는 정수 k에서 k가 짝수이면 0, 홀수이면 2이고, 각 단위구간에서 0과 2 사이를 단조롭게 오간다. n=4일 때 로그의 밑은 12이고, 이 로그 그래프를 g라 하면 g의 값이 2가 되는 x는 144이다. 1부터 144까지의 143개 단위구간마다 두 그래프가 한 번씩 만나므로 교점은 143개이고 n=4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "파란 곡선 f가 0과 2를 오가며 반복되고, 주황색 로그곡선 g가 오른쪽으로 갈수록 완만하게 올라간다. x축에는 1, 2, 3, 4 눈금이, y축에는 2 눈금이 보인다.",
+  "newVisualInformation": [
+    "파란 f 조각은 0과 2를 번갈아 잇는 지수형 곡선으로 네 개의 단위구간에 걸쳐 그려진다.",
+    "주황색 g는 밑이 12인 로그곡선이고, x축 눈금 1, 2, 3, 4와 y축 눈금 2가 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다.\n<div class=\"problem-box\">\n(가) $f(x) = \\begin{cases} 3^{-x}-1 & (-1 \\le x < 0) \\\\ 3^x-1 & (0 \\le x < 1) \\end{cases}$<br>\n(나) 모든 실수 $x$에 대하여 $f(x) = f(x+2)$이다.\n</div>\n이 때, 자연수 $n$에 대하여, 함수 $y=f(x)$의 그래프와 함수 $y=\\log_{3n} x$의 그래프와의 교점의 개수가 143개 일 때, $n$의 값을 구하면? [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

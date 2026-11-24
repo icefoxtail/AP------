@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3x^2+12x",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 3,
+        "y": 63
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "viewport": [
+      -0.5,
+      3.5,
+      -5,
+      70
+    ]
+  },
+  "coordinateLeader": [
+    "P",
+    "Q"
+  ],
+  "caption": "k=0일 때 f′(x)=3x²+12x의 그래프는 x=0에서 0이고 x=3에서 63이다. 닫힌구간 [0,3]에서 이 값은 계속 커지므로 f′(x)의 최솟값은 k이다. f가 증가하려면 f′(x)≥0이므로 k≥0이고 최솟값은 0이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "가로축 0에서 3까지 그려진 이차곡선 h(x)=3x²+12x와 점 P(0,0), Q(3,63)이 표시되어 있다.",
+  "newVisualInformation": [
+    "x=0에서 0, x=3에서 63인 이차곡선 h",
+    "점 P(0,0), Q(3,63)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+6x^2+kx-10$이 닫힌구간 $[0,3]$에서 증가하도록 하는 상수 $k$의 최솟값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

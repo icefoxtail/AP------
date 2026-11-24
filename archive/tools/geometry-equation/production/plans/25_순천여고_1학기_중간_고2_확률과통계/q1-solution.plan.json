@@ -1,0 +1,348 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sM1O",
+      "refs": [
+        "M1",
+        "O"
+      ]
+    },
+    {
+      "id": "sOM3",
+      "refs": [
+        "O",
+        "M3"
+      ]
+    },
+    {
+      "id": "sM4O",
+      "refs": [
+        "M4",
+        "O"
+      ]
+    },
+    {
+      "id": "sOM2",
+      "refs": [
+        "O",
+        "M2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "label": "1",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "M1",
+              "O",
+              "M4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "label": "2",
+        "shapes": [
+          {
+            "polygon": [
+              "M1",
+              "B",
+              "M2",
+              "O"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "GREEN",
+        "label": "3",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "M2",
+              "C",
+              "M3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "fill": "LIGHT",
+        "label": "4",
+        "shapes": [
+          {
+            "polygon": [
+              "M4",
+              "O",
+              "M3",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "서로 다른 네 색을 네 영역에 모두 쓰는 배열은 4!가지이다. 회전하여 같은 배열은 네 가지씩 한 묶음이 되므로 서로 다른 칠하기는 4!을 4로 나눈 6가지이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "정사각형이 가운데에서 십자로 나뉘어 네 영역이 되고 각 영역이 다른 색과 번호로 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형을 네 영역으로 분할",
+    "각 영역에 서로 다른 색과 번호 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래의 그림과 같이 정사각형을 4등분한 4개의 영역을 서로 다른 4가지 색을 모두 사용하여 칠하는 경우의 수를 구하면? (단, 각 영역에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [3.2점]<br><svg width='100' height='100' viewBox='0 0 100 100' style='display:block; margin: 10px auto;'><rect x='10' y='10' width='80' height='80' fill='none' stroke='black' stroke-width='2'/><line x1='10' y1='50' x2='90' y2='50' stroke='black' stroke-width='2'/><line x1='50' y1='10' x2='50' y2='90' stroke='black' stroke-width='2'/></svg>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

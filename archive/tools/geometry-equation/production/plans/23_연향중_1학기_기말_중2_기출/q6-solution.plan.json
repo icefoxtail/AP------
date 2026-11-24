@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "15",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "15"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "9"
+      },
+      {
+        "id": "P2",
+        "x": "10",
+        "y": "-15"
+      }
+    ],
+    "formula": "15 - 3*x"
+  },
+  "caption": "가로높이 km,세로기온℃. km당 3℃감소하므로 y15−3x. 실제모형 0≤x≤10에서(2,9)이목표,정답 2km.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지면에서 $10\\text{ km}$까지는 높이가 $100\\text{ m}$ 높아질 때마다 기온이 $0.3^\\circ\\text{C}$씩 일정하게 낮아진다고 한다. 지면의 기온이 $15^\\circ\\text{C}$일 때, 기온이 $9^\\circ\\text{C}$인 지점의 지면으로부터의 높이는 몇 $\\text{km}$인지 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로높이km,세로기온℃. km당3℃감소하므로y15−3x. 실제모형0≤x≤10에서(2,9)이목표,정답2km.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로높이km,세로기온℃. km당3℃감소하므로y15−3x. 실제모형0≤x≤10에서(2,9)이목표,정답2km."
+  ]
+}

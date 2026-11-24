@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "21",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "9",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 동생 한 명의 나이, 세로 다훈이 나이. 동생 3명 나이가 같다는 조건에서 y=x+5,y=21−3x의 교점 (4,9). 다훈 9살, 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다훈이에게는 쌍둥이 동생 3명이 있다. 다훈이는 동생보다 5살이 많고, 다훈이와 동생들의 나이를 모두 더하면 21살이다. 다훈이의 나이를 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로동생한명의나이,세로다훈이나이. 동생3명나이가같다는조건에서y=x+5,y=21−3x의교점(4,9). 다훈9살,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로동생한명의나이,세로다훈이나이. 동생3명나이가같다는조건에서y=x+5,y=21−3x의교점(4,9). 다훈9살,정답③."
+  ]
+}

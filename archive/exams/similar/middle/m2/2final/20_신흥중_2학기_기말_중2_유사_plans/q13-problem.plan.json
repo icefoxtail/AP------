@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "D",
+    "F",
+    "E",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sFH",
+      "refs": [
+        "F",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sBC",
+          "sFG"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCD",
+          "sGH"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sAB",
+          "sEF"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "f1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "f2",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "G",
+              "H"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "18",
+        "unit": "cm"
+      },
+      {
+        "id": "lFG",
+        "ownerSegment": "sFG",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lGH",
+        "ownerSegment": "sGH",
+        "text": "y",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "두 사면체 ABCD와 EFGH가 서로 닮은 도형이고, 대응하는 면 BCD와 FGH를 색칠하였다. BC는 5센티미터, FG는 15센티미터, CD는 3센티미터, EF는 18센티미터이고 AB는 x, GH는 y로 나타내었다.",
+  "accessibilityDescription": "두 사면체 ABCD와 EFGH가 나란히 보이고, 대응하는 면 BCD와 FGH가 옅게 색칠되어 있다. 각 사면체의 몇몇 모서리에 길이 또는 문자 라벨이 붙어 있다.",
+  "newVisualInformation": [
+    "두 닮은 사면체의 대응하는 면과 대응하는 모서리의 길이를 색과 라벨로 구별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사면체 $ABCD$와 $EFGH$가 서로 닮은 입체도형이다. $\\triangle BCD$와 $\\triangle FGH$가 서로 대응하는 면이고, $\\overline{BC} = 5\\text{ cm}, \\overline{FG} = 15\\text{ cm}, \\overline{CD} = 3\\text{ cm}, \\overline{EF} = 18\\text{ cm}$일 때, $\\overline{GH} = y\\text{ cm}$, $\\overline{AB} = x\\text{ cm}$라 하자. 이때 $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

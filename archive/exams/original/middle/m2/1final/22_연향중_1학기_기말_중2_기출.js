@@ -35,7 +35,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "④의 두 직선은 실제(2,3)에서 만난다. 해가 되려면 두 식 모두 만족해야 하며 다른 보기의 불일치는 대입으로 판정한다. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -72,7 +76,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "해(b,3b)는 y=3x 위이고 x+y=−4를 만족하므로 교점(−1,−3). b=−1, 둘째식 2x−3y=7=4+a에서 a3,합 2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -109,7 +117,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "㉠×3과㉡×2는 각 원래 직선과 같은 해집합이다. x계수를 6으로 맞춰 빼면 7y=−23. 교점(1/7,−23/7)은 해 확인용이며 x소거 계산은③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -147,7 +159,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "분수식×12는 3x−2y8,소수식×100은 3x+y14. 두 직선 교점(4,2),a−b2. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -260,7 +276,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 A의 승리횟수 x,세로 B의 승리횟수 y.3x−2y5와 −2x+3y10의 교점(7,8),B8회. 실제횟수는 비음수정수이며 선은 조건의 보조 연장이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -297,7 +317,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "정삼각형의 양수 길이 x>0에서 둘레 y3x는 하나로 정해진다. 여기 1..4는 표시 발췌이며 실제 정의역 끝이 아니다. 정답 ⑤.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -334,7 +359,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f2=6,f−1=−6. 실제두점에서 b−a=−12. 정답⑤.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -372,7 +402,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "아래로 2 평행이동한 y=ax−2가(3,−1)을 지나므로 a1/3. 대응 절편 0→−2와기울기불변을 보인다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -409,7 +443,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 a1/2,x절편 b−4,y절편 c2에서 abc−4. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -469,7 +507,11 @@ window.questionBank = [
     "rpmL2": "일차함수와 그 그래프",
     "rpmL3": "식 구하기",
     "rpmL4": "두 점으로 식 구하기",
-    "rpmPrimaryRecordId": "M2-RPM-052"
+    "rpmPrimaryRecordId": "M2-RPM-052",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 PNG의(−2,−7),(3,3)을 그대로 보존. 기울기 2,식 y2x−3, x절편 3/2. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -507,7 +549,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "평행하므로 a3/2,점(b,−1)에서 b−2. 원래 두선의 같은 기울기와 다른절편 보존,합 −1/2. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -545,7 +591,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제 직선 y−4x+2는 절편 1/2와 2, 감소하며 제3사분면 없음. 비교선 y4x와 기울기가 반대이므로 평행이라는 ⑤가 거짓.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -582,7 +632,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 두선 교점(−4,−2)을 지나는 수평선은 y−2. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -661,7 +715,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 x절편 1,4와 교점(2,2)로 밑변 3/높이 2,넓이 3. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -815,7 +873,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는동생출발후분,세로 Y=y/100으로실제거리 m를 100으로나눈값. 동생 Y=x/5(0..60),형 Y=3x/10−3(10..50). 교점(30,6)은실제30분/600m. 형출발후 20분,정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -846,7 +908,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진 해 (1,−2)를 대입한 계수 평면이다. 가로 a, 세로 b에서 a−2b−3,2a+b4의 교점 (1,2). ab2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -878,7 +944,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫 기준선의 x절편 (4,0), 둘째 기준선의 y절편 (0,−8)을 지나는 새 직선은 y2x−8. 두 점과 세 선 역할을 구분한다. 정답 y=2x−8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -913,7 +983,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 수직선 x3을 표시하기 위해 임의 높이 −2,3의 두 표시 앵커를 고른다. 높이는 원문 조건이 아니다. y항이 없어 a0, 3·3−b−5=0에서 b4. 정답 a=0,b=4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -948,6 +1022,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "CP=2x. 평행한 AB12/CP2x, 높이 AD20으로 y=(12+2x)20/2=120+20x. 실제 0<x≤6에서 (2,160)이 목표. x0은 원문 정의역에서 제외, 240은 전체 직사각형 넓이. 정답 2초.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

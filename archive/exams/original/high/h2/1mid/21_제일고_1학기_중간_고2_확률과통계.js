@@ -418,7 +418,11 @@ window.questionBank = [
       "확률과통계",
       "순열과 조합",
       "여집합 부분집합 세기"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A의 부분집합은 모두 2⁸=256개다. B와 겹치지 않으려면 A에서 B를 뺀 7, 8만으로 만든 부분집합 2²=4개를 빼야 한다. 따라서 256−4=252개다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -830,7 +834,11 @@ window.questionBank = [
       "확률과통계",
       "확률의 뜻과 활용",
       "여사건 확률"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "세 눈 a, b, c 중 적어도 두 개가 같은 경우를 센다. 표는 a와 b의 6×6 칸이며 색칠한 대각선 6칸은 a=b인 경우로 c는 6가지이므로 36가지이다. 색칠하지 않은 30칸은 a, b가 다르므로 c가 a 또는 b와 같은 2가지씩 60가지이다. 합은 96가지이고 확률은 96/216=4/9이다. 여사건인 세 눈이 모두 다른 경우 6×5×4=120가지를 빼도 같다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -980,6 +988,10 @@ window.questionBank = [
       "확률과통계",
       "확률의 뜻과 활용",
       "인수분해와 배수 확률"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "12x²−7nx+n²=(3x−n)(4x−n)이므로 근은 n/3, n/4이고 정수해가 있으려면 n이 3의 배수이거나 4의 배수이다. A를 3의 배수, B를 4의 배수의 집합으로 보면 1부터 30까지에서 A는 10개, B는 7개, 겹치는 12의 배수는 2개이다. 그림은 A만 8개, 겹침 2개, B만 5개, 둘 다 아닌 15개이다. 색칠한 합집합은 10+7−2=15개이므로 확률은 15/30=1/2이다.",
+    "solutionImageSize": "full"
   }
 ];

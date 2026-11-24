@@ -119,7 +119,11 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_CIRCULAR_PERMUTATION",
     "rpmL3": "순열",
-    "rpmL4": "중복·원순열"
+    "rpmL4": "중복·원순열",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 일곱 개의 점이 같은 간격으로 놓여 있고, 이웃한 두 점 사이의 짧은 호가 파란색으로 강조되어 있다.",
+    "solutionImageCaption": "남학생 3명과 여학생 4명을 모두 원탁에 앉히는 배열은 7명의 원순열이다. 일렬 배열 7!을 그대로 세면 한 배치를 회전한 7가지가 중복되므로 한 사람의 자리를 고정한다. 그러면 나머지 6명의 자리를 정하는 방법은 6!=720가지이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -292,7 +296,11 @@ window.questionBank = [
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "rpmL3": "확률의 기본",
-    "rpmL4": "확률 계산"
+    "rpmL4": "확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6×6 표에서 a+2b가 4의 배수인 칸을 칠했다. b가 홀수 1, 3, 5이면 2b를 4로 나눈 나머지가 2이므로 a=2, 6인 6칸이고, b가 짝수 2, 4, 6이면 a=4인 3칸이다. 모두 9칸이므로 확률은 9/36=1/4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -477,7 +485,12 @@ window.questionBank = [
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "rpmL3": "확률의 기본",
-    "rpmL4": "확률 계산"
+    "rpmL4": "확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "부전승 자리에 A, B, C가 배정될 확률은 각각 1/3이다. C가 부전승이면 결승 승률은 (1/3)(1/2)+(2/3)(3/5)=17/30이고, A나 B가 부전승이면 C는 두 경기를 이겨야 하므로 각각 3/10이다. 따라서 C의 우승 확률은 (1/3)(17/30+3/10+3/10)=7/18이고, ㄷ과 ㄹ만 참이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

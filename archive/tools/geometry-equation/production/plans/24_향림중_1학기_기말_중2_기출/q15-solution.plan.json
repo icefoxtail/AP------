@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "w=2l+2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "w=l+4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "l",
+      "y": "w"
+    }
+  },
+  "caption": "가로민호의패배 l,세로승리 w. w=2l+2와총 10회/계단 18에서 w−l4의교점(l,w)=(2,6). 비김 2회이고유일변화 −6+6+2=2. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "민호와 유일이가 가위바위보를 하여 이긴 사람은 3계단을 올라가고, 진 사람은 1계단을 내려가고, 비기면 두 사람 모두 1계단을 올라가기로 하였다. 가위바위보를 총 10회 했을 때 민호가 이긴 횟수는 진 횟수의 2배보다 2만큼 크고, 민호가 처음 위치보다 18계단 올라가 있었을 때, 유일이가 처음 위치보다 올라간 계단의 개수는? [5점] 보기: ['2', '3', '4', '5', '6']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로민호의패배l,세로승리w. w=2l+2와총10회/계단18에서w−l4의교점(l,w)=(2,6). 비김2회이고유일변화−6+6+2=2. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로민호의패배l,세로승리w. w=2l+2와총10회/계단18에서w−l4의교점(l,w)=(2,6). 비김2회이고유일변화−6+6+2=2. 정답①."
+  ]
+}

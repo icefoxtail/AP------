@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "7"
+      }
+    ],
+    "formula": "5*x - 3"
+  },
+  "caption": "실제함수 y5x−3에서입력 2의점(2,7)을읽어 f2=7. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=5x-3$에 대하여 $f(2)$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제함수y5x−3에서입력2의점(2,7)을읽어f2=7. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제함수y5x−3에서입력2의점(2,7)을읽어f2=7. 정답④."
+  ]
+}

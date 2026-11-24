@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "10"
+      },
+      {
+        "id": "P3",
+        "x": "5",
+        "y": "16"
+      }
+    ],
+    "formula": "3*x + 1",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    }
+  },
+  "caption": "첫단계 4개에서한정사각형추가시공유변 1개를제외한 3개씩증가. y=4+3(x−1)=3x+1. 실제단계는자연수점만이며 y16일때 x5. 정답②. 연속 직선은 자연수 단계 관계의 다항식 보조 연장이다. 원래 단계의 정의역은 양의 정수뿐이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $x$회째 성냥개비 $y$개를 사용하여 도형을 만들어 나간다고 할 때, ① $x$와 $y$의 관계식과 ② 성냥개비의 개수가 16개일 때의 횟수를 올바르게 짝지은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "discrete-source",
+      "condition": "원래 단계는 양의 정수 x이다. 연속 다항식 y=3x+1은 관계를 읽기 위한 보조 연장으로 원문 정의역을 늘리지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

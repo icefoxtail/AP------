@@ -267,7 +267,11 @@ window.examData = {
       question: "다음 그림과 같이 가로 길이가 $6a$, 세로의 길이가 $3b$인 직사각형이 있다. 그림을 보고 다음 물음에 답하시오.<br><img src=\"assets/images/19_부산해운대여중_1학기_중간_중2_수학/q22.png\"><br>(1) 색칠한 부분을 제외한 4개의 삼각형의 넓이를 각각 $A, B, C, D$라고 할 때, $A, B, C, D$의 값을 각각 구하시오. (풀이과정을 반드시 쓰시오.)<br>(2) $\\frac{A^2+2BC}{3D^2}$의 값을 구하시오. (풀이과정을 반드시 쓰시오.)",
       choices: [],
       answer: "",
-      solution: ""
+      solution: "",
+      "solutionImage": "assets/images/19_부산해운대여중_1학기_중간_중2_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 직사각형 안에 네 변 위의 점을 이은 사각형이 있고, 네 모서리의 삼각형에 A, B, C, D가 적혀 있다. 가운데 사각형은 빗금으로 칠해져 있으며 위와 왼쪽에 6a, 3b, 오른쪽과 아래에 2a, 3a, b가 표시되어 있다.",
+      "solutionImageCaption": "네 삼각형의 넓이는 A=2ab, B=3ab, C=3ab/2, D=2ab이다. 이를 대입하면 A²+2BC=13a²b², 3D²=12a²b²이므로 (A²+2BC)/(3D²)=13/12이다. 따라서 답은 A=2ab, B=3ab, C=3ab/2, D=2ab이고 (2) 13/12이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 23,

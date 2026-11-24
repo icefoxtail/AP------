@@ -1,0 +1,136 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1.2,
+      1.2
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -2,
+      2.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "Q",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curveColor": "BLUE",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "1"
+            ]
+          },
+          {
+            "coefficients": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "breakpoints": [
+          {
+            "x": "0",
+            "y": "0"
+          }
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "intersectionX": [
+          "0",
+          "1"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "R",
+          "x": "-1",
+          "y": "1"
+        }
+      ],
+      "lines": [
+        {
+          "id": "u",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        },
+        {
+          "id": "d",
+          "slope": "0",
+          "intercept": "-1",
+          "label": "y=-1"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "P": "P",
+    "Q": "Q",
+    "R": "R"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: n=3일 때 곡선 y=x³은 수평선 y=1과 한 점 P(1, 1)에서, y=-1과 한 점 Q(-1, -1)에서 만난다. n=4일 때 곡선 y=x⁴은 y=1과 두 점 P(1, 1), R(-1, 1)에서 만나고 y=-1과는 만나지 않는다. 따라서 ㄱ은 거짓이고 ㄴ, ㄷ, ㄹ은 참이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "좌표평면에 파란 곡선 f와 분홍 곡선 g, 수평선 y=1과 y=-1이 그려져 있다. f는 y=1과 점 P에서, y=-1과 점 Q에서 만나고, g는 y=1과 점 P와 R에서 만난다.",
+  "newVisualInformation": [
+    "홀수 예시 곡선 f와 짝수 예시 곡선 g",
+    "수평선 y=1, y=-1과 곡선의 교점 P, Q, R"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$n$ 이 2 이상의 자연수일 때, 보기 중 옳은 것만을 있는 대로 고른 것은? <div style='border:1px solid #000; padding:10px;'>ㄱ. $n$이 홀수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}, -\\sqrt[n]{a}$이다.<br>ㄴ. $n$이 홀수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}$이다.<br>ㄷ. $n$이 짝수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\pm\\sqrt[n]{a}$이다.<br>ㄹ. $n$이 짝수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수는 존재하지 않는다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

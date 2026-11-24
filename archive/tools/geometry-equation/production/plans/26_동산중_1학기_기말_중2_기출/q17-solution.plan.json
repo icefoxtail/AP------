@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/5",
+          "-3/5"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "대입해 8y=16, y2/x−1. 공통점(−1,2), 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}x-y=-3\\\\3x+5y=7\\end{cases}$을 푸시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "대입해8y=16, y2/x−1. 공통점(−1,2), 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "대입해8y=16, y2/x−1. 공통점(−1,2), 정답①."
+  ]
+}

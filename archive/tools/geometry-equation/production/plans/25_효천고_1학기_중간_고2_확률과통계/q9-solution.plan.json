@@ -1,0 +1,433 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P7",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "O",
+    "X",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "P3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "P4"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "P5"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "P6"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "P7"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "red1",
+        "fill": "ROSE",
+        "label": "빨강",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "X",
+              "steps": [
+                {
+                  "to": "P1",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                },
+                {
+                  "to": "X"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "red2",
+        "fill": "ROSE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P4",
+              "steps": [
+                {
+                  "to": "P5",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                },
+                {
+                  "to": "P4"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "orange1",
+        "fill": "WARM",
+        "label": "주황",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P2",
+              "steps": [
+                {
+                  "to": "P3",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                },
+                {
+                  "to": "P2"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "orange2",
+        "fill": "WARM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P6",
+              "steps": [
+                {
+                  "to": "P7",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                },
+                {
+                  "to": "P6"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "8등분된 원판에 빨강과 주황이 각각 두 영역씩 칠해져 있고 나머지 네 영역은 비어 있는 그림이다.",
+  "accessibilityDescription": "원판이 8개의 같은 부채꼴로 나뉘고, 서로 마주 보는 두 영역은 빨강, 다른 마주 보는 두 영역은 주황으로 칠해져 있으며 나머지 네 영역은 비어 있다.",
+  "newVisualInformation": [
+    "8등분된 원판",
+    "빨강 두 영역",
+    "주황 두 영역",
+    "빈 영역 네 개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8등분된 원판에 빨강, 주황, 노랑, 초록, 파랑, 보라색의 6가지 색을 모두 사용하여 영역을 구분하려고 한다. 그림과 같이 빨강, 주황 두가지 색은 이미 칠해져 있을 때, 칠해져 있지 않은 영역에 칠할 수 있는 방법의 수는? (단, 한 영역에는 한 가지 색을 칠하고, 회전하여 같은 경우에는 한 가지 방법으로 한다.) [4.2점]<br><div style=\"text-align:center;\"><svg width=\"200\" height=\"150\" viewBox=\"0 0 200 150\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"100\" cy=\"75\" r=\"60\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"40\" y1=\"75\" x2=\"160\" y2=\"75\" stroke=\"black\" stroke-width=\"0.8\"/><line x1=\"100\" y1=\"15\" x2=\"100\" y2=\"135\" stroke=\"black\" stroke-width=\"0.8\"/><line x1=\"57.58\" y1=\"32.58\" x2=\"142.42\" y2=\"117.42\" stroke=\"black\" stroke-width=\"0.8\"/><line x1=\"57.58\" y1=\"117.42\" x2=\"142.42\" y2=\"32.58\" stroke=\"black\" stroke-width=\"0.8\"/><text x=\"87\" y=\"45\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">빨강</text><text x=\"68\" y=\"90\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">주황</text><text x=\"113\" y=\"110\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">빨강</text><text x=\"132\" y=\"65\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">주황</text></svg></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

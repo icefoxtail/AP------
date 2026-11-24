@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 줄의 수평선이 위아래로 놓여 있고, 각 줄의 한 점 또는 두 점에서 위로 짧은 수직선을 그어 0, −1/2과 1/2, 2/3과 3/2을 적었다.",
+    "solutionImageCaption": "ㄱ은 |x−1|이 0으로 가므로 극한값 0이 존재한다. ㄴ은 x가 1보다 작을 때와 클 때 각각 −1/2, 1/2로 가서 좌극한과 우극한이 다르고, ㄷ도 x가 3보다 작을 때 2/3, 클 때 3/2로 가서 극한값이 없다. 따라서 극한값이 존재하는 것은 ㄱ뿐이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -296,7 +300,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 포물선 바깥의 점 P에서 그은 두 접선 l, m이 접점 T, U에서 접하는 그래프이다.",
+    "solutionImageCaption": "접점을 (t,2t²-3t)라 하면 접선이 (2,0)을 지나는 조건에서 2(t-1)(t-3)=0이다. t=1이면 접점 T(1,-1)에서 y=x-2(그림의 l), t=3이면 접점 U(3,9)에서 y=9x-18(그림의 m)이고 두 접선 모두 점 P(2,0)을 지난다. a+b+c+d=(1-2)+(9-18)=-10이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

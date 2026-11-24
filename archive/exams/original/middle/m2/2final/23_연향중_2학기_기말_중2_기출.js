@@ -737,7 +737,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 x+y=5와 x+y=10 위에 각각 네 개와 세 개의 점이 놓여 있고, 일부 점의 좌표와 눈금이 표시되어 있다.",
+    "solutionImageCaption": "두 눈의 합이 5의 배수가 되는 경우는 합이 5 또는 10일 때뿐이다. 합이 5인 경우는 (1,4),(2,3),(3,2),(4,1)의 4가지이고, 합이 10인 경우는 (4,6),(5,5),(6,4)의 3가지이다. 따라서 모두 4+3=7가지이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -846,7 +850,11 @@ window.questionBank = [
       "l4": "단계별 선택"
     },
     "primaryMethod": "공통 인접영역부터 색 선택",
-    "decisiveStep": "서로 인접한 B,D를 먼저 칠하고 둘 모두와 이웃한 A,C에 각2가지 색을 둔다."
+    "decisiveStep": "서로 인접한 B,D를 먼저 칠하고 둘 모두와 이웃한 A,C에 각2가지 색을 둔다.",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "이 도형은 원래 영역의 위치나 넓이를 대체하지 않는 인접 관계도이다. 연결선 AB,AD,BD,BC,CD만 서로 다른 색이 필요하며 A와 C는 이웃하지 않는다. B4가지→D3가지→A2가지→C2가지, 총 48.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1289,7 +1297,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "4의 배수는 끝 두 자리 04,12,20,24,32,40이다. 백의 자리 0 금지와 숫자 재사용 금지로 선택 수 3,2,3,2,2,3의 합 c15. 전체 a4×4×3=48, 짝수 b12+18=30을 더해 93. 같은 수의 공유는 별개 끝자리 경우를 합치는 것이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

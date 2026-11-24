@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "윗변의 길이가 제곱근 12에서 2를 뺀 값, 아랫변의 길이가 제곱근 12에 2를 더한 값, 높이가 제곱근 6인 사다리꼴을 나타낸 그림이다.",
+  "accessibilityDescription": "사다리꼴의 윗변, 아랫변, 오른쪽 높이에 각각 제곱근 12에서 2를 뺀 값, 제곱근 12에 2를 더한 값, 제곱근 6이 적혀 있다.",
+  "newVisualInformation": [
+    "사다리꼴의 윗변, 아랫변, 높이에 주어진 길이를 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "44"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "44"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "32"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dTop",
+        "from": "A",
+        "to": "D",
+        "label": "sqrt(12)-2",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "dBot",
+        "from": "B",
+        "to": "C",
+        "label": "sqrt(12)+2",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "dRight",
+        "from": "D",
+        "to": "C",
+        "label": "sqrt(6)",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형1] 다음 그림과 같이 윗변의 길이가 $\\sqrt{12} - 2$, 아랫변의 길이가 $\\sqrt{12} + 2$, 높이가 $\\sqrt{6}$인 사다리꼴의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

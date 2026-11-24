@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원본의 부호 관계를 만족하는 예시 a=1, b=-2, c=-3이다. 계수의 크기는 원본에서 주어진 값이 아니다. 열리는 방향, 축의 위치, 세로절편의 부호를 읽는다.",
+  "accessibilityDescription": "원본의 부호 관계를 만족하는 예시 a=1, b=-2, c=-3이다. 계수의 크기는 원본에서 주어진 값이 아니다. 열리는 방향, 축의 위치, 세로절편의 부호를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본및선택지SVG6개직접확인. a>0,b<0,c<0. 새함수c x²+a x−b는아래로열리고축양수,세로절편양수→②. 정답선택형태자체를완성그림으로제시하지않고 원본부호읽기보조만.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 부호 관계를 만족하는 예시 a=1, b=-2, c=-3이다. 계수의 크기는 원본에서 주어진 값이 아니다. 열리는 방향, 축의 위치, 세로절편의 부호를 읽는다."
+  ]
+}

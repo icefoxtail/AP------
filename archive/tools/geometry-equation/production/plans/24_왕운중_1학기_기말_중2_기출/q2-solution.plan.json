@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "formula": "8 - 2*x"
+  },
+  "caption": "주어진점(3,2)을지나는 2x+y=k의상수 k=8. 실제직선 y8−2x와점을대조,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $2x+y=k$가 $x=3$, $y=2$를 해로 가진다. $k$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진점(3,2)을지나는2x+y=k의상수k=8. 실제직선y8−2x와점을대조,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진점(3,2)을지나는2x+y=k의상수k=8. 실제직선y8−2x와점을대조,정답④."
+  ]
+}

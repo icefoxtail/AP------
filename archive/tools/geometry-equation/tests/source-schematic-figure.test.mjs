@@ -176,7 +176,9 @@ test('a published SVG link cannot provide authority to reuse the former PNG',()=
 });
 
 const jeil22Title='22_제일고_1학기_중간_고2_수학I';
-const jeil22Question=loadBank(fs.readFileSync(path.join(repoRoot,'archive/exams/original/high/h2/1mid',jeil22Title+'.js'),'utf8')).find(row=>row.id===18);
+const jeil22Live=loadBank(fs.readFileSync(path.join(repoRoot,'archive/exams/original/high/h2/1mid',jeil22Title+'.js'),'utf8')).find(row=>row.id===18);
+// The published question may carry a redrawn figure (its image field); this capability reads the ORIGINAL source raster, which the original stem embedded as its one <img>.
+const jeil22Question={...jeil22Live,content:/<img\b/i.test(jeil22Live.content)?jeil22Live.content:jeil22Live.content+'<img src="assets/images/'+jeil22Title+'/q18.png" class="exam-img">'};
 const jeil22Identity=assetIdentity(jeil22Title+'|18','PROBLEM_VISUAL','body');
 const jeil22Context={repoRoot,question:jeil22Question,identity:jeil22Identity,typography:{baseFontPx:36,displayScale:350/960}};
 const jeil22Plan={

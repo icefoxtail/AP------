@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "2",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "M",
+        "x": "5",
+        "y": "14",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5"
+      ],
+      "y": [
+        "14"
+      ]
+    }
+  },
+  "caption": "닫힌구간 2 이상 5 이하에서 상수 k가 들어 있는 이차함수 f의 그래프와 최댓값 14를 나타낸 그림이다.",
+  "accessibilityDescription": "가로축에 2와 5, 세로축에 14가 표시되어 있고, 아래로 볼록한 포물선이 구간 2부터 5까지 그려져 있다. 함수의 식에는 상수 k가 들어 있다.",
+  "newVisualInformation": [
+    "구간 2 이상 5 이하의 그래프와 세로축의 14를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$2\\le x\\le 5$에서 이차함수 $y=x^2-4x+k$의 최댓값이 $14$일 때, $k$의 값은? (단, $k$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1.5"
+      },
+      {
+        "x": "0"
+      },
+      {
+        "x": "2"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-1.5",
+        "to": "0",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": "2",
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.4332"
+      },
+      {
+        "shade": 1,
+        "text": "0.4772"
+      }
+    ]
+  },
+  "caption": "한 학생이 확률과통계와 수학 I을 고를 확률은 1/6이므로 해당 학생 수는 B(720, 1/6)이고 평균 120, 표준편차 10이다. 정규근사에서 구간은 z=−1.5부터 2까지이다. 평균을 경계로 −1.5부터 0까지 0.4332, 0부터 2까지 0.4772이므로 합은 0.9104이다. 따라서 답은 약 0.9104이다.",
+  "newVisualInformation": [
+    "구간이 z=−1.5부터 2까지이고 평균을 경계로 두 부분 넓이 0.4332와 0.4772로 나뉨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형3. 720명의 학생이 각자 네 과목 확률과통계, 수학 I, 미적분, 기하 중에서 서로 다른 2개의 과목을 임의로 선택할 때, 확률과통계와 수학 I을 모두 선택한 사람이 105명 이상 140명 이하일 확률을 오른쪽 표준정규분포표를 이용하여 구하고, 그 풀이과정을 서술하시오. [7점]\n\n<table class=\"table table-bordered text-center my-3\">\n<thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n</tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

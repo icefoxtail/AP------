@@ -49,7 +49,11 @@ window.questionBank = [
     "rpmL3": "확률의 기본",
     "rpmL4": "확률 계산",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 합이 4보다 작은 칸을 칠했다. 합이 2인 칸은 (1, 1) 한 칸, 합이 3인 칸은 (1, 2), (2, 1) 두 칸이다. 모두 3칸이고 전체는 36칸이므로 P(X<4)=3/36=1/12이다. 합이 4인 (1, 3), (2, 2), (3, 1)은 부등호가 <이므로 포함하지 않는다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

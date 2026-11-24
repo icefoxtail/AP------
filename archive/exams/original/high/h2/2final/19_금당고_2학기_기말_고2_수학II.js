@@ -512,7 +512,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 x축과 나란한 직선 y=4가 −1부터 1까지 그려져 있고, x축과 이 직선 사이의 왼쪽 영역과 오른쪽 영역에 각각 4가 적혀 있다.",
+    "solutionImageCaption": "f가 짝함수이므로 왼쪽 절반의 적분값 4를 두 배 하면 전체 적분값은 8이다. 4x³+2x는 홀함수이므로 대칭구간에서 그 적분값은 0이고, 남는 값은 8이다. 그림은 f(x)=4인 예를 나타낸 것이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -596,7 +601,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 이차함수 그래프가 원점을 지나고, 그래프 위에 꼭짓점 V와 점 Q가 표시되어 있다. 점 Q는 x축 아래 왼쪽에 있다.",
+    "solutionImageCaption": "F(0)=0이고 관계식을 미분하면 f(x)=3x+2이다. 이를 적분하면 F(x)=3/2 x²+2x이고 F(-1)=3/2−2=−1/2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -636,7 +645,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 이차함수 그래프에 꼭짓점 V와 점 Q가 표시되어 있고, 점 Q는 오른쪽 아래에 있다. x축에 2, y축에 7이 눈금으로 적혀 있다.",
+    "solutionImageCaption": "g(1)=10이고 f(x)+g′(x)=−8x+9, f(x)g′(x)=(−10x+12)(2x−3)이다. g′(x)=−10x+12일 때 g(2)=7을 만족하므로 g(x)=−5x²+12x+3이고 g(3)=−6이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -676,7 +690,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 0에서 3까지 그려진 이차곡선 h(x)=3x²+12x와 점 P(0,0), Q(3,63)이 표시되어 있다.",
+    "solutionImageCaption": "k=0일 때 f′(x)=3x²+12x의 그래프는 x=0에서 0이고 x=3에서 63이다. 닫힌구간 [0,3]에서 이 값은 계속 커지므로 f′(x)의 최솟값은 k이다. f가 증가하려면 f′(x)≥0이므로 k≥0이고 최솟값은 0이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -717,7 +736,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 사를 빼서 두 평행 접선을 수평선으로 바꾸고 두 극소점과 가운데 극대점의 관계를 본다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

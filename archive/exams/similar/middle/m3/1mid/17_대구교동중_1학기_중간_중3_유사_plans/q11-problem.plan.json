@@ -1,0 +1,1110 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "넓이가 x의 제곱인 정사각형 2개, 넓이가 x인 직사각형 5개, 넓이가 1인 정사각형 2개가 서로 떨어져 놓여 있다.",
+  "accessibilityDescription": "위쪽에 큰 정사각형 두 개와 가로로 긴 직사각형 하나, 가운데 줄에 가로로 긴 직사각형 네 개, 아래쪽에 작은 정사각형 두 개가 있다. 한 정사각형의 밑변에 x, 한 직사각형의 긴 변에 x와 짧은 변에 1, 한 작은 정사각형의 윗변에 1이 적혀 있다.",
+  "newVisualInformation": [
+    "가로와 세로가 각각 x인 정사각형 2개, 가로 x와 세로 1인 직사각형 5개, 한 변이 1인 정사각형 2개가 간격을 두고 배치되어 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "q00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q01",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q04",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q05",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q06",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q07",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q08",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q09",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q14",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q15",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q16",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q17",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q18",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q19",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q24",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q25",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q26",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q27",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q28",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q29",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q34",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q35",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "q00",
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q15",
+    "q16",
+    "q17",
+    "q18",
+    "q19",
+    "q20",
+    "q21",
+    "q22",
+    "q23",
+    "q24",
+    "q25",
+    "q26",
+    "q27",
+    "q28",
+    "q29",
+    "q30",
+    "q31",
+    "q32",
+    "q33",
+    "q34",
+    "q35"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sS10",
+      "refs": [
+        "q00",
+        "q01"
+      ]
+    },
+    {
+      "id": "sS11",
+      "refs": [
+        "q01",
+        "q02"
+      ]
+    },
+    {
+      "id": "sS12",
+      "refs": [
+        "q02",
+        "q03"
+      ]
+    },
+    {
+      "id": "sS13",
+      "refs": [
+        "q03",
+        "q00"
+      ]
+    },
+    {
+      "id": "sS20",
+      "refs": [
+        "q04",
+        "q05"
+      ]
+    },
+    {
+      "id": "sS21",
+      "refs": [
+        "q05",
+        "q06"
+      ]
+    },
+    {
+      "id": "sS22",
+      "refs": [
+        "q06",
+        "q07"
+      ]
+    },
+    {
+      "id": "sS23",
+      "refs": [
+        "q07",
+        "q04"
+      ]
+    },
+    {
+      "id": "sR10",
+      "refs": [
+        "q08",
+        "q09"
+      ]
+    },
+    {
+      "id": "sR11",
+      "refs": [
+        "q09",
+        "q10"
+      ]
+    },
+    {
+      "id": "sR12",
+      "refs": [
+        "q10",
+        "q11"
+      ]
+    },
+    {
+      "id": "sR13",
+      "refs": [
+        "q11",
+        "q08"
+      ]
+    },
+    {
+      "id": "sR20",
+      "refs": [
+        "q12",
+        "q13"
+      ]
+    },
+    {
+      "id": "sR21",
+      "refs": [
+        "q13",
+        "q14"
+      ]
+    },
+    {
+      "id": "sR22",
+      "refs": [
+        "q14",
+        "q15"
+      ]
+    },
+    {
+      "id": "sR23",
+      "refs": [
+        "q15",
+        "q12"
+      ]
+    },
+    {
+      "id": "sR30",
+      "refs": [
+        "q16",
+        "q17"
+      ]
+    },
+    {
+      "id": "sR31",
+      "refs": [
+        "q17",
+        "q18"
+      ]
+    },
+    {
+      "id": "sR32",
+      "refs": [
+        "q18",
+        "q19"
+      ]
+    },
+    {
+      "id": "sR33",
+      "refs": [
+        "q19",
+        "q16"
+      ]
+    },
+    {
+      "id": "sR40",
+      "refs": [
+        "q20",
+        "q21"
+      ]
+    },
+    {
+      "id": "sR41",
+      "refs": [
+        "q21",
+        "q22"
+      ]
+    },
+    {
+      "id": "sR42",
+      "refs": [
+        "q22",
+        "q23"
+      ]
+    },
+    {
+      "id": "sR43",
+      "refs": [
+        "q23",
+        "q20"
+      ]
+    },
+    {
+      "id": "sR50",
+      "refs": [
+        "q24",
+        "q25"
+      ]
+    },
+    {
+      "id": "sR51",
+      "refs": [
+        "q25",
+        "q26"
+      ]
+    },
+    {
+      "id": "sR52",
+      "refs": [
+        "q26",
+        "q27"
+      ]
+    },
+    {
+      "id": "sR53",
+      "refs": [
+        "q27",
+        "q24"
+      ]
+    },
+    {
+      "id": "sU10",
+      "refs": [
+        "q28",
+        "q29"
+      ]
+    },
+    {
+      "id": "sU11",
+      "refs": [
+        "q29",
+        "q30"
+      ]
+    },
+    {
+      "id": "sU12",
+      "refs": [
+        "q30",
+        "q31"
+      ]
+    },
+    {
+      "id": "sU13",
+      "refs": [
+        "q31",
+        "q28"
+      ]
+    },
+    {
+      "id": "sU20",
+      "refs": [
+        "q32",
+        "q33"
+      ]
+    },
+    {
+      "id": "sU21",
+      "refs": [
+        "q33",
+        "q34"
+      ]
+    },
+    {
+      "id": "sU22",
+      "refs": [
+        "q34",
+        "q35"
+      ]
+    },
+    {
+      "id": "sU23",
+      "refs": [
+        "q35",
+        "q32"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lSx",
+        "ownerSegment": "sS10",
+        "text": "x"
+      },
+      {
+        "id": "lR1x",
+        "ownerSegment": "sR12",
+        "text": "x"
+      },
+      {
+        "id": "lR1h",
+        "ownerSegment": "sR11",
+        "text": "1"
+      },
+      {
+        "id": "lU1",
+        "ownerSegment": "sU12",
+        "text": "1"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "q00",
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q15",
+    "q16",
+    "q17",
+    "q18",
+    "q19",
+    "q20",
+    "q21",
+    "q22",
+    "q23",
+    "q24",
+    "q25",
+    "q26",
+    "q27",
+    "q28",
+    "q29",
+    "q30",
+    "q31",
+    "q32",
+    "q33",
+    "q34",
+    "q35"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 400
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 넓이가 각각 $x^2$인 정사각형 $2$개, $x$인 직사각형 $5$개, $1$인 정사각형 $2$개를 모두 사용하여 하나의 큰 직사각형을 만들려고 한다. 이 직사각형의 둘레의 길이는? (단, 주어진 조각의 모양을 바꾸지 않는다.) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

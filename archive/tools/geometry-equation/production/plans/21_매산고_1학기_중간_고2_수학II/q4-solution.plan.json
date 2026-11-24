@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          3,
+          6
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "6"
+      ]
+    }
+  },
+  "caption": "x→3일 때 극한이 유한하려면 분자가 0이어야 하므로 a=-9이다. 이때 f(x)=x+3(x≠3)이므로 극한값은 6이고, 연속 조건에서 b=6이다. 따라서 |a+b|=3이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "x=3에서 양쪽 조각이 열린 두 직선과 채운 점 P가 보이고, 가로축 눈금 3과 세로축 눈금 6이 표시되어 있다.",
+  "newVisualInformation": [
+    "x=3에서 열린 끝을 가진 두 직선 조각",
+    "점 P(3,6)",
+    "가로축 눈금 3, 세로축 눈금 6"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 함수 $f(x)$가 $x=3$에서 연속이 되도록 하는 상수 $a,b$에 대하여 $|a+b|$의 값을 구하면? $$f(x)=\\begin{cases}\\frac{x^2+a}{x-3}&(x\\ne3)\\\\b&(x=3)\\end{cases}$$ [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

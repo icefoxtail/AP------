@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원식을 정리하면 (3−a)x≤16. 왼쪽 방향 해집합이므로 3−a>0, 경계 16/(3−a)=4에서 a−1. 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식의 해가 $x\\le4$일 때, 상수 $a$의 값은? [4점]\n$-2+0.1(-ax+4)\\le-0.3x$ 보기: ['$a=-3$', '$a=-2$', '$a=-1$', '$a=0$', '$a=1$']",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원식을정리하면(3−a)x≤16. 왼쪽방향해집합이므로3−a>0,경계16/(3−a)=4에서a−1. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원식을정리하면(3−a)x≤16. 왼쪽방향해집합이므로3−a>0,경계16/(3−a)=4에서a−1. 정답③."
+  ]
+}

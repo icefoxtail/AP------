@@ -189,7 +189,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "부피비에서 겉넓이비로 환산",
-    "decisiveStep": "주어진 부피비에서 닮음비를 되찾은 뒤 제곱한다."
+    "decisiveStep": "주어진 부피비에서 닮음비를 되찾은 뒤 제곱한다.",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "부피 54:128=27:64라닮음비 3:4,겉넓이비 9:16,정답③.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -764,7 +769,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "0이 맨 앞에 올 수 없는 세 자리 배열",
-    "decisiveStep": "첫 자리의0을 제외하고 남은 서로 다른 숫자를 순서대로 고른다."
+    "decisiveStep": "첫 자리의0을 제외하고 남은 서로 다른 숫자를 순서대로 고른다.",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "백의 자리는 0을 뺀 1, 2, 3, 4의 4가지이다. 이어 십의 자리는 0을 포함해 남은 4장 중 하나, 일의 자리는 남은 3장 중 하나를 고르므로 4×4×3=48이다. 화살표는 선택 단계를 이은 것이다. 따라서 답은 ④ 48개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -803,7 +812,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "확률 정의와 기본 성질의 진위 판정",
-    "decisiveStep": "확률의 범위가0과1을 포함함을 확인해 틀린 문장을 찾는다."
+    "decisiveStep": "확률의 범위가0과1을 포함함을 확인해 틀린 문장을 찾는다.",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "확률의 실제 범위 [0,1]과 보기 ②의 (0,1)을 비교한다. 불가능 0과 확실 1을 빼면 틀리므로 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -842,7 +855,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "적어도 한 번의 여사건",
-    "decisiveStep": "두 눈 모두3미만인 반대 사건을 세어1에서 뺀다."
+    "decisiveStep": "두 눈 모두3미만인 반대 사건을 세어1에서 뺀다.",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "여사건인두눈모두 3미만만표시한다. 4쌍/36=1/9,적어도하나 3이상은 1−1/9=8/9,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -883,7 +900,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "방정식의 해 조건을 눈의 순서쌍으로 변환",
-    "decisiveStep": "주어진 두 해를 각각 b=a 또는 b=2a로 바꾸어 배타적인 순서쌍을 센다."
+    "decisiveStep": "주어진 두 해를 각각 b=a 또는 b=2a로 바꾸어 배타적인 순서쌍을 센다.",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x=1은 b=1a인순서쌍이다. x1인 6쌍과 x2인 3쌍은겹치지않아 9/36=1/4,정답③. x=2은 b=2a인순서쌍이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 20,

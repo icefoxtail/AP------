@@ -274,7 +274,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p2:q08",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 3/20에서 시작해 x=4에서 높이 7/20이 되는 오른쪽 위로 올라가는 선분 모양의 확률밀도함수 그래프이며 x=0부터 x=2까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이는 ∫₀⁴ a(x+3)dx=20a=1이므로 a=1/20이고 f(x)=(x+3)/20이다. 그림은 이 값으로 그렸다(x=0에서 3/20, x=4에서 7/20). 색칠한 0≤x≤2는 높이 3/20과 1/4, 폭 2인 사다리꼴이고 넓이는 (3/20+1/4)/2×2=2/5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -439,7 +443,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p3:q13",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(X≥8)=P(X≤12)이므로 8과 12는 평균에서 같은 거리에 있고 평균 m=10이다. 대칭으로 9와 11도 평균에서 같은 거리이다. 따라서 [8, 9]와 [11, 12]의 넓이는 같고(주황), b=P(9≤X≤12)는 [9, 11]과 [11, 12]의 합이다. 그림의 표준편차 2는 예이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -511,7 +519,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "22_팔마고_1학기_기말_고2_확률과통계:q15",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED"
+    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형 A, B, C, D, E, F의 여섯 변이 그려져 있고 각 변에 A에서 B, C, D, E, F로 이어지는 이동 방향 화살표가 표시되어 있다.",
+    "solutionImageCaption": "주사위에서 소수의 눈은 2, 3, 5의 3개이므로 한 번에 2칸 움직일 확률은 1/2이다. 6번 중 2칸 이동이 k번이면 총 이동 거리는 6+k칸이고 A에서 반시계 방향으로 F까지는 5칸이므로 6+k를 6으로 나눈 나머지가 5가 되어야 한다. 따라서 k=5이고 확률은 6C5×(1/2)⁶=6/64=3/32이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -680,7 +692,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p5:q20",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로 막대 세 개가 나란히 서 있고, 높이는 왼쪽부터 7/15, 7/15, 1/15이다. 각 막대의 끝에는 좌표가 표시되어 있다.",
+    "solutionImageCaption": "전체 경우는 10개 중 2개를 뽑는 45가지이다. X=0일 확률은 7/15, X=1일 확률은 7/15, X=2일 확률은 1/15이다. 불량품이 1개 이상일 확률은 7/15+1/15=8/15이다. 따라서 답은 8/15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -740,6 +756,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "22_팔마고_1학기_기말_고2_확률과통계:q22",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED"
+    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "한 학생이 확률과통계와 수학 I을 고를 확률은 1/6이므로 해당 학생 수는 B(720, 1/6)이고 평균 120, 표준편차 10이다. 정규근사에서 구간은 z=−1.5부터 2까지이다. 평균을 경계로 −1.5부터 0까지 0.4332, 0부터 2까지 0.4772이므로 합은 0.9104이다. 따라서 답은 약 0.9104이다.",
+    "solutionImageSize": "full"
   }
 ];

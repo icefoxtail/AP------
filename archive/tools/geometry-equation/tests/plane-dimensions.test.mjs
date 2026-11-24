@@ -108,7 +108,7 @@ test('E7: plan errors: side, style, offset, label, value, undisplayed points, am
   assert.equal(err({from:'A',to:'Z'}),'DISPLAY_ANNOTATION_POINT_NOT_VISIBLE:Z');
   assert.equal(err({value:19}),'DIMENSION_FACT_MISMATCH:dAM:declared=19:drawn=18.000000');
   assert.equal(err({labelKind:'TEXT'}),'MARK_UNIT_REQUIRES_MATH_LABEL:dAM');
-  assert.equal(err({unit:'km'}),'MARK_UNIT_INVALID:dimensions:dAM');
+  assert.equal(err({unit:'furlong'}),'MARK_UNIT_INVALID:dimensions:dAM');
   assert.equal(err({extra:1}),'MARK_FIELD_UNKNOWN:dimensions.extra');
   assert.match(specError(linePlan({dimensions:[{...row,from:'A',to:'M'}]},{displayPoints:['A','B','C','N']}),model),/NOT_VISIBLE|NOT_DISPLAYED/);
 });
@@ -159,7 +159,7 @@ test('E7: path label plan errors',async()=>{
   assert.equal(err({points:['A','Q','P','B']}),'PATH_LABEL_SEGMENT_NOT_DRAWN:road:A-Q');
   assert.equal(err({label:''}),'PATH_LABEL_LABEL_REQUIRED:road');
   assert.match(err({value:300}),/^PATH_LABEL_FACT_MISMATCH:road:declared=300:drawn=/);
-  assert.equal(err({unit:'km'}),'MARK_UNIT_INVALID:pathLabels:road');
+  assert.equal(err({unit:'furlong'}),'MARK_UNIT_INVALID:pathLabels:road');
   assert.equal(err({style:'BRACKET'}),'MARK_FIELD_UNKNOWN:pathLabels.style');
 });
 

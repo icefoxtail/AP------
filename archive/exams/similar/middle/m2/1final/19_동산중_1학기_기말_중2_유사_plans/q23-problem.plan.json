@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      7,
+      -7,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "M",
+          "x": "5/2",
+          "y": "0"
+        },
+        {
+          "id": "N",
+          "x": "1",
+          "y": "-3"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "M": "M",
+    "N": "N"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차함수 y=ax+b의 그래프가 두 점 (2, -1), (4, 3)과 x축 위의 점 M, x좌표가 1인 점 N을 지난다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 올라가는 직선이 있고, 점 (2, -1)과 (4, 3), x축 위의 점 M, x좌표가 1인 점 N이 표시되어 있다.",
+  "newVisualInformation": [
+    "직선이 두 점 (2, -1), (4, 3)을 지나는 모습",
+    "x축과 만나는 점 M",
+    "x좌표가 1인 직선 위의 점 N"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 두 점 $(2, -1)$과 $(4, 3)$을 지나고, 두 점 $(m, 0)$과 $(1, n)$도 지날 때, $a, b, m, n$의 값을 각각 구하시오. [$a, n$ 각 2점, $b, m$ 각 1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -233,7 +233,11 @@ window.examData = {
         "$2a+b$"
       ],
       answer: "",
-      solution: ""
+      solution: "",
+      "solutionImage": "assets/images/19_부산사직여중_1학기_중간_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 칸인 맨 윗줄, 두 칸인 가운데 줄, 한 칸인 맨 아래 칸이 대각선으로 이어진 피라미드 모양 그림이다. 칸마다 a+b, −2a−3b, 2a−b, −a−2b, −4b, A=−a−6b가 적혀 있다.",
+      "solutionImageCaption": "맨 윗줄 가운데 칸을 x라 하면 이웃한 두 칸을 더한 값이 −4b이므로 x+(2a−b)=−4b에서 x=−2a−3b이다. 왼쪽 가운데 칸은 (a+b)+(−2a−3b)=−a−2b이다. 따라서 A=(−a−2b)+(−4b)=−a−6b이다. 따라서 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 19,

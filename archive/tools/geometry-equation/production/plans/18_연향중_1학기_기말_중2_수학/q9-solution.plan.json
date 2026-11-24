@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "1800",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "200",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "2000",
+        "unit": "m",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dDE",
+        "from": "D",
+        "to": "E",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "200",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dDF",
+        "from": "D",
+        "to": "F",
+        "label": "600",
+        "unit": "m",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 380
+  },
+  "caption": "열차의 길이를 L, 속력을 분속 v라 하면 2분 30초는 2.5분, 45초는 0.75분이므로 2.5v=1800+L, 0.75v=400+L이다. 두 식을 변끼리 빼면 1.75v=1400이므로 v=800이고 L=0.75×800-400=200이다. 따라서 열차의 길이는 200 m, 속력은 800 m/분이고 답은 ①이다.",
+  "accessibilityDescription": "위쪽 막대는 터널과 열차를 이어 붙인 구간, 아래쪽 막대는 다리와 열차를 이어 붙인 구간을 나타내고, 각 부분과 전체 길이가 치수선으로 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "터널 1800 m와 열차 부분을 이은 위쪽 막대와 전체 2000 m 치수선",
+    "다리 400 m와 열차 부분을 이은 아래쪽 막대와 전체 600 m 치수선",
+    "두 경우에서 열차 길이가 같은 200 m로 표시된 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. 등속으로 움직이는 기차가 길이 $1800\\,\\mathrm{m}$인 터널을 지나는 데 2분 30초가 걸리고, 길이 $400\\,\\mathrm{m}$인 다리를 지나는데 45초가 걸렸다고 한다. 이 때, 이 기차의 길이와 속력을 각각 바르게 구한 것은? [4.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

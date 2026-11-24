@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "P3",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "formula": "x - 1"
+  },
+  "caption": "ab<0이라 부호는 반대이고 a−b>0에서 a>0,b<0이다. 그림은 a1,b−1로 택한 부호 대표형이며 실제계수를 정하지 않는다. 증가하면서 세로축의 원점 아래를 지나는②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$ab \\lt 0, a-b \\gt 0$일 때, 다음 중 일차함수 $y=ax+b$의 그래프로 알맞은 것은? [4점]<br><img src=\"assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg\" alt=\"① 오른쪽 위로 올라가며 세로축의 원점 위를 지난다. ② 올라가며 세로축의 원점 아래를 지난다. ③ 올라가며 원점을 지난다. ④ 오른쪽 아래로 내려가며 세로축의 원점 위를 지난다. ⑤ 내려가며 세로축의 원점 아래를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

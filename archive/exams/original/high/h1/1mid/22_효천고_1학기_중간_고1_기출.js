@@ -570,7 +570,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_효천고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 두 줄이 있다. 위 줄은 −1에서 2까지의 구간으로 −1은 찬 점, 2는 속이 빈 점이고 아래 줄은 1에서 2까지의 구간으로 두 끝점이 모두 찬 점이다.",
+    "solutionImageCaption": "가)에서 √(x+1)/√(x−2)=−√((x+1)/(x−2))가 성립하려면 x−2<0이고 x+1≥0이어야 하므로 −1≤x<2이다. 정수 x는 −1, 0, 1이므로 m=3이다. 나)에서 √(1−y)√(y−2)=−√(−y²+3y−2)가 성립하려면 1−y≤0이고 y−2≤0이어야 하므로 1≤y≤2이다. 정수 y는 1, 2이므로 n=2이다. 수직선의 위 줄은 x의 범위, 아래 줄은 y의 범위이다. 따라서 m+n=5이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

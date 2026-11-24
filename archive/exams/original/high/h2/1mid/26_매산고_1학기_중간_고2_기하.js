@@ -71,7 +71,11 @@ window.questionBank = [
     "problemTypeKey": "PT_GEO_SPACE_FIGURE",
     "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
     "crossConceptKeys": ["CC_SPACE_FIGURE","CC_SKEW_LINES"],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평인 평면 α와 그 뒤에 수직으로 선 평면 β가 있다. α에는 한 직선 위에 있지 않은 세 점과 직선 l, l과 한 점에서 만나는 직선 m, l과 평행한 직선 p가 있고, β에는 α 쪽으로 비스듬히 오르는 직선 q가 있다.",
+    "solutionImageCaption": "평면 α 위에 한 직선 위에 있지 않은 세 점과, 직선 l과 그 위에 있지 않은 한 점, 한 점에서 만나는 두 직선 l과 m, 평행한 두 직선 l과 p를 함께 놓았다. 이 네 가지는 모두 α 하나에 담긴다. α에 수직으로 선 평면 β 위의 직선 q는 α 위의 l과 만나지도 평행하지도 않아 꼬인 위치에 있고, 두 직선을 함께 담는 평면은 없다. 따라서 평면을 결정하지 못하는 것은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -405,7 +409,11 @@ window.questionBank = [
     "problemTypeKey": "PT_GEO_SPACE_FIGURE",
     "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
     "crossConceptKeys": ["CC_SPACE_FIGURE"],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평인 평면 α 위의 한 점에서 세 직선 l, m, n이 만난다. m은 평면 α에 수직으로 서 있고, l과 m 사이와 n과 m 사이에 각각 직각 표시가 있으며, l과 n 사이에는 45도 각이 표시되어 있다.",
+    "solutionImageCaption": "ㄱ은 서로 다른 두 평면 α, β가 같은 직선 l에 모두 수직이면 두 평면의 수직 방향이 같아 α와 β가 평행하므로 참이다. ㄴ은 그림에서 l과 m, m과 n이 각각 수직이어도 l과 n이 45도를 이루므로 거짓이다. ㄷ은 직선 l에 수직인 평면 α와 l이 평행한 평면 β가 있을 때 β가 γ와 수직이어도 α와 γ가 평행해지지 않으므로 거짓이다. 따라서 옳은 것은 ㄱ뿐이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-12",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "12",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "가로축 대칭에서는 가로좌표가 같고 높이의 부호만 바뀐다. 같은 가로좌표의 두 점을 비교한다.",
+  "accessibilityDescription": "가로축 대칭에서는 가로좌표가 같고 높이의 부호만 바뀐다. 같은 가로좌표의 두 점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 이차함수 $y=ax^2$의 그래프는 점 $(-2, b)$를 지나고, 이차함수 $y=-3x^2$의 그래프와 $x$축에 서로 대칭이다. 이 때, 두 상수 $a, b$의 값을 각각 구하시오. [2.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a3,b12최종값 미표시. 원함수상점P−2,−12는대칭계산중간값; Q좌표숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축 대칭에서는 가로좌표가 같고 높이의 부호만 바뀐다. 같은 가로좌표의 두 점을 비교한다."
+  ]
+}

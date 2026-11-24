@@ -817,7 +817,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "b=−1, 3^(3+a)=1에서 a=−3이고 a+b=−4."
+    "decisiveStep": "b=−1, 3^(3+a)=1에서 a=−3이고 a+b=−4.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑이 3인 지수곡선이 오른쪽 위로 증가하고, 수평점근선 y=-1과 x축 위의 점 (3, 0)이 보인다.",
+    "solutionImageCaption": "수평점근선이 y=-1이므로 b=-1이다. 그래프가 x축과 만나는 점의 x좌표가 3이므로 3의 3+a제곱=1에서 a=-3이다. 따라서 a+b=-4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -983,7 +987,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "4a=1에서 a=1/4, ak=3에서 k=12, 8a+k=14."
+    "decisiveStep": "4a=1에서 a=1/4, ak=3에서 k=12, 8a+k=14.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "오른쪽 위로 올라가는 완만한 로그 곡선 f가 x축과 점 A에서 만나고 높이 1인 점 B를 지난다. 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 y=log₃(a·x)의 그래프로 x절편이 A(4, 0)이므로 log₃(4a)=0에서 4a=1이고 a=1/4이다. 점 B(k, 1)에서 log₃(ak)=1이므로 ak=3이고 k=12이다. 따라서 8a+k=2+12=14이고 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -1064,7 +1072,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "제2사분면이므로 sin=3/5, cos=−4/5, 요구값은 −2."
+    "decisiveStep": "제2사분면이므로 sin=3/5, cos=−4/5, 요구값은 −2.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면의 단위원 위 제2사분면에 점이 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 3/5, 원점에서 수선의 발까지의 가로 길이는 4/5로 표시되어 있다.",
+    "solutionImageCaption": "tanθ=-3/4이고 sinθ×tanθ<0이므로 sinθ와 cosθ는 부호가 반대이고 cosθ<0이다. 따라서 θ는 제2사분면의 각이고, 빗변이 1인 직각삼각형에서 sinθ=3/5, cosθ=-4/5이다. 그러므로 10(sinθ+cosθ)=10(3/5-4/5)=-2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1392,7 +1404,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "가능한 각은 5π/6, 7π/6이고 합은 2π."
+    "decisiveStep": "가능한 각은 5π/6, 7π/6이고 합은 2π.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위에 원점에서 네 동경 OA, OB, OD, OE가 있다. OA와 OB는 위쪽에서, OD와 OE는 아래쪽에서 y축을 사이에 두고 좌우 대칭이며 θ에 해당하는 150°와 210°가 각으로 표시되어 있다.",
+    "solutionImageCaption": "θ의 동경과 5θ의 동경이 y축에 대하여 대칭이면 5θ≡π−θ (mod 2π)이므로 θ=(2k+1)π/6이다. π/2<θ<3π/2에서 θ=5π/6(150°, 동경 OA)과 7π/6(210°, 동경 OD)이다. θ=5π/6이면 5θ=25π/6의 동경은 30°(OB), θ=7π/6이면 5θ=35π/6의 동경은 330°(OE)이고 각 쌍은 y축에 대칭이다. 합은 5π/6+7π/6=2π이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1477,7 +1493,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "ㄱ·ㄴ은 참, a>1에서 최댓값은 a이므로 ㄷ은 거짓."
+    "decisiveStep": "ㄱ·ㄴ은 참, a>1에서 최댓값은 a이므로 ㄷ은 거짓.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "t가 0에서 1 사이에서 점 P(0, 1)에서 시작해 내려가는 파란 지수 곡선과 올라가는 주황 지수 곡선이 있다. t=1에서 두 곡선의 끝점 Q, R의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=f(x)로 두면 f는 y축에 대칭이고 0≤t≤1이므로 g(−x)=g(x)이어서 ㄱ은 참이다. 그림은 y=aᵗ을 0≤t≤1에서 본 예(파란 곡선은 a=1/2, 주황 곡선은 a=2)이다. 0<a<1이면 감소하므로 t=1일 때 최솟값 Q(1, a)에서 g의 최솟값은 a이고 ㄴ은 참이다. a>1이면 증가하므로 t=1일 때 최댓값은 R(1, a)이고 1이 아니므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

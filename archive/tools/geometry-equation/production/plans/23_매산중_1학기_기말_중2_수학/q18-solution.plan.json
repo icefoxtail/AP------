@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "평행 조건은 a−1. 절편 6과 −6으로 서로 다른 평행선, 정답 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 다음 두 일차방정식 $y-ax-6=0, y+x+6=0$의 그래프가 평행하기 위한 $a$의 값은? (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "평행조건은a−1. 절편6과−6으로서로다른평행선,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행조건은a−1. 절편6과−6으로서로다른평행선,정답②."
+  ]
+}

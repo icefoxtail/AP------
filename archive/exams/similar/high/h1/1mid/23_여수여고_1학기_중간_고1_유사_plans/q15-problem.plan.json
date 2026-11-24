@@ -1,0 +1,84 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 x축에 접하는 두 경우의 포물선을 제시한다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "25/4",
+            "5",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -6,
+            1
+          ],
+          "viewport": [
+            -6,
+            1,
+            -2,
+            8
+          ],
+          "requiredPoints": [
+            {
+              "id": "T1",
+              "x": -2.5,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "caption": "a=1일 때 x=-5/2에서 x축에 접한다."
+      },
+      {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "9/4",
+            "3",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -5,
+            2
+          ],
+          "viewport": [
+            -5,
+            2,
+            -2,
+            8
+          ],
+          "requiredPoints": [
+            {
+              "id": "T2",
+              "x": -1.5,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "caption": "a=2일 때 x=-3/2에서 x축에 접한다."
+      }
+    ],
+    "caption": "k=7/6일 때 a의 값이 변해도 포물선은 항상 x축에 접한다."
+  }
+}

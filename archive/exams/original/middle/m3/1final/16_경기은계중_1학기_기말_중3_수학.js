@@ -220,7 +220,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 대칭축을 기준으로 좌우에서 증가·감소를 확인한다. 옳지 않은 보기번호는 표시하지 않는다.",
+    "solutionImageCaption": "꼭짓점과 대칭축을 기준으로 좌우에서 증가·감소를 확인한다. 옳지 않은 보기번호는 표시하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -303,7 +307,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t&lt;6에서 정의되며 끝점 6은 퇴화상태이다.",
+    "solutionImageCaption": "넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t<6에서 정의되며 끝점 6은 퇴화상태이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -325,7 +333,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+    "solutionImageCaption": "근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -347,7 +359,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+    "solutionImageCaption": "B의 가로좌표를 t라 두면 가로선분 AB=2t, 세로선분 BC=5t²/3이다. AB:BC=2:1을 적용한다. 점의 이름과 선분은 남기되 A의 최종좌표 및 이를 바로 노출하는 B,C의 수치는 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -405,6 +421,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 7,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg",
+    "solutionImage": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+    "solutionImageCaption": "같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+    "solutionImageSize": "full"
   }
 ];

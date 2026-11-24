@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "L",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "base",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcLA",
+        "circle": "cc",
+        "center": "O",
+        "from": "L",
+        "to": "A",
+        "side": "MINOR"
+      },
+      {
+        "id": "arcAD",
+        "circle": "cc",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "MINOR"
+      },
+      {
+        "id": "arcDR",
+        "circle": "cc",
+        "center": "O",
+        "from": "D",
+        "to": "R",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 360
+  },
+  "caption": "점 O를 중심으로 하는 반원의 지름 위에 변 BC가 놓이고 꼭짓점 A, D가 반원 위에 있는 직사각형 ABCD가 보인다.",
+  "accessibilityDescription": "반원, 중심 O, 지름 위의 선분 BC, 반원 위의 점 A와 D, 직사각형 ABCD가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 점 $O$를 중심으로 하는 반원에 내접하는 직사각형 $ABCD$가 다음 조건을 만족시킨다. (가) $\\overline{OC}+\\overline{CD}=x+y+6$ (나) $\\overline{DA}+\\overline{AB}+\\overline{BO}=3x+y+12$\n\n직사각형 $ABCD$의 넓이를 $x, y$의 식으로 나타내면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "점 O는 반원의 중심이다.",
+    "직사각형 ABCD의 꼭짓점 A, D는 반원 위에 있고 변 BC는 반원의 지름 위에 있다.",
+    "OC+CD=x+y+6이다.",
+    "DA+AB+BO=3x+y+12이다."
+  ],
+  "newVisualInformation": [
+    "유사 문항의 조건에 맞춘 반원과 내접 직사각형의 배치를 보여 준다."
+  ]
+}

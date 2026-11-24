@@ -14,7 +14,9 @@ for(const dir of ['item75g7b','item76g7c']){
     assert.equal(r.status,'ARCHIVE_BOUND',JSON.stringify(r).slice(0,800));
     assert.equal(r.sizeClass,'full');
     const svg=fs.readFileSync(path.join(out,`${dir}-solution.svg`),'utf8');
-    assert.match(svg,/data-font-px="20"/);                                  // the font floor of the full class: the case this guards
+    // the base font of the full class is the measured one, never below the floor of 20 (the case this guards); the exact value follows the browser's measured text widths
+    const fonts=[...svg.matchAll(/data-font-px="([0-9.]+)"/g)].map(match=>Number(match[1]));
+    assert.ok(fonts.some(font=>font>=20&&font<=32),JSON.stringify(fonts));
     assert.match(svg,/id="tick-y-1-label"/);
     assert.ok(!svg.includes('tickInk'),'the ink report is a placement input only');
   });

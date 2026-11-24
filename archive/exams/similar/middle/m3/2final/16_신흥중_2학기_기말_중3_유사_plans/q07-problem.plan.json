@@ -1,0 +1,298 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743145",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743145",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "669131",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "900404",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "D",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcED",
+        "circle": "circ",
+        "center": "O",
+        "from": "E",
+        "to": "D",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOC",
+        "ownerSegment": "sOC",
+        "text": "1"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "0.67",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "0.90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCD"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sOC",
+          "sOD"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름의 길이가 1인 사분원에서 중심 O와 호 위의 점 A, 반지름 위의 점 B와 D가 있고, OD에 수직인 선분 AB, CD가 그려져 있다. 각 AOB는 42로, 선분 AB는 0.67, 선분 CD는 0.90으로 적혀 있다.",
+  "accessibilityDescription": "중심 O인 사분원과 호 위의 점 A, 반지름 위의 점 B와 D, OD에 수직으로 내린 선분 AB와 CD가 보인다. 각 AOB 42, 선분 AB의 길이 0.67, 선분 CD의 길이 0.90이 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름이 1인 사분원에서 각 AOB 42에 대하여 사인값과 탄젠트값에 해당하는 두 선분의 길이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle AOB = 42^\\circ$이고 $\\overline{AB} \\approx 0.67$, $\\overline{CD} \\approx 0.90$일 때, $\\sin 42^\\circ + \\tan 42^\\circ$의 값은? (단, 점 $B, D$는 사분원의 반지름 위에 있고 $\\overline{AB} \\perp \\overline{OD}$, $\\overline{CD} \\perp \\overline{OD}$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

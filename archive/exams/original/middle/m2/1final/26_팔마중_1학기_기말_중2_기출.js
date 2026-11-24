@@ -77,7 +77,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "④ y=11−3x의 점(3,2)를 표시한다. 같은 점을 만족하더라도 x²/xy가있는①③은일차가아니다. 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -115,7 +120,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 음수인 두 직선이 한 점에서 만나는 그래프이고, 그 교점의 좌표가 함께 표시되어 있다.",
+    "solutionImageCaption": "첫째 식 x=-2y+3을 둘째 식에 대입하면 -4y=-8에서 y=2이고 x=-1이다. 두 직선 x=-2y+3과 3x+2y=1은 점 (-1,2)에서 만나므로 a=-1, b=2이다. 따라서 a+b=1이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -153,7 +162,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y계수를 6으로맞춰빼면 17x34,x2,y5. 교점(2,5)에서 a+b7. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -192,7 +205,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "상수 없는 두 조건을 정리해 y4x−11,3x+4y32. 공통점 (4,5)을 나머지 식에 대입해 a3,b3. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -231,7 +248,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 A 시간 분, 세로 y는 B 시간 분. x+y40,180x+120y6000의 교점 (20,20). A 거리 3.6km, B 거리 2.4km. 선은 조건의 보조 연장이고 시간은 비음수이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -270,7 +291,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "x=6일 때 y는 6보다 작은 짝수 2와 4가 모두 가능하다. 하나의 x에 y가 둘 이상 대응하므로 ②는 함수가 아니다. 짝수의 범위를 어떻게 해석해도 이 반례만으로 충분하며, 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -308,7 +333,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f3=4에서 3a−5=4,a3. 확정한직선의(−1,−8)을읽어 f(−1)=−8. 정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -350,7 +380,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫단계 4개에서한정사각형추가시공유변 1개를제외한 3개씩증가. y=4+3(x−1)=3x+1. 실제단계는자연수점만이며 y16일때 x5. 정답②. 연속 직선은 자연수 단계 관계의 다항식 보조 연장이다. 원래 단계의 정의역은 양의 정수뿐이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -388,7 +423,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "②와④는기울기 −2,1/2로 0이아닌직선. ⑤는수평선 y−5로상수함수다. ①은이차,③은분모에 x가있다. 정답②,④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -423,7 +462,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 y2x−2를위로 4옮기면 y2x+2. 기울기 2는같고절편 −2→2. 원본보기①과일치한다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -504,7 +547,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로변화 4,세로변화 −3이므로기울기 −3/4. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -587,7 +634,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두주어진점(−1,12),(3,−8)사이에서기울기 −20/4=−5. 절편 7이라 a+b2. 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -674,7 +726,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 −3과점(2,−4)에서 y−3x+2. 원문상수항 −4로맞춰 6x+2y−4=0,a6,b2,합 8. 정답⑤.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -713,7 +770,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y축에 수직인 수평선에서는 두 점의 y좌표가 같다. a+4=−2a+4에서 a0. 실제 두 점 (6,4),(0,4)은 y4 위에 있다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -753,7 +814,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 직선이 한 점 (3, -1)에서 만나고, 각 직선 곁에 x+2y=1, y=2x-7, 3x+4y=5의 식이 붙어 있다. 교점에는 좌표 (3, -1)이 표시되어 있다.",
+    "solutionImageCaption": "두 직선 x+2y=1과 2x-y=7의 교점을 구하면 y=2x-7을 대입해 5x=15, x=3이고 y=-1이다. 이 점 (3, -1)을 3x+ay=5에 대입하면 9-a=5에서 a=4이다. 세 직선은 모두 점 (3, -1)에서 만난다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -829,7 +894,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가감법 3x3→x1,y−6. 교점(1,−6)의합은 −5이며둘째식 x+y−5로도바로확인된다. 정답 −5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -861,7 +930,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 좌표평면에 직선 y=1/2-x/3과 직선 y=3x/10-6/5가 서로 다른 색으로 그려져 있고, 첫째 직선 위의 점 A(5, -7/6)와 둘째 직선 위의 점 B(-1, -3/2)가 좌표와 함께 표시되어 있다.",
+    "solutionImageCaption": "f(5)=-(1/3)×5+1/2=-5/3+1/2=-7/6이고, g(-1)=0.3×(-1)-1.2=-0.3-1.2=-3/2이다. 따라서 6f(5)+2g(-1)=6×(-7/6)+2×(-3/2)=-7-3=-10이다. 따라서 답은 -10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -894,7 +967,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래식을정리하면 y2x/5−4/5. x절편점(2,0)에서 a2,원문점(−3,−2)에서 b−2. ab−4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -928,6 +1005,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫 원래 식 y−12x+8에서 a−12, 둘째 y−x/2+20에서 b20. 이 계수를 대입한 연립은 y=x/2+3,y=x/4+1로 기울기가 달라 교점 (−8,−1) 하나. a+b8. 이 그림은 최종 연립의 두 선이다.",
+    "solutionImageSize": "full"
   }
 ];

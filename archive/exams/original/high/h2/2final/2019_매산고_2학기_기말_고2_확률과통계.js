@@ -318,7 +318,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표본평균의 평균은 모두 m이므로 ㄱ은 거짓이다. 표본평균의 분산은 σ²/n이므로 ㄴ은 참이다. n2=9n1이면 Y의 표준편차는 X의 표준편차의 1/3이므로 ㄷ도 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

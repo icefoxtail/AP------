@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      0,
+      35
+    ],
+    "curves": [
+      {
+        "id": "S",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "24",
+          "8",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "label": "S"
+      },
+      {
+        "id": "initial",
+        "kind": "LINE",
+        "coefficients": [
+          "24",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "label": "S=24"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    }
+  },
+  "caption": "넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t<6에서 정의되며 끝점 6은 퇴화상태이다.",
+  "accessibilityDescription": "넓이 S=(4+2t)(6−t)와 처음 넓이 24의 교점을 비교한다. 실제 직사각형은 0≤t<6에서 정의되며 끝점 6은 퇴화상태이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 가로와 세로의 길이가 각각 $4\\mathrm{cm}$, $6\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$가 있다. 가로의 길이는 매초 $2\\mathrm{cm}$씩 늘어나고 세로의 길이는 매초 $1\\mathrm{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "(4+2t)(6−t)=24에서t=0,4,양의시간4.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "넓이 S=(4+2t)(6−t)와 처음 넓이24의 교점을 비교한다. 실제 직사각형은0≤t<6에서 정의되며 끝점6은 퇴화상태이다."
+  ]
+}

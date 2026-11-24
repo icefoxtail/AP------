@@ -213,7 +213,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q06"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q06",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평 조각, x=2에서 높이가 뛰는 지점, 내려갔다 올라가는 뾰족한 꼭짓점 x=4, x=6에서 구멍과 별도의 닫힌 점이 있는 조각 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. 열린구간 (-2,8)에서 x=0은 극한값 1과 함숫값 2가 달라, x=2는 좌극한 1과 우극한 3이 달라, x=6은 구멍(열린 점의 높이 3)과 닫힌 점의 높이 1이 달라 불연속이다(m=3). 불연속인 세 점은 미분가능하지 않고 x=4는 좌우 기울기가 -1, 1인 뾰족한 꼭짓점이라 미분가능하지 않다(n=4). m+n=7이므로 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,

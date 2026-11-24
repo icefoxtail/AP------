@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "P",
+    "B",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAQ1",
+      "refs": [
+        "A",
+        "Q1"
+      ]
+    },
+    {
+      "id": "sQ1Q2",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sQ2Q3",
+      "refs": [
+        "Q2",
+        "Q3"
+      ]
+    },
+    {
+      "id": "sQ3P",
+      "refs": [
+        "Q3",
+        "P"
+      ]
+    },
+    {
+      "id": "sQ3Q4",
+      "refs": [
+        "Q3",
+        "Q4"
+      ]
+    },
+    {
+      "id": "sQ4B",
+      "refs": [
+        "Q4",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "BLUE",
+        "label": "58",
+        "labelName": "넓이의 합",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "Q2",
+              "Q1"
+            ]
+          },
+          {
+            "polygon": [
+              "P",
+              "B",
+              "Q4",
+              "Q3"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "Q1",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "P",
+        "B",
+        "Q4"
+      ]
+    },
+    {
+      "id": "rQ2",
+      "refs": [
+        "P",
+        "Q2",
+        "Q1"
+      ]
+    },
+    {
+      "id": "rQ4",
+      "refs": [
+        "B",
+        "Q4",
+        "Q3"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "길이가 10 cm인 선분 AB 위에 점 P를 잡고, AP와 BP를 각각 한 변으로 하는 두 정사각형을 같은 쪽에 그린 그림이다. 두 정사각형 넓이의 합은 58 제곱센티미터이다.",
+  "accessibilityDescription": "선분 AB 위의 점 P를 경계로 왼쪽에 큰 정사각형, 오른쪽에 작은 정사각형이 나란히 보이고, 선분 AB의 길이 10 cm와 두 정사각형 넓이의 합 58 제곱센티미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "길이가 10 cm인 선분 AB",
+    "선분 위의 점 P",
+    "AP와 BP를 한 변으로 하는 두 정사각형",
+    "두 정사각형 넓이의 합 58 제곱센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "길이가 $10\\text{ cm}$인 선분 $AB$ 위에 점 $P$를 잡아 $\\overline{AP}$와 $\\overline{BP}$를 각각 한 변으로 하는 두 정사각형을 만들었다. 두 정사각형의 넓이의 합이 $58\\text{ cm}^2$일 때, $\\overline{AP}$의 길이는? (단, $\\overline{AP}>\\overline{BP}$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

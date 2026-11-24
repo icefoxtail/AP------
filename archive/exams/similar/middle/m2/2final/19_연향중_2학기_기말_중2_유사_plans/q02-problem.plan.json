@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "G2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sBG2",
+      "refs": [
+        "B",
+        "G2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eD",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tABC",
+        "at": [
+          9,
+          6.5
+        ],
+        "text": "108"
+      }
+    ]
+  },
+  "pointNames": {
+    "G2": "G'"
+  },
+  "caption": "삼각형 ABC에서 꼭짓점 A와 변 BC의 중점 D를 잇는 중선, 무게중심 G, 삼각형 GBC의 무게중심 G'을 나타내고 삼각형 ABC의 넓이 108제곱센티미터를 적었다.",
+  "accessibilityDescription": "삼각형 ABC와 변 BC의 중점 D, 중선 위의 무게중심 G, 삼각형 GBC의 무게중심 G'이 보이고, 삼각형 ABC의 안쪽에 넓이 108이 적혀 있다.",
+  "newVisualInformation": [
+    "두 무게중심과 변 BC의 중점, 주어진 삼각형 ABC의 넓이를 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 무게중심을 $G$, 꼭짓점 $A$에서 내린 중선 $AD$가 변 $BC$와 만나는 점을 $D$, $\\triangle GBC$의 무게중심을 $G'$이라 하자. $\\triangle ABC$의 넓이가 $108\\text{ cm}^2$일 때, $\\triangle G'BD$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

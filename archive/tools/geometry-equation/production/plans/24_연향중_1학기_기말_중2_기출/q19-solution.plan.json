@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8/3",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본교점 x−1을첫식에대입해 b2,둘째에대입해 a−2. 실제두선교점(−1,2),합 0. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 두 일차방정식 $x-y=-3$과 $ax+3y=8$의 그래프를 각각 그린 것이다. 이때, $a+b$의 값을 구하면? (단, $a,b$는 상수) [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본교점x−1을첫식에대입해b2,둘째에대입해a−2. 실제두선교점(−1,2),합0. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본교점x−1을첫식에대입해b2,둘째에대입해a−2. 실제두선교점(−1,2),합0. 정답③."
+  ]
+}

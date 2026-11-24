@@ -1,0 +1,77 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      9
+    ],
+    "viewport": [
+      -0.5,
+      9.5,
+      -0.5,
+      3.8
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "4",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "op",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "oq",
+          "from": "O",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: t=4일 때를 그린다. P(4,2), 수선의 발 Q(4,0)이고 OQ=4, PQ=2, OP=√20이다. 일반적으로 OQ=t, PQ=√t, OP=√(t²+t)이고 (OP-PQ)/OQ=√(1+1/t)-1/√t이다. t가 커질수록 이 값은 1에 가까워지므로 극한은 1이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 함수 $y=\\sqrt{x}$의 그래프 위의 점 $P(t, \\sqrt{t})$에서 $x$축에 내린 수선의 발을 $Q$라 할 때, $\\lim_{t \\to \\infty} \\frac{\\overline{OP}-\\overline{PQ}}{\\overline{OQ}}$의 값을 구하면? (단, 점 $O$는 원점) [4.2점]\n<img src=\"assets/images/19_제일고_2학기_중간_고2_수학II/q07.png\" alt=\"19_제일고_2학기_중간_고2_수학II Q07\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=4인 예에서 점 P, 수선의 발 Q와 직각삼각형 OPQ의 세 변을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=4인 예에서 곡선 위의 점 P(4,2), 수선의 발 Q(4,0)와 직각삼각형 OPQ의 세 변을 보인다."
+  ],
+  "accessibilityDescription": "원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선 위의 점 P에서 가로축 위의 점 Q로 세로 선분이 내려오고 원점 O와 P, Q를 잇는 선분이 직각삼각형을 이루는 그래프이다."
+}

@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAE",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sEC"
+        ]
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sBG"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sGE"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "sEC",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lBG",
+        "ownerSegment": "sBG",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lGE",
+        "ownerSegment": "sGE",
+        "text": "y",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 중선 BE와 무게중심 G를 표시하고, AE는 10센티미터, BG는 8센티미터, EC는 x, GE는 y로 나타내었다.",
+  "accessibilityDescription": "삼각형 ABC와 중선 BE, 그 위의 무게중심 G가 보이고, AE와 BG의 길이 및 EC와 GE의 문자 라벨이 적혀 있다.",
+  "newVisualInformation": [
+    "중선과 무게중심, 주어진 두 길이와 구할 두 길이를 구별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 점 $G$는 무게중심이고, 꼭짓점 $B$에서 내린 중선 $BE$가 변 $AC$와 만나는 점을 $E$라 하자. $\\overline{AE} = 10\\text{ cm}, \\overline{BG} = 8\\text{ cm}$이고 $\\overline{EC} = x\\text{ cm}, \\overline{GE} = y\\text{ cm}$일 때, $x + y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

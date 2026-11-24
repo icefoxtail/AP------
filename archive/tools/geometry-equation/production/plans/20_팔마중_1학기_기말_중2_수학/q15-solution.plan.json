@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      50,
+      0,
+      130
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "39",
+          "17/10"
+        ],
+        "domain": [
+          "20",
+          "50"
+        ],
+        "label": "f",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "40"
+        ],
+        "label": "g",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "30",
+          "y": "90",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "개월",
+      "y": "비용(만 원)"
+    }
+  },
+  "caption": "구입 비용을 f(x)=39+1.7x라 하고 대여 비용을 g(x)=3x라 하면, 단위는 만 원이다. 두 직선은 x=30에서 만나고 그때 비용은 90만 원이다. x가 30보다 크면 f(x)가 g(x)보다 작아지므로 이를 만족하는 최소 자연수는 31이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 구입 비용 직선 f와 대여 비용 직선 g가 점 P(30, 90)에서 만나고, g는 원점을 지난다. 가로축은 개월, 세로축은 비용을 나타낸다.",
+  "newVisualInformation": [
+    "두 비용 직선의 교점 P와 x=30에서의 같은 비용을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 서빈이네 집은 정수기를 새로 장만하려고 한다. 정수기를 구입하는 경우에는 정수기 가격 390000원과 매달 17000원의 유지비를 내고, 정수기를 대여받는 경우에는 매달 30000원의 대여료만을 낸다. 이때 정수기를 구입하여 최소 몇 개월 이상 사용하면 대여받는 경우의 비용보다 저렴한지 구하여라. (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "1",
+    "bSquared": "2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "N",
+      "kind": "POINT",
+      "x": "0",
+      "y": "-1/2",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "3/2",
+      "intercept": "-1/2",
+      "tangent": true
+    }
+  ],
+  "caption": "쌍곡선 x²−y²/2=1 위의 점 P(3, 4)에서의 접선은 3x−4y/2=1, 즉 3x−2y=1이다. y=(3/2)x−1/2로 정리되므로 y절편은 N(0, −1/2)이다. 따라서 답은 −1/2이다.",
+  "accessibilityDescription": "좌우로 갈라진 쌍곡선의 오른쪽 가지 위의 점 P에서 닿는 접선이 y축과 만나는 점 N까지 이어져 있고 두 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 P(3, 4)에서의 접선과 y절편 N(0, −1/2)을 보여 접선의 y절편을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;단답형1&gt;<br>쌍곡선 $x^2-\\dfrac{y^2}{2}=1$ 위의 점 $(3,4)$에서의 접선의 $y$절편을 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

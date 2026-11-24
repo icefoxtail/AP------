@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triangle",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "두 x절편 1,4와 교점(2,2)로 밑변 3/높이 2,넓이 3. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $x+y=4,\\ 2x-y=2$와 $x$축으로 둘러싸인 도형의 넓이는? [5점] 보기: ['12', '8', '6', '4', '3']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두 x절편1,4와 교점(2,2)로 밑변3/높이2,넓이3. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "두 x절편1,4와 교점(2,2)로 밑변3/높이2,넓이3. 정답⑤."
+  ]
+}

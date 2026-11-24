@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "formula": "x/4 - 1"
+  },
+  "caption": "첫 식에 4를 곱해 둘째 식과 같으려면 a1/4,b4. 두 선은 y=x/4−1 하나로 겹쳐 무수한 교점, ab1 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>19. 두 일차방정식 $ax-y=1, x-by=4$의 그래프의 교점이 무수히 많을 때, $ab$의 값은? (단, $a, b$는 상수이다.) (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "첫식에4를곱해둘째식과같으려면a1/4,b4. 두선은y=x/4−1하나로겹쳐무수한교점,ab1정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫식에4를곱해둘째식과같으려면a1/4,b4. 두선은y=x/4−1하나로겹쳐무수한교점,ab1정답③."
+  ]
+}

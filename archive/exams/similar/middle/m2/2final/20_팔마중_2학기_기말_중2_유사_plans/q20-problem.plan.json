@@ -1,0 +1,411 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p80",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p120",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p04",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p44",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p84",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p124",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p08",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p128",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p00",
+    "p40",
+    "p80",
+    "p120",
+    "p04",
+    "p44",
+    "p84",
+    "p124",
+    "p08",
+    "p128"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sp00p40",
+      "refs": [
+        "p00",
+        "p40"
+      ]
+    },
+    {
+      "id": "sp40p80",
+      "refs": [
+        "p40",
+        "p80"
+      ]
+    },
+    {
+      "id": "sp80p120",
+      "refs": [
+        "p80",
+        "p120"
+      ]
+    },
+    {
+      "id": "sp120p124",
+      "refs": [
+        "p120",
+        "p124"
+      ]
+    },
+    {
+      "id": "sp124p128",
+      "refs": [
+        "p124",
+        "p128"
+      ]
+    },
+    {
+      "id": "sp128p08",
+      "refs": [
+        "p128",
+        "p08"
+      ]
+    },
+    {
+      "id": "sp08p04",
+      "refs": [
+        "p08",
+        "p04"
+      ]
+    },
+    {
+      "id": "sp04p00",
+      "refs": [
+        "p04",
+        "p00"
+      ]
+    },
+    {
+      "id": "sp04p44",
+      "refs": [
+        "p04",
+        "p44"
+      ]
+    },
+    {
+      "id": "sp44p84",
+      "refs": [
+        "p44",
+        "p84"
+      ]
+    },
+    {
+      "id": "sp84p124",
+      "refs": [
+        "p84",
+        "p124"
+      ]
+    },
+    {
+      "id": "sp40p44",
+      "refs": [
+        "p40",
+        "p44"
+      ]
+    },
+    {
+      "id": "sp80p84",
+      "refs": [
+        "p80",
+        "p84"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "p04",
+              "p124",
+              "p128",
+              "p08"
+            ]
+          }
+        ],
+        "label": "A",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO"
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "p00",
+              "p40",
+              "p44",
+              "p04"
+            ]
+          }
+        ],
+        "label": "B",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO"
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "p40",
+              "p80",
+              "p84",
+              "p44"
+            ]
+          }
+        ],
+        "label": "C",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO"
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "p80",
+              "p120",
+              "p124",
+              "p84"
+            ]
+          }
+        ],
+        "label": "D",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "p00",
+    "p40",
+    "p80",
+    "p120",
+    "p04",
+    "p44",
+    "p84",
+    "p124",
+    "p08",
+    "p128"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "위쪽의 큰 영역 A와 아래쪽의 세 영역 B, C, D로 나뉜 도형을 보여 준다. A는 B, C, D 모두와 이웃하고, B와 C, C와 D가 서로 이웃한다.",
+  "accessibilityDescription": "가로로 긴 위쪽 영역 A 아래에 B, C, D가 나란히 놓여 있다. A는 아래의 세 영역과 모두 맞닿고, B와 D 사이에는 C가 있어 서로 맞닿지 않는다.",
+  "newVisualInformation": [
+    "네 영역의 이름과 서로 이웃하는 관계를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 인접한 영역을 구분하여 색칠하는 도형에서, 위쪽 영역 $A$는 아래의 세 영역 $B, C, D$ 모두와 이웃하고, 아래 영역들은 $B$와 $C$, $C$와 $D$가 서로 이웃해 있다($B$와 $D$는 이웃하지 않음). 빨강, 노랑, 파랑, 초록, 흰색의 $5$가지 색으로 이 네 부분을 칠할 때, 같은 색을 여러 번 사용할 수 있으나 이웃한 영역은 서로 다른 색으로 칠하는 방법의 수는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

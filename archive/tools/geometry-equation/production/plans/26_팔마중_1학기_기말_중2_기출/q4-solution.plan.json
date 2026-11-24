@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7/3",
+          "4/3"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-3/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y계수를 6으로맞춰빼면 17x34,x2,y5. 교점(2,5)에서 a+b7. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식<br><div class=\"note-box\">$-4x+3y=7$<br>$3x+2y=16$</div>의 해를 $(a,b)$와 같이 나타낼 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

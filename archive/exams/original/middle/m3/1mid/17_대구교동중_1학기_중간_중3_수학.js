@@ -17,7 +17,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -√6과 √6에 해당하는 두 점이 원점에서 같은 거리에 표시되어 있다.",
+    "solutionImageCaption": "제곱근 6은 양수인 √6 하나를 뜻하고, 6의 제곱근은 √6과 -√6 두 개를 뜻한다. 제곱하여 6이 되는 수와 x²=6을 만족시키는 x도 모두 ±√6이다. 나머지 넷은 값이 ±√6으로 같고 ①만 √6 하나이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -93,7 +97,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝을 맞춘 두 개의 가로 막대가 위아래로 놓여 있고, 위 막대에는 √10, 아래 막대에는 3이 적혀 있다. 아래 막대의 오른쪽 끝에서 위로 올린 점선은 위 막대의 끝보다 왼쪽에 있어, 위 막대가 오른쪽으로 조금 더 길게 뻗어 있다.",
+    "solutionImageCaption": "√10은 3.16…으로 3보다 크므로 √10<3은 거짓이다. √40>√30과 −√7<−√5는 참이다. √(1/3)>1/4과 √2+1<√2+√3도 참이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -325,7 +333,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 10.0
+    "score": 10.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다.",
+    "solutionImageCaption": "기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

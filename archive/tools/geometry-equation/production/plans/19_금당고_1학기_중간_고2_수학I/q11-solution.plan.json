@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      5,
+      -2,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "1/3",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/30",
+          "5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "1/3",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-6/5",
+          "4"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1/27",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "3",
+          "label": "PQ"
+        }
+      ]
+    }
+  },
+  "caption": "밑이 1/3인 로그함수의 역함수는 밑이 1/3인 지수함수이다. 점 Q(-1,b)가 역함수 위에 있으므로 b=3이고, 점 P(a,b)가 로그함수 위에 있으므로 a=1/27이다. 따라서 a/b=(1/27)/3=1/81이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "밑이 1/3인 로그곡선, 그 역함수인 지수곡선, 점선 y=x가 같은 좌표평면에 있고, 수평선 y=3 위의 두 점 P, Q가 표시되어 있다.",
+  "newVisualInformation": [
+    "로그곡선, 지수곡선, 대칭선 y=x, 두 점 P와 Q를 한 화면에 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 두 점 $P(a, b)$, $Q(-1, b)$는 각각 두 함수 $y=\\log_{\\frac{1}{3}} x$와 그 역함수 $y=f(x)$의 그래프 위의 점일 때, $\\dfrac{a}{b}$의 값은? (단, 점선은 $x$축 또는 $y$축에 평행하다.) [4.2점]<br><br><img src=\"assets/images/19_금당고_1학기_중간_고2_수학I/q11.png\" class=\"question-img\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

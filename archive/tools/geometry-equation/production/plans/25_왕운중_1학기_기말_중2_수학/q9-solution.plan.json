@@ -1,0 +1,75 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "고정한 x",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "가능한 y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ]
+  },
+  "caption": "⑤에서 x5를 고정해도 y1,2,3,4 네 값이 가능하므로 함수가 아니다. 나머지는 각 x에서 금액·세로길이·약수개수·거리가 하나로 정해진다. 이 도식은 함수가 아닌 관계의 반례다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 변수 $x, y$에 대하여 $y$가 $x$의 함수가 <u>아닌</u> 것을 고르면? (3점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

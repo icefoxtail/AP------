@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "112/5",
+          "2"
+        ],
+        "domain": [
+          "20",
+          "40"
+        ],
+        "color": "BLUE",
+        "label": "y=2x+112/5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-48/5",
+          "3"
+        ],
+        "domain": [
+          "20",
+          "40"
+        ],
+        "color": "WARM",
+        "label": "y=3x-48/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "학생 수",
+      "y": "총액(천원)"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "32",
+          "y": "432/5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "학생 수를 x라 하면 2000x+22400=3000x−9600이다. 이를 풀면 1000x=32000이므로 x=32이다. 총비용은 2000×32+22400=86400원이고, 한 벌 값은 86400÷32=2700원이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "가로축이 학생 수, 세로축이 총액(천원)인 두 직선이 점 (32, 432/5)에서 만난다.",
+  "newVisualInformation": [
+    "학생 수에 따른 총액을 나타내는 두 직선",
+    "두 직선의 교점 (32, 432/5)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2학년 8반에서는 반티를 구입하려고 한다. 반티를 구입하기 위해 한 학생당 2000원씩 걷었더니 22400원이 부족하고, 3000원씩 걷었더니 9600원이 남았다. 2학년 8반의 학생 수와 한 학생의 반티 값을 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

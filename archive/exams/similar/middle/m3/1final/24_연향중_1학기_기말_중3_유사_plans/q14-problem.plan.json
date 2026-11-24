@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-x^2+4x-4",
+    "requiredPoints": [
+      {
+        "id": "vx",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "위로 볼록한 이차함수의 그래프가 x축의 양의 부분에 꼭짓점을 두고 있다.",
+  "accessibilityDescription": "위로 볼록한 포물선의 꼭짓점이 x축의 양의 부분에 닿아 있는 모습이 보인다.",
+  "newVisualInformation": [
+    "이차함수의 그래프가 위로 볼록하고 꼭짓점이 x축의 양의 부분에 있음을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 설명은? (단, $a$, $p$는 상수이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

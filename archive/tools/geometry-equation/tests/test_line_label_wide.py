@@ -158,7 +158,8 @@ class LineBarrierTests(unittest.TestCase):
         return item,[point,own,other,*blocks]
     def run_layout(self,barrier,west=True):
         item,obstacles=self.fixtures(barrier,west)
-        with unittest.mock.patch.object(label_layout_module,'POINT_NAME_RING_RADII',(120,)):
+        # one ring radius: far enough that the box clears the second line, near enough (box edge within RING_LABEL_OWN_REACH_PX of the dot) that no leader is needed
+        with unittest.mock.patch.object(label_layout_module,'POINT_NAME_RING_RADII',(80,)):
             return layout([item],obstacles,Box(0,0,400,400),measurements={item['id']:(70,24)},require_measurements=True),obstacles
     def test_without_the_barrier_the_label_stands_beyond_the_second_line(self):
         result,obstacles=self.run_layout(False)

@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "9"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "P3",
+        "x": "4",
+        "y": "3"
+      },
+      {
+        "id": "P4",
+        "x": "5",
+        "y": "1"
+      }
+    ],
+    "formula": "11 - 2*x"
+  },
+  "caption": "x,y는 양의 정수이므로 직선 전체가 해가 아니다. 표시한 (1,9),(2,7),(3,5),(4,3),(5,1)만 자연수 해다. x=0 또는 y=0은 제외한다. 정답 5개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$가 자연수일 때, 일차방정식 $2x + y = 11$의 해의 개수는? (4점)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

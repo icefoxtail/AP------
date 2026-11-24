@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "B",
+    "C",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len0",
+        "ownerSegment": "PB",
+        "text": "√5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "len1",
+        "ownerSegment": "BC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "len2",
+        "ownerSegment": "CQ",
+        "text": "√5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "수직선 위에 점 B, C와 두 점 P, Q를 나타낸 그림이다. PB와 CQ의 길이는 √5, BC의 길이는 3으로 표시되어 있다.",
+  "accessibilityDescription": "수직선 위에 왼쪽부터 점 P, B, C, Q가 놓여 있고, PB와 CQ에는 √5, BC에는 3의 길이 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{AB} = \\overline{PB}$, $\\overline{CD} = \\overline{CQ}$일 때, 수직선 위의 점 $P$에 대응하는 수 $p$, 점 $Q$에 대응하는 수 $q$, 그리고 선분 $PQ$의 길이를 각각 구하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "AB=PB, CD=CQ",
+      "mappedTo": [
+        "mathPlan.nodes"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "B=1, C=4",
+      "mappedTo": [
+        "mathPlan.nodes"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 B, C와 두 점 P, Q의 위치 및 PB, BC, CQ의 길이를 수직선에 나타낸다"
+  ]
+}

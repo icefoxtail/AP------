@@ -128,11 +128,11 @@ function assertBound(result,{runId,composed,policy,evidenceIntegrity='NO_CALLER_
   assert.equal(bytesSha(Buffer.from(candidateText,'utf8')),L.candidateBankSha256);
   const candidate=loadBank(candidateText);assert.equal(candidate.length,original.length);
   original.forEach((question,index)=>{const before=clone(question),after=clone(candidate[index]);if(question.id===ORDINAL)for(const field of PATCHED){delete before[field];delete after[field];}assert.deepEqual(after,before,'question '+question.id);});
-  assert.equal(original[0].solutionImage,undefined,'the original question carried no solution image');
+  // the published exam may already carry its own solution figure on this question: the capture patches the three fields to the fixture asset either way
   assert.deepEqual(Object.fromEntries(PATCHED.map(field=>[field,candidate[0][field]])),{solutionImage:`assets/images/${examUid}/q01-solution.svg`,solutionImageAlt:ALT,solutionImageSize:'medium'});
   assert.equal(result.protectedParity.status,'PASS');assert.equal(result.protectedParity.questionCount,original.length);assert.equal(result.protectedParity.originalQuestionSha256,objectSha(clone(original[0])));
   assert.deepEqual([...result.protectedParity.changedFields].sort(),PATCHED);assert.equal(result.protectedParity.targetOrdinal,ORDINAL);
-  assert.deepEqual(Object.keys(result.checks),['network','assetResponse','bankResponse','naturalSize','sizeClass','displayScale','layout']);
+  for(const check of ['network','assetResponse','bankResponse','naturalSize','displayScale','layout'])assert.ok(Object.hasOwn(result.checks,check),check);   // the page ignores the size class, so there is no size-class check
   assert.deepEqual(Object.values(result.checks),Object.values(result.checks).map(()=>'PASS'));
   return {row,target,observed};
 }

@@ -1033,7 +1033,7 @@ class NetSymbolsAndEdgeLabels(unittest.TestCase):
                          [('side2', 0, None, None), ('top', 0, None, None), ('top', 1, '5', None), ('side0', 0, 'a', None), ('side0', 1, None, '높이')])
         self.assertEqual(O.net_edge_entries({}), [])
         self.assertEqual(O.net_edge_entries({'dims': [{'face': 'top', 'edge': 0, 'label': 'l'}]})[0]['label'], 'l')
-        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '가나다라마바사아자차카타파'}]})
+        self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '가' * 21}]})
         self.assertRaises(ValueError, O.net_edge_entries, {'edgeLabels': [{'face': 'top', 'edge': 0, 'text': '밑 변 $'}]})
 
 

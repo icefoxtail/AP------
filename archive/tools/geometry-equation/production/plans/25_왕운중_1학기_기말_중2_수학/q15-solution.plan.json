@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "formula": "-x - 2"
+  },
+  "caption": "y0일 때 x−2,x0일 때 y−2. 교점(−2,0),(0,−2)는 서로 다른 두 점이다. 절편의 순서쌍 답은 −2,−2이지 점(−2,−2)가 그래프 위라는 뜻이 아니다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = -x - 2$의 그래프의 $x$절편과 $y$절편을 순서대로 바르게 구한 것은? (4점)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "P",
+    "Q",
+    "R",
+    "P1",
+    "P2",
+    "Q1",
+    "Q2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "base",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "tickP",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "tickQ",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lP",
+        "ownerSegment": "tickP",
+        "text": "a=-3 제외",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lQ",
+        "ownerSegment": "tickQ",
+        "text": "a=1 제외",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "L",
+    "P",
+    "Q",
+    "R",
+    "P1",
+    "P2",
+    "Q1",
+    "Q2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "좌변을 전개하면 4x²−3x이고, 우변을 정리하면 (a+1)²x²+2x이므로 (4−(a+1)²)x²−5x=0이다. 이차방정식이 되려면 x²의 계수가 0이 아니어야 하므로 4−(a+1)²≠0이다. (a+1)²≠4에서 a+1≠2, a+1≠−2이므로 a≠1, a≠−3이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 두 점이 표시되어 있고, 각 점에 a=-3 제외, a=1 제외라는 라벨이 붙어 있다.",
+  "newVisualInformation": [
+    "이차방정식이 되지 않는 a의 값 -3과 1",
+    "수직선 위의 두 제외값 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. $x(4x - 3) = (a + 1)^2x^2 + 2x$가 $x$에 관한 이차방정식이 되도록 하는 $a$의 값의 조건은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫눈",
+        "elements": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째눈",
+        "elements": [
+          "1",
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "여사건인두눈모두 3미만만표시한다. 4쌍/36=1/9,적어도하나 3이상은 1−1/9=8/9,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 적어도 하나는 $3$ 이상의 눈이 나올 확률은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

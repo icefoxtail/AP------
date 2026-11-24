@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "P",
+    "B",
+    "C",
+    "Q",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sCQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "P",
+    "B",
+    "C",
+    "Q",
+    "D"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dTotal",
+        "from": "A",
+        "to": "B",
+        "label": "10000",
+        "unit": "m",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dX",
+        "from": "A",
+        "to": "P",
+        "label": "x",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dY",
+        "from": "P",
+        "to": "B",
+        "label": "y",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dTimeX",
+        "from": "C",
+        "to": "Q",
+        "label": "x/200",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dTimeY",
+        "from": "Q",
+        "to": "D",
+        "label": "y/100",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dTime",
+        "from": "C",
+        "to": "D",
+        "label": "90",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "속력이 분속 200미터와 100미터이므로 거리는 미터로, 시간은 분으로 맞춘다. 총거리 10킬로미터는 10000미터이므로 x+y=10000이다. 처음 구간의 시간은 x/200분, 나머지 구간의 시간은 y/100분이고 합이 90분이므로 x/200+y/100=90이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "위쪽 가로 막대는 전체 거리를 왼쪽 x와 오른쪽 y로 나눈 것이고 위에 10000미터가 적혀 있다. 아래쪽 가로 막대는 전체 시간을 왼쪽 x/200과 오른쪽 y/100으로 나눈 것이고 아래에 90이 적혀 있다.",
+  "newVisualInformation": [
+    "거리 막대가 x와 y로 나뉘고 전체가 10000미터임을 보여 준다.",
+    "시간 막대가 x/200과 y/100으로 나뉘고 전체가 90분임을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 지호가 시각장애인돕기 $10\\text{km}$ 단축마라톤대회에 참가했다. 처음에는 분속 $200\\text{m}$로 일정하게 달리다가 도중에 체력이 떨어져 분속 $100\\text{m}$로 일정하게 달려서 1시간 30분 만에 완주하였다. 분속 $200\\text{m}$로 달린 거리를 $x\\text{m}$, 분속 $100\\text{m}$로 달린 거리를 $y\\text{m}$라고 할 때, $x$와 $y$를 구하는 연립방정식으로 적절한 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

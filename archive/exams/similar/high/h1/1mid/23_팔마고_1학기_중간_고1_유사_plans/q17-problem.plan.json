@@ -1,0 +1,63 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 축 x=3에 대칭인 구간 [2, 4]의 최댓값을 제시한다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "0",
+        "-3",
+        "1/2"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -1,
+        7
+      ],
+      "viewport": [
+        -1,
+        7,
+        -5,
+        4
+      ],
+      "requiredPoints": [
+        {
+          "id": "O",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "V",
+          "x": 3,
+          "y": -4.5
+        },
+        {
+          "id": "P",
+          "x": 2,
+          "y": -4
+        },
+        {
+          "id": "Q",
+          "x": 4,
+          "y": -4
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          2,
+          3,
+          4
+        ],
+        "y": [
+          -4
+        ]
+      }
+    },
+    "caption": "구간 [2, 4]에서 f(2)=f(4)=-4가 구간 최댓값 g(p)의 최솟값이다."
+  }
+}

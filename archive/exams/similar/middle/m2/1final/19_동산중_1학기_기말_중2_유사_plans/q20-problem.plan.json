@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "viewport": [
+      -3,
+      6,
+      -5,
+      5
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "I1",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "I2",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-2",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "일차방정식 ax+by+1=0의 그래프가 x절편이 양수인 점과 y절편이 음수인 점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax + by + 1 = 0$의 그래프의 $x$절편이 양수이고 $y$절편이 음수일 때, 일차방정식 $bx + ay + 1 = 0$의 그래프가 지나지 않는 사분면을 고르면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The x-intercept of ax+by+1=0 is positive.",
+    "The y-intercept of ax+by+1=0 is negative."
+  ],
+  "newVisualInformation": [
+    "x절편이 양수이고 y절편이 음수인 직선"
+  ],
+  "accessibilityDescription": "직선이 가로축의 양의 방향과 세로축의 음의 방향에서 각각 만나며, 오른쪽 위와 왼쪽 아래로 뻗어 있다."
+}

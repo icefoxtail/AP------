@@ -890,7 +890,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "독립사건 증명",
-    "decisiveStep": "③=P(B)-P(A)P(B)를 사용하여 잘못된 ④ 판정"
+    "decisiveStep": "③=P(B)-P(A)P(B)를 사용하여 잘못된 ④ 판정",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉜다. 그림에서 겹침의 확률이 P(A∩B)이고, 색칠한 A 밖의 부분이 A의 여사건과 B의 겹침 P(A의 여사건∩B)이므로 그 확률은 P(B)−P(A∩B)이다. A, B가 독립이면 P(A∩B)=P(A)P(B)이므로 P(B)−P(A)P(B)=P(B){1−P(A)}=P(A의 여사건)P(B)이다. 따라서 두 사건은 독립이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1210,7 +1214,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "이단계 독립시행",
-    "decisiveStep": "개인별 최종 합격확률을 구해 정확히 2명 계산"
+    "decisiveStep": "개인별 최종 합격확률을 구해 정확히 2명 계산",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "한 학생이 최종 합격하는 경로는 수시모집에 바로 합격하는 경우와 수시모집에 불합격한 뒤 정시모집에 합격하는 경우이고, 두 경로의 확률은 각각 1/3, 2/3 × 1/6 = 1/9이다. 따라서 한 학생이 최종 합격할 확률은 1/3 + 1/9 = 4/9이고, 최종 불합격할 확률은 5/9이다. 세 학생이 서로 독립이므로 정확히 두 명이 합격할 확률은 세 명 중 두 명을 고르는 경우 3가지에 (4/9)² × (5/9)를 곱한 80/243이다. 수시모집에 합격한 학생은 정시모집에 지원하지 않으므로 두 합격 경로를 겹쳐 세지 않았고, 따라서 답은 80/243이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1260,7 +1268,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "primaryMethod": "조건부확률 역추론",
-    "decisiveStep": "짝수 곱과 홀수 곱의 앞면 2회 확률 비교"
+    "decisiveStep": "짝수 곱과 홀수 곱의 앞면 2회 확률 비교",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "두 공의 곱이 홀수인 경우는 {1, 3}뿐이므로 짝수일 확률은 5/6이다. 곱이 짝수이면 동전을 2번 던져 앞면 2번일 확률이 1/4이고, 곱이 홀수이면 3번 던져 3/8이다. 앞면 2번으로 끝나는 두 경로의 확률은 5/6×1/4=5/24와 1/6×3/8=1/16이다. 이 중 곱이 짝수인 경로의 비율이 (5/24)/(5/24+1/16)=10/13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

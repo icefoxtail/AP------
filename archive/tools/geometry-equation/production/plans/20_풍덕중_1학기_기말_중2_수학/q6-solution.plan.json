@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "해"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "후보",
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "2",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "2x+1≥3에서 2x≥2이므로 x≥1이다. 수직선에 후보 −2, −1, 0, 1, 2를 찍으면 해집합 x≥1 안에 있는 것은 1과 2이고 −2, −1, 0은 바깥의 ×이다. 따라서 해는 1, 2이고 답은 ④, ⑤이다.",
+  "newVisualInformation": [
+    "해집합 x≥1 안에 드는 후보 1, 2와 바깥의 −2, −1, 0"
+  ],
+  "accessibilityDescription": "수직선에 1을 포함해 오른쪽으로 뻗는 해집합이 칠해져 있고 후보 1과 2는 해 안의 점으로, −2, −1, 0은 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>6. $x$의 값이 $-2, -1, 0, 1, 2$일 때, 부등식 $2x+1 \\ge 3$의 해를 모두 고르면?(정답 2개) [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

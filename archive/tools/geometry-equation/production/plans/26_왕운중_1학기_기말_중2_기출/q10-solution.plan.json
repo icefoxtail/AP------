@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "formula": "2*x - 3"
+  },
+  "caption": "f3=3에서 a3. 실제직선 y2x−3의(4,5)에서 b4. ab12,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x-a$에서 $f(3)=3$, $f(b)=5$일 때, $ab$의 값을 구하면? (단, $a$는 상수) [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

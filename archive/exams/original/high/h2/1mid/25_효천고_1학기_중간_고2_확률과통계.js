@@ -109,7 +109,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COMBINATION",
     "subUnit": "조합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 도로가 가로 네 칸, 세로 두 칸으로 이어져 있고 왼쪽 아래에 A, 가운데 오른쪽 안쪽에 P, 오른쪽 위에 B가 표시되어 있다.",
+    "solutionImageCaption": "가로로 네 칸, 세로로 두 칸인 직사각형 모양의 도로망과 세 지점 A, P, B를 보여 준다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -331,7 +335,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원판이 8개의 같은 부채꼴로 나뉘고, 서로 마주 보는 두 영역은 빨강, 다른 마주 보는 두 영역은 주황으로 칠해져 있으며 나머지 네 영역은 비어 있다.",
+    "solutionImageCaption": "8등분된 원판에 빨강과 주황이 각각 두 영역씩 칠해져 있고 나머지 네 영역은 비어 있는 그림이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

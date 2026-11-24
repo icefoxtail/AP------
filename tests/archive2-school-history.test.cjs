@@ -311,7 +311,14 @@ test('draft school repair preserves UID, fingerprint and frozen receipt contract
   h.w.applyDraft(frozen);
   assert.deepEqual(plain(h.w.state.receipts), [saved]);
   assert.equal(h.w.state.selected[0].questionUid, r.questionUid);
-  assert.throws(() => h.w.applyDraft({ ...d, selected: [{ ...d.selected[0], sourceFingerprint: 'changed' }] }), /원본 문항이 변경/);
+  // 2026-11-24 원장 결정: 그사이 고쳐진 문항(저장 당시 지문이 지금과 다름)도 거절하지 않고 지금 내용으로 연다.
+  // 출제 영수증(UID 구성)은 그대로 보존되고, 선택 문항의 UID·지문은 지금 카탈로그 값이다. 한 줄 안내만 보인다.
+  const fixedDraft = { ...d, selected: [{ ...d.selected[0], sourceFingerprint: 'changed' }], sealed: true, receipts: [saved] };
+  h.w.applyDraft(fixedDraft);
+  assert.deepEqual(plain(h.w.state.receipts), [saved], 'the receipt contract is untouched');
+  assert.equal(h.w.state.selected[0].questionUid, r.questionUid);
+  assert.equal(h.w.state.selected[0].sourceFingerprint, r.sourceFingerprint, 'the screen holds the current fingerprint, not the draft\'s old one');
+  assert.match(h.w.state.composeNotice, /문항 1개가 저장 뒤 고쳐져 최신 내용으로 열었습니다/);
 });
 
 test('saved Compose L3/L4 labels migrate only with a current approved advanced assignment and exact scope', () => {

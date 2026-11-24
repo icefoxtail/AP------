@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "5/4"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/2",
+          "5/4"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "6",
+          "y": "11",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "기울기 5/4를 공유한다. x의 변화 8에 y의 변화 10이므로 k11,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-2,1)$, $(6,k)$를 지나는 직선이 일차함수 $y=\\dfrac54x+3$의 그래프와 평행할 때, 수 $k$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기5/4를 공유한다. x의 변화8에 y의 변화10이므로 k11,정답⑤. 두 평행선의 절편차1/2도 보존한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기5/4를 공유한다. x의 변화8에 y의 변화10이므로 k11,정답⑤."
+  ]
+}

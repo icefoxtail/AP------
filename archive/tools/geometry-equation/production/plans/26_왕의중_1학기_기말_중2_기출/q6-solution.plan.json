@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "500",
+          "-1"
+        ],
+        "domain": [
+          "200",
+          "400"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-400",
+          "2"
+        ],
+        "domain": [
+          "200",
+          "400"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "300",
+          "y": "200",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 지난달 남학생 방문수, 세로 y는 여학생 방문수. x+y500,0.2x−0.1y40의 교점 (300,200). 이번 달 남학생 수가 아니라 지난달 300명이 답.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지난달 어느 학교 도서관의 방문자 수는 남학생과 여학생을 합쳐 모두 500명이었다. 이번 달에는 남학생 방문자 수가 지난달보다 20% 증가하고, 여학생 방문자 수는 지난달보다 10% 감소하여 전체 방문자 수가 지난달보다 40명 증가하였다. 지난달 남학생 방문자 수는? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

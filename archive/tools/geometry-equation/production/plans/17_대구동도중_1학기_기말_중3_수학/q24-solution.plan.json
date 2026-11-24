@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        5
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      0,
+      5,
+      0,
+      28
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 25
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 16
+      },
+      {
+        "id": "N",
+        "x": 5,
+        "y": 21
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "16",
+        "25"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "M",
+        "N"
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "S"
+    }
+  },
+  "caption": "점 P가 A를 출발한 지 t초 후라고 하면 PB=8−t, BQ=4+2t이므로 삼각형 PBQ의 넓이는 S=1/2(8−t)(4+2t)=−t²+6t+16 (0≤t≤5)이다. 이 그래프는 t=3에서 최댓값 25를 가지며, 양 끝 t=0, t=5에서 각각 16, 21이다. 이므로 최대 넓이는 25cm²이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로축 t, 세로축 S인 좌표평면에 위로 볼록한 포물선이 t=0부터 t=5까지 그려져 있고, 꼭짓점 V와 양 끝 점 M, N이 표시되어 있다. 세로축에는 16과 25의 눈금이 있다.",
+  "newVisualInformation": [
+    "t초 후 삼각형 PBQ의 넓이 S를 나타내는 위로 볼록한 이차함수 그래프",
+    "t=3에서 꼭짓점 V의 값 25",
+    "양 끝 t=0에서 16, t=5에서 21"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"직사각형 ABCD는 가로 14 cm와 세로 8 cm이다. P는 왼쪽 변에서 A에서 B 쪽으로 내리고, Q는 밑변의 점 E에서 C 쪽으로 움직인다. BE는 4 cm이며 삼각형 PBQ를 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "직각변의 비 3:4"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenCA",
+              "ownerSegment": "CA",
+              "text": "3",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "BC",
+              "text": "4",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "angles": []
+        },
+        "hiddenPointNames": [
+          "C",
+          "A",
+          "B"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "직각변의 비 1:1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenCA",
+              "ownerSegment": "CA",
+              "text": "1",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "BC",
+              "text": "1",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "angles": []
+        },
+        "hiddenPointNames": [
+          "C",
+          "A",
+          "B"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "직각삼각형은 직각 하나만 같을 뿐 나머지 두 예각의 크기가 달라질 수 있어 항상 닮은 것은 아니다. 직각변의 비가 3:4인 삼각형과 1:1인 삼각형은 모양이 달라 닮지 않는다. 두 원, 두 정팔각형, 두 정사각형, 두 직각이등변삼각형은 항상 닮음이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "왼쪽 패널은 직각변이 3과 4인 직각삼각형, 오른쪽 패널은 직각변이 1과 1인 직각이등변삼각형이다. 두 삼각형 모두 직각 표시가 있다.",
+  "newVisualInformation": [
+    "직각 하나만 같은 두 삼각형의 반례로 직각변 3, 4와 1, 1을 그렸다.",
+    "두 삼각형의 직각 표시로 같은 각이 하나뿐임을 보였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 항상 서로 닮은 도형이 아닌 것은? (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

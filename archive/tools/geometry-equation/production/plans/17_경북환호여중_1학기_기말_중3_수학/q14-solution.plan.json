@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-8",
+          "-4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -3,
+      1,
+      -12,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "m"
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "이차함수의 최솟값은 m=−4k²−8k+1=−4(k+1)²+5이다. 따라서 m은 k=−1일 때 최댓값 5를 갖는다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로축 k와 세로축 m이 있는 좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점 V가 표시되어 있다.",
+  "newVisualInformation": [
+    "m을 k의 함수로 그린 포물선과 꼭짓점 V를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 이차함수 $y=x^2+4kx-8k+1$의 최솟값을 $m$이라 할 때, $m$의 최댓값은 얼마인가? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
