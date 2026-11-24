@@ -295,7 +295,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f와 위로 볼록한 포물선 g가 두 점에서 만나고, 두 곡선 사이 영역이 세로선에 의해 왼쪽과 오른쪽으로 나뉘어 서로 다른 색으로 칠해져 있다.",
+    "solutionImageCaption": "두 곡선 y=x²과 y=−x²+8x의 교점은 x=0, 4이고, 두 곡선 사이의 전체 넓이는 64/3이다. 직선 x=a가 넓이를 이등분할 때 왼쪽 넓이는 32/3이고, 이를 만족하는 a는 2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
