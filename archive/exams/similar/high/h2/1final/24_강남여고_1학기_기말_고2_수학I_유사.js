@@ -224,6 +224,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I_유사/q06-problem.svg",
     "category": "로그의 뜻과 성질",
     "standardCourse": "",
     "curriculum": "2015",

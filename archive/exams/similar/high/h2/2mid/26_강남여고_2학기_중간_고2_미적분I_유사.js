@@ -499,6 +499,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q12-problem.svg",
     "category": "롤의 정리와 평균값 정리",
     "standardCourse": "미적분I",
     "curriculum": "2022",

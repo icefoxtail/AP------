@@ -1,26 +1,127 @@
 {
-  "family": "polynomial-spike-v1",
-  "caption": "x=0(증가), x=a(감소), x=b(증가), x=c(x축과 접하는 극소)가 표시된 곡선 y=f(x)",
-  "sourceQuote": "실수 전체의 집합에서 미분가능한 함수 y=f(x)의 그래프가 그림과 같을 때",
-  "markedPoints": [
-    {
-      "x": "a",
-      "at": 0.7
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "-2",
+          "1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
     },
-    {
-      "x": "b",
-      "at": 2.4
+    "functionName": "f",
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "M1",
+        "x": "1",
+        "y": "4/3"
+      },
+      {
+        "id": "M2",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "M1": [
+        "1",
+        "4/3"
+      ]
     },
-    {
-      "x": "c",
-      "at": 3.5
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "M1",
+        "M2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "pa",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "pb",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "pf",
+          "curveX": "9/2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "pa",
+          "text": "a",
+          "direction": "SW",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cb",
+          "point": "pb",
+          "text": "b",
+          "direction": "SE",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cc",
+          "point": "M2",
+          "text": "c",
+          "direction": "S",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cf",
+          "point": "pf",
+          "text": "y=f(x)",
+          "direction": "NW",
+          "labelKind": "MATH"
+        }
+      ]
     }
+  },
+  "caption": "미분가능한 함수 y=f(x)의 그래프와 x축 위의 점 x=0, a, b, c의 위치를 나타낸 것이다.",
+  "accessibilityDescription": "좌표축 위에 매끄러운 곡선이 있고, x축에 a, b, c의 위치가 표시되어 있다. 원점 O는 x=0인 점이다.",
+  "newVisualInformation": [
+    "x축에 0, a, b, c의 위치를 표시함",
+    "곡선 y=f(x)의 증가와 감소 및 x축과의 접점을 보여 줌"
   ],
-  "formulaLabel": "y=f(x)",
-  "viewport": [
-    -0.8,
-    4.3,
-    -2,
-    3.5
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 미분가능한 함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 중 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }

@@ -1073,6 +1073,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/24_연향중_1학기_기말_중2_유사/q23-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
