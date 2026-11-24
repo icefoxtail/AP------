@@ -400,6 +400,9 @@
     "recent-retry", "recent-open-saved", "saved-output", "saved-paper-issue", "saved-paper-view",
     // The rows of the home exam list: opening an original reads the exam list only (never the catalog).
     "source-output-direct", "similar-list",
+    // "작업 파일 불러오기": 누르는 순간 파일 선택창을 열어야 한다(브라우저는 누른 직후의 사용자 활성에서만 열어 준다. 카탈로그를 기다린 뒤 다시 누르면 느린 망에서 활성이 끝나 열리지 않는다).
+    // 카탈로그는 파일을 읽은 뒤 필요한 만큼만 기다린다(change 처리의 ensureCatalogForButton).
+    "import",
   ]);
   // 학교별 기출을 시험지 목록만으로 그린 동안(state.light, 카탈로그 아직 없음)의 조건 단추·쪽 넘김·함께 출제 고르기: 시험지 목록만 읽는다.
   const LIGHT_FIND_ACTIONS = new Set([
@@ -410,12 +413,24 @@
   const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
   // A button that needs the catalog was pressed before it is ready: say so and press it again when it is.
   function deferUntilCatalog(b) {
+    // 처음 받기가 실패해 오류가 남아 있어도 같은 단추를 다시 누르면 실제로 다시 받는다(카탈로그가 없고 받는 중도 아닐 때): 새로고침이 필요 없다.
+    if (state.bootError && !state.catalog && !listButtonLoading) { state.bootError = ""; catalogLoad = null; }
     if (state.bootError) { status(state.bootError, true); return; }
     deferredClick = { dataset: { ...b.dataset }, view: state.view };
     status(DEFERRED_NOTICE);
     // 목록 모드(홈·학교별 기출): 이 단추가 필요한 조각만 받는다(조각 3단계). 조각이 없는 환경이면 예전처럼 전체 묶음.
     if (listRowsApply()) { loadListRecords(rowNeedOf(b.dataset)); return; }
     ensureCatalog();
+  }
+  // "작업 파일 불러오기"는 누르는 순간 선택창이 열린다(위 CATALOG_FREE_ACTIONS). 파일을 읽은 뒤 카탈로그가 아직 없으면 여기서 받는다: 실패하면 목록 화면은 그대로 두고 오류만 알린다.
+  async function ensureCatalogForButton(need) {
+    if (state.catalog) return;
+    status(DEFERRED_NOTICE);
+    listButtonLoading = true;
+    listNeed = need; // the first catalog is made with the pieces this file needs only (its grade), not all of them
+    try { await ensureCatalog(); } finally { listButtonLoading = false; listNeed = null; }
+    if ($("status")?.textContent === DEFERRED_NOTICE) status("");
+    if (!state.catalog) throw new Error(state.bootError || "문항 목록을 불러오지 못했습니다. 연결을 확인하고 다시 시도해 주세요.");
   }
   // 목록 모드에서 이미 받은 일부 조각에 이 단추가 필요로 하는 조각이 없다: 모자란 조각만 받고 같은 단추를 다시 눌러 준다.
   function deferUntilRows(b) {
@@ -1265,6 +1280,7 @@
           throw new Error("작업 파일이 너무 큽니다.");
         const imported = JSON.parse(await el.files[0].text());
         el.value = ""; // the same file can be chosen again if the shards do not come
+        await ensureCatalogForButton(imported?.filters?.grade ? { grades: [imported.filters.grade], exams: [] } : { all: true });
         await ensureShardFiles(imported?.selected, imported?.sources, { grades: [imported?.filters?.grade] });
         applyDraft(imported);
         save();
@@ -1750,10 +1766,12 @@
         await assignmentStatus(selectedAssignmentId);
     } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true, e); }
   }
+  // The exam lookup of the recent rows: the whole catalog's exams, else the exam list (a catalog held only in part, for one button, has only some exams).
+  const recentExamLookup = () => (state.catalog && state.catalog.complete !== false ? state.catalog.exams : state.light?.exams || state.catalog?.exams || []);
   // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
   function refreshRecentRowsFromCatalog() {
     if (state.view !== "recent" || state.recentLoading || !state.recentAssignments?.length) return;
-    state.recentRows = History.normalizeAssignments(state.recentAssignments, V.classRows, state.catalog?.exams || state.light?.exams || [], C);
+    state.recentRows = History.normalizeAssignments(state.recentAssignments, V.classRows, recentExamLookup(), C);
     rememberRecentSubjectOptions(state.recentRows);
     updateRecentResults();
   }
@@ -1934,9 +1952,9 @@
   // 필요로 할 때만, 그 단추의 것만 받는다(출제 = 그 시험지의 조각, 문제지 만들기 = 고른 학년과 고른 시험지의 조각, 그 밖 = 전부).
   let listNeed = null; // the need of the button that asked for the catalog (read by shardNeed)
   // 조각 경로가 켜져 있고 홈·학교별 기출이 목록에서 그려지는 중이면 참.
-  const listRowsApply = () => Boolean(state.light) && (state.view === "find" || state.view === "home") && shardsOn();
+  const listRowsApply = () => Boolean(state.light) && (state.view === "find" || state.view === "home" || state.view === "recent") && shardsOn();
   function listRowNeed() {
-    if (!state.light || !(state.view === "find" || state.view === "home")) return null;
+    if (!state.light || !(state.view === "find" || state.view === "home" || state.view === "recent")) return null;
     if (listNeed) return listNeed;
     // 카탈로그가 아직 없는데 누가 요청했는지 모르면 전부(예전 동작). 이미 일부가 있으면 더 필요한 것이 없다.
     return state.catalog ? { grades: [], exams: [], all: false } : { grades: [], exams: [], all: true };
@@ -1965,6 +1983,8 @@
         const exam = exams[Number(data.exam)];
         return exam ? mockNeed(exam) : { all: true };
       }
+      // 출제 내역 맨 위의 "새 문제지": 문제지 만들기 탭과 같다(기본 학년의 조각만).
+      case "new-draft": return { grades: [state.filters?.grade || "고1"], exams: [] };
       default: return { all: true }; // 이름 모를 단추
     }
   }
@@ -2319,7 +2339,7 @@
   // 휴대폰도 같고, 마우스를 올린 것(pointerover)은 누를지 모르니 미리 받기와 같은 판정(warmBlocked)을 따른다.
   function startComposeOnIntent(event) {
     if ((state.view !== "recent" && state.view !== "saved") || state.catalog || !shardsOn()) return;
-    if (!(event.target instanceof Element && event.target.closest('[data-view="compose"]'))) return;
+    if (!(event.target instanceof Element && event.target.closest('[data-view="compose"], [data-action="new-draft"]'))) return;
     if (event.type === "pointerover" && (event.pointerType !== "mouse" || Boot?.warmBlocked?.())) return;
     fetchComposeShards();
   }
@@ -2396,7 +2416,7 @@
           return;
         }
       }
-      if (listButtonLoading && !state.catalog && state.light && (state.view === "find" || state.view === "home")) {
+      if (listButtonLoading && !state.catalog && state.light && (state.view === "find" || state.view === "home" || state.view === "recent")) {
         // 목록 모드(조각 3단계): 목록 화면은 그대로 두고 알리기만 한다. 같은 단추를 다시 누르면 처음부터 다시 받는다.
         console.error("[archive2] catalog preparation for a list button failed:", e?.code || "", e);
         catalogLoad = null;
