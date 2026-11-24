@@ -43,7 +43,7 @@ test("path filters equal the modules wrangler really bundles (cannot drift)", as
   const inputs = await bundledInputs();
   assert.ok(inputs.includes(`${WORKER_DIR}/index.js`) && inputs.length > 40, "the real import graph was bundled");
   const outside = inputs.filter(f => !f.startsWith("apmath/worker-backup/")).sort();
-  assert.ok(outside.length >= 5 && outside.every(f => /^archive\/[^/]+\.js$/.test(f)), `shared modules are archive/*.js: ${outside}`);
+  assert.ok(outside.length >= 5 && outside.every(f => /^(archive\/[^/]+\.js|apmath\/student\/current-question-content\.js)$/.test(f)), `shared modules are archive/*.js (plus the student overlay module the PDF reuses): ${outside}`);
   const listed = loadPathspecs(pathsFile);
   assert.deepEqual(listed.filter(p => p !== "apmath/worker-backup/**").sort(), outside, "gate paths file == bundled shared modules");
   assert.ok(listed.includes("apmath/worker-backup/**"), "the Worker directory itself is listed");
