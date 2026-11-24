@@ -52137,6 +52137,99 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_281_x축에수직인평면으로자른단면이주어진입체_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_x축에수직인평면으로자른단면이주어진입체_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 15,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_217_y=xⁿn은실수의부정적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_y=xⁿn은실수의부정적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_268_y축으로둘러싸인두곡선사이의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_y축으로둘러싸인두곡선사이의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_056_Σaₙ²Σaₙ³의값구하기_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_Σaₙ²Σaₙ³의값구하기_유형은행1",
@@ -52385,6 +52478,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_254_∫tfx-tdt꼴치환_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_∫tfx-tdt꼴치환_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_253_∫xftdt를포함하는함수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_∫xftdt를포함하는함수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_015_거짓인수열의극한의진위판단_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_거짓인수열의극한의진위판단_유형은행1",
@@ -52411,6 +52566,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-01",
           "rangeEndUnit": "수열의 극한",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_265_곡선과x축으로둘러싸인넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_곡선과x축으로둘러싸인넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_266_곡선과y축으로둘러싸인도형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_곡선과y축으로둘러싸인도형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_271_곡선과접선으로둘러싸인도형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_곡선과접선으로둘러싸인도형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -52509,6 +52757,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_286_곡선의길이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_곡선의길이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_185_곡선의오목과볼록_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_곡선의오목과볼록_유형은행1",
@@ -52602,6 +52881,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_258_구분구적법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_구분구적법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_귀납적으로정의된수열의극한_유형은행1",
@@ -52628,6 +52938,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-01",
           "rangeEndUnit": "수열의 극한",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_239_그래프로주어진정적분의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_그래프로주어진정적분의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_208_극값이존재하는부등식의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_극값이존재하는부등식의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_209_극값이존재하지않는부등식의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_극값이존재하지않는부등식의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -53129,6 +53532,223 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_247_다항함수×로그함수정적분의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수×로그함수정적분의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_230_다항함수×삼각함수의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수×삼각함수의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_246_다항함수×삼각함수정적분의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수×삼각함수정적분의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_229_다항함수×지수함수의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수×지수함수의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_245_다항함수×지수함수정적분의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수×지수함수정적분의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_222_다항함수의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_다항함수의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_237_대칭성을이용한정적분계산_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_대칭성을이용한정적분계산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_191_대칭인유리함수의그래프개형_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_대칭인유리함수의그래프개형_유형은행1",
@@ -53155,6 +53775,68 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-06",
           "rangeEndUnit": "도함수의 활용",
           "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_221_도함수가주어진연속함수의부정적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_도함수가주어진연속함수의부정적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_233_도함수가주어진연속함수의부정적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_도함수가주어진연속함수의부정적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -53191,6 +53873,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_274_도형의넓이를이등분하는경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_도형의넓이를이등분하는경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_115_도형의넓이에대한삼각함수의극한_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_도형의넓이에대한삼각함수의극한_유형은행1",
@@ -53222,6 +53935,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_272_두곡선사이의넓이와급수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_두곡선사이의넓이와급수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_267_두곡선으로둘러싸인도형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_두곡선으로둘러싸인도형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_176_두곡선의공통접선_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_두곡선의공통접선_유형은행1",
@@ -53248,6 +54023,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-06",
           "rangeEndUnit": "도함수의 활용",
           "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_두도형의넓이가서로같은경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -53997,6 +54803,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_206_로그삼각함수방정식의실근의개수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_로그삼각함수방정식의실근의개수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_269_로그함수로둘러싸인두곡선사이의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_로그함수로둘러싸인두곡선사이의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_072_로그함수의극한_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_로그함수의극한_유형은행1",
@@ -54059,6 +54927,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_232_로그함수의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_로그함수의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_159_로그함수의역함수와미분계수_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_로그함수의역함수와미분계수_유형은행1",
@@ -54085,6 +54984,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_228_로그함수의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_로그함수의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -54338,6 +55268,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_225_무리함수의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_무리함수의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_090_미분가능을이용한미정계수결정_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_미분가능을이용한미정계수결정_유형은행1",
@@ -54555,6 +55516,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_278_밑면과평행한평면으로자른단면의넓이가주어_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_밑면과평행한평면으로자른단면의넓이가주어_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_279_밑면과평행한평면으로자른단면의한변의길이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_밑면과평행한평면으로자른단면의한변의길이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_074_밑을e로하는지수함수로그함수의극한_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_밑을e로하는지수함수로그함수의극한_유형은행1",
@@ -54643,6 +55666,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-03",
           "rangeEndUnit": "지수함수와 로그함수의 미분",
           "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_207_방정식lnx=axeˣ=ax의실근의개수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_방정식lnx=axeˣ=ax의실근의개수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -54834,6 +55888,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_210_부등식fxgx에의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_부등식fxgx에의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_034_부분분수를이용하는급수1_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_부분분수를이용하는급수1_유형은행1",
@@ -54989,6 +56074,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_287_사이클로이드_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_사이클로이드_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 1,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_사인법칙과코사인법칙의도형에의활용_유형은행1",
@@ -55046,6 +56162,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-04",
           "rangeEndUnit": "삼각함수의 미분",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_243_삼각치환법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각치환법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -55361,6 +56508,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_219_삼각함수의부정적분1_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각함수의부정적분1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_220_삼각함수의부정적분2_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각함수의부정적분2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_160_삼각함수의역함수와미분계수_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_삼각함수의역함수와미분계수_유형은행1",
@@ -55387,6 +56596,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_242_삼각함수의정적분의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각함수의정적분의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_197_삼각함수의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각함수의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_226_삼각함수의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_삼각함수의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -55485,6 +56787,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_270_세곡선으로둘러싸인도형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_세곡선으로둘러싸인도형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_009_소수부분의극한값계산_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_소수부분의극한값계산_유형은행1",
@@ -55511,6 +56844,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-01",
           "rangeEndUnit": "수열의 극한",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_216_속도가속도의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_속도가속도의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 13,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -55671,6 +57035,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_282_수직선위의운동에서점이움직인거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_수직선위의운동에서점이움직인거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_024_약수의합과나머지정리_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_약수의합과나머지정리_유형은행1",
@@ -55764,6 +57159,130 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_234_여러가지함수의정적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_여러가지함수의정적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_275_역함수관계인함수로둘러싸인부분의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_역함수관계인함수로둘러싸인부분의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_276_역함수로표현된정적분계산_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_역함수로표현된정적분계산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_277_역함수를직접구하지않고넓이구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_역함수를직접구하지않고넓이구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_155_역함수에서의미분계수_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_역함수에서의미분계수_유형은행1",
@@ -55790,6 +57309,68 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_263_역함수와정적분의급수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_역함수와정적분의급수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_250_역함수와치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_역함수와치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -55852,6 +57433,223 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_284_움직인거리를이용한미지수구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_움직인거리를이용한미지수구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_원기둥에서x축에수직인평면으로자른단면이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_204_유리무리방정식의실근의개수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_유리무리방정식의실근의개수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_196_유리무리함수의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_유리무리함수의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_223_유리함수꼴의부정적분1_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_유리함수꼴의부정적분1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_224_유리함수꼴의부정적분2_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_유리함수꼴의부정적분2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_240_유리함수무리함수의정적분의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_유리함수무리함수의정적분의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -56229,6 +58027,99 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_252_적분구간이변수인정적분을포함한등식에서함_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_적분구간이변수인정적분을포함한등식에서함_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_251_적분구간이상수인정적분을포함한등식에서함_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_적분구간이상수인정적분을포함한등식에서함_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_236_절댓값기호를포함한함수의정적분계산_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_절댓값기호를포함한함수의정적분계산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_169_접선에수직인직선의방정식_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_접선에수직인직선의방정식_유형은행1",
@@ -56322,6 +58213,378 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_261_정적분과급수의부분적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분과급수의부분적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_262_정적분과급수의삼각치환법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분과급수의삼각치환법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_260_정적분과급수의치환적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분과급수의치환적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_259_정적분과급수의합사이의관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분과급수의합사이의관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_264_정적분과급수의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분과급수의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_255_정적분으로정의된함수의극대극소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분으로정의된함수의극대극소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_257_정적분으로정의된함수의극한_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분으로정의된함수의극한_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_256_정적분으로정의된함수의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분으로정의된함수의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_244_정적분의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_235_정적분의성질을이용하여계산하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분의성질을이용하여계산하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_249_정적분의치환적분과부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분의치환적분과부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_238_정적분의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_정적분의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_178_주어진구간에서의함수의증가와감소_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_주어진구간에서의함수의증가와감소_유형은행1",
@@ -56379,6 +58642,130 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-04",
           "rangeEndUnit": "삼각함수의 미분",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_198_지수로그함수의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수로그함수의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_205_지수방정식의실근의개수_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수방정식의실근의개수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_231_지수함수×삼각함수의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수함수×삼각함수의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_248_지수함수×삼각함수정적분의부분적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수함수×삼각함수정적분의부분적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -56725,6 +59112,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_241_지수함수로그함수의정적분의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수함수로그함수의정적분의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_140_지수함수미분법을이용한미분계수극한값계산_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_지수함수미분법을이용한미분계수극한값계산_유형은행1",
@@ -56818,6 +59236,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_218_지수함수의부정적분_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수함수의부정적분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_158_지수함수의역함수와미분계수_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_지수함수의역함수와미분계수_유형은행1",
@@ -56844,6 +59293,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_227_지수함수의치환적분법_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_지수함수의치환적분법_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-07",
+      "rangeStartUnit": "여러 가지 적분법",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-M2-07",
+      "rangeEndUnit": "여러 가지 적분법",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-07",
+          "rangeStartUnit": "여러 가지 적분법",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-M2-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -56880,6 +59360,68 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_211_직선운동에서의속도와가속도_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_직선운동에서의속도와가속도_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_199_진수조건이있는로그함수의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_진수조건이있는로그함수의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_049_첫째항이미지수인등비급수의수렴조건_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_첫째항이미지수인등비급수의수렴조건_유형은행1",
@@ -56906,6 +59448,130 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-02",
           "rangeEndUnit": "급수",
           "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_200_최대최소를이용한미정계수의결정_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_최대최소를이용한미정계수의결정_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_201_최대최소의활용길이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_최대최소의활용길이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_202_최대최소의활용넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_최대최소의활용넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 13,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_203_최대최소의활용부피_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_최대최소의활용부피_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 12,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "미적분II"
@@ -57066,6 +59732,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_285_치환적분을이용한움직인거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_치환적분을이용한움직인거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_094_탄젠트의덧셈정리_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_탄젠트의덧셈정리_유형은행1",
@@ -57159,6 +59856,161 @@ window.mainDB = {
       "primaryStandardCourse": "미적분II"
     },
     {
+      "file": "types/high/h2/미적분II_214_평면운동에서의가속도1_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_평면운동에서의가속도1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_215_평면운동에서의가속도2_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_평면운동에서의가속도2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_212_평면운동에서의속도와가속도_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_평면운동에서의속도와가속도_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_213_평면운동에서의속력의최솟값_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_평면운동에서의속력의최솟값_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_283_평면위를움직이는점의움직인거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_평면위를움직이는점의움직인거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-M2-08",
+      "rangeStartUnit": "정적분의 활용",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-M2-08",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-08",
+          "rangeStartUnit": "정적분의 활용",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-M2-08",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
       "file": "types/high/h2/미적분II_134_함수fgx=hx꼴의미분법_고2_유형은행1.js",
       "school": "",
       "topic": "미적분II_함수fgx=hx꼴의미분법_유형은행1",
@@ -57185,6 +60037,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-M2-05",
           "rangeEndUnit": "여러 가지 미분법",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_193_함수fx=xe⁻ˣ의그래프개형_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_함수fx=xe⁻ˣ의그래프개형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_194_함수fx=x²e⁻ˣ의그래프개형_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_함수fx=x²e⁻ˣ의그래프개형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분II"
+    },
+    {
+      "file": "types/high/h2/미적분II_195_함수fx=xⁿe⁻ˣ의그래프개형_고2_유형은행1.js",
+      "school": "",
+      "topic": "미적분II_함수fx=xⁿe⁻ˣ의그래프개형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "미적분II",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분II",
+          "courseCode": "H22-M2",
+          "rangeStartUnitKey": "H22-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "미적분II"
