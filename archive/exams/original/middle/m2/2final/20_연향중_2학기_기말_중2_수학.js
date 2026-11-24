@@ -449,7 +449,7 @@ window.examData = {
   {
     "id": 14,
     "score": 4,
-    "question": "<p>14. 다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{DE}} \\parallel \\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{FE}} \\parallel \\overline{\\mathrm{DC}}$이고, $\\overline{\\mathrm{AD}}=18\\text{ cm}$, $\\overline{\\mathrm{DB}}=12\\text{ cm}$일 때, $\\overline{\\mathrm{AF}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_연향중_2학기_기말_중2_수학/q14.png\" /></p>",
+    "question": "<p>14. 다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{DE}} \\parallel \\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{FE}} \\parallel \\overline{\\mathrm{DC}}$이고, $\\overline{\\mathrm{AD}}=18\\text{ cm}$, $\\overline{\\mathrm{DB}}=12\\text{ cm}$일 때, $\\overline{\\mathrm{AF}}$의 길이를 구하면? [4점]</p><p><img src=\"assets/images/20_연향중_2학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E, 선분 AD 위에 점 F가 있다. DE는 BC와 평행하고 FE는 DC와 평행하다. AD는 18 cm, DB는 12 cm이다.\" style=\"display:block;width:min(100%,420px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\frac{46}{5}\\text{ cm}$",
       "$\\frac{48}{5}\\text{ cm}$",
@@ -685,7 +685,7 @@ window.examData = {
   {
     "id": 21,
     "score": 7,
-    "question": "<p>[서술형 1] 다음 그림에서 $\\angle\\mathrm{ABC}=\\angle\\mathrm{AED}$이고, $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{AE}}=4\\text{cm}$, $\\overline{\\mathrm{DB}}=9\\text{cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 다음 단계에 따라 구하여라. [7점]</p><p><img src=\"assets/images/20_연향중_2학기_기말_중2_수학/s01.png\" /></p><p>(1) 닮은 삼각형을 기호를 사용하여 나타내기(2점)<br/>(반드시 대응하는 꼭짓점의 순서대로 쓸 것)</p><p>(2) 닮음 조건(2점)</p><p>(3) $\\overline{\\mathrm{AC}}=x$라 놓고, $x$구하기 (2점)<br/>(풀이)</p><p>(4) $\\overline{\\mathrm{AC}}$의 길이(1점)</p>",
+    "question": "<p>[서술형 1] 다음 그림에서 $\\angle\\mathrm{ABC}=\\angle\\mathrm{AED}$이고, $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{AE}}=4\\text{cm}$, $\\overline{\\mathrm{DB}}=9\\text{cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 다음 단계에 따라 구하여라. [7점]</p><p><img src=\"assets/images/20_연향중_2학기_기말_중2_수학/s01-problem-visual-v2.svg\" alt=\"삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E가 있다. AD는 3 cm, DB는 9 cm, AE는 4 cm이고 각 ABC와 각 AED는 크기가 같다.\" style=\"display:block;width:min(100%,420px);height:auto;margin:0 auto;\"></p><p>(1) 닮은 삼각형을 기호를 사용하여 나타내기(2점)<br/>(반드시 대응하는 꼭짓점의 순서대로 쓸 것)</p><p>(2) 닮음 조건(2점)</p><p>(3) $\\overline{\\mathrm{AC}}=x$라 놓고, $x$구하기 (2점)<br/>(풀이)</p><p>(4) $\\overline{\\mathrm{AC}}$의 길이(1점)</p>",
     "choices": [],
     "answer": "$9\\text{ cm}$",
     "solution": "(1) $\\triangle AED$와 $\\triangle ABC$에서 $\\angle A$는 공통이고 $\\angle AED=\\angle ABC$이다.\n대응하는 꼭짓점의 순서대로 쓰면 $A\\leftrightarrow A$, $E\\leftrightarrow B$, $D\\leftrightarrow C$이므로 $\\triangle AED\\sim\\triangle ABC$이다.\n\n(2) 두 쌍의 대응하는 각의 크기가 각각 같으므로 AA 닮음이다.\n\n(3) $\\overline{AB}=\\overline{AD}+\\overline{DB}=3+9=12\\text{ cm}$이다.\n닮은 도형에서 대응하는 변의 길이의 비가 같으므로 $\\overline{AE}:\\overline{AB}=\\overline{AD}:\\overline{AC}$\n$4:12=3:x$\n$4x=36$\n$x=9$이다.\n\n(4) $\\overline{AC}=9\\text{ cm}$이다.",

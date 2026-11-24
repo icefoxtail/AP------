@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "P",
+    "T",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "sLP",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lLT",
+        "ownerSegment": "sLT",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lRP",
+        "ownerSegment": "sRP",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lTR",
+        "ownerSegment": "sTR",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lLP",
+        "ownerSegment": "sLP",
+        "text": "y",
+        "unit": "cm"
+      },
+      {
+        "id": "lPT",
+        "ownerSegment": "sPT",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "직각삼각형 LPT와 직각삼각형 TRP가 변 PT를 공유한다. 위쪽 변 TR은 5 cm, 빗변 PR은 13 cm, 빗변 LT는 15 cm이고, 공유하는 변 PT는 x cm, 아래쪽 변 LP는 y cm이다. 길이는 그림에서 비례하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직각삼각형이 변 PT를 공유한다. 한쪽 빗변 15cm, 다른 쪽 빗변 13cm, 직각변 5cm, PT=x cm, LP=y cm.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 조건을 그대로 그린 그림이다. 구하는 값 x, y는 문자로 둔다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "L",
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "P",
+        "T",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  }
+}

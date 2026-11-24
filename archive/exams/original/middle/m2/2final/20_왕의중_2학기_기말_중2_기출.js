@@ -1106,7 +1106,9 @@ window.questionBank = [
       "$60\\text{ cm}^{2}$",
       "$65\\text{ cm}^{2}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q19.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q19-problem-visual-v2.svg",
+    "imageAlt": "각 A가 직각인 직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원을 그렸다. AB는 12 cm, BC는 13 cm이고 색칠한 부분은 두 초승달 모양이다.",
+    "imageSize": "full",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
