@@ -50,6 +50,7 @@
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
+| GPT 채팅창 기출 유사1~N·난도 믹서 | [docs/agents/gpt-similar-difficulty-mixer.md](docs/agents/gpt-similar-difficulty-mixer.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
