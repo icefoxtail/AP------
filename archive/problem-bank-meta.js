@@ -150,7 +150,11 @@
       registrationReview?.r1MetaPass === true && typeof registrationReview?.r1EvidenceRef === 'string' &&
       /^[a-f0-9]{64}$/i.test(String(registrationReview?.r1EvidenceSha256 || '')) &&
       /^[a-f0-9]{64}$/i.test(String(registrationReview?.currentPhysicalMetaSha256 || ''));
-    const approvedCurrentFields = String(meta.metadataStatus || '').startsWith('approved_') &&
+    // 행 상태가 registered_merged_source(main 병합 등록이 정식 수정 문항을 "검토 대기"로 내린 것)여도, 호출자가 발문·보기 결속을 확인했고(textBound)
+    // 칸 단위 승인이 남아 있으면 그 판정을 쓴다. 칸 승인과 근거 검사는 아래에 그대로 있다.
+    const approvedRowStatus = String(meta.metadataStatus || '').startsWith('approved_') ||
+      (textBound === true && meta.metadataStatus === 'registered_merged_source');
+    const approvedCurrentFields = approvedRowStatus &&
       approved(meta.fieldStatus?.standardUnit) && approved(meta.fieldStatus?.subUnit) &&
       Array.isArray(meta.approvalEvidence) && meta.approvalEvidence.some(value => typeof value === 'string' && value.trim());
     const reviewedH1 = hasReviewedOriginalH1Evidence(meta, identity, file, ordinal, sourceFingerprint, assignmentFingerprint);

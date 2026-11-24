@@ -344,3 +344,20 @@ test('projects all twenty published Maesan Math I core tags for search without c
   assert.match(html, /id="nativeL1"/);
   assert.match(html, /refreshCoreMetaKeyOptions/);
 });
+test('a row the main-merge registrar moved to registered_merged_source still projects when it is bound to the current stem and choices', () => {
+  // 정식 수정(발문·보기 재결속) 뒤 등록기가 행 상태만 registered_merged_source로 내려도 칸 단위 승인이 남아 있으면 단원 표시를 잃지 않는다.
+  const moved = args();
+  moved.meta.metadataStatus = 'registered_merged_source';
+  moved.meta.reviewStatus = 'review_required';
+  moved.meta.metadataApprovalType = 'MAIN_MERGE';
+  moved.assignmentFingerprint = 'c'.repeat(64);
+  moved.allowContentBoundRevision = true;
+  assert.equal(metaView.createSourceBoundDisplayProjection({ ...moved, textBound: false }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  assert.equal(metaView.createSourceBoundDisplayProjection({ ...moved, textBound: true }).reason, '');
+  // 결속이 확인되어도 칸 승인이 내려간 행(registered_main_merge)은 그대로 막힌다.
+  const unapproved = { ...moved, textBound: true, meta: { ...moved.meta, fieldStatus: { ...moved.meta.fieldStatus, subUnit: 'registered_main_merge' } } };
+  assert.equal(metaView.createSourceBoundDisplayProjection(unapproved).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+  // 결속이 확인된 행이라도 상태가 registered_merged_source가 아닌 다른 비승인 상태면 막힌다.
+  const other = { ...moved, textBound: true, meta: { ...moved.meta, metadataStatus: 'registration_only_pending_review' } };
+  assert.equal(metaView.createSourceBoundDisplayProjection(other).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+});
