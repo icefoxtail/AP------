@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "49/5",
+          "-49/10"
+        ],
+        "domain": [
+          "0",
+          "1+1/7*sqrt(79)"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "5/2"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "3"
+      ]
+    }
+  },
+  "caption": "공의 높이는 y=−4.9(x−1)²+7.9이므로 x=1일 때 최고 높이에 도달한다. 이때 지면으로부터의 높이는 7.9이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 지면을 나타내는 직선 y=0과 공의 높이를 나타내는 포물선 f가 그려져 있다.",
+  "newVisualInformation": [
+    "공이 지면에 닿을 때까지의 포물선 궤적과 지면을 나타내는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 지상 $3\\text{ m}$의 높이에서 지면에 수직인 방향으로 초속 $9.8\\text{ m}$로 던진 공의 $x$초 후의 높이 $y\\text{ m}$는 $y=-4.9x^2+9.8x+3$라고 한다. 공이 가장 높이 올라갔을 때, 지면으로부터의 높이는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

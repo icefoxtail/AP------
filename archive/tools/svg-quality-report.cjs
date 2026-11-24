@@ -63,8 +63,8 @@ function collectQualityRows({ repoRoot, uses } = {}) {
       roles: [...new Set(found.map(use => use.visualRole))].sort(),
       title: tagText(source, 'title'),
       desc: tagText(source, 'desc'),
-      // title/desc가 없는 옛 그림에 색인이 넣을 기계 대체 문구(시험지·문항·역할만 씀)
-      substituteText: !engine && codes.includes('SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED') && found.length ? found.map(substituteAccessibilityText).join(' | ') : ''
+      // title/desc가 없는 그림(옛·엔진 모두)에 색인이 넣을 기계 대체 문구(시험지·문항·역할만 씀)
+      substituteText: codes.includes('SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED') && found.length ? found.map(substituteAccessibilityText).join(' | ') : ''
     });
   }
   rows.sort((a, b) => rank(a.codes) - rank(b.codes) || (a.assetRef < b.assetRef ? -1 : a.assetRef > b.assetRef ? 1 : 0));

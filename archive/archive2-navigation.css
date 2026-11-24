@@ -270,7 +270,13 @@
   overflow: hidden;
   background: #fff;
 }
-.view-switch button {
+.view-switch button,
+.view-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
   min-height: 44px;
   min-width: 112px;
   padding: 0 20px;
@@ -281,11 +287,14 @@
   font-weight: 700;
   font-size: 15px;
 }
-.view-switch button:hover {
+.view-switch button:hover,
+.view-switch a:hover {
   background: var(--chip);
 }
 .view-switch button[aria-pressed="true"],
-.view-switch button[aria-pressed="true"]:hover {
+.view-switch button[aria-pressed="true"]:hover,
+.view-switch a[aria-current="page"],
+.view-switch a[aria-current="page"]:hover {
   background: var(--ink);
   color: #fff;
 }
@@ -293,9 +302,12 @@
   .view-switch {
     display: flex;
   }
-  .view-switch button {
+  .view-switch button,
+  .view-switch a {
     flex: 1 1 0;
     min-width: 0;
+    padding: 0 8px;
+    font-size: 14px;
   }
 }
 

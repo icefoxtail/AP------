@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "outerArc",
+        "circle": "outer",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "label": "3π",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "innerArc",
+        "circle": "inner",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "CCW",
+        "label": "π",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "central",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "θ",
+        "labelKind": "MATH",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "annular",
+        "fill": "MEDIUM",
+        "label": "12π",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "중심이 O인 두 부채꼴 OAB와 OCD에서 점 C는 OA 위, 점 D는 OB 위에 있고 두 호 AB, CD와 그 사이 영역의 넓이가 주어져 있다.",
+  "accessibilityDescription": "한 점 O에서 두 반직선이 뻗어 나가고, 반지름이 다른 두 원호가 두 반직선 사이를 잇는다. 두 호 사이의 띠 모양 영역이 색칠되어 있으며 두 호와 영역에 각각 3파이, 파이, 12파이가 적혀 있다.",
+  "newVisualInformation": [
+    "두 호의 길이 3파이와 파이, 그 사이 영역의 넓이 12파이가 그림에 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심각의 크기가 같고 중심이 $O$인 두 부채꼴 $OAB$, $OCD$가 있다. 점 $C$는 선분 $OA$ 위에, 점 $D$는 선분 $OB$ 위에 있고 $\\overset{\\frown}{AB} = 3\\pi$, $\\overset{\\frown}{CD} = \\pi$이며 두 호 $AB, CD$와 두 선분 $AC, BD$로 둘러싸인 부분의 넓이가 $12\\pi$일 때, $\\angle AOB$의 크기는? (4.3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

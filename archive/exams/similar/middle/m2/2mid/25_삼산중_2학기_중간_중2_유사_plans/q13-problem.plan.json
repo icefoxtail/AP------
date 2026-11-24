@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4374086",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "sAO",
+        "text": "x"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "14",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "P",
+          "O"
+        ],
+        "value": 58,
+        "label": "58",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "P",
+          "D",
+          "C"
+        ],
+        "value": 13,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "정사각형 ABCD의 두 대각선이 만나는 점 O와 대각선 AC 위의 점 P를 나타낸 그림이다. AO의 길이는 x, BD의 길이는 14 cm, 각 DPO는 58도, 각 PDC는 y로 표시되어 있다.",
+  "accessibilityDescription": "정사각형 ABCD의 네 변과 두 대각선이 그려져 있고, 대각선의 교점이 O, 대각선 AC 위의 점이 P로 표시되어 있다. 변 AO 옆에 x, 대각선 BD 옆에 14 cm, 점 P에서의 각 58, 점 D에서의 각 y가 적혀 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD, 두 대각선 AC와 BD, 교점 O, 대각선 AC 위의 점 P가 보인다.",
+    "AO=x, BD=14cm, 각 DPO=58도, 각 PDC=y가 표시되어 있다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{BD} = 14\\text{ cm}$인 정사각형 $ABCD$의 두 대각선의 교점을 $O$라 하고, 대각선 $AC$ 위의 한 점 $P$에 대하여 $\\overline{AO} = x\\text{ cm}$, $\\angle DPO = 58^\\circ$, $\\angle PDC = y^\\circ$라 할 때, $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

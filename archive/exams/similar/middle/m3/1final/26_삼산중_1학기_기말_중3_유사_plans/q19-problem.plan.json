@@ -1,0 +1,150 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "-4"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -5,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "Origin",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L1",
+          "x": "1",
+          "style": "DASHED",
+          "label": "1"
+        },
+        {
+          "id": "L4",
+          "slope": "0",
+          "intercept": "-4",
+          "style": "DASHED",
+          "label": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "-4"
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "DC",
+          "from": "D",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "O": "O"
+  },
+  "hiddenPointNames": [
+    "Origin"
+  ],
+  "caption": "두 이차함수 y=ax^2, y=bx^2의 그래프와 삼각형 ABO",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ax^2 위의 A(-1,3), B(1,3)과 y=bx^2 위의 C(1,-4), 삼각형 ABO의 넓이 3, BD:CD=3:4"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "포물선 2개와 점 A, B, C, D의 기하학적 배치"
+    }
+  ]
+}

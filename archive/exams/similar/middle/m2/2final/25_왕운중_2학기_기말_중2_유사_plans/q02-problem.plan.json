@@ -1,0 +1,396 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "A0 용지와, A0 용지를 반으로 여섯 번 자른 A6 용지를 나타낸 그림이다. 두 직사각형은 서로 닮은 직사각형이다.",
+  "accessibilityDescription": "큰 직사각형 A0와 그 오른쪽에 작은 직사각형 A6가 있고, 두 직사각형은 서로 닮은 모양이다. A6의 이름은 지시선으로 표시되어 있다.",
+  "newVisualInformation": [
+    "서로 닮은 직사각형 A0와 A6",
+    "A6가 A0보다 작음"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "16"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "16"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "22"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "22"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P4",
+        "P1"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "P6",
+        "P7"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P7",
+        "P8"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "P8",
+        "P5"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA0",
+        "fill": "LIGHT",
+        "label": "A0",
+        "labelKind": "TEXT",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rA6",
+        "fill": "MEDIUM",
+        "label": "A6",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P5",
+              "P6",
+              "P7",
+              "P8"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 480
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A0 용지를 긴 변의 중점을 지나도록 반으로 자르면 A1 용지가 되고, 차례로 반씩 잘라 A2, A3, A4, A5, A6 용지를 만든다. 서로 닮은 직사각형인 A6 용지와 A0 용지의 닮음비(A6 : A0)를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "5"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgABC",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "label": "27",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rgDEF",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "label": "x",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "닮음비가 3 대 5인 두 삼각형 ABC와 DEF를 나란히 놓고, 삼각형 ABC의 넓이 27제곱센티미터와 구하려는 삼각형 DEF의 넓이를 x로 나타낸 그림이다.",
+  "accessibilityDescription": "두 삼각형 ABC와 DEF가 있고, 대응하는 변 AB와 DE에 각각 3과 5가 적혀 있다. 삼각형 ABC 안에는 27제곱센티미터, 삼각형 DEF 안에는 x제곱센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 DEF가 닮음이고 닮음비 3 대 5",
+    "삼각형 ABC의 넓이 27제곱센티미터",
+    "삼각형 DEF의 넓이를 x제곱센티미터로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC \\sim \\triangle DEF$이고 두 삼각형의 닮음비가 $3 : 5$이다. $\\triangle ABC$의 넓이가 $27\\text{ cm}^2$일 때, $\\triangle DEF$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

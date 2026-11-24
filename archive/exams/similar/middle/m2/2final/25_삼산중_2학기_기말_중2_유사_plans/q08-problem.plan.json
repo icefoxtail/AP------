@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직사각형 ABCD를 BE를 접는 선으로 접어 꼭짓점 C가 변 AD 위의 점 C'에 오도록 한 그림으로, AB 12와 BC 15가 적혀 있다.",
+  "accessibilityDescription": "직사각형 ABCD와 접는 선 BE, 접힌 변 BC'와 C'E가 그려져 있고, 변 AB에 12, 변 BC에 15가 적혀 있으며 점 A, B, C, D, C', E의 이름이 보인다.",
+  "newVisualInformation": [
+    "접는 선 BE와 접힌 위치 C'",
+    "AB 12, BC 15"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Cp",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBCp",
+      "refs": [
+        "B",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpE",
+      "refs": [
+        "Cp",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "15",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tCp",
+        "at": "Cp",
+        "text": "C'",
+        "labelKind": "TEXT",
+        "anchor": "NE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "r4",
+      "refs": [
+        "B",
+        "Cp",
+        "E"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "Cp"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직사각형 $ABCD$에서 $\\overline{AB} = 12\\rm\\,cm$, $\\overline{BC} = 15\\rm\\,cm$이다. $\\overline{BE}$를 접는 선으로 하여 꼭짓점 $C$가 $\\overline{AD}$ 위의 점 $C'$에 오도록 접었을 때, 다음 <보기> 중 옳은 것을 있는 대로 고른 것은? [4점]\n<보기>\nㄱ. $\\overline{C'D} = 6\\rm\\,cm$ ㄴ. $\\triangle C'AB \\sim \\triangle EDC'$ ㄷ. $\\angle C'BE = \\angle DEC'$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

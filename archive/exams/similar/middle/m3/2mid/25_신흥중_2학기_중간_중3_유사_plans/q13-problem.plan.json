@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-6",
+            "denominator": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "L",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "M",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "chord",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "dist",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "rad",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lChord",
+        "ownerSegment": "chord",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDist",
+        "ownerSegment": "dist",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lRad",
+        "ownerSegment": "rad",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "L",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "원 O에서 현과, 중심에서 그 현에 내린 수선, 그리고 중심에서 현의 한 끝까지 그은 반지름을 나타낸 그림이다. 현의 길이는 12 cm, 중심에서 현까지의 거리는 8 cm이고, 반지름의 길이는 x로 표시되어 있다.",
+  "accessibilityDescription": "중심이 O인 원 안에 현이 있고, 중심에서 현에 내린 수선이 수직으로 만난다. 현의 길이는 12 cm, 수선의 길이는 8 cm이며, 중심에서 현의 한 끝까지의 반지름이 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "원 O의 현과 중심에서 내린 수선",
+    "현 12 cm, 거리 8 cm, 반지름 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 원 $O$에서 반지름의 길이 $x$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC의 세 변을 각각 한 변으로 하는 정사각형이 바깥쪽에 그려져 있고, AC 위 정사각형의 넓이 68과 AB 위 정사각형의 넓이 20이 적혀 있으며, BC 위 정사각형은 중심을 지나 변에 평행하거나 수직인 선으로 네 조각으로 나뉘어 있다.",
+  "accessibilityDescription": "세 변에 붙은 정사각형과 그 넓이 68, 20이 보이고, BC 위의 정사각형 안에 중심을 지나는 가로선과 세로선이 그어져 네 조각이 되어 있다.",
+  "newVisualInformation": [
+    "세 변 위의 정사각형",
+    "넓이 68과 20",
+    "BC 위 정사각형의 네 조각 분할"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-447",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-447",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "57",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "57",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "447",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "200"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "200"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-693",
+              "denominator": "200"
+            },
+            {
+              "kind": "rational",
+              "numerator": "693",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "D",
+    "E",
+    "G",
+    "H",
+    "M",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sM1M2",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sM3M4",
+      "refs": [
+        "M3",
+        "M4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tAB",
+        "at": [
+          2.24,
+          -2.24
+        ],
+        "text": "20",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tAC",
+        "at": [
+          5.7,
+          5.7
+        ],
+        "text": "68",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "D",
+    "E",
+    "G",
+    "H",
+    "M",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수학자 페리갈의 피타고라스 정리 확인 방법이다. 직각삼각형 $ABC$ ($\\angle B=90^\\circ$)에서 $\\overline{AC}$를 한 변으로 하는 정사각형의 넓이는 $68\\rm\\,cm^2$이고, $\\overline{AB}$를 한 변으로 하는 정사각형의 넓이는 $20\\rm\\,cm^2$이다. 이때 $\\overline{BC}$를 한 변으로 하는 정사각형을 중심을 지나며 각 변에 평행 또는 수직인 선분으로 똑같이 4조각으로 나누었을 때, 한 조각의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

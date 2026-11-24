@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "197",
+            "denominator": "250"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "77",
+            "denominator": "125"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Qx",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "197",
+            "denominator": "250"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Qy",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "77",
+            "denominator": "125"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "Q",
+    "Qx",
+    "Qy"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "OY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "OQx",
+      "refs": [
+        "O",
+        "Qx"
+      ]
+    },
+    {
+      "id": "OQy",
+      "refs": [
+        "O",
+        "Qy"
+      ]
+    },
+    {
+      "id": "QQx",
+      "refs": [
+        "Q",
+        "Qx"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "QQy",
+      "refs": [
+        "Q",
+        "Qy"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rQx",
+      "refs": [
+        "Q",
+        "Qx",
+        "O"
+      ]
+    },
+    {
+      "id": "rQy",
+      "refs": [
+        "Q",
+        "Qy",
+        "O"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "Q",
+    "Qx",
+    "Qy"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcXY",
+        "circle": "circ",
+        "center": "O",
+        "from": "X",
+        "to": "Y",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a38",
+        "refs": [
+          "X",
+          "O",
+          "Q"
+        ],
+        "value": 38,
+        "label": "38",
+        "arcs": 1,
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a52",
+        "refs": [
+          "Q",
+          "O",
+          "Y"
+        ],
+        "value": 52,
+        "label": "52",
+        "arcs": 2,
+        "ring": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOQ",
+        "ownerSegment": "OQ",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lQQx",
+        "ownerSegment": "QQx",
+        "text": "0.62",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOQx",
+        "ownerSegment": "OQx",
+        "text": "0.79",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "점 O를 중심으로 하고 반지름의 길이가 1인 사분원에서 한 반직선이 가로축과 38도를 이루는 그림이다. 그 반직선과 세로축이 이루는 나머지 각은 52도로 표시되어 있고, 세로 변과 가로 변의 길이가 각각 0.62, 0.79로 주어져 있다.",
+  "accessibilityDescription": "중심 O에서 가로축과 세로축이 뻗어 있고, 반지름 1인 사분원 호가 두 축 사이를 잇는다. 38도 각의 반직선 위에 한 점이 있으며, 그 점에서 두 축으로 수선이 내려져 있다. 반지름에는 1, 세로 변에는 0.62, 가로 변에는 0.79가 적혀 있다.",
+  "newVisualInformation": [
+    "사분원의 반지름은 1이다.",
+    "반직선과 가로축이 이루는 각은 38도, 세로축과 이루는 각은 52도이다.",
+    "세로 변의 길이는 0.62, 가로 변의 길이는 0.79이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 점 $\\text{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\sin 38^\\circ - \\cos 52^\\circ + \\tan 38^\\circ$의 값은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

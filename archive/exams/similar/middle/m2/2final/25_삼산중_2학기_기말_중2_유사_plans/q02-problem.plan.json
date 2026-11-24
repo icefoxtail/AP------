@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "arcs": 1,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "value": 65,
+        "label": "y",
+        "arcs": 1,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "10",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 400
+  },
+  "caption": "닮은 두 삼각형 ABC와 DEF가 나란히 그려져 있다. BC는 15 cm, DE는 8 cm, EF는 10 cm, AB는 x cm이고, 각 B는 65도, 각 E는 y로 주어져 있다.",
+  "accessibilityDescription": "왼쪽에 삼각형 ABC, 오른쪽에 삼각형 DEF가 있고, BC 옆에 15 cm, AB 옆에 x cm, DE 옆에 8 cm, EF 옆에 10 cm가 적혀 있다. 각 B에는 65, 각 E에는 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 닮은 삼각형 ABC와 DEF",
+    "각 B의 크기 65도",
+    "각 E의 크기 y",
+    "길이 15 cm, 8 cm, 10 cm, x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC \\sim \\triangle DEF$이고 대응변의 길이의 비가 $3:2$이다. $\\overline{DE}=8\\rm\\,cm$, $\\overline{EF}=10\\rm\\,cm$, $\\overline{BC}=15\\rm\\,cm$이고, $\\overline{AB}=x\\rm\\,cm$, $\\angle B=65^\\circ$, $\\angle E=y^\\circ$일 때, $x+y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

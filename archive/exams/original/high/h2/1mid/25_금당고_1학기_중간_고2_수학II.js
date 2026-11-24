@@ -867,6 +867,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: x=−1에서 y=4의 닫힌 점과 y=−8의 열린 점으로 끊어지고, x=1에서는 x축과 만나며 이어지는 조각 함수의 그래프이다.",
+    "solutionImageCaption": "a=−4일 때 g(x)는 x<−1에서 x²−3x, −1<x<1에서 (3−x)(x−1), x>1에서 (x+4)(x−1)이다. x=−1에서는 좌극한과 함숫값이 4이고 우극한은 −8로 불연속이다. x=1에서는 좌극한과 우극한과 함숫값이 모두 0으로 이어져 연속이다. 따라서 b=−1이고 a×b의 값은 4이다.",
+    "solutionImageSize": "medium"
   }
 ];

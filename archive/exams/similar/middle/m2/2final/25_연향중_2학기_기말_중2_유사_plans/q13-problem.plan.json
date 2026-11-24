@@ -1,0 +1,413 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "q00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q04",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q24",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q44",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q06",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q46",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "q00",
+    "q40",
+    "q02",
+    "q22",
+    "q42",
+    "q04",
+    "q24",
+    "q44",
+    "q06",
+    "q46"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "ub",
+      "refs": [
+        "q00",
+        "q40"
+      ]
+    },
+    {
+      "id": "uh1",
+      "refs": [
+        "q02",
+        "q22"
+      ]
+    },
+    {
+      "id": "uh1b",
+      "refs": [
+        "q22",
+        "q42"
+      ]
+    },
+    {
+      "id": "uh2",
+      "refs": [
+        "q04",
+        "q24"
+      ]
+    },
+    {
+      "id": "uh2b",
+      "refs": [
+        "q24",
+        "q44"
+      ]
+    },
+    {
+      "id": "ut",
+      "refs": [
+        "q06",
+        "q46"
+      ]
+    },
+    {
+      "id": "ul1",
+      "refs": [
+        "q00",
+        "q02"
+      ]
+    },
+    {
+      "id": "ul2",
+      "refs": [
+        "q02",
+        "q04"
+      ]
+    },
+    {
+      "id": "ul3",
+      "refs": [
+        "q04",
+        "q06"
+      ]
+    },
+    {
+      "id": "ur1",
+      "refs": [
+        "q40",
+        "q42"
+      ]
+    },
+    {
+      "id": "ur2",
+      "refs": [
+        "q42",
+        "q44"
+      ]
+    },
+    {
+      "id": "ur3",
+      "refs": [
+        "q44",
+        "q46"
+      ]
+    },
+    {
+      "id": "um",
+      "refs": [
+        "q22",
+        "q24"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "q00",
+              "q40",
+              "q42",
+              "q02"
+            ]
+          }
+        ],
+        "label": "A",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "q02",
+              "q22",
+              "q24",
+              "q04"
+            ]
+          }
+        ],
+        "label": "B",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "q22",
+              "q42",
+              "q44",
+              "q24"
+            ]
+          }
+        ],
+        "label": "C",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "q04",
+              "q44",
+              "q46",
+              "q06"
+            ]
+          }
+        ],
+        "label": "D",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "q00",
+    "q40",
+    "q02",
+    "q22",
+    "q42",
+    "q04",
+    "q24",
+    "q44",
+    "q06",
+    "q46"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "네 영역 A, B, C, D로 나누어진 도형이다. B와 C는 이웃하고, A와 D는 각각 B, C와 이웃하지만 A와 D는 서로 이웃하지 않는다.",
+  "accessibilityDescription": "세로로 세 줄로 나뉜 직사각형 도형으로, 아래 영역이 A, 가운데 줄이 좌우로 B와 C, 위 영역이 D이며 각 영역에 알파벳 이름이 적혀 있다.",
+  "newVisualInformation": [
+    "네 영역 A, B, C, D",
+    "B와 C가 맞닿은 경계",
+    "A와 D가 각각 B, C에 맞닿은 경계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $A, B, C, D$ 네 영역으로 나누어진 도형을 서로 다른 $5$가지 색을 사용하여 칠하려고 한다. 같은 색을 여러 번 사용해도 좋으나 서로 이웃한 영역은 서로 다른 색을 칠하여 구분할 때, 칠하는 경우의 수는? (단, $B$와 $C$는 서로 이웃하고, $A$와 $D$는 각각 $B, C$와 이웃하지만 $A$와 $D$는 서로 이웃하지 않는다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

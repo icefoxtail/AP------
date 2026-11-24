@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC에서 변 BC의 중점 L과 무게중심 G를 잡고, G를 지나 BC에 평행한 직선이 AB, AC와 만나는 점을 D, E라 하며, AB와 AC의 중점 M, N을 이은 선분 MN과 중선 AL의 교점을 P로 둔 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에 중선 AL, 무게중심 G, BC에 평행한 DE, 중점 M과 N을 이은 MN, MN과 AL의 교점 P가 표시되어 있다.",
+  "newVisualInformation": [
+    "무게중심 G와 중점 L",
+    "BC에 평행한 DE",
+    "중점 M, N을 잇는 MN과 AL의 교점 P"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAL",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "L"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lMN",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "M",
+          "N"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lMN",
+          "lAL"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G",
+    "L",
+    "M",
+    "N",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAL",
+      "refs": [
+        "A",
+        "L"
+      ]
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에 대한 설명을 읽고 <보기>의 $x, y, z$에 대하여 $x + y + z$의 값은? [5점] ○ $L$은 변 $\\overline{BC}$의 중점이고, 점 $G$는 $\\triangle ABC$의 무게중심이다. ○ 점 $G$를 지나고 $\\overline{BC}$에 평행한 직선이 변 $\\overline{AB}, \\overline{AC}$와 만나는 점을 각각 $D, E$라 하자. ○ 두 점 $M, N$은 각각 변 $\\overline{AB}, \\overline{AC}$의 중점이다. ○ 점 $P$는 선분 $\\overline{MN}$과 중선 $\\overline{AL}$의 교점이다.\n<보기>\n○ $\\overline{MP} : \\overline{DG} : \\overline{BL} = 6 : x : y$ ○ $\\triangle MDG\\text{의 넓이} : \\triangle MPG\\text{의 넓이} = 4 : z$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

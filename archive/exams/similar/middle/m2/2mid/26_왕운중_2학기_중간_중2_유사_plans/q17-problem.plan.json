@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정사각형 ABCD와 그 외부의 점 E를 나타낸 그림이다. 점 C를 중심으로 두 변 CD, CB와 선분 CE가 이루는 각이 주어져 있다.",
+  "accessibilityDescription": "정사각형 ABCD의 오른쪽 바깥에 점 E가 있고, 선분 CE, DE, BE가 그려져 있다. 각 DCE에는 26, 각 BCE에는 116, 각 BED에는 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD",
+    "외부의 점 E",
+    "각 DCE 26",
+    "각 BCE 116",
+    "각 BED x"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "143837",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "89879",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aDCE",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 26,
+        "label": "26",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCE",
+        "refs": [
+          "B",
+          "C",
+          "E"
+        ],
+        "value": 116,
+        "label": "116",
+        "ring": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBED",
+        "refs": [
+          "B",
+          "E",
+          "D"
+        ],
+        "value": 45,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정사각형 $ABCD$에서 점 $E$가 정사각형의 외부에 있고 $\\overline{CD} = \\overline{CE}$, $\\angle DCE = 26^\\circ$, $\\angle BCE = 116^\\circ$일 때, $\\angle BED$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

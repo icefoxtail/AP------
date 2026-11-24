@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "40"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPL",
+      "refs": [
+        "P",
+        "L"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcLR",
+        "circle": "circ",
+        "center": "O",
+        "from": "L",
+        "to": "R",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOR",
+        "ownerSegment": "sOR",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lPR",
+        "ownerSegment": "sPR",
+        "text": "7",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "R",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 460
+  },
+  "caption": "밑면의 반지름이 3 cm이고 모선의 길이가 7 cm인 원뿔을 나타낸 그림이다. 밑면의 반지름과 한 모선의 길이가 표시되어 있다.",
+  "accessibilityDescription": "위에 꼭짓점이 있고 아래에 둥근 밑면이 있는 원뿔 모양이다. 밑면의 반지름에 3 cm, 옆면의 한 모선에 7 cm가 적혀 있고, 가운데 높이가 점선으로 표시되어 있다.",
+  "newVisualInformation": [
+    "원뿔",
+    "밑면의 반지름 3 cm",
+    "모선 7 cm",
+    "점선으로 표시된 높이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $3\\text{ cm}$이고 모선의 길이가 $7\\text{ cm}$인 원뿔의 겉넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

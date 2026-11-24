@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MAB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBC",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "MAB",
+    "MBC",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sMABO",
+      "refs": [
+        "MAB",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sMBCO",
+      "refs": [
+        "MBC",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "rMAB",
+      "refs": [
+        "A",
+        "MAB",
+        "O"
+      ]
+    },
+    {
+      "id": "rMBC",
+      "refs": [
+        "B",
+        "MBC",
+        "O"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "MAB",
+    "MBC"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "삼각형 ABC에서 변 AB와 BC의 수직이등분선이 만나는 점 O를 보여 주는 그림이다.",
+  "accessibilityDescription": "삼각형 ABC와 변 AB, BC의 중점을 지나는 두 점선 수직이등분선, 그리고 두 선이 만나는 점 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "변 AB와 BC의 수직이등분선이 점선으로 표시됨",
+    "두 수직이등분선의 교점 O",
+    "수직이등분선과 변이 만나는 곳의 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 활동을 보고 <보기> 중 옳은 것만을 있는 대로 고른 것은? (1) 두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐 변 $AB$의 수직이등분선을 만든다. (2) 같은 방법으로 변 $BC$의 수직이등분선을 만든다. (3) 만들어진 두 선분의 교점을 $O$라고 한다. 〈보기〉 ㄱ. $\\overline{AO} = \\overline{BO} = \\overline{CO}$ ㄴ. 점 $O$는 $\\triangle ABC$의 세 각의 이등분선의 교점이다. ㄷ. $\\angle A = 54^\\circ$이면 $\\angle BOC = 108^\\circ$이다. ㄹ. $\\triangle ABC$가 정삼각형이면 점 $O$는 $\\triangle ABC$의 내심과 같다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

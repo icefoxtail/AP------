@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O에서 호 AB와 호 CD의 길이의 합이 호 BC와 호 DA의 길이의 합과 같고, 현 AB = 8, 현 CD = 6일 때 두 활꼴을 색칠한 그림이다.",
+  "accessibilityDescription": "원의 중심 O, 원 위의 점 A, B, C, D, 두 현 AB와 CD, 현의 바깥쪽에 색칠된 두 활꼴, 현 AB의 길이 8과 현 CD의 길이 6이 보인다.",
+  "newVisualInformation": [
+    "현 AB = 8, 현 CD = 6",
+    "호 AB와 호 CD의 길이의 합이 호 BC와 호 DA의 길이의 합과 같다.",
+    "두 현 AB, CD 바깥쪽의 색칠한 두 활꼴"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "segAB",
+        "fill": "WARM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "segCD",
+        "fill": "WARM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 원 $O$에서 $\\wideparen{AB} + \\wideparen{CD} = \\wideparen{BC} + \\wideparen{DA}$이고 $\\overline{AB} = 8$, $\\overline{CD} = 6$일 때, 두 활꼴의 색칠된 부분의 넓이의 합은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "G"
+        ],
+        "value": 33.69,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "G",
+          "A",
+          "C"
+        ],
+        "value": 33.69,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDB",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sEC",
+        "text": "2",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dFE",
+        "from": "F",
+        "to": "E",
+        "label": "3",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dGC",
+        "from": "G",
+        "to": "C",
+        "label": "x",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "caption": "삼각형 ABC에서 DE가 BC와 평행하고, 각 BAC의 이등분선 AG가 DE와 BC에 각각 F, G에서 만나는 그림이다. AD는 6 cm, DB는 2 cm, EC는 2 cm, FE는 3 cm, GC는 x로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC 안에 BC와 평행한 선분 DE가 있고, 꼭짓점 A에서 BC까지 이등분선 AG가 그어져 DE와 만나는 점이 F이다. AD, DB, EC, FE 옆에 6 cm, 2 cm, 2 cm, 3 cm가 적혀 있고 GC 옆에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "DE가 BC와 평행",
+    "각 A를 이등분하는 선분 AG",
+    "점 F, G",
+    "길이 6 cm, 2 cm, 2 cm, 3 cm, x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 $\\overline{DE} \\parallel \\overline{BC}$이고, $\\overline{AG}$는 $\\angle BAC$의 이등분선으로 $\\overline{DE}$와 점 $F$에서, $\\overline{BC}$와 점 $G$에서 만난다. $\\overline{AD}=6 m\\,cm$, $\\overline{DB}=2 m\\,cm$, $\\overline{EC}=2 m\\,cm$, $\\overline{FE}=3 m\\,cm$일 때, 선분 $\\overline{GC}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

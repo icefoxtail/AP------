@@ -1,0 +1,430 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Sm1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Sm2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Sl1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Sl2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Tr",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vhigh",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "T",
+          "Tr"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vlow",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "T",
+          "Tr"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "250"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Sup",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "T",
+          "Tr"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "155"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Sdown",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "T",
+          "Tr"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "335"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Sm1",
+          "Sm2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lL",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Sl1",
+          "Sl2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lV",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "T",
+          "Vhigh"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lS",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "T",
+          "Sup"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lV",
+          "lM"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lS",
+          "lM"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Sm1",
+    "Sm2",
+    "Sl1",
+    "Sl2",
+    "T",
+    "Vhigh",
+    "Vlow",
+    "Sup",
+    "Sdown",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sM",
+      "refs": [
+        "Sm1",
+        "Sm2"
+      ]
+    },
+    {
+      "id": "sL",
+      "refs": [
+        "Sl1",
+        "Sl2"
+      ]
+    },
+    {
+      "id": "sV",
+      "refs": [
+        "Vlow",
+        "Vhigh"
+      ]
+    },
+    {
+      "id": "sS",
+      "refs": [
+        "Sdown",
+        "Sup"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sL",
+          "sM"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aQ",
+        "refs": [
+          "Sm1",
+          "Q",
+          "Vhigh"
+        ],
+        "value": 110,
+        "label": "110",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aR",
+        "refs": [
+          "Sup",
+          "R",
+          "Sm2"
+        ],
+        "value": 155,
+        "label": "155",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "Vhigh",
+          "T",
+          "Sup"
+        ],
+        "value": 85,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aY",
+        "refs": [
+          "Vhigh",
+          "T",
+          "Sl2"
+        ],
+        "value": 70,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lb1",
+        "ownerSegment": "sL",
+        "text": "l",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lb2",
+        "ownerSegment": "sM",
+        "text": "m",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "Sm1",
+    "Sm2",
+    "Sl1",
+    "Sl2",
+    "T",
+    "Vhigh",
+    "Vlow",
+    "Sup",
+    "Sdown",
+    "Q",
+    "R"
+  ],
+  "caption": "두 평행한 직선 l, m을 세로로 기울어진 직선과 비스듬한 직선이 가로지르며, 아래쪽 두 교점에 각 110도와 155도, 위쪽 교점에 각 x와 각 y가 표시되어 있다.",
+  "accessibilityDescription": "위아래로 놓인 두 평행선 l과 m, 이 둘을 지나는 기울어진 직선 두 개가 보이고, 아래쪽 왼쪽 교점의 각 110도, 오른쪽 교점의 각 155도, 위쪽 교점의 각 x와 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행한 두 직선 l, m",
+    "세로로 기울어진 직선과 비스듬한 직선",
+    "각 110도, 각 155도",
+    "각 x, 각 y",
+    "평행 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
