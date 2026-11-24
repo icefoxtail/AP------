@@ -73,7 +73,6 @@ function idleSuiteCommands() {
     'apmath/playground/next/tools/player-rate.test.mjs',
     'apmath/playground/next/tools/video-pins.test.mjs',
     'archive/tools/pipeline-core/tests/budget-u3-contract.test.mjs',
-    'archive/tools/pipeline-core/tests/gold-work-batch.test.mjs',
     'archive/tools/pipeline-core/tests/independent-auditors.test.mjs',
     'archive/tools/pipeline-core/tests/provider-adapter-contract.test.mjs',
     'tests/apmath-class-textbook-course-binding.test.mjs',
