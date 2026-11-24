@@ -14,7 +14,7 @@ const FILE = 'original/high/h1/1mid/example_exam.js';
 const bankOf = () => [
   { id: 1, content: '1번 현재 발문', choices: ['①', '②'], answer: '①', solution: '현재 해설 1', score: 3 },
   { id: 2, content: '2번 현재 발문', choices: ['가', '나'], answer: '나', solution: '현재 해설 2', solutionImage: 'assets/images/x/new.svg', score: 4 },
-  { id: 3, content: '3번 현재 발문', choices: [], answer: '7', solution: '현재 해설 3', score: 5 },
+  { id: 3, content: '3번 현재 발문', choices: ['a', 'b'], answer: '7', solution: '현재 해설 3', score: 5 },
 ];
 const issued = (n, extra = {}) => ({
   questionUid: 'qid_v1_' + String(n).repeat(64).slice(0, 64), id: n, sourceArchiveFile: FILE, sourceOrdinal: n, score: 10 + n, displayNo: 'N' + n,
@@ -84,6 +84,25 @@ test('음성: 시간 예산을 넘기면 기다리지 않고 사본 그대로(�
   const out = await Current.overlay(questions, { budgetMs: 60, fetchQuestionList: () => new Promise(() => {}) });
   assert.ok(Date.now() - started < 1500, '예산을 넘기고도 오래 매이지 않는다');
   assert.equal(out.questions, questions);
+});
+
+test('시험지에서 중간 문항을 지우고 번호를 다시 매겨도 다른 문항을 덮지 않는다(유형·단원·객관식 여부가 다르면 사본 그대로)', async () => {
+  const withMeta = (n, extra = {}) => issued(n, { questionType: '객관식', standardUnitKey: 'U-A', choices: ['가', '나'], ...extra });
+  // 원본에서 4번이 지워지고 5번이 4번으로 다시 매겨진 모양: 같은 자리(4)·같은 번호(4)에 서술형 다른 단원 문항이 있다
+  const renumbered = [{ id: 4, content: '지워진 줄 알았던 5번', choices: [], answer: '7', solution: '다른 해설', questionType: '서술형', standardUnitKey: 'U-B' }];
+  const bank = [{}, {}, {}, ...renumbered];
+  const out = await Current.overlay([withMeta(4, { id: 4, sourceOrdinal: 4 })], { fetchQuestionList: loader({ [FILE]: bank }) });
+  assert.equal(out.replaced, 0);
+  assert.equal(out.questions[0].solution, '옛 해설 4');
+  // 유형 표시가 없어도 객관식이던 문항 자리에 보기 없는 문항이 와 있으면 다른 문항
+  const noMeta = issued(4, { id: 4, sourceOrdinal: 4, choices: ['가', '나'] });
+  const out2 = await Current.overlay([noMeta], { fetchQuestionList: loader({ [FILE]: [{}, {}, {}, { id: 4, content: '서술', choices: [], answer: '1', solution: 's' }] }) });
+  assert.equal(out2.replaced, 0);
+  // 같은 문항의 오타·해설 수정(유형·단원은 그대로)은 덮는다
+  const sameKind = { ...renumbered[0], questionType: '객관식', standardUnitKey: 'U-A', choices: ['가', '나', '다'], solution: '고친 해설' };
+  const out3 = await Current.overlay([withMeta(4, { id: 4, sourceOrdinal: 4 })], { fetchQuestionList: loader({ [FILE]: [{}, {}, {}, sameKind] }) });
+  assert.equal(out3.replaced, 1);
+  assert.equal(out3.questions[0].solution, '고친 해설');
 });
 
 test('한 파일이 실패해도 다른 파일의 문항은 덮는다', async () => {

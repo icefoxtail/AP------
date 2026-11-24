@@ -23,6 +23,7 @@
     'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout',
     'problemImage', 'problemImageAlt', 'problemImageSize',
   ];
+  const STABLE_FIELDS = ['questionType', 'standardUnitKey'];
   const DEFAULT_BUDGET_MS = 3000;
   const DEFAULT_CONCURRENCY = 6;
   const CACHE_MS = 60000;
@@ -62,6 +63,12 @@
     // 같은 자리의 같은 문항인지 번호로 한 번 더 본다(시험지 안 문항 순서가 바뀌었으면 엉뚱한 문항을 덮지 않는다).
     if (question.id != null && current.id != null && text(question.id) !== text(current.id)) return null;
     if (typeof current.content !== 'string' && typeof current.question !== 'string') return null;
+    // 한 겹 더: 시험지에서 중간 문항을 지우고 번호를 다시 매기면 같은 자리·같은 번호에 다른 문항이 와 있을 수 있다. 오타·해설 수정으로는
+    // 바뀌지 않는 값(문항 유형·단원 키·객관식 여부)이 사본과 다르면 다른 문항으로 보고 사본을 그대로 둔다(둘 다 값이 있을 때만 비교).
+    for (const field of STABLE_FIELDS)
+      if (question[field] != null && current[field] != null && text(question[field]) !== text(current[field])) return null;
+    const hasChoices = (item) => Array.isArray(item.choices) && item.choices.length > 0;
+    if (Array.isArray(question.choices) && Array.isArray(current.choices) && hasChoices(question) !== hasChoices(current)) return null;
     return current;
   }
 
