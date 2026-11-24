@@ -337,9 +337,17 @@ test('the shard path is the default of 문제지 만들기 and 단원별 기출 
   assert.equal(shards.shardsDisabled('?view=compose'), false);
   for (const search of ['?shards=0', '?view=compose&shards=off', '?a=1&shards=false#x']) assert.equal(shards.shardsDisabled(search), true, search);
   for (const search of ['?shards=1', '?shards=m1', '?shardsx=0']) assert.equal(shards.shardsDisabled(search), false, search);
-  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html') && name !== 'workspace.html' && name !== 'unit-past-exams.html')) {
+  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html') && !['workspace.html', 'unit-past-exams.html', 'problem-bank-search.html'].includes(name))) {
     assert.equal(/archive2-catalog-shards\.js/.test(read(`archive/${file}`)), false, `${file} must not load the shard loader`);
   }
+  // 문제은행 검색 (stage 4): the loader is there before the screen script; scope first; ?shards=0 and a missing index go to the whole bundle
+  const bankHtml = read('archive/problem-bank-search.html');
+  assert.ok(bankHtml.indexOf('archive2-catalog-shards.js') > bankHtml.indexOf('archive2-key-resolver.js'));
+  assert.ok(bankHtml.indexOf('archive2-catalog-shards.js') < bankHtml.indexOf("const el=id=>document.getElementById(id)"), 'the loader is there before the screen code runs');
+  assert.ok(/if\(Archive2CatalogShards\.shardsDisabled\(location\.search\)\)\{await loadWholeBundle\(\);return;\}/.test(bankHtml), '?shards=0 is the whole bundle');
+  assert.ok(/if\(Archive2CatalogShards\.isUnavailable\(e\)\)\{console\.warn\('catalog shards are not available; using the whole bundle'\);await loadWholeBundle\(\);return;\}/.test(bankHtml), 'no shards on the site: the whole bundle');
+  assert.ok(/isShardFailure\(e\)&&!Archive2CatalogShards\.isNetworkFailure\(e\)\)\{\s*console\.warn\('catalog shards do not match; using the whole bundle'/.test(bankHtml), 'files that do not match the index: the whole bundle; a lost connection: message and retry');
+  assert.ok(/id="scopeRetry"/.test(bankHtml) && /courseOfGenerated\(courses,row\)===key/.test(bankHtml));
   // 단원별 기출 (stage 2-3) loads it before its own script, after the canonical core it reads records with
   const unitHtml = read('archive/unit-past-exams.html');
   assert.ok(unitHtml.indexOf('archive2-catalog-shards.js') > unitHtml.indexOf('archive2-core.js'));
@@ -366,4 +374,18 @@ test('the shard path is the default of 문제지 만들기 and 단원별 기출 
   // boot: shards in use -> the page never starts the whole bundle by itself, for any address; ?shards=0 keeps the old rule
   const boot = read('archive/archive2-boot.js');
   assert.ok(/if \(!\/\[\?&\]shards=\(\?:0\|off\|false\)\(\?:\[&#\]\|\$\)\/\.test\(location\.search\)\) return true;/.test(boot));
+});
+
+test('a generated question (grade, subject, no exam) is put into the course whose names include its subject', () => {
+  const courses = [
+    { key: 'm1', kind: 'grade', grade: '중1' },
+    { key: 'high1-common', kind: 'course', names: ['공통수학1', '공통수학2', '수학(상)'] },
+    { key: 'high2-math1', kind: 'course', names: ['대수', '수학Ⅰ'] },
+  ];
+  assert.equal(shards.courseOfGenerated(courses, { grade: '중1', subject: '수학' }), 'm1');
+  assert.equal(shards.courseOfGenerated(courses, { grade: '고1', subject: '공통수학 1' }), 'high1-common', 'spaces do not matter');
+  assert.equal(shards.courseOfGenerated(courses, { grade: '고2', subject: '대수c' }), 'high2-math1', 'the file-name "c" suffix is ignored like the builder does');
+  assert.equal(shards.courseOfGenerated(courses, { grade: '고1', subject: '', metaProjection: { standardCourse: '수학(상)' } }), 'high1-common', 'the registered course is the second name tried');
+  assert.equal(shards.courseOfGenerated(courses, { grade: '고3', subject: '알 수 없는 과목' }), null);
+  assert.equal(shards.courseOfGenerated(courses, null), null);
 });
