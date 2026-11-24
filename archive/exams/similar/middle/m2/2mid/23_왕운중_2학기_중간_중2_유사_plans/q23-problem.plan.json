@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "평행사변형 ABCD에서 각 DAC의 이등분선이 변 BC의 연장선과 만나는 점 E가 표시되어 있다.",
+  "accessibilityDescription": "평행사변형 ABCD의 변 BC를 연장한 직선 위에 점 E가 있고, AE가 각 DAC를 이등분하며 각 B와 각 ACD의 크기가 주어져 있다.",
+  "newVisualInformation": [
+    "각의 이등분선과 변의 연장선이 만나는 점 E를 나타내고 주어진 각을 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9099",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3746",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9272",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12845",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9272",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19805",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "label": "68",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "value": 30,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "aA1",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1
+      },
+      {
+        "id": "aA2",
+        "refs": [
+          "E",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 평행사변형 $ABCD$에서 $\\angle DAC$의 이등분선이 변 $BC$의 연장선과 만나는 점을 $E$라 하자. $\\angle B=68^\\circ$, $\\angle ACD=52^\\circ$일 때, $\\angle E$의 크기를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

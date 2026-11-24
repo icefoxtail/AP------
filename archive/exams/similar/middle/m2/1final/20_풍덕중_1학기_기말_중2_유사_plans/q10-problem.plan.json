@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해를 나타낸 수직선"
+  },
+  "caption": "수직선 위의 3 지점에 색칠한 동그라미가 있고 그 왼쪽이 굵은 선으로 표시되어 있다.",
+  "accessibilityDescription": "가로 수직선에서 3에 해당하는 자리에 속이 채워진 동그라미가 찍혀 있고, 왼쪽 끝에서 그 점까지 굵은 반직선이 그어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 일차부등식 $4x \\le a + 7$의 해를 수직선 위에 나타내었을 때, 경계점 $3$에 색칠한 동그라미가 있고 왼쪽으로 화살표가 그어져 있다. 이때 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "4x<=a+7",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해집합의 경계값과 왼쪽 방향을 수직선으로 보인다"
+  ]
+}

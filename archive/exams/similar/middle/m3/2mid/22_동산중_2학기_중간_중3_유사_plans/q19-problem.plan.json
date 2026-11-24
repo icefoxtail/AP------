@@ -1,0 +1,142 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "B"
+      ],
+      "args": {
+        "r": 4,
+        "deg": 60
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "E",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "F",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 11.7,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "F"
+      ],
+      "args": {
+        "r": 3.5,
+        "deg": 60
+      }
+    },
+    {
+      "id": "DE",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "op": "SEGMENT",
+      "inputs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "op": "SEGMENT",
+      "inputs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "60°"
+      },
+      {
+        "vertex": "F",
+        "ray1": "D",
+        "ray2": "E",
+        "label": "120°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "8"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "9"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "label": "6√3"
+      }
+    ]
+  },
+  "caption": "넓이가 같은 예각삼각형 ABC(60도)와 둔각삼각형 DEF(120도)"
+}

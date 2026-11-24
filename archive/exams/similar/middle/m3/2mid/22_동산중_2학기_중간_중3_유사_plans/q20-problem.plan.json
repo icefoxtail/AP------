@@ -1,0 +1,261 @@
+{
+  "capability": "composite-panels-v1",
+  "panelLayout": "HORIZONTAL",
+  "panels": [
+    {
+      "capability": "construction-spike-v1",
+      "mode": "PLANE_FIGURE_v1",
+      "mathPlan": [
+        {
+          "id": "O",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "A",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": -3,
+            "y": -1.6
+          }
+        },
+        {
+          "id": "B",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 3,
+            "y": -1.6
+          }
+        },
+        {
+          "id": "M",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 0,
+            "y": -1.6
+          }
+        },
+        {
+          "id": "C",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "inputs": [
+            "O"
+          ],
+          "args": {
+            "r": 3.4
+          }
+        },
+        {
+          "id": "AB",
+          "op": "SEGMENT",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "OM",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "M"
+          ]
+        },
+        {
+          "id": "OA",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        }
+      ],
+      "planeMarks": {
+        "rightAngles": [
+          {
+            "vertex": "M",
+            "ray1": "O",
+            "ray2": "A"
+          }
+        ],
+        "segmentLabels": [
+          {
+            "from": "O",
+            "to": "M",
+            "label": "8"
+          },
+          {
+            "from": "O",
+            "to": "A",
+            "label": "x"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "label": "30"
+          }
+        ]
+      }
+    },
+    {
+      "capability": "construction-spike-v1",
+      "mode": "PLANE_FIGURE_v1",
+      "mathPlan": [
+        {
+          "id": "O",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "A",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": -2.3,
+            "y": 2
+          }
+        },
+        {
+          "id": "B",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 2.3,
+            "y": 2
+          }
+        },
+        {
+          "id": "M",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 0,
+            "y": 2
+          }
+        },
+        {
+          "id": "C",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": -3,
+            "y": -0.7
+          }
+        },
+        {
+          "id": "D",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 3,
+            "y": -0.7
+          }
+        },
+        {
+          "id": "N",
+          "op": "SOURCE_POINT",
+          "args": {
+            "x": 0,
+            "y": -0.7
+          }
+        },
+        {
+          "id": "C1",
+          "op": "CIRCLE_CENTER_RADIUS",
+          "inputs": [
+            "O"
+          ],
+          "args": {
+            "r": 3.05
+          }
+        },
+        {
+          "id": "AB",
+          "op": "SEGMENT",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "CD",
+          "op": "SEGMENT",
+          "inputs": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "OM",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "M"
+          ]
+        },
+        {
+          "id": "ON",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "N"
+          ]
+        },
+        {
+          "id": "OA",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "OD",
+          "op": "SEGMENT",
+          "inputs": [
+            "O",
+            "D"
+          ]
+        }
+      ],
+      "planeMarks": {
+        "rightAngles": [
+          {
+            "vertex": "M",
+            "ray1": "O",
+            "ray2": "A"
+          },
+          {
+            "vertex": "N",
+            "ray1": "O",
+            "ray2": "D"
+          }
+        ],
+        "segmentLabels": [
+          {
+            "from": "O",
+            "to": "M",
+            "label": "6"
+          },
+          {
+            "from": "A",
+            "to": "M",
+            "label": "7"
+          },
+          {
+            "from": "O",
+            "to": "N",
+            "label": "y"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "18"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "원의 중심에서 현에 내린 수선과 반지름을 구하는 두 원의 그림"
+}

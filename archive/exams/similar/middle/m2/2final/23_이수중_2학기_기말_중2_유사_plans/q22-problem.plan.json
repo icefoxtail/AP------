@@ -1,0 +1,75 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A",
+        "elements": [
+          "A영역"
+        ]
+      },
+      {
+        "id": "S",
+        "name": "두 눈의 합",
+        "elements": [
+          "짝수",
+          "홀수"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "elements": [
+          "B영역"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 0,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "서로 다른 두 주사위의 눈의 수의 합이 짝수이면 A 영역, 홀수이면 B 영역에 스티커를 붙이는 규칙을 대응도로 나타낸 것이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 원을 $A, B$ 두 영역으로 이등분한 과녁이 있다. 서로 다른 두 개의 주사위를 동시에 던져 나오는 두 눈의 수의 합이 짝수이면 $A$ 영역에, 홀수이면 $B$ 영역에 스티커를 붙이기로 한다. 주사위를 연속해서 던질 때, 정확히 세 번째 시행에서 두 영역 $A, B$ 모두에 스티커가 붙게 될 확률을 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "두 주사위 눈의 수의 합이 짝수이면 A 영역에 스티커를 붙인다.",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "두 주사위 눈의 수의 합이 홀수이면 B 영역에 스티커를 붙인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 눈의 수의 합이 짝수인 경우 A 영역, 홀수인 경우 B 영역으로 대응되는 규칙을 보여 준다."
+  ]
+}

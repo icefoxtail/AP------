@@ -1,0 +1,506 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ls",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Le",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ms",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Me",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ns",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ne",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "Q1",
+    "Q2",
+    "Q3",
+    "T1",
+    "B1",
+    "T2",
+    "B2",
+    "Ls",
+    "Le",
+    "Ms",
+    "Me",
+    "Ns",
+    "Ne"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "Ls",
+        "Le"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "Ms",
+        "Me"
+      ]
+    },
+    {
+      "id": "sN",
+      "refs": [
+        "Ns",
+        "Ne"
+      ]
+    },
+    {
+      "id": "extA1",
+      "refs": [
+        "T1",
+        "P1"
+      ]
+    },
+    {
+      "id": "a1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "a2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "extA2",
+      "refs": [
+        "P3",
+        "B1"
+      ]
+    },
+    {
+      "id": "extB1",
+      "refs": [
+        "T2",
+        "Q1"
+      ]
+    },
+    {
+      "id": "b1",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "b2",
+      "refs": [
+        "Q2",
+        "Q3"
+      ]
+    },
+    {
+      "id": "extB2",
+      "refs": [
+        "Q3",
+        "B2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "par1",
+        "count": 1,
+        "segments": [
+          "sL",
+          "sM",
+          "sN"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labL",
+        "ownerSegment": "sL",
+        "text": "l"
+      },
+      {
+        "id": "labM",
+        "ownerSegment": "sM",
+        "text": "m"
+      },
+      {
+        "id": "labN",
+        "ownerSegment": "sN",
+        "text": "n"
+      },
+      {
+        "id": "lenA1",
+        "ownerSegment": "a1",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lenA2",
+        "ownerSegment": "a2",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lenB1",
+        "ownerSegment": "b1",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lenB2",
+        "ownerSegment": "b2",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "Q1",
+    "Q2",
+    "Q3",
+    "T1",
+    "B1",
+    "T2",
+    "B2",
+    "Ls",
+    "Le",
+    "Ms",
+    "Me",
+    "Ns",
+    "Ne"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세 평행선 l, m, n과 두 직선이 만나 생긴 선분의 길이 8 cm, 12 cm, 10 cm, x cm를 보여 주는 그림이다.",
+  "accessibilityDescription": "가로로 놓인 세 평행선 l, m, n을 두 개의 비스듬한 직선이 가로지른다. 왼쪽 직선에는 위에서부터 8 cm와 12 cm, 오른쪽 직선에는 10 cm와 x cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "세 평행선과 두 횡단선의 교점 배치",
+    "주어진 세 선분의 길이와 미지수 x의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 직선 $l, m, n$이 서로 평행할 때, 두 직선이 이 세 평행선과 만나서 생기는 선분의 길이가 다음과 같다. 한 직선 위의 두 선분의 길이가 각각 $8\\text{ cm}, 12\\text{ cm}$이고, 다른 직선 위의 대응하는 두 선분의 길이가 각각 $10\\text{ cm}, x\\text{ cm}$일 때, $x$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

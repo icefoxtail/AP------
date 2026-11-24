@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식\n$$\\begin{aligned} A &= x^2y+3xy^2+2 \\\\ B &= 2x^2y-xy^2+1 \\end{aligned}$$\n에 대하여 등식 $2A+B-X=A+2B$를 만족시키는 다항식 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-x^2y+4xy^2+1$",
+    "solution": "$2A+B-X=A+2B$에서 $X$를 구하면\n$$X=2A+B-A-2B=A-B$$\n$$A-B=(x^2y+3xy^2+2)-(2x^2y-xy^2+1)=x^2y-2x^2y+3xy^2+xy^2+2-1=-x^2y+4xy^2+1$$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2a+b+c=1$, $2ab+bc+2ca=-4$일 때, $4a^2+b^2+c^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "$(2a+b+c)^2=4a^2+b^2+c^2+4ab+2bc+4ca=4a^2+b^2+c^2+2(2ab+bc+2ca)$이므로\n$$1^2=(4a^2+b^2+c^2)+2\\times(-4)$$\n따라서 $4a^2+b^2+c^2=1+8=9$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)$에 대하여 등식\n$$x^7+ax^4-bx+9=(x^2-1)P(x)-2x+7$$\n은 $x$에 대한 항등식이다. 이때 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-2,\\ b=3$",
+    "solution": "주어진 등식은 항등식이므로 $x^2-1=0$이 되는 $x=1,\\ -1$을 대입한다.\n$x=1$: $1+a-b+9=-2+7=5$에서 $a-b=-5\\qquad\\cdots\\ ①$\n$x=-1$: $-1+a+b+9=2+7=9$에서 $a+b=1\\qquad\\cdots\\ ②$\n①$+$②를 하면 $2a=-4$이므로 $a=-2$, ②에서 $b=3$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$y-x=1$을 만족시키는 모든 실수 $x$, $y$에 대하여 등식 $ax^2+y^2+by+1=0$이 성립할 때, 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1,\\ b=-2$",
+    "solution": "$y-x=1$에서 $y=x+1$이므로 이를 대입하면\n$$ax^2+(x+1)^2+b(x+1)+1=(a+1)x^2+(2+b)x+(b+2)=0$$\n이 식이 모든 실수 $x$에 대하여 성립하는 항등식이므로 각 계수가 $0$이다.\n$a+1=0$에서 $a=-1$\n$2+b=0$에서 $b=-2$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)$를 $x^2-2x-3$으로 나누었을 때, 나머지가 $3x+2$이다. $P(x+1)$을 $x-2$로 나누었을 때, 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "$P(x)$를 $x^2-2x-3=(x-3)(x+1)$로 나누었을 때의 몫을 $Q(x)$라 하면\n$$P(x)=(x-3)(x+1)Q(x)+3x+2$$\n$P(x+1)$을 $x-2$로 나누었을 때의 나머지는 나머지정리에 의하여 $x=2$를 대입한 $P(3)$이다.\n$$P(3)=0\\times 4\\times Q(3)+3\\times 3+2=11$$"
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
       "$2Q(x)$, $R$",
       "$2Q(x)$, $2R$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "$P(x)=(2x-1)Q(x)+R$이다. $2x-1=2\\left(x-\\frac{1}{2}\\right)$이므로\n$$P(x)=2\\left(x-\\frac{1}{2}\\right)Q(x)+R=\\left(x-\\frac{1}{2}\\right)\\times 2Q(x)+R$$\n따라서 $x-\\frac{1}{2}$로 나누었을 때의 몫은 $2Q(x)$, 나머지는 $R$이다. 따라서 ④이다."
   },
   {
     "id": 7,
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)=-x^3+5x^2-ax+b$가 $x^2-3x-4$로 나누어떨어질 때, 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2,\\ b=-8$",
+    "solution": "$x^2-3x-4=(x-4)(x+1)$로 나누어떨어지므로 $P(4)=0,\\ P(-1)=0$이다.\n$P(4)=-64+80-4a+b=16-4a+b=0\\qquad\\cdots\\ ①$\n$P(-1)=1+5+a+b=6+a+b=0\\qquad\\cdots\\ ②$\n①$-$②를 하면 $10-5a=0$이므로 $a=2$, ②에서 $b=-8$"
   },
   {
     "id": 8,
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $x^{10}(x^2+ax+b)$를 $(x-3)^2$으로 나누었을 때, 나머지가 $3^{10}(x-3)$이다. 이때 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-5,\\ b=6$",
+    "solution": "$f(x)=x^{10}(x^2+ax+b)=(x-3)^2Q(x)+3^{10}(x-3)$이라 하자. $x=3$을 대입하면 $f(3)=0$이므로 $3^{10}(9+3a+b)=0$에서 $9+3a+b=0$이다.\n따라서 $x^2+ax+b$는 $x-3$을 인수로 가지므로 $x^2+ax+b=(x-3)(x-c)$로 놓을 수 있다.\n$$f(x)=(x-3)\\times h(x),\\quad h(x)=x^{10}(x-c)$$\n$h(x)=(x-3)q(x)+h(3)$이므로 $f(x)=(x-3)^2q(x)+h(3)(x-3)$이고, 이것이 $(x-3)^2Q(x)+3^{10}(x-3)$과 같으므로\n$$h(3)=3^{10}(3-c)=3^{10}$$\n에서 $c=2$이다. 따라서 $x^2+ax+b=(x-3)(x-2)=x^2-5x+6$이므로 $a=-5,\\ b=6$"
   },
   {
     "id": 9,
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 다항식\n$$x(x+1)(x+2)(x+3)-3$$\n의 인수를 모두 고르시오.\n$$\\begin{aligned} &\\text{ㄱ. } x^2+3x-1 & &\\text{ㄴ. } x^2+3x+1 \\\\ &\\text{ㄷ. } x^2+3x-3 & &\\text{ㄹ. } x^2+3x+3 \\end{aligned}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄹ",
+    "solution": "$x(x+3)=x^2+3x$, $(x+1)(x+2)=x^2+3x+2$이므로 $x^2+3x=X$로 놓으면\n$$x(x+1)(x+2)(x+3)-3=X(X+2)-3=X^2+2X-3=(X+3)(X-1)$$\n$X$에 $x^2+3x$를 대입하면 $(x^2+3x+3)(x^2+3x-1)$이다.\n따라서 인수는 ㄱ($x^2+3x-1$)과 ㄹ($x^2+3x+3$)이다."
   },
   {
     "id": 10,
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 다항식을 인수분해하시오.\n$$2x^4-3x^3+3x^2-3x+1$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(x-1)(2x-1)(x^2+1)$",
+    "solution": "$P(x)=2x^4-3x^3+3x^2-3x+1$이라 하면 $P(1)=2-3+3-3+1=0$이므로 $x-1$을 인수로 가진다.\n$P\\left(\\frac{1}{2}\\right)=\\frac{2}{16}-\\frac{3}{8}+\\frac{3}{4}-\\frac{3}{2}+1=\\frac{1-3+6-12+8}{8}=0$이므로 $2x-1$도 인수로 가진다.\n$(x-1)(2x-1)=2x^2-3x+1$이므로 $P(x)$를 $2x^2-3x+1$로 나누면 몫이 $x^2+1$이다.\n$$P(x)=(x-1)(2x-1)(x^2+1)$$"
   },
   {
     "id": 11,
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "인수분해를 이용하여 다음 식의 값을 구하시오.\n$$\\dfrac{90000\\times 300-1}{90301}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$299$",
+    "solution": "$a=300$이라 하면 $90000=a^2$, $90301=a^2+a+1$이다.\n$$\\frac{90000\\times 300-1}{90301}=\\frac{a^3-1}{a^2+a+1}=\\frac{(a-1)(a^2+a+1)}{a^2+a+1}=a-1=299$$"
   },
   {
     "id": 12,
@@ -340,8 +340,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 $x$에 대한 항등식이 되도록 실수 $a$, $b$의 값을 정하시오.\n$$(x-1)^2+a(x-2)+3 = x^2+bx-2$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3,\\ b=1$",
+    "solution": "좌변을 전개하여 정리하면\n$$(x-1)^2+a(x-2)+3=x^2-2x+1+ax-2a+3=x^2+(a-2)x+(4-2a)$$\n우변 $x^2+bx-2$와 계수를 비교하면\n$x$의 계수: $a-2=b$\n상수항: $4-2a=-2$이므로 $a=3$\n따라서 $b=a-2=1$"
   },
   {
     "id": 13,
@@ -368,8 +368,8 @@ window.questionBank = [
     "wide": false,
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여\n$$\\{P(x)\\}^2 = 2P(x)+x^4-2x^3+x^2-1$$\n을 만족시킬 때, $P(x)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$P(x)=x^2-x+1$",
+    "solution": "주어진 등식을 정리하면\n$$\\{P(x)\\}^2-2P(x)=x^4-2x^3+x^2-1$$\n양변에 $1$을 더하면\n$$\\{P(x)-1\\}^2=x^4-2x^3+x^2=(x^2-x)^2$$\n이므로 $P(x)-1=x^2-x$ 또는 $P(x)-1=-(x^2-x)$이다.\n$P(x)=x^2-x+1$ 또는 $P(x)=-x^2+x+1$\n최고차항의 계수가 양수이므로 $P(x)=x^2-x+1$"
   },
   {
     "id": 14,
@@ -396,8 +396,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)=x^{10}+x^7+2$를 $x-1$로 나누었을 때, 몫을 $Q(x)$라고 하자. $Q(x)$를 $x+1$로 나누었을 때, 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$P(x)=x^{10}+x^7+2$를 $x-1$로 나누었을 때의 나머지는 $P(1)=1+1+2=4$이므로\n$$P(x)=(x-1)Q(x)+4,\\quad (x-1)Q(x)=x^{10}+x^7-2=(x^{10}-1)+(x^7-1)$$\n$x^{10}-1=(x-1)(x^9+x^8+\\cdots+x+1)$, $x^7-1=(x-1)(x^6+x^5+\\cdots+x+1)$이므로\n$$Q(x)=(x^9+x^8+\\cdots+1)+(x^6+x^5+\\cdots+1)$$\n$Q(x)$를 $x+1$로 나눈 나머지는 $Q(-1)$이다. 첫째 괄호는 $-1$과 $1$이 번갈아 $10$개이므로 $0$, 둘째 괄호는 $1,\\ -1,\\ 1,\\ -1,\\ 1,\\ -1,\\ 1$의 $7$개이므로 $1$이다.\n$$Q(-1)=0+1=1$$"
   },
   {
     "id": 15,
@@ -424,8 +424,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)=x^3+ax^2+2x+3$에 대하여 $P(x-1)$이 $x-2$를 인수로 가질 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-6$",
+    "solution": "$P(x-1)$이 $x-2$를 인수로 가지려면 $x=2$를 대입한 값이 $0$이어야 하므로 $P(2-1)=P(1)=0$이다.\n$$P(1)=1+a+2+3=a+6=0$$\n따라서 $a=-6$"
   },
   {
     "id": 16,
@@ -452,8 +452,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 다항식을 인수분해하시오.\n$$x^2+(2y-1)x+y^2-y-2$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(x+y-2)(x+y+1)$",
+    "solution": "$x+y=t$로 놓고 전개 형태에 맞추면 $(x+y)^2=x^2+2xy+y^2$이고 $x^2+(2y-1)x+y^2-y-2$에서\n$$x^2+2xy+y^2-x-y-2=(x+y)^2-(x+y)-2$$\n이다. $x+y=t$로 놓으면\n$$t^2-t-2=(t-2)(t+1)$$\n$t$에 $x+y$를 대입하면 $(x+y-2)(x+y+1)$"
   },
   {
     "id": 17,
@@ -480,7 +480,7 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $ABC$의 세 변의 길이 $a$, $b$, $c$에 대하여 등식\n$$a^3+a^2b-ab^2-ac^2+bc^2-b^3=0$$\n이 성립할 때, 삼각형 $ABC$는 어떤 삼각형인지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=b$인 이등변삼각형",
+    "solution": "주어진 식을 묶어서 인수분해한다.\n$$a^3+a^2b-ab^2-ac^2+bc^2-b^3=a^2(a+b)-b^2(a+b)-c^2(a-b)$$\n$$=(a+b)(a^2-b^2)-c^2(a-b)=(a-b)\\{(a+b)^2-c^2\\}=(a-b)(a+b-c)(a+b+c)=0$$\n삼각형의 세 변의 길이이므로 $a+b+c>0$이고 $a+b-c>0$이다. 따라서 $a-b=0$, 즉 $a=b$이다.\n따라서 삼각형 $\\mathrm{ABC}$는 $a=b$인 이등변삼각형이다."
   }
 ];

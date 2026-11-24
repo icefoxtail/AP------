@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -1,
+      16
+    ],
+    "curves": [
+      {
+        "id": "a",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "A",
+        "color": "BLUE"
+      },
+      {
+        "id": "b",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "7/4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "B",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "2",
+        "9",
+        "12",
+        "14"
+      ]
+    },
+    "axisTitles": {
+      "x": "x(분)",
+      "y": "y"
+    }
+  },
+  "caption": "물체 A와 B의 시간에 따른 위치를 나타낸 두 직선 그래프이다. A는 위치 12에서 출발하여 4분 후 위치 14를 지나고, B는 위치 2에서 출발하여 4분 후 위치 9를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위를 일정한 속력으로 움직이는 두 물체 $\\mathrm{A}$와 $\\mathrm{B}$가 움직이기 시작한 지 $x$분 후의 위치를 $y$라 하자. 물체 $\\mathrm{A}$는 위치 $12$에서 출발하여 $4$분 후에 위치 $14$를 지나고, 물체 $\\mathrm{B}$는 위치 $2$에서 출발하여 $4$분 후에 위치 $9$를 지난다. 두 물체 $\\mathrm{A}$와 $\\mathrm{B}$는 움직이기 시작한 지 몇 분 후에 만나는가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "Object A starts at position 12 and is at position 14 after 4 minutes.",
+    "Object B starts at position 2 and is at position 9 after 4 minutes."
+  ],
+  "newVisualInformation": [
+    "A의 위치 변화를 나타내는 직선과 B의 위치 변화를 나타내는 직선"
+  ],
+  "accessibilityDescription": "가로축은 시간 x분, 세로축은 위치 y이고, 두 직선 A와 B가 각각 위치 12와 2에서 시작하여 4분 후 14와 9에 도달하는 모습이 그려져 있다."
+}

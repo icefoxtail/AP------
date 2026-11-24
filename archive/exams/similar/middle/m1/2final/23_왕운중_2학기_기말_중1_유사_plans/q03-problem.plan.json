@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "871",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "731",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ExB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ExC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "871",
+              "denominator": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "731",
+              "denominator": "50"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ExA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "ExA",
+    "ExB",
+    "ExC"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAExA",
+      "refs": [
+        "A",
+        "ExA"
+      ]
+    },
+    {
+      "id": "sBExB",
+      "refs": [
+        "B",
+        "ExB"
+      ]
+    },
+    {
+      "id": "sCExC",
+      "refs": [
+        "C",
+        "ExC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAInt",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aAExt",
+        "refs": [
+          "C",
+          "A",
+          "ExA"
+        ],
+        "value": 140,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBExt",
+        "refs": [
+          "C",
+          "B",
+          "ExB"
+        ],
+        "value": 100,
+        "label": "x-20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCExt",
+        "refs": [
+          "B",
+          "C",
+          "ExC"
+        ],
+        "value": 120,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "rightAngles": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "ExA",
+    "ExB",
+    "ExC"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "삼각형의 변을 양쪽으로 연장해 세 외각을 표시한 그림이다. 한 내각 40도와 두 외각의 문자식이 보인다.",
+  "accessibilityDescription": "삼각형의 세 꼭짓점 중 한 곳에는 내각 40이 적혀 있고, 그 외각을 포함한 세 외각에 각 표시가 있다. 두 외각에는 x와 x-20이 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형",
+    "세 외각 표시",
+    "내각 40도",
+    "외각 문자식 x, x-20"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 삼각형의 세 외각의 크기가 각각 $x^\\circ$, $(x-20)^\\circ$, 그리고 한 내각 $40^\\circ$의 외각일 때, $\\angle x$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

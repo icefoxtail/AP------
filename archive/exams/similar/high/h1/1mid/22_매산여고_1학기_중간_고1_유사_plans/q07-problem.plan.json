@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -12,
+      10
+    ],
+    "pieces": [
+      {
+        "domain": [
+          0,
+          6
+        ],
+        "coefficients": [
+          "7",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "2",
+        "intercept": "-10",
+        "label": "y=2x-10 (m=13)"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-2",
+        "label": "꼭짓점(3, -2)"
+      }
+    ]
+  },
+  "caption": "m=13일 때 만나지 않는 이차함수 y=x^2-6x+7과 직선 y=2x-10"
+}

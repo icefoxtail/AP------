@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 명제를 모두 찾고, 그 참, 거짓을 판별하시오.\n⑴ $\\sqrt{4}$는 유리수이다.\n⑵ $x$는 $100$보다 큰 수이다.\n⑶ $26$은 $3$의 배수이다.\n⑷ 우리나라는 아름다운 나라이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "명제: ⑴ (참), ⑶ (거짓)",
+    "solution": "명제는 참 또는 거짓을 명확하게 판별할 수 있는 문장이나 식이다.\n⑴ $\\sqrt{4}=2$이므로 유리수이다. 참인 명제이다.\n⑵ $x$의 값에 따라 참, 거짓이 달라지므로 명제가 아니라 조건이다.\n⑶ $26$은 $3$의 배수가 아니므로 거짓인 명제이다.\n⑷ '아름답다'는 기준이 사람마다 달라 참, 거짓을 판별할 수 없으므로 명제가 아니다.\n따라서 명제는 ⑴(참), ⑶(거짓)이다."
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "전체집합 $U=\\{x \\mid x\\text{는 } 7\\text{ 이하의 자연수}\\}$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-6x+8=0$, $q$: $x^2-6x+9>0$\n일 때, 다음 조건의 진리집합을 구하시오.\n⑴ $p$\n⑵ $q$\n⑶ $\\sim p$\n⑷ $\\sim q$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\{2,\\ 4\\}$\n⑵ $\\{1,\\ 2,\\ 4,\\ 5,\\ 6,\\ 7\\}$\n⑶ $\\{1,\\ 3,\\ 5,\\ 6,\\ 7\\}$\n⑷ $\\{3\\}$",
+    "solution": "전체집합 $U=\\{1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6,\\ 7\\}$이다.\n⑴ $x^2-6x+8=(x-2)(x-4)=0$에서 $x=2$ 또는 $x=4$이므로 $p$의 진리집합은 $\\{2,\\ 4\\}$\n⑵ $x^2-6x+9=(x-3)^2>0$은 $x\\ne 3$일 때 성립하므로 $q$의 진리집합은 $U$에서 $3$을 뺀 $\\{1,\\ 2,\\ 4,\\ 5,\\ 6,\\ 7\\}$\n⑶ $\\sim p$의 진리집합은 $p$의 진리집합의 여집합이므로 $\\{1,\\ 3,\\ 5,\\ 6,\\ 7\\}$\n⑷ $\\sim q$의 진리집합은 $q$의 진리집합의 여집합이므로 $\\{3\\}$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 명제의 역과 대우를 말하고, 그 참, 거짓을 판별하시오.\n⑴ $x$가 자연수이면 $x$는 유리수이다.\n⑵ $x(x+1)=0$이면 $x+1=0$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 역: $x$가 유리수이면 $x$는 자연수이다. (거짓) / 대우: $x$가 유리수가 아니면 $x$는 자연수가 아니다. (참)\n⑵ 역: $x+1=0$이면 $x(x+1)=0$이다. (참) / 대우: $x+1\\ne 0$이면 $x(x+1)\\ne 0$이다. (거짓)",
+    "solution": "명제 '$p$이면 $q$이다'의 역은 '$q$이면 $p$이다', 대우는 '$q$가 아니면 $p$가 아니다'이다.\n⑴ 역: $x$가 유리수이면 $x$는 자연수이다. $x=\\frac{1}{2}$은 유리수이지만 자연수가 아니므로 거짓이다.\n대우: $x$가 유리수가 아니면 $x$는 자연수가 아니다. 자연수는 모두 유리수이므로 (원래 명제가 참이므로 대우도 참) 참이다.\n⑵ 역: $x+1=0$이면 $x(x+1)=0$이다. $x+1=0$이면 $x(x+1)=x\\times 0=0$이므로 참이다.\n대우: $x+1\\ne 0$이면 $x(x+1)\\ne 0$이다. $x=0$이면 $x+1=1\\ne 0$이지만 $x(x+1)=0$이므로 거짓이다."
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 조건 $p$와 $q$가 다음과 같을 때, $p$는 $q$이기 위한 어떤 조건인지 말하시오.\n⑴ $p$: $x \\le 1$, $q$: $-3 \\le x \\le 0$\n⑵ $p$: $a=b$, $q$: $a^2=b^2$\n⑶ $p$: $|x| \\le 1$, $q$: $-1 \\le x \\le 1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 필요조건\n⑵ 충분조건\n⑶ 필요충분조건",
+    "solution": "$p,\\ q$의 진리집합을 각각 $P,\\ Q$라 하자. $P\\subset Q$이면 $p$는 $q$이기 위한 충분조건, $Q\\subset P$이면 필요조건, $P=Q$이면 필요충분조건이다.\n⑴ $P=\\{x\\mid x\\le 1\\}$, $Q=\\{x\\mid -3\\le x\\le 0\\}$이므로 $Q\\subset P$이다. 따라서 $p$는 $q$이기 위한 필요조건이다.\n⑵ $a=b$이면 $a^2=b^2$이므로 $p\\Rightarrow q$이다. 그러나 $a=1,\\ b=-1$이면 $a^2=b^2$이지만 $a\\ne b$이므로 $q\\Rightarrow p$는 거짓이다. 따라서 $p$는 $q$이기 위한 충분조건이다.\n⑶ $|x|\\le 1$은 $-1\\le x\\le 1$과 같으므로 $P=Q$이다. 따라서 $p$는 $q$이기 위한 필요충분조건이다."
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 명제의 부정을 말하고, 그 참, 거짓을 판별하시오.\n⑴ 모든 실수 $x$에 대하여 $x^2>x-1$이다.\n⑵ 어떤 실수 $x$에 대하여 $|3x-2|<0$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 부정: 어떤 실수 $x$에 대하여 $x^2\\le x-1$이다. (거짓)\n⑵ 부정: 모든 실수 $x$에 대하여 $|3x-2|\\ge 0$이다. (참)",
+    "solution": "'모든 $x$에 대하여 $p$이다'의 부정은 '어떤 $x$에 대하여 $\\sim p$이다', '어떤 $x$에 대하여 $p$이다'의 부정은 '모든 $x$에 대하여 $\\sim p$이다'이다.\n⑴ 부정: 어떤 실수 $x$에 대하여 $x^2\\le x-1$이다.\n$x^2-x+1\\le 0$을 만족하는 실수가 있는지 보면 $x^2-x+1=\\left(x-\\frac{1}{2}\\right)^2+\\frac{3}{4}>0$이므로 그런 실수는 없다. 따라서 부정은 거짓이다. (원래 명제는 참)\n⑵ 부정: 모든 실수 $x$에 대하여 $|3x-2|\\ge 0$이다.\n절댓값은 항상 $0$ 이상이므로 부정은 참이다. (원래 명제는 거짓)"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "전체집합 $U$에 대하여 두 조건 $p$와 $q$의 진리집합을 각각 $P$와 $Q$라 하자. 명제 $p \\longrightarrow \\sim q$가 참일 때, 옳은 것을 보기에서 모두 고르시오.\n<보기>\nㄱ. $P \\subset Q^c$\nㄴ. $P \\cap Q=Q$\nㄷ. $P^c \\cap Q=Q$\nㄹ. $P^c \\cup Q^c=U$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ, ㄹ",
+    "solution": "$p\\longrightarrow\\sim q$가 참이므로 $P\\subset Q^c$이다. 이는 $P$와 $Q$가 서로소임을 뜻한다.\nㄱ. $P\\subset Q^c$ (참)\nㄴ. $P\\cap Q=\\varnothing$이므로 $P\\cap Q=Q$는 $Q=\\varnothing$일 때만 성립한다. 항상 참은 아니다. (거짓)\nㄷ. $P\\subset Q^c$이면 $Q\\subset P^c$이므로 $P^c\\cap Q=Q$이다. (참)\nㄹ. $P\\cap Q=\\varnothing$이므로 드모르간 법칙에 의하여 $P^c\\cup Q^c=(P\\cap Q)^c=\\varnothing^c=U$이다. (참)\n따라서 옳은 것은 ㄱ, ㄷ, ㄹ이다."
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-4a^2 \\le 0$, $q$: $|x-3| \\le 4$\n일 때, 명제 $p \\longrightarrow q$의 역이 참이 되도록 하는 자연수 $a$의 최솟값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "조건 $p$에서 $x^2\\le 4a^2$이므로 $-2a\\le x\\le 2a$ ($a$는 자연수), 진리집합 $P=\\{x\\mid -2a\\le x\\le 2a\\}$\n조건 $q$에서 $|x-3|\\le 4$이므로 $-4\\le x-3\\le 4$, 즉 $-1\\le x\\le 7$, 진리집합 $Q=\\{x\\mid -1\\le x\\le 7\\}$\n명제 $p\\longrightarrow q$의 역은 $q\\longrightarrow p$이고, 이것이 참이려면 $Q\\subset P$이어야 한다.\n$-2a\\le -1$이고 $2a\\ge 7$이어야 한다.\n$-2a\\le -1$에서 $a\\ge\\frac{1}{2}$\n$2a\\ge 7$에서 $a\\ge\\frac{7}{2}$\n따라서 $a\\ge\\frac{7}{2}$이므로 자연수 $a$의 최솟값은 $4$이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-10x+9 \\le 0$, $q$: $x \\le a$\n일 때, $p$가 $q$이기 위한 충분조건이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a\\ge 9$",
+    "solution": "$p$: $x^2-10x+9=(x-1)(x-9)\\le 0$이므로 $1\\le x\\le 9$, 진리집합 $P=\\{x\\mid 1\\le x\\le 9\\}$\n$q$: $x\\le a$이므로 진리집합 $Q=\\{x\\mid x\\le a\\}$\n$p$가 $q$이기 위한 충분조건이려면 $P\\subset Q$이어야 한다.\n$P$의 가장 큰 값 $9$가 $Q$에 포함되어야 하므로 $a\\ge 9$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 조건 $p$, $q$, $r$에 대하여 두 명제 $p \\longrightarrow q$와 $\\sim r \\longrightarrow \\sim q$가 모두 참일 때, 항상 참인 명제를 보기에서 모두 고르시오.\n<보기>\nㄱ. $q \\longrightarrow r$\nㄴ. $\\sim p \\longrightarrow \\sim q$\nㄷ. $\\sim r \\longrightarrow \\sim p$\nㄹ. $p \\longrightarrow \\sim r$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "$\\sim r\\longrightarrow\\sim q$가 참이므로 그 대우인 $q\\longrightarrow r$도 참이다.\n$p\\longrightarrow q$와 $q\\longrightarrow r$이 모두 참이므로 삼단논법에 의하여 $p\\longrightarrow r$도 참이다.\nㄱ. $q\\longrightarrow r$은 참이다.\nㄴ. $\\sim p\\longrightarrow\\sim q$는 $p\\longrightarrow q$의 이(裏)이다. 이는 역 $q\\longrightarrow p$의 대우와 같으므로 $q\\longrightarrow p$가 항상 참이라고 할 수 없는 한 항상 참은 아니다.\nㄷ. $p\\longrightarrow r$의 대우인 $\\sim r\\longrightarrow\\sim p$는 참이다.\nㄹ. $p\\longrightarrow\\sim r$은 $p\\longrightarrow r$이 참이므로 $p$이면서 $r$인 경우가 있어 항상 참이 될 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄷ이다."
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $ax^2+2x-4 \\ge 0$, $q$: $x^2+2bx+25>0$\n이다. 다음 두 명제가 모두 거짓이 되도록 하는 정수 $a$의 최댓값을 $M$, 자연수 $b$의 최솟값을 $m$이라 할 때, $M+m$의 값을 구하는 풀이 과정과 답을 쓰시오.\n(가) 어떤 실수 $x$에 대하여 $p$이다.\n(나) $\\sim p$는 $q$이기 위한 충분조건이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "$p$의 진리집합을 $P$, $q$의 진리집합을 $Q$라 하자.\n(가) '어떤 실수 $x$에 대하여 $p$이다'가 거짓이므로 모든 실수 $x$에 대하여 $\\sim p$, 즉 $ax^2+2x-4<0$이다. 따라서 $P=\\varnothing$이고\n$$a<0\\quad\\text{이고}\\quad \\frac{D}{4}=1+4a<0$$\n이므로 $a<-\\frac{1}{4}$이다. 이를 만족하는 정수 $a$는 $-1,\\ -2,\\ \\cdots$이므로 최댓값은 $M=-1$이다.\n(나) '$\\sim p$는 $q$이기 위한 충분조건이다'가 거짓이다. (가)에서 $\\sim p$의 진리집합은 $P^c=U$(실수 전체)이므로 $\\sim p\\longrightarrow q$가 거짓이려면 $q$가 모든 실수 $x$에 대하여 성립하지 않아야 한다. 즉 $x^2+2bx+25\\le 0$인 실수 $x$가 존재해야 하므로\n$$\\frac{D}{4}=b^2-25\\ge 0$$\n$b$는 자연수이므로 $b\\ge 5$이고 최솟값은 $m=5$이다.\n따라서 $M+m=-1+5=4$"
   },
   {
     "id": 11,
@@ -306,7 +306,7 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$와 $y$에 대하여\n$2x^2+y^2-4x+\\dfrac{25}{x^2+y^2+1}$\n의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "식을 다음과 같이 변형한다. $t=x^2+y^2+1$이라 하면 $t\\ge 1$이고\n$$2x^2+y^2-4x=(x^2+y^2+1)+(x^2-4x+4)-5=t+(x-2)^2-5$$\n이므로\n$$2x^2+y^2-4x+\\frac{25}{x^2+y^2+1}=(x-2)^2-5+\\left(t+\\frac{25}{t}\\right)$$\n$t>0$이므로 산술평균과 기하평균의 관계에 의하여\n$$t+\\frac{25}{t}\\ge 2\\sqrt{t\\times\\frac{25}{t}}=10$$\n(등호는 $t=\\frac{25}{t}$, 즉 $t=5$일 때 성립)\n또 $(x-2)^2\\ge 0$ (등호는 $x=2$일 때 성립)\n$x=2$이면 $t=4+y^2+1=5$에서 $y=0$이므로 두 등호가 동시에 성립한다.\n따라서 최솟값은 $0-5+10=5$"
   }
 ];

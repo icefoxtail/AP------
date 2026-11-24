@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 성립하도록 하는 실수 $x$와 $y$의 값을 구하시오.\n⑴ $(x-2)+(y-1)i=1+6i$\n⑵ $(x-y+1)+(2x-y)i=5i$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=3,\\ y=7$\n⑵ $x=6,\\ y=7$",
+    "solution": "복소수가 서로 같을 조건에 의하여 실수부분끼리, 허수부분끼리 같다.\n⑴ $x-2=1$에서 $x=3$, $y-1=6$에서 $y=7$\n⑵ $(x-y+1)+(2x-y)i=5i$에서\n$x-y+1=0$, 즉 $x-y=-1\\qquad\\cdots\\ ①$\n$2x-y=5\\qquad\\cdots\\ ②$\n②$-$①을 하면 $x=6$이고 ①에서 $y=x+1=7$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 복소수의 켤레복소수를 구하시오.\n⑴ $-5-3i$\n⑵ $3+\\sqrt{7}i$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-5+3i$\n⑵ $3-\\sqrt{7}i$",
+    "solution": "복소수 $a+bi$의 켤레복소수는 허수부분의 부호만 바꾼 $a-bi$이다.\n⑴ $-5-3i$의 켤레복소수는 $-5+3i$\n⑵ $3+\\sqrt{7}i$의 켤레복소수는 $3-\\sqrt{7}i$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 계산하시오.\n⑴ $(1-4i)+(5+6i)$\n⑵ $(5-2i)-(9-3i)$\n⑶ $(2-3i)(3+i)$\n⑷ $\\dfrac{1-i}{1+i}-\\dfrac{1+i}{1-i}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $6+2i$\n⑵ $-4+i$\n⑶ $9-7i$\n⑷ $-2i$",
+    "solution": "⑴ $(1-4i)+(5+6i)=(1+5)+(-4+6)i=6+2i$\n⑵ $(5-2i)-(9-3i)=(5-9)+(-2+3)i=-4+i$\n⑶ $(2-3i)(3+i)=6+2i-9i-3i^2=6-7i+3=9-7i$\n⑷ $\\frac{1-i}{1+i}=\\frac{(1-i)^2}{(1+i)(1-i)}=\\frac{-2i}{2}=-i$\n$\\frac{1+i}{1-i}=\\frac{(1+i)^2}{(1-i)(1+i)}=\\frac{2i}{2}=i$\n따라서 $\\frac{1-i}{1+i}-\\frac{1+i}{1-i}=-i-i=-2i$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식의 근을 판별하시오.\n⑴ $2x^2-4x-3=0$\n⑵ $9x^2-12x+4=0$\n⑶ $3x^2-x+4=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 서로 다른 두 실근\n⑵ 중근(실근)\n⑶ 서로 다른 두 허근",
+    "solution": "판별식 $D$의 부호로 근을 판별한다. $D>0$이면 서로 다른 두 실근, $D=0$이면 중근, $D<0$이면 서로 다른 두 허근이다.\n⑴ $\\frac{D}{4}=(-2)^2-2\\times(-3)=4+6=10>0$이므로 서로 다른 두 실근\n⑵ $\\frac{D}{4}=(-6)^2-9\\times 4=36-36=0$이므로 중근\n⑶ $D=(-1)^2-4\\times 3\\times 4=1-48=-47<0$이므로 서로 다른 두 허근"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $2x^2-6x+1=0$의 두 근을 $\\alpha$와 $\\beta$라 할 때, 다음 식의 값을 구하시오.\n⑴ $\\alpha^2+\\beta^2$\n⑵ $\\dfrac{1}{\\alpha}+\\dfrac{1}{\\beta}$\n⑶ $(\\alpha-1)(\\beta-1)$\n⑷ $\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $8$\n⑵ $6$\n⑶ $-\\frac{3}{2}$\n⑷ $16$",
+    "solution": "근과 계수의 관계에 의하여\n$$\\alpha+\\beta=3,\\qquad \\alpha\\beta=\\frac{1}{2}$$\n⑴ $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=9-1=8$\n⑵ $\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}=\\frac{3}{\\frac{1}{2}}=6$\n⑶ $(\\alpha-1)(\\beta-1)=\\alpha\\beta-(\\alpha+\\beta)+1=\\frac{1}{2}-3+1=-\\frac{3}{2}$\n⑷ $\\frac{\\beta}{\\alpha}+\\frac{\\alpha}{\\beta}=\\frac{\\alpha^2+\\beta^2}{\\alpha\\beta}=\\frac{8}{\\frac{1}{2}}=16$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 복소수 $\\alpha=3-2i$와 $\\beta=-2+i$에 대하여 $\\alpha\\overline{\\alpha}+\\overline{\\alpha}\\beta+\\alpha\\overline{\\beta}+\\beta\\overline{\\beta}$의 값을 구하시오.\n(단, $\\overline{\\alpha}$와 $\\overline{\\beta}$는 각각 $\\alpha$와 $\\beta$의 켤레복소수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "주어진 식은 다음과 같이 인수분해된다.\n$$\\alpha\\overline{\\alpha}+\\overline{\\alpha}\\beta+\\alpha\\overline{\\beta}+\\beta\\overline{\\beta}=(\\alpha+\\beta)(\\overline{\\alpha}+\\overline{\\beta})$$\n$\\overline{\\alpha}+\\overline{\\beta}=\\overline{\\alpha+\\beta}$이므로 $\\alpha+\\beta=(3-2i)+(-2+i)=1-i$\n$$(\\alpha+\\beta)(\\overline{\\alpha+\\beta})=(1-i)(1+i)=1-i^2=2$$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $(2-i)z+2i\\overline{z}=7+i$를 만족시키는 복소수 $z$를 구하시오. (단, $\\overline{z}$는 $z$의 켤레복소수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$z=11-5i$",
+    "solution": "$z=a+bi$ ($a,\\ b$는 실수)라 하면 $\\overline{z}=a-bi$이다.\n$$(2-i)(a+bi)=2a+2bi-ai-bi^2=(2a+b)+(2b-a)i$$\n$$2i(a-bi)=2ai-2bi^2=2b+2ai$$\n더하면\n$$(2a+b+2b)+(2b-a+2a)i=(2a+3b)+(a+2b)i=7+i$$\n실수부분: $2a+3b=7\\qquad\\cdots\\ ①$\n허수부분: $a+2b=1\\qquad\\cdots\\ ②$\n②에서 $a=1-2b$를 ①에 대입하면 $2-4b+3b=7$이므로 $b=-5$, $a=11$\n따라서 $z=11-5i$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{-3}\\sqrt{-3}+\\sqrt{-3}\\sqrt{12}+\\dfrac{\\sqrt{27}}{\\sqrt{-3}}=a+bi$일 때, 실수 $a$와 $b$에 대하여 $\\dfrac{b}{a}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "음수의 제곱근을 $i$로 나타내면\n$$\\sqrt{-3}\\sqrt{-3}=\\sqrt{3}i\\times\\sqrt{3}i=3i^2=-3$$\n$$\\sqrt{-3}\\sqrt{12}=\\sqrt{3}i\\times 2\\sqrt{3}=6i$$\n$$\\frac{\\sqrt{27}}{\\sqrt{-3}}=\\frac{3\\sqrt{3}}{\\sqrt{3}i}=\\frac{3}{i}=\\frac{3i}{i^2}=-3i$$\n모두 더하면 $-3+6i-3i=-3+3i$이므로 $a=-3,\\ b=3$\n따라서 $\\frac{b}{a}=\\frac{3}{-3}=-1$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2-2kx+k^2+k-3=0$이 서로 다른 두 허근을 갖도록 하는 정수 $k$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "서로 다른 두 허근을 가지려면 판별식 $D<0$이어야 한다.\n$$\\frac{D}{4}=k^2-(k^2+k-3)=3-k<0$$\n이므로 $k>3$\n정수 $k$의 최솟값은 $4$이다."
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+ax-9=0$의 두 근이 $\\alpha$와 $\\beta$이고, 이차방정식 $x^2+bx+27=0$의 두 근이 $\\alpha+\\beta$와 $\\alpha\\beta$이다. 이때 실수 $a$와 $b$에 대하여 $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "$x^2+ax-9=0$의 두 근이 $\\alpha,\\ \\beta$이므로 근과 계수의 관계에서\n$$\\alpha+\\beta=-a,\\qquad \\alpha\\beta=-9$$\n$x^2+bx+27=0$의 두 근이 $\\alpha+\\beta,\\ \\alpha\\beta$이므로\n두 근의 합: $(\\alpha+\\beta)+\\alpha\\beta=-b$, 즉 $-a-9=-b\\qquad\\cdots\\ ①$\n두 근의 곱: $(\\alpha+\\beta)\\alpha\\beta=27$, 즉 $(-a)\\times(-9)=27\\qquad\\cdots\\ ②$\n②에서 $9a=27$이므로 $a=3$\n①에 대입하면 $-3-9=-b$이므로 $b=12$\n따라서 $a+b=3+12=15$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 만족시키는 두 수 $\\alpha$와 $\\beta$를 구하시오.\n⑴ $\\alpha+\\beta=2,\\quad \\alpha\\beta=4$\n⑵ $\\alpha+\\beta=6,\\quad \\alpha\\beta=-5$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1+\\sqrt{3}i,\\ 1-\\sqrt{3}i$\n⑵ $3+\\sqrt{14},\\ 3-\\sqrt{14}$",
+    "solution": "합이 $\\alpha+\\beta$, 곱이 $\\alpha\\beta$인 두 수는 이차방정식 $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$의 두 근이다.\n⑴ $x^2-2x+4=0$에서\n$$x=1\\pm\\sqrt{1-4}=1\\pm\\sqrt{3}i$$\n따라서 두 수는 $1+\\sqrt{3}i,\\ 1-\\sqrt{3}i$\n⑵ $x^2-6x-5=0$에서\n$$x=3\\pm\\sqrt{9+5}=3\\pm\\sqrt{14}$$\n따라서 두 수는 $3+\\sqrt{14},\\ 3-\\sqrt{14}$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$z=\\dfrac{1-i}{\\sqrt{2}}$일 때, $z^2+z^4+z^6+z^8+z^{10}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-i$",
+    "solution": "$z=\\frac{1-i}{\\sqrt{2}}$이므로\n$$z^2=\\frac{(1-i)^2}{2}=\\frac{1-2i+i^2}{2}=-i$$\n$z^4=(z^2)^2=(-i)^2=-1$\n$z^6=z^4\\times z^2=(-1)\\times(-i)=i$\n$z^8=(z^4)^2=1$\n$z^{10}=z^8\\times z^2=-i$\n따라서\n$$z^2+z^4+z^6+z^8+z^{10}=-i+(-1)+i+1+(-i)=-i$$"
   },
   {
     "id": 13,
@@ -362,7 +362,7 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $ax^2+bx+c=0$에서 $b$를 잘못 보고 풀었더니 두 근이 $18$과 $\\dfrac{1}{5}$이 되었고, $c$를 잘못 보고 풀었더니 두 근이 $8$과 $\\dfrac{7}{5}$이 되었다. 처음 이차방정식의 근을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=9$ 또는 $x=\\frac{2}{5}$",
+    "solution": "$b$를 잘못 보았을 때는 $a,\\ c$는 바르게 보았으므로 이때의 두 근 $18,\\ \\frac{1}{5}$의 곱이 $\\frac{c}{a}$이다.\n$$\\frac{c}{a}=18\\times\\frac{1}{5}=\\frac{18}{5}$$\n$c$를 잘못 보았을 때는 $a,\\ b$는 바르게 보았으므로 이때의 두 근 $8,\\ \\frac{7}{5}$의 합이 $-\\frac{b}{a}$이다.\n$$-\\frac{b}{a}=8+\\frac{7}{5}=\\frac{47}{5}$$\n따라서 $a=5$로 놓으면 $c=18,\\ b=-47$이고 처음 이차방정식은\n$$5x^2-47x+18=0$$\n이다. 인수분해하면 $(5x-2)(x-9)=0$이므로 $x=9$ 또는 $x=\\frac{2}{5}$"
   }
 ];

@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "R",
+    "S",
+    "P",
+    "Q",
+    "U",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sSR",
+      "refs": [
+        "S",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "sQS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "l",
+      "refs": [
+        "W",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tPQ",
+        "ownerSegment": "sPQ",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tSR",
+        "ownerSegment": "sSR",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tRP",
+        "ownerSegment": "sRP",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tQS",
+        "ownerSegment": "sQS",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tl",
+        "ownerSegment": "l",
+        "text": "l"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rS",
+      "refs": [
+        "R",
+        "S",
+        "Q"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "S"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "R",
+    "S",
+    "P",
+    "Q",
+    "U",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직선 l을 회전축으로 하는 직각사다리꼴로, 윗변 2cm, 아랫변 6cm, 높이 3cm, 빗변 5cm가 표시되어 있다.",
+  "accessibilityDescription": "세로로 놓인 직선 l이 회전축이고, 그 왼쪽에 직각사다리꼴이 그려져 있다. 윗변에 2cm, 아랫변에 6cm, 높이에 3cm, 빗변에 5cm가 표시되어 있으며 회전축 쪽 두 꼭짓점에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "회전축 l",
+    "직각사다리꼴의 윗변 2cm, 아랫변 6cm, 높이 3cm, 빗변 5cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 윗변의 길이가 $2,\\mathrm{cm}$, 아랫변의 길이가 $6,\\mathrm{cm}$, 높이가 $3,\\mathrm{cm}$, 빗변(모선)의 길이가 $5,\\mathrm{cm}$인 직각사다리꼴이 있다.   \n(1) 이 사다리꼴을 수직인 변을 회전축 $l$로 하여 $1$회전 시킬 때 생기는 입체도형의 이름을 쓰시오. (1점)   \n(2) 이 입체도형의 전개도에서 옆면 부채꼴의 안쪽 반지름과 바깥쪽 반지름의 길이를 각각 구하시오. (2점) \n\n(3) 이 입체도형의 겉넓이를 구하시오. (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

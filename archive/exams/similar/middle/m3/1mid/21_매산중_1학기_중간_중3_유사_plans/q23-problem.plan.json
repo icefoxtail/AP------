@@ -1,0 +1,387 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "87"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "87"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "139"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "139"
+            },
+            {
+              "kind": "integer",
+              "value": "52"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "52"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "174"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "174"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "139"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A1",
+    "A2",
+    "A3",
+    "B2",
+    "B3",
+    "B4",
+    "Q",
+    "C3",
+    "C4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPA1",
+      "refs": [
+        "P",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA1B2",
+      "refs": [
+        "A1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2Q",
+      "refs": [
+        "B2",
+        "Q"
+      ]
+    },
+    {
+      "id": "sA3P",
+      "refs": [
+        "A3",
+        "P"
+      ]
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA1B4",
+      "refs": [
+        "A1",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB4A2",
+      "refs": [
+        "B4",
+        "A2"
+      ]
+    },
+    {
+      "id": "sB4B3",
+      "refs": [
+        "B4",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3C4",
+      "refs": [
+        "B3",
+        "C4"
+      ]
+    },
+    {
+      "id": "sC4B2",
+      "refs": [
+        "C4",
+        "B2"
+      ]
+    },
+    {
+      "id": "sC4C3",
+      "refs": [
+        "C4",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3Q",
+      "refs": [
+        "C3",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "label": "75",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "A1",
+              "B4",
+              "A2",
+              "A3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "label": "27",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "B2",
+              "C4",
+              "B3",
+              "B4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "label": "12",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "B2",
+              "Q",
+              "C3",
+              "C4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "B2",
+    "B3",
+    "B4",
+    "C3",
+    "C4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "넓이가 각각 75, 27, 12 제곱센티미터인 세 정사각형이 한 줄로 붙어 있고, 왼쪽 아래 끝점 P와 오른쪽 아래 끝점 Q가 표시되어 있다.",
+  "accessibilityDescription": "왼쪽부터 넓이 75, 27, 12가 적힌 세 정사각형이 밑변을 맞대어 붙어 있다. 가장 왼쪽 아래에 P, 가장 오른쪽 아래에 Q가 있다.",
+  "newVisualInformation": [
+    "세 정사각형의 넓이 75, 27, 12를 각각 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 3】[서술형] 【수준별 3-①】 그림과 같이 세 정사각형의 넓이가 각각 $75\\text{ cm}^2$, $27\\text{ cm}^2$, $12\\text{ cm}^2$일 때, $\\overline{PQ}$의 길이를 구하시오. (4점) 【수준별 3-②】 그림과 같이 넓이가 각각 $72\\text{ cm}^2$, $27\\text{ cm}^2$, $18\\text{ cm}^2$인 $3$개의 정사각형 모양의 꽃밭이 서로 붙어 있을 때, 꽃밭 전체의 둘레의 길이를 구하시오. (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

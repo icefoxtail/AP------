@@ -1,0 +1,524 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "b00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t0b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t0t",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1t",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t2t",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t3t",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "b00",
+    "b10",
+    "b20",
+    "b30",
+    "b40",
+    "b02",
+    "b12",
+    "b22",
+    "b32",
+    "b42",
+    "t0b",
+    "t1b",
+    "t2b",
+    "t3b",
+    "t0t",
+    "t1t",
+    "t2t",
+    "t3t"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "bd0",
+      "refs": [
+        "b00",
+        "b40"
+      ]
+    },
+    {
+      "id": "bd1",
+      "refs": [
+        "b40",
+        "b42"
+      ]
+    },
+    {
+      "id": "bd2",
+      "refs": [
+        "b42",
+        "b02"
+      ]
+    },
+    {
+      "id": "bd3",
+      "refs": [
+        "b02",
+        "b00"
+      ]
+    },
+    {
+      "id": "bv1",
+      "refs": [
+        "b10",
+        "b12"
+      ]
+    },
+    {
+      "id": "bv2",
+      "refs": [
+        "b20",
+        "b22"
+      ]
+    },
+    {
+      "id": "bv3",
+      "refs": [
+        "b30",
+        "b32"
+      ]
+    },
+    {
+      "id": "tv0",
+      "refs": [
+        "t0b",
+        "t0t"
+      ]
+    },
+    {
+      "id": "tv1",
+      "refs": [
+        "t1b",
+        "t1t"
+      ]
+    },
+    {
+      "id": "tv2",
+      "refs": [
+        "t2b",
+        "t2t"
+      ]
+    },
+    {
+      "id": "tv3",
+      "refs": [
+        "t3b",
+        "t3t"
+      ]
+    },
+    {
+      "id": "tt",
+      "refs": [
+        "t0t",
+        "t3t"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbTop",
+        "ownerSegment": "tt",
+        "text": "위층",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "lbBot",
+        "ownerSegment": "bd0",
+        "text": "아래층",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "b00",
+    "b10",
+    "b20",
+    "b30",
+    "b40",
+    "b02",
+    "b12",
+    "b22",
+    "b32",
+    "b42",
+    "t0b",
+    "t1b",
+    "t2b",
+    "t3b",
+    "t0t",
+    "t1t",
+    "t2t",
+    "t3t"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "위층에 사물함 세 개, 아래층에 사물함 네 개가 나란히 놓여 있는 모습을 보여 준다.",
+  "accessibilityDescription": "세로로 긴 직사각형 일곱 개가 사물함으로 그려져 있다. 위쪽에는 세 개가 나란히 붙어 있고, 그 아래쪽에는 네 개가 더 넓게 나란히 붙어 있다. 맨 위 가로선 위에 위층이라는 글자가, 맨 아래 가로선 아래에 아래층이라는 글자가 붙어 있다.",
+  "newVisualInformation": [
+    "위층 사물함 세 개와 아래층 사물함 네 개의 배치."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 2> 그림과 같은 $7$개의 사물함(위층 $3$개, 아래층 $4$개) 중 $5$개의 사물함 대신 $4$개의 사물함을 남학생 $2$명과 여학생 $2$명에게 각각 $1$개씩 배정하려고 한다. 다음 조건을 만족시키도록 사물함을 배정하는 모든 경우의 수를 구하시오. [5.0점]\n\n> (가) 남학생 $2$명이 같은 층의 사물함을 사용할 경우 서로 이웃한다. (나) 같은 층에서는 남학생과 여학생의 사물함이 서로 이웃하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "0",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -4,
+      4,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "8"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에서 위로 볼록한 포물선이 y축 위의 점 (0, 8)을 꼭짓점으로 하고, x축과 두 점 (-2, 0), (2, 0)에서 만난다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있고, 꼭짓점이 y축 위의 (0, 8)에 있으며, x축과 (-2, 0), (2, 0)에서 만난다. y축에는 8이 표시되어 있다.",
+  "newVisualInformation": [
+    "꼭짓점 (0, 8)과 x축 교점 (-2, 0), (2, 0)을 갖는 위로 볼록한 포물선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 다음과 같을 때 이 이차함수의 식을 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -13,8 +13,8 @@ window.examData = {
         "정식 : 샤프심의 굵기는 소수 표현이 쓰여요.",
         "다혜 : 나눗셈을 할 때 소수 표현이 더 편리해요."
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>① 피자 한 판을 $5$명이 나누면 $\\frac{1}{5}$ 등 분수로 나타내므로 적절하다.<br>② 음식 재료의 양은 $\\frac{1}{2}$컵, $\\frac{1}{3}$큰술처럼 주로 분수로 나타내므로 \"주로 소수가 쓰인다\"는 예는 적절하지 않다.<br>③ 확률은 분수로 나타낸다. (적절하다)<br>④ 샤프심 $0.5\\,\\text{mm}$ 등 소수 표현을 쓴다. (적절하다)<br>⑤ 나눗셈 결과를 소수로 나타내면 크기 비교와 계산이 편리하다. (적절하다)</p>"
     },
     {
       "id": 2,
@@ -27,8 +27,8 @@ window.examData = {
         "$\\frac{3 \\times 5}{21}$",
         "$\\frac{5}{32}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③, ⑤",
+      "solution": "<p>기약분수로 나타낸 뒤 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.<br>① $\\frac{1}{15}=\\frac{1}{3\\times5}$는 분모에 $3$이 있어 유한소수가 아니다.<br>② $\\frac{7}{2\\times5\\times7^2}=\\frac{1}{2\\times5\\times7}$은 분모에 $7$이 있어 유한소수가 아니다.<br>③ $\\frac{11}{2\\times5^2\\times11}=\\frac{1}{2\\times5^2}$이므로 유한소수이다.<br>④ $\\frac{3\\times5}{21}=\\frac{5}{7}$은 유한소수가 아니다.<br>⑤ $\\frac{5}{32}=\\frac{5}{2^5}$이므로 유한소수이다.</p>"
     },
     {
       "id": 3,
@@ -41,8 +41,8 @@ window.examData = {
         "62",
         "84"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$\\frac{3}{28}=\\frac{3}{2^2\\times7}$이 유한소수가 되려면 $x$는 $7$의 배수이어야 한다.<br>$\\frac{7}{30}=\\frac{7}{2\\times3\\times5}$가 유한소수가 되려면 $x$는 $3$의 배수이어야 한다.<br>$x$는 $3$과 $7$의 공배수이므로 가장 작은 자연수는 $21$이다.</p>"
     },
     {
       "id": 4,
@@ -55,8 +55,8 @@ window.examData = {
         "$2.345234523452\\cdots = 2.34\\dot{5}23\\dot{4}$",
         "$0.374374374\\cdots = 0.\\dot{3}\\dot{7}\\dot{4}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>순환마디의 처음과 끝 숫자 위에 점을 찍는다.<br>① $8.141414\\cdots=8.\\dot{1}\\dot{4}$ (옳다)<br>② $0.9656565\\cdots=0.9\\dot{6}\\dot{5}$ (옳지 않다)<br>③ $5.125125\\cdots=5.\\dot{1}2\\dot{5}$ (옳지 않다)<br>④ $2.34523452\\cdots=2.\\dot{3}45\\dot{2}$ (옳지 않다)<br>⑤ $0.374374\\cdots=0.\\dot{3}7\\dot{4}$ (옳지 않다)</p>"
     },
     {
       "id": 5,
@@ -69,8 +69,8 @@ window.examData = {
         "7",
         "8"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$\\frac{5}{27}=0.185185\\cdots=0.\\dot{1}8\\dot{5}$이고 순환마디는 $185$ ($3$개)이다.<br>$52=3\\times17+1$이므로 $52$번째 숫자는 순환마디의 첫 번째 숫자 $1$이다.</p>"
     },
     {
       "id": 6,
@@ -83,8 +83,8 @@ window.examData = {
         "101",
         "130"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$130=2\\times5\\times13$이므로 $\\frac{x}{130}$이 유한소수가 되려면 $x$가 $13$의 배수이어야 한다.<br>기약분수가 $\\frac{7}{y}$이므로 $\\frac{x}{130}=\\frac{7}{y}$에서 $xy=910$이다.<br>$x=13k$ ($k$는 자연수)이고 $x<100$이므로 $x=13,26,39,52,65,78,91$이다.<br>$xy=910=2\\times5\\times7\\times13$에서 $x$와 $y$가 모두 자연수이고 $\\frac{7}{y}$이 기약분수이려면 $x=91$이다. 이때 $y=10$이다.<br>확인: $\\frac{91}{130}=\\frac{7}{10}$ (유한소수 $0.7$)<br>$x+y=91+10=101$</p>"
     },
     {
       "id": 7,
@@ -97,8 +97,8 @@ window.examData = {
         "분모의 소인수에 7이 있는 기약분수는 순환소수로 나타낼 수 없다.",
         "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④, ⑤",
+      "solution": "<p>① 유한소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)<br>② $\\pi$처럼 순환하지 않는 무한소수가 있다. (옳다)<br>③ 순환소수는 모두 분수로 나타낼 수 있다. (옳다)<br>④ 분모의 소인수에 $7$이 있는 기약분수는 순환소수로 나타낼 수 있다. (옳지 않다)<br>⑤ $\\frac{1}{3}$처럼 정수가 아닌 유리수 중에는 순환소수가 있다. (옳지 않다)</p>"
     },
     {
       "id": 8,
@@ -111,8 +111,8 @@ window.examData = {
         "㉤ - ㉡",
         "㉣ - ㉢"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>소수점 아래 순환하는 부분이 같아지는 두 식을 빼야 정수가 된다.<br>$x=0.132132\\cdots$이므로 $1000x=132.132132\\cdots$이다.<br>㉥ $-$ ㉠: $1000x-x=132.132\\cdots-0.132\\cdots=132$ (정수)<br>㉡, ㉢, ㉣, ㉤은 소수점 아래 순환마디의 시작 위치가 달라 뺀 결과가 정수가 되지 않는다.</p>"
     },
     {
       "id": 9,
@@ -125,8 +125,8 @@ window.examData = {
         "㉣ : 93",
         "㉤ : $\\frac{77}{99}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$x=0.8555\\cdots$ ①<br>①의 양변에 $10$을 곱하면 $10x=8.555\\cdots$ ②이므로 ㉠은 $10$이다.<br>①의 양변에 $100$을 곱하면 $100x=85.555\\cdots$ ③이므로 ㉡은 $100$이다.<br>③$-$②를 하면 $90x=77$이므로 ㉢은 $90$, ㉣은 $77$이다.<br>따라서 $x=\\frac{77}{90}$이므로 ㉤은 $\\frac{77}{90}$이다.<br>옳은 것은 ③ (㉢ : $90$)이다.</p>"
     },
     {
       "id": 10,
@@ -139,8 +139,8 @@ window.examData = {
         "$9b \\div (-3) = -3b$",
         "$(-5y) \\div \\left(-\\frac{5}{2}\\right) = \\frac{25}{2}y$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>① $2a\\times7=14a$ (옳다)<br>② $\\frac{3}{2}x\\times(-8)=-12x$ (옳다)<br>③ $-8\\times x+y=-8x+y$ (옳다)<br>④ $9b\\div(-3)=-3b$ (옳다)<br>⑤ $(-5y)\\div\\left(-\\frac{5}{2}\\right)=(-5y)\\times\\left(-\\frac{2}{5}\\right)=2y$ 이므로 $\\frac{25}{2}y$는 옳지 않다.</p>"
     },
     {
       "id": 11,
@@ -153,8 +153,8 @@ window.examData = {
         "$(2ab^2)^3 = 6a^3b^6$",
         "$\\left(-\\frac{b^2}{2a^3}\\right)^2 = \\frac{b^4}{4a^6}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>① $(a^2)^3\\div a^5=a^6\\div a^5=a$<br>② $a^9\\div a^3\\div a^8=a^6\\div a^8=\\frac{1}{a^2}$<br>③ $a^7\\div a^7=1$<br>④ $(2ab^2)^3=8a^3b^6$<br>⑤ $\\left(-\\frac{b^2}{2a^3}\\right)^2=\\frac{b^4}{4a^6}$ (옳다)</p>"
     },
     {
       "id": 12,
@@ -167,8 +167,8 @@ window.examData = {
         "$-\\frac{9x^3}{4y^6}$",
         "$\\frac{y^{11}}{8x^2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$(-3x^2y)^2=9x^4y^2$이다.<br>$9x^4y^2\\div\\frac{3}{4}xy^9\\times xy=9x^4y^2\\times\\frac{4}{3xy^9}\\times xy$<br>$=\\frac{9\\times4}{3}\\times\\frac{x^4y^2\\times xy}{xy^9}=12\\times\\frac{x^5y^3}{xy^9}=12x^4y^{-6}=\\frac{12x^4}{y^6}$</p>"
     },
     {
       "id": 13,
@@ -181,8 +181,8 @@ window.examData = {
         "$3^8 \\times 10^{10}$",
         "$3^8 \\times 10^{12}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$6^8=2^8\\times3^8$이므로 $5^{10}\\times6^8\\times2^2=5^{10}\\times2^8\\times3^8\\times2^2$이다.<br>$=5^{10}\\times2^{10}\\times3^8=(5\\times2)^{10}\\times3^8=3^8\\times10^{10}$</p>"
     },
     {
       "id": 14,
@@ -195,8 +195,8 @@ window.examData = {
         "상수항은 5이다.",
         "이 다항식은 일차식이다."
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$-4x^2+\\frac{x}{3}-5$는 항이 $-4x^2,\\ \\frac{1}{3}x,\\ -5$의 $3$개이다.<br>① 항은 $3$개이다. (옳지 않다)<br>② $x^2$의 계수는 $-4$이다. (옳지 않다)<br>③ $x$의 계수는 $\\frac{1}{3}$이다. (옳다)<br>④ 상수항은 $-5$이다. (옳지 않다)<br>⑤ 차수가 $2$이므로 이차식이다. (옳지 않다)</p>"
     },
     {
       "id": 15,
@@ -209,8 +209,8 @@ window.examData = {
         "$-9a-7$",
         "$-7a+6$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$\\frac{8a^2-6a}{2a}=4a-3$<br>$\\frac{15a^2-12a}{3a}=5a-4$<br>$(4a-3)-(5a-4)=4a-3-5a+4=-a+1$</p>"
     },
     {
       "id": 16,
@@ -223,8 +223,8 @@ window.examData = {
         "$(x^2+5x-7) + (4x^2-2x+5) = 5x^4+3x^2-2$",
         "$\\frac{6x^2-5x}{3x} = 2x-\\frac{5}{3}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③, ⑤",
+      "solution": "<p>① $(5x-3)\\times(-2)=-10x+6$ (옳지 않다)<br>② $(2x+y)-(x-3y)=x+4y$ (옳지 않다)<br>③ $(6a^2-12a)\\div(-3a)=-2a+4$ (옳다)<br>④ $(x^2+5x-7)+(4x^2-2x+5)=5x^2+3x-2$ (옳지 않다)<br>⑤ $\\frac{6x^2-5x}{3x}=2x-\\frac{5}{3}$ (옳다)</p>"
     },
     {
       "id": 17,
@@ -237,8 +237,8 @@ window.examData = {
         "이 구역의 최고속도는 시속 $100\\text{km}$입니다. $\\rightarrow x \\le 100$, $x$: 이 구역의 속도",
         "19세 미만 청소년에게 술·담배 판매금지입니다. $\\rightarrow x < 19$, $x$: 판매 가능한 나이"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>① 키가 $120\\,\\text{cm}$ 이하이면 이용할 수 없으므로 이용할 수 없는 키 $x$는 $x\\le120$이다. (옳다)<br>② 탑승 인원수 $x$는 $x\\le10$이다. (옳다)<br>③ 관람 가능한 나이 $x$는 $x\\ge19$이다. (옳다)<br>④ 속도 $x$는 $x\\le100$이다. (옳다)<br>⑤ $19$세 미만에게 판매 금지이므로 판매 가능한 나이 $x$는 $x\\ge19$이다. $x<19$는 옳지 않다.</p>"
     },
     {
       "id": 18,
@@ -251,8 +251,8 @@ window.examData = {
         "$60 + 10 + 660 \\le x$",
         "$60 \\times + 10 \\ge 660$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>몸무게가 $60\\,\\text{kg}$인 사람 $10$명의 몸무게는 $600\\,\\text{kg}$이고, 쌍둥이 둘의 몸무게는 $2x\\,\\text{kg}$이다.<br>$660\\,\\text{kg}$ 이상일 때 소리가 나므로 $600+2x\\ge660$이다.</p>"
     },
     {
       "id": 19,
@@ -265,8 +265,8 @@ window.examData = {
         "ㄴ, ㄹ",
         "ㄷ, ㄹ"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>$x=2$를 각 부등식에 대입한다.<br>ㄱ. $2\\ge5$ (거짓)<br>ㄴ. $-2+3=1>1$ (거짓)<br>ㄷ. $1+2=3\\ge3$ (참)<br>ㄹ. $3\\times2+5=11<5\\times2+7=17$ (참)<br>해가 되는 것은 ㄷ, ㄹ이다.</p>"
     },
     {
       "id": 20,
@@ -279,40 +279,40 @@ window.examData = {
         "ㄱ, ㄹ",
         "ㄴ, ㄹ"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$a-3<b-3$의 양변에 $3$을 더하면 $a<b$이다.<br>ㄱ. $a<b$ (옳다)<br>ㄴ. 양변에 $-4$를 곱하면 $-4a>-4b$이므로 $1-4a>1-4b$ (옳지 않다)<br>ㄷ. $\\frac{a}{2}<\\frac{b}{2}$이므로 $-1+\\frac{a}{2}<-1+\\frac{b}{2}$ (옳지 않다)<br>ㄹ. 양변에 $-\\frac{1}{5}$을 곱하면 $-\\frac{a}{5}>-\\frac{b}{5}$이므로 $-\\frac{a}{5}+3>-\\frac{b}{5}+3$ (옳다)<br>옳은 것은 ㄱ, ㄹ이다.</p>"
     },
     {
       "id": 21,
       "score": 5.0,
       "question": "<p>【서술형 1】 다음 식을 간단히 하면 $3^b$이다. $b$의 값을 구하시오. [5점]</p><div class=\"box\"><p>$$\\frac{9^6 + 9^6 + 9^6}{3^4 + 3^4 + 3^4}$$</p></div>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$b=8$",
+      "solution": "<p>분자: $9^6+9^6+9^6=3\\times9^6=3\\times(3^2)^6=3\\times3^{12}=3^{13}$<br>분모: $3^4+3^4+3^4=3\\times3^4=3^5$<br>$\\frac{3^{13}}{3^5}=3^{13-5}=3^8$이므로 $b=8$이다.</p>"
     },
     {
       "id": 22,
       "score": 5.0,
       "question": "<p>【서술형 2】 다음 두 값이 같음을 거듭제곱의 원리를 이용하여 설명하시오. [5점]</p><div class=\"box\"><p>$$\\left(\\frac{3}{2}\\right)^5 = \\frac{3^5}{2^5}$$</p></div>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "풀이 참조",
+      "solution": "<p>$\\left(\\frac{3}{2}\\right)^5$은 $\\frac{3}{2}$를 $5$번 곱한 것이다.<br>$\\left(\\frac{3}{2}\\right)^5=\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}$<br>분수의 곱셈은 분자끼리, 분모끼리 곱하므로 다음과 같다.<br>$=\\frac{3\\times3\\times3\\times3\\times3}{2\\times2\\times2\\times2\\times2}=\\frac{3^5}{2^5}$<br>따라서 $\\left(\\frac{3}{2}\\right)^5=\\frac{3^5}{2^5}$이다.</p>"
     },
     {
       "id": 23,
       "score": 5.0,
       "question": "<p>【서술형 3】 다음은 풀이 과정이 틀려있다. 틀려있는 곳을 옳게 수정하여 풀어 보시오. (단, 형식은 그대로 유지하시오.) [5점]</p><div class=\"box\"><p>$$(9x^2 - 15xy) \\div \\frac{3}{2}x$$<br>$$= (9x^2 - 15xy) \\times \\frac{2}{3}x$$<br>$$= 9x^2 \\times \\frac{2}{3}x - 15xy \\times \\frac{2}{3}x$$<br>$$= 6x^3 - 10x^2y$$</p></div>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$6x-10y$",
+      "solution": "<p>틀린 곳은 둘째 줄이다. 나눗셈을 곱셈으로 바꿀 때 $\\frac{3}{2}x$의 역수는 $\\frac{2}{3x}$이어야 하는데 $\\frac{2}{3}x$로 잘못 썼다.<br>바르게 고치면 다음과 같다.<br>$(9x^2-15xy)\\div\\frac{3}{2}x$<br>$=(9x^2-15xy)\\times\\frac{2}{3x}$<br>$=9x^2\\times\\frac{2}{3x}-15xy\\times\\frac{2}{3x}$<br>$=6x-10y$</p>"
     },
     {
       "id": 24,
       "score": 5.0,
       "question": "<p>【서술형 4】 다음 식을 간단히 하시오. [5점]</p><div class=\"box\"><p>$$\\frac{2a-4}{3} - \\frac{3a+1}{4}$$</p></div>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$\\frac{-a-19}{12}$",
+      "solution": "<p>통분하여 분모를 $12$로 맞춘다.<br>$\\frac{2a-4}{3}-\\frac{3a+1}{4}=\\frac{4(2a-4)-3(3a+1)}{12}$<br>$=\\frac{8a-16-9a-3}{12}$<br>$=\\frac{-a-19}{12}$</p>"
     }
   ]
 };
@@ -331,8 +331,8 @@ window.questionBank = [
       "정식 : 샤프심의 굵기는 소수 표현이 쓰여요.",
       "다혜 : 나눗셈을 할 때 소수 표현이 더 편리해요."
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>① 피자 한 판을 $5$명이 나누면 $\\frac{1}{5}$ 등 분수로 나타내므로 적절하다.<br>② 음식 재료의 양은 $\\frac{1}{2}$컵, $\\frac{1}{3}$큰술처럼 주로 분수로 나타내므로 \"주로 소수가 쓰인다\"는 예는 적절하지 않다.<br>③ 확률은 분수로 나타낸다. (적절하다)<br>④ 샤프심 $0.5\\,\\text{mm}$ 등 소수 표현을 쓴다. (적절하다)<br>⑤ 나눗셈 결과를 소수로 나타내면 크기 비교와 계산이 편리하다. (적절하다)</p>",
     "content": "<div>다음 중 일상생활에서 분수와 소수가 쓰이는 예를 친구들이 발표한 것이다. 예가 적절하게 사용되지 못한 친구는 누구일까요?</div>"
   },
   {
@@ -346,8 +346,8 @@ window.questionBank = [
       "$\\frac{3 \\times 5}{21}$",
       "$\\frac{5}{32}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③, ⑤",
+    "solution": "<p>기약분수로 나타낸 뒤 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.<br>① $\\frac{1}{15}=\\frac{1}{3\\times5}$는 분모에 $3$이 있어 유한소수가 아니다.<br>② $\\frac{7}{2\\times5\\times7^2}=\\frac{1}{2\\times5\\times7}$은 분모에 $7$이 있어 유한소수가 아니다.<br>③ $\\frac{11}{2\\times5^2\\times11}=\\frac{1}{2\\times5^2}$이므로 유한소수이다.<br>④ $\\frac{3\\times5}{21}=\\frac{5}{7}$은 유한소수가 아니다.<br>⑤ $\\frac{5}{32}=\\frac{5}{2^5}$이므로 유한소수이다.</p>",
     "content": "<div>다음 분수 중에서 유한소수로 나타낼 수 있는 것은? (정답2개)</div>"
   },
   {
@@ -361,8 +361,8 @@ window.questionBank = [
       "62",
       "84"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\frac{3}{28}=\\frac{3}{2^2\\times7}$이 유한소수가 되려면 $x$는 $7$의 배수이어야 한다.<br>$\\frac{7}{30}=\\frac{7}{2\\times3\\times5}$가 유한소수가 되려면 $x$는 $3$의 배수이어야 한다.<br>$x$는 $3$과 $7$의 공배수이므로 가장 작은 자연수는 $21$이다.</p>",
     "content": "<div>두 분수 $\\frac{3}{28}$과 $\\frac{7}{30}$에 자연수 $x$를 각각 곱하면 모두 유한소수가 된다고 한다. 가장 작은 자연수 $x$ 값을 구하면?</div>"
   },
   {
@@ -376,8 +376,8 @@ window.questionBank = [
       "$2.345234523452\\cdots = 2.34\\dot{5}23\\dot{4}$",
       "$0.374374374\\cdots = 0.\\dot{3}\\dot{7}\\dot{4}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>순환마디의 처음과 끝 숫자 위에 점을 찍는다.<br>① $8.141414\\cdots=8.\\dot{1}\\dot{4}$ (옳다)<br>② $0.9656565\\cdots=0.9\\dot{6}\\dot{5}$ (옳지 않다)<br>③ $5.125125\\cdots=5.\\dot{1}2\\dot{5}$ (옳지 않다)<br>④ $2.34523452\\cdots=2.\\dot{3}45\\dot{2}$ (옳지 않다)<br>⑤ $0.374374\\cdots=0.\\dot{3}7\\dot{4}$ (옳지 않다)</p>",
     "content": "<div>다음 중에서 순환소수를 바르게 나타낸 것을 고르면?</div>",
     "solutionImage": "assets/images/23_신흥중_1학기_중간_중2_수학/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 다섯 개의 순환소수와 각각의 순환마디를 한 줄씩 적은 목록 그림이다. 각 줄 끝에 맞음 또는 틀림 표시가 붙어 있다.",
@@ -396,8 +396,8 @@ window.questionBank = [
       "7",
       "8"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\frac{5}{27}=0.185185\\cdots=0.\\dot{1}8\\dot{5}$이고 순환마디는 $185$ ($3$개)이다.<br>$52=3\\times17+1$이므로 $52$번째 숫자는 순환마디의 첫 번째 숫자 $1$이다.</p>",
     "content": "<div>분수 $\\frac{5}{27}$을 소수로 나타낼 때, 소수점 아래 52번째 자리의 숫자를 구하면?</div>"
   },
   {
@@ -411,8 +411,8 @@ window.questionBank = [
       "101",
       "130"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$130=2\\times5\\times13$이므로 $\\frac{x}{130}$이 유한소수가 되려면 $x$가 $13$의 배수이어야 한다.<br>기약분수가 $\\frac{7}{y}$이므로 $\\frac{x}{130}=\\frac{7}{y}$에서 $xy=910$이다.<br>$x=13k$ ($k$는 자연수)이고 $x<100$이므로 $x=13,26,39,52,65,78,91$이다.<br>$xy=910=2\\times5\\times7\\times13$에서 $x$와 $y$가 모두 자연수이고 $\\frac{7}{y}$이 기약분수이려면 $x=91$이다. 이때 $y=10$이다.<br>확인: $\\frac{91}{130}=\\frac{7}{10}$ (유한소수 $0.7$)<br>$x+y=91+10=101$</p>",
     "content": "<div>다음 조건을 만족시키는 두 자연수 $x, y$에 대하여 $x+y$를 구하면?</div><div class=\"box\"><div>(가) $x < 100$<br>(나) 분수 $\\frac{x}{130}$를 소수로 나타내면 유한소수이다.<br>(다) 분수 $\\frac{x}{130}$를 기약분수로 나타내면 $\\frac{7}{y}$이다.</div></div>"
   },
   {
@@ -426,8 +426,8 @@ window.questionBank = [
       "분모의 소인수에 7이 있는 기약분수는 순환소수로 나타낼 수 없다.",
       "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④, ⑤",
+    "solution": "<p>① 유한소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)<br>② $\\pi$처럼 순환하지 않는 무한소수가 있다. (옳다)<br>③ 순환소수는 모두 분수로 나타낼 수 있다. (옳다)<br>④ 분모의 소인수에 $7$이 있는 기약분수는 순환소수로 나타낼 수 있다. (옳지 않다)<br>⑤ $\\frac{1}{3}$처럼 정수가 아닌 유리수 중에는 순환소수가 있다. (옳지 않다)</p>",
     "content": "<div>다음 중에서 옳지 않은 것을 모두 고르면? (정답2개)</div>"
   },
   {
@@ -441,8 +441,8 @@ window.questionBank = [
       "㉤ - ㉡",
       "㉣ - ㉢"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>소수점 아래 순환하는 부분이 같아지는 두 식을 빼야 정수가 된다.<br>$x=0.132132\\cdots$이므로 $1000x=132.132132\\cdots$이다.<br>㉥ $-$ ㉠: $1000x-x=132.132\\cdots-0.132\\cdots=132$ (정수)<br>㉡, ㉢, ㉣, ㉤은 소수점 아래 순환마디의 시작 위치가 달라 뺀 결과가 정수가 되지 않는다.</p>",
     "content": "<div>다음 &lt;보기&gt;의 식 중에서 두 식을 뺀 결과가 정수가 나오는 경우를 고르면?</div><div class=\"box\"><div>&lt;보기&gt;<br>㉠ $x = 0.132132\\cdots$<br>㉡ $100x = 13.213213\\cdots$<br>㉢ $10x = 1.321321\\cdots$<br>㉣ $100000x = 13213.213213\\cdots$<br>㉤ $10000x = 1321.321321\\cdots$<br>㉥ $1000x = 132.132132\\cdots$</div></div>"
   },
   {
@@ -456,8 +456,8 @@ window.questionBank = [
       "㉣ : 93",
       "㉤ : $\\frac{77}{99}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$x=0.8555\\cdots$ ①<br>①의 양변에 $10$을 곱하면 $10x=8.555\\cdots$ ②이므로 ㉠은 $10$이다.<br>①의 양변에 $100$을 곱하면 $100x=85.555\\cdots$ ③이므로 ㉡은 $100$이다.<br>③$-$②를 하면 $90x=77$이므로 ㉢은 $90$, ㉣은 $77$이다.<br>따라서 $x=\\frac{77}{90}$이므로 ㉤은 $\\frac{77}{90}$이다.<br>옳은 것은 ③ (㉢ : $90$)이다.</p>",
     "content": "<div>다음 순환소수 $0.8\\dot{5}$를 분수로 나타내는 과정이다. $\\Box$ 안에 알맞은 수를 채운 것 중 옳은 것을 고르면?</div><div class=\"box\"><div>순환소수 $0.8\\dot{5}$을 $x$라고 하면 $x = 0.8555\\cdots$ &nbsp;&nbsp;&nbsp;&nbsp; ①<br>①의 양변에 [ ㉠ ]을 곱하면 [ ㉠ ]$x = 8.555\\cdots$ &nbsp; ②<br>①의 양변에 [ ㉡ ]을 곱하면 [ ㉡ ]$x = 85.555\\cdots$ ③<br>③에서 ②를 변끼리 빼면 [ ㉢ ]$x =$ [ ㉣ ]<br>따라서 $x =$ [ ㉤ ]</div></div>"
   },
   {
@@ -471,8 +471,8 @@ window.questionBank = [
       "$9b \\div (-3) = -3b$",
       "$(-5y) \\div \\left(-\\frac{5}{2}\\right) = \\frac{25}{2}y$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① $2a\\times7=14a$ (옳다)<br>② $\\frac{3}{2}x\\times(-8)=-12x$ (옳다)<br>③ $-8\\times x+y=-8x+y$ (옳다)<br>④ $9b\\div(-3)=-3b$ (옳다)<br>⑤ $(-5y)\\div\\left(-\\frac{5}{2}\\right)=(-5y)\\times\\left(-\\frac{2}{5}\\right)=2y$ 이므로 $\\frac{25}{2}y$는 옳지 않다.</p>",
     "content": "<div>다음 식을 계산한 결과가 옳지 않은 것은?</div>"
   },
   {
@@ -486,8 +486,8 @@ window.questionBank = [
       "$(2ab^2)^3 = 6a^3b^6$",
       "$\\left(-\\frac{b^2}{2a^3}\\right)^2 = \\frac{b^4}{4a^6}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① $(a^2)^3\\div a^5=a^6\\div a^5=a$<br>② $a^9\\div a^3\\div a^8=a^6\\div a^8=\\frac{1}{a^2}$<br>③ $a^7\\div a^7=1$<br>④ $(2ab^2)^3=8a^3b^6$<br>⑤ $\\left(-\\frac{b^2}{2a^3}\\right)^2=\\frac{b^4}{4a^6}$ (옳다)</p>",
     "content": "<div>다음 중에서 옳은 것은?</div>"
   },
   {
@@ -501,8 +501,8 @@ window.questionBank = [
       "$-\\frac{9x^3}{4y^6}$",
       "$\\frac{y^{11}}{8x^2}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$(-3x^2y)^2=9x^4y^2$이다.<br>$9x^4y^2\\div\\frac{3}{4}xy^9\\times xy=9x^4y^2\\times\\frac{4}{3xy^9}\\times xy$<br>$=\\frac{9\\times4}{3}\\times\\frac{x^4y^2\\times xy}{xy^9}=12\\times\\frac{x^5y^3}{xy^9}=12x^4y^{-6}=\\frac{12x^4}{y^6}$</p>",
     "content": "<div>$(-3x^2y)^2 \\div \\frac{3}{4}xy^9 \\times xy$을 계산하면?</div>"
   },
   {
@@ -516,8 +516,8 @@ window.questionBank = [
       "$3^8 \\times 10^{10}$",
       "$3^8 \\times 10^{12}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$6^8=2^8\\times3^8$이므로 $5^{10}\\times6^8\\times2^2=5^{10}\\times2^8\\times3^8\\times2^2$이다.<br>$=5^{10}\\times2^{10}\\times3^8=(5\\times2)^{10}\\times3^8=3^8\\times10^{10}$</p>",
     "content": "<div>$5^{10} \\times 6^8 \\times 2^2$을 10의 거듭제곱의 꼴로 나타내면 몇 자리 자연수인지 쉽게 알 수 있다. 10의 거듭제곱꼴로 나타낸 것 중 가장 적절한 것을 고르면?</div>"
   },
   {
@@ -531,8 +531,8 @@ window.questionBank = [
       "상수항은 5이다.",
       "이 다항식은 일차식이다."
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$-4x^2+\\frac{x}{3}-5$는 항이 $-4x^2,\\ \\frac{1}{3}x,\\ -5$의 $3$개이다.<br>① 항은 $3$개이다. (옳지 않다)<br>② $x^2$의 계수는 $-4$이다. (옳지 않다)<br>③ $x$의 계수는 $\\frac{1}{3}$이다. (옳다)<br>④ 상수항은 $-5$이다. (옳지 않다)<br>⑤ 차수가 $2$이므로 이차식이다. (옳지 않다)</p>",
     "content": "<div>다음 식을 여러 가지 수학용어를 이용하여 설명한 것이다. 옳은 것을 고르면?</div><div class=\"box\"><div>$$-4x^2 + \\frac{x}{3} - 5$$</div></div>"
   },
   {
@@ -546,8 +546,8 @@ window.questionBank = [
       "$-9a-7$",
       "$-7a+6$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\frac{8a^2-6a}{2a}=4a-3$<br>$\\frac{15a^2-12a}{3a}=5a-4$<br>$(4a-3)-(5a-4)=4a-3-5a+4=-a+1$</p>",
     "content": "<div>다음 식을 간단히 하면?</div><div class=\"box\"><div>$$\\frac{8a^2 - 6a}{2a} - \\frac{15a^2 - 12a}{3a}$$</div></div>"
   },
   {
@@ -561,8 +561,8 @@ window.questionBank = [
       "$(x^2+5x-7) + (4x^2-2x+5) = 5x^4+3x^2-2$",
       "$\\frac{6x^2-5x}{3x} = 2x-\\frac{5}{3}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③, ⑤",
+    "solution": "<p>① $(5x-3)\\times(-2)=-10x+6$ (옳지 않다)<br>② $(2x+y)-(x-3y)=x+4y$ (옳지 않다)<br>③ $(6a^2-12a)\\div(-3a)=-2a+4$ (옳다)<br>④ $(x^2+5x-7)+(4x^2-2x+5)=5x^2+3x-2$ (옳지 않다)<br>⑤ $\\frac{6x^2-5x}{3x}=2x-\\frac{5}{3}$ (옳다)</p>",
     "content": "<div>다음 중에서 옳은 것은? (정답2개)</div>"
   },
   {
@@ -576,8 +576,8 @@ window.questionBank = [
       "이 구역의 최고속도는 시속 $100\\text{km}$입니다. $\\rightarrow x \\le 100$, $x$: 이 구역의 속도",
       "19세 미만 청소년에게 술·담배 판매금지입니다. $\\rightarrow x < 19$, $x$: 판매 가능한 나이"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① 키가 $120\\,\\text{cm}$ 이하이면 이용할 수 없으므로 이용할 수 없는 키 $x$는 $x\\le120$이다. (옳다)<br>② 탑승 인원수 $x$는 $x\\le10$이다. (옳다)<br>③ 관람 가능한 나이 $x$는 $x\\ge19$이다. (옳다)<br>④ 속도 $x$는 $x\\le100$이다. (옳다)<br>⑤ $19$세 미만에게 판매 금지이므로 판매 가능한 나이 $x$는 $x\\ge19$이다. $x<19$는 옳지 않다.</p>",
     "content": "<div>다음은 미지수 $x$를 이용하여 부등식으로 나타낸 것이다. 다음 중 옳지 않은 것은?</div>"
   },
   {
@@ -591,8 +591,8 @@ window.questionBank = [
       "$60 + 10 + 660 \\le x$",
       "$60 \\times + 10 \\ge 660$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>몸무게가 $60\\,\\text{kg}$인 사람 $10$명의 몸무게는 $600\\,\\text{kg}$이고, 쌍둥이 둘의 몸무게는 $2x\\,\\text{kg}$이다.<br>$660\\,\\text{kg}$ 이상일 때 소리가 나므로 $600+2x\\ge660$이다.</p>",
     "content": "<div>다음 상황을 미지수 $x$를 이용하여 부등식으로 바르게 나타낸 것은?</div><div class=\"box\"><div>$660\\text{kg}$이상이 타면 ‘삐’ 소리가 나는 엘리베이터가 있다. 몸무게가 $60\\text{kg}$인 사람 10명이 탄 다음에 쌍둥이 어린이 둘이 탔는데 ‘삐’ 소리가 났다. 한 아이의 몸무게 $x$를 구하여라. (단, 쌍둥이의 무게는 같다.)</div></div>"
   },
   {
@@ -606,8 +606,8 @@ window.questionBank = [
       "ㄴ, ㄹ",
       "ㄷ, ㄹ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x=2$를 각 부등식에 대입한다.<br>ㄱ. $2\\ge5$ (거짓)<br>ㄴ. $-2+3=1>1$ (거짓)<br>ㄷ. $1+2=3\\ge3$ (참)<br>ㄹ. $3\\times2+5=11<5\\times2+7=17$ (참)<br>해가 되는 것은 ㄷ, ㄹ이다.</p>",
     "content": "<div>다음 &lt;보기&gt; 중에서 $x=2$가 해가 되는 부등식을 모두 고른 것은?</div><div class=\"box\"><div>&lt;보기&gt;<br>ㄱ. $x \\ge 5$<br>ㄴ. $-x + 3 > 1$<br>ㄷ. $1 + x \\ge 3$<br>ㄹ. $3x + 5 < 5x + 7$</div></div>"
   },
   {
@@ -621,8 +621,8 @@ window.questionBank = [
       "ㄱ, ㄹ",
       "ㄴ, ㄹ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$a-3<b-3$의 양변에 $3$을 더하면 $a<b$이다.<br>ㄱ. $a<b$ (옳다)<br>ㄴ. 양변에 $-4$를 곱하면 $-4a>-4b$이므로 $1-4a>1-4b$ (옳지 않다)<br>ㄷ. $\\frac{a}{2}<\\frac{b}{2}$이므로 $-1+\\frac{a}{2}<-1+\\frac{b}{2}$ (옳지 않다)<br>ㄹ. 양변에 $-\\frac{1}{5}$을 곱하면 $-\\frac{a}{5}>-\\frac{b}{5}$이므로 $-\\frac{a}{5}+3>-\\frac{b}{5}+3$ (옳다)<br>옳은 것은 ㄱ, ㄹ이다.</p>",
     "content": "<div>$a - 3 < b - 3$일 때, 다음 &lt;보기&gt; 중에서 옳은 것을 모두 고른 것은?</div><div class=\"box\"><div>&lt;보기&gt;<br>ㄱ. $a < b$<br>ㄴ. $1 - 4a < 1 - 4b$<br>ㄷ. $-1 + \\frac{a}{2} > -1 + \\frac{b}{2}$<br>ㄹ. $-\\frac{a}{5} + 3 > -\\frac{b}{5} + 3$</div></div>"
   },
   {
@@ -630,8 +630,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>【서술형 1】 다음 식을 간단히 하면 $3^b$이다. $b$의 값을 구하시오. [5점]</p><div class=\"box\"><p>$$\\frac{9^6 + 9^6 + 9^6}{3^4 + 3^4 + 3^4}$$</p></div>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$b=8$",
+    "solution": "<p>분자: $9^6+9^6+9^6=3\\times9^6=3\\times(3^2)^6=3\\times3^{12}=3^{13}$<br>분모: $3^4+3^4+3^4=3\\times3^4=3^5$<br>$\\frac{3^{13}}{3^5}=3^{13-5}=3^8$이므로 $b=8$이다.</p>",
     "content": "<div>【서술형 1】 다음 식을 간단히 하면 $3^b$이다. $b$의 값을 구하시오. [5점]</div><div class=\"box\"><div>$$\\frac{9^6 + 9^6 + 9^6}{3^4 + 3^4 + 3^4}$$</div></div>"
   },
   {
@@ -639,8 +639,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>【서술형 2】 다음 두 값이 같음을 거듭제곱의 원리를 이용하여 설명하시오. [5점]</p><div class=\"box\"><p>$$\\left(\\frac{3}{2}\\right)^5 = \\frac{3^5}{2^5}$$</p></div>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "풀이 참조",
+    "solution": "<p>$\\left(\\frac{3}{2}\\right)^5$은 $\\frac{3}{2}$를 $5$번 곱한 것이다.<br>$\\left(\\frac{3}{2}\\right)^5=\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}\\times\\frac{3}{2}$<br>분수의 곱셈은 분자끼리, 분모끼리 곱하므로 다음과 같다.<br>$=\\frac{3\\times3\\times3\\times3\\times3}{2\\times2\\times2\\times2\\times2}=\\frac{3^5}{2^5}$<br>따라서 $\\left(\\frac{3}{2}\\right)^5=\\frac{3^5}{2^5}$이다.</p>",
     "content": "<div>【서술형 2】 다음 두 값이 같음을 거듭제곱의 원리를 이용하여 설명하시오. [5점]</div><div class=\"box\"><div>$$\\left(\\frac{3}{2}\\right)^5 = \\frac{3^5}{2^5}$$</div></div>"
   },
   {
@@ -648,8 +648,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>【서술형 3】 다음은 풀이 과정이 틀려있다. 틀려있는 곳을 옳게 수정하여 풀어 보시오. (단, 형식은 그대로 유지하시오.) [5점]</p><div class=\"box\"><p>$$(9x^2 - 15xy) \\div \\frac{3}{2}x$$<br>$$= (9x^2 - 15xy) \\times \\frac{2}{3}x$$<br>$$= 9x^2 \\times \\frac{2}{3}x - 15xy \\times \\frac{2}{3}x$$<br>$$= 6x^3 - 10x^2y$$</p></div>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$6x-10y$",
+    "solution": "<p>틀린 곳은 둘째 줄이다. 나눗셈을 곱셈으로 바꿀 때 $\\frac{3}{2}x$의 역수는 $\\frac{2}{3x}$이어야 하는데 $\\frac{2}{3}x$로 잘못 썼다.<br>바르게 고치면 다음과 같다.<br>$(9x^2-15xy)\\div\\frac{3}{2}x$<br>$=(9x^2-15xy)\\times\\frac{2}{3x}$<br>$=9x^2\\times\\frac{2}{3x}-15xy\\times\\frac{2}{3x}$<br>$=6x-10y$</p>",
     "content": "<div>【서술형 3】 다음은 풀이 과정이 틀려있다. 틀려있는 곳을 옳게 수정하여 풀어 보시오. (단, 형식은 그대로 유지하시오.) [5점]</div><div class=\"box\"><div>$$(9x^2 - 15xy) \\div \\frac{3}{2}x$$<br>$$= (9x^2 - 15xy) \\times \\frac{2}{3}x$$<br>$$= 9x^2 \\times \\frac{2}{3}x - 15xy \\times \\frac{2}{3}x$$<br>$$= 6x^3 - 10x^2y$$</div></div>"
   },
   {
@@ -657,8 +657,8 @@ window.questionBank = [
     "score": 5,
     "question": "<p>【서술형 4】 다음 식을 간단히 하시오. [5점]</p><div class=\"box\"><p>$$\\frac{2a-4}{3} - \\frac{3a+1}{4}$$</p></div>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\frac{-a-19}{12}$",
+    "solution": "<p>통분하여 분모를 $12$로 맞춘다.<br>$\\frac{2a-4}{3}-\\frac{3a+1}{4}=\\frac{4(2a-4)-3(3a+1)}{12}$<br>$=\\frac{8a-16-9a-3}{12}$<br>$=\\frac{-a-19}{12}$</p>",
     "content": "<div>【서술형 4】 다음 식을 간단히 하시오. [5점]</div><div class=\"box\"><div>$$\\frac{2a-4}{3} - \\frac{3a+1}{4}$$</div></div>"
   }
 ];

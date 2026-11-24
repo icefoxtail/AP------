@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "12",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "aA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "aD",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "13",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "두 직각삼각형 ABD와 BCD가 변 BD를 공유한 그림이다. AB는 3 cm, AD는 4 cm, BC는 13 cm이고 BD와 CD의 길이는 각각 x, y로 표시되어 있다.",
+  "accessibilityDescription": "선분 BD를 공유하는 두 직각삼각형이 있고, 점 A 쪽 삼각형의 두 변 AB와 AD 옆에 3과 4가 적혀 있다. 점 C 쪽 삼각형의 빗변 BC 옆에는 13, 변 CD 옆에는 y가 적혀 있고 공유변 BD 옆에는 x가 적혀 있다.",
+  "newVisualInformation": [
+    "두 직각삼각형의 공유변 BD, 직각 표시, 길이 3, 4, 13, x, y를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직각삼각형 $ABD$와 $BCD$가 변 $BD$를 공유하고 있다. $\\angle A = 90^\\circ$인 직각삼각형 $ABD$에서 $\\overline{AB} = 3\\text{ cm}$, $\\overline{AD} = 4\\text{ cm}$이고, $\\overline{BD} = x\\text{ cm}$이다. $\\angle BDC = 90^\\circ$인 직각삼각형 $BCD$에서 $\\overline{BC} = 13\\text{ cm}$, $\\overline{CD} = y\\text{ cm}$일 때, $x + y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -4,
+      4,
+      -5,
+      3
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "nl",
+          "text": "y=ax-b",
+          "labelKind": "MATH",
+          "curveX": "0"
+        }
+      ],
+      "quadrants": [
+        {
+          "id": "q1",
+          "quadrant": 1,
+          "label": "제1사분면"
+        },
+        {
+          "id": "q2",
+          "quadrant": 2,
+          "label": "제2사분면"
+        },
+        {
+          "id": "q3",
+          "quadrant": 3,
+          "label": "제3사분면"
+        },
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 제2사분면, 제3사분면, 제4사분면만을 지나는 직선 y=ax-b가 그려져 있고, 네 사분면의 이름이 표시되어 있다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 아래로 향하는 직선이 그려져 있고, 이 직선은 제2사분면, 제3사분면, 제4사분면을 지나며 네 사분면의 이름이 각 구역에 적혀 있다.",
+  "newVisualInformation": [
+    "직선 y=ax-b",
+    "제1사분면부터 제4사분면까지의 이름"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax-b$의 그래프가 제2사분면, 제3사분면, 제4사분면만을 지날 때, 다음 중에서 옳은 것은? (단, $a,b$는 상수이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

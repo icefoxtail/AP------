@@ -1,0 +1,384 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "160"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-316"
+            },
+            {
+              "kind": "integer",
+              "value": "245"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-384"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-145"
+            },
+            {
+              "kind": "integer",
+              "value": "-68"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "69"
+            },
+            {
+              "kind": "integer",
+              "value": "32"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-394"
+            },
+            {
+              "kind": "integer",
+              "value": "266"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-418"
+            },
+            {
+              "kind": "integer",
+              "value": "28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-112"
+            },
+            {
+              "kind": "integer",
+              "value": "-91"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s51",
+      "refs": [
+        "P5",
+        "P1"
+      ]
+    },
+    {
+      "id": "t1",
+      "refs": [
+        "P1",
+        "Q1"
+      ]
+    },
+    {
+      "id": "t2",
+      "refs": [
+        "P2",
+        "Q2"
+      ]
+    },
+    {
+      "id": "t3",
+      "refs": [
+        "P3",
+        "Q3"
+      ]
+    },
+    {
+      "id": "t4",
+      "refs": [
+        "P4",
+        "Q4"
+      ]
+    },
+    {
+      "id": "t5",
+      "refs": [
+        "P5",
+        "Q5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "Q1",
+          "P1",
+          "P2"
+        ],
+        "value": 65,
+        "label": "65",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "Q2",
+          "P2",
+          "P3"
+        ],
+        "value": 75,
+        "label": "75",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "Q3",
+          "P3",
+          "P4"
+        ],
+        "value": 80,
+        "label": "80",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "Q4",
+          "P4",
+          "P5"
+        ],
+        "value": 80,
+        "label": "x",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a5",
+        "refs": [
+          "Q5",
+          "P5",
+          "P1"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 500
+  },
+  "caption": "오각형의 각 꼭짓점에서 한 변을 연장하여 만든 외각을 나타낸 그림이다. 네 외각에 65, 75, 80, 60이 적혀 있고 나머지 한 외각에는 x가 적혀 있다.",
+  "accessibilityDescription": "오각형의 다섯 꼭짓점에서 한 변씩 연장한 직선이 있고, 바깥쪽에 생긴 외각 가운데 네 곳에 65도, 75도, 80도, 60도, 남은 한 곳에 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "오각형의 네 외각이 65도, 75도, 80도, 60도로 주어지고 나머지 한 외각이 x로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 오각형에서 네 외각의 크기가 각각 $65^\\circ, 75^\\circ, 80^\\circ, 60^\\circ$일 때, 나머지 한 외각 $\\angle x$의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "plane",
+  "title": "직각삼각형 ABC 내부의 사다리꼴 PQCR",
+  "points": [
+    {
+      "id": "A",
+      "x": 0,
+      "y": 0,
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "x": 10,
+      "y": 0,
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "x": 0,
+      "y": 17.32,
+      "label": "C"
+    },
+    {
+      "id": "P",
+      "x": 2,
+      "y": 0,
+      "label": "P"
+    },
+    {
+      "id": "R",
+      "x": 0,
+      "y": 3.46,
+      "label": "R"
+    },
+    {
+      "id": "Q",
+      "x": 8,
+      "y": 3.46,
+      "label": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "10"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCA",
+      "from": "C",
+      "to": "A"
+    },
+    {
+      "id": "sPR",
+      "from": "P",
+      "to": "R"
+    },
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    }
+  ],
+  "rightAngles": [
+    {
+      "vertex": "A",
+      "p1": "C",
+      "p2": "B"
+    },
+    {
+      "vertex": "Q",
+      "p1": "P",
+      "p2": "C"
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sPR",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 평행선 PR과 수선 PQ로 만든 사다리꼴 PQCR"
+}

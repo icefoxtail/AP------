@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 8
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "8",
+      "side": "LEFT"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "12",
+      "side": "RIGHT"
+    }
+  ],
+  "caption": "왼쪽 원기둥 A는 밑면의 반지름이 4 cm, 높이가 8 cm이고 오른쪽 원기둥 B는 높이가 12 cm인 서로 닮은 두 원기둥이다.",
+  "accessibilityDescription": "왼쪽 원기둥 A에는 밑면의 반지름 4와 높이 8이, 오른쪽의 더 큰 원기둥 B에는 높이 12가 표시되어 나란히 서 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원기둥 $A, B$가 있다. 원기둥 $A$의 높이는 $8\\text{ cm}$, 밑면의 반지름의 길이는 $4\\text{ cm}$이고, 원기둥 $B$의 높이는 $12\\text{ cm}$일 때, 원기둥 $B$의 밑넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원기둥 A와 B는 서로 닮은 도형이고, A의 높이는 8 cm, 밑면의 반지름은 4 cm, B의 높이는 12 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥 A의 밑면 반지름 4와 높이 8, 원기둥 B의 높이 12를 각각의 입체 옆에 표시한다."
+  ]
+}

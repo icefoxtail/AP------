@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sDE"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "a",
+        "ownerSegment": "sAC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "sCD",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "d",
+        "ownerSegment": "sCE",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "e",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "f",
+        "ownerSegment": "sDE",
+        "text": "y",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "두 선분 AD와 BE가 점 C에서 만나고 AB와 DE가 평행인 그림이다. AC는 6 cm, CD는 9 cm, BC는 4 cm, CE는 x, AB는 8 cm, DE는 y로 주어져 있다.",
+  "accessibilityDescription": "두 선분 AD와 BE가 점 C에서 교차하고, A와 B를 잇는 선분이 D와 E를 잇는 선분과 평행하다. 각 선분 옆에 6 cm, 9 cm, 4 cm, x, 8 cm, y가 적혀 있다.",
+  "newVisualInformation": [
+    "점 C에서 만나는 두 선분 AD, BE",
+    "평행한 선분 AB와 DE",
+    "길이 6 cm, 9 cm, 4 cm, x, 8 cm, y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 선분 $AD$와 $BE$가 점 $C$에서 만나고 $\\overline{AB} \\parallel \\overline{DE}$이다. $\\overline{AC} = 6\\text{ cm}$, $\\overline{CD} = 9\\text{ cm}$, $\\overline{BC} = 4\\text{ cm}$, $\\overline{CE} = x\\text{ cm}$, $\\overline{AB} = 8\\text{ cm}$, $\\overline{DE} = y\\text{ cm}$일 때, $x + y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

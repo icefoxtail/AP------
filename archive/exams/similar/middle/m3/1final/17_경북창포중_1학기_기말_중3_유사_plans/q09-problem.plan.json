@@ -1,0 +1,54 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3",
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=ax^2+bx+c"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=ax²+bx+c의 그래프가 좌표평면에 그려져 있다. 그래프는 아래로 볼록하고, 꼭짓점은 y축의 왼쪽에 있으며, y축과 음의 부분에서 만난다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 이차함수 y=ax²+bx+c의 그래프가 있다. 그래프의 꼭짓점은 y축의 왼쪽에 있고, y절편은 음수이다.",
+  "newVisualInformation": [
+    "이차함수 y=ax²+bx+c의 그래프",
+    "x축과 y축"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, 이차함수 $y = bx^2 - ac$의 그래프가 지나는 사분면은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1/2",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "1262/1000",
+          "y": "2",
+          "coordinates": false
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "두 지수함수 f와 g의 그래프가 y축과 만나는 점을 각각 A, B라 하고, 두 곡선이 만나는 점을 C라 할 때, 세 점 A, B, C를 잇는 삼각형이 연하게 칠해져 있다.",
+  "accessibilityDescription": "같은 좌표축 위에 증가하는 지수곡선 두 개가 서로 다른 색으로 그려져 있고, y축 위의 두 점과 두 곡선의 교점을 잇는 삼각형이 연하게 칠해져 있다.",
+  "newVisualInformation": [
+    "두 곡선이 y축과 만나는 점 A, B가 표시된다",
+    "두 곡선의 교점 C와 삼각형 ABC가 표시된다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x) = \\frac{3^x}{2}$, $g(x) = 3^x - 2$의 그래프가 $y$축과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 두 곡선 $y = f(x)$, $y = g(x)$가 만나는 점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$의 넓이를 $a$라 할 때, $3^a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

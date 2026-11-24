@@ -1,0 +1,44 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -3,
+      0
+    ],
+    "viewport": [
+      -4,
+      1,
+      -4,
+      4
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -3,
+          0
+        ],
+        "coefficients": [
+          "-2",
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "2",
+        "label": "최댓값(-2, 2)"
+      },
+      {
+        "id": "R",
+        "x": "0",
+        "y": "-2",
+        "label": "최솟값(0, -2)"
+      }
+    ]
+  },
+  "caption": "구간 [-3, 0]에서 이차함수 y=-x^2-4x-2의 최솟값 -2와 최댓값 2"
+}

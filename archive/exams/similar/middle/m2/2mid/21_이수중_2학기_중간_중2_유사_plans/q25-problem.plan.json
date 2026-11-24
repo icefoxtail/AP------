@@ -1,0 +1,193 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "Q",
+          "R"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "sPM",
+      "refs": [
+        "P",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aQ",
+        "refs": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "value": 50.2,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aR",
+        "refs": [
+          "Q",
+          "R",
+          "P"
+        ],
+        "value": 50.2,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQPM",
+        "refs": [
+          "Q",
+          "P",
+          "M"
+        ],
+        "value": 39.8,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aMPR",
+        "refs": [
+          "M",
+          "P",
+          "R"
+        ],
+        "value": 39.8,
+        "noLabel": true,
+        "equalGroup": 2,
+        "arcs": 2,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "삼각형 PQR에서 각 P의 이등분선이 변 QR과 만나는 점을 M이라 하였다. 각 Q와 각 R, 각 QPM과 각 MPR에 같은 각 표시가 있다.",
+  "accessibilityDescription": "삼각형 PQR의 꼭짓점 P에서 밑변 QR 위의 점 M으로 선분 PM이 그려져 있다. 각 Q와 각 R에는 같은 모양의 호 표시가, 각 QPM과 각 MPR에는 다른 모양의 같은 호 표시가 있다.",
+  "newVisualInformation": [
+    "각 Q=각 R",
+    "PM은 각 P의 이등분선",
+    "M은 QR 위의 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음은 '두 내각의 크기가 같은 삼각형은 이등변삼각형이다.'를 설명하는 과정이다. ①~⑤에 알맞은 것을 차례로 쓰시오. (각 1점, 총 5점)\n\n$\\angle Q=\\angle R$인 $\\triangle PQR$에서 $\\angle P$의 이등분선과 $\\overline{QR}$의 교점을 $M$이라 하면, $\\triangle PQM$과 $\\triangle PRM$에서 $\\angle Q=\\angle R$, $\\angle QPM =$ ① $\\cdots\\cdots$ ㉠ 이때 삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\angle PMQ =$ ② $\\cdots\\cdots$ ㉡ ③ 는 공통 $\\cdots\\cdots$ ㉢ ㉠, ㉡, ㉢에 의하여 $\\triangle PQM \\equiv \\triangle PRM$ ( ④ 합동) $\\therefore \\overline{PQ} =$ ⑤ 따라서 $\\triangle PQR$는 이등변삼각형이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

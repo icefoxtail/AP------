@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "W",
+    "T",
+    "U"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "displayLines": [],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vOP",
+        "ownerSegment": "OP",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOQ",
+        "ownerSegment": "OQ",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOR",
+        "ownerSegment": "OR",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "annulus",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "Q",
+              "steps": [
+                {
+                  "to": "Q",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "P",
+              "steps": [
+                {
+                  "to": "P",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "W",
+    "T",
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "중심이 같은 세 원으로 이루어진 원형 표적을 나타낸 그림이다. 세 원의 반지름은 각각 1, 2, 3이고, 반지름 1인 원의 바깥쪽과 반지름 2인 원의 안쪽 사이의 고리 모양 영역이 색칠되어 있다.",
+  "accessibilityDescription": "크기가 다른 세 동심원이 겹쳐 그려져 있고, 가장 작은 원과 가운데 원 사이의 고리 모양 영역이 색칠되어 있다. 오른쪽, 위쪽, 왼쪽으로 뻗은 세 반지름 옆에 각각 1, 2, 3이 적혀 있다.",
+  "newVisualInformation": [
+    "반지름이 1, 2, 3인 세 동심원을 그린다.",
+    "반지름 1인 원과 반지름 2인 원 사이의 고리 모양 영역을 색칠한다.",
+    "세 반지름의 길이 1, 2, 3을 각각 적는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4] 다음 물음에 답하고 그 풀이과정을 서술하시오. [5점]  \n(1) 다음 표는 어느 학급 학생 $25$명이 좋아하는 계절을 조사한 것이다. 이 학급에서 임의로 한 명의 학생을 뽑을 때, 그 학생이 가을을 좋아할 확률을 구하시오. [2점]\n\n| 계절 | 봄 | 여름 | 가을 | 겨울 |  \n| :---: | :---: | :---: | :---: | :---: |  \n| 학생 수 (명) | 6 | 8 | 7 | 4 |\n\n(2) 중심이 같고 반지름의 길이가 각각 $1\\text{ cm}, 2\\text{ cm}, 3\\text{ cm}$인 세 동심원으로 이루어진 원형 표적이 있다. 가장 안쪽 원의 바깥쪽이면서 두 번째 원의 안쪽인 고리 모양의 영역(반지름 1과 2 사이)을 색칠하였다. 이 표적에 화살을 한 번 쏠 때, 색칠한 부분을 맞힐 확률을 구하시오. (단, 화살은 반드시 표적에 맞고 경계선에 맞는 경우는 없다.) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

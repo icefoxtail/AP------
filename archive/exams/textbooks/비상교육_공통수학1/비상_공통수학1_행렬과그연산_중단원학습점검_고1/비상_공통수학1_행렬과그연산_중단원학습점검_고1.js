@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2\\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가 다음과 같을 때, 행렬 $A$를 구하시오.\n⑴ $a_{ij}=i+2j-3$\n⑵ $a_{ij}=i^2+j^2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $A=\\begin{pmatrix} 0 & 2 \\\\ 1 & 3 \\end{pmatrix}$\n⑵ $A=\\begin{pmatrix} 2 & 5 \\\\ 5 & 8 \\end{pmatrix}$",
+    "solution": "⑴ $a_{11}=1+2-3=0$, $a_{12}=1+4-3=2$, $a_{21}=2+2-3=1$, $a_{22}=2+4-3=3$\n⑵ $a_{11}=1+1=2$, $a_{12}=1+4=5$, $a_{21}=4+1=5$, $a_{22}=4+4=8$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 성립할 때, 실수 $a$, $b$, $c$의 값을 구하시오.\n$$\\begin{pmatrix} a+2 & 4 \\\\ 3 & -1 \\end{pmatrix} = \\begin{pmatrix} -4 & 4 \\\\ b-5 & c-2 \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-6,\\ b=8,\\ c=1$",
+    "solution": "두 행렬이 서로 같으려면 대응하는 성분이 각각 같아야 한다.\n$a+2=-4$에서 $a=-6$\n$3=b-5$에서 $b=8$\n$-1=c-2$에서 $c=1$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 4 & -5 & 1 \\\\ -2 & 2 & 3 \\end{pmatrix}$에 대하여 등식 $2A+X=O$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$X=\\begin{pmatrix} -8 & 10 & -2 \\\\ 4 & -4 & -6 \\end{pmatrix}$",
+    "solution": "$2A+X=O$에서 $X=-2A$이다.\n$$X=-2\\begin{pmatrix} 4 & -5 & 1 \\\\ -2 & 2 & 3 \\end{pmatrix}=\\begin{pmatrix} -8 & 10 & -2 \\\\ 4 & -4 & -6 \\end{pmatrix}$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 계산하시오.\n⑴ $\\begin{pmatrix} 2 & -1 \\\\ 4 & 3 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 7 & -1 \\\\ 4 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & -2 \\\\ -1 & 3 \\end{pmatrix}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{pmatrix} 1 \\\\ 17 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 1 & -17 \\\\ 0 & -8 \\end{pmatrix}$",
+    "solution": "⑴ $\\begin{pmatrix} 2\\times 2+(-1)\\times 3 \\\\ 4\\times 2+3\\times 3 \\end{pmatrix}=\\begin{pmatrix} 4-3 \\\\ 8+9 \\end{pmatrix}=\\begin{pmatrix} 1 \\\\ 17 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 7\\times 0+(-1)\\times(-1) & 7\\times(-2)+(-1)\\times 3 \\\\ 4\\times 0+0\\times(-1) & 4\\times(-2)+0\\times 3 \\end{pmatrix}=\\begin{pmatrix} 1 & -17 \\\\ 0 & -8 \\end{pmatrix}$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} 3 & -2 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 행렬 $3A-2B$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$$3A=\\begin{pmatrix} 3 & -3 \\\\ 9 & -6 \\end{pmatrix},\\quad 2B=\\begin{pmatrix} 6 & -4 \\\\ 0 & -2 \\end{pmatrix}$$\n$$3A-2B=\\begin{pmatrix} -3 & 1 \\\\ 9 & -4 \\end{pmatrix}$$\n모든 성분의 합은 $-3+1+9-4=3$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & 0 \\\\ 6 & -1 \\end{pmatrix}$, $B=\\begin{pmatrix} 1 & -3 \\\\ 3 & -2 \\end{pmatrix}$에 대하여 등식 $4A-X=2(X+B)$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$X=\\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix}$",
+    "solution": "$4A-X=2(X+B)=2X+2B$에서 $3X=4A-2B$이므로 $X=\\frac{1}{3}(4A-2B)$이다.\n$$4A=\\begin{pmatrix} 8 & 0 \\\\ 24 & -4 \\end{pmatrix},\\quad 2B=\\begin{pmatrix} 2 & -6 \\\\ 6 & -4 \\end{pmatrix}$$\n$$4A-2B=\\begin{pmatrix} 6 & 6 \\\\ 18 & 0 \\end{pmatrix}$$\n따라서 $X=\\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix}$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 행렬 $A=\\begin{pmatrix} -1 & 2 \\\\ 8 & 16 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 2 \\\\ 2 & 4 \\end{pmatrix}$, $C=\\begin{pmatrix} -1 & 2 \\\\ -1 & -2 \\end{pmatrix}$에 대하여 등식 $A=xB+yC$를 만족시키는 실수 $x$, $y$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=3,\\ y=-2$",
+    "solution": "$$xB+yC=\\begin{pmatrix} -x-y & 2x+2y \\\\ 2x-y & 4x-2y \\end{pmatrix}=\\begin{pmatrix} -1 & 2 \\\\ 8 & 16 \\end{pmatrix}$$\n성분을 비교하면 $-x-y=-1$에서 $x+y=1\\qquad\\cdots\\ ①$\n$2x-y=8\\qquad\\cdots\\ ②$\n①$+$②를 하면 $3x=9$이므로 $x=3$, ①에서 $y=-2$\n(검산) $4x-2y=12+4=16$, $2x+2y=2$로 모두 성립한다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -2 & 1 \\\\ 3 & 0 \\end{pmatrix}$, $B=\\begin{pmatrix} 3 & -5 \\\\ 1 & -3 \\end{pmatrix}$에 대하여 $AB-BA$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 16 & 4 \\\\ 20 & -16 \\end{pmatrix}$",
+    "solution": "$$AB=\\begin{pmatrix} -2\\times 3+1\\times 1 & -2\\times(-5)+1\\times(-3) \\\\ 3\\times 3+0 & 3\\times(-5)+0 \\end{pmatrix}=\\begin{pmatrix} -5 & 7 \\\\ 9 & -15 \\end{pmatrix}$$\n$$BA=\\begin{pmatrix} 3\\times(-2)+(-5)\\times 3 & 3\\times 1+(-5)\\times 0 \\\\ 1\\times(-2)+(-3)\\times 3 & 1\\times 1+(-3)\\times 0 \\end{pmatrix}=\\begin{pmatrix} -21 & 3 \\\\ -11 & 1 \\end{pmatrix}$$\n$$AB-BA=\\begin{pmatrix} -5+21 & 7-3 \\\\ 9+11 & -15-1 \\end{pmatrix}=\\begin{pmatrix} 16 & 4 \\\\ 20 & -16 \\end{pmatrix}$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식을 만족시키는 실수 $x$, $y$의 값을 구하시오. (단, $x>y$)\n$$\\begin{pmatrix} 1 & 1 \\\\ x & y \\end{pmatrix} \\begin{pmatrix} x & 2 \\\\ y & 3 \\end{pmatrix} = \\begin{pmatrix} -1 & 4 \\\\ 6 & 2x \\end{pmatrix} + \\begin{pmatrix} 5 & 1 \\\\ 4 & 3y \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=3,\\ y=1$",
+    "solution": "좌변을 계산하면\n$$\\begin{pmatrix} 1 & 1 \\\\ x & y \\end{pmatrix}\\begin{pmatrix} x & 2 \\\\ y & 3 \\end{pmatrix}=\\begin{pmatrix} x+y & 5 \\\\ x^2+y^2 & 2x+3y \\end{pmatrix}$$\n우변을 계산하면\n$$\\begin{pmatrix} -1 & 4 \\\\ 6 & 2x \\end{pmatrix}+\\begin{pmatrix} 5 & 1 \\\\ 4 & 3y \\end{pmatrix}=\\begin{pmatrix} 4 & 5 \\\\ 10 & 2x+3y \\end{pmatrix}$$\n성분을 비교하면 $x+y=4$, $x^2+y^2=10$이다.\n$$xy=\\frac{(x+y)^2-(x^2+y^2)}{2}=\\frac{16-10}{2}=3$$\n$x,\\ y$는 $t^2-4t+3=0$, 즉 $(t-1)(t-3)=0$의 두 근이므로 $1,\\ 3$이고 $x>y$이므로 $x=3,\\ y=1$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix}$에 대하여 행렬 $A+A^2+A^3+\\cdots+A^{100}$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$$A^2=\\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix}\\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 0 \\\\ 2-2 & 1 \\end{pmatrix}=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}=E$$\n따라서 $A^{2k-1}=A,\\ A^{2k}=E$이다.\n$A+A^2+\\cdots+A^{100}$에는 $A$가 $50$개, $E$가 $50$개 있으므로\n$$50A+50E=\\begin{pmatrix} -50+50 & 0 \\\\ -100 & 50+50 \\end{pmatrix}=\\begin{pmatrix} 0 & 0 \\\\ -100 & 100 \\end{pmatrix}$$\n모든 성분의 합은 $0+0-100+100=0$"
   },
   {
     "id": 11,
@@ -306,7 +306,7 @@ window.questionBank = [
     "wide": false,
     "content": "어느 인터넷 쇼핑몰에서는 두 택배 회사 A, B를 이용하여 옷과 가방을 배송하려고 한다. 다음 [표 1]은 배송 유형에 따른 두 회사의 택배 비용이고, [표 2]는 주문받은 옷과 가방의 배송 유형별 수량이다. 회사 A를 이용하여 배송하는 경우와 회사 B를 이용하여 배송하는 경우 지불해야 할 택배 비용을 각각 구하시오.\n\n[표 1] 택배 비용 (단위: 천 원)\n| 회사 \\ 배송 유형 | 일반 | 당일 |\n| :---: | :---: | :---: |\n| A | 3 | 4 |\n| B | 2 | 5 |\n\n[표 2] 주문 수량 (단위: 개)\n| 배송 유형 \\ 물품 | 옷 | 가방 |\n| :---: | :---: | :---: |\n| 일반 | 35 | 10 |\n| 당일 | 30 | 5 |",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "회사 A: $275000$원 (두 품목 합계)\n회사 B: $265000$원 (두 품목 합계)",
+    "solution": "택배 비용 행렬과 주문 수량 행렬의 곱으로 구한다. 단위는 천 원이다.\n$$\\begin{pmatrix} 3 & 4 \\\\ 2 & 5 \\end{pmatrix}\\begin{pmatrix} 35 & 10 \\\\ 30 & 5 \\end{pmatrix}=\\begin{pmatrix} 3\\times 35+4\\times 30 & 3\\times 10+4\\times 5 \\\\ 2\\times 35+5\\times 30 & 2\\times 10+5\\times 5 \\end{pmatrix}=\\begin{pmatrix} 225 & 50 \\\\ 220 & 45 \\end{pmatrix}$$\n회사 A는 옷 $225$, 가방 $50$이므로 합계 $275$천 원, 즉 $275000$원이다.\n회사 B는 옷 $220$, 가방 $45$이므로 합계 $265$천 원, 즉 $265000$원이다."
   }
 ];

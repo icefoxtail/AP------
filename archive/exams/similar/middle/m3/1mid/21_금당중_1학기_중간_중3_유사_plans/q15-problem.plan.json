@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "T",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP0S",
+      "refs": [
+        "P0",
+        "S"
+      ]
+    },
+    {
+      "id": "sSP1",
+      "refs": [
+        "S",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2T",
+      "refs": [
+        "P2",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP3",
+      "refs": [
+        "T",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P0",
+      "refs": [
+        "P3",
+        "P0"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dTop",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "P3",
+        "to": "T",
+        "label": "2a",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dBot",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "P0",
+        "to": "S",
+        "label": "b",
+        "side": "BELOW"
+      },
+      {
+        "id": "dLeft",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "P0",
+        "to": "P3",
+        "label": "2a-b",
+        "side": "LEFT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "T",
+    "S"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "P3",
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "ra1",
+      "refs": [
+        "P0",
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "caption": "합동인 두 사다리꼴을 이어 붙여 만든 직사각형으로, 한 사다리꼴의 윗변에 2a, 아랫변에 b, 높이에 2a-b가 표시되어 있다.",
+  "accessibilityDescription": "직사각형이 비스듬한 선분 하나로 합동인 두 사다리꼴로 나뉘어 있고, 왼쪽 사다리꼴의 윗변에 2a, 아랫변에 b, 높이에 2a-b가 치수선과 함께 표시되어 있다.",
+  "newVisualInformation": [
+    "합동인 두 사다리꼴로 나뉜 직사각형",
+    "사다리꼴의 윗변 2a, 아랫변 b, 높이 2a-b"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

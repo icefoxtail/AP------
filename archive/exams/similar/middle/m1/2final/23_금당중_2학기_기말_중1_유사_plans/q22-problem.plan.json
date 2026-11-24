@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "871",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "731",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "371",
+              "denominator": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "731",
+              "denominator": "50"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "label": "x-15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 80,
+        "label": "80",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "E"
+        ],
+        "value": 120,
+        "label": "2x+10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "rightAngles": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 꼭짓점에서 한 변을 연장한 삼각형이다. 두 내각과 한 외각의 크기가 문자식으로 주어져 있다.",
+  "accessibilityDescription": "삼각형의 한 변을 꼭짓점 너머로 연장했고, 두 내각과 연장선 쪽 외각에 각 표시와 문자식이 있다.",
+  "newVisualInformation": [
+    "삼각형",
+    "한 변의 연장선",
+    "두 내각의 문자식",
+    "한 외각의 문자식"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 오른쪽 그림의 삼각형에서 한 외각의 크기가 $(2x+10)^\\circ$이고, 그와 이웃하지 않는 두 내각의 크기가 각각 $(x-15)^\\circ$, $80^\\circ$일 때, $\\angle x$의 크기를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

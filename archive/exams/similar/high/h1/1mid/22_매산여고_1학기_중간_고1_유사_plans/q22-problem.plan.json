@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "13"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "13"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "10"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "세 변의 길이가 13, 13, 10인 이등변삼각형 ABC를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 AB와 AC에 13, 변 BC에 10이 표시되어 있고, 변 AB와 AC에 같은 길이 표시가 있다.",
+  "newVisualInformation": [
+    "변 AB와 AC의 길이가 13으로 같고, 변 BC의 길이가 10이다.",
+    "변 AB와 AC에 같은 길이 표시가 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 변의 길이가 $a$, $b$, $c$인 삼각형 $\\mathrm{ABC}$가 다음 조건을 만족시킨다. (가) $a^2b-a^2c+2ab^2-abc-ac^2+b^3-bc^2=0$ (나) $b+c=26$ (다) $13a=10b$ 삼각형 $\\mathrm{ABC}$의 넓이를 구하는 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

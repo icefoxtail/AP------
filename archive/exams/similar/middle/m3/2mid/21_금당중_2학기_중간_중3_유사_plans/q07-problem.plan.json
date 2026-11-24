@@ -1,0 +1,44 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "O",
+      "radius": 1,
+      "arcPoints": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "OD",
+      "foot": "B"
+    },
+    {
+      "type": "perpendicular",
+      "from": "C",
+      "to": "OD",
+      "foot": "D"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "x°"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "O",
+        "B"
+      ],
+      "text": "y°"
+    }
+  ]
+}

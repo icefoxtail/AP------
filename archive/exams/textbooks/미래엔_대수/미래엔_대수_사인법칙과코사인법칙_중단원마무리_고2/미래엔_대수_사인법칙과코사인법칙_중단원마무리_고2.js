@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=8\\sin A$일 때, 외접원의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "사인법칙에 의하여 $\\frac{a}{\\sin A}=2R$ ($R$는 외접원의 반지름의 길이)이다.\n$a=8\\sin A$에서 $\\frac{a}{\\sin A}=8$이므로 $2R=8$\n따라서 외접원의 반지름의 길이는 $R=4$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=4\\sqrt{3},\\, A=60^\\circ,\\, B=45^\\circ$일 때, 다음을 구하시오.\n⑴ $b$의 값\n⑵ 외접원의 반지름의 길이 $R$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $b=4\\sqrt{2}$\n⑵ $R=4$",
+    "solution": "⑴ 사인법칙에 의하여 $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$이므로\n$$\\frac{4\\sqrt{3}}{\\sin 60^\\circ}=\\frac{b}{\\sin 45^\\circ}$$\n$\\frac{4\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}=8$이므로 $b=8\\sin 45^\\circ=8\\times\\frac{\\sqrt{2}}{2}=4\\sqrt{2}$\n⑵ $2R=\\frac{a}{\\sin A}=8$이므로 $R=4$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 다음을 구하시오.\n⑴ $b=6,\\, c=3,\\, A=60^\\circ$일 때, $a$의 값\n⑵ $a=\\sqrt{7},\\, b=2,\\, c=3$일 때, $A$의 크기",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=3\\sqrt{3}$\n⑵ $A=60^\\circ$",
+    "solution": "⑴ 코사인법칙에 의하여\n$$a^2=b^2+c^2-2bc\\cos A=6^2+3^2-2\\times 6\\times 3\\times\\cos 60^\\circ=36+9-18=27$$\n$a>0$이므로 $a=3\\sqrt{3}$\n⑵ 코사인법칙에 의하여\n$$\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{4+9-7}{2\\times 2\\times 3}=\\frac{6}{12}=\\frac{1}{2}$$\n$0^\\circ<A<180^\\circ$이므로 $A=60^\\circ$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.\n⑴ $a=4,\\, c=\\sqrt{2},\\, B=135^\\circ$\n⑵ $b=6,\\, c=10,\\, A=150^\\circ$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2$\n⑵ $15$",
+    "solution": "삼각형의 넓이는 $S=\\frac{1}{2}ac\\sin B=\\frac{1}{2}bc\\sin A$이다.\n⑴ $S=\\frac{1}{2}\\times 4\\times\\sqrt{2}\\times\\sin 135^\\circ=2\\sqrt{2}\\times\\frac{\\sqrt{2}}{2}=2$\n⑵ $S=\\frac{1}{2}\\times 6\\times 10\\times\\sin 150^\\circ=30\\times\\frac{1}{2}=15$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $6$인 원에 내접하는 $\\triangle\\mathrm{ABC}$의 둘레의 길이가 $20$일 때, $\\sin A + \\sin B + \\sin C$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{5}{3}$",
+    "solution": "외접원의 반지름의 길이가 $R=6$이므로 사인법칙에 의하여\n$$a=2R\\sin A=12\\sin A,\\quad b=12\\sin B,\\quad c=12\\sin C$$\n둘레의 길이는\n$$a+b+c=12(\\sin A+\\sin B+\\sin C)=20$$\n따라서 $\\sin A+\\sin B+\\sin C=\\frac{20}{12}=\\frac{5}{3}$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$의 외접원의 반지름의 길이가 $4$이고 $A=60^\\circ,\\, b=4\\sqrt{2}$일 때, $C$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$75^\\circ$",
+    "solution": "사인법칙에 의하여 $\\frac{b}{\\sin B}=2R=8$이므로\n$$\\sin B=\\frac{b}{8}=\\frac{4\\sqrt{2}}{8}=\\frac{\\sqrt{2}}{2}$$\n이므로 $B=45^\\circ$ 또는 $B=135^\\circ$이다.\n$A=60^\\circ$이므로 $B=135^\\circ$이면 $A+B=195^\\circ>180^\\circ$로 삼각형이 될 수 없다. 따라서 $B=45^\\circ$\n$$C=180^\\circ-(60^\\circ+45^\\circ)=75^\\circ$$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $80\\text{ m}$만큼 떨어져 있는 민호와 지아의 하늘에 떠 있는 드론에 대한 올려본각의 크기가 각각 $75^\\circ$와 $45^\\circ$일 때, 드론과 민호 사이의 거리를 구하시오. (단, 민호와 지아의 눈높이는 같다.)\n<img src=\"q7.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{80\\sqrt{6}}{3}\\text{ m}$",
+    "solution": "드론의 위치를 $\\mathrm{D}$, 민호를 $\\mathrm{M}$, 지아를 $\\mathrm{J}$라 하면 삼각형 $\\mathrm{DMJ}$에서 $\\overline{\\mathrm{MJ}}=80$, $\\angle\\mathrm{M}=75^\\circ$, $\\angle\\mathrm{J}=45^\\circ$이다.\n$$\\angle\\mathrm{D}=180^\\circ-(75^\\circ+45^\\circ)=60^\\circ$$\n구하는 거리는 $\\overline{\\mathrm{DM}}$이다. 사인법칙에 의하여 $\\frac{\\overline{\\mathrm{MJ}}}{\\sin 60^\\circ}=\\frac{\\overline{\\mathrm{DM}}}{\\sin 45^\\circ}$이므로\n$$\\overline{\\mathrm{DM}}=\\frac{80\\times\\sin 45^\\circ}{\\sin 60^\\circ}=80\\times\\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{3}}{2}}=\\frac{80\\sqrt{2}}{\\sqrt{3}}=\\frac{80\\sqrt{6}}{3}$$\n따라서 드론과 민호 사이의 거리는 $\\frac{80\\sqrt{6}}{3}\\text{ m}$이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 변의 길이가 $4,\\, 5,\\, 7$인 삼각형의 세 내각 중에서 크기가 가장 큰 내각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{5}$",
+    "solution": "삼각형에서 가장 큰 각은 가장 긴 변의 대각이다. 가장 긴 변의 길이는 $7$이므로 $\\theta$는 길이가 $7$인 변의 대각이다.\n코사인법칙에 의하여\n$$\\cos\\theta=\\frac{4^2+5^2-7^2}{2\\times 4\\times 5}=\\frac{16+25-49}{40}=\\frac{-8}{40}=-\\frac{1}{5}$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=5,\\, b=3,\\, C=120^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 반지름의 길이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7\\sqrt{3}}{3}$",
+    "solution": "먼저 코사인법칙으로 변 $c$의 길이를 구한다.\n$$c^2=a^2+b^2-2ab\\cos C=25+9-2\\times 5\\times 3\\times\\cos 120^\\circ=34-30\\times\\left(-\\frac{1}{2}\\right)=49$$\n$c>0$이므로 $c=7$\n사인법칙에 의하여 $\\frac{c}{\\sin C}=2R$이므로\n$$2R=\\frac{7}{\\sin 120^\\circ}=\\frac{7}{\\frac{\\sqrt{3}}{2}}=\\frac{14}{\\sqrt{3}}$$\n따라서 외접원의 반지름의 길이는 $R=\\frac{7}{\\sqrt{3}}=\\frac{7\\sqrt{3}}{3}$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 만족시키는 $\\triangle\\mathrm{ABC}$는 어떤 삼각형인지 말하시오.\n⑴ $a\\sin^2 A = b\\sin^2 B$\n⑵ $\\sin A = \\cos B\\sin C$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=b$인 이등변삼각형\n⑵ 빗변의 길이가 $c$인 직각삼각형 ($C=90^\\circ$)",
+    "solution": "외접원의 반지름의 길이를 $R$라 하면 사인법칙에 의하여 $\\sin A=\\frac{a}{2R}$, $\\sin B=\\frac{b}{2R}$, $\\sin C=\\frac{c}{2R}$이다.\n⑴ $a\\sin^2A=b\\sin^2B$에 대입하면\n$$a\\times\\frac{a^2}{4R^2}=b\\times\\frac{b^2}{4R^2}$$\n$a^3=b^3$이므로 $a=b$이다. 따라서 $a=b$인 이등변삼각형이다.\n⑵ $\\sin A=\\cos B\\sin C$에 사인법칙과 코사인법칙 $\\cos B=\\frac{a^2+c^2-b^2}{2ac}$를 대입한다.\n$$\\frac{a}{2R}=\\frac{a^2+c^2-b^2}{2ac}\\times\\frac{c}{2R}$$\n양변에 $2R$을 곱하면 $a=\\frac{a^2+c^2-b^2}{2a}$이므로 $2a^2=a^2+c^2-b^2$\n따라서 $a^2+b^2=c^2$이므로 $c$가 빗변인 직각삼각형이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 어느 선수가 축구 골대의 두 기둥 $\\mathrm{A}$와 $\\mathrm{B}$로부터 각각 $3\\text{ m}$와 $8\\text{ m}$ 떨어진 지점 $\\mathrm{P}$에 있다. 골대의 폭이 $7\\text{ m}$일 때, $\\angle\\mathrm{APB}$의 크기를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$60^\\circ$",
+    "solution": "삼각형 $\\mathrm{APB}$에서 $\\overline{\\mathrm{PA}}=3,\\ \\overline{\\mathrm{PB}}=8,\\ \\overline{\\mathrm{AB}}=7$이다.\n코사인법칙에 의하여\n$$\\cos(\\angle\\mathrm{APB})=\\frac{3^2+8^2-7^2}{2\\times 3\\times 8}=\\frac{9+64-49}{48}=\\frac{24}{48}=\\frac{1}{2}$$\n$0^\\circ<\\angle\\mathrm{APB}<180^\\circ$이므로 $\\angle\\mathrm{APB}=60^\\circ$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=6,\\, b=8,\\, \\sin(A+B)=\\frac{1}{2}$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "$A+B+C=180^\\circ$이므로 $\\sin(A+B)=\\sin(180^\\circ-C)=\\sin C=\\frac{1}{2}$이다.\n삼각형의 넓이는\n$$\\frac{1}{2}ab\\sin C=\\frac{1}{2}\\times 6\\times 8\\times\\frac{1}{2}=12$$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $2$인 원에 내접하는 $\\triangle\\mathrm{ABC}$에서 $B=60^\\circ,\\, C=45^\\circ$일 때, 변 $\\mathrm{BC}$의 길이를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{6}+\\sqrt{2}$",
+    "solution": "$A=180^\\circ-(60^\\circ+45^\\circ)=75^\\circ$이고 외접원의 반지름의 길이는 $R=2$이다.\n사인법칙에 의하여 $\\frac{\\overline{\\mathrm{BC}}}{\\sin A}=2R=4$이므로\n$$\\overline{\\mathrm{BC}}=4\\sin 75^\\circ$$\n$\\sin 75^\\circ=\\sin(45^\\circ+30^\\circ)=\\frac{\\sqrt{2}}{2}\\times\\frac{\\sqrt{3}}{2}+\\frac{\\sqrt{2}}{2}\\times\\frac{1}{2}=\\frac{\\sqrt{6}+\\sqrt{2}}{4}$이므로\n$$\\overline{\\mathrm{BC}}=\\sqrt{6}+\\sqrt{2}$$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 두 직선 $y=3x$와 $y=x$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오.\n<img src=\"q14.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2\\sqrt{5}}{5}$",
+    "solution": "직선 $y=3x$와 $x$축의 양의 방향이 이루는 각을 $\\alpha$, 직선 $y=x$와 이루는 각을 $\\beta$라 하면 $\\tan\\alpha=3,\\ \\tan\\beta=1$이고 $\\theta=\\alpha-\\beta$이다.\n$$\\tan\\theta=\\tan(\\alpha-\\beta)=\\frac{\\tan\\alpha-\\tan\\beta}{1+\\tan\\alpha\\tan\\beta}=\\frac{3-1}{1+3}=\\frac{1}{2}$$\n$0<\\theta<\\frac{\\pi}{2}$이므로 $\\cos^2\\theta=\\frac{1}{1+\\tan^2\\theta}=\\frac{1}{1+\\frac{1}{4}}=\\frac{4}{5}$에서\n$$\\cos\\theta=\\frac{2}{\\sqrt{5}}=\\frac{2\\sqrt{5}}{5}$$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$이고 모선의 길이가 $12\\text{ cm}$인 원뿔이 있다. 원뿔의 밑면인 원의 둘레 위의 점 $\\mathrm{P}$에서 모선 $\\mathrm{OP}$의 중점 $\\mathrm{Q}$까지 원뿔의 표면을 따라 실을 감을 때, 감은 실의 길이의 최솟값을 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6\\sqrt{7}\\text{ cm}$",
+    "solution": "원뿔의 옆면을 펼치면 반지름의 길이가 모선의 길이 $12$인 부채꼴이다. 호의 길이는 밑면의 둘레 $2\\pi\\times 4=8\\pi$이므로 중심각의 크기는\n$$\\frac{8\\pi}{12}=\\frac{2}{3}\\pi$$\n점 $\\mathrm{P}$에서 한 바퀴 돌아 같은 모선 위의 점 $\\mathrm{Q}$까지 가는 가장 짧은 실은 부채꼴의 양 끝 반지름을 $\\mathrm{OP},\\ \\mathrm{OP}'$이라 할 때 $\\mathrm{P}$에서 $\\mathrm{OP}'$ 위의 점 $\\mathrm{Q}$로 가는 선분이다.\n$\\overline{\\mathrm{OP}}=12$, $\\overline{\\mathrm{OQ}}=6$, $\\angle\\mathrm{POQ}=\\frac{2}{3}\\pi$이므로 코사인법칙에 의하여\n$$\\overline{\\mathrm{PQ}}^2=12^2+6^2-2\\times 12\\times 6\\times\\cos\\frac{2}{3}\\pi=144+36+72=252$$\n$\\overline{\\mathrm{PQ}}=\\sqrt{252}=6\\sqrt{7}$\n따라서 실의 길이의 최솟값은 $6\\sqrt{7}\\text{ cm}$이다."
   },
   {
     "id": 16,
@@ -446,7 +446,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 원에 내접하는 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2,\\, \\overline{\\mathrm{BC}}=3,\\, \\overline{\\mathrm{CD}}=4,\\, \\overline{\\mathrm{AD}}=5$일 때, 사각형 $\\mathrm{ABCD}$의 넓이를 구하는 풀이 과정과 답을 쓰시오.\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{30}$",
+    "solution": "사각형 $\\mathrm{ABCD}$가 원에 내접하므로 $B+D=180^\\circ$이고 $\\cos D=-\\cos B$, $\\sin D=\\sin B$이다.\n대각선 $\\mathrm{AC}$를 그어 삼각형 $\\mathrm{ABC}$, $\\mathrm{ACD}$에서 코사인법칙을 쓰면\n$$\\overline{\\mathrm{AC}}^2=2^2+3^2-2\\times 2\\times 3\\cos B=13-12\\cos B$$\n$$\\overline{\\mathrm{AC}}^2=4^2+5^2-2\\times 4\\times 5\\cos D=41+40\\cos B$$\n$13-12\\cos B=41+40\\cos B$에서 $-52\\cos B=28$이므로 $\\cos B=-\\frac{7}{13}$\n$$\\sin B=\\sqrt{1-\\frac{49}{169}}=\\frac{\\sqrt{120}}{13}=\\frac{2\\sqrt{30}}{13}$$\n사각형의 넓이는 두 삼각형의 넓이의 합이므로\n$$\\frac{1}{2}\\times 2\\times 3\\times\\sin B+\\frac{1}{2}\\times 4\\times 5\\times\\sin D=(3+10)\\sin B=13\\times\\frac{2\\sqrt{30}}{13}=2\\sqrt{30}$$"
   }
 ];

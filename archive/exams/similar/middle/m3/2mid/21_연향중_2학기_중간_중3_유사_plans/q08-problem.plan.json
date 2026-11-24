@@ -1,0 +1,45 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "inscribedIn": "O"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AB",
+      "foot": "D"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "BC",
+      "foot": "E"
+    },
+    {
+      "type": "perpendicular",
+      "from": "O",
+      "to": "AC",
+      "foot": "F"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "110°"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "24",
+      "8",
+      "-2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3.5,
+      7.5,
+      -5,
+      36
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 32,
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "x": -2,
+        "y": 0,
+        "label": "B"
+      },
+      {
+        "id": "C",
+        "x": 6,
+        "y": 0,
+        "label": "C"
+      }
+    ],
+    "overlays": {
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "포물선 y=-2x^2+8x+24의 꼭짓점 A와 x축 교점 B, C로 이루어진 삼각형 ABC"
+}

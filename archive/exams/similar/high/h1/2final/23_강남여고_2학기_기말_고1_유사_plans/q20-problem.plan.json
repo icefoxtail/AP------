@@ -1,0 +1,97 @@
+{
+  "question": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "RATIONAL",
+          "numerator": [
+            "12",
+            "0"
+          ],
+          "denominator": [
+            "0",
+            "1"
+          ],
+          "domain": [
+            "1.5",
+            "10"
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "RATIONAL",
+          "numerator": [
+            "12",
+            "0"
+          ],
+          "denominator": [
+            "-3",
+            "1"
+          ],
+          "domain": [
+            "4.5",
+            "12"
+          ]
+        }
+      ],
+      "overlays": {
+        "points": [
+          {
+            "id": "A",
+            "x": "3",
+            "y": "4",
+            "label": "A"
+          },
+          {
+            "id": "B",
+            "x": "6",
+            "y": "4",
+            "label": "B"
+          },
+          {
+            "id": "C",
+            "x": "6",
+            "y": "2",
+            "label": "C"
+          },
+          {
+            "id": "D",
+            "x": "9",
+            "y": "2",
+            "label": "D"
+          }
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "from": "B",
+            "to": "C"
+          },
+          {
+            "from": "C",
+            "to": "D"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "3"
+        ],
+        "y": [
+          "4"
+        ]
+      }
+    },
+    "caption": "f(x)=12/x, g(x)=12/(x-3)의 그래프와 네 점 A, B, C, D로 둘러싸인 영역의 도식이다."
+  },
+  "solution": {
+    "status": "EXEMPT",
+    "reason": "발문 그림에서 평행이동 거리 3이 그대로 보이므로 별도 해설 그림은 필요하지 않다."
+  }
+}

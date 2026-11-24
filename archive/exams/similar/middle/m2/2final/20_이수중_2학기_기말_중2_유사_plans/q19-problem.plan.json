@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "sXY",
+      "refs": [
+        "X",
+        "Y"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lXY",
+        "ownerSegment": "sXY",
+        "text": "20",
+        "unit": "cm"
+      },
+      {
+        "id": "lOX",
+        "ownerSegment": "sOX",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lOY",
+        "ownerSegment": "sOY",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "X",
+        "O",
+        "Y"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "빗변의 길이가 20센티미터, 한 변의 길이가 12센티미터, 나머지 한 변의 길이가 x센티미터인 직각삼각형을 나타내었다.",
+  "accessibilityDescription": "직각 표시가 있는 삼각형의 세 변에 각각 20센티미터, 12센티미터, x센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형의 빗변과 두 변의 길이, 구할 변 x를 구별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "길이가 각각 $20\\text{ cm}, 12\\text{ cm}$인 빨대에 길이가 $x\\text{ cm}$인 빨대를 추가하여 직각삼각형을 만들려고 한다. $x$의 값은? (단, $x < 20$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

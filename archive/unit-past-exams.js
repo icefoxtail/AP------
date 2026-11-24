@@ -152,6 +152,8 @@
         return { ...eligibility,
           // The join runs once per set of rows, before a grade is chosen: the question's own grade decides (a chosen grade must not change it).
           rpmParentResolution: core.resolveRpmParent(found, ''),
+          // 카탈로그가 승인된 유형으로 싣는 단원 힌트. 원본·정본 판정이 없는 문항을 채울 때만 읽는다(unit-past-exams-core.js fillUnclassifiedRecord).
+          metaHintUnit: String(found.metaHintUnit || '').trim(),
           facets: typeof archive2.metaFacetsOf === 'function' ? archive2.metaFacetsOf(found) : null };
       }
     };
@@ -183,7 +185,7 @@
         ? generalUse.check(core.getQuestionUid(meta || {}) || core.getQuestionUid(record), file, record.sourceOrdinal)
         : null;
       const useFields = useGate ? { generalUseEligible: useGate.ok, generalUseReasons: useGate.reasons,
-        rpmParentResolution: useGate.rpmParentResolution } : {};
+        rpmParentResolution: useGate.rpmParentResolution, metaHintUnit: useGate.metaHintUnit } : {};
       // S14: with the final catalog, concept/type/template come ONLY from its content-bound
       // usable-meta lane (never from a sidecar row that may describe older question bytes), with
       // their own 승인 / 검토 대기 status. Without a catalog the sidecar join below is unchanged.

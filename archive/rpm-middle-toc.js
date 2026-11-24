@@ -212,7 +212,11 @@
       // current unit; exact RPM evidence above keeps its own resolution rules.
       const metadataFingerprint = text(record.metadataAssignmentEvidence?.sourceFingerprint);
       const sourceFingerprint = text(record.sourceFingerprint);
-      const staleMetadata = metadataFingerprint && sourceFingerprint && metadataFingerprint !== sourceFingerprint;
+      // 단, 행의 판정이 지금과 같은 발문·보기에 묶여 있고(카탈로그 metaBinding "text") 단원 칸이 승인된 행은 낡은 것이 아니다:
+      // 전체 지문(해설·정답·그림 포함)이 달라진 것만으로 그 승인된 중단원을 버리지 않는다(결속은 발문+보기뿐, docs/agents/metadata.md).
+      const boundApproved = record.metaBinding === "text" &&
+        /^approved(_|$)/i.test(text(record.metadataAssignmentEvidence?.fieldStatus?.standardUnit));
+      const staleMetadata = metadataFingerprint && sourceFingerprint && metadataFingerprint !== sourceFingerprint && !boundApproved;
       if (record.unverifiedTaxonomy && !staleMetadata) add(record.unverifiedTaxonomy, "UNVERIFIED_PARENT", true);
       // Compare all explicit RPM evidence before choosing a path. Stored legacy
       // parents are deliberately excluded: a base/effective parent difference is

@@ -1,0 +1,112 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6.928,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "B"
+      ],
+      "args": {
+        "r": 6,
+        "deg": 150
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4.8,
+        "y": 6.5
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "150°"
+      },
+      {
+        "vertex": "D",
+        "ray1": "A",
+        "ray2": "C",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "6 cm"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "label": "4√3 cm"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "label": "8 cm"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "label": "10 cm"
+      }
+    ]
+  },
+  "caption": "네 변과 두 대각 150도, 60도가 주어진 사각형 ABCD"
+}

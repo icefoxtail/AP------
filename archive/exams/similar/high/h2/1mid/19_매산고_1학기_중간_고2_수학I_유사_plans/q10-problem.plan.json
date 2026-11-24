@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "1/2",
+      "2"
+    ],
+    "phasePi": "-3/4",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3.2,
+      19
+    ],
+    "viewport": [
+      -4,
+      20,
+      -5,
+      6
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "5",
+        "-1"
+      ]
+    }
+  },
+  "caption": "코사인함수 y=a cos(bx-cπ)+d의 그래프가 최댓값 5, 최솟값 -1이고, 중심선 y=2를 아래에서 위로 지나는 연속한 두 점의 간격이 4π인 모양으로 그려져 있다.",
+  "accessibilityDescription": "물결 모양 곡선이 최고 높이 5와 최저 높이 -1 사이를 오가며 가운데 높이 2를 지나고, 같은 모양이 일정한 간격으로 되풀이된다.",
+  "newVisualInformation": [
+    "그래프의 최댓값은 5, 최솟값은 -1이다.",
+    "중심선의 높이는 2이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x) = a\\cos(bx - c\\pi) + d$ ($a > 0, b > 0, 0 < c < 1$)의 그래프는 최댓값이 $5$, 최솟값이 $-1$이고, $x = \\frac{\\pi}{2}$와 $x = \\frac{9\\pi}{2}$에서 연속으로 직선 $y = 2$를 아래에서 위로 지난다. 네 상수 $a, b, c, d$의 합 $a + b + c + d$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

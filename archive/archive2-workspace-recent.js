@@ -388,7 +388,7 @@
       // The exam lookup is the catalog's exams, or the exam list (the same rows, a small file) while there is no catalog; with neither it is
       // empty (grade/subject fall back to the saved fields) and refreshRecentRowsFromCatalog() normalizes again when one arrives.
       state.recentRows = History.normalizeAssignments(
-        state.recentAssignments, V.classRows, state.catalog?.exams || state.light?.exams || [], C,
+        state.recentAssignments, V.classRows, (state.catalog && state.catalog.complete !== false ? state.catalog.exams : state.light?.exams || state.catalog?.exams) || [], C,
       );
       rememberRecentSubjectOptions(state.recentRows);
       return true;

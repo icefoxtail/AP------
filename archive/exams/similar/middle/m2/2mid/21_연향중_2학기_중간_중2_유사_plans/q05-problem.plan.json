@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "DA",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "DA",
+        "text": "AD=BC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "사각형 ABCD의 변 AD와 BC에 평행 표시가 있고, 변 AD 옆에 AD=BC가 적혀 있으며, 대각선 AC가 그려져 있다.",
+  "accessibilityDescription": "사각형 ABCD의 변 AD와 BC에 평행 표시가 있고, 변 AD 옆에 AD=BC가 적혀 있으며, 대각선 AC가 그려져 있다.",
+  "newVisualInformation": [
+    "사각형 ABCD",
+    "AD와 BC의 평행 표시",
+    "AD=BC 표시",
+    "대각선 AC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 $\\square ABCD$에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AD}=\\overline{BC}$일 때, $\\square ABCD$가 평행사변형임을 설명하는 과정이다. (ㄱ)~(ㅁ)에 들어갈 내용으로 옳지 **않은** 것은? [4점]\n\n대각선 $AC$를 그으면 $\\triangle ABC$와 $\\triangle CDA$에서 $\\overline{AD}=\\overline{BC}$, $\\overline{AD}\\parallel\\overline{BC}$이므로 엇각으로 $\\angle DAC = \\text{(ㄴ)}$이고, $\\text{(ㄱ)}$는 공통이다. 따라서 $\\triangle ABC \\equiv \\triangle CDA$ (SAS 합동)이므로 $\\angle BAC = \\text{(ㄹ)}$이다. 엇각의 크기가 같으므로 $\\overline{AB}\\parallel\\text{(ㅁ)}$이다. 따라서 두 쌍의 대변이 각각 평행하므로 $\\square ABCD$는 평행사변형이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

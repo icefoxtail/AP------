@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Hr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "32"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "32"
+            },
+            {
+              "kind": "integer",
+              "value": "28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G1",
+    "G2",
+    "H0",
+    "H",
+    "Hr",
+    "F",
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sGround",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "sPerson",
+      "refs": [
+        "H0",
+        "H"
+      ]
+    },
+    {
+      "id": "sString",
+      "refs": [
+        "H",
+        "K"
+      ]
+    },
+    {
+      "id": "sHoriz",
+      "refs": [
+        "H",
+        "Hr"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sKite",
+      "refs": [
+        "K",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aH",
+        "refs": [
+          "Hr",
+          "H",
+          "K"
+        ],
+        "value": 36.87,
+        "label": "37",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lString",
+        "ownerSegment": "sString",
+        "text": "40",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lHand",
+        "ownerSegment": "sPerson",
+        "text": "1.5",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "K",
+        "F",
+        "G2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "G1",
+    "G2",
+    "H0",
+    "H",
+    "Hr",
+    "F",
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "지면에 선 민수의 손에서 연까지 40 m의 줄이 37도의 각으로 이어지고, 손의 높이가 1.5 m인 장면이다.",
+  "accessibilityDescription": "지면을 나타내는 가로선, 손의 높이를 나타내는 짧은 수직선과 1.5 m, 손에서 오른쪽 위 연으로 향한 40 m의 줄, 손에서 그은 수평 점선과 줄 사이의 37도 각, 연에서 지면으로 내린 수직선과 직각 표시가 보인다.",
+  "newVisualInformation": [
+    "손에서 연까지의 줄 길이 40 m와 올려본 각 37도",
+    "지면에서 손까지의 높이 1.5 m"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 다음 그림에서 민수가 연을 올려본각의 크기는 $37^\\circ$이고, 민수의 손에서 연까지의 거리는 $40,\\mathrm{m}$이다. 지면에서 민수의 손까지의 높이가 $1.5,\\mathrm{m}$일 때, 지면에서 연까지의 높이는 몇 $\\mathrm{m}$인지 구하고 그 과정을 서술하시오. (단, $\\sin 37^\\circ=0.60$, $\\cos 37^\\circ=0.80$, $\\tan 37^\\circ=0.75$로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

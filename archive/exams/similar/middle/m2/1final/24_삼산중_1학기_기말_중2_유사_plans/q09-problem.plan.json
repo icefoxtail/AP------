@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -6,
+      2,
+      -6,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "E1",
+          "x": "-3",
+          "y": "-6",
+          "unnamed": true
+        },
+        {
+          "id": "E2",
+          "x": "-3",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "l",
+          "from": "E1",
+          "to": "E2"
+        }
+      ]
+    }
+  },
+  "caption": "일차방정식 ax+by+6=0의 그래프는 점 (-3, 0)을 지나고 y축에 평행한 직선이다.",
+  "accessibilityDescription": "좌표평면에 y축에 평행한 세로 직선이 있고, 이 직선이 x축과 만나는 점 (-3, 0)의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 (-3, 0)과 y축에 평행한 직선을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by+6=0$의 그래프가 점 $(-3, 0)$을 지나고 $y$축에 평행한 직선일 때, 두 수 $a$, $b$에 대하여 $b-a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

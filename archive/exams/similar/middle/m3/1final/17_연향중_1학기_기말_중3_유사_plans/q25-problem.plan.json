@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d0",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "D",
+        "label": "20",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rPBQ",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "B",
+              "Q"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "P",
+        "B",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "한 변의 길이가 20 cm인 정사각형 ABCD에서 점 P는 A에서 B로, 점 Q는 B에서 C로 움직이는 모습을 어느 순간에 나타낸 그림이다. 삼각형 PBQ가 옅게 색칠되어 있다.",
+  "accessibilityDescription": "정사각형 ABCD의 네 변이 그려져 있고, 왼쪽 변 위에 점 P, 아래쪽 변 위에 점 Q가 있다. 점 P, B, Q를 이은 삼각형이 옅게 색칠되어 있으며, 위쪽 변에 20 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD의 한 변의 길이는 20 cm이다.",
+    "점 P는 변 AB 위에 있고 점 Q는 변 BC 위에 있다.",
+    "삼각형 PBQ가 색칠되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $20,\\text{cm}$인 정사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{P}$는 점 $\\mathrm{A}$를 출발하여 점 $\\mathrm{B}$까지 $\\overline{\\mathrm{AB}}$ 위를 매초 $4,\\text{cm}$의 속력으로, 점 $\\mathrm{Q}$는 점 $\\mathrm{B}$를 출발하여 점 $\\mathrm{C}$까지 $\\overline{\\mathrm{BC}}$ 위를 매초 $2,\\text{cm}$의 속력으로 움직인다. 두 점 $\\mathrm{P},\\ \\mathrm{Q}$가 동시에 출발할 때, $\\triangle\\mathrm{PBQ}$의 넓이의 최댓값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

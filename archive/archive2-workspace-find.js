@@ -11,13 +11,13 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
-    finderSchoolValues, gradeClass, isQuickAssessmentView, listMode, options, reconcileFinderSchool, render,
+    finderSchoolValues, gradeClass, isQuickAssessmentView, isTypesSet, listMode, matchesFindMaterial, options, reconcileFinderSchool, render,
     replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
     workspaceScopeParent;
   WS.links.push(() => {
     ({
       $, HOME_GRADES, Quick, UNPLACED_REASON_LABELS, badge, button, catalogExams, drafts, esc, finderIdentityMatch,
-      finderSchoolValues, gradeClass, isQuickAssessmentView, listMode, options, reconcileFinderSchool, render,
+      finderSchoolValues, gradeClass, isQuickAssessmentView, isTypesSet, listMode, matchesFindMaterial, options, reconcileFinderSchool, render,
       replaceFinderUrlState, showDialog, state, taxonomyRowsForFilters, unifiedIndex, unique, urlState,
       workspaceScopeParent
     } = WS.api);
@@ -217,7 +217,7 @@
   }
   // Same look as the home search: a large pill box and 찾기. Words are matched together (AND).
   function finderSearchMarkup(filters) {
-    return `<div class="find-search-row"><label class="visually-hidden" for="finder-query">학교, 학년, 시험으로 검색</label><input id="finder-query" type="search" value="${esc(filters.query || "")}" placeholder="${filters.material === "textbook" ? "미래엔 공통수학1 다항식" : "순천고 고1 1학기 중간"}" autocomplete="off" enterkeyhint="search">${button("finder-search", "찾기", 'type="button" class="primary find-search-submit"')}</div>`;
+    return `<div class="find-search-row"><label class="visually-hidden" for="finder-query">학교, 학년, 시험으로 검색</label><input id="finder-query" type="search" value="${esc(filters.query || "")}" placeholder="${filters.material === "textbook" ? "미래엔 공통수학1 다항식" : filters.material === "types" ? "입체도형 기말 시험대비" : "순천고 고1 1학기 중간"}" autocomplete="off" enterkeyhint="search">${button("finder-search", "찾기", 'type="button" class="primary find-search-submit"')}</div>`;
   }
   const FINDER_TERMS = Object.freeze([
     ["1-mid", "1학기 중간"], ["1-final", "1학기 기말"], ["2-mid", "2학기 중간"], ["2-final", "2학기 기말"],
@@ -229,6 +229,9 @@
     // 교과서에는 시험 시기가 없어 학년 단추만 두고, 과목 아래에 출판사 단추를 보인다.
     if (filters.material === "textbook")
       return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div></div>${finderSubjectsMarkup(filters)}${finderPublishersMarkup(filters)}`;
+    // 유형 · 시험대비 세트는 시험 시기가 없는 것이 많아 학년(·과목) 단추만 둔다.
+    if (filters.material === "types")
+      return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div></div>${finderSubjectsMarkup(filters)}`;
     const terms = FINDER_TERMS.map(([value, label]) =>
       button("finder-axis-quick", esc(label), `type="button" class="find-term" data-axis="${value}" aria-pressed="${filters.axis === value}"`)).join("");
     return `<div class="find-quick"><div class="find-grades" role="group" aria-label="학년">${grades}</div><span class="find-divider" aria-hidden="true"></span><div class="find-terms" role="group" aria-label="시험 시기">${terms}</div></div>${finderSubjectsMarkup(filters)}`;
@@ -423,7 +426,7 @@
       const hasYearFilter = Boolean(f.yearFrom || f.yearTo);
       const examYear = Number(exam.year);
       if (
-        !O.matchesMaterial(exam, f.material) ||
+        !matchesFindMaterial(exam, f.material) ||
         (f.school && f.school !== exam.school) ||
         (hasYearFilter && !Number.isFinite(examYear)) ||
         (f.yearFrom && examYear < Number(f.yearFrom)) ||
@@ -440,7 +443,7 @@
       if (!terms.length) return true;
       const text = findSearchText(exam);
       return terms.every((term) => text.includes(term) || (term.length >= UID_TERM_MIN && findUidText(exam).includes(term)));
-    }).sort(f.material === "textbook" ? compareTextbookRows : compareFindRows);
+    }).sort(f.material === "textbook" ? compareTextbookRows : f.material === "types" ? compareTypesRows : compareFindRows);
   }
   // Newest year first (the shared rule); inside one year the later term comes first (2학기 기말 → 1학기 중간).
   function compareFindRows(a, b) {
@@ -605,6 +608,18 @@
       byText(textbookParts(a).unit || a.topic || "", textbookParts(b).unit || b.topic || "")
     );
   }
+  // ---- 유형 · 시험대비 칸 (2026-11-24) ----
+  // archive/exams/types/ 세트(교과서·교재를 바탕으로 만든 유형 확장·시험대비): 학교·연도가 없는 것이 대부분이라 줄에는 세트 이름이 먼저 읽힌다.
+  // 이름은 파일 이름에서 읽는다("중1_2학기_기말_시험대비_실생활_입체도형.js" → "중1 2학기 기말 시험대비 실생활 입체도형").
+  // 카탈로그에 추가·수정한 날짜가 없어 정렬은 카탈로그에 실제로 있는 학기·시험 시기(2학기 기말이 위)를 먼저, 같으면 이름순으로 둔다.
+  function typesSetName(exam) {
+    const base = String(exam?.file || "").split("/").pop().replace(/\.js$/i, "").replace(/_+/g, " ").trim();
+    return base || String(exam?.topic || exam?.identityTitle || "").replace(/_+/g, " ").trim();
+  }
+  function compareTypesRows(a, b) {
+    const term = (exam) => (Number(exam.semester) || 0) * 2 + (exam.examType === "final" ? 1 : 0);
+    return term(b) - term(a) || String(typesSetName(a)).localeCompare(String(typesSetName(b)), "ko", { numeric: true });
+  }
   function examRowRangeText(exam) {
     const units = (list) => unique(list.map((value) => String(value || "").trim())).join(" ~ ");
     const ranges = (exam.courseRanges || [])
@@ -621,10 +636,10 @@
     const exams = catalogExams();
     return multiPicked.map((file) => exams[examIndexOf({ file })]).filter(Boolean);
   };
-  function multiPickButton(exam, index, extraClass = "") {
+  function multiPickButton(exam, index, extraClass = "", label = "") {
     const on = multiPicked.includes(exam.file);
     return button("multi-pick", "함께 출제",
-      `type="button" role="checkbox" aria-checked="${on}" class="multi-pick${on ? " on" : ""}${extraClass}" data-exam="${index}" title="한꺼번에 출제할 시험지로 고르기" aria-label="${esc(O.displayTitle(exam))} 한꺼번에 출제할 시험지로 고르기"`);
+      `type="button" role="checkbox" aria-checked="${on}" class="multi-pick${on ? " on" : ""}${extraClass}" data-exam="${index}" title="한꺼번에 출제할 시험지로 고르기" aria-label="${esc(label || O.displayTitle(exam))} 한꺼번에 출제할 시험지로 고르기"`);
   }
   function multiBarMarkup() {
     const n = multiPicked.length;
@@ -677,10 +692,15 @@
     const period = exam.examType === "mid" ? "중간고사" : exam.examType === "final" ? "기말고사" : "";
     // 교과서 줄: 출판사·과목이 단원 이름 위에 먼저 읽히고, 옆 띠에는 학년과 "교과서"를 보인다(연도·학교 자리).
     const book = kind === "textbook" ? textbookParts(exam) : null;
+    // 유형 · 시험대비 칸의 줄: 세트 이름이 제목, 옆 띠에는 학년과 "유형".
+    const typesRow = !!options.typesView && !book && isTypesSet(exam);
     const shortTitle = book
       ? book.unit || title
+      : typesRow
+        ? typesSetName(exam) || title
       : exam.school && period && exam.semester && kind === "exam"
         ? `${exam.school} ${exam.semester}학기 ${period}` : title;
+    const label = typesRow ? shortTitle : title;
     const subject = exam.primaryStandardCourse || unique((exam.courseRanges || []).map((range) => range.standardCourse)).join(" · ") || (globalThis.ExamDisplayTitle?.displaySubjectOfExam?.(exam) ?? exam.subject);
     const meta = [book ? "" : subject, exam.qCount ? `${exam.qCount}문항` : "", options.at ? relativeDayLabel(options.at) : ""]
       .filter(Boolean).join(" · ");
@@ -697,7 +717,7 @@
     const similarCount = withSimilarCell ? pairs.setsFor(exam.file).length : 0;
     const direct = ([mode, label]) =>
       button("source-output-direct", label, `type="button" data-exam="${index}" data-mode="${mode}"`);
-    const titleButton = button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(title)}" aria-label="${esc(title)} 시험지 열기" data-exam="${index}" data-mode="exam"`);
+    const titleButton = button("source-output-direct", esc(shortTitle), `type="button" class="exam-row-title" title="${esc(label)}" aria-label="${esc(label)} 시험지 열기" data-exam="${index}" data-mode="exam"`);
     // 학교 기출 시험지 한 줄에서 곧바로 기본/응용/심화 모의고사로(archive2-workspace-derive.js, 같은 선정 코드).
     const mock = kind === "exam" && /^original\//.test(String(exam.file || ""))
       ? (cls) => button("derive-mock-open", "모의고사", `type="button" class="mock-entry ${cls}" data-exam="${index}" aria-label="${esc(title)} 기본·응용·심화 모의고사 만들기" title="이 시험과 같은 유형으로 기본·응용·심화 모의고사 만들기"`) : () => "";
@@ -707,9 +727,9 @@
       ? `<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", options.selected ? "선택됨" : "문항 선택", `data-exam="${index}" aria-pressed="${!!options.selected}" class="small"`)}</div></details>`
       : "";
     return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${picked ? " multi-on" : ""}${options.multi ? " has-pick" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
-      ${options.multi ? multiPickButton(exam, index, " lead") : ""}<div class="exam-row-spine"><span class="exam-row-year">${esc(book ? exam.grade || "–" : year || "–")}</span><span class="exam-row-grade">${esc(book ? "교과서" : exam.grade || "")}</span></div>
+      ${options.multi ? multiPickButton(exam, index, " lead", typesRow ? shortTitle : "") : ""}<div class="exam-row-spine"><span class="exam-row-year">${esc(book || typesRow ? exam.grade || "–" : year || "–")}</span><span class="exam-row-grade">${esc(book ? "교과서" : typesRow ? "유형" : exam.grade || "")}</span></div>
       <div class="exam-row-main">${book ? tag + titleButton : titleButton + tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
-      <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${mock("mock-in-actions")}${more}</div>
+      <div class="exam-row-actions" role="group" aria-label="${esc(label)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(label)} 반에 출제"`)}${mock("mock-in-actions")}${more}</div>
       ${withSimilarCell ? similarCellMarkup(exam, index, pairs, options.multi, mock("mock-in-sim")) : ""}
     </article>`;
   }
@@ -848,9 +868,9 @@
     }
     if (filters.yearFrom || filters.yearTo) parts.push(`${filters.yearFrom || "…"}~${filters.yearTo || "…"}년`);
     const material = filters.material;
-    const kind = material === "exam" ? "기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "시험지";
+    const kind = material === "exam" ? "기출" : material === "textbook" ? "교과서" : material === "types" ? "유형 · 시험대비" : material ? "기출 외 시험지" : "시험지";
     // With no condition the heading uses the name of the view the teacher chose.
-    const viewName = material === "exam" ? "학교 기출" : material === "textbook" ? "교과서" : material ? "기출 외 시험지" : "전체 시험지";
+    const viewName = material === "exam" ? "학교 기출" : material === "textbook" ? "교과서" : material === "types" ? "유형 · 시험대비" : material ? "기출 외 시험지" : "전체 시험지";
     return `${parts.length ? `${parts.join(" ")} ${kind}` : viewName} ${count.toLocaleString()}개`;
   }
   // Nothing in 학교 기출: say so, and tell the teacher when the same conditions do match other material
@@ -878,13 +898,13 @@
     const showSimilarFilter = findSimilarFilterApplies(state.find);
     const rows = page
       .map((e) => examRowMarkup(e, examIndexOf(e), {
-        pairs, range: true, more: true, multi: true, selected: state.sources.includes(e.file),
+        pairs, range: true, more: true, multi: true, selected: state.sources.includes(e.file), typesView: state.find.material === "types",
       }))
       .join("");
     return `<div class="finder-surface find-surface"><div class="intro finder-intro"><h1>학교별 기출</h1>${button("go-compose", "문제지 만들기")}</div>
-      <div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["textbook","교과서"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" && state.find.material !== "textbook" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" || state.find.material === "textbook" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>
+      <div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["textbook","교과서"],["types","유형 · 시험대비"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && !["exam", "textbook", "types"].includes(state.find.material) : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || ["exam", "textbook", "types"].includes(state.find.material) ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>
       <section class="find-panel" aria-label="검색 조건">${finderSearchMarkup(state.find)}${finderQuickMarkup(state.find)}<div class="find-options">${showSimilarFilter ? `<label class="find-check"><input type="checkbox" data-filter="similarOnly" data-group="find"${state.find.similarOnly ? " checked" : ""}>유사문제 있는 시험만</label>` : ""}${finderMoreFiltersMarkup(state.find)}</div>${finderActiveMarkup(state.find)}</section>
-      ${state.find.material && state.find.material !== "exam" && state.find.material !== "textbook" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
+      ${state.find.material && !["exam", "textbook", "types"].includes(state.find.material) ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기</span></a>' : ""}
       ${lightResultsPending() ? '<p class="muted find-light-note" role="status" aria-live="polite">문항 단위 검색을 준비하는 중…</p>' : ""}
       <div class="find-resultbar"><h2>${esc(findSummaryText(state.find, exams.length))}</h2>${showSimilarFilter && withSimilar ? `<span class="find-sim-count">유사문제 있는 시험 ${withSimilar.toLocaleString()}개</span>` : ""}${exams.length ? '<span class="find-multi-hint">체크하면 여러 시험지를 한꺼번에 출제할 수 있습니다.</span>' : ""}</div>
       <div class="exam-rows find-rows">${showSimilarFilter && exams.length ? '<div class="exam-rows-head" aria-hidden="true"><span>기출</span><span>이 시험의 유사문제</span></div>' : ""}${rows}</div>

@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $(4x+y)+(2x+2y)i=\\overline{4-5i}$를 만족시키는 실수 $x$, $y$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=\\frac{1}{2},\\ y=2$",
+    "solution": "[풀이 전략]\n켤레복소수 $\\overline{4-5i}=4+5i$이므로 복소수가 서로 같을 조건(실수부분, 허수부분이 각각 같다)을 이용한다.\n[단계별 풀이]\n$\\overline{4-5i}=4+5i$이다.\n$4x+y=4$ ㉠, $2x+2y=5$ ㉡이다.\n㉡에서 $x+y=\\frac{5}{2}$이고 ㉠에서 이를 빼면 $3x=\\frac{3}{2}$이므로 $x=\\frac{1}{2}$이다.\n$y=\\frac{5}{2}-\\frac{1}{2}=2$이다.\n[결론]\n$x=\\frac{1}{2},\\ y=2$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 $a+bi$의 꼴로 나타내시오. (단, $a$, $b$는 실수)\n⑴ $(2-i)-(-4i)$\n⑵ $(4-2i)(1+3i)$\n⑶ $\\dfrac{1+5i}{1-i}$\n⑷ $\\dfrac{\\sqrt{32}}{\\sqrt{-8}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2+3i$  ⑵ $10+10i$  ⑶ $-2+3i$  ⑷ $-2i$",
+    "solution": "[풀이 전략]\n복소수의 사칙연산은 $i$를 문자처럼 계산하고 $i^2=-1$을 쓴다. 나눗셈은 분모의 켤레복소수를 분모, 분자에 곱한다.\n[단계별 풀이]\n⑴ $(2-i)-(-4i)=2-i+4i=2+3i$이다.\n⑵ $(4-2i)(1+3i)=4+12i-2i-6i^2=4+10i+6=10+10i$이다.\n⑶ $\\frac{1+5i}{1-i}=\\frac{(1+5i)(1+i)}{(1-i)(1+i)}=\\frac{1+i+5i+5i^2}{2}=\\frac{-4+6i}{2}=-2+3i$이다.\n⑷ $\\sqrt{32}=4\\sqrt{2}$, $\\sqrt{-8}=2\\sqrt{2}\\,i$이므로 $\\frac{4\\sqrt{2}}{2\\sqrt{2}\\,i}=\\frac{2}{i}=\\frac{2i}{i^2}=-2i$이다.\n[결론]\n⑴ $2+3i$, ⑵ $10+10i$, ⑶ $-2+3i$, ⑷ $-2i$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식의 근을 판별하시오.\n⑴ $x^2-6x+3=0$\n⑵ $2x^2+5x+5=0$\n⑶ $9x^2-12x+4=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 서로 다른 두 실근  ⑵ 서로 다른 두 허근  ⑶ 중근",
+    "solution": "[풀이 전략]\n판별식 $D=b^2-4ac$의 부호로 근을 판별한다. $D>0$이면 서로 다른 두 실근, $D=0$이면 중근, $D<0$이면 서로 다른 두 허근이다.\n[단계별 풀이]\n⑴ $\\frac{D}{4}=9-3=6>0$이므로 서로 다른 두 실근을 갖는다.\n⑵ $D=25-4\\times2\\times5=-15<0$이므로 서로 다른 두 허근을 갖는다.\n⑶ $\\frac{D}{4}=36-9\\times4=0$이므로 중근을 갖는다.\n[결론]\n⑴ 서로 다른 두 실근, ⑵ 서로 다른 두 허근, ⑶ 중근"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차방정식의 두 근의 합과 곱을 구하시오.\n⑴ $x^2-3x+5=0$\n⑵ $4x^2+7x-10=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 합 $3$, 곱 $5$  ⑵ 합 $-\\frac{7}{4}$, 곱 $-\\frac{5}{2}$",
+    "solution": "[풀이 전략]\n$ax^2+bx+c=0$의 두 근의 합은 $-\\frac{b}{a}$, 곱은 $\\frac{c}{a}$이다.\n[단계별 풀이]\n⑴ 합은 $-\\frac{-3}{1}=3$, 곱은 $5$이다.\n⑵ 합은 $-\\frac{7}{4}$, 곱은 $\\frac{-10}{4}=-\\frac{5}{2}$이다.\n[결론]\n⑴ 합 $3$, 곱 $5$, ⑵ 합 $-\\frac{7}{4}$, 곱 $-\\frac{5}{2}$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$i+2i^2+3i^3+4i^4+5i^5+6i^6$을 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-4+3i$",
+    "solution": "[풀이 전략]\n$i^2=-1$, $i^3=-i$, $i^4=1$, $i^5=i$, $i^6=-1$을 대입하여 실수 부분과 허수 부분으로 나눈다.\n[단계별 풀이]\n$i+2i^2+3i^3+4i^4+5i^5+6i^6=i-2-3i+4+5i-6$이다.\n실수 부분은 $-2+4-6=-4$이다.\n허수 부분은 $1-3+5=3$이다.\n[결론]\n$-4+3i$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\dfrac{z}{i}+3i\\bar{z}=-4+2i$를 만족시키는 복소수 $z$를 구하시오. (단, $\\bar{z}$는 $z$의 켤레복소수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$z=1-i$",
+    "solution": "[풀이 전략]\n$z=a+bi$ ($a$, $b$는 실수)로 놓고 $\\bar{z}=a-bi$를 대입하여 복소수가 서로 같을 조건을 쓴다.\n[단계별 풀이]\n$\\frac{z}{i}=\\frac{(a+bi)i}{i^2}=-(ai+bi^2)=b-ai$이다.\n$3i\\bar{z}=3i(a-bi)=3ai+3b$이다.\n$\\frac{z}{i}+3i\\bar{z}=(b+3b)+(-a+3a)i=4b+2ai=-4+2i$이다.\n$4b=-4$, $2a=2$이므로 $b=-1$, $a=1$이다.\n$z=1-i$이다.\n[결론]\n$1-i$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 복소수 $\\alpha=\\dfrac{1+i}{2i}$, $\\beta=\\dfrac{1-i}{2i}$에 대하여 $\\alpha^2+\\alpha\\beta+\\beta^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n$\\alpha^2+\\alpha\\beta+\\beta^2=(\\alpha+\\beta)^2-\\alpha\\beta$로 고친 뒤 $\\alpha+\\beta$, $\\alpha\\beta$를 구한다.\n[단계별 풀이]\n$\\alpha=\\frac{1+i}{2i}=\\frac{(1+i)(-i)}{2}=\\frac{1-i}{2}$이다. ($\\frac{1}{i}=-i$)\n$\\beta=\\frac{1-i}{2i}=\\frac{(1-i)(-i)}{2}=\\frac{-1-i}{2}$이다.\n$\\alpha+\\beta=\\frac{1-i-1-i}{2}=-i$이다.\n$\\alpha\\beta=\\frac{(1-i)(-1-i)}{4}=\\frac{-1-i+i+i^2}{4}=\\frac{-2}{4}=-\\frac{1}{2}$이다.\n$(\\alpha+\\beta)^2-\\alpha\\beta=(-i)^2+\\frac{1}{2}=-1+\\frac{1}{2}=-\\frac{1}{2}$이다.\n[결론]\n$-\\frac{1}{2}$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $kx^2-2(k-2)x+k-2=0$이 서로 다른 두 허근을 갖도록 하는 정수 $k$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n서로 다른 두 허근을 가지려면 이차방정식이어야 하므로 $k\\ne0$이고 판별식 $D<0$이다.\n[단계별 풀이]\n$k\\ne0$이어야 이차방정식이다.\n$\\frac{D}{4}=(k-2)^2-k(k-2)=(k-2)(k-2-k)=-2(k-2)<0$이므로 $k>2$이다.\n$k>2$를 만족시키는 정수 $k$의 최솟값은 $3$이다.\n[결론]\n$3$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $2x^2+7x+a=0$의 두 실근의 차가 $\\dfrac{9}{2}$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-4$",
+    "solution": "[풀이 전략]\n두 실근을 $\\alpha$, $\\beta$라 하고 $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$를 이용한다.\n[단계별 풀이]\n근과 계수의 관계에서 $\\alpha+\\beta=-\\frac{7}{2}$, $\\alpha\\beta=\\frac{a}{2}$이다.\n$(\\alpha-\\beta)^2=\\left(\\frac{9}{2}\\right)^2=\\frac{81}{4}$이다.\n$\\frac{81}{4}=\\left(-\\frac{7}{2}\\right)^2-4\\times\\frac{a}{2}=\\frac{49}{4}-2a$이므로 $2a=\\frac{49}{4}-\\frac{81}{4}=-8$이다.\n$a=-4$이다.\n(검산: $2x^2+7x-4=(2x-1)(x+4)$의 근은 $\\frac{1}{2},-4$이고 차는 $\\frac{9}{2}$이다.)\n[결론]\n$-4$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-abx+a+b=0$의 한 근이 $1+2i$일 때, 실수 $a$, $b$에 대하여 $(a-b)^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$17$",
+    "solution": "[풀이 전략]\n계수가 실수이므로 한 근이 $1+2i$이면 켤레복소수 $1-2i$도 근이다. 근과 계수의 관계를 이용한다.\n[단계별 풀이]\n계수 $-ab$, $a+b$가 모두 실수이므로 다른 한 근은 $1-2i$이다.\n두 근의 합: $(1+2i)+(1-2i)=2=ab$이다.\n두 근의 곱: $(1+2i)(1-2i)=1+4=5=a+b$이다.\n$(a-b)^2=(a+b)^2-4ab=25-8=17$이다.\n[결론]\n$17$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2+2x+a=0$의 두 근이 $\\alpha$, $\\beta$이고, 이차방정식 $x^2+bx-8=0$의 두 근이 $\\alpha+\\beta$, $\\alpha\\beta$일 때, 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4,\\ b=-2$",
+    "solution": "[풀이 전략]\n첫째 방정식에서 $\\alpha+\\beta$, $\\alpha\\beta$를 구하고, 둘째 방정식의 두 근 $\\alpha+\\beta$, $\\alpha\\beta$의 합과 곱을 이용한다.\n[단계별 풀이]\n첫째 방정식에서 $\\alpha+\\beta=-2$, $\\alpha\\beta=a$이다.\n둘째 방정식의 두 근은 $-2$와 $a$이다.\n두 근의 곱: $-2a=-8$이므로 $a=4$이다.\n두 근의 합: $-2+a=-b$이므로 $-b=2$, $b=-2$이다.\n[결론]\n$a=4,\\ b=-2$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$z=\\dfrac{1-i}{\\sqrt{2}}$일 때, $z+z^2+z^3+\\cdots+z^{30}+z^{31}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n$z^2$을 먼저 구하여 $z$의 거듭제곱의 규칙을 찾는다.\n[단계별 풀이]\n$z^2=\\frac{(1-i)^2}{2}=\\frac{1-2i+i^2}{2}=\\frac{-2i}{2}=-i$이다.\n$z^4=(z^2)^2=(-i)^2=-1$이고 $z^8=1$이다.\n$z\\ne1$이고 $z^8=1$이므로 $z+z^2+\\cdots+z^8=\\frac{z(z^8-1)}{z-1}=0$이다. 연속한 $8$개 항의 합은 $0$이다.\n$z+z^2+\\cdots+z^{31}$에서 처음 $24$개 항의 합은 $0$이다. 남은 항은 $z^{25}+\\cdots+z^{31}=z+z^2+\\cdots+z^7$이다. ($z^{24}=1$)\n$z+\\cdots+z^7=(z+\\cdots+z^8)-z^8=0-1=-1$이다.\n[결론]\n$-1$"
   },
   {
     "id": 13,
@@ -362,7 +362,7 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-3x+4=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, 두 수 $\\dfrac{1}{\\alpha^2-2\\alpha+2}$, $\\dfrac{1}{\\beta^2-2\\beta+2}$을 근으로 하고 $x^2$의 계수가 2인 이차방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2x^2+x+1=0$",
+    "solution": "[풀이 전략]\n$\\alpha^2-3\\alpha+4=0$을 이용하여 $\\alpha^2-2\\alpha+2$를 간단히 한 뒤, 새 두 근의 합과 곱으로 이차방정식을 만든다.\n[단계별 풀이]\n$\\alpha^2=3\\alpha-4$이므로 $\\alpha^2-2\\alpha+2=\\alpha-2$이다. 마찬가지로 $\\beta^2-2\\beta+2=\\beta-2$이다.\n새 두 근은 $\\frac{1}{\\alpha-2}$, $\\frac{1}{\\beta-2}$이다.\n근과 계수의 관계에서 $\\alpha+\\beta=3$, $\\alpha\\beta=4$이다.\n$(\\alpha-2)(\\beta-2)=\\alpha\\beta-2(\\alpha+\\beta)+4=4-6+4=2$이다.\n합: $\\frac{1}{\\alpha-2}+\\frac{1}{\\beta-2}=\\frac{(\\alpha+\\beta)-4}{(\\alpha-2)(\\beta-2)}=\\frac{-1}{2}=-\\frac{1}{2}$이다.\n곱: $\\frac{1}{(\\alpha-2)(\\beta-2)}=\\frac{1}{2}$이다.\n$x^2$의 계수가 $2$이므로 $2\\left(x^2+\\frac{1}{2}x+\\frac{1}{2}\\right)=2x^2+x+1=0$이다.\n[결론]\n$2x^2+x+1=0$"
   }
 ];

@@ -1,0 +1,59 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 2.4,
+      "height": 3.2,
+      "baseFill": {
+        "fill": "LIGHT",
+        "label": "A"
+      }
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 7.2,
+      "height": 9.6,
+      "baseFill": {
+        "fill": "WARM",
+        "label": "B"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "slant": true,
+      "label": "4"
+    },
+    {
+      "solid": "s2",
+      "slant": true,
+      "label": "12"
+    }
+  ],
+  "caption": "서로 닮은 두 원뿔 A, B에서 대응하는 모선의 길이는 각각 4 cm, 12 cm이다.",
+  "accessibilityDescription": "작은 원뿔 A에는 모선 4가, 큰 원뿔 B에는 모선 12가 표시되어 있고 각 밑면에 A와 B가 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 3) 두 원뿔 $A, B$는 서로 닮은 도형이고 대응하는 모선의 길이는 각각 $4\\text{ cm}, 12\\text{ cm}$이다. 큰 원뿔 $B$의 부피가 $108\\pi\\text{ cm}^3$일 때, 다음 물음에 답하시오. [5점]\n\n(1) 두 원뿔의 닮음비를 구하시오. [2점]  \n(2) 작은 원뿔 $A$의 부피가 $x\\text{ cm}^3$일 때, $x$의 값을 구하는 과정을 자세히 쓰시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "두 원뿔 A, B는 서로 닮은 도형이고 대응하는 모선의 길이는 각각 4 cm, 12 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원뿔의 대응하는 모선 4와 12를 각 원뿔 옆에 표시한다."
+  ]
+}

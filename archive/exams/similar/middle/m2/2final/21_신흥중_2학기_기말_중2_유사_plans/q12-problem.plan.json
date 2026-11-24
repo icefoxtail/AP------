@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "집에서 서점",
+        "elements": [
+          "3가지"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "서점에서 공원",
+        "elements": [
+          "5가지"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "지우네 집에서 서점까지 가는 길 3가지와 서점에서 공원까지 가는 길 5가지를 두 단계로 나타낸 대응도이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지우네 집에서 서점까지 가는 길은 $3$가지가 있고, 서점에서 공원까지 가는 길은 $5$가지가 있다. 집에서 서점을 거쳐 공원까지 가는 모든 경우의 수는? (단, 같은 지점을 두 번 이상 지나지 않는다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "집에서 서점까지 가는 길은 3가지",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "서점에서 공원까지 가는 길은 5가지",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c3",
+      "condition": "같은 지점을 두 번 이상 지나지 않음",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "집에서 서점까지 3가지",
+    "서점에서 공원까지 5가지"
+  ]
+}

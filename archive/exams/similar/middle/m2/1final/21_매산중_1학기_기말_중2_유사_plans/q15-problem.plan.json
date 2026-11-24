@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "0"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cb",
+          "point": "A",
+          "text": "b",
+          "direction": "W",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "좌표평면에 일차함수 y=ax+b의 그래프가 그려져 있고, y축과 만나는 점에 b라는 이름이 붙어 있다.",
+  "accessibilityDescription": "좌표평면 위에 오른쪽 아래로 향하는 직선 하나가 있고, y축과 만나는 점 옆에 b가 적혀 있으며 원점 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "기울기 a와 y절편 b를 문자로 둔 직선의 예"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$에서 $a + b < 0$, $ab > 0$일 때, $y = ax + b$의 그래프에 대한 설명으로 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

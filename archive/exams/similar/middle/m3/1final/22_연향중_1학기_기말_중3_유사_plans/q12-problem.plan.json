@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -2,
+      20
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=4x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=ax^2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "16"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "4"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선 y=4x²과 y=ax²가 직선 x=2와 만나는 점을 위에서부터 A, B라 하고, 직선 x=2가 x축과 만나는 점을 C라 한 그림이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선과 x=2인 세로선이 있고, 세로선 위에 위에서부터 점 A, B, C가 찍혀 있다.",
+  "newVisualInformation": [
+    "직선 x=2 위에서 두 포물선과 x축이 만나는 점 A, B, C의 위치 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=4x^2$, $y=ax^2$ ($0<a<4$)의 그래프와 직선 $x=2$의 교점을 각각 $A$, $B$라 하고 $x$축과 직선 $x=2$의 교점을 $C$라 하자. $\\overline{AB}=3\\overline{BC}$가 성립할 때, 상수 $a$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

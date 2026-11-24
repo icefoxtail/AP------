@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "TA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "TA",
+    "A1",
+    "A2",
+    "TB",
+    "B1",
+    "B2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sABase",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sTA1",
+      "refs": [
+        "TA",
+        "A1"
+      ]
+    },
+    {
+      "id": "sTA2",
+      "refs": [
+        "TA",
+        "A2"
+      ]
+    },
+    {
+      "id": "sBBase",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sTB1",
+      "refs": [
+        "TB",
+        "B1"
+      ]
+    },
+    {
+      "id": "sTB2",
+      "refs": [
+        "TB",
+        "B2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "TA",
+    "A1",
+    "A2",
+    "TB",
+    "B1",
+    "B2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lA",
+        "ownerSegment": "sABase",
+        "text": "A",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "lB",
+        "ownerSegment": "sBBase",
+        "text": "B",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "caption": "서로 닮은 두 원뿔 A, B가 나란히 그려져 있고, A가 B보다 작다. 밑면의 반지름의 길이의 비는 3:5이다.",
+  "accessibilityDescription": "왼쪽에 작은 원뿔 A, 오른쪽에 큰 원뿔 B가 나란히 서 있고, 두 원뿔의 높이와 밑면의 크기가 같은 비율로 커진다.",
+  "newVisualInformation": [
+    "닮은 두 원뿔 A, B",
+    "밑면의 반지름의 비 3:5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원뿔 $A$, $B$의 밑면의 반지름의 길이의 비가 $3:5$일 때, 두 원뿔 $A$, $B$의 부피의 비는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-20"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "L1",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "R1",
+          "R2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "MIDPOINT",
+        "inputs": [
+          "R3",
+          "R4"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "50"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displayPoints": [
+    "O",
+    "O2",
+    "L1",
+    "L2",
+    "M",
+    "R1",
+    "R2",
+    "N",
+    "R3",
+    "R4",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL1L2",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOL1",
+      "refs": [
+        "O",
+        "L1"
+      ]
+    },
+    {
+      "id": "sR1N",
+      "refs": [
+        "R1",
+        "N"
+      ]
+    },
+    {
+      "id": "sNR2",
+      "refs": [
+        "N",
+        "R2"
+      ]
+    },
+    {
+      "id": "sR3R4",
+      "refs": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "id": "sO2N",
+      "refs": [
+        "O2",
+        "N"
+      ]
+    },
+    {
+      "id": "sO2K",
+      "refs": [
+        "O2",
+        "K"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lX",
+        "ownerSegment": "sL1L2",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lD",
+        "ownerSegment": "sOM",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lR",
+        "ownerSegment": "sOL1",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lH",
+        "ownerSegment": "sNR2",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lY",
+        "ownerSegment": "sR3R4",
+        "text": "y",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eDist",
+        "count": 1,
+        "segments": [
+          "sO2N",
+          "sO2K"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "L1",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "R1",
+        "N",
+        "O2"
+      ]
+    },
+    {
+      "id": "rK",
+      "refs": [
+        "R3",
+        "K",
+        "O2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "O2",
+    "L1",
+    "L2",
+    "M",
+    "R1",
+    "R2",
+    "N",
+    "R3",
+    "R4",
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 원에서 중심과 현의 관계를 나타낸 그림이다. 왼쪽 원은 반지름과 중심에서 현까지의 거리, 현의 길이를 보여 주고 오른쪽 원은 두 현까지의 거리가 같음을 보여 준다.",
+  "accessibilityDescription": "왼쪽 원에는 중심 O, 반지름 10cm, 중심에서 현까지의 거리 6cm, 현의 길이 x가 표시되어 있다. 오른쪽 원에는 중심에서 두 현까지의 같은 거리 표시, 한 현의 절반 5cm, 다른 현의 길이 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "왼쪽 원의 반지름 10cm와 중심에서 현까지의 거리 6cm가 표시된다.",
+    "왼쪽 현의 길이가 x로 표시된다.",
+    "오른쪽 원에서 두 현까지의 거리가 같다는 표시와 한 현의 절반 5cm가 표시된다.",
+    "오른쪽 다른 현의 길이가 y로 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 두 원에서 중심 $\\text{O}$로부터 현까지의 거리가 같거나 수선이 주어질 때, 왼쪽 원은 반지름의 길이가 $10\\text{ cm}$, 중심에서 현까지의 거리가 $6\\text{ cm}$일 때 현의 길이가 $x\\text{ cm}$이고, 오른쪽 원은 중심에서 두 현까지의 거리가 같고 한 현의 절반의 길이가 $5\\text{ cm}$일 때 다른 현의 길이가 $y\\text{ cm}$이다. $x+y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "question": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "RATIONAL",
+          "numerator": [
+            "1",
+            "0"
+          ],
+          "denominator": [
+            "1",
+            "-1"
+          ],
+          "domain": [
+            "-2",
+            "4"
+          ],
+          "label": "y=1/(1-x)"
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "diag",
+            "slope": "1",
+            "intercept": "0"
+          }
+        ],
+        "points": [
+          {
+            "id": "A",
+            "x": "-1",
+            "y": "0",
+            "label": "A"
+          },
+          {
+            "id": "B",
+            "x": "1/2",
+            "y": "1/2",
+            "label": "B"
+          },
+          {
+            "id": "C",
+            "x": "-1",
+            "y": "1/2",
+            "label": "C"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "-1",
+          "1"
+        ],
+        "y": [
+          "1"
+        ]
+      }
+    },
+    "caption": "유리함수 y=1/(1-x)와 직선 y=x, 그리고 점 A(a,0)에 대응하는 y=x 위의 점 B(f(a),f(a))이다."
+  },
+  "solution": {
+    "status": "EXEMPT",
+    "reason": "합성 주기가 3임을 식 변형으로 확인하면 P=(f(a),f(a))=B임이 바로 결정된다."
+  }
+}

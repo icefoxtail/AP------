@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      6,
+      -3,
+      7
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "NW"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SE"
+        }
+      ],
+      "names": [
+        {
+          "id": "nline",
+          "text": "y=ax+b",
+          "labelKind": "MATH",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차함수 y=ax+b의 그래프가 두 점 (-2, 5)와 (3, 0)을 지나며, 직선 옆에 그 식이 쓰여 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 왼쪽 위에서 오른쪽 아래로 향하는 직선이 있고, 점 (-2, 5)와 점 (3, 0)이 그 직선 위에 표시되어 있다. 직선 옆에 식 y=ax+b가 쓰여 있고 절편의 좌표는 쓰여 있지 않다.",
+  "newVisualInformation": [
+    "두 점 (-2, 5), (3, 0)을 지나는 일차함수 y=ax+b의 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 두 점 $(-2, 5)$와 $(3, 0)$을 지날 때, $y$절편 $b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "A"
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "BC",
+      "foot": "D"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "√5"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "2"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "D"
+      ],
+      "text": "x°"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "D",
+        "C"
+      ],
+      "text": "y°"
+    }
+  ]
+}

@@ -29,7 +29,7 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 import { explicitRegistrationMode } from './registration-mode.mjs';
-import { classifyMetaBinding, loadRebinds } from './text-binding-lib.mjs';
+import { classifyMetaBinding, loadRebinds, textFingerprint } from './text-binding-lib.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -338,7 +338,14 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const rowTextBound=()=>textBound??=classifyMetaBinding({meta:current,question:q,assignmentFingerprint:cf,rebinds:textRebinds})==='row';
   if(identity.sourceFingerprint!==fp && !rowTextBound()) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
   if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous)) && !rowTextBound()) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
-  const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
+  // 이미 한 판정을 되돌리는 변화는 발문·보기(text-v1)가 바뀐 것뿐이다(docs/agents/metadata.md "메타 결속 지문 범위"). 정답·그림·해설만 바뀐 문항은 판정과 승인 이력을 그대로 둔다.
+  // 발문·보기가 바뀌었어도 행이 지금의 발문·보기에 묶여 있음이 확인되면(재결속 기록: 같은 수학 내용의 정식 수정) 역시 그대로 둔다.
+  // 이유: 정식 수정으로 행 전체가 registered_merged_source/review_required로 내려가면 단원·교육과정 표시가 카탈로그에서 사라졌다(수정한 문항이 필터에서 빠짐).
+  // text-v1 지문을 못 만드는 문항(발문이 비었거나 choices 형식 오류)은 예전 비교(CORE 필드 전부)를 그대로 쓴다.
+  const textFpBefore=previous?textFingerprint(previous):null,textFpNow=textFingerprint(q);
+  const coreChanged=Boolean(previous&&(textFpBefore&&textFpNow
+    ?textFpBefore!==textFpNow&&!rowTextBound()
+    :!equal(pick(previous,CORE),pick(q,CORE))));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
   if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
   const studentChanged=Boolean(previous&&!equal(pick(previous,STUDENT),pick(q,STUDENT)));
@@ -448,6 +455,13 @@ export function planQuestion({question:q, previous, current, identity, registry,
     final.fieldStatus={...current.fieldStatus};
     const groups={standardUnit:['standardCourse','standardUnitKey','standardUnit'],subUnit:['subUnitKey','subUnit'],concept:['L1','L2','L3','L4'],problemType:['problemTypeKey'],template:['templateKey'],crossConcept:['crossConceptKeys'],condition:['conditionKeys'],integrationPattern:['integrationPattern'],difficulty:['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility']};
     for(const [field,keys] of Object.entries(groups))if(keys.some(k=>!equal(current[k],final[k])))final.fieldStatus[field]='registered_main_merge';
+    // 발문·보기가 바뀌었고 재결속으로 확인되지 않은 문항은 다시 판정할 대상이다: 행의 contentFingerprint가 위에서 현재 지문으로 덮이므로
+    // 단원 칸 승인이 남아 있으면 카탈로그가 "지금 발문·보기에 묶인 승인된 단원"으로 오해한다. 단원·소단원 승인도 함께 내린다.
+    // 원문이 스스로 선언한 단원(approved_source)은 이 판정이 아니므로 그대로 둔다. 정답·그림만 바뀐 문항과 재결속된 문항은 coreChanged가 거짓이라 여기 오지 않는다.
+    if(coreChanged)for(const field of ['standardUnit','subUnit']) {
+      const s=String(final.fieldStatus[field]||'');
+      if(/^approved/i.test(s)&&s!=='approved_source')final.fieldStatus[field]='registered_main_merge';
+    }
   }
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
   const effectiveFields=[...FIELDS.filter(k=>Object.hasOwn(final,k)), 'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'];

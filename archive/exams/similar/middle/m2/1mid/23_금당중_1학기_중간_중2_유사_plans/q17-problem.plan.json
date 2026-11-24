@@ -1,0 +1,193 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-497423",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-335516",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "416795",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-431604",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAO",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 28,
+        "label": "28",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCAO",
+        "refs": [
+          "C",
+          "A",
+          "O"
+        ],
+        "value": 22,
+        "label": "22",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCO",
+        "refs": [
+          "B",
+          "C",
+          "O"
+        ],
+        "value": 40,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "rightAngles": [],
+  "caption": "예각삼각형 ABC의 외심 O에 대하여 AO, CO를 그리고 각 BAO와 CAO의 크기를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 외심 O가 있고, A와 O, C와 O가 각각 이어져 있다. A에서 각 BAO가 28, 각 CAO가 22로 표시되고, C에서 각 BCO가 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 BAO가 28도, 각 CAO가 22도임",
+    "각 BCO를 x로 둠"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $O$는 예각삼각형 $ABC$의 외심이다. $\\angle BAO = 28^\\circ$, $\\angle CAO = 22^\\circ$일 때, $\\angle BCO$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

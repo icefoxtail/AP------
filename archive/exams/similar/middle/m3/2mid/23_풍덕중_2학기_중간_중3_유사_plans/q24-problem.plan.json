@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "R",
+    "B",
+    "T2",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBT2",
+      "refs": [
+        "B",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT2R",
+      "refs": [
+        "T2",
+        "R"
+      ]
+    },
+    {
+      "id": "st1",
+      "refs": [
+        "A",
+        "S1"
+      ]
+    },
+    {
+      "id": "st2",
+      "refs": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "st3",
+      "refs": [
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "id": "st4",
+      "refs": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "st5",
+      "refs": [
+        "S4",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "anga",
+        "refs": [
+          "R",
+          "A",
+          "S1"
+        ],
+        "value": 34,
+        "label": "a",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lR",
+        "ownerSegment": "sAO",
+        "text": "15",
+        "unit": "m"
+      },
+      {
+        "id": "lH",
+        "ownerSegment": "sAB",
+        "text": "40π",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "O",
+    "R",
+    "T2",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원기둥 모양 굴뚝의 옆면을 따라 바닥의 점 A에서 꼭대기의 점 B까지 한 바퀴 감아 오르는 계단을 간단히 나타낸 그림이다. 밑면의 반지름은 15 m, 굴뚝의 높이는 40π m이고, 계단이 지면과 이루는 각은 a로 표시되어 있다.",
+  "accessibilityDescription": "직사각형 모양의 원기둥 옆면이 있고, 아래쪽 점 A에서 위쪽 점 B까지 여러 선분으로 이어진 계단이 감겨 올라간다. 아래쪽 반지름 옆에 15 m, 왼쪽 세로변 옆에 40π m, 점 A에서 계단과 지면이 이루는 각에 a가 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름 15 m, 높이 40π m인 원기둥",
+    "A에서 B까지 감기는 계단과 각 a"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 반지름의 길이가 $15,\\mathrm{m}$이고 높이가 $40\\pi,\\mathrm{m}$인 원기둥 모양의 굴뚝을 따라 바닥의 점 $A$에서 꼭대기의 점 $B$까지 한 바퀴 돌아가는 계단을 설치하려고 한다. 계단의 길이를 구하고, 계단이 지면과 이루는 각 $a$의 크기를 $\\tan 53^\\circ \\approx 1.33$을 이용하여 구하는 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

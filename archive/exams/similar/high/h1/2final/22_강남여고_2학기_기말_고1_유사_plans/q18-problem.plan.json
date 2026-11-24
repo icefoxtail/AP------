@@ -1,0 +1,124 @@
+{
+  "question": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "1",
+            "1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "-1",
+            "6"
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "SQRT",
+          "radicand": [
+            "0",
+            "1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "0",
+            "6"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "x1",
+            "vertical": "1"
+          },
+          {
+            "id": "x2",
+            "vertical": "2"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "1",
+          "2"
+        ],
+        "y": [
+          "1",
+          "2"
+        ]
+      }
+    },
+    "caption": "두 곡선 y=√(x+1), y=√x와 직선 x=k의 교점 P_k, Q_k 사이의 세로 선분"
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "1",
+            "1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "-1",
+            "6"
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "SQRT",
+          "radicand": [
+            "0",
+            "1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "0",
+            "6"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "x1",
+            "vertical": "1"
+          },
+          {
+            "id": "x2",
+            "vertical": "2"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "1",
+          "2"
+        ],
+        "y": [
+          "1",
+          "2"
+        ]
+      }
+    },
+    "caption": "세로 길이 √(k+1)-√k를 k=1부터 17까지 더하면 중간 항이 소거되어 3√2-1이 남는다."
+  }
+}

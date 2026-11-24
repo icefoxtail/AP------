@@ -1,0 +1,352 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "hiddenPointNames": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA0A1",
+      "refs": [
+        "A0",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA3A0",
+      "refs": [
+        "A3",
+        "A0"
+      ]
+    },
+    {
+      "id": "sB0B1",
+      "refs": [
+        "B0",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB2B3",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dA",
+        "from": "A0",
+        "to": "A1",
+        "label": "a",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dB",
+        "from": "B0",
+        "to": "A1",
+        "label": "b",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "sB2B3",
+        "text": "a-b",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sqShade",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A0",
+              "B0",
+              "B4",
+              "B2"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rA0",
+      "refs": [
+        "A1",
+        "A0",
+        "A3"
+      ]
+    },
+    {
+      "id": "rA1",
+      "refs": [
+        "A0",
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "rA2",
+      "refs": [
+        "A1",
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "rA3",
+      "refs": [
+        "A2",
+        "A3",
+        "A0"
+      ]
+    }
+  ],
+  "caption": "한 변의 길이가 a인 정사각형을 가로, 세로로 나누어 한 변이 a-b인 정사각형과 변의 길이가 b인 직사각형들로 이루어진 그림이고, 한 변이 a-b인 정사각형이 색칠되어 있다.",
+  "accessibilityDescription": "큰 정사각형의 아래쪽 변에 a와 b가 치수선으로 표시되어 있다. 정사각형 안이 세로선 하나와 가로선 하나로 네 부분으로 나뉘고, 왼쪽 아래의 정사각형이 옅게 색칠되어 있으며 그 위쪽 변에 a-b가 적혀 있다.",
+  "newVisualInformation": [
+    "한 변이 a인 정사각형이 세로선과 가로선으로 네 부분으로 나뉘고 왼쪽 아래 정사각형이 색칠되어 있다.",
+    "아래쪽 변에 전체 길이 a와 오른쪽 부분 길이 b가 치수선으로 표시되고, 색칠된 정사각형의 변에 a-b가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림이 설명하는 곱셈 공식으로 옳은 것은? (단, $a > b > 0$) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

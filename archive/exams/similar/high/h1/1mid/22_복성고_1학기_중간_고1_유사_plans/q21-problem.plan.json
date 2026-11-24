@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -2,
+      10
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -6,
+          6
+        ],
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "-1/2",
+        "intercept": "0",
+        "label": "y=-(1/2)x"
+      },
+      {
+        "slope": "1/3",
+        "intercept": "6",
+        "label": "y=(1/3)x+6"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0",
+        "label": "O(0,0)"
+      },
+      {
+        "id": "A",
+        "x": "18/5",
+        "y": "36/5",
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "x": "-36/5",
+        "y": "18/5",
+        "label": "B"
+      }
+    ]
+  },
+  "caption": "원점에서 수직인 두 직선 y=2x, y=-(1/2)x와 직선 y=(1/3)x+6이 이루는 직각이등변삼각형"
+}

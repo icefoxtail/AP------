@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=2x^2-3x$에서 $x$의 값이 $0$에서 $2$까지 변할 때, 평균변화율을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$x$의 값이 $0$에서 $2$까지 변할 때의 평균변화율은 $\\frac{f(2)-f(0)}{2-0}$이다.\n$f(2)=2\\times 4-3\\times 2=2$, $f(0)=0$이므로\n$$\\frac{2-0}{2}=1$$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=-x^2+7x-2$ 위의 점 $(1, 4)$에서의 접선의 기울기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "$y'=-2x+7$이므로 $x=1$에서의 접선의 기울기는 미분계수 $y'(1)=-2+7=5$이다."
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수를 미분하시오.\n⑴ $y=10$\n⑵ $y=-4x^2+2x+1$\n⑶ $y=(x-1)(x^2+x+6)$\n⑷ $y=(x-2)(x+1)(x+3)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $y'=0$\n⑵ $y'=-8x+2$\n⑶ $y'=3x^2+5$\n⑷ $y'=3x^2+4x-5$",
+    "solution": "⑴ 상수함수의 도함수는 $0$이므로 $y'=0$\n⑵ $y'=-4\\times 2x+2=-8x+2$\n⑶ 먼저 전개하면 $(x-1)(x^2+x+6)=x^3+x^2+6x-x^2-x-6=x^3+5x-6$이므로 $y'=3x^2+5$\n⑷ 먼저 전개하면 $(x-2)(x+1)=x^2-x-2$이고 $(x^2-x-2)(x+3)=x^3+3x^2-x^2-3x-2x-6=x^3+2x^2-5x-6$이므로 $y'=3x^2+4x-5$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^2+x+1$에서 $x$의 값이 $a$에서 $a+3$까지 변할 때, 평균변화율이 $6$이다. 이때 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "평균변화율은\n$$\\frac{f(a+3)-f(a)}{3}$$\n이다. $f(a+3)=(a+3)^2+(a+3)+1=a^2+7a+13$, $f(a)=a^2+a+1$이므로\n$$\\frac{(a^2+7a+13)-(a^2+a+1)}{3}=\\frac{6a+12}{3}=2a+4$$\n$2a+4=6$이므로 $a=1$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $y=f(x)$의 그래프와 직선 $y=x$가 다음 그림과 같다. 두 점 $\\mathrm{A}, \\mathrm{B}$가 함수 $y=f(x)$의 그래프 위에 있을 때, 보기 중 옳은 것을 모두 고르시오. (단, $0<a<b$)\n<img src=\"q05.png\" width=\"300\" />\n$$\\begin{aligned} &\\text{ㄱ. } \\frac{f(a)}{a} < \\frac{f(b)}{b} \\\\ &\\text{ㄴ. } f'(a) < f'(b) \\\\ &\\text{ㄷ. } f(a)-a > f(b)-b \\end{aligned}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "그림에서 곡선 $y=f(x)$는 원점을 지나고 $x>0$에서 아래로 볼록하며 증가한다.\nㄱ. $\\frac{f(a)}{a}$는 원점과 점 $\\mathrm{A}$를 잇는 직선의 기울기, $\\frac{f(b)}{b}$는 원점과 점 $\\mathrm{B}$를 잇는 직선의 기울기이다. 그림에서 직선 $\\mathrm{OB}$의 기울기가 더 크므로 $\\frac{f(a)}{a}<\\frac{f(b)}{b}$이다. (참)\nㄴ. $f'(a),\\ f'(b)$는 점 $\\mathrm{A},\\ \\mathrm{B}$에서의 접선의 기울기이다. 곡선이 아래로 볼록하여 오른쪽으로 갈수록 접선의 기울기가 커지므로 $f'(a)<f'(b)$이다. (참)\nㄷ. $f(x)-x$는 곡선과 직선 $y=x$의 $y$좌표의 차인데 $x$가 커질수록 두 그래프 사이가 벌어지므로 $f(a)-a<f(b)-b$이다. (거짓)\n따라서 옳은 것은 ㄱ, ㄴ이다."
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=3x^2-x+2$에 대하여\n$$\\lim_{h \\to 0} \\frac{f(1+3h)-f(1)}{2h}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15}{2}$",
+    "solution": "$$\\lim_{h\\to 0}\\frac{f(1+3h)-f(1)}{2h}=\\frac{3}{2}\\lim_{h\\to 0}\\frac{f(1+3h)-f(1)}{3h}=\\frac{3}{2}f'(1)$$\n$f'(x)=6x-1$이므로 $f'(1)=5$\n따라서 구하는 값은 $\\frac{3}{2}\\times 5=\\frac{15}{2}$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$에 대하여 $f(2)=1$, $f'(2)=\\frac{1}{3}$일 때,\n$$\\lim_{x \\to 2} \\frac{f(x)-1}{x^2-x-2}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{9}$",
+    "solution": "$x^2-x-2=(x-2)(x+1)$이므로\n$$\\lim_{x\\to 2}\\frac{f(x)-1}{x^2-x-2}=\\lim_{x\\to 2}\\left\\{\\frac{f(x)-f(2)}{x-2}\\times\\frac{1}{x+1}\\right\\}=f'(2)\\times\\frac{1}{3}$$\n$f(2)=1$, $f'(2)=\\frac{1}{3}$이므로 $\\frac{1}{3}\\times\\frac{1}{3}=\\frac{1}{9}$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$에 대하여\n$$f(x)=2x^3-3xf'(2)$$\n일 때, $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-12$",
+    "solution": "$f'(2)=k$ (상수)라 하면 $f(x)=2x^3-3kx$이다.\n$f'(x)=6x^2-3k$이므로 $x=2$를 대입하면 $f'(2)=24-3k=k$\n$4k=24$이므로 $k=6$이다. 따라서 $f'(x)=6x^2-18$이고\n$$f'(1)=6-18=-12$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수\n$$f(x)=\\begin{cases} x^2+ax+3 & (x>1) \\\\ 3x+b & (x \\le 1) \\end{cases}$$\n가 모든 실수 $x$에서 미분가능할 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1,\\ b=2$",
+    "solution": "$f(x)$가 $x=1$에서 미분가능하려면 연속이고 좌미분계수와 우미분계수가 같아야 한다.\n연속: $\\lim_{x\\to 1+}f(x)=1+a+3=a+4$, $f(1)=3+b$이므로 $a+4=3+b$에서 $b=a+1\\qquad\\cdots\\ ①$\n미분계수: $x>1$일 때 $f'(x)=2x+a$이므로 우미분계수는 $2+a$, $x<1$일 때 $f'(x)=3$이므로 좌미분계수는 $3$이다. 따라서 $2+a=3$에서 $a=1$\n①에 대입하면 $b=2$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 두 함수 $f(x), g(x)$가\n$$g(x)=(x^3-x+1)f(x)$$\n를 만족시키고 $f(1)=1$, $f'(1)=5$일 때, $g'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "곱의 미분법에 의하여\n$$g'(x)=(3x^2-1)f(x)+(x^3-x+1)f'(x)$$\n$x=1$을 대입하면\n$$g'(1)=(3-1)f(1)+(1-1+1)f'(1)=2\\times 1+1\\times 5=7$$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $x^{100}-50x^2-ax+b$를 $(x+1)^2$으로 나누었을 때의 나머지는 $x+2$이다. 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1,\\ b=51$",
+    "solution": "$P(x)=x^{100}-50x^2-ax+b$를 $(x+1)^2$으로 나누었을 때의 몫을 $Q(x)$라 하면\n$$P(x)=(x+1)^2Q(x)+x+2$$\n$x=-1$을 대입하면 $P(-1)=-1+2=1$이다.\n$P(-1)=1-50+a+b=1$에서 $a+b=50\\qquad\\cdots\\ ①$\n양변을 미분하면 $P'(x)=2(x+1)Q(x)+(x+1)^2Q'(x)+1$이므로 $x=-1$을 대입하면 $P'(-1)=1$이다.\n$P'(x)=100x^{99}-100x-a$이므로 $P'(-1)=-100+100-a=-a=1$에서 $a=-1$\n①에서 $b=51$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$가 모든 실수 $x, y$에 대하여\n$$f(x+y)=f(x)+f(y)-4xy$$\n를 만족시키고 $f'(0)=7$일 때, $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$f(x+y)=f(x)+f(y)-4xy$에 $x=0,\\ y=0$을 대입하면 $f(0)=2f(0)$이므로 $f(0)=0$이다.\n도함수의 정의에 의하여\n$$f'(x)=\\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}=\\lim_{h\\to 0}\\frac{f(x)+f(h)-4xh-f(x)}{h}=\\lim_{h\\to 0}\\left\\{\\frac{f(h)-f(0)}{h}-4x\\right\\}=f'(0)-4x$$\n$f'(0)=7$이므로 $f'(x)=7-4x$이고 $f'(1)=3$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$가\n$$\\lim_{x \\to 2} \\frac{f(x)-2}{x-2}=1$$\n을 만족시킬 때,\n$$\\lim_{x \\to 2} \\frac{x^2 f(x)-4f(2)}{x^3-8}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "$\\lim_{x\\to 2}\\frac{f(x)-2}{x-2}=1$에서 $f(2)=2$, $f'(2)=1$이다.\n$F(x)=x^2f(x)$라 하면 $F(2)=4f(2)$이고 $x^3-8=(x-2)(x^2+2x+4)$이므로\n$$\\lim_{x\\to 2}\\frac{x^2f(x)-4f(2)}{x^3-8}=\\lim_{x\\to 2}\\frac{F(x)-F(2)}{x-2}\\times\\frac{1}{x^2+2x+4}=\\frac{F'(2)}{12}$$\n$F'(x)=2xf(x)+x^2f'(x)$이므로 $F'(2)=4f(2)+4f'(2)=8+4=12$\n따라서 구하는 값은 $\\frac{12}{12}=1$"
   },
   {
     "id": 14,
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)$에 대하여 $f(-1)=f(0)=f(1)=2$이다. $f'(1)=8$일 때, $f'(2)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$44$",
+    "solution": "$f(-1)=f(0)=f(1)=2$이므로 $f(x)-2$는 $x+1,\\ x,\\ x-1$을 인수로 갖는다. 삼차함수이므로\n$$f(x)-2=ax(x-1)(x+1)=a(x^3-x)$$\n($a\\ne 0$)이고 $f(x)=a(x^3-x)+2$이다.\n$f'(x)=a(3x^2-1)$이므로 $f'(1)=2a=8$에서 $a=4$\n따라서 $f'(2)=4\\times(12-1)=44$"
   }
 ];

@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "4",
+        "title": "원두"
+      },
+      {
+        "count": "5",
+        "title": "시럽"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "원두 4가지와 시럽 5가지 중에서 각각 한 가지씩 선택하는 경우를 나타낸 그림",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 카페에서 음료 주문 시 $4$가지 원두 중에서 한 가지와 $5$가지 시럽 중에서 한 가지를 선택할 수 있다고 한다. 원두와 시럽을 각각 한 종류씩 선택하여 음료를 주문하는 경우의 수는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "4가지 원두 중에서 한 가지와 5가지 시럽 중에서 한 가지를 선택한다.",
+      "mappedTo": "chart.slots"
+    }
+  ],
+  "newVisualInformation": [
+    "원두의 가지 수 4와 시럽의 가지 수 5를 곱의 법칙 그림으로 보여 준다."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3/2",
+          "-1",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "ax",
+          "x": "1",
+          "style": "DASHED",
+          "label": "x=1"
+        }
+      ]
+    }
+  },
+  "caption": "아래로 볼록한 이차함수의 그래프가 x축과 -1에서 만나고, 축의 방정식 x=1이 점선으로 표시된 그림이다.",
+  "accessibilityDescription": "가로축과 세로축이 있고, 아래로 볼록한 포물선이 x축의 -1 지점을 지나며, x=1을 지나는 세로 점선이 대칭축으로 그려져 있다. 그래프는 y축을 음의 값에서 지난다.",
+  "newVisualInformation": [
+    "대칭축 x=1을 세로 점선으로 표시했다.",
+    "x축과의 교점 한 곳에 눈금 -1을 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? (단, $a, b, c$는 수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

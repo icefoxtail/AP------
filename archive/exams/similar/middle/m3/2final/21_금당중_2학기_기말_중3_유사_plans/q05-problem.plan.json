@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "DAT75",
+        "refs": [
+          "D",
+          "A",
+          "T"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "GIVEN",
+        "ring": 1
+      },
+      {
+        "id": "DAB40",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN",
+        "ring": 2
+      },
+      {
+        "id": "CBD30",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 10,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 140,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원 O에 내접하는 사각형 ABCD와 점 A에서의 접선 AT를 나타낸 그림이다. 접선과 현 AD가 이루는 각 75도, 각 BAD 40도, 각 CBD 30도와 x, y가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $AT$가 원 $O$의 접선이고 점 $A$가 접점이다. 원에 내접하는 사각형 $ABCD$에서 접선 $AT$와 현 $\\overline{AD}$가 이루는 각의 크기가 $75^\\circ$이고 $\\angle BAD = 40^\\circ$, $\\angle CBD = 30^\\circ$일 때, $\\angle BCD = y$, $\\angle BDC = x$에 대하여 $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "직선 AT가 원 O의 접선이고 A가 접점이며, 사각형 ABCD가 원에 내접한다.",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 AT와 현 AD, 사각형 ABCD의 변과 대각선 BD를 함께 보여 주어 주어진 각의 위치를 확인하게 한다."
+  ],
+  "accessibilityDescription": "원 O 위에 사각형 ABCD가 있고, 점 A에서의 접선 AT, 현 AD, 대각선 BD가 보인다. 각 75도, 40도, 30도와 x, y가 표시되어 있다."
+}

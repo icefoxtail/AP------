@@ -1,0 +1,56 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "COORDINATE_v1",
+  "mathPlan": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -9,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 6
+      }
+    },
+    {
+      "id": "L",
+      "op": "SOURCE_LINE",
+      "args": {
+        "a": -2,
+        "b": 3,
+        "c": -18
+      }
+    }
+  ],
+  "planeMarks": {
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "O",
+        "ray2": "B",
+        "label": "a°"
+      },
+      {
+        "vertex": "B",
+        "ray1": "A",
+        "ray2": "O",
+        "label": "b°"
+      }
+    ]
+  },
+  "caption": "일차함수 y=2/3 x+6의 그래프와 x축, y축의 교점 A, B가 이루는 직각삼각형 AOB"
+}

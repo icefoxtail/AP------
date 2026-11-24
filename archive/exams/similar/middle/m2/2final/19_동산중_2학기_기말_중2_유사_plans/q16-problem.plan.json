@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "slant": true,
+      "label": "13"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "h"
+    },
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "5"
+    }
+  ],
+  "caption": "밑면의 반지름이 5 cm이고 모선의 길이가 13 cm인 원뿔의 높이를 h로 나타내었다.",
+  "accessibilityDescription": "원뿔의 밑면 반지름 5와 모선 13이 표시되어 있고, 축을 따라 높이 h가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $5\\text{ cm}$이고 모선의 길이가 $13\\text{ cm}$인 원뿔의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원뿔의 밑면의 반지름은 5 cm, 모선의 길이는 13 cm이고 높이는 h cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑면 반지름 5, 모선 13, 높이 h를 원뿔의 각 부분에 표시한다."
+  ]
+}

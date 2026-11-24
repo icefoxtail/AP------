@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-6",
+          "3/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "3",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3",
+        "3"
+      ]
+    }
+  },
+  "caption": "꼭짓점이 (2, -3)이고 y축과 (0, 3)에서 만나는 이차함수의 그래프를 나타낸 그림이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선의 꼭짓점이 x축 아래에 있고, y절편이 원점 위에 있다.",
+  "newVisualInformation": [
+    "꼭짓점과 y절편의 위치가 눈금으로 표시된 아래로 볼록한 이차함수 그래프를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=a(x-p)^2+q$의 그래프가 꼭짓점이 $(2, -3)$이고 점 $(0, 3)$을 지날 때, $4a+p+q$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

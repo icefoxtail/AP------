@@ -1,0 +1,193 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "600"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1100"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "500"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "600",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 440
+  },
+  "caption": "세 지점 A, B, C가 이 순서대로 한 직선 위에 있고, 강 건너편 지점 P에서 세 지점으로 선분이 이어진 그림이다. 두 지점 A, B 사이는 400 m, B, C 사이는 600 m로 표시되어 있다.",
+  "accessibilityDescription": "세 지점이 한 직선 위에 나란히 있고, 그 위쪽 건너편 지점 P에서 세 지점으로 각각 선분이 이어져 있다. 아래쪽에 두 구간의 길이 400 m와 600 m가 치수선으로 적혀 있다.",
+  "newVisualInformation": [
+    "일직선 위의 세 지점 A, B, C와 건너편 지점 P",
+    "구간 A, B의 길이 400 m와 B, C의 길이 600 m 치수 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 지점 $A, B, C$가 이 순서대로 한 직선 위에 있다. 강 건너편 지점 $P$에서 속력이 $10\\,\\mathrm{m/s}$인 모형 보트를 출발시켰더니 두 지점 $B, C$에 도착할 때까지 걸린 시간이 각각 $140$초, $100$초였다. 두 지점 $A, B$ 사이의 거리는 $400\\,\\mathrm{m}$, 두 지점 $B, C$ 사이의 거리는 $600\\,\\mathrm{m}$일 때, 지점 $P$에서 출발한 모형 보트가 지점 $A$에 도착할 때까지 걸린 시간은? (단, 모형 보트의 속력은 일정하고, 강물의 속력은 고려하지 않는다.) (4.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

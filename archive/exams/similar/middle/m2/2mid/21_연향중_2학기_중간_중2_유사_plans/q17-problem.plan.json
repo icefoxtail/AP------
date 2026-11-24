@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1539",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4229",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2565",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7048",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "6"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "4"
+      },
+      {
+        "id": "lAE",
+        "ownerSegment": "sEA",
+        "text": "x"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "sCE",
+        "text": "3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 600
+  },
+  "caption": "삼각형 ABC에서 점 D는 변 AB 위에, 점 E는 변 AC 위에 있고 선분 DE는 변 BC와 평행하다. AD는 6, DB는 4, AE는 x, EC는 3으로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E가 있고 선분 DE가 변 BC와 나란히 그려져 있다. 두 평행선에 같은 방향 화살표 표시가 있고, AD 6, DB 4, AE x, EC 3이 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 그 안의 평행한 선분 DE",
+    "DE와 BC가 평행하다는 표시",
+    "AD 6, DB 4, AE x, EC 3의 길이 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $E$에 대하여 $\\overline{BC}\\parallel\\overline{DE}$이다. $\\overline{AD}=6$, $\\overline{DB}=4$, $\\overline{AE}=x$, $\\overline{EC}=3$일 때, $x$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

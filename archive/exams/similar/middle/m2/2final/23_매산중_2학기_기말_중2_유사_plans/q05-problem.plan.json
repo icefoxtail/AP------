@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ed",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "ed"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "G",
+    "E",
+    "C",
+    "D",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "GA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "BE",
+          "EG",
+          "GA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vED",
+        "ownerSegment": "ED",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vGC",
+        "ownerSegment": "GC",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDF",
+        "ownerSegment": "DF",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 변 AB 위의 점 E, G가 BE=EG=GA를 만족하고 D는 변 BC의 중점이다. 직선 ED가 변 AC의 연장선과 만나는 점 F를 나타내었고, DE는 3 cm, GC는 x cm, DF는 y cm로 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 점 E와 G가 같은 간격으로 있고 변 BC의 중점 D가 표시되어 있다. 직선 ED가 AC의 연장선과 만나는 점 F가 있으며, ED 옆에 3, GC 옆에 x, DF 옆에 y가 적혀 있다.",
+  "newVisualInformation": [
+    "점 E, G, D, F와 같은 길이 표시, 길이 3, x, y를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 변 $AB$ 위의 점 $E, G$에 대하여 $\\overline{BE} = \\overline{EG} = \\overline{GA}$이고, 변 $BC$의 중점을 $D$라 하자. 점 $E, D$를 지나는 직선이 변 $AC$의 연장선과 만나는 점을 $F$라 하고, 점 $G$를 지나 선분 $EF$에 평행한 직선이 변 $AC$와 만나는 점을 $H$라 하자. 선분 $\\overline{DE} = 3\\text{ cm}$이고 $\\overline{GH} = x\\text{ cm}$, $\\overline{DF} = y\\text{ cm}$일 때, $\\dfrac{y}{x}$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

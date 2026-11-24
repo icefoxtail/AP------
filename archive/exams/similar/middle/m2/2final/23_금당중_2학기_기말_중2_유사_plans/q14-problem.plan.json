@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "STEM_LEAF",
+    "values": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "title": "카드에 적힌 수"
+  },
+  "caption": "1부터 20까지의 수가 각각 하나씩 적힌 카드 20장에 적힌 수를 줄기와 잎으로 늘어놓은 그림",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$부터 $20$까지의 자연수가 각각 하나씩 적힌 $20$장의 카드 중에서 임의로 한 장의 카드를 뽑을 때, $3$의 배수 또는 $4$의 배수가 적힌 카드가 나올 경우의 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "1부터 20까지의 자연수가 각각 하나씩 적힌 카드가 20장 있다.",
+      "mappedTo": "chart.values"
+    }
+  ],
+  "newVisualInformation": [
+    "카드에 적힌 수 1부터 20까지를 빠짐없이 오름차순으로 늘어놓았다."
+  ]
+}

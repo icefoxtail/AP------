@@ -13,8 +13,8 @@ window.examData = {
         "4개",
         "5개"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>ㄱ. $0.56$은 유한소수이다.<br>ㄴ. $0.333\\cdots$은 무한소수이다.<br>ㄷ. $3.14159$는 유한소수이다.<br>ㄹ. $-0.123\\cdots$은 무한소수이다.<br>ㅁ. $1.010010001\\cdots$은 무한소수이다.<br>무한소수는 ㄴ, ㄹ, ㅁ의 $3$개이다.</p>"
     },
     {
       "id": 2,
@@ -27,8 +27,8 @@ window.examData = {
         "$\\frac{5}{120}$",
         "$\\frac{35}{2^2 \\times 3 \\times 5^2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>기약분수로 나타낸 뒤 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.<br>① $\\frac{14}{30}=\\frac{7}{15}$ (분모에 $3$이 있으므로 유한소수가 아니다)<br>② $\\frac{9}{72}=\\frac{1}{8}=\\frac{1}{2^3}$ (유한소수)<br>③ $\\frac{15}{2\\times3\\times7}=\\frac{5}{14}$ (분모에 $7$이 있으므로 유한소수가 아니다)<br>④ $\\frac{5}{120}=\\frac{1}{24}$ (분모에 $3$이 있으므로 유한소수가 아니다)<br>⑤ $\\frac{35}{2^2\\times3\\times5^2}=\\frac{7}{60}$ (분모에 $3$이 있으므로 유한소수가 아니다)</p>"
     },
     {
       "id": 3,
@@ -41,8 +41,8 @@ window.examData = {
         "$21$",
         "$22$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>$\\frac{x}{120}$을 기약분수로 나타내면 분자가 $1$이므로 $x$는 $120$의 약수이다.<br>$20<x<30$인 $120$의 약수는 $24$이다. $x=24$<br>$\\frac{24}{120}=\\frac{1}{5}$이므로 $y=5$이고 $\\frac{1}{5}=0.2$로 유한소수이다.<br>$x-y=24-5=19$</p>"
     },
     {
       "id": 4,
@@ -55,8 +55,8 @@ window.examData = {
         "$3.656565\\cdots = 3.\\dot{6}\\dot{5}$",
         "$0.123123123\\cdots = 0.\\dot{1}\\dot{2}\\dot{3}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>순환마디의 처음과 끝 숫자 위에 점을 찍는다.<br>① $0.333\\cdots=0.\\dot{3}$<br>② $3.737373\\cdots=3.\\dot{7}\\dot{3}$<br>③ $1.8222\\cdots=1.8\\dot{2}$<br>④ $3.656565\\cdots=3.\\dot{6}\\dot{5}$ (옳다)<br>⑤ $0.123123\\cdots=0.\\dot{1}2\\dot{3}$</p>"
     },
     {
       "id": 5,
@@ -69,8 +69,8 @@ window.examData = {
         "$63$",
         "$102$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>$\\frac{3}{70}=\\frac{3}{2\\times5\\times7}$이 유한소수가 되려면 $A$는 $7$의 배수이어야 한다.<br>$\\frac{17}{102}=\\frac{1}{6}=\\frac{1}{2\\times3}$이 유한소수가 되려면 $A$는 $3$의 배수이어야 한다.<br>$A$는 $3$과 $7$의 공배수이므로 가장 작은 수는 $21$이다.</p>"
     },
     {
       "id": 6,
@@ -83,8 +83,8 @@ window.examData = {
         "$43$",
         "$\\frac{43}{90}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$x=0.4777\\cdots$ ㉠<br>㉠의 양변에 $10$을 곱하면 $10x=4.777\\cdots$ ㉡<br>㉠의 양변에 $100$을 곱하면 $100x=47.777\\cdots$ ㉢<br>㉢$-$㉡을 하면 $90x=43$이므로 $x=\\frac{43}{90}$이다.<br>따라서 ①은 $10$, ②는 $100$, ③은 $90$, ④는 $43$, ⑤는 $\\frac{43}{90}$이다.<br>옳지 않은 것은 ③ ($99$)이다.</p>"
     },
     {
       "id": 7,
@@ -97,8 +97,8 @@ window.examData = {
         "$0.4\\dot{5}$",
         "$0.\\dot{4}\\dot{7}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>유비는 분자를 잘못 보았으므로 분모는 맞게 보았다. $0.\\dot{2}\\dot{6}=\\frac{26}{99}$이므로 분모는 $99$이다.<br>정윤이는 분모를 잘못 보았으므로 분자는 맞게 보았다. $0.4\\dot{7}=\\frac{47-4}{90}=\\frac{43}{90}$이므로 분자는 $43$이다.<br>처음의 기약분수는 $\\frac{43}{99}$이다.<br>$\\frac{43}{99}=0.434343\\cdots=0.\\dot{4}\\dot{3}$</p>"
     },
     {
       "id": 8,
@@ -111,8 +111,8 @@ window.examData = {
         "유한소수로 나타낼 수 있는 수는 모두 유리수이다.",
         "순환소수로 나타낼 수 있는 수는 모두 유리수이다."
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①, ③",
+      "solution": "<p>① 무한소수 중에는 순환하지 않는 무한소수가 있다. (옳지 않다)<br>② 순환소수는 무한소수이다. (옳다)<br>③ 유리수 중에는 순환소수($\\frac{1}{3}$ 등)도 있다. (옳지 않다)<br>④ 유한소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)<br>⑤ 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)</p>"
     },
     {
       "id": 9,
@@ -125,8 +125,8 @@ window.examData = {
         "$a^2 \\times (a^2)^3$",
         "$\\left(\\frac{a}{a^3}\\right)^4$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>① $a^3\\times a^5=a^8$<br>② $(a^4)^2=a^8$<br>③ $a^{10}\\div a^2=a^8$<br>④ $a^2\\times(a^2)^3=a^2\\times a^6=a^8$<br>⑤ $\\left(\\frac{a}{a^3}\\right)^4=\\left(\\frac{1}{a^2}\\right)^4=\\frac{1}{a^8}$<br>⑤만 $a^8$이 아니다.</p>"
     },
     {
       "id": 10,
@@ -139,8 +139,8 @@ window.examData = {
         "$16A^2$",
         "$64A^3$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>$A=2^x\\div4$이므로 $2^x=4A$이다.<br>$8^x=(2^3)^x=(2^x)^3=(4A)^3=64A^3$</p>"
     },
     {
       "id": 11,
@@ -153,8 +153,8 @@ window.examData = {
         "$3^8$",
         "$3^{10}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$AB=3^{2x}\\times3^{2y}=3^{2x+2y}=3^{2(x+y)}$이다.<br>$x+y=3$이므로 $AB=3^{2\\times3}=3^6$이다.</p>"
     },
     {
       "id": 12,
@@ -167,8 +167,8 @@ window.examData = {
         "$4$",
         "$5$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "<p>$(-x^Ay)^3=-x^{3A}y^3$이다.<br>$-x^{3A}y^3\\div6xy^B\\times12x^2y^5=-\\frac{x^{3A}y^3\\times12x^2y^5}{6xy^B}=-2x^{3A+1}y^{8-B}$<br>$Cx^7y^6$과 비교하면 $C=-2$, $3A+1=7$이므로 $A=2$, $8-B=6$이므로 $B=2$이다.<br>$A+B+C=2+2+(-2)=2$</p>"
     },
     {
       "id": 13,
@@ -181,8 +181,8 @@ window.examData = {
         "$1$",
         "$2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>괄호를 안쪽부터 푼다.<br>$x-(x^2-3)+2x^2=x-x^2+3+2x^2=x^2+x+3$<br>$3x-2(x^2+x+3)=3x-2x^2-2x-6=-2x^2+x-6$<br>$x$의 계수는 $1$이다.</p>"
     },
     {
       "id": 14,
@@ -195,8 +195,8 @@ window.examData = {
         "$\\frac{3y^5}{x}$",
         "$\\frac{2y^5}{x^2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$(-2x^2y)^2=4x^4y^2$이다.<br>$12x^3y^5\\div\\square\\times y^2=4x^4y^2$이므로 $12x^3y^5\\times y^2\\div\\square=4x^4y^2$이다.<br>$\\square=12x^3y^7\\div4x^4y^2=\\frac{3y^5}{x}$</p>"
     },
     {
       "id": 15,
@@ -209,8 +209,8 @@ window.examData = {
         "$7\\text{배}$",
         "$9\\text{배}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>원기둥의 부피는 $\\pi\\times(3ab)^2\\times6ab=\\pi\\times9a^2b^2\\times6ab=54\\pi a^3b^3$이다.<br>원뿔의 부피는 $\\frac{1}{3}\\times\\pi\\times\\left(\\frac{b}{a}\\right)^2\\times18a^5b=\\frac{1}{3}\\times\\pi\\times\\frac{b^2}{a^2}\\times18a^5b=6\\pi a^3b^3$이다.<br>$\\frac{54\\pi a^3b^3}{6\\pi a^3b^3}=9$이므로 $9$배이다.</p>"
     },
     {
       "id": 16,
@@ -223,8 +223,8 @@ window.examData = {
         "$-3x^2 - x$",
         "$-4x^2 - 3x$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$3x\\left(\\frac{1}{3}x-2\\right)=x^2-6x$<br>$\\left(\\frac{1}{2}x-\\frac{1}{3}\\right)\\div\\frac{1}{6x}=\\left(\\frac{1}{2}x-\\frac{1}{3}\\right)\\times6x=3x^2-2x$<br>$(x^2-6x)-(3x^2-2x)=x^2-6x-3x^2+2x=-2x^2-4x$</p>"
     },
     {
       "id": 17,
@@ -237,8 +237,8 @@ window.examData = {
         "$20000$원이 들어 있는 통장에 매달 $5000$원씩 $x$달 저금하면 $65000$원 이상이다. $\\Rightarrow 5000x + 20000 \\ge 65000$",
         "자전거를 타고 시속 $25\\text{ km}$로 $a\\text{ km}$의 거리를 이동하면 $1$시간 이상이 걸린다. $\\Rightarrow 25a \\ge 1$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>① 정육각형의 둘레는 $6x$이므로 $6x\\le50$ (옳다)<br>② $3a+4<12$ (옳다)<br>③ $900x+800\\times4=900x+3200>6000$ (옳다)<br>④ $5000x+20000\\ge65000$ (옳다)<br>⑤ 시속 $25\\,\\text{km}$로 $a\\,\\text{km}$를 가는 데 걸리는 시간은 $\\frac{a}{25}$시간이므로 $\\frac{a}{25}\\ge1$이어야 한다. $25a\\ge1$은 옳지 않다.</p>"
     },
     {
       "id": 18,
@@ -251,8 +251,8 @@ window.examData = {
         "$-3a-2 < -3b-2$",
         "$-\\frac{a}{2}+3 < -\\frac{b}{2}+3$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "<p>$a<b$이다.<br>① $\\frac{a}{3}<\\frac{b}{3}$ (옳지 않다)<br>② $a-3<b-3$ (옳지 않다)<br>③ $2a+5<2b+5$ (옳다)<br>④ 양변에 $-3$을 곱하면 $-3a>-3b$이므로 $-3a-2>-3b-2$ (옳지 않다)<br>⑤ 양변에 $-\\frac{1}{2}$을 곱하면 $-\\frac{a}{2}>-\\frac{b}{2}$이므로 $-\\frac{a}{2}+3>-\\frac{b}{2}+3$ (옳지 않다)</p>"
     },
     {
       "id": 19,
@@ -265,8 +265,8 @@ window.examData = {
         "$A > -1$",
         "$A < -1$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$x>-1$의 양변에 $3$을 곱하면 $3x>-3$이다.<br>양변에서 $2$를 빼면 $3x-2>-5$이다.<br>따라서 $A>-5$이다.</p>"
     },
     {
       "id": 20,
@@ -279,8 +279,8 @@ window.examData = {
         "④",
         "⑤"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "<p>$-2x-3\\le5$에서 $-2x\\le8$이다.<br>양변을 $-2$로 나누면 부등호의 방향이 바뀌어 $x\\ge-4$이다.<br>$-4$를 포함하고 오른쪽으로 향하는 수직선은 ①이다. (속이 찬 점 $-4$에서 오른쪽)</p>"
     },
     {
       "id": 21,
@@ -293,8 +293,8 @@ window.examData = {
         "$12$",
         "$15$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "<p>$2x-2\\le x+3$에서 $x\\le5$이다.<br>$2x-1+a\\ge3(x+2)$에서 $2x-1+a\\ge3x+6$이므로 $-x\\ge7-a$, 즉 $x\\le a-7$이다.<br>두 부등식의 해가 같으므로 $a-7=5$, $a=12$이다.</p>"
     },
     {
       "id": 22,
@@ -307,32 +307,32 @@ window.examData = {
         "$6$",
         "$7$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "<p>양변에 $12$를 곱한다.<br>$12\\times0.5+4x>3(2x+1)-12$<br>$6+4x>6x+3-12=6x-9$<br>$15>2x$이므로 $x<\\frac{15}{2}=7.5$이다.<br>이를 만족하는 자연수 $x$는 $1,2,3,4,5,6,7$이므로 $7$개이다.</p>"
     },
     {
       "id": 23,
       "score": 7.0,
       "question": "<p>1. 분수 $\\frac{26}{420} \\times n$을 유한소수로 나타낼 수 있도록 하는 두 자리의 자연수 $n$의 값을 모두 구하시오. (7점)<br>(단, 풀이 과정을 자세히 쓰시오.)</p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$21,\\ 42,\\ 63,\\ 84$",
+      "solution": "<p>$\\frac{26}{420}=\\frac{13}{210}=\\frac{13}{2\\times3\\times5\\times7}$이다.<br>$\\frac{13}{210}\\times n$이 유한소수가 되려면 분모의 소인수 중 $3$과 $7$이 약분되어야 하므로 $n$은 $21$의 배수이어야 한다.<br>$21$의 배수 중 두 자리의 자연수는 $21,\\ 42,\\ 63,\\ 84$이다. ($21\\times5=105$는 세 자리)<br>따라서 $n=21,\\ 42,\\ 63,\\ 84$이다.</p>"
     },
     {
       "id": 24,
       "score": 6.0,
       "question": "<p>2. $A = \\frac{2^{12} \\times 25^7}{10}$를 $a \\times 10^n$의 꼴로 나타내어 몇 자리의 자연수인지 구하려고 한다. (단, $a$는 자연수, $10 < a < 10^2$)<br>(단, 풀이 과정을 자세히 쓰시오.)<br><br>(1) $a$와 $n$의 값을 각각 구하시오. (4점)<br><br>(2) $A = \\frac{2^{12} \\times 25^7}{10}$는 몇 자리의 자연수인지 구하시오. (2점)</p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "(1) $a=25,\\ n=11$\n(2) $13$자리",
+      "solution": "<p>(1) $A=\\frac{2^{12}\\times25^7}{10}=\\frac{2^{12}\\times5^{14}}{2\\times5}=2^{11}\\times5^{13}$이다.<br>$2^{11}\\times5^{13}=5^2\\times(2^{11}\\times5^{11})=25\\times10^{11}$이다.<br>$10<a<10^2$이므로 $a=25$, $n=11$이다.<br>(2) $25\\times10^{11}$은 $25$ 뒤에 $0$이 $11$개 붙은 수이므로 $2+11=13$자리 자연수이다.</p>"
     },
     {
       "id": 25,
       "score": 7.0,
       "question": "<p>3. $a < 3$일 때, $x$에 관한 일차부등식 $ax - a \\ge 3(x-1)$의 해 중 가장 큰 정수를 구하시오. (단, 풀이 과정을 자세히 쓰시오.) (7점)</p>",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "$1$",
+      "solution": "<p>$ax-a\\ge3(x-1)$에서 $ax-a\\ge3x-3$이다.<br>$ax-3x\\ge a-3$이므로 $(a-3)x\\ge a-3$이다.<br>$a<3$이므로 $a-3<0$이다. 양변을 음수 $a-3$으로 나누면 부등호의 방향이 바뀐다. $x\\le1$<br>따라서 해 중 가장 큰 정수는 $1$이다.</p>"
     }
   ]
 };
@@ -351,8 +351,8 @@ window.questionBank = [
       "4개",
       "5개"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>ㄱ. $0.56$은 유한소수이다.<br>ㄴ. $0.333\\cdots$은 무한소수이다.<br>ㄷ. $3.14159$는 유한소수이다.<br>ㄹ. $-0.123\\cdots$은 무한소수이다.<br>ㅁ. $1.010010001\\cdots$은 무한소수이다.<br>무한소수는 ㄴ, ㄹ, ㅁ의 $3$개이다.</p>",
     "content": "<div>1. 다음 보기에서 무한소수인 것을 모두 몇 개인가?(2점)</div><div class=\"box\">ㄱ. $0.56$<br>ㄴ. $0.333\\cdots$<br>ㄷ. $3.14159$<br>ㄹ. $-0.123\\cdots$<br>ㅁ. $1.010010001\\cdots$</div>"
   },
   {
@@ -366,8 +366,8 @@ window.questionBank = [
       "$\\frac{5}{120}$",
       "$\\frac{35}{2^2 \\times 3 \\times 5^2}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>기약분수로 나타낸 뒤 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.<br>① $\\frac{14}{30}=\\frac{7}{15}$ (분모에 $3$이 있으므로 유한소수가 아니다)<br>② $\\frac{9}{72}=\\frac{1}{8}=\\frac{1}{2^3}$ (유한소수)<br>③ $\\frac{15}{2\\times3\\times7}=\\frac{5}{14}$ (분모에 $7$이 있으므로 유한소수가 아니다)<br>④ $\\frac{5}{120}=\\frac{1}{24}$ (분모에 $3$이 있으므로 유한소수가 아니다)<br>⑤ $\\frac{35}{2^2\\times3\\times5^2}=\\frac{7}{60}$ (분모에 $3$이 있으므로 유한소수가 아니다)</p>",
     "content": "<div>2. 다음 분수 중 유한소수로 나타낼 수 있는 것은?(4점)</div>"
   },
   {
@@ -381,8 +381,8 @@ window.questionBank = [
       "$21$",
       "$22$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$\\frac{x}{120}$을 기약분수로 나타내면 분자가 $1$이므로 $x$는 $120$의 약수이다.<br>$20<x<30$인 $120$의 약수는 $24$이다. $x=24$<br>$\\frac{24}{120}=\\frac{1}{5}$이므로 $y=5$이고 $\\frac{1}{5}=0.2$로 유한소수이다.<br>$x-y=24-5=19$</p>",
     "content": "<div>3. 분수 $\\frac{x}{120}$를 소수로 나타내면 유한소수이고, 이 분수를 기약분수로 나타내면 $\\frac{1}{y}$이 된다. $x$가 $20 < x < 30$인 자연수일 때, $x-y$의 값은?(4점)</div>"
   },
   {
@@ -396,8 +396,8 @@ window.questionBank = [
       "$3.656565\\cdots = 3.\\dot{6}\\dot{5}$",
       "$0.123123123\\cdots = 0.\\dot{1}\\dot{2}\\dot{3}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>순환마디의 처음과 끝 숫자 위에 점을 찍는다.<br>① $0.333\\cdots=0.\\dot{3}$<br>② $3.737373\\cdots=3.\\dot{7}\\dot{3}$<br>③ $1.8222\\cdots=1.8\\dot{2}$<br>④ $3.656565\\cdots=3.\\dot{6}\\dot{5}$ (옳다)<br>⑤ $0.123123\\cdots=0.\\dot{1}2\\dot{3}$</p>",
     "content": "<div>4. 다음 중 순환소수를 순환마디를 사용하여 바르게 나타낸 것은?(2점)</div>"
   },
   {
@@ -411,8 +411,8 @@ window.questionBank = [
       "$63$",
       "$102$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$\\frac{3}{70}=\\frac{3}{2\\times5\\times7}$이 유한소수가 되려면 $A$는 $7$의 배수이어야 한다.<br>$\\frac{17}{102}=\\frac{1}{6}=\\frac{1}{2\\times3}$이 유한소수가 되려면 $A$는 $3$의 배수이어야 한다.<br>$A$는 $3$과 $7$의 공배수이므로 가장 작은 수는 $21$이다.</p>",
     "content": "<div>5. 두 분수 $\\frac{3}{70}$, $\\frac{17}{102}$에 어떤 자연수 $A$를 곱하면 모두 유한소수로 나타내어진다고 한다. $A$의 값이 될 수 있는 수 중 가장 작은 수를 구하면?(4점)</div>"
   },
   {
@@ -426,8 +426,8 @@ window.questionBank = [
       "$43$",
       "$\\frac{43}{90}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$x=0.4777\\cdots$ ㉠<br>㉠의 양변에 $10$을 곱하면 $10x=4.777\\cdots$ ㉡<br>㉠의 양변에 $100$을 곱하면 $100x=47.777\\cdots$ ㉢<br>㉢$-$㉡을 하면 $90x=43$이므로 $x=\\frac{43}{90}$이다.<br>따라서 ①은 $10$, ②는 $100$, ③은 $90$, ④는 $43$, ⑤는 $\\frac{43}{90}$이다.<br>옳지 않은 것은 ③ ($99$)이다.</p>",
     "content": "<div>6. 다음은 순환소수 $0.4\\dot{7}$을 분수로 나타내는 과정이다. $\\square$ 안에 들어갈 수로 옳지 않은 것은?(3점)</div><div class=\"box\">$x = 0.4\\dot{7}$이라 하면 $x = 0.4777\\cdots \\cdots\\cdots$ ㉠<br>㉠의 양변에 [ ① ], [ ② ]을 곱하면<br>[ ① ]$x = 4.777\\cdots \\cdots\\cdots$ ㉡<br>[ ② ]$x = 47.777\\cdots \\cdots\\cdots$ ㉢<br>㉢ - ㉡을 하면<br>[ ③ ]$x = $ [ ④ ] $\\quad \\therefore x = $ [ ⑤ ]</div>"
   },
   {
@@ -441,8 +441,8 @@ window.questionBank = [
       "$0.4\\dot{5}$",
       "$0.\\dot{4}\\dot{7}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>유비는 분자를 잘못 보았으므로 분모는 맞게 보았다. $0.\\dot{2}\\dot{6}=\\frac{26}{99}$이므로 분모는 $99$이다.<br>정윤이는 분모를 잘못 보았으므로 분자는 맞게 보았다. $0.4\\dot{7}=\\frac{47-4}{90}=\\frac{43}{90}$이므로 분자는 $43$이다.<br>처음의 기약분수는 $\\frac{43}{99}$이다.<br>$\\frac{43}{99}=0.434343\\cdots=0.\\dot{4}\\dot{3}$</p>",
     "content": "<div>7. 기약분수 $a$를 소수로 나타내는데 유비는 분자를 잘못 보아 $0.\\dot{2}\\dot{6}$으로 나타내고, 정윤이는 분모를 잘못 보아 $0.4\\dot{7}$로 나타내었다. $a$를 순환소수로 나타내면?(3점)</div>"
   },
   {
@@ -456,8 +456,8 @@ window.questionBank = [
       "유한소수로 나타낼 수 있는 수는 모두 유리수이다.",
       "순환소수로 나타낼 수 있는 수는 모두 유리수이다."
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①, ③",
+    "solution": "<p>① 무한소수 중에는 순환하지 않는 무한소수가 있다. (옳지 않다)<br>② 순환소수는 무한소수이다. (옳다)<br>③ 유리수 중에는 순환소수($\\frac{1}{3}$ 등)도 있다. (옳지 않다)<br>④ 유한소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)<br>⑤ 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (옳다)</p>",
     "content": "<div>8. 다음 중에서 옳지 않은 것을 모두 고르면?(정답 2개)(4점)</div>"
   },
   {
@@ -471,8 +471,8 @@ window.questionBank = [
       "$a^2 \\times (a^2)^3$",
       "$\\left(\\frac{a}{a^3}\\right)^4$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① $a^3\\times a^5=a^8$<br>② $(a^4)^2=a^8$<br>③ $a^{10}\\div a^2=a^8$<br>④ $a^2\\times(a^2)^3=a^2\\times a^6=a^8$<br>⑤ $\\left(\\frac{a}{a^3}\\right)^4=\\left(\\frac{1}{a^2}\\right)^4=\\frac{1}{a^8}$<br>⑤만 $a^8$이 아니다.</p>",
     "content": "<div>9. 다음 중 계산 결과가 나머지 넷과 다른 하나는?(3점)</div>"
   },
   {
@@ -486,8 +486,8 @@ window.questionBank = [
       "$16A^2$",
       "$64A^3$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$A=2^x\\div4$이므로 $2^x=4A$이다.<br>$8^x=(2^3)^x=(2^x)^3=(4A)^3=64A^3$</p>",
     "content": "<div>10. $A = 2^x \\div 4$일 때, $8^x$을 $A$를 사용하여 나타내면?(5점)</div>"
   },
   {
@@ -501,8 +501,8 @@ window.questionBank = [
       "$3^8$",
       "$3^{10}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$AB=3^{2x}\\times3^{2y}=3^{2x+2y}=3^{2(x+y)}$이다.<br>$x+y=3$이므로 $AB=3^{2\\times3}=3^6$이다.</p>",
     "content": "<div>11. $x+y=3$이고 $A = 3^{2x}$, $B = 3^{2y}$일 때, $AB$의 값을 $3$의 거듭제곱으로 나타내면?(4점)</div>"
   },
   {
@@ -516,8 +516,8 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$(-x^Ay)^3=-x^{3A}y^3$이다.<br>$-x^{3A}y^3\\div6xy^B\\times12x^2y^5=-\\frac{x^{3A}y^3\\times12x^2y^5}{6xy^B}=-2x^{3A+1}y^{8-B}$<br>$Cx^7y^6$과 비교하면 $C=-2$, $3A+1=7$이므로 $A=2$, $8-B=6$이므로 $B=2$이다.<br>$A+B+C=2+2+(-2)=2$</p>",
     "content": "<div>12. $(-x^A y)^3 \\div 6xy^B \\times 12x^2 y^5 = Cx^7 y^6$일 때, $A+B+C$의 값은?(단, $A$, $B$, $C$는 수이다.)(4점)</div>"
   },
   {
@@ -531,8 +531,8 @@ window.questionBank = [
       "$1$",
       "$2$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>괄호를 안쪽부터 푼다.<br>$x-(x^2-3)+2x^2=x-x^2+3+2x^2=x^2+x+3$<br>$3x-2(x^2+x+3)=3x-2x^2-2x-6=-2x^2+x-6$<br>$x$의 계수는 $1$이다.</p>",
     "content": "<div>13. 식 $3x - 2\\{x - (x^2 - 3) + 2x^2\\}$을 계산하였을 때, $x$의 계수를 구하면?(3점)</div>"
   },
   {
@@ -546,8 +546,8 @@ window.questionBank = [
       "$\\frac{3y^5}{x}$",
       "$\\frac{2y^5}{x^2}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$(-2x^2y)^2=4x^4y^2$이다.<br>$12x^3y^5\\div\\square\\times y^2=4x^4y^2$이므로 $12x^3y^5\\times y^2\\div\\square=4x^4y^2$이다.<br>$\\square=12x^3y^7\\div4x^4y^2=\\frac{3y^5}{x}$</p>",
     "content": "<div>14. $12x^3 y^5 \\div \\square \\times y^2 = (-2x^2 y)^2$에서 $\\square$ 안에 알맞은 식은?(4점)</div>"
   },
   {
@@ -562,8 +562,8 @@ window.questionBank = [
       "$7\\text{배}$",
       "$9\\text{배}$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>원기둥의 부피는 $\\pi\\times(3ab)^2\\times6ab=\\pi\\times9a^2b^2\\times6ab=54\\pi a^3b^3$이다.<br>원뿔의 부피는 $\\frac{1}{3}\\times\\pi\\times\\left(\\frac{b}{a}\\right)^2\\times18a^5b=\\frac{1}{3}\\times\\pi\\times\\frac{b^2}{a^2}\\times18a^5b=6\\pi a^3b^3$이다.<br>$\\frac{54\\pi a^3b^3}{6\\pi a^3b^3}=9$이므로 $9$배이다.</p>",
     "content": "<div>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽 원기둥의 밑면 반지름은 3ab이고 높이는 6ab이다. 오른쪽 원뿔의 밑면 반지름은 b/a이고 높이는 18a⁵b다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
@@ -577,8 +577,8 @@ window.questionBank = [
       "$-3x^2 - x$",
       "$-4x^2 - 3x$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$3x\\left(\\frac{1}{3}x-2\\right)=x^2-6x$<br>$\\left(\\frac{1}{2}x-\\frac{1}{3}\\right)\\div\\frac{1}{6x}=\\left(\\frac{1}{2}x-\\frac{1}{3}\\right)\\times6x=3x^2-2x$<br>$(x^2-6x)-(3x^2-2x)=x^2-6x-3x^2+2x=-2x^2-4x$</p>",
     "content": "<div>16. $3x\\left(\\frac{1}{3}x - 2\\right) - \\left(\\frac{1}{2}x - \\frac{1}{3}\\right) \\div \\frac{1}{6x}$을 계산하면?(4점)</div>"
   },
   {
@@ -592,8 +592,8 @@ window.questionBank = [
       "$20000$원이 들어 있는 통장에 매달 $5000$원씩 $x$달 저금하면 $65000$원 이상이다. $\\Rightarrow 5000x + 20000 \\ge 65000$",
       "자전거를 타고 시속 $25\\text{ km}$로 $a\\text{ km}$의 거리를 이동하면 $1$시간 이상이 걸린다. $\\Rightarrow 25a \\ge 1$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① 정육각형의 둘레는 $6x$이므로 $6x\\le50$ (옳다)<br>② $3a+4<12$ (옳다)<br>③ $900x+800\\times4=900x+3200>6000$ (옳다)<br>④ $5000x+20000\\ge65000$ (옳다)<br>⑤ 시속 $25\\,\\text{km}$로 $a\\,\\text{km}$를 가는 데 걸리는 시간은 $\\frac{a}{25}$시간이므로 $\\frac{a}{25}\\ge1$이어야 한다. $25a\\ge1$은 옳지 않다.</p>",
     "content": "<div>17. 다음 중 문장을 부등식으로 나타낸 것으로 옳지 않은 것은? (4점)</div>"
   },
   {
@@ -607,8 +607,8 @@ window.questionBank = [
       "$-3a-2 < -3b-2$",
       "$-\\frac{a}{2}+3 < -\\frac{b}{2}+3$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$a<b$이다.<br>① $\\frac{a}{3}<\\frac{b}{3}$ (옳지 않다)<br>② $a-3<b-3$ (옳지 않다)<br>③ $2a+5<2b+5$ (옳다)<br>④ 양변에 $-3$을 곱하면 $-3a>-3b$이므로 $-3a-2>-3b-2$ (옳지 않다)<br>⑤ 양변에 $-\\frac{1}{2}$을 곱하면 $-\\frac{a}{2}>-\\frac{b}{2}$이므로 $-\\frac{a}{2}+3>-\\frac{b}{2}+3$ (옳지 않다)</p>",
     "content": "<div>18. $a < b$일 때, 다음 중 옳은 것은? (3점)</div>"
   },
   {
@@ -622,8 +622,8 @@ window.questionBank = [
       "$A > -1$",
       "$A < -1$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x>-1$의 양변에 $3$을 곱하면 $3x>-3$이다.<br>양변에서 $2$를 빼면 $3x-2>-5$이다.<br>따라서 $A>-5$이다.</p>",
     "content": "<div>19. $x > -1$일 때, $A = 3x - 2$의 값의 범위는?(4점)</div>"
   },
   {
@@ -638,8 +638,8 @@ window.questionBank = [
       "④",
       "⑤"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$-2x-3\\le5$에서 $-2x\\le8$이다.<br>양변을 $-2$로 나누면 부등호의 방향이 바뀌어 $x\\ge-4$이다.<br>$-4$를 포함하고 오른쪽으로 향하는 수직선은 ①이다. (속이 찬 점 $-4$에서 오른쪽)</p>",
     "content": "<div>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"①과 ②는 −4에서 오른쪽으로 향하며 ①은 닫힌 점, ②는 열린 점이다. ③은 −4에서 왼쪽으로 향하는 닫힌 점, ④는 4에서 오른쪽으로 향하는 닫힌 점, ⑤는 4에서 왼쪽으로 향하는 닫힌 점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
@@ -653,8 +653,8 @@ window.questionBank = [
       "$12$",
       "$15$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$2x-2\\le x+3$에서 $x\\le5$이다.<br>$2x-1+a\\ge3(x+2)$에서 $2x-1+a\\ge3x+6$이므로 $-x\\ge7-a$, 즉 $x\\le a-7$이다.<br>두 부등식의 해가 같으므로 $a-7=5$, $a=12$이다.</p>",
     "content": "<div>21. 두 일차부등식 $2x-2 \\le x+3$과 $2x-1+a \\ge 3(x+2)$의 해가 서로 같을 때, 상수 $a$의 값을 구하면?(5점)</div>"
   },
   {
@@ -668,8 +668,8 @@ window.questionBank = [
       "$6$",
       "$7$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>양변에 $12$를 곱한다.<br>$12\\times0.5+4x>3(2x+1)-12$<br>$6+4x>6x+3-12=6x-9$<br>$15>2x$이므로 $x<\\frac{15}{2}=7.5$이다.<br>이를 만족하는 자연수 $x$는 $1,2,3,4,5,6,7$이므로 $7$개이다.</p>",
     "content": "<div>22. 일차부등식 $0.5 + \\frac{x}{3} > \\frac{2x+1}{4} - 1$을 만족시키는 자연수 $x$의 개수는?(4점)</div>"
   },
   {
@@ -677,8 +677,8 @@ window.questionBank = [
     "score": 7,
     "question": "<p>1. 분수 $\\frac{26}{420} \\times n$을 유한소수로 나타낼 수 있도록 하는 두 자리의 자연수 $n$의 값을 모두 구하시오. (7점)<br>(단, 풀이 과정을 자세히 쓰시오.)</p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$21,\\ 42,\\ 63,\\ 84$",
+    "solution": "<p>$\\frac{26}{420}=\\frac{13}{210}=\\frac{13}{2\\times3\\times5\\times7}$이다.<br>$\\frac{13}{210}\\times n$이 유한소수가 되려면 분모의 소인수 중 $3$과 $7$이 약분되어야 하므로 $n$은 $21$의 배수이어야 한다.<br>$21$의 배수 중 두 자리의 자연수는 $21,\\ 42,\\ 63,\\ 84$이다. ($21\\times5=105$는 세 자리)<br>따라서 $n=21,\\ 42,\\ 63,\\ 84$이다.</p>",
     "content": "<div>1. 분수 $\\frac{26}{420} \\times n$을 유한소수로 나타낼 수 있도록 하는 두 자리의 자연수 $n$의 값을 모두 구하시오. (7점)<br>(단, 풀이 과정을 자세히 쓰시오.)</div>"
   },
   {
@@ -686,8 +686,8 @@ window.questionBank = [
     "score": 6,
     "question": "<p>2. $A = \\frac{2^{12} \\times 25^7}{10}$를 $a \\times 10^n$의 꼴로 나타내어 몇 자리의 자연수인지 구하려고 한다. (단, $a$는 자연수, $10 < a < 10^2$)<br>(단, 풀이 과정을 자세히 쓰시오.)<br><br>(1) $a$와 $n$의 값을 각각 구하시오. (4점)<br><br>(2) $A = \\frac{2^{12} \\times 25^7}{10}$는 몇 자리의 자연수인지 구하시오. (2점)</p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "(1) $a=25,\\ n=11$\n(2) $13$자리",
+    "solution": "<p>(1) $A=\\frac{2^{12}\\times25^7}{10}=\\frac{2^{12}\\times5^{14}}{2\\times5}=2^{11}\\times5^{13}$이다.<br>$2^{11}\\times5^{13}=5^2\\times(2^{11}\\times5^{11})=25\\times10^{11}$이다.<br>$10<a<10^2$이므로 $a=25$, $n=11$이다.<br>(2) $25\\times10^{11}$은 $25$ 뒤에 $0$이 $11$개 붙은 수이므로 $2+11=13$자리 자연수이다.</p>",
     "content": "<div>2. $A = \\frac{2^{12} \\times 25^7}{10}$를 $a \\times 10^n$의 꼴로 나타내어 몇 자리의 자연수인지 구하려고 한다. (단, $a$는 자연수, $10 < a < 10^2$)<br>(단, 풀이 과정을 자세히 쓰시오.)<br><br>(1) $a$와 $n$의 값을 각각 구하시오. (4점)<br><br>(2) $A = \\frac{2^{12} \\times 25^7}{10}$는 몇 자리의 자연수인지 구하시오. (2점)</div>"
   },
   {
@@ -695,8 +695,8 @@ window.questionBank = [
     "score": 7,
     "question": "<p>3. $a < 3$일 때, $x$에 관한 일차부등식 $ax - a \\ge 3(x-1)$의 해 중 가장 큰 정수를 구하시오. (단, 풀이 과정을 자세히 쓰시오.) (7점)</p>",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$1$",
+    "solution": "<p>$ax-a\\ge3(x-1)$에서 $ax-a\\ge3x-3$이다.<br>$ax-3x\\ge a-3$이므로 $(a-3)x\\ge a-3$이다.<br>$a<3$이므로 $a-3<0$이다. 양변을 음수 $a-3$으로 나누면 부등호의 방향이 바뀐다. $x\\le1$<br>따라서 해 중 가장 큰 정수는 $1$이다.</p>",
     "content": "<div>3. $a < 3$일 때, $x$에 관한 일차부등식 $ax - a \\ge 3(x-1)$의 해 중 가장 큰 정수를 구하시오. (단, 풀이 과정을 자세히 쓰시오.) (7점)</div>"
   }
 ];

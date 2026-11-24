@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "닫힌구간 -2 이상 2 이하에서 정의된 함수 f의 그래프이다. 가운데 구간에서는 함숫값이 1로 일정하고, 양쪽 끝에서는 0까지 곧게 내려간다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 함수 f의 그래프가 있다. 그래프는 왼쪽 끝에서 올라가 수평 구간을 지나 다시 오른쪽 끝까지 내려가는 사다리꼴 모양이다.",
+  "newVisualInformation": [
+    "좌표평면 위에 닫힌구간 -2 이상 2 이하에서 정의된 함수 f의 사다리꼴 모양 그래프가 그려져 있다.",
+    "그래프는 왼쪽 끝과 오른쪽 끝에서 함숫값이 0이고 가운데 넓은 구간에서 함숫값이 1이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[-2, 2]$에서 정의된 함수  \n$$f(x) = \\begin{cases} 1 & (|x| \\le 1) \\\\ 2 - |x| & (1 < |x| \\le 2) \\end{cases}$$  \n에 대하여 함수 $g(x) = a^{f(x)}$ ($a > 0, a \\ne 1$)의 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n**[보 기]**  \nㄱ. $g(-x) = g(x)$  \nㄴ. $0 < a < 1$일 때, 함수 $y = g(x)$의 최솟값은 $1$이다.  \nㄷ. $a > 1$일 때, 함수 $y = g(x)$의 최솟값은 $1$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

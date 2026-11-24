@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pr",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qs",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "S"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pr",
+          "qs"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "SP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    },
+    {
+      "id": "PO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "QO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    },
+    {
+      "id": "OS",
+      "refs": [
+        "O",
+        "S"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "PQ",
+          "RS"
+        ]
+      }
+    ]
+  },
+  "caption": "사다리꼴 PQRS에서 윗변 PQ와 아랫변 SR이 평행하고, 두 대각선 PR과 QS가 점 O에서 만나는 그림이다.",
+  "accessibilityDescription": "사다리꼴 PQRS의 네 변과 두 대각선이 그려져 있고, 윗변 PQ와 아랫변 SR에 평행 표시가 있다. 두 대각선의 교점에 O가 표시되어 있다.",
+  "newVisualInformation": [
+    "사다리꼴 PQRS의 평행 표시(PQ, SR)",
+    "두 대각선 PR, QS와 교점 O"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{\\mathrm{PQ}} // \\overline{\\mathrm{SR}}$인 사다리꼴 $\\mathrm{PQRS}$(꼭짓점은 순서대로 $\\mathrm{P, Q, R, S}$)에서 두 대각선 $\\overline{\\mathrm{PR}}$과 $\\overline{\\mathrm{QS}}$의 교점을 $\\mathrm{O}$라고 할 때, 다음 물음에 답하시오.\n\n1) $\\triangle\\mathrm{PSR}$과 $\\triangle\\mathrm{QSR}$의 넓이를 비교하고, 그 이유를 설명하시오. [2점]  \n2) $\\triangle\\mathrm{POS} = \\triangle\\mathrm{QOR}$인 이유를 설명하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

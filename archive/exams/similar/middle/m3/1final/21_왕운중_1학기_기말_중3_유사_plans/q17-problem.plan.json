@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=ax^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "좌표축 위에 ㉠은 아래로 볼록하고 폭이 좁은 포물선, ㉡은 위로 볼록하고 폭이 더 넓은 포물선으로 그려져 있다.",
+  "accessibilityDescription": "원점을 지나는 두 포물선이 그려져 있다. 하나는 아래로 볼록하고 폭이 좁으며, 다른 하나는 위로 볼록하고 폭이 더 넓다.",
+  "newVisualInformation": [
+    "원점을 지나는 좁고 아래로 볼록한 포물선 ㉠",
+    "원점을 지나는 넓고 위로 볼록한 포물선 ㉡"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2$의 그래프가 오른쪽 그림의 ㉠과 같을 때, 다음 중 ㉡의 그래프로 적당한 것은? (단, $a$는 상수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

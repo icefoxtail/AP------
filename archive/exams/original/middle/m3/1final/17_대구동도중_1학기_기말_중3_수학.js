@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $y(x - y)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$2x^2y-2xy^2=2xy(x-y)$이다.<br>$2x$, $xy$, $x-y$, $y(x-y)$는 모두 $2xy(x-y)$를 나누어떨어뜨리는 인수이다.<br>$x+y$는 인수가 아니다.</p>",
     "score": 4,
     "image": ""
   },
@@ -35,8 +35,8 @@ window.questionBank = [
       "⑤ ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>ㄱ. $x^2-x+\\frac{1}{4}=\\left(x-\\frac{1}{2}\\right)^2$ (옳다)<br>ㄴ. $(x+7)(x-3)=x^2+4x-21$ (옳다)<br>ㄷ. $-4x^2+8x-3=-(4x^2-8x+3)=-(2x-1)(2x-3)$이므로 $(2x-3)(2x-1)$은 옳지 않다.<br>ㄹ. $\\frac{4}{9}a^2-\\frac{16}{25}b^2=\\left(\\frac{2}{3}a\\right)^2-\\left(\\frac{4}{5}b\\right)^2=\\left(\\frac{2}{3}a-\\frac{4}{5}b\\right)\\left(\\frac{2}{3}a+\\frac{4}{5}b\\right)$이므로 주어진 식은 옳지 않다.<br>옳은 것은 ㄱ, ㄴ이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -55,8 +55,8 @@ window.questionBank = [
       "⑤ $-12\\sqrt{3} - 12$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>분모를 유리화하여 $a$, $b$를 구한다.<br>$a=\\frac{(1-\\sqrt{3})^2}{(1+\\sqrt{3})(1-\\sqrt{3})}=\\frac{4-2\\sqrt{3}}{-2}=-2+\\sqrt{3}$<br>$b=\\frac{(1+\\sqrt{3})^2}{(1-\\sqrt{3})(1+\\sqrt{3})}=\\frac{4+2\\sqrt{3}}{-2}=-2-\\sqrt{3}$<br>$a-b=2\\sqrt{3}$, $a+b=-4$이다.<br>$a^2-b^2+4b-4=(a+b)(a-b)+4(b-1)$<br>$=(-4)(2\\sqrt{3})+4(-3-\\sqrt{3})=-8\\sqrt{3}-12-4\\sqrt{3}=-12\\sqrt{3}-12$</p>",
     "score": 4,
     "image": ""
   },
@@ -75,8 +75,8 @@ window.questionBank = [
       "⑤ $2(x - 1)^2 = (2x + 1)^2 \\quad [-1]$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>각 방정식에 $[\\ ]$ 안의 수를 대입한다.<br>① $x=1$: $1-2+3=2\\ne0$<br>② $x=-2$: $(-4)^2-4=12\\ne0$<br>③ $x=3$: $27-6-1=20\\ne0$<br>④ $x=-4$: $16+12-28=0$ (성립)<br>⑤ $x=-1$: 좌변 $2\\times4=8$, 우변 $(-1)^2=1$ (성립하지 않음)</p>",
     "score": 4,
     "image": ""
   },
@@ -95,8 +95,8 @@ window.questionBank = [
       "⑤ 38"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>근의 공식으로 $x=\\frac{5\\pm\\sqrt{25-8}}{4}=\\frac{5\\pm\\sqrt{17}}{4}$이다.<br>$A=5$, $B=17$이므로 $A+B=22$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -115,8 +115,8 @@ window.questionBank = [
       "⑤ $-\\frac{4}{5}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$x=2$를 대입한다.<br>$4+6a-2a+1=0$이므로 $4a+5=0$, $a=-\\frac{5}{4}$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -135,8 +135,8 @@ window.questionBank = [
       "⑤ 31"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>작은 근을 $\\alpha$라 하면 큰 근은 $\\frac{5}{3}\\alpha$이다.<br>두 근의 차가 $2$이므로 $\\frac{5}{3}\\alpha-\\alpha=\\frac{2}{3}\\alpha=2$, $\\alpha=3$이다. 큰 근은 $5$이다.<br>$x^2+mx+n=(x-3)(x-5)=x^2-8x+15$이므로 $m=-8$, $n=15$이다.<br>$2m+n=-16+15=-1$</p>",
     "score": 4,
     "image": ""
   },
@@ -155,8 +155,8 @@ window.questionBank = [
       "⑤ $x = -1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$x^2+3x+1=0$에서 $x^2+3x=-1$이므로 양변에 $\\frac{9}{4}$를 더하면 $\\left(x+\\frac{3}{2}\\right)^2=\\frac{5}{4}$이다.<br>$a=\\frac{3}{2}$, $b=\\frac{5}{4}$이다.<br>$x=-\\frac{3}{2}\\pm\\frac{\\sqrt{5}}{2}=\\frac{-3\\pm\\sqrt{5}}{2}$이므로 $c=-3$, $d=5$이다.<br>$ax^2+2bx+c-1=2d$에 대입하면 $\\frac{3}{2}x^2+\\frac{5}{2}x-4=10$이다.<br>양변에 $2$를 곱하면 $3x^2+5x-28=0$이고 $(3x-7)(x+4)=0$이다.<br>$x=\\frac{7}{3}$ 또는 $x=-4$이므로 음수인 해는 $x=-4$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -175,8 +175,8 @@ window.questionBank = [
       "⑤ 7"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>계수가 유리수인 이차방정식에서 한 근이 $3+3\\sqrt{2}$이면 다른 한 근은 $3-3\\sqrt{2}$이다.<br>두 근의 곱은 $(3+3\\sqrt{2})(3-3\\sqrt{2})=9-18=-9$이다.<br>근과 계수의 관계에서 $-2k^2+3k=-9$이므로 $2k^2-3k-9=0$이다.<br>$(2k+3)(k-3)=0$이고 $k$는 양의 유리수이므로 $k=3$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -195,8 +195,8 @@ window.questionBank = [
       "⑤ 10"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\frac{x}{2}-3=t$로 놓으면 $3-\\frac{x}{2}=-t$이다.<br>$t^2-4t=16-2(-t)=16+2t$이므로 $t^2-6t-16=0$이다.<br>$(t-8)(t+2)=0$이므로 $t=8$ 또는 $t=-2$이다.<br>$t=8$이면 $\\frac{x}{2}=11$, $x=22$이고, $t=-2$이면 $\\frac{x}{2}=1$, $x=2$이다.<br>$\\alpha>\\beta$이므로 $\\alpha=22$, $\\beta=2$이다.<br>$x^2-(22-20)x-8=x^2-2x-8=0$에서 $(x-4)(x+2)=0$이므로 두 근은 $4,\\ -2$이다.<br>두 근의 차는 $4-(-2)=6$이다.</p>",
     "score": 5,
     "image": ""
   },
@@ -215,8 +215,8 @@ window.questionBank = [
       "⑤ 13"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x^2+2x+a-5=0$의 근이 유리수이려면 $(x+1)^2=6-a$에서 $6-a$가 (유리수의 제곱) 즉 $0$ 이상의 제곱수여야 한다.<br>$6-a=0,\\ 1,\\ 4$이면 $a=6,\\ 5,\\ 2$이다. ($6-a=9$이면 $a=-3$으로 자연수가 아니다.)<br>모든 자연수 $a$의 합은 $2+5+6=13$이다.</p>",
     "score": 5,
     "image": ""
   },
@@ -235,8 +235,8 @@ window.questionBank = [
       "⑤ 21"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>연속하는 세 홀수를 $x-4,\\ x-2,\\ x$ ($x$가 가장 큰 수)라 한다.<br>$x^2=(x-4)^2+(x-2)^2-65$이므로 $x^2=2x^2-12x+20-65$이다.<br>$x^2-12x-45=0$이므로 $(x-15)(x+3)=0$이다.<br>보기에 있는 값은 $x=15$이다. (세 홀수는 $11,13,15$이고 $11^2+13^2-15^2=121+169-225=65$로 확인된다.)</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q12-solution.svg",
@@ -259,8 +259,8 @@ window.questionBank = [
       "⑤ 모두 원점을 꼭짓점으로 하는 포물선이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$|a|$가 클수록 폭이 좁다.<br>① ㉠ $|2|$는 ㉢ $|3|$과 ㉥ $\\left|\\frac{1}{3}\\right|$ 사이이다. (옳다)<br>② 폭이 가장 좁은 것은 $|a|$가 가장 큰 ㉤ $|-5|$이다. (옳다)<br>③ 위로 볼록한 것은 $a<0$인 ㉡, ㉣, ㉤의 $3$개이다. (옳다)<br>④ ㉢ $y=3x^2$과 ㉥ $y=\\frac{1}{3}x^2$은 $a$의 부호가 같고 값이 다르므로 $x$축에 대하여 대칭이 아니다. (옳지 않다)<br>⑤ 모두 꼭짓점이 원점이다. (옳다)</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q13-solution.svg",
@@ -283,8 +283,8 @@ window.questionBank = [
       "⑤ $x > -3$일 때, $x$가 증가하면 $y$는 감소한다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① 꼭짓점은 $(-3,-2)$이다. (옳다)<br>② 축의 방정식은 $x=-3$이다. (옳다)<br>③ 아래로 볼록하므로 $x=-3$일 때 최솟값 $-2$이다. (옳다)<br>④ $x=0$일 때 $y=9-2=7$이다. (옳다)<br>⑤ $x>-3$에서는 $x$가 증가하면 $y$도 증가한다. (옳지 않다)</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q14-solution.svg",
@@ -307,8 +307,8 @@ window.questionBank = [
       "⑤ 8"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$y=-2(x-b)^2+c$를 $x$축 방향으로 $3$, $y$축 방향으로 $-2$만큼 평행이동하면 $y=-2(x-b-3)^2+c-2$이다.<br>$y=a(x-2)^2+4$와 비교하면 $a=-2$, $b+3=2$이므로 $b=-1$, $c-2=4$이므로 $c=6$이다.<br>$a+b+c=-2-1+6=3$</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q15-solution.svg",
@@ -333,8 +333,8 @@ window.questionBank = [
       "⑤ 10"
     ],
     "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>그래프에서 꼭짓점이 $(-1,-3)$이고 $y$절편이 $-1$이다.<br>$y=a(x+1)^2-3$에 $x=0$, $y=-1$을 대입하면 $a-3=-1$이므로 $a=2$이다.<br>$y=2(x+1)^2-3=2x^2+4x-1$이므로 $a=2$, $b=4$, $c=-1$이다.<br>$abc=2\\times4\\times(-1)=-8$</p>",
     "score": 4,
     "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
   },
@@ -355,8 +355,8 @@ window.questionBank = [
       "⑤ 점 $\\text{A}$의 좌표는 $(2, 2)$이다."
     ],
     "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$y=-2x^2+8x-7=-2(x-2)^2+1$이므로 꼭짓점 $\\mathrm{A}(2,1)$, 최댓값은 $1$, 축은 $x=2$이다.<br>$x=0$일 때 $y=-7$이므로 $\\mathrm{C}(0,-7)$이다.<br>$\\mathrm{E}$는 $\\mathrm{C}$와 $y$좌표가 같고 축 $x=2$에 대칭이므로 $\\mathrm{E}(4,-7)$이다.<br>$y=0$이면 $2x^2-8x+7=0$, $x=\\frac{4\\pm\\sqrt{2}}{2}$이므로 $\\overline{\\mathrm{BD}}=\\sqrt{2}$이다.<br>$\\triangle\\mathrm{ACE}$의 밑변 $\\overline{\\mathrm{CE}}=4$, 높이는 $1-(-7)=8$이므로 넓이는 $\\frac{1}{2}\\times4\\times8=16$이다.<br>따라서 옳은 것은 ③이다. (①은 최댓값 $1$, ②는 $\\overline{\\mathrm{BD}}=\\sqrt{2}$, ④는 $x=2$, ⑤는 $(2,1)$이므로 옳지 않다.)</p>",
     "score": 4,
     "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-solution.svg",
@@ -379,8 +379,8 @@ window.questionBank = [
       "⑤ 5"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$y=3x^2-12x+5=3(x-2)^2-7$이므로 꼭짓점은 $(2,-7)$이다.<br>$y=x^2-2px+q=(x-p)^2+q-p^2$이므로 꼭짓점은 $(p,\\ q-p^2)$이다.<br>$p=2$, $q-4=-7$이므로 $q=-3$이다.<br>$p-q=2-(-3)=5$</p>",
     "score": 4,
     "image": ""
   },
@@ -399,8 +399,8 @@ window.questionBank = [
       "⑤ $-1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>꼭짓점은 $(p,\\ -3p^2)$이고 직선 $y=2x-5$ 위에 있으므로 $-3p^2=2p-5$이다.<br>$3p^2+2p-5=0$, $(3p+5)(p-1)=0$이므로 $p=-\\frac{5}{3}$ 또는 $p=1$이다.<br>$p<0$이므로 $p=-\\frac{5}{3}$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -421,8 +421,8 @@ window.questionBank = [
       "⑤ 9"
     ],
     "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>점 $\\mathrm{A}$의 $x$좌표를 $t$ ($t>0$)라 하면 $\\mathrm{A}(t,at^2)$, $\\mathrm{D}(t,-t^2)$이다. $\\mathrm{E}(t,0)$<br>$\\overline{\\mathrm{AE}}=at^2$, $\\overline{\\mathrm{ED}}=t^2$이고 $\\overline{\\mathrm{AE}}:\\overline{\\mathrm{ED}}=1:3$이므로 $a=\\frac{1}{3}$이다.<br>$\\overline{\\mathrm{AD}}=at^2+t^2=\\frac{4}{3}t^2$이다.<br>$\\overline{\\mathrm{AB}}=2t$이고 정사각형이므로 $\\frac{4}{3}t^2=2t$, $t=\\frac{3}{2}$이다.<br>한 변의 길이는 $2t=3$이므로 넓이는 $9$이다.</p>",
     "score": 5,
     "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-solution.svg",
@@ -445,8 +445,8 @@ window.questionBank = [
       "⑤ $-3 \\le a < -2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x=2$일 때 최댓값 $4$이므로 $y=a(x-2)^2+4$ ($a<0$)이다.<br>꼭짓점 $(2,4)$는 제1사분면에 있다.<br>$a<0$이므로 $x$가 아주 크거나 아주 작을 때 $y<0$이 되어 제3, 4사분면을 지난다.<br>제2사분면도 지나려면 $y$절편이 양수여야 한다. $y(0)=4a+4>0$이므로 $a>-1$이다.<br>$-1<a<0$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -467,8 +467,8 @@ window.questionBank = [
       "⑤ $\\frac{17}{2}$"
     ],
     "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=x^2+2x-3=(x+1)^2-4$이므로 $\\mathrm{B}(-1,-4)$이다.<br>$y=0$이면 $(x+3)(x-1)=0$이고 음의 부분과의 교점은 $\\mathrm{A}(-3,0)$이다.<br>$x=0$이면 $y=-3$이므로 $\\mathrm{C}(0,-3)$이다.<br>사각형 $\\mathrm{OABC}$를 대각선 $\\mathrm{OB}$로 나눈다.<br>$\\triangle\\mathrm{OAB}=\\frac{1}{2}\\times3\\times4=6$<br>$\\triangle\\mathrm{OBC}=\\frac{1}{2}\\times3\\times1=\\frac{3}{2}$ ($\\overline{\\mathrm{OC}}=3$을 밑변으로 하면 높이는 $\\mathrm{B}$의 $x$좌표의 절댓값 $1$)<br>넓이는 $6+\\frac{3}{2}=\\frac{15}{2}$이다.</p>",
     "score": 4,
     "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-solution.svg",
@@ -491,8 +491,8 @@ window.questionBank = [
       "⑤ 30"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$y=-5x^2+50x+30=-5(x-5)^2+155$이다.<br>$x=5$일 때 가장 높이 올라가므로 걸린 시간은 $5$초이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -513,8 +513,8 @@ window.questionBank = [
       "⑤ 50"
     ],
     "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$x$초 후 $\\overline{\\mathrm{AP}}=x$이므로 $\\overline{\\mathrm{PB}}=8-x$이다.<br>$\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{BE}}+2x=4+2x$이다.<br>$\\mathrm{Q}$는 $\\mathrm{E}$에서 $\\mathrm{C}$까지 $10\\,\\text{cm}$를 움직이므로 $0\\le x\\le5$이다.<br>$\\triangle\\mathrm{PBQ}=\\frac{1}{2}(8-x)(4+2x)=(8-x)(2+x)=-x^2+6x+16=-(x-3)^2+25$<br>$x=3$ ($0\\le3\\le5$)일 때 최대 넓이는 $25\\,\\text{cm}^2$이다.</p>",
     "score": 5,
     "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-solution.svg",

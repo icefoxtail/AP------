@@ -1,0 +1,39 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "join": "PLUS",
+    "slots": [
+      {
+        "count": "4",
+        "title": "토"
+      },
+      {
+        "count": "5",
+        "title": "일"
+      }
+    ]
+  },
+  "caption": "총 30일로 이루어진 어느 달에서 토요일이 4일, 일요일이 5일임을 두 칸에 나누어 적어 나타낸 그림",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "총 $30$일로 이루어진 어느 달의 달력에서 토요일이 $4$일, 일요일이 $5$일 있다. 이 달력에서 하루를 임의로 선택할 때, 토요일 또는 일요일일 확률은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "총 30일로 이루어진 어느 달의 달력",
+      "mappedTo": "chart.slots"
+    },
+    {
+      "id": "c2",
+      "condition": "토요일이 4일, 일요일이 5일",
+      "mappedTo": "chart.slots"
+    }
+  ],
+  "newVisualInformation": [
+    "토요일 4일과 일요일 5일이 각각 한 칸에 적혀 있다",
+    "두 칸 사이에 더하는 계산을 나타내는 기호가 놓여 있다"
+  ]
+}

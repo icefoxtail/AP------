@@ -191,6 +191,9 @@
     'H15-CALC-01': 'H22-M2-01', 'H15-CALC-02': 'H22-M2-02', 'H15-CALC-03': 'H22-M2-03',
     'H15-CALC-04': 'H22-M2-04', 'H15-CALC-05': 'H22-M2-05', 'H15-CALC-06': 'H22-M2-06',
     'H15-CALC-07': 'H22-M2-07', 'H15-CALC-08': 'H22-M2-08',
+    // 2015 기하와 벡터 단원 코드(archive2-unified-units.js HIGH_SEMANTIC_KEYS와 같은 대응). 06·07(성분·내적)은 2022 단원 둘에 걸쳐 유형 힌트에 맡긴다.
+    'H15-GV-01': 'H22-GE-01', 'H15-GV-02': 'H22-GE-01', 'H15-GV-03': 'H22-GE-01',
+    'H15-GV-04': 'H22-GE-02', 'H15-GV-05': 'H22-GE-05', 'H15-GV-08': 'H22-GE-03', 'H15-GV-09': 'H22-GE-04',
     'H15-PS-01': 'H22-PS-01', 'H15-PS-02': 'H22-PS-02', 'H15-PS-03': 'H22-PS-03',
     'H15-PS-04': 'H22-PS-04', 'H15-PS-05': 'H22-PS-05', 'H15-PS-06': 'H22-PS-06',
     'H_ST_01_01': 'H22-PS-01', 'H_ST_01_02': 'H22-PS-02', 'H_ST_02_01': 'H22-PS-03',
@@ -249,7 +252,7 @@
     'original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#24': 'M22-3-02'
   });
 
-  const HIGH_SEMANTIC_SCOPE = Object.freeze({ ...COMMON_SCOPE, id: 'high-semantic-through-2final-v1', sourcePrefix: 'original/high/h2/' });
+  const HIGH_SEMANTIC_SCOPE = Object.freeze({ ...COMMON_SCOPE, id: 'high-semantic-through-2final-v1', sourcePrefix: 'original/high/h2/', sourcePrefixes: Object.freeze(['original/high/h2/', 'original/high/h3/']) });
   const HIGH_SEMANTIC_PROFILE_DATA = Object.freeze({
     catalogId: 'high-semantic',
     scope: HIGH_SEMANTIC_SCOPE,
@@ -365,7 +368,9 @@
 
   function isInScope(record, scope = PROFILES.h1.scope) {
     const file = normalizePath(record && (record.sourceFile || record._sourceFile));
-    return file.startsWith(scope.sourcePrefix) && scope.periods.includes(getPeriod(file));
+    // 고2·고3 단원표는 하나라서 고3 폴더(original/high/h3/)의 시험지도 같은 풀에 든다(scope.sourcePrefixes).
+    const prefixes = scope.sourcePrefixes || [scope.sourcePrefix];
+    return prefixes.some(prefix => file.startsWith(prefix)) && scope.periods.includes(getPeriod(file));
   }
 
   function isHighSemanticProfile(profileOrId) {
@@ -441,7 +446,80 @@
       (isHighSemanticProfile(profile) && Boolean(IGNORED_IDENTITIES[identity]));
   }
 
-  function classifyRecord(record, profileOrId = 'h1') {
+  // 옛 대단원 하나가 현행 두 단원으로 갈려 판정이 "세부 분류 확인 필요"로 남던 문항을, 시험지의 옛 소단원 키(subUnitKey)로 가른다.
+  // 키는 옛 대단원(standardUnitKey)과 짝이 맞을 때만 쓴다. 표에 없는 키는 건드리지 않고 다음 단계(유형 힌트)로 넘긴다.
+  const LEGACY_SUBUNIT_SPLIT = Object.freeze({
+    'M2-05': Object.freeze({
+      '삼각형의 성질': Object.freeze([
+        'M2-05-TRIANGLE_PROPERTIES', 'M2-05-ISOSCELES_PROP', 'M2-05-ISOSCELES_PROOF', 'M2-05-ISOSCELES_FOLD', 'M2-05-CIRCUMCENTER_PROP',
+        'M2-05-CIRCUMCENTER_CONST', 'M2-05-INCENTER_PROP', 'M2-05-INCENTER_APPLY', 'M2-05-INCENTER_AREA', 'M2-05-OUT_IN_CENTER',
+        'M2-05-OUT_IN_PROP', 'M2-05-OUT_IN_PERIMETER', 'M2-05-TRI_CONGRUENCE', 'M2-05-RIGHT_TRI_CONG',
+        'M2-06-ISOSCELES_TRIANGLE', 'M2-06-RIGHT_TRIANGLE_CONGRUENCE', 'M2-06-TRIANGLE_INCENTER', 'M2-06-TRIANGLE_CIRCUMCENTER',
+        'M2-06-CIRCUMCENTER_INCENTER']),
+      '사각형의 성질': Object.freeze([
+        'M2-05-QUADRILATERAL_PROPERTIES', 'M2-05-QUAD_PROPERTIES', 'M2-05-QUAD_DIAGONAL', 'M2-05-PARALLELOGRAM_PROP', 'M2-05-PARALLELOGRAM_COND',
+        'M2-05-RHOMBUS_AREA', 'M2-05-PARALLEL_TO_RHOMBUS',
+        'M2-08-ISOSCELES_TRAPEZOID', 'M2-08-PARALLELOGRAM_DIAGONAL', 'M2-08-PARALLELOGRAM_CONDITION', 'M2-08-PARALLELOGRAM_SIDE',
+        'M2-08-PARALLELOGRAM_INTERNAL_POINT', 'M2-08-RHOMBUS_CONDITION', 'M2-08-RECTANGLE_DIAGONAL_ANGLE', 'M2-08-SQUARE_AREA',
+        'M2-08-PARALLEL_LINE_AREA', 'M2-08-QUADRILATERAL_RELATION', 'M2-08-TRAPEZOID_EQUAL_AREA'])
+    }),
+    'M2-01': Object.freeze({
+      '유리수와 순환소수': Object.freeze(['M2-01-REPEATING_DECIMAL', 'M2-01-RATIONAL_NUMBER_REPEATING_DECIMAL']),
+      '식의 계산': Object.freeze([
+        'M2-01-POLYNOMIAL_OPERATIONS', 'M2-01-EXPONENT_LAW', 'M2-02-EXPONENT_LAWS', 'M2-02-EXPONENT_RULES', 'M2-02-EXPONENT_BASIC',
+        'M2-02-EXPONENT_EXPANSION', 'M2-02-EXPONENT_APPLICATION', 'M2-02-EXPONENT_DETERMINATION', 'M2-02-POLYNOMIAL_ARITHMETIC',
+        'M2-02-POLYNOMIAL_CALCULATION', 'M2-02-POLYNOMIAL_GEOMETRY', 'M2-02-POLYNOMIAL_ADD_SUB', 'M2-02-POLYNOMIAL_MUL_DIV',
+        'M2-02-POLYNOMIAL_SUBSTITUTION', 'M2-02-POLYNOMIAL_SUB', 'M2-02-POLYNOMIAL_ADD', 'M2-02-POLYNOMIAL_EXPANSION',
+        'M2-02-POLYNOMIAL_COEFFICIENT', 'M2-02-POLYNOMIAL_DEGREE', 'M2-02-POLYNOMIAL_INVERSE', 'M2-02-MONOMIAL_CALCULATION',
+        'M2-02-MONOMIAL_GEOMETRY', 'M2-02-UNKNOWN_MONOMIAL', 'M2-02-INVERSE_CALCULATION', 'M2-02-VOLUME_APPLICATION',
+        'M2-02-COMPLEX_SUBSTITUTION', 'M2-02-DIGIT_COUNT', 'M2-02-EXPRESSION_VALUE', 'M2-02-EXPANSION_MATCH'])
+    })
+  });
+  const LEGACY_SUBUNIT_LOOKUP = (() => {
+    const lookup = new Map();
+    for (const [oldKey, units] of Object.entries(LEGACY_SUBUNIT_SPLIT))
+      for (const [unitName, subKeys] of Object.entries(units)) for (const subKey of subKeys) lookup.set(`${oldKey}|${subKey}`, unitName);
+    return lookup;
+  })();
+  // 한 유형(PT)이 닮음 단원과 삼각형·사각형 단원에 함께 연결돼 힌트가 닮음으로 나올 수 있다. 그 문항의 소단원·유형·템플릿 키나 이름에
+  // 외심·내심(삼각형의 성질) 또는 사각형·평행사변형·마름모(사각형의 성질)가 있으면 그쪽으로 보낸다(원장 지시 2026-11-24). 새로 추정한 값이 아니라 이미 있는 값을 읽는다.
+  const HINT_REDIRECT_FROM = '도형의닮음과피타고라스정리';
+  const HINT_REDIRECTS = Object.freeze([
+    // 외심·내심 값이 있으면 삼각형의 성질. 유형 TRIANGLE_CENTERS는 무게중심(닮음)도 함께 연결돼 유형 키만으로는 보내지 않고,
+    // 템플릿(TPL_TRIANGLE_CENTERS_*)이 외심·내심 템플릿이면서 무게중심 값이 없을 때만 보낸다.
+    Object.freeze({ to: '삼각형의성질', pattern: /CIRCUMCENTER|INCENTER|INCIRCLE|외심|내심|외접원|내접원/,
+      templatePattern: /TRIANGLE_CENTERS/, excludePattern: /CENTROID|무게중심/ }),
+    Object.freeze({ to: '사각형의성질', pattern: /QUADRILATERAL|PARALLELOGRAM|RHOMBUS|사각형|평행사변형|마름모/ })
+  ]);
+  // 판정이 없던 문항을 채운다: ① 옛 소단원 키 → ② 카탈로그 유형 힌트(metaHintUnit). 값이 없으면 null(미정 그대로).
+  function fillUnclassifiedRecord(record, profile) {
+    const compact = value => String(value || '').replace(/\s+/g, '');
+    const unitByName = name => profile.units.find(unit => compact(unit.name) === compact(name));
+    const legacyName = LEGACY_SUBUNIT_LOOKUP.get(`${String(record.standardUnitKey || '').trim()}|${String(record.subUnitKey || '').trim()}`);
+    const legacyUnit = legacyName && profile.id.startsWith('m') ? unitByName(legacyName) : null;
+    if (legacyUnit) return { status: 'classified', unitKey: legacyUnit.key, reason: 'legacy-subunit' };
+    const hint = String(record.metaHintUnit || '').trim();
+    if (!hint) return null;
+    let hinted = profile.units.find(unit => unit.key === hint) || unitByName(hint);
+    if (!hinted) return null;
+    if (compact(hinted.name) === HINT_REDIRECT_FROM) {
+      const evidence = [record.subUnitKey, record.subUnit, record.problemTypeKey, record.templateKey, record.L3, record.L4, record.conceptLabel].join(' ');
+      const templateEvidence = [record.templateKey, record.L4].join(' ');
+      const redirect = HINT_REDIRECTS.find(item => item.pattern.test(evidence) ||
+        (item.templatePattern && item.templatePattern.test(templateEvidence) && !item.excludePattern.test(evidence)));
+      hinted = (redirect && unitByName(redirect.to)) || hinted;
+    }
+    return { status: 'classified', unitKey: hinted.key, reason: 'type-hint' };
+  }
+
+  // options.fillUnits: 기존 판정이 "확인 필요"(review)로 남긴 문항만 위 보충 판정으로 채운다. 기존에 정해진 판정은 바뀌지 않는다.
+  function classifyRecord(record, profileOrId = 'h1', options = {}) {
+    const result = classifyRecordBase(record, profileOrId);
+    if (!options.fillUnits || result.status !== 'review') return result;
+    return fillUnclassifiedRecord(record, getProfile(profileOrId)) || result;
+  }
+
+  function classifyRecordBase(record, profileOrId = 'h1') {
     const profile = getProfile(profileOrId);
     if (!middleToc || !profile.id.startsWith('m')) return classifyLegacyRecord(record, profile);
     const sourceFile = normalizePath(record && (record.sourceFile || record._sourceFile));
@@ -2214,10 +2292,13 @@
     const ignored = [];
 
     for (const record of scanned) {
-      const result = classifyRecord(record, profile);
+      const result = classifyRecord(record, profile, { fillUnits: options.fillUnits !== false });
       if (result.status === 'classified') {
         const unit = unitByKey[result.unitKey];
-        byUnit[result.unitKey].push(normalizeClassifiedRecord(record, unit, profile));
+        const placed = normalizeClassifiedRecord(record, unit, profile);
+        // 보충 판정(옛 소단원 키·유형 힌트)으로 들어온 문항은 근거를 남겨 나중에 셀 수 있게 한다. 기존 판정 문항은 그대로다.
+        if (result.reason === 'legacy-subunit' || result.reason === 'type-hint') placed.unitBasis = result.reason;
+        byUnit[result.unitKey].push(placed);
       } else if (result.status === 'invalid') invalid.push({ ...record, classificationReason: result.reason });
       else if (result.status === 'ignored') ignored.push({ ...record, classificationReason: result.reason });
       else review.push({ ...record, classificationReason: result.reason });

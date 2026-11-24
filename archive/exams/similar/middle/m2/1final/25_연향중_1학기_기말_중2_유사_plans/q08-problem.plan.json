@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -100,
+      1000,
+      -80,
+      700
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "600",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "600"
+        ],
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "f"
+        }
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "360",
+          "-2/5"
+        ],
+        "domain": [
+          "0",
+          "900"
+        ],
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "600",
+        "900"
+      ],
+      "y": [
+        "360",
+        "600"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "400",
+          "y": "200",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 소금물의 양 x, y가 만족하는 두 조건을 좌표평면에 직선으로 나타낸 것이다.",
+  "accessibilityDescription": "가로축에 600, 900, 세로축에 360, 600의 눈금이 표시된 좌표평면에 우하향하는 두 직선이 그려져 있고 두 직선이 한 점에서 만난다.",
+  "newVisualInformation": [
+    "두 소금물의 조건을 나타내는 두 직선",
+    "가로축 눈금 600, 900",
+    "세로축 눈금 360, 600"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$4\\%$의 소금물과 $10\\%$의 소금물을 섞어 농도가 $6\\%$인 소금물 $600\\text{ g}$을 만들려고 한다. $4\\%$의 소금물의 양을 $x\\text{ g}$, $10\\%$의 소금물의 양을 $y\\text{ g}$이라 할 때, 다음은 $x, y$를 구하는 과정이다. 빈칸에 들어갈 내용으로 옳지 않은 것은?\n\n- 소금물의 양: $x + y = \\fbox{㉠}$  \n- 소금의 양: $\\fbox{㉡}x + \\frac{10}{100}y = \\fbox{㉢} \\times 600$  \n두 식을 연립하여 풀면 $x = \\fbox{㉣},\\ y = \\fbox{㉤}$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

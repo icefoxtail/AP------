@@ -1,0 +1,61 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 8,
+      "names": "....."
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 15,
+        "depth": 15
+      },
+      "height": 20,
+      "names": "....."
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s1#b0",
+        "s1#b1"
+      ],
+      "label": "6"
+    },
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "15"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 A, 오른쪽 B"
+  },
+  "caption": "서로 닮은 두 정사각뿔 A, B에서 밑면의 한 변의 길이가 각각 6 cm, 15 cm이다.",
+  "accessibilityDescription": "왼쪽 정사각뿔의 밑면 한 변에 6, 오른쪽 정사각뿔의 밑면 한 변에 15가 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각뿔 A의 밑면 한 변 6 cm",
+    "정사각뿔 B의 밑면 한 변 15 cm",
+    "두 정사각뿔 A, B의 크기 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 정사각뿔 $A$, $B$에서 밑면의 한 변의 길이가 각각 $6\\text{ cm}$, $15\\text{ cm}$일 때, 두 정사각뿔 $A$와 $B$의 닮음비는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

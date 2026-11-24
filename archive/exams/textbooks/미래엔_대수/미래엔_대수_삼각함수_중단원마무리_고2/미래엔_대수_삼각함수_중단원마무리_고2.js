@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 각의 동경이 나타내는 일반각을 구하고, 제몇 사분면의 각인지 말하시오.\n⑴ $1004^\\circ$\n⑵ $-\\frac{16}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $360^\\circ\\times n+284^\\circ$ ($n$은 정수), 제$4$사분면\n⑵ $2n\\pi+\\frac{2}{3}\\pi$ ($n$은 정수), 제$2$사분면",
+    "solution": "각 $\\theta$의 동경이 나타내는 일반각은 $360^\\circ\\times n+\\alpha$ ($0^\\circ\\le\\alpha<360^\\circ$) 꼴이다.\n⑴ $1004^\\circ=360^\\circ\\times 2+284^\\circ$이므로 일반각은 $360^\\circ\\times n+284^\\circ$이다. $270^\\circ<284^\\circ<360^\\circ$이므로 제$4$사분면의 각이다.\n⑵ $-\\frac{16}{3}\\pi=2\\pi\\times(-3)+\\frac{2}{3}\\pi$이므로 일반각은 $2n\\pi+\\frac{2}{3}\\pi$이다. $\\frac{\\pi}{2}<\\frac{2}{3}\\pi<\\pi$이므로 제$2$사분면의 각이다."
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 육십분법으로 나타낸 각은 호도법으로, 호도법으로 나타낸 각은 육십분법으로 나타내시오.\n⑴ $30^\\circ$\n⑵ $-135^\\circ$\n⑶ $\\frac{\\pi}{2}$\n⑷ $-\\frac{2}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\pi}{6}$\n⑵ $-\\frac{3}{4}\\pi$\n⑶ $90^\\circ$\n⑷ $-120^\\circ$",
+    "solution": "$180^\\circ=\\pi$ (라디안)이므로 육십분법의 각에 $\\frac{\\pi}{180}$를 곱하면 호도법, 호도법의 각에 $\\frac{180^\\circ}{\\pi}$를 곱하면 육십분법이 된다.\n⑴ $30^\\circ=30\\times\\frac{\\pi}{180}=\\frac{\\pi}{6}$\n⑵ $-135^\\circ=-135\\times\\frac{\\pi}{180}=-\\frac{3}{4}\\pi$\n⑶ $\\frac{\\pi}{2}=\\frac{\\pi}{2}\\times\\frac{180^\\circ}{\\pi}=90^\\circ$\n⑷ $-\\frac{2}{3}\\pi=-\\frac{2}{3}\\pi\\times\\frac{180^\\circ}{\\pi}=-120^\\circ$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $10$이고 호의 길이가 $6\\pi$인 부채꼴의 중심각의 크기와 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "중심각의 크기: $\\frac{3}{5}\\pi$, 넓이: $30\\pi$",
+    "solution": "반지름의 길이가 $r$, 호의 길이가 $l$인 부채꼴의 중심각의 크기는 $\\theta=\\frac{l}{r}$, 넓이는 $S=\\frac{1}{2}rl$이다.\n$$\\theta=\\frac{6\\pi}{10}=\\frac{3}{5}\\pi$$\n$$S=\\frac{1}{2}\\times 10\\times 6\\pi=30\\pi$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-2,\\, 1)$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라 할 때, $\\sin\\theta,\\, \\cos\\theta,\\, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta=\\frac{\\sqrt{5}}{5},\\ \\cos\\theta=-\\frac{2\\sqrt{5}}{5},\\ \\tan\\theta=-\\frac{1}{2}$",
+    "solution": "점 $\\mathrm{P}(-2,\\ 1)$에 대하여 $\\overline{\\mathrm{OP}}=\\sqrt{(-2)^2+1^2}=\\sqrt{5}$이다.\n삼각함수의 정의에 의하여 $x=-2,\\ y=1,\\ r=\\sqrt{5}$일 때\n$$\\sin\\theta=\\frac{y}{r}=\\frac{1}{\\sqrt{5}}=\\frac{\\sqrt{5}}{5},\\quad \\cos\\theta=\\frac{x}{r}=-\\frac{2}{\\sqrt{5}}=-\\frac{2\\sqrt{5}}{5},\\quad \\tan\\theta=\\frac{y}{x}=-\\frac{1}{2}$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 삼각함수의 값을 구하시오.\n⑴ $\\sin\\frac{7}{6}\\pi$\n⑵ $\\cos\\left(-\\frac{5}{4}\\pi\\right)$\n⑶ $\\tan\\frac{10}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-\\frac{1}{2}$\n⑵ $-\\frac{\\sqrt{2}}{2}$\n⑶ $\\sqrt{3}$",
+    "solution": "⑴ $\\sin\\frac{7}{6}\\pi=\\sin\\left(\\pi+\\frac{\\pi}{6}\\right)=-\\sin\\frac{\\pi}{6}=-\\frac{1}{2}$\n⑵ $\\cos\\left(-\\frac{5}{4}\\pi\\right)=\\cos\\frac{5}{4}\\pi=\\cos\\left(\\pi+\\frac{\\pi}{4}\\right)=-\\cos\\frac{\\pi}{4}=-\\frac{\\sqrt{2}}{2}$\n⑶ $\\tan\\frac{10}{3}\\pi=\\tan\\left(3\\pi+\\frac{\\pi}{3}\\right)=\\tan\\frac{\\pi}{3}=\\sqrt{3}$ ($\\tan$의 주기는 $\\pi$)"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$를 나타내는 동경과 각 $4\\theta$를 나타내는 동경이 일치할 때, 각 $\\theta$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2}{3}\\pi$",
+    "solution": "각 $\\theta$를 나타내는 동경과 각 $4\\theta$를 나타내는 동경이 일치하면 두 각의 차가 $2\\pi$의 정수배이다.\n$$4\\theta-\\theta=2n\\pi\\ (n\\text{은 정수})$$\n$3\\theta=2n\\pi$이므로 $\\theta=\\frac{2n\\pi}{3}$\n$\\frac{\\pi}{2}<\\theta<\\pi$이므로 $n=1$일 때만 $\\theta=\\frac{2}{3}\\pi$가 이 범위에 있다."
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta\\cos\\theta < 0$과 $\\sin\\theta\\tan\\theta < 0$을 만족시키는 $\\theta$는 제몇 사분면의 각인지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제$2$사분면",
+    "solution": "$\\sin\\theta\\cos\\theta<0$이면 $\\sin\\theta$와 $\\cos\\theta$의 부호가 다르므로 $\\theta$는 제$2$사분면 또는 제$4$사분면의 각이다.\n$\\sin\\theta\\tan\\theta=\\sin\\theta\\times\\frac{\\sin\\theta}{\\cos\\theta}=\\frac{\\sin^2\\theta}{\\cos\\theta}<0$이면 $\\cos\\theta<0$이므로 $\\theta$는 제$2$사분면 또는 제$3$사분면의 각이다.\n두 조건을 모두 만족시키는 것은 제$2$사분면이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\theta$가 제3사분면의 각이고 $\\tan\\theta = \\frac{3}{4}$일 때, $\\sin\\theta$와 $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta=-\\frac{3}{5},\\ \\cos\\theta=-\\frac{4}{5}$",
+    "solution": "$1+\\tan^2\\theta=\\frac{1}{\\cos^2\\theta}$이므로\n$$\\frac{1}{\\cos^2\\theta}=1+\\frac{9}{16}=\\frac{25}{16}$$\n$\\cos^2\\theta=\\frac{16}{25}$이다. $\\theta$가 제$3$사분면의 각이므로 $\\cos\\theta<0$이어서 $\\cos\\theta=-\\frac{4}{5}$\n$\\sin\\theta=\\tan\\theta\\cos\\theta=\\frac{3}{4}\\times\\left(-\\frac{4}{5}\\right)=-\\frac{3}{5}$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta + \\cos\\theta = \\frac{2}{3}$일 때, $\\sin^3\\theta + \\cos^3\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{23}{27}$",
+    "solution": "$\\sin\\theta+\\cos\\theta=\\frac{2}{3}$의 양변을 제곱하면\n$$\\sin^2\\theta+2\\sin\\theta\\cos\\theta+\\cos^2\\theta=\\frac{4}{9}$$\n$\\sin^2\\theta+\\cos^2\\theta=1$이므로 $1+2\\sin\\theta\\cos\\theta=\\frac{4}{9}$에서 $\\sin\\theta\\cos\\theta=-\\frac{5}{18}$\n$$\\sin^3\\theta+\\cos^3\\theta=(\\sin\\theta+\\cos\\theta)^3-3\\sin\\theta\\cos\\theta(\\sin\\theta+\\cos\\theta)$$\n$$=\\frac{8}{27}-3\\times\\left(-\\frac{5}{18}\\right)\\times\\frac{2}{3}=\\frac{8}{27}+\\frac{5}{9}=\\frac{8}{27}+\\frac{15}{27}=\\frac{23}{27}$$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y=2\\sin\\left(x-\\frac{\\pi}{3}\\right)$\n⑵ $y=-\\cos\\left(6x+\\frac{\\pi}{2}\\right)+1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 주기: $2\\pi$, 최댓값: $2$, 최솟값: $-2$\n⑵ 주기: $\\frac{\\pi}{3}$, 최댓값: $2$, 최솟값: $0$",
+    "solution": "⑴ $y=2\\sin\\left(x-\\frac{\\pi}{3}\\right)$는 $y=2\\sin x$의 그래프를 $x$축의 방향으로 $\\frac{\\pi}{3}$만큼 평행이동한 것이다.\n주기는 $2\\pi$, 최댓값은 $2$, 최솟값은 $-2$이다.\n⑵ $y=-\\cos\\left(6x+\\frac{\\pi}{2}\\right)+1$에서 주기는 $\\frac{2\\pi}{6}=\\frac{\\pi}{3}$이다.\n$-1\\le\\cos\\left(6x+\\frac{\\pi}{2}\\right)\\le 1$이므로 $-1\\le-\\cos\\left(6x+\\frac{\\pi}{2}\\right)\\le 1$이고 $0\\le y\\le 2$이다.\n따라서 최댓값은 $2$, 최솟값은 $0$이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=a\\cos(bx-c)$의 그래프가 다음 그림과 같을 때, 세 상수 $a,\\, b,\\, c$에 대하여 $abc$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a>0,\\, b>0,\\, 0<c<\\pi$)\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\pi$",
+    "solution": "그래프에서 최댓값이 $2$, 최솟값이 $-2$이므로 $a=2$이다. ($a>0$)\n최댓값을 갖는 $x$가 $\\frac{\\pi}{2}$와 $\\frac{5}{2}\\pi$이므로 주기는 $\\frac{5}{2}\\pi-\\frac{\\pi}{2}=2\\pi$이다.\n$\\frac{2\\pi}{b}=2\\pi$이므로 $b=1$ ($b>0$)\n$y=2\\cos(x-c)$는 $x-c=0$일 때 최댓값 $2$를 갖는데 $x=\\frac{\\pi}{2}$에서 최대이므로 $c=\\frac{\\pi}{2}$이다. ($0<c<\\pi$를 만족시킨다.)\n(확인: $y=2\\cos\\left(x-\\frac{\\pi}{2}\\right)=2\\sin x$이므로 원점을 지나고 $x=\\frac{\\pi}{2}$에서 최대이다.)\n따라서 $abc=2\\times 1\\times\\frac{\\pi}{2}=\\pi$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\tan\\theta = -\\frac{1}{3}$일 때, 다음 식의 값을 구하시오.\n$$\\frac{\\cos\\theta}{1+\\sin\\theta} + \\frac{\\cos(\\pi+\\theta)}{1+\\sin(\\pi+\\theta)}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2}{3}$",
+    "solution": "$\\cos(\\pi+\\theta)=-\\cos\\theta,\\ \\sin(\\pi+\\theta)=-\\sin\\theta$이므로\n$$\\frac{\\cos\\theta}{1+\\sin\\theta}+\\frac{\\cos(\\pi+\\theta)}{1+\\sin(\\pi+\\theta)}=\\frac{\\cos\\theta}{1+\\sin\\theta}-\\frac{\\cos\\theta}{1-\\sin\\theta}$$\n통분하면\n$$=\\frac{\\cos\\theta(1-\\sin\\theta)-\\cos\\theta(1+\\sin\\theta)}{(1+\\sin\\theta)(1-\\sin\\theta)}=\\frac{-2\\sin\\theta\\cos\\theta}{1-\\sin^2\\theta}=\\frac{-2\\sin\\theta\\cos\\theta}{\\cos^2\\theta}=-2\\tan\\theta$$\n$\\tan\\theta=-\\frac{1}{3}$이므로 $-2\\times\\left(-\\frac{1}{3}\\right)=\\frac{2}{3}$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 \\le x < 2\\pi$일 때, 다음 방정식과 부등식을 푸시오.\n⑴ $\\tan\\frac{x}{2} - \\sqrt{3} = 0$\n⑵ $-\\frac{1}{2} < \\cos x \\le \\frac{\\sqrt{2}}{2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=\\frac{2}{3}\\pi$\n⑵ $\\frac{\\pi}{4}\\le x<\\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi<x\\le\\frac{7}{4}\\pi$",
+    "solution": "⑴ $\\tan\\frac{x}{2}=\\sqrt{3}$이다. $0\\le x<2\\pi$이므로 $0\\le\\frac{x}{2}<\\pi$이고, 이 범위에서 $\\tan\\frac{x}{2}=\\sqrt{3}$인 것은 $\\frac{x}{2}=\\frac{\\pi}{3}$이다. 따라서 $x=\\frac{2}{3}\\pi$\n⑵ $0\\le x<2\\pi$에서 $\\cos x>-\\frac{1}{2}$인 범위는 $0\\le x<\\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi<x<2\\pi$이다.\n$\\cos x\\le\\frac{\\sqrt{2}}{2}$인 범위는 $\\frac{\\pi}{4}\\le x\\le\\frac{7}{4}\\pi$이다.\n두 범위의 공통부분은 $\\frac{\\pi}{4}\\le x<\\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi<x\\le\\frac{7}{4}\\pi$이다."
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "둘레의 길이가 $20$인 부채꼴 중에서 그 넓이가 최대인 부채꼴의 중심각의 크기를 호도법으로 나타내시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "부채꼴의 반지름의 길이를 $r$, 호의 길이를 $l$이라 하면 둘레의 길이가 $20$이므로 $2r+l=20$에서 $l=20-2r$ ($0<r<10$)이다.\n부채꼴의 넓이는\n$$S=\\frac{1}{2}rl=\\frac{1}{2}r(20-2r)=-r^2+10r=-(r-5)^2+25$$\n$r=5$일 때 넓이가 최대 $25$이고 이때 $l=10$이다.\n중심각의 크기는 $\\frac{l}{r}=\\frac{10}{5}=2$ (라디안)이다."
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 함수 $y=2\\sin\\frac{\\pi}{4}x$의 그래프와 $x$축으로 둘러싸인 부분에 직사각형 $\\mathrm{ABCD}$가 내접하고 있다. $\\overline{\\mathrm{BC}}=2$일 때, 직사각형 $\\mathrm{ABCD}$의 넓이를 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{2}$",
+    "solution": "함수 $y=2\\sin\\frac{\\pi}{4}x$의 주기는 $\\frac{2\\pi}{\\frac{\\pi}{4}}=8$이고, 그래프는 $x=0$과 $x=4$에서 $x$축과 만나고 $x=2$에 대하여 대칭이다.\n직사각형이 대칭이고 $\\overline{\\mathrm{BC}}=2$이므로 $\\mathrm{B}(1,\\ 0)$, $\\mathrm{C}(3,\\ 0)$이다.\n점 $\\mathrm{A}$의 $y$좌표는 $2\\sin\\frac{\\pi}{4}=2\\times\\frac{\\sqrt{2}}{2}=\\sqrt{2}$이므로 $\\overline{\\mathrm{AB}}=\\sqrt{2}$이다.\n따라서 직사각형 $\\mathrm{ABCD}$의 넓이는 $2\\times\\sqrt{2}=2\\sqrt{2}$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\cos^2 x + \\sin x + 1$이 $x=a$에서 최댓값 $b$를 갖는다. 이때 $ab$의 값을 구하시오. (단, $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{3}{8}\\pi$",
+    "solution": "$\\cos^2x=1-\\sin^2x$이므로\n$$y=1-\\sin^2x+\\sin x+1=-\\sin^2x+\\sin x+2$$\n$\\sin x=t$로 놓으면 $-\\frac{\\pi}{2}\\le x\\le\\frac{\\pi}{2}$에서 $-1\\le t\\le 1$이고\n$$y=-t^2+t+2=-\\left(t-\\frac{1}{2}\\right)^2+\\frac{9}{4}$$\n$t=\\frac{1}{2}$일 때 최댓값 $\\frac{9}{4}$이다. $\\sin x=\\frac{1}{2}$이고 $-\\frac{\\pi}{2}\\le x\\le\\frac{\\pi}{2}$이므로 $x=\\frac{\\pi}{6}$\n따라서 $a=\\frac{\\pi}{6},\\ b=\\frac{9}{4}$이고 $ab=\\frac{\\pi}{6}\\times\\frac{9}{4}=\\frac{3}{8}\\pi$"
   },
   {
     "id": 17,
@@ -474,7 +474,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 부등식\n$$x^2 + 2\\sqrt{2}x\\cos\\theta - \\sin\\theta + 1 > 0$$\n이 성립하도록 하는 $\\theta$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오. (단, $0 \\le \\theta < 2\\pi$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{6}\\pi<\\theta<\\frac{11}{6}\\pi$",
+    "solution": "모든 실수 $x$에 대하여 $x^2+2\\sqrt{2}\\cos\\theta\\, x-\\sin\\theta+1>0$이 성립하려면 이차방정식의 판별식 $D<0$이어야 한다.\n$$\\frac{D}{4}=(\\sqrt{2}\\cos\\theta)^2-(1-\\sin\\theta)=2\\cos^2\\theta-1+\\sin\\theta<0$$\n$\\cos^2\\theta=1-\\sin^2\\theta$를 대입하면\n$$2-2\\sin^2\\theta-1+\\sin\\theta=-2\\sin^2\\theta+\\sin\\theta+1<0$$\n$2\\sin^2\\theta-\\sin\\theta-1>0$이므로 $(2\\sin\\theta+1)(\\sin\\theta-1)>0$\n$\\sin\\theta\\le 1$이므로 $\\sin\\theta-1\\le 0$이다. 곱이 양수이려면 $\\sin\\theta-1<0$이고 $2\\sin\\theta+1<0$이어야 하므로 $\\sin\\theta<-\\frac{1}{2}$\n$0\\le\\theta<2\\pi$에서 $\\sin\\theta<-\\frac{1}{2}$인 범위는 $\\frac{7}{6}\\pi<\\theta<\\frac{11}{6}\\pi$이다."
   }
 ];

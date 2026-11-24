@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "E",
+    "C",
+    "F",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p0",
+        "count": 1,
+        "segments": [
+          "sDC",
+          "sAF"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "r0",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "B",
+              "E"
+            ]
+          }
+        ],
+        "labelName": "△DBE",
+        "label": "12",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "3k",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 1
+      },
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "4k",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "caption": "삼각형 ABF에서 변 AB 위의 점 D와 변 BF 위의 점 E, C를 잇고 DC가 AF와 평행인 그림이다. 삼각형 DBE의 넓이는 12제곱센티미터로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABF의 밑변 BF 위에 E와 C가 있고 D는 AB 위에 있다. 삼각형 DBE가 옅게 칠해져 있으며 12제곱센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "변의 비 3 대 4와 삼각형 DBE의 넓이 12제곱센티미터를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABF$에서 변 $AB$ 위의 점 $D$, 변 $BF$ 위의 점 $E$에 대하여 사각형 $ADEC$가 있고 $\\overline{DC} \\parallel \\overline{AF}$이다. $\\overline{BE} : \\overline{EF} = 3 : 4$이고 $\\triangle DBE = 12\\text{ cm}^2$일 때, $\\square ADEC$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
