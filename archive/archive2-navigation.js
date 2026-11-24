@@ -165,11 +165,13 @@
     });
   }
 
-  // Two-way switch shown at the top of 출제 내역 and 보관함 (they share one menu entry, which opens 출제 내역 first).
-  function libraryTabs(active) {
+  // Switch shown at the top of 출제 내역 and 보관함 (they share one menu entry, which opens 출제 내역 first).
+  // 시험지 보관함 is a separate page (assessment/assessment-mvp.html): a link, so the archive has a way in besides the teacher dashboard.
+  function libraryTabs(active, base = "") {
     const tab = (view, label) =>
       `<button type="button" data-view="${view}" aria-pressed="${view === active}">${label}</button>`;
-    return `<div class="view-switch" role="group" aria-label="출제 내역과 보관함">${tab("recent", "출제 내역")}${tab("saved", "보관함")}</div>`;
+    const vault = `<a href="${base}assessment/assessment-mvp.html" data-library-link="exam-vault"${active === "exam-vault" ? ' aria-current="page"' : ""}>시험지 보관함</a>`;
+    return `<div class="view-switch" role="group" aria-label="출제 내역, 보관함, 시험지 보관함">${tab("recent", "출제 내역")}${tab("saved", "보관함")}${vault}</div>`;
   }
 
   function bind() {}
