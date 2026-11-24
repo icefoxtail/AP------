@@ -6257,6 +6257,45 @@ def axis_titles_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'titles':len(titles)}
 
+AXIS_TICK_SYMBOL_OBSERVER_PATTERN='[A-Za-zαβγδθ]'
+def axis_tick_labels_audit(plan,svg,transform):
+    """graphPlan.axisTickLabels {axis:{value:symbol}}: the plan's own check, then (in a composed figure) every named tick is read back from the final SVG: a tick mark of that axis stands at
+    the value, its label is owned by that tick, carries the symbol (data-tick-symbol and display value) and draws exactly that letter, and no numeric tick label stands at the value."""
+    labels=plan.get('axisTickLabels')
+    if labels is None:return None
+    if not isinstance(labels,dict) or not labels or set(labels)-{'x','y'}:return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABELS_INVALID']}
+    wanted=[]
+    for axis,rows in labels.items():
+        if not isinstance(rows,dict) or not rows:return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABELS_INVALID:'+axis]}
+        for raw_value,symbol in rows.items():
+            try:value=Fraction(str(raw_value))
+            except (TypeError,ValueError,ZeroDivisionError):return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABEL_VALUE_INVALID:'+axis]}
+            if value==0 or not isinstance(symbol,str) or re.fullmatch(AXIS_TICK_SYMBOL_OBSERVER_PATTERN,symbol) is None:return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABEL_SYMBOL_INVALID:'+axis]}
+            wanted.append((axis,float(value),symbol))
+    if len({(axis,value) for axis,value,_ in wanted})!=len(wanted) or len({(axis,symbol) for axis,_,symbol in wanted})!=len(wanted):return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABELS_DUPLICATE']}
+    if 'data-label-kind' not in svg:return {'status':'PASS','errors':[],'ticks':len(wanted)}
+    errors=[]
+    try:
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        root=ET.fromstring(svg)
+        ticks=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='tick']
+        tick_labels=[node for node in root.iter() if node.tag.split('}')[-1] in ('text','g') and node.get('data-label-kind')=='TICK_LABEL']
+        for axis,value,symbol in wanted:
+            mine=[node for node in ticks if node.get('data-axis')==axis and node.get('data-value') is not None and abs(float(node.get('data-value'))-value)<=1e-9]
+            if len(mine)!=1:errors.append('AXIS_TICK_LABEL_TICK_MISSING:'+axis+':'+symbol);continue
+            tick=mine[0]
+            ends=[(float(tick.get('x'+i,'inf')),float(tick.get('y'+i,'inf'))) for i in ('1','2')]
+            want=(ox+value*sx,oy) if axis=='x' else (ox,oy-value*sy)
+            if min(math.hypot(ex-want[0],ey-want[1]) for ex,ey in ends)*transform['displayScale']>.35:errors.append('AXIS_TICK_LABEL_TICK_POSITION:'+axis+':'+symbol)
+            owners=[node for node in tick_labels if node.get('data-tick-owner')==tick.get('id')]
+            if len(owners)!=1:errors.append('AXIS_TICK_LABEL_OWNER:'+axis+':'+symbol);continue
+            label=owners[0]
+            if label.get('data-tick-symbol')!=symbol or label.get('data-tick-display-value')!=symbol or label.get('data-tick-pi-value') is not None:errors.append('AXIS_TICK_LABEL_TEXT_MISMATCH:'+axis+':'+symbol);continue
+            want_codes=_ov_label_codes(symbol);got=_ov_glyph_codes(label)
+            if label.tag.split('}')[-1]=='g' and (len(got)!=len(want_codes) or any(code not in allowed for code,allowed in zip(got,want_codes))):errors.append('AXIS_TICK_LABEL_GLYPH_MISMATCH:'+axis+':'+symbol)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TICK_LABEL_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'ticks':len(wanted)}
+
 def _observed_curve_polylines(root):
     """(branch, [(x,y) px ...]) of every drawn curve polyline that names its branch."""
     rows=[]
@@ -6880,7 +6919,7 @@ def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform,model=model)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform),curve_label_owner_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_tick_labels_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform),curve_label_owner_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

@@ -165,7 +165,7 @@ def compose(prepared,layout,viewport,fragments=None):
             if root.tag.split('}')[-1]!='svg' or any(n.tag.split('}')[-1] not in {'svg','g','path','rect','defs','title','desc'} for n in root.iter()):raise ValueError('UNSAFE_FROZEN_FRAGMENT')
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
-            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
+            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-symbol="{esc(label["tickSymbol"])}"' if label.get('tickSymbol') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
             if label.get('axisValue') in ('x','y'):binding+=f' data-axis-value="{label["axisValue"]}" data-axis-source-x="{num(label["axisAnchor"][0])}" data-axis-source-y="{num(label["axisAnchor"][1])}"'   # (AXV) bound to its own value on that axis
             # A plain-text or unit label of a plane mark keeps what it says on its group, so the observer can read it back from the final SVG.
             if label.get('nearRoom')=='NONE':binding+=' data-near-room="NONE"'
@@ -180,6 +180,7 @@ def compose(prepared,layout,viewport,fragments=None):
         if label['kind']=='TICK_LABEL':
             attrs+=f' data-visual-role="tick-label" data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'
             if label.get('tickPiValue') is not None:attrs+=f' data-tick-pi-value="{esc(label["tickPiValue"])}"'
+            if label.get('tickSymbol') is not None:attrs+=f' data-tick-symbol="{esc(label["tickSymbol"])}"'
             if label.get('tickLabelCallout'):attrs+=f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"'
         if label.get('centered'):attrs+=' text-anchor="middle" dominant-baseline="central"'
         if label.get('math') or label.get('hasMath'):attrs+=' data-math="true"'

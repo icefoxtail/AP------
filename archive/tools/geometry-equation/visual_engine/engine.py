@@ -592,6 +592,31 @@ def prepare(spec):
             dash={'dash':'5 4'} if oid=='y-axis' and zero_pole else {}
             primitive({'id':oid,'kind':'line','from':vp.screen(a),'to':vp.screen(b),'token':'axis','layer':30,'role':'axis','axis':oid[0],**dash},'axis')
         axis_tick_values=spec['displayFacts'].get('axisTickValues')
+        # (axisTickLabels) a tick at a value of the axis whose label is a letter (a, b, c, alpha) instead of its number: the symbols join the numeric ticks, and a numeric tick at the same value gives way
+        tick_symbols={}
+        raw_symbols=spec['displayFacts'].get('axisTickLabels')
+        if raw_symbols is not None:
+            if not isinstance(raw_symbols,dict) or not raw_symbols or set(raw_symbols)-{'x','y'}:raise ValueError('INVALID_AXIS_TICK_LABELS')
+            if axis_tick_values is not None and not isinstance(axis_tick_values,dict):raise ValueError('INVALID_AXIS_TICK_VALUES')
+            merged={'x':[],'y':[]}
+            for axis in ('x','y'):
+                rows=raw_symbols.get(axis,{})
+                if not isinstance(rows,dict):raise ValueError('INVALID_AXIS_TICK_LABELS:'+axis)
+                if rows and not (show_x if axis=='x' else show_y):raise ValueError('INVALID_AXIS_TICK_LABELS:'+axis)
+                for raw_value,symbol in rows.items():
+                    try:value=float(Fraction(str(raw_value)))
+                    except (TypeError,ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_TICK_LABEL_VALUE:'+axis) from None
+                    if not isinstance(symbol,str) or re.fullmatch('[A-Za-zαβγδθ]',symbol) is None or (axis,value) in tick_symbols:raise ValueError('INVALID_AXIS_TICK_LABEL_SYMBOL:'+axis)
+                    tick_symbols[(axis,value)]=symbol
+                base=(axis_tick_values or {}).get(axis,[])
+                if not isinstance(base,list):raise ValueError('INVALID_AXIS_TICK_VALUES:'+axis)
+                kept=[]
+                for raw_value in base:
+                    try:keep=(axis,float(Fraction(str(raw_value)))) not in tick_symbols
+                    except (TypeError,ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis) from None
+                    if keep:kept.append(raw_value)
+                merged[axis]=kept+[str(raw_value) for raw_value in rows]
+            axis_tick_values=merged
         if axis_tick_values is not None:
             if not isinstance(axis_tick_values,dict):raise ValueError('INVALID_AXIS_TICK_VALUES')
             for axis in ('x','y'):
@@ -665,7 +690,7 @@ def prepare(spec):
                 if abs(value)<1e-12:continue
                 # A tick number exactly at a drawn graph reference point would repeat that point's x on the axis and collide with its label/marker:
                 # the reference point already carries the value, so the redundant tick is omitted.
-                if axis=='x' and any(abs(value-item)<=1e-12 for item in reference_positions):continue
+                if axis=='x' and (axis,value) not in tick_symbols and any(abs(value-item)<=1e-12 for item in reference_positions):continue
                 at=(value,axis_at['x']) if axis=='x' else (axis_at['y'],value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
                 display_token=str(int(value)) if float(value).is_integer() else f'{value:.10g}'
                 id_token=str(index) if index is not None else display_token
@@ -675,6 +700,8 @@ def prepare(spec):
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 text=fraction_text.get((axis,value),display_token).replace('-','−');tick_pi=None
+                tick_symbol=tick_symbols.get((axis,value))
+                if tick_symbol is not None:text=tick_symbol   # (axisTickLabels) the author's letter stands where the number would
                 if tick_pi_labels is not None and axis=='x':   # the pi labels belong to the x axis; y ticks beside them keep their plain / fraction text
                     matches=[row for row in tick_pi_labels if abs(float(row['value'])-value)<=1e-9]
                     if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
@@ -690,7 +717,7 @@ def prepare(spec):
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
-                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tex':tick_fraction_tex} if tick_fraction_tex else {}),**({'tickPiValue':tick_pi['multiple']} if tick_pi else {}),**({'tickCalloutFallback':True} if spec['displayFacts'].get('tickLabelFallbackCallout') is True else {})}
+                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tex':tick_fraction_tex} if tick_fraction_tex else {}),**({'tickPiValue':tick_pi['multiple']} if tick_pi else {}),**({'tickSymbol':tick_symbol} if tick_symbol is not None else {}),**({'tickCalloutFallback':True} if spec['displayFacts'].get('tickLabelFallbackCallout') is True else {})}
                 if spec['displayFacts'].get('preferTickSide') is True:label['preferTickSide']=True
                 if axis=='x' and spec['displayFacts'].get('xTickLeaderUsesInk') is True:
                     label['tickLeaderUsesInk']=True

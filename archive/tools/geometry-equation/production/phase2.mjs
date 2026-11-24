@@ -556,7 +556,7 @@ export function specFor(plan,model,id){
   // planeMarks are facts read off named points and drawn segments, so they belong to the construction/plane-figure path only.
   if(plan.planeMarks!==undefined&&plan.capability!=='construction-spike-v1')throw Error('PLANE_MARKS_UNSUPPORTED_ON_GRAPH');
   const spec=specForFamily(plan,model,id);
-  return withLabelHints(plan,addAxisTitles(plan,addGraphOverlays(plan,spec)));
+  return withLabelHints(plan,addAxisTickLabels(plan,addAxisTitles(plan,addGraphOverlays(plan,spec))));
 }
 // plan.labelHints {"<labelId>": {prefer?, nudge?, leader?}}: the author's fine tuning of single labels, the same shape for every label kind. The engine checks the label ids and the values
 // (visual_engine.label_layout.apply_label_hints) and applies them while it lays the labels out, so every overlap, distance and leader check still judges the place a label ends in.
@@ -578,6 +578,32 @@ function addAxisTitles(plan,spec){
     if(!shown)throw Error('AXIS_TITLE_AXIS_HIDDEN:'+axis);
   }
   return {...spec,displayFacts:{...spec.displayFacts,axisTitles:{...titles}}};
+}
+
+// graphPlan.axisTickLabels {x?:{"<value>":"<symbol>"},y?:{...}}: a tick at that value of the axis whose label is a letter (a, b, c, alpha, beta) instead of its number, for a figure whose
+// statement names the positions by letters (the times a, b, c on the t axis). The tick mark and its place are those of a numeric tick; only the text is the author's symbol.
+// A value the axis already lists as a numeric tick shows the symbol instead of the number. The symbol is one letter (Latin or alpha beta gamma delta theta).
+const AXIS_TICK_SYMBOL_PATTERN=/^[A-Za-zαβγδθ]$/;
+const AXIS_TICK_LABEL_VALUE_PATTERN=/^-?\d+(?:\.\d+)?(?:\/[1-9]\d*)?$/;
+const axisTickLabelNumber=value=>value.includes('/')?Number(value.split('/')[0])/Number(value.split('/')[1]):Number(value);
+function addAxisTickLabels(plan,spec){
+  const labels=plan.graphPlan?.axisTickLabels;
+  if(labels===undefined)return spec;
+  if(!labels||typeof labels!=='object'||Array.isArray(labels)||!Object.keys(labels).length||Object.keys(labels).some(axis=>axis!=='x'&&axis!=='y'))throw Error('AXIS_TICK_LABELS_INVALID');
+  for(const [axis,rows] of Object.entries(labels)){
+    if(!rows||typeof rows!=='object'||Array.isArray(rows)||!Object.keys(rows).length)throw Error('AXIS_TICK_LABELS_INVALID:'+axis);
+    const shown=spec.axes===undefined||spec.axes===true||(typeof spec.axes==='object'&&spec.axes[axis]===true);
+    if(!shown)throw Error('AXIS_TICK_LABELS_AXIS_HIDDEN:'+axis);
+    const values=new Set(),symbols=new Set();
+    for(const [value,symbol] of Object.entries(rows)){
+      if(!AXIS_TICK_LABEL_VALUE_PATTERN.test(value)||axisTickLabelNumber(value)===0)throw Error('AXIS_TICK_LABEL_VALUE_INVALID:'+axis+':'+value);
+      if(typeof symbol!=='string'||!AXIS_TICK_SYMBOL_PATTERN.test(symbol))throw Error('AXIS_TICK_LABEL_SYMBOL_INVALID:'+axis+':'+value);
+      if(values.has(axisTickLabelNumber(value)))throw Error('AXIS_TICK_LABEL_VALUE_DUPLICATE:'+axis+':'+value);
+      if(symbols.has(symbol))throw Error('AXIS_TICK_LABEL_SYMBOL_DUPLICATE:'+axis+':'+symbol);
+      values.add(axisTickLabelNumber(value));symbols.add(symbol);
+    }
+  }
+  return {...spec,displayFacts:{...spec.displayFacts,axisTickLabels:JSON.parse(JSON.stringify(labels))}};
 }
 
 // An exponential or logarithmic graph that carries a circle is framed at one scale (graph_framing _equalize_exp_log_for_circles): its plot size is the frame's.
