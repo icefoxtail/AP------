@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "빗변 10",
+        "elements": [
+          "10"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "두 변 8, 6",
+        "elements": [
+          "8",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "직각삼각형의 빗변의 길이와 직각을 낀 두 변 8, 6의 대응 관계를 나타낸 도식이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = 8, \\overline{AC} = 6$인 직각삼각형 $ABC$ ($\\angle A = 90^\\circ$)를 이용하여 피타고라스 나무를 그렸다. 빗변 $BC$ 위에 세워진 첫 번째 정사각형, 그 위의 두 정사각형, 그리고 그 위에 세워진 네 정사각형의 넓이의 총합은? (단, 각 단계에서 만들어지는 직각삼각형들은 모두 처음 삼각형과 닮은 직각삼각형이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "직각삼각형 ABC에서 직각을 낀 두 변의 길이는 8과 6이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "빗변 10에서 직각을 낀 두 변 8과 6으로 나뉘는 대응을 보여준다."
+  ]
+}

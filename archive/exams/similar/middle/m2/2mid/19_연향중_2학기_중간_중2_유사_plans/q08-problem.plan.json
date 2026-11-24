@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAO",
+        "ownerSegment": "sAO",
+        "text": "x"
+      },
+      {
+        "id": "lBO",
+        "ownerSegment": "sBO",
+        "text": "y"
+      },
+      {
+        "id": "lOC",
+        "ownerSegment": "sOC",
+        "text": "z"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kAC",
+        "kind": "SEGMENT",
+        "path": [
+          "A",
+          "C"
+        ],
+        "at": "ABOVE",
+        "dimensions": [
+          {
+            "id": "dAC",
+            "from": "A",
+            "to": "C",
+            "label": "10",
+            "unit": "cm",
+            "side": "ABOVE",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      },
+      {
+        "id": "kBD",
+        "kind": "SEGMENT",
+        "path": [
+          "B",
+          "D"
+        ],
+        "at": "BELOW",
+        "dimensions": [
+          {
+            "id": "dBD",
+            "from": "B",
+            "to": "D",
+            "label": "8",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "평행사변형 ABCD의 두 대각선 AC와 BD의 교점을 O라 하고 대각선 길이와 세 선분의 길이가 문자로 주어진 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 두 대각선 AC와 BD가 점 O에서 교차하고 선분 AO는 x, 선분 BO는 y, 선분 OC는 z로 표시되어 있으며 대각선 AC의 길이는 10 cm, 대각선 BD의 길이는 8 cm로 주어져 있다.",
+  "newVisualInformation": [
+    "선분 AO의 길이는 x이다.",
+    "선분 BO의 길이는 y이다.",
+    "선분 OC의 길이는 z이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 두 대각선의 길이가 $\\overline{AC} = 10\\text{ cm}$, $\\overline{BD} = 8\\text{ cm}$이고 두 대각선의 교점을 $O$라 하자. $x = \\overline{AO}$, $y = \\overline{BO}$, $z = \\overline{OC}$일 때, $x + y + z$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

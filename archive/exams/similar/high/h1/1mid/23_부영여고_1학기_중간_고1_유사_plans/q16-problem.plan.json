@@ -1,0 +1,131 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2",
+    "requiredPoints": [
+      {
+        "id": "O_req",
+        "x": 0,
+        "y": 0,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "3",
+          "label": "y=2x+k",
+          "labelValues": {
+            "k": "3"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3"
+        },
+        {
+          "id": "B",
+          "curveX": "-1"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S1",
+          "points": [
+            "A",
+            "O",
+            "C"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "S2",
+          "points": [
+            "D",
+            "O",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "O": "O"
+  },
+  "caption": "이차함수와 직선이 만나는 두 점 A, B에서 x축에 내린 수선의 발 C, D 및 두 삼각형 AOC, DOB를 나타낸 그래프이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선과 오른쪽 위로 향하는 직선이 그려져 있다. 제1사분면의 교점 A와 제2사분면의 교점 B에서 x축에 내린 수선의 발이 각각 C와 D이며, 원점 O와 함께 이루는 두 삼각형 AOC와 DOB의 내부가 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 점 A와 B에서 x축에 내린 수선의 발은 C와 D이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2$의 그래프와 직선 $y=2x+k$가 만나는 두 점을 $A, B$라 하고, 점 $A, B$에서 $x$축에 내린 수선의 발을 각각 $C, D$라 하자. 원점 $O$에 대하여 두 삼각형 $AOC$, $DOB$의 넓이를 각각 $S_1, S_2$라 할 때, $S_1-S_2=22$를 만족시키는 양수 $k$의 값은? (단, 점 $A$는 제$1$사분면 위의 점이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

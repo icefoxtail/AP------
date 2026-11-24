@@ -51,6 +51,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/22_풍덕중_1학기_기말_중2_유사/q02-problem.svg",
     "category": "다항식의 계산",
     "standardCourse": "중2",
     "curriculum": "2015",

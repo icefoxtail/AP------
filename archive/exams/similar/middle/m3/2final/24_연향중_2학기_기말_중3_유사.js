@@ -717,6 +717,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/24_연향중_2학기_기말_중3_유사/q16-problem.svg",
     "category": "대푯값과 산포도",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -762,6 +763,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/24_연향중_2학기_기말_중3_유사/q17-problem.svg",
     "category": "대푯값과 산포도",
     "standardCourse": "중3",
     "curriculum": "2015",

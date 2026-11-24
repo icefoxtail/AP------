@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "l"
+        }
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-1/2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "m"
+        }
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면 위의 두 직선 l과 m 및 각 직선이 지나는 점들.",
+  "accessibilityDescription": "좌표평면에 직선 l과 직선 m이 그려져 있다. 직선 l은 점 (-2, 1)과 점 (2, 3)을 지나며, 직선 m은 점 (0, -2)와 점 (1, 1)을 지난다.",
+  "newVisualInformation": [
+    "직선 l은 두 점 (-2, 1)과 (2, 3)을 지나고 직선 m은 두 점 (0, -2)와 (1, 1)을 지난다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 직선 $l$은 두 점 $(-2, 1)$, $(2, 3)$을 지나고, 직선 $m$은 두 점 $(0, -2)$, $(1, 1)$을 지난다. 두 직선 $l$, $m$의 방정식을 각각 구하고, 두 직선의 교점의 좌표를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

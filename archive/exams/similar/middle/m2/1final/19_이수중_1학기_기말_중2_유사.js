@@ -469,6 +469,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/19_이수중_1학기_기말_중2_유사/q11-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",

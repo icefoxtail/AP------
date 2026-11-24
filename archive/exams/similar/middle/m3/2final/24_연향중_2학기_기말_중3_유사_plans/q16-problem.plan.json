@@ -1,4 +1,37 @@
 {
-  "status": "EXEMPT",
-  "reason": "편차의 합이 0임을 이용한 미지수 편차 산출 및 변량 역산 대수 문항"
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      10,
+      13,
+      13,
+      20,
+      24
+    ],
+    "xTitle": "대기 시간(분)",
+    "marks": {
+      "meanLine": {
+        "value": "16",
+        "label": "평균"
+      },
+      "deviations": true
+    }
+  },
+  "caption": "치과 환자 5명의 대기 시간과 평균 16분에 대한 편차를 나타낸 점도표",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 표는 어느 치과에서 환자 $5$명의 접수 후 대기 시간에 대한 편차를 조사하여 나타낸 것이다. 대기 시간의 평균이 $16$분일 때, 환자 B의 대기 시간을 구하면? [4점]\n\n| 환자 | A | B | C | D | E |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 편차(분) | $8$ | $x$ | $4$ | $-6$ | $-3$ |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "대기 시간의 평균이 16분이다",
+      "mappedTo": "chart.marks.meanLine"
+    }
+  ],
+  "newVisualInformation": [
+    "환자들의 대기 시간이 점도표로 표시되어 있고 평균 16분과 각 대기 시간의 편차가 나타나 있다."
+  ]
 }

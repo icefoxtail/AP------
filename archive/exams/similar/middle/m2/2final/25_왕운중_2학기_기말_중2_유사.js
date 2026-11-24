@@ -188,6 +188,7 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "image": "assets/images/25_왕운중_2학기_기말_중2_유사/q05-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",
@@ -279,6 +280,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/25_왕운중_2학기_기말_중2_유사/q07-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",
@@ -324,6 +326,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/25_왕운중_2학기_기말_중2_유사/q08-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",
@@ -415,6 +418,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/25_왕운중_2학기_기말_중2_유사/q10-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",
@@ -952,6 +956,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/25_왕운중_2학기_기말_중2_유사/q22-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",

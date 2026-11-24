@@ -770,6 +770,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q18-problem.svg",
     "category": "입체도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",

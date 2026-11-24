@@ -710,6 +710,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/25_제일고_1학기_기말_고2_대수_유사/q17-problem.svg",
     "category": "사인법칙과 코사인법칙 핵심 개념",
     "standardCourse": "대수",
     "curriculum": "2022",

@@ -1,0 +1,49 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x절편이 -3이고 y절편이 -6인 일차함수의 그래프이다.",
+  "accessibilityDescription": "좌표평면 위에 x절편이 -3이고 y절편이 -6인 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선의 x절편은 -3이고 y절편은 -6이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$절편이 $-3$이고 $y$절편이 $-6$인 일차함수의 식은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

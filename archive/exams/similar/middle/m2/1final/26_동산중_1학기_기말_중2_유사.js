@@ -389,6 +389,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/26_동산중_1학기_기말_중2_유사/q09-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2022",

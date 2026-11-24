@@ -92,6 +92,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/22_금당고_1학기_기말_고2_수학I_유사/q03-problem.svg",
     "category": "지수의 뜻과 성질",
     "standardCourse": "",
     "curriculum": "2015",

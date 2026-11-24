@@ -148,6 +148,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/19_연향중_2학기_중간_중2_유사/q04-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -338,6 +339,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/19_연향중_2학기_중간_중2_유사/q08-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -433,6 +435,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/19_연향중_2학기_중간_중2_유사/q10-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

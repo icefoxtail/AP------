@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "-4"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-4"
+      ]
+    }
+  },
+  "caption": "좌표평면에서 점 (0, -4)를 지나고 x축에 평행한 직선의 그래프이다.",
+  "accessibilityDescription": "좌표평면 위에 점 (0, -4)를 지나며 x축과 평행한 수평 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "점 (0, -4)를 지나고 x축에 평행한 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $y+4=0$의 그래프와 평행하고 점 $(5,-3)$을 지나는 직선의 방정식은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

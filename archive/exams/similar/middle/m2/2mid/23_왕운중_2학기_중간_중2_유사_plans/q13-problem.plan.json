@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2588",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9659",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8000",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9659",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ap",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17294",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4830",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20000",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4830",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Ap",
+    "Bp",
+    "Cp",
+    "Dp"
+  ],
+  "pointNames": {
+    "Ap": "A'",
+    "Bp": "B'",
+    "Cp": "C'",
+    "Dp": "D'"
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sApBp",
+      "refs": [
+        "Ap",
+        "Bp"
+      ]
+    },
+    {
+      "id": "sBpCp",
+      "refs": [
+        "Bp",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpDp",
+      "refs": [
+        "Cp",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpAp",
+      "refs": [
+        "Dp",
+        "Ap"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75.00078,
+        "label": "75",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aAp",
+        "refs": [
+          "Dp",
+          "Ap",
+          "Bp"
+        ],
+        "value": 104.99922,
+        "label": "105",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lApBp",
+        "ownerSegment": "sApBp",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCpDp",
+        "ownerSegment": "sCpDp",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "caption": "서로 닮음인 두 사각형 ABCD와 A'B'C'D'가 나란히 놓여 있다.",
+  "accessibilityDescription": "왼쪽에 사각형 ABCD가 있고 각 B는 75도, 선분 AB는 10 cm, 선분 BC는 12 cm이다. 오른쪽에 축소된 사각형 A'B'C'D'가 있고 각 A'는 105도, 선분 A'B'는 5 cm, 선분 C'D'는 4 cm이다.",
+  "newVisualInformation": [
+    "두 사각형 ABCD와 A'B'C'D'의 대응변과 대응각의 배치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사각형 $\\square ABCD$와 $\\square A'B'C'D'$가 $\\square ABCD \\sim \\square A'B'C'D'$이고, $\\overline{AB}=10\\text{ cm}$, $\\overline{BC}=12\\text{ cm}$, $\\overline{A'B'}=5\\text{ cm}$, $\\overline{C'D'}=4\\text{ cm}$, $\\angle A'=105^\\circ$, $\\angle B=75^\\circ$일 때, 다음 중 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -822,6 +822,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/21_연향중_2학기_중간_중2_유사/q18-problem.svg",
     "category": "도형의 닮음",
     "standardCourse": "중2",
     "curriculum": "2015",

@@ -52,6 +52,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/23_연향중_2학기_중간_중2_유사/q02-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -148,6 +149,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/23_연향중_2학기_중간_중2_유사/q04-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -807,6 +809,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/23_연향중_2학기_중간_중2_유사/q18-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",

@@ -1,4 +1,254 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "윗면 반지름 4, 아랫면 반지름 8, 모선 10인 원뿔대와 반지름 5인 구 다이어그램"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M1",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAxis",
+      "refs": [
+        "M1",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sM1B",
+      "refs": [
+        "M1",
+        "B"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l_top",
+        "ownerSegment": "sM1B",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l_bot",
+        "ownerSegment": "sOD",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "l_slant",
+        "ownerSegment": "sBD",
+        "text": "10",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "M1",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "O",
+        "M1"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "윗면의 반지름이 4 cm, 아랫면의 반지름이 8 cm, 모선의 길이가 10 cm인 원뿔대의 단면을 나타낸 그림이다.",
+  "accessibilityDescription": "사다리꼴 모양의 원뿔대 단면에서 윗면의 반지름이 4 cm, 아랫면의 반지름이 8 cm, 모선의 길이가 10 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "원뿔대의 윗면 반지름 4 cm, 아랫면 반지름 8 cm, 모선의 길이 10 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 원뿔대의 겉넓이를 $S_1$이라 하고, 반지름의 길이가 $5\\text{ cm}$인 구의 겉넓이를 $S_2$라 할 때, $\\dfrac{S_1}{S_2}$의 값은? [5점] (단, 원뿔대의 윗면의 반지름의 길이는 $4\\text{ cm}$, 아랫면의 반지름의 길이는 $8\\text{ cm}$, 모선의 길이는 $10\\text{ cm}$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

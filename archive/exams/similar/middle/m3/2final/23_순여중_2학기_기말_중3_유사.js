@@ -4,6 +4,7 @@ window.examDisplayTitle = "23년 순여중 중3 2학기 기말 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/23_순여중_2학기_기말_중3_유사/q01-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -241,6 +242,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/23_순여중_2학기_기말_중3_유사/q06-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -286,6 +288,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/23_순여중_2학기_기말_중3_유사/q07-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -333,6 +336,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/23_순여중_2학기_기말_중3_유사/q08-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -473,6 +477,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/23_순여중_2학기_기말_중3_유사/q11-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

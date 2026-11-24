@@ -1,4 +1,306 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "한 변이 6cm인 정육각형 내부에 꼭짓점 중심 반지름 6cm 원호가 포함된 복합 둘레 다이어그램"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V0",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "V0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "V4",
+        "V5"
+      ]
+    },
+    {
+      "id": "s50",
+      "refs": [
+        "V5",
+        "V0"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l23",
+        "ownerSegment": "s23",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "a0",
+        "circle": "c0",
+        "center": "V0",
+        "from": "V5",
+        "to": "V1",
+        "side": "MINOR"
+      }
+    ],
+    "regions": [
+      {
+        "id": "r0",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "V1",
+              "steps": [
+                {
+                  "to": "V2"
+                },
+                {
+                  "to": "V3"
+                },
+                {
+                  "to": "V4"
+                },
+                {
+                  "to": "V5"
+                },
+                {
+                  "to": "V1",
+                  "arc": {
+                    "center": "V0",
+                    "side": "MINOR"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 변의 길이가 6 cm인 정육각형의 한 꼭짓점을 중심으로 반지름이 6 cm인 원호를 그리고 남은 영역을 색칠한 그림이다.",
+  "accessibilityDescription": "한 변의 길이가 6 cm인 정육각형 내부에서 왼쪽 꼭짓점을 중심으로 하는 원호가 그려져 있고, 원호의 오른쪽 영역이 색칠되어 있다. 정육각형의 한 변의 길이는 6 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "한 변의 길이가 6 cm인 정육각형의 변 4개와 중심각이 120도인 원호 1개로 둘러싸인 색칠된 영역"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $6\\text{ cm}$인 정육각형의 한 꼭짓점을 중심으로 하고 한 변의 길이를 반지름으로 하는 원호를 그렸다. 이때 색칠한 부분의 둘레의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

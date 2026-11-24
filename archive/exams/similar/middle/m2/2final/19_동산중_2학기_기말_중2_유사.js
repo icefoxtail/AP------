@@ -49,6 +49,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/19_동산중_2학기_기말_중2_유사/q02-problem.svg",
     "category": "삼각형의 닮음 조건과 대응변의 길이",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -273,6 +274,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/19_동산중_2학기_기말_중2_유사/q07-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",

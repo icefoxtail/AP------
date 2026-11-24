@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1.9,
+      4.9,
+      -2.9,
+      3.9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "일차방정식 y-ax+b=0의 그래프가 오른쪽 아래로 향하고 y축의 양의 부분과 만나는 직선이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 아래로 향하는 직선이 그려져 있고 y축의 양의 부분에서 만난다.",
+  "newVisualInformation": [
+    "직선이 오른쪽 아래로 향함",
+    "직선이 y축과 양의 부분에서 만남"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $y-ax+b=0$의 그래프가 오른쪽 아래로 향하는 직선이고 $y$축과 양의 부분에서 만날 때, 상수 $a$, $b$의 부호는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

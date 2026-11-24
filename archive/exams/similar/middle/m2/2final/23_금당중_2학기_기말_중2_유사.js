@@ -270,6 +270,7 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "image": "assets/images/23_금당중_2학기_기말_중2_유사/q07-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",

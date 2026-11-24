@@ -338,6 +338,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/23_향림중_2학기_중간_중2_유사/q08-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",

@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-34"
+            },
+            {
+              "kind": "integer",
+              "value": "94"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-90"
+            },
+            {
+              "kind": "integer",
+              "value": "-44"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "90"
+            },
+            {
+              "kind": "integer",
+              "value": "-44"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aOBC",
+        "refs": [
+          "C",
+          "B",
+          "O"
+        ],
+        "value": 26,
+        "label": "26"
+      },
+      {
+        "id": "aACB",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 48,
+        "label": "48"
+      },
+      {
+        "id": "aOAB",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 42,
+        "label": "y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "예각삼각형 ABC와 그 외심 O에서 선분 OA의 길이가 5 cm, 각 OBC가 26도, 각 ACB가 48도일 때 선분 OB의 길이 x와 각 OAB의 크기 y를 나타낸 그림이다.",
+  "accessibilityDescription": "예각삼각형 ABC의 내부에 외심 O가 있고 꼭짓점 A, B와 외심 O를 잇는 선분이 그려져 있다. 선분 OA는 5 cm, 선분 OB는 x cm로 표시되어 있고 각 OBC는 26도, 각 ACB는 48도, 각 OAB는 y도로 표시되어 있다.",
+  "newVisualInformation": [
+    "점 O는 삼각형 ABC의 외심이다.",
+    "선분 OA의 길이는 5 cm이다.",
+    "선분 OB의 길이는 x cm이다.",
+    "각 OBC의 크기는 26도이다.",
+    "각 ACB의 크기는 48도이다.",
+    "각 OAB의 크기는 y도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "예각삼각형 $ABC$의 외심을 $O$라 하자. $\\overline{OA}=5\\text{ cm}$, $\\angle OBC=26^\\circ$, $\\angle ACB=48^\\circ$이고 $\\overline{OB}=x\\text{ cm}$, $\\angle OAB=y^\\circ$일 때, $x+y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
