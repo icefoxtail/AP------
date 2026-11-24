@@ -23,7 +23,8 @@ const P = (...p) => path.join(REPO, ...p);
 const TYPES_REL = 'types/high/h2';
 const TYPES_DIR = P('archive/exams', TYPES_REL);
 const COMPACT_DIR = P('archive/data/item-4slot', TYPES_REL);
-const GEN_DIR = P('archive/_generated', `typebank-${SUBJECT}`);
+// Resolver 증거는 저장소에 두지 않는다(GIT_RAW_OUTPUT_FORBIDDEN): 작업 폴더에 쓴다.
+const GEN_DIR = process.env.TYPEBANK_GEN || path.join(PATHS.work, '_generated');
 const CFG = SUBJECTS[SUBJECT];
 const branchName = () => execFileSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'], { cwd: REPO, encoding: 'utf8' }).trim();
 const sha256 = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -635,7 +636,7 @@ async function main() {
     const dirs = fs.existsSync(PATHS.work) ? fs.readdirSync(PATHS.work).filter(d => fs.existsSync(path.join(PATHS.work, d, 'state.json'))) : [];
     for (const d of dirs.sort()) {
       if (readJson(path.join(PATHS.work, d, 'state.json')).stage !== 'APPLIED') continue;
-      for (const f of [`archive/exams/${TYPES_REL}/${d}.js`, `archive/data/item-4slot/${TYPES_REL}/${d}.4slot.json`, `archive/_generated/typebank-${SUBJECT}/${d}.create-resolver.json`]) if (fs.existsSync(P(f))) console.log(f);
+      for (const f of [`archive/exams/${TYPES_REL}/${d}.js`, `archive/data/item-4slot/${TYPES_REL}/${d}.4slot.json`]) if (fs.existsSync(P(f))) console.log(f);
     }
     return;
   }
