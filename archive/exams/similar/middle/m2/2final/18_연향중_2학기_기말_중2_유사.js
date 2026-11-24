@@ -589,6 +589,7 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "image": "assets/images/18_연향중_2학기_기말_중2_유사/q14-problem.svg",
     "category": "닮은 도형의 성질과 겉넓이·부피의 비",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -904,6 +905,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/18_연향중_2학기_기말_중2_유사/q21-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

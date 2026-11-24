@@ -190,6 +190,7 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "image": "assets/images/21_향림중_2학기_중간_중2_유사/q05-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",

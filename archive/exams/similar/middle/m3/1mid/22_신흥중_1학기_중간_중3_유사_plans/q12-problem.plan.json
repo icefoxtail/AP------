@@ -1,9 +1,289 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "NUMBER_LINE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "39"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "51"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "51"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "39"
+            },
+            {
+              "kind": "integer",
+              "value": "22"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "56"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "65"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "caption": "수직선 A(2), B(3) 위 정사각형 대각선 AC=루트2를 좌우로 옮긴 P(2-루트2), Q(2+루트2) 좌표의 합 4"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "L",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCQ",
+      "refs": [
+        "C",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC",
+          "sCD",
+          "sDA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "1"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "caption": "수직선 위에 한 변의 길이가 1인 정사각형 ABCD와 대각선 AC, 그리고 두 점 P, Q가 나타나 있다.",
+  "accessibilityDescription": "점 A를 중심으로 대각선 AC의 길이를 회전시켜 수직선 위의 두 점 P와 Q의 위치로 이어지는 점선이 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형의 대각선 길이를 수직선 위로 옮겨 두 점 P와 Q의 위치를 결정한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위의 두 점 $A(2)$와 $B(3)$에 대하여 $\\overline{AB}$를 한 변으로 하는 정사각형 $ABCD$가 있다. $\\overline{AC} = \\overline{AP} = \\overline{AQ}$인 수직선 위의 두 점 $P(a)$(점 $A$의 왼쪽)와 $Q(b)$(점 $A$의 오른쪽)에 대하여 $a + b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

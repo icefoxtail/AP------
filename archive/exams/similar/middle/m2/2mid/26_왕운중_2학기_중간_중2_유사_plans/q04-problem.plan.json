@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "77",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 156,
+        "label": "156",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "caption": "둔각삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발 D와 외심 O가 표시되어 있고 각 ABD는 45도, 각 BOC는 156도인 그림이다.",
+  "accessibilityDescription": "둔각삼각형 ABC의 꼭짓점 A에서 밑변 BC로 내린 수선 AD에 직각 표시가 있고 외심 O는 변 BC의 아래쪽에 위치한다. 각 ABD는 45도로, 점 O에서 두 꼭짓점 B와 C를 잇는 선분이 이루는 각 BOC는 156도로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 ABD가 45도이고 점 A의 반대쪽에 위치한 외심 O에서 각 BOC가 156도로 주어져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둔각삼각형 $ABC$의 외심 $O$가 변 $BC$에 대하여 꼭짓점 $A$의 반대쪽에 있고, 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $D$, $\\triangle ADC$의 외심을 $O'$이라고 하자. $\\angle ABD = 45^\\circ$이고 점 $A$의 반대쪽에서 잰 $\\angle BOC = 156^\\circ$일 때, 다음 중 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

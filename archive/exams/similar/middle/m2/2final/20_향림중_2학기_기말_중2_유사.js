@@ -452,6 +452,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/20_향림중_2학기_기말_중2_유사/q11-problem.svg",
     "category": "피타고라스 정리의 활용",
     "standardCourse": "중2",
     "curriculum": "2015",

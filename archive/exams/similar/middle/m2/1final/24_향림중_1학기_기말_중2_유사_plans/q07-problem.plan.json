@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "10"
+        ],
+        "label": "T=n"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "10"
+        ],
+        "label": "T=8"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "10"
+        ],
+        "style": "DASHED",
+        "label": "T=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "8"
+      ],
+      "y": [
+        "2",
+        "8"
+      ]
+    },
+    "axisTitles": {
+      "x": "n",
+      "y": "T"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "8",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "직선 T=n과 직선 T=8 및 T=2가 그려진 그래프이다.",
+  "accessibilityDescription": "가로축 n과 세로축 T에 직선 T=n과 수평선 T=8, T=2가 그려져 있고 점 (2, 2)와 (8, 8)이 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 T=n과 T=8의 교점의 좌표는 (8, 8)이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $8\\text{ cm}$인 정사각형 모양의 색종이를 이웃하는 색종이끼리 가로 방향으로 $2\\text{ cm}$씩 겹치도록 일렬로 이어 붙여서 새로운 직사각형을 만들려고 한다. 이 직사각형의 넓이가 $400\\text{ cm}^2$ 이상이 되도록 할 때, 색종이를 최소 몇 장 이어 붙여야 하는가? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The line T=n intersects T=8 at (8,8)."
+  ]
+}

@@ -4,6 +4,7 @@ window.examDisplayTitle = "21년 향림중 중2 2학기 기말 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/21_향림중_2학기_기말_중2_유사/q01-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",

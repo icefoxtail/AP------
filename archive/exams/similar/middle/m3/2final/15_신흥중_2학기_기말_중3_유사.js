@@ -4,6 +4,7 @@ window.examDisplayTitle = "15년 신흥중 중3 2학기 기말 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/15_신흥중_2학기_기말_중3_유사/q01-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",

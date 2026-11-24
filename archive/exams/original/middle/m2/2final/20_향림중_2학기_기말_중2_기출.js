@@ -339,7 +339,9 @@ window.questionBank = [
       "$10\\text{ cm}^2$",
       "$12\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_향림중_2학기_기말_중2_기출/q06.png",
+    "image": "assets/images/20_향림중_2학기_기말_중2_기출/q06-problem-visual-v2.svg",
+    "imageAlt": "평행사변형 ABCD에서 점 E는 변 AB의 중점이고, 점 F는 E를 지나 AC와 평행한 직선이 변 BC와 만나는 점이다. 선분 AC, EF, AF가 그려져 있다.",
+    "imageSize": "full",
     "answer": "③",
     "solution": "E는 AB의 중점이므로\nBE:BA=1:2이다.\nEF∥AC이므로 △BEF와 △BAC는 닮음이고\nBF:BC=BE:BA=1:2이다.\n따라서 F는 BC의 중점이며\nFC:BC=1:2이다.\n\n△ABC의 넓이는 평행사변형 ABCD 넓이의 절반이므로\n[ABC]=36÷2=18 cm²이다.\n△AFC와 △ABC는 높이가 같으므로 넓이의 비는 밑변의 비와 같다.\n[AFC]:[ABC]=FC:BC=1:2.\n따라서\n[AFC]=18÷2=9 cm²이다.\n\n그러므로 정답은 ③이다.",
     "level": "중",

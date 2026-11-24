@@ -1,9 +1,311 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "원에 내접하는 육각형 ABCDEF와 세 꼭짓점 각의 합"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "F",
+          "A",
+          "B"
+        ],
+        "value": 120,
+        "noLabel": true,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 120,
+        "noLabel": true,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angE",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "value": 120,
+        "noLabel": true,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 460
+  },
+  "caption": "원 위에 여섯 개의 점 A, B, C, D, E, F가 순서대로 놓여 내접하는 육각형을 이루고 꼭짓점 A, C, E의 내각이 표시되어 있는 그림이다.",
+  "accessibilityDescription": "원 안에 육각형이 내접해 있고 꼭짓점 A, C, E의 안쪽에 각을 나타내는 부채꼴 표식이 칠해져 있다.",
+  "newVisualInformation": [
+    "원에 내접하는 육각형의 세 꼭짓점 A, C, E에 내각 표식이 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "육각형 $ABCDEF$가 원에 내접할 때, 세 꼭짓점의 내각의 합 $\\angle A + \\angle C + \\angle E$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -778,6 +778,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/25_팔마중_2학기_기말_중2_유사/q18-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",
@@ -1033,6 +1034,7 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "image": "assets/images/25_팔마중_2학기_기말_중2_유사/q24-problem.svg",
     "category": "지수법칙",
     "standardCourse": "",
     "curriculum": "2015",

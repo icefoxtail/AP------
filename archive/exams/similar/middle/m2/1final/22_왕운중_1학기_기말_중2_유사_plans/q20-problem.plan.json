@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "O_B",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "B_C",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "C_D",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "D_E",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "E_F",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "F_O",
+      "refs": [
+        "F",
+        "O"
+      ]
+    },
+    {
+      "id": "A_D",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "G_D",
+      "refs": [
+        "G",
+        "D"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "basew",
+        "ownerSegment": "G_D",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "baseh",
+        "ownerSegment": "A_D",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "up",
+        "ownerSegment": "D_E",
+        "text": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "ownerSegment": "C_D",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "base",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "D",
+              "G"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "caption": "가로 4, 세로 2인 직사각형에 가로와 세로 방향으로 각각 직사각형을 이어 붙여 새로운 도형을 만든 형태를 나타낸 그림이다.",
+  "accessibilityDescription": "가로 4, 세로 2인 직사각형의 오른쪽으로 가로 x, 세로 2인 직사각형이 이어 붙어 있고, 위쪽으로 가로 4, 세로 y인 직사각형이 이어 붙어 있다.",
+  "newVisualInformation": [
+    "직사각형에 이어 붙인 직사각형들의 가로와 세로 배치 형태"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 $4\\text{ cm}$, 세로의 길이가 $2\\text{ cm}$인 직사각형이 있다. 이 직사각형의 가로 방향으로는 세로 $2\\text{ cm}$, 가로 $x\\text{ cm}$인 직사각형을 이어 붙이고, 세로 방향으로는 가로 $4\\text{ cm}$, 세로 $y\\text{ cm}$인 직사각형을 이어 붙여 새로운 도형을 만들었다. 가로로 늘인 길이 $x$가 세로로 늘인 길이 $y$보다 $1\\text{ cm}$ 더 길고 새로 만든 도형의 넓이가 원래 직사각형의 넓이의 $5$배라고 할 때, 가로와 세로의 길이를 각각 얼마만큼 늘였는지 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

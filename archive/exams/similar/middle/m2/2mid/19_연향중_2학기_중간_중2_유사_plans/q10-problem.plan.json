@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "72",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "96",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "96",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "72",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "M",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc"
+  ],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "24",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "caption": "세 내각이 직각인 사각형 ABCD의 대각선 교점 E와 선분 DE를 지름으로 하는 원이 그려져 있다.",
+  "accessibilityDescription": "사각형 ABCD의 꼭짓점 A, B, C에 직각 표시가 있고, 두 대각선 AC와 BD의 교점은 E이다. 대각선 AC의 길이는 24cm이고 선분 DE를 지름으로 하는 원이 그려져 있다.",
+  "newVisualInformation": [
+    "대각선 AC의 길이는 24cm이다.",
+    "선분 DE를 지름으로 하는 원이 사각형 내부에 그려져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사각형 $ABCD$에서 $\\angle A = \\angle B = \\angle C = 90^\\circ$, $\\overline{AC} = 24\\text{ cm}$이고 두 대각선의 교점을 $E$라 할 때, $\\overline{DE}$를 지름으로 하는 원의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

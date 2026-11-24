@@ -449,6 +449,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/23_왕운중_2학기_중간_중3_유사/q11-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "",
     "curriculum": "2015",
@@ -494,6 +495,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/23_왕운중_2학기_중간_중3_유사/q12-problem.svg",
     "category": "삼각비",
     "standardCourse": "",
     "curriculum": "2015",
@@ -674,6 +676,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/23_왕운중_2학기_중간_중3_유사/q16-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "",
     "curriculum": "2015",
@@ -765,6 +768,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/23_왕운중_2학기_중간_중3_유사/q18-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "",
     "curriculum": "2015",
@@ -1016,6 +1020,7 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "image": "assets/images/23_왕운중_2학기_중간_중3_유사/q24-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "",
     "curriculum": "2015",

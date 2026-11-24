@@ -1,7 +1,6 @@
 # AGENTS.md — 작업 안내판
 
-이 파일은 작업 진입 안내판이다. 자동 로드는 실행기·작업 폴더·설정에 따라 달라지며, 링크한 문서 본문까지 읽었다는 뜻은 아니다. 세부 규칙은 해당 작업을 할 때 실제로 열어 읽는다.
-요약과 원문이 다르면 영역 문서의 원문이 우선한다.
+이 파일은 작업 안내판이다. 자동 로드·링크 문서 열람을 보장하지 않으니 해당 영역 문서를 직접 읽는다. 충돌 시 영역 문서 원문이 우선한다.
 
 ## 첫걸음
 
@@ -26,7 +25,7 @@
 - **루트 폴더는 main 전용:** 저장소 루트 폴더(워크트리가 아닌 본 체크아웃)에서는 커밋·브랜치 전환·파일 작업을 하지 않고, 작업은 자기 워크트리에서 한다(상세: `docs/agents/git-evidence.md`). 이유: 루트가 main보다 1,679커밋 뒤처진 다른 브랜치가 된 일이 있다.
 - **워크트리 정리:** 내 PR이 `main`에 병합되면 그 작업 워크트리는 바로 지운다. 남의 것·미병합 커밋이 있는 것은 지우지 않고 보고한다(절차: `docs/agents/git-evidence.md`). 이유: 워크트리 하나가 약 7GB라 C 드라이브가 찬 적이 있다.
 - **공유 데이터 고정값:** 원본 시험지 JS·공유 크로스워크·생성문항 Meta를 바꾸면 `docs/agents/common.md` "공유 데이터 고정값" 절을 따르고, PR CI의 실패는 병합을 막지 않고 수리 목록으로 넘긴다(먼저 병합, 수리는 마지막에 관제가: 같은 문서 맨 위 절). 이유: 해시 고정값이 정상 수정에 깨져 main CI·배포가 막힌 적이 있다.
-- **새 SVG는 엔진으로만:** 문제·해설 그림을 새로 만들 때는 어떤 작업이든 저장소 SVG 엔진으로 만들고, 손·스크립트 조립 SVG는 넣지 않는다. 엔진이 못 그리면 그림 보류로 보고한다(`docs/agents/visual-svg.md` 맨 위 절). 이유: 직접 조립한 그림은 검증되지 않는다.
+- **새 SVG는 엔진으로만:** 문제·해설 그림을 새로 만들 때는 어떤 작업이든 저장소 SVG 엔진으로 만들고, 손·스크립트 조립 SVG는 넣지 않는다. 엔진이 못 그리면 엔진을 고친다(`docs/agents/visual-svg.md` 맨 위 절). 이유: 직접 조립한 그림은 검증되지 않는다.
 - **Archive 2.0 코드:** 화면·검색·출력·저장 코드를 바꾸면 먼저 `docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 읽는다. 병합 전에 `node tools/check-archive2-runtime.cjs`를 통과시키고, 흐름을 바꿨으면 실제 Chrome으로 확인한다. 원본 기출은 `engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다.
 
 ## 토큰 효율
@@ -50,6 +49,7 @@
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
+| GPT 유사세트 난도 믹서 | [운영계약](docs/agents/gpt-similar-difficulty-mixer.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
@@ -66,5 +66,5 @@
 
 - 새 사용자 지시와 캠페인 규칙은 해당 영역 문서에 추가한다. 모든 라인에 필요한 간결한 공통 우선순위는 `모든 작업 공통` 절에 둘 수 있다. 이 파일에는 날짜별 지시(`CURRENT TOP` 등)나 진행 현황을 쌓지 않는다. 여러 실행기의 공통 진입 문서이기 때문이다.
 - 끝난 캠페인 규칙은 지운다. 이력은 git에 남는다(예: NEW14 규칙 3개는 2026-10-30 사용자 결정으로 삭제했다).
-- 규칙을 추가할 때는 이유를 한 줄 붙인다. 이유가 있어야 다음 작업자가 다시 조사하거나 되돌리지 않는다.
+- 규칙 추가 시 이유 한 줄을 붙여 불필요한 재조사를 줄인다.
 - 크기 상한, 날짜별 지시 금지, 링크 존재는 `tests/agents-md-budget.test.js`가 검사한다.

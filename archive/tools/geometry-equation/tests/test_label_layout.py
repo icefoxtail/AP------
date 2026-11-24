@@ -269,10 +269,16 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(placed['placement'],'OWNER_BOUND_TICK_LEADER')
         self.assertEqual(result['leaders'][0]['from'],[100,160])           # the leader names its own tick
         self.assertGreaterEqual(abs(box.y+box.height/2-160)-box.height/2,6,'the number clears the segment')
-        # the same crossing by a CURVE is still refused (a curve is never a tick's own ground): the number is not laid over it
+        # the same crossing by a graph CURVE (f-/g- piece or branch): since PN6 (2026-11-24, edc478d18c) a curve crossing the axis exactly at the tick is the tick's ground too, with or without a dot
+        # (the tick of a root, or of the value a constant function takes; verify-rendered-layout.mjs ownerLeaderClearance already allows it). The old rule refused it and dropped the number, which a
+        # student reads as a missing tick value. The number still never lies over the curve: it stands clear of it on the same owner leader.
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(20,160),(180,160)]}
-        refused=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
-        self.assertEqual(refused['unresolved'],[item['id']])
+        crossed=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
+        self.assertEqual(crossed['unresolved'],[])
+        self.assertEqual(crossed['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        crossed_box=Box(**crossed['labels'][0]['box'])
+        self.assertFalse(collision(crossed_box,curve,0),'the number is not laid over the curve')
+        self.assertGreaterEqual(abs(crossed_box.y+crossed_box.height/2-160)-crossed_box.height/2,6)
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}
@@ -288,11 +294,15 @@ class LayoutTests(unittest.TestCase):
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
         item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=False)
         result=layout([item],[tick,axis,curve],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
-        self.assertEqual(result['status'],'POLISH_REQUIRED')
+        # (PN6, 2026-11-24, edc478d18c) the curve runs through the tick (a root): it is the tick's ground, so the number stands on an owner leader beside it instead of being dropped.
+        # What this test guards stays true: the number is never kept by masking the curve under it (no tickLabelKnockout), never suppressed, and never laid over the curve.
+        self.assertEqual(result['status'],'PASS')
         self.assertEqual(result['suppressed'],[])
-        self.assertEqual(result['unresolved'],[item['id']])
+        self.assertEqual(result['unresolved'],[])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertFalse(collision(Box(**result['labels'][0]['box']),curve,0))
         self.assertFalse(any('tickLabelKnockout' in row for row in result['labels']+result['trace']))
-    def test_tick_with_curve_and_point_obstacles_remains_unresolved_without_mask(self):
+    def test_tick_with_curve_and_point_obstacles_is_placed_on_an_owner_leader_without_mask(self):
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
@@ -300,10 +310,17 @@ class LayoutTests(unittest.TestCase):
                 {'id':'protected-feature-south','kind':'point','geometry':(100,118,2)}]
         item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=True)
         result=layout([item],[tick,axis,curve,*points],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
-        self.assertEqual(result['status'],'POLISH_REQUIRED')
-        self.assertEqual(result['unresolved'],[item['id']])
+        # (PN6, 2026-11-24, edc478d18c) the curve through the tick is the tick's ground, so the number is no longer dropped: it takes an owner leader to a free place between the two protected points'
+        # side, clear of the curve and of both dots. What this test guards stays true: no mask over the curve, no suppression, no repair, and the label never touches the curve or a protected point.
+        self.assertEqual(result['status'],'PASS')
+        self.assertEqual(result['unresolved'],[])
         self.assertEqual(result['suppressed'],[])
         self.assertEqual(result['repairs'],[])
+        placed=Box(**result['labels'][0]['box'])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertFalse(collision(placed,curve,0))
+        self.assertFalse(any(collision(placed,point,0) for point in points))
+        self.assertFalse(any('tickLabelKnockout' in row for row in result['labels']+result['trace']))
     def test_tick_label_requires_exact_axis_and_value_binding(self):
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':2,'geometry':(100,96,100,104)}
@@ -437,6 +454,57 @@ class TickLabelSlideTests(unittest.TestCase):
         obstacles[-1]['geometry']=Box(70,100,30,40)                                        # a tall neighbour: no slide within the tolerance clears it
         result=layout([item],obstacles,Box(0,0,300,220),measurements={item['id']:(14,12)},require_measurements=True)
         self.assertEqual(result['unresolved'],['tick-y-1-label'])
+
+class ObliqueCalloutLeader(unittest.TestCase):
+    """(OBL) a point callout whose label is wider than any free place beside its point: the only free band lies straight above a steep curve, so a leader aimed at the box
+    centre would run along that curve (hidden under it). The last resort ends the leader on the edge of the box that faces the point, away from the curve."""
+    def scene(self):
+        point={'id':'Q','kind':'point','geometry':(200,400,3.5)}
+        curve={'id':'f-f1-branch-0','kind':'curve','geometry':[(190,500),(200,400),(210,150),(215,100)]}
+        dashed={'id':'overlay-line-bd','kind':'line','geometry':[(100,490),(100,120)]}
+        item=label('overlay-callout-c1',(200,400),'y=2x^2-8x+6','EQUATION_LABEL',target='Q',priority=1,ringLeader=True,leaderOnly=True,allowSuppress=False,directions=('W','N','NE','E','SE','S','SW','NW'))
+        return item,[point,curve,dashed]
+    def test_a_label_too_wide_for_a_centred_leader_ends_its_leader_on_the_facing_edge(self):
+        from visual_engine.svg_composer import owner_label_leader_svg
+        item,obstacles=self.scene()
+        result=layout([item],obstacles,Box(0,0,300,500),measurements={item['id']:(280,24)},require_measurements=True,last_resort=True)
+        self.assertEqual((result['status'],result['unresolved']),('PASS',[]))
+        # without the last resort the same scene stays unresolved: the ordinary ways never take an oblique leader
+        ordinary=layout([item],obstacles,Box(0,0,300,500),measurements={item['id']:(280,24)},require_measurements=True)
+        self.assertEqual(ordinary['unresolved'],[item['id']]);self.assertEqual(ordinary['leaders'],[])
+        placed=result['labels'][0];box=Box(**placed['box']);leader=result['leaders'][0]
+        self.assertEqual(placed['placement'],'OWNER_LEADER_OBLIQUE');self.assertIs(leader['oblique'],True)
+        end=leader['to']
+        self.assertTrue(abs(end[1]-box.bottom)<1e-9 and box.x<=end[0]<=box.right)                 # on the edge that faces the point
+        centre_aim=owner_leader_endpoint(box,(200,400),(box.x+box.width/2,box.y+box.height/2))
+        self.assertGreater(math.dist(end,centre_aim),1.0)                                      # not the centre-aimed end
+        for c,d in zip(obstacles[1]['geometry'],obstacles[1]['geometry'][1:]):
+            if point_segment_distance((200,400),c,d)<=1e-3:self.assertFalse(leader_hides_along((200,400),end,c,d))
+        self.assertFalse(any(collision(box,o) for o in obstacles))
+        self.assertTrue(leader_clear((200,400),end,obstacles,{'Q','f-f1-branch-0'}))
+        self.assertIn('data-role="leader"',owner_label_leader_svg(leader,result,lambda value:value))
+    def test_a_leader_that_does_not_end_on_the_label_edge_is_refused_by_the_composer(self):
+        from visual_engine.svg_composer import owner_label_leader_svg
+        item,obstacles=self.scene()
+        result=layout([item],obstacles,Box(0,0,300,500),measurements={item['id']:(280,24)},require_measurements=True,last_resort=True)
+        inside={**result['leaders'][0],'to':[result['leaders'][0]['to'][0],result['labels'][0]['box']['y']+5]}
+        with self.assertRaisesRegex(ValueError,'OWNER_LABEL_LEADER_ENDPOINT_INVALID'):owner_label_leader_svg(inside,result,lambda value:value)
+        plain={k:v for k,v in result['leaders'][0].items() if k!='oblique'}
+        with self.assertRaisesRegex(ValueError,'OWNER_LABEL_LEADER_BINDING_INVALID'):owner_label_leader_svg(plain,result,lambda value:value)
+    def test_a_callout_that_finds_an_ordinary_place_is_not_changed(self):
+        item,obstacles=self.scene()
+        result=layout([item],obstacles,Box(0,0,300,500),measurements={item['id']:(40,24)},require_measurements=True,last_resort=True)
+        self.assertEqual(result['status'],'PASS')
+        self.assertTrue(result['labels'][0]['placement'].startswith('OWNER_LEADER_') and result['labels'][0]['placement']!='OWNER_LEADER_OBLIQUE')
+        self.assertNotIn('oblique',result['leaders'][0])
+    def test_the_hidden_leader_rule_is_not_weakened(self):
+        # no free place at all except directly above the curve and the safe area is too narrow for any end to turn 15 degrees away from the curve: unresolved, never a hidden leader
+        item,obstacles=self.scene()
+        result=layout([item],obstacles,Box(150,0,100,500),measurements={item['id']:(90,24)},require_measurements=True,last_resort=True)
+        for leader in result['leaders']:
+            end=leader['to']
+            for c,d in zip(obstacles[1]['geometry'],obstacles[1]['geometry'][1:]):
+                if point_segment_distance((200,400),c,d)<=1e-3:self.assertFalse(leader_hides_along((200,400),end,c,d))
 
 
 if __name__=='__main__':unittest.main()

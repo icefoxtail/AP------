@@ -1,4 +1,87 @@
 {
-  "status": "EXEMPT",
-  "reason": "동전 던지기 결과에 따른 수직선 위 좌표 이동 방정식과 확률 계산 문항"
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "1칸 이동 4회",
+        "elements": [
+          "HHHT",
+          "HHTH",
+          "HTHH",
+          "THHH"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "점 P 위치",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "동전을 4번 던져 1칸씩 이동할 때 점 P가 위치 2에 도달하는 경우를 나타낸 대응도이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위의 원점 $O$에 점 $P$가 있다. 동전 한 개를 던져 앞면이 나오면 오른쪽으로 $1$만큼, 뒷면이 나오면 왼쪽으로 $1$만큼 점 $P$를 이동시킨다. 동전을 연속하여 $4$번 던졌을 때, 점 $P$가 점 $+2$의 위치에 있을 확률은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "동전을 4번 던져 앞면 1칸, 뒷면 -1칸 이동하여 점 P가 위치 2에 도달한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "앞면이 3번 나오는 4가지 경우와 점 P의 최종 위치 2 사이의 대응 관계를 보여준다."
+  ]
 }

@@ -1,0 +1,168 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 135,
+        "label": "135",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "4*sqrt(2)",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "두 변의 길이와 그 끼인각의 크기가 주어진 삼각형이다.",
+  "accessibilityDescription": "삼각형 ABC에서 선분 AB의 길이는 6, 선분 BC의 길이는 4루트2이고, 각 B의 크기는 135도이다.",
+  "newVisualInformation": [
+    "삼각형 ABC에서 AB=6, BC=4*sqrt(2), 각 B=135도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{BC}}=4\\sqrt{2}$, $\\angle\\mathrm{ABC}=135^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

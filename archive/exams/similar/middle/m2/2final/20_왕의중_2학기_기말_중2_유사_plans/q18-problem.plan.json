@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lFG",
+        "ownerSegment": "sFG",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "9",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "두 정사각형 ABCD와 CEFG가 한 변을 이어 붙여 놓인 도형과 선분 AE를 나타낸 그림이다.",
+  "accessibilityDescription": "정사각형 ABCD와 작은 정사각형 CEFG가 점 C에서 변을 맞대고 나란히 놓여 있다. 선분 AD의 길이는 9 cm, 선분 AE의 길이는 15 cm이고 선분 GF에는 x cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "사각형 ABCD와 사각형 CEFG는 정사각형이고 선분 AD의 길이는 9 cm, 선분 AE의 길이는 15 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 정사각형 $ABCD$와 $CEFG$가 변 $BC$와 변 $CE$가 한 직선 위에 놓이도록(점 $C$에서 접하며 나란히) 붙여 놓았다. $\\overline{AD} = 9\\text{ cm}, \\overline{AE} = 15\\text{ cm}$일 때, $\\overline{GF}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

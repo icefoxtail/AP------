@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "41"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 52,
+        "label": "52"
+      },
+      {
+        "id": "aExt",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 116,
+        "label": "x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "변 BA와 변 BC의 길이가 같은 이등변삼각형 ABC에서 꼭지각 B가 52도이고 꼭짓점 A에서의 외각이 x로 표시된 그림이다.",
+  "accessibilityDescription": "이등변삼각형 ABC에서 각 B의 크기는 52도이고 선분 AB와 선분 BC의 길이가 같다. 변 CA를 연장하여 만든 꼭짓점 A의 외각의 크기가 x로 나타나 있다.",
+  "newVisualInformation": [
+    "선분 BA와 선분 BC의 길이가 같다.",
+    "각 B의 크기는 52도이다.",
+    "꼭짓점 A에서의 외각은 x이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{BA}=\\overline{BC}$인 이등변삼각형 $ABC$에서 $\\angle B=52^\\circ$일 때, 꼭짓점 $A$에서의 외각의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

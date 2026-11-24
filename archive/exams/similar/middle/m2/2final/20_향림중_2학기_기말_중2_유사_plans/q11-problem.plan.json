@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC의 변 AB 위에 점 D를 잡고 선분 CD를 그은 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 AB 위에 점 D가 놓여 있고 선분 CD가 그어져 있다. 선분 AD는 3cm, 선분 DB는 9cm, 선분 AC는 6cm, 선분 BC는 10cm, 선분 CD는 x cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "변 AD의 길이는 3 cm이다.",
+    "변 DB의 길이는 9 cm이다.",
+    "변 AC의 길이는 6 cm이다.",
+    "변 BC의 길이는 10 cm이다.",
+    "선분 CD의 길이는 x cm이다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "104",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "78",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eAD",
+        "ownerSegment": "sAD",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "eDB",
+        "ownerSegment": "sDB",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "eCA",
+        "ownerSegment": "sCA",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "eBC",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "eCD",
+        "ownerSegment": "sCD",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$의 변 $AB$ 위에 점 $D$가 있고 $\\overline{AD} = 3\\text{ cm}, \\overline{DB} = 9\\text{ cm}, \\overline{AC} = 6\\text{ cm}, \\overline{BC} = 10\\text{ cm}$일 때, $\\overline{CD}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

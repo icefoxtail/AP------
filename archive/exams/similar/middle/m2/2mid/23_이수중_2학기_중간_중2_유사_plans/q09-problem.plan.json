@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "122"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "58"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 122,
+        "label": "122",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 58,
+        "label": "x",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "평행사변형 ABCD에서 각 A의 크기와 변 AD의 길이가 주어지고 각 B의 크기 x와 변 BC의 길이 y가 표시된 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 각 A는 122도로 표시되어 있고 변 AD의 길이는 9이다. 각 B에는 x, 변 BC에는 y가 표시되어 있다.",
+  "newVisualInformation": [
+    "각 A의 크기는 122도이다.",
+    "변 AD의 길이는 9이다.",
+    "각 B의 크기는 x이다.",
+    "변 BC의 길이는 y이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\angle A=122^\\circ$, $\\overline{AD}=9\\text{ cm}$이고, $\\angle B=x^\\circ$, $\\overline{BC}=y\\text{ cm}$일 때, $x$와 $y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

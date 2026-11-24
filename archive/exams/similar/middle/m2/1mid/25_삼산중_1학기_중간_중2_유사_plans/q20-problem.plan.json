@@ -1,4 +1,268 @@
 {
-  "status": "EXEMPT",
-  "reason": "뺄셈의 교환법칙 불성립에 따른 2가지 역산 경우의 수 다항식 분기 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "X",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
+  "displaySegments": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": "T1",
+        "text": "3x-2y"
+      },
+      {
+        "id": "t2",
+        "at": "T2",
+        "text": "-2x+5y"
+      },
+      {
+        "id": "t3",
+        "at": "T3",
+        "text": "-4x+y"
+      },
+      {
+        "id": "t4",
+        "at": "T4",
+        "text": "-4x+5y"
+      },
+      {
+        "id": "t5",
+        "at": "T5",
+        "text": "2x+y"
+      },
+      {
+        "id": "t6",
+        "at": "T6",
+        "text": "4x-3y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원 모양의 판 위에 여섯 개의 다항식이 적혀 있다.",
+  "accessibilityDescription": "원 모양의 판 위에 여섯 개의 다항식 3x-2y, -2x+5y, -4x+y, -4x+5y, 2x+y, 4x-3y가 원형으로 균등하게 배치되어 있다.",
+  "newVisualInformation": [
+    "원 모양의 판 위에 여섯 개의 다항식이 적혀 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음과 같이 $6$개의 다항식 ⓐ~ⓕ가 적혀 있는 판이 있다.\n\n[다항식 판] ⓐ $3x - 2y$\\quad ⓑ $-2x + 5y$\\quad ⓒ $-4x + y$\\quad ⓓ $-4x + 5y$\\quad ⓔ$ $2x + y$\\quad ⓕ$ $4x - 3y$\n\n민수와 지유가 각각 판에서 다항식을 하나씩 골랐는데, 민수가 고른 다항식은 $-x + 3y$이다. 두 사람이 고른 다항식의 뺄셈의 결과가 $3x - 2y$일 때, 지유가 고른 다항식이 될 수 있는 것을 모두 고른 것은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

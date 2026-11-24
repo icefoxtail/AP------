@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "FE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "DF",
+          "BG"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDF",
+        "ownerSegment": "DF",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lFE",
+        "ownerSegment": "FE",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBG",
+        "ownerSegment": "BG",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lGC",
+        "ownerSegment": "GC",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAE",
+        "ownerSegment": "AE",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "EC",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 변 BC와 평행한 선분 DE가 있고, 꼭짓점 A를 지나는 선분 AG가 선분 DE와 만나는 도형이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 AB 위의 점 D와 변 AC 위의 점 E를 연결한 선분 DE가 변 BC와 평행하다. 꼭짓점 A에서 변 BC 위의 점 G로 선분이 그어져 선분 DE와 점 F에서 만난다. 선분 DF는 3, 선분 FE는 6, 선분 BG는 5, 선분 GC는 x, 선분 AE는 9, 선분 EC는 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 DE와 선분 BC가 평행하고, 선분 DF는 3, FE는 6, BG는 5, GC는 x, AE는 9, EC는 y이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $E$에 대하여 $\\overline{DE}\\parallel\\overline{BC}$이다. 꼭짓점 $A$를 지나는 직선이 선분 $DE$와 만나는 점을 $F$, 변 $BC$와 만나는 점을 $G$라 하자. $\\overline{DF}=3\\text{ cm}$, $\\overline{FE}=6\\text{ cm}$, $\\overline{BG}=5\\text{ cm}$, $\\overline{AE}=9\\text{ cm}$일 때, $\\overline{GC}=x\\text{ cm}$, $\\overline{EC}=y\\text{ cm}$라 하면 $x+y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,4 +1,286 @@
 {
-  "status": "EXEMPT",
-  "reason": "평행선 선분비 역의 성립 여부와 폭이 일정한 테두리 직사각형의 비닮음 판정 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "가로 16 cm, 세로 12 cm인 직사각형 액자와 폭이 2 cm인 일정한 테두리를 나타낸 그림이다.",
+  "accessibilityDescription": "바깥쪽 직사각형은 가로 16 cm, 세로 12 cm로 표시되어 있고 그 안에 폭이 2 cm로 일정한 테두리를 둔 안쪽 직사각형이 들어 있다.",
+  "newVisualInformation": [
+    "직사각형 액자의 바깥쪽 가로와 세로 길이가 각각 16 cm, 12 cm로 주어져 있고 테두리 안쪽에 직사각형이 위치한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 명제의 참·거짓에 대하여 [ A ], [ B ]에 알맞은 것을 짝지은 것은?\n[명제 1] 세 직선 $l, m, n$이 다른 두 직선과 만날 때 생기는 선분의 길이의 비가 같으면, 세 직선 $l, m, n$은 항상 평행하다. ⋯ [ A ] [명제 2] 가로의 길이가 $16 m\\,cm$, 세로의 길이가 $12 m\\,cm$인 직사각형 모양의 액자가 있다. 폭이 $2 m\\,cm$로 일정한 테두리를 제외한 안쪽 직사각형은 바깥쪽 직사각형과 항상 닮은 도형이다. ⋯ [ B ]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -803,6 +803,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/23_신흥중_2학기_기말_중2_유사/q19-problem.svg",
     "category": "도형의 닮음",
     "standardCourse": "중2",
     "curriculum": "2015",

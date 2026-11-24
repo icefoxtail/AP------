@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [
+      -4,
+      5
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-2"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          1,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "4"
+      ],
+      "y": [
+        "3",
+        "-1"
+      ]
+    }
+  },
+  "caption": "함수 y=f(x)의 그래프로, x=-1과 x=1에서 함숫값이 끊어져 있다.",
+  "accessibilityDescription": "왼쪽의 내려가는 직선이 x=-1의 열린 점에서 끝나고 그 위에 채운 점이 있으며, y=-1인 수평 선분이 x=1까지 이어진 뒤 x=1의 열린 점에서 오른쪽 위로 향하는 직선이 시작된다.",
+  "newVisualInformation": [
+    "x=-1에서 왼쪽 극한은 1이다.",
+    "x=1에서 오른쪽 극한은 -3이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 다음 그림과 같을 때, $\\displaystyle\\lim_{x\\to-1^-}f(x)+\\lim_{x\\to1^+}f(x)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

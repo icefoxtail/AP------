@@ -341,6 +341,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q08-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -389,6 +390,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q09-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -485,6 +487,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q11-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -532,6 +535,7 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q12-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -579,6 +583,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q13-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -1005,6 +1010,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q22-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -1047,6 +1053,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/23_이수중_2학기_중간_중2_유사/q23-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

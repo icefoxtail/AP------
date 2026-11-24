@@ -4,6 +4,7 @@ window.examDisplayTitle = "20년 이수중 중2 2학기 기말 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/20_이수중_2학기_기말_중2_유사/q01-problem.svg",
     "category": "도형의 닮음",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -317,6 +318,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/20_이수중_2학기_기말_중2_유사/q08-problem.svg",
     "category": "삼각형의 닮음 조건과 대응변의 길이",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -361,6 +363,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/20_이수중_2학기_기말_중2_유사/q09-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -405,6 +408,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/20_이수중_2학기_기말_중2_유사/q10-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

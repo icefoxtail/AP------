@@ -101,6 +101,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/23_향림중_2학기_기말_중3_유사/q03-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",

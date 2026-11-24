@@ -1,9 +1,375 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "원 위 네 점 A,B,C,D에서 반원 지름 BC 판별 후 외각 x=120°, 교점각 y=55° 산출"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BCA25",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 25,
+        "label": "25",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DCE120",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 120,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DPC55",
+        "refs": [
+          "D",
+          "P",
+          "C"
+        ],
+        "value": 55,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kA",
+        "kind": "ANGLE",
+        "vertex": "A",
+        "rays": [
+          "C",
+          "D"
+        ],
+        "at": "RIGHT",
+        "angles": [
+          {
+            "id": "cCAD",
+            "refs": [
+              "C",
+              "A",
+              "D"
+            ],
+            "value": 30,
+            "label": "30"
+          }
+        ]
+      },
+      {
+        "id": "kP",
+        "kind": "ANGLE",
+        "vertex": "P",
+        "rays": [
+          "D",
+          "C"
+        ],
+        "at": "BELOW",
+        "angles": [
+          {
+            "id": "cDPC",
+            "refs": [
+              "D",
+              "P",
+              "C"
+            ],
+            "value": 55,
+            "label": "y"
+          }
+        ]
+      },
+      {
+        "id": "kB",
+        "kind": "ANGLE",
+        "vertex": "B",
+        "rays": [
+          "A",
+          "D"
+        ],
+        "at": "ABOVE",
+        "angles": [
+          {
+            "id": "cABD",
+            "refs": [
+              "A",
+              "B",
+              "D"
+            ],
+            "value": 35,
+            "label": "35"
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "E",
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "원 위에 네 점 A, B, C, D가 있고 대각선 AC와 BD의 교점 P가 있는 도형이다.",
+  "accessibilityDescription": "원 위에 사각형 ABCD가 있고 두 대각선 AC, BD가 점 P에서 만난다. 각 ABD는 35도, 각 BCA는 25도, 각 DAC는 30도로 표시되어 있고, 각 DCE는 x, 각 DPC는 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 ABD의 크기는 35도이다.",
+    "각 BCA의 크기는 25도이다.",
+    "각 DAC의 크기는 30도이다.",
+    "각 DCE의 크기는 x로 표시되어 있다.",
+    "각 DPC의 크기는 y로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 네 점 $A, B, C, D$가 한 원 위에 있고 $\\angle ABD = 35^\\circ$, $\\angle BCA = 25^\\circ$, $\\angle DAC = 30^\\circ$일 때, $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

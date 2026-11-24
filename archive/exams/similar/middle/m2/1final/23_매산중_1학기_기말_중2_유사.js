@@ -616,6 +616,7 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "image": "assets/images/23_매산중_1학기_기말_중2_유사/q14-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",

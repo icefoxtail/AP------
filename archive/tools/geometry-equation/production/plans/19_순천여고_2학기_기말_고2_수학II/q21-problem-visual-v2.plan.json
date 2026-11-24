@@ -1,0 +1,68 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "CIRCLE",
+      "center": [
+        "0",
+        "2"
+      ],
+      "rSquared": "4"
+    },
+    {
+      "id": "c2",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "1/4",
+      "axis": "Y",
+      "label": "y=x^2"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "c1"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "curve": "c1",
+      "x": "0",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "S1",
+      "kind": "POINT",
+      "x": "7/5",
+      "y": "6/5"
+    },
+    {
+      "id": "S2",
+      "kind": "POINT",
+      "x": "-7/5",
+      "y": "6/5"
+    }
+  ],
+  "caption": "좌표평면 위에 중심이 C이고 점 (0,4)를 지나는 원과 포물선으로 둘러싸인 두 영역 S1과 S2를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 x축과 y축, 원점 O가 있고, y축 위의 점 C를 중심으로 하고 y축과 4에서 만나는 원이 있다. 원점 O에서 원에 접하는 포물선이 있으며, 원과 포물선 사이의 오른쪽과 왼쪽 영역에 각각 S1과 S2가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선과 원으로 둘러싸인 두 영역의 넓이가 S1과 S2로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형3] 그림과 같이 원 $C: x^2+(y-2)^2=4$와 이차함수 $y=x^2$로 둘러싸인 넓이를 각각 $S_1$, $S_2$라 할 때, $S_1+S_2$를 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

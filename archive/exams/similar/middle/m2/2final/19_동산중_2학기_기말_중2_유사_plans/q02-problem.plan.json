@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 삼각형 ABC와 DEF에서 주어진 각의 크기와 변의 길이를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 A의 각도는 75도, 꼭짓점 C의 각도는 45도이고 변 AB의 길이는 8cm이다. 삼각형 DEF에서 꼭짓점 D의 각도는 75도, 꼭짓점 F의 각도는 60도이고 변 DF의 길이는 12cm이다.",
+  "newVisualInformation": [
+    "삼각형 ABC는 각 A가 75도, 각 C가 45도, 변 AB가 8 cm이다.",
+    "삼각형 DEF는 각 D가 75도, 각 F가 60도, 변 DF가 12 cm이다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6928203",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10928203",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11803848",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8196152",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0BAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1ACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2EDF",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "value": 75,
+        "label": "75",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3DFE",
+        "refs": [
+          "D",
+          "F",
+          "E"
+        ],
+        "value": 60,
+        "label": "60",
+        "color": "VIOLET",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lFD",
+        "ownerSegment": "sFD",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 삼각형 $\\triangle ABC$와 $\\triangle DEF$에서 $\\angle A = 75^\\circ, \\angle C = 45^\\circ, \\overline{AB} = 8\\text{ cm}$이고 $\\angle D = 75^\\circ, \\angle F = 60^\\circ, \\overline{DF} = 12\\text{ cm}$일 때, 다음 중 옳지 않은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,9 +1,217 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "200"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "중심각 140°의 우각 220°에 대한 둔각 원주각 110° 산출"
+  "displayPoints": [
+    "O",
+    "X",
+    "B",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aOz0",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 140,
+        "label": "140",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aAz0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 110,
+        "label": "x",
+        "color": "ROSE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "원 O 위의 세 점 A, B, C에 대하여 중심각과 둔각 원주각을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O에서 호 BC에 대한 중심각 BOC의 크기가 140도로 표시되어 있고, 원 위의 점 A와 두 점 B, C를 이은 선분이 이루는 각 BAC가 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "원 O에서 중심각 140도와 원주각 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $A, B, C$가 원 $O$ 위의 점이고 점 $A$를 포함하지 않는 작은 호 $BC$에 대한 중심각 $\\angle BOC = 140^\\circ$일 때, 둔각 $\\angle BAC = x$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

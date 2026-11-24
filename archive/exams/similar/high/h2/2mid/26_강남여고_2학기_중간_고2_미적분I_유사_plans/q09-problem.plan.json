@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9/2",
+          "3/4",
+          "1",
+          "-1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "-1/3",
+        "y": "-125/27"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -9,
+      26
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "pf",
+          "curveX": "4",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cf",
+          "point": "pf",
+          "text": "y=f′(x)",
+          "direction": "NW",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "함수 f(x)의 도함수 y=f′(x)의 그래프이다. 그래프가 x축과 만나는 점과 접하는 점, 아래로 볼록한 부분의 꼭짓점이 나타나 있다.",
+  "accessibilityDescription": "도함수 그래프가 x축을 지나는 두 점과 x축에 접하는 한 점을 보여 준다. x축 아래쪽에 그래프의 가장 낮은 점이 있다.",
+  "newVisualInformation": [
+    "도함수 y=f′(x)의 곡선과 x축 교점·접점을 표시함",
+    "도함수의 극댓값·극솟값 위치를 보여 줌"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, 보기 중 옳은 것을 있는 대로 고른 것은?\n\n> **<보기>** ㄱ. $f(x)$는 열린구간 $(-3,-2)$에서 증가한다. ㄴ. $f(x)$는 열린구간 $(1,2)$에서 감소한다. ㄷ. $f(x)$는 $x=-2$에서 극댓값을 갖는다. ㄹ. $f(x)$는 $x=3$에서 극댓값을 갖는다. ㅁ. $f(x)$의 극값은 $2$개이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

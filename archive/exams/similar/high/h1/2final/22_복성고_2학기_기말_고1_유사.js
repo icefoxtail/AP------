@@ -938,6 +938,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/22_복성고_2학기_기말_고1_유사/q22-problem.svg",
     "category": "합성함수",
     "standardCourse": "수학(하)",
     "curriculum": "2015",

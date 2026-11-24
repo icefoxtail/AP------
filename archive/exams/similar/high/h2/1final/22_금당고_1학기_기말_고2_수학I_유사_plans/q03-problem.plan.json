@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "330"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "270"
+            },
+            {
+              "kind": "integer",
+              "value": "155"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "θ",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "삼각형 ABC에서 선분 AB의 길이는 6, 선분 AC의 길이는 5이고 각 BAC의 크기는 세타이다.",
+  "accessibilityDescription": "삼각형 ABC가 있고 변 AB 옆에 6, 변 AC 옆에 5가 표시되어 있으며 각 A에 세타가 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이는 6이다.",
+    "선분 AC의 길이는 5이다.",
+    "각 BAC의 크기는 세타이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{AC}}=5$, $\\angle\\mathrm{BAC}=\\theta$라 할 때, $\\sin\\theta = \\dfrac{1}{3}$이다. 삼각형 $\\mathrm{ABC}$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

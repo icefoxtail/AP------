@@ -28,6 +28,10 @@ test('20 효천고 q15: two parabolas and the boundary x=2 are ARCHIVE_BOUND at 
   assert.equal(result.sizeClass,'full');
   const title=svg.match(/<title id="visual-title">([^<]*)<\/title>/)[1];
   assert.ok(!/16/.test(title)&&!title.includes('(2,1)'),'no answer value in the figure text');
+  // (OBL) the wide curve-name callout y=2x^2-8x+6 has no free place on a leader aimed at its centre (the figure is shown at 0.58 scale, the label is half the canvas wide, and the free band
+  // lies straight above its steep curve): only the last resort ends its leader on the facing edge of the box, so both callouts have a leader and the figure was composed by it
+  assert.ok(result.fallback?.some(step=>step.to==='LAYOUT_LAST_RESORT'),JSON.stringify(result.fallback));
+  for(const id of ['overlay-callout-c1','overlay-callout-c2'])assert.ok(svg.includes(`id="${id}-owner-leader"`),id+' stands on a leader that starts on its own dot');
 });
 
 test('20 복성고 q14: a window 6 wide and 54 high renders at full (it was medium)',{timeout:600000},async()=>{

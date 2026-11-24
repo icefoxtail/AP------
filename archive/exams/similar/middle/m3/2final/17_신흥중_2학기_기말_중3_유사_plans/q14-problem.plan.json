@@ -1,9 +1,299 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "large",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "가로 18, 세로 12 직사각형 내접원 O'의 접선 AF로 만든 직각삼각형 ABF(12,9,15)의 내접원 반지름 3 산출"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O",
+    "K"
+  ],
+  "hiddenPointNames": [
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "small",
+    "large"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "18"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 480
+  },
+  "caption": "가로의 길이가 18 cm, 세로의 길이가 12 cm인 직사각형 ABCD와 두 접원을 나타낸 그림이다.",
+  "accessibilityDescription": "세로 12, 가로 18인 직사각형 ABCD의 세 변에 접하는 큰 원과 삼각형 ABF에 내접하는 작은 원 O가 그려져 있고 선분 AF는 큰 원과 점 E에서 접한다.",
+  "newVisualInformation": [
+    "직사각형과 두 접원 그림"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 가로의 길이가 $18\\text{ cm}$, 세로의 길이가 $12\\text{ cm}$인 직사각형 $ABCD$의 세 변 $AD, DC, BC$에 큰 원 $O'$이 접하고, $\\overline{AF}$는 원 $O'$과 점 $E$에서 접한다. 작은 원 $O$가 $\\triangle ABF$에 내접할 때, 원 $O$의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

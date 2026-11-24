@@ -1,0 +1,622 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "OA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ATL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ATR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MAtt",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MAtb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MAbb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAtt",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAtt"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAtb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAtb"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAbb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAbb"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BBL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BBR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BTL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BTR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBtt",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBtb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "26"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBbb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBtt",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MBtt"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBtb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MBtb"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBbb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MBbb"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "OB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "OA",
+    "A",
+    "B",
+    "ABL",
+    "ABR",
+    "ATL",
+    "ATR",
+    "MAtt",
+    "MAtb",
+    "MAbb",
+    "OB",
+    "BBL",
+    "BBR",
+    "BTL",
+    "BTR",
+    "MBtt",
+    "MBtb",
+    "MBbb"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAL",
+      "refs": [
+        "ABL",
+        "ATL"
+      ]
+    },
+    {
+      "id": "sAR",
+      "refs": [
+        "ABR",
+        "ATR"
+      ]
+    },
+    {
+      "id": "sArad",
+      "refs": [
+        "OA",
+        "ABR"
+      ]
+    },
+    {
+      "id": "sBL",
+      "refs": [
+        "BBL",
+        "BTL"
+      ]
+    },
+    {
+      "id": "sBR",
+      "refs": [
+        "BBR",
+        "BTR"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aAtt",
+        "circle": "cAtt",
+        "center": "MAtt",
+        "from": "ATL",
+        "to": "ATR",
+        "side": "MINOR"
+      },
+      {
+        "id": "aAtb",
+        "circle": "cAtb",
+        "center": "MAtb",
+        "from": "ATL",
+        "to": "ATR",
+        "side": "MINOR"
+      },
+      {
+        "id": "aAbb",
+        "circle": "cAbb",
+        "center": "MAbb",
+        "from": "ABL",
+        "to": "ABR",
+        "side": "MINOR"
+      },
+      {
+        "id": "aBtt",
+        "circle": "cBtt",
+        "center": "MBtt",
+        "from": "BTL",
+        "to": "BTR",
+        "side": "MINOR"
+      },
+      {
+        "id": "aBtb",
+        "circle": "cBtb",
+        "center": "MBtb",
+        "from": "BTL",
+        "to": "BTR",
+        "side": "MINOR"
+      },
+      {
+        "id": "aBbb",
+        "circle": "cBbb",
+        "center": "MBbb",
+        "from": "BBL",
+        "to": "BBR",
+        "side": "MINOR"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dhA",
+        "from": "ATL",
+        "to": "ABL",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dhB",
+        "from": "BTR",
+        "to": "BBR",
+        "label": "9",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lrA",
+        "ownerSegment": "sArad",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "OA",
+    "ABL",
+    "ABR",
+    "ATL",
+    "ATR",
+    "MAtt",
+    "MAtb",
+    "MAbb",
+    "OB",
+    "BBL",
+    "BBR",
+    "BTL",
+    "BTR",
+    "MBtt",
+    "MBtb",
+    "MBbb"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "서로 닮은 두 원기둥 A와 B의 높이와 원기둥 A의 밑면의 반지름이 나타나 있다.",
+  "accessibilityDescription": "왼쪽의 원기둥 A는 높이가 6cm이고 밑면의 반지름이 4cm이다. 오른쪽의 원기둥 B는 높이가 9cm이다.",
+  "newVisualInformation": [
+    "원기둥 A의 높이는 6cm이고 밑면의 반지름은 4cm이다.",
+    "원기둥 B의 높이는 9cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원기둥 $A$, $B$에서 원기둥 $A$의 높이는 $6\\text{ cm}$, 원기둥 $B$의 높이는 $9\\text{ cm}$이다. 원기둥 $A$의 밑면의 넓이가 $16\\pi\\text{ cm}^2$일 때, 원기둥 $B$의 밑면의 넓이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,9 +1,586 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-124520327",
+              "denominator": "10000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-20908563",
+              "denominator": "2500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-41784483",
+              "denominator": "5000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1755031",
+              "denominator": "156250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-33399199",
+              "denominator": "10000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-93520711",
+              "denominator": "5000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11555991",
+              "denominator": "1250000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-154445397",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29054743",
+              "denominator": "2500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-15611727",
+              "denominator": "2000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-49808131",
+              "denominator": "5000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-66907401",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-35815271",
+              "denominator": "5000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-48137993",
+              "denominator": "5000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-21094231",
+              "denominator": "10000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3691607",
+              "denominator": "312500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3851997",
+              "denominator": "625000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-51481799",
+              "denominator": "5000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "49808131",
+              "denominator": "5000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-66907401",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-88141737",
+              "denominator": "10000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-83991449",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2057983",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-24469037",
+              "denominator": "5000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-113159467",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "28284271",
+            "denominator": "10000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "23106501",
+              "denominator": "10000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-126024163",
+              "denominator": "10000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "44899889",
+            "denominator": "10000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5290957",
+              "denominator": "625000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3567291",
+              "denominator": "400000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1677051",
+            "denominator": "625000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "연속 내접·외접 네 원의 공통 접선 길이 등치로 AD=18, AF=15 산출"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "U1",
+    "T1",
+    "T2",
+    "T3",
+    "U4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k1",
+    "k2",
+    "k3",
+    "k4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAU1",
+      "refs": [
+        "A",
+        "U1"
+      ]
+    },
+    {
+      "id": "sU1B",
+      "refs": [
+        "U1",
+        "B"
+      ]
+    },
+    {
+      "id": "sAT1",
+      "refs": [
+        "A",
+        "T1"
+      ]
+    },
+    {
+      "id": "sT1C",
+      "refs": [
+        "T1",
+        "C"
+      ]
+    },
+    {
+      "id": "sAT2",
+      "refs": [
+        "A",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT2D",
+      "refs": [
+        "T2",
+        "D"
+      ]
+    },
+    {
+      "id": "sAT3",
+      "refs": [
+        "A",
+        "T3"
+      ]
+    },
+    {
+      "id": "sT3E",
+      "refs": [
+        "T3",
+        "E"
+      ]
+    },
+    {
+      "id": "sAU4",
+      "refs": [
+        "A",
+        "U4"
+      ]
+    },
+    {
+      "id": "sU4F",
+      "refs": [
+        "U4",
+        "F"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "9",
+        "unit": "cm"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "pAB",
+        "points": [
+          "A",
+          "U1",
+          "B"
+        ],
+        "label": "14",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "U1",
+    "T1",
+    "T2",
+    "T3",
+    "U4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "네 개의 삼각형 ABC, ACD, ADE, AEF에 각각 내접하고 서로 외접하는 네 원이 주어져 있는 도형이다.",
+  "accessibilityDescription": "공유하는 꼭짓점 A를 갖는 네 개의 삼각형 ABC, ACD, ADE, AEF가 있고, 각 삼각형에 내접하는 네 개의 원이 서로 외접하고 있다. 선분 AB의 길이는 14 cm, 선분 BC의 길이는 6 cm, 선분 CD의 길이는 10 cm, 선분 DE의 길이는 12 cm, 선분 EF의 길이는 9 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이는 14 cm이다.",
+    "선분 BC의 길이는 6 cm이다.",
+    "선분 CD의 길이는 10 cm이다.",
+    "선분 DE의 길이는 12 cm이다.",
+    "선분 EF의 길이는 9 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이웃한 원과 서로 외접하는 네 개의 원이 각각의 삼각형 $ABC, ACD, ADE, AEF$에 내접할 때, $\\overline{AB} = 14\\text{ cm}$, $\\overline{BC} = 6\\text{ cm}$, $\\overline{CD} = 10\\text{ cm}$, $\\overline{DE} = 12\\text{ cm}$, $\\overline{EF} = 9\\text{ cm}$일 때, $\\overline{AF}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

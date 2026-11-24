@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "310"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "114"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "142"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineDA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineDA",
+          "lineCE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aDCE",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 114,
+        "label": "114",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 38,
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "sBA",
+          "sAC",
+          "sCD"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 360
+  },
+  "caption": "삼각형 ABC와 연장선 위의 두 점 D, E에 대한 각과 선분의 길이를 나타낸 그림이다.",
+  "accessibilityDescription": "선분 BA의 연장선 위에 점 D, 선분 BC의 연장선 위에 점 E가 있다. 선분 AB, AC, CD의 길이가 같고 각 DCE는 114도이며 각 ABC는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 DCE의 크기는 114도이다.",
+    "각 ABC의 크기는 x이다.",
+    "선분 AB, AC, CD의 길이가 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 변 $BA$의 연장선 위에 점 $D$를, 변 $BC$의 연장선 위에 점 $E$를 잡을 때, $\\overline{AB}=\\overline{AC}=\\overline{CD}$이고 $\\angle DCE=114^\\circ$이다. $\\angle ABC$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

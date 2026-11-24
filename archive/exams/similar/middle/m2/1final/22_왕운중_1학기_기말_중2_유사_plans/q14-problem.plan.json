@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      3,
+      -4,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3/2"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "ax",
+          "slope": "0",
+          "intercept": "0",
+          "label": "x"
+        },
+        {
+          "id": "ay",
+          "x": "0",
+          "label": "y"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "한 직선은 가로축과 점 (-4, 0)에서 만나고, 다른 직선은 원점을 지난다. 가로축과 세로축이 각각 x, y로 표시되어 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 오른쪽 위로 올라가는 직선과 오른쪽 아래로 내려가는 직선이 한 점에서 교차한다. 한 직선은 가로축의 (-4, 0)을 지나고 다른 직선은 원점을 지난다. 가로축 옆에 x, 세로축 위에 y가 쓰여 있다.",
+  "newVisualInformation": [
+    "두 직선",
+    "가로축과 만나는 점 (-4, 0)",
+    "원점을 지나는 직선",
+    "가로축 x와 세로축 y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $x-y=a$와 $2x+y=b$에 대하여 $x-y=a$의 그래프의 $x$절편이 $-4$이고, $2x+y=b$의 그래프가 원점을 지날 때, $a-b$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

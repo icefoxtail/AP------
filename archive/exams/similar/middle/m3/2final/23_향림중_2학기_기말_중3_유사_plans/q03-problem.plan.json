@@ -1,9 +1,234 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "깨진 원호와 현의 수직이등분선 직각삼각형 OAM"
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "MINOR"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eM",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lMC",
+        "ownerSegment": "sMC",
+        "text": "2",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원형 거울의 일부분인 호와 현 AB, 중점 M에서 호까지의 수선이 나타난 그림이다.",
+  "accessibilityDescription": "원호의 양 끝점 A, B를 잇는 현 AB가 있고 현 AB의 중점 M에서 호 위의 점으로 수선이 그어져 있다. 현 AB의 길이는 8 cm이고 중점 M에서 호까지의 거리는 2 cm이며 수직 기호가 표시되어 있다.",
+  "newVisualInformation": [
+    "현 AB의 길이 8 cm와 중점 M에서 호까지의 거리 2 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 깨진 원형 거울의 호에서 현 $\\overline{AB}$의 길이는 $8\\rm,cm$이고, 현 $\\overline{AB}$의 중점 $M$에서 호 $\\wideparen{AB}$까지의 거리가 $2\\rm,cm$일 때, 이 원형 거울의 원래 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "현 AB의 길이는 8cm, 중점 M에서 호까지의 거리는 2cm"
+    }
+  ]
 }

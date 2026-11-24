@@ -1,4 +1,416 @@
 {
-  "status": "EXEMPT",
-  "reason": "평행선 사이의 선분의 길이의 비 기본 대수 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "La",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ma",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Na",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "La",
+    "Lb",
+    "Ma",
+    "Mb",
+    "Na",
+    "Nb",
+    "P1",
+    "Q1",
+    "R1",
+    "P2",
+    "Q2",
+    "R2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "La",
+        "P2"
+      ]
+    },
+    {
+      "id": "sL_tail",
+      "refs": [
+        "P2",
+        "Lb"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "Ma",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sM_tail",
+      "refs": [
+        "Q2",
+        "Mb"
+      ]
+    },
+    {
+      "id": "sN",
+      "refs": [
+        "Na",
+        "R2"
+      ]
+    },
+    {
+      "id": "sN_tail",
+      "refs": [
+        "R2",
+        "Nb"
+      ]
+    },
+    {
+      "id": "sP1Q1",
+      "refs": [
+        "P1",
+        "Q1"
+      ]
+    },
+    {
+      "id": "sQ1R1",
+      "refs": [
+        "Q1",
+        "R1"
+      ]
+    },
+    {
+      "id": "sP2Q2",
+      "refs": [
+        "P2",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sQ2R2",
+      "refs": [
+        "Q2",
+        "R2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sL",
+          "sM",
+          "sN"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lP1Q1",
+        "ownerSegment": "sP1Q1",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lQ1R1",
+        "ownerSegment": "sQ1R1",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "lP2Q2",
+        "ownerSegment": "sP2Q2",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lQ2R2",
+        "ownerSegment": "sQ2R2",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lbl_l",
+        "ownerSegment": "sL_tail",
+        "text": "l"
+      },
+      {
+        "id": "lbl_m",
+        "ownerSegment": "sM_tail",
+        "text": "m"
+      },
+      {
+        "id": "lbl_n",
+        "ownerSegment": "sN_tail",
+        "text": "n"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "La",
+    "Lb",
+    "Ma",
+    "Mb",
+    "Na",
+    "Nb",
+    "P1",
+    "Q1",
+    "R1",
+    "P2",
+    "Q2",
+    "R2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "세 평행선과 두 직선이 만나 생기는 선분의 길이를 나타낸 그림이다.",
+  "accessibilityDescription": "서로 평행한 세 직선 l, m, n과 만나는 두 직선이 있다. 왼쪽 직선에는 위에서부터 6 cm, 9 cm의 선분 길이가 표시되어 있고, 오른쪽 직선에는 8 cm, x cm의 선분 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행선 사이에서 잘린 선분의 길이 6 cm, 9 cm, 8 cm, x cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 평행선 $l, m, n$이 두 직선과 만난다. 한 직선에서 평행선 사이의 선분의 길이가 각각 $6 m\\,cm, 9 m\\,cm$이고, 다른 직선에서 평행선 사이의 대응하는 선분의 길이가 각각 $8 m\\,cm, x m\\,cm$일 때, $x$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

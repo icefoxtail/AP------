@@ -1,4 +1,278 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "원기둥에 내접하는 구와 원뿔의 부피 관계 다이어그램"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cSphere",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cSphere"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "sTM",
+      "refs": [
+        "T",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lr",
+        "ownerSegment": "sMB",
+        "text": "r"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "T",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 400,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원기둥에 꼭 맞게 들어 있는 구와 원뿔의 단면을 나타낸 그림이다.",
+  "accessibilityDescription": "정사각형 모양의 원기둥 단면 안에 내접하는 원과 밑변을 공유하고 꼭짓점이 윗변의 중점에 있는 삼각형이 그려져 있으며, 밑면의 반지름이 r로 표시되어 있다.",
+  "newVisualInformation": [
+    "원기둥의 밑면 반지름 r과 높이 2r, 구의 반지름 r, 원뿔의 밑면 반지름 r과 높이 2r"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 원기둥에 꼭 맞는 원뿔과 구가 들어있다. 원기둥의 밑면의 반지름의 길이를 $r$이라 할 때, 원기둥의 부피, 구의 부피, 원뿔의 부피의 비는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,9 +1,895 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
-  },
-  "caption": "사각형 내접 조건 보기 ㄱ~ㄹ 중 대각 합 180°인 ㄴ, ㄹ 판별"
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(ㄱ)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "uA1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "73"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "uA2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "65"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lA1",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "uA1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lA2",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "uA2"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lA1",
+                "lA2"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "uD1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "47"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "uD2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "85"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lD1",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "uD1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lD2",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "uD2"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lD1",
+                "lD2"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aA",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 42,
+              "label": "42",
+              "color": "BLUE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aD",
+              "refs": [
+                "B",
+                "D",
+                "C"
+              ],
+              "value": 48,
+              "label": "48",
+              "color": "WARM",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(ㄴ)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "65"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "65"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aA",
+              "refs": [
+                "D",
+                "A",
+                "B"
+              ],
+              "value": 115,
+              "label": "115",
+              "color": "BLUE"
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "B",
+                "C",
+                "D"
+              ],
+              "value": 65,
+              "label": "65",
+              "color": "WARM"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(ㄷ)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "75"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aA",
+              "refs": [
+                "D",
+                "A",
+                "B"
+              ],
+              "value": 105,
+              "label": "105",
+              "color": "GREEN"
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "B",
+                "C",
+                "D"
+              ],
+              "value": 105,
+              "label": "105",
+              "color": "GREEN"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(ㄹ)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "uA1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "uA2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "48"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lA1",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "uA1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lA2",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "uA2"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lA1",
+                "lA2"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "perp",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "M",
+                "lBC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "LINE_REFLECTION",
+              "inputs": [
+                "A",
+                "perp"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aA",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 52,
+              "label": "52",
+              "color": "BLUE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 48,
+              "label": "48",
+              "color": "WARM",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aD",
+              "refs": [
+                "A",
+                "D",
+                "C"
+              ],
+              "value": 100,
+              "label": "100",
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "사각형 ABCD가 원에 내접하는지 확인하기 위한 네 가지 조건을 나타낸 그림이다.",
+  "accessibilityDescription": "패널 ㄱ은 사각형 ABCD의 두 대각선과 변 BC를 바라보는 두 각을 나타내고, 패널 ㄴ과 ㄷ은 사각형의 두 대각의 크기를 나타내며, 패널 ㄹ은 사각형 ABCD와 대각선 AC에서 주어지는 각들을 나타낸다.",
+  "newVisualInformation": [
+    "원의 내접 조건 확인 그림"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\square ABCD$가 원에 내접하는 것을 <보기>에서 모두 고른 것은? <보기> (ㄱ) $\\angle BAC = 42^\\circ$, $\\angle BDC = 48^\\circ$ (ㄴ) $\\angle A$의 외각이 $65^\\circ$, $\\angle C$의 외각이 $115^\\circ$ (ㄷ) $\\angle A$의 외각이 $75^\\circ$, $\\angle C$의 외각이 $75^\\circ$ (ㄹ) $\\triangle ABC$에서 $\\angle BAC = 52^\\circ$, $\\angle ACB = 48^\\circ$이고 $\\angle ADC = 100^\\circ$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

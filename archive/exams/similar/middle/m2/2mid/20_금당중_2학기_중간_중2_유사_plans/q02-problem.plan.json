@@ -1,0 +1,321 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lRQ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dirP",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "R",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lRP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "dirP"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hT",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "U",
+          "lRP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "R",
+          "hT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hS",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "T",
+          "lRQ"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "U",
+          "hS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hP",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "S",
+          "lRP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "T",
+          "hP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hQ",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lRQ"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "S",
+          "hQ"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "sSU",
+      "refs": [
+        "S",
+        "U"
+      ]
+    },
+    {
+      "id": "sUR",
+      "refs": [
+        "U",
+        "R"
+      ]
+    },
+    {
+      "id": "sRT",
+      "refs": [
+        "R",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    },
+    {
+      "id": "sST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "sTU",
+      "refs": [
+        "T",
+        "U"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sPQ",
+          "sPS",
+          "sST",
+          "sTU",
+          "sUR"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aSTU",
+        "refs": [
+          "S",
+          "T",
+          "U"
+        ],
+        "value": 100,
+        "noLabel": true,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "이등변삼각형 PQR의 변 위에 점 S, T, U가 있고 다섯 선분의 길이가 같을 때 각 STU를 구하는 그림이다.",
+  "accessibilityDescription": "이등변삼각형 PQR에서 변 QR 위에 점 S와 U가 순서대로 있고 변 PR 위에 점 T가 있다. 선분 PQ, PS, ST, TU, UR에 같은 길이를 나타내는 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 PQ, PS, ST, TU, UR의 길이가 모두 같다.",
+    "점 S와 U는 변 QR 위에 있고 점 T는 변 PR 위에 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{PR}=\\overline{QR}$인 이등변삼각형 $PQR$에서 변 $QR$ 위의 두 점 $S, U$($Q-S-U-R$ 순)와 변 $PR$ 위의 점 $T$($P-T-R$ 순)에 대하여 $\\overline{PQ}=\\overline{PS}=\\overline{ST}=\\overline{TU}=\\overline{UR}$일 때, $\\angle STU$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

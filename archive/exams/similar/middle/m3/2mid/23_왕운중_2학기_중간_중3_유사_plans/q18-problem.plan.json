@@ -1,70 +1,243 @@
 {
-  "kind": "geometry",
-  "caption": "AB=8, AD=10인 직사각형 ABCD에서 D가 BC 위의 E에 오도록 접은 선 AF",
-  "viewBox": [
-    0,
-    0,
-    260,
-    190
-  ],
-  "vertices": {
-    "A": [
-      40,
-      35
-    ],
-    "B": [
-      40,
-      155
-    ],
-    "C": [
-      190,
-      155
-    ],
-    "D": [
-      190,
-      35
-    ],
-    "E": [
-      130,
-      155
-    ],
-    "F": [
-      190,
-      110
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "B"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "C",
-      "D"
-    ],
-    [
-      "D",
-      "A"
-    ],
-    [
-      "A",
-      "F"
-    ],
-    [
-      "A",
-      "E"
-    ],
-    [
-      "E",
-      "F"
-    ]
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
   ],
-  "labels": {
-    "AB": "8",
-    "AD": "10"
-  }
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "8",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "가로의 길이가 10, 세로의 길이가 8인 직사각형 ABCD에서 선분 AF를 접는 선으로 하여 꼭짓점 D가 변 BC 위의 점 E에 오도록 접은 그림이다.",
+  "accessibilityDescription": "직사각형 ABCD에서 선분 AB 왼쪽에 8, 선분 AD 위쪽에 10이라는 치수가 표시되어 있다. 선분 AF를 따라 접힌 꼭짓점 D가 변 BC 위의 점 E에 놓여 있고, 선분 AD와 선분 DF는 점선으로, 접힌 선분 AE와 선분 EF는 실선으로 나타나 있다.",
+  "newVisualInformation": [
+    "직사각형 ABCD에서 꼭짓점 D가 접혀 변 BC 위의 점 E에 닿아 있다.",
+    "선분 AD와 선분 DF는 점선으로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $AB=8$, $AD=10$인 직사각형 $ABCD$에서 $\\overline{AF}$를 접는 선으로 하여 꼭짓점 $D$가 $\\overline{BC}$ 위의 점 $E$에 오도록 접었다. 이때, $\\overline{FC}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

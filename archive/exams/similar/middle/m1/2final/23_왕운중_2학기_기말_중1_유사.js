@@ -673,6 +673,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/23_왕운중_2학기_기말_중1_유사/q16-problem.svg",
     "category": "평면도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",

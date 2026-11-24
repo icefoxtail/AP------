@@ -620,6 +620,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/23_복성고_1학기_기말_고2_수학I_유사/q15-problem.svg",
     "category": "지수의 뜻과 성질",
     "standardCourse": "",
     "curriculum": "2015",

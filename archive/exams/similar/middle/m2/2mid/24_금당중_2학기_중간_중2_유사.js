@@ -237,6 +237,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/24_금당중_2학기_중간_중2_유사/q06-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",

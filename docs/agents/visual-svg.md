@@ -6,6 +6,7 @@
 ## 정본 — 새 SVG는 무조건 엔진으로 만든다 (2026-11-19 사용자 지시)
 
 - 문제 그림이든 해설 그림이든, 기출·유사·교재·유형·생성 문항 어느 것이든 **새로 만들거나 다시 만드는 SVG는 전부 저장소의 SVG 엔진(`archive/tools/geometry-equation/`, 작성 규칙 정본 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`)으로 만든다.** 손으로 쓴 SVG, 스크립트로 직접 조립한 SVG, 다른 도구가 낸 SVG는 넣지 않는다. 문항 수리·원문 복원·메타 작업처럼 그림이 본업이 아닌 작업에서 그림이 필요해져도 같다.
+- **엔진이 못 그리면 바로 엔진을 고친다 (2026-11-24 원장님: "엔진이 못 그리면 빠르게 엔진 업글해").** 아래 줄의 "엔진 미지원 보고·그림 보류"는 엔진 기능이 들어갈 때까지의 임시 상태다. 번호 보고로 끝내지 않고 결함 종류 단위의 공통 기능(예제 plan·테스트·AUTHOR_GUIDE, 골든 게이트)을 별도 PR로 넣은 뒤 그 문항을 그린다(예: 11-24 관통 구멍 `bore`, 비스듬한 callout 지시선). 그동안 문항은 그림 없이 운영에 둔다. 모든 AI 공통 흐름은 아래 "현행 흐름 (2026-11-24)" 절.
 - 엔진이 그 그림을 지원하지 못하면 손으로 그려 메우지 않는다. 지시선·라벨 등 기존 옵션으로 시도한 증거와 함께 "엔진 미지원"으로 보고하고, 그 문항은 그림 보류로 남긴다(엔진 확장은 엔진 라인의 일).
 - **제작 방식(현행, 2026-11-19 사용자 지시):** 규모에 따라 둘로 나눈다. ① **대규모 그림 캠페인**(시험지 여러 개의 해설·문제 그림을 한꺼번에 만드는 SVG 라인)은 효율을 위해 딥시크가 엔진으로 초안을 만들고 Sonnet이 검수·마감 한 번 하고 메인이 PNG 표본을 본다(① 전용 지시문: `archive/tools/geometry-equation/ops/claude-batch/prompts/ds-exam-draft.md`, `archive/tools/geometry-equation/ops/claude-batch/prompts/sonnet-exam-impl.md`). ② **그 밖의 작업에서 생기는 그림**(문항 수리, 원문 복원, 유사문제 반입의 최종 검수 등 몇 장~수십 장)은 Sonnet이 엔진으로 직접 만들고, 메인이 PNG를 눈으로 검수해 마감한다. 어느 쪽이든 엔진으로만 만든다. SVG 담당은 Claude SVG 라인 하나다(2026-11-17). 아래의 루나 구현·루나 검수 절차는 과거 이력이다. 이유: 초안을 싼 모델에 나누는 것은 양이 많을 때만 이득이고, 적은 양은 단계를 줄이는 편이 빠르고 정확하다.
 - **대량 그림(수백 장 이상)은 DeepSeek 일괄 파이프라인으로 한다 (2026-11-23 사용자: "앞으로는 딥시크한테 시키고").** 도구: 집 PC `D:/AP-svg-factory/labor/ds/`(README.md에 파일별 역할; 저장소 밖). 방식: 그림 종류별로 묶어 한 DeepSeek 호출에 8~20키(`write-plans.mjs`, 변형 `#low`), 동시 호출은 워크스페이스 공용 한도라 라인 합계 8 안팎, 렌더는 모델 없이 `render.mjs`가 엔진 `render-plan.mjs`를 일괄 호출(슬롯 1~2), 실패분만 DeepSeek 되돌림, 반입 전 Sonnet 검수·수리 1회(문제 그림 정답 노출·발문과 다른 값이 약 30% 나왔다). 안티그래비티·루나 같은 모델이 키마다 plan·렌더를 손으로 도는 방식은 쓰지 않는다. 위 ①의 시험지별 `ds-launch-exam.sh` 흐름도 대량에는 쓰지 않는다. 이유: 같은 날 키 단위 수작업은 몇 시간에 30~40키, 일괄 파이프라인은 시간당 300~400키가 통과했다.
@@ -70,7 +71,49 @@
 - 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
 - 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
 
-### 현행 흐름 (2026-11-19) — ① 대규모 캠페인(SVG 라인)
+### 현행 흐름 (2026-11-24) — SVG 공장 운영, 모든 AI 공통 (아래 11-19 흐름보다 우선)
+
+Claude(어느 계정이든)·GPT(Codex)·Gemini(Antigravity)·DeepSeek 어느 엔진이든, SVG 그림 작업은 이 문서대로 이어 간다. 엔진 규칙은 이 문서 다른 절과 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`가 정본이다. 이 문서는 "일을 어떻게 흘리는가"를 적는다.
+
+원칙(원장님): **쉽게·넓게·빠르게·변화하게.** 그림이 통과하면 모아 두지 않고 바로 운영 병합한다. 문항은 그림이 없어도 먼저 들어간다. 이유: 학생이 바로 해설·기출을 참고해야 한다.
+
+#### 1. 내 역할 찾기
+| 내가 맡은 일 | 할 것 | 하지 않을 것 |
+| --- | --- | --- |
+| **plan 작성**(DeepSeek·Gemini·GPT 같은 외부 모델) | 문항 발문·정답·해설과 AUTHOR_GUIDE를 읽고 plan JSON만 쓴다. 문제 그림에는 발문 값만, 정답은 넣지 않는다. 해설 그림은 과정 정보를 최대로 넣는다. | SVG를 직접 쓰지 않는다. 파일을 만들거나 명령을 실행하지 않는다(답만 출력). |
+| **렌더·게시**(Claude 작업자) | 저장소 엔진으로만 렌더하고 PNG를 직접 본다. 통과분은 바로 PR. | Claude(Sonnet)는 plan을 쓰지 않는다. 손·스크립트로 SVG를 조립하지 않는다. |
+| **엔진 개선**(Claude 작업자) | 엔진이 못 그리는 꼴이 나오면 번호 보고로 끝내지 않고 결함 종류 단위의 공통 기능을 바로 넣는다(예제 plan·테스트·AUTHOR_GUIDE). 기능은 켰을 때·실패했을 때만 동작해 기존 그림 바이트가 같게. 골든 게이트 REGRESSED·CLIPPED·NOT_RUN 0. | 검사 기준(하한·허용치·지시선 규칙)을 낮추거나 단언을 지워 통과시키지 않는다. |
+| **병합 창구**(SVG 라인 메인) | PR마다 PNG 표본 1~3장을 발문·정답과 대조하고 `--match-head-commit`으로 즉시 병합. 엔진 PR은 다른 인스턴스의 검수(바뀐 부분·관련 테스트만) 뒤 병합. | 그림을 모아 두지 않는다. 보고만 믿지 않는다. |
+
+#### 2. plan 모델 순서와 한도
+1. DeepSeek `opencode-go/deepseek-v4.1-flash`(opencode, `-f`로 지시·그림 첨부).
+2. Gemini 3.8 Flash — Antigravity CLI: `agy -p "<프롬프트>" --model gemini-3.8-flash --effort high`. 첨부·긴 지시는 프롬프트에 **절대경로**로 적어 agy가 직접 열게 한다(명령줄 길이 한도). 호출당 약 4분. `empty conversation id` → 5분 뒤, `RESOURCE_EXHAUSTED 429 Individual quota` → 15분 간격 재시도(무료·AI Plus 계정은 주간 기본 한도).
+3. Codex(GPT) `codex exec`.
+- 셋 다 한도면 원장님께 묻는다. **결제·업그레이드·계정 교체는 원장님 몫**이고 AI가 대신하지 않는다.
+
+#### 3. 흐름 (대량)
+1. **대기열:** 그림이 필요한데 main에 그림이 없는 키만 넣는다(이미 있는 키는 뺀다: 같은 일을 두 번 한 일이 있었다). 키 형식 `<시험지 stem>-q<번호>-problem|solution`. 작업 순서는 최신 연도부터.
+2. **plan 쓰기:** 묶음(5문항 안팎)으로 외부 모델에 보낸다. 렌더 전 `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json…>`로 형식 오류를 먼저 거른다.
+3. **렌더:** 같은 형태(원·삼각형·그래프…)끼리 40개쯤 묶어 엔진(`archive/tools/geometry-equation/production/render-plan.mjs --manifest <pk> --out <out>`)에 한 번에 넣는다. 동시 4개 기본. **plan을 다 쓸 때까지 기다리지 않고** 나온 plan부터 주기적으로(20분쯤) 렌더한다. 이미 렌더한 키는 건너뛴다.
+4. **자동 검사:** 언어 계약 `archive/tools/svg-language-contract.cjs`, 시험지 JS 파싱, TeX, 관련 테스트. 정답이 보이는 **문제** 그림만 빼고(HOLD) 시험지는 넣는다. 해설 그림은 정보 우선(정답 보여도 됨). 엔진이 못 그린 문항은 그림 없이 두고 나중에 빈자리를 채운다.
+5. **게시:** 통과분을 시험지 30~50개 단위 PR로 바로 올린다. 새 유사 시험지는 그림이 하나라도 있으면 반입, 운영 시험지는 빈 그림 자리를 채운다.
+6. **병합:** 병합 창구가 즉시 병합. 등록기(main 자동 메타)는 연속 병합에도 멈추지 않는다. 학생 사이트 반영은 등록·릴리스 뒤.
+7. **수리:** 빠진 그림(정답 노출·렌더 실패)은 상시 수리 라인이 plan을 고쳐 다시 렌더·게시한다. "그림 모양이 곧 정답"인 문항은 그림 없이 둔다.
+
+#### 4. 소량(문항 몇 개)
+visual-svg.md "② 문항 몇 개만 그릴 때" 절차를 쓰되 plan은 위 외부 모델에 맡긴다. 기존 해설 plan의 "문제 그림" 패널을 덜어 쓰는 것은 새 plan 작성이 아니므로 작업자가 해도 된다.
+
+#### 5. 운영 위생
+- 멈춘 렌더: 40분 넘게 돌았는데 30분 동안 출력이 없는 렌더 묶음은 끄고 그 키만 `--rerender`로 다시(11-24에 15시간 멈춘 일이 있었다).
+- 남의 라인 프로세스·폴더는 읽기만. 무거운 작업 전 CPU 확인.
+- 워크트리는 병합되면 바로 지운다. 지우기 전 junction을 깊이 제한 없이 찾아 `cmd /c rmdir`로 끊고, 삭제는 `git worktree remove`로만. `Remove-Item -Recurse`·`.tmp` robocopy /MOVE 금지.
+- node 아카이브 테스트는 워크트리 루트에서 돌린다(하위 폴더면 TEMPORARY_WORKSPACE_REQUIRED). 새 워크트리 python 의존은 루트 `.tmp/apmath-visual-engine/dependencies` junction, playwright는 `GEOMETRY_NODE_MODULES`.
+- 정직한 기록: 안 돌린 검사는 NOT_RUN. "깨진다"는 화면으로 본 것만.
+
+#### 6. 집 PC 공장 (도구 위치)
+집 PC에는 위 흐름을 자동으로 돌리는 저장소 밖 도구가 있다: `D:/AP-svg-factory/README-PIPELINE.md`(명령·폴더·장부), `D:/AP-svg-factory/factory/merge/`(즉시 병합·30분 자동 게시 루프 사본), `labor/ds`(DeepSeek)·`labor/ds-gem`(Gemini) 파이프라인, `factory/pub-orig`·`pub-sim`(자동 게시), `factory/repair-gem`(수리), `labor/render-watchdog.ps1`(멈춘 렌더 감시). 다른 PC에서는 이 도구 없이 3절 흐름을 저장소 엔진 명령으로 따른다.
+
+### 이전 흐름 (2026-11-19) — ① 대규모 캠페인(SVG 라인)
 1. **DeepSeek 초안**(`opencode-go/deepseek-v4.1-flash`, effort 설정 없음). 시험지 단위로 `ops/claude-batch/ds-launch-exam.sh <key> <시험지 JS>`를 띄운다(지시문 `prompts/ds-exam-draft.md`). 전 문항의 그림 필요 여부를 판정하고 item/plan/publish JSON을 쓰고 `node .tmp/work/render.mjs --item <item.json> --plan <plan.json> --out <dir>`로 ARCHIVE_BOUND까지 렌더한 뒤, `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 만든 PNG를 **직접 보고** 1차로 고친다. DeepSeek은 그림을 본다(2026-11-16 `opencode run -f <png>`로 정육각형 라벨 순서·대각선까지 읽음 확인). 실행 안에서 PNG를 못 열면 메모에 남기고 시각 판단은 Sonnet에 넘긴다.
 2. **Sonnet 검수·마감은 한 번**(effort high, 지시문 `prompts/sonnet-exam-impl.md`). 원문·정답·해설과 PNG를 대조하고 plan을 고쳐 다시 렌더한다(손 SVG 금지). 최종 판정표와 기계 점검(ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음)을 낸다. 두 번째 Sonnet 검수는 두지 않는다. 메인이 PNG 표본에서 결함을 찾으면 메인이 직접 plan·publish를 고쳐 `render.mjs`로 다시 렌더한다(손 SVG 금지; 이유: 결함 하나에 지시서를 쓰고 Sonnet을 다시 돌리는 것보다 빠르다). 같은 묶음에 결함이 여럿이거나 같은 종류가 반복되면 지적 목록을 붙여 그 묶음을 Sonnet 검수·마감 단계로 돌려보낸다. `sonnet-final.md`는 과거(Sonnet B) 지시서다.
 3. **메인이 PNG 표본을 확인한 뒤 게시하고 PR을 올린다.** 게시 도구는 `ops/svg-m1/publish-exam.py`·`pubflow.py`이고 사용법은 HANDOFF 문서 §3-2·§4다. 시험지 5개쯤을 PR 하나로 묶는다.
