@@ -11,7 +11,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 `ellipse-figure-v1`의 일반 타원·포물선·쌍곡선에도 `accessibilityDescription`을 쓸 수 있다. 새 학생용 그림에는 곡선·점·선분이 보여 주는 관계를 한 줄, 500자 이내로 적고 `caption`에 짧은 제목을 쓴다. 이 필드를 지정하면 엔진이 제목·설명과 고유 라벨 ID를 렌더하고 독립 관측기가 확인한다. 수학 조건과 도형의 좌표는 그대로 계산한다.
 
-`stat-chart-figure-v1`·`set-diagram-figure-v1`·`lattice-path-figure-v1`·`container-fill-figure-v1`도 같은 최상위 필드 `accessibilityDescription`을 받는다(공백이 아닌 한 줄, 500자 이하, 줄바꿈 없음, 어기면 `INVALID_ACCESSIBILITY_DESCRIPTION`). 값은 SVG `<desc>`에 들어가고, 필드가 없으면 그림은 예전과 바이트까지 같다(통계·집합은 종류별 고정 설명 문장, 도로망·그릇은 `<title>`/`<desc>` 없음). 통계·집합의 `<title>`은 계속 종류별 고정 제목이고, 도로망·그릇은 필드가 있을 때만 고정 제목(`도로망 최단 경로`, `물 채우기 그릇과 높이 그래프`)과 plan의 설명을 함께 쓴다. 독립 관측기가 `<desc>` 본문이 plan의 한 줄과 같은지 따로 읽어 대조한다.
+`stat-chart-figure-v1`·`set-diagram-figure-v1`·`lattice-path-figure-v1`·`container-fill-figure-v1`도 같은 최상위 필드 `accessibilityDescription`을 받는다(공백이 아닌 한 줄, 500자 이하, 줄바꿈 없음, 어기면 `INVALID_ACCESSIBILITY_DESCRIPTION`). 값은 SVG `<desc>`에 들어가고, 필드가 없으면 그림은 예전과 바이트까지 같다(통계·집합은 종류별 고정 설명 문장, 그릇은 `<title>`/`<desc>` 없음, 도로망은 칸 수와 지점 이름으로 만든 한 줄을 항상 쓴다: "가로 N칸, 세로 M칸인 격자 모양의 도로망 그림. 표시된 지점은 A, B이다.", 개수·경로는 쓰지 않는다). 통계·집합의 `<title>`은 계속 종류별 고정 제목이고, 그릇은 필드가 있을 때만 고정 제목(`물 채우기 그릇과 높이 그래프`)과 plan의 설명을 함께 쓰고, 도로망은 항상 고정 제목(`도로망 최단 경로`)과 plan의 설명(없으면 위 한 줄)을 쓴다. 독립 관측기가 `<desc>` 본문이 plan의 한 줄과 같은지 따로 읽어 대조한다.
 
 ## 1. 순서
 

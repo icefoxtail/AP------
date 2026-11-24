@@ -404,7 +404,7 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
     }
     // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a
     // segment label stops counting a longer segment lying over its own as a competitor. A figure that composed before is never touched; if this does not compose either, the failure stays as it was.
-    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&plan.mathPlan&&!plan.graphPlan){
+    if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&(plan.mathPlan||plan.graphPlan)){
       let last=null;
       try{last=await attempt(plan,'-last',true);}catch{last=null;}
       if(last&&last.composed.status==='COMPOSED'){(row.fallback??=[]).push({from:clip(composed.detail),to:'LAYOUT_LAST_RESORT'});({size,measured,composed}=last);}

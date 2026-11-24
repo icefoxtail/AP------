@@ -26,10 +26,12 @@ test('the centre of a small circle with lines through it: the name A′ goes out
   const item={sourcePath:'archive/exams/original/high/h1/1final/21_팔마고_1학기_기말_고1_기출.js',ordinal:18,dir:'cl18'};
   const {result,svg}=await render(read('../ops/golden/item154crowdnames18/plan.json'),item);
   assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
-  // A, A′, C′ and E stand on leaders across thin strokes; K, beside the circle, on a plain one. No point name floats beside another point's name without a leader.
+  // A, A′ and C′ stand on leaders across thin strokes; K, beside the circle, on a plain one. No point name floats beside another point's name without a leader.
+  // The circle's centre is the point A′ itself (the original circle (x+3)²+(y+1)²=9 is centred at A′(-3,-1)): the plan used to name the same place a second time as E, two names on one dot, which the engine refuses (DISPLAY_POINTS_COINCIDE).
   const crossing=leaders(svg).filter(tag=>tag.includes('data-leader-crossing="1"'));
   assert.ok(crossing.some(tag=>tag.includes('data-owner="A1"')&&tag.includes('data-owner-label="A1-name"')));
-  for(const id of ['A-name','A1-name','C1-name','E-name','K-name'])assert.ok(leaders(svg).some(tag=>tag.includes('data-owner-label="'+id+'"')),id+' has a leader to its point');
+  for(const id of ['A-name','A1-name','C1-name','K-name'])assert.ok(leaders(svg).some(tag=>tag.includes('data-owner-label="'+id+'"')),id+' has a leader to its point');
+  assert.ok(!svg.includes('E-name'),'the circle centre is not named a second time');
 });
 
 test('an angle mark on a 20 px side is drawn with a small arc and still labelled; on a 3 px side it is still refused',async()=>{

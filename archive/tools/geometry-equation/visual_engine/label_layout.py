@@ -14,6 +14,8 @@ OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 LEADER_ONLY_MIN_PX=14.0
+TICK_ROOT_CURVE_PX=0.6   # (PN6) a curve passing within this of a tick point crosses the axis at that tick (the verifier's own tolerance is 1 css px)
+SAFE_MARGIN_RELIEF_PX=4.0   # (PN3) how far the 12 px safe margin may be cut for a label that found no place inside it (the label stays at least 8 px inside the frame)
 LEADER_MAY_CROSS_ASYMPTOTE=re.compile(r'(?:.*-)?asymptote(?:-|$)|rational-asymptote-')   # (EXT-20261109-e) a point callout's leader may cross a dashed asymptote like an axis, tick or guide (never a curve or a line)
 RING_LABEL_OWN_REACH_PX=60.0   # the independent observer refuses a leaderless overlay coordinate label farther than this from its own dot
 POINT_NAME_RING_NEAR_PX=18.0   # (CL) a point name set in the free ring without a leader stays this close to its own point (box to point); farther out it needs a leader to the point
@@ -1170,10 +1172,41 @@ def apply_label_hints(labels,hints):
             if hint['leader'] is not True:raise ValueError('LABEL_HINT_LEADER_INVALID:'+label_id)
             if 'regionLeader' in label:label['regionLeader']['only']=True;label['candidateCenters']=[]
 
-def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,last_resort=False):
+BAND_ROW_CLEARANCE_PX=6.5      # (PN5) the layout keeps 6 px between labels; the rows of the coordinate band are spaced by this much more than the two label heights
+BAND_ROW_MAX_SHIFT_PX=14.0     # (PN5) the rows may move down by this much in all (the 14 px under the last row of the band is the room for it)
+
+def respace_band_rows(labels,measurements,band_ids):
+    """(PN5) The rows of the coordinate band (labels whose single fixed centre the plan wrote, equationLabelCenters) stand a fixed 34 px apart, but the real labels are as high as the browser
+    measured them (28.5 to 31 px with their parentheses and radicals): two neighbouring rows then stand closer than the 6 px clearance and the label between them finds no place. The rows
+    keep their order and their columns; a row that would touch the one above moves down by the shortfall (never up), at most BAND_ROW_MAX_SHIFT_PX in all. Returns the same list when
+    nothing needs to move, else copies of the labels with the new centres."""
+    if not band_ids or not isinstance(measurements,dict):return labels
+    rows={}
+    for label in labels:
+        centers=label.get('candidateCenters')
+        if label['id'] in band_ids and label.get('kind')=='EQUATION_LABEL' and isinstance(centers,list) and len(centers)==1 and label['id'] in measurements:
+            rows.setdefault(round(centers[0][1],1),[]).append(label)
+    ys=sorted(rows)
+    if len(ys)<2:return labels
+    height=lambda y:max(measurements[label['id']][1] for label in rows[y])
+    shift={ys[0]:0.0}
+    for previous,y in zip(ys,ys[1:]):
+        need=height(previous)/2+height(y)/2+BAND_ROW_CLEARANCE_PX
+        shift[y]=max(shift[previous],previous+shift[previous]+need-y)
+    if max(shift.values())<=1e-9 or max(shift.values())>BAND_ROW_MAX_SHIFT_PX:return labels
+    moved=[]
+    for label in labels:
+        centers=label.get('candidateCenters');y=round(centers[0][1],1) if isinstance(centers,list) and len(centers)==1 else None
+        if y in shift and shift[y] and label['id'] in band_ids and label['id'] in measurements and any(row is label for row in rows[y]):
+            label={**label,'candidateCenters':[[centers[0][0],centers[0][1]+shift[y]]]}
+        moved.append(label)
+    return moved
+
+def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,last_resort=False,band_ids=()):
     """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
     (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
     resolved at the first pass is never changed."""
+    labels=respace_band_rows(labels,measurements,set(band_ids))
     order=lambda label:(label.get('priority',2),label['id'])
     result=layout_pass(labels,obstacles,safe_area,panel,measurements,require_measurements)
     current=labels
@@ -1191,6 +1224,25 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             # Unresolved ticks continue to the leader fallback. Keep this order for the last-resort pass.
             result=retry
             order=tick_labels_first_order
+    # (PN1) A point name found no place because an arc, trace or segment label of a better priority took its few places first. The name can stand only beside its own dot, the other label
+    # can slide along its own stroke, so the second pass places the point names first. Only a figure with an unresolved point name gets here; it replaces the first result only when it leaves
+    # fewer labels unresolved, so a layout that resolved at the first pass is never changed.
+    if any(any(label['id']==label_id and label.get('kind')=='POINT_NAME' for label in labels) for label_id in result['unresolved']):
+        try:retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,point_names_first_order)
+        except ValueError:retry=None
+        if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
+            if not retry['unresolved']:return retry
+            result=retry;order=point_names_first_order
+    # (PN4) A value written on an axis (the end of an interval, 60 on the time axis) found no place because the axis title took the room beside the axis end first: the value is bound to its own place
+    # on the axis and the title is free to stand anywhere along it, so the second pass places the axis values before the other labels. Replaces the first result only when it leaves fewer unresolved.
+    if any(any(label['id']==label_id and label.get('axisValue') in ('x','y') and label.get('axisAnchor') is not None for label in labels) for label_id in result['unresolved']):
+        # the stuck value goes straight to its own place on the axis (its second try, axis_anchor_retry), not to the end of the queue behind the labels that took its room
+        trial=[axis_anchor_retry(copy.deepcopy(label)) if label['id'] in result['unresolved'] and label.get('axisValue') in ('x','y') and label.get('axisAnchor') is not None and not label.get('_axisRetry') else copy.deepcopy(label) for label in labels]
+        try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,axis_values_first_order)
+        except ValueError:retry=None
+        if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
+            if not retry['unresolved']:return retry
+            result=retry;order=axis_values_first_order
     # (every plan, not only tickLabelFallbackCallout ones: a tick number is never dropped) A tick number whose two
     # axis-normal sides are all blocked (a segment running over its tick) keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
     # (of TICK_CALLOUT_OFFSETS) that resolves the label wins; a layout that already resolved is never changed.
@@ -1206,6 +1258,17 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 except ValueError:continue
                 if target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
                     current=trial;result=retry;order=tick_labels_first_order;break
+    # (PN3) A label that is only a hair too tall for the frame (a stacked fraction under an axis: 3pi/2 stands 55.13 px high and the room under the axis held 55.12) found no place inside the
+    # 12 px safe margin although the frame has room: the labels still unresolved get one more pass with the safe margin cut by SAFE_MARGIN_RELIEF_PX, every other rule unchanged. The result
+    # replaces the first one only when it leaves fewer labels unresolved, so a layout that resolved is never changed, and no label leaves the frame.
+    if result['unresolved'] and safe_area.width>2*SAFE_MARGIN_RELIEF_PX and safe_area.height>2*SAFE_MARGIN_RELIEF_PX:
+        relieved=Box(safe_area.x-SAFE_MARGIN_RELIEF_PX,safe_area.y-SAFE_MARGIN_RELIEF_PX,safe_area.width+2*SAFE_MARGIN_RELIEF_PX,safe_area.height+2*SAFE_MARGIN_RELIEF_PX)
+        if relieved.x>=0 and relieved.y>=0:
+            try:retry=layout_pass(copy.deepcopy(current),obstacles,relieved,panel,measurements,require_measurements,order)
+            except ValueError:retry=None
+            if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
+                if not retry['unresolved']:return retry
+                result=retry
     # (CL) Last resort (the caller asks for it only after every other way to compose the figure failed): the labels still unresolved get one more pass, placed after every other
     # label so those keep the places they had. A point name may take a leader that crosses a thin stroke or two (crossFallbackAllowed); a segment label whose own segment lies
     # wholly on a longer one (the radius OM on the diameter OA) no longer counts that longer segment as a competitor (collinearOwners).
@@ -1228,14 +1291,27 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             if retry is not None and len(retry['unresolved'])<len(result['unresolved']):result=retry
     return result
 
+def axis_values_first_order(label):
+    """The axis-value retry order: the values written on an axis (bound to their place on it) go before every other label of any priority."""
+    return (0 if label.get('axisValue') else 1,label.get('priority',2),label['id'])
+
+def point_names_first_order(label):
+    """The point-name retry order: the point names (bound to their own dot, few places) go before every other label of any priority; the rest keeps the first-pass order."""
+    return (0 if label.get('kind')=='POINT_NAME' else 1,label.get('priority',2),label['id'])
+
 def tick_callout_offsets(label):
     if label.get('sharedZeroTick'):
         return TICK_CALLOUT_OFFSETS+SHARED_ZERO_TICK_CALLOUT_OFFSETS
     return TICK_CALLOUT_OFFSETS
 
 def tick_ground_line_ids(obstacles,at):
-    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
-    return {o.get('id') for o in obstacles if o.get('kind')=='line' and isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+    """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`, and of the graph curve (f-/g- piece or branch) that crosses the axis
+    exactly at it, with or without a dot on it (PN6: the tick of a root, or of the value a constant function takes; a sampled curve passes within a fraction of a px of the point).
+    A leader may touch these only at its start. The rendered-layout check (verify-rendered-layout.mjs ownerLeaderClearance) already treats such a curve as the tick's ground, so refusing it
+    here only dropped the tick number."""
+    return {o.get('id') for o in obstacles if isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple))
+        and ((o.get('kind')=='line' and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:])))
+             or (o.get('kind')=='curve' and re.match(r'[fg]-(?:piece-\d+|branch-\d+)',o['id']) and any(point_segment_distance(at,c,d)<=TICK_ROOT_CURVE_PX for c,d in zip(o['geometry'],o['geometry'][1:]))))}
 
 def tick_start_circle_ids(obstacles,start,end):
     """An exact circle-axis intersection may be touched at the leader's start, if it leaves the circle outwards."""

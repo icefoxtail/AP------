@@ -22,7 +22,7 @@ const sourceRef=fileRef(root,sourcePath);
 const sourceHex=sourceRef.sha256.slice(7);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
-const preflightTypographyPx=24.9;
+const preflightTypographyPx=26.6;   // the font the real pipeline would set from the measured Archive scale: the page now shows the figure at 0.4146 (since 2026-11-11), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 const profileOrder=['small','medium','large','full'];
 
 function archiveUrl(){return '/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''));}

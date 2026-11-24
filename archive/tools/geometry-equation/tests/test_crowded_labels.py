@@ -195,8 +195,10 @@ class LastResortCrossingTests(unittest.TestCase):
         self.assertEqual(result['unresolved'],[])
         self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
         bare=layout([item],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(20,16)},require_measurements=True)
-        self.assertEqual(bare['unresolved'],[item['id']],'a curve with no dot on the tick is never its own ground of the tick')
-
+        # (PN6, 2026-11-24) a curve that crosses the axis at the tick is the tick's ground with or without a dot: the leader leaves it at its start (verify-rendered-layout.mjs ownerLeaderClearance
+        # already allows exactly this). The old rule refused it and dropped the tick number of a root or of a constant function's value (y=1 on y=(x-1)/(x-1)).
+        self.assertEqual(bare['unresolved'],[])
+        self.assertEqual(bare['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
 
 class AxisValueLabelTests(unittest.TestCase):
     """(AXV) A label that names a value on an axis (an interval end -4π/3 or 9π on x, an intercept on y) reads as that axis's tick of its own value, or it is refused.

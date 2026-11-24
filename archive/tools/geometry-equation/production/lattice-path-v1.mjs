@@ -7,8 +7,11 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {readAccessibilityDescription} from './accessibility-description.mjs';
 import {noteCandidate} from './score-candidate.mjs';
-const accessibleNamesFor=description=>description===undefined?'':`<title id="visual-title">도로망 최단 경로</title><desc id="visual-desc">${esc(description)}</desc>`;
-const labelledBy=description=>description===undefined?'':' aria-labelledby="visual-title visual-desc"';
+const accessibleNamesFor=description=>`<title id="visual-title">도로망 최단 경로</title><desc id="visual-desc">${esc(description)}</desc>`;
+const labelledBy=()=>' aria-labelledby="visual-title visual-desc"';
+// The figure always carries its accessible name (an engine output without <title>/<desc> stopped a registration): the plan's own accessibilityDescription, else one line made from the grid and
+// the named points. It never states a count or a path, only what the picture is.
+export const latticeDescription=(plan,model)=>readAccessibilityDescription(plan)??`가로 ${model.cols}칸, 세로 ${model.rows}칸인 격자 모양의 도로망 그림.${Object.keys(plan.lattice?.points??{}).length?` 표시된 지점은 ${Object.keys(plan.lattice.points).join(', ')}이다.`:''}`;
 
 // A standalone road-network / lattice shortest-path figure (lattice-path-figure-v1): a cols x rows grid of roads, named points on grid crossings, roads
 // that may not be used (drawn broken), roads that must be used (drawn bold), an optional highlighted path and, on request, the number of shortest paths
@@ -313,11 +316,11 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${labelledBy(readAccessibilityDescription(plan))} data-lattice-path="${FIGURE_CAPABILITY}" data-cols="${model.cols}" data-rows="${model.rows}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNamesFor(readAccessibilityDescription(plan))}${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${labelledBy()} data-lattice-path="${FIGURE_CAPABILITY}" data-cols="${model.cols}" data-rows="${model.rows}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNamesFor(latticeDescription(plan,model))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-lattice-path-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface,...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface,accessibilityDescription:latticeDescription(plan,model)},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

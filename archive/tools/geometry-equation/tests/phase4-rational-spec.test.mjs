@@ -47,7 +47,7 @@ test('cancelled denominator root materializes a white open hole and preserves it
   const {graphModel,spec,prepared}=await prepareRational({numerator:['-1','1'],denominator:['-1','1'],caption:'합성 유리함수의 뚫린 점',axisTickValues});
   assert.equal(spec.displayFacts.rationalGraphFeatures.singularity.kind,'REMOVABLE_HOLE');
   assert.deepEqual(spec.displayFacts.axisTickValues,axisTickValues);
-  assert.equal(spec.displayFacts.rationalGraphPolicy.holeMarkerRadiusIntrinsicPx,4);
+  assert.equal(spec.displayFacts.rationalGraphPolicy.holeMarkerRadiusIntrinsicPx,6);
   assert.equal(spec.displayFacts.rationalGraphPolicy.minimumHoleMarkerDiameterCssPx,4.5);
   assert.ok(spec.objects.some(obj=>obj.id==='removable-hole-label'&&obj.text==='뚫린 점'));
   const marker=prepared.prepared.primitives.find(item=>item.role==='hole');

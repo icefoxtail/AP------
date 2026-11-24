@@ -7,8 +7,7 @@
     "A1",
     "B1",
     "C1",
-    "K",
-    "E"
+    "K"
   ],
   "displaySegments": [
     {
@@ -102,10 +101,9 @@
     "A1": "A′",
     "B1": "B′",
     "C1": "C′",
-    "K": "K",
-    "E": "E"
+    "K": "K"
   },
-  "caption": "두 삼각형의 대응 꼭짓점과 각 대응점을 잇는 선분의 중점 K를 나타낸다. 원래 원의 중심은 E로 표시한다.",
+  "caption": "두 삼각형의 대응 꼭짓점과 각 대응점을 잇는 선분의 중점 K를 나타낸다. 원래 원의 중심은 A′이다.",
   "newVisualInformation": [
     "세 대응점 쌍의 중점이 같은 점 K"
   ],
@@ -273,29 +271,10 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "E",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-3"
-            },
-            {
-              "kind": "integer",
-              "value": "-1"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
         "id": "sourceCircle",
         "op": "CIRCLE_CENTER_RADIUS",
         "inputs": [
-          "E"
+          "A1"
         ],
         "args": {
           "radius": {

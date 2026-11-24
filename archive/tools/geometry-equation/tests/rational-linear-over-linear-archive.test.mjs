@@ -22,7 +22,7 @@ const sourceHex=sourceRef.sha256.slice(7);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const profileOrder=['small','medium','large','full'];
-const fontPx=24.9;
+const fontPx=27;   // the font the real pipeline would set from the measured Archive scale: the page now shows a 610 px wide figure at 0.4146 (252.9 css px), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 
 function archiveUrl(){return '/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''));}
 function observerTransform(transform,displayScale){const {aspectPolicy,...frame}=transform;return{...frame,displayScale};}

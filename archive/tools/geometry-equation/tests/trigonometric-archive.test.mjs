@@ -20,7 +20,7 @@ const sourceBank=loadBank(rawSource);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const profileOrder=['small','medium','large','full'];
-const fontPx=24.9;
+const fontPx=27;   // the font the real pipeline would set from the measured Archive scale: the page now shows a 610 px wide figure at 0.4146 (252.9 css px), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 const cases=[
   {function:'SIN',kind:'sine',coefficients:['1','1','0'],phasePi:'0',sourceDomain:{kind:'ALL_REALS'},caption:'사인 함수의 한 주기',content:'함수 f(x)=sin x의 그래프에서 f(π/2)의 값을 구하시오.',answer:'1',solution:'x=π/2를 대입한다.\nf(π/2)=sin(π/2)\nf(π/2)=1'},
   {function:'COS',kind:'cosine',coefficients:['1','1','0'],phasePi:'0',sourceDomain:{kind:'ALL_REALS'},axisTickValues:{x:['-2','2'],y:['-1','1']},caption:'코사인 함수의 한 주기',content:'함수 f(x)=cos x의 그래프에서 f(0)의 값을 구하시오.',answer:'1',solution:'x=0을 대입한다.\nf(0)=cos 0\nf(0)=1'},

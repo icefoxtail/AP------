@@ -1602,7 +1602,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
     if spec['displayFacts'].get('labelHints') is not None:apply_label_hints(labels,spec['displayFacts']['labelHints'])
-    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort)
+    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort,band_ids=tuple((spec['displayFacts'].get('equationLabelCenters') or {})))
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
