@@ -1,74 +1,282 @@
 {
-  "kind": "geometry",
-  "caption": "지름 AB인 반원 O의 접선 AD=9cm, CD=15cm, BC",
-  "viewBox": [
-    0,
-    0,
-    260,
-    190
-  ],
-  "vertices": {
-    "A": [
-      40,
-      155
-    ],
-    "B": [
-      220,
-      155
-    ],
-    "O": [
-      130,
-      155
-    ],
-    "D": [
-      40,
-      50
-    ],
-    "C": [
-      220,
-      85
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "B"
-    ],
-    [
-      "A",
-      "D"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "D",
-      "C"
-    ]
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
   ],
-  "arcs": [
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "center": "O",
-      "radius": 90,
-      "startAngle": 0,
-      "endAngle": 180
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
     }
   ],
-  "rightAngles": [
-    [
-      "D",
-      "A",
-      "B"
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
     ],
-    [
-      "C",
-      "B",
-      "A"
+    "expressionLabels": [
+      {
+        "id": "labelAD",
+        "ownerSegment": "AD",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "labelCD",
+        "ownerSegment": "CD",
+        "text": "15",
+        "unit": "cm"
+      }
     ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "반원 O의 지름 AB와 접선 AD, CD, BC를 나타낸 그림이다.",
+  "accessibilityDescription": "지름이 AB인 반원 O에서 점 A, E, B는 각각 접선 AD, CD, BC의 접점이다. 선분 AD의 길이는 9 cm, 선분 CD의 길이는 15 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AD의 길이는 9 cm이다.",
+    "선분 CD의 길이는 15 cm이다."
   ],
-  "labels": {
-    "AD": "9cm",
-    "CD": "15cm"
-  }
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{AD}$, $\\overline{CD}$, $\\overline{BC}$는 지름이 $AB$인 반원 $O$의 접선이고 세 점 $A$, $E$, $B$는 접점이다. $\\overline{AD}=9,\\mathrm{cm}$, $\\overline{CD}=15,\\mathrm{cm}$일 때, $\\overline{AB}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,4 +1,171 @@
 {
-  "status": "EXEMPT",
-  "reason": "선분의 내분 비율과 복수 중점 성질을 연립하여 부분 선분의 길이를 구하는 심화 문항"
+  "capability": "construction-spike-v1",
+  "caption": "직선 위에 점 A, M', M, B, C가 순서대로 놓여 있는 그림이다.",
+  "accessibilityDescription": "직선 위에 다섯 개의 점 A, M', M, B, C가 순서대로 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 위에 점 A, M', M, B, C가 순서대로 놓여 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "42"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "66"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "A": "A",
+    "Mp": "M'",
+    "M": "M",
+    "B": "B",
+    "C": "C"
+  },
+  "displayPoints": [
+    "A",
+    "Mp",
+    "M",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAMp",
+      "refs": [
+        "A",
+        "Mp"
+      ]
+    },
+    {
+      "id": "sMpM",
+      "refs": [
+        "Mp",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
