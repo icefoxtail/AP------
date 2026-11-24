@@ -1,0 +1,340 @@
+window.examTitle = "미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "한 변이 $6$인 정사각형 $Q_1$의 한 변을 대각선으로 하는 정사각형 $Q_2$를 그린다. 이 과정을 반복할 때 $Q_2,Q_3,\\ldots$의 넓이의 합은?\\n[그림: $(0,0),(6,0),(6,6),(0,6)$을 잇고 오른쪽 변을 대각선으로 하는 정사각형을 그린다.]",
+    "choices": [
+      "$24$",
+      "$30$",
+      "$36$",
+      "$42$",
+      "$48$"
+    ],
+    "answer": "③",
+    "solution": "정사각형 $Q_n$의 한 변을 $s_n$이라 하자.\n$Q_2$의 대각선은 $Q_1$의 한 변이므로 $s_2\\sqrt2=6$이다.\n따라서 $s_2=3\\sqrt2$이고 $Q_2$의 넓이는 $S_2=s_2^2=18$이다.\n같은 원리로 $s_{n+1}\\sqrt2=s_n$이므로 넓이의 공비는 $\\left(\\frac1{\\sqrt2}\\right)^2=\\frac12$이다.\n등비급수의 합으로 $\\sum_{n=2}^\\infty S_n=\\frac{18}{1-\\frac12}=36$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "한 변이 $6$인 정삼각형의 세 변의 중점을 이어 첫 내부 삼각형을 만든다. 매번 바로 전 삼각형의 세 중점을 이어 나갈 때 처음 정삼각형을 포함한 넓이의 합은?\\n[그림: 밑변이 $(0,0)$에서 $(6,0)$인 정삼각형에 중점삼각형을 두 번 차례로 그린다.]",
+    "choices": [
+      "$8\\sqrt3$",
+      "$9\\sqrt3$",
+      "$10\\sqrt3$",
+      "$11\\sqrt3$",
+      "$12\\sqrt3$"
+    ],
+    "answer": "⑤",
+    "solution": "처음 정삼각형의 넓이는 $\\frac{\\sqrt3}{4}\\cdot6^2=9\\sqrt3$이다.\n세 변의 중점을 이으면 닮음비가 $\\frac12$인 정삼각형이므로 넓이비는 $\\left(\\frac12\\right)^2=\\frac14$이다.\n따라서 처음부터 $n$번째까지의 넓이는 $9\\sqrt3\\left(\\frac14\\right)^{n-1}$이다.\n등비급수의 합 공식으로 $9\\sqrt3\\sum_{k=0}^\\infty\\left(\\frac14\\right)^k=\\frac{9\\sqrt3}{1-\\frac14}=12\\sqrt3$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "$AB_1=8$이고 $B_{n+1}$은 선분 $AB_n$을 $3:1$로 내분한다. $AB_n$을 지름으로 하는 원의 넓이를 $S_n$이라 할 때 $\\sum_{n=2}^{\\infty}S_n$은?\\n[그림: 수평선 위에 $A=0,B_1=8,B_2=6,B_3=9/2$를 표시하고 $A$를 공통 지름 끝점으로 하는 원 세 개를 그린다.]",
+    "choices": [
+      "$\\frac{120\\pi}{7}$",
+      "$\\frac{132\\pi}{7}$",
+      "$\\frac{144\\pi}{7}$",
+      "$\\frac{156\\pi}{7}$",
+      "$\\frac{168\\pi}{7}$"
+    ],
+    "answer": "③",
+    "solution": "$B_{n+1}$이 $AB_n$을 $3:1$로 내분하므로 $AB_{n+1}=\\frac34 AB_n$이다.\n$AB_1=8$이므로 $AB_2=8\\cdot\\frac34=6$이다.\n$AB_n$을 지름으로 하는 원의 넓이는 $S_n=\\pi\\left(\\frac{AB_n}{2}\\right)^2=\\frac{\\pi}{4}AB_n^2$이다.\n따라서 $S_2=\\frac{\\pi}{4}\\cdot6^2=9\\pi$이고, $S_n$의 공비는 $\\left(\\frac34\\right)^2=\\frac9{16}$이다.\n$\\sum_{n=2}^\\infty S_n=\\frac{9\\pi}{1-\\frac9{16}}=\\frac{9\\pi}{\\frac7{16}}=\\frac{144\\pi}{7}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "반지름 $6$인 원에 정삼각형을 내접시키고 그 정삼각형의 내접원을 그린다. 이 과정을 새 원마다 반복할 때 만들어진 원의 넓이의 합은? (처음 원은 제외한다.)\\n[그림: 원에 꼭짓점 하나가 맨 위인 정삼각형을 내접시키고 그 세 변에 접하는 동심원을 그린다.]",
+    "choices": [
+      "$8\\pi$",
+      "$10\\pi$",
+      "$12\\pi$",
+      "$14\\pi$",
+      "$16\\pi$"
+    ],
+    "answer": "③",
+    "solution": "반지름 $6$인 원에 내접하는 정삼각형의 외접원 반지름은 $6$이다.\n정삼각형에서 내접원 반지름은 외접원 반지름의 $\\frac12$이므로 첫 내부 원의 반지름은 $3$이다.\n그 넓이는 $\\pi\\cdot3^2=9\\pi$이다.\n새 원마다 반지름이 $\\frac12$배가 되므로 넓이의 공비는 $\\left(\\frac12\\right)^2=\\frac14$이다.\n처음 원을 제외한 원들의 넓이의 합은 $\\frac{9\\pi}{1-\\frac14}=\\frac{9\\pi}{\\frac34}=12\\pi$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "제1사분면에 원점을 왼쪽 아래 꼭짓점으로 하는 한 변 $6$인 정사각형이 있다. 원점을 중심으로 한 변을 반지름으로 하는 사분원을 그리고, 맞은편 꼭짓점이 그 호에 놓이는 축에 평행한 새 정사각형을 원점에 붙여 그린다. 반복할 때 각 정사각형에서 해당 사분원 밖에 놓이는 부분의 넓이의 합은?\\n[그림: 원점에서 $(6,6)$까지의 축평행 정사각형과 반지름 $6$인 사분원 호를 그린다. 오른쪽 위 꼭짓점이 $(3\\sqrt2,3\\sqrt2)$인 정사각형에서도 같은 작도를 한다.]",
+    "choices": [
+      "$70-18\\pi$",
+      "$72-18\\pi$",
+      "$74-18\\pi$",
+      "$76-18\\pi$",
+      "$78-18\\pi$"
+    ],
+    "answer": "②",
+    "solution": "첫 정사각형의 한 변을 $a_1=6$이라 하면 사분원의 반지름도 $6$이다.\n사분원 밖 부분의 넓이는 $a_1^2-\\frac14\\pi a_1^2=36-9\\pi$이다.\n새 정사각형의 맞은편 꼭짓점이 호 위에 있으므로 그 대각선은 $a_1=6$이고, 한 변은 $a_2=\\frac6{\\sqrt2}=3\\sqrt2$이다.\n일반적으로 $a_{n+1}\\sqrt2=a_n$에서 $a_{n+1}=\\frac{a_n}{\\sqrt2}$이다.\n따라서 정사각형 넓이의 공비는 $\\left(\\frac1{\\sqrt2}\\right)^2=\\frac12$이다.\n각 단계의 사분원 밖 넓이는 $a_n^2\\left(1-\\frac\\pi4\\right)$이므로 첫 항 $36-9\\pi$, 공비 $\\frac12$인 등비급수이다.\n합은 $\\frac{36-9\\pi}{1-\\frac12}=72-18\\pi$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_UNIT_QUARTER_CIRCLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "한 변이 $4$인 정사각형에서 꼭짓점을 순환하는 방향을 정하고 각 변을 시작점 쪽에서 $3:1$로 내분하는 점을 차례로 잇는다. 새 정사각형마다 반복할 때 첫 내부 정사각형부터 넓이의 합은?\\n[그림: $(0,0),(4,0),(4,4),(0,4)$ 순으로 꼭짓점을 두고 $(3,0),(4,3),(1,4),(0,1)$을 잇는다. 같은 비율로 다음 정사각형을 그린다.]",
+    "choices": [
+      "$\\frac{80}{3}$",
+      "$\\frac{86}{3}$",
+      "$\\frac{92}{3}$",
+      "$\\frac{98}{3}$",
+      "$\\frac{104}{3}$"
+    ],
+    "answer": "①",
+    "solution": "처음 정사각형의 한 변은 $4$이고 넓이는 $16$이다.\n각 변을 $3:1$로 내분한 점을 이으면 새 정사각형의 한 변의 제곱은 $3^2+1^2=10$이다.\n따라서 첫 내부 정사각형의 넓이는 $10$이다.\n같은 비율로 자르므로 이후 정사각형의 넓이의 공비는 $\\frac{10}{16}=\\frac58$이다.\n첫 내부 정사각형부터의 넓이의 합은 $\\frac{10}{1-\\frac58}=\\frac{10}{\\frac38}=\\frac{80}{3}$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "한 변이 $4$인 정사각형을 시작으로, 정사각형의 한 변을 빗변으로 하는 직각이등변삼각형과 그 삼각형의 한 직각변을 변으로 하는 새 정사각형을 차례로 그린다. 같은 방법으로 그린 모든 정사각형과 삼각형의 넓이를 각각 계산하여 더한 값은?\\n[그림: 한 변 $4$인 정사각형 윗변을 빗변으로 직각이등변삼각형을 위쪽에 그린다. 왼쪽 직각변에 삼각형 바깥 방향으로 다음 정사각형을 붙인다.]",
+    "choices": [
+      "$32$",
+      "$36$",
+      "$40$",
+      "$44$",
+      "$48$"
+    ],
+    "answer": "③",
+    "solution": "처음 정사각형의 넓이는 $4^2=16$이다.\n한 변을 빗변으로 하는 직각이등변삼각형의 직각변은 $\\frac4{\\sqrt2}=2\\sqrt2$이므로 그 넓이는 $\\frac12(2\\sqrt2)^2=4$이다.\n그 직각변을 한 변으로 하는 새 정사각형의 넓이는 $(2\\sqrt2)^2=8$이다.\n즉 정사각형의 넓이는 매번 $\\frac12$배, 삼각형의 넓이도 매번 $\\frac12$배가 된다.\n모든 정사각형 넓이의 합은 $\\frac{16}{1-\\frac12}=32$이다.\n모든 삼각형 넓이의 합은 $\\frac{4}{1-\\frac12}=8$이다.\n따라서 전체 합은 $32+8=40$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "가로 $3$, 세로 $1$인 직사각형에서 아랫변의 중점을 꼭짓점으로, 윗변 위의 선분을 밑변으로 하는 정삼각형을 그린다. 그 밑변을 아랫변으로 삼아 바로 위에 높이가 밑변의 $1/3$인 새 직사각형을 만들고 반복한다. 정삼각형의 넓이의 합은?\\n[그림: $x=-3/2,3/2$와 $y=0,1$로 둘러싸인 직사각형 안에 $(0,0),(-1/\\sqrt3,1),(1/\\sqrt3,1)$을 잇는다. 윗변 중앙의 이 밑변 바로 위로 다음 직사각형과 역삼각형을 그린다.]",
+    "choices": [
+      "$\\frac{6\\sqrt3}{23}$",
+      "$\\frac{7\\sqrt3}{23}$",
+      "$\\frac{8\\sqrt3}{23}$",
+      "$\\frac{9\\sqrt3}{23}$",
+      "$\\frac{10\\sqrt3}{23}$"
+    ],
+    "answer": "④",
+    "solution": "첫 직사각형은 가로 $3$, 세로 $1$이고, 그 안의 정삼각형의 높이는 $1$이다.\n정삼각형의 한 변을 $b_1$이라 하면 $\\frac{\\sqrt3}{2}b_1=1$이므로 $b_1=\\frac2{\\sqrt3}$이다.\n첫 정삼각형의 넓이는 $\\frac12\\cdot b_1\\cdot1=\\frac1{\\sqrt3}$이다.\n새 직사각형은 가로가 $b_1$, 세로가 $\\frac13b_1$이다.\n$n$번째 직사각형의 가로를 $w_n$, 세로를 $h_n$, 그 안의 정삼각형 밑변을 $b_n$이라 하면 $h_n=\\frac13w_n$, $b_n=\\frac{2h_n}{\\sqrt3}$이다.\n다음 직사각형은 가로 $b_n$, 세로 $h_{n+1}=\\frac13b_n$이므로 $b_{n+1}=\\frac{2h_{n+1}}{\\sqrt3}=\\frac{2b_n}{3\\sqrt3}$이다.\n따라서 정삼각형의 밑변과 높이는 매번 $\\frac{2}{3\\sqrt3}$배가 되고, 넓이의 공비는 $\\left(\\frac{2}{3\\sqrt3}\\right)^2=\\frac4{27}$이다.\n정삼각형 넓이의 합은 $\\frac{\\frac1{\\sqrt3}}{1-\\frac4{27}}=\\frac1{\\sqrt3}\\cdot\\frac{27}{23}=\\frac{9\\sqrt3}{23}$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "category": "급수",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-02",
+    "standardUnit": "급수",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "급수"
+    ],
+    "wide": false,
+    "content": "한 변이 $4$인 정육각형의 꼭짓점을 하나씩 건너 이어 정삼각형 두 개를 만든다. 두 삼각형 중 정확히 하나에만 속하는 여섯 삼각형을 색칠한다. 두 삼각형의 공통 부분인 정육각형에서 같은 과정을 반복할 때 색칠한 부분의 넓이의 합은?\\n[그림: 꼭짓점 하나가 위에 있는 정육각형에 홀수 번째 꼭짓점끼리, 짝수 번째 꼭짓점끼리 이어 육각별을 그린다. 별의 여섯 끝을 색칠하고 중앙의 정육각형 안에서 같은 작도를 반복한다.]",
+    "choices": [
+      "$8\\sqrt3$",
+      "$9\\sqrt3$",
+      "$10\\sqrt3$",
+      "$12\\sqrt3$",
+      "$14\\sqrt3$"
+    ],
+    "answer": "④",
+    "solution": "정육각형의 한 변이 $4$이므로, 한 꼭짓점을 건너 이은 정삼각형의 한 변은 $4\\sqrt3$이다.\n정육각형의 외접원 반지름이 $4$이고 중심각 $120^\\circ$인 현의 길이가 $2\\cdot4\\sin60^\\circ=4\\sqrt3$이기 때문이다.\n두 정삼각형의 변이 서로 만나 각 변을 삼등분하므로 중앙 정육각형과 꼭짓점 쪽 작은 정삼각형의 한 변은 모두 $\\frac{4\\sqrt3}{3}=\\frac4{\\sqrt3}$이다.\n색칠한 여섯 삼각형의 넓이의 합은 $6\\cdot\\frac{\\sqrt3}{4}\\left(\\frac4{\\sqrt3}\\right)^2=6\\cdot\\frac{\\sqrt3}{4}\\cdot\\frac{16}{3}=8\\sqrt3$이다.\n중앙 정육각형의 한 변도 $\\frac4{\\sqrt3}$이므로 원래 정육각형과의 닮음비는 $\\frac{4/\\sqrt3}{4}=\\frac1{\\sqrt3}$이다.\n따라서 다음 단계에서 색칠하는 넓이는 $\\left(\\frac1{\\sqrt3}\\right)^2=\\frac13$배가 된다.\n첫 항 $8\\sqrt3$, 공비 $\\frac13$인 등비급수의 합은 $\\frac{8\\sqrt3}{1-\\frac13}=12\\sqrt3$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-065",
+    "problemTypeKey": "PT_CALCULUS_SERIES",
+    "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE"
+  }
+];
