@@ -4,6 +4,9 @@
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs            -> 자료 파일 쓰기
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs --check    -> 쓰지 않고 현재 파일과 같은지 검사
 //   node archive/tools/assessment-mock/build-m1-2final-mock.cjs --tsv <경로> -> 선정 목록 TSV 출력
+//   node archive/tools/assessment-mock/build-m1-2final-mock.cjs --refresh  -> 이미 있는 팩의 구성(문항 목록·순서)은 그대로 두고 문항 내용만 지금의 원본에서 다시 복사
+//     원본 시험지 문항을 고쳤을 때(발문·정답·해설·그림 칸) 쓴다. 맞춤 모의고사의 구성은 카탈로그 판정에 따라 달라서, 고친 문항이 검토 대기로 돌아간 뒤
+//     그냥 다시 조립하면 문항이 바뀐다. 이미 출제됐을 수 있는 회차의 구성을 지키려면 이 모드를 쓴다. 팩이 아직 없는 새 범위만 일반 조립으로 만든다.
 // 문항 텍스트·정답·해설·그림 참조는 원본 시험지 JS(window.questionBank)에서 그대로 복사한다.
 // 바꾸는 것은 서술형 앞머리의 원 시험지 번호 표기("[서술형3]", "서술형 1." 등) 제거와 _ 로 시작하는 출처 필드 추가뿐이다.
 const fs = require('fs');
@@ -150,9 +153,19 @@ function renderFile(packs, summary) {
 
 // 기존 5회(선정 목록) 뒤에 시험 범위 맞춤 모의고사(scoped-mock-scopes.json)를 이어 붙인 전체 팩.
 // 기존 5회의 id·문항·순서는 그대로다. 맞춤 모의고사는 같은 자료 파일·같은 전역에 들어간다(mixed_engine.html이 이 파일 한 곳만 읽는다).
-function buildAllPacks() {
+function readExistingPacks() {
+  if (!fs.existsSync(OUT_FILE)) throw new Error('새로 고침: 기존 자료 파일이 없습니다. 먼저 --refresh 없이 조립하세요.');
+  const sandbox = {};
+  new Function('window', fs.readFileSync(OUT_FILE, 'utf8'))(sandbox);
+  const data = sandbox.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL;
+  if (!data || !Array.isArray(data.packs)) throw new Error('새로 고침: 기존 자료 파일을 읽지 못했습니다.');
+  return data.packs;
+}
+
+function buildAllPacks(options = {}) {
   const base = buildPacks();
-  const scoped = require('./build-scoped-mock.cjs').buildScopedPacks({ KEEP_FIELDS, stripSubjectivePrefix, CATEGORY });
+  const refreshPacks = options.refresh ? readExistingPacks() : null;
+  const scoped = require('./build-scoped-mock.cjs').buildScopedPacks({ KEEP_FIELDS, stripSubjectivePrefix, CATEGORY }, { refreshPacks });
   const packs = base.packs.concat(scoped.packs);
   const summary = {
     packCount: packs.length,
@@ -164,7 +177,7 @@ function buildAllPacks() {
 
 function main() {
   const args = process.argv.slice(2);
-  const { packs, rows, summary } = buildAllPacks();
+  const { packs, rows, summary } = buildAllPacks({ refresh: args.includes('--refresh') });
   const text = renderFile(packs, summary);
   const tsvIdx = args.indexOf('--tsv');
   if (tsvIdx >= 0) {
