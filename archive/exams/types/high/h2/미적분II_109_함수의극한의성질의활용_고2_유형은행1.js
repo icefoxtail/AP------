@@ -1,0 +1,222 @@
+window.examTitle = "미적분II_109_함수의극한의성질의활용_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to0}f(x)/\\ln(1-3x)=4$일 때 $\\lim_{x\\to0}f(x)/\\sin 2x$는?",
+    "choices": [
+      "$-10$",
+      "$-9$",
+      "$-8$",
+      "$-7$",
+      "$-6$"
+    ],
+    "answer": "⑤",
+    "solution": "주어진 극한에서 $\\lim_{x\\to0}\\frac{\\ln(1-3x)}{-3x}=1$이다.\n따라서 $\\frac{f(x)}{x}=\\frac{f(x)}{\\ln(1-3x)}\\cdot\\frac{\\ln(1-3x)}{x}\\to4\\cdot(-3)=-12$이다.\n또 $\\lim_{x\\to0}\\frac{\\sin 2x}{2x}=1$이므로 $\\frac{\\sin 2x}{x}\\to2$이다.\n구하는 극한을 $x$로 나누어 정리하면 $\\frac{f(x)}{\\sin 2x}=\\frac{f(x)/x}{\\sin 2x/x}\\to\\frac{-12}{2}=-6$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to0}f(x)/\\ln(1+4x)=1/8$일 때 $\\lim_{x\\to0}\\sin 3x/f(x)$는?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "④",
+    "solution": "$\\ln(1+4x)$에 기본 극한 $\\lim_{x\\to0}\\frac{\\ln(1+4x)}{4x}=1$을 적용한다.\n$\\frac{f(x)}{x}=\\frac{f(x)}{\\ln(1+4x)}\\cdot\\frac{\\ln(1+4x)}{x}\\to\\frac18\\cdot4=\\frac12$이다.\n또 $\\lim_{x\\to0}\\frac{\\sin3x}{3x}=1$이므로 $\\frac{\\sin3x}{x}\\to3$이다.\n구하는 극한을 정리하면 $\\frac{\\sin3x}{f(x)}=\\frac{\\sin3x/x}{f(x)/x}\\to\\frac{3}{1/2}=6$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to\\infty}f(x)(5/x-\\sin(3/x))=12$일 때 $\\lim_{x\\to\\infty}f(x)/x$는?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "③",
+    "solution": "$t=\\frac1x$로 치환하면 $x\\to\\infty$일 때 $t\\to0^+$이다.\n$\\frac5x-\\sin\\frac3x=5t-\\sin3t$이고, $\\lim_{t\\to0^+}\\frac{\\sin3t}{t}=3$이다.\n따라서 $\\frac{5t-\\sin3t}{t}\\to5-3=2$이다.\n주어진 식은 $f(x)\\left(\\frac5x-\\sin\\frac3x\\right)=\\frac{f(x)}{x}\\cdot\\frac{5t-\\sin3t}{t}$이다.\n주어진 극한값이 $12$이므로 $\\frac{f(x)}{x}\\cdot2\\to12$에서 $\\frac{f(x)}{x}\\to6$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to0}f(x)/\\ln(1+2x)=3$일 때 항상 옳은 것을 모두 고르면? ㄱ. $\\lim_{x\\to0}\\sin x/f(x)=0$ ㄴ. $\\lim_{x\\to0}(f(x)+2x)/\\ln(1+2x)=4$ ㄷ. $\\lim_{x\\to0}f(x)^2/\\ln(1+2x)=0$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "④",
+    "solution": "$\\lim_{x\\to0}\\frac{\\ln(1+2x)}{2x}=1$이므로 $\\frac{f(x)}{x}=\\frac{f(x)}{\\ln(1+2x)}\\cdot\\frac{\\ln(1+2x)}{x}\\to3\\cdot2=6$이다.\nㄱ. $\\frac{\\sin x}{f(x)}=\\frac{\\sin x/x}{f(x)/x}\\to\\frac{1}{6}\\ne0$이므로 거짓이다.\nㄴ. $\\frac{f(x)+2x}{\\ln(1+2x)}=\\frac{f(x)}{\\ln(1+2x)}+\\frac{2x}{\\ln(1+2x)}\\to3+1=4$이므로 참이다.\nㄷ. $\\frac{f(x)^2}{\\ln(1+2x)}=\\frac{f(x)}{x}\\cdot\\frac{f(x)}{x}\\cdot\\frac{x^2}{\\ln(1+2x)}$이고 $\\frac{x^2}{\\ln(1+2x)}\\to0$이다.\n따라서 ㄷ의 극한은 $6\\cdot6\\cdot0=0$이므로 참이다.\n옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 5,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to0}xf(x)=2$이다. $\\lim_{x\\to0}f(x)g(x)$가 유한하게 존재하는 $g$를 모두 고르면? ㄱ. $\\tan 2x$ ㄴ. $\\cos 2x$ ㄷ. $\\ln(1+3x)$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "③",
+    "solution": "$\\lim_{x\\to0}xf(x)=2$이므로 $f(x)g(x)=\\left[xf(x)\\right]\\cdot\\frac{g(x)}{x}$로 쓸 수 있다.\n따라서 $\\frac{g(x)}{x}$가 유한한 극한을 가져야 $\\lim_{x\\to0}f(x)g(x)$가 유한하게 존재한다.\nㄱ. $\\frac{\\tan2x}{x}=2\\cdot\\frac{\\tan2x}{2x}\\to2$이므로 $f(x)\\tan2x\\to2\\cdot2=4$이다. 참이다.\nㄴ. $\\frac{\\cos2x}{x}$는 $x\\to0$일 때 $\\frac1x$과 같은 차수로 발산하므로 유한한 극한이 없다. 거짓이다.\nㄷ. $\\frac{\\ln(1+3x)}{x}=3\\cdot\\frac{\\ln(1+3x)}{3x}\\to3$이므로 $f(x)\\ln(1+3x)\\to2\\cdot3=6$이다. 참이다.\n주의: $g(x)\\to0$인 것만으로는 부족하고 $g(x)/x$의 유한 수렴이 필요하다.\n따라서 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 6,
+    "category": "삼각함수의 미분",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-04",
+    "standardUnit": "삼각함수의 미분",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각함수의 미분"
+    ],
+    "wide": false,
+    "content": "$\\lim_{x\\to0}f(x)/(1-\\cos(x^3))=6$이고 $\\lim_{x\\to0^+}f(x)/x^p=q>0$이다. $p+q$는?",
+    "choices": [
+      "$9$",
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "answer": "①",
+    "solution": "반각공식 $1-\\cos\\theta=2\\sin^2\\frac{\\theta}{2}$에서 $1-\\cos(x^3)=2\\sin^2\\frac{x^3}{2}$이다.\n$\\lim_{u\\to0}\\frac{\\sin u}{u}=1$을 쓰면 $\\frac{1-\\cos(x^3)}{x^6}=2\\left(\\frac{\\sin(x^3/2)}{x^3/2}\\right)^2\\cdot\\frac{(x^3/2)^2}{x^6}\\to\\frac12$이다.\n따라서 $\\frac{f(x)}{x^6}=\\frac{f(x)}{1-\\cos(x^3)}\\cdot\\frac{1-\\cos(x^3)}{x^6}\\to6\\cdot\\frac12=3$이다.\n(i) $p<6$이면 $\\frac{f(x)}{x^p}=\\frac{f(x)}{x^6}\\cdot x^{6-p}\\to3\\cdot0=0$이므로 $q>0$이 아니다.\n(ii) $p=6$이면 $\\frac{f(x)}{x^p}\\to3$이므로 $q=3>0$이다.\n(iii) $p>6$이면 $\\frac{f(x)}{x^p}=\\frac{f(x)}{x^6}\\cdot\\frac1{x^{p-6}}\\to+\\infty$이므로 유한한 $q$가 아니다.\n따라서 $p=6$, $q=3$이고 $p+q=9$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-168",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
