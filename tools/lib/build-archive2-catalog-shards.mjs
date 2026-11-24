@@ -29,6 +29,7 @@ import { fileURLToPath } from 'node:url';
 import { UNIT_PAST_SCHEMA, unitPastExtras } from './build-archive2-unit-past-part.mjs';
 import { examMetaExtras, projectExamMeta } from './build-archive2-exam-meta-part.mjs';
 import { svgAltExtras, projectSvgAlt } from './build-archive2-svg-alt-part.mjs';
+import { studentTypeExtras, projectStudentType } from './build-archive2-student-type-part.mjs';
 
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
@@ -416,6 +417,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   // the figure names of each exam (original-exam and problem-sheet windows): one small file per exam, see build-archive2-svg-alt-part.mjs
   const svgAltPart = extras.svgAlt ? projectSvgAlt(extras.svgAlt, indexVersion) : null;
   if (svgAltPart) for (const [rel, content] of svgAltPart.files) files.set(rel, content);
+  // the same-type lookup of the student portal (유사 문항 풀어보기 without a similar paper): see build-archive2-student-type-part.mjs
+  const studentTypePart = extras.studentType ? projectStudentType(extras.studentType, indexVersion) : null;
+  if (studentTypePart) for (const [rel, content] of studentTypePart.files) files.set(rel, content);
   const index = {
     schemaVersion: CATALOG_SHARDS_INDEX_SCHEMA,
     recordSchema: CATALOG_SHARD_FILE_SCHEMA,
@@ -434,6 +438,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     ...(extras.unitPast ? { unitPastSchema: UNIT_PAST_SCHEMA } : {}),
     ...(examMetaPart ? { examMeta: examMetaPart.index } : {}),
     ...(svgAltPart ? { svgAlt: svgAltPart.index } : {}),
+    ...(studentTypePart ? { studentType: studentTypePart.index } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -486,6 +491,8 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   const examMeta = examMetaExtras(root, catalog);
   if (examMeta) extras.examMeta = examMeta;
   extras.svgAlt = svgAltExtras(root, catalog);
+  // a failure here must not take the teacher shards down: the student portal then simply has no same-type entry
+  try { extras.studentType = studentTypeExtras(root, catalog); } catch (error) { console.warn(`student-type part skipped: ${error?.message || error}`); }
   const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
@@ -496,6 +503,8 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
       ? 'catalog common tables (authority tables and catalog-level lists that do not depend on a question)'
       : rel.startsWith('svg-alt/')
         ? 'alternative texts of the figures of one exam (original-exam and problem-sheet windows), the records of the svg accessibility index for that exam'
+      : rel.startsWith('student-type/')
+        ? 'same-type question lookup of the student portal (type keys and exam positions only, no question text), derived from the catalog records'
       : rel.startsWith('exam-meta/')
         ? 'approved question metadata of one exam (original-exam window, class registration), the records of the browser copy for that exam'
         : 'catalog shard (resolved question records of one grade or subject, without screen-unused columns, with the authority part of its questions)';
