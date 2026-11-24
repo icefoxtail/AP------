@@ -121,7 +121,11 @@ window.questionBank = [
     ],
     "wide": false,
     "projectionStatus": "PROJECTION_REUSE",
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: P에서 R까지는 오른쪽 4번, 위쪽 3번의 순서를 정하므로 7C3=35가지이다. R에서 Q까지는 오른쪽 2번, 위쪽 1번이므로 3C1=3가지이다. R를 반드시 지나므로 곱의 법칙으로 35×3=105가지이다. 따라서 답은 ③이다.",
+    "solutionImageCaption": "P에서 R까지는 오른쪽 4번, 위쪽 3번의 순서를 정하므로 7C3=35가지이다. R에서 Q까지는 오른쪽 2번, 위쪽 1번이므로 3C1=3가지이다. R를 반드시 지나므로 곱의 법칙으로 35×3=105가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 3,

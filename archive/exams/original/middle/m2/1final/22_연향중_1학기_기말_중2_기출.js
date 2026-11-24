@@ -681,7 +681,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위에 두 직선이 그려져 있고, 두 직선이 만나는 교점의 좌표가 (3, 2)로 표시되어 있다.",
+    "solutionImageCaption": "그림에서 두 일차방정식의 그래프가 만나는 교점의 좌표는 (3, 2)이다. 첫째 식 2x−y−a=0에 x=3, y=2를 대입하면 a=4이고, 둘째 식 bx+y−5=0에 대입하면 b=1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
