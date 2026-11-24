@@ -44,12 +44,18 @@ test('render ladder: the duplicate requiredPoint goes to coordinateBand.hide onc
   assert.equal(r.status,'ARCHIVE_BOUND',JSON.stringify(r.detail));
   const lines=attempts(out);
   const bandAttempts=lines.filter(l=>l.variant==='bandhide');
-  // Whether the duplicate collides depends on the measured text widths of the machine: when it does, the ladder repairs it with exactly one bandhide attempt that binds, and the failure that
-  // triggered it is on record; when it does not, the first attempt already bound. Either way the figure binds and the repair is never repeated.
-  assert.ok(bandAttempts.length<=1,'at most one attempt of this variant');
-  if(bandAttempts.length===1){
+  // Whether the duplicate collides depends on the measured text widths of the machine, so exactly one of two things happens, and each is checked on its own terms:
+  //  (a) it collides: the ladder repairs it with exactly one bandhide attempt that binds, the result records the COORDINATE_BAND_HIDE_DUPLICATE fallback, and the failure that triggered it is on record;
+  //  (b) it does not collide: there is no bandhide attempt and no such fallback, and the very first attempt already bound.
+  const fallbacks=(r.fallback||[]).map(row=>row.to);
+  if(bandAttempts.length>0){
+    assert.equal(bandAttempts.length,1,'exactly one attempt of this variant');
     assert.equal(bandAttempts[0].ok,true);
+    assert.ok(fallbacks.includes('COORDINATE_BAND_HIDE_DUPLICATE'),JSON.stringify(r.fallback));
     assert.ok(lines.some(l=>JSON.stringify(l).includes('MEASURED_OWNER_LAYOUT_VORONOI_BOX_FAIL')),'the failure that triggered it is on record');
+  }else{
+    assert.ok(!fallbacks.includes('COORDINATE_BAND_HIDE_DUPLICATE'),JSON.stringify(r.fallback));
+    assert.equal(lines.find(l=>l.variant==='initial')?.ok,true,'the first attempt bound');
   }
   assert.match(fs.readFileSync(path.join(out,'figure-solution.svg'),'utf8'),/role="img"/);
 });

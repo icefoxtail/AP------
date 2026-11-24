@@ -24,16 +24,12 @@ test('radius label on the half of a diameter: the label stands on a leader from 
 
 test('the centre of a small circle with lines through it: the name A′ goes out on a leader across thin strokes, marked data-leader-crossing (21 팔마 고1 기말 q18)',async()=>{
   const item={sourcePath:'archive/exams/original/high/h1/1final/21_팔마고_1학기_기말_고1_기출.js',ordinal:18,dir:'cl18'};
-  // The golden plan names the circle's centre E at the very place of A′ (-3,-1); two names on one dot are refused now (DISPLAY_POINTS_COINCIDE), so here the circle is centred on A′ itself: the same figure with one name there.
-  const plan=structuredClone(read('../ops/golden/item154crowdnames18/plan.json'));
-  plan.mathPlan.nodes=plan.mathPlan.nodes.filter(node=>node.id!=='E').map(node=>node.id==='sourceCircle'?{...node,inputs:['A1']}:node);
-  plan.displayPoints=plan.displayPoints.filter(id=>id!=='E');delete plan.pointNames.E;plan.caption=plan.caption.replace('원래 원의 중심은 E로 표시한다.','원래 원의 중심은 A′와 같은 점이다.');
-  const {result,svg}=await render(plan,item);
+  const {result,svg}=await render(read('../ops/golden/item154crowdnames18/plan.json'),item);
   assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
-  // A, A′ and C′ stand on leaders across thin strokes; K, beside the circle, on a plain one. No point name floats beside another point's name without a leader.
+  // A, A′, C′ and E stand on leaders across thin strokes; K, beside the circle, on a plain one. No point name floats beside another point's name without a leader.
   const crossing=leaders(svg).filter(tag=>tag.includes('data-leader-crossing="1"'));
   assert.ok(crossing.some(tag=>tag.includes('data-owner="A1"')&&tag.includes('data-owner-label="A1-name"')));
-  for(const id of ['A-name','A1-name','C1-name','K-name'])assert.ok(leaders(svg).some(tag=>tag.includes('data-owner-label="'+id+'"')),id+' has a leader to its point');
+  for(const id of ['A-name','A1-name','C1-name','E-name','K-name'])assert.ok(leaders(svg).some(tag=>tag.includes('data-owner-label="'+id+'"')),id+' has a leader to its point');
 });
 
 test('an angle mark on a 20 px side is drawn with a small arc and still labelled; on a 3 px side it is still refused',async()=>{
