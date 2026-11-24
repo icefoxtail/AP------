@@ -62,12 +62,17 @@ export function indexRows(root) {
     return {path:m[4], mode:m[1], blob:m[2]};
   });
 }
-export function fingerprint(rows, patterns) {
-  const hit=compilePatterns(patterns);
-  return sha(rows.filter(r=>r.path!==STATE&&hit(r.path)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
+// The SVG authoring engine is most of archive/tools (3,184 of 4,363 files) and no registration producer imports it, yet every edit
+// to it re-ran the whole registration (12-14 minutes). A test computes the producers' import chains and fails if one reaches it.
+export const CODE_TREE='archive/tools/';
+export const EXCLUDED_CODE_DIRS=['archive/tools/geometry-equation/'];
+export function fingerprint(rows, patterns, exclude) {
+  const hit=compilePatterns(patterns),skip=exclude?.length?compilePatterns(exclude):null;
+  return sha(rows.filter(r=>r.path!==STATE&&hit(r.path)&&!(skip&&skip(r.path))).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
     .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join(''));
 }
-const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs)}));
+const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,...(lane.excludeInputs?.length?{exclude:lane.excludeInputs}:{}),
+  parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs,lane.excludeInputs)}));
 // Refusal/pending records are named like their request, so .gitignore (for example `*textbook*`) can match them.
 // Those two directories alone are listed without the ignore rules; every other ignored file stays unlisted.
 const RECORD_DIRS=['.archive-meta-register/rejected/','.archive-meta-register/pending-supplement/'];
@@ -144,7 +149,7 @@ export function nativeLanes(root) {
   const sharedCommands=[cmd('bash','tools/ci/archive-pages-registration-derive.sh','materialize'),
     cmd('node','archive/tools/verify-archive-registration.mjs'),
     cmd('node','archive/tools/build-archive2-catalog.mjs','--check')];
-  return [
+  const lanes=[
     {id:'reviewed',inputs:[...code,...registration,'.archive-meta-register/inbox/',
       'tools/ci/reviewed-meta-register-pass.sh','tools/ci/register-reviewed-meta-requests.mjs',
       'tools/ci/archive-pr-native-preview.mjs',
@@ -207,9 +212,12 @@ export function nativeLanes(root) {
       'tools/ci/archive-four-slot-pass.sh','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-whitespace.mjs','.archive-meta-register/auto/config.json'],
       // Preserve the existing independent 4slot failure policy; failed output is rolled back and
       // retryable, while validated ordinary exam publication can continue with the prior index.
-      outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,
+      // digestOnly: no screen or Worker reads archive/data/item-4slot-index.json and publication does not need it, so a merge run skips
+      // this lane (about 6 minutes of three identical 4slot builds); the scheduled or manual run brings it current.
+      outputs:fourSlot,required:false,digestOnly:true,enabled:config.fourSlotEnabled!==false,
       commands:[cmd('bash','tools/ci/archive-four-slot-pass.sh')]}
   ];
+  return lanes.map(lane=>lane.inputs.includes(CODE_TREE)?{...lane,excludeInputs:EXCLUDED_CODE_DIRS}:lane);
 }
 
 export function executeCommands({root, work, lane, env}) {
@@ -286,14 +294,19 @@ function assess(rows,state,lanes,mode='digest') {
     const scopedInputDigest=lane.scopedInputs?fingerprint(rows,lane.scopedInputs):undefined;
     const scopeChanged=lane.scopedInputs&&cached?.scopedInputDigest!==scopedInputDigest;
     const deferrable=mode==='merge'&&lane.digestContinuation===true;
-    const needed=Boolean(blocked.has(lane.id)||(cached?.needsContinuation===true&&!deferrable)||cached?.enabled!==enabled||cached?.inputDigest!==inputDigest||cached?.outputDigest!==outputDigest||scopeChanged);
+    const stale=Boolean(blocked.has(lane.id)||(cached?.needsContinuation===true&&!deferrable)||cached?.enabled!==enabled||cached?.inputDigest!==inputDigest||cached?.outputDigest!==outputDigest||scopeChanged);
+    // digestOnly (never a required lane): nothing that publishes or any screen reads its output, so a merge run leaves it stale
+    // and only the scheduled or manual digest run brings it current. Its committed state entry is kept as it was, never relabelled.
+    const deferredToDigest=stale&&enabled&&mode==='merge'&&lane.digestOnly===true&&lane.required!==true;
+    const needed=stale&&!deferredToDigest;
     // Not needed in a merge run is not the same as nothing left: the queued backlog stays visible.
     const backlogDeferred=!needed&&enabled&&deferrable&&cached?.needsContinuation===true;
     return {id:lane.id,enabled,required:lane.required===true,needed,inputDigest,outputDigest,...(lane.scopedInputs?{scopedInputDigest}:{}),
-      ...(backlogDeferred?{backlogDeferred:true}:{}),
-      status:needed?'NEEDS_REGISTRATION':enabled?(backlogDeferred?'VERIFIED_REUSED_BACKLOG_REMAINS':'VERIFIED_REUSED'):'DISABLED'};
+      ...(backlogDeferred?{backlogDeferred:true}:{}),...(deferredToDigest?{deferredToDigest:true}:{}),
+      status:needed?'NEEDS_REGISTRATION':deferredToDigest?'DEFERRED_TO_DIGEST':enabled?(backlogDeferred?'VERIFIED_REUSED_BACKLOG_REMAINS':'VERIFIED_REUSED'):'DISABLED'};
   });
   return {lanes:results,needed:results.some(r=>r.needed),backlogDeferred:results.some(r=>r.backlogDeferred),
+    ...(results.some(r=>r.deferredToDigest)?{deferredLanes:results.filter(r=>r.deferredToDigest).map(r=>r.id)}:{}),
     publishable:results.filter(r=>r.required&&r.enabled).every(r=>!r.needed)&&results.some(r=>r.required&&r.enabled),
     inputDigest:sha(json(results.map(({id,enabled,inputDigest})=>({id,enabled,inputDigest})))),
     outputDigest:fingerprint(rows,unique(lanes.flatMap(l=>l.outputs)))};
@@ -426,6 +439,8 @@ export function renderRegistrationSummary(result) {
     '| lane | result | error code |','| --- | --- | --- |',
     ...shown.map(r=>`| ${cell(r.id,64)} | ${cell(r.status,48)} | ${cell(r.error,100)} |`)];
   if(shown.length<lanes.length)lines.push('',`${lanes.length-shown.length} additional lane records are in report.json.`);
+  const deferredIds=lanes.filter(r=>r.status==='DEFERRED_TO_DIGEST').map(r=>cell(r.id,40));
+  if(deferredIds.length)lines.push('',`Left for the scheduled or manual run (no screen reads it, not needed to publish): ${deferredIds.join(', ')}. It was NOT recomputed in this merge run.`);
   if(result.backlogDeferred===true)lines.push('','Queued registration work remains (not needed in this merge run). The scheduled or manual digest run continues it; this is not a completed registration.');
   // A malformed instrumentation object must never turn a finished preparation into a failed run.
   try { lines.push(...renderInstrumentation(lanes,cell)); }
@@ -552,6 +567,8 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
       verifiedOutputDigest:assessment.outputDigest,needsContinuation:!needed&&old.lanes[lane.id]?.needsContinuation===true};
     report.lanes.push(record);laneState.set(lane.id,record);
     if(lane.enabled===false){record.status='DISABLED';continue;}
+    // Stale but left to the scheduled or manual run: nothing runs and nothing is claimed (see assess).
+    if(assessment.deferredToDigest){record.status='DEFERRED_TO_DIGEST';continue;}
     if(!needed)continue;
     const started=Date.now();
     try {
@@ -583,6 +600,9 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
       next.lanes[lane.id]={enabled:true,inputDigest:result.verifiedInputDigest,outputDigest:result.verifiedOutputDigest,
         needsContinuation:result.needsContinuation===true,...(lane.parameters?{parameters:lane.parameters}:{}),
         ...(lane.scopedInputs?{scopedInputDigest:result.scopedInputDigest}:{})};
+    } else if(result.status==='DEFERRED_TO_DIGEST') {
+      // Keep the committed proof untouched (next.lanes already holds it) and keep an earlier block mark.
+      if((old.blockedLanes||[]).includes(lane.id))next.blockedLanes.push(lane.id);
     } else if(result.status==='DISABLED')next.lanes[lane.id]={enabled:false,inputDigest:inputFingerprint(rows,lane),
       outputDigest:fingerprint(rows,lane.outputs),needsContinuation:false,...(lane.parameters?{parameters:lane.parameters}:{})};
     else next.blockedLanes.push(lane.id);
@@ -592,7 +612,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   next.blockedLanes.sort();
   const ready=assess(rows,next,lanes,registration);
   Object.assign(report,{registrationReady:ready.publishable,publishable:ready.publishable,needed:ready.needed,backlogDeferred:ready.backlogDeferred,
-    inputDigest:ready.inputDigest,outputDigest:ready.outputDigest});
+    ...(ready.deferredLanes?{deferredLanes:ready.deferredLanes}:{}),inputDigest:ready.inputDigest,outputDigest:ready.outputDigest});
   if(JSON.stringify(next)!==JSON.stringify(old)) {
     fs.mkdirSync(path.dirname(path.join(root,STATE)),{recursive:true});fs.writeFileSync(path.join(root,STATE),json(next));stage(root,[STATE]);
   }
@@ -637,7 +657,8 @@ export function unrelatedRange({root=ROOT,base,head,lanes}={}) {
     for(const sha of [base,head])if(!/^[a-f0-9]{40}$/.test(sha||''))throw Error('MALFORMED_SHA:'+sha);
     if(spawnSync('git',['merge-base','--is-ancestor',base,head],{cwd:root}).status!==0)throw Error('BASE_NOT_ANCESTOR_OF_HEAD');
     const patterns=unique((lanes||nativeLanes(root)).flatMap(l=>[l.inputs,l.outputs,l.scopedInputs].flatMap(v=>Array.isArray(v)?v:[])));
-    const files=splitZ(git(root,'diff','--name-only','--no-renames','-z',base,head));
+    // Files no lane reads (the excluded code trees) never make a competing commit "related".
+    const files=splitZ(git(root,'diff','--name-only','--no-renames','-z',base,head)).filter(f=>!matches(f,EXCLUDED_CODE_DIRS));
     verdict.changedCount=files.length;
     verdict.firstProtectedHit=files.find(f=>isProtectedExtra(f)||matches(f,patterns))||null;
     verdict.unrelated=verdict.firstProtectedHit===null;
