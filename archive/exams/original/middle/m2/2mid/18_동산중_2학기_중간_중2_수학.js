@@ -622,7 +622,12 @@ window.examData = {
     "answer": "②",
     "solution": "<p>조건: 각 $\\text{C}$와 각 $\\text{F}$가 각각 $90^\\circ$인 두 직각삼각형 $\\text{ABC}$와 $\\text{DEF}$가 있습니다.<br/>구할 대상: 두 직각삼각형이 서로 합동이 될 수 '없는 경우'를 고릅니다.</p><p>직각삼각형의 합동 조건:<br/>1) $\\text{RHA}$ 합동: 빗변의 길이와 한 예각의 크기가 각각 같을 때<br/>2) $\\text{RHS}$ 합동: 빗변의 길이와 다른 한 변의 길이가 각각 같을 때<br/>3) 일반 삼각형의 합동 조건($\\text{SAS}, \\text{ASA}, \\text{SSS}$)도 적용 가능합니다.<br/>4) 세 각의 크기만 같은 경우($\\text{AAA}$)는 닮음일 뿐 크기가 보장되지 않아 합동이 아닙니다.</p><p>각 선지의 조건을 검토합니다:<br/>- ① $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\angle\\text{A}=\\angle\\text{D}$(한 예각): $\\text{RHA}$ 합동 성립.<br/>- ② $\\angle\\text{B}=\\angle\\text{E}, \\angle\\text{A}=\\angle\\text{D}$: 세 내각의 크기만 각각 같은 경우로, 두 삼각형은 닮음이지만 변의 길이가 주어지지 않아 합동이 될 수 없습니다. (합동 불가, 정답)<br/>- ③ $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\overline{\\text{AC}}=\\overline{\\text{DF}}$(한 직각변): $\\text{RHS}$ 합동 성립.<br/>- ④ $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\overline{\\text{BC}}=\\overline{\\text{EF}}$(한 직각변): $\\text{RHS}$ 합동 성립.<br/>- ⑤ $\\overline{\\text{BC}}=\\overline{\\text{EF}}, \\overline{\\text{AC}}=\\overline{\\text{DF}}$: 두 변의 길이가 같고 그 끼인각이 $\\angle\\text{C}=\\angle\\text{F}=90^\\circ$로 같으므로 $\\text{SAS}$ 합동 성립.</p><p>① $\\text{RHA}$ 합동 성립<br/>② 합동 될 수 없음 (세 각만 같으면 닮음, 정답)<br/>③ $\\text{RHS}$ 합동 성립<br/>④ $\\text{RHS}$ 합동 성립<br/>⑤ $\\text{SAS}$ 합동 성립</p><p>따라서 합동이 될 수 없는 것은 ②입니다.</p>",
     "image": "assets/images/18_동산중_2학기_중간_중2_수학/q13.png",
-    "accessibility": "각 C와 각 F가 90도인 두 직각삼각형 ABC와 DEF의 기하 도형"
+    "accessibility": "각 C와 각 F가 90도인 두 직각삼각형 ABC와 DEF의 기하 도형",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에 직각삼각형 ABC, 오른쪽에 직각삼각형 DEF가 있고, 꼭짓점 C와 F에 직각 표시가 있다. 두 삼각형은 모양이 비슷하지만 크기가 다르다.",
+    "solutionImageCaption": "두 직각삼각형에서 ①은 빗변과 한 예각, ③과 ④는 빗변과 한 변, ⑤는 두 변과 끼인각이 각각 같아 합동이다. ②는 세 각의 크기만 같아 닮음일 뿐 크기가 같다는 보장이 없으므로 합동이 될 수 없다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -919,7 +924,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심 주위 각의 비례배분 후 내각 복원",
-    "decisiveStep": "한 바퀴360을 7:6:5로 배분해 AIB를 구하고 내심각 관계로 C를 구한다."
+    "decisiveStep": "한 바퀴360을 7:6:5로 배분해 AIB를 구하고 내심각 관계로 C를 구한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 내심 I가 있고, I에서 세 꼭짓점으로 선분이 그어져 있다. I 주변의 두 각과 꼭짓점 C의 각에 크기 숫자가 표시되어 있고, 오른쪽에 각 AIC를 따로 그린 작은 그림이 있다.",
+    "solutionImageCaption": "내심 I 주위의 세 각의 합은 360도이므로 각 AIB는 360도 곱하기 7/18, 즉 140도이다. 내심의 성질에서 각 AIB는 90도 더하기 각 C의 절반이므로 140도에서 90도를 빼고 두 배 하면 각 C는 100도이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

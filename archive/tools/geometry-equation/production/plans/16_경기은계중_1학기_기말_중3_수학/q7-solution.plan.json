@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -8,
+      14
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-6",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "-5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "y=3x²의 그래프를 x축 방향으로 1만큼, y축 방향으로 −5만큼 평행이동하면 y=3(x−1)²−5의 그래프가 된다. 두 꼭짓점은 각각 (0, 0), (1, −5)이므로 n=1, m=−5이다. 따라서 n+m=−4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선 f와 g가 있고, f의 꼭짓점에서 g의 꼭짓점으로 향하는 선분이 그려져 있다. 두 꼭짓점에는 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 포물선 f와 g",
+    "두 꼭짓점을 잇는 선분",
+    "두 꼭짓점의 좌표 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 이차함수 $y = 3(x - 1)^2 - 5$의 그래프는 이차함수 $y = 3x^2$의 그래프를 $x$축의 방향으로 $n$만큼, $y$축의 방향으로 $m$만큼 평행이동한 것과 같을 때, $n + m$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

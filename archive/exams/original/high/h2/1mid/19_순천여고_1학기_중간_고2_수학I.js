@@ -1212,7 +1212,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선이 최고 3과 최저 −3 사이를 주기 π로 되풀이하며, 세로축과 만나는 점의 높이는 3/2이다. 가로축에는 −π/6, π/3, 5π/6 눈금이 있고 극값 자리와 세로축 교점에 작은 점이 찍혀 있다.",
+    "solutionImageCaption": "그래프의 최댓값 3과 최솟값 −3에서 a=3이다. 이웃한 극댓값의 x좌표 차가 π이므로 주기 2π/b=π에서 b=2이다. x=0에서 함숫값이 3/2이므로 3×코사인 c=3/2이고, 0<c<π/2에서 c=π/3이다. 따라서 답은 (3, 2, π/3)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

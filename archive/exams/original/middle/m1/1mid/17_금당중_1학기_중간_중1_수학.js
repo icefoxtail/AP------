@@ -186,7 +186,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_금당중_1학기_중간_중1_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 왼쪽부터 b, −a, 0, a가 차례로 눈금으로 표시되어 있다.",
+      "solutionImageCaption": "수직선에서 b는 −a보다 왼쪽에 있고, −a는 0보다 왼쪽, a는 0보다 오른쪽에 있다. 따라서 a>0, b<0이고 b<−a이므로 a+b<0, a−b>0이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -200,7 +204,12 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 3.0
+      "score": 3.0,
+      "solutionImage": "assets/images/17_금당중_1학기_중간_중1_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 -7, -1, 0, 5/3, 5가 차례로 표시되어 있고, 0에서 -7까지의 거리 7과 0에서 5까지의 거리 5가 치수선으로 나타나 있다.",
+      "solutionImageCaption": "수직선에서 0까지의 거리가 가장 큰 수는 -7이고 그 절댓값은 7이다. 나머지 수의 절댓값은 1, 5/3, 5, 0이므로 -7의 절댓값이 가장 크다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     },
     {
       "id": 15,

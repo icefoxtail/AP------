@@ -319,7 +319,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "기댓값은 상수배와 덧셈에 대하여 선형이므로 E(2X+1)=2E(X)+1이 성립한다. 이항분포 B(30,p)의 분산은 30p(1−p)이고, 연속확률변수는 한 점에서의 확률이 0이다. N(9,4)의 표준편차는 2이므로 (X−9)/4는 표준화가 아니며, 표준편차가 작을수록 곡선은 좁고 높아진다. 따라서 참인 것은 ㄱ, ㄴ, ㄷ이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

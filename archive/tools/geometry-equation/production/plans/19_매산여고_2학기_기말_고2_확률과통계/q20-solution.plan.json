@@ -1,0 +1,66 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "끝값",
+          "p": "1/7",
+          "children": [
+            {
+              "label": "4/3",
+              "p": "1/2"
+            },
+            {
+              "label": "8/3",
+              "p": "1/2"
+            }
+          ]
+        },
+        {
+          "label": "중간값",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "5/3",
+              "p": "1/2"
+            },
+            {
+              "label": "7/3",
+              "p": "1/2"
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "p": "5/14"
+        }
+      ]
+    },
+    "showPathProbability": false
+  },
+  "caption": "표본평균은 4/3, 5/3, 2, 7/3, 8/3이고 확률은 차례대로 4/56, 14/56, 20/56, 14/56, 4/56이다. 분포가 2를 중심으로 좌우대칭이므로 평균은 2이다. 분산은 각 값과 2의 차를 제곱해 확률을 곱한 합인 5/42이다. 따라서 답은 평균 2, 분산 5/42이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 주관식 3] $1, 1, 2, 2, 2, 2, 3, 3$의 숫자가 하나씩 적힌 $8$장의 카드에서 크기가 $3$인 표본을 임의추출하여 그 표본평균을 $\\overline{X}$라 하자. 이때 $\\overline{X}$의 평균 $\\mathrm{E}(\\overline{X})$와 분산 $\\mathrm{V}(\\overline{X})$를 구하시오. [7.0점]<br><br>(1) 확률분포표를 구하여라. [2.0점]<br>(2) $\\mathrm{E}(\\overline{X})$를 구하여라. [2.0점]<br>(3) $\\mathrm{V}(\\overline{X})$를 구하여라. [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "표본평균의 다섯 값과 각 확률",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "분포가 2를 중심으로 좌우대칭",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "표본평균을 끝값, 중간값, 가운데 값으로 묶은 수형도",
+    "대칭인 두 값 4/3과 8/3, 5/3과 7/3을 같은 가지에 배치",
+    "가운데 값 2의 확률 5/14 표시"
+  ]
+}

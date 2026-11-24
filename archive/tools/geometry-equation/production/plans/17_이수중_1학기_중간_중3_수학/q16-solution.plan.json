@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "70"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "90"
+            },
+            {
+              "kind": "integer",
+              "value": "70"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "R",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sRA",
+      "refs": [
+        "R",
+        "A"
+      ]
+    },
+    {
+      "id": "sRB",
+      "refs": [
+        "R",
+        "B"
+      ]
+    },
+    {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "sRD",
+      "refs": [
+        "R",
+        "D"
+      ]
+    },
+    {
+      "id": "sRE",
+      "refs": [
+        "R",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lA",
+        "ownerSegment": "sRA",
+        "text": "a^2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lB",
+        "ownerSegment": "sRB",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lC",
+        "ownerSegment": "sRC",
+        "text": "(a+b)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lD",
+        "ownerSegment": "sRD",
+        "text": "(a+b)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lE",
+        "ownerSegment": "sRE",
+        "text": "(a+b)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "R",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "a²b(a+b)³은 a², b, (a+b)를 세 번 곱한 식이다. 따라서 인수로는 a², b, a+b, (a+b)², b(a+b)² 등이 들어가지만 b²은 들어가지 않는다. ⑤ b²(a+b)³은 b를 두 번 포함하므로 주어진 식의 인수가 아니다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "가운데 점에서 다섯 갈래 선이 뻗어 나가고, 각 선 위에 a², b, a+b, a+b, a+b가 차례로 적힌 인수 나무 모양 그림이다.",
+  "newVisualInformation": [
+    "주어진 식을 이루는 인수 a², b, a+b를 갈래로 보여 준다.",
+    "(a+b)가 세 번 곱해지는 것을 눈으로 확인할 수 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 다음 중 $a^2b(a+b)^3$의 인수가 아닌 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

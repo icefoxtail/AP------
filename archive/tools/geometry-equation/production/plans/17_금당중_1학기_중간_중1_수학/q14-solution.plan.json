@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A1",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAxis",
+      "refs": [
+        "A0",
+        "A1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          -7,
+          -0.85
+        ],
+        "text": "-7",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t2",
+        "at": [
+          -1,
+          -0.85
+        ],
+        "text": "-1",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t3",
+        "at": [
+          0,
+          -0.85
+        ],
+        "text": "0",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t4",
+        "at": [
+          1.667,
+          -0.85
+        ],
+        "text": "5/3",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t5",
+        "at": [
+          5,
+          -0.85
+        ],
+        "text": "5",
+        "labelKind": "TEXT"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dNeg",
+        "from": "N3",
+        "to": "N1",
+        "label": "7",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dPos",
+        "from": "N3",
+        "to": "N5",
+        "label": "5",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "A0",
+    "A1",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5"
+  ],
+  "caption": "수직선에서 0까지의 거리가 가장 큰 수는 -7이고 그 절댓값은 7이다. 나머지 수의 절댓값은 1, 5/3, 5, 0이므로 -7의 절댓값이 가장 크다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "수직선 위에 -7, -1, 0, 5/3, 5가 차례로 표시되어 있고, 0에서 -7까지의 거리 7과 0에서 5까지의 거리 5가 치수선으로 나타나 있다.",
+  "newVisualInformation": [
+    "수직선 위의 -7, -1, 0, 5/3, 5의 위치",
+    "0에서 -7까지의 거리 7과 0에서 5까지의 거리 5를 나타내는 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 절댓값이 가장 큰 수는? (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

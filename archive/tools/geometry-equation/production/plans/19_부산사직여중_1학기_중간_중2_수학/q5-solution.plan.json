@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [
+          -4,
+          2
+        ],
+        "text": "순환소수 0.333...",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tB",
+        "at": [
+          0,
+          2
+        ],
+        "text": "유한소수 0.5",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tC",
+        "at": [
+          6,
+          2
+        ],
+        "text": "무리수 π",
+        "labelKind": "TEXT"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dRat",
+        "from": "A",
+        "to": "B",
+        "label": "유리수",
+        "side": "BELOW",
+        "style": "BRACE",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "순환소수는 모두 분수로 나타낼 수 있으므로 유리수이다. 유한소수로 나타낼 수 없는 분수도 모두 순환소수로 나타낼 수 있다. 모든 유리수가 유한소수인 것은 아니고, 무한소수 중에는 순환소수가 아닌 무리수도 있다. 따라서 답은 ②, ⑤이다.",
+  "accessibilityDescription": "가로선 위에 순환소수 0.333..., 유한소수 0.5, 무리수 π가 왼쪽부터 놓여 있고, 앞의 두 수 아래에 유리수라는 묶음 표시가 있다.",
+  "newVisualInformation": [
+    "순환소수·유한소수·무리수의 예와 유리수 묶음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "옳은 것을 모두 고르면? (정답 2개)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

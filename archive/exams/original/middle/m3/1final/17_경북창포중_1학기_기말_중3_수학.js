@@ -18,7 +18,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로변이 7명, 세로변이 11개인 직사각형이 있고, 그 넓이 자리에 77개가 적혀 있다.",
+    "solutionImageCaption": "학생 수를 n이라 하면 한 사람이 받는 사탕 수는 n+4이므로 n(n+4)=77이다. 이를 정리하면 n²+4n−77=0이고 (n+11)(n−7)=0이다. 학생 수는 자연수이므로 n=7이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,

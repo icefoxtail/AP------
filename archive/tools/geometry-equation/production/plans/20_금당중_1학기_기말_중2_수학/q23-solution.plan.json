@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2400",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "거리의 범위"
+  },
+  "caption": "출발점에서 x미터 떨어진 지점까지 갔다 온다고 하면 갈 때는 x/60분, 올 때는 x/80분이 걸린다. 두 시간의 합이 70분 이하이므로 x/60+x/80≤70이고, 양변에 240을 곱하면 4x+3x≤16800, 즉 7x≤16800에서 x≤2400이다. 따라서 최대 거리는 2400미터, 즉 2.4킬로미터이다. 따라서 답은 2.4킬로미터이다.",
+  "accessibilityDescription": "수직선 한 줄에 왼쪽 끝없이 이어지다가 2400에서 멈추는 굵은 범위가 있고, 끝점 2400은 채운 점으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 3] 민호는 산책을 하는데, 갈 때는 분속 $60\\text{m}$로, 올 때는 같은 길을 분속 $80\\text{m}$로 걸어서 $70$분 이내에 되돌아오려고 한다. 민호는 출발점에서 최대 몇 $\\text{km}$ 떨어진 지점까지 갔다 올 수 있는가? (5점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x/60+x/80≤70",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x≤2400",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선 위에 거리가 2400 이하인 범위를 나타내고 끝점 2400을 채운 점으로 보인다.",
+    "갈 때와 올 때의 시간을 더한 값이 70분 이하라는 조건이 거리 2400 이하로 정리되는 것을 한눈에 확인한다."
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "110"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "110"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "85"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "85"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P7",
+        "P8"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P9",
+        "P10"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "s1",
+        "text": "a(2-√2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "s2",
+        "text": "2√2-2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "s3",
+        "text": "(2a-2)+(2-a)√2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "s4",
+        "text": "a=2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "s5",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "첫째 항은 a(2−√2), 둘째 항은 2√2−2이므로 두 항의 합은 (2a−2)+(2−a)√2이다. 이 값이 유리수가 되려면 √2의 계수가 0이어야 하므로 2−a=0, 즉 a=2이다. 이때 주어진 식의 값은 2a−2=2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "다섯 개의 가로선이 위아래로 놓이고, 각 선 위에 두 항을 간단히 한 결과와 합한 식, a의 값, 식의 값이 차례로 적힌 풀이 흐름 그림이다.",
+  "newVisualInformation": [
+    "두 항을 각각 간단히 한 결과를 나란히 보여 준다.",
+    "√2의 계수가 0이 되는 a의 값을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. $\\frac{a}{\\sqrt{2}}(\\sqrt{8}-2) + \\sqrt{24}\\left(\\frac{1}{\\sqrt{3}} - \\frac{1}{\\sqrt{6}}\\right)$이 유리수가 되도록 하는 유리수 $a$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

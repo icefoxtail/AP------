@@ -120,7 +120,12 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 근호 계산식과 각 식 끝의 맞음 또는 틀림 표시가 한 줄씩 적힌 목록 그림이다.",
+    "solutionImageCaption": "①은 √5×2√5=2×5=10, ②는 √(12/5)×√(15/4)=√9=3, ④는 5√2×√98=5×14=70, ⑤는 √3×2√2×(-3√3)=-18√2로 모두 옳다. ③은 √36÷√12=6÷2√3=√3이므로 3이 아니다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -158,7 +163,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 가로선이 위아래로 놓이고, 각 선 위에 두 항을 간단히 한 결과와 합한 식, a의 값, 식의 값이 차례로 적힌 풀이 흐름 그림이다.",
+    "solutionImageCaption": "첫째 항은 a(2−√2), 둘째 항은 2√2−2이므로 두 항의 합은 (2a−2)+(2−a)√2이다. 이 값이 유리수가 되려면 √2의 계수가 0이어야 하므로 2−a=0, 즉 a=2이다. 이때 주어진 식의 값은 2a−2=2이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -294,7 +303,12 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 5.0
+    "score": 5.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 두 선분이 있고, 각 선분 위에 계산 결과를 나타내는 식이 하나씩 적혀 있다.",
+    "solutionImageCaption": "3=(2+1)로 보고 (2−1)을 곱하는 방식으로 정리하면 주어진 곱은 2⁴⁰−1이 된다. 따라서 a=1+(2⁴⁰−1)=2⁴⁰이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -320,7 +334,12 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 5.0
+    "score": 5.0,
+    "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선 위에 √5와 √7의 위치가 표시되어 있고, 그 사이에 다섯 개의 작은 점이 놓여 있다.",
+    "solutionImageCaption": "√5는 약 2.24, √7은 약 2.65이므로 그 사이에는 무리수가 무수히 많다. 예를 들어 √21/2, √22/2, √23/2, √6, √26/2는 모두 √5보다 크고 √7보다 작은 무리수이다. 따라서 답은 √21/2, √22/2, √23/2, √6, √26/2이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,

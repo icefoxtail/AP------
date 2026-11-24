@@ -1,0 +1,72 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "2",
+      "0"
+    ],
+    "phasePi": "1/3",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      4.5,
+      -4.5,
+      4.5
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1/6",
+        "1/3",
+        "5/6"
+      ],
+      "y": [
+        "3",
+        "-3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "그래프의 최댓값 3과 최솟값 −3에서 a=3이다. 이웃한 극댓값의 x좌표 차가 π이므로 주기 2π/b=π에서 b=2이다. x=0에서 함숫값이 3/2이므로 3×코사인 c=3/2이고, 0<c<π/2에서 c=π/3이다. 따라서 답은 (3, 2, π/3)이다.",
+  "accessibilityDescription": "코사인 곡선이 최고 3과 최저 −3 사이를 주기 π로 되풀이하며, 세로축과 만나는 점의 높이는 3/2이다. 가로축에는 −π/6, π/3, 5π/6 눈금이 있고 극값 자리와 세로축 교점에 작은 점이 찍혀 있다.",
+  "newVisualInformation": [
+    "최댓값 3과 최솟값 −3",
+    "x=0에서의 함숫값 3/2",
+    "이웃한 극댓값의 x좌표 차 π",
+    "가로축 눈금 −π/6, π/3, 5π/6",
+    "세로축 교점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 함수 $y=a\\cos(bx+c)$의 그래프가 다음 그림과 같을 때, 상수 $a, b, c$의 값을 구하시오 [5점]\n(단, $a>0$, $b>0$, $0 < c < \\dfrac{\\pi}{2}$)\n<p><img src=\"assets/images/19_순천여고_1학기_중간_고2_수학I/q20.png\" class=\"question-img\" alt=\"서술형 2번 그림\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

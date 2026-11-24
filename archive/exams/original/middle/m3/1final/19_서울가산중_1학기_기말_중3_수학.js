@@ -394,6 +394,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 20.0,
-    "image": "assets/images/19_서울가산중_1학기_기말_중3_수학/q20-problem-v3.svg"
+    "image": "assets/images/19_서울가산중_1학기_기말_중3_수학/q20-problem-v3.svg",
+    "solutionImage": "assets/images/19_서울가산중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 두 포물선 조각이 왼쪽과 오른쪽에 있고, 위아래를 잇는 가로 점선 y=1과 y=-2, 네 점 A, B, C, D가 보인다.",
+    "solutionImageCaption": "주어진 그래프는 꼭짓점이 (1, -2), 축이 x=1, 최솟값이 -2인 포물선 y=3(x-1)²-2이므로 a=3, b=-6, c=1이다. x축 방향으로 -2만큼, y축 방향으로 3만큼 평행이동하면 y=3(x+1)²+1이므로 (-3, k)에서 k=13이다. x≤1 부분과 이를 x축 방향으로 -3만큼 평행이동한 그래프, y=1, y=-2로 둘러싸인 부분은 가로 3, 세로 3이므로 넓이는 9이다. 따라서 정답은 (1) (1, -2), (2) x=1, (3) -2, (4) a=3, b=-6, c=1, (5) k=13, (6) 9이다.",
+    "solutionImageSize": "full"
   }
 ];

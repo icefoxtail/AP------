@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "(3-sqrt(89))/2",
+            "showValue": false
+          },
+          {
+            "id": "P0",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "A",
+            "value": "(3+sqrt(89))/2",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "caption": "다섯 편차의 합이 0이므로 a+b=3이고, 표준편차가 2√3이므로 편차 제곱의 합은 5×12=60에서 a²+b²=49이다. 따라서 (a+b)²=a²+2ab+b²에 대입하면 9=49+2ab이므로 ab=-20이다. a와 b는 (3±√89)/2에 위치하고, 수직선에는 주어진 편차 -3, -1, 1과 함께 나타내었다. 따라서 답은 ③이다.",
+  "newVisualInformation": [
+    "수직선 위에 주어진 편차 -3, -1, 1과 a, b의 위치를 점으로 나타내고, a와 b가 (3-√89)/2와 (3+√89)/2에 있음을 보인다",
+    "편차 제곱의 합과 ab 계산에 필요한 관계를 점 위치로 확인"
+  ],
+  "accessibilityDescription": "수직선 위에 -3, -1, 1의 편차가 점으로 표시되고, 그 양쪽 바깥에 점 A와 B가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "21. 다음은 어느 중학교 야구 선수 5명이 지난 대회에서 안타를 친 횟수의 편차이다. 표준편차가 $2\\sqrt{3}$회일 때, $ab$의 값을 구하여라. [5.0점]\n(단위: 회)\n<table class=\"exam-table\"><tr><td>$a,\\; -1,\\; 1,\\; -3,\\; b$</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
