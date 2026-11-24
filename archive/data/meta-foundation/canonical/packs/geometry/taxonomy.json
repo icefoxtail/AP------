@@ -1,8 +1,8 @@
 {
   "schemaVersion": "meta-foundation-taxonomy-v1",
   "status": "ACTIVE",
-  "problemTypeCount": 12,
-  "templateCount": 46,
+  "problemTypeCount": 13,
+  "templateCount": 66,
   "problemTypes": [
     {
       "problemTypeKey": "PT_GEO_HYPERBOLA",
@@ -309,6 +309,19 @@
       "supportingQuestionUids": [],
       "sourceUnits": [
         "H22-GE-08"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_CONIC_MIXED",
+      "canonicalLabelKo": "이차곡선의 종합",
+      "definition": "포물선·타원·쌍곡선(과 원)이 섞여 나오는 이차곡선 종합 문제에서 식의 종류를 판별하고 곡선의 성질을 연결해 결론을 구한다.",
+      "aliases": [],
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "H22-GE-01"
       ]
     }
   ],
@@ -1315,6 +1328,246 @@
       "internalSkeleton": "중심까지 거리 → ±반지름 → 최대·최소",
       "ownerPack": "GEOMETRY",
       "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PARABOLA_TRANSLATION",
+      "canonicalLabelKo": "포물선의 평행이동",
+      "definition": "포물선을 x축·y축 방향으로 평행이동한 식에서 꼭짓점·초점·준선과 이동량을 읽거나 조건으로 이동량을 결정한다.",
+      "aliases": [],
+      "internalSkeleton": "완전제곱꼴로 변형 → 이동량 읽기 → 이동한 꼭짓점·초점·준선 구하기",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PARABOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+      "canonicalLabelKo": "초점을 지나는 직선과 포물선",
+      "definition": "초점을 지나는 직선이 포물선과 만나는 두 점에서 준선까지의 거리로 초점거리를 바꾸어 현의 길이·거리 관계를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "교점의 초점거리 = 준선까지 거리 → 두 교점 관계식 → 길이·값 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PARABOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPHERE_LOCUS",
+      "canonicalLabelKo": "구의 자취",
+      "definition": "두 점까지의 거리 조건을 만족하는 점의 자취를 좌표로 나타내어 구의 방정식으로 정리하고 중심·반지름을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "점 (x,y,z) 설정 → 거리 조건을 식으로 → 구의 방정식으로 정리",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPHERE_TWO_SPHERES",
+      "canonicalLabelKo": "두 구의 위치 관계",
+      "definition": "두 구의 중심 사이 거리와 반지름의 합·차를 비교하여 외접·내접·교선 등 위치 관계를 판단하고 교선의 길이·넓이를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "중심 거리와 반지름 합·차 비교 → 위치 관계 판정 → 교선 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPHERE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PARABOLA_PAIR_SEGMENT",
+      "canonicalLabelKo": "두 포물선과 선분의 길이",
+      "definition": "두 포물선(또는 포물선과 직선)의 교점을 연립으로 구하고 교점을 잇는 선분의 길이·거리 조건으로 미지수를 정한다.",
+      "aliases": [],
+      "internalSkeleton": "연립으로 교점 좌표 구하기 → 교점으로 선분 길이 식 세우기 → 조건으로 값 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PARABOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PARABOLA_MODEL",
+      "canonicalLabelKo": "포물선 모형",
+      "definition": "포물선 모양의 구조물·경로를 좌표평면에 놓고 꼭짓점·초점·준선을 정해 포물선의 식을 세운 뒤 길이·높이 조건을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "좌표평면에 모형 놓기 → 포물선 식 세우기 → 길이·높이 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PARABOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_EXTREMA",
+      "canonicalLabelKo": "타원 위의 점의 최대·최소",
+      "definition": "타원 위의 점이 움직일 때 타원의 정의(거리의 합)나 매개변수 표현으로 길이의 합 또는 도형의 넓이의 최댓값·최솟값을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "타원의 정의·매개변수로 식 세우기 → 부등식·함수로 범위 구하기 → 최대·최소 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_TRANSLATION",
+      "canonicalLabelKo": "타원의 평행이동",
+      "definition": "타원을 x축·y축 방향으로 평행이동한 식에서 중심·초점·장축·단축과 이동량을 읽거나 조건으로 이동량을 결정한다.",
+      "aliases": [],
+      "internalSkeleton": "완전제곱꼴로 변형 → 이동량·중심 읽기 → 초점·축의 길이 구하기",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_TRANSLATION",
+      "canonicalLabelKo": "쌍곡선의 평행이동",
+      "definition": "쌍곡선을 평행이동한 식이나 일반형을 완전제곱꼴로 정리해 중심·초점·점근선과 이동량을 읽거나 조건으로 이동량을 정한다.",
+      "aliases": [],
+      "internalSkeleton": "완전제곱꼴로 변형 → 중심·이동량 읽기 → 초점·점근선 구하기",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_WITH_CURVE",
+      "canonicalLabelKo": "쌍곡선과 다른 곡선",
+      "definition": "쌍곡선과 포물선·원이 함께 주어질 때 공통 초점·교점·접점 조건으로 두 곡선의 식을 연결해 미지수나 길이를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "두 곡선의 공통 조건 찾기 → 조건을 식으로 연립 → 값·길이 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_SHARED_FOCUS",
+      "canonicalLabelKo": "초점을 공유하는 이차곡선",
+      "definition": "타원과 쌍곡선이 같은 초점을 가질 때 초점 거리 관계식으로 두 곡선의 계수를 연결해 미지수를 정한다.",
+      "aliases": [],
+      "internalSkeleton": "공통 초점의 좌표 정하기 → 각 곡선의 c² 를 식으로 → 연립해 값 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_CONIC_MIXED_TYPE_CONDITION",
+      "canonicalLabelKo": "이차방정식이 나타내는 이차곡선의 종류",
+      "definition": "이차방정식의 계수 조건으로 원·타원·포물선·쌍곡선 중 어떤 도형을 나타내는지 판별하거나 그 도형이 되는 계수의 값·범위를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "이차항 계수의 부호·관계 정리 → 곡선 종류별 조건 적용 → 계수의 값·범위 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_CONIC_MIXED",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_TANGENT_PROPERTY",
+      "canonicalLabelKo": "접선의 성질",
+      "definition": "이차곡선의 접선이 초점·준선과 이루는 성질(각의 이등분, 반사)을 이용해 길이·각 관계를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "접선의 성질 확인 → 초점·준선과의 관계식 → 길이·각 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
+      "canonicalLabelKo": "위치벡터와 분점",
+      "definition": "점의 위치벡터를 기준점에 대한 벡터로 나타내고 내분점·외분점·무게중심의 위치벡터 공식으로 점의 위치·넓이의 비를 구한다.",
+      "aliases": [],
+      "internalSkeleton": "기준점에 대한 위치벡터 설정 → 분점·무게중심 공식 적용 → 계수 비교로 값 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_REGION",
+      "canonicalLabelKo": "벡터식이 나타내는 도형",
+      "definition": "위치벡터 식 또는 성분 조건을 만족하는 점 P의 자취·범위를 계수의 변화 범위로 해석해 도형을 구하고 길이·넓이를 계산한다.",
+      "aliases": [],
+      "internalSkeleton": "벡터식을 성분·계수로 표현 → 계수의 범위로 도형 판정 → 길이·넓이 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_PROJECTION_LENGTH",
+      "canonicalLabelKo": "정사영의 길이",
+      "definition": "선분의 정사영 길이를 선분과 평면(또는 직선)이 이루는 각의 코사인을 곱해 구하거나 역으로 각을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "선분과 평면이 이루는 각 정하기 → 정사영 길이 = 길이×cosθ → 길이·각 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+      "canonicalLabelKo": "선분 길이 합의 최솟값",
+      "definition": "좌표평면·좌표축에 대한 대칭점을 이용해 꺾인 선분의 길이의 합을 한 선분의 길이로 바꾸어 최솟값을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "대칭점 구하기 → 꺾인 경로를 직선 경로로 → 두 점 사이 거리 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_LOCUS",
+      "canonicalLabelKo": "타원의 자취",
+      "definition": "두 정점까지의 거리의 합이 일정하다는 조건을 만족하는 점의 자취를 좌표로 나타내어 타원의 방정식을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "점 (x,y) 설정 → 거리의 합 조건을 식으로 → 타원의 방정식으로 정리",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_WITH_CURVE",
+      "canonicalLabelKo": "타원과 다른 곡선",
+      "definition": "타원과 원·포물선이 함께 주어질 때 공통 초점·교점·접점 조건으로 두 곡선의 식을 연결해 미지수를 정한다.",
+      "aliases": [],
+      "internalSkeleton": "두 곡선의 공통 조건 찾기 → 조건을 식으로 연립 → 미지수 결정",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": []
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_MODEL",
+      "canonicalLabelKo": "타원 모형",
+      "definition": "타원 모양의 터널·궤도 같은 상황을 좌표평면에 놓고 장축·단축·초점을 정해 타원의 식을 세운 뒤 길이 조건을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "좌표평면에 모형 놓기 → 타원 식 세우기 → 길이 계산",
+      "ownerPack": "GEOMETRY",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
       "status": "ACTIVE",
       "supportingItemCount": 0,
       "supportingQuestionUids": []

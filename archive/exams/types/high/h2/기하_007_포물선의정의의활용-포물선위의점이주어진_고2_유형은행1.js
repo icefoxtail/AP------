@@ -1,0 +1,469 @@
+window.examTitle = "기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 8x$와 직선 $y = 1$, $y = 2$, $y = 3$, $\\cdots$이 만나는 점을 각각 $\\mathrm{P}_1$, $\\mathrm{P}_2$, $\\mathrm{P}_3$, $\\cdots$이라 할 때, 포물선의 초점 $\\mathrm{F}$에 대하여 $\\sum_{k=1}^{15} \\overline{\\mathrm{FP}_k}$의 값은? [그림: 좌표평면에 포물선 $y^2 = 8x$와 초점 $\\mathrm{F}(2, 0)$이 그려져 있다. 직선 $y = 1, 2, 3, \\cdots$이 포물선과 만나는 점 $\\mathrm{P}_1, \\mathrm{P}_2, \\mathrm{P}_3, \\cdots$과 초점 $\\mathrm{F}$를 이은 선분들이 표시되어 있다.]",
+    "choices": [
+      "$180$",
+      "$185$",
+      "$190$",
+      "$195$",
+      "$200$"
+    ],
+    "answer": "②",
+    "solution": "포물선 $y^2 = 8x = 4 \\cdot 2x$의 초점은 $\\mathrm{F}(2, 0)$이고, 준선의 방정식은 $x = -2$이다.\n점 $\\mathrm{P}_k$는 포물선 $y^2 = 8x$와 직선 $y = k$의 교점이므로 점 $\\mathrm{P}_k$의 $x$좌표는 $\\frac{k^2}{8}$이다.\n포물선의 정의에 의하여\n$$\\overline{\\mathrm{FP}_k} = \\frac{k^2}{8} + 2$$\n이다.\n따라서 구하는 합은\n$$\\sum_{k=1}^{15} \\overline{\\mathrm{FP}_k} = \\sum_{k=1}^{15} \\left(\\frac{k^2}{8} + 2\\right) = \\frac{1}{8} \\cdot \\frac{15 \\times 16 \\times 31}{6} + 2 \\times 15$$\n$$= \\frac{1240}{8} + 30 = 155 + 30 = 185$$\n이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "포물선의 정의로 FP_k=k^2/8+2를 얻어 15개 항의 합을 계산한다",
+    "decisiveStep": "FP_k=k^2/8+2이므로 합은 1240/8+30=185",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 초점이 $\\mathrm{F}$인 포물선 $y^2 = 20x$ 위의 세 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$에 대하여 $\\overline{\\mathrm{FA}}$는 $x$축에 수직이고 점 $\\mathrm{B}$의 $x$좌표는 $9$이다. $\\overline{\\mathrm{FA}}$, $\\overline{\\mathrm{FB}}$, $\\overline{\\mathrm{FC}}$의 길이가 이 순서로 등차수열을 이룰 때, 점 $\\mathrm{C}$의 $x$좌표는? [그림: 좌표평면에 포물선 $y^2 = 20x$와 초점 $\\mathrm{F}(5, 0)$이 있다. 제$1$사분면의 포물선 위에 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$가 원점에서 먼 순서대로 놓여 있고, $\\overline{\\mathrm{FA}} \\perp x$축이며, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발의 $x$좌표가 $9$로 표시되어 있다.]",
+    "choices": [
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$",
+      "$14$"
+    ],
+    "answer": "④",
+    "solution": "포물선 $y^2 = 20x = 4 \\cdot 5x$의 초점은 $\\mathrm{F}(5, 0)$이고, 준선의 방정식은 $x = -5$이다.\n$\\overline{\\mathrm{FA}}$가 $x$축에 수직이므로 점 $\\mathrm{A}$의 $x$좌표는 초점 $\\mathrm{F}$의 $x$좌표와 같은 $5$이다.\n포물선의 정의에 의하여\n$$\\overline{\\mathrm{FA}} = 5 + 5 = 10, \\quad \\overline{\\mathrm{FB}} = 9 + 5 = 14$$\n이다.\n$\\overline{\\mathrm{FA}}$, $\\overline{\\mathrm{FB}}$, $\\overline{\\mathrm{FC}}$가 이 순서로 등차수열을 이루므로\n$$2\\overline{\\mathrm{FB}} = \\overline{\\mathrm{FA}} + \\overline{\\mathrm{FC}} \\implies 28 = 10 + \\overline{\\mathrm{FC}} \\implies \\overline{\\mathrm{FC}} = 18$$\n이다.\n점 $\\mathrm{C}$의 $x$좌표를 $c$라 하면 포물선의 정의에 의하여\n$$\\overline{\\mathrm{FC}} = c + 5 = 18 \\implies c = 13$$\n이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "포물선의 정의로 FA=10, FB=14를 구하고 등차수열로 FC=18을 얻는다",
+    "decisiveStep": "2FB=FA+FC에서 28=10+FC, FC=18",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 16x$의 초점 $\\mathrm{F}$를 중심으로 하고 준선에 접하는 원이 제$1$사분면에서 이 포물선과 만나는 점을 $\\mathrm{P}$라 할 때, 삼각형 $\\mathrm{POF}$의 넓이는? (단, $\\mathrm{O}$는 원점이다.) [그림: 좌표평면에 포물선 $y^2 = 16x$, 초점 $\\mathrm{F}(4, 0)$, 준선 $x = -4$가 그려져 있다. 점 $\\mathrm{F}$를 중심으로 하고 준선 $x = -4$에 접하는 원이 제$1$사분면에서 포물선과 만나는 점이 $\\mathrm{P}$로 표시되어 있다.]",
+    "choices": [
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$"
+    ],
+    "answer": "⑤",
+    "solution": "포물선 $y^2 = 16x = 4 \\cdot 4x$의 초점은 $\\mathrm{F}(4, 0)$이고, 준선의 방정식은 $x = -4$이다.\n초점 $\\mathrm{F}(4, 0)$을 중심으로 하고 준선 $x = -4$에 접하는 원의 반지름의 길이는 초점과 준선 사이의 거리와 같으므로\n$$4 - (-4) = 8$$\n이다.\n점 $\\mathrm{P}$는 이 원 위의 점이므로 $\\overline{\\mathrm{PF}} = 8$이다.\n점 $\\mathrm{P}$의 좌표를 $(x_1, y_1)$ ($y_1 > 0$)이라 하면 포물선의 정의에 의하여\n$$\\overline{\\mathrm{PF}} = x_1 + 4 = 8 \\implies x_1 = 4$$\n이다.\n점 $\\mathrm{P}$는 포물선 $y^2 = 16x$ 위의 제$1$사분면의 점이므로\n$$y_1 = \\sqrt{16 \\cdot 4} = 8$$\n이다.\n따라서 삼각형 $\\mathrm{POF}$의 넓이는\n$$\\frac{1}{2} \\times \\overline{\\mathrm{OF}} \\times y_1 = \\frac{1}{2} \\times 4 \\times 8 = 16$$\n이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "준선에 접하는 원의 반지름 8과 포물선의 정의로 P의 좌표를 구해 넓이를 낸다",
+    "decisiveStep": "PF=x_1+4=8에서 x_1=4, y_1=8, 넓이는 (1/2)·4·8=16",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 4px$ ($p > 0$)의 초점을 $\\mathrm{F}$라 하자. 포물선 위의 점 $\\mathrm{P}$와 점 $\\mathrm{A}(9, 0)$에 대하여 $\\overline{\\mathrm{PA}} = \\overline{\\mathrm{PF}}$이고 삼각형 $\\mathrm{PFA}$의 둘레의 길이가 $26$일 때, $p$의 값은? (단, 점 $\\mathrm{F}$의 $x$좌표는 $9$보다 작다.) [그림: 좌표평면에 포물선 $y^2 = 4px$ ($p > 0$)와 초점 $\\mathrm{F}(p, 0)$, $x$축 위의 점 $\\mathrm{A}(9, 0)$이 $0 < p < 9$가 되도록 놓여 있다. 제$1$사분면의 포물선 위에 $\\overline{\\mathrm{PA}} = \\overline{\\mathrm{PF}}$인 점 $\\mathrm{P}$가 있어 이등변삼각형 $\\mathrm{PFA}$가 그려져 있다.]",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "②",
+    "solution": "포물선 $y^2 = 4px$의 초점은 $\\mathrm{F}(p, 0)$이고, 준선의 방정식은 $x = -p$이다.\n$\\overline{\\mathrm{PA}} = \\overline{\\mathrm{PF}}$이므로 삼각형 $\\mathrm{PFA}$는 이등변삼각형이고, 점 $\\mathrm{P}$에서 $x$축에 내린 수선의 발은 선분 $\\mathrm{FA}$의 중점이다.\n따라서 점 $\\mathrm{P}$의 $x$좌표는\n$$\\frac{p + 9}{2}$$\n이다.\n포물선의 정의에 의하여\n$$\\overline{\\mathrm{PF}} = \\overline{\\mathrm{PA}} = \\frac{p + 9}{2} + p = \\frac{3p + 9}{2}$$\n이고, $p < 9$이므로 $\\overline{\\mathrm{FA}} = 9 - p$이다.\n삼각형 $\\mathrm{PFA}$의 둘레의 길이가 $26$이므로\n$$\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PA}} + \\overline{\\mathrm{FA}} = 2 \\cdot \\frac{3p + 9}{2} + (9 - p) = 2p + 18 = 26$$\n$$2p = 8 \\implies p = 4$$\n이다. (이때 $4 < 9$이므로 조건을 만족시킨다.)\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "이등변삼각형에서 수선의 발이 FA의 중점임을 이용해 둘레 조건으로 p를 구한다",
+    "decisiveStep": "2·(3p+9)/2+(9-p)=2p+18=26에서 p=4",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_UPPER_BOUND"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 초점이 $\\mathrm{F}$인 포물선 $y^2 = 12x$ 위의 점 $\\mathrm{P}$에서 $x$축에 내린 수선의 발을 $\\mathrm{H}$라 하자. 삼각형 $\\mathrm{PFH}$의 넓이가 $4\\sqrt{21}$일 때, 선분 $\\mathrm{PF}$의 길이는? (단, 점 $\\mathrm{P}$의 $x$좌표는 점 $\\mathrm{F}$의 $x$좌표보다 크다.) [그림: 좌표평면에 포물선 $y^2 = 12x$와 초점 $\\mathrm{F}(3, 0)$이 있다. 포물선 위의 제$1$사분면의 점 $\\mathrm{P}$ ($x > 3$)에서 $x$축에 내린 수선의 발이 $\\mathrm{H}$이고 직각삼각형 $\\mathrm{PFH}$가 그려져 있다.]",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "⑤",
+    "solution": "포물선 $y^2 = 12x = 4 \\cdot 3x$의 초점은 $\\mathrm{F}(3, 0)$이고, 준선의 방정식은 $x = -3$이다.\n점 $\\mathrm{P}$의 좌표를 $(x_1, y_1)$이라 하면 $x_1 > 3$이고 $|y_1| = \\sqrt{12x_1} = 2\\sqrt{3x_1}$이다.\n삼각형 $\\mathrm{PFH}$의 넓이가 $4\\sqrt{21}$이므로\n$$\\frac{1}{2} \\times (x_1 - 3) \\times 2\\sqrt{3x_1} = 4\\sqrt{21}$$\n$$(x_1 - 3)\\sqrt{3x_1} = 4\\sqrt{21}$$\n양변을 제곱하여 정리하면\n$$3x_1(x_1 - 3)^2 = 16 \\times 21 \\implies x_1(x_1^2 - 6x_1 + 9) = 112$$\n$$x_1^3 - 6x_1^2 + 9x_1 - 112 = 0$$\n$$(x_1 - 7)(x_1^2 + x_1 + 16) = 0$$\n$x_1^2 + x_1 + 16 = \\left(x_1 + \\frac{1}{2}\\right)^2 + \\frac{63}{4} > 0$이므로 $x_1 = 7$이다.\n포물선의 정의에 의하여 선분 $\\mathrm{PF}$의 길이는\n$$\\overline{\\mathrm{PF}} = x_1 + 3 = 7 + 3 = 10$$\n이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "삼각형 넓이 조건으로 x_1의 방정식을 세워 x_1=7을 얻고 정의로 PF를 구한다",
+    "decisiveStep": "(1/2)(x_1-3)·2√(3x_1)=4√21에서 x_1(x_1-3)^2=112, x_1=7",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [
+      "COND_LOWER_BOUND"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $(y - 1)^2 = 8(x - 2)$의 초점을 $\\mathrm{F}$, 포물선 위의 한 점 $\\mathrm{P}$에서 준선 $l$에 내린 수선의 발을 $\\mathrm{H}$라고 한다. 삼각형 $\\mathrm{PHF}$가 정삼각형일 때, 점 $\\mathrm{P}$의 $x$좌표는? [그림: 좌표평면에 꼭짓점이 $(2, 1)$이고 초점이 $\\mathrm{F}(4, 1)$, 준선 $l$이 $y$축($x = 0$)인 포물선 $(y - 1)^2 = 8(x - 2)$가 그려져 있다. 포물선 위의 점 $\\mathrm{P}$에서 $y$축에 내린 수선의 발이 $\\mathrm{H}$이고 정삼각형 $\\mathrm{PHF}$가 표시되어 있다.]",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "⑤",
+    "solution": "포물선 $(y - 1)^2 = 8(x - 2)$는 포물선 $y^2 = 8x = 4 \\cdot 2x$를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $1$만큼 평행이동한 것이다.\n따라서 초점은 $\\mathrm{F}(2 + 2, 1) = \\mathrm{F}(4, 1)$이고, 준선 $l$의 방정식은 $x = -2 + 2 = 0$이다.\n초점 $\\mathrm{F}$에서 준선 $l$에 내린 수선의 발을 $\\mathrm{K}(0, 1)$이라 하면 $\\overline{\\mathrm{KF}} = 4$이다.\n삼각형 $\\mathrm{PHF}$가 정삼각형이므로 $\\angle \\mathrm{FHP} = 60^\\circ$이고, $\\overline{\\mathrm{PH}} \\perp l$이므로 $\\angle \\mathrm{KHF} = 90^\\circ - 60^\\circ = 30^\\circ$이다.\n직각삼각형 $\\mathrm{HKF}$에서\n$$\\overline{\\mathrm{HF}} = \\frac{\\overline{\\mathrm{KF}}}{\\sin 30^\\circ} = \\frac{4}{\\frac{1}{2}} = 8$$\n이다.\n정삼각형이므로 $\\overline{\\mathrm{PH}} = \\overline{\\mathrm{HF}} = 8$이다.\n준선이 $x = 0$이고 점 $\\mathrm{P}$는 포물선 위의 점($x \\ge 2$)이므로 점 $\\mathrm{P}$의 $x$좌표는\n$$0 + 8 = 8$$\n이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "평행이동으로 초점과 준선을 찾고 정삼각형의 30°에서 HF=8을 구한다",
+    "decisiveStep": "HF=4/sin30°=8이므로 P의 x좌표는 0+8=8",
+    "crossConceptKeys": [
+      "CC_TRANSLATION",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 24x$의 초점을 $\\mathrm{F}$, 이 포물선 위의 점 $\\mathrm{P}$에서 준선에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\angle \\mathrm{HPF} = 120^\\circ$일 때, 삼각형 $\\mathrm{PHF}$의 넓이는? [그림: 좌표평면에 포물선 $y^2 = 24x$, 초점 $\\mathrm{F}(6, 0)$, 준선 $x = -6$이 그려져 있다. 제$1$사분면의 포물선 위의 점 $\\mathrm{P}$에서 준선에 내린 수선의 발이 $\\mathrm{H}$이고, 삼각형 $\\mathrm{PHF}$에서 $\\angle \\mathrm{HPF} = 120^\\circ$가 표시되어 있다.]",
+    "choices": [
+      "$12\\sqrt{3}$",
+      "$14\\sqrt{3}$",
+      "$16\\sqrt{3}$",
+      "$18\\sqrt{3}$",
+      "$20\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "포물선 $y^2 = 24x = 4 \\cdot 6x$의 초점은 $\\mathrm{F}(6, 0)$이고, 준선의 방정식은 $x = -6$이다.\n포물선의 정의에 의하여 $\\overline{\\mathrm{PH}} = \\overline{\\mathrm{PF}}$이므로 삼각형 $\\mathrm{PHF}$는 이등변삼각형이다.\n$\\angle \\mathrm{HPF} = 120^\\circ$이므로\n$$\\angle \\mathrm{PHF} = \\angle \\mathrm{PFH} = \\frac{180^\\circ - 120^\\circ}{2} = 30^\\circ$$\n이다.\n준선과 $x$축의 교점을 $\\mathrm{K}(-6, 0)$이라 하면 $\\overline{\\mathrm{KF}} = 12$이고, $\\overline{\\mathrm{PH}} \\perp \\overline{\\mathrm{HK}}$이므로 $\\angle \\mathrm{KHF} = 90^\\circ - 30^\\circ = 60^\\circ$이다.\n직각삼각형 $\\mathrm{HKF}$에서\n$$\\overline{\\mathrm{HF}} = \\frac{\\overline{\\mathrm{KF}}}{\\sin 60^\\circ} = \\frac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}$$\n이다.\n한편 $\\overline{\\mathrm{PH}} = \\overline{\\mathrm{PF}} = a$라 하면, $\\angle \\mathrm{HPF} = 120^\\circ$인 이등변삼각형 $\\mathrm{PHF}$에서 $\\overline{\\mathrm{HF}} = \\sqrt{3}a$이므로\n$$\\sqrt{3}a = 8\\sqrt{3} \\implies a = 8$$\n이다.\n따라서 삼각형 $\\mathrm{PHF}$의 넓이는\n$$\\frac{1}{2} \\times 8 \\times 8 \\times \\sin 120^\\circ = 32 \\times \\frac{\\sqrt{3}}{2} = 16\\sqrt{3}$$\n이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "PH=PF인 이등변삼각형의 밑각 30°와 삼각비로 넓이를 구한다",
+    "decisiveStep": "HF=12/sin60°=8√3=√3a에서 a=8, 넓이는 16√3",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_AREA_TRIG"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "자연수 $n$에 대하여 초점이 $\\mathrm{F}$인 포물선 $y^2 = 4x$ 위의 점 $\\mathrm{P}_n$이 $\\overline{\\mathrm{FP}_n} = 3n$을 만족시킬 때, $\\sum_{n=1}^{6} \\overline{\\mathrm{OP}_n}^2$의 값은? (단, $\\mathrm{O}$는 원점이고, 점 $\\mathrm{P}_n$은 제$1$사분면에 있다.)",
+    "choices": [
+      "$921$",
+      "$924$",
+      "$927$",
+      "$930$",
+      "$933$"
+    ],
+    "answer": "③",
+    "solution": "포물선 $y^2 = 4x = 4 \\cdot 1x$의 초점은 $\\mathrm{F}(1, 0)$이고, 준선의 방정식은 $x = -1$이다.\n점 $\\mathrm{P}_n$의 좌표를 $(x_n, y_n)$이라 하면 포물선의 정의에 의하여\n$$\\overline{\\mathrm{FP}_n} = x_n + 1 = 3n \\implies x_n = 3n - 1$$\n이다.\n점 $\\mathrm{P}_n$은 포물선 $y^2 = 4x$ 위의 점이므로 $y_n^2 = 4x_n$이다.\n따라서\n$$\\overline{\\mathrm{OP}_n}^2 = x_n^2 + y_n^2 = x_n^2 + 4x_n = (3n - 1)^2 + 4(3n - 1) = 9n^2 + 6n - 3$$\n이다.\n구하는 합은\n$$\\sum_{n=1}^{6} (9n^2 + 6n - 3) = 9 \\cdot \\frac{6 \\times 7 \\times 13}{6} + 6 \\cdot \\frac{6 \\times 7}{2} - 3 \\times 6$$\n$$= 819 + 126 - 18 = 927$$\n이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "포물선의 정의로 x_n=3n-1을 구해 OP_n²을 n의 식으로 만들어 6항 합을 계산한다",
+    "decisiveStep": "x_n=3n-1에서 OP_n²=9n²+6n-3, 합은 819+126-18=927",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 12x$의 초점을 $\\mathrm{F}$라 하자. 포물선 $y^2 = 12x$ 위에 있는 제$1$사분면 위의 점 $\\mathrm{P}$에서 이 포물선의 준선에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\angle \\mathrm{PHF}$의 이등분선이 선분 $\\mathrm{PF}$와 만나는 점을 $\\mathrm{Q}$라 하자. 점 $\\mathrm{Q}$가 선분 $\\mathrm{PF}$를 $3 : 2$로 내분하는 점일 때, 점 $\\mathrm{P}$의 $x$좌표는? [그림: 좌표평면에 포물선 $y^2 = 12x$, 초점 $\\mathrm{F}(3, 0)$, 준선 $x = -3$이 그려져 있다. 제$1$사분면의 포물선 위의 점 $\\mathrm{P}$에서 준선에 내린 수선의 발이 $\\mathrm{H}$이고, 삼각형 $\\mathrm{PHF}$에서 $\\angle \\mathrm{PHF}$의 이등분선이 선분 $\\mathrm{PF}$와 점 $\\mathrm{Q}$에서 만난다.]",
+    "choices": [
+      "$16$",
+      "$18$",
+      "$20$",
+      "$22$",
+      "$24$"
+    ],
+    "answer": "⑤",
+    "solution": "포물선 $y^2 = 12x = 4 \\cdot 3x$의 초점은 $\\mathrm{F}(3, 0)$이고, 준선의 방정식은 $x = -3$이다.\n삼각형 $\\mathrm{PHF}$에서 선분 $\\mathrm{HQ}$가 $\\angle \\mathrm{PHF}$의 이등분선이므로 각의 이등분선의 성질에 의하여\n$$\\overline{\\mathrm{HP}} : \\overline{\\mathrm{HF}} = \\overline{\\mathrm{PQ}} : \\overline{\\mathrm{QF}} = 3 : 2$$\n이다. 즉, $2\\overline{\\mathrm{HP}} = 3\\overline{\\mathrm{HF}}$이다.\n점 $\\mathrm{P}$의 좌표를 $(x_1, y_1)$ ($x_1 > 0, y_1 > 0$)이라 하면 $\\mathrm{H}(-3, y_1)$이므로\n$$\\overline{\\mathrm{HP}} = x_1 + 3$$\n$$\\overline{\\mathrm{HF}}^2 = (3 - (-3))^2 + (0 - y_1)^2 = 36 + y_1^2$$\n이다.\n점 $\\mathrm{P}$가 포물선 $y^2 = 12x$ 위의 점이므로 $y_1^2 = 12x_1$을 대입하면\n$$\\overline{\\mathrm{HF}}^2 = 36 + 12x_1 = 12(x_1 + 3)$$\n이다.\n$4\\overline{\\mathrm{HP}}^2 = 9\\overline{\\mathrm{HF}}^2$에 대입하면\n$$4(x_1 + 3)^2 = 9 \\cdot 12(x_1 + 3)$$\n$x_1 + 3 > 0$이므로 양변을 $4(x_1 + 3)$으로 나누면\n$$x_1 + 3 = 27 \\implies x_1 = 24$$\n이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "각의 이등분선 정리로 PH:HF=3:2를 세우고 포물선 식을 대입해 x_1을 구한다",
+    "decisiveStep": "4(x_1+3)²=9·12(x_1+3)에서 x_1+3=27, x_1=24",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR_THEOREM",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 10,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림에서 포물선 $y^2 = 20x$의 초점을 $\\mathrm{F}$, 준선이 $x$축과 만나는 점을 $\\mathrm{P}$, 점 $\\mathrm{P}$를 지나고 기울기가 양수인 직선 $l$이 포물선과 만나는 두 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{PA}} : \\overline{\\mathrm{PB}} = 1 : 5$일 때, 직선 $l$의 기울기는? [그림: 좌표평면에 포물선 $y^2 = 20x$, 초점 $\\mathrm{F}(5, 0)$, 준선 $x = -5$가 그려져 있다. 준선과 $x$축의 교점 $\\mathrm{P}(-5, 0)$을 지나고 기울기가 양수인 직선 $l$이 제$1$사분면에서 포물선과 두 점 $\\mathrm{A}$, $\\mathrm{B}$ ($\\overline{\\mathrm{PA}} < \\overline{\\mathrm{PB}}$)에서 만난다.]",
+    "choices": [
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{\\sqrt{5}}{3}$",
+      "$\\frac{\\sqrt{6}}{3}$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$\\frac{2\\sqrt{2}}{3}$"
+    ],
+    "answer": "②",
+    "solution": "포물선 $y^2 = 20x = 4 \\cdot 5x$의 초점은 $\\mathrm{F}(5, 0)$이고 준선은 $x = -5$이므로 $\\mathrm{P}(-5, 0)$이다.\n두 점 $\\mathrm{A}(x_1, y_1)$, $\\mathrm{B}(x_2, y_2)$ ($0 < x_1 < x_2$, $y_1 > 0$, $y_2 > 0$)에서 준선 $x = -5$에 내린 수선의 발을 각각 $\\mathrm{H}_1$, $\\mathrm{H}_2$라 하자.\n직각삼각형 $\\mathrm{PH}_1\\mathrm{A}$와 $\\mathrm{PH}_2\\mathrm{B}$는 닮음이므로 $\\overline{\\mathrm{PA}} : \\overline{\\mathrm{PB}} = 1 : 5$에서\n$$x_2 + 5 = 5(x_1 + 5), \\quad y_2 = 5y_1$$\n이다.\n두 점 $\\mathrm{A}$, $\\mathrm{B}$가 포물선 $y^2 = 20x$ 위의 점이므로\n$$x_2 = \\frac{y_2^2}{20} = \\frac{25y_1^2}{20} = 25x_1$$\n이다.\n이를 $x_2 + 5 = 5(x_1 + 5)$에 대입하면\n$$25x_1 + 5 = 5x_1 + 25 \\implies 20x_1 = 20 \\implies x_1 = 1$$\n이다.\n$y_1 > 0$이므로 $y_1 = \\sqrt{20 \\cdot 1} = 2\\sqrt{5}$에서 $\\mathrm{A}(1, 2\\sqrt{5})$이다.\n따라서 직선 $l$의 기울기는 두 점 $\\mathrm{P}(-5, 0)$, $\\mathrm{A}(1, 2\\sqrt{5})$를 지나는 직선의 기울기이므로\n$$\\frac{2\\sqrt{5} - 0}{1 - (-5)} = \\frac{2\\sqrt{5}}{6} = \\frac{\\sqrt{5}}{3}$$\n이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "primaryMethod": "닮음으로 x_2=25x_1을 얻어 A를 찾고 기울기를 계산한다",
+    "decisiveStep": "x_2=25x_1을 x_2+5=5(x_1+5)에 대입해 x_1=1, 기울기는 2√5/6=√5/3",
+    "crossConceptKeys": [
+      "CC_SIMILARITY",
+      "CC_SLOPE"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

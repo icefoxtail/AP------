@@ -360,7 +360,10 @@ test('effective parent membership requires the exact complete leaf and a matchin
 test('an appended geometry mapping can promote its exact RPM-only row with an explicit decision', t => {
   const crosswalkFile = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
   const doc = JSON.parse(fs.readFileSync(path.join(root, crosswalkFile), 'utf8'));
-  const placeholder = doc.records.find(row => row.id === 'H2-GEO-RPM-048');
+  // 유형 은행 반입이 RPM_ONLY 리프를 하나씩 올리므로, 아직 아무 행도 올리지 않은 2022 기하 RPM_ONLY 리프를 고른다(고정 id 를 쓰면 반입 때마다 깨진다).
+  const promoted0 = new Set(doc.records.map(row => row.promotesRpmOnlyRowId).filter(Boolean));
+  const placeholder = doc.records.find(row => row.curriculum === '2022' && row.mappingStatus === 'RPM_ONLY' && !promoted0.has(row.id) && /^H2-GEO-RPM-0[4-9]/.test(row.id));
+  assert.ok(placeholder, '올리지 않은 RPM_ONLY 기하 리프가 하나는 남아 있어야 이 시험을 할 수 있다');
   assert.equal(placeholder.mappingStatus, 'RPM_ONLY');
   const input = makeInput({ ...placeholder, standardCourse: '기하' });
   input.curriculumContext.grade = 'H2';
@@ -379,8 +382,9 @@ test('an appended geometry mapping can promote its exact RPM-only row with an ex
     standardCourse: '기하',
     mappingStatus: 'DIRECT_ACTIVE',
     bindingStatus: 'ACTIVE',
-    problemTypeKey: 'PT_GEO_CONIC_TANGENT',
-    templateKey: 'TPL_GEO_TANGENT_ORTHOGONAL',
+    // 남은 RPM_ONLY 리프는 벡터를 이용한 직선(H22-GE-08)이라 그 단원에 연결된 PT/TPL 을 쓴다.
+    problemTypeKey: 'PT_GEO_VECTOR_LINE_CIRCLE',
+    templateKey: 'TPL_GEO_VEC_LINE_DIRECTION',
     promotesRpmOnlyRowId: 'unrelated-row',
   };
   doc.records.push(promoted);

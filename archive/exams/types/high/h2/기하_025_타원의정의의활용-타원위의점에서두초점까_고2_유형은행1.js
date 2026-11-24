@@ -1,0 +1,132 @@
+window.examTitle = "기하_025_타원의정의의활용-타원위의점에서두초점까_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 두 초점을 $\\mathrm{F}$, $\\mathrm{F}'$이라 하고 선분 $\\mathrm{OF}$와 선분 $\\mathrm{OF}'$을 각각 $4$등분한 점에서 $x$축에 수직인 직선이 $x$축 위쪽에 있는 타원과 만나는 점을 각각 $\\mathrm{P}_1$, $\\mathrm{P}_2$, $\\mathrm{P}_3$, $\\mathrm{P}_4$, $\\mathrm{P}_5$, $\\mathrm{P}_6$이라 할 때, $\\overline{\\mathrm{FP}_1}+\\overline{\\mathrm{FP}_2}+\\overline{\\mathrm{FP}_3}+\\overline{\\mathrm{FP}_4}+\\overline{\\mathrm{FP}_5}+\\overline{\\mathrm{FP}_6}$의 값은? (단, $\\mathrm{O}$는 원점이다.) [그림: 타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 두 초점 $\\mathrm{F}(4, 0)$, $\\mathrm{F}'(-4, 0)$에 대하여 선분 $\\mathrm{OF}$와 $\\mathrm{OF}'$을 각각 $4$등분하는 점들에서 $x$축에 수직으로 그은 직선이 타원의 윗부분과 만나는 여섯 개의 점 $\\mathrm{P}_1, \\mathrm{P}_2, \\mathrm{P}_3, \\mathrm{P}_4, \\mathrm{P}_5, \\mathrm{P}_6$이 오른쪽부터 순서대로 놓여 있고, 각 점에서 초점 $\\mathrm{F}$까지 선분이 이어져 있다.]",
+    "choices": [
+      "36",
+      "40",
+      "44",
+      "48",
+      "52"
+    ],
+    "answer": "①",
+    "solution": "타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 장축의 길이는 $2\\times 6=12$이다.\n여섯 개의 점 $\\mathrm{P}_1$, $\\mathrm{P}_2$, $\\mathrm{P}_3$, $\\mathrm{P}_4$, $\\mathrm{P}_5$, $\\mathrm{P}_6$은 각각 $y$축에 대하여 $(\\mathrm{P}_1, \\mathrm{P}_6)$, $(\\mathrm{P}_2, \\mathrm{P}_5)$, $(\\mathrm{P}_3, \\mathrm{P}_4)$가 서로 대칭이고, 두 초점 $\\mathrm{F}$, $\\mathrm{F}'$도 $y$축에 대하여 대칭이므로\n$\\overline{\\mathrm{FP}_6}=\\overline{\\mathrm{F}'\\mathrm{P}_1}$, $\\overline{\\mathrm{FP}_5}=\\overline{\\mathrm{F}'\\mathrm{P}_2}$, $\\overline{\\mathrm{FP}_4}=\\overline{\\mathrm{F}'\\mathrm{P}_3}$\n따라서 타원의 정의에 의하여 구하는 합은\n$(\\overline{\\mathrm{FP}_1}+\\overline{\\mathrm{F}'\\mathrm{P}_1})+(\\overline{\\mathrm{FP}_2}+\\overline{\\mathrm{F}'\\mathrm{P}_2})+(\\overline{\\mathrm{FP}_3}+\\overline{\\mathrm{F}'\\mathrm{P}_3})=12+12+12=36$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_REFLECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$의 두 초점을 $\\mathrm{F}$, $\\mathrm{F}'$이라 하자. 타원 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{AF}}+\\overline{\\mathrm{BF}}+\\overline{\\mathrm{CF}}+\\overline{\\mathrm{DF}}=23$일 때, $\\overline{\\mathrm{AF}'}+\\overline{\\mathrm{BF}'}+\\overline{\\mathrm{CF}'}+\\overline{\\mathrm{DF}'}$의 값은? [그림: 타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$의 두 초점 $\\mathrm{F}(3, 0)$, $\\mathrm{F}'(-3, 0)$과 타원 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 각각 초점 $\\mathrm{F}$와 선분으로 연결되어 있다.]",
+    "choices": [
+      "11",
+      "13",
+      "15",
+      "17",
+      "19"
+    ],
+    "answer": "④",
+    "solution": "타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$의 장축의 길이는 $2\\times 5=10$이다.\n타원의 정의에 의하여 타원 위의 임의의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{PF}}+\\overline{\\mathrm{PF}'}=10$이 성립한다.\n따라서 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$에 대하여\n$(\\overline{\\mathrm{AF}}+\\overline{\\mathrm{AF}'})+(\\overline{\\mathrm{BF}}+\\overline{\\mathrm{BF}'})+(\\overline{\\mathrm{CF}}+\\overline{\\mathrm{CF}'})+(\\overline{\\mathrm{DF}}+\\overline{\\mathrm{DF}'})=4\\times 10=40$\n$\\overline{\\mathrm{AF}}+\\overline{\\mathrm{BF}}+\\overline{\\mathrm{CF}}+\\overline{\\mathrm{DF}}=23$이므로\n$\\overline{\\mathrm{AF}'}+\\overline{\\mathrm{BF}'}+\\overline{\\mathrm{CF}'}+\\overline{\\mathrm{DF}'}=40-23=17$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 두 초점 $\\mathrm{F}$, $\\mathrm{F}'$을 지나는 평행한 두 직선이 타원과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$라 하고, $\\overline{\\mathrm{AF}}$와 $\\overline{\\mathrm{DF}'}$, $\\overline{\\mathrm{BF}}$와 $\\overline{\\mathrm{CF}'}$의 교점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 하자. 사각형 $\\mathrm{PF}'\\mathrm{QF}$의 둘레의 길이가 $20$일 때, 도형 $\\mathrm{ABQCDP}$의 둘레의 길이의 값은? [그림: 타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 초점 $\\mathrm{F}'$을 지나는 직선이 타원과 만나는 두 점 $\\mathrm{A}$(위), $\\mathrm{B}$(아래)와, 이에 평행하고 초점 $\\mathrm{F}$를 지나는 직선이 타원과 만나는 두 점 $\\mathrm{D}$(위), $\\mathrm{C}$(아래)가 있으며, $\\overline{\\mathrm{AF}}$와 $\\overline{\\mathrm{DF}'}$의 교점 $\\mathrm{P}$, $\\overline{\\mathrm{BF}}$와 $\\overline{\\mathrm{CF}'}$의 교점 $\\mathrm{Q}$가 나타나 있다.]",
+    "choices": [
+      "22",
+      "24",
+      "26",
+      "28",
+      "30"
+    ],
+    "answer": "④",
+    "solution": "타원 $\\frac{x^2}{36}+\\frac{y^2}{20}=1$의 장축의 길이는 $2\\times 6=12$이므로, 타원 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$에 대하여\n$\\overline{\\mathrm{AF}}+\\overline{\\mathrm{AF}'}=12$, $\\overline{\\mathrm{BF}}+\\overline{\\mathrm{BF}'}=12$, $\\overline{\\mathrm{CF}}+\\overline{\\mathrm{CF}'}=12$, $\\overline{\\mathrm{DF}}+\\overline{\\mathrm{DF}'}=12$\n도형 $\\mathrm{ABQCDP}$의 둘레의 길이를 $L$이라 하면\n$L=\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BQ}}+\\overline{\\mathrm{QC}}+\\overline{\\mathrm{CD}}+\\overline{\\mathrm{DP}}+\\overline{\\mathrm{PA}}$\n여기서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AF}'}+\\overline{\\mathrm{BF}'}$, $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{CF}}+\\overline{\\mathrm{DF}}$이고,\n$\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{BF}}-\\overline{\\mathrm{QF}}$, $\\overline{\\mathrm{QC}}=\\overline{\\mathrm{CF}'}-\\overline{\\mathrm{QF}'}$, $\\overline{\\mathrm{DP}}=\\overline{\\mathrm{DF}'}-\\overline{\\mathrm{PF}'}$, $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{AF}}-\\overline{\\mathrm{PF}}$이므로\n$L=(\\overline{\\mathrm{AF}}+\\overline{\\mathrm{AF}'})+(\\overline{\\mathrm{BF}}+\\overline{\\mathrm{BF}'})+(\\overline{\\mathrm{CF}}+\\overline{\\mathrm{CF}'})+(\\overline{\\mathrm{DF}}+\\overline{\\mathrm{DF}'})-(\\overline{\\mathrm{PF}}+\\overline{\\mathrm{PF}'}+\\overline{\\mathrm{QF}}+\\overline{\\mathrm{QF}'})$\n$=4\\times 12 - 20 = 48 - 20 = 28$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_PERIMETER",
+      "CC_PARALLELOGRAM_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
