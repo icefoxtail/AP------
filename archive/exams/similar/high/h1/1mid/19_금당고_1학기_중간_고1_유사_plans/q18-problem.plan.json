@@ -1,4 +1,87 @@
 {
-  "status": "EXEMPT",
-  "reason": "이차방정식 두 근으로 f(x)를 세우고 제한 구간 최댓값으로 최고차항 계수 a를 결정하는 문항임"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-18",
+          "3",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      7
+    ],
+    "viewport": [
+      -6,
+      8,
+      -30,
+      125
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "-75/4",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0,
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0,
+        "marker": "NONE"
+      },
+      {
+        "id": "M",
+        "x": 6,
+        "y": 108,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "2",
+        "6"
+      ],
+      "y": [
+        "108"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "A",
+        "B",
+        "M"
+      ]
+    }
+  },
+  "caption": "x축과 -3, 2에서 만나고 닫힌구간 [4, 6]에서 최댓값 108을 갖는 이차함수 y=f(x)의 그래프",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 이차함수 y=f(x)의 그래프가 x축과 -3, 2에서 만나고, x=6에서 함숫값 108이 눈금으로 표시되어 있다.",
+  "newVisualInformation": [
+    "x축과 -3, 2에서 만나는 이차함수 y=f(x)",
+    "구간 [4, 6]에서 최댓값 108"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(-4)$의 값은?\n\n(가) 방정식 $f(x)=0$의 두 근은 $-3$과 $2$이다. (나) $4\\le x\\le 6$에서 이차함수 $f(x)$의 최댓값은 $108$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

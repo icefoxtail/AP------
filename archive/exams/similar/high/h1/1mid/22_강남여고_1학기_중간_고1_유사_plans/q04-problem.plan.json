@@ -1,23 +1,9 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      0,
-      6
-    ],
-    "viewport": [
-      0,
-      6,
-      0,
-      14
-    ],
+    "family": "piecewise-polynomial",
     "pieces": [
       {
-        "domain": [
-          0,
-          6
-        ],
         "coefficients": [
           "7",
           "-4",
@@ -25,26 +11,58 @@
         ]
       }
     ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        3,
+        5
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^2-4x+7",
     "requiredPoints": [
       {
-        "id": "V",
-        "x": "2",
-        "y": "3",
-        "label": "(2, 3)"
-      },
-      {
         "id": "A",
-        "x": "3",
-        "y": "4",
-        "label": "(3, 4)"
+        "x": 3,
+        "y": 4
       },
       {
         "id": "B",
-        "x": "5",
-        "y": "12",
-        "label": "(5, 12)"
+        "x": 5,
+        "y": 12
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "5"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    }
   },
-  "caption": "이차함수 y=x^2-4x+7의 그래프와 구간 [3, 5]에서의 최솟값 (3, 4) 및 최댓값 (5, 12)"
+  "caption": "좌표평면 위에 3 이상 5 이하의 범위에서 정의된 이차함수 y=f(x)의 그래프이다.",
+  "accessibilityDescription": "가로축은 x축, 세로축은 y축인 좌표평면이다. x의 범위 3부터 5까지 오른쪽 위로 증가하는 곡선이 그려져 있다. x축 위에 3과 5의 눈금이 표시되어 있고 곡선의 양 끝점이 점으로 나타나 있다.",
+  "newVisualInformation": [
+    "x의 범위 3 이상 5 이하에서 함수의 그래프가 오른쪽 위로 증가하는 모양이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-4x+7$에 대하여 $3\\le x\\le 5$의 범위에서 최댓값과 최솟값의 합을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

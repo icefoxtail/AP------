@@ -772,6 +772,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/22_복성고_1학기_중간_고1_유사/q18-problem.svg",
     "category": "도형의 방정식 활용",
     "standardCourse": "수학(상)",
     "curriculum": "2015",

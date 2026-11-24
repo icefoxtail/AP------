@@ -1,5 +1,76 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2 + 3*x - 2",
-  "caption": "아래로 볼록하고 축이 y축 왼쪽이며 y절편이 음수인 포물선"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-5",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -5,
+      2
+    ],
+    "viewport": [
+      -5,
+      2,
+      -5,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3/2",
+        "y": "-17/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "아래로 볼록하고 축이 y축 왼쪽에 있으며 y절편이 음수인 포물선이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 포물선이 그려져 있고 꼭짓점은 제3사분면에 있으며 y축과 음의 부분에서 만난다.",
+  "newVisualInformation": [
+    "아래로 볼록하고 축이 y축 왼쪽이며 y절편이 음수인 포물선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 않은 것은? (단, $a, b, c$는 상수) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

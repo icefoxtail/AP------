@@ -1,15 +1,73 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "line": "2*x - 2",
-  "points": {
-    "P": [
-      0,
-      -2
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ]
+      }
     ],
-    "Q": [
-      1,
-      0
-    ]
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -4,
+      4
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
   },
-  "caption": "두 점 (0, -2), (1, 0)을 지나는 일차함수 y=ax+b의 그래프"
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "두 점 (0, -2)와 (1, 0)을 지나는 일차함수의 그래프이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 향하는 직선이 그려져 있고 y축의 -2와 x축의 1을 지난다.",
+  "newVisualInformation": [
+    "두 점 (0, -2), (1, 0)을 지나는 일차함수의 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 두 점 $(0, -2),\\ (1, 0)$을 지나는 아래 직선과 같을 때, 이차함수 $y = x^2 + ax + b$의 그래프로 알맞은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

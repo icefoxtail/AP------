@@ -455,6 +455,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/22_순천여고_1학기_중간_고1_유사/q11-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "수학(상)",
     "curriculum": "2015",

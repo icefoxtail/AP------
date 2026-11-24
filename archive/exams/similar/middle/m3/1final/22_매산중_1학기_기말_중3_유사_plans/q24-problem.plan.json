@@ -1,4 +1,258 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "수준별 4-①·4-②의 변 길이 연장 및 카드 6장 타일링 도형은 SVG 엔진 기본 작도 지원 범위를 넘는다."
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTopSq",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sTopExt",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sRight",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBottom",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sLeftExt",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sLeftSq",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sInnerV",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sInnerH",
+      "refs": [
+        "F",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lTop",
+        "ownerSegment": "sTopExt",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lLeft",
+        "ownerSegment": "sLeftExt",
+        "text": "2",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "정사각형의 가로를 4cm, 세로를 2cm 늘여서 만든 직사각형",
+  "accessibilityDescription": "원래 정사각형의 가로가 4cm, 세로가 2cm 늘어나 더 큰 직사각형이 되었으며, 늘어난 길이가 각각 4cm와 2cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "정사각형에서 가로 4cm, 세로 2cm 늘인 직사각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 4】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 4-①】** (4점) 정사각형의 가로와 세로의 길이를 각각 $4\\text{cm}$, $2\\text{cm}$씩 늘여서 직사각형을 만들었더니 넓이가 $63\\text{cm}^2$이었다. 처음 정사각형의 한 변의 길이를 구하는 풀이 과정과 답을 쓰시오.\n\n**【수준별 4-②】** (5점) 모양과 크기가 같은 직사각형 모양의 카드 $6$장을 넓이가 $360\\text{cm}^2$인 직사각형 모양의 판에 겹치지 않게 빈틈없이 붙였다. 판의 윗줄에는 카드의 짧은 변이 가로가 되도록 $4$장을 나란히 붙였고, 아랫줄에는 카드의 긴 변이 가로가 되도록 $2$장을 나란히 붙였더니 아랫줄 오른쪽에 가로의 길이가 $6\\text{cm}$인 직사각형 모양의 부분이 남았다. 이 판의 둘레의 길이를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

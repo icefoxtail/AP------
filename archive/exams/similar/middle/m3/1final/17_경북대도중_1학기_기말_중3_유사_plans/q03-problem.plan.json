@@ -1,15 +1,67 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-1.5*x^2",
-  "points": {
-    "O": [
-      0,
-      0
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3/2"
+        ]
+      }
     ],
-    "P": [
-      2,
-      -6
-    ]
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -8,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "2",
+        "y": "-6"
+      },
+      {
+        "id": "Q",
+        "x": "-2",
+        "y": "-6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-6"
+      ]
+    }
   },
-  "caption": "원점을 꼭짓점으로 하고 점 (2, -6)을 지나는 위로 볼록한 포물선"
+  "caption": "원점을 꼭짓점으로 하고 점 (2, -6)을 지나는 위로 볼록한 이차함수의 그래프이다.",
+  "accessibilityDescription": "좌표평면에 원점을 꼭짓점으로 하는 위로 볼록한 포물선이 그려져 있고 점 (2, -6)을 지난다.",
+  "newVisualInformation": [
+    "원점과 점 (2, -6)을 지나는 포물선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프의 식은? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1060,6 +1060,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/16_부산엄궁중_1학기_중간_중3_유사/q23-problem.svg",
     "category": "인수분해",
     "standardCourse": "중3",
     "curriculum": "2015",

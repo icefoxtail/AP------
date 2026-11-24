@@ -1,6 +1,426 @@
 {
-  "target": "발문",
-  "type": "svg",
-  "description": "모눈 위 수직선의 점 A(3)을 꼭짓점으로 하고 가로 2, 세로 1인 빗변 AB를 한 변으로 하는 정사각형 ABCD와 좌우 교점 P, Q를 나타낸 그림",
-  "svg": "<svg viewBox=\"0 0 360 150\" width=\"360\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\"><defs><pattern id=\"g10\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><path d=\"M 24 0 L 0 0 0 24\" fill=\"none\" stroke=\"#ccc\" stroke-width=\"0.8\"/></pattern></defs><rect x=\"16\" y=\"16\" width=\"328\" height=\"112\" fill=\"url(#g10)\" stroke=\"#bbb\" stroke-width=\"0.8\"/><line x1=\"12\" y1=\"112\" x2=\"348\" y2=\"112\" stroke=\"#111\" stroke-width=\"1.8\"/><polygon points=\"184,112 232,88 208,40 160,64\" fill=\"rgba(59,130,246,0.12)\" stroke=\"#1d4ed8\" stroke-width=\"1.8\"/><circle cx=\"184\" cy=\"112\" r=\"53.67\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"1.4\" stroke-dasharray=\"4,3\"/><circle cx=\"130.33\" cy=\"112\" r=\"3\" fill=\"#dc2626\"/><circle cx=\"237.67\" cy=\"112\" r=\"3\" fill=\"#dc2626\"/><text x=\"178\" y=\"130\" font-size=\"11\" font-weight=\"bold\" fill=\"#111\">A(3)</text><text x=\"124\" y=\"130\" font-size=\"11\" font-weight=\"bold\" fill=\"#dc2626\">P</text><text x=\"234\" y=\"130\" font-size=\"11\" font-weight=\"bold\" fill=\"#dc2626\">Q</text><text x=\"236\" y=\"90\" font-size=\"11\" fill=\"#1d4ed8\">B</text><text x=\"210\" y=\"36\" font-size=\"11\" fill=\"#1d4ed8\">C</text><text x=\"148\" y=\"64\" font-size=\"11\" fill=\"#1d4ed8\">D</text></svg>"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "191",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1309",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q",
+    "N1",
+    "N2",
+    "T1a",
+    "T1b",
+    "T2a",
+    "T2b",
+    "T3a",
+    "T3b"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sNL",
+      "refs": [
+        "N1",
+        "N2"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sTick1",
+      "refs": [
+        "T1a",
+        "T1b"
+      ]
+    },
+    {
+      "id": "sTick2",
+      "refs": [
+        "T2a",
+        "T2b"
+      ]
+    },
+    {
+      "id": "sTick3",
+      "refs": [
+        "T3a",
+        "T3b"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "N1",
+    "N2",
+    "T1a",
+    "T1b",
+    "T2a",
+    "T2b",
+    "T3a",
+    "T3b"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl1",
+        "ownerSegment": "sTick1",
+        "text": "1"
+      },
+      {
+        "id": "lbl2",
+        "ownerSegment": "sTick2",
+        "text": "2"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sTick3",
+        "text": "3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "caption": "모눈종이 위에 정사각형 ABCD와 수직선이 그려져 있고 점 A를 중심으로 두 변 AD, AB의 길이를 수직선 위에 점 P, Q로 나타낸 모습이다.",
+  "accessibilityDescription": "수직선 위의 점 A(3)을 한 꼭짓점으로 하는 정사각형 ABCD가 있고 점 D에서 수직선 왼쪽으로 내려온 점 P와 점 B에서 수직선 오른쪽으로 내려온 점 Q가 표시되어 있다.",
+  "newVisualInformation": [
+    "수직선 위에 눈금 1, 2, 3이 있고 점 P는 1의 왼쪽, 점 Q는 5의 오른쪽에 놓여 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 한 칸의 가로와 세로의 길이가 각각 $1$인 모눈종이 위에 정사각형 $\\mathrm{ABCD}$와 수직선을 그린 것이다. $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{AD}} = \\overline{\\mathrm{AP}}$일 때, 점 $\\mathrm{P}$에 대응하는 수를 $a$, 점 $\\mathrm{Q}$에 대응하는 수를 $b$라고 하자. 이때 $2a - 3b$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

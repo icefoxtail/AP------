@@ -94,6 +94,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/17_경북대도중_1학기_기말_중3_유사/q03-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "중3",
     "curriculum": "2015",
