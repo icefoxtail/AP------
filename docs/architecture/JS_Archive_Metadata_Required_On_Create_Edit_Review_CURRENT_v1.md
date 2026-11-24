@@ -1,6 +1,6 @@
 ## CURRENT 공통 메타 진입 (2026-10-30)
 
-- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+- 신규 CREATE/R1/R2/R3 및 신규 GPT 유사는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md) §0의 **2026-11-16 출처 제한 해제**를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정한다. PT/TPL은 Resolver 조회, 결정적 풀이 근거의 ACTIVE 직접 판정, 맞는 키가 없을 때 공식 registryChanges 신설이 모두 정식 경로다. ACTIVE·TPL 부모·정확한 교육과정 바인딩 검사는 유지한다. `RPM_ONLY`만으로 직접 판정을 보류하지 않는다. 구 문구인 '공식 Resolver만 투영'은 폐기한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
 
 # JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 의미 판정 계약 (CURRENT v1.2)
 
@@ -15,7 +15,7 @@
 | 구분 | 문항별 작성·검토 내용 | 저장·인계 위치 |
 | --- | --- | --- |
 | 문항 JS | §2의 기본 필드, 최종 발문·보기·정답·해설·실제 에셋 참조, UID/sourceQid 등 해당 스키마의 식별 정보 | 기존 source JS 또는 Generated shard |
-| 확장 의미 메타 | §3의 교육과정·표준단원/세부단원·RPM L1~L4·CrossConcept/Condition/Integration·공식 Resolver PT/TPL·난이도 1~5(difficultyBucket)·provenance, 각각의 근거와 미적용 사유 | 현재 지원 JS 필드 및 시험지/배치별 소형 메타·기존 stage-local 패킷 |
+| 확장 의미 메타 | §3의 교육과정·표준단원/세부단원·RPM L1~L4·CrossConcept/Condition/Integration·Resolver 또는 근거 있는 직접 판정 PT/TPL·난이도 1~5(difficultyBucket)·provenance, 각각의 근거와 미적용 사유 | 현재 지원 JS 필드 및 시험지/배치별 소형 메타·기존 stage-local 패킷 |
 | 4칸 메타 | 각 문항을 직접 읽은 `given/goal/method/condition`, 필수 `format`, 용어별 `src/quote`, method의 `evidenceType`와 IMPLIED의 `justification`, 필요한 `reasons/steps/scenarioNote` | 시험지/배치별 `.4slot.json`, 현행 사전의 실제 `dictionaryVersion` 명시 |
 | 기록 메타 | 작성자·검토자·단계·시각, 검토 범위·판정·근거, 수정 전후·이유, source/메타 판본, 출처 관계, 실제 실행 검사와 미해결 사항 | 4칸의 `judgedBy/review`와 기존 소형 메타·stage ledger/receipt. 아래 최소 항목을 연결 |
 
@@ -100,7 +100,7 @@ JS 객체 단독에 모든 확장 필드를 억지 삽입하지 않는다. **현
 1. **Identity·출처**: UID, exam/sourceJsPath/sourceQid, 원본·유사/Generated 관계, variant/family, provenance, 현재 source SHA, 기존 승인·품질 근거. 기존 UID·sourceQid·provenance 보존.
 2. **교육과정/표준분류**: 과정(H15/H22 등 원본에 맞는 체계), standardUnit/subUnit parent/label/order, canonical category.
 3. **RPM 사고분류**: 실제 핵심 `L1→L2→L3→L4`, Primary L3 및 L4, 원본↔variant 주개념/유형 정합, 정확한 canonical RPM key와 parent. RPM LOCKED 값/분류판단을 근거 없이 새로 쓰거나 변경하지 않는다.
-4. **추가 사고축**: `CrossConcept`, `Condition`, `IntegrationPattern`, `problemType(PT)/template(TPL)`을 실제로 필요한 개념·조건·사고·풀이 구조로 판정한다. 해당하지 않으면 NOT_APPLICABLE(`[]`/`NONE`), 실제 적용하지만 미등록이면 기존 canonical 확인 후 허용된 Generated-only extension registry에 중복·parent·의미·UID·근거를 결속. 기출에 Generated 전용 키를 무단 적용하지 않는다.
+4. **추가 사고축**: `CrossConcept`, `Condition`, `IntegrationPattern`, `problemType(PT)/template(TPL)`을 실제로 필요한 개념·조건·사고·풀이 구조로 판정한다. 신규 PT/TPL 필드는 `problemTypeKey`·`templateKey`로 직접 쓰고 `ptTplCandidate`는 쓰지 않는다(2026-11-19). PT/TPL 직접 판정의 결정 단계·원문 구절을 기록하며 `RPM_ONLY`는 PT/TPL 공란의 근거가 아니다. 해당하지 않으면 NOT_APPLICABLE(`[]`/`NONE`), 실제 적용하지만 미등록이면 기존 canonical 확인 후 허용된 Generated-only extension registry에 중복·parent·의미·UID·근거를 결속. 기출에 Generated 전용 키를 무단 적용하지 않는다.
 5. **난이도 한 축**: 정수 `difficultyBucket=1~5`만 판정한다. 새 문항에는 `level`(하/중/상)을 쓰지 않는다. 어려움을 계산량만으로 추정하거나 숫자를 하/중/상에서 기계 변환하지 않는다.
 6. **검색·평가·승인**: 검색 가능한 실제 meta projection, 승인/REVIEW/HOLD/STALE, 선택 가능 여부와 제품별 eligibility, visual 필요성의 문제용/해설용 독립 판정. 학생용 정답 공개 권한과 품질/기술 검증 상태를 혼동하지 않는다.
 

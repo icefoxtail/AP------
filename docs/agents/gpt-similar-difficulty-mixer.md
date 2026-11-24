@@ -59,11 +59,14 @@
 3. **한 문항씩 역설계:** 원본 fingerprint → 잠글 L3/핵심 판단 → 변경할 조건·질문/필요한 추가 판단 → 목표 답/풀이 그래프 → 수치 역산 → 한국 학교 시험에 자연스러운 발문·보기 → FREEZE.
 4. **학생 입력만 독립 검산:** 생성 의도/정답을 가린 최종 발문·보기·필수 그림만 보고 다시 풀고 정답 유일성·보기 5개·교육과정·정답/해설 일치를 확인한다. 숫자 증가만으로 심화라고 주장하지 않는다. 필수 외부 검증이 미실행이면 완료/PASS로 보고하지 않는다.
 5. **난도·중복 gate:** `sourceBucket` 대조, 모드별 ALIVE fidelity, 기존 유사와 semantic duplicate, 시험지 전체 80/20 상한과 난도 곡선, 보기 누설/정답 배분을 최종 검사한다. 수치형 선지는 [최신 보기 정본](similar-choices.md)에 따라 크기순·실제 오답 경로를 지키며 정답 분포를 검사한다.
-6. **산출·인계:** 사용자가 지정한 일체형 Markdown 구조(`json:exam`, Q01…, `json:plan`, `json:meta`)·Drive/Git 반입 경로를 그대로 지킨다. 확정되지 않은 내부 믹서/검수 필드를 학생 문제 JSON에 억지로 추가하지 않고 별도 Ledger/sidecar에 남긴다. 실제로 하지 않은 반입·렌더·독립 검산·Git 병합은 `NOT_RUN`으로 구분한다.
+6. **문제/해설 시각 필요성 판정:** 새 발문·조건·풀이를 기준으로 문항마다 문제 그림과 해설 그림을 **각각** 판정한다. 원본·유사1 그림의 유무나 plan을 기계적으로 복사하지 않는다. 두 축 모두 실제로 불필요하면 `EXEMPT` 사유를 Ledger/검토 기록에 남기고 그림 파일·`image`/`solutionImage`·렌더 절차 없이 JS로 진행한다. 한 축이라도 필요하면 [시각 정본](visual-svg.md)·[AUTHOR_GUIDE](../../archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)에 따른 해당 문항 `json:plan`/엔진 plan을 만들고 공식 엔진에서 렌더·실물 검수한 후 참조를 연결한다. 필요하지만 미렌더된 그림을 PASS로 적거나 그림 없이 출고 완료로 표시하지 않는다.
+7. **최신 메타 판정:** 최종 **유사 문항 자체**로 `curriculum`·단원/소단원·`rpmPrimaryRecordId`·`problemTypeKey`·`templateKey`·`difficultyBucket`(1~5)·CrossConcept/Condition/Integration을 판정하고 문항별 근거를 남긴다. `ptTplCandidate`, `level`, `curriculumKey`, 수동 `rpmL1~L4` 복사 필드는 새 메타에 쓰지 않는다. PT/TPL은 Resolver 또는 결정적 풀이 근거의 **직접 판정**이 정식 경로이며 ACTIVE·TPL 부모·교육과정 바인딩을 확인한다. RPM 행이 `RPM_ONLY`여도 그 이유만으로 PT/TPL을 보류하지 않는다. JS 지원 필드는 JS에, 4칸·판정 이유·검토/출처 기록은 규정된 sidecar/ledger에 둔다([metadata.md](metadata.md), [공통 계약](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)).
+8. **산출 경로 선택:** 사용자가 **Markdown 납품을 명시한 경우** 일체형 Markdown(`json:exam`, Q01…, 필요한 `json:plan`, `json:meta`)을 작성·저장한다. 사용자가 **JS 직접 제작·운영병합**을 지시한 경우 Markdown 이관을 필수 선행 단계로 삼지 않고 `archive/exams/similar/.../<시험지>_유사N.js`를 기존 JS 아카이브 스키마로 바로 작성한다. 기존 원본·유사 세트를 덮어쓰지 않고 `sourceQid`·출처 관계·배점·문항 수와 신규 메타/4칸 동반 기록을 보존한다. `json:plan`이 필요 없는 문항에 빈 SVG를 억지로 생성하지 않는다.
+9. **검수 후 운영 출고:** 전 문항 독립 검산·난도 분포·오답 경로·메타/4칸·실제 필수 에셋·JS 로드/형식 검사를 수납한 뒤, 사용자가 main 운영병합을 맡긴 범위에서 [출고 규칙](exam-release.md)에 따라 작업 브랜치→PR→GitHub가 허용하는 main 병합→원격 JS/동반 파일 readback까지 진행한다. Git 보호 규칙은 우회하지 않는다. `GIT_MAIN_MERGED`·CI·학생 배포·미실행 검사는 각각 분리해 기록한다.
 
 ## 6. 세트 완료 판정 및 새 대화 시작 문구
 
-완료하려면 **(a)** 원본과 문항 번호/배점/수 일치, **(b)** 1~5 난도 분포와 고난도 역할 보존, **(c)** 심화 비율 상한, **(d)** 원본 L3·교육과정 유지, **(e)** 기존 유사 세트와 의미 있는 차이, **(f)** 발문만으로 정답 독립 검증, **(g)** 전 문항 메타·필요 시 plan 및 내부 Ledger, **(h)** 실제 저장/반입 상태가 각각 확인되어야 한다.
+완료하려면 **(a)** 원본과 문항 번호/배점/수 일치, **(b)** 1~5 난도 분포와 고난도 역할 보존, **(c)** 심화 비율 상한, **(d)** 원본 L3·교육과정 유지, **(e)** 기존 유사 세트와 의미 있는 차이, **(f)** 발문만으로 정답 독립 검증, **(g)** 전 문항 메타·4칸·기록 및 실제 필요한 그림의 plan/렌더와 내부 Ledger, **(h)** 선택한 납품 경로(JS 직접 출고 또는 지정 Markdown)의 저장·등록/병합 상태가 각각 확인되어야 한다.
 
 새 ChatGPT 프로젝트 채팅의 첫 지시에는 다음 한 문장을 넣을 수 있다.
 
