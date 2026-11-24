@@ -1,0 +1,70 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "universe": {
+      "name": "U",
+      "count": "5",
+      "countUnit": "개"
+    },
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": []
+      },
+      {
+        "text": "5",
+        "in": []
+      }
+    ],
+    "shade": "A"
+  },
+  "caption": "각 원소는 A, B에서 A를 뺀 부분, U에서 B를 뺀 부분 중 하나에 속한다. 전체 경우는 3⁵=243가지이고, A가 공집합인 경우 2⁵=32가지를 빼면 211가지다. 그림은 1, 2가 A와 B에, 3이 B에만, 4와 5가 B 밖에 있는 경우를 예로 든 것이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U = \\{1, 2, 3, 4, 5\\}$의 공집합이 아닌 두 부분집합 $A, B$가 $A \\subset B$를 만족시키도록 두 집합 $A, B$를 정하는 모든 경우의 수를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "전체집합 U의 원소는 1, 2, 3, 4, 5이고 A는 공집합이 아니며 A는 B에 포함된다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "U 안에서 A가 B에 포함되고 1과 2는 A와 B에, 3은 B에만, 4와 5는 B 밖에 놓여 있으며 A가 색칠되어 있다."
+  ]
+}

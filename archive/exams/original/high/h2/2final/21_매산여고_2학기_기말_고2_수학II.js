@@ -375,7 +375,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 세제곱곡선 f가 그려져 있고, 점 A(1, 3)와 점 B(3, 11) 사이의 곡선 아래 영역 S가 옅게 색칠되어 있다.",
+    "solutionImageCaption": "f(x)=x³−3x²+3x+2에서 f(1)=3, f(3)=11이다. x=1부터 x=3까지 f 아래의 넓이는 10이고, 역함수의 적분은 3×11−1×3에서 10을 빼어 20이다. 두 적분의 합은 10+20=30이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
@@ -455,7 +460,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 위치의 차를 나타낸 그래프가 가로축과 만나는 시각 중 출발 이후 첫 교점을 고른다. 음수 t 부분은 다항식의 단순 연장이며 실제 운동은 t가 0 이상인 부분만 본다.",
+    "solutionImageCaption": "두 위치의 차를 나타낸 그래프가 가로축과 만나는 시각 중 출발 이후 첫 교점을 고른다. 음수 t 부분은 다항식의 단순 연장이며 실제 운동은 t가 0 이상인 부분만 본다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -496,7 +505,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 이어지는 왼쪽 세제곱 곡선과 오른쪽 네제곱 곡선이 보이고, 점 P(-1,5), Q(1,9), R(3,49)가 표시되어 있다.",
+    "solutionImageCaption": "x<1에서는 f(x)=x³−x²+x+C₂이고 f(-1)=5에서 C₂=8이다. x≥1에서는 f(x)=1/2×x⁴+C₁이고 x=1에서 연속이므로 C₁=17/2이다. 따라서 f(3)=1/2×81+17/2=49이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -535,7 +548,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=3x²−2 위에 세 점 A, B, C가 있고, 각 점 옆에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "주어진 극한은 2/3 f′(x)이므로 f′(x)=3a/2 x이다. 이를 적분하면 f(x)=3a/4 x²+C이고, f(2)=10과 f(−1)=1을 대입하면 a=4, C=−2이다. 따라서 f(x)=3x²−2이므로 f(3)=25이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -655,7 +673,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 a=2에서 차 함수의 극소 위치를 본다. 전체 자연수 a의 범위는 이 예시 하나로 단정하지 않는다.",
+    "solutionImageCaption": "예시 a=2에서 차 함수의 극소 위치를 본다. 전체 자연수 a의 범위는 이 예시 하나로 단정하지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -744,7 +766,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차곡선의 두 극소와 극대 높이를 원점 높이와 비교하여 수평선의 교점 위치를 판단한다.",
+    "solutionImageCaption": "사차곡선의 두 극소와 극대 높이를 원점 높이와 비교하여 수평선의 교점 위치를 판단한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

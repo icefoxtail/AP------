@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-11/2",
+          "3/2"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5/4",
+          "-3/4"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "괄호/분모정리후 3x−2y11,3x+4y5. 두식을빼면 6y−6,교점(3,−1),정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}3(x-y)+y=11\\\\ \\dfrac{x}{4}+\\dfrac{y}{3}=\\dfrac{5}{12}\\end{cases}$의 해를 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "괄호/분모정리후3x−2y11,3x+4y5. 두식을빼면6y−6,교점(3,−1),정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "괄호/분모정리후3x−2y11,3x+4y5. 두식을빼면6y−6,교점(3,−1),정답⑤."
+  ]
+}

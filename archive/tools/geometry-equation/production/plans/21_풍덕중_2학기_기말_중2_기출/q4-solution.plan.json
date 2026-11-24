@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "formula": "1+(2)*x"
+  },
+  "caption": "기울기 2/절편 1에서 y2x+1. y5인점의가로좌표 m2,정답②."
+}

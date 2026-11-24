@@ -506,7 +506,11 @@ window.questionBank = [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 x=1에서 꼭짓점을 이루고 x=4에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 x=1/6부터 x=1까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체는 두 삼각형이며 넓이 3m/2+9m/2=6m=1에서 m=1/6이다. 그림은 이 값으로 그렸다(꼭짓점 (1, 1/2)). 구하는 구간은 m=1/6부터 6m=1까지이고 모두 첫 식 f(x)=x/2 위에 있다. 색칠한 부분은 높이 1/12과 1/2, 폭 5/6인 사다리꼴이고 넓이는 (1/12+1/2)/2×5/6=35/144이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -838,7 +842,12 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 10에서 7부터 9까지가, 오른쪽 표준정규분포 곡선은 z=−1.5부터 −0.5까지가 칠해져 있다.",
+    "solutionImageCaption": "g(x)=f(x−4)이므로 Y는 X를 오른쪽으로 4만큼 옮긴 분포이고 P(Y≥12)=P(X≥8)이다. P(X≤12)=P(X≥8)이므로 평균은 8과 12의 중점 10이다. P(8≤X≤11)−P(13≤Y≤14)=P(8≤X≤10)=0.3413에서 σ=2이다. 구하는 P(7≤X≤9)는 z=−1.5부터 −0.5까지이고 P(0.5≤Z≤1.5)=0.4332−0.1915=0.2417이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 21,

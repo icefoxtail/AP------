@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "C",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "위에서부터 첫 근호, 분모의 근호, 마지막 근호가 실수로 정의되는 조건이다. 분모의 끝점은 열린 점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리식 $\\dfrac{\\sqrt{x}-3}{\\sqrt{2-x}}+\\sqrt{-2x+1}$의 값이 실수이기 위한 $x$값의 범위에 속하는 정수의 개수는? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "근호 조건 x≥0,분모근호2−x>0,마지막근호1−2x≥0. 공통[0,1/2]에서정수0한개. 각조건만표시하고결과줄·정수점/개수는숨긴다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "위에서부터 첫 근호, 분모의 근호, 마지막 근호가 실수로 정의되는 조건이다. 분모의 끝점은 열린 점이다."
+  ]
+}

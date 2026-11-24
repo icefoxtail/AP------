@@ -532,7 +532,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a에 따라 실근의 개수가 2에서 0으로 줄었다 다시 2로 늘어나는 계단 모양의 그래프이고, a=0, 1/2, 4/3에서 높이 1의 닫힌 점이 있다.",
+    "solutionImageCaption": "가로축이 a, 세로축이 실근의 개수 f(a)이다. a≠0이면 판별식/4=(2a-1)(3a-4)의 부호로 정해져 a<1/2이면 2, a=1/2이면 1, 1/2<a<4/3이면 0, a=4/3이면 1, a>4/3이면 2이다. a=0이면 일차방정식 4x+7=0이라 1이다. 따라서 a=0의 좌우극한은 모두 2(ㄱ 참), 좌우극한이 다른 점은 1/2, 4/3 두 개(ㄴ 거짓)이며 ㄷ은 참이다. 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -584,7 +588,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 포물선 바깥 아래쪽의 점 P에서 그은 두 접선 l, m이 접점 T, U에서 접하는 그래프이다.",
+    "solutionImageCaption": "예: k=-1일 때를 그린다. 접점을 (t,t²-4)라 하면 접선이 (2,k)를 지나는 조건은 (t-2)²=-k이다. k=-1이면 t=1, 3이고 그림의 두 접선 l(접점 T(1,-3)), m(접점 U(3,5))이 모두 점 P(2,-1)을 지난다. 일반적으로 k<0이면 서로 다른 두 실근이라 접선이 2개, k=0이면 중근이라 1개, k>0이면 실근이 없어 0개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

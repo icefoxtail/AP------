@@ -1,0 +1,134 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "빨강파랑"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "첫추출",
+              "elements": [
+                "1/5"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "둘째추출",
+              "elements": [
+                "4/4"
+              ]
+            },
+            {
+              "id": "C",
+              "name": "기여",
+              "elements": [
+                "1/5"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "파랑빨강"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "첫추출",
+              "elements": [
+                "4/5"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "둘째추출",
+              "elements": [
+                "1/4"
+              ]
+            },
+            {
+              "id": "C",
+              "name": "기여",
+              "elements": [
+                "1/5"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "빨강→파랑의 비복원 추출이라 둘째 분모는 4이다. 서로 겹치지 않는 두 기여 1/5+1/5=2/5, 정답 ③. 파랑→빨강의 비복원 추출이라 둘째 분모는 4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주머니에 빨간 공 1개와 파란 공 4개가 있다. 이 주머니에서 공을 두 번 연속하여 한 개씩 꺼내되, 꺼낸 공은 다시 넣지 않는다.\n두 공 중 빨간 공이 정확히 한 개 나올 확률은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "빨강→파랑의비복원추출이라둘째분모는4이다. 서로겹치지않는두기여1/5+1/5=2/5,정답③. 파랑→빨강의비복원추출이라둘째분모는4이다."
+  ],
+  "columns": 1
+}

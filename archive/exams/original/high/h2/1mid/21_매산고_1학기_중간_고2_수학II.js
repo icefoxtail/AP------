@@ -105,7 +105,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: x=3에서 양쪽 조각이 열린 두 직선과 채운 점 P가 보이고, 가로축 눈금 3과 세로축 눈금 6이 표시되어 있다.",
+    "solutionImageCaption": "x→3일 때 극한이 유한하려면 분자가 0이어야 하므로 a=-9이다. 이때 f(x)=x+3(x≠3)이므로 극한값은 6이고, 연속 조건에서 b=6이다. 따라서 |a+b|=3이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,

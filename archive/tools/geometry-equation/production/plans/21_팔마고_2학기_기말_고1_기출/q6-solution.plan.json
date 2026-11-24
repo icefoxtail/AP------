@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ],
+        "branch": "NEGATIVE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ],
+        "label": "y=g(x)"
+      },
+      {
+        "id": "yx",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2
+      ],
+      "y": [
+        -2
+      ]
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "-2",
+            "-2"
+          ],
+          "radiusSquared": "1"
+        }
+      ]
+    }
+  },
+  "caption": "g는 f의 역함수이다. 두 곡선은 y=x에 대칭이고, 중심이 대칭선 위인 원도 같은 대칭에 보존된다. 따라서 원과 f의 두 교점을 이은 현은 원과 g의 두 교점을 이은 현으로 옮겨진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 무리함수 $f(x)=-\\sqrt{-2x}$의 그래프와 원 $(x+2)^2+(y+2)^2=1$이 만나는 두 점을 각각 $P,Q$라 하고, 함수 $y=f(x)$의 역함수 $y=f^{-1}(x)$의 그래프와 원 $(x+2)^2+(y+2)^2=1$이 만나는 두 점을 $R,S$라 하자. 두 직선 $PQ,RS$의 기울기를 각각 $a_1,a_2$라 할 때, $\\dfrac12a_1a_2$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(x)=−sqrt(−2x)는x≤0에서증가해가역. 역함수는−x²/2,x≤0. 원중심(−2,−2)은y=x위에있어대칭불변,두곡선과원의교점쌍도서로대칭. 서로다른 두점의 x,y가모두달라현기울기0/무한대아님. 대칭으로기울기곱1,구하는값1/2. 그림은대칭곡선과원을표시하고교점의근삿값이나최종값은쓰지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "g는 f의 역함수이다. 두 곡선은 y=x에 대칭이고, 중심이 대칭선 위인 원도 같은 대칭에 보존된다. 따라서 원과 f의 두 교점을 이은 현은 원과 g의 두 교점을 이은 현으로 옮겨진다."
+  ]
+}

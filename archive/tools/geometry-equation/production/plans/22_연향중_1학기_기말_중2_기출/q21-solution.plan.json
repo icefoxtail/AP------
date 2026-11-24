@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "1/2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "b=a/2+3/2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "b=4-2a"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "b"
+    }
+  },
+  "caption": "주어진 해 (1,−2)를 대입한 계수 평면이다. 가로 a, 세로 b에서 a−2b−3,2a+b4의 교점 (1,2). ab2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형1. 연립방정식 $\\begin{cases} ax+by=-3 \\\\ bx-ay=4 \\end{cases}$의 해가 $(1,-2)$일 때, 수 $a,b$에 대하여 $ab$의 값을 구하시오. [5점] 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진해(1,−2)를대입한계수평면이다. 가로a,세로b에서a−2b−3,2a+b4의교점(1,2). ab2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진해(1,−2)를대입한계수평면이다. 가로a,세로b에서a−2b−3,2a+b4의교점(1,2). ab2."
+  ]
+}

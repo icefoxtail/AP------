@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "-7"
+      },
+      {
+        "id": "P1",
+        "x": "3/2",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "formula": "(2)*x+(-3)"
+  },
+  "caption": "원본 PNG의(−2,−7),(3,3)을 그대로 보존. 기울기 2,식 y2x−3, x절편 3/2. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래의 그림과 같은 일차함수의 그래프의 $x$절편을 구하면? [4점] 보기: ['$-3$', '$-\\\\dfrac32$', '1', '$\\\\dfrac32$', '2']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG의(−2,−7),(3,3)을 그대로 보존. 기울기2,식y2x−3, x절편3/2. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG의(−2,−7),(3,3)을 그대로 보존. 기울기2,식y2x−3, x절편3/2. 정답④."
+  ]
+}

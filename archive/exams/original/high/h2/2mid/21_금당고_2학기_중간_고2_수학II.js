@@ -1028,7 +1028,11 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 아래로 볼록한 포물선 위의 점 P와 x축 위의 점 Q, y축 위의 점 R이 있고, 원점 O와 P, Q, R을 잇는 선분으로 두 이등변삼각형이 그려진 그래프이다.",
+    "solutionImageCaption": "예: t=1/2일 때를 그린다. P(1/2,1/4), PO=PQ에서 Q=(2t,0)=(1,0), RO=RP에서 R=(0,(1+t²)/2)=(0,5/8)이다. S(t)=t³=1/8, T(t)=t(1+t²)/4=5/32이다. 일반적으로 5(T-S)/t=5/4-15t²/4이므로 t→0+에서 극한은 5/4이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1409,6 +1413,11 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 그래프가 왼쪽 아래의 극소점 E를 지나 오른쪽 위로 올라가고, 두 점 A, B에서 그은 접선 l, m이 x축의 점 K에서 만난다. 곡선 위의 점 C, D도 표시되어 있다.",
+    "solutionImageCaption": "등차수열 조건에서 이차 이하 항을 정하고 접선 조건과 f(1)=20을 쓰면 f(x)=x⁴−2x³−x²+24x−2이다. 두 접선 l, m의 교점이 (1/2, 0)이므로 k=1/2이고, f(3)=88이다. 따라서 답은 88이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A1",
+    "Q2",
+    "Q4",
+    "Q6",
+    "Q8",
+    "T2",
+    "T4",
+    "T6",
+    "T8"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAxis",
+      "refs": [
+        "A0",
+        "A1"
+      ]
+    },
+    {
+      "id": "sT2",
+      "refs": [
+        "Q2",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT4",
+      "refs": [
+        "Q4",
+        "T4"
+      ]
+    },
+    {
+      "id": "sT6",
+      "refs": [
+        "Q6",
+        "T6"
+      ]
+    },
+    {
+      "id": "sT8",
+      "refs": [
+        "Q8",
+        "T8"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l2",
+        "ownerSegment": "sT2",
+        "text": "2"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sT4",
+        "text": "4"
+      },
+      {
+        "id": "l6",
+        "ownerSegment": "sT6",
+        "text": "6"
+      },
+      {
+        "id": "l8",
+        "ownerSegment": "sT8",
+        "text": "8"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d28",
+        "from": "Q2",
+        "to": "Q8",
+        "label": "6",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A0",
+    "A1",
+    "Q2",
+    "Q4",
+    "Q6",
+    "Q8",
+    "T2",
+    "T4",
+    "T6",
+    "T8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "네 숫자 2, 4, 6, 8 중 이웃한 두 수의 차가 4를 넘는 경우는 2와 8이 이웃할 때뿐이다. 이웃 조건만 만족하는 네 자리 배열은 178개이고, 그중 2가 한 번도 없는 배열 81개를 빼면 97개이다. 따라서 답은 97이다.",
+  "accessibilityDescription": "가로선 위에 2, 4, 6, 8이 적힌 네 눈금이 있고, 2와 8 사이의 거리 6을 나타내는 치수선이 있다.",
+  "newVisualInformation": [
+    "수 2, 4, 6, 8을 표시한 가로선의 네 눈금",
+    "2와 8 사이의 차 6을 나타내는 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형3. 숫자 2, 4, 6, 8 중에서 중복을 허락하여 네 개를 선택한 후 일렬로 나열할 때, 다음 조건을 만족시키도록 나열하는 경우의 수를 구하시오. [7점, 부분점수 있음.]\n\n(가) 숫자 2는 한 번 이상 나온다.\n(나) 이웃한 두 수의 차는 모두 4 이하이다. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

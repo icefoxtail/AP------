@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFI",
+      "refs": [
+        "F",
+        "I"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sGI",
+      "refs": [
+        "G",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dGH",
+        "from": "G",
+        "to": "H",
+        "label": "1",
+        "value": "1",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dGI",
+        "from": "G",
+        "to": "I",
+        "label": "2",
+        "value": "2",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": 2
+      },
+      {
+        "id": "dGD",
+        "from": "G",
+        "to": "D",
+        "label": "1",
+        "value": "1",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "dGA",
+        "from": "G",
+        "to": "A",
+        "label": "2",
+        "value": "2",
+        "side": "LEFT",
+        "style": "BAR",
+        "offset": 2
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 600
+  },
+  "caption": "그림의 아홉 점은 가로·세로가 각각 0, 1, 2인 3×3 격자점이다. 서로 다른 두 점을 고르는 경우는 36가지이고, 길이가 유리수이려면 두 점이 같은 가로줄이나 같은 세로줄에 있어야 한다. 가로줄마다 3쌍씩 9쌍, 세로줄마다 3쌍씩 9쌍이므로 유리수 길이의 선분은 18개이고 확률은 18/36=1/2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "정사각형 4개가 붙은 3×3 격자점 아홉 개가 검은 점으로 표시되어 있고, 가로·세로 방향의 실선과 긴 점선이 격자를 이룬다. 아래와 왼쪽에는 한 칸의 길이 1과 두 칸의 길이 2를 나타내는 치수선이 있다.",
+  "newVisualInformation": [
+    "3×3 격자점 아홉 개",
+    "가로·세로 방향의 길이 1 선분과 길이 2 점선",
+    "한 칸과 두 칸의 길이를 나타내는 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 변의 길이가 1인 정사각형 4개를 붙여놓은 도형이 있다. 9개의 꼭짓점 중에서 임의로 두 점을 연결한 선분의 길이가 유리수일 확률은? [4.2점]<p><img src=\"assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png\" class=\"question-img\" alt=\"문제 7 그림\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

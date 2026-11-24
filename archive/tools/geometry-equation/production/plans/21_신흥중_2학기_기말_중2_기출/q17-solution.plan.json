@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A노랑",
+        "elements": [
+          "5/8"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B파랑",
+        "elements": [
+          "3/5"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "동시확률",
+        "elements": [
+          "3/8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "서로 다른 주머니의 독립 추출이다. 노랑 5/8×파랑 6/10=3/8, 정답 ①. 화살표는 계산 순서이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A 주머니에는 빨간 구슬 3개와 노란 구슬 5개가 들어 있고,\n B 주머니에는 빨간 구슬 4개와 파란 구슬 6개가 들어 있다. 두 주머니에서 구슬을 한 개씩 임의로 꺼낼 때,\n A 주머니에서는 노란 구슬, B 주머니에서는 파란 구슬이 나올 확률은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

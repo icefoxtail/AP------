@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "(3−a)x>5(3−a), a>3이므로 음수로 나눠 부등호를 뒤집는다. x<5의 왼반직선과 열린 5, 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$a>3$일 때, $x$에 대한 부등식 $3x+5a>ax+15$를 풀어서 해를 구하면? [4점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "(3−a)x>5(3−a),a>3이므로음수로나눠부등호를뒤집는다. x<5의왼반직선과열린5,정답①.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "(3−a)x>5(3−a),a>3이므로음수로나눠부등호를뒤집는다. x<5의왼반직선과열린5,정답①."
+  ]
+}

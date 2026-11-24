@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "4/3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "-23/3"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "-11/3"
+      }
+    ],
+    "formula": "-5+(4/3)*x"
+  },
+  "caption": "x−2→1의증가량 3에기울기 4/3을곱해 y증가량 4. 실제끝점(−2,−23/3),(1,−11/3)을표시,정답④."
+}

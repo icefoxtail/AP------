@@ -41,7 +41,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "primaryMethod": "항상 닮는 도형과 반례 판정",
-    "decisiveStep": "직각 하나만 같은 삼각형은 나머지각이 달라질 수 있다는 반례로항상닮음을부정한다."
+    "decisiveStep": "직각 하나만 같은 삼각형은 나머지각이 달라질 수 있다는 반례로항상닮음을부정한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널은 직각변이 3과 4인 직각삼각형, 오른쪽 패널은 직각변이 1과 1인 직각이등변삼각형이다. 두 삼각형 모두 직각 표시가 있다.",
+    "solutionImageCaption": "직각삼각형은 직각 하나만 같을 뿐 나머지 두 예각의 크기가 달라질 수 있어 항상 닮은 것은 아니다. 직각변의 비가 3:4인 삼각형과 1:1인 삼각형은 모양이 달라 닮지 않는다. 두 원, 두 정팔각형, 두 정사각형, 두 직각이등변삼각형은 항상 닮음이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,

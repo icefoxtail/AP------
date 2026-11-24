@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -6,
+      21
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "3/4",
+        "y": "-9/8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "-2",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "9",
+          "intercept": "-18",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "접점을 (t,2t²-3t)라 하면 접선이 (2,0)을 지나는 조건에서 2(t-1)(t-3)=0이다. t=1이면 접점 T(1,-1)에서 y=x-2(그림의 l), t=3이면 접점 U(3,9)에서 y=9x-18(그림의 m)이고 두 접선 모두 점 P(2,0)을 지난다. a+b+c+d=(1-2)+(9-18)=-10이므로 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(2,0)$에서 곡선 $y=2x^2-3x$에 그은 두 접선의 방정식은 $y=ax+b$, $y=cx+d$이다. $a+b+c+d$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 P(2,0)에서 그은 두 접선 l, m과 접점 T(1,-1), U(3,9)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P(2,0)에서 그은 두 접선 l(y=x-2), m(y=9x-18)과 접점 T(1,-1), U(3,9)를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 포물선 바깥의 점 P에서 그은 두 접선 l, m이 접점 T, U에서 접하는 그래프이다."
+}

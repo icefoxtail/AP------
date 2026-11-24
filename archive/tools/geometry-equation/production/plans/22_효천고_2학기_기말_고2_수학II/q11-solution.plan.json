@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      0,
+      2,
+      0,
+      14
+    ],
+    "formula": "3x^2+1",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "h=1/2",
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3/2",
+        "fill": "MEDIUM",
+        "label": "S"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "곡선 y=3x²+1과 x축, 두 직선 x=1, x=1+h로 둘러싸인 넓이를 S(h)라 하자. h=1/2인 예에서 S(h)=4h+3h²+h³이므로 S(h)/h=4+3h+h²이다. h가 0에 가까워지면 이 값은 4에 가까워진다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "곡선 y=3x²+1과 x축 사이에서 x=1부터 x=3/2까지의 영역 S가 색칠되어 있고, 두 끝점 A, B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 끝점 A(1, 4), B(3/2, 31/4)와 영역 S를 표시하고, 예시로 h=1/2를 쓴다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 곡선 $y=3x^2+1$과 $x$축 및 두 직선 $x=1$, $x=1+h$ ($h>0$)로 둘러싸인 도형의 넓이를 $S(h)$라고 할 때, $\\lim_{h \\to 0+} \\frac{S(h)}{h}$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

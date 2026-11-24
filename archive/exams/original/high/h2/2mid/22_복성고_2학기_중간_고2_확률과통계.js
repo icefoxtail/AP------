@@ -39,7 +39,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "정사면체 네 면의 수의 합은 20이고, 바닥에 닿는 면의 수를 D라 하면 X=20-D이다. D가 2, 4, 6, 8일 때 X는 각각 18, 16, 14, 12이고 네 경우가 같은 확률로 일어난다. X의 평균은 (18+16+14+12)/4=15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -80,7 +84,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "X는 12, 14, 16, 18을 각각 1/4의 확률로 갖고 평균은 15이다. 편차 제곱의 평균은 (9+1+1+9)/4=20/4=5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -591,7 +599,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "평균 0인 정규분포에서 x>0일 때 밀도는 x가 커질수록 줄어든다. 길이가 같은 구간 [1, 2]와 [2, 3]을 비교하면 앞 구간의 곡선이 더 높아 P(1≤X≤2)>P(2≤X≤3)이므로 ㄱ은 거짓이다. 표준화하면 ㄴ은 P(−1≤Z≤0)=P(0≤W≤1)로 참이고, ㄷ은 1/a=2/b에서 b=2a이므로 a<b로 참이다. 따라서 ㄴ, ㄷ이 옳아 답은 ④이다. 그림의 표준편차 2는 예이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

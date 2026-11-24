@@ -118,7 +118,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "토끼 x/닭 y의 마리수 x+y8, 다리수 4x+2y20. 두 조건의 공통점 (2,6)으로 식의 의미를 확인하며 물음은 연립식 ②이다. 실제 마리수는 정수.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -157,7 +161,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "①×3−②×2면 x계수 6이 소거되어 13y20. 각 식에 0 아닌 수를 곱해도 같은 직선이며 교점은 유지된다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -196,7 +204,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "②는 y=x−1과 y=x−1/2인서로다른평행선. 공통점없어해없음,정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -235,7 +247,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원선(2,1)이목표(2,5)로위 4이동. 새식 y2x+1, n4,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -274,7 +290,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "(3−a)x>5(3−a), a>3이므로 음수로 나눠 부등호를 뒤집는다. x<5의 왼반직선과 열린 5, 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -314,7 +334,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로근영승수 w,세로전체경기 n. 3w−n5와 2n−3w14의교점(8,19). 근영 8승,영종 11승이면각+5,+14,정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -393,7 +417,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진 두 점 (2,−3),(4,5)에서 y4x−11. (3k,k) 대입해 k1이므로 실제 세 번째 점 (3,1). 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -477,7 +505,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본은 양의 기울기/음의 절편. −1/b>0에서 b<0, −c/b<0에서 c<0. 이 선은 b=c=−1의 대표 부호형이지 원문 실제 계수 지정 아님. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -518,7 +550,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제 y2x−6은기울기 2,절편점(0,−6),(3,0),제1·3·4사분면. y2x+4와평행하고 y2x에서아래 6이동. 정답②④⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -562,7 +598,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본①의 x절편 −3으로 a−3,②는원점지나 b0. 실제두선교점(−1,2)도보존. 차 −3,정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -601,7 +641,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "괄호/분모정리후 3x−2y11,3x+4y5. 두식을빼면 6y−6,교점(3,−1),정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -640,7 +684,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "추가조건 y2x−10과둘째식 y6x+10의교점(−5,−20). 첫째식에복원해 k−2+2=0,정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -721,7 +769,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 십의 자리 x, 세로 일의 자리 y. x=y+4와 19y−8x1의 교점 (7,3). 자리 숫자는 정수 0..9이며 십의 자리는 양수. 처음 수 73, 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -805,7 +857,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본은 위 띠와 오른쪽 띠를 더한 ㄱ자이며 우상단 모서리는 빈 공간이다. 원래 3×2 넓이 6, 오른쪽 2×6 넓이 12, 위쪽 3×4 넓이 12로 총 30. x=y+2와 2x+3y24에서 가로 6/세로 4 연장, 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -839,7 +895,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "평행은 a3, 원점 통과는 b0. y3x−1을 위 1 옮겨 y3x와 일치하므로 m1. 세 조건을 같은 두 선의 기울기·절편으로 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -873,7 +933,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로노새짐 x,세로당나귀짐 y. 받는경우 x+1=2(y−1),주는경우 y+1=x−1. 교점(7,5),옮긴뒤 8:4와 6:6을따로검산한다. 정답노새 7/당나귀 5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -911,7 +975,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "course": "중2 수학"
+    "course": "중2 수학",
+    "solutionImage": "assets/images/22_왕운중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "서로 떨어져 있어 삼각형은 3개, 사각형은 4개씩 필요하며 공유변 없음. x+y9,3x+4y32의 교점 (4,5), 삼각형 4개. 원래 성냥 도형 예시는 유지한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

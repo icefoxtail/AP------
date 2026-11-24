@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/5"
+        ],
+        "domain": [
+          "0",
+          "60"
+        ],
+        "label": "Y=x/5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3/10"
+        ],
+        "domain": [
+          "10",
+          "50"
+        ],
+        "label": "Y=3x/10-3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "60",
+          "y": "12",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "10",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "50",
+          "y": "12",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "30",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "Y"
+    }
+  },
+  "caption": "가로 x는동생출발후분,세로 Y=y/100으로실제거리 m를 100으로나눈값. 동생 Y=x/5(0..60),형 Y=3x/10−3(10..50). 교점(30,6)은실제30분/600m. 형출발후 20분,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 $1200\\mathrm{m}$ 떨어진 도서관까지 가는데 동생이 먼저 출발하고, 형은 동생이 출발한 지 10분 후에 자전거를 타고 출발했다. 동생이 출발한 지 $x$분 후에 집으로부터 떨어진 거리를 $y\\mathrm{m}$라 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 형과 동생이 서로 만나는 것은 형이 출발한 지 몇 분 후인가? [5점] 보기: ['20분 후', '25분 후', '30분 후', '35분 후', '40분 후']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로x는동생출발후분,세로Y=y/100으로실제거리m를100으로나눈값. 동생Y=x/5(0..60),형Y=3x/10−3(10..50). 교점(30,6)은실제30분/600m. 형출발후20분,정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로x는동생출발후분,세로Y=y/100으로실제거리m를100으로나눈값. 동생Y=x/5(0..60),형Y=3x/10−3(10..50). 교점(30,6)은실제30분/600m. 형출발후20분,정답①."
+  ]
+}
