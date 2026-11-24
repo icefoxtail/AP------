@@ -56,7 +56,11 @@ window.examData = {
         "$y=3x+\\dfrac{3}{2}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "오른쪽 아래로 향하는 직선이 x축과 (3,0)에서, y축과 (0,2)에서 만나고 두 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "x절편이 3이면 점 (3,0)을, y절편이 2이면 점 (0,2)를 지난다. 기울기는 (2−0)/(0−3)=−2/3이고 y절편이 2이므로 y=−(2/3)x+2이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,

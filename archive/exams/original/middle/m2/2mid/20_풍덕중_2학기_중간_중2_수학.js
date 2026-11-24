@@ -381,7 +381,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 속력 구간의 거리합·시간합 연립 모델",
-    "decisiveStep": "총거리3과40분을 같은 단위로 놓고 걸은거리와뛴거리의 두 식을 구성한다."
+    "decisiveStep": "총거리3과40분을 같은 단위로 놓고 걸은거리와뛴거리의 두 식을 구성한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "가로축이 시간(분), 세로축이 거리(km)인 좌표평면에서 원점에서 점 A(20,1)까지 완만한 선분, 점 A에서 점 B(40,3)까지 더 가파른 선분이 이어져 있다.",
+    "solutionImageCaption": "그림에서 파란 선분은 걷기, 주황 선분은 뛰기를 나타낸다. 걸어간 거리를 x km, 뛰어간 거리를 y km라 하면 x+y=3이고 걸린 시간이 x/3+y/6=2/3시간(40분)이다. 풀면 x=1, y=2이다. 그림은 처음 20분 동안 시속 3km로 1km를 걸어 점 A(20,1)에 이르고, 다음 20분 동안 시속 6km로 2km를 뛰어 점 B(40,3)에 도착하는 거리와 시간의 그래프이다. 따라서 뛰어간 거리는 2km이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -422,7 +426,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각 입력에 대응하는 출력의 유일성 판정",
-    "decisiveStep": "배수와절댓값 조건에서 한 입력에 복수 출력이 생기는 반례를 든다."
+    "decisiveStep": "배수와절댓값 조건에서 한 입력에 복수 출력이 생기는 반례를 든다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "두 대응도가 위아래로 있다. 위쪽은 x가 2일 때 2, 4, 6의 여러 y로, 3일 때 3, 6, 9의 여러 y로 화살표가 나가고, 아래쪽은 x가 3일 때 −3과 3으로, 5일 때 −5와 5로 화살표가 나간다.",
+    "solutionImageCaption": "함수는 x의 각 값에 y의 값이 오직 하나씩 대응해야 한다. ①에서 x=2이면 y는 2, 4, 6, …으로 여러 개가 대응하고(위쪽 그림), ③에서 절댓값이 3인 y는 −3과 3의 두 개가 대응한다(아래쪽 그림). 따라서 y가 x의 함수가 아닌 것은 ①, ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -467,7 +475,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 닮음의 대응각·대응변 진술 판정",
-    "decisiveStep": "명시된ABC~DEF의 대응과삼각형 내각합을 이용해 모든 보기를 비교한다."
+    "decisiveStep": "명시된ABC~DEF의 대응과삼각형 내각합을 이용해 모든 보기를 비교한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "크기가 다른 두 닮은 삼각형 ABC와 DEF가 나란히 있고 대응하는 각끼리 같은 표시와 각도 40°, 105°, 35°가 있으며 변 AB 4, BC 7, DE 8, EF 14가 적혀 있다.",
+    "solutionImageCaption": "△ABC∽△DEF이므로 대응각의 크기가 같아 ∠A=∠D=105°, ∠B=∠E=40°, ∠C=180°−105°−40°=35°이다. 대응변 AB와 DE의 비 4:8=1:2가 닮음비이므로 EF=2×7=14cm이다. 그러나 닮음비는 1:2이므로 7:8이라는 ⑤는 옳지 않다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -512,7 +524,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "입체 닮음의 길이·면적·부피비 판정",
-    "decisiveStep": "실제 그림의 높이4:8에서1:2를 얻어 면적1:4와부피1:8을 확인한다."
+    "decisiveStep": "실제 그림의 높이4:8에서1:2를 얻어 면적1:4와부피1:8을 확인한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "크기가 다른 두 사각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 (가)는 높이 4, 오른쪽 (나)는 높이 8이 표시되어 있다.",
+    "solutionImageCaption": "예: 해설의 값에 맞춘 두 닮은 사각기둥이다(밑면의 가로 길이는 모양만 나타낸 예이다). (가)의 높이 4cm와 (나)의 높이 8cm가 대응하므로 닮음비는 1:2이다. 대응하는 모서리의 길이는 2배이므로 JK=2×3=6cm이고, 부피의 비는 1³:2³=1:8이다. (가)의 부피가 12cm³이면 (나)의 부피는 12×8=96cm³이므로 36cm³라는 ④가 옳지 않다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

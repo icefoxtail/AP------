@@ -168,7 +168,11 @@ window.examData = {
         "$-24 < -2x+7 \\le -8$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "오른쪽 아래로 향하는 직선 위에 x=−3인 점 A(−3,13)와 x=5인 점 B(5,−3)가 표시되어 있다. y의 값은 B에서 A까지 −3보다 크고 13 이하이다.",
+      "solutionImageCaption": "−3≤x<5에서 y=−2x+7의 값의 범위를 구한다. 기울기가 −2이므로 x가 커질수록 y는 작아진다. x=−3일 때 y=13이고 이때 x=−3을 포함하므로 13을 포함한다. x=5일 때 y=−3이지만 x=5는 포함하지 않으므로 −3은 포함하지 않는다. 따라서 −3<−2x+7≤13이고 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
