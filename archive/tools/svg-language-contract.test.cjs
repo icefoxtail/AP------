@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validateSvgStudentLanguage, assertSvgStudentLanguage } = require('./svg-language-contract.cjs');
+const { validateSvgStudentLanguage, assertSvgStudentLanguage, hasHiddenInternalText } = require('./svg-language-contract.cjs');
 
 function svg(body = '', title = '두 원의 교점', description = '두 원의 중심과 교점을 좌표평면에 나타낸 그림', rootAttrs = 'role="img" aria-labelledby="title desc"') {
   return `<svg xmlns="http://www.w3.org/2000/svg" ${rootAttrs}><title id="title">${title}</title><desc id="desc">${description}</desc>${body}</svg>`;
@@ -148,4 +148,23 @@ test('advisory mode lists description-quality findings without blocking, and sti
   // 직접 호출(advisory 없음: 엔진·감사 모드)은 전과 같이 엄격하다.
   assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/>'), { assetRef: 'e.svg' }), /DUPLICATE_ID/);
   assert.throws(() => assertSvgStudentLanguage('<g/>', { assetRef: 'c.svg', advisory: [] }), /SVG_ROOT_MISSING/);
+});
+
+test('internal terms in title, desc or aria-label do not block (listed), but internal terms in visible text still do, engine figures included', () => {
+  const engineRoot = 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="title desc"';
+  for (const root of [undefined, engineRoot]) {
+    const advisory = [];
+    const hidden = svg('<circle r="5"/>', '도형', '두 원 source 사이의 관계를 나타낸 그림', root);
+    assert.equal(assertSvgStudentLanguage(hidden, { assetRef: 'h.svg', advisory }).status, 'PASS');
+    assert.ok(advisory.some(row => row.code === 'SVG_INTERNAL_STUDENT_TEXT_FORBIDDEN' && row.surface === 'desc'), JSON.stringify(advisory));
+    assert.equal(hasHiddenInternalText(hidden), true);
+    const titleHidden = svg('', 'svg 도형', '두 원의 중심과 교점을 좌표평면에 나타낸 그림', root);
+    assert.equal(assertSvgStudentLanguage(titleHidden, { assetRef: 'h.svg', advisory: [] }).status, 'PASS');
+    // visible text keeps blocking
+    assert.throws(() => assertSvgStudentLanguage(svg('<text>source</text>', undefined, undefined, root), { assetRef: 'v.svg', advisory: [] }), /INTERNAL_STUDENT_TEXT_FORBIDDEN:source@text/);
+    // a visible <text> blocks even when the hidden desc is also flagged
+    assert.throws(() => assertSvgStudentLanguage(svg('<text id="t1">debug</text>', '도형', '두 원 source 사이의 관계를 나타낸 그림', root), { assetRef: 'v.svg', advisory: [] }), /INTERNAL_STUDENT_TEXT_FORBIDDEN:debug@text#t1/);
+  }
+  // direct call without advisory (engine generation, audit) stays strict
+  assert.throws(() => assertSvgStudentLanguage(svg('', '도형', '두 원 source 사이의 관계를 나타낸 그림'), { assetRef: 'h.svg' }), /INTERNAL_STUDENT_TEXT_FORBIDDEN:source@desc/);
 });

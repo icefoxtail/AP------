@@ -390,32 +390,117 @@ test('production compiler derives a new Generated problem row from the current s
   assert.equal(generated.semanticClearanceOrigin, 'GENERATED_PRODUCTION_SOURCE_IMAGE_BINDING');
 });
 
-test('student SVG accessibility index tracks the manifest hash and current Geumdang metadata', () => {
-  const manifestPath = path.join(__dirname, '..', 'archive', 'data', 'svg-accessibility-manifest.v1.json');
+test('student SVG accessibility index carries Korean text for the Geumdang solution figures without pinning their bytes', () => {
+  // 그림은 계속 고쳐지므로 색인의 해시가 현재 그림과 같아야 한다고 고정하지 않는다(관리 행이 낡으면 빌더가 다시 만든다). 행이 있고 학생용 한글 title/desc가 있는지만 본다.
   const indexPath = path.join(__dirname, '..', 'archive', 'data', 'svg-accessibility-index.js');
   const assetRefs = [
     'assets/images/24_금당고_2학기_중간_고1_기출/q03-solution.svg',
     'assets/images/24_금당고_2학기_중간_고1_기출/q16-solution.svg'
   ];
-  const manifestText = fs.readFileSync(manifestPath, 'utf8').replace(/\r\n/g, '\n');
-  const manifest = JSON.parse(manifestText);
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(indexPath, 'utf8'), context);
   const index = context.window.APSvgAccessibilityIndex;
-  assert.equal(index.manifestSha256, `sha256:${sha256(Buffer.from(manifestText, 'utf8'))}`);
   for (const assetRef of assetRefs) {
-    const source = manifest.records.find(record => record.assetRef === assetRef && record.visualRole === 'solution');
     const current = Array.from(index.records).find(record => record.assetRef === assetRef && record.visualRole === 'solution');
-    assert.ok(source);
-    assert.ok(current);
-    const bytes = execFileSync('git', ['show', `HEAD:archive/${assetRef}`], { cwd: path.join(__dirname, '..') });
-    assert.equal(source.svgSha256, `sha256:${sha256(bytes)}`);
-    assert.equal(source.gitBlobSha, gitBlobSha(bytes));
-    assert.equal(current.svgSha256, source.svgSha256);
-    assert.equal(current.gitBlobSha, source.gitBlobSha);
-    assert.equal(current.titleKo, source.titleKo);
-    assert.equal(current.descriptionKo, source.descriptionKo);
+    assert.ok(current, assetRef);
+    assert.match(current.titleKo, /[가-힣]/);
+    assert.match(current.descriptionKo, /[가-힣]/);
+    assert.match(current.svgSha256, /^sha256:[a-f0-9]{64}$/);
+    assert.match(current.gitBlobSha, /^[a-f0-9]{40}$/);
   }
+});
+
+test('production compiler rebuilds a managed row from the current SVG when its hash or text went stale, lists it, and leaves the manifest file untouched', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const sample = path.join(files.repoRoot, 'archive', 'assets', 'images', 'sample.svg');
+  const manifestPath = path.join(files.repoRoot, 'archive', 'data', 'svg-accessibility-manifest.v1.json');
+  const manifestBefore = fs.readFileSync(manifestPath);
+  const edited = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-title svg-desc"><title id="svg-title">원과 중심</title><desc id="svg-desc">중심에서 원 위의 점까지의 거리가 같은 원과 반지름을 나타낸 그림</desc><circle r="5"/><path d="M0 0L5 0"/></svg>\n');
+  fs.writeFileSync(sample, edited);
+  const report = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  assert.equal(report.recordCount, 2);
+  assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/sample.svg' && row.code === 'SVG_ACCESSIBILITY_MANAGED_ROW_STALE'), JSON.stringify(report.qualityAdvisory));
+  const context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(files.outputPath, 'utf8'), context);
+  const row = Array.from(context.window.APSvgAccessibilityIndex.records).find(record => record.assetRef === 'assets/images/sample.svg');
+  assert.equal(row.svgSha256, `sha256:${sha256(edited)}`);
+  assert.equal(row.gitBlobSha, gitBlobSha(edited));
+  assert.equal(row.descriptionKo, '중심에서 원 위의 점까지의 거리가 같은 원과 반지름을 나타낸 그림');
+  assert.equal(row.semanticClearanceOrigin, 'PRODUCTION_SOURCE_IMAGE_BINDING', 'the old human clearance is not carried over to new bytes');
+  assert.equal(row.sourceQid, 'sample-q1');
+  assert.deepEqual(fs.readFileSync(manifestPath), manifestBefore, 'the manifest file keeps its history');
+  // a description-only change is stale too
+  fs.writeFileSync(sample, edited.toString('utf8').replace('반지름을 ', '반지름과 중심을 '));
+  assert.ok(compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef }).qualityAdvisory.some(item => item.code === 'SVG_ACCESSIBILITY_MANAGED_ROW_STALE'));
+});
+
+test('production compiler still blocks a stale managed row whose SVG is missing, unparsable, or an engine figure with a real defect', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const sample = path.join(files.repoRoot, 'archive', 'assets', 'images', 'sample.svg');
+  const compile = () => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  fs.writeFileSync(sample, 'not an svg\n');
+  assert.throws(compile, /SVG_ROOT_MISSING|SVG_STUDENT_LANGUAGE_CONTRACT_FAIL/);
+  fs.writeFileSync(sample, '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"><circle r="5"/></svg>\n');
+  assert.throws(compile, /SVG_STUDENT_LANGUAGE_CONTRACT_FAIL.*TITLE_DESC_REQUIRED/);
+  fs.rmSync(sample);
+  assert.throws(compile, /SVG_ACCESSIBILITY_ASSET_NOT_FOUND|ENOENT/);
+});
+
+test('production compiler gives a figure with an internal term in its hidden title/desc a machine substitute row (old or engine figure) but keeps blocking visible internal text', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const newSvg = path.join(files.repoRoot, 'archive', 'assets', 'images', 'new.svg');
+  const compile = () => compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  const rowOf = () => {
+    const context = { window: {} };
+    vm.runInNewContext(fs.readFileSync(files.outputPath, 'utf8'), context);
+    return Array.from(context.window.APSvgAccessibilityIndex.records).find(record => record.assetRef === 'assets/images/new.svg');
+  };
+  const head = extra => '<svg xmlns="http://www.w3.org/2000/svg" ' + extra + ' role="img" aria-labelledby="t d">';
+  const body = '<title id="t">직선과 점</title><desc id="d">한 점을 지나고 source 기울기가 일정한 직선을 나타낸 그림</desc>';
+  for (const marker of ['', 'data-engine-version="geometry-visual-v1"']) {
+    fs.writeFileSync(newSvg, head(marker) + body + '<circle r="5"/></svg>\n');
+    const report = compile();
+    assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_INTERNAL_STUDENT_TEXT_FORBIDDEN' && row.surface === 'desc'), JSON.stringify(report.qualityAdvisory));
+    assert.ok(report.qualityAdvisory.some(row => row.code === 'SVG_ACCESSIBILITY_INTERNAL_TEXT_SUBSTITUTED'));
+    const row = rowOf();
+    assert.equal(row.textSource, 'MACHINE_SUBSTITUTE');
+    assert.doesNotMatch(row.descriptionKo, /source/);
+  }
+  fs.writeFileSync(newSvg, head('') + body + '<text>source</text></svg>\n');
+  assert.throws(compile, /INTERNAL_STUDENT_TEXT_FORBIDDEN:source@text/);
+  fs.writeFileSync(newSvg, head('data-engine-version="geometry-visual-v1"') + body + '<text>source</text></svg>\n');
+  assert.throws(compile, /INTERNAL_STUDENT_TEXT_FORBIDDEN:source@text/);
+});
+
+test('production compiler rebuilds a stale managed row that has no live source use (asset-only solution)', t => {
+  const { compileManifest } = loadCompiler();
+  const files = productionFixture(t);
+  const assetDir = path.join(files.repoRoot, 'archive', 'assets', 'images');
+  const manifestPath = path.join(files.repoRoot, 'archive', 'data', 'svg-accessibility-manifest.v1.json');
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  const orphanOld = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d"><title id="t">원과 중심</title><desc id="d">중심에서 원 위의 점까지의 거리가 같은 원을 나타낸 그림</desc><circle r="5"/></svg>\n');
+  const orphanNew = Buffer.from(orphanOld.toString('utf8').replace('<circle r="5"/>', '<circle r="6"/>').replace('원을 나타낸', '원과 중심을 나타낸'));
+  fs.writeFileSync(path.join(assetDir, 'orphan.svg'), orphanNew);
+  manifest.records.push({
+    assetRef: 'assets/images/orphan.svg', svgSha256: `sha256:${sha256(orphanOld)}`, gitBlobSha: gitBlobSha(orphanOld),
+    visualRole: 'solution', titleKo: '원과 중심', descriptionKo: '중심에서 원 위의 점까지의 거리가 같은 원을 나타낸 그림',
+    sourceExamRef: '', sourceQid: '', provenanceStatus: 'ASSET_ONLY', answerHintFree: false
+  });
+  manifest.recordCount = manifest.records.length;
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+  const report = compileManifest({ repoRoot: files.repoRoot, baseRef: files.baseRef });
+  assert.ok(report.qualityAdvisory.some(row => row.assetRef === 'assets/images/orphan.svg' && row.code === 'SVG_ACCESSIBILITY_MANAGED_ROW_STALE'), JSON.stringify(report.qualityAdvisory));
+  const context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(files.outputPath, 'utf8'), context);
+  const orphan = Array.from(context.window.APSvgAccessibilityIndex.records).find(record => record.assetRef === 'assets/images/orphan.svg');
+  assert.equal(orphan.visualRole, 'solution');
+  assert.equal(orphan.provenanceStatus, 'ASSET_ONLY');
+  assert.equal(orphan.answerHintFree, false);
+  assert.equal(orphan.svgSha256, `sha256:${sha256(orphanNew)}`);
+  assert.equal(orphan.descriptionKo, '중심에서 원 위의 점까지의 거리가 같은 원과 중심을 나타낸 그림');
 });
 
 test('--quality-report lists every flagged SVG with its exams and text, English/math-markup findings first, and never blocks', t => {

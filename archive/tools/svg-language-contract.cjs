@@ -236,11 +236,25 @@ function substituteAccessibilityText(use = {}) {
   return [exam, number ? `${Number(number[0])}번` : '', role].filter(Boolean).join(' ');
 }
 
+// 화면에 보이지 않는 곳(title·desc·aria-label)에 내부 용어(source·svg 등)가 든 것: 학생 눈에는 안 보이므로 그림 한 장 때문에 등록·배포를 세우지 않는다.
+// 옛 그림·새 엔진 그림 구분 없이 목록으로만 남기고, 색인 행의 글은 호출 쪽이 기계 대체 문구로 바꾼다(hasHiddenInternalText).
+// 보이는 <text>의 내부 글자(surface가 text, text#id)와 title 속성(surface title-attribute)은 학생 눈에 닿으므로 계속 막는다.
+const HIDDEN_TEXT_SURFACES = new Set(['title', 'desc', 'aria-label']);
+function isHiddenInternalTextError(error) {
+  return error.code === 'SVG_INTERNAL_STUDENT_TEXT_FORBIDDEN' && HIDDEN_TEXT_SURFACES.has(error.surface);
+}
+// 색인 행에 쓸 title/desc 글에 내부 용어가 들어 있는가(그렇다면 행은 기계 대체 문구를 쓴다).
+function hasHiddenInternalText(svg, options = {}) {
+  const result = validateSvgStudentLanguage(svg, options);
+  return result.errors.some(error => isHiddenInternalTextError(error) && (error.surface === 'title' || error.surface === 'desc'));
+}
+
 // 등록기·수리 목록이 같은 기준으로 가르는 한 곳: 이 오류가 막지 않고 목록으로만 남는 것인가.
 // 겹치는 id를 아무도 가리키지 않으면(오류의 referencedDuplicateIds가 비어 있으면) 학생 그림은 그대로이니 목록으로만 남긴다(엔진 그림 포함).
 // title/desc·aria가 가리키는 id의 중복은 TITLE_DESC_ID_INVALID·ARIA_REFERENCE_INVALID가 따로 잡고, 엔진 그림은 그쪽에서 계속 막힌다.
 function isAdvisoryError(error, legacyAllowed) {
   if (QUALITY_ONLY_CODES.has(error.code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(error.code))) return true;
+  if (isHiddenInternalTextError(error)) return true;
   return error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID' && Array.isArray(error.referencedDuplicateIds) && error.referencedDuplicateIds.length === 0;
 }
 function advisoryLabel(error) {
@@ -266,4 +280,4 @@ function assertSvgStudentLanguage(svg, options = {}) {
   return result;
 }
 
-module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isEngineSvg, substituteAccessibilityText };
+module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isHiddenInternalTextError, hasHiddenInternalText, isEngineSvg, substituteAccessibilityText };
