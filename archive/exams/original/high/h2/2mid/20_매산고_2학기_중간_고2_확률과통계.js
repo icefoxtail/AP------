@@ -460,7 +460,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQid": 10,
     "sourceProvenance": "ORIGINAL",
-    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc"
+    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "상위 3%의 경계는 오른쪽 꼬리 확률이 0.03인 점수이다. P(|Z|≤2)=0.94이므로 P(Z≥2)=(1−0.94)/2=0.03이어서 경계는 z=2이다. 점수는 60+2×15=90점이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -505,7 +509,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQid": 11,
     "sourceProvenance": "ORIGINAL",
-    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc"
+    "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "전체 학생은 500명이고 농구 선택자는 40퍼센트인 200명이다. 야구를 선택한 1학년은 전체의 1/5인 100명이므로 1학년 농구 선택자는 180−100=80명이고, 농구 선택자 중 1학년이 아닌 학생은 200−80=120명이다. 따라서 농구를 선택한 학생일 때 1학년이 아닐 확률은 120/200=3/5이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

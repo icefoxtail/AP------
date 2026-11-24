@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "counts": [
+      {
+        "value": 0,
+        "count": 2
+      },
+      {
+        "value": 1,
+        "count": 2
+      },
+      {
+        "value": 2,
+        "count": 2
+      }
+    ],
+    "xTitle": "실근의 개수",
+    "marks": {
+      "meanLine": {
+        "value": "1",
+        "label": "평균 1"
+      },
+      "deviations": true
+    }
+  },
+  "caption": "판별식은 4(a−2)(a−5)이므로 a=1, 6에서 X=2, a=2, 5에서 X=1, a=3, 4에서 X=0이다. 세 값의 확률이 모두 1/3이므로 X의 분산은 2/3이고, 3X+5의 분산은 9 곱하기 2/3, 즉 6이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 주사위를 한 번 던질 때 나오는 눈의 수 $a$에 대하여 이차방정식 $x^2-2ax+7a-10=0$의 실근의 개수를 확률변수 $X$라 하자. 확률변수 $3X+5$의 분산을 구하시오. (단, 중근은 1개의 실근으로 생각한다.) [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "주사위 눈 a에 따라 정한 실근의 개수 X",
+      "mappedTo": "chart.counts"
+    }
+  ],
+  "newVisualInformation": [
+    "X의 값 0, 1, 2를 같은 높이로 쌓은 점도표",
+    "평균 1의 세로 점선 표시",
+    "각 값의 편차 −1, 0, 1 표시"
+  ]
+}

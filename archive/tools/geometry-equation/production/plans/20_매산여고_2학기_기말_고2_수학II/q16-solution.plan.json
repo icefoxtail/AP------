@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "-5/12"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "-5/12*x^3",
+    "functionName": "g",
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -4,
+      4
+    ],
+    "curveColor": "BLUE",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "10/3"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "-10/3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "10/3"
+      ],
+      "B": [
+        "2",
+        "-10/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: g(x)=−5/12 x³이면 g는 홀함수이고 g′는 짝함수이다. (x³+x)g′(x)는 홀함수이므로 대칭구간에서 적분값이 0이고, −3(g(2)−g(−2))=20에서 g(2)=−10/3, g(−2)=10/3이다. 따라서 12g(−2)=40이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "파란 세제곱곡선 g가 원점을 지나고, 제2사분면의 점 A와 제4사분면의 점 B가 원점에 대하여 대칭인 위치에 표시되어 있다. 두 점에는 각각의 좌표가 적혀 있다.",
+  "newVisualInformation": [
+    "홀함수인 g의 그래프를 파란 곡선으로 그렸다.",
+    "g 위의 두 점 A(−2, 10/3), B(2, −10/3)를 좌표와 함께 표시해 원점 대칭임을 보였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 다항함수 $f(x),g(x)$가 모든 실수 $x$에 대하여 $f(-x)=-f(x)$, $g(x)=x^2f(x)$를 만족시킨다. 함수 $\\displaystyle\\int_{-2}^2(x^3+x-3)g'(x),dx=20$일 때, $12g(-2)$의 값을 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "12",
+      "-5"
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -32,
+      14
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "7"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "-6"
+        },
+        {
+          "id": "V",
+          "x": "6/5",
+          "y": "51/5"
+        }
+      ]
+    }
+  },
+  "caption": "g(1)=10이고 f(x)+g′(x)=−8x+9, f(x)g′(x)=(−10x+12)(2x−3)이다. g′(x)=−10x+12일 때 g(2)=7을 만족하므로 g(x)=−5x²+12x+3이고 g(3)=−6이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "위로 볼록한 이차함수 그래프에 꼭짓점 V와 점 Q가 표시되어 있고, 점 Q는 오른쪽 아래에 있다. x축에 2, y축에 7이 눈금으로 적혀 있다.",
+  "newVisualInformation": [
+    "위로 볼록한 이차함수 g의 그래프와 꼭짓점 V, 점 Q(3, -6)을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "상수함수가 아닌 계수가 정수인 두 다항함수 $f(x)$, $g(x)$에 대해\n$g(x)+\\displaystyle\\int_1^x f(t),dt=-4x^2+9x+5$, $g(2)=7$이고, $f(x)g'(x)=-20x^2+54x-36$일 때, $g(3)$의 값은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "3",
+      "1",
+      "-2"
+    ],
+    "shiftX": "-1",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -5,
+      3,
+      -4,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "slope": "0",
+          "intercept": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "2의 (x+1)제곱은 항상 양수이므로 y=3·2ˣ⁺¹−2는 −2보다 크다. x가 매우 작아지면 곡선은 직선 y=−2에 한없이 가까워진다. 그림의 점선 y=−2가 점근선이고 곡선은 점 P(0, 4)를 지나 오른쪽 위로 올라간다. 따라서 점근선의 방정식은 y=−2이고 답은 ①이다.",
+  "accessibilityDescription": "왼쪽에서는 가로선 아래쪽 부근에 거의 붙어 있다가 오른쪽 위로 가파르게 올라가는 지수 곡선과 가로 점근선 y=−2가 있다. 곡선 위의 점 P의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "지수 곡선이 x→−∞에서 접근하는 수평 점근선 y=−2와 곡선 위의 점 P(0, 4)를 보여 점근선의 방정식을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=3\\cdot 2^{x+1}-2$의 그래프의 점근선의 방정식으로 옳은 것은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "41",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1B",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sA2",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "s2C",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sO1",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sO2",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eM1",
+        "count": 1,
+        "segments": [
+          "sA1",
+          "s1B"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "eM2",
+        "count": 2,
+        "segments": [
+          "sA2",
+          "s2C"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "id": "eR",
+        "count": 3,
+        "segments": [
+          "sOA",
+          "sBO",
+          "sOC"
+        ],
+        "color": "VIOLET"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lO1",
+        "ownerSegment": "sO1",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lO2",
+        "ownerSegment": "sO2",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "D",
+    "F"
+  ],
+  "hiddenPointStyle": "DOT",
+  "caption": "O가 외심이므로 OA=OB=OC이고, O에서 변 AB, AC에 내린 수선은 그 변을 각각 이등분한다. 그림에서 O가 BC 위에 있으므로 BC는 외접원의 지름이고 각 A는 직각이다. 수선의 길이가 3센티미터, 4센티미터이므로 AC=6, AB=8이고 BC=10이다. 따라서 둘레의 길이는 6+8+10=24센티미터이므로 답은 ⑤이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 BC 위에 외심 O가 있고, O에서 변 AB와 AC에 내린 수선과 그 발의 직각 표시가 있다. 두 수선의 길이는 각각 3센티미터와 4센티미터이고, OA=OB=OC와 두 변이 이등분된 표시가 있다.",
+  "newVisualInformation": [
+    "외심 O와 두 수선, 발의 직각 표시",
+    "수선의 길이 3과 4",
+    "OA=OB=OC, 두 변의 이등분 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. 오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q09.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

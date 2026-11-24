@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "−2(x−5a)≤7a+3에서 −2x≤−3a+3이고 양변을 −2로 나누면 x≥(3a−3)/2이다. 음의 정수가 존재하지 않으려면 해의 가장 작은 값 (3a−3)/2가 −1보다 커야 한다. (3a−3)/2>−1에서 3a>1이므로 a>1/3이다. 수직선은 a의 범위를 나타낸다.",
+  "accessibilityDescription": "수직선 위에 1/3보다 큰 수 전체가 오른쪽으로 뻗은 구간이 있고 1/3에는 속이 빈 점이 있다.",
+  "newVisualInformation": [
+    "음의 정수 해가 없을 조건 (3a−3)/2>−1에서 a>1/3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $-2(x-5a)\\le7a+3$을 만족시키는 음의 정수 $x$가 존재하지 않을 때, $a$의 범위를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

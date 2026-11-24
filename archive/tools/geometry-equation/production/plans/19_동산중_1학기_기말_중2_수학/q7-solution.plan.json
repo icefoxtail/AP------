@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "P",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "25",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAP",
+        "from": "A",
+        "to": "P",
+        "label": "10",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "dPB",
+        "from": "P",
+        "to": "B",
+        "label": "15",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "P",
+    "B"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "두 부분의 길이를 각각 2k, 3k라 하면 2k+3k=25에서 5k=25, k=5이다. 따라서 두 부분은 10 cm와 15 cm이고 긴 쪽의 길이는 3k=15 cm이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로로 놓인 선분을 한 점에서 두 부분으로 나누고, 전체 길이 25 cm와 두 부분의 길이를 위아래 치수선으로 적은 그림이다.",
+  "newVisualInformation": [
+    "전체 25 cm를 10 cm와 15 cm로 나눈 선분",
+    "전체 길이를 나타내는 위쪽 치수선과 두 부분을 나타내는 아래쪽 치수선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 길이가 $25\\text{cm}$인 길이의 끈을 두 부분으로 잘라 사용하려고 한다. 두 부분의 비가 $2:3$일 때 긴 쪽의 길이를 고르면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

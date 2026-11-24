@@ -267,7 +267,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "지수함수와 로그함수",
-    "originalCategory": "지수함수와 로그함수"
+    "originalCategory": "지수함수와 로그함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑이 1/3인 로그곡선, 그 역함수인 지수곡선, 점선 y=x가 같은 좌표평면에 있고, 수평선 y=3 위의 두 점 P, Q가 표시되어 있다.",
+    "solutionImageCaption": "밑이 1/3인 로그함수의 역함수는 밑이 1/3인 지수함수이다. 점 Q(-1,b)가 역함수 위에 있으므로 b=3이고, 점 P(a,b)가 로그함수 위에 있으므로 a=1/27이다. 따라서 a/b=(1/27)/3=1/81이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -291,7 +295,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "삼각함수",
-    "originalCategory": "삼각함수"
+    "originalCategory": "삼각함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 원점 O와 제2사분면의 점 P를 잇는 동경이 있고 P에서 x축으로 내린 점선이 직각삼각형을 이룬다. 각 θ와 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "점 P(−8, 15)는 제2사분면에 있고 원점까지의 거리는 r=√(64+225)=17이다. 그림의 직각삼각형에서 sinθ=15/17, cosθ=−8/17, tanθ=−15/8이다. 분자는 17·(15/17)+16·(−15/8)=15−30=−15, 분모는 17·(−8/17)+5=−3이므로 값은 5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -512,6 +520,10 @@ window.questionBank = [
       "서술형"
     ],
     "category": "지수함수와 로그함수",
-    "originalCategory": "지수함수와 로그함수"
+    "originalCategory": "지수함수와 로그함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 지수곡선 f, g가 두 점 A, B에서 만나고, g가 y축과 만나는 점 C, 원점 O, 선분 OC와 사각형 OACB가 그려져 있다.",
+    "solutionImageCaption": "두 곡선 f(x)=2의 x제곱-1과 g(x)=-(1/2)의 x제곱+3은 x=a와 x=-a에서 만난다. g의 y절편은 C(0,2)이고 O는 원점이다. 사각형 OACB를 OC로 나누면 두 삼각형의 넓이가 각각 a이므로 넓이는 2a이다. 따라서 답은 2a이다.",
+    "solutionImageSize": "full"
   }
 ];

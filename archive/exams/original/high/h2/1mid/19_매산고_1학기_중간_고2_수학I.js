@@ -41,7 +41,11 @@ window.questionBank = [
       "y=2"
     ],
     "answer": "①",
-    "solution": "$2^{x+1}>0$이므로 $3\\cdot2^{x+1}$도 항상 양수이다. $x$가 매우 작아질수록 $2^{x+1}$은 $0$에 가까워진다.\n$$y=3\\cdot2^{x+1}-2\\longrightarrow -2\\qquad(x\\to-\\infty).$$\n즉 그래프가 가까워지는 수평선은 $y=-2$이다. $x=-2$와 같은 수직선이 아니므로 ①이다."
+    "solution": "$2^{x+1}>0$이므로 $3\\cdot2^{x+1}$도 항상 양수이다. $x$가 매우 작아질수록 $2^{x+1}$은 $0$에 가까워진다.\n$$y=3\\cdot2^{x+1}-2\\longrightarrow -2\\qquad(x\\to-\\infty).$$\n즉 그래프가 가까워지는 수평선은 $y=-2$이다. $x=-2$와 같은 수직선이 아니므로 ①이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서는 가로선 아래쪽 부근에 거의 붙어 있다가 오른쪽 위로 가파르게 올라가는 지수 곡선과 가로 점근선 y=−2가 있다. 곡선 위의 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "2의 (x+1)제곱은 항상 양수이므로 y=3·2ˣ⁺¹−2는 −2보다 크다. x가 매우 작아지면 곡선은 직선 y=−2에 한없이 가까워진다. 그림의 점선 y=−2가 점근선이고 곡선은 점 P(0, 4)를 지나 오른쪽 위로 올라간다. 따라서 점근선의 방정식은 y=−2이고 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -97,7 +101,12 @@ window.questionBank = [
       "-80"
     ],
     "answer": "①",
-    "solution": "로그의 진수는 반드시 양수이다. 밑 $30$은 $30>0$, $30\\ne1$이므로 밑에 대한 조건은 이미 만족한다. 따라서 문제는 이차식 $x^2-kx-4k$가 **모든 실수 $x$에서** $0$보다 크게 되는 정수 $k$를 찾는 것이다.\n$$x^2-kx-4k>0\\qquad(\\text{모든 실수 }x).$$\n최고차항의 계수가 $1>0$이므로 그래프는 위로 열린 포물선이다. 이 포물선이 $x$축에 닿거나 지나면 진수가 $0$ 이하인 $x$가 생긴다. 따라서 판별식이 반드시 음수여야 한다.\n$$D=(-k)^2-4\\cdot1\\cdot(-4k)=k^2+16k=k(k+16).$$\n$$D<0\\iff k(k+16)<0\\iff -16<k<0.$$\n끝점 $k=-16,0$에서는 판별식이 $0$이어서 진수가 $0$이 되는 $x$가 있으므로 포함하지 않는다. 가능한 정수는 $-15,-14,\\ldots,-1$로 $15$개이다.\n$$(-15)+(-14)+\\cdots+(-1)=-\\frac{15(15+1)}2=-120.$$\n따라서 정답은 ①이다."
+    "solution": "로그의 진수는 반드시 양수이다. 밑 $30$은 $30>0$, $30\\ne1$이므로 밑에 대한 조건은 이미 만족한다. 따라서 문제는 이차식 $x^2-kx-4k$가 **모든 실수 $x$에서** $0$보다 크게 되는 정수 $k$를 찾는 것이다.\n$$x^2-kx-4k>0\\qquad(\\text{모든 실수 }x).$$\n최고차항의 계수가 $1>0$이므로 그래프는 위로 열린 포물선이다. 이 포물선이 $x$축에 닿거나 지나면 진수가 $0$ 이하인 $x$가 생긴다. 따라서 판별식이 반드시 음수여야 한다.\n$$D=(-k)^2-4\\cdot1\\cdot(-4k)=k^2+16k=k(k+16).$$\n$$D<0\\iff k(k+16)<0\\iff -16<k<0.$$\n끝점 $k=-16,0$에서는 판별식이 $0$이어서 진수가 $0$이 되는 $x$가 있으므로 포함하지 않는다. 가능한 정수는 $-15,-14,\\ldots,-1$로 $15$개이다.\n$$(-15)+(-14)+\\cdots+(-1)=-\\frac{15(15+1)}2=-120.$$\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 두 개가 두 그림으로 나뉘어 있다. 왼쪽은 꼭짓점이 가로축에 닿고 오른쪽은 꼭짓점이 가로축 위에 떠 있다. 각 꼭짓점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "진수 x²−kx−4k가 모든 실수 x에서 양수이려면 아래로 볼록한 포물선이 x축과 만나지 않아야 하므로 판별식 D=k(k+16)<0이다. 왼쪽 그림은 경계 k=−16에서 꼭짓점 V(−8, 0)이 x축에 닿는 경우로 진수가 0이 되는 x가 있어 제외된다. 오른쪽 그림은 k=−8로 꼭짓점 W(−4, 16)이 x축 위에 있어 항상 양수이다. 따라서 −16<k<0이고 정수 −15, …, −1의 합은 −120이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 8,
@@ -153,7 +162,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "$\\dfrac\\pi2<\\theta<\\pi$이므로 동경은 제2사분면에 있다. 이 사분면에서는\n$$\\sin\\theta>0,\\qquad\\cos\\theta<0,\\qquad\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}<0.$$\n다섯 식의 부호를 하나씩 판단한다.\n\n① $\\cos\\theta<0$이고 $0$이 아니므로 $\\dfrac1{\\cos\\theta}<0$이다. **양수가 아니다.**\n\n② $\\tan\\theta<0$이고 $0$이 아니므로 $\\dfrac1{\\tan\\theta}<0$이다. **양수가 아니다.**\n\n③ $\\sin\\theta-\\cos\\theta=(\\text{양수})-(\\text{음수})>0$이다. **항상 양수이다.**\n\n④ $\\sin(\\pi+\\theta)=-\\sin\\theta<0$이다. **양수가 아니다.**\n\n⑤ 덧셈정리를 쓰면\n$$\\cos\\left(\\frac{3\\pi}2+\\theta\\right)=\\cos\\frac{3\\pi}2\\cos\\theta-\\sin\\frac{3\\pi}2\\sin\\theta$$\n$$=0\\cdot\\cos\\theta-(-1)\\sin\\theta=\\sin\\theta>0.$$\n따라서 **항상 양수**인 것은 ③과 ⑤의 두 식이고, 개수를 묻는 문제이므로 정답은 ②이다."
+    "solution": "$\\dfrac\\pi2<\\theta<\\pi$이므로 동경은 제2사분면에 있다. 이 사분면에서는\n$$\\sin\\theta>0,\\qquad\\cos\\theta<0,\\qquad\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}<0.$$\n다섯 식의 부호를 하나씩 판단한다.\n\n① $\\cos\\theta<0$이고 $0$이 아니므로 $\\dfrac1{\\cos\\theta}<0$이다. **양수가 아니다.**\n\n② $\\tan\\theta<0$이고 $0$이 아니므로 $\\dfrac1{\\tan\\theta}<0$이다. **양수가 아니다.**\n\n③ $\\sin\\theta-\\cos\\theta=(\\text{양수})-(\\text{음수})>0$이다. **항상 양수이다.**\n\n④ $\\sin(\\pi+\\theta)=-\\sin\\theta<0$이다. **양수가 아니다.**\n\n⑤ 덧셈정리를 쓰면\n$$\\cos\\left(\\frac{3\\pi}2+\\theta\\right)=\\cos\\frac{3\\pi}2\\cos\\theta-\\sin\\frac{3\\pi}2\\sin\\theta$$\n$$=0\\cdot\\cos\\theta-(-1)\\sin\\theta=\\sin\\theta>0.$$\n따라서 **항상 양수**인 것은 ③과 ⑤의 두 식이고, 개수를 묻는 문제이므로 정답은 ②이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원 위의 제2사분면 점에서 x축에 수선을 내리고 직각을 표시하였다. 빗변의 길이는 1, 수선의 길이는 4/5, 밑변의 길이는 3/5이고 양의 x축과 반지름이 이루는 각 θ가 표시되어 있다.",
+    "solutionImageCaption": "π/2<θ<π에서 sinθ>0, cosθ<0이므로 1/cosθ와 1/tanθ는 음수이고 sinθ−cosθ는 양수이다. sin(π+θ)=−sinθ는 음수이고 cos(3π/2+θ)=sinθ는 양수이다. 따라서 항상 양수인 식은 2개이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -239,7 +252,11 @@ window.questionBank = [
     "content": "[단답형2] 함수 $y=2^x$의 그래프와 기울기가 1인 직선이 두 점에서 만날 때, 만나는 두 점을 각각 $\\mathrm{A}(\\alpha, 2^\\alpha)$, $\\mathrm{B}(\\beta, 2^\\beta)$라 하자. $\\overline{\\mathrm{AB}}=3\\sqrt{2}$일 때, $\\alpha+\\beta$의 값을 구하시오. (단, $\\log 2=0.30$, $\\log 3=0.48$, $\\log 7=0.85$로 계산한다.) [5점]<br><br><img src=\"assets/images/19_매산고_1학기_중간_고2_수학I/q17.png\" class=\"question-img\">",
     "choices": [],
     "answer": "8/15",
-    "solution": "두 교점이 기울기 $1$인 같은 직선 위에 있으므로, $x$좌표가 작은 점을 $\\mathrm A$, 큰 점을 $\\mathrm B$로 잡아 $\\beta>\\alpha$라고 놓아도 된다. 직선의 기울기 공식에서\n$$\\frac{2^\\beta-2^\\alpha}{\\beta-\\alpha}=1,$$\n$$2^\\beta-2^\\alpha=\\beta-\\alpha.$$\n이 식은 두 점의 $y$좌표 차와 $x$좌표 차가 같다는 뜻이다. 거리 조건에 그대로 대입하면\n$$\\overline{\\mathrm{AB}}=\\sqrt{(\\beta-\\alpha)^2+(2^\\beta-2^\\alpha)^2}$$\n$$=\\sqrt{(\\beta-\\alpha)^2+(\\beta-\\alpha)^2}=\\sqrt2(\\beta-\\alpha)=3\\sqrt2.$$\n$\\beta>\\alpha$이므로 $\\beta-\\alpha=3$, 즉 $\\beta=\\alpha+3$이다.\n$$2^\\beta-2^\\alpha=3\\quad\\Longrightarrow\\quad2^{\\alpha+3}-2^\\alpha=3,$$\n$$2^\\alpha(2^3-1)=3\\quad\\Longrightarrow\\quad7\\cdot2^\\alpha=3,$$\n$$2^\\alpha=\\frac37.$$\n양변에 상용로그를 취하면\n$$\\alpha\\log2=\\log3-\\log7,$$\n$$\\alpha=\\frac{0.48-0.85}{0.30}=\\frac{-0.37}{0.30}=-\\frac{37}{30}.$$\n$$\\beta=\\alpha+3=-\\frac{37}{30}+\\frac{90}{30}=\\frac{53}{30}.$$\n따라서\n$$\\alpha+\\beta=-\\frac{37}{30}+\\frac{53}{30}=\\frac{16}{30}=\\frac8{15}.$$\n답은 $\\dfrac8{15}$이다."
+    "solution": "두 교점이 기울기 $1$인 같은 직선 위에 있으므로, $x$좌표가 작은 점을 $\\mathrm A$, 큰 점을 $\\mathrm B$로 잡아 $\\beta>\\alpha$라고 놓아도 된다. 직선의 기울기 공식에서\n$$\\frac{2^\\beta-2^\\alpha}{\\beta-\\alpha}=1,$$\n$$2^\\beta-2^\\alpha=\\beta-\\alpha.$$\n이 식은 두 점의 $y$좌표 차와 $x$좌표 차가 같다는 뜻이다. 거리 조건에 그대로 대입하면\n$$\\overline{\\mathrm{AB}}=\\sqrt{(\\beta-\\alpha)^2+(2^\\beta-2^\\alpha)^2}$$\n$$=\\sqrt{(\\beta-\\alpha)^2+(\\beta-\\alpha)^2}=\\sqrt2(\\beta-\\alpha)=3\\sqrt2.$$\n$\\beta>\\alpha$이므로 $\\beta-\\alpha=3$, 즉 $\\beta=\\alpha+3$이다.\n$$2^\\beta-2^\\alpha=3\\quad\\Longrightarrow\\quad2^{\\alpha+3}-2^\\alpha=3,$$\n$$2^\\alpha(2^3-1)=3\\quad\\Longrightarrow\\quad7\\cdot2^\\alpha=3,$$\n$$2^\\alpha=\\frac37.$$\n양변에 상용로그를 취하면\n$$\\alpha\\log2=\\log3-\\log7,$$\n$$\\alpha=\\frac{0.48-0.85}{0.30}=\\frac{-0.37}{0.30}=-\\frac{37}{30}.$$\n$$\\beta=\\alpha+3=-\\frac{37}{30}+\\frac{90}{30}=\\frac{53}{30}.$$\n따라서\n$$\\alpha+\\beta=-\\frac{37}{30}+\\frac{53}{30}=\\frac{16}{30}=\\frac8{15}.$$\n답은 $\\dfrac8{15}$이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선과 기울기 1인 주황 직선이 두 점 A, B에서 만난다. A에서 오른쪽으로, B에서 아래로 내린 선이 만나는 점 R과 함께 직각삼각형 ARB가 색칠되어 있다.",
+    "solutionImageCaption": "직선의 기울기가 1이므로 두 점 A, B의 x좌표의 차와 y좌표의 차가 같다. 그림의 직각이등변삼각형 ARB에서 AR=RB=β−α이고 AB=√2(β−α)=3√2이므로 β−α=3이다. 2의 β제곱−2의 α제곱=3에서 7·2의 α제곱=3이므로 2의 α제곱=3/7, 곧 α=(log3−log7)/log2=−37/30(약 −1.23)이다. β=α+3=53/30이고 α+β=16/30=8/15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -259,7 +276,11 @@ window.questionBank = [
     "content": "[서술형1] 함수 $f(x)=2^{x-2}-2$와 그 역함수 $g(x)=f^{-1}(x)$에 대하여 $\\left(\\dfrac{1}{2}\\right)^{f(x)} > 2^{-g(x)}$를 만족하는 정수 $x$의 개수를 구하는 과정을 서술하시오. [10점]",
     "choices": [],
     "answer": "6",
-    "solution": "먼저 두 함수가 **같은 $x$에서 정의되는 범위**를 확인한다. $f(x)=2^{x-2}-2$는 모든 실수에서 정의되고, $f(x)>-2$이므로 역함수의 정의역은 $x>-2$이다.\n$$g(x)=f^{-1}(x)=\\log_2(x+2)+2\\qquad(x>-2).$$\n$\\left(\\frac12\\right)^{f(x)}=2^{-f(x)}$이고 밑 $2>1$이므로 원래 부등식은\n$$2^{-f(x)}>2^{-g(x)}\\iff-f(x)>-g(x)\\iff f(x)<g(x).$$\n정수 $x$는 $-1,0,1,\\ldots$만 가능하다.\n\n**① $-1\\le x\\le4$인 정수:** $f$와 $g$는 모두 증가함수이다. 따라서\n$$f(x)\\le f(4)=2^{4-2}-2=4-2=2,$$\n$$g(x)\\ge g(-1)=\\log_2 1+2=2.$$\n$f(x)=2$가 되려면 $x=4$, $g(x)=2$가 되려면 $x=-1$이어야 하므로 **같은 $x$에서 두 등호가 동시에 성립하지 않는다**. 따라서 이 범위에서는 항상 $f(x)<g(x)$이고, 정수는 $-1,0,1,2,3,4$의 **6개**이다.\n\n**② $x\\ge5$인 정수:** 먼저 $x=5$를 확인한다.\n$$f(5)=2^3-2=6,\\qquad g(5)=2+\\log_2 7<2+3=5.$$\n따라서 $f(5)>g(5)$이다. 이제 정수 $x\\ge5$가 $1$씩 커질 때 두 함수가 얼마나 증가하는지 비교한다.\n$$f(x+1)-f(x)=2^{x-1}-2^{x-2}=2^{x-2}\\ge8,$$\n$$g(x+1)-g(x)=\\log_2(x+3)-\\log_2(x+2)=\\log_2\\left(1+\\frac1{x+2}\\right)<1.$$\n즉 한 칸 증가할 때마다 $f$는 $8$ 이상 증가하지만 $g$는 $1$보다 작게 증가한다. 이미 $x=5$에서 $f>g$이므로 그 뒤에도 $f(x)>g(x)$가 유지된다. 이 범위에는 해가 없다.\n\n따라서 조건을 만족하는 정수는 $-1,0,1,2,3,4$이고, 구하는 개수는 **6개**이다."
+    "solution": "먼저 두 함수가 **같은 $x$에서 정의되는 범위**를 확인한다. $f(x)=2^{x-2}-2$는 모든 실수에서 정의되고, $f(x)>-2$이므로 역함수의 정의역은 $x>-2$이다.\n$$g(x)=f^{-1}(x)=\\log_2(x+2)+2\\qquad(x>-2).$$\n$\\left(\\frac12\\right)^{f(x)}=2^{-f(x)}$이고 밑 $2>1$이므로 원래 부등식은\n$$2^{-f(x)}>2^{-g(x)}\\iff-f(x)>-g(x)\\iff f(x)<g(x).$$\n정수 $x$는 $-1,0,1,\\ldots$만 가능하다.\n\n**① $-1\\le x\\le4$인 정수:** $f$와 $g$는 모두 증가함수이다. 따라서\n$$f(x)\\le f(4)=2^{4-2}-2=4-2=2,$$\n$$g(x)\\ge g(-1)=\\log_2 1+2=2.$$\n$f(x)=2$가 되려면 $x=4$, $g(x)=2$가 되려면 $x=-1$이어야 하므로 **같은 $x$에서 두 등호가 동시에 성립하지 않는다**. 따라서 이 범위에서는 항상 $f(x)<g(x)$이고, 정수는 $-1,0,1,2,3,4$의 **6개**이다.\n\n**② $x\\ge5$인 정수:** 먼저 $x=5$를 확인한다.\n$$f(5)=2^3-2=6,\\qquad g(5)=2+\\log_2 7<2+3=5.$$\n따라서 $f(5)>g(5)$이다. 이제 정수 $x\\ge5$가 $1$씩 커질 때 두 함수가 얼마나 증가하는지 비교한다.\n$$f(x+1)-f(x)=2^{x-1}-2^{x-2}=2^{x-2}\\ge8,$$\n$$g(x+1)-g(x)=\\log_2(x+3)-\\log_2(x+2)=\\log_2\\left(1+\\frac1{x+2}\\right)<1.$$\n즉 한 칸 증가할 때마다 $f$는 $8$ 이상 증가하지만 $g$는 $1$보다 작게 증가한다. 이미 $x=5$에서 $f>g$이므로 그 뒤에도 $f(x)>g(x)$가 유지된다. 이 범위에는 해가 없다.\n\n따라서 조건을 만족하는 정수는 $-1,0,1,2,3,4$이고, 구하는 개수는 **6개**이다.",
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선 f, 주황 로그곡선 g, 점선 y=x가 그려져 있다. 점 P(−1,2), Q(4,2), R(5,6)과 가로선 y=2가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=2의 (x−2)제곱−2의 역함수는 g(x)=로그₂(x+2)+2이다. 부등식은 f(x)<g(x)로 정리되고, 정수 x=−1, 0, 1, 2, 3, 4에서 성립한다. x가 5 이상이면 f의 증가폭이 더 커져 f(x)>g(x)가 유지된다. 따라서 답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

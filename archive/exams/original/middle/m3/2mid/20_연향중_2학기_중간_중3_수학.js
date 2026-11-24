@@ -500,7 +500,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "사각형을 대각선으로 나눠 두 삼각형의 삼각비 넓이를 합한다.",
-    "decisiveStep": "150°의 보각30°로 높이 √13/2를 구해 넓이 ABD=√13/2, 넓이 BCD=6√3을 얻는다."
+    "decisiveStep": "150°의 보각30°로 높이 √13/2를 구해 넓이 ABD=√13/2, 넓이 BCD=6√3을 얻는다.",
+    "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD에 대각선 BD가 점선으로 그어져 있고 삼각형 ABD는 주황색, 삼각형 BCD는 파란색으로 칠해져 있다. 각 A에는 150도, 각 C에는 60도 표시가 있고 네 변의 길이가 적혀 있다.",
+    "solutionImageCaption": "대각선 BD로 사각형을 삼각형 ABD와 삼각형 BCD로 나눈다. 삼각형 ABD는 두 변 √13, 2와 끼인각 150도이므로 넓이가 √13/2이고, 삼각형 BCD는 두 변 6, 4와 끼인각 60도이므로 넓이가 6√3이다. 두 넓이의 합은 √13/2+6√3 cm²이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

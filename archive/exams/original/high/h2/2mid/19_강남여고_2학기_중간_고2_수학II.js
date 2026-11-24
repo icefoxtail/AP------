@@ -90,7 +90,11 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "subUnit": "함수의 극한",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 조각으로 이루어진 그래프이다. 왼쪽 조각은 (-2,-1)에서 (0,1)로 올라가고, 가운데 조각은 x축 위 0부터 1까지이며, 오른쪽 조각은 (1,2)에서 시작해 (3,5)까지 올라간다.",
+    "solutionImageCaption": "x가 0에 왼쪽에서 가까워질 때 그래프는 y=x+1을 따라 1에 가까워지고, x가 1에 오른쪽에서 가까워질 때 그래프는 y=(3/2)x+1/2를 따라 2에 가까워진다. 따라서 구하는 값은 1-2=-1이다. 실제 함수값 f(0)=0, f(1)=0은 극한과 별개이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -831,7 +835,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선 위의 점 A와 점 P가 있고, 두 점을 지나는 직선 l이 가로축 왼쪽의 점 Q에서 만나며 A에서 접하는 더 가파른 직선 t가 함께 그려진 그래프이다.",
+    "solutionImageCaption": "예: t=8일 때를 그린다. A(2,2)이고 P(8,4)를 지나는 직선 l은 기울기가 (4-2)/(8-2)=1/3이며 x축과 Q(-4,0)에서 만나 f(8)=-4이다. 일반적으로 f(t)=-√(2t)이다. P가 A로 가까워지면 l이 A에서의 접선 t(기울기 1/2)로 가까워지고 x절편이 -2로 모인다. 따라서 극한은 -2이고 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

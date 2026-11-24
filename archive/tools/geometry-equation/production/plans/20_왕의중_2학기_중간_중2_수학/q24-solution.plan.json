@@ -1,0 +1,73 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A 맞힘",
+          "p": "5/6",
+          "children": [
+            {
+              "label": "B 맞힘",
+              "p": "4/5"
+            },
+            {
+              "label": "B 틀림",
+              "p": "1/5"
+            }
+          ]
+        },
+        {
+          "label": "A 틀림",
+          "p": "1/6",
+          "children": [
+            {
+              "label": "B 맞힘",
+              "p": "4/5"
+            },
+            {
+              "label": "B 틀림",
+              "p": "1/5"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "A 맞힘",
+          "B 틀림"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A 틀림",
+          "B 맞힘"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "신호 A를 맞힐 확률은 5/6, 틀릴 확률은 1/6이고 신호 B를 맞힐 확률은 4/5, 틀릴 확률은 1/5이다. A를 맞히고 B를 틀릴 확률은 5/6 × 1/5 = 1/6, A를 틀리고 B를 맞힐 확률은 1/6 × 4/5 = 2/15이다. 두 경우는 동시에 일어나지 않으므로 1/6 + 2/15 = 5/30 + 4/30 = 9/30 = 3/10이다. 따라서 답은 3/10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 4. 어떤 실험용 로봇이 A와 B 두 신호를 알아맞힐 확률이 각각 $\\dfrac{5}{6}$와 $\\dfrac{4}{5}$라고 한다. A와 B 두 신호를 보냈을 때, 이 로봇이 두 신호 중에서 하나만 알아맞힐 확률을 구하시오. [6점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A를 맞힐 확률 5/6, A를 틀릴 확률 1/6, B를 맞힐 확률 4/5, B를 틀릴 확률 1/5",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 단계는 신호 A의 맞힘 5/6과 틀림 1/6, 둘째 단계는 신호 B의 맞힘 4/5와 틀림 1/5로 갈라지는 두 단계 수형도이다.",
+    "경우 1(파란 경로)의 경로 확률 1/6과 경우 2(주황 경로)의 경로 확률 2/15가 잎 오른쪽에 나란히 표시된다."
+  ]
+}

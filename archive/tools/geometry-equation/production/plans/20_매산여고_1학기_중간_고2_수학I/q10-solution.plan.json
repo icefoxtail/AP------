@@ -1,0 +1,52 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "3",
+    "coefficients": [
+      "1",
+      "1",
+      "-1"
+    ],
+    "shiftX": "3",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      5,
+      -3,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "수평점근선이 y=-1이므로 b=-1이다. 그래프가 x축과 만나는 점의 x좌표가 3이므로 3의 3+a제곱=1에서 a=-3이다. 따라서 a+b=-4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "밑이 3인 지수곡선이 오른쪽 위로 증가하고, 수평점근선 y=-1과 x축 위의 점 (3, 0)이 보인다.",
+  "newVisualInformation": [
+    "밑이 3인 지수곡선과 수평점근선 y=-1",
+    "x축과 만나는 점 (3, 0)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 함수 $y=3^{x+a}+b$의 그래프가 다음 그림과 같고 직선 $y=-1$이 이 그래프의 점근선일 때, 상수 $a, b$의 값의 합 $a+b$를 구하면? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

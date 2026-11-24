@@ -488,7 +488,11 @@ window.questionBank = [
     "bindingOwnerPack": "PROBABILITY_STATISTICS",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "면의 번호 1, 2, 3, 4, 5, 6은 각각 30°, 45°, 60°, 90°, 180°, 270°에 대응한다. 첫 번째 눈이 a, 두 번째 눈이 b인 6×6 표에서 sin a와 cos b의 곱이 양수인 칸을 칠했다. sin a>0은 번호 1~4, cos b>0은 번호 1~3이므로 4×3=12칸이고, sin a<0은 번호 6, cos b<0은 번호 5이므로 1칸이다. 모두 13칸이므로 확률은 13/36이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

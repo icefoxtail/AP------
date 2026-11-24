@@ -757,7 +757,11 @@ window.questionBank = [
     "questionUidProvisional": "qid_candidate_9893b0850bcd79a9da275211a9d8baa149331cef",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "판별식은 4(a−2)(a−5)이므로 a=1, 6에서 X=2, a=2, 5에서 X=1, a=3, 4에서 X=0이다. 세 값의 확률이 모두 1/3이므로 X의 분산은 2/3이고, 3X+5의 분산은 9 곱하기 2/3, 즉 6이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

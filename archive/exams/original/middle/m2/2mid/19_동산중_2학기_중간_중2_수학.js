@@ -238,7 +238,11 @@ window.examData = {
       "$10\\text{cm}^2$"
     ],
     "answer": "",
-    "solution": ""
+    "solution": "",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 변 AB 위에 점 E가 있고, E에서 D로 수선 ED가 그어져 있으며 D는 BC 위에 있다. AE와 AC에 4cm, DC에 2cm, BD에 4cm가 표시되고 ∠EAD=30°, E와 C에 직각 표시가 있다.",
+    "solutionImageCaption": "직각삼각형 ADC에서 tan∠DAC=DC/AC=2/4=1/2이다. ∠EAD=30°이므로 ∠BAC=30°+∠DAC이고, 이를 이용하면 BC=6이 되어 BD=BC-DC=6-2=4이다. 따라서 삼각형 ADB의 넓이는 1/2×BD×AC=1/2×4×4=8이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -335,7 +339,11 @@ window.examData = {
       "$24\\text{cm}$"
     ],
     "answer": "",
-    "solution": ""
+    "solution": "",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 외심 O가 있고, O에서 변 AB와 AC에 내린 수선과 그 발의 직각 표시가 있다. 두 수선의 길이는 각각 3센티미터와 4센티미터이고, OA=OB=OC와 두 변이 이등분된 표시가 있다.",
+    "solutionImageCaption": "O가 외심이므로 OA=OB=OC이고, O에서 변 AB, AC에 내린 수선은 그 변을 각각 이등분한다. 그림에서 O가 BC 위에 있으므로 BC는 외접원의 지름이고 각 A는 직각이다. 수선의 길이가 3센티미터, 4센티미터이므로 AC=6, AB=8이고 BC=10이다. 따라서 둘레의 길이는 6+8+10=24센티미터이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -454,7 +462,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "세 이등분각과 내심각 합",
-    "decisiveStep": "그림의 두 밑각 절반으로 BIC와 꼭지각의 절반 x를 구하여 합한다."
+    "decisiveStep": "그림의 두 밑각 절반으로 BIC와 꼭지각의 절반 x를 구하여 합한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 내심 I가 있고 A, B, C에서 I로 선분이 그어져 있다. B의 각 25°, C의 각 30°, 꼭짓점 A의 x, I의 각 125°가 표시되어 있다.",
+    "solutionImageCaption": "내심이므로 BI와 CI는 각각 ∠B와 ∠C의 이등분선이다. ∠IBC=25°, ∠ICB=30°에서 ∠B=50°, ∠C=60°이므로 ∠A=70°이고 x=∠BAI=35°이다. 또 ∠BIC=90°+35°=125°이므로 x+∠BIC=35°+125°=160°이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -585,7 +597,11 @@ window.examData = {
       "l4": "평행사변형의 대각선 성질"
     },
     "primaryMethod": "대각선의 이등분과 대변 길이",
-    "decisiveStep": "AO,OD를 각각 대각선의 절반으로 읽고 AD=BC를 써 세 변을 더하는 형식이다."
+    "decisiveStep": "AO,OD를 각각 대각선의 절반으로 읽고 AD=BC를 써 세 변을 더하는 형식이다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고, 선분 AO와 OD에 각각 4와 6, 변 BC와 AD에 10이 표시되어 있다.",
+    "solutionImageCaption": "평행사변형의 두 대각선은 서로 다른 것을 이등분하므로 AO=AC/2=4cm이고 OD=BD/2=6cm이다. 또 AD=BC=10cm이므로 삼각형 AOD의 둘레의 길이는 4+6+10=20cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

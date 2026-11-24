@@ -1,0 +1,65 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "showUniverse": false,
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "X",
+        "count": "6",
+        "countUnit": "개"
+      }
+    ],
+    "subset": [
+      "A",
+      "B",
+      "X"
+    ],
+    "elements": [
+      {
+        "text": "가",
+        "in": [
+          "A",
+          "B",
+          "X"
+        ]
+      },
+      {
+        "text": "나",
+        "in": [
+          "B",
+          "X"
+        ]
+      },
+      {
+        "text": "다",
+        "in": [
+          "X"
+        ]
+      }
+    ],
+    "shade": "B-A"
+  },
+  "caption": "집합 X의 각 원소는 A에 속하는 경우, B에는 속하지만 A에는 속하지 않는 경우, B에도 속하지 않는 경우의 세 가지 상태 중 하나를 가진다. 그림에서 가는 A에 속하는 경우, 나는 B에만 속하는 경우, 다는 X에만 속하는 경우를 나타낸다. X의 원소 6개가 각각 세 상태를 독립적으로 가지므로 3을 여섯 번 곱한 729가지다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원소의 개수가 6개인 집합 $X$ 에 대하여 집합 $A, B$ 는 집합 $X$ 의 부분집합이라고 할 때, $A \\subset B \\subset X$ 를 만족시키는 집합 $A, B$ 의 개수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "집합 X의 원소는 6개이고 A와 B는 X의 부분집합이며 A는 B에 포함된다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "X 안에 B가, B 안에 A가 차례로 들어간 세 원을 그리고 가·나·다로 세 상태의 영역을 표시하며 X의 원소 개수 6개를 함께 쓴다."
+  ]
+}

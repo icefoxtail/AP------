@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "p",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=x"
+      },
+      {
+        "id": "n",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=-x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: a=1과 a=-1인 두 직선을 비교하면, a가 양수일 때는 오른쪽 위로, 음수일 때는 오른쪽 아래로 향한다. x가 증가할 때 y도 증가하는 것은 a가 양수일 때뿐이므로 ④는 옳지 않다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "원점을 지나는 파란 직선 y=x와 주황 직선 y=-x가 서로 반대 방향으로 뻗는다.",
+  "newVisualInformation": [
+    "양수 기울기와 음수 기울기의 직선 방향을 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 일차함수 $y=ax(a \\neq 0)$에 대한 설명으로 옳지 않은 것을 고르면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

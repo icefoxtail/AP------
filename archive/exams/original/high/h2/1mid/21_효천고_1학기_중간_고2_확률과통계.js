@@ -239,7 +239,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "primaryMethod": "순열",
-    "decisiveStep": "7면 색칠 5회전 동치"
+    "decisiveStep": "7면 색칠 5회전 동치",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 오각뿔대의 윗면과 아랫면, 다섯 옆면이 보이고, 뒤쪽의 보이지 않는 모서리는 점선으로 나타나 있다.",
+    "solutionImageCaption": "오각뿔대의 면은 윗면, 아랫면, 옆면 5개로 모두 7개이다. 서로 다른 7가지 색을 모두 쓰므로 고정된 색칠은 7!가지이다. 중심축 둘레의 5가지 회전을 같은 것으로 보면 7! 나누기 5는 1008가지이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -708,7 +712,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "primaryMethod": "이항계수",
-    "decisiveStep": "파스칼 삼각형 음영 2n 합"
+    "decisiveStep": "파스칼 삼각형 음영 2n 합",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파스칼의 삼각형 수 배열에서 왼쪽 안쪽과 오른쪽 안쪽의 두 줄기가 파랑과 주황 선으로 이어져 있다.",
+    "solutionImageCaption": "첫째 줄은 두 칸의 합이 2, 둘째 줄은 가운데 한 칸만 칠해져 합이 2이고 이 한 칸을 두 번 세면 안 된다. 셋째 줄부터 여덟째 줄까지는 각 줄에서 두 칸의 합이 2n이므로 전체 합은 2+2+2(3+4+5+6+7+8)=4+66=70이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -801,7 +809,11 @@ window.questionBank = [
     "wide": false,
     "sourceAmbiguity": "ORIGINAL_PDF_AUTHORITY_CHECK_REQUIRED",
     "primaryMethod": "조합",
-    "decisiveStep": "원소별 A/B/X 소속 3상태"
+    "decisiveStep": "원소별 A/B/X 소속 3상태",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "집합 X의 각 원소는 A에 속하는 경우, B에는 속하지만 A에는 속하지 않는 경우, B에도 속하지 않는 경우의 세 가지 상태 중 하나를 가진다. 그림에서 가는 A에 속하는 경우, 나는 B에만 속하는 경우, 다는 X에만 속하는 경우를 나타낸다. X의 원소 6개가 각각 세 상태를 독립적으로 가지므로 3을 여섯 번 곱한 729가지다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
