@@ -262,6 +262,18 @@ test('canOffer: the card only needs the small index and the wrong numbers\' orig
   assert.equal(Type.canOffer(world.index, mixedExam(), []), false);
 });
 
+test('teacher view: type-based similar items (uid key, source number in src) show on the same "유사" line as same-number ones', () => {
+  const Ws = require('../apmath/js/ws-self-study.js');
+  const items = [
+    { k: uid(2), u: uid(2), src: 4, r: 'c', why: null, n: 1, t: '2026-11-24T01:00:00Z' },
+    { k: uid(3), u: uid(3), src: 4, r: 'w', why: 'calc', n: 1, t: '2026-11-24T01:01:00Z' },
+    { k: uid(5), u: uid(5), src: 7, r: 'u', why: null, n: 1, t: '2026-11-24T01:02:00Z' },
+  ];
+  const summary = Ws.summarizeClass({ rows: [{ sid: 's1', name: '학생', pending: false, wrongs: [4, 7] }], selfStudy: [{ student_id: 's1', assignment_id: 'a1', kind: 'similar', total: 3, correct: 1, wrong: 2, items }], available: true });
+  assert.equal(summary.byStudent.s1.text, '유사 1/3');
+  assert.deepEqual(summary.stillWrong.map((row) => row.no).sort((a, b) => a - b), [4, 7], 'the original question number is kept (src)');
+});
+
 // ---- 포털 연결 ----
 test('portal wiring: the type script loads after the similar one, the button also covers exams without a similar paper, "more" is a bottom action', () => {
   assert.match(html, /<script src="\.\/self-study-similar\.js\?v=[^"]+"><\/script>\s*<script src="\.\/self-study-type\.js\?v=[^"]+"><\/script>/);
