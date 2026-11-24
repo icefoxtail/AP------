@@ -341,6 +341,9 @@ test('출제 내역·보관함 open without the question shards, and 빠른 평�
   assert.match(prefetch, /Boot\?\.warmBlocked\?\.\(\)/);
   assert.match(prefetch, /loader\.loadShards\(/);
   assert.doesNotMatch(prefetch, /loadCatalog|ensureCatalog|state\.catalog =/);
+  // pressing (any device) or hovering with a mouse (only where the idle prefetch is allowed) on 문제지 만들기 starts the same fetch a moment early
+  assert.match(prefetch, /function startComposeOnIntent\(event\) \{[\s\S]*?event\.type === "pointerover" && \(event\.pointerType !== "mouse" \|\| Boot\?\.warmBlocked\?\.\(\)\)\) return;\s*fetchComposeShards\(\);/);
+  assert.match(prefetch, /addEventListener\("pointerdown", startComposeOnIntent/);
   // 빠른 평가: the grade is quickState.grade; none chosen yet = nothing needed (it used to be everything)
   assert.match(main, /const composeOnly = \(state\.view === "compose" \|\| isQuickAssessmentView\(\)\)/);
   assert.match(main, /const grade = quick \? quickState\.grade : state\.filters\?\.grade;\s*if \(grade\) need\.grades\.push\(grade\); else if \(!quick\) need\.all = true;/);

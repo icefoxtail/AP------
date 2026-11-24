@@ -2305,13 +2305,26 @@
   function prefetchComposeShards() {
     if (!shardsOn() || Boot?.warmBlocked?.()) return;
     setTimeout(() => {
-      try {
-        if (!shardsOn() || Boot?.warmBlocked?.() || state.catalog) return;
-        const loader = shardLoader();
-        loader.loadShards(loader.keysFor({ grades: [state.filters?.grade || "고1"], exams: [] }).keys).catch(() => {});
-      } catch { /* 미리 받기는 실패해도 눌렀을 때 받는다 */ }
+      if (!shardsOn() || Boot?.warmBlocked?.() || state.catalog) return;
+      fetchComposeShards();
     }, WARM_DELAY_MS);
   }
+  function fetchComposeShards() {
+    try {
+      const loader = shardLoader();
+      loader.loadShards(loader.keysFor({ grades: [state.filters?.grade || "고1"], exams: [] }).keys).catch(() => {});
+    } catch { /* 미리 받기는 실패해도 눌렀을 때 받는다 */ }
+  }
+  // 출제 내역·보관함에서 "문제지 만들기"로 가려는 손: 터치·마우스를 누르는 순간(pointerdown)은 곧 올 클릭이 받을 것을 조금 일찍 시작할 뿐이라
+  // 휴대폰도 같고, 마우스를 올린 것(pointerover)은 누를지 모르니 미리 받기와 같은 판정(warmBlocked)을 따른다.
+  function startComposeOnIntent(event) {
+    if ((state.view !== "recent" && state.view !== "saved") || state.catalog || !shardsOn()) return;
+    if (!(event.target instanceof Element && event.target.closest('[data-view="compose"]'))) return;
+    if (event.type === "pointerover" && (event.pointerType !== "mouse" || Boot?.warmBlocked?.())) return;
+    fetchComposeShards();
+  }
+  document.addEventListener("pointerover", startComposeOnIntent, { passive: true });
+  document.addEventListener("pointerdown", startComposeOnIntent, { passive: true });
   async function loadCatalog() {
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
