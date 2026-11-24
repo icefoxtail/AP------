@@ -22,6 +22,8 @@ export const noteCandidate=({site='figure',svg,violations,errors})=>{
   return acceptCompose(st.current.violations);
 };
 export const takeCandidate=()=>state().current;
+// The room ladder (render-plan) tries more plans after the figure failed; when none composes, the failure is the one it had before, so its candidate is too.
+export const restoreCandidate=previous=>{state().current=previous??null;};
 
 export const enableScoredAcceptance=(on=true)=>{state().acceptance=on?{compose:[],archive:[]}:null;};
 export const scoredAcceptanceEnabled=()=>state().acceptance!==null;

@@ -3,7 +3,9 @@
 import test from 'node:test';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-import {ROOM_STEPS, orderSteps, runRoomLadder, selfLeader, ringCandidates, placeWithLeader, staggerRows, marginNeeded, degradeCollector, bestEffortRecord, overlapArea, boxesTouch} from '../production/label-room.mjs';
+import {ROOM_STEPS, orderSteps, runRoomLadder, selfLeader, ringCandidates, placeWithLeader, staggerRows, marginNeeded, degradeCollector, bestEffortRecord, overlapArea, boxesTouch, CONSTRUCTION_ROOM_CODES, CONSTRUCTION_ROOM_STEPS, constructionLeaderPlan, constructionMarginPlan, constructionDimensionPlan, CONSTRUCTION_DIMENSION_OFFSETS} from '../production/label-room.mjs';
+import {ROOM_PADS} from '../production/phase2.mjs';
+import {isPlaneFigure} from '../production/plane-marks.mjs';
 import {STANDALONE_KINDS} from '../production/standalone-kinds.mjs';
 import {solveStatChart, statChartSize} from '../production/stat-chart-v1.mjs';
 import {placeLabels} from '../production/ellipse-figure-v1.mjs';
@@ -164,4 +166,52 @@ test('roomGrow: any stat chart gets that many px more frame at the right and bot
   assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: undefined}), plain);
   assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: {right: 0, bottom: 6}}), {width: plain.width, height: plain.height + 6});
   assert.deepEqual(statChartSize(model, {fontPx: 21, roomGrow: {right: 9, bottom: 0}}), {width: plain.width + 9, height: plain.height});
+});
+
+// ---- the plane construction figure (R2): LEADER rewrites the placement of the marks that stand inside their mark, MARGIN grows the frame ---------------------------------------------------------------
+const constructionPlan = () => ({capability: 'construction-spike-v1', mathPlan: {realization: {recipeId: 'PLANE_FIGURE_v1'}}, planeMarks: {
+  regions: [{id: 'rABC', label: '48', labelName: '△ABC', unit: 'cm^2'}, {id: 'rK', label: '3', labelPlacement: 'LEADER'}, {id: 'rQ', label: '5', labelPlacement: 'AUTO'}, {id: 'rNo'}],
+  angles: [{id: 'a1', label: 'x'}, {id: 'a2', label: 'y', noLabel: true}, {id: 'a3', label: '60', labelPlacement: 'LEADER'}],
+  arcs: [{id: 'arc1', label: '8π'}], dimensions: [{id: 'd1', label: '5'}]}});
+
+test('construction room: the steps are the two a plan can answer, in the fixed order, started only by the failure a label without a place gives', () => {
+  assert.deepEqual([...CONSTRUCTION_ROOM_STEPS], ['LEADER', 'MARGIN']);
+  assert.deepEqual(orderSteps(CONSTRUCTION_ROOM_STEPS), [...CONSTRUCTION_ROOM_STEPS]);
+  assert.deepEqual([...CONSTRUCTION_ROOM_CODES], ['LAYOUT_INVENTORY_INCOMPLETE']);
+  assert.deepEqual([...ROOM_PADS], [0.14, 0.24, 0.36]);
+});
+
+test('construction LEADER: a stuck region, angle or arc label that stands inside its mark goes out on its own leader; a label that already has a leader, no label at all or an unnamed row is left alone', () => {
+  const plan = constructionPlan(), before = JSON.stringify(plan);
+  const out = constructionLeaderPlan(plan, ['rABC-label', 'rK-label', 'a1-label', 'a2-label', 'a3-label', 'arc1-label', 'd1-label', 'A-name']);
+  assert.equal(JSON.stringify(plan), before, 'the plan argument is never changed');
+  assert.deepEqual(out.rows, [{array: 'regions', id: 'rABC', to: 'AUTO_LEADER'}, {array: 'angles', id: 'a1', to: 'LEADER'}, {array: 'arcs', id: 'arc1', to: 'LEADER'}]);
+  assert.equal(out.plan.planeMarks.regions[0].labelPlacement, 'AUTO_LEADER', 'a region value takes a leader only when it does not fit inside');
+  assert.equal(out.plan.planeMarks.regions[1].labelPlacement, 'LEADER');
+  assert.equal(out.plan.planeMarks.angles[0].labelPlacement, 'LEADER');
+  assert.equal(out.plan.planeMarks.angles[1].labelPlacement, undefined, 'an angle with noLabel has no label to lead out');
+  assert.deepEqual(out.plan.planeMarks.dimensions, plan.planeMarks.dimensions, 'a dimension has no leader placement: untouched');
+  assert.equal(constructionLeaderPlan(plan, ['rK-label', 'a3-label', 'd1-label', 'B-name']), null, 'no row that can take a leader: nothing to try');
+  assert.equal(constructionLeaderPlan(plan, []), null);
+  assert.equal(constructionLeaderPlan({mathPlan: {}}, ['rABC-label']), null);
+  assert.deepEqual(constructionLeaderPlan(plan, [{id: 'rQ-label'}, 'rNo-label']).rows, [{array: 'regions', id: 'rQ', to: 'AUTO_LEADER'}], 'AUTO is the same as no placement; a region without a label has nothing to move');
+});
+
+test('construction MARGIN: only a plane figure gets roomPad, the frame padding of the figure grows with it, and the plan without it keeps its frame', () => {
+  const plan = constructionPlan();
+  assert.equal(constructionMarginPlan(plan, 0.24, isPlaneFigure).roomPad, 0.24);
+  assert.equal(plan.roomPad, undefined, 'a copy');
+  assert.equal(constructionMarginPlan({...plan, mathPlan: {realization: {recipeId: 'SOURCE_COORDINATE_AXES_v1'}}}, 0.24, isPlaneFigure), null, 'a coordinate figure keeps its own wider frame');
+  assert.equal(constructionMarginPlan({...plan, graphPlan: {}}, 0.24, isPlaneFigure), null);
+});
+
+test('construction MARGIN, dimension lines: every dimension line that stands nearer than offsetPx moves out to it (an INLINE one stays on its segment), a copy; none that can move: null', () => {
+  assert.deepEqual([...CONSTRUCTION_DIMENSION_OFFSETS], [40, 60]);
+  const plan = {planeMarks: {dimensions: [{id: 'd1', label: '5'}, {id: 'd2', label: '6', offsetPx: 50}, {id: 'd3', label: '7', style: 'INLINE'}, {id: 'd4', label: '8', offsetPx: 24}]}};
+  const before = JSON.stringify(plan), out = constructionDimensionPlan(plan, 40);
+  assert.equal(JSON.stringify(plan), before);
+  assert.deepEqual(out.planeMarks.dimensions.map(row => row.offsetPx), [40, 50, undefined, 40]);
+  assert.equal(constructionDimensionPlan(out, 40), null, 'already out there');
+  assert.equal(constructionDimensionPlan({planeMarks: {}}, 40), null);
+  assert.equal(constructionDimensionPlan(constructionPlan(), 40).planeMarks.dimensions[0].offsetPx, 40);
 });

@@ -10,7 +10,7 @@ import fs from 'node:fs';import path from 'node:path';import crypto from 'node:c
 import {pythonWorker,closeWorkers} from './worker.mjs';
 import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
-import {specFor} from './phase2.mjs';
+import {specFor,ROOM_PADS} from './phase2.mjs';
 import {isPlaneFigure,inferNestedAngleOver,defaultHangulLabelKinds} from './plane-marks.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import * as cap from './construction-archive-capture-v1.mjs';
@@ -28,12 +28,13 @@ import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
 import {standaloneKindFor,runStandaloneKind} from './standalone-kinds.mjs';
+import {runRoomLadder,CONSTRUCTION_ROOM_CODES,CONSTRUCTION_ROOM_STEPS,constructionLeaderPlan,constructionMarginPlan,constructionDimensionPlan,CONSTRUCTION_DIMENSION_OFFSETS} from './label-room.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
 import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
 import {runExamBatch} from './exam-batch.mjs';
-import {resetCandidate,takeCandidate,enableScoredAcceptance,takeScoredAcceptance,withScoreState} from './score-candidate.mjs';
+import {resetCandidate,takeCandidate,restoreCandidate,enableScoredAcceptance,takeScoredAcceptance,withScoreState} from './score-candidate.mjs';
 import {scoreFigure} from '../ops/score/score.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -114,7 +115,7 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
   };
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord(),bestEffort:row.bestEffort,roomTrace:row.roomTrace};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,ignoredAuthoredFields:row.ignoredAuthoredFields,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix,...candidateRecord(),...acceptedRecord(),bestEffort:row.bestEffort,roomTrace:row.roomTrace};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -131,6 +132,9 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
       authored=JSON.parse(fs.readFileSync(authored,'utf8'));
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
+    // roomPad is the frame padding only the label-room rescue below sets (phase2 ROOM_PADS) and the bound plan of a rescued figure keeps it. A plan that carries it (a rescued figure rendered again, or an author's) is not refused: the first try starts without it
+    // (so its frame is the written one) and the ladder puts it back when the figure fails again, so the same figure comes out. The result row says it was ignored.
+    if(authored.roomPad!==undefined){const {roomPad:_ignored,...rest}=authored;authored=rest;(row.ignoredAuthoredFields??=[]).push('roomPad');}
     where.authored=where.plan=authored;
     // A curve label {hidden:true,reason:"ANSWER",name} is the neutral-name label the plan stands for (hidden-curve-label.mjs); plans without it pass through untouched.
     {const hiddenLabels=expandHiddenCurveLabels(authored);if(hiddenLabels.notes.length){authored=hiddenLabels.plan;row.hiddenFormulaLabels=hiddenLabels.notes;}}
@@ -404,6 +408,33 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
       let last=null;
       try{last=await attempt(plan,'-last',true);}catch{last=null;}
       if(last&&last.composed.status==='COMPOSED'){(row.fallback??=[]).push({from:clip(composed.detail),to:'LAYOUT_LAST_RESORT'});({size,measured,composed}=last);}
+    }
+    // (ROOM) label-room for a construction figure, only after every step above: the labels still without a place are led out on a leader to their own mark (LEADER: a region value, an angle value or an arc length the plan
+    // let stand inside its mark) and the frame round a plane figure grows (MARGIN: phase2 ROOM_PADS; the canvas keeps its size). A figure that composed before never gets here, and when nothing composes the failure stays as it was.
+    if(CONSTRUCTION_ROOM_CODES.includes(composed.status)&&plan.mathPlan&&!plan.graphPlan){
+      const stuckIds=(composed.detail?.unresolved||[]).concat(composed.detail?.suppressed||[]);
+      let leaderPlan=null;
+      const candidateBefore=takeCandidate();
+      const rescued=await runRoomLadder({kind:'construction',steps:CONSTRUCTION_ROOM_STEPS,codes:CONSTRUCTION_ROOM_CODES,first:{size,measured,composed,plan,model},row,clip,
+        apply:async step=>{
+          const tries=[];
+          if(step==='LEADER'){const l=constructionLeaderPlan(plan,stuckIds);if(l){leaderPlan=l;tries.push({plan:l.plan,suffix:'-roomLEADER',target:l.rows.map(r=>r.id)});}}
+          if(step==='MARGIN'){
+            // the dimension lines stand further out (names and labels between the figure and its dimension line get room), then the frame round the figure grows; each also on the plan LEADER rewrote
+            for(const offsetPx of CONSTRUCTION_DIMENSION_OFFSETS)for(const base of [plan,leaderPlan?.plan]){const p=base&&constructionDimensionPlan(base,offsetPx);if(p)tries.push({plan:p,suffix:'-roomDIM'+offsetPx+(base===plan?'':'L'),target:{dimensionOffsetPx:offsetPx,...(base===plan?{}:{leader:leaderPlan.rows.map(r=>r.id)})}});}
+          }
+          if(step==='MARGIN')for(const pad of ROOM_PADS)for(const base of [plan,leaderPlan?.plan]){const p=base&&constructionMarginPlan(base,pad,isPlaneFigure);if(p)tries.push({plan:p,suffix:'-roomMARGIN'+Math.round(pad*100)+(base===plan?'':'L'),target:{pad,...(base===plan?{}:{leader:leaderPlan.rows.map(r=>r.id)})}});}
+          // as written first, then once more with the last resort (a point name or a segment label may take a leader across a thin stroke) on the tries a plan can still compose with
+          for(const lastResort of [false,true])for(const t of tries){
+            if(lastResort&&!/^-room(LEADER|DIM)/.test(t.suffix))continue;
+            let out=null;try{out=await attempt(t.plan,t.suffix+(lastResort?'-last':''),lastResort);}catch{out=null;}
+            if(out&&out.composed.status==='COMPOSED')return {...out,plan:t.plan,target:{...(typeof t.target==='object'&&!Array.isArray(t.target)?t.target:{labels:t.target}),...(lastResort?{lastResort:true}:{})}};
+          }
+          return null;
+        }});
+      if(rescued.composed.status==='COMPOSED'){plan=rescued.plan;({size,measured,composed}=rescued);}
+      if(rescued.composed.status!=='COMPOSED')restoreCandidate(candidateBefore);   // the failure stays the one it was, with the candidate it had (score gate)
+      where.plan=plan;   // a failed rescue leaves the plan the failure guidance reads as it was before the ladder (never a rescue plan: AUTO_LEADER, roomPad), a composed one is the plan that is bound
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
     if(composed.status!=='COMPOSED'&&composed.bestEffort){

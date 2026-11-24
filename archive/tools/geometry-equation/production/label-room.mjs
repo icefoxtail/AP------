@@ -196,3 +196,60 @@ export function degradeCollector() {
 }
 /** The record row.bestEffort carries: the failure it stands for, the step that drew it and the measures. */
 export const bestEffortRecord = ({kind, failure, step, collector, file}) => ({kind, failure, step, degrees: collector.items, svgFile: file});
+
+// ---- the plane construction figure (a mathPlan figure with planeMarks) ------------------------------------------------------
+// A construction figure did not take part in the ladder: its layout (label_layout.py) already tries every place and leader a label may have, and a figure whose label found none was left to fail with
+// LAYOUT_INVENTORY_INCOMPLETE. The two steps below are the ones the plan itself can answer, always the same ones for every figure, never a label dropped:
+//   LEADER  a label the plan lets stand inside its mark (a region value, an angle value, an arc length) takes the placement that leads it out on a leader to its OWN mark
+//           (regions AUTO -> AUTO_LEADER: inside when it fits, outside on a leader from a dot inside the region when it does not; angles and arcs -> LEADER)
+//   MARGIN  the dimension lines stand further out (CONSTRUCTION_DIMENSION_OFFSETS px from their points, default 24: a point name or a label between the figure and its dimension line gets room), then more empty frame round the figure (phase2 ROOM_PADS, a share of the figure's span): the labels that stand outside it get the room the tight .06 frame did not leave. The canvas itself does not change,
+//           so the Archive measures the same size (the figure is a little smaller inside it).
+// Both only rewrite the plan the way an author could have written it; the observers judge the result as for any plan, and a figure that composed as written never comes here.
+export const CONSTRUCTION_ROOM_CODES = Object.freeze(['LAYOUT_INVENTORY_INCOMPLETE']);
+export const CONSTRUCTION_ROOM_STEPS = Object.freeze(['LEADER', 'MARGIN']);
+const labelIdOf = id => String(id?.id ?? id);
+
+/**
+ * The plan with the labels in `unresolved` (ids as the layout reports them: "<mark id>-label") led out on a leader, or null when no row of the plan can take one.
+ * Returns {plan, rows:[{array, id, to}]}: `plan` is a copy (the argument is never changed), `rows` names what was rewritten.
+ */
+export function constructionLeaderPlan(plan, unresolved) {
+  const marks = plan?.planeMarks;
+  if (!marks || typeof marks !== 'object') return null;
+  const stuck = new Set((unresolved ?? []).map(labelIdOf));
+  const rules = [['regions', row => row.label !== undefined && (row.labelPlacement === undefined || row.labelPlacement === 'AUTO'), 'AUTO_LEADER'],
+    ['angles', row => row.label !== undefined && row.noLabel !== true && (row.labelPlacement === undefined || row.labelPlacement === 'AUTO'), 'LEADER'],
+    ['arcs', row => row.label !== undefined && (row.labelPlacement === undefined || row.labelPlacement === 'AUTO'), 'LEADER']];
+  const rows = [], next = {...marks};
+  for (const [array, wanted, to] of rules) {
+    if (!Array.isArray(marks[array])) continue;
+    let touched = false;
+    const list = marks[array].map(row => {
+      if (!row || typeof row !== 'object' || typeof row.id !== 'string' || !stuck.has(`${row.id}-label`) || !wanted(row)) return row;
+      touched = true; rows.push({array, id: row.id, to});
+      return {...row, labelPlacement: to};
+    });
+    if (touched) next[array] = list;
+  }
+  return rows.length ? {plan: {...plan, planeMarks: next}, rows} : null;
+}
+
+/** The plan with `roomPad` (one of phase2 ROOM_PADS) set: the frame round a plane figure grows. A copy; null for a plan that has no such frame. */
+export function constructionMarginPlan(plan, pad, isPlane) {
+  if (!plan?.mathPlan || plan.graphPlan || !isPlane(plan)) return null;
+  return {...plan, roomPad: pad};
+}
+
+/** The dimension lines of a plan stand `offsetPx` from their points (the default is 24: a point name or a label between the figure and its dimension line has no room there). A copy; null when no dimension line can move out. */
+export const CONSTRUCTION_DIMENSION_OFFSETS = Object.freeze([40, 60]);
+export function constructionDimensionPlan(plan, offsetPx) {
+  const rows = plan?.planeMarks?.dimensions;
+  if (!Array.isArray(rows)) return null;
+  let moved = false;
+  const dimensions = rows.map(row => {
+    if (!row || typeof row !== 'object' || row.style === 'INLINE' || (row.offsetPx ?? 24) >= offsetPx) return row;
+    moved = true;
+    return {...row, offsetPx};
+  });
+  return moved ? {...plan, planeMarks: {...plan.planeMarks, dimensions}} : null;
+}

@@ -97,3 +97,54 @@ test('best place: a figure the steps do not rescue is still drawn, never bound, 
     assert.ok(degradeSet.items.some(item => item.code === 'OBSERVER_ERRORS' && item.errors.some(code => /LABEL_GEOMETRY_COLLISION/.test(code))), JSON.stringify(degradeSet.items));
   } finally { await browser.close(); }
 });
+
+// ---- the plane construction figure (R2): the ladder of render-plan after every older fallback, end to end (Chrome + python observers) ----------------------------------------------------
+// Each plan below failed with LAYOUT_INVENTORY_INCOMPLETE as DeepSeek wrote it (a label without a place); the render rescues it, records the step in row.fallback, and the observers still pass (ARCHIVE_BOUND).
+test('construction: a region value that does not fit inside its region goes out on a leader; a dimension line moves out for a label between it and the figure; the frame grows when nothing else helps', {timeout: 1800000}, async () => {
+  const run = async (file, name) => {
+    const out = fs.mkdtempSync(path.join(os.tmpdir(), 'label-room-'));
+    const result = await renderPlan({item: {sourcePath: 'archive/exams/original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', ordinal: 22, dir: name}, plan: fileURLToPath(new URL(`./label-room-plans/${file}.json`, import.meta.url)), outDir: out});
+    return result;
+  };
+  const roomStep = result => (result.fallback ?? []).find(f => /^ROOM_/.test(f.to));
+  const region = await run('construction-region-leader', 'region');
+  assert.equal(region.status, 'ARCHIVE_BOUND', JSON.stringify(region).slice(0, 600));
+  assert.equal(roomStep(region)?.to, 'ROOM_LEADER');
+  assert.match(roomStep(region).from, /rABC-label/, 'the label that had no place is recorded');
+  assert.deepEqual(roomStep(region).target.labels, ['rABC']);
+  const dim = await run('construction-dimension-offset', 'dim');
+  assert.equal(dim.status, 'ARCHIVE_BOUND', JSON.stringify(dim).slice(0, 600));
+  assert.equal(roomStep(dim)?.to, 'ROOM_MARGIN');
+  assert.ok(roomStep(dim).target.dimensionOffsetPx >= 40);
+  const pad = await run('construction-frame-pad', 'pad');
+  assert.equal(pad.status, 'ARCHIVE_BOUND', JSON.stringify(pad).slice(0, 600));
+  assert.equal(roomStep(pad)?.to, 'ROOM_MARGIN');
+  assert.ok(roomStep(pad).target.pad > 0 || roomStep(pad).target.dimensionOffsetPx > 0);
+});
+
+test('construction: a plan that carries roomPad is not refused: the first try ignores it (recorded), and a rescued figure rendered again from its bound plan comes out as the same SVG', {timeout: 1800000}, async () => {
+  const item = name => ({sourcePath: 'archive/exams/original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js', ordinal: 22, dir: name});
+  const render = async (p, name) => {
+    const out = fs.mkdtempSync(path.join(os.tmpdir(), 'label-room-'));
+    const result = await renderPlan({item: item(name), plan: p, outDir: out});
+    return {result, out, svg: fs.existsSync(path.join(out, name + '-solution.svg')) ? fs.readFileSync(path.join(out, name + '-solution.svg'), 'utf8') : null, state: fs.existsSync(path.join(out, name + '-state.json')) ? JSON.parse(fs.readFileSync(path.join(out, name + '-state.json'), 'utf8')) : null};
+  };
+  // a plan that fits as written ignores an author's roomPad: same SVG as without it, and the row says so
+  const fits = plan('stat-tree-branch-fraction');   // not a construction plan: no roomPad meaning, nothing to ignore
+  assert.equal(fits.roomPad, undefined);
+  for (const file of ['construction-frame-pad', 'construction-region-leader', 'construction-dimension-offset']) {
+    const first = await render(plan(file), file);
+    assert.equal(first.result.status, 'ARCHIVE_BOUND', file);
+    assert.equal(first.result.ignoredAuthoredFields, undefined);
+    // the bound plan is rendered again (a republish, a render after an engine change, a golden entry): never refused, the same figure
+    const again = await render(first.state.plan, file);
+    assert.equal(again.result.status, 'ARCHIVE_BOUND', file + ' ' + JSON.stringify(again.result).slice(0, 400));
+    assert.equal(again.svg, first.svg, file + ': the same SVG');
+    if (first.state.plan.roomPad !== undefined) assert.deepEqual(again.result.ignoredAuthoredFields, ['roomPad'], file);
+  }
+  // an author's roomPad on a plan the ladder rescues without a pad is dropped from the first try as well
+  const withPad = await render({...plan('construction-region-leader'), roomPad: 0.24}, 'with-pad');
+  assert.equal(withPad.result.status, 'ARCHIVE_BOUND');
+  assert.deepEqual(withPad.result.ignoredAuthoredFields, ['roomPad']);
+  assert.equal(withPad.svg, (await render(plan('construction-region-leader'), 'with-pad')).svg, 'same figure as the plan without roomPad');
+});

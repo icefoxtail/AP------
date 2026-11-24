@@ -131,9 +131,15 @@ def dependencies(node):
 
 def validate(graph):
     if graph.get('schemaVersion')!='construction-spike-v1' or set(graph)-{'schemaVersion','nodes','realization','conditionAudits'}: raise ValueError('UNSUPPORTED_GRAPH_SCHEMA')
+    if 'nodes' not in graph: raise ValueError('MATH_PLAN_NODES_REQUIRED')
     if not isinstance(graph['nodes'],list) or not 1<=len(graph['nodes'])<=64: raise ValueError('NODE_BUDGET')
     nodes={}
     for node in graph['nodes']:
+        # a node that leaves out a required field is refused by name (a bare KeyError reached the author as an unknown code); no default is filled in: GIVEN / CONCLUSION decides which values the figure may show
+        if not isinstance(node,dict) or 'id' not in node: raise ValueError('MATH_NODE_FIELD_REQUIRED:?:id')
+        for field in ('op','inputs','args','outputType'):
+            if field not in node: raise ValueError('MATH_NODE_FIELD_REQUIRED:'+str(node['id'])+':'+field)
+        if 'factRole' not in node: raise ValueError('MATH_NODE_FACT_ROLE_REQUIRED:'+str(node['id']))
         if set(node)-{'id','op','inputs','args','outputType','factRole','branch'} or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,31}',node['id']): raise ValueError('INVALID_NODE')
         if node['id'] in nodes: raise ValueError('DUPLICATE_NODE')
         if node['op'] not in SIGNATURES: raise ValueError('UNSUPPORTED_OPERATION')
