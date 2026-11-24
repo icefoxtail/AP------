@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,matchesReference,compilePatterns,fingerprint,indexRows,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -1047,4 +1047,34 @@ test('an applied request leaves the inbox without a refusal record and is not a 
   const result=await prepareRegistration(f.options);
   assert.equal(result.safeToPersist,true);
   assert.equal(git(f.root,'diff','--cached','--name-only','--','.archive-meta-register/inbox').split('\n').length,2);
+});
+
+// The compiled matcher replaced a RegExp-per-pattern-per-file loop (40 s of CPU per lane assessment). Same answer, same digests:
+// both are computed here in one run, never compared with a stored expectation.
+test('the compiled path matcher answers exactly like the original definition and fingerprints are byte-identical',()=>{
+  const patterns=['a/b.js','dir/','star/*.js','x*y','*/z.json','lit.er+al(1).js','dots.a.b','sl*/','tools/ci/*register*.paths','','*'];
+  const paths=['a/b.js','a/b.jsx','a/bxjs','dir/','dir/x','dire/x','star/q.js','star/a/b.js','star/q.json','xy','x/y','xzzy','p/z.json','z.json','a/z.json','lit.er+al(1).js','litter+al(1).js','dots.a.b','dotsXaXb',
+    'sl*/q','sl1/q','tools/ci/archive-x-register-y.paths','tools/ci/register.paths','tools/ci/registerxpaths','','weird [name]^$.js'];
+  for(const list of [patterns,...patterns.map(p=>[p]),[...patterns].reverse()]) {
+    const hit=compilePatterns(list);
+    for(const file of paths) {
+      assert.equal(hit(file),matchesReference(file,list),`${JSON.stringify(list)} vs ${file}`);
+      assert.equal(matches(file,list),matchesReference(file,list));
+    }
+  }
+  // The memo is keyed by array identity: editing the same array in place must not reuse the old answer.
+  const edited=['one/'];assert.equal(matches('one/x',edited),true);edited[0]='two/';assert.equal(matches('one/x',edited),false);assert.equal(matches('two/x',edited),true);
+  // The real index and the real lane policy: every lane's inputs and outputs, original matcher on every 10th tracked path.
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const rows=indexRows(root);
+  assert.ok(rows.length>1000);
+  for(const lane of nativeLanes(root)) {
+    for(const list of [lane.inputs,lane.outputs,...(lane.scopedInputs?[lane.scopedInputs]:[])]) {
+      const hit=compilePatterns(list),sample=new Set(rows.filter((r,i)=>i%10===0).map(r=>r.path));
+      for(const file of sample)assert.equal(hit(file),matchesReference(file,list),`${lane.id}: ${file}`);
+      const original=crypto.createHash('sha256').update(rows.filter(r=>r.path!==STATE&&sample.has(r.path)&&matchesReference(r.path,list)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
+        .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join('')).digest('hex');
+      assert.equal(fingerprint(rows.filter(r=>sample.has(r.path)),list),original,`${lane.id} fingerprint`);
+    }
+  }
 });
