@@ -701,11 +701,19 @@ for (const [name, mutate, error] of [
   ['changed problem text', f => { const x = f.manifest.items[0]; f.banks.get(x.sourcePath)[x.sourceOrdinal - 1].content += ' changed'; f.syncBanks(); }, /UI_PROBLEM_PAYLOAD_DRIFT/],
   ['changed choice', f => { const x = f.manifest.items[0]; f.banks.get(x.sourcePath)[x.sourceOrdinal - 1].choices.push('changed'); f.syncBanks(); }, /UI_PROBLEM_PAYLOAD_DRIFT/],
   ['changed presentation', f => { const x = f.manifest.items[0]; f.banks.get(x.sourcePath)[x.sourceOrdinal - 1].imageSize = 'small'; f.syncBanks(); }, /UI_PRESENTATION_DRIFT/],
-  ['same path asset mutation', f => { const p = f.manifest.items[0].assetPath; f.files.set(p, Buffer.concat([f.files.get(p), Buffer.from('changed')])); }, /UI_REVIEWED_ASSET_DRIFT/],
   ['wrong UID', f => { f.identities[0].questionUid = 'qid_v1_' + 'f'.repeat(64); f.syncIdentity(); }, /UI_IDENTITY_UID_MISMATCH/],
   ['duplicate identity', f => { f.identities.push(copy(f.identities[0])); f.syncIdentity(); }, /UI_UNIQUE_IDENTITY_RECORD/],
   ['wrong source ordinal', f => { const x = f.manifest.items[0]; f.banks.get(x.sourcePath)[x.sourceOrdinal - 1].id++; f.syncBanks(); }, /UI_QUESTION_ORDINAL_MISMATCH/]
 ]) test(`preflight rejects ${name}`, () => { const f = fixture(); mutate(f); assert.throws(() => checker.preflight(f.reader, f.manifest), error); });
+
+test('preflight accepts a redrawn figure at the same path and reports the actual bytes', () => {
+  // 2026-11-24: 그림 바이트는 승인 당시 값에 고정하지 않는다. 발문·보기·그림 포인터가 같으면 통과하고 실제 해시가 assetRef에 남는다.
+  const f = fixture(), p = f.manifest.items[0].assetPath, changed = Buffer.concat([f.files.get(p), Buffer.from('changed')]);
+  f.files.set(p, changed);
+  const result = checker.preflight(f.reader, f.manifest);
+  assert.equal(result.items[0].assetRef.sha256, checker.sha256(changed));
+  assert.notEqual(result.items[0].assetRef.sha256, f.manifest.items[0].assetSha256);
+});
 
 test('Git reader rejects local drift, untracked bytes, symlinks and event mismatch', t => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'problem-ui-git-'));
