@@ -62,7 +62,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "속도가 두 번 올라갔다 내려오는 그래프에 시속 100을 나타내는 수평선이 그려져 있고 수평선과 만나는 네 점 P1, P2, P3, P4가 표시되어 있다.",
+    "solutionImageCaption": "예: 가로축은 출발 후 시간(분), 세로축은 속도(km/h)로 그린 예시 속도 그래프이다. 속도는 시간에 따라 연속으로 변하므로 0에서 120(점 A)으로 오를 때, 120에서 0으로 내릴 때, 휴게소 뒤 0에서 110(점 B)으로 오를 때, 110에서 0으로 내려 집에 도착할 때 각각 수평선 시속 100과 만나는 점 P1, P2, P3, P4가 생긴다. 따라서 적어도 4번이고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -90,7 +94,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "원점에 대해 대칭인 꺾은선 그래프로 x축과 다섯 점 Z1, Z2, O, Z3, Z4에서 만나는 모습을 나타낸 그림이다.",
+    "solutionImageCaption": "예: f(-x)=-f(x), f(1)f(2)<0, f(3)f(4)<0을 만족하는 연속함수의 예이다. f(1)=1, f(2)=-1이므로 구간 (1,2)에서 x축을 지나고, f(3)=-1, f(4)=1이므로 구간 (3,4)에서도 x축을 지난다. 원점 대칭이라 (-2,-1)과 (-4,-3)에서도 x축을 지나고 f(0)=0인 원점 O도 근이다. 따라서 근은 적어도 5개이고 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -353,7 +361,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "기울기가 5인 직선 두 개를 나타낸 그래프이며 원점을 지나는 직선과 y절편이 4인 직선, 점 P가 표시되어 있다.",
+    "solutionImageCaption": "미분하면 f′(x)=f′(0)+5x이므로 f′의 그래프는 기울기 5인 직선이다. 그림의 원점을 지나는 직선은 f′(0)=0인 경우이고 위의 직선은 f′(0)=4인 경우이다. 기울기가 5라 x가 커질수록 f′이 커지므로 ㄹ은 거짓이고 f′이 0이 되는 곳에서 f는 극소가 되어 ㄱ은 참이다. f′(0)=4이면 f′(-1)=-1(점 P)이므로 ㄴ은 거짓이고, f′(0)=0이면 f′(x)=5x로 합의 꼴이 성립해 ㄷ은 참이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -413,7 +425,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선과 점 T에서 접하는 직선을 나타낸 그래프이며 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: g(2)=1, g′(2)=-1을 만족하는 g(x)=x²-5x+7의 그림이다. 접선 y=-x+3은 x=2에서 y=1이므로 접점 T(2,1)의 g(2)=1이고 기울기 -1이 g′(2)이다. f가 x=2에서 연속이므로 f(2)=g′(2)·1/4=-1/4이다. 따라서 g(2)/f(2)=1/(-1/4)=-4이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

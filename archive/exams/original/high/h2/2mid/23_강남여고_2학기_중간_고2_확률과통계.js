@@ -634,7 +634,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "주사위 눈이 3의 배수이면 공 3개를 꺼내 흰 공 2개일 확률이 1/7이고, 아니면 공 2개를 꺼내 1/21이다. 흰 공 2개로 끝나는 두 경로의 확률은 1/3×1/7=1/21과 2/3×1/21=2/63이며 합은 5/63이다. 따라서 q/p=5/63이고 p+q=68이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

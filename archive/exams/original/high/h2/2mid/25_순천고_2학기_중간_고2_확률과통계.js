@@ -193,7 +193,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "정규분포 곡선은 평균 m을 지나는 직선 x=m에 대하여 대칭이다(ㄴ). 그래서 m−σ부터 m까지와 m부터 m+σ까지의 넓이가 같고, m−σ부터 m+σ까지의 확률은 m−σ부터 m까지의 두 배이다(ㄱ). 또 (X−m)/σ는 평균 0, 표준편차 1인 표준정규분포를 따른다(ㄷ). 따라서 ㄱ, ㄴ, ㄷ이 모두 옳아 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -748,7 +752,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "f(20)=g(20)=f(16)이므로 X의 평균은 16과 20의 중점 18이다. 평균에 대한 대칭으로 P(15≤X≤18)=P(18≤X≤21)=a이다. Y는 X를 오른쪽으로 4만큼 옮긴 분포이므로 b=P(17≤X≤21)이고, P(17≤X≤18)=P(18≤X≤19)=b−a이다(그림의 c). 그러면 P(19≤X≤21)=a−(b−a)=2a−b이다(그림의 d, 왼쪽의 15~17도 대칭으로 같은 d). 그림의 모양은 X의 예이고 구간 길이만 정확하다. 따라서 답은 2a−b이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

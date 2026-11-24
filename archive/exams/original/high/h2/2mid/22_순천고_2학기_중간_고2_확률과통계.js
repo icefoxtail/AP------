@@ -246,7 +246,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "Z=(X−m)/σ로 표준화하면 |X−m|≤3σ는 −3≤Z≤3이다. 표준정규분포는 0을 중심으로 대칭이므로 −3부터 0까지와 0부터 3까지의 넓이가 같고 각각 0.4987이다. 따라서 P=2×0.4987=0.9974이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -768,7 +772,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "P(k≤X≤20)=0.4332이므로 k는 평균보다 1.5σ 작아 k=20−1.5σ이다. 표본크기 36이면 표본평균의 표준편차는 σ/6이고 그림의 s가 이 값이다. 경계 k+5σ/3=20+σ/6=20+s는 평균에서 표준편차 1배이므로 z=1이다. P(X̄≤k+5σ/3)=0.5+0.3413=0.8413이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

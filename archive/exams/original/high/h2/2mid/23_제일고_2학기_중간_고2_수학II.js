@@ -68,7 +68,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "x가 커질수록 아래쪽에서 y=4에 가까워지는 곡선과 수평선 y=4가 그려진 그래프이다.",
+    "solutionImageCaption": "모든 양수 x에서 f(x)는 아래 곡선 y=4-3/x와 위 곡선 y=4+3/x+5/x² 사이에 있다(그림에는 아래 곡선 y=4-3/x와 그 한계선 y=4만 그렸다). x가 커질수록 아래 곡선은 y=4에 가까워지고 위 곡선도 4+3/x+5/x²이 4로 가까워져 두 극한이 모두 4이다. 따라서 그 사이에 낀 f(x)의 극한도 4이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -570,7 +574,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "점 A에서 시작하는 수평선과 기울기 4인 직선이 x=3에서 각각 점 B와 점 C에 도달하는 그래프이며 세 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "평균값 정리에서 f(3)-f(-1)=4f′(c)이고 0≤f′(c)≤4이므로 2≤f(3)≤18이다. 그림의 수평선은 f′=0인 경우로 A(-1,2)에서 B(3,2)로 가서 f(3)=2(최솟값 m)이고, 기울기 4인 직선은 f′=4인 경우로 점 C(3,18)에 도달해 f(3)=18(최댓값 M)이다. 따라서 M-m=16이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

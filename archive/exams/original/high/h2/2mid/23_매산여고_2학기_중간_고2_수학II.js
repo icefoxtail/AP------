@@ -645,7 +645,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "x=0에서 끊어지는 두 포물선 조각의 그래프이며 두 꼭짓점 P, Q와 x=0의 점 A, B가 표시되어 있다.",
+    "solutionImageCaption": "f는 x<0에서 (x+3)²(꼭짓점 P(-3,0)), x≥0에서 (x-1)²(꼭짓점 Q(1,0))이고 x=0에서 좌극한 9, 함숫값 1(점 B)로 끊어진다. |f(x)-5|=t는 f(x)=5±t로 나누어 수평선 y=5+t, y=5-t와의 교점 수를 센다. 교점 수 g(t)는 t=0에서 좌극한 0, 함숫값 3, 우극한 6이고 t=5에서 좌극한 6, 함숫값 4, 우극한 2라서 불연속점은 2개이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

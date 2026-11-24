@@ -451,7 +451,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "x가 0보다 큰 부분의 삼차곡선과 서로 평행한 두 직선이 그려져 있고, 한 직선은 곡선 위의 점 P에서 접하며 P에서 다른 직선으로 수선 PH가 그어져 있다.",
+    "solutionImageCaption": "점 P에서 직선 y=3x-5까지의 거리가 최소이면 P에서의 접선이 이 직선과 평행하다. 접선의 기울기 3x²=3에서 x=1이고 P(1,4)이며 접선은 y=3x+1이다. 그림의 선분 PH는 P에서 직선 y=3x-5에 내린 수선이고 H(14/5,17/5)이다. 따라서 a+b=1+4=5이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
