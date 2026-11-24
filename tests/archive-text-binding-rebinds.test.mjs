@@ -10,7 +10,7 @@ import { createRequire } from "node:module";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
-  REBINDS_PATH, classifyMetaBinding, contentFingerprint, loadRebinds, rebindHolds, sourceFingerprint, textFingerprint,
+  REBINDS_PATH, classifyMetaBinding, contentFingerprint, loadRebinds, rebindHolds, reviewedSourceTextUnchanged, sourceFingerprint, textFingerprint,
 } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 import { contentFingerprint as registrarContentFingerprint, sourceFingerprint as registrarSourceFingerprint }
   from "../archive/tools/meta-foundation/auto-register-merged-source.mjs";
@@ -471,4 +471,21 @@ test("merge-base check: changing the frozen entries fails; main itself and an un
   const missing = run(root, "--check", "--against", "no-such-branch", "--merge-base");
   assert.equal(missing.status, 1);
   assert.ok(missing.json().errors.some((e) => e.startsWith("BASE_UNAVAILABLE:")), "an unresolvable base is flagged, never a silent pass");
+});
+
+// 2026-11-24: 시험지 파일 전체 blob 대신 문항별 발문·보기로 "같은 시험지인가"를 본다(reviewedSourceTextUnchanged). 하네스(영수증·소형 메타 blob)와
+// REVIEW2/FINAL_QA 요청이 쓰는 같은 판정이다. 그림 경로·해설·배치만 바뀌면 통과, 발문·보기·문항 수가 바뀌었거나 옛 blob을 못 읽으면 거절.
+test("reviewedSourceTextUnchanged: figure/solution-only edits keep the pinned blob valid, stem or count changes do not", (t) => {
+  const { root } = fixtureRepo(t);
+  const v1 = [q({ id: 1 }), q({ id: 2, content: "<p>a-b를 구하시오.</p>" }), q({ id: 3, content: "<p>문항3</p>" })];
+  const pinned = execFileSync("git", ["hash-object", "-w", "--stdin"], { cwd: root, input: exam(v1), encoding: "utf8" }).trim();
+  const same = (questions) => reviewedSourceTextUnchanged({ root, expectedBlobSha1: pinned, currentBytes: Buffer.from(exam(questions)) });
+  const withFigure = v1.map((x, i) => i === 0 ? { ...x, solutionImage: "assets/images/x/q1-solution.svg", imageSize: "full", solution: "다듬음" } : x);
+  assert.equal(same(withFigure).ok, true, "solutionImage / imageSize / solution only");
+  assert.equal(same(v1).ok, true);
+  const stemChanged = v1.map((x, i) => i === 1 ? { ...x, content: "<p>a+b를 구하시오.</p>" } : x);
+  assert.equal(same(stemChanged).ok, false);
+  assert.match(same(stemChanged).reason, /question 2/);
+  assert.equal(same(v1.slice(0, 2)).ok, false, "question count differs");
+  assert.equal(reviewedSourceTextUnchanged({ root, expectedBlobSha1: "0".repeat(40), currentBytes: Buffer.from(exam(v1)) }).ok, false, "unreadable pinned blob is never a pass");
 });
