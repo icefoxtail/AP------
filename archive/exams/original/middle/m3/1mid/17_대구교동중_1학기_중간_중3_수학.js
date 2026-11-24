@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $x^2 = 6$을 만족시키는 $x$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>각 보기의 값을 확인한다.<br>① 제곱근 $6$은 $\\sqrt{6}$ 하나이다.<br>② $6$의 제곱근은 $\\pm\\sqrt{6}$이다.<br>③ $\\sqrt{6}$ 또는 $-\\sqrt{6}$, 즉 $\\pm\\sqrt{6}$이다.<br>④ 제곱하여 $6$이 되는 수는 $\\pm\\sqrt{6}$이다.<br>⑤ $x^2=6$을 만족시키는 $x$는 $\\pm\\sqrt{6}$이다.<br>따라서 ①만 다르다.</p>",
     "score": 3.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -√6과 √6에 해당하는 두 점이 원점에서 같은 거리에 표시되어 있다.",
@@ -38,8 +38,8 @@ window.questionBank = [
       "⑤ ㄱ, ㄹ, ㅁ"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>ㄱ. $\\sqrt{8}=2\\sqrt{2}$는 무리수이다. (옳다)<br>ㄴ. $0$의 제곱근은 $0$이다. (옳지 않다)<br>ㄷ. 순환소수는 무한소수이지만 유리수이다. (옳지 않다)<br>ㄹ. $-\\sqrt{2}\\approx-1.41>-2$ (옳다)<br>ㅁ. $4$의 제곱근 $\\pm2$는 유리수이다. (옳지 않다)<br>옳은 것은 ㄱ, ㄹ이다.</p>",
     "score": 3.0
   },
   {
@@ -57,8 +57,8 @@ window.questionBank = [
       "⑤ $\\sqrt{(-2)^2} = -2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>① $\\sqrt{13^2}=13$ (옳지 않다)<br>② $(\\sqrt{0.1})^2=0.1$ (옳다)<br>③ $-\\sqrt{(-3)^2}=-3$ (옳지 않다)<br>④ $-\\sqrt{4^2}=-4$ (옳지 않다)<br>⑤ $\\sqrt{(-2)^2}=2$ (옳지 않다)</p>",
     "score": 3.0
   },
   {
@@ -66,8 +66,8 @@ window.questionBank = [
     "questionNumber": 4,
     "number": 4,
     "questionType": "객관식",
-    "question": "4. $\\sqrt{324-18n}$이 정수가 되도록 하는 자연수 $n$을 모두 더하면? [4점]",
-    "content": "4. $\\sqrt{324-18n}$이 정수가 되도록 하는 자연수 $n$을 모두 더하면? [4점]",
+    "question": "4. $\\sqrt{324-18n}$이 자연수가 되도록 하는 자연수 $n$을 모두 더하면? [4점]",
+    "content": "4. $\\sqrt{324-18n}$이 자연수가 되도록 하는 자연수 $n$을 모두 더하면? [4점]",
     "choices": [
       "① 20",
       "② 22",
@@ -76,8 +76,8 @@ window.questionBank = [
       "⑤ 28"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$\\sqrt{324-18n}$이 자연수이려면 $324-18n=18(18-n)$이 $0$보다 큰 제곱수여야 한다. (원문 \"정수\"를 \"자연수\"로 바로잡음: $0$은 자연수가 아니므로 $n=18$은 제외한다.)<br>$n=1,2,\\cdots,17$일 때의 값을 차례로 확인한다.<br>$n=10$: $324-180=144=12^2$ (조건 만족)<br>$n=16$: $324-288=36=6^2$ (조건 만족)<br>다른 $n$은 $306,\\ 288,\\ 270,\\ \\cdots,\\ 18$ 중에서 제곱수가 아니다.<br>$18(18-n)=k^2$에서 $18-n=2m^2$이어야 하므로 $18-n=2,\\ 8$ ($m=1,2$)이고 $n=16,\\ 10$이다.<br>따라서 모든 $n$의 합은 $10+16=26$이다.</p>",
     "score": 4.0
   },
   {
@@ -95,8 +95,8 @@ window.questionBank = [
       "⑤ $\\sqrt{2}+1 < \\sqrt{2}+\\sqrt{3}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>① $\\sqrt{10}\\approx3.16>3$이므로 $\\sqrt{10}<3$은 옳지 않다.<br>② $\\sqrt{40}>\\sqrt{30}$ (옳다)<br>③ $7>5$이므로 $-\\sqrt{7}<-\\sqrt{5}$ (옳다)<br>④ $\\sqrt{\\frac{1}{3}}\\approx0.577>\\frac{1}{4}$ (옳다)<br>⑤ $1<\\sqrt{3}$이므로 $\\sqrt{2}+1<\\sqrt{2}+\\sqrt{3}$ (옳다)</p>",
     "score": 3.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 끝을 맞춘 두 개의 가로 막대가 위아래로 놓여 있고, 위 막대에는 √10, 아래 막대에는 3이 적혀 있다. 아래 막대의 오른쪽 끝에서 위로 올린 점선은 위 막대의 끝보다 왼쪽에 있어, 위 막대가 오른쪽으로 조금 더 길게 뻗어 있다.",
@@ -118,8 +118,8 @@ window.questionBank = [
       "⑤ $\\sqrt{3} \\times 2\\sqrt{2} \\times (-3\\sqrt{3}) = -18\\sqrt{2}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>① $\\sqrt{5}\\times2\\sqrt{5}=2\\times5=10$ (옳다)<br>② $\\sqrt{\\frac{12}{5}\\times\\frac{15}{4}}=\\sqrt{9}=3$ (옳다)<br>③ $\\sqrt{36}\\div\\sqrt{12}=\\frac{6}{2\\sqrt{3}}=\\frac{3}{\\sqrt{3}}=\\sqrt{3}$ 이므로 $3$이 아니다. (옳지 않다)<br>④ $5\\sqrt{2}\\times\\sqrt{98}=5\\sqrt{196}=5\\times14=70$ (옳다)<br>⑤ $\\sqrt{3}\\times2\\sqrt{2}\\times(-3\\sqrt{3})=-18\\sqrt{2}$ (옳다)</p>",
     "score": 3.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 다섯 개의 근호 계산식과 각 식 끝의 맞음 또는 틀림 표시가 한 줄씩 적힌 목록 그림이다.",
@@ -142,8 +142,8 @@ window.questionBank = [
       "⑤ $2\\sqrt{2}-2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>각각 분모를 유리화한다.<br>$\\frac{1}{\\sqrt{2}-1}=\\frac{\\sqrt{2}+1}{(\\sqrt{2}-1)(\\sqrt{2}+1)}=\\sqrt{2}+1$<br>$\\frac{1}{\\sqrt{2}+1}=\\frac{\\sqrt{2}-1}{(\\sqrt{2}+1)(\\sqrt{2}-1)}=\\sqrt{2}-1$<br>$(\\sqrt{2}+1)-(\\sqrt{2}-1)=2$</p>",
     "score": 3.0
   },
   {
@@ -161,8 +161,8 @@ window.questionBank = [
       "⑤ 3"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>첫째 항: $\\frac{a}{\\sqrt{2}}(\\sqrt{8}-2)=\\frac{a}{\\sqrt{2}}(2\\sqrt{2}-2)=2a-a\\sqrt{2}$<br>둘째 항: $\\sqrt{24}\\left(\\frac{1}{\\sqrt{3}}-\\frac{1}{\\sqrt{6}}\\right)=2\\sqrt{6}\\times\\frac{1}{\\sqrt{3}}-2\\sqrt{6}\\times\\frac{1}{\\sqrt{6}}=2\\sqrt{2}-2$<br>합: $(2a-2)+(2-a)\\sqrt{2}$<br>유리수가 되려면 $\\sqrt{2}$의 계수가 $0$이어야 하므로 $2-a=0$, $a=2$이다.</p>",
     "score": 3.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 다섯 개의 가로선이 위아래로 놓이고, 각 선 위에 두 항을 간단히 한 결과와 합한 식, a의 값, 식의 값이 차례로 적힌 풀이 흐름 그림이다.",
@@ -184,8 +184,8 @@ window.questionBank = [
       "⑤ $(x+4)(x-4)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$x^2-4=x^2-2^2=(x+2)(x-2)$</p>",
     "score": 3.0
   },
   {
@@ -203,8 +203,8 @@ window.questionBank = [
       "⑤ 36"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$4x^2-24x+a=(2x)^2-2\\times2x\\times6+a$이므로 $(2x-6)^2$이어야 한다.<br>$(2x-6)^2=4x^2-24x+36$이므로 $a=36$이다.</p>",
     "score": 3.0
   },
   {
@@ -225,8 +225,8 @@ window.questionBank = [
       "⑤ $4x^2+3x+1$"
     ],
     "images": ["assets/images/17_대구교동중_1학기_중간_중3_수학/q11-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>한 변이 $x$인 정사각형 $2$개의 넓이는 $2x^2$, 가로 $x$ 세로 $1$인 직사각형 $3$개의 넓이는 $3x$, 한 변이 $1$인 정사각형의 넓이는 $1$이다.<br>전체 넓이는 $2x^2+3x+1=(2x+1)(x+1)$이므로 큰 직사각형의 가로와 세로는 $2x+1$, $x+1$이다.<br>둘레의 길이는 $2\\{(2x+1)+(x+1)\\}=2(3x+2)=6x+4$이다.</p>",
     "score": 3.0
   },
   {
@@ -244,8 +244,8 @@ window.questionBank = [
       "⑤ -14"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$a=\\frac{3}{\\sqrt{2}+1}=\\frac{3(\\sqrt{2}-1)}{(\\sqrt{2}+1)(\\sqrt{2}-1)}=3\\sqrt{2}-3$<br>$a+3=3\\sqrt{2}$의 양변을 제곱하면 $a^2+6a+9=18$이므로 $a^2+6a=9$이다.<br>$a^2+6a-5=9-5=4$</p>",
     "score": 4.0
   },
   {
@@ -263,8 +263,8 @@ window.questionBank = [
       "⑤ $x+5$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$-1<x\\le3$이므로 $x-3\\le0$, $x+1>0$이다.<br>$\\sqrt{x^2-6x+9}=\\sqrt{(x-3)^2}=-(x-3)=3-x$<br>$\\sqrt{4x^2+8x+4}=\\sqrt{4(x+1)^2}=2(x+1)=2x+2$<br>$(3-x)-(2x+2)=1-3x=-3x+1$</p>",
     "score": 4.0
   },
   {
@@ -282,8 +282,8 @@ window.questionBank = [
       "⑤ 54"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$(2x+3)(x-b)=2x^2+(3-2b)x-3b$이다.<br>상수항을 비교하면 $-3b=-18$이므로 $b=6$이다.<br>$x$의 계수를 비교하면 $a=3-2b=3-12=-9$이다.<br>$ab=(-9)\\times6=-54$</p>",
     "score": 3.0
   },
   {
@@ -301,8 +301,8 @@ window.questionBank = [
       "⑤ $2^{40}+1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$3=2^2-1$이므로 $a=1+(2^2-1)(2^2+1)(2^4+1)(2^8+1)\\cdots(2^{20}+1)$이다.<br>$(A-1)(A+1)=A^2-1$을 차례로 적용한다.<br>$(2^2-1)(2^2+1)=2^4-1$<br>$(2^4-1)(2^4+1)=2^8-1$<br>$(2^8-1)(2^8+1)=2^{16}-1$<br>이를 마지막 인수까지 반복하면 $(2^{20}-1)(2^{20}+1)=2^{40}-1$이 된다.<br>따라서 $a=1+(2^{40}-1)=2^{40}$이다.</p>",
     "score": 5.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 가로로 놓인 두 선분이 있고, 각 선분 위에 계산 결과를 나타내는 식이 하나씩 적혀 있다.",
@@ -319,8 +319,8 @@ window.questionBank = [
     "content": "【서술형 1】 $\\sqrt{3.7}=a$, $\\sqrt{37}=b$일 때, $\\sqrt{370}$을 $a$ 또는 $b$를 사용하여 나타내시오. [6점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$10a$",
+    "solution": "<p>$\\sqrt{370}=\\sqrt{3.7\\times100}=10\\sqrt{3.7}=10a$<br>(또는 $370=37\\times10$이므로 $\\sqrt{370}=\\sqrt{10}\\,b$로도 나타낼 수 있으나, $a$만으로 나타내면 $10a$이다.)</p>",
     "score": 6.0
   },
   {
@@ -332,8 +332,8 @@ window.questionBank = [
     "content": "【서술형 2】 두 수 $\\sqrt{5}$와 $\\sqrt{7}$ 사이에 있는 무리수를 5개 쓰시오. [5점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\sqrt{5.1},\\ \\sqrt{5.2},\\ \\sqrt{5.3},\\ \\sqrt{5.4},\\ \\sqrt{5.5}$ (답은 여러 가지)",
+    "solution": "<p>$5<a<7$인 $a$에 대하여 $\\sqrt{5}<\\sqrt{a}<\\sqrt{7}$이다.<br>$a$가 유리수의 제곱이 아니면 $\\sqrt{a}$는 무리수이다.<br>$a=5.1,\\ 5.2,\\ 5.3,\\ 5.4,\\ 5.5$는 모두 유리수의 제곱이 아니므로 $\\sqrt{5.1},\\ \\sqrt{5.2},\\ \\sqrt{5.3},\\ \\sqrt{5.4},\\ \\sqrt{5.5}$가 $\\sqrt{5}$와 $\\sqrt{7}$ 사이의 무리수이다.</p>",
     "score": 5.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 가로선 위에 √5와 √7의 위치가 표시되어 있고, 그 사이에 다섯 개의 작은 점이 놓여 있다.",
@@ -350,8 +350,8 @@ window.questionBank = [
     "content": "【서술형 3】 수직선 위에 $1+\\sqrt{2}$, $1-\\sqrt{2}$에 대응하는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 점 $\\mathrm{P}$, $\\mathrm{Q}$를 각각 수직선 위에 나타내고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [10점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "점 $\\mathrm{P}$는 $1$에서 오른쪽으로 $\\sqrt{2}$만큼, 점 $\\mathrm{Q}$는 $1$에서 왼쪽으로 $\\sqrt{2}$만큼 떨어진 점, $\\overline{\\mathrm{PQ}}=2\\sqrt{2}$",
+    "solution": "<p>(1) 한 변의 길이가 $1$인 정사각형의 대각선의 길이는 $\\sqrt{1^2+1^2}=\\sqrt{2}$이다.<br>(2) 수직선에서 $1$에 대응하는 점을 중심으로 반지름이 $\\sqrt{2}$인 원을 그린다.<br>이 원이 수직선과 만나는 두 점 중 오른쪽 점이 $\\mathrm{P}(1+\\sqrt{2})$ ($\\approx2.41$), 왼쪽 점이 $\\mathrm{Q}(1-\\sqrt{2})$ ($\\approx-0.41$)이다.<br>(3) $\\overline{\\mathrm{PQ}}=(1+\\sqrt{2})-(1-\\sqrt{2})=2\\sqrt{2}$</p>",
     "score": 10.0,
     "solutionImage": "assets/images/17_대구교동중_1학기_중간_중3_수학/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다.",
@@ -370,8 +370,8 @@ window.questionBank = [
     "content": "【서술형 4】 그림에서 사각형 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$는 모두 정사각형이고, 각 정사각형의 넓이 사이에는 $\\mathrm{B}$는 $\\mathrm{C}$의 2배, $\\mathrm{A}$는 $\\mathrm{B}$의 2배인 관계가 있다. $\\mathrm{C}$의 넓이가 3이라고 할 때, 세 정사각형을 이어 붙여 만든 새로운 도형의 둘레의 길이를 풀이과정을 상세히 써서 구하시오. [10점]",
     "choices": [],
     "images": ["assets/images/17_대구교동중_1학기_중간_중3_수학/q19-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "$10\\sqrt{3}+2\\sqrt{6}$",
+    "solution": "<p>$\\mathrm{C}$의 넓이가 $3$이므로 한 변의 길이는 $\\sqrt{3}$이다.<br>$\\mathrm{B}$의 넓이는 $3\\times2=6$이므로 한 변의 길이는 $\\sqrt{6}$이다.<br>$\\mathrm{A}$의 넓이는 $6\\times2=12$이므로 한 변의 길이는 $\\sqrt{12}=2\\sqrt{3}$이다.<br>세 정사각형을 아래쪽 변을 맞추어 이어 붙인 계단 모양이므로 둘레의 길이는 (가로의 합)$\\times2$ + (가장 큰 세로)$\\times2$이다.<br>가로의 합: $2\\sqrt{3}+\\sqrt{6}+\\sqrt{3}=3\\sqrt{3}+\\sqrt{6}$<br>가장 큰 세로: $2\\sqrt{3}$<br>둘레의 길이 $=2(3\\sqrt{3}+\\sqrt{6})+2\\times2\\sqrt{3}=6\\sqrt{3}+2\\sqrt{6}+4\\sqrt{3}=10\\sqrt{3}+2\\sqrt{6}$</p>",
     "score": 10.0
   },
   {
@@ -383,8 +383,8 @@ window.questionBank = [
     "content": "【서술형 5】 다음 두 식의 공통인수를 구하시오.(단, 1은 제외) [7점]\n\n$$x^2-2x-3, \\quad 3x^2-7x-6$$",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$x-3$",
+    "solution": "<p>$x^2-2x-3=(x-3)(x+1)$<br>$3x^2-7x-6=(3x+2)(x-3)$ (전개 검산: $3x^2-9x+2x-6=3x^2-7x-6$)<br>두 식의 공통인수는 $x-3$이다.</p>",
     "score": 7.0
   },
   {
@@ -396,8 +396,8 @@ window.questionBank = [
     "content": "【서술형 6】 다음 식의 좌변을 찾아 인수분해하고, 정수 $a$, $b$에 대하여 주어진 등식을 만족하는 순서쌍 $(a, b)$를 모두 구하시오. [12점]\n\n$$ab+2a-2b-4=6$$",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "좌변 $=(a-2)(b+2)$, $(a,b)=(3,4),\\ (4,1),\\ (5,0),\\ (8,-1),\\ (1,-8),\\ (0,-5),\\ (-1,-4),\\ (-4,-3)$",
+    "solution": "<p>좌변을 인수분해한다.<br>$ab+2a-2b-4=a(b+2)-2(b+2)=(a-2)(b+2)$<br>따라서 $(a-2)(b+2)=6$이다.<br>$a,b$가 정수이므로 $a-2$와 $b+2$는 곱이 $6$인 두 정수이다.<br>$(a-2,\\ b+2)=(1,6),\\ (2,3),\\ (3,2),\\ (6,1),\\ (-1,-6),\\ (-2,-3),\\ (-3,-2),\\ (-6,-1)$<br>각각 $(a,b)$를 구하면 다음과 같다.<br>$(3,4),\\ (4,1),\\ (5,0),\\ (8,-1),\\ (1,-8),\\ (0,-5),\\ (-1,-4),\\ (-4,-3)$</p>",
     "score": 12.0
   }
 ];
