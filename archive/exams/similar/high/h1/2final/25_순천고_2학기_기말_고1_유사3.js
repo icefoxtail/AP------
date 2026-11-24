@@ -823,7 +823,7 @@ window.questionBank = [
     "content": "$x\\gt 2$일 때, $\\dfrac{x-2}{x^2-4x+k}$의 최댓값이 $\\dfrac{1}{6}$이 되도록 하는 상수 $k$의 값을 구하시오.",
     "choices": [],
     "answer": "$13$",
-    "solution": "$t=x-2\\gt 0$으로 놓으면 $x=t+2$이다.\n분모를 $t$에 대한 식으로 정리한다.\n$x^2-4x+k=(t+2)^2-4(t+2)+k$\n$=t^2+k-4$\n\n따라서 주어진 식은 다음과 같다.\n$\\dfrac{t}{t^2+k-4}=\\dfrac{1}{t+\\dfrac{k-4}{t}}$\n\n$t\\gt 0$일 때 전체 식이 양의 최댓값 $\\dfrac{1}{6}$을 가지려면 $k-4\\gt 0$이어야 한다.\n산술평균과 기하평균의 관계에 의해 분모의 최솟값을 구하면 다음과 같다.\n$t+\\dfrac{k-4}{t}\\ge 2\\sqrt{t\\cdot\\dfrac{k-4}{t}}=2\\sqrt{k-4}$\n(단, 등호는 $t=\\sqrt{k-4}$일 때 성립한다.)\n\n분모가 최소일 때 전체 식이 최대가 되므로 최댓값은 $\\dfrac{1}{2\\sqrt{k-4}}$이다.\n$\\dfrac{1}{2\\sqrt{k-4}}=\\dfrac{1}{6}$\n$2\\sqrt{k-4}=6$\n$\\sqrt{k-4}=3$\n$k-4=9$\n$k=13$\n\n따라서 $k$의 값은 $13$이다.",
+    "solution": "$t=x-2\\gt 0$으로 놓으면 $x=t+2$이다.\n분모를 $t$에 대한 식으로 정리한다.\n$x^2-4x+k=(t+2)^2-4(t+2)+k$\n$=t^2+k-4$\n\n따라서 주어진 식은 다음과 같다.\n$\\dfrac{t}{t^2+k-4}=\\dfrac{1}{\\dfrac{t^2+k-4}{t}}$\n$=\\dfrac{1}{t+\\dfrac{k-4}{t}}$\n\n$t\\gt 0$일 때 전체 식이 양의 최댓값 $\\dfrac{1}{6}$을 가지려면 $k-4\\gt 0$이어야 한다.\n산술평균과 기하평균의 관계에 의해 분모의 최솟값을 구하면 다음과 같다.\n$t+\\dfrac{k-4}{t}\\ge 2\\sqrt{t\\cdot\\dfrac{k-4}{t}}=2\\sqrt{k-4}$\n(단, 등호는 $t=\\sqrt{k-4}$일 때 성립한다.)\n\n분모가 최소일 때 전체 식이 최대가 되므로 최댓값은 $\\dfrac{1}{2\\sqrt{k-4}}$이다.\n$\\dfrac{1}{2\\sqrt{k-4}}=\\dfrac{1}{6}$\n$2\\sqrt{k-4}=6$\n$\\sqrt{k-4}=3$\n$k-4=9$\n$k=13$\n\n따라서 $k$의 값은 $13$이다.",
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
