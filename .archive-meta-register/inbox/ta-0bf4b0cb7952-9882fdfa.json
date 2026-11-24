@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-0bf4b0cb7952-9882fdfa",
+  "examUid": "동아_공통수학1_방정식과부등식_대단원평가_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+  "expectedSourceBlobSha1": "be6978546c4bc48c832628cb301c6855e58b7ebf",
+  "expectedQuestionCount": 45,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.type-ledger.json",
+        "sha256": "7ee9e44536c19ffd45d3569269dac59d802a5e2239b452f55966827256274fac"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_84202dda6be94d3aa3e6cba7590f8c4bacf9d9d895288f5fcdb8055a8b0314cc",
+      "sourceOrdinal": 39,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "rationale": "해구간의 끝점이 이차식의 근임을 이용해 계수를 정한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "0e70addeabb557e9199440481e63ea4a216d739a78c2036a21f0512aca90a2c0",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.type-ledger.json",
+          "sha256": "7ee9e44536c19ffd45d3569269dac59d802a5e2239b452f55966827256274fac"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d559627f73d05e2d31f1ac28c3a435591fe2768c24bb9037de2c05ecbcce2dd0",
+      "sourceOrdinal": 44,
+      "before": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+      },
+      "rationale": "x=1 인수정리로 인수분해해 서로 다른 실근 개수 조건을 푼다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "28d3addd5052c5b16a353e4a6811ce7e417c3b46f14d9aaa57410eb7c592f2fb",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.type-ledger.json",
+          "sha256": "7ee9e44536c19ffd45d3569269dac59d802a5e2239b452f55966827256274fac"
+        }
+      ]
+    }
+  ]
+}

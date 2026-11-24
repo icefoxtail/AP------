@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-be06b9cac689-6b5d5e4c",
+  "examUid": "비상_공통수학1_방정식과부등식_대단원학습평가_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_방정식과부등식_대단원학습평가_고1/비상_공통수학1_방정식과부등식_대단원학습평가_고1.js",
+  "expectedSourceBlobSha1": "b981e0551a5bbe003be67606b89b57cee085e276",
+  "expectedQuestionCount": 18,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-be06b9cac689-6b5d5e4c.type-ledger.json",
+        "sha256": "946478c088fc7da132caaaed5715e280f93af9a8bf0d60dbf927930d9004acf7"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_88188eaf32ce81dab5af00c4b694869a66cf116a83841e35f0fe4ae6e2f4f4fd",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "rationale": "두 부등식의 근과 부호 구간으로 해 2<x≤3이 되는 a의 범위를 정한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "ffb12518850de9341b9e3b01b50205ab65e272bc1eb85bae9c4a10a3c6ea1b3a",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-be06b9cac689-6b5d5e4c.type-ledger.json",
+          "sha256": "946478c088fc7da132caaaed5715e280f93af9a8bf0d60dbf927930d9004acf7"
+        }
+      ]
+    }
+  ]
+}

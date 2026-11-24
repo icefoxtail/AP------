@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-5bd137e3436f-346bd6e9",
+  "examUid": "19_서울가산중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "ee98bda292adf0ac7ca346f846faeab6a96fdce7",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-5bd137e3436f-346bd6e9.type-ledger.json",
+        "sha256": "ab40ba0ff88ee4d9c0300085f648ff43658c55bc437ce932e7e3490cf44c9be7"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c70de5d84d2a0e5cd3808ddca2a531f38e82e0a47946a373154657b5482cdff0",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      },
+      "rationale": "꼭짓점 (1,-2)를 y=a(x-1)^2-2에 놓고 y절편 1을 대입해 a=3을 구한다",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "424d087f07b971f64542d7afbcab39874be0e2ee718a331e05181ea1aa48d128",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-5bd137e3436f-346bd6e9.type-ledger.json",
+          "sha256": "ab40ba0ff88ee4d9c0300085f648ff43658c55bc437ce932e7e3490cf44c9be7"
+        }
+      ]
+    }
+  ]
+}

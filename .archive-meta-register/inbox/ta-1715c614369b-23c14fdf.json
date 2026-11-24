@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-1715c614369b-23c14fdf",
+  "examUid": "비상_대수_삼각함수_익힘책_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_삼각함수_익힘책_고2/비상_대수_삼각함수_익힘책_고2.js",
+  "expectedSourceBlobSha1": "c6181fc36112805d5a736324cb9123a420f04a06",
+  "expectedQuestionCount": 28,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.type-ledger.json",
+        "sha256": "2e5328d6cf4e01c2a6f857a744b0a45c78baa4da1519d2ac4da63046eb3c9782"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_43278d0ef76e1e71a35706a5caf8ad751465df3b401a3c7964d322cafc983e7c",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": "TPL_H22A_04_TRIG_EQUATION_102"
+      },
+      "rationale": "sin t ≥ 1/2를 t의 범위 0≤t≤2π에서 풀어 x의 범위로 되돌린다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "5618287ea4130ec07be4f86f14f77cc7df2c8020446739dc6d98984cad384d9c",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.type-ledger.json",
+          "sha256": "2e5328d6cf4e01c2a6f857a744b0a45c78baa4da1519d2ac4da63046eb3c9782"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d52caf375451b879fa6790de377673172bd367d78edb0df61267f4fbd222e5dd",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": "TPL_H22A_04_TRIG_EQUATION_102"
+      },
+      "rationale": "cos x에 대한 이차부등식과 sin x<cos x의 해 구간을 0<x<2π에서 구해 공통부분을 잡는다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "39855daa5ac5256f0936c5efbc5c37bedb29bd3afa25b60869eaeee6e171063d",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.type-ledger.json",
+          "sha256": "2e5328d6cf4e01c2a6f857a744b0a45c78baa4da1519d2ac4da63046eb3c9782"
+        }
+      ]
+    }
+  ]
+}

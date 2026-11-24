@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-32aa3017bc78-b86759d4",
+  "examUid": "비상_대수_지수함수와로그함수_익힘책_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_익힘책_고2/비상_대수_지수함수와로그함수_익힘책_고2.js",
+  "expectedSourceBlobSha1": "761f0e530716fc758f23ae3e1ff20dbed43b7e01",
+  "expectedQuestionCount": 29,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-32aa3017bc78-b86759d4.type-ledger.json",
+        "sha256": "df6d15c9a9a8ed145e216a4c4fc275ba04fa8a92991dfcb03b04959daf5943c5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cd858313c7235e589a45deb94309eee21e4baaa4960f323bda3dc4558750d74b",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": "TPL_H22A_02_EXP_EQUATION_081"
+      },
+      "rationale": "4^x=1/32를 밑 2로 통일해 지수를 비교한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "7d19d4ef05be508139840a771f5585ffa40e4c8c2dfa1fc42f7158229ad93851",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-32aa3017bc78-b86759d4.type-ledger.json",
+          "sha256": "df6d15c9a9a8ed145e216a4c4fc275ba04fa8a92991dfcb03b04959daf5943c5"
+        }
+      ]
+    }
+  ]
+}

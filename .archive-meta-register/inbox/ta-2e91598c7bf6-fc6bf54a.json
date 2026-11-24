@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "ta-2e91598c7bf6-fc6bf54a",
+  "examUid": "비상_대수_등차수열과등비수열_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_등차수열과등비수열_중단원학습점검_고2/비상_대수_등차수열과등비수열_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "693982721f4474d4fed915f40627dab5a9b73c44",
+  "expectedQuestionCount": 17,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.type-ledger.json",
+        "sha256": "110d3f04cecaf8561c095baa0f2088adfcdcb15a6d9990e59b7c64ff7045a7ed"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6af6260718ef07b5f4bf1f24f5941babf5ea5d5636f39a043e87a9cd29e201c4",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121"
+      },
+      "rationale": "첫째항과 공차·공비 조건으로 수열을 정해 일반항을 구한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "46c1f34c3a0a24c7b46a42e76234a9b04a347a79ca00616df511eb1e57f6bf4b",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.type-ledger.json",
+          "sha256": "110d3f04cecaf8561c095baa0f2088adfcdcb15a6d9990e59b7c64ff7045a7ed"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_69de3070fc13760f686834bb71eb9af89a4febf85a0969cb226a825ca86fc821",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121"
+      },
+      "rationale": "첫째항과 공차·공비 조건으로 수열을 정해 첫째항부터 제10항까지의 합을 구한다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "0ecb9ad65b3a7c1e0ae439e236ca7964a6df2b2e7ae5b1f11f721173634c85a3",
+      "templateOnly": true,
+      "templateGrade": "draft_single_model",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.type-ledger.json",
+          "sha256": "110d3f04cecaf8561c095baa0f2088adfcdcb15a6d9990e59b7c64ff7045a7ed"
+        }
+      ]
+    }
+  ]
+}
