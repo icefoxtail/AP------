@@ -49,9 +49,17 @@ test('only a plain home on an opted-in page defers the catalog; any other addres
   // The school finder opens on the list too, unless the address carries a condition only the records can decide.
   for (const search of ['?view=find', '?view=find&material=exam', '?view=find&query=%EA%B8%88%EB%8B%B9%EA%B3%A0&material=exam&page=1', '?view=find&grade=%EA%B3%A01&axis=1-mid&similarOnly=1'])
     assert.equal(bootFor({ search }).catalogDeferred, true, search);
-  for (const search of ['?view=find&semanticSubject=ALGEBRA', '?view=find&curriculumKey=2022', '?view=find&courseKey=x', '?view=find&family=COMMON_1', '?view=find&uid=Q1', '?view=find&source=a.js',
-    '?view=compose', '?view=saved', '?view=recent', '?uid=Q1', '?source=a.js', '?paper_id=x', '?edit_saved_paper=1', '?assign=legacy', '?recipe=five-minute', '?grade=%EA%B3%A01'])
+  for (const search of ['?view=find&semanticSubject=ALGEBRA', '?view=find&curriculumKey=2022', '?view=find&courseKey=x', '?view=find&family=COMMON_1', '?view=find&uid=Q1', '?view=find&source=a.js'])
     assert.equal(bootFor({ search }).catalogDeferred, false, search);
+  // 조각 경로가 기본(2단계 2-4): 그 밖의 주소도 전체 받기를 로드 때 시작하지 않고 화면이 필요한 조각만 받는다.
+  // 주소에 shards=0 이 있으면 예전 규칙(평범한 홈만 늦게, 나머지는 바로 전체 받기)으로 돌아간다.
+  const others = ['?view=compose', '?view=saved', '?view=recent', '?uid=Q1', '?source=a.js', '?paper_id=x', '?edit_saved_paper=1', '?assign=legacy', '?recipe=five-minute', '?grade=%EA%B3%A01'];
+  for (const search of others) {
+    assert.equal(bootFor({ search }).catalogDeferred, true, search);
+    assert.equal(bootFor({ search: `${search}&shards=0` }).catalogDeferred, false, `${search}&shards=0`);
+  }
+  assert.equal(bootFor({ search: '?shards=0' }).catalogDeferred, true, 'a plain home stays deferred with shards off');
+  assert.equal(bootFor({ search: '?view=home&shards=0' }).catalogDeferred, true);
   assert.equal(bootFor({ search: '', lazyAttribute: false }).catalogDeferred, false, 'a page that does not opt in never defers');
 });
 
