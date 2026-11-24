@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    },
+    {
+      "id": "sS1S2",
+      "refs": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "sS2S3",
+      "refs": [
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "id": "sS3S4",
+      "refs": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "sS4S1",
+      "refs": [
+        "S4",
+        "S1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "S1",
+              "S2",
+              "S3",
+              "S4"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOP",
+        "from": "O",
+        "to": "P",
+        "label": "2",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dOQ",
+        "from": "O",
+        "to": "Q",
+        "label": "2",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "P",
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직각을 낀 두 변의 길이가 2인 직각이등변삼각형의 빗변에 두 꼭짓점이, 두 직각변에 나머지 두 꼭짓점이 놓이는 정사각형을 색칠한 그림이다.",
+  "accessibilityDescription": "직각이등변삼각형의 빗변 위에 한 변이 놓이고 나머지 두 꼭짓점이 두 직각변 위에 있는 정사각형이 색칠되어 있다. 두 직각변 옆에 길이 2가 각각 표시되어 있다.",
+  "newVisualInformation": [
+    "직각을 낀 두 변이 2인 직각이등변삼각형",
+    "빗변과 두 직각변에 꼭짓점이 닿는 색칠된 정사각형",
+    "두 직각변의 길이 2 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각을 낀 두 변의 길이가 $2$인 직각이등변삼각형이 있다. 이 직각이등변삼각형의 빗변에 $2$개의 꼭짓점이 있고 직각을 낀 두 변에 나머지 $2$개의 꼭짓점이 있는 정사각형에 색칠하여 얻은 그림을 $R_1$이라 하자. 그림 $R_1$에서 색칠된 정사각형 바깥에 남는 합동인 $2$개의 직각이등변삼각형에 각각 같은 방법으로 정사각형을 색칠하여 얻은 그림을 $R_2$라 하고, 이와 같은 과정을 계속하여 $n$번째 얻은 그림 $R_n$에 색칠되어 있는 모든 정사각형의 넓이의 합을 $S_n$이라 하자. $S_6 = \\frac{q}{p}\\left(1 - \\left(\\frac{m}{n}\\right)^{12}\\right)$일 때, $p + q + m + n$의 값을 구하는 풀이과정과 답을 서술하시오. (단, $p, q$는 서로소인 자연수, $m, n$은 서로소인 자연수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

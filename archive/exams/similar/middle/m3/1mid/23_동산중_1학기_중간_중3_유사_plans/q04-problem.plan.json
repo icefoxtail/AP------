@@ -1,0 +1,102 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cA",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            -2,
+            0
+          ],
+          "to": [
+            0,
+            1
+          ],
+          "toName": "R"
+        }
+      },
+      {
+        "id": "cB",
+        "center": "B",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            2,
+            0
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "toName": "S"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P",
+            "value": "-2-sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "-2"
+          },
+          {
+            "id": "B",
+            "value": "2"
+          },
+          {
+            "id": "Q",
+            "value": "2+sqrt(2)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "한 눈금이 1인 모눈 위 수직선에 A(-2), B(2)가 있고, A를 중심으로 가로 2, 세로 1인 직각삼각형의 빗변을 반지름으로 하는 원호가 왼쪽의 P에서, B를 중심으로 가로 1, 세로 1인 직각삼각형의 빗변을 반지름으로 하는 원호가 오른쪽의 Q에서 수직선과 만난다. 두 직각삼각형의 윗꼭짓점을 각각 R, S라 한다.",
+  "accessibilityDescription": "모눈 위의 수직선에 왼쪽부터 P, A, B, Q가 있고, A와 B 위에 각각 직각삼각형이 그려져 있다. A를 중심으로 한 호는 P까지, B를 중심으로 한 호는 Q까지 이어지며, 두 직각삼각형의 윗꼭짓점 R, S가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 눈금의 길이가 $1$인 모눈종이 위의 수직선에서, 두 점 $A(-2)$, $B(2)$가 있다. 가로의 길이가 $2$, 세로의 길이가 $1$인 직각삼각형의 빗변의 길이를 반지름으로 하고 점 $A$를 중심으로 하는 원이 수직선의 왼쪽과 만나는 점을 $P$, 가로의 길이가 $1$, 세로의 길이가 $1$인 직각삼각형의 빗변의 길이를 반지름으로 하고 점 $B$를 중심으로 하는 원이 수직선의 오른쪽과 만나는 점을 $Q$라 할 때, 선분 $PQ$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "모눈 위 수직선의 A, B와 두 직각삼각형, A 중심과 B 중심의 원호가 만나는 점 P, Q를 보여 준다."
+  ]
+}

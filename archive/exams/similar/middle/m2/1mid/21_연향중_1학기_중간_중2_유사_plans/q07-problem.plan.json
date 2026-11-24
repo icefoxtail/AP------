@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "기준",
+        "points": [
+          {
+            "id": "P1",
+            "value": "-3",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P2",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P3",
+            "value": "3",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "수직선 위의 기준 위치"
+  },
+  "caption": "일차부등식의 해를 수직선에서 비교하기 위해 -3, 0, 3의 위치를 눈금과 숫자로 나타낸 그림이다.",
+  "accessibilityDescription": "수직선 위에 -3, 0, 3의 자리가 각각 눈금과 숫자로 표시되어 있으며, 해를 나타내는 동그라미나 방향 표시는 없다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $3x + 4 > 1 + 4x$의 해를 수직선 위에 옳게 나타낸 설명은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "3x+4>1+4x",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선에 -3, 0, 3의 위치를 표시하여 해의 경계와 방향을 판단할 기준을 보인다"
+  ]
+}

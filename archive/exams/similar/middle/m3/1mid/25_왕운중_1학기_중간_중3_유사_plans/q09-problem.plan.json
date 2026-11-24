@@ -1,0 +1,105 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            -2,
+            0
+          ],
+          "to": [
+            0,
+            1
+          ],
+          "toName": "B"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "E",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "toName": "F"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-2"
+          },
+          {
+            "id": "E",
+            "value": "3"
+          },
+          {
+            "id": "P",
+            "value": "-2+sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "3+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "caption": "수직선 위의 두 점 A, E를 중심으로 반지름이 각각 선분 AB, EF인 원호를 그려 수직선과 만나는 점을 P, Q로 나타낸 그림이다.",
+  "newVisualInformation": [
+    "점 A는 수직선의 -2, 점 E는 3에 있다.",
+    "AB는 A에서 오른쪽으로 2칸, 위로 1칸인 모눈점 B까지의 선분이다.",
+    "EF는 E에서 오른쪽으로 1칸, 위로 3칸인 모눈점 F까지의 선분이다.",
+    "A를 중심으로 한 원호는 P에서, E를 중심으로 한 원호는 Q에서 수직선과 만난다."
+  ],
+  "accessibilityDescription": "수직선 위의 두 점 A, E를 중심으로 반지름이 각각 선분 AB, EF인 원호를 그려 수직선과 만나는 점을 P, Q로 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 두 직각삼각형을 그리고, 수직선 위의 점 $A, E$를 중심으로 반지름의 길이가 각각 $\\overline{AB}, \\overline{EF}$인 원호를 그려 수직선과 만나는 점을 각각 $P, Q$라 한 것이다. 두 점 $P, Q$에 대응하는 수를 바르게 짝지은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

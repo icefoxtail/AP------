@@ -1,0 +1,373 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "LT",
+    "T",
+    "RT",
+    "R",
+    "RB",
+    "B",
+    "J"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "LT",
+    "T",
+    "RT",
+    "R",
+    "RB",
+    "B",
+    "J"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s2",
+      "refs": [
+        "LT",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "T",
+        "RT"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "RT",
+        "R"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "R",
+        "RB"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "RB",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "L",
+        "J"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "J",
+        "T"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "J",
+        "R"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "J",
+        "B"
+      ]
+    },
+    {
+      "id": "outerSide",
+      "refs": [
+        "O",
+        "LT"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "square",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "L",
+              "LT",
+              "T",
+              "J"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tile1",
+        "fill": "MEDIUM",
+        "pattern": "HATCH",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "L",
+              "J",
+              "B"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tile2",
+        "fill": "MEDIUM",
+        "pattern": "HATCH",
+        "shapes": [
+          {
+            "polygon": [
+              "J",
+              "T",
+              "RT",
+              "R"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "x",
+        "ownerSegment": "s2",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "strip",
+        "ownerSegment": "s3",
+        "text": "3a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "caption": "한 변의 길이가 x인 정사각형과 변의 길이가 x, 3a인 직사각형 두 개를 붙여 만든 도형이 보인다.",
+  "accessibilityDescription": "정사각형, 가운데가 빈 직사각형 두 개, 점선으로 표시된 빈 사각형 자리, 변의 길이 x와 3a가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $x$인 정사각형 모양의 대수 막대 $1$개와 가로, 세로의 길이가 각각 $x$, $3a$인 직사각형 모양의 대수 막대 $2$개를 이용하여 $x^2 + 6ax$를 $A^2 - B^2$ 꼴로 변형하였을 때, $A - B$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "한 변의 길이가 x인 정사각형 모양 대수 막대 1개와 가로, 세로가 각각 x, 3a인 직사각형 모양 대수 막대 2개를 사용한다.",
+    "직사각형 모양 대수 막대 1개를 옮겨 붙여 x제곱+6ax를 나타낸다."
+  ],
+  "newVisualInformation": [
+    "유사 문항의 3a를 반영한 대수 막대 배치를 보여 준다."
+  ]
+}

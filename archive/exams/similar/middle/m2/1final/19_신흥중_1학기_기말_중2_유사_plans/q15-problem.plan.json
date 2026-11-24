@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -3,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "0",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "K": "K"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 점 (-3, 5), (3, -1)을 지나는 직선이 y축과 만나는 점을 K라 한다.",
+  "accessibilityDescription": "좌표평면에 왼쪽 위에서 오른쪽 아래로 내려가는 직선이 두 점 (-3, 5), (3, -1)을 지나고, y축 위에 점 K가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선이 두 점 (-3, 5), (3, -1)을 지나는 모습",
+    "y축 위에 놓인 점 K"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-3, 5)$와 $(3, -1)$을 지나는 직선의 $y$절편을 $k$라 할 때, $k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

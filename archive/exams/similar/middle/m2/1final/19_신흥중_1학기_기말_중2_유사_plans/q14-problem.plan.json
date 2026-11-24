@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "viewport": [
+      -5,
+      4,
+      -2,
+      5
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "I1",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "I2",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cm",
+          "point": "P",
+          "text": "m",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cn",
+          "point": "Q",
+          "text": "n",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "x절편을 m, y절편을 n이라 할 때 m은 음수이고 n은 양수인 일차함수의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어떤 일차함수의 그래프의 $x$절편을 $m$, $y$절편을 $n$이라 할 때, $m < 0$이고 $n > 0$이다. 이때 일차함수 $y = nx + m$의 그래프가 지나지 않는 사분면은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    "The x-intercept m is negative.",
+    "The y-intercept n is positive."
+  ],
+  "newVisualInformation": [
+    "x절편 m이 음수이고 y절편 n이 양수인 직선"
+  ],
+  "accessibilityDescription": "직선이 가로축의 음의 방향에서 m, 세로축의 양의 방향에서 n과 만나며, 왼쪽 아래에서 오른쪽 위로 뻗어 있다."
+}

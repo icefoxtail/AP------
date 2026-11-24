@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차방정식 ax+by+8=0의 그래프가 x축의 양의 부분과 y축의 음의 부분에서 만나는 모습이다.",
+  "accessibilityDescription": "좌표평면에서 오른쪽 위로 올라가는 직선이 x축과 양의 x좌표에서, y축과 음의 y좌표에서 만나며 두 교점 P, Q가 표시되어 있다.",
+  "newVisualInformation": [
+    "x축의 양의 부분에서 만나는 점 P",
+    "y축의 음의 부분에서 만나는 점 Q"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax + by + 8 = 0$의 그래프의 $x$절편이 양수이고 $y$절편이 음수일 때, 상수 $a$, $b$의 부호는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

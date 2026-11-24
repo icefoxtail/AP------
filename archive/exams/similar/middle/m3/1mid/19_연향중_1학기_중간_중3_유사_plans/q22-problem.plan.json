@@ -1,0 +1,354 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-309",
+              "denominator": "70"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "70"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Z",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "X",
+    "Y",
+    "Z",
+    "U",
+    "V",
+    "W",
+    "L",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLP",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "sPX",
+      "refs": [
+        "P",
+        "X"
+      ]
+    },
+    {
+      "id": "sXY",
+      "refs": [
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "sYZ",
+      "refs": [
+        "Y",
+        "Z"
+      ]
+    },
+    {
+      "id": "sZQ",
+      "refs": [
+        "Z",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sYV",
+      "refs": [
+        "Y",
+        "V"
+      ]
+    },
+    {
+      "id": "sVU",
+      "refs": [
+        "V",
+        "U"
+      ]
+    },
+    {
+      "id": "sUX",
+      "refs": [
+        "U",
+        "X"
+      ]
+    },
+    {
+      "id": "sZW",
+      "refs": [
+        "Z",
+        "W"
+      ]
+    },
+    {
+      "id": "sWV",
+      "refs": [
+        "W",
+        "V"
+      ]
+    },
+    {
+      "id": "sXV",
+      "refs": [
+        "X",
+        "V"
+      ]
+    },
+    {
+      "id": "sZV",
+      "refs": [
+        "Z",
+        "V"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dUV",
+        "from": "U",
+        "to": "V",
+        "label": "1",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "Z",
+    "U",
+    "V",
+    "W",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "수직선 위에 한 변의 길이가 1인 정사각형 두 개가 나란히 놓여 있고, 두 정사각형의 대각선과 수직선 위의 두 점 P, Q가 표시되어 있다.",
+  "accessibilityDescription": "가로로 놓인 수직선 위에 단위 정사각형 두 개가 변을 맞대고 서 있다. 각 정사각형에는 왼쪽 아래 꼭짓점에서 오른쪽 위 꼭짓점으로 대각선이 그려져 있다. P는 왼쪽 정사각형의 왼쪽 아래 꼭짓점보다 왼쪽에, Q는 오른쪽 정사각형의 오른쪽 아래 꼭짓점보다 오른쪽에 있다.",
+  "newVisualInformation": [
+    "수직선 위에 나란히 놓인 두 단위 정사각형",
+    "두 정사각형의 대각선",
+    "수직선 위의 두 점 P와 Q"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $2p + q$의 값을 구하는 풀이 과정과 답을 서술하시오. (단, 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다.) [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
