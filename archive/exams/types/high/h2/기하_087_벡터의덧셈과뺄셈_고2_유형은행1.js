@@ -1,0 +1,222 @@
+window.examTitle = "기하_087_벡터의덧셈과뺄셈_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "한 평면 위의 서로 다른 네 점 $A, B, C, D$에 대하여 $\\vec{AC} + \\vec{CD} + 2\\vec{BC} + 2\\vec{CD} = \\vec{0}$이고 $|\\vec{AB}| = 12$일 때, $|\\vec{AD}|$의 값은?",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
+    ],
+    "answer": "④",
+    "solution": "(벡터의 덧셈 법칙 적용) 주어진 식은 $(\\vec{AC} + \\vec{CD}) + 2(\\vec{BC} + \\vec{CD}) = \\vec{0}$으로 묶을 수 있다.\n벡터의 꼬리물기 덧셈에 의해 $\\vec{AC} + \\vec{CD} = \\vec{AD}$, $\\vec{BC} + \\vec{CD} = \\vec{BD}$이다.\n이를 대입하여 식을 정리하면 $\\vec{AD} + 2\\vec{BD} = \\vec{0}$이다.\n(점 $D$의 위치 파악) 식을 이항하면 $\\vec{AD} = -2\\vec{BD} = 2\\vec{DB}$이다.\n두 벡터 $\\vec{AD}$와 $\\vec{DB}$는 같은 방향이고 크기의 비가 $2:1$이므로, 점 $D$는 선분 $AB$를 $2:1$로 내분하는 점이다.\n(선분 $AD$의 길이 계산) 점 $D$가 선분 $AB$ 위에 있으므로 $\\overline{AB} = \\overline{AD} + \\overline{DB}$이다.\n$\\overline{AD} = 2\\overline{DB} \\iff \\overline{DB} = \\frac{1}{2}\\overline{AD}$를 대입하면 $\\overline{AB} = \\overline{AD} + \\frac{1}{2}\\overline{AD} = \\frac{3}{2}\\overline{AD}$이다.\n$|\\vec{AB}| = 12$이므로 $\\frac{3}{2}\\overline{AD} = 12 \\iff \\overline{AD} = 12 \\times \\frac{2}{3} = 8$이다.\n따라서 $|\\vec{AD}| = 8$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [
+      "COND_PAIRWISE_DISTINCT_POINTS"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하고 $\\vec{OA} = \\vec{a}, \\vec{OB} = \\vec{b}$라 할 때, 다음 중 옳지 않은 것은? [그림: 평행사변형 $ABCD$의 두 대각선 $AC$와 $BD$의 교점이 점 $O$이다. 점 $O$를 시점으로 하여 $\\vec{OA} = \\vec{a}, \\vec{OB} = \\vec{b}$가 화살표로 표시되어 있다.]",
+    "choices": [
+      "$\\vec{BC} = \\vec{a} - \\vec{b}$",
+      "$\\vec{CD} = \\vec{a} - \\vec{b}$",
+      "$\\vec{DA} = \\vec{a} + \\vec{b}$",
+      "$\\vec{AB} = -\\vec{a} + \\vec{b}$",
+      "$\\vec{CA} = 2\\vec{a}$"
+    ],
+    "answer": "①",
+    "solution": "평행사변형의 두 대각선은 서로 다른 것을 이등분하므로 교점 $O$는 선분 $AC$와 선분 $BD$의 중점이다.\n따라서 $\\vec{OC} = -\\vec{OA} = -\\vec{a}$, $\\vec{OD} = -\\vec{OB} = -\\vec{b}$이다.\n각 보기를 벡터의 뺄셈 공식 $\\vec{PQ} = \\vec{OQ} - \\vec{OP}$를 적용하여 판정한다.\n① (선분 $BC$의 벡터) $\\vec{BC} = \\vec{OC} - \\vec{OB} = -\\vec{a} - \\vec{b}$이다.\n따라서 $\\vec{BC} = \\vec{a} - \\vec{b}$는 옳지 않다.\n② (선분 $CD$의 벡터) $\\vec{CD} = \\vec{OD} - \\vec{OC} = -\\vec{b} - (-\\vec{a}) = \\vec{a} - \\vec{b}$이므로 참이다.\n③ (선분 $DA$의 벡터) $\\vec{DA} = \\vec{OA} - \\vec{OD} = \\vec{a} - (-\\vec{b}) = \\vec{a} + \\vec{b}$이므로 참이다.\n④ (선분 $AB$의 벡터) $\\vec{AB} = \\vec{OB} - \\vec{OA} = \\vec{b} - \\vec{a} = -\\vec{a} + \\vec{b}$이므로 참이다.\n⑤ (대각선 $CA$의 벡터) $\\vec{CA} = \\vec{OA} - \\vec{OC} = \\vec{a} - (-\\vec{a}) = 2\\vec{a}$이므로 참이다.\n따라서 옳지 않은 것은 ①이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_PARALLELOGRAM_PROPERTIES",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같은 사각형 $ABCD$에 대하여 [보기]에서 옳은 것만을 있는 대로 고른 것은? [그림: 한 평면 위에 볼록사각형 $ABCD$가 놓여 있고 꼭짓점 $A, B, C, D$가 시계 반대 방향 순서로 표시되어 있다.]\n\n[보기]\nㄱ. $\\vec{AB} + \\vec{BC} + \\vec{CD} + \\vec{DA} = \\vec{0}$\nㄴ. $\\vec{AB} + \\vec{CD} = \\vec{AD} + \\vec{CB}$\nㄷ. $\\vec{AC} + \\vec{BD} = \\vec{AD} + \\vec{BC}$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "임의의 시점 $O$에 대하여 각 꼭짓점의 위치벡터를 $\\vec{OA}=\\vec{a}, \\vec{OB}=\\vec{b}, \\vec{OC}=\\vec{c}, \\vec{OD}=\\vec{d}$라 두고 판정한다.\nㄱ. (닫힌 다각형의 벡터의 합) 벡터의 덧셈에 의해 $\\vec{AB} + \\vec{BC} = \\vec{AC}$이고 $\\vec{AC} + \\vec{CD} = \\vec{AD}$이다.\n따라서 좌변은 $\\vec{AD} + \\vec{DA} = \\vec{AA} = \\vec{0}$이다. 따라서 ㄱ은 참이다.\nㄴ. (위치벡터로 분해) 좌변 $= \\vec{AB} + \\vec{CD} = (\\vec{b} - \\vec{a}) + (\\vec{d} - \\vec{c}) = -\\vec{a} + \\vec{b} - \\vec{c} + \\vec{d}$이다.\n우변 $= \\vec{AD} + \\vec{CB} = (\\vec{d} - \\vec{a}) + (\\vec{b} - \\vec{c}) = -\\vec{a} + \\vec{b} - \\vec{c} + \\vec{d}$이다.\n좌변과 우변이 항등식으로 일치하므로 임의의 사각형에 대해 항상 성립한다. 따라서 ㄴ은 참이다.\nㄷ. (대각선 벡터의 합) 좌변 $= \\vec{AC} + \\vec{BD} = (\\vec{c} - \\vec{a}) + (\\vec{d} - \\vec{b}) = -\\vec{a} - \\vec{b} + \\vec{c} + \\vec{d}$이다.\n우변 $= \\vec{AD} + \\vec{BC} = (\\vec{d} - \\vec{a}) + (\\vec{c} - \\vec{b}) = -\\vec{a} - \\vec{b} + \\vec{c} + \\vec{d}$이다.\n좌변과 우변의 위치벡터 표현이 완전히 같으므로 항상 성립한다. 따라서 ㄷ은 참이다.\n따라서 [보기]에서 옳은 것은 ㄱ, ㄴ, ㄷ이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $3$인 정사각형 $ABCD$에서 선분 $AB$를 $1:2$로 내분하는 점을 $M$이라 하자. 점 $P$가 정사각형 $ABCD$의 모든 변을 따라 움직일 때, $\\vec{AM} + 2\\vec{AP} = \\vec{AX}$를 만족시키는 점 $X$가 나타내는 도형의 둘레의 길이는? [그림: 한 변의 길이가 $3$인 정사각형 $ABCD$에서 변 $AB$ 위에 점 $M$이 $\\overline{AM}=1, \\overline{MB}=2$를 만족하도록 표시되어 있고, 정사각형의 둘레 위에 점 $P$가 위치해 있다.]",
+    "choices": [
+      "$12$",
+      "$16$",
+      "$20$",
+      "$24$",
+      "$28$"
+    ],
+    "answer": "④",
+    "solution": "(벡터 방정식의 변형) 주어진 식 $\\vec{AM} + 2\\vec{AP} = \\vec{AX}$에서 $\\vec{AM}$을 이항하면 $\\vec{AX} - \\vec{AM} = 2\\vec{AP}$이다.\n벡터의 뺄셈 정의에 의해 $\\vec{AX} - \\vec{AM} = \\vec{MX}$이므로 $\\vec{MX} = 2\\vec{AP}$이다.\n(도형의 확대와 평행이동 해석) 점 $P$는 한 변의 길이가 $3$인 정사각형 $ABCD$의 둘레 위를 움직인다.\n점 $A$를 시점으로 하는 벡터 $2\\vec{AP}$의 종점은 정사각형 $ABCD$를 점 $A$를 닮음 중심으로 하여 $2$배 확대한 정사각형의 둘레 위를 움직인다.\n확대된 정사각형의 한 변의 길이는 $3 \\times 2 = 6$이다.\n방정식 $\\vec{MX} = 2\\vec{AP}$에서 점 $X$는 이 확대된 정사각형을 점 $M$을 기준으로 평행이동한 도형을 그린다.\n(도형의 둘레의 길이 계산) 평행이동은 도형의 크기와 둘레의 길이를 변화시키지 않으므로, 점 $X$가 나타내는 도형은 한 변의 길이가 $6$인 정사각형이다.\n따라서 점 $X$가 나타내는 도형의 둘레의 길이는 $6 \\times 4 = 24$이다.\n주의: 점 $M$에 의한 평행이동은 둘레의 길이에 영향을 주지 않는다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_INTERNAL_DIVISION",
+      "CC_SQUARE",
+      "CC_SIMILARITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 성분",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+    "subUnit": "벡터의 성분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_05_VECTOR_COMPONENT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 성분"
+    ],
+    "wide": false,
+    "content": "한 평면 위에 점들이 놓여 있을 때, 다음 [보기]의 설명 중 옳은 것만을 있는 대로 고른 것은?\n\n[보기]\nㄱ. 서로 다른 두 점 $A, B$와 점 $P$에 대하여 $\\vec{BA} + \\vec{AP} = \\vec{0}$을 만족시키는 점 $P$의 위치는 점 $B$의 위치와 같다.\nㄴ. 서로 다른 세 점 $A, B, C$와 점 $Q$에 대하여 $\\vec{QA} + \\vec{AC} + \\vec{QB} + \\vec{BC} = \\vec{0}$을 만족시키는 점 $Q$의 위치는 점 $C$의 위치와 같다.\nㄷ. 사각형 $ABCD$에 대하여 $\\vec{AB} = \\vec{CD}$가 성립하면 사각형 $ABCD$는 평행사변형이다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "③",
+    "solution": "ㄱ. (벡터의 덧셈과 영벡터) 벡터의 꼬리물기 덧셈 공식에 의해 $\\vec{BA} + \\vec{AP} = \\vec{BP}$이다.\n따라서 $\\vec{BP} = \\vec{0}$이므로 점 $P$는 시점인 점 $B$와 일치한다. 따라서 ㄱ은 참이다.\nㄴ. (벡터의 덧셈과 영벡터) $\\vec{QA} + \\vec{AC} = \\vec{QC}$이고, $\\vec{QB} + \\vec{BC} = \\vec{QC}$이다.\n따라서 주어진 식은 $\\vec{QC} + \\vec{QC} = 2\\vec{QC} = \\vec{0}$이다.\n양변을 $2$로 나누면 $\\vec{QC} = \\vec{0}$이므로 점 $Q$는 점 $C$와 일치한다. 따라서 ㄴ은 참이다.\nㄷ. (평행사변형의 꼭짓점 순서) 사각형 $ABCD$에서 꼭짓점은 $A-B-C-D$ 순서로 연결된다.\n따라서 평행사변형이 되기 위한 대변의 조건은 $\\vec{AB} = \\vec{DC}$이다.\n만약 $\\vec{AB} = \\vec{CD}$이면 선분 $AB$와 선분 $CD$가 평행하고 방향이 같아 두 변 $BC$와 $DA$가 서로 교차하는 꼬인 사각형이 되므로 볼록다각형인 평행사변형을 이루지 못한다. 따라서 ㄷ은 거짓이다.\n주의: 사각형의 꼭짓점 순서에 따라 마주 보는 대변의 벡터 표현이 $\\vec{DC}$인지 $\\vec{CD}$인지 반드시 구별해야 한다.\n따라서 [보기]에서 옳은 것은 ㄱ, ㄴ이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-067",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_PARALLELOGRAM_CRITERIA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  }
+];

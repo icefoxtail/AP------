@@ -1,0 +1,226 @@
+window.examTitle = "기하_086_벡터의뜻_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 뜻과 연산",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+    "subUnit": "벡터의 뜻과 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-05-VECTOR_BASIC",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 뜻과 연산"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $1$인 서로 합동인 정사각형 $4$개를 이어 붙여 만든 도형에서 $9$개의 꼭짓점을 위쪽 행부터 차례대로 $A, B, C$, 가운데 행을 $D, E, F$, 아래쪽 행을 $G, H, I$라 하자. 각 꼭짓점을 시점과 종점으로 하는 벡터에 대한 설명 중 옳지 않은 것은? [그림: 가로 $2$, 세로 $2$인 영역에 한 변의 길이가 $1$인 정사각형 $4$개가 $2 \\times 2$ 격자 모양으로 놓여 있다. 맨 윗줄 왼쪽부터 오른쪽으로 점 $A(0,2), B(1,2), C(2,2)$, 가운데 줄 왼쪽부터 점 $D(0,1), E(1,1), F(2,1)$, 맨 아랫줄 왼쪽부터 점 $G(0,0), H(1,0), I(2,0)$의 $9$개 꼭짓점이 표시되어 있다.]",
+    "choices": [
+      "$|\\vec{AF}| = \\sqrt{5}$",
+      "$\\vec{AB} + \\vec{BD} + \\vec{DA} = \\vec{0}$",
+      "$\\vec{BE}$를 제외하고 벡터 $\\vec{BE}$와 서로 같은 벡터의 개수는 $5$이다.",
+      "크기가 $2\\sqrt{2}$인 서로 다른 벡터의 개수는 $4$이다.",
+      "벡터 $\\vec{DE}$와 크기는 같고 방향이 반대인 서로 다른 벡터의 개수는 $4$이다."
+    ],
+    "answer": "⑤",
+    "solution": "각 꼭짓점의 위치를 좌표평면 위에 나타내어 각 보기를 판정한다: $G(0,0), H(1,0), I(2,0), D(0,1), E(1,1), F(2,1), A(0,2), B(1,2), C(2,2)$.\n① (벡터의 크기) 점 $A(0,2)$와 점 $F(2,1)$에 대하여 선분 $AF$의 길이는 $|\\vec{AF}| = \\sqrt{(2-0)^2 + (1-2)^2} = \\sqrt{4+1} = \\sqrt{5}$이므로 참이다.\n② (벡터의 덧셈) 시점과 종점을 연결하면 $\\vec{AB} + \\vec{BD} + \\vec{DA} = \\vec{AD} + \\vec{DA} = \\vec{AA} = \\vec{0}$이므로 참이다.\n③ (서로 같은 벡터의 정의) $\\vec{BE}$는 성분이 $(0, -1)$인 크기 $1$의 아래 방향 벡터이다.\n이와 크기와 방향이 모두 같은 벡터는 $\\vec{AD}, \\vec{DG}, \\vec{EH}, \\vec{CF}, \\vec{FI}$의 $5$개이므로 참이다.\n④ (대각선 벡터의 크기) 꼭짓점을 잇는 선분 중 길이가 $2\\sqrt{2} = \\sqrt{2^2+2^2}$인 것은 큰 정사각형의 대각선 $AI$와 $GC$뿐이다.\n시점과 종점을 고려하면 $\\vec{AI}, \\vec{IA}, \\vec{GC}, \\vec{CG}$의 서로 다른 $4$개의 벡터가 존재하므로 참이다.\n⑤ (역벡터의 개수) $\\vec{DE}$는 성분이 $(1, 0)$인 오른쪽 방향 단위벡터이므로, 크기가 같고 방향이 반대인 벡터는 성분이 $(-1, 0)$인 왼쪽 방향 단위벡터이다.\n가로 선분에서 왼쪽 방향 단위벡터를 모두 구하면 첫째 행에서 $\\vec{BA}, \\vec{CB}$($2$개), 둘째 행에서 $\\vec{ED}, \\vec{FE}$($2$개), 셋째 행에서 $\\vec{HG}, \\vec{IH}$($2$개)로 총 $2 + 2 + 2 = 6$개이다.\n주의: 벡터의 개수를 셀 때 각 행마다 존재하는 단위벡터를 모두 고려해야 한다.\n따라서 옳지 않은 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-065",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS",
+      "CC_LATTICE_POINT_COUNTING"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 뜻과 연산",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+    "subUnit": "벡터의 뜻과 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-05-VECTOR_BASIC",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 뜻과 연산"
+    ],
+    "wide": false,
+    "content": "벡터에 대한 설명으로 [보기]에서 옳은 것만을 있는 대로 고른 것은?\n\n[보기]\nㄱ. 크기가 $1$인 벡터를 단위벡터라 하고, $\\vec{a}$가 단위벡터이면 $-\\vec{a}$의 크기도 $1$이다.\nㄴ. 시점과 종점이 일치하는 벡터를 영벡터라 하며, 영벡터의 크기는 $0$이고 그 방향은 생각하지 않는다.\nㄷ. 크기와 방향이 각각 같은 두 벡터는 시점의 위치에 관계없이 서로 같은 벡터이다.\nㄹ. 두 점 $A, B$를 시점과 종점으로 하는 벡터 $\\vec{AB}$에 대하여 $|\\vec{AB}|$는 선분 $AB$의 길이와 같다.",
+    "choices": [
+      "ㄱ, ㄷ",
+      "ㄴ, ㄹ",
+      "ㄱ, ㄴ, ㄷ",
+      "ㄴ, ㄷ, ㄹ",
+      "ㄱ, ㄴ, ㄷ, ㄹ"
+    ],
+    "answer": "⑤",
+    "solution": "ㄱ. (단위벡터와 역벡터의 정의) 크기가 $1$인 벡터를 단위벡터라 한다. 벡터 $-\\vec{a}$는 $\\vec{a}$와 크기가 같고 방향이 반대인 벡터이므로 $|-\\vec{a}| = |\\vec{a}| = 1$이다. 따라서 ㄱ은 참이다.\nㄴ. (영벡터의 정의) 시점과 종점이 일치하는 벡터를 영벡터라 하고 기호로 $\\vec{0}$으로 나타내며, 영벡터의 크기는 $0$이고 방향은 생각하지 않는다. 따라서 ㄴ은 참이다.\nㄷ. (서로 같은 벡터의 정의) 두 벡터는 시점의 위치에 관계없이 크기와 방향이 각각 같으면 서로 같은 벡터라 하고 $\\vec{a} = \\vec{b}$로 나타낸다. 따라서 ㄷ은 참이다.\nㄹ. (벡터의 크기의 정의) 벡터 $\\vec{AB}$의 크기 $|\\vec{AB}|$는 선분 $AB$의 길이로 정의된다. 따라서 ㄹ은 참이다.\n따라서 [보기]에서 옳은 것은 ㄱ, ㄴ, ㄷ, ㄹ이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-065",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 뜻과 연산",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+    "subUnit": "벡터의 뜻과 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-05-VECTOR_BASIC",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 뜻과 연산"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $4$인 정삼각형 $ABC$의 세 변 $AB, BC, CA$의 중점을 각각 $D, E, F$라 하자. 점 $A, B, C, D, E, F$를 시점과 종점으로 하는 벡터에 대한 설명 중 옳지 않은 것은? [그림: 한 변의 길이가 $4$인 정삼각형 $ABC$에서 변 $AB$의 중점을 $D$, 변 $BC$의 중점을 $E$, 변 $CA$의 중점을 $F$라 하고 세 점 $D, E, F$를 선분으로 이어 내부에 정삼각형 $DEF$를 만든 구조이다.]",
+    "choices": [
+      "$|\\vec{AE}| = 2\\sqrt{3}$",
+      "$\\vec{DF} = \\vec{EB}$",
+      "$\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}$",
+      "$\\vec{AD}$를 제외하고 벡터 $\\vec{AD}$와 서로 같은 벡터의 개수는 $2$이다.",
+      "크기가 $2$인 서로 다른 벡터의 개수는 $6$이다."
+    ],
+    "answer": "②",
+    "solution": "한 변의 길이가 $4$인 정삼각형 $ABC$에서 삼각형의 중점연결정리에 의해 삼각형 $DEF$는 한 변의 길이가 $2$인 정삼각형이다.\n① (벡터의 크기) 선분 $AE$는 정삼각형 $ABC$의 꼭짓점 $A$에서 대변 $BC$에 내린 수선의 길이(높이)이므로 $|\\vec{AE}| = \\frac{\\sqrt{3}}{2} \\times 4 = 2\\sqrt{3}$이다. 따라서 ①은 참이다.\n② (삼각형의 중점연결정리와 벡터) 점 $D, F$가 각각 변 $AB, CA$의 중점이므로 $\\vec{DF} = \\frac{1}{2}\\vec{BC} = \\vec{BE}$이다.\n한편 점 $E$는 변 $BC$의 중점이므로 $\\vec{BE} = -\\vec{EB}$이다.\n따라서 $\\vec{DF} = -\\vec{EB} \\neq \\vec{EB}$이므로 방향이 반대이다. 따라서 ②는 옳지 않다.\n③ (벡터의 덧셈) 닫힌 삼각형 경로의 합이므로 $\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{AC} + \\vec{CA} = \\vec{AA} = \\vec{0}$이다. 따라서 ③은 참이다.\n④ (서로 같은 벡터) $\\vec{AD}$와 크기가 $2$로 같고 방향이 같은 벡터는 변 $AB$ 위의 $\\vec{DB}$와 변 $EF$ 위의 $\\vec{FE}$이다. 따라서 $\\vec{AD}$를 제외하면 $\\vec{DB}, \\vec{FE}$의 $2$개이므로 참이다.\n⑤ (크기가 $2$인 서로 다른 벡터) 길이가 $2$인 벡터의 방향은 정삼각형의 세 변의 방향과 각각 일치한다.\n(i) 선분 $AB$ 방향: $\\vec{AD}(=\\vec{DB}=\\vec{FE})$와 그 역벡터 $\\vec{DA}(=\\vec{BD}=\\vec{EF})$의 $2$개이다.\n(ii) 선분 $BC$ 방향: $\\vec{BE}(=\\vec{EC}=\\vec{DF})$와 그 역벡터 $\\vec{EB}(=\\vec{CE}=\\vec{FD})$의 $2$개이다.\n(iii) 선분 $CA$ 방향: $\\vec{CF}(=\\vec{FA}=\\vec{ED})$와 그 역벡터 $\\vec{FC}(=\\vec{AF}=\\vec{DE})$의 $2$개이다.\n따라서 크기가 $2$인 서로 다른 벡터의 개수는 $2 + 2 + 2 = 6$개이다. 따라서 ⑤는 참이다.\n주의: 같은 벡터는 시점의 위치가 달라도 하나로 센다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-065",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_MIDPOINT",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 뜻과 연산",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+    "subUnit": "벡터의 뜻과 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-05-VECTOR_BASIC",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 뜻과 연산"
+    ],
+    "wide": false,
+    "content": "삼각형 $ABC$에서 $\\overline{AB} = 4, \\angle B = 90^\\circ, \\angle C = 30^\\circ$이다. 점 $P$가 $\\vec{PB} + \\vec{PC} = \\vec{0}$을 만족시킬 때, $|\\vec{PA}|^2$의 값은?",
+    "choices": [
+      "$24$",
+      "$26$",
+      "$28$",
+      "$30$",
+      "$32$"
+    ],
+    "answer": "③",
+    "solution": "(점 $P$의 위치 파악) 주어진 벡터 방정식 $\\vec{PB} + \\vec{PC} = \\vec{0}$에서 $\\vec{PB} = -\\vec{PC} = \\vec{CP}$이다.\n두 벡터 $\\vec{PB}$와 $\\vec{CP}$는 방향이 같고 크기가 같으므로 점 $P$는 선분 $BC$의 중점이다.\n(삼각비를 이용한 변 $BC$의 길이 계산) 직각삼각형 $ABC$에서 $\\angle B = 90^\\circ, \\angle C = 30^\\circ$이므로 $\\tan 30^\\circ = \\frac{\\overline{AB}}{\\overline{BC}} = \\frac{1}{\\sqrt{3}}$이다.\n$\\overline{AB} = 4$를 대입하면 $\\frac{4}{\\overline{BC}} = \\frac{1}{\\sqrt{3}}$이므로 $\\overline{BC} = 4\\sqrt{3}$이다.\n(선분 $BP$의 길이 계산) 점 $P$가 선분 $BC$의 중점이므로 $\\overline{BP} = \\frac{1}{2}\\overline{BC} = \\frac{1}{2} \\times 4\\sqrt{3} = 2\\sqrt{3}$이다.\n(피타고라스 정리를 이용한 $|\\vec{PA}|^2$ 계산) 삼각형 $ABP$는 $\\angle B = 90^\\circ$인 직각삼각형이다.\n피타고라스 정리에 의해 $|\\vec{PA}|^2 = \\overline{AP}^2 = \\overline{AB}^2 + \\overline{BP}^2$이다.\n수치를 대입하여 계산하면 $|\\vec{PA}|^2 = 4^2 + (2\\sqrt{3})^2 = 16 + 12 = 28$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-065",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_MIDPOINT",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 뜻과 연산",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-05",
+    "standardUnit": "벡터의 연산",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+    "subUnit": "벡터의 뜻과 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-05-VECTOR_BASIC",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 뜻과 연산"
+    ],
+    "wide": false,
+    "content": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 점 $P$가 $\\vec{PA} + \\vec{PB} = \\vec{0}$을 만족시키고 $\\angle BPC = 60^\\circ$이다. $\\overline{AB} = 8$이고, 변 $BC$의 중점이 $M$일 때, $|\\vec{AM}|$의 값은?",
+    "choices": [
+      "$\\sqrt{13}$",
+      "$3\\sqrt{5}$",
+      "$4\\sqrt{3}$",
+      "$2\\sqrt{13}$",
+      "$6\\sqrt{2}$"
+    ],
+    "answer": "④",
+    "solution": "(점 $P$의 위치 파악) 주어진 식 $\\vec{PA} + \\vec{PB} = \\vec{0}$에서 $\\vec{PA} = -\\vec{PB} = \\vec{BP}$이므로 점 $P$는 빗변 $AB$의 중점이다.\n(직각삼각형의 외심의 성질) 직각삼각형의 빗변의 중점은 외심이므로 외심에서 세 꼭짓점에 이르는 거리는 모두 같다.\n따라서 $\\overline{PA} = \\overline{PB} = \\overline{PC} = \\frac{1}{2}\\overline{AB} = \\frac{1}{2} \\times 8 = 4$이다.\n(정삼각형 $PBC$의 성질) 삼각형 $PBC$에서 $\\overline{PB} = \\overline{PC} = 4$이고 끼인각 $\\angle BPC = 60^\\circ$이므로 삼각형 $PBC$는 정삼각형이다.\n따라서 $\\overline{BC} = \\overline{PB} = 4$이다.\n(피타고라스 정리를 이용한 $\\overline{AC}$ 계산) 직각삼각형 $ABC$에서 피타고라스 정리에 의해 $\\overline{AC} = \\sqrt{\\overline{AB}^2 - \\overline{BC}^2} = \\sqrt{8^2 - 4^2} = \\sqrt{64 - 16} = \\sqrt{48} = 4\\sqrt{3}$이다.\n(선분 $CM$의 길이 계산) 점 $M$은 변 $BC$의 중점이므로 $\\overline{CM} = \\frac{1}{2}\\overline{BC} = \\frac{1}{2} \\times 4 = 2$이다.\n(직각삼각형 $ACM$에서 $|\\vec{AM}|$ 계산) $\\angle C = 90^\\circ$이므로 직각삼각형 $ACM$에서 피타고라스 정리에 의해 $|\\vec{AM}| = \\sqrt{\\overline{AC}^2 + \\overline{CM}^2}$이다.\n수치를 대입하여 계산하면 $|\\vec{AM}| = \\sqrt{(4\\sqrt{3})^2 + 2^2} = \\sqrt{48 + 4} = \\sqrt{52} = 2\\sqrt{13}$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-065",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_MIDPOINT",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

@@ -1,0 +1,493 @@
+window.examTitle = "기하_119_내적의기하학적인의미_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A} = \\angle \\mathrm{B}$이고 $\\overline{\\mathrm{AB}}=8$일 때, $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}}$의 값은?\n[그림: $\\angle \\mathrm{A} = \\angle \\mathrm{B}$인 이등변삼각형 $\\mathrm{ABC}$, 밑변 $\\overline{\\mathrm{AB}}=8$]",
+    "choices": [
+      "24",
+      "28",
+      "32",
+      "36",
+      "40"
+    ],
+    "answer": "③",
+    "solution": "$\\angle \\mathrm{A} = \\angle \\mathrm{B}$이므로 삼각형 $\\mathrm{ABC}$는 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 이등변삼각형이다.\n점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{M}$이라 하면, 이등변삼각형의 성질에 의해 점 $\\mathrm{M}$은 선분 $\\mathrm{AB}$의 중점이다.\n따라서 $\\overline{\\mathrm{AM}} = \\frac{1}{2}\\overline{\\mathrm{AB}} = \\frac{1}{2} \\times 8 = 4$이다.\n직각삼각형 $\\mathrm{AMC}$에서 코사인의 정의에 의해 $\\cos(\\angle \\mathrm{BAC}) = \\frac{\\overline{\\mathrm{AM}}}{\\overline{\\mathrm{AC}}} = \\frac{4}{|\\vec{\\mathrm{AC}}|}$이다.\n내적의 정의에 대입하면 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = |\\vec{\\mathrm{AB}}||\\vec{\\mathrm{AC}}|\\cos(\\angle \\mathrm{BAC}) = 8 \\times |\\vec{\\mathrm{AC}}| \\times \\frac{4}{|\\vec{\\mathrm{AC}}|} = 8 \\times 4 = 32$이다.\n내적의 기하학적 의미(정사영)로 확인하면 $\\vec{\\mathrm{AC}}$의 $\\vec{\\mathrm{AB}}$ 위로의 정사영 길이가 항상 $\\overline{\\mathrm{AM}}=4$이므로 내적의 값은 $\\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{AM}} = 8 \\times 4 = 32$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=5$, $\\overline{\\mathrm{BC}}=12$, $\\angle \\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$가 있다. $a = \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}}$, $b = \\vec{\\mathrm{BC}} \\cdot \\vec{\\mathrm{BA}}$, $c = \\vec{\\mathrm{CA}} \\cdot \\vec{\\mathrm{CB}}$라 할 때, $a, b, c$의 대소 관계로 옳은 것은?\n[그림: $\\angle \\mathrm{B}=90^\\circ$, 밑변 $\\overline{\\mathrm{AB}}=5$, 높이 $\\overline{\\mathrm{BC}}=12$인 직각삼각형 $\\mathrm{ABC}$]",
+    "choices": [
+      "a < b < c",
+      "a < c < b",
+      "b < a < c",
+      "b < c < a",
+      "c < a < b"
+    ],
+    "answer": "③",
+    "solution": "피타고라스 정리에 의해 빗변의 길이는 $\\overline{\\mathrm{AC}} = \\sqrt{5^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$이다.\n$\\angle \\mathrm{B} = 90^\\circ$이므로 $\\vec{\\mathrm{BC}} \\perp \\vec{\\mathrm{BA}}$이다. 수직인 두 벡터의 내적은 $0$이므로 $b = \\vec{\\mathrm{BC}} \\cdot \\vec{\\mathrm{BA}} = 0$이다.\n점 $\\mathrm{C}$에서 직선 $\\mathrm{AB}$에 내린 수선의 발이 $\\mathrm{B}$이므로 내적의 기하학적 성질에 의해 $a = \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = |\\vec{\\mathrm{AB}}|^2 = 5^2 = 25$이다.\n점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 발이 $\\mathrm{B}$이므로 내적의 기하학적 성질에 의해 $c = \\vec{\\mathrm{CA}} \\cdot \\vec{\\mathrm{CB}} = |\\vec{\\mathrm{CB}}|^2 = 12^2 = 144$이다.\n구한 값을 비교하면 $b = 0, a = 25, c = 144$이므로 $b < a < c$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=5$인 이등변삼각형 $\\mathrm{ABC}$에 대하여 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = 18$이다. $\\angle \\mathrm{BAC} = \\theta$ ($0^\\circ < \\theta < 90^\\circ$)라 할 때, $\\cos\\theta$의 값은?\n[그림: $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=5$인 이등변삼각형 $\\mathrm{ABC}$, 밑각 $\\angle \\mathrm{BAC}=\\theta$]",
+    "choices": [
+      "\\frac{1}{5}",
+      "\\frac{3}{10}",
+      "\\frac{2}{5}",
+      "\\frac{1}{2}",
+      "\\frac{3}{5}"
+    ],
+    "answer": "⑤",
+    "solution": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=5$이므로 삼각형 $\\mathrm{ABC}$는 밑각의 크기가 같은 이등변삼각형이며 $\\angle \\mathrm{BCA} = \\angle \\mathrm{BAC} = \\theta$이다.\n점 $\\mathrm{B}$에서 밑변 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{M}$이라 하면 $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{AB}}\\cos\\theta = 5\\cos\\theta$이다.\n점 $\\mathrm{M}$은 선분 $\\mathrm{AC}$의 중점이므로 $\\overline{\\mathrm{AC}} = 2\\overline{\\mathrm{AM}} = 10\\cos\\theta$이다.\n내적의 정의에 의해 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = |\\vec{\\mathrm{AB}}||\\vec{\\mathrm{AC}}|\\cos\\theta = 5 \\times (10\\cos\\theta) \\times \\cos\\theta = 50\\cos^2\\theta$이다.\n조건에서 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = 18$이므로 $50\\cos^2\\theta = 18$이다.\n양변을 $50$으로 나누면 $\\cos^2\\theta = \\frac{18}{50} = \\frac{9}{25}$이다.\n$0^\\circ < \\theta < 90^\\circ$에서 $\\cos\\theta > 0$이므로 $\\cos\\theta = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "삼각형 $\\mathrm{ABC}$가 다음 조건을 만족시킨다.\n(가) $|\\vec{\\mathrm{AB}}|=3, |\\vec{\\mathrm{BC}}|=5$\n(나) $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AC}} = 16$\n이때 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BC}}$의 값은?\n[그림: 삼각형 $\\mathrm{ABC}$, $|\\vec{\\mathrm{AB}}|=3$, $|\\vec{\\mathrm{BC}}|=5$]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "④",
+    "solution": "벡터의 덧셈 성질에 의해 $\\vec{\\mathrm{AC}} = \\vec{\\mathrm{AB}} + \\vec{\\mathrm{BC}}$이다.\n조건 (나)의 식에 $\\vec{\\mathrm{AC}}$를 대입하면 $\\vec{\\mathrm{AB}} \\cdot (\\vec{\\mathrm{AB}} + \\vec{\\mathrm{BC}}) = 16$이다.\n내적의 분배법칙을 적용하면 $|\\vec{\\mathrm{AB}}|^2 + \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BC}} = 16$이다.\n조건 (가)에서 $|\\vec{\\mathrm{AB}}|=3$이므로 $|\\vec{\\mathrm{AB}}|^2 = 3^2 = 9$이다.\n식에 대입하면 $9 + \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BC}} = 16$이다.\n따라서 구하는 내적의 값은 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BC}} = 16 - 9 = 7$이다.\n주의: $\\vec{\\mathrm{AB}}$와 $\\vec{\\mathrm{BC}}$는 시점이 다르므로, 내적 공식을 적용할 때 두 벡터의 시점을 통일하거나 덧셈 분해를 활용해야 한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_PLANE_VECTOR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=14$인 삼각형 $\\mathrm{ABC}$에 내접하는 원의 중심을 $\\mathrm{I}$라 하고, 점 $\\mathrm{I}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라 하자. $\\overline{\\mathrm{BD}}=6$일 때, $\\vec{\\mathrm{BA}} \\cdot \\vec{\\mathrm{BI}}$의 값은?\n[그림: 삼각형 $\\mathrm{ABC}$, 내심 $\\mathrm{I}$, 변 $\\mathrm{BC}$ 위의 접점 $\\mathrm{D}$, $\\overline{\\mathrm{AB}}=14$, $\\overline{\\mathrm{BD}}=6$]",
+    "choices": [
+      "84",
+      "90",
+      "96",
+      "102",
+      "108"
+    ],
+    "answer": "①",
+    "solution": "내심 $\\mathrm{I}$는 세 내각의 이등분선의 교점이므로 선분 $\\mathrm{BI}$는 $\\angle \\mathrm{B}$를 이등분한다. 따라서 $\\angle \\mathrm{ABI} = \\angle \\mathrm{DBI} = \\theta$라 둘 수 있다.\n점 $\\mathrm{I}$에서 변 $\\mathrm{BC}$에 내린 수선의 발이 $\\mathrm{D}$이므로 직각삼각형 $\\mathrm{BDI}$에서 $\\cos\\theta = \\frac{\\overline{\\mathrm{BD}}}{\\overline{\\mathrm{BI}}} = \\frac{6}{|\\vec{\\mathrm{BI}}|}$이다.\n양변에 $|\\vec{\\mathrm{BI}}|$를 곱하면 $|\\vec{\\mathrm{BI}}|\\cos\\theta = 6$이다.\n두 벡터 $\\vec{\\mathrm{BA}}$와 $\\vec{\\mathrm{BI}}$가 이루는 각의 크기는 $\\angle \\mathrm{ABI} = \\theta$이므로 내적의 정의에 의해 $\\vec{\\mathrm{BA}} \\cdot \\vec{\\mathrm{BI}} = |\\vec{\\mathrm{BA}}||\\vec{\\mathrm{BI}}|\\cos\\theta$이다.\n$|\\vec{\\mathrm{BA}}|=14$이고 $|\\vec{\\mathrm{BI}}|\\cos\\theta = 6$을 대입하면 $\\vec{\\mathrm{BA}} \\cdot \\vec{\\mathrm{BI}} = 14 \\times 6 = 84$이다.\n정사영 성질 확인: 내심에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{E}$라 하면 접선의 길이에 의해 $\\overline{\\mathrm{BE}}=\\overline{\\mathrm{BD}}=6$이므로 $\\vec{\\mathrm{BA}} \\cdot \\vec{\\mathrm{BI}} = \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{BE}} = 14 \\times 6 = 84$로 일치한다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER",
+      "CC_CIRCLE_TANGENT_PROPERTY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 6,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "선분 $\\mathrm{AB}$가 지름인 원 위의 한 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BP}}=6$일 때, 내적 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}}$의 값은?\n[그림: 선분 $\\mathrm{AB}$가 지름인 원, 원 위의 점 $\\mathrm{P}$, $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BP}}=6$, 삼각형 $\\mathrm{ABP}$]",
+    "choices": [
+      "36",
+      "48",
+      "64",
+      "80",
+      "100"
+    ],
+    "answer": "③",
+    "solution": "선분 $\\mathrm{AB}$가 원의 지름이므로 원주각의 성질에 의해 $\\angle \\mathrm{APB} = 90^\\circ$이다.\n직각삼각형 $\\mathrm{ABP}$에서 피타고라스 정리에 의해 $\\overline{\\mathrm{AP}} = \\sqrt{\\overline{\\mathrm{AB}}^2 - \\overline{\\mathrm{BP}}^2} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8$이다.\n벡터의 분해에 의해 $\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AP}} + \\vec{\\mathrm{PB}}$이다.\n$\\angle \\mathrm{APB} = 90^\\circ$이므로 $\\vec{\\mathrm{PB}} \\perp \\vec{\\mathrm{AP}}$이며 $\\vec{\\mathrm{PB}} \\cdot \\vec{\\mathrm{AP}} = 0$이다.\n내적을 계산하면 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}} = (\\vec{\\mathrm{AP}} + \\vec{\\mathrm{PB}}) \\cdot \\vec{\\mathrm{AP}} = |\\vec{\\mathrm{AP}}|^2 + \\vec{\\mathrm{PB}} \\cdot \\vec{\\mathrm{AP}} = 8^2 + 0 = 64$이다.\n코사인 정의로 확인: $\\cos(\\angle \\mathrm{PAB}) = \\frac{\\overline{\\mathrm{AP}}}{\\overline{\\mathrm{AB}}} = \\frac{8}{10}$이므로 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}} = 10 \\times 8 \\times \\frac{8}{10} = 64$로 일치한다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_DIAMETER",
+      "CC_INSCRIBED_ANGLE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 선분 $\\mathrm{AB}$를 지름으로 하는 원 위의 두 점 $\\mathrm{C}, \\mathrm{D}$에 대하여 $\\overline{\\mathrm{AC}}=8$, $\\overline{\\mathrm{AD}}=3$일 때, $(\\vec{\\mathrm{AC}} - \\vec{\\mathrm{AD}}) \\cdot \\vec{\\mathrm{AB}}$의 값은?\n[그림: 지름 $\\mathrm{AB}$인 원, 원 위의 점 $\\mathrm{C}, \\mathrm{D}$, $\\overline{\\mathrm{AC}}=8$, $\\overline{\\mathrm{AD}}=3$]",
+    "choices": [
+      "35",
+      "40",
+      "45",
+      "50",
+      "55"
+    ],
+    "answer": "⑤",
+    "solution": "내적의 분배법칙에 의해 $(\\vec{\\mathrm{AC}} - \\vec{\\mathrm{AD}}) \\cdot \\vec{\\mathrm{AB}} = \\vec{\\mathrm{AC}} \\cdot \\vec{\\mathrm{AB}} - \\vec{\\mathrm{AD}} \\cdot \\vec{\\mathrm{AB}}$이다.\n선분 $\\mathrm{AB}$가 원의 지름이므로 지름에 대한 원주각의 성질에 의해 $\\angle \\mathrm{ACB} = 90^\\circ, \\angle \\mathrm{ADB} = 90^\\circ$이다.\n직각삼각형 $\\mathrm{ACB}$에서 $\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AC}} + \\vec{\\mathrm{CB}}$이고 $\\vec{\\mathrm{AC}} \\perp \\vec{\\mathrm{CB}}$이므로 $\\vec{\\mathrm{AC}} \\cdot \\vec{\\mathrm{AB}} = |\\vec{\\mathrm{AC}}|^2 = 8^2 = 64$이다.\n직각삼각형 $\\mathrm{ADB}$에서 $\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AD}} + \\vec{\\mathrm{DB}}$이고 $\\vec{\\mathrm{AD}} \\perp \\vec{\\mathrm{DB}}$이므로 $\\vec{\\mathrm{AD}} \\cdot \\vec{\\mathrm{AB}} = |\\vec{\\mathrm{AD}}|^2 = 3^2 = 9$이다.\n따라서 구하는 식의 값은 $64 - 9 = 55$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_DIAMETER",
+      "CC_INSCRIBED_ANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 지름이 선분 $\\mathrm{AB}$인 원 위의 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대하여 $\\overline{\\mathrm{AP}}=3$, $\\overline{\\mathrm{BQ}}=5$일 때, $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}} + \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BQ}}$의 값은? (단, $\\overline{\\mathrm{AB}}>5$)\n[그림: 지름 $\\mathrm{AB}$인 원, 위쪽 반원의 점 $\\mathrm{P}$, 아래쪽 반원의 점 $\\mathrm{Q}$, $\\overline{\\mathrm{AP}}=3$, $\\overline{\\mathrm{BQ}}=5$]",
+    "choices": [
+      "-20",
+      "-16",
+      "-12",
+      "-8",
+      "-4"
+    ],
+    "answer": "②",
+    "solution": "선분 $\\mathrm{AB}$가 원의 지름이므로 원주각의 성질에 의해 $\\angle \\mathrm{APB} = 90^\\circ$이고 $\\angle \\mathrm{AQB} = 90^\\circ$이다.\n$\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AP}} + \\vec{\\mathrm{PB}}$이고 $\\vec{\\mathrm{PB}} \\perp \\vec{\\mathrm{AP}}$이므로 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}} = (\\vec{\\mathrm{AP}} + \\vec{\\mathrm{PB}}) \\cdot \\vec{\\mathrm{AP}} = |\\vec{\\mathrm{AP}}|^2 + 0 = 3^2 = 9$이다.\n$\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AQ}} + \\vec{\\mathrm{QB}} = \\vec{\\mathrm{AQ}} - \\vec{\\mathrm{BQ}}$이다.\n$\\angle \\mathrm{AQB}=90^\\circ$에서 $\\vec{\\mathrm{AQ}} \\perp \\vec{\\mathrm{BQ}}$이므로 $\\vec{\\mathrm{AQ}} \\cdot \\vec{\\mathrm{BQ}} = 0$이다.\n따라서 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BQ}} = (\\vec{\\mathrm{AQ}} - \\vec{\\mathrm{BQ}}) \\cdot \\vec{\\mathrm{BQ}} = \\vec{\\mathrm{AQ}} \\cdot \\vec{\\mathrm{BQ}} - |\\vec{\\mathrm{BQ}}|^2 = 0 - 5^2 = -25$이다.\n두 내적의 합을 구하면 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{AP}} + \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{BQ}} = 9 + (-25) = -16$이다.\n주의: $\\vec{\\mathrm{AB}}$와 $\\vec{\\mathrm{BQ}}$의 방향이 둔각을 이루어 정사영의 부호가 음수가 됨에 유의한다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_DIAMETER",
+      "CC_INSCRIBED_ANGLE"
+    ],
+    "conditionKeys": [
+      "COND_LOWER_BOUND"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같은 사각형 $\\mathrm{OAPB}$에서 $\\angle \\mathrm{OAP} = \\angle \\mathrm{OBP} = 90^\\circ$, $|\\vec{\\mathrm{OA}}|=2$, $|\\vec{\\mathrm{OB}}|=3$일 때, $\\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{AB}}$의 값은?\n[그림: 사각형 $\\mathrm{OAPB}$, $\\angle \\mathrm{OAP}=90^\\circ, \\angle \\mathrm{OBP}=90^\\circ$, $\\overline{\\mathrm{OA}}=2$, $\\overline{\\mathrm{OB}}=3$]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "⑤",
+    "solution": "벡터의 뺄셈에 의해 $\\vec{\\mathrm{AB}} = \\vec{\\mathrm{OB}} - \\vec{\\mathrm{OA}}$이다.\n내적의 분배법칙을 적용하면 $\\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{AB}} = \\vec{\\mathrm{OP}} \\cdot (\\vec{\\mathrm{OB}} - \\vec{\\mathrm{OA}}) = \\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{OB}} - \\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{OA}}$이다.\n$\\angle \\mathrm{OBP} = 90^\\circ$이므로 $\\vec{\\mathrm{OP}} = \\vec{\\mathrm{OB}} + \\vec{\\mathrm{BP}}$에서 $\\vec{\\mathrm{OB}} \\perp \\vec{\\mathrm{BP}}$이다. 따라서 $\\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{OB}} = |\\vec{\\mathrm{OB}}|^2 = 3^2 = 9$이다.\n$\\angle \\mathrm{OAP} = 90^\\circ$이므로 $\\vec{\\mathrm{OP}} = \\vec{\\mathrm{OA}} + \\vec{\\mathrm{AP}}$에서 $\\vec{\\mathrm{OA}} \\perp \\vec{\\mathrm{AP}}$이다. 따라서 $\\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{OA}} = |\\vec{\\mathrm{OA}}|^2 = 2^2 = 4$이다.\n두 값을 대입하여 계산하면 $\\vec{\\mathrm{OP}} \\cdot \\vec{\\mathrm{AB}} = 9 - 4 = 5$이다.\n기하학적 의미: $\\angle \\mathrm{OAP}=\\angle \\mathrm{OBP}=90^\\circ$이므로 네 점 $\\mathrm{O}, \\mathrm{A}, \\mathrm{P}, \\mathrm{B}$는 선분 $\\mathrm{OP}$를 지름으로 하는 원 위의 점이며, 정사영에 의해 $|\\vec{\\mathrm{OB}}|^2 - |\\vec{\\mathrm{OA}}|^2 = 9 - 4 = 5$가 성립한다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 10,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $6$인 정삼각형 $\\mathrm{ABC}$의 내접원의 중심을 $\\mathrm{O}$라 하자. 내접원과 변 $\\mathrm{BC}$의 교점을 $\\mathrm{D}$라 할 때, $(\\vec{\\mathrm{AB}} - \\vec{\\mathrm{OA}}) \\cdot \\vec{\\mathrm{OD}}$의 값은?\n[그림: 한 변의 길이가 $6$인 정삼각형 $\\mathrm{ABC}$, 내접원의 중심 $\\mathrm{O}$, 변 $\\mathrm{BC}$와의 접점 $\\mathrm{D}$, 선분 $\\mathrm{AD}$]",
+    "choices": [
+      "15",
+      "18",
+      "21",
+      "24",
+      "27"
+    ],
+    "answer": "①",
+    "solution": "정삼각형에서 내심 $\\mathrm{O}$는 무게중심과 일치하며, 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발은 $\\mathrm{D}$이다.\n정삼각형의 높이는 $\\overline{\\mathrm{AD}} = 6 \\times \\frac{\\sqrt{3}}{2} = 3\\sqrt{3}$이다.\n무게중심의 성질에 의해 점 $\\mathrm{O}$는 선분 $\\mathrm{AD}$를 $2:1$로 내분하므로 $|\\vec{\\mathrm{OA}}| = \\frac{2}{3}\\overline{\\mathrm{AD}} = 2\\sqrt{3}$, $|\\vec{\\mathrm{OD}}| = \\frac{1}{3}\\overline{\\mathrm{AD}} = \\sqrt{3}$이다.\n내적의 분배법칙을 적용하면 $(\\vec{\\mathrm{AB}} - \\vec{\\mathrm{OA}}) \\cdot \\vec{\\mathrm{OD}} = \\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{OD}} - \\vec{\\mathrm{OA}} \\cdot \\vec{\\mathrm{OD}}$이다.\n$\\vec{\\mathrm{AB}} = \\vec{\\mathrm{AD}} + \\vec{\\mathrm{DB}}$이고 $\\mathrm{AD} \\perp \\mathrm{BC}$에서 $\\vec{\\mathrm{DB}} \\perp \\vec{\\mathrm{OD}}$이므로 $\\vec{\\mathrm{AB}} \\cdot \\vec{\\mathrm{OD}} = \\vec{\\mathrm{AD}} \\cdot \\vec{\\mathrm{OD}} = |\\vec{\\mathrm{AD}}||\\vec{\\mathrm{OD}}| = 3\\sqrt{3} \\times \\sqrt{3} = 9$이다.\n$\\vec{\\mathrm{OA}}$와 $\\vec{\\mathrm{OD}}$는 서로 반대 방향(각 $180^\\circ$)이므로 $\\vec{\\mathrm{OA}} \\cdot \\vec{\\mathrm{OD}} = -|\\vec{\\mathrm{OA}}||\\vec{\\mathrm{OD}}| = -(2\\sqrt{3} \\times \\sqrt{3}) = -6$이다.\n따라서 구하는 식의 값은 $9 - (-6) = 9 + 6 = 15$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER",
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TANGENCY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 11,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=10$, $\\overline{\\mathrm{BC}}=12$인 이등변삼각형 $\\mathrm{ABC}$에 내접하는 원의 중심을 $\\mathrm{O}$라 할 때, $\\vec{\\mathrm{OA}} \\cdot \\vec{\\mathrm{OB}}$의 값은?\n[그림: $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=10$, $\\overline{\\mathrm{BC}}=12$인 이등변삼각형 $\\mathrm{ABC}$, 내접원의 중심 $\\mathrm{O}$]",
+    "choices": [
+      "-21",
+      "-19",
+      "-17",
+      "-15",
+      "-13"
+    ],
+    "answer": "④",
+    "solution": "꼭짓점 $\\mathrm{A}$에서 밑변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라 하면 이등변삼각형의 성질에 의해 $\\overline{\\mathrm{BD}} = 6$이다.\n피타고라스 정리에 의해 높이는 $\\overline{\\mathrm{AD}} = \\sqrt{10^2 - 6^2} = \\sqrt{64} = 8$이다.\n삼각형 $\\mathrm{ABC}$의 넓이는 $S = \\frac{1}{2} \\times 12 \\times 8 = 48$이다.\n삼각형의 둘레의 길이는 $10 + 10 + 12 = 32$이므로 내접원의 반지름 $r$은 $S = \\frac{1}{2}r(32) = 16r = 48$에서 $r = 3$이다.\n내접원의 중심 $\\mathrm{O}$는 선분 $\\mathrm{AD}$ 위에 있으며 접점 $\\mathrm{D}$까지의 거리가 $r=3$이므로 $\\overline{\\mathrm{OD}} = 3$이고 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{AD}} - \\overline{\\mathrm{OD}} = 8 - 3 = 5$이다.\n점 $\\mathrm{D}$를 원점 $(0, 0)$으로 두면 $\\mathrm{O}(0, 3), \\mathrm{A}(0, 8), \\mathrm{B}(-6, 0)$이다.\n두 벡터의 성분을 구하면 $\\vec{\\mathrm{OA}} = \\mathrm{A} - \\mathrm{O} = (0, 5)$, $\\vec{\\mathrm{OB}} = \\mathrm{B} - \\mathrm{O} = (-6, -3)$이다.\n성분에 의한 내적을 계산하면 $\\vec{\\mathrm{OA}} \\cdot \\vec{\\mathrm{OB}} = (0 \\times (-6)) + (5 \\times (-3)) = 0 - 15 = -15$이다.\n코사인법칙으로 확인: 삼각형 $\\mathrm{OAB}$에서 $|\\vec{\\mathrm{OA}}|=5, |\\vec{\\mathrm{OB}}|=\\sqrt{45}, \\overline{\\mathrm{AB}}=10$이므로 $10^2 = 5^2 + 45 - 2(\\vec{\\mathrm{OA}}\\cdot\\vec{\\mathrm{OB}})$에서 $2(\\vec{\\mathrm{OA}}\\cdot\\vec{\\mathrm{OB}}) = 70 - 100 = -30$, 즉 $\\vec{\\mathrm{OA}}\\cdot\\vec{\\mathrm{OB}} = -15$로 일치한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER",
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

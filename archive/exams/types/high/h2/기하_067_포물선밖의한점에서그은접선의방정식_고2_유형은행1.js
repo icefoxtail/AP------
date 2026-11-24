@@ -1,0 +1,221 @@
+window.examTitle = "기하_067_포물선밖의한점에서그은접선의방정식_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 점 $A(-2, 3)$에서 포물선 $y^2 = 8x$에 그은 두 접선의 기울기의 곱은? [그림: 좌표평면에 포물선 $y^2=8x$가 있고, 제2사분면의 점 $A(-2, 3)$에서 포물선에 그은 서로 다른 두 접선이 그려져 있다.]",
+    "choices": [
+      "-2",
+      "-\\frac{3}{2}",
+      "-1",
+      "-\\frac{1}{2}",
+      "-\\frac{1}{4}"
+    ],
+    "answer": "③",
+    "solution": "1단계: 포물선의 기본형 확인: $y^2 = 8x$는 $y^2 = 4px$에서 $4p = 8 \\implies p = 2$이다.\n2단계: 접선의 방정식 설정: 기울기가 $m$인 포물선 $y^2 = 8x$의 접선의 방정식 공식은 $y = mx + \\frac{p}{m} = mx + \\frac{2}{m}$이다 ($m \\neq 0$).\n3단계: 점 $A(-2, 3)$ 대입: 이 접선이 점 $A(-2, 3)$을 지나므로 대입하여 식을 세운다.\n$3 = -2m + \\frac{2}{m}$\n4단계: $m$에 대한 이차방정식 정리: 양변에 $m$을 곱하여 좌변으로 이항한다.\n$3m = -2m^2 + 2 \\implies 2m^2 + 3m - 2 = 0$\n5단계: 판별식 확인: 판별식 $D = 3^2 - 4(2)(-2) = 9 + 16 = 25 > 0$이므로 서로 다른 두 실근(기울기)이 존재한다.\n6단계: 근과 계수의 관계 적용: 이차방정식의 두 근을 $m_1, m_2$라 하면 두 근의 곱은 다음과 같다.\n$m_1 m_2 = \\frac{-2}{2} = -1$\n7단계: 인수분해를 통한 직접 확인: $(2m - 1)(m + 2) = 0 \\implies m = \\frac{1}{2}$ 또는 $m = -2$이므로 기울기의 곱은 $\\frac{1}{2} \\times (-2) = -1$이다.\n8단계: 기하학적 성질 확인: 포물선 $y^2 = 8x$의 준선은 $x = -2$이다. 점 $A(-2, 3)$은 준선 위의 점이므로 포물선의 준선 위의 점에서 그은 두 접선은 서로 수직이다. 따라서 두 접선의 기울기의 곱은 항상 $-1$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [
+      "CC_SLOPE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "점 $(3, 2)$에서 포물선 $x^2 = 4y$에 그은 두 접선의 기울기의 곱은?",
+    "choices": [
+      "-2",
+      "-1",
+      "\\frac{1}{2}",
+      "1",
+      "2"
+    ],
+    "answer": "⑤",
+    "solution": "1단계: 포물선의 기본형 확인: $x^2 = 4y$는 $x^2 = 4py$에서 $p = 1$이다.\n2단계: 접선의 방정식 공식 적용: 포물선 $x^2 = 4py$에 접하고 기울기가 $m$인 직선의 방정식은 $y = mx - pm^2$이므로 $y = mx - m^2$이다.\n3단계: 외부의 점 $(3, 2)$ 대입: 직선이 점 $(3, 2)$를 지나므로 대입한다.\n$2 = 3m - m^2$\n4단계: $m$에 대한 이차방정식 정리: 좌변으로 모두 이항하여 내림차순으로 정리한다.\n$m^2 - 3m + 2 = 0$\n5단계: 판별식 확인: $D = (-3)^2 - 4(1)(2) = 9 - 8 = 1 > 0$이므로 서로 다른 두 접선이 존재한다.\n6단계: 근과 계수의 관계 적용: 두 접선의 기울기를 $m_1, m_2$라 할 때 두 기울기의 곱은 이차방정식의 두 근의 곱과 같다.\n$m_1 m_2 = \\frac{2}{1} = 2$\n7단계: 인수분해 검증: $(m - 1)(m - 2) = 0 \\implies m = 1$ 또는 $m = 2$. 두 접선의 기울기의 곱은 $1 \\times 2 = 2$로 일치한다.\n8단계: 접선 방정식 역산 검증: $m = 1$일 때 접선은 $y = x - 1$로 점 $(3, 2)$를 지나고, $m = 2$일 때 접선은 $y = 2x - 4$로 점 $(3, 2)$를 지난다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [
+      "CC_SLOPE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "점 $A(-1, 0)$에서 포물선 $y^2 = 16x$에 그은 두 접선이 포물선과 만나는 점을 각각 $B, C$라 하자. 이 포물선의 초점을 $D$라 할 때, 사각형 $ABDC$의 넓이는?",
+    "choices": [
+      "14",
+      "16",
+      "18",
+      "20",
+      "22"
+    ],
+    "answer": "④",
+    "solution": "1단계: 포물선의 초점 $D$ 구하기: $y^2 = 16x = 4px$에서 $4p = 16 \\implies p = 4$이므로 초점은 $D(4, 0)$이다.\n2단계: 접점의 좌표 구하기: 포물선 위의 접점을 $(x_1, y_1)$이라 하면 접선의 방정식은 $y_1 y = 2p(x + x_1) = 8(x + x_1)$이다.\n3단계: 점 $A(-1, 0)$ 대입: 접선이 점 $A(-1, 0)$을 지나므로 대입하면 다음과 같다.\n$y_1 \\cdot 0 = 8(-1 + x_1) \\implies 8(x_1 - 1) = 0 \\implies x_1 = 1$\n4단계: 두 접점의 좌표 결정: $x_1 = 1$을 포물선 식 $y^2 = 16x$에 대입하면 $y_1^2 = 16 \\implies y_1 = \\pm 4$이다. 따라서 두 접점은 $B(1, 4), C(1, -4)$이다.\n5단계: 사각형 $ABDC$의 구조 파악: 대각선 $AD$는 $x$축 위에 있고, 대각선 $BC$는 직선 $x = 1$ 위에 있으므로 두 대각선은 서로 수직으로 교차한다.\n6단계: 두 대각선의 길이 계산:\n$\\overline{AD} = 4 - (-1) = 5$\n$\\overline{BC} = 4 - (-4) = 8$\n7단계: 사각형의 넓이 계산: 두 대각선이 수직인 사각형의 넓이 공식을 적용한다.\n$S = \\frac{1}{2} \\times \\overline{AD} \\times \\overline{BC} = \\frac{1}{2} \\times 5 \\times 8 = 20$\n8단계: 두 삼각형의 합으로 역산 검증: 선분 $BC$를 공통 밑변($\\overline{BC} = 8$)으로 하면 삼각형 $ABC$의 넓이는 $\\frac{1}{2} \\times 8 \\times (1 - (-1)) = 8$이고, 삼각형 $DBC$의 넓이는 $\\frac{1}{2} \\times 8 \\times (4 - 1) = 12$이다. 사각형의 넓이는 $8 + 12 = 20$으로 일치한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [
+      "CC_AREA",
+      "CC_LINE_EQUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "점 $P(-1, 1)$에서 포물선 $y^2 = 8x$에 그은 두 접선의 접점을 각각 $A, B$라 할 때, 삼각형 $PAB$의 넓이는? [그림: 좌표평면에 포물선 $y^2=8x$가 있고, 제2사분면의 점 $P(-1, 1)$에서 포물선에 그은 두 접선의 접점 $A(1/2, -2)$, $B(2, 4)$를 꼭짓점으로 하는 삼각형 $PAB$가 음영으로 칠해져 있다.]",
+    "choices": [
+      "\\frac{21}{4}",
+      "\\frac{23}{4}",
+      "\\frac{25}{4}",
+      "\\frac{27}{4}",
+      "\\frac{29}{4}"
+    ],
+    "answer": "④",
+    "solution": "1단계: 포물선의 기본형 확인: $y^2 = 8x$에서 $4p = 8 \\implies p = 2$이다.\n2단계: 두 접점을 잇는 극선의 방정식 구하기: 포물선 $y^2 = 4px$ 밖의 점 $P(x_0, y_0)$에서 그은 두 접선의 접점을 지나는 극선의 방정식은 $y_0 y = 2p(x + x_0)$이다.\n3단계: 수치 대입: 점 $P(-1, 1)$과 $p = 2$를 대입하면 $1 \\cdot y = 4(x - 1) \\implies y = 4x - 4$이다.\n4단계: 접점 $A, B$의 좌표 구하기: 극선 $y = 4x - 4$와 포물선 $y^2 = 8x$를 연립한다.\n$(4x - 4)^2 = 8x \\implies 16x^2 - 32x + 16 = 8x \\implies 16x^2 - 40x + 16 = 0$\n양변을 8로 나누면 $2x^2 - 5x + 2 = 0 \\implies (2x - 1)(x - 2) = 0$이므로 $x = \\frac{1}{2}$ 또는 $x = 2$이다.\n$x = \\frac{1}{2}$일 때 $y = 4(1/2) - 4 = -2 \\implies A\\left(\\frac{1}{2}, -2\\right)$\n$x = 2$일 때 $y = 4(2) - 4 = 4 \\implies B(2, 4)$\n5단계: 선분 $AB$의 길이 계산:\n$\\overline{AB} = \\sqrt{\\left(2 - \\frac{1}{2}\\right)^2 + (4 - (-2))^2} = \\sqrt{\\left(\\frac{3}{2}\\right)^2 + 6^2} = \\sqrt{\\frac{9}{4} + 36} = \\sqrt{\\frac{153}{4}} = \\frac{3\\sqrt{17}}{2}$\n6단계: 점 $P$에서 극선 $4x - y - 4 = 0$까지의 거리 $h$ 계산:\n$h = \\frac{|4(-1) - 1 - 4|}{\\sqrt{4^2 + (-1)^2}} = \\frac{|-9|}{\\sqrt{17}} = \\frac{9}{\\sqrt{17}}$\n7단계: 삼각형 $PAB$의 넓이 계산:\n$S = \\frac{1}{2} \\times \\overline{AB} \\times h = \\frac{1}{2} \\times \\frac{3\\sqrt{17}}{2} \\times \\frac{9}{\\sqrt{17}} = \\frac{27}{4}$\n8단계: 넓이 공식 검증: 포물선 $y^2 = 4px$ 밖의 점 $(x_0, y_0)$에 대한 접점 삼각형 넓이 공식 $S = \\frac{(y_0^2 - 4px_0)^{3/2}}{2p}$에 대입하면 $S = \\frac{(1^2 - 8(-1))^{3/2}}{2 \\cdot 2} = \\frac{9^{3/2}}{4} = \\frac{27}{4}$로 일치한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA",
+      "CC_LINE_EQUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "이차곡선의 접선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-02",
+    "standardUnit": "이차곡선의 접선",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-GE-02-CORE",
+    "subUnit": "이차곡선의 접선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-02-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선의 접선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = -8x$ 밖의 한 점 $(n, 0)$에서 포물선에 그은 두 접선의 기울기의 곱을 $a_n$이라 할 때, $\\sum_{n=1}^{10} \\left(1 - \\frac{2}{a_n}\\right)$의 값은? (단, $n$은 자연수) [그림: 좌표평면에 왼쪽으로 열린 포물선 $y^2=-8x$가 있고, 양의 $x$축 위의 점 $(n, 0)$에서 포물선에 그은 서로 다른 두 접선이 상하 대칭으로 그려져 있다.]",
+    "choices": [
+      "55",
+      "65",
+      "75",
+      "85",
+      "95"
+    ],
+    "answer": "②",
+    "solution": "1단계: 포물선의 기본형 확인: $y^2 = -8x = 4px$에서 $4p = -8 \\implies p = -2$이다.\n2단계: 접선의 방정식 설정: 기울기가 $m$인 접선의 방정식 공식은 $y = mx + \\frac{p}{m} = mx - \\frac{2}{m}$이다 ($m \\neq 0$).\n3단계: 점 $(n, 0)$ 대입: 직선이 점 $(n, 0)$을 지나므로 대입하여 식을 정리한다.\n$0 = mn - \\frac{2}{m} \\implies mn = \\frac{2}{m} \\implies m^2 = \\frac{2}{n}$\n4단계: 접선의 기울기 구하기: $n$은 자연수이므로 $m = \\pm \\sqrt{\\frac{2}{n}}$이다.\n5단계: 두 기울기의 곱 $a_n$ 계산:\n$a_n = \\left(\\sqrt{\\frac{2}{n}}\\right) \\times \\left(-\\sqrt{\\frac{2}{n}}\\right) = -\\frac{2}{n}$\n6단계: 시그마 내부 식 정리: $\\frac{2}{a_n} = \\frac{2}{-2/n} = -n$이므로 다음과 같다.\n$1 - \\frac{2}{a_n} = 1 - (-n) = n + 1$\n7단계: 자연수의 합 공식을 적용하여 시그마 계산:\n$\\sum_{n=1}^{10} \\left(1 - \\frac{2}{a_n}\\right) = \\sum_{n=1}^{10} (n + 1) = \\sum_{n=1}^{10} n + \\sum_{n=1}^{10} 1$\n8단계: 최종 값 계산:\n$\\frac{10 \\times 11}{2} + 10 = 55 + 10 = 65$\n9단계: $n=1, 2$를 대입한 부분합 검증: $n=1$일 때 $a_1 = -2 \\implies 1 - \\frac{2}{-2} = 2$. $n=2$일 때 $a_2 = -1 \\implies 1 - \\frac{2}{-1} = 3$. 일반항 $n+1$이 정확히 성립함을 확인하였다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-047",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
