@@ -1038,16 +1038,17 @@
 
 ### 기하 (GEOMETRY) · 고2 — 파일 `GEOMETRY.md`
 
-- `PT_GEO_CONIC_TANGENT` 이차곡선의 접선 문제 (TPL 6)
-- `PT_GEO_ELLIPSE` 타원 문제 (TPL 3)
-- `PT_GEO_HYPERBOLA` 쌍곡선 문제 (TPL 6)
-- `PT_GEO_PARABOLA` 포물선 문제 (TPL 2)
+- `PT_GEO_CONIC_MIXED` 이차곡선의 종합 (TPL 1)
+- `PT_GEO_CONIC_TANGENT` 이차곡선의 접선 문제 (TPL 7)
+- `PT_GEO_ELLIPSE` 타원 문제 (TPL 8)
+- `PT_GEO_HYPERBOLA` 쌍곡선 문제 (TPL 9)
+- `PT_GEO_PARABOLA` 포물선 문제 (TPL 6)
 - `PT_GEO_PLANE_EQUATION` 평면의 방정식
-- `PT_GEO_PLANE_VECTOR` 평면벡터 문제 (TPL 8)
-- `PT_GEO_SPACE_COORDINATE` 공간좌표 (TPL 3)
-- `PT_GEO_SPACE_FIGURE` 공간도형 문제 (TPL 11)
+- `PT_GEO_PLANE_VECTOR` 평면벡터 문제 (TPL 10)
+- `PT_GEO_SPACE_COORDINATE` 공간좌표 (TPL 4)
+- `PT_GEO_SPACE_FIGURE` 공간도형 문제 (TPL 12)
 - `PT_GEO_SPACE_LINE` 공간직선
-- `PT_GEO_SPHERE` 구 (TPL 3)
+- `PT_GEO_SPHERE` 구 (TPL 5)
 - `PT_GEO_VECTOR` 벡터
 - `PT_GEO_VECTOR_LINE_CIRCLE` 벡터를 이용한 직선·원의 방정식 (TPL 4)
 

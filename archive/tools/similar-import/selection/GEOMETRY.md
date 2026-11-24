@@ -7,19 +7,19 @@
 ## 단원 목차
 
 - `H15-GV-01` 포물선 (소단원 0 · RPM 2 · 유형 0)
-- `H22-GE-01` 이차곡선 (소단원 1 · RPM 9 · 유형 4)
+- `H22-GE-01` 이차곡선 (소단원 1 · RPM 39 · 유형 5)
 - `H15-GV-02` 타원 (소단원 0 · RPM 2 · 유형 0)
-- `H22-GE-02` 이차곡선의 접선 (소단원 1 · RPM 8 · 유형 2)
+- `H22-GE-02` 이차곡선의 접선 (소단원 1 · RPM 22 · 유형 2)
 - `H15-GV-03` 쌍곡선 (소단원 0 · RPM 2 · 유형 0)
-- `H22-GE-03` 공간도형 (소단원 1 · RPM 8 · 유형 2)
+- `H22-GE-03` 공간도형 (소단원 1 · RPM 27 · 유형 3)
 - `H15-GV-04` 이차곡선과 직선 (소단원 0 · RPM 8 · 유형 0)
-- `H22-GE-04` 공간좌표 (소단원 1 · RPM 12 · 유형 2)
+- `H22-GE-04` 공간좌표 (소단원 1 · RPM 17 · 유형 2)
 - `H15-GV-05` 벡터의 연산 (소단원 0 · RPM 6 · 유형 0)
-- `H22-GE-05` 벡터의 연산 (소단원 3 · RPM 6 · 유형 3)
+- `H22-GE-05` 벡터의 연산 (소단원 3 · RPM 15 · 유형 3)
 - `H15-GV-06` 평면벡터의 성분과 내적 (소단원 0 · RPM 6 · 유형 1)
-- `H22-GE-06` 벡터의 성분 (소단원 3 · RPM 4 · 유형 2)
+- `H22-GE-06` 벡터의 성분 (소단원 3 · RPM 12 · 유형 2)
 - `H15-GV-07` 직선과 원의 방정식 (소단원 0 · RPM 0 · 유형 0)
-- `H22-GE-07` 벡터의 내적 (소단원 3 · RPM 2 · 유형 2)
+- `H22-GE-07` 벡터의 내적 (소단원 3 · RPM 7 · 유형 3)
 - `H15-GV-08` 공간도형 (소단원 0 · RPM 6 · 유형 0)
 - `H22-GE-08` 도형의 방정식 (소단원 1 · RPM 12 · 유형 4)
 - `H15-GV-09` 공간좌표 (소단원 0 · RPM 6 · 유형 2)
@@ -60,9 +60,41 @@
 - `H2-GEO-RPM-045` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
 - `H2-GEO-RPM-046` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 조건으로 방정식 · `H22-GE-01-CORE`
 - `H2-GEO-RPM-094` 이차곡선 > 이차곡선 > 이차곡선의 종합 활용 > 포물선·타원·쌍곡선 혼합 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-100` 이차곡선 > 이차곡선 > 포물선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-101` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-102` 이차곡선 > 이차곡선 > 포물선 > 초점·준선 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-103` 이차곡선 > 이차곡선 > 포물선 > 초점·준선 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-108` 이차곡선 > 이차곡선 > 포물선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-109` 이차곡선 > 이차곡선 > 포물선 > 초점·준선 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-110` 이차곡선 > 이차곡선 > 타원 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-111` 이차곡선 > 이차곡선 > 타원 > 초점·장축·단축 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-112` 이차곡선 > 이차곡선 > 타원 > 초점·장축·단축 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-113` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-114` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-115` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 조건으로 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-116` 이차곡선 > 이차곡선 > 타원 > 초점·장축·단축 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-117` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-118` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 조건으로 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-119` 이차곡선 > 이차곡선 > 쌍곡선 > 점근선 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-120` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-121` 이차곡선 > 이차곡선 > 이차곡선의 이동 > 조건으로 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-122` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-123` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-124` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-125` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-126` 이차곡선 > 이차곡선 > 타원 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-127` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-128` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-129` 이차곡선 > 이차곡선 > 이차곡선의 종합 활용 > 포물선·타원·쌍곡선 혼합 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-186` 이차곡선 > 이차곡선 > 타원 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-187` 이차곡선 > 이차곡선 > 타원 > 정의와 방정식 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-188` 이차곡선 > 이차곡선 > 타원 > 초점·장축·단축 · `H22-GE-01-CORE`
+- `H2-GEO-RPM-189` 이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식 · `H22-GE-01-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
+- `PT_GEO_CONIC_MIXED` **이차곡선의 종합** — 포물선·타원·쌍곡선(과 원)이 섞여 나오는 이차곡선 종합 문제에서 식의 종류를 판별하고 곡선의 성질을 연결해 결론을 구한다.
+  - `TPL_GEO_CONIC_MIXED_TYPE_CONDITION` 이차방정식이 나타내는 이차곡선의 종류
 - `PT_GEO_CONIC_TANGENT` **이차곡선의 접선 문제** — 포물선·타원·쌍곡선 위의 점 또는 곡선 밖의 점에서 접선 조건을 세우고 접선이나 관련 값을 결정하는 문제 유형.
   - `TPL_GEO_CONIC_TANGENT_DISCRIMINANT` 접선 조건
   - `TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT` 기울기 지정 접선
@@ -70,20 +102,33 @@
   - `TPL_GEO_TANGENT_FROM_OUTSIDE_POINT` 곡선 밖의 점에서 이차곡선에 그은 접선
   - `TPL_GEO_TANGENT_ON_CONIC` 이차곡선 위 점에서 접선 조건 적용
   - `TPL_GEO_TANGENT_ORTHOGONAL` 접선에 수직인 직선의 조건 활용
+  - `TPL_GEO_TANGENT_PROPERTY` 접선의 성질
 - `PT_GEO_ELLIPSE` **타원 문제** — 타원의 표준방정식과 두 초점까지 거리의 합, 축·초점 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
   - `TPL_GEO_ELLIPSE_AXIS_FOCUS` 타원의 축·초점 관계 활용
+  - `TPL_GEO_ELLIPSE_EXTREMA` 타원 위의 점의 최대·최소
   - `TPL_GEO_ELLIPSE_FOCAL` 초점거리합
+  - `TPL_GEO_ELLIPSE_LOCUS` 타원의 자취
+  - `TPL_GEO_ELLIPSE_MODEL` 타원 모형
   - `TPL_GEO_ELLIPSE_STANDARD_EQUATION` 타원 표준방정식 해석
+  - `TPL_GEO_ELLIPSE_TRANSLATION` 타원의 평행이동
+  - `TPL_GEO_ELLIPSE_WITH_CURVE` 타원과 다른 곡선
 - `PT_GEO_HYPERBOLA` **쌍곡선 문제** — 쌍곡선의 표준방정식과 초점·점근선·거리 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
   - `TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS` 쌍곡선 점근선·축 관계 활용
   - `TPL_GEO_HYPERBOLA_FOCAL_DIFF` 쌍곡선 초점거리차
   - `TPL_GEO_HYPERBOLA_FOCAL_DISTANCE` 초점 거리
   - `TPL_GEO_HYPERBOLA_MODEL` 거리차 쌍곡선 모형
   - `TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE` 쌍곡선 직각 초점삼각형
+  - `TPL_GEO_HYPERBOLA_SHARED_FOCUS` 초점을 공유하는 이차곡선
   - `TPL_GEO_HYPERBOLA_STANDARD_EQUATION` 쌍곡선 표준방정식 해석
+  - `TPL_GEO_HYPERBOLA_TRANSLATION` 쌍곡선의 평행이동
+  - `TPL_GEO_HYPERBOLA_WITH_CURVE` 쌍곡선과 다른 곡선
 - `PT_GEO_PARABOLA` **포물선 문제** — 포물선의 표준방정식과 초점·준선의 정의, 거리 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
+  - `TPL_GEO_PARABOLA_FOCAL_CHORD` 초점을 지나는 직선과 포물선
   - `TPL_GEO_PARABOLA_FOCUS_DIRECTRIX` 포물선 초점·준선 관계 활용
+  - `TPL_GEO_PARABOLA_MODEL` 포물선 모형
+  - `TPL_GEO_PARABOLA_PAIR_SEGMENT` 두 포물선과 선분의 길이
   - `TPL_GEO_PARABOLA_STANDARD_EQUATION` 포물선 표준방정식 해석
+  - `TPL_GEO_PARABOLA_TRANSLATION` 포물선의 평행이동
 
 ## H15-GV-02 타원
 
@@ -120,6 +165,20 @@
 - `H2-GEO-RPM-052` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
 - `H2-GEO-RPM-085` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 접점형 · `H22-GE-02-CORE`
 - `H2-GEO-RPM-095` 이차곡선 > 이차곡선의 접선 > 이차곡선과 직선의 위치 관계 > 판별식과 위치 관계 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-130` 이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-131` 이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-132` 이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 기울기형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-133` 이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-134` 이차곡선 > 이차곡선의 접선 > 타원의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-135` 이차곡선 > 이차곡선의 접선 > 타원의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-136` 이차곡선 > 이차곡선의 접선 > 타원의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-137` 이차곡선 > 이차곡선의 접선 > 타원의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-138` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-139` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-140` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-141` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-142` 이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 접점형 · `H22-GE-02-CORE`
+- `H2-GEO-RPM-143` 이차곡선 > 이차곡선의 접선 > 타원의 접선 > 기울기·조건형 · `H22-GE-02-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
@@ -130,13 +189,17 @@
   - `TPL_GEO_TANGENT_FROM_OUTSIDE_POINT` 곡선 밖의 점에서 이차곡선에 그은 접선
   - `TPL_GEO_TANGENT_ON_CONIC` 이차곡선 위 점에서 접선 조건 적용
   - `TPL_GEO_TANGENT_ORTHOGONAL` 접선에 수직인 직선의 조건 활용
+  - `TPL_GEO_TANGENT_PROPERTY` 접선의 성질
 - `PT_GEO_HYPERBOLA` **쌍곡선 문제** — 쌍곡선의 표준방정식과 초점·점근선·거리 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
   - `TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS` 쌍곡선 점근선·축 관계 활용
   - `TPL_GEO_HYPERBOLA_FOCAL_DIFF` 쌍곡선 초점거리차
   - `TPL_GEO_HYPERBOLA_FOCAL_DISTANCE` 초점 거리
   - `TPL_GEO_HYPERBOLA_MODEL` 거리차 쌍곡선 모형
   - `TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE` 쌍곡선 직각 초점삼각형
+  - `TPL_GEO_HYPERBOLA_SHARED_FOCUS` 초점을 공유하는 이차곡선
   - `TPL_GEO_HYPERBOLA_STANDARD_EQUATION` 쌍곡선 표준방정식 해석
+  - `TPL_GEO_HYPERBOLA_TRANSLATION` 쌍곡선의 평행이동
+  - `TPL_GEO_HYPERBOLA_WITH_CURVE` 쌍곡선과 다른 곡선
 
 ## H15-GV-03 쌍곡선
 
@@ -173,12 +236,40 @@
 - `H2-GEO-RPM-058` 공간도형과 공간좌표 > 공간도형 > 이면각 > 공간에서의 각 · `H22-GE-03-CORE`
 - `H2-GEO-RPM-083` 공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 방향벡터의 수직 판정 · `H22-GE-03-CORE`
 - `H2-GEO-RPM-084` 공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 평행선에 의한 각의 환원 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-166` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 평행·수직 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-167` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 평행·수직 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-168` 공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 방향벡터의 수직 판정 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-169` 공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 평행선에 의한 각의 환원 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-170` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 평행·수직 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-171` 공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 거리·각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-172` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 평행·수직 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-173` 공간도형과 공간좌표 > 공간도형 > 이면각 > 공간에서의 각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-174` 공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 정사영 활용 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-175` 공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 거리·각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-176` 공간도형과 공간좌표 > 공간도형 > 이면각 > 공간에서의 각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-177` 공간도형과 공간좌표 > 공간도형 > 이면각 > 이면각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-178` 공간도형과 공간좌표 > 공간도형 > 이면각 > 공간에서의 각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-179` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 정사영 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-180` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 정사영 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-181` 공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 정사영 활용 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-182` 공간도형과 공간좌표 > 공간도형 > 이면각 > 이면각 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-183` 공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 정사영 · `H22-GE-03-CORE`
+- `H2-GEO-RPM-184` 공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 거리·각 · `H22-GE-03-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_PARABOLA` **포물선 문제** — 포물선의 표준방정식과 초점·준선의 정의, 거리 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
+  - `TPL_GEO_PARABOLA_FOCAL_CHORD` 초점을 지나는 직선과 포물선
   - `TPL_GEO_PARABOLA_FOCUS_DIRECTRIX` 포물선 초점·준선 관계 활용
+  - `TPL_GEO_PARABOLA_MODEL` 포물선 모형
+  - `TPL_GEO_PARABOLA_PAIR_SEGMENT` 두 포물선과 선분의 길이
   - `TPL_GEO_PARABOLA_STANDARD_EQUATION` 포물선 표준방정식 해석
+  - `TPL_GEO_PARABOLA_TRANSLATION` 포물선의 평행이동
+- `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
+  - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
+  - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_MIN_PATH` 선분 길이 합의 최솟값
+  - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPACE_FIGURE` **공간도형 문제** — 공간도형에서 직선·평면의 위치 관계와 공간에서 이루는 각을 해석하여 주어진 기하 조건을 결정하는 문제 유형.
   - `TPL_GEO_SPACE_DIHEDRAL_ANGLE` 공간에서 두 직선 사이의 각 구하기
   - `TPL_GEO_SPACE_FIGURE_ANGLE` 공간각
@@ -191,6 +282,7 @@
   - `TPL_GEO_SPACE_FIGURE_SKEW` 공간 꼬인 직선 판정
   - `TPL_GEO_SPACE_LINES_ANGLE` 공간에서 두 직선 사이의 각
   - `TPL_GEO_SPACE_PERPENDICULAR_PROJECTION` 공간의 수선의 발·정사영 관계 활용
+  - `TPL_GEO_SPACE_PROJECTION_LENGTH` 정사영의 길이
 
 ## H15-GV-04 이차곡선과 직선
 
@@ -237,17 +329,25 @@
 - `H2-GEO-RPM-089` 공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-090` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름 · `H22-GE-04-CORE`
 - `H2-GEO-RPM-091` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-104` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-105` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-106` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-107` 공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건 · `H22-GE-04-CORE`
+- `H2-GEO-RPM-185` 공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 두 점 사이 거리 · `H22-GE-04-CORE`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
   - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
   - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_MIN_PATH` 선분 길이 합의 최솟값
   - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
   - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
   - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_LOCUS` 구의 자취
   - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
+  - `TPL_GEO_SPHERE_TWO_SPHERES` 두 구의 위치 관계
 
 ## H15-GV-05 벡터의 연산
 
@@ -288,6 +388,15 @@
 - `H2-GEO-RPM-068` 벡터 > 벡터의 연산 > 벡터의 덧셈과 뺄셈 > 위치벡터 · `H22-GE-05-VECTOR_COMPONENT`
 - `H2-GEO-RPM-069` 벡터 > 벡터의 연산 > 벡터의 실수배 > 평행 조건 · `H22-GE-05-VECTOR_COMPONENT`
 - `H2-GEO-RPM-070` 벡터 > 벡터의 연산 > 벡터의 실수배 > 내분·외분 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-144` 벡터 > 벡터의 연산 > 벡터의 뜻 > 벡터와 스칼라 · `H22-GE-05-VECTOR_BASIC`
+- `H2-GEO-RPM-145` 벡터 > 벡터의 연산 > 벡터의 뜻 > 같은 벡터 · `H22-GE-05-VECTOR_BASIC`
+- `H2-GEO-RPM-146` 벡터 > 벡터의 연산 > 벡터의 덧셈과 뺄셈 > 삼각형법 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-149` 벡터 > 벡터의 연산 > 벡터의 실수배 > 평행 조건 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-150` 벡터 > 벡터의 연산 > 벡터의 뜻 > 같은 벡터 · `H22-GE-05-VECTOR_BASIC`
+- `H2-GEO-RPM-151` 벡터 > 벡터의 연산 > 벡터의 실수배 > 평행 조건 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-152` 벡터 > 벡터의 연산 > 벡터의 덧셈과 뺄셈 > 위치벡터 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-153` 벡터 > 벡터의 연산 > 벡터의 실수배 > 내분·외분 · `H22-GE-05-VECTOR_COMPONENT`
+- `H2-GEO-RPM-154` 벡터 > 벡터의 연산 > 벡터의 실수배 > 내분·외분 · `H22-GE-05-VECTOR_COMPONENT`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
@@ -298,11 +407,14 @@
   - `TPL_GEO_PLANE_VECTOR_EXTREMA` 내적 최적화
   - `TPL_GEO_PLANE_VECTOR_LOCUS` 내적 자취
   - `TPL_GEO_PLANE_VECTOR_PARAMETER` 벡터 조건
+  - `TPL_GEO_PLANE_VECTOR_POSITION` 위치벡터와 분점
   - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
+  - `TPL_GEO_PLANE_VECTOR_REGION` 벡터식이 나타내는 도형
   - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
   - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
   - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_MIN_PATH` 선분 길이 합의 최솟값
   - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_VECTOR` **벡터** — 평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.
 
@@ -332,7 +444,9 @@
   - `TPL_GEO_PLANE_VECTOR_EXTREMA` 내적 최적화
   - `TPL_GEO_PLANE_VECTOR_LOCUS` 내적 자취
   - `TPL_GEO_PLANE_VECTOR_PARAMETER` 벡터 조건
+  - `TPL_GEO_PLANE_VECTOR_POSITION` 위치벡터와 분점
   - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
+  - `TPL_GEO_PLANE_VECTOR_REGION` 벡터식이 나타내는 도형
   - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 
 ## H22-GE-06 벡터의 성분
@@ -351,6 +465,14 @@
 - `H2-GEO-RPM-072` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 크기 · `H22-GE-06-VECTOR_COMPONENT`
 - `H2-GEO-RPM-075` 벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 수직·평행 · `H22-GE-06-VECTOR_COMPONENT`
 - `H2-GEO-RPM-076` 벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 거리·각 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-147` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 크기 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-148` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 크기 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-155` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 성분 계산 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-156` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 성분 계산 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-157` 벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 성분 계산 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-161` 벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 수직·평행 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-164` 벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 거리·각 · `H22-GE-06-VECTOR_COMPONENT`
+- `H2-GEO-RPM-165` 벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 거리·각 · `H22-GE-06-VECTOR_COMPONENT`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
@@ -361,7 +483,9 @@
   - `TPL_GEO_PLANE_VECTOR_EXTREMA` 내적 최적화
   - `TPL_GEO_PLANE_VECTOR_LOCUS` 내적 자취
   - `TPL_GEO_PLANE_VECTOR_PARAMETER` 벡터 조건
+  - `TPL_GEO_PLANE_VECTOR_POSITION` 위치벡터와 분점
   - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
+  - `TPL_GEO_PLANE_VECTOR_REGION` 벡터식이 나타내는 도형
   - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 - `PT_GEO_VECTOR` **벡터** — 평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.
 
@@ -393,12 +517,32 @@
 
 - `H2-GEO-RPM-073` 벡터 > 벡터의 성분과 내적 > 내적 > 내적 계산 · `H22-GE-07-VECTOR_DOT`
 - `H2-GEO-RPM-074` 벡터 > 벡터의 성분과 내적 > 내적 > 두 벡터의 각 · `H22-GE-07-VECTOR_DOT`
+- `H2-GEO-RPM-158` 벡터 > 벡터의 성분과 내적 > 내적 > 내적 계산 · `H22-GE-07-VECTOR_DOT`
+- `H2-GEO-RPM-159` 벡터 > 벡터의 성분과 내적 > 내적 > 내적 계산 · `H22-GE-07-VECTOR_DOT`
+- `H2-GEO-RPM-160` 벡터 > 벡터의 성분과 내적 > 내적 > 두 벡터의 각 · `H22-GE-07-VECTOR_DOT`
+- `H2-GEO-RPM-162` 벡터 > 벡터의 성분과 내적 > 내적 > 두 벡터의 각 · `H22-GE-07-VECTOR_DOT`
+- `H2-GEO-RPM-163` 벡터 > 벡터의 성분과 내적 > 내적 > 두 벡터의 각 · `H22-GE-07-VECTOR_DOT`
 
 ### 유형 (PT 키 · 이름 — 정의, 그 아래 TPL)
 
 - `PT_GEO_PARABOLA` **포물선 문제** — 포물선의 표준방정식과 초점·준선의 정의, 거리 관계를 이용하여 주어진 조건을 해석하거나 값을 결정하는 이차곡선 문제 유형.
+  - `TPL_GEO_PARABOLA_FOCAL_CHORD` 초점을 지나는 직선과 포물선
   - `TPL_GEO_PARABOLA_FOCUS_DIRECTRIX` 포물선 초점·준선 관계 활용
+  - `TPL_GEO_PARABOLA_MODEL` 포물선 모형
+  - `TPL_GEO_PARABOLA_PAIR_SEGMENT` 두 포물선과 선분의 길이
   - `TPL_GEO_PARABOLA_STANDARD_EQUATION` 포물선 표준방정식 해석
+  - `TPL_GEO_PARABOLA_TRANSLATION` 포물선의 평행이동
+- `PT_GEO_PLANE_VECTOR` **평면벡터 문제** — 평면벡터의 뜻과 연산·성분 관계를 이용해 벡터를 표현·계산하거나 도형 조건을 해결하는 문제 유형.
+  - `TPL_GEO_PLANE_VECTOR_ANGLE` 벡터 각
+  - `TPL_GEO_PLANE_VECTOR_DOT` 내적 계산
+  - `TPL_GEO_PLANE_VECTOR_DOT_ZERO` 내적 영 수직 조건
+  - `TPL_GEO_PLANE_VECTOR_EXTREMA` 내적 최적화
+  - `TPL_GEO_PLANE_VECTOR_LOCUS` 내적 자취
+  - `TPL_GEO_PLANE_VECTOR_PARAMETER` 벡터 조건
+  - `TPL_GEO_PLANE_VECTOR_POSITION` 위치벡터와 분점
+  - `TPL_GEO_PLANE_VECTOR_PROJECTION` 정사영
+  - `TPL_GEO_PLANE_VECTOR_REGION` 벡터식이 나타내는 도형
+  - `TPL_GEO_VECTOR_BASIC_OPERATION` 벡터의 기본 연산
 - `PT_GEO_VECTOR` **벡터** — 평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.
 
 ## H15-GV-08 공간도형
@@ -452,7 +596,9 @@
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
   - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
   - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_LOCUS` 구의 자취
   - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
+  - `TPL_GEO_SPHERE_TWO_SPHERES` 두 구의 위치 관계
 - `PT_GEO_VECTOR_LINE_CIRCLE` **벡터를 이용한 직선·원의 방정식** — 방향벡터·법선벡터와 위치벡터를 이용하여 평면 위 직선과 원의 방정식을 세우고, 직선의 평행·수직·교각 관계를 해석하는 문제 유형.
   - `TPL_GEO_VEC_CIRCLE` 벡터로 나타낸 원의 방정식
   - `TPL_GEO_VEC_LINE_DIRECTION` 방향벡터로 직선의 방정식
@@ -481,11 +627,14 @@
 - `PT_GEO_SPACE_COORDINATE` **공간좌표** — 공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.
   - `TPL_GEO_SPACE_COORD_DISTANCE` 두 점 사이의 거리
   - `TPL_GEO_SPACE_COORD_DIVISION` 내분점·외분점·무게중심
+  - `TPL_GEO_SPACE_COORD_MIN_PATH` 선분 길이 합의 최솟값
   - `TPL_GEO_SPACE_COORD_PROJECTION` 좌표평면·좌표축 위로의 정사영과 대칭
 - `PT_GEO_SPHERE` **구** — 공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.
   - `TPL_GEO_SPHERE_DISTANCE_EXTREMA` 구 위의 점까지 거리의 최대·최소
   - `TPL_GEO_SPHERE_EQUATION` 구의 방정식 결정
+  - `TPL_GEO_SPHERE_LOCUS` 구의 자취
   - `TPL_GEO_SPHERE_SECTION_TANGENT` 구와 평면·직선의 단면·접촉
+  - `TPL_GEO_SPHERE_TWO_SPHERES` 두 구의 위치 관계
 
 ## 아래 학년 유형
 

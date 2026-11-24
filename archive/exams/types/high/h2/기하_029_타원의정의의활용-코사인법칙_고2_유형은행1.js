@@ -1,0 +1,173 @@
+window.examTitle = "기하_029_타원의정의의활용-코사인법칙_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 타원 $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$ 위의 점 $\\mathrm{P}$와 두 초점 $\\mathrm{F}, \\mathrm{F}'$에 대하여 $\\overline{\\mathrm{PF}} : \\overline{\\mathrm{PF}'} = 2 : 3$일 때, $\\cos(\\angle \\mathrm{FPF}')$의 값은?\n[그림: 타원 $x^2/25 + y^2/9 = 1$ 위의 점 $\\mathrm{P}$와 두 초점 $\\mathrm{F}'(-4,0), \\mathrm{F}(4,0)$을 꼭짓점으로 하는 삼각형 $\\mathrm{FPF'}$이 그려져 있다.]",
+    "choices": [
+      "$-\\dfrac{3}{4}$",
+      "$-\\dfrac{5}{8}$",
+      "$-\\dfrac{1}{2}$",
+      "$-\\dfrac{3}{8}$",
+      "$-\\dfrac{1}{4}$"
+    ],
+    "answer": "⑤",
+    "solution": "[타원의 장축 및 초점 거리 계산] 타원의 방정식 $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$에서 $a^2 = 25, b^2 = 9$이므로 $a = 5$이고 장축의 길이는 $2a = 10$이다.\n[초점 사이의 거리] $c = \\sqrt{25 - 9} = 4$이므로 두 초점 사이의 거리는 $\\overline{\\mathrm{F}'\\mathrm{F}} = 2c = 8$이다.\n[타원의 정의를 이용한 선분의 길이 계산] 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 10$이다.\n[비례식 적용] $\\overline{\\mathrm{PF}} : \\overline{\\mathrm{PF}'} = 2 : 3$이므로 $\\overline{\\mathrm{PF}} = 10 \\times \\dfrac{2}{5} = 4, \\overline{\\mathrm{PF}'} = 10 \\times \\dfrac{3}{5} = 6$이다.\n[코사인법칙 수립] 삼각형 $\\mathrm{FPF}'$에서 세 변의 길이는 $\\overline{\\mathrm{PF}} = 4, \\overline{\\mathrm{PF}'} = 6, \\overline{\\mathrm{F}'\\mathrm{F}} = 8$이다.\n[코사인법칙 계산] 코사인법칙에 의하여 $\\cos(\\angle \\mathrm{FPF}') = \\dfrac{\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 - \\overline{\\mathrm{F}'\\mathrm{F}}^2}{2 \\times \\overline{\\mathrm{PF}} \\times \\overline{\\mathrm{PF}'}}$이다.\n[값 대입 및 약분] $\\cos(\\angle \\mathrm{FPF}') = \\dfrac{4^2 + 6^2 - 8^2}{2 \\times 4 \\times 6} = \\dfrac{16 + 36 - 64}{48} = \\dfrac{-12}{48} = -\\dfrac{1}{4}$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "타원 $\\dfrac{x^2}{28} + \\dfrac{y^2}{12} = 1$ 위의 점 $\\mathrm{P}$와 두 초점 $\\mathrm{F}, \\mathrm{F}'$에 대하여 $\\angle \\mathrm{FPF}' = 60^\\circ$일 때, $\\overline{\\mathrm{PF}} \\times \\overline{\\mathrm{PF}'}$의 값은?\n[그림: 타원 $x^2/28 + y^2/12 = 1$과 두 초점 $\\mathrm{F}, \\mathrm{F}'$, 그리고 타원 위의 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{FPF'}=60^\\circ$인 삼각형 $\\mathrm{FPF'}$이 그려져 있다.]",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$"
+    ],
+    "answer": "④",
+    "solution": "[타원의 장축 및 초점 거리 계산] 타원의 방정식 $\\dfrac{x^2}{28} + \\dfrac{y^2}{12} = 1$에서 $a^2 = 28, b^2 = 12$이므로 $c^2 = a^2 - b^2 = 28 - 12 = 16$, 즉 $c = 4$이다.\n[두 초점 사이의 거리] $\\overline{\\mathrm{FF}'} = 2c = 8$이므로 $\\overline{\\mathrm{FF}'}^2 = 64$이다.\n[타원의 정의 적용] 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 2a = 2\\sqrt{28}$이다.\n[양변 제곱 전개] $(\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'})^2 = (2\\sqrt{28})^2 = 112$에서 $\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 = 112 - 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'}$이다.\n[코사인법칙 적용] 삼각형 $\\mathrm{FPF}'$에서 코사인법칙에 의하여 $\\overline{\\mathrm{FF}'}^2 = \\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 - 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} \\cos 60^\\circ$이다.\n[식 대입 및 정리] $\\cos 60^\\circ = \\dfrac{1}{2}$이므로 $64 = (112 - 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'}) - \\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 112 - 3\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'}$이다.\n[두 선분의 곱 계산] $3\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 112 - 64 = 48$이므로 $\\overline{\\mathrm{PF}} \\times \\overline{\\mathrm{PF}'} = 16$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 두 초점이 $\\mathrm{F}(c, 0), \\mathrm{F}'(-c, 0)$인 타원 $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$이 있다. 타원 위에 있고 제2사분면에 있는 점 $\\mathrm{P}$에 대하여 선분 $\\mathrm{PF}'$의 중점을 $\\mathrm{Q}$, 선분 $\\mathrm{PF}$를 $1 : 2$로 내분하는 점을 $\\mathrm{R}$이라 하자. $\\angle \\mathrm{PQR} = 90^\\circ$, $\\overline{\\mathrm{QR}} = \\sqrt{7}$, $\\overline{\\mathrm{RF}} = 8$일 때, $a^2 + b^2$의 값은? (단, $a, b, c$는 양수이다.)\n[그림: 타원 $x^2/a^2 + y^2/b^2 = 1$과 두 초점 $\\mathrm{F}'(-c,0), \\mathrm{F}(c,0)$, 제2사분면의 점 $\\mathrm{P}$에 대해 $\\mathrm{PF'}$의 중점 $\\mathrm{Q}$, $\\mathrm{PF}$를 $1:2$로 내분하는 점 $\\mathrm{R}$이 있고, $\\angle \\mathrm{PQR}=90^\\circ, \\overline{\\mathrm{QR}}=\\sqrt{7}, \\overline{\\mathrm{RF}}=8$인 상황이 그려져 있다.]",
+    "choices": [
+      "$136$",
+      "$144$",
+      "$152$",
+      "$160$",
+      "$168$"
+    ],
+    "answer": "②",
+    "solution": "[선분 $\\mathrm{PF}$의 길이 계산] 점 $\\mathrm{R}$이 선분 $\\mathrm{PF}$를 $1 : 2$로 내분하므로 $\\overline{\\mathrm{PR}} = \\dfrac{1}{2} \\overline{\\mathrm{RF}} = \\dfrac{1}{2} \\times 8 = 4$이고, $\\overline{\\mathrm{PF}} = \\overline{\\mathrm{PR}} + \\overline{\\mathrm{RF}} = 4 + 8 = 12$이다.\n[직각삼각형 $\\mathrm{PQR}$에서 피타고라스 정리] $\\angle \\mathrm{PQR} = 90^\\circ$이므로 $\\overline{\\mathrm{PQ}} = \\sqrt{\\overline{\\mathrm{PR}}^2 - \\overline{\\mathrm{QR}}^2} = \\sqrt{4^2 - (\\sqrt{7})^2} = \\sqrt{9} = 3$이다.\n[선분 $\\mathrm{PF}'$의 길이 및 $a^2$ 계산] 점 $\\mathrm{Q}$가 선분 $\\mathrm{PF}'$의 중점이므로 $\\overline{\\mathrm{PF}'} = 2\\overline{\\mathrm{PQ}} = 6$이고, 타원의 정의에 의해 $2a = \\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 12 + 6 = 18$이므로 $a = 9, a^2 = 81$이다.\n[끼인각의 코사인값 구하기] 직각삼각형 $\\mathrm{PQR}$에서 $\\cos(\\angle \\mathrm{F}'\\mathrm{PF}) = \\cos(\\angle \\mathrm{QPR}) = \\dfrac{\\overline{\\mathrm{PQ}}}{\\overline{\\mathrm{PR}}} = \\dfrac{3}{4}$이다.\n[삼각형 $\\mathrm{F}'\\mathrm{PF}$에서 코사인법칙 적용] 코사인법칙에 의해 $\\overline{\\mathrm{F}'\\mathrm{F}}^2 = \\overline{\\mathrm{PF}'}^2 + \\overline{\\mathrm{PF}}^2 - 2\\overline{\\mathrm{PF}'} \\cdot \\overline{\\mathrm{PF}} \\cos(\\angle \\mathrm{F}'\\mathrm{PF})$이다.\n[초점 거리 $c^2$ 계산] $(2c)^2 = 6^2 + 12^2 - 2 \\times 6 \\times 12 \\times \\dfrac{3}{4} = 36 + 144 - 108 = 72$이므로 $4c^2 = 72$, 즉 $c^2 = 18$이다.\n[$b^2$의 값 계산] 타원에서 $b^2 = a^2 - c^2$이므로 $b^2 = 81 - 18 = 63$이다.\n[$a^2 + b^2$ 계산] 따라서 $a^2 + b^2 = 81 + 63 = 144$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_MIDPOINT",
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 타원 $\\dfrac{x^2}{144} + \\dfrac{y^2}{80} = 1$의 두 초점을 $\\mathrm{F}$와 $\\mathrm{F}'$이라 하고, 초점 $\\mathrm{F}$에 가장 가까운 꼭짓점을 $\\mathrm{A}$라 하자. 이 타원 위의 한 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{PFF}' = 60^\\circ$일 때, $\\overline{\\mathrm{PA}}^2$의 값은?\n[그림: 타원 $x^2/144 + y^2/80 = 1$과 두 초점 $\\mathrm{F}'(-8,0), \\mathrm{F}(8,0)$, 초점 $\\mathrm{F}$에 가장 가까운 꼭짓점 $\\mathrm{A}(12,0)$, 그리고 타원 위의 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{PFF'}=60^\\circ$인 선분들이 표시되어 있다.]",
+    "choices": [
+      "$144$",
+      "$150$",
+      "$156$",
+      "$162$",
+      "$168$"
+    ],
+    "answer": "③",
+    "solution": "[타원의 초점과 꼭짓점 좌표] 타원의 방정식 $\\dfrac{x^2}{144} + \\dfrac{y^2}{80} = 1$에서 $a^2 = 144, b^2 = 80$이므로 $a = 12$, $c = \\sqrt{144 - 80} = 8$이다.\n[좌표 및 선분의 길이 설정] 초점은 $\\mathrm{F}(8, 0), \\mathrm{F}'(-8, 0)$이고, 가장 가까운 꼭짓점은 $\\mathrm{A}(12, 0)$이다. 따라서 $\\overline{\\mathrm{FF}'} = 16$, $\\overline{\\mathrm{FA}} = 12 - 8 = 4$이다.\n[타원의 정의 적용] $\\overline{\\mathrm{PF}} = r$이라 하면 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 2a = 24$이므로 $\\overline{\\mathrm{PF}'} = 24 - r$이다.\n[삼각형 $\\mathrm{PFF}'$에서 코사인법칙 적용] 코사인법칙에 의하여 $\\overline{\\mathrm{PF}'}^2 = \\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{FF}'}^2 - 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{FF}'} \\cos 60^\\circ$이다.\n[$r$의 값 계산] $(24 - r)^2 = r^2 + 16^2 - 2 \\cdot r \\cdot 16 \\cdot \\dfrac{1}{2}$에서 $576 - 48r = 256 - 16r$이므로 $32r = 320$, 즉 $r = \\overline{\\mathrm{PF}} = 10$이다.\n[삼각형 $\\mathrm{PFA}$의 내각 구하기] 점 $\\mathrm{F}', \\mathrm{F}, \\mathrm{A}$가 일직선 위에 있으므로 $\\angle \\mathrm{PFA} = 180^\\circ - \\angle \\mathrm{PFF}' = 180^\\circ - 60^\\circ = 120^\\circ$이다.\n[삼각형 $\\mathrm{PFA}$에서 코사인법칙 적용] 코사인법칙에 의해 $\\overline{\\mathrm{PA}}^2 = \\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{FA}}^2 - 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{FA}} \\cos 120^\\circ$이다.\n[$\\overline{\\mathrm{PA}}^2$ 계산] $\\cos 120^\\circ = -\\dfrac{1}{2}$이므로 $\\overline{\\mathrm{PA}}^2 = 10^2 + 4^2 - 2 \\times 10 \\times 4 \\times \\left(-\\dfrac{1}{2}\\right) = 100 + 16 + 40 = 156$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

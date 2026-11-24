@@ -1,0 +1,271 @@
+window.examTitle = "기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 타원 $\\dfrac{x^2}{21} + \\dfrac{y^2}{5} = 1$의 두 초점을 $\\mathrm{F}, \\mathrm{F}'$이라 하자. 타원 위의 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{FPF}' = 90^\\circ$일 때, 삼각형 $\\mathrm{PFF}'$의 넓이는?\n[그림: 좌표평면 위의 타원 $x^2/21 + y^2/5 = 1$과 $x$축 위의 두 초점 $\\mathrm{F'}(-4,0), \\mathrm{F}(4,0)$, 제1사분면의 타원 위의 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{FPF'}=90^\\circ$인 직각삼각형 $\\mathrm{PFF'}$이 표시되어 있다.]",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "[타원의 초점의 좌표 구하기] 타원의 방정식 $\\dfrac{x^2}{21} + \\dfrac{y^2}{5} = 1$에서 $a^2 = 21, b^2 = 5$이므로 $c^2 = a^2 - b^2 = 21 - 5 = 16$, 즉 $c = 4$이다.\n[두 초점 사이의 거리 구하기] 두 초점 사이의 거리는 $\\overline{\\mathrm{FF}'} = 2c = 2 \\times 4 = 8$이다.\n[타원의 정의 적용] 타원 위의 점 $\\mathrm{P}$에 대하여 장축의 길이는 $2a = 2\\sqrt{21}$이므로 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 2\\sqrt{21}$이다.\n[양변 제곱 전개] $(\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'})^2 = (2\\sqrt{21})^2$에서 $\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 + 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 84$이다.\n[피타고라스 정리 적용] 삼각형 $\\mathrm{PFF}'$에서 $\\angle \\mathrm{FPF}' = 90^\\circ$이므로 피타고라스 정리에 의해 $\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 = \\overline{\\mathrm{FF}'}^2 = 8^2 = 64$이다.\n[두 선분의 곱 계산] 피타고라스 정리의 결과를 대입하면 $64 + 2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 84$에서 $2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 20$, 즉 $\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 10$이다.\n[직각삼각형의 넓이 공식 적용] 직각삼각형 $\\mathrm{PFF}'$의 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{PF}} \\times \\overline{\\mathrm{PF}'} = \\dfrac{1}{2} \\times 10 = 5$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN",
+      "CC_RIGHT_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 타원 $\\dfrac{x^2}{49} + \\dfrac{y^2}{24} = 1$의 두 초점 중 $x$좌표가 양수인 점을 $\\mathrm{F}$, 음수인 점을 $\\mathrm{F}'$이라 하자. 이 타원 위의 점 $\\mathrm{P}$를 $\\angle \\mathrm{FPF}' = 90^\\circ$가 되도록 제1사분면에서 잡고, 선분 $\\mathrm{FP}$의 연장선 위에 점 $\\mathrm{Q}$를 $\\overline{\\mathrm{F}'\\mathrm{Q}} = 10$이 되도록 잡는다. 삼각형 $\\mathrm{QF}'\\mathrm{F}$의 넓이는?\n[그림: 타원 $x^2/49 + y^2/24 = 1$과 두 초점 $\\mathrm{F}'(-5,0), \\mathrm{F}(5,0)$, 제1사분면 위의 점 $\\mathrm{P}$에 대하여 $\\angle \\mathrm{F'PF}=90^\\circ$이고, 선분 $\\mathrm{FP}$의 연장선 위에 점 $\\mathrm{Q}$가 있어 $\\overline{\\mathrm{F'Q}}=10$인 삼각형 $\\mathrm{QF'F}$가 그려져 있다.]",
+    "choices": [
+      "$48$",
+      "$52$",
+      "$56$",
+      "$60$",
+      "$64$"
+    ],
+    "answer": "①",
+    "solution": "[타원의 초점과 장축의 길이] 타원 $\\dfrac{x^2}{49} + \\dfrac{y^2}{24} = 1$에서 $a^2 = 49, b^2 = 24$이므로 $c = \\sqrt{49 - 24} = 5$이고 장축의 길이는 $2a = 14$이다.\n[두 초점 사이의 거리] $\\overline{\\mathrm{F}'\\mathrm{F}} = 2c = 10$이다.\n[타원의 정의 및 피타고라스 정리] 타원 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 14$이고, $\\angle \\mathrm{FPF}' = 90^\\circ$이므로 피타고라스 정리에 의해 $\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2 = \\overline{\\mathrm{F}'\\mathrm{F}}^2 = 10^2 = 100$이다.\n[선분의 곱 계산] $(\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'})^2 - (\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF}'}^2) = 14^2 - 100 = 96$에서 $2\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 96$, 즉 $\\overline{\\mathrm{PF}} \\cdot \\overline{\\mathrm{PF}'} = 48$이다.\n[선분의 길이 결정] 합이 $14$이고 곱이 $48$인 두 수는 이차방정식 $t^2 - 14t + 48 = 0$, 즉 $(t-6)(t-8) = 0$의 두 근이므로 $\\mathrm{P}$가 제1사분면에 있어 $\\overline{\\mathrm{PF}} < \\overline{\\mathrm{PF}'}$이므로 $\\overline{\\mathrm{PF}} = 6, \\overline{\\mathrm{PF}'} = 8$이다.\n[직각삼각형 $\\mathrm{QPF}'$의 성질] 점 $\\mathrm{Q}$는 선분 $\\mathrm{FP}$의 연장선 위의 점이므로 $\\angle \\mathrm{QPF}' = 180^\\circ - \\angle \\mathrm{FPF}' = 90^\\circ$이다.\n[선분 $\\mathrm{QP}$의 길이 구하기] 직각삼각형 $\\mathrm{QPF}'$에서 피타고라스 정리에 의해 $\\overline{\\mathrm{QP}} = \\sqrt{\\overline{\\mathrm{F}'\\mathrm{Q}}^2 - \\overline{\\mathrm{PF}'}^2} = \\sqrt{10^2 - 8^2} = 6$이다.\n[밑변 $\\overline{\\mathrm{QF}}$의 길이 구하기] 점 $\\mathrm{P}$가 선분 $\\mathrm{QF}$ 위에 있으므로 $\\overline{\\mathrm{QF}} = \\overline{\\mathrm{QP}} + \\overline{\\mathrm{PF}} = 6 + 6 = 12$이다.\n[삼각형의 넓이 계산] 밑변을 $\\overline{\\mathrm{QF}}$로 하면 점 $\\mathrm{F}'$에서 직선 $\\mathrm{QF}$에 내린 수선의 발이 $\\mathrm{P}$이므로 높이는 $\\overline{\\mathrm{PF}'} = 8$이다. 따라서 삼각형 $\\mathrm{QF}'\\mathrm{F}$의 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{QF}} \\times \\overline{\\mathrm{PF}'} = \\dfrac{1}{2} \\times 12 \\times 8 = 48$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN",
+      "CC_RIGHT_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 타원 $\\dfrac{x^2}{16} + \\dfrac{y^2}{7} = 1$의 두 초점 중 $x$좌표가 양수인 점을 $\\mathrm{F}$, 음수인 점을 $\\mathrm{F}'$이라 하자. 이 타원 위의 점 $\\mathrm{P}$를 $\\overline{\\mathrm{PF}'} = 3\\overline{\\mathrm{PF}}$가 되도록 잡을 때, 삼각형 $\\mathrm{PF}'\\mathrm{F}$의 넓이는?\n[그림: 타원 $x^2/16 + y^2/7 = 1$과 $x$축 위의 두 초점 $\\mathrm{F}'(-3,0), \\mathrm{F}(3,0)$, 타원 위의 점 $\\mathrm{P}$에 대하여 삼각형 $\\mathrm{PF'F}$가 그려져 있다.]",
+    "choices": [
+      "$3\\sqrt{3}$",
+      "$\\sqrt{30}$",
+      "$4\\sqrt{2}$",
+      "$\\sqrt{33}$",
+      "$\\sqrt{35}$"
+    ],
+    "answer": "⑤",
+    "solution": "[타원의 초점과 장축의 길이] 타원의 방정식 $\\dfrac{x^2}{16} + \\dfrac{y^2}{7} = 1$에서 $a^2 = 16, b^2 = 7$이므로 $c = \\sqrt{16 - 7} = 3$, $a = 4$이다.\n[두 초점 사이의 거리] $\\overline{\\mathrm{F}'\\mathrm{F}} = 2c = 2 \\times 3 = 6$이다.\n[타원의 정의 적용] 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 2a = 8$이다.\n[각 선분의 길이 구하기] $\\overline{\\mathrm{PF}'} = 3\\overline{\\mathrm{PF}}$를 대입하면 $\\overline{\\mathrm{PF}} + 3\\overline{\\mathrm{PF}} = 4\\overline{\\mathrm{PF}} = 8$이므로 $\\overline{\\mathrm{PF}} = 2, \\overline{\\mathrm{PF}'} = 6$이다.\n[이등변삼각형 확인] 삼각형 $\\mathrm{PF}'\\mathrm{F}$의 세 변의 길이는 $\\overline{\\mathrm{PF}} = 2, \\overline{\\mathrm{PF}'} = 6, \\overline{\\mathrm{F}'\\mathrm{F}} = 6$이므로 $\\overline{\\mathrm{PF}'} = \\overline{\\mathrm{F}'\\mathrm{F}}$인 이등변삼각형이다.\n[이등변삼각형의 높이 계산] 점 $\\mathrm{F}'$에서 밑변 $\\mathrm{PF}$에 내린 수선의 발을 $\\mathrm{H}$라 하면 점 $\\mathrm{H}$는 선분 $\\mathrm{PF}$의 중점이므로 $\\overline{\\mathrm{PH}} = \\dfrac{1}{2} \\times 2 = 1$이다.\n[피타고라스 정리로 높이 구하기] 직각삼각형 $\\mathrm{F}'\\mathrm{HP}$에서 높이는 $h = \\sqrt{6^2 - 1^2} = \\sqrt{35}$이다.\n[삼각형의 넓이 계산] 삼각형 $\\mathrm{PF}'\\mathrm{F}$의 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{PF}} \\times h = \\dfrac{1}{2} \\times 2 \\times \\sqrt{35} = \\sqrt{35}$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 두 점 $\\mathrm{F}(c, 0), \\mathrm{F}'(-c, 0)$을 초점으로 하는 타원 $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{8} = 1$이 직선 $x = -c$와 만나는 점을 각각 $\\mathrm{A}, \\mathrm{B}$라고 하자. $x$축 위의 두 꼭짓점을 각각 $\\mathrm{C}, \\mathrm{D}$라고 할 때, 사각형 $\\mathrm{ACBD}$의 넓이는? (단, $a > \\sqrt{8}, c > 0$)\n[그림: 타원 $x^2/a^2 + y^2/8 = 1$과 두 초점 $\\mathrm{F}'(-c,0), \\mathrm{F}(c,0)$, 직선 $x=-c$가 타원과 만나는 두 점 $\\mathrm{A}, \\mathrm{B}$, 그리고 $x$축 위의 두 꼭짓점 $\\mathrm{C}(-a,0), \\mathrm{D}(a,0)$을 꼭짓점으로 하는 사각형 $\\mathrm{ACBD}$가 그려져 있다.]",
+    "choices": [
+      "$16$",
+      "$18$",
+      "$20$",
+      "$22$",
+      "$24$"
+    ],
+    "answer": "①",
+    "solution": "[대각선 $\\mathrm{CD}$의 길이 구하기] 타원의 $x$축 위의 두 꼭짓점은 $\\mathrm{C}(-a, 0), \\mathrm{D}(a, 0)$이므로 대각선 $\\mathrm{CD}$의 길이는 $\\overline{\\mathrm{CD}} = a - (-a) = 2a$이다.\n[초점과 타원의 관계식] 타원의 초점 $c$에 대하여 $c^2 = a^2 - 8$, 즉 $a^2 - c^2 = 8$이다.\n[직선 $x = -c$와의 교점 구하기] 타원의 방정식 $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{8} = 1$에 $x = -c$를 대입하면 $\\dfrac{c^2}{a^2} + \\dfrac{y^2}{8} = 1$이다.\n[$y$좌표의 값 계산] $\\dfrac{y^2}{8} = 1 - \\dfrac{c^2}{a^2} = \\dfrac{a^2 - c^2}{a^2} = \\dfrac{8}{a^2}$이므로 $y^2 = \\dfrac{64}{a^2}$, 즉 $y = \\pm \\dfrac{8}{a}$이다.\n[대각선 $\\mathrm{AB}$의 길이 구하기] 두 교점은 $\\mathrm{A}\\left(-c, \\dfrac{8}{a}\\right), \\mathrm{B}\\left(-c, -\\dfrac{8}{a}\\right)$이므로 대각선 $\\mathrm{AB}$의 길이는 $\\overline{\\mathrm{AB}} = \\dfrac{8}{a} - \\left(-\\dfrac{8}{a}\\right) = \\dfrac{16}{a}$이다.\n[두 대각선의 수직 관계] 선분 $\\mathrm{CD}$는 $x$축 위에 있고 선분 $\\mathrm{AB}$는 $y$축과 평행한 직선 $x = -c$ 위에 있으므로 두 대각선은 서로 직교한다.\n[사각형의 넓이 계산] 서로 직교하는 두 대각선을 갖는 사각형 $\\mathrm{ACBD}$의 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{CD}} \\times \\overline{\\mathrm{AB}} = \\dfrac{1}{2} \\times 2a \\times \\dfrac{16}{a} = 16$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_DIAGONALS"
+    ],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "두 점 $\\mathrm{F}, \\mathrm{F}'$을 초점으로 하고 점 $\\mathrm{P}$에 대하여 삼각형 $\\mathrm{PF}'\\mathrm{F}$가 $\\angle \\mathrm{FPF}' = 90^\\circ$인 직각이등변삼각형일 때, 점 $\\mathrm{P}$를 지나는 타원과 선분 $\\mathrm{PF}'$의 연장선이 만나는 점 중 점 $\\mathrm{P}$가 아닌 점을 $\\mathrm{Q}$라 하자. 삼각형 $\\mathrm{FPQ}$의 둘레의 길이가 $24\\sqrt{2}$일 때, 삼각형 $\\mathrm{FPQ}$의 넓이는?\n[그림: 두 초점 $\\mathrm{F}'(-c,0), \\mathrm{F}(c,0)$과 $y$축 위의 점 $\\mathrm{P}(0,b)$에 대하여 $\\angle \\mathrm{FPF'}=90^\\circ$인 직각이등변삼각형 $\\mathrm{PF'F}$가 타원 위에 있고, 점 $\\mathrm{P}$에서 $\\mathrm{F'}$을 지나 타원과 다시 만나는 점 $\\mathrm{Q}$를 꼭짓점으로 하는 삼각형 $\\mathrm{FPQ}$가 그려져 있다.]",
+    "choices": [
+      "$40$",
+      "$44$",
+      "$48$",
+      "$52$",
+      "$56$"
+    ],
+    "answer": "③",
+    "solution": "[직각이등변삼각형의 성질과 점 $\\mathrm{P}$의 좌표] 두 초점을 $\\mathrm{F}(c, 0), \\mathrm{F}'(-c, 0)$이라 하면 $\\overline{\\mathrm{PF}} = \\overline{\\mathrm{PF}'}$이므로 점 $\\mathrm{P}$는 선분 $\\mathrm{F}'\\mathrm{F}$의 수직이등분선인 $y$축 위의 점 $\\mathrm{P}(0, b)$ ($b > 0$)이다.\n[직각 조건으로 $b$와 $c$의 관계 도출] $\\angle \\mathrm{FPF}' = 90^\\circ$이므로 삼각형 $\\mathrm{POF}$는 직각이등변삼각형이 되어 $b = c$이고, 타원의 장축 $2a$에 대해 $a^2 = b^2 + c^2 = 2b^2$, 즉 $a = \\sqrt{2}b$이다.\n[타원의 정의를 이용한 둘레의 길이 식 도출] 점 $\\mathrm{P}, \\mathrm{Q}$가 모두 타원 위의 점이므로 $\\overline{\\mathrm{FP}} + \\overline{\\mathrm{PF}'} = 2a$이고 $\\overline{\\mathrm{FQ}} + \\overline{\\mathrm{QF}'} = 2a$이다.\n[삼각형 $\\mathrm{FPQ}$의 둘레 계산] 점 $\\mathrm{F}'$이 선분 $\\mathrm{PQ}$ 위에 있으므로 삼각형의 둘레는 $\\overline{\\mathrm{FP}} + \\overline{\\mathrm{PQ}} + \\overline{\\mathrm{QF}} = (\\overline{\\mathrm{FP}} + \\overline{\\mathrm{PF}'}) + (\\overline{\\mathrm{QF}'} + \\overline{\\mathrm{QF}}) = 2a + 2a = 4a$이다.\n[타원의 방정식 수립] $4a = 24\\sqrt{2}$에서 $a = 6\\sqrt{2}$이므로 $b = \\dfrac{a}{\\sqrt{2}} = 6, c = 6$이다. 따라서 타원의 방정식은 $\\dfrac{x^2}{72} + \\dfrac{y^2}{36} = 1$, 즉 $x^2 + 2y^2 = 72$이다.\n[직선 $\\mathrm{PF}'$의 방정식 구하기] $\\mathrm{P}(0, 6)$과 $\\mathrm{F}'(-6, 0)$을 지나는 직선의 방정식은 기울기가 $\\dfrac{6 - 0}{0 - (-6)} = 1$이므로 $y = x + 6$이다.\n[점 $\\mathrm{Q}$의 좌표 구하기] $y = x + 6$을 타원의 식에 대입하면 $x^2 + 2(x+6)^2 = 72$에서 $3x^2 + 24x = 0$, 즉 $3x(x+8) = 0$이므로 $\\mathrm{Q}(-8, -2)$이다.\n[밑변 $\\overline{\\mathrm{PF}}$의 길이 구하기] $\\mathrm{P}(0, 6)$과 $\\mathrm{F}(6, 0)$ 사이의 거리는 $\\overline{\\mathrm{PF}} = \\sqrt{6^2 + (-6)^2} = 6\\sqrt{2}$이다.\n[점 $\\mathrm{Q}$에서 직선 $\\mathrm{PF}$까지의 높이 계산] 직선 $\\mathrm{PF}$의 방정식은 $x + y - 6 = 0$이므로 점 $\\mathrm{Q}(-8, -2)$에서 이 직선까지의 거리는 $h = \\dfrac{|-8 - 2 - 6|}{\\sqrt{1^2 + 1^2}} = \\dfrac{16}{\\sqrt{2}} = 8\\sqrt{2}$이다.\n[삼각형 $\\mathrm{FPQ}$의 넓이 계산] 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{PF}} \\times h = \\dfrac{1}{2} \\times 6\\sqrt{2} \\times 8\\sqrt{2} = 48$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_RIGHT_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 두 점 $\\mathrm{F}(0, c), \\mathrm{F}'(0, -c)$를 초점으로 하는 타원 $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{36} = 1$이 $x$축과 만나는 점 중에서 $x$좌표가 양수인 점을 $\\mathrm{A}$라 하자. 직선 $y = c$가 직선 $\\mathrm{AF}'$과 만나는 점을 $\\mathrm{B}$, 직선 $y = c$가 타원과 만나는 점 중 $x$좌표가 양수인 점을 $\\mathrm{P}$라 하자. 삼각형 $\\mathrm{BPF}'$의 둘레의 길이와 삼각형 $\\mathrm{BFA}$의 둘레의 길이의 차가 $4$일 때, 삼각형 $\\mathrm{AFF}'$의 넓이는? (단, $0 < a < 6, c > 0$)\n[그림: $y$축 위의 두 초점 $\\mathrm{F}(0,c), \\mathrm{F}'(0,-c)$를 갖는 타원과 $x$축 위의 점 $\\mathrm{A}(a,0)$, 직선 $y=c$ 위의 두 점 $\\mathrm{P}, \\mathrm{B}$, 직선 $\\mathrm{AF}'$ 위의 점 $\\mathrm{B}$에 의해 형성된 삼각형 $\\mathrm{BPF}'$과 $\\mathrm{BFA}$가 나타나 있다.]",
+    "choices": [
+      "$12\\sqrt{2}$",
+      "$13\\sqrt{2}$",
+      "$14\\sqrt{2}$",
+      "$15\\sqrt{2}$",
+      "$16\\sqrt{2}$"
+    ],
+    "answer": "①",
+    "solution": "[대칭성에 의한 거리 관계] 점 $\\mathrm{A}(a, 0)$은 $x$축 위의 점이고 두 초점 $\\mathrm{F}(0, c), \\mathrm{F}'(0, -c)$는 $x$축에 대칭이므로 $\\overline{\\mathrm{FA}} = \\overline{\\mathrm{F}'\\mathrm{A}} = \\sqrt{a^2 + c^2}$이다.\n[직선 위의 점들의 분할] 세 점 $\\mathrm{B}, \\mathrm{A}, \\mathrm{F}'$이 일직선 위에 있으므로 $\\overline{\\mathrm{BF}'} = \\overline{\\mathrm{BA}} + \\overline{\\mathrm{AF}'}$이고, 세 점 $\\mathrm{F}, \\mathrm{P}, \\mathrm{B}$가 직선 $y = c$ 위에 있으므로 $\\overline{\\mathrm{BF}} = \\overline{\\mathrm{BP}} + \\overline{\\mathrm{PF}}$이다.\n[두 삼각형의 둘레의 차 표현] 삼각형 $\\mathrm{BPF}'$의 둘레는 $L_1 = \\overline{\\mathrm{BP}} + \\overline{\\mathrm{PF}'} + \\overline{\\mathrm{BA}} + \\overline{\\mathrm{AF}'}$이고, 삼각형 $\\mathrm{BFA}$의 둘레는 $L_2 = (\\overline{\\mathrm{BP}} + \\overline{\\mathrm{PF}}) + \\overline{\\mathrm{FA}} + \\overline{\\mathrm{BA}}$이다.\n[둘레의 차 단순화] $\\overline{\\mathrm{AF}'} = \\overline{\\mathrm{FA}}$이므로 $L_1 - L_2 = \\overline{\\mathrm{PF}'} - \\overline{\\mathrm{PF}} = 4$이다.\n[타원의 정의 적용] 타원의 장축이 $y$축 위에 있고 $b = 6$이므로 타원의 정의에 의해 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF}'} = 2b = 12$이다.\n[선분의 길이 계산] $\\overline{\\mathrm{PF}'} - \\overline{\\mathrm{PF}} = 4$와 $\\overline{\\mathrm{PF}'} + \\overline{\\mathrm{PF}} = 12$를 연립하여 더하면 $2\\overline{\\mathrm{PF}'} = 16$이므로 $\\overline{\\mathrm{PF}'} = 8, \\overline{\\mathrm{PF}} = 4$이다.\n[피타고라스 정리 적용] 점 $\\mathrm{F}(0, c)$와 점 $\\mathrm{P}$가 모두 직선 $y = c$ 위에 있으므로 $\\angle \\mathrm{PFF}' = 90^\\circ$이다. 직각삼각형 $\\mathrm{PFF}'$에서 $\\overline{\\mathrm{FF}'}^2 = \\overline{\\mathrm{PF}'}^2 - \\overline{\\mathrm{PF}}^2 = 8^2 - 4^2 = 48$이다.\n[초점 $c$ 및 $a$의 값 구하기] $(2c)^2 = 48$에서 $4c^2 = 48$, 즉 $c^2 = 12$이고, $a^2 = b^2 - c^2 = 36 - 12 = 24$이다. 따라서 $c = 2\\sqrt{3}, a = 2\\sqrt{6}$이다.\n[삼각형 $\\mathrm{AFF}'$의 넓이 계산] 밑변 $\\overline{\\mathrm{FF}'} = 2c = 4\\sqrt{3}$, 높이 $a = 2\\sqrt{6}$이므로 삼각형 $\\mathrm{AFF}'$의 넓이는 $S = \\dfrac{1}{2} \\times 4\\sqrt{3} \\times 2\\sqrt{6} = 12\\sqrt{2}$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+    "crossConceptKeys": [
+      "CC_LINE_INTERSECTION",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

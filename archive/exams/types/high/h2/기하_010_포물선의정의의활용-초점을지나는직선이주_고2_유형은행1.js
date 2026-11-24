@@ -1,0 +1,230 @@
+window.examTitle = "기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 20x$의 초점 $\\mathrm{F}$를 지나는 직선과 포물선이 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 두 점 $\\mathrm{A}$, $\\mathrm{B}$에서 준선 $l$에 내린 수선의 발을 각각 $\\mathrm{C}$, $\\mathrm{D}$라 하자. $\\overline{\\mathrm{AC}} = 7$일 때, 선분 $\\mathrm{BD}$의 길이는? [그림: 좌표평면에 꼭짓점이 원점 $\\mathrm{O}$이고 오른쪽으로 열린 포물선 $y^2=20x$, 초점 $\\mathrm{F}(5, 0)$, 준선 $l: x=-5$가 그려져 있다. 초점 $\\mathrm{F}$를 지나고 기울기가 음수인 직선이 제$1$사분면의 점 $\\mathrm{A}$와 제$4$사분면의 점 $\\mathrm{B}$에서 포물선과 만나며, 두 점 $\\mathrm{A}$, $\\mathrm{B}$에서 준선 $l$에 내린 수선의 발 $\\mathrm{C}$, $\\mathrm{D}$가 직각 기호와 함께 표시되어 있다.]",
+    "choices": [
+      "$17$",
+      "$\\dfrac{35}{2}$",
+      "$18$",
+      "$\\dfrac{37}{2}$",
+      "$19$"
+    ],
+    "answer": "②",
+    "solution": "포물선 $y^2 = 20x = 4 \\cdot 5 x$의 초점은 $\\mathrm{F}(5, 0)$이고, 준선 $l$의 방정식은 $x = -5$이다.\n포물선의 정의에 의하여\n$$\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AC}} = 7, \\quad \\overline{\\mathrm{BF}} = \\overline{\\mathrm{BD}}$$\n초점 $\\mathrm{F}$를 지나는 직선이 포물선 $y^2 = 4px$와 만나는 두 점 $\\mathrm{A}$, $\\mathrm{B}$에 대하여\n$$\\dfrac{1}{\\overline{\\mathrm{AF}}} + \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{p}$$\n이 성립하므로 $p = 5$, $\\overline{\\mathrm{AF}} = 7$을 대입하면\n$$\\dfrac{1}{7} + \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{5}$$\n$$\\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{5} - \\dfrac{1}{7} = \\dfrac{2}{35}$$\n따라서 $\\overline{\\mathrm{BD}} = \\overline{\\mathrm{BF}} = \\dfrac{35}{2}$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "primaryMethod": "포물선의 초점현 성질 1/AF+1/BF=1/p에 AF=7, p=5를 대입해 BF를 구한다",
+    "decisiveStep": "1/7+1/BF=1/5에서 1/BF=2/35이므로 BD=BF=35/2",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 4px\\,(p > 0)$의 초점 $\\mathrm{F}$를 지나는 직선이 이 포물선과 만나는 두 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 두 점 $\\mathrm{A}$, $\\mathrm{B}$에서 $y$축에 내린 수선의 발을 각각 $\\mathrm{C}$, $\\mathrm{D}$라 하자. $\\overline{\\mathrm{AF}} = 12$, $\\overline{\\mathrm{AC}} = 9$일 때, 사각형 $\\mathrm{CDBA}$의 넓이는? (단, 점 $\\mathrm{A}$의 $y$좌표는 양수이다.) [그림: 좌표평면에 오른쪽으로 열린 포물선 $y^2=4px$와 초점 $\\mathrm{F}$가 그려져 있다. 점 $\\mathrm{F}$를 지나고 기울기가 양수인 직선이 제$1$사분면의 점 $\\mathrm{A}$와 제$4$사분면의 점 $\\mathrm{B}$에서 포물선과 만나며, $\\mathrm{A}$, $\\mathrm{B}$에서 $y$축에 내린 수선의 발 $\\mathrm{C}$, $\\mathrm{D}$로 이루어진 색칠된 사다리꼴 $\\mathrm{CDBA}$에 $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{AF}}=12$가 표시되어 있다.]",
+    "choices": [
+      "$36\\sqrt{3}$",
+      "$38\\sqrt{3}$",
+      "$40\\sqrt{3}$",
+      "$42\\sqrt{3}$",
+      "$44\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "두 점 $\\mathrm{A}$, $\\mathrm{B}$의 좌표를 각각 $\\mathrm{A}(x_1, y_1)$, $\\mathrm{B}(x_2, y_2)$라 하면 $x_1 > 0$, $x_2 > 0$이고 $y_1 > 0$, $y_2 < 0$이다.\n$\\overline{\\mathrm{AC}} = x_1 = 9$이고, 포물선의 정의에 의하여\n$$\\overline{\\mathrm{AF}} = x_1 + p = 9 + p = 12 \\implies p = 3$$\n따라서 포물선의 방정식은 $y^2 = 12x$이고, 초점은 $\\mathrm{F}(3, 0)$이다.\n초점 $\\mathrm{F}$를 지나는 직선이 포물선과 만나는 두 점 $\\mathrm{A}$, $\\mathrm{B}$에 대하여\n$$\\dfrac{1}{\\overline{\\mathrm{AF}}} + \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{p}$$\n이므로\n$$\\dfrac{1}{12} + \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{3} \\implies \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{4} \\implies \\overline{\\mathrm{BF}} = 4$$\n포물선의 정의에 의하여 $\\overline{\\mathrm{BF}} = x_2 + 3 = 4$이므로 $x_2 = 1$이고 $\\overline{\\mathrm{BD}} = 1$이다.\n두 점 $\\mathrm{A}$, $\\mathrm{B}$는 포물선 $y^2 = 12x$ 위의 점이므로\n$$y_1^2 = 12 \\times 9 = 108 \\implies y_1 = 6\\sqrt{3}\\,(y_1 > 0)$$\n$$y_2^2 = 12 \\times 1 = 12 \\implies y_2 = -2\\sqrt{3}\\,(y_2 < 0)$$\n따라서 $\\overline{\\mathrm{CD}} = y_1 - y_2 = 6\\sqrt{3} - (-2\\sqrt{3}) = 8\\sqrt{3}$이다.\n사각형 $\\mathrm{CDBA}$는 $\\overline{\\mathrm{AC}} \\parallel \\overline{\\mathrm{BD}}$이고 높이가 $\\overline{\\mathrm{CD}}$인 사다리꼴이므로 그 넓이는\n$$\\dfrac{1}{2} \\times (\\overline{\\mathrm{AC}} + \\overline{\\mathrm{BD}}) \\times \\overline{\\mathrm{CD}} = \\dfrac{1}{2} \\times (9 + 1) \\times 8\\sqrt{3} = 40\\sqrt{3}$$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "primaryMethod": "포물선의 정의로 p=3을 얻고 초점현 성질로 BF=4를 구한 뒤 사다리꼴 넓이를 계산한다",
+    "decisiveStep": "1/12+1/BF=1/3에서 BF=4, x_2=1이고 y_1-y_2=8√3이므로 (1/2)(9+1)(8√3)=40√3",
+    "crossConceptKeys": [
+      "CC_TRAPEZOIDAL_AREA_PROPERTY"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "포물선 $y^2 = 16x$의 초점 $\\mathrm{F}$를 지나는 직선이 포물선과 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AF}} : \\overline{\\mathrm{BF}} = 3 : 2$일 때, 선분 $\\mathrm{AB}$의 길이는? [그림: 좌표평면에 꼭짓점이 원점 $\\mathrm{O}$인 포물선 $y^2=16x$와 초점 $\\mathrm{F}(4, 0)$가 그려져 있고, $\\mathrm{F}$를 지나며 기울기가 양수인 직선이 제$1$사분면의 점 $\\mathrm{A}$와 제$4$사분면의 점 $\\mathrm{B}$에서 포물선과 만나는 모습이 나타나 있다.]",
+    "choices": [
+      "$14$",
+      "$\\dfrac{44}{3}$",
+      "$\\dfrac{46}{3}$",
+      "$16$",
+      "$\\dfrac{50}{3}$"
+    ],
+    "answer": "⑤",
+    "solution": "포물선 $y^2 = 16x = 4 \\cdot 4 x$에서 $p = 4$이다.\n$\\overline{\\mathrm{AF}} : \\overline{\\mathrm{BF}} = 3 : 2$이므로 $\\overline{\\mathrm{AF}} = 3k$, $\\overline{\\mathrm{BF}} = 2k\\,(k > 0)$라 하자.\n초점 $\\mathrm{F}$를 지나는 직선이 포물선과 만나는 두 점 $\\mathrm{A}$, $\\mathrm{B}$에 대하여\n$$\\dfrac{1}{\\overline{\\mathrm{AF}}} + \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{p}$$\n이 성립하므로\n$$\\dfrac{1}{3k} + \\dfrac{1}{2k} = \\dfrac{1}{4}$$\n$$\\dfrac{5}{6k} = \\dfrac{1}{4} \\implies 6k = 20 \\implies k = \\dfrac{10}{3}$$\n따라서 선분 $\\mathrm{AB}$의 길이는\n$$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AF}} + \\overline{\\mathrm{BF}} = 3k + 2k = 5k = 5 \\times \\dfrac{10}{3} = \\dfrac{50}{3}$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "primaryMethod": "초점현 성질 1/AF+1/BF=1/p에 AF=3k, BF=2k를 넣어 k를 구하고 AB=5k를 계산한다",
+    "decisiveStep": "5/(6k)=1/4에서 k=10/3이므로 AB=3k+2k=5k=50/3",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 포물선 $y^2 = 16x$ 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$를 꼭짓점으로 하는 사각형 $\\mathrm{ABCD}$에 대하여 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$가 각각 $y$축과 평행하다. 사각형 $\\mathrm{ABCD}$의 두 대각선의 교점이 포물선의 초점 $\\mathrm{F}$와 일치하고 $\\overline{\\mathrm{DF}} = 12$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는? [그림: 좌표평면에 포물선 $y^2=16x$와 초점 $\\mathrm{F}(4, 0)$가 그려져 있다. 포물선 위의 네 점 중 제$1$사분면에 $\\mathrm{A}$, $\\mathrm{D}$($x_A < 4 < x_D$), 제$4$사분면에 $\\mathrm{B}$, $\\mathrm{C}$가 놓여 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$가 $y$축과 평행하고, 두 대각선 $\\mathrm{AC}$, $\\mathrm{BD}$가 초점 $\\mathrm{F}$에서 만나는 사다리꼴 $\\mathrm{ABCD}$가 그려져 있다.]",
+    "choices": [
+      "$64\\sqrt{2}$",
+      "$72\\sqrt{2}$",
+      "$80\\sqrt{2}$",
+      "$88\\sqrt{2}$",
+      "$96\\sqrt{2}$"
+    ],
+    "answer": "②",
+    "solution": "포물선 $y^2 = 16x = 4 \\cdot 4 x$에서 $p = 4$이고 초점은 $\\mathrm{F}(4, 0)$이다.\n두 선분 $\\mathrm{AB}$, $\\mathrm{CD}$가 $y$축에 평행하므로 두 점 $\\mathrm{A}$, $\\mathrm{B}$와 두 점 $\\mathrm{D}$, $\\mathrm{C}$는 각각 $x$축에 대하여 대칭이다.\n또한 대각선 $\\mathrm{BD}$가 초점 $\\mathrm{F}$를 지나므로\n$$\\dfrac{1}{\\overline{\\mathrm{BF}}} + \\dfrac{1}{\\overline{\\mathrm{DF}}} = \\dfrac{1}{4}$$\n$\\overline{\\mathrm{DF}} = 12$를 대입하면\n$$\\dfrac{1}{\\overline{\\mathrm{BF}}} + \\dfrac{1}{12} = \\dfrac{1}{4} \\implies \\dfrac{1}{\\overline{\\mathrm{BF}}} = \\dfrac{1}{6} \\implies \\overline{\\mathrm{BF}} = 6$$\n네 점의 $x$좌표를 $x_{\\mathrm{A}} = x_{\\mathrm{B}} = x_1$, $x_{\\mathrm{C}} = x_{\\mathrm{D}} = x_2$라 하면 포물선의 정의에 의하여\n$$\\overline{\\mathrm{BF}} = x_1 + 4 = 6 \\implies x_1 = 2$$\n$$\\overline{\\mathrm{DF}} = x_2 + 4 = 12 \\implies x_2 = 8$$\n포물선 $y^2 = 16x$에 $x = 2$, $x = 8$을 각각 대입하면\n$$y^2 = 32 \\implies y = \\pm 4\\sqrt{2}, \\quad y^2 = 128 \\implies y = \\pm 8\\sqrt{2}$$\n이므로\n$$\\overline{\\mathrm{AB}} = 8\\sqrt{2}, \\quad \\overline{\\mathrm{CD}} = 16\\sqrt{2}$$\n사각형 $\\mathrm{ABCD}$는 윗변이 $\\overline{\\mathrm{AB}}$, 아랫변이 $\\overline{\\mathrm{CD}}$, 높이가 $x_2 - x_1 = 8 - 2 = 6$인 사다리꼴이므로 그 넓이는\n$$\\dfrac{1}{2} \\times (8\\sqrt{2} + 16\\sqrt{2}) \\times 6 = 72\\sqrt{2}$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "primaryMethod": "대각선 BD가 초점현임을 이용해 BF=6을 얻고 두 수직현의 길이와 높이로 사다리꼴 넓이를 구한다",
+    "decisiveStep": "1/BF+1/12=1/4에서 BF=6, x_1=2, x_2=8이므로 (1/2)(8√2+16√2)(6)=72√2",
+    "crossConceptKeys": [
+      "CC_TRAPEZOIDAL_AREA_PROPERTY",
+      "CC_REFLECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "이차곡선 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-01",
+    "standardUnit": "이차곡선",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-GE-01-CORE",
+    "subUnit": "이차곡선 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-01-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차곡선 핵심 개념"
+    ],
+    "wide": false,
+    "content": "자연수 $n$에 대하여 포물선 $y^2 = \\dfrac{4x}{n^2 + n + 1}$의 초점 $\\mathrm{F}$를 지나는 직선이 포물선과 만나는 두 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 하자. $\\overline{\\mathrm{PF}} = 1$이고 $\\overline{\\mathrm{FQ}} = a_n$이라 할 때, $\\displaystyle\\sum_{n=1}^{12} a_n$의 값은?",
+    "choices": [
+      "$\\dfrac{9}{10}$",
+      "$\\dfrac{10}{11}$",
+      "$\\dfrac{11}{12}$",
+      "$\\dfrac{12}{13}$",
+      "$\\dfrac{13}{14}$"
+    ],
+    "answer": "④",
+    "solution": "포물선 $y^2 = \\dfrac{4x}{n^2 + n + 1} = 4 \\cdot \\dfrac{1}{n^2 + n + 1} x$에서 $p = \\dfrac{1}{n^2 + n + 1}$이다.\n(모든 자연수 $n$에 대하여 $p \\le \\dfrac{1}{3} < 1$이므로 $\\overline{\\mathrm{PF}} = 1$인 점 $\\mathrm{P}$와 대응하는 점 $\\mathrm{Q}$가 존재한다.)\n초점 $\\mathrm{F}$를 지나는 직선이 포물선과 만나는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대하여\n$$\\dfrac{1}{\\overline{\\mathrm{PF}}} + \\dfrac{1}{\\overline{\\mathrm{FQ}}} = \\dfrac{1}{p}$$\n이므로 $\\overline{\\mathrm{PF}} = 1$, $\\overline{\\mathrm{FQ}} = a_n$을 대입하면\n$$1 + \\dfrac{1}{a_n} = n^2 + n + 1$$\n$$\\dfrac{1}{a_n} = n^2 + n = n(n + 1)$$\n따라서 $a_n = \\dfrac{1}{n(n + 1)} = \\dfrac{1}{n} - \\dfrac{1}{n + 1}$이므로\n$$\\sum_{n=1}^{12} a_n = \\sum_{n=1}^{12} \\left( \\dfrac{1}{n} - \\dfrac{1}{n + 1} \\right) = \\left(1 - \\dfrac{1}{2}\\right) + \\left(\\dfrac{1}{2} - \\dfrac{1}{3}\\right) + \\cdots + \\left(\\dfrac{1}{12} - \\dfrac{1}{13}\\right) = 1 - \\dfrac{1}{13} = \\dfrac{12}{13}$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-040",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCAL_CHORD",
+    "primaryMethod": "초점현 성질로 a_n=1/(n²+n)을 얻고 부분분수로 분해해 n=1부터 12까지 합을 구한다",
+    "decisiveStep": "1+1/a_n=n²+n+1에서 a_n=1/n-1/(n+1)이고 합은 1-1/13=12/13",
+    "crossConceptKeys": [
+      "CC_TELESCOPING_SERIES"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

@@ -53,6 +53,39 @@ Gemini가 만든 유사 시험지를 반입하는 흐름이다. 운전·검수 �
 - `[그림: …]`은 설명이 발문·해설과 맞는지만 본다.
 - 결과는 `결과\<원본이름>_유사N.js`다. main·통합 브랜치에 이미 있으면 N을 올린다.
 
+## 유형 채우기(TYPE_BANK)
+
+문항이 적은 유형(TPL) 하나를 5문항 세트(1 기본형, 2·3 구조변형, 4·5 사고확장)로 채워 `archive/exams/types/high/h2/<stem>.js`로 넣는다. 도구는 `archive/tools/aistudio-typebank/`다. 이유: 유형별 연습 문항이 없는 단원이 있어 숫자만 바꾼 복제가 아니라 판단 단계가 다른 문항이 필요하다.
+
+1. 요청 만들기: `node archive/tools/aistudio-typebank/prep-typebank.mjs --subject geo|calc2 --tpl <TPL|PT 키> [--l4 <RPM id,…>] --short <짧은유형명> --round <N> --out <폴더>`. `request.txt`(AI Studio에 붙임)와 `target.json`(정답 번호·키)이 나온다. 정답 번호는 스크립트가 뽑는다. stem은 `기하_<짧은유형명>_고2_유형은행<N>`/`미적분II_…`다.
+2. 생성: 새 채팅(출제자2, Thinking Medium)에 `request.txt`를 한 번에 붙인다. 위 "생성 절차" 6~7번과 같이 `merge-prompt.cjs`로 `merged.js`를 꺼낸다.
+3. 반입: `node archive/tools/aistudio-typebank/intake-typebank.mjs merged.js --target target.json --stem <stem>`. 문항 수·id·정답 번호·크기순·꼴 누설(lint-similar 재사용)·메타 키(목표·메뉴 안인지)를 검사하고 `[그림:]`/`[해설그림:]`을 떼어 `<stem>.figures-todo.json`에 옮긴다. 오류가 있으면 파일을 쓰지 않는다. 4칸(item-4slot)은 만들지 않는다(사전 번호와 근거가 필요해 4slot 라인 몫).
+4. 풀이 검수: Sonnet이 발문·보기만 보고 5문항을 직접 풀어 정답을 대조한다. 틀리면 해당 문항만 AI Studio에 다시 요청한다.
+5. 그림: figures-todo를 SVG 라인에 넘긴다(새 SVG는 엔진으로만, [visual-svg.md](visual-svg.md)). 그림이 붙기 전에는 PR·병합하지 않는다. 그림을 가리키는 발문이 그림 없이 학생에게 보인다.
+6. PR: 관제가 순서를 조율한다. 이 PC는 `.git/info/exclude`가 `archive/exams/types/`를 가려 새 파일은 `git add -f`가 필요하다.
+- 등록: main에 들어가면 `build_db.py`의 동기화가 `db.js` 행·UID·메타 보류 줄을 만들고(로컬 실행으로 확인, 먼저 `node archive/tools/meta-foundation/question-metadata-format.mjs assemble`, 10분 넘게 걸림), 병합 후 자동 등록기가 파일에 적힌 메타를 정식 등록한다. 등록기는 (교육과정·단원·소단원·PT)의 ACTIVE 바인딩이 정확히 하나 있어야 받는다. 기하 H22-GE-03의 `PT_GEO_SPACE_FIGURE`는 있다. 미적분II H22-M2-08의 `PT_AREA_BY_DEFINITE_INTEGRAL`은 2015 수학II 바인딩뿐이라 `EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS`로 거절된다(크로스워크 `DIRECT_BINDING_GAP`). 바인딩 추가(추가 전용 `registryChanges`)나 유형 전용 요청이 먼저 필요하다. 등록기 단계는 로컬에서 돌리지 않았다(NOT_RUN).
+
+### 기하 유형은행 대량 반입 (마플 대응표, 2026-11-23)
+
+AI 스튜디오가 마플 유형 띠(2개씩 묶음 `geo_pNNN`)로 만든 결과(`C:\AI_WS\tmp\typebank\out\geo_*.js`)를 유형별 아카이브 JS로 바꾸는 도구다. 위 1~3번(요청 만들기·intake-typebank)과 달리 **PT/TPL/L4는 대응표에서 기계적으로** 붙이고, 문항별 판단(CrossConcept·Condition·결합 패턴·난이도·4칸)은 DeepSeek 한 라인(`opencode-go/deepseek-v4.1-flash`, 동시 1개)이 맡는다. 한도에 걸리면 기다렸다 재개하며 다른 모델이 대신 쓰지 않는다.
+
+- 명령 한 줄(새 묶음도 같다): `node archive/tools/aistudio-typebank/typebank-geo.mjs all geo_p005.js …` (`prep|judge|apply|report` 단계별 실행도 된다). 입력 위치는 환경 변수 `TYPEBANK_MAPL`(대응표 md)·`TYPEBANK_QUEUE`(`pairs-geo.json`·`queue-geo.json` 폴더)·`TYPEBANK_OUT`(생성 결과)·`TYPEBANK_WORK`(요청서·판정·증거, 저장소 밖)이다.
+- 하는 일: ① `keys-geo.mjs`가 (L4 리프, PT, TPL)을 레지스트리와 대조해 없는 TPL·크로스워크 DIRECT_ACTIVE 행을 add-only로 채운다(`geo-tpl-map.json`: 대응표의 새 TPL 후보를 이미 등록된 같은 형태의 TPL로 붙이는 `alias`, 같은 형태가 없을 때만 `newTpl` 정의. 둘 다 없으면 `TPL_UNDEFINED`로 멈춘다). 이유: TPL은 묻는 것 한 단어 굵기이고 같은 형태는 키를 재사용한다. ② 유형(srcImage → `pairs-geo.json`의 items) 하나당 `기하_NNN_<유형>_고2_유형은행N.js`를 `archive/exams/types/high/h2/`에 쓴다(발문의 `[중]` 같은 난이도 꼬리표는 걸러 낸다). ③ 정답 독립 풀이(해설 비공개)·메타 판정을 DeepSeek에 시키고 키·인용·사전·난이도 정수를 검사해 JS 필드·4칸(`archive/data/item-4slot/types/high/h2/<stem>.4slot.json`)에 반영한다. ④ 문항마다 `stage-meta-bridge`의 CREATE 판정(`evaluateMetaStage`)을 돌려 `archive/_generated/typebank-geo/<stem>.create-resolver.json`에 남긴다(PROJECTION_REUSE면 등록기가 같은 PT/TPL을 받는다).
+- `[그림: …]` 자리표시는 본문에 그대로 두고 문항 목록(qid, 설명)을 `<작업 폴더>/figures-todo-all.json`에 낸다(SVG 단계 입력). 그림을 넣는 편집이 JS 파일을 바꾸면 4칸 compact의 `sourceGitBlobSha`도 갱신해야 한다.
+- 검산: answer가 보기 범위, 해설 마지막 줄 정답 번호 일치는 기계가 보고, 수학 정답은 DeepSeek 독립 풀이와 대조해 불일치·애매한 문항을 `report`가 목록으로 낸다. 모든 메타는 단일 모델 초안(검수 전, `UNREVIEWED`)이다.
+- 이 PC는 `.git/info/exclude`가 `archive/exams/types/`를 가리므로 새 JS는 `git add -f`로 올린다. 병합은 SVG가 끝난 뒤 관제와 조율한다.
+
+### 미적분II 유형은행 반입과 두 과목 공통 규칙 (2026-11-24)
+
+같은 도구가 미적분II도 한다: `node archive/tools/aistudio-typebank/typebank-geo.mjs --subject=calc2 all <out 파일>…`(`--subject=`는 명령 앞뒤 어디든, 또는 환경 변수 `TYPEBANK_SUBJECT=calc2`). 입력은 `TYPEBANK_MAPL`(기본 `mapl-types-calc2.md`), 작업 폴더는 기하 작업 폴더 아래 `calc2/`다. 생성기가 더 만들면 새 파일 이름만 이어 붙여 같은 명령을 다시 돈다(이미 판정한 유형은 건너뛴다).
+
+- **키는 대응표가 아니라 크로스워크에서 읽는다(미적분II).** 대응표의 PT 열은 RPM 확장 전 기준이라 NO_MATCH가 많다. 리프(L4)마다 `DIRECT_ACTIVE` 행, `promotesRpmOnlyRowId` 행, 바인딩 공백(`DIRECT_BINDING_GAP`) 행에서 (PT, TPL)을 읽고, 문항이 고른 리프(`rpmPrimaryRecordId`)가 그 문항의 PT/TPL을 정한다. 이유: 같은 유형 띠 안에서도 리프마다 TPL이 달라 첫 리프 하나로 붙이면 문항과 TPL이 어긋난다.
+- **바인딩 공백 리프는 resolver가 인정하는 add-only 행으로 올린다.** 같은 PT/TPL·같은 단원의 `DIRECT_ACTIVE` 행을 `promotesBindingGapRowId`로 덧붙인다(`keys-geo.mjs`). 기존 행은 고치지 않는다. 연결된 행이 전혀 없는 리프(예: 삼각함수의 합성 H2-CALC-RPM-162)의 유형은 `geo-tpl-map.json`의 `typeOverride`로 붙이거나 `skip`에 이유를 적어 반입하지 않는다. calc2_098(삼각함수의 합성)은 교육과정 밖이라 `skip`이다.
+- **기하의 PT/TPL 정리:** 대응표 TPL 후보는 `geo-tpl-map.json`의 `alias`(같은 형태의 기존 TPL)로 붙이고, 같은 형태가 없을 때만 `newTpl`/`newPt`로 만든다. 대응표에 PT가 없는 유형은 `typeOverride`다. 2026-11-24 반입에서 새 PT 1(`PT_GEO_CONIC_MIXED`)·새 TPL 13을 더했다.
+- 2022 미적분II에는 소단원이 없어 문항의 `subUnitKey`는 비우고 단원(`H22-M2-0x`)까지만 적는다.
+- 파일 이름에 못 쓰는 문자(`|`, `'` 등)는 stem에서 뺀다. 한 유형의 DeepSeek 호출이 실패해도 다음 유형으로 가고, 실패 목록은 작업 폴더의 `judge-failures.json`에 남는다. DeepSeek 호출은 공용 슬롯(`D:/AP-svg-factory/labor/ds/dsslots.mjs`)을 한 번에 하나만 쥔다.
+- `report`는 대기열 `n`보다 문항이 적게 온 유형(`shortOfQueueN`)과 새로 더한 키 수를 같이 낸다.
+
 ## 장애 대응
 
 - "Model isn't available right now": 멈춤이 아니다. 10분마다 다시 시도한다. 이유: 혼잡 시간대 일시 장애로 30분쯤 뒤 풀렸다.
