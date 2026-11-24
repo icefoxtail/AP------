@@ -22,10 +22,13 @@ on:
       - '.github/workflows/svg-engine-tests.yml'
   workflow_dispatch:
 
-# A newer push to the same pull request cancels that PR's older run. main and manual runs are never cancelled.
+# A newer push to the same pull request cancels that PR's older run, and a newer push to the same branch (main)
+# cancels that branch's older run: only the newest commit keeps a verdict (runner capacity: 20 concurrent jobs —
+# on 2026-11-24 forty merges queued 100+ runs and the student release waited 40-50 minutes for a runner).
+# Manual runs keep one group per run and are never cancelled.
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('svg-engine-tests-pr-{0}', github.event.pull_request.number) || format('svg-engine-tests-{0}-{1}', github.event_name, github.run_id) }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.event_name == 'pull_request' && format('svg-engine-tests-pr-{0}', github.event.pull_request.number) || github.event_name == 'push' && format('svg-engine-tests-push-{0}', github.ref) || format('svg-engine-tests-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
 
 permissions:
   contents: read
