@@ -14,6 +14,12 @@
 - 스캔에서 깨끗하게 잘라 넣는 원본 그림(PNG)은 이 규칙의 대상이 아니다. 아래 19행의 "엔진 표식의 부재만으로 교체 필요를 판정하지 않는다"는 이미 있는 그림에 대한 규칙이고, 새로 만드는 그림에는 이 절이 적용된다.
 - 이유: 원문 수리 작업에서 작업자가 그림 9장을 스크립트로 직접 조립해, 도수분포다각형에 점이 없고 선·글자 품질이 엔진 그림과 달랐다. 엔진 출력만 관측기가 식·라벨·눈금을 다시 대조하고, 학생이 보는 그림의 모양이 한결같아진다.
 
+## 그림 경로 정본 형태 (2026-11-24)
+
+- 시험지 JS(`image`·`images[]`·`solutionImage`·발문/해설/보기 안 `<img src>`)에는 그림 경로를 **`assets/images/<시험지>/<파일>`** 로 쓴다. 파일은 디스크에서 `archive/assets/images/<시험지>/`에 두지만, 그 앞의 `archive/`는 JS에 적지 않는다(경로는 `archive/` 폴더 기준). 이유: 파일 위치를 그대로 옮겨 적어 `archive/assets/…`가 들어간 일이 세 번 있었다(#2774·#2798·#2804, 사후 수리).
+- 도구가 경로를 쓸 때는 `archive/tools/exam-image-ref-lib.mjs`의 `canonicalExamImageRef`를 거친다. 막는 곳: 커밋 때 pre-commit 훅(`tools/check-staged-exam-image-paths.mjs`, 새로 추가한 줄만 검사, 설치는 `node tools/install-image-path-guard-hook.mjs` 한 번), 유사 출고 관문(`tools/harness/verify_similar_exam.mjs`). 사후 검출은 `tests/archive-inline-image-inventory.test.js`.
+- `sourceAssetPaths`처럼 원본 파일 위치를 기록하는 필드는 디스크 경로(`archive/assets/…`)가 맞다. 검사 대상이 아니다.
+
 ## CURRENT HARD — 문제은행 전체 문제·해설 SVG 필요성 2축 전수판정 (2026-10-10 원장 지시)
 - **문제은행의 모든 기출·ALIVE Generated·교재/유형/유사문항**에서 *문제용*과 *해설용* 시각자료의 필요성을 UID마다 **독립 판단**한다. 문자·수식만으로 문제를 풀 수 있어도 해설의 접선/교점/대칭/보조선/그래프/영역 관계를 학생에게 명확히 전달하는 SVG가 필요하면 반드시 제작한다. `VISUAL_OPTIONAL`도 실질 교육 효과가 있으면 ADD하며, 진짜 중복·장식은 근거 있는 EXEMPT.
 - 기존 Visual 생성 스킬과 엔진을 재사용하고, source PNG 불변·교육과정·실제 primitive/렌더 검증을 유지한다. 기존 승인 문항의 품질 상태를 일괄 취소하지 말고 누락 UID의 시각 결함만 보강한다. 실측 누락률은 고유 UID × 문제/해설 전수조사 후 확정한다.

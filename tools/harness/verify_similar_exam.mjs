@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { evaluateAnswerTokens } from '../../archive/tools/similar-import/choice-order-lib.mjs';
+import { findPrefixedImageRefsInQuestion } from '../../archive/tools/exam-image-ref-lib.mjs';
 
 // Resolve from this module, independent of cwd, OS and user's home directory.
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -686,6 +687,12 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
     // Solution
     if (!q.solution || typeof q.solution !== 'string' || q.solution.trim().length < 10) {
       errors.push(`Q${ord}: missing or too brief solution explanation`);
+    }
+
+    // 그림 경로 정본 형태: JS에는 `assets/images/<시험지>/<파일>`을 쓴다(`archive/` 없이). 아래 디스크 확인이 두 형태를 다 받아 주므로
+    // 여기서 따로 막는다. 이유: archive/ 가 붙은 채 출고돼 학생 화면에서 그림이 안 뜬 일이 세 번 있었다(#2774·#2798·#2804).
+    for (const hit of findPrefixedImageRefsInQuestion(q)) {
+      errors.push(`Q${ord}: 그림 경로(${hit.field})가 archive/ 로 시작함 — "${hit.ref}" 를 "${hit.fixed}" 로 고치세요`);
     }
 
     // Image/SVG checks
