@@ -122,8 +122,16 @@ test('advisory mode lists description-quality findings without blocking, and sti
     assert.equal(assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'old.svg', advisory: [] }).status, 'PASS', marker + ' on an existing path is a legacy figure');
     assert.throws(() => assertSvgStudentLanguage(noMarkup(marker), { assetRef: 'new.svg', advisory: [], newPath: true }), /TITLE_DESC_REQUIRED/, marker + ' on a new file');
   }
-  // 학생 눈에 보이는 결함, 중복 id, 루트 없음은 옛 그림도 막는다.
-  assert.throws(() => assertSvgStudentLanguage(svg('<text>축척: x,y 동일 단위</text>'), { assetRef: 'd.svg', advisory: [] }), /SCALE_GUIDANCE_FORBIDDEN/);
+  // "축척" 안내 문구: 옛 그림은 목록으로만, 엔진 표지가 있는 새 그림은 막는다. 영어 문구는 영어 코드로도 목록에 남는다.
+  const scaleList = [];
+  assert.equal(assertSvgStudentLanguage(svg('<text>좌표는 발문과 동일한 축척으로 표시</text>'), { assetRef: 'd.svg', advisory: scaleList }).status, 'PASS');
+  assert.ok(scaleList.some(row => row.code === 'SVG_SCALE_GUIDANCE_FORBIDDEN'));
+  const englishScale = [];
+  assertSvgStudentLanguage(svg('<text>Coordinates drawn to scale; dashed lines show construction.</text>'), { assetRef: 'd.svg', advisory: englishScale });
+  assert.ok(englishScale.some(row => row.code === 'SVG_ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW'));
+  assert.throws(() => assertSvgStudentLanguage(svg('<text>좌표는 발문과 동일한 축척으로 표시</text>', undefined, undefined, 'data-engine-version="geometry-visual-v1" role="img" aria-labelledby="title desc"'), { assetRef: 'd.svg', advisory: [] }), /SCALE_GUIDANCE_FORBIDDEN/);
+  assert.throws(() => assertSvgStudentLanguage(svg('<text>축척: x,y 동일 단위</text>'), { assetRef: 'd.svg' }), /SCALE_GUIDANCE_FORBIDDEN/);
+  // 학생 눈에 보이는 결함(내부 문구), 가리키는 id의 중복, 루트 없음은 옛 그림도 막는다.
   // 겹치는 id를 모양이 가리키면(url(#id)·href="#id") 그림이 틀어질 수 있어 막는다. 아무도 가리키지 않는 id의 중복은 그림이 그대로라 목록으로만 남긴다.
   assert.throws(() => assertSvgStudentLanguage(svg('<linearGradient id="g"/><linearGradient id="g"/><rect fill="url(#g)"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);
   assert.throws(() => assertSvgStudentLanguage(svg('<g id="same"/><g id="same"/><use href="#same"/>'), { assetRef: 'e.svg', advisory: [] }), /DUPLICATE_ID/);

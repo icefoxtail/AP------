@@ -201,7 +201,10 @@ const LEGACY_ACCESSIBILITY_CODES = new Set([
   'SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED',
   'SVG_ACCESSIBILITY_ROLE_IMG_REQUIRED',
   'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID',
-  'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID'
+  'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID',
+  // 그림 안의 "축척" 안내 문구(한국어 "좌표는 발문과 동일한 축척으로 표시" 등): 학생 피해 없이 읽히는 부가 문구라 옛 그림은 목록으로만(2026-11-24).
+  // 영어 문구는 이 코드와 별개로 ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW 목록에 그대로 남는다. 새 엔진 그림은 계속 막는다.
+  'SVG_SCALE_GUIDANCE_FORBIDDEN'
 ]);
 // 엔진 표지는 두 종류다(저장소 archive/assets SVG 전수 조사, 표지가 있는 그림 수 / 그중 표기 누락 수):
 // - 확정 표지: 있으면 언제나 엔진 산출물로 본다. data-engine-version 6,661/0, data-stat-chart 591/0, data-set-diagram 320/0,

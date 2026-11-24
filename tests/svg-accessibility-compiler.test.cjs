@@ -302,7 +302,10 @@ test('production compiler lets a legacy SVG without accessibility markup through
   // visible defects, referenced duplicate ids and a missing root keep blocking even for legacy figures
   const legacyHead = '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">';
   const body = '<title id="t">직선과 점</title><desc id="d">한 점을 지나고 기울기가 일정한 직선을 나타낸 그림</desc>';
+  // scale guidance text: listed only for a legacy figure, blocked for engine output
   fs.writeFileSync(newSvg, `${legacyHead}${body}<text>축척: x,y 동일 단위</text></svg>\n`);
+  assert.ok(compile().qualityAdvisory.some(row => row.assetRef === 'assets/images/new.svg' && row.code === 'SVG_SCALE_GUIDANCE_FORBIDDEN'));
+  fs.writeFileSync(newSvg, `${legacyHead.replace('<svg ', '<svg data-engine-version="geometry-visual-v1" ')}${body}<text>축척: x,y 동일 단위</text></svg>\n`);
   assert.throws(compile, /SCALE_GUIDANCE_FORBIDDEN/);
   // a duplicate id that a shape points at (url(#id)) blocks; one nobody points at is only listed
   fs.writeFileSync(newSvg, `${legacyHead}${body}<g id="same"/><g id="same"/><rect fill="url(#same)"/></svg>\n`);
@@ -439,12 +442,12 @@ test('--quality-report lists every flagged SVG with its exams and text, English/
   assert.ok(rows.some(row => row[0] === 'assets/images/generic.svg' && /DESCRIPTION_NOT_SUBSTANTIVE/.test(row[2])));
   // 옛 그림의 접근성 표기 누락은 막지 않는 항목(legacy-a11y), 대체 문구 열이 채워진다(시험지 연결이 있을 때).
   assert.ok(rows.some(row => row[0] === 'assets/images/broken.svg' && row[1] === 'legacy-a11y'));
-  fs.writeFileSync(path.join(dir, 'visible.svg'), svg('도형', '축척과 관계없이 점 A와 B를 잇는 선분을 나타낸 그림').replace('</svg>', '<text>축척: x,y 동일 단위</text></svg>'));
+  fs.writeFileSync(path.join(dir, 'visible.svg'), svg('도형', '축척과 관계없이 점 A와 B를 잇는 선분을 나타낸 그림').replace('<svg ', '<svg data-engine-version="geometry-visual-v1" ').replace('</svg>', '<text>축척: x,y 동일 단위</text></svg>'));
   fs.writeFileSync(path.join(dir, 'engine.svg'), '<svg xmlns="http://www.w3.org/2000/svg" data-engine-version="geometry-visual-v1"><circle r="5"/></svg>\n');
   const more = writeQualityReport({ repoRoot, outPath: path.join(repoRoot, 'more.tsv'), uses });
   assert.equal(more.flagged, 5);
   const moreRows = fs.readFileSync(path.join(repoRoot, 'more.tsv'), 'utf8').trim().split('\n').slice(1).map(line => line.split('\t'));
-  assert.equal(moreRows.find(row => row[0] === 'assets/images/visible.svg')[1], 'defect');
+  assert.equal(moreRows.find(row => row[0] === 'assets/images/visible.svg')[1], 'defect', 'scale guidance in engine output is a defect');
   assert.equal(moreRows.find(row => row[0] === 'assets/images/engine.svg')[1], 'defect', 'engine output missing markup is a defect, not legacy');
   const jsonOut = path.join(repoRoot, 'report.json');
   assert.equal(writeQualityReport({ repoRoot, outPath: jsonOut, uses }).flagged, 5);
