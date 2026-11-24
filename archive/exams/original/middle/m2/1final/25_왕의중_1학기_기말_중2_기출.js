@@ -105,7 +105,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선이 제3사분면의 점 (-3, -1)에서 만나고, 교점의 좌표가 표시되어 있다. 파란 직선과 주황 직선이 서로 다른 기울기로 그려져 있다.",
+    "solutionImageCaption": "두 직선의 교점은 (-3, -1)이다. x=4y+1을 5x-3y=-12에 대입하면 17y=-17이므로 y=-1이다. 이때 x=4(-1)+1=-3이다. 따라서 a+b=-3+(-1)=-4이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

@@ -1137,7 +1137,11 @@ window.questionBank = [
       "l4": "연속 시행"
     },
     "primaryMethod": "중단 점수 이후 종료 경로와 확률 배분",
-    "decisiveStep": "한 판 후와 두 판 후 승리 경로를 더해 승리확률대로 상금을 나눈다."
+    "decisiveStep": "한 판 후와 두 판 후 승리 경로를 더해 승리확률대로 상금을 나눈다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "A가 다음 판에 바로 이기면 확률은 1/2이고, B가 이긴 뒤 그 다음 판에 A가 이기면 1/2×1/2=1/4이다. 따라서 A가 이길 확률은 1/2+1/4=3/4이고, B가 이길 확률은 1-3/4=1/4이다. 상금은 A가 64×3/4=48피스톨, B가 64×1/4=16피스톨이다. 따라서 답은 (1) 3/4, (2) 1/4, (3) A는 48피스톨, B는 16피스톨이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1186,7 +1190,11 @@ window.questionBank = [
       "l4": "순서가 있는 경우"
     },
     "primaryMethod": "선두0 제외와 짝수 끝자리 분류",
-    "decisiveStep": "끝자리0과2·4에서 선두선택수가 다름을 구분해 순열을 더한다."
+    "decisiveStep": "끝자리0과2·4에서 선두선택수가 다름을 구분해 순열을 더한다.",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "두 자리 자연수는 십의 자리 5가지와 일의 자리 5가지로 5×5=25가지이다. 세 자리 짝수에서 일의 자리가 0이면 5×4=20가지이고, 일의 자리가 2 또는 4이면 2×4×4=32가지이다. 따라서 20+32=52가지이다. 따라서 답은 (1) 25, (2) 52이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

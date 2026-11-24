@@ -1,0 +1,78 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "꽝",
+        "elements": [
+          "5/9",
+          "4/8"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "곱",
+        "elements": [
+          "5/18"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "답",
+        "elements": [
+          "13/18"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "꽝 제비는 5개이므로 A가 꽝을 뽑을 확률은 5/9이고, 그 뒤 B도 꽝을 뽑을 확률은 4/8이다. 두 사람 모두 꽝일 확률은 5/9×4/8=5/18이다. 적어도 한 사람이 당첨될 확률은 1-5/18=13/18이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$9$개의 제비 중에서 $4$개의 당첨 제비가 들어 있다. $A$, $B$ 두 사람이 차례대로 한 개씩 제비를 뽑을 때, 적어도 한 사람이 당첨될 확률은? (단, 뽑은 제비는 다시 넣지 않는다.) (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: A와 B가 모두 꽝일 확률 5/9와 4/8에서 곱 5/18로 모이고 다시 여사건 13/18로 이어지는 대응도로 나타냈다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "꽝 5/9와 4/8에서 곱 5/18로 두 화살표가 모이고, 다시 답 13/18로 이어진다."
+  ]
+}

@@ -564,7 +564,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 −3보다 작은 부분과 0보다 큰 부분이 굵게 표시되고, −3과 0에는 열린 점이 있다. 세 줄에 각각 −1과 1, −3과 3, −4와 4가 점으로 표시되어 있다.",
+    "solutionImageCaption": "제곱근 조각은 높이 t≥0에서 항상 한 점과 만나므로, 교점이 2개인 t의 범위 0<t≤3은 왼쪽 조각의 교점 개수로 결정된다. 조건에서 p=1/3이고 q=0 또는 q=−3이다. 따라서 p−q는 1/3 또는 10/3이고 그 합은 11/3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

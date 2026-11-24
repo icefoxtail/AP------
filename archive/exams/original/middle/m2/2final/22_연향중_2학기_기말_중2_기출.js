@@ -607,7 +607,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 집단의 블록 배열",
-    "decisiveStep": "두 집단을 각각 한 블록으로 묶고 블록 순서와 내부 순서를 곱한다."
+    "decisiveStep": "두 집단을 각각 한 블록으로 묶고 블록 순서와 내부 순서를 곱한다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "초등학생 2명을 한 묶음, 중학생 3명을 한 묶음으로 보면 두 묶음의 앞뒤 순서는 2가지이다. 초등학생 묶음 안의 순서는 2가지, 중학생 묶음 안의 순서는 3×2×1=6가지이다. 따라서 전체는 2×2×6=24가지이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -868,7 +872,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "비복원 실패확률의 곱과 여사건",
-    "decisiveStep": "첫 실패 후 줄어든 꽝 수와 전체 수를 반영해 모두실패 확률을 구하고1에서 뺀다."
+    "decisiveStep": "첫 실패 후 줄어든 꽝 수와 전체 수를 반영해 모두실패 확률을 구하고1에서 뺀다.",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "꽝 제비는 5개이므로 A가 꽝을 뽑을 확률은 5/9이고, 그 뒤 B도 꽝을 뽑을 확률은 4/8이다. 두 사람 모두 꽝일 확률은 5/9×4/8=5/18이다. 적어도 한 사람이 당첨될 확률은 1-5/18=13/18이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

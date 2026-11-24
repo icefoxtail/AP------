@@ -1,0 +1,60 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "universe": {
+      "name": "U",
+      "count": "8",
+      "countUnit": "개"
+    },
+    "elements": [
+      {
+        "text": "공통",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "B만",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "밖",
+        "in": []
+      }
+    ],
+    "shade": "A"
+  },
+  "caption": "전체집합 U의 원소 8개는 각각 A와 B에 모두 속함, B에만 속함, 둘 다에 속하지 않음의 세 경우 중 하나로 정해진다. 따라서 경우의 수는 3을 8번 곱한 3⁸가지다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{1,2,3,\\cdots,8\\}$의 두 부분집합 $A,B$가 $A \\subset B$를 만족시키도록 두 집합 $A,B$를 정하는 모든 경우의 수를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "전체집합 U의 원소는 8개이고 A는 B에 포함된다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체집합 U 안에 B가, B 안에 A가 들어가 있고 A 영역이 색칠되어 있다.",
+    "각 영역에 공통, B만, 밖의 세 경우가 표시되어 있다."
+  ]
+}

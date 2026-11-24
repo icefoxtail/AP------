@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tb",
+        "at": [
+          5,
+          1.5
+        ],
+        "text": "밑면",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "ts",
+        "at": [
+          7.4,
+          4.5
+        ],
+        "text": "옆면",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "밑면이 정사각형인 사각뿔의 5개 면에 6가지 색 중 5가지를 칠한다. 6가지 색 중 5가지를 고르는 경우는 6가지, 밑면에 칠할 색은 5가지, 옆면 네 개를 돌려 같은 것으로 보는 배열은 6가지이므로 6×5×6=180이다. 따라서 답은 180이다.",
+  "accessibilityDescription": "밑면이 정사각형인 사각뿔이 보이고 꼭짓점 P에서 밑면의 네 꼭짓점 A, B, C, D로 모서리가 이어진다. 밑면과 한 옆면에 짧은 이름표가 붙어 있다.",
+  "newVisualInformation": [
+    "정사각형 밑면과 네 옆면으로 된 사각뿔",
+    "밑면과 옆면 이름표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]<br><svg width='150' height='150' viewBox='0 0 150 150' style='display:block; margin: 10px auto;'>  <line x1='75' y1='20' x2='30' y2='100' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='120' y2='100' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='140' y2='80' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='50' y2='80' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/>  <polyline points='30,100 120,100 140,80' fill='none' stroke='black' stroke-width='1.5'/>  <polyline points='30,100 50,80 140,80' fill='none' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/></svg>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

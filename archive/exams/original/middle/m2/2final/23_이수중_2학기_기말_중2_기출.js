@@ -916,7 +916,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "첫 완료 시점이 세 번째인 반복 확률",
-    "decisiveStep": "한 시행의 홀짝 확률을 구한 뒤 AAB와BBA만 남겨 각 순서의 확률을 더한다."
+    "decisiveStep": "한 시행의 홀짝 확률을 구한 뒤 AAB와BBA만 남겨 각 순서의 확률을 더한다.",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "한 번 던질 때 두 눈의 곱이 짝수일 확률은 3/4, 홀수일 확률은 1/4이다. 세 번째에 처음으로 두 부분이 모두 색칠되려면 순서가 AAB 또는 BBA이고, 그 확률은 각각 (3/4)×(3/4)×(1/4)=9/64, (1/4)×(1/4)×(3/4)=3/64이다. 두 경우를 더하면 9/64+3/64=12/64=3/16이다. 따라서 답은 3/16이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 23,

@@ -238,7 +238,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 두 직선이 나란히 그려져 있고, 두 직선의 y절편 (0, 3/4)과 (0, 0)이 표시되어 있다.",
+    "solutionImageCaption": "해가 없으려면 두 직선이 평행하고 서로 다른 직선이어야 한다. 계수비에서 a/3=4/(-2)이므로 a=-6이고, 이때 두 식은 각각 y=3x/2+3/4과 y=3x/2-b가 되어 기울기가 3/2로 같아진다. 두 직선이 일치하지 않으려면 b는 -3/4이 아니어야 한다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

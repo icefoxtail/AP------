@@ -927,7 +927,11 @@ window.questionBank = [
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED",
       "templateSelection": "ACTIVE_SAME_PT_ALTERNATE_TEMPLATE_BRANCH"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "1단계에서 A의 흰 공 2개가 B로 이동한 뒤, 2단계에서 B에서 A로 돌아오는 흰 공 수를 k라 하자. k=0, 1, 2일 확률은 각각 15/22, 10/33, 1/66이고, 최종 흰 공 수가 홀수가 되는 경로는 k=0에서 흰 공 1개와 검은 공 1개를 옮기는 경우와 k=1에서 흰 공 2개를 옮기는 경우이다. 두 경로의 확률은 각각 8/33이므로 전체 확률은 16/33이다. 따라서 p=33, q=16이므로 p-q=17이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

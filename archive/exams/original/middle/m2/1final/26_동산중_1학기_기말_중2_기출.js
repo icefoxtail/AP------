@@ -1528,7 +1528,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 같은 두 평행선이 그려져 있고, y축과 만나는 두 점 (0, 3/2), (0, 1/2)에 점과 좌표가 표시되어 있다. 파란 직선과 주황 직선이 나란히 놓여 있다.",
+    "solutionImageCaption": "a=3, b=-5이면 ax+2y-3=0은 3x+2y-3=0이고, (b+2)x-2y+1=0은 3x+2y-1=0이므로 두 직선은 평행하다. 셋째 직선 (-2b-1)x+6y-9=0은 b=-5일 때 9x+6y-9=0, 즉 3x+2y-3=0으로 첫 직선과 일치한다. 조건을 연립하면 a=-b-2, -2b-1=3a에서 b=-5, a=3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

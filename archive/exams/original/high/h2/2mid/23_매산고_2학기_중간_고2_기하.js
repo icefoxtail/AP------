@@ -209,7 +209,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 하나의 좌표평면에 중심이 원점인 쌍곡선과 타원이 겹쳐 그려져 있고, x축 위에 두 곡선의 공통 초점 F와 F′, 타원의 중심 O, 타원의 오른쪽 꼭짓점 V가 표시되어 있으며 O와 V 사이에 길이 10이 적혀 있다.",
+    "solutionImageCaption": "쌍곡선 x²/16−y²/9=1에서 c²=16+9=25이므로 초점은 F(5,0), F′(−5,0)이다. 장축의 길이가 20인 타원은 a=10, 즉 a²=100이고 초점이 같으므로 a²−b²=25에서 b²=100−25=75이다. 따라서 a²+b²=100+75=175이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

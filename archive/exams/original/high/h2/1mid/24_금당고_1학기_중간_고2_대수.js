@@ -554,7 +554,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선이 위아래로 되풀이되고, 두 수평선 y=1/2과 y=-1/2이 서로 다른 색으로 그려져 있다. 곡선과 두 직선이 만나는 여섯 개의 교점이 표시되어 있다.",
+    "solutionImageCaption": "사인(x+π/2)=코사인 x이므로 주어진 식은 5코사인²x-사인²x+코사인2x=0이다. 코사인2x=코사인²x-사인²x를 이용하면 6코사인²x-2사인²x=0, 즉 3코사인²x-사인²x=0이고 사인²x=1-코사인²x를 대입하면 4코사인²x-1=0이므로 코사인 x=±1/2이다. 해는 ±π/3, ±2π/3, ±4π/3, …이므로 서로 다른 6개의 근을 갖는 최소 a는 4π/3이고 p=3, q=4에서 p+q=7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,

@@ -859,7 +859,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 정사각형인 사각뿔이 보이고 꼭짓점 P에서 밑면의 네 꼭짓점 A, B, C, D로 모서리가 이어진다. 밑면과 한 옆면에 짧은 이름표가 붙어 있다.",
+    "solutionImageCaption": "밑면이 정사각형인 사각뿔의 5개 면에 6가지 색 중 5가지를 칠한다. 6가지 색 중 5가지를 고르는 경우는 6가지, 밑면에 칠할 색은 5가지, 옆면 네 개를 돌려 같은 것으로 보는 배열은 6가지이므로 6×5×6=180이다. 따라서 답은 180이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

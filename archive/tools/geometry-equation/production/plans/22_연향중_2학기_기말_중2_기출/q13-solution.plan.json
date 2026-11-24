@@ -1,0 +1,88 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "묶음",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "내부",
+        "elements": [
+          "2",
+          "6"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "전체",
+        "elements": [
+          "24"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "초등학생 2명을 한 묶음, 중학생 3명을 한 묶음으로 보면 두 묶음의 앞뒤 순서는 2가지이다. 초등학생 묶음 안의 순서는 2가지, 중학생 묶음 안의 순서는 3×2×1=6가지이다. 따라서 전체는 2×2×6=24가지이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "초등학생 $2$명과 중학생 $3$명이 한 줄로 설 때, 초등학생은 초등학생끼리, 중학생은 중학생끼리 이웃하여 서는 경우의 수는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 두 묶음의 순서 2가지에서 초등학생 내부 2가지와 중학생 내부 6가지로 갈라지고 다시 전체 24가지로 모이는 대응도로 나타냈다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "묶음 2에서 내부 2와 6으로 화살표가 갈라지고, 두 값이 전체 24로 모이는 대응도이다."
+  ]
+}

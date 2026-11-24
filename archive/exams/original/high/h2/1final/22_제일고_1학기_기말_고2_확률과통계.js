@@ -139,7 +139,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 줄짜리 표 모양 그림으로 각 줄에 보기 ㄱ, ㄴ, ㄷ의 내용과 판정이 적혀 있고 마지막 줄에 정리한 결과가 적혀 있다.",
+    "solutionImageCaption": "ㄱ은 배반사건이면 P(A∪B)=P(A)+P(B)일 뿐 합이 1이라는 보장이 없으므로 거짓이다. 예를 들어 A={1}, B={2}이면 P(A∪B)=1/3이다. ㄴ은 확률의 기본 성질로 참이고, ㄷ은 P(A|B)+P(A의 여사건|B)=1이 항상 성립하므로 독립 조건이 없어도 참이다. 따라서 옳은 것은 ㄴ, ㄷ이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,

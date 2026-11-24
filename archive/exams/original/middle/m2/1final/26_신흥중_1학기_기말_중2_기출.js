@@ -653,7 +653,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나며, 그 교점이 점과 좌표로 표시되어 있다.",
+    "solutionImageCaption": "두 식의 y 계수를 각각 6으로 같게 만든 뒤 빼면 x=1이다. x=1을 3x-2y=7에 대입하면 y=-2이다. 따라서 답은 x=1, y=-2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

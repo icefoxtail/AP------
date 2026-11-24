@@ -138,7 +138,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나고, 그 교점 옆에 좌표가 표시되어 있다. 두 직선은 서로 다른 색으로 그려져 있다.",
+    "solutionImageCaption": "2x+y=5와 3x-2y=11을 풀면 x=3, y=-1이므로 m=3, n=-1이다. 이를 대입한 3x-y=8과 -x-3y=4를 풀면 x=2, y=-2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
