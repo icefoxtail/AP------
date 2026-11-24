@@ -56,7 +56,7 @@ class RationalOverview(unittest.TestCase):
         marker=next(node for node in root.iter() if node.get('data-role')=='hole')
         self.assertEqual(marker.get('fill'),'white')
         self.assertEqual(float(marker.get('r')),plan['rationalFeaturePolicy']['holeMarkerRadiusIntrinsicPx'])
-        small=audit(plan,model['svg'],{**model['transform'],'displayScale':.453125})
+        small=audit(plan,model['svg'],{**model['transform'],'displayScale':.3125})   # the hole marker is 6 px in radius since 2026-11-24 (it was 4: 3.3 css px at the page's 0.4146 scale, too small to see); 12 px at .3125 is 3.75 css px, still under the 4.5 floor
         self.assertEqual(small['status'],'UNSUPPORTED')
         self.assertIn('RATIONAL_HOLE_MARKER_BELOW_DISPLAY_RESOLUTION',small['errors'])
 

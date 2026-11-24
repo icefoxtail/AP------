@@ -22,7 +22,7 @@ const sourceBank=loadBank(rawSource);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const primitiveObserver=fileURLToPath(new URL('../production/primitive-observer-worker.py',import.meta.url));
 const profileOrder=['small','medium','large','full'];
-const fontPx=24.9;
+const fontPx=27;   // the font the real pipeline would set from the measured Archive scale: the page now shows a 610 px wide figure at 0.4146 (252.9 css px), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 const fixture={content:'좌표평면에서 O(0,0), A(0,2), B(4,0), C(0,3), X(2,0), Y(0,3), P(5,0)이다. O 중심의 원과 P에서 그은 접선을 작도하고, OB와 평행한 C통과 직선 및 ∠XOY의 내·외각이등분선을 표시하시오. 접선의 길이 PT를 구하시오.',answer:'√21',solution:'접점 T에서 반지름 OT와 접선 PT는 수직이다.\nOP=5, OT=2\nPT²=OP²−OT²\nPT²=21\nPT=√21'};
 const sourceConditions=constructionV1Graph.conditionAudits.map(audit=>({id:audit.sourceConditionId,condition:`${audit.kind} 검수: ${audit.refs.join(', ')}`,mappedTo:`construction-node-refs:${audit.refs.join(',')}`}));
 

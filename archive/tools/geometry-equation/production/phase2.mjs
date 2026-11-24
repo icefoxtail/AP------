@@ -51,8 +51,9 @@ const equalUnitCanvas=p=>{
   return {width:512,height:plot.height+64+topInset,panel:0,topInset};
 };
 const RATIONAL_OVERVIEW_CANVAS=Object.freeze({width:520,height:420,panel:140});
-// Band rows: 34 px apart, or 56 when a label in the row has a fraction (written at full text size, about 48 px high, plus the 6 px layout clearance).
-const bandRowPitch=texts=>texts.some(text=>String(text).includes('/'))?56:34;
+// Band rows: 34 px apart, or 56 when a label in the row has a fraction (written at full text size, about 48 px high, plus the 6 px layout clearance), or 38 when it has a root sign
+// (a radical stands about 31 px high: between two such rows 34 px leaves 5.5 px of the 6 px clearance and the middle label finds no place).
+const bandRowPitch=texts=>texts.some(text=>String(text).includes('/'))?56:texts.some(text=>/√|sqrt/.test(String(text)))?38:34;
 // A refusal that also carries repair data for the author's result file (error-guidance.mjs turns it into result.fix). The Error (message, class) is unchanged and
 // hintData is not enumerable, so nothing that prints or compares the error sees it. hintData holds only numbers and ids the engine itself computed.
 const withHint=(error,hintData)=>Object.defineProperty(error,'hintData',{value:hintData,enumerable:false,configurable:true});

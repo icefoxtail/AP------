@@ -7,7 +7,7 @@ import {renderPlan} from '../production/render-plan.mjs';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
-import {solveLattice,latticePathSize,latticePathSpec,composeLatticePathFigure,checkLatticePathPlan,FIGURE_CAPABILITY} from '../production/lattice-path-v1.mjs';
+import {solveLattice,latticePathSize,latticePathSpec,composeLatticePathFigure,checkLatticePathPlan,latticeDescription,FIGURE_CAPABILITY} from '../production/lattice-path-v1.mjs';
 
 const observer=fileURLToPath(new URL('../production/lattice-path-observer-worker.py',import.meta.url));
 const code=expected=>error=>error.message===expected;
@@ -87,7 +87,7 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
       assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
       return composed.svg;
     };
-    const audit=async(lattice,svg)=>(await pythonWorker({lattice,svg},{script:observer})).result;
+    const audit=async(lattice,svg)=>(await pythonWorker({lattice,svg,accessibilityDescription:latticeDescription(plan(lattice),solveLattice(lattice))},{script:observer})).result;
     const edit=(svg,re,fn)=>{const m=re.exec(svg);assert.ok(m,String(re));return svg.replace(m[0],fn(m[0]));};
     const svg=await compose(q12,1);
     const pass=await audit(q12,svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
@@ -115,7 +115,7 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
       assert.ok(has(await audit(q12,problem.svg),'LP_COUNT_'),'a plan that shows the count does not match the hidden figure');
     }
     // the observer itself refuses the final count on a problem figure, whatever the plan says
-    const onProblem=(await pythonWorker({lattice:q12,svg:shown,surface:'PROBLEM_VISUAL'},{script:observer})).result;
+    const onProblem=(await pythonWorker({lattice:q12,svg:shown,surface:'PROBLEM_VISUAL',accessibilityDescription:latticeDescription(plan(q12),solveLattice(q12))},{script:observer})).result;
     assert.ok(has(onProblem,'LP_TARGET_COUNT_SHOWN:6,3'),JSON.stringify(onProblem.errors));
     // a point moved, and a plan asking for another forbidden road than the one drawn
     assert.ok(has(await audit(q12,edit(svg,/<circle id="point-P"[^>]*>/,tag=>tag.replace(/cx="[\d.]+"/,'cx="150"'))),'LP_POINT_MISPLACED:P'));
@@ -129,6 +129,22 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
     assert.equal((await audit(pathed,pathSvg)).status,'PASS');
     assert.ok(has(await audit({...pathed,highlightPath:['A',[0,1],[1,1],[1,2],[2,2],[3,2],[3,1],[4,1],[5,1],'B']},pathSvg),'LP_PATH_MISMATCH'));
   }finally{await browser.close();}
+});
+
+test('the figure always carries its accessible name: the plan\'s own line, else one made from the grid and the named points (item90g9: the 6x3 network q12)',async()=>{
+  const item={sourcePath:'archive/exams/original/high/h2/1mid/18_금당고_1학기_중간_고2_확률과통계.js',ordinal:12,dir:'a'};
+  const out=fs.mkdtempSync(path.join(os.tmpdir(),'lattice-a11y-'));
+  const plain=await renderPlan({item,plan:plan(q12),outDir:out});
+  assert.equal(plain.status,'ARCHIVE_BOUND',JSON.stringify(plain.detail));
+  const svg=fs.readFileSync(path.join(out,'a-solution.svg'),'utf8');
+  assert.match(svg,/<svg [^>]*role="img" aria-labelledby="visual-title visual-desc"/);
+  assert.match(svg,/<title id="visual-title">[^<]+<\/title>/);
+  const generated=/<desc id="visual-desc">([^<]+)<\/desc>/.exec(svg)?.[1];
+  assert.ok(generated&&generated.includes('가로 6칸, 세로 3칸인 격자 모양의 도로망'),generated);
+  assert.ok(/A, B, P, Q/.test(generated)&&!/69/.test(generated),'names the points, never the count: '+generated);
+  const own=await renderPlan({item:{...item,dir:'b'},plan:{...plan(q12),accessibilityDescription:'6칸 x 3칸 도로망에서 P와 Q 사이 길이 끊겨 있다.'},outDir:out});
+  assert.equal(own.status,'ARCHIVE_BOUND',JSON.stringify(own.detail));
+  assert.ok(fs.readFileSync(path.join(out,'b-solution.svg'),'utf8').includes('<desc id="visual-desc">6칸 x 3칸 도로망에서 P와 Q 사이 길이 끊겨 있다.</desc>'));
 });
 
 test('renderPlan draws the figure end to end and refuses a plan the engine cannot count',async()=>{
@@ -161,7 +177,7 @@ test('waypoint local counts preserve six and three while the complete route coun
 test('waypoint observer rejects cumulative eighteen substituted for local three and a moved P',async()=>{
   const composed=await composeLatticePathFigure({plan:plan(waypoint),model:solveLattice(waypoint),identity:assetIdentity('23_테스트|16','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy});
   assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
-  const audit=async(svg)=>(await pythonWorker({lattice:waypoint,svg},{script:observer})).result;
+  const audit=async(svg)=>(await pythonWorker({lattice:waypoint,svg,accessibilityDescription:latticeDescription(plan(waypoint),solveLattice(waypoint))},{script:observer})).result;
   assert.equal((await audit(composed.svg)).status,'PASS');
   const wrong=composed.svg.replace(/<g id="count-4-3"[^>]*>/,tag=>tag.replace('data-tex="3"','data-tex="18"').replace('data-count="3"','data-count="18"'));
   assert.notEqual(wrong,composed.svg);assert.ok(has(await audit(wrong),'LP_COUNT_MISMATCH:4,3'));

@@ -20,7 +20,7 @@ const sourceBank=loadBank(rawSource);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const profileOrder=['small','medium','large','full'];
-const fontPx=24.9;
+const fontPx=27;   // the font the real pipeline would set from the measured Archive scale: the page now shows a 610 px wide figure at 0.4146 (252.9 css px), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 const cases=[
   {kind:'exponential',capability:'exponential-affine-spike-v1',family:'exponential-affine',coefficients:['1','1','0'],sourceDomain:{kind:'ALL_REALS'},domain:[-2,2],viewport:[-3,3,-2,12],caption:'지수함수의 증가와 점근선',content:'함수 f(x)=eˣ의 그래프에서 f(0)의 값을 구하시오.',answer:'1',solution:'x=0을 대입한다.\nf(0)=e⁰\nf(0)=1'},
   {kind:'logarithmic',capability:'logarithmic-affine-spike-v1',family:'logarithmic-affine',coefficients:['1','1','0','0'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'},domain:[.1,4],viewport:[-1,5,-5,5],axisTickValues:{x:['1','2','3','4'],y:['-2','-1','1']},caption:'자연로그 함수의 정의역 경계와 기준점',content:'함수 f(x)=ln x의 그래프에서 f(1)의 값을 구하시오.',answer:'0',solution:'x=1은 정의역에 속한다.\nf(1)=ln 1\nf(1)=0'}

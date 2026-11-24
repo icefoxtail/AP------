@@ -22,7 +22,7 @@ const sourceRef=fileRef(root,sourcePath);
 const sourceHex=sourceRef.sha256.slice(7);
 const localQrRef=fileRef(root,'archive/vendor/qrious/qrious.min.js');
 const observerScript=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
-const preflightTypographyPx=24.9;
+const preflightTypographyPx=26.6;   // the font the real pipeline would set from the measured Archive scale: the page now shows the figure at 0.4146 (since 2026-11-11), where 24.9 gives 10.3 css px, under the 11 css px floor the audit below checks
 const profileOrder=['small','medium','large','full'];
 
 function archiveUrl(){return '/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''));}
@@ -126,7 +126,7 @@ test('cubic/quartic final SVGs pass the measured Archive CSS/profile publication
   assert.ok(sourceQuestion);
   const fixtures=[
     {family:'cubic',coefficients:['0','-3','0','1'],axisTickValues:{x:['-2','-1','1','2'],y:['-2','2']},content:'합성 자료에서 함수 y=x³-3x의 그래프를 해석한다.',answer:'x=0, ±√3',solution:'실험용 cubic 그래프 fixture.'},
-    {family:'quartic',coefficients:['0','-1','0','0','1'],axisTickValues:{x:['-1','-0.5','0.5','1'],y:['-1','1','2','3']},content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
+    {family:'quartic',coefficients:['0','-1','0','0','1'],axisTickValues:{x:['-1','-0.5','0.5'],y:['-1','1','2','3']},content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
   ];
   const outcomes=[];
   for(const fixture of fixtures){

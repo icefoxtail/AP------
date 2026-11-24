@@ -88,8 +88,8 @@ class AbsoluteValueOverview(unittest.TestCase):
         self.assertTrue({'ABSOLUTE_VALUE_VISIBLE_ARM_COVERAGE_MISSING','VISIBLE_COVERAGE_GAP'} & set(observed['errors']))
 
     def test_small_profile_corner_and_arm_readability_are_unsupported(self):
-        plan,model,result=model_for(graph(),.328125)
+        plan,model,result=model_for(graph(),.25)   # the arms are framed 9% longer since 2026-11-24 (the page's 0.6586 scale left 49.4 css px of the 50 floor), so the 'small profile' of this test is a smaller scale than before
         self.assertEqual(result['overview']['status'],'UNSUPPORTED')
-        self.assertTrue({'ABSOLUTE_VALUE_CORNER_MARKER_BELOW_PROFILE_FLOOR','ABSOLUTE_VALUE_LEFT_ARM_BELOW_PROFILE_FLOOR','ABSOLUTE_VALUE_RIGHT_ARM_BELOW_PROFILE_FLOOR'} <= set(result['overview']['errors']))
+        self.assertTrue({'ABSOLUTE_VALUE_CORNER_MARKER_BELOW_PROFILE_FLOOR','ABSOLUTE_VALUE_LEFT_ARM_BELOW_PROFILE_FLOOR','ABSOLUTE_VALUE_RIGHT_ARM_BELOW_PROFILE_FLOOR'} <= set(result['overview']['errors']),result['overview']['errors'])
 
 if __name__=='__main__':unittest.main()
