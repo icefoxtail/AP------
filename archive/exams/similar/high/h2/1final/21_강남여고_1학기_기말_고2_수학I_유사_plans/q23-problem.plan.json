@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "30"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 560
+  },
+  "caption": "삼각형 ABC의 외접원과, 점 B를 포함하지 않는 호 AC 위에서 2AP=3CP를 만족하는 점 P를 나타낸 그림",
+  "accessibilityDescription": "원에 내접한 삼각형 ABC가 있고 점 B가 없는 쪽의 호 위에 점 P가 있다. 선분 AB와 BC에 같은 길이 표시와 길이 4가 적혀 있으며 각 ABC가 120도로 표시되어 있다.",
+  "newVisualInformation": [
+    "외접원 위의 점 P의 위치",
+    "같은 길이인 두 변 AB와 BC 및 각 ABC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=4$, $\\angle\\mathrm{ABC}=\\dfrac{2}{3}\\pi$인 삼각형 $\\mathrm{ABC}$의 외접원을 $C$라 하자. 점 $\\mathrm{B}$를 포함하지 않는 호 $\\mathrm{AC}$ 위의 점 $\\mathrm{P}$에 대하여 $2\\overline{\\mathrm{AP}}=3\\overline{\\mathrm{CP}}$이다. 삼각형 $\\mathrm{APC}$의 넓이를 $S$, 원 $C$의 반지름의 길이를 $R$이라 할 때, $\\dfrac{7S}{R}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

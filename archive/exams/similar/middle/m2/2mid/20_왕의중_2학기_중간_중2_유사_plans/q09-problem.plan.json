@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "7"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "7"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "CA",
+          "BC",
+          "AD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dEC",
+        "from": "E",
+        "to": "C",
+        "label": "7",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 7
+      }
+    ]
+  },
+  "caption": "각 C가 직각이고 AC와 BC의 길이가 같은 삼각형 ABC에서 빗변 AB 위의 점 D는 AC와 AD의 길이가 같고, 변 BC 위의 점 E는 DE가 AB에 수직이 되도록 잡혀 있다. EC는 7 cm로 주어져 있다.",
+  "accessibilityDescription": "각 C에 직각 표시가 있고 AC와 BC, AD에 같은 길이 표시가 있는 삼각형 ABC가 보인다. 빗변 AB 위의 점 D와 변 BC 위의 점 E가 있고, DE와 AB가 만나는 D에 직각 표시가 있으며 EC 옆에 7 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "AC, BC, AD의 길이가 같다.",
+    "DE는 AB에 수직이다.",
+    "EC는 7 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C = 90^\\circ$, $\\overline{AC} = \\overline{BC}$인 직각이등변삼각형 $ABC$에서 빗변 $AB$ 위에 $\\overline{AC} = \\overline{AD}$인 점 $D$를 잡고, 변 $BC$ 위에 $\\overline{AB} \\perp \\overline{DE}$가 되도록 점 $E$를 잡는다. $\\overline{EC} = 7\\text{ cm}$일 때, $\\overline{DB} + \\overline{DE}$의 길이는? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

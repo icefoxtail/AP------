@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -3,
+      5
+    ],
+    "curves": [
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ]
+      },
+      {
+        "id": "bottom",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "4"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면 위에 네 점 A(1, 4), B(1, 2), C(3, 2), D(3, 4)를 꼭짓점으로 하는 직사각형과 점 (0, -2)가 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 직사각형 A B C D가 있고, 두 세로 변과 두 가로 변이 보인다. 직사각형 아래쪽에 점 (0, -2)가 찍혀 있다.",
+  "newVisualInformation": [
+    "직사각형 A B C D",
+    "점 (0, -2)",
+    "점 A와 C의 좌표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 네 점 $\\mathrm{A}(1, 4)$, $\\mathrm{B}(1, 2)$, $\\mathrm{C}(3, 2)$, $\\mathrm{D}(3, 4)$를 꼭짓점으로 하는 사각형이 있다. 일차함수 $y = ax - 2$의 그래프가 이 사각형과 만나도록 하는 수 $a$의 값의 최솟값과 최댓값을 곱하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

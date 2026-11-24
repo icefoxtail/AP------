@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bA",
+          "bB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "D",
+          "G"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "E",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc",
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lr",
+        "ownerSegment": "sDG",
+        "text": "r"
+      },
+      {
+        "id": "lR",
+        "ownerSegment": "sEA",
+        "text": "R"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "직각삼각형 ABC에서 내심 D와 외심 E를 나타내고, 내접원과 외접원을 함께 보여 준다. 변 AB의 길이는 12이고 두 반지름은 각각 r, R로 표시되어 있다.",
+  "accessibilityDescription": "점 A가 직각인 삼각형 ABC가 있고 내접원의 중심 D와 외접원의 중심 E가 표시되어 있다. 변 AB는 12이고, 내접원의 반지름은 r, 외접원의 반지름은 R로 나타나 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC의 내심 D와 외심 E가 보인다.",
+    "내접원과 외접원, 두 반지름 r과 R, 변 AB의 길이 12가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=12$이고, 두 점 $D$, $E$는 각각 $\\triangle ABC$의 내심과 외심(빗변 $BC$ 위의 중점)이다. 내접원의 반지름의 길이를 $r$, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=14$, $R-r=6$이다. 이때, $\\triangle ABC$의 둘레의 길이를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

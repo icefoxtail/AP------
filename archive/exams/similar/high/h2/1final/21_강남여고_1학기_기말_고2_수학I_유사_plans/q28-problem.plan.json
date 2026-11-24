@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "15"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "9"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "7"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "neg",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "9"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "105"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "16"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3sqrt(15)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "중심 O인 원 위에 세 꼭짓점 A, B, C가 놓인 삼각형 ABC를 나타낸 그림",
+  "accessibilityDescription": "원의 중심 O가 삼각형 ABC의 내부에 있고 세 꼭짓점 A, B, C가 원 위에 있다. 변 AB 옆에 길이 3루트 15가 적혀 있다.",
+  "newVisualInformation": [
+    "원 위의 삼각형 ABC와 내부의 중심 O",
+    "변 AB의 길이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심이 $\\mathrm{O}$인 원 위에 삼각형 $\\mathrm{ABC}$의 세 꼭짓점이 놓여 있고, 점 $\\mathrm{O}$와 변 $\\mathrm{AB}$ 사이의 거리와 점 $\\mathrm{O}$와 변 $\\mathrm{AC}$ 사이의 거리의 비는 $1:3$이다. $\\overline{\\mathrm{AB}}=3\\sqrt{15}$, $\\sin C = \\dfrac{\\sqrt{15}}{4}$일 때 다음을 각각 구하시오. (단, 점 $\\mathrm{O}$는 삼각형 $\\mathrm{ABC}$의 내부에 존재한다.)\n\n(1) 삼각형 $\\mathrm{ABC}$의 외접원의 반지름을 구하시오. [2점]  \n(2) $\\sin B$의 값을 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

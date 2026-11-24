@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "평행사변형 ABCD의 두 대각선 AC, BD가 교점 O에서 만나고, AO와 OC의 길이가 식으로 표시되어 있다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변과 두 대각선이 점 O에서 만나며, AO는 2x+1센티미터, OC는 3x-4센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD",
+    "대각선 AC와 BD",
+    "교점 O",
+    "AO의 길이 2x+1센티미터",
+    "OC의 길이 3x-4센티미터"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAO",
+        "ownerSegment": "sAO",
+        "text": "2x+1",
+        "unit": "cm"
+      },
+      {
+        "id": "lOC",
+        "ownerSegment": "sOC",
+        "text": "3x-4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하고, $\\overline{AO}=(2x+1)\\text{ cm}$, $\\overline{OC}=(3x-4)\\text{ cm}$일 때, $\\overline{AO}+\\overline{OC}$의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Lp",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Lq",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "Lp",
+    "Lq"
+  ],
+  "hiddenPointNames": [
+    "Lp",
+    "Lq"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "lseg",
+      "refs": [
+        "Lp",
+        "Lq"
+      ],
+      "arrow": "BOTH"
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vL",
+        "ownerSegment": "lseg",
+        "text": "l",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "직선 l이 꼭짓점 A를 지나고 선분 BC와 만나지 않으며, B와 C에서 l에 내린 수선의 발이 각각 D, E이다. BD는 8 cm, CE는 5 cm로 주어져 있다.",
+  "accessibilityDescription": "각 A가 직각인 이등변삼각형 ABC와, A를 지나는 직선 l, 그리고 B와 C에서 l에 내린 수선의 발 D, E가 보인다. BD와 CE 옆에 각각 8 cm와 5 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "직선 l은 점 A를 지나며 선분 BC와 만나지 않는다.",
+    "BD는 8 cm, CE는 5 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle BAC = 90^\\circ$이고 $\\overline{AB} = \\overline{AC}$인 직각이등변삼각형 $ABC$에서 꼭짓점 $A$를 지나고 선분 $BC$와 만나지 않는 직선 $l$을 긋고, 두 점 $B, C$에서 직선 $l$에 내린 수선의 발을 각각 $D, E$라고 하자. $\\overline{BD} = 8\\text{ cm}$이고 $\\overline{CE} = 5\\text{ cm}$일 때, $\\overline{DE}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

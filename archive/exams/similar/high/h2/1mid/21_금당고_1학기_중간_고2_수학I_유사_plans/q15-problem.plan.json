@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4629",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4976",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4629",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4976",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1699",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1699",
+              "denominator": "250"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4976",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1699",
+            "denominator": "250"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4sqrt(10)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원 O에 내접하는 사각형 ABCD에서 두 대각선 AC와 BD가 수직으로 만나고, 변 AB의 길이는 4√10, 변 CD의 길이는 a인 그림이다.",
+  "accessibilityDescription": "원 O 안에 내접하는 사각형 ABCD와 두 대각선 AC, BD가 보이고, 두 대각선이 만나는 곳에 직각 표시가 있다. 변 AB와 CD에는 각각 4√10과 a가 적혀 있다.",
+  "newVisualInformation": [
+    "원 O에 내접한 사각형 ABCD와 수직인 두 대각선",
+    "AB=4√10, CD=a인 변의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 $R = \\sqrt[3]{100} + \\sqrt[3]{10}$인 원 $\\mathrm{O}$에 내접하는 사각형 $\\mathrm{ABCD}$의 두 대각선 $\\mathrm{AC, BD}$가 서로 수직이고 $\\overline{\\mathrm{AB}} = 4\\sqrt{10}$, $\\overline{\\mathrm{CD}} = a$이다. $a^3 = 10(p - qa)$일 때, $p - q$의 값을 구하시오. (단, $p, q$는 자연수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

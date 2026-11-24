@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "11"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "SR",
+      "refs": [
+        "S",
+        "R"
+      ]
+    },
+    {
+      "id": "RP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "PS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "rightAngles": [
+    {
+      "id": "rS",
+      "refs": [
+        "P",
+        "S",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aQPS",
+        "refs": [
+          "Q",
+          "P",
+          "S"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aRPS",
+        "refs": [
+          "R",
+          "P",
+          "S"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aPQS",
+        "refs": [
+          "P",
+          "Q",
+          "S"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "aPRS",
+        "refs": [
+          "P",
+          "R",
+          "S"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  },
+  "caption": "∠Q=∠R인 삼각형 PQR에서 ∠P의 이등분선 PS가 변 QR과 만나는 점 S를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 PQR의 꼭짓점 P에서 변 QR의 점 S로 선분 PS가 그어져 있다. 각 QPS와 RPS에 α가, 각 PQS와 PRS에 β가 표시되어 있고, PS와 QR이 직각으로 만난다.",
+  "newVisualInformation": [
+    "∠Q=∠R인 삼각형 PQR",
+    "∠P의 이등분선 PS",
+    "∠QPS=∠RPS 및 ∠PQS=∠PRS 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle Q = \\angle R$인 $\\triangle PQR$에서 $\\angle P$의 이등분선과 변 $QR$의 교점을 $S$라 하면 $\\angle PSQ = \\angle PSR$이 된다. 이를 이용하여 두 삼각형 $\\triangle PQS$, $\\triangle PRS$가 ( \\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp; )합동이 되므로 $\\overline{PQ} = \\overline{PR}$이다. 빈칸에 가장 알맞은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

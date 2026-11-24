@@ -1,0 +1,379 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "564",
+              "denominator": "121"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "252",
+              "denominator": "103"
+            },
+            {
+              "kind": "rational",
+              "numerator": "900",
+              "denominator": "103"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "63",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11139",
+              "denominator": "2696"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3675",
+              "denominator": "2696"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "658",
+              "denominator": "337"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2350",
+              "denominator": "337"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "441",
+              "denominator": "674"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1575",
+              "denominator": "674"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sEQ",
+      "refs": [
+        "E",
+        "Q"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFR",
+      "refs": [
+        "F",
+        "R"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aBCE",
+        "refs": [
+          "B",
+          "C",
+          "E"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aCAF",
+        "refs": [
+          "C",
+          "A",
+          "F"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "sAB",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "sBC",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "vDE",
+        "ownerSegment": "sED",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "삼각형 ABC의 세 변 위에 점 P, Q, R을 잡고 세 선분 AQ, BR, CP를 그어 내부에 삼각형 DEF가 생긴 그림이다. 세 각 ∠ABD, ∠BCE, ∠CAF에 같은 표시가 되어 있다.",
+  "accessibilityDescription": "삼각형 ABC와 변 위의 점 P, Q, R, 내부의 점 D, E, F가 보이고, 변 AB 9 cm, BC 15 cm, CA 12 cm와 선분 DE 6 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC",
+    "세 변 위의 점 P, Q, R",
+    "내부 삼각형 DEF",
+    "같은 각 표시",
+    "주어진 길이 라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 세 변 $AB, BC, CA$ 위에 각각 점 $P, Q, R$을 잡아 세 선분 $AQ, BR, CP$가 서로 교차하여 내부에 $\\triangle DEF$(점 $D$는 $\\overline{BR}$과 $\\overline{CP}$의 교점, 점 $E$는 $\\overline{CP}$와 $\\overline{AQ}$의 교점, 점 $F$는 $\\overline{AQ}$와 $\\overline{BR}$의 교점)를 만들 때, $\\angle ABD = \\angle BCE = \\angle CAF$가 성립한다. $\\overline{AB} = 9\\text{ cm}$, $\\overline{BC} = 15\\text{ cm}$, $\\overline{AC} = 12\\text{ cm}$, $\\overline{DE} = 6\\text{ cm}$일 때, $\\overline{DF}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "37",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "e1",
+        "count": 2,
+        "segments": [
+          "sBE",
+          "sEC"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "e2",
+        "count": 3,
+        "segments": [
+          "sCF",
+          "sFA"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "O",
+        "F",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "삼각형 ABC의 세 변 AB, BC, CA의 중점 D, E, F와 세 변의 수직이등분선이 만나는 점 O가 그려져 있다. 각 중점에서 O로 간 점선과 직각 표시, 변을 나눈 같은 길이 표시가 보인다.",
+  "accessibilityDescription": "삼각형 ABC의 각 변의 중점 D, E, F가 표시되어 있고, 점 O에서 세 중점으로 점선이 그어져 있다. 각 변을 나눈 두 조각에 같은 길이 눈금이 하나, 둘, 셋으로 표시되고, 점선과 변이 만나는 곳에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 각 변의 중점 D, E, F",
+    "세 변의 수직이등분선 교점 O에서 중점으로 간 점선",
+    "변을 나눈 길이가 같다는 눈금과 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $O$가 $\\triangle ABC$의 세 변 $AB$, $BC$, $CA$의 수직이등분선의 교점이고, 각 변의 중점을 차례로 $D$, $E$, $F$라 할 때, 다음 중 항상 옳다고 할 수 **없는** 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
