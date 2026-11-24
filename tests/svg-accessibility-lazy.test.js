@@ -183,6 +183,18 @@ test('a problem sheet of several exams installs the union of their records once 
   assert.equal(await broken.lazy.prepare([q('assets/images/a.png'), q('assets/images/b.png')], [a, b]), 'full');
 });
 
+test('a window that draws again (mode switch) keeps the installed records when they already cover its figures', async () => {
+  const exam = 'original/high/h1/x.js';
+  const files = await filesFor(exam, goodDoc(exam, ['assets/images/x/q1.png', 'assets/images/x/q2.png'], [rec('assets/images/x/q1.png'), rec('assets/images/x/q2.png')]));
+  const run = await runLazy({ files });
+  assert.equal(await run.lazy.prepare([q('assets/images/x/q1.png', 'assets/images/x/q2.png')], [exam]), 'slice');
+  const installed = run.context.APSvgAccessibilityIndex;
+  const asked = run.requested.length;
+  assert.equal(await run.lazy.prepare([q('assets/images/x/q2.png')], [exam]), 'slice');
+  assert.equal(run.context.APSvgAccessibilityIndex, installed, 'the same records object: the resolver is not rebuilt');
+  assert.equal(run.requested.length, asked, 'nothing is requested again');
+});
+
 test('the pages that draw figures wait for the names before they draw, and the whole index stays the fallback of the loader only', () => {
   const engine = fs.readFileSync(path.join(root, 'archive/engine.html'), 'utf8');
   assert.doesNotMatch(engine, /<script[^>]*\ssrc="data\/svg-accessibility-index\.js/);
