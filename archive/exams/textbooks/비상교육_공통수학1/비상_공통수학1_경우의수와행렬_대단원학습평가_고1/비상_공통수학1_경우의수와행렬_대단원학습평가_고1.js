@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 자리 자연수 중에서 백의 자리 수는 $3$의 배수, 십의 자리 수는 홀수, 일의 자리 수는 소수인 것의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$60$",
+    "solution": "백의 자리 수는 $3$의 배수이므로 $3,\\ 6,\\ 9$의 $3$가지\n십의 자리 수는 홀수이므로 $1,\\ 3,\\ 5,\\ 7,\\ 9$의 $5$가지\n일의 자리 수는 소수이므로 $2,\\ 3,\\ 5,\\ 7$의 $4$가지\n곱의 법칙에 의하여 $3\\times 5\\times 4=60$"
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같은 정육면체의 꼭짓점 A에서 출발하여 모서리를 따라 꼭짓점 G까지 최단 거리로 가는 방법의 수를 구하시오.\n<img src=\"q03.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "꼭짓점 $\\mathrm{A}$에서 출발하여 모서리를 따라 가장 짧게 꼭짓점 $\\mathrm{G}$로 가려면 가로, 세로, 높이의 세 방향으로 각각 한 번씩 이동해야 한다. 세 방향을 어떤 순서로 이동하느냐에 따라 경우가 정해지므로\n$$3!=6$$\n(예: $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{H}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{H}\\to\\mathrm{G}$)"
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2700$의 약수 중에서 홀수의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "$2700=2^2\\times 3^3\\times 5^2$이다.\n홀수인 약수는 $2$를 인수로 갖지 않는 약수이므로 $3^3\\times 5^2$의 약수이다.\n$$(3+1)(2+1)=12$$\n따라서 $2700$의 약수 중 홀수는 $12$개이다."
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 학급에서는 서로 다른 장미 화분 $2$개와 서로 다른 선인장 화분 $4$개를 교실 창가에 일렬로 두고 키우려고 한다. 양 끝에 선인장 화분이 놓이도록 화분을 배열하는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$288$",
+    "solution": "양 끝에 선인장 화분이 놓여야 한다. 선인장 화분 $4$개 중에서 양 끝에 놓을 $2$개를 순서를 정하여 택하는 방법의 수는\n$$_{4}\\mathrm{P}_2=4\\times 3=12$$\n나머지 $4$개의 화분(장미 $2$개, 선인장 $2$개)을 가운데 $4$자리에 일렬로 놓는 방법의 수는 $4!=24$\n따라서 곱의 법칙에 의하여 $12\\times 24=288$"
   },
   {
     "id": 6,
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "도서관에 $8$개의 똑같은 의자가 일렬로 배치되어 있을 때, 학생 $4$명 중에서 어느 $2$명도 이웃하지 않게 앉는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$120$",
+    "solution": "학생 $4$명 중 어느 $2$명도 이웃하지 않게 앉으려면 먼저 비어 있는 의자 $4$개를 일렬로 놓고 그 사이사이와 양 끝의 $5$곳 중 $4$곳을 골라 학생이 앉을 자리를 정한다.\n앉을 의자를 정하는 방법의 수는 $_{5}\\mathrm{C}_4=5$\n선택한 $4$개의 의자에 학생 $4$명이 앉는 방법의 수는 $4!=24$\n따라서 곱의 법칙에 의하여 $5\\times 24=120$"
   },
   {
     "id": 7,
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $6$개의 돌을 놓아 만든 징검다리가 있다. 한 번에 한 칸 또는 두 칸을 건널 수 있다고 할 때, 출발 지점에서 도착 지점까지 가는 방법의 수를 구하시오.\n<img src=\"q07.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$21$",
+    "solution": "출발 지점을 $0$, 돌을 차례로 $1,\\ 2,\\ \\cdots,\\ 6$, 도착 지점을 $7$이라 하자. 한 번에 한 칸 또는 두 칸을 건널 수 있으므로 $n$번 자리에 도착하는 방법의 수 $a_n$은 $n-1$번 자리에서 한 칸, $n-2$번 자리에서 두 칸 오는 경우의 합이다.\n$$a_n=a_{n-1}+a_{n-2},\\qquad a_0=1,\\ a_1=1$$\n$a_2=2,\\ a_3=3,\\ a_4=5,\\ a_5=8,\\ a_6=13,\\ a_7=21$\n따라서 출발 지점에서 도착 지점까지 가는 방법의 수는 $21$이다."
   },
   {
     "id": 8,
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "서로 다른 풍경 사진 $4$점과 서로 다른 동물 사진 $2$점을 일렬로 나열하여 전시하려고 한다. 동물 사진 사이에 적어도 $1$점의 풍경 사진이 놓이도록 전시하는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$480$",
+    "solution": "(전체 배열) $-$ (동물 사진 $2$점이 이웃하는 배열)로 구한다.\n$6$점을 일렬로 나열하는 방법의 수는 $6!=720$\n동물 사진 $2$점을 한 묶음으로 보면 $5$개를 나열하는 방법의 수 $5!=120$이고 묶음 안에서 동물 사진의 순서를 바꾸는 방법이 $2!=2$가지이므로 $120\\times 2=240$\n따라서 동물 사진 사이에 적어도 $1$점의 풍경 사진이 놓이는 방법의 수는 $720-240=480$"
   },
   {
     "id": 9,
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 동아리의 회원은 서하와 수지를 포함하여 $9$명이다. 이 동아리 회원 중에서 $3$명의 대표를 뽑을 때, 서하는 대표로 뽑히지 않고 수지만 대표로 뽑히는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$21$",
+    "solution": "서하는 제외하고 수지는 반드시 뽑는다. 수지를 뽑았으므로 나머지 $2$명을 서하, 수지를 제외한 $9-2=7$명 중에서 뽑으면 된다.\n$$_{7}\\mathrm{C}_2=\\frac{7\\times 6}{2}=21$$"
   },
   {
     "id": 10,
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림에서 다섯 개의 영역을 서로 다른 $5$가지 이하의 색으로 칠하려고 한다. 같은 색을 중복하여 사용해도 좋으나 인접한 영역은 서로 다른 색으로 칠하여 구분할 때, 칠하는 방법의 수를 구하시오.\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$540$",
+    "solution": "다섯 영역을 가, 나, 다, 라, 마라 하자. 인접한 영역은 (가, 나), (가, 라), (나, 라), (나, 다), (나, 마), (다, 마), (라, 마)이다. 영역 '나'는 가, 라, 다, 마와 모두 인접하다.\n나: $5$가지\n가: 나와 다른 색이므로 $4$가지\n라: 나, 가와 다른 색 ($\\text{나}\\ne\\text{가}$이므로) $3$가지\n마: 나, 라와 다른 색 ($\\text{나}\\ne\\text{라}$이므로) $3$가지 (가와는 같아도 된다.)\n다: 나, 마와 다른 색 ($\\text{나}\\ne\\text{마}$이므로) $3$가지\n곱의 법칙에 의하여 $5\\times 4\\times 3\\times 3\\times 3=540$"
   },
   {
     "id": 11,
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 서로 평행한 두 직선 $l$, $m$ 위에 각각 $3$개, $4$개의 점이 있다. 직선 $l$ 위의 점과 직선 $m$ 위의 점을 이은 선분을 $2$개 그릴 때, 두 선분이 교점을 갖도록 그리는 경우의 수를 구하시오. (단, 교점이 두 직선 $l$, $m$ 위에 있는 경우는 생각하지 않는다.)\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$18$",
+    "solution": "두 선분이 교점을 가지려면 (두 직선 $l,\\ m$ 위가 아닌 곳에서) 서로 엇갈려 만나야 한다.\n직선 $l$ 위의 두 점 $\\mathrm{P}_1,\\ \\mathrm{P}_2$와 직선 $m$ 위의 두 점 $\\mathrm{Q}_1,\\ \\mathrm{Q}_2$를 택하고 $\\mathrm{P}_1$이 $\\mathrm{P}_2$보다 왼쪽, $\\mathrm{Q}_1$이 $\\mathrm{Q}_2$보다 왼쪽에 있을 때, 선분 $\\mathrm{P}_1\\mathrm{Q}_2$와 $\\mathrm{P}_2\\mathrm{Q}_1$을 그리면 교점이 생기고, 이 방법 하나뿐이다.\n따라서 $l$ 위에서 $2$개의 점을 택하는 방법 $_{3}\\mathrm{C}_2=3$, $m$ 위에서 $2$개의 점을 택하는 방법 $_{4}\\mathrm{C}_2=6$이므로\n$$3\\times 6=18$$"
   },
   {
     "id": 12,
@@ -368,8 +368,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1$학년 학생 $2$명, $2$학년 학생 $3$명, $3$학년 학생 $3$명으로 구성된 바른 생활부 학생들이 교내 식당 앞에 일렬로 서서 ‘질서 지키기’ 홍보 활동을 하려고 한다. 이때 같은 학년 학생끼리 이웃하여 서는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$432$",
+    "solution": "같은 학년 학생끼리 이웃하려면 각 학년 학생들을 한 묶음으로 본다.\n$1$학년, $2$학년, $3$학년의 세 묶음을 일렬로 세우는 방법의 수는 $3!=6$\n각 묶음 안에서 학생들이 서는 순서를 정하는 방법의 수는 $1$학년 $2!=2$, $2$학년 $3!=6$, $3$학년 $3!=6$\n따라서 곱의 법칙에 의하여\n$$6\\times 2\\times 6\\times 6=432$$"
   },
   {
     "id": 14,
@@ -396,8 +396,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 지역에서 열린 배구 대회에 참가한 $n$개의 팀이 서로 다른 팀과 모두 한 번씩 경기를 하였더니 총 $55$번 경기를 하였다. 이때 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "$n$개의 팀 중에서 $2$팀을 택하여 경기를 하므로 경기 수는 $_{n}\\mathrm{C}_2=\\frac{n(n-1)}{2}$이다.\n$$\\frac{n(n-1)}{2}=55$$\n$n(n-1)=110=11\\times 10$이므로 $n=11$"
   },
   {
     "id": 15,
@@ -424,8 +424,8 @@ window.questionBank = [
     "wide": false,
     "content": "서로 다른 $5$개의 아이스크림을 크기가 다른 두 상자에 나누어 담으려고 한다. 각 상자에는 아이스크림을 최대 $4$개까지만 담을 수 있을 때, 두 상자에 아이스크림을 나누어 담는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "두 상자의 크기가 다르므로 서로 구별한다. 서로 다른 아이스크림 $5$개를 각각 두 상자 중 하나에 담는 방법의 수는 $2^5=32$이다.\n이 중 한 상자에 $5$개를 모두 담는 경우는 상자가 최대 $4$개까지만 담을 수 있으므로 제외해야 한다. 그런 경우는 첫째 상자에 모두 담는 경우와 둘째 상자에 모두 담는 경우 $2$가지이다.\n따라서 구하는 방법의 수는 $32-2=30$"
   },
   {
     "id": 16,
@@ -452,8 +452,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 놀이공원의 놀이기구 A, B, C는 최대 탑승 인원이 각각 $1$명, $2$명, $3$명이다. 모든 놀이기구에는 어른 없이 어린이만 탑승할 수 없고, 탑승 순서와 자리 배치는 고려하지 않을 때, 어른 $3$명과 어린이 $2$명이 동시에 놀이기구에 탑승하는 방법의 수를 구하시오. (단, 비어 있는 놀이기구가 있을 수 있다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$27$",
+    "solution": "놀이기구 $\\mathrm{A},\\ \\mathrm{B},\\ \\mathrm{C}$의 최대 탑승 인원은 $1,\\ 2,\\ 3$이고 모두 $5$명이 탑승하므로 탑승 인원의 구성은 $(\\mathrm{A},\\ \\mathrm{B},\\ \\mathrm{C})=(1,\\ 2,\\ 2),\\ (1,\\ 1,\\ 3),\\ (0,\\ 2,\\ 3)$이다. 어린이만 탑승할 수 없으므로 어린이가 탄 놀이기구에는 어른이 있어야 한다. (어른 $3$명, 어린이 $2$명은 서로 구별한다.)\n(i) $(1,\\ 2,\\ 2)$: $\\mathrm{A}$는 $1$명이므로 어른이어야 한다. $3$가지\n나머지 $4$명(어른 $2$, 어린이 $2$)을 $\\mathrm{B}$에 $2$명, $\\mathrm{C}$에 $2$명 나누는 방법은 $_{4}\\mathrm{C}_2=6$가지이고, 어린이 $2$명이 한 놀이기구에 함께 타는 $2$가지는 제외한다. $6-2=4$\n$3\\times 4=12$\n(ii) $(1,\\ 1,\\ 3)$: $\\mathrm{A}$는 어른 $3$가지, $\\mathrm{B}$는 남은 어른 $2$가지이고 나머지는 모두 $\\mathrm{C}$에 탄다. $\\mathrm{C}$에는 어른이 $1$명 있으므로 가능하다. $3\\times 2=6$\n(iii) $(0,\\ 2,\\ 3)$: $5$명 중 $\\mathrm{B}$에 탈 $2$명을 택하는 방법은 $_{5}\\mathrm{C}_2=10$가지이고, 어린이 $2$명만 $\\mathrm{B}$에 타는 $1$가지는 제외한다. ($\\mathrm{C}$에는 $3$명이 타므로 어른이 반드시 포함된다.) $10-1=9$\n따라서 구하는 방법의 수는 $12+6+9=27$"
   },
   {
     "id": 17,
@@ -480,8 +480,8 @@ window.questionBank = [
     "wide": false,
     "content": "$2\\times 3$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가 $a_{ij}=i+j+p$일 때, 행렬 $A$의 모든 성분의 합이 $45$이다. 이때 실수 $p$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "$2\\times 3$ 행렬 $A$의 성분은\n$a_{11}=2+p,\\ a_{12}=3+p,\\ a_{13}=4+p,\\ a_{21}=3+p,\\ a_{22}=4+p,\\ a_{23}=5+p$\n모든 성분의 합은\n$$(2+3+4+3+4+5)+6p=21+6p=45$$\n$6p=24$이므로 $p=4$"
   },
   {
     "id": 18,
@@ -508,8 +508,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 4 & a+2b \\\\ 2a & 3 \\end{pmatrix}$, $B=\\begin{pmatrix} 4 & 6 \\\\ 4 & 3 \\end{pmatrix}$이 서로 같은 행렬일 때, 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2,\\ b=2$",
+    "solution": "두 행렬이 서로 같으므로 대응하는 성분이 같다.\n$a+2b=6$\n$2a=4$이므로 $a=2$\n$2+2b=6$이므로 $b=2$"
   },
   {
     "id": 19,
@@ -536,8 +536,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 3 & -2 \\\\ 1 & -4 \\end{pmatrix}$, $B=\\begin{pmatrix} -8 & 2 \\\\ 3 & -1 \\end{pmatrix}$에 대하여 $2(A-B)-3A$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 13 & -2 \\\\ -7 & 6 \\end{pmatrix}$",
+    "solution": "$2(A-B)-3A=2A-2B-3A=-A-2B$이므로\n$$-A-2B=-\\begin{pmatrix} 3 & -2 \\\\ 1 & -4 \\end{pmatrix}-2\\begin{pmatrix} -8 & 2 \\\\ 3 & -1 \\end{pmatrix}=\\begin{pmatrix} -3 & 2 \\\\ -1 & 4 \\end{pmatrix}+\\begin{pmatrix} 16 & -4 \\\\ -6 & 2 \\end{pmatrix}=\\begin{pmatrix} 13 & -2 \\\\ -7 & 6 \\end{pmatrix}$$"
   },
   {
     "id": 20,
@@ -564,8 +564,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 [표 1], [표 2]는 두 반도체 회사 A, B에서 $1$월과 $2$월에 수출한 메모리 반도체와 시스템 반도체의 수출액을 나타낸 것이다. 두 회사 A, B에서 $2$개월 동안 수출한 메모리 반도체와 시스템 반도체의 수출액을 행렬을 이용하여 나타내시오. (단, 수출액의 단위는 억 달러이다.)\n\n[표 1] 1월 수출액 (단위: 억 달러)\n| 회사 \\ 종류 | 메모리 반도체 | 시스템 반도체 |\n| :---: | :---: | :---: |\n| A | 30 | 19 |\n| B | 34 | 20 |\n\n[표 2] 2월 수출액 (단위: 억 달러)\n| 회사 \\ 종류 | 메모리 반도체 | 시스템 반도체 |\n| :---: | :---: | :---: |\n| A | 31 | 20 |\n| B | 33 | 21 |",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 61 & 39 \\\\ 67 & 41 \\end{pmatrix}$ (행: A, B / 열: 메모리 반도체, 시스템 반도체)",
+    "solution": "[표 1]을 행렬 $\\begin{pmatrix} 30 & 19 \\\\ 34 & 20 \\end{pmatrix}$, [표 2]를 행렬 $\\begin{pmatrix} 31 & 20 \\\\ 33 & 21 \\end{pmatrix}$로 나타내면 ($1$행: 회사 A, $2$행: 회사 B, $1$열: 메모리 반도체, $2$열: 시스템 반도체) 두 달 동안의 수출액은 두 행렬의 합이다.\n$$\\begin{pmatrix} 30 & 19 \\\\ 34 & 20 \\end{pmatrix}+\\begin{pmatrix} 31 & 20 \\\\ 33 & 21 \\end{pmatrix}=\\begin{pmatrix} 61 & 39 \\\\ 67 & 41 \\end{pmatrix}$$"
   },
   {
     "id": 21,
@@ -592,8 +592,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 4 \\\\ -2 & 5 \\end{pmatrix}$, $B=\\begin{pmatrix} 2 & 1 \\\\ -1 & 3 \\end{pmatrix}$에 대하여 등식 $\\begin{pmatrix} -4 & 5 \\\\ -1 & 1 \\end{pmatrix}=mA+nB$를 만족시키는 실수 $m$, $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$m=2,\\ n=-3$",
+    "solution": "$$mA+nB=\\begin{pmatrix} m+2n & 4m+n \\\\ -2m-n & 5m+3n \\end{pmatrix}=\\begin{pmatrix} -4 & 5 \\\\ -1 & 1 \\end{pmatrix}$$\n$m+2n=-4\\qquad\\cdots\\ ①$\n$4m+n=5\\qquad\\cdots\\ ②$\n②에서 $n=5-4m$을 ①에 대입하면 $m+10-8m=-4$이므로 $m=2$, $n=-3$\n(확인: $-2m-n=-4+3=-1$, $5m+3n=10-9=1$)"
   },
   {
     "id": 22,
@@ -626,8 +626,8 @@ window.questionBank = [
       "$CA$",
       "$CB$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②, ⑤",
+    "solution": "두 행렬의 곱 $XY$는 $X$의 열의 개수와 $Y$의 행의 개수가 같아야 가능하다.\n$A$는 $2\\times 1$ 행렬, $B$는 $1\\times 2$ 행렬, $C$는 $2\\times 2$ 행렬이다.\n① $AB$: $(2\\times 1)(1\\times 2)$, $A$의 열의 개수 $1$ $=$ $B$의 행의 개수 $1$이므로 가능하다.\n② $AC$: $(2\\times 1)(2\\times 2)$, $A$의 열의 개수 $1$ $\\ne$ $C$의 행의 개수 $2$이므로 불가능하다.\n③ $BC$: $(1\\times 2)(2\\times 2)$, $2=2$이므로 가능하다.\n④ $CA$: $(2\\times 2)(2\\times 1)$, $2=2$이므로 가능하다.\n⑤ $CB$: $(2\\times 2)(1\\times 2)$, $2\\ne 1$이므로 불가능하다.\n따라서 곱셈이 불가능한 것은 ②, ⑤이다."
   },
   {
     "id": 23,
@@ -654,8 +654,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\begin{pmatrix} -2 & x \\\\ y & -3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 2 & z \\end{pmatrix}=O$를 만족시키는 실수 $x$, $y$, $z$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=1,\\ y=6,\\ z=2$",
+    "solution": "$$\\begin{pmatrix} -2 & x \\\\ y & -3 \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ 2 & z \\end{pmatrix}=\\begin{pmatrix} -2+2x & -2+xz \\\\ y-6 & y-3z \\end{pmatrix}=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$$\n$-2+2x=0$에서 $x=1$\n$-2+xz=0$에서 $-2+z=0$이므로 $z=2$\n$y-6=0$에서 $y=6$\n(확인: $y-3z=6-6=0$)"
   },
   {
     "id": 24,
@@ -682,8 +682,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\end{pmatrix}$, $B=\\begin{pmatrix} 2 & 1 \\\\ k & 3 \\end{pmatrix}$에 대하여 행렬 $AB-BA$의 모든 성분의 합이 $2$일 때, 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "$$AB=\\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\end{pmatrix}\\begin{pmatrix} 2 & 1 \\\\ k & 3 \\end{pmatrix}=\\begin{pmatrix} 2 & 1 \\\\ 4-k & -1 \\end{pmatrix}$$\n$$BA=\\begin{pmatrix} 2 & 1 \\\\ k & 3 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\end{pmatrix}=\\begin{pmatrix} 4 & -1 \\\\ k+6 & -3 \\end{pmatrix}$$\n$$AB-BA=\\begin{pmatrix} -2 & 2 \\\\ -2-2k & 2 \\end{pmatrix}$$\n모든 성분의 합은 $-2+2+(-2-2k)+2=-2k=2$이므로 $k=-1$"
   },
   {
     "id": 25,
@@ -710,8 +710,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식 $\\begin{pmatrix} x+y & 0 \\\\ 0 & xy \\end{pmatrix}=6E$를 만족시키는 실수 $x$, $y$에 대하여 $x^3+y^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$108$",
+    "solution": "$\\begin{pmatrix} x+y & 0 \\\\ 0 & xy \\end{pmatrix}=6E=\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$이므로 $x+y=6,\\ xy=6$이다.\n$$x^3+y^3=(x+y)^3-3xy(x+y)=6^3-3\\times 6\\times 6=216-108=108$$"
   },
   {
     "id": 26,
@@ -744,8 +744,8 @@ window.questionBank = [
       "행렬 $\\dfrac{1}{7}CD$의 $(2, 1)$ 성분",
       "행렬 $\\dfrac{1}{7}DB$의 $(1, 1)$ 성분"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "서하의 두 과목 등급은 가 $1$, 나 $4$이고 학점은 가 $4$, 나 $3$이므로 등급 평균은\n$$\\frac{1\\times 4+4\\times 3}{4+3}=\\frac{16}{7}$$\n행렬 $A=\\begin{pmatrix} 2 & 3 \\\\ 1 & 4 \\end{pmatrix}$의 제$2$행은 서하의 등급 $(1,\\ 4)$이고 $C=\\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix}$는 학점이다.\n$$AC=\\begin{pmatrix} 2\\times 4+3\\times 3 \\\\ 1\\times 4+4\\times 3 \\end{pmatrix}=\\begin{pmatrix} 17 \\\\ 16 \\end{pmatrix}$$\n따라서 $\\frac{1}{7}AC$의 $(2,\\ 1)$ 성분은 $\\frac{16}{7}$로 서하의 등급 평균이다. 따라서 ②이다."
   },
   {
     "id": 27,
@@ -772,8 +772,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ -3 & -1 \\end{pmatrix}$, $B=\\begin{pmatrix} 7 & 9 \\\\ 4 & 3 \\end{pmatrix}$에 대하여 다음을 만족시키는 행렬 $X$, $Y$를 구하시오.\n$$-X+2Y=B \\quad \\cdots \\text{①}$$\n$$-2X+Y=A \\quad \\cdots \\text{②}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$X=\\begin{pmatrix} \\frac{5}{3} & \\frac{5}{3} \\\\ \\frac{10}{3} & \\frac{5}{3} \\end{pmatrix},\\ Y=\\begin{pmatrix} \\frac{13}{3} & \\frac{16}{3} \\\\ \\frac{11}{3} & \\frac{7}{3} \\end{pmatrix}$",
+    "solution": "①에서 $X=2Y-B$이다. 이를 ②에 대입하면\n$$-2(2Y-B)+Y=A,\\quad\\text{즉}\\quad -3Y+2B=A$$\n$$Y=\\frac{2B-A}{3}=\\frac{1}{3}\\left\\{\\begin{pmatrix} 14 & 18 \\\\ 8 & 6 \\end{pmatrix}-\\begin{pmatrix} 1 & 2 \\\\ -3 & -1 \\end{pmatrix}\\right\\}=\\frac{1}{3}\\begin{pmatrix} 13 & 16 \\\\ 11 & 7 \\end{pmatrix}=\\begin{pmatrix} \\frac{13}{3} & \\frac{16}{3} \\\\ \\frac{11}{3} & \\frac{7}{3} \\end{pmatrix}$$\n$$X=2Y-B=\\begin{pmatrix} \\frac{26}{3}-7 & \\frac{32}{3}-9 \\\\ \\frac{22}{3}-4 & \\frac{14}{3}-3 \\end{pmatrix}=\\begin{pmatrix} \\frac{5}{3} & \\frac{5}{3} \\\\ \\frac{10}{3} & \\frac{5}{3} \\end{pmatrix}$$\n(확인: $-2X+Y=\\begin{pmatrix} 1 & 2 \\\\ -3 & -1 \\end{pmatrix}=A$)"
   },
   {
     "id": 28,
@@ -800,8 +800,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -1 & 2 \\\\ 2 & -3 \\end{pmatrix}$, $B=\\begin{pmatrix} 1 & -4 \\\\ -4 & 5 \\end{pmatrix}$에 대하여 등식 $A^2=pB+qE$를 만족시키는 실수 $p$, $q$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$p=2,\\ q=3$",
+    "solution": "$$A^2=\\begin{pmatrix} -1 & 2 \\\\ 2 & -3 \\end{pmatrix}\\begin{pmatrix} -1 & 2 \\\\ 2 & -3 \\end{pmatrix}=\\begin{pmatrix} 5 & -8 \\\\ -8 & 13 \\end{pmatrix}$$\n$$pB+qE=\\begin{pmatrix} p+q & -4p \\\\ -4p & 5p+q \\end{pmatrix}$$\n성분을 비교하면 $-4p=-8$에서 $p=2$, $p+q=5$에서 $q=3$이고 $5p+q=13$도 성립한다."
   },
   {
     "id": 29,
@@ -828,8 +828,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차정사각행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가 $a_{ij}=i-j$일 때, 행렬 $A+A^2+A^3+\\cdots+A^{2020}$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$a_{ij}=i-j$이므로 $A=\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$이다.\n$$A^2=\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}=\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}=-E$$\n$A^3=-A,\\ A^4=E$이므로 $A^4=E$로 $4$번마다 같은 값이 반복된다.\n$$A+A^2+A^3+A^4=A-E-A+E=O$$\n$2020=4\\times 505$이므로 $A+A^2+\\cdots+A^{2020}=505\\times O=O$\n따라서 모든 성분의 합은 $0$이다."
   },
   {
     "id": 30,
@@ -856,8 +856,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-4x-3=0$의 두 실근을 $\\alpha$, $\\beta$라고 할 때, 행렬 $X=\\begin{pmatrix} \\alpha & -1 \\\\ -1 & \\beta \\end{pmatrix}$에 대하여 행렬 $X^2$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$16$",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=4,\\ \\alpha\\beta=-3$이다.\n$$X^2=\\begin{pmatrix} \\alpha & -1 \\\\ -1 & \\beta \\end{pmatrix}\\begin{pmatrix} \\alpha & -1 \\\\ -1 & \\beta \\end{pmatrix}=\\begin{pmatrix} \\alpha^2+1 & -\\alpha-\\beta \\\\ -\\alpha-\\beta & 1+\\beta^2 \\end{pmatrix}$$\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=16+6=22$이므로 모든 성분의 합은\n$$(\\alpha^2+1)+(1+\\beta^2)-2(\\alpha+\\beta)=22+2-8=16$$"
   },
   {
     "id": 31,
@@ -884,8 +884,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 4 & -1 \\\\ 13 & -3 \\end{pmatrix}$, $B=\\begin{pmatrix} 1 & -2 \\\\ 1 & -1 \\end{pmatrix}$에 대하여 등식 $A^n+B^n=O$를 만족시키는 가장 작은 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "$A^2=\\begin{pmatrix} 4 & -1 \\\\ 13 & -3 \\end{pmatrix}\\begin{pmatrix} 4 & -1 \\\\ 13 & -3 \\end{pmatrix}=\\begin{pmatrix} 3 & -1 \\\\ 13 & -4 \\end{pmatrix}$\n$A^3=A^2A=\\begin{pmatrix} 3 & -1 \\\\ 13 & -4 \\end{pmatrix}\\begin{pmatrix} 4 & -1 \\\\ 13 & -3 \\end{pmatrix}=\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}=-E$\n$B^2=\\begin{pmatrix} 1 & -2 \\\\ 1 & -1 \\end{pmatrix}\\begin{pmatrix} 1 & -2 \\\\ 1 & -1 \\end{pmatrix}=\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}=-E$\n따라서 $A^3=-E,\\ A^6=E$이고 $B^2=-E,\\ B^4=E$이다. $n$을 작은 수부터 확인한다.\n$n=1$: $A+B=\\begin{pmatrix} 5 & -3 \\\\ 14 & -4 \\end{pmatrix}\\ne O$\n$n=2$: $A^2+B^2=A^2-E\\ne O$\n$n=3$: $A^3+B^3=-E+B^2B=-E-B\\ne O$\n$n=4$: $A^4+B^4=-A+E\\ne O$\n$n=5$: $A^5+B^5=-A^2+B\\ne O$\n$n=6$: $A^6+B^6=E+B^4B^2=E-E=O$\n따라서 가장 작은 자연수 $n$은 $6$이다."
   },
   {
     "id": 32,
@@ -912,7 +912,7 @@ window.questionBank = [
     "wide": false,
     "content": "이차정사각행렬 $A$에 대하여 $A\\begin{pmatrix} p \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$, $A\\begin{pmatrix} p \\\\ 2q \\end{pmatrix}=\\begin{pmatrix} 4 \\\\ 5 \\end{pmatrix}$가 성립할 때, $A\\begin{pmatrix} p \\\\ q \\end{pmatrix}$를 구하시오. (단, $p$, $q$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$",
+    "solution": "$A\\begin{pmatrix} p \\\\ 2q \\end{pmatrix}-A\\begin{pmatrix} p \\\\ 0 \\end{pmatrix}=A\\begin{pmatrix} 0 \\\\ 2q \\end{pmatrix}=\\begin{pmatrix} 4 \\\\ 5 \\end{pmatrix}-\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 8 \\end{pmatrix}$\n$A\\begin{pmatrix} 0 \\\\ 2q \\end{pmatrix}=2A\\begin{pmatrix} 0 \\\\ q \\end{pmatrix}$이므로 $A\\begin{pmatrix} 0 \\\\ q \\end{pmatrix}=\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}$\n$\\begin{pmatrix} p \\\\ q \\end{pmatrix}=\\begin{pmatrix} p \\\\ 0 \\end{pmatrix}+\\begin{pmatrix} 0 \\\\ q \\end{pmatrix}$이므로\n$$A\\begin{pmatrix} p \\\\ q \\end{pmatrix}=A\\begin{pmatrix} p \\\\ 0 \\end{pmatrix}+A\\begin{pmatrix} 0 \\\\ q \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}+\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}=\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$$"
   }
 ];
