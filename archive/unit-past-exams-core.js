@@ -485,7 +485,10 @@
   // 외심·내심(삼각형의 성질) 또는 사각형·평행사변형·마름모(사각형의 성질)가 있으면 그쪽으로 보낸다(원장 지시 2026-11-24). 새로 추정한 값이 아니라 이미 있는 값을 읽는다.
   const HINT_REDIRECT_FROM = '도형의닮음과피타고라스정리';
   const HINT_REDIRECTS = Object.freeze([
-    Object.freeze({ to: '삼각형의성질', pattern: /CIRCUMCENTER|INCENTER|TRIANGLE_CENTERS|외심|내심|외접원|내접원/ }),
+    // 외심·내심 값이 있으면 삼각형의 성질. 유형 TRIANGLE_CENTERS는 무게중심(닮음)도 함께 연결돼 유형 키만으로는 보내지 않고,
+    // 템플릿(TPL_TRIANGLE_CENTERS_*)이 외심·내심 템플릿이면서 무게중심 값이 없을 때만 보낸다.
+    Object.freeze({ to: '삼각형의성질', pattern: /CIRCUMCENTER|INCENTER|INCIRCLE|외심|내심|외접원|내접원/,
+      templatePattern: /TRIANGLE_CENTERS/, excludePattern: /CENTROID|무게중심/ }),
     Object.freeze({ to: '사각형의성질', pattern: /QUADRILATERAL|PARALLELOGRAM|RHOMBUS|사각형|평행사변형|마름모/ })
   ]);
   // 판정이 없던 문항을 채운다: ① 옛 소단원 키 → ② 카탈로그 유형 힌트(metaHintUnit). 값이 없으면 null(미정 그대로).
@@ -501,7 +504,9 @@
     if (!hinted) return null;
     if (compact(hinted.name) === HINT_REDIRECT_FROM) {
       const evidence = [record.subUnitKey, record.subUnit, record.problemTypeKey, record.templateKey, record.L3, record.L4, record.conceptLabel].join(' ');
-      const redirect = HINT_REDIRECTS.find(item => item.pattern.test(evidence));
+      const templateEvidence = [record.templateKey, record.L4].join(' ');
+      const redirect = HINT_REDIRECTS.find(item => item.pattern.test(evidence) ||
+        (item.templatePattern && item.templatePattern.test(templateEvidence) && !item.excludePattern.test(evidence)));
       hinted = (redirect && unitByName(redirect.to)) || hinted;
     }
     return { status: 'classified', unitKey: hinted.key, reason: 'type-hint' };

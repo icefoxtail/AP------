@@ -44,6 +44,12 @@ test('힌트가 닮음이어도 외심·내심·사각형 유형 값이 있으�
   assert.equal(center.unitKey, unitNamed('삼각형의 성질').key);
   const quad = classify(oldChapterRecord(10, { ...base, problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' }));
   assert.equal(quad.unitKey, unitNamed('사각형의 성질').key);
+  // 무게중심은 닮음 단원이다: 유형 TRIANGLE_CENTERS만 있거나 무게중심 값이 섞이면 보내지 않는다.
+  const similarName = unitNamed('도형의 닮음과 피타고라스 정리').key;
+  assert.equal(classify(oldChapterRecord(16, { ...base, problemTypeKey: 'PT_TRIANGLE_CENTERS' })).unitKey, similarName);
+  assert.equal(classify(oldChapterRecord(17, { ...base, problemTypeKey: 'PT_M2_CENTROID', subUnitKey: 'M2-06-TRIANGLE_CENTROID' })).unitKey, similarName);
+  assert.equal(classify(oldChapterRecord(18, { ...base, problemTypeKey: 'PT_TRIANGLE_CENTERS', templateKey: 'TPL_TRIANGLE_CENTERS_SEMANTIC', subUnitKey: 'M2-06-TRIANGLE_CENTROID' })).unitKey, similarName);
+  assert.equal(classify(oldChapterRecord(19, { ...base, problemTypeKey: 'PT_TRIANGLE_CENTERS', templateKey: 'TPL_TRIANGLE_CENTERS_SEMANTIC' })).unitKey, unitNamed('삼각형의 성질').key);
   const similar = classify(oldChapterRecord(11, { ...base, problemTypeKey: 'PT_SIMILAR_FIGURES' }));
   assert.equal(similar.unitKey, unitNamed('도형의 닮음과 피타고라스 정리').key);
 });
