@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 A가 직각이고 각 B가 30도인 삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발을 D라 하고, 변 AB, AD, AC를 각각 x, y, z로 표시한 그림이다. 선분 BD는 12센티미터이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선 AD가 그려져 있다. 변 AB 옆에 x, 변 AD 옆에 y, 변 AC 옆에 z가 적혀 있고, 선분 BD 아래에 12센티미터, 각 B 옆에 30이 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\angle B = 30^\\circ$, $\\overline{BD} = 12\\text{ cm}$일 때, $xy + z$의 값은? (단, 점 $D$는 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발이고, $\\overline{AB} = x$, $\\overline{AD} = y$, $\\overline{AC} = z$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "선분 BD의 길이를 12센티미터로, 각 B를 30도로 표시한다.",
+    "변 AB, AD, AC를 각각 x, y, z로 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "y"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "z"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  }
+}
